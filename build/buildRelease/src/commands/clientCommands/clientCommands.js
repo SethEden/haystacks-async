@@ -6,7 +6,7 @@
  * @requires module:application.configuration.constants
  * @requires module:application.constants
  * @requires module:application.message.constants
- * @requires {@link https://www.npmjs.com/package/@haystacks/sync|@haystacks/sync}
+ * @requires {@link https://www.npmjs.com/package/@haystacks/async|@haystacks/async}
  * @requires {@link https://www.npmjs.com/package/@haystacks/constants|@haystacks/constants}
  * @requires {@link https://www.npmjs.com/package/path|path}
  * @author Seth Hollingsead
@@ -20,7 +20,7 @@ import * as app_cfg from '../../constants/application.configuration.constants.js
 import * as apc from '../../constants/application.constants.js';
 import * as app_msg from '../../constants/application.message.constants.js';
 // External imports
-import haystacks from '@haystacks/sync';
+import haystacks from '@haystacks/async';
 import hayConst from '@haystacks/constants';
 import path from 'path';
 

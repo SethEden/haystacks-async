@@ -21,7 +21,7 @@
   "license": "MIT",
   "dependencies": {
     "dotenv": "^16.0.0",
-    "@haystacks/sync": "0.1.1",
+    "@haystacks/async": "0.1.0",
     "@haystacks/constants": "0.1.0"
   },
   "devDependencies": {
