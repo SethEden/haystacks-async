@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### 0.1.1 (2022-06-24)
 
+### 0.1.1 (2022-06-24)
+
 ### [0.0.17](https://github.com/SethEden/haystacks/compare/v0.0.16...v0.0.17) (2022-06-22)
 
 ### [0.0.16](https://github.com/SethEden/haystacks/compare/v0.0.15...v0.0.16) (2022-06-15)

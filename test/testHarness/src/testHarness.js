@@ -15,7 +15,7 @@
  * @requires module:application.function.constants
  * @requires module:application.message.constants
  * @requires module:allApplicationConstantsValidationMetadata
- * @requires {@link https://www.npmjs.com/package/@haystacks/sync|@haystacks/sync}
+ * @requires {@link https://www.npmjs.com/package/@haystacks/async|@haystacks/async}
  * @requires {@link https://www.npmjs.com/package/@haystacks/constants|@haystacks/constants}
  * @requires {@link https://www.npmjs.com/package/url|url}
  * @requires {@link https://www.npmjs.com/package/dotenv|dotenv}
@@ -33,7 +33,7 @@ import * as apc from './constants/application.constants.js';
 import * as app_msg from './constants/application.message.constants.js';
 import allAppCV from './resources/constantsValidation/allApplicationConstantsValidationMetadata.js';
 // External imports
-import haystacks from '@haystacks/sync';
+import haystacks from '@haystacks/async';
 import hayConst from '@haystacks/constants';
 import url from 'url';
 import dotenv from 'dotenv';
