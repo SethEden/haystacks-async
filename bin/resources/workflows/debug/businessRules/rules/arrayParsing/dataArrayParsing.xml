@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?><CommandWorkflows>
+  <debug>
+    <businessRules>
+      <rules>
+        <arrayParsing>
+          <dataArrayParsing>
+            <Workflow Name="dataArrayParsingEnable" Value="changeConfigSetting debugSetting.businessRules.rules.arrayParsing.dataArrayParsing true"/>
+            <Workflow Name="dataArrayParsingDisable" Value="changeConfigSetting debugSetting.businessRules.rules.arrayParsing.dataArrayParsing false"/>
+            <Workflow Name="arraysAreEqualEnable" Value="changeConfigSetting debugSetting.businessRules.rules.arrayParsing.dataArrayParsing.arraysAreEqual true"/>
+            <Workflow Name="arraysAreEqualDisable" Value="changeConfigSetting debugSetting.businessRules.rules.arrayParsing.dataArrayParsing.arraysAreEqual false"/>
+            <Workflow Name="dataArrayParsingStoreDataEnable" Value="changeConfigSetting debugSetting.businessRules.rules.arrayParsing.dataArrayParsing.storeData true"/>
+            <Workflow Name="dataArrayParsingStoreDataDisable" Value="changeConfigSetting debugSetting.businessRules.rules.arrayParsing.dataArrayParsing.storeData false"/>
+            <Workflow Name="getStoredDataEnable" Value="changeConfigSetting debugSetting.businessRules.rules.arrayParsing.dataArrayParsing.getStoredData true"/>
+            <Workflow Name="getStoredDataDisable" Value="changeConfigSetting debugSetting.businessRules.rules.arrayParsing.dataArrayParsing.getStoredData false"/>
+            <Workflow Name="isObjectEmptyEnable" Value="changeConfigSetting debugSetting.businessRules.rules.arrayParsing.dataArrayParsing.isObjectEmpty true"/>
+            <Workflow Name="isObjectEmptyDisable" Value="changeConfigSetting debugSetting.businessRules.rules.arrayParsing.dataArrayParsing.isObjectEmpty false"/>
+            <Workflow Name="isArrayEmptyEnable" Value="changeConfigSetting debugSetting.businessRules.rules.arrayParsing.dataArrayParsing.isArrayEmpty true"/>
+            <Workflow Name="isArrayEmptyDisable" Value="changeConfigSetting debugSetting.businessRules.rules.arrayParsing.dataArrayParsing.isArrayEmpty false"/>
+            <Workflow Name="isObjectEnable" Value="changeConfigSetting debugSetting.businessRules.rules.arrayParsing.dataArrayParsing.isObject true"/>
+            <Workflow Name="isObjectDisable" Value="changeConfigSetting debugSetting.businessRules.rules.arrayParsing.dataArrayParsing.isObject false"/>
+            <Workflow Name="isArrayEnable" Value="changeConfigSetting debugSetting.businessRules.rules.arrayParsing.dataArrayParsing.isArray true"/>
+            <Workflow Name="isArrayDisable" Value="changeConfigSetting debugSetting.businessRules.rules.arrayParsing.dataArrayParsing.isArray false"/>
+            <Workflow Name="isArrayOrObjectEnable" Value="changeConfigSetting debugSetting.businessRules.rules.arrayParsing.dataArrayParsing.isArrayOrObject true"/>
+            <Workflow Name="isArrayOrObjectDisable" Value="changeConfigSetting debugSetting.businessRules.rules.arrayParsing.dataArrayParsing.isArrayOrObject false"/>
+            <Workflow Name="isNonZeroLengthArrayEnable" Value="changeConfigSetting debugSetting.businessRules.rules.arrayParsing.dataArrayParsing.isNonZeroLengthArray true"/>
+            <Workflow Name="isNonZeroLengthArrayDisable" Value="changeConfigSetting debugSetting.businessRules.rules.arrayParsing.dataArrayParsing.isNonZeroLengthArray false"/>
+            <Workflow Name="arrayDeepCloneEnable" Value="changeConfigSetting debugSetting.businessRules.rules.arrayParsing.dataArrayParsing.arrayDeepClone true"/>
+            <Workflow Name="arrayDeepCloneDisable" Value="changeConfigSetting debugSetting.businessRules.rules.arrayParsing.dataArrayParsing.arrayDeepClone false"/>
+            <Workflow Name="objectDeepMergeEnable" Value="changeConfigSetting debugSetting.businessRules.rules.arrayParsing.dataArrayParsing.objectDeepMerge true"/>
+            <Workflow Name="objectDeepMergeDisable" Value="changeConfigSetting debugSetting.businessRules.rules.arrayParsing.dataArrayParsing.objectDeepMerge false"/>
+            <Workflow Name="getNamespacedDataObjectEnable" Value="changeConfigSetting debugSetting.businessRules.rules.arrayParsing.dataArrayParsing.getNamespacedDataObject true"/>
+            <Workflow Name="getNamespacedDataObjectDisable" Value="changeConfigSetting debugSetting.businessRules.rules.arrayParsing.dataArrayParsing.getNamespacedDataObject false"/>
+            <Workflow Name="setNamespacedDataObjectEnable" Value="changeConfigSetting debugSetting.businessRules.rules.arrayParsing.dataArrayParsing.setNamespacedDataObject true"/>
+            <Workflow Name="setNamespacedDataObjectDisable" Value="changeConfigSetting debugSetting.businessRules.rules.arrayParsing.dataArrayParsing.setNamespacedDataObject false"/>
+          </dataArrayParsing>
+        </arrayParsing>
+      </rules>
+    </businessRules>
+  </debug>
+</CommandWorkflows>

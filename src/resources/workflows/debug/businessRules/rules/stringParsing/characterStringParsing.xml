@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?><CommandWorkflows>
+  <debug>
+    <businessRules>
+      <rules>
+        <stringParsing>
+          <characterStringParsing>
+            <Workflow Name="characterStringParsingEnable" Value="changeConfigSetting debugSetting.businessRules.rules.stringParsing.characterStringParsing true"/>
+            <Workflow Name="characterStringParsingDisable" Value="changeConfigSetting debugSetting.businessRules.rules.stringParsing.characterStringParsing false"/>
+            <Workflow Name="singleQuoteSwapAfterEqualsEnable" Value="changeConfigSetting debugSetting.businessRules.rules.stringParsing.characterStringParsing.singleQuoteSwapAfterEquals true"/>
+            <Workflow Name="singleQuoteSwapAfterEqualsDisable" Value="changeConfigSetting debugSetting.businessRules.rules.stringParsing.characterStringParsing.singleQuoteSwapAfterEquals false"/>
+            <Workflow Name="swapForwardSlashToBackSlashEnable" Value="changeConfigSetting debugSetting.businessRules.rules.stringParsing.characterStringParsing.swapForwardSlashToBackSlash true"/>
+            <Workflow Name="swapForwardSlashToBackSlashDisable" Value="changeConfigSetting debugSetting.businessRules.rules.stringParsing.characterStringParsing.swapForwardSlashToBackSlash false"/>
+            <Workflow Name="swapBackSlashToForwardSlashEnable" Value="changeConfigSetting debugSetting.businessRules.rules.stringParsing.characterStringParsing.swapBackSlashToForwardSlash true"/>
+            <Workflow Name="swapBackSlashToForwardSlashDisable" Value="changeConfigSetting debugSetting.businessRules.rules.stringParsing.characterStringParsing.swapBackSlashToForwardSlash false"/>
+            <Workflow Name="swapDoubleForwardSlashToSingleForwardSlashEnable" Value="changeConfigSetting debugSetting.businessRules.rules.stringParsing.characterStringParsing.swapDoubleForwardSlashToSingleForwardSlash true"/>
+            <Workflow Name="swapDoubleForwardSlashToSingleForwardSlashDisable" Value="changeConfigSetting debugSetting.businessRules.rules.stringParsing.characterStringParsing.swapDoubleForwardSlashToSingleForwardSlash false"/>
+            <Workflow Name="swapDoubleBackSlashToSingleBackSlashEnable" Value="changeConfigSetting debugSetting.businessRules.rules.stringParsing.characterStringParsing.swapDoubleBackSlashToSingleBackSlash true"/>
+            <Workflow Name="swapDoubleBackSlashToSingleBackSlashDisable" Value="changeConfigSetting debugSetting.businessRules.rules.stringParsing.characterStringParsing.swapDoubleBackSlashToSingleBackSlash false"/>
+            <Workflow Name="replaceSpacesWithPlusEnable" Value="changeConfigSetting debugSetting.businessRules.rules.stringParsing.characterStringParsing.replaceSpacesWithPlus true"/>
+            <Workflow Name="replaceSpacesWithPlusDisable" Value="changeConfigSetting debugSetting.businessRules.rules.stringParsing.characterStringParsing.replaceSpacesWithPlus false"/>
+            <Workflow Name="replaceColonWithUnderscoreEnable" Value="changeConfigSetting debugSetting.businessRules.rules.stringParsing.characterStringParsing.replaceColonWithUnderscore true"/>
+            <Workflow Name="replaceColonWithUnderscoreDisable" Value="changeConfigSetting debugSetting.businessRules.rules.stringParsing.characterStringParsing.replaceColonWithUnderscore false"/>
+            <Workflow Name="cleanCarriageReturnFromStringEnable" Value="changeConfigSetting debugSetting.businessRules.rules.stringParsing.characterStringParsing.cleanCarriageReturnFromString true"/>
+            <Workflow Name="cleanCarriageReturnFromStringDisable" Value="changeConfigSetting debugSetting.businessRules.rules.stringParsing.characterStringParsing.cleanCarriageReturnFromString false"/>
+            <Workflow Name="convertStringToLowerCaseEnable" Value="changeConfigSetting debugSetting.businessRules.rules.stringParsing.characterStringParsing.convertStringToLowerCase true"/>
+            <Workflow Name="convertStringToLowerCaseDisable" Value="changeConfigSetting debugSetting.businessRules.rules.stringParsing.characterStringParsing.convertStringToLowerCase false"/>
+            <Workflow Name="convertStringToUpperCaseEnable" Value="changeConfigSetting debugSetting.businessRules.rules.stringParsing.characterStringParsing.convertStringToUpperCase true"/>
+            <Workflow Name="convertStringToUpperCaseDisable" Value="changeConfigSetting debugSetting.businessRules.rules.stringParsing.characterStringParsing.convertStringToUpperCase false"/>
+            <Workflow Name="doesStringContainUpperCaseCharacterEnable" Value="changeConfigSetting debugSetting.businessRules.rules.stringParsing.characterStringParsing.doesStringContainUpperCaseCharacter true"/>
+            <Workflow Name="doesStringContainUpperCaseCharacterDisable" Value="changeConfigSetting debugSetting.businessRules.rules.stringParsing.characterStringParsing.doesStringContainUpperCaseCharacter false"/>
+            <Workflow Name="doesStringContainLowerCaseCharacterEnable" Value="changeConfigSetting debugSetting.businessRules.rules.stringParsing.characterStringParsing.doesStringContainLowerCaseCharacter true"/>
+            <Workflow Name="doesStringContainLowerCaseCharacterDisable" Value="changeConfigSetting debugSetting.businessRules.rules.stringParsing.characterStringParsing.doesStringContainLowerCaseCharacter false"/>
+            <Workflow Name="isFirstCharacterLowerCaseEnable" Value="changeConfigSetting debugSetting.businessRules.rules.stringParsing.characterStringParsing.isFirstCharacterLowerCase true"/>
+            <Workflow Name="isFirstCharacterLowerCaseDisable" Value="changeConfigSetting debugSetting.businessRules.rules.stringParsing.characterStringParsing.isFirstCharacterLowerCase false"/>
+            <Workflow Name="isFirstCharacterUpperCaseEnable" Value="changeConfigSetting debugSetting.businessRules.rules.stringParsing.characterStringParsing.isFirstCharacterUpperCase true"/>
+            <Workflow Name="isFirstCharacterUpperCaseDisable" Value="changeConfigSetting debugSetting.businessRules.rules.stringParsing.characterStringParsing.isFirstCharacterUpperCase false"/>
+            <Workflow Name="replaceCharacterAtIndexOfStringEnable" Value="changeConfigSetting debugSetting.businessRules.rules.stringParsing.characterStringParsing.replaceCharacterAtIndexOfString true"/>
+            <Workflow Name="replaceCharacterAtIndexOfStringDisable" Value="changeConfigSetting debugSetting.businessRules.rules.stringParsing.characterStringParsing.replaceCharacterAtIndexOfString false"/>
+          </characterStringParsing>
+        </stringParsing>
+      </rules>
+    </businessRules>
+  </debug>
+</CommandWorkflows>

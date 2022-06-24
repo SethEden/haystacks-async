@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?><CommandWorkflows>
+  <debug>
+    <commandsBlob>
+      <commands>
+        <configuration>
+          <Workflow Name="configurationEnable" Value="changeConfigSetting debugSetting.commandsBlob.commands.configuration true"/>
+          <Workflow Name="configurationDisable" Value="changeConfigSetting debugSetting.commandsBlob.commands.configuration false"/>
+          <Workflow Name="saveConfigurationEnable" Value="changeConfigSetting debugSetting.commandsBlob.commands.configuration.saveConfiguration true"/>
+          <Workflow Name="saveConfigurationDisable" Value="changeConfigSetting debugSetting.commandsBlob.commands.configuration.saveConfiguration false"/>
+          <Workflow Name="changeConfigurationSettingEnable" Value="changeConfigSetting debugSetting.commandsBlob.commands.configuration.changeConfigurationSetting true"/>
+          <Workflow Name="changeConfigurationSettingDisable" Value="changeConfigSetting debugSetting.commandsBlob.commands.configuration.changeConfigurationSetting false"/>
+          <Workflow Name="listConfigurationThemesEnable" Value="changeConfigSetting debugSetting.commandsBlob.commands.configuration.listConfigurationThemes true"/>
+          <Workflow Name="listConfigurationThemesDisable" Value="changeConfigSetting debugSetting.commandsBlob.commands.configuration.listConfigurationThemes false"/>
+          <Workflow Name="changeDebugConfigurationThemeEnable" Value="changeConfigSetting debugSetting.commandsBlob.commands.configuration.changeDebugConfigurationTheme true"/>
+          <Workflow Name="changeDebugConfigurationThemeDisable" Value="changeConfigSetting debugSetting.commandsBlob.commands.configuration.changeDebugConfigurationTheme false"/>
+        </configuration>
+      </commands>
+    </commandsBlob>
+  </debug>
+</CommandWorkflows>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?><CommandWorkflows>
+  <debug>
+    <businessRules>
+      <rules>
+        <arrayParsing>
+          <pathArrayParsing>
+            <Workflow Name="pathArrayParsingEnable" Value="changeConfigSetting debugSetting.businessRules.rules.arrayParsing.pathArrayParsing true"/>
+            <Workflow Name="pathArrayParsingDisable" Value="changeConfigSetting debugSetting.businessRules.rules.arrayParsing.pathArrayParsing false"/>
+            <Workflow Name="doesArrayContainFilenameEnable" Value="changeConfigSetting debugSetting.businessRules.rules.arrayParsing.pathArrayParsing.doesArrayContainFilename true"/>
+            <Workflow Name="doesArrayContainFilenameDisable" Value="changeConfigSetting debugSetting.businessRules.rules.arrayParsing.pathArrayParsing.doesArrayContainFilename false"/>
+            <Workflow Name="readDirectoryContentsEnable" Value="changeConfigSetting debugSetting.businessRules.rules.arrayParsing.pathArrayParsing.readDirectoryContents true"/>
+            <Workflow Name="readDirectoryContentsDisable" Value="changeConfigSetting debugSetting.businessRules.rules.arrayParsing.pathArrayParsing.readDirectoryContents false"/>
+            <Workflow Name="getFileAndPathListForPathEnable" Value="changeConfigSetting debugSetting.businessRules.rules.arrayParsing.pathArrayParsing.getFileAndPathListForPath true"/>
+            <Workflow Name="getFileAndPathListForPathDisable" Value="changeConfigSetting debugSetting.businessRules.rules.arrayParsing.pathArrayParsing.getFileAndPathListForPath false"/>
+          </pathArrayParsing>
+        </arrayParsing>
+      </rules>
+    </businessRules>
+  </debug>
+</CommandWorkflows>

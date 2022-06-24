@@ -1,0 +1,221 @@
+description: Test plan for commandBroker.js
+
+
+testName: bootStrapCommands_validData
+input: undefined
+output: ?
+
+testName: bootStrapCommands_inValidString
+input: string (464gsdsfae8f46)
+output: ?
+
+testName: bootStrapCommands_inValidNumber
+input: integer (546)
+output: ?
+
+testName: bootStrapCommands_inValidBoolean
+input: boolean (false)
+output: ?
+--------------------------------------------------------------------------------
+testName: addClientCommands_validData
+input: array<object>
+output: D[wrd.cCommands] - objects added
+
+testName: addClientCommands_inValidString
+input: string (464gsdsfae8f46)
+output: ?
+
+testName: addClientCommands_inValidNumber
+input: integer (546)
+output: ?
+
+testName: addClientCommands_inValidBoolean
+input: boolean (false)
+output: ?
+--------------------------------------------------------------------------------
+testName: getValidCommand_validData
+input commandString: string (commandSequencer name,application,true version about)
+input commandDelimiter: string (  - space)
+output: commandSequencer name,application,true version about
+
+testName: getValidCommand_inValidString
+input commandString: string (464gsdsfae8f46)
+input commandDelimiter: string (  - space)
+output: false
+
+testName: getValidCommand_inValidDelimiterString
+input commandString: string (commandSequencer name,application,true version about)
+input commandDelimiter: string (&)
+output: false?
+
+testName: getValidCommand_inValidNumber
+input commandString: integer (546)
+input commandDelimiter: string (  - space)
+output: false
+
+testName: getValidCommand_inValidBoolean
+input commandString: boolean (false)
+input commandDelimiter: string (  - space)
+output: false
+--------------------------------------------------------------------------------
+testName: countMatchingCommandAlias_validData
+input commandAliasData: object (The command alias data that searched recursively for the specified command alias)
+input commandAliasName: string (The command alias name/string that searched for and counted when matches are found)
+output: integer
+
+testName: countMatchingCommandAlias_inValidCommandAliasDataString
+input commandAliasData: string (464gsdsfae8f46)
+input commandAliasName: string (The command alias name/string that searched for and counted when matches are found)
+output: false
+
+testName: countMatchingCommandAlias_inValidCommandAliasNameString
+input commandAliasData: object (The command alias data that searched recursively for the specified command alias)
+input commandAliasName: string (&)
+output: false?
+
+testName: countMatchingCommandAlias_inValidCommandAliasDataNumber
+input commandAliasData: integer (546)
+input commandAliasName: string (The command alias name/string that searched for and counted when matches are found)
+output: false
+
+testName: countMatchingCommandAlias_inValidCommandAliasDataBoolean
+input commandAliasData: boolean (false)
+input commandAliasName: string (The command alias name/string that searched for and counted when matches are found)
+output: false
+
+testName: countMatchingCommandAlias_inValidCommandAliasNameNumber
+input commandAliasData: object (The command alias data that searched recursively for the specified command alias)
+input commandAliasName: integer (546)
+output: false
+
+testName: countMatchingCommandAlias_inValidCommandAliasNameBoolean
+input commandAliasData: object (The command alias data that searched recursively for the specified command alias)
+input commandAliasName: boolean (false)
+output: false
+--------------------------------------------------------------------------------
+testName: searchCommandAlias_validData
+input commandAliasData: object (The command alias data that searched recursively for the specified command alias)
+input commandAliasName: string (The command alias name/string that found)
+output: object
+
+testName: searchCommandAlias_inValidCommandAliasDataString
+input commandAliasData: string (464gsdsfae8f46)
+input commandAliasName: string (The command alias name/string that found)
+output: false
+
+testName: searchCommandAlias_inValidCommandAliasNameString
+input commandAliasData: object (The command alias data that searched recursively for the specified command alias)
+input commandAliasName: string (&)
+output: false?
+
+testName: searchCommandAlias_inValidCommandAliasDataNumber
+input commandAliasData: integer (546)
+input commandAliasName: string (The command alias name/string that found)
+output: false
+
+testName: searchCommandAlias_inValidCommandAliasDataBoolean
+input commandAliasData: boolean (false)
+input commandAliasName: string (The command alias name/string that found)
+output: false
+
+testName: searchCommandAlias_inValidCommandAliasNameNumber
+input commandAliasData: object (The command alias data that searched recursively for the specified command alias)
+input commandAliasName: integer (546)
+output: false
+
+testName: searchCommandAlias_inValidCommandAliasNameBoolean
+input commandAliasData: object (The command alias data that searched recursively for the specified command alias)
+input commandAliasName: boolean (false)
+output: false
+--------------------------------------------------------------------------------
+testName: getAllCommandAliasData_validData
+input: commandString: object
+output: true
+
+testName: getAllCommandAliasData_inValidString
+input: string (464gsdsfae8f46)
+output: true
+
+testName: getAllCommandAliasData_inValidNumber
+input: integer (546)
+output: true
+
+testName: getAllCommandAliasData_inValidBoolean
+input: boolean (false)
+output: true
+--------------------------------------------------------------------------------
+testName: getCommandNamespaceDataObject_validData
+input commandAliasDataStructure: object (The command alias data structure that recursively searched for the namespace specified)
+input namespaceToFind: string (The namespace to look for in the command alias metaData data structure)
+output: object
+
+testName: getCommandNamespaceDataObject_inValidCommandAliasDataStructureString
+input commandAliasDataStructure: string (464gsdsfae8f46)
+input namespaceToFind: string (The namespace to look for in the command alias metaData data structure)
+output: false
+
+testName: getCommandNamespaceDataObject_inValidNamespaceToFindString
+input commandAliasDataStructure: object (The command alias data structure that recursively searched for the namespace specified)
+input namespaceToFind: string (&)
+output: false?
+
+testName: getCommandNamespaceDataObject_inValidCommandAliasDataStructureNumber
+input commandAliasDataStructure: integer (546)
+input namespaceToFind: string (The namespace to look for in the command alias metaData data structure)
+output: false
+
+testName: getCommandNamespaceDataObject_inValidCommandAliasDataStructureBoolean
+input commandAliasDataStructure: boolean (false)
+input namespaceToFind: string (The namespace to look for in the command alias metaData data structure)
+output: false
+
+testName: getCommandNamespaceDataObject_inValidNamespaceToFindNumber
+input commandAliasDataStructure: object (The command alias data structure that recursively searched for the namespace specified)
+input namespaceToFind: integer (546)
+output: false
+
+testName: getCommandNamespaceDataObject_inValidNamespaceToFindBoolean
+input commandAliasDataStructure: object (The command alias data structure that recursively searched for the namespace specified)
+input namespaceToFind: boolean (false)
+output: false
+--------------------------------------------------------------------------------
+testName: getCommandArgs_validData
+input commandString: string (commandSequencer name,application,true version about)
+input commandDelimiter: string (  - space)
+output: [name,application,true version about]
+
+testName: getCommandArgs_inValidString
+input commandString: string (464gsdsfae8f46)
+input commandDelimiter: string (  - space)
+output: false
+
+testName: getCommandArgs_inValidDelimiterString
+input commandString: string (commandSequencer name,application,true version about)
+input commandDelimiter: string (&)
+output: false?
+
+testName: getCommandArgs_inValidNumber
+input commandString: integer (546)
+input commandDelimiter: string (  - space)
+output: false
+
+testName: getCommandArgs_inValidBoolean
+input commandString: boolean (false)
+input commandDelimiter: string (  - space)
+output: false
+--------------------------------------------------------------------------------
+testName: executeCommand_validData
+input: commandString: string (commandSequencer name,application,true version about)
+output: true
+
+testName: executeCommand_inValidString
+input: string (464gsdsfae8f46)
+output: true
+
+testName: executeCommand_inValidNumber
+input: integer (546)
+output: true
+
+testName: executeCommand_inValidBoolean
+input: boolean (false)
+output: true

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?><CommandWorkflows>
+  <debug>
+    <commandsBlob>
+      <commands>
+        <performanceMetric>
+          <Workflow Name="performanceMetricEnable" Value="changeConfigSetting debugSetting.commandsBlob.commands.performanceMetric true"/>
+          <Workflow Name="performanceMetricDisable" Value="changeConfigSetting debugSetting.commandsBlob.commands.performanceMetric false"/>
+          <Workflow Name="businessRulesMetricsEnable" Value="changeConfigSetting debugSetting.commandsBlob.commands.performanceMetric.businessRulesMetrics true"/>
+          <Workflow Name="businessRulesMetricsDisable" Value="changeConfigSetting debugSetting.commandsBlob.commands.performanceMetric.businessRulesMetrics false"/>
+          <Workflow Name="commandMetricsEnable" Value="changeConfigSetting debugSetting.commandsBlob.commands.performanceMetric.commandMetrics true"/>
+          <Workflow Name="commandMetricsDisable" Value="changeConfigSetting debugSetting.commandsBlob.commands.performanceMetric.commandMetrics false"/>
+        </performanceMetric>
+      </commands>
+    </commandsBlob>
+  </debug>
+</CommandWorkflows>

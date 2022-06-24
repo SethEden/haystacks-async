@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?><CommandWorkflows>
+  <debug>
+    <commandsBlob>
+      <commands>
+        <integrationTests>
+          <Workflow Name="integrationTestsEnable" Value="changeConfigSetting debugSetting.commandsBlob.commands.integrationTests true"/>
+          <Workflow Name="integrationTestsDisable" Value="changeConfigSetting debugSetting.commandsBlob.commands.integrationTests false"/>
+          <Workflow Name="validateConstantsEnable" Value="changeConfigSetting debugSetting.commandsBlob.commands.integrationTests.validateConstants true"/>
+          <Workflow Name="validateConstantsDisable" Value="changeConfigSetting debugSetting.commandsBlob.commands.integrationTests.validateConstants false"/>
+          <Workflow Name="validateCommandAliasesEnable" Value="changeConfigSetting debugSetting.commandsBlob.commands.integrationTests.validateCommandAliases true"/>
+          <Workflow Name="validateCommandAliasesDisable" Value="changeConfigSetting debugSetting.commandsBlob.commands.integrationTests.validateCommandAliases false"/>
+          <Workflow Name="validateWorkflowsEnable" Value="changeConfigSetting debugSetting.commandsBlob.commands.integrationTests.validateWorkflows true"/>
+          <Workflow Name="validateWorkflowsDisable" Value="changeConfigSetting debugSetting.commandsBlob.commands.integrationTests.validateWorkflows false"/>
+        </integrationTests>
+      </commands>
+    </commandsBlob>
+  </debug>
+</CommandWorkflows>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?><CommandWorkflows>
+  <debug>
+    <commandsBlob>
+      <commands>
+        <advanced>
+          <Workflow Name="advancedEnable" Value="changeConfigSetting debugSetting.commandsBlob.commands.advanced true"/>
+          <Workflow Name="advancedDisable" Value="changeConfigSetting debugSetting.commandsBlob.commands.advanced false"/>
+          <Workflow Name="commandSequencerEnable" Value="changeConfigSetting debugSetting.commandsBlob.commands.advanced.commandSequencer true"/>
+          <Workflow Name="commandSequencerDisable" Value="changeConfigSetting debugSetting.commandsBlob.commands.advanced.commandSequencer false"/>
+          <Workflow Name="workflowEnable" Value="changeConfigSetting debugSetting.commandsBlob.commands.advanced.workflow true"/>
+          <Workflow Name="workflowDisable" Value="changeConfigSetting debugSetting.commandsBlob.commands.advanced.workflow false"/>
+          <Workflow Name="businessRuleEnable" Value="changeConfigSetting debugSetting.commandsBlob.commands.advanced.businessRule true"/>
+          <Workflow Name="businessRuleDisable" Value="changeConfigSetting debugSetting.commandsBlob.commands.advanced.businessRule false"/>
+          <Workflow Name="commandGeneratorEnable" Value="changeConfigSetting debugSetting.commandsBlob.commands.advanced.commandGenerator true"/>
+          <Workflow Name="commandGeneratorDisable" Value="changeConfigSetting debugSetting.commandsBlob.commands.advanced.commandGenerator false"/>
+          <Workflow Name="commandAliasGeneratorEnable" Value="changeConfigSetting debugSetting.commandsBlob.commands.advanced.commandAliasGenerator true"/>
+          <Workflow Name="commandAliasGeneratorDisable" Value="changeConfigSetting debugSetting.commandsBlob.commands.advanced.commandAliasGenerator false"/>
+        </advanced>
+      </commands>
+    </commandsBlob>
+  </debug>
+</CommandWorkflows>

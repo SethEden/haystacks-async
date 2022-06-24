@@ -1,0 +1,35 @@
+{
+  "name": "testHarness",
+  "version": "0.0.1",
+  "description": "A test harness application to test the haystacks-sync framework.",
+  "main": "./src/testHarness.js",
+  "type": "module",
+  "scripts": {
+    "start": "node ./src/testHarness.js",
+    "vers": "standard-version -m \"chore(release) version %s \"",
+    "docs": "jsdoc -c jsdoc.json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SethEden/haystacks-sync.git"
+  },
+  "keywords": [
+    "application",
+    "automation"
+  ],
+  "author": "Seth Hollingsead <iceversaka@hotmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^16.0.0",
+    "@haystacks/sync": "0.1.1",
+    "@haystacks/constants": "0.1.0"
+  },
+  "devDependencies": {
+    "jsdoc": "3.6.7",
+    "standard-version": "9.3.2"
+  },
+  "bugs": {
+    "url": "https://github.com/SethEden/haystacks-sync/issues"
+  },
+  "homepage": "https://github.com/SethEden/haystacks-sync#readme"
+}

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?><CommandWorkflows>
+  <debug>
+    <businessRules>
+      <rules>
+        <stringGeneration>
+          <Workflow Name="stringGenerationEnable" Value="changeConfigSetting debugSetting.businessRules.rules.stringGeneration true"/>
+          <Workflow Name="stringGenerationDisable" Value="changeConfigSetting debugSetting.businessRules.rules.stringGeneration false"/>
+          <Workflow Name="generateRandomMixedCaseTextByLengthEnable" Value="changeConfigSetting debugSetting.businessRules.rules.stringGeneration.generateRandomMixedCaseTextByLength true"/>
+          <Workflow Name="generateRandomMixedCaseTextByLengthDisable" Value="changeConfigSetting debugSetting.businessRules.rules.stringGeneration.generateRandomMixedCaseTextByLength false"/>
+          <Workflow Name="generateRandomUpperCaseTextByLengthEnable" Value="changeConfigSetting debugSetting.businessRules.rules.stringGeneration.generateRandomUpperCaseTextByLength true"/>
+          <Workflow Name="generateRandomUpperCaseTextByLengthDisable" Value="changeConfigSetting debugSetting.businessRules.rules.stringGeneration.generateRandomUpperCaseTextByLength false"/>
+          <Workflow Name="generateRandomLowerCaseTextByLengthEnable" Value="changeConfigSetting debugSetting.businessRules.rules.stringGeneration.generateRandomLowerCaseTextByLength true"/>
+          <Workflow Name="generateRandomLowerCaseTextByLengthDisable" Value="changeConfigSetting debugSetting.businessRules.rules.stringGeneration.generateRandomLowerCaseTextByLength false"/>
+          <Workflow Name="generateRandomMixedCaseTextWithSpecialCharactersByLengthEnable" Value="changeConfigSetting debugSetting.businessRules.rules.stringGeneration.generateRandomMixedCaseTextWithSpecialCharactersByLength true"/>
+          <Workflow Name="generateRandomMixedCaseTextWithSpecialCharactersByLengthDisable" Value="changeConfigSetting debugSetting.businessRules.rules.stringGeneration.generateRandomMixedCaseTextWithSpecialCharactersByLength false"/>
+          <Workflow Name="generateRandomUpperCaseTextWithSpecialCharactersByLengthEnable" Value="changeConfigSetting debugSetting.businessRules.rules.stringGeneration.generateRandomUpperCaseTextWithSpecialCharactersByLength true"/>
+          <Workflow Name="generateRandomUpperCaseTextWithSpecialCharactersByLengthDisable" Value="changeConfigSetting debugSetting.businessRules.rules.stringGeneration.generateRandomUpperCaseTextWithSpecialCharactersByLength false"/>
+          <Workflow Name="generateRandomLowerCaseTextWithSpecialCharactersByLengthEnable" Value="changeConfigSetting debugSetting.businessRules.rules.stringGeneration.generateRandomLowerCaseTextWithSpecialCharactersByLength true"/>
+          <Workflow Name="generateRandomLowerCaseTextWithSpecialCharactersByLengthDisable" Value="changeConfigSetting debugSetting.businessRules.rules.stringGeneration.generateRandomLowerCaseTextWithSpecialCharactersByLength false"/>
+          <Workflow Name="generateRandomMixedCaseAlphaNumericCodeByLengthEnable" Value="changeConfigSetting debugSetting.businessRules.rules.stringGeneration.generateRandomMixedCaseAlphaNumericCodeByLength true"/>
+          <Workflow Name="generateRandomMixedCaseAlphaNumericCodeByLengthDisable" Value="changeConfigSetting debugSetting.businessRules.rules.stringGeneration.generateRandomMixedCaseAlphaNumericCodeByLength false"/>
+          <Workflow Name="generateRandomUpperCaseAlphaNumericCodeByLengthEnable" Value="changeConfigSetting debugSetting.businessRules.rules.stringGeneration.generateRandomUpperCaseAlphaNumericCodeByLength true"/>
+          <Workflow Name="generateRandomUpperCaseAlphaNumericCodeByLengthDisable" Value="changeConfigSetting debugSetting.businessRules.rules.stringGeneration.generateRandomUpperCaseAlphaNumericCodeByLength false"/>
+          <Workflow Name="generateRandomLowerCaseAlphaNumericCodeByLengthEnable" Value="changeConfigSetting debugSetting.businessRules.rules.stringGeneration.generateRandomLowerCaseAlphaNumericCodeByLength true"/>
+          <Workflow Name="generateRandomLowerCaseAlphaNumericCodeByLengthDisable" Value="changeConfigSetting debugSetting.businessRules.rules.stringGeneration.generateRandomLowerCaseAlphaNumericCodeByLength false"/>
+          <Workflow Name="generateRandomNumericCodeByLengthEnable" Value="changeConfigSetting debugSetting.businessRules.rules.stringGeneration.generateRandomNumericCodeByLength true"/>
+          <Workflow Name="generateRandomNumericCodeByLengthDisable" Value="changeConfigSetting debugSetting.businessRules.rules.stringGeneration.generateRandomNumericCodeByLength false"/>
+          <Workflow Name="generateRandomMixedCaseAlphaNumericCodeWithSpecialCharactersByLengthEnable" Value="changeConfigSetting debugSetting.businessRules.rules.stringGeneration.generateRandomMixedCaseAlphaNumericCodeWithSpecialCharactersByLength true"/>
+          <Workflow Name="generateRandomMixedCaseAlphaNumericCodeWithSpecialCharactersByLengthDisable" Value="changeConfigSetting debugSetting.businessRules.rules.stringGeneration.generateRandomMixedCaseAlphaNumericCodeWithSpecialCharactersByLength false"/>
+          <Workflow Name="generateRandomUpperCaseAlphaNumericCodeWithSpecialCharactersByLengthEnable" Value="changeConfigSetting debugSetting.businessRules.rules.stringGeneration.generateRandomUpperCaseAlphaNumericCodeWithSpecialCharactersByLength true"/>
+          <Workflow Name="generateRandomUpperCaseAlphaNumericCodeWithSpecialCharactersByLengthDisable" Value="changeConfigSetting debugSetting.businessRules.rules.stringGeneration.generateRandomUpperCaseAlphaNumericCodeWithSpecialCharactersByLength false"/>
+          <Workflow Name="generateRandomLowerCaseAlphaNumericCodeWithSpecialCharactersByLengthEnable" Value="changeConfigSetting debugSetting.businessRules.rules.stringGeneration.generateRandomLowerCaseAlphaNumericCodeWithSpecialCharactersByLength true"/>
+          <Workflow Name="generateRandomLowerCaseAlphaNumericCodeWithSpecialCharactersByLengthDisable" Value="changeConfigSetting debugSetting.businessRules.rules.stringGeneration.generateRandomLowerCaseAlphaNumericCodeWithSpecialCharactersByLength false"/>
+          <Workflow Name="generateRandomSpecialCharacterCodeByLengthEnable" Value="changeConfigSetting debugSetting.businessRules.rules.stringGeneration.generateRandomSpecialCharacterCodeByLength true"/>
+          <Workflow Name="generateRandomSpecialCharacterCodeByLengthDisable" Value="changeConfigSetting debugSetting.businessRules.rules.stringGeneration.generateRandomSpecialCharacterCodeByLength false"/>
+          <Workflow Name="generateValidEmailEnable" Value="changeConfigSetting debugSetting.businessRules.rules.stringGeneration.generateValidEmail true"/>
+          <Workflow Name="generateValidEmailDisable" Value="changeConfigSetting debugSetting.businessRules.rules.stringGeneration.generateValidEmail false"/>
+          <Workflow Name="generateInvalidEmailEnable" Value="changeConfigSetting debugSetting.businessRules.rules.stringGeneration.generateInvalidEmail true"/>
+          <Workflow Name="generateInvalidEmailDisable" Value="changeConfigSetting debugSetting.businessRules.rules.stringGeneration.generateInvalidEmail false"/>
+          <Workflow Name="generateValidEmailWithSpecificSuffixAndDomainNameEnable" Value="changeConfigSetting debugSetting.businessRules.rules.stringGeneration.generateValidEmailWithSpecificSuffixAndDomainName true"/>
+          <Workflow Name="generateValidEmailWithSpecificSuffixAndDomainNameDisable" Value="changeConfigSetting debugSetting.businessRules.rules.stringGeneration.generateValidEmailWithSpecificSuffixAndDomainName false"/>
+          <Workflow Name="generateRandomValidEmailEnable" Value="changeConfigSetting debugSetting.businessRules.rules.stringGeneration.generateRandomValidEmail true"/>
+          <Workflow Name="generateRandomValidEmailDisable" Value="changeConfigSetting debugSetting.businessRules.rules.stringGeneration.generateRandomValidEmail false"/>
+          <Workflow Name="generateInvalidEmailWithSpecificSuffixAndDomainNameEnable" Value="changeConfigSetting debugSetting.businessRules.rules.stringGeneration.generateInvalidEmailWithSpecificSuffixAndDomainName true"/>
+          <Workflow Name="generateInvalidEmailWithSpecificSuffixAndDomainNameDisable" Value="changeConfigSetting debugSetting.businessRules.rules.stringGeneration.generateInvalidEmailWithSpecificSuffixAndDomainName false"/>
+          <Workflow Name="generateRandomInvalidEmailEnable" Value="changeConfigSetting debugSetting.businessRules.rules.stringGeneration.generateRandomInvalidEmail true"/>
+          <Workflow Name="generateRandomInvalidEmailDisable" Value="changeConfigSetting debugSetting.businessRules.rules.stringGeneration.generateRandomInvalidEmail false"/>
+          <Workflow Name="generateRandomBrightColorEnable" Value="changeConfigSetting debugSetting.businessRules.rules.stringGeneration.generateRandomBrightColor true"/>
+          <Workflow Name="generateRandomBrightColorDisable" Value="changeConfigSetting debugSetting.businessRules.rules.stringGeneration.generateRandomBrightColor false"/>
+          <Workflow Name="generateRandomDarkColorEnable" Value="changeConfigSetting debugSetting.businessRules.rules.stringGeneration.generateRandomDarkColor true"/>
+          <Workflow Name="generateRandomDarkColorDisable" Value="changeConfigSetting debugSetting.businessRules.rules.stringGeneration.generateRandomDarkColor false"/>
+          <Workflow Name="generateRandomColorEnable" Value="changeConfigSetting debugSetting.businessRules.rules.stringGeneration.generateRandomColor true"/>
+          <Workflow Name="generateRandomColorDisable" Value="changeConfigSetting debugSetting.businessRules.rules.stringGeneration.generateRandomColor false"/>
+        </stringGeneration>
+      </rules>
+    </businessRules>
+  </debug>
+</CommandWorkflows>

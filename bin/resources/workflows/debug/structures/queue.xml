@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?><CommandWorkflows>
+  <debug>
+    <structures>
+      <queue>
+        <Workflow Name="queueEnable" Value="changeConfigSetting debugSetting.structures.queue true"/>
+        <Workflow Name="queueDisable" Value="changeConfigSetting debugSetting.structures.queue false"/>
+        <Workflow Name="initQueueEnable" Value="changeConfigSetting debugSetting.structures.queue.initQueue true"/>
+        <Workflow Name="initQueueDisable" Value="changeConfigSetting debugSetting.structures.queue.initQueue false"/>
+        <Workflow Name="dequeueEnable" Value="changeConfigSetting debugSetting.structures.queue.dequeue true"/>
+        <Workflow Name="dequeueDisable" Value="changeConfigSetting debugSetting.structures.queue.dequeue false"/>
+        <Workflow Name="enqueueEnable" Value="changeConfigSetting debugSetting.structures.queue.enqueue true"/>
+        <Workflow Name="enqueueDisable" Value="changeConfigSetting debugSetting.structures.queue.enqueue false"/>
+        <Workflow Name="queueIsEmptyEnable" Value="changeConfigSetting debugSetting.structures.queue.isEmpty true"/>
+        <Workflow Name="queueIsEmptyDisable" Value="changeConfigSetting debugSetting.structures.queue.isEmpty false"/>
+        <Workflow Name="queueFrontEnable" Value="changeConfigSetting debugSetting.structures.queue.queueFront true"/>
+        <Workflow Name="queueFrontDisable" Value="changeConfigSetting debugSetting.structures.queue.queueFront false"/>
+        <Workflow Name="queueSizeEnable" Value="changeConfigSetting debugSetting.structures.queue.queueSize true"/>
+        <Workflow Name="queueSizeDisable" Value="changeConfigSetting debugSetting.structures.queue.queueSize false"/>
+      </queue>
+    </structures>
+  </debug>
+</CommandWorkflows>

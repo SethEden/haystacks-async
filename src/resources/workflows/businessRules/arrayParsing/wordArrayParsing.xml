@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?><CommandWorkflows>
+  <businessRules>
+    <arrayParsing>
+      <wordArrayParsing>
+        <Workflow Name="convertCamelCaseStringToArray" Value="cmdgen bizRul,convertCamelCaseStringToArray,TheAnswerToLifeTheUniverseAndEverythingIs42 4"/>
+        <Workflow Name="convertArrayToCamelCaseString" Value="cmdgen bizRul,convertArrayToCamelCaseString,[the|answer|to|life|the|universe|and|everything|is|42] 4"/>
+        <Workflow Name="doesArrayContainLowerCaseConsolidatedString" Value="cmdgen bizRul,doesArrayContainLowerCaseConsolidatedString,[the|answer|to|life|the|universe|and|everything|is|42],everything 4"/>
+        <Workflow Name="wordArrayParsing" Value="cmdSeq wrkflo,convertCamelCaseStringToArray wrkflo,convertArrayToCamelCaseString wrkflo,doesArrayContainLowerCaseConsolidatedString"/>
+      </wordArrayParsing>
+    </arrayParsing>
+  </businessRules>
+</CommandWorkflows>

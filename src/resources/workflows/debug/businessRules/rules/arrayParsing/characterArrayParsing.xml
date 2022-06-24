@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?><CommandWorkflows>
+  <debug>
+    <businessRules>
+      <rules>
+        <arrayParsing>
+          <characterArrayParsing>
+            <Workflow Name="characterArrayParsingEnable" Value="changeConfigSetting debugSetting.businessRules.rules.arrayParsing.characterArrayParsing true"/>
+            <Workflow Name="characterArrayParsingDisable" Value="changeConfigSetting debugSetting.businessRules.rules.arrayParsing.characterArrayParsing false"/>
+            <Workflow Name="replaceCharacterWithCharacterEnable" Value="changeConfigSetting debugSetting.businessRules.rules.arrayParsing.characterArrayParsing.replaceCharacterWithCharacter true"/>
+            <Workflow Name="replaceCharacterWithCharacterDisable" Value="changeConfigSetting debugSetting.businessRules.rules.arrayParsing.characterArrayParsing.replaceCharacterWithCharacter false"/>
+            <Workflow Name="doesArrayContainCharacterEnable" Value="changeConfigSetting debugSetting.businessRules.rules.arrayParsing.characterArrayParsing.doesArrayContainCharacter true"/>
+            <Workflow Name="doesArrayContainCharacterDisable" Value="changeConfigSetting debugSetting.businessRules.rules.arrayParsing.characterArrayParsing.doesArrayContainCharacter false"/>
+            <Workflow Name="removeCharacterFromArrayEnable" Value="changeConfigSetting debugSetting.businessRules.rules.arrayParsing.characterArrayParsing.removeCharacterFromArray true"/>
+            <Workflow Name="removeCharacterFromArrayDisable" Value="changeConfigSetting debugSetting.businessRules.rules.arrayParsing.characterArrayParsing.removeCharacterFromArray false"/>
+            <Workflow Name="replaceCharacterAtIndexEnable" Value="changeConfigSetting debugSetting.businessRules.rules.arrayParsing.characterArrayParsing.replaceCharacterAtIndex true"/>
+            <Workflow Name="replaceCharacterAtIndexDisable" Value="changeConfigSetting debugSetting.businessRules.rules.arrayParsing.characterArrayParsing.replaceCharacterAtIndex false"/>
+          </characterArrayParsing>
+        </arrayParsing>
+      </rules>
+    </businessRules>
+  </debug>
+</CommandWorkflows>

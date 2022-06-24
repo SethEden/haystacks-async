@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?><CommandWorkflows>
+  <debug>
+    <businessRules>
+      <rules>
+        <stringParsing>
+          <wordStringParsing>
+            <Workflow Name="wordStringParsingEnable" Value="changeConfigSetting debugSetting.businessRules.rules.stringParsing.wordStringParsing true"/>
+            <Workflow Name="wordStringParsingDisable" Value="changeConfigSetting debugSetting.businessRules.rules.stringParsing.wordStringParsing false"/>
+            <Workflow Name="isStringCamelCaseEnable" Value="changeConfigSetting debugSetting.businessRules.rules.stringParsing.wordStringParsing.isStringCamelCase true"/>
+            <Workflow Name="isStringCamelCaseDisable" Value="changeConfigSetting debugSetting.businessRules.rules.stringParsing.wordStringParsing.isStringCamelCase false"/>
+            <Workflow Name="mapWordToCamelCaseWordEnable" Value="changeConfigSetting debugSetting.businessRules.rules.stringParsing.wordStringParsing.mapWordToCamelCaseWord true"/>
+            <Workflow Name="mapWordToCamelCaseWordDisable" Value="changeConfigSetting debugSetting.businessRules.rules.stringParsing.wordStringParsing.mapWordToCamelCaseWord false"/>
+            <Workflow Name="simplifyAndConsolidateStringEnable" Value="changeConfigSetting debugSetting.businessRules.rules.stringParsing.wordStringParsing.simplifyAndConsolidateString true"/>
+            <Workflow Name="simplifyAndConsolidateStringDisable" Value="changeConfigSetting debugSetting.businessRules.rules.stringParsing.wordStringParsing.simplifyAndConsolidateString false"/>
+            <Workflow Name="compareSimplifiedAndConsolidatedStringsEnable" Value="changeConfigSetting debugSetting.businessRules.rules.stringParsing.wordStringParsing.compareSimplifiedAndConsolidatedStrings true"/>
+            <Workflow Name="compareSimplifiedAndConsolidatedStringsDisable" Value="changeConfigSetting debugSetting.businessRules.rules.stringParsing.wordStringParsing.compareSimplifiedAndConsolidatedStrings false"/>
+            <Workflow Name="countCamelCaseWordsEnable" Value="changeConfigSetting debugSetting.businessRules.rules.stringParsing.wordStringParsing.countCamelCaseWords true"/>
+            <Workflow Name="countCamelCaseWordsDisable" Value="changeConfigSetting debugSetting.businessRules.rules.stringParsing.wordStringParsing.countCamelCaseWords false"/>
+            <Workflow Name="doesStringContainAcronymEnable" Value="changeConfigSetting debugSetting.businessRules.rules.stringParsing.wordStringParsing.doesStringContainAcronym true"/>
+            <Workflow Name="doesStringContainAcronymDisable" Value="changeConfigSetting debugSetting.businessRules.rules.stringParsing.wordStringParsing.doesStringContainAcronym false"/>
+            <Workflow Name="determineWordDelimiterEnable" Value="changeConfigSetting debugSetting.businessRules.rules.stringParsing.wordStringParsing.determineWordDelimiter true"/>
+            <Workflow Name="determineWordDelimiterDisable" Value="changeConfigSetting debugSetting.businessRules.rules.stringParsing.wordStringParsing.determineWordDelimiter false"/>
+            <Workflow Name="countDelimiterInStringEnable" Value="changeConfigSetting debugSetting.businessRules.rules.stringParsing.wordStringParsing.countDelimiterInString true"/>
+            <Workflow Name="countDelimiterInStringDisable" Value="changeConfigSetting debugSetting.businessRules.rules.stringParsing.wordStringParsing.countDelimiterInString false"/>
+            <Workflow Name="getWordCountInStringEnable" Value="changeConfigSetting debugSetting.businessRules.rules.stringParsing.wordStringParsing.getWordCountInString true"/>
+            <Workflow Name="getWordCountInStringDisable" Value="changeConfigSetting debugSetting.businessRules.rules.stringParsing.wordStringParsing.getWordCountInString false"/>
+            <Workflow Name="isStringListEnable" Value="changeConfigSetting debugSetting.businessRules.rules.stringParsing.wordStringParsing.isStringList true"/>
+            <Workflow Name="isStringListDisable" Value="changeConfigSetting debugSetting.businessRules.rules.stringParsing.wordStringParsing.isStringList false"/>
+            <Workflow Name="aggregateNumericalDifferenceBetweenTwoStringsEnable" Value="changeConfigSetting debugSetting.businessRules.rules.stringParsing.wordStringParsing.aggregateNumericalDifferenceBetweenTwoStrings true"/>
+            <Workflow Name="aggregateNumericalDifferenceBetweenTwoStringsDisable" Value="changeConfigSetting debugSetting.businessRules.rules.stringParsing.wordStringParsing.aggregateNumericalDifferenceBetweenTwoStrings false"/>
+          </wordStringParsing>
+        </stringParsing>
+      </rules>
+    </businessRules>
+  </debug>
+</CommandWorkflows>

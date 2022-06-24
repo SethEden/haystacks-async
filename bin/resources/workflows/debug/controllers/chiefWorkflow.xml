@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?><CommandWorkflows>
+  <debug>
+    <controllers>
+      <chiefWorkflow>
+        <Workflow Name="chiefWorkflowEnable" Value="changeConfigSetting debugSetting.controllers.chiefWorkflow true"/>
+        <Workflow Name="chiefWorkflowDisable" Value="changeConfigSetting debugSetting.controllers.chiefWorkflow false"/>
+        <Workflow Name="loadCommandWorkflowsFromPathEnable" Value="changeConfigSetting debugSetting.controllers.chiefWorkflow.loadCommandWorkflowsFromPath true"/>
+        <Workflow Name="loadCommandWorkflowsFromPathDisable" Value="changeConfigSetting debugSetting.controllers.chiefWorkflow.loadCommandWorkflowsFromPath false"/>
+      </chiefWorkflow>
+    </controllers>
+  </debug>
+</CommandWorkflows>

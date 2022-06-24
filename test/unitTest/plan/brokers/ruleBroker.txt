@@ -1,0 +1,77 @@
+description: Test plan for ruleBroker.js
+
+
+--------------------------------------------------------------------------------
+testName: bootStrapBusinessRules_validData
+output: Captures, call, and migrates business rule's data to data hive.
+
+testName: bootStrapBusinessRules_inValidString
+input: string (464gsdsfae8f46)
+output: Captures, call, and migrates business rule's data to data hive.
+
+testName: bootStrapBusinessRules_inValidNumber
+input: integer (546)
+output: Captures, call, and migrates business rule's data to data hive.
+
+testName: bootStrapBusinessRules_inValidBoolean
+input: boolean (false)
+output: Captures, call, and migrates business rule's data to data hive.
+--------------------------------------------------------------------------------
+testName: addClientRules_validData
+input clientRules: array<object>
+output: cient rules that merged with the system rules.
+
+testName: addClientRules_inValidString
+input clientRules: string (464gsdsfae8f46)
+output: ?
+
+testName: addClientRules_inValidNumber
+input clientRules: integer (546)
+output: ?
+
+testName: addClientRules_inValidBoolean
+input clientRules: boolean (false)
+output: ?
+--------------------------------------------------------------------------------
+testName: processRules_validData(ALL)
+NOTE: To be tested with integration testing.
+
+testName: processRules_inValidInputsUndefined
+input inputs: undefined
+input rulesToExecute: string (inValidInputsUndefined)
+output: ?
+
+testName: processRules_inValidInputsNaN
+input inputs: NaN
+input rulesToExecute: string (inValidInputsUndefined)
+output: ?
+
+testName: processRules_inValidRulesToExecuteUndefined
+input inputs: string (inValidRulesToExecuteUndefined)
+input rulesToExecute: undefined
+output: ?
+
+testName: processRules_inValidRulesToExecuteNaN
+input inputs: string (inValidRulesToExecuteNaN)
+input rulesToExecute: NaN
+output: ?
+
+testName: processRules_inValidInputsInteger
+input inputs: integer (4567)
+input rulesToExecute: array ([1,2,3,4,5])
+output: ?
+
+testName: processRules_inValidInputsBoolean
+input inputs: boolean (false)
+input rulesToExecute: array ([1,2,3,4,5])
+output: ?
+
+testName: processRules_inValidRulesToExecuteInteger
+input inputs: array ([1,2,3,4,5])
+input rulesToExecute: integer (4567)
+output: ?
+
+testName: processRules_inValidRulesToExecuteBoolean
+input inputs: array ([1,2,3,4,5])
+input rulesToExecute: boolean (false)
+output: ?

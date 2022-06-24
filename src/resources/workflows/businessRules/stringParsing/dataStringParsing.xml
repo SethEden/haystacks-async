@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?><CommandWorkflows>
+  <businessRules>
+    <stringParsing>
+      <dataStringParsing>
+        <Workflow Name="getUserNameFromEmail" Value="cmdgen bizrul,getUserNameFromEmail,Iceversaka@hotmail.com 4"/>
+        <Workflow Name="getDataCatagoryFromDataContextName" Value="cmdgen bizRul,getDataCatagoryFromDataContextName,Page_ProjectList 4"/>
+        <Workflow Name="getDataCatagoryDetailNameFromDataContextName" Value="cmdgen bizRul,getDataCatagoryDetailNameFromDataContextName,Page_ProjectList 4"/>
+        <Workflow Name="getKeywordNameFromDataContextName" Value="cmdgen bizRul,getKeywordNameFromDataContextName,Keywords_ProjectDetails_DeleteEntireProject 4"/>
+        <Workflow Name="dataStringParsing" Value="cmdSeq wrkflo,getUserNameFromEmail wrkflo,getDataCatagoryFromDataContextName wrkflo,getDataCatagoryDetailNameFromDataContextName wrkflo,getKeywordNameFromDataContextName"/>
+      </dataStringParsing>
+    </stringParsing>
+  </businessRules>
+</CommandWorkflows>

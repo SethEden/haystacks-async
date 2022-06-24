@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?><CommandWorkflows>
+  <debug>
+    <businessRules>
+      <rules>
+        <mathOperations>
+          <Workflow Name="mathOperationsEnable" Value="changeConfigSetting debugSetting.businessRules.rules.mathOperations true"/>
+          <Workflow Name="mathOperationsDisable" Value="changeConfigSetting debugSetting.businessRules.rules.mathOperations false"/>
+          <Workflow Name="hex2rgbConversionEnable" Value="changeConfigSetting debugSetting.businessRules.rules.mathOperations.hex2rgbConversion true"/>
+          <Workflow Name="hex2rgbConversionDisable" Value="changeConfigSetting debugSetting.businessRules.rules.mathOperations.hex2rgbConversion false"/>
+        </mathOperations>
+      </rules>
+    </businessRules>
+  </debug>
+</CommandWorkflows>

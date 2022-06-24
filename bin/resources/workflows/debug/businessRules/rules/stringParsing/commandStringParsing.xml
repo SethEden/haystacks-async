@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?><CommandWorkflows>
+  <debug>
+    <businessRules>
+      <rules>
+        <stringParsing>
+          <commandStringParsing>
+            <Workflow Name="commandStringParsingEnable" Value="changeConfigSetting debugSetting.businessRules.rules.stringParsing.commandStringParsing true"/>
+            <Workflow Name="commandStringParsingDisable" Value="changeConfigSetting debugSetting.businessRules.rules.stringParsing.commandStringParsing false"/>
+            <Workflow Name="cleanCommandInputEnable" Value="changeConfigSetting debugSetting.businessRules.rules.stringParsing.commandStringParsing.cleanCommandInput true"/>
+            <Workflow Name="cleanCommandInputDisable" Value="changeConfigSetting debugSetting.businessRules.rules.stringParsing.commandStringParsing.cleanCommandInput false"/>
+            <Workflow Name="isValidCommandNameStringEnable" Value="changeConfigSetting debugSetting.businessRules.rules.stringParsing.commandStringParsing.isValidCommandNameString true"/>
+            <Workflow Name="isValidCommandNameStringDisable" Value="changeConfigSetting debugSetting.businessRules.rules.stringParsing.commandStringParsing.isValidCommandNameString false"/>
+          </commandStringParsing>
+        </stringParsing>
+      </rules>
+    </businessRules>
+  </debug>
+</CommandWorkflows>

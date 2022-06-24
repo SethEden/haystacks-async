@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?><CommandWorkflows>
+  <debug>
+    <main>
+      <Workflow Name="mainEnable" Value="changeConfigSetting debugSetting.main true"/>
+      <Workflow Name="mainDisable" Value="changeConfigSetting debugSetting.main false"/>
+      <Workflow Name="initFrameworkEnable" Value="changeConfigSetting debugSetting.main.initFramework true"/>
+      <Workflow Name="initFrameworkDisable" Value="changeConfigSetting debugSetting.main.initFramework false"/>
+      <Workflow Name="mainMergeClientBusinessRulesEnable" Value="changeConfigSetting debugSetting.main.mergeClientBusinessRules true"/>
+      <Workflow Name="mainMergeClientBusinessRulesDisable" Value="changeConfigSetting debugSetting.main.mergeClientBusinessRules false"/>
+      <Workflow Name="mainMergeClientCommandsEnable" Value="changeConfigSetting debugSetting.main.mergeClientCommands true"/>
+      <Workflow Name="mainMergeClientCommandsDisable" Value="changeConfigSetting debugSetting.main.mergeClientCommands false"/>
+      <Workflow Name="mainLoadCommandAliasesEnable" Value="changeConfigSetting debugSetting.main.loadCommandAliases true"/>
+      <Workflow Name="mainLoadCommandAliasesDisable" Value="changeConfigSetting debugSetting.main.loadCommandAliases false"/>
+      <Workflow Name="mainLoadCommandWorkflowsEnable" Value="changeConfigSetting debugSetting.main.loadCommandWorkflows true"/>
+      <Workflow Name="mainLoadCommandWorkflowsDisable" Value="changeConfigSetting debugSetting.main.loadCommandWorkflows false"/>
+      <Workflow Name="executeBusinessRulesEnable" Value="changeConfigSetting debugSetting.main.executeBusinessRules true"/>
+      <Workflow Name="executeBusinessRulesDisable" Value="changeConfigSetting debugSetting.main.executeBusinessRules false"/>
+      <Workflow Name="mainEnqueueCommandEnable" Value="changeConfigSetting debugSetting.main.enqueueCommand true"/>
+      <Workflow Name="mainEnqueueCommandDisable" Value="changeConfigSetting debugSetting.main.enqueueCommand false"/>
+      <Workflow Name="mainIsCommandQueueEmptyEnable" Value="changeConfigSetting debugSetting.main.isCommandQueueEmpty true"/>
+      <Workflow Name="mainIsCommandQueueEmptyDisable" Value="changeConfigSetting debugSetting.main.isCommandQueueEmpty false"/>
+      <Workflow Name="mainProcessCommandQueueEnable" Value="changeConfigSetting debugSetting.main.processCommandQueue true"/>
+      <Workflow Name="mainProcessCommandQueueDisable" Value="changeConfigSetting debugSetting.main.processCommandQueue false"/>
+      <Workflow Name="mainSetConfigurationSettingEnable" Value="changeConfigSetting debugSetting.main.setConfigurationSetting true"/>
+      <Workflow Name="mainSetConfigurationSettingDisable" Value="changeConfigSetting debugSetting.main.setConfigurationSetting false"/>
+      <Workflow Name="mainGetConfigurationSettingEnable" Value="changeConfigSetting debugSetting.main.getConfigurationSetting true"/>
+      <Workflow Name="mainGetConfigurationSettingDisable" Value="changeConfigSetting debugSetting.main.getConfigurationSetting false"/>
+    </main>
+  </debug>
+</CommandWorkflows>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?><CommandWorkflows>
+  <debug>
+    <controllers>
+      <warden>
+        <Workflow Name="wardenEnable" Value="changeConfigSetting debugSetting.controllers.warden true"/>
+        <Workflow Name="wardenDisable" Value="changeConfigSetting debugSetting.controllers.warden false"/>
+        <Workflow Name="initFrameworkSchemaEnable" Value="changeConfigSetting debugSetting.controllers.warden.initFrameworkSchema true"/>
+        <Workflow Name="initFrameworkSchemaDisable" Value="changeConfigSetting debugSetting.controllers.warden.initFrameworkSchema false"/>
+        <Workflow Name="wardenMergeClientBusinessRulesEnable" Value="changeConfigSetting debugSetting.controllers.warden.mergeClientBusinessRules true"/>
+        <Workflow Name="wardenMergeClientBusinessRulesDisable" Value="changeConfigSetting debugSetting.controllers.warden.mergeClientBusinessRules false"/>
+        <Workflow Name="wardenMergeClientCommandsEnable" Value="changeConfigSetting debugSetting.controllers.warden.mergeClientCommands true"/>
+        <Workflow Name="wardenMergeClientCommandsDisable" Value="changeConfigSetting debugSetting.controllers.warden.mergeClientCommands false"/>
+        <Workflow Name="wardenLoadCommandAliasesEnable" Value="changeConfigSetting debugSetting.controllers.warden.loadCommandAliases true"/>
+        <Workflow Name="wardenLoadCommandAliasesDisable" Value="changeConfigSetting debugSetting.controllers.warden.loadCommandAliases false"/>
+        <Workflow Name="wardenLoadCommandWorkflowsEnable" Value="changeConfigSetting debugSetting.controllers.warden.loadCommandWorkflows true"/>
+        <Workflow Name="wardenLoadCommandWorkflowsDisable" Value="changeConfigSetting debugSetting.controllers.warden.loadCommandWorkflows false"/>
+        <Workflow Name="executeBusinessRuleEnable" Value="changeConfigSetting debugSetting.controllers.warden.executeBusinessRule true"/>
+        <Workflow Name="executeBusinessRuleDisable" Value="changeConfigSetting debugSetting.controllers.warden.executeBusinessRule false"/>
+        <Workflow Name="wardenEnqueueCommandEnable" Value="changeConfigSetting debugSetting.controllers.warden.enqueueCommand true"/>
+        <Workflow Name="wardenEnqueueCommandDisable" Value="changeConfigSetting debugSetting.controllers.warden.enqueueCommand false"/>
+        <Workflow Name="wardenIsCommandQueueEmptyEnable" Value="changeConfigSetting debugSetting.controllers.warden.isCommandQueueEmpty true"/>
+        <Workflow Name="wardenIsCommandQueueEmptyDisable" Value="changeConfigSetting debugSetting.controllers.warden.isCommandQueueEmpty false"/>
+        <Workflow Name="wardenProcessCommandQueueEnable" Value="changeConfigSetting debugSetting.controllers.warden.processCommandQueue true"/>
+        <Workflow Name="wardenProcessCommandQueueDisable" Value="changeConfigSetting debugSetting.controllers.warden.processCommandQueue false"/>
+        <Workflow Name="wardenSetConfigurationSettingEnable" Value="changeConfigSetting debugSetting.controllers.warden.setConfigurationSetting true"/>
+        <Workflow Name="wardenSetConfigurationSettingDisable" Value="changeConfigSetting debugSetting.controllers.warden.setConfigurationSetting false"/>
+        <Workflow Name="wardenGetConfigurationSettingEnable" Value="changeConfigSetting debugSetting.controllers.warden.getConfigurationSetting true"/>
+        <Workflow Name="wardenGetConfigurationSettingDisable" Value="changeConfigSetting debugSetting.controllers.warden.getConfigurationSetting false"/>
+        <Workflow Name="wardenSleepEnable" Value="changeConfigSetting debugSetting.controllers.warden.sleep true"/>
+        <Workflow Name="wardenSleepDisable" Value="changeConfigSetting debugSetting.controllers.warden.sleep false"/>
+      </warden>
+    </controllers>
+  </debug>
+</CommandWorkflows>

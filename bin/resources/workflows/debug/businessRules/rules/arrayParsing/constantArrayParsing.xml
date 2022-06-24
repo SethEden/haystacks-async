@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?><CommandWorkflows>
+  <debug>
+    <businessRules>
+      <rules>
+        <arrayParsing>
+          <constantArrayParsing>
+            <Workflow Name="constantArrayParsingEnable" Value="changeConfigSetting debugSetting.businessRules.rules.arrayParsing.constantArrayParsing true"/>
+            <Workflow Name="constantArrayParsingDisable" Value="changeConfigSetting debugSetting.businessRules.rules.arrayParsing.constantArrayParsing false"/>
+            <Workflow Name="getLengthOfLongestStringInArrayEnable" Value="changeConfigSetting debugSetting.businessRules.rules.arrayParsing.constantArrayParsing.getLengthOfLongestStringInArray true"/>
+            <Workflow Name="getLengthOfLongestStringInArrayDisable" Value="changeConfigSetting debugSetting.businessRules.rules.arrayParsing.constantArrayParsing.getLengthOfLongestStringInArray false"/>
+            <Workflow Name="searchForPatternsInStringArrayEnable" Value="changeConfigSetting debugSetting.businessRules.rules.arrayParsing.constantArrayParsing.searchForPatternsInStringArray true"/>
+            <Workflow Name="searchForPatternsInStringArrayDisable" Value="changeConfigSetting debugSetting.businessRules.rules.arrayParsing.constantArrayParsing.searchForPatternsInStringArray false"/>
+            <Workflow Name="validatePatternsThatNeedImplementationEnable" Value="changeConfigSetting debugSetting.businessRules.rules.arrayParsing.constantArrayParsing.validatePatternsThatNeedImplementation true"/>
+            <Workflow Name="validatePatternsThatNeedImplementationDisable" Value="changeConfigSetting debugSetting.businessRules.rules.arrayParsing.constantArrayParsing.validatePatternsThatNeedImplementation false"/>
+          </constantArrayParsing>
+        </arrayParsing>
+      </rules>
+    </businessRules>
+  </debug>
+</CommandWorkflows>

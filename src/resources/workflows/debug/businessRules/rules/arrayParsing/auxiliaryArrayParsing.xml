@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?><CommandWorkflows>
+  <debug>
+    <businessRules>
+      <rules>
+        <arrayParsing>
+          <auxiliaryArrayParsing>
+            <Workflow Name="auxiliaryArrayParsingEnable" Value="changeConfigSetting debugSetting.businessRules.rules.arrayParsing.auxiliaryArrayParsing true"/>
+            <Workflow Name="auxiliaryArrayParsingDisable" Value="changeConfigSetting debugSetting.businessRules.rules.arrayParsing.auxiliaryArrayParsing false"/>
+            <Workflow Name="parseColorRangeInputsEnable" Value="changeConfigSetting debugSetting.businessRules.rules.arrayParsing.auxiliaryArrayParsing.parseColorRangeInputs true"/>
+            <Workflow Name="parseColorRangeInputsDisable" Value="changeConfigSetting debugSetting.businessRules.rules.arrayParsing.auxiliaryArrayParsing.parseColorRangeInputs false"/>
+            <Workflow Name="doesArrayContainValueEnable" Value="changeConfigSetting debugSetting.businessRules.rules.arrayParsing.auxiliaryArrayParsing.doesArrayContainValue true"/>
+            <Workflow Name="doesArrayContainValueDisable" Value="changeConfigSetting debugSetting.businessRules.rules.arrayParsing.auxiliaryArrayParsing.doesArrayContainValue false"/>
+          </auxiliaryArrayParsing>
+        </arrayParsing>
+      </rules>
+    </businessRules>
+  </debug>
+</CommandWorkflows>

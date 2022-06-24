@@ -1,0 +1,50 @@
+{
+  "name": "@haystacks/async",
+  "version": "0.1.0",
+  "description": "A framework to build any number or any kind of native application or automation solution.",
+  "main": "./src/main.js",
+  "bin": "./bin/main.js",
+  "type": "module",
+  "scripts": {
+    "lint": "npx eslint .",
+    "release": "node ./build/buildRelease/src/buildRelease.js",
+    "test": "node ./test/testHarness/src/testHarness.js",
+    "start": "node ./src/main.js",
+    "vers": "standard-version -m \"chore(release) version %s \"",
+    "docs": "jsdoc -c jsdoc.json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SethEden/haystacks-async.git"
+  },
+  "keywords": [
+    "application",
+    "automation"
+  ],
+  "author": "Seth Hollingsead <iceversaka@hotmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@haystacks/constants": "0.1.0",
+    "adm-zip": "^0.5.9",
+    "chalk": "5.0.1",
+    "dotenv": "^16.0.0",
+    "figlet": "^1.5.2",
+    "mathjs": "10.1.0",
+    "minimist": "1.2.6",
+    "moment": "2.29.2",
+    "n-readlines": "^1.0.1",
+    "papaparse": "5.3.1",
+    "xml2js": "^0.4.23"
+  },
+  "devDependencies": {
+    "eslint": "^8.18.0",
+    "jsdoc": "3.6.7",
+    "marked": ">=4.0.10",
+    "markdown-it": ">=12.3.2",
+    "standard-version": "9.3.2"
+  },
+  "bugs": {
+    "url": "https://github.com/SethEden/haystacks-async/issues"
+  },
+  "homepage": "https://github.com/SethEden/haystacks-async#readme"
+}

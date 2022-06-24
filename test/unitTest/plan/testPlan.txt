@@ -1,0 +1,78 @@
+In here will be documented the test plan for building all of the unit tests for supporting the quality of the framework.
+
+Tests will be broken up into files that correspond to the actual framework files.
+example:
+commandBroker.test.js => commandBroker.js
+
+Here will be detailed each of the functions and the inputs that they should be tested with.
+Each of the test files will exist in a folder structure that matches that of the rest of the framework,
+just like the configuration debugSettings .json files.
+
+./test/unitTest/testing/brokers/
+commandBroker.test.js => commandBroker.js
+
+dataBroker.test.js => dataBroker.js
+
+ruleBroker.test.js => ruleBroker.js
+
+workflowBroker.test.js => workflowBroker.js
+
+./test/unitTest/testing/businessRules/rules/
+arrayParsing.test.js => arrayParsing.js
+
+characterGeneration.test.js => characterGeneration.js
+
+mathOperations.test.js => mathOperations.js
+
+stringGeneration.test.js => stringGeneration.js
+
+stringParsing.test.js => stringParsing.js
+
+stringParsingUtilities.test.js => stringParsingUtilities.js
+
+./test/unitTest/testing/businessRules/
+rulesLibrary.test.js => rulesLibrary.js
+
+./test/unitTest/testing/commandsBlob/commands/
+integrationTests.test.js => integrationTests.js
+
+nominal.test.js => nominal.js
+
+./test/unitTest/testing/commandsBlob/
+commandsLibrary.test.js => commandsLibrary.js
+
+./test/unitTest/testing/controllers/
+chiefCommander.test.js => chiefCommander.js
+
+chiefConfiguration.test.js => chiefConfiguration.js
+
+chiefData.test.js => chiefData.js
+
+chiefWorkflow.test.js => chiefWorkflow.js
+
+warden.test.js => warden.js
+
+./test/unitTest/testing/executrix/
+colorizer.test.js => colorizer.js
+
+configurator.test.js => configurator.js
+
+fileOperations.test.js => fileOperations.js
+
+lexical.test.js => lexical.js
+
+loggers.test.js => loggers.js
+
+prompt.test.js => prompt.js
+
+timers.test.js => timers.js
+
+./tests/unitTest/testing/structures/
+data.test.js => data.js
+
+queue.test.js => queue.js
+
+stack.test.js => stack.js
+
+./tests/unitTest/testing/
+main.test.js => main.js

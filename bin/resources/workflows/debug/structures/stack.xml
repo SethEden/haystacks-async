@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?><CommandWorkflows>
+  <debug>
+    <structures>
+      <stack>
+        <Workflow Name="stackEnable" Value="changeConfigSetting debugSetting.structures.stack true"/>
+        <Workflow Name="stackDisable" Value="changeConfigSetting debugSetting.structures.stack false"/>
+        <Workflow Name="initStackEnable" Value="changeConfigSetting debugSetting.structures.stack.initStack true"/>
+        <Workflow Name="initStackDisable" Value="changeConfigSetting debugSetting.structures.stack.initStack false"/>
+        <Workflow Name="clearStackEnable" Value="changeConfigSetting debugSetting.structures.stack.clearStack true"/>
+        <Workflow Name="clearStackDisable" Value="changeConfigSetting debugSetting.structures.stack.clearStack false"/>
+        <Workflow Name="pushEnable" Value="changeConfigSetting debugSetting.structures.stack.push true"/>
+        <Workflow Name="pushDisable" Value="changeConfigSetting debugSetting.structures.stack.push false"/>
+        <Workflow Name="popEnable" Value="changeConfigSetting debugSetting.structures.stack.pop true"/>
+        <Workflow Name="popDisable" Value="changeConfigSetting debugSetting.structures.stack.pop false"/>
+        <Workflow Name="stackIsEmptyEnable" Value="changeConfigSetting debugSetting.structures.stack.isEmpty true"/>
+        <Workflow Name="stackIsEmptyDisable" Value="changeConfigSetting debugSetting.structures.stack.isEmpty false"/>
+        <Workflow Name="lengthEnable" Value="changeConfigSetting debugSetting.structures.stack.length true"/>
+        <Workflow Name="lengthDisable" Value="changeConfigSetting debugSetting.structures.stack.length false"/>
+        <Workflow Name="containsEnable" Value="changeConfigSetting debugSetting.structures.stack.contains true"/>
+        <Workflow Name="containsDisable" Value="changeConfigSetting debugSetting.structures.stack.contains false"/>
+        <Workflow Name="printEnable" Value="changeConfigSetting debugSetting.structures.stack.print true"/>
+        <Workflow Name="printDisable" Value="changeConfigSetting debugSetting.structures.stack.print false"/>
+      </stack>
+    </structures>
+  </debug>
+</CommandWorkflows>

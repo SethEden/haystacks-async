@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?><CommandWorkflows>
+  <debug>
+    <brokers>
+      <ruleBroker>
+        <Workflow Name="ruleBrokerEnable" Value="changeConfigSetting debugSetting.brokers.ruleBroker true"/>
+        <Workflow Name="ruleBrokerDisable" Value="changeConfigSetting debugSetting.brokers.ruleBroker false"/>
+        <Workflow Name="addClientRulesEnable" Value="changeConfigSetting debugSetting.brokers.ruleBroker.addClientRules true"/>
+        <Workflow Name="addClientRulesDisable" Value="changeConfigSetting debugSetting.brokers.ruleBroker.addClientRules false"/>
+      </ruleBroker>
+    </brokers>
+  </debug>
+</CommandWorkflows>

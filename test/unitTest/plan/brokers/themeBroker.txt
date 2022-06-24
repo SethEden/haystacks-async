@@ -1,0 +1,66 @@
+description: Test plan for themeBroker.js
+
+
+--------------------------------------------------------------------------------
+testName: getNamedThemes_validData
+output: list of names for the themes that are currently installed.
+
+testName: getNamedThemes_inValidString
+input: string (464gsdsfae8f46)
+output: list of names for the themes that are currently installed.
+
+testName: getNamedThemes_inValidNumber
+input: integer (546)
+output: list of names for the themes that are currently installed.
+
+testName: getNamedThemes_inValidBoolean
+input: boolean (false)
+output: list of names for the themes that are currently installed.
+--------------------------------------------------------------------------------
+testName: getNamedThemePath_validData
+input: string (The name of the theme that a path is returned for)
+output: string (The path of the theme, if it exists)
+
+testName: getNamedThemePath_inValidString
+input: string (464gsdsfae8f46)
+output: false
+
+testName: getNamedThemePath_inValidNumber
+input: integer (546)
+output: false
+
+testName: getNamedThemePath_inValidBoolean
+input: boolean (false)
+output: false
+--------------------------------------------------------------------------------
+testName: loadTheme_validData
+input: string (The fully qualified path to the theme debug configuration settings)
+output: object (All of the debug configuration data for a specified theme path)
+
+testName: loadTheme_inValidString
+input: string (464gsdsfae8f46)
+output: false
+
+testName: loadTheme_inValidNumber
+input: integer (546)
+output: false
+
+testName: loadTheme_inValidBoolean
+input: boolean (false)
+output: false
+--------------------------------------------------------------------------------
+testName: applyTheme_validData
+input: object (All the theme debug configuration settings data that control the debug log theme colors)
+output: true
+
+testName: applyTheme_inValidString
+input: string (464gsdsfae8f46)
+output: false
+
+testName: applyTheme_inValidNumber
+input: integer (546)
+output: false
+
+testName: applyTheme_inValidBoolean
+input: boolean (false)
+output: false

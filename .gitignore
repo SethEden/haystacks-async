@@ -1,0 +1,12 @@
+*/node_modules/*
+node_modules/*
+*/documentation/*
+documentation/*
+*.env
+*.Env
+*.ENV
+*.log
+*.Log
+*.LOG
+*.html
+*.HTML

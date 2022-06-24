@@ -1,0 +1,911 @@
+description: Test plan for dataBroker.js
+
+
+testName: scanDataPath_validData
+input dataPath: C:\haystacks\src\resources\configuration\debugSettings
+output: [array of files & paths]
+
+testName: scanDataPath_inValidString
+input: string (464gsdsfae8f46)
+output: empty array
+
+testName: scanDataPath_inValidNumber
+input: integer (546)
+output: empty array
+
+testName: scanDataPath_inValidBoolean
+input: boolean (false)
+output: empty array
+--------------------------------------------------------------------------------
+testName: findUniversalDebugConfigSetting_validData
+input appConfigFilesToLoad: array [C:\haystacks\test\unitTest\testData\application.system.json]
+input frameworkConfigFilesToLoad: array [C:\haystacks\test\unitTest\testData\framework.system.json]
+output: true
+
+testName: findUniversalDebugConfigSetting_inValidString
+input appConfigFilesToLoad: string (464gsdsfae8f46)
+input frameworkConfigFilesToLoad: string (  - space)
+output: false
+
+testName: findUniversalDebugConfigSetting_inValidFrameworkConfigFilesToLoadString
+input appConfigFilesToLoad: array [C:\haystacks\test\unitTest\testData\application.system.json]
+input frameworkConfigFilesToLoad: string (&)
+output: false?
+
+testName: findUniversalDebugConfigSetting_inValidNumber
+input appConfigFilesToLoad: integer (546)
+input frameworkConfigFilesToLoad: string (  - space)
+output: false
+
+testName: findUniversalDebugConfigSetting_inValidBoolean
+input appConfigFilesToLoad: boolean (false)
+input frameworkConfigFilesToLoad: string (  - space)
+output: false
+--------------------------------------------------------------------------------
+testName: findIndividualDebugConfigSetting_validData
+input filesToLoad: array [C:\haystacks\test\unitTest\testData\config.json]
+output: true
+
+testName: findIndividualDebugConfigSetting_inValidString
+input filesToLoad: string (464gsdsfae8f46)
+output: false
+
+testName: findIndividualDebugConfigSetting_inValidNumber
+input filesToLoad: integer (546)
+output: false
+
+testName: findIndividualDebugConfigSetting_inValidBoolean
+input filesToLoad: boolean (false)
+output: false
+--------------------------------------------------------------------------------
+testName: loadAllCsvData_validData
+input filesToLoad: array [C:\haystacks\test\unitTest\testData\test.csv]
+input contextName: string (  - space)
+output: object (the JSON data from test.csv)
+
+testName: loadAllCsvData_inValidString
+input filesToLoad: string (464gsdsfae8f46)
+input contextName: string (  - space)
+output: false
+
+testName: loadAllCsvData_inValidContextNameString
+input filesToLoad: array [C:\haystacks\test\unitTest\testData\test.csv]
+input contextName: string (&)
+output: false?
+
+testName: loadAllCsvData_inValidNumber
+input filesToLoad: integer (546)
+input contextName: string (  - space)
+output: false
+
+testName: loadAllCsvData_inValidBoolean
+input filesToLoad: boolean (false)
+input contextName: string (  - space)
+output: false
+--------------------------------------------------------------------------------
+testName: loadedAllXmlData_validData
+input filesToLoad: array [C:\haystacks\test\unitTest\testData\system.xml]
+input contextName: string (  - space)
+output: object (the JSON data from system.xml)
+
+testName: loadedAllXmlData_inValidString
+input filesToLoad: string (464gsdsfae8f46)
+input contextName: string (  - space)
+output: false
+
+testName: loadAllCsvData_inValidContextNameString
+input filesToLoad: array [C:\haystacks\test\unitTest\testData\system.xml]
+input contextName: string (&)
+output: false?
+
+testName: loadedAllXmlData_inValidNumber
+input filesToLoad: integer (546)
+input contextName: string (  - space)
+output: false
+
+testName: loadedAllXmlData_inValidBoolean
+input filesToLoad: boolean (false)
+input contextName: string (  - space)
+output: false
+--------------------------------------------------------------------------------
+testName: loadAllJsonData_validData
+input filesToLoad: array [C:\haystacks\test\unitTest\testData\config.json]
+input contextName: string (  - space)
+output: object (the JSON data from testHarness.json)
+
+testName: loadAllJsonData_inValidString
+input filesToLoad: string (464gsdsfae8f46)
+input contextName: string (  - space)
+output: false
+
+testName: loadAllJsonData_inValidContextNameString
+input filesToLoad: array [C:\haystacks\test\unitTest\testData\config.json]
+input contextName: string (&)
+output: false?
+
+testName: loadAllJsonData_inValidNumber
+input filesToLoad: integer (546)
+input contextName: string (  - space)
+output: false
+
+testName: loadAllJsonData_inValidBoolean
+input filesToLoad: boolean (false)
+input contextName: string (  - space)
+output: false
+--------------------------------------------------------------------------------
+testName: processCsvData_validData
+input data: object [C:\haystacks\test\unitTest\testData\test.csv]
+input contextName: string (pageData)
+output: object (the clean and ready to go JSON data from test.csv)
+
+testName: processCsvData_inValidString
+input data: string (464gsdsfae8f46)
+input contextName: string (pageData)
+output: false
+
+testName: processCsvData_inValidContextNameString
+input data: object [C:\haystacks\test\unitTest\testData\test.csv]
+input contextName: string (&)
+output: false?
+
+testName: processCsvData_inValidNumber
+input data: integer (546)
+input contextName: string (pageData)
+output: false
+
+testName: processCsvData_inValidBoolean
+input data: boolean (false)
+input contextName: string (pageData)
+output: false
+--------------------------------------------------------------------------------
+testName: processXmlData_validData
+input data: JSON object
+input contextName: string (configuration)
+output: object (the JSON data from testHarness.json)
+
+testName: processXmlData_inValidString
+input data: string (464gsdsfae8f46)
+input contextName: string (configuration)
+output: false
+
+testName: processXmlData_inValidContextNameString
+input data: JSON object
+input contextName: string (&)
+output: false?
+
+testName: processXmlData_inValidNumber
+input data: integer (546)
+input contextName: string (configuration)
+output: false
+
+testName: processXmlData_inValidBoolean
+input data: boolean (false)
+input contextName: string (configuration)
+output: false
+--------------------------------------------------------------------------------
+testName: processXmlLeafNode_validData
+input inputData: JSON object
+input leafNodeName: string (?)
+output: object (the parsed JSON data)
+
+testName: processXmlLeafNode_inValidString
+input inputData: string (464gsdsfae8f46)
+input leafNodeName: string (?)
+output: ?
+
+testName: processXmlLeafNode_inValidLeafNodeNameString
+input inputData: JSON object
+input leafNodeName: string (&)
+output: ?
+
+testName: processXmlLeafNode_inValidNumber
+input inputData: integer (546)
+input leafNodeName: string (?)
+output: ?
+
+testName: processXmlLeafNode_inValidBoolean
+input inputData: boolean (false)
+input leafNodeName: string (?)
+output: ?
+--------------------------------------------------------------------------------
+testName: preprocessJsonFile_validData
+input: array [C:\haystacks\test\unitTest\testData\config.json]
+output: object (JSON)
+
+testName: preprocessJsonFile_inValidString
+input: string (464gsdsfae8f46)
+output: false
+
+testName: preprocessJsonFile_inValidNumber
+input: integer (546)
+output: false
+
+testName: preprocessJsonFile_inValidBoolean
+input: boolean (false)
+output: false
+--------------------------------------------------------------------------------
+testName: writeJsonDataToFile_validData
+input fileToSaveTo: string (C:\haystacks\test\unitTest\testData\writeJsonDataToFile_validData.json)
+input dataToWriteOut: object
+output: file written to disk
+
+testName: writeJsonDataToFile_inValidString
+input fileToSaveTo: string (464gsdsfae8f46)
+input dataToWriteOut: object
+output: ?
+
+testName: writeJsonDataToFile_inValidDataToWrite
+input fileToSaveTo: string (C:\haystacks\test\unitTest\testData\writeJsonDataToFile_validData.json)
+input dataToWriteOut: object (&)
+output: ?
+
+testName: writeJsonDataToFile_inValidNumber
+input fileToSaveTo: integer (546)
+input dataToWriteOut: object
+output: ?
+
+testName: writeJsonDataToFile_inValidBoolean
+input fileToSaveTo: boolean (false)
+input dataToWriteOut: object
+output: ?
+--------------------------------------------------------------------------------
+testName: setupDataStorage_validData
+output: data storage exists on data hive.
+
+testName: setupDataStorage_inValidString
+input: string (464gsdsfae8f46)
+output: data storage exists on data hive.
+
+testName: setupDataStorage_inValidNumber
+input: integer (546)
+output: data storage exists on data hive.
+
+testName: setupDataStorage_inValidBoolean
+input: boolean (false)
+output: data storage exists on data hive.
+--------------------------------------------------------------------------------
+testName: storeData_validDataString
+input dataStorageContextName: string (testDataString)
+input dataToStore: string (dfxg24346dfg)
+output: true
+
+testName: storeData_validDataBoolean
+input dataStorageContextName: string (testDataBoolean)
+input dataToStore: boolean (false)
+output: true
+
+testName: storeData_validDataInteger
+input dataStorageContextName: string (testDataInteger)
+input dataToStore: integer (23456)
+output: true
+
+testName: storeData_validDataArray
+input dataStorageContextName: string (testDataArray)
+input dataToStore: array ([1,2,3,4,5])
+output: true
+
+testName: storeData_validDataObject
+input dataStorageContextName: string (testDataObject)
+input dataToStore: object ({"constants":"c,const","Generator":"g,gen,genrtr","List":"l,lst"})
+output: true
+
+testName: storeData_inValidDataToStoreUndefined
+input dataStorageContextName: string (inValidDataToStoreUndefined)
+input dataToStore: undefined
+output: false
+
+testName: storeData_inValidDataToStoreNaN
+input dataStorageContextName: string (inValidDataToStoreNaN)
+input dataToStore: NaN
+output: false
+
+testName: storeData_inValidDataStorageDataToStoreNumber
+input dataStorageContextName: integer (4567)
+input dataToStore: array ([1,2,3,4,5])
+output: false
+
+testName: storeData_inValidDataStorageDataToStoreBoolean
+input dataStorageContextName: boolean (false)
+input dataToStore: array ([1,2,3,4,5])
+output: false
+--------------------------------------------------------------------------------
+testName: getData_validData
+input dataStorageContextName: string (testDataString)
+output: object
+
+testName: getData_inValidString
+input dataStorageContextName: string (464gsdsfae8f46)
+output: false
+
+testName: getData_inValidNumber
+input dataStorageContextName: integer (546)
+output: false
+
+testName: getData_inValidBoolean
+input dataStorageContextName: boolean (false)
+output: false
+--------------------------------------------------------------------------------
+testName: clearData_validData
+input dataStorageContextName: string (testDataString)
+output: cleared hive storage (testDataString)
+
+testName: clearData_inValidUndefined
+input dataStorageContextName: undefined
+output: cleared hive storage
+
+testName: clearData_inValidNaN
+input dataStorageContextName: NaN
+output: ?
+
+testName: clearData_inValidNumber
+input dataStorageContextName: integer (546)
+output: cleared hive storage
+
+testName: clearData_inValidBoolean
+input dataStorageContextName: boolean (false)
+output: cleared hive storage
+--------------------------------------------------------------------------------
+testName: initializeConstantsValidationData_validData
+output: Validate data is as follows.
+D[sys.cConstantsValidationData][sys.cConstantsShortNames] = {};
+D[sys.cConstantsValidationData][sys.cConstantsFileNames] = {};
+D[sys.cConstantsValidationData][sys.cConstantsPrefix] = {};
+D[sys.cConstantsValidationData][sys.cConstantsFilePaths] = {};
+D[sys.cConstantsValidationData][sys.cConstantsPhase1ValidationMessages] = {};
+D[sys.cConstantsValidationData][sys.cConstantsPhase2ValidationMessages] = {};
+
+testName: initializeConstantsValidationData_inValidString
+input filesToLoad: string (464gsdsfae8f46)
+output: Validate data is as follows.
+D[sys.cConstantsValidationData][sys.cConstantsShortNames] = {};
+D[sys.cConstantsValidationData][sys.cConstantsFileNames] = {};
+D[sys.cConstantsValidationData][sys.cConstantsPrefix] = {};
+D[sys.cConstantsValidationData][sys.cConstantsFilePaths] = {};
+D[sys.cConstantsValidationData][sys.cConstantsPhase1ValidationMessages] = {};
+D[sys.cConstantsValidationData][sys.cConstantsPhase2ValidationMessages] = {};
+
+testName: initializeConstantsValidationData_inValidNumber
+input filesToLoad: integer (546)
+output: Validate data is as follows.
+D[sys.cConstantsValidationData][sys.cConstantsShortNames] = {};
+D[sys.cConstantsValidationData][sys.cConstantsFileNames] = {};
+D[sys.cConstantsValidationData][sys.cConstantsPrefix] = {};
+D[sys.cConstantsValidationData][sys.cConstantsFilePaths] = {};
+D[sys.cConstantsValidationData][sys.cConstantsPhase1ValidationMessages] = {};
+D[sys.cConstantsValidationData][sys.cConstantsPhase2ValidationMessages] = {};
+
+testName: initializeConstantsValidationData_inValidBoolean
+input filesToLoad: boolean (false)
+output: Validate data is as follows.
+D[sys.cConstantsValidationData][sys.cConstantsShortNames] = {};
+D[sys.cConstantsValidationData][sys.cConstantsFileNames] = {};
+D[sys.cConstantsValidationData][sys.cConstantsPrefix] = {};
+D[sys.cConstantsValidationData][sys.cConstantsFilePaths] = {};
+D[sys.cConstantsValidationData][sys.cConstantsPhase1ValidationMessages] = {};
+D[sys.cConstantsValidationData][sys.cConstantsPhase2ValidationMessages] = {};
+--------------------------------------------------------------------------------
+testName: addConstantsValidationData_validData
+input constantLibraryData: array<array<string,object>>
+output: the array of data that was added to the validation data.
+
+testName: addConstantsValidationData_inValidString
+input constantLibraryData: string (464gsdsfae8f46)
+output: ?
+
+testName: addConstantsValidationData_inValidNumber
+input constantLibraryData: integer (546)
+output: ?
+
+testName: addConstantsValidationData_inValidBoolean
+input constantLibraryData: boolean (false)
+output: ?
+--------------------------------------------------------------------------------
+testName: addDeeplyNestedConstantsValidationData_validData
+input contextName: string (testDataString)
+input deeplyNestedData: array<array<string,object>>
+output: data with a name that was added to the D-data structure. (testDataString)
+
+testName: addDeeplyNestedConstantsValidationData_inValidDeeplyNestedDataString
+input contextName: string (testDataString)
+input deeplyNestedData: string (&)
+output: ?
+
+testName: addDeeplyNestedConstantsValidationData_inValidDeeplyNestedDataNumber
+input contextName: string (testDataString)
+input deeplyNestedData: integer (654)
+output: ?
+
+testName: addDeeplyNestedConstantsValidationData_inValidDeeplyNestedDataBoolean
+input contextName: string (testDataString)
+input deeplyNestedData: boolean (false)
+output: ?
+
+testName: addDeeplyNestedConstantsValidationData_inValidContextNameUndefined
+input contextName: undefined
+input deeplyNestedData: array<array<string,object>>
+output: ?
+
+testName: addDeeplyNestedConstantsValidationData_inValidContextNameNaN
+input contextName: NaN
+input deeplyNestedData: array<array<string,object>>
+output: ?
+
+testName: addDeeplyNestedConstantsValidationData_inValidContextNameNumber
+input contextName: integer (654)
+input deeplyNestedData: array<array<string,object>>
+output: ?
+
+testName: addDeeplyNestedConstantsValidationData_inValidContextNameBoolean
+input contextName: boolean (false)
+input deeplyNestedData: array<array<string,object>>
+output: ?
+--------------------------------------------------------------------------------
+testName: getDataCatagoryFromContextName_validData
+input contextName: string (example of this will be something like Application_xxxx)
+output: string (Application)
+
+testName: getDataCatagoryFromContextName_inValidString
+input contextName: string (Application5xxxx)
+output: ?
+
+testName: getDataCatagoryFromContextName_inValidNumber
+input contextName: integer (546)
+output: ?
+
+testName: getDataCatagoryFromContextName_inValidBoolean
+input contextName: boolean (false)
+output: ?
+--------------------------------------------------------------------------------
+testName: getDataCatagoryDetailNameFromContextName_validData
+input contextName: string (Command_ApiPost)
+output: string (ApiPost)
+
+testName: getDataCatagoryDetailNameFromContextName_inValidString
+input contextName: string (Command5ApiPost)
+output: ?
+
+testName: getDataCatagoryDetailNameFromContextName_inValidNumber
+input contextName: integer (546)
+output: ?
+
+testName: getDataCatagoryDetailNameFromContextName_inValidBoolean
+input contextName: boolean (false)
+output: ?
+--------------------------------------------------------------------------------
+testName: extractDataFromPapaParseObject_validData
+input data: object (to get data out)
+input contextName: string (name of the context either Command or Macro)
+output: object (parsed data)
+
+testName: extractDataFromPapaParseObject_inValidDataString
+input data: string (464gsdsfae8f46)
+input contextName: string (  - space)
+output: false
+
+testName: extractDataFromPapaParseObject_inValidContextNameString
+input data: object (to get data out)
+input contextName: string (&)
+output: false?
+
+testName: extractDataFromPapaParseObject_inValidNumber
+input data: integer (546)
+input contextName: string (  - space)
+output: false
+
+testName: extractDataFromPapaParseObject_inValidBoolean
+input data: boolean (false)
+input contextName: string (  - space)
+output: false
+--------------------------------------------------------------------------------
+testName: determineMergeTarget_validData
+input targetData: object (the target data should be merged with simulated merge)
+input dataToMerge: object (the data should be merged with simulated merge scenario)
+output: string (namespace where the dataToMerge should be merged with the target data)
+
+testName: determineMergeTarget_inValidTargetDataString
+input targetData: string (464gsdsfae8f46)
+input dataToMerge: string (  - space)
+output: false
+
+testName: determineMergeTarget_inValidDataToMergeString
+input targetData: object (the target data should be merged with simulated merge)
+input dataToMerge: string (&)
+output: false?
+
+testName: determineMergeTarget_inValidTargetDataNumber
+input targetData: integer (546)
+input dataToMerge: object (the data should be merged with simulated merge scenario)
+output: false?
+
+testName: determineMergeTarget_inValidTargetDataBoolean
+input targetData: boolean (false)
+input dataToMerge: object (the data should be merged with simulated merge scenario)
+output: false?
+
+testName: determineMergeTarget_inValidDataToMergeNumber
+input targetData:  object (the target data should be merged with simulated merge)
+input dataToMerge: integer (546)
+output: false?
+
+testName: determineMergeTarget_inValidDataToMergeBoolean
+input targetData:  object (the target data should be merged with simulated merge)
+input dataToMerge: boolean (false)
+output: false?
+--------------------------------------------------------------------------------mergeData
+testName: mergeData_validData
+input targetData: object (data to be merged with dataToMerge)
+input dataCatagory: string (valid string?)
+input pageName: string (valid string?)
+input dataToMerge: object (data to be merged)
+output: object (data set from targetData and dataToMerge)
+
+testName: mergeData_inValidTargetDataString
+input targetData: string (464gsdsfae8f46)
+input dataCatagory: string (valid string?)
+input pageName: string (valid string?)
+input dataToMerge: object (data to be merged)
+output: false?
+
+testName: mergeData_inValidDataCatagoryString
+input targetData: object (data to be merged with dataToMerge)
+input dataCatagory: string (464gsdsfae8f46)
+input pageName: string (valid string?)
+input dataToMerge: object (data to be merged)
+output: false?
+
+testName: mergeData_inValidPageNameString
+input targetData: object (data to be merged with dataToMerge)
+input dataCatagory: string (valid string?)
+input pageName: string (464gsdsfae8f46)
+input dataToMerge: object (data to be merged)
+output: false?
+
+testName: mergeData_inValidDataToMergeString
+input targetData: object (data to be merged with dataToMerge)
+input dataCatagory: string (valid string?)
+input pageName: string (valid string?)
+input dataToMerge: string (464gsdsfae8f46)
+output: false?
+
+testName: mergeData_inValidTargetDataNumber
+input targetData: integer (546)
+input dataCatagory: string (valid string?)
+input pageName: string (valid string?)
+input dataToMerge: object (data to be merged)
+output: false?
+
+testName: mergeData_inValidTargetDataBoolean
+input targetData: boolean (false)
+input dataCatagory: string (valid string?)
+input pageName: string (valid string?)
+input dataToMerge: object (data to be merged)
+output: false?
+
+testName: mergeData_inValidTargetDataUndefined
+input targetData: undefined
+input dataCatagory: string (valid string?)
+input pageName: string (valid string?)
+input dataToMerge: object (data to be merged)
+output: false?
+
+testName: mergeData_inValidTargetDataNaN
+input targetData: NaN
+input dataCatagory: string (valid string?)
+input pageName: string (valid string?)
+input dataToMerge: object (data to be merged)
+output: false?
+
+testName: mergeData_inValidDataCatagoryNumber
+input targetData: object (data to be merged with dataToMerge)
+input dataCatagory: integer (546)
+input pageName: string (valid string?)
+input dataToMerge: object (data to be merged)
+output: false?
+
+testName: mergeData_inValidDataCatagoryBoolean
+input targetData: object (data to be merged with dataToMerge)
+input dataCatagory: boolean (false)
+input pageName: string (valid string?)
+input dataToMerge: object (data to be merged)
+output: false?
+
+testName: mergeData_inValidDataCatagoryUndefined
+input targetData: object (data to be merged with dataToMerge)
+input dataCatagory: undefined
+input pageName: string (valid string?)
+input dataToMerge: object (data to be merged)
+output: false?
+
+testName: mergeData_inValidDataCatagoryNaN
+input targetData: object (data to be merged with dataToMerge)
+input dataCatagory: NaN
+input pageName: string (valid string?)
+input dataToMerge: object (data to be merged)
+output: false?
+
+testName: mergeData_inValidPageNameNumber
+input targetData: object (data to be merged with dataToMerge)
+input dataCatagory: string (valid string?)
+input pageName: integer (546)
+input dataToMerge: object (data to be merged)
+output: false?
+
+testName: mergeData_inValidPageNameBoolean
+input targetData: object (data to be merged with dataToMerge)
+input dataCatagory: string (valid string?)
+input pageName: boolean (false)
+input dataToMerge: object (data to be merged)
+output: false?
+
+testName: mergeData_inValidPageNameUndefined
+input targetData: object (data to be merged with dataToMerge)
+input dataCatagory: string (valid string?)
+input pageName: undefined
+input dataToMerge: object (data to be merged)
+output: false?
+
+testName: mergeData_inValidPageNameNaN
+input targetData: object (data to be merged with dataToMerge)
+input dataCatagory: string (valid string?)
+input pageName: NaN
+input dataToMerge: object (data to be merged)
+output: false?
+
+testName: mergeData_inValidDataToMergeNumber
+input targetData: object (data to be merged with dataToMerge)
+input dataCatagory: string (valid string?)
+input pageName: string (valid string?)
+input dataToMerge: integer (546)
+output: false?
+
+testName: mergeData_inValidDataToMergeBoolean
+input targetData: object (data to be merged with dataToMerge)
+input dataCatagory: string (valid string?)
+input pageName: string (valid string?)
+input dataToMerge: boolean (false)
+output: false?
+
+testName: mergeData_inValidDataToMergeUndefined
+input targetData: object (data to be merged with dataToMerge)
+input dataCatagory: string (valid string?)
+input pageName: string (valid string?)
+input dataToMerge: undefined
+output: false?
+
+testName: mergeData_inValidDataToMergeNaN
+input targetData: object (data to be merged with dataToMerge)
+input dataCatagory: string (valid string?)
+input pageName: string (valid string?)
+input dataToMerge: NaN
+output: false?
+
+testName: mergeData_inValidAllUndefined
+input targetData: undefined
+input dataCatagory: undefined
+input pageName: undefined
+input dataToMerge: undefined
+output: false?
+
+testName: mergeData_inValidAllNaN
+input targetData: NaN
+input dataCatagory: NaN
+input pageName: NaN
+input dataToMerge: NaN
+output: false?
+--------------------------------------------------------------------------------
+testName: getDataElement_validData
+input dataObject: object (the data object with all data.)
+input pageName: string (valid string?)
+input elementName: string (valid string?)
+output: string (data element with all carriage return characters removed from it)
+
+testName: getDataElement_inValidDataObjectString
+input dataObject: string (464gsdsfae8f46)
+input pageName: string (valid string?)
+input elementName: string (valid string?)
+output: false?
+
+testName: getDataElement_inValidPageNameString
+input dataObject: object (the data object with all data.)
+input pageName: string (464gsdsfae8f46)
+input elementName: string (valid string?)
+output: false?
+
+testName: getDataElement_inValidElementNameString
+input dataObject: object (the data object with all data.)
+input pageName: string (valid string?)
+input elementName: string (464gsdsfae8f46)
+output: false?
+
+testName: getDataElement_inValidDataObjectNumber
+input dataObject: integer (546)
+input pageName: string (valid string?)
+input elementName: string (valid string?)
+output: false?
+
+testName: getDataElement_inValidDataObjectBoolean
+input dataObject: boolean (false)
+input pageName: string (valid string?)
+input elementName: string (valid string?)
+output: false?
+
+testName: getDataElement_inValidDataObjectUndefined
+input dataObject: undefined
+input pageName: string (valid string?)
+input elementName: string (valid string?)
+output: false?
+
+testName: getDataElement_inValidDataObjectNaN
+input dataObject: NaN
+input pageName: string (valid string?)
+input elementName: string (valid string?)
+output: false?
+
+testName: getDataElement_inValidPageNameNumber
+input dataObject: object (the data object with all data.)
+input pageName: integer (546)
+input elementName: string (valid string?)
+output: false?
+
+testName: getDataElement_inValidPageNameBoolean
+input dataObject: object (the data object with all data.)
+input pageName: boolean (false)
+input elementName: string (valid string?)
+output: false?
+
+testName: getDataElement_inValidPageNameUndefined
+input dataObject: object (the data object with all data.)
+input pageName: undefined
+input elementName: string (valid string?)
+output: false?
+
+testName: getDataElement_inValidPageNameNaN
+input dataObject: object (the data object with all data.)
+input pageName: NaN
+input elementName: string (valid string?)
+output: false?
+
+testName: getDataElement_inValidElementNameNumber
+input dataObject: object (the data object with all data.)
+input pageName: string (valid string?)
+input elementName: integer (546)
+output: false?
+
+testName: getDataElement_inValidElementNameBoolean
+input dataObject: object (the data object with all data.)
+input pageName: string (valid string?)
+input elementName: boolean (false)
+output: false?
+
+testName: getDataElement_inValidElementNameUndefined
+input dataObject: object (the data object with all data.)
+input pageName: string (valid string?)
+input elementName: undefined
+output: false?
+
+testName: getDataElement_inValidElementNameNaN
+input dataObject: object (the data object with all data.)
+input pageName: string (valid string?)
+input elementName: NaN
+output: false?
+
+testName: getDataElement_inValidAllUndefined
+input dataObject: undefined
+input pageName: undefined
+input elementName: undefined
+output: false?
+
+testName: getDataElement_inValidAllNaN
+input dataObject: NaN
+input pageName: NaN
+input elementName: NaN
+output: false?
+--------------------------------------------------------------------------------
+testName: getDataElementCount_validData
+input dataObject: object (the data map with all data.)
+input pageName: string (valid string?)
+input elementNamePattern: string (valid string?)
+output: integer (the number of data elements in the object collection or a count
+for the number of data elements that match a pattern)
+
+testName: getDataElementCount_inValidDataObjectString
+input dataObject: string (464gsdsfae8f46)
+input pageName: string (valid string?)
+input elementNamePattern: string (valid string?)
+output: false?
+
+testName: getDataElementCount_inValidPageNameString
+input dataObject: object (the data map with all data.)
+input pageName: string (464gsdsfae8f46)
+input elementNamePattern: string (valid string?)
+output: false?
+
+testName: getDataElementCount_inValidElementNamePatternString
+input dataObject: object (the data map with all data.)
+input pageName: string (valid string?)
+input elementNamePattern: string (464gsdsfae8f46)
+output: false?
+
+testName: getDataElementCount_inValidDataObjectNumber
+input dataObject: integer (546)
+input pageName: string (valid string?)
+input elementNamePattern: string (valid string?)
+output: false?
+
+testName: getDataElementCount_inValidDataObjectBoolean
+input dataObject: boolean (false)
+input pageName: string (valid string?)
+input elementNamePattern: string (valid string?)
+output: false?
+
+testName: getDataElementCount_inValidDataObjectUndefined
+input dataObject: undefined
+input pageName: string (valid string?)
+input elementNamePattern: string (valid string?)
+output: false?
+
+testName: getDataElementCount_inValidDataObjectNaN
+input dataObject: NaN
+input pageName: string (valid string?)
+input elementNamePattern: string (valid string?)
+output: false?
+
+testName: getDataElementCount_inValidPageNameNumber
+input dataObject: object (the data map with all data.)
+input pageName: integer (546)
+input elementNamePattern: string (valid string?)
+output: false?
+
+testName: getDataElementCount_inValidPageNameBoolean
+input dataObject: object (the data map with all data.)
+input pageName: boolean (false)
+input elementNamePattern: string (valid string?)
+output: false?
+
+testName: getDataElementCount_inValidPageNameUndefined
+input dataObject: object (the data map with all data.)
+input pageName: undefined
+input elementNamePattern: string (valid string?)
+output: false?
+
+testName: getDataElementCount_inValidPageNameNaN
+input dataObject: object (the data map with all data.)
+input pageName: NaN
+input elementNamePattern: string (valid string?)
+output: false?
+
+testName: getDataElementCount_inValidElementNamePatternNumber
+input dataObject: object (the data map with all data.)
+input pageName: string (valid string?)
+input elementNamePattern: integer (546)
+output: false?
+
+testName: getDataElementCount_inValidElementNamePatternBoolean
+input dataObject: object (the data map with all data.)
+input pageName: string (valid string?)
+input elementNamePattern: boolean (false)
+output: false?
+
+testName: getDataElementCount_inValidElementNamePatternUndefined
+input dataObject: object (the data map with all data.)
+input pageName: string (valid string?)
+input elementNamePattern: undefined
+output: false?
+
+testName: getDataElementCount_inValidElementNamePatternNaN
+input dataObject: object (the data map with all data.)
+input pageName: string (valid string?)
+input elementNamePattern: NaN
+output: false?
+
+testName: getDataElementCount_inValidAllUndefined
+input dataObject: undefined
+input pageName: undefined
+input elementNamePattern: undefined
+output: false?
+
+testName: getDataElementCount_inValidAllNaN
+input dataObject: NaN
+input pageName: NaN
+input elementNamePattern: NaN
+output: false?

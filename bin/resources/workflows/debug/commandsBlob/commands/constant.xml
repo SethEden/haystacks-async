@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?><CommandWorkflows>
+  <debug>
+    <commandsBlob>
+      <commands>
+        <constant>
+          <Workflow Name="constantEnable" Value="changeConfigSetting debugSetting.commandsBlob.commands.constant true"/>
+          <Workflow Name="constantDisable" Value="changeConfigSetting debugSetting.commandsBlob.commands.constant false"/>
+          <Workflow Name="constantsGeneratorEnable" Value="changeConfigSetting debugSetting.commandsBlob.commands.constant.constantsGenerator true"/>
+          <Workflow Name="constantsGeneratorDisable" Value="changeConfigSetting debugSetting.commandsBlob.commands.constant.constantsGenerator false"/>
+          <Workflow Name="constantsGeneratorListEnable" Value="changeConfigSetting debugSetting.commandsBlob.commands.constant.constantsGeneratorList true"/>
+          <Workflow Name="constantsGeneratorListDisable" Value="changeConfigSetting debugSetting.commandsBlob.commands.constant.constantsGeneratorList false"/>
+          <Workflow Name="constantsPatternRecognizerEnable" Value="changeConfigSetting debugSetting.commandsBlob.commands.constant.constantsPatternRecognizer true"/>
+          <Workflow Name="constantsPatternRecognizerDisable" Value="changeConfigSetting debugSetting.commandsBlob.commands.constant.constantsPatternRecognizer false"/>
+          <Workflow Name="evaluateConstantEnable" Value="changeConfigSetting debugSetting.commandsBlob.commands.constant.evaluateConstant true"/>
+          <Workflow Name="evaluateConstantDisable" Value="changeConfigSetting debugSetting.commandsBlob.commands.constant.evaluateConstant false"/>
+        </constant>
+      </commands>
+    </commandsBlob>
+  </debug>
+</CommandWorkflows>

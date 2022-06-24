@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?><CommandWorkflows>
+  <debug>
+    <brokers>
+      <workflowBroker>
+        <Workflow Name="workflowBrokerEnable" Value="changeConfigSetting debugSetting.brokers.workflowBroker true"/>
+        <Workflow Name="workflowBrokerDisable" Value="changeConfigSetting debugSetting.brokers.workflowBroker false"/>
+        <Workflow Name="getWorkflowEnable" Value="changeConfigSetting debugSetting.brokers.workflowBroker.getWorkflow true"/>
+        <Workflow Name="getWorkflowDisable" Value="changeConfigSetting debugSetting.brokers.workflowBroker.getWorkflow false"/>
+        <Workflow Name="searchWorkflowEnable" Value="changeConfigSetting debugSetting.brokers.workflowBroker.searchWorkflow true"/>
+        <Workflow Name="searchWorkflowDisable" Value="changeConfigSetting debugSetting.brokers.workflowBroker.searchWorkflow false"/>
+        <Workflow Name="getAllWorkflowsEnable" Value="changeConfigSetting debugSetting.brokers.workflowBroker.getAllWorkflows true"/>
+        <Workflow Name="getAllWorkflowsDisable" Value="changeConfigSetting debugSetting.brokers.workflowBroker.getAllWorkflows false"/>
+        <Workflow Name="getWorkflowNamespaceDataObjectEnable" Value="changeConfigSetting debugSetting.brokers.workflowBroker.getWorkflowNamespaceDataObject true"/>
+        <Workflow Name="getWorkflowNamespaceDataObjectDisable" Value="changeConfigSetting debugSetting.brokers.workflowBroker.getWorkflowNamespaceDataObject false"/>
+      </workflowBroker>
+    </brokers>
+  </debug>
+</CommandWorkflows>

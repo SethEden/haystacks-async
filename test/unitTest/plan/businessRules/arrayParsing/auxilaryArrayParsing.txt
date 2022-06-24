@@ -1,0 +1,98 @@
+description: Test plan for auxilaryArrayParsing.js
+
+
+--------------------------------------------------------------------------------
+testName: parseColorRangeInputs_validDataString
+input inputData: string|integer (represents the minimum range that is used to generate the random color)
+input inputMetaData: string|integer (represents the maximum range that is used to generate the random color)
+output: array<integer> (The minimum and maximum values returned in an array)
+
+testName: parseColorRangeInputs_validDataInputDataString
+input inputData: string (dfxg24346dfg)
+input inputMetaData: string|integer (represents the maximum range that is used to generate the random color) (testDataString)
+output: ?
+
+testName: parseColorRangeInputs_validDataInputDataInteger
+input inputData: integer (23456)
+input inputMetaData: string|integer (represents the maximum range that is used to generate the random color) (testDataInteger)
+output: ?
+
+testName: parseColorRangeInputs_validDataInputMetaDataString
+input inputData: string|integer (represents the minimum range that is used to generate the random color) (testDataString)
+input inputMetaData: string (dfxg24346dfg)
+output: ?
+
+testName: parseColorRangeInputs_validDataInputMetaDataInteger
+input inputData: string|integer (represents the minimum range that is used to generate the random color) (testDataInteger)
+input inputMetaData: integer (23456)
+output: ?
+
+testName: parseColorRangeInputs_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string|integer (represents the maximum range that is used to generate the random color) (inValidDataToStoreUndefined)
+output: ?
+
+testName: parseColorRangeInputs_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string|integer (represents the maximum range that is used to generate the random color) (inValidDataToStoreNaN)
+output: ?
+
+testName: parseColorRangeInputs_inValidInputMetaDataUndefined
+input inputData: string|integer (represents the minimum range that is used to generate the random color) (inValidDataToStoreUndefined)
+input inputMetaData: undefined
+output: ?
+
+testName: parseColorRangeInputs_inValidInputMetaDataNaN
+input inputData: string|integer (represents the minimum range that is used to generate the random color) (inValidDataToStoreNaN)
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: doesArrayContainValue_validDataString
+input inputData: array<array<string|integer|boolean|float|object>,string|integer|boolean|float|object>
+input inputMetaData: function (the function that should be used to do the search)
+output: boolean (True or False to indicate if the value was found in the array or not found)
+
+testName: doesArrayContainValue_validDataInputDataString
+input inputData: string (dfxg24346dfg)
+input inputMetaData: function (the function that should be used to do the search) (testDataString)
+output: ?
+
+testName: doesArrayContainValue_validDataInputDataInteger
+input inputData: integer (23456)
+input inputMetaData: function (the function that should be used to do the search) (testDataInteger)
+output: ?
+
+testName: doesArrayContainValue_validDataInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: function (the function that should be used to do the search) (testDataBoolean)
+output: ?
+
+testName: doesArrayContainValue_validDataInputDataObject
+input inputData: object ({"constants":"c,const","Generator":"g,gen,genrtr","List":"l,lst"})
+input inputMetaData: function (the function that should be used to do the search) (testDataObject)
+output: ?
+
+testName: doesArrayContainValue_validDataInputMetaDataFunction
+input inputData: array<array<string|integer|boolean|float|object>,string|integer|boolean|float|object> (testDataFunction)
+input inputMetaData: function ([C:\haystacks\test\unitTest\testData\functionTest.js - doesArrayContainValueTestFunction])
+output: ?
+
+testName: doesArrayContainValue_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: array<array<string|integer|boolean|float|object>,string|integer|boolean|float|object> (inValidDataToStoreUndefined)
+output: ?
+
+testName: doesArrayContainValue_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: array<array<string|integer|boolean|float|object>,string|integer|boolean|float|object> (inValidDataToStoreNaN)
+output: ?
+
+testName: doesArrayContainValue_inValidDataStorageInputMetaDataInteger
+input inputData: array ([1,2,3,4,5])
+input inputMetaData: integer (4567)
+output: ?
+
+testName: doesArrayContainValue_inValidDataStorageInputMetaDataBoolean
+input inputData: array ([1,2,3,4,5])
+input inputMetaData: boolean (false)
+output: ?

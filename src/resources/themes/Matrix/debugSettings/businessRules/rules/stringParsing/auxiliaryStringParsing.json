@@ -1,0 +1,15 @@
+{
+  "debugFiles|debugSetting.businessRules.rules.stringParsing.auxiliaryStringParsing": false,
+  "debugFiles|debugSetting.businessRules.rules.stringParsing.auxiliaryStringParsing@ModuleFontStyle": "Bold|Underline",
+  "debugFiles|debugSetting.businessRules.rules.stringParsing.auxiliaryStringParsing@FunctionFontStyle": "Bold|Underline",
+  "debugFiles|debugSetting.businessRules.rules.stringParsing.auxiliaryStringParsing@MessageFontStyle": "Underline",
+  "debugFiles|debugSetting.businessRules.rules.stringParsing.auxiliaryStringParsing@DataFontStyle": "Bold",
+  "debugFiles|debugSetting.businessRules.rules.stringParsing.auxiliaryStringParsing@ModuleFontColor": "Black",
+  "debugFiles|debugSetting.businessRules.rules.stringParsing.auxiliaryStringParsing@FunctionFontColor": "50,205,50",
+  "debugFiles|debugSetting.businessRules.rules.stringParsing.auxiliaryStringParsing@MessageFontColor": "Black",
+  "debugFiles|debugSetting.businessRules.rules.stringParsing.auxiliaryStringParsing@DataFontColor": "50,205,50",
+  "debugFiles|debugSetting.businessRules.rules.stringParsing.auxiliaryStringParsing@ModuleFontBackgroundColor": "107,142,35",
+  "debugFiles|debugSetting.businessRules.rules.stringParsing.auxiliaryStringParsing@FunctionFontBackgroundColor": "Black",
+  "debugFiles|debugSetting.businessRules.rules.stringParsing.auxiliaryStringParsing@MessageFontBackgroundColor": "107,142,35",
+  "debugFiles|debugSetting.businessRules.rules.stringParsing.auxiliaryStringParsing@DataFontBackgroundColor": "Black"
+}

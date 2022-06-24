@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?><CommandWorkflows>
+  <debug>
+    <businessRules>
+      <rules>
+        <fileOperations>
+          <Workflow Name="fileOperationsEnable" Value="changeConfigSetting debugSetting.businessRules.rules.fileOperations true"/>
+          <Workflow Name="fileOperationsDisable" Value="changeConfigSetting debugSetting.businessRules.rules.fileOperations false"/>
+          <Workflow Name="getXmlDataEnable" Value="changeConfigSetting debugSetting.businessRules.rules.fileOperations.getXmlData true"/>
+          <Workflow Name="getXmlDataDisable" Value="changeConfigSetting debugSetting.businessRules.rules.fileOperations.getXmlData false"/>
+          <Workflow Name="getCsvDataEnable" Value="changeConfigSetting debugSetting.businessRules.rules.fileOperations.getCsvData true"/>
+          <Workflow Name="getCsvDataDisable" Value="changeConfigSetting debugSetting.businessRules.rules.fileOperations.getCsvData false"/>
+          <Workflow Name="getJsonDataEnable" Value="changeConfigSetting debugSetting.businessRules.rules.fileOperations.getJsonData true"/>
+          <Workflow Name="getJsonDataDisable" Value="changeConfigSetting debugSetting.businessRules.rules.fileOperations.getJsonData false"/>
+          <Workflow Name="writeJsonDataEnable" Value="changeConfigSetting debugSetting.businessRules.rules.fileOperations.writeJsonData true"/>
+          <Workflow Name="writeJsonDataDisable" Value="changeConfigSetting debugSetting.businessRules.rules.fileOperations.writeJsonData false"/>
+          <Workflow Name="scanDirectoryContentsEnable" Value="changeConfigSetting debugSetting.businessRules.rules.fileOperations.scanDirectoryContents true"/>
+          <Workflow Name="scanDirectoryContentsDisable" Value="changeConfigSetting debugSetting.businessRules.rules.fileOperations.scanDirectoryContents false"/>
+          <Workflow Name="fileOperationsCopyAllFilesAndFoldersFromFolderToFolderEnable" Value="changeConfigSetting debugSetting.businessRules.rules.fileOperations.copyAllFilesAndFoldersFromFolderToFolder true"/>
+          <Workflow Name="fileOperationsCopyAllFilesAndFoldersFromFolderToFolderDisable" Value="changeConfigSetting debugSetting.businessRules.rules.fileOperations.copyAllFilesAndFoldersFromFolderToFolder false"/>
+          <Workflow Name="buildReleasePackageEnable" Value="changeConfigSetting debugSetting.businessRules.rules.fileOperations.buildReleasePackage true"/>
+          <Workflow Name="buildReleasePackageDisable" Value="changeConfigSetting debugSetting.businessRules.rules.fileOperations.buildReleasePackage false"/>
+          <Workflow Name="cleanRootPathEnable" Value="changeConfigSetting debugSetting.businessRules.rules.fileOperations.cleanRootPath true"/>
+          <Workflow Name="cleanRootPathDisable" Value="changeConfigSetting debugSetting.businessRules.rules.fileOperations.cleanRootPath false"/>
+          <Workflow Name="fileOperationsCreateZipArchiveEnable" Value="changeConfigSetting debugSetting.businessRules.rules.fileOperations.createZipArchive true"/>
+          <Workflow Name="fileOperationsCreateZipArchiveDisable" Value="changeConfigSetting debugSetting.businessRules.rules.fileOperations.createZipArchive false"/>
+          <Workflow Name="copyFileSyncEnable" Value="changeConfigSetting debugSetting.businessRules.rules.fileOperations.copyFileSync true"/>
+          <Workflow Name="copyFileSyncDisable" Value="changeConfigSetting debugSetting.businessRules.rules.fileOperations.copyFileSync false"/>
+          <Workflow Name="copyFolderRecursiveSyncEnable" Value="changeConfigSetting debugSetting.businessRules.rules.fileOperations.copyFolderRecursiveSync true"/>
+          <Workflow Name="copyFolderRecursiveSyncDisable" Value="changeConfigSetting debugSetting.businessRules.rules.fileOperations.copyFolderRecursiveSync false"/>
+        </fileOperations>
+      </rules>
+    </businessRules>
+  </debug>
+</CommandWorkflows>

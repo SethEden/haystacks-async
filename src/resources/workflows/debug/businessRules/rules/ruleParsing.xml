@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?><CommandWorkflows>
+  <debug>
+    <businessRules>
+      <rules>
+        <ruleParsing>
+          <Workflow Name="ruleParsingEnable" Value="changeConfigSetting debugSetting.businessRules.rules.ruleParsing true"/>
+          <Workflow Name="ruleParsingDisable" Value="changeConfigSetting debugSetting.businessRules.rules.ruleParsing false"/>
+          <Workflow Name="doAllRulesExistEnable" Value="changeConfigSetting debugSetting.businessRules.rules.ruleParsing.doAllRulesExist true"/>
+          <Workflow Name="doAllRulesExistDisable" Value="changeConfigSetting debugSetting.businessRules.rules.ruleParsing.doAllRulesExist false"/>
+          <Workflow Name="doesRuleExistEnable" Value="changeConfigSetting debugSetting.businessRules.rules.ruleParsing.doesRuleExist true"/>
+          <Workflow Name="doesRuleExistDisable" Value="changeConfigSetting debugSetting.businessRules.rules.ruleParsing.doesRuleExist false"/>
+          <Workflow Name="processRulesInternalEnable" Value="changeConfigSetting debugSetting.businessRules.rules.ruleParsing.processRulesInternal true"/>
+          <Workflow Name="processRulesInternalDisable" Value="changeConfigSetting debugSetting.businessRules.rules.ruleParsing.processRulesInternal false"/>
+        </ruleParsing>
+      </rules>
+    </businessRules>
+  </debug>
+</CommandWorkflows>

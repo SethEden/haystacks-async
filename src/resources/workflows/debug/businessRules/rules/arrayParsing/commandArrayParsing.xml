@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?><CommandWorkflows>
+  <debug>
+    <businessRules>
+      <rules>
+        <arrayParsing>
+          <commandArrayParsing>
+            <Workflow Name="commandArrayParsingEnable" Value="changeConfigSetting debugSetting.businessRules.rules.arrayParsing.commandArrayParsing true"/>
+            <Workflow Name="commandArrayParsingDisable" Value="changeConfigSetting debugSetting.businessRules.rules.arrayParsing.commandArrayParsing false"/>
+            <Workflow Name="solveLehmerCodeEnable" Value="changeConfigSetting debugSetting.businessRules.rules.arrayParsing.commandArrayParsing.solveLehmerCode true"/>
+            <Workflow Name="solveLehmerCodeDisable" Value="changeConfigSetting debugSetting.businessRules.rules.arrayParsing.commandArrayParsing.solveLehmerCode false"/>
+            <Workflow Name="recursiveArrayExpansionEnable" Value="changeConfigSetting debugSetting.businessRules.rules.arrayParsing.commandArrayParsing.recursiveArrayExpansion true"/>
+            <Workflow Name="recursiveArrayExpansionDisable" Value="changeConfigSetting debugSetting.businessRules.rules.arrayParsing.commandArrayParsing.recursiveArrayExpansion false"/>
+            <Workflow Name="getLehmerCodeValueEnable" Value="changeConfigSetting debugSetting.businessRules.rules.arrayParsing.commandArrayParsing.getLehmerCodeValue true"/>
+            <Workflow Name="getLehmerCodeValueDisable" Value="changeConfigSetting debugSetting.businessRules.rules.arrayParsing.commandArrayParsing.getLehmerCodeValue false"/>
+            <Workflow Name="generateCommandAliasesEnable" Value="changeConfigSetting debugSetting.businessRules.rules.arrayParsing.commandArrayParsing.generateCommandAliases true"/>
+            <Workflow Name="generateCommandAliasesDisable" Value="changeConfigSetting debugSetting.businessRules.rules.arrayParsing.commandArrayParsing.generateCommandAliases false"/>
+            <Workflow Name="aggregateCommandArgumentsEnable" Value="changeConfigSetting debugSetting.businessRules.rules.arrayParsing.commandArrayParsing.aggregateCommandArguments true"/>
+            <Workflow Name="aggregateCommandArgumentsDisable" Value="changeConfigSetting debugSetting.businessRules.rules.arrayParsing.commandArrayParsing.aggregateCommandArguments false"/>
+          </commandArrayParsing>
+        </arrayParsing>
+      </rules>
+    </businessRules>
+  </debug>
+</CommandWorkflows>

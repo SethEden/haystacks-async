@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?><CommandWorkflows>
+  <debug>
+    <businessRules>
+      <rules>
+        <characterGeneration>
+          <Workflow Name="characterGenerationEnable" Value="changeConfigSetting debugSetting.businessRules.rules.characterGeneration true"/>
+          <Workflow Name="characterGenerationDisable" Value="changeConfigSetting debugSetting.businessRules.rules.characterGeneration false"/>
+          <Workflow Name="randomlyGenerateMixedCaseLetterOrSpecialCharacterEnable" Value="changeConfigSetting debugSetting.businessRules.rules.characterGeneration.randomlyGenerateMixedCaseLetterOrSpecialCharacter true"/>
+          <Workflow Name="randomlyGenerateMixedCaseLetterOrSpecialCharacterDisable" Value="changeConfigSetting debugSetting.businessRules.rules.characterGeneration.randomlyGenerateMixedCaseLetterOrSpecialCharacter false"/>
+          <Workflow Name="randomlyGenerateUpperCaseLetterOrSpecialCharacterEnable" Value="changeConfigSetting debugSetting.businessRules.rules.characterGeneration.randomlyGenerateUpperCaseLetterOrSpecialCharacter true"/>
+          <Workflow Name="randomlyGenerateUpperCaseLetterOrSpecialCharacterDisable" Value="changeConfigSetting debugSetting.businessRules.rules.characterGeneration.randomlyGenerateUpperCaseLetterOrSpecialCharacter false"/>
+          <Workflow Name="randomlyGenerateLowerCaseLetterOrSpecialCharacterEnable" Value="changeConfigSetting debugSetting.businessRules.rules.characterGeneration.randomlyGenerateLowerCaseLetterOrSpecialCharacter true"/>
+          <Workflow Name="randomlyGenerateLowerCaseLetterOrSpecialCharacterDisable" Value="changeConfigSetting debugSetting.businessRules.rules.characterGeneration.randomlyGenerateLowerCaseLetterOrSpecialCharacter false"/>
+          <Workflow Name="randomlyGenerateEitherMixedCaseLetterOrNumberOrSpecialCharacterEnable" Value="changeConfigSetting debugSetting.businessRules.rules.characterGeneration.randomlyGenerateEitherMixedCaseLetterOrNumberOrSpecialCharacter true"/>
+          <Workflow Name="randomlyGenerateEitherMixedCaseLetterOrNumberOrSpecialCharacterDisable" Value="changeConfigSetting debugSetting.businessRules.rules.characterGeneration.randomlyGenerateEitherMixedCaseLetterOrNumberOrSpecialCharacter false"/>
+          <Workflow Name="randomlyGenerateEitherUpperCaseLetterOrNumberOrSpecialCharacterEnable" Value="changeConfigSetting debugSetting.businessRules.rules.characterGeneration.randomlyGenerateEitherUpperCaseLetterOrNumberOrSpecialCharacter true"/>
+          <Workflow Name="randomlyGenerateEitherUpperCaseLetterOrNumberOrSpecialCharacterDisable" Value="changeConfigSetting debugSetting.businessRules.rules.characterGeneration.randomlyGenerateEitherUpperCaseLetterOrNumberOrSpecialCharacter false"/>
+          <Workflow Name="randomlyGenerateEitherLowerCaseLetterOrNumberOrSpecialCharacterEnable" Value="changeConfigSetting debugSetting.businessRules.rules.characterGeneration.randomlyGenerateEitherLowerCaseLetterOrNumberOrSpecialCharacter true"/>
+          <Workflow Name="randomlyGenerateEitherLowerCaseLetterOrNumberOrSpecialCharacterDisable" Value="changeConfigSetting debugSetting.businessRules.rules.characterGeneration.randomlyGenerateEitherLowerCaseLetterOrNumberOrSpecialCharacter false"/>
+          <Workflow Name="randomlyGenerateMixedCaseAlphaNumericCharacterEnable" Value="changeConfigSetting debugSetting.businessRules.rules.characterGeneration.randomlyGenerateMixedCaseAlphaNumericCharacter true"/>
+          <Workflow Name="randomlyGenerateMixedCaseAlphaNumericCharacterDisable" Value="changeConfigSetting debugSetting.businessRules.rules.characterGeneration.randomlyGenerateMixedCaseAlphaNumericCharacter false"/>
+          <Workflow Name="randomlyGenerateUpperCaseAlphaNumericCharacterEnable" Value="changeConfigSetting debugSetting.businessRules.rules.characterGeneration.randomlyGenerateUpperCaseAlphaNumericCharacter true"/>
+          <Workflow Name="randomlyGenerateUpperCaseAlphaNumericCharacterDisable" Value="changeConfigSetting debugSetting.businessRules.rules.characterGeneration.randomlyGenerateUpperCaseAlphaNumericCharacter false"/>
+          <Workflow Name="randomlyGenerateLowerCaseAlphaNumericCharacterEnable" Value="changeConfigSetting debugSetting.businessRules.rules.characterGeneration.randomlyGenerateLowerCaseAlphaNumericCharacter true"/>
+          <Workflow Name="randomlyGenerateLowerCaseAlphaNumericCharacterDisable" Value="changeConfigSetting debugSetting.businessRules.rules.characterGeneration.randomlyGenerateLowerCaseAlphaNumericCharacter false"/>
+          <Workflow Name="randomlyGenerateNumericCharacterEnable" Value="changeConfigSetting debugSetting.businessRules.rules.characterGeneration.randomlyGenerateNumericCharacter true"/>
+          <Workflow Name="randomlyGenerateNumericCharacterDisable" Value="changeConfigSetting debugSetting.businessRules.rules.characterGeneration.randomlyGenerateNumericCharacter false"/>
+          <Workflow Name="randomlyGenerateSpecialCharacterEnable" Value="changeConfigSetting debugSetting.businessRules.rules.characterGeneration.randomlyGenerateSpecialCharacter true"/>
+          <Workflow Name="randomlyGenerateSpecialCharacterDisable" Value="changeConfigSetting debugSetting.businessRules.rules.characterGeneration.randomlyGenerateSpecialCharacter false"/>
+          <Workflow Name="randomlyGenerateNumberInRangeEnable" Value="changeConfigSetting debugSetting.businessRules.rules.characterGeneration.randomlyGenerateNumberInRange true"/>
+          <Workflow Name="randomlyGenerateNumberInRangeDisable" Value="changeConfigSetting debugSetting.businessRules.rules.characterGeneration.randomlyGenerateNumberInRange false"/>
+          <Workflow Name="randomlyGenerateBooleanValueEnable" Value="changeConfigSetting debugSetting.businessRules.rules.characterGeneration.randomlyGenerateBooleanValue true"/>
+          <Workflow Name="randomlyGenerateBooleanValueDisable" Value="changeConfigSetting debugSetting.businessRules.rules.characterGeneration.randomlyGenerateBooleanValue false"/>
+          <Workflow Name="randomlyGenerateMixedCaseAlphabeticCharacterEnable" Value="changeConfigSetting debugSetting.businessRules.rules.characterGeneration.randomlyGenerateMixedCaseAlphabeticCharacter true"/>
+          <Workflow Name="randomlyGenerateMixedCaseAlphabeticCharacterDisable" Value="changeConfigSetting debugSetting.businessRules.rules.characterGeneration.randomlyGenerateMixedCaseAlphabeticCharacter false"/>
+          <Workflow Name="randomlyGenerateLowerCaseLetterEnable" Value="changeConfigSetting debugSetting.businessRules.rules.characterGeneration.randomlyGenerateLowerCaseLetter true"/>
+          <Workflow Name="randomlyGenerateLowerCaseLetterDisable" Value="changeConfigSetting debugSetting.businessRules.rules.characterGeneration.randomlyGenerateLowerCaseLetter false"/>
+          <Workflow Name="randomlyGenerateUpperCaseLetterEnable" Value="changeConfigSetting debugSetting.businessRules.rules.characterGeneration.randomlyGenerateUpperCaseLetter true"/>
+          <Workflow Name="randomlyGenerateUpperCaseLetterDisable" Value="changeConfigSetting debugSetting.businessRules.rules.characterGeneration.randomlyGenerateUpperCaseLetter false"/>
+          <Workflow Name="convertNumberToUpperCaseLetterEnable" Value="changeConfigSetting debugSetting.businessRules.rules.characterGeneration.convertNumberToUpperCaseLetter true"/>
+          <Workflow Name="convertNumberToUpperCaseLetterDisable" Value="changeConfigSetting debugSetting.businessRules.rules.characterGeneration.convertNumberToUpperCaseLetter false"/>
+          <Workflow Name="convertNumberToLowerCaseLetterEnable" Value="changeConfigSetting debugSetting.businessRules.rules.characterGeneration.convertNumberToLowerCaseLetter true"/>
+          <Workflow Name="convertNumberToLowerCaseLetterDisable" Value="changeConfigSetting debugSetting.businessRules.rules.characterGeneration.convertNumberToLowerCaseLetter false"/>
+        </characterGeneration>
+      </rules>
+    </businessRules>
+  </debug>
+</CommandWorkflows>

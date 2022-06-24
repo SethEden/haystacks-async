@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?><CommandWorkflows>
+  <debug>
+    <commandsBlob>
+      <commands>
+        <system>
+          <Workflow Name="systemEnable" Value="changeConfigSetting debugSetting.commandsBlob.commands.system true"/>
+          <Workflow Name="systemDisable" Value="changeConfigSetting debugSetting.commandsBlob.commands.system false"/>
+          <Workflow Name="echoCommandEnable" Value="changeConfigSetting debugSetting.commandsBlob.commands.system.echoCommand true"/>
+          <Workflow Name="echoCommandDisable" Value="changeConfigSetting debugSetting.commandsBlob.commands.system.echoCommand false"/>
+          <Workflow Name="exitEnable" Value="changeConfigSetting debugSetting.commandsBlob.commands.system.exit true"/>
+          <Workflow Name="exitDisable" Value="changeConfigSetting debugSetting.commandsBlob.commands.system.exit false"/>
+          <Workflow Name="versionEnable" Value="changeConfigSetting debugSetting.commandsBlob.commands.system.version true"/>
+          <Workflow Name="versionDisable" Value="changeConfigSetting debugSetting.commandsBlob.commands.system.version false"/>
+          <Workflow Name="aboutEnable" Value="changeConfigSetting debugSetting.commandsBlob.commands.system.about true"/>
+          <Workflow Name="aboutDisable" Value="changeConfigSetting debugSetting.commandsBlob.commands.system.about false"/>
+          <Workflow Name="nameEnable" Value="changeConfigSetting debugSetting.commandsBlob.commands.system.name true"/>
+          <Workflow Name="nameDisable" Value="changeConfigSetting debugSetting.commandsBlob.commands.system.name false"/>
+          <Workflow Name="clearScreenEnable" Value="changeConfigSetting debugSetting.commandsBlob.commands.system.clearScreen true"/>
+          <Workflow Name="clearScreenDisable" Value="changeConfigSetting debugSetting.commandsBlob.commands.system.clearScreen false"/>
+          <Workflow Name="helpEnable" Value="changeConfigSetting debugSetting.commandsBlob.commands.system.help true"/>
+          <Workflow Name="helpDisable" Value="changeConfigSetting debugSetting.commandsBlob.commands.system.help false"/>
+          <Workflow Name="workflowHelpEnable" Value="changeConfigSetting debugSetting.commandsBlob.commands.system.workflowHelp true"/>
+          <Workflow Name="workflowHelpDisable" Value="changeConfigSetting debugSetting.commandsBlob.commands.system.workflowHelp false"/>
+        </system>
+      </commands>
+    </commandsBlob>
+  </debug>
+</CommandWorkflows>

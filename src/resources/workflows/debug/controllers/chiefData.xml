@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?><CommandWorkflows>
+  <debug>
+    <controllers>
+      <chiefData>
+        <Workflow Name="chiefDataEnable" Value="changeConfigSetting debugSetting.controllers.chiefData true"/>
+        <Workflow Name="chiefDataDisable" Value="changeConfigSetting debugSetting.controllers.chiefData false"/>
+        <Workflow Name="getAndProcessCsvDataEnable" Value="changeConfigSetting debugSetting.controllers.chiefData.getAndProcessCsvData true"/>
+        <Workflow Name="getAndProcessCsvDataDisable" Value="changeConfigSetting debugSetting.controllers.chiefData.getAndProcessCsvData false"/>
+        <Workflow Name="getAndProcessXmlDataEnable" Value="changeConfigSetting debugSetting.controllers.chiefData.getAndProcessXmlData true"/>
+        <Workflow Name="getAndProcessXmlDataDisable" Value="changeConfigSetting debugSetting.controllers.chiefData.getAndProcessXmlData false"/>
+        <Workflow Name="setupAllCsvDataEnable" Value="changeConfigSetting debugSetting.controllers.chiefData.setupAllCsvData true"/>
+        <Workflow Name="setupAllCsvDataDisable" Value="changeConfigSetting debugSetting.controllers.chiefData.setupAllCsvData false"/>
+        <Workflow Name="setupAllXmlDataEnable" Value="changeConfigSetting debugSetting.controllers.chiefData.setupAllXmlData true"/>
+        <Workflow Name="setupAllXmlDataDisable" Value="changeConfigSetting debugSetting.controllers.chiefData.setupAllXmlData false"/>
+        <Workflow Name="setupAllJsonConfigDataEnable" Value="changeConfigSetting debugSetting.controllers.chiefData.setupAllJsonConfigData true"/>
+        <Workflow Name="setupAllJsonConfigDataDisable" Value="changeConfigSetting debugSetting.controllers.chiefData.setupAllJsonConfigData false"/>
+        <Workflow Name="chiefDataInitializeConstantsValidationDataEnable" Value="changeConfigSetting debugSetting.controllers.chiefData.initializeConstantsValidationData true"/>
+        <Workflow Name="chiefDataInitializeConstantsValidationDataDisable" Value="changeConfigSetting debugSetting.controllers.chiefData.initializeConstantsValidationData false"/>
+        <Workflow Name="chiefDataAddConstantsValidationDataEnable" Value="changeConfigSetting debugSetting.controllers.chiefData.addConstantsValidationData true"/>
+        <Workflow Name="chiefDataAddConstantsValidationDataDisable" Value="changeConfigSetting debugSetting.controllers.chiefData.addConstantsValidationData false"/>
+      </chiefData>
+    </controllers>
+  </debug>
+</CommandWorkflows>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?><CommandWorkflows>
+  <debug>
+    <businessRules>
+      <rules>
+        <stringParsing>
+          <fileStringParsing>
+            <Workflow Name="fileStringParsingEnable" Value="changeConfigSetting debugSetting.businessRules.rules.stringParsing.fileStringParsing true"/>
+            <Workflow Name="fileStringParsingDisable" Value="changeConfigSetting debugSetting.businessRules.rules.stringParsing.fileStringParsing false"/>
+            <Workflow Name="getFileNameFromPathEnable" Value="changeConfigSetting debugSetting.businessRules.rules.stringParsing.fileStringParsing.getFileNameFromPath true"/>
+            <Workflow Name="getFileNameFromPathDisable" Value="changeConfigSetting debugSetting.businessRules.rules.stringParsing.fileStringParsing.getFileNameFromPath false"/>
+            <Workflow Name="getFileExtensionEnable" Value="changeConfigSetting debugSetting.businessRules.rules.stringParsing.fileStringParsing.getFileExtension true"/>
+            <Workflow Name="getFileExtensionDisable" Value="changeConfigSetting debugSetting.businessRules.rules.stringParsing.fileStringParsing.getFileExtension false"/>
+            <Workflow Name="removeDotFromFileExtensionEnable" Value="changeConfigSetting debugSetting.businessRules.rules.stringParsing.fileStringParsing.removeDotFromFileExtension true"/>
+            <Workflow Name="removeDotFromFileExtensionDisable" Value="changeConfigSetting debugSetting.businessRules.rules.stringParsing.fileStringParsing.removeDotFromFileExtension false"/>
+            <Workflow Name="removeFileExtensionFromFileNameEnable" Value="changeConfigSetting debugSetting.businessRules.rules.stringParsing.fileStringParsing.removeFileExtensionFromFileName true"/>
+            <Workflow Name="removeFileExtensionFromFileNameDisable" Value="changeConfigSetting debugSetting.businessRules.rules.stringParsing.fileStringParsing.removeFileExtensionFromFileName false"/>
+            <Workflow Name="ascertainMatchingFilenamesEnable" Value="changeConfigSetting debugSetting.businessRules.rules.stringParsing.fileStringParsing.ascertainMatchingFilenames true"/>
+            <Workflow Name="ascertainMatchingFilenamesDisable" Value="changeConfigSetting debugSetting.businessRules.rules.stringParsing.fileStringParsing.ascertainMatchingFilenames false"/>
+            <Workflow Name="supportedFileFormatsAreEnable" Value="changeConfigSetting debugSetting.businessRules.rules.stringParsing.fileStringParsing.supportedFileFormatsAre true"/>
+            <Workflow Name="supportedFileFormatsAreDisable" Value="changeConfigSetting debugSetting.businessRules.rules.stringParsing.fileStringParsing.supportedFileFormatsAre false"/>
+            <Workflow Name="fileStringParsingCopyAllFilesAndFoldersFromFolderToFolderEnable" Value="changeConfigSetting debugSetting.businessRules.rules.stringParsing.fileStringParsing.copyAllFilesAndFoldersFromFolderToFolder true"/>
+            <Workflow Name="fileStringParsingCopyAllFilesAndFoldersFromFolderToFolderDisable" Value="changeConfigSetting debugSetting.businessRules.rules.stringParsing.fileStringParsing.copyAllFilesAndFoldersFromFolderToFolder false"/>
+            <Workflow Name="removeXnumberOfFoldersFromEndOfPathEnable" Value="changeConfigSetting debugSetting.businessRules.rules.stringParsing.fileStringParsing.removeXnumberOfFoldersFromEndOfPath true"/>
+            <Workflow Name="removeXnumberOfFoldersFromEndOfPathDisable" Value="changeConfigSetting debugSetting.businessRules.rules.stringParsing.fileStringParsing.removeXnumberOfFoldersFromEndOfPath false"/>
+            <Workflow Name="getFirstTopLevelFolderFromPathEnable" Value="changeConfigSetting debugSetting.businessRules.rules.stringParsing.fileStringParsing.getFirstTopLevelFolderFromPath true"/>
+            <Workflow Name="getFirstTopLevelFolderFromPathDisable" Value="changeConfigSetting debugSetting.businessRules.rules.stringParsing.fileStringParsing.getFirstTopLevelFolderFromPath false"/>
+            <Workflow Name="fileStringParsingCreateZipArchiveEnable" Value="changeConfigSetting debugSetting.businessRules.rules.stringParsing.fileStringParsing.createZipArchive true"/>
+            <Workflow Name="fileStringParsingCreateZipArchiveDisable" Value="changeConfigSetting debugSetting.businessRules.rules.stringParsing.fileStringParsing.createZipArchive false"/>
+          </fileStringParsing>
+        </stringParsing>
+      </rules>
+    </businessRules>
+  </debug>
+</CommandWorkflows>

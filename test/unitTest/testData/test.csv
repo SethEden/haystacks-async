@@ -1,0 +1,8 @@
+PageName,ElementName,ActionOverride
+Page_HomePublic,URL,Default
+Page_HomePublic,Wait,10000
+Page_HomePublic,BrowserRefresh,Default
+Page_HomePublic,Wait,10000
+Page_HomePublic,Debug,Default
+Page_HomePublic,OnlineResume,AssertExists
+Page_HomePublic,ResumePrintable,AssertExists

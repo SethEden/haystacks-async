@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?><CommandWorkflows>
+  <debug>
+    <controllers>
+      <chiefCommander>
+        <Workflow Name="chiefCommanderEnable" Value="changeConfigSetting debugSetting.controllers.chiefCommander true"/>
+        <Workflow Name="chiefCommanderDisable" Value="changeConfigSetting debugSetting.controllers.chiefCommander false"/>
+        <Workflow Name="chiefCommanderBootStrapCommandsEnable" Value="changeConfigSetting debugSetting.controllers.chiefCommander.bootStrapCommands true"/>
+        <Workflow Name="chiefCommanderBootStrapCommandsDisable" Value="changeConfigSetting debugSetting.controllers.chiefCommander.bootStrapCommands false"/>
+        <Workflow Name="chiefCommanderAddClientCommandsEnable" Value="changeConfigSetting debugSetting.controllers.chiefCommander.addClientCommands true"/>
+        <Workflow Name="chiefCommanderAddClientCommandsDisable" Value="changeConfigSetting debugSetting.controllers.chiefCommander.addClientCommands false"/>
+        <Workflow Name="loadCommandAliasesFromPathEnable" Value="changeConfigSetting debugSetting.controllers.chiefCommander.loadCommandAliasesFromPath true"/>
+        <Workflow Name="loadCommandAliasesFromPathDisable" Value="changeConfigSetting debugSetting.controllers.chiefCommander.loadCommandAliasesFromPath false"/>
+        <Workflow Name="chiefCommanderEnqueueCommandEnable" Value="changeConfigSetting debugSetting.controllers.chiefCommander.enqueueCommand true"/>
+        <Workflow Name="chiefCommanderEnqueueCommandDisable" Value="changeConfigSetting debugSetting.controllers.chiefCommander.enqueueCommand false"/>
+        <Workflow Name="chiefCommanderIsCommandQueueEmptyEnable" Value="changeConfigSetting debugSetting.controllers.chiefCommander.isCommandQueueEmpty true"/>
+        <Workflow Name="chiefCommanderIsCommandQueueEmptyDisable" Value="changeConfigSetting debugSetting.controllers.chiefCommander.isCommandQueueEmpty false"/>
+        <Workflow Name="chiefCommanderProcessCommandQueueEnable" Value="changeConfigSetting debugSetting.controllers.chiefCommander.processCommandQueue true"/>
+        <Workflow Name="chiefCommanderProcessCommandQueueDisable" Value="changeConfigSetting debugSetting.controllers.chiefCommander.processCommandQueue false"/>
+      </chiefCommander>
+    </controllers>
+  </debug>
+</CommandWorkflows>

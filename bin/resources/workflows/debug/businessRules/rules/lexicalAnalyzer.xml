@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?><CommandWorkflows>
+  <debug>
+    <businessRules>
+      <rules>
+        <lexicalAnalyzer>
+          <Workflow Name="lexicalAnalyzerEnable" Value="changeConfigSetting debugSetting.businessRules.rules.lexicalAnalyzer true"/>
+          <Workflow Name="lexicalAnalyzerDisable" Value="changeConfigSetting debugSetting.businessRules.rules.lexicalAnalyzer false"/>
+          <Workflow Name="parseBusinessRuleArgumentEnable" Value="changeConfigSetting debugSetting.businessRules.rules.lexicalAnalyzer.parseBusinessRuleArgument true"/>
+          <Workflow Name="parseBusinessRuleArgumentDisable" Value="changeConfigSetting debugSetting.businessRules.rules.lexicalAnalyzer.parseBusinessRuleArgument false"/>
+          <Workflow Name="analyzeArgumentEnable" Value="changeConfigSetting debugSetting.businessRules.rules.lexicalAnalyzer.analyzeArgument true"/>
+          <Workflow Name="analyzeArgumentDisable" Value="changeConfigSetting debugSetting.businessRules.rules.lexicalAnalyzer.analyzeArgument false"/>
+          <Workflow Name="analyzeForRegularExpressionEnable" Value="changeConfigSetting debugSetting.businessRules.rules.lexicalAnalyzer.analyzeForRegularExpression true"/>
+          <Workflow Name="analyzeForRegularExpressionDisable" Value="changeConfigSetting debugSetting.businessRules.rules.lexicalAnalyzer.analyzeForRegularExpression false"/>
+          <Workflow Name="parseArgumentAsRegularExpressionEnable" Value="changeConfigSetting debugSetting.businessRules.rules.lexicalAnalyzer.parseArgumentAsRegularExpression true"/>
+          <Workflow Name="parseArgumentAsRegularExpressionDisable" Value="changeConfigSetting debugSetting.businessRules.rules.lexicalAnalyzer.parseArgumentAsRegularExpression false"/>
+          <Workflow Name="parseArgumentAsArrayEnable" Value="changeConfigSetting debugSetting.businessRules.rules.lexicalAnalyzer.parseArgumentAsArray true"/>
+          <Workflow Name="parseArgumentAsArrayDisable" Value="changeConfigSetting debugSetting.businessRules.rules.lexicalAnalyzer.parseArgumentAsArray false"/>
+          <Workflow Name="removeStringLiteralTagsFromArrayEnable" Value="changeConfigSetting debugSetting.businessRules.rules.lexicalAnalyzer.removeStringLiteralTagsFromArray true"/>
+          <Workflow Name="removeStringLiteralTagsFromArrayDisable" Value="changeConfigSetting debugSetting.businessRules.rules.lexicalAnalyzer.removeStringLiteralTagsFromArray false"/>
+        </lexicalAnalyzer>
+      </rules>
+    </businessRules>
+  </debug>
+</CommandWorkflows>

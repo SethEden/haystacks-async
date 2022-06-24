@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?><CommandWorkflows>
+  <debug>
+    <executrix>
+      <colorizer>
+        <Workflow Name="colorizerEnable" Value="changeConfigSetting debugSetting.executrix.colorizer true"/>
+        <Workflow Name="colorizerDisable" Value="changeConfigSetting debugSetting.executrix.colorizer false"/>
+        <Workflow Name="colorizeMessageEnable" Value="changeConfigSetting debugSetting.executrix.colorizer.colorizeMessage true"/>
+        <Workflow Name="colorizeMessageDisable" Value="changeConfigSetting debugSetting.executrix.colorizer.colorizeMessage false"/>
+        <Workflow Name="aggregateStyleSettingEnable" Value="changeConfigSetting debugSetting.executrix.colorizer.aggregateStyleSetting true"/>
+        <Workflow Name="aggregateStyleSettingDisable" Value="changeConfigSetting debugSetting.executrix.colorizer.aggregateStyleSetting false"/>
+        <Workflow Name="getFontStyleSettingsFromSettingEnable" Value="changeConfigSetting debugSetting.executrix.colorizer.getFontStyleSettingsFromSetting true"/>
+        <Workflow Name="getFontStyleSettingsFromSettingDisable" Value="changeConfigSetting debugSetting.executrix.colorizer.getFontStyleSettingsFromSetting false"/>
+        <Workflow Name="getColorStyleSettingFromSettingEnable" Value="changeConfigSetting debugSetting.executrix.colorizer.getColorStyleSettingFromSetting true"/>
+        <Workflow Name="getColorStyleSettingFromSettingDisable" Value="changeConfigSetting debugSetting.executrix.colorizer.getColorStyleSettingFromSetting false"/>
+        <Workflow Name="getNamedColorDataEnable" Value="changeConfigSetting debugSetting.executrix.colorizer.getNamedColorData true"/>
+        <Workflow Name="getNamedColorDataDisable" Value="changeConfigSetting debugSetting.executrix.colorizer.getNamedColorData false"/>
+        <Workflow Name="setUnderlineFontStyleOnMessageComponentAccordingToSettingEnable" Value="changeConfigSetting debugSetting.executrix.colorizer.setUnderlineFontStyleOnMessageComponentAccordingToSetting true"/>
+        <Workflow Name="setUnderlineFontStyleOnMessageComponentAccordingToSettingDisable" Value="changeConfigSetting debugSetting.executrix.colorizer.setUnderlineFontStyleOnMessageComponentAccordingToSetting false"/>
+        <Workflow Name="setBoldFontStyleOnMessageComponentAccordingToSettingEnable" Value="changeConfigSetting debugSetting.executrix.colorizer.setBoldFontStyleOnMessageComponentAccordingToSetting true"/>
+        <Workflow Name="setBoldFontStyleOnMessageComponentAccordingToSettingDisable" Value="changeConfigSetting debugSetting.executrix.colorizer.setBoldFontStyleOnMessageComponentAccordingToSetting false"/>
+        <Workflow Name="setFontForegroundColorOnMessageComponentAccordingToSettingEnable" Value="changeConfigSetting debugSetting.executrix.colorizer.setFontForegroundColorOnMessageComponentAccordingToSetting true"/>
+        <Workflow Name="setFontForegroundColorOnMessageComponentAccordingToSettingDisable" Value="changeConfigSetting debugSetting.executrix.colorizer.setFontForegroundColorOnMessageComponentAccordingToSetting false"/>
+        <Workflow Name="setFontBackgroundColorOnMessageComponentAccordingToSettingEnable" Value="changeConfigSetting debugSetting.executrix.colorizer.setFontBackgroundColorOnMessageComponentAccordingToSetting true"/>
+        <Workflow Name="setFontBackgroundColorOnMessageComponentAccordingToSettingDisable" Value="changeConfigSetting debugSetting.executrix.colorizer.setFontBackgroundColorOnMessageComponentAccordingToSetting false"/>
+        <Workflow Name="removeFontStylesEnable" Value="changeConfigSetting debugSetting.executrix.colorizer.removeFontStyles true"/>
+        <Workflow Name="removeFontStylesDisable" Value="changeConfigSetting debugSetting.executrix.colorizer.removeFontStyles false"/>
+      </colorizer>
+    </executrix>
+  </debug>
+</CommandWorkflows>

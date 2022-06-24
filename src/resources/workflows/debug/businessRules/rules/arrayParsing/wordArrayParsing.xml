@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?><CommandWorkflows>
+  <debug>
+    <businessRules>
+      <rules>
+        <arrayParsing>
+          <wordArrayParsing>
+            <Workflow Name="wordArrayParsingEnable" Value="changeConfigSetting debugSetting.businessRules.rules.arrayParsing.wordArrayParsing true"/>
+            <Workflow Name="wordArrayParsingDisable" Value="changeConfigSetting debugSetting.businessRules.rules.arrayParsing.wordArrayParsing false"/>
+            <Workflow Name="convertCamelCaseStringToArrayEnable" Value="changeConfigSetting debugSetting.businessRules.rules.arrayParsing.wordArrayParsing.convertCamelCaseStringToArray true"/>
+            <Workflow Name="convertCamelCaseStringToArrayDisable" Value="changeConfigSetting debugSetting.businessRules.rules.arrayParsing.wordArrayParsing.convertCamelCaseStringToArray false"/>
+            <Workflow Name="getWordsArrayFromStringEnable" Value="changeConfigSetting debugSetting.businessRules.rules.arrayParsing.wordArrayParsing.getWordsArrayFromString true"/>
+            <Workflow Name="getWordsArrayFromStringDisable" Value="changeConfigSetting debugSetting.businessRules.rules.arrayParsing.wordArrayParsing.getWordsArrayFromString false"/>
+            <Workflow Name="recombineStringArrayWithSpacesEnable" Value="changeConfigSetting debugSetting.businessRules.rules.arrayParsing.wordArrayParsing.recombineStringArrayWithSpaces true"/>
+            <Workflow Name="recombineStringArrayWithSpacesDisable" Value="changeConfigSetting debugSetting.businessRules.rules.arrayParsing.wordArrayParsing.recombineStringArrayWithSpaces false"/>
+            <Workflow Name="convertArrayToCamelCaseStringEnable" Value="changeConfigSetting debugSetting.businessRules.rules.arrayParsing.wordArrayParsing.convertArrayToCamelCaseString true"/>
+            <Workflow Name="convertArrayToCamelCaseStringDisable" Value="changeConfigSetting debugSetting.businessRules.rules.arrayParsing.wordArrayParsing.convertArrayToCamelCaseString false"/>
+            <Workflow Name="doesArrayContainLowerCaseConsolidatedStringEnable" Value="changeConfigSetting debugSetting.businessRules.rules.arrayParsing.wordArrayParsing.doesArrayContainLowerCaseConsolidatedString true"/>
+            <Workflow Name="doesArrayContainLowerCaseConsolidatedStringDisable" Value="changeConfigSetting debugSetting.businessRules.rules.arrayParsing.wordArrayParsing.doesArrayContainLowerCaseConsolidatedString false"/>
+            <Workflow Name="ascertainMatchingElementsEnable" Value="changeConfigSetting debugSetting.businessRules.rules.arrayParsing.wordArrayParsing.ascertainMatchingElements true"/>
+            <Workflow Name="ascertainMatchingElementsDisable" Value="changeConfigSetting debugSetting.businessRules.rules.arrayParsing.wordArrayParsing.ascertainMatchingElements false"/>
+          </wordArrayParsing>
+        </arrayParsing>
+      </rules>
+    </businessRules>
+  </debug>
+</CommandWorkflows>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?><CommandWorkflows>
+  <debug>
+    <businessRules>
+      <rules>
+        <timeComputation>
+          <Workflow Name="timeComputationEnable" Value="changeConfigSetting debugSetting.businessRules.rules.timeComputation true"/>
+          <Workflow Name="timeComputationDisable" Value="changeConfigSetting debugSetting.businessRules.rules.timeComputation false"/>
+          <Workflow Name="computeDeltaTimeEnable" Value="changeConfigSetting debugSetting.businessRules.rules.timeComputation.computeDeltaTime true"/>
+          <Workflow Name="computeDeltaTimeDisable" Value="changeConfigSetting debugSetting.businessRules.rules.timeComputation.computeDeltaTime false"/>
+          <Workflow Name="reformatDeltaTimeEnable" Value="changeConfigSetting debugSetting.businessRules.rules.timeComputation.reformatDeltaTime true"/>
+          <Workflow Name="reformatDeltaTimeDisable" Value="changeConfigSetting debugSetting.businessRules.rules.timeComputation.reformatDeltaTime false"/>
+          <Workflow Name="timeComputationSleepEnable" Value="changeConfigSetting debugSetting.businessRules.rules.timeComputation.sleep true"/>
+          <Workflow Name="timeComputationSleepDisable" Value="changeConfigSetting debugSetting.businessRules.rules.timeComputation.sleep false"/>
+        </timeComputation>
+      </rules>
+    </businessRules>
+  </debug>
+</CommandWorkflows>

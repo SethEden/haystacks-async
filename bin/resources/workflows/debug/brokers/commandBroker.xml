@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?><CommandWorkflows>
+  <debug>
+    <brokers>
+      <commandBroker>
+        <Workflow Name="commandBrokerEnable" Value="changeConfigSetting debugSetting.brokers.commandBroker true"/>
+        <Workflow Name="commandBrokerDisable" Value="changeConfigSetting debugSetting.brokers.commandBroker false"/>
+        <Workflow Name="commandBrokerBootStrapCommandsEnable" Value="changeConfigSetting debugSetting.brokers.commandBroker.bootStrapCommands true"/>
+        <Workflow Name="commandBrokerBootStrapCommandsDisable" Value="changeConfigSetting debugSetting.brokers.commandBroker.bootStrapCommands false"/>
+        <Workflow Name="commandBrokerAddClientCommandsEnable" Value="changeConfigSetting debugSetting.brokers.commandBroker.addClientCommands true"/>
+        <Workflow Name="commandBrokerAddClientCommandsDisable" Value="changeConfigSetting debugSetting.brokers.commandBroker.addClientCommands false"/>
+        <Workflow Name="getValidCommandEnable" Value="changeConfigSetting debugSetting.brokers.commandBroker.getValidCommand true"/>
+        <Workflow Name="getValidCommandDisable" Value="changeConfigSetting debugSetting.brokers.commandBroker.getValidCommand false"/>
+        <Workflow Name="countMatchingCommandAliasEnable" Value="changeConfigSetting debugSetting.brokers.commandBroker.countMatchingCommandAlias true"/>
+        <Workflow Name="countMatchingCommandAliasDisable" Value="changeConfigSetting debugSetting.brokers.commandBroker.countMatchingCommandAlias false"/>
+        <Workflow Name="searchCommandAliasEnable" Value="changeConfigSetting debugSetting.brokers.commandBroker.searchCommandAlias true"/>
+        <Workflow Name="searchCommandAliasDisable" Value="changeConfigSetting debugSetting.brokers.commandBroker.searchCommandAlias false"/>
+        <Workflow Name="getAllCommandAliasDataEnable" Value="changeConfigSetting debugSetting.brokers.commandBroker.getAllCommandAliasData true"/>
+        <Workflow Name="getAllCommandAliasDataDisable" Value="changeConfigSetting debugSetting.brokers.commandBroker.getAllCommandAliasData false"/>
+        <Workflow Name="getCommandNamespaceDataObjectEnable" Value="changeConfigSetting debugSetting.brokers.commandBroker.getCommandNamespaceDataObject true"/>
+        <Workflow Name="getCommandNamespaceDataObjectDisable" Value="changeConfigSetting debugSetting.brokers.commandBroker.getCommandNamespaceDataObject false"/>
+        <Workflow Name="getCommandArgsEnable" Value="changeConfigSetting debugSetting.brokers.commandBroker.getCommandArgs true"/>
+        <Workflow Name="getCommandArgsDisable" Value="changeConfigSetting debugSetting.brokers.commandBroker.getCommandArgs false"/>
+        <Workflow Name="executeCommandEnable" Value="changeConfigSetting debugSetting.brokers.commandBroker.executeCommand true"/>
+        <Workflow Name="executeCommandDisable" Value="changeConfigSetting debugSetting.brokers.commandBroker.executeCommand false"/>
+      </commandBroker>
+    </brokers>
+  </debug>
+</CommandWorkflows>

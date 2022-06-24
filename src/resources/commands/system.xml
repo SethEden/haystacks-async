@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?><CommandsAliases>
+  <system>
+    <Command Name="echoCommand" Aliases="echo,ECMD,EcoCmd,EchoCmd,EchoCommand" Description="Echos back whatever is input to the command."/>
+    <Command Name="exit" Aliases="X,Q,Ex,Qt,Exit,Quit" Description="Exit the application completely."/>
+    <Command Name="version" Aliases="V,Ver,Vers,Versn,Version" Description="Displays the current version of the application."/>
+    <Command Name="about" Aliases="A,Abt,Abut,Abot,About" Description="Displays the about message for the current application."/>
+    <Command Name="name" Aliases="N,Nam,Name" Description="Displays a message with the name of the current application."/>
+    <Command Name="clearScreen" Aliases="cls,ClearS,ClearScr,ClearScrn,ClearScren,ClearScreen,ClerS,ClerScr,ClerScrn,ClerScren,ClerScreen,ClrS,ClrScr,ClrScrn,ClrScren,ClrScreen,CScr,CScrn,CScren" Description="Clears the screen of any extra data by pushing lots of empty strings past the cache of the console system."/>
+    <Command Name="help" Aliases="H,?,Hlp,Help" Description="Displays all of the commands names and descriptions."/>
+    <Command Name="workflowHelp" Aliases="WorkFlowH,WorkFlowHlp,WorkFlow?,WorkFlowHelp,WorkFloH,WorkFloHlp,WorkFlo?,WorkFloHelp,WorkFlH,WorkFlHlp,WorkFl?,WorkFlHelp,WorkFH,WorkFHlp,WorkF?,WorkFHelp,WrkFlowH,WrkFlowHlp,WrkFlow?,WrkFlowHelp,WrkFloH,WrkFloHlp,WrkFlo?,WrkFloHelp,WrkFlH,WrkFlHlp,WrkFl?,WrkFlHelp,WrkFH,WrkFHlp,WrkF?,WrkFHelp,WFlowH,WFlowHlp,WFlow?,WFlowHelp,WFloH,WFloHlp,WFlo?,WFloHelp,WFlH,WFlHlp,WFl?,WFlHelp,WFH,WFHlp,WF?" Description="Displays all the workflows, names and values."/>
+  </system>
+</CommandsAliases>

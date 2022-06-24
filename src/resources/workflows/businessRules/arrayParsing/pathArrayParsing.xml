@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?><CommandWorkflows>
+  <businessRules>
+    <arrayParsing>
+      <pathArrayParsing>
+        <Workflow Name="doesArrayContainFilename" Value="cmdgen bizRul,doesArrayContainFilename,[20200603-142834-763_0.3.2_haystacks.zip|20200603-144529-749_0.3.3_haystacks.zip|20200604-133509-704_0.4.0_haystacks.zip|20200604-133546-749_0.4.1_haystacks.zip|20200604-160655-262_0.4.2_haystacks.zip|20200604-161819-191_0.4.3_haystacks.zip|20200604-173727-348_0.4.4_haystacks.zip|20200604-193551-258_0.5.0_haystacks.zip|20200604-193629-853_0.5.1_haystacks.zip|20200605-083055-193_0.5.2_haystacks.zip|20200610-170634-141_0.5.3_haystacks.zip|20200615-162658-576_0.5.4_haystacks.zip|20200617-150430-416_0.5.5_haystacks.zip|20200618-134424-575_0.5.6_haystacks.zip],20200604-193551-258_0.5.0_haystacks.zip 4"/>
+        <Workflow Name="pathArrayParsing" Value="cmdSeq wrkflo,doesArrayContainFilename"/>
+      </pathArrayParsing>
+    </arrayParsing>
+  </businessRules>
+</CommandWorkflows>

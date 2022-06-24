@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?><CommandWorkflows>
+  <debug>
+    <commandsBlob>
+      <commands>
+        <auxiliary>
+          <Workflow Name="auxiliaryEnable" Value="changeConfigSetting debugSetting.commandsBlob.commands.auxiliary true"/>
+          <Workflow Name="auxiliaryDisable" Value="changeConfigSetting debugSetting.commandsBlob.commands.auxiliary false"/>
+          <Workflow Name="convertColorsEnable" Value="changeConfigSetting debugSetting.commandsBlob.commands.auxiliary.convertColors true"/>
+          <Workflow Name="convertColorsDisable" Value="changeConfigSetting debugSetting.commandsBlob.commands.auxiliary.convertColors false"/>
+        </auxiliary>
+      </commands>
+    </commandsBlob>
+  </debug>
+</CommandWorkflows>

@@ -1,0 +1,5 @@
+{
+  "Name": "testHarness",
+  "Version": "0.0.1",
+  "Description": "A test harness application to test the haystacks-sync framework."
+}

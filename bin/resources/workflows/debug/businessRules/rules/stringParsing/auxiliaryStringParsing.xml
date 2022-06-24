@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?><CommandWorkflows>
+  <debug>
+    <businessRules>
+      <rules>
+        <stringParsing>
+          <auxiliaryStringParsing>
+            <Workflow Name="auxiliaryStringParsingEnable" Value="changeConfigSetting debugSetting.businessRules.rules.stringParsing.auxiliaryStringParsing true"/>
+            <Workflow Name="auxiliaryStringParsingDisable" Value="changeConfigSetting debugSetting.businessRules.rules.stringParsing.auxiliaryStringParsing false"/>
+          </auxiliaryStringParsing>
+        </stringParsing>
+      </rules>
+    </businessRules>
+  </debug>
+</CommandWorkflows>

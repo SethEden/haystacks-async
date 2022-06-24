@@ -1,0 +1,33 @@
+{
+  "name": "buildRelease",
+  "version": "0.0.1",
+  "description": "A build application that leverages the haystacks platform to self-build and self-deploy the haystacks npm package.",
+  "main": "build.js",
+  "type": "module",
+  "scripts": {
+    "start": "node ./src/buildRelease.js",
+    "vers": "standard-version -m \"chore(release) version %s \"",
+    "docs": "jsdoc -c jsdoc.json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SethEden/haystacks-sync.git"
+  },
+  "keywords": [
+    "application",
+    "automation",
+    "build",
+    "release",
+    "deploy"
+  ],
+  "author": "Seth Hollingsead",
+  "license": "MIT",
+  "dependencies": {
+    "@haystacks/sync": "0.1.1",
+    "@haystacks/constants": "0.1.0"
+  },
+  "bugs": {
+    "url": "https://github.com/SethEden/haystacks-sync/issues"
+  },
+  "homepage": "https://github.com/SethEden/haystacks-sync#readme"
+}

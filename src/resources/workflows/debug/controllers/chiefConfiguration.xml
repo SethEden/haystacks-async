@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?><CommandWorkflows>
+  <debug>
+    <controllers>
+      <chiefConfiguration>
+        <Workflow Name="chiefConfigurationEnable" Value="changeConfigSetting debugSetting.controllers.chiefConfiguration true"/>
+        <Workflow Name="chiefConfigurationDisable" Value="changeConfigSetting debugSetting.controllers.chiefConfiguration false"/>
+        <Workflow Name="setupConfigurationEnable" Value="changeConfigSetting debugSetting.controllers.chiefConfiguration.setupConfiguration true"/>
+        <Workflow Name="setupConfigurationDisable" Value="changeConfigSetting debugSetting.controllers.chiefConfiguration.setupConfiguration false"/>
+      </chiefConfiguration>
+    </controllers>
+  </debug>
+</CommandWorkflows>

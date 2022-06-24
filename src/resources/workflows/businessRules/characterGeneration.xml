@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?><CommandWorkflows>
+  <businessRules>
+    <characterGeneration>
+      <Workflow Name="randomlyGenerateMixedCaseLetterOrSpecialCharacter" Value="cmdgen bizRul,randomlyGenerateMixedCaseLetterOrSpecialCharacter,!@#$%^*()_+=-<>?;: 10"/>
+      <Workflow Name="randomlyGenerateUpperCaseLetterOrSpecialCharacter" Value="cmdgen bizRul,randomlyGenerateUpperCaseLetterOrSpecialCharacter,!@#$%^*()_+=-<>?;: 10"/>
+      <Workflow Name="randomlyGenerateLowerCaseLetterOrSpecialCharacter" Value="cmdgen bizRul,randomlyGenerateLowerCaseLetterOrSpecialCharacter,!@#$%^*()_+=-<>?;: 10"/>
+      <Workflow Name="randomlyGenerateEitherMixedCaseLetterOrNumberOrSpecialCharacter" Value="cmdgen bizRul,randomlyGenerateEitherMixedCaseLetterOrNumberOrSpecialCharacter,!@#$%^*()_+=-<>?;: 10"/>
+      <Workflow Name="randomlyGenerateEitherUpperCaseLetterOrNumberOrSpecialCharacter" Value="cmdgen bizRul,randomlyGenerateEitherUpperCaseLetterOrNumberOrSpecialCharacter,!@#$%^*()_+=-<>?;: 10"/>
+      <Workflow Name="randomlyGenerateEitherLowerCaseLetterOrNumberOrSpecialCharacter" Value="cmdgen bizRul,randomlyGenerateEitherLowerCaseLetterOrNumberOrSpecialCharacter,!@#$%^*()_+=-<>?;: 10"/>
+      <Workflow Name="randomlyGenerateMixedCaseAlphaNumericCharacter" Value="cmdgen bizRul,randomlyGenerateMixedCaseAlphaNumericCharacter 10"/>
+      <Workflow Name="randomlyGenerateUpperCaseAlphaNumericCharacter" Value="cmdgen bizRul,randomlyGenerateUpperCaseAlphaNumericCharacter 10"/>
+      <Workflow Name="randomlyGenerateLowerCaseAlphaNumericCharacter" Value="cmdgen bizRul,randomlyGenerateLowerCaseAlphaNumericCharacter 10"/>
+      <Workflow Name="randomlyGenerateNumericCharacter" Value="cmdgen bizRul,randomlyGenerateNumericCharacter 10"/>
+      <Workflow Name="randomlyGenerateSpecialCharacter" Value="cmdgen bizRul,randomlyGenerateSpecialCharacter,!@#$%^*()_+=-<>?;: 10"/>
+      <Workflow Name="randomlyGenerateNumberInRange" Value="cmdgen bizRul,randomlyGenerateNumberInRange,1,[6|True|True] 10"/>
+      <Workflow Name="randomlyGenerateBooleanValue" Value="cmdgen bizRul,randomlyGenerateBooleanValue 10"/>
+      <Workflow Name="randomlyGenerateMixedCaseAlphabeticCharacter" Value="cmdgen bizRul,randomlyGenerateMixedCaseAlphabeticCharacter 10"/>
+      <Workflow Name="randomlyGenerateUpperCaseLetter" Value="cmdgen bizRul,randomlyGenerateUpperCaseLetter 10"/>
+      <Workflow Name="randomlyGenerateLowerCaseLetter" Value="cmdgen bizRul,randomlyGenerateLowerCaseLetter 10"/>
+      <Workflow Name="convertNumberToUpperCaseLetter" Value="cmdgen bizRul,convertNumberToUpperCaseLetter,11 10"/>
+      <Workflow Name="convertNumberToLowerCaseLetter" Value="cmdgen bizRul,convertNumberToLowerCaseLetter,11 10"/>
+      <Workflow Name="characterGeneration" Value="cmdSeq wrkflo,randomlyGenerateMixedCaseLetterOrSpecialCharacter wrkflo,randomlyGenerateUpperCaseLetterOrSpecialCharacter wrkflo,randomlyGenerateLowerCaseLetterOrSpecialCharacter wrkflo,randomlyGenerateEitherMixedCaseLetterOrNumberOrSpecialCharacter wrkflo,randomlyGenerateEitherUpperCaseLetterOrNumberOrSpecialCharacter wrkflo,randomlyGenerateEitherLowerCaseLetterOrNumberOrSpecialCharacter wrkflo,randomlyGenerateMixedCaseAlphaNumericCharacter wrkflo,randomlyGenerateUpperCaseAlphaNumericCharacter wrkflo,randomlyGenerateLowerCaseAlphaNumericCharacter wrkflo,randomlyGenerateNumericCharacter wrkflo,randomlyGenerateSpecialCharacter wrkflo,randomlyGenerateNumberInRange wrkflo,randomlyGenerateBooleanValue wrkflo,randomlyGenerateMixedCaseAlphabeticCharacter wrkflo,randomlyGenerateLowerCaseLetter wrkflo,randomlyGenerateUpperCaseLetter wrkflo,convertNumberToUpperCaseLetter wrkflo,convertNumberToLowerCaseLetter"/>
+    </characterGeneration>
+  </businessRules>
+</CommandWorkflows>
