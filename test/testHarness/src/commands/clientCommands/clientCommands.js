@@ -3,7 +3,7 @@
  * @module clientCommands
  * @description Contains all client defined commands for execution client actions with various operations.
  * @requires module:application.command.constants
- * @requires {@link https://www.npmjs.com/package/@haystacks/sync|@haystacks/sync}
+ * @requires {@link https://www.npmjs.com/package/@haystacks/async|@haystacks/async}
  * @requires {@link https://www.npmjs.com/package/@haystacks/constants|@haystacks/constants}
  * @requires {@link https://www.npmjs.com/package/chalk|chalk}
  * @requires {@link https://www.npmjs.com/package/path|path}
@@ -15,7 +15,7 @@
 // Internal imports
 import * as apc from '../../constants/application.constants.js';
 // External imports
-import haystacks from '@haystacks/sync';
+import haystacks from '@haystacks/async';
 import hayConst from '@haystacks/constants';
 import chalk from 'chalk';
 import path from 'path';

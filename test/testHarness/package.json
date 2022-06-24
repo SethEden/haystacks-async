@@ -21,11 +21,13 @@
   "license": "MIT",
   "dependencies": {
     "dotenv": "^16.0.0",
-    "@haystacks/sync": "0.1.1",
+    "@haystacks/async": "0.1.0",
     "@haystacks/constants": "0.1.0"
   },
   "devDependencies": {
     "jsdoc": "3.6.7",
+    "marked": ">=4.0.10",
+    "markdown-it": ">=12.3.2",
     "standard-version": "9.3.2"
   },
   "bugs": {

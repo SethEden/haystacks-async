@@ -19,8 +19,8 @@ import * as apc from '../../constants/application.constants.js';
  * @date 2022/03/22
  */
 export const applicationConstantsValidation = [
-  {Name: 'cExpectedActualFrameworkDevName', Actual: apc.cExpectedActualFrameworkDevName, Expected: 'haystacks-sync'},
-  {Name: 'cExpectedActualFrameworkProdName', Actual: apc.cExpectedActualFrameworkProdName, Expected: '@haystacks/sync'},
+  {Name: 'cExpectedActualFrameworkDevName', Actual: apc.cExpectedActualFrameworkDevName, Expected: 'haystacks-async'},
+  {Name: 'cExpectedActualFrameworkProdName', Actual: apc.cExpectedActualFrameworkProdName, Expected: '@haystacks/async'},
   {Name: 'cApplicationName', Actual: apc.cApplicationName, Expected: 'testHarness'},
   {Name: 'cAppDevPath', Actual: apc.cAppDevPath, Expected: '/src/'},
   {Name: 'cAppProdPath', Actual: apc.cAppProdPath, Expected: '/bin/'},
