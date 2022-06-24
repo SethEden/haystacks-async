@@ -41,7 +41,7 @@ const namespacePrefix = wrd.ccontrollers + bas.cDot + baseFileName + bas.cDot;
  * @author Seth Hollingsead
  * @date 2022/02/04
  */
-function loadCommandWorkflowsFromPath(commandWorkflowFilePathConfigurationName, contextName) {
+async function loadCommandWorkflowsFromPath(commandWorkflowFilePathConfigurationName, contextName) {
   let functionName = loadCommandWorkflowsFromPath.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // commandWorkflowFilePathConfigurationName is:

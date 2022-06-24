@@ -37,7 +37,7 @@ const namespacePrefix = wrd.cexecutrix + bas.cDot + baseFileName + bas.cDot;
  * @author Seth Hollingsead
  * @date 2022/03/29
  */
-function colorizeMessageSimple(message, colorArray, isForeground) {
+async function colorizeMessageSimple(message, colorArray, isForeground) {
   // let functionName = colorizeMessageSimple.name;
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   // console.log(`message is: ${message}`);
@@ -78,7 +78,7 @@ function colorizeMessageSimple(message, colorArray, isForeground) {
  * @author Seth Hollingsead
  * @date 2022/01/28
  */
-function colorizeMessage(message, className, callerFunctionName, debugFilesSetting, debugFunctionsSetting, flatMessageLog) {
+async function colorizeMessage(message, className, callerFunctionName, debugFilesSetting, debugFunctionsSetting, flatMessageLog) {
   // let functionName = colorizeMessage.name;
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   // console.log(`message is: ${message}`);
@@ -330,7 +330,7 @@ function colorizeMessage(message, className, callerFunctionName, debugFilesSetti
  * @author Seth Hollingsead
  * @date 2022/01/31
  */
-function aggregateStyleSetting(settingValue1, settingValue2, defaultColorArray, processAsFontSetting) {
+async function aggregateStyleSetting(settingValue1, settingValue2, defaultColorArray, processAsFontSetting) {
   // let functionName = aggregateStyleSetting.name;
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   // console.log(`settingValue1 is: ${settingValue1}`);
@@ -371,7 +371,7 @@ function aggregateStyleSetting(settingValue1, settingValue2, defaultColorArray, 
  * @author Seth Hollingsead
  * @date 2022/01/31
  */
-function getFontStyleSettingsFromSetting(settingValue) {
+async function getFontStyleSettingsFromSetting(settingValue) {
   // let functionName = getFontStyleSettingsFromSetting.name;
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   // console.log(`settingValue is: ${settingValue}`);
@@ -423,7 +423,7 @@ function getFontStyleSettingsFromSetting(settingValue) {
  * @author Seth Hollingsead
  * @date 2022/01/31
  */
-function getColorStyleSettingFromSetting(settingValue, defaultColorArray) {
+async function getColorStyleSettingFromSetting(settingValue, defaultColorArray) {
   // let functionName = getColorStyleSettingFromSetting.name;
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   // console.log(`settingValue is: ${settingValue}`);
@@ -458,7 +458,7 @@ function getColorStyleSettingFromSetting(settingValue, defaultColorArray) {
  * @author Seth Hollingsead
  * @date 2022/01/31
  */
-function getNamedColorData(colorName, defaultColorArray) {
+async function getNamedColorData(colorName, defaultColorArray) {
   // let functionName = getNamedColorData.name;
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   // console.log(`colorName is: ${colorName}`);
@@ -492,7 +492,7 @@ function getNamedColorData(colorName, defaultColorArray) {
  * @author Seth Hollingsead
  * @date 2022/01/31
  */
-function setUnderlineFontStyleOnMessageComponentAccordingToSetting(messageComponent, underlineSettingValue) {
+async function setUnderlineFontStyleOnMessageComponentAccordingToSetting(messageComponent, underlineSettingValue) {
   // let functionName = setUnderlineFontStyleOnMessageComponentAccordingToSetting.name;
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   // console.log(`messageComponent is: ${messageComponent}`);
@@ -518,7 +518,7 @@ function setUnderlineFontStyleOnMessageComponentAccordingToSetting(messageCompon
  * @author Seth Hollingsead
  * @date 2022/01/31
  */
-function setBoldFontStyleOnMessageComponentAccordingToSetting(messageComponent, boldSettingValue) {
+async function setBoldFontStyleOnMessageComponentAccordingToSetting(messageComponent, boldSettingValue) {
   // let functionName = setBoldFontStyleOnMessageComponentAccordingToSetting.name;
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   // console.log(`messageComponent is: ${messageComponent}`);
@@ -545,7 +545,7 @@ function setBoldFontStyleOnMessageComponentAccordingToSetting(messageComponent, 
  * @author Seth Hollingsead
  * @date 2022/01/31
  */
-function setFontForegroundColorOnMessageComponentAccordingToSetting(messageComponent, colorSettingValue) {
+async function setFontForegroundColorOnMessageComponentAccordingToSetting(messageComponent, colorSettingValue) {
   // let functionName = setFontForegroundColorOnMessageComponentAccordingToSetting.name;
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   // console.log(`messageComponent is: ${messageComponent}`);
@@ -578,7 +578,7 @@ function setFontForegroundColorOnMessageComponentAccordingToSetting(messageCompo
  * @author Seth Hollingsead
  * @date 2022/01/31
  */
-function setFontBackgroundColorOnMessageComponentAccordingToSetting(messageComponent, colorSettingValue) {
+async function setFontBackgroundColorOnMessageComponentAccordingToSetting(messageComponent, colorSettingValue) {
   // let functionName = setFontBackgroundColorOnMessageComponentAccordingToSetting.name;
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   // console.log(`messageComponent is: ${messageComponent}`);
@@ -612,8 +612,8 @@ function setFontBackgroundColorOnMessageComponentAccordingToSetting(messageCompo
  * @date 2022/01/31
  * @reference: {@link https://stackoverflow.com/questions/25245716/remove-all-ansi-colors-styles-from-strings}
  */
-function removeFontStyles(message) {
-  let functionName = removeFontStyles.name;
+async function removeFontStyles(message) {
+  // let functionName = removeFontStyles.name;
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   // console.log(`message is: ${message}`);
   let returnMessage = '';

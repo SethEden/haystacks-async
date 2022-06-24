@@ -58,7 +58,7 @@ let exitConditionArrayIndex = 0;
  * @author Seth Hollingsead
  * @date 2021/10/15
  */
-function bootstrapApplication() {
+async function bootstrapApplication() {
   // let functionName = bootstrapApplication.name;
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   rootPath = url.fileURLToPath(path.dirname(import.meta.url));
@@ -111,9 +111,9 @@ function bootstrapApplication() {
       clientCommands: {}
     };
   }
-  appConfig[sys.cclientBusinessRules] = clientRules.initClientRulesLibrary();
-  appConfig[sys.cclientCommands] = clientCommands.initClientCommandsLibrary();
-  haystacks.initFramework(appConfig);
+  appConfig[sys.cclientBusinessRules] = await clientRules.initClientRulesLibrary();
+  appConfig[sys.cclientCommands] = await clientCommands.initClientCommandsLibrary();
+  await haystacks.initFramework(appConfig);
   // console.log(`END ${namespacePrefix}${functionName} function`);
 }
 
@@ -131,7 +131,7 @@ async function application() {
   let commandInput;
   let commandResult;
 
-  argumentDrivenInterface = haystacks.getConfigurationSetting(wrd.csystem, app_cfg.cargumentDrivenInterface);
+  argumentDrivenInterface = await haystacks.getConfigurationSetting(wrd.csystem, app_cfg.cargumentDrivenInterface);
   if (argumentDrivenInterface === undefined) {
     argumentDrivenInterface = false;
   }
@@ -149,7 +149,7 @@ async function application() {
   // we process the command args and add more commands to the command queue.
   // Really this is about getting out the application name, version and about message.
   while (haystacks.isCommandQueueEmpty() === false) {
-    commandResult = haystacks.processCommandQueue();
+    commandResult = await haystacks.processCommandQueue();
   } // End-while (haystacks.isCommandQueueEmpty() === false)
 
   // NOW process the command args and add them to the command queue for execution.
@@ -157,13 +157,13 @@ async function application() {
     if (process.argv[2].includes(bas.cDash) === true ||
     process.argv[2].includes(bas.cForwardSlash) === true ||
     process.argv[2].includes(bas.cBackSlash) === true) {
-      commandToExecute = warden.executeBusinessRule([process.argv, ''], [biz.caggregateCommandArguments]);
+      commandToExecute = await warden.executeBusinessRule([process.argv, ''], [biz.caggregateCommandArguments]);
     }
     if (commandToExecute !== '') {
-      warden.enqueueCommand(commandToExecute);
+      await warden.enqueueCommand(commandToExecute);
     }
     while (haystacks.isCommandQueueEmpty() === false) {
-      commandResult = haystacks.processCommandQueue();
+      commandResult = await haystacks.processCommandQueue();
     } // End-while (haystacks.isCommandQueueEmpty() === false)
   } // End-if (!process.argv && process.argv.length > 0)
 
@@ -175,13 +175,13 @@ async function application() {
     // BEGIN command parser
     haystacks.consoleLog(namespacePrefix, functionName, app_msg.capplicationMessage02);
     while(programRunning === true) {
-      if (haystacks.isCommandQueueEmpty() === true) {
+      if (await haystacks.isCommandQueueEmpty() === true) {
         // biz.cprompt is some how undefined here, although other biz.c<something-else> do still work.
         // We will use wrd.cprompt here because it is working. No idea what the issue is with biz.prompt.
         commandInput = haystacks.executeBusinessRules([bas.cGreaterThan, ''], [wrd.cprompt]);
         haystacks.enqueueCommand(commandInput);
       } // End-if (haystacks.isCommandQueueEmpty() === true)
-      commandResult = haystacks.processCommandQueue();
+      commandResult = await haystacks.processCommandQueue();
       if (commandResult[exitConditionArrayIndex] === false) {
         // END command parser
         haystacks.consoleLog(namespacePrefix, functionName, app_msg.capplicationMessage03);
@@ -199,6 +199,6 @@ async function application() {
 
 // Launch the Test Harness application!!
 let programRunning = false;
-bootstrapApplication();
+await bootstrapApplication();
 programRunning = true;
 application();

@@ -40,7 +40,7 @@ const namespacePrefix = wrd.ccontrollers + bas.cDot + baseFileName + bas.cDot;
  * @author Seth Hollingsead
  * @date 2022/01/18
  */
-function searchForUniversalDebugConfigSetting(appConfigPathName, frameworkConfigPathName) {
+async function searchForUniversalDebugConfigSetting(appConfigPathName, frameworkConfigPathName) {
   // let functionName = searchForUniversalDebugConfigSetting.name;
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   // console.log(`appConfigPathName is: ${appConfigPathName}`);
@@ -73,7 +73,7 @@ function searchForUniversalDebugConfigSetting(appConfigPathName, frameworkConfig
  * @author Seth Hollingsead
  * @date 2022/06/13
  */
-function determineThemeDebugConfigFilesToLoad(themeConfigPathName) {
+async function determineThemeDebugConfigFilesToLoad(themeConfigPathName) {
   let functionName = determineThemeDebugConfigFilesToLoad.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // themeConfigPathName is:
@@ -100,7 +100,7 @@ function determineThemeDebugConfigFilesToLoad(themeConfigPathName) {
  * @author Seth Hollingsead
  * @date 2022/02/17
  */
-function getAndProcessCsvData(pathAndFilename, contextName) {
+async function getAndProcessCsvData(pathAndFilename, contextName) {
   let functionName = getAndProcessCsvData.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // pathAndFilename is:
@@ -123,7 +123,7 @@ function getAndProcessCsvData(pathAndFilename, contextName) {
  * @author Seth Hollingsead
  * @date 2022/02/17
  */
-function getAndProcessXmlData(pathAndFilename) {
+async function getAndProcessXmlData(pathAndFilename) {
   let functionName = getAndProcessXmlData.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // pathAndFilename is:
@@ -147,7 +147,7 @@ function getAndProcessXmlData(pathAndFilename) {
  * @author Seth Hollingsead
  * @date 2022/02/17
  */
-function setupAllCsvData(dataPathConfigurationName, contextName) {
+async function setupAllCsvData(dataPathConfigurationName, contextName) {
   let functionName = setupAllCsvData.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // dataPathConfigurationName is:
@@ -178,7 +178,7 @@ function setupAllCsvData(dataPathConfigurationName, contextName) {
  * @author Seth Hollingsead
  * @date 2022/02/17
  */
-function setupAllXmlData(dataPathConfigurationName, contextName) {
+async function setupAllXmlData(dataPathConfigurationName, contextName) {
   let functionName = setupAllXmlData.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // dataPathConfigurationName is:
@@ -210,7 +210,7 @@ function setupAllXmlData(dataPathConfigurationName, contextName) {
  * @date 2021/03/31
  * @NOTE Cannot use the loggers here, because dependency data will have never been loaded.
  */
-function setupAllJsonConfigData(dataPathConfigurationName, contextName) {
+async function setupAllJsonConfigData(dataPathConfigurationName, contextName) {
   // let functionName = setupAllJsonConfigData.name;
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   // console.log(`dataPathConfigurationName is: ${dataPathConfigurationName}`);
@@ -237,7 +237,7 @@ function setupAllJsonConfigData(dataPathConfigurationName, contextName) {
  * @author Seth Hollingsead
  * @date 2022/03/22
  */
-function initializeConstantsValidationData() {
+async function initializeConstantsValidationData() {
   let functionName = initializeConstantsValidationData.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   dataBroker.initializeConstantsValidationData();
@@ -252,7 +252,7 @@ function initializeConstantsValidationData() {
  * @author Seth Hollingsead
  * @date 2022/03/24
  */
-function addConstantsValidationData(arrayValidationData) {
+async function addConstantsValidationData(arrayValidationData) {
   let functionName = addConstantsValidationData.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // arrayValidationData is:

@@ -36,7 +36,7 @@ const namespacePrefix = sys.cbusinessRules + bas.cDot + wrd.crules + bas.cDot + 
  * @NOTE Cannot use the loggers here, because of a circular dependency.
  */
 // eslint-disable-next-line no-unused-vars
-function getNowMoment(inputData, inputMetaData) {
+async function getNowMoment(inputData, inputMetaData) {
   // let functionName = getNowMoment.name;
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   // console.log(`inputData is: ${inputData}`);
@@ -57,7 +57,7 @@ function getNowMoment(inputData, inputMetaData) {
  * @author Seth Hollingsead
  * @date 2022/05/04 - May the Forth be with you!! ;-)
  */
-function computeDeltaTime(inputData, inputMetaData) {
+async function computeDeltaTime(inputData, inputMetaData) {
   let functionName = computeDeltaTime.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
@@ -80,7 +80,7 @@ function computeDeltaTime(inputData, inputMetaData) {
  * @author Seth Hollingsead
  * @date 2022/05/04 - May the Forth be with you!! ;-)
  */
-function reformatDeltaTime(inputData, inputMetaData) {
+async function reformatDeltaTime(inputData, inputMetaData) {
   let functionName = reformatDeltaTime.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
@@ -102,7 +102,7 @@ function reformatDeltaTime(inputData, inputMetaData) {
  * @date 2022/05/04 - May the Forth be with you!! ;-)
  * @reference {@link https://www.sitepoint.com/delay-sleep-pause-wait/}
  */
-function sleep(inputData, inputMetaData) {
+async function sleep(inputData, inputMetaData) {
   let functionName = sleep.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);

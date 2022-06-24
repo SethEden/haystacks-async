@@ -32,17 +32,17 @@ const baseFileName = path.basename(import.meta.url, path.extname(import.meta.url
 const namespacePrefix = sys.ccommandsBlob + bas.cDot + wrd.ccommands + bas.cDot + baseFileName + bas.cDot;
 
 /**
-* @function businessRulesMetrics
-* @description A command to compute business rule metrics for each of the
-* business rules that were called in a sequence of call(s) or workflow(s).
-* @param {string} inputData Not used for this command.
-* @param {string} inputMetaData Not used for this command.
-* @return {array<boolean,string|integer|boolean|object|array>} An array with a boolean True or False value to
-* indicate if the application should exit or not exit, followed by the command output.
-* @author Seth Hollingsead
-* @date 2022/03/03
-*/
-function businessRulesMetrics(inputData, inputMetaData) {
+ * @function businessRulesMetrics
+ * @description A command to compute business rule metrics for each of the
+ * business rules that were called in a sequence of call(s) or workflow(s).
+ * @param {string} inputData Not used for this command.
+ * @param {string} inputMetaData Not used for this command.
+ * @return {array<boolean,string|integer|boolean|object|array>} An array with a boolean True or False value to
+ * indicate if the application should exit or not exit, followed by the command output.
+ * @author Seth Hollingsead
+ * @date 2022/03/03
+ */
+async function businessRulesMetrics(inputData, inputMetaData) {
    let functionName = businessRulesMetrics.name;
    loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
    loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
@@ -114,16 +114,16 @@ function businessRulesMetrics(inputData, inputMetaData) {
 }
 
 /**
-* @function commandMetrics
-* @description A command to compute command metrics for each of the commands that were called in a sequence of call(s) or workfow(s).
-* @param {string} inputData Not used for this command.
-* @param {string} inputMetaData Not used for this command.
-* @return {array<boolean,string|integer|boolean|object|array>} An array with a boolean True or False value to
-* indicate if the application should exit or not exit, followed by the command output.
-* @author Seth Hollingsead
-* @date 2022/03/11
-*/
-function commandMetrics(inputData, inputMetaData) {
+ * @function commandMetrics
+ * @description A command to compute command metrics for each of the commands that were called in a sequence of call(s) or workfow(s).
+ * @param {string} inputData Not used for this command.
+ * @param {string} inputMetaData Not used for this command.
+ * @return {array<boolean,string|integer|boolean|object|array>} An array with a boolean True or False value to
+ * indicate if the application should exit or not exit, followed by the command output.
+ * @author Seth Hollingsead
+ * @date 2022/03/11
+ */
+async function commandMetrics(inputData, inputMetaData) {
    let functionName = commandMetrics.name;
    loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
    loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));

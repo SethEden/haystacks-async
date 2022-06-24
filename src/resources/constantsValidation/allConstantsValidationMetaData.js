@@ -31,7 +31,7 @@ const namespacePrefix = wrd.cresources + bas.cDot + wrd.cconstants + wrd.cValida
  * @author Seth Hollingsead
  * @date 2022/03/22
  */
-function initializeAllSystemConstantsValidationData() {
+async function initializeAllSystemConstantsValidationData() {
   let functionName = initializeAllSystemConstantsValidationData.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   let constantsPath = configurator.getConfigurationSetting(wrd.csystem, cfg.cframeworkConstantsPath);

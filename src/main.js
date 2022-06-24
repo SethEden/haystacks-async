@@ -39,15 +39,15 @@ dotenv.config();
 const {NODE_ENV} = process.env;
 
 /**
-* @function initFramework
-* @description Initializes the framework systems.
-* @param {object} clientConfiguration A configuration data object that contains
-* all the data needed to bootstrap the framework for a client application.
-* @return {void}
-* @author Seth Hollingsead
-* @date 2021/10/07
-*/
-function initFramework(clientConfiguration) {
+ * @function initFramework
+ * @description Initializes the framework systems.
+ * @param {object} clientConfiguration A configuration data object that contains
+ * all the data needed to bootstrap the framework for a client application.
+ * @return {void}
+ * @author Seth Hollingsead
+ * @date 2021/10/07
+ */
+async function initFramework(clientConfiguration) {
  let functionName = initFramework.name;
  // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
  // console.log(`clientConfiguration is: ${JSON.stringify(clientConfiguration)}`);
@@ -99,7 +99,7 @@ function initFramework(clientConfiguration) {
  * @author Seth Hollingsead
  * @date 2022/02/18
  */
-function mergeClientBusinessRules(clientBusinessRules) {
+async function mergeClientBusinessRules(clientBusinessRules) {
   let functionName = mergeClientBusinessRules.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   warden.mergeClientBusinessRules(clientBusinessRules);
@@ -114,7 +114,7 @@ function mergeClientBusinessRules(clientBusinessRules) {
  * @author Seth Hollingsead
  * @date 2022/02/18
  */
-function mergeClientCommands(clientCommands) {
+async function mergeClientCommands(clientCommands) {
   let functionName = mergeClientCommands.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   warden.mergeClientCommands(clientCommands);
@@ -132,7 +132,7 @@ function mergeClientCommands(clientCommands) {
  * @author Seth Hollingsead
  * @date 2022/02/18
  */
-function loadCommandAliases(commandAliasesPath, contextName) {
+async function loadCommandAliases(commandAliasesPath, contextName) {
   let functionName = loadCommandAliases.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // commandAliasesPath is:
@@ -155,7 +155,7 @@ function loadCommandAliases(commandAliasesPath, contextName) {
  * @author Seth Hollingsead
  * @date 2022/02/18
  */
-function loadCommandWorkflows(workflowPath, contextName) {
+async function loadCommandWorkflows(workflowPath, contextName) {
   let functionName = loadCommandWorkflows.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // workflowPath is:
@@ -178,7 +178,7 @@ function loadCommandWorkflows(workflowPath, contextName) {
  * @author Seth Hollingsead
  * @date 2022/02/18
  */
-function executeBusinessRules(inputs, businessRules) {
+async function executeBusinessRules(inputs, businessRules) {
   let functionName = executeBusinessRules.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // inputs is:
@@ -203,7 +203,7 @@ function executeBusinessRules(inputs, businessRules) {
  * @author Seth Hollingsead
  * @date 2022/02/18
  */
-function enqueueCommand(command) {
+async function enqueueCommand(command) {
   let functionName = enqueueCommand.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // command is:
@@ -221,7 +221,7 @@ function enqueueCommand(command) {
  * @author Seth Hollingsead
  * @date 2022/02/18
  */
-function isCommandQueueEmpty() {
+async function isCommandQueueEmpty() {
   let functionName = isCommandQueueEmpty.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   let returnData = false;
@@ -242,7 +242,7 @@ function isCommandQueueEmpty() {
  * @author Seth Hollingsead
  * @date 2022/02/18
  */
-function processCommandQueue() {
+async function processCommandQueue() {
   let functionName = processCommandQueue.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   let returnData = false;
@@ -264,7 +264,7 @@ function processCommandQueue() {
  * @author Seth Hollingsead
  * @date 222/02/18
  */
-function setConfigurationSetting(configurationNamespace, configurationName, configurationValue) {
+async function setConfigurationSetting(configurationNamespace, configurationName, configurationValue) {
   let functionName = setConfigurationSetting.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // configurationNamespace is:
@@ -288,7 +288,7 @@ function setConfigurationSetting(configurationNamespace, configurationName, conf
  * @author Seth Hollingsead
  * @date 2022/02/18
  */
-function getConfigurationSetting(configurationNamespace, configurationName) {
+async function getConfigurationSetting(configurationNamespace, configurationName) {
   let functionName = getConfigurationSetting.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // configurationNamespace is:
@@ -296,7 +296,7 @@ function getConfigurationSetting(configurationNamespace, configurationName) {
   // configurationName is:
   loggers.consoleLog(namespacePrefix + functionName, msg.cconfigurationNameIs + configurationName);
   // let returnConfigurationValue = D[sys.cConfiguration][configurationName];
-  let returnConfigurationValue = warden.getConfigurationSetting(configurationNamespace, configurationName);
+  let returnConfigurationValue = await warden.getConfigurationSetting(configurationNamespace, configurationName);
   // returnConfigurationValue is:
   loggers.consoleLog(namespacePrefix + functionName, msg.creturnConfiguraitonValueIs + returnConfigurationValue);
   loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
@@ -313,7 +313,7 @@ function getConfigurationSetting(configurationNamespace, configurationName) {
  * @author Seth Hollingsead
  * @date 2021/12/30
  */
-function consoleLog(theNamespacePrefix, theFunctionName, message) {
+async function consoleLog(theNamespacePrefix, theFunctionName, message) {
   // let functionName = consoleLog.name;
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   // console.log(`theNamespacePrefix is: ${theNamespacePrefix}`);

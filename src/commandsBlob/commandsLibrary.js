@@ -50,7 +50,7 @@ const namespacePrefix = sys.ccommandsBlob + bas.cDot + baseFileName + bas.cDot;
  * This is because the functions cannot really be serialized in any way. It actually kind of makes sense,
  * but could be really confusing if you are struggling trying to debug commands or business rules that do not appear to exist.
  */
-function initCommandsLibrary() {
+async function initCommandsLibrary() {
   let functionName = initCommandsLibrary.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   D[wrd.cCommands] = {};

@@ -35,7 +35,7 @@ const namespacePrefix = apc.cApplicationName + bas.cDot + wrd.cbusiness + wrd.cR
  * @author Seth Hollingsead
  * @date 2022/03/13
  */
-const customEcho = function(inputData, inputMetaData) {
+async function customEcho(inputData, inputMetaData) {
   let functionName = customEcho.name;
   haystacks.consoleLog(namespacePrefix, functionName, msg.cBEGIN_Function);
   haystacks.consoleLog(namespacePrefix, functionName, msg.cinputDataIs + JSON.stringify(inputData));
@@ -47,7 +47,7 @@ const customEcho = function(inputData, inputMetaData) {
   haystacks.consoleLog(namespacePrefix, functionName, msg.creturnDataIs + returnData);
   haystacks.consoleLog(namespacePrefix, functionName, msg.cEND_Function);
   return returnData;
-};
+}
 
 /**
  * @function buildReleasePackage
@@ -59,7 +59,7 @@ const customEcho = function(inputData, inputMetaData) {
  * @author Seth Hollingsead
  * @date 2022/04/07
  */
-const buildReleasePackage = function(inputData, inputMetaData) {
+async function buildReleasePackage(inputData, inputMetaData) {
   let functionName = buildReleasePackage.name;
   haystacks.consoleLog(namespacePrefix, functionName, msg.cBEGIN_Function);
   haystacks.consoleLog(namespacePrefix, functionName, msg.cinputDataIs + inputData);
@@ -116,7 +116,7 @@ const buildReleasePackage = function(inputData, inputMetaData) {
   haystacks.consoleLog(namespacePrefix, functionName, msg.creturnDataIs + returnData);
   haystacks.consoleLog(namespacePrefix, functionName, msg.cEND_Function);
   return returnData;
-};
+}
 
 export default {
   customEcho,

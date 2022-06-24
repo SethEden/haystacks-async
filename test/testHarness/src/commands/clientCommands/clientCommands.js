@@ -35,7 +35,7 @@ const namespacePrefix = apc.cApplicationName + bas.cDot + wrd.ccommands + bas.cD
  * @author Seth Hollingsead
  * @date 2022/02/08
  */
-const customEchoCommand = function(inputData, inputMetaData) {
+async function customEchoCommand(inputData, inputMetaData) {
   let functionName = customEchoCommand.name;
   haystacks.consoleLog(namespacePrefix, functionName, msg.cBEGIN_Function);
   haystacks.consoleLog(namespacePrefix, functionName, msg.cinputDataIs + inputData);
@@ -46,7 +46,7 @@ const customEchoCommand = function(inputData, inputMetaData) {
   haystacks.consoleLog(namespacePrefix, functionName, msg.creturnDataIs + JSON.stringify(returnData));
   haystacks.consoleLog(namespacePrefix, functionName, msg.cEND_Function);
   return returnData;
-};
+}
 
 /**
  * @function bossPanic
@@ -73,7 +73,7 @@ const customEchoCommand = function(inputData, inputMetaData) {
  * @date 2022/03/31
  * @NOTE This is an INFINITE LOOP function, so press control+C to exit rom the application when you want to exit.
  */
-const bossPanic = function(inputData, inputMetaData) {
+async function bossPanic(inputData, inputMetaData) {
   let functionName = bossPanic.name;
   haystacks.consoleLog(namespacePrefix, functionName, msg.cBEGIN_Function);
   haystacks.consoleLog(namespacePrefix, functionName, msg.cinputDataIs + inputData);
@@ -200,7 +200,7 @@ const bossPanic = function(inputData, inputMetaData) {
     }
     haystacks.executeBusinessRules([performanceIndex, ''], [wrd.csleep]);
   } // End-while (true) // End of the infinite loop
-};
+}
 
 export default {
   customEchoCommand,

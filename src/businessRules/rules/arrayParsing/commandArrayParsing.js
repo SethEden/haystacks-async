@@ -35,7 +35,7 @@ const namespacePrefix = sys.cbusinessRules + bas.cDot + wrd.crules + bas.cDot + 
  * @date 2022/01/20
  * @NOTE: https://en.wikipedia.org/wiki/Lehmer_code
  */
-function solveLehmerCode(inputData, inputMetaData) {
+async function solveLehmerCode(inputData, inputMetaData) {
   let functionName = solveLehmerCode.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
@@ -81,7 +81,7 @@ function solveLehmerCode(inputData, inputMetaData) {
  * @author Seth Hollingsead
  * @date 2022/01/20
  */
-function recursiveArrayExpansion(inputData, inputMetaData) {
+async function recursiveArrayExpansion(inputData, inputMetaData) {
   let functionName = recursiveArrayExpansion.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
@@ -188,7 +188,7 @@ function recursiveArrayExpansion(inputData, inputMetaData) {
  * @author Seth Hollingsead
  * @date 2022/01/20
  */
-function getLehmerCodeValue(inputData, inputMetaData) {
+async function getLehmerCodeValue(inputData, inputMetaData) {
   let functionName = getLehmerCodeValue.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
@@ -227,7 +227,7 @@ function getLehmerCodeValue(inputData, inputMetaData) {
  * @author Seth Hollingsead
  * @date 2022/01/21
  */
-function generateCommandAliases(inputData, inputMetaData) {
+async function generateCommandAliases(inputData, inputMetaData) {
   let functionName = generateCommandAliases.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
@@ -320,7 +320,7 @@ function generateCommandAliases(inputData, inputMetaData) {
  * @author Seth Hollingsead
  * @date 2022/01/21
  */
-function aggregateCommandArguments(inputData, inputMetaData) {
+async function aggregateCommandArguments(inputData, inputMetaData) {
   let functionName = aggregateCommandArguments.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));

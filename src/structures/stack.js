@@ -34,7 +34,7 @@ const namespacePrefix = wrd.cstructures + bas.cDot + baseFileName + bas.cDot;
  * @author Seth Hollingsead
  * @date 2022/02/01
  */
-function initStack(stackNameSpace) {
+async function initStack(stackNameSpace) {
   let functionName = initStack.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   loggers.consoleLog(namespacePrefix + functionName, msg.cstackNameSpaceIs + stackNameSpace);
@@ -56,7 +56,7 @@ function initStack(stackNameSpace) {
  * @author Seth Hollingsead
  * @date 2022/02/01
  */
-function clearStack(stackNameSpace) {
+async function clearStack(stackNameSpace) {
   let functionName = clearStack.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   loggers.consoleLog(namespacePrefix + functionName, msg.cstackNameSpaceIs + stackNameSpace);
@@ -79,7 +79,7 @@ function clearStack(stackNameSpace) {
  * @author Seth Hollingsead
  * @date 2022/02/01
  */
-function push(stackNameSpace, value) {
+async function push(stackNameSpace, value) {
   let functionName = push.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   loggers.consoleLog(namespacePrefix + functionName, msg.cstackNameSpaceIs + stackNameSpace);
@@ -102,7 +102,7 @@ function push(stackNameSpace, value) {
  * @author Seth Hollingsead
  * @date 2022/02/01
  */
-function pop(stackNameSpace) {
+async function pop(stackNameSpace) {
   let functionName = pop.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   loggers.consoleLog(namespacePrefix + functionName, msg.cstackNameSpaceIs + stackNameSpace);
@@ -134,7 +134,7 @@ function pop(stackNameSpace) {
  * @author Seth Hollingsead
  * @date 2022/02/01
  */
-function isEmpty(stackNameSpace) {
+async function isEmpty(stackNameSpace) {
   let functionName = isEmpty.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   loggers.consoleLog(namespacePrefix + functionName, msg.cstackNameSpaceIs + stackNameSpace);
@@ -161,7 +161,7 @@ function isEmpty(stackNameSpace) {
  * @author Seth Hollingsead
  * @date 2022/02/01
  */
-function length(stackNameSpace) {
+async function length(stackNameSpace) {
   let functionName = length.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   loggers.consoleLog(namespacePrefix + functionName, msg.cstackNameSpaceIs + stackNameSpace);
@@ -187,7 +187,7 @@ function length(stackNameSpace) {
  * @author Seth Hollingsead
  * @date 2022/02/01
  */
-function contains(stackNameSpace, value) {
+async function contains(stackNameSpace, value) {
   let functionName = contains.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   loggers.consoleLog(namespacePrefix + functionName, msg.cstackNameSpaceIs + stackNameSpace);
@@ -212,7 +212,7 @@ function contains(stackNameSpace, value) {
  * @author Seth Hollingsead
  * @date 2022/02/01
  */
-function print(stackNameSpace) {
+async function print(stackNameSpace) {
   let functionName = contains.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   loggers.consoleLog(namespacePrefix + functionName, msg.cstackNameSpaceIs + stackNameSpace);

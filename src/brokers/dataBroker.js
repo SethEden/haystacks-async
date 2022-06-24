@@ -38,7 +38,7 @@ const namespacePrefix = wrd.cbrokers + bas.cDot + baseFileName + bas.cDot;
  * @author Seth Hollingsead
  * @date 2021/10/15
  */
-function scanDataPath(dataPath) {
+async function scanDataPath(dataPath) {
   let functionName = scanDataPath.name;
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   // console.log(`dataPath is: ${dataPath}`);
@@ -66,7 +66,7 @@ function scanDataPath(dataPath) {
  * @author Seth Hollingsead
  * @date 2022/01/18
  */
-function findUniversalDebugConfigSetting(appConfigFilesToLoad, frameworkConfigFilesToLoad) {
+async function findUniversalDebugConfigSetting(appConfigFilesToLoad, frameworkConfigFilesToLoad) {
   // let functionName = findUniversalDebugConfigSetting.name;
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   // console.log(`appConfigFilesToLoad is: ${JSON.stringify(appConfigFilesToLoad)}`);
@@ -94,7 +94,7 @@ function findUniversalDebugConfigSetting(appConfigFilesToLoad, frameworkConfigFi
  * @author Seth Hollingsead
  * @date 2022/01/18
  */
-function findIndividualDebugConfigSetting(filesToLoad) {
+async function findIndividualDebugConfigSetting(filesToLoad) {
   // let functionName = findIndividualDebugConfigSetting.name;
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   // console.log(`filesToLoad is: ${JSON.stringify(filesToLoad)}`);
@@ -138,7 +138,7 @@ function findIndividualDebugConfigSetting(filesToLoad) {
  * @author Seth Hollingsead
  * @date 2022/01/27
  */
-function loadAllCsvData(filesToLoad, contextName) {
+async function loadAllCsvData(filesToLoad, contextName) {
   let functionName = loadAllCsvData.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // filesToLoad is:
@@ -187,7 +187,7 @@ function loadAllCsvData(filesToLoad, contextName) {
  * @author Seth Hollingsead
  * @date 2022/01/27
  */
-function loadAllXmlData(filesToLoad, contextName) {
+async function loadAllXmlData(filesToLoad, contextName) {
   let functionName = loadAllXmlData.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // filesToLoad is:
@@ -262,7 +262,7 @@ function loadAllXmlData(filesToLoad, contextName) {
  * @author Seth Hollingsead
  * @date 2021/10/15
  */
-function loadAllJsonData(filesToLoad, contextName) {
+async function loadAllJsonData(filesToLoad, contextName) {
   let functionName = loadAllJsonData.name;
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   // console.log(`filesToLoad is: ${JSON.stringify(filesToLoad)}`);
@@ -337,7 +337,7 @@ function loadAllJsonData(filesToLoad, contextName) {
  * @author Seth Hollingsead
  * @date 2022/01/27
  */
-function processCsvData(data, contextName) {
+async function processCsvData(data, contextName) {
   let functionName = processCsvData.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // input data is:
@@ -383,7 +383,7 @@ function processCsvData(data, contextName) {
  * @author Seth Hollingsead
  * @date 2022/02/22
  */
-function processXmlData(inputData, contextName) {
+async function processXmlData(inputData, contextName) {
   let functionName = processXmlData.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // inputData is:
@@ -433,7 +433,7 @@ function processXmlData(inputData, contextName) {
  * let workflow = data[sys.cCommandWorkflows][wrd.cWorkflow][j][bas.cDollar];
  * parsedDataFile[sys.cCommandWorkflows][wrd.cWorkflows][workflow.Name] = workflow;
  */
-function processXmlLeafNode(inputData, leafNodeName) {
+async function processXmlLeafNode(inputData, leafNodeName) {
   let functionName = processXmlLeafNode.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // input data is:
@@ -505,7 +505,7 @@ function processXmlLeafNode(inputData, leafNodeName) {
  * @author Seth Hollingsead
  * @date 2021/10/15
  */
-function preprocessJsonFile(fileToLoad) {
+async function preprocessJsonFile(fileToLoad) {
   let functionName = preprocessJsonFile.name;
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   // console.log(`fileToLoad is: ${JSON.stringify(fileToLoad)}`);
@@ -531,7 +531,7 @@ function preprocessJsonFile(fileToLoad) {
  * @author Seth Hollingsead
  * @date 2022/03/11
  */
-function writeJsonDataToFile(fileToSaveTo, dataToWriteOut) {
+async function writeJsonDataToFile(fileToSaveTo, dataToWriteOut) {
   let functionName = writeJsonDataToFile.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   loggers.consoleLog(namespacePrefix + functionName, msg.cfileToSaveToIs + fileToSaveTo);
@@ -550,7 +550,7 @@ function writeJsonDataToFile(fileToSaveTo, dataToWriteOut) {
  * @author Seth Hollingsead
  * @date 2022/01/20
  */
-function setupDataStorage() {
+async function setupDataStorage() {
   let functionName = storeData.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   D[sys.cDataStorage] = {};
@@ -566,7 +566,7 @@ function setupDataStorage() {
  * @author Seth Hollingsead
  * @date 2022/01/20
  */
-function storeData(dataStorageContextName, dataToStore) {
+async function storeData(dataStorageContextName, dataToStore) {
   let functionName = storeData.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // dataStorageContextName is:
@@ -590,7 +590,7 @@ function storeData(dataStorageContextName, dataToStore) {
  * @author Seth Hollingsead
  * @date 2022/01/20
  */
-function getData(dataStorageContextName) {
+async function getData(dataStorageContextName) {
   let functionName = storeData.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // dataStorageContextName is:
@@ -613,7 +613,7 @@ function getData(dataStorageContextName) {
  * @author Seth Hollingsead
  * @date 2022/01/20
  */
-function clearData(dataStorageContextName) {
+async function clearData(dataStorageContextName) {
   let functionName = clearData.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // dataStorageContextName is:
@@ -633,7 +633,7 @@ function clearData(dataStorageContextName) {
  * @author Seth Hollingsead
  * @date 2022/03/22
  */
-function initializeConstantsValidationData() {
+async function initializeConstantsValidationData() {
   let functionName = initializeConstantsValidationData.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   D[sys.cConstantsValidationData] = {};
@@ -654,7 +654,7 @@ function initializeConstantsValidationData() {
  * @author Seth Hollingsead
  * @date 2022/03/22
  */
-function addConstantsValidationData(constantLibraryData) {
+async function addConstantsValidationData(constantLibraryData) {
   let functionName = addConstantsValidationData.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // constantLibraryData is:
@@ -688,7 +688,7 @@ function addConstantsValidationData(constantLibraryData) {
  * @author Seth Hollingsead
  * @date 2022/03/22
  */
-function addDeeplyNestedConstantsValidationData(contextName, deeplyNestedData) {
+async function addDeeplyNestedConstantsValidationData(contextName, deeplyNestedData) {
   let functionName = addDeeplyNestedConstantsValidationData.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // contextName is:
@@ -712,7 +712,7 @@ function addDeeplyNestedConstantsValidationData(contextName, deeplyNestedData) {
  * @author Seth Hollingsead
  * @date 2022/01/27
  */
-function getDataCategoryFromContextName(contextName) {
+async function getDataCategoryFromContextName(contextName) {
   let functionName = getDataCategoryFromContextName.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // contextName is:
@@ -734,7 +734,7 @@ function getDataCategoryFromContextName(contextName) {
  * @date 2022/01/27
  */
 // eslint-disable-next-line no-unused-vars
-function getDataCategoryDetailNameFromContextName(contextName) {
+async function getDataCategoryDetailNameFromContextName(contextName) {
   let functionName = getDataCategoryDetailNameFromContextName.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // contextName is:
@@ -756,7 +756,7 @@ function getDataCategoryDetailNameFromContextName(contextName) {
  * @author Seth Hollingsead
  * @date 2022/01/27
  */
-function extractDataFromPapaParseObject(data, contextName) {
+async function extractDataFromPapaParseObject(data, contextName) {
   let functionName = extractDataFromPapaParseObject.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // input data is:
@@ -826,7 +826,7 @@ function extractDataFromPapaParseObject(data, contextName) {
  * @date 2022/05/23
  */
 // eslint-disable-next-line no-unused-vars
-function determineMergeTarget(targetData, dataToMerge) {
+async function determineMergeTarget(targetData, dataToMerge) {
   let functionName = determineMergeTarget.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // targetData is:
@@ -887,7 +887,7 @@ loop1:
  * @author Seth Hollingsead
  * @date 2022/01/27
  */
-function mergeData(targetData, dataCategory, pageName, dataToMerge) {
+async function mergeData(targetData, dataCategory, pageName, dataToMerge) {
   let functionName = mergeData.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // targetData is:
@@ -972,7 +972,7 @@ function mergeData(targetData, dataCategory, pageName, dataToMerge) {
  * @date 2022/01/28
  */
 // eslint-disable-next-line no-unused-vars
-function getDataElement(dataObject, pageName, elementName) {
+async function getDataElement(dataObject, pageName, elementName) {
   let functionName = getDataElement.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // dataObject value is:
@@ -1004,7 +1004,7 @@ function getDataElement(dataObject, pageName, elementName) {
  * @author Seth Hollingsead
  * @date 2022/01/28
  */
-function getDataElementCount(dataObject, pageName, elementNamePattern) {
+async function getDataElementCount(dataObject, pageName, elementNamePattern) {
   let functionName = getDataElementCount.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // dataObject is:

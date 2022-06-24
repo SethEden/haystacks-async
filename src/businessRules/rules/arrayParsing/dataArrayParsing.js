@@ -22,7 +22,7 @@ import D from '../../../structures/data.js';
 import hayConst from '@haystacks/constants';
 import path from 'path';
 
-const {bas, cfg, msg, sys, wrd} = hayConst;
+const {bas, biz, cfg, msg, sys, wrd} = hayConst;
 const baseFileName = path.basename(import.meta.url, path.extname(import.meta.url));
 // businessRules.rules.arrayParsing.dataArrayParsing.
 const namespacePrefix = sys.cbusinessRules + bas.cDot + wrd.crules + bas.cDot + wrd.carray + wrd.cParsing + bas.cDot + baseFileName + bas.cDot;
@@ -37,7 +37,7 @@ const namespacePrefix = sys.cbusinessRules + bas.cDot + wrd.crules + bas.cDot + 
  * @date 2022/01/20
  * @NOTE: https://stackoverflow.com/questions/3115982/how-to-check-if-two-arrays-are-equal-with-javascript
  */
-function arraysAreEqual(inputData, inputMetaData) {
+async function arraysAreEqual(inputData, inputMetaData) {
   let functionName = arraysAreEqual.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
@@ -62,7 +62,7 @@ function arraysAreEqual(inputData, inputMetaData) {
  * @author Seth Hollingsead
  * @date 2022/01/20
  */
-function storeData(inputData, inputMetaData) {
+async function storeData(inputData, inputMetaData) {
   let functionName = arraysAreEqual.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
@@ -86,7 +86,7 @@ function storeData(inputData, inputMetaData) {
  * @author Seth Hollingsead
  * @date 2022/01/20
  */
-function getStoredData(inputData, inputMetaData) {
+async function getStoredData(inputData, inputMetaData) {
   let functionName = getStoredData.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
@@ -109,7 +109,7 @@ function getStoredData(inputData, inputMetaData) {
  * @author Seth Hollingsead
  * @date 2022/01/21
  */
-function isObjectEmpty(inputData, inputMetaData) {
+async function isObjectEmpty(inputData, inputMetaData) {
   let functionName = isObjectEmpty.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
@@ -140,7 +140,7 @@ function isObjectEmpty(inputData, inputMetaData) {
  * @author Seth Hollingsead
  * @date 2022/01/21
  */
-function isArrayEmpty(inputData, inputMetaData) {
+async function isArrayEmpty(inputData, inputMetaData) {
   let functionName = isArrayEmpty.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
@@ -163,7 +163,7 @@ function isArrayEmpty(inputData, inputMetaData) {
  * @author Seth Hollingsead
  * @date 2022/01/21
  */
-function isObject(inputData, inputMetaData) {
+async function isObject(inputData, inputMetaData) {
   let functionName = isObject.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
@@ -189,7 +189,7 @@ function isObject(inputData, inputMetaData) {
  * @author Seth Hollingsead
  * @date 2022/01/21
  */
-function isArray(inputData, inputMetaData) {
+async function isArray(inputData, inputMetaData) {
   let functionName = isArray.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
@@ -213,7 +213,7 @@ function isArray(inputData, inputMetaData) {
  * @author Seth Hollingsead
  * @date 2022/01/21
  */
-function isArrayOrObject(inputData, inputMetaData) {
+async function isArrayOrObject(inputData, inputMetaData) {
   let functionName = isArrayOrObject.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
@@ -239,7 +239,7 @@ function isArrayOrObject(inputData, inputMetaData) {
  * @author Seth Hollingsead
  * @date 2022/01/21
  */
-function isNonZeroLengthArray(inputData, inputMetaData) {
+async function isNonZeroLengthArray(inputData, inputMetaData) {
   let functionName = isNonZeroLengthArray.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
@@ -266,7 +266,7 @@ function isNonZeroLengthArray(inputData, inputMetaData) {
  * @author Seth Hollingsead
  * @date 2022/01/21
  */
-function arrayDeepClone(inputData, inputMetaData) {
+async function arrayDeepClone(inputData, inputMetaData) {
   let functionName = arrayDeepClone.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
@@ -290,7 +290,7 @@ function arrayDeepClone(inputData, inputMetaData) {
  * @date 2020/04/23
  * @reference: https://stackoverflow.com/questions/27936772/how-to-deep-merge-instead-of-shallow-merge
  */
-function objectDeepMerge(inputData, inputMetaData) {
+async function objectDeepMerge(inputData, inputMetaData) {
   let functionName = objectDeepMerge.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
@@ -428,7 +428,7 @@ function objectDeepMerge(inputData, inputMetaData) {
  * And by the time this gets called everything should be effectively bootstrapped.
  * Therefore we can use the loggers here.
  */
-function getNamespacedDataObject(inputData, inputMetaData) {
+async function getNamespacedDataObject(inputData, inputMetaData) {
   let functionName = getNamespacedDataObject.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
@@ -468,7 +468,7 @@ function getNamespacedDataObject(inputData, inputMetaData) {
  * @author Seth Hollingsead
  * @date 2022/05/11
  */
-function setNamespacedDataObject(inputData, inputMetaData) {
+async function setNamespacedDataObject(inputData, inputMetaData) {
   let functionName = setNamespacedDataObject.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));

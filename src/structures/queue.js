@@ -33,7 +33,7 @@ const namespacePrefix = wrd.cstructures + bas.cDot + baseFileName + bas.cDot;
  * @date 2022/02/01
  * @reference {@link https://www.youtube.com/watch?v=bK7I79hcm08}
  */
-function initQueue(queueNameSpace) {
+async function initQueue(queueNameSpace) {
   let functionName = initQueue.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   loggers.consoleLog(namespacePrefix + functionName, msg.cqueueNameSpaceIs + queueNameSpace);
@@ -50,7 +50,7 @@ function initQueue(queueNameSpace) {
  * @date 2022/02/01
  * @reference {@link https://www.youtube.com/watch?v=bK7I79hcm08}
  */
-function dequeue(queueNameSpace) {
+async function dequeue(queueNameSpace) {
   let functionName = dequeue.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   loggers.consoleLog(namespacePrefix + functionName, msg.cqueueNameSpaceIs + queueNameSpace);
@@ -71,7 +71,7 @@ function dequeue(queueNameSpace) {
  * @date 2022/02/01
  * @reference {@link https://www.youtube.com/watch?v=bK7I79hcm08}
  */
-function enqueue(queueNameSpace, value) {
+async function enqueue(queueNameSpace, value) {
   let functionName = enqueue.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   loggers.consoleLog(namespacePrefix + functionName, msg.cqueueNameSpaceIs + queueNameSpace);
@@ -89,7 +89,7 @@ function enqueue(queueNameSpace, value) {
  * @date 2022/02/01
  * @reference {@link https://www.youtube.com/watch?v=bK7I79hcm08}
  */
-function isEmpty(queueNameSpace) {
+async function isEmpty(queueNameSpace) {
   let functionName = isEmpty.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   loggers.consoleLog(namespacePrefix + functionName, msg.cqueueNameSpaceIs + queueNameSpace);
@@ -113,7 +113,7 @@ function isEmpty(queueNameSpace) {
  * @date 2022/02/01
  * @reference {@link https://www.youtube.com/watch?v=bK7I79hcm08}
  */
-function queueFront(queueNameSpace) {
+async function queueFront(queueNameSpace) {
   let functionName = queueFront.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   loggers.consoleLog(namespacePrefix + functionName, msg.cqueueNameSpaceIs + queueNameSpace);
@@ -138,7 +138,7 @@ function queueFront(queueNameSpace) {
  * @date 2022/02/01
  * @reference {@link https://www.youtube.com/watch?v=bK7I79hcm08}
  */
-function queueSize(queueNameSpace) {
+async function queueSize(queueNameSpace) {
   let functionName = queueFront.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   loggers.consoleLog(namespacePrefix + functionName, msg.cqueueNameSpaceIs + queueNameSpace);
@@ -162,7 +162,7 @@ function queueSize(queueNameSpace) {
  * @author Seth Hollingsead
  * @date 2022/06/21
  */
-function queuePrint(queueNameSpace) {
+async function queuePrint(queueNameSpace) {
   let functionName = queuePrint.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   loggers.consoleLog(namespacePrefix + functionName, msg.cqueueNameSpaceIs + queueNameSpace);

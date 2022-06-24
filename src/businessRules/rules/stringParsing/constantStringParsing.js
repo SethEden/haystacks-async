@@ -41,7 +41,7 @@ const namespacePrefix = sys.cbusinessRules + bas.cDot + wrd.crules + bas.cDot + 
  * @author Seth Hollingsead
  * @date 2022/01/23
  */
-function validateConstantsDataValidation(inputData, inputMetaData) {
+async function validateConstantsDataValidation(inputData, inputMetaData) {
   let functionName = validateConstantsDataValidation.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
@@ -123,7 +123,7 @@ function validateConstantsDataValidation(inputData, inputMetaData) {
  * @author Seth Hollingsead
  * @date 2022/01/24
  */
-function determineConstantsContextQualifiedPrefix(inputData, inputMetaData) {
+async function determineConstantsContextQualifiedPrefix(inputData, inputMetaData) {
   let functionName = determineConstantsContextQualifiedPrefix.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
@@ -154,7 +154,7 @@ function determineConstantsContextQualifiedPrefix(inputData, inputMetaData) {
  * @author Seth Hollingsead
  * @date 2022/01/24
  */
-function determineSuggestedConstantsValidationLineOfCode(inputData, inputMetaData) {
+async function determineSuggestedConstantsValidationLineOfCode(inputData, inputMetaData) {
   let functionName = determineSuggestedConstantsValidationLineOfCode.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
@@ -197,7 +197,7 @@ function determineSuggestedConstantsValidationLineOfCode(inputData, inputMetaDat
  * @author Seth Hollingsead
  * @date 2022/01/24
  */
-function validateConstantsDataValidationLineItemName(inputData, inputMetaData) {
+async function validateConstantsDataValidationLineItemName(inputData, inputMetaData) {
   let functionName = validateConstantsDataValidationLineItemName.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
@@ -229,7 +229,7 @@ function validateConstantsDataValidationLineItemName(inputData, inputMetaData) {
  * @author Seth Hollingsead
  * @date 2022/01/24
  */
-function doesConstantExist(inputData, inputMetaData) {
+async function doesConstantExist(inputData, inputMetaData) {
   let functionName = doesConstantExist.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
@@ -282,7 +282,7 @@ loop1:
  * @author Seth Hollingsead
  * @date 2022/01/24
  */
-function getConstantType(inputData, inputMetaData) {
+async function getConstantType(inputData, inputMetaData) {
   let functionName = getConstantType.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
@@ -339,7 +339,7 @@ loop1:
  * @author Seth Hollingsead
  * @date 2022/01/24
  */
-function getConstantActualValue(inputData, inputMetaData) {
+async function getConstantActualValue(inputData, inputMetaData) {
   let functionName = getConstantActualValue.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
@@ -407,7 +407,7 @@ function getConstantActualValue(inputData, inputMetaData) {
  * @author Seth Hollingsead
  * @date 2022/01/24
  */
-function getConstantName(inputData, inputMetaData) {
+async function getConstantName(inputData, inputMetaData) {
   let functionName = getConstantName.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
@@ -456,7 +456,7 @@ loop1:
  * @author Seth Hollingsead
  * @date 2022/01/24
  */
-function findConstantName(inputData, inputMetaData) {
+async function findConstantName(inputData, inputMetaData) {
   let functionName = findConstantName.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
@@ -482,7 +482,7 @@ function findConstantName(inputData, inputMetaData) {
  * @author Seth Hollingsead
  * @date 2022/01/24
  */
-function isConstantTypeValid(inputData, inputMetaData) {
+async function isConstantTypeValid(inputData, inputMetaData) {
   let functionName = isConstantTypeValid.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
@@ -511,7 +511,7 @@ function isConstantTypeValid(inputData, inputMetaData) {
  * @author Seth Hollingsead
  * @date 2022/01/24
  */
-function convertConstantTypeToConstantPrefix(inputData, inputMetaData) {
+async function convertConstantTypeToConstantPrefix(inputData, inputMetaData) {
   let functionName = convertConstantTypeToConstantPrefix.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
@@ -540,7 +540,7 @@ function convertConstantTypeToConstantPrefix(inputData, inputMetaData) {
  * @author Seth Hollingsead
  * @date 2022/01/24
  */
-function constantsOptimizedFulfillmentSystem(inputData, inputMetaData) {
+async function constantsOptimizedFulfillmentSystem(inputData, inputMetaData) {
   let functionName = constantsOptimizedFulfillmentSystem.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
@@ -573,7 +573,7 @@ function constantsOptimizedFulfillmentSystem(inputData, inputMetaData) {
  * @author Seth Hollingsead
  * @date 2022/01/24
  */
-function constantsFulfillmentSystem(inputData, inputMetaData) {
+async function constantsFulfillmentSystem(inputData, inputMetaData) {
   let functionName = constantsFulfillmentSystem.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
@@ -619,7 +619,7 @@ function constantsFulfillmentSystem(inputData, inputMetaData) {
  * @author Seth Hollingsead
  * @date 2022/01/24
  */
-function validateConstantsDataValues(inputData, inputMetaData) {
+async function validateConstantsDataValues(inputData, inputMetaData) {
   let functionName = validateConstantsDataValues.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
@@ -684,7 +684,7 @@ function validateConstantsDataValues(inputData, inputMetaData) {
  * @author Seth Hollingsead
  * @date 2022/01/24
  */
-function isConstantValid(inputData, inputMetaData) {
+async function isConstantValid(inputData, inputMetaData) {
   let functionName = isConstantValid.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);

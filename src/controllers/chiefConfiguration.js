@@ -39,7 +39,7 @@ const namespacePrefix = wrd.ccontrollers + bas.cDot + baseFileName +bas.cDot;
  * @author Seth Hollingsead
  * @date 2021/10/13
  */
-function setupConfiguration(appConfigPath, frameworkConfigPath) {
+async function setupConfiguration(appConfigPath, frameworkConfigPath) {
   let functionName = setupConfiguration.name;
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   // console.log(`appConfigPath is: ${appConfigPath}`);
@@ -81,7 +81,7 @@ function setupConfiguration(appConfigPath, frameworkConfigPath) {
  * @date 2021/11/10
  * @NOTE Cannot use the loggers here, because dependency data will have never been loaded.
  */
-function parseLoadedConfigurationData(allConfigurationData) {
+async function parseLoadedConfigurationData(allConfigurationData) {
   // let functionName = parseLoadedConfigurationData.name;
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   // console.log(`allConfigurationData is: ${JSON.stringify(allConfigurationData)}`);

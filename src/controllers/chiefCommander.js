@@ -37,7 +37,7 @@ const namespacePrefix = wrd.ccontrollers + bas.cDot + baseFileName + bas.cDot;
  * @author Seth Hollingsead
  * @date 2022/02/01
  */
-function bootStrapCommands() {
+async function bootStrapCommands() {
   let functionName = bootStrapCommands.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   commandBroker.bootStrapCommands();
@@ -52,7 +52,7 @@ function bootStrapCommands() {
  * @author Seth Hollingsead
  * @date 2022/02/17
  */
-function addClientCommands(clientCommands) {
+async function addClientCommands(clientCommands) {
   let functionName = addClientCommands.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   commandBroker.addClientCommands(clientCommands);
@@ -74,7 +74,7 @@ function addClientCommands(clientCommands) {
  * @author Seth Hollingsead
  * @date 2022/02/02
  */
-function loadCommandAliasesFromPath(commandAliasesFilePathConfigurationName, contextName) {
+async function loadCommandAliasesFromPath(commandAliasesFilePathConfigurationName, contextName) {
   let functionName = loadCommandAliasesFromPath.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // commandAliasesFilePathConfigurationName is:
@@ -109,7 +109,7 @@ function loadCommandAliasesFromPath(commandAliasesFilePathConfigurationName, con
  * @author Seth Hollingsead
  * @date 2022/02/02
  */
-function enqueueCommand(command) {
+async function enqueueCommand(command) {
   let functionName = enqueueCommand.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // command is:
@@ -128,7 +128,7 @@ function enqueueCommand(command) {
  * @author Seth Hollingsead
  * @date 2022/02/02
  */
-function isCommandQueueEmpty() {
+async function isCommandQueueEmpty() {
   let functionName = isCommandQueueEmpty.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   let returnData = false;
@@ -146,7 +146,7 @@ function isCommandQueueEmpty() {
  * @author Seth Hollingsead
  * @date 2022/02/02
  */
-function processCommandQueue() {
+async function processCommandQueue() {
   let functionName = processCommandQueue.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   let commandToExecute;

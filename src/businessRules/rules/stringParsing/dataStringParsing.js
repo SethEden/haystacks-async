@@ -32,7 +32,7 @@ const namespacePrefix = sys.cbusinessRules + bas.cDot + wrd.crules + bas.cDot + 
  * @author Seth Hollingsead
  * @date 2022/01/25
  */
-function getAttributeName(inputData, inputMetaData) {
+async function getAttributeName(inputData, inputMetaData) {
   let functionName = getAttributeName.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
@@ -61,7 +61,7 @@ function getAttributeName(inputData, inputMetaData) {
  * @author Seth Hollingsead
  * @date 2022/01/10
  */
-function getAttributeValue(inputData, inputMetaData) {
+async function getAttributeValue(inputData, inputMetaData) {
   let functionName = getAttributeValue.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
@@ -90,7 +90,7 @@ function getAttributeValue(inputData, inputMetaData) {
  * @author Seth Hollingsead
  * @date 2022/01/23
  */
-function getValueFromAssignmentOperationString(inputData, inputMetaData) {
+async function getValueFromAssignmentOperationString(inputData, inputMetaData) {
   let functionName = getValueFromAssignmentOperationString.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
@@ -116,7 +116,7 @@ function getValueFromAssignmentOperationString(inputData, inputMetaData) {
  * @author Seth Hollingsead
  * @date 2022/01/24
  */
-function getDataCategoryFromDataContextName(inputData, inputMetaData) {
+async function getDataCategoryFromDataContextName(inputData, inputMetaData) {
   let functionName = getDataCategoryFromDataContextName.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
@@ -143,7 +143,7 @@ function getDataCategoryFromDataContextName(inputData, inputMetaData) {
  * @author Seth Hollingsead
  * @date 2022/01/24
  */
-function getDataCategoryDetailNameFromDataContextName(inputData, inputMetaData) {
+async function getDataCategoryDetailNameFromDataContextName(inputData, inputMetaData) {
   let functionName = getDataCategoryDetailNameFromDataContextName.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
@@ -170,7 +170,7 @@ function getDataCategoryDetailNameFromDataContextName(inputData, inputMetaData) 
  * @author Seth Hollingsead
  * @date 2022/01/24
  */
-function getKeywordNameFromDataContextName(inputData, inputMetaData) {
+async function getKeywordNameFromDataContextName(inputData, inputMetaData) {
   let functionName = getKeywordNameFromDataContextName.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
@@ -196,7 +196,7 @@ function getKeywordNameFromDataContextName(inputData, inputMetaData) {
  * @author Seth Hollingsead
  * @date 2022/01/25
  */
-function loadDataFile(inputData, inputMetaData) {
+async function loadDataFile(inputData, inputMetaData) {
   let functionName = loadDataFile.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
@@ -244,7 +244,7 @@ function loadDataFile(inputData, inputMetaData) {
  * @author Seth Hollingsead
  * @date 2022/03/17
  */
-function saveDataFile(inputData, inputMetaData) {
+async function saveDataFile(inputData, inputMetaData) {
   let functionName = saveDataFile.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
@@ -282,7 +282,7 @@ function saveDataFile(inputData, inputMetaData) {
  * @author Seth Hollingsead
  * @date 2022/01/21
  */
-function getUserNameFromEmail(inputData, inputMetaData) {
+async function getUserNameFromEmail(inputData, inputMetaData) {
   let functionName = getUserNameFromEmail.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);

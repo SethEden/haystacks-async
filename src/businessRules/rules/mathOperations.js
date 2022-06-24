@@ -33,7 +33,7 @@ const namespacePrefix = sys.cbusinessRules + bas.cDot + wrd.crules + bas.cDot + 
  * @date 2022/01/27
  * @reference {@link: https://stackoverflow.com/questions/5623838/rgb-to-hex-and-hex-to-rgb}
  */
-function hex2rgbConversion(inputData, inputMetaData) {
+async function hex2rgbConversion(inputData, inputMetaData) {
   let functionName = hex2rgbConversion.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
@@ -82,7 +82,7 @@ function hex2rgbConversion(inputData, inputMetaData) {
  * @date 2022/01/25
  * @reference {@link https://stackoverflow.com/questions/5016313/how-to-determine-if-a-number-is-odd-in-javascript}
  */
-function isOdd(inputData, inputMetaData) {
+async function isOdd(inputData, inputMetaData) {
   let functionName = isOdd.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
@@ -116,7 +116,7 @@ function isOdd(inputData, inputMetaData) {
  * @NOTE This function isn't actually needed, as we can just invert our logic for calling isOdd,
  * but I provided it here anyways for completeness.
  */
-function isEven(inputData, inputMetaData) {
+async function isEven(inputData, inputMetaData) {
   let functionName = isEven.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);

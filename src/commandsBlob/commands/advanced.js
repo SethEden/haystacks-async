@@ -53,7 +53,7 @@ const namespacePrefix = sys.ccommandsBlob + bas.cDot + wrd.ccommands + bas.cDot 
  * @author Seth Hollingsead
  * @date 2022/02/22
  */
-function commandSequencer(inputData, inputMetaData) {
+async function commandSequencer(inputData, inputMetaData) {
   let functionName = commandSequencer.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
@@ -119,7 +119,7 @@ function commandSequencer(inputData, inputMetaData) {
  * @author Seth Hollingsead
  * @date 2022/2/24
  */
-function workflow(inputData, inputMetaData) {
+async function workflow(inputData, inputMetaData) {
   let functionName = workflow.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
@@ -169,7 +169,7 @@ function workflow(inputData, inputMetaData) {
  * Consider the following link that describes how the regEx & flags are parsed by the lexicalAnalyzer.
  * {@link https://stackoverflow.com/questions/874709/converting-user-input-string-to-regular-expression}
  */
-function businessRule(inputData, inputMetaData) {
+async function businessRule(inputData, inputMetaData) {
   let functionName = businessRule.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
@@ -281,7 +281,7 @@ function businessRule(inputData, inputMetaData) {
  * @author Seth Hollingsead
  * @date 2022/02/24
  */
-function commandGenerator(inputData, inputMetaData) {
+async function commandGenerator(inputData, inputMetaData) {
   let functionName = commandGenerator.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
@@ -393,7 +393,7 @@ function commandGenerator(inputData, inputMetaData) {
  * @author Seth Hollingsead
  * @date 2022/02/25
  */
-function commandAliasGenerator(inputData, inputMetaData) {
+async function commandAliasGenerator(inputData, inputMetaData) {
   let functionName = commandAliasGenerator.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));

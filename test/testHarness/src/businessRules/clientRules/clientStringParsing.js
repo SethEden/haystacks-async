@@ -36,7 +36,7 @@ const namespacePrefix = apc.cApplicationName + bas.cDot + wrd.cbusiness + wrd.cR
  * @author Seth Hollingsead
  * @date 2022/02/08
  */
-const customEcho = function(inputData, inputMetaData) {
+async function customEcho(inputData, inputMetaData) {
   let functionName = customEcho.name;
   haystacks.consoleLog(namespacePrefix, functionName, msg.cBEGIN_Function);
   haystacks.consoleLog(namespacePrefix, functionName, msg.cinputDataIs + inputData);
@@ -48,7 +48,7 @@ const customEcho = function(inputData, inputMetaData) {
   haystacks.consoleLog(namespacePrefix, functionName, msg.creturnDataIs + returnData);
   haystacks.consoleLog(namespacePrefix, functionName, msg.cEND_Function);
   return returnData;
-};
+}
 
 /**
  * @function mostPopularNumber
@@ -60,7 +60,7 @@ const customEcho = function(inputData, inputMetaData) {
  * @date 2022/03/31
  * @NOTE: Test command: businessRule mostPopularNumber 1 2 2 3 4 5 2
  */
-const mostPopularNumber = function(inputData, inputMetaData) {
+async function mostPopularNumber(inputData, inputMetaData) {
   let functionName = mostPopularNumber.name;
   haystacks.consoleLog(namespacePrefix, functionName, msg.cBEGIN_Function);
   haystacks.consoleLog(namespacePrefix, functionName, msg.cinputDataIs + inputData);
@@ -177,7 +177,7 @@ const mostPopularNumber = function(inputData, inputMetaData) {
   haystacks.consoleLog(namespacePrefix, functionName, msg.creturnDataIs + returnData);
   haystacks.consoleLog(namespacePrefix, functionName, msg.cEND_Function);
   return returnData;
-};
+}
 
 /**
  * @function isAlmostPalindrome
@@ -189,7 +189,7 @@ const mostPopularNumber = function(inputData, inputMetaData) {
  * @date 2022/03/31
  * @NOTE Test command: businessRule isAlmostPalindrome annae
  */
-const isAlmostPalindrome = function(inputData, inputMetaData) {
+async function isAlmostPalindrome(inputData, inputMetaData) {
   let functionName = isAlmostPalindrome.name;
   haystacks.consoleLog(namespacePrefix, functionName, msg.cBEGIN_Function);
   haystacks.consoleLog(namespacePrefix, functionName, msg.cinputDataIs + inputData);
@@ -269,7 +269,7 @@ loop2:
   haystacks.consoleLog(namespacePrefix, functionName, msg.creturnDataIs + returnData);
   haystacks.consoleLog(namespacePrefix, functionName, msg.cEND_Function);
   return returnData;
-};
+}
 
 /**
  * @function threePointAverage
@@ -281,7 +281,7 @@ loop2:
  * @date 2022/03/31
  * @NOTE: Test command: businessRule threePointAverage [1,1] [2,2] [3,3]
  */
-const threePointAverage = function(inputData, inputMetaData) {
+async function threePointAverage(inputData, inputMetaData) {
   let functionName = threePointAverage.name;
   haystacks.consoleLog(namespacePrefix, functionName, msg.cBEGIN_Function);
   haystacks.consoleLog(namespacePrefix, functionName, msg.cinputDataIs + inputData);
@@ -351,7 +351,7 @@ const threePointAverage = function(inputData, inputMetaData) {
  * @date 2022/03/31
  * @NOTE: Test command: businessRule arrayCounter 3 [1,2,3,3,2]
  */
-const arrayCounter = function(inputData, inputMetaData) {
+async function arrayCounter(inputData, inputMetaData) {
   let functionName = arrayCounter.name;
   haystacks.consoleLog(namespacePrefix, functionName, msg.cBEGIN_Function);
   haystacks.consoleLog(namespacePrefix, functionName, msg.cinputDataIs + inputData);
@@ -367,7 +367,7 @@ const arrayCounter = function(inputData, inputMetaData) {
   haystacks.consoleLog(namespacePrefix, functionName, msg.creturnDataIs + returnData);
   haystacks.consoleLog(namespacePrefix, functionName, msg.cEND_Function);
   return returnData;
-};
+}
 
 export default {
   customEcho,

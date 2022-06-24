@@ -44,7 +44,7 @@ const namespacePrefix = wrd.cbrokers + bas.cDot + baseFileName + bas.cDot;
  * @author Seth Hollingsead
  * @date 2022/02/02
  */
-function bootStrapCommands() {
+async function bootStrapCommands() {
   let functionName = bootStrapCommands.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   commandsLibrary.initCommandsLibrary();
@@ -59,7 +59,7 @@ function bootStrapCommands() {
  * @author Seth Hollingsead
  * @date 2022/02/02
  */
-function addClientCommands(clientCommands) {
+async function addClientCommands(clientCommands) {
   let functionName = addClientCommands.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // Object.assign(D[wrd.cCommands], clientCommands);
@@ -82,7 +82,7 @@ function addClientCommands(clientCommands) {
  * @author Seth Hollingsead
  * @date 2022/02/02
  */
-function getValidCommand(commandString, commandDelimiter) {
+async function getValidCommand(commandString, commandDelimiter) {
   let functionName = getValidCommand.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // commandString is:
@@ -152,7 +152,7 @@ function getValidCommand(commandString, commandDelimiter) {
  * @author Seth Hollingsead
  * @date 2022/06/06
  */
-function countMatchingCommandAlias(commandAliasData, commandAliasName) {
+async function countMatchingCommandAlias(commandAliasData, commandAliasName) {
   let functionName = countMatchingCommandAlias.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // commandAliasData is:
@@ -218,7 +218,7 @@ function countMatchingCommandAlias(commandAliasData, commandAliasName) {
  * @author Seth Hollingsead
  * @date 2022/05/27
  */
-function searchCommandAlias(commandAliasData, commandAliasName) {
+async function searchCommandAlias(commandAliasData, commandAliasName) {
   let functionName = searchCommandAlias.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // commandAliasData is:
@@ -292,7 +292,7 @@ function searchCommandAlias(commandAliasData, commandAliasName) {
  * @author Seth Hollingsead
  * @date 2022/05/27
  */
-function getAllCommandAliasData(commandAliasDataStructure) {
+async function getAllCommandAliasData(commandAliasDataStructure) {
   let functionName = getAllCommandAliasData.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // commandAliasDataStructure is:
@@ -352,7 +352,7 @@ function getAllCommandAliasData(commandAliasDataStructure) {
  * @author Seth Hollingsead
  * @date 2022/05/27
  */
-function getCommandNamespaceDataObject(commandAliasDataStructure, namespaceToFind) {
+async function getCommandNamespaceDataObject(commandAliasDataStructure, namespaceToFind) {
   let functionName = getCommandNamespaceDataObject.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // commandAliasDataStructure is:
@@ -397,7 +397,7 @@ function getCommandNamespaceDataObject(commandAliasDataStructure, namespaceToFin
  * @author Seth Hollingsead
  * @date 2022/02/02
  */
-function getCommandArgs(commandString, commandDelimiter) {
+async function getCommandArgs(commandString, commandDelimiter) {
   let functionName = getCommandArgs.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // commandString is:
@@ -548,7 +548,7 @@ function getCommandArgs(commandString, commandDelimiter) {
  * @author Seth Hollingsead
  * @date 2022/02/02
  */
-function executeCommand(commandString) {
+async function executeCommand(commandString) {
   // Here we need to do all of the parsing for the command.
   // Might be a good idea to rely on business rules to do much of the parsing for us!
   // Also don't forget this is where we will need to implement the command performance

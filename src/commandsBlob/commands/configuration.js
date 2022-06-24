@@ -41,7 +41,7 @@ const namespacePrefix = sys.ccommandsBlob + bas.cDot + wrd.ccommands + bas.cDot 
  * @author Seth Hollingsead
  * @date 2022/03/11
  */
-function saveConfiguration(inputData, inputMetaData) {
+async function saveConfiguration(inputData, inputMetaData) {
   let functionName = saveConfiguration.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
@@ -73,7 +73,7 @@ function saveConfiguration(inputData, inputMetaData) {
  * @NOTE Test String 1: changeConfigurationSetting configuration.debugSetting.commandsBlob.commands.system true
  * Test String 2: changeConfigurationSetting debugSetting.commandsBlob.commands.system true
  */
-function changeConfigurationSetting(inputData, inputMetaData) {
+async function changeConfigurationSetting(inputData, inputMetaData) {
   let functionName = changeConfigurationSetting.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
@@ -122,7 +122,7 @@ function changeConfigurationSetting(inputData, inputMetaData) {
  * @author Seth Hollingsead
  * @date 2022/06/10
  */
-function listConfigurationThemes(inputData, inputMetaData) {
+async function listConfigurationThemes(inputData, inputMetaData) {
   let functionName = listConfigurationThemes.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
@@ -149,7 +149,7 @@ function listConfigurationThemes(inputData, inputMetaData) {
  * @author Seth Hollingsead
  * @date 2022/06/13
  */
-function changeDebugConfigurationTheme(inputData, inputMetaData) {
+async function changeDebugConfigurationTheme(inputData, inputMetaData) {
   let functionName = changeDebugConfigurationTheme.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));

@@ -39,7 +39,7 @@ const namespacePrefix = wrd.cexecutrix + bas.cDot + baseFileName + bas.cDot;
  * @date 2021/10/13
  * @NOTE Cannot use the loggers here, because of a circular dependency.
  */
-function setConfigurationSetting(configurationNamespace, configurationName, configurationValue) {
+async function setConfigurationSetting(configurationNamespace, configurationName, configurationValue) {
   // let functionName = setConfigurationSetting.name;
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   // console.log(`configurationNamespace is: ${configurationNamespace}`);
@@ -63,7 +63,7 @@ function setConfigurationSetting(configurationNamespace, configurationName, conf
  * @date 2021/10/13
  * @NOTE Cannot use the loggers here, because of a circular dependency.
  */
-function getConfigurationSetting(configurationNamespace, configurationName) {
+async function getConfigurationSetting(configurationNamespace, configurationName) {
   // let functionName = getConfigurationSetting.name;
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   // console.log(`configurationNamespace is: ${configurationNamespace}`);
@@ -96,7 +96,7 @@ function getConfigurationSetting(configurationNamespace, configurationName) {
  * @date 2021/10/26
  * @NOTE Cannot use the loggers here, because of a circular dependency.
  */
-function processConfigurationNameRules(fullyQualifiedName) {
+async function processConfigurationNameRules(fullyQualifiedName) {
   // let functionName = processConfigurationNameRules.name;
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   // console.log(`fullyQualifiedName is: ${fullyQualifiedName}`);
@@ -117,7 +117,7 @@ function processConfigurationNameRules(fullyQualifiedName) {
  * @date 2021/10/26
  * @NOTE Cannot use the loggers here, because of a circular dependency.
  */
-function processConfigurationNamespaceRules(fullyQualifiedName) {
+async function processConfigurationNamespaceRules(fullyQualifiedName) {
   // let functionName = processConfigurationNamespaceRules.name;
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   // console.log(`fullyQualifiedName is: ${fullyQualifiedName}`);
@@ -151,7 +151,7 @@ function processConfigurationNamespaceRules(fullyQualifiedName) {
  * @date 2021/10/26
  * @NOTE Cannot use the loggers here, because of a circular dependency.
  */
-function processConfigurationValueRules(name, value) {
+async function processConfigurationValueRules(name, value) {
   // let functionName = processConfigurationValueRules.name;
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   // console.log(`name is: ${name}`);
@@ -190,7 +190,7 @@ function processConfigurationValueRules(name, value) {
  * @date 2021/10/26
  * @NOTE Cannot use the loggers here, because of a circular dependency.
  */
-function getParentConfigurationNamespaceObject(configurationNamespace, optionalFunctionNameAppendix) {
+async function getParentConfigurationNamespaceObject(configurationNamespace, optionalFunctionNameAppendix) {
   // let functionName = getParentConfigurationNamespaceObject.name;
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   // console.log(`configurationNamespace is: ${configurationNamespace}`);
@@ -222,7 +222,7 @@ function getParentConfigurationNamespaceObject(configurationNamespace, optionalF
  * @NOTE Cannot use the loggers here, because of a circular dependency.
  * @NOTE See note below about the business rule: biz.cgetNamespacedDataObject!
  */
-function getConfigurationNamespaceObject(configurationNamespace) {
+async function getConfigurationNamespaceObject(configurationNamespace) {
   // let functionName = getConfigurationNamespaceObject.name;
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   // console.log(`configurationNamespace is: ${configurationNamespace}`);

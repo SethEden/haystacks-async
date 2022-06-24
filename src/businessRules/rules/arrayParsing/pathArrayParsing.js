@@ -34,7 +34,7 @@ const namespacePrefix = sys.cbusinessRules + bas.cDot + wrd.crules + bas.cDot + 
  * @author Seth Hollingsead
  * @date 2022/01/19
  */
-function doesArrayContainFilename(inputData, inputMetaData) {
+async function doesArrayContainFilename(inputData, inputMetaData) {
   let functionName = doesArrayContainFilename.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
@@ -70,7 +70,7 @@ function doesArrayContainFilename(inputData, inputMetaData) {
  * @author Seth Hollingsead
  * @date 2022/01/21
  */
-function getFileAndPathListForPath(inputData, inputMetaData) {
+async function getFileAndPathListForPath(inputData, inputMetaData) {
   let functionName = getFileAndPathListForPath.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));

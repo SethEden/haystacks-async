@@ -34,7 +34,7 @@ const namespacePrefix = wrd.cbrokers + bas.cDot + baseFileName + bas.cDot;
  * @author Seth Hollingsead
  * @date 2022/02/04
  */
-function getWorkflow(workflowName) {
+async function getWorkflow(workflowName) {
   let functionName = getWorkflow.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // workflowName is:
@@ -57,7 +57,7 @@ function getWorkflow(workflowName) {
  * @author Seth Hollingsead
  * @date 2022/05/24
  */
-function doesWorkflowExist(workflowName) {
+async function doesWorkflowExist(workflowName) {
   let functionName = doesWorkflowExist.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // workflowName is:
@@ -80,7 +80,7 @@ function doesWorkflowExist(workflowName) {
  * @param {string} workflowName The name of the workflow that should be searched for in the workflow data structure.
  * @return {boolean} True or False to indicate if the workflow was found or not.
  */
-function doesWorkflowExistInWorkflowData(workflowData, workflowName) {
+async function doesWorkflowExistInWorkflowData(workflowData, workflowName) {
   let functionName = doesWorkflowExist.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // workflowName is:
@@ -106,7 +106,7 @@ function doesWorkflowExistInWorkflowData(workflowData, workflowName) {
  * @author Seth Hollingsead
  * @date 2022/05/24
  */
-function searchWorkflow(workflowData, workflowName) {
+async function searchWorkflow(workflowData, workflowName) {
   let functionName = searchWorkflow.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // workflowData is:
@@ -149,7 +149,7 @@ function searchWorkflow(workflowData, workflowName) {
  * @author Seth Hollingsead
  * @date 2022/05/25
  */
-function getAllWorkflows(workflowDataStructure) {
+async function getAllWorkflows(workflowDataStructure) {
   let functionName = getAllWorkflows.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // workflowDataStructure is:
@@ -211,7 +211,7 @@ function getAllWorkflows(workflowDataStructure) {
  * @author Seth Hollingsead
  * @date 2022/05/25
  */
-function getWorkflowNamespaceDataObject(workflowDataStructure, namespaceToFind) {
+async function getWorkflowNamespaceDataObject(workflowDataStructure, namespaceToFind) {
   let functionName = getWorkflowNamespaceDataObject.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // workflowDataStructure is:

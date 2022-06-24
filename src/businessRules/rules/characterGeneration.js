@@ -34,7 +34,7 @@ const namespacePrefix = sys.cbusinessRules + bas.cDot + wrd.crules + bas.cDot + 
  * @author Seth Hollingsead
  * @date 2022/01/25
  */
-function randomlyGenerateMixedCaseLetterOrSpecialCharacter(inputData, inputMetaData) {
+async function randomlyGenerateMixedCaseLetterOrSpecialCharacter(inputData, inputMetaData) {
   let functionName = randomlyGenerateMixedCaseLetterOrSpecialCharacter.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
@@ -57,7 +57,7 @@ function randomlyGenerateMixedCaseLetterOrSpecialCharacter(inputData, inputMetaD
  * @author Seth Hollingsead
  * @date 2022/01/25
  */
-function randomlyGenerateUpperCaseLetterOrSpecialCharacter(inputData, inputMetaData) {
+async function randomlyGenerateUpperCaseLetterOrSpecialCharacter(inputData, inputMetaData) {
   let functionName = randomlyGenerateUpperCaseLetterOrSpecialCharacter.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
@@ -80,7 +80,7 @@ function randomlyGenerateUpperCaseLetterOrSpecialCharacter(inputData, inputMetaD
  * @author Seth Hollingsead
  * @date 2022/01/25
  */
-function randomlyGenerateLowerCaseLetterOrSpecialCharacter(inputData, inputMetaData) {
+async function randomlyGenerateLowerCaseLetterOrSpecialCharacter(inputData, inputMetaData) {
   let functionName = randomlyGenerateLowerCaseLetterOrSpecialCharacter.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
@@ -103,7 +103,7 @@ function randomlyGenerateLowerCaseLetterOrSpecialCharacter(inputData, inputMetaD
  * @author Seth Hollingsead
  * @date 2022/01/25
  */
-function randomlyGenerateEitherMixedCaseLetterOrNumberOrSpecialCharacter(inputData, inputMetaData) {
+async function randomlyGenerateEitherMixedCaseLetterOrNumberOrSpecialCharacter(inputData, inputMetaData) {
   let functionName = randomlyGenerateEitherMixedCaseLetterOrNumberOrSpecialCharacter.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
@@ -126,7 +126,7 @@ function randomlyGenerateEitherMixedCaseLetterOrNumberOrSpecialCharacter(inputDa
  * @author Seth Hollingsead
  * @date 2022/01/25
  */
-function randomlyGenerateEitherUpperCaseLetterOrNumberOrSpecialCharacter(inputData, inputMetaData) {
+async function randomlyGenerateEitherUpperCaseLetterOrNumberOrSpecialCharacter(inputData, inputMetaData) {
   let functionName = randomlyGenerateEitherUpperCaseLetterOrNumberOrSpecialCharacter.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
@@ -149,7 +149,7 @@ function randomlyGenerateEitherUpperCaseLetterOrNumberOrSpecialCharacter(inputDa
  * @author Seth Hollingsead
  * @date 2022/01/25
  */
-function randomlyGenerateEitherLowerCaseLetterOrNumberOrSpecialCharacter(inputData, inputMetaData) {
+async function randomlyGenerateEitherLowerCaseLetterOrNumberOrSpecialCharacter(inputData, inputMetaData) {
   let functionName = randomlyGenerateEitherLowerCaseLetterOrNumberOrSpecialCharacter.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
@@ -170,7 +170,7 @@ function randomlyGenerateEitherLowerCaseLetterOrNumberOrSpecialCharacter(inputDa
  * @author Seth Hollingsead
  * @date 2022/01/25
  */
-function randomlyGenerateMixedCaseAlphaNumericCharacter(inputData, inputMetaData) {
+async function randomlyGenerateMixedCaseAlphaNumericCharacter(inputData, inputMetaData) {
   let functionName = randomlyGenerateMixedCaseAlphaNumericCharacter.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
@@ -191,7 +191,7 @@ function randomlyGenerateMixedCaseAlphaNumericCharacter(inputData, inputMetaData
  * @author Seth Hollingsead
  * @date 2022/01/25
  */
-function randomlyGenerateUpperCaseAlphaNumericCharacter(inputData, inputMetaData) {
+async function randomlyGenerateUpperCaseAlphaNumericCharacter(inputData, inputMetaData) {
   let functionName = randomlyGenerateUpperCaseAlphaNumericCharacter.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
@@ -212,7 +212,7 @@ function randomlyGenerateUpperCaseAlphaNumericCharacter(inputData, inputMetaData
  * @author Seth Hollingsead
  * @date 2022/01/25
  */
-function randomlyGenerateLowerCaseAlphaNumericCharacter(inputData, inputMetaData) {
+async function randomlyGenerateLowerCaseAlphaNumericCharacter(inputData, inputMetaData) {
   let functionName = randomlyGenerateLowerCaseAlphaNumericCharacter.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
@@ -233,7 +233,7 @@ function randomlyGenerateLowerCaseAlphaNumericCharacter(inputData, inputMetaData
  * @author Seth Hollingsead
  * @date 2022/01/25
  */
-function randomlyGenerateNumericCharacter(inputData, inputMetaData) {
+async function randomlyGenerateNumericCharacter(inputData, inputMetaData) {
   let functionName = randomlyGenerateNumericCharacter.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
@@ -254,7 +254,7 @@ function randomlyGenerateNumericCharacter(inputData, inputMetaData) {
  * @author Seth Hollingsead
  * @date 2022/01/25
  */
-function randomlyGenerateSpecialCharacter(inputData, inputMetaData) {
+async function randomlyGenerateSpecialCharacter(inputData, inputMetaData) {
   let functionName = randomlyGenerateSpecialCharacter.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
@@ -285,7 +285,7 @@ function randomlyGenerateSpecialCharacter(inputData, inputMetaData) {
  * @author Seth Hollingsead
  * @date 2022/01/25
  */
-function randomlyGenerateNumberInRange(inputData, inputMetaData) {
+async function randomlyGenerateNumberInRange(inputData, inputMetaData) {
   let functionName = randomlyGenerateNumberInRange.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
@@ -325,7 +325,7 @@ function randomlyGenerateNumberInRange(inputData, inputMetaData) {
  * @author Seth Hollingsead
  * @date 2022/01/25
  */
-function randomlyGenerateBooleanValue(inputData, inputMetaData) {
+async function randomlyGenerateBooleanValue(inputData, inputMetaData) {
   let functionName = randomlyGenerateBooleanValue.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
@@ -347,7 +347,7 @@ function randomlyGenerateBooleanValue(inputData, inputMetaData) {
  * @author Seth Hollingsead
  * @date 2022/01/25
  */
-function randomlyGenerateMixedCaseAlphabeticCharacter(inputData, inputMetaData) {
+async function randomlyGenerateMixedCaseAlphabeticCharacter(inputData, inputMetaData) {
   let functionName = randomlyGenerateMixedCaseAlphabeticCharacter.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
@@ -368,7 +368,7 @@ function randomlyGenerateMixedCaseAlphabeticCharacter(inputData, inputMetaData) 
  * @author Seth Hollingsead
  * @date 2022/01/25
  */
-function randomlyGenerateLowerCaseLetter(inputData, inputMetaData) {
+async function randomlyGenerateLowerCaseLetter(inputData, inputMetaData) {
   let functionName = randomlyGenerateLowerCaseLetter.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
@@ -389,7 +389,7 @@ function randomlyGenerateLowerCaseLetter(inputData, inputMetaData) {
  * @author Seth Hollingsead
  * @date 2022/01/25
  */
-function randomlyGenerateUpperCaseLetter(inputData, inputMetaData) {
+async function randomlyGenerateUpperCaseLetter(inputData, inputMetaData) {
   let functionName = randomlyGenerateUpperCaseLetter.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
@@ -411,7 +411,7 @@ function randomlyGenerateUpperCaseLetter(inputData, inputMetaData) {
  * @author Seth Hollingsead
  * @date 2022/01/25
  */
-function convertNumberToUpperCaseLetter(inputData, inputMetaData) {
+async function convertNumberToUpperCaseLetter(inputData, inputMetaData) {
   let functionName = convertNumberToUpperCaseLetter.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
@@ -443,7 +443,7 @@ function convertNumberToUpperCaseLetter(inputData, inputMetaData) {
  * @author Seth Hollingsead
  * @date 2022/01/25
  */
-function convertNumberToLowerCaseLetter(inputData, inputMetaData) {
+async function convertNumberToLowerCaseLetter(inputData, inputMetaData) {
   let functionName = convertNumberToLowerCaseLetter.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);

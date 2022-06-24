@@ -34,17 +34,17 @@ const baseFileName = path.basename(import.meta.url, path.extname(import.meta.url
 const namespacePrefix = sys.ccommandsBlob + bas.cDot + wrd.ccommands + bas.cDot + baseFileName + bas.cDot;
 
 /**
-* @function echoCommand
-* @description Returns the input as the output without any changes.
-* @param {array<boolean|string|integer>} inputData String that should be echoed.
-* inputData[0] === 'echoCommand'
-* @param {string} inputMetaData Not used for this business rule.
-* @return {array<boolean,string|integer|boolean|object|array>} An array with a boolean True or False value to
-* indicate if the application should exit or not exit, followed by the command output.
-* @author Seth Hollingsead
-* @date 2022/02/04
-*/
-function echoCommand(inputData, inputMetaData) {
+ * @function echoCommand
+ * @description Returns the input as the output without any changes.
+ * @param {array<boolean|string|integer>} inputData String that should be echoed.
+ * inputData[0] === 'echoCommand'
+ * @param {string} inputMetaData Not used for this business rule.
+ * @return {array<boolean,string|integer|boolean|object|array>} An array with a boolean True or False value to
+ * indicate if the application should exit or not exit, followed by the command output.
+ * @author Seth Hollingsead
+ * @date 2022/02/04
+ */
+async function echoCommand(inputData, inputMetaData) {
   let functionName = echoCommand.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
@@ -67,17 +67,17 @@ function echoCommand(inputData, inputMetaData) {
 }
 
 /**
-* @function exit
-* @description Returns false so the entire application can exit.
-* @param {array<boolean|string|integer>} inputData Not used for this command.
-* inputData[0] === 'exit'
-* @param {string} inputMetaData Not used for this command.
-* @return {array<boolean,string|integer|boolean|object|array>} An array with a boolean False value to
-* indicate if the application exit, followed by the command output.
-* @author Seth Hollingsead
-* @date 2022/02/04
-*/
-function exit(inputData, inputMetaData) {
+ * @function exit
+ * @description Returns false so the entire application can exit.
+ * @param {array<boolean|string|integer>} inputData Not used for this command.
+ * inputData[0] === 'exit'
+ * @param {string} inputMetaData Not used for this command.
+ * @return {array<boolean,string|integer|boolean|object|array>} An array with a boolean False value to
+ * indicate if the application exit, followed by the command output.
+ * @author Seth Hollingsead
+ * @date 2022/02/04
+ */
+async function exit(inputData, inputMetaData) {
   let functionName = exit.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
@@ -89,18 +89,18 @@ function exit(inputData, inputMetaData) {
 }
 
 /**
-* @function version
-* @description Displays the current version number for the current application.
-* @param {array<boolean|string|integer>} inputData Not used for this command.
-* inputData[0] = 'version'
-* inputData[1] === 'application|framework' (optional)
-* @param {string} inputMetaData Not used for this command.
-* @return {array<boolean,string|integer|boolean|object|array>} An array with a boolean True or False value to
-* indicate if the application should exit or not exit, followed by the command output.
-* @author Seth Hollingsead
-* @date 2022/02/04
-*/
-function version(inputData, inputMetaData) {
+ * @function version
+ * @description Displays the current version number for the current application.
+ * @param {array<boolean|string|integer>} inputData Not used for this command.
+ * inputData[0] = 'version'
+ * inputData[1] === 'application|framework' (optional)
+ * @param {string} inputMetaData Not used for this command.
+ * @return {array<boolean,string|integer|boolean|object|array>} An array with a boolean True or False value to
+ * indicate if the application should exit or not exit, followed by the command output.
+ * @author Seth Hollingsead
+ * @date 2022/02/04
+ */
+async function version(inputData, inputMetaData) {
   let functionName = version.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
@@ -128,18 +128,18 @@ function version(inputData, inputMetaData) {
 }
 
 /**
-* @function about
-* @description Displays the message about the current application.
-* @param {array<boolean|string|integer>} inputData Not used for this command.
-* inputData[0] === 'about'
-* inputData[1] === 'application|framework' (optional)
-* @param {string} inputMetaData Not used for this command.
-* @return {array<boolean,string|integer|boolean|object|array>} An array with a boolean True or False value to
-* indicate if the application should exit or not exit, followed by the command output.
-* @author Seth Hollingsead
-* @date 2022/02/04
-*/
-function about(inputData, inputMetaData) {
+ * @function about
+ * @description Displays the message about the current application.
+ * @param {array<boolean|string|integer>} inputData Not used for this command.
+ * inputData[0] === 'about'
+ * inputData[1] === 'application|framework' (optional)
+ * @param {string} inputMetaData Not used for this command.
+ * @return {array<boolean,string|integer|boolean|object|array>} An array with a boolean True or False value to
+ * indicate if the application should exit or not exit, followed by the command output.
+ * @author Seth Hollingsead
+ * @date 2022/02/04
+ */
+async function about(inputData, inputMetaData) {
   let functionName = about.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
@@ -167,22 +167,22 @@ function about(inputData, inputMetaData) {
 }
 
 /**
-* @function name
-* @description Displays the name of the current application in standard font format, nothing special.
-* Optional argument to output in figlet font.
-* @param {array<boolean|string|integer>} inputData An array that could really contain anything depending
-* on what the user entered, but the function converts and filters out for a boolean
-* True or False value internally to the function.
-* inputData[0] === 'name'
-* inputData[1] === 'application|framework' (optional)
-* inputData[2] === 'true|false' (optional)
-* @param {string} inputMetaData Not used for this command.
-* @return {array<boolean,string|integer|boolean|object|array>} An array with a boolean True or False value to
-* indicate if the application should exit or not exit, followed by the command output.
-* @author Seth Hollingsead
-* @date 2022/02/04
-*/
-function name(inputData, inputMetaData) {
+ * @function name
+ * @description Displays the name of the current application in standard font format, nothing special.
+ * Optional argument to output in figlet font.
+ * @param {array<boolean|string|integer>} inputData An array that could really contain anything depending
+ * on what the user entered, but the function converts and filters out for a boolean
+ * True or False value internally to the function.
+ * inputData[0] === 'name'
+ * inputData[1] === 'application|framework' (optional)
+ * inputData[2] === 'true|false' (optional)
+ * @param {string} inputMetaData Not used for this command.
+ * @return {array<boolean,string|integer|boolean|object|array>} An array with a boolean True or False value to
+ * indicate if the application should exit or not exit, followed by the command output.
+ * @author Seth Hollingsead
+ * @date 2022/02/04
+ */
+async function name(inputData, inputMetaData) {
   let functionName = name.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
@@ -223,17 +223,17 @@ function name(inputData, inputMetaData) {
 }
 
 /**
-* @function clearScreen
-* @description Clears all data from the console cache by printing a bunch of blank lines to the screen.
-* @param {string} inputData Not used for this command.
-* @param {string} inputMetaData Not used for this command.
-* @return {array<boolean,string|integer|boolean|object|array>} An array with a boolean True or False value to
-* indicate if the application should exit or not exit, followed by the command output.
-* @author Seth Hollingsead
-* @date 2022/02/04
-*/
+ * @function clearScreen
+ * @description Clears all data from the console cache by printing a bunch of blank lines to the screen.
+ * @param {string} inputData Not used for this command.
+ * @param {string} inputMetaData Not used for this command.
+ * @return {array<boolean,string|integer|boolean|object|array>} An array with a boolean True or False value to
+ * indicate if the application should exit or not exit, followed by the command output.
+ * @author Seth Hollingsead
+ * @date 2022/02/04
+ */
 // eslint-disable-next-line no-unused-vars
-function clearScreen(inputData, inputMetaData) {
+async function clearScreen(inputData, inputMetaData) {
   let functionName = clearScreen.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
@@ -250,19 +250,19 @@ function clearScreen(inputData, inputMetaData) {
 }
 
 /**
-* @function help
-* @description Displays all the information about all of the commands in the system,
-* including both system defined commands and client defined commands.
-* @param {array<boolean|string|integer>} inputData Not used for this command.
-* inputData[0] = 'help'
-* @param {string} inputMetaData Not used for this command.
-* @return {array<boolean,string|integer|boolean|object|array>} An array with a boolean True or False value to
-* indicate if the application should exit or not exit, followed by the command output.
-* @author Seth Hollingsead
-* @date 2022/02/22
-*/
+ * @function help
+ * @description Displays all the information about all of the commands in the system,
+ * including both system defined commands and client defined commands.
+ * @param {array<boolean|string|integer>} inputData Not used for this command.
+ * inputData[0] = 'help'
+ * @param {string} inputMetaData Not used for this command.
+ * @return {array<boolean,string|integer|boolean|object|array>} An array with a boolean True or False value to
+ * indicate if the application should exit or not exit, followed by the command output.
+ * @author Seth Hollingsead
+ * @date 2022/02/22
+ */
 // eslint-disable-next-line no-unused-vars
-function help(inputData, inputMetaData) {
+async function help(inputData, inputMetaData) {
   let functionName = help.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   let returnData = [true, []];
@@ -299,18 +299,18 @@ function help(inputData, inputMetaData) {
 }
 
 /**
-* @function workflowHelp
-* @description Displays all the information about all the workflows in the system,
-* including both system defined workflows & client defined workflows.
-* @param {array<boolean|string|integer>} inputData Not used for this command.
-* inputData[0] = 'workflowHelp'
-* @param {string} inputMetaData Not used for this command.
-* @return {array<boolean,string|integer|boolean|object|array>} An array with a boolean True or False value to
-* indicate if the application should exit or not exit, followed by the command output.
-* @author Seth Hollingsead
-* @date 2022/02/22
-*/
-function workflowHelp(inputData, inputMetaData) {
+ * @function workflowHelp
+ * @description Displays all the information about all the workflows in the system,
+ * including both system defined workflows & client defined workflows.
+ * @param {array<boolean|string|integer>} inputData Not used for this command.
+ * inputData[0] = 'workflowHelp'
+ * @param {string} inputMetaData Not used for this command.
+ * @return {array<boolean,string|integer|boolean|object|array>} An array with a boolean True or False value to
+ * indicate if the application should exit or not exit, followed by the command output.
+ * @author Seth Hollingsead
+ * @date 2022/02/22
+ */
+async function workflowHelp(inputData, inputMetaData) {
   let functionName = workflowHelp.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));

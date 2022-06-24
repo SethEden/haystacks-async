@@ -43,7 +43,7 @@ const namespacePrefix = sys.ccommandsBlob + bas.cDot + wrd.ccommands + bas.cDot 
  * @author Seth Hollingsead
  * @date 2022/03/25
  */
- function validateConstants(inputData, inputMetaData) {
+async function validateConstants(inputData, inputMetaData) {
   let functionName = validateConstants.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
@@ -120,7 +120,7 @@ const namespacePrefix = sys.ccommandsBlob + bas.cDot + wrd.ccommands + bas.cDot 
  * @author Seth Hollingsead
  * @date 2022/03/30
  */
- function validateCommandAliases(inputData, inputMetaData) {
+async function validateCommandAliases(inputData, inputMetaData) {
   let functionName = validateCommandAliases.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
@@ -190,7 +190,7 @@ const namespacePrefix = sys.ccommandsBlob + bas.cDot + wrd.ccommands + bas.cDot 
  * @author Seth Hollingsead
  * @date 2022/06/08
  */
- function validateWorkflows(inputData, inputMetaData) {
+async function validateWorkflows(inputData, inputMetaData) {
   let functionName = validateWorkflows.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));

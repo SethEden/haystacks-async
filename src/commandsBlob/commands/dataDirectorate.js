@@ -47,7 +47,7 @@ const namespacePrefix = sys.ccommandsBlob + bas.cDot + wrd.ccommands + bas.cDot 
  * @author Seth Hollingsead
  * @date 2022/02/24
  */
-function printDataHive(inputData, inputMetaData) {
+async function printDataHive(inputData, inputMetaData) {
   let functionName = printDataHive.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
@@ -117,7 +117,7 @@ function printDataHive(inputData, inputMetaData) {
  * @author Seth Hollingsead
  * @date 2022/02/24
  */
-function printDataHiveAttributes(inputData, inputMetaData) {
+async function printDataHiveAttributes(inputData, inputMetaData) {
   let functionName = printDataHiveAttributes.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
@@ -212,7 +212,7 @@ function printDataHiveAttributes(inputData, inputMetaData) {
  * @author Seth Hollingsead
  * @date 2022/02/24
  */
-function clearDataStorage(inputData, inputMetaData) {
+async function clearDataStorage(inputData, inputMetaData) {
   let functionName = clearDataStorage.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
@@ -246,7 +246,7 @@ function clearDataStorage(inputData, inputMetaData) {
  * @date 2022/05/10
  * @NOTE Test String: changeSetting colors.ColorData.Red.ColorName removeRed
  */
-function changeSetting(inputData, inputMetaData) {
+async function changeSetting(inputData, inputMetaData) {
   let functionName = changeSetting.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));

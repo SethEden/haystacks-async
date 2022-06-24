@@ -46,7 +46,7 @@ const namespacePrefix =  wrd.cexecutrix + bas.cDot + baseFileName + bas.cDot;
  * @date 2021/12/27
  * @NOTE Cannot use the loggers here, because of a circular dependency.
  */
-function consoleLog(classPath, message) {
+async function consoleLog(classPath, message) {
   // let functionName = consoleLog.name;
   if (Object.keys(D).length !== 0 && message !== undefined) { // Make sure we don't log anything if we haven't yet loaded the configuration data.
     let consoleLogEnabled = configurator.getConfigurationSetting(wrd.csystem, cfg.cconsoleLogEnabled);
@@ -109,7 +109,7 @@ function consoleLog(classPath, message) {
  * @author Seth Hollingsead
  * @date 2022/02/22
  */
-function consoleTableLog(classPath, tableData, columnNames) {
+async function consoleTableLog(classPath, tableData, columnNames) {
   // let functionName = consoleTableLog.name;
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   // console.log(`classPath is: ${classPath}`);
@@ -128,7 +128,7 @@ function consoleTableLog(classPath, tableData, columnNames) {
  * @author Seth Hollingsead
  * @date 2022/03/29
  */
-function constantsValidationSummaryLog(message, passFail) {
+async function constantsValidationSummaryLog(message, passFail) {
   // let functionName = constantsValidationSummaryLog.name;
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   // console.log(`message is: ${message}`);
@@ -171,7 +171,7 @@ function constantsValidationSummaryLog(message, passFail) {
  * @date 2021/10/27
  * @NOTE Cannot use the loggers here, because of a circular dependency.
  */
-function consoleLogProcess(debugSetting, logFile, classPath, message, loggingToFileAndConsole) {
+async function consoleLogProcess(debugSetting, logFile, classPath, message, loggingToFileAndConsole) {
   // let functionName = consoleLogProcess.name;
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   // console.log(`debugSetting is: ${debugSetting}`);
@@ -222,7 +222,7 @@ function consoleLogProcess(debugSetting, logFile, classPath, message, loggingToF
  * @date 2021/10/27
  * @NOTE Cannot use the loggers here, because of a circular dependency.
  */
-function validMessage(outputMessage, originalMessage) {
+async function validMessage(outputMessage, originalMessage) {
   // let functionName = validMessage.name;
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   // console.log(`outputMessage is: ${outputMessage}`);
@@ -258,7 +258,7 @@ function validMessage(outputMessage, originalMessage) {
  * @date 2021/10/27
  * @NOTE Cannot use the loggers here, because of a circular dependency.
  */
-function parseClassPath(logFile, classPath, message) {
+async function parseClassPath(logFile, classPath, message) {
   let functionName = parseClassPath.name;
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   // console.log(`logFile is: ${logFile}`);
@@ -319,7 +319,7 @@ function parseClassPath(logFile, classPath, message) {
  * @author Seth Hollingsead
  * @date 2022/03/11
  */
-function getLogFileNameAndPath() {
+async function getLogFileNameAndPath() {
   // let functionName = getLogFileNameAndPath.name;
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   let returnData = '';
@@ -349,7 +349,7 @@ function getLogFileNameAndPath() {
  * @date 2021/10/27
  * @NOTE Cannot use the loggers here, because of a circular dependency.
  */
-function printMessageToFile(file, message) {
+async function printMessageToFile(file, message) {
   // let functionName = printMessageToFile.name;
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   // console.log(`file is: ${file}`);

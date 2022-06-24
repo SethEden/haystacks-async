@@ -36,7 +36,7 @@ const namespacePrefix = sys.cbusinessRules + bas.cDot + wrd.crules + bas.cDot + 
   * @author Seth Hollingsead
   * @date 2022/01/21
   */
- function parseColorRangeInputs(inputData, inputMetaData) {
+async function parseColorRangeInputs(inputData, inputMetaData) {
    let functionName = parseColorRangeInputs.name;
    loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
    loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
@@ -97,7 +97,7 @@ const namespacePrefix = sys.cbusinessRules + bas.cDot + wrd.crules + bas.cDot + 
   * @author Seth Hollingsead
   * @date 2022/01/21
   */
- function doesArrayContainValue(inputData, inputMetaData) {
+async function doesArrayContainValue(inputData, inputMetaData) {
   let functionName = doesArrayContainValue.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);

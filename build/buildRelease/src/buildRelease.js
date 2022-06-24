@@ -56,7 +56,7 @@ const {NODE_ENV} = process.env;
  * @author Seth Hollingsead
  * @date 2022/03/13
  */
-function bootStrapApplication() {
+async function bootStrapApplication() {
   // let functionName = bootStrapApplication.name;
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   rootPath = url.fileURLToPath(path.dirname(import.meta.url));
@@ -126,7 +126,7 @@ function bootStrapApplication() {
  * @author Seth Hollingsead
  * @date 2022/03/13
  */
-function deployApplication() {
+async function deployApplication() {
   let functionName = deployApplication.name;
   haystacks.consoleLog(namespacePrefix, functionName, msg.cBEGIN_Function);
   try {

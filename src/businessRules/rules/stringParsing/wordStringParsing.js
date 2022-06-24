@@ -28,23 +28,23 @@ const baseFileName = path.basename(import.meta.url, path.extname(import.meta.url
 const namespacePrefix = sys.cbusinessRules + bas.cDot + wrd.crules + bas.cDot + wrd.cstring + wrd.cParsing + bas.cDot + baseFileName + bas.cDot;
 
 /**
-* @function isStringCamelCase
-* @description Determines if an input string is a camel case string or not.
-* @param {string} inputData The string that should be checked for the camel case qualifications.
-* @param {string} inputMetaData Not used for this business rule.
-* @return {boolean} True or False to indicate if the string is camel case or not.
-* @author Seth Hollingsead
-* @date 2022/01/23
-* @NOTE Even if we have an all upper case acronym at the end fo the camel case string,
-* the string itself is still considered camel case.
-* Valid Examples:
-* myParsedXML
-* fireflyWonder1996
-* wonderWomand1984
-* covidMedicalCase
-* aBc
-*/
-function isStringCamelCase(inputData, inputMetaData) {
+ * @function isStringCamelCase
+ * @description Determines if an input string is a camel case string or not.
+ * @param {string} inputData The string that should be checked for the camel case qualifications.
+ * @param {string} inputMetaData Not used for this business rule.
+ * @return {boolean} True or False to indicate if the string is camel case or not.
+ * @author Seth Hollingsead
+ * @date 2022/01/23
+ * @NOTE Even if we have an all upper case acronym at the end fo the camel case string,
+ * the string itself is still considered camel case.
+ * Valid Examples:
+ * myParsedXML
+ * fireflyWonder1996
+ * wonderWomand1984
+ * covidMedicalCase
+ * aBc
+ */
+async function isStringCamelCase(inputData, inputMetaData) {
   let functionName = isStringCamelCase.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
@@ -90,15 +90,15 @@ function isStringCamelCase(inputData, inputMetaData) {
 }
 
 /**
-* @function mapWordToCamelCaseWord
-* @description Takes a string key and an indexed string value and maps the word to an upper case first letter word.
-* @param {string} inputData The string key/value that should be converted to a camel case word.
-* @param {string} inputMetaData The string index for the map to the value that should be used.
-* @return {string} A string where the word has been converted into a camel case word.
-* @author Seth Hollingsead
-* @date 2022/01/23
-*/
-function mapWordToCamelCaseWord(inputData, inputMetaData) {
+ * @function mapWordToCamelCaseWord
+ * @description Takes a string key and an indexed string value and maps the word to an upper case first letter word.
+ * @param {string} inputData The string key/value that should be converted to a camel case word.
+ * @param {string} inputMetaData The string index for the map to the value that should be used.
+ * @return {string} A string where the word has been converted into a camel case word.
+ * @author Seth Hollingsead
+ * @date 2022/01/23
+ */
+async function mapWordToCamelCaseWord(inputData, inputMetaData) {
   let functionName = mapWordToCamelCaseWord.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
@@ -113,19 +113,19 @@ function mapWordToCamelCaseWord(inputData, inputMetaData) {
 }
 
 /**
-* @function simplifyAndConsolidateString
-* @description Takes a string, and returns a version of it converted to lower case,
-* with all digits and symbols and whitespace removed.
-* @param {string} inputData The string that should be simplified and consolidated.
-* @param {string} inputMetaData Not used for this business rule.
-* @return {string} A string that has been simplified and consolidated by converting to lower case, removing all digits, symbols and white space.
-* @author Seth Hollingsead
-* @date 2022/01/23
-* @NOTE I think this function is not completely working as expected, probably something to do with that regular expression.
-* Input was: 11UpberDriver321CodeClearance0x#0000FF-akaBlue
-* Output was: upberdrivercodeclearanceffakablue
-*/
-function simplifyAndConsolidateString(inputData, inputMetaData) {
+ * @function simplifyAndConsolidateString
+ * @description Takes a string, and returns a version of it converted to lower case,
+ * with all digits and symbols and whitespace removed.
+ * @param {string} inputData The string that should be simplified and consolidated.
+ * @param {string} inputMetaData Not used for this business rule.
+ * @return {string} A string that has been simplified and consolidated by converting to lower case, removing all digits, symbols and white space.
+ * @author Seth Hollingsead
+ * @date 2022/01/23
+ * @NOTE I think this function is not completely working as expected, probably something to do with that regular expression.
+ * Input was: 11UpberDriver321CodeClearance0x#0000FF-akaBlue
+ * Output was: upberdrivercodeclearanceffakablue
+ */
+async function simplifyAndConsolidateString(inputData, inputMetaData) {
   let functionName = simplifyAndConsolidateString.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
@@ -142,15 +142,15 @@ function simplifyAndConsolidateString(inputData, inputMetaData) {
 }
 
 /**
-* @function compareSimplifiedAndConsolidatedStrings
-* @description Compares two strings by their simplified versions (see simplifyAndConsolidateString()).
-* @param {string} inputData The first string to be compared.
-* @param {string} inputMetaData The second string to be compared.
-* @return {boolean} A True or False value to indicate if the strings are virtually identical or not.
-* @author Seth Hollingsead
-* @date 2022/01/23
-*/
-function compareSimplifiedAndConsolidatedStrings(inputData, inputMetaData) {
+ * @function compareSimplifiedAndConsolidatedStrings
+ * @description Compares two strings by their simplified versions (see simplifyAndConsolidateString()).
+ * @param {string} inputData The first string to be compared.
+ * @param {string} inputMetaData The second string to be compared.
+ * @return {boolean} A True or False value to indicate if the strings are virtually identical or not.
+ * @author Seth Hollingsead
+ * @date 2022/01/23
+ */
+async function compareSimplifiedAndConsolidatedStrings(inputData, inputMetaData) {
   let functionName = compareSimplifiedAndConsolidatedStrings.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
@@ -165,19 +165,19 @@ function compareSimplifiedAndConsolidatedStrings(inputData, inputMetaData) {
 }
 
 /**
-* @function countCamelCaseWords
-* @description Takes a string in camelCase and returns the number of words that it contains based on camel case rules.
-* @param {string} inputData String to count words from.
-* @param {string} inputMetaData Not used for this business rule.
-* @return {integer} The number of camel case words found in the string.
-* @author Seth Hollingsead
-* @date 2022/01/23
-* @NOTE Might not work so well with numbers as part of the string, they are not treated as capital letters.
-* We might need to do some refactoring of this function if
-* mixed numbers and camel case strings ever becomes a requirement as input to this function.
-* @NOTE Based on the implementation for the business rule/function arrayParsing.convertCamelCaseStringToArray.
-*/
-function countCamelCaseWords(inputData, inputMetaData) {
+ * @function countCamelCaseWords
+ * @description Takes a string in camelCase and returns the number of words that it contains based on camel case rules.
+ * @param {string} inputData String to count words from.
+ * @param {string} inputMetaData Not used for this business rule.
+ * @return {integer} The number of camel case words found in the string.
+ * @author Seth Hollingsead
+ * @date 2022/01/23
+ * @NOTE Might not work so well with numbers as part of the string, they are not treated as capital letters.
+ * We might need to do some refactoring of this function if
+ * mixed numbers and camel case strings ever becomes a requirement as input to this function.
+ * @NOTE Based on the implementation for the business rule/function arrayParsing.convertCamelCaseStringToArray.
+ */
+async function countCamelCaseWords(inputData, inputMetaData) {
   let functionName = countCamelCaseWords.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
@@ -196,16 +196,16 @@ function countCamelCaseWords(inputData, inputMetaData) {
 }
 
 /**
-* @function doesStringContainAcronym
-* @description Scans a string and determines if there are 2 or more immediately adjacent upper-case characters in the string.
-* Example: nodeJS where JS is an acronym for JavaScript.
-* @param {string} inputData The string that should be scanned to determine if it contains an acronym or not.
-* @param {string} inputMetaData Not used for this business rule.
-* @return {boolean} True or False to indicate if the input string contains an acronym.
-* @author Seth Hollingsead
-* @date 2022/01/23
-*/
-function doesStringContainAcronym(inputData, inputMetaData) {
+ * @function doesStringContainAcronym
+ * @description Scans a string and determines if there are 2 or more immediately adjacent upper-case characters in the string.
+ * Example: nodeJS where JS is an acronym for JavaScript.
+ * @param {string} inputData The string that should be scanned to determine if it contains an acronym or not.
+ * @param {string} inputMetaData Not used for this business rule.
+ * @return {boolean} True or False to indicate if the input string contains an acronym.
+ * @author Seth Hollingsead
+ * @date 2022/01/23
+ */
+async function doesStringContainAcronym(inputData, inputMetaData) {
   let functionName = doesStringContainAcronym.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
@@ -233,15 +233,15 @@ function doesStringContainAcronym(inputData, inputMetaData) {
 }
 
 /**
-* @function determineWordDelimiter
-* @description Determines what delimiter should e used to break a string up into words if possible.
-* @param {string} inputData The string that should be examined to determine what delimiter should be used to break it up into words.
-* @param {string} inputMetaData Not used for this business rule.
-* @return {string} The delimiter that should be used, or if camelCase then the function will return the string "CamelCase".
-* @author Seth Hollingsead
-* @date 2022/01/23
-*/
-function determineWordDelimiter(inputData, inputMetaData) {
+ * @function determineWordDelimiter
+ * @description Determines what delimiter should e used to break a string up into words if possible.
+ * @param {string} inputData The string that should be examined to determine what delimiter should be used to break it up into words.
+ * @param {string} inputMetaData Not used for this business rule.
+ * @return {string} The delimiter that should be used, or if camelCase then the function will return the string "CamelCase".
+ * @author Seth Hollingsead
+ * @date 2022/01/23
+ */
+async function determineWordDelimiter(inputData, inputMetaData) {
   let functionName = determineWordDelimiter.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
@@ -308,16 +308,16 @@ function determineWordDelimiter(inputData, inputMetaData) {
 }
 
 /**
-* @function countDelimiterInString
-* @description Takes a string and returns the number of specified delimiters it contains.
-* @param {string} inputData String to count delimiters from.
-* @param {string} inputMetaData The delimiter that should be used when counting from the input string.
-* @return {integer} The number of delimiters found in the string.
-* @author Seth Hollingsead
-* @date 2022/01/23
-* @NOTE: https://stackoverflow.com/questions/35849174/count-spaces-in-a-string
-*/
-function countDelimiterInString(inputData, inputMetaData) {
+ * @function countDelimiterInString
+ * @description Takes a string and returns the number of specified delimiters it contains.
+ * @param {string} inputData String to count delimiters from.
+ * @param {string} inputMetaData The delimiter that should be used when counting from the input string.
+ * @return {integer} The number of delimiters found in the string.
+ * @author Seth Hollingsead
+ * @date 2022/01/23
+ * @NOTE: https://stackoverflow.com/questions/35849174/count-spaces-in-a-string
+ */
+async function countDelimiterInString(inputData, inputMetaData) {
   let functionName = countDelimiterInString.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
@@ -332,16 +332,16 @@ function countDelimiterInString(inputData, inputMetaData) {
 }
 
 /**
-* @function getWordCountInString
-* @description Gets the number of words in a string, it expects words to be
-* delimited by either camel-case, spaces, period, dash, underscore, plus or percent symbols.
-* @param {string} inputData The string that words should be counted from.
-* @param {string} inputMetaData Not used for this business rule.
-* @return {integer} The number of words that were found in the string.
-* @author Seth Hollingsead
-* @date 2022/01/23
-*/
-function getWordCountInString(inputData, inputMetaData) {
+ * @function getWordCountInString
+ * @description Gets the number of words in a string, it expects words to be
+ * delimited by either camel-case, spaces, period, dash, underscore, plus or percent symbols.
+ * @param {string} inputData The string that words should be counted from.
+ * @param {string} inputMetaData Not used for this business rule.
+ * @return {integer} The number of words that were found in the string.
+ * @author Seth Hollingsead
+ * @date 2022/01/23
+ */
+async function getWordCountInString(inputData, inputMetaData) {
   let functionName = getWordCountInString.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
@@ -365,16 +365,16 @@ function getWordCountInString(inputData, inputMetaData) {
 }
 
 /**
-* @function isStringList
-* @description Determines if the input string is a list or not.
-* @param {string} inputData The string that should be checked if it is a list or not.
-* @param {string} inputMetaData Not used for this business rule.
-* @return {boolean} True or False to indicate if the input string is a list or not a list.
-* Using the list of system defined primary, secondary or tertiary command delimiters.
-* @author Seth Hollingsead
-* @date 2022/01/23
-*/
-function isStringList(inputData, inputMetaData) {
+ * @function isStringList
+ * @description Determines if the input string is a list or not.
+ * @param {string} inputData The string that should be checked if it is a list or not.
+ * @param {string} inputMetaData Not used for this business rule.
+ * @return {boolean} True or False to indicate if the input string is a list or not a list.
+ * Using the list of system defined primary, secondary or tertiary command delimiters.
+ * @author Seth Hollingsead
+ * @date 2022/01/23
+ */
+async function isStringList(inputData, inputMetaData) {
   let functionName = isStringList.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   console.log(msg.cinputDataIs + inputData);
@@ -399,15 +399,15 @@ function isStringList(inputData, inputMetaData) {
 }
 
 /**
-* @function aggregateNumericalDifferenceBetweenTwoStrings
-* @description Determines the delta difference between the two input strings and returns it as a number.
-* @param {string} inputData String 1 to compare.
-* @param {string} inputMetaData String 2 to compare.
-* @return {integer} The delta difference between the two strings, expressed as a number.
-* @author Seth Hollingsead
-* @date 2022/01/23
-*/
-function aggregateNumericalDifferenceBetweenTwoStrings(inputData, inputMetaData) {
+ * @function aggregateNumericalDifferenceBetweenTwoStrings
+ * @description Determines the delta difference between the two input strings and returns it as a number.
+ * @param {string} inputData String 1 to compare.
+ * @param {string} inputMetaData String 2 to compare.
+ * @return {integer} The delta difference between the two strings, expressed as a number.
+ * @author Seth Hollingsead
+ * @date 2022/01/23
+ */
+async function aggregateNumericalDifferenceBetweenTwoStrings(inputData, inputMetaData) {
   let functionName = aggregateNumericalDifferenceBetweenTwoStrings.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);

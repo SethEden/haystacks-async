@@ -35,7 +35,7 @@ const namespacePrefix = sys.cbusinessRules + bas.cDot + wrd.crules + bas.cDot + 
  * @author Seth Hollingsead
  * @date 2022/05/03
  */
-function parseBusinessRuleArgument(inputData, inputMetaData) {
+async function parseBusinessRuleArgument(inputData, inputMetaData) {
   let functionName = parseBusinessRuleArgument.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
@@ -93,7 +93,7 @@ function parseBusinessRuleArgument(inputData, inputMetaData) {
  * @author Seth Hollingsead
  * @date 2022/05/03
  */
-function analyzeArgument(inputData, inputMetaData) {
+async function analyzeArgument(inputData, inputMetaData) {
   let functionName = analyzeArgument.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
@@ -168,7 +168,7 @@ function analyzeArgument(inputData, inputMetaData) {
  * @author Seth Hollingsead
  * @date 2022/05/03
  */
-function analyzeForRegularExpression(inputData, inputMetaData) {
+async function analyzeForRegularExpression(inputData, inputMetaData) {
   let functionName = analyzeForRegularExpression.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
@@ -199,7 +199,7 @@ function analyzeForRegularExpression(inputData, inputMetaData) {
  * @author Seth Hollingsead
  * @date 2022/05/03
  */
-function parseArgumentAsRegularExpression(inputData, inputMetaData) {
+async function parseArgumentAsRegularExpression(inputData, inputMetaData) {
   let functionName = parseArgumentAsRegularExpression.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
@@ -248,7 +248,7 @@ function parseArgumentAsRegularExpression(inputData, inputMetaData) {
  * @author Seth Hollingsead
  * @date 2022/05/03
  */
-function parseArgumentAsArray(inputData, inputMetaData) {
+async function parseArgumentAsArray(inputData, inputMetaData) {
   let functionName = parseArgumentAsArray.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
@@ -331,7 +331,7 @@ function parseArgumentAsArray(inputData, inputMetaData) {
  * @author Seth Hollingsead
  * @date 2022/05/03
  */
-function removeStringLiteralTagsFromArray(inputData, inputMetaData) {
+async function removeStringLiteralTagsFromArray(inputData, inputMetaData) {
   let functionName = removeStringLiteralTagsFromArray.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));

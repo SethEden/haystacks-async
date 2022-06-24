@@ -34,7 +34,7 @@ const term = 13; // carriage return
  * @author Seth Hollingsead
  * @date 2022/05/04 - May the Forth be with you!! ;-)
  */
-function prompt(inputData, inputMetaData) {
+async function prompt(inputData, inputMetaData) {
   let functionName = prompt.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   loggers.consoleLog(namespacePrefix + functionName, msg.caskIs + JSON.stringify(inputData));

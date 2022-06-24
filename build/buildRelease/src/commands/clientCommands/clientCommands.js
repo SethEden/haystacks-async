@@ -39,7 +39,7 @@ const namespacePrefix = apc.cApplicationName + bas.cDot + wrd.ccommands + bas.cD
  * @author Seth Hollingsead
  * @date 2022/03/13
  */
-const customEchoCommand = function(inputData, inputMetaData) {
+async function customEchoCommand(inputData, inputMetaData) {
   let functionName = customEchoCommand.name;
   haystacks.consoleLog(namespacePrefix, functionName, msg.cBEGIN_Function);
   haystacks.consoleLog(namespacePrefix, functionName, msg.cinputDataIs + JSON.stringify(inputData));
@@ -61,7 +61,7 @@ const customEchoCommand = function(inputData, inputMetaData) {
  * @author Seth Hollingsead
  * @date 2022/03/14 Happy Pi day!! 3.141562653589793238462643383279502884197169399
  */
-const deployMetaData = function(inputData, inputMetaData) {
+async function deployMetaData(inputData, inputMetaData) {
   let functionName = deployMetaData.name;
   haystacks.consoleLog(namespacePrefix, functionName, msg.cBEGIN_Function);
   haystacks.consoleLog(namespacePrefix, functionName, msg.cinputDataIs + JSON.stringify(inputData));
@@ -121,7 +121,7 @@ const deployMetaData = function(inputData, inputMetaData) {
  * @author Seth Hollingsead
  * @date 2022/04/05
  */
-const deployApplication = function(inputData, inputMetaData) {
+async function deployApplication(inputData, inputMetaData) {
   let functionName = deployApplication.name;
   haystacks.consoleLog(namespacePrefix, functionName, msg.cBEGIN_Function);
   haystacks.consoleLog(namespacePrefix, functionName, msg.cinputDataIs + JSON.stringify(inputData));
@@ -176,7 +176,7 @@ const deployApplication = function(inputData, inputMetaData) {
  * @author Seth Hollingsead
  * @date 2022/04/07
  */
-const releaseApplication = function(inputData, inputMetaData) {
+async function releaseApplication(inputData, inputMetaData) {
   let functionName = releaseApplication.name;
   haystacks.consoleLog(namespacePrefix, functionName, msg.cBEGIN_Function);
   haystacks.consoleLog(namespacePrefix, functionName, msg.cinputDataIs + JSON.stringify(inputData));

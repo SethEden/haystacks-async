@@ -39,7 +39,7 @@ const namespacePrefix = sys.cbusinessRules + bas.cDot + wrd.crules + bas.cDot + 
  * @date 2022/01/19
  * @NOTE https://stackoverflow.com/questions/6521245/finding-longest-string-in-array
  */
-function getLengthOfLongestStringInArray(inputData, inputMetaData) {
+async function getLengthOfLongestStringInArray(inputData, inputMetaData) {
   let functionName = getLengthOfLongestStringInArray.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
@@ -64,7 +64,7 @@ function getLengthOfLongestStringInArray(inputData, inputMetaData) {
  * @author Seth Hollingsead
  * @date 2022/01/19
  */
-function searchForPatternsInStringArray(inputData, inputMetaData) {
+async function searchForPatternsInStringArray(inputData, inputMetaData) {
   let functionName = searchForPatternsInStringArray.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
@@ -159,7 +159,7 @@ function searchForPatternsInStringArray(inputData, inputMetaData) {
  * @author Seth Hollingsead
  * @date 2022/01/20
  */
-function validatePatternsThatNeedImplementation(inputData, inputMetaData) {
+async function validatePatternsThatNeedImplementation(inputData, inputMetaData) {
   let functionName = validatePatternsThatNeedImplementation.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));

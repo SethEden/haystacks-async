@@ -38,7 +38,7 @@ const namespacePrefix = sys.cbusinessRules + bas.cDot + wrd.crules + bas.cDot + 
  * @date 2021/10/27
  * @NOTE Cannot use the loggers here, because dependency data will have never been loaded.
  */
-function parseSystemRootPath(inputData, inputMetaData) {
+async function parseSystemRootPath(inputData, inputMetaData) {
   // let functionName = parseSystemRootPath.name;
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   // console.log(`inputData is: ${JSON.stringify(inputData)}`);
@@ -94,7 +94,7 @@ function parseSystemRootPath(inputData, inputMetaData) {
  * @date 2021/11/10
  * @NOTE Cannot use the loggers here, because of a circular dependency.
  */
-function stringToDataType(inputData, inputMetaData) {
+async function stringToDataType(inputData, inputMetaData) {
   // let functionName = stringToDataType.name;
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   // console.log(`inputData is: ${JSON.stringify(inputData)}`);
@@ -138,7 +138,7 @@ function stringToDataType(inputData, inputMetaData) {
  * If we cause this function to evaluate a 0 or 1 to a Boolean, then the integer function would never get a chance to evaluate.
  * @NOTE Cannot use the loggers here, because of a circular dependency.
  */
-function stringToBoolean(inputData, inputMetaData) {
+async function stringToBoolean(inputData, inputMetaData) {
   // let functionName = stringToBoolean.name;
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   // console.log(`inputData is: ${JSON.stringify(inputData)}`);
@@ -177,7 +177,7 @@ function stringToBoolean(inputData, inputMetaData) {
  * @date 2021/11/10
  * @NOTE Cannot use the loggers here, because of a circular dependency.
  */
-function determineObjectDataType(inputData, inputMetaData) {
+async function determineObjectDataType(inputData, inputMetaData) {
   // let functionName = determineObjectDataType.name;
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   // console.log(`inputData is: ${JSON.stringify(inputData)}`);
@@ -216,7 +216,7 @@ function determineObjectDataType(inputData, inputMetaData) {
  * @date 2021/11/10
  * @NOTE Cannot use the loggers here, because of a circular dependency.
  */
-function isBoolean(inputData, inputMetaData) {
+async function isBoolean(inputData, inputMetaData) {
   // let functionName = isBoolean.name;
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   // console.log(`inputData is: ${JSON.stringify(inputData)}`);
@@ -250,7 +250,7 @@ function isBoolean(inputData, inputMetaData) {
  * @date 2021/11/10
  * @NOTE Cannot use the loggers here, because of a circular dependency.
  */
-function isInteger(inputData, inputMetaData) {
+async function isInteger(inputData, inputMetaData) {
   // let functionName = isInteger.name;
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   // console.log(`inputData is: ${JSON.stringify(inputData)}`);
@@ -285,7 +285,7 @@ function isInteger(inputData, inputMetaData) {
  * @date 2021/11/10
  * @NOTE Cannot use the loggers here, because of a circular dependency.
  */
-function isFloat(inputData, inputMetaData) {
+async function isFloat(inputData, inputMetaData) {
   // let functionName = isFloat.name;
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   // console.log(`inputData is: ${JSON.stringify(inputData)}`);
@@ -316,7 +316,7 @@ function isFloat(inputData, inputMetaData) {
  * @date 2021/11/10
  * @NOTE Cannot use the loggers here, because of a circular dependency.
  */
-function isString(inputData, inputMetaData) {
+async function isString(inputData, inputMetaData) {
   // let functionName = isString.name;
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   // console.log(`inputData is: ${JSON.stringify(inputData)}`);
@@ -348,7 +348,7 @@ function isString(inputData, inputMetaData) {
  * @date 2021/12/24
  * @NOTE Cannot use the loggers here, because of a circular dependency.
  */
-function replaceDoublePercentWithMessage(inputData, inputMetaData) {
+async function replaceDoublePercentWithMessage(inputData, inputMetaData) {
   // let functionName = replaceDoublePercentWithMessage.name;
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   // console.log(`inputData is: ${JSON.stringify(inputData)}`);
@@ -375,7 +375,7 @@ function replaceDoublePercentWithMessage(inputData, inputMetaData) {
  * @author Seth Hollingsead
  * @date 2021/12/28
  */
-function utilitiesReplaceCharacterWithCharacter(inputData, inputMetaData) {
+async function utilitiesReplaceCharacterWithCharacter(inputData, inputMetaData) {
   // let functionName = utilitiesReplaceCharacterWithCharacter.name;
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   // console.log(`inputData is: ${JSON.stringify(inputData)}`);

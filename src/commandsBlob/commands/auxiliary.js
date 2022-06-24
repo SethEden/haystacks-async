@@ -36,7 +36,7 @@ const namespacePrefix = sys.ccommandsBlob + bas.cDot + wrd.ccommands + bas.cDot 
  * @date 2022/03/11
  * @reference {@Link: https://github.com/paularmstrong/normalizr/issues/15}
  */
-function convertColors(inputData, inputMetaData) {
+async function convertColors(inputData, inputMetaData) {
   let functionName = convertColors.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));

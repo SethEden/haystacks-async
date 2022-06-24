@@ -28,18 +28,18 @@ const baseFileName = path.basename(import.meta.url, path.extname(import.meta.url
 const namespacePrefix = sys.ccommandsBlob + bas.cDot + wrd.ccommands + bas.cDot + baseFileName + bas.cDot;
 
 /**
-* @function constantsGenerator
-* @description Requests a string input the user would like to have converted nto a constant,
-* while determining the most optimized way to define the new constant based on existing constants.
-* Also checks to see if that new constant is already defined in the constants system.
-* @param {string} inputData Parameterized constant to generate for.
-* @param {string} inputMetaData Not used for this business rule.
-* @return {array<boolean,string|integer|boolean|object|array>} An array with a boolean True or False value to
-* indicate if the application should exit or not exit, followed by the command output.
-* @author Seth Hollingsead
-* @date 2022/03/30
-*/
-function constantsGenerator(inputData, inputMetaData) {
+ * @function constantsGenerator
+ * @description Requests a string input the user would like to have converted nto a constant,
+ * while determining the most optimized way to define the new constant based on existing constants.
+ * Also checks to see if that new constant is already defined in the constants system.
+ * @param {string} inputData Parameterized constant to generate for.
+ * @param {string} inputMetaData Not used for this business rule.
+ * @return {array<boolean,string|integer|boolean|object|array>} An array with a boolean True or False value to
+ * indicate if the application should exit or not exit, followed by the command output.
+ * @author Seth Hollingsead
+ * @date 2022/03/30
+ */
+async function constantsGenerator(inputData, inputMetaData) {
    let functionName = constantsGenerator.name;
    loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
    loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
@@ -115,19 +115,19 @@ function constantsGenerator(inputData, inputMetaData) {
 }
 
 /**
-* @function constantsGeneratorList
-* @description Calls the constantsGenerator command to iterate over a list of constants and generate many constants sequentially.
-* @NOTE This function will also walk the list and determine if there are any common strings
-* internal to the list that could be defined as new constants to help with the optimization process.
-* @NOTE Testing string: constGenL somethingXML,whatever that is,A basic NodeJS template App,that can easily
-* @param {string} inputData Parameterized coma delimited list of constants to be auto-generated
-* @param {string} inputMetaData Not used for this business rule.
-* @return {array<boolean,string|integer|boolean|object|array>} An array with a boolean True or False value to
-* indicate if the application should exit or not exit, followed by the command output.
-* @author Seth Hollingsead
-* @date 2022/03/30
-*/
-function constantsGeneratorList(inputData, inputMetaData) {
+ * @function constantsGeneratorList
+ * @description Calls the constantsGenerator command to iterate over a list of constants and generate many constants sequentially.
+ * @NOTE This function will also walk the list and determine if there are any common strings
+ * internal to the list that could be defined as new constants to help with the optimization process.
+ * @NOTE Testing string: constGenL somethingXML,whatever that is,A basic NodeJS template App,that can easily
+ * @param {string} inputData Parameterized coma delimited list of constants to be auto-generated
+ * @param {string} inputMetaData Not used for this business rule.
+ * @return {array<boolean,string|integer|boolean|object|array>} An array with a boolean True or False value to
+ * indicate if the application should exit or not exit, followed by the command output.
+ * @author Seth Hollingsead
+ * @date 2022/03/30
+ */
+async function constantsGeneratorList(inputData, inputMetaData) {
    let functionName = constantsGeneratorList.name;
    loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
    loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
@@ -202,7 +202,7 @@ function constantsGeneratorList(inputData, inputMetaData) {
  * @author Seth Hollingsead
  * @date 2022/03/31
  */
-function constantsPatternRecognizer(inputData, inputMetaData) {
+async function constantsPatternRecognizer(inputData, inputMetaData) {
   let functionName = constantsPatternRecognizer.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
@@ -279,7 +279,7 @@ function constantsPatternRecognizer(inputData, inputMetaData) {
  * @author Seth Hollingsead
  * @date 2022/05/11
  */
-function evaluateConstant(inputData, inputMetaData) {
+async function evaluateConstant(inputData, inputMetaData) {
   let functionName = evaluateConstant.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));

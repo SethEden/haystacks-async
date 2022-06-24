@@ -40,7 +40,7 @@ const namespacePrefix = wrd.cbrokers + bas.cDot + baseFileName + bas.cDot;
  * @date 2021/10/27
  * @NOTE Cannot use the loggers here, because dependency data will have never been loaded.
  */
-function bootStrapBusinessRules() {
+async function bootStrapBusinessRules() {
   // let functionName = bootStrapBusinessRules.name;
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   rules.initRulesLibrary();
@@ -56,7 +56,7 @@ function bootStrapBusinessRules() {
  * @date 2021/10/27
  * @NOTE Cannot use the loggers here, because of a circular dependency.
  */
-function addClientRules(clientRules) {
+async function addClientRules(clientRules) {
   // let functionName = bootStrapBusinessRules.name;
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   Object.assign(D[sys.cbusinessRules], clientRules);
@@ -78,7 +78,7 @@ function addClientRules(clientRules) {
  * @date 2021/10/27
  * @NOTE Cannot use the loggers here, because of a circular dependency.
  */
-function processRules(inputs, rulesToExecute) {
+async function processRules(inputs, rulesToExecute) {
   // let functionName = processRules.name;
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   // console.log(`inputs is: ${JSON.stringify(inputs)}`);

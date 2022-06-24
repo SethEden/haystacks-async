@@ -38,7 +38,7 @@ const namespacePrefix = wrd.cbrokers + bas.cDot + baseFileName + bas.cDot;
  * @author Seth Hollingsead
  * @date 2022/06/10
  */
-function getNamedThemes() {
+async function getNamedThemes() {
   let functionName = getNamedThemes.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   let themesNames = [];
@@ -59,7 +59,7 @@ function getNamedThemes() {
  * @author Seth Hollingsead
  * @date 2022/06/13
  */
-function getNamedThemePath(themeName) {
+async function getNamedThemePath(themeName) {
   let functionName = getNamedThemePath.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // themeName is:
@@ -91,7 +91,7 @@ function getNamedThemePath(themeName) {
  * @author Seth Hollingsead
  * @date 2022/06/13
  */
-function loadTheme(themePath) {
+async function loadTheme(themePath) {
   let functionName = loadTheme.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // themePath is:
@@ -114,7 +114,7 @@ function loadTheme(themePath) {
  * @author Seth Hollingsead
  * @date 2022/06/14
  */
-function applyTheme(themeData) {
+async function applyTheme(themeData) {
   let functionName = applyTheme.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // themeData is:

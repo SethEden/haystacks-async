@@ -32,7 +32,7 @@ const namespacePrefix = sys.cbusinessRules + bas.cDot + wrd.crules + bas.cDot + 
  * @author Seth Hollingsead
  * @date 2022/01/23
  */
-function getFileNameFromPath(inputData, inputMetaData) {
+async function getFileNameFromPath(inputData, inputMetaData) {
   let functionName = getFileNameFromPath.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
@@ -65,7 +65,7 @@ function getFileNameFromPath(inputData, inputMetaData) {
  * @author Seth Hollingsead
  * @date 2022/01/23
  */
-function getFileExtension(inputData, inputMetaData) {
+async function getFileExtension(inputData, inputMetaData) {
   let functionName = getFileExtension.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
@@ -89,7 +89,7 @@ function getFileExtension(inputData, inputMetaData) {
  * @author Seth Hollingsead
  * @date 2022/01/23
  */
-function removeDotFromFileExtension(inputData, inputMetaData) {
+async function removeDotFromFileExtension(inputData, inputMetaData) {
   let functionName = removeDotFromFileExtension.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
@@ -113,7 +113,7 @@ function removeDotFromFileExtension(inputData, inputMetaData) {
  * @author Seth Hollingsead
  * @date 2022/01/23
  */
-function removeFileExtensionFromFileName(inputData, inputMetaData) {
+async function removeFileExtensionFromFileName(inputData, inputMetaData) {
   let functionName = removeFileExtensionFromFileName.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
@@ -136,7 +136,7 @@ function removeFileExtensionFromFileName(inputData, inputMetaData) {
  * @author Seth Hollingsead
  * @date 2022/01/23
  */
-function ascertainMatchingFilenames(inputData, inputMetaData) {
+async function ascertainMatchingFilenames(inputData, inputMetaData) {
   let functionName = ascertainMatchingFilenames.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
@@ -166,7 +166,7 @@ function ascertainMatchingFilenames(inputData, inputMetaData) {
  * @author Seth Hollingsead
  * @date 2022/01/25
  */
-function supportedFileFormatsAre(inputData, inputMetaData) {
+async function supportedFileFormatsAre(inputData, inputMetaData) {
   let functionName = supportedFileFormatsAre.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
@@ -186,7 +186,7 @@ function supportedFileFormatsAre(inputData, inputMetaData) {
  * @author Seth Hollingsead
  * @date 2022/01/25
  */
-function removeXnumberOfFoldersFromEndOfPath(inputData, inputMetaData) {
+async function removeXnumberOfFoldersFromEndOfPath(inputData, inputMetaData) {
   let functionName = removeXnumberOfFoldersFromEndOfPath.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
@@ -248,7 +248,7 @@ function removeXnumberOfFoldersFromEndOfPath(inputData, inputMetaData) {
  * @author Seth Hollingsead
  * @date 2022/01/25
  */
-function getFirstTopLevelFolderFromPath(inputData, inputMetaData) {
+async function getFirstTopLevelFolderFromPath(inputData, inputMetaData) {
   let functionName = getFirstTopLevelFolderFromPath.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);

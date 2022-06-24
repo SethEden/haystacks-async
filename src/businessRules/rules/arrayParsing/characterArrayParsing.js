@@ -40,7 +40,7 @@ const namespacePrefix = sys.cbusinessRules + bas.cDot + wrd.crules + bas.cDot + 
  * @author Seth Hollingsead
  * @date 2021/10/28
  */
-function replaceCharacterWithCharacter(inputData, inputMetaData) {
+async function replaceCharacterWithCharacter(inputData, inputMetaData) {
   let functionName = replaceCharacterWithCharacter.name;
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   // console.log(`inputData is: ${inputData}`);
@@ -74,7 +74,7 @@ function replaceCharacterWithCharacter(inputData, inputMetaData) {
  * @author Seth Hollingsead
  * @date 2022/01/19
  */
-function doesArrayContainCharacter(inputData, inputMetaData) {
+async function doesArrayContainCharacter(inputData, inputMetaData) {
   let functionName = doesArrayContainCharacter.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
@@ -104,7 +104,7 @@ function doesArrayContainCharacter(inputData, inputMetaData) {
  * @author Seth Hollingsead
  * @date 2022/01/19
  */
-function removeCharacterFromArray(inputData, inputMetaData) {
+async function removeCharacterFromArray(inputData, inputMetaData) {
   let functionName = removeCharacterFromArray.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
@@ -135,7 +135,7 @@ function removeCharacterFromArray(inputData, inputMetaData) {
  * @date 2022/01/21
  * @reference: {@link https://stackoverflow.com/questions/1431094/how-do-i-replace-a-character-at-a-particular-index-in-javascript}
  */
-function replaceCharacterAtIndex(inputData, inputMetaData) {
+async function replaceCharacterAtIndex(inputData, inputMetaData) {
   let functionName = replaceCharacterAtIndex.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);

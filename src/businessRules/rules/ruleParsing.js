@@ -37,7 +37,7 @@ const namespacePrefix = sys.cbusinessRules + bas.cDot + wrd.crules + bas.cDot + 
  * @date 2022/05/03
  */
 // eslint-disable-next-line no-unused-vars
-function doAllRulesExist(inputData, inputMetaData) {
+async function doAllRulesExist(inputData, inputMetaData) {
   // let functionName = doAllRulesExist.name;
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   // console.log(`inputData is: ${JSON.stringify(inputData)}`);
@@ -68,7 +68,7 @@ function doAllRulesExist(inputData, inputMetaData) {
  * @date 2022/05/03
  */
 // eslint-disable-next-line no-unused-vars
-function doesRuleExist(inputData, inputMetaData) {
+async function doesRuleExist(inputData, inputMetaData) {
   // let functionName = doesRuleExist.name;
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   // console.log(`inputData is: ${inputData}`);
@@ -94,7 +94,7 @@ function doesRuleExist(inputData, inputMetaData) {
  * @author Seth Hollingsead
  * @date 2022/05/09
  */
-function getRule(inputData, inputMetaData) {
+async function getRule(inputData, inputMetaData) {
   let functionName = getRule.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
@@ -124,7 +124,7 @@ function getRule(inputData, inputMetaData) {
  * @author Seth Hollingsead
  * @date 2022/05/03
  */
-function processRulesInternal(inputData, inputMetaData) {
+async function processRulesInternal(inputData, inputMetaData) {
   let functionName = processRulesInternal.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));

@@ -51,13 +51,13 @@ const namespacePrefix = wrd.ccontrollers + bas.cDot + baseFileName + bas.cDot;
  * @date 2021/10/12
  * @NOTE Cannot use the loggers here, because dependency data will have never been loaded.
  */
-function processRootPath(inputPath, actualFrameworkName) {
+async function processRootPath(inputPath, actualFrameworkName) {
   // let functionName = processRootPath.name;
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   // console.log(`inputPath is: ${inputPath}`);
   ruleBroker.bootStrapBusinessRules();
   chiefCommander.bootStrapCommands();
-  let resolvedPath = ruleBroker.processRules([inputPath, actualFrameworkName], [biz.cparseSystemRootPath]);
+  let resolvedPath = await ruleBroker.processRules([inputPath, actualFrameworkName], [biz.cparseSystemRootPath]);
   dataBroker.setupDataStorage();
   let rootPath = path.resolve(resolvedPath);
   // console.log(`rootPath is: ${rootPath}`);
@@ -73,7 +73,7 @@ function processRootPath(inputPath, actualFrameworkName) {
  * @author Seth Hollingsead
  * @date 2021/10/12
  */
-function initFrameworkSchema(configData) {
+async function initFrameworkSchema(configData) {
   let functionName = initFrameworkSchema.name;
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   // console.log(`configData is: ${JSON.stringify(configData)}`);
@@ -91,8 +91,8 @@ function initFrameworkSchema(configData) {
   let frameworkMetaDataPathAndFilename = configData[cfg.cframeworkFullMetaDataPath];
   loggers.consoleLog(namespacePrefix + functionName, msg.capplicationMetaDataPathAndFilenameIs + applicationMetaDataPathAndFilename);
   loggers.consoleLog(namespacePrefix + functionName, msg.cframeworkMetaDataPathAndFilenameIs + frameworkMetaDataPathAndFilename);
-  let applicationMetaData = ruleBroker.processRules([applicationMetaDataPathAndFilename, ''], getJsonRule);
-  let frameworkMetaData = ruleBroker.processRules([frameworkMetaDataPathAndFilename, ''], getJsonRule);
+  let applicationMetaData = await ruleBroker.processRules([applicationMetaDataPathAndFilename, ''], getJsonRule);
+  let frameworkMetaData = await ruleBroker.processRules([frameworkMetaDataPathAndFilename, ''], getJsonRule);
   loggers.consoleLog(namespacePrefix + functionName, msg.capplicationMetaDataIs + JSON.stringify(applicationMetaData));
   loggers.consoleLog(namespacePrefix + functionName, msg.cframeworkMetaDataIs + JSON.stringify(frameworkMetaData));
 
@@ -143,7 +143,7 @@ function initFrameworkSchema(configData) {
   loggers.consoleLog(namespacePrefix + functionName, msg.cFrameworkVersionNumberIs + frameworkMetaData[wrd.cVersion]);
   loggers.consoleLog(namespacePrefix + functionName, msg.cFrameworkDescriptionIs + frameworkMetaData[wrd.cDescription]);
 
-  if (configurator.getConfigurationSetting(wrd.csystem, cfg.cenableConstantsValidation) === true) {
+  if (await configurator.getConfigurationSetting(wrd.csystem, cfg.cenableConstantsValidation) === true) {
     let resolvedFrameworkConstantsPathActual = path.resolve(configData[cfg.cframeworkConstantsPath]);
     let resolvedClientConstantsPathActual = path.resolve(configData[cfg.cclientConstantsPath])
     loggers.consoleLog(namespacePrefix + functionName, msg.cresolvedFrameworkConstantsPathActualIs + resolvedFrameworkConstantsPathActual);
@@ -152,18 +152,18 @@ function initFrameworkSchema(configData) {
     configurator.setConfigurationSetting(wrd.csystem, cfg.capplicationConstantsPath, resolvedClientConstantsPathActual);
 
     chiefData.initializeConstantsValidationData(); // This just makes sure that the data structure is created on the D-Data structure.
-    let frameworkConstantsValidationData = configData[cfg.cframeworkConstantsValidationData].call();
-    let applicationConstantsValidationData = configData[cfg.capplicationConstantsValidationData].call();
+    let frameworkConstantsValidationData = await configData[cfg.cframeworkConstantsValidationData].call();
+    let applicationConstantsValidationData = await configData[cfg.capplicationConstantsValidationData].call();
     loggers.consoleLog(namespacePrefix + functionName, msg.cframeworkConstantsValidationDataIs + JSON.stringify(frameworkConstantsValidationData));
     loggers.consoleLog(namespacePrefix + functionName, msg.capplicationConstantsValidationDataIs + JSON.stringify(applicationConstantsValidationData));
     chiefData.addConstantsValidationData(frameworkConstantsValidationData);
     chiefData.addConstantsValidationData(applicationConstantsValidationData);
   } // End-if (configurator.getConfigurationSetting(wrd.csystem, cfg.cenableConstantsValidation) === true)
 
-  let enableLogFileOutputSetting = configurator.getConfigurationSetting(wrd.csystem, cfg.clogFileEnabled);
+  let enableLogFileOutputSetting = await configurator.getConfigurationSetting(wrd.csystem, cfg.clogFileEnabled);
   if (enableLogFileOutputSetting === true) {
     loggers.consoleLog(namespacePrefix + functionName, msg.cCaptureSessionDateTimeStampLogFileName);
-    let sessionDateTimeStamp = ruleBroker.processRules([configurator.getConfigurationSetting(wrd.csystem, cfg.cdateTimeStamp), ''], [biz.cgetNowMoment]);
+    let sessionDateTimeStamp = await ruleBroker.processRules([await configurator.getConfigurationSetting(wrd.csystem, cfg.cdateTimeStamp), ''], [biz.cgetNowMoment]);
     loggers.consoleLog(namespacePrefix + functionName, msg.csessionDateTimeStampIs + sessionDateTimeStamp);
     let logFileName = sessionDateTimeStamp + bas.cUnderscore + applicationMetaData[wrd.cVersion] + bas.cUnderscore + applicationMetaData[wrd.cName] + gen.cDotLog;
     loggers.consoleLog(namespacePrefix + functionName, msg.clogFileNameIs + logFileName);
@@ -189,7 +189,7 @@ function initFrameworkSchema(configData) {
  * @author Seth Hollingsead
  * @date 2022/02/09
  */
-function mergeClientBusinessRules(clientBusinessRules) {
+async function mergeClientBusinessRules(clientBusinessRules) {
   let functionName = mergeClientBusinessRules.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // console.log(`clientBusinessRules is: ${JSON.stringify(clientBusinessRules)}`);
@@ -206,7 +206,7 @@ function mergeClientBusinessRules(clientBusinessRules) {
  * @author Seth Hollingsead
  * @date 2022/02/09
  */
-function mergeClientCommands(clientCommands) {
+async function mergeClientCommands(clientCommands) {
   let functionName = mergeClientCommands.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // console.log(`clientCommands is: ${JSON.stringify(clientCommands)}`);
@@ -224,7 +224,7 @@ function mergeClientCommands(clientCommands) {
  * @author Seth Hollingsead
  * @date 2022/02/09
  */
-function loadCommandAliases(commandAliasesPathConfigName) {
+async function loadCommandAliases(commandAliasesPathConfigName) {
   let functionName = loadCommandAliases.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // commandAliasesPathConfigName is:
@@ -233,13 +233,13 @@ function loadCommandAliases(commandAliasesPathConfigName) {
   let resolvedClientCommandsAliasesPath;
   let resolvedCustomCommandsAliasesPath;
   if (commandAliasesPathConfigName) {
-    resolvedCustomCommandsAliasesPath = path.resolve(configurator.getConfigurationSetting(wrd.csystem, commandAliasesPathConfigName));
+    resolvedCustomCommandsAliasesPath = path.resolve(await configurator.getConfigurationSetting(wrd.csystem, commandAliasesPathConfigName));
     // resolvedCustomCommandsAliasesPath is:
     loggers.consoleLog(namespacePrefix + functionName, msg.cresolvedCustomCommandsAliasesPathIs + resolvedCustomCommandsAliasesPath);
     chiefCommander.loadCommandAliasesFromPath(commandAliasesPathConfigName, wrd.cPlugin);
   } else {
-    resolvedSystemCommandsAliasesPath = configurator.getConfigurationSetting(wrd.csystem, cfg.cframeworkCommandAliasesPath);
-    resolvedClientCommandsAliasesPath = configurator.getConfigurationSetting(wrd.csystem, cfg.cclientCommandAliasesPath);
+    resolvedSystemCommandsAliasesPath = await configurator.getConfigurationSetting(wrd.csystem, cfg.cframeworkCommandAliasesPath);
+    resolvedClientCommandsAliasesPath = await configurator.getConfigurationSetting(wrd.csystem, cfg.cclientCommandAliasesPath);
     // resolvedSystemCommandsAliasesPath is:
     loggers.consoleLog(namespacePrefix + functionName, msg.cresolvedSystemCommandsAliasesPathIs + resolvedSystemCommandsAliasesPath);
     // resolvedClientCommandsAliasesPath is:
@@ -261,7 +261,7 @@ function loadCommandAliases(commandAliasesPathConfigName) {
  * @author Seth Hollingsead
  * @date 2022/02/16
  */
-function loadCommandWorkflows(workflowPathConfigName) {
+async function loadCommandWorkflows(workflowPathConfigName) {
   let functionName = loadCommandWorkflows.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // workflowPathConfigName is:
@@ -270,13 +270,13 @@ function loadCommandWorkflows(workflowPathConfigName) {
   let resolvedClientWorkflowsPath;
   let resolvedCustomWorkflowsPath;
   if (workflowPathConfigName) {
-    resolvedCustomWorkflowsPath = path.resolve(configurator.getConfigurationSetting(wrd.csystem, workflowPathConfigName));
+    resolvedCustomWorkflowsPath = path.resolve(await configurator.getConfigurationSetting(wrd.csystem, workflowPathConfigName));
     // resolvedCustomWorkflowsPath is:
     loggers.consoleLog(namespacePrefix + functionName, msg.cresolvedCustomWorkflowsPathIs + resolvedCustomWorkflowsPath);
     chiefWorkflow.loadCommandWorkflowsFromPath(workflowPathConfigName, wrd.cPlugin);
   } else {
-    resolvedSystemWorkflowsPath = configurator.getConfigurationSetting(wrd.csystem, cfg.cframeworkWorkflowsPath);
-    resolvedClientWorkflowsPath = configurator.getConfigurationSetting(wrd.csystem, cfg.cclientWorkflowsPath);
+    resolvedSystemWorkflowsPath = await configurator.getConfigurationSetting(wrd.csystem, cfg.cframeworkWorkflowsPath);
+    resolvedClientWorkflowsPath = await configurator.getConfigurationSetting(wrd.csystem, cfg.cclientWorkflowsPath);
     // resolvedSystemWorkflowsPath is:
     loggers.consoleLog(namespacePrefix + functionName, msg.cresolvedSystemWorkflowsPathIs + resolvedSystemWorkflowsPath);
     // resolvedClientWorkflowsPath is:
@@ -298,7 +298,7 @@ function loadCommandWorkflows(workflowPathConfigName) {
  * @author Seth Hollingsead
  * @date 2022/02/16
  */
-function executeBusinessRules(inputs, businessRules) {
+async function executeBusinessRules(inputs, businessRules) {
   let functionName = executeBusinessRules.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // inputs is:
@@ -306,7 +306,7 @@ function executeBusinessRules(inputs, businessRules) {
   // businessRules is:
   loggers.consoleLog(namespacePrefix + functionName, msg.cbusinessRulesIs + JSON.stringify(businessRules));
   let returnData;
-  returnData = ruleBroker.processRules(inputs, businessRules);
+  returnData = await ruleBroker.processRules(inputs, businessRules);
   loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
   loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
@@ -324,7 +324,7 @@ function executeBusinessRules(inputs, businessRules) {
  * @author Seth Hollingsead
  * @date 2022/02/16
  */
-function enqueueCommand(command) {
+async function enqueueCommand(command) {
   let functionName = enqueueCommand.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // command is:
@@ -343,7 +343,7 @@ function enqueueCommand(command) {
  * @author Seth Hollingsead
  * @date 2022/02/16
  */
-function isCommandQueueEmpty() {
+async function isCommandQueueEmpty() {
   let functionName = isCommandQueueEmpty.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   let returnData = false;
@@ -364,7 +364,7 @@ function isCommandQueueEmpty() {
  * @author Seth Hollingsead
  * @date 2022/02/16
  */
-function processCommandQueue() {
+async function processCommandQueue() {
   let functionName = processCommandQueue.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   let returnData = false;
@@ -386,7 +386,7 @@ function processCommandQueue() {
  * @author Seth Hollingsead
  * @date 2022/02/16
  */
-function setConfigurationSetting(configurationNamespace, configurationName, configurationValue) {
+async function setConfigurationSetting(configurationNamespace, configurationName, configurationValue) {
   let functionName = setConfigurationSetting.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // configurationNamespace is:
@@ -410,7 +410,7 @@ function setConfigurationSetting(configurationNamespace, configurationName, conf
  * @author Seth Hollingsead
  * @date 2022/02/16
  */
-function getConfigurationSetting(configurationNamespace, configurationName) {
+async function getConfigurationSetting(configurationNamespace, configurationName) {
   let functionName = getConfigurationSetting.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // configurationNamespace is:
@@ -418,7 +418,7 @@ function getConfigurationSetting(configurationNamespace, configurationName) {
   // configurationName is:
   loggers.consoleLog(namespacePrefix + functionName, msg.cconfigurationNameIs + configurationName);
   // let returnConfigurationValue = D[sys.cConfiguration][configurationName];
-  let returnConfigurationValue = configurator.getConfigurationSetting(configurationNamespace, configurationName);
+  let returnConfigurationValue = await configurator.getConfigurationSetting(configurationNamespace, configurationName);
   // returnConfigurationValue is:
   loggers.consoleLog(namespacePrefix + functionName, msg.creturnConfiguraitonValueIs + returnConfigurationValue);
   loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
@@ -436,7 +436,7 @@ function getConfigurationSetting(configurationNamespace, configurationName) {
  * @NOTE We cannot instrument this code with calls to loggers.consoleLog as it would introduce yet another circular dependency.
  * We will have to stick with just hard coded console.logs in this case to debug at this level.
  */
-function consoleLog(classPath, message) {
+async function consoleLog(classPath, message) {
   // let functionName = consoleLog.name;
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   // console.log(`classPath is: ${classPath}`);

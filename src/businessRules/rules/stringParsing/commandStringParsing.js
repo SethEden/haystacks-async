@@ -33,7 +33,7 @@ const namespacePrefix = sys.cbusinessRules + bas.cDot + wrd.crules + bas.cDot + 
  * @author Seth Hollingsead
  * @date 2022/01/25
  */
-function cleanCommandInput(inputData, inputMetaData) {
+async function cleanCommandInput(inputData, inputMetaData) {
   let functionName = cleanCommandInput.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
@@ -61,7 +61,7 @@ function cleanCommandInput(inputData, inputMetaData) {
  * @author Seth Hollingsead
  * @date 2022/01/24
  */
-function isValidCommandNameString(inputData, inputMetaData) {
+async function isValidCommandNameString(inputData, inputMetaData) {
   let functionName = isValidCommandNameString.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
