@@ -41,10 +41,10 @@ async function getFileNameFromPath(inputData, inputMetaData) {
   if (inputData) {
     // Clean the path string for any double slashes.
     if (inputData.includes(bas.cDoubleForwardSlash)) {
-      inputData = ruleParsing.processRulesInternal([inputData, ''], [biz.cswapDoubleForwardSlashToSingleForwardSlash]);
+      inputData = await ruleParsing.processRulesInternal([inputData, ''], [biz.cswapDoubleForwardSlashToSingleForwardSlash]);
     }
     if (inputData.includes(bas.cForwardSlash)) {
-      inputData = ruleParsing.processRulesInternal([inputData, ''], [biz.cswapForwardSlashToBackSlash]);
+      inputData = await ruleParsing.processRulesInternal([inputData, ''], [biz.cswapForwardSlashToBackSlash]);
     }
     // inputData right before processing is:
     loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataRightBeforeProcessingIs + inputData);
@@ -192,7 +192,7 @@ async function removeXnumberOfFoldersFromEndOfPath(inputData, inputMetaData) {
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = inputData; // assign it to something so it shouldn't resolve as false, unless it gets set to false.
-  if (inputData && ruleParsing.processRulesInternal([inputMetaData, ''], [biz.cisInteger]) === true) {
+  if (inputData && await ruleParsing.processRulesInternal([inputMetaData, ''], [biz.cisInteger]) === true) {
     let pathArray;
     let pathAsForwardSlash;
     if (inputData.includes(bas.cForwardSlash) === true) {

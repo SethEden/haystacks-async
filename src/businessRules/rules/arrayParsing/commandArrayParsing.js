@@ -53,7 +53,7 @@ async function solveLehmerCode(inputData, inputMetaData) {
     let lengthOfInputData = inputData.length;
     let expandedLehmerCodeArray = [];
     let lehmerCodeArray = Array.from(Array(lengthOfInputData), () => 0);
-    expandedLehmerCodeArray = ruleParsing.processRulesInternal([recursiveArrayExpansion([0, lehmerCodeArray], inputData), ''], [biz.carrayDeepClone]);
+    expandedLehmerCodeArray = await ruleParsing.processRulesInternal([await recursiveArrayExpansion([0, lehmerCodeArray], inputData), ''], [biz.carrayDeepClone]);
     // expandedLehmerCodeArray is:
     loggers.consoleLog(namespacePrefix + functionName, msg.cexpandedLehmerCodeArrayIs + JSON.stringify(expandedLehmerCodeArray));
 
@@ -87,8 +87,8 @@ async function recursiveArrayExpansion(inputData, inputMetaData) {
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
   let returnData = [];
-  let inputDataIsArray = ruleParsing.processRulesInternal([inputData, ''], [biz.cisArray]);
-  let inputMetaDataIsArray = ruleParsing.processRulesInternal([inputMetaData, ''], [biz.cisArray]);
+  let inputDataIsArray = await ruleParsing.processRulesInternal([inputData, ''], [biz.cisArray]);
+  let inputMetaDataIsArray = await ruleParsing.processRulesInternal([inputMetaData, ''], [biz.cisArray]);
   if (inputData && inputMetaData && inputDataIsArray === true && inputMetaDataIsArray === true && inputData.length > 0 && inputMetaData.length > 0) {
     // Setup & parse the inputData & inputMetaData into a format we can use to actually do recursive array expansion.
     let indexOfExpansion = inputData[0];
@@ -113,11 +113,11 @@ async function recursiveArrayExpansion(inputData, inputMetaData) {
 
     // First level array expansion.
     for (let i = 0; i <= limitOfExpansion; i++) {
-      let lehmerCodeArray1 = ruleParsing.processRulesInternal([arrayToBeExpanded, ''], [biz.carrayDeepClone]);
+      let lehmerCodeArray1 = await ruleParsing.processRulesInternal([arrayToBeExpanded, ''], [biz.carrayDeepClone]);
       // returnData is:
       loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
       lehmerCodeArray1[indexOfExpansion] = i;
-      if (ruleParsing.processRulesInternal([[returnData, lehmerCodeArray1], ruleParsing.getRule(biz.cascertainMatchingElements)], [biz.cdoesArrayContainValue]) === false) {
+      if (await ruleParsing.processRulesInternal([[returnData, lehmerCodeArray1], ruleParsing.getRule(biz.cascertainMatchingElements)], [biz.cdoesArrayContainValue]) === false) {
         // pushing LehmerCodeArray1 to returnData value:
         loggers.consoleLog(namespacePrefix + functionName, msg.cpushingLehmerCodeArray1ToReturnDataValue + JSON.stringify(lehmerCodeArray1));
         returnData.push(lehmerCodeArray1);
@@ -143,16 +143,16 @@ async function recursiveArrayExpansion(inputData, inputMetaData) {
       // because otherwise we would be looping over the same array we are removing elements from,
       // which would mean that we would never visit all of the elements.
       // https://stackoverflow.com/questions/54081930/why-array-foreach-array-pop-would-not-empty-the-array
-      let returnDataTemp = ruleParsing.processRulesInternal([returnData, ''], [biz.carrayDeepClone]);
-      returnDataTemp.forEach(function() {
+      let returnDataTemp = await ruleParsing.processRulesInternal([returnData, ''], [biz.carrayDeepClone]);
+      returnDataTemp.forEach(async function() {
         // returnData BEFORE POP is:
         loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataBeforePopIs + JSON.stringify(returnData));
-        let lehmerCodeArray2 = ruleParsing.processRulesInternal([returnData.pop(), ''], [biz.carrayDeepClone]);
+        let lehmerCodeArray2 = await ruleParsing.processRulesInternal([returnData.pop(), ''], [biz.carrayDeepClone]);
         // returnData AFTER POP is:
         loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataAfterPopIs + JSON.stringify(returnData));
         // masterTempReturnData BEFORE recursive call is:
         loggers.consoleLog(namespacePrefix + functionName, msg.cmasterTempReturnDataBeforeRecursiveCallIs + JSON.stringify(masterTempReturnData));
-        let tempReturnData1 = ruleParsing.processRulesInternal([recursiveArrayExpansion([indexOfExpansion + 1, lehmerCodeArray2], inputMetaData), ''], [biz.carrayDeepClone]);
+        let tempReturnData1 = await ruleParsing.processRulesInternal([await recursiveArrayExpansion([indexOfExpansion + 1, lehmerCodeArray2], inputMetaData), ''], [biz.carrayDeepClone]);
         // tempReturnData1 is:
         loggers.consoleLog(namespacePrefix + functionName, msg.ctempReturnData1Is + JSON.stringify(tempReturnData1));
         // tempReturnData1.length is:
@@ -160,10 +160,10 @@ async function recursiveArrayExpansion(inputData, inputMetaData) {
         for (let k = 0; k <= tempReturnData1.length - 1; k++) {
           // BEGIN k-th iteration:
           loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_kthIteration + k);
-          if (ruleParsing.processRulesInternal([[masterTempReturnData, tempReturnData1[k]], ruleParsing.getRule(biz.cascertainMatchingElements)], [biz.cdoesArrayContainValue]) === false) {
+          if (await ruleParsing.processRulesInternal([[masterTempReturnData, tempReturnData1[k]], ruleParsing.getRule(biz.cascertainMatchingElements)], [biz.cdoesArrayContainValue]) === false) {
             // pushing tempReturnData1[k] value:
             loggers.consoleLog(namespacePrefix + functionName, msg.cpushingTempReturnData1Kvalue + JSON.stringify(tempReturnData1[k]));
-            masterTempReturnData.push(ruleParsing.processRulesInternal([tempReturnData1[k], ''], [biz.carrayDeepClone]));
+            masterTempReturnData.push(await ruleParsing.processRulesInternal([tempReturnData1[k], ''], [biz.carrayDeepClone]));
           } // End-if (ruleParsing.processRulesInternal([[masterTempReturnData, tempReturnData1[k]], ruleParsing.getRule(biz.cascertainMatchingElements)], [biz.cdoesArrayContainValue]) === false)
           // END k-th iteration:
           loggers.consoleLog(namespacePrefix + functionName, msg.cEND_kthIteration + k);
@@ -171,7 +171,7 @@ async function recursiveArrayExpansion(inputData, inputMetaData) {
         // masterTempReturnData AFTER recursive call is:
         loggers.consoleLog(namespacePrefix + functionName, msg.cmasterTempReturnDataAfterRecursiveCallIs + JSON.stringify(masterTempReturnData));
       }); // End-for-each (returnDataTemp.forEach(function())
-      returnData = ruleParsing.processRulesInternal([masterTempReturnData, ''], [biz.carrayDeepClone]);
+      returnData = await ruleParsing.processRulesInternal([masterTempReturnData, ''], [biz.carrayDeepClone]);
     } // End-if (indexOfExpansion < arrayToBeExpanded.length - 1)
   } // End-if (inputData && inputMetaData && inputDataIsArray === true && inputMetaDataIsArray === true && inputData.length > 0 && inputMetaData.length > 0)
   loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
@@ -270,9 +270,9 @@ async function generateCommandAliases(inputData, inputMetaData) {
       masterArrayIndex[i] = commandWordAliasesArray.length - 1;
       for (let j = 0; j < commandWordAliasesArray.length; j++) {
         let commandAliasWord = commandWordAliasesArray[j];
-        if (ruleParsing.processRulesInternal([commandAliasWord, ''], [biz.cisFirstCharacterLowerCase]) === true) {
+        if (await ruleParsing.processRulesInternal([commandAliasWord, ''], [biz.cisFirstCharacterLowerCase]) === true) {
           let firstLetterOfCommandAliasWord = commandAliasWord.charAt(0).toUpperCase();
-          commandAliasWord = ruleParsing.processRulesInternal([[commandAliasWord, 0], firstLetterOfCommandAliasWord], [biz.creplaceCharacterAtIndexOfString]);
+          commandAliasWord = await ruleParsing.processRulesInternal([[commandAliasWord, 0], firstLetterOfCommandAliasWord], [biz.creplaceCharacterAtIndexOfString]);
           commandWordAliasesArray[j] = commandAliasWord; // Saved the changes back to array.
         } // End-if (ruleParsing.processRulesInternal([commandAliasWord, ''], [biz.cisFirstCharacterLowerCase]) === true)
       } // End-for (let j = 0; j < commandWordAliasesArray.length; j++)
@@ -332,9 +332,9 @@ async function aggregateCommandArguments(inputData, inputMetaData) {
         // BEGIN i-th iteration:
         loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_ithIteration + i);
         if (i === 2) {
-          returnData = ruleParsing.processRulesInternal([inputData[i], '' ], [biz.ccleanCommandInput]);
+          returnData = await ruleParsing.processRulesInternal([inputData[i], '' ], [biz.ccleanCommandInput]);
         } else {
-          returnData = returnData + bas.cSpace + ruleParsing.processRulesInternal([inputData[i], ''], [biz.ccleanCommandInput]);
+          returnData = returnData + bas.cSpace + await ruleParsing.processRulesInternal([inputData[i], ''], [biz.ccleanCommandInput]);
         }
         // returnData is:
         loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
@@ -342,7 +342,7 @@ async function aggregateCommandArguments(inputData, inputMetaData) {
         loggers.consoleLog(namespacePrefix + functionName, msg.cEND_ithIteration + i);
       } // End-for (let i = 2; i < inputData.length; i++)
     } else { // else-clause if (inputData.length > 3)
-      returnData = ruleParsing.processRulesInternal([inputData[2], ''], [biz.ccleanCommandInput]);
+      returnData = await ruleParsing.processRulesInternal([inputData[2], ''], [biz.ccleanCommandInput]);
     }
   } // End-if (inputData)
   loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);

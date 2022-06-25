@@ -79,18 +79,18 @@ async function getWordsArrayFromString(inputData, inputMetaData) {
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData;
   if (inputData) {
-    let wordCount = ruleParsing.processRulesInternal([inputData, ''], [biz.cgetWordCountInString]);
+    let wordCount = await ruleParsing.processRulesInternal([inputData, ''], [biz.cgetWordCountInString]);
     // wordCount is:
     loggers.consoleLog(namespacePrefix + functionName, msg.cwordCountIs + wordCount);
     if (wordCount > 0) {
-      let wordDelimiter = ruleParsing.processRulesInternal([inputData, inputMetaData], [biz.cdetermineWordDelimiter]);
+      let wordDelimiter = await ruleParsing.processRulesInternal([inputData, inputMetaData], [biz.cdetermineWordDelimiter]);
       // wordDelimiter is:
       loggers.consoleLog(namespacePrefix + functionName, msg.cwordDelimiterIs + wordDelimiter);
-      let stringContainsAcronym = ruleParsing.processRulesInternal([inputData, ''], [biz.cdoesStringContainAcronym]);
+      let stringContainsAcronym = await ruleParsing.processRulesInternal([inputData, ''], [biz.cdoesStringContainAcronym]);
       // stringContainsAcronym is:
       loggers.consoleLog(namespacePrefix + functionName, msg.cstringContainsAcronymIs + stringContainsAcronym);
       if (wordDelimiter === sys.cCamelCase && stringContainsAcronym === false) {
-        returnData = convertCamelCaseStringToArray(inputData, '');
+        returnData = await convertCamelCaseStringToArray(inputData, '');
       } else if (wordDelimiter != '' && wordDelimiter != sys.cCamelCase) {
         returnData = inputData.split(wordDelimiter);
       } else {
@@ -150,7 +150,7 @@ async function convertArrayToCamelCaseString(inputData, inputMetaData) {
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData;
   if (inputData) {
-    returnData = inputData.map((key, index) => ruleParsing.processRulesInternal([key, index], [biz.cmapWordToCamelCaseWord]));
+    returnData = await inputData.map((key, index) => ruleParsing.processRulesInternal([key, index], [biz.cmapWordToCamelCaseWord]));
     returnData = returnData.join('');
   }
   loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
@@ -180,7 +180,7 @@ async function doesArrayContainLowerCaseConsolidatedString(inputData, inputMetaD
     let stringDelta = (value1, value2) => ruleParsing.processRulesInternal([value1, value2], [biz.caggregateNumericalDifferenceBetweenTwoStrings]) < 2;
     // stringDelta value is:
     loggers.consoleLog(namespacePrefix + functionName, msg.cstringDeltaValueIs + stringDelta);
-    returnData = ruleParsing.processRulesInternal([[inputData, inputMetaData], stringDelta], [biz.cdoesArrayContainValue]);
+    returnData = await ruleParsing.processRulesInternal([[inputData, inputMetaData], stringDelta], [biz.cdoesArrayContainValue]);
   }
   loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
   loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);

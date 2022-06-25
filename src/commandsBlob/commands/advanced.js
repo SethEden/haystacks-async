@@ -62,14 +62,14 @@ async function commandSequencer(inputData, inputMetaData) {
   let commandSuccess = true;
   for (let i = 1; i < inputData.length; i++) {
     let commandString = inputData[i];
-    let primaryCommandDelimiter = configurator.getConfigurationSetting(wrd.csystem, cfg.cprimaryCommandDelimiter);
+    let primaryCommandDelimiter = await configurator.getConfigurationSetting(wrd.csystem, cfg.cprimaryCommandDelimiter);
     loggers.consoleLog(namespacePrefix + functionName, msg.cprimaryCommandDelimiterIs + primaryCommandDelimiter);
     if (primaryCommandDelimiter === null || primaryCommandDelimiter !== primaryCommandDelimiter || primaryCommandDelimiter === undefined) {
       primaryCommandDelimiter = bas.cSpace;
     }
-    let secondaryCommandArgsDelimiter = configurator.getConfigurationSetting(wrd.csystem, cfg.csecondaryCommandDelimiter);
+    let secondaryCommandArgsDelimiter = await configurator.getConfigurationSetting(wrd.csystem, cfg.csecondaryCommandDelimiter);
     loggers.consoleLog(namespacePrefix + functionName, msg.csecondaryCommandDelimiterIs + secondaryCommandArgsDelimiter);
-    let tertiaryCommandDelimiter = configurator.getConfigurationSetting(wrd.csystem, cfg.ctertiaryCommandDelimiter);
+    let tertiaryCommandDelimiter = await configurator.getConfigurationSetting(wrd.csystem, cfg.ctertiaryCommandDelimiter);
     loggers.consoleLog(namespacePrefix + functionName, msg.ctertiaryCommandDelimiterIs + tertiaryCommandDelimiter);
     // Replace 2nd & rd level delimiters and down-increment them so we are dealing with command strings that can actually be executed.
     const regEx1 = new RegExp(secondaryCommandArgsDelimiter, bas.cg);
@@ -79,14 +79,14 @@ async function commandSequencer(inputData, inputMetaData) {
       commandString = commandString.replace(regEx2, secondaryCommandArgsDelimiter);
     }
     let currentCommand = commandBroker.getValidCommand(commandString, primaryCommandDelimiter);
-    let commandArgs = commandBroker.getCommandArgs(commandString, primaryCommandDelimiter);
+    let commandArgs = await commandBroker.getCommandArgs(commandString, primaryCommandDelimiter);
     // We need to recompose the command arguments for the current command using the sys.cPrimaryCommandDelimiter.
     if (currentCommand !== false) {
       for (let j = 1; j < commandArgs.length; j++) {
         currentCommand = currentCommand + primaryCommandDelimiter + commandArgs[j];
       } // End-for (let j = 1; j < commandArgs.length; j++)
       loggers.consoleLog(namespacePrefix + functionName, msg.ccommandSequencerCommandToEnqueueIs + currentCommand);
-      queue.enqueue(sys.cCommandQueue, currentCommand);
+      await queue.enqueue(sys.cCommandQueue, currentCommand);
     } else { // End-if (currentCommand !== false)
       // WARNING: advanced.commandSequencer: The specified command was not found, please enter a valid command and try again. <commandString>
       let errorMessage = msg.ccommandSequencerMessage1 + msg.ccommandSequencerMessage2 + bas.cSpace + commandString;
@@ -178,8 +178,8 @@ async function businessRule(inputData, inputMetaData) {
   let rules = [];
   let ruleInputData, ruleInputMetaData;
   let ruleOutput = '';
-  let businessRuleOutput = configurator.getConfigurationSetting(wrd.csystem, cfg.cenableBusinessRuleOutput);
-  let businessRuleMetricsEnabled = configurator.getConfigurationSetting(wrd.csystem, cfg.cenableBusinessRulePerformanceMetrics);
+  let businessRuleOutput = await configurator.getConfigurationSetting(wrd.csystem, cfg.cenableBusinessRuleOutput);
+  let businessRuleMetricsEnabled = await configurator.getConfigurationSetting(wrd.csystem, cfg.cenableBusinessRulePerformanceMetrics);
   let businessRuleStartTime = '';
   let businessRuleEndTime = '';
   let businessRuleDeltaTime = '';
@@ -194,20 +194,20 @@ async function businessRule(inputData, inputMetaData) {
     loggers.consoleLog(namespacePrefix + functionName, msg.ccurrentRuleIs + JSON.stringify(currentRuleArg));
     if (i === 1) {
       // rules = lexical.parseBusinessRuleArgument(currentRuleArg, i);
-      rules = ruleBroker.processRules([currentRuleArg, i], [biz.cparseBusinessRuleArgument]);
+      rules = await ruleBroker.processRules([currentRuleArg, i], [biz.cparseBusinessRuleArgument]);
     } else if (i === 2) {
       // ruleInputData = lexical.parseBusinessRuleArgument(currentRuleArg, i);
-      ruleInputData = ruleBroker.processRules([currentRuleArg, i], [biz.cparseBusinessRuleArgument]);
+      ruleInputData = await ruleBroker.processRules([currentRuleArg, i], [biz.cparseBusinessRuleArgument]);
     } else if (i === 3 && inputData.length <= 4) {
       // ruleInputMetaData = lexical.parseBusinessRuleArgument(currentRuleArg, i);
-      ruleInputMetaData = ruleBroker.processRules([currentRuleArg, i], [biz.cparseBusinessRuleArgument]);
+      ruleInputMetaData = await ruleBroker.processRules([currentRuleArg, i], [biz.cparseBusinessRuleArgument]);
     } else if (i === 3 && inputData.length > 4) {
       // // In this case all of the arguments will have been combined into a single array and added to the ruleInputData.
       ruleInputMetaData = [];
       for (let j = 3; j <= inputData.length - 1; j++) {
         let currentRuleArrayArg = inputData[j];
         // let tempArg = lexical.parseBusinessRuleArgument(currentRuleArrayArg, j);
-        let tempArg = ruleBroker.processRules([currentRuleArrayArg, j], [biz.cparseBusinessRuleArgument]);
+        let tempArg = await ruleBroker.processRules([currentRuleArrayArg, j], [biz.cparseBusinessRuleArgument]);
         // console.log('tempArg is: ' + tempArg);
         if (tempArg) {
           ruleInputMetaData.push(tempArg);
@@ -226,19 +226,19 @@ async function businessRule(inputData, inputMetaData) {
     // Here we will capture the start time of the business rule we are about to execute.
     // After executing we will capture the end time and then
     // compare the difference to determine how many milliseconds it took to run the business rule.
-    businessRuleStartTime = ruleBroker.processRules([gen.cYYYYMMDD_HHmmss_SSS, ''], [biz.cgetNowMoment]);
+    businessRuleStartTime = await ruleBroker.processRules([gen.cYYYYMMDD_HHmmss_SSS, ''], [biz.cgetNowMoment]);
     // Business Rule Start time is:
     loggers.consoleLog(namespacePrefix + functionName, msg.cBusinessRuleStartTimeIs + businessRuleStartTime);
   } // End-if (businessRuleMetricsEnabled === true)
-  ruleOutput = ruleBroker.processRules([ruleInputData, ruleInputMetaData], rules);
+  ruleOutput = await ruleBroker.processRules([ruleInputData, ruleInputMetaData], rules);
   returnData[1] = ruleOutput;
   if (businessRuleMetricsEnabled === true) {
     let performanceTrackingObject = {};
-    businessRuleEndTime = ruleBroker.processRules([gen.cYYYYMMDD_HHmmss_SSS, ''], [biz.cgetNowMoment]);
+    businessRuleEndTime = await ruleBroker.processRules([gen.cYYYYMMDD_HHmmss_SSS, ''], [biz.cgetNowMoment]);
     // BusinessRule End time is:
     loggers.consoleLog(namespacePrefix + functionName, msg.cBusinessRuleEndTimeIs + businessRuleEndTime);
     // Now compute the delta time so we know how long it took to run that business rule.
-    businessRuleDeltaTime = ruleBroker.processRules([businessRuleStartTime, businessRuleEndTime], [biz.ccomputeDeltaTime]);
+    businessRuleDeltaTime = await ruleBroker.processRules([businessRuleStartTime, businessRuleEndTime], [biz.ccomputeDeltaTime]);
     // BusinessRule run-time is:
     loggers.consoleLog(namespacePrefix + functionName, msg.cBusinessRuleRunTimeIs + businessRuleDeltaTime);
     // Check to make sure the business rule performance tracking stack exists or does not exist.
@@ -290,12 +290,12 @@ async function commandGenerator(inputData, inputMetaData) {
   let errorMessage = '';
   let legitNumberIndex = -1;
   let replaceCharacterWithCharacterRule = [biz.creplaceCharacterWithCharacter];
-  let primaryCommandDelimiter = configurator.getConfigurationSetting(wrd.csystem, cfg.cprimaryCommandDelimiter);
+  let primaryCommandDelimiter = await configurator.getConfigurationSetting(wrd.csystem, cfg.cprimaryCommandDelimiter);
   if (primaryCommandDelimiter === null || primaryCommandDelimiter !== primaryCommandDelimiter || primaryCommandDelimiter === undefined) {
     primaryCommandDelimiter = bas.cSpace;
   }
-  let secondaryCommandArgsDelimiter = configurator.getConfigurationSetting(wrd.csystem, cfg.csecondaryCommandDelimiter);
-  let tertiaryCommandDelimiter = configurator.getConfigurationSetting(wrd.csystem, cfg.ctertiaryCommandDelimiter);
+  let secondaryCommandArgsDelimiter = await configurator.getConfigurationSetting(wrd.csystem, cfg.csecondaryCommandDelimiter);
+  let tertiaryCommandDelimiter = await configurator.getConfigurationSetting(wrd.csystem, cfg.ctertiaryCommandDelimiter);
   let commandString = '';
   if (inputData.length === 3) {
     commandString = inputData[1];
@@ -322,16 +322,16 @@ async function commandGenerator(inputData, inputMetaData) {
   loggers.consoleLog(namespacePrefix + functionName, msg.creplaceCharacterWithCharacterRuleIs + JSON.stringify(replaceCharacterWithCharacterRule));
   // let secondaryCommandDelimiterRegEx = new RegExp(bas.cBackSlash + secondaryCommandArgsDelimiter, bas.cg);
   // let secondaryCommandDelimiterRegEx = new RegExp(`[${secondaryCommandArgsDelimiter}]`, bas.cg);
-  commandString = ruleBroker.processRules([commandString, [secondaryCommandArgsDelimiter, primaryCommandDelimiter]], replaceCharacterWithCharacterRule);
+  commandString = await ruleBroker.processRules([commandString, [secondaryCommandArgsDelimiter, primaryCommandDelimiter]], replaceCharacterWithCharacterRule);
   // After attempting to replace the secondaryCommandArgsDelimiter with the primaryCommandDelimiter commandString is:
   loggers.consoleLog(namespacePrefix + functionName, msg.ccommandGeneratorMessage1 + commandString);
   // let tertiaryCommandDelimiterRegEx = new RegExp(bas.cBackSlash + tertiaryCommandDelimiter, bas.cg);
   // let tertiaryCommandDelimiterRegEx = new RegExp(`[${tertiaryCommandDelimiter}]`, bas.cg);
-  commandString = ruleBroker.processRules([commandString, [tertiaryCommandDelimiter, secondaryCommandArgsDelimiter]], replaceCharacterWithCharacterRule);
+  commandString = await ruleBroker.processRules([commandString, [tertiaryCommandDelimiter, secondaryCommandArgsDelimiter]], replaceCharacterWithCharacterRule);
   // After attempting to replace the teriaryCommandDelimiter with the secondaryCommandArgsDelimiter commandString is:
   loggers.consoleLog(namespacePrefix + functionName, msg.ccommandGeneratorMessage2 + commandString);
   let currentCommand = commandBroker.getValidCommand(commandString, primaryCommandDelimiter);
-  let commandArgs = commandBroker.getCommandArgs(commandString, primaryCommandDelimiter);
+  let commandArgs = await commandBroker.getCommandArgs(commandString, primaryCommandDelimiter);
   loggers.consoleLog(namespacePrefix + functionName, msg.ccurrentCommandIs + currentCommand);
   loggers.consoleLog(namespacePrefix + functionName, msg.ccommandArgsIs + JSON.stringify(commandArgs));
   if (currentCommand !== false) {
@@ -417,15 +417,15 @@ async function commandAliasGenerator(inputData, inputMetaData) {
       console.log(msg.cCommandNamePrompt3);
       console.log(msg.cCommandNamePrompt4);
       console.log(msg.cCommandNamePrompt5);
-      commandName = ruleBroker.processRules([bas.cGreaterThan, ''], [biz.cprompt]);
-      validCommandName = ruleBroker.processRules([commandName, ''], [biz.cisValidCommandNameString]);
+      commandName = await ruleBroker.processRules([bas.cGreaterThan, ''], [biz.cprompt]);
+      validCommandName = await ruleBroker.processRules([commandName, ''], [biz.cisValidCommandNameString]);
       if (validCommandName === false) {
         // INVALID INPUT: Please enter a valid camel-case command name.
         console.log(msg.ccommandAliasGeneratorMessage3);
       } // End-if (validCommandName === false)
     } // End-while (validCommandName === false)
 
-    let camelCaseCommandNameArray = ruleBroker.processRules([commandName, ''], [biz.cconvertCamelCaseStringToArray]);
+    let camelCaseCommandNameArray = await ruleBroker.processRules([commandName, ''], [biz.cconvertCamelCaseStringToArray]);
     // camelCaseCommandNameArray is:
     loggers.consoleLog(namespacePrefix + functionName, msg.ccamelCaseCommandNameArrayIs + JSON.stringify(camelCaseCommandNameArray));
 
@@ -440,8 +440,8 @@ async function commandAliasGenerator(inputData, inputMetaData) {
           console.log(msg.cCommandWordAliasPrompt1);
           console.log(msg.cCommandWordAliasPrompt2);
           console.log(msg.cCommandWordAliasPrompt3 + bas.cSpace + commandWord);
-          commandWordAliasList = ruleBroker.processRules([bas.cGreaterThan, ''], [biz.cprompt]);
-          validCommandWordAliasList = ruleBroker.processRules([commandWordAliasList, ''], [biz.cisStringList]);
+          commandWordAliasList = await ruleBroker.processRules([bas.cGreaterThan, ''], [biz.cprompt]);
+          validCommandWordAliasList = await ruleBroker.processRules([commandWordAliasList, ''], [biz.cisStringList]);
           if (validCommandWordAliasList === false) {
             // INVALID INPUT: Please enter a valid command word alias list.
             console.log(msg.ccommandAliasGeneratorMessage4);
@@ -479,7 +479,7 @@ async function commandAliasGenerator(inputData, inputMetaData) {
     loggers.consoleLog(namespacePrefix, functionName, msg.ccommandAliasDataStructureIs + JSON.stringify(commandAliasDataStructure));
     // At this point the user should have entered all valid data and we should be ready to proceed.
     // Pass the data object to a business rule to do the above task.
-    returnData[1] = ruleBroker.processRules([commandAliasDataStructure, ''], [biz.cgenerateCommandAliases]);
+    returnData[1] = await ruleBroker.processRules([commandAliasDataStructure, ''], [biz.cgenerateCommandAliases]);
   } // End-if (validCommandInput === true)
   loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);

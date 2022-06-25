@@ -42,9 +42,9 @@ async function getNamedThemes() {
   let functionName = getNamedThemes.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   let themesNames = [];
-  let frameworkThemesPath = configurator.getConfigurationSetting(wrd.csystem, cfg.cframeworkThemesPath);
+  let frameworkThemesPath = await configurator.getConfigurationSetting(wrd.csystem, cfg.cframeworkThemesPath);
   frameworkThemesPath = path.resolve(frameworkThemesPath);
-  themesNames = ruleBroker.processRules([frameworkThemesPath, ''], [biz.cgetDirectoryList]);
+  themesNames = await ruleBroker.processRules([frameworkThemesPath, ''], [biz.cgetDirectoryList]);
   // themesNames is:
   loggers.consoleLog(namespacePrefix + functionName, msg.cthemesNamesIs + JSON.stringify(themesNames));
   loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
@@ -65,10 +65,10 @@ async function getNamedThemePath(themeName) {
   // themeName is:
   loggers.consoleLog(namespacePrefix + functionName, msg.cthemeNameIs + themeName);
   let themesNames = [];
-  themesNames = getNamedThemes();
+  themesNames = await getNamedThemes();
   loggers.consoleLog(namespacePrefix + functionName, msg.cthemesNamesIs + JSON.stringify(themesNames))
   let themePath = false;
-  let frameworkThemesPath = configurator.getConfigurationSetting(wrd.csystem, cfg.cframeworkThemesPath);
+  let frameworkThemesPath = await configurator.getConfigurationSetting(wrd.csystem, cfg.cframeworkThemesPath);
   frameworkThemesPath = path.resolve(frameworkThemesPath);
   for (const element of themesNames) {
     if (element.toUpperCase() === themeName.toUpperCase()) {
@@ -97,8 +97,8 @@ async function loadTheme(themePath) {
   // themePath is:
   loggers.consoleLog(namespacePrefix + functionName, msg.cthemePathIs + themePath);
   let themeData = {};
-  chiefData.determineThemeDebugConfigFilesToLoad(sys.cthemeConfigPath);
-  themeData = chiefData.setupAllJsonConfigData(sys.cthemeConfigPath, wrd.cconfiguration);
+  await chiefData.determineThemeDebugConfigFilesToLoad(sys.cthemeConfigPath);
+  themeData = await chiefData.setupAllJsonConfigData(sys.cthemeConfigPath, wrd.cconfiguration);
   // themeData is:
   loggers.consoleLog(namespacePrefix + functionName, msg.cthemeDataIs + JSON.stringify(themeData));
   loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);

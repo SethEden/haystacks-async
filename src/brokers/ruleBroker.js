@@ -97,7 +97,7 @@ async function processRules(inputs, rulesToExecute) {
         // console.log(`key is: ${key}`);
         let value = rulesToExecute[key];
         // console.log(`value is: ${value}`);
-        returnData = D[sys.cbusinessRules][value](returnData, inputMetaData);
+        returnData = await D[sys.cbusinessRules][value](returnData, inputMetaData);
       } // End-if (rulesToExecute.hasOwnProperty(rule))
     } // End-for (let rule in rulesToExecute)
   } else {

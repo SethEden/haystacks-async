@@ -49,7 +49,7 @@ async function loadCommandWorkflowsFromPath(commandWorkflowFilePathConfiguration
   // contextName
   loggers.consoleLog(namespacePrefix + functionName, msg.ccontextNameIs + contextName);
   let allCommandWorkflowsData = {};
-  allCommandWorkflowsData = chiefData.setupAllXmlData(commandWorkflowFilePathConfigurationName, sys.cCommandWorkflows);
+  allCommandWorkflowsData = await chiefData.setupAllXmlData(commandWorkflowFilePathConfigurationName, sys.cCommandWorkflows);
   // allCommandWorkflowsData is:
   loggers.consoleLog(namespacePrefix + functionName, msg.callCommandWorkflowsDataIs + JSON.stringify(allCommandWorkflowsData));
   if (D[sys.cCommandWorkflows] === undefined) { // Make sure we only do this if it's undefined, otherwise we might wipe out previously loaded data.

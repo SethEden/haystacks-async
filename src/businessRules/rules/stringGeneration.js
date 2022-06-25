@@ -45,7 +45,7 @@ async function generateRandomMixedCaseTextByLength(inputData, inputMetaData) {
   if (inputData) {
     let numberOfCharactersToGenerate = parseInt(inputData);
     for (let counter = 1; counter <= numberOfCharactersToGenerate; counter++) {
-      returnData = returnData.concat(ruleParsing.processRulesInternal([inputData, inputMetaData], [biz.crandomlyGenerateMixedCaseAlphabeticCharacter]));
+      returnData = returnData.concat(await ruleParsing.processRulesInternal([inputData, inputMetaData], [biz.crandomlyGenerateMixedCaseAlphabeticCharacter]));
     } // End-for (let counter = 1; counter <= numberOfCharactersToGenerate; counter++)
   } // End-if (inputData)
   loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
@@ -74,7 +74,7 @@ async function generateRandomUpperCaseTextByLength(inputData, inputMetaData) {
   if (inputData) {
     let numberOfCharactersToGenerate = parseInt(inputData);
     for (let counter = 1; counter <= numberOfCharactersToGenerate; counter++) {
-      returnData = returnData.concat(ruleParsing.processRulesInternal([inputData, inputMetaData], [biz.crandomlyGenerateUpperCaseLetter]));
+      returnData = returnData.concat(await ruleParsing.processRulesInternal([inputData, inputMetaData], [biz.crandomlyGenerateUpperCaseLetter]));
     } // End-for (let counter = 1; counter <= numberOfCharactersToGenerate; counter++)
   } // End-if (inputData)
   loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
@@ -103,7 +103,7 @@ async function generateRandomLowerCaseTextByLength(inputData, inputMetaData) {
   if (inputData) {
     let numberOfCharactersToGenerate = parseInt(inputData);
     for (let counter = 1; counter <= numberOfCharactersToGenerate; counter++) {
-      returnData = returnData.concat(ruleParsing.processRulesInternal([inputData, inputMetaData], [biz.crandomlyGenerateLowerCaseLetter]));
+      returnData = returnData.concat(await ruleParsing.processRulesInternal([inputData, inputMetaData], [biz.crandomlyGenerateLowerCaseLetter]));
     } // End-for (let counter = 1; counter <= numberOfCharactersToGenerate; counter++)
   } // End-if (inputData)
   loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
@@ -132,7 +132,7 @@ async function generateRandomMixedCaseTextWithSpecialCharactersByLength(inputDat
   if (inputData) {
     let numberOfCharactersToGenerate = parseInt(inputData);
     for (let counter = 1; counter <= numberOfCharactersToGenerate; counter++) {
-      returnData = returnData.concat(ruleParsing.processRulesInternal([inputMetaData, ''], [biz.crandomlyGenerateMixedCaseLetterOrSpecialCharacter]));
+      returnData = returnData.concat(await ruleParsing.processRulesInternal([inputMetaData, ''], [biz.crandomlyGenerateMixedCaseLetterOrSpecialCharacter]));
     } // End-for (let counter = 1; counter <= numberOfCharactersToGenerate; counter++)
   } // End-if (inputData)
   loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
@@ -159,7 +159,7 @@ async function generateRandomUpperCaseTextWithSpecialCharactersByLength(inputDat
   if (inputData) {
     let numberOfCharactersToGenerate = parseInt(inputData);
     for (let counter = 1; counter <= numberOfCharactersToGenerate; counter++) {
-      returnData = returnData.concat(ruleParsing.processRulesInternal([inputMetaData, ''], [biz.crandomlyGenerateUpperCaseLetterOrSpecialCharacter]));
+      returnData = returnData.concat(await ruleParsing.processRulesInternal([inputMetaData, ''], [biz.crandomlyGenerateUpperCaseLetterOrSpecialCharacter]));
     } // End-for (let counter = 1; counter <= numberOfCharactersToGenerate; counter++)
   } // End-if (inputData)
   loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
@@ -189,7 +189,7 @@ async function generateRandomLowerCaseTextWithSpecialCharactersByLength(inputDat
   if (inputData) {
     let numberOfCharactersToGenerate = parseInt(inputData);
     for (let counter = 1; counter <= numberOfCharactersToGenerate; counter++) {
-      returnData = returnData.concat(ruleParsing.processRulesInternal([inputMetaData, ''], [biz.crandomlyGenerateLowerCaseLetterOrSpecialCharacter]));
+      returnData = returnData.concat(await ruleParsing.processRulesInternal([inputMetaData, ''], [biz.crandomlyGenerateLowerCaseLetterOrSpecialCharacter]));
     } // End-for (let counter = 1; counter <= numberOfCharactersToGenerate; counter++)
   } // End-if (inputData)
   loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
@@ -218,7 +218,7 @@ async function generateRandomMixedCaseAlphaNumericCodeByLength(inputData, inputM
   if (inputData) {
     let numberOfCharactersToGenerate = parseInt(inputData);
     for (let counter = 1; counter <= numberOfCharactersToGenerate; counter++) {
-      returnData = returnData.concat(ruleParsing.processRulesInternal(['', ''], [biz.crandomlyGenerateMixedCaseAlphaNumericCharacter]));
+      returnData = returnData.concat(await ruleParsing.processRulesInternal(['', ''], [biz.crandomlyGenerateMixedCaseAlphaNumericCharacter]));
     } // End-for (let counter = 1; counter <= numberOfCharactersToGenerate; counter++)
   } // End-if (inputData)
   loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
@@ -247,7 +247,7 @@ async function generateRandomUpperCaseAlphaNumericCodeByLength(inputData, inputM
   if (inputData) {
     let numberOfCharactersToGenerate = parseInt(inputData);
     for (let counter = 1; counter <= numberOfCharactersToGenerate; counter++) {
-      returnData = returnData.concat(ruleParsing.processRulesInternal(['', ''], [biz.crandomlyGenerateUpperCaseAlphaNumericCharacter]));
+      returnData = returnData.concat(await ruleParsing.processRulesInternal(['', ''], [biz.crandomlyGenerateUpperCaseAlphaNumericCharacter]));
     } // End-for (let counter = 1; counter <= numberOfCharactersToGenerate; counter++)
   } // End-if (inputData)
   loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
@@ -276,7 +276,7 @@ async function generateRandomLowerCaseAlphaNumericCodeByLength(inputData, inputM
   if (inputData) {
     let numberOfCharactersToGenerate = parseInt(inputData);
     for (let counter = 1; counter <= numberOfCharactersToGenerate; counter++) {
-      returnData = returnData.concat(ruleParsing.processRulesInternal(['', ''], [biz.crandomlyGenerateLowerCaseAlphaNumericCharacter]));
+      returnData = returnData.concat(await ruleParsing.processRulesInternal(['', ''], [biz.crandomlyGenerateLowerCaseAlphaNumericCharacter]));
     } // End-for (let counter = 1; counter <= numberOfCharactersToGenerate; counter++)
   } // End-if (inputData)
   loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
@@ -303,7 +303,7 @@ async function generateRandomNumericCodeByLength(inputData, inputMetaData) {
   if (inputData) {
     let numberOfCharactersToGenerate = parseInt(inputData);
     for (let counter = 1; counter <= numberOfCharactersToGenerate; counter++) {
-      returnData = returnData.concat(ruleParsing.processRulesInternal(['', ''], [biz.crandomlyGenerateNumericCharacter]));
+      returnData = returnData.concat(await ruleParsing.processRulesInternal(['', ''], [biz.crandomlyGenerateNumericCharacter]));
     } // End-for (let counter = 1; counter <= numberOfCharactersToGenerate; counter++)
   } // End-if (inputData)
   loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
@@ -333,7 +333,7 @@ async function generateRandomMixedCaseAlphaNumericCodeWithSpecialCharactersByLen
   if (inputData) {
     let numberOfCharactersToGenerate = parseInt(inputData);
     for (let counter = 1; counter <= numberOfCharactersToGenerate; counter++) {
-      returnData = returnData.concat(ruleParsing.processRulesInternal([inputMetaData, ''], [biz.crandomlyGenerateEitherMixedCaseLetterOrNumberOrSpecialCharacter]));
+      returnData = returnData.concat(await ruleParsing.processRulesInternal([inputMetaData, ''], [biz.crandomlyGenerateEitherMixedCaseLetterOrNumberOrSpecialCharacter]));
     } // End-for (let counter = 1; counter <= numberOfCharactersToGenerate; counter++)
   } // End-if (inputData)
   loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
@@ -363,7 +363,7 @@ async function generateRandomUpperCaseAlphaNumericCodeWithSpecialCharactersByLen
   if (inputData) {
     let numberOfCharactersToGenerate = parseInt(inputData);
     for (let counter = 1; counter <= numberOfCharactersToGenerate; counter++) {
-      returnData = returnData.concat(ruleParsing.processRulesInternal([inputMetaData, ''], [biz.crandomlyGenerateEitherUpperCaseLetterOrNumberOrSpecialCharacter]));
+      returnData = returnData.concat(await ruleParsing.processRulesInternal([inputMetaData, ''], [biz.crandomlyGenerateEitherUpperCaseLetterOrNumberOrSpecialCharacter]));
     } // End-for (let counter = 1; counter <= numberOfCharactersToGenerate; counter++)
   } // End-if (inputData)
   loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
@@ -393,7 +393,7 @@ async function generateRandomLowerCaseAlphaNumericCodeWithSpecialCharactersByLen
   if (inputData) {
     let numberOfCharactersToGenerate = parseInt(inputData);
     for (let counter = 1; counter <= numberOfCharactersToGenerate; counter++) {
-      returnData = returnData.concat(ruleParsing.processRulesInternal([inputMetaData, ''], [biz.crandomlyGenerateEitherLowerCaseLetterOrNumberOrSpecialCharacter]));
+      returnData = returnData.concat(await ruleParsing.processRulesInternal([inputMetaData, ''], [biz.crandomlyGenerateEitherLowerCaseLetterOrNumberOrSpecialCharacter]));
     } // End-for (let counter = 1; counter <= numberOfCharactersToGenerate; counter++)
   } // End-if (inputData)
   loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
@@ -421,7 +421,7 @@ async function generateRandomSpecialCharacterCodeByLength(inputData, inputMetaDa
   if (inputData) {
     let numberOfCharactersToGenerate = parseInt(inputData);
     for (let counter = 1; counter <= numberOfCharactersToGenerate; counter++) {
-      returnData = returnData.concat(ruleParsing.processRulesInternal([inputMetaData, ''], [biz.crandomlyGenerateSpecialCharacter]));
+      returnData = returnData.concat(await ruleParsing.processRulesInternal([inputMetaData, ''], [biz.crandomlyGenerateSpecialCharacter]));
     } // End-for (let counter = 1; counter <= numberOfCharactersToGenerate; counter++)
   } // End-if (inputData)
   loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
@@ -459,7 +459,7 @@ async function generateValidEmail(inputData, inputMetaData) {
   let specifiedSuffixAndDomain;
   if (!!inputMetaData && inputMetaData !== 'undefined' && inputMetaData !== '') {
     if (inputMetaData.length === 3) {
-      generateSpecialCharacters = ruleParsing.processRulesInternal([inputMetaData[0], ''], [biz.cstringToBoolean]);
+      generateSpecialCharacters = await ruleParsing.processRulesInternal([inputMetaData[0], ''], [biz.cstringToBoolean]);
       allowableSpecialCharacters = inputMetaData[1];
       specifiedSuffixAndDomain = inputMetaData[2];
       // NOTE: The above function stringParsingUtilities.stringToBoolean will default to False if the input is an empty or undefined string.
@@ -470,7 +470,7 @@ async function generateValidEmail(inputData, inputMetaData) {
       returnData = generateValidEmailWithSpecificSuffixAndDomainName(inputData, generateSpecialCharacters,
         allowableSpecialCharacters, specifiedSuffixAndDomain);
     } else if (inputMetaData.length <= 2) {
-      generateSpecialCharacters = ruleParsing.processRulesInternal([inputMetaData[0], ''], [biz.cstringToBoolean]);
+      generateSpecialCharacters = await ruleParsing.processRulesInternal([inputMetaData[0], ''], [biz.cstringToBoolean]);
       allowableSpecialCharacters = inputMetaData[1];
       // NOTE: The above function stringParsingUtilities.stringToBoolean will default to False if the input is an empty or undefined string.
       // We want to flip it back to True but only if some special characters are passed in.
@@ -519,7 +519,7 @@ async function generateInvalidEmail(inputData, inputMetaData) {
   let specifiedSuffixAndDomain;
   if (!!inputMetaData && inputMetaData !== 'undefined' && inputMetaData !== '') {
     if (inputMetaData.length === 3) {
-      generateSpecialCharacters = ruleParsing.processRulesInternal([inputMetaData[0], ''], [biz.cstringToBoolean]);
+      generateSpecialCharacters = await ruleParsing.processRulesInternal([inputMetaData[0], ''], [biz.cstringToBoolean]);
       allowableSpecialCharacters = inputMetaData[1];
       specifiedSuffixAndDomain = inputMetaData[2];
       // @NOTE The above function stringParsingUtilities.stringToBoolean will default to False if the input is an empty or undefined string.
@@ -530,7 +530,7 @@ async function generateInvalidEmail(inputData, inputMetaData) {
       returnData = generateInvalidEmailWithSpecificSuffixAndDomainName(inputData, generateSpecialCharacters,
         allowableSpecialCharacters, specifiedSuffixAndDomain);
     } else if (inputMetaData.length <= 2) {
-      generateSpecialCharacters = ruleParsing.processRulesInternal([inputMetaData[0], ''], [biz.cstringToBoolean]);
+      generateSpecialCharacters = await ruleParsing.processRulesInternal([inputMetaData[0], ''], [biz.cstringToBoolean]);
       allowableSpecialCharacters = inputMetaData[1];
       // @NOTE The above function stringParsingUtilities.stringToBoolean will default to False if the input is an empty or undefined string.
       // We want to flip it back to True but ony if some special characters are passed in.
@@ -647,7 +647,7 @@ async function generateRandomValidEmail(numberOfCharactersToGenerate, generateSp
       // Randomly determine if we should generate a 2-character or 3-character domain name. We can do either one,
       // but we need to decide now so we can get it done and be fair.
       // (That is generate 2-character domains roughly equal to the times we generate a 3-character domain.)
-      if (ruleParsing.processRulesInternal(['', ''], [biz.crandomlyGenerateBooleanValue]) === true) { // Stick with a 2-character domain name.
+      if (await ruleParsing.processRulesInternal(['', ''], [biz.crandomlyGenerateBooleanValue]) === true) { // Stick with a 2-character domain name.
         if (generateSpecialCharacters === false) {
           domainName = generateRandomMixedCaseTextByLength(num.c2, '');
         } else {
@@ -734,7 +734,7 @@ async function generateInvalidEmailWithSpecificSuffixAndDomainName(numberOfChara
   let numberOfPrefixCharacters = 0;
   let failureMode = -1;
   // NOTE: Cannot have a "." as part of a variable name in a {set}.
-  failureMode = ruleParsing.processRulesInternal([num.c1, [num.c3, gen.cTrue, gen.cTrue]], [biz.crandomlyGenerateNumberInRange]);
+  failureMode = await ruleParsing.processRulesInternal([num.c1, [num.c3, gen.cTrue, gen.cTrue]], [biz.crandomlyGenerateNumberInRange]);
   // failureMode is:
   loggers.consoleLog(namespacePrefix + functionName, msg.cfailureModeIs + failureMode);
   // ************************************************************
@@ -839,7 +839,7 @@ async function generateRandomInvalidEmail(numberOfCharactersToGenerate, generate
   let numberOfDomainNameCharacters = 0;
   let failureMode = -1;
   // NOTE Cannot have a "." as part of a variable name in a {set}.
-  failureMode = ruleParsing.processRulesInternal([num.c1, [num.c28 + gen.cTrue, gen.cTrue]], [biz.crandomlyGenerateNumberInRange]);
+  failureMode = await ruleParsing.processRulesInternal([num.c1, [num.c28 + gen.cTrue, gen.cTrue]], [biz.crandomlyGenerateNumberInRange]);
   failureMode = parseInt(failureMode);
   // failureMode is:
   loggers.consoleLog(namespacePrefix + functionName, msg.cfailureModeIs + failureMode);
@@ -916,7 +916,7 @@ async function generateRandomInvalidEmail(numberOfCharactersToGenerate, generate
         // Randomly determine if we should generate a 2-character or 3-character domain name. We can do either one,
         // but we need to decide now so we can get it done and be fair.
         // (That is generate 2-character domains roughly equal to the times we generate a 3-character domain.)
-        if (ruleParsing.processRulesInternal(['', ''], [biz.crandomlyGenerateBooleanValue]) === true) { // Stick with a 2-character domain name.
+        if (await ruleParsing.processRulesInternal(['', ''], [biz.crandomlyGenerateBooleanValue]) === true) { // Stick with a 2-character domain name.
           if (generateSpecialCharacters === false) {
             domainName = generateRandomMixedCaseTextByLength(num.c2, '');
           } else {
@@ -1142,11 +1142,11 @@ async function generateRandomBrightColor(inputData, inputMetaData) {
   let parsedColorRangeArray = [];
   if (inputData && inputMetaData && inputData !== '' && inputMetaData !== '') {
     // Try to parse them as numbers for the range.
-    parsedColorRangeArray = ruleParsing.processRulesInternal([inputData, inputMetaData], [biz.cparseColorRangeInputs]);
+    parsedColorRangeArray = await ruleParsing.processRulesInternal([inputData, inputMetaData], [biz.cparseColorRangeInputs]);
     minimumColorRange = parsedColorRangeArray[0];
     maximumColorRange = parsedColorRangeArray[1];
   } // End-if (inputData && inputMetaData && inputData !== '' && inputMetaData !== '')
-  returnData = generateRandomColor(minimumColorRange, maximumColorRange);
+  returnData = await generateRandomColor(minimumColorRange, maximumColorRange);
   loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
@@ -1176,11 +1176,11 @@ async function generateRandomDarkColor(inputData, inputMetaData) {
   let parsedColorRangeArray = [];
   if (inputData && inputMetaData && inputData !== '' && inputMetaData !== '') {
     // Try to parse them as numbers for the range.
-    parsedColorRangeArray = ruleParsing.processRulesInternal([inputData, inputMetaData], [biz.cparseColorRangeInputs]);
+    parsedColorRangeArray = await ruleParsing.processRulesInternal([inputData, inputMetaData], [biz.cparseColorRangeInputs]);
     minimumColorRange = parsedColorRangeArray[0];
     maximumColorRange = parsedColorRangeArray[1];
   } // End-if (inputData && inputMetaData && inputData !== '' && inputMetaData !== '')
-  returnData = generateRandomColor(minimumColorRange, maximumColorRange);
+  returnData = await generateRandomColor(minimumColorRange, maximumColorRange);
   loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
@@ -1206,7 +1206,7 @@ async function generateRandomColor(inputData, inputMetaData) {
   let parsedColorRangeArray = [];
   if (inputData && inputMetaData && inputData !== '' && inputMetaData !== '') {
     // Try to parse them as numbers for the range.
-    parsedColorRangeArray = ruleParsing.processRulesInternal([inputData, inputMetaData], [biz.cparseColorRangeInputs]);
+    parsedColorRangeArray = await ruleParsing.processRulesInternal([inputData, inputMetaData], [biz.cparseColorRangeInputs]);
     minimumColorRange = parsedColorRangeArray[0];
     maximumColorRange = parsedColorRangeArray[1];
   } // End-if (inputData && inputMetaData && inputData !== '' && inputMetaData !== '')
@@ -1214,9 +1214,9 @@ async function generateRandomColor(inputData, inputMetaData) {
   loggers.consoleLog(namespacePrefix + functionName, msg.cminimumColorRangeIs + minimumColorRange);
   // maximumColorRange is:
   loggers.consoleLog(namespacePrefix + functionName, msg.cmaximumColorRangeIs + maximumColorRange);
-  returnData[0] = ruleParsing.processRulesInternal([minimumColorRange.toString(), [maximumColorRange.toString(), gen.ctrue, gen.ctrue]], [biz.crandomlyGenerateNumberInRange]); // Red
-  returnData[1] = ruleParsing.processRulesInternal([minimumColorRange.toString(), [maximumColorRange.toString(), gen.ctrue, gen.ctrue]], [biz.crandomlyGenerateNumberInRange]); // Green
-  returnData[2] = ruleParsing.processRulesInternal([minimumColorRange.toString(), [maximumColorRange.toString(), gen.ctrue, gen.ctrue]], [biz.crandomlyGenerateNumberInRange]); // Blue
+  returnData[0] = await ruleParsing.processRulesInternal([minimumColorRange.toString(), [maximumColorRange.toString(), gen.ctrue, gen.ctrue]], [biz.crandomlyGenerateNumberInRange]); // Red
+  returnData[1] = await ruleParsing.processRulesInternal([minimumColorRange.toString(), [maximumColorRange.toString(), gen.ctrue, gen.ctrue]], [biz.crandomlyGenerateNumberInRange]); // Green
+  returnData[2] = await ruleParsing.processRulesInternal([minimumColorRange.toString(), [maximumColorRange.toString(), gen.ctrue, gen.ctrue]], [biz.crandomlyGenerateNumberInRange]); // Blue
   loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;

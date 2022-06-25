@@ -197,7 +197,7 @@ async function readDirectoryContents(inputData, inputMetaData) {
   // Make sure to resolve the path on the local system,
   // just in case there are issues with the OS that the code is running on.
   let directory = path.resolve(inputData);
-  readDirectorySynchronously(directory);
+  await readDirectorySynchronously(directory);
   returnData = filesCollection; // Copy the data into a local variable first.
   filesCollection = undefined; // Make sure to clear it so we don't have a chance of it corrupting any other file operations.
   filesCollection = [];
@@ -238,7 +238,7 @@ async function scanDirectoryContents(inputData, inputMetaData) {
   let directory = path.resolve(inputData);
   enableFilesListLimit = enableLimit;
   filesListLimit = filesLimit;
-  readDirectorySynchronously(directory, '');
+  await readDirectorySynchronously(directory, '');
   filesFound = filesCollection; // Copy the data into a local variable first.
   filesCollection = undefined; // Make sure to clear it so we don't have a chance of it corrupting any other file operations.
   filesCollection = [];
@@ -394,9 +394,9 @@ async function buildReleasePackage(inputData, inputMetaData) {
   let destinationFolder = '';
   let releaseFiles = [];
   let releasedArchiveFiles = [];
-  let rootPath = configurator.getConfigurationSetting(wrd.csystem, sys.cApplicationCleanedRootPath);
-  let currentVersion = configurator.getConfigurationSetting(wrd.csystem, sys.cApplicationVersionNumber);
-  let applicationName = configurator.getConfigurationSetting(wrd.csystem, sys.cApplicationName);
+  let rootPath = await configurator.getConfigurationSetting(wrd.csystem, sys.cApplicationCleanedRootPath);
+  let currentVersion = await configurator.getConfigurationSetting(wrd.csystem, sys.cApplicationVersionNumber);
+  let applicationName = await configurator.getConfigurationSetting(wrd.csystem, sys.cApplicationName);
   let currentVersionReleased = false;
   let releaseDateTimeStamp;
   let originalSource;
@@ -406,8 +406,8 @@ async function buildReleasePackage(inputData, inputMetaData) {
   originalSource = bas.cDot + inputData;
   sourceFolder = path.resolve(rootPath + inputData);
   destinationFolder = path.resolve(rootPath + inputMetaData);
-  releaseFiles = readDirectoryContents(sourceFolder);
-  releasedArchiveFiles = readDirectoryContents(destinationFolder);
+  releaseFiles = await readDirectoryContents(sourceFolder);
+  releasedArchiveFiles = await readDirectoryContents(destinationFolder);
   // released archive files list is:
   loggers.consoleLog(namespacePrefix + functionName, msg.creleasedArchiveFilesListIs + JSON.stringify(releasedArchiveFiles));
   // Check if the current version number has already been released as a zip file in the release folder.
@@ -416,8 +416,8 @@ async function buildReleasePackage(inputData, inputMetaData) {
     // file is:
     loggers.consoleLog(namespacePrefix + functionName, msg.cfileIs + releasedArchiveFiles[i]);
     let pathAndFileName = releasedArchiveFiles[i];
-    let fileName = ruleParsing.processRulesInternal([pathAndFileName, ''], [biz.cgetFileNameFromPath]);
-    fileName = ruleParsing.processRulesInternal([fileName, ''], [biz.cremoveFileExtensionFromFileName]);
+    let fileName = await ruleParsing.processRulesInternal([pathAndFileName, ''], [biz.cgetFileNameFromPath]);
+    fileName = await ruleParsing.processRulesInternal([fileName, ''], [biz.cremoveFileExtensionFromFileName]);
     // fileName is:
     loggers.consoleLog(namespacePrefix + functionName, msg.cfileNameIs + fileName);
     if (fileName.includes(currentVersion) === true) {
@@ -427,7 +427,7 @@ async function buildReleasePackage(inputData, inputMetaData) {
   if (currentVersionReleased === false) {
     // release files list is:
     loggers.consoleLog(namespacePrefix + functionName, msg.creleaseFilesListIs + JSON.stringify(releaseFiles));
-    releaseDateTimeStamp = ruleParsing.processRulesInternal([configurator.getConfigurationSetting(wrd.csystem, cfg.cdateTimeStamp), ''], [biz.cgetNowMoment]);
+    releaseDateTimeStamp = await ruleParsing.processRulesInternal([await configurator.getConfigurationSetting(wrd.csystem, cfg.cdateTimeStamp), ''], [biz.cgetNowMoment]);
     // release date-time stamp is:
     loggers.consoleLog(namespacePrefix + functionName, msg.creleaseDateTimeStampIs + releaseDateTimeStamp);
     let releaseFileName = releaseDateTimeStamp + bas.cUnderscore + currentVersion + bas.cUnderscore + applicationName;
@@ -510,10 +510,10 @@ async function cleanRootPath(inputData, inputMetaData) {
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = '';
-  returnData = configurator.getConfigurationSetting(wrd.csystem, sys.cApplicationRootPath);
+  returnData = await configurator.getConfigurationSetting(wrd.csystem, sys.cApplicationRootPath);
   // RootPath before processing is:
   loggers.consoleLog(namespacePrefix + functionName, msg.cRootPathBeforeProcessingIs + returnData);
-  returnData = ruleParsing.processRulesInternal([returnData, 3], [biz.cremoveXnumberOfFoldersFromEndOfPath]);
+  returnData = await ruleParsing.processRulesInternal([returnData, 3], [biz.cremoveXnumberOfFoldersFromEndOfPath]);
   console.log(msg.creturnDataIs + returnData);
   // console.log(`END ${namespacePrefix}${functionName} function`);
   return returnData;

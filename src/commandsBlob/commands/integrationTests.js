@@ -49,7 +49,7 @@ async function validateConstants(inputData, inputMetaData) {
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = [true, false];
-  if (configurator.getConfigurationSetting(wrd.csystem, cfg.cenableConstantsValidation) === true) {
+  if (await configurator.getConfigurationSetting(wrd.csystem, cfg.cenableConstantsValidation) === true) {
     // Get the array of keys and values for all the constants that need to be validated.
     let validationArray = D[sys.cConstantsValidationData][sys.cConstantsFilePaths]; // This will return an object with all of the key-value pair attributes we need.
     let phase1FinalResult = true;
@@ -63,7 +63,7 @@ async function validateConstants(inputData, inputMetaData) {
     // First scan through each file and validate that the constants defined in the constants code file are also contained in the validation file.
     for (let key1 in validationArray) {
       let constantsPath = validationArray[key1];
-      phase1Results[key1] = ruleBroker.processRules([constantsPath, key1], [biz.cvalidateConstantsDataValidation]);
+      phase1Results[key1] = await ruleBroker.processRules([constantsPath, key1], [biz.cvalidateConstantsDataValidation]);
     } // End-for (let key1 in validationArray)
     // END Phase 1 Constants Validation
     loggers.consoleLog(namespacePrefix + functionName, msg.cEndPhase1ConstantsValidation);
@@ -73,7 +73,7 @@ async function validateConstants(inputData, inputMetaData) {
     loggers.consoleLog(namespacePrefix + functionName, msg.cBeginPhase2ConstantsValidation);
     // Now verify that the values of the constants are what they are expected to be by using the constants validation data to validate.
     for (let key2 in validationArray) {
-      phase2Results[key2] = ruleBroker.processRules([key2, ''], [biz.cvalidateConstantsDataValues]);
+      phase2Results[key2] = await ruleBroker.processRules([key2, ''], [biz.cvalidateConstantsDataValues]);
     } // End-for (let key2 in validationArray)
     // END Phase 2 Constants Validation
     loggers.consoleLog(namespacePrefix + functionName, msg.cEndPhase2ConstantsValidation);
@@ -126,11 +126,11 @@ async function validateCommandAliases(inputData, inputMetaData) {
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = [true, false];
-  let allCommandAliases = commandBroker.getAllCommandAliasData(D[sys.cCommandsAliases]);
+  let allCommandAliases = await commandBroker.getAllCommandAliasData(D[sys.cCommandsAliases]);
   let passedAllCommandAliasesDuplicateCheck = true;
   let duplicateAliasCount = 0
-  let blackColorArray = colorizer.getNamedColorData(clr.cBlack, [0,0,0]);
-  let redColorArray = colorizer.getNamedColorData(clr.cRed, [255,0,0]);
+  let blackColorArray = await colorizer.getNamedColorData(clr.cBlack, [0,0,0]);
+  let redColorArray = await colorizer.getNamedColorData(clr.cRed, [255,0,0]);
   for (let key1 in allCommandAliases[0]) {
     // key1 is:
     loggers.consoleLog(namespacePrefix + functionName, msg.ckey1Is + key1);
@@ -147,7 +147,7 @@ async function validateCommandAliases(inputData, inputMetaData) {
       let currentAlias = arrayOfAliases[j];
       // currentAlias is:
       loggers.consoleLog(namespacePrefix + functionName, msg.ccurrentAliasIs + currentAlias);
-      duplicateAliasCount = commandBroker.countMatchingCommandAlias(D[sys.cCommandsAliases], currentAlias);
+      duplicateAliasCount = await commandBroker.countMatchingCommandAlias(D[sys.cCommandsAliases], currentAlias);
       if (duplicateAliasCount > 1) {
 
         // duplicateAliasCount is:
@@ -198,9 +198,9 @@ async function validateWorkflows(inputData, inputMetaData) {
   let returnData = [true, false];
   let numberOfDuplicatesFound = 0;
   let passedAllWorkflowDuplicateCheck = true;
-  let allWorkflowsData = workflowBroker.getAllWorkflows(D[sys.cCommandWorkflows]);
-  let blackColorArray = colorizer.getNamedColorData(clr.cBlack, [0,0,0]);
-  let redColorArray = colorizer.getNamedColorData(clr.cRed, [255,0,0]);
+  let allWorkflowsData = await workflowBroker.getAllWorkflows(D[sys.cCommandWorkflows]);
+  let blackColorArray = await colorizer.getNamedColorData(clr.cBlack, [0,0,0]);
+  let redColorArray = await colorizer.getNamedColorData(clr.cRed, [255,0,0]);
   // allWorkflowsData is:
   loggers.consoleLog(namespacePrefix + functionName, msg.callWorkflowsDataIs + JSON.stringify(allWorkflowsData));
   for (let workflowKey in allWorkflowsData) {

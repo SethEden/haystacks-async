@@ -34,7 +34,7 @@ import D from '../structures/data.js';
 import hayConst from '@haystacks/constants';
 import path from 'path';
 
-const {bas, cmd, fnc, msg, sys, wrd} = hayConst;
+const {bas, cmd, msg, sys, wrd} = hayConst;
 const baseFileName = path.basename(import.meta.url, path.extname(import.meta.url));
 // commandsBlob.commandsLibrary.
 const namespacePrefix = sys.ccommandsBlob + bas.cDot + baseFileName + bas.cDot;

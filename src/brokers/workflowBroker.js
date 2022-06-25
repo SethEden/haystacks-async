@@ -40,7 +40,7 @@ async function getWorkflow(workflowName) {
   // workflowName is:
   loggers.consoleLog(namespacePrefix + functionName, msg.cworkflowNameIs + workflowName);
   let workflowValue = false;
-  let currentWorkflow = searchWorkflow(D[sys.cCommandWorkflows], workflowName);
+  let currentWorkflow = await searchWorkflow(D[sys.cCommandWorkflows], workflowName);
   loggers.consoleLog(namespacePrefix + functionName, msg.ccurrentWorkflowIs + JSON.stringify(currentWorkflow));
   workflowValue = currentWorkflow;
   // workflowValue is:
@@ -63,7 +63,7 @@ async function doesWorkflowExist(workflowName) {
   // workflowName is:
   loggers.consoleLog(namespacePrefix + functionName, msg.cworkflowNameIs + workflowName);
   let workflowFound = false;
-  let workflowSearchResult = searchWorkflow(D[sys.cCommandWorkflows], workflowName);
+  let workflowSearchResult = await searchWorkflow(D[sys.cCommandWorkflows], workflowName);
   if (workflowSearchResult) {
     workflowFound = true;
   }
@@ -86,7 +86,7 @@ async function doesWorkflowExistInWorkflowData(workflowData, workflowName) {
   // workflowName is:
   loggers.consoleLog(namespacePrefix + functionName, msg.cworkflowNameIs + workflowName);
   let workflowFound = false;
-  let workflowSearchResult = searchWorkflow(workflowData, workflowName);
+  let workflowSearchResult = await searchWorkflow(workflowData, workflowName);
   if (workflowSearchResult) {
     workflowFound = true;
   }
@@ -121,7 +121,7 @@ async function searchWorkflow(workflowData, workflowName) {
       // workflow is:
       loggers.consoleLog(namespacePrefix + functionName, msg.cworkflowIs + JSON.stringify(workflowData[workflowEntity]));
       if (workflowEntity != workflowName || (workflowEntity === workflowName && typeof workflowData[workflowEntity] === wrd.cobject)) {
-        let workflowObjectTemp = searchWorkflow(workflowData[workflowEntity], workflowName);
+        let workflowObjectTemp = await searchWorkflow(workflowData[workflowEntity], workflowName);
         if (workflowObjectTemp && typeof workflowObjectTemp != wrd.cobject) {
           workflowObject = workflowObjectTemp;
           break;
@@ -173,7 +173,7 @@ async function getAllWorkflows(workflowDataStructure) {
         // internalWorkflowDataStructure[workflowEntity] is of type object!
         loggers.consoleLog(namespacePrefix + functionName, msg.cinternalWorkflowDataStructureWorkflowEntityIsOfTypeObject);
         let allWorkflowsTemp;
-        allWorkflowsTemp = getAllWorkflows(internalWorkflowDataStructure[workflowEntity]);
+        allWorkflowsTemp = await getAllWorkflows(internalWorkflowDataStructure[workflowEntity]);
         // allWorkflowsTemp returned from the recursive call is:
         loggers.consoleLog(namespacePrefix + functionName, msg.callWorkflowsTempReturnedFromRecursiveCallIs + JSON.stringify(allWorkflowsTemp));
         if (allWorkflowsTemp === false) {
@@ -232,7 +232,7 @@ async function getWorkflowNamespaceDataObject(workflowDataStructure, namespaceTo
       break;
     } else if (typeof workflowDataStructure[workflowEntity] === wrd.cobject) {
       // Search recursively
-      let workflowTempObject = getWorkflowNamespaceDataObject(workflowDataStructure[workflowEntity], namespaceToFind);
+      let workflowTempObject = await getWorkflowNamespaceDataObject(workflowDataStructure[workflowEntity], namespaceToFind);
       if (workflowTempObject) {
         // Then we must have found the namespace object we were looking for in the recursion call.
         // Just return it, and skip out of the loop.

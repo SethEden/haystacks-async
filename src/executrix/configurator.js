@@ -45,7 +45,7 @@ async function setConfigurationSetting(configurationNamespace, configurationName
   // console.log(`configurationNamespace is: ${configurationNamespace}`);
   // console.log(`configurationName is: ${configurationName}`);
   // console.log(`configurationValue is: ${configurationValue}`);
-  let namespaceConfigObject = getConfigurationNamespaceObject(configurationNamespace.split(bas.cDot));
+  let namespaceConfigObject = await getConfigurationNamespaceObject(configurationNamespace.split(bas.cDot));
   if (namespaceConfigObject) {
     namespaceConfigObject[`${configurationNamespace}.${configurationName}`] = configurationValue;
   }
@@ -70,16 +70,16 @@ async function getConfigurationSetting(configurationNamespace, configurationName
   // console.log(`configurationName is: ${configurationName}`);
   let returnConfigurationValue;
   let namespaceConfigObject = undefined;
-  namespaceConfigObject = getConfigurationNamespaceObject(configurationNamespace.split(bas.cDot));
+  namespaceConfigObject = await getConfigurationNamespaceObject(configurationNamespace.split(bas.cDot));
   if (namespaceConfigObject) {
     if (configurationName) {
       if (configurationName.includes(bas.cAt) && configurationName.indexOf(bas.cAt) === 0) {
-        returnConfigurationValue = getParentConfigurationNamespaceObject(configurationNamespace, configurationName);
+        returnConfigurationValue = await getParentConfigurationNamespaceObject(configurationNamespace, configurationName);
       } else {
         returnConfigurationValue = namespaceConfigObject[configurationNamespace + bas.cDot + configurationName];
       }
     } else {
-      returnConfigurationValue = getParentConfigurationNamespaceObject(configurationNamespace, '');
+      returnConfigurationValue = await getParentConfigurationNamespaceObject(configurationNamespace, '');
     }
   } // End-if (namespaceConfigObject)
   // console.log(`returnConfigurationValue is: ${returnConfigurationValue}`);
@@ -161,7 +161,7 @@ async function processConfigurationValueRules(name, value) {
     case cfg.cdateTimeStamp: case cfg.cdateStamp: case cfg.ctimeStamp:
       // NOTE: All of these three configurations are processed exactly the same way.
       // As long as what is stored in the configuration file is correct, then they should be processed correctly here.
-      returnValue = ruleBroker.processRules([value, ''], [biz.cgetNowMoment]);
+      returnValue = await ruleBroker.processRules([value, ''], [biz.cgetNowMoment]);
       break;
     default: // We don't know what the value is.
       // We have to just return the value as it was passed in, no processing.
@@ -199,7 +199,7 @@ async function getParentConfigurationNamespaceObject(configurationNamespace, opt
   let parentConfigurationNamespaceArray = configurationNamespace.split(bas.cDot);
   let newParentConfigurationName = parentConfigurationNamespaceArray.pop();
   let newParentConfigurationNamespace = parentConfigurationNamespaceArray.join(bas.cDot);
-  let parentNamespaceConfigObject = getConfigurationNamespaceObject(parentConfigurationNamespaceArray);
+  let parentNamespaceConfigObject = await getConfigurationNamespaceObject(parentConfigurationNamespaceArray);
   if (optionalFunctionNameAppendix !== '') {
     returnValue = parentNamespaceConfigObject[newParentConfigurationNamespace + bas.cDot + newParentConfigurationName + optionalFunctionNameAppendix];
   } else {

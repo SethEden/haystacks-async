@@ -44,7 +44,7 @@ async function getAttributeName(inputData, inputMetaData) {
     loggers.consoleLog(namespacePrefix + functionName, msg.cattributeArrayIs + JSON.stringify(attributeArray));
     // attributeArray[0] is:
     loggers.consoleLog(namespacePrefix + functionName, msg.cattributeArray0Is + attributeArray[0]);
-    returnData = ruleParsing.processRulesInternal([attributeArray[0], [/"/g, '']], [biz.creplaceCharacterWithCharacter]);
+    returnData = await ruleParsing.processRulesInternal([attributeArray[0], [/"/g, '']], [biz.creplaceCharacterWithCharacter]);
     returnData = returnData.trim();
   } // End-if (inputData)
   loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
@@ -73,7 +73,7 @@ async function getAttributeValue(inputData, inputMetaData) {
     loggers.consoleLog(namespacePrefix + functionName, msg.cattributeArrayIs + attributeArray);
     // attributeArray[0] is:
     loggers.consoleLog(namespacePrefix + functionName, msg.cattributeArray1Is + attributeArray[1]);
-    returnData = ruleParsing.processRulesInternal([attributeArray[1], [/"/g, '']], [biz.creplaceCharacterWithCharacter]);
+    returnData = await ruleParsing.processRulesInternal([attributeArray[1], [/"/g, '']], [biz.creplaceCharacterWithCharacter]);
     returnData = returnData.trim();
   } // End-if (inputData)
   loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
@@ -210,24 +210,24 @@ async function loadDataFile(inputData, inputMetaData) {
     if (inputData.includes(gen.cDotxml) || inputData.includes(gen.cDotXml) || inputData.includes(gen.cDotXML)) {
       // Attempting to load XML data!
       loggers.consoleLog(namespacePrefix + functionName, msg.cAttemptingToLoadXmlData);
-      loadedData = ruleParsing.processRulesInternal([inputData, ''], [biz.cgetXmlData]);
+      loadedData = await ruleParsing.processRulesInternal([inputData, ''], [biz.cgetXmlData]);
     } else if (inputData.includes(gen.cDotcsv) || inputData.includes(gen.cDotCsv) || inputData.includes(gen.cDotCSV)) {
       // Attempting to load CSV data!
       loggers.consoleLog(namespacePrefix + functionName, msg.cAttemptingToLoadCsvData);
-      loadedData = ruleParsing.processRulesInternal([inputData, ''], [biz.cgetCsvData]);
+      loadedData = await ruleParsing.processRulesInternal([inputData, ''], [biz.cgetCsvData]);
     } else if (inputData.includes(gen.cDotjson) || inputData.includes(gen.cDotJson) || inputData.includes(gen.cDotJSON)) {
       // Attempting to load JSON data!
       loggers.consoleLog(namespacePrefix + functionName, msg.cAttemptingToLoadJsonData);
-      loadedData = ruleParsing.processRulesInternal([inputData, ''], [biz.cgetJsonData]);
+      loadedData = await ruleParsing.processRulesInternal([inputData, ''], [biz.cgetJsonData]);
     } else {
       // WARNING: Invalid file format, file formats supported are:
-      loggers.consoleLog(namespacePrefix + functionName, msg.cloadedDataFileMessage3 + ruleParsing.processRulesInternal(['', ''], [biz.csupportedFileFormatsAre]));
+      loggers.consoleLog(namespacePrefix + functionName, msg.cloadedDataFileMessage3 + await ruleParsing.processRulesInternal(['', ''], [biz.csupportedFileFormatsAre]));
     }
     // Loaded data is:
     loggers.consoleLog(namespacePrefix + functionName, msg.cLoadedDataIs + JSON.stringify(loadedData));
     returnData = loadedData;
     if (loadedData !== null && loadedData && inputMetaData) {
-      ruleParsing.processRulesInternal([inputMetaData, loadedData], [biz.cstoreData]);
+      await ruleParsing.processRulesInternal([inputMetaData, loadedData], [biz.cstoreData]);
     }
   } // End-else-clause if (!inputData)
   loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
@@ -254,7 +254,7 @@ async function saveDataFile(inputData, inputMetaData) {
     // WARNING: No data to save, please specify a valid path & filename!
     loggers.consoleLog(namespacePrefix + functionName, msg.csaveDataFileMessage1 + msg.cloadDataFileMessage2);
   } else {
-    let supportedFileFormats = ruleParsing.processRulesInternal(['', ''], [biz.csupportedFileFormatsAre]);
+    let supportedFileFormats = await ruleParsing.processRulesInternal(['', ''], [biz.csupportedFileFormatsAre]);
     if (inputData.includes(gen.cDotxml) || inputData.includes(gen.cDotXml) || inputData.includes(gen.cDotXML)) {
       // WARNING: Invalid file format, file formats supported are:
       loggers.consoleLog(namespacePrefix + functionName, msg.cloadedDataFileMessage3 + supportedFileFormats);
@@ -262,7 +262,7 @@ async function saveDataFile(inputData, inputMetaData) {
       // WARNING: Invalid file format, file formats supported are:
       loggers.consoleLog(namespacePrefix + functionName, msg.cloadedDataFileMessage3 + supportedFileFormats);
     } else if (inputData.includes(gen.cDotjson) || inputData.includes(gen.cDotJson) || inputData.includes(gen.cDotJSON)) {
-      returnData = ruleParsing.processRulesInternal([inputData, inputMetaData], [biz.cwriteJsonData]); // Should return true if the write is successful.
+      returnData = await ruleParsing.processRulesInternal([inputData, inputMetaData], [biz.cwriteJsonData]); // Should return true if the write is successful.
     } else {
       // WARNING: Invalid file format, file formats supported are:
       loggers.consoleLog(namespacePrefix + functionName, msg.cloadedDataFileMessage3 + supportedFileFormats);

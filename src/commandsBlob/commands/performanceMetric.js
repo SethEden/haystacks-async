@@ -48,7 +48,7 @@ async function businessRulesMetrics(inputData, inputMetaData) {
    loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
    loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
    let returnData = [true, []];
-   let businessRuleMetricsEnabled = configurator.getConfigurationSetting(wrd.csystem, cfg.cenableBusinessRulePerformanceMetrics);
+   let businessRuleMetricsEnabled = await configurator.getConfigurationSetting(wrd.csystem, cfg.cenableBusinessRulePerformanceMetrics);
    if (businessRuleMetricsEnabled === true) {
      let businessRuleCounter = 0;
      let businessRulePerformanceSum = 0;
@@ -94,16 +94,16 @@ async function businessRulesMetrics(inputData, inputMetaData) {
        // standardDev is:
        loggers.consoleLog(namespacePrefix + functionName, msg.cstandardDevIs + standardDev);
        if (D[cfg.cbusinessRulesPerformanceAnalysisStack] === undefined) {
-         stack.initStack(cfg.cbusinessRulesPerformanceAnalysisStack);
+        stack.initStack(cfg.cbusinessRulesPerformanceAnalysisStack);
        }
        stack.push(cfg.cbusinessRulesPerformanceAnalysisStack, {Name: currentBusinessRuleName, Average: average, StandardDeviation: standardDev});
      } // End-for (let i = 0; i < stack.length(cfg.cBusinessRulesNamesPerformanceTrackingStack); i++)
      loggers.consoleTableLog('', D[cfg.cbusinessRulesPerformanceAnalysisStack], [wrd.cName, wrd.cAverage, sys.cStandardDeviation]);
-     returnData[1] = ruleBroker.processRules([D[cfg.cbusinessRulesPerformanceAnalysisStack], ''], [biz.carrayDeepClone]);
+     returnData[1] = await ruleBroker.processRules([D[cfg.cbusinessRulesPerformanceAnalysisStack], ''], [biz.carrayDeepClone]);
      stack.clearStack(cfg.cbusinessRulesPerformanceAnalysisStack);
      // We need to have a flag that will enable the user to determine if the data should be cleared after the analysis is complete.
      // It might be that the user wants to do something else with this data in memory after it's done.
-     if (configurator.getConfigurationSetting(wrd.csystem, cfg.cclearBusinessRulesPerformanceDataAfterAnalysis) === true) {
+     if (await configurator.getConfigurationSetting(wrd.csystem, cfg.cclearBusinessRulesPerformanceDataAfterAnalysis) === true) {
        stack.clearStack(cfg.cbusinessRulesPerformanceTrackingStack);
        stack.clearStack(cfg.cbusinessRulesNamesPerformanceTrackingStack);
      } // End-if (configurator.getConfigurationSetting(wrd.csystem, cfg.cclearBusinessRulesPerformanceDataAfterAnalysis) === true)
@@ -129,7 +129,7 @@ async function commandMetrics(inputData, inputMetaData) {
    loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
    loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
    let returnData = [true, []];
-   let commandMetricsEnabled = configurator.getConfigurationSetting(wrd.csystem, cfg.cenableCommandPerformanceMetrics);
+   let commandMetricsEnabled = await configurator.getConfigurationSetting(wrd.csystem, cfg.cenableCommandPerformanceMetrics);
    if (commandMetricsEnabled === true) {
      let commandCounter = 0;
      let commandPerformanceSum = 0;
@@ -180,11 +180,11 @@ async function commandMetrics(inputData, inputMetaData) {
        stack.push(cfg.ccommandsPerformanceAnalysisStack, {Name: currentCommandName, Average: average, StandardDeviation: standardDev});
      } // End-for (let i = 0; i < stack.length(cfg.ccommandNamesPerformanceTrackingStack); i++)
      loggers.consoleTableLog('', D[cfg.ccommandsPerformanceAnalysisStack], [wrd.cName, wrd.cAverage, sys.cStandardDeviation]);
-     returnData[1] = ruleBroker.processRules([D[cfg.ccommandsPerformanceAnalysisStack], ''], [biz.carrayDeepClone]);
+     returnData[1] = await ruleBroker.processRules([D[cfg.ccommandsPerformanceAnalysisStack], ''], [biz.carrayDeepClone]);
      stack.clearStack(cfg.ccommandsPerformanceAnalysisStack);
      // We need to have a flag that will enable the user to determine if the data should be cleared after the analysis is complete.
      // It might be that the user wants to do something else with this data in memory after it's done.
-     if (configurator.getConfigurationSetting(wrd.csystem, cfg.cclearCommandPerformanceDataAfterAnalysis) === true) {
+     if (await configurator.getConfigurationSetting(wrd.csystem, cfg.cclearCommandPerformanceDataAfterAnalysis) === true) {
        stack.clearStack(cfg.ccommandsPerformanceTrackingStack);
        stack.clearStack(cfg.ccommandNamesPerformanceTrackingStack);
      } // End-if (configurator.getConfigurationSetting(wrd.csystem, cfg.cclearCommandPerformanceDataAfterAnalysis) === true)

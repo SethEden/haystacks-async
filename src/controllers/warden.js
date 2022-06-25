@@ -368,7 +368,7 @@ async function processCommandQueue() {
   let functionName = processCommandQueue.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   let returnData = false;
-  returnData = chiefCommander.processCommandQueue();
+  returnData = await chiefCommander.processCommandQueue();
   loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
   loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;

@@ -72,7 +72,7 @@ async function searchForPatternsInStringArray(inputData, inputMetaData) {
   let returnData = false;
   if (inputData && inputData.length > 0) {
     returnData = []; // Reset it to an empty array, the input data has something n it so we should be able to process it.
-    let maxStringLength = getLengthOfLongestStringInArray(inputData, '') - 1;
+    let maxStringLength = await getLengthOfLongestStringInArray(inputData, '') - 1;
     // maxStringLength is:
     loggers.consoleLog(namespacePrefix + functionName, msg.cmaxStringLengthIs + maxStringLength);
     let minStringLength = 3;
@@ -127,7 +127,7 @@ async function searchForPatternsInStringArray(inputData, inputMetaData) {
                     // loggers.consoleLog(namespacePrefix + functionName, 'FOUND A MATCH!!!! ' + stringToCompare);
                     // console.log('FOUND A MATCH!!!! ' + stringToCompare);
                     // Here we have found a match among brothers. We need to see if this stringToCompare has already been added to the returnData array.
-                    if (ruleParsing.processRulesInternal([[returnData, stringToCompare], ruleParsing.getRule(biz.cascertainMatchingElements)], [biz.cdoesArrayContainValue]) === false) {
+                    if (await ruleParsing.processRulesInternal([[returnData, stringToCompare], ruleParsing.getRule(biz.cascertainMatchingElements)], [biz.cdoesArrayContainValue]) === false) {
                       returnData.push(stringToCompare);
                     } // End-if (ruleParsing.processRulesInternal([[returnData, stringToCompare], ruleParsing.getRule(biz.cascertainMatchingElements)], [biz.cdoesArrayContainValue]) === false)
                   } // End-if (otherStringToCompare.includes(stringToCompare))
@@ -167,11 +167,11 @@ async function validatePatternsThatNeedImplementation(inputData, inputMetaData) 
   let returnData = '';
   if (inputData) {
     let passMessage = '';
-    let colorizeLogsEnabled = configurator.getConfigurationSetting(wrd.csystem, cfg.cenableColorizedConsoleLogs);
+    let colorizeLogsEnabled = await configurator.getConfigurationSetting(wrd.csystem, cfg.cenableColorizedConsoleLogs);
     let j = 0; // We will use this as an iterator to count the number of times we add a string to the returnData coma-seperated list.
     for (const element of inputData) {
       let currentString = element;
-      if (ruleParsing.processRulesInternal([currentString, ''], [biz.cdoesConstantExist]) === false) {
+      if (await ruleParsing.processRulesInternal([currentString, ''], [biz.cdoesConstantExist]) === false) {
         // Constant does NOT exist:
         passMessage = msg.cConstantDoesNotExist + currentString;
         if (colorizeLogsEnabled === true) {

@@ -111,14 +111,14 @@ async function version(inputData, inputMetaData) {
   if (inputData.length === 2) {
      appContext = inputData[1];
      if (appContext.toUpperCase() === wrd.cAPPLICATION) {
-        configVersion = configurator.getConfigurationSetting(wrd.csystem, sys.cApplicationVersionNumber);
+        configVersion = await configurator.getConfigurationSetting(wrd.csystem, sys.cApplicationVersionNumber);
      } else if (appContext.toUpperCase() === wrd.cFRAMEWORK) {
-        configVersion = configurator.getConfigurationSetting(wrd.csystem, sys.cFrameworkVersionNumber);
+        configVersion = await configurator.getConfigurationSetting(wrd.csystem, sys.cFrameworkVersionNumber);
      } else {
-        configVersion = configurator.getConfigurationSetting(wrd.csystem, sys.cApplicationVersionNumber);
+        configVersion = await configurator.getConfigurationSetting(wrd.csystem, sys.cApplicationVersionNumber);
      }
   } else {
-    configVersion = configurator.getConfigurationSetting(wrd.csystem, sys.cApplicationVersionNumber);
+    configVersion = await configurator.getConfigurationSetting(wrd.csystem, sys.cApplicationVersionNumber);
   }
   console.log(configVersion);
   returnData[1] = configVersion;
@@ -150,14 +150,14 @@ async function about(inputData, inputMetaData) {
   if (inputData.length === 2) {
     appContext = inputData[1];
     if (appContext.toUpperCase() === wrd.cAPPLICATION) {
-      configDescription = configurator.getConfigurationSetting(wrd.csystem, sys.cApplicationDescription);
+      configDescription = await configurator.getConfigurationSetting(wrd.csystem, sys.cApplicationDescription);
     } else if (appContext.toUpperCase() === wrd.cFRAMEWORK) {
-      configDescription = configurator.getConfigurationSetting(wrd.csystem, sys.cFrameworkDescription);
+      configDescription = await configurator.getConfigurationSetting(wrd.csystem, sys.cFrameworkDescription);
     } else {
-      configDescription = configurator.getConfigurationSetting(wrd.csystem, sys.cApplicationDescription);
+      configDescription = await configurator.getConfigurationSetting(wrd.csystem, sys.cApplicationDescription);
     }
   } else {
-    configDescription = configurator.getConfigurationSetting(wrd.csystem, sys.cApplicationDescription);
+    configDescription = await configurator.getConfigurationSetting(wrd.csystem, sys.cApplicationDescription);
   }
   console.log(configDescription);
   returnData[1] = configDescription;
@@ -197,21 +197,21 @@ async function name(inputData, inputMetaData) {
   } // End-if (inputData.length === 2)
   if (inputData.length === 3) {
     appContext = inputData[1];
-    useFancyFont = ruleBroker.processRules([inputData[2], ''], [biz.cstringToDataType]);
+    useFancyFont = await ruleBroker.processRules([inputData[2], ''], [biz.cstringToDataType]);
   } // End-if (inputData.length === 3)
   if (appContext !== '') {
     if (appContext.toUpperCase() === wrd.cAPPLICATION) {
-      reportedName = configurator.getConfigurationSetting(wrd.csystem, sys.cApplicationName);
+      reportedName = await configurator.getConfigurationSetting(wrd.csystem, sys.cApplicationName);
     } else if (appContext.toUpperCase() === wrd.cFRAMEWORK) {
-      reportedName = configurator.getConfigurationSetting(wrd.csystem, sys.cFrameworkName);
+      reportedName = await configurator.getConfigurationSetting(wrd.csystem, sys.cFrameworkName);
     } else {
-      reportedName = configurator.getConfigurationSetting(wrd.csystem, sys.cApplicationName);
+      reportedName = await configurator.getConfigurationSetting(wrd.csystem, sys.cApplicationName);
     }
   } else {
-    reportedName = configurator.getConfigurationSetting(wrd.csystem, sys.cApplicationName);
+    reportedName = await configurator.getConfigurationSetting(wrd.csystem, sys.cApplicationName);
   }
   if (useFancyFont === true) {
-    figletFont = configurator.getConfigurationSetting(wrd.csystem, cfg.cfigletFont);
+    figletFont = await configurator.getConfigurationSetting(wrd.csystem, cfg.cfigletFont);
     console.log(figlet.textSync(reportedName, {font: figletFont, horizontalLayout: sys.cfull}));
   } else {
     console.log(reportedName);
@@ -270,7 +270,7 @@ async function help(inputData, inputMetaData) {
   if (inputData.length > 1) {
     // calling getCommandNamespaceDataObject() function,
     // because the user entered some namespace we should look for!
-    let namespaceCommandsData = commandBroker.getCommandNamespaceDataObject(undefined, inputData[1]);
+    let namespaceCommandsData = await commandBroker.getCommandNamespaceDataObject(undefined, inputData[1]);
     // namespaceCommandsData is:
     loggers.consoleLog(namespacePrefix + functionName, msg.cnamespaceCommandsDataIs + JSON.stringify(namespaceCommandsData));
     if (namespaceCommandsData === false) {
@@ -282,13 +282,13 @@ async function help(inputData, inputMetaData) {
     } else {
       // NOW call getAllCommandAliasData with the above found data!
       loggers.consoleLog(namespacePrefix + functionName, msg.chelpCommandMessage03);
-      let flattenedNamespaceCommandAliasData = commandBroker.getAllCommandAliasData(namespaceCommandsData);
+      let flattenedNamespaceCommandAliasData = await commandBroker.getAllCommandAliasData(namespaceCommandsData);
       loggers.consoleTableLog(baseFileName + bas.cDot + functionName, flattenedNamespaceCommandAliasData[0], [wrd.cName, wrd.cDescription]);
-      returnData[1] = ruleBroker.processRules([flattenedNamespaceCommandAliasData[0], ''], [biz.carrayDeepClone]);
+      returnData[1] = await ruleBroker.processRules([flattenedNamespaceCommandAliasData[0], ''], [biz.carrayDeepClone]);
     }
   } else {
-    let allCommandAliasFlatData = commandBroker.getAllCommandAliasData(D[sys.cCommandsAliases]);
-    returnData[1] = ruleBroker.processRules([allCommandAliasFlatData, ''], [biz.carrayDeepClone]);
+    let allCommandAliasFlatData = await commandBroker.getAllCommandAliasData(D[sys.cCommandsAliases]);
+    returnData[1] = await ruleBroker.processRules([allCommandAliasFlatData, ''], [biz.carrayDeepClone]);
     // allCommandAliasFlatData is:
     loggers.consoleLog(namespacePrefix + functionName, msg.callCommandAliasFlatDataIs + JSON.stringify(allCommandAliasFlatData[0]));
     loggers.consoleTableLog(baseFileName + bas.cDot + functionName, allCommandAliasFlatData[0], [wrd.cName, wrd.cDescription]);
@@ -323,7 +323,7 @@ async function workflowHelp(inputData, inputMetaData) {
     // calling getWorkflowNamespaceDataObject() function,
     // because the user entered some namespace we should look for!
     loggers.consoleLog(namespacePrefix + functionName, msg.cworkfowHelpMessage01 + msg.cworkfowHelpMessage02);
-    let namespaceWorkflowData = workflowBroker.getWorkflowNamespaceDataObject(undefined, inputData[1]);
+    let namespaceWorkflowData = await workflowBroker.getWorkflowNamespaceDataObject(undefined, inputData[1]);
     // namespaceWorkflowData is:
     loggers.consoleLog(namespacePrefix + functionName, msg.cnamespaceWorkflowDataIs + JSON.stringify(namespaceWorkflowData));
     if (namespaceWorkflowData === false) {
@@ -335,19 +335,19 @@ async function workflowHelp(inputData, inputMetaData) {
     } else {
       // NOW call getAllWorkflows with the above found data!
       loggers.consoleLog(namespacePrefix + functionName, msg.cworkfowHelpMessage03);
-      let flattenedNamespaceWorkflowData = workflowBroker.getAllWorkflows(namespaceWorkflowData);
+      let flattenedNamespaceWorkflowData = await workflowBroker.getAllWorkflows(namespaceWorkflowData);
       loggers.consoleTableLog(baseFileName + bas.cDot + functionName, flattenedNamespaceWorkflowData);
-      returnData[1] = ruleBroker.processRules([flattenedNamespaceWorkflowData, ''], [biz.carrayDeepClone]);
+      returnData[1] = await ruleBroker.processRules([flattenedNamespaceWorkflowData, ''], [biz.carrayDeepClone]);
     }
   } else {
     // User did not enter any parameters,
     // just call getAllWorkflows functions with no input,
     // will return all and print all.
     loggers.consoleLog(namespacePrefix + functionName, msg.cworkfowHelpMessage04 + msg.cworkfowHelpMessage05 + msg.cworkfowHelpMessage06);
-    let allWorkflowData = workflowBroker.getAllWorkflows();
+    let allWorkflowData = await workflowBroker.getAllWorkflows();
     loggers.consoleLog(namespacePrefix + functionName, msg.callWorkflowDataIs + JSON.stringify(allWorkflowData));
     loggers.consoleTableLog(baseFileName + bas.cDot + functionName, allWorkflowData);
-    returnData[1] = ruleBroker.processRules([allWorkflowData, ''], [biz.carrayDeepClone]);
+    returnData[1] = await ruleBroker.processRules([allWorkflowData, ''], [biz.carrayDeepClone]);
   }
   loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);

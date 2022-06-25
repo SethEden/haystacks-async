@@ -53,7 +53,7 @@ async function printDataHive(inputData, inputMetaData) {
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = [true, {}];
-  let printDataHiveToLogFileConfigSetting = configurator.getConfigurationSetting(wrd.csystem, cfg.cprintDataHiveToLogFile);
+  let printDataHiveToLogFileConfigSetting = await configurator.getConfigurationSetting(wrd.csystem, cfg.cprintDataHiveToLogFile);
   let logFilePathAndName = '';
   logFilePathAndName = loggers.getLogFileNameAndPath();
   // logFilePathAndName is:
@@ -255,14 +255,14 @@ async function changeSetting(inputData, inputMetaData) {
   let errorMessage = '';
   if (inputData && inputData.length === 3) {
     let dataPath = inputData[1];
-    dataPath = ruleBroker.processRules([dataPath, ''], [biz.cgetWordsArrayFromString]);
+    dataPath = await ruleBroker.processRules([dataPath, ''], [biz.cgetWordsArrayFromString]);
     // dataPath is:
     loggers.consoleLog(namespacePrefix + functionName, msg.cdataPathIs + JSON.stringify(dataPath));
     let newValue = inputData[2];
     // newValue is:
     loggers.consoleLog(namespacePrefix + functionName, msg.cnewValueIs + JSON.stringify(newValue));
     // Call dataArrayParsing.getNamespacedDataObject business rule to get the data that should be mutated.
-    let parentDataObject = ruleBroker.processRules([dataPath, ''], [biz.cgetNamespacedDataObject]);
+    let parentDataObject = await ruleBroker.processRules([dataPath, ''], [biz.cgetNamespacedDataObject]);
     // parentDataObject BEFORE mutation is:
     loggers.consoleLog(namespacePrefix + functionName, msg.cparentDataObjectBeforeMutationIs + JSON.stringify(parentDataObject))
     // Now mutate the object.
@@ -270,7 +270,7 @@ async function changeSetting(inputData, inputMetaData) {
     // parentDataObject AFTER mutation is:
     loggers.consoleLog(namespacePrefix + functionName, msg.cparentDataObjectAfterMutationIs + JSON.stringify(parentDataObject))
     // Persist the change back to the D-data structure.
-    ruleBroker.processRules([dataPath, parentDataObject], [biz.csetNamespacedDataObject]);
+    await ruleBroker.processRules([dataPath, parentDataObject], [biz.csetNamespacedDataObject]);
     returnData[1] = true;
   } else {
     // ERROR: changeSetting command, invalid entry:

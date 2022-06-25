@@ -93,7 +93,7 @@ async function getStoredData(inputData, inputMetaData) {
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
   let returnData = false;
   if (inputData) {
-    returnData = dataBroker.getData(inputData);
+    returnData = await dataBroker.getData(inputData);
   }
   loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
   loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
@@ -336,7 +336,7 @@ async function objectDeepMerge(inputData, inputMetaData) {
                 // Array lengths are the same at this level.
                 loggers.consoleLog(namespacePrefix + functionName, msg.cobjectDeepMergeMessage07);
                 // We should deeply merge the contents of the arrays.
-                inputData[property] = objectDeepMerge(inputData[property], inputMetaData[property]);
+                inputData[property] = await objectDeepMerge(inputData[property], inputMetaData[property]);
               } else {
                 // Two arrays get concatenated.
                 loggers.consoleLog(namespacePrefix + functionName, msg.cobjectDeepMergeMessage08);
@@ -347,7 +347,7 @@ async function objectDeepMerge(inputData, inputMetaData) {
             } else {
               // Two objects get merged recursively.
               loggers.consoleLog(namespacePrefix + functionName, msg.cobjectDeepMergeMessage09);
-              inputData[property] = objectDeepMerge(inputData[property], inputMetaData[property]);
+              inputData[property] = await objectDeepMerge(inputData[property], inputMetaData[property]);
               // AFTER recursive merge: inputData[property] is:
               loggers.consoleLog(namespacePrefix + functionName, msg.cAfterRecursiveMergeInputDataPropertyIs + JSON.stringify(inputData[property]));
             }
@@ -482,7 +482,7 @@ async function setNamespacedDataObject(inputData, inputMetaData) {
         // namespaceDataObject is:
         loggers.consoleLog(namespacePrefix + functionName, msg.cnamespaceDataObjectIs + JSON.stringify(namespaceDataObject));
         let fullyQualifiedKey = namespaceDataObject.join(bas.cDot);
-        if (ruleParsing.processRulesInternal([[namespaceDataObject, cfg.cdebugSetting], ruleParsing.getRule(biz.cascertainMatchingElements)], [biz.cdoesArrayContainValue]) === true) {
+        if (await ruleParsing.processRulesInternal([[namespaceDataObject, cfg.cdebugSetting], await ruleParsing.getRule(biz.cascertainMatchingElements)], [biz.cdoesArrayContainValue]) === true) {
           namespaceDataObject[fullyQualifiedKey] = inputMetaData;
         } else {
           namespaceDataObject[inputData[i + 1]] = inputMetaData;

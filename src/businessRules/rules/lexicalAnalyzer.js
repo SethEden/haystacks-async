@@ -50,7 +50,7 @@ async function parseBusinessRuleArgument(inputData, inputMetaData) {
   } else {
     // Calling analyzeArgument for index = 2, consolidatedArgumentMode = false
     loggers.consoleLog(namespacePrefix + functionName, msg.cCallingAnalyzeArgumentIndexIs + inputMetaData);
-    returnData = analyzeArgument(inputData);
+    returnData = await analyzeArgument(inputData);
     // } else if (inputMetaData === 2 && consolidatedArgumentMode === true) {
     //   // Calling analyzeArgument for inputMetaData = 2, consolidatedArgumentMode = true
     //   loggers.consoleLog(namespacePrefix + functionName, msg.cCallingAnalyzeArgumentIndex2ConsolidatedArgumentModeTrue);
@@ -102,10 +102,10 @@ async function analyzeArgument(inputData, inputMetaData) {
   let argsArrayContainsCharacterRule = [];
   argsArrayContainsCharacterRule[0] = biz.cdoesArrayContainCharacter;
 
-  let secondaryCommandArgsDelimiter = configurator.getConfigurationSetting(wrd.csystem, cfg.csecondaryCommandDelimiter);
-  let tertiaryCommandArgsDelimiter = configurator.getConfigurationSetting(wrd.csystem, cfg.ctertiaryCommandDelimiter);
-  let argsArrayContainsOpenBracket = ruleParsing.processRulesInternal([bas.cOpenBracket, inputData], argsArrayContainsCharacterRule);
-  let argsArrayContainsCloseBracket = ruleParsing.processRulesInternal([bas.cCloseBracket, inputData], argsArrayContainsCharacterRule);
+  let secondaryCommandArgsDelimiter = await configurator.getConfigurationSetting(wrd.csystem, cfg.csecondaryCommandDelimiter);
+  let tertiaryCommandArgsDelimiter = await configurator.getConfigurationSetting(wrd.csystem, cfg.ctertiaryCommandDelimiter);
+  let argsArrayContainsOpenBracket = await ruleParsing.processRulesInternal([bas.cOpenBracket, inputData], argsArrayContainsCharacterRule);
+  let argsArrayContainsCloseBracket = await ruleParsing.processRulesInternal([bas.cCloseBracket, inputData], argsArrayContainsCharacterRule);
   if (inputData.includes(secondaryCommandArgsDelimiter) === true ||
   inputData.includes(tertiaryCommandArgsDelimiter) === true) {
     // Check if there are brackets or no brackets.
@@ -118,7 +118,7 @@ async function analyzeArgument(inputData, inputMetaData) {
       if (analyzeForRegularExpression(inputData, '') === true) {
         // A regular expression was found!
         loggers.consoleLog(namespacePrefix + functionName, msg.cRegularExpressionWasFound);
-        returnData = parseArgumentAsRegularExpression(inputData, '');
+        returnData = await parseArgumentAsRegularExpression(inputData, '');
       } else { // No regular expression, just return the argument as it was passed in, no additional processing required.
         // No RegExp found!
         loggers.consoleLog(namespacePrefix + functionName, msg.cNoRegExpFound);
@@ -128,7 +128,7 @@ async function analyzeArgument(inputData, inputMetaData) {
       // There are Brackets, so treat the argument as an array.
       // Brackets ARE found!
       loggers.consoleLog(namespacePrefix + functionName, msg.cBracketsAreFound);
-      returnData = parseArgumentAsArray(inputData, '');
+      returnData = await parseArgumentAsArray(inputData, '');
     }
   } else { // The inputData does not contain a secondaryCommandArgsDelimiter
     // NO secondary command argument delimiters.
@@ -141,7 +141,7 @@ async function analyzeArgument(inputData, inputMetaData) {
       if (analyzeForRegularExpression(inputData, '') === true) {
         // A regular expression was found!
         loggers.consoleLog(namespacePrefix + functionName, msg.cRegularExpressionWasFound);
-        returnData = parseArgumentAsRegularExpression(inputData, '');
+        returnData = await parseArgumentAsRegularExpression(inputData, '');
       } else { // No regular expression, just return the argument as it was passed in, no additional processing required.
         // NO RegExp found!
         loggers.consoleLog(namespacePrefix + functionName, msg.cNoRegExpFound);
@@ -151,7 +151,7 @@ async function analyzeArgument(inputData, inputMetaData) {
       // There are Brackets, so treat the argument as an array.
       // Brackets ARE found!
       loggers.consoleLog(namespacePrefix + functionName, msg.cBracketsAreFound);
-      returnData = parseArgumentAsArray(inputData, '');
+      returnData = await parseArgumentAsArray(inputData, '');
     }
   }
   loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
@@ -176,11 +176,11 @@ async function analyzeForRegularExpression(inputData, inputMetaData) {
   let returnData = false;
   let argsArrayContainsCharacterRule = [];
   argsArrayContainsCharacterRule[0] = biz.cdoesArrayContainCharacter;
-  let argsArrayContainsRegEx1 = ruleParsing.processRulesInternal([wrd.cregEx, [inputData]], argsArrayContainsCharacterRule);
+  let argsArrayContainsRegEx1 = await ruleParsing.processRulesInternal([wrd.cregEx, [inputData]], argsArrayContainsCharacterRule);
   loggers.consoleLog(namespacePrefix + functionName, msg.cargsArrayContainsRegEx1Is + argsArrayContainsRegEx1);
-  let argsArrayContainsRegEx2 = ruleParsing.processRulesInternal([wrd.cRegEx, [inputData]], argsArrayContainsCharacterRule);
+  let argsArrayContainsRegEx2 = await ruleParsing.processRulesInternal([wrd.cRegEx, [inputData]], argsArrayContainsCharacterRule);
   loggers.consoleLog(namespacePrefix + functionName, msg.cargsArrayContainsRegEx2Is + argsArrayContainsRegEx2);
-  let argsArrayContainsColon = ruleParsing.processRulesInternal([bas.cColon, [inputData]], argsArrayContainsCharacterRule);
+  let argsArrayContainsColon = await ruleParsing.processRulesInternal([bas.cColon, [inputData]], argsArrayContainsCharacterRule);
   loggers.consoleLog(namespacePrefix + functionName, msg.cargsArrayContainsColonIs + argsArrayContainsColon);
   if ((argsArrayContainsRegEx1 === true || argsArrayContainsRegEx2 === true) && argsArrayContainsColon === true) {
     returnData = true;
@@ -256,7 +256,7 @@ async function parseArgumentAsArray(inputData, inputMetaData) {
   let returnData;
   let argumentValue = inputData;
   let isArray = false;
-  let secondaryCommandArgsDelimiter = configurator.getConfigurationSetting(wrd.csystem, cfg.csecondaryCommandDelimiter);
+  let secondaryCommandArgsDelimiter = await configurator.getConfigurationSetting(wrd.csystem, cfg.csecondaryCommandDelimiter);
   let argsArrayContainsCharacterRule = [];
   let removeBracketsFromArgsArrayRule = [];
   let utilitiesReplaceCharacterWithCharacterRule = [];
@@ -266,8 +266,8 @@ async function parseArgumentAsArray(inputData, inputMetaData) {
   let argsArrayContainsOpenBracket = false;
   let argsArrayContainsCloseBracket = false;
   if (Array.isArray(argumentValue) === true) {
-    argsArrayContainsOpenBracket = ruleParsing.processRulesInternal([bas.cOpenBracket, argumentValue], argsArrayContainsCharacterRule);
-    argsArrayContainsCloseBracket = ruleParsing.processRulesInternal([bas.cCloseBracket, argumentValue], argsArrayContainsCharacterRule);
+    argsArrayContainsOpenBracket = await ruleParsing.processRulesInternal([bas.cOpenBracket, argumentValue], argsArrayContainsCharacterRule);
+    argsArrayContainsCloseBracket = await ruleParsing.processRulesInternal([bas.cCloseBracket, argumentValue], argsArrayContainsCharacterRule);
     isArray = true;
   } else {
     argsArrayContainsOpenBracket = argumentValue.includes(bas.cOpenBracket);
@@ -281,25 +281,25 @@ async function parseArgumentAsArray(inputData, inputMetaData) {
       loggers.consoleLog(namespacePrefix + functionName, msg.cargumentValueContainsTheDelimiterLetsSplitIt);
       argumentValue = argumentValue.split(secondaryCommandArgsDelimiter);
       // Re-evaluate to determine if additional actions are necessary or not.
-      argsArrayContainsOpenBracket = ruleParsing.processRulesInternal([bas.cOpenBracket, argumentValue], argsArrayContainsCharacterRule);
-      argsArrayContainsCloseBracket = ruleParsing.processRulesInternal([bas.cCloseBracket, argumentValue], argsArrayContainsCharacterRule);
+      argsArrayContainsOpenBracket = await ruleParsing.processRulesInternal([bas.cOpenBracket, argumentValue], argsArrayContainsCharacterRule);
+      argsArrayContainsCloseBracket = await ruleParsing.processRulesInternal([bas.cCloseBracket, argumentValue], argsArrayContainsCharacterRule);
       isArray = true;
     } // End-if (argumentValue.includes(secondaryCommandArgsDelimiter) === true)
   } // End-if (isArray === false)
   if (argsArrayContainsOpenBracket === true) {
     if (isArray === true) {
-      argumentValue = ruleParsing.processRulesInternal([bas.cOpenBracket, argumentValue], removeBracketsFromArgsArrayRule);
+      argumentValue = await ruleParsing.processRulesInternal([bas.cOpenBracket, argumentValue], removeBracketsFromArgsArrayRule);
     } else {
-      argumentValue = ruleParsing.processRulesInternal([argumentValue, [bas.cOpenBracket, '']], utilitiesReplaceCharacterWithCharacterRule);
+      argumentValue = await ruleParsing.processRulesInternal([argumentValue, [bas.cOpenBracket, '']], utilitiesReplaceCharacterWithCharacterRule);
     }
     // argumentValue after attempting to remove a open bracket from all array elements is:
     loggers.consoleLog(namespacePrefix + functionName, msg.cargumentValueAfterAttemptingToRemoveOpenBracketFromAllArrayElementsIs + JSON.stringify(argumentValue));
   } // End-if (argsArrayContainsOpenBracket === true)
   if (argsArrayContainsCloseBracket === true) {
     if (isArray === true) {
-      argumentValue = ruleParsing.processRulesInternal([bas.cCloseBracket, argumentValue], removeBracketsFromArgsArrayRule);
+      argumentValue = await ruleParsing.processRulesInternal([bas.cCloseBracket, argumentValue], removeBracketsFromArgsArrayRule);
     } else {
-      argumentValue = ruleParsing.processRulesInternal([argumentValue, [bas.cCloseBracket, '']], utilitiesReplaceCharacterWithCharacterRule);
+      argumentValue = await ruleParsing.processRulesInternal([argumentValue, [bas.cCloseBracket, '']], utilitiesReplaceCharacterWithCharacterRule);
     }
     // argumentValue after attempting to remove a close bracket from all array elements is:
     loggers.consoleLog(namespacePrefix + functionName, msg.cargumentValueAfterAttemptingToRemoveCloseBracketFromAllArrayElementsIs + JSON.stringify(argumentValue));
@@ -337,7 +337,7 @@ async function removeStringLiteralTagsFromArray(inputData, inputMetaData) {
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
   let returnData;
-  returnData = ruleParsing.processRulesInternal([bas.cTilde, inputData], [biz.cremoveCharacterFromArray]);
+  returnData = await ruleParsing.processRulesInternal([bas.cTilde, inputData], [biz.cremoveCharacterFromArray]);
   loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;

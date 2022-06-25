@@ -57,10 +57,10 @@ async function isStringCamelCase(inputData, inputMetaData) {
     // 2. Contains at least 1 lower case letter or more.
     // 3. Contains at least 1 upper case letter or more.
     // 4. Has a lower case or upper case first letter of the first word.
-    let doesContainUpperCaseCharacter = ruleParsing.processRulesInternal([inputData, ''], [biz.cdoesStringContainUpperCaseCharacter]);
-    let doesContainLowerCaseCharacter = ruleParsing.processRulesInternal([inputData, ''], [biz.cdoesStringContainLowerCaseCharacter]);
-    let isFirstCharUpperCase = ruleParsing.processRulesInternal([inputData, ''], [biz.cisFirstCharacterUpperCase]);
-    let isFirstCharLowerCase = ruleParsing.processRulesInternal([inputData, ''], [biz.cisFirstCharacterLowerCase]);
+    let doesContainUpperCaseCharacter = await ruleParsing.processRulesInternal([inputData, ''], [biz.cdoesStringContainUpperCaseCharacter]);
+    let doesContainLowerCaseCharacter = await ruleParsing.processRulesInternal([inputData, ''], [biz.cdoesStringContainLowerCaseCharacter]);
+    let isFirstCharUpperCase = await ruleParsing.processRulesInternal([inputData, ''], [biz.cisFirstCharacterUpperCase]);
+    let isFirstCharLowerCase = await ruleParsing.processRulesInternal([inputData, ''], [biz.cisFirstCharacterLowerCase]);
     if (!inputData.match(/[\s_-]/g) && doesContainUpperCaseCharacter &&
     doesContainLowerCaseCharacter && (isFirstCharUpperCase || isFirstCharLowerCase)) {
       for (let i = 1; i < inputData.length; i++) {
@@ -133,8 +133,8 @@ async function simplifyAndConsolidateString(inputData, inputMetaData) {
   let returnData = '';
   if (inputData) {
     // returnData = inputData.toLowerCase().replace(/[\W]/g, '');
-    returnData = ruleParsing.processRulesInternal([inputData.toLowerCase().trim(), [/[^\w\s]/g, '']], [biz.cutilitiesReplaceCharacterWithCharacter]);
-    returnData = ruleParsing.processRulesInternal([returnData, [/[\0-9]/g, '']], [biz.cutilitiesReplaceCharacterWithCharacter]);
+    returnData = await ruleParsing.processRulesInternal([inputData.toLowerCase().trim(), [/[^\w\s]/g, '']], [biz.cutilitiesReplaceCharacterWithCharacter]);
+    returnData = await ruleParsing.processRulesInternal([returnData, [/[\0-9]/g, '']], [biz.cutilitiesReplaceCharacterWithCharacter]);
   } // End-if (inputData)
   loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
   loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
@@ -248,23 +248,23 @@ async function determineWordDelimiter(inputData, inputMetaData) {
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = '';
   if (inputData) {
-    let camelCaseWordCount = countCamelCaseWords(inputData, '');
+    let camelCaseWordCount = await countCamelCaseWords(inputData, '');
     loggers.consoleLog(namespacePrefix + functionName, msg.ccamelCaseWordCountIs + camelCaseWordCount);
     let containsAcronym = doesStringContainAcronym(inputData, '');
     loggers.consoleLog(namespacePrefix + functionName, msg.ccontainsAcronymIs + containsAcronym);
-    let spacesCount = countDelimiterInString(inputData, bas.cSpace);
+    let spacesCount = await countDelimiterInString(inputData, bas.cSpace);
     loggers.consoleLog(namespacePrefix + functionName, msg.cspacesCountIs + spacesCount);
-    let periodCount = countDelimiterInString(inputData, bas.cDot);
+    let periodCount = await countDelimiterInString(inputData, bas.cDot);
     loggers.consoleLog(namespacePrefix + functionName, msg.cperiodCountIs + periodCount);
-    let dashCount = countDelimiterInString(inputData, bas.cDash);
+    let dashCount = await countDelimiterInString(inputData, bas.cDash);
     loggers.consoleLog(namespacePrefix + functionName, msg.cdashCountIs + dashCount);
-    let comaCount = countDelimiterInString(inputData, bas.cComa);
+    let comaCount = await countDelimiterInString(inputData, bas.cComa);
     loggers.consoleLog(namespacePrefix + functionName, msg.ccomaCountIs + comaCount);
-    let underscoreCount = countDelimiterInString(inputData, bas.cUnderscore);
+    let underscoreCount = await countDelimiterInString(inputData, bas.cUnderscore);
     loggers.consoleLog(namespacePrefix + functionName, msg.cunderscoreCountIs + underscoreCount);
-    let plusCount = countDelimiterInString(inputData, bas.cPlus);
+    let plusCount = await countDelimiterInString(inputData, bas.cPlus);
     loggers.consoleLog(namespacePrefix + functionName, msg.cplusCountIs + plusCount);
-    let percentCount = countDelimiterInString(inputData, bas.cPercent);
+    let percentCount = await countDelimiterInString(inputData, bas.cPercent);
     loggers.consoleLog(namespacePrefix + functionName, msg.cpercentCountIs + percentCount);
     if (
     camelCaseWordCount > 0 &&
@@ -350,7 +350,7 @@ async function getWordCountInString(inputData, inputMetaData) {
   if (inputData) {
     let wordDelimiter = determineWordDelimiter(inputData, inputMetaData);
     if (wordDelimiter === sys.cCamelCase) {
-      returnData = countCamelCaseWords(inputData, '');
+      returnData = await countCamelCaseWords(inputData, '');
     } else if (wordDelimiter !== '') {
       returnData = inputData.split(wordDelimiter).length;
     } else {
@@ -383,9 +383,9 @@ async function isStringList(inputData, inputMetaData) {
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = false;
   if (inputData) {
-    let primaryCommandDelimiter = configurator.getConfigurationSetting(wrd.csystem, cfg.cprimaryCommandDelimiter);
-    let secondaryCommandDelimiter = configurator.getConfigurationSetting(wrd.csystem, cfg.csecondaryCommandDelimiter);
-    let tertiaryCommandDelimiter = configurator.getConfigurationSetting(wrd.csystem, cfg.ctertiaryCommandDelimiter);
+    let primaryCommandDelimiter = await configurator.getConfigurationSetting(wrd.csystem, cfg.cprimaryCommandDelimiter);
+    let secondaryCommandDelimiter = await configurator.getConfigurationSetting(wrd.csystem, cfg.csecondaryCommandDelimiter);
+    let tertiaryCommandDelimiter = await configurator.getConfigurationSetting(wrd.csystem, cfg.ctertiaryCommandDelimiter);
     if (inputData.includes(primaryCommandDelimiter) === true ||
     inputData.includes(secondaryCommandDelimiter) === true ||
     inputData.includes(tertiaryCommandDelimiter) === true) {

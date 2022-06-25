@@ -193,7 +193,7 @@ async function contains(stackNameSpace, value) {
   loggers.consoleLog(namespacePrefix + functionName, msg.cstackNameSpaceIs + stackNameSpace);
   let returnData = false;
   if (D[stackNameSpace] !== undefined) {
-    returnData = ruleBroker.processRules([value, D[stackNameSpace]], [biz.cdoesArrayContainCharacter]);
+    returnData = await ruleBroker.processRules([value, D[stackNameSpace]], [biz.cdoesArrayContainCharacter]);
   } else {
     // WARNING: Stack:
     // does not exists!
@@ -213,7 +213,7 @@ async function contains(stackNameSpace, value) {
  * @date 2022/02/01
  */
 async function print(stackNameSpace) {
-  let functionName = contains.name;
+  let functionName = print.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   loggers.consoleLog(namespacePrefix + functionName, msg.cstackNameSpaceIs + stackNameSpace);
   if (D[stackNameSpace] !== undefined) {

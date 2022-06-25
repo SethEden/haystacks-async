@@ -294,8 +294,8 @@ async function randomlyGenerateNumberInRange(inputData, inputMetaData) {
   if (inputData && inputMetaData) {
     let minimum = parseInt(inputData);
     let maximum = parseInt(inputMetaData[0]);
-    let addOne = ruleParsing.processRulesInternal([inputMetaData[1], ''], [biz.cstringToBoolean]);
-    let addMinimum = ruleParsing.processRulesInternal([inputMetaData[2], ''], [biz.cstringToBoolean]);
+    let addOne = await ruleParsing.processRulesInternal([inputMetaData[1], ''], [biz.cstringToBoolean]);
+    let addMinimum = await ruleParsing.processRulesInternal([inputMetaData[2], ''], [biz.cstringToBoolean]);
     if (addOne === true) {
       if (addMinimum === true) {
         returnData = Math.floor(Math.random() * (maximum - minimum + 1)) + minimum;

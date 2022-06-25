@@ -138,7 +138,7 @@ async function processRulesInternal(inputData, inputMetaData) {
         // console.log(`key is ${key}`);
         let value = inputMetaData[key];
         // console.log(`value is: ${value}`);
-        returnData = D[sys.cbusinessRules][value](returnData, inputLocalMetaData);
+        returnData = await D[sys.cbusinessRules][value](returnData, inputLocalMetaData);
       } // End-if (rulesToExecute.hasOwnProperty(rule))
     } // End-for (let rule in inputMetaData)
   } else {

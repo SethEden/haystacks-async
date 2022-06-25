@@ -44,7 +44,7 @@ async function doesArrayContainFilename(inputData, inputMetaData) {
   // And I'm not going to spend the time trying to figure out why,
   // when it will be much simpler to ust call that same function in a loop to figure out the result.
   // Can solve this when we build unit tests.
-  returnData = ruleParsing.processRulesInternal([[inputData, inputMetaData], ruleParsing.getRule(biz.cascertainMatchingElements)], [biz.cdoesArrayContainValue]);
+  returnData = await ruleParsing.processRulesInternal([[inputData, inputMetaData], ruleParsing.getRule(biz.cascertainMatchingElements)], [biz.cdoesArrayContainValue]);
 
   // NOTE: The below code also works, I am going to attempt to re-enable the above code and see if it also works.
   // YES! This is a second way of doing the same thing. If the above code ever has a problem, we can fall back to this method.
@@ -79,15 +79,15 @@ async function getFileAndPathListForPath(inputData, inputMetaData) {
   let enableFilesListLimit, filesListLimit;
   if (inputData) {
     if (inputMetaData) {
-      enableFilesListLimit = configurator.getConfigurationSetting(wrd.csystem, cfg.cEnableFilesListLimit);
+      enableFilesListLimit = await configurator.getConfigurationSetting(wrd.csystem, cfg.cEnableFilesListLimit);
       filesListLimit = inputMetaData;
     } else {
-      enableFilesListLimit = configurator.getConfigurationSetting(wrd.csystem, cfg.cEnableFilesListLimit);
-      filesListLimit = configurator.getConfigurationSetting(wrd.csystem, cfg.cFilesListLimit);
+      enableFilesListLimit = await configurator.getConfigurationSetting(wrd.csystem, cfg.cEnableFilesListLimit);
+      filesListLimit = await configurator.getConfigurationSetting(wrd.csystem, cfg.cFilesListLimit);
     }
     // filesListLimit is:
     loggers.consoleLog(namespacePrefix + functionName, msg.cfilesListLimitIs + filesListLimit);
-    returnData = ruleParsing.processRulesInternal([inputData, [enableFilesListLimit, filesListLimit]], [biz.cscanDirectoryContents]);
+    returnData = await ruleParsing.processRulesInternal([inputData, [enableFilesListLimit, filesListLimit]], [biz.cscanDirectoryContents]);
   } // End-if (inputData)
   loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);

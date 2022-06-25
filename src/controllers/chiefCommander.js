@@ -82,7 +82,7 @@ async function loadCommandAliasesFromPath(commandAliasesFilePathConfigurationNam
   // contextName is:
   loggers.consoleLog(namespacePrefix + functionName, msg.ccontextNameIs + contextName);
   let allCommandAliasesData = {};
-  allCommandAliasesData = chiefData.setupAllXmlData(commandAliasesFilePathConfigurationName, sys.cCommandsAliases);
+  allCommandAliasesData = await chiefData.setupAllXmlData(commandAliasesFilePathConfigurationName, sys.cCommandsAliases);
   // allCommandAliasesData is:
   loggers.consoleLog(namespacePrefix + functionName, msg.callCommandAliasesDataIs + JSON.stringify(allCommandAliasesData));
   if (D[sys.cCommandsAliases] === undefined) { // Make sure we only do this if it's undefined, otherwise we might wipe out previously loaded data.
@@ -154,7 +154,7 @@ async function processCommandQueue() {
   commandToExecute = queue.dequeue(sys.cCommandQueue);
   // commandToExecute is:
   loggers.consoleLog(namespacePrefix + functionName, msg.ccommandToExecuteIs + commandToExecute);
-  returnData = commandBroker.executeCommand(commandToExecute);
+  returnData = await commandBroker.executeCommand(commandToExecute);
   loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
   loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
