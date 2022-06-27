@@ -38,31 +38,31 @@ const namespacePrefix = sys.ccommandsBlob + bas.cDot + wrd.ccommands + bas.cDot 
  */
 async function convertColors(inputData, inputMetaData) {
   let functionName = convertColors.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = [true, []];
   let colorKeys = Object.keys(D[wrd.ccolors][sys.cColorData]);
   // colorKeys is:
-  loggers.consoleLog(namespacePrefix + functionName, msg.ccolorKeysIs + JSON.stringify(colorKeys));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.ccolorKeysIs + JSON.stringify(colorKeys));
   for (const element of colorKeys) {
     let currentColorName = element;
     // currentColorName is:
-    loggers.consoleLog(namespacePrefix + functionName, msg.ccurrentColorNameIs + currentColorName);
+    await loggers.consoleLog(namespacePrefix + functionName, msg.ccurrentColorNameIs + currentColorName);
     let currentColorObject = D[wrd.ccolors][sys.cColorData][currentColorName];
     // currentColorObject is:
-    loggers.consoleLog(namespacePrefix + functionName, msg.ccurrentColorObjectIs + JSON.stringify(currentColorObject));
+    await loggers.consoleLog(namespacePrefix + functionName, msg.ccurrentColorObjectIs + JSON.stringify(currentColorObject));
     let currentColorHexValue = currentColorObject[sys.cHexValue];
     // currentColorHexValue is:
-    loggers.consoleLog(namespacePrefix + functionName, msg.ccurrentColorHexValueIs + currentColorHexValue);
+    await loggers.consoleLog(namespacePrefix + functionName, msg.ccurrentColorHexValueIs + currentColorHexValue);
     let ruleOutput = await ruleBroker.processRules([currentColorHexValue, [bas.cHash, '']], [biz.creplaceCharacterWithCharacter, biz.chex2rgbConversion]);
     // ruleOutput is:
-    loggers.consoleLog(namespacePrefix + functionName, msg.cruleOutputIs + ruleOutput);
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cruleOutputIs + ruleOutput);
     console.log(currentColorName + bas.cComa + currentColorHexValue + bas.cComa + ruleOutput[0] + bas.cComa + ruleOutput[1] + bas.cComa + ruleOutput[2]);
     returnData[1].push(ruleOutput);
   } // End-for (const element of colorKeys)
-  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 

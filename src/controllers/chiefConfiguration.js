@@ -41,34 +41,34 @@ const namespacePrefix = wrd.ccontrollers + bas.cDot + baseFileName +bas.cDot;
  */
 async function setupConfiguration(appConfigPath, frameworkConfigPath) {
   let functionName = setupConfiguration.name;
-  // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
-  // console.log(`appConfigPath is: ${appConfigPath}`);
-  // console.log(`frameworkConfigPath is: ${frameworkConfigPath}`);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cappConfigPathIs + appConfigPath);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cframeworkConfigPathIs + frameworkConfigPath);
+  console.log(`BEGIN ${namespacePrefix}${functionName} function`);
+  console.log(`appConfigPath is: ${appConfigPath}`);
+  console.log(`frameworkConfigPath is: ${frameworkConfigPath}`);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cappConfigPathIs + appConfigPath);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cframeworkConfigPathIs + frameworkConfigPath);
   let rules = [biz.cswapBackSlashToForwardSlash];
   appConfigPath = await ruleBroker.processRules([appConfigPath, ''], rules);
-  // console.log(`appConfigPath after rule processing is: ${appConfigPath}`);
+  console.log(`appConfigPath after rule processing is: ${appConfigPath}`);
   frameworkConfigPath = await ruleBroker.processRules([frameworkConfigPath, ''], rules);
-  // console.log(`frameworkConfigPath after rule processing is: ${frameworkConfigPath}`);
-  configurator.setConfigurationSetting(wrd.csystem, sys.cappConfigPath, appConfigPath);
-  configurator.setConfigurationSetting(wrd.csystem, sys.cframeworkConfigPath, frameworkConfigPath);
+  console.log(`frameworkConfigPath after rule processing is: ${frameworkConfigPath}`);
+  await configurator.setConfigurationSetting(wrd.csystem, sys.cappConfigPath, appConfigPath);
+  await configurator.setConfigurationSetting(wrd.csystem, sys.cframeworkConfigPath, frameworkConfigPath);
   let allAppConfigData = {};
   let allFrameworkConfigData = {};
-  chiefData.searchForUniversalDebugConfigSetting(
+  await chiefData.searchForUniversalDebugConfigSetting(
     sys.cappConfigPath, sys.cframeworkConfigPath
   );
   allFrameworkConfigData = await chiefData.setupAllJsonConfigData(sys.cframeworkConfigPath, wrd.cconfiguration);
   allAppConfigData = await chiefData.setupAllJsonConfigData(sys.cappConfigPath, wrd.cconfiguration);
-  parseLoadedConfigurationData(allFrameworkConfigData);
-  parseLoadedConfigurationData(allAppConfigData);
-  configurator.setConfigurationSetting(wrd.csystem, cfg.cprimaryCommandDelimiter, ' ');
-  configurator.setConfigurationSetting(wrd.csystem, cfg.cconfigurationInitialized, true);
-  // console.log('ALL DATA IS: ' + JSON.stringify(D));
-  // console.log(`END ${namespacePrefix}${functionName} function`);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cALL_DATA_IS + JSON.stringify(D));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await parseLoadedConfigurationData(allFrameworkConfigData);
+  await parseLoadedConfigurationData(allAppConfigData);
+  await configurator.setConfigurationSetting(wrd.csystem, cfg.cprimaryCommandDelimiter, ' ');
+  await configurator.setConfigurationSetting(wrd.csystem, cfg.cconfigurationInitialized, true);
+  console.log('ALL DATA IS: ' + JSON.stringify(D));
+  console.log(`END ${namespacePrefix}${functionName} function`);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cALL_DATA_IS + JSON.stringify(D));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
 }
 
 /**
@@ -82,9 +82,9 @@ async function setupConfiguration(appConfigPath, frameworkConfigPath) {
  * @NOTE Cannot use the loggers here, because dependency data will have never been loaded.
  */
 async function parseLoadedConfigurationData(allConfigurationData) {
-  // let functionName = parseLoadedConfigurationData.name;
-  // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
-  // console.log(`allConfigurationData is: ${JSON.stringify(allConfigurationData)}`);
+  let functionName = parseLoadedConfigurationData.name;
+  console.log(`BEGIN ${namespacePrefix}${functionName} function`);
+  console.log(`allConfigurationData is: ${JSON.stringify(allConfigurationData)}`);
   let highLevelSystemConfigurationContainer = {};
   let highLevelDebugConfigurationContainer = {};
   let rules = [biz.cstringToDataType];
@@ -95,9 +95,9 @@ async function parseLoadedConfigurationData(allConfigurationData) {
   let returnData = false;
 
   highLevelSystemConfigurationContainer = allConfigurationData[wrd.csystem];
-  // console.log('highLevelSystemConfigurationContainer is: ' + JSON.stringify(highLevelSystemConfigurationContainer));
+  console.log('highLevelSystemConfigurationContainer is: ' + JSON.stringify(highLevelSystemConfigurationContainer));
   highLevelDebugConfigurationContainer = allConfigurationData[cfg.cdebugSettings];
-  // console.log('highLevelDebugConfigurationContainer is: ' + JSON.stringify(highLevelDebugConfigurationContainer));
+  console.log('highLevelDebugConfigurationContainer is: ' + JSON.stringify(highLevelDebugConfigurationContainer));
 
   if (highLevelSystemConfigurationContainer) {
     for (let key in highLevelSystemConfigurationContainer) {
@@ -105,27 +105,27 @@ async function parseLoadedConfigurationData(allConfigurationData) {
       namespace = '';
       name = '';
       value = highLevelSystemConfigurationContainer[key];
-      // console.log('value is: ' + value);
+      console.log('value is: ' + value);
       if (!!value || value === false) {
         fullyQualifiedName = key;
-        // console.log('fullyQualifiedName is: ' + fullyQualifiedName);
+        console.log('fullyQualifiedName is: ' + fullyQualifiedName);
 
-        name = configurator.processConfigurationNameRules(fullyQualifiedName);
-        // console.log('name is: ' + name);
-        namespace = configurator.processConfigurationNamespaceRules(fullyQualifiedName);
-        // console.log('namespace is: ' + namespace);
+        name = await configurator.processConfigurationNameRules(fullyQualifiedName);
+        console.log('name is: ' + name);
+        namespace = await configurator.processConfigurationNamespaceRules(fullyQualifiedName);
+        console.log('namespace is: ' + namespace);
         value = await configurator.processConfigurationValueRules(name, value);
-        // console.log('value BEFORE rule processing is: ' + value);
+        console.log('value BEFORE rule processing is: ' + value);
         value = await ruleBroker.processRules([value, ''], rules);
-        // console.log('value AFTER rule processing is: ' + value);
+        console.log('value AFTER rule processing is: ' + value);
         if ((namespace === wrd.csystem && name === cfg.cdebugSettings) &&
         await configurator.getConfigurationSetting(namespace, name) === true) {
-          // console.log('CAUGHT THE CASE THAT WE ARE SETTING A FALSE VALUE FOR DEBUG-SETTINGS');
+          console.log('CAUGHT THE CASE THAT WE ARE SETTING A FALSE VALUE FOR DEBUG-SETTINGS');
           // NOTE: DO NOT over write the value because the base value is already saved as true.
           // Over writing it with true, doesn't do anything, and over writing it with false
           // destroys whatever setting the user may have set from the client application.
         } else {
-          configurator.setConfigurationSetting(namespace, name, value);
+          await configurator.setConfigurationSetting(namespace, name, value);
         }
       } // End-if (!!value || value === false)
     } // End-for (let key in highLevelSystemConfigurationContainer)
@@ -137,27 +137,27 @@ async function parseLoadedConfigurationData(allConfigurationData) {
       namespace = '';
       name = '';
       value = highLevelDebugConfigurationContainer[key];
-      // console.log('value is: ' + value);
+      console.log('value is: ' + value);
       if (!!value || value === false) {
         fullyQualifiedName = key;
-        // console.log('fullyQualifiedName is: ' + fullyQualifiedName);
+        console.log('fullyQualifiedName is: ' + fullyQualifiedName);
 
-        name = configurator.processConfigurationNameRules(fullyQualifiedName);
-        // console.log('name is: ' + name);
-        namespace = configurator.processConfigurationNamespaceRules(fullyQualifiedName);
-        // console.log('namespace is: ' + namespace);
+        name = await configurator.processConfigurationNameRules(fullyQualifiedName);
+        console.log('name is: ' + name);
+        namespace = await configurator.processConfigurationNamespaceRules(fullyQualifiedName);
+        console.log('namespace is: ' + namespace);
         value = await configurator.processConfigurationValueRules(name, value);
-        // console.log('value BEFORE rule processing is: ' + value);
+        console.log('value BEFORE rule processing is: ' + value);
         value = await ruleBroker.processRules([value, ''], rules);
-        // console.log('value AFTER rule processing is: ' + value);
+        console.log('value AFTER rule processing is: ' + value);
 
-        configurator.setConfigurationSetting(namespace, name, value);
+        await configurator.setConfigurationSetting(namespace, name, value);
         returnData = true;
       } // End-if (!!value || value === false)
     } // End-for (let key in highLevelDebugConfigurationContainer)
   } // End-if (highLevelDebugConfigurationContainer)
-  // console.log('returnData is: ' + returnData);
-  // console.log(`END ${namespacePrefix}${functionName} function`);
+  console.log('returnData is: ' + returnData);
+  console.log(`END ${namespacePrefix}${functionName} function`);
   return returnData;
 }
 

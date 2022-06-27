@@ -1,5 +1,5 @@
 {
-  "debugFiles|debugSetting.controllers.chiefCommander": false,
+  "debugFiles|debugSetting.controllers.chiefCommander": true,
   "debugFiles|debugSetting.controllers.chiefCommander@ModuleFontStyle": "Bold|Underline",
   "debugFiles|debugSetting.controllers.chiefCommander@FunctionFontStyle": "Bold|Underline",
   "debugFiles|debugSetting.controllers.chiefCommander@MessageFontStyle": "Underline",

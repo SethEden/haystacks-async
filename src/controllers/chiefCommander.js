@@ -39,9 +39,9 @@ const namespacePrefix = wrd.ccontrollers + bas.cDot + baseFileName + bas.cDot;
  */
 async function bootStrapCommands() {
   let functionName = bootStrapCommands.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  commandBroker.bootStrapCommands();
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await commandBroker.bootStrapCommands();
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
 }
 
 /**
@@ -54,9 +54,9 @@ async function bootStrapCommands() {
  */
 async function addClientCommands(clientCommands) {
   let functionName = addClientCommands.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  commandBroker.addClientCommands(clientCommands);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await commandBroker.addClientCommands(clientCommands);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
 }
 
 /**
@@ -76,15 +76,15 @@ async function addClientCommands(clientCommands) {
  */
 async function loadCommandAliasesFromPath(commandAliasesFilePathConfigurationName, contextName) {
   let functionName = loadCommandAliasesFromPath.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // commandAliasesFilePathConfigurationName is:
-  loggers.consoleLog(namespacePrefix + functionName, msg.ccommandAliasesFilePathConfigurationNameIs + commandAliasesFilePathConfigurationName);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.ccommandAliasesFilePathConfigurationNameIs + commandAliasesFilePathConfigurationName);
   // contextName is:
-  loggers.consoleLog(namespacePrefix + functionName, msg.ccontextNameIs + contextName);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.ccontextNameIs + contextName);
   let allCommandAliasesData = {};
   allCommandAliasesData = await chiefData.setupAllXmlData(commandAliasesFilePathConfigurationName, sys.cCommandsAliases);
   // allCommandAliasesData is:
-  loggers.consoleLog(namespacePrefix + functionName, msg.callCommandAliasesDataIs + JSON.stringify(allCommandAliasesData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.callCommandAliasesDataIs + JSON.stringify(allCommandAliasesData));
   if (D[sys.cCommandsAliases] === undefined) { // Make sure we only do this if it's undefined, otherwise we might wipe out previously loaded data.
     D[sys.cCommandsAliases] = {};
     D[sys.cCommandsAliases][sys.cFramework] = allCommandAliasesData;
@@ -97,7 +97,7 @@ async function loadCommandAliasesFromPath(commandAliasesFilePathConfigurationNam
     console.log('ERROR: ---- PLUGIN Command Aliases data not yet supported!!!!!!!!!!!!');
   }
   // console.log('All loaded command aliases data is: ' + JSON.stringify(D[sys.cCommandsAliases]));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
 }
 
 /**
@@ -111,14 +111,14 @@ async function loadCommandAliasesFromPath(commandAliasesFilePathConfigurationNam
  */
 async function enqueueCommand(command) {
   let functionName = enqueueCommand.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // command is:
-  loggers.consoleLog(namespacePrefix + functionName, msg.ccommandIs + command);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.ccommandIs + command);
   if (D[sys.cCommandQueue] === undefined) {
-    queue.initQueue(sys.cCommandQueue);
+    await queue.initQueue(sys.cCommandQueue);
   }
-  queue.enqueue(sys.cCommandQueue, command);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await queue.enqueue(sys.cCommandQueue, command);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
 }
 
 /**
@@ -130,11 +130,11 @@ async function enqueueCommand(command) {
  */
 async function isCommandQueueEmpty() {
   let functionName = isCommandQueueEmpty.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   let returnData = false;
-  returnData = queue.isEmpty(sys.cCommandQueue);
-  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  returnData = await queue.isEmpty(sys.cCommandQueue);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -148,15 +148,16 @@ async function isCommandQueueEmpty() {
  */
 async function processCommandQueue() {
   let functionName = processCommandQueue.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   let commandToExecute;
   let returnData;
-  commandToExecute = queue.dequeue(sys.cCommandQueue);
+  await queue.queuePrint(sys.cCommandQueue);
+  commandToExecute = await queue.dequeue(sys.cCommandQueue);
   // commandToExecute is:
-  loggers.consoleLog(namespacePrefix + functionName, msg.ccommandToExecuteIs + commandToExecute);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.ccommandToExecuteIs + commandToExecute);
   returnData = await commandBroker.executeCommand(commandToExecute);
-  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 

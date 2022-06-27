@@ -37,14 +37,14 @@ const namespacePrefix = apc.cApplicationName + bas.cDot + wrd.ccommands + bas.cD
  */
 async function customEchoCommand(inputData, inputMetaData) {
   let functionName = customEchoCommand.name;
-  haystacks.consoleLog(namespacePrefix, functionName, msg.cBEGIN_Function);
-  haystacks.consoleLog(namespacePrefix, functionName, msg.cinputDataIs + inputData);
-  haystacks.consoleLog(namespacePrefix, functionName, msg.cinputMetaDataIs + inputMetaData);
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.cBEGIN_Function);
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.cinputDataIs + inputData);
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = [false, false];
   returnData[1] = inputData + ' clientStringParsing.customEchoCommand';
   console.log(returnData[1]);
-  haystacks.consoleLog(namespacePrefix, functionName, msg.creturnDataIs + JSON.stringify(returnData));
-  haystacks.consoleLog(namespacePrefix, functionName, msg.cEND_Function);
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -75,9 +75,9 @@ async function customEchoCommand(inputData, inputMetaData) {
  */
 async function bossPanic(inputData, inputMetaData) {
   let functionName = bossPanic.name;
-  haystacks.consoleLog(namespacePrefix, functionName, msg.cBEGIN_Function);
-  haystacks.consoleLog(namespacePrefix, functionName, msg.cinputDataIs + inputData);
-  haystacks.consoleLog(namespacePrefix, functionName, msg.cinputMetaDataIs + inputMetaData);
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.cBEGIN_Function);
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.cinputDataIs + inputData);
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.cinputMetaDataIs + inputMetaData);
   let stringLength = 0;
   let colorBreakPoint = 0;
   let stringToPrint = '';
@@ -98,7 +98,7 @@ async function bossPanic(inputData, inputMetaData) {
   let coloredLinesMaxLength = 20;
   let fastTypingOutput = false;
   let speedTypingPerformanceIndex = 100; // Default to a fast typing speed.
-  let systemColorLogsEnabled = haystacks.getConfigurationSetting(wrd.csystem, cfg.cenableColorizedConsoleLogs);
+  let systemColorLogsEnabled = await haystacks.getConfigurationSetting(wrd.csystem, cfg.cenableColorizedConsoleLogs);
 
   // Rather than doing the above, I'll just call the business rule to generate a random number between 1 and 100.
   // Then I can call the string generator to generate a random string of characters to match that length.
@@ -130,7 +130,7 @@ async function bossPanic(inputData, inputMetaData) {
       }
     } // End-if (inputData.length > 4)
     if (inputData.length > 5) {
-      fastTypingOutput = haystacks.executeBusinessRules([inputData[5], ''], [biz.cstringToBoolean]);
+      fastTypingOutput = await haystacks.executeBusinessRules([inputData[5], ''], [biz.cstringToBoolean]);
     }
     if (inputData.length > 6) {
       speedTypingPerformanceIndex = parseInt(inputData[6]);
@@ -142,26 +142,26 @@ async function bossPanic(inputData, inputMetaData) {
   // eslint-disable-next-line no-constant-condition
   while (true) { // Start the infinite loop
     if (noColoredLineCount <= 0 && enableColoredLine === false) {
-      noColoredLineCount = haystacks.executeBusinessRules([num.c1, [noColoredLinesMaxLength, false, false]], [biz.crandomlyGenerateNumberInRange]);
+      noColoredLineCount = await haystacks.executeBusinessRules([num.c1, [noColoredLinesMaxLength, false, false]], [biz.crandomlyGenerateNumberInRange]);
       enableColoredLine = true;
     }
     if (coloredLineCount <= 0 && enableColoredLine === true) {
-      coloredLineCount = haystacks.executeBusinessRules([num.c2, [coloredLinesMaxLength, false, false]], [biz.crandomlyGenerateNumberInRange]);
+      coloredLineCount = await haystacks.executeBusinessRules([num.c2, [coloredLinesMaxLength, false, false]], [biz.crandomlyGenerateNumberInRange]);
       enableColoredLine = false;
     }
-    stringLength = haystacks.executeBusinessRules([num.c1, [lineLength, false, false]], [biz.crandomlyGenerateNumberInRange]);
+    stringLength = await haystacks.executeBusinessRules([num.c1, [lineLength, false, false]], [biz.crandomlyGenerateNumberInRange]);
     // Now we will generate a number between 0 and the string length, this will be the color limit so we can break the ine up randomly into a beginning segment and an ending segment.
     // Each segment of the line will get a different random foreground font color and random background font color.
-    colorBreakPoint = haystacks.executeBusinessRules([num.c1, [stringLength, false, false]], [biz.crandomlyGenerateNumberInRange]);
-    stringToPrint = haystacks.executeBusinessRules([stringLength, gen.cMostSpecialCharacters], [biz.cgenerateRandomMixedCaseAlphaNumericCodeWithSpecialCharactersByLength]);
+    colorBreakPoint = await haystacks.executeBusinessRules([num.c1, [stringLength, false, false]], [biz.crandomlyGenerateNumberInRange]);
+    stringToPrint = await haystacks.executeBusinessRules([stringLength, gen.cMostSpecialCharacters], [biz.cgenerateRandomMixedCaseAlphaNumericCodeWithSpecialCharactersByLength]);
     if (enableColoredLine === true && systemColorLogsEnabled === true) {
       subString1 = stringToPrint.substr(0, colorBreakPoint);
       subString2 = stringToPrint.substr(colorBreakPoint, stringToPrint.length);
       // Determine if the first part of the string will have a light foreground and dark background or dark foreground and light background.
-      if (haystacks.executeBusinessRules(['', ''], [biz.crandomlyGenerateBooleanValue]) === true) {
-        brightColor1 = haystacks.executeBusinessRules([200, 255], [biz.cgenerateRandomBrightColor]);
-        darkColor1 = haystacks.executeBusinessRules([0, 60], [biz.cgenerateRandomDarkColor]);
-        colorMode1 = haystacks.executeBusinessRules(['', ''], [biz.crandomlyGenerateBooleanValue]);
+      if (await haystacks.executeBusinessRules(['', ''], [biz.crandomlyGenerateBooleanValue]) === true) {
+        brightColor1 = await haystacks.executeBusinessRules([200, 255], [biz.cgenerateRandomBrightColor]);
+        darkColor1 = await haystacks.executeBusinessRules([0, 60], [biz.cgenerateRandomDarkColor]);
+        colorMode1 = await haystacks.executeBusinessRules(['', ''], [biz.crandomlyGenerateBooleanValue]);
         if (colorMode1 === true) {
           subString1 = chalk.rgb(brightColor1[0], brightColor1[1], brightColor1[2])(subString1);
           subString2 = chalk.bgRgb(darkColor1[0], darkColor1[1], darkColor1[2])(subString1);
@@ -170,10 +170,10 @@ async function bossPanic(inputData, inputMetaData) {
           subString2 = chalk.bgRgb(brightColor1[0], brightColor1[1], brightColor1[2])(subString1);
         }
       } // End-if (haystacks.executeBusinessRule(biz.crandomlyGenerateBooleanValue, '', '') === true)
-      if (haystacks.executeBusinessRules(['', ''], [biz.crandomlyGenerateBooleanValue]) === true) {
-        brightColor2 = haystacks.executeBusinessRules([200, 255], [biz.cgenerateRandomBrightColor]);
-        darkColor2 = haystacks.executeBusinessRules([0, 60], [biz.cgenerateRandomDarkColor]);
-        colorMode2 = haystacks.executeBusinessRules(['', ''], [biz.crandomlyGenerateBooleanValue]);
+      if (await haystacks.executeBusinessRules(['', ''], [biz.crandomlyGenerateBooleanValue]) === true) {
+        brightColor2 = await haystacks.executeBusinessRules([200, 255], [biz.cgenerateRandomBrightColor]);
+        darkColor2 = await haystacks.executeBusinessRules([0, 60], [biz.cgenerateRandomDarkColor]);
+        colorMode2 = await haystacks.executeBusinessRules(['', ''], [biz.crandomlyGenerateBooleanValue]);
         if (colorMode2 === true) {
           subString2 = chalk.rgb(brightColor2[0], brightColor2[1], brightColor2[2])(subString2);
           subString2 = chalk.bgRgb(darkColor2[0], darkColor2[1], darkColor2[2])(subString2);
@@ -191,14 +191,14 @@ async function bossPanic(inputData, inputMetaData) {
     if (fastTypingOutput === true) {
       for (let i = 0; i < stringToPrint.length; i++) {
         // eslint-disable-next-line no-undef
-        process.stdout.write(stringToPrint.charAt(i));
-        haystacks.executeBusinessRules([speedTypingPerformanceIndex, ''], [wrd.csleep]);
+        await process.stdout.write(stringToPrint.charAt(i));
+        await haystacks.executeBusinessRules([speedTypingPerformanceIndex, ''], [wrd.csleep]);
       } // End-for (let i = 0; i < stringToPrint.length; i++)
       console.log('\r'); // Carriage return
     } else {
       console.log(stringToPrint);
     }
-    haystacks.executeBusinessRules([performanceIndex, ''], [wrd.csleep]);
+    await haystacks.executeBusinessRules([performanceIndex, ''], [wrd.csleep]);
   } // End-while (true) // End of the infinite loop
 }
 

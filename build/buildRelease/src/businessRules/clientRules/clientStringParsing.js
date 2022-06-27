@@ -37,15 +37,15 @@ const namespacePrefix = apc.cApplicationName + bas.cDot + wrd.cbusiness + wrd.cR
  */
 async function customEcho(inputData, inputMetaData) {
   let functionName = customEcho.name;
-  haystacks.consoleLog(namespacePrefix, functionName, msg.cBEGIN_Function);
-  haystacks.consoleLog(namespacePrefix, functionName, msg.cinputDataIs + JSON.stringify(inputData));
-  haystacks.consoleLog(namespacePrefix, functionName, msg.cinputMetaDataIs + inputMetaData);
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.cBEGIN_Function);
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.cinputDataIs + JSON.stringify(inputData));
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData;
   // clientStringParsing.customEcho
   returnData = inputData + bas.cSpace + app_msg.cclientStringParsingDotCustomEcho;
   console.log(returnData);
-  haystacks.consoleLog(namespacePrefix, functionName, msg.creturnDataIs + returnData);
-  haystacks.consoleLog(namespacePrefix, functionName, msg.cEND_Function);
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.creturnDataIs + returnData);
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -61,60 +61,60 @@ async function customEcho(inputData, inputMetaData) {
  */
 async function buildReleasePackage(inputData, inputMetaData) {
   let functionName = buildReleasePackage.name;
-  haystacks.consoleLog(namespacePrefix, functionName, msg.cBEGIN_Function);
-  haystacks.consoleLog(namespacePrefix, functionName, msg.cinputDataIs + inputData);
-  haystacks.consoleLog(namespacePrefix, functionName, msg.cinputMetaDataIs + inputMetaData);
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.cBEGIN_Function);
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.cinputDataIs + inputData);
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = false;
   let releaseFiles = [];
   let releasedArchiveFiles = [];
-  let currentVersion = haystacks.getConfigurationSetting(wrd.csystem, sys.cFrameworkVersionNumber);
-  let frameworkName = haystacks.getConfigurationSetting(wrd.csystem, sys.cFrameworkName);
+  let currentVersion = await haystacks.getConfigurationSetting(wrd.csystem, sys.cFrameworkVersionNumber);
+  let frameworkName = await haystacks.getConfigurationSetting(wrd.csystem, sys.cFrameworkName);
   let currentVersionReleased = false;
   let releaseDateTimeStamp;
   let originalSource, originalDestination;
   // current version is:
-  haystacks.consoleLog(namespacePrefix, functionName, msg.ccurrentVersionIs + currentVersion);
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.ccurrentVersionIs + currentVersion);
   originalSource = path.resolve(inputData);
   originalDestination = path.resolve(inputMetaData);
-  releaseFiles = haystacks.executeBusinessRules([originalSource, ''], [biz.creadDirectoryContents]);
-  releasedArchiveFiles = haystacks.executeBusinessRules([originalDestination, ''], [biz.creadDirectoryContents]);
+  releaseFiles = await haystacks.executeBusinessRules([originalSource, ''], [biz.creadDirectoryContents]);
+  releasedArchiveFiles = await haystacks.executeBusinessRules([originalDestination, ''], [biz.creadDirectoryContents]);
   // released archive files list is:
-  haystacks.consoleLog(namespacePrefix, functionName, msg.creleasedArchiveFilesListIs + JSON.stringify(releasedArchiveFiles));
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.creleasedArchiveFilesListIs + JSON.stringify(releasedArchiveFiles));
   // Check if the current version number has already een released as a zip file in the Release folder.
   // If it has ot been released, then we can build the zip file with the current release number and date-time stamp.
   for (let i = 0; i <= releasedArchiveFiles.length - 1; i++) {
     // file is:
-    haystacks.consoleLog(namespacePrefix, functionName, msg.cfileIs + releasedArchiveFiles[i]);
+    await haystacks.consoleLog(namespacePrefix, functionName, msg.cfileIs + releasedArchiveFiles[i]);
     let pathAndFileName = releasedArchiveFiles[i];
-    let fileName = haystacks.executeBusinessRules([pathAndFileName, ''], [biz.cgetFileNameFromPath]);
-    fileName = haystacks.executeBusinessRules([fileName, ''], [biz.cremoveFileExtensionFromFileName]);
+    let fileName = await haystacks.executeBusinessRules([pathAndFileName, ''], [biz.cgetFileNameFromPath]);
+    fileName = await haystacks.executeBusinessRules([fileName, ''], [biz.cremoveFileExtensionFromFileName]);
     // fileName is:
-    haystacks.consoleLog(namespacePrefix, functionName, msg.cfileNameIs + fileName);
+    await haystacks.consoleLog(namespacePrefix, functionName, msg.cfileNameIs + fileName);
     if (fileName.includes(currentVersion) === true) {
       currentVersionReleased = true;
     }
   } // End-for (let i = 0; i <= releasedArchiveFiles.length - 1; i++)
   if (currentVersionReleased === false) {
     // release Files list is:
-    haystacks.consoleLog(namespacePrefix, functionName, msg.creleaseFilesListIs + JSON.stringify(releaseFiles));
-    releaseDateTimeStamp = haystacks.executeBusinessRules([haystacks.getConfigurationSetting(wrd.csystem, sys.cdateTimeStamp), ''], [biz.cgetNowMoment]);
+    await haystacks.consoleLog(namespacePrefix, functionName, msg.creleaseFilesListIs + JSON.stringify(releaseFiles));
+    releaseDateTimeStamp = await haystacks.executeBusinessRules([await haystacks.getConfigurationSetting(wrd.csystem, sys.cdateTimeStamp), ''], [biz.cgetNowMoment]);
     // release date-time stamp is:
-    haystacks.consoleLog(namespacePrefix, functionName, msg.creleaseDateTimeStampIs + releaseDateTimeStamp);
+    await haystacks.consoleLog(namespacePrefix, functionName, msg.creleaseDateTimeStampIs + releaseDateTimeStamp);
     let releaseFileName = releaseDateTimeStamp + bas.cUnderscore + currentVersion + bas.cUnderscore + frameworkName;
     // release fileName is:
-    haystacks.consoleLog(namespacePrefix, functionName, msg.creleaseFileNameIs + releaseFileName);
+    await haystacks.consoleLog(namespacePrefix, functionName, msg.creleaseFileNameIs + releaseFileName);
     let fullReleasePath = path.resolve(originalDestination + bas.cForwardSlash + releaseFileName + gen.cDotzip);
-    returnData = haystacks.executeBusinessRules([originalSource, fullReleasePath], [biz.ccreateZipArchive]);
+    returnData = await haystacks.executeBusinessRules([originalSource, fullReleasePath], [biz.ccreateZipArchive]);
     if (returnData) {
       // Set the return package success flag to True.
-      haystacks.consoleLog(namespacePrefix, functionName, msg.cSetTheReturnPackageSuccessFlagToTrue);
+      await haystacks.consoleLog(namespacePrefix, functionName, msg.cSetTheReturnPackageSuccessFlagToTrue);
     }
   } else {
     // current version already released
-    haystacks.consoleLog(namespacePrefix, functionName, msg.ccurrentVersionAlreadyReleased);
+    await haystacks.consoleLog(namespacePrefix, functionName, msg.ccurrentVersionAlreadyReleased);
   }
-  haystacks.consoleLog(namespacePrefix, functionName, msg.creturnDataIs + returnData);
-  haystacks.consoleLog(namespacePrefix, functionName, msg.cEND_Function);
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.creturnDataIs + returnData);
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.cEND_Function);
   return returnData;
 }
 

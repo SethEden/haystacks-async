@@ -41,15 +41,15 @@ const namespacePrefix = sys.cbusinessRules + bas.cDot + wrd.crules + bas.cDot + 
  */
 async function getLengthOfLongestStringInArray(inputData, inputMetaData) {
   let functionName = getLengthOfLongestStringInArray.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = 0;
   if (inputData) {
     returnData = math.max(...(inputData.map(el => el.length)));
   }
-  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -66,25 +66,25 @@ async function getLengthOfLongestStringInArray(inputData, inputMetaData) {
  */
 async function searchForPatternsInStringArray(inputData, inputMetaData) {
   let functionName = searchForPatternsInStringArray.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = false;
   if (inputData && inputData.length > 0) {
     returnData = []; // Reset it to an empty array, the input data has something n it so we should be able to process it.
     let maxStringLength = await getLengthOfLongestStringInArray(inputData, '') - 1;
     // maxStringLength is:
-    loggers.consoleLog(namespacePrefix + functionName, msg.cmaxStringLengthIs + maxStringLength);
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cmaxStringLengthIs + maxStringLength);
     let minStringLength = 3;
     // minStringLength is:
-    loggers.consoleLog(namespacePrefix + functionName, msg.cminStringLengthIs + minStringLength);
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cminStringLengthIs + minStringLength);
     for (let a = 0; a < inputData.length; a++) { // Initial high-level loop over each of the array elements. (This is the source string for the comparison)
       let currentMasterStringArrayElement = inputData[a];
       // currentMasterStringArrayElement is:
-      loggers.consoleLog(namespacePrefix + functionName, msg.ccurrentMasterStringArrayElementIs + currentMasterStringArrayElement);
+      await loggers.consoleLog(namespacePrefix + functionName, msg.ccurrentMasterStringArrayElementIs + currentMasterStringArrayElement);
       if (currentMasterStringArrayElement.includes(bas.cSpace) === false) {
         // currentMasterStringArrayElement does not contain a space character
-        loggers.consoleLog(namespacePrefix + functionName, msg.cSearchForPatternsInStringArrayMessage1);
+        await loggers.consoleLog(namespacePrefix + functionName, msg.cSearchForPatternsInStringArrayMessage1);
         // NOTE: All of the other loggers.consoleLog below this are not actually getting called for some reason.
         // That is why I have added the hard-coded console ogs, but really they only need to be enabled if this function needs to be debugged.
         // It's difficult to debug these because they really dump a LOT of data to the output.
@@ -138,15 +138,15 @@ async function searchForPatternsInStringArray(inputData, inputMetaData) {
         } // End-for (let b = minStringLength; b <= maxStringLength; b++)
       } else { // Else-clause if (currentMaserStringArrayElement.includes(bas.cSpace) === false)
         // WARNING: Teh current string being searched contains a space character, we are going to skip comparison.
-        loggers.consoleLog(namespacePrefix + functionName, msg.cSearchForPatternsInSringArrayMessage2 + msg.cSearchForPatternsInStringArrayMessage3);
+        await loggers.consoleLog(namespacePrefix + functionName, msg.cSearchForPatternsInSringArrayMessage2 + msg.cSearchForPatternsInStringArrayMessage3);
       }
     } // End-for (let a = 0; a < inputData.length; a++)
   } else { // Else-clause if (inputData && inputData.length > 0)
     // WARNING: InputData was not an array or had an empty array.
-    loggers.consoleLog(namespacePrefix + functionName, msg.cSearchForPatternsInSringArrayMessage4);
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cSearchForPatternsInSringArrayMessage4);
   }
-  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -161,9 +161,9 @@ async function searchForPatternsInStringArray(inputData, inputMetaData) {
  */
 async function validatePatternsThatNeedImplementation(inputData, inputMetaData) {
   let functionName = validatePatternsThatNeedImplementation.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = '';
   if (inputData) {
     let passMessage = '';
@@ -180,7 +180,7 @@ async function validatePatternsThatNeedImplementation(inputData, inputMetaData) 
         } // End-if (colorizeLogsEnabled === true)
         console.log(passMessage);
         // constant does NOT exist:
-        loggers.consoleLog(namespacePrefix + functionName, msg.cConstantDoesNotExist + currentString);
+        await loggers.consoleLog(namespacePrefix + functionName, msg.cConstantDoesNotExist + currentString);
         // Make sure we add all the strings that do not exist to a coma-separated list,
         // so we can enqueue it to the constantsGeneratorList command and generate actual new constants lines of code.
         if (j === 0) {
@@ -198,12 +198,12 @@ async function validatePatternsThatNeedImplementation(inputData, inputMetaData) 
         } // End-if colorizeLogsEnabled === true
         console.log(passMessage);
         // constant does exist:
-        loggers.consoleLog(namespacePrefix + functionName, msg.cConstantDoesExist + currentString);
+        await loggers.consoleLog(namespacePrefix + functionName, msg.cConstantDoesExist + currentString);
       }
     } // End-for (const element of inputData)
   } // End-if (inputData)
-  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 

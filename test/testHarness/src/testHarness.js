@@ -137,7 +137,7 @@ async function application() {
   }
   // argumentDrivenInterface is:
   // haystacks.consoleLog(namespacePrefix, functionName, app_msg.cargumentDrivenInterfaceIs + argumentDrivenInterface);
-  haystacks.enqueueCommand(cmd.cStartupWorkflow);
+  await haystacks.enqueueCommand(cmd.cStartupWorkflow);
 
   // NOTE: We are processing the argument driven interface first that way even if we are not in an argument driven interface,
   // arguments can still be passed in and they will be executed first, after the startup workflow is complete.
@@ -148,7 +148,7 @@ async function application() {
   // Make sure we execute any and all commands so the command queue is empty before
   // we process the command args and add more commands to the command queue.
   // Really this is about getting out the application name, version and about message.
-  while (haystacks.isCommandQueueEmpty() === false) {
+  while (await haystacks.isCommandQueueEmpty() === false) {
     commandResult = await haystacks.processCommandQueue();
   } // End-while (haystacks.isCommandQueueEmpty() === false)
 
@@ -162,7 +162,7 @@ async function application() {
     if (commandToExecute !== '') {
       await warden.enqueueCommand(commandToExecute);
     }
-    while (haystacks.isCommandQueueEmpty() === false) {
+    while (await haystacks.isCommandQueueEmpty() === false) {
       commandResult = await haystacks.processCommandQueue();
     } // End-while (haystacks.isCommandQueueEmpty() === false)
   } // End-if (!process.argv && process.argv.length > 0)
@@ -170,35 +170,35 @@ async function application() {
   // NOW the application can continue with the interactive interface fi the flag was set to false.
   if (argumentDrivenInterface === false) {
     // BEGIN main program loop
-    haystacks.consoleLog(namespacePrefix, functionName, app_msg.capplicationMessage01);
+    await haystacks.consoleLog(namespacePrefix, functionName, app_msg.capplicationMessage01);
 
     // BEGIN command parser
-    haystacks.consoleLog(namespacePrefix, functionName, app_msg.capplicationMessage02);
+    await haystacks.consoleLog(namespacePrefix, functionName, app_msg.capplicationMessage02);
     while(programRunning === true) {
       if (await haystacks.isCommandQueueEmpty() === true) {
         // biz.cprompt is some how undefined here, although other biz.c<something-else> do still work.
         // We will use wrd.cprompt here because it is working. No idea what the issue is with biz.prompt.
-        commandInput = haystacks.executeBusinessRules([bas.cGreaterThan, ''], [wrd.cprompt]);
-        haystacks.enqueueCommand(commandInput);
+        commandInput = await haystacks.executeBusinessRules([bas.cGreaterThan, ''], [wrd.cprompt]);
+        await haystacks.enqueueCommand(commandInput);
       } // End-if (haystacks.isCommandQueueEmpty() === true)
       commandResult = await haystacks.processCommandQueue();
       if (commandResult[exitConditionArrayIndex] === false) {
         // END command parser
-        haystacks.consoleLog(namespacePrefix, functionName, app_msg.capplicationMessage03);
+        await haystacks.consoleLog(namespacePrefix, functionName, app_msg.capplicationMessage03);
         programRunning = false;
         // END main program loop
-        haystacks.consoleLog(namespacePrefix, functionName, app_msg.capplicationMessage04);
+        await haystacks.consoleLog(namespacePrefix, functionName, app_msg.capplicationMessage04);
         // Exiting TEST HARNESS APPLICATION
-        haystacks.consoleLog(namespacePrefix, functionName, app_msg.capplicationMessage05);
+        await haystacks.consoleLog(namespacePrefix, functionName, app_msg.capplicationMessage05);
         break;
       } // End-if (commandResult[exitConditionArrayIndex] === false)
     } // End-while (programRunning === true)
   } // End-if (argumentDrivenInterface === false)
-  haystacks.consoleLog(namespacePrefix, functionName, msg.cEND_Function);
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.cEND_Function);
 }
 
 // Launch the Test Harness application!!
 let programRunning = false;
 await bootstrapApplication();
 programRunning = true;
-application();
+await application();

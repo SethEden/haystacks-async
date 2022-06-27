@@ -116,7 +116,7 @@
   "debugFunctions|debugSetting.brokers.commandBroker.getCommandArgs@FunctionFontBackgroundColor": "Default",
   "debugFunctions|debugSetting.brokers.commandBroker.getCommandArgs@MessageFontBackgroundColor": "Default",
   "debugFunctions|debugSetting.brokers.commandBroker.getCommandArgs@DataFontBackgroundColor": "Default",
-  "debugFunctions|debugSetting.brokers.commandBroker.executeCommand": false,
+  "debugFunctions|debugSetting.brokers.commandBroker.executeCommand": true,
   "debugFunctions|debugSetting.brokers.commandBroker.executeCommand@ModuleFontStyle": "Default",
   "debugFunctions|debugSetting.brokers.commandBroker.executeCommand@FunctionFontStyle": "Default",
   "debugFunctions|debugSetting.brokers.commandBroker.executeCommand@MessageFontStyle": "Default",

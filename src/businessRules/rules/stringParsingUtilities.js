@@ -101,10 +101,10 @@ async function stringToDataType(inputData, inputMetaData) {
   // console.log(`inputMetaData is: ${JSON.stringify(inputMetaData)}`);
   let returnData = false;
   if (inputData) {
-    let dataType = determineObjectDataType(inputData, '');
+    let dataType = await determineObjectDataType(inputData, '');
     switch (dataType) {
       case wrd.cBoolean:
-        returnData = stringToBoolean(inputData, '');
+        returnData = await stringToBoolean(inputData, '');
         break;
       case wrd.cInteger:
         returnData = parseInt(inputData, '');
@@ -184,13 +184,13 @@ async function determineObjectDataType(inputData, inputMetaData) {
   // console.log(`inputMetaData is: ${JSON.stringify(inputMetaData)}`);
   let returnData = false;
   if (inputData) {
-    if (isBoolean(inputData, '') === true) {
+    if (await isBoolean(inputData, '') === true) {
       returnData = wrd.cBoolean;
-    } else if (isInteger(inputData, '') === true) {
+    } else if (await isInteger(inputData, '') === true) {
       returnData = wrd.cInteger;
-    } else if (isFloat(inputData, '') === true) {
+    } else if (await isFloat(inputData, '') === true) {
       returnData = wrd.cFloat;
-    } else if (isString(inputData, '') === true) {
+    } else if (await isString(inputData, '') === true) {
       returnData = wrd.cString;
     } else { // Otherwise we cannot figure out what the data type is.
       // No real way to tell the difference between Short, Long and Double.
@@ -323,7 +323,7 @@ async function isString(inputData, inputMetaData) {
   // console.log(`inputMetaData is: ${JSON.stringify(inputMetaData)}`);
   let returnData = false;
   if (inputData) {
-    if (isBoolean(inputData, '') === false && isInteger(inputData, '') === false && isFloat(inputData, '') === false &&
+    if (await isBoolean(inputData, '') === false && await isInteger(inputData, '') === false && await isFloat(inputData, '') === false &&
     (typeof inputData === wrd.cstring || inputData instanceof String)) {
       returnData = true; // If it's not a Boolean, and not an Integer, and not a Float, then it must be a string,
       // especially given the type of the variable is a string!
@@ -355,7 +355,7 @@ async function replaceDoublePercentWithMessage(inputData, inputMetaData) {
   // console.log(`inputMetaData is: ${JSON.stringify(inputMetaData)}`);
   let returnData = '';
   if (inputData) {
-    returnData = utilitiesReplaceCharacterWithCharacter(inputData, [bas.cDoublePercent, inputMetaData]);
+    returnData = await utilitiesReplaceCharacterWithCharacter(inputData, [bas.cDoublePercent, inputMetaData]);
   }
   // console.log(`returnData is: ${JSON.stringify(returnData)}`);
   // console.log(`END ${namespacePrefix}${functionName} function`);

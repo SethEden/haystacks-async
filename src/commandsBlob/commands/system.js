@@ -46,9 +46,9 @@ const namespacePrefix = sys.ccommandsBlob + bas.cDot + wrd.ccommands + bas.cDot 
  */
 async function echoCommand(inputData, inputMetaData) {
   let functionName = echoCommand.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = [true, ''];
   let errorMessage = '';
   if (inputData) {
@@ -61,8 +61,8 @@ async function echoCommand(inputData, inputMetaData) {
     console.log(errorMessage);
     returnData[1] = errorMessage;
   }
-  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -79,12 +79,12 @@ async function echoCommand(inputData, inputMetaData) {
  */
 async function exit(inputData, inputMetaData) {
   let functionName = exit.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = [false, true];
-  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -102,9 +102,9 @@ async function exit(inputData, inputMetaData) {
  */
 async function version(inputData, inputMetaData) {
   let functionName = version.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = [true, ''];
   let configVersion = '';
   let appContext = '';
@@ -122,8 +122,8 @@ async function version(inputData, inputMetaData) {
   }
   console.log(configVersion);
   returnData[1] = configVersion;
-  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -141,9 +141,9 @@ async function version(inputData, inputMetaData) {
  */
 async function about(inputData, inputMetaData) {
   let functionName = about.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = [true, ''];
   let configDescription = '';
   let appContext = '';
@@ -161,8 +161,8 @@ async function about(inputData, inputMetaData) {
   }
   console.log(configDescription);
   returnData[1] = configDescription;
-  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -184,9 +184,9 @@ async function about(inputData, inputMetaData) {
  */
 async function name(inputData, inputMetaData) {
   let functionName = name.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = [true, ''];
   let reportedName = '';
   let figletFont = '';
@@ -217,8 +217,8 @@ async function name(inputData, inputMetaData) {
     console.log(reportedName);
   }
   returnData[1] = reportedName;
-  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -235,7 +235,7 @@ async function name(inputData, inputMetaData) {
 // eslint-disable-next-line no-unused-vars
 async function clearScreen(inputData, inputMetaData) {
   let functionName = clearScreen.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
   // loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
   let returnData = [true, {}];
@@ -244,8 +244,8 @@ async function clearScreen(inputData, inputMetaData) {
   // eslint-disable-next-line no-undef
   process.stdout.write('\u001b[H\u001b[2J\u001b[3J');
   returnData[1] = true;
-  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -264,7 +264,7 @@ async function clearScreen(inputData, inputMetaData) {
 // eslint-disable-next-line no-unused-vars
 async function help(inputData, inputMetaData) {
   let functionName = help.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   let returnData = [true, []];
   let errorMessage = '';
   if (inputData.length > 1) {
@@ -272,7 +272,7 @@ async function help(inputData, inputMetaData) {
     // because the user entered some namespace we should look for!
     let namespaceCommandsData = await commandBroker.getCommandNamespaceDataObject(undefined, inputData[1]);
     // namespaceCommandsData is:
-    loggers.consoleLog(namespacePrefix + functionName, msg.cnamespaceCommandsDataIs + JSON.stringify(namespaceCommandsData));
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cnamespaceCommandsDataIs + JSON.stringify(namespaceCommandsData));
     if (namespaceCommandsData === false) {
       // ERROR: The command namespace was not found.
       // Please make sure you have entered the correct name and try again.
@@ -281,20 +281,20 @@ async function help(inputData, inputMetaData) {
       returnData[1] = errorMessage;
     } else {
       // NOW call getAllCommandAliasData with the above found data!
-      loggers.consoleLog(namespacePrefix + functionName, msg.chelpCommandMessage03);
+      await loggers.consoleLog(namespacePrefix + functionName, msg.chelpCommandMessage03);
       let flattenedNamespaceCommandAliasData = await commandBroker.getAllCommandAliasData(namespaceCommandsData);
-      loggers.consoleTableLog(baseFileName + bas.cDot + functionName, flattenedNamespaceCommandAliasData[0], [wrd.cName, wrd.cDescription]);
+      await loggers.consoleTableLog(baseFileName + bas.cDot + functionName, flattenedNamespaceCommandAliasData[0], [wrd.cName, wrd.cDescription]);
       returnData[1] = await ruleBroker.processRules([flattenedNamespaceCommandAliasData[0], ''], [biz.carrayDeepClone]);
     }
   } else {
     let allCommandAliasFlatData = await commandBroker.getAllCommandAliasData(D[sys.cCommandsAliases]);
     returnData[1] = await ruleBroker.processRules([allCommandAliasFlatData, ''], [biz.carrayDeepClone]);
     // allCommandAliasFlatData is:
-    loggers.consoleLog(namespacePrefix + functionName, msg.callCommandAliasFlatDataIs + JSON.stringify(allCommandAliasFlatData[0]));
-    loggers.consoleTableLog(baseFileName + bas.cDot + functionName, allCommandAliasFlatData[0], [wrd.cName, wrd.cDescription]);
+    await loggers.consoleLog(namespacePrefix + functionName, msg.callCommandAliasFlatDataIs + JSON.stringify(allCommandAliasFlatData[0]));
+    await loggers.consoleTableLog(baseFileName + bas.cDot + functionName, allCommandAliasFlatData[0], [wrd.cName, wrd.cDescription]);
   }
-  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -312,9 +312,9 @@ async function help(inputData, inputMetaData) {
  */
 async function workflowHelp(inputData, inputMetaData) {
   let functionName = workflowHelp.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = [true, []];
   let errorMessage = '';
   // The old way of printing out all the workflows, when it was a flat data structure.
@@ -322,10 +322,10 @@ async function workflowHelp(inputData, inputMetaData) {
   if (inputData.length > 1) {
     // calling getWorkflowNamespaceDataObject() function,
     // because the user entered some namespace we should look for!
-    loggers.consoleLog(namespacePrefix + functionName, msg.cworkfowHelpMessage01 + msg.cworkfowHelpMessage02);
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cworkfowHelpMessage01 + msg.cworkfowHelpMessage02);
     let namespaceWorkflowData = await workflowBroker.getWorkflowNamespaceDataObject(undefined, inputData[1]);
     // namespaceWorkflowData is:
-    loggers.consoleLog(namespacePrefix + functionName, msg.cnamespaceWorkflowDataIs + JSON.stringify(namespaceWorkflowData));
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cnamespaceWorkflowDataIs + JSON.stringify(namespaceWorkflowData));
     if (namespaceWorkflowData === false) {
       // ERROR: The workflow namespace was not found.
       // Please make sure you have entered the correct name and try again.
@@ -334,23 +334,23 @@ async function workflowHelp(inputData, inputMetaData) {
       returnData[1] = errorMessage;
     } else {
       // NOW call getAllWorkflows with the above found data!
-      loggers.consoleLog(namespacePrefix + functionName, msg.cworkfowHelpMessage03);
+      await loggers.consoleLog(namespacePrefix + functionName, msg.cworkfowHelpMessage03);
       let flattenedNamespaceWorkflowData = await workflowBroker.getAllWorkflows(namespaceWorkflowData);
-      loggers.consoleTableLog(baseFileName + bas.cDot + functionName, flattenedNamespaceWorkflowData);
+      await loggers.consoleTableLog(baseFileName + bas.cDot + functionName, flattenedNamespaceWorkflowData);
       returnData[1] = await ruleBroker.processRules([flattenedNamespaceWorkflowData, ''], [biz.carrayDeepClone]);
     }
   } else {
     // User did not enter any parameters,
     // just call getAllWorkflows functions with no input,
     // will return all and print all.
-    loggers.consoleLog(namespacePrefix + functionName, msg.cworkfowHelpMessage04 + msg.cworkfowHelpMessage05 + msg.cworkfowHelpMessage06);
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cworkfowHelpMessage04 + msg.cworkfowHelpMessage05 + msg.cworkfowHelpMessage06);
     let allWorkflowData = await workflowBroker.getAllWorkflows();
-    loggers.consoleLog(namespacePrefix + functionName, msg.callWorkflowDataIs + JSON.stringify(allWorkflowData));
-    loggers.consoleTableLog(baseFileName + bas.cDot + functionName, allWorkflowData);
+    await loggers.consoleLog(namespacePrefix + functionName, msg.callWorkflowDataIs + JSON.stringify(allWorkflowData));
+    await loggers.consoleTableLog(baseFileName + bas.cDot + functionName, allWorkflowData);
     returnData[1] = await ruleBroker.processRules([allWorkflowData, ''], [biz.carrayDeepClone]);
   }
-  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 

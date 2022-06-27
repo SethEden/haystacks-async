@@ -41,10 +41,10 @@ const namespacePrefix = wrd.ccontrollers + bas.cDot + baseFileName + bas.cDot;
  * @date 2022/01/18
  */
 async function searchForUniversalDebugConfigSetting(appConfigPathName, frameworkConfigPathName) {
-  // let functionName = searchForUniversalDebugConfigSetting.name;
-  // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
-  // console.log(`appConfigPathName is: ${appConfigPathName}`);
-  // console.log(`frameworkConfigPathName is: ${frameworkConfigPathName}`);
+  let functionName = searchForUniversalDebugConfigSetting.name;
+  console.log(`BEGIN ${namespacePrefix}${functionName} function`);
+  console.log(`appConfigPathName is: ${appConfigPathName}`);
+  console.log(`frameworkConfigPathName is: ${frameworkConfigPathName}`);
   let universalDebugConfigSetting = false;
   let appConfigDataPath = await configurator.getConfigurationSetting(wrd.csystem, appConfigPathName);
   let frameworkConfigDataPath = await configurator.getConfigurationSetting(wrd.csystem, frameworkConfigPathName);
@@ -52,14 +52,14 @@ async function searchForUniversalDebugConfigSetting(appConfigPathName, framework
   frameworkConfigDataPath = path.resolve(frameworkConfigDataPath);
   let appConfigFilesToLoad = await dataBroker.scanDataPath(appConfigDataPath);
   let frameworkConfigFilesToLoad = await dataBroker.scanDataPath(frameworkConfigDataPath);
-  configurator.setConfigurationSetting(wrd.csystem, cfg.cappConfigFiles, appConfigFilesToLoad);
-  configurator.setConfigurationSetting(wrd.csystem, cfg.cframeworkConfigFiles, frameworkConfigFilesToLoad);
-  universalDebugConfigSetting = dataBroker.findUniversalDebugConfigSetting(
+  await configurator.setConfigurationSetting(wrd.csystem, cfg.cappConfigFiles, appConfigFilesToLoad);
+  await configurator.setConfigurationSetting(wrd.csystem, cfg.cframeworkConfigFiles, frameworkConfigFilesToLoad);
+  universalDebugConfigSetting = await dataBroker.findUniversalDebugConfigSetting(
     appConfigFilesToLoad, frameworkConfigFilesToLoad
   );
-  configurator.setConfigurationSetting(wrd.csystem, cfg.cdebugSettings, universalDebugConfigSetting);
-  // console.log(`universalDebugConfigSetting is: ${universalDebugConfigSetting}`);
-  // console.log(`END ${namespacePrefix}${functionName} function`);
+  await configurator.setConfigurationSetting(wrd.csystem, cfg.cdebugSettings, universalDebugConfigSetting);
+  console.log(`universalDebugConfigSetting is: ${universalDebugConfigSetting}`);
+  console.log(`END ${namespacePrefix}${functionName} function`);
   return universalDebugConfigSetting;
 }
 
@@ -75,19 +75,19 @@ async function searchForUniversalDebugConfigSetting(appConfigPathName, framework
  */
 async function determineThemeDebugConfigFilesToLoad(themeConfigPathName) {
   let functionName = determineThemeDebugConfigFilesToLoad.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // themeConfigPathName is:
-  loggers.consoleLog(namespacePrefix + functionName, msg.cthemeConfigPathNameIs + themeConfigPathName);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cthemeConfigPathNameIs + themeConfigPathName);
   let themeConfigFilesToLoad = false;
   if (themeConfigPathName) {
     let themeConfigDataPath = await configurator.getConfigurationSetting(wrd.csystem, themeConfigPathName);
     themeConfigDataPath = path.resolve(themeConfigDataPath);
     themeConfigFilesToLoad = await dataBroker.scanDataPath(themeConfigDataPath);
-    configurator.setConfigurationSetting(wrd.csystem, cfg.cthemeConfigFiles, themeConfigFilesToLoad);
+    await configurator.setConfigurationSetting(wrd.csystem, cfg.cthemeConfigFiles, themeConfigFilesToLoad);
   } // End-if (themeConfigPathName)
   // themeConfigFilesToLoad is:
-  loggers.consoleLog(namespacePrefix + functionName, msg.cthemeConfigFilesToLoadIs + JSON.stringify(themeConfigFilesToLoad));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cthemeConfigFilesToLoadIs + JSON.stringify(themeConfigFilesToLoad));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return themeConfigFilesToLoad;
 }
 
@@ -102,16 +102,16 @@ async function determineThemeDebugConfigFilesToLoad(themeConfigPathName) {
  */
 async function getAndProcessCsvData(pathAndFilename, contextName) {
   let functionName = getAndProcessCsvData.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // pathAndFilename is:
-  loggers.consoleLog(namespacePrefix + functionName, msg.cpathAndFilenameIs + pathAndFilename);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cpathAndFilenameIs + pathAndFilename);
   // contextName is:
-  loggers.consoleLog(namespacePrefix + functionName, msg.ccontextNameIs + contextName);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.ccontextNameIs + contextName);
   pathAndFilename = path.resolve(pathAndFilename);
   let loadedData = await dataBroker.getCsvData(pathAndFilename);
   // Now pre-process the data into a usable format, string-numbers to actual numbers, string-booleans to actual booleans, etc...
   let allLoadedData = await dataBroker.getAndProcessCsvData(loadedData, contextName);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return allLoadedData;
 }
 
@@ -125,16 +125,16 @@ async function getAndProcessCsvData(pathAndFilename, contextName) {
  */
 async function getAndProcessXmlData(pathAndFilename) {
   let functionName = getAndProcessXmlData.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // pathAndFilename is:
-  loggers.consoleLog(namespacePrefix + functionName, msg.cpathAndFilenameIs + pathAndFilename);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cpathAndFilenameIs + pathAndFilename);
   pathAndFilename = path.resolve(pathAndFilename);
   let allLoadedXmlData = await dataBroker.getXmlData(pathAndFilename);
   // Now pre-process the data into a usable format, string-numbers to actual numbers, string-booleans to actual booleans, etc...
   let allXmlData = await dataBroker.processXmlData(allLoadedXmlData);
   // allXmlData is:
-  loggers.consoleLog(namespacePrefix + functionName, msg.callXmlDataIs + JSON.stringify(allXmlData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.callXmlDataIs + JSON.stringify(allXmlData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return allXmlData;
 }
 
@@ -149,23 +149,23 @@ async function getAndProcessXmlData(pathAndFilename) {
  */
 async function setupAllCsvData(dataPathConfigurationName, contextName) {
   let functionName = setupAllCsvData.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // dataPathConfigurationName is:
-  loggers.consoleLog(namespacePrefix + functionName, msg.cdataPathConfigurationNameIs + dataPathConfigurationName);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cdataPathConfigurationNameIs + dataPathConfigurationName);
   // contextName is:
-  loggers.consoleLog(namespacePrefix + functionName, msg.ccontextNameIs + contextName);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.ccontextNameIs + contextName);
   let loadedAndMergedDataAllFiles = {};
   let dataPath = await configurator.getConfigurationSetting(wrd.csystem, dataPathConfigurationName);
   dataPath = path.resolve(dataPath);
   // dataPath is:
-  loggers.consoleLog(namespacePrefix + functionName, msg.cdataPathIs + dataPath);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cdataPathIs + dataPath);
   let filesToLoad = await dataBroker.scanDataPath(dataPath);
   // filesToLoad is:
-  loggers.consoleLog(namespacePrefix + functionName, msg.cfilesToLoadIs + JSON.stringify(filesToLoad));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cfilesToLoadIs + JSON.stringify(filesToLoad));
   loadedAndMergedDataAllFiles = await dataBroker.loadAllCsvData(filesToLoad, contextName);
   // loadedAndMergedDataAllFiles is:
-  loggers.consoleLog(namespacePrefix + functionName, msg.cloadedAndMergedDataAllFilesIs + JSON.stringify(loadedAndMergedDataAllFiles));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cloadedAndMergedDataAllFilesIs + JSON.stringify(loadedAndMergedDataAllFiles));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return loadedAndMergedDataAllFiles;
 }
 
@@ -180,23 +180,23 @@ async function setupAllCsvData(dataPathConfigurationName, contextName) {
  */
 async function setupAllXmlData(dataPathConfigurationName, contextName) {
   let functionName = setupAllXmlData.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // dataPathConfigurationName is:
-  loggers.consoleLog(namespacePrefix + functionName, msg.cdataPathConfigurationNameIs + dataPathConfigurationName);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cdataPathConfigurationNameIs + dataPathConfigurationName);
   // contextName is:
-  loggers.consoleLog(namespacePrefix + functionName, msg.ccontextNameIs + contextName);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.ccontextNameIs + contextName);
   let loadedAndMergedDataAllFiles = {};
   let dataPath = await configurator.getConfigurationSetting(wrd.csystem, dataPathConfigurationName);
   dataPath = path.resolve(dataPath);
   // dataPath is:
-  loggers.consoleLog(namespacePrefix + functionName, msg.cdataPathIs + dataPath);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cdataPathIs + dataPath);
   let filesToLoad = await dataBroker.scanDataPath(dataPath);
   // filesToLoad is:
-  loggers.consoleLog(namespacePrefix + functionName, msg.cfilesToLoadIs + JSON.stringify(filesToLoad));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cfilesToLoadIs + JSON.stringify(filesToLoad));
   loadedAndMergedDataAllFiles = await dataBroker.loadAllXmlData(filesToLoad, contextName);
   // loadedAndMergedDataAllFiles is:
-  loggers.consoleLog(namespacePrefix + functionName, msg.cloadedAndMergedDataAllFilesIs + JSON.stringify(loadedAndMergedDataAllFiles));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cloadedAndMergedDataAllFilesIs + JSON.stringify(loadedAndMergedDataAllFiles));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return loadedAndMergedDataAllFiles;
 }
 
@@ -211,10 +211,10 @@ async function setupAllXmlData(dataPathConfigurationName, contextName) {
  * @NOTE Cannot use the loggers here, because dependency data will have never been loaded.
  */
 async function setupAllJsonConfigData(dataPathConfigurationName, contextName) {
-  // let functionName = setupAllJsonConfigData.name;
-  // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
-  // console.log(`dataPathConfigurationName is: ${dataPathConfigurationName}`);
-  // console.log(`contextName is: ${contextName}`);
+  let functionName = setupAllJsonConfigData.name;
+  console.log(`BEGIN ${namespacePrefix}${functionName} function`);
+  console.log(`dataPathConfigurationName is: ${dataPathConfigurationName}`);
+  console.log(`contextName is: ${contextName}`);
   let loadedAndMergedDataAllFiles = {};
   let filesToLoad = [];
   if (dataPathConfigurationName === sys.cappConfigPath) {
@@ -225,8 +225,8 @@ async function setupAllJsonConfigData(dataPathConfigurationName, contextName) {
     filesToLoad = await configurator.getConfigurationSetting(wrd.csystem, cfg.cthemeConfigFiles);
   }
   loadedAndMergedDataAllFiles = await dataBroker.loadAllJsonData(filesToLoad, contextName);
-  // console.log(`loadedAndMergedDataAllFiles is: ${JSON.stringify(loadedAndMergedDataAllFiles)}`);
-  // console.log(`END ${namespacePrefix}${functionName} function`);
+  console.log(`loadedAndMergedDataAllFiles is: ${JSON.stringify(loadedAndMergedDataAllFiles)}`);
+  console.log(`END ${namespacePrefix}${functionName} function`);
   return loadedAndMergedDataAllFiles;
 }
 
@@ -239,9 +239,9 @@ async function setupAllJsonConfigData(dataPathConfigurationName, contextName) {
  */
 async function initializeConstantsValidationData() {
   let functionName = initializeConstantsValidationData.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  dataBroker.initializeConstantsValidationData();
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await dataBroker.initializeConstantsValidationData();
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
 }
 
 /**
@@ -254,11 +254,11 @@ async function initializeConstantsValidationData() {
  */
 async function addConstantsValidationData(arrayValidationData) {
   let functionName = addConstantsValidationData.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // arrayValidationData is:
-  loggers.consoleLog(namespacePrefix + functionName, msg.carrayValidationDataIs + JSON.stringify(arrayValidationData));
-  dataBroker.addConstantsValidationData(arrayValidationData);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.carrayValidationDataIs + JSON.stringify(arrayValidationData));
+  await dataBroker.addConstantsValidationData(arrayValidationData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
 }
 
 export default {
