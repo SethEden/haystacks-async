@@ -34,7 +34,7 @@ const namespacePrefix = wrd.cresources + bas.cDot + wrd.cconstants + wrd.cValida
 async function initializeAllSystemConstantsValidationData() {
   let functionName = initializeAllSystemConstantsValidationData.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  let constantsPath = configurator.getConfigurationSetting(wrd.csystem, cfg.cframeworkConstantsPath);
+  let constantsPath = await configurator.getConfigurationSetting(wrd.csystem, cfg.cframeworkConstantsPath);
   // constantsPath is:
   await loggers.consoleLog(namespacePrefix + functionName, msg.cconstantsPathIs + constantsPath);
 

@@ -56,7 +56,7 @@ async function businessRulesMetrics(inputData, inputMetaData) {
      let average = 0;
      let standardDev = 0;
      // Here we iterate over all of the business rules that were added to the sys.cBusinessRulePerformanceTrackingStack.
-     for (let i = 0; i < stack.length(cfg.cbusinessRulesNamesPerformanceTrackingStack); i++) {
+     for (let i = 0; i < await stack.length(cfg.cbusinessRulesNamesPerformanceTrackingStack); i++) {
        businessRuleCounter = 0; // Reset it to zero, because we are beginning again with another business rule name.
        businessRulePerformanceSum = 0;
        businessRulePerformanceStdSum = 0;
@@ -65,7 +65,7 @@ async function businessRulesMetrics(inputData, inputMetaData) {
        // Here we will not iterate over all of the contents of all of the business rule performance numbers and
        // do the necessary math for each business rule according to the parent loop.
        let currentBusinessRuleName = D[cfg.cbusinessRulesNamesPerformanceTrackingStack][i];
-       for (let j = 0; j < stack.length(cfg.cbusinessRulesPerformanceTrackingStack); j++) {
+       for (let j = 0; j < await stack.length(cfg.cbusinessRulesPerformanceTrackingStack); j++) {
          if (D[cfg.cbusinessRulesPerformanceTrackingStack][j][wrd.cName] === currentBusinessRuleName) {
            businessRuleCounter = businessRuleCounter + 1;
            // businessRuleCounter is:
@@ -74,30 +74,31 @@ async function businessRulesMetrics(inputData, inputMetaData) {
            // businessRulePerformanceSum is:
            await loggers.consoleLog(namespacePrefix + functionName, msg.cbusinessRulePerformanceSumIs + businessRulePerformanceSum);
          } // End-if (D[cfg.cBusinessRulePerformanceTrackingStack][j][wrd.cName] === currentBusinessRuleName)
-       } // End-for (let j = 0; j < stack.length(cfg.cBusinessRulePerformanceTrackingStack); j++)
+       } // End-for (let j = 0; j < await stack.length(cfg.cBusinessRulePerformanceTrackingStack); j++)
        // DONE! businessRulePerformanceSum is:
        await loggers.consoleLog(namespacePrefix + functionName, msg.cDoneBusinessRulePerformanceSumIs + businessRulePerformanceSum);
        average = businessRulePerformanceSum / businessRuleCounter;
        // average is:
        await loggers.consoleLog(namespacePrefix + functionName, msg.caverageIs + average);
        // Now go back through them all so we can compute the standard deviation.
-       for (let k = 0; k < stack.length(cfg.cbusinessRulesPerformanceTrackingStack); k++) {
+       for (let k = 0; k < await stack.length(cfg.cbusinessRulesPerformanceTrackingStack); k++) {
          if (D[cfg.cbusinessRulesPerformanceTrackingStack][k][wrd.cName] === currentBusinessRuleName) {
            businessRulePerformanceStdSum = businessRulePerformanceStdSum + math.pow((D[cfg.cbusinessRulesPerformanceTrackingStack][k][sys.cRunTime] - average), 2);
            // businessRulePerformanceStdSum is:
            await loggers.consoleLog(namespacePrefix + functionName, msg.cbusinessRulePerformanceStdSumIs + businessRulePerformanceStdSum);
          } // End-if (D[cfg.cBusinessRulePerformanceTrackingStack][k][wrd.cName] === currentBusinessRuleName)
-       } // End-for (let k = 0; k < stack.length(cfg.cBusinessRulePerformanceTrackingStack); k++)
+       } // End-for (let k = 0; k < await stack.length(cfg.cBusinessRulePerformanceTrackingStack); k++)
        // DONE! businessRulePerformanceStdSum is:
        await loggers.consoleLog(namespacePrefix + functionName, msg.cDoneBusinessRulePerformanceStdSumIs + businessRulePerformanceStdSum);
        standardDev = math.sqrt(businessRulePerformanceStdSum / businessRuleCounter);
        // standardDev is:
        await loggers.consoleLog(namespacePrefix + functionName, msg.cstandardDevIs + standardDev);
+
        if (D[cfg.cbusinessRulesPerformanceAnalysisStack] === undefined) {
         await stack.initStack(cfg.cbusinessRulesPerformanceAnalysisStack);
        }
        await stack.push(cfg.cbusinessRulesPerformanceAnalysisStack, {Name: currentBusinessRuleName, Average: average, StandardDeviation: standardDev});
-     } // End-for (let i = 0; i < stack.length(cfg.cBusinessRulesNamesPerformanceTrackingStack); i++)
+     } // End-for (let i = 0; i < await stack.length(cfg.cBusinessRulesNamesPerformanceTrackingStack); i++)
      await loggers.consoleTableLog('', D[cfg.cbusinessRulesPerformanceAnalysisStack], [wrd.cName, wrd.cAverage, sys.cStandardDeviation]);
      returnData[1] = await ruleBroker.processRules([D[cfg.cbusinessRulesPerformanceAnalysisStack], ''], [biz.carrayDeepClone]);
      await stack.clearStack(cfg.cbusinessRulesPerformanceAnalysisStack);
