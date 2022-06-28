@@ -19,7 +19,7 @@ import D from './data.js';
 import hayConst from '@haystacks/constants';
 import path from 'path';
 
-const {bas, msg, sys, wrd} = hayConst;
+const {bas, msg, wrd} = hayConst;
 const baseFileName = path.basename(import.meta.url, path.extname(import.meta.url));
 // structures.queue.
 const namespacePrefix = wrd.cstructures + bas.cDot + baseFileName + bas.cDot;
@@ -170,8 +170,8 @@ async function queuePrint(queueNameSpace) {
   if (D[queueNameSpace] !== undefined) {
     // Contents of the queue namespace:
     returnData = JSON.stringify(D[queueNameSpace]);
-    let queueContentsMessage = msg.cContentsOfTheQueueNamespace + queueNameSpace + sys.cSpaceIsColonSpace + JSON.stringify(D[queueNameSpace]);
-    console.log(queueContentsMessage);
+    // let queueContentsMessage = msg.cContentsOfTheQueueNamespace + queueNameSpace + sys.cSpaceIsColonSpace + JSON.stringify(D[queueNameSpace]);
+    // console.log(queueContentsMessage);
   } else {
     // WARNING: Queue:
     // does not exist!

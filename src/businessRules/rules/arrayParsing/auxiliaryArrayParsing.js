@@ -112,7 +112,7 @@ async function doesArrayContainValue(inputData, inputMetaData) {
       await loggers.consoleLog(namespacePrefix + functionName, msg.carrayInputObjectIsNotAnArray);
     } else {
       // eslint-disable-next-line no-extra-boolean-cast
-      if (!!array.find(i => inputMetaData(i, value))) {
+      if (!!array.find(await (async (i) => (await inputMetaData(i, value))))) {
         // The value was found in the array.
         await loggers.consoleLog(namespacePrefix + functionName, msg.cTheValueWasFoundInTheArray);
         returnData = true;

@@ -40,18 +40,18 @@ const namespacePrefix = wrd.cbrokers + bas.cDot + baseFileName + bas.cDot;
  */
 async function scanDataPath(dataPath) {
   let functionName = scanDataPath.name;
-  console.log(`BEGIN ${namespacePrefix}${functionName} function`);
-  console.log(`dataPath is: ${dataPath}`);
+  // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
+  // console.log(`dataPath is: ${dataPath}`);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cdataPathIs + dataPath);
   let rules = [biz.cswapBackSlashToForwardSlash, biz.creadDirectoryContents];
   let filesFound = [];
-  console.log(`execute business rules: ${JSON.stringify(rules)}`);
+  // console.log(`execute business rules: ${JSON.stringify(rules)}`);
   filesFound = await ruleBroker.processRules([dataPath, ''], rules);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cfilesFoundIs + JSON.stringify(filesFound));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
-  console.log(`filesFound is: ${JSON.stringify(filesFound)}`);
-  console.log(`END ${namespacePrefix}${functionName} function`);
+  // console.log(`filesFound is: ${JSON.stringify(filesFound)}`);
+  // console.log(`END ${namespacePrefix}${functionName} function`);
   return filesFound;
 }
 
@@ -178,7 +178,7 @@ async function loadAllCsvData(filesToLoad, contextName) {
 }
 
 /**
- * @function loadedAllXmlData
+ * @function loadAllXmlData
  * @description Loads all the context of all files and folders and sub-folders at the specified path and builds a list of files to load,
  * then loads them accordingly in the D.contextName_fileName.
  * @param {array<string>} filesToLoad The data structure containing all of the files to load data from.
@@ -206,7 +206,7 @@ async function loadAllXmlData(filesToLoad, contextName) {
     await loggers.consoleLog(namespacePrefix + functionName, msg.cFileToLoadIs + fileToLoad);
     // NOTE: We still need a filename to use as a context for the page data that we just loaded.
     // A context name will be composed of the input context name with the file name we are processing
-    // which tells us where we wll ptu the data in the D[contextName] sub-structure.
+    // which tells us where we will put the data in the D[contextName] sub-structure.
     let fileExtension = await ruleBroker.processRules([fileToLoad, ''], [biz.cgetFileExtension, biz.cremoveDotFromFileExtension]);
     // fileExtension is:
     await loggers.consoleLog(namespacePrefix + functionName, msg.cfileExtensionIs + fileExtension);
@@ -264,9 +264,9 @@ async function loadAllXmlData(filesToLoad, contextName) {
  */
 async function loadAllJsonData(filesToLoad, contextName) {
   let functionName = loadAllJsonData.name;
-  console.log(`BEGIN ${namespacePrefix}${functionName} function`);
-  console.log(`filesToLoad is: ${JSON.stringify(filesToLoad)}`);
-  console.log(`contextName is: ${contextName}`);
+  // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
+  // console.log(`filesToLoad is: ${JSON.stringify(filesToLoad)}`);
+  // console.log(`contextName is: ${contextName}`);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // filesToLoad is:
   await loggers.consoleLog(namespacePrefix + functionName, msg.cfilesToLoadIs + JSON.stringify(filesToLoad));
@@ -282,7 +282,7 @@ async function loadAllJsonData(filesToLoad, contextName) {
   // There will be a system configuration setting that will tell us if we need to load the debug settings or not.
   for (const element1 of filesToLoad) {
     let fileToLoad = element1;
-    console.log('fileToLoad is: ' + fileToLoad);
+    // console.log('fileToLoad is: ' + fileToLoad);
     if (fileToLoad.includes(systemConfigFileName) || fileToLoad.includes(applicationConfigFileName)) {
       let dataFile = await preprocessJsonFile(fileToLoad);
 
@@ -309,7 +309,7 @@ async function loadAllJsonData(filesToLoad, contextName) {
       if (!fileToLoad.includes(systemConfigFileName) && !fileToLoad.includes(applicationConfigFileName)
       && fileToLoad.toUpperCase().includes(gen.cDotJSON) && !fileToLoad.toLowerCase().includes(wrd.cmetadata + gen.cDotjson)) {
         let dataFile = await preprocessJsonFile(fileToLoad);
-        console.log('dataFile to merge is: ' + JSON.stringify(dataFile));
+        // console.log('dataFile to merge is: ' + JSON.stringify(dataFile));
         await loggers.consoleLog(namespacePrefix + functionName, msg.cdataFileToMergeIs + JSON.stringify(dataFile));
         if (!multiMergedData[cfg.cdebugSettings]) {
           multiMergedData[cfg.cdebugSettings] = {};
@@ -321,8 +321,8 @@ async function loadAllJsonData(filesToLoad, contextName) {
     } // End-for (const element2 of filesToLoad)
   } // End-if (configurator.getConfigurationSetting(wrd.csystem, cfg.cdebugSettings) === true)
   parsedDataFile = multiMergedData;
-  console.log(`parsedDataFile is: ${JSON.stringify(parsedDataFile)}`);
-  console.log(`END ${namespacePrefix}${functionName} function`);
+  // console.log(`parsedDataFile is: ${JSON.stringify(parsedDataFile)}`);
+  // console.log(`END ${namespacePrefix}${functionName} function`);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cparsedDataFileIs + JSON.stringify(parsedDataFile));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return parsedDataFile;
@@ -390,7 +390,7 @@ async function processXmlData(inputData, contextName) {
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
   // contextName is:
   await loggers.consoleLog(namespacePrefix + functionName, msg.ccontextNameIs + contextName);
-  let dataCategory = getDataCategoryFromContextName(contextName);
+  let dataCategory = await getDataCategoryFromContextName(contextName);
   // dataCategory is:
   await loggers.consoleLog(namespacePrefix + functionName, msg.cdataCategoryIs + dataCategory);
   let parsedDataFile = {};

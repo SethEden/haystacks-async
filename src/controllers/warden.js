@@ -175,6 +175,7 @@ async function initFrameworkSchema(configData) {
   await loadCommandAliases(''); // This function will now pick up the defaults already saved in the configuration system.
   await loadCommandWorkflows(''); // Same as above.
   // We can pass in a name of a configuration setting that has a path to load plugin data this way.
+  // console.log('Contents of D are: ' + JSON.stringify(D));
   // console.log(`END ${namespacePrefix}${functionName} function`);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
 }

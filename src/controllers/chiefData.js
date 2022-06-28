@@ -41,10 +41,10 @@ const namespacePrefix = wrd.ccontrollers + bas.cDot + baseFileName + bas.cDot;
  * @date 2022/01/18
  */
 async function searchForUniversalDebugConfigSetting(appConfigPathName, frameworkConfigPathName) {
-  let functionName = searchForUniversalDebugConfigSetting.name;
-  console.log(`BEGIN ${namespacePrefix}${functionName} function`);
-  console.log(`appConfigPathName is: ${appConfigPathName}`);
-  console.log(`frameworkConfigPathName is: ${frameworkConfigPathName}`);
+  // let functionName = searchForUniversalDebugConfigSetting.name;
+  // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
+  // console.log(`appConfigPathName is: ${appConfigPathName}`);
+  // console.log(`frameworkConfigPathName is: ${frameworkConfigPathName}`);
   let universalDebugConfigSetting = false;
   let appConfigDataPath = await configurator.getConfigurationSetting(wrd.csystem, appConfigPathName);
   let frameworkConfigDataPath = await configurator.getConfigurationSetting(wrd.csystem, frameworkConfigPathName);
@@ -58,8 +58,8 @@ async function searchForUniversalDebugConfigSetting(appConfigPathName, framework
     appConfigFilesToLoad, frameworkConfigFilesToLoad
   );
   await configurator.setConfigurationSetting(wrd.csystem, cfg.cdebugSettings, universalDebugConfigSetting);
-  console.log(`universalDebugConfigSetting is: ${universalDebugConfigSetting}`);
-  console.log(`END ${namespacePrefix}${functionName} function`);
+  // console.log(`universalDebugConfigSetting is: ${universalDebugConfigSetting}`);
+  // console.log(`END ${namespacePrefix}${functionName} function`);
   return universalDebugConfigSetting;
 }
 
@@ -211,10 +211,10 @@ async function setupAllXmlData(dataPathConfigurationName, contextName) {
  * @NOTE Cannot use the loggers here, because dependency data will have never been loaded.
  */
 async function setupAllJsonConfigData(dataPathConfigurationName, contextName) {
-  let functionName = setupAllJsonConfigData.name;
-  console.log(`BEGIN ${namespacePrefix}${functionName} function`);
-  console.log(`dataPathConfigurationName is: ${dataPathConfigurationName}`);
-  console.log(`contextName is: ${contextName}`);
+  // let functionName = setupAllJsonConfigData.name;
+  // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
+  // console.log(`dataPathConfigurationName is: ${dataPathConfigurationName}`);
+  // console.log(`contextName is: ${contextName}`);
   let loadedAndMergedDataAllFiles = {};
   let filesToLoad = [];
   if (dataPathConfigurationName === sys.cappConfigPath) {
@@ -225,8 +225,8 @@ async function setupAllJsonConfigData(dataPathConfigurationName, contextName) {
     filesToLoad = await configurator.getConfigurationSetting(wrd.csystem, cfg.cthemeConfigFiles);
   }
   loadedAndMergedDataAllFiles = await dataBroker.loadAllJsonData(filesToLoad, contextName);
-  console.log(`loadedAndMergedDataAllFiles is: ${JSON.stringify(loadedAndMergedDataAllFiles)}`);
-  console.log(`END ${namespacePrefix}${functionName} function`);
+  // console.log(`loadedAndMergedDataAllFiles is: ${JSON.stringify(loadedAndMergedDataAllFiles)}`);
+  // console.log(`END ${namespacePrefix}${functionName} function`);
   return loadedAndMergedDataAllFiles;
 }
 

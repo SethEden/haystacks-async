@@ -65,7 +65,7 @@ async function getXmlData(inputData, inputMetaData) {
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
   let returnData;
   let pathAndFilename = path.resolve(inputData);
-  let data = await fs.readFileSync(pathAndFilename, { encoding: gen.cUTF8 });
+  let data = fs.readFileSync(pathAndFilename, { encoding: gen.cUTF8 });
   let xml;
   await xml2js.parseString(data,
   async function(err, result) {
@@ -103,7 +103,7 @@ async function getCsvData(inputData, inputMetaData) {
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
   let returnData;
   let pathAndFilename = path.resolve(inputData);
-  let data = await fs.readFileSync(pathAndFilename, { encoding: gen.cUTF8 });
+  let data = fs.readFileSync(pathAndFilename, { encoding: gen.cUTF8 });
   returnData = await papa.parse(data, {
     delimiter: ',',
     newline: '/n',
@@ -138,7 +138,7 @@ async function getJsonData(inputData, inputMetaData) {
   // Make sure to resolve the path on the local system,
   // just in case there are issues with the OS that the code is running on.
   let pathAndFilename = path.resolve(inputData);
-  let rawData = await fs.readFileSync(pathAndFilename, { encoding: gen.cUTF8 });
+  let rawData = fs.readFileSync(pathAndFilename, { encoding: gen.cUTF8 });
   let returnData = JSON.parse(rawData);
   // console.log(`DONE loading data from: ${inputData}`);
   // console.log(msg.creturnDataIs + JSON.stringify(returnData));
@@ -162,7 +162,7 @@ async function writeJsonData(inputData, inputMetaData) {
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
   let returnData = false;
   try {
-    await fs.writeFileSync(inputData, JSON.stringify(inputMetaData, null, 2));
+    fs.writeFileSync(inputData, JSON.stringify(inputMetaData, null, 2));
     returnData = true;
   } catch (err) {
     // ERROR:
@@ -189,10 +189,10 @@ async function writeJsonData(inputData, inputMetaData) {
  */
 // eslint-disable-next-line no-unused-vars
 async function readDirectoryContents(inputData, inputMetaData) {
-  let functionName = readDirectoryContents.name;
-  console.log(`BEGIN ${namespacePrefix}${functionName} function`);
-  console.log(`inputData is: ${inputData}`);
-  console.log(`inputMetaData is: ${inputMetaData}`);
+  // let functionName = readDirectoryContents.name;
+  // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
+  // console.log(`inputData is: ${inputData}`);
+  // console.log(`inputMetaData is: ${inputMetaData}`);
   let returnData = [];
   // Make sure to resolve the path on the local system,
   // just in case there are issues with the OS that the code is running on.
@@ -201,9 +201,9 @@ async function readDirectoryContents(inputData, inputMetaData) {
   returnData = filesCollection; // Copy the data into a local variable first.
   filesCollection = undefined; // Make sure to clear it so we don't have a chance of it corrupting any other file operations.
   filesCollection = [];
-  console.log(`DONE loading data from: ${inputData}`);
-  console.log(msg.creturnDataIs + JSON.stringify(returnData));
-  console.log(`END ${namespacePrefix}${functionName} function`);
+  // console.log(`DONE loading data from: ${inputData}`);
+  // console.log(msg.creturnDataIs + JSON.stringify(returnData));
+  // console.log(`END ${namespacePrefix}${functionName} function`);
   return returnData;
 }
 
@@ -290,64 +290,64 @@ async function getDirectoryList(inputData, inputMetaData) {
  */
 // eslint-disable-next-line no-unused-vars
 async function readDirectorySynchronously(inputData, inputMetaData) {
-  let functionName = readDirectorySynchronously.name;
-  console.log(`BEGIN ${namespacePrefix}${functionName} function`);
-  console.log(`inputData is: ${inputData}`);
-  console.log(`inputMetaData is: ${inputMetaData}`);
+  // let functionName = readDirectorySynchronously.name;
+  // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
+  // console.log(`inputData is: ${inputData}`);
+  // console.log(`inputMetaData is: ${inputMetaData}`);
   if (hitFileLimit === false) {
     let directory = path.resolve(inputData); // Make sure to resolve the path on the local system.
     let currentDirectoryPath = directory;
     let currentDirectory = '';
     try {
-      currentDirectory = await fs.readdirSync(currentDirectoryPath, gen.cUTF8);
+      currentDirectory = fs.readdirSync(currentDirectoryPath, gen.cUTF8);
     } catch (err) {
       console.log(msg.cERROR + err.message);
-      await fs.mkdirSync(currentDirectoryPath);
-      currentDirectory = await fs.readdirSync(currentDirectoryPath, gen.cUTF8);
+      fs.mkdirSync(currentDirectoryPath);
+      currentDirectory = fs.readdirSync(currentDirectoryPath, gen.cUTF8);
     }
-    console.log('currentDirectoryContents are: ' + JSON.stringify(currentDirectory));
+    // console.log('currentDirectoryContents are: ' + JSON.stringify(currentDirectory));
     await currentDirectory.forEach(async file => {
-      console.log('checking for file: ' + file);
+      // console.log('checking for file: ' + file);
       let filesShouldBeSkipped = directoriesToSkip.indexOf(file) > -1;
       let pathOfCurrentItem = directory + bas.cForwardSlash + file;
       try {
-        console.log('BEGIN TRY');
-        if (!filesShouldBeSkipped && await fs.statSync(pathOfCurrentItem).isFile()) {
-          console.log('Its a file, and not to be skipped!');
+        // console.log('BEGIN TRY');
+        if (!filesShouldBeSkipped && fs.statSync(pathOfCurrentItem).isFile()) {
+          // console.log('Its a file, and not to be skipped!');
           if (enableFilesListLimit === true && filesListLimit > 0) {
-            console.log('list limit is enabled, not sure if we hit it yet or not.');
+            // console.log('list limit is enabled, not sure if we hit it yet or not.');
             if (filesCollection.length <= filesListLimit) {
-              console.log('Did not hit the file limit yet!');
+              // console.log('Did not hit the file limit yet!');
               filesCollection.push(pathOfCurrentItem);
-              console.log('filesCollection is: ' + JSON.stringify(filesCollection));
+              // console.log('filesCollection is: ' + JSON.stringify(filesCollection));
             } else {
-              console.log('Hit the file limit!!');
+              // console.log('Hit the file limit!!');
               hitFileLimit = true;
               return;
             }
           } else {
-            console.log('adding the file the old fashioned way.');
+            // console.log('adding the file the old fashioned way.');
             filesCollection.push(pathOfCurrentItem);
           }
         } else if (!filesShouldBeSkipped) {
-          console.log('its not a file, but it should not be skipped!');
+          // console.log('its not a file, but it should not be skipped!');
           // NOTE: There is a difference in how paths are handled in Windows VS Mac/Linux.
           // So far now I'm putting this code here like this to handle both situations.
           // The ideal solution would be to detect which OS the code is being run on.
           // Then handle each case appropriately.
           let directoryPath = '';
           directoryPath = path.resolve(directory + bas.cForwardSlash + file);
-          console.log(`directoryPath is ${directoryPath}`);
+          // console.log(`directoryPath is ${directoryPath}`);
           await readDirectorySynchronously(directoryPath, '');
-          console.log('filesCollection is: ' + JSON.stringify(filesCollection));
+          // console.log('filesCollection is: ' + JSON.stringify(filesCollection));
         } // End-else-if (!filesShouldBeSkipped)
-        console.log('END TRY');
-        console.log('filesCollection is: ' + JSON.stringify(filesCollection));
+        // console.log('END TRY');
+        // console.log('filesCollection is: ' + JSON.stringify(filesCollection));
       } catch (err) { // Catch the error in the hopes that we can continue scanning the file system.
         console.log(msg.cErrorInvalidAccessTo + pathOfCurrentItem);
       }
     }); // End-currentDirectory.forEach(file => {
-    console.log(`END ${namespacePrefix}${functionName} function`);
+    // console.log(`END ${namespacePrefix}${functionName} function`);
   } // End-if (hitFileLimit === false)
 }
 
@@ -523,7 +523,7 @@ async function cleanRootPath(inputData, inputMetaData) {
   // RootPath before processing is:
   await loggers.consoleLog(namespacePrefix + functionName, msg.cRootPathBeforeProcessingIs + returnData);
   returnData = await ruleParsing.processRulesInternal([returnData, 3], [biz.cremoveXnumberOfFoldersFromEndOfPath]);
-  console.log(msg.creturnDataIs + returnData);
+  // console.log(msg.creturnDataIs + returnData);
   // console.log(`END ${namespacePrefix}${functionName} function`);
   return returnData;
 }
@@ -563,8 +563,8 @@ async function copyFileSync(inputData, inputMetaData) {
   let successfulCopy = false;
 
   // If target is a directory a new file with the same name will be created.
-  if (await fs.existsSync(target)) {
-    if (await fs.lstatSync(target).isDirectory()) {
+  if (fs.existsSync(target)) {
+    if (fs.lstatSync(target).isDirectory()) {
       targetFile = path.join(target, path.basename(source));
     }
   } // End-if (fs.existsSync(target))
@@ -590,7 +590,7 @@ async function copyFileSync(inputData, inputMetaData) {
     // We need a logical converse operation:
     // https://en.wikipedia.org/wiki/Converse_(logic)
     if (foundInclusion || !(foundInclusion || foundExclusion)) {
-      await fs.writeFileSync(targetFile, await fs.readFileSync(source));
+      fs.writeFileSync(targetFile, fs.readFileSync(source));
       successfulCopy = true;
     } else {
       // console.log('Detected an exclusion condition.');
@@ -649,10 +649,10 @@ async function copyFolderRecursiveSync(inputData, inputMetaData) {
     targetFolder = path.join(target, pathLeafNode);
   }
   targetFolder = path.resolve(targetFolder);
-  if (await fs.existsSync(targetFolder) !== true) {
+  if (fs.existsSync(targetFolder) !== true) {
     try {
       // console.log('making the path');
-      await fs.mkdirSync(targetFolder);
+      fs.mkdirSync(targetFolder);
       // NOTE: Just because we complete the above code doesn't mean the entire copy process was a success.
       // But at least we haven't errored out, so it wasn't a failure YET.
     } catch (err) {
@@ -685,11 +685,11 @@ async function copyFolderRecursiveSync(inputData, inputMetaData) {
 
   // Copy
   try {
-    if (await fs.lstatSync(source).isDirectory()) {
-      files = await fs.readdirSync(source);
+    if (fs.lstatSync(source).isDirectory()) {
+      files = fs.readdirSync(source);
       await files.forEach(async function(file) {
         let currentSource = path.join(source, file);
-        if (await fs.lstatSync(currentSource).isDirectory()) {
+        if (fs.lstatSync(currentSource).isDirectory()) {
           successfulCopy = await copyFolderRecursiveSync([currentSource, targetFolder], inputMetaData);
         } else {
           successfulCopy = await copyFileSync([currentSource, targetFolder], inputMetaData);
@@ -729,15 +729,15 @@ async function appendMessageToFile(inputData, inputMetaData) {
   if (inputData && inputMetaData) {
     try {
       // console.log('open the file sync');
-      fd = await fs.openSync(inputData, bas.ca);
+      fd = fs.openSync(inputData, bas.ca);
       // console.log('append to the file sync');
-      await fs.appendFileSync(fd, inputMetaData + bas.cCarriageReturn + bas.cNewLine, gen.cUTF8);
+      fs.appendFileSync(fd, inputMetaData + bas.cCarriageReturn + bas.cNewLine, gen.cUTF8);
       // console.log('DONE appending to the file');
     } catch (err) {
       return console.log(err);
     } finally {
       if (fd !== undefined) {
-        await fs.closeSync(fd);
+        fs.closeSync(fd);
       }
     } // End-finally
   } // End-if (inputData && inputMetaData)

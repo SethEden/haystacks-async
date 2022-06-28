@@ -107,20 +107,25 @@ async function doesArrayContainCharacter(inputData, inputMetaData) {
 async function removeCharacterFromArray(inputData, inputMetaData) {
   let functionName = removeCharacterFromArray.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
+  // console.log(msg.cinputDataIs + JSON.stringify(inputData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
+  // console.log(msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
   let returnData = false;
   if (inputData && inputMetaData) {
     for (let i = 0; i < inputMetaData.length; i++) {
       let arrayElement = inputMetaData[i];
       if (arrayElement.includes(inputData) === true) {
-        inputMetaData[i] = replaceCharacterWithCharacter(arrayElement, [RegExp('\\' + inputData, bas.cg), '']);
+        inputMetaData[i] = await replaceCharacterWithCharacter(arrayElement, [RegExp('\\' + inputData, bas.cg), '']);
       }
     } // end-for (let i = 0; i < inputMetaData.length; i++)
     returnData = inputMetaData;
   } // end-if (inputData && inputMetaData)
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  // console.log(msg.creturnDataIs + returnData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  // console.log(`END ${namespacePrefix}${functionName} function`);
   return returnData;
 }
 
