@@ -164,7 +164,7 @@ async function determineSuggestedConstantsValidationLineOfCode(inputData, inputM
     // Input: cZZTopInternationalSuccess
     // Output: {Name: 'cZZTopInternationalSuccess', Actual: wrd.cZZTopInternationalSuccess, Expected: 'ZZTopInternationalSuccess'}
     if (inputData.charAt(0) === bas.cc) {
-      let literalValue = inputData.substr(1);
+      let literalValue = inputData.substring(1);
       // `{Name: '${inputData}', Actual: ${inputMetaData}.${inputData}, Expected: '${literalValue}'}`;
       returnData = bas.cOpenCurlyBrace + wrd.cName + bas.cColon + bas.cSpace + bas.cSingleQuote + inputData +
         bas.cSingleQuote + bas.cComa + bas.cSpace + wrd.cActual + bas.cColon + bas.cSpace + inputMetaData +
@@ -464,7 +464,7 @@ async function findConstantName(inputData, inputMetaData) {
   let returnData = '';
   if (inputData) {
     if (inputData.includes(bas.cDot)) {
-      returnData = inputData.substr(inputData.lastIndexOf(bas.cDot) + 1, inputData.length);
+      returnData = inputData.substring(inputData.lastIndexOf(bas.cDot) + 1, inputData.length);
     }
   } // End-if (inputData)
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);

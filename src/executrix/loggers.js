@@ -189,7 +189,7 @@ async function consoleLogProcess(debugSetting, logFile, classPath, message, logg
     // console.log(`message is: ${message}`);
     messageIsValid = await validMessage(outputMessage, message);
     if (messageIsValid === true) {
-      console.log(outputMessage);
+      await console.log(outputMessage);
     }
     if (messageIsValid === true && loggingToFileAndConsole === true) {
       await printMessageToFile(logFile, outputMessage);
@@ -201,7 +201,7 @@ async function consoleLogProcess(debugSetting, logFile, classPath, message, logg
     // Debug Exhaustive is probably not the best, we might want to consider another configuration setting to
     // enable or disable the console specifically. Right now there is no real business need for it.
     // If you really wanted to disable it just comment it out here.
-    console.log(outputMessage);
+    await console.log(outputMessage);
     if (loggingToFileAndConsole === true) {
       await printMessageToFile(logFile, outputMessage);
       // console.log('done printing the message to the log file.');
@@ -372,11 +372,11 @@ async function printMessageToFile(file, message) {
       await ruleBroker.processRules([file, message], [biz.cappendMessageToFile]);
     } else {
       // 'ERROR: Failure to log to file: '
-      console.log(msg.cprintMessageToFile02 + file);
+      await console.log(msg.cprintMessageToFile02 + file);
     }
   } else {
     // 'ERROR: Log File includes undefined.'
-    console.log(msg.cprintMessageToFile03);
+    await console.log(msg.cprintMessageToFile03);
   }
   // console.log(`END ${namespacePrefix}${functionName} function`);
 }

@@ -291,7 +291,7 @@ async function getUserNameFromEmail(inputData, inputMetaData) {
   if (inputData) {
     await loggers.consoleLog(namespacePrefix + functionName, msg.cIndexOfTheSpace + bas.cAt +
       sys.cSpaceIsColonSpace + inputData.indexOf(bas.cAt));
-    returnData = inputData.substr(0, inputData.indexOf(bas.cAt));
+    returnData = inputData.substring(0, inputData.indexOf(bas.cAt));
   } // End-if (inputData)
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);

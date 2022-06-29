@@ -220,7 +220,7 @@ async function isArrayOrObject(inputData, inputMetaData) {
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = false;
   if (inputData) {
-    if (isObject(inputData, '') === true || isArray(inputData, '') === true) {
+    if (await isObject(inputData, '') === true || await isArray(inputData, '') === true) {
       returnData = true;
     }
   } // End-if (inputData)
@@ -246,7 +246,7 @@ async function isNonZeroLengthArray(inputData, inputMetaData) {
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = false;
   if (inputData) {
-    if (isArray(inputData, '') === true && inputData.length >= 1) {
+    if (await isArray(inputData, '') === true && inputData.length >= 1) {
       returnData = true;
     }
   } // End-if (inputData)
@@ -272,7 +272,7 @@ async function arrayDeepClone(inputData, inputMetaData) {
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = false;
-  if (inputData && isArray(inputData, '') === true && isArrayEmpty(inputData, '') === false) {
+  if (inputData && await isArray(inputData, '') === true && await isArrayEmpty(inputData, '') === false) {
     returnData = JSON.parse(JSON.stringify(inputData));
   }
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);

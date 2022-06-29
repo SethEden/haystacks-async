@@ -150,7 +150,7 @@ async function convertArrayToCamelCaseString(inputData, inputMetaData) {
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData;
   if (inputData) {
-    returnData = await inputData.map((key, index) => ruleParsing.processRulesInternal([key, index], [biz.cmapWordToCamelCaseWord]));
+    returnData = await Promise.all(inputData.map((key, index) => ruleParsing.processRulesInternal([key, index], [biz.cmapWordToCamelCaseWord])));
     returnData = returnData.join('');
   }
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
@@ -177,9 +177,19 @@ async function doesArrayContainLowerCaseConsolidatedString(inputData, inputMetaD
     // I'm not sure if value1 & value2 below should be referenced to inputData & inputMetaData?
     // I get the arrow function is pass in these values to the wordStringParsing.aggregateNumericalDifferenceBetweenTwoStrings function.
     // But I'm not sure how or what values are being passed for value1 & value2.
-    let stringDelta = await ((value1, value2) => ruleParsing.processRulesInternal([value1, value2], [biz.caggregateNumericalDifferenceBetweenTwoStrings]) < 2);
+    let stringDelta = await Promise.all(((value1, value2) => ruleParsing.processRulesInternal([value1, value2], [biz.caggregateNumericalDifferenceBetweenTwoStrings]) < 2));
+
+    // If execution order mattered no the above line of code, then we would want to do something like this:
+    // async function mapAsync(arr, cb) {
+    //   return arr.reduce((acc, value, index) => acc.then(async (res) => [...res, await cb(value, index)]), []);
+    // }
+    
+    // returnData = await mapAsync(inputData, (key, index) =>
+    //   ruleParsing.processRulesInternal([key, index], [biz.cmapWordToCamelCaseWord]),
+    // );
+
     // stringDelta value is:
-    loggers.consoleLog(namespacePrefix + functionName, msg.cstringDeltaValueIs + stringDelta);
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cstringDeltaValueIs + stringDelta);
     returnData = await ruleParsing.processRulesInternal([[inputData, inputMetaData], stringDelta], [biz.cdoesArrayContainValue]);
   }
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);

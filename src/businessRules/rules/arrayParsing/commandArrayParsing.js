@@ -52,7 +52,7 @@ async function solveLehmerCode(inputData, inputMetaData) {
     // }
     let lengthOfInputData = inputData.length;
     let expandedLehmerCodeArray = [];
-    let lehmerCodeArray = Array.from(Array(lengthOfInputData), () => 0);
+    let lehmerCodeArray = await Array.from(Array(lengthOfInputData), () => 0);
     expandedLehmerCodeArray = await ruleParsing.processRulesInternal([await recursiveArrayExpansion([0, lehmerCodeArray], inputData), ''], [biz.carrayDeepClone]);
     // expandedLehmerCodeArray is:
     await loggers.consoleLog(namespacePrefix + functionName, msg.cexpandedLehmerCodeArrayIs + JSON.stringify(expandedLehmerCodeArray));
@@ -98,7 +98,7 @@ async function recursiveArrayExpansion(inputData, inputMetaData) {
     await loggers.consoleLog(namespacePrefix + functionName, msg.cindexOfExpansionIs + indexOfExpansion);
     // arrayToBeExpanded is:
     await loggers.consoleLog(namespacePrefix + functionName, msg.carrayToBeExpandedIs + JSON.stringify(arrayToBeExpanded));
-    // imitOfExpansion is:
+    // limitOfExpansion is:
     await loggers.consoleLog(namespacePrefix + functionName, msg.climitOfExpansionIs + limitOfExpansion);
     let masterTempReturnData = []; // When we are all done we will set the returnData back to the list of arays in this array.
 
@@ -117,7 +117,7 @@ async function recursiveArrayExpansion(inputData, inputMetaData) {
       // returnData is:
       await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
       lehmerCodeArray1[indexOfExpansion] = i;
-      if (await ruleParsing.processRulesInternal([[returnData, lehmerCodeArray1], ruleParsing.getRule(biz.cascertainMatchingElements)], [biz.cdoesArrayContainValue]) === false) {
+      if (await ruleParsing.processRulesInternal([[returnData, lehmerCodeArray1], await ruleParsing.getRule(biz.cascertainMatchingElements)], [biz.cdoesArrayContainValue]) === false) {
         // pushing LehmerCodeArray1 to returnData value:
         await loggers.consoleLog(namespacePrefix + functionName, msg.cpushingLehmerCodeArray1ToReturnDataValue + JSON.stringify(lehmerCodeArray1));
         returnData.push(lehmerCodeArray1);
@@ -160,7 +160,7 @@ async function recursiveArrayExpansion(inputData, inputMetaData) {
         for (let k = 0; k <= tempReturnData1.length - 1; k++) {
           // BEGIN k-th iteration:
           await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_kthIteration + k);
-          if (await ruleParsing.processRulesInternal([[masterTempReturnData, tempReturnData1[k]], ruleParsing.getRule(biz.cascertainMatchingElements)], [biz.cdoesArrayContainValue]) === false) {
+          if (await ruleParsing.processRulesInternal([[masterTempReturnData, tempReturnData1[k]], await ruleParsing.getRule(biz.cascertainMatchingElements)], [biz.cdoesArrayContainValue]) === false) {
             // pushing tempReturnData1[k] value:
             await loggers.consoleLog(namespacePrefix + functionName, msg.cpushingTempReturnData1Kvalue + JSON.stringify(tempReturnData1[k]));
             masterTempReturnData.push(await ruleParsing.processRulesInternal([tempReturnData1[k], ''], [biz.carrayDeepClone]));
@@ -304,7 +304,7 @@ async function generateCommandAliases(inputData, inputMetaData) {
     // https://en.wikipedia.org/wiki/Lehmer_code
     returnData = await solveLehmerCode(masterArrayIndex, masterCommandWordAliasesArray);
     // Command Aliases are:
-    console.log(msg.cCommandAliasesAre + returnData);
+    await console.log(msg.cCommandAliasesAre + returnData);
   } // End-if (inputData)
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);

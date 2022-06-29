@@ -245,7 +245,7 @@ async function businessRule(inputData, inputMetaData) {
     if (D[cfg.cbusinessRulesPerformanceTrackingStack] === undefined) {
       await stack.initStack(cfg.cbusinessRulesPerformanceTrackingStack);
     }
-    if (D[cfg.cbusinessRulesNamesPerformanceTrackingStack] === undefined) {
+    if (D[cfg.cbusinessRulesNamesPerformanceTrackingStack] === undefined) { 
       await stack.initStack(cfg.cbusinessRulesNamesPerformanceTrackingStack);
     }
     performanceTrackingObject = {Name: rules[0], RunTime: businessRuleDeltaTime};
@@ -449,7 +449,7 @@ async function commandAliasGenerator(inputData, inputMetaData) {
             validCommandWordAliasList = true;
           }
         } // End-while (validCommandWordAliasList === false)
-        commandAliasDataStructure[commandWord] = commandWordAliasList;
+        commandAliasDataStructure[commandWord] = commandWordAliasList; 
         validCommandInput = true;
       } // End-if (commandWord !== '')
     } // End-for (const element of camelCaseCommandNameArray)
