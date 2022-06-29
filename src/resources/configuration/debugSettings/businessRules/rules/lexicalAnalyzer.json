@@ -1,5 +1,5 @@
 {
-  "debugFiles|debugSetting.businessRules.rules.lexicalAnalyzer": false,
+  "debugFiles|debugSetting.businessRules.rules.lexicalAnalyzer": true,
   "debugFiles|debugSetting.businessRules.rules.lexicalAnalyzer@ModuleFontStyle": "Bold|Underline",
   "debugFiles|debugSetting.businessRules.rules.lexicalAnalyzer@FunctionFontStyle": "Bold|Underline",
   "debugFiles|debugSetting.businessRules.rules.lexicalAnalyzer@MessageFontStyle": "Underline",
