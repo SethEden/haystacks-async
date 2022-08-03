@@ -11,10 +11,20 @@
 
 // External imports
 import hayConst from '@haystacks/constants';
-const {wrd} = hayConst;
+const {num, wrd} = hayConst;
 
 // ********************************
 // Client Commands in order
 // ********************************
 export const ccustomEchoCommand = wrd.ccustom + wrd.cEcho + wrd.cCommand; // customEchoCommand
 export const cbossPanic = wrd.cboss + wrd.cPanic; // bossPanic
+export const ccommand01 = wrd.ccommand + num.c0 + num.c1; // command01
+export const ccommand02 = wrd.ccommand + num.c0 + num.c2; // command02
+export const ccommand03 = wrd.ccommand + num.c0 + num.c3; // command03
+export const ccommand04 = wrd.ccommand + num.c0 + num.c4; // command04
+export const ccommand05 = wrd.ccommand + num.c0 + num.c5; // command05
+export const ccommand06 = wrd.ccommand + num.c0 + num.c6; // command06
+export const ccommand07 = wrd.ccommand + num.c0 + num.c7; // command07
+export const ccommand08 = wrd.ccommand + num.c0 + num.c8; // command08
+export const ccommand09 = wrd.ccommand + num.c0 + num.c9; // command09
+export const ccommand10 = wrd.ccommand + num.c10; // command10

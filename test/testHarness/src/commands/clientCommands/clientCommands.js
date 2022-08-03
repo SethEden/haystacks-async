@@ -31,7 +31,8 @@ const namespacePrefix = apc.cApplicationName + bas.cDot + wrd.ccommands + bas.cD
  * dynamic data storage technique for client commands is working.
  * @param {string} inputData The string input data.
  * @param {string} inputMetaData The string of input meta-data.
- * @return {string} An echo of the inputData with some hard-coded modifier.
+ * @return {array<boolean,string|integer|boolean|object|array,object>} An array with a boolean True or False value to
+ * indicate if the application should exit or not exit, followed by the command output and finally the promise for the command execution.
  * @author Seth Hollingsead
  * @date 2022/02/08
  */
@@ -202,7 +203,267 @@ async function bossPanic(inputData, inputMetaData) {
   } // End-while (true) // End of the infinite loop
 }
 
+/**
+ * @function clientCommand01
+ * @description Client Command One.
+ * @param {string} inputData Not used for this command. 
+ * @param {string} inputMetaData Not used for this command.
+ * @return {array<boolean,string|integer|boolean|object|array,object>} An array with a boolean True or False value to
+ * indicate if the application should exit or not exit, followed by the command output and finally the promise for the command execution.
+ * @author Seth Hollingsead
+ * @date 2022/08/01
+ * @NOTE: This command will be used to test the order in which commands are enqueued and the order in which commands are executed.
+ * Especially when commands are nested inside deeply nested workflows.
+ */
+ async function clientCommand01(inputData, inputMetaData) {
+  let functionName = clientCommand01.name;
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.cBEGIN_Function);
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.cinputDataIs + inputData);
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.cinputMetaDataIs + inputMetaData);
+  let returnData = [true, false];
+  returnData[1] = 'clientStringParsing.clientCommand01';
+  console.log(returnData[1]);
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.cEND_Function);
+  return returnData;
+}
+
+/**
+ * @function clientCommand02
+ * @description Client Command Two.
+ * @param {string} inputData Not used for this command. 
+ * @param {string} inputMetaData Not used for this command.
+ * @return {array<boolean,string|integer|boolean|object|array,object>} An array with a boolean True or False value to
+ * indicate if the application should exit or not exit, followed by the command output and finally the promise for the command execution.
+ * @author Seth Hollingsead
+ * @date 2022/08/01
+ * @NOTE: This command will be used to test the order in which commands are enqueued and the order in which commands are executed.
+ * Especially when commands are nested inside deeply nested workflows.
+ */
+ async function clientCommand02(inputData, inputMetaData) {
+  let functionName = clientCommand02.name;
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.cBEGIN_Function);
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.cinputDataIs + inputData);
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.cinputMetaDataIs + inputMetaData);
+  let returnData = [true, false];
+  returnData[1] = 'clientStringParsing.clientCommand02';
+  console.log(returnData[1]);
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.cEND_Function);
+  return returnData;
+}
+
+/**
+ * @function clientCommand03
+ * @description Client Command Three.
+ * @param {string} inputData Not used for this command. 
+ * @param {string} inputMetaData Not used for this command.
+ * @return {array<boolean,string|integer|boolean|object|array,object>} An array with a boolean True or False value to
+ * indicate if the application should exit or not exit, followed by the command output and finally the promise for the command execution.
+ * @author Seth Hollingsead
+ * @date 2022/08/01
+ * @NOTE: This command will be used to test the order in which commands are enqueued and the order in which commands are executed.
+ * Especially when commands are nested inside deeply nested workflows.
+ */
+ async function clientCommand03(inputData, inputMetaData) {
+  let functionName = clientCommand03.name;
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.cBEGIN_Function);
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.cinputDataIs + inputData);
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.cinputMetaDataIs + inputMetaData);
+  let returnData = [true, false];
+  returnData[1] = 'clientStringParsing.clientCommand03';
+  console.log(returnData[1]);
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.cEND_Function);
+  return returnData;
+}
+
+/**
+ * @function clientCommand04
+ * @description Client Command Four.
+ * @param {string} inputData Not used for this command. 
+ * @param {string} inputMetaData Not used for this command.
+ * @return {array<boolean,string|integer|boolean|object|array,object>} An array with a boolean True or False value to
+ * indicate if the application should exit or not exit, followed by the command output and finally the promise for the command execution.
+ * @author Seth Hollingsead
+ * @date 2022/08/01
+ * @NOTE: This command will be used to test the order in which commands are enqueued and the order in which commands are executed.
+ * Especially when commands are nested inside deeply nested workflows.
+ */
+ async function clientCommand04(inputData, inputMetaData) {
+  let functionName = clientCommand04.name;
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.cBEGIN_Function);
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.cinputDataIs + inputData);
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.cinputMetaDataIs + inputMetaData);
+  let returnData = [true, false];
+  returnData[1] = 'clientStringParsing.clientCommand04';
+  console.log(returnData[1]);
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.cEND_Function);
+  return returnData;
+}
+
+/**
+ * @function clientCommand05
+ * @description Client Command Five.
+ * @param {string} inputData Not used for this command. 
+ * @param {string} inputMetaData Not used for this command.
+ * @return {array<boolean,string|integer|boolean|object|array,object>} An array with a boolean True or False value to
+ * indicate if the application should exit or not exit, followed by the command output and finally the promise for the command execution.
+ * @author Seth Hollingsead
+ * @date 2022/08/01
+ * @NOTE: This command will be used to test the order in which commands are enqueued and the order in which commands are executed.
+ * Especially when commands are nested inside deeply nested workflows.
+ */
+ async function clientCommand05(inputData, inputMetaData) {
+  let functionName = clientCommand05.name;
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.cBEGIN_Function);
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.cinputDataIs + inputData);
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.cinputMetaDataIs + inputMetaData);
+  let returnData = [true, false];
+  returnData[1] = 'clientStringParsing.clientCommand05';
+  console.log(returnData[1]);
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.cEND_Function);
+  return returnData;
+}
+
+/**
+ * @function clientCommand06
+ * @description Client Command Six.
+ * @param {string} inputData Not used for this command. 
+ * @param {string} inputMetaData Not used for this command.
+ * @return {array<boolean,string|integer|boolean|object|array,object>} An array with a boolean True or False value to
+ * indicate if the application should exit or not exit, followed by the command output and finally the promise for the command execution.
+ * @author Seth Hollingsead
+ * @date 2022/08/01
+ * @NOTE: This command will be used to test the order in which commands are enqueued and the order in which commands are executed.
+ * Especially when commands are nested inside deeply nested workflows.
+ */
+ async function clientCommand06(inputData, inputMetaData) {
+  let functionName = clientCommand06.name;
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.cBEGIN_Function);
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.cinputDataIs + inputData);
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.cinputMetaDataIs + inputMetaData);
+  let returnData = [true, false];
+  returnData[1] = 'clientStringParsing.clientCommand06';
+  console.log(returnData[1]);
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.cEND_Function);
+  return returnData;
+}
+
+/**
+ * @function clientCommand07
+ * @description Client Command Seven.
+ * @param {string} inputData Not used for this command. 
+ * @param {string} inputMetaData Not used for this command.
+ * @return {array<boolean,string|integer|boolean|object|array,object>} An array with a boolean True or False value to
+ * indicate if the application should exit or not exit, followed by the command output and finally the promise for the command execution.
+ * @author Seth Hollingsead
+ * @date 2022/08/01
+ * @NOTE: This command will be used to test the order in which commands are enqueued and the order in which commands are executed.
+ * Especially when commands are nested inside deeply nested workflows.
+ */
+ async function clientCommand07(inputData, inputMetaData) {
+  let functionName = clientCommand07.name;
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.cBEGIN_Function);
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.cinputDataIs + inputData);
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.cinputMetaDataIs + inputMetaData);
+  let returnData = [true, false];
+  returnData[1] = 'clientStringParsing.clientCommand07';
+  console.log(returnData[1]);
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.cEND_Function);
+  return returnData;
+}
+
+/**
+ * @function clientCommand08
+ * @description Client Command Eight.
+ * @param {string} inputData Not used for this command. 
+ * @param {string} inputMetaData Not used for this command.
+ * @return {array<boolean,string|integer|boolean|object|array,object>} An array with a boolean True or False value to
+ * indicate if the application should exit or not exit, followed by the command output and finally the promise for the command execution.
+ * @author Seth Hollingsead
+ * @date 2022/08/01
+ * @NOTE: This command will be used to test the order in which commands are enqueued and the order in which commands are executed.
+ * Especially when commands are nested inside deeply nested workflows.
+ */
+ async function clientCommand08(inputData, inputMetaData) {
+  let functionName = clientCommand08.name;
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.cBEGIN_Function);
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.cinputDataIs + inputData);
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.cinputMetaDataIs + inputMetaData);
+  let returnData = [true, false];
+  returnData[1] = 'clientStringParsing.clientCommand08';
+  console.log(returnData[1]);
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.cEND_Function);
+  return returnData;
+}
+
+/**
+ * @function clientCommand09
+ * @description Client Command Nine.
+ * @param {string} inputData Not used for this command. 
+ * @param {string} inputMetaData Not used for this command.
+ * @return {array<boolean,string|integer|boolean|object|array,object>} An array with a boolean True or False value to
+ * indicate if the application should exit or not exit, followed by the command output and finally the promise for the command execution.
+ * @author Seth Hollingsead
+ * @date 2022/08/01
+ * @NOTE: This command will be used to test the order in which commands are enqueued and the order in which commands are executed.
+ * Especially when commands are nested inside deeply nested workflows.
+ */
+ async function clientCommand09(inputData, inputMetaData) {
+  let functionName = clientCommand09.name;
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.cBEGIN_Function);
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.cinputDataIs + inputData);
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.cinputMetaDataIs + inputMetaData);
+  let returnData = [true, false];
+  returnData[1] = 'clientStringParsing.clientCommand09';
+  console.log(returnData[1]);
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.cEND_Function);
+  return returnData;
+}
+
+/**
+ * @function clientCommand10
+ * @description Client Command Ten.
+ * @param {string} inputData Not used for this command. 
+ * @param {string} inputMetaData Not used for this command.
+ * @return {array<boolean,string|integer|boolean|object|array,object>} An array with a boolean True or False value to
+ * indicate if the application should exit or not exit, followed by the command output and finally the promise for the command execution.
+ * @author Seth Hollingsead
+ * @date 2022/08/01
+ * @NOTE: This command will be used to test the order in which commands are enqueued and the order in which commands are executed.
+ * Especially when commands are nested inside deeply nested workflows.
+ */
+ async function clientCommand10(inputData, inputMetaData) {
+  let functionName = clientCommand10.name;
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.cBEGIN_Function);
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.cinputDataIs + inputData);
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.cinputMetaDataIs + inputMetaData);
+  let returnData = [true, false];
+  returnData[1] = 'clientStringParsing.clientCommand10';
+  console.log(returnData[1]);
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.cEND_Function);
+  return returnData;
+}
+
 export default {
   customEchoCommand,
-  bossPanic
+  bossPanic,
+  clientCommand01,
+  clientCommand02,
+  clientCommand03,
+  clientCommand04,
+  clientCommand05,
+  clientCommand06,
+  clientCommand07,
+  clientCommand08,
+  clientCommand09,
+  clientCommand10
 };

@@ -23,5 +23,15 @@ export const applicationCommandConstantsValidation = [
   // Client Commands in order
   // ********************************
   {Name: 'ccustomEchoCommand', Actual: app_cmd.ccustomEchoCommand, Expected: 'customEchoCommand'},
-  {Name: 'cbossPanic', Actual: app_cmd.cbossPanic, Expected: 'bossPanic'}
+  {Name: 'cbossPanic', Actual: app_cmd.cbossPanic, Expected: 'bossPanic'},
+  {Name: 'ccommand01', Actual: app_cmd.ccommand01, Expected: 'command01'},
+  {Name: 'ccommand02', Actual: app_cmd.ccommand02, Expected: 'command02'},
+  {Name: 'ccommand03', Actual: app_cmd.ccommand03, Expected: 'command03'},
+  {Name: 'ccommand04', Actual: app_cmd.ccommand04, Expected: 'command04'},
+  {Name: 'ccommand05', Actual: app_cmd.ccommand05, Expected: 'command05'},
+  {Name: 'ccommand06', Actual: app_cmd.ccommand06, Expected: 'command06'},
+  {Name: 'ccommand07', Actual: app_cmd.ccommand07, Expected: 'command07'},
+  {Name: 'ccommand08', Actual: app_cmd.ccommand08, Expected: 'command08'},
+  {Name: 'ccommand09', Actual: app_cmd.ccommand09, Expected: 'command09'},
+  {Name: 'ccommand10', Actual: app_cmd.ccommand10, Expected: 'command10'}
 ];
