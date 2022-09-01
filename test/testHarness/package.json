@@ -1,7 +1,7 @@
 {
   "name": "testHarness",
   "version": "0.0.1",
-  "description": "A test harness application to test the haystacks-sync framework.",
+  "description": "A test harness application to test the haystacks-async framework.",
   "main": "./src/testHarness.js",
   "type": "module",
   "scripts": {
@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/SethEden/haystacks-sync.git"
+    "url": "git+https://github.com/SethEden/haystacks-async.git"
   },
   "keywords": [
     "application",
@@ -21,8 +21,8 @@
   "license": "MIT",
   "dependencies": {
     "dotenv": "^16.0.0",
-    "@haystacks/async": "0.1.0",
-    "@haystacks/constants": "0.1.0"
+    "@haystacks/async": "0.1.2",
+    "@haystacks/constants": "0.1.1"
   },
   "devDependencies": {
     "jsdoc": "3.6.7",
@@ -31,7 +31,7 @@
     "standard-version": "9.3.2"
   },
   "bugs": {
-    "url": "https://github.com/SethEden/haystacks-sync/issues"
+    "url": "https://github.com/SethEden/haystacks-async/issues"
   },
-  "homepage": "https://github.com/SethEden/haystacks-sync#readme"
+  "homepage": "https://github.com/SethEden/haystacks-async#readme"
 }

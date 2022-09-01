@@ -34,17 +34,17 @@ const namespacePrefix = sys.cbusinessRules + bas.cDot + wrd.crules + bas.cDot + 
  * @author Seth Hollingsead
  * @date 2022/01/19
  */
-function doesArrayContainFilename(inputData, inputMetaData) {
+async function doesArrayContainFilename(inputData, inputMetaData) {
   let functionName = doesArrayContainFilename.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = false;
   // NOTE: This call doesn't actually work, it may have worked at one time, but it doesn't work now.
   // And I'm not going to spend the time trying to figure out why,
   // when it will be much simpler to ust call that same function in a loop to figure out the result.
   // Can solve this when we build unit tests.
-  returnData = ruleParsing.processRulesInternal([[inputData, inputMetaData], ruleParsing.getRule(biz.cascertainMatchingElements)], [biz.cdoesArrayContainValue]);
+  returnData = await ruleParsing.processRulesInternal([[inputData, inputMetaData], await ruleParsing.getRule(biz.cascertainMatchingElements)], [biz.cdoesArrayContainValue]);
 
   // NOTE: The below code also works, I am going to attempt to re-enable the above code and see if it also works.
   // YES! This is a second way of doing the same thing. If the above code ever has a problem, we can fall back to this method.
@@ -54,8 +54,8 @@ function doesArrayContainFilename(inputData, inputMetaData) {
   //     break;
   //   }
   // } // End-for (let i = 0; i < inputData.Length; i++)
-  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -70,27 +70,27 @@ function doesArrayContainFilename(inputData, inputMetaData) {
  * @author Seth Hollingsead
  * @date 2022/01/21
  */
-function getFileAndPathListForPath(inputData, inputMetaData) {
+async function getFileAndPathListForPath(inputData, inputMetaData) {
   let functionName = getFileAndPathListForPath.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = '';
   let enableFilesListLimit, filesListLimit;
   if (inputData) {
     if (inputMetaData) {
-      enableFilesListLimit = configurator.getConfigurationSetting(wrd.csystem, cfg.cEnableFilesListLimit);
+      enableFilesListLimit = await configurator.getConfigurationSetting(wrd.csystem, cfg.cEnableFilesListLimit);
       filesListLimit = inputMetaData;
     } else {
-      enableFilesListLimit = configurator.getConfigurationSetting(wrd.csystem, cfg.cEnableFilesListLimit);
-      filesListLimit = configurator.getConfigurationSetting(wrd.csystem, cfg.cFilesListLimit);
+      enableFilesListLimit = await configurator.getConfigurationSetting(wrd.csystem, cfg.cEnableFilesListLimit);
+      filesListLimit = await configurator.getConfigurationSetting(wrd.csystem, cfg.cFilesListLimit);
     }
     // filesListLimit is:
-    loggers.consoleLog(namespacePrefix + functionName, msg.cfilesListLimitIs + filesListLimit);
-    returnData = ruleParsing.processRulesInternal([inputData, [enableFilesListLimit, filesListLimit]], [biz.cscanDirectoryContents]);
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cfilesListLimitIs + filesListLimit);
+    returnData = await ruleParsing.processRulesInternal([inputData, [enableFilesListLimit, filesListLimit]], [biz.cscanDirectoryContents]);
   } // End-if (inputData)
-  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 

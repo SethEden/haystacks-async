@@ -2,4 +2,14 @@
   <Command Name="customEchoCommand" Aliases="CustomEchoC,CustomEchoCmd,CustomEchoCommand,CustomEcoC,CustomEcoCmd,CustomEcoCommand,CustomEC,CustomECmd,CustomECommand,CustEchoC,CustEchoCmd,CustEchoCommand,CustEcoC,CustEcoCmd,CustEcoCommand,CustEC,CustECmd,CustECommand,CEchoC,CEchoCmd,CEchoCommand,CEcoC,CEcoCmd,CEcoCommand,CEC,CECmd" Description="A client defined custom Echo command that echos back the input plus something extra."/>
   <Command Name="bossPanic" Aliases="BossP,BossPan,BossPanc,BossPanic,BosP,BosPan,BosPanc,BosPanic,BsP,BsPan,BsPanc,BsPanic,BP,BPan,BPanc" Description="Print a bunch of text on the screen so it looks like the computer is busy"/>
   <Command Name="placeHolder" Aliases="PlaceH,PlaceHld,PlaceHldr,PlaceHold,PlaceHoldr,PlaceHolder,PlacH,PlacHld,PlacHldr,PlacHold,PlacHoldr,PlacHolder,PlcH,PlcHld,PlcHldr,PlcHold,PlcHoldr,PlcHolder,PlH,PlHld,PlHldr,PlHold,PlHoldr,PlHolder,PH,PHld,PHldr,PHold,PHoldr" Description="Description of the command, this is just a placeHolder."/>
+  <Command Name="command01" Aliases="Command1,CommandOne,C1,COne,Cmd1" Description="Client Command 1"/>
+  <Command Name="command02" Aliases="Command2,CommandTwo,C2,CTwo,Cmd2" Description="Client Command 2"/>
+  <Command Name="command03" Aliases="Command3,CommandThree,C3,CThree,Cmd3" Description="Client Command 3"/>
+  <Command Name="command04" Aliases="Command4,CommandFour,C4,CFour,Cmd4" Description="Client Command 4"/>
+  <Command Name="command05" Aliases="Command5,CommandFive,C5,CFive,Cmd5" Description="Client Command 5"/>
+  <Command Name="command06" Aliases="Command6,CommandSix,C6,CSix,Cmd6" Description="Client Command 6"/>
+  <Command Name="command07" Aliases="Command7,CommandSeven,C7,CSeven,Cmd7" Description="Client Command 7"/>
+  <Command Name="command08" Aliases="Command8,CommandEight,C8,CEight,Cmd8" Description="Client Command 8"/>
+  <Command Name="command09" Aliases="Command9,CommandNine,C9,CNine,Cmd9" Description="Client Command 9"/>
+  <Command Name="command10" Aliases="Command10,CommandTen,C10,CTen,Cmd10" Description="Client Command 10"/>
 </CommandsAliases>

@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/SethEden/haystacks-sync.git"
+    "url": "git+https://github.com/SethEden/haystacks-async.git"
   },
   "keywords": [
     "application",
@@ -23,11 +23,11 @@
   "author": "Seth Hollingsead",
   "license": "MIT",
   "dependencies": {
-    "@haystacks/async": "0.1.0",
-    "@haystacks/constants": "0.1.0"
+    "@haystacks/async": "0.1.2",
+    "@haystacks/constants": "0.1.1"
   },
   "bugs": {
-    "url": "https://github.com/SethEden/haystacks-sync/issues"
+    "url": "https://github.com/SethEden/haystacks-async/issues"
   },
-  "homepage": "https://github.com/SethEden/haystacks-sync#readme"
+  "homepage": "https://github.com/SethEden/haystacks-async#readme"
 }

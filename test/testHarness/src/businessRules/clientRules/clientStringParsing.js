@@ -36,19 +36,19 @@ const namespacePrefix = apc.cApplicationName + bas.cDot + wrd.cbusiness + wrd.cR
  * @author Seth Hollingsead
  * @date 2022/02/08
  */
-const customEcho = function(inputData, inputMetaData) {
+async function customEcho(inputData, inputMetaData) {
   let functionName = customEcho.name;
-  haystacks.consoleLog(namespacePrefix, functionName, msg.cBEGIN_Function);
-  haystacks.consoleLog(namespacePrefix, functionName, msg.cinputDataIs + inputData);
-  haystacks.consoleLog(namespacePrefix, functionName, msg.cinputMetaDataIs + inputMetaData);
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.cBEGIN_Function);
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.cinputDataIs + inputData);
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData;
   // clientStringParsing.customEcho
   returnData = inputData + bas.cSpace + app_msg.cclientStringParsingDotCustomEcho;
   console.log(returnData);
-  haystacks.consoleLog(namespacePrefix, functionName, msg.creturnDataIs + returnData);
-  haystacks.consoleLog(namespacePrefix, functionName, msg.cEND_Function);
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.creturnDataIs + returnData);
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.cEND_Function);
   return returnData;
-};
+}
 
 /**
  * @function mostPopularNumber
@@ -60,11 +60,11 @@ const customEcho = function(inputData, inputMetaData) {
  * @date 2022/03/31
  * @NOTE: Test command: businessRule mostPopularNumber 1 2 2 3 4 5 2
  */
-const mostPopularNumber = function(inputData, inputMetaData) {
+async function mostPopularNumber(inputData, inputMetaData) {
   let functionName = mostPopularNumber.name;
-  haystacks.consoleLog(namespacePrefix, functionName, msg.cBEGIN_Function);
-  haystacks.consoleLog(namespacePrefix, functionName, msg.cinputDataIs + inputData);
-  haystacks.consoleLog(namespacePrefix, functionName, msg.cinputMetaDataIs + inputMetaData);
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.cBEGIN_Function);
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.cinputDataIs + inputData);
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData;
   let i, j, instanceCounter = 0;
   let tempArray1 = [];
@@ -72,112 +72,112 @@ const mostPopularNumber = function(inputData, inputMetaData) {
   if (inputData && inputMetaData && inputMetaData.length > 1) {
     inputMetaData.unshift(inputData);
     // BEGIN first for-loop
-    haystacks.consoleLog(namespacePrefix, functionName, app_msg.cmostPopularNumberMessage01);
+    await haystacks.consoleLog(namespacePrefix, functionName, app_msg.cmostPopularNumberMessage01);
     for (i = 0; i <= inputMetaData.length; i++) {
       // BEGIN nested for-loop i =
-      haystacks.consoleLog(namespacePrefix, functionName, app_msg.cmostPopularNumberMessage02 + i);
+      await haystacks.consoleLog(namespacePrefix, functionName, app_msg.cmostPopularNumberMessage02 + i);
       for (j = 0; j <= inputMetaData.length; j++) {
         // BEGIN nested for-loop j =
-        haystacks.consoleLog(namespacePrefix, functionName, app_msg.cmostPopularNumberMessage03 + j);
+        await haystacks.consoleLog(namespacePrefix, functionName, app_msg.cmostPopularNumberMessage03 + j);
         if (inputMetaData[i] === inputMetaData[j] && i !== j && i !== undefined && i !== null) {
           // FOUND a MATCH!!
-          haystacks.consoleLog(namespacePrefix, functionName, app_msg.cmostPopularNumberMessage04);
+          await haystacks.consoleLog(namespacePrefix, functionName, app_msg.cmostPopularNumberMessage04);
           // inputMetaData[i] is:
-          haystacks.consoleLog(namespacePrefix, functionName, app_msg.cmostPopularNumberMessage05 + inputMetaData[i]);
+          await haystacks.consoleLog(namespacePrefix, functionName, app_msg.cmostPopularNumberMessage05 + inputMetaData[i]);
           // inputMetaData[j] is:
-          haystacks.consoleLog(namespacePrefix, functionName, app_msg.cmostPopularNumberMessage06 + inputMetaData[j]);
+          await haystacks.consoleLog(namespacePrefix, functionName, app_msg.cmostPopularNumberMessage06 + inputMetaData[j]);
           tempArray1[i] = inputMetaData[i];
           // contents of tempArray1 are:
-          haystacks.consoleLog(namespacePrefix, functionName, app_msg.cmostPopularNumberMessage07 + JSON.stringify(tempArray1));
+          await haystacks.consoleLog(namespacePrefix, functionName, app_msg.cmostPopularNumberMessage07 + JSON.stringify(tempArray1));
         } // End-if (inputData[i] === inputData[j] && i !== j && i !== undefined && i !== null)
         // END nested for-loop j =
-        haystacks.consoleLog(namespacePrefix, functionName, app_msg.cmostPopularNumberMessage08 + j);
+        await haystacks.consoleLog(namespacePrefix, functionName, app_msg.cmostPopularNumberMessage08 + j);
       } // End-for (j = 0; j <= inputMetaData; j++)
       // END nested for-loop i =
-      haystacks.consoleLog(namespacePrefix, functionName, app_msg.cmostPopularNumberMessage09 + i);
+      await haystacks.consoleLog(namespacePrefix, functionName, app_msg.cmostPopularNumberMessage09 + i);
     } // End-for (i = 0; i <= inputMetaData; i++)
     // END first for-loop
-    haystacks.consoleLog(namespacePrefix, functionName, app_msg.cmostPopularNumberMessage10);
+    await haystacks.consoleLog(namespacePrefix, functionName, app_msg.cmostPopularNumberMessage10);
 
     // BEGIN second for-loop
-    haystacks.consoleLog(namespacePrefix, functionName, app_msg.cmostPopularNumberMessage11);
+    await haystacks.consoleLog(namespacePrefix, functionName, app_msg.cmostPopularNumberMessage11);
     for (i = 0; i <= tempArray1.length; i++) {
       tempArray2[i] = 0; // Initialize it to zero before we begin!
       // BEGIN nested for-loop i =
-      haystacks.consoleLog(namespacePrefix, functionName, app_msg.cmostPopularNumberMessage02 + i);
+      await haystacks.consoleLog(namespacePrefix, functionName, app_msg.cmostPopularNumberMessage02 + i);
       for (j = 0; j <= tempArray1.length; j++) {
         // BEGIN iteration j =
-        haystacks.consoleLog(namespacePrefix, functionName, app_msg.cmostPopularNumberMessage12 + j);
+        await haystacks.consoleLog(namespacePrefix, functionName, app_msg.cmostPopularNumberMessage12 + j);
         if (tempArray1[i] === inputMetaData[j] && tempArray1[i] !== undefined && tempArray1[i] !== null && i !== j) {
           // FOUND a MATCH!!
-          haystacks.consoleLog(namespacePrefix, functionName, app_msg.cmostPopularNumberMessage04);
+          await haystacks.consoleLog(namespacePrefix, functionName, app_msg.cmostPopularNumberMessage04);
           // tempArray1[i] is:
-          haystacks.consoleLog(namespacePrefix, functionName, app_msg.cmostPopularNumberMessage13 + tempArray1[i]);
+          await haystacks.consoleLog(namespacePrefix, functionName, app_msg.cmostPopularNumberMessage13 + tempArray1[i]);
           // inputMetaData[j] is:
-          haystacks.consoleLog(namespacePrefix, functionName, app_msg.cmostPopularNumberMessage06 + inputMetaData[j]);
+          await haystacks.consoleLog(namespacePrefix, functionName, app_msg.cmostPopularNumberMessage06 + inputMetaData[j]);
           // instanceCounter before increment is:
-          haystacks.consoleLog(namespacePrefix, functionName, app_msg.cmostPopularNumberMessage14 + instanceCounter);
+          await haystacks.consoleLog(namespacePrefix, functionName, app_msg.cmostPopularNumberMessage14 + instanceCounter);
           tempArray2[i] = ++instanceCounter;
           // instanceCounter after increment is:
-          haystacks.consoleLog(namespacePrefix, functionName, app_msg.cmostPopularNumberMessage15 + instanceCounter);
+          await haystacks.consoleLog(namespacePrefix, functionName, app_msg.cmostPopularNumberMessage15 + instanceCounter);
           // contents of tempArray2 are:
-          haystacks.consoleLog(namespacePrefix, functionName, app_msg.cmostPopularNumberMessage16 + JSON.stringify(tempArray2));
+          await haystacks.consoleLog(namespacePrefix, functionName, app_msg.cmostPopularNumberMessage16 + JSON.stringify(tempArray2));
         } // End-if (tempArray1[i] === inputData[j] && tempArray1[i] !== undefined && tempArray1[i] !== null && i !== j)
         // END iteration j =
-        haystacks.consoleLog(namespacePrefix, functionName, app_msg.cmostPopularNumberMessage17 + j);
+        await haystacks.consoleLog(namespacePrefix, functionName, app_msg.cmostPopularNumberMessage17 + j);
       } // End-for (j = 0; j <= tempArray1.length; j++)
       // contents of tempArray2 are:
-      haystacks.consoleLog(namespacePrefix, functionName, app_msg.cmostPopularNumberMessage16 + JSON.stringify(tempArray2));
+      await haystacks.consoleLog(namespacePrefix, functionName, app_msg.cmostPopularNumberMessage16 + JSON.stringify(tempArray2));
       instanceCounter = 0; // Reset it for the next array index.
       // END nested for-loop i =
-      haystacks.consoleLog(namespacePrefix, functionName, app_msg.cmostPopularNumberMessage18 + i);
+      await haystacks.consoleLog(namespacePrefix, functionName, app_msg.cmostPopularNumberMessage18 + i);
     } // End-for (i = 0; i <= tempArray1.length; i++)
     // END second for-loop
-    haystacks.consoleLog(namespacePrefix, functionName, app_msg.cmostPopularNumberMessage19);
+    await haystacks.consoleLog(namespacePrefix, functionName, app_msg.cmostPopularNumberMessage19);
 
     // BEGIN third for-loop
-    haystacks.consoleLog(namespacePrefix, functionName, app_msg.cmostPopularNumberMessage20);
+    await haystacks.consoleLog(namespacePrefix, functionName, app_msg.cmostPopularNumberMessage20);
     // tempArray2.length is:
-    haystacks.consoleLog(namespacePrefix, functionName, app_msg.cmostPopularNumberMessage21 + tempArray2.length);
+    await haystacks.consoleLog(namespacePrefix, functionName, app_msg.cmostPopularNumberMessage21 + tempArray2.length);
     for (i = 0; i <= tempArray2.length; i++) {
       // BEGIN iteration i =
-      haystacks.consoleLog(namespacePrefix, functionName, app_msg.cmostPopularNumberMessage22 + i);
+      await haystacks.consoleLog(namespacePrefix, functionName, app_msg.cmostPopularNumberMessage22 + i);
       if (tempArray2[i] !== 0 && i === 0) {
         // if-condition i = 0 has been met! i =
-        haystacks.consoleLog(namespacePrefix, functionName, app_msg.cmostPopularNumberMessage23 + i);
+        await haystacks.consoleLog(namespacePrefix, functionName, app_msg.cmostPopularNumberMessage23 + i);
         returnData = inputData[i];
       } else {
         // if-condition-else i <> 0 has been met! i =
-        haystacks.consoleLog(namespacePrefix, functionName, app_msg.cmostPopularNumberMessage24 + i);
+        await haystacks.consoleLog(namespacePrefix, functionName, app_msg.cmostPopularNumberMessage24 + i);
         // tempArray2[i] is:
-        haystacks.consoleLog(namespacePrefix, functionName, app_msg.cmostPopularNumberMessage26 + tempArray2[i]);
+        await haystacks.consoleLog(namespacePrefix, functionName, app_msg.cmostPopularNumberMessage26 + tempArray2[i]);
         // tempArray2[i - 1] is:
-        haystacks.consoleLog(namespacePrefix, functionName, app_msg.cmostPopularNumberMessage27 + tempArray2[i - 1]);
+        await haystacks.consoleLog(namespacePrefix, functionName, app_msg.cmostPopularNumberMessage27 + tempArray2[i - 1]);
         if (tempArray2[i] > tempArray2[i - 1]) {
           // found one greater
-          haystacks.consoleLog(namespacePrefix, functionName, app_msg.cmostPopularNumberMessage25);
+          await haystacks.consoleLog(namespacePrefix, functionName, app_msg.cmostPopularNumberMessage25);
           // tempArray2[i] is:
-          haystacks.consoleLog(namespacePrefix, functionName, app_msg.cmostPopularNumberMessage26 + tempArray2[i]);
+          await haystacks.consoleLog(namespacePrefix, functionName, app_msg.cmostPopularNumberMessage26 + tempArray2[i]);
           // tempArray2[i - 1] is:
-          haystacks.consoleLog(namespacePrefix, functionName, app_msg.cmostPopularNumberMessage27 + tempArray2[i - 1]);
+          await haystacks.consoleLog(namespacePrefix, functionName, app_msg.cmostPopularNumberMessage27 + tempArray2[i - 1]);
           returnData = inputMetaData[i];
           // returnData is:
-          haystacks.consoleLog(namespacePrefix, functionName, msg.creturnDataIs + returnData);
+          await haystacks.consoleLog(namespacePrefix, functionName, msg.creturnDataIs + returnData);
         } // End-if (tempArray2[i] > returnData)
       }
       // i += 1;
       // END iteration i =
-      haystacks.consoleLog(namespacePrefix, functionName, app_msg.cmostPopularNumberMessage28 + i);
+      await haystacks.consoleLog(namespacePrefix, functionName, app_msg.cmostPopularNumberMessage28 + i);
     } // End-for (i = 0; i <= tempArray2.length; i++)
     // END third for-loop
-    haystacks.consoleLog(namespacePrefix, functionName, app_msg.cmostPopularNumberMessage29);
+    await haystacks.consoleLog(namespacePrefix, functionName, app_msg.cmostPopularNumberMessage29);
   } else {
     console.log(app_msg.cmostPopularNumberMessage30);
   }
-  haystacks.consoleLog(namespacePrefix, functionName, msg.creturnDataIs + returnData);
-  haystacks.consoleLog(namespacePrefix, functionName, msg.cEND_Function);
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.creturnDataIs + returnData);
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.cEND_Function);
   return returnData;
-};
+}
 
 /**
  * @function isAlmostPalindrome
@@ -189,11 +189,11 @@ const mostPopularNumber = function(inputData, inputMetaData) {
  * @date 2022/03/31
  * @NOTE Test command: businessRule isAlmostPalindrome annae
  */
-const isAlmostPalindrome = function(inputData, inputMetaData) {
+async function isAlmostPalindrome(inputData, inputMetaData) {
   let functionName = isAlmostPalindrome.name;
-  haystacks.consoleLog(namespacePrefix, functionName, msg.cBEGIN_Function);
-  haystacks.consoleLog(namespacePrefix, functionName, msg.cinputDataIs + inputData);
-  haystacks.consoleLog(namespacePrefix, functionName, msg.cinputMetaDataIs + inputMetaData);
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.cBEGIN_Function);
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.cinputDataIs + inputData);
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = false;
   let misCompareCount = 0;
   let startingPoint, endingPoint;
@@ -221,40 +221,40 @@ const isAlmostPalindrome = function(inputData, inputMetaData) {
         break;
       }
       // startingPoint is:
-      haystacks.consoleLog(namespacePrefix, functionName, app_msg.cstartingPointIs + startingPoint);
+      await haystacks.consoleLog(namespacePrefix, functionName, app_msg.cstartingPointIs + startingPoint);
       // endingPoint is:
-      haystacks.consoleLog(namespacePrefix, functionName, app_msg.cendingPointIs + endingPoint);
+      await haystacks.consoleLog(namespacePrefix, functionName, app_msg.cendingPointIs + endingPoint);
 loop2:
       for (let j = startingPoint; j < inputData.length; j++) {
         // j value is:
-        haystacks.consoleLog(namespacePrefix, functionName, msg.cjValueIs + j);
+        await haystacks.consoleLog(namespacePrefix, functionName, msg.cjValueIs + j);
         // inputData.charAt(j) is:
-        haystacks.consoleLog(namespacePrefix, functionName, app_msg.cinputDataDotCharAtJIs + inputData.charAt(j));
+        await haystacks.consoleLog(namespacePrefix, functionName, app_msg.cinputDataDotCharAtJIs + inputData.charAt(j));
         // inputData.charAt(inputData.length -
         // ) is:
-        haystacks.consoleLog(namespacePrefix, functionName, app_msg.cinputDataDotCharAtInputDataDotLengthDash + j + ' + ' + endingPoint + app_msg.cCloseParenthesisIs +
+        await haystacks.consoleLog(namespacePrefix, functionName, app_msg.cinputDataDotCharAtInputDataDotLengthDash + j + ' + ' + endingPoint + app_msg.cCloseParenthesisIs +
           inputData.charAt(inputData.length - j + endingPoint));
         if (inputData.charAt(j) !== inputData.charAt(inputData.length - j + endingPoint)) {
           // We got a mismatch!
-          haystacks.consoleLog(namespacePrefix, functionName, app_msg.cWeGotMismatch);
+          await haystacks.consoleLog(namespacePrefix, functionName, app_msg.cWeGotMismatch);
           // misCompareCount before increment is:
-          haystacks.consoleLog(namespacePrefix, functionName, app_msg.cmisCompareCountBeforeIncrementIs + misCompareCount);
+          await haystacks.consoleLog(namespacePrefix, functionName, app_msg.cmisCompareCountBeforeIncrementIs + misCompareCount);
           misCompareCount += 1;
           // misCompareCount post increment is:
-          haystacks.consoleLog(namespacePrefix, functionName, app_msg.cmisCompareCountPostIncrementIs + misCompareCount);
+          await haystacks.consoleLog(namespacePrefix, functionName, app_msg.cmisCompareCountPostIncrementIs + misCompareCount);
           if (misCompareCount >= 2) {
             break loop2;
           }
         } // End-if (inputData.charAt(j) !== inputData.charAt(inputData.length - j + endingPoint))
       } // End-for (let j = startingPoint; j < inputData.length; j++)
       // misCompareCount after the for-loop is:
-      haystacks.consoleLog(namespacePrefix, functionName, app_msg.cmisCompareCountAfterForLoopIs + misCompareCount);
+      await haystacks.consoleLog(namespacePrefix, functionName, app_msg.cmisCompareCountAfterForLoopIs + misCompareCount);
       if (i === 0 || i > 0) {
         if (misCompareCount <= 1) {
           returnData = true;
         }
       } // End-if (i === 0 || i > 0)
-      haystacks.consoleLog(namespacePrefix, functionName, msg.creturnDataIs + returnData);
+      await haystacks.consoleLog(namespacePrefix, functionName, msg.creturnDataIs + returnData);
       // If we got a positive result then we can break out of the function and return our positive result.
       if (returnData === true) {
         break;
@@ -266,10 +266,10 @@ loop2:
     console.log(app_msg.cisAlmostPalindromeInvalidEntry);
   }
 
-  haystacks.consoleLog(namespacePrefix, functionName, msg.creturnDataIs + returnData);
-  haystacks.consoleLog(namespacePrefix, functionName, msg.cEND_Function);
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.creturnDataIs + returnData);
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.cEND_Function);
   return returnData;
-};
+}
 
 /**
  * @function threePointAverage
@@ -281,17 +281,17 @@ loop2:
  * @date 2022/03/31
  * @NOTE: Test command: businessRule threePointAverage [1,1] [2,2] [3,3]
  */
-const threePointAverage = function(inputData, inputMetaData) {
+async function threePointAverage(inputData, inputMetaData) {
   let functionName = threePointAverage.name;
-  haystacks.consoleLog(namespacePrefix, functionName, msg.cBEGIN_Function);
-  haystacks.consoleLog(namespacePrefix, functionName, msg.cinputDataIs + inputData);
-  haystacks.consoleLog(namespacePrefix, functionName, msg.cinputMetaDataIs + inputMetaData);
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.cBEGIN_Function);
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.cinputDataIs + inputData);
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = [0,0];
   if (inputData && inputMetaData) {
     let stringInput = inputData + bas.cComa + inputMetaData;
-    haystacks.consoleLog(namespacePrefix, functionName, app_msg.cstringInputIs + stringInput);
+    await haystacks.consoleLog(namespacePrefix, functionName, app_msg.cstringInputIs + stringInput);
     let stringArray = stringInput.split(bas.cComa);
-    haystacks.consoleLog(namespacePrefix, functionName, app_msg.cstringArrayIs + JSON.stringify(stringArray));
+    await haystacks.consoleLog(namespacePrefix, functionName, app_msg.cstringArrayIs + JSON.stringify(stringArray));
     let xAverage, x1, x2, x3;
     let yAverage, y1, y2, y3;
 
@@ -310,21 +310,21 @@ const threePointAverage = function(inputData, inputMetaData) {
       y3 = parseInt(stringArray[5]); // 3
 
       // x1 is:
-      haystacks.consoleLog(namespacePrefix, functionName, app_msg.cx1Is + x1);
+      await haystacks.consoleLog(namespacePrefix, functionName, app_msg.cx1Is + x1);
       // y1 is:
-      haystacks.consoleLog(namespacePrefix, functionName, app_msg.cy1Is + y1);
+      await haystacks.consoleLog(namespacePrefix, functionName, app_msg.cy1Is + y1);
       // x2 is:
-      haystacks.consoleLog(namespacePrefix, functionName, app_msg.cx2Is + x2);
+      await haystacks.consoleLog(namespacePrefix, functionName, app_msg.cx2Is + x2);
       // y2 is:
-      haystacks.consoleLog(namespacePrefix, functionName, app_msg.cy2Is + y2);
+      await haystacks.consoleLog(namespacePrefix, functionName, app_msg.cy2Is + y2);
       // x3 is:
-      haystacks.consoleLog(namespacePrefix, functionName, app_msg.cx3Is + x3);
+      await haystacks.consoleLog(namespacePrefix, functionName, app_msg.cx3Is + x3);
       // y3 is:
-      haystacks.consoleLog(namespacePrefix, functionName, app_msg.cy3Is + y3);
+      await haystacks.consoleLog(namespacePrefix, functionName, app_msg.cy3Is + y3);
       // x1 + x2 + x3 is:
-      haystacks.consoleLog(namespacePrefix, functionName, app_msg.cx1x2x3Is + (x1 + x2 + x3));
+      await haystacks.consoleLog(namespacePrefix, functionName, app_msg.cx1x2x3Is + (x1 + x2 + x3));
       // y1 + y2 + y3 is:
-      haystacks.consoleLog(namespacePrefix, functionName, app_msg.cy1y2y3Is + (y1 + y2 + y3));
+      await haystacks.consoleLog(namespacePrefix, functionName, app_msg.cy1y2y3Is + (y1 + y2 + y3));
       // Calculate the X-averages:
       xAverage = (x1 + x2 + x3) / 3;
       // Calculate the y-averages:
@@ -336,10 +336,10 @@ const threePointAverage = function(inputData, inputMetaData) {
   } else {
     console.log(app_msg.cthreePointAverageInvalidInput + app_msg.cthreePointAverageInputFormat);
   }
-  haystacks.consoleLog(namespacePrefix, functionName, msg.creturnDataIs + returnData);
-  haystacks.consoleLog(namespacePrefix, functionName, msg.cEND_Function);
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.creturnDataIs + returnData);
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.cEND_Function);
   return returnData;
-};
+}
 
 /**
  * @function arrayCounter
@@ -351,11 +351,11 @@ const threePointAverage = function(inputData, inputMetaData) {
  * @date 2022/03/31
  * @NOTE: Test command: businessRule arrayCounter 3 [1,2,3,3,2]
  */
-const arrayCounter = function(inputData, inputMetaData) {
+async function arrayCounter(inputData, inputMetaData) {
   let functionName = arrayCounter.name;
-  haystacks.consoleLog(namespacePrefix, functionName, msg.cBEGIN_Function);
-  haystacks.consoleLog(namespacePrefix, functionName, msg.cinputDataIs + inputData);
-  haystacks.consoleLog(namespacePrefix, functionName, msg.cinputMetaDataIs + inputMetaData);
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.cBEGIN_Function);
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.cinputDataIs + inputData);
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = 0;
   if (inputData && inputMetaData) {
     for (let i = 0; i <= inputMetaData.length; i++) {
@@ -364,10 +364,10 @@ const arrayCounter = function(inputData, inputMetaData) {
       }
     } // End-for (let i = 0; i <= inputData.length; i++)
   } // End-if (inputData && inputMetaData)
-  haystacks.consoleLog(namespacePrefix, functionName, msg.creturnDataIs + returnData);
-  haystacks.consoleLog(namespacePrefix, functionName, msg.cEND_Function);
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.creturnDataIs + returnData);
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.cEND_Function);
   return returnData;
-};
+}
 
 export default {
   customEcho,

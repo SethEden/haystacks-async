@@ -38,7 +38,7 @@ const namespacePrefix = sys.cbusinessRules + bas.cDot + wrd.crules + bas.cDot + 
  * @date 2021/10/27
  * @NOTE Cannot use the loggers here, because dependency data will have never been loaded.
  */
-function parseSystemRootPath(inputData, inputMetaData) {
+async function parseSystemRootPath(inputData, inputMetaData) {
   // let functionName = parseSystemRootPath.name;
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   // console.log(`inputData is: ${JSON.stringify(inputData)}`);
@@ -94,17 +94,17 @@ function parseSystemRootPath(inputData, inputMetaData) {
  * @date 2021/11/10
  * @NOTE Cannot use the loggers here, because of a circular dependency.
  */
-function stringToDataType(inputData, inputMetaData) {
+async function stringToDataType(inputData, inputMetaData) {
   // let functionName = stringToDataType.name;
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   // console.log(`inputData is: ${JSON.stringify(inputData)}`);
   // console.log(`inputMetaData is: ${JSON.stringify(inputMetaData)}`);
   let returnData = false;
   if (inputData) {
-    let dataType = determineObjectDataType(inputData, '');
+    let dataType = await determineObjectDataType(inputData, '');
     switch (dataType) {
       case wrd.cBoolean:
-        returnData = stringToBoolean(inputData, '');
+        returnData = await stringToBoolean(inputData, '');
         break;
       case wrd.cInteger:
         returnData = parseInt(inputData, '');
@@ -138,7 +138,7 @@ function stringToDataType(inputData, inputMetaData) {
  * If we cause this function to evaluate a 0 or 1 to a Boolean, then the integer function would never get a chance to evaluate.
  * @NOTE Cannot use the loggers here, because of a circular dependency.
  */
-function stringToBoolean(inputData, inputMetaData) {
+async function stringToBoolean(inputData, inputMetaData) {
   // let functionName = stringToBoolean.name;
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   // console.log(`inputData is: ${JSON.stringify(inputData)}`);
@@ -177,20 +177,20 @@ function stringToBoolean(inputData, inputMetaData) {
  * @date 2021/11/10
  * @NOTE Cannot use the loggers here, because of a circular dependency.
  */
-function determineObjectDataType(inputData, inputMetaData) {
+async function determineObjectDataType(inputData, inputMetaData) {
   // let functionName = determineObjectDataType.name;
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   // console.log(`inputData is: ${JSON.stringify(inputData)}`);
   // console.log(`inputMetaData is: ${JSON.stringify(inputMetaData)}`);
   let returnData = false;
   if (inputData) {
-    if (isBoolean(inputData, '') === true) {
+    if (await isBoolean(inputData, '') === true) {
       returnData = wrd.cBoolean;
-    } else if (isInteger(inputData, '') === true) {
+    } else if (await isInteger(inputData, '') === true) {
       returnData = wrd.cInteger;
-    } else if (isFloat(inputData, '') === true) {
+    } else if (await isFloat(inputData, '') === true) {
       returnData = wrd.cFloat;
-    } else if (isString(inputData, '') === true) {
+    } else if (await isString(inputData, '') === true) {
       returnData = wrd.cString;
     } else { // Otherwise we cannot figure out what the data type is.
       // No real way to tell the difference between Short, Long and Double.
@@ -216,7 +216,7 @@ function determineObjectDataType(inputData, inputMetaData) {
  * @date 2021/11/10
  * @NOTE Cannot use the loggers here, because of a circular dependency.
  */
-function isBoolean(inputData, inputMetaData) {
+async function isBoolean(inputData, inputMetaData) {
   // let functionName = isBoolean.name;
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   // console.log(`inputData is: ${JSON.stringify(inputData)}`);
@@ -250,7 +250,7 @@ function isBoolean(inputData, inputMetaData) {
  * @date 2021/11/10
  * @NOTE Cannot use the loggers here, because of a circular dependency.
  */
-function isInteger(inputData, inputMetaData) {
+async function isInteger(inputData, inputMetaData) {
   // let functionName = isInteger.name;
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   // console.log(`inputData is: ${JSON.stringify(inputData)}`);
@@ -285,7 +285,7 @@ function isInteger(inputData, inputMetaData) {
  * @date 2021/11/10
  * @NOTE Cannot use the loggers here, because of a circular dependency.
  */
-function isFloat(inputData, inputMetaData) {
+async function isFloat(inputData, inputMetaData) {
   // let functionName = isFloat.name;
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   // console.log(`inputData is: ${JSON.stringify(inputData)}`);
@@ -316,14 +316,14 @@ function isFloat(inputData, inputMetaData) {
  * @date 2021/11/10
  * @NOTE Cannot use the loggers here, because of a circular dependency.
  */
-function isString(inputData, inputMetaData) {
+async function isString(inputData, inputMetaData) {
   // let functionName = isString.name;
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   // console.log(`inputData is: ${JSON.stringify(inputData)}`);
   // console.log(`inputMetaData is: ${JSON.stringify(inputMetaData)}`);
   let returnData = false;
   if (inputData) {
-    if (isBoolean(inputData, '') === false && isInteger(inputData, '') === false && isFloat(inputData, '') === false &&
+    if (await isBoolean(inputData, '') === false && await isInteger(inputData, '') === false && await isFloat(inputData, '') === false &&
     (typeof inputData === wrd.cstring || inputData instanceof String)) {
       returnData = true; // If it's not a Boolean, and not an Integer, and not a Float, then it must be a string,
       // especially given the type of the variable is a string!
@@ -348,14 +348,14 @@ function isString(inputData, inputMetaData) {
  * @date 2021/12/24
  * @NOTE Cannot use the loggers here, because of a circular dependency.
  */
-function replaceDoublePercentWithMessage(inputData, inputMetaData) {
+async function replaceDoublePercentWithMessage(inputData, inputMetaData) {
   // let functionName = replaceDoublePercentWithMessage.name;
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   // console.log(`inputData is: ${JSON.stringify(inputData)}`);
   // console.log(`inputMetaData is: ${JSON.stringify(inputMetaData)}`);
   let returnData = '';
   if (inputData) {
-    returnData = utilitiesReplaceCharacterWithCharacter(inputData, [bas.cDoublePercent, inputMetaData]);
+    returnData = await utilitiesReplaceCharacterWithCharacter(inputData, [bas.cDoublePercent, inputMetaData]);
   }
   // console.log(`returnData is: ${JSON.stringify(returnData)}`);
   // console.log(`END ${namespacePrefix}${functionName} function`);
@@ -375,7 +375,7 @@ function replaceDoublePercentWithMessage(inputData, inputMetaData) {
  * @author Seth Hollingsead
  * @date 2021/12/28
  */
-function utilitiesReplaceCharacterWithCharacter(inputData, inputMetaData) {
+async function utilitiesReplaceCharacterWithCharacter(inputData, inputMetaData) {
   // let functionName = utilitiesReplaceCharacterWithCharacter.name;
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   // console.log(`inputData is: ${JSON.stringify(inputData)}`);

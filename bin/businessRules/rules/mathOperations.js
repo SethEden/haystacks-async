@@ -33,11 +33,11 @@ const namespacePrefix = sys.cbusinessRules + bas.cDot + wrd.crules + bas.cDot + 
  * @date 2022/01/27
  * @reference {@link: https://stackoverflow.com/questions/5623838/rgb-to-hex-and-hex-to-rgb}
  */
-function hex2rgbConversion(inputData, inputMetaData) {
+async function hex2rgbConversion(inputData, inputMetaData) {
   let functionName = hex2rgbConversion.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
   let returnData = false;
   if (inputData) {
     // A few different ways to implement this business rule, see link above.
@@ -59,14 +59,14 @@ function hex2rgbConversion(inputData, inputMetaData) {
 
     let bigInteger = parseInt(inputData, 16);
     // bigInteger is:
-    loggers.consoleLog(namespacePrefix + functionName, msg.cMathOperationsMessage1 + bigInteger);
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cMathOperationsMessage1 + bigInteger);
     let red = (bigInteger >> 16) & 255;
     let green = (bigInteger >> 8) & 255;
     let blue = bigInteger & 255;
     returnData = [red, green, blue];
   } // End-if (inputData)
-  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -82,14 +82,14 @@ function hex2rgbConversion(inputData, inputMetaData) {
  * @date 2022/01/25
  * @reference {@link https://stackoverflow.com/questions/5016313/how-to-determine-if-a-number-is-odd-in-javascript}
  */
-function isOdd(inputData, inputMetaData) {
+async function isOdd(inputData, inputMetaData) {
   let functionName = isOdd.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = false;
   if (inputData) {
-    if (ruleParsing.processRulesInternal([inputData, ''], [biz.cisInteger]) === true) {
+    if (await ruleParsing.processRulesInternal([inputData, ''], [biz.cisInteger]) === true) {
       let inputValue = parseInt(inputData);
       let result = inputValue % 2;
       if (result === 1) {
@@ -97,8 +97,8 @@ function isOdd(inputData, inputMetaData) {
       }
     } // End-if (ruleParsing.processRulesInternal([inputData, ''], [biz.cisInteger]) === true)
   } // End-if (inputData)
-  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -116,14 +116,14 @@ function isOdd(inputData, inputMetaData) {
  * @NOTE This function isn't actually needed, as we can just invert our logic for calling isOdd,
  * but I provided it here anyways for completeness.
  */
-function isEven(inputData, inputMetaData) {
+async function isEven(inputData, inputMetaData) {
   let functionName = isEven.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = false;
   if (inputData) {
-    if (ruleParsing.processRulesInternal([inputData, ''], [biz.cisInteger]) === true) {
+    if (await ruleParsing.processRulesInternal([inputData, ''], [biz.cisInteger]) === true) {
       let inputValue = parseInt(inputData);
       let result = inputValue % 2;
       if (result === 0) {
@@ -131,8 +131,8 @@ function isEven(inputData, inputMetaData) {
       }
     } // End-if (ruleParsing.processRulesInternal([inputData, ''], [biz.cisInteger]) === true)
   } // End-if (inputData)
-  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 

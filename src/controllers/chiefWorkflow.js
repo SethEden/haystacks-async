@@ -41,17 +41,17 @@ const namespacePrefix = wrd.ccontrollers + bas.cDot + baseFileName + bas.cDot;
  * @author Seth Hollingsead
  * @date 2022/02/04
  */
-function loadCommandWorkflowsFromPath(commandWorkflowFilePathConfigurationName, contextName) {
+async function loadCommandWorkflowsFromPath(commandWorkflowFilePathConfigurationName, contextName) {
   let functionName = loadCommandWorkflowsFromPath.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // commandWorkflowFilePathConfigurationName is:
-  loggers.consoleLog(namespacePrefix + functionName, msg.ccommandWorkflowFilePathConfigurationNameIs + commandWorkflowFilePathConfigurationName);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.ccommandWorkflowFilePathConfigurationNameIs + commandWorkflowFilePathConfigurationName);
   // contextName
-  loggers.consoleLog(namespacePrefix + functionName, msg.ccontextNameIs + contextName);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.ccontextNameIs + contextName);
   let allCommandWorkflowsData = {};
-  allCommandWorkflowsData = chiefData.setupAllXmlData(commandWorkflowFilePathConfigurationName, sys.cCommandWorkflows);
+  allCommandWorkflowsData = await chiefData.setupAllXmlData(commandWorkflowFilePathConfigurationName, sys.cCommandWorkflows);
   // allCommandWorkflowsData is:
-  loggers.consoleLog(namespacePrefix + functionName, msg.callCommandWorkflowsDataIs + JSON.stringify(allCommandWorkflowsData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.callCommandWorkflowsDataIs + JSON.stringify(allCommandWorkflowsData));
   if (D[sys.cCommandWorkflows] === undefined) { // Make sure we only do this if it's undefined, otherwise we might wipe out previously loaded data.
     D[sys.cCommandWorkflows] = {};
     D[sys.cCommandWorkflows][sys.cFramework] = allCommandWorkflowsData;
@@ -69,7 +69,7 @@ function loadCommandWorkflowsFromPath(commandWorkflowFilePathConfigurationName, 
     console.log('ERROR: ---- PLUGIN Workflow data not yet supported!!!!!!!!!!!!');
   }
   // console.log('All loaded workflow data is: ' + JSON.stringify(D[sys.cCommandWorkflows]));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
 }
 
 export default {

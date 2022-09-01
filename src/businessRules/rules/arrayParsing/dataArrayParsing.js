@@ -22,7 +22,7 @@ import D from '../../../structures/data.js';
 import hayConst from '@haystacks/constants';
 import path from 'path';
 
-const {bas, cfg, msg, sys, wrd} = hayConst;
+const {bas, biz, cfg, msg, sys, wrd} = hayConst;
 const baseFileName = path.basename(import.meta.url, path.extname(import.meta.url));
 // businessRules.rules.arrayParsing.dataArrayParsing.
 const namespacePrefix = sys.cbusinessRules + bas.cDot + wrd.crules + bas.cDot + wrd.carray + wrd.cParsing + bas.cDot + baseFileName + bas.cDot;
@@ -37,19 +37,19 @@ const namespacePrefix = sys.cbusinessRules + bas.cDot + wrd.crules + bas.cDot + 
  * @date 2022/01/20
  * @NOTE: https://stackoverflow.com/questions/3115982/how-to-check-if-two-arrays-are-equal-with-javascript
  */
-function arraysAreEqual(inputData, inputMetaData) {
+async function arraysAreEqual(inputData, inputMetaData) {
   let functionName = arraysAreEqual.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
   let returnData = false;
   if (inputData && inputMetaData) {
     if (inputData === inputMetaData) { returnData = true; }
     if (inputData === null || inputMetaData === null) { returnData = false; }
     if (inputData.length != inputMetaData.length) { returnData = false; }
   } // End-if (inputData && inputMetaData)
-  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -62,18 +62,18 @@ function arraysAreEqual(inputData, inputMetaData) {
  * @author Seth Hollingsead
  * @date 2022/01/20
  */
-function storeData(inputData, inputMetaData) {
+async function storeData(inputData, inputMetaData) {
   let functionName = arraysAreEqual.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
   let returnData = false;
   if (inputData && inputMetaData) {
-    dataBroker.storeData(inputData, inputMetaData);
+    await dataBroker.storeData(inputData, inputMetaData);
     returnData = true;
   } // End-if (inputData && inputMetaData)
-  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -86,17 +86,17 @@ function storeData(inputData, inputMetaData) {
  * @author Seth Hollingsead
  * @date 2022/01/20
  */
-function getStoredData(inputData, inputMetaData) {
+async function getStoredData(inputData, inputMetaData) {
   let functionName = getStoredData.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
   let returnData = false;
   if (inputData) {
-    returnData = dataBroker.getData(inputData);
+    returnData = await dataBroker.getData(inputData);
   }
-  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -109,11 +109,11 @@ function getStoredData(inputData, inputMetaData) {
  * @author Seth Hollingsead
  * @date 2022/01/21
  */
-function isObjectEmpty(inputData, inputMetaData) {
+async function isObjectEmpty(inputData, inputMetaData) {
   let functionName = isObjectEmpty.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = true;
   if (inputData) {
     for (let key in inputData) {
@@ -126,8 +126,8 @@ function isObjectEmpty(inputData, inputMetaData) {
       } // End-if (inputData.hasOwnProperty(key))
     } // End-for (let key in inputData)
   } // End-if (inputData)
-  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -140,17 +140,17 @@ function isObjectEmpty(inputData, inputMetaData) {
  * @author Seth Hollingsead
  * @date 2022/01/21
  */
-function isArrayEmpty(inputData, inputMetaData) {
+async function isArrayEmpty(inputData, inputMetaData) {
   let functionName = isArrayEmpty.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
   let returnData = true;
   if (inputData) {
     returnData = !Object.keys(inputData).length;
   }
-  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -163,19 +163,19 @@ function isArrayEmpty(inputData, inputMetaData) {
  * @author Seth Hollingsead
  * @date 2022/01/21
  */
-function isObject(inputData, inputMetaData) {
+async function isObject(inputData, inputMetaData) {
   let functionName = isObject.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = false;
   if (inputData) {
     if (typeof inputData === wrd.cobject) {
       returnData = true;
     }
   } // End-if (inputData)
-  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -189,17 +189,17 @@ function isObject(inputData, inputMetaData) {
  * @author Seth Hollingsead
  * @date 2022/01/21
  */
-function isArray(inputData, inputMetaData) {
+async function isArray(inputData, inputMetaData) {
   let functionName = isArray.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = false;
   if (inputData) {
     returnData = Array.isArray(inputData);
   }
-  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -213,19 +213,19 @@ function isArray(inputData, inputMetaData) {
  * @author Seth Hollingsead
  * @date 2022/01/21
  */
-function isArrayOrObject(inputData, inputMetaData) {
+async function isArrayOrObject(inputData, inputMetaData) {
   let functionName = isArrayOrObject.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = false;
   if (inputData) {
-    if (isObject(inputData, '') === true || isArray(inputData, '') === true) {
+    if (await isObject(inputData, '') === true || await isArray(inputData, '') === true) {
       returnData = true;
     }
   } // End-if (inputData)
-  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -239,19 +239,19 @@ function isArrayOrObject(inputData, inputMetaData) {
  * @author Seth Hollingsead
  * @date 2022/01/21
  */
-function isNonZeroLengthArray(inputData, inputMetaData) {
+async function isNonZeroLengthArray(inputData, inputMetaData) {
   let functionName = isNonZeroLengthArray.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = false;
   if (inputData) {
-    if (isArray(inputData, '') === true && inputData.length >= 1) {
+    if (await isArray(inputData, '') === true && inputData.length >= 1) {
       returnData = true;
     }
   } // End-if (inputData)
-  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -266,17 +266,17 @@ function isNonZeroLengthArray(inputData, inputMetaData) {
  * @author Seth Hollingsead
  * @date 2022/01/21
  */
-function arrayDeepClone(inputData, inputMetaData) {
+async function arrayDeepClone(inputData, inputMetaData) {
   let functionName = arrayDeepClone.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = false;
-  if (inputData && isArray(inputData, '') === true && isArrayEmpty(inputData, '') === false) {
+  if (inputData && await isArray(inputData, '') === true && await isArrayEmpty(inputData, '') === false) {
     returnData = JSON.parse(JSON.stringify(inputData));
   }
-  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -290,11 +290,11 @@ function arrayDeepClone(inputData, inputMetaData) {
  * @date 2020/04/23
  * @reference: https://stackoverflow.com/questions/27936772/how-to-deep-merge-instead-of-shallow-merge
  */
-function objectDeepMerge(inputData, inputMetaData) {
+async function objectDeepMerge(inputData, inputMetaData) {
   let functionName = objectDeepMerge.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
   let returnData = false;
   if (typeof inputData !== wrd.cobject || typeof inputMetaData !== wrd.cobject) {
     // inputData or inputMetaData or both ain't objets, merging doesn't make sense.
@@ -305,58 +305,58 @@ function objectDeepMerge(inputData, inputMetaData) {
         continue; // Take into consideration only object's own properties.
       }
       // property is:
-      loggers.consoleLog(namespacePrefix + functionName, msg.cpropertyIs + JSON.stringify(property));
+      await loggers.consoleLog(namespacePrefix + functionName, msg.cpropertyIs + JSON.stringify(property));
       if (property in inputData) {
         // property is in inputData
-        loggers.consoleLog(namespacePrefix + functionName, msg.cobjectDeepMergeMessage01);
+        await loggers.consoleLog(namespacePrefix + functionName, msg.cobjectDeepMergeMessage01);
         // inputData[property] is:
-        loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataPropertyIs + JSON.stringify(inputData[property]));
+        await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataPropertyIs + JSON.stringify(inputData[property]));
         // Handling merging of two properties with equal names.
         if (typeof inputData[property] !== wrd.cobject) {
           // inputData[property] is not an object!
           // Assign it directly.
-          loggers.consoleLog(namespacePrefix + functionName, msg.cobjectDeepMergeMessage02 + bas.cSpace + msg.cobjectDeepMergeMessage03);
+          await loggers.consoleLog(namespacePrefix + functionName, msg.cobjectDeepMergeMessage02 + bas.cSpace + msg.cobjectDeepMergeMessage03);
           inputData[property] = inputMetaData[property];
         } else {
           // inputData[property] is an object!
-          loggers.consoleLog(namespacePrefix + functionName, msg.cobjectDeepMergeMessage04);
+          await loggers.consoleLog(namespacePrefix + functionName, msg.cobjectDeepMergeMessage04);
           // inputMetaData[property] is:
-          loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataPropertyIs + JSON.stringify(inputMetaData[property]));
+          await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataPropertyIs + JSON.stringify(inputMetaData[property]));
           if (typeof inputMetaData[property] !== wrd.cobject) {
             // inputMetaData[property] is not an object,
             // Assign it directly.
-            loggers.consoleLog(namespacePrefix + functionName, msg.cobjectDeepMergeMessage05 + msg.cobjectDeepMergeMessage03);
+            await loggers.consoleLog(namespacePrefix + functionName, msg.cobjectDeepMergeMessage05 + msg.cobjectDeepMergeMessage03);
             inputData[property] = inputMetaData[property];
           } else {
             // inputMetaData[property] is an object.
-            loggers.consoleLog(namespacePrefix + functionName, msg.cobjectDeepMergeMessage06);
+            await loggers.consoleLog(namespacePrefix + functionName, msg.cobjectDeepMergeMessage06);
             if (inputData[property].concat && inputMetaData[property].concat) {
               // Are the arrays length 1 or greater?
               if (inputData[property].length === 1 && inputMetaData[property].length === 1) {
                 // Array lengths are the same at this level.
-                loggers.consoleLog(namespacePrefix + functionName, msg.cobjectDeepMergeMessage07);
+                await loggers.consoleLog(namespacePrefix + functionName, msg.cobjectDeepMergeMessage07);
                 // We should deeply merge the contents of the arrays.
-                inputData[property] = objectDeepMerge(inputData[property], inputMetaData[property]);
+                inputData[property] = await objectDeepMerge(inputData[property], inputMetaData[property]);
               } else {
                 // Two arrays get concatenated.
-                loggers.consoleLog(namespacePrefix + functionName, msg.cobjectDeepMergeMessage08);
+                await loggers.consoleLog(namespacePrefix + functionName, msg.cobjectDeepMergeMessage08);
                 inputData[property] = inputData[property].concat(inputMetaData[property]);
                 // AFTER concatenating two arrays: inputData[property] is:
-                loggers.consoleLog(namespacePrefix + functionName, msg.cAfterConcatenating2ArraysInputDataPropertyIs + JSON.stringify(inputData[property]));
+                await loggers.consoleLog(namespacePrefix + functionName, msg.cAfterConcatenating2ArraysInputDataPropertyIs + JSON.stringify(inputData[property]));
               }
             } else {
               // Two objects get merged recursively.
-              loggers.consoleLog(namespacePrefix + functionName, msg.cobjectDeepMergeMessage09);
-              inputData[property] = objectDeepMerge(inputData[property], inputMetaData[property]);
+              await loggers.consoleLog(namespacePrefix + functionName, msg.cobjectDeepMergeMessage09);
+              inputData[property] = await objectDeepMerge(inputData[property], inputMetaData[property]);
               // AFTER recursive merge: inputData[property] is:
-              loggers.consoleLog(namespacePrefix + functionName, msg.cAfterRecursiveMergeInputDataPropertyIs + JSON.stringify(inputData[property]));
+              await loggers.consoleLog(namespacePrefix + functionName, msg.cAfterRecursiveMergeInputDataPropertyIs + JSON.stringify(inputData[property]));
             }
           }
         }
       } else {
         // property is not in inputData,
         // so add it directly.
-        loggers.consoleLog(namespacePrefix + functionName, msg.cobjectDeepMergeMessage10 + msg.cobjectDeepMergeMessage11);
+        await loggers.consoleLog(namespacePrefix + functionName, msg.cobjectDeepMergeMessage10 + msg.cobjectDeepMergeMessage11);
         inputData[property] = inputMetaData[property];
       }
     } // End-for (let property in inputMetaData)
@@ -404,8 +404,8 @@ function objectDeepMerge(inputData, inputMetaData) {
   // } // End-if (inputData && inputMetaData)
   // **************************************************
 
-  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -428,11 +428,11 @@ function objectDeepMerge(inputData, inputMetaData) {
  * And by the time this gets called everything should be effectively bootstrapped.
  * Therefore we can use the loggers here.
  */
-function getNamespacedDataObject(inputData, inputMetaData) {
+async function getNamespacedDataObject(inputData, inputMetaData) {
   let functionName = getNamespacedDataObject.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = false;
   let processingValidData = false;
   let namespaceDataObject = D;
@@ -453,8 +453,8 @@ function getNamespacedDataObject(inputData, inputMetaData) {
       returnData = namespaceDataObject;
     }
   } // End-if (inputData && inputData.length > 0)
-  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -468,11 +468,11 @@ function getNamespacedDataObject(inputData, inputMetaData) {
  * @author Seth Hollingsead
  * @date 2022/05/11
  */
-function setNamespacedDataObject(inputData, inputMetaData) {
+async function setNamespacedDataObject(inputData, inputMetaData) {
   let functionName = setNamespacedDataObject.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
   let returnData = false;
   let namespaceDataObject = D;
   if (inputData && inputData.length > 0) {
@@ -480,9 +480,9 @@ function setNamespacedDataObject(inputData, inputMetaData) {
       namespaceDataObject = namespaceDataObject[inputData[i]];
       if (i === inputData.length - 2) {
         // namespaceDataObject is:
-        loggers.consoleLog(namespacePrefix + functionName, msg.cnamespaceDataObjectIs + JSON.stringify(namespaceDataObject));
+        await loggers.consoleLog(namespacePrefix + functionName, msg.cnamespaceDataObjectIs + JSON.stringify(namespaceDataObject));
         let fullyQualifiedKey = namespaceDataObject.join(bas.cDot);
-        if (ruleParsing.processRulesInternal([[namespaceDataObject, cfg.cdebugSetting], ruleParsing.getRule(biz.cascertainMatchingElements)], [biz.cdoesArrayContainValue]) === true) {
+        if (await ruleParsing.processRulesInternal([[namespaceDataObject, cfg.cdebugSetting], await ruleParsing.getRule(biz.cascertainMatchingElements)], [biz.cdoesArrayContainValue]) === true) {
           namespaceDataObject[fullyQualifiedKey] = inputMetaData;
         } else {
           namespaceDataObject[inputData[i + 1]] = inputMetaData;
@@ -491,8 +491,8 @@ function setNamespacedDataObject(inputData, inputMetaData) {
       } // End-if (i === inputData.length - 2)
     } // End-for (let i = 0; i < inputData.length - 1; i++)
   } // End-if (inputData && inputData.length > 0)
-  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 

@@ -33,19 +33,19 @@ const namespacePrefix = sys.cbusinessRules + bas.cDot + wrd.crules + bas.cDot + 
  * @author Seth Hollingsead
  * @date 2022/01/25
  */
-function cleanCommandInput(inputData, inputMetaData) {
+async function cleanCommandInput(inputData, inputMetaData) {
   let functionName = cleanCommandInput.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = '';
   if (inputData) {
-    returnData = ruleParsing.processRulesInternal([inputData, [/--/g, '']], [biz.creplaceCharacterWithCharacter]);
-    returnData = ruleParsing.processRulesInternal([returnData, [/\[/g, '']], [biz.creplaceCharacterWithCharacter]);
-    returnData = ruleParsing.processRulesInternal([returnData, [/\]/g, '']], [biz.creplaceCharacterWithCharacter]);
+    returnData = await ruleParsing.processRulesInternal([inputData, [/--/g, '']], [biz.creplaceCharacterWithCharacter]);
+    returnData = await ruleParsing.processRulesInternal([returnData, [/\[/g, '']], [biz.creplaceCharacterWithCharacter]);
+    returnData = await ruleParsing.processRulesInternal([returnData, [/\]/g, '']], [biz.creplaceCharacterWithCharacter]);
   } // End-if (inputData)
-  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -61,27 +61,27 @@ function cleanCommandInput(inputData, inputMetaData) {
  * @author Seth Hollingsead
  * @date 2022/01/24
  */
-function isValidCommandNameString(inputData, inputMetaData) {
+async function isValidCommandNameString(inputData, inputMetaData) {
   let functionName = isValidCommandNameString.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = false;
   if (inputData) {
     // NOTE: The below call to convert the string to a camel-case array doesn't guarantee that the string is actually camel-case.
     // It could actually be a single word, but of course we want to make sure it's more than 3 characters long.
     // Less than that, shouldn't really be considered a valid word, but could be appropriate as a command alias/abbreviation.
     if (inputData.length > 3) {
-      let camelCaseArray = ruleParsing.processRulesInternal([inputData, ''], [biz.cconvertCamelCaseStringToArray]);
+      let camelCaseArray = await ruleParsing.processRulesInternal([inputData, ''], [biz.cconvertCamelCaseStringToArray]);
       if (camelCaseArray.length === 1) {
-        if (ruleParsing.processRulesInternal([inputData, ''], [biz.cisFirstCharacterLowerCase]) === true) { returnData = true; }
+        if (await ruleParsing.processRulesInternal([inputData, ''], [biz.cisFirstCharacterLowerCase]) === true) { returnData = true; }
       } else if (camelCaseArray.length > 1) {
-        if (ruleParsing.processRulesInternal([inputData, ''], [biz.cisStringCamelCase]) === true) { returnData = true; }
+        if (await ruleParsing.processRulesInternal([inputData, ''], [biz.cisStringCamelCase]) === true) { returnData = true; }
       }
     } // End-if (inputData.length > 3)
   } // End-if (inputData)
-  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 

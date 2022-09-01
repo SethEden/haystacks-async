@@ -41,32 +41,32 @@ const namespacePrefix = sys.cbusinessRules + bas.cDot + wrd.crules + bas.cDot + 
  * @author Seth Hollingsead
  * @date 2022/01/23
  */
-function validateConstantsDataValidation(inputData, inputMetaData) {
+async function validateConstantsDataValidation(inputData, inputMetaData) {
   let functionName = validateConstantsDataValidation.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = false;
   let foundAFailure = false;
   if (inputData && inputMetaData) {
     const liner = new lineByLine(inputData);
     let line;
-    let colorizeLogsEnabled = configurator.getConfigurationSetting(wrd.csystem, cfg.cenableColorizedConsoleLogs);
+    let colorizeLogsEnabled = await configurator.getConfigurationSetting(wrd.csystem, cfg.cenableColorizedConsoleLogs);
 
     while (line === liner.next()) {
       if (line) {
         // constants line is:
-        loggers.consoleLog(namespacePrefix + functionName, msg.cconstantsLineIs + line.toString(gen.cascii));
+        await loggers.consoleLog(namespacePrefix + functionName, msg.cconstantsLineIs + line.toString(gen.cascii));
         let lineInCode = line.toString(gen.cascii);
         let foundConstant = false;
         if (lineInCode.includes(sys.cexportconst) === true) {
           let lineArray = lineInCode.split(bas.cSpace);
           // lineArray[2] is
-          loggers.consoleLog(namespacePrefix + functionName, msg.clineArray2Is + lineArray[2]);
-          foundConstant = validateConstantsDataValidationLineItemName(lineArray[2], inputMetaData);
-          let qualifiedConstantsFilename = ruleParsing.processRulesInternal([inputData, ''], [biz.cgetFileNameFromPath]);
+          await loggers.consoleLog(namespacePrefix + functionName, msg.clineArray2Is + lineArray[2]);
+          foundConstant = await validateConstantsDataValidationLineItemName(lineArray[2], inputMetaData);
+          let qualifiedConstantsFilename = await ruleParsing.processRulesInternal([inputData, ''], [biz.cgetFileNameFromPath]);
           if (foundConstant === true) {
-            if (configurator.getConfigurationSetting(wrd.csystem, cfg.cdisplayIndividualConstantsValidationPassMessages) === true) {
+            if (await configurator.getConfigurationSetting(wrd.csystem, cfg.cdisplayIndividualConstantsValidationPassMessages) === true) {
               let passMessage = wrd.cPASS + bas.cColon + bas.cSpace + lineArray[2] + bas.cSpace + wrd.cPASS;
               if (colorizeLogsEnabled === true) {
                 passMessage = chalk.rgb(0,0,0)(passMessage);
@@ -75,16 +75,16 @@ function validateConstantsDataValidation(inputData, inputMetaData) {
               console.log(qualifiedConstantsFilename + bas.cColon + bas.cSpace + passMessage)
             } // End-if (configurator.getConfigurationSetting(wrd.csystem, cfg.cDisplayIndividualConstantsValidationPassMessages) === true)
           } else { // Else-clause if (foundConstant === true)
-            if (configurator.getConfigurationSetting(wrd.csystem, cfg.cdisplayIndividualCosntantsValidationFailMessages) === true) {
+            if (await configurator.getConfigurationSetting(wrd.csystem, cfg.cdisplayIndividualCosntantsValidationFailMessages) === true) {
               let failMessage = wrd.cFAIL + bas.cColon + bas.cSpace + lineArray[2] + bas.cSpace + wrd.cFAIL;
               if (colorizeLogsEnabled === true) {
                 failMessage = chalk.rgb(0,0,0)(failMessage);
                 failMessage = chalk.bgRgb(255,0,0)(failMessage);
               } // End-if (colorizeLogsEnabled === true)
-              let qualifiedConstantsPrefix = determineConstantsContextQualifiedPrefix(qualifiedConstantsFilename, '');
+              let qualifiedConstantsPrefix = await determineConstantsContextQualifiedPrefix(qualifiedConstantsFilename, '');
               console.log(qualifiedConstantsFilename + bas.cColon + bas.cSpace + failMessage);
-              // loggers.consoleLog(namespacePrefix + functionName, wrd.cFAIL + bas.cSpace + lineArray[2] + bas.cSpace + wrd.cFAIL);
-              let suggestedLineOfCode = determineSuggestedConstantsValidationLineOfCode(lineArray[2], qualifiedConstantsPrefix);
+              // await loggers.consoleLog(namespacePrefix + functionName, wrd.cFAIL + bas.cSpace + lineArray[2] + bas.cSpace + wrd.cFAIL);
+              let suggestedLineOfCode = await determineSuggestedConstantsValidationLineOfCode(lineArray[2], qualifiedConstantsPrefix);
               if (suggestedLineOfCode !== '') {
                 if (colorizeLogsEnabled === true) {
                   suggestedLineOfCode = chalk.rgb(0,0,0)(suggestedLineOfCode);
@@ -107,8 +107,8 @@ function validateConstantsDataValidation(inputData, inputMetaData) {
   if (foundAFailure === false) {
     returnData = true;
   }
-  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -123,11 +123,11 @@ function validateConstantsDataValidation(inputData, inputMetaData) {
  * @author Seth Hollingsead
  * @date 2022/01/24
  */
-function determineConstantsContextQualifiedPrefix(inputData, inputMetaData) {
+async function determineConstantsContextQualifiedPrefix(inputData, inputMetaData) {
   let functionName = determineConstantsContextQualifiedPrefix.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = '';
   if (inputData) {
     returnData = inputData;
@@ -139,8 +139,8 @@ function determineConstantsContextQualifiedPrefix(inputData, inputMetaData) {
       }
     } // End-for (let key in constantsFileNames)
   } // End-if (inputData)
-  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -154,17 +154,17 @@ function determineConstantsContextQualifiedPrefix(inputData, inputMetaData) {
  * @author Seth Hollingsead
  * @date 2022/01/24
  */
-function determineSuggestedConstantsValidationLineOfCode(inputData, inputMetaData) {
+async function determineSuggestedConstantsValidationLineOfCode(inputData, inputMetaData) {
   let functionName = determineSuggestedConstantsValidationLineOfCode.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = '';
   if (inputData && inputMetaData) {
     // Input: cZZTopInternationalSuccess
     // Output: {Name: 'cZZTopInternationalSuccess', Actual: wrd.cZZTopInternationalSuccess, Expected: 'ZZTopInternationalSuccess'}
     if (inputData.charAt(0) === bas.cc) {
-      let literalValue = inputData.substr(1);
+      let literalValue = inputData.substring(1);
       // `{Name: '${inputData}', Actual: ${inputMetaData}.${inputData}, Expected: '${literalValue}'}`;
       returnData = bas.cOpenCurlyBrace + wrd.cName + bas.cColon + bas.cSpace + bas.cSingleQuote + inputData +
         bas.cSingleQuote + bas.cComa + bas.cSpace + wrd.cActual + bas.cColon + bas.cSpace + inputMetaData +
@@ -183,8 +183,8 @@ function determineSuggestedConstantsValidationLineOfCode(inputData, inputMetaDat
       returnData = '';
     }
   } // End-if (inputData && inputMetaData)
-  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -197,11 +197,11 @@ function determineSuggestedConstantsValidationLineOfCode(inputData, inputMetaDat
  * @author Seth Hollingsead
  * @date 2022/01/24
  */
-function validateConstantsDataValidationLineItemName(inputData, inputMetaData) {
+async function validateConstantsDataValidationLineItemName(inputData, inputMetaData) {
   let functionName = validateConstantsDataValidationLineItemName.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = false;
   if (inputData && inputMetaData) {
     for (const element of D[sys.cConstantsValidationData][inputMetaData]) {
@@ -214,8 +214,8 @@ function validateConstantsDataValidationLineItemName(inputData, inputMetaData) {
       } // End-if (validationLineItem)
     } // End-for (const element of D[sys.cConstantsValidationData][inputMetaData])
   } // End-if (inputData && inputMetaData)
-  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -229,34 +229,34 @@ function validateConstantsDataValidationLineItemName(inputData, inputMetaData) {
  * @author Seth Hollingsead
  * @date 2022/01/24
  */
-function doesConstantExist(inputData, inputMetaData) {
+async function doesConstantExist(inputData, inputMetaData) {
   let functionName = doesConstantExist.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = false;
   if (inputData) {
     let constantsTypesKeys = Object.keys(D[sys.cConstantsValidationData]);
     // constantsTypesKeys is:
-    loggers.consoleLog(namespacePrefix + functionName, msg.cconstantsTypesKeysIs + JSON.stringify(constantsTypesKeys));
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cconstantsTypesKeysIs + JSON.stringify(constantsTypesKeys));
 loop1:
     for (const element1 of constantsTypesKeys) {
       let constantTypeKey = element1;
       // constantTypeKey is:
-      loggers.consoleLog(namespacePrefix + functionName, msg.cconstantTypeKeyIs + JSON.stringify(constantTypeKey));
+      await loggers.consoleLog(namespacePrefix + functionName, msg.cconstantTypeKeyIs + JSON.stringify(constantTypeKey));
       let constantTypeValues = D[sys.cConstantsValidationData][constantTypeKey];
       // constantTypeValues is:
-      loggers.consoleLog(namespacePrefix + functionName, msg.cconstantTypeValuesIs + JSON.stringify(constantTypeValues));
+      await loggers.consoleLog(namespacePrefix + functionName, msg.cconstantTypeValuesIs + JSON.stringify(constantTypeValues));
       let constantsKeys = Object.keys(constantTypeValues);
       // constantsKeys is:
-      loggers.consoleLog(namespacePrefix + functionName, msg.cconstantsKeysIs + JSON.stringify(constantsKeys));
+      await loggers.consoleLog(namespacePrefix + functionName, msg.cconstantsKeysIs + JSON.stringify(constantsKeys));
       for (const element2 of constantsKeys) {
         let constantKey = element2;
         // constantKey is:
-        loggers.consoleLog(namespacePrefix + functionName, msg.cconstantKeyIs + JSON.stringify(constantKey));
+        await loggers.consoleLog(namespacePrefix + functionName, msg.cconstantKeyIs + JSON.stringify(constantKey));
         let constantActualValue = constantTypeValues[constantKey];
         // constantActualValue is:
-        loggers.consoleLog(namespacePrefix + functionName, msg.cconstantActualValueIs + JSON.stringify(constantActualValue));
+        await loggers.consoleLog(namespacePrefix + functionName, msg.cconstantActualValueIs + JSON.stringify(constantActualValue));
         if (inputData === constantActualValue.Actual || inputData === constantActualValue.Name) {
           returnData = true;
           break loop1;
@@ -264,8 +264,8 @@ loop1:
       } // End-for (const element2 of constantsKeys)
     } // End-for (const element1 of constantsTypesKeys)
   } // End-if (inputData)
-  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -282,34 +282,34 @@ loop1:
  * @author Seth Hollingsead
  * @date 2022/01/24
  */
-function getConstantType(inputData, inputMetaData) {
+async function getConstantType(inputData, inputMetaData) {
   let functionName = getConstantType.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = '';
   if (inputData) {
     let constantsTypesKeys = Object.keys(D[sys.cConstantsValidationData]);
     // constantsTypesKeys is:
-    loggers.consoleLog(namespacePrefix + functionName, msg.cconstantsTypesKeysIs + JSON.stringify(constantsTypesKeys));
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cconstantsTypesKeysIs + JSON.stringify(constantsTypesKeys));
 loop1:
     for (const element1 of constantsTypesKeys) {
       let constantTypeKey = element1;
       // constantTypeKey is:
-      loggers.consoleLog(namespacePrefix + functionName, msg.cconstantTypeKeyIs + JSON.stringify(constantTypeKey));
+      await loggers.consoleLog(namespacePrefix + functionName, msg.cconstantTypeKeyIs + JSON.stringify(constantTypeKey));
       let constantTypeValues = D[sys.cConstantsValidationData][constantTypeKey];
       // constantTypeValues is:
-      loggers.consoleLog(namespacePrefix + functionName, msg.cconstantTypeValuesIs + JSON.stringify(constantTypeValues));
+      await loggers.consoleLog(namespacePrefix + functionName, msg.cconstantTypeValuesIs + JSON.stringify(constantTypeValues));
       let constantsKeys = Object.keys(constantTypeValues);
       // constantsKeys is:
-      loggers.consoleLog(namespacePrefix + functionName, msg.cconstantsKeysIs + JSON.stringify(constantsKeys));
+      await loggers.consoleLog(namespacePrefix + functionName, msg.cconstantsKeysIs + JSON.stringify(constantsKeys));
       for (const element2 of constantsKeys) {
         let constantKey = element2;
         // constantKey is:
-        loggers.consoleLog(namespacePrefix + functionName, msg.cconstantKeyIs + JSON.stringify(constantKey));
+        await loggers.consoleLog(namespacePrefix + functionName, msg.cconstantKeyIs + JSON.stringify(constantKey));
         let constantActualValue = constantTypeValues[constantKey];
         // constantActualValue is:
-        loggers.consoleLog(namespacePrefix + functionName, msg.cconstantActualValueIs + JSON.stringify(constantActualValue));
+        await loggers.consoleLog(namespacePrefix + functionName, msg.cconstantActualValueIs + JSON.stringify(constantActualValue));
         if (inputData === constantActualValue.Actual) {
           if (returnData === '') {
             returnData = constantTypeKey;
@@ -325,8 +325,8 @@ loop1:
       } // End-for (const element2 of constantsKeys)
     } // End-for (const element1 of constantsTypesKeys)
   } // End-if (inputData)
-  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -339,27 +339,27 @@ loop1:
  * @author Seth Hollingsead
  * @date 2022/01/24
  */
-function getConstantActualValue(inputData, inputMetaData) {
+async function getConstantActualValue(inputData, inputMetaData) {
   let functionName = getConstantActualValue.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = '';
   if (inputData) {
-    if (isConstantTypeValid(inputMetaData, '') === true) {
+    if (await isConstantTypeValid(inputMetaData, '') === true) {
       let constantTypeValues1 = D[sys.cConstantsValidationData][inputMetaData];
       // 1 constantsTypeValues is:
-      loggers.consoleLog(namespacePrefix + functionName, num.c1 + bas.cSpace + msg.cconstantTypeValuesIs + JSON.stringify(constantTypeValues1));
+      await loggers.consoleLog(namespacePrefix + functionName, num.c1 + bas.cSpace + msg.cconstantTypeValuesIs + JSON.stringify(constantTypeValues1));
       let constantsKeys1 = Object.keys(constantTypeValues1);
       // 1 constantsKeys is:
-      loggers.consoleLog(namespacePrefix + functionName, num.c1 + bas.cSpace + msg.cconstantsKeysIs + JSON.stringify(constantsKeys1));
+      await loggers.consoleLog(namespacePrefix + functionName, num.c1 + bas.cSpace + msg.cconstantsKeysIs + JSON.stringify(constantsKeys1));
       for (const element1 of constantsKeys1) {
         let constantKey1 = element1;
         // 1 constantKey is:
-        loggers.consoleLog(namespacePrefix + functionName, num.c1 + bas.cSpace + msg.cconstantKeyIs + JSON.stringify(constantKey1));
+        await loggers.consoleLog(namespacePrefix + functionName, num.c1 + bas.cSpace + msg.cconstantKeyIs + JSON.stringify(constantKey1));
         let constantActualValue1 = constantTypeValues1[constantKey1];
         // 1 constantActualValue is:
-        loggers.consoleLog(namespacePrefix + functionName, num.c1 + bas.cSpace + msg.cconstantActualValueIs + JSON.stringify(constantActualValue1));
+        await loggers.consoleLog(namespacePrefix + functionName, num.c1 + bas.cSpace + msg.cconstantActualValueIs + JSON.stringify(constantActualValue1));
         if (inputData === constantActualValue1.Name) {
           returnData = constantActualValue1.Actual;
         }
@@ -367,24 +367,24 @@ function getConstantActualValue(inputData, inputMetaData) {
     } else { // Else-clause if (isConstantTypeValid(inputMetaData, '') === true)
       let constantsTypesKeys = Object.keys(D[sys.cConstantsValidationData]);
       // constantsTypesKeys is:
-      loggers.consoleLog(namespacePrefix + functionName, msg.cconstantsTypesKeysIs + JSON.stringify(constantsTypesKeys));
+      await loggers.consoleLog(namespacePrefix + functionName, msg.cconstantsTypesKeysIs + JSON.stringify(constantsTypesKeys));
       for (const element2 of constantsTypesKeys) {
         let constantTypeKey = element2;
         // constantTypeKey is:
-        loggers.consoleLog(namespacePrefix + functionName, msg.cconstantTypeKeyIs + JSON.stringify(constantTypeKey));
+        await loggers.consoleLog(namespacePrefix + functionName, msg.cconstantTypeKeyIs + JSON.stringify(constantTypeKey));
         let constantTypeValues2 = D[sys.cConstantsValidationData][constantTypeKey];
         // 2 constantTypeValues is:
-        loggers.consoleLog(namespacePrefix + functionName, num.c2 + bas.cSpace + msg.cconstantTypeValuesIs + JSON.stringify(constantTypeValues2));
+        await loggers.consoleLog(namespacePrefix + functionName, num.c2 + bas.cSpace + msg.cconstantTypeValuesIs + JSON.stringify(constantTypeValues2));
         let constantsKeys2 = Object.keys(constantTypeValues2);
         // 2 constantsKeys is:
-        loggers.consoleLog(namespacePrefix + functionName, num.c2 + bas.cSpace + msg.cconstantsKeysIs + JSON.stringify(constantsKeys2));
+        await loggers.consoleLog(namespacePrefix + functionName, num.c2 + bas.cSpace + msg.cconstantsKeysIs + JSON.stringify(constantsKeys2));
         for (const element3 of constantsKeys2) {
           let constantKey2 = element3;
           // 2 constantKey is:
-          loggers.consoleLog(namespacePrefix + functionName, num.c2 + bas.cSpace + msg.cconstantKeyIs + JSON.stringify(constantKey2));
+          await loggers.consoleLog(namespacePrefix + functionName, num.c2 + bas.cSpace + msg.cconstantKeyIs + JSON.stringify(constantKey2));
           let constantActualValue1 = constantTypeValues2[constantKey2];
           // 1 constantActualValue is:
-          loggers.consoleLog(namespacePrefix + functionName, num.c1 + bas.cSpace + msg.cconstantActualValueIs + JSON.stringify(constantActualValue1));
+          await loggers.consoleLog(namespacePrefix + functionName, num.c1 + bas.cSpace + msg.cconstantActualValueIs + JSON.stringify(constantActualValue1));
           if (inputData === constantActualValue1.Name || inputData === constantActualValue1.Actual) {
             returnData = constantActualValue1.Actual;
           }
@@ -392,8 +392,8 @@ function getConstantActualValue(inputData, inputMetaData) {
       } // End-for (const element2 of constantsTypesKeys)
     } // else clause for the case that inputMetaData did not match a valid constant type in the system.
   } // End-if (inputData)
-  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -407,34 +407,34 @@ function getConstantActualValue(inputData, inputMetaData) {
  * @author Seth Hollingsead
  * @date 2022/01/24
  */
-function getConstantName(inputData, inputMetaData) {
+async function getConstantName(inputData, inputMetaData) {
   let functionName = getConstantName.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = '';
   if (inputData) {
     let constantsTypesKeys = Object.keys(D[sys.cConstantsValidationData]);
     // constantsTypesKeys is:
-    loggers.consoleLog(namespacePrefix + functionName, msg.cconstantsTypesKeysIs + JSON.stringify(constantsTypesKeys));
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cconstantsTypesKeysIs + JSON.stringify(constantsTypesKeys));
 loop1:
     for (const element1 of constantsTypesKeys) {
       let constantTypeKey = element1;
       // constantTypeKey is:
-      loggers.consoleLog(namespacePrefix + functionName, msg.cconstantTypeKeyIs + JSON.stringify(constantTypeKey));
+      await loggers.consoleLog(namespacePrefix + functionName, msg.cconstantTypeKeyIs + JSON.stringify(constantTypeKey));
       let constantTypeValues = D[sys.cConstantsValidationData][constantTypeKey];
       // constantTypeValues is:
-      loggers.consoleLog(namespacePrefix + functionName, msg.cconstantTypeValuesIs + JSON.stringify(constantTypeValues));
+      await loggers.consoleLog(namespacePrefix + functionName, msg.cconstantTypeValuesIs + JSON.stringify(constantTypeValues));
       let constantsKeys = Object.keys(constantTypeValues);
       // constantsKeys is:
-      loggers.consoleLog(namespacePrefix + functionName, msg.cconstantsKeysIs + JSON.stringify(constantsKeys));
+      await loggers.consoleLog(namespacePrefix + functionName, msg.cconstantsKeysIs + JSON.stringify(constantsKeys));
       for (const element2 of constantsKeys) {
         let constantKey = element2;
         // constantKey is:
-        loggers.consoleLog(namespacePrefix + functionName, msg.cconstantKeyIs + JSON.stringify(constantKey));
+        await loggers.consoleLog(namespacePrefix + functionName, msg.cconstantKeyIs + JSON.stringify(constantKey));
         let constantActualValue = constantTypeValues[constantKey];
         // constantActualValue is:
-        loggers.consoleLog(namespacePrefix + functionName, msg.cconstantActualValueIs + JSON.stringify(constantActualValue));
+        await loggers.consoleLog(namespacePrefix + functionName, msg.cconstantActualValueIs + JSON.stringify(constantActualValue));
         if (inputData === constantActualValue.Actual) {
           returnData = constantActualValue.Name;
           break loop1;
@@ -442,8 +442,8 @@ loop1:
       } // End-for (const element2 of constantsKeys)
     } // End-for (const element1 of constantsTypesKeys)
   } // End-if (inputData)
-  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -456,19 +456,19 @@ loop1:
  * @author Seth Hollingsead
  * @date 2022/01/24
  */
-function findConstantName(inputData, inputMetaData) {
+async function findConstantName(inputData, inputMetaData) {
   let functionName = findConstantName.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = '';
   if (inputData) {
     if (inputData.includes(bas.cDot)) {
-      returnData = inputData.substr(inputData.lastIndexOf(bas.cDot) + 1, inputData.length);
+      returnData = inputData.substring(inputData.lastIndexOf(bas.cDot) + 1, inputData.length);
     }
   } // End-if (inputData)
-  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -482,11 +482,11 @@ function findConstantName(inputData, inputMetaData) {
  * @author Seth Hollingsead
  * @date 2022/01/24
  */
-function isConstantTypeValid(inputData, inputMetaData) {
+async function isConstantTypeValid(inputData, inputMetaData) {
   let functionName = isConstantTypeValid.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = false;
   if (inputData) {
     let constantsShortNames = D[sys.cConstantsValidatinoData][sys.cConstantsShortNames];
@@ -497,8 +497,8 @@ function isConstantTypeValid(inputData, inputMetaData) {
       }
     } // End-for (let key in constantsShortNames)
   } // End-if (inputData)
-  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -511,11 +511,11 @@ function isConstantTypeValid(inputData, inputMetaData) {
  * @author Seth Hollingsead
  * @date 2022/01/24
  */
-function convertConstantTypeToConstantPrefix(inputData, inputMetaData) {
+async function convertConstantTypeToConstantPrefix(inputData, inputMetaData) {
   let functionName = convertConstantTypeToConstantPrefix.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = '';
   if (inputData) {
     returnData = inputData;
@@ -526,8 +526,8 @@ function convertConstantTypeToConstantPrefix(inputData, inputMetaData) {
       }
     } // End-for (let key in constantsPrefixData)
   } // End-if (inputData)
-  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -540,26 +540,26 @@ function convertConstantTypeToConstantPrefix(inputData, inputMetaData) {
  * @author Seth Hollingsead
  * @date 2022/01/24
  */
-function constantsOptimizedFulfillmentSystem(inputData, inputMetaData) {
+async function constantsOptimizedFulfillmentSystem(inputData, inputMetaData) {
   let functionName = constantsOptimizedFulfillmentSystem.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = '';
   let constantType = '';
   let constantName = '';
   if (inputData) {
-    if (doesConstantExist(inputData, '') === false) {
-      returnData = constantsOptimizedFulfillmentSystem(inputData.substring(0, inputData.length - 1), inputMetaData);
+    if (await doesConstantExist(inputData, '') === false) {
+      returnData = await constantsOptimizedFulfillmentSystem(inputData.substring(0, inputData.length - 1), inputMetaData);
     } else {
-      constantType = getConstantType(inputData, true);
-      constantName = getConstantName(inputData, '');
-      let constantPrefix = convertConstantTypeToConstantPrefix(constantType, '');
+      constantType = await getConstantType(inputData, true);
+      constantName = await getConstantName(inputData, '');
+      let constantPrefix = await convertConstantTypeToConstantPrefix(constantType, '');
       returnData = constantPrefix + constantName;
     }
   } // End-if (inputData)
-  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -573,37 +573,37 @@ function constantsOptimizedFulfillmentSystem(inputData, inputMetaData) {
  * @author Seth Hollingsead
  * @date 2022/01/24
  */
-function constantsFulfillmentSystem(inputData, inputMetaData) {
+async function constantsFulfillmentSystem(inputData, inputMetaData) {
   let functionName = constantsFulfillmentSystem.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = '';
   let constantName = '';
   if (inputData) {
-    returnData = constantsOptimizedFulfillmentSystem(inputData, '');
+    returnData = await constantsOptimizedFulfillmentSystem(inputData, '');
     // We found the first part of the string, now lets continue processing the rest of the string!
     // First determine how many characters are being returned so we can
     // determine what portion of the string we need to continue processing with.
-    constantName = findConstantName(returnData, '');
+    constantName = await findConstantName(returnData, '');
     // constantName is:
-    loggers.consoleLog(namespacePrefix + functionName, msg.cconstantNameIs + constantName);
-    let constantValue = getConstantActualValue(constantName, '');
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cconstantNameIs + constantName);
+    let constantValue = await getConstantActualValue(constantName, '');
     // constantValue is:
-    loggers.consoleLog(namespacePrefix + functionName, msg.cconstantValueIs + constantValue);
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cconstantValueIs + constantValue);
 
     let deltaLength = inputData.length - constantValue.length;
     // deltaLength is:
-    loggers.consoleLog(namespacePrefix + functionName, msg.cdeltaLengthIs + deltaLength);
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cdeltaLengthIs + deltaLength);
     if (deltaLength != 0) {
       let recursiveSubString = inputMetaData.substring(inputMetaData.length - deltaLength, inputMetaData.length);
       // recursiveSubString is:
-      loggers.consoleLog(namespacePrefix + functionName, msg.crecursivesu + recursiveSubString);
-      returnData = returnData + bas.cSpace + bas.cPlus + bas.cSpace + constantsFulfillmentSystem(recursiveSubString, inputData);
+      await loggers.consoleLog(namespacePrefix + functionName, msg.crecursivesu + recursiveSubString);
+      returnData = returnData + bas.cSpace + bas.cPlus + bas.cSpace + await constantsFulfillmentSystem(recursiveSubString, inputData);
     } // End-if (deltaLength != 0)
   } // End-if (inputData)
-  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -619,21 +619,21 @@ function constantsFulfillmentSystem(inputData, inputMetaData) {
  * @author Seth Hollingsead
  * @date 2022/01/24
  */
-function validateConstantsDataValues(inputData, inputMetaData) {
+async function validateConstantsDataValues(inputData, inputMetaData) {
   let functionName = validateConstantsDataValues.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = true;
   let passMessage = '';
   if (inputData) {
-    let colorizeLogsEnabled = configurator.getConfigurationSetting(wrd.csystem, cfg.cenableColorizedConsoleLogs);
+    let colorizeLogsEnabled = await configurator.getConfigurationSetting(wrd.csystem, cfg.cenableColorizedConsoleLogs);
     for (const element of D[sys.cConstantsValidationData][inputData]) {
       let validationLineItem = element;
       if (validationLineItem) {
         if (validationLineItem.Actual === validationLineItem.Expected) {
           // PASS
-          if (configurator.getConfigurationSetting(wrd.csystem, cfg.cdisplayIndividualConstantsValidationPassMessages) === true) {
+          if (await configurator.getConfigurationSetting(wrd.csystem, cfg.cdisplayIndividualConstantsValidationPassMessages) === true) {
             // `PASS -- ${inputData} Actual: ${validationLineItem.Actual}, Expected: ${validationLineItem.Expected} -- PASS`;
             passMessage = wrd.cPASS + bas.cSpace + bas.cDoubleDash + bas.cSpace + inputData + bas.cSpace + wrd.cActual + bas.cColon + bas.cSpace +
               validationLineItem.Actual + bas.cComa + bas.cSpace + wrd.cExpected + bas.cColon + bas.cSpace + validationLineItem.Expected + bas.cSpace +
@@ -647,7 +647,7 @@ function validateConstantsDataValues(inputData, inputMetaData) {
         } else {
           // FAIL
           returnData = false;
-          if (configurator.getConfigurationSetting(wrd.csystem, cfg.cdisplayIndividualCosntantsValidationFailMessages) === true) {
+          if (await configurator.getConfigurationSetting(wrd.csystem, cfg.cdisplayIndividualCosntantsValidationFailMessages) === true) {
             // `FAIL -- ${inputData} Actual: ${validationLineItem.Actual}, Expected: ${validationLineItem.Expected} -- FAIL`;
             passMessage = wrd.cFAIL + bas.cSpace + bas.cDoubleDash + bas.cSpace + inputData + bas.cSpace + wrd.cActual + bas.cColon + bas.cSpace +
               validationLineItem.Actual + bas.cComa + bas.cSpace + wrd.cExpected + bas.cColon + bas.cSpace + validationLineItem.Expected + bas.cSpace +
@@ -670,8 +670,8 @@ function validateConstantsDataValues(inputData, inputMetaData) {
       } // End else-clause if (validationLineItem)
     } // End-for (const element of D[sys.cConstantsValidationData][inputData])
   } // End-if (inputData)
-  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -684,19 +684,19 @@ function validateConstantsDataValues(inputData, inputMetaData) {
  * @author Seth Hollingsead
  * @date 2022/01/24
  */
-function isConstantValid(inputData, inputMetaData) {
+async function isConstantValid(inputData, inputMetaData) {
   let functionName = isConstantValid.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = false;
   if (inputData) {
     if (inputData.length >= 4) {
       returnData = true;
     }
   } // End-if (inputData)
-  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 

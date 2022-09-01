@@ -46,10 +46,10 @@ const namespacePrefix =  wrd.cexecutrix + bas.cDot + baseFileName + bas.cDot;
  * @date 2021/12/27
  * @NOTE Cannot use the loggers here, because of a circular dependency.
  */
-function consoleLog(classPath, message) {
+async function consoleLog(classPath, message) {
   // let functionName = consoleLog.name;
   if (Object.keys(D).length !== 0 && message !== undefined) { // Make sure we don't log anything if we haven't yet loaded the configuration data.
-    let consoleLogEnabled = configurator.getConfigurationSetting(wrd.csystem, cfg.cconsoleLogEnabled);
+    let consoleLogEnabled = await configurator.getConfigurationSetting(wrd.csystem, cfg.cconsoleLogEnabled);
     if (consoleLogEnabled === true) {
       // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
       // console.log(`classPath is: ${classPath}`);
@@ -64,7 +64,7 @@ function consoleLog(classPath, message) {
       //   logFile = path.resolve(logFile);
       //   // console.log(`logFile after adding the log filename: ${logFile}`);
       // }
-      let logFile = getLogFileNameAndPath();
+      let logFile = await getLogFileNameAndPath();
 
       let debugFunctionSetting = false;
       let debugFileSetting = false;
@@ -73,13 +73,13 @@ function consoleLog(classPath, message) {
       let configurationNamespace = '';
 
       // console.log('Determine if there is a configuration setting for the class path.');
-      configurationName = configurator.processConfigurationNameRules(classPath);
+      configurationName = await configurator.processConfigurationNameRules(classPath);
       // console.log(`configurationName is: ${configurationName}`);
-      configurationNamespace = configurator.processConfigurationNamespaceRules(classPath);
+      configurationNamespace = await configurator.processConfigurationNamespaceRules(classPath);
       // console.log(`configurationNamespace is: ${configurationNamespace}`);
-      debugFunctionSetting = configurator.getConfigurationSetting(cfg.cdebugSetting + bas.cDot + configurationNamespace, configurationName);
+      debugFunctionSetting = await configurator.getConfigurationSetting(cfg.cdebugSetting + bas.cDot + configurationNamespace, configurationName);
       // console.log(`debugFunctionSetting is: ${debugFunctionSetting}`);
-      debugFileSetting = configurator.getConfigurationSetting(cfg.cdebugSetting + bas.cDot + configurationNamespace, '');
+      debugFileSetting = await configurator.getConfigurationSetting(cfg.cdebugSetting + bas.cDot + configurationNamespace, '');
       // console.log(`debugFileSetting is: ${debugFileSetting}`);
       if (debugFunctionSetting || debugFileSetting) {
         debugSetting = true;
@@ -87,15 +87,15 @@ function consoleLog(classPath, message) {
       // console.log(`debugSetting is: ${debugSetting}`);
       // console.log('DONE attempting to get the configuration setting for the class path, now check if it is not undefined and true');
       if (logFile !== undefined && (logFile.toUpperCase().includes(gen.cLOG) || logFile.toUpperCase().includes(gen.cTXT))) {
-        consoleLogProcess(debugSetting, logFile, classPath, message, true);
+        await consoleLogProcess(debugSetting, logFile, classPath, message, true);
       } else { // No text log file specified, proceed with the same process for console only.
-        consoleLogProcess(debugSetting, undefined, classPath, message, false);
+        await consoleLogProcess(debugSetting, undefined, classPath, message, false);
       }
       // console.log(`END ${namespacePrefix}${functionName} function`);
     } // end-if (consoleLogEnabled === true)
   } else if (message === undefined) { // end-if (Object.keys(D).length !== 0 && message !== undefined)
-    console.log(msg.cWarningMessageIsUndefined);
-    console.log(msg.cclassPathIs + classPath);
+    // console.log(msg.cWarningMessageIsUndefined);
+    // console.log(msg.cclassPathIs + classPath);
   }
 }
 
@@ -109,7 +109,7 @@ function consoleLog(classPath, message) {
  * @author Seth Hollingsead
  * @date 2022/02/22
  */
-function consoleTableLog(classPath, tableData, columnNames) {
+async function consoleTableLog(classPath, tableData, columnNames) {
   // let functionName = consoleTableLog.name;
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   // console.log(`classPath is: ${classPath}`);
@@ -128,28 +128,28 @@ function consoleTableLog(classPath, tableData, columnNames) {
  * @author Seth Hollingsead
  * @date 2022/03/29
  */
-function constantsValidationSummaryLog(message, passFail) {
+async function constantsValidationSummaryLog(message, passFail) {
   // let functionName = constantsValidationSummaryLog.name;
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   // console.log(`message is: ${message}`);
   // console.log(`passFail is: ${passFail}`);
   let outputMessage = '';
-  let blackColorArray = colorizer.getNamedColorData(clr.cBlack, [0,0,0]);
-  let greenColorArray = colorizer.getNamedColorData(clr.cGreen, [0,255,0]);
-  let redColorArray = colorizer.getNamedColorData(clr.cRed, [255,0,0]);
+  let blackColorArray = await colorizer.getNamedColorData(clr.cBlack, [0,0,0]);
+  let greenColorArray = await colorizer.getNamedColorData(clr.cGreen, [0,255,0]);
+  let redColorArray = await colorizer.getNamedColorData(clr.cRed, [255,0,0]);
 
   if (passFail === true) {
-    if (configurator.getConfigurationSetting(wrd.csystem, cfg.cdisplaySummaryConstantsValidationPassMessages) === true) {
+    if (await configurator.getConfigurationSetting(wrd.csystem, cfg.cdisplaySummaryConstantsValidationPassMessages) === true) {
       outputMessage = wrd.cPASSED + bas.cSpace + bas.cDoubleDash + bas.cSpace + message + bas.cSpace + bas.cDoubleDash + bas.cSpace + wrd.cPASSED; // `PASSED -- ${message} -- PASSED`;
-      outputMessage = colorizer.colorizeMessageSimple(outputMessage, blackColorArray, true);
-      outputMessage = colorizer.colorizeMessageSimple(outputMessage, greenColorArray, false);
+      outputMessage = await colorizer.colorizeMessageSimple(outputMessage, blackColorArray, true);
+      outputMessage = await colorizer.colorizeMessageSimple(outputMessage, greenColorArray, false);
       console.log(outputMessage);
     } // End-if (configurator.getConfigurationSetting(wrd.csystem, cfg.cdisplaySummaryConstantsValidationPassMessages) === true)
   } else { // passFail === false
-    if (configurator.getConfigurationSetting(wrd.csystem, cfg.cdisplaySummaryConstantsVaidationFailMessages) === true) {
+    if (await configurator.getConfigurationSetting(wrd.csystem, cfg.cdisplaySummaryConstantsVaidationFailMessages) === true) {
       outputMessage = wrd.cFAILED + bas.cSpace + bas.cDoubleDash + bas.cSpace + message + bas.cSpace + bas.cDoubleDash + bas.cSpace + wrd.cFAILED; // `FAILED -- ${message} -- FAILED`;
-      outputMessage = colorizer.colorizeMessageSimple(outputMessage, blackColorArray, true);
-      outputMessage = colorizer.colorizeMessageSimple(outputMessage, redColorArray, false);
+      outputMessage = await colorizer.colorizeMessageSimple(outputMessage, blackColorArray, true);
+      outputMessage = await colorizer.colorizeMessageSimple(outputMessage, redColorArray, false);
       console.log(outputMessage);
     } // End-if (configurator.getConfigurationSetting(wrd.csystem, cfg.cdisplaySummaryConstantsVaidationFailMessages) === true)
   }
@@ -171,7 +171,7 @@ function constantsValidationSummaryLog(message, passFail) {
  * @date 2021/10/27
  * @NOTE Cannot use the loggers here, because of a circular dependency.
  */
-function consoleLogProcess(debugSetting, logFile, classPath, message, loggingToFileAndConsole) {
+async function consoleLogProcess(debugSetting, logFile, classPath, message, loggingToFileAndConsole) {
   // let functionName = consoleLogProcess.name;
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   // console.log(`debugSetting is: ${debugSetting}`);
@@ -184,26 +184,26 @@ function consoleLogProcess(debugSetting, logFile, classPath, message, loggingToF
 
   if (debugSetting !== undefined && debugSetting === true) {
     // console.log('The debugSetting is not undefined and also true.');
-    outputMessage = parseClassPath(logFile, classPath, message);
+    outputMessage = await parseClassPath(logFile, classPath, message);
     // console.log(`outputMessage is: ${outputMessage}`);
     // console.log(`message is: ${message}`);
-    messageIsValid = validMessage(outputMessage, message);
+    messageIsValid = await validMessage(outputMessage, message);
     if (messageIsValid === true) {
-      console.log(outputMessage);
+      await console.log(outputMessage);
     }
     if (messageIsValid === true && loggingToFileAndConsole === true) {
-      printMessageToFile(logFile, outputMessage);
+      await printMessageToFile(logFile, outputMessage);
       // console.log('DONE printing the message to the logFile');
     } // End-if (messageIsValid === true && loggingToFileAndConsole === true)
-  } else if (configurator.getConfigurationSetting(wrd.csystem, cfg.cdebugTestExhaustive) === true) {
+  } else if (await configurator.getConfigurationSetting(wrd.csystem, cfg.cdebugTestExhaustive) === true) {
     // console.log('else-block the debugTestExhaustive setting is true!');
     // TODO: Add rule here to replace double percent with message/class-path.
     // Debug Exhaustive is probably not the best, we might want to consider another configuration setting to
     // enable or disable the console specifically. Right now there is no real business need for it.
     // If you really wanted to disable it just comment it out here.
-    console.log(outputMessage);
+    await console.log(outputMessage);
     if (loggingToFileAndConsole === true) {
-      printMessageToFile(logFile, outputMessage);
+      await printMessageToFile(logFile, outputMessage);
       // console.log('done printing the message to the log file.');
     } // End-if (loggingToFileAndConsole === true)
   }
@@ -222,7 +222,7 @@ function consoleLogProcess(debugSetting, logFile, classPath, message, loggingToF
  * @date 2021/10/27
  * @NOTE Cannot use the loggers here, because of a circular dependency.
  */
-function validMessage(outputMessage, originalMessage) {
+async function validMessage(outputMessage, originalMessage) {
   // let functionName = validMessage.name;
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   // console.log(`outputMessage is: ${outputMessage}`);
@@ -258,7 +258,7 @@ function validMessage(outputMessage, originalMessage) {
  * @date 2021/10/27
  * @NOTE Cannot use the loggers here, because of a circular dependency.
  */
-function parseClassPath(logFile, classPath, message) {
+async function parseClassPath(logFile, classPath, message) {
   let functionName = parseClassPath.name;
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   // console.log(`logFile is: ${logFile}`);
@@ -270,20 +270,20 @@ function parseClassPath(logFile, classPath, message) {
   let debugFilesSetting = false;
   let returnData = '';
 
-  configurationName = configurator.processConfigurationNameRules(classPath);
+  configurationName = await configurator.processConfigurationNameRules(classPath);
   // console.log(`configurationName is: ${configurationName}`);
-  configurationNamespace = configurator.processConfigurationNamespaceRules(classPath);
+  configurationNamespace = await configurator.processConfigurationNamespaceRules(classPath);
   // console.log(`configurationNamespace is: ${configurationNamespace}`);
   // printMessageToFile(logFile, `Getting configuration setting value for: debugFunctions|${className}.${classFunctionName}`);
   // console.log(`Getting configuration setting value for: ${configurationNamespace}.${configurationName}`);
-  debugFunctionsSetting = configurator.getConfigurationSetting(cfg.cdebugSetting + bas.cDot + configurationNamespace, configurationName);
+  debugFunctionsSetting = await configurator.getConfigurationSetting(cfg.cdebugSetting + bas.cDot + configurationNamespace, configurationName);
   // printMessageToFile(logFile, `debugFunctionsSetting is: ${debugFunctionsSetting}`);
   // console.log(`debugFunctionsSetting is: ${debugFunctionsSetting}`);
-  debugFilesSetting = configurator.getConfigurationSetting(cfg.cdebugSetting + bas.cDot + configurationNamespace, '');
+  debugFilesSetting = await configurator.getConfigurationSetting(cfg.cdebugSetting + bas.cDot + configurationNamespace, '');
   // printMessageToFile(logFile, `debugFilesSetting is: ${debugFilesSetting}`);
   // console.log(`debugFilesSetting is: ${debugFilesSetting}`);
   if (debugFunctionsSetting || debugFilesSetting) {
-    message = colorizer.colorizeMessage(message, configurationNamespace, configurationName, debugFilesSetting, debugFunctionsSetting, false);
+    message = await colorizer.colorizeMessage(message, configurationNamespace, configurationName, debugFilesSetting, debugFunctionsSetting, false);
     // if (message.includes(bas.cDoublePercent)) {
     //   let myNameSpace = configurationNamespace + bas.cDot + configurationName;
     //   // console.log('message is: ' + message);
@@ -304,7 +304,7 @@ function parseClassPath(logFile, classPath, message) {
     // console.log('Something is undefined && false or some combination of both, return false');
     returnData = false;
   } else {
-    message = colorizer.colorizeMessage(message, classPath, functionName, undefined, undefined, true);
+    message = await colorizer.colorizeMessage(message, classPath, functionName, undefined, undefined, true);
     returnData = message;
   }
   // console.log(`returnData is: ${returnData}`);
@@ -319,17 +319,17 @@ function parseClassPath(logFile, classPath, message) {
  * @author Seth Hollingsead
  * @date 2022/03/11
  */
-function getLogFileNameAndPath() {
+async function getLogFileNameAndPath() {
   // let functionName = getLogFileNameAndPath.name;
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   let returnData = '';
-  let logFile = configurator.getConfigurationSetting(wrd.csystem, cfg.cclientRootPath);
+  let logFile = await configurator.getConfigurationSetting(wrd.csystem, cfg.cclientRootPath);
   if (logFile !== undefined) {
     logFile = logFile + bas.cDoubleForwardSlash + wrd.clogs;
     // console.log(`Logfile before path.resolve is: ${logFile}`);
     logFile = path.resolve(logFile);
     // console.log(`Logfile after path.resolve is: ${logFile}`);
-    logFile = logFile + bas.cDoubleForwardSlash + configurator.getConfigurationSetting(wrd.csystem, cfg.clogFileName);
+    logFile = logFile + bas.cDoubleForwardSlash + await configurator.getConfigurationSetting(wrd.csystem, cfg.clogFileName);
     logFile = path.resolve(logFile);
     // console.log(`logFile after adding the log filename: ${logFile}`);
   } // End-if (logFile !== undefined)
@@ -349,7 +349,7 @@ function getLogFileNameAndPath() {
  * @date 2021/10/27
  * @NOTE Cannot use the loggers here, because of a circular dependency.
  */
-function printMessageToFile(file, message) {
+async function printMessageToFile(file, message) {
   // let functionName = printMessageToFile.name;
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   // console.log(`file is: ${file}`);
@@ -358,25 +358,25 @@ function printMessageToFile(file, message) {
   if (!file.includes('undefined')) { // NOTE: This usage of the string undefined, must be hard-coded here.
     // '!file.includes(undefined)'
     // console.log(msg.cprintMessageToFile01);
-    if (configurator.getConfigurationSetting(wrd.csystem, cfg.clogFileEnabled) === true) {
+    if (await configurator.getConfigurationSetting(wrd.csystem, cfg.clogFileEnabled) === true) {
       // console.log('LogFileEnabled = true');
       if (message) {
-        message = colorizer.removeFontStyles(message);
+        message = await colorizer.removeFontStyles(message);
       }
-      if (configurator.getConfigurationSetting(wrd.csystem, cfg.cincludeDateTimeStampInLogFiles) === true) {
+      if (await configurator.getConfigurationSetting(wrd.csystem, cfg.cincludeDateTimeStampInLogFiles) === true) {
         // Individual messages need to have a time stamp on them. So lets sign the message with a time stamp.
-        dateTimeStamp = ruleBroker.processRules([gen.cYYYY_MM_DD_HH_mm_ss_SSS, ''], [biz.cgetNowMoment]);
+        dateTimeStamp = await ruleBroker.processRules([gen.cYYYY_MM_DD_HH_mm_ss_SSS, ''], [biz.cgetNowMoment]);
         // console.log(`dateTimeStamp is: ${dateTimeStamp}`);
         message = `${dateTimeStamp}: ${message}`;
       }
-      ruleBroker.processRules([file, message], [biz.cappendMessageToFile]);
+      await ruleBroker.processRules([file, message], [biz.cappendMessageToFile]);
     } else {
       // 'ERROR: Failure to log to file: '
-      console.log(msg.cprintMessageToFile02 + file);
+      await console.log(msg.cprintMessageToFile02 + file);
     }
   } else {
     // 'ERROR: Log File includes undefined.'
-    console.log(msg.cprintMessageToFile03);
+    await console.log(msg.cprintMessageToFile03);
   }
   // console.log(`END ${namespacePrefix}${functionName} function`);
 }

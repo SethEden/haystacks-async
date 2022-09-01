@@ -35,22 +35,27 @@ const namespacePrefix = sys.cbusinessRules + bas.cDot + wrd.crules + bas.cDot + 
  * @author Seth Hollingsead
  * @date 2022/05/03
  */
-function parseBusinessRuleArgument(inputData, inputMetaData) {
+async function parseBusinessRuleArgument(inputData, inputMetaData) {
   let functionName = parseBusinessRuleArgument.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
+  // console.log(msg.cinputDataIs + JSON.stringify(inputData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
+  // console.log(msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
   let returnData;
 
   if (inputMetaData === 1) {
     // Pushing the inputData to the returnData as an array element
-    loggers.consoleLog(namespacePrefix + functionName, msg.cPushingArgumentValueToReturnDataAsArrayElement);
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cPushingArgumentValueToReturnDataAsArrayElement);
+    // console.log(msg.cPushingArgumentValueToReturnDataAsArrayElement);
     returnData = [];
     returnData.push(inputData);
   } else {
     // Calling analyzeArgument for index = 2, consolidatedArgumentMode = false
-    loggers.consoleLog(namespacePrefix + functionName, msg.cCallingAnalyzeArgumentIndexIs + inputMetaData);
-    returnData = analyzeArgument(inputData);
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cCallingAnalyzeArgumentIndexIs + inputMetaData);
+    // console.log(msg.cCallingAnalyzeArgumentIndexIs + inputMetaData);
+    returnData = await analyzeArgument(inputData, '');
     // } else if (inputMetaData === 2 && consolidatedArgumentMode === true) {
     //   // Calling analyzeArgument for inputMetaData = 2, consolidatedArgumentMode = true
     //   loggers.consoleLog(namespacePrefix + functionName, msg.cCallingAnalyzeArgumentIndex2ConsolidatedArgumentModeTrue);
@@ -75,8 +80,10 @@ function parseBusinessRuleArgument(inputData, inputMetaData) {
     //   // WARNING: lexical.parseBusinessRuleArgument: invalid combination of inputs to the lexical.parseBusinessRuleArgument function! Pleae adjust inputs and try again.
     //   console.log(msg.cparseBusinessRuleArgumentMessage1 + msg.cparseBusinessRuleArgumentMessage2);
   }
-  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  // console.log(msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  // console.log(`END ${namespacePrefix}${functionName} function`);
   return returnData;
 }
 
@@ -93,69 +100,86 @@ function parseBusinessRuleArgument(inputData, inputMetaData) {
  * @author Seth Hollingsead
  * @date 2022/05/03
  */
-function analyzeArgument(inputData, inputMetaData) {
+async function analyzeArgument(inputData, inputMetaData) {
   let functionName = analyzeArgument.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
+  // console.log(msg.cinputDataIs + JSON.stringify(inputData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
+  // console.log(msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
   let returnData;
   let argsArrayContainsCharacterRule = [];
   argsArrayContainsCharacterRule[0] = biz.cdoesArrayContainCharacter;
 
-  let secondaryCommandArgsDelimiter = configurator.getConfigurationSetting(wrd.csystem, cfg.csecondaryCommandDelimiter);
-  let tertiaryCommandArgsDelimiter = configurator.getConfigurationSetting(wrd.csystem, cfg.ctertiaryCommandDelimiter);
-  let argsArrayContainsOpenBracket = ruleParsing.processRulesInternal([bas.cOpenBracket, inputData], argsArrayContainsCharacterRule);
-  let argsArrayContainsCloseBracket = ruleParsing.processRulesInternal([bas.cCloseBracket, inputData], argsArrayContainsCharacterRule);
+  let secondaryCommandArgsDelimiter = await configurator.getConfigurationSetting(wrd.csystem, cfg.csecondaryCommandDelimiter);
+  let tertiaryCommandArgsDelimiter = await configurator.getConfigurationSetting(wrd.csystem, cfg.ctertiaryCommandDelimiter);
+  let argsArrayContainsOpenBracket = await ruleParsing.processRulesInternal([bas.cOpenBracket, inputData], argsArrayContainsCharacterRule);
+  let argsArrayContainsCloseBracket = await ruleParsing.processRulesInternal([bas.cCloseBracket, inputData], argsArrayContainsCharacterRule);
   if (inputData.includes(secondaryCommandArgsDelimiter) === true ||
   inputData.includes(tertiaryCommandArgsDelimiter) === true) {
     // Check if there are brackets or no brackets.
-    loggers.consoleLog(namespacePrefix + functionName, msg.cCheckIfThereAreBracketsOrNoBrackets);
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cCheckIfThereAreBracketsOrNoBrackets);
+    // console.log(msg.cCheckIfThereAreBracketsOrNoBrackets);
     if (argsArrayContainsOpenBracket === false || argsArrayContainsCloseBracket === false) {
       // Brackets were not found
-      loggers.consoleLog(namespacePrefix + functionName, msg.cBracketsWereNotFound);
+      await loggers.consoleLog(namespacePrefix + functionName, msg.cBracketsWereNotFound);
+      // console.log(msg.cBracketsWereNotFound);
       // Check if there is a regular expression or not.
-      loggers.consoleLog(namespacePrefix + functionName, msg.cCheckIfThereIsRegularExpressionOrNot);
+      await loggers.consoleLog(namespacePrefix + functionName, msg.cCheckIfThereIsRegularExpressionOrNot);
+      // console.log(msg.cCheckIfThereIsRegularExpressionOrNot);
       if (analyzeForRegularExpression(inputData, '') === true) {
         // A regular expression was found!
-        loggers.consoleLog(namespacePrefix + functionName, msg.cRegularExpressionWasFound);
-        returnData = parseArgumentAsRegularExpression(inputData, '');
+        await loggers.consoleLog(namespacePrefix + functionName, msg.cRegularExpressionWasFound);
+        // console.log(msg.cRegularExpressionWasFound);
+        returnData = await parseArgumentAsRegularExpression(inputData, '');
       } else { // No regular expression, just return the argument as it was passed in, no additional processing required.
         // No RegExp found!
-        loggers.consoleLog(namespacePrefix + functionName, msg.cNoRegExpFound);
+        await loggers.consoleLog(namespacePrefix + functionName, msg.cNoRegExpFound);
+        // console.log(msg.cNoRegExpFound);
         returnData = inputData;
       }
     } else {
       // There are Brackets, so treat the argument as an array.
       // Brackets ARE found!
-      loggers.consoleLog(namespacePrefix + functionName, msg.cBracketsAreFound);
-      returnData = parseArgumentAsArray(inputData, '');
+      await loggers.consoleLog(namespacePrefix + functionName, msg.cBracketsAreFound);
+      // console.log(msg.cBracketsAreFound);
+      returnData = await parseArgumentAsArray(inputData, '');
     }
   } else { // The inputData does not contain a secondaryCommandArgsDelimiter
     // NO secondary command argument delimiters.
-    loggers.consoleLog(namespacePrefix + functionName, msg.cNoSecondaryCommandArgumentDelimiters);
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cNoSecondaryCommandArgumentDelimiters);
+    // console.log(msg.cNoSecondaryCommandArgumentDelimiters);
     if (argsArrayContainsOpenBracket === false || argsArrayContainsCloseBracket === false) {
       // Brackets were not found
-      loggers.consoleLog(namespacePrefix + functionName, msg.cBracketsWereNotFound);
+      await loggers.consoleLog(namespacePrefix + functionName, msg.cBracketsWereNotFound);
+      // console.log(msg.cBracketsWereNotFound);
       // Check if there is a Regular Expression or not.
-      loggers.consoleLog(namespacePrefix + functionName, msg.cCheckIfThereIsRegularExpressionOrNot);
+      await loggers.consoleLog(namespacePrefix + functionName, msg.cCheckIfThereIsRegularExpressionOrNot);
+      // console.log(msg.cCheckIfThereIsRegularExpressionOrNot);
       if (analyzeForRegularExpression(inputData, '') === true) {
         // A regular expression was found!
-        loggers.consoleLog(namespacePrefix + functionName, msg.cRegularExpressionWasFound);
-        returnData = parseArgumentAsRegularExpression(inputData, '');
+        await loggers.consoleLog(namespacePrefix + functionName, msg.cRegularExpressionWasFound);
+        // console.log(msg.cRegularExpressionWasFound);
+        returnData = await parseArgumentAsRegularExpression(inputData, '');
       } else { // No regular expression, just return the argument as it was passed in, no additional processing required.
         // NO RegExp found!
-        loggers.consoleLog(namespacePrefix + functionName, msg.cNoRegExpFound);
+        await loggers.consoleLog(namespacePrefix + functionName, msg.cNoRegExpFound);
+        // console.log(msg.cNoRegExpFound);
         returnData = inputData;
       }
     } else {
       // There are Brackets, so treat the argument as an array.
       // Brackets ARE found!
-      loggers.consoleLog(namespacePrefix + functionName, msg.cBracketsAreFound);
-      returnData = parseArgumentAsArray(inputData, '');
+      await loggers.consoleLog(namespacePrefix + functionName, msg.cBracketsAreFound);
+      // console.log(msg.cBracketsAreFound);
+      returnData = await parseArgumentAsArray(inputData, '');
     }
   }
-  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  // console.log(msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  // console.log(`BEGIN ${namespacePrefix}{functionName} function`);
   return returnData;
 }
 
@@ -168,25 +192,25 @@ function analyzeArgument(inputData, inputMetaData) {
  * @author Seth Hollingsead
  * @date 2022/05/03
  */
-function analyzeForRegularExpression(inputData, inputMetaData) {
+async function analyzeForRegularExpression(inputData, inputMetaData) {
   let functionName = analyzeForRegularExpression.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
   let returnData = false;
   let argsArrayContainsCharacterRule = [];
   argsArrayContainsCharacterRule[0] = biz.cdoesArrayContainCharacter;
-  let argsArrayContainsRegEx1 = ruleParsing.processRulesInternal([wrd.cregEx, [inputData]], argsArrayContainsCharacterRule);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cargsArrayContainsRegEx1Is + argsArrayContainsRegEx1);
-  let argsArrayContainsRegEx2 = ruleParsing.processRulesInternal([wrd.cRegEx, [inputData]], argsArrayContainsCharacterRule);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cargsArrayContainsRegEx2Is + argsArrayContainsRegEx2);
-  let argsArrayContainsColon = ruleParsing.processRulesInternal([bas.cColon, [inputData]], argsArrayContainsCharacterRule);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cargsArrayContainsColonIs + argsArrayContainsColon);
+  let argsArrayContainsRegEx1 = await ruleParsing.processRulesInternal([wrd.cregEx, [inputData]], argsArrayContainsCharacterRule);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cargsArrayContainsRegEx1Is + argsArrayContainsRegEx1);
+  let argsArrayContainsRegEx2 = await ruleParsing.processRulesInternal([wrd.cRegEx, [inputData]], argsArrayContainsCharacterRule);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cargsArrayContainsRegEx2Is + argsArrayContainsRegEx2);
+  let argsArrayContainsColon = await ruleParsing.processRulesInternal([bas.cColon, [inputData]], argsArrayContainsCharacterRule);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cargsArrayContainsColonIs + argsArrayContainsColon);
   if ((argsArrayContainsRegEx1 === true || argsArrayContainsRegEx2 === true) && argsArrayContainsColon === true) {
     returnData = true;
   }
-  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -199,11 +223,11 @@ function analyzeForRegularExpression(inputData, inputMetaData) {
  * @author Seth Hollingsead
  * @date 2022/05/03
  */
-function parseArgumentAsRegularExpression(inputData, inputMetaData) {
+async function parseArgumentAsRegularExpression(inputData, inputMetaData) {
   let functionName = parseArgumentAsRegularExpression.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
   let returnData = [];
   let regExValue, regExFlags;
   let regExArray = inputData.split(bas.cColon);
@@ -211,17 +235,17 @@ function parseArgumentAsRegularExpression(inputData, inputMetaData) {
     if (regExArray[k] === wrd.cregEx || regExArray[k] === wrd.cRegEx) {
       k++;
       // regular expression is:
-      loggers.consoleLog(namespacePrefix + functionName, msg.cregularExpressionIs + regExArray[k]);
+      await loggers.consoleLog(namespacePrefix + functionName, msg.cregularExpressionIs + regExArray[k]);
       regExValue = regExArray[k];
       // regExValue is:
-      loggers.consoleLog(namespacePrefix + functionName, msg.cregExValueIs + regExValue);
+      await loggers.consoleLog(namespacePrefix + functionName, msg.cregExValueIs + regExValue);
     } else if (regExArray[k] === wrd.cflags || regExArray[k] === wrd.cFlags) {
       k++;
       // regular expression flags are:
-      loggers.consoleLog(namespacePrefix + functionName, msg.cregularExpressionFlagsAre + regExArray[k]);
+      await loggers.consoleLog(namespacePrefix + functionName, msg.cregularExpressionFlagsAre + regExArray[k]);
       regExFlags = regExArray[k];
       // regExFlags is:
-      loggers.consoleLog(namespacePrefix + functionName, msg.cregExFlagsIs + regExFlags);
+      await loggers.consoleLog(namespacePrefix + functionName, msg.cregExFlagsIs + regExFlags);
     }
   } // End-for (let k = 0; k < regExArray.length; k++)
   let regularExpression;
@@ -233,8 +257,8 @@ function parseArgumentAsRegularExpression(inputData, inputMetaData) {
     regularExpression = new RegExp(regExValue);
   }
   returnData = regularExpression;
-  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -248,15 +272,18 @@ function parseArgumentAsRegularExpression(inputData, inputMetaData) {
  * @author Seth Hollingsead
  * @date 2022/05/03
  */
-function parseArgumentAsArray(inputData, inputMetaData) {
+async function parseArgumentAsArray(inputData, inputMetaData) {
   let functionName = parseArgumentAsArray.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
+  // console.log(msg.cinputDataIs + JSON.stringify(inputData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
+  // console.log(msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
   let returnData;
   let argumentValue = inputData;
   let isArray = false;
-  let secondaryCommandArgsDelimiter = configurator.getConfigurationSetting(wrd.csystem, cfg.csecondaryCommandDelimiter);
+  let secondaryCommandArgsDelimiter = await configurator.getConfigurationSetting(wrd.csystem, cfg.csecondaryCommandDelimiter);
   let argsArrayContainsCharacterRule = [];
   let removeBracketsFromArgsArrayRule = [];
   let utilitiesReplaceCharacterWithCharacterRule = [];
@@ -266,8 +293,8 @@ function parseArgumentAsArray(inputData, inputMetaData) {
   let argsArrayContainsOpenBracket = false;
   let argsArrayContainsCloseBracket = false;
   if (Array.isArray(argumentValue) === true) {
-    argsArrayContainsOpenBracket = ruleParsing.processRulesInternal([bas.cOpenBracket, argumentValue], argsArrayContainsCharacterRule);
-    argsArrayContainsCloseBracket = ruleParsing.processRulesInternal([bas.cCloseBracket, argumentValue], argsArrayContainsCharacterRule);
+    argsArrayContainsOpenBracket = await ruleParsing.processRulesInternal([bas.cOpenBracket, argumentValue], argsArrayContainsCharacterRule);
+    argsArrayContainsCloseBracket = await ruleParsing.processRulesInternal([bas.cCloseBracket, argumentValue], argsArrayContainsCharacterRule);
     isArray = true;
   } else {
     argsArrayContainsOpenBracket = argumentValue.includes(bas.cOpenBracket);
@@ -278,46 +305,53 @@ function parseArgumentAsArray(inputData, inputMetaData) {
   if (isArray === false) {
     if (argumentValue.includes(secondaryCommandArgsDelimiter) === true) {
       // argumentValue contains the delimiter, lets split it!
-      loggers.consoleLog(namespacePrefix + functionName, msg.cargumentValueContainsTheDelimiterLetsSplitIt);
+      await loggers.consoleLog(namespacePrefix + functionName, msg.cargumentValueContainsTheDelimiterLetsSplitIt);
+      // console.log(msg.cargumentValueContainsTheDelimiterLetsSplitIt);
       argumentValue = argumentValue.split(secondaryCommandArgsDelimiter);
       // Re-evaluate to determine if additional actions are necessary or not.
-      argsArrayContainsOpenBracket = ruleParsing.processRulesInternal([bas.cOpenBracket, argumentValue], argsArrayContainsCharacterRule);
-      argsArrayContainsCloseBracket = ruleParsing.processRulesInternal([bas.cCloseBracket, argumentValue], argsArrayContainsCharacterRule);
+      argsArrayContainsOpenBracket = await ruleParsing.processRulesInternal([bas.cOpenBracket, argumentValue], argsArrayContainsCharacterRule);
+      argsArrayContainsCloseBracket = await ruleParsing.processRulesInternal([bas.cCloseBracket, argumentValue], argsArrayContainsCharacterRule);
       isArray = true;
     } // End-if (argumentValue.includes(secondaryCommandArgsDelimiter) === true)
   } // End-if (isArray === false)
   if (argsArrayContainsOpenBracket === true) {
     if (isArray === true) {
-      argumentValue = ruleParsing.processRulesInternal([bas.cOpenBracket, argumentValue], removeBracketsFromArgsArrayRule);
+      argumentValue = await ruleParsing.processRulesInternal([bas.cOpenBracket, argumentValue], removeBracketsFromArgsArrayRule);
     } else {
-      argumentValue = ruleParsing.processRulesInternal([argumentValue, [bas.cOpenBracket, '']], utilitiesReplaceCharacterWithCharacterRule);
+      argumentValue = await ruleParsing.processRulesInternal([argumentValue, [bas.cOpenBracket, '']], utilitiesReplaceCharacterWithCharacterRule);
     }
     // argumentValue after attempting to remove a open bracket from all array elements is:
-    loggers.consoleLog(namespacePrefix + functionName, msg.cargumentValueAfterAttemptingToRemoveOpenBracketFromAllArrayElementsIs + JSON.stringify(argumentValue));
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cargumentValueAfterAttemptingToRemoveOpenBracketFromAllArrayElementsIs + JSON.stringify(argumentValue));
+    // console.log(msg.cargumentValueAfterAttemptingToRemoveOpenBracketFromAllArrayElementsIs + JSON.stringify(argumentValue));
   } // End-if (argsArrayContainsOpenBracket === true)
   if (argsArrayContainsCloseBracket === true) {
     if (isArray === true) {
-      argumentValue = ruleParsing.processRulesInternal([bas.cCloseBracket, argumentValue], removeBracketsFromArgsArrayRule);
+      argumentValue = await ruleParsing.processRulesInternal([bas.cCloseBracket, argumentValue], removeBracketsFromArgsArrayRule);
     } else {
-      argumentValue = ruleParsing.processRulesInternal([argumentValue, [bas.cCloseBracket, '']], utilitiesReplaceCharacterWithCharacterRule);
+      argumentValue = await ruleParsing.processRulesInternal([argumentValue, [bas.cCloseBracket, '']], utilitiesReplaceCharacterWithCharacterRule);
     }
     // argumentValue after attempting to remove a close bracket from all array elements is:
-    loggers.consoleLog(namespacePrefix + functionName, msg.cargumentValueAfterAttemptingToRemoveCloseBracketFromAllArrayElementsIs + JSON.stringify(argumentValue));
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cargumentValueAfterAttemptingToRemoveCloseBracketFromAllArrayElementsIs + JSON.stringify(argumentValue));
+    // console.log(msg.cargumentValueAfterAttemptingToRemoveCloseBracketFromAllArrayElementsIs + JSON.stringify(argumentValue));
   } // End-if (argsArrayContainsCloseBracket === true)
   // secondaryCommandArgsDelimiter is:
-  loggers.consoleLog(namespacePrefix + functionName, msg.csecondaryCommandArgsDelimiterIs + secondaryCommandArgsDelimiter);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.csecondaryCommandArgsDelimiterIs + secondaryCommandArgsDelimiter);
+  // console.log(msg.csecondaryCommandArgsDelimiterIs + secondaryCommandArgsDelimiter);
   if (isArray === true) {
     if (argumentValue.includes(secondaryCommandArgsDelimiter) === true) {
       // argumentValue contains the delimiter, lets split it!
-      loggers.consoleLog(namespacePrefix + functionName, msg.cargumentValueContainsTheDelimiterLetsSplitIt);
+      await loggers.consoleLog(namespacePrefix + functionName, msg.cargumentValueContainsTheDelimiterLetsSplitIt);
+      // console.log(msg.cargumentValueContainsTheDelimiterLetsSplitIt);
       argumentValue = argumentValue.split(secondaryCommandArgsDelimiter);
     } // End-if (argumentValue.includes(secondaryCommandArgsDelimiter) === true)
     returnData = argumentValue;
   } else {
     returnData = [argumentValue];
   }
-  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  // console.log(msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  // console.log(`END ${namespacePrefix}${functionName} function`);
   return returnData;
 }
 
@@ -331,15 +365,15 @@ function parseArgumentAsArray(inputData, inputMetaData) {
  * @author Seth Hollingsead
  * @date 2022/05/03
  */
-function removeStringLiteralTagsFromArray(inputData, inputMetaData) {
+async function removeStringLiteralTagsFromArray(inputData, inputMetaData) {
   let functionName = removeStringLiteralTagsFromArray.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
   let returnData;
-  returnData = ruleParsing.processRulesInternal([bas.cTilde, inputData], [biz.cremoveCharacterFromArray]);
-  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  returnData = await ruleParsing.processRulesInternal([bas.cTilde, inputData], [biz.cremoveCharacterFromArray]);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
