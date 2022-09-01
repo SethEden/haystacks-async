@@ -39,13 +39,13 @@ const namespacePrefix = wrd.cexecutrix + bas.cDot + baseFileName + bas.cDot;
  * @date 2021/10/13
  * @NOTE Cannot use the loggers here, because of a circular dependency.
  */
-function setConfigurationSetting(configurationNamespace, configurationName, configurationValue) {
+async function setConfigurationSetting(configurationNamespace, configurationName, configurationValue) {
   // let functionName = setConfigurationSetting.name;
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   // console.log(`configurationNamespace is: ${configurationNamespace}`);
   // console.log(`configurationName is: ${configurationName}`);
   // console.log(`configurationValue is: ${configurationValue}`);
-  let namespaceConfigObject = getConfigurationNamespaceObject(configurationNamespace.split(bas.cDot));
+  let namespaceConfigObject = await getConfigurationNamespaceObject(configurationNamespace.split(bas.cDot));
   if (namespaceConfigObject) {
     namespaceConfigObject[`${configurationNamespace}.${configurationName}`] = configurationValue;
   }
@@ -63,23 +63,23 @@ function setConfigurationSetting(configurationNamespace, configurationName, conf
  * @date 2021/10/13
  * @NOTE Cannot use the loggers here, because of a circular dependency.
  */
-function getConfigurationSetting(configurationNamespace, configurationName) {
+async function getConfigurationSetting(configurationNamespace, configurationName) {
   // let functionName = getConfigurationSetting.name;
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   // console.log(`configurationNamespace is: ${configurationNamespace}`);
   // console.log(`configurationName is: ${configurationName}`);
   let returnConfigurationValue;
   let namespaceConfigObject = undefined;
-  namespaceConfigObject = getConfigurationNamespaceObject(configurationNamespace.split(bas.cDot));
+  namespaceConfigObject = await getConfigurationNamespaceObject(configurationNamespace.split(bas.cDot));
   if (namespaceConfigObject) {
     if (configurationName) {
       if (configurationName.includes(bas.cAt) && configurationName.indexOf(bas.cAt) === 0) {
-        returnConfigurationValue = getParentConfigurationNamespaceObject(configurationNamespace, configurationName);
+        returnConfigurationValue = await getParentConfigurationNamespaceObject(configurationNamespace, configurationName);
       } else {
         returnConfigurationValue = namespaceConfigObject[configurationNamespace + bas.cDot + configurationName];
       }
     } else {
-      returnConfigurationValue = getParentConfigurationNamespaceObject(configurationNamespace, '');
+      returnConfigurationValue = await getParentConfigurationNamespaceObject(configurationNamespace, '');
     }
   } // End-if (namespaceConfigObject)
   // console.log(`returnConfigurationValue is: ${returnConfigurationValue}`);
@@ -96,7 +96,7 @@ function getConfigurationSetting(configurationNamespace, configurationName) {
  * @date 2021/10/26
  * @NOTE Cannot use the loggers here, because of a circular dependency.
  */
-function processConfigurationNameRules(fullyQualifiedName) {
+async function processConfigurationNameRules(fullyQualifiedName) {
   // let functionName = processConfigurationNameRules.name;
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   // console.log(`fullyQualifiedName is: ${fullyQualifiedName}`);
@@ -117,7 +117,7 @@ function processConfigurationNameRules(fullyQualifiedName) {
  * @date 2021/10/26
  * @NOTE Cannot use the loggers here, because of a circular dependency.
  */
-function processConfigurationNamespaceRules(fullyQualifiedName) {
+async function processConfigurationNamespaceRules(fullyQualifiedName) {
   // let functionName = processConfigurationNamespaceRules.name;
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   // console.log(`fullyQualifiedName is: ${fullyQualifiedName}`);
@@ -151,7 +151,7 @@ function processConfigurationNamespaceRules(fullyQualifiedName) {
  * @date 2021/10/26
  * @NOTE Cannot use the loggers here, because of a circular dependency.
  */
-function processConfigurationValueRules(name, value) {
+async function processConfigurationValueRules(name, value) {
   // let functionName = processConfigurationValueRules.name;
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   // console.log(`name is: ${name}`);
@@ -161,7 +161,7 @@ function processConfigurationValueRules(name, value) {
     case cfg.cdateTimeStamp: case cfg.cdateStamp: case cfg.ctimeStamp:
       // NOTE: All of these three configurations are processed exactly the same way.
       // As long as what is stored in the configuration file is correct, then they should be processed correctly here.
-      returnValue = ruleBroker.processRules([value, ''], [biz.cgetNowMoment]);
+      returnValue = await ruleBroker.processRules([value, ''], [biz.cgetNowMoment]);
       break;
     default: // We don't know what the value is.
       // We have to just return the value as it was passed in, no processing.
@@ -190,7 +190,7 @@ function processConfigurationValueRules(name, value) {
  * @date 2021/10/26
  * @NOTE Cannot use the loggers here, because of a circular dependency.
  */
-function getParentConfigurationNamespaceObject(configurationNamespace, optionalFunctionNameAppendix) {
+async function getParentConfigurationNamespaceObject(configurationNamespace, optionalFunctionNameAppendix) {
   // let functionName = getParentConfigurationNamespaceObject.name;
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   // console.log(`configurationNamespace is: ${configurationNamespace}`);
@@ -199,7 +199,7 @@ function getParentConfigurationNamespaceObject(configurationNamespace, optionalF
   let parentConfigurationNamespaceArray = configurationNamespace.split(bas.cDot);
   let newParentConfigurationName = parentConfigurationNamespaceArray.pop();
   let newParentConfigurationNamespace = parentConfigurationNamespaceArray.join(bas.cDot);
-  let parentNamespaceConfigObject = getConfigurationNamespaceObject(parentConfigurationNamespaceArray);
+  let parentNamespaceConfigObject = await getConfigurationNamespaceObject(parentConfigurationNamespaceArray);
   if (optionalFunctionNameAppendix !== '') {
     returnValue = parentNamespaceConfigObject[newParentConfigurationNamespace + bas.cDot + newParentConfigurationName + optionalFunctionNameAppendix];
   } else {
@@ -222,7 +222,7 @@ function getParentConfigurationNamespaceObject(configurationNamespace, optionalF
  * @NOTE Cannot use the loggers here, because of a circular dependency.
  * @NOTE See note below about the business rule: biz.cgetNamespacedDataObject!
  */
-function getConfigurationNamespaceObject(configurationNamespace) {
+async function getConfigurationNamespaceObject(configurationNamespace) {
   // let functionName = getConfigurationNamespaceObject.name;
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   // console.log(`configurationNamespace is: ${configurationNamespace}`);
