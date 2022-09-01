@@ -60,7 +60,7 @@ async function getLengthOfLongestStringInArray(inputData, inputMetaData) {
  * Minimum string length to search is 3 characters.
  * @param {array<string>} inputData The array of strings that should be searched for matching patterns.
  * @param {string} inputMetaData Not used for this business rule.
- * @return {array<string>} A string array of common string values fund in more than 1 element of the array and 3 or more characters long.
+ * @return {array<string>} A string array of common string values found in more than 1 element of the array and 3 or more characters long.
  * @author Seth Hollingsead
  * @date 2022/01/19
  */
@@ -86,11 +86,11 @@ async function searchForPatternsInStringArray(inputData, inputMetaData) {
         // currentMasterStringArrayElement does not contain a space character
         await loggers.consoleLog(namespacePrefix + functionName, msg.cSearchForPatternsInStringArrayMessage1);
         // NOTE: All of the other loggers.consoleLog below this are not actually getting called for some reason.
-        // That is why I have added the hard-coded console ogs, but really they only need to be enabled if this function needs to be debugged.
+        // That is why I have added the hard-coded console logs, but really they only need to be enabled if this function needs to be debugged.
         // It's difficult to debug these because they really dump a LOT of data to the output.
         // The only real way to debug larger data sets would be to force the output to a log file.
         // A small data-set might be possible to debug.
-        // Lop over the length of the string we need to compare.
+        // Loop over the length of the string we need to compare.
         for (let b = minStringLength; b <= maxStringLength; b++) { // b will now hold the length of the string we are using to compare.
           // loggers.consoleLog(namespacePrefix + functionName, 'length of string to compare is: ' + toString(b));
           // console.log('Length of string to compare is: ' + b);
