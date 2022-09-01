@@ -34,37 +34,37 @@ const term = 13; // carriage return
  * @author Seth Hollingsead
  * @date 2022/05/04 - May the Forth be with you!! ;-)
  */
-function prompt(inputData, inputMetaData) {
+async function prompt(inputData, inputMetaData) {
   let functionName = prompt.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  loggers.consoleLog(namespacePrefix + functionName, msg.caskIs + JSON.stringify(inputData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.caskIs + JSON.stringify(inputData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
   let returnData = '';
   if (inputData) {
-    process.stdout.write(inputData);
+    await process.stdout.write(inputData);
   }
 
   let buffer = Buffer.alloc(1024),
     // eslint-disable-next-line no-unused-vars
-    fd = process.platform === gen.cwin32 ? process.stdin.fd : fs.openSync(sys.cdevtty, bas.cr),
+    fd = process.platform === gen.cwin32 ? process.stdin.fd : await fs.openSync(sys.cdevtty, bas.cr),
     // readSize = fs.readSync(fd, buffer, 0, 1024);
-    readSize = fs.readSync(0, buffer, 0, 1024);
+    readSize = await fs.readSync(0, buffer, 0, 1024);
 
-  loggers.consoleLog(namespacePrefix + functionName, msg.cINPUT + buffer.toString(gen.cUTF8, 0, readSize));
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cINPUT + buffer.toString(gen.cUTF8, 0, readSize));
   returnData = buffer.toString(gen.cUTF8, 0, readSize);
   if (returnData.includes(String.fromCharCode(term))) {
     // Caught the case that the input string contains the global carriage return term.
     // index of the carriage return character:
-    loggers.consoleLog(namespacePrefix + functionName, msg.cprompt01);
-    loggers.consoleLog(namespacePrefix + functionName, msg.cprompt02 + returnData.indexOf(String.fromCharCode(term)));
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cprompt01);
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cprompt02 + returnData.indexOf(String.fromCharCode(term)));
     returnData = returnData.slice(0, returnData.indexOf(String.fromCharCode(term)));
   } else if (returnData.includes(bas.cCarriageReturn + bas.cNewLine)) {
     // Caught the case that the string includes a carriage return and new ine characters.
-    loggers.consoleLog(namespacePrefix + functionName, msg.cprompt03);
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cprompt03);
     returnData = returnData.slice(0, returnData.indexOf(bas.cCarriageReturn + bas.cNewLine));
   }
-  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 

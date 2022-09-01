@@ -37,7 +37,7 @@ const namespacePrefix = sys.cbusinessRules + bas.cDot + wrd.crules + bas.cDot + 
  * @date 2022/05/03
  */
 // eslint-disable-next-line no-unused-vars
-function doAllRulesExist(inputData, inputMetaData) {
+async function doAllRulesExist(inputData, inputMetaData) {
   // let functionName = doAllRulesExist.name;
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   // console.log(`inputData is: ${JSON.stringify(inputData)}`);
@@ -45,7 +45,7 @@ function doAllRulesExist(inputData, inputMetaData) {
   let tempValidationResult = true;
   if (inputData && inputData.length > 0) {
     for (const element of inputData) {
-      if (doesRuleExist(element) === false) {
+      if (await doesRuleExist(element) === false) {
         tempValidationResult = false;
       }
     } // End-for (const element of inputData)
@@ -68,7 +68,7 @@ function doAllRulesExist(inputData, inputMetaData) {
  * @date 2022/05/03
  */
 // eslint-disable-next-line no-unused-vars
-function doesRuleExist(inputData, inputMetaData) {
+async function doesRuleExist(inputData, inputMetaData) {
   // let functionName = doesRuleExist.name;
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   // console.log(`inputData is: ${inputData}`);
@@ -94,19 +94,19 @@ function doesRuleExist(inputData, inputMetaData) {
  * @author Seth Hollingsead
  * @date 2022/05/09
  */
-function getRule(inputData, inputMetaData) {
+async function getRule(inputData, inputMetaData) {
   let functionName = getRule.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
   let returnData = false;
   if (inputData && inputData != '') {
-    if (doesRuleExist(inputData, '') === true) {
+    if (await doesRuleExist(inputData, '') === true) {
       returnData = D[sys.cbusinessRules][inputData];
     }
   } // End-if (inputData && inputData != '')
-  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -124,13 +124,13 @@ function getRule(inputData, inputMetaData) {
  * @author Seth Hollingsead
  * @date 2022/05/03
  */
-function processRulesInternal(inputData, inputMetaData) {
+async function processRulesInternal(inputData, inputMetaData) {
   let functionName = processRulesInternal.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
   let returnData = inputData[0];
-  if (inputMetaData && doAllRulesExist(inputMetaData)) {
+  if (inputMetaData && await doAllRulesExist(inputMetaData)) {
     for (let rule in inputMetaData) {
       let inputLocalMetaData = inputData[1];
       if (Object.prototype.hasOwnProperty.call(inputMetaData, rule)) {
@@ -138,15 +138,15 @@ function processRulesInternal(inputData, inputMetaData) {
         // console.log(`key is ${key}`);
         let value = inputMetaData[key];
         // console.log(`value is: ${value}`);
-        returnData = D[sys.cbusinessRules][value](returnData, inputLocalMetaData);
+        returnData = await D[sys.cbusinessRules][value](returnData, inputLocalMetaData);
       } // End-if (rulesToExecute.hasOwnProperty(rule))
     } // End-for (let rule in inputMetaData)
   } else {
     // WARNING: Some rules do not exist:
     console.log(msg.cProcessRulesWarnngSomeRulesDoNotExist + JSON.stringify(inputMetaData));
   } // End-if (rulesToExecute && doAllRulesExist(rulesToExecute))
-  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 

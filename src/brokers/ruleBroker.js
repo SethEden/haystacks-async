@@ -40,10 +40,10 @@ const namespacePrefix = wrd.cbrokers + bas.cDot + baseFileName + bas.cDot;
  * @date 2021/10/27
  * @NOTE Cannot use the loggers here, because dependency data will have never been loaded.
  */
-function bootStrapBusinessRules() {
+async function bootStrapBusinessRules() {
   // let functionName = bootStrapBusinessRules.name;
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
-  rules.initRulesLibrary();
+  await rules.initRulesLibrary();
   // console.log(`END ${namespacePrefix}${functionName} function`);
 }
 
@@ -56,7 +56,7 @@ function bootStrapBusinessRules() {
  * @date 2021/10/27
  * @NOTE Cannot use the loggers here, because of a circular dependency.
  */
-function addClientRules(clientRules) {
+async function addClientRules(clientRules) {
   // let functionName = bootStrapBusinessRules.name;
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   Object.assign(D[sys.cbusinessRules], clientRules);
@@ -78,14 +78,14 @@ function addClientRules(clientRules) {
  * @date 2021/10/27
  * @NOTE Cannot use the loggers here, because of a circular dependency.
  */
-function processRules(inputs, rulesToExecute) {
+async function processRules(inputs, rulesToExecute) {
   // let functionName = processRules.name;
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   // console.log(`inputs is: ${JSON.stringify(inputs)}`);
   // console.log(`rulesToExecute is: ${JSON.stringify(rulesToExecute)}`);
   let returnData;
   let inputMetaData;
-  if (rulesToExecute && ruleParsing.doAllRulesExist(rulesToExecute)) {
+  if (rulesToExecute && await ruleParsing.doAllRulesExist(rulesToExecute)) {
     if (inputs) {
       returnData = inputs[0];
       inputMetaData = inputs[1];
@@ -97,7 +97,7 @@ function processRules(inputs, rulesToExecute) {
         // console.log(`key is: ${key}`);
         let value = rulesToExecute[key];
         // console.log(`value is: ${value}`);
-        returnData = D[sys.cbusinessRules][value](returnData, inputMetaData);
+        returnData = await D[sys.cbusinessRules][value](returnData, inputMetaData);
       } // End-if (rulesToExecute.hasOwnProperty(rule))
     } // End-for (let rule in rulesToExecute)
   } else {

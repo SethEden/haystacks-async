@@ -28,24 +28,24 @@ const baseFileName = path.basename(import.meta.url, path.extname(import.meta.url
 const namespacePrefix = sys.cbusinessRules + bas.cDot + wrd.crules + bas.cDot + wrd.cstring + wrd.cParsing + bas.cDot + baseFileName + bas.cDot;
 
 /**
-* @function singleQuoteSwapAfterEquals
-* @description Swaps single quote characters in the middle of the string wih double quote characters n the middle of the string.
-* input: 'input[name='emailAddress'][class='username']'
-* output: 'input[name="emailAddress"][class="username"]'
-* @param {string} inputData A string that contains text with single quotes that should be swapped for double quotes.
-* @param {string} inputMetaData Not used for this business rule.
-* @return {string} A string that contains text where single quotes have been exchanged for double quotes.
-* @author Seth Hollingsead
-* @date 2021/10/28
-*/
-function singleQuoteSwapAfterEquals(inputData, inputMetaData) {
+ * @function singleQuoteSwapAfterEquals
+ * @description Swaps single quote characters in the middle of the string wih double quote characters n the middle of the string.
+ * input: 'input[name='emailAddress'][class='username']'
+ * output: 'input[name="emailAddress"][class="username"]'
+ * @param {string} inputData A string that contains text with single quotes that should be swapped for double quotes.
+ * @param {string} inputMetaData Not used for this business rule.
+ * @return {string} A string that contains text where single quotes have been exchanged for double quotes.
+ * @author Seth Hollingsead
+ * @date 2021/10/28
+ */
+async function singleQuoteSwapAfterEquals(inputData, inputMetaData) {
   let functionName = singleQuoteSwapAfterEquals.name;
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   // console.log(`inputData is: ${JSON.stringify(inputData)}`);
   // console.log(`inputMetaData is: ${JSON.stringify(inputMetaData)}`);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
   let returnData;
   if (!inputData) {
     returnData = false;
@@ -64,140 +64,140 @@ function singleQuoteSwapAfterEquals(inputData, inputMetaData) {
       returnData = inputData;
     }
   }
-  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   // console.log(`returnData is: ${JSON.stringify(returnData)}`);
   // console.log(`END ${namespacePrefix}${functionName} function`);
   return returnData;
 }
 
 /**
-* @function swapForwardSlashToBackSlash
-* @description Swaps all forward slash characters in a string for back slash characters.
-* @param {string} inputData String that might contain some forward slashes.
-* @param {string} inputMetaData Not used for this business rule.
-* @return {string} The same as the input string, just all forward slash characters
-* swapped for back slash characters.
-* @author Seth Hollingsead
-* @date 2021/10/28
-*/
-function swapForwardSlashToBackSlash(inputData, inputMetaData) {
+ * @function swapForwardSlashToBackSlash
+ * @description Swaps all forward slash characters in a string for back slash characters.
+ * @param {string} inputData String that might contain some forward slashes.
+ * @param {string} inputMetaData Not used for this business rule.
+ * @return {string} The same as the input string, just all forward slash characters
+ * swapped for back slash characters.
+ * @author Seth Hollingsead
+ * @date 2021/10/28
+ */
+async function swapForwardSlashToBackSlash(inputData, inputMetaData) {
   let functionName = swapForwardSlashToBackSlash.name;
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   // console.log(`inputData is: ${JSON.stringify(inputData)}`);
   // console.log(`inputMetaData is: ${JSON.stringify(inputMetaData)}`);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
   let returnData;
   if (!inputData) {
     returnData = false;
   } else {
-    returnData = ruleParsing.processRulesInternal([inputData, [/\//g, bas.cBackSlash]], [biz.creplaceCharacterWithCharacter]);
+    returnData = await ruleParsing.processRulesInternal([inputData, [/\//g, bas.cBackSlash]], [biz.creplaceCharacterWithCharacter]);
   }
-  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   // console.log(`returnData is: ${JSON.stringify(returnData)}`);
   // console.log(`END ${namespacePrefix}${functionName} function`);
   return returnData;
 }
 
 /**
-* @function swapBackSlashToForwardSlash
-* @description Swaps all back slash characters in a string for forward slash characters.
-* @param {string} inputData String that might contains some back slashes.
-* @param {string} inputMetaData Not used for this business rule.
-* @return {string} The same as the input string, just all back slash characters
-* swapped for forward slash characters.
-* @author Seth Hollingsead
-* @date 2021/10/28
-*/
-function swapBackSlashToForwardSlash(inputData, inputMetaData) {
+ * @function swapBackSlashToForwardSlash
+ * @description Swaps all back slash characters in a string for forward slash characters.
+ * @param {string} inputData String that might contains some back slashes.
+ * @param {string} inputMetaData Not used for this business rule.
+ * @return {string} The same as the input string, just all back slash characters
+ * swapped for forward slash characters.
+ * @author Seth Hollingsead
+ * @date 2021/10/28
+ */
+async function swapBackSlashToForwardSlash(inputData, inputMetaData) {
   let functionName = swapBackSlashToForwardSlash.name;
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   // console.log(`inputData is: ${JSON.stringify(inputData)}`);
   // console.log(`inputMetaData is: ${JSON.stringify(inputMetaData)}`);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
   let returnData;
   if (!inputData) {
     returnData = false;
   } else {
-    if (configurator.getConfigurationSetting(wrd.csystem, cfg.cconfigurationInitialized) === true) {
-      returnData = ruleParsing.processRulesInternal([inputData, [/\\/g, bas.cForwardSlash]], [biz.creplaceCharacterWithCharacter]);
+    if (await configurator.getConfigurationSetting(wrd.csystem, cfg.cconfigurationInitialized) === true) {
+      returnData = await ruleParsing.processRulesInternal([inputData, [/\\/g, bas.cForwardSlash]], [biz.creplaceCharacterWithCharacter]);
     } else {
-      returnData = characterArrayParsing.replaceCharacterWithCharacter(inputData, [/\\/g, bas.cForwardSlash]);
+      returnData = await characterArrayParsing.replaceCharacterWithCharacter(inputData, [/\\/g, bas.cForwardSlash]);
     }
   }
-  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   // console.log(`returnData is: ${JSON.stringify(returnData)}`);
   // console.log(`END ${namespacePrefix}${functionName} function`);
   return returnData;
 }
 
 /**
-* @function swapDoubleForwardSlashToSingleForwardSlash
-* @description Swaps all double forward slash characters for single forward slash characters.
-* @param {string} inputData String that might contain some double forward slashes.
-* @param {string} inputMetaData Not used for this business rule.
-* @return {string} The same as the input string, just all double forward slash characters
-* swapped for single forward slash characters.
-* @author Seth Hollingsead
-* @date 2021/10/28
-*/
-function swapDoubleForwardSlashToSingleForwardSlash(inputData, inputMetaData) {
+ * @function swapDoubleForwardSlashToSingleForwardSlash
+ * @description Swaps all double forward slash characters for single forward slash characters.
+ * @param {string} inputData String that might contain some double forward slashes.
+ * @param {string} inputMetaData Not used for this business rule.
+ * @return {string} The same as the input string, just all double forward slash characters
+ * swapped for single forward slash characters.
+ * @author Seth Hollingsead
+ * @date 2021/10/28
+ */
+async function swapDoubleForwardSlashToSingleForwardSlash(inputData, inputMetaData) {
   let functionName = swapDoubleForwardSlashToSingleForwardSlash.name;
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   // console.log(`inputData is: ${JSON.stringify(inputData)}`);
   // console.log(`inputMetaData is: ${JSON.stringify(inputMetaData)}`);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
   let returnData;
   if (!inputData) {
     returnData = false;
   } else {
-    if (configurator.getConfigurationSetting(wrd.csystem, cfg.cconfigurationInitialized) === true) {
-      returnData = ruleParsing.processRulesInternal([inputData, [/\/\//g, bas.cForwardSlash]], [biz.creplaceCharacterWithCharacter]);
+    if (await configurator.getConfigurationSetting(wrd.csystem, cfg.cconfigurationInitialized) === true) {
+      returnData = await ruleParsing.processRulesInternal([inputData, [/\/\//g, bas.cForwardSlash]], [biz.creplaceCharacterWithCharacter]);
     } else {
-      returnData = characterArrayParsing.replaceCharacterWithCharacter(inputData, [/\/\//g, bas.cForwardSlash]);
+      returnData = await characterArrayParsing.replaceCharacterWithCharacter(inputData, [/\/\//g, bas.cForwardSlash]);
     }
   }
-  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   // console.log(`returnData is: ${JSON.stringify(returnData)}`);
   // console.log(`END ${namespacePrefix}${functionName} function`);
   return returnData;
 }
 
 /**
-* @function swapDoubleBackSlashToSingleBackSlash
-* @description Swaps all double back slash characters for single back slash characters.
-* @param {string} inputData String that might contain some double back slashes.
-* @param {string} inputMetaData Not used for this business rule.
-* @return {string} The same as the input string, just all double back slash characters
-* swapped for single back slash characters.
-* @author Seth Hollingsead
-* @date 2021/10/28
-*/
-function swapDoubleBackSlashToSingleBackSlash(inputData, inputMetaData) {
+ * @function swapDoubleBackSlashToSingleBackSlash
+ * @description Swaps all double back slash characters for single back slash characters.
+ * @param {string} inputData String that might contain some double back slashes.
+ * @param {string} inputMetaData Not used for this business rule.
+ * @return {string} The same as the input string, just all double back slash characters
+ * swapped for single back slash characters.
+ * @author Seth Hollingsead
+ * @date 2021/10/28
+ */
+async function swapDoubleBackSlashToSingleBackSlash(inputData, inputMetaData) {
   let functionName = swapDoubleBackSlashToSingleBackSlash.name;
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   // console.log(`inputData is: ${JSON.stringify(inputData)}`);
   // console.log(`inputMetaData is: ${JSON.stringify(inputMetaData)}`);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
   let returnData;
   if (!inputData) {
     returnData = false;
   } else {
-    returnData = ruleParsing.processRulesInternal([inputData, [/\\\\/g, bas.cBackSlash]], [biz.creplaceCharacterWithCharacter]);
+    returnData = await ruleParsing.processRulesInternal([inputData, [/\\\\/g, bas.cBackSlash]], [biz.creplaceCharacterWithCharacter]);
   }
-  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   // console.log(`returnData is: ${JSON.stringify(returnData)}`);
   // console.log(`END ${namespacePrefix}${functionName} function`);
   return returnData;
@@ -212,18 +212,18 @@ function swapDoubleBackSlashToSingleBackSlash(inputData, inputMetaData) {
  * @author Seth Hollingsead
  * @date 2022/01/21
  */
-function replaceSpacesWithPlus(inputData, inputMetaData) {
+async function replaceSpacesWithPlus(inputData, inputMetaData) {
   let functionName = replaceSpacesWithPlus.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = false;
   if (inputData) {
     // returnData = inputData.replace(/ /g, bas.cPlus);
-    returnData = ruleParsing.processRulesInternal([inputData, [/ /g, bas.cPlus]], [biz.creplaceCharacterWithCharacter]);
+    returnData = await ruleParsing.processRulesInternal([inputData, [/ /g, bas.cPlus]], [biz.creplaceCharacterWithCharacter]);
   }
-  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -236,18 +236,18 @@ function replaceSpacesWithPlus(inputData, inputMetaData) {
  * @author Seth Hollingsead
  * @date 2022/01/23
  */
-function replaceColonWithUnderscore(inputData, inputMetaData) {
+async function replaceColonWithUnderscore(inputData, inputMetaData) {
   let functionName = replaceColonWithUnderscore.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = false;
   if (inputData) {
     // returnData = inputData.replace(/:/g, bas.cUnderscore);
-    returnData = ruleParsing.processRulesInternal([inputData, [/:/g, bas.cUnderscore]], [biz.creplaceCharacterWithCharacter]);
+    returnData = await ruleParsing.processRulesInternal([inputData, [/:/g, bas.cUnderscore]], [biz.creplaceCharacterWithCharacter]);
   }
-  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -260,22 +260,22 @@ function replaceColonWithUnderscore(inputData, inputMetaData) {
  * @author Seth Hollingsead
  * @date 2022/01/23
  */
-function cleanCarriageReturnFromString(inputData, inputMetaData) {
+async function cleanCarriageReturnFromString(inputData, inputMetaData) {
   let functionName = cleanCarriageReturnFromString.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = false;
   if (inputData) {
-    if (configurator.getConfigurationSetting(wrd.csystem, cfg.cconfigurationInitialized) === true) {
+    if (await configurator.getConfigurationSetting(wrd.csystem, cfg.cconfigurationInitialized) === true) {
       // returnData = inputData.replace(/\s+/g, bas.cSpace);
-      returnData = ruleParsing.processRulesInternal([inputData, [/\s+/g, bas.cSpace]], [biz.creplaceCharacterWithCharacter]).trim();
+      returnData = (await ruleParsing.processRulesInternal([inputData, [/\s+/g, bas.cSpace]], [biz.creplaceCharacterWithCharacter])).trim();
     } else {
-      returnData = characterArrayParsing.replaceCharacterWithCharacter(inputData, [/\s+/g, bas.cSpace]);
+      returnData = await characterArrayParsing.replaceCharacterWithCharacter(inputData, [/\s+/g, bas.cSpace]);
     }
   } // End-if (inputData)
-  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -288,17 +288,17 @@ function cleanCarriageReturnFromString(inputData, inputMetaData) {
  * @author Seth Hollingsead
  * @date 2022/01/23
  */
-function convertStringToLowerCase(inputData, inputMetaData) {
+async function convertStringToLowerCase(inputData, inputMetaData) {
   let functionName = convertStringToLowerCase.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = false;
   if (inputData) {
     returnData = inputData.toLowerCase();
   }
-  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -311,17 +311,17 @@ function convertStringToLowerCase(inputData, inputMetaData) {
  * @author Seth Hollingsead
  * @date 2022/01/23
  */
-function convertStringToUpperCase(inputData, inputMetaData) {
+async function convertStringToUpperCase(inputData, inputMetaData) {
   let functionName = convertStringToUpperCase.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = false;
   if (inputData) {
     returnData = inputData.toUpperCase();
   }
-  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -335,11 +335,11 @@ function convertStringToUpperCase(inputData, inputMetaData) {
  * @author Seth Hollingsead
  * @date 2022/01/23
  */
-function doesStringContainUpperCaseCharacter(inputData, inputMetaData) {
+async function doesStringContainUpperCaseCharacter(inputData, inputMetaData) {
   let functionName = doesStringContainUpperCaseCharacter.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = false;
   if (inputData) {
     for (let i = 1; i < inputData.length; i++) {
@@ -349,8 +349,8 @@ function doesStringContainUpperCaseCharacter(inputData, inputMetaData) {
       }
     } // End-for (let i = 1; i < inputData.length; i++)
   } // End-if (inputData)
-  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -364,11 +364,11 @@ function doesStringContainUpperCaseCharacter(inputData, inputMetaData) {
  * @author Seth Hollingsead
  * @date 2022/01/23
  */
-function doesStringContainLowerCaseCharacter(inputData, inputMetaData) {
+async function doesStringContainLowerCaseCharacter(inputData, inputMetaData) {
   let functionName = doesStringContainLowerCaseCharacter.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = false;
   if (inputData) {
     for (let i = 1; i < inputData.length; i++) {
@@ -378,8 +378,8 @@ function doesStringContainLowerCaseCharacter(inputData, inputMetaData) {
       }
     } // End-for (let i = 1; i < inputData.length; i++)
   } // End-if (inputData)
-  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -392,17 +392,17 @@ function doesStringContainLowerCaseCharacter(inputData, inputMetaData) {
  * @author Seth Hollingsead
  * @date 2022/01/23
  */
-function isFirstCharacterLowerCase(inputData, inputMetaData) {
+async function isFirstCharacterLowerCase(inputData, inputMetaData) {
   let functionName = isFirstCharacterLowerCase.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = false;
   if (inputData) {
     returnData = gen.cLowerCaseEnglishAlphabet.includes(inputData.charAt(0));
   }
-  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -415,17 +415,17 @@ function isFirstCharacterLowerCase(inputData, inputMetaData) {
  * @author Seth Hollingsead
  * @date 2022/01/23
  */
-function isFirstCharacterUpperCase(inputData, inputMetaData) {
+async function isFirstCharacterUpperCase(inputData, inputMetaData) {
   let functionName = isFirstCharacterUpperCase.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = false;
   if (inputData) {
     returnData = gen.cUpperCaseEnglishAlphabet.includes(inputData.charAt(0));
   }
-  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -444,7 +444,7 @@ function isFirstCharacterUpperCase(inputData, inputMetaData) {
  * @NOTE: https://stackoverflow.com/questions/1431094/how-do-i-replace-a-character-at-a-particular-index-in-javascript
  * @NOTE Cannot use the loggers here, because of a circular dependency.
  */
-function replaceCharacterAtIndexOfString(inputData, inputMetaData) {
+async function replaceCharacterAtIndexOfString(inputData, inputMetaData) {
   // let functionName = replaceCharacterAtIndexOfString.name;
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   // console.log(`originalString is: ${originalString}`);

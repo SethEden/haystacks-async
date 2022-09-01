@@ -31,22 +31,23 @@ const namespacePrefix = apc.cApplicationName + bas.cDot + wrd.ccommands + bas.cD
  * dynamic data storage technique for client commands is working.
  * @param {string} inputData The string input data.
  * @param {string} inputMetaData The string of input meta-data.
- * @return {string} An echo of the inputData with some hard-coded modifier.
+ * @return {array<boolean,string|integer|boolean|object|array,object>} An array with a boolean True or False value to
+ * indicate if the application should exit or not exit, followed by the command output and finally the promise for the command execution.
  * @author Seth Hollingsead
  * @date 2022/02/08
  */
-const customEchoCommand = function(inputData, inputMetaData) {
+async function customEchoCommand(inputData, inputMetaData) {
   let functionName = customEchoCommand.name;
-  haystacks.consoleLog(namespacePrefix, functionName, msg.cBEGIN_Function);
-  haystacks.consoleLog(namespacePrefix, functionName, msg.cinputDataIs + inputData);
-  haystacks.consoleLog(namespacePrefix, functionName, msg.cinputMetaDataIs + inputMetaData);
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.cBEGIN_Function);
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.cinputDataIs + inputData);
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = [false, false];
   returnData[1] = inputData + ' clientStringParsing.customEchoCommand';
   console.log(returnData[1]);
-  haystacks.consoleLog(namespacePrefix, functionName, msg.creturnDataIs + JSON.stringify(returnData));
-  haystacks.consoleLog(namespacePrefix, functionName, msg.cEND_Function);
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.cEND_Function);
   return returnData;
-};
+}
 
 /**
  * @function bossPanic
@@ -73,11 +74,11 @@ const customEchoCommand = function(inputData, inputMetaData) {
  * @date 2022/03/31
  * @NOTE This is an INFINITE LOOP function, so press control+C to exit rom the application when you want to exit.
  */
-const bossPanic = function(inputData, inputMetaData) {
+async function bossPanic(inputData, inputMetaData) {
   let functionName = bossPanic.name;
-  haystacks.consoleLog(namespacePrefix, functionName, msg.cBEGIN_Function);
-  haystacks.consoleLog(namespacePrefix, functionName, msg.cinputDataIs + inputData);
-  haystacks.consoleLog(namespacePrefix, functionName, msg.cinputMetaDataIs + inputMetaData);
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.cBEGIN_Function);
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.cinputDataIs + inputData);
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.cinputMetaDataIs + inputMetaData);
   let stringLength = 0;
   let colorBreakPoint = 0;
   let stringToPrint = '';
@@ -98,7 +99,7 @@ const bossPanic = function(inputData, inputMetaData) {
   let coloredLinesMaxLength = 20;
   let fastTypingOutput = false;
   let speedTypingPerformanceIndex = 100; // Default to a fast typing speed.
-  let systemColorLogsEnabled = haystacks.getConfigurationSetting(wrd.csystem, cfg.cenableColorizedConsoleLogs);
+  let systemColorLogsEnabled = await haystacks.getConfigurationSetting(wrd.csystem, cfg.cenableColorizedConsoleLogs);
 
   // Rather than doing the above, I'll just call the business rule to generate a random number between 1 and 100.
   // Then I can call the string generator to generate a random string of characters to match that length.
@@ -130,7 +131,7 @@ const bossPanic = function(inputData, inputMetaData) {
       }
     } // End-if (inputData.length > 4)
     if (inputData.length > 5) {
-      fastTypingOutput = haystacks.executeBusinessRules([inputData[5], ''], [biz.cstringToBoolean]);
+      fastTypingOutput = await haystacks.executeBusinessRules([inputData[5], ''], [biz.cstringToBoolean]);
     }
     if (inputData.length > 6) {
       speedTypingPerformanceIndex = parseInt(inputData[6]);
@@ -142,26 +143,26 @@ const bossPanic = function(inputData, inputMetaData) {
   // eslint-disable-next-line no-constant-condition
   while (true) { // Start the infinite loop
     if (noColoredLineCount <= 0 && enableColoredLine === false) {
-      noColoredLineCount = haystacks.executeBusinessRules([num.c1, [noColoredLinesMaxLength, false, false]], [biz.crandomlyGenerateNumberInRange]);
+      noColoredLineCount = await haystacks.executeBusinessRules([num.c1, [noColoredLinesMaxLength, false, false]], [biz.crandomlyGenerateNumberInRange]);
       enableColoredLine = true;
     }
     if (coloredLineCount <= 0 && enableColoredLine === true) {
-      coloredLineCount = haystacks.executeBusinessRules([num.c2, [coloredLinesMaxLength, false, false]], [biz.crandomlyGenerateNumberInRange]);
+      coloredLineCount = await haystacks.executeBusinessRules([num.c2, [coloredLinesMaxLength, false, false]], [biz.crandomlyGenerateNumberInRange]);
       enableColoredLine = false;
     }
-    stringLength = haystacks.executeBusinessRules([num.c1, [lineLength, false, false]], [biz.crandomlyGenerateNumberInRange]);
+    stringLength = await haystacks.executeBusinessRules([num.c1, [lineLength, false, false]], [biz.crandomlyGenerateNumberInRange]);
     // Now we will generate a number between 0 and the string length, this will be the color limit so we can break the ine up randomly into a beginning segment and an ending segment.
     // Each segment of the line will get a different random foreground font color and random background font color.
-    colorBreakPoint = haystacks.executeBusinessRules([num.c1, [stringLength, false, false]], [biz.crandomlyGenerateNumberInRange]);
-    stringToPrint = haystacks.executeBusinessRules([stringLength, gen.cMostSpecialCharacters], [biz.cgenerateRandomMixedCaseAlphaNumericCodeWithSpecialCharactersByLength]);
+    colorBreakPoint = await haystacks.executeBusinessRules([num.c1, [stringLength, false, false]], [biz.crandomlyGenerateNumberInRange]);
+    stringToPrint = await haystacks.executeBusinessRules([stringLength, gen.cMostSpecialCharacters], [biz.cgenerateRandomMixedCaseAlphaNumericCodeWithSpecialCharactersByLength]);
     if (enableColoredLine === true && systemColorLogsEnabled === true) {
       subString1 = stringToPrint.substr(0, colorBreakPoint);
       subString2 = stringToPrint.substr(colorBreakPoint, stringToPrint.length);
       // Determine if the first part of the string will have a light foreground and dark background or dark foreground and light background.
-      if (haystacks.executeBusinessRules(['', ''], [biz.crandomlyGenerateBooleanValue]) === true) {
-        brightColor1 = haystacks.executeBusinessRules([200, 255], [biz.cgenerateRandomBrightColor]);
-        darkColor1 = haystacks.executeBusinessRules([0, 60], [biz.cgenerateRandomDarkColor]);
-        colorMode1 = haystacks.executeBusinessRules(['', ''], [biz.crandomlyGenerateBooleanValue]);
+      if (await haystacks.executeBusinessRules(['', ''], [biz.crandomlyGenerateBooleanValue]) === true) {
+        brightColor1 = await haystacks.executeBusinessRules([200, 255], [biz.cgenerateRandomBrightColor]);
+        darkColor1 = await haystacks.executeBusinessRules([0, 60], [biz.cgenerateRandomDarkColor]);
+        colorMode1 = await haystacks.executeBusinessRules(['', ''], [biz.crandomlyGenerateBooleanValue]);
         if (colorMode1 === true) {
           subString1 = chalk.rgb(brightColor1[0], brightColor1[1], brightColor1[2])(subString1);
           subString2 = chalk.bgRgb(darkColor1[0], darkColor1[1], darkColor1[2])(subString1);
@@ -170,10 +171,10 @@ const bossPanic = function(inputData, inputMetaData) {
           subString2 = chalk.bgRgb(brightColor1[0], brightColor1[1], brightColor1[2])(subString1);
         }
       } // End-if (haystacks.executeBusinessRule(biz.crandomlyGenerateBooleanValue, '', '') === true)
-      if (haystacks.executeBusinessRules(['', ''], [biz.crandomlyGenerateBooleanValue]) === true) {
-        brightColor2 = haystacks.executeBusinessRules([200, 255], [biz.cgenerateRandomBrightColor]);
-        darkColor2 = haystacks.executeBusinessRules([0, 60], [biz.cgenerateRandomDarkColor]);
-        colorMode2 = haystacks.executeBusinessRules(['', ''], [biz.crandomlyGenerateBooleanValue]);
+      if (await haystacks.executeBusinessRules(['', ''], [biz.crandomlyGenerateBooleanValue]) === true) {
+        brightColor2 = await haystacks.executeBusinessRules([200, 255], [biz.cgenerateRandomBrightColor]);
+        darkColor2 = await haystacks.executeBusinessRules([0, 60], [biz.cgenerateRandomDarkColor]);
+        colorMode2 = await haystacks.executeBusinessRules(['', ''], [biz.crandomlyGenerateBooleanValue]);
         if (colorMode2 === true) {
           subString2 = chalk.rgb(brightColor2[0], brightColor2[1], brightColor2[2])(subString2);
           subString2 = chalk.bgRgb(darkColor2[0], darkColor2[1], darkColor2[2])(subString2);
@@ -191,18 +192,278 @@ const bossPanic = function(inputData, inputMetaData) {
     if (fastTypingOutput === true) {
       for (let i = 0; i < stringToPrint.length; i++) {
         // eslint-disable-next-line no-undef
-        process.stdout.write(stringToPrint.charAt(i));
-        haystacks.executeBusinessRules([speedTypingPerformanceIndex, ''], [wrd.csleep]);
+        await process.stdout.write(stringToPrint.charAt(i));
+        await haystacks.executeBusinessRules([speedTypingPerformanceIndex, ''], [wrd.csleep]);
       } // End-for (let i = 0; i < stringToPrint.length; i++)
       console.log('\r'); // Carriage return
     } else {
       console.log(stringToPrint);
     }
-    haystacks.executeBusinessRules([performanceIndex, ''], [wrd.csleep]);
+    await haystacks.executeBusinessRules([performanceIndex, ''], [wrd.csleep]);
   } // End-while (true) // End of the infinite loop
-};
+}
+
+/**
+ * @function clientCommand01
+ * @description Client Command One.
+ * @param {string} inputData Not used for this command. 
+ * @param {string} inputMetaData Not used for this command.
+ * @return {array<boolean,string|integer|boolean|object|array,object>} An array with a boolean True or False value to
+ * indicate if the application should exit or not exit, followed by the command output and finally the promise for the command execution.
+ * @author Seth Hollingsead
+ * @date 2022/08/01
+ * @NOTE: This command will be used to test the order in which commands are enqueued and the order in which commands are executed.
+ * Especially when commands are nested inside deeply nested workflows.
+ */
+ async function clientCommand01(inputData, inputMetaData) {
+  let functionName = clientCommand01.name;
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.cBEGIN_Function);
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.cinputDataIs + inputData);
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.cinputMetaDataIs + inputMetaData);
+  let returnData = [true, false];
+  returnData[1] = 'clientStringParsing.clientCommand01';
+  console.log(returnData[1]);
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.cEND_Function);
+  return returnData;
+}
+
+/**
+ * @function clientCommand02
+ * @description Client Command Two.
+ * @param {string} inputData Not used for this command. 
+ * @param {string} inputMetaData Not used for this command.
+ * @return {array<boolean,string|integer|boolean|object|array,object>} An array with a boolean True or False value to
+ * indicate if the application should exit or not exit, followed by the command output and finally the promise for the command execution.
+ * @author Seth Hollingsead
+ * @date 2022/08/01
+ * @NOTE: This command will be used to test the order in which commands are enqueued and the order in which commands are executed.
+ * Especially when commands are nested inside deeply nested workflows.
+ */
+ async function clientCommand02(inputData, inputMetaData) {
+  let functionName = clientCommand02.name;
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.cBEGIN_Function);
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.cinputDataIs + inputData);
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.cinputMetaDataIs + inputMetaData);
+  let returnData = [true, false];
+  returnData[1] = 'clientStringParsing.clientCommand02';
+  console.log(returnData[1]);
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.cEND_Function);
+  return returnData;
+}
+
+/**
+ * @function clientCommand03
+ * @description Client Command Three.
+ * @param {string} inputData Not used for this command. 
+ * @param {string} inputMetaData Not used for this command.
+ * @return {array<boolean,string|integer|boolean|object|array,object>} An array with a boolean True or False value to
+ * indicate if the application should exit or not exit, followed by the command output and finally the promise for the command execution.
+ * @author Seth Hollingsead
+ * @date 2022/08/01
+ * @NOTE: This command will be used to test the order in which commands are enqueued and the order in which commands are executed.
+ * Especially when commands are nested inside deeply nested workflows.
+ */
+ async function clientCommand03(inputData, inputMetaData) {
+  let functionName = clientCommand03.name;
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.cBEGIN_Function);
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.cinputDataIs + inputData);
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.cinputMetaDataIs + inputMetaData);
+  let returnData = [true, false];
+  returnData[1] = 'clientStringParsing.clientCommand03';
+  console.log(returnData[1]);
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.cEND_Function);
+  return returnData;
+}
+
+/**
+ * @function clientCommand04
+ * @description Client Command Four.
+ * @param {string} inputData Not used for this command. 
+ * @param {string} inputMetaData Not used for this command.
+ * @return {array<boolean,string|integer|boolean|object|array,object>} An array with a boolean True or False value to
+ * indicate if the application should exit or not exit, followed by the command output and finally the promise for the command execution.
+ * @author Seth Hollingsead
+ * @date 2022/08/01
+ * @NOTE: This command will be used to test the order in which commands are enqueued and the order in which commands are executed.
+ * Especially when commands are nested inside deeply nested workflows.
+ */
+ async function clientCommand04(inputData, inputMetaData) {
+  let functionName = clientCommand04.name;
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.cBEGIN_Function);
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.cinputDataIs + inputData);
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.cinputMetaDataIs + inputMetaData);
+  let returnData = [true, false];
+  returnData[1] = 'clientStringParsing.clientCommand04';
+  console.log(returnData[1]);
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.cEND_Function);
+  return returnData;
+}
+
+/**
+ * @function clientCommand05
+ * @description Client Command Five.
+ * @param {string} inputData Not used for this command. 
+ * @param {string} inputMetaData Not used for this command.
+ * @return {array<boolean,string|integer|boolean|object|array,object>} An array with a boolean True or False value to
+ * indicate if the application should exit or not exit, followed by the command output and finally the promise for the command execution.
+ * @author Seth Hollingsead
+ * @date 2022/08/01
+ * @NOTE: This command will be used to test the order in which commands are enqueued and the order in which commands are executed.
+ * Especially when commands are nested inside deeply nested workflows.
+ */
+ async function clientCommand05(inputData, inputMetaData) {
+  let functionName = clientCommand05.name;
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.cBEGIN_Function);
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.cinputDataIs + inputData);
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.cinputMetaDataIs + inputMetaData);
+  let returnData = [true, false];
+  returnData[1] = 'clientStringParsing.clientCommand05';
+  console.log(returnData[1]);
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.cEND_Function);
+  return returnData;
+}
+
+/**
+ * @function clientCommand06
+ * @description Client Command Six.
+ * @param {string} inputData Not used for this command. 
+ * @param {string} inputMetaData Not used for this command.
+ * @return {array<boolean,string|integer|boolean|object|array,object>} An array with a boolean True or False value to
+ * indicate if the application should exit or not exit, followed by the command output and finally the promise for the command execution.
+ * @author Seth Hollingsead
+ * @date 2022/08/01
+ * @NOTE: This command will be used to test the order in which commands are enqueued and the order in which commands are executed.
+ * Especially when commands are nested inside deeply nested workflows.
+ */
+ async function clientCommand06(inputData, inputMetaData) {
+  let functionName = clientCommand06.name;
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.cBEGIN_Function);
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.cinputDataIs + inputData);
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.cinputMetaDataIs + inputMetaData);
+  let returnData = [true, false];
+  returnData[1] = 'clientStringParsing.clientCommand06';
+  console.log(returnData[1]);
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.cEND_Function);
+  return returnData;
+}
+
+/**
+ * @function clientCommand07
+ * @description Client Command Seven.
+ * @param {string} inputData Not used for this command. 
+ * @param {string} inputMetaData Not used for this command.
+ * @return {array<boolean,string|integer|boolean|object|array,object>} An array with a boolean True or False value to
+ * indicate if the application should exit or not exit, followed by the command output and finally the promise for the command execution.
+ * @author Seth Hollingsead
+ * @date 2022/08/01
+ * @NOTE: This command will be used to test the order in which commands are enqueued and the order in which commands are executed.
+ * Especially when commands are nested inside deeply nested workflows.
+ */
+ async function clientCommand07(inputData, inputMetaData) {
+  let functionName = clientCommand07.name;
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.cBEGIN_Function);
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.cinputDataIs + inputData);
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.cinputMetaDataIs + inputMetaData);
+  let returnData = [true, false];
+  returnData[1] = 'clientStringParsing.clientCommand07';
+  console.log(returnData[1]);
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.cEND_Function);
+  return returnData;
+}
+
+/**
+ * @function clientCommand08
+ * @description Client Command Eight.
+ * @param {string} inputData Not used for this command. 
+ * @param {string} inputMetaData Not used for this command.
+ * @return {array<boolean,string|integer|boolean|object|array,object>} An array with a boolean True or False value to
+ * indicate if the application should exit or not exit, followed by the command output and finally the promise for the command execution.
+ * @author Seth Hollingsead
+ * @date 2022/08/01
+ * @NOTE: This command will be used to test the order in which commands are enqueued and the order in which commands are executed.
+ * Especially when commands are nested inside deeply nested workflows.
+ */
+ async function clientCommand08(inputData, inputMetaData) {
+  let functionName = clientCommand08.name;
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.cBEGIN_Function);
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.cinputDataIs + inputData);
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.cinputMetaDataIs + inputMetaData);
+  let returnData = [true, false];
+  returnData[1] = 'clientStringParsing.clientCommand08';
+  console.log(returnData[1]);
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.cEND_Function);
+  return returnData;
+}
+
+/**
+ * @function clientCommand09
+ * @description Client Command Nine.
+ * @param {string} inputData Not used for this command. 
+ * @param {string} inputMetaData Not used for this command.
+ * @return {array<boolean,string|integer|boolean|object|array,object>} An array with a boolean True or False value to
+ * indicate if the application should exit or not exit, followed by the command output and finally the promise for the command execution.
+ * @author Seth Hollingsead
+ * @date 2022/08/01
+ * @NOTE: This command will be used to test the order in which commands are enqueued and the order in which commands are executed.
+ * Especially when commands are nested inside deeply nested workflows.
+ */
+ async function clientCommand09(inputData, inputMetaData) {
+  let functionName = clientCommand09.name;
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.cBEGIN_Function);
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.cinputDataIs + inputData);
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.cinputMetaDataIs + inputMetaData);
+  let returnData = [true, false];
+  returnData[1] = 'clientStringParsing.clientCommand09';
+  console.log(returnData[1]);
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.cEND_Function);
+  return returnData;
+}
+
+/**
+ * @function clientCommand10
+ * @description Client Command Ten.
+ * @param {string} inputData Not used for this command. 
+ * @param {string} inputMetaData Not used for this command.
+ * @return {array<boolean,string|integer|boolean|object|array,object>} An array with a boolean True or False value to
+ * indicate if the application should exit or not exit, followed by the command output and finally the promise for the command execution.
+ * @author Seth Hollingsead
+ * @date 2022/08/01
+ * @NOTE: This command will be used to test the order in which commands are enqueued and the order in which commands are executed.
+ * Especially when commands are nested inside deeply nested workflows.
+ */
+ async function clientCommand10(inputData, inputMetaData) {
+  let functionName = clientCommand10.name;
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.cBEGIN_Function);
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.cinputDataIs + inputData);
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.cinputMetaDataIs + inputMetaData);
+  let returnData = [true, false];
+  returnData[1] = 'clientStringParsing.clientCommand10';
+  console.log(returnData[1]);
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.cEND_Function);
+  return returnData;
+}
 
 export default {
   customEchoCommand,
-  bossPanic
+  bossPanic,
+  clientCommand01,
+  clientCommand02,
+  clientCommand03,
+  clientCommand04,
+  clientCommand05,
+  clientCommand06,
+  clientCommand07,
+  clientCommand08,
+  clientCommand09,
+  clientCommand10
 };

@@ -34,7 +34,7 @@ import D from '../structures/data.js';
 import hayConst from '@haystacks/constants';
 import path from 'path';
 
-const {bas, cmd, fnc, msg, sys, wrd} = hayConst;
+const {bas, cmd, msg, sys, wrd} = hayConst;
 const baseFileName = path.basename(import.meta.url, path.extname(import.meta.url));
 // commandsBlob.commandsLibrary.
 const namespacePrefix = sys.ccommandsBlob + bas.cDot + baseFileName + bas.cDot;
@@ -50,9 +50,9 @@ const namespacePrefix = sys.ccommandsBlob + bas.cDot + baseFileName + bas.cDot;
  * This is because the functions cannot really be serialized in any way. It actually kind of makes sense,
  * but could be really confusing if you are struggling trying to debug commands or business rules that do not appear to exist.
  */
-function initCommandsLibrary() {
+async function initCommandsLibrary() {
   let functionName = initCommandsLibrary.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   D[wrd.cCommands] = {};
   D[wrd.cCommands] = {
     // Commands
@@ -119,7 +119,7 @@ function initCommandsLibrary() {
     [wrd.chelp]: (inputData, inputMetaData) => systemCommands.help(inputData, inputMetaData),
     [cmd.cworkflowHelp]: (inputData, inputMetaData) => systemCommands.workflowHelp(inputData, inputMetaData),
   };
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
 }
 
 export default {

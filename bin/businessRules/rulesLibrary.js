@@ -64,7 +64,7 @@ import D from '../structures/data.js';
 import hayConst from '@haystacks/constants';
 import path from 'path';
 
-const {bas, biz, fnc, sys} = hayConst;
+const {bas, biz, sys} = hayConst;
 const baseFileName = path.basename(import.meta.url, path.extname(import.meta.url));
 // businessRules.rulesLibrary.
 // eslint-disable-next-line no-unused-vars
@@ -81,7 +81,7 @@ const namespacePrefix = sys.cbusinessRules + bas.cDot + baseFileName + bas.cDot;
  * This is because the functions cannot really be serialized in any way. It actually kind of makes sense,
  * but could be really confusing if you are struggling, trying to debug commands or business rules that do not appear to exist.
  */
- function initRulesLibrary() {
+async function initRulesLibrary() {
   //  let functionName = initRulesLibrary.name;
    // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
    D[sys.cbusinessRules] = {};

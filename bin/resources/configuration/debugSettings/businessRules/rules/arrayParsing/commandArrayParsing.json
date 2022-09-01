@@ -1,5 +1,5 @@
 {
-  "debugFiles|debugSetting.businessRules.rules.arrayParsing.commandArrayParsing": false,
+  "debugFiles|debugSetting.businessRules.rules.arrayParsing.commandArrayParsing": true,
   "debugFiles|debugSetting.businessRules.rules.arrayParsing.commandArrayParsing@ModuleFontStyle": "Bold|Underline",
   "debugFiles|debugSetting.businessRules.rules.arrayParsing.commandArrayParsing@FunctionFontStyle": "Bold|Underline",
   "debugFiles|debugSetting.businessRules.rules.arrayParsing.commandArrayParsing@MessageFontStyle": "Underline",

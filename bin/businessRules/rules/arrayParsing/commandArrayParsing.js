@@ -35,11 +35,11 @@ const namespacePrefix = sys.cbusinessRules + bas.cDot + wrd.crules + bas.cDot + 
  * @date 2022/01/20
  * @NOTE: https://en.wikipedia.org/wiki/Lehmer_code
  */
-function solveLehmerCode(inputData, inputMetaData) {
+async function solveLehmerCode(inputData, inputMetaData) {
   let functionName = solveLehmerCode.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
   let returnData = '';
   if (inputData) {
     // [["Wondr","Wundr","Wndr","Wonder"],["Wman","Wmn","Womn","Woman"],["Amzing","Amzng","Amazing"]]
@@ -52,14 +52,14 @@ function solveLehmerCode(inputData, inputMetaData) {
     // }
     let lengthOfInputData = inputData.length;
     let expandedLehmerCodeArray = [];
-    let lehmerCodeArray = Array.from(Array(lengthOfInputData), () => 0);
-    expandedLehmerCodeArray = ruleParsing.processRulesInternal([recursiveArrayExpansion([0, lehmerCodeArray], inputData), ''], [biz.carrayDeepClone]);
+    let lehmerCodeArray = await Array.from(Array(lengthOfInputData), () => 0);
+    expandedLehmerCodeArray = await ruleParsing.processRulesInternal([await recursiveArrayExpansion([0, lehmerCodeArray], inputData), ''], [biz.carrayDeepClone]);
     // expandedLehmerCodeArray is:
-    loggers.consoleLog(namespacePrefix + functionName, msg.cexpandedLehmerCodeArrayIs + JSON.stringify(expandedLehmerCodeArray));
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cexpandedLehmerCodeArrayIs + JSON.stringify(expandedLehmerCodeArray));
 
     // Now we just iterate over each array in expandedLehmerCodeArray and call: getLehmerCodeValue
     for (let i = 0; i < expandedLehmerCodeArray.length - 1; i++) {
-      let lehmerCodeStringValue = getLehmerCodeValue(expandedLehmerCodeArray[i], inputMetaData);
+      let lehmerCodeStringValue = await getLehmerCodeValue(expandedLehmerCodeArray[i], inputMetaData);
       if (i === 0) {
         returnData = returnData + lehmerCodeStringValue;
       } else {
@@ -67,8 +67,8 @@ function solveLehmerCode(inputData, inputMetaData) {
       }
     } // End-for (let i = 0; i < expandedLehmerCodeArray.length - 1; i++)
   } // End-if (inputData)
-  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -81,25 +81,25 @@ function solveLehmerCode(inputData, inputMetaData) {
  * @author Seth Hollingsead
  * @date 2022/01/20
  */
-function recursiveArrayExpansion(inputData, inputMetaData) {
+async function recursiveArrayExpansion(inputData, inputMetaData) {
   let functionName = recursiveArrayExpansion.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
   let returnData = [];
-  let inputDataIsArray = ruleParsing.processRulesInternal([inputData, ''], [biz.cisArray]);
-  let inputMetaDataIsArray = ruleParsing.processRulesInternal([inputMetaData, ''], [biz.cisArray]);
+  let inputDataIsArray = await ruleParsing.processRulesInternal([inputData, ''], [biz.cisArray]);
+  let inputMetaDataIsArray = await ruleParsing.processRulesInternal([inputMetaData, ''], [biz.cisArray]);
   if (inputData && inputMetaData && inputDataIsArray === true && inputMetaDataIsArray === true && inputData.length > 0 && inputMetaData.length > 0) {
     // Setup & parse the inputData & inputMetaData into a format we can use to actually do recursive array expansion.
     let indexOfExpansion = inputData[0];
     let arrayToBeExpanded = inputData[1];
     let limitOfExpansion = inputMetaData[indexOfExpansion];
     // indexOfExpansion is:
-    loggers.consoleLog(namespacePrefix + functionName, msg.cindexOfExpansionIs + indexOfExpansion);
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cindexOfExpansionIs + indexOfExpansion);
     // arrayToBeExpanded is:
-    loggers.consoleLog(namespacePrefix + functionName, msg.carrayToBeExpandedIs + JSON.stringify(arrayToBeExpanded));
-    // imitOfExpansion is:
-    loggers.consoleLog(namespacePrefix + functionName, msg.climitOfExpansionIs + limitOfExpansion);
+    await loggers.consoleLog(namespacePrefix + functionName, msg.carrayToBeExpandedIs + JSON.stringify(arrayToBeExpanded));
+    // limitOfExpansion is:
+    await loggers.consoleLog(namespacePrefix + functionName, msg.climitOfExpansionIs + limitOfExpansion);
     let masterTempReturnData = []; // When we are all done we will set the returnData back to the list of arays in this array.
 
     // [["Wondr","Wundr","Wndr","Wonder"],["Wman","Wmn","Womn","Woman"],["Amzing","Amzng","Amazing"]]
@@ -113,69 +113,69 @@ function recursiveArrayExpansion(inputData, inputMetaData) {
 
     // First level array expansion.
     for (let i = 0; i <= limitOfExpansion; i++) {
-      let lehmerCodeArray1 = ruleParsing.processRulesInternal([arrayToBeExpanded, ''], [biz.carrayDeepClone]);
+      let lehmerCodeArray1 = await ruleParsing.processRulesInternal([arrayToBeExpanded, ''], [biz.carrayDeepClone]);
       // returnData is:
-      loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+      await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
       lehmerCodeArray1[indexOfExpansion] = i;
-      if (ruleParsing.processRulesInternal([[returnData, lehmerCodeArray1], ruleParsing.getRule(biz.cascertainMatchingElements)], [biz.cdoesArrayContainValue]) === false) {
+      if (await ruleParsing.processRulesInternal([[returnData, lehmerCodeArray1], await ruleParsing.getRule(biz.cascertainMatchingElements)], [biz.cdoesArrayContainValue]) === false) {
         // pushing LehmerCodeArray1 to returnData value:
-        loggers.consoleLog(namespacePrefix + functionName, msg.cpushingLehmerCodeArray1ToReturnDataValue + JSON.stringify(lehmerCodeArray1));
+        await loggers.consoleLog(namespacePrefix + functionName, msg.cpushingLehmerCodeArray1ToReturnDataValue + JSON.stringify(lehmerCodeArray1));
         returnData.push(lehmerCodeArray1);
         // returnData after push is:
-        loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataAfterPushIs + JSON.stringify(returnData));
+        await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataAfterPushIs + JSON.stringify(returnData));
       } // End-if (ruleParsing.processRulesInternal([[returnData, lehmerCodeArray1], ruleParsing.getRule(biz.cascertainMatchingElements)], [biz.cdoesArrayContainValue]) === false)
     } // End-for (let i = 0; i <= limitOfExpansion; i++)
     // returnData after level 1 is:
-    loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataAfterLevel1Is + JSON.stringify(returnData));
+    await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataAfterLevel1Is + JSON.stringify(returnData));
 
     // Second level array expansion, this is where we call recursively.
     // We need to determine if the index of expansion is equal to the length of the arrayToBeExpanded.
     // If it is then we have reached our recursive expansion limit.
     // If NOT then we need to recursively expand some more on each of the arrays that are now in the returnData array.
     // arrayToBeExpanded.length is:
-    loggers.consoleLog(namespacePrefix + functionName, msg.carrayToBeExpandedDotLengthIs + arrayToBeExpanded.length);
+    await loggers.consoleLog(namespacePrefix + functionName, msg.carrayToBeExpandedDotLengthIs + arrayToBeExpanded.length);
     if (indexOfExpansion < arrayToBeExpanded.length - 1) {
       // We need to remove arrays from the returnData and recursively call the recursiveArrayExpansion with each array we remove.
       // The data we get back from each recursive call should be pushed back to masterTempReturnData array.
       // returnData.length is:
-      loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataDotLengthIs + returnData.length);
+      await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataDotLengthIs + returnData.length);
       // Make sure we clone the array we will be removing array elements from,
       // because otherwise we would be looping over the same array we are removing elements from,
       // which would mean that we would never visit all of the elements.
       // https://stackoverflow.com/questions/54081930/why-array-foreach-array-pop-would-not-empty-the-array
-      let returnDataTemp = ruleParsing.processRulesInternal([returnData, ''], [biz.carrayDeepClone]);
-      returnDataTemp.forEach(function() {
+      let returnDataTemp = await ruleParsing.processRulesInternal([returnData, ''], [biz.carrayDeepClone]);
+      returnDataTemp.forEach(async function() {
         // returnData BEFORE POP is:
-        loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataBeforePopIs + JSON.stringify(returnData));
-        let lehmerCodeArray2 = ruleParsing.processRulesInternal([returnData.pop(), ''], [biz.carrayDeepClone]);
+        await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataBeforePopIs + JSON.stringify(returnData));
+        let lehmerCodeArray2 = await ruleParsing.processRulesInternal([returnData.pop(), ''], [biz.carrayDeepClone]);
         // returnData AFTER POP is:
-        loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataAfterPopIs + JSON.stringify(returnData));
+        await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataAfterPopIs + JSON.stringify(returnData));
         // masterTempReturnData BEFORE recursive call is:
-        loggers.consoleLog(namespacePrefix + functionName, msg.cmasterTempReturnDataBeforeRecursiveCallIs + JSON.stringify(masterTempReturnData));
-        let tempReturnData1 = ruleParsing.processRulesInternal([recursiveArrayExpansion([indexOfExpansion + 1, lehmerCodeArray2], inputMetaData), ''], [biz.carrayDeepClone]);
+        await loggers.consoleLog(namespacePrefix + functionName, msg.cmasterTempReturnDataBeforeRecursiveCallIs + JSON.stringify(masterTempReturnData));
+        let tempReturnData1 = await ruleParsing.processRulesInternal([await recursiveArrayExpansion([indexOfExpansion + 1, lehmerCodeArray2], inputMetaData), ''], [biz.carrayDeepClone]);
         // tempReturnData1 is:
-        loggers.consoleLog(namespacePrefix + functionName, msg.ctempReturnData1Is + JSON.stringify(tempReturnData1));
+        await loggers.consoleLog(namespacePrefix + functionName, msg.ctempReturnData1Is + JSON.stringify(tempReturnData1));
         // tempReturnData1.length is:
-        loggers.consoleLog(namespacePrefix + functionName, msg.ctempReturnData1DotLengthIs + tempReturnData1.length);
+        await loggers.consoleLog(namespacePrefix + functionName, msg.ctempReturnData1DotLengthIs + tempReturnData1.length);
         for (let k = 0; k <= tempReturnData1.length - 1; k++) {
           // BEGIN k-th iteration:
-          loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_kthIteration + k);
-          if (ruleParsing.processRulesInternal([[masterTempReturnData, tempReturnData1[k]], ruleParsing.getRule(biz.cascertainMatchingElements)], [biz.cdoesArrayContainValue]) === false) {
+          await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_kthIteration + k);
+          if (await ruleParsing.processRulesInternal([[masterTempReturnData, tempReturnData1[k]], await ruleParsing.getRule(biz.cascertainMatchingElements)], [biz.cdoesArrayContainValue]) === false) {
             // pushing tempReturnData1[k] value:
-            loggers.consoleLog(namespacePrefix + functionName, msg.cpushingTempReturnData1Kvalue + JSON.stringify(tempReturnData1[k]));
-            masterTempReturnData.push(ruleParsing.processRulesInternal([tempReturnData1[k], ''], [biz.carrayDeepClone]));
+            await loggers.consoleLog(namespacePrefix + functionName, msg.cpushingTempReturnData1Kvalue + JSON.stringify(tempReturnData1[k]));
+            masterTempReturnData.push(await ruleParsing.processRulesInternal([tempReturnData1[k], ''], [biz.carrayDeepClone]));
           } // End-if (ruleParsing.processRulesInternal([[masterTempReturnData, tempReturnData1[k]], ruleParsing.getRule(biz.cascertainMatchingElements)], [biz.cdoesArrayContainValue]) === false)
           // END k-th iteration:
-          loggers.consoleLog(namespacePrefix + functionName, msg.cEND_kthIteration + k);
+          await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_kthIteration + k);
         } // End-for (let k = 0; k <= tempReturnData1.length - 1; k++)
         // masterTempReturnData AFTER recursive call is:
-        loggers.consoleLog(namespacePrefix + functionName, msg.cmasterTempReturnDataAfterRecursiveCallIs + JSON.stringify(masterTempReturnData));
+        await loggers.consoleLog(namespacePrefix + functionName, msg.cmasterTempReturnDataAfterRecursiveCallIs + JSON.stringify(masterTempReturnData));
       }); // End-for-each (returnDataTemp.forEach(function())
-      returnData = ruleParsing.processRulesInternal([masterTempReturnData, ''], [biz.carrayDeepClone]);
+      returnData = await ruleParsing.processRulesInternal([masterTempReturnData, ''], [biz.carrayDeepClone]);
     } // End-if (indexOfExpansion < arrayToBeExpanded.length - 1)
   } // End-if (inputData && inputMetaData && inputDataIsArray === true && inputMetaDataIsArray === true && inputData.length > 0 && inputMetaData.length > 0)
-  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -188,32 +188,32 @@ function recursiveArrayExpansion(inputData, inputMetaData) {
  * @author Seth Hollingsead
  * @date 2022/01/20
  */
-function getLehmerCodeValue(inputData, inputMetaData) {
+async function getLehmerCodeValue(inputData, inputMetaData) {
   let functionName = getLehmerCodeValue.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
   let returnData = '';
   if (inputData) {
     let lengthOfInputData = inputData.length;
     for (let i = 0; i < lengthOfInputData; i++) {
       // BEGIN i-th iteration:
-      loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_ithIteration + i);
+      await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_ithIteration + i);
       let lookupIndex = inputData[i];
       // lookupIndex is:
-      loggers.consoleLog(namespacePrefix + functionName, msg.clookupIndexIs + lookupIndex);
+      await loggers.consoleLog(namespacePrefix + functionName, msg.clookupIndexIs + lookupIndex);
       let lookupValue = inputMetaData[i][lookupIndex];
       // lookupValue is:
-      loggers.consoleLog(namespacePrefix + functionName, msg.clookupValueIs + lookupValue);
+      await loggers.consoleLog(namespacePrefix + functionName, msg.clookupValueIs + lookupValue);
       returnData = returnData + lookupValue;
       // returnData is:
-      loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+      await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
       // END i-th iteration:
-      loggers.consoleLog(namespacePrefix + functionName, msg.cEND_ithIteration + i);
+      await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_ithIteration + i);
     } // End-for (let i = 0; i < lengthOfInputData; i++)
   } // End-if (inputData)
-  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -227,11 +227,11 @@ function getLehmerCodeValue(inputData, inputMetaData) {
  * @author Seth Hollingsead
  * @date 2022/01/21
  */
-function generateCommandAliases(inputData, inputMetaData) {
+async function generateCommandAliases(inputData, inputMetaData) {
   let functionName = generateCommandAliases.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = false;
   if (inputData) {
     // {"wonder":"wondr,wundr,wndr","Woman":"wman,wmn,womn","Amazing":"amzing,amzng"}
@@ -241,12 +241,12 @@ function generateCommandAliases(inputData, inputMetaData) {
     // "Woman": "wman,wmn,womn",
     // "Amazing": "amzing,amzng"
     // }
-    let primaryCommandDelimiter = configurator.getConfigurationSetting(wrd.csystem, cfg.cprimaryCommandDelimiter);
-    loggers.consoleLog(namespacePrefix + functionName, msg.cprimaryCommandDelimiterIs + primaryCommandDelimiter);
-    let secondaryCommandDelimiter = configurator.getConfigurationSetting(wrd.csystem, cfg.csecondaryCommandDelimiter);
-    loggers.consoleLog(namespacePrefix + functionName, msg.csecondaryCommandDelimiterIs + secondaryCommandDelimiter);
-    let tertiaryCommandDelimiter = configurator.getConfigurationSetting(wrd.csystem, cfg.ctertiaryCommandDelimiter);
-    loggers.consoleLog(namespacePrefix + functionName, msg.ctertiaryCommandDelimiterIs + tertiaryCommandDelimiter);
+    let primaryCommandDelimiter = await configurator.getConfigurationSetting(wrd.csystem, cfg.cprimaryCommandDelimiter);
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cprimaryCommandDelimiterIs + primaryCommandDelimiter);
+    let secondaryCommandDelimiter = await configurator.getConfigurationSetting(wrd.csystem, cfg.csecondaryCommandDelimiter);
+    await loggers.consoleLog(namespacePrefix + functionName, msg.csecondaryCommandDelimiterIs + secondaryCommandDelimiter);
+    let tertiaryCommandDelimiter = await configurator.getConfigurationSetting(wrd.csystem, cfg.ctertiaryCommandDelimiter);
+    await loggers.consoleLog(namespacePrefix + functionName, msg.ctertiaryCommandDelimiterIs + tertiaryCommandDelimiter);
     let commandDelimiter = '';
     let commandWordsKeys1 = Object.keys(inputData);
     let commandWordAliasesArray = [];
@@ -265,25 +265,25 @@ function generateCommandAliases(inputData, inputMetaData) {
       }
       commandWordAliases = commandWordAliases + commandDelimiter + key1;
       // commandWordAliases BEFORE CHANGE is:
-      loggers.consoleLog(namespacePrefix + functionName, msg.ccommandWordAliasesBeforeChangeIs + commandWordAliases);
+      await loggers.consoleLog(namespacePrefix + functionName, msg.ccommandWordAliasesBeforeChangeIs + commandWordAliases);
       commandWordAliasesArray = commandWordAliases.split(commandDelimiter);
       masterArrayIndex[i] = commandWordAliasesArray.length - 1;
       for (let j = 0; j < commandWordAliasesArray.length; j++) {
         let commandAliasWord = commandWordAliasesArray[j];
-        if (ruleParsing.processRulesInternal([commandAliasWord, ''], [biz.cisFirstCharacterLowerCase]) === true) {
+        if (await ruleParsing.processRulesInternal([commandAliasWord, ''], [biz.cisFirstCharacterLowerCase]) === true) {
           let firstLetterOfCommandAliasWord = commandAliasWord.charAt(0).toUpperCase();
-          commandAliasWord = ruleParsing.processRulesInternal([[commandAliasWord, 0], firstLetterOfCommandAliasWord], [biz.creplaceCharacterAtIndexOfString]);
+          commandAliasWord = await ruleParsing.processRulesInternal([[commandAliasWord, 0], firstLetterOfCommandAliasWord], [biz.creplaceCharacterAtIndexOfString]);
           commandWordAliasesArray[j] = commandAliasWord; // Saved the changes back to array.
         } // End-if (ruleParsing.processRulesInternal([commandAliasWord, ''], [biz.cisFirstCharacterLowerCase]) === true)
       } // End-for (let j = 0; j < commandWordAliasesArray.length; j++)
       // commandWordAliasesArray AFTER CHANGE is:
-      loggers.consoleLog(namespacePrefix + functionName, msg.ccommandWordAliasesAfterChangeIs + JSON.stringify(commandWordAliasesArray));
+      await loggers.consoleLog(namespacePrefix + functionName, msg.ccommandWordAliasesAfterChangeIs + JSON.stringify(commandWordAliasesArray));
       masterCommandWordAliasesArray[i] = commandWordAliasesArray; // Try to build an array of arrays (2D)
     } // End-for (let i = 0; i < commandWordsKeys1.length; i++)
     // masterCommandWordAliasesArray is:
-    loggers.consoleLog(namespacePrefix + functionName, msg.cmasterCommandWordAlisesArrayIs + JSON.stringify(masterCommandWordAliasesArray));
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cmasterCommandWordAlisesArrayIs + JSON.stringify(masterCommandWordAliasesArray));
     // masterArrayIndex is:
-    loggers.consoleLog(namespacePrefix + functionName, msg.cmasterArrayIndexIs + JSON.stringify(masterArrayIndex));
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cmasterArrayIndexIs + JSON.stringify(masterArrayIndex));
 
     // NOTES: Console output is:
     // masterCommandWordAliasesArray is: [["Wondr","Wundr","Wndr","Wonder"],["Wman","Wmn","Womn","Woman"],["Amzing","Amzng","Amazing"]]
@@ -302,12 +302,12 @@ function generateCommandAliases(inputData, inputMetaData) {
     //
     // NOTE: The algorthim described above is called: Lehmer code
     // https://en.wikipedia.org/wiki/Lehmer_code
-    returnData = solveLehmerCode(masterArrayIndex, masterCommandWordAliasesArray);
+    returnData = await solveLehmerCode(masterArrayIndex, masterCommandWordAliasesArray);
     // Command Aliases are:
-    console.log(msg.cCommandAliasesAre + returnData);
+    await console.log(msg.cCommandAliasesAre + returnData);
   } // End-if (inputData)
-  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -320,33 +320,33 @@ function generateCommandAliases(inputData, inputMetaData) {
  * @author Seth Hollingsead
  * @date 2022/01/21
  */
-function aggregateCommandArguments(inputData, inputMetaData) {
+async function aggregateCommandArguments(inputData, inputMetaData) {
   let functionName = aggregateCommandArguments.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = '';
   if (inputData) {
     if (inputData.length > 3) {
       for (let i = 2; i < inputData.length; i++) {
         // BEGIN i-th iteration:
-        loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_ithIteration + i);
+        await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_ithIteration + i);
         if (i === 2) {
-          returnData = ruleParsing.processRulesInternal([inputData[i], '' ], [biz.ccleanCommandInput]);
+          returnData = await ruleParsing.processRulesInternal([inputData[i], '' ], [biz.ccleanCommandInput]);
         } else {
-          returnData = returnData + bas.cSpace + ruleParsing.processRulesInternal([inputData[i], ''], [biz.ccleanCommandInput]);
+          returnData = returnData + bas.cSpace + await ruleParsing.processRulesInternal([inputData[i], ''], [biz.ccleanCommandInput]);
         }
         // returnData is:
-        loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+        await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
         // END i-th iteration:
-        loggers.consoleLog(namespacePrefix + functionName, msg.cEND_ithIteration + i);
+        await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_ithIteration + i);
       } // End-for (let i = 2; i < inputData.length; i++)
     } else { // else-clause if (inputData.length > 3)
-      returnData = ruleParsing.processRulesInternal([inputData[2], ''], [biz.ccleanCommandInput]);
+      returnData = await ruleParsing.processRulesInternal([inputData[2], ''], [biz.ccleanCommandInput]);
     }
   } // End-if (inputData)
-  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 

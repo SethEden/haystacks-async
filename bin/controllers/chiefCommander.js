@@ -37,11 +37,11 @@ const namespacePrefix = wrd.ccontrollers + bas.cDot + baseFileName + bas.cDot;
  * @author Seth Hollingsead
  * @date 2022/02/01
  */
-function bootStrapCommands() {
+async function bootStrapCommands() {
   let functionName = bootStrapCommands.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  commandBroker.bootStrapCommands();
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await commandBroker.bootStrapCommands();
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
 }
 
 /**
@@ -52,11 +52,11 @@ function bootStrapCommands() {
  * @author Seth Hollingsead
  * @date 2022/02/17
  */
-function addClientCommands(clientCommands) {
+async function addClientCommands(clientCommands) {
   let functionName = addClientCommands.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  commandBroker.addClientCommands(clientCommands);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await commandBroker.addClientCommands(clientCommands);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
 }
 
 /**
@@ -74,17 +74,17 @@ function addClientCommands(clientCommands) {
  * @author Seth Hollingsead
  * @date 2022/02/02
  */
-function loadCommandAliasesFromPath(commandAliasesFilePathConfigurationName, contextName) {
+async function loadCommandAliasesFromPath(commandAliasesFilePathConfigurationName, contextName) {
   let functionName = loadCommandAliasesFromPath.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // commandAliasesFilePathConfigurationName is:
-  loggers.consoleLog(namespacePrefix + functionName, msg.ccommandAliasesFilePathConfigurationNameIs + commandAliasesFilePathConfigurationName);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.ccommandAliasesFilePathConfigurationNameIs + commandAliasesFilePathConfigurationName);
   // contextName is:
-  loggers.consoleLog(namespacePrefix + functionName, msg.ccontextNameIs + contextName);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.ccontextNameIs + contextName);
   let allCommandAliasesData = {};
-  allCommandAliasesData = chiefData.setupAllXmlData(commandAliasesFilePathConfigurationName, sys.cCommandsAliases);
+  allCommandAliasesData = await chiefData.setupAllXmlData(commandAliasesFilePathConfigurationName, sys.cCommandsAliases);
   // allCommandAliasesData is:
-  loggers.consoleLog(namespacePrefix + functionName, msg.callCommandAliasesDataIs + JSON.stringify(allCommandAliasesData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.callCommandAliasesDataIs + JSON.stringify(allCommandAliasesData));
   if (D[sys.cCommandsAliases] === undefined) { // Make sure we only do this if it's undefined, otherwise we might wipe out previously loaded data.
     D[sys.cCommandsAliases] = {};
     D[sys.cCommandsAliases][sys.cFramework] = allCommandAliasesData;
@@ -97,7 +97,7 @@ function loadCommandAliasesFromPath(commandAliasesFilePathConfigurationName, con
     console.log('ERROR: ---- PLUGIN Command Aliases data not yet supported!!!!!!!!!!!!');
   }
   // console.log('All loaded command aliases data is: ' + JSON.stringify(D[sys.cCommandsAliases]));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
 }
 
 /**
@@ -109,16 +109,16 @@ function loadCommandAliasesFromPath(commandAliasesFilePathConfigurationName, con
  * @author Seth Hollingsead
  * @date 2022/02/02
  */
-function enqueueCommand(command) {
+async function enqueueCommand(command) {
   let functionName = enqueueCommand.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // command is:
-  loggers.consoleLog(namespacePrefix + functionName, msg.ccommandIs + command);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.ccommandIs + command);
   if (D[sys.cCommandQueue] === undefined) {
-    queue.initQueue(sys.cCommandQueue);
+    await queue.initQueue(sys.cCommandQueue);
   }
-  queue.enqueue(sys.cCommandQueue, command);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await queue.enqueue(sys.cCommandQueue, command);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
 }
 
 /**
@@ -128,13 +128,13 @@ function enqueueCommand(command) {
  * @author Seth Hollingsead
  * @date 2022/02/02
  */
-function isCommandQueueEmpty() {
+async function isCommandQueueEmpty() {
   let functionName = isCommandQueueEmpty.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   let returnData = false;
-  returnData = queue.isEmpty(sys.cCommandQueue);
-  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  returnData = await queue.isEmpty(sys.cCommandQueue);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -146,17 +146,18 @@ function isCommandQueueEmpty() {
  * @author Seth Hollingsead
  * @date 2022/02/02
  */
-function processCommandQueue() {
+async function processCommandQueue() {
   let functionName = processCommandQueue.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   let commandToExecute;
   let returnData;
-  commandToExecute = queue.dequeue(sys.cCommandQueue);
+  await queue.queuePrint(sys.cCommandQueue);
+  commandToExecute = await queue.dequeue(sys.cCommandQueue);
   // commandToExecute is:
-  loggers.consoleLog(namespacePrefix + functionName, msg.ccommandToExecuteIs + commandToExecute);
-  returnData = commandBroker.executeCommand(commandToExecute);
-  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.ccommandToExecuteIs + commandToExecute);
+  returnData = await commandBroker.executeCommand(commandToExecute);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 

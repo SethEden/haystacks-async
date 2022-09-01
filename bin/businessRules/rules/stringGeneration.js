@@ -36,20 +36,20 @@ const namespacePrefix = sys.cbusinessRules + bas.cDot + wrd.crules + bas.cDot + 
  * @author Seth Hollingsead
  * @date 2022/01/26
  */
-function generateRandomMixedCaseTextByLength(inputData, inputMetaData) {
+async function generateRandomMixedCaseTextByLength(inputData, inputMetaData) {
   let functionName = generateRandomMixedCaseTextByLength.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
   let returnData = '';
   if (inputData) {
     let numberOfCharactersToGenerate = parseInt(inputData);
     for (let counter = 1; counter <= numberOfCharactersToGenerate; counter++) {
-      returnData = returnData.concat(ruleParsing.processRulesInternal([inputData, inputMetaData], [biz.crandomlyGenerateMixedCaseAlphabeticCharacter]));
+      returnData = returnData.concat(await ruleParsing.processRulesInternal([inputData, inputMetaData], [biz.crandomlyGenerateMixedCaseAlphabeticCharacter]));
     } // End-for (let counter = 1; counter <= numberOfCharactersToGenerate; counter++)
   } // End-if (inputData)
-  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -65,20 +65,20 @@ function generateRandomMixedCaseTextByLength(inputData, inputMetaData) {
  * @author Seth Hollingsead
  * @date 2022/01/26
  */
-function generateRandomUpperCaseTextByLength(inputData, inputMetaData) {
+async function generateRandomUpperCaseTextByLength(inputData, inputMetaData) {
   let functionName = generateRandomUpperCaseTextByLength.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
   let returnData = '';
   if (inputData) {
     let numberOfCharactersToGenerate = parseInt(inputData);
     for (let counter = 1; counter <= numberOfCharactersToGenerate; counter++) {
-      returnData = returnData.concat(ruleParsing.processRulesInternal([inputData, inputMetaData], [biz.crandomlyGenerateUpperCaseLetter]));
+      returnData = returnData.concat(await ruleParsing.processRulesInternal([inputData, inputMetaData], [biz.crandomlyGenerateUpperCaseLetter]));
     } // End-for (let counter = 1; counter <= numberOfCharactersToGenerate; counter++)
   } // End-if (inputData)
-  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -94,20 +94,20 @@ function generateRandomUpperCaseTextByLength(inputData, inputMetaData) {
  * @author Seth Hollingsead
  * @date 2022/01/26
  */
-function generateRandomLowerCaseTextByLength(inputData, inputMetaData) {
+async function generateRandomLowerCaseTextByLength(inputData, inputMetaData) {
   let functionName = generateRandomLowerCaseTextByLength.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
   let returnData = '';
   if (inputData) {
     let numberOfCharactersToGenerate = parseInt(inputData);
     for (let counter = 1; counter <= numberOfCharactersToGenerate; counter++) {
-      returnData = returnData.concat(ruleParsing.processRulesInternal([inputData, inputMetaData], [biz.crandomlyGenerateLowerCaseLetter]));
+      returnData = returnData.concat(await ruleParsing.processRulesInternal([inputData, inputMetaData], [biz.crandomlyGenerateLowerCaseLetter]));
     } // End-for (let counter = 1; counter <= numberOfCharactersToGenerate; counter++)
   } // End-if (inputData)
-  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -123,20 +123,20 @@ function generateRandomLowerCaseTextByLength(inputData, inputMetaData) {
  * @author Seth Hollingsead
  * @date 2022/01/26
  */
-function generateRandomMixedCaseTextWithSpecialCharactersByLength(inputData, inputMetaData) {
+async function generateRandomMixedCaseTextWithSpecialCharactersByLength(inputData, inputMetaData) {
   let functionName = generateRandomMixedCaseTextWithSpecialCharactersByLength.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
   let returnData = '';
   if (inputData) {
     let numberOfCharactersToGenerate = parseInt(inputData);
     for (let counter = 1; counter <= numberOfCharactersToGenerate; counter++) {
-      returnData = returnData.concat(ruleParsing.processRulesInternal([inputMetaData, ''], [biz.crandomlyGenerateMixedCaseLetterOrSpecialCharacter]));
+      returnData = returnData.concat(await ruleParsing.processRulesInternal([inputMetaData, ''], [biz.crandomlyGenerateMixedCaseLetterOrSpecialCharacter]));
     } // End-for (let counter = 1; counter <= numberOfCharactersToGenerate; counter++)
   } // End-if (inputData)
-  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -150,20 +150,20 @@ function generateRandomMixedCaseTextWithSpecialCharactersByLength(inputData, inp
  * @author Seth Hollingsead
  * @date 2022/01/26
  */
-function generateRandomUpperCaseTextWithSpecialCharactersByLength(inputData, inputMetaData) {
+async function generateRandomUpperCaseTextWithSpecialCharactersByLength(inputData, inputMetaData) {
   let functionName = generateRandomUpperCaseTextWithSpecialCharactersByLength.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
   let returnData = '';
   if (inputData) {
     let numberOfCharactersToGenerate = parseInt(inputData);
     for (let counter = 1; counter <= numberOfCharactersToGenerate; counter++) {
-      returnData = returnData.concat(ruleParsing.processRulesInternal([inputMetaData, ''], [biz.crandomlyGenerateUpperCaseLetterOrSpecialCharacter]));
+      returnData = returnData.concat(await ruleParsing.processRulesInternal([inputMetaData, ''], [biz.crandomlyGenerateUpperCaseLetterOrSpecialCharacter]));
     } // End-for (let counter = 1; counter <= numberOfCharactersToGenerate; counter++)
   } // End-if (inputData)
-  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -180,20 +180,20 @@ function generateRandomUpperCaseTextWithSpecialCharactersByLength(inputData, inp
  * @author Seth Hollingsead
  * @date 2022/01/26
  */
-function generateRandomLowerCaseTextWithSpecialCharactersByLength(inputData, inputMetaData) {
+async function generateRandomLowerCaseTextWithSpecialCharactersByLength(inputData, inputMetaData) {
   let functionName = generateRandomLowerCaseTextWithSpecialCharactersByLength.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
   let returnData = '';
   if (inputData) {
     let numberOfCharactersToGenerate = parseInt(inputData);
     for (let counter = 1; counter <= numberOfCharactersToGenerate; counter++) {
-      returnData = returnData.concat(ruleParsing.processRulesInternal([inputMetaData, ''], [biz.crandomlyGenerateLowerCaseLetterOrSpecialCharacter]));
+      returnData = returnData.concat(await ruleParsing.processRulesInternal([inputMetaData, ''], [biz.crandomlyGenerateLowerCaseLetterOrSpecialCharacter]));
     } // End-for (let counter = 1; counter <= numberOfCharactersToGenerate; counter++)
   } // End-if (inputData)
-  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -209,20 +209,20 @@ function generateRandomLowerCaseTextWithSpecialCharactersByLength(inputData, inp
  * @author Seth Hollingsead
  * @date 2022/01/26
  */
-function generateRandomMixedCaseAlphaNumericCodeByLength(inputData, inputMetaData) {
+async function generateRandomMixedCaseAlphaNumericCodeByLength(inputData, inputMetaData) {
   let functionName = generateRandomMixedCaseAlphaNumericCodeByLength.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
   let returnData = '';
   if (inputData) {
     let numberOfCharactersToGenerate = parseInt(inputData);
     for (let counter = 1; counter <= numberOfCharactersToGenerate; counter++) {
-      returnData = returnData.concat(ruleParsing.processRulesInternal(['', ''], [biz.crandomlyGenerateMixedCaseAlphaNumericCharacter]));
+      returnData = returnData.concat(await ruleParsing.processRulesInternal(['', ''], [biz.crandomlyGenerateMixedCaseAlphaNumericCharacter]));
     } // End-for (let counter = 1; counter <= numberOfCharactersToGenerate; counter++)
   } // End-if (inputData)
-  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -238,20 +238,20 @@ function generateRandomMixedCaseAlphaNumericCodeByLength(inputData, inputMetaDat
  * @author Seth Hollingsead
  * @date 2022/01/26
  */
-function generateRandomUpperCaseAlphaNumericCodeByLength(inputData, inputMetaData) {
+async function generateRandomUpperCaseAlphaNumericCodeByLength(inputData, inputMetaData) {
   let functionName = generateRandomUpperCaseAlphaNumericCodeByLength.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
   let returnData = '';
   if (inputData) {
     let numberOfCharactersToGenerate = parseInt(inputData);
     for (let counter = 1; counter <= numberOfCharactersToGenerate; counter++) {
-      returnData = returnData.concat(ruleParsing.processRulesInternal(['', ''], [biz.crandomlyGenerateUpperCaseAlphaNumericCharacter]));
+      returnData = returnData.concat(await ruleParsing.processRulesInternal(['', ''], [biz.crandomlyGenerateUpperCaseAlphaNumericCharacter]));
     } // End-for (let counter = 1; counter <= numberOfCharactersToGenerate; counter++)
   } // End-if (inputData)
-  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -267,20 +267,20 @@ function generateRandomUpperCaseAlphaNumericCodeByLength(inputData, inputMetaDat
  * @author Seth Hollingsead
  * @date 2022/01/26
  */
-function generateRandomLowerCaseAlphaNumericCodeByLength(inputData, inputMetaData) {
+async function generateRandomLowerCaseAlphaNumericCodeByLength(inputData, inputMetaData) {
   let functionName = generateRandomLowerCaseAlphaNumericCodeByLength.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
   let returnData = '';
   if (inputData) {
     let numberOfCharactersToGenerate = parseInt(inputData);
     for (let counter = 1; counter <= numberOfCharactersToGenerate; counter++) {
-      returnData = returnData.concat(ruleParsing.processRulesInternal(['', ''], [biz.crandomlyGenerateLowerCaseAlphaNumericCharacter]));
+      returnData = returnData.concat(await ruleParsing.processRulesInternal(['', ''], [biz.crandomlyGenerateLowerCaseAlphaNumericCharacter]));
     } // End-for (let counter = 1; counter <= numberOfCharactersToGenerate; counter++)
   } // End-if (inputData)
-  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -294,20 +294,20 @@ function generateRandomLowerCaseAlphaNumericCodeByLength(inputData, inputMetaDat
  * @author Seth Hollingsead
  * @date 2022/01/26
  */
-function generateRandomNumericCodeByLength(inputData, inputMetaData) {
+async function generateRandomNumericCodeByLength(inputData, inputMetaData) {
   let functionName = generateRandomNumericCodeByLength.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
   let returnData = '';
   if (inputData) {
     let numberOfCharactersToGenerate = parseInt(inputData);
     for (let counter = 1; counter <= numberOfCharactersToGenerate; counter++) {
-      returnData = returnData.concat(ruleParsing.processRulesInternal(['', ''], [biz.crandomlyGenerateNumericCharacter]));
+      returnData = returnData.concat(await ruleParsing.processRulesInternal(['', ''], [biz.crandomlyGenerateNumericCharacter]));
     } // End-for (let counter = 1; counter <= numberOfCharactersToGenerate; counter++)
   } // End-if (inputData)
-  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -324,20 +324,20 @@ function generateRandomNumericCodeByLength(inputData, inputMetaData) {
  * @author Seth Hollingsead
  * @date 2022/01/26
  */
-function generateRandomMixedCaseAlphaNumericCodeWithSpecialCharactersByLength(inputData, inputMetaData) {
+async function generateRandomMixedCaseAlphaNumericCodeWithSpecialCharactersByLength(inputData, inputMetaData) {
   let functionName = generateRandomMixedCaseAlphaNumericCodeWithSpecialCharactersByLength.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
   let returnData = '';
   if (inputData) {
     let numberOfCharactersToGenerate = parseInt(inputData);
     for (let counter = 1; counter <= numberOfCharactersToGenerate; counter++) {
-      returnData = returnData.concat(ruleParsing.processRulesInternal([inputMetaData, ''], [biz.crandomlyGenerateEitherMixedCaseLetterOrNumberOrSpecialCharacter]));
+      returnData = returnData.concat(await ruleParsing.processRulesInternal([inputMetaData, ''], [biz.crandomlyGenerateEitherMixedCaseLetterOrNumberOrSpecialCharacter]));
     } // End-for (let counter = 1; counter <= numberOfCharactersToGenerate; counter++)
   } // End-if (inputData)
-  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -354,20 +354,20 @@ function generateRandomMixedCaseAlphaNumericCodeWithSpecialCharactersByLength(in
  * @author Seth Hollingsead
  * @date 2022/01/26
  */
-function generateRandomUpperCaseAlphaNumericCodeWithSpecialCharactersByLength(inputData, inputMetaData) {
+async function generateRandomUpperCaseAlphaNumericCodeWithSpecialCharactersByLength(inputData, inputMetaData) {
   let functionName = generateRandomUpperCaseAlphaNumericCodeWithSpecialCharactersByLength.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
   let returnData = '';
   if (inputData) {
     let numberOfCharactersToGenerate = parseInt(inputData);
     for (let counter = 1; counter <= numberOfCharactersToGenerate; counter++) {
-      returnData = returnData.concat(ruleParsing.processRulesInternal([inputMetaData, ''], [biz.crandomlyGenerateEitherUpperCaseLetterOrNumberOrSpecialCharacter]));
+      returnData = returnData.concat(await ruleParsing.processRulesInternal([inputMetaData, ''], [biz.crandomlyGenerateEitherUpperCaseLetterOrNumberOrSpecialCharacter]));
     } // End-for (let counter = 1; counter <= numberOfCharactersToGenerate; counter++)
   } // End-if (inputData)
-  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -384,20 +384,20 @@ function generateRandomUpperCaseAlphaNumericCodeWithSpecialCharactersByLength(in
  * @author Seth Hollingsead
  * @date 2022/01/26
  */
-function generateRandomLowerCaseAlphaNumericCodeWithSpecialCharactersByLength(inputData, inputMetaData) {
+async function generateRandomLowerCaseAlphaNumericCodeWithSpecialCharactersByLength(inputData, inputMetaData) {
   let functionName = generateRandomLowerCaseAlphaNumericCodeWithSpecialCharactersByLength.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
   let returnData = '';
   if (inputData) {
     let numberOfCharactersToGenerate = parseInt(inputData);
     for (let counter = 1; counter <= numberOfCharactersToGenerate; counter++) {
-      returnData = returnData.concat(ruleParsing.processRulesInternal([inputMetaData, ''], [biz.crandomlyGenerateEitherLowerCaseLetterOrNumberOrSpecialCharacter]));
+      returnData = returnData.concat(await ruleParsing.processRulesInternal([inputMetaData, ''], [biz.crandomlyGenerateEitherLowerCaseLetterOrNumberOrSpecialCharacter]));
     } // End-for (let counter = 1; counter <= numberOfCharactersToGenerate; counter++)
   } // End-if (inputData)
-  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -412,20 +412,20 @@ function generateRandomLowerCaseAlphaNumericCodeWithSpecialCharactersByLength(in
  * @author Seth Hollingsead
  * @date 2022/01/26
  */
-function generateRandomSpecialCharacterCodeByLength(inputData, inputMetaData) {
+async function generateRandomSpecialCharacterCodeByLength(inputData, inputMetaData) {
   let functionName = generateRandomSpecialCharacterCodeByLength.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
   let returnData = '';
   if (inputData) {
     let numberOfCharactersToGenerate = parseInt(inputData);
     for (let counter = 1; counter <= numberOfCharactersToGenerate; counter++) {
-      returnData = returnData.concat(ruleParsing.processRulesInternal([inputMetaData, ''], [biz.crandomlyGenerateSpecialCharacter]));
+      returnData = returnData.concat(await ruleParsing.processRulesInternal([inputMetaData, ''], [biz.crandomlyGenerateSpecialCharacter]));
     } // End-for (let counter = 1; counter <= numberOfCharactersToGenerate; counter++)
   } // End-if (inputData)
-  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -448,18 +448,18 @@ function generateRandomSpecialCharacterCodeByLength(inputData, inputMetaData) {
  * @author Seth Hollingsead
  * @date 2022/01/26
  */
-function generateValidEmail(inputData, inputMetaData) {
+async function generateValidEmail(inputData, inputMetaData) {
   let functionName = generateValidEmail.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
   let returnData = '';
   let allowableSpecialCharacters;
   let generateSpecialCharacters;
   let specifiedSuffixAndDomain;
   if (!!inputMetaData && inputMetaData !== 'undefined' && inputMetaData !== '') {
     if (inputMetaData.length === 3) {
-      generateSpecialCharacters = ruleParsing.processRulesInternal([inputMetaData[0], ''], [biz.cstringToBoolean]);
+      generateSpecialCharacters = await ruleParsing.processRulesInternal([inputMetaData[0], ''], [biz.cstringToBoolean]);
       allowableSpecialCharacters = inputMetaData[1];
       specifiedSuffixAndDomain = inputMetaData[2];
       // NOTE: The above function stringParsingUtilities.stringToBoolean will default to False if the input is an empty or undefined string.
@@ -467,25 +467,25 @@ function generateValidEmail(inputData, inputMetaData) {
       if (generateSpecialCharacters === false && allowableSpecialCharacters !== '') {
         generateSpecialCharacters = true;
       }
-      returnData = generateValidEmailWithSpecificSuffixAndDomainName(inputData, generateSpecialCharacters,
+      returnData = await generateValidEmailWithSpecificSuffixAndDomainName(inputData, generateSpecialCharacters,
         allowableSpecialCharacters, specifiedSuffixAndDomain);
     } else if (inputMetaData.length <= 2) {
-      generateSpecialCharacters = ruleParsing.processRulesInternal([inputMetaData[0], ''], [biz.cstringToBoolean]);
+      generateSpecialCharacters = await ruleParsing.processRulesInternal([inputMetaData[0], ''], [biz.cstringToBoolean]);
       allowableSpecialCharacters = inputMetaData[1];
       // NOTE: The above function stringParsingUtilities.stringToBoolean will default to False if the input is an empty or undefined string.
       // We want to flip it back to True but only if some special characters are passed in.
       if (generateSpecialCharacters === false && allowableSpecialCharacters !== '') {
         generateSpecialCharacters = true;
       }
-      returnData = generateRandomValidEmail(inputData, generateSpecialCharacters, allowableSpecialCharacters);
+      returnData = await generateRandomValidEmail(inputData, generateSpecialCharacters, allowableSpecialCharacters);
     } else {
-      returnData = generateRandomValidEmail(inputData, gen.cFalse, wrd.cEmpty);
+      returnData = await generateRandomValidEmail(inputData, gen.cFalse, wrd.cEmpty);
     }
   } else { // Else-clause if (!!inputMetaData && inputMetaData !== 'undefined' && inputMetaData !== '')
-    returnData = generateRandomValidEmail(inputData, gen.cFalse, wrd.cEmpty);
+    returnData = await generateRandomValidEmail(inputData, gen.cFalse, wrd.cEmpty);
   } // End-else-clause if (!!inputMetaData && inputMetaData !== 'undefined' && inputMetaData !== '')
-  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -508,18 +508,18 @@ function generateValidEmail(inputData, inputMetaData) {
  * @author Seth Hollingsead
  * @date 2022/01/26
  */
-function generateInvalidEmail(inputData, inputMetaData) {
+async function generateInvalidEmail(inputData, inputMetaData) {
   let functionName = generateInvalidEmail.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
   let returnData = '';
   let allowableSpecialCharacters;
   let generateSpecialCharacters;
   let specifiedSuffixAndDomain;
   if (!!inputMetaData && inputMetaData !== 'undefined' && inputMetaData !== '') {
     if (inputMetaData.length === 3) {
-      generateSpecialCharacters = ruleParsing.processRulesInternal([inputMetaData[0], ''], [biz.cstringToBoolean]);
+      generateSpecialCharacters = await ruleParsing.processRulesInternal([inputMetaData[0], ''], [biz.cstringToBoolean]);
       allowableSpecialCharacters = inputMetaData[1];
       specifiedSuffixAndDomain = inputMetaData[2];
       // @NOTE The above function stringParsingUtilities.stringToBoolean will default to False if the input is an empty or undefined string.
@@ -527,25 +527,25 @@ function generateInvalidEmail(inputData, inputMetaData) {
       if (generateSpecialCharacters === false && allowableSpecialCharacters !== '') {
         generateSpecialCharacters = true;
       }
-      returnData = generateInvalidEmailWithSpecificSuffixAndDomainName(inputData, generateSpecialCharacters,
+      returnData = await generateInvalidEmailWithSpecificSuffixAndDomainName(inputData, generateSpecialCharacters,
         allowableSpecialCharacters, specifiedSuffixAndDomain);
     } else if (inputMetaData.length <= 2) {
-      generateSpecialCharacters = ruleParsing.processRulesInternal([inputMetaData[0], ''], [biz.cstringToBoolean]);
+      generateSpecialCharacters = await ruleParsing.processRulesInternal([inputMetaData[0], ''], [biz.cstringToBoolean]);
       allowableSpecialCharacters = inputMetaData[1];
       // @NOTE The above function stringParsingUtilities.stringToBoolean will default to False if the input is an empty or undefined string.
       // We want to flip it back to True but ony if some special characters are passed in.
       if (generateSpecialCharacters === false && allowableSpecialCharacters !== '') {
         generateSpecialCharacters = true;
       }
-      returnData = generateRandomInvalidEmail(inputData, generateSpecialCharacters, allowableSpecialCharacters);
+      returnData = await generateRandomInvalidEmail(inputData, generateSpecialCharacters, allowableSpecialCharacters);
     } else {
-      returnData = generateRandomInvalidEmail(inputData, [gen.cFalse, wrd.cEmpty]);
+      returnData = await generateRandomInvalidEmail(inputData, [gen.cFalse, wrd.cEmpty]);
     }
   } else {
-    returnData = generateRandomInvalidEmail(inputData, [gen.cFalse, wrd.cEmpty]);
+    returnData = await generateRandomInvalidEmail(inputData, [gen.cFalse, wrd.cEmpty]);
   }
-  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -568,13 +568,13 @@ function generateInvalidEmail(inputData, inputMetaData) {
  * @author Seth Hollingsead
  * @date 2022/01/26
  */
-function generateValidEmailWithSpecificSuffixAndDomainName(numberOfCharactersToGenerate, generateSpecialCharacters, allowableSpecialCharacters, specifiedSuffixAndDomain) {
+async function generateValidEmailWithSpecificSuffixAndDomainName(numberOfCharactersToGenerate, generateSpecialCharacters, allowableSpecialCharacters, specifiedSuffixAndDomain) {
   let functionName = generateValidEmailWithSpecificSuffixAndDomainName.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cnumberOfCharactersToGenerateIs + numberOfCharactersToGenerate);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cgenerateSpecialCharactersIs + generateSpecialCharacters);
-  loggers.consoleLog(namespacePrefix + functionName, msg.callowableSpecialCharactersIs + allowableSpecialCharacters);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cspecifiedSuffixAndDomainIs + specifiedSuffixAndDomain);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cnumberOfCharactersToGenerateIs + numberOfCharactersToGenerate);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cgenerateSpecialCharactersIs + generateSpecialCharacters);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.callowableSpecialCharactersIs + allowableSpecialCharacters);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cspecifiedSuffixAndDomainIs + specifiedSuffixAndDomain);
   let returnData = '';
   let prefix = '';
   if ((numberOfCharactersToGenerate >= specifiedSuffixAndDomain.length + 2) && numberOfCharactersToGenerate >= 6 &&
@@ -587,16 +587,16 @@ function generateValidEmailWithSpecificSuffixAndDomainName(numberOfCharactersToG
     numberOfCharactersToGenerate = numberOfCharactersToGenerate - 1;
     numberOfCharactersToGenerate = numberOfCharactersToGenerate - specifiedSuffixAndDomain.length;
     if (generateSpecialCharacters === false) {
-      prefix = generateRandomMixedCaseAlphaNumericCodeByLength(numberOfCharactersToGenerate, '');
+      prefix = await generateRandomMixedCaseAlphaNumericCodeByLength(numberOfCharactersToGenerate, '');
     } else {
-      prefix = generateRandomMixedCaseAlphaNumericCodeWithSpecialCharactersByLength(numberOfCharactersToGenerate, allowableSpecialCharacters);
+      prefix = await generateRandomMixedCaseAlphaNumericCodeWithSpecialCharactersByLength(numberOfCharactersToGenerate, allowableSpecialCharacters);
     }
     returnData = prefix + bas.cAt + specifiedSuffixAndDomain;
   } else {
     returnData = '';
   }
-  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -615,12 +615,12 @@ function generateValidEmailWithSpecificSuffixAndDomainName(numberOfCharactersToG
  * @author Seth Hollingsead
  * @date 2022/01/26
  */
-function generateRandomValidEmail(numberOfCharactersToGenerate, generateSpecialCharacters, allowableSpecialCharacters) {
+async function generateRandomValidEmail(numberOfCharactersToGenerate, generateSpecialCharacters, allowableSpecialCharacters) {
   let functionName = generateRandomValidEmail.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cnumberOfCharactersToGenerateIs + numberOfCharactersToGenerate);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cgenerateSpecialCharactersIs + generateSpecialCharacters);
-  loggers.consoleLog(namespacePrefix + functionName, msg.callowableSpecialCharactersIs + allowableSpecialCharacters);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cnumberOfCharactersToGenerateIs + numberOfCharactersToGenerate);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cgenerateSpecialCharactersIs + generateSpecialCharacters);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.callowableSpecialCharactersIs + allowableSpecialCharacters);
   let returnData = '';
   let prefix = '';
   let suffix = '';
@@ -639,26 +639,26 @@ function generateRandomValidEmail(numberOfCharactersToGenerate, generateSpecialC
     // So let us first figure that out, then the rest of the available characters that we must provide can be divided up between the prefix and suffix.
     if (numberOfCharactersToGenerate === 4) { // Stick with a 2-character domain name.
       if (generateSpecialCharacters === false) {
-        domainName = generateRandomMixedCaseTextByLength(num.c2, '');
+        domainName = await generateRandomMixedCaseTextByLength(num.c2, '');
       } else {
-        domainName = generateRandomMixedCaseAlphaNumericCodeWithSpecialCharactersByLength(num.c2, allowableSpecialCharacters);
+        domainName = await generateRandomMixedCaseAlphaNumericCodeWithSpecialCharactersByLength(num.c2, allowableSpecialCharacters);
       }
     } else if (numberOfCharactersToGenerate >= 5) {
       // Randomly determine if we should generate a 2-character or 3-character domain name. We can do either one,
       // but we need to decide now so we can get it done and be fair.
       // (That is generate 2-character domains roughly equal to the times we generate a 3-character domain.)
-      if (ruleParsing.processRulesInternal(['', ''], [biz.crandomlyGenerateBooleanValue]) === true) { // Stick with a 2-character domain name.
+      if (await ruleParsing.processRulesInternal(['', ''], [biz.crandomlyGenerateBooleanValue]) === true) { // Stick with a 2-character domain name.
         if (generateSpecialCharacters === false) {
-          domainName = generateRandomMixedCaseTextByLength(num.c2, '');
+          domainName = await generateRandomMixedCaseTextByLength(num.c2, '');
         } else {
-          domainName = generateRandomMixedCaseAlphaNumericCodeWithSpecialCharactersByLength(num.c2, allowableSpecialCharacters);
+          domainName = await generateRandomMixedCaseAlphaNumericCodeWithSpecialCharactersByLength(num.c2, allowableSpecialCharacters);
         }
         numberOfCharactersToGenerate = numberOfCharactersToGenerate - 2;
       } else { // Do a 3-character domain name.
         if (generateSpecialCharacters === false) {
-          domainName = generateRandomMixedCaseTextByLength(num.c3, '');
+          domainName = await generateRandomMixedCaseTextByLength(num.c3, '');
         } else {
-          domainName = generateRandomMixedCaseAlphaNumericCodeWithSpecialCharactersByLength(num.c3, allowableSpecialCharacters);
+          domainName = await generateRandomMixedCaseAlphaNumericCodeWithSpecialCharactersByLength(num.c3, allowableSpecialCharacters);
         }
         numberOfCharactersToGenerate = numberOfCharactersToGenerate - 3;
       }
@@ -666,9 +666,9 @@ function generateRandomValidEmail(numberOfCharactersToGenerate, generateSpecialC
       // @NOTE We should never actually get here, because the {@code numberOfCharactersToGenerate} cannot be less than 6 and 6-2 must be >=4.
       // Just generate the minimum domain and try to proceed as best as possible as a matter of completeness of the code.
       if (generateSpecialCharacters === false) {
-        domainName = generateRandomMixedCaseTextByLength(num.c2, '');
+        domainName = await generateRandomMixedCaseTextByLength(num.c2, '');
       } else {
-        domainName = generateRandomMixedCaseAlphaNumericCodeWithSpecialCharactersByLength(num.c2, allowableSpecialCharacters);
+        domainName = await generateRandomMixedCaseAlphaNumericCodeWithSpecialCharactersByLength(num.c2, allowableSpecialCharacters);
       }
       numberOfCharactersToGenerate = numberOfCharactersToGenerate - 2;
     }
@@ -688,18 +688,18 @@ function generateRandomValidEmail(numberOfCharactersToGenerate, generateSpecialC
     }
 
     if (generateSpecialCharacters === false) {
-      prefix = generateRandomMixedCaseAlphaNumericCodeByLength(numberOfPrefixcharacters, '');
-      suffix = generateRandomMixedCaseAlphaNumericCodeByLength(numberOfSuffixCharacters, '');
+      prefix = await generateRandomMixedCaseAlphaNumericCodeByLength(numberOfPrefixcharacters, '');
+      suffix = await generateRandomMixedCaseAlphaNumericCodeByLength(numberOfSuffixCharacters, '');
     } else {
-      prefix = generateRandomMixedCaseAlphaNumericCodeWithSpecialCharactersByLength(numberOfPrefixcharacters, allowableSpecialCharacters);
-      suffix = generateRandomMixedCaseAlphaNumericCodeWithSpecialCharactersByLength(numberOfSuffixCharacters, allowableSpecialCharacters);
+      prefix = await generateRandomMixedCaseAlphaNumericCodeWithSpecialCharactersByLength(numberOfPrefixcharacters, allowableSpecialCharacters);
+      suffix = await generateRandomMixedCaseAlphaNumericCodeWithSpecialCharactersByLength(numberOfSuffixCharacters, allowableSpecialCharacters);
     }
     returnData = prefix + bas.cAt + suffix + bas.cDot + domainName;
   } else {
     returnData = '';
   }
-  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -722,21 +722,21 @@ function generateRandomValidEmail(numberOfCharactersToGenerate, generateSpecialC
  * @author Seth Hollingsead
  * @date 2022/01/26
  */
-function generateInvalidEmailWithSpecificSuffixAndDomainName(numberOfCharactersToGenerate, generateSpecialCharacters, allowableSpecialCharacters, specifiedSuffixAndDomain) {
+async function generateInvalidEmailWithSpecificSuffixAndDomainName(numberOfCharactersToGenerate, generateSpecialCharacters, allowableSpecialCharacters, specifiedSuffixAndDomain) {
   let functionName = generateInvalidEmailWithSpecificSuffixAndDomainName.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cnumberOfCharactersToGenerateIs + numberOfCharactersToGenerate);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cgenerateSpecialCharactersIs + generateSpecialCharacters);
-  loggers.consoleLog(namespacePrefix + functionName, msg.callowableSpecialCharactersIs + allowableSpecialCharacters);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cspecifiedSuffixAndDomainIs + specifiedSuffixAndDomain);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cnumberOfCharactersToGenerateIs + numberOfCharactersToGenerate);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cgenerateSpecialCharactersIs + generateSpecialCharacters);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.callowableSpecialCharactersIs + allowableSpecialCharacters);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cspecifiedSuffixAndDomainIs + specifiedSuffixAndDomain);
   let returnData = '';
   let prefix = '';
   let numberOfPrefixCharacters = 0;
   let failureMode = -1;
   // NOTE: Cannot have a "." as part of a variable name in a {set}.
-  failureMode = ruleParsing.processRulesInternal([num.c1, [num.c3, gen.cTrue, gen.cTrue]], [biz.crandomlyGenerateNumberInRange]);
+  failureMode = await ruleParsing.processRulesInternal([num.c1, [num.c3, gen.cTrue, gen.cTrue]], [biz.crandomlyGenerateNumberInRange]);
   // failureMode is:
-  loggers.consoleLog(namespacePrefix + functionName, msg.cfailureModeIs + failureMode);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cfailureModeIs + failureMode);
   // ************************************************************
   // Failure Mode Legend:
   // ************************************************************
@@ -772,40 +772,40 @@ function generateInvalidEmailWithSpecificSuffixAndDomainName(numberOfCharactersT
     // There are basically with and without the prefix, and we've refactored in all the other cases already above.
     numberOfPrefixCharacters = numberOfCharactersToGenerate;
     // numberOfCharactersToGenerate is:
-    loggers.consoleLog(namespacePrefix + functionName, msg.cnumberOfCharactersToGenerateIs + numberOfCharactersToGenerate);
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cnumberOfCharactersToGenerateIs + numberOfCharactersToGenerate);
 
     if (numberOfPrefixCharacters > 0) {
       if (generateSpecialCharacters === false) {
-        prefix = generateRandomMixedCaseAlphaNumericCodeByLength(numberOfPrefixCharacters.toString(), '');
+        prefix = await generateRandomMixedCaseAlphaNumericCodeByLength(numberOfPrefixCharacters.toString(), '');
       } else {
-        prefix = generateRandomMixedCaseAlphaNumericCodeWithSpecialCharactersByLength(numberOfPrefixCharacters.toString(), allowableSpecialCharacters);
+        prefix = await generateRandomMixedCaseAlphaNumericCodeWithSpecialCharactersByLength(numberOfPrefixCharacters.toString(), allowableSpecialCharacters);
       }
     } // End-if (numberOfPrefixCharacters > 0)
 
     // prefix is:
-    loggers.consoleLog(namespacePrefix + functionName, msg.cprefixIs + prefix);
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cprefixIs + prefix);
 
     switch (failureMode) {
       case 1: case num.c1: // Without the @ symbol.
-        loggers.consoleLog(namespacePrefix + functionName, msg.cWithoutTheAtSymbol);
+        await loggers.consoleLog(namespacePrefix + functionName, msg.cWithoutTheAtSymbol);
         returnData = prefix + specifiedSuffixAndDomain;
         break;
       case 2: case num.c2: // Without the prefix.
-        loggers.consoleLog(namespacePrefix + functionName, msg.cWithoutThePrefix);
+        await loggers.consoleLog(namespacePrefix + functionName, msg.cWithoutThePrefix);
         returnData = bas.cAt + specifiedSuffixAndDomain;
         break;
       case 3: case num.c3: // Without the @ and prefix.
-        loggers.consoleLog(namespacePrefix + functionName, msg.cWithoutTheAtSymbolAndPrefix);
+        await loggers.consoleLog(namespacePrefix + functionName, msg.cWithoutTheAtSymbolAndPrefix);
         returnData = specifiedSuffixAndDomain;
         break;
       default: // DEFAULT: Without the @ and prefix
-        loggers.consoleLog(namespacePrefix + functionName, msg.cDEFAULTWithoutTheAtSymbolAndPrefix);
+        await loggers.consoleLog(namespacePrefix + functionName, msg.cDEFAULTWithoutTheAtSymbolAndPrefix);
         returnData = specifiedSuffixAndDomain;
         break;
     } // End-switch (failureMode)
   } // End-if (numberOfCharactersToGenerate >= 6)
-  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -824,12 +824,12 @@ function generateInvalidEmailWithSpecificSuffixAndDomainName(numberOfCharactersT
  * @author Seth Hollingsead
  * @date 2022/01/26
  */
-function generateRandomInvalidEmail(numberOfCharactersToGenerate, generateSpecialCharacters, allowableSpecialCharacters) {
+async function generateRandomInvalidEmail(numberOfCharactersToGenerate, generateSpecialCharacters, allowableSpecialCharacters) {
   let functionName = generateRandomInvalidEmail.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cnumberOfCharactersToGenerateIs + numberOfCharactersToGenerate);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cgenerateSpecialCharactersIs + generateSpecialCharacters);
-  loggers.consoleLog(namespacePrefix + functionName, msg.callowableSpecialCharactersIs + allowableSpecialCharacters);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cnumberOfCharactersToGenerateIs + numberOfCharactersToGenerate);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cgenerateSpecialCharactersIs + generateSpecialCharacters);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.callowableSpecialCharactersIs + allowableSpecialCharacters);
   let returnData = '';
   let prefix = '';
   let suffix = '';
@@ -839,10 +839,10 @@ function generateRandomInvalidEmail(numberOfCharactersToGenerate, generateSpecia
   let numberOfDomainNameCharacters = 0;
   let failureMode = -1;
   // NOTE Cannot have a "." as part of a variable name in a {set}.
-  failureMode = ruleParsing.processRulesInternal([num.c1, [num.c28 + gen.cTrue, gen.cTrue]], [biz.crandomlyGenerateNumberInRange]);
+  failureMode = await ruleParsing.processRulesInternal([num.c1, [num.c28 + gen.cTrue, gen.cTrue]], [biz.crandomlyGenerateNumberInRange]);
   failureMode = parseInt(failureMode);
   // failureMode is:
-  loggers.consoleLog(namespacePrefix + functionName, msg.cfailureModeIs + failureMode);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cfailureModeIs + failureMode);
   // ************************************************************
   // Failure Mode Legend:
   // ************************************************************
@@ -894,7 +894,7 @@ function generateRandomInvalidEmail(numberOfCharactersToGenerate, generateSpecia
       numberOfCharactersToGenerate = numberOfCharactersToGenerate - 2;
     }
     // numberOfCharactersToGenerate is:
-    loggers.consoleLog(namespacePrefix + functionName, msg.cnumberOfCharactersToGenerateIs + numberOfCharactersToGenerate);
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cnumberOfCharactersToGenerateIs + numberOfCharactersToGenerate);
 
     // Only work generating the domain name if we are not going to be building our invalid email on a missing domain name.
     if (failureMode === 1 || failureMode === 2 || failureMode === 3 || (failureMode >= 8 && failureMode <= 16) || failureMode === 19 || failureMode > 27) {
@@ -903,12 +903,12 @@ function generateRandomInvalidEmail(numberOfCharactersToGenerate, generateSpecia
       if (numberOfCharactersToGenerate === 4) {
         // Stick with a 2-character domain name.
         if (generateSpecialCharacters === false) {
-          domainName = generateRandomMixedCaseTextByLength(num.c2, '');
+          domainName = await generateRandomMixedCaseTextByLength(num.c2, '');
         } else {
           if (!!allowableSpecialCharacters && allowableSpecialCharacters !== undefined) {
-            domainName = generateRandomMixedCaseAlphaNumericCodeWithSpecialCharactersByLength(num.c2, allowableSpecialCharacters);
+            domainName = await generateRandomMixedCaseAlphaNumericCodeWithSpecialCharactersByLength(num.c2, allowableSpecialCharacters);
           } else {
-            domainName = generateRandomMixedCaseTextByLength(num.c2, '');
+            domainName = await generateRandomMixedCaseTextByLength(num.c2, '');
           }
         }
         numberOfCharactersToGenerate = numberOfDomainNameCharacters - 2;
@@ -916,25 +916,25 @@ function generateRandomInvalidEmail(numberOfCharactersToGenerate, generateSpecia
         // Randomly determine if we should generate a 2-character or 3-character domain name. We can do either one,
         // but we need to decide now so we can get it done and be fair.
         // (That is generate 2-character domains roughly equal to the times we generate a 3-character domain.)
-        if (ruleParsing.processRulesInternal(['', ''], [biz.crandomlyGenerateBooleanValue]) === true) { // Stick with a 2-character domain name.
+        if (await ruleParsing.processRulesInternal(['', ''], [biz.crandomlyGenerateBooleanValue]) === true) { // Stick with a 2-character domain name.
           if (generateSpecialCharacters === false) {
-            domainName = generateRandomMixedCaseTextByLength(num.c2, '');
+            domainName = await generateRandomMixedCaseTextByLength(num.c2, '');
           } else {
             if (!!allowableSpecialCharacters && allowableSpecialCharacters !== undefined) {
-              domainName = generateRandomMixedCaseAlphaNumericCodeWithSpecialCharactersByLength(num.c2, allowableSpecialCharacters);
+              domainName = await generateRandomMixedCaseAlphaNumericCodeWithSpecialCharactersByLength(num.c2, allowableSpecialCharacters);
             } else {
-              domainName = generateRandomMixedCaseTextByLength(num.c2, '');
+              domainName = await generateRandomMixedCaseTextByLength(num.c2, '');
             }
           }
           numberOfCharactersToGenerate = numberOfDomainNameCharacters - 2;
         } else { // Do a 3-character domain name.
           if (generateSpecialCharacters === false) {
-            domainName = generateRandomMixedCaseTextByLength(num.c3, '');
+            domainName = await generateRandomMixedCaseTextByLength(num.c3, '');
           } else {
             if (!!allowableSpecialCharacters && allowableSpecialCharacters !== undefined) {
-              domainName = generateRandomMixedCaseAlphaNumericCodeWithSpecialCharactersByLength(num.c3, allowableSpecialCharacters);
+              domainName = await generateRandomMixedCaseAlphaNumericCodeWithSpecialCharactersByLength(num.c3, allowableSpecialCharacters);
             } else {
-              domainName = generateRandomMixedCaseTextByLength(num.c3, '');
+              domainName = await generateRandomMixedCaseTextByLength(num.c3, '');
             }
           }
           numberOfCharactersToGenerate = numberOfDomainNameCharacters - 3
@@ -942,7 +942,7 @@ function generateRandomInvalidEmail(numberOfCharactersToGenerate, generateSpecia
       } // End-else-if (numberOfCharactersToGenerate >= 5)
     } // End-if (failureMode === 1 || failureMode === 2 || failureMode === 3 || (failureMode >= 8 && failureMode <= 16) || failureMode === 19 || failureMode > 27)
     // domainName is:
-    loggers.consoleLog(namespacePrefix + functionName, msg.cdomainNameIs + domainName);
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cdomainNameIs + domainName);
 
     // ONLY do suffix and prefix if our failure modes do not exclude both.
     if (failureMode >= 1 && failureMode <= 7) {
@@ -966,155 +966,155 @@ function generateRandomInvalidEmail(numberOfCharactersToGenerate, generateSpecia
       numberOfSuffixCharacters = 0;
     }
     // numberOfPrefixCharacters is:
-    loggers.consoleLog(namespacePrefix + functionName, msg.cnumberOfPrefixCharactersIs + numberOfPrefixCharacters);
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cnumberOfPrefixCharactersIs + numberOfPrefixCharacters);
     // numberOfSuffixCharacters is:
-    loggers.consoleLog(namespacePrefix + functionName, msg.cnumberOfSuffixCharactersIs + numberOfSuffixCharacters);
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cnumberOfSuffixCharactersIs + numberOfSuffixCharacters);
 
     if (numberOfPrefixCharacters > 0) {
       if (generateSpecialCharacters === false) {
-        prefix = generateRandomMixedCaseAlphaNumericCodeByLength(numberOfPrefixCharacters.toString(), '');
+        prefix = await generateRandomMixedCaseAlphaNumericCodeByLength(numberOfPrefixCharacters.toString(), '');
       } else {
         if (!!allowableSpecialCharacters && allowableSpecialCharacters !== undefined) {
-          prefix = generateRandomMixedCaseAlphaNumericCodeWithSpecialCharactersByLength(numberOfPrefixCharacters.toString(), allowableSpecialCharacters);
+          prefix = await generateRandomMixedCaseAlphaNumericCodeWithSpecialCharactersByLength(numberOfPrefixCharacters.toString(), allowableSpecialCharacters);
         } else {
-          prefix = generateRandomMixedCaseAlphaNumericCodeByLength(numberOfPrefixCharacters.toString(), '');
+          prefix = await generateRandomMixedCaseAlphaNumericCodeByLength(numberOfPrefixCharacters.toString(), '');
         }
       }
     } // End-if (numberOfPrefixCharacters > 0)
     // prefix is:
-    loggers.consoleLog(namespacePrefix + functionName, msg.cprefixIs + prefix);
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cprefixIs + prefix);
 
     if (numberOfSuffixCharacters > 0) {
       if (generateSpecialCharacters === false) {
-        suffix = generateRandomMixedCaseAlphaNumericCodeByLength(numberOfSuffixCharacters.toString(), '');
+        suffix = await generateRandomMixedCaseAlphaNumericCodeByLength(numberOfSuffixCharacters.toString(), '');
       } else {
         if (!!allowableSpecialCharacters && allowableSpecialCharacters !== undefined) {
-          suffix = generateRandomMixedCaseAlphaNumericCodeWithSpecialCharactersByLength(numberOfSuffixCharacters.toString(), allowableSpecialCharacters);
+          suffix = await generateRandomMixedCaseAlphaNumericCodeWithSpecialCharactersByLength(numberOfSuffixCharacters.toString(), allowableSpecialCharacters);
         } else {
-          suffix = generateRandomMixedCaseAlphaNumericCodeByLength(numberOfSuffixCharacters.toString(), '');
+          suffix = await generateRandomMixedCaseAlphaNumericCodeByLength(numberOfSuffixCharacters.toString(), '');
         }
       }
     } // End-if (numberOfSuffixCharacters > 0)
     // suffix is:
-    loggers.consoleLog(namespacePrefix + functionName, msg.csuffixIs + suffix);
+    await loggers.consoleLog(namespacePrefix + functionName, msg.csuffixIs + suffix);
   } // End-if (numberOfCharactersToGenerate >= 6)
 
   switch (failureMode) {
     case 1: // Without the @ symbol.
-      loggers.consoleLog(namespacePrefix + functionName, msg.cWithoutTheAtSymbol);
+      await loggers.consoleLog(namespacePrefix + functionName, msg.cWithoutTheAtSymbol);
       returnData = prefix + suffix + bas.cDot + domainName;
       break;
     case 2: // Without the . symbol.
-      loggers.consoleLog(namespacePrefix + functionName, msg.cWithoutTheDotSymbol);
+      await loggers.consoleLog(namespacePrefix + functionName, msg.cWithoutTheDotSymbol);
       returnData = prefix + bas.cAt + suffix + domainName;
       break;
     case 3: // Without bot the @ and . symbols
-      loggers.consoleLog(namespacePrefix + functionName, msg.cWithoutTheAtAndDotSymbols);
+      await loggers.consoleLog(namespacePrefix + functionName, msg.cWithoutTheAtAndDotSymbols);
       returnData = prefix + suffix + domainName;
       break;
     case 4: // Without the domain name.
-      loggers.consoleLog(namespacePrefix + functionName, msg.cWithoutTheDomainName);
+      await loggers.consoleLog(namespacePrefix + functionName, msg.cWithoutTheDomainName);
       returnData = prefix + bas.cAt + suffix + bas.cDot;
       break;
     case 5: // Without the @ and domain name.
-      loggers.consoleLog(namespacePrefix + functionName, msg.cWithoutTheAtSymbolAndDomainName);
+      await loggers.consoleLog(namespacePrefix + functionName, msg.cWithoutTheAtSymbolAndDomainName);
       returnData = prefix + suffix + bas.cDot + domainName;
       break;
     case 6: // Without the . and domain name.
-      loggers.consoleLog(namespacePrefix + functionName, msg.cWithoutTheDotAndDomainName);
+      await loggers.consoleLog(namespacePrefix + functionName, msg.cWithoutTheDotAndDomainName);
       returnData = prefix + bas.cAt + suffix;
       break;
     case 7: // Without the @, . and domain name.
-      loggers.consoleLog(namespacePrefix + functionName, msg.cWithoutTheAtSymbolDotAndDomainName);
+      await loggers.consoleLog(namespacePrefix + functionName, msg.cWithoutTheAtSymbolDotAndDomainName);
       returnData = prefix + suffix;
       break;
     case 8: // Without the prefix.
-      loggers.consoleLog(namespacePrefix + functionName, msg.cWithoutThePrefix);
+      await loggers.consoleLog(namespacePrefix + functionName, msg.cWithoutThePrefix);
       returnData = bas.cAt + suffix + bas.cDot + domainName;
       break;
     case 9: // Without the suffix.
-      loggers.consoleLog(namespacePrefix + functionName, msg.cWithoutTheSuffix);
+      await loggers.consoleLog(namespacePrefix + functionName, msg.cWithoutTheSuffix);
       returnData = prefix + bas.cAt + bas.cDot + domainName;
       break;
     case 10: // Without the @ and prefix.
-      loggers.consoleLog(namespacePrefix + functionName, msg.cWithoutTheAtSymbolAndPrefix);
+      await loggers.consoleLog(namespacePrefix + functionName, msg.cWithoutTheAtSymbolAndPrefix);
       returnData = suffix + bas.cDot + domainName;
       break;
     case 11: // Without the . and prefix.
-      loggers.consoleLog(namespacePrefix + functionName, msg.cWithoutTheDotAndPrefix);
+      await loggers.consoleLog(namespacePrefix + functionName, msg.cWithoutTheDotAndPrefix);
       returnData = bas.cAt + suffix + domainName;
       break;
     case 12: // Without the @ and suffix.
-      loggers.consoleLog(namespacePrefix + functionName, msg.cWithoutTheAtSymbolAndSuffix);
+      await loggers.consoleLog(namespacePrefix + functionName, msg.cWithoutTheAtSymbolAndSuffix);
       returnData = prefix + bas.cDot + domainName;
       break;
     case 13: // Without the . and suffix.
-      loggers.consoleLog(namespacePrefix + functionName, msg.cWithoutTheDotAndSuffix);
+      await loggers.consoleLog(namespacePrefix + functionName, msg.cWithoutTheDotAndSuffix);
       returnData = prefix + bas.cAt + domainName;
       break;
     case 14: // Without the @, . and prefix.
-      loggers.consoleLog(namespacePrefix + functionName, msg.cWithoutTheAtSymbolDotAndPrefix);
+      await loggers.consoleLog(namespacePrefix + functionName, msg.cWithoutTheAtSymbolDotAndPrefix);
       returnData = suffix + domainName;
       break;
     case 15: // Without the @, . and suffix.
-      loggers.consoleLog(namespacePrefix + functionName, msg.cWithoutTheAtSymbolDotAndSuffix);
+      await loggers.consoleLog(namespacePrefix + functionName, msg.cWithoutTheAtSymbolDotAndSuffix);
       returnData = prefix + domainName;
       break;
     case 16: // Without the @, ., prefix, and suffix.
-      loggers.consoleLog(namespacePrefix + functionName, msg.cWithoutTheAtSymbolDotPrefixAndSuffix);
+      await loggers.consoleLog(namespacePrefix + functionName, msg.cWithoutTheAtSymbolDotPrefixAndSuffix);
       returnData = domainName;
       break;
     case 17: // Without the prefix and domain name.
-      loggers.consoleLog(namespacePrefix + functionName, msg.cWithoutThePrefixAndDomainName);
+      await loggers.consoleLog(namespacePrefix + functionName, msg.cWithoutThePrefixAndDomainName);
       returnData = bas.cAt + suffix + bas.cDot;
       break;
     case 18: // Without the suffix and domain name.
-      loggers.consoleLog(namespacePrefix + functionName, msg.cWithoutTheSuffixAndDomainName);
+      await loggers.consoleLog(namespacePrefix + functionName, msg.cWithoutTheSuffixAndDomainName);
       returnData = prefix + bas.cAt + bas.cDot;
       break;
     case 19: // Without the prefix and  suffix.
-      loggers.consoleLog(namespacePrefix + functionName, msg.cWithoutThePrefixAndSuffix);
+      await loggers.consoleLog(namespacePrefix + functionName, msg.cWithoutThePrefixAndSuffix);
       returnData = bas.cAt + bas.cDot + domainName;
       break;
     case 20: // Without the prefix, suffix and domain name.
-      loggers.consoleLog(namespacePrefix + functionName, msg.cWithoutThePrefixSuffixAndDomainName);
+      await loggers.consoleLog(namespacePrefix + functionName, msg.cWithoutThePrefixSuffixAndDomainName);
       returnData = bas.cAt + bas.cDot;
       break;
     case 21: // Without the @, prefix and  domain name.
-      loggers.consoleLog(namespacePrefix + functionName, msg.cWithoutTheAtSymbolPrefixAndDomainName);
+      await loggers.consoleLog(namespacePrefix + functionName, msg.cWithoutTheAtSymbolPrefixAndDomainName);
       returnData = suffix + bas.cDot;
       break;
     case 22: // Without the ., prefix and  domain name.
-      loggers.consoleLog(namespacePrefix + functionName, msg.cWithoutTheDotPrefixAndDomainName);
+      await loggers.consoleLog(namespacePrefix + functionName, msg.cWithoutTheDotPrefixAndDomainName);
       returnData = bas.cAt + suffix;
       break;
     case 23: // Without the @, suffix and domain name.
-      loggers.consoleLog(namespacePrefix + functionName, msg.cWithoutTheAtSymbolSuffixAndDomainName);
+      await loggers.consoleLog(namespacePrefix + functionName, msg.cWithoutTheAtSymbolSuffixAndDomainName);
       returnData = prefix + bas.cDot;
       break;
     case 24: // Without the ., suffix and domain name.
-      loggers.consoleLog(namespacePrefix + functionName, msg.cWithoutTheDotSuffixAndDomainName);
+      await loggers.consoleLog(namespacePrefix + functionName, msg.cWithoutTheDotSuffixAndDomainName);
       returnData = prefix + bas.cAt + bas.cDot;
       break;
     case 25: // Without the @, prefix, suffix and  domain name.
-      loggers.consoleLog(namespacePrefix + functionName, msg.cWithoutTheAtSymbolPrefixSuffixAndDomainName);
+      await loggers.consoleLog(namespacePrefix + functionName, msg.cWithoutTheAtSymbolPrefixSuffixAndDomainName);
       returnData = bas.cDot;
       break;
     case 26: // Without the ., prefix, suffix and  domain name.
-      loggers.consoleLog(namespacePrefix + functionName, msg.cWithoutTheDotPrefixSuffixAndDomainName);
+      await loggers.consoleLog(namespacePrefix + functionName, msg.cWithoutTheDotPrefixSuffixAndDomainName);
       returnData = bas.cAt;
       break;
     case 27: // Without the prefix, suffix and @.
-      loggers.consoleLog(namespacePrefix + functionName, msg.cWithoutThePrefixSuffixAndAtSymbol);
+      await loggers.consoleLog(namespacePrefix + functionName, msg.cWithoutThePrefixSuffixAndAtSymbol);
       returnData = bas.cDot + domainName;
       break;
     case 28: // Without the prefix, suffix and ..
-      loggers.consoleLog(namespacePrefix + functionName, msg.cWithoutThePrefixSuffixAndDot);
+      await loggers.consoleLog(namespacePrefix + functionName, msg.cWithoutThePrefixSuffixAndDot);
       returnData = bas.cAt + domainName;
       break;
   } // End-switch (failureMode)
-  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -1131,10 +1131,10 @@ function generateRandomInvalidEmail(numberOfCharactersToGenerate, generateSpecia
  * @author Seth Hollingsead
  * @date 2022/01/27
  */
-function generateRandomBrightColor(inputData, inputMetaData) {
+async function generateRandomBrightColor(inputData, inputMetaData) {
   let functionName = generateRandomBrightColor.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
   let returnData = [255,255,255];
   let minimumColorRange = 127;
@@ -1142,13 +1142,13 @@ function generateRandomBrightColor(inputData, inputMetaData) {
   let parsedColorRangeArray = [];
   if (inputData && inputMetaData && inputData !== '' && inputMetaData !== '') {
     // Try to parse them as numbers for the range.
-    parsedColorRangeArray = ruleParsing.processRulesInternal([inputData, inputMetaData], [biz.cparseColorRangeInputs]);
+    parsedColorRangeArray = await ruleParsing.processRulesInternal([inputData, inputMetaData], [biz.cparseColorRangeInputs]);
     minimumColorRange = parsedColorRangeArray[0];
     maximumColorRange = parsedColorRangeArray[1];
   } // End-if (inputData && inputMetaData && inputData !== '' && inputMetaData !== '')
-  returnData = generateRandomColor(minimumColorRange, maximumColorRange);
-  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  returnData = await generateRandomColor(minimumColorRange, maximumColorRange);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -1165,24 +1165,24 @@ function generateRandomBrightColor(inputData, inputMetaData) {
  * @author Seth Hollingsead
  * @date 2022/01/27
  */
-function generateRandomDarkColor(inputData, inputMetaData) {
+async function generateRandomDarkColor(inputData, inputMetaData) {
   let functionName = generateRandomDarkColor.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
   let returnData = [0,0,0];
   let minimumColorRange = 0;
   let maximumColorRange = 127;
   let parsedColorRangeArray = [];
   if (inputData && inputMetaData && inputData !== '' && inputMetaData !== '') {
     // Try to parse them as numbers for the range.
-    parsedColorRangeArray = ruleParsing.processRulesInternal([inputData, inputMetaData], [biz.cparseColorRangeInputs]);
+    parsedColorRangeArray = await ruleParsing.processRulesInternal([inputData, inputMetaData], [biz.cparseColorRangeInputs]);
     minimumColorRange = parsedColorRangeArray[0];
     maximumColorRange = parsedColorRangeArray[1];
   } // End-if (inputData && inputMetaData && inputData !== '' && inputMetaData !== '')
-  returnData = generateRandomColor(minimumColorRange, maximumColorRange);
-  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  returnData = await generateRandomColor(minimumColorRange, maximumColorRange);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -1195,30 +1195,30 @@ function generateRandomDarkColor(inputData, inputMetaData) {
  * @author Seth Hollingsead
  * @date 2022/01/27
  */
-function generateRandomColor(inputData, inputMetaData) {
+async function generateRandomColor(inputData, inputMetaData) {
   let functionName = generateRandomColor.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
   let returnData = [0,0,0];
   let minimumColorRange = 0;
   let maximumColorRange = 255;
   let parsedColorRangeArray = [];
   if (inputData && inputMetaData && inputData !== '' && inputMetaData !== '') {
     // Try to parse them as numbers for the range.
-    parsedColorRangeArray = ruleParsing.processRulesInternal([inputData, inputMetaData], [biz.cparseColorRangeInputs]);
+    parsedColorRangeArray = await ruleParsing.processRulesInternal([inputData, inputMetaData], [biz.cparseColorRangeInputs]);
     minimumColorRange = parsedColorRangeArray[0];
     maximumColorRange = parsedColorRangeArray[1];
   } // End-if (inputData && inputMetaData && inputData !== '' && inputMetaData !== '')
   // minimumColorRange is:
-  loggers.consoleLog(namespacePrefix + functionName, msg.cminimumColorRangeIs + minimumColorRange);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cminimumColorRangeIs + minimumColorRange);
   // maximumColorRange is:
-  loggers.consoleLog(namespacePrefix + functionName, msg.cmaximumColorRangeIs + maximumColorRange);
-  returnData[0] = ruleParsing.processRulesInternal([minimumColorRange.toString(), [maximumColorRange.toString(), gen.ctrue, gen.ctrue]], [biz.crandomlyGenerateNumberInRange]); // Red
-  returnData[1] = ruleParsing.processRulesInternal([minimumColorRange.toString(), [maximumColorRange.toString(), gen.ctrue, gen.ctrue]], [biz.crandomlyGenerateNumberInRange]); // Green
-  returnData[2] = ruleParsing.processRulesInternal([minimumColorRange.toString(), [maximumColorRange.toString(), gen.ctrue, gen.ctrue]], [biz.crandomlyGenerateNumberInRange]); // Blue
-  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cmaximumColorRangeIs + maximumColorRange);
+  returnData[0] = await ruleParsing.processRulesInternal([minimumColorRange.toString(), [maximumColorRange.toString(), gen.ctrue, gen.ctrue]], [biz.crandomlyGenerateNumberInRange]); // Red
+  returnData[1] = await ruleParsing.processRulesInternal([minimumColorRange.toString(), [maximumColorRange.toString(), gen.ctrue, gen.ctrue]], [biz.crandomlyGenerateNumberInRange]); // Green
+  returnData[2] = await ruleParsing.processRulesInternal([minimumColorRange.toString(), [maximumColorRange.toString(), gen.ctrue, gen.ctrue]], [biz.crandomlyGenerateNumberInRange]); // Blue
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
