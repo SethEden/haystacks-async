@@ -24,7 +24,7 @@
   "author": "Seth Hollingsead <iceversaka@hotmail.com>",
   "license": "MIT",
   "dependencies": {
-    "@haystacks/constants": "0.1.0",
+    "@haystacks/constants": "0.1.1",
     "adm-zip": "^0.5.9",
     "chalk": "5.0.1",
     "dotenv": "^16.0.0",

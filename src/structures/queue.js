@@ -223,7 +223,7 @@ async function queuePrint(queueNameSpace) {
   } else {
     // WARNING: Queue:
     // does not exist!
-    returnData = 'WARNING: Queue: ' + queueNameSpace + bas.cSpace + 'does not exist!';
+    returnData = msg.cWarningQueue + queueNameSpace + bas.cSpace + msg.cdoesNotExist;
     console.log(returnData);
   }
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
