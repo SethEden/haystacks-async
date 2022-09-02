@@ -168,22 +168,22 @@ async function loadCommandWorkflows(workflowPath, contextName) {
 }
 
 /**
- * @function loadPlugin
- * @description A wrapper call to the warden.loadPlugin function.
- * Calls the plugin initializePlugin function to get the plugin data:
+ * @function loadPlugins
+ * @description A wrapper call to the warden.loadPlugins function.
+ * Calls various functions in the chiefPlugin and pluginBroker to load plugin metaData and data:
  * Business rules, Commands, Workflows, Constants, Configurations, dependencies list (dependant plugins), etc...
- * @param {string} pluginPath The fully qualified path where to load the plugin from.
- * @return {boolean} True or False to indicate if the plugin was oaded or not.
+ * @param {array<string>} pluginsPaths The fully qualified paths where to load the plugins from.
+ * @return {boolean} True or False to indicate if all the plugins were loaded or not.
  * @author Seth Hollingsead
  * @date 2022/09/01 
  */
-async function loadPlugin(pluginPath) {
-  let functionName = loadPlugin.name;
+async function loadPlugins(pluginsPaths) {
+  let functionName = loadPlugins.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  // pluginPath is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginPathIs + pluginPath);
+  // pluginPaths are:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginsPathsAre + JSON.stringify(pluginsPaths));
   let returnData = false;
-  returnData = await warden.loadPlugin(pluginPath);
+  returnData = await warden.loadPlugins(pluginsPaths);
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
@@ -351,7 +351,7 @@ export default {
   mergeClientCommands,
   loadCommandAliases,
   loadCommandWorkflows,
-  loadPlugin,
+  loadPlugins,
   executeBusinessRules,
   enqueueCommand,
   isCommandQueueEmpty,

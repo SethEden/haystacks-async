@@ -8,11 +8,11 @@
  * @requires module:chiefCommander
  * @requires module:chiefConfiguration
  * @requires module:chiefData
+ * @requires module:chiefPlugin
  * @requires module:chiefWorkflow
  * @requires module:configurator
  * @requires module:loggers
  * @requires {@link https://www.npmjs.com/package/@haystacks/constants|@haystacks/constants}
- * @requires {@link https://www.npmjs.com/package/url|url}
  * @requires {@link https://www.npmjs.com/package/path|path}
  * @author Seth Hollingsead
  * @date 2021/10/15
@@ -25,13 +25,13 @@ import ruleBroker from '../brokers/ruleBroker.js';
 import chiefCommander from './chiefCommander.js';
 import chiefConfiguration from './chiefConfiguration.js';
 import chiefData from './chiefData.js';
+import chiefPlugin from './chiefPlugin.js';
 import chiefWorkflow from './chiefWorkflow.js';
 import configurator from '../executrix/configurator.js';
 import loggers from '../executrix/loggers.js';
 // import D from '../structures/data.js';
 // External imports
 import hayConst from '@haystacks/constants';
-import url from 'url';
 import path from 'path';
 
 const {bas, biz, cfg, gen, msg, sys, wrd} = hayConst;
@@ -290,31 +290,35 @@ async function loadCommandWorkflows(workflowPathConfigName) {
 }
 
 /**
- * @function loadPlugin
+ * @function loadPlugins
  * @description Calls the plugin initializePlugin function to get the plugin data:
  * Business rules, Commands, Workflows, Constants, Configurations, dependencies list (dependant plugins), etc...
- * @param {string} pluginPath The fully qualified path where to load the plugin from.
- * @return {boolean} True or False to indicate if the plugin was loaded or not.
+ * @param {array<string>} pluginsPaths An array of fully qualified paths where to load the plugins from.
+ * @return {boolean} True or False to indicate if all the plugins were loaded or not.
  * @author Seth Hollingsead
  * @date 2022/09/01
  */
-async function loadPlugin(pluginPath) {
-  let functionName = loadPlugin.name;
+async function loadPlugins(pluginsPaths) {
+  let functionName = loadPlugins.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  // pluginPath is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginPathIs + pluginPath);
+  // pluginPaths are:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginsPathsAre + JSON.stringify(pluginsPaths));
   let returnData = false;
 
-  let resolvedPluginPath = path.resolve(pluginPath + bas.cForwardSlash + sys.cpackageDotJson);
-  console.log('resolvedPluginPath is: ' + resolvedPluginPath);
-  let pluginMetaData = await ruleBroker.processRules([resolvedPluginPath, ''], [biz.cgetJsonData]);
-  console.log('pluginMetaData is: ' + JSON.stringify(pluginMetaData));
-  let pluginMainPath = pluginMetaData[wrd.cmain];
-  console.log('plugnMainPath is: ' + pluginMainPath);
-  pluginMainPath = path.join(pluginPath, pluginMainPath);
-  console.log('pluginMainPath is: ' + pluginMainPath);
-  pluginMainPath = url.pathToFileURL(pluginMainPath);
-  console.log('pluginMainPath is: ' + pluginMainPath);
+  let pluginsMetaData = await chiefPlugin.loadAllPluginsMetaData(pluginsPaths);
+  let pluginsExecutionPaths = await chiefPlugin.loadAllPluginsExecutionPaths(pluginsMetaData);
+  let allPluginsData = await chiefPlugin.loadAllPlugins(pluginsExecutionPaths, pluginsMetaData);
+
+  // let resolvedPluginPath = path.resolve(pluginPath + bas.cForwardSlash + sys.cpackageDotJson);
+  // console.log('resolvedPluginPath is: ' + resolvedPluginPath);
+  // let pluginMetaData = await ruleBroker.processRules([resolvedPluginPath, ''], [biz.cgetJsonData]);
+  // console.log('pluginMetaData is: ' + JSON.stringify(pluginMetaData));
+  // let pluginMainPath = pluginMetaData[wrd.cmain];
+  // console.log('plugnMainPath is: ' + pluginMainPath);
+  // pluginMainPath = path.join(pluginPath, pluginMainPath);
+  // console.log('pluginMainPath is: ' + pluginMainPath);
+  // pluginMainPath = url.pathToFileURL(pluginMainPath);
+  // console.log('pluginMainPath is: ' + pluginMainPath);
   // let importedModule;
   let pluginData;
 
@@ -519,7 +523,7 @@ export default {
   mergeClientCommands,
   loadCommandAliases,
   loadCommandWorkflows,
-  loadPlugin,
+  loadPlugins,
   executeBusinessRules,
   enqueueCommand,
   isCommandQueueEmpty,
