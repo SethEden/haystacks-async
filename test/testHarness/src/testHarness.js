@@ -38,6 +38,7 @@ import hayConst from '@haystacks/constants';
 import url from 'url';
 import dotenv from 'dotenv';
 import path from 'path';
+import { cconsoleLogEnabled } from '@haystacks/constants/src/constants/configuration.constants.js'
 
 const {bas, biz, cmd, msg, sys, wrd} = hayConst;
 let rootPath = '';
@@ -166,6 +167,9 @@ async function application() {
       commandResult = await haystacks.processCommandQueue();
     } // End-while (haystacks.isCommandQueueEmpty() === false)
   } // End-if (!process.argv && process.argv.length > 0)
+
+  let pluginData = await haystacks.loadPlugin('C:/haystacks-plugins/pluginOne/');
+  console.log('testHarness App pluginData is: ' + JSON.stringify(pluginData));
 
   // NOW the application can continue with the interactive interface fi the flag was set to false.
   if (argumentDrivenInterface === false) {

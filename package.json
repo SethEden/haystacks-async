@@ -5,6 +5,10 @@
   "main": "./src/main.js",
   "bin": "./bin/main.js",
   "type": "module",
+  "engines": {
+    "npm": ">=8.0.0",
+    "node": ">=16.0.0"
+  },
   "scripts": {
     "lint": "npx eslint .",
     "release": "node ./build/buildRelease/src/buildRelease.js",
@@ -39,8 +43,8 @@
   "devDependencies": {
     "eslint": "^8.18.0",
     "jsdoc": "3.6.7",
-    "marked": ">=4.0.10",
     "markdown-it": ">=12.3.2",
+    "marked": ">=4.0.10",
     "standard-version": "9.3.2"
   },
   "bugs": {

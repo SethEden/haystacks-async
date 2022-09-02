@@ -12,6 +12,7 @@
  * @requires module:configurator
  * @requires module:loggers
  * @requires {@link https://www.npmjs.com/package/@haystacks/constants|@haystacks/constants}
+ * @requires {@link https://www.npmjs.com/package/url|url}
  * @requires {@link https://www.npmjs.com/package/path|path}
  * @author Seth Hollingsead
  * @date 2021/10/15
@@ -30,6 +31,7 @@ import loggers from '../executrix/loggers.js';
 // import D from '../structures/data.js';
 // External imports
 import hayConst from '@haystacks/constants';
+import url from 'url';
 import path from 'path';
 
 const {bas, biz, cfg, gen, msg, sys, wrd} = hayConst;
@@ -288,6 +290,71 @@ async function loadCommandWorkflows(workflowPathConfigName) {
 }
 
 /**
+ * @function loadPlugin
+ * @description Calls the plugin initializePlugin function to get the plugin data:
+ * Business rules, Commands, Workflows, Constants, Configurations, dependencies list (dependant plugins), etc...
+ * @param {string} pluginPath The fully qualified path where to load the plugin from.
+ * @return {boolean} True or False to indicate if the plugin was loaded or not.
+ * @author Seth Hollingsead
+ * @date 2022/09/01
+ */
+async function loadPlugin(pluginPath) {
+  let functionName = loadPlugin.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  // pluginPath is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginPathIs + pluginPath);
+  let returnData = false;
+
+  let resolvedPluginPath = path.resolve(pluginPath + bas.cForwardSlash + sys.cpackageDotJson);
+  console.log('resolvedPluginPath is: ' + resolvedPluginPath);
+  let pluginMetaData = await ruleBroker.processRules([resolvedPluginPath, ''], [biz.cgetJsonData]);
+  console.log('pluginMetaData is: ' + JSON.stringify(pluginMetaData));
+  let pluginMainPath = pluginMetaData[wrd.cmain];
+  console.log('plugnMainPath is: ' + pluginMainPath);
+  pluginMainPath = path.join(pluginPath, pluginMainPath);
+  console.log('pluginMainPath is: ' + pluginMainPath);
+  pluginMainPath = url.pathToFileURL(pluginMainPath);
+  console.log('pluginMainPath is: ' + pluginMainPath);
+  // let importedModule;
+  let pluginData;
+
+  const pluginResponseData = new Promise((resolve, reject) => {
+    const loadAsyncImport = () => {
+      const asyncImport = async () => {
+        return await myDynamicImport(pluginMainPath);
+      };
+  
+      return asyncImport().then((result) => {
+        return result;
+      });
+    };
+  
+    const myDynamicImport = async (path) => {
+      return await import(path);
+    };
+    return loadAsyncImport().then(value => {
+      resolve(pluginData = value['default'].initializePlugin());
+      console.log('dataLoaded is: ' + pluginData);
+    }).catch (err => reject(err));
+  });
+  
+  await Promise.all([pluginResponseData]).then((value) => {
+    console.log('value is: ' + value);
+  });
+
+  console.log('pluginResponseData is: ' + await pluginResponseData);
+
+  console.log('plugin data should be fully loaded by now and...');
+  console.log('the execution log should show that it was executed before this line.');
+  console.log('FINALLY!! pluginData is: ' + pluginData);
+  // dataFinallyLoaded = true;
+
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return pluginData;
+}
+
+/**
  * @function executeBusinessRules
  * @description A wrapper to call a business rule from the application level code.
  * @param {array<string|integer|boolean|object|function,string|integer|boolean|object|function>} inputs The array of inputs:
@@ -452,6 +519,7 @@ export default {
   mergeClientCommands,
   loadCommandAliases,
   loadCommandWorkflows,
+  loadPlugin,
   executeBusinessRules,
   enqueueCommand,
   isCommandQueueEmpty,

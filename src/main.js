@@ -168,6 +168,28 @@ async function loadCommandWorkflows(workflowPath, contextName) {
 }
 
 /**
+ * @function loadPlugin
+ * @description A wrapper call to the warden.loadPlugin function.
+ * Calls the plugin initializePlugin function to get the plugin data:
+ * Business rules, Commands, Workflows, Constants, Configurations, dependencies list (dependant plugins), etc...
+ * @param {string} pluginPath The fully qualified path where to load the plugin from.
+ * @return {boolean} True or False to indicate if the plugin was oaded or not.
+ * @author Seth Hollingsead
+ * @date 2022/09/01 
+ */
+async function loadPlugin(pluginPath) {
+  let functionName = loadPlugin.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  // pluginPath is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginPathIs + pluginPath);
+  let returnData = false;
+  returnData = await warden.loadPlugin(pluginPath);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
+/**
  * @function executeBusinessRules
  * @description A wrapper call to a business rule from the warden.executeBusinessRules.
  * @param {array<string|integer|boolean|object|function,string|integer|boolean|object|function>} inputs The array of inputs:
@@ -329,6 +351,7 @@ export default {
   mergeClientCommands,
   loadCommandAliases,
   loadCommandWorkflows,
+  loadPlugin,
   executeBusinessRules,
   enqueueCommand,
   isCommandQueueEmpty,
