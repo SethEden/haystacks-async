@@ -128,6 +128,7 @@ async function searchForPatternsInStringArray(inputData, inputMetaData) {
                     // console.log('FOUND A MATCH!!!! ' + stringToCompare);
                     // Here we have found a match among brothers. We need to see if this stringToCompare has already been added to the returnData array.
                     if (await ruleParsing.processRulesInternal([[returnData, stringToCompare], [await ruleParsing.getRule(biz.cascertainMatchingElements, '')]], [biz.cdoesArrayContainValue]) === false) {
+                      await loggers.consoleLog(namespacePrefix + functionName, 'PUSHING a new constant pattern to the output array.');
                       returnData.push(stringToCompare);
                     } // End-if (ruleParsing.processRulesInternal([[returnData, stringToCompare], ruleParsing.getRule(biz.cascertainMatchingElements)], [biz.cdoesArrayContainValue]) === false)
                   } // End-if (otherStringToCompare.includes(stringToCompare))
