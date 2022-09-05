@@ -38,9 +38,9 @@ const namespacePrefix = sys.cbusinessRules + bas.cDot + wrd.crules + bas.cDot + 
   */
 async function parseColorRangeInputs(inputData, inputMetaData) {
    let functionName = parseColorRangeInputs.name;
-   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
-   loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
+   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
+   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
    let returnData = [0,0,0];
    let minimumColorRange = 0;
    let tempMinimumColorRange = 0;
@@ -77,8 +77,8 @@ async function parseColorRangeInputs(inputData, inputMetaData) {
      maximumColorRange = 255;
    }
    returnData = [minimumColorRange, maximumColorRange];
-   loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
-   loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
    return returnData;
  }
 

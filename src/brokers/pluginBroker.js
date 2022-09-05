@@ -16,8 +16,8 @@
  */
 
 // Internal imports
-import ruleBroker from './ruleBroker.js'
-import loggers from '../executrix/loggers.js'
+import ruleBroker from './ruleBroker.js';
+import loggers from '../executrix/loggers.js';
 import D from '../structures/data.js';
 // External imports
 import hayConst from '@haystacks/constants';

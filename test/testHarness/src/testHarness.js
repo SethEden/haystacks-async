@@ -168,8 +168,8 @@ async function application() {
     } // End-while (haystacks.isCommandQueueEmpty() === false)
   } // End-if (!process.argv && process.argv.length > 0)
 
-  let pluginLoadedSuccess = await haystacks.loadPlugin(['C:/haystacks-plugins/pluginOne/']);
-  console.log('testHarness App pluginData loaded: ' + pluginLoadedSuccess));
+  let pluginLoadedSuccess = await haystacks.loadPlugins(['C:/haystacks-plugins/pluginOne/']);
+  console.log('testHarness App pluginData loaded: ' + pluginLoadedSuccess);
 
   // NOW the application can continue with the interactive interface fi the flag was set to false.
   if (argumentDrivenInterface === false) {
