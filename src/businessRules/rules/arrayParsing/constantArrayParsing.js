@@ -92,42 +92,42 @@ async function searchForPatternsInStringArray(inputData, inputMetaData) {
         // A small data-set might be possible to debug.
         // Loop over the length of the string we need to compare.
         for (let b = minStringLength; b <= maxStringLength; b++) { // b will now hold the length of the string we are using to compare.
-          // loggers.consoleLog(namespacePrefix + functionName, 'length of string to compare is: ' + toString(b));
+          await loggers.consoleLog(namespacePrefix + functionName, 'length of string to compare is: ' + JSON.stringify(toString(b)));
           // console.log('Length of string to compare is: ' + b);
           // First make sure that the length of our master string is less than or equal to the length of j, otherwise we will just skip to the next.
           if (currentMasterStringArrayElement.length <= b) {
-            // loggers.consoleLog(namespacePrefix + functionName, 'currentMasterStringArrayElement.length is less than b');
+            await loggers.consoleLog(namespacePrefix + functionName, 'currentMasterStringArrayElement.length is less than b');
             // console.log('currentMasterStringArrayElement.length is less than b');
             // Loop again for the length of the current string - 3 (minStringLength)
             // Each loop will determine our currentComparisonString (which will be used when we actually iterate over the array in ur search)
             for (let c = 0; c <= currentMasterStringArrayElement.length - minStringLength; c++) { // Loop through each set of strings in the master comparison string.
-              // loggers.consoleLog(namespacePrefix + functionName, 'c value is: ' + c);
+              await loggers.consoleLog(namespacePrefix + functionName, 'c value is: ' + c);
               // console.log('c value is: ' + c);
               // Now here we should be able to finally compute the beginning and ending of the indexes for the string we want to use for comparison.
               let beginningIndex = c;
-              // loggers.consoleLog(namespacePrefix + functionName, 'beginningIndex is: ' + beginningIndex);
+              await loggers.consoleLog(namespacePrefix + functionName, 'beginningIndex is: ' + beginningIndex);
               // console.log('beginningIndex is: ' + beginningIndex);
               let endingIndex = c + b;
-              // loggers.consoleLog(namespacePrefix + functionName, 'endingIndex is: ' + endingIndex);
+              await loggers.consoleLog(namespacePrefix + functionName, 'endingIndex is: ' + endingIndex);
               // console.log('ending index is: ' + endingIndex);
               let stringToCompare = currentMasterStringArrayElement.substring(beginningIndex, endingIndex);
-              // loggers.consoleLog(namespacePrefix + functionName, 'stringToCompare is: ' + stringToCompare);
+              await loggers.consoleLog(namespacePrefix + functionName, 'stringToCompare is: ' + stringToCompare);
               // console.log('stringToCompare is: ' + stringToCompare);
               // Now we need another loop to go over all of the array elements, make sure we always ignore the current array element.
               for (let d = 0; d < inputData.length; d++) {
-                // loggers.consoleLog(namespacePrefix + functionName, 'd value is: ' + d);
+                await loggers.consoleLog(namespacePrefix + functionName, 'd value is: ' + d);
                 // console.log('d value is: ' + d);
                 if (d != a) {
-                  // loggers.consoleLog(namespacePrefix + functionName, 'd != a');
+                  await loggers.consoleLog(namespacePrefix + functionName, 'd != a');
                   // console.log('d != a');
                   let otherStringToCompare = inputData[d];
-                  // loggers.consoleLog(namespacePrefix + functionName, 'otherStringToCompare is: ' + otherStringToCompare);
+                  await loggers.consoleLog(namespacePrefix + functionName, 'otherStringToCompare is: ' + otherStringToCompare);
                   // console.log('otherStringToCompare is: ' + otherStringToCompare);
                   if (otherStringToCompare.includes(stringToCompare)) {
-                    // loggers.consoleLog(namespacePrefix + functionName, 'FOUND A MATCH!!!! ' + stringToCompare);
+                    await loggers.consoleLog(namespacePrefix + functionName, 'FOUND A MATCH!!!! ' + stringToCompare);
                     // console.log('FOUND A MATCH!!!! ' + stringToCompare);
                     // Here we have found a match among brothers. We need to see if this stringToCompare has already been added to the returnData array.
-                    if (await ruleParsing.processRulesInternal([[returnData, stringToCompare], ruleParsing.getRule(biz.cascertainMatchingElements)], [biz.cdoesArrayContainValue]) === false) {
+                    if (await ruleParsing.processRulesInternal([[returnData, stringToCompare], [await ruleParsing.getRule(biz.cascertainMatchingElements, '')]], [biz.cdoesArrayContainValue]) === false) {
                       returnData.push(stringToCompare);
                     } // End-if (ruleParsing.processRulesInternal([[returnData, stringToCompare], ruleParsing.getRule(biz.cascertainMatchingElements)], [biz.cdoesArrayContainValue]) === false)
                   } // End-if (otherStringToCompare.includes(stringToCompare))

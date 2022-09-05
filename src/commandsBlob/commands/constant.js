@@ -68,7 +68,7 @@ async function constantsGenerator(inputData, inputMetaData) {
        userDefinedConstant = inputData[1];
      } else {
        // We need to recombine all of the array elements after the 0-th element into a single string with spaces in between.
-       userDefinedConstant = await ruleBroker.processRules([inputData, ''], recombineArrayInputRule);
+       userDefinedConstant = await ruleBroker.processRules([inputData, ''], [recombineArrayInputRule]);
      }
      // userDefinedConstant is:
      await loggers.consoleLog(namespacePrefix + functionName, msg.cuserDefinedConstantIs + userDefinedConstant);
@@ -90,14 +90,14 @@ async function constantsGenerator(inputData, inputMetaData) {
      if (wordCount > 1) {
        let wordsArray = await ruleBroker.processRules([userDefinedConstant, ''], [biz.cgetWordsArrayFromString]);
        for (const element of wordsArray) {
-         let optimizedWordConstantDefinition = await ruleBroker.processRules([element.trim(), element.trim()], constantsFulfillmentSystemRule);
+         let optimizedWordConstantDefinition = await ruleBroker.processRules([element.trim(), element.trim()], [constantsFulfillmentSystemRule]);
          // Optimized constant definition for word:
          console.log(msg.cOptimizedConstantDefinitionForWord + bas.cc + element + bas.cSpace + bas.cEqual + bas.cSpace +
           optimizedWordConstantDefinition);
           returnData[1].push(optimizedWordConstantDefinition);
        } // End-for (const element of wordsArray)
      } else { // There is only a single word to process.
-      returnData[1] = await ruleBroker.processRules([userDefinedConstant, userDefinedConstant], constantsFulfillmentSystemRule)
+      returnData[1] = await ruleBroker.processRules([userDefinedConstant, userDefinedConstant], [constantsFulfillmentSystemRule])
       // output a proper line of code:
       // export const csomething = wrd.csome + wrd.cthing; // something
       console.log(wrd.cexport + bas.cSpace + gen.cconst + bas.cSpace + bas.cc + userDefinedConstant + bas.cSpace + bas.cEqual + bas.cSpace +
