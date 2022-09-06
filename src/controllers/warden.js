@@ -308,7 +308,10 @@ async function loadPlugins(pluginsPaths) {
   let pluginsMetaData = await chiefPlugin.loadAllPluginsMetaData(pluginsPaths);
   let pluginsExecutionPaths = await chiefPlugin.loadAllPluginsExecutionPaths(pluginsMetaData, pluginsPaths);
   let allPluginsData = await chiefPlugin.loadAllPlugins(pluginsExecutionPaths, pluginsMetaData);
-  
+
+  // TODO: Now sort through all of the plugins data and activate that data in the D-data structure.
+  // We should have a verification system to confirm that all of the plugins data is activated as well.
+
   returnData = await chiefPlugin.verifyAllPluginsLoaded();
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
