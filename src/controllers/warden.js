@@ -301,61 +301,22 @@ async function loadCommandWorkflows(workflowPathConfigName) {
 async function loadPlugins(pluginsPaths) {
   let functionName = loadPlugins.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  // pluginPaths are:
+  // pluginsPaths are:
   await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginsPathsAre + JSON.stringify(pluginsPaths));
   let returnData = false;
 
   let pluginsMetaData = await chiefPlugin.loadAllPluginsMetaData(pluginsPaths);
-  let pluginsExecutionPaths = await chiefPlugin.loadAllPluginsExecutionPaths(pluginsMetaData);
+  let pluginsExecutionPaths = await chiefPlugin.loadAllPluginsExecutionPaths(pluginsMetaData, pluginsPaths);
   let allPluginsData = await chiefPlugin.loadAllPlugins(pluginsExecutionPaths, pluginsMetaData);
 
-  // let resolvedPluginPath = path.resolve(pluginPath + bas.cForwardSlash + sys.cpackageDotJson);
-  // console.log('resolvedPluginPath is: ' + resolvedPluginPath);
-  // let pluginMetaData = await ruleBroker.processRules([resolvedPluginPath, ''], [biz.cgetJsonData]);
-  // console.log('pluginMetaData is: ' + JSON.stringify(pluginMetaData));
-  // let pluginMainPath = pluginMetaData[wrd.cmain];
-  // console.log('plugnMainPath is: ' + pluginMainPath);
-  // pluginMainPath = path.join(pluginPath, pluginMainPath);
-  // console.log('pluginMainPath is: ' + pluginMainPath);
-  // pluginMainPath = url.pathToFileURL(pluginMainPath);
-  // console.log('pluginMainPath is: ' + pluginMainPath);
-  // let importedModule;
-  let pluginData;
+  // TODO: Need to have a plugins loaded verifier, to confirm that all plugins are loaded successfully!
+  // As plugins are loaded, we could mark them as successfully loaded, and store that data in a custom data stack.
+  // Then the plugins loaded verifier could examin that stack to confirm that they are loaded.
 
-  const pluginResponseData = new Promise((resolve, reject) => {
-    const loadAsyncImport = () => {
-      const asyncImport = async () => {
-        return await myDynamicImport(pluginMainPath);
-      };
-  
-      return asyncImport().then((result) => {
-        return result;
-      });
-    };
-  
-    const myDynamicImport = async (path) => {
-      return await import(path);
-    };
-    return loadAsyncImport().then(value => {
-      resolve(pluginData = value['default'].initializePlugin());
-      console.log('dataLoaded is: ' + pluginData);
-    }).catch (err => reject(err));
-  });
-  
-  await Promise.all([pluginResponseData]).then((value) => {
-    console.log('value is: ' + value);
-  });
-
-  console.log('pluginResponseData is: ' + await pluginResponseData);
-
-  console.log('plugin data should be fully loaded by now and...');
-  console.log('the execution log should show that it was executed before this line.');
-  console.log('FINALLY!! pluginData is: ' + pluginData);
-  // dataFinallyLoaded = true;
-
+  returnData = true;
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
-  return pluginData;
+  return returnData;
 }
 
 /**

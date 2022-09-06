@@ -45,7 +45,10 @@ async function loadAllPluginsMetaData(pluginsPaths) {
   let returnData = [];
   let index = 0;
   if (pluginsPaths && pluginsPaths.length > 0) {
-    for (let pluginPath in pluginsPaths) {
+    for (let pluginKey in pluginsPaths) {
+      // pluginKey is:
+      await loggers.consoleLog(namespacePrefix + functionName, 'pluginKey is: ' + pluginKey);
+      let pluginPath = pluginsPaths[pluginKey];
       // pluginPath is:
       await loggers.consoleLog(namespacePrefix + functionName, 'pluginPath is: ' + pluginPath);
       returnData[index] = {};
@@ -88,9 +91,12 @@ async function loadAllPluginsExecutionPaths(pluginsMetaData, pluginsPaths) {
   let returnData = [];
   let index = 0;
   if (pluginsMetaData && pluginsMetaData.length > 0) {
-    for (let pluginMetaData in pluginsMetaData) {
+    for (let pluginMetaDataKey in pluginsMetaData) {
+      // pluginMetaDataKey is:
+      await loggers.consoleLog(namespacePrefix + functionName, 'pluginMetaDataKey is: ' + pluginMetaDataKey);
+      let pluginMetaData = pluginsMetaData[pluginMetaDataKey];
       // pluginMetaData is:
-      await loggers.consoleLog(namespacePrefix + functionName, 'pluginMetaData is: ' + JSON.stringify(pluginMetaData));
+      await loggers.consoleLog(namespacePrefix + functionName, 'puginMetaData is: ' + JSON.stringify(pluginMetaData));
       returnData[index] = '';
       if (pluginMetaData) {
         returnData[index] = await pluginBroker.extractAndProcessPluginEntryPointURI(pluginMetaData, pluginsPaths[index]);
@@ -131,7 +137,8 @@ async function loadAllPlugins(pluginsExecutionPaths, pluginsMetaData) {
   let returnData = {};
   let index = 0;
   if (pluginsExecutionPaths && pluginsMetaData && pluginsExecutionPaths.length > 0 && pluginsMetaData.length > 0) {
-    for (let pluginExecutionPath in pluginsExecutionPaths) {
+    for (let pluginExecutionPathKey in pluginsExecutionPaths) {
+      let pluginExecutionPath = pluginsExecutionPaths[pluginExecutionPathKey];
       let pluginMetaData = pluginsMetaData[index];
       if (pluginExecutionPath && pluginMetaData) {
         await loggers.consoleLog(namespacePrefix + functionName, 'pluginExecutionPath is: ' + pluginExecutionPath);
