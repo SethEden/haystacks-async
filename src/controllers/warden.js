@@ -308,12 +308,8 @@ async function loadPlugins(pluginsPaths) {
   let pluginsMetaData = await chiefPlugin.loadAllPluginsMetaData(pluginsPaths);
   let pluginsExecutionPaths = await chiefPlugin.loadAllPluginsExecutionPaths(pluginsMetaData, pluginsPaths);
   let allPluginsData = await chiefPlugin.loadAllPlugins(pluginsExecutionPaths, pluginsMetaData);
-
-  // TODO: Need to have a plugins loaded verifier, to confirm that all plugins are loaded successfully!
-  // As plugins are loaded, we could mark them as successfully loaded, and store that data in a custom data stack.
-  // Then the plugins loaded verifier could examin that stack to confirm that they are loaded.
-
-  returnData = true;
+  
+  returnData = await chiefPlugin.verifyAllPluginsLoaded();
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;

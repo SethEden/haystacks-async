@@ -6,6 +6,7 @@
  * @requires module:pluginBroker
  * @requires module:loggers
  * @requires module:data
+ * @requires module:stack
  * @requires {@link https://www.npmjs.com/package/@haystacks/constants|@haystacks/constants}
  * @requires {@link https://www.npmjs.com/package/url|url}
  * @requires {@link https://www.npmjs.com/package/path|path}
@@ -18,12 +19,13 @@
 import pluginBroker from '../brokers/pluginBroker.js';
 import loggers from '../executrix/loggers.js'
 import D from '../structures/data.js';
+import stack from '../structures/stack.js'
 // External imports
 import hayConst from '@haystacks/constants';
 import url from 'url';
 import path from 'path';
 
-const {bas, msg, wrd} = hayConst;
+const {bas, msg, sys, wrd} = hayConst;
 const baseFileName = path.basename(import.meta.url, path.extname(import.meta.url));
 // controllers.chiefPlugin.
 const namespacePrefix = wrd.ccontrollers + bas.cDot + baseFileName + bas.cDot;
@@ -137,6 +139,7 @@ async function loadAllPlugins(pluginsExecutionPaths, pluginsMetaData) {
   let returnData = {};
   let index = 0;
   if (pluginsExecutionPaths && pluginsMetaData && pluginsExecutionPaths.length > 0 && pluginsMetaData.length > 0) {
+    stack.initStack(sys.cpluginsLoaded);
     for (let pluginExecutionPathKey in pluginsExecutionPaths) {
       let pluginExecutionPath = pluginsExecutionPaths[pluginExecutionPathKey];
       let pluginMetaData = pluginsMetaData[index];
@@ -145,8 +148,22 @@ async function loadAllPlugins(pluginsExecutionPaths, pluginsMetaData) {
         await loggers.consoleLog(namespacePrefix + functionName, 'pluginMetaData is: ' + JSON.stringify(pluginMetaData));
         returnData[pluginMetaData[wrd.cname]] = {}; // Initialize the data structure
         // Load the data and add it.
-        returnData[pluginMetaData[wrd.cname]] = await pluginBroker.loadPlugin(pluginExecutionPath);
-      } // End-if (pluginExecutionPath && pluginMetaData)
+        try {
+          returnData[pluginMetaData[wrd.cname]] = await pluginBroker.loadPlugin(pluginExecutionPath);
+        } catch (err) {
+          console.log(msg.cERROR_Colon + namespacePrefix + functionName + ' Failed to load the plugin: ' + pluginMetaData[wrd.cname]);
+          console.log('plugin entry point path: ' + pluginExecutionPath);
+          console.log(msg.cERROR_Colon + err);
+          stack.push(sys.cpluginsLoaded, [pluginMetaData[wrd.cname], false]);
+        }
+        // Push to a stack that we have successfully loaded the currently named plugin,
+        // so that all the plugins loaded can be verified.
+        stack.push(sys.cpluginsLoaded, [pluginMetaData[wrd.cname], true]);
+      } else {
+        console.log(msg.cERROR_Colon + namespacePrefix + functionName + ' Failed to load the plugin: ' + pluginMetaData[wrd.cname]);
+        console.log('plugin entry point path: ' + pluginExecutionPath);
+        stack.push(sys.cpluginsLoaded, [pluginMetaData[wrd.cname], false]);
+      }
     } // End-for (let pluginExecutionPath in pluginsExecutionPaths)
   } else {
     console.log('ERROR: No plugin execution paths or plugins metaData was specified: ' + namespacePrefix + functionName);
@@ -156,8 +173,37 @@ async function loadAllPlugins(pluginsExecutionPaths, pluginsMetaData) {
   return returnData;
 }
 
+/**
+ * @function verifyAllPluginsLoaded
+ * @description Examins the pluginsLoaded stack to confirm that none of the plugins which
+ * were supposed to have been loaded failed to load.
+ * @return {boolean} True or False to indicate if all of the plugins were loaded successfully or not.
+ * @author Seth Hollingsead
+ * @date 2022/09/06
+ */
+ async function verifyAllPluginsLoaded() {
+  let functionName = verifyAllPluginsLoaded.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  let returnData = false;
+  let foundFailedPlugin = false;
+  let stackLength = stack.length(sys.cpluginsLoaded);
+  for (let i = 0; i <= stackLength; i++) {
+    let pluginLoadedObject = stack.pop(sys.cpluginsLoaded);
+    if (Array.isArray(pluginLoadedObject)) {
+      if (pluginLoadedObject[1] === false) {
+        foundFailedPlugin = true;
+      }
+    } // End-if (Array.isArray(pluginLoadedObject))
+  } // End-for (let i = 0; i <= stackLength; i++)
+  returnData = !foundFailedPlugin; // Invert the logic
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
 export default {
   loadAllPluginsMetaData,
   loadAllPluginsExecutionPaths,
-  loadAllPlugins
+  loadAllPlugins,
+  verifyAllPluginsLoaded
 };
