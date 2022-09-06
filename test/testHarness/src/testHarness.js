@@ -38,7 +38,6 @@ import hayConst from '@haystacks/constants';
 import url from 'url';
 import dotenv from 'dotenv';
 import path from 'path';
-import { cconsoleLogEnabled } from '@haystacks/constants/src/constants/configuration.constants.js'
 
 const {bas, biz, cmd, msg, sys, wrd} = hayConst;
 let rootPath = '';
