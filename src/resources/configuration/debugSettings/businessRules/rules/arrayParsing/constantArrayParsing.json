@@ -24,7 +24,7 @@
   "debugFunctions|debugSetting.businessRules.rules.arrayParsing.constantArrayParsing.getLengthOfLongestStringInArray@FunctionFontBackgroundColor": "Default",
   "debugFunctions|debugSetting.businessRules.rules.arrayParsing.constantArrayParsing.getLengthOfLongestStringInArray@MessageFontBackgroundColor": "Default",
   "debugFunctions|debugSetting.businessRules.rules.arrayParsing.constantArrayParsing.getLengthOfLongestStringInArray@DataFontBackgroundColor": "Default",
-  "debugFunctions|debugSetting.businessRules.rules.arrayParsing.constantArrayParsing.searchForPatternsInStringArray": true,
+  "debugFunctions|debugSetting.businessRules.rules.arrayParsing.constantArrayParsing.searchForPatternsInStringArray": false,
   "debugFunctions|debugSetting.businessRules.rules.arrayParsing.constantArrayParsing.searchForPatternsInStringArray@FunctionFontStyle": "Default",
   "debugFunctions|debugSetting.businessRules.rules.arrayParsing.constantArrayParsing.searchForPatternsInStringArray@MessageFontStyle": "Default",
   "debugFunctions|debugSetting.businessRules.rules.arrayParsing.constantArrayParsing.searchForPatternsInStringArray@DataFontStyle": "Default",
