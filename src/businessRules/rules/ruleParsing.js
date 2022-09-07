@@ -148,7 +148,7 @@ async function processRulesInternal(inputData, inputMetaData) {
   } // End-if (rulesToExecute && doAllRulesExist(rulesToExecute))
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
-  return await returnData;
+  return returnData;
 }
 
 export default {

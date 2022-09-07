@@ -225,7 +225,7 @@ async function ascertainMatchingElements(inputData, inputMetaData) {
   } // end-if (inputData && inputMetaData)
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
-  return await returnData;
+  return returnData;
 }
 
 export default {
