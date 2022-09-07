@@ -5,10 +5,8 @@
  * registering, unregistering of plugins and plugin metaData.
  * @requires module:pluginBroker
  * @requires module:loggers
- * @requires module:data
  * @requires module:stack
  * @requires {@link https://www.npmjs.com/package/@haystacks/constants|@haystacks/constants}
- * @requires {@link https://www.npmjs.com/package/url|url}
  * @requires {@link https://www.npmjs.com/package/path|path}
  * @author Seth Hollingsead
  * @date 2022/09/02
@@ -18,11 +16,9 @@
 // Internal imports
 import pluginBroker from '../brokers/pluginBroker.js';
 import loggers from '../executrix/loggers.js'
-import D from '../structures/data.js';
 import stack from '../structures/stack.js'
 // External imports
 import hayConst from '@haystacks/constants';
-import url from 'url';
 import path from 'path';
 
 const {bas, msg, sys, wrd} = hayConst;
