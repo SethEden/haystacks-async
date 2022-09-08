@@ -59,7 +59,7 @@ async function prompt(inputData, inputMetaData) {
     await loggers.consoleLog(namespacePrefix + functionName, msg.cprompt02 + returnData.indexOf(String.fromCharCode(term)));
     returnData = returnData.slice(0, returnData.indexOf(String.fromCharCode(term)));
   } else if (returnData.includes(bas.cCarriageReturn + bas.cNewLine)) {
-    // Caught the case that the string includes a carriage return and new ine characters.
+    // Caught the case that the string includes a carriage return and new line characters.
     await loggers.consoleLog(namespacePrefix + functionName, msg.cprompt03);
     returnData = returnData.slice(0, returnData.indexOf(bas.cCarriageReturn + bas.cNewLine));
   }
