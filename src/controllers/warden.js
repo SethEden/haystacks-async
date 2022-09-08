@@ -314,9 +314,21 @@ async function loadPlugins(pluginsPaths) {
 
   returnData = await chiefPlugin.verifyAllPluginsLoaded();
 
-  // console.log('Attempting to execute the plugin business rule remotely, by hard-coding');
+  // console.log('Attempting to execute the plugin business rule 01 remotely, by hard-coding');
   // await allPluginsData['plugin-one']['businessRules']['pluginOneRule01']('1','2');
-  // console.log('DONE Attempting to execute the plugin business rule remotely.');
+  // console.log('DONE Attempting to execute the plugin business rule 01 remotely.');
+
+  // console.log('Attempting to execute the plugin business rule 02 remotely, by hard-coding');
+  // await allPluginsData['plugin-one']['businessRules']['pluginOneRule02']('3','4');
+  // console.log('DONE Attempting to execute the plugin business rule 02 remotely.');
+
+  // console.log('Attempting to execute the plugin command 01 remotely, by hard-coding');
+  // await allPluginsData['plugin-one']['commands']['pluginOneCommand01']('5','6');
+  // console.log('DONE Attempting to execute the plugin command 01 remotely.');
+
+  // console.log('Attempting to execute the plugin command 02 remotely, by hard-coding');
+  // await allPluginsData['plugin-one']['commands']['pluginOneCommand02']('7','8');
+  // console.log('DONE Attempting to execute the plugin command 02 remotely.');
 
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
