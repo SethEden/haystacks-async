@@ -313,6 +313,11 @@ async function loadPlugins(pluginsPaths) {
   // We should have a verification system to confirm that all of the plugins data is activated as well.
 
   returnData = await chiefPlugin.verifyAllPluginsLoaded();
+
+  // console.log('Attempting to execute the plugin business rule remotely, by hard-coding');
+  // await allPluginsData['plugin-one']['businessRules']['pluginOneRule01']('1','2');
+  // console.log('DONE Attempting to execute the plugin business rule remotely.');
+
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;

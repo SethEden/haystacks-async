@@ -116,14 +116,14 @@ async function loadPlugin(pluginExecutionPath) {
     const myDynamicImport = async (path) => {
       return await import(path);
     };
-    return loadAsyncImport().then(value => {
-      resolve(returnData = value['default'].initializePlugin());
-      console.log('dataLoaded is: ' + returnData);
+    return loadAsyncImport().then(async value => {
+      resolve(returnData = await value['default'].initializePlugin());
+      console.log('dataLoaded is: ' + JSON.stringify(returnData));
     }).catch (err => reject(err));
   });
 
   await Promise.all([pluginResponseData]).then((value) => {
-    console.log('value is: ' + value);
+    console.log('value is: ' + JSON.stringify(value));
   });
 
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
