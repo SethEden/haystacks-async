@@ -190,6 +190,26 @@ async function loadPlugins(pluginsPaths) {
 }
 
 /**
+ * @function loadPluginConfigData
+ * @description A wrapper call to the warden.loadPluginConfigData function.
+ * @param {string} pluginConfigPath The fully qualified path to where the plugin data is located and should be loaded from.
+ * @return {object} The JSON data that is loaded and parsed from the plugin path.
+ * @author Seth Hollingsead
+ * @date 2022/09/09
+ */
+async function loadPluginConfigData(pluginConfigPath) {
+  let functionName = loadPluginConfigData;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  // pluginConfigPath is:
+  await loggers.consoleLog(namespacePrefix + functionName, 'pluginConfigPath is: ' + pluginConfigPath);
+  let returnData = {};
+  returnData = await warden.loadPluginConfigData(pluginConfigPath);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
+/**
  * @function executeBusinessRules
  * @description A wrapper call to a business rule from the warden.executeBusinessRules.
  * @param {array<string|integer|boolean|object|function,string|integer|boolean|object|function>} inputs The array of inputs:
@@ -352,6 +372,7 @@ export default {
   loadCommandAliases,
   loadCommandWorkflows,
   loadPlugins,
+  loadPluginConfigData,
   executeBusinessRules,
   enqueueCommand,
   isCommandQueueEmpty,

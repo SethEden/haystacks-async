@@ -72,6 +72,25 @@ async function setupConfiguration(appConfigPath, frameworkConfigPath) {
 }
 
 /**
+ * @function loadAndParsePluginConfigurationData
+ * @description loads and parses the plugin configuration data.
+ * @param {string} pluginConfigPath The path of the configuration files for the specified plugin.
+ * @return {object} The JSON object that contains all of the plugin configuration data loaded from
+ * all the files loaded at the specified path.
+ * @author Seth Hollingsead
+ * @date 2022/09/09
+ */
+async function loadAndParsePluginConfigurationData(pluginConfigPath) {
+  let functionName = setupConfiguration.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, 'pluginConfigPath is: ' + pluginConfigPath);
+  let returnData = {};
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
+/**
  * @function parseLoadedConfigurationData
  * @description Parses through all of the configuration data that we just loaded from the XML files and
  * adds that data to the correct data-structures in the D.[configuration] data hive.
@@ -163,5 +182,6 @@ async function parseLoadedConfigurationData(allConfigurationData) {
 
 export default {
   setupConfiguration,
+  loadAndParsePluginConfigurationData,
   parseLoadedConfigurationData
 };

@@ -336,6 +336,26 @@ async function loadPlugins(pluginsPaths) {
 }
 
 /**
+ * @function loadPluginConfigData
+ * @description Calls the necessary functions to load and parse the configuration data from the specified path.
+ * @param {string} pluginConfigPath The fully qualified path to the plugin configuration data.
+ * @return {object}
+ * @author Seth Hollingsead
+ * @date 2022/09/09
+ */
+async function loadPluginConfigData(pluginConfigPath) {
+  let functionName = loadPluginConfigData.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, 'plugnConfigPath is: ' + pluginConfigPath);
+  let returnData = {};
+  // TODO: Add a call here to load the plugin data.
+  
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
+/**
  * @function executeBusinessRules
  * @description A wrapper to call a business rule from the application level code.
  * @param {array<string|integer|boolean|object|function,string|integer|boolean|object|function>} inputs The array of inputs:
@@ -501,6 +521,7 @@ export default {
   loadCommandAliases,
   loadCommandWorkflows,
   loadPlugins,
+  loadPluginConfigData,
   executeBusinessRules,
   enqueueCommand,
   isCommandQueueEmpty,
