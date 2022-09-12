@@ -14,7 +14,7 @@ import * as app_cfg from '../../constants/application.configuration.constants.js
 /**
  * @function applicationConfigurationConstantsValidation
  * @description Initializes the application configuration constants validation data objects array.
- * @return {void}
+ * @return {array<Object<Name,Actual,Expected>>} An array of constants validation data objects.
  * @author Seth Hollingsead
  * @date 2022/03/22
  */
