@@ -30,6 +30,21 @@ const baseFileName = path.basename(import.meta.url, path.extname(import.meta.url
 const namespacePrefix = wrd.cbrokers + bas.cDot + baseFileName + bas.cDot;
 
 /**
+ * @function loadPluginRegistry
+ * @description Loads the plugin registry file, which specified the data with the paths were plugins should be loaded from.
+ * @param {string} pluginRegistryPath Teh path to the plugin registry for the app that loaded the haystacks framework.
+ * @return {object} The JSON data object loaded from the specified plugin registry path by the input parameter.
+ * @author Seth Hollingsead
+ * @date 2022/09/13
+ */
+async function loadPluginRegistry(pluginRegistryPath) {
+  let functionName = loadPluginRegistry.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  // pluginRegistryPath is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginRegistryPathIs + pluginRegistryPath);
+}
+
+/**
  * @function loadPluginMetaData
  * @description Loads the plugin meta data for the plugin at the specified path by looking
  * for a package.json at the specified path and loading that file, and returning it as a JSON object.
@@ -45,7 +60,8 @@ async function loadPluginMetaData(pluginPath) {
   await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginPathIs + pluginPath);
   let returnData = {};
   let resolvedPluginPath = path.resolve(pluginPath + bas.cForwardSlash + sys.cpackageDotJson);
-  await loggers.consoleLog(namespacePrefix + functionName, 'resolvedPluginPath is: ' + resolvedPluginPath);
+  // resolvedPluginPath is
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cresolvedPluginPathIs + resolvedPluginPath);
   returnData = await ruleBroker.processRules([resolvedPluginPath, ''], [biz.cgetJsonData]);
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
@@ -117,8 +133,9 @@ async function loadPlugin(pluginExecutionPath) {
       return await import(path);
     };
     return loadAsyncImport().then(async value => {
-      resolve(returnData = await value['default'].initializePlugin());
-      console.log('dataLoaded is: ' + JSON.stringify(returnData));
+      resolve(returnData = await value[wrd.cdefault].initializePlugin());
+      // dataLoaded is:
+      console.log(msg.cdataLoadedIs'dataLoaded is: ' + JSON.stringify(returnData));
     }).catch (err => reject(err));
   });
 
@@ -134,6 +151,7 @@ async function loadPlugin(pluginExecutionPath) {
 // TODO: Don't forget to add all the JSON debug settings for the new files: chiefPlugin & pluginBroker.
 
 export default {
+  loadPluginRegistry,
   loadPluginMetaData,
   extractAndProcessPluginEntryPointURI,
   loadPlugin

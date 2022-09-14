@@ -1,8 +1,5 @@
 {
-    "plugins": [
-      "pluginOne": {
-        "Name": "pluginOne",
-        "Path": "C:/haystacks-plugins/pluginOne/"
-      }
-    ]
+  "plugins": {
+    "Path": "C:/haystacks-plugins/"
   }
+}

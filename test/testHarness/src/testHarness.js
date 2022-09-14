@@ -75,6 +75,7 @@ async function bootstrapApplication() {
       clientMetaDataPath: apc.cmetaDataDevPath,
       clientCommandAliasesPath: rootPath + apc.cFullDevCommandsPath,
       clientConstantsPath: rootPath + apc.cFullDevConstantsPath,
+      clientRegisteredPlugins: rootPath + apc.cFullDevPluginsRegistryPath,
       clientWorkflowsPath: rootPath + apc.cFullDevWorkflowsPath,
       applicationConstantsValidationData: allAppCV.initializeAllClientConstantsValidationData,
       clientBusinessRules: {},
@@ -89,6 +90,7 @@ async function bootstrapApplication() {
       clientMetaDataPath: apc.cmetaDataProdPath,
       clientCommandAliasesPath: rootPath + apc.cFullProdCommandsPath,
       clientConstantsPath: rootPath + apc.cFullProdConstantsPath,
+      clientRegisteredPlugins: rootPath + apc.cFullProdPluginsRegistryPath,
       clientWorkflowsPath: rootPath + apc.cFullProdWorkflowsPath,
       applicationConstantsValidationData: allAppCV.initializeAllClientConstantsValidationData,
       clientBusinessRules: {},
@@ -105,6 +107,7 @@ async function bootstrapApplication() {
       clientMetaDataPath: apc.cmetaDataDevPath,
       clientCommandAliasesPath: rootPath + apc.cFullDevCommandsPath,
       clientConstantsPath: rootPath + apc.cFullDevConstantsPath,
+      clientRegisteredPlugins: rootPath + apc.cFullDevPluginsRegistryPath,
       clientWorkflowsPath: rootPath + apc.cFullDevWorkflowsPath,
       applicationConstantsValidationData: allAppCV.initializeAllClientConstantsValidationData,
       clientBusinessRules: {},
@@ -157,18 +160,19 @@ async function application() {
     if (process.argv[2].includes(bas.cDash) === true ||
     process.argv[2].includes(bas.cForwardSlash) === true ||
     process.argv[2].includes(bas.cBackSlash) === true) {
-      commandToExecute = await warden.executeBusinessRule([process.argv, ''], [biz.caggregateCommandArguments]);
+      commandToExecute = await haystacks.executeBusinessRule([process.argv, ''], [biz.caggregateCommandArguments]);
     }
     if (commandToExecute !== '') {
-      await warden.enqueueCommand(commandToExecute);
+      await haystacks.enqueueCommand(commandToExecute);
     }
     while (await haystacks.isCommandQueueEmpty() === false) {
       commandResult = await haystacks.processCommandQueue();
     } // End-while (haystacks.isCommandQueueEmpty() === false)
   } // End-if (!process.argv && process.argv.length > 0)
 
-  let pluginLoadedSuccess = await haystacks.loadPlugins(['C:/haystacks-plugins/pluginOne/']);
-  console.log('testHarness App pluginData loaded: ' + pluginLoadedSuccess);
+  // let pluginLoadedSuccess = await haystacks.loadPlugins(['C:/haystacks-plugins/pluginOne/']);
+  // let pluginLoadedSuccess = await haystacks.
+  // console.log('testHarness App pluginData loaded: ' + pluginLoadedSuccess);
 
   // NOW the application can continue with the interactive interface fi the flag was set to false.
   if (argumentDrivenInterface === false) {

@@ -145,9 +145,14 @@ async function initFrameworkSchema(configData) {
   await loggers.consoleLog(namespacePrefix + functionName, msg.cFrameworkVersionNumberIs + frameworkMetaData[wrd.cVersion]);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cFrameworkDescriptionIs + frameworkMetaData[wrd.cDescription]);
 
+  if (await configurator.getConfigurationSetting(wrd.csystem, cfg.cenablePluginLoader) === true) {
+    let pluginRegistryPath = path.resolve(configData[cfg.cclientRegisteredPlugins]);
+    let pluginRegistryData = await chiefPlugin.loadPluginRegistryData(pluginRegistryPath);
+  }
+
   if (await configurator.getConfigurationSetting(wrd.csystem, cfg.cenableConstantsValidation) === true) {
     let resolvedFrameworkConstantsPathActual = path.resolve(configData[cfg.cframeworkConstantsPath]);
-    let resolvedClientConstantsPathActual = path.resolve(configData[cfg.cclientConstantsPath])
+    let resolvedClientConstantsPathActual = path.resolve(configData[cfg.cclientConstantsPath]);
     await loggers.consoleLog(namespacePrefix + functionName, msg.cresolvedFrameworkConstantsPathActualIs + resolvedFrameworkConstantsPathActual);
     await loggers.consoleLog(namespacePrefix + functionName, msg.cresolvedClientConstantsPathActualIs + resolvedClientConstantsPathActual);
     await configurator.setConfigurationSetting(wrd.csystem, cfg.cframeworkConstantsPath, resolvedFrameworkConstantsPathActual);
@@ -346,7 +351,7 @@ async function loadPlugins(pluginsPaths) {
 async function loadPluginConfigData(pluginConfigPath) {
   let functionName = loadPluginConfigData.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  await loggers.consoleLog(namespacePrefix + functionName, 'plugnConfigPath is: ' + pluginConfigPath);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginConfigPathIs + pluginConfigPath);
   let returnData = {};
   // TODO: Add a call here to load the plugin data.
   

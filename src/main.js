@@ -201,7 +201,7 @@ async function loadPluginConfigData(pluginConfigPath) {
   let functionName = loadPluginConfigData;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // pluginConfigPath is:
-  await loggers.consoleLog(namespacePrefix + functionName, 'pluginConfigPath is: ' + pluginConfigPath);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginConfigPathIs + pluginConfigPath);
   let returnData = {};
   returnData = await warden.loadPluginConfigData(pluginConfigPath);
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);

@@ -27,6 +27,26 @@ const baseFileName = path.basename(import.meta.url, path.extname(import.meta.url
 const namespacePrefix = wrd.ccontrollers + bas.cDot + baseFileName + bas.cDot;
 
 /**
+ * @function loadPluginRegistryData
+ * @description Loads the plugin registry meta data which includes paths to plugins.
+ * @param {string} pluginRegistryPath 
+ * @return {object} A JSON object loaded from the specified path with the plugin paths and plugin metaData.
+ * @author Seth Hollingsead
+ * @date 2022/09/13
+ */
+async function loadPluginRegistryData(pluginRegistryPath) {
+  let functionName = loadPluginRegistryData.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  // pluginRegistryPath
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginRegistryPathIs + pluginRegistryPath);
+  let returnData = {};
+  returnData = await pluginBroker.loadPluginRegistry(pluginRegistryPath);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
+/**
  * @function loadAllPluginsMetaData
  * @description Loads the plugin meta data for all of the plugins in the input plugins path array.
  * @param {array<string>} pluginsPaths
@@ -198,6 +218,7 @@ async function loadAllPlugins(pluginsExecutionPaths, pluginsMetaData) {
 }
 
 export default {
+  loadPluginRegistryData,
   loadAllPluginsMetaData,
   loadAllPluginsExecutionPaths,
   loadAllPlugins,

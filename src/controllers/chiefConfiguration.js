@@ -72,19 +72,45 @@ async function setupConfiguration(appConfigPath, frameworkConfigPath) {
 }
 
 /**
- * @function loadAndParsePluginConfigurationData
+ * @function setupPluginConfiguration
+ * @description Sets up all of the plugin configuration data.
+ * @param {string} pluginConfigPath The path of the configuration files for the plugin layer.
+ * @return {object} All of the loaded and parsed plugin configuration data.
+ * @author Seth Hollingsead
+ * @date 2022/09/13
+ */
+async function setupPluginConfiguration(pluginConfigPath) {
+  let functionName = setupPluginConfiguration.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginConfigPathIs + pluginConfigPath);
+  let rules = [biz.cswapBackSlashToForwardSlash];
+  pluginConfigPath = await ruleBroker.processRules([pluginConfigPath, ''], rules);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginConfigPathIs + pluginConfigPath);
+  await configurator.setConfigurationSetting(wrd.csystem, sys.cpluginConfigPath, pluginConfigPath);
+  let allPluginConfigData = {};
+  allPluginConfigData = await chiefData.setupAllJsonConfigData(sys.cpluginConfigPath, wrd.cconfiguration);
+  let allParsedPluginConfigData = await parsePluginConfigurationData(allPluginConfigData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.callParsedPluginConfigDataIs + JSON.stringify(allParsedPluginConfigData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return allParsedPluginConfigData;
+}
+
+/**
+ * @function parsePluginConfigurationData
  * @description loads and parses the plugin configuration data.
- * @param {string} pluginConfigPath The path of the configuration files for the specified plugin.
- * @return {object} The JSON object that contains all of the plugin configuration data loaded from
- * all the files loaded at the specified path.
+ * @param {string} allPluginConfigData The plugin configuration data loaded from the path, that needs parsing.
+ * @return {object} The JSON object after all the parsing and processing operations are completed.
  * @author Seth Hollingsead
  * @date 2022/09/09
  */
-async function loadAndParsePluginConfigurationData(pluginConfigPath) {
-  let functionName = setupConfiguration.name;
+async function parsePluginConfigurationData(allPluginConfigData) {
+  let functionName = parsePluginConfigurationData.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  await loggers.consoleLog(namespacePrefix + functionName, 'pluginConfigPath is: ' + pluginConfigPath);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.callPluginConfigDataIs + allPluginConfigData);
   let returnData = {};
+  // TODO: Add all the parsing here, but make sure we are NOT adding it to the D-data structure,
+  // That will need to happen later when the Plugin returns all of its data back to haystacks as part of the
+  // plugin loading process.
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
@@ -182,6 +208,7 @@ async function parseLoadedConfigurationData(allConfigurationData) {
 
 export default {
   setupConfiguration,
-  loadAndParsePluginConfigurationData,
+  setupPluginConfiguration,
+  parsePluginConfigurationData,
   parseLoadedConfigurationData
 };

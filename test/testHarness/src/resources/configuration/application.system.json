@@ -18,6 +18,7 @@
   "system.clearBusinessRulesPerformanceDataAfterAnalysis": true,
   "system.clearCommandPerformanceDataAfterAnalysis": true,
   "system.printDataHiveToLogFile": true,
+  "system.enablePluginLoader": true,
   "system.enableConstantsValidation": true,
   "system.displayIndividualConstantsValidationPassMessages": false,
   "system.displayIndividualConstantsValidationFailMessages": true,
