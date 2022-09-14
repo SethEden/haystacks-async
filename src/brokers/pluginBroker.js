@@ -83,20 +83,24 @@ async function extractAndProcessPluginEntryPointURI(pluginMetaData, pluginPath) 
   let functionName = extractAndProcessPluginEntryPointURI.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // pluginMetaData is:
-  await loggers.consoleLog(namespacePrefix + functionName, 'pluginMetaData is: ' + JSON.stringify(pluginMetaData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginMetaDataIs + JSON.stringify(pluginMetaData));
   // pluginPath is:
   await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginPathIs + pluginPath);
   let returnData = '';
   if (pluginMetaData && pluginPath) {
     let pluginMainPath = pluginMetaData[wrd.cmain];
-    await loggers.consoleLog(namespacePrefix + functionName, 'pluginMainPath before join is: ' + pluginMainPath);
+    // pluginMainPath before join is:
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cextractAndProcessPluginEntryPointUriMessage01 + pluginMainPath);
     pluginMainPath = path.join(pluginPath, pluginMainPath);
-    await loggers.consoleLog(namespacePrefix + functionName, 'pluginMainPath after join is: ' + pluginMainPath);
+    // pluginMainPath after join is:
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cextractAndProcessPluginEntryPointUriMessage02 + pluginMainPath);
     pluginMainPath = url.pathToFileURL(pluginMainPath);
-    await loggers.consoleLog(namespacePrefix + functionName, 'pluginMainPath URI is: ' + pluginMainPath);
+    // pluginMainPath URI is:
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cextractAndProcessPluginEntryPointUriMessage03 + pluginMainPath);
     returnData = pluginMainPath;
   } else {
-    console.log('ERROR: No plugin meta data or plugin path are specified. ' + namespacePrefix + functionName);
+    // ERROR: No plugin meta data or plugin path are specified:
+    console.log(msg.cextractAndProcessPluginEntryPointUriMessage04 + namespacePrefix + functionName);
   }
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
@@ -116,7 +120,7 @@ async function loadPlugin(pluginExecutionPath) {
   let functionName = loadPlugin.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // pluginExecutionPath is:
-  await loggers.consoleLog(namespacePrefix + functionName, 'pluginExecutionPath is: ' + pluginExecutionPath);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginExecutionPathIs + pluginExecutionPath);
   let returnData = {};
   const pluginResponseData = new Promise((resolve, reject) => {
     const loadAsyncImport = () => {
@@ -135,7 +139,7 @@ async function loadPlugin(pluginExecutionPath) {
     return loadAsyncImport().then(async value => {
       resolve(returnData = await value[wrd.cdefault].initializePlugin());
       // dataLoaded is:
-      console.log(msg.cdataLoadedIs'dataLoaded is: ' + JSON.stringify(returnData));
+      console.log(msg.cdataLoadedIs + JSON.stringify(returnData));
     }).catch (err => reject(err));
   });
 
