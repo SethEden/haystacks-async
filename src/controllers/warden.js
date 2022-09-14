@@ -145,11 +145,6 @@ async function initFrameworkSchema(configData) {
   await loggers.consoleLog(namespacePrefix + functionName, msg.cFrameworkVersionNumberIs + frameworkMetaData[wrd.cVersion]);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cFrameworkDescriptionIs + frameworkMetaData[wrd.cDescription]);
 
-  if (await configurator.getConfigurationSetting(wrd.csystem, cfg.cenablePluginLoader) === true) {
-    let pluginRegistryPath = path.resolve(configData[cfg.cclientRegisteredPlugins]);
-    let pluginRegistryData = await chiefPlugin.loadPluginRegistryData(pluginRegistryPath);
-  }
-
   if (await configurator.getConfigurationSetting(wrd.csystem, cfg.cenableConstantsValidation) === true) {
     let resolvedFrameworkConstantsPathActual = path.resolve(configData[cfg.cframeworkConstantsPath]);
     let resolvedClientConstantsPathActual = path.resolve(configData[cfg.cclientConstantsPath]);
@@ -181,6 +176,26 @@ async function initFrameworkSchema(configData) {
   await mergeClientCommands(configData[sys.cclientCommands]);
   await loadCommandAliases(''); // This function will now pick up the defaults already saved in the configuration system.
   await loadCommandWorkflows(''); // Same as above.
+
+  if (await configurator.getConfigurationSetting(wrd.csystem, cfg.cenablePluginLoader) === true) {
+    let pluginRegistryPath = path.resolve(configData[cfg.cclientRegisteredPlugins]);
+    // pluginRegistryPath is:
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginRegistryPathIs + pluginRegistryPath);
+    await configurator.setConfigurationSetting(wrd.csystem, cfg.cpluginRegistryPath, pluginRegistryPath);
+    let pluginRegistryData = await chiefPlugin.loadPluginRegistryData(pluginRegistryPath);
+    // pluginRegistryData is:
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginRegistryDataIs + JSON.stringify(pluginRegistryData));
+    let pluginPersistedSuccess = await chiefPlugin.persistPluginRegistryToDataStructure(pluginRegistryData);
+    if (pluginPersistedSuccess === true) {
+      // The loaded data was saved to the D-data structure, we can continue processing on it now.
+      // Should first scan it to determine if it contains any registered plugins.
+      // We can add those to the load list.
+      // Then should scan the specified path to determine if there are any other plugins that should be loaded and registered.
+      // Then add them to the load list as well.
+      // Examin if there are any plugins in an excluded list, and don't add them to the load list, and don't register them.
+    }
+  }
+
   // We can pass in a name of a configuration setting that has a path to load plugin data this way.
   // console.log('Contents of D are: ' + JSON.stringify(D));
   // console.log(`END ${namespacePrefix}${functionName} function`);

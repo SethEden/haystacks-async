@@ -47,6 +47,23 @@ async function loadPluginRegistryData(pluginRegistryPath) {
 }
 
 /**
+ * @function persistPluginRegistryToDataStructure
+ * @description Saves the plugin registry data to the D-data structure.
+ * @param {*} pluginRegistryData 
+ */
+async function persistPluginRegistryToDataStructure(pluginRegistryData) {
+  let functionName = loadPluginRegistryData.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  // pluginRegistryData is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginRegistryDataIs + JSON.stringify(pluginRegistryData));
+  let returnData = false;
+  returnData = await pluginBroker.storePluginRegistryInDataStructure(pluginRegistryData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
+/**
  * @function loadAllPluginsMetaData
  * @description Loads the plugin meta data for all of the plugins in the input plugins path array.
  * @param {array<string>} pluginsPaths
@@ -219,6 +236,7 @@ async function loadAllPlugins(pluginsExecutionPaths, pluginsMetaData) {
 
 export default {
   loadPluginRegistryData,
+  persistPluginRegistryToDataStructure,
   loadAllPluginsMetaData,
   loadAllPluginsExecutionPaths,
   loadAllPlugins,

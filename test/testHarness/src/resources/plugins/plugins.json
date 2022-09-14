@@ -1,5 +1,6 @@
 {
-  "plugins": {
-    "Path": "C:/haystacks-plugins/"
-  }
+  "path": "C:/haystacks-plugins/",
+  "plugins": [
+
+  ]
 }
