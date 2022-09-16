@@ -49,7 +49,10 @@ async function loadPluginRegistryData(pluginRegistryPath) {
 /**
  * @function persistPluginRegistryToDataStructure
  * @description Saves the plugin registry data to the D-data structure.
- * @param {*} pluginRegistryData 
+ * @param {object} pluginRegistryData
+ * @return {boolean} True or False to indicate if the persistense was successful or not.
+ * @author Seth Hollingsead
+ * @date 2022/09/13
  */
 async function persistPluginRegistryToDataStructure(pluginRegistryData) {
   let functionName = loadPluginRegistryData.name;
@@ -58,6 +61,174 @@ async function persistPluginRegistryToDataStructure(pluginRegistryData) {
   await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginRegistryDataIs + JSON.stringify(pluginRegistryData));
   let returnData = false;
   returnData = await pluginBroker.storePluginRegistryInDataStructure(pluginRegistryData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
+/**
+ * @function getAllPluginsInRegistry
+ * @description This is a wrapper function for pluginBroker.listPluginsInRegistry.
+ * @return {array<string>} A list array of the names of the plugins in the plugin registry.
+ * @author Seth Hollingsead
+ * @date 2022/09/15
+ */
+async function getAllPluginsInRegistry() {
+  let functionName = getAllPluginsInRegistry.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  let returnData = [];
+  returnData = await pluginBroker.listPluginsInRegistry();
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
+/**
+ * @function getAllPluginsInRegistryPath
+ * @description This is a wrapper function for pluginBroker.listPluginsInRegistryPath.
+ * @return {array<string>} A list array of the names of the plugins located at the specified path on
+ * the local system from the plugins registry data hive.
+ * @author Seth Hollingsead
+ * @date 2022/09/15
+ */
+async function getAllPluginsInRegistryPath() {
+  let functionName = getAllPluginsInRegistryPath.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  let returnData = [];
+  returnData = await pluginBroker.listPluginsInRegistryPath()
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
+/**
+ * @function countAllPluginsInRegistry
+ * @description This is a wrapper function for pluginBroker.countPluginsInRegistry.
+ * @return {integer} The count of the number of plugins listed in the plugin registry data hive.
+ * @author Seth Hollingsead
+ * @date 2022/09/15
+ */
+async function countAllPluginsInRegistry() {
+  let functionName = countAllPluginsInRegistry.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  let returnData = 0;
+  returnData = await pluginBroker.countPluginsInRegistry();
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
+/**
+ * @function countAllPluginsInRegistryPath
+ * @description This is a wrapper function for pluginBroker.countPluginsInRegistryPath.
+ * @return {integer} The count of the number of plugin sub-folders in the plugins path listed in the plugin registry data hive.
+ * @author Seth Hollingsead
+ * @date 2022/09/15
+ */
+async function countAllPluginsInRegistryPath() {
+  let functionName = countAllPluginsInRegistryPath.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  let returnData = 0;
+  returnData = await pluginBroker.countPluginsInRegistryPath();
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
+/**
+ * @function registerNamedPlugin
+ * @description This is a wrapper function for pluginBroker.registerPlugin.
+ * @param {string} pluginName The name of the plugin that should be registered. 
+ * @param {string} pluginPath The path to the plugin, to be added to the plugin registry.
+ * This should be the path to the plugin/package.json file, but not including the package.json as part of the path URI.
+ * @return {boolean} True or False to indicate if the plugin was added to the plugin registry successfully or not.
+ * @author Seth Hollingsead
+ * @date 2022/09/15
+ */
+async function registerNamedPlugin(pluginName, pluginPath) {
+  let functionName = registerNamedPlugin.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  // pluginName is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginNameIs + pluginName);
+  // pluginPath is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginPathIs + pluginPath);
+  let returnData = false;
+  returnData = await pluginBroker.registerPlugin(pluginName, pluginPath);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
+/**
+ * @function unregisterNamedPlugin
+ * @description This is a wrapper function for pluginBroker.unregisterPlugin.
+ * @param {string} pluginName The name of the plugin that should be removed from the plugin registry.
+ * @return {boolean} True or False to indicate if the plugin was removed from the plugin registry successfully or not.
+ * @author Seth Hollingsead
+ * @date 2022/09/15
+ */
+async function unregisterNamedPlugin(pluginName) {
+  let functionName = unregisterNamedPlugin.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  // pluginName is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginNameIs + pluginName);
+  let returnData = false;
+  returnData = await pluginBroker.unregisterPlugin(pluginName);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
+/**
+ * @function synchronizePluginRegistryWithPath
+ * @description This is a wrapper function for pluginBroker.syncPluginRegistryWithPluginRegistryPath.
+ * @return {boolean} True or False to indicate if the synchronization was performed successfully or not.
+ * @author Seth Hollingsead
+ * @date 2022/09/15
+ * @NOTE It is expected that the number of plugins loaded at any one time will not be crazy high.
+ * The function that is called in the pluginBroker.syncPluginRegistryWithPluginRegistryPath will
+ * do a O(n^2) brute force search,
+ * if the number of plugins needed at any one time ever grows much over 100, then this solution will need to be re-evaluated!
+ */
+async function synchronizePluginRegistryWithPath() {
+  let functionName = synchronizePluginRegistryWithPath.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  let returnData = false;
+  returnData = await pluginBroker.synchronizePluginRegistryWithPath();
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
+/**
+ * @function clearPluginRegistry
+ * @description This is a wrapper function for pluginBroker.unregisterAllPlugins.
+ * @return {boolean} True or False to indicate if the plugin registry data hive was cleared successfully or not.
+ * @author Seth Hollingsead
+ * @date 2022/09/15
+ */
+async function clearPluginRegistry() {
+  let functionName = clearPluginRegistry.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  let returnData = false;
+  returnData = await pluginBroker.unregisterAllPlugins();
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
+/**
+ * @function savePluginRegistryDisk
+ * @description This is a wrapper function for pluginBroker.savePluginRegistry.
+ * @return {boolean} True or False to indicate if the plugin registry was successfully saved to the disk or not.
+ * @author Seth Hollingsead
+ * @date 2022/09/15
+ */
+async function savePluginRegistryDisk() {
+  let functionName = savePluginRegistryDisk.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  let returnData = false;
+  returnData = await pluginBroker.savePluginRegistry();
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
@@ -82,20 +253,22 @@ async function loadAllPluginsMetaData(pluginsPaths) {
   if (pluginsPaths && pluginsPaths.length > 0) {
     for (let pluginKey in pluginsPaths) {
       // pluginKey is:
-      await loggers.consoleLog(namespacePrefix + functionName, 'pluginKey is: ' + pluginKey);
+      await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginKeyIs + pluginKey);
       let pluginPath = pluginsPaths[pluginKey];
       // pluginPath is:
-      await loggers.consoleLog(namespacePrefix + functionName, 'pluginPath is: ' + pluginPath);
+      await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginPathIs + pluginPath);
       returnData[index] = {};
       if (pluginPath != '') {
         returnData[index] = await pluginBroker.loadPluginMetaData(pluginPath);
       } // End-if (pluginPath != '')
-      await loggers.consoleLog(namespacePrefix + functionName, 'loadedPluginMetaData at index: ' +
+      // loadedPluginMetaData at index:
+      await loggers.consoleLog(namespacePrefix + functionName, msg.cloadedPluginMetaDataAtIndex +
         index + ' data: ' + JSON.stringify(returnData[index]));
       index = index + 1;
     } // End-for (let pluginPath in pluginsPaths)
   } else {
-    let errorMessage = 'ERROR: No plugin paths provided, please provide paths and try again.';
+    // ERROR: No plugin paths provided, please provide paths and try again.
+    let errorMessage = msg.cErrorLoadAllPluginsMetaDataMessage01;
     console.log(errorMessage); // Make sure to output the error!
   }
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
@@ -120,7 +293,7 @@ async function loadAllPluginsExecutionPaths(pluginsMetaData, pluginsPaths) {
   let functionName = loadAllPluginsExecutionPaths.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // pluginsMetaData is:
-  await loggers.consoleLog(namespacePrefix + functionName, 'pluginsMetaData is: ' + JSON.stringify(pluginsMetaData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginsMetaDataIs + JSON.stringify(pluginsMetaData));
   // pluginPaths are:
   await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginsPathsAre + JSON.stringify(pluginsPaths));
   let returnData = [];
@@ -128,19 +301,21 @@ async function loadAllPluginsExecutionPaths(pluginsMetaData, pluginsPaths) {
   if (pluginsMetaData && pluginsMetaData.length > 0) {
     for (let pluginMetaDataKey in pluginsMetaData) {
       // pluginMetaDataKey is:
-      await loggers.consoleLog(namespacePrefix + functionName, 'pluginMetaDataKey is: ' + pluginMetaDataKey);
+      await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginMetaDataKeyIs + pluginMetaDataKey);
       let pluginMetaData = pluginsMetaData[pluginMetaDataKey];
       // pluginMetaData is:
-      await loggers.consoleLog(namespacePrefix + functionName, 'puginMetaData is: ' + JSON.stringify(pluginMetaData));
+      await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginMetaDataIs + JSON.stringify(pluginMetaData));
       returnData[index] = '';
       if (pluginMetaData) {
         returnData[index] = await pluginBroker.extractAndProcessPluginEntryPointURI(pluginMetaData, pluginsPaths[index]);
-        await loggers.consoleLog(namespacePrefix + functionName, 'pluginPathURI at index: ' + index + ' data: ' + returnData[index]);
+        // pluginPathURI at index:
+        await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginPathUriAtIndex + index + bas.cSpace + wrd.cData + bas.cColon + bas.cSpace + returnData[index]);
       }
       index = index + 1;
     } // End-for (let pluginMetaData in pluginsMetaData)
   } else {
-    let errorMessage = 'ERROR: No plugin meta data was found. Please ensure the correct path is provided and try again.';
+    // ERROR: No plugin meta data was found. Please ensure the correct path is provided and try again.
+    let errorMessage = msg.cErrorLoadAllPluginsExecutionPathsMessage01;
     console.log(errorMessage); // Make sure to output the error!
   }
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
@@ -166,9 +341,9 @@ async function loadAllPlugins(pluginsExecutionPaths, pluginsMetaData) {
   let functionName = loadAllPlugins.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // pluginsExecutionPaths is:
-  await loggers.consoleLog(namespacePrefix + functionName, 'pluginsExecutionPaths is: ' + JSON.stringify(pluginsExecutionPaths));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginsExecutionPathsIs + JSON.stringify(pluginsExecutionPaths));
   // pluginsMetaData is:
-  await loggers.consoleLog(namespacePrefix + functionName, 'pluginsMetaData is: ' + JSON.stringify(pluginsMetaData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cplugnsMetaDataIs + JSON.stringify(pluginsMetaData));
   let returnData = {};
   let index = 0;
   if (pluginsExecutionPaths && pluginsMetaData && pluginsExecutionPaths.length > 0 && pluginsMetaData.length > 0) {
@@ -177,15 +352,19 @@ async function loadAllPlugins(pluginsExecutionPaths, pluginsMetaData) {
       let pluginExecutionPath = pluginsExecutionPaths[pluginExecutionPathKey];
       let pluginMetaData = pluginsMetaData[index];
       if (pluginExecutionPath && pluginMetaData) {
-        await loggers.consoleLog(namespacePrefix + functionName, 'pluginExecutionPath is: ' + pluginExecutionPath);
-        await loggers.consoleLog(namespacePrefix + functionName, 'pluginMetaData is: ' + JSON.stringify(pluginMetaData));
+        // pluginExectuionPath is:
+        await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginExecutionPathIs + pluginExecutionPath);
+        // pluginMetaData is:
+        await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginMetaDataIs + JSON.stringify(pluginMetaData));
         returnData[pluginMetaData[wrd.cname]] = {}; // Initialize the data structure
         // Load the data and add it.
         try {
           returnData[pluginMetaData[wrd.cname]] = await pluginBroker.loadPlugin(pluginExecutionPath);
         } catch (err) {
-          console.log(msg.cERROR_Colon + namespacePrefix + functionName + ' Failed to load the plugin: ' + pluginMetaData[wrd.cname]);
-          console.log('plugin entry point path: ' + pluginExecutionPath);
+          // Failed to load the plugin:
+          console.log(msg.cERROR_Colon + namespacePrefix + functionName + msg.cloadAllPluginsMessage01 + pluginMetaData[wrd.cname]);
+          // plugin entry point path:
+          console.log(msg.cloadAllPluginsMessage02 + pluginExecutionPath);
           console.log(msg.cERROR_Colon + err);
           stack.push(sys.cpluginsLoaded, [pluginMetaData[wrd.cname], false]);
         }
@@ -193,13 +372,16 @@ async function loadAllPlugins(pluginsExecutionPaths, pluginsMetaData) {
         // so that all the plugins loaded can be verified.
         stack.push(sys.cpluginsLoaded, [pluginMetaData[wrd.cname], true]);
       } else {
-        console.log(msg.cERROR_Colon + namespacePrefix + functionName + ' Failed to load the plugin: ' + pluginMetaData[wrd.cname]);
-        console.log('plugin entry point path: ' + pluginExecutionPath);
+        // Failed to load the plugin:
+        console.log(msg.cERROR_Colon + namespacePrefix + functionName + msg.cloadAllPluginsMessage01 + pluginMetaData[wrd.cname]);
+        // plugin entry point path:
+        console.log(msg.cloadAllPluginsMessage02 + pluginExecutionPath);
         stack.push(sys.cpluginsLoaded, [pluginMetaData[wrd.cname], false]);
       }
     } // End-for (let pluginExecutionPath in pluginsExecutionPaths)
   } else {
-    console.log('ERROR: No plugin execution paths or plugins metaData was specified: ' + namespacePrefix + functionName);
+    // ERROR: No plugin execution paths or plugins metaData was specified:
+    console.log(msg.cloadAllPluginsMessage03 + namespacePrefix + functionName);
   }
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
@@ -237,6 +419,15 @@ async function loadAllPlugins(pluginsExecutionPaths, pluginsMetaData) {
 export default {
   loadPluginRegistryData,
   persistPluginRegistryToDataStructure,
+  getAllPluginsInRegistry,
+  getAllPluginsInRegistryPath,
+  countAllPluginsInRegistry,
+  countAllPluginsInRegistryPath,
+  registerNamedPlugin,
+  unregisterNamedPlugin,
+  synchronizePluginRegistryWithPath,
+  clearPluginRegistry,
+  savePluginRegistryDisk,
   loadAllPluginsMetaData,
   loadAllPluginsExecutionPaths,
   loadAllPlugins,
