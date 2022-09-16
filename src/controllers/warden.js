@@ -33,7 +33,6 @@ import loggers from '../executrix/loggers.js';
 // External imports
 import hayConst from '@haystacks/constants';
 import path from 'path';
-import pluginBroker from '../brokers/pluginBroker.js'
 
 const {bas, biz, cfg, gen, msg, sys, wrd} = hayConst;
 const baseFileName = path.basename(import.meta.url, path.extname(import.meta.url));
@@ -490,7 +489,7 @@ async function writePluginRegistryToDisk() {
  * @function loadPlugin
  * @description Calls the plugin initializePlugin function to get the plugin data:
  * Busienss rules, Commands, Workflows, Constants, Configurations, dependencies ist (dependant plugins), etc...
- * @param {string} pluginPath The fully qwualified path where to load the plugin from.
+ * @param {string} pluginPath The fully qualified path where to load the plugin from.
  * @return {boolean} True or False to indicate if the plugin was loaded successfully or not.
  * @author Seth Hollingsead
  * @date 2022/09/15
@@ -558,7 +557,7 @@ async function loadPlugins(pluginsPaths) {
  * @function loadPluginsFromRegistry
  * @description Calls the plugin initializePlugin function to get teh plugin data, for each of the plugins and their paths from the plugin registry.
  * Business rules, Commands, Workflows, Constants, Configurations, dependencies list (dependant plugins), etc...
- * @return {boolean} True or False to ndicate if all the plugns were loaded or not.
+ * @return {boolean} True or False to ndicate if all the plugins were loaded or not.
  * @author Seth Hollingsead
  * @date 2022/09/16
  */

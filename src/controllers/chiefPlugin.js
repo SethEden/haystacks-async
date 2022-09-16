@@ -327,7 +327,7 @@ async function loadAllPluginsExecutionPaths(pluginsMetaData, pluginsPaths) {
  * @function loadAllPlugins
  * @description This is a wrapper function that iterates over the list of plugin URI paths to import and calls the
  * loadPlugin function on the pluginBroker to actually load the plugin data, metaData, business rules, commands,
- * constants, constants validation, command aliases, configuration settings, debug settings and workfows.
+ * constants, constants validation, command aliases, configuration settings, debug settings and workflows.
  * @param {array<string>} pluginsExecutionPaths An array of fully qualified path URI's to be imported and executed for each plugin.
  * @param {array<object>} pluginsMetaData An array of JSON objects that contain all of the package.json data
  * loaded for each plugin that should be imported, we are passing this along here,
