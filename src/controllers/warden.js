@@ -510,7 +510,7 @@ async function loadPlugin(pluginPath) {
 
 /**
  * @function loadPlugins
- * @description Calls the plugin initializePlugin function to get the plugin data:
+ * @description Calls the plugin initializePlugin function to get the plugin data, for each of the plugins in the input array of plugin paths:
  * Business rules, Commands, Workflows, Constants, Configurations, dependencies list (dependant plugins), etc...
  * @param {array<string>} pluginsPaths An array of fully qualified paths where to load the plugins from.
  * @return {boolean} True or False to indicate if all the plugins were loaded or not.
@@ -549,6 +549,25 @@ async function loadPlugins(pluginsPaths) {
   // await allPluginsData['plugin-one']['commands']['pluginOneCommand02']('7','8');
   // console.log('DONE Attempting to execute the plugin command 02 remotely.');
 
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
+/**
+ * @function loadPluginsFromRegistry
+ * @description Calls the plugin initializePlugin function to get teh plugin data, for each of the plugins and their paths from the plugin registry.
+ * Business rules, Commands, Workflows, Constants, Configurations, dependencies list (dependant plugins), etc...
+ * @return {boolean} True or False to ndicate if all the plugns were loaded or not.
+ * @author Seth Hollingsead
+ * @date 2022/09/16
+ */
+async function loadPluginsFromRegistry() {
+  let functionName = loadPlugins.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  let returnData = false;
+  // TODO: Call all the functions here to load the plugins metaData and then load all the plugins.
+  console.log('TODO: Call all the functions here to load the plugins metaData and then load all the plugins.')
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
@@ -817,6 +836,7 @@ export default {
   writePluginRegistryToDisk,
   loadPlugin,
   loadPlugins,
+  loadPluginsFromRegistry,
   unloadPlugin,
   unloadPlugins,
   unloadAllPlugins,

@@ -397,6 +397,25 @@ async function loadPlugins(pluginsPaths) {
 }
 
 /**
+ * @function loadPuginsFromRegistry
+ * @description A wrapper call to warden.loadPluginsFromRegistry function.
+ * Calls various functions in the cief Plugin and pluginBroker to oad plugin metaData and data:
+ * Business rules, Commands, Workflows, Constants, Configurations, dependencies ist (dependant plugns), etc...
+ * @return {boolean} True or False to indicate if all the plugins were loaded or not.
+ * @author Seth Hollingsead
+ * @date 2022/09/16
+ */
+async function loadPluginsFromRegistry() {
+  let functionName = loadPlugins.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  let returnData = false;
+  returnData = warden.loadPluginsFromRegistry();
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
+/**
  * @function unloadPlugin
  * @description A wrapper call to the warden.unloadPlugin function.
  * Calls various functions in the chiefPlugin and pluginBroker to unload and remove metaData and data:
@@ -655,6 +674,7 @@ export default {
   writePluginRegistryToDisk,
   loadPlugin,
   loadPlugins,
+  loadPluginsFromRegistry,
   unloadPlugin,
   unloadPlugins,
   unloadAllPlugins,
