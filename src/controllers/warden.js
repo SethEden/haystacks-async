@@ -618,20 +618,24 @@ async function unloadAllPlugins() {
 }
 
 /**
- * @function loadPluginConfigData
- * @description Calls the necessary functions to load and parse the configuration data from the specified path.
- * @param {string} pluginConfigPath The fully qualified path to the plugin configuration data.
- * @return {object}
+ * @function loadPluginResourceData
+ * @description Calls the necessary functions to load and parse the resource data from the specified path.
+ * @param {string} contextName The type of resource that is being loaded, eg: configuration, commandAliases, workflows, ect...
+ * @param {string} pluginResourcePath The fully qualified path to the plugin resource data.
+ * @return {object} The JSON data that is loaded and parsed from the plugin path.
  * @author Seth Hollingsead
  * @date 2022/09/09
  */
-async function loadPluginConfigData(pluginConfigPath) {
-  let functionName = loadPluginConfigData.name;
+async function loadPluginResourceData(contextName, pluginResourcePath) {
+  let functionName = loadPluginResourceData.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginConfigPathIs + pluginConfigPath);
+  // contextName is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.ccontextNameIs + contextName);
+  // pluginResourcePath is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginResourcePathIs + pluginResourcePath);
   let returnData = {};
   // TODO: Add a call here to load the plugin data.
-  
+  console.log('TODO: Add a call here to load the plugin data.');
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
@@ -816,7 +820,7 @@ export default {
   unloadPlugin,
   unloadPlugins,
   unloadAllPlugins,
-  loadPluginConfigData,
+  loadPluginResourceData,
   executeBusinessRules,
   enqueueCommand,
   isCommandQueueEmpty,

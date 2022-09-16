@@ -460,20 +460,23 @@ async function unloadAllPlugins() {
 }
 
 /**
- * @function loadPluginConfigData
- * @description A wrapper call to the warden.loadPluginConfigData function.
+ * @function loadPluginResourceData
+ * @description A wrapper call to the warden.loadPluginResourceData function.
+ * @param {string} contextName The type of resource that is being loaded, eg: configuration, commandAliases, workflows, ect...
  * @param {string} pluginConfigPath The fully qualified path to where the plugin data is located and should be loaded from.
  * @return {object} The JSON data that is loaded and parsed from the plugin path.
  * @author Seth Hollingsead
  * @date 2022/09/09
  */
-async function loadPluginConfigData(pluginConfigPath) {
-  let functionName = loadPluginConfigData;
+async function loadPluginResourceData(contextName, pluginResourcePath) {
+  let functionName = loadPluginResourceData.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  // pluginConfigPath is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginConfigPathIs + pluginConfigPath);
+  // contextName is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.ccontextNameIs + contextName);
+  // pluginResourcePath is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginResourcePathIs + pluginResourcePath);
   let returnData = {};
-  returnData = await warden.loadPluginConfigData(pluginConfigPath);
+  returnData = await warden.loadPluginResourceData(contextName, pluginResourcePath);
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
@@ -655,7 +658,7 @@ export default {
   unloadPlugin,
   unloadPlugins,
   unloadAllPlugins,
-  loadPluginConfigData,
+  loadPluginResourceData,
   executeBusinessRules,
   enqueueCommand,
   isCommandQueueEmpty,
