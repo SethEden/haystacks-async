@@ -252,7 +252,7 @@ async function unregisterAllPlugins(inputData, inputMetaData) {
  * @description This is a command function that calls the chiefPlugin.savePluginRegistryDisk function.
  * @param {string} inputData Not used for this command.
  * @param {string} inputMetaData Not used for this command.
- * @return {array<boolean,boolean} An array with a boolean True or False value to indicate if
+ * @return {array<boolean,boolean>} An array with a boolean True or False value to indicate if
  * the application should exit or not exit, followed by another boolean value to indicate if
  * the plugin registry was saved successfully or not.
  * @author Seth Hollingsead
