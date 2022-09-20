@@ -30,4 +30,4 @@ export const capplication_configuration_constants_js = wrd.capplication + bas.cD
 export const capplication_constants_js = wrd.capplication + bas.cDot + wrd.cconstants + gen.cDotjs; // application.constants.js
 export const capplication_function_constants_js = wrd.capplication + bas.cDot + wrd.cfunction + bas.cDot + wrd.cconstants + gen.cDotjs; // application.function.constants.js
 export const capplication_message_constants_js = wrd.capplication + bas.cDot + wrd.cmessage + bas.cDot + wrd.cconstants + gen.cDotjs; // application.message.constants.js
-export const capplication_system_constants_js = wrd.capplication + bas.cDot + wrd.csystem + bas.cDot + wrd.cconstants + gen.cDotjs; // application.system.constants.js;
+export const capplication_system_constants_js = wrd.capplication + bas.cDot + wrd.csystem + bas.cDot + wrd.cconstants + gen.cDotjs; // application.system.constants.js

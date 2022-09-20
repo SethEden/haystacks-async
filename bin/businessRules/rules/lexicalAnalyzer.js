@@ -96,7 +96,7 @@ async function parseBusinessRuleArgument(inputData, inputMetaData) {
  * using the RegExp constructor, then the RegExp object will be returned as part of the return object.
  * @param {string} inputData The argument string that needs additional parsing.
  * @param {string} inputMetaData Not used for this business rule.
- * @return {string|array<string|integer|boolean|object>} The argument that should be returned and sued by the system after all necessary parsing.
+ * @return {string|array<string|integer|boolean|object>} The argument that should be returned and used by the system after all necessary parsing.
  * @author Seth Hollingsead
  * @date 2022/05/03
  */

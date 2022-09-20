@@ -14,7 +14,7 @@ import * as app_msg from '../../constants/application.message.constants.js';
 /**
  * @function applicationMessageConstantsValidation
  * @description Initializes the application message constants validation data objects array.
- * @return {void}
+ * @return {array<Object<Name,Actual,Expected>>} An array of constants validation data objects.
  * @author Seth Hollingsead
  * @date 2022/03/22
  */

@@ -102,10 +102,11 @@ async function getRule(inputData, inputMetaData) {
   let returnData = false;
   if (inputData && inputData != '') {
     if (await doesRuleExist(inputData, '') === true) {
-      returnData = D[sys.cbusinessRules][inputData];
+      console.log('D[sys.cbusinessRules][inputData] is: ' + D[sys.cbusinessRules][inputData], sys.cbusinessRules, inputData);
+      returnData = await D[sys.cbusinessRules][inputData];
     }
   } // End-if (inputData && inputData != '')
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }

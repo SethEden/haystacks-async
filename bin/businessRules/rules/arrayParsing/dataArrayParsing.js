@@ -81,8 +81,8 @@ async function storeData(inputData, inputMetaData) {
  * @function getStoredData
  * @description Gets the named data stored in the D data structure in the DataStorage data hive.
  * @param {string} inputData The name of the sub-data hive that should contain the stored data we are looking for.
- * @param {string} inputMetaData Not used for tis business rule.
- * @return {object} The data that was stored in the sub-data hie under the DataStorage data hive of the D data structure.
+ * @param {string} inputMetaData Not used for this business rule.
+ * @return {object} The data that was stored in the sub-data hive under the DataStorage data hive of the D data structure.
  * @author Seth Hollingsead
  * @date 2022/01/20
  */

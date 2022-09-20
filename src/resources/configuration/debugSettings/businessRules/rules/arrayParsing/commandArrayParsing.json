@@ -1,5 +1,5 @@
 {
-  "debugFiles|debugSetting.businessRules.rules.arrayParsing.commandArrayParsing": true,
+  "debugFiles|debugSetting.businessRules.rules.arrayParsing.commandArrayParsing": false,
   "debugFiles|debugSetting.businessRules.rules.arrayParsing.commandArrayParsing@ModuleFontStyle": "Bold|Underline",
   "debugFiles|debugSetting.businessRules.rules.arrayParsing.commandArrayParsing@FunctionFontStyle": "Bold|Underline",
   "debugFiles|debugSetting.businessRules.rules.arrayParsing.commandArrayParsing@MessageFontStyle": "Underline",
@@ -8,9 +8,9 @@
   "debugFiles|debugSetting.businessRules.rules.arrayParsing.commandArrayParsing@FunctionFontColor": "White",
   "debugFiles|debugSetting.businessRules.rules.arrayParsing.commandArrayParsing@MessageFontColor": "178,132,190",
   "debugFiles|debugSetting.businessRules.rules.arrayParsing.commandArrayParsing@DataFontColor": "White",
-  "debugFiles|debugSetting.businessRules.rules.arrayParsing.commandArrayParsing@ModuleFontBackgroundColor": "0,155,155",
+  "debugFiles|debugSetting.businessRules.rules.arrayParsing.commandArrayParsing@ModuleFontBackgroundColor": "0,80,80",
   "debugFiles|debugSetting.businessRules.rules.arrayParsing.commandArrayParsing@FunctionFontBackgroundColor": "Black",
-  "debugFiles|debugSetting.businessRules.rules.arrayParsing.commandArrayParsing@MessageFontBackgroundColor": "0,155,155",
+  "debugFiles|debugSetting.businessRules.rules.arrayParsing.commandArrayParsing@MessageFontBackgroundColor": "0,80,80",
   "debugFiles|debugSetting.businessRules.rules.arrayParsing.commandArrayParsing@DataFontBackgroundColor": "Black",
   "debugFunctions|debugSetting.businessRules.rules.arrayParsing.commandArrayParsing.solveLehmerCode": false,
   "debugFunctions|debugSetting.businessRules.rules.arrayParsing.commandArrayParsing.solveLehmerCode@FunctionFontStyle": "Default",
