@@ -43,8 +43,8 @@ async function listAllPluginsInRegistry(inputData, inputMetaData) {
   let returnData = [true, []];
   returnData[1] = await chiefPlugin.getAllPluginsInRegistry();
   if (returnData[1] === false) {
-    // TODO: Add error message here to inform the user of the failure!!
-    console.log(namespacePrefix + functionName + ' TODO: Add error message here to inform the user of the failure!!');
+    // ERROR: There was an error getting the list of plugins from the registry.
+    console.log(namespacePrefix + functionName + msg.cErrorListAllPluginsInRegistryCommandMessage01);
   }
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
@@ -69,8 +69,8 @@ async function listAllPluginsInRegistryPath(inputData, inputMetaData) {
   let returnData = [true, []];
   returnData[1] = await chiefPlugin.getAllPluginsInRegistryPath();
   if (returnData[1] === false) {
-    // TODO: Add error message here to inform the user of the failure!!
-    console.log(namespacePrefix + functionName + ' TODO: Add error message here to inform the user of the failure!!');
+    // ERROR: There was an error getting the list of plugins from the path listed in the plugin registry.
+    console.log(namespacePrefix + functionName + msg.cErrorListAllPluginsInRegistryPathCommandMessage01);
   }
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
@@ -95,8 +95,8 @@ async function countPluginsInRegistry(inputData, inputMetaData) {
   let returnData = [true, []];
   returnData[1] = await chiefPlugin.countAllPluginsInRegistry();
   if (returnData[1] === false) {
-    // TODO: Add error message here to inform the user of the failure!!
-    console.log(namespacePrefix + functionName + ' TODO: Add error message here to inform the user of the failure!!');
+    // ERROR: There was an error getting the number of plugins in the plugin registry.
+    console.log(namespacePrefix + functionName + msg.cErrorCountPluginsInRegistryCommandMessage01);
   }
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
@@ -121,8 +121,8 @@ async function countPluginsInRegistryPath(inputData, inputMetaData) {
   let returnData = [true, []];
   returnData[1] = await chiefPlugin.countAllPluginsInRegistryPath();
   if (returnData[1] === false) {
-    // TODO: Add error message here to inform the user of the failure!!
-    console.log(namespacePrefix + functionName + ' TODO: Add error message here to inform the user of the failure!!');
+    // ERROR: There was an error getting the number of plugins in the path listed in the plugin registry.
+    console.log(namespacePrefix + functionName + msg.cErrorCountPluginsInRegistryPathCommandMessage01);
   }
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
@@ -212,8 +212,8 @@ async function syncPluginRegistryWithPath(inputData, inputMetaData) {
   let returnData = [true, false];
   returnData[1] = await chiefPlugin.synchronizePluginRegistryWithPath();
   if (returnData[1] === false) {
-    // TODO: Add error message here to inform the user of the failure!!
-    console.log(namespacePrefix + functionName + ' TODO: Add error message here to inform the user of the failure!!');
+    // ERROR: Failure to synchronize the plugin registry with the plugin path listed in the plugin registry.
+    console.log(namespacePrefix + functionName + msg.cErrorSyncPluginRegistryWithPathCommandMessage01);
   }
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
@@ -239,8 +239,8 @@ async function unregisterAllPlugins(inputData, inputMetaData) {
   let returnData = [true, false];
   returnData[1] = await chiefPlugin.clearPluginRegistry();
   if (returnData[1] === false) {
-    // TODO: Add error message here to inform the user of the failure!!
-    console.log(namespacePrefix + functionName + ' TODO: Add error message here to inform the user of the failure!!');
+    // ERROR: Failure to unregister all plugins.
+    console.log(namespacePrefix + functionName + msg.cErrorUnregisterAllPluginsCommandMessage01);
   }
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
@@ -266,8 +266,8 @@ async function savePluginRegistryToDisk(inputData, inputMetaData) {
   let returnData = [true, false];
   returnData[1] = await chiefPlugin.savePluginRegistryDisk();
   if (returnData[1] === false) {
-    // TODO: Add error message here to inform the user of the failure!!
-    console.log(namespacePrefix + functionName + ' TODO: Add error message here to inform the user of the failure!!');
+    // ERROR: Failure to save the plugin registry to the hard drive.
+    console.log(namespacePrefix + functionName + msg.cErrorSavePluginRegistryToDiskCommandMessage01);
   }
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
@@ -357,8 +357,8 @@ async function loadPluginsFromRegistry(inputData, inputMetaData) {
   let returnData = [true, false];
   returnData[1] = await warden.loadPluginsFromRegistry();
   if (returnData[1] === false) {
-    // TODO: Add error message here to inform the user of the failure!!
-    console.log(namespacePrefix + functionName + ' TODO: Add error message here to inform the user of the failure!!');
+    // ERROR: Failure to load the plugins from the plugin registry.
+    console.log(namespacePrefix + functionName + msg.cErrorLoadPluginsFromRegistryCommandMessage01);
   }
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
@@ -448,8 +448,8 @@ async function unloadAllPlugins(inputData, inputMetaData) {
   let returnData = [true, false];
   returnData[1] = await warden.unloadAllPlugins();
   if (returnData[1] === false) {
-    // TODO: Add error message here to inform the user of the failure!!
-    console.log(namespacePrefix + functionName + ' TODO: Add error message here to inform the user of the failure!!');
+    // ERROR: Failure to unload all the plugins.
+    console.log(namespacePrefix + functionName + msg.cErrorUnloadAllPluginsCommandMessage01);
   }
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
