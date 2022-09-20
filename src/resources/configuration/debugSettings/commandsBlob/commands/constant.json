@@ -38,7 +38,7 @@
   "debugFunctions|debugSetting.commandsBlob.commands.constant.constantsGeneratorList@FunctionFontBackgroundColor": "Black",
   "debugFunctions|debugSetting.commandsBlob.commands.constant.constantsGeneratorList@MessageFontBackgroundColor": "Black",
   "debugFunctions|debugSetting.commandsBlob.commands.constant.constantsGeneratorList@DataFontBackgroundColor": "Black",
-  "debugFunctions|debugSetting.commandsBlob.commands.constant.constantsPatternRecognizer": true,
+  "debugFunctions|debugSetting.commandsBlob.commands.constant.constantsPatternRecognizer": false,
   "debugFunctions|debugSetting.commandsBlob.commands.constant.constantsPatternRecognizer@ModuleFontStyle": "Default",
   "debugFunctions|debugSetting.commandsBlob.commands.constant.constantsPatternRecognizer@FunctionFontStyle": "Default",
   "debugFunctions|debugSetting.commandsBlob.commands.constant.constantsPatternRecognizer@MessageFontStyle": "Default",
