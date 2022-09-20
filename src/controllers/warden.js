@@ -192,7 +192,8 @@ async function initFrameworkSchema(configData) {
       // We can add those to the load list.
       // Then should scan the specified path to determine if there are any other plugins that should be loaded and registered.
       // Then add them to the load list as well.
-      // Examin if there are any plugins in an excluded list, and don't add them to the load list, and don't register them.
+      // Examine if there are any plugins in an excluded list, and don't add them to the load list, and don't register them.
+      
     }
   }
 

@@ -55,7 +55,7 @@ async function loadPluginRegistryData(pluginRegistryPath) {
  * @date 2022/09/13
  */
 async function persistPluginRegistryToDataStructure(pluginRegistryData) {
-  let functionName = loadPluginRegistryData.name;
+  let functionName = persistPluginRegistryToDataStructure.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // pluginRegistryData is:
   await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginRegistryDataIs + JSON.stringify(pluginRegistryData));
