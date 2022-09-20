@@ -2,7 +2,7 @@
  * @file application.constants.validation.js
  * @module application.constants.validation
  * @description Contains all validations for named application constants.
- * @requires module:application-constants
+ * @requires module:application.constants
  * @author Seth Hollingsead
  * @date 2022/03/22
  * @copyright Copyright © 2022-… by Seth Hollingsead. All rights reserved
@@ -14,7 +14,7 @@ import * as apc from '../../constants/application.constants.js';
 /**
  * @function applicationConstantsValidation
  * @description Initializes the application constants validation data objects array.
- * @return {void}
+ * @return {array<Object<Name,Actual,Expected>>} An array of constants validation data objects.
  * @author Seth Hollingsead
  * @date 2022/03/22
  */

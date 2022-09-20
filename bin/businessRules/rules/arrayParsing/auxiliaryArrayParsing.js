@@ -100,19 +100,22 @@ async function parseColorRangeInputs(inputData, inputMetaData) {
 async function doesArrayContainValue(inputData, inputMetaData) {
   let functionName = doesArrayContainValue.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
   // Not sure how this will output, would be good to also put some type checing on this input variable.
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = false;
-  if (inputData && inputMetaData) {
+  if (inputData) {
     let array = inputData[0];
     let value = inputData[1];
+    await loggers.consoleLog(namespacePrefix + functionName, msg.carrayIs + array.toString());
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cvalueIs + value.toString());
     if (Array.isArray(array) === false) {
       // array input object is not an array.
       await loggers.consoleLog(namespacePrefix + functionName, msg.carrayInputObjectIsNotAnArray);
     } else {
       // eslint-disable-next-line no-extra-boolean-cast
-      if (!!array.find(await (async (i) => (await inputMetaData(i, value))))) {
+      // if (!!array.find(await (async (i) => {return (await inputMetaData(i, value));}))) {
+      if (array.find(x => x === value)) {
         // The value was found in the array.
         await loggers.consoleLog(namespacePrefix + functionName, msg.cTheValueWasFoundInTheArray);
         returnData = true;

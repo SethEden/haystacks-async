@@ -8,6 +8,7 @@
  * @requires module:chiefCommander
  * @requires module:chiefConfiguration
  * @requires module:chiefData
+ * @requires module:chiefPlugin
  * @requires module:chiefWorkflow
  * @requires module:configurator
  * @requires module:loggers
@@ -24,6 +25,7 @@ import ruleBroker from '../brokers/ruleBroker.js';
 import chiefCommander from './chiefCommander.js';
 import chiefConfiguration from './chiefConfiguration.js';
 import chiefData from './chiefData.js';
+import chiefPlugin from './chiefPlugin.js';
 import chiefWorkflow from './chiefWorkflow.js';
 import configurator from '../executrix/configurator.js';
 import loggers from '../executrix/loggers.js';
@@ -145,7 +147,7 @@ async function initFrameworkSchema(configData) {
 
   if (await configurator.getConfigurationSetting(wrd.csystem, cfg.cenableConstantsValidation) === true) {
     let resolvedFrameworkConstantsPathActual = path.resolve(configData[cfg.cframeworkConstantsPath]);
-    let resolvedClientConstantsPathActual = path.resolve(configData[cfg.cclientConstantsPath])
+    let resolvedClientConstantsPathActual = path.resolve(configData[cfg.cclientConstantsPath]);
     await loggers.consoleLog(namespacePrefix + functionName, msg.cresolvedFrameworkConstantsPathActualIs + resolvedFrameworkConstantsPathActual);
     await loggers.consoleLog(namespacePrefix + functionName, msg.cresolvedClientConstantsPathActualIs + resolvedClientConstantsPathActual);
     await configurator.setConfigurationSetting(wrd.csystem, cfg.cframeworkConstantsPath, resolvedFrameworkConstantsPathActual);
@@ -174,6 +176,26 @@ async function initFrameworkSchema(configData) {
   await mergeClientCommands(configData[sys.cclientCommands]);
   await loadCommandAliases(''); // This function will now pick up the defaults already saved in the configuration system.
   await loadCommandWorkflows(''); // Same as above.
+
+  if (await configurator.getConfigurationSetting(wrd.csystem, cfg.cenablePluginLoader) === true) {
+    let pluginRegistryPath = path.resolve(configData[cfg.cclientRegisteredPlugins]);
+    // pluginRegistryPath is:
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginRegistryPathIs + pluginRegistryPath);
+    await configurator.setConfigurationSetting(wrd.csystem, cfg.cpluginRegistryPath, pluginRegistryPath);
+    let pluginRegistryData = await chiefPlugin.loadPluginRegistryData(pluginRegistryPath);
+    // pluginRegistryData is:
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginRegistryDataIs + JSON.stringify(pluginRegistryData));
+    let pluginPersistedSuccess = await chiefPlugin.persistPluginRegistryToDataStructure(pluginRegistryData);
+    if (pluginPersistedSuccess === true) {
+      // The loaded data was saved to the D-data structure, we can continue processing on it now.
+      // Should first scan it to determine if it contains any registered plugins.
+      // We can add those to the load list.
+      // Then should scan the specified path to determine if there are any other plugins that should be loaded and registered.
+      // Then add them to the load list as well.
+      // Examin if there are any plugins in an excluded list, and don't add them to the load list, and don't register them.
+    }
+  }
+
   // We can pass in a name of a configuration setting that has a path to load plugin data this way.
   // console.log('Contents of D are: ' + JSON.stringify(D));
   // console.log(`END ${namespacePrefix}${functionName} function`);
@@ -285,6 +307,356 @@ async function loadCommandWorkflows(workflowPathConfigName) {
     await chiefWorkflow.loadCommandWorkflowsFromPath(cfg.cclientWorkflowsPath, wrd.cApplication);
   }
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+}
+
+/**
+ * @function listAllPluginsInRegistry
+ * @description This is a wrapper function for chiefPlugin.getAllPluginsInRegistry.
+ * Which is in-turn a wrapper function for pluginBroker.listPluginsInRegistry.
+ * @return {array<string>} A list array of the names of the plugins in the plugin registry.
+ * @author Seth Hollingsead
+ * @date 2022/09/15
+ */
+async function listAllPluginsInRegistry() {
+  let functionName = listAllPluginsInRegistry.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  let returnData = [];
+  returnData = await chiefPlugin.getAllPluginsInRegistry();
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
+/**
+ * @function listAllPluginsInRegistryPath
+ * @description This is a wrapper function for chiefPlugin.getAllPluginsInRegistryPath.
+ * Which is in-turn a wrapper function for pluginBroker.listPluginsInRegistryPath.
+ * @return {array<string>} A list array of the names of the plugins in the plugin registry.
+ * @author Seth Hollingsead
+ * @date 2022/09/15
+ */
+async function listAllPluginsInRegistryPath() {
+  let functionName = listAllPluginsInRegistryPath.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  let returnData = [];
+  returnData = await chiefPlugin.getAllPluginsInRegistryPath();
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
+/**
+ * @function numberOfPluginsInRegistry
+ * @description This is a wrapper function for chiefPlugin.countAllPluginsInRegistry.
+ * Which is in-turn a wrapper function for pluginBroker.countPluginsInRegistry.
+ * @return {integer} The count of the number of plugins listed in the plugin registry data hive.
+ * @author Seth Hollingsead
+ * @date 2022/09/15
+ */
+async function numberOfPluginsInRegistry() {
+  let functionName = numberOfPluginsInRegistry.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  let returnData = 0;
+  returnData = await chiefPlugin.countAllPluginsInRegistry();
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
+/**
+ * @function numberOfPluginsInRegistryPath
+ * @description This is a wrapper function for chiefPlugin.countAllPluginsInRegistryPath.
+ * Which is in-turn a wrapper function for pluginBroker.countPluginsInRegistryPath.
+ * @return {integer} The count of the number of plugin sub-folders in the plugins path listed in the plugin registry data hive.
+ * @author Seth Hollingsead
+ * @date 2022/09/15
+ */
+async function numberOfPluginsInRegistryPath() {
+  let functionName = numberOfPluginsInRegistryPath.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  let returnData = 0;
+  returnData = await chiefPlugin.countAllPluginsInRegistryPath();
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
+/**
+ * @function registerPluginByNameAndPath
+ * @description This is a wrapper function for chiefPlugin.registerNamedPlugin.
+ * Which is in-turn a wrapper function for pluginBroker.registerPlugin.
+ * @param {string} pluginName The name of the plugin that should be registered.
+ * @param {string} pluginPath The path to the plugin, to be added to the plugin registry.
+ * This should be the path to the plugin/package.json file, but not including the package.json as part of the path URI.
+ * @return {boolean} True or False to indicate if the plugin was added to the plugin registry successfully or not.
+ * @author Seth Hollingsead
+ * @date 2022/09/15
+ */
+async function registerPluginByNameAndPath(pluginName, pluginPath) {
+  let functionName = registerPluginByNameAndPath.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  // pluginName is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginNameIs + pluginName);
+  // pluginPath is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginPathIs + pluginPath);
+  let returnData = false;
+  returnData = await chiefPlugin.registerNamedPlugin(pluginName, pluginPath);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
+/**
+ * @function unregisterPluginByName
+ * @description This is a wrapper function for chiefPlugin.unregisterNamedPlugin.
+ * Which is in-turn a wrapper function for pluginBroker.unregisterPlugin.
+ * @param {string} pluginName The name of the plugin that should be removed from the plugin registry.
+ * @return {boolean} True or False to indicate if the plugin was removed from the plugin registry successfully or not.
+ * @author Seth Hollingsead
+ * @date 2022/09/15
+ */
+async function unregisterPluginByName(pluginName) {
+  let functionName = unregisterPluginByName.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  // pluginName is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginNameIs + pluginName);
+  let returnData = false;
+  returnData = await chiefPlugin.unregisterNamedPlugin(pluginName);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
+/**
+ * @function syncPluginRegistryWithPath
+ * @description This is a wrapper function for chiefPlugin.synchronizePluginRegistryWithPath
+ * Which is in-turn a wrapper function for pluginBroker.synchPluginRegistryWithPluginRegistryPath.
+ * @return {boolean} True or False to indicate if the synchronization was performed successfully or not.
+ * @author Seth Hollingsead
+ * @date 2022/09/15
+ * @NOTE It is expected that the number of plugins loaded at any one time will not be crazy high.
+ * The function that is called in pluginBroker.synchPluginRegistryWithPluginRegistryPath will
+ * do a O(n^2) brute force search,
+ * if the number of plugins needed at any one time ever grows much over 100, then this solution will need to be re-evaluated!
+ */
+async function syncPluginRegistryWithPath() {
+  let functionName = syncPluginRegistryWithPath.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  let returnData = false;
+  returnData = await chiefPlugin.synchronizePluginRegistryWithPath();
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
+/**
+ * @function clearAllPluginRegistry
+ * @description This is a wrapper function for chiefPlugin.clearPluginRegistry.
+ * Which is in-turn a wrapper function for pluginBroker.unregisterAllPlugins.
+ * @return {boolean} True or False to indicate if the plugin registry data hive was cleared successfully or not.
+ * @author Seth Hollingsead
+ * @date 2022/09/15
+ */
+async function clearAllPluginRegistry() {
+  let functionName = clearAllPluginRegistry.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  let returnData = false;
+  returnData = await chiefPlugin.clearPluginRegistry();
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
+/**
+ * @function writePluginRegistryToDisk
+ * @description This is a wrapper function for chiefPlugin.savePluginRegistryDisk.
+ * Which is in-turn a wrapper function for pluginBroker.savePluginRegistry.
+ * @return {boolean} True or False to indicate if the plugin registry was successfully saved to the disk or not.
+ * @author Seth Hollingsead
+ * @date 2022/09/15
+ */
+async function writePluginRegistryToDisk() {
+  let functionName = writePluginRegistryToDisk.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  let returnData = false;
+  returnData = await chiefPlugin.savePluginRegistryDisk();
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
+/**
+ * @function loadPlugin
+ * @description Calls the plugin initializePlugin function to get the plugin data:
+ * Busienss rules, Commands, Workflows, Constants, Configurations, dependencies ist (dependant plugins), etc...
+ * @param {string} pluginPath The fully qualified path where to load the plugin from.
+ * @return {boolean} True or False to indicate if the plugin was loaded successfully or not.
+ * @author Seth Hollingsead
+ * @date 2022/09/15
+ */
+async function loadPlugin(pluginPath) {
+  let functionName = loadPlugin.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  // pluginPath is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginPathIs + pluginPath);
+  let returnData = false;
+  // TODO: Load the plugin here!!
+  console.log('TODO: Load the plugin here!!');
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
+/**
+ * @function loadPlugins
+ * @description Calls the plugin initializePlugin function to get the plugin data, for each of the plugins in the input array of plugin paths:
+ * Business rules, Commands, Workflows, Constants, Configurations, dependencies list (dependant plugins), etc...
+ * @param {array<string>} pluginsPaths An array of fully qualified paths where to load the plugins from.
+ * @return {boolean} True or False to indicate if all the plugins were loaded or not.
+ * @author Seth Hollingsead
+ * @date 2022/09/01
+ */
+async function loadPlugins(pluginsPaths) {
+  let functionName = loadPlugins.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  // pluginsPaths are:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginsPathsAre + JSON.stringify(pluginsPaths));
+  let returnData = false;
+
+  let pluginsMetaData = await chiefPlugin.loadAllPluginsMetaData(pluginsPaths);
+  let pluginsExecutionPaths = await chiefPlugin.loadAllPluginsExecutionPaths(pluginsMetaData, pluginsPaths);
+  let allPluginsData = await chiefPlugin.loadAllPlugins(pluginsExecutionPaths, pluginsMetaData);
+
+  // TODO: Now sort through all of the plugins data and activate that data in the D-data structure.
+  // We should have a verification system to confirm that all of the plugins data is activated as well.
+
+  returnData = await chiefPlugin.verifyAllPluginsLoaded();
+
+  // console.log('Attempting to execute the plugin business rule 01 remotely, by hard-coding');
+  // await allPluginsData['plugin-one']['businessRules']['pluginOneRule01']('1','2');
+  // console.log('DONE Attempting to execute the plugin business rule 01 remotely.');
+
+  // console.log('Attempting to execute the plugin business rule 02 remotely, by hard-coding');
+  // await allPluginsData['plugin-one']['businessRules']['pluginOneRule02']('3','4');
+  // console.log('DONE Attempting to execute the plugin business rule 02 remotely.');
+
+  // console.log('Attempting to execute the plugin command 01 remotely, by hard-coding');
+  // await allPluginsData['plugin-one']['commands']['pluginOneCommand01']('5','6');
+  // console.log('DONE Attempting to execute the plugin command 01 remotely.');
+
+  // console.log('Attempting to execute the plugin command 02 remotely, by hard-coding');
+  // await allPluginsData['plugin-one']['commands']['pluginOneCommand02']('7','8');
+  // console.log('DONE Attempting to execute the plugin command 02 remotely.');
+
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
+/**
+ * @function loadPluginsFromRegistry
+ * @description Calls the plugin initializePlugin function to get teh plugin data, for each of the plugins and their paths from the plugin registry.
+ * Business rules, Commands, Workflows, Constants, Configurations, dependencies list (dependant plugins), etc...
+ * @return {boolean} True or False to ndicate if all the plugins were loaded or not.
+ * @author Seth Hollingsead
+ * @date 2022/09/16
+ */
+async function loadPluginsFromRegistry() {
+  let functionName = loadPlugins.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  let returnData = false;
+  // TODO: Call all the functions here to load the plugins metaData and then load all the plugins.
+  console.log('TODO: Call all the functions here to load the plugins metaData and then load all the plugins.')
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
+/**
+ * @function unloadPlugin
+ * @description Calls various functions in the chiefPlugin and pluginBroker to unload and remove all plugin metaData and data for the specified plugin:
+ * Business rules, Commands, Workflows, Constants, Configurations, dependencies list (dependant plugins), etc...
+ * @param {string} pluginName The name of the plugin that should be unloaded.
+ * @return {boolean} True or False to indicate if the plugin was unloaded successfully or not.
+ * @author Seth Hollingsead
+ * @date 2022/09/15
+ */
+async function unloadPlugin(pluginName) {
+  let functionName = unloadPlugin.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  // pluginName is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginNameIs + pluginName);
+  let returnData = false;
+  // TODO: Unload the plugin here!!
+  console.log('TODO: Unload the plugin here!!');
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
+/**
+ * @function unloadPlugins
+ * @description Calls various functions n the chiefPlugin and pluginBroker to unload and remove all the metaData and data for a list of plugins:
+ * Business rules, Commands, Workflows, Constants, Configurations, dependencies list (dependant plugins), etc...
+ * @param {array<string>} pluginNames An array ist of names of plugins that should be unloaded.
+ * @return {boolean} True or False to indicate if all the plugins were unloaded successfully or not.
+ * @author Seth Hollingsead
+ * @date 2022/09/15
+ */
+async function unloadPlugins(pluginNames) {
+  let functionName = unloadPlugins.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  // pluginNames is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginNamesIs + JSON.stringify(pluginNames));
+  let returnData = false;
+  // TODO: Unload the plugins here!!
+  console.log('TODO: Unload the plugins here!!');
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
+/**
+ * @function unloadAllPlugins
+ * @description Calls various functions in the chiefPlugin and pluginBroker to unload and remove all plugin metaData and data:
+ * Business rules, Commands, Workflows, Constants, Configurations, dependencies ist (dependant plugins), etc...
+ * @return {boolean} True or False to indicate if all the plugins were unloaded successfully or not.
+ * @author Seth Hollingsead
+ * @date 2022/09/15
+ */
+async function unloadAllPlugins() {
+  let functionName = unloadAllPlugins.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  let returnData = false;
+  // TODO: Unload ALL the plugins here!
+  console.log('TODO: Unload ALL the plugins here!');
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
+/**
+ * @function loadPluginResourceData
+ * @description Calls the necessary functions to load and parse the resource data from the specified path.
+ * @param {string} contextName The type of resource that is being loaded, eg: configuration, commandAliases, workflows, ect...
+ * @param {string} pluginResourcePath The fully qualified path to the plugin resource data.
+ * @return {object} The JSON data that is loaded and parsed from the plugin path.
+ * @author Seth Hollingsead
+ * @date 2022/09/09
+ */
+async function loadPluginResourceData(contextName, pluginResourcePath) {
+  let functionName = loadPluginResourceData.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  // contextName is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.ccontextNameIs + contextName);
+  // pluginResourcePath is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginResourcePathIs + pluginResourcePath);
+  let returnData = {};
+  // TODO: Add a call here to load the plugin data.
+  console.log('TODO: Add a call here to load the plugin data.');
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
 }
 
 /**
@@ -452,6 +824,22 @@ export default {
   mergeClientCommands,
   loadCommandAliases,
   loadCommandWorkflows,
+  listAllPluginsInRegistry,
+  listAllPluginsInRegistryPath,
+  numberOfPluginsInRegistry,
+  numberOfPluginsInRegistryPath,
+  registerPluginByNameAndPath,
+  unregisterPluginByName,
+  syncPluginRegistryWithPath,
+  clearAllPluginRegistry,
+  writePluginRegistryToDisk,
+  loadPlugin,
+  loadPlugins,
+  loadPluginsFromRegistry,
+  unloadPlugin,
+  unloadPlugins,
+  unloadAllPlugins,
+  loadPluginResourceData,
   executeBusinessRules,
   enqueueCommand,
   isCommandQueueEmpty,

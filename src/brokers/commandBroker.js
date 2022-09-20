@@ -582,17 +582,23 @@ async function executeCommand(commandString) {
     // Command Start time is:
     await loggers.consoleLog(namespacePrefix + functionName, msg.cCommandStartTimeIs + commandStartTime);
   } // End-if (commandMetricsEnabled === true)
-  if (commandToExecute !== false && commandArgs !== false) {
-    // console.log('commandToExecute is: ' + commandToExecute);
-    returnData = await D[wrd.cCommands][commandToExecute](commandArgs, '');
-  } else if (commandToExecute !== false && commandArgs === false) {
-    // This could be a command without any arguments.
-    // console.log('This could be a command without any arguments.');
-    returnData = await D[wrd.cCommands][commandToExecute]('', '');
-  } else {
-    // This command does not exist, nothing to execute, but we don't want the application to exit.
-    // An error message should have already been thrown, but we should throw another one here.
-    // WARNING: Command does not exist, please enter a valid command and try again!
+  try {
+    if (commandToExecute !== false && commandArgs !== false) {
+      // console.log('commandToExecute is: ' + commandToExecute);
+      returnData = await D[wrd.cCommands][commandToExecute](commandArgs, '');
+    } else if (commandToExecute !== false && commandArgs === false) {
+      // This could be a command without any arguments.
+      // console.log('This could be a command without any arguments.');
+      returnData = await D[wrd.cCommands][commandToExecute]('', '');
+    } else {
+      // This command does not exist, nothing to execute, but we don't want the application to exit.
+      // An error message should have already been thrown, but we should throw another one here.
+      // WARNING: Command does not exist, please enter a valid command and try again!
+      console.log(msg.cexecuteCommandMessage1);
+      returnData = [true, false];
+    }
+  } catch (err) {
+    console.log(msg.cERROR_Colon + bas.cSpace + err);
     console.log(msg.cexecuteCommandMessage1);
     returnData = [true, false];
   }

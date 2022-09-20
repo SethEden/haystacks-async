@@ -53,7 +53,8 @@ async function solveLehmerCode(inputData, inputMetaData) {
     let lengthOfInputData = inputData.length;
     let expandedLehmerCodeArray = [];
     let lehmerCodeArray = await Array.from(Array(lengthOfInputData), () => 0);
-    expandedLehmerCodeArray = await ruleParsing.processRulesInternal([await recursiveArrayExpansion([0, lehmerCodeArray], inputData), ''], [biz.carrayDeepClone]);
+    let expandedArray = await recursiveArrayExpansion([0, lehmerCodeArray], inputData);
+    expandedLehmerCodeArray = await ruleParsing.processRulesInternal([expandedArray, ''], [biz.carrayDeepClone]);
     // expandedLehmerCodeArray is:
     await loggers.consoleLog(namespacePrefix + functionName, msg.cexpandedLehmerCodeArrayIs + JSON.stringify(expandedLehmerCodeArray));
 
@@ -117,13 +118,13 @@ async function recursiveArrayExpansion(inputData, inputMetaData) {
       // returnData is:
       await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
       lehmerCodeArray1[indexOfExpansion] = i;
-      if (await ruleParsing.processRulesInternal([[returnData, lehmerCodeArray1], await ruleParsing.getRule(biz.cascertainMatchingElements)], [biz.cdoesArrayContainValue]) === false) {
+      if (await ruleParsing.processRulesInternal([[returnData, lehmerCodeArray1], ''], [biz.cdoesArrayContainValue]) === false) {
         // pushing LehmerCodeArray1 to returnData value:
         await loggers.consoleLog(namespacePrefix + functionName, msg.cpushingLehmerCodeArray1ToReturnDataValue + JSON.stringify(lehmerCodeArray1));
         returnData.push(lehmerCodeArray1);
         // returnData after push is:
         await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataAfterPushIs + JSON.stringify(returnData));
-      } // End-if (ruleParsing.processRulesInternal([[returnData, lehmerCodeArray1], ruleParsing.getRule(biz.cascertainMatchingElements)], [biz.cdoesArrayContainValue]) === false)
+      } // End-if (await ruleParsing.processRulesInternal([[returnData, lehmerCodeArray1], ''], [biz.cdoesArrayContainValue]) === false)
     } // End-for (let i = 0; i <= limitOfExpansion; i++)
     // returnData after level 1 is:
     await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataAfterLevel1Is + JSON.stringify(returnData));
@@ -152,7 +153,8 @@ async function recursiveArrayExpansion(inputData, inputMetaData) {
         await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataAfterPopIs + JSON.stringify(returnData));
         // masterTempReturnData BEFORE recursive call is:
         await loggers.consoleLog(namespacePrefix + functionName, msg.cmasterTempReturnDataBeforeRecursiveCallIs + JSON.stringify(masterTempReturnData));
-        let tempReturnData1 = await ruleParsing.processRulesInternal([await recursiveArrayExpansion([indexOfExpansion + 1, lehmerCodeArray2], inputMetaData), ''], [biz.carrayDeepClone]);
+        let expandedArray = await recursiveArrayExpansion([indexOfExpansion + 1, lehmerCodeArray2], inputMetaData);
+        let tempReturnData1 = await ruleParsing.processRulesInternal([expandedArray, ''], [biz.carrayDeepClone]);
         // tempReturnData1 is:
         await loggers.consoleLog(namespacePrefix + functionName, msg.ctempReturnData1Is + JSON.stringify(tempReturnData1));
         // tempReturnData1.length is:
@@ -160,11 +162,11 @@ async function recursiveArrayExpansion(inputData, inputMetaData) {
         for (let k = 0; k <= tempReturnData1.length - 1; k++) {
           // BEGIN k-th iteration:
           await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_kthIteration + k);
-          if (await ruleParsing.processRulesInternal([[masterTempReturnData, tempReturnData1[k]], await ruleParsing.getRule(biz.cascertainMatchingElements)], [biz.cdoesArrayContainValue]) === false) {
+          if (await ruleParsing.processRulesInternal([[masterTempReturnData, tempReturnData1[k]], ''], [biz.cdoesArrayContainValue]) === false) {
             // pushing tempReturnData1[k] value:
             await loggers.consoleLog(namespacePrefix + functionName, msg.cpushingTempReturnData1Kvalue + JSON.stringify(tempReturnData1[k]));
             masterTempReturnData.push(await ruleParsing.processRulesInternal([tempReturnData1[k], ''], [biz.carrayDeepClone]));
-          } // End-if (ruleParsing.processRulesInternal([[masterTempReturnData, tempReturnData1[k]], ruleParsing.getRule(biz.cascertainMatchingElements)], [biz.cdoesArrayContainValue]) === false)
+          } // End-if (await ruleParsing.processRulesInternal([[masterTempReturnData, tempReturnData1[k]], ''], [biz.cdoesArrayContainValue]) === false)
           // END k-th iteration:
           await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_kthIteration + k);
         } // End-for (let k = 0; k <= tempReturnData1.length - 1; k++)

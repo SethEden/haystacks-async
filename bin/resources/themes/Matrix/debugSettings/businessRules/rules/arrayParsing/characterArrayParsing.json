@@ -25,7 +25,6 @@
   "debugFunctions|debugSetting.businessRules.rules.arrayParsing.characterArrayParsing.replaceCharacterWithCharacter@FunctionFontBackgroundColor": "Default",
   "debugFunctions|debugSetting.businessRules.rules.arrayParsing.characterArrayParsing.replaceCharacterWithCharacter@MessageFontBackgroundColor": "Default",
   "debugFunctions|debugSetting.businessRules.rules.arrayParsing.characterArrayParsing.replaceCharacterWithCharacter@DataFontBackgroundColor": "Default",
-  "debugFunctions|debugSetting.businessRules.rules.arrayParsing.characterArrayParsing.replaceCharacterWithCharacter@ModuleFontStyle": "Default",
   "debugFunctions|debugSetting.businessRules.rules.arrayParsing.characterArrayParsing.doesArrayContainCharacter": false,
   "debugFunctions|debugSetting.businessRules.rules.arrayParsing.characterArrayParsing.doesArrayContainCharacter@FunctionFontStyle": "Default",
   "debugFunctions|debugSetting.businessRules.rules.arrayParsing.characterArrayParsing.doesArrayContainCharacter@MessageFontStyle": "Default",
