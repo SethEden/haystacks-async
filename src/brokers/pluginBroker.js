@@ -281,14 +281,15 @@ async function syncPluginRegistryWithPluginRegistryPath() {
   // pluginRegistryFolderList is:
   await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginRegistryFolderListIs + pluginRegistryFolderList);
   // pluginsRootPath is:
-  // TODO Define constants here
-  await loggers.consoleLog(namespacePrefix + functionName, 'pluginsRootPath is:' + pluginsRootPath);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginsRootPath + pluginsRootPath);
   try {
     if (pluginRegistryList.length === 0 && pluginRegistryFolderList) {
-      console.log('pluginRegistryList.length === 0');
+      // pluginRegistryList.length === 0
+      await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginRegistryListLengthEqualZero);
       synchronizedPluginRegistryList[0] = {Name: pluginRegistryFolderList[0], Path: path.join(pluginsRootPath + bas.cForwardSlash + pluginRegistryFolderList + bas.cForwardSlash)};
     } else if (pluginRegistryFolderList.length !== 0) {
-      console.log('pluginRegistryList.length !== 0');
+      // pluginRegistryList.length !== 0
+      await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginRegistryListLengthNotEqualZero);
       for (let folderPlugin in pluginRegistryFolderList) {
         // folderPlugin is:
         await loggers.consoleLog(namespacePrefix + functionName, msg.cfolderPluginIs + JSON.stringify(folderPlugin));

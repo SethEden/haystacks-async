@@ -503,8 +503,9 @@ async function loadPlugin(pluginPath) {
   // pluginPath is:
   await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginPathIs + pluginPath);
   let returnData = false;
-  // TODO: Load the plugin here!!
-  console.log('TODO: Load the plugin here!!');
+  let pluginPathArray = [];
+  pluginPathArray[0] = pluginPath;
+  returnData = await loadPlugins(pluginPathArray);
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
@@ -570,8 +571,7 @@ async function loadPluginsFromRegistry() {
   let returnData = false;
   let pluginPathsArray = await chiefPlugin.getAllPluginsPathsInRegistry();
   // pluginPathsArray is:
-  // TODO: Constant to define!
-  await loggers.consoleLog(namespacePrefix + functionName, 'pluginPathsArray is: ' + JSON.stringify(pluginPathsArray));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginPathsArrayIs + JSON.stringify(pluginPathsArray));
   returnData = await loadPlugins(pluginPathsArray);
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
