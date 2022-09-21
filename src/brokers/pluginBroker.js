@@ -103,6 +103,26 @@ async function listPluginsInRegistry() {
 }
 
 /**
+ * @function listPluginsPathsInRegistry
+ * @description Builds a list array of the paths of the plugins in the plugin registry.
+ * @return {array<string>} A list array of the paths of the plugins in the plugin registry.
+ * @author Seth Hollingsead
+ * @date 2022/09/20
+ */
+async function listPluginsPathsInRegistry() {
+  let functionName = listPluginsPathsInRegistry.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  let returnData = [];
+  let pluginRegistryList = D[cfg.cpluginRegistry][wrd.cplugins];
+  for (let plugin of pluginRegistryList) {
+    returnData.push(plugin[wrd.cPath]);
+  }
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
+/**
  * @function listPluginsInRegistryPath
  * @description In the plugin registry there should be an entry for the path of the plugins on the local system.
  * This function will load that path and return a list of the sub-folders located at that path.
@@ -255,14 +275,20 @@ async function syncPluginRegistryWithPluginRegistryPath() {
   let pluginRegistryList = await listPluginsInRegistry();
   let pluginRegistryFolderList = await listPluginsInRegistryPath();
   let synchronizedPluginRegistryList = [];
+  let pluginsRootPath = await configurator.getConfigurationSetting(wrd.csystem, cfg.cpluginsRootPath);
   // pluginRegistryList is:
   await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginRegistryListIs + pluginRegistryList);
   // pluginRegistryFolderList is:
   await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginRegistryFolderListIs + pluginRegistryFolderList);
+  // pluginsRootPath is:
+  // TODO Define constants here
+  await loggers.consoleLog(namespacePrefix + functionName, 'pluginsRootPath is:' + pluginsRootPath);
   try {
-    if (pluginRegistryList.length === 0) {
-      synchronizedPluginRegistryList = pluginRegistryFolderList;
+    if (pluginRegistryList.length === 0 && pluginRegistryFolderList) {
+      console.log('pluginRegistryList.length === 0');
+      synchronizedPluginRegistryList[0] = {Name: pluginRegistryFolderList[0], Path: path.join(pluginsRootPath + bas.cForwardSlash + pluginRegistryFolderList + bas.cForwardSlash)};
     } else if (pluginRegistryFolderList.length !== 0) {
+      console.log('pluginRegistryList.length !== 0');
       for (let folderPlugin in pluginRegistryFolderList) {
         // folderPlugin is:
         await loggers.consoleLog(namespacePrefix + functionName, msg.cfolderPluginIs + JSON.stringify(folderPlugin));
@@ -476,12 +502,11 @@ async function loadPlugin(pluginExecutionPath) {
   return returnData;
 }
 
-// TODO: Don't forget to add all the JSON debug settings for the new files: chiefPlugin & pluginBroker.
-
 export default {
   loadPluginRegistry,
   storePluginRegistryInDataStructure,
   listPluginsInRegistry,
+  listPluginsPathsInRegistry,
   listPluginsInRegistryPath,
   countPluginsInRegistry,
   countPluginsInRegistryPath,

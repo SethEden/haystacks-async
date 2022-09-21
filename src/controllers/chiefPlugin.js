@@ -84,6 +84,24 @@ async function getAllPluginsInRegistry() {
 }
 
 /**
+ * @function getAllPluginsPathsInRegistry
+ * @description This is a wrapper function for pluginBroker.listPluginsPathsInRegistry
+ * The purpose is to get the array of paths for all of the plugins that must be loaded.
+ * @return {array<string>} A list array of all the paths of all the plugins in the plugin registry.
+ * @author Seth Hollingsead
+ * @date 2022/09/20
+ */
+async function getAllPluginsPathsInRegistry() {
+  let functionName = getAllPluginsPathsInRegistry.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  let returnData = [];
+  returnData = await pluginBroker.listPluginsPathsInRegistry();
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
+/**
  * @function getAllPluginsInRegistryPath
  * @description This is a wrapper function for pluginBroker.listPluginsInRegistryPath.
  * @return {array<string>} A list array of the names of the plugins located at the specified path on
@@ -194,7 +212,7 @@ async function synchronizePluginRegistryWithPath() {
   let functionName = synchronizePluginRegistryWithPath.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   let returnData = false;
-  returnData = await pluginBroker.synchronizePluginRegistryWithPath();
+  returnData = await pluginBroker.syncPluginRegistryWithPluginRegistryPath();
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
@@ -420,6 +438,7 @@ export default {
   loadPluginRegistryData,
   persistPluginRegistryToDataStructure,
   getAllPluginsInRegistry,
+  getAllPluginsPathsInRegistry,
   getAllPluginsInRegistryPath,
   countAllPluginsInRegistry,
   countAllPluginsInRegistryPath,

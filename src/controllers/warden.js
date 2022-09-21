@@ -185,6 +185,7 @@ async function initFrameworkSchema(configData) {
     let pluginRegistryData = await chiefPlugin.loadPluginRegistryData(pluginRegistryPath);
     // pluginRegistryData is:
     await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginRegistryDataIs + JSON.stringify(pluginRegistryData));
+    await configurator.setConfigurationSetting(wrd.csystem, cfg.cpluginsRootPath, pluginRegistryData[wrd.cpath]);
     let pluginPersistedSuccess = await chiefPlugin.persistPluginRegistryToDataStructure(pluginRegistryData);
     if (pluginPersistedSuccess === true) {
       // The loaded data was saved to the D-data structure, we can continue processing on it now.
@@ -193,7 +194,8 @@ async function initFrameworkSchema(configData) {
       // Then should scan the specified path to determine if there are any other plugins that should be loaded and registered.
       // Then add them to the load list as well.
       // Examine if there are any plugins in an excluded list, and don't add them to the load list, and don't register them.
-      
+      await syncPluginRegistryWithPath();
+      await loadPluginsFromRegistry();
     }
   }
 
@@ -563,11 +565,14 @@ async function loadPlugins(pluginsPaths) {
  * @date 2022/09/16
  */
 async function loadPluginsFromRegistry() {
-  let functionName = loadPlugins.name;
+  let functionName = loadPluginsFromRegistry.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   let returnData = false;
-  // TODO: Call all the functions here to load the plugins metaData and then load all the plugins.
-  console.log('TODO: Call all the functions here to load the plugins metaData and then load all the plugins.')
+  let pluginPathsArray = await chiefPlugin.getAllPluginsPathsInRegistry();
+  // pluginPathsArray is:
+  // TODO: Constant to define!
+  await loggers.consoleLog(namespacePrefix + functionName, 'pluginPathsArray is: ' + JSON.stringify(pluginPathsArray));
+  returnData = await loadPlugins(pluginPathsArray);
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
