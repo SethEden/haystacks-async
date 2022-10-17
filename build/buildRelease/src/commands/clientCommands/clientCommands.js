@@ -128,7 +128,7 @@ async function deployApplication(inputData, inputMetaData) {
   await haystacks.consoleLog(namespacePrefix, functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = [true, false];
   let passAllConstantsValidation = await haystacks.getConfigurationSetting(wrd.csystem, cfg.cpassAllConstantsValidation);
-  let passAllCommandAliasesDuplicateChecks = await haystacks.getConfigurationSetting(wrd.csystem, cfg.cpassedAllCommandAliasesDuplicateChecks);
+  let passAllCommandAliasesDuplicateChecks = true; // await haystacks.getConfigurationSetting(wrd.csystem, cfg.cpassedAllCommandAliasesDuplicateChecks);
   let passAllWorkflowDuplicateChecks = await haystacks.getConfigurationSetting(wrd.csystem, cfg.cpassedAllWorkflowDuplicateChecks);
 
   if (passAllConstantsValidation === true && passAllCommandAliasesDuplicateChecks === true && passAllWorkflowDuplicateChecks === true) {
@@ -152,11 +152,11 @@ async function deployApplication(inputData, inputMetaData) {
   } else {
     if (passAllConstantsValidation === false) {
       // ERROR: Release failed because of a failure in the constants validation system. Please fix ASAP before attempting another deployment.
-      console.log(msg.cdeployApplicationMessage1a + app_msg.cdeployApplicationMessage2a);
+      console.log(app_msg.cdeployApplicationMessage1a + app_msg.cdeployApplicationMessage2a);
     } // End-if (passAllConstantsValidation === false)
     if (passAllCommandAliasesDuplicateChecks === false) {
       // ERROR: Release failed because of a failure in the commands alias validation system. Please fix ASAP before attempting another deployment.
-      console.log(msg.cdeployApplicationMessage1b + app_msg.cdeployApplicationMessage2a);
+      console.log(app_msg.cdeployApplicationMessage1b + app_msg.cdeployApplicationMessage2a);
     } // End-if (passAllCommandAliasesDuplicateChecks === false)
   }
   await haystacks.consoleLog(namespacePrefix, functionName, msg.creturnDataIs + JSON.stringify(returnData));
@@ -184,7 +184,7 @@ async function releaseApplication(inputData, inputMetaData) {
   let returnData = [true, false];
   let errorMessage = '';
   let passAllConstantsValidation = await haystacks.getConfigurationSetting(wrd.csystem, cfg.cpassAllConstantsValidation);
-  let passAllCommandAliasesDuplicateChecks = await haystacks.getConfigurationSetting(wrd.csystem, cfg.cpassedAllCommandAliasesDuplicateChecks)
+  let passAllCommandAliasesDuplicateChecks = true; // await haystacks.getConfigurationSetting(wrd.csystem, cfg.cpassedAllCommandAliasesDuplicateChecks)
   if (passAllConstantsValidation === true && passAllCommandAliasesDuplicateChecks === true) {
     // RELEASE APPLICATION
     console.log(msg.cRELEASE_APPLICATION);
@@ -202,13 +202,13 @@ async function releaseApplication(inputData, inputMetaData) {
     // The deployApplication command should be executing before this command.
     if (passAllConstantsValidation === false) {
       // ERROR: Release failed because of a failure in the constants validation system. Please fix ASAP before attempting another deployment.
-      errorMessage = msg.cdeployApplicationMessage1a + app_msg.cdeployApplicationMessage2a;
+      errorMessage = app_msg.cdeployApplicationMessage1a + app_msg.cdeployApplicationMessage2a;
       console.log(errorMessage);
       returnData[1] = errorMessage;
     } // End-if (passAllConstantsValidation === false)
     if (passAllCommandAliasesDuplicateChecks === false) {
       // ERROR: Release failed because of a failure in the commands alias validation system. Please fix ASAP before attempting another deployment.
-      errorMessage = msg.cdeployApplicationMessage1b + app_msg.cdeployApplicationMessage2a;
+      errorMessage = app_msg.cdeployApplicationMessage1b + app_msg.cdeployApplicationMessage2a;
       console.log(errorMessage);
       returnData[1] = errorMessage;
     } // End-if (passAllCommandAliasesDuplicateChecks === false)
