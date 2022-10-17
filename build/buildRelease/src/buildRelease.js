@@ -130,6 +130,7 @@ async function deployApplication() {
   let functionName = deployApplication.name;
   await haystacks.consoleLog(namespacePrefix, functionName, msg.cBEGIN_Function);
   try {
+    let deploymentResult = [];
     // fse.copySync('/src/*', '/bin/*');
     await haystacks.setConfigurationSetting(wrd.csystem, cfg.creleaseCompleted, false);
     await haystacks.setConfigurationSetting(wrd.csystem, cfg.cpassAllConstantsValidation, false);
@@ -163,14 +164,17 @@ async function deployApplication() {
     // 4th stage deploy-release process:
     await haystacks.enqueueCommand(app_cmd.cBuildWorkflow);
     while (await haystacks.isCommandQueueEmpty() === false) {
-      await haystacks.processCommandQueue();
+      deploymentResult = await haystacks.processCommandQueue();
     } // End-while (haystacks.isCommandQueueEmpty() === false)
 
     // Deployment verification
-    let deploymentResult = await haystacks.getConfigurationSetting(wrd.csystem, app_cfg.cdeploymentCompleted);
-    if (deploymentResult) {
+    // It seems there is an issue with some kind of asynchronous race condition with how the copy file operations are being processed.
+    // I believe this value is getting set after execution has already moved on even though we are using the await statement.
+    // Anyway checking the return from the call to processCommandQueue above seems to be working fine.
+    // let deploymentResult = await haystacks.getConfigurationSetting(wrd.csystem, app_cfg.cdeploymentCompleted);
+    if (deploymentResult[1] === true) {
       // Deployment was completed:
-      console.log(app_msg.cBuildMessage1 + deploymentResult);
+      console.log(app_msg.cBuildMessage1 + deploymentResult[1]);
     } else {
       console.log(app_msg.cBuildMessage1 + gen.cFalse);
       await haystacks.setConfigurationSetting(wrd.csystem, app_cfg.cdeploymentCompleted, false);
@@ -183,5 +187,5 @@ async function deployApplication() {
   await haystacks.consoleLog(namespacePrefix, functionName, msg.cEND_Function);
 }
 
-bootStrapApplication();
-deployApplication();
+await bootStrapApplication();
+await deployApplication();

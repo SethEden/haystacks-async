@@ -90,7 +90,7 @@
   "debugFunctions|debugSetting.businessRules.rules.fileOperations.getDirectoryList@FunctionFontBackgroundColor": "Default",
   "debugFunctions|debugSetting.businessRules.rules.fileOperations.getDirectoryList@MessageFontBackgroundColor": "Default",
   "debugFunctions|debugSetting.businessRules.rules.fileOperations.getDirectoryList@DataFontBackgroundColor": "Default",
-  "debugFunctions|debugSetting.businessRules.rules.fileOperations.copyAllFilesAndFoldersFromFolderToFolder": false,
+  "debugFunctions|debugSetting.businessRules.rules.fileOperations.copyAllFilesAndFoldersFromFolderToFolder": true,
   "debugFunctions|debugSetting.businessRules.rules.fileOperations.copyAllFilesAndFoldersFromFolderToFolder@ModuleFontStyle": "Default",
   "debugFunctions|debugSetting.businessRules.rules.fileOperations.copyAllFilesAndFoldersFromFolderToFolder@FunctionFontStyle": "Default",
   "debugFunctions|debugSetting.businessRules.rules.fileOperations.copyAllFilesAndFoldersFromFolderToFolder@MessageFontStyle": "Default",
