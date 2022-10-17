@@ -652,14 +652,19 @@ async function unloadAllPlugins() {
  */
 async function loadPluginResourceData(contextName, pluginResourcePath) {
   let functionName = loadPluginResourceData.name;
+  console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // contextName is:
+  console.log('contextName is: ' + contextName);
   await loggers.consoleLog(namespacePrefix + functionName, msg.ccontextNameIs + contextName);
   // pluginResourcePath is:
+  console.log('pluginResourcePath is: ' + pluginResourcePath);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginResourcePathIs + pluginResourcePath);
   let returnData = {};
   // TODO: Add a call here to load the plugin data.
   console.log('TODO: Add a call here to load the plugin data.');
+  // await chiefConfiguration.setupConfiguration(appConfigPath, frameworkConfigPath);
+  
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
