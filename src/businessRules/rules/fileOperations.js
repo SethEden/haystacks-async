@@ -65,7 +65,7 @@ async function getXmlData(inputData, inputMetaData) {
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
   let returnData;
   let pathAndFilename = path.resolve(inputData);
-  let data = fs.readFileSync(pathAndFilename, { encoding: gen.cUTF8 });
+  let data = await fs.readFileSync(pathAndFilename, { encoding: gen.cUTF8 });
   let xml;
   await xml2js.parseString(data,
   async function(err, result) {
@@ -103,7 +103,7 @@ async function getCsvData(inputData, inputMetaData) {
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
   let returnData;
   let pathAndFilename = path.resolve(inputData);
-  let data = fs.readFileSync(pathAndFilename, { encoding: gen.cUTF8 });
+  let data = await fs.readFileSync(pathAndFilename, { encoding: gen.cUTF8 });
   returnData = await papa.parse(data, {
     delimiter: ',',
     newline: '/n',
@@ -138,7 +138,7 @@ async function getJsonData(inputData, inputMetaData) {
   // Make sure to resolve the path on the local system,
   // just in case there are issues with the OS that the code is running on.
   let pathAndFilename = path.resolve(inputData);
-  let rawData = fs.readFileSync(pathAndFilename, { encoding: gen.cUTF8 });
+  let rawData = await fs.readFileSync(pathAndFilename, { encoding: gen.cUTF8 });
   let returnData = JSON.parse(rawData);
   // console.log(`DONE loading data from: ${inputData}`);
   // console.log(msg.creturnDataIs + JSON.stringify(returnData));
@@ -162,7 +162,7 @@ async function writeJsonData(inputData, inputMetaData) {
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
   let returnData = false;
   try {
-    fs.writeFileSync(inputData, JSON.stringify(inputMetaData, null, 2));
+    await fs.writeFileSync(inputData, JSON.stringify(inputMetaData, null, 2));
     returnData = true;
   } catch (err) {
     // ERROR:
@@ -267,7 +267,7 @@ async function getDirectoryList(inputData, inputMetaData) {
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
   let returnData = false;
   if (inputData) {
-    returnData = fs.readdirSync(inputData, { withFileTypes: true })
+    returnData = await fs.readdirSync(inputData, { withFileTypes: true })
       .filter((item) => item.isDirectory())
       .map((item) => item.name);
   } // End-if (inputData)
@@ -299,11 +299,11 @@ async function readDirectorySynchronously(inputData, inputMetaData) {
     let currentDirectoryPath = directory;
     let currentDirectory = '';
     try {
-      currentDirectory = fs.readdirSync(currentDirectoryPath, gen.cUTF8);
+      currentDirectory = await fs.readdirSync(currentDirectoryPath, gen.cUTF8);
     } catch (err) {
       console.log(msg.cERROR + err.message);
-      fs.mkdirSync(currentDirectoryPath);
-      currentDirectory = fs.readdirSync(currentDirectoryPath, gen.cUTF8);
+      await fs.mkdirSync(currentDirectoryPath);
+      currentDirectory = await fs.readdirSync(currentDirectoryPath, gen.cUTF8);
     }
     // console.log('currentDirectoryContents are: ' + JSON.stringify(currentDirectory));
     await currentDirectory.forEach(async file => {
@@ -312,7 +312,7 @@ async function readDirectorySynchronously(inputData, inputMetaData) {
       let pathOfCurrentItem = directory + bas.cForwardSlash + file;
       try {
         // console.log('BEGIN TRY');
-        if (!filesShouldBeSkipped && fs.statSync(pathOfCurrentItem).isFile()) {
+        if (!filesShouldBeSkipped && await fs.statSync(pathOfCurrentItem).isFile()) {
           // console.log('Its a file, and not to be skipped!');
           if (enableFilesListLimit === true && filesListLimit > 0) {
             // console.log('list limit is enabled, not sure if we hit it yet or not.');
@@ -563,8 +563,8 @@ async function copyFileSync(inputData, inputMetaData) {
   let successfulCopy = false;
 
   // If target is a directory a new file with the same name will be created.
-  if (fs.existsSync(target)) {
-    if (fs.lstatSync(target).isDirectory()) {
+  if (await fs.existsSync(target)) {
+    if (await fs.lstatSync(target).isDirectory()) {
       targetFile = path.join(target, path.basename(source));
     }
   } // End-if (fs.existsSync(target))
@@ -590,7 +590,7 @@ async function copyFileSync(inputData, inputMetaData) {
     // We need a logical converse operation:
     // https://en.wikipedia.org/wiki/Converse_(logic)
     if (foundInclusion || !(foundInclusion || foundExclusion)) {
-      fs.writeFileSync(targetFile, fs.readFileSync(source));
+      await fs.writeFileSync(targetFile, await fs.readFileSync(source));
       successfulCopy = true;
     } else {
       // console.log('Detected an exclusion condition.');
@@ -649,10 +649,10 @@ async function copyFolderRecursiveSync(inputData, inputMetaData) {
     targetFolder = path.join(target, pathLeafNode);
   }
   targetFolder = path.resolve(targetFolder);
-  if (fs.existsSync(targetFolder) !== true) {
+  if (await fs.existsSync(targetFolder) !== true) {
     try {
       // console.log('making the path');
-      fs.mkdirSync(targetFolder);
+      await fs.mkdirSync(targetFolder);
       // NOTE: Just because we complete the above code doesn't mean the entire copy process was a success.
       // But at least we haven't errored out, so it wasn't a failure YET.
     } catch (err) {
@@ -685,11 +685,11 @@ async function copyFolderRecursiveSync(inputData, inputMetaData) {
 
   // Copy
   try {
-    if (fs.lstatSync(source).isDirectory()) {
-      files = fs.readdirSync(source);
+    if (await fs.lstatSync(source).isDirectory()) {
+      files = await fs.readdirSync(source);
       await files.forEach(async function(file) {
         let currentSource = path.join(source, file);
-        if (fs.lstatSync(currentSource).isDirectory()) {
+        if (await fs.lstatSync(currentSource).isDirectory()) {
           successfulCopy = await copyFolderRecursiveSync([currentSource, targetFolder], inputMetaData);
         } else {
           successfulCopy = await copyFileSync([currentSource, targetFolder], inputMetaData);

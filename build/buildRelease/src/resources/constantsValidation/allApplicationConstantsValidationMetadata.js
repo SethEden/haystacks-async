@@ -52,7 +52,7 @@ let namespacePrefix = apc.cApplicationName + bas.cDot + wrd.cresources + bas.cDo
 async function initializeAllClientConstantsValidationData() {
   let functionName = initializeAllClientConstantsValidationData.name;
   await haystacks.consoleLog(namespacePrefix, functionName, msg.cBEGIN_Function);
-  let constantsPath = haystacks.getConfigurationSetting(wrd.csystem, cfg.capplicationConstantsPath);
+  let constantsPath = await haystacks.getConfigurationSetting(wrd.csystem, cfg.capplicationConstantsPath);
   // constantsPath is:
   await haystacks.consoleLog(namespacePrefix, functionName, msg.cconstantsPathIs + constantsPath);
 
