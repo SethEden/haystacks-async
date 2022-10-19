@@ -661,8 +661,17 @@ async function loadPluginResourceData(contextName, pluginResourcePath) {
   console.log('pluginResourcePath is: ' + pluginResourcePath);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginResourcePathIs + pluginResourcePath);
   let returnData = {};
-  // TODO: Add a call here to load the plugin data.
-  console.log('TODO: Add a call here to load the plugin data.');
+  switch (contextName) {
+    case wrd.cconfiguration:
+      returnData = await chiefConfiguration.setupPluginConfiguration(pluginResourcePath);
+      break;
+    case wrd.ccommand + wrd.cAliases:
+      break;
+    case wrd.cworkflows:
+      break;
+    default:
+      break;
+  }
   // await chiefConfiguration.setupConfiguration(appConfigPath, frameworkConfigPath);
   
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);

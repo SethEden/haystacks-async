@@ -81,16 +81,22 @@ async function setupConfiguration(appConfigPath, frameworkConfigPath) {
  */
 async function setupPluginConfiguration(pluginConfigPath) {
   let functionName = setupPluginConfiguration.name;
+  console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  console.log(`pluginConfigPath is: ${pluginConfigPath}`);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginConfigPathIs + pluginConfigPath);
   let rules = [biz.cswapBackSlashToForwardSlash];
   pluginConfigPath = await ruleBroker.processRules([pluginConfigPath, ''], rules);
+  console.log(`pluginConfigPath is: ${pluginConfigPath}`);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginConfigPathIs + pluginConfigPath);
   await configurator.setConfigurationSetting(wrd.csystem, sys.cpluginConfigPath, pluginConfigPath);
   let allPluginConfigData = {};
+  
   allPluginConfigData = await chiefData.setupAllJsonConfigData(sys.cpluginConfigPath, wrd.cconfiguration);
   let allParsedPluginConfigData = await parsePluginConfigurationData(allPluginConfigData);
+  console.log(`allParsedPluginConfigData is: ${JSON.stringify(allParsedPluginConfigData)}`);
   await loggers.consoleLog(namespacePrefix + functionName, msg.callParsedPluginConfigDataIs + JSON.stringify(allParsedPluginConfigData));
+  console.log(`END ${namespacePrefix}${functionName} function`);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return allParsedPluginConfigData;
 }
@@ -105,13 +111,17 @@ async function setupPluginConfiguration(pluginConfigPath) {
  */
 async function parsePluginConfigurationData(allPluginConfigData) {
   let functionName = parsePluginConfigurationData.name;
+  console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.callPluginConfigDataIs + allPluginConfigData);
+  console.log(`allPluginConfigData is: ${JSON.stringify(allPluginConfigData)}`);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.callPluginConfigDataIs + JSON.stringify(allPluginConfigData));
   let returnData = {};
   // TODO: Add all the parsing here, but make sure we are NOT adding it to the D-data structure,
   // That will need to happen later when the Plugin returns all of its data back to haystacks as part of the
   // plugin loading process.
+  console.log(`returnData is: ${returnData}`);
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  console.log(`END ${namespacePrefix}${functionName} function`);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }

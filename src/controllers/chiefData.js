@@ -217,17 +217,46 @@ async function setupAllJsonConfigData(dataPathConfigurationName, contextName) {
   // console.log(`contextName is: ${contextName}`);
   let loadedAndMergedDataAllFiles = {};
   let filesToLoad = [];
-  if (dataPathConfigurationName === sys.cappConfigPath) {
-    filesToLoad = await configurator.getConfigurationSetting(wrd.csystem, cfg.cappConfigFiles);
-  } else if (dataPathConfigurationName === sys.cframeworkConfigPath) {
-    filesToLoad = await configurator.getConfigurationSetting(wrd.csystem, cfg.cframeworkConfigFiles);
-  } else {
-    filesToLoad = await configurator.getConfigurationSetting(wrd.csystem, cfg.cthemeConfigFiles);
+  switch (dataPathConfigurationName) {
+    case sys.cappConfigPath:
+      filesToLoad = await configurator.getConfigurationSetting(wrd.csystem, cfg.cappConfigFiles);
+      break;
+    case sys.cframeworkConfigPath:
+      filesToLoad = await configurator.getConfigurationSetting(wrd.csystem, cfg.cframeworkConfigFiles);
+      break;
+    case sys.cthemeConfigPath:
+      filesToLoad = await configurator.getConfigurationSetting(wrd.csystem, cfg.cthemeConfigFiles);
+      break;
+    // NOTE: We cannot put the plugin here, because there is no way to get or set configuration settings,
+    // when calling haystacks from the plugin.
+    // case sys.cpluginConfigPath:
+    //   filesToLoad = await configurator.getConfigurationSetting(wrd.csystem, cfg.cpluginConfigFiles);
+    //   break;
+    default:
+      console.log(`WARNING: dataPathConfigurationName not supported: ${dataPathConfigurationName}`);
+      break;
   }
+  // console.log(`filesToLoad is: ${filesToLoad}`);
   loadedAndMergedDataAllFiles = await dataBroker.loadAllJsonData(filesToLoad, contextName);
   // console.log(`loadedAndMergedDataAllFiles is: ${JSON.stringify(loadedAndMergedDataAllFiles)}`);
   // console.log(`END ${namespacePrefix}${functionName} function`);
   return loadedAndMergedDataAllFiles;
+}
+
+/**
+ * @function setupAllJsonConfigPluginData
+ * @description Sets up all of the JSON data at the specified configuration path with regard to plugin configuration data.
+ * @param {string} configFilesPath The path to the configuration files that should be loaded.
+ * @param {string} contextName 
+ */
+async function setupAllJsonConfigPluginData(configFilesPath, contextName) {
+  let functionName = setupAllJsonConfigPluginData.name;
+  // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
+  // console.log(`configFilesPath is: ${configFilesPath}`);
+  // console.log(`contextName is: ${contextName}`);
+  let loadedAndMergeDataAllFiles = {};
+  let filesToLoad = [];
+  // let frameworkConfigFilesToLoad = await dataBroker.scanDataPath(frameworkConfigDataPath);
 }
 
 /**
