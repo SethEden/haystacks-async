@@ -247,16 +247,26 @@ async function setupAllJsonConfigData(dataPathConfigurationName, contextName) {
  * @function setupAllJsonConfigPluginData
  * @description Sets up all of the JSON data at the specified configuration path with regard to plugin configuration data.
  * @param {string} configFilesPath The path to the configuration files that should be loaded.
- * @param {string} contextName 
+ * @param {string} contextName The type of configuration data that should be loaded.
+ * @return A JSON object that contains all of the data that was loaded and merged together.
+ * @author Seth Hollingsead
+ * @date 2022/10/18
+ * @NOTE We need this function here because we cannot store paths in the configuration system
+ * the same way the setupAllJsonConfigData does it. The path must be passed directly.
  */
 async function setupAllJsonConfigPluginData(configFilesPath, contextName) {
   let functionName = setupAllJsonConfigPluginData.name;
-  // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
-  // console.log(`configFilesPath is: ${configFilesPath}`);
-  // console.log(`contextName is: ${contextName}`);
+  console.log(`BEGIN ${namespacePrefix}${functionName} function`);
+  console.log(`configFilesPath is: ${configFilesPath}`);
+  console.log(`contextName is: ${contextName}`);
   let loadedAndMergeDataAllFiles = {};
   let filesToLoad = [];
-  // let frameworkConfigFilesToLoad = await dataBroker.scanDataPath(frameworkConfigDataPath);
+  filesToLoad = await dataBroker.scanDataPath(configFilesPath);
+  console.log(`filesToLoad is ${filesToLoad}`);
+  loadedAndMergeDataAllFiles = await dataBroker.loadAllJsonData(filesToLoad, contextName);
+  console.log(`loadedAndMergedDataAllFiles is: ${JSON.stringify(loadedAndMergeDataAllFiles)}`);
+  console.log(`END ${namespacePrefix}${functionName} function`);
+  return loadedAndMergeDataAllFiles;
 }
 
 /**
@@ -298,6 +308,7 @@ export default {
   setupAllCsvData,
   setupAllXmlData,
   setupAllJsonConfigData,
+  setupAllJsonConfigPluginData,
   initializeConstantsValidationData,
   addConstantsValidationData
 }

@@ -49,8 +49,8 @@ const {NODE_ENV} = process.env;
  */
 async function initFramework(clientConfiguration) {
  let functionName = initFramework.name;
- // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
- // console.log(`clientConfiguration is: ${JSON.stringify(clientConfiguration)}`);
+//  console.log(`BEGIN ${namespacePrefix}${functionName} function`);
+//  console.log(`clientConfiguration is: ${JSON.stringify(clientConfiguration)}`);
  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
  await loggers.consoleLog(namespacePrefix + functionName, msg.cclientConfigurationIs + clientConfiguration);
 
@@ -87,8 +87,8 @@ async function initFramework(clientConfiguration) {
  await warden.initFrameworkSchema(clientConfiguration);
  await loggers.consoleLog(namespacePrefix + functionName, msg.cAllLoadedDataIs + JSON.stringify(D));
  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
- // console.log('All loaded data is: ' + JSON.stringify(D));
- // console.log(`END ${namespacePrefix}${functionName} function`);
+//  console.log('All loaded data is: ' + JSON.stringify(D));
+//  console.log(`END ${namespacePrefix}${functionName} function`);
 }
 
 /**

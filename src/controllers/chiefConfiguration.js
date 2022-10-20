@@ -89,10 +89,10 @@ async function setupPluginConfiguration(pluginConfigPath) {
   pluginConfigPath = await ruleBroker.processRules([pluginConfigPath, ''], rules);
   console.log(`pluginConfigPath is: ${pluginConfigPath}`);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginConfigPathIs + pluginConfigPath);
-  await configurator.setConfigurationSetting(wrd.csystem, sys.cpluginConfigPath, pluginConfigPath);
+  // await configurator.setConfigurationSetting(wrd.csystem, sys.cpluginConfigPath, pluginConfigPath);
   let allPluginConfigData = {};
-  
-  allPluginConfigData = await chiefData.setupAllJsonConfigData(sys.cpluginConfigPath, wrd.cconfiguration);
+
+  allPluginConfigData = await chiefData.setupAllJsonConfigPluginData(pluginConfigPath, wrd.cconfiguration);
   let allParsedPluginConfigData = await parsePluginConfigurationData(allPluginConfigData);
   console.log(`allParsedPluginConfigData is: ${JSON.stringify(allParsedPluginConfigData)}`);
   await loggers.consoleLog(namespacePrefix + functionName, msg.callParsedPluginConfigDataIs + JSON.stringify(allParsedPluginConfigData));
@@ -116,10 +116,11 @@ async function parsePluginConfigurationData(allPluginConfigData) {
   console.log(`allPluginConfigData is: ${JSON.stringify(allPluginConfigData)}`);
   await loggers.consoleLog(namespacePrefix + functionName, msg.callPluginConfigDataIs + JSON.stringify(allPluginConfigData));
   let returnData = {};
-  // TODO: Add all the parsing here, but make sure we are NOT adding it to the D-data structure,
-  // That will need to happen later when the Plugin returns all of its data back to haystacks as part of the
-  // plugin loading process.
-  console.log(`returnData is: ${returnData}`);
+  // Make sure we just do raw-processing of the data, no additional filtering for debug configruation settings.
+  // Because, when the plugin uses haystacks to load the plugin data from the configuration files,
+  // the haystacks instance that does this is not the same instance as the parent instance that is loading the plugin.
+  // So this new instance of haystacks (created by the plugin) doesn't have any of it's own configuration data loaded.
+
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   console.log(`END ${namespacePrefix}${functionName} function`);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);

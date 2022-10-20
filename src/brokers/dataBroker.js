@@ -40,18 +40,18 @@ const namespacePrefix = wrd.cbrokers + bas.cDot + baseFileName + bas.cDot;
  */
 async function scanDataPath(dataPath) {
   let functionName = scanDataPath.name;
-  // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
-  // console.log(`dataPath is: ${dataPath}`);
+  console.log(`BEGIN ${namespacePrefix}${functionName} function`);
+  console.log(`dataPath is: ${dataPath}`);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cdataPathIs + dataPath);
   let rules = [biz.cswapBackSlashToForwardSlash, biz.creadDirectoryContents];
   let filesFound = [];
-  // console.log(`execute business rules: ${JSON.stringify(rules)}`);
+  console.log(`execute business rules: ${JSON.stringify(rules)}`);
   filesFound = await ruleBroker.processRules([dataPath, ''], rules);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cfilesFoundIs + JSON.stringify(filesFound));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
-  // console.log(`filesFound is: ${JSON.stringify(filesFound)}`);
-  // console.log(`END ${namespacePrefix}${functionName} function`);
+  console.log(`filesFound is: ${JSON.stringify(filesFound)}`);
+  console.log(`END ${namespacePrefix}${functionName} function`);
   return filesFound;
 }
 
@@ -261,6 +261,9 @@ async function loadAllXmlData(filesToLoad, contextName) {
  * @return {object} A JSON object that contains all fo the data that was loaded and parsed from all the input files list.
  * @author Seth Hollingsead
  * @date 2021/10/15
+ * @NOTE When the plugin uses haystacks to load the plugin data from the plugins configuration files,
+  // the haystacks instance that does this is not the same instance as the parent instance that is loading the plugin.
+  // So this new instance of haystacks (created by the plugin) doesn't have any of it's own configuration data loaded.
  */
 async function loadAllJsonData(filesToLoad, contextName) {
   let functionName = loadAllJsonData.name;
@@ -275,6 +278,8 @@ async function loadAllJsonData(filesToLoad, contextName) {
   let foundSystemData = false;
   let systemConfigFileName = sys.csystemConfigFileName; // 'framework.system.json';
   let applicationConfigFileName = sys.capplicationConfigFileName; // 'application.system.json';
+  let pluginConfigFileName = sys.cpluginConfigFileName; // 'plugin.system.json';
+  let loadPluginDebugSettings = false;
   let multiMergedData = {};
   let parsedDataFile = {};
 
@@ -283,10 +288,10 @@ async function loadAllJsonData(filesToLoad, contextName) {
   for (const element1 of filesToLoad) {
     let fileToLoad = element1;
     // console.log('fileToLoad is: ' + fileToLoad);
-    if (fileToLoad.includes(systemConfigFileName) || fileToLoad.includes(applicationConfigFileName)) {
+    if (fileToLoad.includes(systemConfigFileName) || fileToLoad.includes(applicationConfigFileName) || fileToLoad.includes(pluginConfigFileName)) {
       let dataFile = await preprocessJsonFile(fileToLoad);
 
-      // NOTE: In this case we have just loaded either the framework configuration data or the application configuration data,
+      // NOTE: In this case we have just loaded either the framework configuration data or the application configuration data or the plugin configuration data,
       // and nothing else. So we can just assign the data to the multiMergedData.
       // We will need to merge all the other files,
       // but there will be a setting here we should examine to determine if the rest of the data should even be load or not.
@@ -295,6 +300,13 @@ async function loadAllJsonData(filesToLoad, contextName) {
       // Adding all that extra debugging configuration settings can affect load times, and application performance to a much lesser degree.
       multiMergedData[wrd.csystem] = {};
       multiMergedData[wrd.csystem] = dataFile;
+      if (fileToLoad.includes(pluginConfigFileName)) {
+        console.log('****--plugin config setting file is being processed.');
+        if (multiMergedData[wrd.csystem][wrd.csystem + bas.cDot + cfg.cdebugSettings] === true) {
+          console.log('****--The plugin config debug settings value is set to true!');
+          loadPluginDebugSettings = true;
+        }
+      }
       foundSystemData = true;
     } // End-if (fileToLoad.includes(systemConfigFileName) || fileToLoad.includes(applicationConfigFileName))
     if (foundSystemData === true) {
@@ -303,10 +315,12 @@ async function loadAllJsonData(filesToLoad, contextName) {
   } // End-for (const element of filesToLoad)
 
   // Now we need to determine if we should load the rest of the data.
-  if (await configurator.getConfigurationSetting(wrd.csystem, cfg.cdebugSettings) === true) {
+  // NOTE: If the filesToLoad contained the pluginConfigFileName, then we will not be able to determine the debugSettings value from the configuration setting.
+  // See note above.
+  if (await configurator.getConfigurationSetting(wrd.csystem, cfg.cdebugSettings) === true || loadPluginDebugSettings === true) {
     for (const element2 of filesToLoad) {
       let fileToLoad = element2;
-      if (!fileToLoad.includes(systemConfigFileName) && !fileToLoad.includes(applicationConfigFileName)
+      if (!fileToLoad.includes(systemConfigFileName) && !fileToLoad.includes(applicationConfigFileName) && !fileToLoad.includes(pluginConfigFileName)
       && fileToLoad.toUpperCase().includes(gen.cDotJSON) && !fileToLoad.toLowerCase().includes(wrd.cmetadata + gen.cDotjson)) {
         let dataFile = await preprocessJsonFile(fileToLoad);
         // console.log('dataFile to merge is: ' + JSON.stringify(dataFile));
@@ -507,18 +521,18 @@ async function processXmlLeafNode(inputData, leafNodeName) {
  */
 async function preprocessJsonFile(fileToLoad) {
   let functionName = preprocessJsonFile.name;
-  // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
-  // console.log(`fileToLoad is: ${JSON.stringify(fileToLoad)}`);
+  console.log(`BEGIN ${namespacePrefix}${functionName} function`);
+  console.log(`fileToLoad is: ${JSON.stringify(fileToLoad)}`);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cfileToLoadIs + JSON.stringify(fileToLoad));
   let filePathRules = [biz.cswapDoubleForwardSlashToSingleForwardSlash, biz.cgetJsonData];
-  // console.log(`execute business rules: ${JSON.stringify(filePathRules)}`);
+  console.log(`execute business rules: ${JSON.stringify(filePathRules)}`);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cexecuteBusinessRules + JSON.stringify(filePathRules));
   let dataFile = await ruleBroker.processRules([fileToLoad, ''], filePathRules);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cdataFileIs + JSON.stringify(dataFile));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
-  // console.log(`dataFile is: ${JSON.stringify(dataFile)}`);
-  // console.log(`END ${namespacePrefix}${functionName} function`);
+  console.log(`dataFile is: ${JSON.stringify(dataFile)}`);
+  console.log(`END ${namespacePrefix}${functionName} function`);
   return dataFile;
 }
 
