@@ -40,18 +40,18 @@ const namespacePrefix = wrd.cbrokers + bas.cDot + baseFileName + bas.cDot;
  */
 async function scanDataPath(dataPath) {
   let functionName = scanDataPath.name;
-  console.log(`BEGIN ${namespacePrefix}${functionName} function`);
-  console.log(`dataPath is: ${dataPath}`);
+  // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
+  // console.log(`dataPath is: ${dataPath}`);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cdataPathIs + dataPath);
   let rules = [biz.cswapBackSlashToForwardSlash, biz.creadDirectoryContents];
   let filesFound = [];
-  console.log(`execute business rules: ${JSON.stringify(rules)}`);
+  // console.log(`execute business rules: ${JSON.stringify(rules)}`);
   filesFound = await ruleBroker.processRules([dataPath, ''], rules);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cfilesFoundIs + JSON.stringify(filesFound));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
-  console.log(`filesFound is: ${JSON.stringify(filesFound)}`);
-  console.log(`END ${namespacePrefix}${functionName} function`);
+  // console.log(`filesFound is: ${JSON.stringify(filesFound)}`);
+  // console.log(`END ${namespacePrefix}${functionName} function`);
   return filesFound;
 }
 
@@ -301,9 +301,9 @@ async function loadAllJsonData(filesToLoad, contextName) {
       multiMergedData[wrd.csystem] = {};
       multiMergedData[wrd.csystem] = dataFile;
       if (fileToLoad.includes(pluginConfigFileName)) {
-        console.log('****--plugin config setting file is being processed.');
+        // console.log('****--plugin config setting file is being processed.');
         if (multiMergedData[wrd.csystem][wrd.csystem + bas.cDot + cfg.cdebugSettings] === true) {
-          console.log('****--The plugin config debug settings value is set to true!');
+          // console.log('****--The plugin config debug settings value is set to true!');
           loadPluginDebugSettings = true;
         }
       }
@@ -521,18 +521,18 @@ async function processXmlLeafNode(inputData, leafNodeName) {
  */
 async function preprocessJsonFile(fileToLoad) {
   let functionName = preprocessJsonFile.name;
-  console.log(`BEGIN ${namespacePrefix}${functionName} function`);
-  console.log(`fileToLoad is: ${JSON.stringify(fileToLoad)}`);
+  // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
+  // console.log(`fileToLoad is: ${JSON.stringify(fileToLoad)}`);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cfileToLoadIs + JSON.stringify(fileToLoad));
   let filePathRules = [biz.cswapDoubleForwardSlashToSingleForwardSlash, biz.cgetJsonData];
-  console.log(`execute business rules: ${JSON.stringify(filePathRules)}`);
+  // console.log(`execute business rules: ${JSON.stringify(filePathRules)}`);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cexecuteBusinessRules + JSON.stringify(filePathRules));
   let dataFile = await ruleBroker.processRules([fileToLoad, ''], filePathRules);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cdataFileIs + JSON.stringify(dataFile));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
-  console.log(`dataFile is: ${JSON.stringify(dataFile)}`);
-  console.log(`END ${namespacePrefix}${functionName} function`);
+  // console.log(`dataFile is: ${JSON.stringify(dataFile)}`);
+  // console.log(`END ${namespacePrefix}${functionName} function`);
   return dataFile;
 }
 

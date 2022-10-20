@@ -20,7 +20,8 @@ import D from '../structures/data.js';
 import hayConst from '@haystacks/constants';
 import path from 'path';
 
-const {bas, biz, cfg, wrd} = hayConst;
+// eslint-disable-next-line no-unused-vars
+const {bas, biz, cfg, msg, wrd} = hayConst;
 const baseFileName = path.basename(import.meta.url, path.extname(import.meta.url));
 // executrix.configurator.
 // eslint-disable-next-line no-unused-vars
@@ -49,6 +50,37 @@ async function setConfigurationSetting(configurationNamespace, configurationName
   if (namespaceConfigObject) {
     namespaceConfigObject[`${configurationNamespace}.${configurationName}`] = configurationValue;
   }
+  // console.log(`END ${namespacePrefix}${functionName} function`);
+}
+
+/**
+ * @function setPluginConfigurationSetting
+ * @description Sets a configurat setting on the configruation data structure stored on the input data structure and returned as an object.
+ * @param {object} dataStructure The input data structure upon which the configuration setting should be set and then returned. 
+ * @param {string} configurationNamespace The path n the configruation JSON object
+ * where the coniguration setting should be set.
+ * Ex: businessRules.rules.stringParsing.countCamelCaseWords 
+ * @param {string} configurationName The key of the configuration setting. 
+ * @param {string|integer|boolean|double} configurationValue The value of the configuration setting.
+ * @return {object} The modified input object with the new configuration value added in the appropriate location.
+ * @author Seth Hollingsead
+ * @date 2022/10/20
+ * @NOTE Technically we could have the logger get used here, but it would cause the appearance of a circular dependency.
+ * So we should avoid usage here anyway.
+ */
+async function setPluginConfigurationSetting(dataStructure, configurationNamespace, configurationName, configurationValue) {
+  // let functionName = setPluginConfigurationSetting.name;
+  // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
+  // console.log(`dataStructure is ${JSON.stringify(dataStructure)}`);
+  // console.log(`configurationNamespace is: ${configurationNamespace}`);
+  // console.log(`configurationName is: ${configurationName}`);
+  // console.log(`configurationVaue is: ${configurationValue}`);
+  let returnData = ruleBroker.processRules([returnData, dataStructure], [biz.carrayDeepClone]);
+  let namespaceConfigObject = await getPluginConfigurationNamespaceObject(returnData, configurationNamespace.split(bas.cDot));
+  if (namespaceConfigObject) {
+    namespaceConfigObject[`${configurationNamespace}.${configurationName}`] = configurationValue;
+  }
+  // console.log(msg.creturnDataIs + JSON.stringify(returnData));
   // console.log(`END ${namespacePrefix}${functionName} function`);
 }
 
@@ -221,6 +253,7 @@ async function getParentConfigurationNamespaceObject(configurationNamespace, opt
  * @date 2021/10/26
  * @NOTE Cannot use the loggers here, because of a circular dependency.
  * @NOTE See note below about the business rule: biz.cgetNamespacedDataObject!
+ * @NOTE NOT A PUBLIC FUNCTION!!
  */
 async function getConfigurationNamespaceObject(configurationNamespace) {
   // let functionName = getConfigurationNamespaceObject.name;
@@ -254,8 +287,49 @@ async function getConfigurationNamespaceObject(configurationNamespace) {
   return returnValue;
 }
 
+/**
+ * @function getPluginConfigurationNamespaceObject
+ * @description Navigates the input data structure configuration JSON data object tree to fnd the namespace of configuration settings.
+ * @param {object} dataStructure The input data structure upon which the configuration setting should be set and then returned. 
+ * @param {object|boolean} configurationNamespace The object found at the specified namespace address in the input data structure configuration data object,
+ * or False if nothing was found.
+ * @author Seth Hollingsead
+ * @date 2022/10/20
+ * @NOTE Technically we could have the logger get used here, but it would cause the appearance of a circular dependency.
+ * So we should avoid usage here anyway.
+ * @NOTE NOT A PUBLIC FUNCTION!!
+ */
+async function getPluginConfigurationNamespaceObject(dataStructure, configurationNamespace) {
+  // let functionName = getConfigurationNamespaceObject.name;
+  // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
+  // console.log(`dataStructure is ${JSON.stringify(dataStructure)}`);
+  // console.log(`configurationNamespace is: ${configurationNamespace}`);
+  let returnValue = true; // No boot-strap protection needed here, but see logic below, still necessary!
+  let configurationDataRoot = dataStructure[wrd.cconfiguration];
+  let configurationPathObject = configurationDataRoot;
+  if (!configurationPathObject) { // Need to handle the case that the configuration data object doesn't even exist at all!
+    dataStructure[wrd.cconfiguration] = {};
+    configurationDataRoot = dataStructure[wrd.cconfiguration];
+    configurationPathObject = configurationDataRoot;
+  } // End-if (!configurationPathObject)
+  for (const element of configurationNamespace) {
+    if (!configurationPathObject[element]) {
+      // It doesn't exist yet, so lets make it.
+      configurationPathObject[element] = {};
+    } // End-if (!configurationPathObject[element])
+    configurationPathObject = configurationPathObject[element];
+  } // End-for (const element of configurationNamespace)
+  if (returnValue) {
+    returnValue = configurationPathObject;
+  }
+  // console.log(`returnValue is: ${JSON.stringify(returnValue)}`);
+  // console.log(`END ${namespacePrefix}${functionName} function`);
+  return returnValue;
+}
+
 export default {
   setConfigurationSetting,
+  setPluginConfigurationSetting,
   getConfigurationSetting,
   processConfigurationNameRules,
   processConfigurationNamespaceRules,

@@ -33,6 +33,7 @@ import loggers from '../executrix/loggers.js';
 // External imports
 import hayConst from '@haystacks/constants';
 import path from 'path';
+import { config } from 'dotenv'
 
 const {bas, biz, cfg, gen, msg, sys, wrd} = hayConst;
 const baseFileName = path.basename(import.meta.url, path.extname(import.meta.url));
@@ -177,7 +178,27 @@ async function initFrameworkSchema(configData) {
   await loadCommandAliases(''); // This function will now pick up the defaults already saved in the configuration system.
   await loadCommandWorkflows(''); // Same as above.
 
+  // NOTE: We need this here, because the plugin itself will try to create an instance of haystacks to re-use its functionality.
+  // When that happens the plugin will send execution back here and haystacks would again try to load the plugin from within the plugin!
+  // We MUST prevent this from happening. So I've dropped this here to allow the plugin to control the loading of nested plugins.
+  // -------------
+  // NOTE: Apparently this is not an issue for the plugin?!? Maybe?
+  // console.log('--Determine if the plugin is the one loading haystacks.');
+  // if (configData[cfg.cenablePluginLoader] != null || configData[cfg.cenablePluginLoader] != undefined) {
+  //   console.log('--Plugin IS LOADING Haystacks!!')
+  //   console.log('--Determine if the plugin has disabled the plugin loader setting.');
+  //   if (configData[cfg.cenablePluginLoader] === false) {
+  //     console.log('--Plugin loader setting has been disabled successfully!');
+  //     await configurator.setConfigurationSetting(wrd.csystem, cfg.cenablePluginLoader, false);
+  //     console.log('--Force the configruation setting to disable the plugin loader!');
+  //   }
+  //   console.log('--DONE checking and disabling the plugin loader setting.');
+  // }
+  // console.log('--DONE checking if the plugin is the one loading the haystacks.');
+
+  // console.log('--Now check if the plugin Loader setting is enabled or not');
   if (await configurator.getConfigurationSetting(wrd.csystem, cfg.cenablePluginLoader) === true) {
+    // console.log('--Plugin loader is still enabled!');
     let pluginRegistryPath = path.resolve(configData[cfg.cclientRegisteredPlugins]);
     // pluginRegistryPath is:
     await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginRegistryPathIs + pluginRegistryPath);
@@ -674,7 +695,7 @@ async function loadPluginResourceData(contextName, pluginResourcePath) {
   }
   // await chiefConfiguration.setupConfiguration(appConfigPath, frameworkConfigPath);
   
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }

@@ -233,7 +233,7 @@ async function setupAllJsonConfigData(dataPathConfigurationName, contextName) {
     //   filesToLoad = await configurator.getConfigurationSetting(wrd.csystem, cfg.cpluginConfigFiles);
     //   break;
     default:
-      console.log(`WARNING: dataPathConfigurationName not supported: ${dataPathConfigurationName}`);
+      console.log(msg.cWarningDataPathConfigurationNameNotSupported + dataPathConfigurationName);
       break;
   }
   // console.log(`filesToLoad is: ${filesToLoad}`);
@@ -256,16 +256,23 @@ async function setupAllJsonConfigData(dataPathConfigurationName, contextName) {
  */
 async function setupAllJsonConfigPluginData(configFilesPath, contextName) {
   let functionName = setupAllJsonConfigPluginData.name;
-  console.log(`BEGIN ${namespacePrefix}${functionName} function`);
-  console.log(`configFilesPath is: ${configFilesPath}`);
-  console.log(`contextName is: ${contextName}`);
+  // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
+  // console.log(`configFilesPath is: ${configFilesPath}`);
+  // console.log(`contextName is: ${contextName}`);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  // configFilesPath is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cconfigFilesPathIs + configFilesPath);
+  // contextName is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.ccontextNameIs + contextName);
   let loadedAndMergeDataAllFiles = {};
   let filesToLoad = [];
   filesToLoad = await dataBroker.scanDataPath(configFilesPath);
-  console.log(`filesToLoad is ${filesToLoad}`);
+  // console.log(`filesToLoad is ${filesToLoad}`);
   loadedAndMergeDataAllFiles = await dataBroker.loadAllJsonData(filesToLoad, contextName);
-  console.log(`loadedAndMergedDataAllFiles is: ${JSON.stringify(loadedAndMergeDataAllFiles)}`);
-  console.log(`END ${namespacePrefix}${functionName} function`);
+  // console.log(`loadedAndMergedDataAllFiles is: ${JSON.stringify(loadedAndMergeDataAllFiles)}`);
+  // console.log(`END ${namespacePrefix}${functionName} function`);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cloadedAndMergedDataAllFilesIs + JSON.stringify(loadedAndMergeDataAllFiles));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return loadedAndMergeDataAllFiles;
 }
 
