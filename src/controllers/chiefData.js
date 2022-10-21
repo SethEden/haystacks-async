@@ -201,6 +201,34 @@ async function setupAllXmlData(dataPathConfigurationName, contextName) {
 }
 
 /**
+ * @function setupAllXmlPluginData
+ * @description Sets up all of the specified XML data for the plugin.
+ * @param {string} dataPath The fully qualified path to the data files that should be loaded and parsed. 
+ * @param {string} contextName The context name that should describe the kind of data that is being loaded and parsed.
+ * @return {object} A JSON object that contains all of the data that was loaded from all the XML files and merged together.
+ * @author Seth Hollingsead
+ * @date 2022/10/21 
+ */
+async function setupAllXmlPluginData(dataPath, contextName) {
+  let functionName = setupAllXmlPluginData.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  // dataPath is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cdataPathIs + dataPath);
+  // contextName is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.ccontextNameIs + contextName);
+  let loadedAndMergedDataAllFiles = {};
+  dataPath = path.resolve(dataPath);
+  let filesToLoad = await dataBroker.scanDataPath(dataPath);
+  // filesToLoad is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cfilesToLoadIs + JSON.stringify(filesToLoad));
+  loadedAndMergedDataAllFiles = await dataBroker.loadAllXmlData(filesToLoad, contextName);
+  // loadedAndMergedDataAllFiles is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.coadedAndMergedDataAllFilesIs + JSON.stringify(loadedAndMergedDataAllFiles));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return loadedAndMergedDataAllFiles;
+}
+
+/**
  * @function setupAllJsonConfigData
  * @description Sets up all of the JSON data at the specified configuration path.
  * @param {string} dataPathConfigurationName The name of the configuration setting that has the path we should search.
@@ -314,6 +342,7 @@ export default {
   getAndProcessXmlData,
   setupAllCsvData,
   setupAllXmlData,
+  setupAllXmlPluginData,
   setupAllJsonConfigData,
   setupAllJsonConfigPluginData,
   initializeConstantsValidationData,

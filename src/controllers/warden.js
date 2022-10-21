@@ -673,13 +673,10 @@ async function unloadAllPlugins() {
  */
 async function loadPluginResourceData(contextName, pluginResourcePath) {
   let functionName = loadPluginResourceData.name;
-  console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // contextName is:
-  console.log('contextName is: ' + contextName);
   await loggers.consoleLog(namespacePrefix + functionName, msg.ccontextNameIs + contextName);
   // pluginResourcePath is:
-  console.log('pluginResourcePath is: ' + pluginResourcePath);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginResourcePathIs + pluginResourcePath);
   let returnData = {};
   switch (contextName) {
@@ -687,10 +684,13 @@ async function loadPluginResourceData(contextName, pluginResourcePath) {
       returnData = await chiefConfiguration.setupPluginConfiguration(pluginResourcePath);
       break;
     case wrd.ccommand + wrd.cAliases:
+      returnData = await chiefCommander.loadCommandAliasesFromPath(pluginResourcePath, wrd.cPlugin);
       break;
     case wrd.cworkflows:
+      returnData = await chiefWorkflow.loadCommandWorkflowsFromPath(pluginResourcePath, wrd.cPlugin);
       break;
     default:
+      console.log('ERROR: Invalid data type specified: ' + contextName);
       break;
   }
   // await chiefConfiguration.setupConfiguration(appConfigPath, frameworkConfigPath);

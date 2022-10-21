@@ -75,13 +75,29 @@ async function setPluginConfigurationSetting(dataStructure, configurationNamespa
   // console.log(`configurationNamespace is: ${configurationNamespace}`);
   // console.log(`configurationName is: ${configurationName}`);
   // console.log(`configurationVaue is: ${configurationValue}`);
-  let returnData = ruleBroker.processRules([returnData, dataStructure], [biz.carrayDeepClone]);
-  let namespaceConfigObject = await getPluginConfigurationNamespaceObject(returnData, configurationNamespace.split(bas.cDot));
-  if (namespaceConfigObject) {
-    namespaceConfigObject[`${configurationNamespace}.${configurationName}`] = configurationValue;
+  let returnData = false;
+  if (dataStructure === false) {
+    // console.log('dataStructure resolves as false');
+    returnData = {};
+  } else {
+    // console.log('dataStrcture resolved as not false!');
+    returnData = ruleBroker.processRules([returnData, dataStructure], [biz.carrayDeepClone]);
   }
+  // console.log('returnData after initialization and-or deep cloning: ' + JSON.stringify(returnData));
+  let namespaceConfigObject = await getPluginConfigurationNamespaceObject(returnData, configurationNamespace.split(bas.cDot));
+  // console.log('namespaceConfigObject after calling getPluginConfigurationNamespaceObject: ' + JSON.stringify(namespaceConfigObject));
+  if (namespaceConfigObject) {
+    // console.log('namespaceConfigObject resolved as true');
+    namespaceConfigObject[`${configurationNamespace}.${configurationName}`] = configurationValue;
+    // console.log('namespaceConfigObject after adding the configurationValue: ' + JSON.stringify(namespaceConfigObject));
+  }
+  // console.log('namespaceConfigObject after parsing the namespaceConfigObject, configurationNamespace and configuration Name: ' + JSON.stringify(namespaceConfigObject));
+  // console.log('attempting to merge the namespaceConfigObject with the returnData');
+  // returnData = ruleBroker.processRules([returnData, namespaceConfigObject], [biz.cobjectDeepMerge]);
+  returnData = namespaceConfigObject;
   // console.log(msg.creturnDataIs + JSON.stringify(returnData));
   // console.log(`END ${namespacePrefix}${functionName} function`);
+  return returnData;
 }
 
 /**

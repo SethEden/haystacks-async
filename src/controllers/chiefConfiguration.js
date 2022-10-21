@@ -157,7 +157,15 @@ async function parsePluginConfigurationData(allPluginConfigData) {
         // but instead we are setting values for the returnData data structure.
         // We want all the data values loaded from the configuration files to be preserved as they were loaded from those files.
         // So just add the value directly using the re-tooled configurator function built specifically for setting plugin configuration values.
-        returnData = await configurator.setPluginConfigurationSetting(returnData, namespace, name, value);
+        let tempReturnData1 = await configurator.setPluginConfigurationSetting(returnData, namespace, name, value);
+        // tempReturnData1 is:
+        await loggers.consoleLog(namespacePrefix + functionName, msg.ctempReturnData1Is + JSON.stringify(tempReturnData1));
+        if (returnData === false) {
+          returnData = {};
+        }
+        returnData = Object.assign(returnData, tempReturnData1);
+        // returnData after object.assign is:
+        await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataAfterObjectAssignIs + JSON.stringify(returnData));
       } // End-if (!!value || value === false)
     } // End-for (let key in highLevelPluginSystemConfigurationContainer)
   } // End-if (highLevelPluginSystemConfigurationContainer)
@@ -187,7 +195,15 @@ async function parsePluginConfigurationData(allPluginConfigData) {
         value = await ruleBroker.processRules([value, ''], rules);
         // value AFTER rule processing is:
         await loggers.consoleLog(namespacePrefix + functionName, msg.cValueAfterRuleProcessingIs + value);
-        returnData = await configurator.setPluginConfigurationSetting(returnData, namespace, name, value);
+        let tempReturnData2 = await configurator.setPluginConfigurationSetting(returnData, namespace, name, value);
+        // tempReturnData2 is:
+        await loggers.consoleLog(namespacePrefix + functionName, msg.ctempReturnData2Is + JSON.stringify(tempReturnData2));
+        if (returnData === false) {
+          returnData = {};
+        }
+        returnData = Object.assign(returnData, tempReturnData2);
+        // returnData after object.assign is:
+        await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataAfterObjectAssignIs + JSON.stringify(returnData));
       }
     } // End-for (let key in highLevelPluginDebugConfigurationContaine)
   } // End-if (highLevelPluginDebugConfigurationContainer)

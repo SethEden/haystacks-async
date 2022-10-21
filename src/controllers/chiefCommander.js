@@ -70,7 +70,7 @@ async function addClientCommands(clientCommands) {
  * contextName = "framework" => D['CommandsAliases']['Framework']
  * contextName = "application" => D['CommandAliases']['Application']
  * contextName = "plugin" => D['CommandAliases']['Plugins']['<pluginName>']
- * @return {void}
+ * @return {boolean|object} True or False if the data to be loaded is not from a plugin, returns a JSON object is the data to be loaded is from a plugin.
  * @author Seth Hollingsead
  * @date 2022/02/02
  */
@@ -81,23 +81,30 @@ async function loadCommandAliasesFromPath(commandAliasesFilePathConfigurationNam
   await loggers.consoleLog(namespacePrefix + functionName, msg.ccommandAliasesFilePathConfigurationNameIs + commandAliasesFilePathConfigurationName);
   // contextName is:
   await loggers.consoleLog(namespacePrefix + functionName, msg.ccontextNameIs + contextName);
+  let returnData = false;
   let allCommandAliasesData = {};
-  allCommandAliasesData = await chiefData.setupAllXmlData(commandAliasesFilePathConfigurationName, sys.cCommandsAliases);
+  if (!contextName.toUpperCase().includes(wrd.cPLUGIN)) {
+    allCommandAliasesData = await chiefData.setupAllXmlData(commandAliasesFilePathConfigurationName, sys.cCommandsAliases);
+  } else if (contextName.toUpperCase().includes(wrd.cPLUGIN)) {
+    allCommandAliasesData = await chiefData.setupAllXmlPluginData(commandAliasesFilePathConfigurationName, sys.cCommandsAliases);
+  }
+  
   // allCommandAliasesData is:
   await loggers.consoleLog(namespacePrefix + functionName, msg.callCommandAliasesDataIs + JSON.stringify(allCommandAliasesData));
   if (D[sys.cCommandsAliases] === undefined) { // Make sure we only do this if it's undefined, otherwise we might wipe out previously loaded data.
     D[sys.cCommandsAliases] = {};
     D[sys.cCommandsAliases][sys.cFramework] = allCommandAliasesData;
+    returnData = true;
   } else if (contextName.toUpperCase() === wrd.cAPPLICATION) {
     D[sys.cCommandsAliases][wrd.cApplication] = allCommandAliasesData;
+    returnData = true;
   } else if (contextName.toUpperCase().includes(wrd.cPLUGIN)) {
-    // TODO: Split the contextName by the "." so we can get a namespace and use that to define where the plugin workflow data should go.
-    // Also make sure the data hasn't been loaded to the same plugin name already!
-    // D[sys.cCommandsAliases][wrd.cPlugins][commandsAliasesFilePathConfigurationName] = allCommandAliasesData;
-    console.log('ERROR: ---- PLUGIN Command Aliases data not yet supported!!!!!!!!!!!!');
+    returnData = allCommandAliasesData;
   }
   // console.log('All loaded command aliases data is: ' + JSON.stringify(D[sys.cCommandsAliases]));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
 }
 
 /**
