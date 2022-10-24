@@ -84,7 +84,7 @@ async function setPluginConfigurationSetting(dataStructure, configurationNamespa
     returnData = ruleBroker.processRules([returnData, dataStructure], [biz.carrayDeepClone]);
   }
   // console.log('returnData after initialization and-or deep cloning: ' + JSON.stringify(returnData));
-  let namespaceConfigObject = await getPluginConfigurationNamespaceObject(returnData, configurationNamespace.split(bas.cDot));
+  let namespaceConfigObject = await getPluginConfigurationNamespaceObject(dataStructure, configurationNamespace.split(bas.cDot));
   // console.log('namespaceConfigObject after calling getPluginConfigurationNamespaceObject: ' + JSON.stringify(namespaceConfigObject));
   if (namespaceConfigObject) {
     // console.log('namespaceConfigObject resolved as true');
@@ -321,23 +321,24 @@ async function getPluginConfigurationNamespaceObject(dataStructure, configuratio
   // console.log(`dataStructure is ${JSON.stringify(dataStructure)}`);
   // console.log(`configurationNamespace is: ${configurationNamespace}`);
   let returnValue = true; // No boot-strap protection needed here, but see logic below, still necessary!
-  let configurationDataRoot = dataStructure[wrd.cconfiguration];
+  let configurationDataRoot = dataStructure;
   let configurationPathObject = configurationDataRoot;
   if (!configurationPathObject) { // Need to handle the case that the configuration data object doesn't even exist at all!
-    dataStructure[wrd.cconfiguration] = {};
-    configurationDataRoot = dataStructure[wrd.cconfiguration];
+    dataStructure = {};
+    configurationDataRoot = dataStructure;
     configurationPathObject = configurationDataRoot;
   } // End-if (!configurationPathObject)
-  for (const element of configurationNamespace) {
+  for (let element of configurationNamespace) {
+    if (element === cfg.cdebugSetting) {
+      element = cfg.cdebugSettings;
+    }
     if (!configurationPathObject[element]) {
       // It doesn't exist yet, so lets make it.
       configurationPathObject[element] = {};
     } // End-if (!configurationPathObject[element])
     configurationPathObject = configurationPathObject[element];
   } // End-for (const element of configurationNamespace)
-  if (returnValue) {
-    returnValue = configurationPathObject;
-  }
+  returnValue = configurationPathObject;
   // console.log(`returnValue is: ${JSON.stringify(returnValue)}`);
   // console.log(`END ${namespacePrefix}${functionName} function`);
   return returnValue;

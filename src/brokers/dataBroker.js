@@ -199,9 +199,11 @@ async function loadAllXmlData(filesToLoad, contextName) {
   let parsedDataFile = {};
   let fileNameRules = [biz.cgetFileNameFromPath, biz.cremoveFileExtensionFromFileName];
   for (let i = 0; i < filesToLoad.length; i++) {
+    // BEGIN i-th loop:
     await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_ithLoop + i);
     let fileToLoad = filesToLoad[i];
     fileToLoad = await ruleBroker.processRules([fileToLoad, ''], [biz.cswapDoubleForwardSlashToSingleForwardSlash]);
+    fileToLoad = path.resolve(fileToLoad);
     // File to load is:
     await loggers.consoleLog(namespacePrefix + functionName, msg.cFileToLoadIs + fileToLoad);
     // NOTE: We still need a filename to use as a context for the page data that we just loaded.
@@ -221,6 +223,8 @@ async function loadAllXmlData(filesToLoad, contextName) {
       await loggers.consoleLog(namespacePrefix + functionName, msg.cloadedFileDataIs + JSON.stringify(dataFile));
       // BEGIN PROCESSING ADDITIONAL DATA
       await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_PROCESSING_ADDITIONAL_DATA);
+      // j-th iteration:
+      await loggers.consoleLog(namespacePrefix + functionName, 'j-th iteration: ' + j);
       if (j === 0) {
         j++;
         multiMergedData = dataFile;
@@ -243,6 +247,7 @@ async function loadAllXmlData(filesToLoad, contextName) {
       await loggers.consoleLog(namespacePrefix + functionName, msg.cMERGED_dataIs + JSON.stringify(multiMergedData));
       dataFile = {};
     } // End-if (fileExtension === gen.cxml || fileExtension === gen.cXml || fileExtension === gen.cXML)
+    // END i-th loop:
     await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_ithLoop + i);
   } // End-for (let i = 0; i < filesToLoad.length; i++)
   parsedDataFile = await processXmlData(multiMergedData, contextName);
@@ -407,6 +412,7 @@ async function processXmlData(inputData, contextName) {
   let dataCategory = await getDataCategoryFromContextName(contextName);
   // dataCategory is:
   await loggers.consoleLog(namespacePrefix + functionName, msg.cdataCategoryIs + dataCategory);
+  console.log('sys.cPluginWorkflows resolves as: ' + sys.cPluginWorkflows);
   let parsedDataFile = {};
   if (dataCategory === sys.cCommandsAliases) {
     parsedDataFile[sys.cCommandsAliases] = {};
@@ -427,7 +433,14 @@ async function processXmlData(inputData, contextName) {
       inputData[sys.cCommandWorkflows] = await processXmlLeafNode(inputData[sys.cCommandWorkflows], wrd.cWorkflows);
     } // End-for (const _element2 of Object.keys(inputData[sys.cCommandWorkflows]))
     parsedDataFile = inputData[sys.cCommandWorkflows];
-  } // End-else-if (dataCategory === sys.cCommandWorkflows)
+  } else if (dataCategory === sys.cPluginWorkflows) {
+    parsedDataFile[sys.cPluginWorkflows] = {};
+    // eslint-disable-next-line no-unused-vars
+    for (const _element3 of Object.keys(inputData[sys.cPluginWorkflows])) {
+      inputData[sys.cPluginWorkflows] = await processXmlLeafNode(inputData[sys.cPluginWorkflows], wrd.cWorkflows);
+    } // End-for (const _element3 of Object.keys(inputData[sys.cPluginWorkflows]))
+    parsedDataFile = inputData[sys.cPluginWorkflows];
+  } // End-else-if (dataCategory === sys.cPluginWorkflows)
   // parsedDataFile is:
   await loggers.consoleLog(namespacePrefix + functionName, msg.cparsedDataFileIs + JSON.stringify(parsedDataFile));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);

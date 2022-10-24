@@ -407,8 +407,80 @@ async function loadAllPlugins(pluginsExecutionPaths, pluginsMetaData) {
 }
 
 /**
+ * @function integrateAllPluginsData
+ * @description Integrates all plugin data for each plugin with the haystacks data structures,
+ * this is the final step if the loading of the plugins and basically ensures that all runtime operations of all of the loaded plugins
+ * are fully integrated and activated within the haystacks execution environment.
+ * @param {object} allPluginsData All of the plugins data for each plugin all combined together into a single JSON data object.
+ * @return {boolean} True or False to indicate if all of the data integration was successful or not.
+ * @author Seth Hollingsead
+ * @date 2022/10/23
+ */
+async function integrateAllPluginsData(allPluginsData) {
+  let functionName = integrateAllPluginsData.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  // allPluginsData is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.callPluginsDataIs + JSON.stringify(allPluginsData));
+  let returnData = true;
+  if (allPluginsData) {
+    for (const key in allPluginsData) {
+      let pluginName = key;
+      // pluginName is:
+      await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginNameIs + pluginName);
+      let dataIntegrationSuccess = await integratePluginData(pluginName, allPluginsData[pluginName]);
+      if (dataIntegrationSuccess === false) {
+        returnData = dataIntegrationSuccess;
+      }
+    } // End-for (const key in allPluginsData)
+  } else {
+    // ERROR: Invalid data input, unable to integrate all plugin data.
+    console.log(msg.cErrorIntegrateAllPluginsDataMessage01);
+  }
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
+/**
+ * @functino integratePluginData
+ * @description Integrates a single plugin data set with the haystacks data structures.
+ * @param {string} pluginName The name of the plugin that should have its data integrated with the haystacks data structure.
+ * @param {object} pluginData The data for the named plugin that should be integrated wtih the haystacks data structure.
+ * @retrun {boolean} True or False to indicate if all the plugin data was integrated successfully with the haystacks data structures.
+ * @author Seth Hollingsead
+ * @date 2022/10/23
+ */
+async function integratePluginData(pluginName, pluginData) {
+  let functionName = integratePluginData.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  // pluginName is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginNameIs + pluginName);
+  // pluginData is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginDataIs + JSON.stringify(pluginData));
+  let returnData = false;
+  if (pluginData && pluginName) {
+    await pluginBroker.integratePluginBusinessRules(pluginName, pluginData[wrd.cdata][sys.cpluginBusinessRules]);
+    await pluginBroker.integratePluginCommands(pluginName, pluginData[wrd.cdata][sys.cpluginCommands]);
+    await pluginBroker.integratePluginConfigurationData(pluginName, pluginData[wrd.cdata][wrd.cconfiguration]);
+    await pluginBroker.integratePluginCommandAliases(pluginName, pluginData[wrd.cdata][sys.cCommandsAliases]);
+    await pluginBroker.integratePluginWorkflows(pluginName, pluginData[wrd.cdata][sys.cCommandWorkflows])
+    await pluginBroker.integratePluginConstantsValidation(pluginName, pluginData[wrd.cdata][sys.cpluginConstantsValidationData]);
+  } else {
+    // ERROR: Invalid input, either the plugin name or plugin data was undefined. Please provide valid data and try again.
+    console.log(msg.cErrorIntegratePluginDataMessage01);
+    // pluginName is:
+    console.log(msg.cpluginNameIs + pluginName);
+    // pluginData is:
+    console.log(msg.cpluginDataIs + JSON.stringify(pluginData));
+  }
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
+/**
  * @function verifyAllPluginsLoaded
- * @description Examins the pluginsLoaded stack to confirm that none of the plugins which
+ * @description Examines the pluginsLoaded stack to confirm that none of the plugins which
  * were supposed to have been loaded failed to load.
  * @return {boolean} True or False to indicate if all of the plugins were loaded successfully or not.
  * @author Seth Hollingsead
@@ -450,5 +522,7 @@ export default {
   loadAllPluginsMetaData,
   loadAllPluginsExecutionPaths,
   loadAllPlugins,
+  integrateAllPluginsData,
+  integratePluginData,
   verifyAllPluginsLoaded
 };

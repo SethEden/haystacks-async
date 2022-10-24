@@ -503,6 +503,150 @@ async function loadPlugin(pluginExecutionPath) {
   return returnData;
 }
 
+/**
+ * @function integratePluginBusinessRules
+ * @description Saves all of the plugin business rules to the D-data structure where business rules are stored and called from.
+ * @param {string} pluginName The name of the plugin who's business rules should be integrated with the haystacks business rules.
+ * @param {object} pluginBusinessRules The business rules specific to this current plugin.
+ * @return {boolean} True or False to indicate if this plugins business rules are successfully integrated or not.
+ * @author Seth Hollingsead
+ * @date 2022/10/23
+ */
+async function integratePluginBusinessRules(pluginName, pluginBusinessRules) {
+  let functionName = integratePluginBusinessRules.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  // pluginName is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginNameIs + pluginName);
+  // pluginBusinessRules is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginBusinessRulesIs + JSON.stringify(pluginBusinessRules));
+  let returnData = false;
+  // TODO: Integrate the data here!!
+  console.log('integratePluginBusinessRules data here!!');
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
+/**
+ * @function integratePluginCommands
+ * @description Saves all of the plugin commands to the D-data structure where commands are stored and called from.
+ * @param {string} pluginName The name of the plugin who's commands should be integrated with the haystacks commands.
+ * @param {object} pluginCommands The commands specific to this current plugin.
+ * @return {boolean} True or False to indicate if this plugins commands are successfully integrated or not.
+ * @author Seth Hollingsead
+ * @date 2022/10/23
+ */
+async function integratePluginCommands(pluginName, pluginCommands) {
+  let functionName = integratePluginCommands.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  // pluginName is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginNameIs + pluginName);
+  // pluginCommands is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cplguinCommandsIs + JSON.stringify(pluginCommands));
+  let returnData = false;
+  // TODO: Integrate the data here!!
+  console.log('integratePluginCommands data here!!');
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
+/**
+ * @function integratePluginConfigurationData
+ * @description Saves all of the plugin configuration data to the D-data structure where configuration data are stored.
+ * @param {string} pluginName The name of the plugin who's configuration data should be integrated with the haystacks configuration data.
+ * @param {object} pluginConfigurationData The JSON object that contains all of the configuration data specific to this current plugin.
+ * @return {boolean} True or False to indicate if this plugins configuration data are successfully integrated or not.
+ * @author Seth Hollingsead
+ * @date 2022/10/23
+ */
+async function integratePluginConfigurationData(pluginName, pluginConfigurationData) {
+  let functionName = integratePluginConfigurationData.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  // pluginName is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginNameIs + pluginName);
+  // pluginConfigurationData is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginConfigurationDataIs + JSON.stringify(pluginConfigurationData));
+  let returnData = false;
+  // TODO: Integrate the data here!!
+  console.log('integratePluginConfigurationData data here!!');
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
+/**
+ * @function integratePluginCommandAliases
+ * @description Saves all of the plugin command aliases to the D-data structure where command aliases data are stored.
+ * @param {string} pluginName The name of the plugin who's command aliases should be integrated with the haystacks command aliases data.
+ * @param {object} pluginCommandAliases The JSON object that contains all of the command aliases specific to this current plugin.
+ * @return {boolean} True or False to indicate if this plugins command aliases data are successfully integrated or not.
+ * @author Seth Hollingsead
+ * @date 2022/10/23
+ */
+async function integratePluginCommandAliases(pluginName, pluginCommandAliases) {
+  let functionName = integratePluginCommandAliases.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  // pluginName is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginNameIs + pluginName);
+  // pluginCommandAliases is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginCommandAliasesIs + JSON.stringify(pluginCommandAliases));
+  let returnData = false;
+  // TODO: Integrate the data here!!
+  console.log('integratePluginCommandAliases data here!!');
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
+/**
+ * @function integratePluginWorkflows
+ * @description Saves all of the plugin workflows to the D-data structure where workflow data are stored.
+ * @param {string} pluginName The name of the plugin who's workflows should be integrated with the haystacks workflows data.
+ * @param {object} pluginWorkflows The JSON object that contains all of the workflows specific to this current plugin.
+ * @return {boolean} True or False to indicate if the plugins workflows data are successfully integrated or not.
+ * @author Seth Hollingsead
+ * @date 2022/10/23
+ */
+async function integratePluginWorkflows(pluginName, pluginWorkflows) {
+  let functionName = integratePluginWorkflows.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  // pluginName is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginNameIs + pluginName);
+  // pluginWorkflows is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginWorkflowsIs + JSON.stringify(pluginWorkflows));
+  let returnData = false;
+  // TODO: Integrate the data here!!
+  console.log('integratePluginWorkflows data here!!');
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
+/**
+ * @function integratePluginConstantsValidation
+ * @description Saves all of the plugin constants validation data to the D-data structure where constants validation data are stored.
+ * @param {string} pluginName The name of the plugin who's constants validation data should be integrated with the haystacks constants validation data.
+ * @param {object} pluginConstantsValidation The JSON object that contains all of the constants validation data specific to this current plugin.
+ * @return {boolean} True or False to indicate if the plugins constants validation data are successfully integrated or not.
+ * @author Seth Hollingsead
+ * @date 2022/10/23
+ */
+async function integratePluginConstantsValidation(pluginName, pluginConstantsValidation) {
+  let functionName = integratePluginConstantsValidation.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  // pluginName is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginNameIs + pluginName);
+  // pluginConstantsValidation is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginConstansValidationIs + JSON.stringify(pluginConstantsValidation));
+  let returnData = false;
+  // TODO: Integrate the data here!!
+  console.log('integratePluginConstantsValidation data here!!');
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
 export default {
   loadPluginRegistry,
   storePluginRegistryInDataStructure,
@@ -518,5 +662,11 @@ export default {
   savePluginRegistry,
   loadPluginMetaData,
   extractAndProcessPluginEntryPointURI,
-  loadPlugin
+  loadPlugin,
+  integratePluginBusinessRules,
+  integratePluginCommands,
+  integratePluginConfigurationData,
+  integratePluginCommandAliases,
+  integratePluginWorkflows,
+  integratePluginConstantsValidation
 };

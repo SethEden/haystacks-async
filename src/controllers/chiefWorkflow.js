@@ -53,7 +53,7 @@ async function loadCommandWorkflowsFromPath(commandWorkflowFilePathConfiguration
   if (!contextName.toUpperCase().includes(wrd.cPLUGIN)) {
     allCommandWorkflowsData = await chiefData.setupAllXmlData(commandWorkflowFilePathConfigurationName, sys.cCommandWorkflows);
   } else if (contextName.toUpperCase().includes(wrd.cPLUGIN)) {
-    allCommandWorkflowsData = await chiefData.setupAllXmlPluginData(commandWorkflowFilePathConfigurationName, sys.cCommandWorkflows);
+    allCommandWorkflowsData = await chiefData.setupAllXmlPluginData(commandWorkflowFilePathConfigurationName, sys.cPluginWorkflows);
   }
 
   // allCommandWorkflowsData is:

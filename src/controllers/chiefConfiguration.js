@@ -128,7 +128,11 @@ async function parsePluginConfigurationData(allPluginConfigData) {
   await loggers.consoleLog(namespacePrefix + functionName, msg.chighLevelPluginDebugConfigurationContainerIs + JSON.stringify(highLevelPluginDebugConfigurationContainer));
 
   if (highLevelPluginSystemConfigurationContainer) {
+    // begin processing highLevelPluginSystemConfigurationContainer
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cbeginProcessingHighLevelPluginSystemConfigurationContainer);
     for (let key in highLevelPluginSystemConfigurationContainer) {
+      // key is:
+      await loggers.consoleLog(namespacePrefix + functionName, msg.ckeyIs + key);
       fullyQualifiedName = '';
       namespace = '';
       name = '';
@@ -157,21 +161,29 @@ async function parsePluginConfigurationData(allPluginConfigData) {
         // but instead we are setting values for the returnData data structure.
         // We want all the data values loaded from the configuration files to be preserved as they were loaded from those files.
         // So just add the value directly using the re-tooled configurator function built specifically for setting plugin configuration values.
+        if (returnData === false) {
+          returnData = {};
+          returnData[wrd.csystem] = {};
+        }
         let tempReturnData1 = await configurator.setPluginConfigurationSetting(returnData, namespace, name, value);
         // tempReturnData1 is:
         await loggers.consoleLog(namespacePrefix + functionName, msg.ctempReturnData1Is + JSON.stringify(tempReturnData1));
-        if (returnData === false) {
-          returnData = {};
-        }
-        returnData = Object.assign(returnData, tempReturnData1);
+        // returnData[wrd.csystem] = Object.assign(returnData[wrd.csystem], tempReturnData1);
         // returnData after object.assign is:
         await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataAfterObjectAssignIs + JSON.stringify(returnData));
       } // End-if (!!value || value === false)
     } // End-for (let key in highLevelPluginSystemConfigurationContainer)
+    // end processing highLevelPluginSystemConfigurationContainer
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cendProcessingHighLevelPluginSystemConfigurationContainer);
   } // End-if (highLevelPluginSystemConfigurationContainer)
 
   if (highLevelPluginDebugConfigurationContainer) {
+    // begin processing highLevelPluginDebugConfigurationContainer
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cbeginProcessingHighLevelPluginDebugConfigurationContainer);
+    returnData[cfg.cdebugSettings] = {};
     for (let key in highLevelPluginDebugConfigurationContainer) {
+      // key is:
+      await loggers.consoleLog(namespacePrefix + functionName, msg.ckeyIs + key);
       fullyQualifiedName = '';
       namespace = '';
       name = '';
@@ -195,17 +207,20 @@ async function parsePluginConfigurationData(allPluginConfigData) {
         value = await ruleBroker.processRules([value, ''], rules);
         // value AFTER rule processing is:
         await loggers.consoleLog(namespacePrefix + functionName, msg.cValueAfterRuleProcessingIs + value);
+        if (returnData === false) {
+          returnData = {};
+          returnData[cfg.cdebugSettings] = {};
+        }
         let tempReturnData2 = await configurator.setPluginConfigurationSetting(returnData, namespace, name, value);
         // tempReturnData2 is:
         await loggers.consoleLog(namespacePrefix + functionName, msg.ctempReturnData2Is + JSON.stringify(tempReturnData2));
-        if (returnData === false) {
-          returnData = {};
-        }
-        returnData = Object.assign(returnData, tempReturnData2);
+        // returnData[cfg.cdebugSettings] = Object.assign(returnData[cfg.cdebugSettings], tempReturnData2);
         // returnData after object.assign is:
         await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataAfterObjectAssignIs + JSON.stringify(returnData));
       }
     } // End-for (let key in highLevelPluginDebugConfigurationContaine)
+    // end processing highLevelPluginDebugConfigurationContainer
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cendProcessingHighLevelPluginDebugConfigurationContainer);
   } // End-if (highLevelPluginDebugConfigurationContainer)
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);

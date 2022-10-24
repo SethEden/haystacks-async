@@ -551,11 +551,14 @@ async function loadPlugins(pluginsPaths) {
   let pluginsMetaData = await chiefPlugin.loadAllPluginsMetaData(pluginsPaths);
   let pluginsExecutionPaths = await chiefPlugin.loadAllPluginsExecutionPaths(pluginsMetaData, pluginsPaths);
   let allPluginsData = await chiefPlugin.loadAllPlugins(pluginsExecutionPaths, pluginsMetaData);
+  let allPluginsDataIntegrated = await chiefPlugin.integrateAllPluginsData(allPluginsData);
+  let loadedVerification = await chiefPlugin.verifyAllPluginsLoaded();
 
-  // TODO: Now sort through all of the plugins data and activate that data in the D-data structure.
-  // We should have a verification system to confirm that all of the plugins data is activated as well.
-
-  returnData = await chiefPlugin.verifyAllPluginsLoaded();
+  if (allPluginsDataIntegrated === true && loadedVerification === true) {
+    // If and ONLY if both are true, then set returnData to true.
+    // This means all the plugins were loaded successfully and all the data from all the plugins was also integrated successfully.
+    returnData = true;
+  }
 
   // console.log('Attempting to execute the plugin business rule 01 remotely, by hard-coding');
   // await allPluginsData['plugin-one']['businessRules']['pluginOneRule01']('1','2');
@@ -690,11 +693,10 @@ async function loadPluginResourceData(contextName, pluginResourcePath) {
       returnData = await chiefWorkflow.loadCommandWorkflowsFromPath(pluginResourcePath, wrd.cPlugin);
       break;
     default:
-      console.log('ERROR: Invalid data type specified: ' + contextName);
+      // ERROR: Invalid data type specified:
+      console.log(msg.cloadPluginResourceDataMessage01 + contextName);
       break;
   }
-  // await chiefConfiguration.setupConfiguration(appConfigPath, frameworkConfigPath);
-  
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;

@@ -77,7 +77,7 @@
   "debugFunctions|debugSetting.controllers.chiefData.setupAllXmlData@FunctionFontBackgroundColor": "Default",
   "debugFunctions|debugSetting.controllers.chiefData.setupAllXmlData@MessageFontBackgroundColor": "Default",
   "debugFunctions|debugSetting.controllers.chiefData.setupAllXmlData@DataFontBackgroundColor": "Default",
-  "debugFunctions|debugSetting.controllers.chiefData.setupAllXmlPluginData": true,
+  "debugFunctions|debugSetting.controllers.chiefData.setupAllXmlPluginData": false,
   "debugFunctions|debugSetting.controllers.chiefData.setupAllXmlPluginData@ModuleFontStyle": "Default",
   "debugFunctions|debugSetting.controllers.chiefData.setupAllXmlPluginData@FunctionFontStyle": "Default",
   "debugFunctions|debugSetting.controllers.chiefData.setupAllXmlPluginData@MessageFontStyle": "Default",
