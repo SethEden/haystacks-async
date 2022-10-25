@@ -4,6 +4,7 @@
  * @description Contains all of the lower level plugin processing functions,
  * and also acts as an interface for loading, unloading, reloading, registering,
  * unregistering plugins and plugin metaData.
+ * @requires module:dataBroker
  * @requires module:ruleBroker
  * @requires module:loggers
  * @requires module:data
@@ -16,6 +17,7 @@
  */
 
 // Internal imports
+import dataBroker from './dataBroker.js';
 import ruleBroker from './ruleBroker.js';
 import loggers from '../executrix/loggers.js';
 import D from '../structures/data.js';
@@ -24,6 +26,7 @@ import hayConst from '@haystacks/constants';
 import url from 'url';
 import path from 'path';
 import configurator from '../executrix/configurator.js'
+import commandBroker from './commandBroker.js'
 
 const {bas, biz, cfg, msg, sys, wrd} = hayConst;
 const baseFileName = path.basename(import.meta.url, path.extname(import.meta.url));
@@ -520,9 +523,8 @@ async function integratePluginBusinessRules(pluginName, pluginBusinessRules) {
   // pluginBusinessRules is:
   await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginBusinessRulesIs + JSON.stringify(pluginBusinessRules));
   let returnData = false;
-  // TODO: Integrate the data here!!
-  console.log('integratePluginBusinessRules data here!!');
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  returnData = await ruleBroker.addPluginRules(pluginName, pluginBusinessRules);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
@@ -544,8 +546,7 @@ async function integratePluginCommands(pluginName, pluginCommands) {
   // pluginCommands is:
   await loggers.consoleLog(namespacePrefix + functionName, msg.cplguinCommandsIs + JSON.stringify(pluginCommands));
   let returnData = false;
-  // TODO: Integrate the data here!!
-  console.log('integratePluginCommands data here!!');
+  returnData = await commandBroker.addPluginCommands(pluginName, pluginCommands);
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
@@ -568,8 +569,7 @@ async function integratePluginConfigurationData(pluginName, pluginConfigurationD
   // pluginConfigurationData is:
   await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginConfigurationDataIs + JSON.stringify(pluginConfigurationData));
   let returnData = false;
-  // TODO: Integrate the data here!!
-  console.log('integratePluginConfigurationData data here!!');
+  returnData = await dataBroker.addPluginConfigurationData(pluginName, pluginConfigurationData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
@@ -592,8 +592,7 @@ async function integratePluginCommandAliases(pluginName, pluginCommandAliases) {
   // pluginCommandAliases is:
   await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginCommandAliasesIs + JSON.stringify(pluginCommandAliases));
   let returnData = false;
-  // TODO: Integrate the data here!!
-  console.log('integratePluginCommandAliases data here!!');
+  returnData = await commandBroker.addPluginCommandAliases(pluginName, pluginCommandAliases);
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;

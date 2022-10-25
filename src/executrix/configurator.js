@@ -344,11 +344,46 @@ async function getPluginConfigurationNamespaceObject(dataStructure, configuratio
   return returnValue;
 }
 
+/**
+ * @function addPluginConfigurationData
+ * @description Merges plugin defined configuration data with the system defined configuration data.
+ * @param {string} pluginName The name of the current plugin these configuration settings belong to.
+ * @param {object} pluginConfigData A JSON object that contains all of the configuration settings for the current plugin.
+ * @return {boolean} True or False to indicate if the merge was successful or not.
+ * @author Seth Hollingsead
+ * @date 2022/10/24
+ */
+async function addPluginConfigurationData(pluginName, pluginConfigData) {
+  // let functionName = addPluginConfigurationData.name;
+  // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
+  // pluginName is:
+  // console.log(msg.cpluginNameIs + pluginName);
+  // pluginConfigData is:
+  // console.log(msg.cpluginConfigDataIs + JSON.stringify(pluginConfigData));
+  let returnData = false;
+  try {
+    if (D[wrd.cconfiguration][wrd.cplugins] === undefined) {
+      D[wrd.cconfiguration][wrd.cplugins] = {};
+    }
+    D[wrd.cconfiguration][wrd.cplugins][pluginName] = {};
+    D[wrd.cconfiguration][wrd.cplugins][pluginName] = pluginConfigData;
+    returnData = true;
+  } catch (err) {
+    // ERROR: Failure unable to persist the plugin configuration data for plugin:
+    console.log(msg.cErrorAddPluginConfigurationDataMessage01 + pluginName);
+    console.log(msg.cERROR_Colon + err);
+  }  
+  // console.log(`returnData is: ${JSON.stringify(returnData)}`);
+  // console.log(`END ${namespacePrefix}${functionName} function`);
+  return returnData;
+}
+
 export default {
   setConfigurationSetting,
   setPluginConfigurationSetting,
   getConfigurationSetting,
   processConfigurationNameRules,
   processConfigurationNamespaceRules,
-  processConfigurationValueRules
+  processConfigurationValueRules,
+  addPluginConfigurationData
 };

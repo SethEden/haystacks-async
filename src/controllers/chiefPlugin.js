@@ -442,11 +442,11 @@ async function integrateAllPluginsData(allPluginsData) {
 }
 
 /**
- * @functino integratePluginData
+ * @function integratePluginData
  * @description Integrates a single plugin data set with the haystacks data structures.
  * @param {string} pluginName The name of the plugin that should have its data integrated with the haystacks data structure.
  * @param {object} pluginData The data for the named plugin that should be integrated wtih the haystacks data structure.
- * @retrun {boolean} True or False to indicate if all the plugin data was integrated successfully with the haystacks data structures.
+ * @return {boolean} True or False to indicate if all the plugin data was integrated successfully with the haystacks data structures.
  * @author Seth Hollingsead
  * @date 2022/10/23
  */
@@ -458,13 +458,19 @@ async function integratePluginData(pluginName, pluginData) {
   // pluginData is:
   await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginDataIs + JSON.stringify(pluginData));
   let returnData = false;
+  let businessRulesIntegrationResult = false;
+  let commandsIntegrationResult = false;
+  let configurationDataIntegrationResult = false;
+  let commandAliasesIntegrationResult = false;
+  let workflowsIntegrationResult = false;
+  let constantsValidationDataIntegrationResult = false;
   if (pluginData && pluginName) {
-    await pluginBroker.integratePluginBusinessRules(pluginName, pluginData[wrd.cdata][sys.cpluginBusinessRules]);
-    await pluginBroker.integratePluginCommands(pluginName, pluginData[wrd.cdata][sys.cpluginCommands]);
-    await pluginBroker.integratePluginConfigurationData(pluginName, pluginData[wrd.cdata][wrd.cconfiguration]);
-    await pluginBroker.integratePluginCommandAliases(pluginName, pluginData[wrd.cdata][sys.cCommandsAliases]);
-    await pluginBroker.integratePluginWorkflows(pluginName, pluginData[wrd.cdata][sys.cCommandWorkflows])
-    await pluginBroker.integratePluginConstantsValidation(pluginName, pluginData[wrd.cdata][sys.cpluginConstantsValidationData]);
+    businessRulesIntegrationResult = await pluginBroker.integratePluginBusinessRules(pluginName, pluginData[wrd.cdata][sys.cpluginBusinessRules]);
+    commandsIntegrationResult = await pluginBroker.integratePluginCommands(pluginName, pluginData[wrd.cdata][sys.cpluginCommands]);
+    configurationDataIntegrationResult = await pluginBroker.integratePluginConfigurationData(pluginName, pluginData[wrd.cdata][wrd.cconfiguration]);
+    commandAliasesIntegrationResult = await pluginBroker.integratePluginCommandAliases(pluginName, pluginData[wrd.cdata][sys.cCommandsAliases]);
+    workflowsIntegrationResult = await pluginBroker.integratePluginWorkflows(pluginName, pluginData[wrd.cdata][sys.cCommandWorkflows])
+    // await pluginBroker.integratePluginConstantsValidation(pluginName, pluginData[wrd.cdata][sys.cpluginConstantsValidationData]);
   } else {
     // ERROR: Invalid input, either the plugin name or plugin data was undefined. Please provide valid data and try again.
     console.log(msg.cErrorIntegratePluginDataMessage01);

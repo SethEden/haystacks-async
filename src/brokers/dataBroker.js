@@ -29,6 +29,30 @@ const baseFileName = path.basename(import.meta.url, path.extname(import.meta.url
 const namespacePrefix = wrd.cbrokers + bas.cDot + baseFileName + bas.cDot;
 
 /**
+ * @function addPluginConfigurationData
+ * @description Merges plugin defined configuration data with the system defined configuration data, by calling the configurator.
+ * This function is a wrapper for the same function in the configurator.
+ * @param {string} pluginName The name of the current plugin these configuration settings belong to.
+ * @param {object} pluginConfigData A JSON object that contains all of the configuration settings for the current plugin.
+ * @return {boolean} True or False to indicate if the merge was successful or not.
+ * @author Seth Hollingsead
+ * @date 2022/10/24
+ */
+async function addPluginConfigurationData(pluginName, pluginConfigData) {
+  let functionName = addPluginConfigurationData.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  // pluginName is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginNameIs + pluginName);
+  // pluginConfigData is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginConfigDataIs + JSON.stringify(pluginConfigData));
+  let returnData = false;
+  returnData = await configurator.addPluginConfigurationData(pluginName, pluginConfigData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
+/**
  * @function scanDataPath
  * @description Scans the specified path and returns a collection
  * of all the files contained recursively within that path and all sub-folders.
@@ -1065,6 +1089,7 @@ async function getDataElementCount(dataObject, pageName, elementNamePattern) {
 }
 
 export default {
+  addPluginConfigurationData,
   scanDataPath,
   findUniversalDebugConfigSetting,
   loadAllCsvData,

@@ -24,6 +24,11 @@ const baseFileName = path.basename(import.meta.url, path.extname(import.meta.url
 // brokers.workflowBroker.
 const namespacePrefix = wrd.cbrokers + bas.cDot + baseFileName + bas.cDot;
 
+
+// async function addPluginWorkflows(pluginName, pluginWorkflows) {
+
+// }
+
 /**
  * @function getWorkflow
  * @description Given the name of the workflow that is being requested,
