@@ -4,6 +4,7 @@
  * @description Contains initialization for all constants validation meta-data.
  * @requires module:configurator
  * @requires module:loggers
+ * @requires module:data
  * @requires {@link https://www.npmjs.com/package/@haystacks/constants|constants}
  * @requires {@link https://www.npmjs.com/package/path|path}
  * @author Seth Hollingsead
@@ -14,7 +15,7 @@
 // Internal imports
 import configurator from '../../executrix/configurator.js';
 import loggers from '../../executrix/loggers.js';
-
+import D from '../../structures/data.js';
 // External imports
 import hayConst from '@haystacks/constants';
 import path from 'path';
@@ -296,6 +297,41 @@ async function initializeAllSystemConstantsValidationData() {
   return allSystemConstantsValidationData;
 }
 
+/**
+ * @function addPluginConstantsValidationData
+ * @description Merges plugin defined constants validation data with the system defined constants validation data.
+ * @param {string} pluginName The name of the current plugin this constants validation data belongs to.
+ * @param {object} constantsValidationData A JSON object that contains the plugin constants validation data that should be merged with the system constants validation data.
+ * @return {boolean} True or False to indicate if the merge was successful or not.
+ * @author Seth Hollingsead
+ * @date 2022/10/25
+ */
+ async function addPluginConstantsValidationData(pluginName, constantsValidationData) {
+  let functionName = addPluginConstantsValidationData.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  // plugin Name is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginNameIs + pluginName);
+  // constantsValidationData is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cconstantsValidationDataIs + JSON.stringify(constantsValidationData));
+  let returnData = false;
+  try {
+    if (D[sys.cConstantsValidationData][wrd.cPlugins] === undefined) {
+      D[sys.cConstantsValidationData][wrd.cPlugins] = {};
+    }
+    D[sys.cConstantsValidationData][wrd.cPlugins][pluginName] = {};
+    D[sys.cConstantsValidationData][wrd.cPlugins][pluginName] = constantsValidationData[sys.cConstantsValidationData];
+    returnData = true;
+  } catch (err) {
+    // ERROR: Failure to merge the plugin constants validation data for plugin: 
+    console.log(msg.cErrorAddPluginConstantsValidationDataMessage01 + pluginName);
+    console.log(msg.cERROR_Colon + err);
+  }
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
 export default {
-  initializeAllSystemConstantsValidationData
+  initializeAllSystemConstantsValidationData,
+  addPluginConstantsValidationData
 };
