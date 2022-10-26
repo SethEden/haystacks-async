@@ -24,10 +24,39 @@ const baseFileName = path.basename(import.meta.url, path.extname(import.meta.url
 // brokers.workflowBroker.
 const namespacePrefix = wrd.cbrokers + bas.cDot + baseFileName + bas.cDot;
 
-
-// async function addPluginWorkflows(pluginName, pluginWorkflows) {
-
-// }
+/**
+ * @function addPluginWorkflows
+ * @description Merges plugin defined workflows with the system defined workflows.
+ * @param {string} pluginName The name of the current plugin these workflows belong to.
+ * @param {object} pluginWorkflows A JSON object that contains the plugin workflows that should be merged with the system workflows.
+ * @return {boolean} True or False to indicate if the merge was successful or not.
+ * @autor Seth Hollingsead
+ * @date 2022/10/25
+ */
+async function addPluginWorkflows(pluginName, pluginWorkflows) {
+  let functionName = addPluginWorkflows.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  // pluginName is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginNameIs + pluginName);
+  // pluginWorkflows is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginWorkflowsIs + JSON.stringify(pluginWorkflows));
+  let returnData = false;
+  try {
+    if (D[sys.cCommandWorkflows][wrd.cPlugins] === undefined) {
+      D[sys.cCommandWorkflows][wrd.cPlugins] = {};
+    }
+    D[sys.cCommandWorkflows][wrd.cPlugins][pluginName] = {};
+    D[sys.cCommandWorkflows][wrd.cPlugins][pluginName] = pluginWorkflows;
+    returnData = true;
+  } catch (err) {
+    // ERROR: Failure to merge the plugin workflows for plugin:
+    console.log(msg.cErrorAddPluginWorkflowsMessage01 + pluginName);
+    console.log(msg.cERROR_Colon + err);
+  }
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
 
 /**
  * @function getWorkflow
@@ -253,6 +282,7 @@ async function getWorkflowNamespaceDataObject(workflowDataStructure, namespaceTo
 }
 
 export default {
+  addPluginWorkflows,
   getWorkflow,
   doesWorkflowExist,
   doesWorkflowExistInWorkflowData,

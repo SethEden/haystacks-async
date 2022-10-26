@@ -6,7 +6,9 @@
  * unregistering plugins and plugin metaData.
  * @requires module:dataBroker
  * @requires module:ruleBroker
+ * @requires module:workflowBroker
  * @requires module:loggers
+ * @requires module:allConstantsValidationData
  * @requires module:data
  * @requires {@link https://www.npmjs.com/package/@haystacks/constants|@haystacks/constants}
  * @requires {@link https://www.npmjs.com/package/url|url}
@@ -19,7 +21,9 @@
 // Internal imports
 import dataBroker from './dataBroker.js';
 import ruleBroker from './ruleBroker.js';
+import workflowBroker from './workflowBroker.js';
 import loggers from '../executrix/loggers.js';
+import allConstantsValidationMetaData from '../resources/constantsValidation/allConstantsValidationMetaData.js';
 import D from '../structures/data.js';
 // External imports
 import hayConst from '@haystacks/constants';
@@ -27,6 +31,7 @@ import url from 'url';
 import path from 'path';
 import configurator from '../executrix/configurator.js'
 import commandBroker from './commandBroker.js'
+import themeBroker from './themeBroker.js'
 
 const {bas, biz, cfg, msg, sys, wrd} = hayConst;
 const baseFileName = path.basename(import.meta.url, path.extname(import.meta.url));
@@ -615,8 +620,7 @@ async function integratePluginWorkflows(pluginName, pluginWorkflows) {
   // pluginWorkflows is:
   await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginWorkflowsIs + JSON.stringify(pluginWorkflows));
   let returnData = false;
-  // TODO: Integrate the data here!!
-  console.log('integratePluginWorkflows data here!!');
+  returnData = await workflowBroker.addPluginWorkflows(pluginName, pluginWorkflows);
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
@@ -639,8 +643,30 @@ async function integratePluginConstantsValidation(pluginName, pluginConstantsVal
   // pluginConstantsValidation is:
   await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginConstansValidationIs + JSON.stringify(pluginConstantsValidation));
   let returnData = false;
-  // TODO: Integrate the data here!!
-  console.log('integratePluginConstantsValidation data here!!');
+  returnData = await allConstantsValidationMetaData.addPluginConstantsValidationData(pluginName, pluginConstantsValidation);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
+/**
+ * @function integratePluginThemeData
+ * @description Saves all of the plugin theme data to the D-data structure where theme data is stored.
+ * @param {string} pluginName The name of the plugin who's theme data should be integrated with the haystacks theme data.
+ * @param {object} pluginThemeData The JSON object that contains all of the theme data specific to this current plugin.
+ * @return {boolean} True or False to indicate if the plugins theme data are successfully integrated or not.
+ * @author Seth Hollingsead
+ * @date 2022/10/25
+ */
+async function integratePluginThemeData(pluginName, pluginThemeData) {
+  let functionName = integratePluginThemeData.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  // pluginName is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginNameIs + pluginName);
+  // pluginThemeData is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginThemeDataIs + JSON.stringify(pluginThemeData));
+  let returnData = false;
+  returnData = await themeBroker.addThemeData(pluginThemeData, wrd.cPlugins + bas.cColon + pluginName);
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
@@ -667,5 +693,6 @@ export default {
   integratePluginConfigurationData,
   integratePluginCommandAliases,
   integratePluginWorkflows,
-  integratePluginConstantsValidation
+  integratePluginConstantsValidation,
+  integratePluginThemeData
 };

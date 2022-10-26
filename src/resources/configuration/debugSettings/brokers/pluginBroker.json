@@ -259,7 +259,7 @@
   "debugFunctions|debugSetting.brokers.pluginBroker.integratePluginCommandAliases@FunctionFontBackgroundColor": "Default",
   "debugFunctions|debugSetting.brokers.pluginBroker.integratePluginCommandAliases@MessageFontBackgroundColor": "Default",
   "debugFunctions|debugSetting.brokers.pluginBroker.integratePluginCommandAliases@DataFontBackgroundColor": "Default",
-  "debugFunctions|debugSetting.brokers.pluginBroker.integratePluginWorkflows": true,
+  "debugFunctions|debugSetting.brokers.pluginBroker.integratePluginWorkflows": false,
   "debugFunctions|debugSetting.brokers.pluginBroker.integratePluginWorkflows@ModuleFontStyle": "Default",
   "debugFunctions|debugSetting.brokers.pluginBroker.integratePluginWorkflows@FunctionFontStyle": "Default",
   "debugFunctions|debugSetting.brokers.pluginBroker.integratePluginWorkflows@MessageFontStyle": "Default",
@@ -284,5 +284,18 @@
   "debugFunctions|debugSetting.brokers.pluginBroker.integratePluginConstantsValidation@ModuleFontBackgroundColor": "Default",
   "debugFunctions|debugSetting.brokers.pluginBroker.integratePluginConstantsValidation@FunctionFontBackgroundColor": "Default",
   "debugFunctions|debugSetting.brokers.pluginBroker.integratePluginConstantsValidation@MessageFontBackgroundColor": "Default",
-  "debugFunctions|debugSetting.brokers.pluginBroker.integratePluginConstantsValidation@DataFontBackgroundColor": "Default"
+  "debugFunctions|debugSetting.brokers.pluginBroker.integratePluginConstantsValidation@DataFontBackgroundColor": "Default",
+  "debugFunctions|debugSetting.brokers.pluginBroker.integratePluginThemeData": true,
+  "debugFunctions|debugSetting.brokers.pluginBroker.integratePluginThemeData@ModuleFontStyle": "Default",
+  "debugFunctions|debugSetting.brokers.pluginBroker.integratePluginThemeData@FunctionFontStyle": "Default",
+  "debugFunctions|debugSetting.brokers.pluginBroker.integratePluginThemeData@MessageFontStyle": "Default",
+  "debugFunctions|debugSetting.brokers.pluginBroker.integratePluginThemeData@DataFontStyle": "Default",
+  "debugFunctions|debugSetting.brokers.pluginBroker.integratePluginThemeData@ModuleFontColor": "Default",
+  "debugFunctions|debugSetting.brokers.pluginBroker.integratePluginThemeData@FunctionFontColor": "Default",
+  "debugFunctions|debugSetting.brokers.pluginBroker.integratePluginThemeData@MessageFontColor": "Default",
+  "debugFunctions|debugSetting.brokers.pluginBroker.integratePluginThemeData@DataFontColor": "Default",
+  "debugFunctions|debugSetting.brokers.pluginBroker.integratePluginThemeData@ModuleFontBackgroundColor": "Default",
+  "debugFunctions|debugSetting.brokers.pluginBroker.integratePluginThemeData@FunctionFontBackgroundColor": "Default",
+  "debugFunctions|debugSetting.brokers.pluginBroker.integratePluginThemeData@MessageFontBackgroundColor": "Default",
+  "debugFunctions|debugSetting.brokers.pluginBroker.integratePluginThemeData@DataFontBackgroundColor": "Default"
 }

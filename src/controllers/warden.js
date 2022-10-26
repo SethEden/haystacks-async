@@ -178,6 +178,14 @@ async function initFrameworkSchema(configData) {
   await loadCommandAliases(''); // This function will now pick up the defaults already saved in the configuration system.
   await loadCommandWorkflows(''); // Same as above.
 
+  // Setup all themes
+  if (await configurator.getConfigurationSetting(wrd.csystem, cfg.cdebugSettings) === true) {
+    await chiefData.initThemes();
+    if (configData[wrd.cThemes]) {
+      await chiefData.addThemeData(configData[wrd.cThemes], wrd.cApplication);
+    }
+  }
+
   // NOTE: We need this here, because the plugin itself will try to create an instance of haystacks to re-use its functionality.
   // When that happens the plugin will send execution back here and haystacks would again try to load the plugin from within the plugin!
   // We MUST prevent this from happening. So I've dropped this here to allow the plugin to control the loading of nested plugins.

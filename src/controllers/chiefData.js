@@ -4,6 +4,7 @@
  * @description Contains all the functions to manage the loading and processing of data,
  * such as XML files, CSV files or JSON files. Additional file type processing should be added in this module.
  * @requires module:dataBroker
+ * @requires module:themeBroker
  * @requires module:configurator
  * @requires module:loggers
  * @requires {@link https://www.npmjs.com/package/@haystacks/constants|@haystacks/constants}
@@ -15,6 +16,7 @@
 
 // Internal imports
 import dataBroker from '../brokers/dataBroker.js';
+import themeBroker from '../brokers/themeBroker.js';
 import configurator from '../executrix/configurator.js';
 import loggers from '../executrix/loggers.js';
 // External imports
@@ -64,11 +66,68 @@ async function searchForUniversalDebugConfigSetting(appConfigPathName, framework
 }
 
 /**
+ * @function initThemes
+ * @description Initializes the theme data for the framework.
+ * @return {void}
+ * @author Seth Hollingsead
+ * @date 2022/10/23
+ */
+async function initThemes() {
+  let functionName = initThemes.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await themeBroker.initThemePathData();
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+}
+
+/**
+ * @function addThemeData
+ * @description Adds theme data, theme names and theme paths for resource paths external to the framework.
+ * Ex: Application, Plugins
+ * @param {object} themeData A JSON object that contains the externally defined theme data names and data paths.
+ * @param {string} contextName A context name that indicates where the data is coming from.
+ * Ex: Application, Plugins
+ */
+async function addThemeData(themeData, contextName) {
+  let functionName = addThemeData.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  // themeData is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cthemeDataIs + JSON.stringify(themeData));
+  // contextName is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.ccontextNameIs + contextName);
+  let returnData = false;
+  returnData = themeBroker.addThemeData(themeData, contextName);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
+/**
+ * @function scanThemesDataPaths
+ * @description Scans the specified root path for folders and determines a list of theme names and theme paths,
+ * returns this data as a JSON data object.
+ * @param {string} themesRootPath The root path where the themes folders are located. This is the path that should be scanned.
+ * @return {object} A JSON object that contains the theme names and theme paths from the specified root path.
+ * @author Seth Hollingsead
+ * @date 2022/10/25
+ */
+async function scanThemesDataPath(themesRootPath) {
+  let functionName = scanThemesDataPath.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  // themesRootPath is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cthemesRootPathIs + themesRootPath);
+  let returnData = false;
+  
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
+/**
  * @function determineThemeDebugConfigFilesToLoad
  * @description If the debugSettings flag is already set,
  * then look up the specified path name and scan the path to determine all
  * of the theme debug config files that should be loaded.
- * @param {string} themeConfigPathName The configuration name of the path that should be looked up for scaning purposes.
+ * @param {string} themeConfigPathName The configuration name of the path that should be looked up for scanningg purposes.
  * @return {array<string>} An array of file names and paths that should be used when loading the theme debug configuration files.
  * @author Seth Hollingsead
  * @date 2022/06/13
@@ -337,6 +396,8 @@ async function addConstantsValidationData(arrayValidationData) {
 
 export default {
   searchForUniversalDebugConfigSetting,
+  initThemes,
+  addThemeData,
   determineThemeDebugConfigFilesToLoad,
   getAndProcessCsvData,
   getAndProcessXmlData,

@@ -464,13 +464,15 @@ async function integratePluginData(pluginName, pluginData) {
   let commandAliasesIntegrationResult = false;
   let workflowsIntegrationResult = false;
   let constantsValidationDataIntegrationResult = false;
+  let themeDataIntegrationResult = false;
   if (pluginData && pluginName) {
     businessRulesIntegrationResult = await pluginBroker.integratePluginBusinessRules(pluginName, pluginData[wrd.cdata][sys.cpluginBusinessRules]);
     commandsIntegrationResult = await pluginBroker.integratePluginCommands(pluginName, pluginData[wrd.cdata][sys.cpluginCommands]);
     configurationDataIntegrationResult = await pluginBroker.integratePluginConfigurationData(pluginName, pluginData[wrd.cdata][wrd.cconfiguration]);
     commandAliasesIntegrationResult = await pluginBroker.integratePluginCommandAliases(pluginName, pluginData[wrd.cdata][sys.cCommandsAliases]);
     workflowsIntegrationResult = await pluginBroker.integratePluginWorkflows(pluginName, pluginData[wrd.cdata][sys.cCommandWorkflows])
-    // await pluginBroker.integratePluginConstantsValidation(pluginName, pluginData[wrd.cdata][sys.cpluginConstantsValidationData]);
+    constantsValidationDataIntegrationResult = await pluginBroker.integratePluginConstantsValidation(pluginName, pluginData[wrd.cdata][sys.cpluginConstantsValidationData]);
+    themeDataIntegrationResult = await pluginBroker.integratePluginThemeData(pluginName, pluginData[wrd.cdata][sys.c])
   } else {
     // ERROR: Invalid input, either the plugin name or plugin data was undefined. Please provide valid data and try again.
     console.log(msg.cErrorIntegratePluginDataMessage01);
@@ -479,6 +481,15 @@ async function integratePluginData(pluginName, pluginData) {
     // pluginData is:
     console.log(msg.cpluginDataIs + JSON.stringify(pluginData));
   }
+  if (businessRulesIntegrationResult === true &&
+    commandsIntegrationResult === true &&
+    configurationDataIntegrationResult === true &&
+    commandAliasesIntegrationResult === true &&
+    workflowsIntegrationResult === true &&
+    constantsValidationDataIntegrationResult === true &&
+    themeDataIntegrationResult === true) {
+      returnData = true;
+    }
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;

@@ -21,6 +21,7 @@ import chiefConfiguration from '../controllers/chiefConfiguration.js';
 import chiefData from '../controllers/chiefData.js';
 import configurator from '../executrix/configurator.js';
 import loggers from '../executrix/loggers.js';
+import D from '../structures/data.js';
 // import D from '../structures/data.js';
 // External imports
 import hayConst from '@haystacks/constants';
@@ -30,6 +31,84 @@ const {bas, biz, cfg, msg, sys, wrd} = hayConst;
 const baseFileName = path.basename(import.meta.url, path.extname(import.meta.url));
 // brokers.themeBroker.
 const namespacePrefix = wrd.cbrokers + bas.cDot + baseFileName + bas.cDot;
+
+/**
+ * @function initThemePathData
+ * @description Scans the themes folder and determines all of the available themes,
+ * their paths and saves that data to the D-data structure.
+ * @return {object} The JSON object that contains all of the theme names and theme paths.
+ * @author Seth Hollingsead
+ * @date 2022/10/25
+ */
+async function initThemePathData() {
+  let functionName = initThemePathData.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  let themesNames = await getNamedThemes();
+  // themesNames is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cthemesNamesIs + JSON.stringify(themesNames));
+  let themesData = [];
+  D[wrd.cThemes] = {};
+  D[wrd.cThemes][wrd.cFramework] = [];
+  let applicationThemes = D[wrd.cThemes][wrd.cFramework];
+  for (const key in themesNames) {
+    let themeName = themesNames[key];
+    // themeName is:
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cthemeNameIs + themeName);
+    let themePath = await getNamedThemePath(themeName);
+    // themePath is:
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cthemePathIs + themePath);
+    applicationThemes.push({Name: themeName, Path: themePath});
+    // applicationThemes is:
+    await loggers.consoleLog(namespacePrefix + functionName, msg.capplicationThemesIs + JSON.stringify(applicationThemes));
+  }
+  themesData = D[wrd.cThemes];
+  // themesData is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cthemesDataIs + JSON.stringify(themesData))
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return themesData;
+}
+
+/**
+ * @function addThemeData
+ * @description Merges application and plugin defined theme data paths with the system defined theme paths.
+ * @param {object} themeData A JSON object that contains the theme data for either the application or the current plugin.
+ * @param {string} contextName The context name where the theme data is coming from.
+ * Ex: Application, Plugin:<PluginName>
+ * @return {boolean} True or False to indicate if the merge was successful or not.
+ * @author Seth Hollingsead
+ * @date 2022/10/25
+ */
+async function addThemeData(themeData, contextName) {
+  let functionName = addThemeData.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  // themeData is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cthemeDataIs + JSON.stringify(themeData));
+  // contextName is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.ccontextNameIs + contextName);
+  let returnData = false;
+  let pluginName = '';
+  try {
+    if (contextName.toUpperCase().includes(wrd.cPLUGIN) === true && contextName.includes(bas.cColon) === true) {
+      let contextNameArray = contextName.split(bas.cColon);
+      pluginName = contextNameArray[1];
+      if (D[sys.cThemes][wrd.cPlugins] === undefined) {
+        D[sys.cThemes][wrd.cPlugins] = {};
+      }
+      D[sys.cThemes][wrd.cPlugins][pluginName] = {};
+      D[sys.cThemes][wrd.cPlugins][pluginName] = themeData;
+    } else {
+      D[sys.cThemes][wrd.cApplication] = themeData;
+    }
+    returnData = true;
+  } catch (err) {
+    // ERROR: Failure to merge the theme data for:
+    console.log(msg.cErrorAddThemeDataMessage01 + contextName);
+    console.log(msg.cERROR_Colon + err);
+  }
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
 
 /**
  * @function getNamedThemes
@@ -127,6 +206,8 @@ async function applyTheme(themeData) {
 }
 
 export default {
+  initThemePathData,
+  addThemeData,
   getNamedThemes,
   getNamedThemePath,
   loadTheme,
