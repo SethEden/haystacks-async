@@ -490,12 +490,12 @@ async function loadPlugin(pluginExecutionPath) {
     return loadAsyncImport().then(async value => {
       resolve(returnData = await value[wrd.cdefault].initializePlugin());
       // dataLoaded is:
-      console.log(msg.cdataLoadedIs + JSON.stringify(returnData));
+      loggers.consoleLog(namespacePrefix + functionName, msg.cdataLoadedIs + JSON.stringify(returnData));
     }).catch (err => reject(err));
   });
 
   await Promise.all([pluginResponseData]).then((value) => {
-    console.log('value is: ' + JSON.stringify(value));
+    loggers.consoleLog(namespacePrefix + functionName, msg.cvalueIs + JSON.stringify(value));
   });
 
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));

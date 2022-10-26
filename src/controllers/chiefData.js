@@ -102,7 +102,7 @@ async function addThemeData(themeData, contextName) {
 }
 
 /**
- * @function scanThemesDataPaths
+ * @function generateThemeDataFromThemeRootPath
  * @description Scans the specified root path for folders and determines a list of theme names and theme paths,
  * returns this data as a JSON data object.
  * @param {string} themesRootPath The root path where the themes folders are located. This is the path that should be scanned.
@@ -110,13 +110,13 @@ async function addThemeData(themeData, contextName) {
  * @author Seth Hollingsead
  * @date 2022/10/25
  */
-async function scanThemesDataPath(themesRootPath) {
-  let functionName = scanThemesDataPath.name;
+async function generateThemeDataFromThemeRootPath(themesRootPath) {
+  let functionName = generateThemeDataFromThemeRootPath.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // themesRootPath is:
   await loggers.consoleLog(namespacePrefix + functionName, msg.cthemesRootPathIs + themesRootPath);
   let returnData = false;
-  
+  returnData = themeBroker.generateThemeDataFromPath(themesRootPath);
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
@@ -398,6 +398,7 @@ export default {
   searchForUniversalDebugConfigSetting,
   initThemes,
   addThemeData,
+  generateThemeDataFromThemeRootPath,
   determineThemeDebugConfigFilesToLoad,
   getAndProcessCsvData,
   getAndProcessXmlData,

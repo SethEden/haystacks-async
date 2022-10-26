@@ -700,6 +700,9 @@ async function loadPluginResourceData(contextName, pluginResourcePath) {
     case wrd.cworkflows:
       returnData = await chiefWorkflow.loadCommandWorkflowsFromPath(pluginResourcePath, wrd.cPlugin);
       break;
+    case wrd.cthemes:
+      returnData = await chiefData.generateThemeDataFromThemeRootPath(pluginResourcePath);
+      break;
     default:
       // ERROR: Invalid data type specified:
       console.log(msg.cloadPluginResourceDataMessage01 + contextName);

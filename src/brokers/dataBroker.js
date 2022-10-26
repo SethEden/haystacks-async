@@ -436,7 +436,6 @@ async function processXmlData(inputData, contextName) {
   let dataCategory = await getDataCategoryFromContextName(contextName);
   // dataCategory is:
   await loggers.consoleLog(namespacePrefix + functionName, msg.cdataCategoryIs + dataCategory);
-  console.log('sys.cPluginWorkflows resolves as: ' + sys.cPluginWorkflows);
   let parsedDataFile = {};
   if (dataCategory === sys.cCommandsAliases) {
     parsedDataFile[sys.cCommandsAliases] = {};
