@@ -33,6 +33,7 @@ import loggers from '../executrix/loggers.js';
 // External imports
 import hayConst from '@haystacks/constants';
 import path from 'path';
+import { config } from 'dotenv'
 
 const {bas, biz, cfg, gen, msg, sys, wrd} = hayConst;
 const baseFileName = path.basename(import.meta.url, path.extname(import.meta.url));
@@ -177,7 +178,35 @@ async function initFrameworkSchema(configData) {
   await loadCommandAliases(''); // This function will now pick up the defaults already saved in the configuration system.
   await loadCommandWorkflows(''); // Same as above.
 
+  // Setup all themes
+  if (await configurator.getConfigurationSetting(wrd.csystem, cfg.cdebugSettings) === true) {
+    await chiefData.initThemes();
+    if (configData[wrd.cThemes]) {
+      await chiefData.addThemeData(configData[wrd.cThemes], wrd.cApplication);
+    }
+  }
+
+  // NOTE: We need this here, because the plugin itself will try to create an instance of haystacks to re-use its functionality.
+  // When that happens the plugin will send execution back here and haystacks would again try to load the plugin from within the plugin!
+  // We MUST prevent this from happening. So I've dropped this here to allow the plugin to control the loading of nested plugins.
+  // -------------
+  // NOTE: Apparently this is not an issue for the plugin?!? Maybe?
+  // console.log('--Determine if the plugin is the one loading haystacks.');
+  // if (configData[cfg.cenablePluginLoader] != null || configData[cfg.cenablePluginLoader] != undefined) {
+  //   console.log('--Plugin IS LOADING Haystacks!!')
+  //   console.log('--Determine if the plugin has disabled the plugin loader setting.');
+  //   if (configData[cfg.cenablePluginLoader] === false) {
+  //     console.log('--Plugin loader setting has been disabled successfully!');
+  //     await configurator.setConfigurationSetting(wrd.csystem, cfg.cenablePluginLoader, false);
+  //     console.log('--Force the configruation setting to disable the plugin loader!');
+  //   }
+  //   console.log('--DONE checking and disabling the plugin loader setting.');
+  // }
+  // console.log('--DONE checking if the plugin is the one loading the haystacks.');
+
+  // console.log('--Now check if the plugin Loader setting is enabled or not');
   if (await configurator.getConfigurationSetting(wrd.csystem, cfg.cenablePluginLoader) === true) {
+    // console.log('--Plugin loader is still enabled!');
     let pluginRegistryPath = path.resolve(configData[cfg.cclientRegisteredPlugins]);
     // pluginRegistryPath is:
     await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginRegistryPathIs + pluginRegistryPath);
@@ -530,11 +559,14 @@ async function loadPlugins(pluginsPaths) {
   let pluginsMetaData = await chiefPlugin.loadAllPluginsMetaData(pluginsPaths);
   let pluginsExecutionPaths = await chiefPlugin.loadAllPluginsExecutionPaths(pluginsMetaData, pluginsPaths);
   let allPluginsData = await chiefPlugin.loadAllPlugins(pluginsExecutionPaths, pluginsMetaData);
+  let allPluginsDataIntegrated = await chiefPlugin.integrateAllPluginsData(allPluginsData);
+  let loadedVerification = await chiefPlugin.verifyAllPluginsLoaded();
 
-  // TODO: Now sort through all of the plugins data and activate that data in the D-data structure.
-  // We should have a verification system to confirm that all of the plugins data is activated as well.
-
-  returnData = await chiefPlugin.verifyAllPluginsLoaded();
+  if (allPluginsDataIntegrated === true && loadedVerification === true) {
+    // If and ONLY if both are true, then set returnData to true.
+    // This means all the plugins were loaded successfully and all the data from all the plugins was also integrated successfully.
+    returnData = true;
+  }
 
   // console.log('Attempting to execute the plugin business rule 01 remotely, by hard-coding');
   // await allPluginsData['plugin-one']['businessRules']['pluginOneRule01']('1','2');
@@ -658,9 +690,25 @@ async function loadPluginResourceData(contextName, pluginResourcePath) {
   // pluginResourcePath is:
   await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginResourcePathIs + pluginResourcePath);
   let returnData = {};
-  // TODO: Add a call here to load the plugin data.
-  console.log('TODO: Add a call here to load the plugin data.');
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  switch (contextName) {
+    case wrd.cconfiguration:
+      returnData = await chiefConfiguration.setupPluginConfiguration(pluginResourcePath);
+      break;
+    case wrd.ccommand + wrd.cAliases:
+      returnData = await chiefCommander.loadCommandAliasesFromPath(pluginResourcePath, wrd.cPlugin);
+      break;
+    case wrd.cworkflows:
+      returnData = await chiefWorkflow.loadCommandWorkflowsFromPath(pluginResourcePath, wrd.cPlugin);
+      break;
+    case wrd.cthemes:
+      returnData = await chiefData.generateThemeDataFromThemeRootPath(pluginResourcePath);
+      break;
+    default:
+      // ERROR: Invalid data type specified:
+      console.log(msg.cloadPluginResourceDataMessage01 + contextName);
+      break;
+  }
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
