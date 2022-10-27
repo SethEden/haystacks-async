@@ -82,14 +82,18 @@ async function setupConfiguration(appConfigPath, frameworkConfigPath) {
 async function setupPluginConfiguration(pluginConfigPath) {
   let functionName = setupPluginConfiguration.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  // pluginConfigPath is:
   await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginConfigPathIs + pluginConfigPath);
   let rules = [biz.cswapBackSlashToForwardSlash];
   pluginConfigPath = await ruleBroker.processRules([pluginConfigPath, ''], rules);
+  // pluginConfigPath is:
   await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginConfigPathIs + pluginConfigPath);
-  await configurator.setConfigurationSetting(wrd.csystem, sys.cpluginConfigPath, pluginConfigPath);
+  // await configurator.setConfigurationSetting(wrd.csystem, sys.cpluginConfigPath, pluginConfigPath);
   let allPluginConfigData = {};
-  allPluginConfigData = await chiefData.setupAllJsonConfigData(sys.cpluginConfigPath, wrd.cconfiguration);
+
+  allPluginConfigData = await chiefData.setupAllJsonConfigPluginData(pluginConfigPath, wrd.cconfiguration);
   let allParsedPluginConfigData = await parsePluginConfigurationData(allPluginConfigData);
+  // allParsedPluginConfigData is:
   await loggers.consoleLog(namespacePrefix + functionName, msg.callParsedPluginConfigDataIs + JSON.stringify(allParsedPluginConfigData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return allParsedPluginConfigData;
@@ -106,11 +110,118 @@ async function setupPluginConfiguration(pluginConfigPath) {
 async function parsePluginConfigurationData(allPluginConfigData) {
   let functionName = parsePluginConfigurationData.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.callPluginConfigDataIs + allPluginConfigData);
-  let returnData = {};
-  // TODO: Add all the parsing here, but make sure we are NOT adding it to the D-data structure,
-  // That will need to happen later when the Plugin returns all of its data back to haystacks as part of the
-  // plugin loading process.
+  await loggers.consoleLog(namespacePrefix + functionName, msg.callPluginConfigDataIs + JSON.stringify(allPluginConfigData));
+  let highLevelPluginSystemConfigurationContainer = {};
+  let highLevelPluginDebugConfigurationContainer = {};
+  let rules = [biz.cstringToDataType];
+  let fullyQualifiedName;
+  let namespace;
+  let name;
+  let value;
+  let returnData = false;
+
+  highLevelPluginSystemConfigurationContainer = allPluginConfigData[wrd.csystem];
+  // highLevelPluginSystemConfigurationContainer is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.chighLevelPluginSystemConfigurationContainerIs + JSON.stringify(highLevelPluginSystemConfigurationContainer));
+  highLevelPluginDebugConfigurationContainer = allPluginConfigData[cfg.cdebugSettings];
+  // highLevelPluginDebugConfigurationContainer is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.chighLevelPluginDebugConfigurationContainerIs + JSON.stringify(highLevelPluginDebugConfigurationContainer));
+
+  if (highLevelPluginSystemConfigurationContainer) {
+    // begin processing highLevelPluginSystemConfigurationContainer
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cbeginProcessingHighLevelPluginSystemConfigurationContainer);
+    for (let key in highLevelPluginSystemConfigurationContainer) {
+      // key is:
+      await loggers.consoleLog(namespacePrefix + functionName, msg.ckeyIs + key);
+      fullyQualifiedName = '';
+      namespace = '';
+      name = '';
+      value = highLevelPluginSystemConfigurationContainer[key];
+      // value is:
+      await loggers.consoleLog(namespacePrefix + functionName, msg.cvalueIs + value);
+      if (!!value || value === false) {
+        fullyQualifiedName = key;
+        // fullyQualifiedName is:
+        await loggers.consoleLog(namespacePrefix + functionName, msg.cfullyQualifiedNameIs + fullyQualifiedName);
+
+        name = await configurator.processConfigurationNameRules(fullyQualifiedName);
+        // name is:
+        await loggers.consoleLog(namespacePrefix + functionName, msg.cnameIs + name);
+        namespace = await configurator.processConfigurationNamespaceRules(fullyQualifiedName);
+        // namespace is:
+        await loggers.consoleLog(namespacePrefix + functionName, msg.cnamespaceIs + namespace);
+        value = await configurator.processConfigurationValueRules(name, value);
+        // value BEFORE rule processing is:
+        await loggers.consoleLog(namespacePrefix + functionName, msg.cValueBeforeRuleProcessingIs + value);
+        value = await ruleBroker.processRules([value, ''], rules);
+        // value AFTER rule processing is:
+        await loggers.consoleLog(namespacePrefix + functionName, msg.cValueAfterRuleProcessingIs + value);
+        // NOTE: It doesn't matter if we capture the debug setting and avoid setting it here,
+        // because at the plugin level we are not setting values with the D-data structure,
+        // but instead we are setting values for the returnData data structure.
+        // We want all the data values loaded from the configuration files to be preserved as they were loaded from those files.
+        // So just add the value directly using the re-tooled configurator function built specifically for setting plugin configuration values.
+        if (returnData === false) {
+          returnData = {};
+          returnData[wrd.csystem] = {};
+        }
+        let tempReturnData1 = await configurator.setPluginConfigurationSetting(returnData, namespace, name, value);
+        // tempReturnData1 is:
+        await loggers.consoleLog(namespacePrefix + functionName, msg.ctempReturnData1Is + JSON.stringify(tempReturnData1));
+        // returnData[wrd.csystem] = Object.assign(returnData[wrd.csystem], tempReturnData1);
+        // returnData after object.assign is:
+        await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataAfterObjectAssignIs + JSON.stringify(returnData));
+      } // End-if (!!value || value === false)
+    } // End-for (let key in highLevelPluginSystemConfigurationContainer)
+    // end processing highLevelPluginSystemConfigurationContainer
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cendProcessingHighLevelPluginSystemConfigurationContainer);
+  } // End-if (highLevelPluginSystemConfigurationContainer)
+
+  if (highLevelPluginDebugConfigurationContainer) {
+    // begin processing highLevelPluginDebugConfigurationContainer
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cbeginProcessingHighLevelPluginDebugConfigurationContainer);
+    returnData[cfg.cdebugSettings] = {};
+    for (let key in highLevelPluginDebugConfigurationContainer) {
+      // key is:
+      await loggers.consoleLog(namespacePrefix + functionName, msg.ckeyIs + key);
+      fullyQualifiedName = '';
+      namespace = '';
+      name = '';
+      value = highLevelPluginDebugConfigurationContainer[key];
+      // value is:
+      await loggers.consoleLog(namespacePrefix + functionName, msg.cvalueIs + value);
+      if (!!value || value === false) {
+        fullyQualifiedName = key;
+        // fullyQualifiedName is:
+        await loggers.consoleLog(namespacePrefix + functionName, msg.cfullyQualifiedNameIs + fullyQualifiedName);
+
+        name = await configurator.processConfigurationNameRules(fullyQualifiedName);
+        // name is:
+        await loggers.consoleLog(namespacePrefix + functionName, msg.cnameIs + name);
+        namespace = await configurator.processConfigurationNamespaceRules(fullyQualifiedName);
+        // namespace is:
+        await loggers.consoleLog(namespacePrefix + functionName, msg.cnamespaceIs + namespace);
+        value = await configurator.processConfigurationValueRules(name, value);
+        // value BEFORE rule processing is:
+        await loggers.consoleLog(namespacePrefix + functionName, msg.cValueBeforeRuleProcessingIs + value);
+        value = await ruleBroker.processRules([value, ''], rules);
+        // value AFTER rule processing is:
+        await loggers.consoleLog(namespacePrefix + functionName, msg.cValueAfterRuleProcessingIs + value);
+        if (returnData === false) {
+          returnData = {};
+          returnData[cfg.cdebugSettings] = {};
+        }
+        let tempReturnData2 = await configurator.setPluginConfigurationSetting(returnData, namespace, name, value);
+        // tempReturnData2 is:
+        await loggers.consoleLog(namespacePrefix + functionName, msg.ctempReturnData2Is + JSON.stringify(tempReturnData2));
+        // returnData[cfg.cdebugSettings] = Object.assign(returnData[cfg.cdebugSettings], tempReturnData2);
+        // returnData after object.assign is:
+        await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataAfterObjectAssignIs + JSON.stringify(returnData));
+      }
+    } // End-for (let key in highLevelPluginDebugConfigurationContaine)
+    // end processing highLevelPluginDebugConfigurationContainer
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cendProcessingHighLevelPluginDebugConfigurationContainer);
+  } // End-if (highLevelPluginDebugConfigurationContainer)
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;

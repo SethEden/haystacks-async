@@ -64,6 +64,47 @@ async function addClientRules(clientRules) {
 }
 
 /**
+ * @function addPluginRules
+ * @description Merges plugin defined business rules with the system defined business rules.
+ * @param {string} pluginName The name of the current plugin these rules belong to.
+ * @param {array<object>} pluginRules The plugin rules that should be merged with the system rules.
+ * @return {boolean} True or False to indicate if the merge was successful or not.
+ * @author Seth Hollingsead
+ * @date 2022/10/24
+ */
+async function addPluginRules(pluginName, pluginRules) {
+  // let functionName = addPluginRules.name;
+  // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
+  // pluginName is:
+  // console.log(msg.cpluginNameIs + pluginName);
+  // pluginRules is:
+  // console.log(msg.cpluginRulesIs + JSON.stringify(pluginRules));
+  let returnData = false;
+  try {
+    // if (D[sys.cbusinessRules][wrd.cplugins] === undefined) {
+    //   D[sys.cbusinessRules][wrd.cplugins] = {};
+    // }
+    // D[sys.cbusinessRules][wrd.cplugins][pluginName] = {};
+    // Object.assign(D[sys.cbusinessRules][wrd.cplugins][pluginName], pluginRules);
+    // returnData = true;
+
+    // NOTE: The business rules was never design to have a heirarchy storage, so when calling business rules,
+    // its basically calling a flat list. So rather than adding the plugin rules according to the above structure.
+    // We will need to just add them to the flat list. If a plugin is unloaded,
+    // then each of its business rules will need to be individually searched out and removed from the flat list.
+    Object.assign(D[sys.cbusinessRules], pluginRules[sys.cbusinessRules]);
+    returnData = true;
+  } catch (err) {
+    // ERROR: Failure to merge the plugin rules for plugin:
+    console.log(msg.cErrorAddPluginRulesMessage01 + pluginName);
+    console.log(msg.cERROR_Colon + err);
+  }
+  // console.log(msg.creturnDataIs + returnData);
+  // console.log(`END ${namespacePrefix}${functionName}`);
+  return returnData;
+}
+
+/**
  * @function processRules
  * @description Parse the given input Object/String/Integer/Data/Function through a set of business rules,
  * (Some rules do not support chaining); where the rules are defined in the input rules array.
@@ -112,5 +153,6 @@ async function processRules(inputs, rulesToExecute) {
 export default {
   bootStrapBusinessRules,
   addClientRules,
+  addPluginRules,
   processRules
 };

@@ -37,7 +37,7 @@ const namespacePrefix = wrd.ccontrollers + bas.cDot + baseFileName + bas.cDot;
  * contextName = "framework" => D['CommandWorkflows']['Framework']
  * contextName = "application" => D['CommandWorkflows']['Application']
  * contextName = "plugin" => D['CommandWorkflows']['Plugins']['<pluginName>']
- * @return {void}
+ * @return {boolean|object} True or False if the data to be loaded is not from a plugin, returns a JSON object is the data to be loaded is from a plugin.
  * @author Seth Hollingsead
  * @date 2022/02/04
  */
@@ -48,28 +48,35 @@ async function loadCommandWorkflowsFromPath(commandWorkflowFilePathConfiguration
   await loggers.consoleLog(namespacePrefix + functionName, msg.ccommandWorkflowFilePathConfigurationNameIs + commandWorkflowFilePathConfigurationName);
   // contextName
   await loggers.consoleLog(namespacePrefix + functionName, msg.ccontextNameIs + contextName);
+  let returnData = false;
   let allCommandWorkflowsData = {};
-  allCommandWorkflowsData = await chiefData.setupAllXmlData(commandWorkflowFilePathConfigurationName, sys.cCommandWorkflows);
+  if (!contextName.toUpperCase().includes(wrd.cPLUGIN)) {
+    allCommandWorkflowsData = await chiefData.setupAllXmlData(commandWorkflowFilePathConfigurationName, sys.cCommandWorkflows);
+  } else if (contextName.toUpperCase().includes(wrd.cPLUGIN)) {
+    allCommandWorkflowsData = await chiefData.setupAllXmlPluginData(commandWorkflowFilePathConfigurationName, sys.cPluginWorkflows);
+  }
+
   // allCommandWorkflowsData is:
   await loggers.consoleLog(namespacePrefix + functionName, msg.callCommandWorkflowsDataIs + JSON.stringify(allCommandWorkflowsData));
   if (D[sys.cCommandWorkflows] === undefined) { // Make sure we only do this if it's undefined, otherwise we might wipe out previously loaded data.
     D[sys.cCommandWorkflows] = {};
     D[sys.cCommandWorkflows][sys.cFramework] = allCommandWorkflowsData;
+    returnData = true;
   } else if (contextName.toUpperCase() === wrd.cAPPLICATION) {
     // for (let i = 0; i < allCommandWorkflowsData[sys.cCommandWorkflows][wrd.cWorkflows].length; i++) {
       // D[sys.cCommandWorkflows][wrd.cWorkflows].push(allCommandWorkflowsData[sys.cCommandWorkflows][wrd.cWorkflows][i]);
       // Object.assign(D[sys.cCommandWorkflows][wrd.cWorkflows], allCommandWorkflowsData[sys.cCommandWorkflows][wrd.cWorkflows]);
       // D[sys.cCommandWorkflows] = ruleBroker.processRules([D[sys.cCommandWorkflows], allCommandWorkflowsData], [biz.cobjectDeepMerge]);
       D[sys.cCommandWorkflows][wrd.cApplication] = allCommandWorkflowsData;
+      returnData = true;
     // }
   } else if (contextName.toUpperCase().includes(wrd.cPLUGIN)) {
-    // TODO: Split the contextName by the "." so we can get a namespace and use that to define where the plugin workflow data should go.
-    // Also make sure the data hasn't been loaded to the same plugin name already!
-    // D[sys.cCommandWorkflows][wrd.cPlugins][commandWorkflowFilePathConfigurationName] = allCommandWorkflowsData;
-    console.log('ERROR: ---- PLUGIN Workflow data not yet supported!!!!!!!!!!!!');
+    returnData = allCommandWorkflowsData;
   }
   // console.log('All loaded workflow data is: ' + JSON.stringify(D[sys.cCommandWorkflows]));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
 }
 
 export default {

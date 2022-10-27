@@ -299,20 +299,21 @@ async function readDirectorySynchronously(inputData, inputMetaData) {
     let currentDirectoryPath = directory;
     let currentDirectory = '';
     try {
-      currentDirectory = await fs.readdirSync(currentDirectoryPath, gen.cUTF8);
+      currentDirectory = fs.readdirSync(currentDirectoryPath, gen.cUTF8);
     } catch (err) {
       console.log(msg.cERROR + err.message);
-      await fs.mkdirSync(currentDirectoryPath);
-      currentDirectory = await fs.readdirSync(currentDirectoryPath, gen.cUTF8);
+      fs.mkdirSync(currentDirectoryPath);
+      currentDirectory = fs.readdirSync(currentDirectoryPath, gen.cUTF8);
     }
     // console.log('currentDirectoryContents are: ' + JSON.stringify(currentDirectory));
     await currentDirectory.forEach(async file => {
       // console.log('checking for file: ' + file);
       let filesShouldBeSkipped = directoriesToSkip.indexOf(file) > -1;
       let pathOfCurrentItem = directory + bas.cForwardSlash + file;
+      // console.log('filesShouldBeSkipped is: ' + filesShouldBeSkipped);
       try {
         // console.log('BEGIN TRY');
-        if (!filesShouldBeSkipped && await fs.statSync(pathOfCurrentItem).isFile()) {
+        if (!filesShouldBeSkipped && fs.statSync(pathOfCurrentItem).isFile()) {
           // console.log('Its a file, and not to be skipped!');
           if (enableFilesListLimit === true && filesListLimit > 0) {
             // console.log('list limit is enabled, not sure if we hit it yet or not.');

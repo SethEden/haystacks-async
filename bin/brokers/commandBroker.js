@@ -74,6 +74,87 @@ async function addClientCommands(clientCommands) {
 }
 
 /**
+ * @function addPluginCommands
+ * @description Merges plugin defined commands with the system defined commands.
+ * @param {string} pluginName The name of the current plugin these commands belong to.
+ * @param {array<object>} pluginCommands The plugin commands that should be merged with the system commands.
+ * @return {boolean} True or False to indicate if the merge was successful or not.
+ * @author Seth Hollingsead
+ * @date 2022/10/24
+ */
+async function addPluginCommands(pluginName, pluginCommands) {
+  let functionName = addPluginCommands.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  // pluginName is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginNameIs + pluginName);
+  // pluginCommands is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginCommandsIs + JSON.stringify(pluginCommands));
+  let returnData = false;
+  try {
+    // if (D[wrd.cCommands][wrd.cplugins] === undefined) {
+    //   D[wrd.cCommands][wrd.cplugins] = {};
+    // }
+    // D[wrd.cCommands][wrd.cplugins][pluginName] = {};
+    // for (const [key, value] of Object.entries(pluginCommands)) {
+    //   console.log('&&&&&&&&&&&&&&&&& ---- >>>>>>>> key is: ' + key);
+    //   D[wrd.cCommands][wrd.cplugins][pluginName] = {...D[wrd.cplugin + wrd.cCommands], [`${key}`]: value};
+    // } // End-for (const [key, value] of Object.entries(pluginCommands));
+
+    // NOTE: The commands system was never designed to have a hierarchy storage, so when calling commands,
+    // its basically calling a flat list. So rather than adding the plugin commands according to the above structure.
+    // We will need to just add them to the flat list. If a plugin is unloaded,
+    // then each of its commands will need to be individually searched out and removed from the flat list.
+    for (const [key, value] of Object.entries(pluginCommands[wrd.ccommands])) {
+      // console.log('&&&&&&&&&&&&&&&&& ---- >>>>>>>> key is: ' + key);
+      D[wrd.cCommands] = {...D[wrd.cCommands], [`${key}`]: value};
+    } // End-for (const [key, value] of Object.entries(pluginCommands))
+    returnData = true;
+  } catch (err) {
+    // ERROR: Failure to merge the plugin commands for plugin:
+    console.log(msg.cErrorAddPluginCommandsMessage01 + pluginName);
+    console.log(msg.cERROR_Colon + err);
+  }
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
+/**
+ * @function addPluginCommandAliases
+ * @description Merges plugin defined command aliases with the system defined command aliases.
+ * @param {string} pluginName The name of the current plugin these command aliases belong to.
+ * @param {object} pluginCommandAliases A JSON object that contains the plugin command aliases that
+ * should be merged with the system command aliases.
+ * @return {boolean} True or False to indicate if the merge was successful or not.
+ * @author Seth Hollingsead
+ * @date 2022/10/24
+ */
+async function addPluginCommandAliases(pluginName, pluginCommandAliases) {
+  let functionName = addPluginCommandAliases.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  // pluginName is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginNameIs + pluginName);
+  // pluginCommandAliases is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginCommandAliasesIs + JSON.stringify(pluginCommandAliases));
+  let returnData = false;
+  try {
+    if (D[sys.cCommandsAliases][wrd.cPlugins] === undefined) {
+      D[sys.cCommandsAliases][wrd.cPlugins] = {};
+    }
+    D[sys.cCommandsAliases][wrd.cPlugins][pluginName] = {};
+    D[sys.cCommandsAliases][wrd.cPlugins][pluginName] = pluginCommandAliases;
+    returnData = true;
+  } catch (err) {
+    // ERROR: Failure to merge the plugin command aliases for plugin:
+    console.log(msg.cErrorAddPluginCommandAliasesMessage01 + pluginName);
+    console.log(msg.cERROR_Colon + err);
+  }
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
+/**
  * @function getValidCommand
  * @description Parses the command string and returns an array that can be used to
  * enqueue or execute that command. Useful for determining if a command is a valid command and
@@ -634,6 +715,8 @@ async function executeCommand(commandString) {
 export default {
   bootStrapCommands,
   addClientCommands,
+  addPluginCommands,
+  addPluginCommandAliases,
   getValidCommand,
   countMatchingCommandAlias,
   searchCommandAlias,

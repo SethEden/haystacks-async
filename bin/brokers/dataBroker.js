@@ -29,6 +29,30 @@ const baseFileName = path.basename(import.meta.url, path.extname(import.meta.url
 const namespacePrefix = wrd.cbrokers + bas.cDot + baseFileName + bas.cDot;
 
 /**
+ * @function addPluginConfigurationData
+ * @description Merges plugin defined configuration data with the system defined configuration data, by calling the configurator.
+ * This function is a wrapper for the same function in the configurator.
+ * @param {string} pluginName The name of the current plugin these configuration settings belong to.
+ * @param {object} pluginConfigData A JSON object that contains all of the configuration settings for the current plugin.
+ * @return {boolean} True or False to indicate if the merge was successful or not.
+ * @author Seth Hollingsead
+ * @date 2022/10/24
+ */
+async function addPluginConfigurationData(pluginName, pluginConfigData) {
+  let functionName = addPluginConfigurationData.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  // pluginName is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginNameIs + pluginName);
+  // pluginConfigData is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginConfigDataIs + JSON.stringify(pluginConfigData));
+  let returnData = false;
+  returnData = await configurator.addPluginConfigurationData(pluginName, pluginConfigData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
+/**
  * @function scanDataPath
  * @description Scans the specified path and returns a collection
  * of all the files contained recursively within that path and all sub-folders.
@@ -199,9 +223,11 @@ async function loadAllXmlData(filesToLoad, contextName) {
   let parsedDataFile = {};
   let fileNameRules = [biz.cgetFileNameFromPath, biz.cremoveFileExtensionFromFileName];
   for (let i = 0; i < filesToLoad.length; i++) {
+    // BEGIN i-th loop:
     await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_ithLoop + i);
     let fileToLoad = filesToLoad[i];
     fileToLoad = await ruleBroker.processRules([fileToLoad, ''], [biz.cswapDoubleForwardSlashToSingleForwardSlash]);
+    fileToLoad = path.resolve(fileToLoad);
     // File to load is:
     await loggers.consoleLog(namespacePrefix + functionName, msg.cFileToLoadIs + fileToLoad);
     // NOTE: We still need a filename to use as a context for the page data that we just loaded.
@@ -221,6 +247,8 @@ async function loadAllXmlData(filesToLoad, contextName) {
       await loggers.consoleLog(namespacePrefix + functionName, msg.cloadedFileDataIs + JSON.stringify(dataFile));
       // BEGIN PROCESSING ADDITIONAL DATA
       await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_PROCESSING_ADDITIONAL_DATA);
+      // j-th iteration:
+      await loggers.consoleLog(namespacePrefix + functionName, 'j-th iteration: ' + j);
       if (j === 0) {
         j++;
         multiMergedData = dataFile;
@@ -243,6 +271,7 @@ async function loadAllXmlData(filesToLoad, contextName) {
       await loggers.consoleLog(namespacePrefix + functionName, msg.cMERGED_dataIs + JSON.stringify(multiMergedData));
       dataFile = {};
     } // End-if (fileExtension === gen.cxml || fileExtension === gen.cXml || fileExtension === gen.cXML)
+    // END i-th loop:
     await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_ithLoop + i);
   } // End-for (let i = 0; i < filesToLoad.length; i++)
   parsedDataFile = await processXmlData(multiMergedData, contextName);
@@ -261,6 +290,9 @@ async function loadAllXmlData(filesToLoad, contextName) {
  * @return {object} A JSON object that contains all fo the data that was loaded and parsed from all the input files list.
  * @author Seth Hollingsead
  * @date 2021/10/15
+ * @NOTE When the plugin uses haystacks to load the plugin data from the plugins configuration files,
+  // the haystacks instance that does this is not the same instance as the parent instance that is loading the plugin.
+  // So this new instance of haystacks (created by the plugin) doesn't have any of it's own configuration data loaded.
  */
 async function loadAllJsonData(filesToLoad, contextName) {
   let functionName = loadAllJsonData.name;
@@ -275,6 +307,8 @@ async function loadAllJsonData(filesToLoad, contextName) {
   let foundSystemData = false;
   let systemConfigFileName = sys.csystemConfigFileName; // 'framework.system.json';
   let applicationConfigFileName = sys.capplicationConfigFileName; // 'application.system.json';
+  let pluginConfigFileName = sys.cpluginConfigFileName; // 'plugin.system.json';
+  let loadPluginDebugSettings = false;
   let multiMergedData = {};
   let parsedDataFile = {};
 
@@ -283,10 +317,10 @@ async function loadAllJsonData(filesToLoad, contextName) {
   for (const element1 of filesToLoad) {
     let fileToLoad = element1;
     // console.log('fileToLoad is: ' + fileToLoad);
-    if (fileToLoad.includes(systemConfigFileName) || fileToLoad.includes(applicationConfigFileName)) {
+    if (fileToLoad.includes(systemConfigFileName) || fileToLoad.includes(applicationConfigFileName) || fileToLoad.includes(pluginConfigFileName)) {
       let dataFile = await preprocessJsonFile(fileToLoad);
 
-      // NOTE: In this case we have just loaded either the framework configuration data or the application configuration data,
+      // NOTE: In this case we have just loaded either the framework configuration data or the application configuration data or the plugin configuration data,
       // and nothing else. So we can just assign the data to the multiMergedData.
       // We will need to merge all the other files,
       // but there will be a setting here we should examine to determine if the rest of the data should even be load or not.
@@ -295,6 +329,13 @@ async function loadAllJsonData(filesToLoad, contextName) {
       // Adding all that extra debugging configuration settings can affect load times, and application performance to a much lesser degree.
       multiMergedData[wrd.csystem] = {};
       multiMergedData[wrd.csystem] = dataFile;
+      if (fileToLoad.includes(pluginConfigFileName)) {
+        // console.log('****--plugin config setting file is being processed.');
+        if (multiMergedData[wrd.csystem][wrd.csystem + bas.cDot + cfg.cdebugSettings] === true) {
+          // console.log('****--The plugin config debug settings value is set to true!');
+          loadPluginDebugSettings = true;
+        }
+      }
       foundSystemData = true;
     } // End-if (fileToLoad.includes(systemConfigFileName) || fileToLoad.includes(applicationConfigFileName))
     if (foundSystemData === true) {
@@ -303,10 +344,12 @@ async function loadAllJsonData(filesToLoad, contextName) {
   } // End-for (const element of filesToLoad)
 
   // Now we need to determine if we should load the rest of the data.
-  if (await configurator.getConfigurationSetting(wrd.csystem, cfg.cdebugSettings) === true) {
+  // NOTE: If the filesToLoad contained the pluginConfigFileName, then we will not be able to determine the debugSettings value from the configuration setting.
+  // See note above.
+  if (await configurator.getConfigurationSetting(wrd.csystem, cfg.cdebugSettings) === true || loadPluginDebugSettings === true) {
     for (const element2 of filesToLoad) {
       let fileToLoad = element2;
-      if (!fileToLoad.includes(systemConfigFileName) && !fileToLoad.includes(applicationConfigFileName)
+      if (!fileToLoad.includes(systemConfigFileName) && !fileToLoad.includes(applicationConfigFileName) && !fileToLoad.includes(pluginConfigFileName)
       && fileToLoad.toUpperCase().includes(gen.cDotJSON) && !fileToLoad.toLowerCase().includes(wrd.cmetadata + gen.cDotjson)) {
         let dataFile = await preprocessJsonFile(fileToLoad);
         // console.log('dataFile to merge is: ' + JSON.stringify(dataFile));
@@ -413,7 +456,14 @@ async function processXmlData(inputData, contextName) {
       inputData[sys.cCommandWorkflows] = await processXmlLeafNode(inputData[sys.cCommandWorkflows], wrd.cWorkflows);
     } // End-for (const _element2 of Object.keys(inputData[sys.cCommandWorkflows]))
     parsedDataFile = inputData[sys.cCommandWorkflows];
-  } // End-else-if (dataCategory === sys.cCommandWorkflows)
+  } else if (dataCategory === sys.cPluginWorkflows) {
+    parsedDataFile[sys.cPluginWorkflows] = {};
+    // eslint-disable-next-line no-unused-vars
+    for (const _element3 of Object.keys(inputData[sys.cPluginWorkflows])) {
+      inputData[sys.cPluginWorkflows] = await processXmlLeafNode(inputData[sys.cPluginWorkflows], wrd.cWorkflows);
+    } // End-for (const _element3 of Object.keys(inputData[sys.cPluginWorkflows]))
+    parsedDataFile = inputData[sys.cPluginWorkflows];
+  } // End-else-if (dataCategory === sys.cPluginWorkflows)
   // parsedDataFile is:
   await loggers.consoleLog(namespacePrefix + functionName, msg.cparsedDataFileIs + JSON.stringify(parsedDataFile));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
@@ -1038,6 +1088,7 @@ async function getDataElementCount(dataObject, pageName, elementNamePattern) {
 }
 
 export default {
+  addPluginConfigurationData,
   scanDataPath,
   findUniversalDebugConfigSetting,
   loadAllCsvData,
