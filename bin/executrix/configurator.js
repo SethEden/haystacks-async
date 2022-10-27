@@ -76,7 +76,7 @@ async function setPluginConfigurationSetting(dataStructure, configurationNamespa
   // console.log(`configurationName is: ${configurationName}`);
   // console.log(`configurationVaue is: ${configurationValue}`);
   let returnData = false;
-  if (dataStructure === false) {
+  if (!dataStructure) {
     // console.log('dataStructure resolves as false');
     returnData = {};
   } else {
