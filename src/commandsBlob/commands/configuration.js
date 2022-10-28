@@ -128,7 +128,11 @@ async function listConfigurationThemes(inputData, inputMetaData) {
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = [true, {}];
-  let themesList = await themeBroker.getNamedThemes();
+  let frameworkThemesPath = await configurator.getConfigurationSetting(wrd.csystem, cfg.cframeworkThemesPath);
+  frameworkThemesPath = path.resolve(frameworkThemesPath);
+  // frameworkThemesPath is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cframeworkThemesPathIs + frameworkThemesPath);
+  let themesList = await themeBroker.getNamedThemesFromRootPath(frameworkThemesPath);
   // themesList is:
   console.log(msg.cthemesListIs + JSON.stringify(themesList));
   returnData[1] = themesList;
@@ -160,7 +164,11 @@ async function changeDebugConfigurationTheme(inputData, inputMetaData) {
     let desiredThemeName = inputData[1];
     // desiredThemeName is:
     await loggers.consoleLog(namespacePrefix + functionName, msg.cdesiredThemeNameIs + desiredThemeName);
-    let namedThemePath = await themeBroker.getNamedThemePath(desiredThemeName);
+    let frameworkThemesPath = await configurator.getConfigurationSetting(wrd.csystem, cfg.cframeworkThemesPath);
+    frameworkThemesPath = path.resolve(frameworkThemesPath);
+    // frameworkThemesPath is:
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cframeworkThemesPathIs + frameworkThemesPath);
+    let namedThemePath = await themeBroker.getNamedThemePathFromRootPath(desiredThemeName, frameworkThemesPath);
     if (namedThemePath !== false) {
       // namedThemePath is verified:
       await loggers.consoleLog(namespacePrefix + functionName, msg.cnamedThemePathIsVerified + namedThemePath);

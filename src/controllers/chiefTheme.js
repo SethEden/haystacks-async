@@ -30,7 +30,7 @@ const namespacePrefix = wrd.ccontrollers + bas.cDot + baseFileName +bas.cDot;
 
 /**
  * @function initThemes
- * @description Initializes the theme data for the framework.
+ * @description Initializes the themes data on the D-data structure.
  * @return {void}
  * @author Seth Hollingsead
  * @date 2022/10/23
@@ -38,7 +38,7 @@ const namespacePrefix = wrd.ccontrollers + bas.cDot + baseFileName +bas.cDot;
  async function initThemes() {
   let functionName = initThemes.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  await themeBroker.initThemePathData();
+  await themeBroker.initThemeData();
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
 }
 
@@ -58,7 +58,7 @@ async function addThemeData(themeData, contextName) {
   // contextName is:
   await loggers.consoleLog(namespacePrefix + functionName, msg.ccontextNameIs + contextName);
   let returnData = false;
-  returnData = themeBroker.addThemeData(themeData, contextName);
+  returnData = await themeBroker.addThemeData(themeData, contextName);
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
@@ -79,8 +79,8 @@ async function generateThemeDataFromThemeRootPath(themesRootPath) {
   // themesRootPath is:
   await loggers.consoleLog(namespacePrefix + functionName, msg.cthemesRootPathIs + themesRootPath);
   let returnData = false;
-  returnData = themeBroker.generateThemeDataFromPath(themesRootPath);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  returnData = await themeBroker.generateThemeDataFromPath(themesRootPath);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }

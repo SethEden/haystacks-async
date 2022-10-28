@@ -14,9 +14,9 @@
  */
 
 // Internal imports
-import configurator from '../../executrix/configurator.js';
-import loggers from '../../executrix/loggers.js';
-import D from '../../structures/data.js';
+import configurator from '../executrix/configurator.js';
+import loggers from '../executrix/loggers.js';
+import D from '../structures/data.js';
 // External imports
 import hayConst from '@haystacks/constants';
 import path from 'path';
@@ -37,82 +37,25 @@ const namespacePrefix = wrd.cbrokers + bas.cDot + baseFileName + bas.cDot;
   let functionName = initializeConstantsValidationData.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   D[sys.cConstantsValidationData] = {};
-  D[sys.cConstantsValidationData][sys.cConstantsShortNames] = {};
-  D[sys.cConstantsValidationData][sys.cConstantsFileNames] = {};
-  D[sys.cConstantsValidationData][sys.cConstantsPrefix] = {};
-  D[sys.cConstantsValidationData][sys.cConstantsFilePaths] = {};
-  D[sys.cConstantsValidationData][sys.cConstantsPhase1ValidationMessages] = {};
-  D[sys.cConstantsValidationData][sys.cConstantsPhase2ValidationMessages] = {};
+  D[sys.cConstantsValidationData][wrd.cFramework] = {};
+  D[sys.cConstantsValidationData][wrd.cFramework][sys.cConstantsShortNames] = {};
+  D[sys.cConstantsValidationData][wrd.cFramework][sys.cConstantsFileNames] = {};
+  D[sys.cConstantsValidationData][wrd.cFramework][sys.cConstantsPrefix] = {};
+  D[sys.cConstantsValidationData][wrd.cFramework][sys.cConstantsFilePaths] = {};
+  D[sys.cConstantsValidationData][wrd.cFramework][sys.cConstantsPhase1ValidationMessages] = {};
+  D[sys.cConstantsValidationData][wrd.cFramework][sys.cConstantsPhase2ValidationMessages] = {};
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
 }
 
 /**
- * @function addConstantsValidationData
- * @description Adds a library of constants vaidation data to the existing constants vaidation data.
- * @param {array<array<string,object>>} constantLibraryData The array of data that should be added to the validation data set for the purpose of validation.
+ * @function generateFrameworkConstantsValidationData
+ * @description Generate all of the framework constants validation data so that it cn be used to validate all of the framework constants.
  * @return {void}
  * @author Seth Hollingsead
  * @date 2022/03/22
  */
-async function addConstantsValidationData(constantLibraryData) {
-  let functionName = addConstantsValidationData.name;
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  // constantLibraryData is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cconstantLibraryDataIs + JSON.stringify(constantLibraryData));
-  for (let key1 in constantLibraryData[sys.cConstantsValidationData]) {
-    if (Object.prototype.hasOwnProperty.call(constantLibraryData[sys.cConstantsValidationData], key1)) {
-      if (key1 === sys.cConstantsFilePaths ||
-      key1 === sys.cConstantsPhase1ValidationMessages ||
-      key1 === sys.cConstantsPhase2ValidationMessages ||
-      key1 === sys.cConstantsShortNames ||
-      key1 === sys.cConstantsFileNames ||
-      key1 === sys.cConstantsPrefix) {
-        await addDeeplyNestedConstantsValidationData(key1, constantLibraryData[sys.cConstantsValidationData][key1]);
-      } else {
-        let data1 = constantLibraryData[sys.cConstantsValidationData][key1];
-        D[sys.cConstantsValidationData][key1] = [];
-        Object.assign(D[sys.cConstantsValidationData][key1], data1);
-      }
-    } // End-if (constantLibraryData[sys.cConstantsValidationData].hasOwnProperty(key1))
-  } // End-for (let key1 in constantLibraryData[sys.cConstantsValidationData])
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
-}
-
-/**
- * @function addDeeplyNestedConstantsValidationData
- * @description Adds all the constants validation auxiliary data that is deeply nested inside sub-data structures to the main D-data structure.
- * Such as file paths, and validation messages.
- * @param {string} contextName The name that should be used when accessing and also adding the data to the D-data structure.
- * @param {array<array<string,object>>} deeplyNestedData The actual data that should be added.
- * @return {void}
- * @author Seth Hollingsead
- * @date 2022/03/22
- */
-async function addDeeplyNestedConstantsValidationData(contextName, deeplyNestedData) {
-  let functionName = addDeeplyNestedConstantsValidationData.name;
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  // contextName is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.ccontextNameIs + contextName);
-  // deeplyNestedData is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cdeeplyNestedDataIs + JSON.stringify(deeplyNestedData));
-  for (let key2 in deeplyNestedData) {
-    if (Object.prototype.hasOwnProperty.call(deeplyNestedData, key2)) {
-      let data2 = deeplyNestedData[key2];
-      D[sys.cConstantsValidationData][contextName][key2] = data2;
-    }
-  } // End-for (let key2 in deeplyNestedData)
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
-}
-
-/**
- * @function initializeAllSystemConstantsValidationData
- * @description Initializes all of the system constants validation data so that it cn be used to validate all of the constants.
- * @return {void}
- * @author Seth Hollingsead
- * @date 2022/03/22
- */
-async function initializeAllSystemConstantsValidationData() {
-  let functionName = initializeAllSystemConstantsValidationData.name;
+async function generateFrameworkConstantsValidationData() {
+  let functionName = generateFrameworkConstantsValidationData.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   let constantsPath = await configurator.getConfigurationSetting(wrd.csystem, cfg.cframeworkConstantsPath);
   // constantsPath is:
@@ -377,32 +320,48 @@ async function initializeAllSystemConstantsValidationData() {
 }
 
 /**
- * @function addPluginConstantsValidationData
- * @description Merges plugin defined constants validation data with the system defined constants validation data.
- * @param {string} pluginName The name of the current plugin this constants validation data belongs to.
- * @param {object} constantsValidationData A JSON object that contains the plugin constants validation data that should be merged with the system constants validation data.
- * @return {boolean} True or False to indicate if the merge was successful or not.
+ * @function addConstantsValidationData
+ * @description Adds a JSON object of constants validation data to the existing constants validation data.
+ * @param {object} constantsValidationData The JSON object that contains the constants validation data that should be added to the validation data for the purpose of validation.
+ * @param {string} contextName The type of data that should be added.
+ * Ex: Framework, Application, Plugin:PluginOne, Plugin:D-CAF
+ * @return {boolean} True or False to indicate if the data was added successfully or not.
  * @author Seth Hollingsead
- * @date 2022/10/25
+ * @date 2022/10/28
  */
- async function addPluginConstantsValidationData(pluginName, constantsValidationData) {
-  let functionName = addPluginConstantsValidationData.name;
+async function addConstantsValidationData(constantsValidationData, contextName) {
+  let functionName = addConstantsValidationData.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  // plugin Name is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginNameIs + pluginName);
   // constantsValidationData is:
   await loggers.consoleLog(namespacePrefix + functionName, msg.cconstantsValidationDataIs + JSON.stringify(constantsValidationData));
+  // contextName is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.ccontextNameIs + contextName);
   let returnData = false;
   try {
-    if (D[sys.cConstantsValidationData][wrd.cPlugins] === undefined) {
-      D[sys.cConstantsValidationData][wrd.cPlugins] = {};
+    if (contextName.toUpperCase().includes(wrd.cPLUGIN) === true && contextName.includes(bas.cColon) === true) {
+      let pluginNameArray = contextName.split(bas.cColon);
+      // pluginNameArray is:
+      await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginNameArrayIs + JSON.stringify(pluginNameArray));
+      let pluginName = pluginNameArray[1];
+      // pluginName is:
+      await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginNameIs + pluginName);
+      if (D[sys.cConstantsValidationData][wrd.cPlugins] === undefined) {
+        D[sys.cConstantsValidationData][wrd.cPlugins] = {};
+      }
+      D[sys.cConstantsValidationData][wrd.cPlugins][pluginName] = {};
+      D[sys.cConstantsValidationData][wrd.cPlugins][pluginName] = constantsValidationData[sys.cConstantsValidationData];
+    } else if (contextName.toUpperCase().includes(wrd.cAPPLICATION) === true) {
+      if (D[sys.cConstantsValidationData][wrd.cApplication] === undefined) {
+        D[sys.cConstantsValidationData][wrd.cApplication] = {};
+      }
+      D[sys.cConstantsValidationData][wrd.cApplication] = constantsValidationData[sys.cConstantsValidationData];
+    } else if (contextName.toUpperCase().includes(wrd.cFRAMEWORK) === true) {
+      D[sys.cConstantsValidationData][wrd.cFramework] = constantsValidationData[sys.cConstantsValidationData];
     }
-    D[sys.cConstantsValidationData][wrd.cPlugins][pluginName] = {};
-    D[sys.cConstantsValidationData][wrd.cPlugins][pluginName] = constantsValidationData[sys.cConstantsValidationData];
     returnData = true;
   } catch (err) {
-    // ERROR: Failure to merge the plugin constants validation data for plugin: 
-    console.log(msg.cErrorAddPluginConstantsValidationDataMessage01 + pluginName);
+    // ERROR: Failure to merge the constants validation data for the type:
+    console.log(msg.cErrorAddConstantsValidationDataMessage01 + contextName);
     console.log(msg.cERROR_Colon + err);
   }
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
@@ -412,8 +371,6 @@ async function initializeAllSystemConstantsValidationData() {
 
 export default {
   initializeConstantsValidationData,
-  addConstantsValidationData,
-  addDeeplyNestedConstantsValidationData,
-  initializeAllSystemConstantsValidationData,
-  addPluginConstantsValidationData
+  generateFrameworkConstantsValidationData,
+  addConstantsValidationData
 };

@@ -77,6 +77,7 @@ async function bootstrapApplication() {
       clientConstantsPath: rootPath + apc.cFullDevConstantsPath,
       clientRegisteredPlugins: rootPath + apc.cFullDevPluginsRegistryPath,
       clientWorkflowsPath: rootPath + apc.cFullDevWorkflowsPath,
+      clientThemesPath: rootPath + apc.cFullDevThemesPath,
       applicationConstantsValidationData: allAppCV.initializeAllClientConstantsValidationData,
       clientBusinessRules: {},
       clientCommands: {}
@@ -92,6 +93,7 @@ async function bootstrapApplication() {
       clientConstantsPath: rootPath + apc.cFullProdConstantsPath,
       clientRegisteredPlugins: rootPath + apc.cFullProdPluginsRegistryPath,
       clientWorkflowsPath: rootPath + apc.cFullProdWorkflowsPath,
+      clientThemesPath: rootPath + apc.cFullProdThemesPath,
       applicationConstantsValidationData: allAppCV.initializeAllClientConstantsValidationData,
       clientBusinessRules: {},
       clientCommands: {}
@@ -109,6 +111,7 @@ async function bootstrapApplication() {
       clientConstantsPath: rootPath + apc.cFullDevConstantsPath,
       clientRegisteredPlugins: rootPath + apc.cFullDevPluginsRegistryPath,
       clientWorkflowsPath: rootPath + apc.cFullDevWorkflowsPath,
+      clientThemesPath: rootPath + apc.cFullDevThemesPath,
       applicationConstantsValidationData: allAppCV.initializeAllClientConstantsValidationData,
       clientBusinessRules: {},
       clientCommands: {}
