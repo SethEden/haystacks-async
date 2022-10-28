@@ -10,7 +10,6 @@
  * @requires module:data
  * @requires module:queue
  * @requires module:stack
- * @requires {@link https://www.npmjs.com/package/haystacks|haystacks}
  * @requires {@link https://www.npmjs.com/package/@haystacks/constants|@haystacks/constants}
  * @requires {@link https://www.npmjs.com/package/path|path}
  * @author Seth Hollingsead

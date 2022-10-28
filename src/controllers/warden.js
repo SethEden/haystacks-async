@@ -24,6 +24,7 @@ import dataBroker from '../brokers/dataBroker.js';
 import ruleBroker from '../brokers/ruleBroker.js';
 import chiefCommander from './chiefCommander.js';
 import chiefConfiguration from './chiefConfiguration.js';
+import chiefConstant from './chiefConstant.js';
 import chiefData from './chiefData.js';
 import chiefPlugin from './chiefPlugin.js';
 import chiefWorkflow from './chiefWorkflow.js';
@@ -33,7 +34,6 @@ import loggers from '../executrix/loggers.js';
 // External imports
 import hayConst from '@haystacks/constants';
 import path from 'path';
-import { config } from 'dotenv'
 
 const {bas, biz, cfg, gen, msg, sys, wrd} = hayConst;
 const baseFileName = path.basename(import.meta.url, path.extname(import.meta.url));
@@ -155,7 +155,7 @@ async function initFrameworkSchema(configData) {
     await configurator.setConfigurationSetting(wrd.csystem, cfg.capplicationConstantsPath, resolvedClientConstantsPathActual);
 
     await chiefData.initializeConstantsValidationData(); // This just makes sure that the data structure is created on the D-Data structure.
-    let frameworkConstantsValidationData = await configData[cfg.cframeworkConstantsValidationData].call();
+    let frameworkConstantsValidationData = await chiefConstant.
     let applicationConstantsValidationData = await configData[cfg.capplicationConstantsValidationData].call();
     await loggers.consoleLog(namespacePrefix + functionName, msg.cframeworkConstantsValidationDataIs + JSON.stringify(frameworkConstantsValidationData));
     await loggers.consoleLog(namespacePrefix + functionName, msg.capplicationConstantsValidationDataIs + JSON.stringify(applicationConstantsValidationData));

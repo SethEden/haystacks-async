@@ -1,14 +1,15 @@
 /**
- * @file allConstantsValidationMetadata.js
- * @module allConstantsValidationMetadata
- * @description Contains initialization for all constants validation meta-data.
+ * @file constantBroker.js
+ * @module constantBroker
+ * @description Low level functions that enable management of constants data,
+ * meta-data from the framework, application and plugins.
  * @requires module:configurator
  * @requires module:loggers
  * @requires module:data
- * @requires {@link https://www.npmjs.com/package/@haystacks/constants|constants}
+ * @requires {@link https://www.npmjs.com/package/@haystacks/constants|@haystacks/constants}
  * @requires {@link https://www.npmjs.com/package/path|path}
  * @author Seth Hollingsead
- * @date 2022/03/22
+ * @date 2022/10/27
  * @copyright Copyright © 2022-… by Seth Hollingsead. All rights reserved
  */
 
@@ -19,11 +20,89 @@ import D from '../../structures/data.js';
 // External imports
 import hayConst from '@haystacks/constants';
 import path from 'path';
-const {bas, cfg, gen, msg, sys, wrd, bas_cv, biz_cv, clr_cv, cmd_cv, cfg_cv, ctr_cv, elm_cv, fnc_cv, gen_cv, iso_cv, knt_cv, lng_cv, msg_cv, num_cv, phn_cv, sys_cv, unt_cv, wrd_cv} = hayConst;
 
+const {bas, cfg, gen, msg, sys, wrd, bas_cv, biz_cv, clr_cv, cmd_cv, cfg_cv, ctr_cv, elm_cv, fnc_cv, gen_cv, iso_cv, knt_cv, lng_cv, msg_cv, num_cv, phn_cv, sys_cv, unt_cv, wrd_cv} = hayConst;
 const baseFileName = path.basename(import.meta.url, path.extname(import.meta.url));
-// resources.constantsValidation.allConstantsValidationMetaData.
-const namespacePrefix = wrd.cresources + bas.cDot + wrd.cconstants + wrd.cValidation + bas.cDot + baseFileName + bas.cDot;
+// brokers.constantBroker.
+const namespacePrefix = wrd.cbrokers + bas.cDot + baseFileName + bas.cDot;
+
+/**
+ * @function initializeConstantsValidationData
+ * @description Initializes the constants validation data structure.
+ * @return {void}
+ * @author Seth Hollingsead
+ * @date 2022/03/22
+ */
+ async function initializeConstantsValidationData() {
+  let functionName = initializeConstantsValidationData.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  D[sys.cConstantsValidationData] = {};
+  D[sys.cConstantsValidationData][sys.cConstantsShortNames] = {};
+  D[sys.cConstantsValidationData][sys.cConstantsFileNames] = {};
+  D[sys.cConstantsValidationData][sys.cConstantsPrefix] = {};
+  D[sys.cConstantsValidationData][sys.cConstantsFilePaths] = {};
+  D[sys.cConstantsValidationData][sys.cConstantsPhase1ValidationMessages] = {};
+  D[sys.cConstantsValidationData][sys.cConstantsPhase2ValidationMessages] = {};
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+}
+
+/**
+ * @function addConstantsValidationData
+ * @description Adds a library of constants vaidation data to the existing constants vaidation data.
+ * @param {array<array<string,object>>} constantLibraryData The array of data that should be added to the validation data set for the purpose of validation.
+ * @return {void}
+ * @author Seth Hollingsead
+ * @date 2022/03/22
+ */
+async function addConstantsValidationData(constantLibraryData) {
+  let functionName = addConstantsValidationData.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  // constantLibraryData is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cconstantLibraryDataIs + JSON.stringify(constantLibraryData));
+  for (let key1 in constantLibraryData[sys.cConstantsValidationData]) {
+    if (Object.prototype.hasOwnProperty.call(constantLibraryData[sys.cConstantsValidationData], key1)) {
+      if (key1 === sys.cConstantsFilePaths ||
+      key1 === sys.cConstantsPhase1ValidationMessages ||
+      key1 === sys.cConstantsPhase2ValidationMessages ||
+      key1 === sys.cConstantsShortNames ||
+      key1 === sys.cConstantsFileNames ||
+      key1 === sys.cConstantsPrefix) {
+        await addDeeplyNestedConstantsValidationData(key1, constantLibraryData[sys.cConstantsValidationData][key1]);
+      } else {
+        let data1 = constantLibraryData[sys.cConstantsValidationData][key1];
+        D[sys.cConstantsValidationData][key1] = [];
+        Object.assign(D[sys.cConstantsValidationData][key1], data1);
+      }
+    } // End-if (constantLibraryData[sys.cConstantsValidationData].hasOwnProperty(key1))
+  } // End-for (let key1 in constantLibraryData[sys.cConstantsValidationData])
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+}
+
+/**
+ * @function addDeeplyNestedConstantsValidationData
+ * @description Adds all the constants validation auxiliary data that is deeply nested inside sub-data structures to the main D-data structure.
+ * Such as file paths, and validation messages.
+ * @param {string} contextName The name that should be used when accessing and also adding the data to the D-data structure.
+ * @param {array<array<string,object>>} deeplyNestedData The actual data that should be added.
+ * @return {void}
+ * @author Seth Hollingsead
+ * @date 2022/03/22
+ */
+async function addDeeplyNestedConstantsValidationData(contextName, deeplyNestedData) {
+  let functionName = addDeeplyNestedConstantsValidationData.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  // contextName is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.ccontextNameIs + contextName);
+  // deeplyNestedData is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cdeeplyNestedDataIs + JSON.stringify(deeplyNestedData));
+  for (let key2 in deeplyNestedData) {
+    if (Object.prototype.hasOwnProperty.call(deeplyNestedData, key2)) {
+      let data2 = deeplyNestedData[key2];
+      D[sys.cConstantsValidationData][contextName][key2] = data2;
+    }
+  } // End-for (let key2 in deeplyNestedData)
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+}
 
 /**
  * @function initializeAllSystemConstantsValidationData
@@ -332,6 +411,9 @@ async function initializeAllSystemConstantsValidationData() {
 }
 
 export default {
+  initializeConstantsValidationData,
+  addConstantsValidationData,
+  addDeeplyNestedConstantsValidationData,
   initializeAllSystemConstantsValidationData,
   addPluginConstantsValidationData
 };

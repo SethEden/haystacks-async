@@ -83,7 +83,6 @@ async function initFramework(clientConfiguration) {
  clientConfiguration[cfg.cframeworkThemesPath] = frameworkCodeRootPath + sys.cframeworkThemesPath;
  clientConfiguration[cfg.cframeworkCommandAliasesPath] = frameworkCommandAliasesPath;
  clientConfiguration[cfg.cframeworkWorkflowsPath] = frameworkWorkflowsPath;
- clientConfiguration[cfg.cframeworkConstantsValidationData] = await allSysCV.initializeAllSystemConstantsValidationData;
  await warden.initFrameworkSchema(clientConfiguration);
  await loggers.consoleLog(namespacePrefix + functionName, msg.cAllLoadedDataIs + JSON.stringify(D));
  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
