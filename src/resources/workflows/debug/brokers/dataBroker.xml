@@ -4,6 +4,8 @@
       <dataBroker>
         <Workflow Name="dataBrokerEnable" Value="changeConfigSetting debugSetting.brokers.dataBroker true"/>
         <Workflow Name="dataBrokerDisable" Value="changeConfigSetting debugSetting.brokers.dataBroker false"/>
+        <Workflow Name="dataBrokerAddPluginConfigurationDataEnable" Value="changeConfigSetting debugSetting.brokers.dataBroker.addPluginConfigurationData true"/>
+        <Workflow Name="dataBrokerAddPluginConfigurationDataDisable" Value="changeConfigSetting debugSetting.brokers.dataBroker.addPluginConfigurationData false"/>
         <Workflow Name="scanDataPathEnable" Value="changeConfigSetting debugSetting.brokers.dataBroker.scanDataPath true"/>
         <Workflow Name="scanDataPathDisable" Value="changeConfigSetting debugSetting.brokers.dataBroker.scanDataPath false"/>
         <Workflow Name="loadAllCsvDataEnable" Value="changeConfigSetting debugSetting.brokers.dataBroker.loadAllCsvData true"/>
@@ -30,12 +32,6 @@
         <Workflow Name="getDataDisable" Value="changeConfigSetting debugSetting.brokers.dataBroker.getData false"/>
         <Workflow Name="clearDataEnable" Value="changeConfigSetting debugSetting.brokers.dataBroker.clearData true"/>
         <Workflow Name="clearDataDisable" Value="changeConfigSetting debugSetting.brokers.dataBroker.clearData false"/>
-        <Workflow Name="dataBrokerInitializeConstantsValidationDataEnable" Value="changeConfigSetting debugSetting.brokers.dataBroker.initializeConstantsValidationData true"/>
-        <Workflow Name="dataBrokerInitializeConstantsValidationDataDisable" Value="changeConfigSetting debugSetting.brokers.dataBroker.initializeConstantsValidationData false"/>
-        <Workflow Name="dataBrokerAddConstantsValidationDataEnable" Value="changeConfigSetting debugSetting.brokers.dataBroker.addConstantsValidationData true"/>
-        <Workflow Name="dataBrokerAddConstantsValidationDataDisable" Value="changeConfigSetting debugSetting.brokers.dataBroker.addConstantsValidationData false"/>
-        <Workflow Name="addDeeplyNestedConstantsValidationDataEnable" Value="changeConfigSetting debugSetting.brokers.dataBroker.addDeeplyNestedConstantsValidationData true"/>
-        <Workflow Name="addDeeplyNestedConstantsValidationDataDisable" Value="changeConfigSetting debugSetting.brokers.dataBroker.addDeeplyNestedConstantsValidationData false"/>
         <Workflow Name="getDataCatagoryFromContextNameEnable" Value="changeConfigSetting debugSetting.brokers.dataBroker.getDataCatagoryFromContextName true"/>
         <Workflow Name="getDataCatagoryFromContextNameDisable" Value="changeConfigSetting debugSetting.brokers.dataBroker.getDataCatagoryFromContextName false"/>
         <Workflow Name="getDataCatagoryDetailNameFromContextNameEnable" Value="changeConfigSetting debugSetting.brokers.dataBroker.getDataCatagoryDetailNameFromContextName true"/>

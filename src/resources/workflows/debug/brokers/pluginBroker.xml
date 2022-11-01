@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?><CommandWorkflows>
+  <debug>
+    <brokers>
+      <pluginBroker>
+        <Workflow Name="pluginBrokerEnable" Value="changeConfigSetting debugSetting.brokers.pluginBroker true"/>
+        <Workflow Name="pluginBrokerDisable" Value="changeConfigSetting debugSetting.brokers.pluginBroker false"/>
+        <Workflow Name="pluginBrokerLoadPluginRegistryEnable" Value="changeConfigSetting debugSetting.brokers.pluginBroker.loadPluginRegistry true"/>
+        <Workflow Name="pluginBrokerLoadPluginRegistryDisable" Value="changeConfigSetting debugSetting.brokers.pluginBroker.loadPluginRegistry false"/>
+        <Workflow Name="pluginBrokerStorePluginRegistryDataStructureEnable" Value="changeConfigSetting debugSetting.brokers.pluginBroker.storePluginRegistryInDataStructure true"/>
+        <Workflow Name="pluginBrokerStorePluginRegistryDataStructureDisable" Value="changeConfigSetting debugSetting.brokers.pluginBroker.storePluginRegistryInDataStructure false"/>
+        <Workflow Name="pluginBrokerListPluginsInRegistryEnable" Value="changeConfigSetting debugSetting.brokers.pluginBroker.listPluginsInRegistry true"/>
+        <Workflow Name="pluginBrokerListPluginsInRegistryDisable" Value="changeConfigSetting debugSetting.brokers.pluginBroker.listPluginsInRegistry false"/>
+        <Workflow Name="pluginBrokerListPluginsPathsInRegistryEnable" Value="changeConfigSetting debugSetting.brokers.pluginBroker.listPluginsPathsInRegistry true"/>
+        <Workflow Name="pluginBrokerListPluginsPathsInRegistryDisable" Value="changeConfigSetting debugSetting.brokers.pluginBroker.listPluginsPathsInRegistry false"/>
+        <Workflow Name="pluginBrokerListPluginsInRegistryPathEnable" Value="changeConfigSetting debugSetting.brokers.pluginBroker.listPluginsInRegistryPath true"/>
+        <Workflow Name="pluginBrokerListPluginsInRegistryPathDisable" Value="changeConfigSetting debugSetting.brokers.pluginBroker.listPluginsInRegistryPath false"/>
+        
+      </pluginBroker>
+    </brokers>
+  </debug>
+</CommandWorkflows>

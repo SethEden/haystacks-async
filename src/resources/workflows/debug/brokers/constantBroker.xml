@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?><CommandWorkflows>
+  <debug>
+    <brokers>
+      <constantBroker>
+        <Workflow Name="constantBrokerEnable" Value="changeConfigSetting debugSetting.brokers.constantBroker true"/>
+        <Workflow Name="constantBrokerDisable" Value="changeConfigSetting debugSetting.brokers.constantBroker false"/>
+        <Workflow Name="constantBrokerInitializeConstantsValidationDataEnable" Value="changeConfigSetting debugSetting.brokers.constantBroker.initializeConstantsValidationData true"/>
+        <Workflow Name="constantBrokerInitializeConstantsValidationDataDisable" Value="changeConfigSetting debugSetting.brokers.constantBroker.initializeConstantsValidationData false"/>
+        <Workflow Name="constantBrokerGenerateFrameworkConstantsValidationDataEnable" Value="changeConfigSetting debugSetting.brokers.constantBroker.generateFrameworkConstantsValidationData true"/>
+        <Workflow Name="constantBrokerGenerateFrameworkConstantsValidationDataDisable" Value="changeConfigSetting debugSetting.brokers.constantBroker.generateFrameworkConstantsValidationData false"/>
+        <Workflow Name="constantBrokerAddConstantsValidationDataEnable" Value="changeConfigSetting debugSetting.brokers.constantBroker.addConstantsValidationData true"/>
+        <Workflow Name="constantBrokerAddConstantsValidationDataDisable" Value="changeConfigSetting debugSetting.brokers.constantBroker.addConstantsValidationData false"/>
+      </constantBroker>
+    </brokers>
+  </debug>
+</CommandWorkflows>
