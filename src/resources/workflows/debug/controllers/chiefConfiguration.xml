@@ -6,6 +6,10 @@
         <Workflow Name="chiefConfigurationDisable" Value="changeConfigSetting debugSetting.controllers.chiefConfiguration false"/>
         <Workflow Name="setupConfigurationEnable" Value="changeConfigSetting debugSetting.controllers.chiefConfiguration.setupConfiguration true"/>
         <Workflow Name="setupConfigurationDisable" Value="changeConfigSetting debugSetting.controllers.chiefConfiguration.setupConfiguration false"/>
+        <Workflow Name="setupPluginConfigurationEnable" Value="changeConfigSetting debugSetting.controllers.chiefConfiguration.setupPluginConfiguration true"/>
+        <Workflow Name="setupPluginConfigurationDisable" Value="changeConfigSetting debugSetting.controllers.chiefConfiguration.setupPluginConfiguration false"/>
+        <Workflow Name="parsePluginConfigurationDataEnable" Value="changeConfigSetting debugSetting.controllers.chiefConfiguration.parsePluginConfigurationData true"/>
+        <Workflow Name="parsePluginConfigurationDataDisable" Value="changeConfigSetting debugSetting.controllers.chiefConfiguration.parsePluginConfigurationData false"/>
       </chiefConfiguration>
     </controllers>
   </debug>

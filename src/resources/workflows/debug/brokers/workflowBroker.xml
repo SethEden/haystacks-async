@@ -4,8 +4,14 @@
       <workflowBroker>
         <Workflow Name="workflowBrokerEnable" Value="changeConfigSetting debugSetting.brokers.workflowBroker true"/>
         <Workflow Name="workflowBrokerDisable" Value="changeConfigSetting debugSetting.brokers.workflowBroker false"/>
+        <Workflow Name="workflowBrokerAddPluginWorkflowsEnable" Value="changeConfigSetting debugSetting.brokers.workflowBroker.addPluginWorkflows true"/>
+        <Workflow Name="workflowBrokerAddPluginWorkflowsDisable" Value="changeConfigSetting debugSetting.brokers.workflowBroker.addPluginWorkflows false"/>
         <Workflow Name="getWorkflowEnable" Value="changeConfigSetting debugSetting.brokers.workflowBroker.getWorkflow true"/>
         <Workflow Name="getWorkflowDisable" Value="changeConfigSetting debugSetting.brokers.workflowBroker.getWorkflow false"/>
+        <Workflow Name="workflowBrokerDoesWorkflowExistEnable" Value="changeConfigSetting debugSetting.brokers.workflowBroker.doesWorkflowExist true"/>
+        <Workflow Name="workflowBrokerDoesWorkflowExistDisable" Value="changeConfigSetting debugSetting.brokers.workflowBroker.doesWorkflowExist false"/>
+        <Workflow Name="workflowBrokerDoesWorkflowExistInWorkflowDataEnable" Value="changeConfigSetting debugSetting.brokers.workflowBroker.doesWorkflowExistInWorkflowData true"/>
+        <Workflow Name="workflowBrokerDoesWorkflowExistInWorkflowDataDisable" Value="changeConfigSetting debugSetting.brokers.workflowBroker.doesWorkflowExistInWorkflowData false"/>
         <Workflow Name="searchWorkflowEnable" Value="changeConfigSetting debugSetting.brokers.workflowBroker.searchWorkflow true"/>
         <Workflow Name="searchWorkflowDisable" Value="changeConfigSetting debugSetting.brokers.workflowBroker.searchWorkflow false"/>
         <Workflow Name="getAllWorkflowsEnable" Value="changeConfigSetting debugSetting.brokers.workflowBroker.getAllWorkflows true"/>

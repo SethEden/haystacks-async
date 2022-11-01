@@ -12,12 +12,12 @@
         <Workflow Name="setupAllCsvDataDisable" Value="changeConfigSetting debugSetting.controllers.chiefData.setupAllCsvData false"/>
         <Workflow Name="setupAllXmlDataEnable" Value="changeConfigSetting debugSetting.controllers.chiefData.setupAllXmlData true"/>
         <Workflow Name="setupAllXmlDataDisable" Value="changeConfigSetting debugSetting.controllers.chiefData.setupAllXmlData false"/>
+        <Workflow Name="setupAllXmlPluginDataEnable" Value="changeConfigSetting debugSetting.controllers.chiefData.setupAllXmlPluginData true"/>
+        <Workflow Name="setupAllXmlPluginDataDisable" Value="changeConfigSetting debugSetting.controllers.chiefData.setupAllXmlPluginData false"/>
         <Workflow Name="setupAllJsonConfigDataEnable" Value="changeConfigSetting debugSetting.controllers.chiefData.setupAllJsonConfigData true"/>
         <Workflow Name="setupAllJsonConfigDataDisable" Value="changeConfigSetting debugSetting.controllers.chiefData.setupAllJsonConfigData false"/>
-        <Workflow Name="chiefDataInitializeConstantsValidationDataEnable" Value="changeConfigSetting debugSetting.controllers.chiefData.initializeConstantsValidationData true"/>
-        <Workflow Name="chiefDataInitializeConstantsValidationDataDisable" Value="changeConfigSetting debugSetting.controllers.chiefData.initializeConstantsValidationData false"/>
-        <Workflow Name="chiefDataAddConstantsValidationDataEnable" Value="changeConfigSetting debugSetting.controllers.chiefData.addConstantsValidationData true"/>
-        <Workflow Name="chiefDataAddConstantsValidationDataDisable" Value="changeConfigSetting debugSetting.controllers.chiefData.addConstantsValidationData false"/>
+        <Workflow Name="setupAllJsonConfigPluginDataEnable" Value="changeConfigSetting debugSetting.controllers.chiefData.setupAllJsonConfigPluginData true"/>
+        <Workflow Name="setupAllJsonConfigPluginDataDisable" Value="changeConfigSetting debugSetting.controllers.chiefData.setupAllJsonConfigPluginData false"/>
       </chiefData>
     </controllers>
   </debug>
