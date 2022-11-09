@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?><CommandWorkflows>
+  <debug>
+    <commandsBlob>
+      <commands>
+        <clientCommands>
+          <Workflow Name="clientCommandsEnable" Value="changeConfigSetting debugSetting.commandsBlob.commands.clientCommands true"/>
+          <Workflow Name="clientCommandsDisable" Value="changeConfigSetting debugSetting.commandsBlob.commands.clientCommands false"/>
+          <Workflow Name="customEchoCommandEnable" Value="changeConfigSetting debugSetting.commandsBlob.commands.clientCommands.customEchoCommand true"/>
+          <Workflow Name="customEchoCommandDisable" Value="changeConfigSetting debugSetting.commandsBlob.commands.clientCommands.customEchoCommand false"/>
+          <Workflow Name="bossPanicEnable" Value="changeConfigSetting debugSetting.commandsBlob.commands.clientCommands.bossPanic true"/>
+          <Workflow Name="bossPanicDisable" Value="changeConfigSetting debugSetting.commandsBlob.commands.clientCommands.bossPanic false"/>
+        </clientCommands>
+      </commands>
+    </commandsBlob>
+  </debug>
+</CommandWorkflows>
