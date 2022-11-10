@@ -20,7 +20,7 @@
   "system.printDataHiveToLogFile": true,
   "system.enablePluginLoader": true,
   "system.enableConstantsValidation": true,
-  "system.displayIndividualConstantsValidationPassMessages": false,
+  "system.displayIndividualConstantsValidationPassMessages": true,
   "system.displayIndividualConstantsValidationFailMessages": true,
   "system.displaySummaryConstantsValidationPassMessages": true,
   "system.displaySummaryConstantsValidationFailMessages": true,

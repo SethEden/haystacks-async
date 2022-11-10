@@ -51,11 +51,46 @@ async function validateConstants(inputData, inputMetaData) {
   let returnData = [true, false];
   if (await configurator.getConfigurationSetting(wrd.csystem, cfg.cenableConstantsValidation) === true) {
     // Get the array of keys and values for all the constants that need to be validated.
-    let validationArray = D[sys.cConstantsValidationData][sys.cConstantsFilePaths]; // This will return an object with all of the key-value pair attributes we need.
+    let validationArray = []; // D[sys.cConstantsValidationData][sys.cConstantsFilePaths]; // This will return an object with all of the key-value pair attributes we need.
+    let validationFrameworkArray = D[sys.cConstantsValidationData][wrd.cFramework][sys.cConstantsFilePaths]; // Framework constants paths
+    let validationApplicationArray = D[sys.cConstantsValidationData][wrd.cApplication][sys.cConstantsFilePaths]; // Application constants paths
+    let validationPluginsMetaArray = D[sys.cConstantsValidationData][wrd.cPlugins]; // Will need to iterate through each of the plugins and capture the plugin constants path for each plugin!
     let phase1FinalResult = true;
     let phase2FinalResult = true;
     let phase1Results = {};
     let phase2Results = {};
+
+    // validationFrameworkArray is:
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cvalidationFrameworkArrayIs + JSON.stringify(validationFrameworkArray));
+    // validationApplicationArray is:
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cvalidationApplicationArrayIs + JSON.stringify(validationApplicationArray));
+    // validationPluginsMetaArray is:
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cvalidationPluginsMetaArrayIs + JSON.stringify(validationPluginsMetaArray));
+
+    validationArray = validationFrameworkArray;
+    validationArray = Object.assign(validationArray, validationApplicationArray);
+    // validationArray before plugin constants validation data merge is:
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cvalidationArrayBeforePluginConstantsValidationDataMergeIs + JSON.stringify(validationArray));
+
+    for (let plugin in validationPluginsMetaArray) {
+      // plugin is:
+      await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginIs + plugin);
+      let pluginValidationPathData = validationPluginsMetaArray[plugin][sys.cConstantsFilePaths];
+      for (let constantsFilePathName in pluginValidationPathData) {
+        // constantsFilePathName is:
+        await loggers.consoleLog(namespacePrefix + functionName, msg.cconstantsFilePathNamesIs + constantsFilePathName);
+        let constantsFilePathValue = pluginValidationPathData[constantsFilePathName];
+        // constantsFilePathValue is:
+        await loggers.consoleLog(namespacePrefix + functionName, msg.cconstantsFilePathValueIs + constantsFilePathValue);
+        let newPluginConstantValidationName = plugin + bas.cColon + constantsFilePathName;
+        // newPluginConstantValidationName is:
+        await loggers.consoleLog(namespacePrefix + functionName, msg.cnewPluginConstantValidationNameIs + newPluginConstantValidationName);
+        let newPluginConstantValidationPathObject = {[newPluginConstantValidationName]: constantsFilePathValue};
+        validationArray = Object.assign(validationArray, newPluginConstantValidationPathObject);
+        // validationArray after plugin constants validation data merge is:
+        await loggers.consoleLog(namespacePrefix + functionName, msg.cvalidationArrayAfterPluginConstantsValidationDataMergeIs + JSON.stringify(validationArray));
+      } // End-for (let constantsFilePathNames in pluginValidationPathData)
+    } // End-for (let plugin in validationPluginsMetaArray)
 
     // Phase1 Constants Validation
     // BEGIN Phase 1 Constants Validation

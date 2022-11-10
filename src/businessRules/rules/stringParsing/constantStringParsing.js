@@ -49,11 +49,13 @@ async function validateConstantsDataValidation(inputData, inputMetaData) {
   let returnData = false;
   let foundAFailure = false;
   if (inputData && inputMetaData) {
-    const liner = new lineByLine(inputData);
+    const liner = await new lineByLine(inputData);
     let line;
     let colorizeLogsEnabled = await configurator.getConfigurationSetting(wrd.csystem, cfg.cenableColorizedConsoleLogs);
-
-    while (line === liner.next()) {
+    console.log('begin processing all lines from file');
+    console.log('line is going to be: ' + await liner.next().toString(gen.cascii));
+    while (line === await liner.next()) {
+      console.log('begin processing a line');
       if (line) {
         // constants line is:
         await loggers.consoleLog(namespacePrefix + functionName, msg.cconstantsLineIs + line.toString(gen.cascii));
