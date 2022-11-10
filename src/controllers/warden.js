@@ -39,8 +39,8 @@ import path from 'path';
 
 const {bas, biz, cfg, gen, msg, sys, wrd} = hayConst;
 const baseFileName = path.basename(import.meta.url, path.extname(import.meta.url));
-// controllers.warden.
-const namespacePrefix = wrd.ccontrollers + bas.cDot + baseFileName + bas.cDot;
+// framework.controllers.warden.
+const namespacePrefix = wrd.cframework + bas.cDot + wrd.ccontrollers + bas.cDot + baseFileName + bas.cDot;
 
  /**
  * @function processRootPath

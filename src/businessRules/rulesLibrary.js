@@ -64,11 +64,11 @@ import D from '../structures/data.js';
 import hayConst from '@haystacks/constants';
 import path from 'path';
 
-const {bas, biz, sys} = hayConst;
+const {bas, biz, sys, wrd} = hayConst;
 const baseFileName = path.basename(import.meta.url, path.extname(import.meta.url));
-// businessRules.rulesLibrary.
+// framework.businessRules.rulesLibrary.
 // eslint-disable-next-line no-unused-vars
-const namespacePrefix = sys.cbusinessRules + bas.cDot + baseFileName + bas.cDot;
+const namespacePrefix = wrd.cframework + bas.cDot + sys.cbusinessRules + bas.cDot + baseFileName + bas.cDot;
 
 /**
  * @function initRulesLibrary

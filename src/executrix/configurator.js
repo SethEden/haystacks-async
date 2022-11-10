@@ -23,9 +23,9 @@ import path from 'path';
 // eslint-disable-next-line no-unused-vars
 const {bas, biz, cfg, msg, wrd} = hayConst;
 const baseFileName = path.basename(import.meta.url, path.extname(import.meta.url));
-// executrix.configurator.
+// framework.executrix.configurator.
 // eslint-disable-next-line no-unused-vars
-const namespacePrefix = wrd.cexecutrix + bas.cDot + baseFileName + bas.cDot;
+const namespacePrefix = wrd.cframework + bas.cDot + wrd.cexecutrix + bas.cDot + baseFileName + bas.cDot;
 
 /**
  * @function setConfigurationSetting
@@ -329,9 +329,9 @@ async function getPluginConfigurationNamespaceObject(dataStructure, configuratio
     configurationPathObject = configurationDataRoot;
   } // End-if (!configurationPathObject)
   for (let element of configurationNamespace) {
-    if (element === cfg.cdebugSetting) {
-      element = cfg.cdebugSettings;
-    }
+    // if (element === cfg.cdebugSetting) {
+    //   element = cfg.cdebugSettings;
+    // }
     if (!configurationPathObject[element]) {
       // It doesn't exist yet, so lets make it.
       configurationPathObject[element] = {};

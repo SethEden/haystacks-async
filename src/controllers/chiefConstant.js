@@ -20,8 +20,8 @@ import path from 'path';
 
 const {bas, msg, wrd} = hayConst
 const baseFileName = path.basename(import.meta.url, path.extname(import.meta.url));
-// controllers.chiefConstant.
-const namespacePrefix = wrd.ccontrollers + bas.cDot + baseFileName +bas.cDot;
+// framework.controllers.chiefConstant.
+const namespacePrefix = wrd.cframework + bas.cDot + wrd.ccontrollers + bas.cDot + baseFileName +bas.cDot;
 
 /**
  * @function initializeConstantsValidationData

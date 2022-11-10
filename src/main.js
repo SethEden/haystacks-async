@@ -30,8 +30,8 @@ import path from 'path';
 
 const {bas, cfg, msg, sys, wrd} = hayConst;
 const baseFileName = path.basename(import.meta.url, path.extname(import.meta.url));
-// main.
-const namespacePrefix = baseFileName + bas.cDot;
+// framework.main.
+const namespacePrefix = wrd.cframework + bas.cDot + baseFileName + bas.cDot;
 dotenv.config();
 // eslint-disable-next-line no-undef
 const {NODE_ENV} = process.env;

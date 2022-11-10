@@ -39,8 +39,8 @@ import path from 'path';
 
 const {bas, cfg, gen, msg, sys, wrd} = hayConst;
 let baseFileName = path.basename(import.meta.url, path.extname(import.meta.url));
-// testHarness.resources.constantsValidation.allApplicationConstantsValidation.
-let namespacePrefix = apc.cApplicationName + bas.cDot + wrd.cresources + bas.cDot + wrd.cconstants + wrd.cValidation + bas.cDot + baseFileName + bas.cDot;
+// application.testHarness.resources.constantsValidation.allApplicationConstantsValidation.
+let namespacePrefix = wrd.capplication + bas.cDot + apc.cApplicationName + bas.cDot + wrd.cresources + bas.cDot + wrd.cconstants + wrd.cValidation + bas.cDot + baseFileName + bas.cDot;
 
 /**
  * @function initializeAllClientConstantsValidationData

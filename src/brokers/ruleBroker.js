@@ -22,9 +22,9 @@ import path from 'path';
 
 const {bas, biz, msg, sys, wrd} = hayConst;
 const baseFileName = path.basename(import.meta.url, path.extname(import.meta.url));
-// brokers.ruleBroker.
+// framework.brokers.ruleBroker.
 // eslint-disable-next-line no-unused-vars
-const namespacePrefix = wrd.cbrokers + bas.cDot + baseFileName + bas.cDot;
+const namespacePrefix = wrd.cframework + bas.cDot + wrd.cbrokers + bas.cDot + baseFileName + bas.cDot;
 
 /**
  * @function bootStrapBusinessRules

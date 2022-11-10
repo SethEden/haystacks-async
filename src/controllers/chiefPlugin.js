@@ -27,8 +27,8 @@ import path from 'path';
 
 const {bas, msg, sys, wrd} = hayConst;
 const baseFileName = path.basename(import.meta.url, path.extname(import.meta.url));
-// controllers.chiefPlugin.
-const namespacePrefix = wrd.ccontrollers + bas.cDot + baseFileName + bas.cDot;
+// framework.controllers.chiefPlugin.
+const namespacePrefix = wrd.cframework + bas.cDot + wrd.ccontrollers + bas.cDot + baseFileName + bas.cDot;
 
 /**
  * @function loadPluginRegistryData
@@ -477,7 +477,7 @@ async function integratePluginData(pluginName, pluginData) {
     workflowsIntegrationResult = await pluginBroker.integratePluginWorkflows(pluginName, pluginData[wrd.cdata][sys.cCommandWorkflows])
     constantsValidationDataIntegrationResult = await chiefConstant.addConstantsValidationData(pluginData[wrd.cdata][sys.cpluginConstantsValidationData],
       wrd.cPlugin + bas.cColon + pluginName);
-    themeDataIntegrationResult = await chiefTheme.addThemeData(pluginName, pluginData[wrd.cdata]);
+    themeDataIntegrationResult = await chiefTheme.addThemeData(pluginData[wrd.cdata], pluginName);
   } else {
     // ERROR: Invalid input, either the plugin name or plugin data was undefined. Please provide valid data and try again.
     console.log(msg.cErrorIntegratePluginDataMessage01);

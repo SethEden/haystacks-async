@@ -25,8 +25,8 @@ import path from 'path';
 
 const {bas, cfg, msg, wrd} = hayConst;
 const baseFileName = path.basename(import.meta.url, path.extname(import.meta.url));
-// controllers.chiefTheme.
-const namespacePrefix = wrd.ccontrollers + bas.cDot + baseFileName +bas.cDot;
+// framework.controllers.chiefTheme.
+const namespacePrefix = wrd.cframework + bas.cDot + wrd.ccontrollers + bas.cDot + baseFileName +bas.cDot;
 
 /**
  * @function initThemes

@@ -27,9 +27,9 @@ import path from 'path';
 
 const {bas, biz, clr, cfg, gen, msg, wrd} = hayConst;
 const baseFileName = path.basename(import.meta.url, path.extname(import.meta.url));
-// executrix.loggers.
+// framework.executrix.loggers.
 // eslint-disable-next-line no-unused-vars
-const namespacePrefix =  wrd.cexecutrix + bas.cDot + baseFileName + bas.cDot;
+const namespacePrefix =  wrd.cframework + bas.cDot + wrd.cexecutrix + bas.cDot + baseFileName + bas.cDot;
 
 /**
  * @function consoleLog
@@ -47,7 +47,7 @@ const namespacePrefix =  wrd.cexecutrix + bas.cDot + baseFileName + bas.cDot;
  * @NOTE Cannot use the loggers here, because of a circular dependency.
  */
 async function consoleLog(classPath, message) {
-  // let functionName = consoleLog.name;
+  let functionName = consoleLog.name;
   if (Object.keys(D).length !== 0 && message !== undefined) { // Make sure we don't log anything if we haven't yet loaded the configuration data.
     let consoleLogEnabled = await configurator.getConfigurationSetting(wrd.csystem, cfg.cconsoleLogEnabled);
     if (consoleLogEnabled === true) {
@@ -94,8 +94,8 @@ async function consoleLog(classPath, message) {
       // console.log(`END ${namespacePrefix}${functionName} function`);
     } // end-if (consoleLogEnabled === true)
   } else if (message === undefined) { // end-if (Object.keys(D).length !== 0 && message !== undefined)
-    // console.log(msg.cWarningMessageIsUndefined);
-    // console.log(msg.cclassPathIs + classPath);
+    console.log(msg.cWarningMessageIsUndefined);
+    console.log(msg.cclassPathIs + classPath);
   }
 }
 
@@ -172,7 +172,7 @@ async function constantsValidationSummaryLog(message, passFail) {
  * @NOTE Cannot use the loggers here, because of a circular dependency.
  */
 async function consoleLogProcess(debugSetting, logFile, classPath, message, loggingToFileAndConsole) {
-  // let functionName = consoleLogProcess.name;
+  let functionName = consoleLogProcess.name;
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   // console.log(`debugSetting is: ${debugSetting}`);
   // console.log(`logFile is: ${logFile}`);
@@ -223,7 +223,7 @@ async function consoleLogProcess(debugSetting, logFile, classPath, message, logg
  * @NOTE Cannot use the loggers here, because of a circular dependency.
  */
 async function validMessage(outputMessage, originalMessage) {
-  // let functionName = validMessage.name;
+  let functionName = validMessage.name;
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   // console.log(`outputMessage is: ${outputMessage}`);
   // console.log(`originalMessage is: ${originalMessage}`);

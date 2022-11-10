@@ -2,10 +2,10 @@
   <debug>
     <executrix>
       <prompt>
-        <Workflow Name="promptEnable" Value="changeConfigSetting debugSetting.executrix.prompt true"/>
-        <Workflow Name="promptDisable" Value="changeConfigSetting debugSetting.executrix.prompt false"/>
-        <Workflow Name="promptPromptEnable" Value="changeConfigSetting debugSetting.executrix.prompt.prompt true"/>
-        <Workflow Name="promptPromptDisable" Value="changeConfigSetting debugSetting.executrix.prompt.prompt false"/>
+        <Workflow Name="promptEnable" Value="changeConfigSetting debugSetting.framework.executrix.prompt true"/>
+        <Workflow Name="promptDisable" Value="changeConfigSetting debugSetting.framework.executrix.prompt false"/>
+        <Workflow Name="promptPromptEnable" Value="changeConfigSetting debugSetting.framework.executrix.prompt.prompt true"/>
+        <Workflow Name="promptPromptDisable" Value="changeConfigSetting debugSetting.framework.executrix.prompt.prompt false"/>
       </prompt>
     </executrix>
   </debug>

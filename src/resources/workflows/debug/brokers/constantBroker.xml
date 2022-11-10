@@ -2,14 +2,14 @@
   <debug>
     <brokers>
       <constantBroker>
-        <Workflow Name="constantBrokerEnable" Value="changeConfigSetting debugSetting.brokers.constantBroker true"/>
-        <Workflow Name="constantBrokerDisable" Value="changeConfigSetting debugSetting.brokers.constantBroker false"/>
-        <Workflow Name="constantBrokerInitializeConstantsValidationDataEnable" Value="changeConfigSetting debugSetting.brokers.constantBroker.initializeConstantsValidationData true"/>
-        <Workflow Name="constantBrokerInitializeConstantsValidationDataDisable" Value="changeConfigSetting debugSetting.brokers.constantBroker.initializeConstantsValidationData false"/>
-        <Workflow Name="constantBrokerGenerateFrameworkConstantsValidationDataEnable" Value="changeConfigSetting debugSetting.brokers.constantBroker.generateFrameworkConstantsValidationData true"/>
-        <Workflow Name="constantBrokerGenerateFrameworkConstantsValidationDataDisable" Value="changeConfigSetting debugSetting.brokers.constantBroker.generateFrameworkConstantsValidationData false"/>
-        <Workflow Name="constantBrokerAddConstantsValidationDataEnable" Value="changeConfigSetting debugSetting.brokers.constantBroker.addConstantsValidationData true"/>
-        <Workflow Name="constantBrokerAddConstantsValidationDataDisable" Value="changeConfigSetting debugSetting.brokers.constantBroker.addConstantsValidationData false"/>
+        <Workflow Name="constantBrokerEnable" Value="changeConfigSetting debugSetting.framework.brokers.constantBroker true"/>
+        <Workflow Name="constantBrokerDisable" Value="changeConfigSetting debugSetting.framework.brokers.constantBroker false"/>
+        <Workflow Name="constantBrokerInitializeConstantsValidationDataEnable" Value="changeConfigSetting debugSetting.framework.brokers.constantBroker.initializeConstantsValidationData true"/>
+        <Workflow Name="constantBrokerInitializeConstantsValidationDataDisable" Value="changeConfigSetting debugSetting.framework.brokers.constantBroker.initializeConstantsValidationData false"/>
+        <Workflow Name="constantBrokerGenerateFrameworkConstantsValidationDataEnable" Value="changeConfigSetting debugSetting.framework.brokers.constantBroker.generateFrameworkConstantsValidationData true"/>
+        <Workflow Name="constantBrokerGenerateFrameworkConstantsValidationDataDisable" Value="changeConfigSetting debugSetting.framework.brokers.constantBroker.generateFrameworkConstantsValidationData false"/>
+        <Workflow Name="constantBrokerAddConstantsValidationDataEnable" Value="changeConfigSetting debugSetting.framework.brokers.constantBroker.addConstantsValidationData true"/>
+        <Workflow Name="constantBrokerAddConstantsValidationDataDisable" Value="changeConfigSetting debugSetting.framework.brokers.constantBroker.addConstantsValidationData false"/>
       </constantBroker>
     </brokers>
   </debug>
