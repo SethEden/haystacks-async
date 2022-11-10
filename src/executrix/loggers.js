@@ -47,7 +47,7 @@ const namespacePrefix =  wrd.cframework + bas.cDot + wrd.cexecutrix + bas.cDot +
  * @NOTE Cannot use the loggers here, because of a circular dependency.
  */
 async function consoleLog(classPath, message) {
-  let functionName = consoleLog.name;
+  // let functionName = consoleLog.name;
   if (Object.keys(D).length !== 0 && message !== undefined) { // Make sure we don't log anything if we haven't yet loaded the configuration data.
     let consoleLogEnabled = await configurator.getConfigurationSetting(wrd.csystem, cfg.cconsoleLogEnabled);
     if (consoleLogEnabled === true) {
@@ -172,7 +172,7 @@ async function constantsValidationSummaryLog(message, passFail) {
  * @NOTE Cannot use the loggers here, because of a circular dependency.
  */
 async function consoleLogProcess(debugSetting, logFile, classPath, message, loggingToFileAndConsole) {
-  let functionName = consoleLogProcess.name;
+  // let functionName = consoleLogProcess.name;
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   // console.log(`debugSetting is: ${debugSetting}`);
   // console.log(`logFile is: ${logFile}`);
@@ -223,7 +223,7 @@ async function consoleLogProcess(debugSetting, logFile, classPath, message, logg
  * @NOTE Cannot use the loggers here, because of a circular dependency.
  */
 async function validMessage(outputMessage, originalMessage) {
-  let functionName = validMessage.name;
+  // let functionName = validMessage.name;
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   // console.log(`outputMessage is: ${outputMessage}`);
   // console.log(`originalMessage is: ${originalMessage}`);
@@ -259,7 +259,7 @@ async function validMessage(outputMessage, originalMessage) {
  * @NOTE Cannot use the loggers here, because of a circular dependency.
  */
 async function parseClassPath(logFile, classPath, message) {
-  let functionName = parseClassPath.name;
+  // let functionName = parseClassPath.name;
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   // console.log(`logFile is: ${logFile}`);
   // console.log(`classPath is: ${classPath}`);
