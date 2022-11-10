@@ -365,8 +365,22 @@ async function addPluginConfigurationData(pluginName, pluginConfigData) {
     if (D[wrd.cconfiguration][wrd.cplugins] === undefined) {
       D[wrd.cconfiguration][wrd.cplugins] = {};
     }
+    // Capture the system settings here, so we don't over-write the framework or application system settings.
+    // There could be an argument made to merge all of these plugin system settings with the rest of the framework & application system settings.
+    // So long as we make sure to check for duplicates and throw errors when a duplicate is found.
+    // This is because it could be dangerous if we allow for plugins to over-write framework and application system settings.
     D[wrd.cconfiguration][wrd.cplugins][pluginName] = {};
-    D[wrd.cconfiguration][wrd.cplugins][pluginName] = pluginConfigData;
+    D[wrd.cconfiguration][wrd.cplugins][pluginName][wrd.csystem] = {};
+    D[wrd.cconfiguration][wrd.cplugins][pluginName][wrd.csystem] = pluginConfigData[wrd.csystem];
+
+    // Now we still need to merge over the debugSetting data structure.
+    // Rather than just blanket merge, there is a sub-structure that we can navigate that will allow us to do this with an assignment operation.
+    if (D[wrd.cconfiguration][cfg.cdebugSetting][wrd.cplugins] === undefined) {
+      // ONLY initialize it if it does not yet exist, otherwise we might end up destroying previously loaded plugin configuration debug settings.
+      D[wrd.cconfiguration][cfg.cdebugSetting][wrd.cplugins] = {};
+    }
+    D[wrd.cconfiguration][cfg.cdebugSetting][wrd.cplugins][pluginName] = {};
+    D[wrd.cconfiguration][cfg.cdebugSetting][wrd.cplugins][pluginName] = pluginConfigData[cfg.cdebugSetting][wrd.cplugins][pluginName];
     returnData = true;
   } catch (err) {
     // ERROR: Failure unable to persist the plugin configuration data for plugin:
