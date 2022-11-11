@@ -285,6 +285,7 @@ async function initRulesLibrary() {
      [biz.cgetCsvData]: (inputData, inputMetaData) => fileOperations.getCsvData(inputData, inputMetaData),
      [biz.cgetJsonData]: (inputData, inputMetaData) => fileOperations.getJsonData(inputData, inputMetaData),
      [biz.cwriteJsonData]: (inputData, inputMetaData) => fileOperations.writeJsonData(inputData, inputMetaData),
+     [biz.cloadAsciiFileFromPath]: (inputData, inputMetaData) => fileOperations.loadAsciiFileFromPath(inputData, inputMetaData),
      [biz.creadDirectoryContents]: (inputData, inputMetaData) => fileOperations.readDirectoryContents(inputData, inputMetaData),
      [biz.cscanDirectoryContents]: (inputData, inputMetaData) => fileOperations.scanDirectoryContents(inputData, inputMetaData),
      [biz.cgetDirectoryList]: (inputData, inputMetaData) => fileOperations.getDirectoryList(inputData, inputMetaData),

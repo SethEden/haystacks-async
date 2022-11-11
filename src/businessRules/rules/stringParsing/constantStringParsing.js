@@ -8,7 +8,7 @@
  * @requires module:data
  * @requires {@link https://www.npmjs.com/package/@haystacks/constants|@haystacks/constants}
  * @requires {@link https://www.npmjs.com/package/chalk|chalk}
- * @requires {@link https://www.npmjs.com/package/n-readlines|n-readlines}
+ * @requires {@link https://nodejs.dev/}
  * @requires {@link https://www.npmjs.com/package/path|path}
  * @author Seth Hollingsead
  * @date 2022/04/25
@@ -23,7 +23,6 @@ import D from '../../../structures/data.js';
 // External imports
 import hayConst from '@haystacks/constants';
 import chalk from 'chalk';
-import lineByLine from 'n-readlines';
 import path from 'path';
 
 const {bas, biz, cfg, gen, msg, num, sys, wrd} = hayConst;
@@ -48,22 +47,33 @@ async function validateConstantsDataValidation(inputData, inputMetaData) {
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = false;
   let foundAFailure = false;
+  let processed = false;
   if (inputData && inputMetaData) {
-    const liner = await new lineByLine(inputData);
-    let line;
+    let inputFilePath = path.resolve(inputData);
+    const fileContents = await ruleParsing.processRulesInternal([inputFilePath, ''], [biz.cloadAsciiFileFromPath]);
+    // fileContents are:
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cfileContentsAre + JSON.stringify(fileContents));
+    const fileContentsLineArray = fileContents.split(/\r?\n/);
+
     let colorizeLogsEnabled = await configurator.getConfigurationSetting(wrd.csystem, cfg.cenableColorizedConsoleLogs);
-    console.log('begin processing all lines from file');
-    console.log('line is going to be: ' + await liner.next().toString(gen.cascii));
-    while (line === await liner.next()) {
-      console.log('begin processing a line');
-      if (line) {
+    // BEGIN processing all lines from file: 
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cBeginProcessingAllLinesFromFile + inputData);
+    for (const lineKey in fileContentsLineArray) {
+      // BEGIN processing a line
+      await loggers.consoleLog(namespacePrefix + functionName, msg.cBeginProcessingLine);
+      console.log('line is: ' + JSON.stringify(lineKey));
+      if (lineKey) {
+        processed = true;
+        // constants lineKey is:
+        await loggers.consoleLog(namespacePrefix + functionName, msg.cconstantsLineKeyIs + lineKey.toString(gen.cascii));
+
+        let lineInCode = fileContentsLineArray[lineKey];
         // constants line is:
-        await loggers.consoleLog(namespacePrefix + functionName, msg.cconstantsLineIs + line.toString(gen.cascii));
-        let lineInCode = line.toString(gen.cascii);
+        await loggers.consoleLog(namespacePrefix + functionName, msg.cconstantsLineIs + lineInCode);
         let foundConstant = false;
         if (lineInCode.includes(sys.cexportconst) === true) {
           let lineArray = lineInCode.split(bas.cSpace);
-          // lineArray[2] is
+          // lineArray[2] is:
           await loggers.consoleLog(namespacePrefix + functionName, msg.clineArray2Is + lineArray[2]);
           foundConstant = await validateConstantsDataValidationLineItemName(lineArray[2], inputMetaData);
           let qualifiedConstantsFilename = await ruleParsing.processRulesInternal([inputData, ''], [biz.cgetFileNameFromPath]);
@@ -74,8 +84,8 @@ async function validateConstantsDataValidation(inputData, inputMetaData) {
                 passMessage = chalk.rgb(0,0,0)(passMessage);
                 passMessage = chalk.bgRgb(0,255,0)(passMessage);
               } // End-if (colorizeLogsEnabled === true)
-              console.log(qualifiedConstantsFilename + bas.cColon + bas.cSpace + passMessage)
-            } // End-if (configurator.getConfigurationSetting(wrd.csystem, cfg.cDisplayIndividualConstantsValidationPassMessages) === true)
+              console.log(qualifiedConstantsFilename + bas.cColon + bas.cSpace + passMessage);
+            } // End-if (await configurator.getConfigurationSetting(wrd.csystem, cfg.cdisplayIndividualConstantsValidationPassMessages) === true)
           } else { // Else-clause if (foundConstant === true)
             if (await configurator.getConfigurationSetting(wrd.csystem, cfg.cdisplayIndividualCosntantsValidationFailMessages) === true) {
               let failMessage = wrd.cFAIL + bas.cColon + bas.cSpace + lineArray[2] + bas.cSpace + wrd.cFAIL;
@@ -85,17 +95,16 @@ async function validateConstantsDataValidation(inputData, inputMetaData) {
               } // End-if (colorizeLogsEnabled === true)
               let qualifiedConstantsPrefix = await determineConstantsContextQualifiedPrefix(qualifiedConstantsFilename, '');
               console.log(qualifiedConstantsFilename + bas.cColon + bas.cSpace + failMessage);
-              // await loggers.consoleLog(namespacePrefix + functionName, wrd.cFAIL + bas.cSpace + lineArray[2] + bas.cSpace + wrd.cFAIL);
+              // await loggers.consoleLog(namespacePrefix + functionName, failMessage);
               let suggestedLineOfCode = await determineSuggestedConstantsValidationLineOfCode(lineArray[2], qualifiedConstantsPrefix);
               if (suggestedLineOfCode !== '') {
                 if (colorizeLogsEnabled === true) {
                   suggestedLineOfCode = chalk.rgb(0,0,0)(suggestedLineOfCode);
                   suggestedLineOfCode = chalk.bgRgb(255,0,0)(suggestedLineOfCode);
                 } // End-if (colorizeLogsEnabled === true)
-                // Suggested line of code is:
                 console.log(msg.cSuggestedLineOfCodeIs + suggestedLineOfCode);
               } // End-if (suggestedLineOfCode !== '')
-            } // End-if (configurator.getConfigurationSetting(wrd.csystem, cfg.cDisplayIndividualCosntantsValidationFailMessages) === true)
+            } // End-if (await configurator.getConfigurationSetting(wrd.csystem, cfg.cdisplayIndividualCosntantsValidationFailMessages) === true)
             foundAFailure = true;
           }
         } // End-if (lineInCode.includes(sys.cexportconst) === true)
@@ -103,10 +112,71 @@ async function validateConstantsDataValidation(inputData, inputMetaData) {
         // ERROR: line is null or undefined:
         // file is:
         console.log(msg.cErrorLineIsNullOrUndefined + line + msg.cSpaceFileIs + inputData);
-      }      
-    } // End-while (line = liner.next())
+      }
+      // END processing a line
+      await loggers.consoleLog(namespacePrefix + functionName, msg.cEndProcessingLine);
+    } // End-for (const line in fileContentsLineArray)
+    // END processing all lines from file: 
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cEndProcessingAllLinesFromFile + inputData);
+
+    // // ***********************************************************************************************************************
+    // while (await line === await liner.next()) {
+    //   console.log('begin processing a line');
+    //   if (line) {
+    //     // constants line is:
+    //     await loggers.consoleLog(namespacePrefix + functionName, msg.cconstantsLineIs + line.toString(gen.cascii));
+    //     let lineInCode = line.toString(gen.cascii);
+    //     let foundConstant = false;
+    //     if (lineInCode.includes(sys.cexportconst) === true) {
+    //       let lineArray = lineInCode.split(bas.cSpace);
+    //       // lineArray[2] is
+    //       await loggers.consoleLog(namespacePrefix + functionName, msg.clineArray2Is + lineArray[2]);
+    //       foundConstant = await validateConstantsDataValidationLineItemName(lineArray[2], inputMetaData);
+    //       let qualifiedConstantsFilename = await ruleParsing.processRulesInternal([inputData, ''], [biz.cgetFileNameFromPath]);
+    //       if (foundConstant === true) {
+    //         if (await configurator.getConfigurationSetting(wrd.csystem, cfg.cdisplayIndividualConstantsValidationPassMessages) === true) {
+    //           let passMessage = wrd.cPASS + bas.cColon + bas.cSpace + lineArray[2] + bas.cSpace + wrd.cPASS;
+    //           if (colorizeLogsEnabled === true) {
+    //             passMessage = chalk.rgb(0,0,0)(passMessage);
+    //             passMessage = chalk.bgRgb(0,255,0)(passMessage);
+    //           } // End-if (colorizeLogsEnabled === true)
+    //           console.log(qualifiedConstantsFilename + bas.cColon + bas.cSpace + passMessage)
+    //         } // End-if (configurator.getConfigurationSetting(wrd.csystem, cfg.cDisplayIndividualConstantsValidationPassMessages) === true)
+    //       } else { // Else-clause if (foundConstant === true)
+    //         if (await configurator.getConfigurationSetting(wrd.csystem, cfg.cdisplayIndividualCosntantsValidationFailMessages) === true) {
+    //           let failMessage = wrd.cFAIL + bas.cColon + bas.cSpace + lineArray[2] + bas.cSpace + wrd.cFAIL;
+    //           if (colorizeLogsEnabled === true) {
+    //             failMessage = chalk.rgb(0,0,0)(failMessage);
+    //             failMessage = chalk.bgRgb(255,0,0)(failMessage);
+    //           } // End-if (colorizeLogsEnabled === true)
+    //           let qualifiedConstantsPrefix = await determineConstantsContextQualifiedPrefix(qualifiedConstantsFilename, '');
+    //           console.log(qualifiedConstantsFilename + bas.cColon + bas.cSpace + failMessage);
+    //           // await loggers.consoleLog(namespacePrefix + functionName, wrd.cFAIL + bas.cSpace + lineArray[2] + bas.cSpace + wrd.cFAIL);
+    //           let suggestedLineOfCode = await determineSuggestedConstantsValidationLineOfCode(lineArray[2], qualifiedConstantsPrefix);
+    //           if (suggestedLineOfCode !== '') {
+    //             if (colorizeLogsEnabled === true) {
+    //               suggestedLineOfCode = chalk.rgb(0,0,0)(suggestedLineOfCode);
+    //               suggestedLineOfCode = chalk.bgRgb(255,0,0)(suggestedLineOfCode);
+    //             } // End-if (colorizeLogsEnabled === true)
+    //             // Suggested line of code is:
+    //             console.log(msg.cSuggestedLineOfCodeIs + suggestedLineOfCode);
+    //           } // End-if (suggestedLineOfCode !== '')
+    //         } // End-if (configurator.getConfigurationSetting(wrd.csystem, cfg.cDisplayIndividualCosntantsValidationFailMessages) === true)
+    //         foundAFailure = true;
+    //       }
+    //     } // End-if (lineInCode.includes(sys.cexportconst) === true)
+    //   } else {
+    //     // ERROR: line is null or undefined:
+    //     // file is:
+    //     console.log(msg.cErrorLineIsNullOrUndefined + line + msg.cSpaceFileIs + inputData);
+    //   }      
+    // } // End-while (line = liner.next())
+    // // *************************************************************************************************************************************
+
   } // End-if (inputData && inputMetaData)
-  if (foundAFailure === false) {
+  if (foundAFailure === false && processed === true) {
+    // Make sure we didn't find a failure, and we also actually did some processing of the data file.
+    // Otherwise this could just fall through and never read the file, but still return true.
     returnData = true;
   }
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);

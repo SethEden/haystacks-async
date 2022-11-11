@@ -51,7 +51,7 @@
   "debugFunctions|debugSetting.framework.businessRules.rules.stringParsing.constantStringParsing.determineSuggestedConstantsValidationLineOfCode@FunctionFontBackgroundColor": "Default",
   "debugFunctions|debugSetting.framework.businessRules.rules.stringParsing.constantStringParsing.determineSuggestedConstantsValidationLineOfCode@MessageFontBackgroundColor": "Default",
   "debugFunctions|debugSetting.framework.businessRules.rules.stringParsing.constantStringParsing.determineSuggestedConstantsValidationLineOfCode@DataFontBackgroundColor": "Default",
-  "debugFunctions|debugSetting.framework.businessRules.rules.stringParsing.constantStringParsing.validateConstantsDataValidationLineItemName": false,
+  "debugFunctions|debugSetting.framework.businessRules.rules.stringParsing.constantStringParsing.validateConstantsDataValidationLineItemName": true,
   "debugFunctions|debugSetting.framework.businessRules.rules.stringParsing.constantStringParsing.validateConstantsDataValidationLineItemName@ModuleFontStyle": "Default",
   "debugFunctions|debugSetting.framework.businessRules.rules.stringParsing.constantStringParsing.validateConstantsDataValidationLineItemName@FunctionFontStyle": "Default",
   "debugFunctions|debugSetting.framework.businessRules.rules.stringParsing.constantStringParsing.validateConstantsDataValidationLineItemName@MessageFontStyle": "Default",

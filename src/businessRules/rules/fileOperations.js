@@ -176,6 +176,32 @@ async function writeJsonData(inputData, inputMetaData) {
 }
 
 /**
+ * @function loadAsciiFileFromPath
+ * @description Loads the contents of the ASCII file at the specified path and file name, returns the entire contents of the file.
+ * @param {string} inputData The path and file name of the file that should have its contents loaded into memory for reading and parsing.
+ * @param {string} inputMetaData Not used for this business rules.
+ * @return {object} The contents of the file loaded, False if nothing was loaded.
+ * @author Seth Hollingsead
+ * @date 2022/11/11
+ */
+async function loadAsciiFileFromPath(inputData, inputMetaData) {
+  let functionName = loadAsciiFileFromPath.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
+  let returnData = false;
+  try {
+    returnData = await fs.readFileSync(inputData, gen.cUTF8);
+  } catch (err) {
+    // ERROR: Failure to read from file: 
+    console.error(msg.cErrorLoadAsciiFileFromPathMessage01 + inputData);
+  }
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
+/**
  * @function readDirectoryContents
  * @description This function acts as a wrapper for calling readDirectorySynchronously since that function is recursive.
  * Also that function doesn't technically return anything, it works with a global variable that
@@ -752,6 +778,7 @@ export default {
   getCsvData,
   getJsonData,
   writeJsonData,
+  loadAsciiFileFromPath,
   readDirectoryContents,
   scanDirectoryContents,
   getDirectoryList,
