@@ -61,7 +61,8 @@ async function validateConstantsDataValidation(inputData, inputMetaData) {
     for (const lineKey in fileContentsLineArray) {
       // BEGIN processing a line
       await loggers.consoleLog(namespacePrefix + functionName, msg.cBeginProcessingLine);
-      console.log('line is: ' + JSON.stringify(lineKey));
+      // line is:
+      await loggers.consoleLog(namespacePrefix + functionName, msg.clineIs + JSON.stringify(lineKey));
       if (lineKey) {
         processed = true;
         // constants lineKey is:
@@ -93,7 +94,7 @@ async function validateConstantsDataValidation(inputData, inputMetaData) {
                 failMessage = chalk.rgb(0,0,0)(failMessage);
                 failMessage = chalk.bgRgb(255,0,0)(failMessage);
               } // End-if (colorizeLogsEnabled === true)
-              let qualifiedConstantsPrefix = await determineConstantsContextQualifiedPrefix(qualifiedConstantsFilename, '');
+              let qualifiedConstantsPrefix = await determineConstantsContextQualifiedPrefix(qualifiedConstantsFilename, inputMetaData);
               console.log(qualifiedConstantsFilename + bas.cColon + bas.cSpace + failMessage);
               // await loggers.consoleLog(namespacePrefix + functionName, failMessage);
               let suggestedLineOfCode = await determineSuggestedConstantsValidationLineOfCode(lineArray[2], qualifiedConstantsPrefix);
@@ -111,7 +112,7 @@ async function validateConstantsDataValidation(inputData, inputMetaData) {
       } else {
         // ERROR: line is null or undefined:
         // file is:
-        console.log(msg.cErrorLineIsNullOrUndefined + line + msg.cSpaceFileIs + inputData);
+        console.log(msg.cErrorLineIsNullOrUndefined + lineKey + msg.cSpaceFileIs + inputData);
       }
       // END processing a line
       await loggers.consoleLog(namespacePrefix + functionName, msg.cEndProcessingLine);
@@ -190,7 +191,7 @@ async function validateConstantsDataValidation(inputData, inputMetaData) {
  * The standard prefix that should be used in the code to reference that constants file.
  * @param {string} inputData The filename of the constants file or
  * the full path and file name of the constants file. (Should work just the same with either one)
- * @param {string} inputMetaData Not used for this business rule.
+ * @param {string} inputMetaData The name of the data hive that contains the appropriate matching constants validation data.
  * @return {string} A string code that represents the method to reference a constants file in the code.
  * @author Seth Hollingsead
  * @date 2022/01/24
@@ -201,10 +202,13 @@ async function determineConstantsContextQualifiedPrefix(inputData, inputMetaData
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = '';
-  if (inputData) {
+  if (inputData && inputMetaData) {
     returnData = inputData;
-    let constantsFileNames = D[sys.cConstantsValidationData][sys.cConstantsFileNames];
-    let constantsShortNames = D[sys.cConstantsValidationData][sys.cConstantsShortNames];
+    let constantsNamespaceParentObject = await getConstantsValidationNamespaceParentObject(inputMetaData, '');
+    // constantsNamespaceParentObject is:
+    // await loggers.consoleLog(namespacePrefix + functionName, msg.cconstantsNamespaceParentObjectIs + JSON.stringify(constantsNamespaceParentObject));
+    let constantsFileNames = constantsNamespaceParentObject[sys.cConstantsFileNames];
+    let constantsShortNames = constantsNamespaceParentObject[sys.cConstantsShortNames];
     for (let key in constantsFileNames) {
       if (inputData === constantsFileNames[key]) {
         returnData = constantsShortNames[key];
@@ -276,16 +280,142 @@ async function validateConstantsDataValidationLineItemName(inputData, inputMetaD
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = false;
   if (inputData && inputMetaData) {
-    for (const element of D[sys.cConstantsValidationData][inputMetaData]) {
-      let validationLineItem = element;
-      if (validationLineItem) {
-        if (inputData === validationLineItem.Name) {
-          returnData = true;
-          break;
-        } // End-if (inputData === validationLineItem.Name)
-      } // End-if (validationLineItem)
-    } // End-for (const element of D[sys.cConstantsValidationData][inputMetaData])
+    let constantNamespaceObject = await getConstantsValidationNamespaceObject(inputMetaData, '');
+    // constantNamespaceObject is:
+    // await loggers.consoleLog(namespacePrefix + functionName, msg.cconstantNamespaceObjectIs + JSON.stringify(constantNamespaceObject));
+    if (constantNamespaceObject) {
+      for (const element in constantNamespaceObject) {
+        // element is:
+        await loggers.consoleLog(namespacePrefix + functionName, msg.celementIs + element);
+        let validationLineItem = constantNamespaceObject[element];
+        // validationLineItem is:
+        await loggers.consoleLog(namespacePrefix + functionName, msg.cvalidationLineItemIs + JSON.stringify(validationLineItem));
+        if (validationLineItem) {
+          if (inputData === validationLineItem.Name) {
+            returnData = true;
+            break;
+          } // End-if (inputData === validationLineItem.Name)
+        } // End-if (validationLineItem)
+      } // End-for (const element of constantNamespaceObject)
+    } else {
+      // ERROR: Unable to find the constant namespace among all the constants validation data:
+      console.log(msg.cvalidateConstantsDataValidationLineItemNameErrorMessage1 + inputData);
+    }
   } // End-if (inputData && inputMetaData)
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
+/**
+ * @function getConstantsValidationNamespaceParentObject
+ * @description Searches the constants validation top-level data structure,
+ * framework, applications, plugins for the specified namespace and returns the parent JSON object,
+ * which contains all the meta-data necessary to generate failure messages and suggested line of code information.
+ * @param {string} inputData The name of the constants data hive that we should search for and find as a namespace object.
+ * @param {string} inputMetaData Not used for this business rule.
+ * @return {object} A JSON object that contains the constants short names, file names, prefixes and file paths,
+ * validation messages and related constants validation data. In short the constants validation parent context object.
+ * @author Seth Hollingsead
+ * @date 2022/12/16
+ */
+async function getConstantsValidationNamespaceParentObject(inputData, inputMetaData) {
+  let functionName = getConstantsValidationNamespaceParentObject.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
+  let returnData = false;
+  if (inputData) {
+    if (await doesConstantNamespaceExist(inputData, D[sys.cConstantsValidationData][wrd.cFramework]) === true) {
+      returnData = D[sys.cConstantsValidationData][wrd.cFramework];
+    } else if (await doesConstantNamespaceExist(inputData, D[sys.cConstantsValidationData][wrd.cApplication]) === true) {
+      returnData = D[sys.cConstantsValidationData][wrd.cApplication];
+    } else {
+      // Here we need to search through the plugins constants validation data for each plugin
+      // to try and find the constants namespace that we are looking for!
+      if (D[sys.cConstantsValidationData][wrd.cPlugins]) {
+        for (const pluginNamespace in D[sys.cConstantsValidationData][wrd.cPlugins]) {
+          if (await doesConstantNamespaceExist(inputData, D[sys.cConstantsValidationData][wrd.cPlugins][pluginNamespace]) === true) {
+            returnData = D[sys.cConstantsValidationData][wrd.cPlugins][pluginNamespace];
+          }
+        } // End-for (const pluginNamespace of D[sys.cConstantsValidationData][wrd.cPlugins])
+      } // End-if (D[sys.cConstantsValidationData][wrd.cPlugins])
+    }
+  } // End-if (inputData)
+  // await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
+/**
+ * @function getConstantsValidationNamespaceObject
+ * @description Searches the constants validation top-level data structure,
+ * framework, applications, plugins for the specified namespace and returns the JSON object.
+ * @param {string} inputData The name of the constants data hive that we should search for and find as a namespace object.
+ * @param {string} inputMetaData Not used for this business rule.
+ * @return {object} A JSON object that contains the constants validation data for the specified constants validation data-set,
+ * False if nothing is found.
+ * @author Seth Hollingsead
+ * @date 2022/11/16
+ */
+async function getConstantsValidationNamespaceObject(inputData, inputMetaData) {
+  let functionName = getConstantsValidationNamespaceObject.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
+  let returnData = false;
+  if (inputData) {
+    if (await doesConstantNamespaceExist(inputData, D[sys.cConstantsValidationData][wrd.cFramework]) === true) {
+      returnData = D[sys.cConstantsValidationData][wrd.cFramework][inputData];
+    } else if (await doesConstantNamespaceExist(inputData, D[sys.cConstantsValidationData][wrd.cApplication]) === true) {
+      returnData = D[sys.cConstantsValidationData][wrd.cApplication][inputData];
+    } else {
+      // Here we need to search through the plugins constants validation data for each plugin
+      // to try and find the constants namespace that we are looking for!
+      if (D[sys.cConstantsValidationData][wrd.cPlugins]) {
+        for (const pluginNamespace in D[sys.cConstantsValidationData][wrd.cPlugins]) {
+          if (await doesConstantNamespaceExist(inputData, D[sys.cConstantsValidationData][wrd.cPlugins][pluginNamespace]) === true) {
+            returnData = D[sys.cConstantsValidationData][wrd.cPlugins][pluginNamespace][inputData];
+          }
+        } // End-for (const pluginNamespace of D[sys.cConstantsValidationData][wrd.cPlugins])
+      } // End-if (D[sys.cConstantsValidationData][wrd.cPlugins])
+    }
+  } // End-if (inputData)
+  // await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
+/**
+ * @function doesConstantNamespaceExist
+ * @description Searches through the input data structure to determine if it contains the specified constant namespace or not.
+ * @param {string} inputData The name of the data element that should be searched for.
+ * @param {object} inputMetaData The data that should be searched for the specified named data parameter.
+ * @return {boolean} True or False to indicate if a matching namespace was found in the specified data structure or not.
+ * @author Seth Hollingsead
+ * @date 2022/12/16
+ */
+async function doesConstantNamespaceExist(inputData, inputMetaData) {
+  let functionName = doesConstantNamespaceExist.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
+  let returnData = false;
+  if (inputData && inputMetaData) {
+    for (const key in inputMetaData) {
+      // key is:
+      await loggers.consoleLog(namespacePrefix + functionName, msg.ckeyIs + key);
+      let element1 = inputMetaData[key];
+      // element1 is:
+      await loggers.consoleLog(namespacePrefix + functionName, msg.celement1Is + JSON.stringify(element1));
+      if (inputData === key) {
+        returnData = true;
+        // Found a matching namespace constant.
+        await loggers.consoleLog(namespacePrefix + functionName, msg.cFoundMatchingNamespaceConstant);
+        break;
+      } // End-if (inputData === key)
+    } // End-for (const key in inputMetaData)
+  } // End-if (inputData)
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
@@ -777,6 +907,9 @@ export default {
   determineConstantsContextQualifiedPrefix,
   determineSuggestedConstantsValidationLineOfCode,
   validateConstantsDataValidationLineItemName,
+  getConstantsValidationNamespaceParentObject,
+  getConstantsValidationNamespaceObject,
+  doesConstantNamespaceExist,
   doesConstantExist,
   getConstantType,
   getConstantActualValue,
