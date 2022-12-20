@@ -28,6 +28,7 @@ export const applicationConstantsValidation = [
   {Name: 'cCommandsCommonPath', Actual: apc.cCommandsCommonPath, Expected: 'commands/'},
   {Name: 'cConstantsPath', Actual: apc.cConstantsPath, Expected: 'constants/'},
   {Name: 'cConfigurationCommonPath', Actual: apc.cConfigurationCommonPath, Expected: 'configuration/'},
+  {Name: 'cPluginsRegistryCommonPath', Actual: apc.cPluginsRegistryCommonPath, Expected: 'plugins/'},
   {Name: 'cWorkflowsCommonPath', Actual: apc.cWorkflowsCommonPath, Expected: 'workflows/'},
   {Name: 'cThemesCommonPath', Actual: apc.cThemesCommonPath, Expected: 'themes/'},
   {Name: 'cReleasePath', Actual: apc.cReleasePath, Expected: 'release/'},
@@ -37,6 +38,7 @@ export const applicationConstantsValidation = [
   {Name: 'cFullDevCommandsPath', Actual: apc.cFullDevCommandsPath, Expected: '/src/resources/commands/'},
   {Name: 'cFullDevConstantsPath', Actual: apc.cFullDevConstantsPath, Expected: '/src/constants/'},
   {Name: 'cFullDevConfigurationPath', Actual: apc.cFullDevConfigurationPath, Expected: '/src/resources/configuration/'},
+  {Name: 'cFullDevPluginsRegistryPath', Actual: apc.cFullDevPluginsRegistryPath, Expected: '/src/resources/plugins/'},
   {Name: 'cFullDevWorkflowsPath', Actual: apc.cFullDevWorkflowsPath, Expected: '/src/resources/workflows/'},
   {Name: 'cFullDevThemesPath', Actual: apc.cFullDevThemesPath, Expected: '/src/resources/themes/'},
   {Name: 'cmetaDataDevPath', Actual: apc.cmetaDataDevPath, Expected: '/src/resources/metaData.json'},
@@ -46,6 +48,7 @@ export const applicationConstantsValidation = [
   {Name: 'cFullProdCommandsPath', Actual: apc.cFullProdCommandsPath, Expected: '/bin/resources/commands/'},
   {Name: 'cFullProdConstantsPath', Actual: apc.cFullProdConstantsPath, Expected: '/bin/constants/'},
   {Name: 'cFullProdConfigurationPath', Actual: apc.cFullProdConfigurationPath, Expected: '/bin/resources/configuration/'},
+  {Name: 'cFullProdPluginsRegistryPath', Actual: apc.cFullProdPluginsRegistryPath, Expected: '/bin/resources/plugins/'},
   {Name: 'cFullProdWorkflowsPath', Actual: apc.cFullProdWorkflowsPath, Expected: '/bin/resources/workflows/'},
   {Name: 'cFullProdThemesPath', Actual: apc.cFullProdThemesPath, Expected: '/bin/resources/themes/'},
   {Name: 'cmetaDataProdPath', Actual: apc.cmetaDataProdPath, Expected: '/bin/resources/metaData.json'}

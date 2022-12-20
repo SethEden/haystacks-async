@@ -95,7 +95,12 @@ async function validateConstantsDataValidation(inputData, inputMetaData) {
                 failMessage = chalk.bgRgb(255,0,0)(failMessage);
               } // End-if (colorizeLogsEnabled === true)
               let qualifiedConstantsPrefix = await determineConstantsContextQualifiedPrefix(qualifiedConstantsFilename, inputMetaData);
-              console.log(qualifiedConstantsFilename + bas.cColon + bas.cSpace + failMessage);
+              let pluginName = '';
+              if (inputMetaData.includes(bas.cColon) && inputMetaData.toUpperCase().includes(wrd.cPLUGIN)) {
+                let pluginConstantNamespaceArray = inputMetaData.split(bas.cColon);
+                pluginName = pluginConstantNamespaceArray[0] + bas.cColon;
+              }              
+              console.log(pluginName + qualifiedConstantsFilename + bas.cColon + bas.cSpace + failMessage);
               // await loggers.consoleLog(namespacePrefix + functionName, failMessage);
               let suggestedLineOfCode = await determineSuggestedConstantsValidationLineOfCode(lineArray[2], qualifiedConstantsPrefix);
               if (suggestedLineOfCode !== '') {
@@ -211,8 +216,9 @@ async function determineConstantsContextQualifiedPrefix(inputData, inputMetaData
     let constantsShortNames = constantsNamespaceParentObject[sys.cConstantsShortNames];
     for (let key in constantsFileNames) {
       if (inputData === constantsFileNames[key]) {
-        returnData = constantsShortNames[key];
-      }
+          returnData = constantsShortNames[key];
+          break;
+      } // End-if (inputData === constantsFileNames[key])
     } // End-for (let key in constantsFileNames)
   } // End-if (inputData)
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
@@ -372,10 +378,14 @@ async function getConstantsValidationNamespaceObject(inputData, inputMetaData) {
     } else {
       // Here we need to search through the plugins constants validation data for each plugin
       // to try and find the constants namespace that we are looking for!
-      if (D[sys.cConstantsValidationData][wrd.cPlugins]) {
+      if (D[sys.cConstantsValidationData][wrd.cPlugins] && inputData.includes(bas.cColon)) {
+        let pluginNamespaceArray = inputData.split(bas.cColon);
+        let pluginName = pluginNamespaceArray[0];
+        let pluginConstantNamespace = pluginNamespaceArray[1];
         for (const pluginNamespace in D[sys.cConstantsValidationData][wrd.cPlugins]) {
-          if (await doesConstantNamespaceExist(inputData, D[sys.cConstantsValidationData][wrd.cPlugins][pluginNamespace]) === true) {
-            returnData = D[sys.cConstantsValidationData][wrd.cPlugins][pluginNamespace][inputData];
+          if (pluginNamespace === pluginName &&
+          await doesConstantNamespaceExist(pluginConstantNamespace, D[sys.cConstantsValidationData][wrd.cPlugins][pluginNamespace]) === true) {
+            returnData = D[sys.cConstantsValidationData][wrd.cPlugins][pluginName][pluginConstantNamespace];
           }
         } // End-for (const pluginNamespace of D[sys.cConstantsValidationData][wrd.cPlugins])
       } // End-if (D[sys.cConstantsValidationData][wrd.cPlugins])

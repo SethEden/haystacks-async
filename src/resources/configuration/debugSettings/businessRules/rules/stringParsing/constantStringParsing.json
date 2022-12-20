@@ -25,7 +25,7 @@
   "debugFunctions|debugSetting.framework.businessRules.rules.stringParsing.constantStringParsing.validateConstantsDataValidation@FunctionFontBackgroundColor": "Default",
   "debugFunctions|debugSetting.framework.businessRules.rules.stringParsing.constantStringParsing.validateConstantsDataValidation@MessageFontBackgroundColor": "Default",
   "debugFunctions|debugSetting.framework.businessRules.rules.stringParsing.constantStringParsing.validateConstantsDataValidation@DataFontBackgroundColor": "Default",
-  "debugFunctions|debugSetting.framework.businessRules.rules.stringParsing.constantStringParsing.determineConstantsContextQualifiedPrefix": false,
+  "debugFunctions|debugSetting.framework.businessRules.rules.stringParsing.constantStringParsing.determineConstantsContextQualifiedPrefix": true,
   "debugFunctions|debugSetting.framework.businessRules.rules.stringParsing.constantStringParsing.determineConstantsContextQualifiedPrefix@ModuleFontStyle": "Default",
   "debugFunctions|debugSetting.framework.businessRules.rules.stringParsing.constantStringParsing.determineConstantsContextQualifiedPrefix@FunctionFontStyle": "Default",
   "debugFunctions|debugSetting.framework.businessRules.rules.stringParsing.constantStringParsing.determineConstantsContextQualifiedPrefix@MessageFontStyle": "Default",
