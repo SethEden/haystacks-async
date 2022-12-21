@@ -49,6 +49,8 @@ async function validateConstantsDataValidation(inputData, inputMetaData) {
   let foundAFailure = false;
   let processed = false;
   if (inputData && inputMetaData) {
+    // Scanning constants phase 1 validation data for file:
+    console.log(msg.cScanningConstantsValidationPhase1Message + inputData);
     let inputFilePath = path.resolve(inputData);
     const fileContents = await ruleParsing.processRulesInternal([inputFilePath, ''], [biz.cloadAsciiFileFromPath]);
     // fileContents are:
@@ -65,11 +67,11 @@ async function validateConstantsDataValidation(inputData, inputMetaData) {
       await loggers.consoleLog(namespacePrefix + functionName, msg.clineIs + JSON.stringify(lineKey));
       if (lineKey) {
         processed = true;
-        // constants lineKey is:
+        // constants LineKey is:
         await loggers.consoleLog(namespacePrefix + functionName, msg.cconstantsLineKeyIs + lineKey.toString(gen.cascii));
 
         let lineInCode = fileContentsLineArray[lineKey];
-        // constants line is:
+        // constants Line is:
         await loggers.consoleLog(namespacePrefix + functionName, msg.cconstantsLineIs + lineInCode);
         let foundConstant = false;
         if (lineInCode.includes(sys.cexportconst) === true) {
@@ -124,61 +126,6 @@ async function validateConstantsDataValidation(inputData, inputMetaData) {
     } // End-for (const line in fileContentsLineArray)
     // END processing all lines from file: 
     await loggers.consoleLog(namespacePrefix + functionName, msg.cEndProcessingAllLinesFromFile + inputData);
-
-    // // ***********************************************************************************************************************
-    // while (await line === await liner.next()) {
-    //   console.log('begin processing a line');
-    //   if (line) {
-    //     // constants line is:
-    //     await loggers.consoleLog(namespacePrefix + functionName, msg.cconstantsLineIs + line.toString(gen.cascii));
-    //     let lineInCode = line.toString(gen.cascii);
-    //     let foundConstant = false;
-    //     if (lineInCode.includes(sys.cexportconst) === true) {
-    //       let lineArray = lineInCode.split(bas.cSpace);
-    //       // lineArray[2] is
-    //       await loggers.consoleLog(namespacePrefix + functionName, msg.clineArray2Is + lineArray[2]);
-    //       foundConstant = await validateConstantsDataValidationLineItemName(lineArray[2], inputMetaData);
-    //       let qualifiedConstantsFilename = await ruleParsing.processRulesInternal([inputData, ''], [biz.cgetFileNameFromPath]);
-    //       if (foundConstant === true) {
-    //         if (await configurator.getConfigurationSetting(wrd.csystem, cfg.cdisplayIndividualConstantsValidationPassMessages) === true) {
-    //           let passMessage = wrd.cPASS + bas.cColon + bas.cSpace + lineArray[2] + bas.cSpace + wrd.cPASS;
-    //           if (colorizeLogsEnabled === true) {
-    //             passMessage = chalk.rgb(0,0,0)(passMessage);
-    //             passMessage = chalk.bgRgb(0,255,0)(passMessage);
-    //           } // End-if (colorizeLogsEnabled === true)
-    //           console.log(qualifiedConstantsFilename + bas.cColon + bas.cSpace + passMessage)
-    //         } // End-if (configurator.getConfigurationSetting(wrd.csystem, cfg.cDisplayIndividualConstantsValidationPassMessages) === true)
-    //       } else { // Else-clause if (foundConstant === true)
-    //         if (await configurator.getConfigurationSetting(wrd.csystem, cfg.cdisplayIndividualCosntantsValidationFailMessages) === true) {
-    //           let failMessage = wrd.cFAIL + bas.cColon + bas.cSpace + lineArray[2] + bas.cSpace + wrd.cFAIL;
-    //           if (colorizeLogsEnabled === true) {
-    //             failMessage = chalk.rgb(0,0,0)(failMessage);
-    //             failMessage = chalk.bgRgb(255,0,0)(failMessage);
-    //           } // End-if (colorizeLogsEnabled === true)
-    //           let qualifiedConstantsPrefix = await determineConstantsContextQualifiedPrefix(qualifiedConstantsFilename, '');
-    //           console.log(qualifiedConstantsFilename + bas.cColon + bas.cSpace + failMessage);
-    //           // await loggers.consoleLog(namespacePrefix + functionName, wrd.cFAIL + bas.cSpace + lineArray[2] + bas.cSpace + wrd.cFAIL);
-    //           let suggestedLineOfCode = await determineSuggestedConstantsValidationLineOfCode(lineArray[2], qualifiedConstantsPrefix);
-    //           if (suggestedLineOfCode !== '') {
-    //             if (colorizeLogsEnabled === true) {
-    //               suggestedLineOfCode = chalk.rgb(0,0,0)(suggestedLineOfCode);
-    //               suggestedLineOfCode = chalk.bgRgb(255,0,0)(suggestedLineOfCode);
-    //             } // End-if (colorizeLogsEnabled === true)
-    //             // Suggested line of code is:
-    //             console.log(msg.cSuggestedLineOfCodeIs + suggestedLineOfCode);
-    //           } // End-if (suggestedLineOfCode !== '')
-    //         } // End-if (configurator.getConfigurationSetting(wrd.csystem, cfg.cDisplayIndividualCosntantsValidationFailMessages) === true)
-    //         foundAFailure = true;
-    //       }
-    //     } // End-if (lineInCode.includes(sys.cexportconst) === true)
-    //   } else {
-    //     // ERROR: line is null or undefined:
-    //     // file is:
-    //     console.log(msg.cErrorLineIsNullOrUndefined + line + msg.cSpaceFileIs + inputData);
-    //   }      
-    // } // End-while (line = liner.next())
-    // // *************************************************************************************************************************************
-
   } // End-if (inputData && inputMetaData)
   if (foundAFailure === false && processed === true) {
     // Make sure we didn't find a failure, and we also actually did some processing of the data file.
@@ -339,10 +286,14 @@ async function getConstantsValidationNamespaceParentObject(inputData, inputMetaD
     } else {
       // Here we need to search through the plugins constants validation data for each plugin
       // to try and find the constants namespace that we are looking for!
-      if (D[sys.cConstantsValidationData][wrd.cPlugins]) {
+      if (D[sys.cConstantsValidationData][wrd.cPlugins] && inputData.includes(bas.cColon)) {
+        let pluginNamespaceArray = inputData.split(bas.cColon);
+        let pluginName = pluginNamespaceArray[0];
+        let pluginConstantNamespace = pluginNamespaceArray[1];
         for (const pluginNamespace in D[sys.cConstantsValidationData][wrd.cPlugins]) {
-          if (await doesConstantNamespaceExist(inputData, D[sys.cConstantsValidationData][wrd.cPlugins][pluginNamespace]) === true) {
-            returnData = D[sys.cConstantsValidationData][wrd.cPlugins][pluginNamespace];
+          if (pluginNamespace === pluginName && 
+          await doesConstantNamespaceExist(pluginConstantNamespace, D[sys.cConstantsValidationData][wrd.cPlugins][pluginNamespace]) === true) {
+            returnData = D[sys.cConstantsValidationData][wrd.cPlugins][pluginName];
           }
         } // End-for (const pluginNamespace of D[sys.cConstantsValidationData][wrd.cPlugins])
       } // End-if (D[sys.cConstantsValidationData][wrd.cPlugins])
@@ -840,8 +791,15 @@ async function validateConstantsDataValues(inputData, inputMetaData) {
   let passMessage = '';
   if (inputData) {
     let colorizeLogsEnabled = await configurator.getConfigurationSetting(wrd.csystem, cfg.cenableColorizedConsoleLogs);
-    for (const element of D[sys.cConstantsValidationData][inputData]) {
-      let validationLineItem = element;
+    // Scanning constants phase 2 validation data for:
+    console.log(msg.cScanningConstantsValidationPhase2Message + inputData);
+    let constantNamespaceObject = await getConstantsValidationNamespaceObject(inputData, '');
+    // constantNamespaceObject is:
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cconstantNamespaceObjectIs + JSON.stringify(constantNamespaceObject));
+    for (const element in constantNamespaceObject) {
+      let validationLineItem = constantNamespaceObject[element];
+      // validationLineItem is:
+      await loggers.consoleLog(namespacePrefix + functionName, msg.cvalidationLineItemIs + JSON.stringify(validationLineItem));
       if (validationLineItem) {
         if (validationLineItem.Actual === validationLineItem.Expected) {
           // PASS
@@ -873,6 +831,7 @@ async function validateConstantsDataValues(inputData, inputMetaData) {
         }
       } else { // Else-clause if (validationLineItem)
         // `FAIL -- ${inputData} -- FAIL`
+        returnData = false;
         passMessage = wrd.cFAIL + bas.cSpace + bas.cDoubleDash + bas.cSpace + inputData + bas.cSpace + bas.cDoubleDash + bas.cSpace + wrd.cFAIL;
         if (colorizeLogsEnabled === true) {
           passMessage = chalk.rgb(0,0,0)(passMessage);

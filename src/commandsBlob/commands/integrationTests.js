@@ -50,6 +50,9 @@ async function validateConstants(inputData, inputMetaData) {
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = [true, false];
   if (await configurator.getConfigurationSetting(wrd.csystem, cfg.cenableConstantsValidation) === true) {
+    // let pluginName = '';
+    let pluginNamespace = '';
+    let processingPluginResults = false;
     // Get the array of keys and values for all the constants that need to be validated.
     let validationArray = []; // D[sys.cConstantsValidationData][sys.cConstantsFilePaths]; // This will return an object with all of the key-value pair attributes we need.
     let validationFrameworkArray = D[sys.cConstantsValidationData][wrd.cFramework][sys.cConstantsFilePaths]; // Framework constants paths
@@ -102,6 +105,8 @@ async function validateConstants(inputData, inputMetaData) {
     } // End-for (let key1 in validationArray)
     // END Phase 1 Constants Validation
     await loggers.consoleLog(namespacePrefix + functionName, msg.cEndPhase1ConstantsValidation);
+    // phase1Results is:
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cphase1ResultsIs + JSON.stringify(phase1Results));
 
     // Phase 2 Constants Validation
     // BEGIN Phase 2 Constants Validation
@@ -112,16 +117,48 @@ async function validateConstants(inputData, inputMetaData) {
     } // End-for (let key2 in validationArray)
     // END Phase 2 Constants Validation
     await loggers.consoleLog(namespacePrefix + functionName, msg.cEndPhase2ConstantsValidation);
+    // phase2Results is:
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cphase2ResultsIs + JSON.stringify(phase2Results));
 
     for (let key3 in phase1Results) {
-      await loggers.constantsValidationSummaryLog(D[sys.cConstantsValidationData][sys.cConstantsPhase1ValidationMessages][key3], phase1Results[key3]);
+      let constantsPhase1ValidationNamespaceParentObject = await ruleBroker.processRules([key3, ''], [biz.cgetConstantsValidationNamespaceParentObject]);
+      if (key3.includes(bas.cColon) && key3.toUpperCase().includes(wrd.cPLUGIN)) {
+        let pluginPhase1NamespaceArray = key3.split(bas.cColon);
+        // pluginName = pluginPhase1NamespaceArray[0];
+        pluginNamespace = pluginPhase1NamespaceArray[1];
+        processingPluginResults = true;
+      }
+      if (processingPluginResults === false) {
+        await loggers.constantsValidationSummaryLog(constantsPhase1ValidationNamespaceParentObject[sys.cConstantsPhase1ValidationMessages][key3], phase1Results[key3]);
+      } else if (processingPluginResults === true) {
+        await loggers.constantsValidationSummaryLog(constantsPhase1ValidationNamespaceParentObject[sys.cConstantsPhase1ValidationMessages][pluginNamespace], phase1Results[key3]);
+      }
+      processingPluginResults = false;
+      // pluginName = '';
+      pluginNamespace = '';
+      
       if (phase1Results[key3] === false) {
         phase1FinalResult = false;
       }
     } // End-for (let key3 in phase1ResultsArray)
 
     for (let key4 in phase2Results) {
-      await loggers.constantsValidationSummaryLog(D[sys.cConstantsValidationData][sys.cConstantsPhase2ValidationMessages][key4], phase2Results[key4]);
+      let constantsPhase2ValidationNamespaceParentObject = await ruleBroker.processRules([key4, ''], [biz.cgetConstantsValidationNamespaceParentObject]);
+      if (key4.includes(bas.cColon) && key4.toUpperCase().includes(wrd.cPLUGIN)) {
+        let pluginPhase2NamespaceArray = key4.split(bas.cColon);
+        // pluginName = pluginPhase2NamespaceArray[0];
+        pluginNamespace = pluginPhase2NamespaceArray[1];
+        processingPluginResults = true;
+      }
+      if (processingPluginResults === false) {
+        await loggers.constantsValidationSummaryLog(constantsPhase2ValidationNamespaceParentObject[sys.cConstantsPhase2ValidationMessages][key4], phase2Results[key4]); 
+      } else if (processingPluginResults === true) {
+        await loggers.constantsValidationSummaryLog(constantsPhase2ValidationNamespaceParentObject[sys.cConstantsPhase2ValidationMessages][pluginNamespace], phase2Results[key4]); 
+      }
+      processingPluginResults = false
+      // pluginName = '';
+      pluginNamespace = '';
+         
       if (phase2Results[key4] === false) {
         phase2FinalResult = false;
       }
