@@ -185,8 +185,13 @@ async function countCamelCaseWords(inputData, inputMetaData) {
   let returnData = 0;
   if (inputData) {
     let caps = [];
-    for (let i = 1; i < inputData.length; i++) {
-      if (gen.cUpperCaseEnglishAlphabet.includes(inputData.charAt(i))) { caps.push(i); }
+    for (let i = 0; i < inputData.length; i++) {
+      await loggers.consoleLog(namespacePrefix + functionName, msg.ccharacterIs + inputData.charAt(i));
+      if (gen.cUpperCaseEnglishAlphabet.includes(inputData.charAt(i))) {
+        // Upper case letter found.
+        await loggers.consoleLog(namespacePrefix + functionName, msg.cupperCaseLetterFound);
+        caps.push(i);
+      }
     } // End-for (let i = 1; i < inputData.length; i++)
     returnData = caps.length;
   } // End-if (inputData)

@@ -78,7 +78,7 @@ async function constantsGenerator(inputData, inputMetaData) {
      // but if not, a warning to the user would be a good idea!
      let doesConstantExist = await ruleBroker.processRules([userDefinedConstant, ''], [biz.cdoesConstantExist]);
      if (doesConstantExist === true) {
-       let constantType = await ruleBroker.processRules([userDefinedConstant, ''], [biz.cgetConstantType]);
+       let constantType = await ruleBroker.processRules([userDefinedConstant, false], [biz.cgetConstantType]);
        // WARNING: The constant has already been defined in the following library(ies):
        console.log(msg.cconstantsGeneratorMessage2 + constantType);
      } // End-if (doesConstantExist === true)
