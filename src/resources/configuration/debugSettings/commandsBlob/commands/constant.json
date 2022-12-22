@@ -12,7 +12,7 @@
   "debugFiles|debugSetting.framework.commandsBlob.commands.constant@FunctionFontBackgroundColor": "255,255,255",
   "debugFiles|debugSetting.framework.commandsBlob.commands.constant@MessageFontBackgroundColor": "211,211,211",
   "debugFiles|debugSetting.framework.commandsBlob.commands.constant@DataFontBackgroundColor": "255,255,255",
-  "debugFunctions|debugSetting.framework.commandsBlob.commands.constant.constantsGenerator": true,
+  "debugFunctions|debugSetting.framework.commandsBlob.commands.constant.constantsGenerator": false,
   "debugFunctions|debugSetting.framework.commandsBlob.commands.constant.constantsGenerator@ModuleFontStyle": "Default",
   "debugFunctions|debugSetting.framework.commandsBlob.commands.constant.constantsGenerator@FunctionFontStyle": "Default",
   "debugFunctions|debugSetting.framework.commandsBlob.commands.constant.constantsGenerator@MessageFontStyle": "Default",
