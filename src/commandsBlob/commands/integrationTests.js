@@ -209,6 +209,7 @@ async function validateCommandAliases(inputData, inputMetaData) {
     let currentCommand = allCommandAliases[0][key1];
     // currentCommand is:
     await loggers.consoleLog(namespacePrefix + functionName, msg.ccurrentCommandIs + JSON.stringify(currentCommand));
+    console.log(msg.ccurrentCommandIs + key1);
     let aliasList = currentCommand[wrd.cAliases];
     // aliasList is:
     await loggers.consoleLog(namespacePrefix + functionName, msg.caliasListIs + aliasList);
@@ -278,9 +279,12 @@ async function validateWorkflows(inputData, inputMetaData) {
   for (let workflowKey in allWorkflowsData) {
     numberOfDuplicatesFound = 0;
     let workflowName = allWorkflowsData[workflowKey];
+    // workflowName is:
+    loggers.consoleLog(namespacePrefix + functionName, msg.cworkflowNameIs + workflowName);
+    console.log(msg.cworkflowNameIs + workflowName);
     for (const element of allWorkflowsData) {
       let secondTierWorkflowName = element;
-      // console.log('workflowName is: ' + workflowName);
+      
       // console.log('secondTierWorkflowName is: ' + secondTierWorkflowName);
       if (workflowName === secondTierWorkflowName) {
         numberOfDuplicatesFound = numberOfDuplicatesFound + 1;
