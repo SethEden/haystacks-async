@@ -486,7 +486,7 @@ async function commandAliasGenerator(inputData, inputMetaData) {
 
   if (validCommandInput === true) {
     // commandAliasDataStructure is:
-    await loggers.consoleLog(namespacePrefix, functionName, msg.ccommandAliasDataStructureIs + JSON.stringify(commandAliasDataStructure));
+    await loggers.consoleLog(namespacePrefix + functionName, msg.ccommandAliasDataStructureIs + JSON.stringify(commandAliasDataStructure));
     // At this point the user should have entered all valid data and we should be ready to proceed.
     // Pass the data object to a business rule to do the above task.
     returnData[1] = await ruleBroker.processRules([commandAliasDataStructure, ''], [biz.cgenerateCommandAliases]);

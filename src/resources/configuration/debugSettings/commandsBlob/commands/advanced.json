@@ -64,7 +64,7 @@
   "debugFunctions|debugSetting.framework.commandsBlob.commands.advanced.commandGenerator@FunctionFontBackgroundColor": "Default",
   "debugFunctions|debugSetting.framework.commandsBlob.commands.advanced.commandGenerator@MessageFontBackgroundColor": "Default",
   "debugFunctions|debugSetting.framework.commandsBlob.commands.advanced.commandGenerator@DataFontBackgroundColor": "Default",
-  "debugFunctions|debugSetting.framework.commandsBlob.commands.advanced.commandAliasGenerator": false,
+  "debugFunctions|debugSetting.framework.commandsBlob.commands.advanced.commandAliasGenerator": true,
   "debugFunctions|debugSetting.framework.commandsBlob.commands.advanced.commandAliasGenerator@ModuleFontStyle": "Default",
   "debugFunctions|debugSetting.framework.commandsBlob.commands.advanced.commandAliasGenerator@FunctionFontStyle": "Default",
   "debugFunctions|debugSetting.framework.commandsBlob.commands.advanced.commandAliasGenerator@MessageFontStyle": "Default",

@@ -275,17 +275,17 @@ async function validateWorkflows(inputData, inputMetaData) {
   let blackColorArray = await colorizer.getNamedColorData(clr.cBlack, [0,0,0]);
   let redColorArray = await colorizer.getNamedColorData(clr.cRed, [255,0,0]);
   // allWorkflowsData is:
-  loggers.consoleLog(namespacePrefix + functionName, msg.callWorkflowsDataIs + JSON.stringify(allWorkflowsData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.callWorkflowsDataIs + JSON.stringify(allWorkflowsData));
   for (let workflowKey in allWorkflowsData) {
     numberOfDuplicatesFound = 0;
     let workflowName = allWorkflowsData[workflowKey];
     // workflowName is:
-    loggers.consoleLog(namespacePrefix + functionName, msg.cworkflowNameIs + workflowName);
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cworkflowNameIs + workflowName);
     console.log(msg.cworkflowNameIs + workflowName);
     for (const element of allWorkflowsData) {
       let secondTierWorkflowName = element;
-      
-      // console.log('secondTierWorkflowName is: ' + secondTierWorkflowName);
+      // secondTierWorkflowName is:
+      await loggers.consoleLog(namespacePrefix + functionName, msg.csecondTierWorkflowNameIs + secondTierWorkflowName);
       if (workflowName === secondTierWorkflowName) {
         numberOfDuplicatesFound = numberOfDuplicatesFound + 1;
       }
