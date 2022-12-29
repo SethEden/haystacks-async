@@ -5,6 +5,7 @@
  * @requires module:ruleBroker
  * @requires module:chiefConfiguration
  * @requires module:chiefData
+ * @requires module:chiefTheme
  * @requires module:loggers
  * @requires module:data
  * @requires {@link https://www.npmjs.com/package/@haystacks/constants|@haystacks/constants}
@@ -18,6 +19,7 @@
 import ruleBroker from './ruleBroker.js';
 import chiefConfiguration from '../controllers/chiefConfiguration.js';
 import chiefData from '../controllers/chiefData.js';
+import chiefTheme from '../controllers/chiefTheme.js';
 import loggers from '../executrix/loggers.js';
 import D from '../structures/data.js';
 // import D from '../structures/data.js';
@@ -205,7 +207,7 @@ async function loadTheme(themePath) {
   // themePath is:
   await loggers.consoleLog(namespacePrefix + functionName, msg.cthemePathIs + themePath);
   let themeData = {};
-  await chiefData.determineThemeDebugConfigFilesToLoad(sys.cthemeConfigPath);
+  await chiefTheme.determineThemeDebugConfigFilesToLoad(sys.cthemeConfigPath);
   themeData = await chiefData.setupAllJsonConfigData(sys.cthemeConfigPath, wrd.cconfiguration);
   // themeData is:
   await loggers.consoleLog(namespacePrefix + functionName, msg.cthemeDataIs + JSON.stringify(themeData));
