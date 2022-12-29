@@ -59,7 +59,7 @@ async function bootStrapBusinessRules() {
 async function addClientRules(clientRules) {
   // let functionName = bootStrapBusinessRules.name;
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
-  Object.assign(D[sys.cbusinessRules], clientRules);
+  await Object.assign(D[sys.cbusinessRules], clientRules);
   // console.log(`END ${namespacePrefix}${functionName} function`);
 }
 
@@ -92,7 +92,7 @@ async function addPluginRules(pluginName, pluginRules) {
     // its basically calling a flat list. So rather than adding the plugin rules according to the above structure.
     // We will need to just add them to the flat list. If a plugin is unloaded,
     // then each of its business rules will need to be individually searched out and removed from the flat list.
-    Object.assign(D[sys.cbusinessRules], pluginRules[sys.cbusinessRules]);
+    await Object.assign(D[sys.cbusinessRules], pluginRules[sys.cbusinessRules]);
     returnData = true;
   } catch (err) {
     // ERROR: Failure to merge the plugin rules for plugin:
@@ -133,7 +133,7 @@ async function processRules(inputs, rulesToExecute) {
     }
     for (let rule in rulesToExecute) {
       // Make sure we don't call the internal rule processor, directly from the public interface.
-      if (Object.prototype.hasOwnProperty.call(rulesToExecute, rule) && rule != biz.cprocessRulesInternal) {
+      if (await Object.prototype.hasOwnProperty.call(rulesToExecute, rule) && rule != biz.cprocessRulesInternal) {
         let key = rule;
         // console.log(`key is: ${key}`);
         let value = rulesToExecute[key];

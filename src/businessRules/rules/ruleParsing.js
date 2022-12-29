@@ -134,7 +134,7 @@ async function processRulesInternal(inputData, inputMetaData) {
   if (inputMetaData && await doAllRulesExist(inputMetaData)) {
     for (let rule in inputMetaData) {
       let inputLocalMetaData = inputData[1];
-      if (Object.prototype.hasOwnProperty.call(inputMetaData, rule)) {
+      if (await Object.prototype.hasOwnProperty.call(inputMetaData, rule)) {
         let key = rule;
         // console.log(`key is ${key}`);
         let value = inputMetaData[key];

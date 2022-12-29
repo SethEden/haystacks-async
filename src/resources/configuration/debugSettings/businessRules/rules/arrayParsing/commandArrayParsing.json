@@ -48,7 +48,7 @@
   "debugFunctions|debugSetting.framework.businessRules.rules.arrayParsing.commandArrayParsing.getLehmerCodeValue@FunctionFontBackgroundColor": "Default",
   "debugFunctions|debugSetting.framework.businessRules.rules.arrayParsing.commandArrayParsing.getLehmerCodeValue@MessageFontBackgroundColor": "Default",
   "debugFunctions|debugSetting.framework.businessRules.rules.arrayParsing.commandArrayParsing.getLehmerCodeValue@DataFontBackgroundColor": "Default",
-  "debugFunctions|debugSetting.framework.businessRules.rules.arrayParsing.commandArrayParsing.generateCommandAliases": true,
+  "debugFunctions|debugSetting.framework.businessRules.rules.arrayParsing.commandArrayParsing.generateCommandAliases": false,
   "debugFunctions|debugSetting.framework.businessRules.rules.arrayParsing.commandArrayParsing.generateCommandAliases@FunctionFontStyle": "Default",
   "debugFunctions|debugSetting.framework.businessRules.rules.arrayParsing.commandArrayParsing.generateCommandAliases@MessageFontStyle": "Default",
   "debugFunctions|debugSetting.framework.businessRules.rules.arrayParsing.commandArrayParsing.generateCommandAliases@DataFontStyle": "Default",

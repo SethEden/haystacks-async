@@ -80,8 +80,8 @@ async function setPluginConfigurationSetting(dataStructure, configurationNamespa
     // console.log('dataStructure resolves as false');
     returnData = {};
   } else {
-    // console.log('dataStrcture resolved as not false!');
-    returnData = ruleBroker.processRules([returnData, dataStructure], [biz.carrayDeepClone]);
+    // console.log('dataStructure resolved as not false!');
+    returnData = await ruleBroker.processRules([dataStructure, ''], [biz.carrayDeepClone]);
   }
   // console.log('returnData after initialization and-or deep cloning: ' + JSON.stringify(returnData));
   let namespaceConfigObject = await getPluginConfigurationNamespaceObject(dataStructure, configurationNamespace.split(bas.cDot));
