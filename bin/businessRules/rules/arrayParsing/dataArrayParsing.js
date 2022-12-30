@@ -24,8 +24,8 @@ import path from 'path';
 
 const {bas, biz, cfg, msg, sys, wrd} = hayConst;
 const baseFileName = path.basename(import.meta.url, path.extname(import.meta.url));
-// businessRules.rules.arrayParsing.dataArrayParsing.
-const namespacePrefix = sys.cbusinessRules + bas.cDot + wrd.crules + bas.cDot + wrd.carray + wrd.cParsing + bas.cDot + baseFileName + bas.cDot;
+// framework.businessRules.rules.arrayParsing.dataArrayParsing.
+const namespacePrefix = wrd.cframework + bas.cDot + sys.cbusinessRules + bas.cDot + wrd.crules + bas.cDot + wrd.carray + wrd.cParsing + bas.cDot + baseFileName + bas.cDot;
 
 /**
  * @function arraysAreEqual
@@ -270,12 +270,12 @@ async function arrayDeepClone(inputData, inputMetaData) {
   let functionName = arrayDeepClone.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
   let returnData = false;
   if (inputData && await isArray(inputData, '') === true && await isArrayEmpty(inputData, '') === false) {
-    returnData = JSON.parse(JSON.stringify(inputData));
+    returnData = await JSON.parse(JSON.stringify(inputData));
   }
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
@@ -481,7 +481,7 @@ async function setNamespacedDataObject(inputData, inputMetaData) {
       if (i === inputData.length - 2) {
         // namespaceDataObject is:
         await loggers.consoleLog(namespacePrefix + functionName, msg.cnamespaceDataObjectIs + JSON.stringify(namespaceDataObject));
-        let fullyQualifiedKey = namespaceDataObject.join(bas.cDot);
+        let fullyQualifiedKey = await namespaceDataObject.join(bas.cDot);
         if (await ruleParsing.processRulesInternal([[namespaceDataObject, cfg.cdebugSetting], await ruleParsing.getRule(biz.cascertainMatchingElements)], [biz.cdoesArrayContainValue]) === true) {
           namespaceDataObject[fullyQualifiedKey] = inputMetaData;
         } else {

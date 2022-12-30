@@ -10,7 +10,6 @@
  * @requires module:data
  * @requires module:queue
  * @requires module:stack
- * @requires {@link https://www.npmjs.com/package/haystacks|haystacks}
  * @requires {@link https://www.npmjs.com/package/@haystacks/constants|@haystacks/constants}
  * @requires {@link https://www.npmjs.com/package/path|path}
  * @author Seth Hollingsead
@@ -32,8 +31,8 @@ import path from 'path';
 
 const {bas, biz, cfg, gen, msg, num, sys, wrd} = hayConst;
 const baseFileName = path.basename(import.meta.url, path.extname(import.meta.url));
-// brokers.commandBroker.
-const namespacePrefix = wrd.cbrokers + bas.cDot + baseFileName + bas.cDot;
+// framework.brokers.commandBroker.
+const namespacePrefix = wrd.cframework + bas.cDot + wrd.cbrokers + bas.cDot + baseFileName + bas.cDot;
 
 /**
  * @function bootStrapCommands

@@ -3,10 +3,10 @@
     <resources>
       <constantsValidation>
         <allConstantsValidationMetadata>
-          <Workflow Name="allConstantsValidationMetadataEnable" Value="changeConfigSetting debugSetting.resources.constantsValidation.allConstantsValidationMetadata true"/>
-          <Workflow Name="allConstantsValidationMetadataDisable" Value="changeConfigSetting debugSetting.resources.constantsValidation.allConstantsValidationMetadata false"/>
-          <Workflow Name="initiaizeAllSystemConstantsVaidationDataEnable" Value="changeConfigSetting debugSetting.executrix.resources.constantsValidation.allConstantsValidationMetadata.initiaizeAllSystemConstantsVaidationData true"/>
-          <Workflow Name="initiaizeAllSystemConstantsVaidationDataDisable" Value="changeConfigSetting debugSetting.executrix.resources.constantsValidation.allConstantsValidationMetadata.initiaizeAllSystemConstantsVaidationData false"/>
+          <Workflow Name="allConstantsValidationMetadataEnable" Value="changeConfigSetting debugSetting.framework.resources.constantsValidation.allConstantsValidationMetadata true"/>
+          <Workflow Name="allConstantsValidationMetadataDisable" Value="changeConfigSetting debugSetting.framework.resources.constantsValidation.allConstantsValidationMetadata false"/>
+          <Workflow Name="initiaizeAllSystemConstantsVaidationDataEnable" Value="changeConfigSetting debugSetting.framework.executrix.resources.constantsValidation.allConstantsValidationMetadata.initiaizeAllSystemConstantsVaidationData true"/>
+          <Workflow Name="initiaizeAllSystemConstantsVaidationDataDisable" Value="changeConfigSetting debugSetting.framework.executrix.resources.constantsValidation.allConstantsValidationMetadata.initiaizeAllSystemConstantsVaidationData false"/>
         </allConstantsValidationMetadata>
       </constantsValidation>
     </resources>

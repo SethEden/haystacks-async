@@ -24,8 +24,8 @@ import path from 'path';
 
 const {bas, biz, cmd, cfg, gen, msg, sys, wrd} = hayConst;
 const baseFileName = path.basename(import.meta.url, path.extname(import.meta.url));
-// commandsBlob.commands.constant.
-const namespacePrefix = sys.ccommandsBlob + bas.cDot + wrd.ccommands + bas.cDot + baseFileName + bas.cDot;
+// framework.commandsBlob.commands.constant.
+const namespacePrefix = wrd.cframework + bas.cDot + sys.ccommandsBlob + bas.cDot + wrd.ccommands + bas.cDot + baseFileName + bas.cDot;
 
 /**
  * @function constantsGenerator
@@ -78,7 +78,7 @@ async function constantsGenerator(inputData, inputMetaData) {
      // but if not, a warning to the user would be a good idea!
      let doesConstantExist = await ruleBroker.processRules([userDefinedConstant, ''], [biz.cdoesConstantExist]);
      if (doesConstantExist === true) {
-       let constantType = await ruleBroker.processRules([userDefinedConstant, ''], [biz.cgetConstantType]);
+       let constantType = await ruleBroker.processRules([userDefinedConstant, false], [biz.cgetConstantType]);
        // WARNING: The constant has already been defined in the following library(ies):
        console.log(msg.cconstantsGeneratorMessage2 + constantType);
      } // End-if (doesConstantExist === true)

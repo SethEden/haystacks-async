@@ -24,8 +24,8 @@ import path from 'path';
 
 const {bas, biz, cfg, gen, msg, sys, wrd} = hayConst;
 const baseFileName = path.basename(import.meta.url, path.extname(import.meta.url));
-// businessRules.rules.stringParsing.wordStringParsing.
-const namespacePrefix = sys.cbusinessRules + bas.cDot + wrd.crules + bas.cDot + wrd.cstring + wrd.cParsing + bas.cDot + baseFileName + bas.cDot;
+// framework.businessRules.rules.stringParsing.wordStringParsing.
+const namespacePrefix = wrd.cframework + bas.cDot + sys.cbusinessRules + bas.cDot + wrd.crules + bas.cDot + wrd.cstring + wrd.cParsing + bas.cDot + baseFileName + bas.cDot;
 
 /**
  * @function isStringCamelCase
@@ -185,8 +185,13 @@ async function countCamelCaseWords(inputData, inputMetaData) {
   let returnData = 0;
   if (inputData) {
     let caps = [];
-    for (let i = 1; i < inputData.length; i++) {
-      if (gen.cUpperCaseEnglishAlphabet.includes(inputData.charAt(i))) { caps.push(i); }
+    for (let i = 0; i < inputData.length; i++) {
+      await loggers.consoleLog(namespacePrefix + functionName, msg.ccharacterIs + inputData.charAt(i));
+      if (gen.cUpperCaseEnglishAlphabet.includes(inputData.charAt(i))) {
+        // Upper case letter found.
+        await loggers.consoleLog(namespacePrefix + functionName, msg.cupperCaseLetterFound);
+        caps.push(i);
+      }
     } // End-for (let i = 1; i < inputData.length; i++)
     returnData = caps.length;
   } // End-if (inputData)
@@ -296,10 +301,26 @@ async function determineWordDelimiter(inputData, inputMetaData) {
     } else if (spacesCount === 0 && periodCount === 0 && dashCount === 0 && comaCount === 0 && underscoreCount === 0 && plusCount === 0 && percentCount > 0) {
       returnData = bas.cPercent;
     } else {
-      // We don't need to be showing this warning unless we are debugging.
-      // WARNING: Mixed string. Cannot determine what delimiter should be used to break up the string into words.
-      await loggers.consoleLog(namespacePrefix + functionName, msg.cDetermineWordDelimiterMessage1 + msg.cDetermineWordDelimiterMessage2 +
-      msg.cDetermineWordDelimiterMessage3 + msg.cDetermineWordDelimiterMessage4);
+      if (spacesCount > periodCount && spacesCount > dashCount && spacesCount > comaCount && spacesCount > underscoreCount && spacesCount > plusCount && spacesCount > percentCount) {
+        returnData = bas.cSpace;
+      } else if (periodCount > spacesCount && periodCount > dashCount && periodCount > comaCount && periodCount > underscoreCount && periodCount > plusCount && periodCount > percentCount) {
+        returnData = bas.cDot;
+      } else if (dashCount > spacesCount && dashCount > periodCount && dashCount > comaCount && dashCount > underscoreCount && dashCount > plusCount && dashCount > percentCount) {
+        returnData = bas.cDash;
+      } else if (comaCount > spacesCount && comaCount > periodCount && comaCount > dashCount && comaCount > underscoreCount && comaCount > plusCount && comaCount > percentCount) {
+        returnData = bas.cComa;
+      } else if (underscoreCount > spacesCount && underscoreCount > periodCount && underscoreCount > dashCount && underscoreCount > comaCount && underscoreCount > plusCount && underscoreCount > percentCount) {
+        returnData = bas.cUnderscore;
+      } else if (plusCount > spacesCount && plusCount > periodCount && plusCount > dashCount && plusCount > comaCount && plusCount > underscoreCount && plusCount > percentCount) {
+        returnData = bas.cPlus;
+      } else if (percentCount > spacesCount && percentCount > periodCount && percentCount > dashCount && percentCount > comaCount && percentCount > underscoreCount && percentCount > plusCount) {
+        returnData = bas.cPercent;
+      } else {
+        // We don't need to be showing this warning unless we are debugging.
+        // WARNING: Mixed string. Cannot determine what delimiter should be used to break up the string into words.
+        await loggers.consoleLog(namespacePrefix + functionName, msg.cDetermineWordDelimiterMessage1 + msg.cDetermineWordDelimiterMessage2 +
+          msg.cDetermineWordDelimiterMessage3 + msg.cDetermineWordDelimiterMessage4);
+      }
     }
   } // End-if (inputData)
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);

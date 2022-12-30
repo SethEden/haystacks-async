@@ -23,9 +23,9 @@ import path from 'path';
 // eslint-disable-next-line no-unused-vars
 const {bas, biz, cfg, msg, wrd} = hayConst;
 const baseFileName = path.basename(import.meta.url, path.extname(import.meta.url));
-// executrix.configurator.
+// framework.executrix.configurator.
 // eslint-disable-next-line no-unused-vars
-const namespacePrefix = wrd.cexecutrix + bas.cDot + baseFileName + bas.cDot;
+const namespacePrefix = wrd.cframework + bas.cDot + wrd.cexecutrix + bas.cDot + baseFileName + bas.cDot;
 
 /**
  * @function setConfigurationSetting
@@ -80,8 +80,8 @@ async function setPluginConfigurationSetting(dataStructure, configurationNamespa
     // console.log('dataStructure resolves as false');
     returnData = {};
   } else {
-    // console.log('dataStrcture resolved as not false!');
-    returnData = ruleBroker.processRules([returnData, dataStructure], [biz.carrayDeepClone]);
+    // console.log('dataStructure resolved as not false!');
+    returnData = await ruleBroker.processRules([dataStructure, ''], [biz.carrayDeepClone]);
   }
   // console.log('returnData after initialization and-or deep cloning: ' + JSON.stringify(returnData));
   let namespaceConfigObject = await getPluginConfigurationNamespaceObject(dataStructure, configurationNamespace.split(bas.cDot));
@@ -329,9 +329,9 @@ async function getPluginConfigurationNamespaceObject(dataStructure, configuratio
     configurationPathObject = configurationDataRoot;
   } // End-if (!configurationPathObject)
   for (let element of configurationNamespace) {
-    if (element === cfg.cdebugSetting) {
-      element = cfg.cdebugSettings;
-    }
+    // if (element === cfg.cdebugSetting) {
+    //   element = cfg.cdebugSettings;
+    // }
     if (!configurationPathObject[element]) {
       // It doesn't exist yet, so lets make it.
       configurationPathObject[element] = {};
@@ -365,8 +365,22 @@ async function addPluginConfigurationData(pluginName, pluginConfigData) {
     if (D[wrd.cconfiguration][wrd.cplugins] === undefined) {
       D[wrd.cconfiguration][wrd.cplugins] = {};
     }
+    // Capture the system settings here, so we don't over-write the framework or application system settings.
+    // There could be an argument made to merge all of these plugin system settings with the rest of the framework & application system settings.
+    // So long as we make sure to check for duplicates and throw errors when a duplicate is found.
+    // This is because it could be dangerous if we allow for plugins to over-write framework and application system settings.
     D[wrd.cconfiguration][wrd.cplugins][pluginName] = {};
-    D[wrd.cconfiguration][wrd.cplugins][pluginName] = pluginConfigData;
+    D[wrd.cconfiguration][wrd.cplugins][pluginName][wrd.csystem] = {};
+    D[wrd.cconfiguration][wrd.cplugins][pluginName][wrd.csystem] = pluginConfigData[wrd.csystem];
+
+    // Now we still need to merge over the debugSetting data structure.
+    // Rather than just blanket merge, there is a sub-structure that we can navigate that will allow us to do this with an assignment operation.
+    if (D[wrd.cconfiguration][cfg.cdebugSetting][wrd.cplugins] === undefined) {
+      // ONLY initialize it if it does not yet exist, otherwise we might end up destroying previously loaded plugin configuration debug settings.
+      D[wrd.cconfiguration][cfg.cdebugSetting][wrd.cplugins] = {};
+    }
+    D[wrd.cconfiguration][cfg.cdebugSetting][wrd.cplugins][pluginName] = {};
+    D[wrd.cconfiguration][cfg.cdebugSetting][wrd.cplugins][pluginName] = pluginConfigData[cfg.cdebugSetting][wrd.cplugins][pluginName];
     returnData = true;
   } catch (err) {
     // ERROR: Failure unable to persist the plugin configuration data for plugin:

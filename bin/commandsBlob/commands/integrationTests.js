@@ -30,8 +30,8 @@ import path from 'path';
 
 const {bas, biz, clr, cfg, msg, sys, wrd} = hayConst;
 const baseFileName = path.basename(import.meta.url, path.extname(import.meta.url));
-// commandsBlob.commands.integrationTests.
-const namespacePrefix = sys.ccommandsBlob + bas.cDot + wrd.ccommands + bas.cDot + baseFileName + bas.cDot;
+// framework.commandsBlob.commands.integrationTests.
+const namespacePrefix = wrd.cframework + bas.cDot + sys.ccommandsBlob + bas.cDot + wrd.ccommands + bas.cDot + baseFileName + bas.cDot;
 
 /**
  * @function validateConstants
@@ -50,12 +50,50 @@ async function validateConstants(inputData, inputMetaData) {
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = [true, false];
   if (await configurator.getConfigurationSetting(wrd.csystem, cfg.cenableConstantsValidation) === true) {
+    // let pluginName = '';
+    let pluginNamespace = '';
+    let processingPluginResults = false;
     // Get the array of keys and values for all the constants that need to be validated.
-    let validationArray = D[sys.cConstantsValidationData][sys.cConstantsFilePaths]; // This will return an object with all of the key-value pair attributes we need.
+    let validationArray = []; // D[sys.cConstantsValidationData][sys.cConstantsFilePaths]; // This will return an object with all of the key-value pair attributes we need.
+    let validationFrameworkArray = D[sys.cConstantsValidationData][wrd.cFramework][sys.cConstantsFilePaths]; // Framework constants paths
+    let validationApplicationArray = D[sys.cConstantsValidationData][wrd.cApplication][sys.cConstantsFilePaths]; // Application constants paths
+    let validationPluginsMetaArray = D[sys.cConstantsValidationData][wrd.cPlugins]; // Will need to iterate through each of the plugins and capture the plugin constants path for each plugin!
     let phase1FinalResult = true;
     let phase2FinalResult = true;
     let phase1Results = {};
     let phase2Results = {};
+
+    // validationFrameworkArray is:
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cvalidationFrameworkArrayIs + JSON.stringify(validationFrameworkArray));
+    // validationApplicationArray is:
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cvalidationApplicationArrayIs + JSON.stringify(validationApplicationArray));
+    // validationPluginsMetaArray is:
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cvalidationPluginsMetaArrayIs + JSON.stringify(validationPluginsMetaArray));
+
+    validationArray = validationFrameworkArray;
+    validationArray = Object.assign(validationArray, validationApplicationArray);
+    // validationArray before plugin constants validation data merge is:
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cvalidationArrayBeforePluginConstantsValidationDataMergeIs + JSON.stringify(validationArray));
+
+    for (let plugin in validationPluginsMetaArray) {
+      // plugin is:
+      await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginIs + plugin);
+      let pluginValidationPathData = validationPluginsMetaArray[plugin][sys.cConstantsFilePaths];
+      for (let constantsFilePathName in pluginValidationPathData) {
+        // constantsFilePathName is:
+        await loggers.consoleLog(namespacePrefix + functionName, msg.cconstantsFilePathNamesIs + constantsFilePathName);
+        let constantsFilePathValue = pluginValidationPathData[constantsFilePathName];
+        // constantsFilePathValue is:
+        await loggers.consoleLog(namespacePrefix + functionName, msg.cconstantsFilePathValueIs + constantsFilePathValue);
+        let newPluginConstantValidationName = plugin + bas.cColon + constantsFilePathName;
+        // newPluginConstantValidationName is:
+        await loggers.consoleLog(namespacePrefix + functionName, msg.cnewPluginConstantValidationNameIs + newPluginConstantValidationName);
+        let newPluginConstantValidationPathObject = {[newPluginConstantValidationName]: constantsFilePathValue};
+        validationArray = Object.assign(validationArray, newPluginConstantValidationPathObject);
+        // validationArray after plugin constants validation data merge is:
+        await loggers.consoleLog(namespacePrefix + functionName, msg.cvalidationArrayAfterPluginConstantsValidationDataMergeIs + JSON.stringify(validationArray));
+      } // End-for (let constantsFilePathNames in pluginValidationPathData)
+    } // End-for (let plugin in validationPluginsMetaArray)
 
     // Phase1 Constants Validation
     // BEGIN Phase 1 Constants Validation
@@ -67,6 +105,8 @@ async function validateConstants(inputData, inputMetaData) {
     } // End-for (let key1 in validationArray)
     // END Phase 1 Constants Validation
     await loggers.consoleLog(namespacePrefix + functionName, msg.cEndPhase1ConstantsValidation);
+    // phase1Results is:
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cphase1ResultsIs + JSON.stringify(phase1Results));
 
     // Phase 2 Constants Validation
     // BEGIN Phase 2 Constants Validation
@@ -77,16 +117,48 @@ async function validateConstants(inputData, inputMetaData) {
     } // End-for (let key2 in validationArray)
     // END Phase 2 Constants Validation
     await loggers.consoleLog(namespacePrefix + functionName, msg.cEndPhase2ConstantsValidation);
+    // phase2Results is:
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cphase2ResultsIs + JSON.stringify(phase2Results));
 
     for (let key3 in phase1Results) {
-      await loggers.constantsValidationSummaryLog(D[sys.cConstantsValidationData][sys.cConstantsPhase1ValidationMessages][key3], phase1Results[key3]);
+      let constantsPhase1ValidationNamespaceParentObject = await ruleBroker.processRules([key3, ''], [biz.cgetConstantsValidationNamespaceParentObject]);
+      if (key3.includes(bas.cColon) && key3.toUpperCase().includes(wrd.cPLUGIN)) {
+        let pluginPhase1NamespaceArray = key3.split(bas.cColon);
+        // pluginName = pluginPhase1NamespaceArray[0];
+        pluginNamespace = pluginPhase1NamespaceArray[1];
+        processingPluginResults = true;
+      }
+      if (processingPluginResults === false) {
+        await loggers.constantsValidationSummaryLog(constantsPhase1ValidationNamespaceParentObject[sys.cConstantsPhase1ValidationMessages][key3], phase1Results[key3]);
+      } else if (processingPluginResults === true) {
+        await loggers.constantsValidationSummaryLog(constantsPhase1ValidationNamespaceParentObject[sys.cConstantsPhase1ValidationMessages][pluginNamespace], phase1Results[key3]);
+      }
+      processingPluginResults = false;
+      // pluginName = '';
+      pluginNamespace = '';
+      
       if (phase1Results[key3] === false) {
         phase1FinalResult = false;
       }
     } // End-for (let key3 in phase1ResultsArray)
 
     for (let key4 in phase2Results) {
-      await loggers.constantsValidationSummaryLog(D[sys.cConstantsValidationData][sys.cConstantsPhase2ValidationMessages][key4], phase2Results[key4]);
+      let constantsPhase2ValidationNamespaceParentObject = await ruleBroker.processRules([key4, ''], [biz.cgetConstantsValidationNamespaceParentObject]);
+      if (key4.includes(bas.cColon) && key4.toUpperCase().includes(wrd.cPLUGIN)) {
+        let pluginPhase2NamespaceArray = key4.split(bas.cColon);
+        // pluginName = pluginPhase2NamespaceArray[0];
+        pluginNamespace = pluginPhase2NamespaceArray[1];
+        processingPluginResults = true;
+      }
+      if (processingPluginResults === false) {
+        await loggers.constantsValidationSummaryLog(constantsPhase2ValidationNamespaceParentObject[sys.cConstantsPhase2ValidationMessages][key4], phase2Results[key4]); 
+      } else if (processingPluginResults === true) {
+        await loggers.constantsValidationSummaryLog(constantsPhase2ValidationNamespaceParentObject[sys.cConstantsPhase2ValidationMessages][pluginNamespace], phase2Results[key4]); 
+      }
+      processingPluginResults = false
+      // pluginName = '';
+      pluginNamespace = '';
+         
       if (phase2Results[key4] === false) {
         phase2FinalResult = false;
       }
@@ -137,6 +209,7 @@ async function validateCommandAliases(inputData, inputMetaData) {
     let currentCommand = allCommandAliases[0][key1];
     // currentCommand is:
     await loggers.consoleLog(namespacePrefix + functionName, msg.ccurrentCommandIs + JSON.stringify(currentCommand));
+    console.log(msg.ccurrentCommandIs + key1);
     let aliasList = currentCommand[wrd.cAliases];
     // aliasList is:
     await loggers.consoleLog(namespacePrefix + functionName, msg.caliasListIs + aliasList);
@@ -202,14 +275,17 @@ async function validateWorkflows(inputData, inputMetaData) {
   let blackColorArray = await colorizer.getNamedColorData(clr.cBlack, [0,0,0]);
   let redColorArray = await colorizer.getNamedColorData(clr.cRed, [255,0,0]);
   // allWorkflowsData is:
-  loggers.consoleLog(namespacePrefix + functionName, msg.callWorkflowsDataIs + JSON.stringify(allWorkflowsData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.callWorkflowsDataIs + JSON.stringify(allWorkflowsData));
   for (let workflowKey in allWorkflowsData) {
     numberOfDuplicatesFound = 0;
     let workflowName = allWorkflowsData[workflowKey];
+    // workflowName is:
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cworkflowNameIs + workflowName);
+    console.log(msg.cworkflowNameIs + workflowName);
     for (const element of allWorkflowsData) {
       let secondTierWorkflowName = element;
-      // console.log('workflowName is: ' + workflowName);
-      // console.log('secondTierWorkflowName is: ' + secondTierWorkflowName);
+      // secondTierWorkflowName is:
+      await loggers.consoleLog(namespacePrefix + functionName, msg.csecondTierWorkflowNameIs + secondTierWorkflowName);
       if (workflowName === secondTierWorkflowName) {
         numberOfDuplicatesFound = numberOfDuplicatesFound + 1;
       }

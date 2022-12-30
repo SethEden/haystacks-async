@@ -21,8 +21,8 @@ import path from 'path';
 
 const {bas, msg, sys, wrd} = hayConst;
 const baseFileName = path.basename(import.meta.url, path.extname(import.meta.url));
-// businessRules.rules.ruleParsing.
-const namespacePrefix = sys.cbusinessRules + bas.cDot + wrd.crules + bas.cDot + baseFileName + bas.cDot;
+// framework.businessRules.rules.ruleParsing.
+const namespacePrefix = wrd.cframework + bas.cDot + sys.cbusinessRules + bas.cDot + wrd.crules + bas.cDot + baseFileName + bas.cDot;
 
 /**
  * @function doAllRulesExist
@@ -134,7 +134,7 @@ async function processRulesInternal(inputData, inputMetaData) {
   if (inputMetaData && await doAllRulesExist(inputMetaData)) {
     for (let rule in inputMetaData) {
       let inputLocalMetaData = inputData[1];
-      if (Object.prototype.hasOwnProperty.call(inputMetaData, rule)) {
+      if (await Object.prototype.hasOwnProperty.call(inputMetaData, rule)) {
         let key = rule;
         // console.log(`key is ${key}`);
         let value = inputMetaData[key];
