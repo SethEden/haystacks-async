@@ -7,7 +7,6 @@
  * @requires module:warden
  * @requires module:loggers
  * @requires module:prompt
- * @requires module:allConstantsValidationMetadata
  * @requires module:data
  * @requires {@link https://www.npmjs.com/package/haystacks|haystacks}
  * @requires {@link https://www.npmjs.com/package/@haystacks/constants|@haystacks/constants}
@@ -22,7 +21,6 @@
 // Internal imports
 import warden from './controllers/warden.js';
 import loggers from './executrix/loggers.js';
-import allSysCV from './resources/constantsValidation/allConstantsValidationMetadata.js';
 import D from './structures/data.js';
 // External imports
 import hayConst from '@haystacks/constants';
@@ -32,8 +30,8 @@ import path from 'path';
 
 const {bas, cfg, msg, sys, wrd} = hayConst;
 const baseFileName = path.basename(import.meta.url, path.extname(import.meta.url));
-// main.
-const namespacePrefix = baseFileName + bas.cDot;
+// framework.main.
+const namespacePrefix = wrd.cframework + bas.cDot + baseFileName + bas.cDot;
 dotenv.config();
 // eslint-disable-next-line no-undef
 const {NODE_ENV} = process.env;
@@ -83,7 +81,6 @@ async function initFramework(clientConfiguration) {
  clientConfiguration[cfg.cframeworkThemesPath] = frameworkCodeRootPath + sys.cframeworkThemesPath;
  clientConfiguration[cfg.cframeworkCommandAliasesPath] = frameworkCommandAliasesPath;
  clientConfiguration[cfg.cframeworkWorkflowsPath] = frameworkWorkflowsPath;
- clientConfiguration[cfg.cframeworkConstantsValidationData] = await allSysCV.initializeAllSystemConstantsValidationData;
  await warden.initFrameworkSchema(clientConfiguration);
  await loggers.consoleLog(namespacePrefix + functionName, msg.cAllLoadedDataIs + JSON.stringify(D));
  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);

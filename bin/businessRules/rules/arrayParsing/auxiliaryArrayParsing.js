@@ -20,8 +20,8 @@ import path from 'path';
 
 const {bas, msg, sys, wrd} = hayConst;
 const baseFileName = path.basename(import.meta.url, path.extname(import.meta.url));
-// businessRules.rules.arrayParsing.auxiliaryArrayParsing.
-const namespacePrefix = sys.cbusinessRules + bas.cDot + wrd.crules + bas.cDot + wrd.carray + wrd.cParsing + bas.cDot + baseFileName + bas.cDot;
+// framework.businessRules.rules.arrayParsing.auxiliaryArrayParsing.
+const namespacePrefix = wrd.cframework + bas.cDot + sys.cbusinessRules + bas.cDot + wrd.crules + bas.cDot + wrd.carray + wrd.cParsing + bas.cDot + baseFileName + bas.cDot;
 
  /**
   * @function parseColorRangeInputs
@@ -115,7 +115,7 @@ async function doesArrayContainValue(inputData, inputMetaData) {
     } else {
       // eslint-disable-next-line no-extra-boolean-cast
       // if (!!array.find(await (async (i) => {return (await inputMetaData(i, value));}))) {
-      if (array.find(x => x === value)) {
+      if (await array.find(x => x === value)) {
         // The value was found in the array.
         await loggers.consoleLog(namespacePrefix + functionName, msg.cTheValueWasFoundInTheArray);
         returnData = true;

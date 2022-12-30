@@ -16,7 +16,6 @@
 
 // Internal imports
 import dataBroker from '../brokers/dataBroker.js';
-import themeBroker from '../brokers/themeBroker.js';
 import configurator from '../executrix/configurator.js';
 import loggers from '../executrix/loggers.js';
 // External imports
@@ -25,8 +24,8 @@ import path from 'path';
 
 const {bas, cfg, msg, sys, wrd} = hayConst;
 const baseFileName = path.basename(import.meta.url, path.extname(import.meta.url));
-// controllers.chiefData.
-const namespacePrefix = wrd.ccontrollers + bas.cDot + baseFileName + bas.cDot;
+// framework.controllers.chiefData.
+const namespacePrefix = wrd.cframework + bas.cDot + wrd.ccontrollers + bas.cDot + baseFileName + bas.cDot;
 
 /**
  * @function searchForUniversalDebugConfigSetting
@@ -63,91 +62,6 @@ async function searchForUniversalDebugConfigSetting(appConfigPathName, framework
   // console.log(`universalDebugConfigSetting is: ${universalDebugConfigSetting}`);
   // console.log(`END ${namespacePrefix}${functionName} function`);
   return universalDebugConfigSetting;
-}
-
-/**
- * @function initThemes
- * @description Initializes the theme data for the framework.
- * @return {void}
- * @author Seth Hollingsead
- * @date 2022/10/23
- */
-async function initThemes() {
-  let functionName = initThemes.name;
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  await themeBroker.initThemePathData();
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
-}
-
-/**
- * @function addThemeData
- * @description Adds theme data, theme names and theme paths for resource paths external to the framework.
- * Ex: Application, Plugins
- * @param {object} themeData A JSON object that contains the externally defined theme data names and data paths.
- * @param {string} contextName A context name that indicates where the data is coming from.
- * Ex: Application, Plugins
- */
-async function addThemeData(themeData, contextName) {
-  let functionName = addThemeData.name;
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  // themeData is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cthemeDataIs + JSON.stringify(themeData));
-  // contextName is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.ccontextNameIs + contextName);
-  let returnData = false;
-  returnData = themeBroker.addThemeData(themeData, contextName);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
-  return returnData;
-}
-
-/**
- * @function generateThemeDataFromThemeRootPath
- * @description Scans the specified root path for folders and determines a list of theme names and theme paths,
- * returns this data as a JSON data object.
- * @param {string} themesRootPath The root path where the themes folders are located. This is the path that should be scanned.
- * @return {object} A JSON object that contains the theme names and theme paths from the specified root path.
- * @author Seth Hollingsead
- * @date 2022/10/25
- */
-async function generateThemeDataFromThemeRootPath(themesRootPath) {
-  let functionName = generateThemeDataFromThemeRootPath.name;
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  // themesRootPath is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cthemesRootPathIs + themesRootPath);
-  let returnData = false;
-  returnData = themeBroker.generateThemeDataFromPath(themesRootPath);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
-  return returnData;
-}
-
-/**
- * @function determineThemeDebugConfigFilesToLoad
- * @description If the debugSettings flag is already set,
- * then look up the specified path name and scan the path to determine all
- * of the theme debug config files that should be loaded.
- * @param {string} themeConfigPathName The configuration name of the path that should be looked up for scanningg purposes.
- * @return {array<string>} An array of file names and paths that should be used when loading the theme debug configuration files.
- * @author Seth Hollingsead
- * @date 2022/06/13
- */
-async function determineThemeDebugConfigFilesToLoad(themeConfigPathName) {
-  let functionName = determineThemeDebugConfigFilesToLoad.name;
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  // themeConfigPathName is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cthemeConfigPathNameIs + themeConfigPathName);
-  let themeConfigFilesToLoad = false;
-  if (themeConfigPathName) {
-    let themeConfigDataPath = await configurator.getConfigurationSetting(wrd.csystem, themeConfigPathName);
-    themeConfigDataPath = path.resolve(themeConfigDataPath);
-    themeConfigFilesToLoad = await dataBroker.scanDataPath(themeConfigDataPath);
-    await configurator.setConfigurationSetting(wrd.csystem, cfg.cthemeConfigFiles, themeConfigFilesToLoad);
-  } // End-if (themeConfigPathName)
-  // themeConfigFilesToLoad is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cthemeConfigFilesToLoadIs + JSON.stringify(themeConfigFilesToLoad));
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
-  return themeConfigFilesToLoad;
 }
 
 /**
@@ -282,7 +196,7 @@ async function setupAllXmlPluginData(dataPath, contextName) {
   await loggers.consoleLog(namespacePrefix + functionName, msg.cfilesToLoadIs + JSON.stringify(filesToLoad));
   loadedAndMergedDataAllFiles = await dataBroker.loadAllXmlData(filesToLoad, contextName);
   // loadedAndMergedDataAllFiles is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.coadedAndMergedDataAllFilesIs + JSON.stringify(loadedAndMergedDataAllFiles));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cloadedAndMergedDataAllFilesIs + JSON.stringify(loadedAndMergedDataAllFiles));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return loadedAndMergedDataAllFiles;
 }
@@ -363,50 +277,13 @@ async function setupAllJsonConfigPluginData(configFilesPath, contextName) {
   return loadedAndMergeDataAllFiles;
 }
 
-/**
- * @function initializeConstantsValidationData
- * @description Calls the dataBroker to initialize the constants verification data structure.
- * @return {void}
- * @author Seth Hollingsead
- * @date 2022/03/22
- */
-async function initializeConstantsValidationData() {
-  let functionName = initializeConstantsValidationData.name;
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  await dataBroker.initializeConstantsValidationData();
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
-}
-
-/**
- * @function addConstantsValidationData
- * @description Calls the dataBroker to ad constants validation data to the constants validation data structure.
- * @param {array<array<string,object>>} arrayValidationData An array of arrays that contains all of the constants library validation names and data objects.
- * @return {void}
- * @author Seth Hollingsead
- * @date 2022/03/24
- */
-async function addConstantsValidationData(arrayValidationData) {
-  let functionName = addConstantsValidationData.name;
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  // arrayValidationData is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.carrayValidationDataIs + JSON.stringify(arrayValidationData));
-  await dataBroker.addConstantsValidationData(arrayValidationData);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
-}
-
 export default {
   searchForUniversalDebugConfigSetting,
-  initThemes,
-  addThemeData,
-  generateThemeDataFromThemeRootPath,
-  determineThemeDebugConfigFilesToLoad,
   getAndProcessCsvData,
   getAndProcessXmlData,
   setupAllCsvData,
   setupAllXmlData,
   setupAllXmlPluginData,
   setupAllJsonConfigData,
-  setupAllJsonConfigPluginData,
-  initializeConstantsValidationData,
-  addConstantsValidationData
+  setupAllJsonConfigPluginData
 }

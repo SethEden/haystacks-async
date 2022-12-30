@@ -22,8 +22,8 @@ import path from 'path';
 
 const {bas, biz, cfg, msg, sys, wrd} = hayConst;
 const baseFileName = path.basename(import.meta.url, path.extname(import.meta.url));
-// businessRules.rules.arrayParsing.pathArrayParsing.
-const namespacePrefix = sys.cbusinessRules + bas.cDot + wrd.crules + bas.cDot + wrd.carray + wrd.cParsing + bas.cDot + baseFileName + bas.cDot;
+// framework.businessRules.rules.arrayParsing.pathArrayParsing.
+const namespacePrefix = wrd.cframework + bas.cDot + sys.cbusinessRules + bas.cDot + wrd.crules + bas.cDot + wrd.carray + wrd.cParsing + bas.cDot + baseFileName + bas.cDot;
 
 /**
  * @function doesArrayContainFilename
@@ -44,7 +44,7 @@ async function doesArrayContainFilename(inputData, inputMetaData) {
   // And I'm not going to spend the time trying to figure out why,
   // when it will be much simpler to ust call that same function in a loop to figure out the result.
   // Can solve this when we build unit tests.
-  returnData = await ruleParsing.processRulesInternal([[inputData, inputMetaData], await ruleParsing.getRule(biz.cascertainMatchingElements)], [biz.cdoesArrayContainValue]);
+  returnData = await ruleParsing.processRulesInternal([[inputData, inputMetaData], ''], [biz.cdoesArrayContainValue]);
 
   // NOTE: The below code also works, I am going to attempt to re-enable the above code and see if it also works.
   // YES! This is a second way of doing the same thing. If the above code ever has a problem, we can fall back to this method.

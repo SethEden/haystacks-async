@@ -9,6 +9,7 @@
  * @requires module:chiefConfiguration
  * @requires module:chiefData
  * @requires module:chiefPlugin
+ * @requires module:chiefTheme
  * @requires module:chiefWorkflow
  * @requires module:configurator
  * @requires module:loggers
@@ -24,8 +25,10 @@ import dataBroker from '../brokers/dataBroker.js';
 import ruleBroker from '../brokers/ruleBroker.js';
 import chiefCommander from './chiefCommander.js';
 import chiefConfiguration from './chiefConfiguration.js';
+import chiefConstant from './chiefConstant.js';
 import chiefData from './chiefData.js';
 import chiefPlugin from './chiefPlugin.js';
+import chiefTheme from './chiefTheme.js';
 import chiefWorkflow from './chiefWorkflow.js';
 import configurator from '../executrix/configurator.js';
 import loggers from '../executrix/loggers.js';
@@ -33,12 +36,11 @@ import loggers from '../executrix/loggers.js';
 // External imports
 import hayConst from '@haystacks/constants';
 import path from 'path';
-import { config } from 'dotenv'
 
 const {bas, biz, cfg, gen, msg, sys, wrd} = hayConst;
 const baseFileName = path.basename(import.meta.url, path.extname(import.meta.url));
-// controllers.warden.
-const namespacePrefix = wrd.ccontrollers + bas.cDot + baseFileName + bas.cDot;
+// framework.controllers.warden.
+const namespacePrefix = wrd.cframework + bas.cDot + wrd.ccontrollers + bas.cDot + baseFileName + bas.cDot;
 
  /**
  * @function processRootPath
@@ -154,13 +156,13 @@ async function initFrameworkSchema(configData) {
     await configurator.setConfigurationSetting(wrd.csystem, cfg.cframeworkConstantsPath, resolvedFrameworkConstantsPathActual);
     await configurator.setConfigurationSetting(wrd.csystem, cfg.capplicationConstantsPath, resolvedClientConstantsPathActual);
 
-    await chiefData.initializeConstantsValidationData(); // This just makes sure that the data structure is created on the D-Data structure.
-    let frameworkConstantsValidationData = await configData[cfg.cframeworkConstantsValidationData].call();
+    await chiefConstant.initializeConstantsValidationData(); // This just makes sure that the data structure is created on the D-Data structure.
+    let frameworkConstantsValidationData = await chiefConstant.generateFrameworkConstantsValidationData();
     let applicationConstantsValidationData = await configData[cfg.capplicationConstantsValidationData].call();
     await loggers.consoleLog(namespacePrefix + functionName, msg.cframeworkConstantsValidationDataIs + JSON.stringify(frameworkConstantsValidationData));
     await loggers.consoleLog(namespacePrefix + functionName, msg.capplicationConstantsValidationDataIs + JSON.stringify(applicationConstantsValidationData));
-    await chiefData.addConstantsValidationData(frameworkConstantsValidationData);
-    await chiefData.addConstantsValidationData(applicationConstantsValidationData);
+    await chiefConstant.addConstantsValidationData(frameworkConstantsValidationData, wrd.cFramework);
+    await chiefConstant.addConstantsValidationData(applicationConstantsValidationData, wrd.cApplication);
   } // End-if (configurator.getConfigurationSetting(wrd.csystem, cfg.cenableConstantsValidation) === true)
 
   let enableLogFileOutputSetting = await configurator.getConfigurationSetting(wrd.csystem, cfg.clogFileEnabled);
@@ -180,9 +182,24 @@ async function initFrameworkSchema(configData) {
 
   // Setup all themes
   if (await configurator.getConfigurationSetting(wrd.csystem, cfg.cdebugSettings) === true) {
-    await chiefData.initThemes();
-    if (configData[wrd.cThemes]) {
-      await chiefData.addThemeData(configData[wrd.cThemes], wrd.cApplication);
+    await chiefTheme.initThemes();
+    let frameworkThemesPath = configData[cfg.cframeworkThemesPath];
+    // frameworkThemesPath is:
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cframeworkThemesPathIs + frameworkThemesPath);
+    let frameworkThemeData = await chiefTheme.generateThemeDataFromThemeRootPath(frameworkThemesPath);
+    // frameworkThemeData is:
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cframeworkThemeDataIs + JSON.stringify(frameworkThemeData));
+    if (frameworkThemeData) {
+      await chiefTheme.addThemeData(frameworkThemeData, wrd.cFramework);
+    }
+    if (configData[cfg.cclientThemesPath]) {
+      let applicationThemesPath = configData[cfg.cclientThemesPath];
+      // applicationThemesPath is:
+      await loggers.consoleLog(namespacePrefix + functionName, msg.capplicationThemesPathIs + applicationThemesPath);
+      let applicationThemeData = await chiefTheme.generateThemeDataFromThemeRootPath(applicationThemesPath);
+      // applicationThemeData is:
+      await loggers.consoleLog(namespacePrefix + functionName, msg.capplicationThemeDataIs + JSON.stringify(applicationThemeData));
+      await chiefTheme.addThemeData(applicationThemeData, wrd.cApplication);
     }
   }
 
@@ -701,7 +718,7 @@ async function loadPluginResourceData(contextName, pluginResourcePath) {
       returnData = await chiefWorkflow.loadCommandWorkflowsFromPath(pluginResourcePath, wrd.cPlugin);
       break;
     case wrd.cthemes:
-      returnData = await chiefData.generateThemeDataFromThemeRootPath(pluginResourcePath);
+      returnData = await chiefTheme.generateThemeDataFromThemeRootPath(pluginResourcePath);
       break;
     default:
       // ERROR: Invalid data type specified:

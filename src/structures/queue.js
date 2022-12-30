@@ -21,8 +21,8 @@ import path from 'path';
 
 const {bas, msg, wrd} = hayConst;
 const baseFileName = path.basename(import.meta.url, path.extname(import.meta.url));
-// structures.queue.
-const namespacePrefix = wrd.cstructures + bas.cDot + baseFileName + bas.cDot;
+// framework.structures.queue.
+const namespacePrefix = wrd.cframework + bas.cDot + wrd.cstructures + bas.cDot + baseFileName + bas.cDot;
 
 /**
  * @function initQueue

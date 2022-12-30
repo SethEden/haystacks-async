@@ -8,7 +8,6 @@
  * @requires module:ruleBroker
  * @requires module:workflowBroker
  * @requires module:loggers
- * @requires module:allConstantsValidationData
  * @requires module:data
  * @requires {@link https://www.npmjs.com/package/@haystacks/constants|@haystacks/constants}
  * @requires {@link https://www.npmjs.com/package/url|url}
@@ -23,7 +22,6 @@ import dataBroker from './dataBroker.js';
 import ruleBroker from './ruleBroker.js';
 import workflowBroker from './workflowBroker.js';
 import loggers from '../executrix/loggers.js';
-import allConstantsValidationMetaData from '../resources/constantsValidation/allConstantsValidationMetaData.js';
 import D from '../structures/data.js';
 // External imports
 import hayConst from '@haystacks/constants';
@@ -35,8 +33,8 @@ import themeBroker from './themeBroker.js'
 
 const {bas, biz, cfg, msg, sys, wrd} = hayConst;
 const baseFileName = path.basename(import.meta.url, path.extname(import.meta.url));
-// brokers.pluginBroker.
-const namespacePrefix = wrd.cbrokers + bas.cDot + baseFileName + bas.cDot;
+// framework.brokers.pluginBroker.
+const namespacePrefix = wrd.cframework + bas.cDot + wrd.cbrokers + bas.cDot + baseFileName + bas.cDot;
 
 /**
  * @function loadPluginRegistry
@@ -627,29 +625,6 @@ async function integratePluginWorkflows(pluginName, pluginWorkflows) {
 }
 
 /**
- * @function integratePluginConstantsValidation
- * @description Saves all of the plugin constants validation data to the D-data structure where constants validation data are stored.
- * @param {string} pluginName The name of the plugin who's constants validation data should be integrated with the haystacks constants validation data.
- * @param {object} pluginConstantsValidation The JSON object that contains all of the constants validation data specific to this current plugin.
- * @return {boolean} True or False to indicate if the plugins constants validation data are successfully integrated or not.
- * @author Seth Hollingsead
- * @date 2022/10/23
- */
-async function integratePluginConstantsValidation(pluginName, pluginConstantsValidation) {
-  let functionName = integratePluginConstantsValidation.name;
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  // pluginName is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginNameIs + pluginName);
-  // pluginConstantsValidation is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginConstansValidationIs + JSON.stringify(pluginConstantsValidation));
-  let returnData = false;
-  returnData = await allConstantsValidationMetaData.addPluginConstantsValidationData(pluginName, pluginConstantsValidation);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
-  return returnData;
-}
-
-/**
  * @function integratePluginThemeData
  * @description Saves all of the plugin theme data to the D-data structure where theme data is stored.
  * @param {string} pluginName The name of the plugin who's theme data should be integrated with the haystacks theme data.
@@ -693,6 +668,5 @@ export default {
   integratePluginConfigurationData,
   integratePluginCommandAliases,
   integratePluginWorkflows,
-  integratePluginConstantsValidation,
   integratePluginThemeData
 };

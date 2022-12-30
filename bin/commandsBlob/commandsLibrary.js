@@ -36,8 +36,8 @@ import path from 'path';
 
 const {bas, cmd, msg, sys, wrd} = hayConst;
 const baseFileName = path.basename(import.meta.url, path.extname(import.meta.url));
-// commandsBlob.commandsLibrary.
-const namespacePrefix = sys.ccommandsBlob + bas.cDot + baseFileName + bas.cDot;
+// framework.commandsBlob.commandsLibrary.
+const namespacePrefix = wrd.cframework + bas.cDot + sys.ccommandsBlob + bas.cDot + baseFileName + bas.cDot;
 
 /**
  * @function initCommandsLibrary

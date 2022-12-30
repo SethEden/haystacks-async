@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?><CommandWorkflows>
+  <debug>
+    <controllers>
+      <chiefConstant>
+        <Workflow Name="chiefConstantEnable" Value="changeConfigSetting debugSetting.framework.controllers.chiefConstant true"/>
+        <Workflow Name="chiefConstantDisable" Value="changeConfigSetting debugSetting.framework.controllers.chiefConstant false"/>
+        <Workflow Name="initializeConstantsValidationDataEnable" Value="changeConfigSetting debugSetting.framework.controllers.chiefConstant.initializeConstantsValidationData true"/>
+        <Workflow Name="initializeConstantsValidationDataDisable" Value="changeConfigSetting debugSetting.framework.controllers.chiefConstant.initializeConstantsValidationData false"/>
+        <Workflow Name="generateFrameworkConstantsValidationDataEnable" Value="changeConfigSetting debugSetting.framework.controllers.chiefConstant.generateFrameworkConstantsValidationData true"/>
+        <Workflow Name="generateFrameworkConstantsValidationDataDisable" Value="changeConfigSetting debugSetting.framework.controllers.chiefConstant.generateFrameworkConstantsVaidationData false"/>
+        <Workflow Name="addConstantsValidationDataEnable" Value="changeConfigSetting debugSetting.framework.controllers.chiefConstant.addConstantsValidationData true"/>
+        <Workflow Name="addConstantsValidationDataDisable" Value="changeConfigSetting debugSetting.framework.controllers.chiefConstant.addConstantsValidationData false"/>
+      </chiefConstant>
+    </controllers>
+  </debug>
+</CommandWorkflows>

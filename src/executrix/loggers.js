@@ -27,9 +27,9 @@ import path from 'path';
 
 const {bas, biz, clr, cfg, gen, msg, wrd} = hayConst;
 const baseFileName = path.basename(import.meta.url, path.extname(import.meta.url));
-// executrix.loggers.
+// framework.executrix.loggers.
 // eslint-disable-next-line no-unused-vars
-const namespacePrefix =  wrd.cexecutrix + bas.cDot + baseFileName + bas.cDot;
+const namespacePrefix =  wrd.cframework + bas.cDot + wrd.cexecutrix + bas.cDot + baseFileName + bas.cDot;
 
 /**
  * @function consoleLog
@@ -94,8 +94,8 @@ async function consoleLog(classPath, message) {
       // console.log(`END ${namespacePrefix}${functionName} function`);
     } // end-if (consoleLogEnabled === true)
   } else if (message === undefined) { // end-if (Object.keys(D).length !== 0 && message !== undefined)
-    // console.log(msg.cWarningMessageIsUndefined);
-    // console.log(msg.cclassPathIs + classPath);
+    console.log(msg.cWarningMessageIsUndefined);
+    console.log(msg.cclassPathIs + classPath);
   }
 }
 
@@ -123,7 +123,7 @@ async function consoleTableLog(classPath, tableData, columnNames) {
  * @function constantsValidationSummaryLog
  * @description Displays a constants log validation summary pass-fail results depending on the appropriate settings flag, which is passed in by the caller.
  * @param {string} message The message that should be displayed, if the setting determines that it should be displayed.
- * @param {boolean} passFail True or False to indicate if the pas or fail message should be displayed to the console log.
+ * @param {boolean} passFail True or False to indicate if the pass or fail message should be displayed to the console log.
  * @return {void}
  * @author Seth Hollingsead
  * @date 2022/03/29
@@ -146,12 +146,12 @@ async function constantsValidationSummaryLog(message, passFail) {
       console.log(outputMessage);
     } // End-if (configurator.getConfigurationSetting(wrd.csystem, cfg.cdisplaySummaryConstantsValidationPassMessages) === true)
   } else { // passFail === false
-    if (await configurator.getConfigurationSetting(wrd.csystem, cfg.cdisplaySummaryConstantsVaidationFailMessages) === true) {
+    if (await configurator.getConfigurationSetting(wrd.csystem, cfg.cdisplaySummaryConstantsValidationFailMessages) === true) {
       outputMessage = wrd.cFAILED + bas.cSpace + bas.cDoubleDash + bas.cSpace + message + bas.cSpace + bas.cDoubleDash + bas.cSpace + wrd.cFAILED; // `FAILED -- ${message} -- FAILED`;
       outputMessage = await colorizer.colorizeMessageSimple(outputMessage, blackColorArray, true);
       outputMessage = await colorizer.colorizeMessageSimple(outputMessage, redColorArray, false);
       console.log(outputMessage);
-    } // End-if (configurator.getConfigurationSetting(wrd.csystem, cfg.cdisplaySummaryConstantsVaidationFailMessages) === true)
+    } // End-if (configurator.getConfigurationSetting(wrd.csystem, cfg.cdisplaySummaryConstantsValidationFailMessages) === true)
   }
   // console.log(`END ${namespacePrefix}${functionName} function`);
 }
@@ -259,7 +259,7 @@ async function validMessage(outputMessage, originalMessage) {
  * @NOTE Cannot use the loggers here, because of a circular dependency.
  */
 async function parseClassPath(logFile, classPath, message) {
-  let functionName = parseClassPath.name;
+  // let functionName = parseClassPath.name;
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   // console.log(`logFile is: ${logFile}`);
   // console.log(`classPath is: ${classPath}`);

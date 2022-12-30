@@ -22,8 +22,8 @@ import path from 'path';
 
 const {bas, msg, sys, wrd} = hayConst;
 const baseFileName = path.basename(import.meta.url, path.extname(import.meta.url));
-// commandsBlob.commands.plugins.
-const namespacePrefix = sys.ccommandsBlob + bas.cDot + wrd.ccommands + bas.cDot + baseFileName + bas.cDot;
+// framework.commandsBlob.commands.plugins.
+const namespacePrefix = wrd.cframework + bas.cDot + sys.ccommandsBlob + bas.cDot + wrd.ccommands + bas.cDot + baseFileName + bas.cDot;
 
 /**
  * @function listAllPluginsInRegistry
@@ -78,7 +78,7 @@ async function listAllPluginsInRegistryPath(inputData, inputMetaData) {
 }
 
 /**
- * @function countPluginsInRgistry
+ * @function countPluginsInRegistry
  * @description This is a command function that calls the chiefPlugin.countAllPluginsInRegistry function.
  * @param {string} inputData Not used for this command.
  * @param {string} inputMetaData Not used for this command.

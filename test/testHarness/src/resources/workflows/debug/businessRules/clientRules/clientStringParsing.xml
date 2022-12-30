@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?><CommandWorkflows>
+  <debug>
+    <businessRules>
+      <clientRules>
+        <clientStringParsing>
+          <Workflow Name="clientStringParsingEnable" Value="changeConfigSetting debugSetting.application.testHarness.busienssRules.clientRules.clientStringParsing true"/>
+          <Workflow Name="clientStringParsingDisable" Value="changeConfigSetting debugSetting.application.testHarness.busienssRules.clientRules.clientStringParsing false"/>
+          <Workflow Name="customEchoEnable" Value="changeConfigSetting debugSetting.application.testHarness.busienssRules.clientRules.clientStringParsing.customEcho true"/>
+          <Workflow Name="customEchoDisable" Value="changeConfigSetting debugSetting.application.testHarness.busienssRules.clientRules.clientStringParsing.customEcho false"/>
+          <Workflow Name="mostPopularNumberEnable" Value="changeConfigSetting debugSetting.application.testHarness.busienssRules.clientRules.clientStringParsing.mostPopularNumber true"/>
+          <Workflow Name="mostPopularNumberDisable" Value="changeConfigSetting debugSetting.application.testHarness.busienssRules.clientRules.clientStringParsing.mostPopularNumber false"/>
+          <Workflow Name="isAlmostPalindromeEnable" Value="changeConfigSetting debugSetting.application.testHarness.busienssRules.clientRules.clientStringParsing.isAlmostPalindrome true"/>
+          <Workflow Name="isAlmostPalindromeDisable" Value="changeConfigSetting debugSetting.application.testHarness.busienssRules.clientRules.clientStringParsing.isAlmostPalindrome false"/>
+          <Workflow Name="threePointAverageEnable" Value="changeConfigSetting debugSetting.application.testHarness.busienssRules.clientRules.clientStringParsing.threePointAverage true"/>
+          <Workflow Name="threePointAverageDisable" Value="changeConfigSetting debugSetting.application.testHarness.busienssRules.clientRules.clientStringParsing.threePointAverage false"/>
+          <Workflow Name="arrayCounterEnable" Value="changeConfigSetting debugSetting.application.testHarness.busienssRules.clientRules.clientStringParsing.arrayCounter true"/>
+          <Workflow Name="arrayCounterDisable" Value="changeConfigSetting debugSetting.application.testHarness.busienssRules.clientRules.clientStringParsing.arrayCounter false"/>
+        </clientStringParsing>
+      </clientRules>
+    </businessRules>
+  </debug>
+</CommandWorkflows>

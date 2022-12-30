@@ -23,8 +23,8 @@ import path from 'path';
 
 const {bas, biz, msg, num, sys, wrd} = hayConst;
 const baseFileName = path.basename(import.meta.url, path.extname(import.meta.url));
-// structures.stack.
-const namespacePrefix = wrd.cstructures + bas.cDot + baseFileName + bas.cDot;
+// framework.structures.stack.
+const namespacePrefix = wrd.cframework + bas.cDot + wrd.cstructures + bas.cDot + baseFileName + bas.cDot;
 
 /**
  * @function initStack
