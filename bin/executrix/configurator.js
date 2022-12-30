@@ -329,9 +329,6 @@ async function getPluginConfigurationNamespaceObject(dataStructure, configuratio
     configurationPathObject = configurationDataRoot;
   } // End-if (!configurationPathObject)
   for (let element of configurationNamespace) {
-    // if (element === cfg.cdebugSetting) {
-    //   element = cfg.cdebugSettings;
-    // }
     if (!configurationPathObject[element]) {
       // It doesn't exist yet, so lets make it.
       configurationPathObject[element] = {};
