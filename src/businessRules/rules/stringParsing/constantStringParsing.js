@@ -103,7 +103,6 @@ async function validateConstantsDataValidation(inputData, inputMetaData) {
                 pluginName = pluginConstantNamespaceArray[0] + bas.cColon;
               }              
               console.log(pluginName + qualifiedConstantsFilename + bas.cColon + bas.cSpace + failMessage);
-              // await loggers.consoleLog(namespacePrefix + functionName, failMessage);
               let suggestedLineOfCode = await determineSuggestedConstantsValidationLineOfCode(lineArray[2], qualifiedConstantsPrefix);
               if (suggestedLineOfCode !== '') {
                 if (colorizeLogsEnabled === true) {
