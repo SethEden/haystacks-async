@@ -50,7 +50,6 @@ async function validateConstants(inputData, inputMetaData) {
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = [true, false];
   if (await configurator.getConfigurationSetting(wrd.csystem, cfg.cenableConstantsValidation) === true) {
-    // let pluginName = '';
     let pluginNamespace = '';
     let processingPluginResults = false;
     // Get the array of keys and values for all the constants that need to be validated.
@@ -124,7 +123,6 @@ async function validateConstants(inputData, inputMetaData) {
       let constantsPhase1ValidationNamespaceParentObject = await ruleBroker.processRules([key3, ''], [biz.cgetConstantsValidationNamespaceParentObject]);
       if (key3.includes(bas.cColon) && key3.toUpperCase().includes(wrd.cPLUGIN)) {
         let pluginPhase1NamespaceArray = key3.split(bas.cColon);
-        // pluginName = pluginPhase1NamespaceArray[0];
         pluginNamespace = pluginPhase1NamespaceArray[1];
         processingPluginResults = true;
       }
@@ -134,7 +132,6 @@ async function validateConstants(inputData, inputMetaData) {
         await loggers.constantsValidationSummaryLog(constantsPhase1ValidationNamespaceParentObject[sys.cConstantsPhase1ValidationMessages][pluginNamespace], phase1Results[key3]);
       }
       processingPluginResults = false;
-      // pluginName = '';
       pluginNamespace = '';
       
       if (phase1Results[key3] === false) {
@@ -146,7 +143,6 @@ async function validateConstants(inputData, inputMetaData) {
       let constantsPhase2ValidationNamespaceParentObject = await ruleBroker.processRules([key4, ''], [biz.cgetConstantsValidationNamespaceParentObject]);
       if (key4.includes(bas.cColon) && key4.toUpperCase().includes(wrd.cPLUGIN)) {
         let pluginPhase2NamespaceArray = key4.split(bas.cColon);
-        // pluginName = pluginPhase2NamespaceArray[0];
         pluginNamespace = pluginPhase2NamespaceArray[1];
         processingPluginResults = true;
       }
@@ -156,7 +152,6 @@ async function validateConstants(inputData, inputMetaData) {
         await loggers.constantsValidationSummaryLog(constantsPhase2ValidationNamespaceParentObject[sys.cConstantsPhase2ValidationMessages][pluginNamespace], phase2Results[key4]); 
       }
       processingPluginResults = false
-      // pluginName = '';
       pluginNamespace = '';
          
       if (phase2Results[key4] === false) {
