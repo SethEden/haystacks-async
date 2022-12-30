@@ -2,10 +2,10 @@
   <debug>
     <controllers>
       <chiefWorkflow>
-        <Workflow Name="chiefWorkflowEnable" Value="changeConfigSetting debugSetting.controllers.chiefWorkflow true"/>
-        <Workflow Name="chiefWorkflowDisable" Value="changeConfigSetting debugSetting.controllers.chiefWorkflow false"/>
-        <Workflow Name="loadCommandWorkflowsFromPathEnable" Value="changeConfigSetting debugSetting.controllers.chiefWorkflow.loadCommandWorkflowsFromPath true"/>
-        <Workflow Name="loadCommandWorkflowsFromPathDisable" Value="changeConfigSetting debugSetting.controllers.chiefWorkflow.loadCommandWorkflowsFromPath false"/>
+        <Workflow Name="chiefWorkflowEnable" Value="changeConfigSetting debugSetting.framework.controllers.chiefWorkflow true"/>
+        <Workflow Name="chiefWorkflowDisable" Value="changeConfigSetting debugSetting.framework.controllers.chiefWorkflow false"/>
+        <Workflow Name="loadCommandWorkflowsFromPathEnable" Value="changeConfigSetting debugSetting.framework.controllers.chiefWorkflow.loadCommandWorkflowsFromPath true"/>
+        <Workflow Name="loadCommandWorkflowsFromPathDisable" Value="changeConfigSetting debugSetting.framework.controllers.chiefWorkflow.loadCommandWorkflowsFromPath false"/>
       </chiefWorkflow>
     </controllers>
   </debug>

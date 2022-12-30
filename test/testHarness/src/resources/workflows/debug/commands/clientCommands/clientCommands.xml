@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?><CommandWorkflows>
+  <debug>
+    <commandsBlob>
+      <commands>
+        <clientCommands>
+          <Workflow Name="clientCommandsEnable" Value="changeConfigSetting debugSetting.application.testHarness.commands.clientCommands.clientCommands true"/>
+          <Workflow Name="clientCommandsDisable" Value="changeConfigSetting debugSetting.application.testHarness.commands.clientCommands.clientCommands false"/>
+          <Workflow Name="customEchoCommandEnable" Value="changeConfigSetting debugSetting.application.testHarness.commands.clientCommands.clientCommands.customEchoCommand true"/>
+          <Workflow Name="customEchoCommandDisable" Value="changeConfigSetting debugSetting.application.testHarness.commands.clientCommands.clientCommands.customEchoCommand false"/>
+          <Workflow Name="bossPanicEnable" Value="changeConfigSetting debugSetting.application.testHarness.commands.clientCommands.clientCommands.bossPanic true"/>
+          <Workflow Name="bossPanicDisable" Value="changeConfigSetting debugSetting.application.testHarness.commands.clientCommands.clientCommands.bossPanic false"/>
+          <Workflow Name="clientCommand01Enable" Value="changeConfigSetting debugSetting.application.testHarness.commands.clientCommands.clientCommands.clientCommand01 true"/>
+          <Workflow Name="clientCommand01Disable" Value="changeConfigSetting debugSetting.application.testHarness.commands.clientCommands.clientCommands.clientCommand01 false"/>
+          <Workflow Name="clientCommand02Enable" Value="changeConfigSetting debugSetting.application.testHarness.commands.clientCommands.clientCommands.clientCommand02 true"/>
+          <Workflow Name="clientCommand02Disable" Value="changeConfigSetting debugSetting.application.testHarness.commands.clientCommands.clientCommands.clientCommand02 false"/>
+          <Workflow Name="clientCommand03Enable" Value="changeConfigSetting debugSetting.application.testHarness.commands.clientCommands.clientCommands.clientCommand03 true"/>
+          <Workflow Name="clientCommand03Disable" Value="changeConfigSetting debugSetting.application.testHarness.commands.clientCommands.clientCommands.clientCommand03 false"/>
+          <Workflow Name="clientCommand04Enable" Value="changeConfigSetting debugSetting.application.testHarness.commands.clientCommands.clientCommands.clientCommand04 true"/>
+          <Workflow Name="clientCommand04Disable" Value="changeConfigSetting debugSetting.application.testHarness.commands.clientCommands.clientCommands.clientCommand04 false"/>
+          <Workflow Name="clientCommand05Enable" Value="changeConfigSetting debugSetting.application.testHarness.commands.clientCommands.clientCommands.clientCommand05 true"/>
+          <Workflow Name="clientCommand05Disable" Value="changeConfigSetting debugSetting.application.testHarness.commands.clientCommands.clientCommands.clientCommand05 false"/>
+          <Workflow Name="clientCommand06Enable" Value="changeConfigSetting debugSetting.application.testHarness.commands.clientCommands.clientCommands.clientCommand06 true"/>
+          <Workflow Name="clientCommand06Disable" Value="changeConfigSetting debugSetting.application.testHarness.commands.clientCommands.clientCommands.clientCommand06 false"/>
+          <Workflow Name="clientCommand07Enable" Value="changeConfigSetting debugSetting.application.testHarness.commands.clientCommands.clientCommands.clientCommand07 true"/>
+          <Workflow Name="clientCommand07Disable" Value="changeConfigSetting debugSetting.application.testHarness.commands.clientCommands.clientCommands.clientCommand07 false"/>
+          <Workflow Name="clientCommand08Enable" Value="changeConfigSetting debugSetting.application.testHarness.commands.clientCommands.clientCommands.clientCommand08 true"/>
+          <Workflow Name="clientCommand08Disable" Value="changeConfigSetting debugSetting.application.testHarness.commands.clientCommands.clientCommands.clientCommand08 false"/>
+          <Workflow Name="clientCommand09Enable" Value="changeConfigSetting debugSetting.application.testHarness.commands.clientCommands.clientCommands.clientCommand09 true"/>
+          <Workflow Name="clientCommand09Disable" Value="changeConfigSetting debugSetting.application.testHarness.commands.clientCommands.clientCommands.clientCommand09 false"/>
+          <Workflow Name="clientCommand10Enable" Value="changeConfigSetting debugSetting.application.testHarness.commands.clientCommands.clientCommands.clientCommand10 true"/>
+          <Workflow Name="clientCommand10Disable" Value="changeConfigSetting debugSetting.application.testHarness.commands.clientCommands.clientCommands.clientCommand10 false"/>
+        </clientCommands>
+      </commands>
+    </commandsBlob>
+  </debug>
+</CommandWorkflows>

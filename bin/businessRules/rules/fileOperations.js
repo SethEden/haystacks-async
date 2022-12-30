@@ -34,8 +34,8 @@ import path from 'path';
 
 const {bas, biz, cfg, gen, msg, sys, wrd} = hayConst;
 const baseFileName = path.basename(import.meta.url, path.extname(import.meta.url));
-// businessRules.rules.fileOperations.
-const namespacePrefix = sys.cbusinessRules + bas.cDot + wrd.crules + bas.cDot + baseFileName + bas.cDot;
+// framework.businessRules.rules.fileOperations.
+const namespacePrefix = wrd.cframework + bas.cDot + sys.cbusinessRules + bas.cDot + wrd.crules + bas.cDot + baseFileName + bas.cDot;
 const directoriesToSkip = ['browser_components', 'node_modules', 'www', 'platforms', 'Release', 'Documentation', 'Recycle', 'Trash', 'config.json'];
 let filesCollection = [];
 let enableFilesListLimit = false;
@@ -170,6 +170,32 @@ async function writeJsonData(inputData, inputMetaData) {
   }
   // Data was written to the file;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cDataWasWrittenToTheFile + inputData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
+/**
+ * @function loadAsciiFileFromPath
+ * @description Loads the contents of the ASCII file at the specified path and file name, returns the entire contents of the file.
+ * @param {string} inputData The path and file name of the file that should have its contents loaded into memory for reading and parsing.
+ * @param {string} inputMetaData Not used for this business rules.
+ * @return {object} The contents of the file loaded, False if nothing was loaded.
+ * @author Seth Hollingsead
+ * @date 2022/11/11
+ */
+async function loadAsciiFileFromPath(inputData, inputMetaData) {
+  let functionName = loadAsciiFileFromPath.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
+  let returnData = false;
+  try {
+    returnData = await fs.readFileSync(inputData, gen.cUTF8);
+  } catch (err) {
+    // ERROR: Failure to read from file: 
+    console.error(msg.cErrorLoadAsciiFileFromPathMessage01 + inputData);
+  }
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
@@ -752,6 +778,7 @@ export default {
   getCsvData,
   getJsonData,
   writeJsonData,
+  loadAsciiFileFromPath,
   readDirectoryContents,
   scanDirectoryContents,
   getDirectoryList,

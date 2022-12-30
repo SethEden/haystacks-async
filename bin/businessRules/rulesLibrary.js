@@ -64,11 +64,11 @@ import D from '../structures/data.js';
 import hayConst from '@haystacks/constants';
 import path from 'path';
 
-const {bas, biz, sys} = hayConst;
+const {bas, biz, sys, wrd} = hayConst;
 const baseFileName = path.basename(import.meta.url, path.extname(import.meta.url));
-// businessRules.rulesLibrary.
+// framework.businessRules.rulesLibrary.
 // eslint-disable-next-line no-unused-vars
-const namespacePrefix = sys.cbusinessRules + bas.cDot + baseFileName + bas.cDot;
+const namespacePrefix = wrd.cframework + bas.cDot + sys.cbusinessRules + bas.cDot + baseFileName + bas.cDot;
 
 /**
  * @function initRulesLibrary
@@ -201,7 +201,17 @@ async function initRulesLibrary() {
      [biz.cdetermineConstantsContextQualifiedPrefix]: (inputData, inputMetaData) => constantStringParsing.determineConstantsContextQualifiedPrefix(inputData, inputMetaData),
      [biz.cdetermineSuggestedConstantsValidationLineOfCode]: (inputData, inputMetaData) => constantStringParsing.determineSuggestedConstantsValidationLineOfCode(inputData, inputMetaData),
      [biz.cvalidateConstantsDataValidationLineItemName]: (inputData, inputMetaData) => constantStringParsing.validateConstantsDataValidationLineItemName(inputData, inputMetaData),
+     [biz.cgetConstantsValidationNamespaceParentObject]: (inputData, inputMetaData) => constantStringParsing.getConstantsValidationNamespaceParentObject(inputData, inputMetaData),
+     [biz.cgetConstantsValidationNamespaceObject]: (inputData, inputMetaData) => constantStringParsing.getConstantsValidationNamespaceObject(inputData, inputMetaData),
+     [biz.cdoesConstantNamespaceExist]: (inputData, inputMetaData) => constantStringParsing.doesConstantNamespaceExist(inputData, inputMetaData),
      [biz.cdoesConstantExist]: (inputData, inputMetaData) => constantStringParsing.doesConstantExist(inputData, inputMetaData),
+     [biz.cdoesConstantExistInConstantLibraryObject]: (inputData, inputMetaData) => constantStringParsing.doesConstantExistInConstantLibraryObject(inputData, inputMetaData),
+     [biz.cgetConstantTypeInConstantLibraryObject]: (inputData, inputMetaData) => constantStringParsing.getConstantTypeInConstantLibraryObject(inputData, inputMetaData),
+     [biz.cgetConstantNameInConstantLibraryObject]: (inputData, inputMetaData) => constantStringParsing.getConstantNameInConstantLibraryObject(inputData, inputMetaData),
+     [biz.cgetConstantActualValueInConstantLibraryObject]: (inputData, inputMetaData) => constantStringParsing.getConstantActualValueInConstantLibraryObject(inputData, inputMetaData),
+     [biz.cdoesConstantExistInConstantNamespaceObject]: (inputData, inputMetaData) => constantStringParsing.doesConstantExistInConstantNamespaceObject(inputData, inputMetaData),
+     [biz.cgetConstantNameInConstantNamespaceObject]: (inputData, inputMetaData) => constantStringParsing.getConstantNameInConstantNamespaceObject(inputData, inputMetaData),
+     [biz.cgetConstantActualValueInConstantNamespaceObject]: (inputData, inputMetaData) => constantStringParsing.getConstantActualValueInConstantNamespaceObject(inputData, inputMetaData),
      [biz.cgetConstantType]: (inputData, inputMetaData) => constantStringParsing.getConstantType(inputData, inputMetaData),
      [biz.cgetConstantActualValue]: (inputData, inputMetaData) => constantStringParsing.getConstantActualValue(inputData, inputMetaData),
      [biz.cgetConstantName]: (inputData, inputMetaData) => constantStringParsing.getConstantName(inputData, inputMetaData),
@@ -285,6 +295,7 @@ async function initRulesLibrary() {
      [biz.cgetCsvData]: (inputData, inputMetaData) => fileOperations.getCsvData(inputData, inputMetaData),
      [biz.cgetJsonData]: (inputData, inputMetaData) => fileOperations.getJsonData(inputData, inputMetaData),
      [biz.cwriteJsonData]: (inputData, inputMetaData) => fileOperations.writeJsonData(inputData, inputMetaData),
+     [biz.cloadAsciiFileFromPath]: (inputData, inputMetaData) => fileOperations.loadAsciiFileFromPath(inputData, inputMetaData),
      [biz.creadDirectoryContents]: (inputData, inputMetaData) => fileOperations.readDirectoryContents(inputData, inputMetaData),
      [biz.cscanDirectoryContents]: (inputData, inputMetaData) => fileOperations.scanDirectoryContents(inputData, inputMetaData),
      [biz.cgetDirectoryList]: (inputData, inputMetaData) => fileOperations.getDirectoryList(inputData, inputMetaData),

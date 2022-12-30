@@ -4,7 +4,9 @@
  * @description Contains all of the client defined business rules as a map between function names and function calls.
  * @requires module:clientStringParsing
  * @requires module:application.business.constants
- * @requires module:application.function.constants
+ * @requires module:application.constants
+ * @requires {@link https://www.npmjs.com/package/@haystacks/constants|@haystacks/constants}
+ * @requires {@link https://www.npmjs.com/package/path|path}
  * @author Seth Hollingsead
  * @date 2022/02/08
  * @copyright Copyright © 2022-… by Seth Hollingsead. All rights reserved
@@ -13,6 +15,17 @@
 // Internal imports
 import clientStringParsing from './clientRules/clientStringParsing.js';
 import * as app_biz from '../constants/application.business.constants.js';
+import * as apc from '../constants/application.constants.js';
+// External imports
+import hayConst from '@haystacks/constants';
+import path from 'path';
+
+// eslint-disable-next-line no-unused-vars
+const {bas, msg, wrd} = hayConst;
+const baseFileName = path.basename(import.meta.url, path.extname(import.meta.url));
+// application.testHarness.businessRules.clientRules.clientStringParsing.
+// eslint-disable-next-line no-unused-vars
+const namespacePrefix = wrd.capplication + bas.cDot + apc.cApplicationName + bas.cDot + wrd.cbusiness + wrd.cRules + bas.cDot + baseFileName + bas.cDot;
 
 /**
  * @function initClientRulesLibrary
@@ -26,7 +39,8 @@ import * as app_biz from '../constants/application.business.constants.js';
  * but could be really confusing if you are struggling, trying to debug commands or business rules that do not appear to exist.
  */
 const initClientRulesLibrary = function() {
-  // console.log('BEGIN clientRulesLibrary.initClientRulesLibrary function');
+  // let functionName = initClientRulesLibrary.name;
+  // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   return {
     [app_biz.cclientEcho]: (inputData, inputMetaData) => (inputData, inputMetaData),
 

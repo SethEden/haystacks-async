@@ -42,8 +42,8 @@ import path from 'path';
 const {bas, biz, cmd, msg, sys, wrd} = hayConst;
 let rootPath = '';
 let baseFileName = path.basename(import.meta.url, path.extname(import.meta.url));
-// testHarness.
-let namespacePrefix = baseFileName + bas.cDot;
+// application.testHarness.
+let namespacePrefix = wrd.capplication + bas.cDot + baseFileName + bas.cDot;
 // eslint-disable-next-line no-undef
 global.appRoot = path.resolve(process.cwd());
 dotenv.config();
@@ -77,6 +77,7 @@ async function bootstrapApplication() {
       clientConstantsPath: rootPath + apc.cFullDevConstantsPath,
       clientRegisteredPlugins: rootPath + apc.cFullDevPluginsRegistryPath,
       clientWorkflowsPath: rootPath + apc.cFullDevWorkflowsPath,
+      clientThemesPath: rootPath + apc.cFullDevThemesPath,
       applicationConstantsValidationData: allAppCV.initializeAllClientConstantsValidationData,
       clientBusinessRules: {},
       clientCommands: {}
@@ -92,6 +93,7 @@ async function bootstrapApplication() {
       clientConstantsPath: rootPath + apc.cFullProdConstantsPath,
       clientRegisteredPlugins: rootPath + apc.cFullProdPluginsRegistryPath,
       clientWorkflowsPath: rootPath + apc.cFullProdWorkflowsPath,
+      clientThemesPath: rootPath + apc.cFullProdThemesPath,
       applicationConstantsValidationData: allAppCV.initializeAllClientConstantsValidationData,
       clientBusinessRules: {},
       clientCommands: {}
@@ -109,6 +111,7 @@ async function bootstrapApplication() {
       clientConstantsPath: rootPath + apc.cFullDevConstantsPath,
       clientRegisteredPlugins: rootPath + apc.cFullDevPluginsRegistryPath,
       clientWorkflowsPath: rootPath + apc.cFullDevWorkflowsPath,
+      clientThemesPath: rootPath + apc.cFullDevThemesPath,
       applicationConstantsValidationData: allAppCV.initializeAllClientConstantsValidationData,
       clientBusinessRules: {},
       clientCommands: {}

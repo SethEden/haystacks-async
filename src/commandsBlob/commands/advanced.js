@@ -33,8 +33,8 @@ import path from 'path';
 
 const {bas, biz, cfg, gen, msg, sys, wrd} = hayConst;
 const baseFileName = path.basename(import.meta.url, path.extname(import.meta.url));
-// commandsBlob.commands.advanced.
-const namespacePrefix = sys.ccommandsBlob + bas.cDot + wrd.ccommands + bas.cDot + baseFileName + bas.cDot;
+// framework.commandsBlob.commands.advanced.
+const namespacePrefix = wrd.cframework + bas.cDot + sys.ccommandsBlob + bas.cDot + wrd.ccommands + bas.cDot + baseFileName + bas.cDot;
 
 /**
  * @function commandSequencer
@@ -486,7 +486,7 @@ async function commandAliasGenerator(inputData, inputMetaData) {
 
   if (validCommandInput === true) {
     // commandAliasDataStructure is:
-    await loggers.consoleLog(namespacePrefix, functionName, msg.ccommandAliasDataStructureIs + JSON.stringify(commandAliasDataStructure));
+    await loggers.consoleLog(namespacePrefix + functionName, msg.ccommandAliasDataStructureIs + JSON.stringify(commandAliasDataStructure));
     // At this point the user should have entered all valid data and we should be ready to proceed.
     // Pass the data object to a business rule to do the above task.
     returnData[1] = await ruleBroker.processRules([commandAliasDataStructure, ''], [biz.cgenerateCommandAliases]);

@@ -24,12 +24,12 @@ import path from 'path';
 
 const {bas, biz, cfg, gen, msg, sys, wrd} = hayConst;
 const baseFileName = path.basename(import.meta.url, path.extname(import.meta.url));
-// businessRules.rules.stringParsing.characterStringParsing.
-const namespacePrefix = sys.cbusinessRules + bas.cDot + wrd.crules + bas.cDot + wrd.cstring + wrd.cParsing + bas.cDot + baseFileName + bas.cDot;
+// framework.businessRules.rules.stringParsing.characterStringParsing.
+const namespacePrefix = wrd.cframework + bas.cDot + sys.cbusinessRules + bas.cDot + wrd.crules + bas.cDot + wrd.cstring + wrd.cParsing + bas.cDot + baseFileName + bas.cDot;
 
 /**
  * @function singleQuoteSwapAfterEquals
- * @description Swaps single quote characters in the middle of the string wih double quote characters n the middle of the string.
+ * @description Swaps single quote characters in the middle of the string wih double quote characters in the middle of the string.
  * input: 'input[name='emailAddress'][class='username']'
  * output: 'input[name="emailAddress"][class="username"]'
  * @param {string} inputData A string that contains text with single quotes that should be swapped for double quotes.
@@ -47,20 +47,27 @@ async function singleQuoteSwapAfterEquals(inputData, inputMetaData) {
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
   let returnData;
+  let processedInputData = '';
   if (!inputData) {
     returnData = false;
   } else {
-    if (inputData.includes(bas.cSingleQuote) === true) {
-      // First replace all the quotes in the string with double quotes.
-      returnData = inputData.replace(/'/g, bas.cDoubleQuote);
-      // Next replace the first and last double quote with single quote.
-      if (returnData.indexOf(bas.cDoubleQuote) === 0) {
-        returnData = inputData.replace(bas.cDoubleQuote, bas.cSingleQuote);
-      }
-      if (returnData.charAt(returnData.length - 1) === bas.cDoubleQuote) {
-        returnData = returnData.slice(0, -1) + bas.cSingleQuote;
-      }
+    if (Array.isArray(inputData) === true) {
+      // inputData is an array! Capture the first element only.
+      await loggers.consoleLog(namespacePrefix + functionName, msg.csingleQuoteSwapAfterEqualsMessage01);
+      processedInputData = inputData[0];
     } else {
+      // inputData is a string input, use it as is.
+      await loggers.consoleLog(namespacePrefix + functionName, msg.csingleQuoteSwapAfterEqualsMessage02);
+      processedInputData = inputData;
+    }
+    if (processedInputData.includes(bas.cSingleQuote) === true) {
+      // First replace all the quotes in the string with double quotes.
+      await loggers.consoleLog(namespacePrefix + functionName, msg.csingleQuoteSwapAfterEqualsMessage03);
+      // NOTE: We are using the Global regular expression, so this will find and replace all single quotes with double quotes.
+      returnData = processedInputData.replace(/'/g, bas.cDoubleQuote);
+    } else {
+      // input and output are the same!
+      await loggers.consoleLog(namespacePrefix + functionName, msg.cinputAndOutputAreTheSame);
       returnData = inputData;
     }
   }

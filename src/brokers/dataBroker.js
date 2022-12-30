@@ -25,8 +25,8 @@ import path from 'path';
 
 const {bas, biz, cfg, gen, msg, num, sys, wrd} = hayConst;
 const baseFileName = path.basename(import.meta.url, path.extname(import.meta.url));
-// brokers.dataBroker.
-const namespacePrefix = wrd.cbrokers + bas.cDot + baseFileName + bas.cDot;
+// framework.brokers.dataBroker.
+const namespacePrefix = wrd.cframework + bas.cDot + wrd.cbrokers + bas.cDot + baseFileName + bas.cDot;
 
 /**
  * @function addPluginConfigurationData
@@ -677,84 +677,6 @@ async function clearData(dataStorageContextName) {
 }
 
 /**
- * @function initializeConstantsValidationData
- * @description Initializes the constants validation data structure.
- * @return {void}
- * @author Seth Hollingsead
- * @date 2022/03/22
- */
-async function initializeConstantsValidationData() {
-  let functionName = initializeConstantsValidationData.name;
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  D[sys.cConstantsValidationData] = {};
-  D[sys.cConstantsValidationData][sys.cConstantsShortNames] = {};
-  D[sys.cConstantsValidationData][sys.cConstantsFileNames] = {};
-  D[sys.cConstantsValidationData][sys.cConstantsPrefix] = {};
-  D[sys.cConstantsValidationData][sys.cConstantsFilePaths] = {};
-  D[sys.cConstantsValidationData][sys.cConstantsPhase1ValidationMessages] = {};
-  D[sys.cConstantsValidationData][sys.cConstantsPhase2ValidationMessages] = {};
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
-}
-
-/**
- * @function addConstantsValidationData
- * @description Adds a library of constants vaidation data to the existing constants vaidation data.
- * @param {array<array<string,object>>} constantLibraryData The array of data that should be added to the validation data set for the purpose of validation.
- * @return {void}
- * @author Seth Hollingsead
- * @date 2022/03/22
- */
-async function addConstantsValidationData(constantLibraryData) {
-  let functionName = addConstantsValidationData.name;
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  // constantLibraryData is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cconstantLibraryDataIs + JSON.stringify(constantLibraryData));
-  for (let key1 in constantLibraryData[sys.cConstantsValidationData]) {
-    if (Object.prototype.hasOwnProperty.call(constantLibraryData[sys.cConstantsValidationData], key1)) {
-      if (key1 === sys.cConstantsFilePaths ||
-      key1 === sys.cConstantsPhase1ValidationMessages ||
-      key1 === sys.cConstantsPhase2ValidationMessages ||
-      key1 === sys.cConstantsShortNames ||
-      key1 === sys.cConstantsFileNames ||
-      key1 === sys.cConstantsPrefix) {
-        await addDeeplyNestedConstantsValidationData(key1, constantLibraryData[sys.cConstantsValidationData][key1]);
-      } else {
-        let data1 = constantLibraryData[sys.cConstantsValidationData][key1];
-        D[sys.cConstantsValidationData][key1] = [];
-        Object.assign(D[sys.cConstantsValidationData][key1], data1);
-      }
-    } // End-if (constantLibraryData[sys.cConstantsValidationData].hasOwnProperty(key1))
-  } // End-for (let key1 in constantLibraryData[sys.cConstantsValidationData])
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
-}
-
-/**
- * @function addDeeplyNestedConstantsValidationData
- * @description Adds all the constants validation auxiliary data that is deeply nested inside sub-data structures to the main D-data structure.
- * Such as file paths, and validation messages.
- * @param {string} contextName The name that should be used when accessing and also adding the data to the D-data structure.
- * @param {array<array<string,object>>} deeplyNestedData The actual data that should be added.
- * @return {void}
- * @author Seth Hollingsead
- * @date 2022/03/22
- */
-async function addDeeplyNestedConstantsValidationData(contextName, deeplyNestedData) {
-  let functionName = addDeeplyNestedConstantsValidationData.name;
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  // contextName is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.ccontextNameIs + contextName);
-  // deeplyNestedData is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cdeeplyNestedDataIs + JSON.stringify(deeplyNestedData));
-  for (let key2 in deeplyNestedData) {
-    if (Object.prototype.hasOwnProperty.call(deeplyNestedData, key2)) {
-      let data2 = deeplyNestedData[key2];
-      D[sys.cConstantsValidationData][contextName][key2] = data2;
-    }
-  } // End-for (let key2 in deeplyNestedData)
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
-}
-
-/**
  * @function getDataCategoryFromContextName
  * @description Gets the data category, given the context name.
  * @param {string} contextName The context name which will be something like Application_xxxx or Script_nnnn or Command_yyyy
@@ -1100,8 +1022,5 @@ export default {
   setupDataStorage,
   storeData,
   getData,
-  clearData,
-  initializeConstantsValidationData,
-  addConstantsValidationData,
-  addDeeplyNestedConstantsValidationData
+  clearData
 };
