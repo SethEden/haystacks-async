@@ -89,6 +89,50 @@ async function initFramework(clientConfiguration) {
 }
 
 /**
+ * @function accouterFramework
+ * @description Equip and outfit this instance of the haystacks framework with an existing data structure.
+ * This function essentially allows plugins to inject a clone of the D-data structure from another instance of
+ * Haystacks into this instance of Haystacks, essentially creating a clone of the original instance of Haystacks.
+ * The purpose being to be able to call back to Haystacks and have it perform loading and parsing operations on files.
+ * @param {object} data A JSON data structure, that is a clone of the D-data structure from another instance of Haystacks.
+ * @return {boolean} A True or False value to indicate if the operation was completed successfully or not.
+ * @author Seth Hollingsead
+ * @date 2023/01/09
+ * @NOTE It's not going to do any good to add framework console logs here, because the primary use case of this function is
+ * for dumping Haystacks context data into a new instance of Haystacks to make it behave and work like the main Haystacks instance.
+ */
+async function accouterFramework(data) {
+  // let functionName = accouterFramework.name;
+  // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
+  // console.log(`data is: ${JSON.stringify(data)}`);
+  let returnData = false;
+  if (data) {
+    D.setData(data);
+    returnData = true;
+  }
+  // console.log('returnData is: ' + returnData);
+  // console.log(`END ${namespacePrefix}${functionName} function`);
+  return returnData;
+}
+
+/**
+ * @function getFrameworkData
+ * @description Returns all the contents of the framework data. Can be used to pull the data contents of a Haystacks
+ * instance to swap it out with mock data, then swap back afterward.
+ * @return {object} A JSON object that contains the entire contents of the Haystacks D-data structure.
+ * @author Seth Hollingsead
+ * @date 2023/01/09
+ */
+async function getFrameworkData() {
+  let functionName = getFrameworkData.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  let returnData = false;
+  returnData = D.getData();
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
+/**
  * @function mergeClientBusinessRules
  * @description A wrapper function to expose the warden.mergeClientBusinessRules functionality.
  * @param {object} clientBusinessRules A map of client defined business rule names and client defined business rule function calls.
@@ -656,6 +700,8 @@ async function consoleLog(theNamespacePrefix, theFunctionName, message) {
 
 export default {
   initFramework,
+  accouterFramework,
+  getFrameworkData,
   mergeClientBusinessRules,
   mergeClientCommands,
   loadCommandAliases,
