@@ -102,15 +102,16 @@ async function initFramework(clientConfiguration) {
  * for dumping Haystacks context data into a new instance of Haystacks to make it behave and work like the main Haystacks instance.
  */
 async function accouterFramework(data) {
-  let functionName = accouterFramework.name;
-  console.log(`BEGIN ${namespacePrefix}${functionName} function`);
-  console.log(`data is: ${JSON.stringify(data)}`);
+  // let functionName = accouterFramework.name;
+  // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
+  // console.log(`data is: ${JSON.stringify(data)}`);
   let returnData = false;
   if (data) {
     D.setData(data);
+    returnData = true;
   }
-  console.log('returnData is: ' + returnData);
-  console.log(`END ${namespacePrefix}${functionName} function`);
+  // console.log('returnData is: ' + returnData);
+  // console.log(`END ${namespacePrefix}${functionName} function`);
   return returnData;
 }
 

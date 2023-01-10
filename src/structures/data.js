@@ -14,7 +14,7 @@
 // External imports
 import hayConst from '@haystacks/constants';
 
-const {wrd} = hayConst;
+const {sys, wrd} = hayConst;
 let data = {};
 
 /**
@@ -26,7 +26,14 @@ let data = {};
  * @date 2023/01/09
  */
 async function getData() {
-  return data;
+  return {configuration: data[wrd.cconfiguration],
+    businessRules: data[sys.cbusinessRules],
+    Commands: data[wrd.cCommands],
+    colors: data[wrd.ccolors],
+    ConstantsValidationData: data[sys.cConstantsValidationData],
+    CommandsAliases: data[sys.cCommandsAliases],
+    CommandWorkflow: data[sys.cCommandWorkflows],
+    Themes: data[wrd.cThemes]};
 }
 
 /**
