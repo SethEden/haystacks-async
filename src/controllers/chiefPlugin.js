@@ -365,11 +365,11 @@ async function loadAllPlugins(pluginsExecutionPaths, pluginsMetaData) {
   // pluginsExecutionPaths is:
   await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginsExecutionPathsIs + JSON.stringify(pluginsExecutionPaths));
   // pluginsMetaData is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cplugnsMetaDataIs + JSON.stringify(pluginsMetaData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginsMetaDataIs + JSON.stringify(pluginsMetaData));
   let returnData = {};
   let index = 0;
   if (pluginsExecutionPaths && pluginsMetaData && pluginsExecutionPaths.length > 0 && pluginsMetaData.length > 0) {
-    stack.initStack(sys.cpluginsLoaded);
+    await stack.initStack(sys.cpluginsLoaded);
     for (let pluginExecutionPathKey in pluginsExecutionPaths) {
       let pluginExecutionPath = pluginsExecutionPaths[pluginExecutionPathKey];
       let pluginMetaData = pluginsMetaData[index];

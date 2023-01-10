@@ -259,7 +259,7 @@ async function validMessage(outputMessage, originalMessage) {
  * @NOTE Cannot use the loggers here, because of a circular dependency.
  */
 async function parseClassPath(logFile, classPath, message) {
-  // let functionName = parseClassPath.name;
+  let functionName = parseClassPath.name;
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   // console.log(`logFile is: ${logFile}`);
   // console.log(`classPath is: ${classPath}`);

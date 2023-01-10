@@ -494,7 +494,7 @@ async function loadPlugin(pluginExecutionPath) {
       return await import(path);
     };
     return loadAsyncImport().then(async value => {
-      resolve(returnData = await value[wrd.cdefault].initializePlugin());
+      resolve(returnData = await value[wrd.cdefault].initializePlugin(D));
       // dataLoaded is:
       loggers.consoleLog(namespacePrefix + functionName, msg.cdataLoadedIs + JSON.stringify(returnData));
     }).catch (err => reject(err));
