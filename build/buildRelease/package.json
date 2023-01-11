@@ -24,7 +24,7 @@
   "license": "MIT",
   "dependencies": {
     "@haystacks/async": "0.1.7",
-    "@haystacks/constants": "0.1.6"
+    "@haystacks/constants": "0.1.7"
   },
   "bugs": {
     "url": "https://github.com/SethEden/haystacks-async/issues"
