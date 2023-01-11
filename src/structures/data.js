@@ -44,10 +44,30 @@ async function getData() {
  * @param {object} newData The new data that should replace any data already stored on the data structure.
  * @author Seth Hollingsead
  * @date 2023/01/09
+ * @NOTE This function isn't actually working, because in the haystacks code base we've
+ * always set the D-data structure data on the D-object itself never on the D['data'] field.
+ * So an extra special effort will need to be made to refactor the data interface again and make it work via an actual interface.
+ * Instead of a hard-coded data endpoint in the code.
+ * This will be a good pre-emptive step to implementing a Red-Black Binary Search Tree.
+ * Because once all the data is flowing through a data interface, then we can swap out that interface for a newer faster one based on RB-BST.
  */
 async function setData(newData) {
-  data = {};
-  data = newData;
+  // let functionName = setData.name;
+  // console.log('BEGIN Haystacks.data.setData function - MANUAL LOG');
+  // console.log('data input is: ' + JSON.stringify(newData));
+  let returnData = false;
+  if (newData) {
+    data = {};
+    for (let dataEntityKey in newData) {
+      data[dataEntityKey] = {};
+      data[dataEntityKey] = newData[dataEntityKey];
+    }
+    returnData = true;
+  } else {
+    // ERROR: Unable to set data, undefined data input:
+    // console.log('ERROR: Unable to set data, undefined data input: ' + JSON.stringify(newData));
+  }
+  return returnData;
 }
 
 export default {

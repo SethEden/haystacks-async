@@ -1,5 +1,5 @@
 {
-  "debugFiles|debugSetting.framework.controllers.warden": false,
+  "debugFiles|debugSetting.framework.controllers.warden": true,
   "debugFiles|debugSetting.framework.controllers.warden@ModuleFontStyle": "Bold|Underline",
   "debugFiles|debugSetting.framework.controllers.warden@FunctionFontStyle": "Bold|Underline",
   "debugFiles|debugSetting.framework.controllers.warden@MessageFontStyle": "Underline",

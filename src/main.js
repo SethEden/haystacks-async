@@ -107,8 +107,12 @@ async function accouterFramework(data) {
   // console.log(`data is: ${JSON.stringify(data)}`);
   let returnData = false;
   if (data) {
-    D.setData(data);
-    returnData = true;
+    // console.log('setting the data structure!');
+    // returnData = await D.setData(data);
+    for (let dataEntityKey in data) {
+      D[dataEntityKey] = {};
+      D[dataEntityKey] = data[dataEntityKey];
+    }
   }
   // console.log('returnData is: ' + returnData);
   // console.log(`END ${namespacePrefix}${functionName} function`);
