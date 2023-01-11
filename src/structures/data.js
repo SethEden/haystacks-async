@@ -50,6 +50,13 @@ async function getData() {
  * Instead of a hard-coded data endpoint in the code.
  * This will be a good pre-emptive step to implementing a Red-Black Binary Search Tree.
  * Because once all the data is flowing through a data interface, then we can swap out that interface for a newer faster one based on RB-BST.
+ * @UPDATE Actually this function IS THE ONLY WAY this works! Setting the data on the D-object itself fails in every way.
+ * I've even tried to update to node v18 and use the structuredClone function, which also didn't work.
+ * But the code below DOES WORK! Don't touch it unless you want to break the loading of all plugins.
+ * We can review this when we get past a production MVP release.
+ * @NOTE Attempting to create/refactor for a new data interface could cause a cascade performance regression,
+ * that is the last thing we want to be dealing with at this late stage in the game.
+ * Perhaps we will have to wait until after a GUI system is developed, then take on this data/data-interface re-architecture and RB-BST effort all at once.
  */
 async function setData(newData) {
   // let functionName = setData.name;
