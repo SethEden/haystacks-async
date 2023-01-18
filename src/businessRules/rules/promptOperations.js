@@ -71,3 +71,60 @@ async function prompt(inputData, inputMetaData) {
 export default {
   prompt
 };
+
+// NOTE: We have a bug with the above code in that it works for Windows, but not for Mac or Linux.
+// I thought it would be interesting to try and feed this code into ChatGPT3 and see if it could tell me why it wasn't working for Mac or Linux.
+// I mean I did copy this code from the npm prompt module which IS working for both Windows, Mac, AND Linux.
+// So where did I go wrong with my copy process?? Or how can this code get fixed so that it does work on Windows, Mac, AND Linux?
+// I cleaned up the code a bit and made everything hard-coded so that it would be easier to copy-paste into ChatGPT.
+
+// This was the response that ChatGPT gave me back, I am commenting it here, because I thought it was insightful and could possibly lead to a solution to this problem.
+// ChatGPT: 
+// This code uses the 'fs' module to read input from the command line, but it only works on Windows machines because it uses the 'devtty' file descriptor,
+// which is specific to Windows and not present on Mac or Linux machines.
+// On Mac and Linus machines, the code should use the '/dev/tty' file descriptor instead of 'devtty'.
+// Additionally, the code uses the 'process.stdin.fd' property, which is specific to Windows and not present on Mac or Linux machines.
+// On Mac and Linux machines, the code should use '0' as file descriptor instead of 'process.stdin.fd'.
+
+// The chatGPT program is correct about its first point, but I'm not sure its a relevant point because I think the code I fed it just had a type-O in how the constant for devtty is resolved.
+// The second point seems to also be correct, so I asked ChatGPT to re-write the code for me with the recommended changes and I will put the relevant code below for reference:
+
+// /* eslint-disable no-undef */
+// import fs from 'fs';
+// import path from 'path';
+// const baseFileName = path.basename(import.meta.url, path.extname(import.meta.url));
+// // businessRules.rules.promptOperations.
+// const namespacePrefix = sys.cbusinessRules + bas.cDot + wrd.crules + bas.cDot + baseFileName + bas.cDot;
+// const term = 13; // carriage return
+
+// async function prompt2(inputData, inputMetaData) {
+//   let functionName = prompt.name;
+//   console.log(`BEGIN ${namespacePrefix}${functionName} function`);
+//   console.log(`inputData is: ${JSON.stringify(inputData)}`);
+//   console.log(`inputMetaData is: ${JSON.stringify(inputMetaData)}`);
+//   let returnData = '';
+//   if (inputData) {
+//     await process.stdout.write(inputData);
+//   }
+
+//   let buffer = Buffer.alloc(1024),
+//     fd = process.platform === 'win32' ? 0 : await fs.openSync('/dev/tty', 'r'),
+//     readSize = await fs.readSync(fd, buffer, 0, 1024);
+  
+//   console.log(`INPUT: ${buffer.toString('UTF8', 0, readSize)}`);
+//   returnData = buffer.toString('UTF8', 0, readSize);
+//   if (returnData.includes(String.fromCharCode(term))) {
+//     // Caught the case that the input string contains the global carriage return term.
+//     // index of the carriage return character:
+//     console.log('Caught the case that the input string contains the global carriage return term.');
+//     console.log(`index of the carriage return character: ${returnData.indexOf(String.fromCharCode(term))}`);
+//     returnData = returnData.slice(0, returnData.indexOf(String.fromCharCode(term)));
+//   } else if (returnData.includes('/r/n')) {
+//     // Caught the case that the string includes a carriage return and new line characters.
+//     console.log('Caught the case that the string includes a carriage return and new line characters.');
+//     returnData = returnData.slice(0, returnData.indexOf('/r/n'));
+//   }
+//   console.log(`returnData is: ${JSON.stringify(returnData)}`);
+//   console.log(`END ${namespacePrefix}${functionName} function`);
+//   return returnData;
+// }
