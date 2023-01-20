@@ -82,7 +82,7 @@ export default {
 // ChatGPT: 
 // This code uses the 'fs' module to read input from the command line, but it only works on Windows machines because it uses the 'devtty' file descriptor,
 // which is specific to Windows and not present on Mac or Linux machines.
-// On Mac and Linus machines, the code should use the '/dev/tty' file descriptor instead of 'devtty'.
+// On Mac and Linux machines, the code should use the '/dev/tty' file descriptor instead of 'devtty'.
 // Additionally, the code uses the 'process.stdin.fd' property, which is specific to Windows and not present on Mac or Linux machines.
 // On Mac and Linux machines, the code should use '0' as file descriptor instead of 'process.stdin.fd'.
 
