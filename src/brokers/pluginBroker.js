@@ -99,10 +99,7 @@ async function listPluginsInRegistry() {
   let functionName = listPluginsInRegistry.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   let returnData = [];
-  let pluginRegistryList = D[cfg.cpluginRegistry][wrd.cplugins];
-  for (let plugin of pluginRegistryList) {
-    returnData.push(plugin[wrd.cName]);
-  }
+  returnData = await listPluginsAttributeInRegistry(wrd.cName);
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
@@ -119,9 +116,41 @@ async function listPluginsPathsInRegistry() {
   let functionName = listPluginsPathsInRegistry.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   let returnData = [];
+  returnData = await listPluginsAttributeInRegistry(wrd.cPath);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
+/**
+ * @function listPluginsAttributeInRegistry
+ * @description Builds a list array of the specified attribute out of the plugin objects in the plugin registry.
+ * @param {string} attributeName The name of the attribute that should be looked up in the plugin object,
+ * for each of the plugin objects in the plugin registry.
+ * @return {array<string>} A list array of the attributes from the plugins in the plugin registry.
+ * @author Seth Hollingsead
+ * @date 2023/01/31
+ */
+async function listPluginsAttributeInRegistry(attributeName) {
+  let functionName = listPluginsAttributeInRegistry.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  // attributeName is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cattributeNameIs + attributeName);
+  let returnData = [];
   let pluginRegistryList = D[cfg.cpluginRegistry][wrd.cplugins];
-  for (let plugin of pluginRegistryList) {
-    returnData.push(plugin[wrd.cPath]);
+  // pluginRegistryList is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginRegistryListIs + JSON.stringify(pluginRegistryList));
+  for (let pluginKey in pluginRegistryList) {
+    // pluginKey is:
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginKeyIs + pluginKey);
+    let pluginParentObject = pluginRegistryList[pluginKey];
+    // pluginParentObject is:
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginParentObjectIs + JSON.stringify(pluginParentObject));
+    let keys = Object.keys(pluginParentObject);
+    let pluginObject = pluginParentObject[keys[0]];
+    // pluginObject is:
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginObjectIs + JSON.stringify(pluginObject));
+    returnData.push(pluginObject[attributeName]);
   }
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
@@ -287,24 +316,34 @@ async function syncPluginRegistryWithPluginRegistryPath() {
   // pluginRegistryFolderList is:
   await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginRegistryFolderListIs + pluginRegistryFolderList);
   // pluginsRootPath is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginsRootPath + pluginsRootPath);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginsRootPathIs + pluginsRootPath);
   try {
-    if (pluginRegistryList.length === 0 && pluginRegistryFolderList) {
+    if (pluginRegistryFolderList && Array.isArray(pluginRegistryFolderList) === false) {
+      if (pluginRegistryFolderList.includes(bas.cComa) === true) {
+        pluginRegistryFolderList = pluginRegistryFolderList.split(bas.cComa);
+      }
+    }
+    if (pluginRegistryList.length === 0 && pluginRegistryFolderList && pluginRegistryFolderList.length === 1) {
       // pluginRegistryList.length === 0
       await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginRegistryListLengthEqualZero);
-      synchronizedPluginRegistryList[0] = {Name: pluginRegistryFolderList[0], Path: path.join(pluginsRootPath + bas.cForwardSlash + pluginRegistryFolderList + bas.cForwardSlash)};
+      synchronizedPluginRegistryList[pluginRegistryFolderList[0]] = {Name: pluginRegistryFolderList[0], Path: path.join(pluginsRootPath + bas.cForwardSlash + pluginRegistryFolderList[0] + bas.cForwardSlash)};
     } else if (pluginRegistryFolderList.length !== 0) {
       // pluginRegistryList.length !== 0
       await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginRegistryListLengthNotEqualZero);
-      for (let folderPlugin in pluginRegistryFolderList) {
+      for (let folderPluginKey in pluginRegistryFolderList) {
+        let folderPlugin = pluginRegistryFolderList[folderPluginKey];
         // folderPlugin is:
         await loggers.consoleLog(namespacePrefix + functionName, msg.cfolderPluginIs + JSON.stringify(folderPlugin));
         let folderPluginName = folderPlugin[wrd.cName];
+        if (folderPluginName === undefined) {
+          folderPluginName = folderPlugin;
+        }
         // folderPluginName is:
         await loggers.consoleLog(namespacePrefix + functionName, msg.cfolderPluginNameIs + folderPluginName);
         // Now search the pluginRegistryList to see if it contains this same name.
         let foundMatchingPluginName = false;
-        for (let registryPlugin in pluginRegistryList) {
+        for (let registryPluginKey in pluginRegistryList) {
+          let registryPlugin = pluginRegistryList[registryPluginKey];
           // registryPlugin is:
           await loggers.consoleLog(namespacePrefix + functionName, msg.cregistryPluginIs + JSON.stringify(registryPlugin));
           let registryPluginName = registryPlugin[wrd.cName];
@@ -317,7 +356,8 @@ async function syncPluginRegistryWithPluginRegistryPath() {
         } // End-for (let registryPlugin in pluginRegistryList)
         if (foundMatchingPluginName === false) {
           // Then no match was found, and we should therefore add this plugin entry object.
-          pluginRegistryList.push(folderPlugin);
+          // First create the object, folderPlugin is mostly likely just a string.
+          pluginRegistryList.push({[folderPluginName]: {Name: folderPluginName, Path: path.join(pluginsRootPath + bas.cForwardSlash + pluginRegistryFolderList[folderPluginKey] + bas.cForwardSlash)}});
         }
         // NOTE: pluginRegistryList is the accumulator here, when we are all done we need to assign that one to the output.
       } // End-for (let folderPlugin in pluginRegistryFolderList)
@@ -652,6 +692,7 @@ export default {
   storePluginRegistryInDataStructure,
   listPluginsInRegistry,
   listPluginsPathsInRegistry,
+  listPluginsAttributeInRegistry,
   listPluginsInRegistryPath,
   countPluginsInRegistry,
   countPluginsInRegistryPath,

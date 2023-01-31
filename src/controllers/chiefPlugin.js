@@ -374,7 +374,7 @@ async function loadAllPlugins(pluginsExecutionPaths, pluginsMetaData) {
       let pluginExecutionPath = pluginsExecutionPaths[pluginExecutionPathKey];
       let pluginMetaData = pluginsMetaData[index];
       if (pluginExecutionPath && pluginMetaData) {
-        // pluginExectuionPath is:
+        // pluginExecutionPath is:
         await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginExecutionPathIs + pluginExecutionPath);
         // pluginMetaData is:
         await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginMetaDataIs + JSON.stringify(pluginMetaData));
@@ -400,6 +400,7 @@ async function loadAllPlugins(pluginsExecutionPaths, pluginsMetaData) {
         console.log(msg.cloadAllPluginsMessage02 + pluginExecutionPath);
         stack.push(sys.cpluginsLoaded, [pluginMetaData[wrd.cname], false]);
       }
+      index = index + 1;
     } // End-for (let pluginExecutionPath in pluginsExecutionPaths)
   } else {
     // ERROR: No plugin execution paths or plugins metaData was specified:
