@@ -9,6 +9,7 @@
  * @requires module:dataDirectorate
  * @requires module:integrationTests
  * @requires module:performanceMetric
+ * @requires module:plugins
  * @requires module:system
  * @requires module:loggers
  * @requires module:data
@@ -27,12 +28,14 @@ import constantsCommands from './commands/constant.js';
 import dataDirectorate from './commands/dataDirectorate.js';
 import integrationTestCommands from './commands/integrationTests.js';
 import performanceMetricCommands from './commands/performanceMetric.js';
+import pluginCommands from './commands/plugins.js';
 import systemCommands from './commands/system.js';
 import loggers from '../executrix/loggers.js';
 import D from '../structures/data.js';
 // External imports
 import hayConst from '@haystacks/constants';
 import path from 'path';
+import plugins from './commands/plugins.js'
 
 const {bas, cmd, msg, sys, wrd} = hayConst;
 const baseFileName = path.basename(import.meta.url, path.extname(import.meta.url));
@@ -106,6 +109,25 @@ async function initCommandsLibrary() {
     // ***********************************************
     [cmd.cbusinessRulesMetrics]: (inputData, inputMetaData) => performanceMetricCommands.businessRulesMetrics(inputData, inputMetaData),
     [cmd.ccommandMetrics]: (inputData, inputMetaData) => performanceMetricCommands.commandMetrics(inputData, inputMetaData),
+
+    // ***********************************************
+    // Plugin commands in order
+    // ***********************************************
+    [cmd.clistAllPluginsInRegistry]: (inputData, inputMetaData) => plugins.listAllPluginsInRegistry(inputData, inputMetaData),
+    [cmd.clistAllPluginsInRegistryPath]: (inputData, inputMetaData) => plugins.listAllPluginsInRegistryPath(inputData, inputMetaData),
+    [cmd.ccountPluginsInRegistry]: (inputData, inputMetaData) => plugins.countPluginsInRegistry(inputData, inputMetaData),
+    [cmd.ccountPluginsInRegistryPath]: (inputData, inputMetaData) => plugins.countPluginsInRegistryPath(inputData, inputMetaData),
+    [cmd.cregisterPlugin]: (inputData, inputMetaData) => plugins.registerPlugin(inputData, inputMetaData),
+    [cmd.cunregisterPlugin]: (inputData, inputMetaData) => plugins.unregisterPlugin(inputData, inputMetaData),
+    [cmd.csyncPluginRegistryWithPath]: (inputData, inputMetaData) => plugins.syncPluginRegistryWithPath(inputData, inputMetaData),
+    [cmd.cunregisterAllPlugins]: (inputData, inputMetaData) => plugins.unregisterAllPlugins(inputData, inputMetaData),
+    [cmd.csavePluginRegistryToDisk]: (inputData, inputMetaData) => plugins.savePluginRegistryToDisk(inputData, inputMetaData),
+    [cmd.cloadPlugin]: (inputData, inputMetaData) => plugins.loadPlugin(inputData, inputMetaData),
+    [cmd.cloadPlugins]: (inputData, inputMetaData) => plugins.loadPlugins(inputData, inputMetaData),
+    [cmd.cloadPluginsFromRegistry]: (inputData, inputMetaData) => plugins.loadPluginsFromRegistry(inputData, inputMetaData),
+    [cmd.cunloadPlugin]: (inputData, inputMetaData) => plugins.unloadPlugin(inputData, inputMetaData),
+    [cmd.cunloadPlugins]: (inputData, inputMetaData) => plugins.unloadPlugins(inputData, inputMetaData),
+    [cmd.cunloadAllPlugins]: (inputData, inputMetaData) => plugins.unloadAllPlugins(inputData, inputMetaData),
 
     // ***********************************************
     // System commands in order

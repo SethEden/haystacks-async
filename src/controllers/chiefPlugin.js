@@ -529,6 +529,28 @@ async function integratePluginData(pluginName, pluginData) {
   return returnData;
 }
 
+/**
+ * @function unloadPlugin
+ * @description Unloads a plugin by removing all of the plugin data and meta-data from all of the
+ * appropriate data structures in the D-data structure.
+ * This is a wrapper function for calling the pluginBroker to get the work done.
+ * @param {string} pluginName The name of the plugin that should have all its data unloaded from the D-data structure.
+ * @return {boolean} True or False to indicate if the plugin was unloaded successfully or not.
+ * @author Seth Hollingsead
+ * @date 2023/02/01
+ */
+async function unloadPlugin(pluginName) {
+  let functionName = unloadPlugin.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  // pluginName is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginNameIs + pluginName);
+  let returnData = false;
+  returnData = await pluginBroker.unloadPlugin(pluginName);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
 export default {
   loadPluginRegistryData,
   persistPluginRegistryToDataStructure,
@@ -547,5 +569,6 @@ export default {
   loadAllPlugins,
   integrateAllPluginsData,
   integratePluginData,
-  verifyAllPluginsLoaded
+  verifyAllPluginsLoaded,
+  unloadPlugin
 };

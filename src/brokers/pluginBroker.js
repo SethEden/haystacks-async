@@ -4,6 +4,7 @@
  * @description Contains all of the lower level plugin processing functions,
  * and also acts as an interface for loading, unloading, reloading, registering,
  * unregistering plugins and plugin metaData.
+ * @requires module:constantBroker
  * @requires module:dataBroker
  * @requires module:ruleBroker
  * @requires module:workflowBroker
@@ -18,6 +19,7 @@
  */
 
 // Internal imports
+import constantBroker from './constantBroker.js';
 import dataBroker from './dataBroker.js';
 import ruleBroker from './ruleBroker.js';
 import workflowBroker from './workflowBroker.js';
@@ -687,6 +689,64 @@ async function integratePluginThemeData(pluginName, pluginThemeData) {
   return returnData;
 }
 
+/**
+ * @function unloadPlugin
+ * @description Unloads a plugin by removing all of the plugin data and meta-data from all of the
+ * appropriate data structures in the D-data structure.
+ * @param {string} pluginName The name of the plugin that should have all its data unloaded from the D-data structure.
+ * @return {boolean} True or False to indicate if the plugin was unloaded successfully or not.
+ * @author Seth Hollingsead
+ * @date 2023/02/01
+ */
+async function unloadPlugin(pluginName) {
+  let functionName = unloadPlugin.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  // pluginName is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginNameIs + pluginName);
+  let returnData = false;
+  let businessRulesRemovalSuccess = await ruleBroker.removePluginBusinessRules(pluginName);
+  let commandsRemovalSuccess = await commandBroker.removePluginCommands(pluginName);
+  let configurationDataRemovalSuccess = await dataBroker.removePluginConfigurationData(pluginName);
+  let commandAliasesRemovalSuccess = await commandBroker.removePluginCommandAliases(pluginName);
+  let workflowRemovalSuccess = await workflowBroker.removePluginWorkflows(pluginName);
+  let themeDataRemovalSuccess = await themeBroker.removePluginThemeData(pluginName);
+  let constantsValidationDataRemovalSuccess = await constantBroker.removePluginConstantsValidationData(pluginName);
+
+  if (businessRulesRemovalSuccess === true &&
+    commandsRemovalSuccess === true &&
+    configurationDataRemovalSuccess === true &&
+    commandAliasesRemovalSuccess === true &&
+    workflowRemovalSuccess === true &&
+    themeDataRemovalSuccess === true &&
+    constantsValidationDataRemovalSuccess === true) {
+      returnData = true;
+  }
+  if (businessRulesRemovalSuccess === false) {
+    // TODO: Pop an error message for failure to remove business rule for the selected plugin.
+  }
+  if (commandsRemovalSuccess === false) {
+    // TODO: Pop an error message for failure to remove commands for the selected plugin.
+  }
+  if (configurationDataRemovalSuccess === false) {
+    // TODO: Pop an error message for failure to remove configuration data for the selected plugin.
+  }
+  if (commandAliasesRemovalSuccess === false) {
+    // TODO: Pop an error message for failure to remove command aliases for the selected plugin.
+  }
+  if (workflowRemovalSuccess === false) {
+    // TODO: Pop an error message for failure to remove workflows for the selected plugin.
+  }
+  if (themeDataRemovalSuccess === false) {
+    // TODO: Pop an error message for failure to remove theme data for the selected plugin.
+  }
+  if (constantsValidationDataRemovalSuccess === false) {
+    // TODO: Pop an error message for failure to remove constants validation data for the selected plugin.
+  }
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
 export default {
   loadPluginRegistry,
   storePluginRegistryInDataStructure,
@@ -709,5 +769,6 @@ export default {
   integratePluginConfigurationData,
   integratePluginCommandAliases,
   integratePluginWorkflows,
-  integratePluginThemeData
+  integratePluginThemeData,
+  unloadPlugin
 };

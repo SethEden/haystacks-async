@@ -642,8 +642,11 @@ async function unloadPlugin(pluginName) {
   // pluginName is:
   await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginNameIs + pluginName);
   let returnData = false;
-  // TODO: Unload the plugin here!!
-  console.log('TODO: Unload the plugin here!!');
+  returnData = await chiefPlugin.unloadPlugin(pluginName);
+  if (returnData === false) {
+    // ERROR: There was an error unloading the plugin: 
+    console.log(msg.cErrorUnloadPluginMessage01 + pluginName);
+  }
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;

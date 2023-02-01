@@ -297,5 +297,18 @@
   "debugFunctions|debugSetting.framework.brokers.pluginBroker.integratePluginThemeData@ModuleFontBackgroundColor": "Default",
   "debugFunctions|debugSetting.framework.brokers.pluginBroker.integratePluginThemeData@FunctionFontBackgroundColor": "Default",
   "debugFunctions|debugSetting.framework.brokers.pluginBroker.integratePluginThemeData@MessageFontBackgroundColor": "Default",
-  "debugFunctions|debugSetting.framework.brokers.pluginBroker.integratePluginThemeData@DataFontBackgroundColor": "Default"
+  "debugFunctions|debugSetting.framework.brokers.pluginBroker.integratePluginThemeData@DataFontBackgroundColor": "Default",
+  "debugFunctions|debugSetting.framework.brokers.pluginBroker.unloadPlugin": true,
+  "debugFunctions|debugSetting.framework.brokers.pluginBroker.unloadPlugin@ModuleFontStyle": "Default",
+  "debugFunctions|debugSetting.framework.brokers.pluginBroker.unloadPlugin@FunctionFontStyle": "Default",
+  "debugFunctions|debugSetting.framework.brokers.pluginBroker.unloadPlugin@MessageFontStyle": "Default",
+  "debugFunctions|debugSetting.framework.brokers.pluginBroker.unloadPlugin@DataFontStyle": "Default",
+  "debugFunctions|debugSetting.framework.brokers.pluginBroker.unloadPlugin@ModuleFontColor": "Default",
+  "debugFunctions|debugSetting.framework.brokers.pluginBroker.unloadPlugin@FunctionFontColor": "Default",
+  "debugFunctions|debugSetting.framework.brokers.pluginBroker.unloadPlugin@MessageFontColor": "Default",
+  "debugFunctions|debugSetting.framework.brokers.pluginBroker.unloadPlugin@DataFontColor": "Default",
+  "debugFunctions|debugSetting.framework.brokers.pluginBroker.unloadPlugin@ModuleFontBackgroundColor": "Default",
+  "debugFunctions|debugSetting.framework.brokers.pluginBroker.unloadPlugin@FunctionFontBackgroundColor": "Default",
+  "debugFunctions|debugSetting.framework.brokers.pluginBroker.unloadPlugin@MessageFontBackgroundColor": "Default",
+  "debugFunctions|debugSetting.framework.brokers.pluginBroker.unloadPlugin@DataFontBackgroundColor": "Default"
 }

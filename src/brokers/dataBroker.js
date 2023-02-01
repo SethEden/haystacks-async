@@ -1009,6 +1009,27 @@ async function getDataElementCount(dataObject, pageName, elementNamePattern) {
   return elementCount;
 }
 
+/**
+ * @function removePluginConfigurationData
+ * @description Parses through the configuration data and finds the configuration data associated with the named plugin.
+ * Then removes that data shredding it from existence at the edge of a black hole.
+ * @param {string} pluginName The name of the plugin that should have its configuration data removed from the D-data structure.
+ * @return {boolean} True or False to indicate if the removal of the data was completed successfully or not.
+ * @author Seth Hollingsead
+ * @date 2023/02/01
+ */
+async function removePluginConfigurationData(pluginName) {
+  let functionName = removePluginConfigurationData.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  // pluginName is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginNameIs + pluginName);
+  let returnData = false;
+
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
 export default {
   addPluginConfigurationData,
   scanDataPath,
@@ -1022,5 +1043,6 @@ export default {
   setupDataStorage,
   storeData,
   getData,
-  clearData
+  clearData,
+  removePluginConfigurationData
 };

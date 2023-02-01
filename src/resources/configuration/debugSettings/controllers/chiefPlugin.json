@@ -245,5 +245,18 @@
   "debugFunctions|debugSetting.framework.controllers.chiefPlugin.verifyAllPluginsLoaded@ModuleFontBackgroundColor": "Default",
   "debugFunctions|debugSetting.framework.controllers.chiefPlugin.verifyAllPluginsLoaded@FunctionFontBackgroundColor": "Default",
   "debugFunctions|debugSetting.framework.controllers.chiefPlugin.verifyAllPluginsLoaded@MessageFontBackgroundColor": "Default",
-  "debugFunctions|debugSetting.framework.controllers.chiefPlugin.verifyAllPluginsLoaded@DataFontBackgroundColor": "Default"
+  "debugFunctions|debugSetting.framework.controllers.chiefPlugin.verifyAllPluginsLoaded@DataFontBackgroundColor": "Default",
+  "debugFunctions|debugSetting.framework.controllers.chiefPlugin.unloadPlugin": true,
+  "debugFunctions|debugSetting.framework.controllers.chiefPlugin.unloadPlugin@ModuleFontStyle": "Default",
+  "debugFunctions|debugSetting.framework.controllers.chiefPlugin.unloadPlugin@FunctionFontStyle": "Default",
+  "debugFunctions|debugSetting.framework.controllers.chiefPlugin.unloadPlugin@MessageFontStyle": "Default",
+  "debugFunctions|debugSetting.framework.controllers.chiefPlugin.unloadPlugin@DataFontStyle": "Default",
+  "debugFunctions|debugSetting.framework.controllers.chiefPlugin.unloadPlugin@ModuleFontColor": "Default",
+  "debugFunctions|debugSetting.framework.controllers.chiefPlugin.unloadPlugin@FunctionFontColor": "Default",
+  "debugFunctions|debugSetting.framework.controllers.chiefPlugin.unloadPlugin@MessageFontColor": "Default",
+  "debugFunctions|debugSetting.framework.controllers.chiefPlugin.unloadPlugin@DataFontColor": "Default",
+  "debugFunctions|debugSetting.framework.controllers.chiefPlugin.unloadPlugin@ModuleFontBackgroundColor": "Default",
+  "debugFunctions|debugSetting.framework.controllers.chiefPlugin.unloadPlugin@FunctionFontBackgroundColor": "Default",
+  "debugFunctions|debugSetting.framework.controllers.chiefPlugin.unloadPlugin@MessageFontBackgroundColor": "Default",
+  "debugFunctions|debugSetting.framework.controllers.chiefPlugin.unloadPlugin@DataFontBackgroundColor": "Default"
 }

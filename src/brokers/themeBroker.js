@@ -236,6 +236,27 @@ async function applyTheme(themeData) {
   return returnData;
 }
 
+/**
+ * @function removePluginThemeData
+ * @description Parses through the theme data and finds the theme data associated with the named plugin.
+ * Then removes that data shredding it from existence at the edge of a black hole.
+ * @param {string} pluginName The name of the plugin that should have its theme data removed from the D-data structure.
+ * @return {boolean} True or False to indicate if the removal of the data was completed successfully or not.
+ * @author Seth Hollingsead
+ * @date 2023/02/01
+ */
+async function removePluginThemeData(pluginName) {
+  let functionName = removePluginThemeData.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  // pluginName is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginNameIs + pluginName);
+  let returnData = false;
+
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
 export default {
   initThemeData,
   generateThemeDataFromPath,
@@ -243,5 +264,6 @@ export default {
   getNamedThemesFromRootPath,
   getNamedThemePathFromRootPath,
   loadTheme,
-  applyTheme
+  applyTheme,
+  removePluginThemeData
 };

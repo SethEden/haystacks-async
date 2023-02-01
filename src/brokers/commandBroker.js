@@ -711,6 +711,48 @@ async function executeCommand(commandString) {
   return returnData;
 }
 
+/**
+ * @function removePluginCommands
+ * @description Parses through the commands and finds the commands associated with the named plugin.
+ * Then removes that data shredding it from existence at the edge of a black hole.
+ * @param {string} pluginName The name of the plugin that should have its commands removed from the D-data structure.
+ * @return {boolean} True or False to indicate if the removal of the data was completed successfully or not.
+ * @author Seth Hollingsead
+ * @date 2023/02/01
+ */
+async function removePluginCommands(pluginName) {
+  let functionName = removePluginCommands.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  // pluginName is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginNameIs + pluginName);
+  let returnData = false;
+
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
+/**
+ * @function removePluginCommandAliases
+ * @description Parses through the command aliases and finds the command aliases associated with the named plugin.
+ * Then removes that data shredding it from existence at the edge of a black hole.
+ * @param {string} pluginName The name of the plugin that should have its command aliases removed from the D-data structure.
+ * @return {boolean} True or False to indicate if the removal of the data was completed successfully or not.
+ * @author Seth Hollingsead
+ * @date 2023/02/01
+ */
+async function removePluginCommandAliases(pluginName) {
+  let functionName = removePluginCommandAliases.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  // pluginName is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginNameIs + pluginName);
+  let returnData = false;
+
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
 export default {
   bootStrapCommands,
   addClientCommands,
@@ -722,5 +764,7 @@ export default {
   getAllCommandAliasData,
   getCommandNamespaceDataObject,
   getCommandArgs,
-  executeCommand
+  executeCommand,
+  removePluginCommands,
+  removePluginCommandAliases
 };

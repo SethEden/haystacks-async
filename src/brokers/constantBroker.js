@@ -369,8 +369,30 @@ async function addConstantsValidationData(constantsValidationData, contextName) 
   return returnData;
 }
 
+/**
+ * @function removePluginConstantsValidationData
+ * @description Parses through the constants validation data and finds the constants validation data data associated with the named plugin.
+ * Then removes that data shredding it from existence at the edge of a black hole.
+ * @param {string} pluginName The name of the plugin that should have its constants vaidation data removed from the D-data structure.
+ * @return {boolean} True or False to indicate if the removal of the data was completed successfully or not.
+ * @author Seth Hollingsead
+ * @date 2023/02/01
+ */
+async function removePluginConstantsValidationData(pluginName) {
+  let functionName = removePluginConstantsValidationData.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  // pluginName is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginNameIs + pluginName);
+  let returnData = false;
+
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
 export default {
   initializeConstantsValidationData,
   generateFrameworkConstantsValidationData,
-  addConstantsValidationData
+  addConstantsValidationData,
+  removePluginConstantsValidationData
 };

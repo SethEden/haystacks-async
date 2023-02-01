@@ -233,7 +233,7 @@
   "debugFunctions|debugSetting.framework.controllers.warden.loadPluginsFromRegistry@FunctionFontBackgroundColor": "Default",
   "debugFunctions|debugSetting.framework.controllers.warden.loadPluginsFromRegistry@MessageFontBackgroundColor": "Default",
   "debugFunctions|debugSetting.framework.controllers.warden.loadPluginsFromRegistry@DataFontBackgroundColor": "Default",
-  "debugFunctions|debugSetting.framework.controllers.warden.unloadPlugin": false,
+  "debugFunctions|debugSetting.framework.controllers.warden.unloadPlugin": true,
   "debugFunctions|debugSetting.framework.controllers.warden.unloadPlugin@ModuleFontStyle": "Default",
   "debugFunctions|debugSetting.framework.controllers.warden.unloadPlugin@FunctionFontStyle": "Default",
   "debugFunctions|debugSetting.framework.controllers.warden.unloadPlugin@MessageFontStyle": "Default",

@@ -150,9 +150,31 @@ async function processRules(inputs, rulesToExecute) {
   return returnData;
 }
 
+/**
+ * @function removePluginBusinessRules
+ * @description Parses through the business rules and finds the business rules associated with the named plugin.
+ * Then removes that data shredding it from existence at the edge of a black hole.
+ * @param {string} pluginName The name of the plugin that should have its business rules removed from the D-data structure.
+ * @return {boolean} True or False to indicate if the removal of the data was completed successfully or not.
+ * @author Seth Hollingsead
+ * @date 2023/02/01
+ * @NOTE Cannot use the loggers here, because of a circular dependency.
+ */
+async function removePluginBusinessRules(pluginName) {
+  let functionName = removePluginBusinessRules.name;
+  console.log(`BEGIN ${namespacePrefix}${functionName} function`);
+  console.log(`pluginName is: ${pluginName}`);
+  let returnData = false;
+
+  console.log(`returnData is: ${returnData}`);
+  console.log(`END ${namespacePrefix}${functionName} function`);
+  return returnData;
+}
+
 export default {
   bootStrapBusinessRules,
   addClientRules,
   addPluginRules,
-  processRules
+  processRules,
+  removePluginBusinessRules
 };
