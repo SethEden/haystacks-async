@@ -1024,7 +1024,29 @@ async function removePluginConfigurationData(pluginName) {
   // pluginName is:
   await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginNameIs + pluginName);
   let returnData = false;
-
+  let allPluginsConfigurationData = D[wrd.cconfiguration][wrd.cplugins];
+  let allPluginsDebugSettings = D[wrd.cconfiguration][cfg.cdebugSetting][wrd.cplugins];
+  if (allPluginsConfigurationData && allPluginsDebugSettings) {
+    try {
+      delete allPluginsConfigurationData[pluginName];
+      delete allPluginsDebugSettings[pluginName];
+      returnData = true;
+    } catch (err) {
+      // ERROR: Unable to remove the plugin configuration data for the specified plugin: 
+      console.log(msg.cremovePluginConfigurationDataMessage01 + pluginName);
+      // ERROR:
+      console.log(msg.cerrorMessage + err.message);
+    }
+  } else {
+    if (!allPluginsConfigurationData) {
+      // ERROR: Unable to locate the plugins configuration data. Plugin:
+      console.log(msg.cremovePluginConfigurationDataMessage02 + pluginName);
+    }
+    if (!allPluginsDebugSettings) {
+      // ERROR: Unable to locate the plugins configuration debug settings data. Plugin:
+      console.log(msg.cremovePluginConfigurationDataMessage03 + pluginName);
+    }
+  }
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;

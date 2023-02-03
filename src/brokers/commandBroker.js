@@ -726,7 +726,38 @@ async function removePluginCommands(pluginName) {
   // pluginName is:
   await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginNameIs + pluginName);
   let returnData = false;
-
+  let allCommands = D[wrd.cCommands];
+  // NOTE: We are going to have to get the names of the individual commands for the plugin,
+  // from the plugin constants validation for the commands,
+  // then iterate over them to remove all of the plugin business rules one by one.
+  let pluginConstantsValidation = D[sys.cConstantsValidationData][wrd.cPlugins][pluginName];
+  let pluginConstantsValidationCommands = {};
+  if (pluginConstantsValidation) {
+    pluginConstantsValidationCommands = pluginConstantsValidation[sys.cpluginCommandConstantsValidation];
+  } else {
+    // ERROR: Constants validation data for the specified plugin was not found. Plugin:
+    console.log(msg.cremovePluginBusinessRulesMessage01 + pluginName);
+  }
+  if (pluginConstantsValidationCommands) {
+    try {
+      for (const pluginCommandsRuleKey in pluginConstantsValidationCommands) {
+        let pluginCommandConstValidationObject = pluginConstantsValidationCommands[pluginCommandsRuleKey];
+        // pluginCommandConstValidationObject is:
+        await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginCommandsConstValidationObjectIs + JSON.stringify(pluginCommandConstValidationObject));
+        // Removing plugin command:
+        await loggers.consoleLog(namespacePrefix + functionName, msg.cremovePluginCommandsMessage01 + pluginCommandConstValidationObject[wrd.cActual]);
+        delete allCommands[pluginCommandConstValidationObject[wrd.cActual]];
+      }
+      returnData = true;
+    } catch (err) {
+      // ERROR: Failure attempting to delete the plugin commands for plugin:
+      console.log(msg.cremovePluginCommandsMessage02 + pluginName);
+      console.log(msg.cerrorMessage + err.message);
+    }
+  } else {
+    // ERROR: Plugin command constants validation data for the specified plugin was not found. Plugin:
+    console.log(msg.cremovePluginCommandsMessage03 + pluginName);
+  }
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
@@ -747,7 +778,21 @@ async function removePluginCommandAliases(pluginName) {
   // pluginName is:
   await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginNameIs + pluginName);
   let returnData = false;
-
+  let allPluginsCommandAliases = D[sys.cCommandsAliases][wrd.cPlugins];
+  if (allPluginsCommandAliases) {
+    try {
+      delete allPluginsCommandAliases[pluginName];
+      returnData = true;
+    } catch (err) {
+      // ERROR: Unable to remove the plugin command aliases for the specified plugin:
+      console.log(msg.cremovePluginCommandAliasesMessage01 + pluginName);
+      // ERROR:
+      console.log(msg.cerrorMessage + err.message);
+    }
+  } else {
+    // ERROR: Unable to locate the plugins command aliases data. Plugin: 
+    console.log(msg.cremovePluginCommandAliasesMessage02 + pluginName);
+  }
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;

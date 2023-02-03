@@ -161,13 +161,45 @@ async function processRules(inputs, rulesToExecute) {
  * @NOTE Cannot use the loggers here, because of a circular dependency.
  */
 async function removePluginBusinessRules(pluginName) {
-  let functionName = removePluginBusinessRules.name;
-  console.log(`BEGIN ${namespacePrefix}${functionName} function`);
-  console.log(`pluginName is: ${pluginName}`);
+  // let functionName = removePluginBusinessRules.name;
+  // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
+  // pluginName is:
+  // console.log(msg.cpluginNameIs + pluginName);
   let returnData = false;
-
-  console.log(`returnData is: ${returnData}`);
-  console.log(`END ${namespacePrefix}${functionName} function`);
+  let allBusinessRules = D[sys.cbusinessRules];
+  // NOTE: We are going to have to get the names of the individual business rules for the plugin,
+  // from the plugin constants validation for business rules,
+  // then iterate over them to remove all of the plugin business rules one by one.
+  let pluginConstantsValidation = D[sys.cConstantsValidationData][wrd.cPlugins][pluginName];
+  let pluginConstantsValidationBusinessRules = {};
+  if (pluginConstantsValidation) {
+    pluginConstantsValidationBusinessRules = pluginConstantsValidation[sys.cpluginBusinessConstantsValidation];
+  } else {
+    // ERROR: Constants validation data for the specified plugin was not found. Plugin:
+    console.log(msg.cremovePluginBusinessRulesMessage01 + pluginName);
+  }
+  if (pluginConstantsValidationBusinessRules) {
+    try {
+      for (const pluginBusinessRuleKey in pluginConstantsValidationBusinessRules) {
+        let pluginBusinessRuleConstValidationObject = pluginConstantsValidationBusinessRules[pluginBusinessRuleKey];
+        // pluginBusinessRuleConstValidationObject is:
+        // console.log(msg.cpluginBusinessRuleConstValidationObjectIs + JSON.stringify(pluginBusinessRuleConstValidationObject));
+        // Removing plugin business rule:
+        // console.log(msg.cremovePluginBusinessRulesMessage02 + pluginBusinessRuleConstValidationObject[wrd.cActual]);
+        delete allBusinessRules[pluginBusinessRuleConstValidationObject[wrd.cActual]];
+      }
+      returnData = true;
+    } catch (err) {
+      // ERROR: Failure attempting to delete the plugin business rules for plugin:
+      console.log(msg.cremovePluginBusinessRulesMessage03 + pluginName);
+      console.log(msg.cerrorMessage + err.message);
+    }
+  } else {
+    // ERROR: Plugin business rule constants validation data for the specified plugin was not found. Plugin:
+    console.log(msg.cremovePluginBusinessRulesMessage04 + pluginName);
+  }
+  // console.log(msg.creturnDataIs + returnData);
+  // console.log(`END ${namespacePrefix}${functionName} function`);
   return returnData;
 }
 

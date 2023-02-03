@@ -722,25 +722,32 @@ async function unloadPlugin(pluginName) {
       returnData = true;
   }
   if (businessRulesRemovalSuccess === false) {
-    // TODO: Pop an error message for failure to remove business rule for the selected plugin.
+    // ERROR: Failure to remove business rules for the plugin:
+    console.log(msg.cErrorUnloadPluginMessage02 + pluginName);
   }
   if (commandsRemovalSuccess === false) {
-    // TODO: Pop an error message for failure to remove commands for the selected plugin.
+    // ERROR: Failure to remove commands for the plugin:
+    console.log(msg.cErrorUnloadPluginMessage03 + pluginName);
   }
   if (configurationDataRemovalSuccess === false) {
-    // TODO: Pop an error message for failure to remove configuration data for the selected plugin.
+    // ERROR: Failure to remove configuration data for the plugin:
+    console.log(msg.cErrorUnloadPluginMessage04 + pluginName);
   }
   if (commandAliasesRemovalSuccess === false) {
-    // TODO: Pop an error message for failure to remove command aliases for the selected plugin.
+    // ERROR: Failure to remove command aliases for the plugin:
+    console.log(msg.cErrorUnloadPluginMessage05 + pluginName);
   }
   if (workflowRemovalSuccess === false) {
-    // TODO: Pop an error message for failure to remove workflows for the selected plugin.
+    // ERROR: Failure to remove workflows for the plugin:
+    console.log(msg.cErrorUnloadPluginMessage06 + pluginName);
   }
   if (themeDataRemovalSuccess === false) {
-    // TODO: Pop an error message for failure to remove theme data for the selected plugin.
+    // ERROR: Failure to remove theme data for the plugin:
+    console.log(msg.cErrorUnloadPluginMessage07 + pluginName);
   }
   if (constantsValidationDataRemovalSuccess === false) {
-    // TODO: Pop an error message for failure to remove constants validation data for the selected plugin.
+    // ERROR: Failure to remove constants validation data for the plugin:
+    console.log(msg.cErrorUnloadPluginMessage08 + pluginName);
   }
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);

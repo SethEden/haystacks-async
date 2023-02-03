@@ -296,7 +296,21 @@ async function removePluginWorkflows(pluginName) {
   // pluginName is:
   await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginNameIs + pluginName);
   let returnData = false;
-
+  let allPluginsWorkflowData = D[sys.cCommandWorkflows][wrd.cPlugins];
+  if (allPluginsWorkflowData) {
+    try {
+      delete allPluginsWorkflowData[pluginName];
+      returnData = true;
+    } catch (err) {
+      // ERROR: Unable to remove the plugin workflows for the specified plugin:
+      console.log(msg.cremovePluginWorkflowsMessage01 + pluginName);
+      // ERROR:
+      console.log(msg.cerrorMessage + err.message);
+    }
+  } else {
+    // ERROR: Unable to locate the plugins workflow data. Plugin:
+    console.log(msg.cremovePluginWorkflowsMessage02 + pluginName);
+  }
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;

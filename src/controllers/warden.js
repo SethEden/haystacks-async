@@ -32,7 +32,7 @@ import chiefTheme from './chiefTheme.js';
 import chiefWorkflow from './chiefWorkflow.js';
 import configurator from '../executrix/configurator.js';
 import loggers from '../executrix/loggers.js';
-// import D from '../structures/data.js';
+import D from '../structures/data.js';
 // External imports
 import hayConst from '@haystacks/constants';
 import path from 'path';
