@@ -38,7 +38,7 @@
   "debugFunctions|debugSetting.framework.brokers.themeBroker.generateThemeDataFromPath@FunctionFontBackgroundColor": "Default",
   "debugFunctions|debugSetting.framework.brokers.themeBroker.generateThemeDataFromPath@MessageFontBackgroundColor": "Default",
   "debugFunctions|debugSetting.framework.brokers.themeBroker.generateThemeDataFromPath@DataFontBackgroundColor": "Default",
-  "debugFunctions|debugSetting.framework.brokers.themeBroker.addThemeData": true,
+  "debugFunctions|debugSetting.framework.brokers.themeBroker.addThemeData": false,
   "debugFunctions|debugSetting.framework.brokers.themeBroker.addThemeData@ModuleFontStyle": "Default",
   "debugFunctions|debugSetting.framework.brokers.themeBroker.addThemeData@FunctionFontStyle": "Default",
   "debugFunctions|debugSetting.framework.brokers.themeBroker.addThemeData@MessageFontStyle": "Default",

@@ -25,7 +25,7 @@
   "debugFunctions|debugSetting.framework.controllers.chiefTheme.initThemes@FunctionFontBackgroundColor": "Default",
   "debugFunctions|debugSetting.framework.controllers.chiefTheme.initThemes@MessageFontBackgroundColor": "Default",
   "debugFunctions|debugSetting.framework.controllers.chiefTheme.initThemes@DataFontBackgroundColor": "Default",
-  "debugFunctions|debugSetting.framework.controllers.chiefTheme.addThemeData": true,
+  "debugFunctions|debugSetting.framework.controllers.chiefTheme.addThemeData": false,
   "debugFunctions|debugSetting.framework.controllers.chiefTheme.addThemeData@ModuleFontStyle": "Default",
   "debugFunctions|debugSetting.framework.controllers.chiefTheme.addThemeData@FunctionFontStyle": "Default",
   "debugFunctions|debugSetting.framework.controllers.chiefTheme.addThemeData@MessageFontStyle": "Default",
