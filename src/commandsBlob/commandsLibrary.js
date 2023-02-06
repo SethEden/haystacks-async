@@ -35,7 +35,6 @@ import D from '../structures/data.js';
 // External imports
 import hayConst from '@haystacks/constants';
 import path from 'path';
-import plugins from './commands/plugins.js'
 
 const {bas, cmd, msg, sys, wrd} = hayConst;
 const baseFileName = path.basename(import.meta.url, path.extname(import.meta.url));
@@ -113,21 +112,22 @@ async function initCommandsLibrary() {
     // ***********************************************
     // Plugin commands in order
     // ***********************************************
-    [cmd.clistAllPluginsInRegistry]: (inputData, inputMetaData) => plugins.listAllPluginsInRegistry(inputData, inputMetaData),
-    [cmd.clistAllPluginsInRegistryPath]: (inputData, inputMetaData) => plugins.listAllPluginsInRegistryPath(inputData, inputMetaData),
-    [cmd.ccountPluginsInRegistry]: (inputData, inputMetaData) => plugins.countPluginsInRegistry(inputData, inputMetaData),
-    [cmd.ccountPluginsInRegistryPath]: (inputData, inputMetaData) => plugins.countPluginsInRegistryPath(inputData, inputMetaData),
-    [cmd.cregisterPlugin]: (inputData, inputMetaData) => plugins.registerPlugin(inputData, inputMetaData),
-    [cmd.cunregisterPlugin]: (inputData, inputMetaData) => plugins.unregisterPlugin(inputData, inputMetaData),
-    [cmd.csyncPluginRegistryWithPath]: (inputData, inputMetaData) => plugins.syncPluginRegistryWithPath(inputData, inputMetaData),
-    [cmd.cunregisterAllPlugins]: (inputData, inputMetaData) => plugins.unregisterAllPlugins(inputData, inputMetaData),
-    [cmd.csavePluginRegistryToDisk]: (inputData, inputMetaData) => plugins.savePluginRegistryToDisk(inputData, inputMetaData),
-    [cmd.cloadPlugin]: (inputData, inputMetaData) => plugins.loadPlugin(inputData, inputMetaData),
-    [cmd.cloadPlugins]: (inputData, inputMetaData) => plugins.loadPlugins(inputData, inputMetaData),
-    [cmd.cloadPluginsFromRegistry]: (inputData, inputMetaData) => plugins.loadPluginsFromRegistry(inputData, inputMetaData),
-    [cmd.cunloadPlugin]: (inputData, inputMetaData) => plugins.unloadPlugin(inputData, inputMetaData),
-    [cmd.cunloadPlugins]: (inputData, inputMetaData) => plugins.unloadPlugins(inputData, inputMetaData),
-    [cmd.cunloadAllPlugins]: (inputData, inputMetaData) => plugins.unloadAllPlugins(inputData, inputMetaData),
+    [cmd.clistAllLoadedPlugins]: (inputData, inputMetaData) => pluginCommands.listAllLoadedPlugins(inputData, inputMetaData),
+    [cmd.clistAllPluginsInRegistry]: (inputData, inputMetaData) => pluginCommands.listAllPluginsInRegistry(inputData, inputMetaData),
+    [cmd.clistAllPluginsInRegistryPath]: (inputData, inputMetaData) => pluginCommands.listAllPluginsInRegistryPath(inputData, inputMetaData),
+    [cmd.ccountPluginsInRegistry]: (inputData, inputMetaData) => pluginCommands.countPluginsInRegistry(inputData, inputMetaData),
+    [cmd.ccountPluginsInRegistryPath]: (inputData, inputMetaData) => pluginCommands.countPluginsInRegistryPath(inputData, inputMetaData),
+    [cmd.cregisterPlugin]: (inputData, inputMetaData) => pluginCommands.registerPlugin(inputData, inputMetaData),
+    [cmd.cunregisterPlugin]: (inputData, inputMetaData) => pluginCommands.unregisterPlugin(inputData, inputMetaData),
+    [cmd.csyncPluginRegistryWithPath]: (inputData, inputMetaData) => pluginCommands.syncPluginRegistryWithPath(inputData, inputMetaData),
+    [cmd.cunregisterAllPlugins]: (inputData, inputMetaData) => pluginCommands.unregisterAllPlugins(inputData, inputMetaData),
+    [cmd.csavePluginRegistryToDisk]: (inputData, inputMetaData) => pluginCommands.savePluginRegistryToDisk(inputData, inputMetaData),
+    [cmd.cloadPlugin]: (inputData, inputMetaData) => pluginCommands.loadPlugin(inputData, inputMetaData),
+    [cmd.cloadPlugins]: (inputData, inputMetaData) => pluginCommands.loadPlugins(inputData, inputMetaData),
+    [cmd.cloadPluginsFromRegistry]: (inputData, inputMetaData) => pluginCommands.loadPluginsFromRegistry(inputData, inputMetaData),
+    [cmd.cunloadPlugin]: (inputData, inputMetaData) => pluginCommands.unloadPlugin(inputData, inputMetaData),
+    [cmd.cunloadPlugins]: (inputData, inputMetaData) => pluginCommands.unloadPlugins(inputData, inputMetaData),
+    [cmd.cunloadAllPlugins]: (inputData, inputMetaData) => pluginCommands.unloadAllPlugins(inputData, inputMetaData),
 
     // ***********************************************
     // System commands in order

@@ -91,6 +91,40 @@ async function storePluginRegistryInDataStructure(pluginRegistryData) {
 }
 
 /**
+ * @function listAllLoadedPlugins
+ * @description Builds a list array of the names of the plugins that are currently loaded.
+ * @return {array<string>} A list array of the names of the plugins that are currently loaded in the Haystacks platform.
+ * @author Seth Hollingsead
+ * @date 2023/02/06
+ */
+async function listAllLoadedPlugins() {
+  let functionName = listAllLoadedPlugins.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  let returnData = [];
+  let pluginsLoadedList = D[sys.cpluginsLoaded];
+  // pluginsLoadedList is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginsLoadedListIs + JSON.stringify(pluginsLoadedList));
+  if (Array.isArray(pluginsLoadedList) === true && pluginsLoadedList.length >= 1) {
+    // pluginsLoadedList is an array and length greater than or equal to 1
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cunloadPluginMessage01);
+    for (let pluginLoadedKey in pluginsLoadedList) {
+      // pluginLoadedKey is:
+      await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginLoadedKeyIs + pluginLoadedKey);
+      let pluginLoadedEntry = pluginsLoadedList[pluginLoadedKey];
+      // pluginLoadedEntry is:
+      await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginLoadedEntryIs + JSON.stringify(pluginLoadedEntry));
+      // pluginLoadedEntry name is:
+      await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginLoadedEntryNameIs + pluginLoadedEntry[0]);
+      returnData.push(pluginLoadedEntry[0]);
+    }// End-for (let pluginLoadedKey in pluginsLoadedList)
+  } // End-if (Array.isArray(pluginsLoadedList) === true && pluginsLoadedList >= 1)
+  // List of loaded plugins is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
+/**
  * @function listPluginsInRegistry
  * @description Builds a list array of the names of the plugins in the plugin registry.
  * @return {array<string>} A list array of the names of the plugins in the plugin registry.
@@ -712,6 +746,27 @@ async function unloadPlugin(pluginName) {
   let themeDataRemovalSuccess = await themeBroker.removePluginThemeData(pluginName);
   let constantsValidationDataRemovalSuccess = await constantBroker.removePluginConstantsValidationData(pluginName);
 
+  // Still need to remove the plugin from the list of loaded plugins.
+  let pluginsLoadedList = D[sys.cpluginsLoaded];
+  // pluginsLoadedList is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginsLoadedListIs + JSON.stringify(pluginsLoadedList));
+  if (Array.isArray(pluginsLoadedList) === true && pluginsLoadedList.length >= 1) {
+    // pluginsLoadedList is an array and length greater than or equal to 1
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cunloadPluginMessage01);
+    for (let pluginLoadedKey in pluginsLoadedList) {
+      // pluginLoadedKey is:
+      await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginLoadedKeyIs + pluginLoadedKey);
+      let pluginLoadedEntry = pluginsLoadedList[pluginLoadedKey];
+      // pluginLoadedEntry is:
+      await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginLoadedEntryIs + JSON.stringify(pluginLoadedEntry));
+      // pluginLoadedEntry name is:
+      await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginLoadedEntryNameIs + pluginLoadedEntry[0]);
+      if (pluginLoadedEntry[0] === pluginName) {
+        pluginsLoadedList.splice(pluginLoadedKey, 1);
+      } // End-if (pluginLoadedEntry[0] === pluginName)
+    } // End-for (let pluginLoadedKey in pluginsLoadedList)
+  } // End-if (Array.isArray(pluginsLoadedList) === true && pluginsLoadedList >= 1)
+
   if (businessRulesRemovalSuccess === true &&
     commandsRemovalSuccess === true &&
     configurationDataRemovalSuccess === true &&
@@ -757,6 +812,7 @@ async function unloadPlugin(pluginName) {
 export default {
   loadPluginRegistry,
   storePluginRegistryInDataStructure,
+  listAllLoadedPlugins,
   listPluginsInRegistry,
   listPluginsPathsInRegistry,
   listPluginsAttributeInRegistry,

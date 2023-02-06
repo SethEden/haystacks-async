@@ -37,7 +37,7 @@ import loggers from '../executrix/loggers.js';
 import hayConst from '@haystacks/constants';
 import path from 'path';
 
-const {bas, biz, cfg, gen, msg, sys, wrd} = hayConst;
+const {bas, biz, cmd, cfg, gen, msg, sys, wrd} = hayConst;
 const baseFileName = path.basename(import.meta.url, path.extname(import.meta.url));
 // framework.controllers.warden.
 const namespacePrefix = wrd.cframework + bas.cDot + wrd.ccontrollers + bas.cDot + baseFileName + bas.cDot;
@@ -359,6 +359,24 @@ async function loadCommandWorkflows(workflowPathConfigName) {
 }
 
 /**
+ * @function listLoadedPlugins
+ * @description This is a wrapper function for chiefPlugin.listLoadedPlugins.
+ * Which is in-turn a wrapper function for pluginBroker.listAllLoadedPlugins.
+ * @return {array<string>} A list array of the names of the plugins that are currently loaded.
+ * @author Seth Hollingsead
+ * @date 2023/02/06
+ */
+async function listLoadedPlugins() {
+  let functionName = listLoadedPlugins.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  let returnData = [];
+  returnData = await chiefPlugin.listLoadedPlugins();
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
+/**
  * @function listAllPluginsInRegistry
  * @description This is a wrapper function for chiefPlugin.getAllPluginsInRegistry.
  * Which is in-turn a wrapper function for pluginBroker.listPluginsInRegistry.
@@ -667,8 +685,23 @@ async function unloadPlugins(pluginNames) {
   // pluginNames is:
   await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginNamesIs + JSON.stringify(pluginNames));
   let returnData = false;
-  // TODO: Unload the plugins here!!
-  console.log('TODO: Unload the plugins here!!');
+  let noFailureEncountered = true;
+  if (Array.isArray(pluginNames) === true) {
+    for (let pluginNameKey in pluginNames) {
+      let pluginName = pluginNames[pluginNameKey];
+      if (pluginName) {
+        await enqueueCommand(cmd.cunloadPlugin + bas.cSpace + pluginName);
+        
+      } else {
+        // ERROR: No plugin name specified:
+        console.log(msg.cErrorUnloadPluginsMessage01 + pluginName);
+        noFailureEncountered = false;
+      }
+    }
+  } // End-if (Array.isArray(pluginNames) === true)
+  if (noFailureEncountered === true) {
+    returnData = true;
+  }
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
@@ -686,8 +719,8 @@ async function unloadAllPlugins() {
   let functionName = unloadAllPlugins.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   let returnData = false;
-  // TODO: Unload ALL the plugins here!
-  console.log('TODO: Unload ALL the plugins here!');
+  let allLoadedPlugins = await listLoadedPlugins();
+  returnData = await unloadPlugins(allLoadedPlugins);
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
@@ -898,6 +931,7 @@ export default {
   mergeClientCommands,
   loadCommandAliases,
   loadCommandWorkflows,
+  listLoadedPlugins,
   listAllPluginsInRegistry,
   listAllPluginsInRegistryPath,
   numberOfPluginsInRegistry,

@@ -71,6 +71,23 @@ async function persistPluginRegistryToDataStructure(pluginRegistryData) {
 }
 
 /**
+ * @function listLoadedPlugins
+ * @description This is a wrapper function for pluginBroker.listAllLoadedPlugins.
+ * @return {array<string>} A list array of the names of the plugins that are currently loaded.
+ * @author Seth Hollingsead
+ * @date 2023/02/06
+ */
+async function listLoadedPlugins() {
+  let functionName = listLoadedPlugins.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  let returnData = [];
+  returnData = await pluginBroker.listAllLoadedPlugins();
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
+/**
  * @function getAllPluginsInRegistry
  * @description This is a wrapper function for pluginBroker.listPluginsInRegistry.
  * @return {array<string>} A list array of the names of the plugins in the plugin registry.
@@ -556,6 +573,7 @@ async function unloadPlugin(pluginName) {
 export default {
   loadPluginRegistryData,
   persistPluginRegistryToDataStructure,
+  listLoadedPlugins,
   getAllPluginsInRegistry,
   getAllPluginsPathsInRegistry,
   getAllPluginsInRegistryPath,

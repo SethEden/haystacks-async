@@ -26,6 +26,32 @@ const baseFileName = path.basename(import.meta.url, path.extname(import.meta.url
 const namespacePrefix = wrd.cframework + bas.cDot + sys.ccommandsBlob + bas.cDot + wrd.ccommands + bas.cDot + baseFileName + bas.cDot;
 
 /**
+ * @function listAllLoadedPlugins
+ * @description This is a command function that calls the warden.listLoadedPlugins function
+ * @param {string} inputData Not used for this command.
+ * @param {string} inputMetaData Not used for this command.
+ * @return {array<boolean,array<string>>} An array with a boolean True or False value to indicate if
+ * the application should exit or not, followed by the list of plugins that have been loaded.
+ * @author Seth Hollingsead
+ * @date 2023/02/06
+ */
+async function listAllLoadedPlugins(inputData, inputMetaData) {
+  let functionName = listAllLoadedPlugins.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
+  let returnData = [true, []];
+  returnData[1] = await warden.listLoadedPlugins();
+  if (returnData[1] === false) {
+    // ERROR: There was an error getting the list of loaded plugins.
+    console.log(namespacePrefix + functionName + msg.cErrorListAllLoadedPluginsMessage01);
+  }
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
+/**
  * @function listAllPluginsInRegistry
  * @description This is a command function that calls the chiefPlugin.getAllPluginsInRegistry function.
  * @param {string} inputData Not used for this command.
@@ -44,7 +70,7 @@ async function listAllPluginsInRegistry(inputData, inputMetaData) {
   returnData[1] = await chiefPlugin.getAllPluginsInRegistry();
   if (returnData[1] === false) {
     // ERROR: There was an error getting the list of plugins from the registry.
-    console.log(namespacePrefix + functionName + msg.cErrorListAllPluginsInRegistryCommandMessage01);
+    console.log(namespacePrefix + functionName, + msg.cErrorListAllPluginsInRegistryCommandMessage01);
   }
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
@@ -418,8 +444,15 @@ async function unloadPlugins(inputData, inputMetaData) {
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = [true, false];
-  if (inputData.length === 2) { // TODO: Should probably also confirm it's an array here.
-    returnData[1] = await warden.unloadPlugins(inputData[1]);
+  let pluginNameArray = [];
+  if (Array.isArray(inputData) === true && inputData.length >= 2) {
+    if (inputData.length === 2 && inputData[1].includes(bas.cComa) === true) {
+      pluginNameArray = inputData[1].split(bas.cComa);
+    } else {
+      inputData.shift();
+      pluginNameArray = inputData;
+    }
+    returnData[1] = await warden.unloadPlugins(pluginNameArray);
   } else {
     // ERROR: Failure to unload the specified plugins, invalid input:
     console.log(msg.cErrorUnloadPluginsCommandMessage01 + JSON.stringify(inputData));
@@ -457,6 +490,7 @@ async function unloadAllPlugins(inputData, inputMetaData) {
 }
 
 export default {
+  listAllLoadedPlugins,
   listAllPluginsInRegistry,
   listAllPluginsInRegistryPath,
   countPluginsInRegistry,

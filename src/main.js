@@ -209,6 +209,26 @@ async function loadCommandWorkflows(workflowPath, contextName) {
 }
 
 /**
+ * @function listLoadedPlugins
+ * @description This is a wrapper function for warden.listLoadedPlugins.
+ * Which is in-turn a wrapper function for chiefPlugin.listLoadedPlugins.
+ * Which is in-turn a wrapper function for pluginBroker.listAllLoadedPlugins.
+ * @return {array<string>} A list array of the names of the plugins that are currently loaded.
+ * @author Seth Hollingsead
+ * @date 2023/02/06
+ */
+async function listLoadedPlugins() {
+  let functionName = listLoadedPlugins.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  let returnData = [];
+  returnData = await warden.listLoadedPlugins();
+  console.log(msg.clistAllLoadedPluginsMessage01 + returnData.join(bas.cComa));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
+/**
  * @function listAllPluginsInRegistry
  * @description This is a wrapper function for warden.listAllPluginsInRegistry.
  * Which is in-turn a wrapper function for chiefPlugin.getAllPluginsInRegistry.
@@ -706,6 +726,7 @@ export default {
   mergeClientCommands,
   loadCommandAliases,
   loadCommandWorkflows,
+  listLoadedPlugins,
   listAllPluginsInRegistry,
   listAllPluginsInRegistryPath,
   numberOfPluginsInRegistry,
