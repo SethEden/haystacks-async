@@ -478,7 +478,7 @@ async function integratePluginData(pluginName, pluginData) {
     workflowsIntegrationResult = await pluginBroker.integratePluginWorkflows(pluginName, pluginData[wrd.cdata][sys.cCommandWorkflows])
     constantsValidationDataIntegrationResult = await chiefConstant.addConstantsValidationData(pluginData[wrd.cdata][sys.cpluginConstantsValidationData],
       wrd.cPlugin + bas.cColon + pluginName);
-    themeDataIntegrationResult = await chiefTheme.addThemeData(pluginData[wrd.cdata], pluginName);
+    themeDataIntegrationResult = await chiefTheme.addThemeData(pluginData[wrd.cdata][wrd.cThemes], wrd.cPlugin + bas.cColon + pluginName);
   } else {
     // ERROR: Invalid input, either the plugin name or plugin data was undefined. Please provide valid data and try again.
     console.log(msg.cErrorIntegratePluginDataMessage01);
