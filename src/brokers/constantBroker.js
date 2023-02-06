@@ -384,7 +384,21 @@ async function removePluginConstantsValidationData(pluginName) {
   // pluginName is:
   await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginNameIs + pluginName);
   let returnData = false;
-
+  let allPluginsConstantsValidationData = D[sys.cConstantsValidationData][wrd.cPlugins];
+  if (allPluginsConstantsValidationData) {
+    try {
+      delete allPluginsConstantsValidationData[pluginName];
+      returnData = true;
+    } catch (err) {
+      // ERROR: Unable to remove the plugin constants validation data for the specified plugin:
+      console.log(msg.cremovePluginConstantsValidationDataMessage01 + pluginName);
+      // ERROR:
+      console.log(msg.cerrorMessage + err.message);
+    }
+  } else {
+    // ERROR: Unable to locate the plugins constants validatino data. Plugin:
+    console.log(msg.cremovePluginConstantsValidationDataMessage02 + pluginName);
+  }
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;

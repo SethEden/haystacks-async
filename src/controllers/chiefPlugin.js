@@ -382,6 +382,8 @@ async function loadAllPlugins(pluginsExecutionPaths, pluginsMetaData) {
         // Load the data and add it.
         try {
           returnData[pluginMetaData[wrd.cname]] = await pluginBroker.loadPlugin(pluginExecutionPath);
+          // loaded plugin:
+          console.log(msg.cloadedPlugin + pluginMetaData[wrd.cname]);
         } catch (err) {
           // Failed to load the plugin:
           console.log(msg.cERROR_Colon + namespacePrefix + functionName + msg.cloadAllPluginsMessage01 + pluginMetaData[wrd.cname]);

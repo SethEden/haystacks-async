@@ -251,7 +251,21 @@ async function removePluginThemeData(pluginName) {
   // pluginName is:
   await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginNameIs + pluginName);
   let returnData = false;
-
+  let allPluginsThemesData = D[wrd.cThemes][wrd.cPlugins];
+  if (allPluginsThemesData) {
+    try {
+      delete allPluginsThemesData[pluginName];
+      returnData = true;
+    } catch (err) {
+      // ERROR: Unable to remove the plugin themes for the specified plugin:
+      console.log(msg.cremovePluginThemesMessage01 + pluginName);
+      // ERROR:
+      console.log(msg.cerrorMessage + err.message);
+    }
+  } else {
+    // ERROR: Unable to locate the plugins themes data. Plugin:
+    console.log(msg.cremovePluginThemesMessage02 + pluginName);
+  }
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;

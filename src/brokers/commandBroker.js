@@ -314,7 +314,7 @@ async function searchCommandAlias(commandAliasData, commandAliasName) {
       await loggers.consoleLog(namespacePrefix + functionName, msg.ccommandAliasEntityIs + JSON.stringify(commandAliasEntity));
       // commandAliasEntityValue is:
       await loggers.consoleLog(namespacePrefix + functionName, msg.ccommandAliasEntityValueIs + JSON.stringify(commandAliasData[commandAliasEntity]));
-      if (commandAliasEntity.toUpperCase() != commandAliasName.toUpperCase()) {
+      if (commandAliasEntity.toUpperCase() != commandAliasName.toUpperCase() && commandAliasData[commandAliasEntity]) {
         if (commandAliasData[commandAliasEntity][wrd.cAliases] != undefined) {
           let aliasList = commandAliasData[commandAliasEntity][wrd.cAliases];
           let arrayOfAliases = aliasList.split(bas.cComa);
