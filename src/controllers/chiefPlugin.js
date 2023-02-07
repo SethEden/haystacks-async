@@ -219,6 +219,26 @@ async function unregisterNamedPlugin(pluginName) {
 }
 
 /**
+ * @function unregisterPlugins
+ * @description This is a wrapper function for pluginBroker.unregisterPlugins.
+ * @param {array<string>} pluginListArray A list array of plugin names that should be removed from the plugin registry.
+ * @return {boolean} True or False to indicate if all the plugins were removed from the plugin registry successfully or not.
+ * @author Seth Hollingsead
+ * @date 2023/02/07
+ */
+async function unregisterPlugins(pluginListArray) {
+  let functionName = unregisterPlugins.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  // pluginListArray is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginListArrayIs + JSON.stringify(pluginListArray));
+  let returnData = false;
+  returnData = await pluginBroker.unregisterPlugins(pluginListArray);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
+/**
  * @function synchronizePluginRegistryWithPath
  * @description This is a wrapper function for pluginBroker.syncPluginRegistryWithPluginRegistryPath.
  * @return {boolean} True or False to indicate if the synchronization was performed successfully or not.
@@ -581,6 +601,7 @@ export default {
   countAllPluginsInRegistryPath,
   registerNamedPlugin,
   unregisterNamedPlugin,
+  unregisterPlugins,
   synchronizePluginRegistryWithPath,
   clearPluginRegistry,
   savePluginRegistryDisk,

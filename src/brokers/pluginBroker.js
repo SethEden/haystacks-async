@@ -330,6 +330,42 @@ async function unregisterPlugin(pluginName) {
 }
 
 /**
+ * @function unregisterPlugins
+ * @description Removes a list of plugins from the plugin registry data hive, by calling unregisterPlugin for each one.
+ * @param {array<string>} pluginListArray A list array of plugin names that should be removed from the plugin registry.
+ * @return {boolean} True or False to indicate if all the plugins were removed from the plugin registry successfully or not.
+ * @author Seth Hollingsead
+ * @date 2023/02/07
+ */
+async function unregisterPlugins(pluginListArray) {
+  let functionName = unregisterPlugins.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  // pluginListArray is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginListArrayIs + JSON.stringify(pluginListArray));
+  let returnData = true;
+  let noErrorFound = true;
+  if (Array.isArray(pluginListArray) === true && pluginListArray.length >= 1) {
+    for (let pluginNameKey in pluginListArray) {
+      let pluginName = pluginListArray[pluginNameKey];
+      // pluginName is:
+      await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginNameIs + pluginName);
+      if (pluginName) {
+        noErrorFound = await unregisterPlugin(pluginName);
+      } else {
+        // ERROR: The plugin name was not a valid name: 
+        console.log(msg.cErrorUnregisterPluginsMessage01 + pluginName);
+      }
+      if (noErrorFound === false) {
+        returnData = false;
+      }
+    } // End-for (let pluginNameKey in pluginListArray)
+  } // End-if (Array.isArray(pluginListArray) === true && pluginListArray.length >= 1)
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
+/**
  * @function syncPluginRegistryWithPluginRegistryPath
  * @description performs a synchronization procedure on the plugin registry to ensure that the contents and
  * plugins registered in the plugin registry match with the list of plugin folders located at the path specified in
@@ -823,6 +859,7 @@ export default {
   countPluginsInRegistryPath,
   registerPlugin,
   unregisterPlugin,
+  unregisterPlugins,
   syncPluginRegistryWithPluginRegistryPath,
   unregisterAllPlugins,
   savePluginRegistry,

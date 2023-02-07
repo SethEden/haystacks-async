@@ -212,7 +212,7 @@ async function unregisterPlugin(inputData, inputMetaData) {
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = [true, false];
-  if (inputData.length === 2 && typeof(inputData[1]) === wrd.cstring) {
+  if (Array.isArray(inputData) === true && inputData.length === 2 && typeof(inputData[1]) === wrd.cstring) {
     returnData[1] = await chiefPlugin.unregisterNamedPlugin(inputData[1]);
   } else {
     // ERROR: Failure to unregister the specified plugin, invalid input:
@@ -227,10 +227,39 @@ async function unregisterPlugin(inputData, inputMetaData) {
  * @function unregisterPlugins
  * @description This is a command function that calls chiefPlugin.unregisterPlugins function.
  * @param {array<string>} inputData An array that could actually contain anything,
- * @param {*} inputMetaData 
+ * depending on what the user entered. But the function filters all of that internally and
+ * extracts the case the user has entered the correct input as follows:
+ * inputData[0] = 'unregisterPlugins'
+ * inputData[1] = pluginName1,pluginName2,pluginNameX...
+ * @param {string} inputMetaData Not used for this command.
+ * @return {array<boolean,boolean>} An array with a boolean True or False value to indicate if
+ * the application should exit or not exit, followed by another boolean value to indicate if
+ * the plugins were unregistered successfully or not.
+ * @author Seth Hollingsead
+ * @date 2023/02/07
  */
 async function unregisterPlugins(inputData, inputMetaData) {
-
+  let functionName = unregisterPlugins.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
+  let returnData = [true, false];
+  let pluginListArray = [];
+  if (Array.isArray(inputData) === true && inputData.length >= 2 && typeof(inputData[1]) === wrd.cstring) {
+    if (inputData[1].includes(bas.cComa) === true) {
+      pluginListArray = inputData[1].split(bas.cComa);
+    } else if (inputData.length >= 3) {
+      inputData.shift();
+      pluginListArray = inputData;
+    }
+    returnData[1] = await chiefPlugin.unregisterPlugins(pluginListArray);
+  } else {
+    // ERROR: Failure to unregister any of the specified plugins, invalid input:
+    console.log(msg.cErrorUnregisterPluginsCommandMessage01 + JSON.stringify(inputData));
+  }
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
 }
 
 /**
@@ -511,6 +540,7 @@ export default {
   countPluginsInRegistryPath,
   registerPlugin,
   unregisterPlugin,
+  unregisterPlugins,
   syncPluginRegistryWithPath,
   unregisterAllPlugins,
   savePluginRegistryToDisk,

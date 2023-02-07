@@ -119,6 +119,7 @@ async function initCommandsLibrary() {
     [cmd.ccountPluginsInRegistryPath]: (inputData, inputMetaData) => pluginCommands.countPluginsInRegistryPath(inputData, inputMetaData),
     [cmd.cregisterPlugin]: (inputData, inputMetaData) => pluginCommands.registerPlugin(inputData, inputMetaData),
     [cmd.cunregisterPlugin]: (inputData, inputMetaData) => pluginCommands.unregisterPlugin(inputData, inputMetaData),
+    [cmd.cunregisterPlugins]: (inputData, inputMetaData) => pluginCommands.unregisterPlugins(inputData, inputMetaData),
     [cmd.csyncPluginRegistryWithPath]: (inputData, inputMetaData) => pluginCommands.syncPluginRegistryWithPath(inputData, inputMetaData),
     [cmd.cunregisterAllPlugins]: (inputData, inputMetaData) => pluginCommands.unregisterAllPlugins(inputData, inputMetaData),
     [cmd.csavePluginRegistryToDisk]: (inputData, inputMetaData) => pluginCommands.savePluginRegistryToDisk(inputData, inputMetaData),
