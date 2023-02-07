@@ -352,6 +352,37 @@ async function unregisterPluginByName(pluginName) {
 }
 
 /**
+ * @function unregisterPlugins
+ * @description This is a wrapper function for warden.unregisterPlugins.
+ * Which is in-turn a wrapper function for chiefPlugin.unregisterPlugins.
+ * Which is in-turn a wrapper function for pluginBroker.unregisterPlugins.
+ * @param {string|array<string>} pluginsListArray A string or list array of plugin names that should be removed from the plugin registry.
+ * @return {boolean} True or False to indicate if all the plugins were successfully removed from the plugin registry or not.
+ * @author Seth Hollingsead
+ * @date 2023/02/07
+ */
+async function unregisterPlugins(inputData) {
+  let functionName = unregisterPlugins.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginListArrayIs + JSON.stringify(inputData));
+  let returnData = false;
+  let pluginsListArray = [];
+  if (Array.isArray(inputData) === true && inputData.length >= 1) {
+    pluginsListArray = inputData;
+  } else if (inputData.includes(bas.cComa) === true) {
+    pluginsListArray = inputData.split(bas.cComa);
+  } else if (inputData.includes(bas.cSpace) === true) {
+    pluginsListArray = inputData.split(bas.cSpace);
+  }
+  // pluginsListArray is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginsListArrayIs + JSON.stringify(pluginsListArray));
+  returnData = await warden.unregisterPlugins(pluginsListArray);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
+/**
  * @function syncPluginRegistryWithPath
  * @description This is a wrapper function for warden.syncPluginRegistryWithPath.
  * Which is in-turn a wrapper function for chiefPlugin.synchronizePluginRegistryWithPath.
@@ -732,6 +763,7 @@ export default {
   numberOfPluginsInRegistryPath,
   registerPluginByNameAndPath,
   unregisterPluginByName,
+  unregisterPlugins,
   syncPluginRegistryWithPath,
   clearAllPluginRegistry,
   writePluginRegistryToDisk,
