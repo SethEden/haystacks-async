@@ -570,6 +570,25 @@ async function unloadAllPlugins() {
 }
 
 /**
+ * @function getPluginsRegistryPath
+ * @description A wrapper call to the warden.getPluginsRegistryPath function. 
+ * Which is in-turn a wrapper function for the chiefPlugin.getPluginsRegistryPath.
+ * Which is in-turn a wrapper function for pluginBroker.getPluginsRegistryPath.
+ * @return {string} The path to the plugins listed in the plugin registry as meta-data.
+ * @author Seth Hollingsead
+ * @date 2023/02/07
+ */
+async function getPluginsRegistryPath() {
+  let functionName = getPluginsRegistryPath.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  let returnData = '';
+  returnData = await warden.getPluginsRegistryPath();
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
+/**
  * @function loadPluginResourceData
  * @description A wrapper call to the warden.loadPluginResourceData function.
  * @param {string} contextName The type of resource that is being loaded, eg: configuration, commandAliases, workflows, ect...
@@ -773,6 +792,7 @@ export default {
   unloadPlugin,
   unloadPlugins,
   unloadAllPlugins,
+  getPluginsRegistryPath,
   loadPluginResourceData,
   executeBusinessRules,
   enqueueCommand,

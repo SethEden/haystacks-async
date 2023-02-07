@@ -116,7 +116,7 @@
   "debugFunctions|debugSetting.framework.controllers.chiefPlugin.countAllPluginsInRegistryPath@FunctionFontBackgroundColor": "Default",
   "debugFunctions|debugSetting.framework.controllers.chiefPlugin.countAllPluginsInRegistryPath@MessageFontBackgroundColor": "Default",
   "debugFunctions|debugSetting.framework.controllers.chiefPlugin.countAllPluginsInRegistryPath@DataFontBackgroundColor": "Default",
-  "debugFunctions|debugSetting.framework.controllers.chiefPlugin.registerNamedPlugin": false,
+  "debugFunctions|debugSetting.framework.controllers.chiefPlugin.registerNamedPlugin": true,
   "debugFunctions|debugSetting.framework.controllers.chiefPlugin.registerNamedPlugin@ModuleFontStyle": "Default",
   "debugFunctions|debugSetting.framework.controllers.chiefPlugin.registerNamedPlugin@FunctionFontStyle": "Default",
   "debugFunctions|debugSetting.framework.controllers.chiefPlugin.registerNamedPlugin@MessageFontStyle": "Default",
@@ -284,5 +284,18 @@
   "debugFunctions|debugSetting.framework.controllers.chiefPlugin.unloadPlugin@ModuleFontBackgroundColor": "Default",
   "debugFunctions|debugSetting.framework.controllers.chiefPlugin.unloadPlugin@FunctionFontBackgroundColor": "Default",
   "debugFunctions|debugSetting.framework.controllers.chiefPlugin.unloadPlugin@MessageFontBackgroundColor": "Default",
-  "debugFunctions|debugSetting.framework.controllers.chiefPlugin.unloadPlugin@DataFontBackgroundColor": "Default"
+  "debugFunctions|debugSetting.framework.controllers.chiefPlugin.unloadPlugin@DataFontBackgroundColor": "Default",
+  "debugFunctions|debugSetting.framework.controllers.chiefPlugin.getPluginsRegistryPath": true,
+  "debugFunctions|debugSetting.framework.controllers.chiefPlugin.getPluginsRegistryPath@ModuleFontStyle": "Default",
+  "debugFunctions|debugSetting.framework.controllers.chiefPlugin.getPluginsRegistryPath@FunctionFontStyle": "Default",
+  "debugFunctions|debugSetting.framework.controllers.chiefPlugin.getPluginsRegistryPath@MessageFontStyle": "Default",
+  "debugFunctions|debugSetting.framework.controllers.chiefPlugin.getPluginsRegistryPath@DataFontStyle": "Default",
+  "debugFunctions|debugSetting.framework.controllers.chiefPlugin.getPluginsRegistryPath@ModuleFontColor": "Default",
+  "debugFunctions|debugSetting.framework.controllers.chiefPlugin.getPluginsRegistryPath@FunctionFontColor": "Default",
+  "debugFunctions|debugSetting.framework.controllers.chiefPlugin.getPluginsRegistryPath@MessageFontColor": "Default",
+  "debugFunctions|debugSetting.framework.controllers.chiefPlugin.getPluginsRegistryPath@DataFontColor": "Default",
+  "debugFunctions|debugSetting.framework.controllers.chiefPlugin.getPluginsRegistryPath@ModuleFontBackgroundColor": "Default",
+  "debugFunctions|debugSetting.framework.controllers.chiefPlugin.getPluginsRegistryPath@FunctionFontBackgroundColor": "Default",
+  "debugFunctions|debugSetting.framework.controllers.chiefPlugin.getPluginsRegistryPath@MessageFontBackgroundColor": "Default",
+  "debugFunctions|debugSetting.framework.controllers.chiefPlugin.getPluginsRegistryPath@DataFontBackgroundColor": "Default"
 }

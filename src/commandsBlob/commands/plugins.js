@@ -180,11 +180,49 @@ async function registerPlugin(inputData, inputMetaData) {
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = [true, false];
+  let pluginName = '';
+  let pluginPath = '';
+  let foundValidData = false;
   if (inputData.length === 3 && typeof(inputData[1]) === wrd.cstring && typeof(inputData[2]) === wrd.cstring) {
-    returnData[1] = await chiefPlugin.registerNamedPlugin(inputData[1], inputData[2]);
+    pluginName = inputData[1];
+    pluginPath = inputData[2];
+    foundValidData = true;
+  } else if (inputData.length === 2 && typeof(inputData[1]) === wrd.cstring) {
+    if (inputData[1].includes(bas.cComa) === true) {
+      let pluginParametersArray = inputData[1].split(bas.cComa);
+      pluginName = pluginParametersArray[0];
+      pluginPath = pluginParametersArray[1];
+      foundValidData = true;
+    } else {
+      // The user must have only entered the name of the plugin they want to register.
+      // We should look up the plugin root path in the plugin registry and scan that folder to
+      // determine if a matching folder name that matches the user entered plugin name.
+      // If we find a match there, then we can just use that path.
+      pluginName = inputData[1];
+      // Check to see if this plugin name is found among the folders that are contained in the plugins registry path.
+      let pluginNameFolderMatchFound = false;
+      let pluginsInRegistryPathArray = await chiefPlugin.getAllPluginsInRegistryPath();
+      for (let pluginNameKey in pluginsInRegistryPathArray) {
+        let pluginNameFromPath = pluginsInRegistryPathArray[pluginNameKey];
+        if (pluginName === pluginNameFromPath) {
+          pluginNameFolderMatchFound = true;
+          break;
+        }
+      } // End-for (let pluginNameKey in pluginsInRegistryPathArray)
+      if (pluginNameFolderMatchFound === true) {
+        foundValidData = true;
+        pluginPath = await chiefPlugin.getPluginsRegistryPath();
+      } else {
+        // ERROR: Failure to find a matching plugin for the specified plugin name:
+        console.log(msg.cErrorRegisterPluginCommandMessage02 + JSON.stringify(pluginName));
+      }
+    }
   } else {
     // ERROR: Failure to register the specified plugin, invalid input: 
     console.log(msg.cErrorRegisterPluginCommandMessage01 + JSON.stringify(inputData));
+  }
+  if (foundValidData === true) {
+    returnData[1] = await chiefPlugin.registerNamedPlugin(pluginName, pluginPath);
   }
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
@@ -284,6 +322,30 @@ async function syncPluginRegistryWithPath(inputData, inputMetaData) {
     // ERROR: Failure to synchronize the plugin registry with the plugin path listed in the plugin registry.
     console.log(namespacePrefix + functionName + msg.cErrorSyncPluginRegistryWithPathCommandMessage01);
   }
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
+/**
+ * @function listPluginsRegistryPath
+ * @description Prints out the plugins path that is listed in the plugin registry meta-data.
+ * @param {string} inputData Not used for this command.
+ * @param {string} inputMetaData Not used for this command.
+ * @return {array<boolean,string>} An array with a boolean True or False value to indicate if
+ * the application should exit or not exit, followed by a string that is the plugins path.
+ * @author Seth Hollingsead
+ * @date 2023/02/07
+ */
+async function listPluginsRegistryPath(inputData, inputMetaData) {
+  let functionName = listPluginsRegistryPath.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
+  let returnData = [true, false];
+  returnData[1] = await chiefPlugin.getPluginsRegistryPath();
+  // plugins registry path is:
+  console.log(msg.cpluginsRegistryPathMessageIs + returnData[1]);
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
@@ -542,6 +604,7 @@ export default {
   unregisterPlugin,
   unregisterPlugins,
   syncPluginRegistryWithPath,
+  listPluginsRegistryPath,
   unregisterAllPlugins,
   savePluginRegistryToDisk,
   loadPlugin,

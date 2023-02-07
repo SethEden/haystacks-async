@@ -590,6 +590,23 @@ async function unloadPlugin(pluginName) {
   return returnData;
 }
 
+/**
+ * @function getPluginsRegistryPath
+ * @description This is a wrapper function for the pluginBroker.getPluginsRegistryPath.
+ * @return {string} The path to the plugins listed in the plugin registry as meta-data.
+ * @author Seth Hollingsead
+ * @date 2023/02/07
+ */
+async function getPluginsRegistryPath() {
+  let functionName = getPluginsRegistryPath.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  let returnData = '';
+  returnData = await pluginBroker.getPluginsRegistryPath();
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
 export default {
   loadPluginRegistryData,
   persistPluginRegistryToDataStructure,
@@ -611,5 +628,6 @@ export default {
   integrateAllPluginsData,
   integratePluginData,
   verifyAllPluginsLoaded,
-  unloadPlugin
+  unloadPlugin,
+  getPluginsRegistryPath
 };

@@ -252,7 +252,7 @@ async function countPluginsInRegistryPath() {
  * @function registerPlugin
  * @description Manually registers a plugin with the plugin registry data hive.
  * Allows for special case where plugins can be registered from a different path, then the path specified by the plugin registry.
- * Caution should be emphasised when loading plugins from a custom path location, this should be used primarily for debugging and triage use cases.
+ * Caution should be emphasized when loading plugins from a custom path location, this should be used primarily for debugging and triage use cases.
  * @param {string} pluginName The name of the plugin that should be registered. 
  * @param {string} pluginPath The path to the plugin, to be added to the plugin registry.
  * This should be the path to the plugin/package.json file, but not including the package.json as part of the path URI.
@@ -270,9 +270,36 @@ async function registerPlugin(pluginName, pluginPath) {
   let returnData = false;
   let pluginRegistrationEntry = {};
   try {
-    pluginRegistrationEntry = {Name: pluginName, Path: pluginPath};
-    D[cfg.cpluginRegistry][wrd.cplugins].push(pluginRegistrationEntry);
-    returnData = true;
+    if (pluginName && pluginPath) {
+      pluginRegistrationEntry = {Name: pluginName, Path: pluginPath};
+      // NOTE: We need to check and see if the plugin is already registered, and throw an error message if it is.
+      // To prevent the user from being able to register the same plugin multiple times.
+      let registeredPluginsArray = await listPluginsInRegistry();
+      let pluginIsRegistered = false;
+      for (let registeredPluginNameKey in registeredPluginsArray) {
+        let registeredPluginName = registeredPluginsArray[registeredPluginNameKey]
+        if (registeredPluginName === pluginName) {
+          pluginIsRegistered = true;
+          break;
+        }
+      }
+      if (pluginIsRegistered === false) {
+        D[cfg.cpluginRegistry][wrd.cplugins].push({[pluginName]: pluginRegistrationEntry});
+        returnData = true;
+      } else {
+        // ERROR: The specified plugin is already registered. Plugin name:
+        console.log(msg.cErrorRegisterPluginMessage02 + pluginName);
+      }    
+    } else {
+      if (!pluginName) {
+        // ERROR: Plugin Name is an invalid value:
+        console.log(msg.cErrorRegisterPluginMessage03 + pluginName);
+      }
+      if (!pluginPath) {
+        // ERROR: Plugin Path is an invalid value:
+        console.log(msg.cErrorRegisterPluginMessage04 + pluginPath);
+      }
+    }
   } catch (err) {
     // ERROR: Failure to register plugin:
     // pluginPath is:
@@ -847,6 +874,28 @@ async function unloadPlugin(pluginName) {
   return returnData;
 }
 
+/**
+ * @function getPluginsRegistryPath
+ * @description Looks up the plugin registry meta-data and finds the attribute that contains the plugins path.
+ * @return {string} The path to the plugins listed in the plugin registry as meta-data.
+ * @author Seth Hollingsead
+ * @date 2023/02/07
+ */
+async function getPluginsRegistryPath() {
+  let functionName = getPluginsRegistryPath.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  let returnData = '';
+  if (D[cfg.cpluginRegistry] !== 'undefined') {
+    returnData = D[cfg.cpluginRegistry][wrd.cpath]
+  } else {
+    // ERROR: There is no defined plugin registry.
+    console.log(msg.cErrorGetPluginsRegistryPathMessage01);
+  }
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
 export default {
   loadPluginRegistry,
   storePluginRegistryInDataStructure,
@@ -872,5 +921,6 @@ export default {
   integratePluginCommandAliases,
   integratePluginWorkflows,
   integratePluginThemeData,
-  unloadPlugin
+  unloadPlugin,
+  getPluginsRegistryPath
 };

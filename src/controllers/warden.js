@@ -748,6 +748,24 @@ async function unloadAllPlugins() {
 }
 
 /**
+ * @function getPluginsRegistryPath
+ * @description This is a wrapper function for the chiefPlugin.getPluginsRegistryPath.
+ * Which is in-turn a wrapper function for pluginBroker.getPluginsRegistryPath.
+ * @return {string} The path to the plugins listed in the plugin registry as meta-data.
+ * @author Seth Hollingsead
+ * @date 2023/02/07
+ */
+async function getPluginsRegistryPath() {
+  let functionName = getPluginsRegistryPath.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  let returnData = '';
+  returnData = await chiefPlugin.getPluginsRegistryPath();
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
+/**
  * @function loadPluginResourceData
  * @description Calls the necessary functions to load and parse the resource data from the specified path.
  * @param {string} contextName The type of resource that is being loaded, eg: configuration, commandAliases, workflows, ect...
@@ -969,6 +987,7 @@ export default {
   unloadPlugin,
   unloadPlugins,
   unloadAllPlugins,
+  getPluginsRegistryPath,
   loadPluginResourceData,
   executeBusinessRules,
   enqueueCommand,
