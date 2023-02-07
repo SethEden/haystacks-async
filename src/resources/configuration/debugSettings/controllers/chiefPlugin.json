@@ -129,7 +129,7 @@
   "debugFunctions|debugSetting.framework.controllers.chiefPlugin.registerNamedPlugin@FunctionFontBackgroundColor": "Default",
   "debugFunctions|debugSetting.framework.controllers.chiefPlugin.registerNamedPlugin@MessageFontBackgroundColor": "Default",
   "debugFunctions|debugSetting.framework.controllers.chiefPlugin.registerNamedPlugin@DataFontBackgroundColor": "Default",
-  "debugFunctions|debugSetting.framework.controllers.chiefPlugin.unregisterNamedPlugin": false,
+  "debugFunctions|debugSetting.framework.controllers.chiefPlugin.unregisterNamedPlugin": true,
   "debugFunctions|debugSetting.framework.controllers.chiefPlugin.unregisterNamedPlugin@ModuleFontStyle": "Default",
   "debugFunctions|debugSetting.framework.controllers.chiefPlugin.unregisterNamedPlugin@FunctionFontStyle": "Default",
   "debugFunctions|debugSetting.framework.controllers.chiefPlugin.unregisterNamedPlugin@MessageFontStyle": "Default",

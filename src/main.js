@@ -222,7 +222,6 @@ async function listLoadedPlugins() {
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   let returnData = [];
   returnData = await warden.listLoadedPlugins();
-  console.log(msg.clistAllLoadedPluginsMessage01 + returnData.join(bas.cComa));
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;

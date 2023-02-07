@@ -42,6 +42,8 @@ async function listAllLoadedPlugins(inputData, inputMetaData) {
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = [true, []];
   returnData[1] = await warden.listLoadedPlugins();
+  // List of loaded plugins is:
+  console.log(msg.clistAllLoadedPluginsMessage01 + returnData[1].join(bas.cComa));
   if (returnData[1] === false) {
     // ERROR: There was an error getting the list of loaded plugins.
     console.log(namespacePrefix + functionName + msg.cErrorListAllLoadedPluginsMessage01);
@@ -68,6 +70,8 @@ async function listAllPluginsInRegistry(inputData, inputMetaData) {
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = [true, []];
   returnData[1] = await chiefPlugin.getAllPluginsInRegistry();
+  // List of plugins in registry is:
+  console.log(msg.clistOfPluginsInRegistryIs + returnData[1].join(bas.cComa));
   if (returnData[1] === false) {
     // ERROR: There was an error getting the list of plugins from the registry.
     console.log(namespacePrefix + functionName, + msg.cErrorListAllPluginsInRegistryCommandMessage01);
@@ -191,7 +195,7 @@ async function registerPlugin(inputData, inputMetaData) {
  * @function unregisterPlugin
  * @description This is a command function that calls the chiefPlugin.unregisterNamedPlugin function.
  * @param {array<string>} inputData An array that could actually contain anything,
- * dependng on what the user entered. But the function filters all of that internally and
+ * depending on what the user entered. But the function filters all of that internally and
  * extracts the case the user has entered the correct input as follows:
  * inputData[0] = 'unregisterPlugin'
  * inputData[1] = pluginName
@@ -217,6 +221,16 @@ async function unregisterPlugin(inputData, inputMetaData) {
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
+}
+
+/**
+ * @function unregisterPlugins
+ * @description This is a command function that calls chiefPlugin.unregisterPlugins function.
+ * @param {array<string>} inputData An array that could actually contain anything,
+ * @param {*} inputMetaData 
+ */
+async function unregisterPlugins(inputData, inputMetaData) {
+
 }
 
 /**

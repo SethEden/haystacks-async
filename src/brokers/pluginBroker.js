@@ -304,7 +304,8 @@ async function unregisterPlugin(pluginName) {
   let pluginRegistryNames = await listPluginsInRegistry();
   let index = 0;
   try {
-    for (let currentPluginName in pluginRegistryNames) {
+    for (let currentPluginNameKey in pluginRegistryNames) {
+      let currentPluginName = pluginRegistryNames[currentPluginNameKey];
       // currentPluginName is:
       await loggers.consoleLog(namespacePrefix + functionName, msg.ccurrentPluginNameIs + currentPluginName);
       if (currentPluginName === pluginName) {
@@ -313,7 +314,8 @@ async function unregisterPlugin(pluginName) {
       index = index + 1;
     }
     let pluginObjects = D[cfg.cpluginRegistry][wrd.cplugins];
-    let newPluginObjects = pluginObjects.splice(index, 1);
+    pluginObjects.splice(index, 1);
+    let newPluginObjects = pluginObjects;
     D[cfg.cpluginRegistry][wrd.cplugins] = newPluginObjects;
     returnData = true;
   } catch (err) {

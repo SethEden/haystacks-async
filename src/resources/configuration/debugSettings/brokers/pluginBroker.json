@@ -142,7 +142,7 @@
   "debugFunctions|debugSetting.framework.brokers.pluginBroker.registerPlugin@FunctionFontBackgroundColor": "Default",
   "debugFunctions|debugSetting.framework.brokers.pluginBroker.registerPlugin@MessageFontBackgroundColor": "Default",
   "debugFunctions|debugSetting.framework.brokers.pluginBroker.registerPlugin@DataFontBackgroundColor": "Default",
-  "debugFunctions|debugSetting.framework.brokers.pluginBroker.unregisterPlugin": false,
+  "debugFunctions|debugSetting.framework.brokers.pluginBroker.unregisterPlugin": true,
   "debugFunctions|debugSetting.framework.brokers.pluginBroker.unregisterPlugin@ModuleFontStyle": "Default",
   "debugFunctions|debugSetting.framework.brokers.pluginBroker.unregisterPlugin@FunctionFontStyle": "Default",
   "debugFunctions|debugSetting.framework.brokers.pluginBroker.unregisterPlugin@MessageFontStyle": "Default",
