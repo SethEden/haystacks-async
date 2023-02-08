@@ -181,7 +181,7 @@
   "debugFunctions|debugSetting.framework.controllers.chiefPlugin.clearPluginRegistry@FunctionFontBackgroundColor": "Default",
   "debugFunctions|debugSetting.framework.controllers.chiefPlugin.clearPluginRegistry@MessageFontBackgroundColor": "Default",
   "debugFunctions|debugSetting.framework.controllers.chiefPlugin.clearPluginRegistry@DataFontBackgroundColor": "Default",
-  "debugFunctions|debugSetting.framework.controllers.chiefPlugin.savePluginRegistryDisk": false,
+  "debugFunctions|debugSetting.framework.controllers.chiefPlugin.savePluginRegistryDisk": true,
   "debugFunctions|debugSetting.framework.controllers.chiefPlugin.savePluginRegistryDisk@ModuleFontStyle": "Default",
   "debugFunctions|debugSetting.framework.controllers.chiefPlugin.savePluginRegistryDisk@FunctionFontStyle": "Default",
   "debugFunctions|debugSetting.framework.controllers.chiefPlugin.savePluginRegistryDisk@MessageFontStyle": "Default",

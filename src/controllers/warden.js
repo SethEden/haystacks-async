@@ -240,7 +240,9 @@ async function initFrameworkSchema(configData) {
       // Then should scan the specified path to determine if there are any other plugins that should be loaded and registered.
       // Then add them to the load list as well.
       // Examine if there are any plugins in an excluded list, and don't add them to the load list, and don't register them.
-      await syncPluginRegistryWithPath();
+      if (await configurator.getConfigurationSetting(wrd.csystem, cfg.csynchronizePluginRegistryWithPluginFolder) === true) {
+        await syncPluginRegistryWithPath();
+      }
       await loadPluginsFromRegistry();
     }
   }
@@ -576,8 +578,9 @@ async function writePluginRegistryToDisk() {
 /**
  * @function loadPlugin
  * @description Calls the plugin initializePlugin function to get the plugin data:
- * Busienss rules, Commands, Workflows, Constants, Configurations, dependencies ist (dependant plugins), etc...
- * @param {string} pluginPath The fully qualified path where to load the plugin from.
+ * Business rules, Commands, Workflows, Constants, Configurations, dependencies ist (dependant plugins), etc...
+ * @param {string} pluginPath The fully qualified path where to load the plugin from,
+ * or the folder name that will contain the plugin in the plugin registry path.
  * @return {boolean} True or False to indicate if the plugin was loaded successfully or not.
  * @author Seth Hollingsead
  * @date 2022/09/15

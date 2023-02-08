@@ -52,7 +52,7 @@ async function loadPluginRegistry(pluginRegistryPath) {
   // pluginRegistryPath is:
   await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginRegistryPathIs + pluginRegistryPath);
   let returnData = {};
-  let resolvedPluginRegistryPath = path.resolve(pluginRegistryPath + bas.cForwardSlash + sys.cpluginsDotJson);
+  let resolvedPluginRegistryPath = path.resolve(pluginRegistryPath);
   // resolvedPluginRegistryPath is:
   await loggers.consoleLog(namespacePrefix + functionName, msg.cresolvedPluginRegistryPathIs + resolvedPluginRegistryPath);
   returnData = await ruleBroker.processRules([resolvedPluginRegistryPath, ''], [biz.cgetJsonData]);
@@ -410,6 +410,7 @@ async function syncPluginRegistryWithPluginRegistryPath() {
   let returnData = false;
   let pluginRegistryList = await listPluginsInRegistry();
   let pluginRegistryFolderList = await listPluginsInRegistryPath();
+  let accumulatorPluginRegistry = [];
   let synchronizedPluginRegistryList = [];
   let pluginsRootPath = await configurator.getConfigurationSetting(wrd.csystem, cfg.cpluginsRootPath);
   // pluginRegistryList is:
@@ -458,13 +459,15 @@ async function syncPluginRegistryWithPluginRegistryPath() {
         if (foundMatchingPluginName === false) {
           // Then no match was found, and we should therefore add this plugin entry object.
           // First create the object, folderPlugin is mostly likely just a string.
-          pluginRegistryList.push({[folderPluginName]: {Name: folderPluginName, Path: path.join(pluginsRootPath + bas.cForwardSlash + pluginRegistryFolderList[folderPluginKey] + bas.cForwardSlash)}});
+          accumulatorPluginRegistry.push({[folderPluginName]: {Name: folderPluginName, Path: path.join(pluginsRootPath + bas.cForwardSlash + pluginRegistryFolderList[folderPluginKey] + bas.cForwardSlash)}});
         }
         // NOTE: pluginRegistryList is the accumulator here, when we are all done we need to assign that one to the output.
+        // accumulatorPluginRegistry is:
+        await loggers.consoleLog(namespacePrefix + functionName, msg.caccumulatorPluginRegistryIs + JSON.stringify(accumulatorPluginRegistry));
       } // End-for (let folderPlugin in pluginRegistryFolderList)
       // Now assign the pluginRegistryList to the synchronizedPluginRgistryList,
       // then we will clear the plugin registry and re-assign it to the merged/synchronized/updated version of the plugin registry.
-      synchronizedPluginRegistryList = pluginRegistryList;
+      synchronizedPluginRegistryList = accumulatorPluginRegistry;
     }
     // synchronizedPluginRegistryList is:
     await loggers.consoleLog(namespacePrefix + functionName, msg.csynchronizedPluginRegistryListIs + JSON.stringify(synchronizedPluginRegistryList));
@@ -526,7 +529,6 @@ async function savePluginRegistry() {
   // pluginRegistry is:
   await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginRegistryIs + JSON.stringify(pluginRegistry));
   try {
-    // await configurator.setConfigurationSetting(wrd.csystem, cfg.cpluginRegistryPath, pluginRegistryPath);
     let pluginRegistryPath = await configurator.getConfigurationSetting(wrd.csystem, cfg.cpluginRegistryPath);
     // pluginRegistryPath is:
     await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginRegistryPathIs + pluginRegistryPath);
@@ -547,6 +549,8 @@ async function savePluginRegistry() {
  * @description Loads the plugin meta data for the plugin at the specified path by looking
  * for a package.json at the specified path and loading that file, and returning it as a JSON object.
  * @param {string} pluginPath The path to a plugin where a package.json should be expected to be found for that plugin.
+ * It could also be that the pluginPath just contains the name of the folder that is the plugin,
+ * and the path should be acquired from the plugin registry path.
  * @return {object} The JSON data object loaded from the plugin package.json file, specified by the input parameter.
  * @author Seth Hollingsead
  * @date 2022/09/02 
@@ -557,7 +561,17 @@ async function loadPluginMetaData(pluginPath) {
   // pluginPath is:
   await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginPathIs + pluginPath);
   let returnData = {};
-  let resolvedPluginPath = path.resolve(pluginPath + bas.cForwardSlash + sys.cpackageDotJson);
+  let fullyQualifiedPluginPath = '';
+  if (pluginPath.includes(bas.cForwardSlash) !== true && pluginPath.includes(bas.cBackSlash) !== true) {
+    // It's just a name, we need to get the first part of the path from the plugin registry path.
+    let prefixPluginPath = await getPluginsRegistryPath();
+    // prefixPluginPath is:
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cprefixPluginPathIs + prefixPluginPath);
+    fullyQualifiedPluginPath = prefixPluginPath + pluginPath;
+  } else {
+    fullyQualifiedPluginPath = pluginPath;
+  }
+  let resolvedPluginPath = path.resolve(fullyQualifiedPluginPath + bas.cForwardSlash + sys.cpackageDotJson);
   // resolvedPluginPath is:
   await loggers.consoleLog(namespacePrefix + functionName, msg.cresolvedPluginPathIs + resolvedPluginPath);
   returnData = await ruleBroker.processRules([resolvedPluginPath, ''], [biz.cgetJsonData]);
@@ -571,8 +585,10 @@ async function loadPluginMetaData(pluginPath) {
  * @description Extracts the entry point path and file name for a plugin from the package.json data object.
  * Processes the entry point path with a path.join to form a fully qualified path.
  * Converts the resulting fully qualified path into a path URI string for importing later.
- * @param {object} pluginMetaData The meta data for the given plugin loaded for the corrosponding package.json.
+ * @param {object} pluginMetaData The meta data for the given plugin loaded for the corresponding package.json.
  * @param {string} pluginPath The path to the plugin, used to form a fully-qualified path.
+ * NOTE: It could also be that the pluginPath just contains the name of the folder that is the plugin,
+ * and the path should be acquired from the plugin registry path.
  * @return {string} The path entry point to the plugin as a URI file path.
  * @author Seth Hollingsead
  * @date 2022/09/02
@@ -585,11 +601,21 @@ async function extractAndProcessPluginEntryPointURI(pluginMetaData, pluginPath) 
   // pluginPath is:
   await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginPathIs + pluginPath);
   let returnData = '';
+  let fullyQualifiedPluginPath = '';
   if (pluginMetaData && pluginPath) {
+    if (pluginPath.includes(bas.cForwardSlash) !== true && pluginPath.includes(bas.cBackSlash) !== true) {
+      // It's just a name, we need to get the first part of the path from the plugin registry path.
+      let prefixPluginPath = await getPluginsRegistryPath();
+      // prefixPluginPath is:
+      await loggers.consoleLog(namespacePrefix + functionName, msg.cprefixPluginPathIs + prefixPluginPath);
+      fullyQualifiedPluginPath = prefixPluginPath + pluginPath;
+    } else {
+      fullyQualifiedPluginPath = pluginPath;
+    }
     let pluginMainPath = pluginMetaData[wrd.cmain];
     // pluginMainPath before join is:
     await loggers.consoleLog(namespacePrefix + functionName, msg.cextractAndProcessPluginEntryPointUriMessage01 + pluginMainPath);
-    pluginMainPath = path.join(pluginPath, pluginMainPath);
+    pluginMainPath = path.join(fullyQualifiedPluginPath, pluginMainPath);
     // pluginMainPath after join is:
     await loggers.consoleLog(namespacePrefix + functionName, msg.cextractAndProcessPluginEntryPointUriMessage02 + pluginMainPath);
     pluginMainPath = url.pathToFileURL(pluginMainPath);

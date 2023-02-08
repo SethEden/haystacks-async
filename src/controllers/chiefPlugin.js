@@ -296,7 +296,9 @@ async function savePluginRegistryDisk() {
 /**
  * @function loadAllPluginsMetaData
  * @description Loads the plugin meta data for all of the plugins in the input plugins path array.
- * @param {array<string>} pluginsPaths
+ * @param {array<string>} pluginsPaths Should be the entry-point to the plugin,
+ * but it could also be the name of the folder in the plugin registry path that is the entry-point to the plugin.
+ * If its the later than we will need to compose the fully qualified path.
  * @return {array<object>} An array that contains all of the meta-data,
  * for each of the plugins in the input pluginsPaths array. 
  * @author Seth Hollingsead

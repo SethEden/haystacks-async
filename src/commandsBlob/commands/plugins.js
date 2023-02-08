@@ -412,7 +412,8 @@ async function savePluginRegistryToDisk(inputData, inputMetaData) {
  * depending on what the user entered. But the function filters all of that internally and
  * extracts the case the user has entered the correct input as follows:
  * inputData[0] = 'loadPlugin'
- * inputData[1] = pluginPath - The fully qualified path where to load the plugin from.
+ * inputData[1] = pluginPath - The fully qualified path where to load the plugin from, or
+ * the name of the plugin folder in the plugins registry path where the plugin can be found.
  * @param {string} inputMetaData Not used for this command.
  * @return {array<boolean,boolean>} An array with a boolean True or False value to indicate if
  * the application should exit or not exit, followed by another boolean value to indicate if
@@ -458,8 +459,15 @@ async function loadPlugins(inputData, inputMetaData) {
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = [true, false];
-  if (inputData.length === 2) { // TODO: Should probably also confirm it's an array here.
-    returnData[1] = await warden.loadPlugins(inputData[1]);
+  let pluginsArray = [];
+  if (Array.isArray(inputData) === true && inputData.length >= 2) {
+    if (inputData[1].includes(bas.cComa) === true) {
+      pluginsArray = inputData[1].split(bas.cComa);
+    } else {
+      inputData.shift(); // Remove the first entry, and just pass the rest of the array.
+      pluginsArray = inputData;
+    }
+    returnData[1] = await warden.loadPlugins(pluginsArray);
   } else {
     // ERROR: Failure to load the specified plugins, invalid input:
     console.log(msg.cErrorLoadPluginsCommandMessage01 + JSON.stringify(inputData));
