@@ -77,7 +77,7 @@
   "debugFunctions|debugSetting.framework.main.loadCommandWorkflows@FunctionFontBackgroundColor": "Default",
   "debugFunctions|debugSetting.framework.main.loadCommandWorkflows@MessageFontBackgroundColor": "Default",
   "debugFunctions|debugSetting.framework.main.loadCommandWorkflows@DataFontBackgroundColor": "Default",
-  "debugFunctions|debugSetting.framework.main.listLoadedPlugins": true,
+  "debugFunctions|debugSetting.framework.main.listLoadedPlugins": false,
   "debugFunctions|debugSetting.framework.main.listLoadedPlugins@ModuleFontStyle": "Default",
   "debugFunctions|debugSetting.framework.main.listLoadedPlugins@FunctionFontStyle": "Default",
   "debugFunctions|debugSetting.framework.main.listLoadedPlugins@MessageFontStyle": "Default",
