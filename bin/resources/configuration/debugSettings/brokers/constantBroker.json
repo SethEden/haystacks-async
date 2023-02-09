@@ -50,5 +50,18 @@
   "debugFunctions|debugSetting.framework.brokers.constantBroker.addConstantsValidationData@ModuleFontBackgroundColor": "Default",
   "debugFunctions|debugSetting.framework.brokers.constantBroker.addConstantsValidationData@FunctionFontBackgroundColor": "Default",
   "debugFunctions|debugSetting.framework.brokers.constantBroker.addConstantsValidationData@MessageFontBackgroundColor": "Default",
-  "debugFunctions|debugSetting.framework.brokers.constantBroker.addConstantsValidationData@DataFontBackgroundColor": "Default"
+  "debugFunctions|debugSetting.framework.brokers.constantBroker.addConstantsValidationData@DataFontBackgroundColor": "Default",
+  "debugFunctions|debugSetting.framework.brokers.constantBroker.removePluginConstantsValidationData": true,
+  "debugFunctions|debugSetting.framework.brokers.constantBroker.removePluginConstantsValidationData@ModuleFontStyle": "Default",
+  "debugFunctions|debugSetting.framework.brokers.constantBroker.removePluginConstantsValidationData@FunctionFontStyle": "Default",
+  "debugFunctions|debugSetting.framework.brokers.constantBroker.removePluginConstantsValidationData@MessageFontStyle": "Default",
+  "debugFunctions|debugSetting.framework.brokers.constantBroker.removePluginConstantsValidationData@DataFontStyle": "Default",
+  "debugFunctions|debugSetting.framework.brokers.constantBroker.removePluginConstantsValidationData@ModuleFontColor": "Default",
+  "debugFunctions|debugSetting.framework.brokers.constantBroker.removePluginConstantsValidationData@FunctionFontColor": "Default",
+  "debugFunctions|debugSetting.framework.brokers.constantBroker.removePluginConstantsValidationData@MessageFontColor": "Default",
+  "debugFunctions|debugSetting.framework.brokers.constantBroker.removePluginConstantsValidationData@DataFontColor": "Default",
+  "debugFunctions|debugSetting.framework.brokers.constantBroker.removePluginConstantsValidationData@ModuleFontBackgroundColor": "Default",
+  "debugFunctions|debugSetting.framework.brokers.constantBroker.removePluginConstantsValidationData@FunctionFontBackgroundColor": "Default",
+  "debugFunctions|debugSetting.framework.brokers.constantBroker.removePluginConstantsValidationData@MessageFontBackgroundColor": "Default",
+  "debugFunctions|debugSetting.framework.brokers.constantBroker.removePluginConstantsValidationData@DataFontBackgroundColor": "Default"
 }
