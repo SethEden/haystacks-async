@@ -19,6 +19,7 @@
   "system.clearCommandPerformanceDataAfterAnalysis": true,
   "system.printDataHiveToLogFile": true,
   "system.enablePluginLoader": true,
+  "system.synchronizePluginRegistryWithPluginFolder": true,
   "system.enableConstantsValidation": true,
   "system.displayIndividualConstantsValidationPassMessages": false,
   "system.displayIndividualConstantsValidationFailMessages": true,

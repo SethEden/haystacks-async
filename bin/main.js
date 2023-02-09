@@ -209,6 +209,25 @@ async function loadCommandWorkflows(workflowPath, contextName) {
 }
 
 /**
+ * @function listLoadedPlugins
+ * @description This is a wrapper function for warden.listLoadedPlugins.
+ * Which is in-turn a wrapper function for chiefPlugin.listLoadedPlugins.
+ * Which is in-turn a wrapper function for pluginBroker.listAllLoadedPlugins.
+ * @return {array<string>} A list array of the names of the plugins that are currently loaded.
+ * @author Seth Hollingsead
+ * @date 2023/02/06
+ */
+async function listLoadedPlugins() {
+  let functionName = listLoadedPlugins.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  let returnData = [];
+  returnData = await warden.listLoadedPlugins();
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
+/**
  * @function listAllPluginsInRegistry
  * @description This is a wrapper function for warden.listAllPluginsInRegistry.
  * Which is in-turn a wrapper function for chiefPlugin.getAllPluginsInRegistry.
@@ -327,6 +346,37 @@ async function unregisterPluginByName(pluginName) {
   await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginNameIs + pluginName);
   let returnData = false;
   returnData = await warden.unregisterPluginByName(pluginName);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
+/**
+ * @function unregisterPlugins
+ * @description This is a wrapper function for warden.unregisterPlugins.
+ * Which is in-turn a wrapper function for chiefPlugin.unregisterPlugins.
+ * Which is in-turn a wrapper function for pluginBroker.unregisterPlugins.
+ * @param {string|array<string>} pluginsListArray A string or list array of plugin names that should be removed from the plugin registry.
+ * @return {boolean} True or False to indicate if all the plugins were successfully removed from the plugin registry or not.
+ * @author Seth Hollingsead
+ * @date 2023/02/07
+ */
+async function unregisterPlugins(inputData) {
+  let functionName = unregisterPlugins.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginListArrayIs + JSON.stringify(inputData));
+  let returnData = false;
+  let pluginsListArray = [];
+  if (Array.isArray(inputData) === true && inputData.length >= 1) {
+    pluginsListArray = inputData;
+  } else if (inputData.includes(bas.cComa) === true) {
+    pluginsListArray = inputData.split(bas.cComa);
+  } else if (inputData.includes(bas.cSpace) === true) {
+    pluginsListArray = inputData.split(bas.cSpace);
+  }
+  // pluginsListArray is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginsListArrayIs + JSON.stringify(pluginsListArray));
+  returnData = await warden.unregisterPlugins(pluginsListArray);
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
@@ -520,6 +570,25 @@ async function unloadAllPlugins() {
 }
 
 /**
+ * @function getPluginsRegistryPath
+ * @description A wrapper call to the warden.getPluginsRegistryPath function. 
+ * Which is in-turn a wrapper function for the chiefPlugin.getPluginsRegistryPath.
+ * Which is in-turn a wrapper function for pluginBroker.getPluginsRegistryPath.
+ * @return {string} The path to the plugins listed in the plugin registry as meta-data.
+ * @author Seth Hollingsead
+ * @date 2023/02/07
+ */
+async function getPluginsRegistryPath() {
+  let functionName = getPluginsRegistryPath.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  let returnData = '';
+  returnData = await warden.getPluginsRegistryPath();
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
+/**
  * @function loadPluginResourceData
  * @description A wrapper call to the warden.loadPluginResourceData function.
  * @param {string} contextName The type of resource that is being loaded, eg: configuration, commandAliases, workflows, ect...
@@ -706,12 +775,14 @@ export default {
   mergeClientCommands,
   loadCommandAliases,
   loadCommandWorkflows,
+  listLoadedPlugins,
   listAllPluginsInRegistry,
   listAllPluginsInRegistryPath,
   numberOfPluginsInRegistry,
   numberOfPluginsInRegistryPath,
   registerPluginByNameAndPath,
   unregisterPluginByName,
+  unregisterPlugins,
   syncPluginRegistryWithPath,
   clearAllPluginRegistry,
   writePluginRegistryToDisk,
@@ -721,6 +792,7 @@ export default {
   unloadPlugin,
   unloadPlugins,
   unloadAllPlugins,
+  getPluginsRegistryPath,
   loadPluginResourceData,
   executeBusinessRules,
   enqueueCommand,

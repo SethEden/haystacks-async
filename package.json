@@ -1,6 +1,6 @@
 {
   "name": "@haystacks/async",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "description": "A framework to build any number or any kind of native application or automation solution.",
   "main": "./src/main.js",
   "bin": "./bin/main.js",
@@ -28,7 +28,7 @@
   "author": "Seth Hollingsead <iceversaka@hotmail.com>",
   "license": "MIT",
   "dependencies": {
-    "@haystacks/constants": "0.1.7",
+    "@haystacks/constants": "0.1.9",
     "adm-zip": "^0.5.9",
     "chalk": "5.0.1",
     "dotenv": "^16.0.0",

@@ -1,6 +1,17 @@
 {
   "path": "C:/haystacks-plugins/",
   "plugins": [
-
+    {
+      "plugin-three": {
+        "Name": "plugin-three",
+        "Path": "C:\\haystacks-plugins\\plugin-three\\"
+      }
+    },
+    {
+      "plugin-two": {
+        "Name": "plugin-two",
+        "Path": "C:\\haystacks-plugins\\plugin-two\\"
+      }
+    }
   ]
 }
