@@ -9,6 +9,7 @@
  * @requires module:dataDirectorate
  * @requires module:integrationTests
  * @requires module:performanceMetric
+ * @requires module:plugins
  * @requires module:system
  * @requires module:loggers
  * @requires module:data
@@ -27,6 +28,7 @@ import constantsCommands from './commands/constant.js';
 import dataDirectorate from './commands/dataDirectorate.js';
 import integrationTestCommands from './commands/integrationTests.js';
 import performanceMetricCommands from './commands/performanceMetric.js';
+import pluginCommands from './commands/plugins.js';
 import systemCommands from './commands/system.js';
 import loggers from '../executrix/loggers.js';
 import D from '../structures/data.js';
@@ -106,6 +108,28 @@ async function initCommandsLibrary() {
     // ***********************************************
     [cmd.cbusinessRulesMetrics]: (inputData, inputMetaData) => performanceMetricCommands.businessRulesMetrics(inputData, inputMetaData),
     [cmd.ccommandMetrics]: (inputData, inputMetaData) => performanceMetricCommands.commandMetrics(inputData, inputMetaData),
+
+    // ***********************************************
+    // Plugin commands in order
+    // ***********************************************
+    [cmd.clistAllLoadedPlugins]: (inputData, inputMetaData) => pluginCommands.listAllLoadedPlugins(inputData, inputMetaData),
+    [cmd.clistAllPluginsInRegistry]: (inputData, inputMetaData) => pluginCommands.listAllPluginsInRegistry(inputData, inputMetaData),
+    [cmd.clistAllPluginsInRegistryPath]: (inputData, inputMetaData) => pluginCommands.listAllPluginsInRegistryPath(inputData, inputMetaData),
+    [cmd.ccountPluginsInRegistry]: (inputData, inputMetaData) => pluginCommands.countPluginsInRegistry(inputData, inputMetaData),
+    [cmd.ccountPluginsInRegistryPath]: (inputData, inputMetaData) => pluginCommands.countPluginsInRegistryPath(inputData, inputMetaData),
+    [cmd.cregisterPlugin]: (inputData, inputMetaData) => pluginCommands.registerPlugin(inputData, inputMetaData),
+    [cmd.cunregisterPlugin]: (inputData, inputMetaData) => pluginCommands.unregisterPlugin(inputData, inputMetaData),
+    [cmd.cunregisterPlugins]: (inputData, inputMetaData) => pluginCommands.unregisterPlugins(inputData, inputMetaData),
+    [cmd.csyncPluginRegistryWithPath]: (inputData, inputMetaData) => pluginCommands.syncPluginRegistryWithPath(inputData, inputMetaData),
+    [cmd.clistPluginsRegistryPath]: (inputData, inputMetaData) => pluginCommands.listPluginsRegistryPath(inputData, inputMetaData),
+    [cmd.cunregisterAllPlugins]: (inputData, inputMetaData) => pluginCommands.unregisterAllPlugins(inputData, inputMetaData),
+    [cmd.csavePluginRegistryToDisk]: (inputData, inputMetaData) => pluginCommands.savePluginRegistryToDisk(inputData, inputMetaData),
+    [cmd.cloadPlugin]: (inputData, inputMetaData) => pluginCommands.loadPlugin(inputData, inputMetaData),
+    [cmd.cloadPlugins]: (inputData, inputMetaData) => pluginCommands.loadPlugins(inputData, inputMetaData),
+    [cmd.cloadPluginsFromRegistry]: (inputData, inputMetaData) => pluginCommands.loadPluginsFromRegistry(inputData, inputMetaData),
+    [cmd.cunloadPlugin]: (inputData, inputMetaData) => pluginCommands.unloadPlugin(inputData, inputMetaData),
+    [cmd.cunloadPlugins]: (inputData, inputMetaData) => pluginCommands.unloadPlugins(inputData, inputMetaData),
+    [cmd.cunloadAllPlugins]: (inputData, inputMetaData) => pluginCommands.unloadAllPlugins(inputData, inputMetaData),
 
     // ***********************************************
     // System commands in order

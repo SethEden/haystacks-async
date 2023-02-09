@@ -71,6 +71,23 @@ async function persistPluginRegistryToDataStructure(pluginRegistryData) {
 }
 
 /**
+ * @function listLoadedPlugins
+ * @description This is a wrapper function for pluginBroker.listAllLoadedPlugins.
+ * @return {array<string>} A list array of the names of the plugins that are currently loaded.
+ * @author Seth Hollingsead
+ * @date 2023/02/06
+ */
+async function listLoadedPlugins() {
+  let functionName = listLoadedPlugins.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  let returnData = [];
+  returnData = await pluginBroker.listAllLoadedPlugins();
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
+/**
  * @function getAllPluginsInRegistry
  * @description This is a wrapper function for pluginBroker.listPluginsInRegistry.
  * @return {array<string>} A list array of the names of the plugins in the plugin registry.
@@ -202,6 +219,26 @@ async function unregisterNamedPlugin(pluginName) {
 }
 
 /**
+ * @function unregisterPlugins
+ * @description This is a wrapper function for pluginBroker.unregisterPlugins.
+ * @param {array<string>} pluginListArray A list array of plugin names that should be removed from the plugin registry.
+ * @return {boolean} True or False to indicate if all the plugins were removed from the plugin registry successfully or not.
+ * @author Seth Hollingsead
+ * @date 2023/02/07
+ */
+async function unregisterPlugins(pluginListArray) {
+  let functionName = unregisterPlugins.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  // pluginListArray is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginListArrayIs + JSON.stringify(pluginListArray));
+  let returnData = false;
+  returnData = await pluginBroker.unregisterPlugins(pluginListArray);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
+/**
  * @function synchronizePluginRegistryWithPath
  * @description This is a wrapper function for pluginBroker.syncPluginRegistryWithPluginRegistryPath.
  * @return {boolean} True or False to indicate if the synchronization was performed successfully or not.
@@ -259,7 +296,9 @@ async function savePluginRegistryDisk() {
 /**
  * @function loadAllPluginsMetaData
  * @description Loads the plugin meta data for all of the plugins in the input plugins path array.
- * @param {array<string>} pluginsPaths
+ * @param {array<string>} pluginsPaths Should be the entry-point to the plugin,
+ * but it could also be the name of the folder in the plugin registry path that is the entry-point to the plugin.
+ * If its the later than we will need to compose the fully qualified path.
  * @return {array<object>} An array that contains all of the meta-data,
  * for each of the plugins in the input pluginsPaths array. 
  * @author Seth Hollingsead
@@ -374,7 +413,7 @@ async function loadAllPlugins(pluginsExecutionPaths, pluginsMetaData) {
       let pluginExecutionPath = pluginsExecutionPaths[pluginExecutionPathKey];
       let pluginMetaData = pluginsMetaData[index];
       if (pluginExecutionPath && pluginMetaData) {
-        // pluginExectuionPath is:
+        // pluginExecutionPath is:
         await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginExecutionPathIs + pluginExecutionPath);
         // pluginMetaData is:
         await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginMetaDataIs + JSON.stringify(pluginMetaData));
@@ -382,6 +421,8 @@ async function loadAllPlugins(pluginsExecutionPaths, pluginsMetaData) {
         // Load the data and add it.
         try {
           returnData[pluginMetaData[wrd.cname]] = await pluginBroker.loadPlugin(pluginExecutionPath);
+          // loaded plugin:
+          console.log(msg.cloadedPlugin + pluginMetaData[wrd.cname]);
         } catch (err) {
           // Failed to load the plugin:
           console.log(msg.cERROR_Colon + namespacePrefix + functionName + msg.cloadAllPluginsMessage01 + pluginMetaData[wrd.cname]);
@@ -400,6 +441,7 @@ async function loadAllPlugins(pluginsExecutionPaths, pluginsMetaData) {
         console.log(msg.cloadAllPluginsMessage02 + pluginExecutionPath);
         stack.push(sys.cpluginsLoaded, [pluginMetaData[wrd.cname], false]);
       }
+      index = index + 1;
     } // End-for (let pluginExecutionPath in pluginsExecutionPaths)
   } else {
     // ERROR: No plugin execution paths or plugins metaData was specified:
@@ -477,7 +519,7 @@ async function integratePluginData(pluginName, pluginData) {
     workflowsIntegrationResult = await pluginBroker.integratePluginWorkflows(pluginName, pluginData[wrd.cdata][sys.cCommandWorkflows])
     constantsValidationDataIntegrationResult = await chiefConstant.addConstantsValidationData(pluginData[wrd.cdata][sys.cpluginConstantsValidationData],
       wrd.cPlugin + bas.cColon + pluginName);
-    themeDataIntegrationResult = await chiefTheme.addThemeData(pluginData[wrd.cdata], pluginName);
+    themeDataIntegrationResult = await chiefTheme.addThemeData(pluginData[wrd.cdata][wrd.cThemes], wrd.cPlugin + bas.cColon + pluginName);
   } else {
     // ERROR: Invalid input, either the plugin name or plugin data was undefined. Please provide valid data and try again.
     console.log(msg.cErrorIntegratePluginDataMessage01);
@@ -528,9 +570,49 @@ async function integratePluginData(pluginName, pluginData) {
   return returnData;
 }
 
+/**
+ * @function unloadPlugin
+ * @description Unloads a plugin by removing all of the plugin data and meta-data from all of the
+ * appropriate data structures in the D-data structure.
+ * This is a wrapper function for calling the pluginBroker to get the work done.
+ * @param {string} pluginName The name of the plugin that should have all its data unloaded from the D-data structure.
+ * @return {boolean} True or False to indicate if the plugin was unloaded successfully or not.
+ * @author Seth Hollingsead
+ * @date 2023/02/01
+ */
+async function unloadPlugin(pluginName) {
+  let functionName = unloadPlugin.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  // pluginName is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginNameIs + pluginName);
+  let returnData = false;
+  returnData = await pluginBroker.unloadPlugin(pluginName);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
+/**
+ * @function getPluginsRegistryPath
+ * @description This is a wrapper function for the pluginBroker.getPluginsRegistryPath.
+ * @return {string} The path to the plugins listed in the plugin registry as meta-data.
+ * @author Seth Hollingsead
+ * @date 2023/02/07
+ */
+async function getPluginsRegistryPath() {
+  let functionName = getPluginsRegistryPath.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  let returnData = '';
+  returnData = await pluginBroker.getPluginsRegistryPath();
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
 export default {
   loadPluginRegistryData,
   persistPluginRegistryToDataStructure,
+  listLoadedPlugins,
   getAllPluginsInRegistry,
   getAllPluginsPathsInRegistry,
   getAllPluginsInRegistryPath,
@@ -538,6 +620,7 @@ export default {
   countAllPluginsInRegistryPath,
   registerNamedPlugin,
   unregisterNamedPlugin,
+  unregisterPlugins,
   synchronizePluginRegistryWithPath,
   clearPluginRegistry,
   savePluginRegistryDisk,
@@ -546,5 +629,7 @@ export default {
   loadAllPlugins,
   integrateAllPluginsData,
   integratePluginData,
-  verifyAllPluginsLoaded
+  verifyAllPluginsLoaded,
+  unloadPlugin,
+  getPluginsRegistryPath
 };

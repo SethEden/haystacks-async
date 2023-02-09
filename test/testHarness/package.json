@@ -21,8 +21,8 @@
   "license": "MIT",
   "dependencies": {
     "dotenv": "^16.0.0",
-    "@haystacks/async": "0.1.8",
-    "@haystacks/constants": "0.1.7"
+    "@haystacks/async": "0.1.9",
+    "@haystacks/constants": "0.1.9"
   },
   "devDependencies": {
     "jsdoc": "3.6.7",

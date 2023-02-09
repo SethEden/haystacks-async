@@ -10,7 +10,7 @@
 
 // External imports
 import hayConst from '@haystacks/constants';
-const {bas, sys, wrd} = hayConst;
+const {bas, gen, sys, wrd} = hayConst;
 
 export const cExpectedActualFrameworkDevName = wrd.chay + wrd.cstacks + bas.cDash + wrd.casync; // haystacks-async
 export const cExpectedActualFrameworkProdName = bas.cAt + wrd.chay + wrd.cstacks + bas.cForwardSlash + wrd.casync; // @haystacks/async
@@ -21,7 +21,7 @@ export const cResourcesCommonPath = wrd.cresources + bas.cForwardSlash; // resou
 export const cCommandsCommonPath = wrd.ccommands + bas.cForwardSlash; // commands/
 export const cConstantsPath = wrd.cconstants + bas.cForwardSlash; // constants/
 export const cConfigurationCommonPath = wrd.cconfiguration + bas.cForwardSlash; // configuration/
-export const cPluginsRegistryCommonPath = wrd.cplugins + bas.cForwardSlash; // plugins/
+export const cPluginsRegistryCommonPath = wrd.cplugins + bas.cForwardSlash + wrd.cplugins + gen.cDotjson; // plugins/plugins.json
 export const cWorkflowsCommonPath = wrd.cworkflows + bas.cForwardSlash; // workflows/
 export const cThemesCommonPath = wrd.cthemes + bas.cForwardSlash; // themes/
 export const cReleasePath = wrd.crelease + bas.cForwardSlash; // release/

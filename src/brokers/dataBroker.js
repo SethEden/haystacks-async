@@ -1009,6 +1009,49 @@ async function getDataElementCount(dataObject, pageName, elementNamePattern) {
   return elementCount;
 }
 
+/**
+ * @function removePluginConfigurationData
+ * @description Parses through the configuration data and finds the configuration data associated with the named plugin.
+ * Then removes that data shredding it from existence at the edge of a black hole.
+ * @param {string} pluginName The name of the plugin that should have its configuration data removed from the D-data structure.
+ * @return {boolean} True or False to indicate if the removal of the data was completed successfully or not.
+ * @author Seth Hollingsead
+ * @date 2023/02/01
+ */
+async function removePluginConfigurationData(pluginName) {
+  let functionName = removePluginConfigurationData.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  // pluginName is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginNameIs + pluginName);
+  let returnData = false;
+  let allPluginsConfigurationData = D[wrd.cconfiguration][wrd.cplugins];
+  let allPluginsDebugSettings = D[wrd.cconfiguration][cfg.cdebugSetting][wrd.cplugins];
+  if (allPluginsConfigurationData && allPluginsDebugSettings) {
+    try {
+      delete allPluginsConfigurationData[pluginName];
+      delete allPluginsDebugSettings[pluginName];
+      returnData = true;
+    } catch (err) {
+      // ERROR: Unable to remove the plugin configuration data for the specified plugin: 
+      console.log(msg.cremovePluginConfigurationDataMessage01 + pluginName);
+      // ERROR:
+      console.log(msg.cerrorMessage + err.message);
+    }
+  } else {
+    if (!allPluginsConfigurationData) {
+      // ERROR: Unable to locate the plugins configuration data. Plugin:
+      console.log(msg.cremovePluginConfigurationDataMessage02 + pluginName);
+    }
+    if (!allPluginsDebugSettings) {
+      // ERROR: Unable to locate the plugins configuration debug settings data. Plugin:
+      console.log(msg.cremovePluginConfigurationDataMessage03 + pluginName);
+    }
+  }
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
 export default {
   addPluginConfigurationData,
   scanDataPath,
@@ -1022,5 +1065,6 @@ export default {
   setupDataStorage,
   storeData,
   getData,
-  clearData
+  clearData,
+  removePluginConfigurationData
 };

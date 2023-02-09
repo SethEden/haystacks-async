@@ -26,6 +26,34 @@ const baseFileName = path.basename(import.meta.url, path.extname(import.meta.url
 const namespacePrefix = wrd.cframework + bas.cDot + sys.ccommandsBlob + bas.cDot + wrd.ccommands + bas.cDot + baseFileName + bas.cDot;
 
 /**
+ * @function listAllLoadedPlugins
+ * @description This is a command function that calls the warden.listLoadedPlugins function
+ * @param {string} inputData Not used for this command.
+ * @param {string} inputMetaData Not used for this command.
+ * @return {array<boolean,array<string>>} An array with a boolean True or False value to indicate if
+ * the application should exit or not, followed by the list of plugins that have been loaded.
+ * @author Seth Hollingsead
+ * @date 2023/02/06
+ */
+async function listAllLoadedPlugins(inputData, inputMetaData) {
+  let functionName = listAllLoadedPlugins.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
+  let returnData = [true, []];
+  returnData[1] = await warden.listLoadedPlugins();
+  // List of loaded plugins is:
+  console.log(msg.clistAllLoadedPluginsMessage01 + returnData[1].join(bas.cComa));
+  if (returnData[1] === false) {
+    // ERROR: There was an error getting the list of loaded plugins.
+    console.log(namespacePrefix + functionName + msg.cErrorListAllLoadedPluginsMessage01);
+  }
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
+/**
  * @function listAllPluginsInRegistry
  * @description This is a command function that calls the chiefPlugin.getAllPluginsInRegistry function.
  * @param {string} inputData Not used for this command.
@@ -42,9 +70,11 @@ async function listAllPluginsInRegistry(inputData, inputMetaData) {
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = [true, []];
   returnData[1] = await chiefPlugin.getAllPluginsInRegistry();
+  // List of plugins in registry is:
+  console.log(msg.clistOfPluginsInRegistryIs + returnData[1].join(bas.cComa));
   if (returnData[1] === false) {
     // ERROR: There was an error getting the list of plugins from the registry.
-    console.log(namespacePrefix + functionName + msg.cErrorListAllPluginsInRegistryCommandMessage01);
+    console.log(namespacePrefix + functionName, + msg.cErrorListAllPluginsInRegistryCommandMessage01);
   }
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
@@ -150,11 +180,49 @@ async function registerPlugin(inputData, inputMetaData) {
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = [true, false];
+  let pluginName = '';
+  let pluginPath = '';
+  let foundValidData = false;
   if (inputData.length === 3 && typeof(inputData[1]) === wrd.cstring && typeof(inputData[2]) === wrd.cstring) {
-    returnData[1] = await chiefPlugin.registerNamedPlugin(inputData[1], inputData[2]);
+    pluginName = inputData[1];
+    pluginPath = inputData[2];
+    foundValidData = true;
+  } else if (inputData.length === 2 && typeof(inputData[1]) === wrd.cstring) {
+    if (inputData[1].includes(bas.cComa) === true) {
+      let pluginParametersArray = inputData[1].split(bas.cComa);
+      pluginName = pluginParametersArray[0];
+      pluginPath = pluginParametersArray[1];
+      foundValidData = true;
+    } else {
+      // The user must have only entered the name of the plugin they want to register.
+      // We should look up the plugin root path in the plugin registry and scan that folder to
+      // determine if a matching folder name that matches the user entered plugin name.
+      // If we find a match there, then we can just use that path.
+      pluginName = inputData[1];
+      // Check to see if this plugin name is found among the folders that are contained in the plugins registry path.
+      let pluginNameFolderMatchFound = false;
+      let pluginsInRegistryPathArray = await chiefPlugin.getAllPluginsInRegistryPath();
+      for (let pluginNameKey in pluginsInRegistryPathArray) {
+        let pluginNameFromPath = pluginsInRegistryPathArray[pluginNameKey];
+        if (pluginName === pluginNameFromPath) {
+          pluginNameFolderMatchFound = true;
+          break;
+        }
+      } // End-for (let pluginNameKey in pluginsInRegistryPathArray)
+      if (pluginNameFolderMatchFound === true) {
+        foundValidData = true;
+        pluginPath = await chiefPlugin.getPluginsRegistryPath();
+      } else {
+        // ERROR: Failure to find a matching plugin for the specified plugin name:
+        console.log(msg.cErrorRegisterPluginCommandMessage02 + JSON.stringify(pluginName));
+      }
+    }
   } else {
     // ERROR: Failure to register the specified plugin, invalid input: 
     console.log(msg.cErrorRegisterPluginCommandMessage01 + JSON.stringify(inputData));
+  }
+  if (foundValidData === true) {
+    returnData[1] = await chiefPlugin.registerNamedPlugin(pluginName, pluginPath);
   }
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
@@ -165,7 +233,7 @@ async function registerPlugin(inputData, inputMetaData) {
  * @function unregisterPlugin
  * @description This is a command function that calls the chiefPlugin.unregisterNamedPlugin function.
  * @param {array<string>} inputData An array that could actually contain anything,
- * dependng on what the user entered. But the function filters all of that internally and
+ * depending on what the user entered. But the function filters all of that internally and
  * extracts the case the user has entered the correct input as follows:
  * inputData[0] = 'unregisterPlugin'
  * inputData[1] = pluginName
@@ -182,11 +250,50 @@ async function unregisterPlugin(inputData, inputMetaData) {
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = [true, false];
-  if (inputData.length === 2 && typeof(inputData[1]) === wrd.cstring) {
+  if (Array.isArray(inputData) === true && inputData.length === 2 && typeof(inputData[1]) === wrd.cstring) {
     returnData[1] = await chiefPlugin.unregisterNamedPlugin(inputData[1]);
   } else {
     // ERROR: Failure to unregister the specified plugin, invalid input:
     console.log(msg.cErrorUnregisterPluginCommandMessage01 + JSON.stringify(inputData));
+  }
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
+/**
+ * @function unregisterPlugins
+ * @description This is a command function that calls chiefPlugin.unregisterPlugins function.
+ * @param {array<string>} inputData An array that could actually contain anything,
+ * depending on what the user entered. But the function filters all of that internally and
+ * extracts the case the user has entered the correct input as follows:
+ * inputData[0] = 'unregisterPlugins'
+ * inputData[1] = pluginName1,pluginName2,pluginNameX...
+ * @param {string} inputMetaData Not used for this command.
+ * @return {array<boolean,boolean>} An array with a boolean True or False value to indicate if
+ * the application should exit or not exit, followed by another boolean value to indicate if
+ * the plugins were unregistered successfully or not.
+ * @author Seth Hollingsead
+ * @date 2023/02/07
+ */
+async function unregisterPlugins(inputData, inputMetaData) {
+  let functionName = unregisterPlugins.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
+  let returnData = [true, false];
+  let pluginListArray = [];
+  if (Array.isArray(inputData) === true && inputData.length >= 2 && typeof(inputData[1]) === wrd.cstring) {
+    if (inputData[1].includes(bas.cComa) === true) {
+      pluginListArray = inputData[1].split(bas.cComa);
+    } else if (inputData.length >= 3) {
+      inputData.shift();
+      pluginListArray = inputData;
+    }
+    returnData[1] = await chiefPlugin.unregisterPlugins(pluginListArray);
+  } else {
+    // ERROR: Failure to unregister any of the specified plugins, invalid input:
+    console.log(msg.cErrorUnregisterPluginsCommandMessage01 + JSON.stringify(inputData));
   }
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
@@ -215,6 +322,30 @@ async function syncPluginRegistryWithPath(inputData, inputMetaData) {
     // ERROR: Failure to synchronize the plugin registry with the plugin path listed in the plugin registry.
     console.log(namespacePrefix + functionName + msg.cErrorSyncPluginRegistryWithPathCommandMessage01);
   }
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
+/**
+ * @function listPluginsRegistryPath
+ * @description Prints out the plugins path that is listed in the plugin registry meta-data.
+ * @param {string} inputData Not used for this command.
+ * @param {string} inputMetaData Not used for this command.
+ * @return {array<boolean,string>} An array with a boolean True or False value to indicate if
+ * the application should exit or not exit, followed by a string that is the plugins path.
+ * @author Seth Hollingsead
+ * @date 2023/02/07
+ */
+async function listPluginsRegistryPath(inputData, inputMetaData) {
+  let functionName = listPluginsRegistryPath.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
+  let returnData = [true, false];
+  returnData[1] = await chiefPlugin.getPluginsRegistryPath();
+  // plugins registry path is:
+  console.log(msg.cpluginsRegistryPathMessageIs + returnData[1]);
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
@@ -281,7 +412,8 @@ async function savePluginRegistryToDisk(inputData, inputMetaData) {
  * depending on what the user entered. But the function filters all of that internally and
  * extracts the case the user has entered the correct input as follows:
  * inputData[0] = 'loadPlugin'
- * inputData[1] = pluginPath - The fully qualified path where to load the plugin from.
+ * inputData[1] = pluginPath - The fully qualified path where to load the plugin from, or
+ * the name of the plugin folder in the plugins registry path where the plugin can be found.
  * @param {string} inputMetaData Not used for this command.
  * @return {array<boolean,boolean>} An array with a boolean True or False value to indicate if
  * the application should exit or not exit, followed by another boolean value to indicate if
@@ -327,8 +459,15 @@ async function loadPlugins(inputData, inputMetaData) {
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = [true, false];
-  if (inputData.length === 2) { // TODO: Should probably also confirm it's an array here.
-    returnData[1] = await warden.loadPlugins(inputData[1]);
+  let pluginsArray = [];
+  if (Array.isArray(inputData) === true && inputData.length >= 2) {
+    if (inputData[1].includes(bas.cComa) === true) {
+      pluginsArray = inputData[1].split(bas.cComa);
+    } else {
+      inputData.shift(); // Remove the first entry, and just pass the rest of the array.
+      pluginsArray = inputData;
+    }
+    returnData[1] = await warden.loadPlugins(pluginsArray);
   } else {
     // ERROR: Failure to load the specified plugins, invalid input:
     console.log(msg.cErrorLoadPluginsCommandMessage01 + JSON.stringify(inputData));
@@ -418,8 +557,15 @@ async function unloadPlugins(inputData, inputMetaData) {
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = [true, false];
-  if (inputData.length === 2) { // TODO: Should probably also confirm it's an array here.
-    returnData[1] = await warden.unloadPlugins(inputData[1]);
+  let pluginNameArray = [];
+  if (Array.isArray(inputData) === true && inputData.length >= 2) {
+    if (inputData.length === 2 && inputData[1].includes(bas.cComa) === true) {
+      pluginNameArray = inputData[1].split(bas.cComa);
+    } else {
+      inputData.shift();
+      pluginNameArray = inputData;
+    }
+    returnData[1] = await warden.unloadPlugins(pluginNameArray);
   } else {
     // ERROR: Failure to unload the specified plugins, invalid input:
     console.log(msg.cErrorUnloadPluginsCommandMessage01 + JSON.stringify(inputData));
@@ -457,13 +603,16 @@ async function unloadAllPlugins(inputData, inputMetaData) {
 }
 
 export default {
+  listAllLoadedPlugins,
   listAllPluginsInRegistry,
   listAllPluginsInRegistryPath,
   countPluginsInRegistry,
   countPluginsInRegistryPath,
   registerPlugin,
   unregisterPlugin,
+  unregisterPlugins,
   syncPluginRegistryWithPath,
+  listPluginsRegistryPath,
   unregisterAllPlugins,
   savePluginRegistryToDisk,
   loadPlugin,
