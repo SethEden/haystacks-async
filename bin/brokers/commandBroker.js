@@ -5,6 +5,7 @@
  * which will actually be stored functions on the D-Data structure.
  * @requires module:ruleBroker
  * @requires module:commandsLibrary
+ * @requires module:colorizer
  * @requires module:configurator
  * @requires module:loggers
  * @requires module:data
@@ -20,6 +21,7 @@
 // Internal imports
 import ruleBroker from './ruleBroker.js';
 import commandsLibrary from '../commandsBlob/commandsLibrary.js';
+import colorizer from '../executrix/colorizer.js';
 import configurator from '../executrix/configurator.js';
 import loggers from '../executrix/loggers.js';
 import D from '../structures/data.js';
@@ -29,7 +31,7 @@ import stack from '../structures/stack.js';
 import hayConst from '@haystacks/constants';
 import path from 'path';
 
-const {bas, biz, cfg, gen, msg, num, sys, wrd} = hayConst;
+const {bas, biz, clr, cfg, gen, msg, num, sys, wrd} = hayConst;
 const baseFileName = path.basename(import.meta.url, path.extname(import.meta.url));
 // framework.brokers.commandBroker.
 const namespacePrefix = wrd.cframework + bas.cDot + wrd.cbrokers + bas.cDot + baseFileName + bas.cDot;
@@ -242,6 +244,8 @@ async function countMatchingCommandAlias(commandAliasData, commandAliasName) {
   // commandAliasName is:
   await loggers.consoleLog(namespacePrefix + functionName, msg.ccommandAliasNameIs + commandAliasName);
   let commandAliasCount = 0;
+  let blackColorArray = await colorizer.getNamedColorData(clr.cBlack, [0,0,0]);
+  let redColorArray = await colorizer.getNamedColorData(clr.cRed, [255,0,0]);
   if (typeof commandAliasData === wrd.cobject) {
     for (let commandAliasEntity in commandAliasData) {
       // commandAliasEntity is:
@@ -249,7 +253,7 @@ async function countMatchingCommandAlias(commandAliasData, commandAliasName) {
       // commandAliasEntityValue is:
       await loggers.consoleLog(namespacePrefix + functionName, msg.ccommandAliasEntityValueIs + JSON.stringify(commandAliasData[commandAliasEntity]));
       if (commandAliasEntity.toUpperCase() != commandAliasName.toUpperCase()) {
-        if (commandAliasData[commandAliasEntity][wrd.cAliases] != undefined) {
+        if (commandAliasData[commandAliasEntity] != undefined && commandAliasData[commandAliasEntity][wrd.cAliases] != undefined) {
           let aliasList = commandAliasData[commandAliasEntity][wrd.cAliases];
           let arrayOfAliases = aliasList.split(bas.cComa);
           for (const element of arrayOfAliases) {
@@ -264,17 +268,27 @@ async function countMatchingCommandAlias(commandAliasData, commandAliasName) {
             }
           } // End-for (const element of arrayOfAliases)
         } else {
-          let tempCommandAliasCount = await countMatchingCommandAlias(commandAliasData[commandAliasEntity], commandAliasName);
-          // tempCommandAliasCount is:
-          await loggers.consoleLog(namespacePrefix + functionName, msg.ctempCommandAliasCountIs + tempCommandAliasCount);
-          if (tempCommandAliasCount > 0) {
-            // adding commandAliasCount:
-            await loggers.consoleLog(namespacePrefix + functionName, msg.caddingCommandAliasCount + commandAliasCount);
-            commandAliasCount = commandAliasCount + tempCommandAliasCount;
-            // After adding commandAliasCount and tempCommandAliasCount:
-            await loggers.consoleLog(namespacePrefix + functionName, msg.cAfterAddingCommandAliasCountAndTempCommandAliasCount + commandAliasCount);
-            // Don't break, continue searching, so we get a full count of any duplicates found.
-          } // End-if (tempCommandAliasCount > 0)
+          if (commandAliasData[commandAliasEntity] != undefined) {
+            let tempCommandAliasCount = await countMatchingCommandAlias(commandAliasData[commandAliasEntity], commandAliasName);
+            // tempCommandAliasCount is:
+            await loggers.consoleLog(namespacePrefix + functionName, msg.ctempCommandAliasCountIs + tempCommandAliasCount);
+            if (tempCommandAliasCount > 0) {
+              // adding commandAliasCount:
+              await loggers.consoleLog(namespacePrefix + functionName, msg.caddingCommandAliasCount + commandAliasCount);
+              commandAliasCount = commandAliasCount + tempCommandAliasCount;
+              // After adding commandAliasCount and tempCommandAliasCount:
+              await loggers.consoleLog(namespacePrefix + functionName, msg.cAfterAddingCommandAliasCountAndTempCommandAliasCount + commandAliasCount);
+              // Don't break, continue searching, so we get a full count of any duplicates found.
+            } // End-if (tempCommandAliasCount > 0)
+          } else {
+            // ERROR: A command is missing command aliases definitions. Data:
+            let errorMessage = msg.cErrorCountMatchingCommandAliasMessage01 + JSON.stringify(commandAliasData);
+            errorMessage = await colorizer.colorizeMessageSimple(errorMessage, blackColorArray, true);
+            errorMessage = await colorizer.colorizeMessageSimple(errorMessage, redColorArray, false);
+            console.log(errorMessage);
+            // Its an error, but not a duplicate error, however, we need to report it some how.
+            commandAliasCount = commandAliasCount + 1; // We've console logged it as best we can, we need to raise the flag anyway.
+          }          
         }
       } else if (commandAliasEntity.toUpperCase() === commandAliasName.toUpperCase()) {
         // Found a matching entry! 2
@@ -314,7 +328,7 @@ async function searchCommandAlias(commandAliasData, commandAliasName) {
       await loggers.consoleLog(namespacePrefix + functionName, msg.ccommandAliasEntityIs + JSON.stringify(commandAliasEntity));
       // commandAliasEntityValue is:
       await loggers.consoleLog(namespacePrefix + functionName, msg.ccommandAliasEntityValueIs + JSON.stringify(commandAliasData[commandAliasEntity]));
-      if (commandAliasEntity.toUpperCase() != commandAliasName.toUpperCase()) {
+      if (commandAliasEntity.toUpperCase() != commandAliasName.toUpperCase() && commandAliasData[commandAliasEntity]) {
         if (commandAliasData[commandAliasEntity][wrd.cAliases] != undefined) {
           let aliasList = commandAliasData[commandAliasEntity][wrd.cAliases];
           let arrayOfAliases = aliasList.split(bas.cComa);
@@ -711,6 +725,93 @@ async function executeCommand(commandString) {
   return returnData;
 }
 
+/**
+ * @function removePluginCommands
+ * @description Parses through the commands and finds the commands associated with the named plugin.
+ * Then removes that data shredding it from existence at the edge of a black hole.
+ * @param {string} pluginName The name of the plugin that should have its commands removed from the D-data structure.
+ * @return {boolean} True or False to indicate if the removal of the data was completed successfully or not.
+ * @author Seth Hollingsead
+ * @date 2023/02/01
+ */
+async function removePluginCommands(pluginName) {
+  let functionName = removePluginCommands.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  // pluginName is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginNameIs + pluginName);
+  let returnData = false;
+  let allCommands = D[wrd.cCommands];
+  // NOTE: We are going to have to get the names of the individual commands for the plugin,
+  // from the plugin constants validation for the commands,
+  // then iterate over them to remove all of the plugin business rules one by one.
+  let pluginConstantsValidation = D[sys.cConstantsValidationData][wrd.cPlugins][pluginName];
+  let pluginConstantsValidationCommands = {};
+  if (pluginConstantsValidation) {
+    pluginConstantsValidationCommands = pluginConstantsValidation[sys.cpluginCommandConstantsValidation];
+  } else {
+    // ERROR: Constants validation data for the specified plugin was not found. Plugin:
+    console.log(msg.cremovePluginBusinessRulesMessage01 + pluginName);
+  }
+  if (pluginConstantsValidationCommands) {
+    try {
+      for (const pluginCommandsRuleKey in pluginConstantsValidationCommands) {
+        let pluginCommandConstValidationObject = pluginConstantsValidationCommands[pluginCommandsRuleKey];
+        // pluginCommandConstValidationObject is:
+        await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginCommandsConstValidationObjectIs + JSON.stringify(pluginCommandConstValidationObject));
+        // Removing plugin command:
+        await loggers.consoleLog(namespacePrefix + functionName, msg.cremovePluginCommandsMessage01 + pluginCommandConstValidationObject[wrd.cActual]);
+        delete allCommands[pluginCommandConstValidationObject[wrd.cActual]];
+      }
+      returnData = true;
+    } catch (err) {
+      // ERROR: Failure attempting to delete the plugin commands for plugin:
+      console.log(msg.cremovePluginCommandsMessage02 + pluginName);
+      console.log(msg.cerrorMessage + err.message);
+    }
+  } else {
+    // ERROR: Plugin command constants validation data for the specified plugin was not found. Plugin:
+    console.log(msg.cremovePluginCommandsMessage03 + pluginName);
+  }
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
+/**
+ * @function removePluginCommandAliases
+ * @description Parses through the command aliases and finds the command aliases associated with the named plugin.
+ * Then removes that data shredding it from existence at the edge of a black hole.
+ * @param {string} pluginName The name of the plugin that should have its command aliases removed from the D-data structure.
+ * @return {boolean} True or False to indicate if the removal of the data was completed successfully or not.
+ * @author Seth Hollingsead
+ * @date 2023/02/01
+ */
+async function removePluginCommandAliases(pluginName) {
+  let functionName = removePluginCommandAliases.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  // pluginName is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginNameIs + pluginName);
+  let returnData = false;
+  let allPluginsCommandAliases = D[sys.cCommandsAliases][wrd.cPlugins];
+  if (allPluginsCommandAliases) {
+    try {
+      delete allPluginsCommandAliases[pluginName];
+      returnData = true;
+    } catch (err) {
+      // ERROR: Unable to remove the plugin command aliases for the specified plugin:
+      console.log(msg.cremovePluginCommandAliasesMessage01 + pluginName);
+      // ERROR:
+      console.log(msg.cerrorMessage + err.message);
+    }
+  } else {
+    // ERROR: Unable to locate the plugins command aliases data. Plugin: 
+    console.log(msg.cremovePluginCommandAliasesMessage02 + pluginName);
+  }
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
 export default {
   bootStrapCommands,
   addClientCommands,
@@ -722,5 +823,7 @@ export default {
   getAllCommandAliasData,
   getCommandNamespaceDataObject,
   getCommandArgs,
-  executeCommand
+  executeCommand,
+  removePluginCommands,
+  removePluginCommandAliases
 };

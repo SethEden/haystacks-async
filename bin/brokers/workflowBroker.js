@@ -281,6 +281,41 @@ async function getWorkflowNamespaceDataObject(workflowDataStructure, namespaceTo
   return workflowNamespaceObject;
 }
 
+/**
+ * @function removePluginWorkflows
+ * @description Parses through the workflows and finds the workflows associated with the named plugin.
+ * Then removes that data shredding it from existence at the edge of a black hole.
+ * @param {string} pluginName The name of the plugin that should have its workflows removed from the D-data structure.
+ * @return {boolean} True or False to indicate if the removal of the data was completed successfully or not.
+ * @author Seth Hollingsead
+ * @date 2023/02/01
+ */
+async function removePluginWorkflows(pluginName) {
+  let functionName = removePluginWorkflows.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  // pluginName is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginNameIs + pluginName);
+  let returnData = false;
+  let allPluginsWorkflowData = D[sys.cCommandWorkflows][wrd.cPlugins];
+  if (allPluginsWorkflowData) {
+    try {
+      delete allPluginsWorkflowData[pluginName];
+      returnData = true;
+    } catch (err) {
+      // ERROR: Unable to remove the plugin workflows for the specified plugin:
+      console.log(msg.cremovePluginWorkflowsMessage01 + pluginName);
+      // ERROR:
+      console.log(msg.cerrorMessage + err.message);
+    }
+  } else {
+    // ERROR: Unable to locate the plugins workflow data. Plugin:
+    console.log(msg.cremovePluginWorkflowsMessage02 + pluginName);
+  }
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
 export default {
   addPluginWorkflows,
   getWorkflow,
@@ -288,5 +323,6 @@ export default {
   doesWorkflowExistInWorkflowData,
   searchWorkflow,
   getAllWorkflows,
-  getWorkflowNamespaceDataObject
+  getWorkflowNamespaceDataObject,
+  removePluginWorkflows
 };

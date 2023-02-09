@@ -369,8 +369,44 @@ async function addConstantsValidationData(constantsValidationData, contextName) 
   return returnData;
 }
 
+/**
+ * @function removePluginConstantsValidationData
+ * @description Parses through the constants validation data and finds the constants validation data data associated with the named plugin.
+ * Then removes that data shredding it from existence at the edge of a black hole.
+ * @param {string} pluginName The name of the plugin that should have its constants vaidation data removed from the D-data structure.
+ * @return {boolean} True or False to indicate if the removal of the data was completed successfully or not.
+ * @author Seth Hollingsead
+ * @date 2023/02/01
+ */
+async function removePluginConstantsValidationData(pluginName) {
+  let functionName = removePluginConstantsValidationData.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  // pluginName is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginNameIs + pluginName);
+  let returnData = false;
+  let allPluginsConstantsValidationData = D[sys.cConstantsValidationData][wrd.cPlugins];
+  if (allPluginsConstantsValidationData) {
+    try {
+      delete allPluginsConstantsValidationData[pluginName];
+      returnData = true;
+    } catch (err) {
+      // ERROR: Unable to remove the plugin constants validation data for the specified plugin:
+      console.log(msg.cremovePluginConstantsValidationDataMessage01 + pluginName);
+      // ERROR:
+      console.log(msg.cerrorMessage + err.message);
+    }
+  } else {
+    // ERROR: Unable to locate the plugins constants validatino data. Plugin:
+    console.log(msg.cremovePluginConstantsValidationDataMessage02 + pluginName);
+  }
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
 export default {
   initializeConstantsValidationData,
   generateFrameworkConstantsValidationData,
-  addConstantsValidationData
+  addConstantsValidationData,
+  removePluginConstantsValidationData
 };
