@@ -5,6 +5,7 @@
  * which will actually be stored functions on the D-Data structure.
  * @requires module:ruleBroker
  * @requires module:commandsLibrary
+ * @requires module:colorizer
  * @requires module:configurator
  * @requires module:loggers
  * @requires module:data
@@ -20,6 +21,7 @@
 // Internal imports
 import ruleBroker from './ruleBroker.js';
 import commandsLibrary from '../commandsBlob/commandsLibrary.js';
+import colorizer from '../executrix/colorizer.js';
 import configurator from '../executrix/configurator.js';
 import loggers from '../executrix/loggers.js';
 import D from '../structures/data.js';
@@ -29,7 +31,7 @@ import stack from '../structures/stack.js';
 import hayConst from '@haystacks/constants';
 import path from 'path';
 
-const {bas, biz, cfg, gen, msg, num, sys, wrd} = hayConst;
+const {bas, biz, clr, cfg, gen, msg, num, sys, wrd} = hayConst;
 const baseFileName = path.basename(import.meta.url, path.extname(import.meta.url));
 // framework.brokers.commandBroker.
 const namespacePrefix = wrd.cframework + bas.cDot + wrd.cbrokers + bas.cDot + baseFileName + bas.cDot;
@@ -242,6 +244,8 @@ async function countMatchingCommandAlias(commandAliasData, commandAliasName) {
   // commandAliasName is:
   await loggers.consoleLog(namespacePrefix + functionName, msg.ccommandAliasNameIs + commandAliasName);
   let commandAliasCount = 0;
+  let blackColorArray = await colorizer.getNamedColorData(clr.cBlack, [0,0,0]);
+  let redColorArray = await colorizer.getNamedColorData(clr.cRed, [255,0,0]);
   if (typeof commandAliasData === wrd.cobject) {
     for (let commandAliasEntity in commandAliasData) {
       // commandAliasEntity is:
@@ -249,7 +253,7 @@ async function countMatchingCommandAlias(commandAliasData, commandAliasName) {
       // commandAliasEntityValue is:
       await loggers.consoleLog(namespacePrefix + functionName, msg.ccommandAliasEntityValueIs + JSON.stringify(commandAliasData[commandAliasEntity]));
       if (commandAliasEntity.toUpperCase() != commandAliasName.toUpperCase()) {
-        if (commandAliasData[commandAliasEntity][wrd.cAliases] != undefined) {
+        if (commandAliasData[commandAliasEntity] != undefined && commandAliasData[commandAliasEntity][wrd.cAliases] != undefined) {
           let aliasList = commandAliasData[commandAliasEntity][wrd.cAliases];
           let arrayOfAliases = aliasList.split(bas.cComa);
           for (const element of arrayOfAliases) {
@@ -264,17 +268,27 @@ async function countMatchingCommandAlias(commandAliasData, commandAliasName) {
             }
           } // End-for (const element of arrayOfAliases)
         } else {
-          let tempCommandAliasCount = await countMatchingCommandAlias(commandAliasData[commandAliasEntity], commandAliasName);
-          // tempCommandAliasCount is:
-          await loggers.consoleLog(namespacePrefix + functionName, msg.ctempCommandAliasCountIs + tempCommandAliasCount);
-          if (tempCommandAliasCount > 0) {
-            // adding commandAliasCount:
-            await loggers.consoleLog(namespacePrefix + functionName, msg.caddingCommandAliasCount + commandAliasCount);
-            commandAliasCount = commandAliasCount + tempCommandAliasCount;
-            // After adding commandAliasCount and tempCommandAliasCount:
-            await loggers.consoleLog(namespacePrefix + functionName, msg.cAfterAddingCommandAliasCountAndTempCommandAliasCount + commandAliasCount);
-            // Don't break, continue searching, so we get a full count of any duplicates found.
-          } // End-if (tempCommandAliasCount > 0)
+          if (commandAliasData[commandAliasEntity] != undefined) {
+            let tempCommandAliasCount = await countMatchingCommandAlias(commandAliasData[commandAliasEntity], commandAliasName);
+            // tempCommandAliasCount is:
+            await loggers.consoleLog(namespacePrefix + functionName, msg.ctempCommandAliasCountIs + tempCommandAliasCount);
+            if (tempCommandAliasCount > 0) {
+              // adding commandAliasCount:
+              await loggers.consoleLog(namespacePrefix + functionName, msg.caddingCommandAliasCount + commandAliasCount);
+              commandAliasCount = commandAliasCount + tempCommandAliasCount;
+              // After adding commandAliasCount and tempCommandAliasCount:
+              await loggers.consoleLog(namespacePrefix + functionName, msg.cAfterAddingCommandAliasCountAndTempCommandAliasCount + commandAliasCount);
+              // Don't break, continue searching, so we get a full count of any duplicates found.
+            } // End-if (tempCommandAliasCount > 0)
+          } else {
+            // ERROR: A command is missing command aliases definitions. Data:
+            let errorMessage = msg.cErrorCountMatchingCommandAliasMessage01 + JSON.stringify(commandAliasData);
+            errorMessage = await colorizer.colorizeMessageSimple(errorMessage, blackColorArray, true);
+            errorMessage = await colorizer.colorizeMessageSimple(errorMessage, redColorArray, false);
+            console.log(errorMessage);
+            // Its an error, but not a duplicate error, however, we need to report it some how.
+            commandAliasCount = commandAliasCount + 1; // We've console logged it as best we can, we need to raise the flag anyway.
+          }          
         }
       } else if (commandAliasEntity.toUpperCase() === commandAliasName.toUpperCase()) {
         // Found a matching entry! 2
