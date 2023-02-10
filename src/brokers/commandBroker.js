@@ -666,7 +666,7 @@ async function executeCommand(commandString) {
   let commandEndTime = '';
   let commandDeltaTime = '';
 
-  await loggers.consoleLog(namespacePrefix + functionName, 'commandQueue is: ' + await queue.queuePrint(sys.cCommandQueue));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.ccommandQueueIs + await queue.queuePrint(sys.cCommandQueue));
 
   if (commandMetricsEnabled === true) {
     // Here we will capture the start time of the command we are about to execute.
