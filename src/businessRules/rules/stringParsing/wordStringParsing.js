@@ -157,7 +157,7 @@ async function compareSimplifiedAndConsolidatedStrings(inputData, inputMetaData)
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = false;
   if (inputData && inputMetaData) {
-    returnData = simplifyAndConsolidateString(inputData, '') === simplifyAndConsolidateString(inputMetaData, '');
+    returnData = await simplifyAndConsolidateString(inputData, '') === await simplifyAndConsolidateString(inputMetaData, '');
   }
   loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
   loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
@@ -255,7 +255,7 @@ async function determineWordDelimiter(inputData, inputMetaData) {
   if (inputData) {
     let camelCaseWordCount = await countCamelCaseWords(inputData, '');
     loggers.consoleLog(namespacePrefix + functionName, msg.ccamelCaseWordCountIs + camelCaseWordCount);
-    let containsAcronym = doesStringContainAcronym(inputData, '');
+    let containsAcronym = await doesStringContainAcronym(inputData, '');
     loggers.consoleLog(namespacePrefix + functionName, msg.ccontainsAcronymIs + containsAcronym);
     let spacesCount = await countDelimiterInString(inputData, bas.cSpace);
     loggers.consoleLog(namespacePrefix + functionName, msg.cspacesCountIs + spacesCount);
@@ -369,7 +369,7 @@ async function getWordCountInString(inputData, inputMetaData) {
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = 0;
   if (inputData) {
-    let wordDelimiter = determineWordDelimiter(inputData, inputMetaData);
+    let wordDelimiter = await determineWordDelimiter(inputData, inputMetaData);
     if (wordDelimiter === sys.cCamelCase) {
       returnData = await countCamelCaseWords(inputData, '');
     } else if (wordDelimiter !== '') {

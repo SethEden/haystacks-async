@@ -40,7 +40,7 @@ const namespacePrefix = wrd.cframework + bas.cDot + wrd.ccontrollers + bas.cDot 
 async function bootStrapCommands() {
   let functionName = bootStrapCommands.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  commandBroker.bootStrapCommands();
+  await commandBroker.bootStrapCommands();
   loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
 }
 
@@ -55,7 +55,7 @@ async function bootStrapCommands() {
 async function addClientCommands(clientCommands) {
   let functionName = addClientCommands.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  commandBroker.addClientCommands(clientCommands);
+  await commandBroker.addClientCommands(clientCommands);
   loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
 }
 
@@ -122,9 +122,9 @@ async function enqueueCommand(command) {
   // command is:
   loggers.consoleLog(namespacePrefix + functionName, msg.ccommandIs + command);
   if (D[sys.cCommandQueue] === undefined) {
-    queue.initQueue(sys.cCommandQueue);
+    await queue.initQueue(sys.cCommandQueue);
   }
-  queue.enqueue(sys.cCommandQueue, command);
+  await queue.enqueue(sys.cCommandQueue, command);
   loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
 }
 
@@ -139,7 +139,7 @@ async function isCommandQueueEmpty() {
   let functionName = isCommandQueueEmpty.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   let returnData = false;
-  returnData = queue.isEmpty(sys.cCommandQueue);
+  returnData = await queue.isEmpty(sys.cCommandQueue);
   loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
   loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
@@ -158,8 +158,8 @@ async function processCommandQueue() {
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   let commandToExecute;
   let returnData;
-  queue.queuePrint(sys.cCommandQueue);
-  commandToExecute = queue.dequeue(sys.cCommandQueue);
+  await queue.queuePrint(sys.cCommandQueue);
+  commandToExecute = await queue.dequeue(sys.cCommandQueue);
   // commandToExecute is:
   loggers.consoleLog(namespacePrefix + functionName, msg.ccommandToExecuteIs + commandToExecute);
   returnData = await commandBroker.executeCommand(commandToExecute);

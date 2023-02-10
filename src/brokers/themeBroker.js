@@ -70,7 +70,7 @@ async function initThemeData() {
     let themeName = themesNames[key];
     // themeName is:
     loggers.consoleLog(namespacePrefix + functionName, msg.cthemeNameIs + themeName);
-    let themePath = getNamedThemePathFromRootPath(themeName, themesRootPath);
+    let themePath = await getNamedThemePathFromRootPath(themeName, themesRootPath);
     // themePath is:
     loggers.consoleLog(namespacePrefix + functionName, msg.cthemePathIs + themePath);
     if (themePath) {
@@ -230,7 +230,7 @@ async function applyTheme(themeData) {
   // themeData is:
   loggers.consoleLog(namespacePrefix + functionName, msg.cthemeDataIs + JSON.stringify(themeData));
   let returnData = false;
-  returnData = chiefConfiguration.parseLoadedConfigurationData(themeData);
+  returnData = await chiefConfiguration.parseLoadedConfigurationData(themeData);
   loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
   loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;

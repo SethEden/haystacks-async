@@ -107,10 +107,10 @@ async function stringToDataType(inputData, inputMetaData) {
         returnData = await stringToBoolean(inputData, '');
         break;
       case wrd.cInteger:
-        returnData = parseInt(inputData, '');
+        returnData = await parseInt(inputData, '');
         break;
       case wrd.cFloat:
-        returnData = parseFloat(inputData, '');
+        returnData = await parseFloat(inputData, '');
         break;
       case wrd.cString:
         returnData = inputData;

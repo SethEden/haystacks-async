@@ -50,7 +50,7 @@ const namespacePrefix = wrd.cframework + bas.cDot + wrd.cbrokers + bas.cDot + ba
 async function bootStrapCommands() {
   let functionName = bootStrapCommands.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  commandsLibrary.initCommandsLibrary();
+  await commandsLibrary.initCommandsLibrary();
   loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
 }
 
@@ -655,7 +655,7 @@ async function executeCommand(commandString) {
   // commandString is:
   loggers.consoleLog(namespacePrefix + functionName, msg.ccommandStringIs + commandString);
   let returnData = [];
-  let commandToExecute = getValidCommand(commandString, await configurator.getConfigurationSetting(wrd.csystem, cfg.cprimaryCommandDelimiter));
+  let commandToExecute = await getValidCommand(commandString, await configurator.getConfigurationSetting(wrd.csystem, cfg.cprimaryCommandDelimiter));
   // commandToExecute is:
   loggers.consoleLog(namespacePrefix + functionName, msg.ccommandToExecuteIs + commandToExecute);
   let commandArgs = await getCommandArgs(commandString, await configurator.getConfigurationSetting(wrd.csystem, cfg.cprimaryCommandDelimiter));

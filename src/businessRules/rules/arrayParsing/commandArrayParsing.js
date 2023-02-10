@@ -62,7 +62,7 @@ async function solveLehmerCode(inputData, inputMetaData) {
 
     // Now we just iterate over each array in expandedLehmerCodeArray and call: getLehmerCodeValue
     for (let i = 0; i < expandedLehmerCodeArray.length - 1; i++) {
-      let lehmerCodeStringValue = getLehmerCodeValue(expandedLehmerCodeArray[i], inputMetaData);
+      let lehmerCodeStringValue = await getLehmerCodeValue(expandedLehmerCodeArray[i], inputMetaData);
       if (i === 0) {
         returnData = returnData + lehmerCodeStringValue;
       } else {

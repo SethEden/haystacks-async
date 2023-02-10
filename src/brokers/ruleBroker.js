@@ -126,7 +126,7 @@ async function processRules(inputs, rulesToExecute) {
   // console.log(`rulesToExecute is: ${JSON.stringify(rulesToExecute)}`);
   let returnData;
   let inputMetaData;
-  if (rulesToExecute && ruleParsing.doAllRulesExist(rulesToExecute)) {
+  if (rulesToExecute && await ruleParsing.doAllRulesExist(rulesToExecute)) {
     if (inputs) {
       returnData = inputs[0];
       inputMetaData = inputs[1];

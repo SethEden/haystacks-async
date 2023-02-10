@@ -78,7 +78,7 @@ async function validateConstantsDataValidation(inputData, inputMetaData) {
           let lineArray = lineInCode.split(bas.cSpace);
           // lineArray[2] is:
           loggers.consoleLog(namespacePrefix + functionName, msg.clineArray2Is + lineArray[2]);
-          foundConstant = validateConstantsDataValidationLineItemName(lineArray[2], inputMetaData);
+          foundConstant = await validateConstantsDataValidationLineItemName(lineArray[2], inputMetaData);
           let qualifiedConstantsFilename = await ruleParsing.processRulesInternal([inputData, ''], [biz.cgetFileNameFromPath]);
           if (foundConstant === true) {
             if (await configurator.getConfigurationSetting(wrd.csystem, cfg.cdisplayIndividualConstantsValidationPassMessages) === true) {
@@ -96,14 +96,14 @@ async function validateConstantsDataValidation(inputData, inputMetaData) {
                 failMessage = chalk.rgb(0,0,0)(failMessage);
                 failMessage = chalk.bgRgb(255,0,0)(failMessage);
               } // End-if (colorizeLogsEnabled === true)
-              let qualifiedConstantsPrefix = determineConstantsContextQualifiedPrefix(qualifiedConstantsFilename, inputMetaData);
+              let qualifiedConstantsPrefix = await determineConstantsContextQualifiedPrefix(qualifiedConstantsFilename, inputMetaData);
               let pluginName = '';
               if (inputMetaData.includes(bas.cColon) && inputMetaData.toUpperCase().includes(wrd.cPLUGIN)) {
                 let pluginConstantNamespaceArray = inputMetaData.split(bas.cColon);
                 pluginName = pluginConstantNamespaceArray[0] + bas.cColon;
               }              
               console.log(pluginName + qualifiedConstantsFilename + bas.cColon + bas.cSpace + failMessage);
-              let suggestedLineOfCode = determineSuggestedConstantsValidationLineOfCode(lineArray[2], qualifiedConstantsPrefix);
+              let suggestedLineOfCode = await determineSuggestedConstantsValidationLineOfCode(lineArray[2], qualifiedConstantsPrefix);
               if (suggestedLineOfCode !== '') {
                 if (colorizeLogsEnabled === true) {
                   suggestedLineOfCode = chalk.rgb(0,0,0)(suggestedLineOfCode);
@@ -291,7 +291,7 @@ async function getConstantsValidationNamespaceParentObject(inputData, inputMetaD
         let pluginConstantNamespace = pluginNamespaceArray[1];
         for (const pluginNamespace in D[sys.cConstantsValidationData][wrd.cPlugins]) {
           if (pluginNamespace === pluginName && 
-          doesConstantNamespaceExist(pluginConstantNamespace, D[sys.cConstantsValidationData][wrd.cPlugins][pluginNamespace]) === true) {
+          await doesConstantNamespaceExist(pluginConstantNamespace, D[sys.cConstantsValidationData][wrd.cPlugins][pluginNamespace]) === true) {
             returnData = D[sys.cConstantsValidationData][wrd.cPlugins][pluginName];
           }
         } // End-for (const pluginNamespace of D[sys.cConstantsValidationData][wrd.cPlugins])
@@ -334,7 +334,7 @@ async function getConstantsValidationNamespaceObject(inputData, inputMetaData) {
         let pluginConstantNamespace = pluginNamespaceArray[1];
         for (const pluginNamespace in D[sys.cConstantsValidationData][wrd.cPlugins]) {
           if (pluginNamespace === pluginName &&
-          doesConstantNamespaceExist(pluginConstantNamespace, D[sys.cConstantsValidationData][wrd.cPlugins][pluginNamespace]) === true) {
+          await doesConstantNamespaceExist(pluginConstantNamespace, D[sys.cConstantsValidationData][wrd.cPlugins][pluginNamespace]) === true) {
             returnData = D[sys.cConstantsValidationData][wrd.cPlugins][pluginName][pluginConstantNamespace];
           }
         } // End-for (const pluginNamespace of D[sys.cConstantsValidationData][wrd.cPlugins])
@@ -399,10 +399,10 @@ async function doesConstantExist(inputData, inputMetaData) {
   let returnData = false;
   if (inputData) {
     let frameworkConstantsValidationData = D[sys.cConstantsValidationData][wrd.cFramework];
-    let foundFrameworkConstantMatch = doesConstantExistInConstantLibraryObject(inputData, frameworkConstantsValidationData);
+    let foundFrameworkConstantMatch = await doesConstantExistInConstantLibraryObject(inputData, frameworkConstantsValidationData);
     if (foundFrameworkConstantMatch === false) {
       let applicationConstantsValidationData = D[sys.cConstantsValidationData][wrd.cApplication];
-      let foundApplicationConstantMatch = doesConstantExistInConstantLibraryObject(inputData, applicationConstantsValidationData);
+      let foundApplicationConstantMatch = await doesConstantExistInConstantLibraryObject(inputData, applicationConstantsValidationData);
       if (foundApplicationConstantMatch === false) {
         let allPluginsConstantsValidationData = D[sys.cConstantsValidationData][wrd.cPlugins];
         // Now we have to go through each plugin and make a determination search for each one.
@@ -411,7 +411,7 @@ async function doesConstantExist(inputData, inputMetaData) {
             // pluginName is:
             loggers.consoleLog(namespacePrefix + functionName, msg.cpluginNameIs + pluginName);
             let pluginConstantsValidationData = allPluginsConstantsValidationData[pluginName];
-            let foundPluginConstantMatch = doesConstantExistInConstantLibraryObject(inputData, pluginConstantsValidationData);
+            let foundPluginConstantMatch = await doesConstantExistInConstantLibraryObject(inputData, pluginConstantsValidationData);
             if (foundPluginConstantMatch === true) {
               returnData = true;
               break;
@@ -460,7 +460,7 @@ async function doesConstantExistInConstantLibraryObject(inputData, inputMetaData
       key !== sys.cConstantsPhase1ValidationMessages &&
       key !== sys.cConstantsPhase2ValidationMessages) {
         let constantValidationDataLibraryObject = inputMetaData[key];
-        if (doesConstantExistInConstantNamespaceObject(inputData, constantValidationDataLibraryObject) === true) {
+        if (await doesConstantExistInConstantNamespaceObject(inputData, constantValidationDataLibraryObject) === true) {
           returnData = true;
           break;
         }
@@ -502,7 +502,7 @@ async function getConstantTypeInConstantLibraryObject(inputData, inputMetaData) 
         key !== sys.cConstantsPhase1ValidationMessages &&
         key !== sys.cConstantsPhase2ValidationMessages) {
           let constantValidationDataLibraryObject = inputMetaData[key];
-          if (doesConstantExistInConstantNamespaceObject(inputData[0], constantValidationDataLibraryObject) === true) {
+          if (await doesConstantExistInConstantNamespaceObject(inputData[0], constantValidationDataLibraryObject) === true) {
             if (returnData === false) {
               returnData = [];
               returnData[0] = key;
@@ -548,7 +548,7 @@ async function getConstantNameInConstantLibraryObject(inputData, inputMetaData) 
       key !== sys.cConstantsPhase1ValidationMessages &&
       key !== sys.cConstantsPhase2ValidationMessages) {
         let constantValidationDataLibraryObject = inputMetaData[key];
-        let constantName = getConstantNameInConstantNamespaceObject(inputData, constantValidationDataLibraryObject);
+        let constantName = await getConstantNameInConstantNamespaceObject(inputData, constantValidationDataLibraryObject);
         if (constantName) {
           returnData = constantName;
           break;
@@ -588,7 +588,7 @@ async function getConstantActualValueInConstantLibraryObject(inputData, inputMet
       key !== sys.cConstantsPhase1ValidationMessages &&
       key !== sys.cConstantsPhase2ValidationMessages) {
         let constantValidationDataLibraryObject = inputMetaData[key];
-        let constantName = getConstantActualValueInConstantNamespaceObject(inputData, constantValidationDataLibraryObject);
+        let constantName = await getConstantActualValueInConstantNamespaceObject(inputData, constantValidationDataLibraryObject);
         if (constantName) {
           returnData = constantName;
           break;
@@ -730,7 +730,7 @@ async function getConstantType(inputData, inputMetaData) {
     let applicationConstantMatchArray = [];
     let pluginConstantMatchArray = [];
     frameworkConstantsValidationData = D[sys.cConstantsValidationData][wrd.cFramework];
-    frameworkConstantMatchArray = getConstantTypeInConstantLibraryObject([inputData, inputMetaData], frameworkConstantsValidationData);
+    frameworkConstantMatchArray = await getConstantTypeInConstantLibraryObject([inputData, inputMetaData], frameworkConstantsValidationData);
     if (frameworkConstantMatchArray && inputMetaData === false) {
       returnData = frameworkConstantMatchArray.join(bas.cComa);
     } else if (frameworkConstantMatchArray && inputMetaData === true) {
@@ -747,7 +747,7 @@ async function getConstantType(inputData, inputMetaData) {
       return returnData;
     }
     applicationConstantsValidationData = D[sys.cConstantsValidationData][wrd.cApplication];
-    applicationConstantMatchArray = getConstantTypeInConstantLibraryObject([inputData, inputMetaData], applicationConstantsValidationData);
+    applicationConstantMatchArray = await getConstantTypeInConstantLibraryObject([inputData, inputMetaData], applicationConstantsValidationData);
     if (applicationConstantMatchArray && inputMetaData === false) {
       if (returnData === '') {
         returnData = applicationConstantMatchArray.join(bas.cComa);
@@ -769,7 +769,7 @@ async function getConstantType(inputData, inputMetaData) {
         // pluginName is:
         loggers.consoleLog(namespacePrefix + functionName, msg.cpluginNameIs + pluginName);
         let pluginConstantsValidationData = allPluginsConstantsValidationData[pluginName];
-        pluginConstantMatchArray = getConstantTypeInConstantLibraryObject([inputData, inputMetaData], pluginConstantsValidationData);
+        pluginConstantMatchArray = await getConstantTypeInConstantLibraryObject([inputData, inputMetaData], pluginConstantsValidationData);
         if (pluginConstantMatchArray && inputMetaData === false) {
           if (returnData === '') {
             returnData = pluginConstantMatchArray.join(bas.cComa);
@@ -808,17 +808,17 @@ async function getConstantActualValue(inputData, inputMetaData) {
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = '';
   if (inputData) {
-    if (isConstantTypeValid(inputMetaData, '') === true) {
+    if (await isConstantTypeValid(inputMetaData, '') === true) {
       let constantValidationNamespaceObject = await getConstantsValidationNamespaceObject(inputMetaData, '');
       if (constantValidationNamespaceObject) {
-        returnData = getConstantActualValueInConstantNamespaceObject(inputData, constantValidationNamespaceObject);
+        returnData = await getConstantActualValueInConstantNamespaceObject(inputData, constantValidationNamespaceObject);
       }
     } else { // Else-clause if (isConstantTypeValid(inputMetaData, '') === true)
       let frameworkConstantsValidationData = D[sys.cConstantsValidationData][wrd.cFramework];
-      let foundFrameworkConstantActualValue = getConstantActualValueInConstantLibraryObject(inputData, frameworkConstantsValidationData);
+      let foundFrameworkConstantActualValue = await getConstantActualValueInConstantLibraryObject(inputData, frameworkConstantsValidationData);
       if (foundFrameworkConstantActualValue === false) {
         let applicationConstantsValidationData = D[sys.cConstantsValidationData][wrd.cApplication];
-        let foundApplicationConstantActualValue = getConstantActualValueInConstantLibraryObject(inputData, applicationConstantsValidationData);
+        let foundApplicationConstantActualValue = await getConstantActualValueInConstantLibraryObject(inputData, applicationConstantsValidationData);
         if (foundApplicationConstantActualValue === false) {
           let allPluginsConstantsValidationData = D[sys.cConstantsValidationData][wrd.cPlugins];
           // Now we have to go through each plugin and make a determination search for each one.
@@ -827,7 +827,7 @@ async function getConstantActualValue(inputData, inputMetaData) {
               // pluginName is:
               loggers.consoleLog(namespacePrefix + functionName, msg.cpluginNameIs + pluginName);
               let pluginConstantsValidationData = allPluginsConstantsValidationData[pluginName];
-              let foundPluginConstantActualValue = getConstantActualValueInConstantLibraryObject(inputData, pluginConstantsValidationData);
+              let foundPluginConstantActualValue = await getConstantActualValueInConstantLibraryObject(inputData, pluginConstantsValidationData);
               if (foundPluginConstantActualValue) {
                 returnData = foundPluginConstantActualValue;
                 break;
@@ -869,10 +869,10 @@ async function getConstantName(inputData, inputMetaData) {
   let returnData = '';
   if (inputData) {
     let frameworkConstantsValidationData = D[sys.cConstantsValidationData][wrd.cFramework];
-    let foundFrameworkConstantName = getConstantNameInConstantLibraryObject(inputData, frameworkConstantsValidationData);
+    let foundFrameworkConstantName = await getConstantNameInConstantLibraryObject(inputData, frameworkConstantsValidationData);
     if (foundFrameworkConstantName === false) {
       let applicationConstantsValidationData = D[sys.cConstantsValidationData][wrd.cApplication];
-      let foundApplicationConstantName = getConstantNameInConstantLibraryObject(inputData, applicationConstantsValidationData);
+      let foundApplicationConstantName = await getConstantNameInConstantLibraryObject(inputData, applicationConstantsValidationData);
       if (foundApplicationConstantName === false) {
         let allPluginsConstantsValidationData = D[sys.cConstantsValidationData][wrd.cPlugins];
         // Now we have to go through each plugin and make a determination search for each one.
@@ -881,7 +881,7 @@ async function getConstantName(inputData, inputMetaData) {
             // pluginName is:
             loggers.consoleLog(namespacePrefix + functionName, msg.cpluginNameIs + pluginName);
             let pluginConstantsValidationData = allPluginsConstantsValidationData[pluginName];
-            let foundPluginConstantName = getConstantNameInConstantLibraryObject(inputData, pluginConstantsValidationData);
+            let foundPluginConstantName = await getConstantNameInConstantLibraryObject(inputData, pluginConstantsValidationData);
             if (foundPluginConstantName) {
               returnData = foundPluginConstantName;
               break;
@@ -1009,16 +1009,16 @@ async function constantsOptimizedFulfillmentSystem(inputData, inputMetaData) {
   let constantType = '';
   let constantName = '';
   if (inputData) {
-    if (doesConstantExist(inputData, '') === false) {
-      returnData = constantsOptimizedFulfillmentSystem(inputData.substring(0, inputData.length - 1), inputMetaData);
+    if (await doesConstantExist(inputData, '') === false) {
+      returnData = await constantsOptimizedFulfillmentSystem(inputData.substring(0, inputData.length - 1), inputMetaData);
     } else {
-      constantType = getConstantType(inputData, true);
+      constantType = await getConstantType(inputData, true);
       // constantType is:
       loggers.consoleLog(namespacePrefix + functionName, msg.cconstantTypeIs + constantType);
-      constantName = getConstantName(inputData, '');
+      constantName = await getConstantName(inputData, '');
       // constantName is:
       loggers.consoleLog(namespacePrefix + functionName, msg.cconstantNameIs + constantName);
-      let constantPrefix = convertConstantTypeToConstantPrefix(constantType, '');
+      let constantPrefix = await convertConstantTypeToConstantPrefix(constantType, '');
       // constantPrefix is:
       loggers.consoleLog(namespacePrefix + functionName, msg.cconstantPrefixIs + constantPrefix);
       returnData = constantPrefix + constantName;
@@ -1047,14 +1047,14 @@ async function constantsFulfillmentSystem(inputData, inputMetaData) {
   let returnData = '';
   let constantName = '';
   if (inputData) {
-    returnData = constantsOptimizedFulfillmentSystem(inputData, '');
+    returnData = await constantsOptimizedFulfillmentSystem(inputData, '');
     // We found the first part of the string, now lets continue processing the rest of the string!
     // First determine how many characters are being returned so we can
     // determine what portion of the string we need to continue processing with.
-    constantName = findConstantName(returnData, '');
+    constantName = await findConstantName(returnData, '');
     // constantName is:
     loggers.consoleLog(namespacePrefix + functionName, msg.cconstantNameIs + constantName);
-    let constantValue = getConstantActualValue(constantName, '');
+    let constantValue = await getConstantActualValue(constantName, '');
     // constantValue is:
     loggers.consoleLog(namespacePrefix + functionName, msg.cconstantValueIs + constantValue);
 
@@ -1065,7 +1065,7 @@ async function constantsFulfillmentSystem(inputData, inputMetaData) {
       let recursiveSubString = inputMetaData.substring(inputMetaData.length - deltaLength, inputMetaData.length);
       // recursiveSubString is:
       loggers.consoleLog(namespacePrefix + functionName, msg.crecursiveSubStringIs + recursiveSubString);
-      returnData = returnData + bas.cSpace + bas.cPlus + bas.cSpace + constantsFulfillmentSystem(recursiveSubString, inputData);
+      returnData = returnData + bas.cSpace + bas.cPlus + bas.cSpace + await constantsFulfillmentSystem(recursiveSubString, inputData);
     } // End-if (deltaLength != 0)
   } // End-if (inputData)
   loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);

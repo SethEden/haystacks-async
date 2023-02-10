@@ -69,7 +69,7 @@ async function storeData(inputData, inputMetaData) {
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
   let returnData = false;
   if (inputData && inputMetaData) {
-    dataBroker.storeData(inputData, inputMetaData);
+    await dataBroker.storeData(inputData, inputMetaData);
     returnData = true;
   } // End-if (inputData && inputMetaData)
   loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
@@ -220,7 +220,7 @@ async function isArrayOrObject(inputData, inputMetaData) {
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = false;
   if (inputData) {
-    if (isObject(inputData, '') === true || isArray(inputData, '') === true) {
+    if (await isObject(inputData, '') === true || await isArray(inputData, '') === true) {
       returnData = true;
     }
   } // End-if (inputData)
@@ -246,7 +246,7 @@ async function isNonZeroLengthArray(inputData, inputMetaData) {
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = false;
   if (inputData) {
-    if (isArray(inputData, '') === true && inputData.length >= 1) {
+    if (await isArray(inputData, '') === true && inputData.length >= 1) {
       returnData = true;
     }
   } // End-if (inputData)
@@ -272,7 +272,7 @@ async function arrayDeepClone(inputData, inputMetaData) {
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
   let returnData = false;
-  if (inputData && isArray(inputData, '') === true && isArrayEmpty(inputData, '') === false) {
+  if (inputData && await isArray(inputData, '') === true && await isArrayEmpty(inputData, '') === false) {
     returnData = await JSON.parse(JSON.stringify(inputData));
   }
   loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));

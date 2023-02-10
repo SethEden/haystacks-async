@@ -95,7 +95,7 @@ async function businessRulesMetrics(inputData, inputMetaData) {
        loggers.consoleLog(namespacePrefix + functionName, msg.cstandardDevIs + standardDev);
 
        if (D[cfg.cbusinessRulesPerformanceAnalysisStack] === undefined) {
-        stack.initStack(cfg.cbusinessRulesPerformanceAnalysisStack);
+        await stack.initStack(cfg.cbusinessRulesPerformanceAnalysisStack);
        }
        stack.push(cfg.cbusinessRulesPerformanceAnalysisStack, {Name: currentBusinessRuleName, Average: average, StandardDeviation: standardDev});
      } // End-for (let i = 0; i < await stack.length(cfg.cBusinessRulesNamesPerformanceTrackingStack); i++)
@@ -176,18 +176,18 @@ async function commandMetrics(inputData, inputMetaData) {
        // standardDev is:
        loggers.consoleLog(namespacePrefix + functionName, msg.cstandardDevIs + standardDev);
        if (D[cfg.ccommandsPerformanceAnalysisStack] === undefined) {
-        stack.initStack(cfg.ccommandsPerformanceAnalysisStack);
+        await stack.initStack(cfg.ccommandsPerformanceAnalysisStack);
        }
-       stack.push(cfg.ccommandsPerformanceAnalysisStack, {Name: currentCommandName, Average: average, StandardDeviation: standardDev});
+       await stack.push(cfg.ccommandsPerformanceAnalysisStack, {Name: currentCommandName, Average: average, StandardDeviation: standardDev});
      } // End-for (let i = 0; i < stack.length(cfg.ccommandNamesPerformanceTrackingStack); i++)
      loggers.consoleTableLog('', D[cfg.ccommandsPerformanceAnalysisStack], [wrd.cName, wrd.cAverage, sys.cStandardDeviation]);
      returnData[1] = await ruleBroker.processRules([D[cfg.ccommandsPerformanceAnalysisStack], ''], [biz.carrayDeepClone]);
-     stack.clearStack(cfg.ccommandsPerformanceAnalysisStack);
+     await stack.clearStack(cfg.ccommandsPerformanceAnalysisStack);
      // We need to have a flag that will enable the user to determine if the data should be cleared after the analysis is complete.
      // It might be that the user wants to do something else with this data in memory after it's done.
      if (await configurator.getConfigurationSetting(wrd.csystem, cfg.cclearCommandPerformanceDataAfterAnalysis) === true) {
-      stack.clearStack(cfg.ccommandsPerformanceTrackingStack);
-      stack.clearStack(cfg.ccommandNamesPerformanceTrackingStack);
+      await stack.clearStack(cfg.ccommandsPerformanceTrackingStack);
+      await stack.clearStack(cfg.ccommandNamesPerformanceTrackingStack);
      } // End-if (configurator.getConfigurationSetting(wrd.csystem, cfg.cclearCommandPerformanceDataAfterAnalysis) === true)
    } // End-if (commandMetricsEnabled === true)
    loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));

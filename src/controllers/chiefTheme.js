@@ -38,7 +38,7 @@ const namespacePrefix = wrd.cframework + bas.cDot + wrd.ccontrollers + bas.cDot 
  async function initThemes() {
   let functionName = initThemes.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  themeBroker.initThemeData();
+  await themeBroker.initThemeData();
   loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
 }
 
@@ -58,7 +58,7 @@ async function addThemeData(themeData, contextName) {
   // contextName is:
   loggers.consoleLog(namespacePrefix + functionName, msg.ccontextNameIs + contextName);
   let returnData = false;
-  returnData = themeBroker.addThemeData(themeData, contextName);
+  returnData = await themeBroker.addThemeData(themeData, contextName);
   loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
   loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
@@ -105,7 +105,7 @@ async function determineThemeDebugConfigFilesToLoad(themeConfigPathName) {
     let themeConfigDataPath = await configurator.getConfigurationSetting(wrd.csystem, themeConfigPathName);
     themeConfigDataPath = path.resolve(themeConfigDataPath);
     themeConfigFilesToLoad = await dataBroker.scanDataPath(themeConfigDataPath);
-    configurator.setConfigurationSetting(wrd.csystem, cfg.cthemeConfigFiles, themeConfigFilesToLoad);
+    await configurator.setConfigurationSetting(wrd.csystem, cfg.cthemeConfigFiles, themeConfigFilesToLoad);
   } // End-if (themeConfigPathName)
   // themeConfigFilesToLoad is:
   loggers.consoleLog(namespacePrefix + functionName, msg.cthemeConfigFilesToLoadIs + JSON.stringify(themeConfigFilesToLoad));

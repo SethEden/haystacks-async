@@ -64,7 +64,7 @@ async function persistPluginRegistryToDataStructure(pluginRegistryData) {
   // pluginRegistryData is:
   loggers.consoleLog(namespacePrefix + functionName, msg.cpluginRegistryDataIs + JSON.stringify(pluginRegistryData));
   let returnData = false;
-  returnData = pluginBroker.storePluginRegistryInDataStructure(pluginRegistryData);
+  returnData = await pluginBroker.storePluginRegistryInDataStructure(pluginRegistryData);
   loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
@@ -192,7 +192,7 @@ async function registerNamedPlugin(pluginName, pluginPath) {
   // pluginPath is:
   loggers.consoleLog(namespacePrefix + functionName, msg.cpluginPathIs + pluginPath);
   let returnData = false;
-  returnData = pluginBroker.registerPlugin(pluginName, pluginPath);
+  returnData = await pluginBroker.registerPlugin(pluginName, pluginPath);
   loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
@@ -212,7 +212,7 @@ async function unregisterNamedPlugin(pluginName) {
   // pluginName is:
   loggers.consoleLog(namespacePrefix + functionName, msg.cpluginNameIs + pluginName);
   let returnData = false;
-  returnData = pluginBroker.unregisterPlugin(pluginName);
+  returnData = await pluginBroker.unregisterPlugin(pluginName);
   loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
@@ -232,7 +232,7 @@ async function unregisterPlugins(pluginListArray) {
   // pluginListArray is:
   loggers.consoleLog(namespacePrefix + functionName, msg.cpluginListArrayIs + JSON.stringify(pluginListArray));
   let returnData = false;
-  returnData = pluginBroker.unregisterPlugins(pluginListArray);
+  returnData = await pluginBroker.unregisterPlugins(pluginListArray);
   loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
@@ -253,7 +253,7 @@ async function synchronizePluginRegistryWithPath() {
   let functionName = synchronizePluginRegistryWithPath.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   let returnData = false;
-  returnData = pluginBroker.syncPluginRegistryWithPluginRegistryPath();
+  returnData = await pluginBroker.syncPluginRegistryWithPluginRegistryPath();
   loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
@@ -270,7 +270,7 @@ async function clearPluginRegistry() {
   let functionName = clearPluginRegistry.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   let returnData = false;
-  returnData = pluginBroker.unregisterAllPlugins();
+  returnData = await pluginBroker.unregisterAllPlugins();
   loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
@@ -287,7 +287,7 @@ async function savePluginRegistryDisk() {
   let functionName = savePluginRegistryDisk.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   let returnData = false;
-  returnData = pluginBroker.savePluginRegistry();
+  returnData = await pluginBroker.savePluginRegistry();
   loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
@@ -324,7 +324,7 @@ async function loadAllPluginsMetaData(pluginsPaths) {
       } // End-if (pluginPath != '')
       // loadedPluginMetaData at index:
       loggers.consoleLog(namespacePrefix + functionName, msg.cloadedPluginMetaDataAtIndex +
-        index + ' data: ' + JSON.stringify(returnData[index]));
+        index + msg.cSpaceDataColonSpace + JSON.stringify(returnData[index]));
       index = index + 1;
     } // End-for (let pluginPath in pluginsPaths)
   } else {
@@ -368,7 +368,7 @@ async function loadAllPluginsExecutionPaths(pluginsMetaData, pluginsPaths) {
       loggers.consoleLog(namespacePrefix + functionName, msg.cpluginMetaDataIs + JSON.stringify(pluginMetaData));
       returnData[index] = '';
       if (pluginMetaData) {
-        returnData[index] = pluginBroker.extractAndProcessPluginEntryPointURI(pluginMetaData, pluginsPaths[index]);
+        returnData[index] = await pluginBroker.extractAndProcessPluginEntryPointURI(pluginMetaData, pluginsPaths[index]);
         // pluginPathURI at index:
         loggers.consoleLog(namespacePrefix + functionName, msg.cpluginPathUriAtIndex + index + bas.cSpace + wrd.cData + bas.cColon + bas.cSpace + returnData[index]);
       }
@@ -408,7 +408,7 @@ async function loadAllPlugins(pluginsExecutionPaths, pluginsMetaData) {
   let returnData = {};
   let index = 0;
   if (pluginsExecutionPaths && pluginsMetaData && pluginsExecutionPaths.length > 0 && pluginsMetaData.length > 0) {
-    stack.initStack(sys.cpluginsLoaded);
+    await stack.initStack(sys.cpluginsLoaded);
     for (let pluginExecutionPathKey in pluginsExecutionPaths) {
       let pluginExecutionPath = pluginsExecutionPaths[pluginExecutionPathKey];
       let pluginMetaData = pluginsMetaData[index];
@@ -433,13 +433,13 @@ async function loadAllPlugins(pluginsExecutionPaths, pluginsMetaData) {
         }
         // Push to a stack that we have successfully loaded the currently named plugin,
         // so that all the plugins loaded can be verified.
-        stack.push(sys.cpluginsLoaded, [pluginMetaData[wrd.cname], true]);
+        await stack.push(sys.cpluginsLoaded, [pluginMetaData[wrd.cname], true]);
       } else {
         // Failed to load the plugin:
         console.log(msg.cERROR_Colon + namespacePrefix + functionName + msg.cloadAllPluginsMessage01 + pluginMetaData[wrd.cname]);
         // plugin entry point path:
         console.log(msg.cloadAllPluginsMessage02 + pluginExecutionPath);
-        stack.push(sys.cpluginsLoaded, [pluginMetaData[wrd.cname], false]);
+        await stack.push(sys.cpluginsLoaded, [pluginMetaData[wrd.cname], false]);
       }
       index = index + 1;
     } // End-for (let pluginExecutionPath in pluginsExecutionPaths)
@@ -473,7 +473,7 @@ async function integrateAllPluginsData(allPluginsData) {
       let pluginName = key;
       // pluginName is:
       loggers.consoleLog(namespacePrefix + functionName, msg.cpluginNameIs + pluginName);
-      let dataIntegrationSuccess = integratePluginData(pluginName, allPluginsData[pluginName]);
+      let dataIntegrationSuccess = await integratePluginData(pluginName, allPluginsData[pluginName]);
       if (dataIntegrationSuccess === false) {
         returnData = dataIntegrationSuccess;
       }
@@ -512,12 +512,12 @@ async function integratePluginData(pluginName, pluginData) {
   let constantsValidationDataIntegrationResult = false;
   let themeDataIntegrationResult = false;
   if (pluginData && pluginName) {
-    businessRulesIntegrationResult = pluginBroker.integratePluginBusinessRules(pluginName, pluginData[wrd.cdata][sys.cpluginBusinessRules]);
-    commandsIntegrationResult = pluginBroker.integratePluginCommands(pluginName, pluginData[wrd.cdata][sys.cpluginCommands]);
-    configurationDataIntegrationResult = pluginBroker.integratePluginConfigurationData(pluginName, pluginData[wrd.cdata][wrd.cconfiguration]);
-    commandAliasesIntegrationResult = pluginBroker.integratePluginCommandAliases(pluginName, pluginData[wrd.cdata][sys.cCommandsAliases]);
-    workflowsIntegrationResult = pluginBroker.integratePluginWorkflows(pluginName, pluginData[wrd.cdata][sys.cCommandWorkflows])
-    constantsValidationDataIntegrationResult = chiefConstant.addConstantsValidationData(pluginData[wrd.cdata][sys.cpluginConstantsValidationData],
+    businessRulesIntegrationResult = await pluginBroker.integratePluginBusinessRules(pluginName, pluginData[wrd.cdata][sys.cpluginBusinessRules]);
+    commandsIntegrationResult = await pluginBroker.integratePluginCommands(pluginName, pluginData[wrd.cdata][sys.cpluginCommands]);
+    configurationDataIntegrationResult = await pluginBroker.integratePluginConfigurationData(pluginName, pluginData[wrd.cdata][wrd.cconfiguration]);
+    commandAliasesIntegrationResult = await pluginBroker.integratePluginCommandAliases(pluginName, pluginData[wrd.cdata][sys.cCommandsAliases]);
+    workflowsIntegrationResult = await pluginBroker.integratePluginWorkflows(pluginName, pluginData[wrd.cdata][sys.cCommandWorkflows])
+    constantsValidationDataIntegrationResult = await chiefConstant.addConstantsValidationData(pluginData[wrd.cdata][sys.cpluginConstantsValidationData],
       wrd.cPlugin + bas.cColon + pluginName);
     themeDataIntegrationResult = await chiefTheme.addThemeData(pluginData[wrd.cdata][wrd.cThemes], wrd.cPlugin + bas.cColon + pluginName);
   } else {
@@ -586,7 +586,7 @@ async function unloadPlugin(pluginName) {
   // pluginName is:
   loggers.consoleLog(namespacePrefix + functionName, msg.cpluginNameIs + pluginName);
   let returnData = false;
-  returnData = pluginBroker.unloadPlugin(pluginName);
+  returnData = await pluginBroker.unloadPlugin(pluginName);
   loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
   loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
@@ -603,7 +603,7 @@ async function getPluginsRegistryPath() {
   let functionName = getPluginsRegistryPath.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   let returnData = '';
-  returnData = pluginBroker.getPluginsRegistryPath();
+  returnData = await pluginBroker.getPluginsRegistryPath();
   loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;

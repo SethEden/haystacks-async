@@ -46,7 +46,7 @@ async function addPluginConfigurationData(pluginName, pluginConfigData) {
   // pluginConfigData is:
   loggers.consoleLog(namespacePrefix + functionName, msg.cpluginConfigDataIs + JSON.stringify(pluginConfigData));
   let returnData = false;
-  returnData = configurator.addPluginConfigurationData(pluginName, pluginConfigData);
+  returnData = await configurator.addPluginConfigurationData(pluginName, pluginConfigData);
   loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
   loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
@@ -64,8 +64,8 @@ async function addPluginConfigurationData(pluginName, pluginConfigData) {
  */
 async function scanDataPath(dataPath) {
   let functionName = scanDataPath.name;
-  // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
-  // console.log(`dataPath is: ${dataPath}`);
+  console.log(`BEGIN ${namespacePrefix}${functionName} function`);
+  console.log(`dataPath is: ${dataPath}`);
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   loggers.consoleLog(namespacePrefix + functionName, msg.cdataPathIs + dataPath);
   let rules = [biz.cswapBackSlashToForwardSlash, biz.creadDirectoryContents];
@@ -74,8 +74,8 @@ async function scanDataPath(dataPath) {
   filesFound = await ruleBroker.processRules([dataPath, ''], rules);
   loggers.consoleLog(namespacePrefix + functionName, msg.cfilesFoundIs + JSON.stringify(filesFound));
   loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
-  // console.log(`filesFound is: ${JSON.stringify(filesFound)}`);
-  // console.log(`END ${namespacePrefix}${functionName} function`);
+  console.log(`filesFound is: ${JSON.stringify(filesFound)}`);
+  console.log(`END ${namespacePrefix}${functionName} function`);
   return filesFound;
 }
 
@@ -91,20 +91,20 @@ async function scanDataPath(dataPath) {
  * @date 2022/01/18
  */
 async function findUniversalDebugConfigSetting(appConfigFilesToLoad, frameworkConfigFilesToLoad) {
-  // let functionName = findUniversalDebugConfigSetting.name;
-  // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
-  // console.log(`appConfigFilesToLoad is: ${JSON.stringify(appConfigFilesToLoad)}`);
-  // console.log(`frameworkConfigFilesToLoad is: ${JSON.stringify(frameworkConfigFilesToLoad)}`);
+  let functionName = findUniversalDebugConfigSetting.name;
+  console.log(`BEGIN ${namespacePrefix}${functionName} function`);
+  console.log(`appConfigFilesToLoad is: ${JSON.stringify(appConfigFilesToLoad)}`);
+  console.log(`frameworkConfigFilesToLoad is: ${JSON.stringify(frameworkConfigFilesToLoad)}`);
   let universalDebugConfigSetting = false;
   let appConfigDebugSetting = false;
   let frameworkConfigDebugSetting = false;
-  appConfigDebugSetting = findIndividualDebugConfigSetting(appConfigFilesToLoad);
-  frameworkConfigDebugSetting = findIndividualDebugConfigSetting(frameworkConfigFilesToLoad);
+  appConfigDebugSetting = await findIndividualDebugConfigSetting(appConfigFilesToLoad);
+  frameworkConfigDebugSetting = await findIndividualDebugConfigSetting(frameworkConfigFilesToLoad);
   if (appConfigDebugSetting === true || frameworkConfigDebugSetting === true) {
     universalDebugConfigSetting = true;
   }
-  // console.log(`universalDebugConfigSetting is: ${universalDebugConfigSetting}`);
-  // console.log(`END ${namespacePrefix}${functionName} function`);
+  console.log(`universalDebugConfigSetting is: ${universalDebugConfigSetting}`);
+  console.log(`END ${namespacePrefix}${functionName} function`);
   return universalDebugConfigSetting;
 }
 
@@ -119,9 +119,9 @@ async function findUniversalDebugConfigSetting(appConfigFilesToLoad, frameworkCo
  * @date 2022/01/18
  */
 async function findIndividualDebugConfigSetting(filesToLoad) {
-  // let functionName = findIndividualDebugConfigSetting.name;
-  // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
-  // console.log(`filesToLoad is: ${JSON.stringify(filesToLoad)}`);
+  let functionName = findIndividualDebugConfigSetting.name;
+  console.log(`BEGIN ${namespacePrefix}${functionName} function`);
+  console.log(`filesToLoad is: ${JSON.stringify(filesToLoad)}`);
   let individualDebugConfigSetting = false;
   let foundSystemData = false;
   let systemConfigFileName = sys.csystemConfigFileName; // 'framework.system.json';
@@ -131,7 +131,7 @@ async function findIndividualDebugConfigSetting(filesToLoad) {
 
   for (const element of filesToLoad) {
     let fileToLoad = element;
-    // console.log('fileToLoad is: ' + fileToLoad);
+    console.log('fileToLoad is: ' + fileToLoad);
     if (fileToLoad.includes(systemConfigFileName) || fileToLoad.includes(applicationConfigFileName)) {
       let dataFile = await preprocessJsonFile(fileToLoad);
       multiMergedData[wrd.csystem] = {};
@@ -147,8 +147,8 @@ async function findIndividualDebugConfigSetting(filesToLoad) {
       individualDebugConfigSetting = true;
     }
   } // End-if (multiMergedData[wrd.csystem])
-  // console.log(`individualDebugConfigSetting is: ${individualDebugConfigSetting}`);
-  // console.log(`END ${namespacePrefix}${functionName} function`);
+  console.log(`individualDebugConfigSetting is: ${individualDebugConfigSetting}`);
+  console.log(`END ${namespacePrefix}${functionName} function`);
   return individualDebugConfigSetting;
 }
 
@@ -248,7 +248,7 @@ async function loadAllXmlData(filesToLoad, contextName) {
       // BEGIN PROCESSING ADDITIONAL DATA
       loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_PROCESSING_ADDITIONAL_DATA);
       // j-th iteration:
-      loggers.consoleLog(namespacePrefix + functionName, 'j-th iteration: ' + j);
+      loggers.consoleLog(namespacePrefix + functionName, msg.cjthIteration + j);
       if (j === 0) {
         j++;
         multiMergedData = dataFile;
@@ -433,7 +433,7 @@ async function processXmlData(inputData, contextName) {
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
   // contextName is:
   loggers.consoleLog(namespacePrefix + functionName, msg.ccontextNameIs + contextName);
-  let dataCategory = getDataCategoryFromContextName(contextName);
+  let dataCategory = await getDataCategoryFromContextName(contextName);
   // dataCategory is:
   loggers.consoleLog(namespacePrefix + functionName, msg.cdataCategoryIs + dataCategory);
   let parsedDataFile = {};
@@ -816,7 +816,7 @@ loop1:
           if (dataToMergeKeys[i] != num.c0) {
             returnData.push(dataToMergeKeys);
           } // End-if (dataToMergeKeys[i] != num.c0)
-          let recursiveData1 = determineMergeTarget(targetData[targetDataKeys[i]], dataToMerge[dataToMergeKeys]);
+          let recursiveData1 = await determineMergeTarget(targetData[targetDataKeys[i]], dataToMerge[dataToMergeKeys]);
           if (recursiveData1.length != 0) {
             returnData = returnData.concat(recursiveData1);
           } // End-if (recursiveData1.length != 0)
@@ -832,7 +832,7 @@ loop1:
             if (dataToMergeKeys[i] != num.c0) {
               returnData.push(dataToMergeKeys[j]);
             }
-            let recursiveData2 = determineMergeTarget(targetData[targetDataKeys[i]], dataToMerge[dataToMergeKeys[j]]);
+            let recursiveData2 = await determineMergeTarget(targetData[targetDataKeys[i]], dataToMerge[dataToMergeKeys[j]]);
             if (recursiveData2.length != 0) {
               returnData = returnData.concat(recursiveData2);
             }
@@ -996,7 +996,7 @@ async function getDataElementCount(dataObject, pageName, elementNamePattern) {
     elementCount = Object.keys(elementCollection).length;
   } else {
     for (let key in elementCollection) {
-      if (Object.prototype.hasOwnProperty.call(elementCollection, key)) {
+      if (await Object.prototype.hasOwnProperty.call(elementCollection, key)) {
         if (key.includes(elementNamePattern)) {
           elementCount++;
         }

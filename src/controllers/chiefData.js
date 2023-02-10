@@ -42,25 +42,30 @@ const namespacePrefix = wrd.cframework + bas.cDot + wrd.ccontrollers + bas.cDot 
  * @date 2022/01/18
  */
 async function searchForUniversalDebugConfigSetting(appConfigPathName, frameworkConfigPathName) {
-  // let functionName = searchForUniversalDebugConfigSetting.name;
-  // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
-  // console.log(`appConfigPathName is: ${appConfigPathName}`);
-  // console.log(`frameworkConfigPathName is: ${frameworkConfigPathName}`);
+  let functionName = searchForUniversalDebugConfigSetting.name;
+  console.log(`BEGIN ${namespacePrefix}${functionName} function`);
+  console.log(`appConfigPathName is: ${appConfigPathName}`);
+  console.log(`frameworkConfigPathName is: ${frameworkConfigPathName}`);
   let universalDebugConfigSetting = false;
   let appConfigDataPath = await configurator.getConfigurationSetting(wrd.csystem, appConfigPathName);
   let frameworkConfigDataPath = await configurator.getConfigurationSetting(wrd.csystem, frameworkConfigPathName);
   appConfigDataPath = path.resolve(appConfigDataPath);
   frameworkConfigDataPath = path.resolve(frameworkConfigDataPath);
+  console.log(`appConfigDataPath is: ${appConfigDataPath}`);
+  console.log(`frameworkConfigDataPath is: ${frameworkConfigDataPath}`);
   let appConfigFilesToLoad = await dataBroker.scanDataPath(appConfigDataPath);
+  console.log(`appConfigFilesToLoad are: ${JSON.stringify(appConfigFilesToLoad)}`);
   let frameworkConfigFilesToLoad = await dataBroker.scanDataPath(frameworkConfigDataPath);
-  configurator.setConfigurationSetting(wrd.csystem, cfg.cappConfigFiles, appConfigFilesToLoad);
-  configurator.setConfigurationSetting(wrd.csystem, cfg.cframeworkConfigFiles, frameworkConfigFilesToLoad);
-  universalDebugConfigSetting = dataBroker.findUniversalDebugConfigSetting(
+  console.log(`frameworkConfigFilesToLoad are: ${JSON.stringify(frameworkConfigFilesToLoad)}`);
+  await configurator.setConfigurationSetting(wrd.csystem, cfg.cappConfigFiles, appConfigFilesToLoad);
+  await configurator.setConfigurationSetting(wrd.csystem, cfg.cframeworkConfigFiles, frameworkConfigFilesToLoad);
+  universalDebugConfigSetting = await dataBroker.findUniversalDebugConfigSetting(
     appConfigFilesToLoad, frameworkConfigFilesToLoad
   );
-  configurator.setConfigurationSetting(wrd.csystem, cfg.cdebugSettings, universalDebugConfigSetting);
-  // console.log(`universalDebugConfigSetting is: ${universalDebugConfigSetting}`);
-  // console.log(`END ${namespacePrefix}${functionName} function`);
+  console.log(`universalDebugConfigSetting value is: ${universalDebugConfigSetting}`);
+  await configurator.setConfigurationSetting(wrd.csystem, cfg.cdebugSettings, universalDebugConfigSetting);
+  console.log(`universalDebugConfigSetting is: ${universalDebugConfigSetting}`);
+  console.log(`END ${namespacePrefix}${functionName} function`);
   return universalDebugConfigSetting;
 }
 

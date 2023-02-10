@@ -55,7 +55,7 @@ async function printDataHive(inputData, inputMetaData) {
   let returnData = [true, {}];
   let printDataHiveToLogFileConfigSetting = await configurator.getConfigurationSetting(wrd.csystem, cfg.cprintDataHiveToLogFile);
   let logFilePathAndName = '';
-  logFilePathAndName = loggers.getLogFileNameAndPath();
+  logFilePathAndName = await loggers.getLogFileNameAndPath();
   // logFilePathAndName is:
   loggers.consoleLog(namespacePrefix + functionName, msg.clogFilePathAndNameIs + logFilePathAndName);
   if (inputData && inputData[1].includes(bas.cDot) === true) {
@@ -76,7 +76,7 @@ async function printDataHive(inputData, inputMetaData) {
     } // End-for (let i = 0; i < dataHivePathArray.length; i++)
     console.log(inputData[1] + bas.cSpace + msg.ccontentsAre + JSON.stringify(leafDataHiveElement));
     if (printDataHiveToLogFileConfigSetting === true) {
-      loggers.printMessageToFile(logFilePathAndName, inputData[1] + bas.cSpace + msg.ccontentsAre + JSON.stringify(leafDataHiveElement));
+      await loggers.printMessageToFile(logFilePathAndName, inputData[1] + bas.cSpace + msg.ccontentsAre + JSON.stringify(leafDataHiveElement));
     }
     returnData[1] = leafDataHiveElement;
   } else {
@@ -84,14 +84,14 @@ async function printDataHive(inputData, inputMetaData) {
       // contents are:
       console.log(inputData[1] + bas.cSpace + msg.ccontentsAre + JSON.stringify(D[inputData[1]]));
       if (printDataHiveToLogFileConfigSetting === true) {
-        loggers.printMessageToFile(logFilePathAndName, inputData[1] + bas.cSpace + msg.ccontentsAre + JSON.stringify(D[inputData[1]]));
+        await loggers.printMessageToFile(logFilePathAndName, inputData[1] + bas.cSpace + msg.ccontentsAre + JSON.stringify(D[inputData[1]]));
       }
       returnData[1] = D[inputData[1]];
     } else {
       // contents of D are:
       console.log(msg.ccontentsOfDare + JSON.stringify(D));
       if (printDataHiveToLogFileConfigSetting === true) {
-        loggers.printMessageToFile(logFilePathAndName, msg.ccontentsOfDare + JSON.stringify(D));
+        await loggers.printMessageToFile(logFilePathAndName, msg.ccontentsOfDare + JSON.stringify(D));
       }
       returnData[1] = D;
     }
@@ -219,10 +219,10 @@ async function clearDataStorage(inputData, inputMetaData) {
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = [true, {}];
   if (inputData[1] !== undefined) {
-    dataBroker.clearData(inputData[1]);
+    await dataBroker.clearData(inputData[1]);
     returnData[1] = true;
   } else {
-    dataBroker.clearData('');
+    await dataBroker.clearData('');
     returnData[1] = true;
   }
   loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));

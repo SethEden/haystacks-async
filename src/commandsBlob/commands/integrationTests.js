@@ -127,9 +127,9 @@ async function validateConstants(inputData, inputMetaData) {
         processingPluginResults = true;
       }
       if (processingPluginResults === false) {
-        loggers.constantsValidationSummaryLog(constantsPhase1ValidationNamespaceParentObject[sys.cConstantsPhase1ValidationMessages][key3], phase1Results[key3]);
+        await loggers.constantsValidationSummaryLog(constantsPhase1ValidationNamespaceParentObject[sys.cConstantsPhase1ValidationMessages][key3], phase1Results[key3]);
       } else if (processingPluginResults === true) {
-        loggers.constantsValidationSummaryLog(constantsPhase1ValidationNamespaceParentObject[sys.cConstantsPhase1ValidationMessages][pluginNamespace], phase1Results[key3]);
+        await loggers.constantsValidationSummaryLog(constantsPhase1ValidationNamespaceParentObject[sys.cConstantsPhase1ValidationMessages][pluginNamespace], phase1Results[key3]);
       }
       processingPluginResults = false;
       pluginNamespace = '';
@@ -147,9 +147,9 @@ async function validateConstants(inputData, inputMetaData) {
         processingPluginResults = true;
       }
       if (processingPluginResults === false) {
-        loggers.constantsValidationSummaryLog(constantsPhase2ValidationNamespaceParentObject[sys.cConstantsPhase2ValidationMessages][key4], phase2Results[key4]); 
+        await loggers.constantsValidationSummaryLog(constantsPhase2ValidationNamespaceParentObject[sys.cConstantsPhase2ValidationMessages][key4], phase2Results[key4]); 
       } else if (processingPluginResults === true) {
-        loggers.constantsValidationSummaryLog(constantsPhase2ValidationNamespaceParentObject[sys.cConstantsPhase2ValidationMessages][pluginNamespace], phase2Results[key4]); 
+        await loggers.constantsValidationSummaryLog(constantsPhase2ValidationNamespaceParentObject[sys.cConstantsPhase2ValidationMessages][pluginNamespace], phase2Results[key4]); 
       }
       processingPluginResults = false
       pluginNamespace = '';
@@ -160,16 +160,16 @@ async function validateConstants(inputData, inputMetaData) {
     } // End-for (let key4 in phase2Results)
 
     if (phase1FinalResult === true && phase2FinalResult === true) {
-      configurator.setConfigurationSetting(wrd.csystem, cfg.cpassAllConstantsValidation, true);
+      await configurator.setConfigurationSetting(wrd.csystem, cfg.cpassAllConstantsValidation, true);
       returnData[1] = true;
     } else {
-      configurator.setConfigurationSetting(wrd.csystem, cfg.cpassAllConstantsValidation, false);
+      await configurator.setConfigurationSetting(wrd.csystem, cfg.cpassAllConstantsValidation, false);
       returnData[1] = false;
     }
   } else {
     // The enableConstantsValidation flag is disabled. Enable this flag in the configuration settings to activate this command.
     console.log(msg.ccconstantsGeneratorMessage3 + msg.cconstantsGeneratorMessage4);
-    configurator.setConfigurationSetting(wrd.csystem, cfg.cpassAllConstantsValidation, false);
+    await configurator.setConfigurationSetting(wrd.csystem, cfg.cpassAllConstantsValidation, false);
     returnData[1] = false;
   }
   loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
@@ -242,7 +242,7 @@ async function validateCommandAliases(inputData, inputMetaData) {
     console.log(msg.cvalidateCommandAliasesMessage1);
     returnData[1] = true;
   } // End-if (passedAllCommandAliasesDuplicateCheck === true)
-  configurator.setConfigurationSetting(wrd.csystem, cfg.cpassedAllCommandAliasesDuplicateChecks, passedAllCommandAliasesDuplicateCheck);
+  await configurator.setConfigurationSetting(wrd.csystem, cfg.cpassedAllCommandAliasesDuplicateChecks, passedAllCommandAliasesDuplicateCheck);
   loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
@@ -307,7 +307,7 @@ async function validateWorkflows(inputData, inputMetaData) {
     console.log(msg.cvalidateWorkflowsMessage01);
     returnData[1] = true;
   } // End-if (passedAllWorkflowDuplicateCheck === true)
-  configurator.setConfigurationSetting(wrd.csystem, cfg.cpassedAllWorkflowDuplicateChecks, passedAllWorkflowDuplicateCheck);
+  await configurator.setConfigurationSetting(wrd.csystem, cfg.cpassedAllWorkflowDuplicateChecks, passedAllWorkflowDuplicateCheck);
   loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;

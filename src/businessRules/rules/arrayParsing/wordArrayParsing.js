@@ -177,7 +177,7 @@ async function doesArrayContainLowerCaseConsolidatedString(inputData, inputMetaD
     // I'm not sure if value1 & value2 below should be referenced to inputData & inputMetaData?
     // I get the arrow function is pass in these values to the wordStringParsing.aggregateNumericalDifferenceBetweenTwoStrings function.
     // But I'm not sure how or what values are being passed for value1 & value2.
-    let stringDelta = (async (value1, value2) => ruleParsing.processRulesInternal([value1, value2], [biz.caggregateNumericalDifferenceBetweenTwoStrings]) < 2);
+    let stringDelta = await (async (value1, value2) => ruleParsing.processRulesInternal([value1, value2], [biz.caggregateNumericalDifferenceBetweenTwoStrings]) < 2);
 
     // If execution order mattered no the above line of code, then we would want to do something like this:
     // async function mapAsync(arr, cb) {

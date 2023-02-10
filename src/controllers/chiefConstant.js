@@ -33,7 +33,7 @@ const namespacePrefix = wrd.cframework + bas.cDot + wrd.ccontrollers + bas.cDot 
  async function initializeConstantsValidationData() {
   let functionName = initializeConstantsValidationData.name;
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  constantBroker.initializeConstantsValidationData();
+  await constantBroker.initializeConstantsValidationData();
   loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
 }
 
@@ -48,7 +48,7 @@ async function generateFrameworkConstantsValidationData() {
   let functionName = generateFrameworkConstantsValidationData.name
   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   let returnData = false;
-  returnData = constantBroker.generateFrameworkConstantsValidationData();
+  returnData = await constantBroker.generateFrameworkConstantsValidationData();
   loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
@@ -72,7 +72,7 @@ async function addConstantsValidationData(arrayValidationData, contextName) {
   // arrayValidationData is:
   loggers.consoleLog(namespacePrefix + functionName, msg.carrayValidationDataIs + JSON.stringify(arrayValidationData));
   let returnData = false;
-  returnData = constantBroker.addConstantsValidationData(arrayValidationData, contextName);
+  returnData = await constantBroker.addConstantsValidationData(arrayValidationData, contextName);
   loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
   loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;

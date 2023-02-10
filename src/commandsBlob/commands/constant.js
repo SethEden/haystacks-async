@@ -166,18 +166,18 @@ async function constantsGeneratorList(inputData, inputMetaData) {
        loggers.consoleLog(namespacePrefix + functionName, msg.cuserDefinedConstantsListArrayIs + JSON.stringify(userDefinedConstantsListArray));
        if (userDefinedConstantsListArray.length > 1) {
          for (const element of userDefinedConstantsListArray) {
-          queue.enqueue(sys.cCommandQueue, cmd.cconstantsGenerator + bas.cSpace + element.trim());
+          await queue.enqueue(sys.cCommandQueue, cmd.cconstantsGenerator + bas.cSpace + element.trim());
          } // End-for (const element of userDefinedConstantsListArray)
          returnData[1] = true;
        } else if (userDefinedConstantsListArray.length === 1) {
          // Just enqueue the constants Generator command with the input directly.
-         queue.enqueue(sys.cCommandQueue, cmd.cconstantsGenerator + bas.cSpace + userDefinedConstantsListArray[0].trim());
+         await queue.enqueue(sys.cCommandQueue, cmd.cconstantsGenerator + bas.cSpace + userDefinedConstantsListArray[0].trim());
          returnData[1] = true;
        }
      } else {
        // userDefinedConstantsList DOES NOT contain comas
        loggers.consoleLog(namespacePrefix + functionName, msg.cuserDefinedConstantsListDoesNotContainComas);
-       queue.enqueue(sys.cCommandQueue, cmd.cconstantsGenerator + bas.cSpace + userDefinedConstantList.trim());
+       await queue.enqueue(sys.cCommandQueue, cmd.cconstantsGenerator + bas.cSpace + userDefinedConstantList.trim());
        returnData[1] = true;
      }
    } else {
@@ -253,7 +253,7 @@ async function constantsPatternRecognizer(inputData, inputMetaData) {
     let newConstantsList = await ruleBroker.processRules([commonPatternsArray, ''], [biz.cvalidatePatternsThatNeedImplementation]);
     let constantsPatternGenerationSetting = await configurator.getConfigurationSetting(wrd.csystem, cfg.cenableConstantsPatternGeneration);
     if (constantsPatternGenerationSetting === true) {
-      queue.enqueue(sys.cCommandQueue, cmd.cconstantsGeneratorList + bas.cSpace + newConstantsList);
+      await queue.enqueue(sys.cCommandQueue, cmd.cconstantsGeneratorList + bas.cSpace + newConstantsList);
       returnData[1] = newConstantsList;
     } // End-if (constantsPatternGenerationSetting === true)
   } else {

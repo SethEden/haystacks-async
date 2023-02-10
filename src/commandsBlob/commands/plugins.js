@@ -211,7 +211,7 @@ async function registerPlugin(inputData, inputMetaData) {
       } // End-for (let pluginNameKey in pluginsInRegistryPathArray)
       if (pluginNameFolderMatchFound === true) {
         foundValidData = true;
-        pluginPath = chiefPlugin.getPluginsRegistryPath();
+        pluginPath = await chiefPlugin.getPluginsRegistryPath();
       } else {
         // ERROR: Failure to find a matching plugin for the specified plugin name:
         console.log(msg.cErrorRegisterPluginCommandMessage02 + JSON.stringify(pluginName));
@@ -222,7 +222,7 @@ async function registerPlugin(inputData, inputMetaData) {
     console.log(msg.cErrorRegisterPluginCommandMessage01 + JSON.stringify(inputData));
   }
   if (foundValidData === true) {
-    returnData[1] = chiefPlugin.registerNamedPlugin(pluginName, pluginPath);
+    returnData[1] = await chiefPlugin.registerNamedPlugin(pluginName, pluginPath);
   }
   loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
@@ -251,7 +251,7 @@ async function unregisterPlugin(inputData, inputMetaData) {
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = [true, false];
   if (Array.isArray(inputData) === true && inputData.length === 2 && typeof(inputData[1]) === wrd.cstring) {
-    returnData[1] = chiefPlugin.unregisterNamedPlugin(inputData[1]);
+    returnData[1] = await chiefPlugin.unregisterNamedPlugin(inputData[1]);
   } else {
     // ERROR: Failure to unregister the specified plugin, invalid input:
     console.log(msg.cErrorUnregisterPluginCommandMessage01 + JSON.stringify(inputData));
@@ -290,7 +290,7 @@ async function unregisterPlugins(inputData, inputMetaData) {
       inputData.shift();
       pluginListArray = inputData;
     }
-    returnData[1] = chiefPlugin.unregisterPlugins(pluginListArray);
+    returnData[1] = await chiefPlugin.unregisterPlugins(pluginListArray);
   } else {
     // ERROR: Failure to unregister any of the specified plugins, invalid input:
     console.log(msg.cErrorUnregisterPluginsCommandMessage01 + JSON.stringify(inputData));
@@ -317,7 +317,7 @@ async function syncPluginRegistryWithPath(inputData, inputMetaData) {
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = [true, false];
-  returnData[1] = chiefPlugin.synchronizePluginRegistryWithPath();
+  returnData[1] = await chiefPlugin.synchronizePluginRegistryWithPath();
   if (returnData[1] === false) {
     // ERROR: Failure to synchronize the plugin registry with the plugin path listed in the plugin registry.
     console.log(namespacePrefix + functionName + msg.cErrorSyncPluginRegistryWithPathCommandMessage01);
@@ -343,7 +343,7 @@ async function listPluginsRegistryPath(inputData, inputMetaData) {
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = [true, false];
-  returnData[1] = chiefPlugin.getPluginsRegistryPath();
+  returnData[1] = await chiefPlugin.getPluginsRegistryPath();
   // plugins registry path is:
   console.log(msg.cpluginsRegistryPathMessageIs + returnData[1]);
   loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
@@ -368,7 +368,7 @@ async function unregisterAllPlugins(inputData, inputMetaData) {
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = [true, false];
-  returnData[1] = chiefPlugin.clearPluginRegistry();
+  returnData[1] = await chiefPlugin.clearPluginRegistry();
   if (returnData[1] === false) {
     // ERROR: Failure to unregister all plugins.
     console.log(namespacePrefix + functionName + msg.cErrorUnregisterAllPluginsCommandMessage01);
@@ -395,7 +395,7 @@ async function savePluginRegistryToDisk(inputData, inputMetaData) {
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = [true, false];
-  returnData[1] = chiefPlugin.savePluginRegistryDisk();
+  returnData[1] = await chiefPlugin.savePluginRegistryDisk();
   if (returnData[1] === false) {
     // ERROR: Failure to save the plugin registry to the hard drive.
     console.log(namespacePrefix + functionName + msg.cErrorSavePluginRegistryToDiskCommandMessage01);
@@ -428,7 +428,7 @@ async function loadPlugin(inputData, inputMetaData) {
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = [true, false];
   if (inputData.length === 2 && typeof(inputData[1]) === wrd.cstring) {
-    returnData[1] = warden.loadPlugin(inputData[1]);
+    returnData[1] = await warden.loadPlugin(inputData[1]);
   } else {
     // ERROR: Failure to load the specified plugin, invalid input:
     console.log(msg.cErrorLoadPluginCommandMessage01 + JSON.stringify(inputData));
@@ -467,7 +467,7 @@ async function loadPlugins(inputData, inputMetaData) {
       inputData.shift(); // Remove the first entry, and just pass the rest of the array.
       pluginsArray = inputData;
     }
-    returnData[1] = warden.loadPlugins(pluginsArray);
+    returnData[1] = await warden.loadPlugins(pluginsArray);
   } else {
     // ERROR: Failure to load the specified plugins, invalid input:
     console.log(msg.cErrorLoadPluginsCommandMessage01 + JSON.stringify(inputData));
@@ -494,7 +494,7 @@ async function loadPluginsFromRegistry(inputData, inputMetaData) {
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = [true, false];
-  returnData[1] = warden.loadPluginsFromRegistry();
+  returnData[1] = await warden.loadPluginsFromRegistry();
   if (returnData[1] === false) {
     // ERROR: Failure to load the plugins from the plugin registry.
     console.log(namespacePrefix + functionName + msg.cErrorLoadPluginsFromRegistryCommandMessage01);
@@ -526,7 +526,7 @@ async function unloadPlugin(inputData, inputMetaData) {
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = [true, false];
   if (inputData.length === 2 && typeof(inputData[1]) === wrd.cstring) {
-    returnData[1] = warden.unloadPlugin(inputData[1]);
+    returnData[1] = await warden.unloadPlugin(inputData[1]);
   } else {
     // ERROR: Failure to unload the specified plugin, invalid input:
     console.log(msg.cErrorUnloadPluginCommandMessage01 + JSON.stringify(inputData));
@@ -565,7 +565,7 @@ async function unloadPlugins(inputData, inputMetaData) {
       inputData.shift();
       pluginNameArray = inputData;
     }
-    returnData[1] = warden.unloadPlugins(pluginNameArray);
+    returnData[1] = await warden.unloadPlugins(pluginNameArray);
   } else {
     // ERROR: Failure to unload the specified plugins, invalid input:
     console.log(msg.cErrorUnloadPluginsCommandMessage01 + JSON.stringify(inputData));
@@ -592,7 +592,7 @@ async function unloadAllPlugins(inputData, inputMetaData) {
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = [true, false];
-  returnData[1] = warden.unloadAllPlugins();
+  returnData[1] = await warden.unloadAllPlugins();
   if (returnData[1] === false) {
     // ERROR: Failure to unload all the plugins.
     console.log(namespacePrefix + functionName + msg.cErrorUnloadAllPluginsCommandMessage01);

@@ -65,9 +65,9 @@ async function getXmlData(inputData, inputMetaData) {
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
   let returnData;
   let pathAndFilename = path.resolve(inputData);
-  let data = fs.readFileSync(pathAndFilename, { encoding: gen.cUTF8 });
+  let data = await fs.readFileSync(pathAndFilename, { encoding: gen.cUTF8 });
   let xml;
-  xml2js.parseString(data,
+  await xml2js.parseString(data,
   async function(err, result) {
     if (err) {
       // ERROR:
@@ -103,8 +103,8 @@ async function getCsvData(inputData, inputMetaData) {
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
   let returnData;
   let pathAndFilename = path.resolve(inputData);
-  let data = fs.readFileSync(pathAndFilename, { encoding: gen.cUTF8 });
-  returnData = papa.parse(data, {
+  let data = await fs.readFileSync(pathAndFilename, { encoding: gen.cUTF8 });
+  returnData = await papa.parse(data, {
     delimiter: ',',
     newline: '/n',
     header: true,
@@ -131,18 +131,18 @@ async function getCsvData(inputData, inputMetaData) {
  */
 // eslint-disable-next-line no-unused-vars
 async function getJsonData(inputData, inputMetaData) {
-  // let functionName = getJsonData.name;
-  // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
-  // console.log(`inputData is: ${inputData}`);
-  // console.log(`inputMetaData is: ${inputMetaData}`);
+  let functionName = getJsonData.name;
+  console.log(`BEGIN ${namespacePrefix}${functionName} function`);
+  console.log(`inputData is: ${inputData}`);
+  console.log(`inputMetaData is: ${inputMetaData}`);
   // Make sure to resolve the path on the local system,
   // just in case there are issues with the OS that the code is running on.
   let pathAndFilename = path.resolve(inputData);
-  let rawData = fs.readFileSync(pathAndFilename, { encoding: gen.cUTF8 });
+  let rawData = await fs.readFileSync(pathAndFilename, { encoding: gen.cUTF8 });
   let returnData = JSON.parse(rawData);
-  // console.log(`DONE loading data from: ${inputData}`);
-  // console.log(msg.creturnDataIs + JSON.stringify(returnData));
-  // console.log(`END ${namespacePrefix}${functionName} function`);
+  console.log(`DONE loading data from: ${inputData}`);
+  console.log(msg.creturnDataIs + JSON.stringify(returnData));
+  console.log(`END ${namespacePrefix}${functionName} function`);
   return returnData;
 }
 
@@ -162,7 +162,7 @@ async function writeJsonData(inputData, inputMetaData) {
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
   let returnData = false;
   try {
-    fs.writeFileSync(inputData, JSON.stringify(inputMetaData, null, 2));
+    await fs.writeFileSync(inputData, JSON.stringify(inputMetaData, null, 2));
     returnData = true;
   } catch (err) {
     // ERROR:
@@ -191,7 +191,7 @@ async function loadAsciiFileFromPath(inputData, inputMetaData) {
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
   let returnData = false;
   try {
-    returnData = fs.readFileSync(inputData, gen.cUTF8);
+    returnData = await fs.readFileSync(inputData, gen.cUTF8);
   } catch (err) {
     // ERROR: Failure to read from file: 
     console.error(msg.cErrorLoadAsciiFileFromPathMessage01 + inputData);
@@ -215,10 +215,10 @@ async function loadAsciiFileFromPath(inputData, inputMetaData) {
  */
 // eslint-disable-next-line no-unused-vars
 async function readDirectoryContents(inputData, inputMetaData) {
-  // let functionName = readDirectoryContents.name;
-  // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
-  // console.log(`inputData is: ${inputData}`);
-  // console.log(`inputMetaData is: ${inputMetaData}`);
+  let functionName = readDirectoryContents.name;
+  console.log(`BEGIN ${namespacePrefix}${functionName} function`);
+  console.log(`inputData is: ${inputData}`);
+  console.log(`inputMetaData is: ${inputMetaData}`);
   let returnData = [];
   // Make sure to resolve the path on the local system,
   // just in case there are issues with the OS that the code is running on.
@@ -227,9 +227,9 @@ async function readDirectoryContents(inputData, inputMetaData) {
   returnData = filesCollection; // Copy the data into a local variable first.
   filesCollection = undefined; // Make sure to clear it so we don't have a chance of it corrupting any other file operations.
   filesCollection = [];
-  // console.log(`DONE loading data from: ${inputData}`);
-  // console.log(msg.creturnDataIs + JSON.stringify(returnData));
-  // console.log(`END ${namespacePrefix}${functionName} function`);
+  console.log(`DONE loading data from: ${inputData}`);
+  console.log(msg.creturnDataIs + JSON.stringify(returnData));
+  console.log(`END ${namespacePrefix}${functionName} function`);
   return returnData;
 }
 
@@ -293,7 +293,7 @@ async function getDirectoryList(inputData, inputMetaData) {
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
   let returnData = false;
   if (inputData) {
-    returnData = fs.readdirSync(inputData, { withFileTypes: true })
+    returnData = await fs.readdirSync(inputData, { withFileTypes: true })
       .filter((item) => item.isDirectory())
       .map((item) => item.name);
   } // End-if (inputData)
@@ -316,20 +316,20 @@ async function getDirectoryList(inputData, inputMetaData) {
  */
 // eslint-disable-next-line no-unused-vars
 async function readDirectorySynchronously(inputData, inputMetaData) {
-  // let functionName = readDirectorySynchronously.name;
-  // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
-  // console.log(`inputData is: ${inputData}`);
-  // console.log(`inputMetaData is: ${inputMetaData}`);
+  let functionName = readDirectorySynchronously.name;
+  console.log(`BEGIN ${namespacePrefix}${functionName} function`);
+  console.log(`inputData is: ${inputData}`);
+  console.log(`inputMetaData is: ${inputMetaData}`);
   if (hitFileLimit === false) {
     let directory = path.resolve(inputData); // Make sure to resolve the path on the local system.
     let currentDirectoryPath = directory;
     let currentDirectory = '';
     try {
-      currentDirectory = fs.readdirSync(currentDirectoryPath, gen.cUTF8);
+      currentDirectory = await fs.readdirSync(currentDirectoryPath, gen.cUTF8);
     } catch (err) {
       console.log(msg.cERROR + err.message);
-      fs.mkdirSync(currentDirectoryPath);
-      currentDirectory = fs.readdirSync(currentDirectoryPath, gen.cUTF8);
+      await fs.mkdirSync(currentDirectoryPath);
+      currentDirectory = await fs.readdirSync(currentDirectoryPath, gen.cUTF8);
     }
     // console.log('currentDirectoryContents are: ' + JSON.stringify(currentDirectory));
     await currentDirectory.forEach(async file => {
@@ -339,7 +339,7 @@ async function readDirectorySynchronously(inputData, inputMetaData) {
       // console.log('filesShouldBeSkipped is: ' + filesShouldBeSkipped);
       try {
         // console.log('BEGIN TRY');
-        if (!filesShouldBeSkipped && fs.statSync(pathOfCurrentItem).isFile()) {
+        if (!filesShouldBeSkipped && await fs.statSync(pathOfCurrentItem).isFile()) {
           // console.log('Its a file, and not to be skipped!');
           if (enableFilesListLimit === true && filesListLimit > 0) {
             // console.log('list limit is enabled, not sure if we hit it yet or not.');
@@ -374,7 +374,7 @@ async function readDirectorySynchronously(inputData, inputMetaData) {
         console.log(msg.cErrorInvalidAccessTo + pathOfCurrentItem);
       }
     }); // End-currentDirectory.forEach(file => {
-    // console.log(`END ${namespacePrefix}${functionName} function`);
+    console.log(`END ${namespacePrefix}${functionName} function`);
   } // End-if (hitFileLimit === false)
 }
 
@@ -404,7 +404,7 @@ async function copyAllFilesAndFoldersFromFolderToFolder(inputData, inputMetaData
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
   let returnData = false;
-  returnData = copyFolderRecursiveSync(inputData, inputMetaData);
+  returnData = await copyFolderRecursiveSync(inputData, inputMetaData);
   loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
   loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
@@ -471,8 +471,8 @@ async function buildReleasePackage(inputData, inputMetaData) {
     loggers.consoleLog(namespacePrefix + functionName, msg.creleaseFileNameIs + releaseFileName);
     let fullReleasePath = path.resolve(destinationFolder + bas.cForwardSlash + releaseFileName + gen.cDotzip);
     try {
-      zip.addLocalFolder(sourceFolder, originalSource);
-      zip.writeZip(fullReleasePath);
+      await zip.addLocalFolder(sourceFolder, originalSource);
+      await zip.writeZip(fullReleasePath);
       // Done writing the zip file:
       loggers.consoleLog(namespacePrefix + functionName, msg.cDoneWritingTheZipFile + fullReleasePath);
       // Set the return packageSuccess flag to True
@@ -513,8 +513,8 @@ async function createZipArchive(inputData, inputMetaData) {
   let returnData = false;
   let zip = new admZip();
   try {
-    zip.addLocalFolder(inputData);
-    zip.writeZip(inputMetaData);
+    await zip.addLocalFolder(inputData);
+    await zip.writeZip(inputMetaData);
     // Done writing the zip file:
     loggers.consoleLog(namespacePrefix + functionName, msg.cDoneWritingTheZipFile + inputMetaData);
     returnData = true;
@@ -590,8 +590,8 @@ async function copyFileSync(inputData, inputMetaData) {
   let successfulCopy = false;
 
   // If target is a directory a new file with the same name will be created.
-  if (fs.existsSync(target)) {
-    if (fs.lstatSync(target).isDirectory()) {
+  if (await fs.existsSync(target)) {
+    if (await fs.lstatSync(target).isDirectory()) {
       targetFile = path.join(target, path.basename(source));
     }
   } // End-if (fs.existsSync(target))
@@ -617,7 +617,7 @@ async function copyFileSync(inputData, inputMetaData) {
     // We need a logical converse operation:
     // https://en.wikipedia.org/wiki/Converse_(logic)
     if (foundInclusion || !(foundInclusion || foundExclusion)) {
-      fs.writeFileSync(targetFile, fs.readFileSync(source));
+      await fs.writeFileSync(targetFile, await fs.readFileSync(source));
       successfulCopy = true;
     } else {
       // console.log('Detected an exclusion condition.');
@@ -676,10 +676,10 @@ async function copyFolderRecursiveSync(inputData, inputMetaData) {
     targetFolder = path.join(target, pathLeafNode);
   }
   targetFolder = path.resolve(targetFolder);
-  if (fs.existsSync(targetFolder) !== true) {
+  if (await fs.existsSync(targetFolder) !== true) {
     try {
       // console.log('making the path');
-      fs.mkdirSync(targetFolder);
+      await fs.mkdirSync(targetFolder);
       // NOTE: Just because we complete the above code doesn't mean the entire copy process was a success.
       // But at least we haven't errored out, so it wasn't a failure YET.
     } catch (err) {
@@ -712,14 +712,14 @@ async function copyFolderRecursiveSync(inputData, inputMetaData) {
 
   // Copy
   try {
-    if (fs.lstatSync(source).isDirectory()) {
-      files = fs.readdirSync(source);
+    if (await fs.lstatSync(source).isDirectory()) {
+      files = await fs.readdirSync(source);
       files.forEach(async function(file) {
         let currentSource = path.join(source, file);
-        if (fs.lstatSync(currentSource).isDirectory()) {
-          successfulCopy = copyFolderRecursiveSync([currentSource, targetFolder], inputMetaData);
+        if (await fs.lstatSync(currentSource).isDirectory()) {
+          successfulCopy = await copyFolderRecursiveSync([currentSource, targetFolder], inputMetaData);
         } else {
-          successfulCopy = copyFileSync([currentSource, targetFolder], inputMetaData);
+          successfulCopy = await copyFileSync([currentSource, targetFolder], inputMetaData);
         }
       });
     } // End-if (fs.lstatSync(source).isDirectory())
@@ -756,15 +756,15 @@ async function appendMessageToFile(inputData, inputMetaData) {
   if (inputData && inputMetaData) {
     try {
       // console.log('open the file sync');
-      fd = fs.openSync(inputData, bas.ca);
+      fd = await fs.openSync(inputData, bas.ca);
       // console.log('append to the file sync');
-      fs.appendFileSync(fd, inputMetaData + bas.cCarriageReturn + bas.cNewLine, gen.cUTF8);
+      await fs.appendFileSync(fd, inputMetaData + bas.cCarriageReturn + bas.cNewLine, gen.cUTF8);
       // console.log('DONE appending to the file');
     } catch (err) {
       return console.log(err);
     } finally {
       if (fd !== undefined) {
-        fs.closeSync(fd);
+        await fs.closeSync(fd);
       }
     } // End-finally
   } // End-if (inputData && inputMetaData)

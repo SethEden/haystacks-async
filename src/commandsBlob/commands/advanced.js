@@ -62,7 +62,7 @@ async function commandSequencer(inputData, inputMetaData) {
   let commandSuccess = true;
   // Initialize a temporary command queue that can be used to aggregate all of the commands that will be added to the official command queue.
   // Once all of the commands are aggregated then we will enqueue the new temporary command queue to the front of the official command queue.
-  queue.initQueue(sys.cCommandQueue + wrd.cTemp);
+  await queue.initQueue(sys.cCommandQueue + wrd.cTemp);
   for (let i = 1; i < inputData.length; i++) {
     let commandString = inputData[i];
     let primaryCommandDelimiter = await configurator.getConfigurationSetting(wrd.csystem, cfg.cprimaryCommandDelimiter);
@@ -81,7 +81,7 @@ async function commandSequencer(inputData, inputMetaData) {
       const regEx2 = new RegExp(tertiaryCommandDelimiter, bas.cg);
       commandString = commandString.replace(regEx2, secondaryCommandArgsDelimiter);
     }
-    let currentCommand = commandBroker.getValidCommand(commandString, primaryCommandDelimiter);
+    let currentCommand = await commandBroker.getValidCommand(commandString, primaryCommandDelimiter);
     let commandArgs = await commandBroker.getCommandArgs(commandString, primaryCommandDelimiter);
     // We need to recompose the command arguments for the current command using the sys.cPrimaryCommandDelimiter.
     if (currentCommand !== false) {
@@ -89,7 +89,7 @@ async function commandSequencer(inputData, inputMetaData) {
         currentCommand = currentCommand + primaryCommandDelimiter + commandArgs[j];
       } // End-for (let j = 1; j < commandArgs.length; j++)
       loggers.consoleLog(namespacePrefix + functionName, msg.ccommandSequencerCommandToEnqueueIs + currentCommand);
-      queue.enqueue(sys.cCommandQueue + wrd.cTemp, currentCommand);
+      await queue.enqueue(sys.cCommandQueue + wrd.cTemp, currentCommand);
     } else { // End-if (currentCommand !== false)
       // WARNING: advanced.commandSequencer: The specified command was not found, please enter a valid command and try again. <commandString>
       let errorMessage = msg.ccommandSequencerMessage1 + msg.ccommandSequencerMessage2 + bas.cSpace + commandString;
@@ -100,7 +100,7 @@ async function commandSequencer(inputData, inputMetaData) {
   } // End-for (let i = 1; i < inputData.length; i++)
   // Now migrate the temporary command queue to the primary command queue,
   // pushing all command entities it to the front of the command queue.
-  queue.enqueueFront(sys.cCommandQueue, await queue.queueContents(sys.cCommandQueue + wrd.cTemp));
+  await queue.enqueueFront(sys.cCommandQueue, await queue.queueContents(sys.cCommandQueue + wrd.cTemp));
   if (commandSuccess === true) {
     returnData[1] = commandSuccess;
   }
@@ -132,9 +132,9 @@ async function workflow(inputData, inputMetaData) {
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = [true, {}];
   let workflowName = inputData[1];
-  let workflowValue = workflowBroker.getWorkflow(workflowName);
+  let workflowValue = await workflowBroker.getWorkflow(workflowName);
   if (workflowValue !== false && typeof workflowValue != wrd.cobject) {
-    queue.enqueueFront(sys.cCommandQueue, workflowValue);
+    await queue.enqueueFront(sys.cCommandQueue, workflowValue);
     returnData[1] = true;
   } else {
     // WARNING: advanced.workflow: The specified workflow:
@@ -249,16 +249,16 @@ async function businessRule(inputData, inputMetaData) {
     loggers.consoleLog(namespacePrefix + functionName, msg.cBusinessRuleRunTimeIs + businessRuleDeltaTime);
     // Check to make sure the business rule performance tracking stack exists or does not exist.
     if (D[cfg.cbusinessRulesPerformanceTrackingStack] === undefined) {
-      stack.initStack(cfg.cbusinessRulesPerformanceTrackingStack);
+      await stack.initStack(cfg.cbusinessRulesPerformanceTrackingStack);
     }
     if (D[cfg.cbusinessRulesNamesPerformanceTrackingStack] === undefined) { 
-      stack.initStack(cfg.cbusinessRulesNamesPerformanceTrackingStack);
+      await stack.initStack(cfg.cbusinessRulesNamesPerformanceTrackingStack);
     }
     performanceTrackingObject = {Name: rules[0], RunTime: businessRuleDeltaTime};
     if (stack.contains(cfg.cbusinessRulesNamesPerformanceTrackingStack, rules[0]) === false) {
-      stack.push(cfg.cbusinessRulesNamesPerformanceTrackingStack, rules[0]);
+      await stack.push(cfg.cbusinessRulesNamesPerformanceTrackingStack, rules[0]);
     }
-    stack.push(cfg.cbusinessRulesPerformanceTrackingStack, performanceTrackingObject);
+    await stack.push(cfg.cbusinessRulesPerformanceTrackingStack, performanceTrackingObject);
     // stack.print(cfg.cBusinessRulePerformanceTrackingStack);
     // stack.print(cfg.cBusinessRuleNamesPerformanceTrackingStack);
   } // End-if (businessRuleMetricsEnabled === true)
@@ -336,7 +336,7 @@ async function commandGenerator(inputData, inputMetaData) {
   commandString = await ruleBroker.processRules([commandString, [tertiaryCommandDelimiter, secondaryCommandArgsDelimiter]], replaceCharacterWithCharacterRule);
   // After attempting to replace the teriaryCommandDelimiter with the secondaryCommandArgsDelimiter commandString is:
   loggers.consoleLog(namespacePrefix + functionName, msg.ccommandGeneratorMessage2 + commandString);
-  let currentCommand = commandBroker.getValidCommand(commandString, primaryCommandDelimiter);
+  let currentCommand = await commandBroker.getValidCommand(commandString, primaryCommandDelimiter);
   let commandArgs = await commandBroker.getCommandArgs(commandString, primaryCommandDelimiter);
   loggers.consoleLog(namespacePrefix + functionName, msg.ccurrentCommandIs + currentCommand);
   loggers.consoleLog(namespacePrefix + functionName, msg.ccommandArgsIs + JSON.stringify(commandArgs));
@@ -352,13 +352,13 @@ async function commandGenerator(inputData, inputMetaData) {
     if (isNaN(inputData[legitNumberIndex]) === false) { // Make sure the user passed in a number for the second argument.
       let numberOfCommands = parseInt(inputData[legitNumberIndex]);
       if (numberOfCommands > 0) {
-        queue.initQueue(sys.cCommandQueue + wrd.cTemp);
+        await queue.initQueue(sys.cCommandQueue + wrd.cTemp);
         for (let i = 0; i < numberOfCommands; i++) {
-          queue.enqueue(sys.cCommandQueue + wrd.cTemp, commandString);
+          await queue.enqueue(sys.cCommandQueue + wrd.cTemp, commandString);
         } // End-for (let i = 0; i < numberOfCommands; i++)
         // Now migrate the temporary command queue to the primary command queue,
         // pushing all command entities it to the front of the command queue.
-        queue.enqueueFront(sys.cCommandQueue, await queue.queueContents(sys.cCommandQueue + wrd.cTemp));
+        await queue.enqueueFront(sys.cCommandQueue, await queue.queueContents(sys.cCommandQueue + wrd.cTemp));
         returnData[1] = true;
       } else {
         // WARNING: advanced.commandGenerator: Must enter a number greater than 0, number entered:

@@ -47,7 +47,7 @@ async function saveConfiguration(inputData, inputMetaData) {
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = [true, {}];
-  returnData[1] = dataBroker.writeJsonDataToFile(await configurator.getConfigurationSetting(wrd.csystem, cfg.cappConfigPath) + wrd.cconfig + gen.cDotjson, JSON.stringify(D));
+  returnData[1] = await dataBroker.writeJsonDataToFile(await configurator.getConfigurationSetting(wrd.csystem, cfg.cappConfigPath) + wrd.cconfig + gen.cDotjson, JSON.stringify(D));
   loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
@@ -96,7 +96,7 @@ async function changeConfigurationSetting(inputData, inputMetaData) {
     loggers.consoleLog(namespacePrefix + functionName, msg.cdataPathIs + JSON.stringify(dataPath));
     dataPath = dataPath.join(bas.cDot);
     newValue = await ruleBroker.processRules([newValue, ''], [biz.cstringToDataType]);
-    configurator.setConfigurationSetting(dataPath, configurationName, newValue);
+    await configurator.setConfigurationSetting(dataPath, configurationName, newValue);
     returnData[1] = true;
   } else {
     // ERROR: Invalid entry, please enter a valid configuration namespace to change,
@@ -172,11 +172,11 @@ async function changeDebugConfigurationTheme(inputData, inputMetaData) {
     if (namedThemePath !== false) {
       // namedThemePath is verified:
       loggers.consoleLog(namespacePrefix + functionName, msg.cnamedThemePathIsVerified + namedThemePath);
-      configurator.setConfigurationSetting(wrd.csystem, sys.cthemeConfigPath, namedThemePath);
+      await configurator.setConfigurationSetting(wrd.csystem, sys.cthemeConfigPath, namedThemePath);
       let loadedThemeData = await themeBroker.loadTheme(namedThemePath);
       // loadedThemeData is:
       loggers.consoleLog(namespacePrefix + functionName, msg.cloadedThemeDataIs + JSON.stringify(loadedThemeData));
-      let themeLoadedSuccessfully = themeBroker.applyTheme(loadedThemeData);
+      let themeLoadedSuccessfully = await themeBroker.applyTheme(loadedThemeData);
       returnData[1] = themeLoadedSuccessfully;
       if (themeLoadedSuccessfully === false) {
         // ERROR: There was an error applying the selected theme to the active debug settings configuration.
