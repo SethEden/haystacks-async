@@ -36,13 +36,13 @@ const namespacePrefix = wrd.cframework + bas.cDot + sys.cbusinessRules + bas.cDo
  */
 async function randomlyGenerateMixedCaseLetterOrSpecialCharacter(inputData, inputMetaData) {
   let functionName = randomlyGenerateMixedCaseLetterOrSpecialCharacter.name;
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
+  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
+  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
   let returnData = '';
-  returnData = await randomlyGenerateSpecialCharacter(inputData + gen.cUpperCaseEnglishAlphabet + gen.cLowerCaseEnglishAlphabet);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  returnData = randomlyGenerateSpecialCharacter(inputData + gen.cUpperCaseEnglishAlphabet + gen.cLowerCaseEnglishAlphabet);
+  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -59,13 +59,13 @@ async function randomlyGenerateMixedCaseLetterOrSpecialCharacter(inputData, inpu
  */
 async function randomlyGenerateUpperCaseLetterOrSpecialCharacter(inputData, inputMetaData) {
   let functionName = randomlyGenerateUpperCaseLetterOrSpecialCharacter.name;
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = '';
-  returnData = await randomlyGenerateSpecialCharacter(inputData + gen.cUpperCaseEnglishAlphabet);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  returnData = randomlyGenerateSpecialCharacter(inputData + gen.cUpperCaseEnglishAlphabet);
+  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -82,13 +82,13 @@ async function randomlyGenerateUpperCaseLetterOrSpecialCharacter(inputData, inpu
  */
 async function randomlyGenerateLowerCaseLetterOrSpecialCharacter(inputData, inputMetaData) {
   let functionName = randomlyGenerateLowerCaseLetterOrSpecialCharacter.name;
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = '';
-  returnData = await randomlyGenerateSpecialCharacter(inputData + gen.cLowerCaseEnglishAlphabet);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  returnData = randomlyGenerateSpecialCharacter(inputData + gen.cLowerCaseEnglishAlphabet);
+  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -105,13 +105,13 @@ async function randomlyGenerateLowerCaseLetterOrSpecialCharacter(inputData, inpu
  */
 async function randomlyGenerateEitherMixedCaseLetterOrNumberOrSpecialCharacter(inputData, inputMetaData) {
   let functionName = randomlyGenerateEitherMixedCaseLetterOrNumberOrSpecialCharacter.name;
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = '';
-  returnData = await randomlyGenerateSpecialCharacter(inputData + gen.cUpperCaseEnglishAlphabet + gen.cLowerCaseEnglishAlphabet + gen.cAllNumbers);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  returnData = randomlyGenerateSpecialCharacter(inputData + gen.cUpperCaseEnglishAlphabet + gen.cLowerCaseEnglishAlphabet + gen.cAllNumbers);
+  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -128,13 +128,13 @@ async function randomlyGenerateEitherMixedCaseLetterOrNumberOrSpecialCharacter(i
  */
 async function randomlyGenerateEitherUpperCaseLetterOrNumberOrSpecialCharacter(inputData, inputMetaData) {
   let functionName = randomlyGenerateEitherUpperCaseLetterOrNumberOrSpecialCharacter.name;
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = '';
-  returnData = await randomlyGenerateSpecialCharacter(inputData + gen.cUpperCaseEnglishAlphabet + gen.cAllNumbers);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  returnData = randomlyGenerateSpecialCharacter(inputData + gen.cUpperCaseEnglishAlphabet + gen.cAllNumbers);
+  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -151,13 +151,13 @@ async function randomlyGenerateEitherUpperCaseLetterOrNumberOrSpecialCharacter(i
  */
 async function randomlyGenerateEitherLowerCaseLetterOrNumberOrSpecialCharacter(inputData, inputMetaData) {
   let functionName = randomlyGenerateEitherLowerCaseLetterOrNumberOrSpecialCharacter.name;
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = '';
-  returnData = await randomlyGenerateSpecialCharacter(inputData + gen.cLowerCaseEnglishAlphabet + gen.cAllNumbers);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  returnData = randomlyGenerateSpecialCharacter(inputData + gen.cLowerCaseEnglishAlphabet + gen.cAllNumbers);
+  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -172,13 +172,13 @@ async function randomlyGenerateEitherLowerCaseLetterOrNumberOrSpecialCharacter(i
  */
 async function randomlyGenerateMixedCaseAlphaNumericCharacter(inputData, inputMetaData) {
   let functionName = randomlyGenerateMixedCaseAlphaNumericCharacter.name;
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = '';
-  returnData = await randomlyGenerateSpecialCharacter(gen.cUpperCaseEnglishAlphabet + gen.cLowerCaseEnglishAlphabet + gen.cAllNumbers);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  returnData = randomlyGenerateSpecialCharacter(gen.cUpperCaseEnglishAlphabet + gen.cLowerCaseEnglishAlphabet + gen.cAllNumbers);
+  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -193,13 +193,13 @@ async function randomlyGenerateMixedCaseAlphaNumericCharacter(inputData, inputMe
  */
 async function randomlyGenerateUpperCaseAlphaNumericCharacter(inputData, inputMetaData) {
   let functionName = randomlyGenerateUpperCaseAlphaNumericCharacter.name;
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = '';
-  returnData = await randomlyGenerateSpecialCharacter(gen.cUpperCaseEnglishAlphabet + gen.cAllNumbers);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  returnData = randomlyGenerateSpecialCharacter(gen.cUpperCaseEnglishAlphabet + gen.cAllNumbers);
+  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -214,13 +214,13 @@ async function randomlyGenerateUpperCaseAlphaNumericCharacter(inputData, inputMe
  */
 async function randomlyGenerateLowerCaseAlphaNumericCharacter(inputData, inputMetaData) {
   let functionName = randomlyGenerateLowerCaseAlphaNumericCharacter.name;
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = '';
-  returnData = await randomlyGenerateSpecialCharacter(gen.cLowerCaseEnglishAlphabet + gen.cAllNumbers);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  returnData = randomlyGenerateSpecialCharacter(gen.cLowerCaseEnglishAlphabet + gen.cAllNumbers);
+  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -235,13 +235,13 @@ async function randomlyGenerateLowerCaseAlphaNumericCharacter(inputData, inputMe
  */
 async function randomlyGenerateNumericCharacter(inputData, inputMetaData) {
   let functionName = randomlyGenerateNumericCharacter.name;
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = '';
-  returnData = await randomlyGenerateSpecialCharacter(gen.cAllNumbers);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  returnData = randomlyGenerateSpecialCharacter(gen.cAllNumbers);
+  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -256,19 +256,19 @@ async function randomlyGenerateNumericCharacter(inputData, inputMetaData) {
  */
 async function randomlyGenerateSpecialCharacter(inputData, inputMetaData) {
   let functionName = randomlyGenerateSpecialCharacter.name;
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = '';
   // NOTE Cannot have a "." as part of a variable name in a {set}
   if (inputData) {
     let inputDataLength = inputData.length.toString();
-    let number = await randomlyGenerateNumberInRange(num.c1, [inputDataLength, gen.cTrue, gen.cTrue]);
+    let number = randomlyGenerateNumberInRange(num.c1, [inputDataLength, gen.cTrue, gen.cTrue]);
     // NOTE: The String.length() above is a 1-base count, the String.substring is zero-based.
     returnData = inputData.substring(number - 1, number);
   } // End-if (inputData)
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -287,9 +287,9 @@ async function randomlyGenerateSpecialCharacter(inputData, inputMetaData) {
  */
 async function randomlyGenerateNumberInRange(inputData, inputMetaData) {
   let functionName = randomlyGenerateNumberInRange.name;
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = '';
   if (inputData && inputMetaData) {
     let minimum = parseInt(inputData);
@@ -310,8 +310,8 @@ async function randomlyGenerateNumberInRange(inputData, inputMetaData) {
       }
     }
   } // End-if (inputData && inputMetaData)
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData.toString();
 }
 
@@ -327,13 +327,13 @@ async function randomlyGenerateNumberInRange(inputData, inputMetaData) {
  */
 async function randomlyGenerateBooleanValue(inputData, inputMetaData) {
   let functionName = randomlyGenerateBooleanValue.name;
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = '';
   returnData = Math.random() >= 0.5;
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -349,13 +349,13 @@ async function randomlyGenerateBooleanValue(inputData, inputMetaData) {
  */
 async function randomlyGenerateMixedCaseAlphabeticCharacter(inputData, inputMetaData) {
   let functionName = randomlyGenerateMixedCaseAlphabeticCharacter.name;
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = '';
-  returnData = await randomlyGenerateSpecialCharacter(gen.cUpperCaseEnglishAlphabet + gen.cLowerCaseEnglishAlphabet);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  returnData = randomlyGenerateSpecialCharacter(gen.cUpperCaseEnglishAlphabet + gen.cLowerCaseEnglishAlphabet);
+  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -370,13 +370,13 @@ async function randomlyGenerateMixedCaseAlphabeticCharacter(inputData, inputMeta
  */
 async function randomlyGenerateLowerCaseLetter(inputData, inputMetaData) {
   let functionName = randomlyGenerateLowerCaseLetter.name;
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = '';
-  returnData = await randomlyGenerateSpecialCharacter(gen.cLowerCaseEnglishAlphabet);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  returnData = randomlyGenerateSpecialCharacter(gen.cLowerCaseEnglishAlphabet);
+  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -391,13 +391,13 @@ async function randomlyGenerateLowerCaseLetter(inputData, inputMetaData) {
  */
 async function randomlyGenerateUpperCaseLetter(inputData, inputMetaData) {
   let functionName = randomlyGenerateUpperCaseLetter.name;
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = '';
-  returnData = await randomlyGenerateSpecialCharacter(gen.cUpperCaseEnglishAlphabet);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  returnData = randomlyGenerateSpecialCharacter(gen.cUpperCaseEnglishAlphabet);
+  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -413,23 +413,23 @@ async function randomlyGenerateUpperCaseLetter(inputData, inputMetaData) {
  */
 async function convertNumberToUpperCaseLetter(inputData, inputMetaData) {
   let functionName = convertNumberToUpperCaseLetter.name;
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = '';
   if (inputData) {
     let number = parseInt(inputData);
     number--;
     // number is:
-    await loggers.consoleLog(namespacePrefix + functionName, msg.cnumberIs + number);
+    loggers.consoleLog(namespacePrefix + functionName, msg.cnumberIs + number);
     if (number > 25 || number < 0) {
       returnData = ''; // Shouldn't actually need to do this, but it's a good place holder.
     } else {
       returnData = gen.cUpperCaseEnglishAlphabet.substring(number, number + 1).toUpperCase();
     }
   } // End-if (inputData)
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -445,9 +445,9 @@ async function convertNumberToUpperCaseLetter(inputData, inputMetaData) {
  */
 async function convertNumberToLowerCaseLetter(inputData, inputMetaData) {
   let functionName = convertNumberToLowerCaseLetter.name;
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = '';
   if (inputData) {
     let number = parseInt(inputData);
@@ -460,8 +460,8 @@ async function convertNumberToLowerCaseLetter(inputData, inputMetaData) {
       returnData = gen.cUpperCaseEnglishAlphabet.substring(number, number + 1).toLowerCase();
     }
   } // End-if (inputData)
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 

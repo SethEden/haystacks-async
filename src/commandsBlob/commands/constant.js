@@ -41,9 +41,9 @@ const namespacePrefix = wrd.cframework + bas.cDot + sys.ccommandsBlob + bas.cDot
  */
 async function constantsGenerator(inputData, inputMetaData) {
    let functionName = constantsGenerator.name;
-   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
-   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
+   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
+   loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
    let returnData = [true, []];
    let errorMessage = '';
    if (await configurator.getConfigurationSetting(wrd.csystem, cfg.cenableConstantsValidation) === true) {
@@ -71,7 +71,7 @@ async function constantsGenerator(inputData, inputMetaData) {
        userDefinedConstant = await ruleBroker.processRules([inputData, ''], [recombineArrayInputRule]);
      }
      // userDefinedConstant is:
-     await loggers.consoleLog(namespacePrefix + functionName, msg.cuserDefinedConstantIs + userDefinedConstant);
+     loggers.consoleLog(namespacePrefix + functionName, msg.cuserDefinedConstantIs + userDefinedConstant);
 
      // First lets check if the constant is already defined, so we can warn the user.
      // NOTE: It could be that the developer is just looking to optimize the existing constant,
@@ -85,7 +85,7 @@ async function constantsGenerator(inputData, inputMetaData) {
      userDefinedConstant = userDefinedConstant.trim();
      let wordCount = await ruleBroker.processRules([userDefinedConstant, ''], [biz.cgetWordCountInString]);
      // wordCount is:
-     await loggers.consoleLog(namespacePrefix + functionName, msg.cwordCountIs + wordCount);
+     loggers.consoleLog(namespacePrefix + functionName, msg.cwordCountIs + wordCount);
      // Now begin the fulfillment algorithm.
      if (wordCount > 1) {
        let wordsArray = await ruleBroker.processRules([userDefinedConstant, ''], [biz.cgetWordsArrayFromString]);
@@ -109,8 +109,8 @@ async function constantsGenerator(inputData, inputMetaData) {
      console.log(errorMessage);
      returnData[1] = errorMessage;
    }
-   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
-   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+   loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+   loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
    return returnData;
 }
 
@@ -129,9 +129,9 @@ async function constantsGenerator(inputData, inputMetaData) {
  */
 async function constantsGeneratorList(inputData, inputMetaData) {
    let functionName = constantsGeneratorList.name;
-   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
-   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
+   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
+   loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
    let returnData = [true, {}];
    let errorMessage = '';
    if (await configurator.getConfigurationSetting(wrd.csystem, cfg.cenableConstantsValidation) === true) {
@@ -157,27 +157,27 @@ async function constantsGeneratorList(inputData, inputMetaData) {
        userDefinedConstantList = await ruleBroker.processRules([inputData, ''], [biz.crecombineStringArrayWithSpaces]);
      }
      // userDefinedConstantList is:
-     await loggers.consoleLog(namespacePrefix + functionName, msg.cuserDefinedConstantListIs + userDefinedConstantList);
+     loggers.consoleLog(namespacePrefix + functionName, msg.cuserDefinedConstantListIs + userDefinedConstantList);
      if (userDefinedConstantList.includes(bas.cComa) === true) {
        // userDefinedConstantList contains comas
-       await loggers.consoleLog(namespacePrefix + functionName, msg.cuserDefinedConstantListContainsComas);
+       loggers.consoleLog(namespacePrefix + functionName, msg.cuserDefinedConstantListContainsComas);
        let userDefinedConstantsListArray = userDefinedConstantList.split(bas.cComa);
        // userDefinedConstantsListArray is:
-       await loggers.consoleLog(namespacePrefix + functionName, msg.cuserDefinedConstantsListArrayIs + JSON.stringify(userDefinedConstantsListArray));
+       loggers.consoleLog(namespacePrefix + functionName, msg.cuserDefinedConstantsListArrayIs + JSON.stringify(userDefinedConstantsListArray));
        if (userDefinedConstantsListArray.length > 1) {
          for (const element of userDefinedConstantsListArray) {
-          await queue.enqueue(sys.cCommandQueue, cmd.cconstantsGenerator + bas.cSpace + element.trim());
+          queue.enqueue(sys.cCommandQueue, cmd.cconstantsGenerator + bas.cSpace + element.trim());
          } // End-for (const element of userDefinedConstantsListArray)
          returnData[1] = true;
        } else if (userDefinedConstantsListArray.length === 1) {
          // Just enqueue the constants Generator command with the input directly.
-         await queue.enqueue(sys.cCommandQueue, cmd.cconstantsGenerator + bas.cSpace + userDefinedConstantsListArray[0].trim());
+         queue.enqueue(sys.cCommandQueue, cmd.cconstantsGenerator + bas.cSpace + userDefinedConstantsListArray[0].trim());
          returnData[1] = true;
        }
      } else {
        // userDefinedConstantsList DOES NOT contain comas
-       await loggers.consoleLog(namespacePrefix + functionName, msg.cuserDefinedConstantsListDoesNotContainComas);
-       await queue.enqueue(sys.cCommandQueue, cmd.cconstantsGenerator + bas.cSpace + userDefinedConstantList.trim());
+       loggers.consoleLog(namespacePrefix + functionName, msg.cuserDefinedConstantsListDoesNotContainComas);
+       queue.enqueue(sys.cCommandQueue, cmd.cconstantsGenerator + bas.cSpace + userDefinedConstantList.trim());
        returnData[1] = true;
      }
    } else {
@@ -186,8 +186,8 @@ async function constantsGeneratorList(inputData, inputMetaData) {
      console.log(errorMessage);
      returnData[1] = errorMessage;
    }
-   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
-   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+   loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+   loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
    return returnData;
 }
 
@@ -204,9 +204,9 @@ async function constantsGeneratorList(inputData, inputMetaData) {
  */
 async function constantsPatternRecognizer(inputData, inputMetaData) {
   let functionName = constantsPatternRecognizer.name;
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
+  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = [true, {}];
   let errorMessage = '';
   if (await configurator.getConfigurationSetting(wrd.csystem, cfg.cenableConstantsValidation) === true) {
@@ -234,26 +234,26 @@ async function constantsPatternRecognizer(inputData, inputMetaData) {
       userDefinedConstantList = await ruleBroker.processRules([inputData, ''], [biz.crecombineStringArrayWithSpaces]);
     }
     // userDefinedConstantList is:
-    await loggers.consoleLog(namespacePrefix + functionName, msg.cuserDefinedConstantListIs + userDefinedConstantList);
+    loggers.consoleLog(namespacePrefix + functionName, msg.cuserDefinedConstantListIs + userDefinedConstantList);
     if (userDefinedConstantList.includes(bas.cComa) === true) {
       wordsArray = userDefinedConstantList.split(bas.cComa);
     } else {
       // userDefinedConstantList DOES NOT contain comas
-      await loggers.consoleLog(namespacePrefix + functionName, msg.cuserDefinedConstantsListDoesNotContainComas);
+      loggers.consoleLog(namespacePrefix + functionName, msg.cuserDefinedConstantsListDoesNotContainComas);
       // Check and see if there is another delimiter we can use to break up the string into an array,
       // such as a space character, Maybe the user entered a sentence and would like all the words of the sentence to be optimized.
       wordsArray = await ruleBroker.processRules([userDefinedConstantList, ''], [biz.cgetWordsArrayFromString]);
     }
     // wordsArray is:
-    await loggers.consoleLog(namespacePrefix + functionName, msg.cwordsArrayIs + JSON.stringify(wordsArray));
+    loggers.consoleLog(namespacePrefix + functionName, msg.cwordsArrayIs + JSON.stringify(wordsArray));
     commonPatternsArray = await ruleBroker.processRules([wordsArray, ''], [biz.csearchForPatternsInStringArray]);
     // commonPatternsArray is:
-    await loggers.consoleLog(namespacePrefix + functionName, msg.ccommonPatternsArrayIs + JSON.stringify(commonPatternsArray));
+    loggers.consoleLog(namespacePrefix + functionName, msg.ccommonPatternsArrayIs + JSON.stringify(commonPatternsArray));
     // This next call will compare the identified string patterns with existing constants, and highlight which ones are not yet implemented.
     let newConstantsList = await ruleBroker.processRules([commonPatternsArray, ''], [biz.cvalidatePatternsThatNeedImplementation]);
     let constantsPatternGenerationSetting = await configurator.getConfigurationSetting(wrd.csystem, cfg.cenableConstantsPatternGeneration);
     if (constantsPatternGenerationSetting === true) {
-      await queue.enqueue(sys.cCommandQueue, cmd.cconstantsGeneratorList + bas.cSpace + newConstantsList);
+      queue.enqueue(sys.cCommandQueue, cmd.cconstantsGeneratorList + bas.cSpace + newConstantsList);
       returnData[1] = newConstantsList;
     } // End-if (constantsPatternGenerationSetting === true)
   } else {
@@ -262,8 +262,8 @@ async function constantsPatternRecognizer(inputData, inputMetaData) {
     console.log(errorMessage);
     returnData[1] = errorMessage;
   }
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -281,9 +281,9 @@ async function constantsPatternRecognizer(inputData, inputMetaData) {
  */
 async function evaluateConstant(inputData, inputMetaData) {
   let functionName = evaluateConstant.name;
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
+  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = [true, {}];
   let errorMessage = '';
   if (inputData && inputData.length > 1) {
@@ -302,8 +302,8 @@ async function evaluateConstant(inputData, inputMetaData) {
     console.log(errorMessage);
     returnData[1] = errorMessage;
   }
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 

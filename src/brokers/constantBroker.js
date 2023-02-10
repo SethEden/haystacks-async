@@ -35,7 +35,7 @@ const namespacePrefix = wrd.cframework + bas.cDot + wrd.cbrokers + bas.cDot + ba
  */
  async function initializeConstantsValidationData() {
   let functionName = initializeConstantsValidationData.name;
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   D[sys.cConstantsValidationData] = {};
   D[sys.cConstantsValidationData][wrd.cFramework] = {};
   D[sys.cConstantsValidationData][wrd.cFramework][sys.cConstantsShortNames] = {};
@@ -44,7 +44,7 @@ const namespacePrefix = wrd.cframework + bas.cDot + wrd.cbrokers + bas.cDot + ba
   D[sys.cConstantsValidationData][wrd.cFramework][sys.cConstantsFilePaths] = {};
   D[sys.cConstantsValidationData][wrd.cFramework][sys.cConstantsPhase1ValidationMessages] = {};
   D[sys.cConstantsValidationData][wrd.cFramework][sys.cConstantsPhase2ValidationMessages] = {};
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
 }
 
 /**
@@ -56,10 +56,10 @@ const namespacePrefix = wrd.cframework + bas.cDot + wrd.cbrokers + bas.cDot + ba
  */
 async function generateFrameworkConstantsValidationData() {
   let functionName = generateFrameworkConstantsValidationData.name;
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   let constantsPath = await configurator.getConfigurationSetting(wrd.csystem, cfg.cframeworkConstantsPath);
   // constantsPath is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cconstantsPathIs + constantsPath);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cconstantsPathIs + constantsPath);
 
   let allSystemConstantsValidationData = {};
   allSystemConstantsValidationData[sys.cConstantsValidationData] = {};
@@ -128,41 +128,41 @@ async function generateFrameworkConstantsValidationData() {
   let resolvedConstantsPath_Word = path.resolve(constantsPath + bas.cForwardSlash + sys.cword_constants_js);
 
   // resolvedConstantsPath_Basic is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cresolvedConstantsPath_BasicIs + resolvedConstantsPath_Basic);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cresolvedConstantsPath_BasicIs + resolvedConstantsPath_Basic);
   // resolvedConstantsPath_Business is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cresolvedConstantsPath_BusinessIs + resolvedConstantsPath_Business);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cresolvedConstantsPath_BusinessIs + resolvedConstantsPath_Business);
   // resolvedConstantsPath_Color is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cresolvedConstantsPath_ColorIs + resolvedConstantsPath_Color);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cresolvedConstantsPath_ColorIs + resolvedConstantsPath_Color);
   // resolvedConstantsPath_Command is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cresolvedConstantsPath_CommandIs + resolvedConstantsPath_Command);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cresolvedConstantsPath_CommandIs + resolvedConstantsPath_Command);
   // resolvedConstantsPath_Configuration is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cresolvedConstantsPath_ConfigurationIs + resolvedConstantsPath_Configuration);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cresolvedConstantsPath_ConfigurationIs + resolvedConstantsPath_Configuration);
   // resolvedConstantsPath_Country is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cresolvedConstantsPath_CountryIs + resolvedConstantsPath_Country);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cresolvedConstantsPath_CountryIs + resolvedConstantsPath_Country);
   // resolvedConstantsPath_Element is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cresolvedConstantsPath_ElementIs + resolvedConstantsPath_Element);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cresolvedConstantsPath_ElementIs + resolvedConstantsPath_Element);
   // resolvedConstantsPath_Function is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cresolvedConstantsPath_FunctionIs + resolvedConstantsPath_Function);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cresolvedConstantsPath_FunctionIs + resolvedConstantsPath_Function);
   // resolvedConstantsPath_Generic is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cresolvedConstantsPath_GenericIs + resolvedConstantsPath_Generic);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cresolvedConstantsPath_GenericIs + resolvedConstantsPath_Generic);
   // resolvedConstantsPath_Isotope is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cresolvedConstantsPath_IsotopeIs + resolvedConstantsPath_Isotope);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cresolvedConstantsPath_IsotopeIs + resolvedConstantsPath_Isotope);
   // resolvedConstantsPath_Knot is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cresolvedConstantsPath_KnotIs + resolvedConstantsPath_Knot);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cresolvedConstantsPath_KnotIs + resolvedConstantsPath_Knot);
   // resolvedConstantsPath_Language is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cresolvedConstantsPath_LanguageIs + resolvedConstantsPath_Language);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cresolvedConstantsPath_LanguageIs + resolvedConstantsPath_Language);
   // resolvedConstantsPath_Message is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cresolvedConstantsPath_MessageIs + resolvedConstantsPath_Message);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cresolvedConstantsPath_MessageIs + resolvedConstantsPath_Message);
   // resolvedConstantsPath_Numeric is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cresolvedConstantsPath_NumericIs + resolvedConstantsPath_Numeric);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cresolvedConstantsPath_NumericIs + resolvedConstantsPath_Numeric);
   // resolvedConstantsPath_Phonic is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cresolvedConstantsPath_PhonicIs + resolvedConstantsPath_Phonic);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cresolvedConstantsPath_PhonicIs + resolvedConstantsPath_Phonic);
   // resolvedConstantsPath_System is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cresolvedConstantsPath_SystemIs + resolvedConstantsPath_System);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cresolvedConstantsPath_SystemIs + resolvedConstantsPath_System);
   // resolvedConstantsPath_Unit is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cresolvedConstantsPath_UnitIs + resolvedConstantsPath_Unit);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cresolvedConstantsPath_UnitIs + resolvedConstantsPath_Unit);
   // resolvedConstantsPath_Word1 is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cresolvedConstantsPath_WordIs + resolvedConstantsPath_Word);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cresolvedConstantsPath_WordIs + resolvedConstantsPath_Word);
 
   allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsFilePaths][sys.cBasicConstantsValidation] = resolvedConstantsPath_Basic;
   allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsFilePaths][sys.cBusinessConstantsValidation] = resolvedConstantsPath_Business;
@@ -314,8 +314,8 @@ async function generateFrameworkConstantsValidationData() {
   allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsPrefix][sys.cUnitConstantsValidation] = gen.cunt + bas.cDot;
   allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsPrefix][sys.cWordConstantsValidation] = gen.cwrd + bas.cDot;
 
-  await loggers.consoleLog(namespacePrefix + functionName, msg.callSystemConstantsValidationDataIs + JSON.stringify(allSystemConstantsValidationData));
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  loggers.consoleLog(namespacePrefix + functionName, msg.callSystemConstantsValidationDataIs + JSON.stringify(allSystemConstantsValidationData));
+  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return allSystemConstantsValidationData;
 }
 
@@ -331,20 +331,20 @@ async function generateFrameworkConstantsValidationData() {
  */
 async function addConstantsValidationData(constantsValidationData, contextName) {
   let functionName = addConstantsValidationData.name;
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // constantsValidationData is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cconstantsValidationDataIs + JSON.stringify(constantsValidationData));
+  loggers.consoleLog(namespacePrefix + functionName, msg.cconstantsValidationDataIs + JSON.stringify(constantsValidationData));
   // contextName is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.ccontextNameIs + contextName);
+  loggers.consoleLog(namespacePrefix + functionName, msg.ccontextNameIs + contextName);
   let returnData = false;
   try {
     if (contextName.toUpperCase().includes(wrd.cPLUGIN) === true && contextName.includes(bas.cColon) === true) {
       let pluginNameArray = contextName.split(bas.cColon);
       // pluginNameArray is:
-      await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginNameArrayIs + JSON.stringify(pluginNameArray));
+      loggers.consoleLog(namespacePrefix + functionName, msg.cpluginNameArrayIs + JSON.stringify(pluginNameArray));
       let pluginName = pluginNameArray[1];
       // pluginName is:
-      await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginNameIs + pluginName);
+      loggers.consoleLog(namespacePrefix + functionName, msg.cpluginNameIs + pluginName);
       if (D[sys.cConstantsValidationData][wrd.cPlugins] === undefined) {
         D[sys.cConstantsValidationData][wrd.cPlugins] = {};
       }
@@ -364,8 +364,8 @@ async function addConstantsValidationData(constantsValidationData, contextName) 
     console.log(msg.cErrorAddConstantsValidationDataMessage01 + contextName);
     console.log(msg.cERROR_Colon + err);
   }
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -380,9 +380,9 @@ async function addConstantsValidationData(constantsValidationData, contextName) 
  */
 async function removePluginConstantsValidationData(pluginName) {
   let functionName = removePluginConstantsValidationData.name;
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // pluginName is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginNameIs + pluginName);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cpluginNameIs + pluginName);
   let returnData = false;
   let allPluginsConstantsValidationData = D[sys.cConstantsValidationData][wrd.cPlugins];
   if (allPluginsConstantsValidationData) {
@@ -399,8 +399,8 @@ async function removePluginConstantsValidationData(pluginName) {
     // ERROR: Unable to locate the plugins constants validatino data. Plugin:
     console.log(msg.cremovePluginConstantsValidationDataMessage02 + pluginName);
   }
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 

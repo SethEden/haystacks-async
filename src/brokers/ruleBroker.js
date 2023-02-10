@@ -43,7 +43,7 @@ const namespacePrefix = wrd.cframework + bas.cDot + wrd.cbrokers + bas.cDot + ba
 async function bootStrapBusinessRules() {
   // let functionName = bootStrapBusinessRules.name;
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
-  await rules.initRulesLibrary();
+  rules.initRulesLibrary();
   // console.log(`END ${namespacePrefix}${functionName} function`);
 }
 
@@ -126,7 +126,7 @@ async function processRules(inputs, rulesToExecute) {
   // console.log(`rulesToExecute is: ${JSON.stringify(rulesToExecute)}`);
   let returnData;
   let inputMetaData;
-  if (rulesToExecute && await ruleParsing.doAllRulesExist(rulesToExecute)) {
+  if (rulesToExecute && ruleParsing.doAllRulesExist(rulesToExecute)) {
     if (inputs) {
       returnData = inputs[0];
       inputMetaData = inputs[1];

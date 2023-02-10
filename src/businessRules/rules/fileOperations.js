@@ -60,27 +60,27 @@ xml2js.Parser({
  */
 async function getXmlData(inputData, inputMetaData) {
   let functionName = getXmlData.name;
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
+  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
+  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
   let returnData;
   let pathAndFilename = path.resolve(inputData);
-  let data = await fs.readFileSync(pathAndFilename, { encoding: gen.cUTF8 });
+  let data = fs.readFileSync(pathAndFilename, { encoding: gen.cUTF8 });
   let xml;
-  await xml2js.parseString(data,
+  xml2js.parseString(data,
   async function(err, result) {
     if (err) {
       // ERROR:
       returnData = console.log(sys.cERROR_Colon + err);
-      await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
-      await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+      loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+      loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
       return returnData;
     } // End-if (err)
     xml = result;
   });
   returnData = xml;
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -98,13 +98,13 @@ async function getXmlData(inputData, inputMetaData) {
  */
 async function getCsvData(inputData, inputMetaData) {
   let functionName = getCsvData.name;
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
+  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
+  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
   let returnData;
   let pathAndFilename = path.resolve(inputData);
-  let data = await fs.readFileSync(pathAndFilename, { encoding: gen.cUTF8 });
-  returnData = await papa.parse(data, {
+  let data = fs.readFileSync(pathAndFilename, { encoding: gen.cUTF8 });
+  returnData = papa.parse(data, {
     delimiter: ',',
     newline: '/n',
     header: true,
@@ -112,9 +112,9 @@ async function getCsvData(inputData, inputMetaData) {
     encoding: gen.cUTF8
   });
   // DONE loading data from:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cDoneLoadingDataFrom + pathAndFilename);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cDoneLoadingDataFrom + pathAndFilename);
+  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -138,7 +138,7 @@ async function getJsonData(inputData, inputMetaData) {
   // Make sure to resolve the path on the local system,
   // just in case there are issues with the OS that the code is running on.
   let pathAndFilename = path.resolve(inputData);
-  let rawData = await fs.readFileSync(pathAndFilename, { encoding: gen.cUTF8 });
+  let rawData = fs.readFileSync(pathAndFilename, { encoding: gen.cUTF8 });
   let returnData = JSON.parse(rawData);
   // console.log(`DONE loading data from: ${inputData}`);
   // console.log(msg.creturnDataIs + JSON.stringify(returnData));
@@ -157,21 +157,21 @@ async function getJsonData(inputData, inputMetaData) {
  */
 async function writeJsonData(inputData, inputMetaData) {
   let functionName = writeJsonData.name;
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
+  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
+  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
   let returnData = false;
   try {
-    await fs.writeFileSync(inputData, JSON.stringify(inputMetaData, null, 2));
+    fs.writeFileSync(inputData, JSON.stringify(inputMetaData, null, 2));
     returnData = true;
   } catch (err) {
     // ERROR:
     console.error(sys.cERROR_Colon + err);
   }
   // Data was written to the file;
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cDataWasWrittenToTheFile + inputData);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cDataWasWrittenToTheFile + inputData);
+  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -186,18 +186,18 @@ async function writeJsonData(inputData, inputMetaData) {
  */
 async function loadAsciiFileFromPath(inputData, inputMetaData) {
   let functionName = loadAsciiFileFromPath.name;
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
+  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
+  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
   let returnData = false;
   try {
-    returnData = await fs.readFileSync(inputData, gen.cUTF8);
+    returnData = fs.readFileSync(inputData, gen.cUTF8);
   } catch (err) {
     // ERROR: Failure to read from file: 
     console.error(msg.cErrorLoadAsciiFileFromPathMessage01 + inputData);
   }
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -250,16 +250,16 @@ async function readDirectoryContents(inputData, inputMetaData) {
  */
 async function scanDirectoryContents(inputData, inputMetaData) {
   let functionName = scanDirectoryContents.name;
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // Path that should be scanned is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cPathThatShouldBeScannedIs + inputData);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cPathThatShouldBeScannedIs + inputData);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let enableLimit = inputMetaData[0];
   let filesLimit = inputMetaData[1];
   // enableLimit is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cenableLimitIs + enableLimit);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cenableLimitIs + enableLimit);
   // filesLimit is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cfilesLimitIs + filesLimit);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cfilesLimitIs + filesLimit);
   let filesFound = [];
   let directory = path.resolve(inputData);
   enableFilesListLimit = enableLimit;
@@ -272,8 +272,8 @@ async function scanDirectoryContents(inputData, inputMetaData) {
   filesListLimit = -1;
   hitFileLimit = false;
   // files found are:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cfilesFoundAre + JSON.stringify(filesFound));
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cfilesFoundAre + JSON.stringify(filesFound));
+  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return filesFound;
 }
 
@@ -288,17 +288,17 @@ async function scanDirectoryContents(inputData, inputMetaData) {
  */
 async function getDirectoryList(inputData, inputMetaData) {
   let functionName = getDirectoryList.name;
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
+  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
+  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
   let returnData = false;
   if (inputData) {
-    returnData = await fs.readdirSync(inputData, { withFileTypes: true })
+    returnData = fs.readdirSync(inputData, { withFileTypes: true })
       .filter((item) => item.isDirectory())
       .map((item) => item.name);
   } // End-if (inputData)
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -400,13 +400,13 @@ async function readDirectorySynchronously(inputData, inputMetaData) {
  */
 async function copyAllFilesAndFoldersFromFolderToFolder(inputData, inputMetaData) {
   let functionName = copyAllFilesAndFoldersFromFolderToFolder.name;
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
+  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
+  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
   let returnData = false;
-  returnData = await copyFolderRecursiveSync(inputData, inputMetaData);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  returnData = copyFolderRecursiveSync(inputData, inputMetaData);
+  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -422,9 +422,9 @@ async function copyAllFilesAndFoldersFromFolderToFolder(inputData, inputMetaData
  */
 async function buildReleasePackage(inputData, inputMetaData) {
   let functionName = buildReleasePackage.name;
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
+  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
+  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
   let returnData = false;
   let sourceFolder = '';
   let destinationFolder = '';
@@ -438,45 +438,45 @@ async function buildReleasePackage(inputData, inputMetaData) {
   let originalSource;
   let zip = new admZip();
   // current version is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.ccurrentVersionIs + currentVersion);
+  loggers.consoleLog(namespacePrefix + functionName, msg.ccurrentVersionIs + currentVersion);
   originalSource = bas.cDot + inputData;
   sourceFolder = path.resolve(rootPath + inputData);
   destinationFolder = path.resolve(rootPath + inputMetaData);
   releaseFiles = await readDirectoryContents(sourceFolder);
   releasedArchiveFiles = await readDirectoryContents(destinationFolder);
   // released archive files list is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creleasedArchiveFilesListIs + JSON.stringify(releasedArchiveFiles));
+  loggers.consoleLog(namespacePrefix + functionName, msg.creleasedArchiveFilesListIs + JSON.stringify(releasedArchiveFiles));
   // Check if the current version number has already been released as a zip file in the release folder.
   // If it has not been released, then we can build the zip file with the current release number and date-time stamp.
   for (let i = 0; i <= releasedArchiveFiles.length - 1; i++) {
     // file is:
-    await loggers.consoleLog(namespacePrefix + functionName, msg.cfileIs + releasedArchiveFiles[i]);
+    loggers.consoleLog(namespacePrefix + functionName, msg.cfileIs + releasedArchiveFiles[i]);
     let pathAndFileName = releasedArchiveFiles[i];
     let fileName = await ruleParsing.processRulesInternal([pathAndFileName, ''], [biz.cgetFileNameFromPath]);
     fileName = await ruleParsing.processRulesInternal([fileName, ''], [biz.cremoveFileExtensionFromFileName]);
     // fileName is:
-    await loggers.consoleLog(namespacePrefix + functionName, msg.cfileNameIs + fileName);
+    loggers.consoleLog(namespacePrefix + functionName, msg.cfileNameIs + fileName);
     if (fileName.includes(currentVersion) === true) {
       currentVersionReleased = true;
     }
   } // End-for (let i = 0; i <= releasedArchiveFiles.length - 1; i++)
   if (currentVersionReleased === false) {
     // release files list is:
-    await loggers.consoleLog(namespacePrefix + functionName, msg.creleaseFilesListIs + JSON.stringify(releaseFiles));
+    loggers.consoleLog(namespacePrefix + functionName, msg.creleaseFilesListIs + JSON.stringify(releaseFiles));
     releaseDateTimeStamp = await ruleParsing.processRulesInternal([await configurator.getConfigurationSetting(wrd.csystem, cfg.cdateTimeStamp), ''], [biz.cgetNowMoment]);
     // release date-time stamp is:
-    await loggers.consoleLog(namespacePrefix + functionName, msg.creleaseDateTimeStampIs + releaseDateTimeStamp);
+    loggers.consoleLog(namespacePrefix + functionName, msg.creleaseDateTimeStampIs + releaseDateTimeStamp);
     let releaseFileName = releaseDateTimeStamp + bas.cUnderscore + currentVersion + bas.cUnderscore + applicationName;
     // release fileName is:
-    await loggers.consoleLog(namespacePrefix + functionName, msg.creleaseFileNameIs + releaseFileName);
+    loggers.consoleLog(namespacePrefix + functionName, msg.creleaseFileNameIs + releaseFileName);
     let fullReleasePath = path.resolve(destinationFolder + bas.cForwardSlash + releaseFileName + gen.cDotzip);
     try {
-      await zip.addLocalFolder(sourceFolder, originalSource);
-      await zip.writeZip(fullReleasePath);
+      zip.addLocalFolder(sourceFolder, originalSource);
+      zip.writeZip(fullReleasePath);
       // Done writing the zip file:
-      await loggers.consoleLog(namespacePrefix + functionName, msg.cDoneWritingTheZipFile + fullReleasePath);
+      loggers.consoleLog(namespacePrefix + functionName, msg.cDoneWritingTheZipFile + fullReleasePath);
       // Set the return packageSuccess flag to True
-      await loggers.consoleLog(namespacePrefix + functionName, msg.cSetTheReturnPackageSuccessFlagToTrue);
+      loggers.consoleLog(namespacePrefix + functionName, msg.cSetTheReturnPackageSuccessFlagToTrue);
       returnData = true;
     } catch (err) {
       // ERROR: Zip package release failed:
@@ -487,10 +487,10 @@ async function buildReleasePackage(inputData, inputMetaData) {
     }
   } else {
     // current version already released
-    await loggers.consoleLog(namespacePrefix + functionName, msg.ccurrentVersionAlreadyReleased);
+    loggers.consoleLog(namespacePrefix + functionName, msg.ccurrentVersionAlreadyReleased);
   }
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -507,16 +507,16 @@ async function buildReleasePackage(inputData, inputMetaData) {
  */
 async function createZipArchive(inputData, inputMetaData) {
   let functionName = createZipArchive.name;
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
+  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
+  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
   let returnData = false;
   let zip = new admZip();
   try {
-    await zip.addLocalFolder(inputData);
-    await zip.writeZip(inputMetaData);
+    zip.addLocalFolder(inputData);
+    zip.writeZip(inputMetaData);
     // Done writing the zip file:
-    await loggers.consoleLog(namespacePrefix + functionName, msg.cDoneWritingTheZipFile + inputMetaData);
+    loggers.consoleLog(namespacePrefix + functionName, msg.cDoneWritingTheZipFile + inputMetaData);
     returnData = true;
   } catch (err) {
     // ERROR: Zip package release failed
@@ -525,8 +525,8 @@ async function createZipArchive(inputData, inputMetaData) {
     // eslint-disable-next-line no-undef
     process.exit(1);
   }
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -542,13 +542,13 @@ async function createZipArchive(inputData, inputMetaData) {
 async function cleanRootPath(inputData, inputMetaData) {
   let functionName = cleanRootPath.name
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = '';
   returnData = await configurator.getConfigurationSetting(wrd.csystem, sys.cApplicationRootPath);
   // RootPath before processing is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cRootPathBeforeProcessingIs + returnData);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cRootPathBeforeProcessingIs + returnData);
   returnData = await ruleParsing.processRulesInternal([returnData, 3], [biz.cremoveXnumberOfFoldersFromEndOfPath]);
   // console.log(msg.creturnDataIs + returnData);
   // console.log(`END ${namespacePrefix}${functionName} function`);
@@ -578,9 +578,9 @@ async function cleanRootPath(inputData, inputMetaData) {
  */
 async function copyFileSync(inputData, inputMetaData) {
   let functionName = copyFileSync.name;
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = false;
   let source = inputData[0];
   let target = inputData[1];
@@ -590,8 +590,8 @@ async function copyFileSync(inputData, inputMetaData) {
   let successfulCopy = false;
 
   // If target is a directory a new file with the same name will be created.
-  if (await fs.existsSync(target)) {
-    if (await fs.lstatSync(target).isDirectory()) {
+  if (fs.existsSync(target)) {
+    if (fs.lstatSync(target).isDirectory()) {
       targetFile = path.join(target, path.basename(source));
     }
   } // End-if (fs.existsSync(target))
@@ -617,7 +617,7 @@ async function copyFileSync(inputData, inputMetaData) {
     // We need a logical converse operation:
     // https://en.wikipedia.org/wiki/Converse_(logic)
     if (foundInclusion || !(foundInclusion || foundExclusion)) {
-      await fs.writeFileSync(targetFile, await fs.readFileSync(source));
+      fs.writeFileSync(targetFile, fs.readFileSync(source));
       successfulCopy = true;
     } else {
       // console.log('Detected an exclusion condition.');
@@ -629,8 +629,8 @@ async function copyFileSync(inputData, inputMetaData) {
     successfulCopy = false;
   }
   returnData = successfulCopy;
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -656,9 +656,9 @@ async function copyFileSync(inputData, inputMetaData) {
  */
 async function copyFolderRecursiveSync(inputData, inputMetaData) {
   let functionName = copyFolderRecursiveSync.name;
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = false;
   let files = [];
   let source = inputData[0];
@@ -676,10 +676,10 @@ async function copyFolderRecursiveSync(inputData, inputMetaData) {
     targetFolder = path.join(target, pathLeafNode);
   }
   targetFolder = path.resolve(targetFolder);
-  if (await fs.existsSync(targetFolder) !== true) {
+  if (fs.existsSync(targetFolder) !== true) {
     try {
       // console.log('making the path');
-      await fs.mkdirSync(targetFolder);
+      fs.mkdirSync(targetFolder);
       // NOTE: Just because we complete the above code doesn't mean the entire copy process was a success.
       // But at least we haven't errored out, so it wasn't a failure YET.
     } catch (err) {
@@ -712,14 +712,14 @@ async function copyFolderRecursiveSync(inputData, inputMetaData) {
 
   // Copy
   try {
-    if (await fs.lstatSync(source).isDirectory()) {
-      files = await fs.readdirSync(source);
-      await files.forEach(async function(file) {
+    if (fs.lstatSync(source).isDirectory()) {
+      files = fs.readdirSync(source);
+      files.forEach(async function(file) {
         let currentSource = path.join(source, file);
-        if (await fs.lstatSync(currentSource).isDirectory()) {
-          successfulCopy = await copyFolderRecursiveSync([currentSource, targetFolder], inputMetaData);
+        if (fs.lstatSync(currentSource).isDirectory()) {
+          successfulCopy = copyFolderRecursiveSync([currentSource, targetFolder], inputMetaData);
         } else {
-          successfulCopy = await copyFileSync([currentSource, targetFolder], inputMetaData);
+          successfulCopy = copyFileSync([currentSource, targetFolder], inputMetaData);
         }
       });
     } // End-if (fs.lstatSync(source).isDirectory())
@@ -731,8 +731,8 @@ async function copyFolderRecursiveSync(inputData, inputMetaData) {
     successfulCopy = false;
   }
   returnData = successfulCopy;
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 

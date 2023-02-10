@@ -240,54 +240,54 @@ async function colorizeMessage(message, className, callerFunctionName, debugFile
       messageContentSuffix = messageContent.split(bas.cSpace)[2];
     } // End-if (messageContent.includes(bas.cDoublePercent) === true)
 
-    className = await setUnderlineFontStyleOnMessageComponentAccordingToSetting(className, aggregateModuleFontStyleUnderline);
-    className = await setBoldFontStyleOnMessageComponentAccordingToSetting(className, aggregateModuleFontStyleBold);
+    className = setUnderlineFontStyleOnMessageComponentAccordingToSetting(className, aggregateModuleFontStyleUnderline);
+    className = setBoldFontStyleOnMessageComponentAccordingToSetting(className, aggregateModuleFontStyleBold);
     // console.log('Done processing underline & bold settings: className is: ' + className);
-    callerFunctionName = await setUnderlineFontStyleOnMessageComponentAccordingToSetting(callerFunctionName, aggregateFunctionFontStyleUnderline);
-    callerFunctionName = await setBoldFontStyleOnMessageComponentAccordingToSetting(callerFunctionName, aggregateFunctionFontStyleBold);
+    callerFunctionName = setUnderlineFontStyleOnMessageComponentAccordingToSetting(callerFunctionName, aggregateFunctionFontStyleUnderline);
+    callerFunctionName = setBoldFontStyleOnMessageComponentAccordingToSetting(callerFunctionName, aggregateFunctionFontStyleBold);
     // console.log('Done processing underline & bold settings: callerFunctionName is: ' + callerFunctionName);
 
     if (messageContent.includes(bas.cDoublePercent) === true) {
-      messageContent = await setUnderlineFontStyleOnMessageComponentAccordingToSetting(messageContent, aggregateMessageFontStyleUnderline);
-      messageContentPrefix = await setBoldFontStyleOnMessageComponentAccordingToSetting(messageContentPrefix, aggregateMessageFontStyleBold);
+      messageContent = setUnderlineFontStyleOnMessageComponentAccordingToSetting(messageContent, aggregateMessageFontStyleUnderline);
+      messageContentPrefix = setBoldFontStyleOnMessageComponentAccordingToSetting(messageContentPrefix, aggregateMessageFontStyleBold);
 
-      messageContentSuffix = await setUnderlineFontStyleOnMessageComponentAccordingToSetting(messageContentSuffix, aggregateMessageFontStyleUnderline);
-      messageContentSuffix = await setBoldFontStyleOnMessageComponentAccordingToSetting(messageContentSuffix, aggregateMessageFontStyleBold);
+      messageContentSuffix = setUnderlineFontStyleOnMessageComponentAccordingToSetting(messageContentSuffix, aggregateMessageFontStyleUnderline);
+      messageContentSuffix = setBoldFontStyleOnMessageComponentAccordingToSetting(messageContentSuffix, aggregateMessageFontStyleBold);
 
-      messageContentPrefix = await setFontForegroundColorOnMessageComponentAccordingToSetting(messageContentPrefix, aggregateMessageFontColorSetting);
-      messageContentSuffix = await setFontForegroundColorOnMessageComponentAccordingToSetting(messageContentSuffix, aggregateMessageFontColorSetting);
+      messageContentPrefix = setFontForegroundColorOnMessageComponentAccordingToSetting(messageContentPrefix, aggregateMessageFontColorSetting);
+      messageContentSuffix = setFontForegroundColorOnMessageComponentAccordingToSetting(messageContentSuffix, aggregateMessageFontColorSetting);
 
-      messageContentPrefix = await setFontBackgroundColorOnMessageComponentAccordingToSetting(messageContentPrefix, aggregateMessageFontBackgroundColorSetting);
-      messageContentSuffix = await setFontBackgroundColorOnMessageComponentAccordingToSetting(messageContentSuffix, aggregateMessageFontBackgroundColorSetting);
+      messageContentPrefix = setFontBackgroundColorOnMessageComponentAccordingToSetting(messageContentPrefix, aggregateMessageFontBackgroundColorSetting);
+      messageContentSuffix = setFontBackgroundColorOnMessageComponentAccordingToSetting(messageContentSuffix, aggregateMessageFontBackgroundColorSetting);
     } else {
-      messageContent = await setUnderlineFontStyleOnMessageComponentAccordingToSetting(messageContent, aggregateMessageFontStyleUnderline);
-      messageContent = await setBoldFontStyleOnMessageComponentAccordingToSetting(messageContent, aggregateMessageFontStyleBold);
+      messageContent = setUnderlineFontStyleOnMessageComponentAccordingToSetting(messageContent, aggregateMessageFontStyleUnderline);
+      messageContent = setBoldFontStyleOnMessageComponentAccordingToSetting(messageContent, aggregateMessageFontStyleBold);
       // console.log('Done processing underline & bold settings: messageContent is: ' + messageContent);
 
       if (processingMessageData === true) {
-        messageData = await setUnderlineFontStyleOnMessageComponentAccordingToSetting(messageData, aggregateDataFontStyleUnderline);
-        messageData = await setBoldFontStyleOnMessageComponentAccordingToSetting(messageData, aggregateDataFontStyleBold);
+        messageData = setUnderlineFontStyleOnMessageComponentAccordingToSetting(messageData, aggregateDataFontStyleUnderline);
+        messageData = setBoldFontStyleOnMessageComponentAccordingToSetting(messageData, aggregateDataFontStyleBold);
       } // End-if (processingMessageData === true)
 
-      messageContent = await setFontForegroundColorOnMessageComponentAccordingToSetting(messageContent, aggregateMessageFontColorSetting);
+      messageContent = setFontForegroundColorOnMessageComponentAccordingToSetting(messageContent, aggregateMessageFontColorSetting);
       // console.log('Done processing foreground color settings: messageContent is: ' + messageContent);
 
-      messageContent = await setFontBackgroundColorOnMessageComponentAccordingToSetting(messageContent, aggregateMessageFontBackgroundColorSetting);
+      messageContent = setFontBackgroundColorOnMessageComponentAccordingToSetting(messageContent, aggregateMessageFontBackgroundColorSetting);
       // console.log('Done processing background color settings: messageContent is: ' + messageContent);
     }
-    className = await setFontForegroundColorOnMessageComponentAccordingToSetting(className, aggregateModuleFontColorSetting);
+    className = setFontForegroundColorOnMessageComponentAccordingToSetting(className, aggregateModuleFontColorSetting);
     // console.log('Done processing foreground color settings: className is: ' + className);
-    callerFunctionName = await setFontForegroundColorOnMessageComponentAccordingToSetting(callerFunctionName, aggregateFunctionFontColorSetting);
+    callerFunctionName = setFontForegroundColorOnMessageComponentAccordingToSetting(callerFunctionName, aggregateFunctionFontColorSetting);
     // console.log('Done processing foreground color settings: callerFunctionName is: ' + callerFunctionName);
 
-    className = await setFontBackgroundColorOnMessageComponentAccordingToSetting(className, aggregateModuleFontBackgroundColorSetting);
+    className = setFontBackgroundColorOnMessageComponentAccordingToSetting(className, aggregateModuleFontBackgroundColorSetting);
     // console.log('Done processing background color settings: className is: ' + className);
-    callerFunctionName = await setFontBackgroundColorOnMessageComponentAccordingToSetting(callerFunctionName, aggregateFunctionFontBackgroundColorSetting);
+    callerFunctionName = setFontBackgroundColorOnMessageComponentAccordingToSetting(callerFunctionName, aggregateFunctionFontBackgroundColorSetting);
     // console.log('Done processing background color settings: callerFunctionName is: ' + callerFunctionName);
 
     if (processingMessageData === true) {
-      messageData = await setFontForegroundColorOnMessageComponentAccordingToSetting(messageData, aggregateDataFontColorSetting);
-      messageData = await setFontBackgroundColorOnMessageComponentAccordingToSetting(messageData, aggregateDataFontBackgroundColorSetting);
+      messageData = setFontForegroundColorOnMessageComponentAccordingToSetting(messageData, aggregateDataFontColorSetting);
+      messageData = setFontBackgroundColorOnMessageComponentAccordingToSetting(messageData, aggregateDataFontBackgroundColorSetting);
     } // End-if (processingMessageData === true)
 
     if (messageContent.includes(bas.cDoublePercent) === true) {
@@ -298,18 +298,18 @@ async function colorizeMessage(message, className, callerFunctionName, debugFile
       colorizedMessage = messageContent;
     }
   } else if (flatMessageLog === true) {
-    messageContent = await setUnderlineFontStyleOnMessageComponentAccordingToSetting(messageContent, aggregateMessageFontStyleUnderline);
-    messageContent = await setBoldFontStyleOnMessageComponentAccordingToSetting(messageContent, aggregateMessageFontStyleBold);
+    messageContent = setUnderlineFontStyleOnMessageComponentAccordingToSetting(messageContent, aggregateMessageFontStyleUnderline);
+    messageContent = setBoldFontStyleOnMessageComponentAccordingToSetting(messageContent, aggregateMessageFontStyleBold);
     if (processingMessageData === true) {
       // console.log('Attempting to format the message data component of the message: ' + messageData);
-      messageData = await setUnderlineFontStyleOnMessageComponentAccordingToSetting(messageData, aggregateDataFontStyleUnderline);
-      messageData = await setBoldFontStyleOnMessageComponentAccordingToSetting(messageData, aggregateDataFontStyleBold);
-      messageData = await setFontForegroundColorOnMessageComponentAccordingToSetting(messageData, aggregateDataFontColorSetting);
-      messageData = await setFontBackgroundColorOnMessageComponentAccordingToSetting(messageData, aggregateDataFontBackgroundColorSetting);
+      messageData = setUnderlineFontStyleOnMessageComponentAccordingToSetting(messageData, aggregateDataFontStyleUnderline);
+      messageData = setBoldFontStyleOnMessageComponentAccordingToSetting(messageData, aggregateDataFontStyleBold);
+      messageData = setFontForegroundColorOnMessageComponentAccordingToSetting(messageData, aggregateDataFontColorSetting);
+      messageData = setFontBackgroundColorOnMessageComponentAccordingToSetting(messageData, aggregateDataFontBackgroundColorSetting);
       // console.log('Done formatting all of the messageData: ' + messageData);
     }
-    messageContent = await setFontForegroundColorOnMessageComponentAccordingToSetting(messageContent, aggregateMessageFontColorSetting);
-    messageContent = await setFontBackgroundColorOnMessageComponentAccordingToSetting(callerFunctionName, aggregateMessageFontBackgroundColorSetting);
+    messageContent = setFontForegroundColorOnMessageComponentAccordingToSetting(messageContent, aggregateMessageFontColorSetting);
+    messageContent = setFontBackgroundColorOnMessageComponentAccordingToSetting(callerFunctionName, aggregateMessageFontBackgroundColorSetting);
     colorizedMessage = messageContent + bas.cColon + messageData;
   } else { // Just return the message as we got it and make sure it gets out!
     colorizedMessage = message; // Don't apply any colorizing to the default. We are not likely to hit this case anyway!!

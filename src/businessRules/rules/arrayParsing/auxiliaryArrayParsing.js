@@ -99,34 +99,34 @@ async function parseColorRangeInputs(inputData, inputMetaData) {
   */
 async function doesArrayContainValue(inputData, inputMetaData) {
   let functionName = doesArrayContainValue.name;
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
+  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
   // Not sure how this will output, would be good to also put some type checing on this input variable.
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = false;
   if (inputData) {
     let array = inputData[0];
     let value = inputData[1];
-    await loggers.consoleLog(namespacePrefix + functionName, msg.carrayIs + array.toString());
-    await loggers.consoleLog(namespacePrefix + functionName, msg.cvalueIs + value.toString());
+    loggers.consoleLog(namespacePrefix + functionName, msg.carrayIs + array.toString());
+    loggers.consoleLog(namespacePrefix + functionName, msg.cvalueIs + value.toString());
     if (Array.isArray(array) === false) {
       // array input object is not an array.
-      await loggers.consoleLog(namespacePrefix + functionName, msg.carrayInputObjectIsNotAnArray);
+      loggers.consoleLog(namespacePrefix + functionName, msg.carrayInputObjectIsNotAnArray);
     } else {
       // eslint-disable-next-line no-extra-boolean-cast
       // if (!!array.find(await (async (i) => {return (await inputMetaData(i, value));}))) {
       if (await array.find(x => x === value)) {
         // The value was found in the array.
-        await loggers.consoleLog(namespacePrefix + functionName, msg.cTheValueWasFoundInTheArray);
+        loggers.consoleLog(namespacePrefix + functionName, msg.cTheValueWasFoundInTheArray);
         returnData = true;
       } else {
         // The value was NOT found in the array.
-        await loggers.consoleLog(namespacePrefix + functionName, msg.cTheValueWasNotFoundInTheArray);
+        loggers.consoleLog(namespacePrefix + functionName, msg.cTheValueWasNotFoundInTheArray);
       }
     }
   } // End-if (inputData && inputMetaData)
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 

@@ -36,9 +36,9 @@ const namespacePrefix = wrd.cframework + bas.cDot + sys.cbusinessRules + bas.cDo
  */
 async function doesArrayContainFilename(inputData, inputMetaData) {
   let functionName = doesArrayContainFilename.name;
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
+  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = false;
   // NOTE: This call doesn't actually work, it may have worked at one time, but it doesn't work now.
   // And I'm not going to spend the time trying to figure out why,
@@ -54,8 +54,8 @@ async function doesArrayContainFilename(inputData, inputMetaData) {
   //     break;
   //   }
   // } // End-for (let i = 0; i < inputData.Length; i++)
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -72,9 +72,9 @@ async function doesArrayContainFilename(inputData, inputMetaData) {
  */
 async function getFileAndPathListForPath(inputData, inputMetaData) {
   let functionName = getFileAndPathListForPath.name;
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
+  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = '';
   let enableFilesListLimit, filesListLimit;
   if (inputData) {
@@ -86,11 +86,11 @@ async function getFileAndPathListForPath(inputData, inputMetaData) {
       filesListLimit = await configurator.getConfigurationSetting(wrd.csystem, cfg.cFilesListLimit);
     }
     // filesListLimit is:
-    await loggers.consoleLog(namespacePrefix + functionName, msg.cfilesListLimitIs + filesListLimit);
+    loggers.consoleLog(namespacePrefix + functionName, msg.cfilesListLimitIs + filesListLimit);
     returnData = await ruleParsing.processRulesInternal([inputData, [enableFilesListLimit, filesListLimit]], [biz.cscanDirectoryContents]);
   } // End-if (inputData)
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 

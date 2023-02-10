@@ -38,9 +38,9 @@ const namespacePrefix = wrd.cframework + bas.cDot + sys.cbusinessRules + bas.cDo
  */
 async function generateRandomMixedCaseTextByLength(inputData, inputMetaData) {
   let functionName = generateRandomMixedCaseTextByLength.name;
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
+  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
+  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
   let returnData = '';
   if (inputData) {
     let numberOfCharactersToGenerate = parseInt(inputData);
@@ -48,8 +48,8 @@ async function generateRandomMixedCaseTextByLength(inputData, inputMetaData) {
       returnData = returnData.concat(await ruleParsing.processRulesInternal([inputData, inputMetaData], [biz.crandomlyGenerateMixedCaseAlphabeticCharacter]));
     } // End-for (let counter = 1; counter <= numberOfCharactersToGenerate; counter++)
   } // End-if (inputData)
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -67,9 +67,9 @@ async function generateRandomMixedCaseTextByLength(inputData, inputMetaData) {
  */
 async function generateRandomUpperCaseTextByLength(inputData, inputMetaData) {
   let functionName = generateRandomUpperCaseTextByLength.name;
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
+  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
+  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
   let returnData = '';
   if (inputData) {
     let numberOfCharactersToGenerate = parseInt(inputData);
@@ -77,8 +77,8 @@ async function generateRandomUpperCaseTextByLength(inputData, inputMetaData) {
       returnData = returnData.concat(await ruleParsing.processRulesInternal([inputData, inputMetaData], [biz.crandomlyGenerateUpperCaseLetter]));
     } // End-for (let counter = 1; counter <= numberOfCharactersToGenerate; counter++)
   } // End-if (inputData)
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -96,9 +96,9 @@ async function generateRandomUpperCaseTextByLength(inputData, inputMetaData) {
  */
 async function generateRandomLowerCaseTextByLength(inputData, inputMetaData) {
   let functionName = generateRandomLowerCaseTextByLength.name;
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
+  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
+  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
   let returnData = '';
   if (inputData) {
     let numberOfCharactersToGenerate = parseInt(inputData);
@@ -106,8 +106,8 @@ async function generateRandomLowerCaseTextByLength(inputData, inputMetaData) {
       returnData = returnData.concat(await ruleParsing.processRulesInternal([inputData, inputMetaData], [biz.crandomlyGenerateLowerCaseLetter]));
     } // End-for (let counter = 1; counter <= numberOfCharactersToGenerate; counter++)
   } // End-if (inputData)
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -125,9 +125,9 @@ async function generateRandomLowerCaseTextByLength(inputData, inputMetaData) {
  */
 async function generateRandomMixedCaseTextWithSpecialCharactersByLength(inputData, inputMetaData) {
   let functionName = generateRandomMixedCaseTextWithSpecialCharactersByLength.name;
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
+  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
+  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
   let returnData = '';
   if (inputData) {
     let numberOfCharactersToGenerate = parseInt(inputData);
@@ -135,8 +135,8 @@ async function generateRandomMixedCaseTextWithSpecialCharactersByLength(inputDat
       returnData = returnData.concat(await ruleParsing.processRulesInternal([inputMetaData, ''], [biz.crandomlyGenerateMixedCaseLetterOrSpecialCharacter]));
     } // End-for (let counter = 1; counter <= numberOfCharactersToGenerate; counter++)
   } // End-if (inputData)
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -152,9 +152,9 @@ async function generateRandomMixedCaseTextWithSpecialCharactersByLength(inputDat
  */
 async function generateRandomUpperCaseTextWithSpecialCharactersByLength(inputData, inputMetaData) {
   let functionName = generateRandomUpperCaseTextWithSpecialCharactersByLength.name;
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
+  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
+  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
   let returnData = '';
   if (inputData) {
     let numberOfCharactersToGenerate = parseInt(inputData);
@@ -162,8 +162,8 @@ async function generateRandomUpperCaseTextWithSpecialCharactersByLength(inputDat
       returnData = returnData.concat(await ruleParsing.processRulesInternal([inputMetaData, ''], [biz.crandomlyGenerateUpperCaseLetterOrSpecialCharacter]));
     } // End-for (let counter = 1; counter <= numberOfCharactersToGenerate; counter++)
   } // End-if (inputData)
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -182,9 +182,9 @@ async function generateRandomUpperCaseTextWithSpecialCharactersByLength(inputDat
  */
 async function generateRandomLowerCaseTextWithSpecialCharactersByLength(inputData, inputMetaData) {
   let functionName = generateRandomLowerCaseTextWithSpecialCharactersByLength.name;
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
+  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
+  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
   let returnData = '';
   if (inputData) {
     let numberOfCharactersToGenerate = parseInt(inputData);
@@ -192,8 +192,8 @@ async function generateRandomLowerCaseTextWithSpecialCharactersByLength(inputDat
       returnData = returnData.concat(await ruleParsing.processRulesInternal([inputMetaData, ''], [biz.crandomlyGenerateLowerCaseLetterOrSpecialCharacter]));
     } // End-for (let counter = 1; counter <= numberOfCharactersToGenerate; counter++)
   } // End-if (inputData)
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -211,9 +211,9 @@ async function generateRandomLowerCaseTextWithSpecialCharactersByLength(inputDat
  */
 async function generateRandomMixedCaseAlphaNumericCodeByLength(inputData, inputMetaData) {
   let functionName = generateRandomMixedCaseAlphaNumericCodeByLength.name;
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
+  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
+  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
   let returnData = '';
   if (inputData) {
     let numberOfCharactersToGenerate = parseInt(inputData);
@@ -221,8 +221,8 @@ async function generateRandomMixedCaseAlphaNumericCodeByLength(inputData, inputM
       returnData = returnData.concat(await ruleParsing.processRulesInternal(['', ''], [biz.crandomlyGenerateMixedCaseAlphaNumericCharacter]));
     } // End-for (let counter = 1; counter <= numberOfCharactersToGenerate; counter++)
   } // End-if (inputData)
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -240,9 +240,9 @@ async function generateRandomMixedCaseAlphaNumericCodeByLength(inputData, inputM
  */
 async function generateRandomUpperCaseAlphaNumericCodeByLength(inputData, inputMetaData) {
   let functionName = generateRandomUpperCaseAlphaNumericCodeByLength.name;
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
+  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
+  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
   let returnData = '';
   if (inputData) {
     let numberOfCharactersToGenerate = parseInt(inputData);
@@ -250,8 +250,8 @@ async function generateRandomUpperCaseAlphaNumericCodeByLength(inputData, inputM
       returnData = returnData.concat(await ruleParsing.processRulesInternal(['', ''], [biz.crandomlyGenerateUpperCaseAlphaNumericCharacter]));
     } // End-for (let counter = 1; counter <= numberOfCharactersToGenerate; counter++)
   } // End-if (inputData)
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -269,9 +269,9 @@ async function generateRandomUpperCaseAlphaNumericCodeByLength(inputData, inputM
  */
 async function generateRandomLowerCaseAlphaNumericCodeByLength(inputData, inputMetaData) {
   let functionName = generateRandomLowerCaseAlphaNumericCodeByLength.name;
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
+  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
+  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
   let returnData = '';
   if (inputData) {
     let numberOfCharactersToGenerate = parseInt(inputData);
@@ -279,8 +279,8 @@ async function generateRandomLowerCaseAlphaNumericCodeByLength(inputData, inputM
       returnData = returnData.concat(await ruleParsing.processRulesInternal(['', ''], [biz.crandomlyGenerateLowerCaseAlphaNumericCharacter]));
     } // End-for (let counter = 1; counter <= numberOfCharactersToGenerate; counter++)
   } // End-if (inputData)
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -296,9 +296,9 @@ async function generateRandomLowerCaseAlphaNumericCodeByLength(inputData, inputM
  */
 async function generateRandomNumericCodeByLength(inputData, inputMetaData) {
   let functionName = generateRandomNumericCodeByLength.name;
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
+  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
+  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
   let returnData = '';
   if (inputData) {
     let numberOfCharactersToGenerate = parseInt(inputData);
@@ -306,8 +306,8 @@ async function generateRandomNumericCodeByLength(inputData, inputMetaData) {
       returnData = returnData.concat(await ruleParsing.processRulesInternal(['', ''], [biz.crandomlyGenerateNumericCharacter]));
     } // End-for (let counter = 1; counter <= numberOfCharactersToGenerate; counter++)
   } // End-if (inputData)
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -326,9 +326,9 @@ async function generateRandomNumericCodeByLength(inputData, inputMetaData) {
  */
 async function generateRandomMixedCaseAlphaNumericCodeWithSpecialCharactersByLength(inputData, inputMetaData) {
   let functionName = generateRandomMixedCaseAlphaNumericCodeWithSpecialCharactersByLength.name;
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
+  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
+  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
   let returnData = '';
   if (inputData) {
     let numberOfCharactersToGenerate = parseInt(inputData);
@@ -336,8 +336,8 @@ async function generateRandomMixedCaseAlphaNumericCodeWithSpecialCharactersByLen
       returnData = returnData.concat(await ruleParsing.processRulesInternal([inputMetaData, ''], [biz.crandomlyGenerateEitherMixedCaseLetterOrNumberOrSpecialCharacter]));
     } // End-for (let counter = 1; counter <= numberOfCharactersToGenerate; counter++)
   } // End-if (inputData)
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -356,9 +356,9 @@ async function generateRandomMixedCaseAlphaNumericCodeWithSpecialCharactersByLen
  */
 async function generateRandomUpperCaseAlphaNumericCodeWithSpecialCharactersByLength(inputData, inputMetaData) {
   let functionName = generateRandomUpperCaseAlphaNumericCodeWithSpecialCharactersByLength.name;
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
+  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
+  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
   let returnData = '';
   if (inputData) {
     let numberOfCharactersToGenerate = parseInt(inputData);
@@ -366,8 +366,8 @@ async function generateRandomUpperCaseAlphaNumericCodeWithSpecialCharactersByLen
       returnData = returnData.concat(await ruleParsing.processRulesInternal([inputMetaData, ''], [biz.crandomlyGenerateEitherUpperCaseLetterOrNumberOrSpecialCharacter]));
     } // End-for (let counter = 1; counter <= numberOfCharactersToGenerate; counter++)
   } // End-if (inputData)
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -386,9 +386,9 @@ async function generateRandomUpperCaseAlphaNumericCodeWithSpecialCharactersByLen
  */
 async function generateRandomLowerCaseAlphaNumericCodeWithSpecialCharactersByLength(inputData, inputMetaData) {
   let functionName = generateRandomLowerCaseAlphaNumericCodeWithSpecialCharactersByLength.name;
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
+  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
+  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
   let returnData = '';
   if (inputData) {
     let numberOfCharactersToGenerate = parseInt(inputData);
@@ -396,8 +396,8 @@ async function generateRandomLowerCaseAlphaNumericCodeWithSpecialCharactersByLen
       returnData = returnData.concat(await ruleParsing.processRulesInternal([inputMetaData, ''], [biz.crandomlyGenerateEitherLowerCaseLetterOrNumberOrSpecialCharacter]));
     } // End-for (let counter = 1; counter <= numberOfCharactersToGenerate; counter++)
   } // End-if (inputData)
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -414,9 +414,9 @@ async function generateRandomLowerCaseAlphaNumericCodeWithSpecialCharactersByLen
  */
 async function generateRandomSpecialCharacterCodeByLength(inputData, inputMetaData) {
   let functionName = generateRandomSpecialCharacterCodeByLength.name;
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
+  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
+  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
   let returnData = '';
   if (inputData) {
     let numberOfCharactersToGenerate = parseInt(inputData);
@@ -424,8 +424,8 @@ async function generateRandomSpecialCharacterCodeByLength(inputData, inputMetaDa
       returnData = returnData.concat(await ruleParsing.processRulesInternal([inputMetaData, ''], [biz.crandomlyGenerateSpecialCharacter]));
     } // End-for (let counter = 1; counter <= numberOfCharactersToGenerate; counter++)
   } // End-if (inputData)
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -450,9 +450,9 @@ async function generateRandomSpecialCharacterCodeByLength(inputData, inputMetaDa
  */
 async function generateValidEmail(inputData, inputMetaData) {
   let functionName = generateValidEmail.name;
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
+  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
+  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
   let returnData = '';
   let allowableSpecialCharacters;
   let generateSpecialCharacters;
@@ -477,15 +477,15 @@ async function generateValidEmail(inputData, inputMetaData) {
       if (generateSpecialCharacters === false && allowableSpecialCharacters !== '') {
         generateSpecialCharacters = true;
       }
-      returnData = await generateRandomValidEmail(inputData, generateSpecialCharacters, allowableSpecialCharacters);
+      returnData = generateRandomValidEmail(inputData, generateSpecialCharacters, allowableSpecialCharacters);
     } else {
-      returnData = await generateRandomValidEmail(inputData, gen.cFalse, wrd.cEmpty);
+      returnData = generateRandomValidEmail(inputData, gen.cFalse, wrd.cEmpty);
     }
   } else { // Else-clause if (!!inputMetaData && inputMetaData !== 'undefined' && inputMetaData !== '')
-    returnData = await generateRandomValidEmail(inputData, gen.cFalse, wrd.cEmpty);
+    returnData = generateRandomValidEmail(inputData, gen.cFalse, wrd.cEmpty);
   } // End-else-clause if (!!inputMetaData && inputMetaData !== 'undefined' && inputMetaData !== '')
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -510,9 +510,9 @@ async function generateValidEmail(inputData, inputMetaData) {
  */
 async function generateInvalidEmail(inputData, inputMetaData) {
   let functionName = generateInvalidEmail.name;
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
+  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
+  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
   let returnData = '';
   let allowableSpecialCharacters;
   let generateSpecialCharacters;
@@ -527,7 +527,7 @@ async function generateInvalidEmail(inputData, inputMetaData) {
       if (generateSpecialCharacters === false && allowableSpecialCharacters !== '') {
         generateSpecialCharacters = true;
       }
-      returnData = await generateInvalidEmailWithSpecificSuffixAndDomainName(inputData, generateSpecialCharacters,
+      returnData = generateInvalidEmailWithSpecificSuffixAndDomainName(inputData, generateSpecialCharacters,
         allowableSpecialCharacters, specifiedSuffixAndDomain);
     } else if (inputMetaData.length <= 2) {
       generateSpecialCharacters = await ruleParsing.processRulesInternal([inputMetaData[0], ''], [biz.cstringToBoolean]);
@@ -537,15 +537,15 @@ async function generateInvalidEmail(inputData, inputMetaData) {
       if (generateSpecialCharacters === false && allowableSpecialCharacters !== '') {
         generateSpecialCharacters = true;
       }
-      returnData = await generateRandomInvalidEmail(inputData, generateSpecialCharacters, allowableSpecialCharacters);
+      returnData = generateRandomInvalidEmail(inputData, generateSpecialCharacters, allowableSpecialCharacters);
     } else {
-      returnData = await generateRandomInvalidEmail(inputData, [gen.cFalse, wrd.cEmpty]);
+      returnData = generateRandomInvalidEmail(inputData, [gen.cFalse, wrd.cEmpty]);
     }
   } else {
-    returnData = await generateRandomInvalidEmail(inputData, [gen.cFalse, wrd.cEmpty]);
+    returnData = generateRandomInvalidEmail(inputData, [gen.cFalse, wrd.cEmpty]);
   }
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -570,11 +570,11 @@ async function generateInvalidEmail(inputData, inputMetaData) {
  */
 async function generateValidEmailWithSpecificSuffixAndDomainName(numberOfCharactersToGenerate, generateSpecialCharacters, allowableSpecialCharacters, specifiedSuffixAndDomain) {
   let functionName = generateValidEmailWithSpecificSuffixAndDomainName.name;
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cnumberOfCharactersToGenerateIs + numberOfCharactersToGenerate);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cgenerateSpecialCharactersIs + generateSpecialCharacters);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.callowableSpecialCharactersIs + allowableSpecialCharacters);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cspecifiedSuffixAndDomainIs + specifiedSuffixAndDomain);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cnumberOfCharactersToGenerateIs + numberOfCharactersToGenerate);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cgenerateSpecialCharactersIs + generateSpecialCharacters);
+  loggers.consoleLog(namespacePrefix + functionName, msg.callowableSpecialCharactersIs + allowableSpecialCharacters);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cspecifiedSuffixAndDomainIs + specifiedSuffixAndDomain);
   let returnData = '';
   let prefix = '';
   if ((numberOfCharactersToGenerate >= specifiedSuffixAndDomain.length + 2) && numberOfCharactersToGenerate >= 6 &&
@@ -587,16 +587,16 @@ async function generateValidEmailWithSpecificSuffixAndDomainName(numberOfCharact
     numberOfCharactersToGenerate = numberOfCharactersToGenerate - 1;
     numberOfCharactersToGenerate = numberOfCharactersToGenerate - specifiedSuffixAndDomain.length;
     if (generateSpecialCharacters === false) {
-      prefix = await generateRandomMixedCaseAlphaNumericCodeByLength(numberOfCharactersToGenerate, '');
+      prefix = generateRandomMixedCaseAlphaNumericCodeByLength(numberOfCharactersToGenerate, '');
     } else {
-      prefix = await generateRandomMixedCaseAlphaNumericCodeWithSpecialCharactersByLength(numberOfCharactersToGenerate, allowableSpecialCharacters);
+      prefix = generateRandomMixedCaseAlphaNumericCodeWithSpecialCharactersByLength(numberOfCharactersToGenerate, allowableSpecialCharacters);
     }
     returnData = prefix + bas.cAt + specifiedSuffixAndDomain;
   } else {
     returnData = '';
   }
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -617,10 +617,10 @@ async function generateValidEmailWithSpecificSuffixAndDomainName(numberOfCharact
  */
 async function generateRandomValidEmail(numberOfCharactersToGenerate, generateSpecialCharacters, allowableSpecialCharacters) {
   let functionName = generateRandomValidEmail.name;
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cnumberOfCharactersToGenerateIs + numberOfCharactersToGenerate);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cgenerateSpecialCharactersIs + generateSpecialCharacters);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.callowableSpecialCharactersIs + allowableSpecialCharacters);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cnumberOfCharactersToGenerateIs + numberOfCharactersToGenerate);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cgenerateSpecialCharactersIs + generateSpecialCharacters);
+  loggers.consoleLog(namespacePrefix + functionName, msg.callowableSpecialCharactersIs + allowableSpecialCharacters);
   let returnData = '';
   let prefix = '';
   let suffix = '';
@@ -639,9 +639,9 @@ async function generateRandomValidEmail(numberOfCharactersToGenerate, generateSp
     // So let us first figure that out, then the rest of the available characters that we must provide can be divided up between the prefix and suffix.
     if (numberOfCharactersToGenerate === 4) { // Stick with a 2-character domain name.
       if (generateSpecialCharacters === false) {
-        domainName = await generateRandomMixedCaseTextByLength(num.c2, '');
+        domainName = generateRandomMixedCaseTextByLength(num.c2, '');
       } else {
-        domainName = await generateRandomMixedCaseAlphaNumericCodeWithSpecialCharactersByLength(num.c2, allowableSpecialCharacters);
+        domainName = generateRandomMixedCaseAlphaNumericCodeWithSpecialCharactersByLength(num.c2, allowableSpecialCharacters);
       }
     } else if (numberOfCharactersToGenerate >= 5) {
       // Randomly determine if we should generate a 2-character or 3-character domain name. We can do either one,
@@ -649,16 +649,16 @@ async function generateRandomValidEmail(numberOfCharactersToGenerate, generateSp
       // (That is generate 2-character domains roughly equal to the times we generate a 3-character domain.)
       if (await ruleParsing.processRulesInternal(['', ''], [biz.crandomlyGenerateBooleanValue]) === true) { // Stick with a 2-character domain name.
         if (generateSpecialCharacters === false) {
-          domainName = await generateRandomMixedCaseTextByLength(num.c2, '');
+          domainName = generateRandomMixedCaseTextByLength(num.c2, '');
         } else {
-          domainName = await generateRandomMixedCaseAlphaNumericCodeWithSpecialCharactersByLength(num.c2, allowableSpecialCharacters);
+          domainName = generateRandomMixedCaseAlphaNumericCodeWithSpecialCharactersByLength(num.c2, allowableSpecialCharacters);
         }
         numberOfCharactersToGenerate = numberOfCharactersToGenerate - 2;
       } else { // Do a 3-character domain name.
         if (generateSpecialCharacters === false) {
-          domainName = await generateRandomMixedCaseTextByLength(num.c3, '');
+          domainName = generateRandomMixedCaseTextByLength(num.c3, '');
         } else {
-          domainName = await generateRandomMixedCaseAlphaNumericCodeWithSpecialCharactersByLength(num.c3, allowableSpecialCharacters);
+          domainName = generateRandomMixedCaseAlphaNumericCodeWithSpecialCharactersByLength(num.c3, allowableSpecialCharacters);
         }
         numberOfCharactersToGenerate = numberOfCharactersToGenerate - 3;
       }
@@ -666,9 +666,9 @@ async function generateRandomValidEmail(numberOfCharactersToGenerate, generateSp
       // @NOTE We should never actually get here, because the {@code numberOfCharactersToGenerate} cannot be less than 6 and 6-2 must be >=4.
       // Just generate the minimum domain and try to proceed as best as possible as a matter of completeness of the code.
       if (generateSpecialCharacters === false) {
-        domainName = await generateRandomMixedCaseTextByLength(num.c2, '');
+        domainName = generateRandomMixedCaseTextByLength(num.c2, '');
       } else {
-        domainName = await generateRandomMixedCaseAlphaNumericCodeWithSpecialCharactersByLength(num.c2, allowableSpecialCharacters);
+        domainName = generateRandomMixedCaseAlphaNumericCodeWithSpecialCharactersByLength(num.c2, allowableSpecialCharacters);
       }
       numberOfCharactersToGenerate = numberOfCharactersToGenerate - 2;
     }
@@ -688,18 +688,18 @@ async function generateRandomValidEmail(numberOfCharactersToGenerate, generateSp
     }
 
     if (generateSpecialCharacters === false) {
-      prefix = await generateRandomMixedCaseAlphaNumericCodeByLength(numberOfPrefixcharacters, '');
-      suffix = await generateRandomMixedCaseAlphaNumericCodeByLength(numberOfSuffixCharacters, '');
+      prefix = generateRandomMixedCaseAlphaNumericCodeByLength(numberOfPrefixcharacters, '');
+      suffix = generateRandomMixedCaseAlphaNumericCodeByLength(numberOfSuffixCharacters, '');
     } else {
-      prefix = await generateRandomMixedCaseAlphaNumericCodeWithSpecialCharactersByLength(numberOfPrefixcharacters, allowableSpecialCharacters);
-      suffix = await generateRandomMixedCaseAlphaNumericCodeWithSpecialCharactersByLength(numberOfSuffixCharacters, allowableSpecialCharacters);
+      prefix = generateRandomMixedCaseAlphaNumericCodeWithSpecialCharactersByLength(numberOfPrefixcharacters, allowableSpecialCharacters);
+      suffix = generateRandomMixedCaseAlphaNumericCodeWithSpecialCharactersByLength(numberOfSuffixCharacters, allowableSpecialCharacters);
     }
     returnData = prefix + bas.cAt + suffix + bas.cDot + domainName;
   } else {
     returnData = '';
   }
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -724,11 +724,11 @@ async function generateRandomValidEmail(numberOfCharactersToGenerate, generateSp
  */
 async function generateInvalidEmailWithSpecificSuffixAndDomainName(numberOfCharactersToGenerate, generateSpecialCharacters, allowableSpecialCharacters, specifiedSuffixAndDomain) {
   let functionName = generateInvalidEmailWithSpecificSuffixAndDomainName.name;
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cnumberOfCharactersToGenerateIs + numberOfCharactersToGenerate);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cgenerateSpecialCharactersIs + generateSpecialCharacters);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.callowableSpecialCharactersIs + allowableSpecialCharacters);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cspecifiedSuffixAndDomainIs + specifiedSuffixAndDomain);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cnumberOfCharactersToGenerateIs + numberOfCharactersToGenerate);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cgenerateSpecialCharactersIs + generateSpecialCharacters);
+  loggers.consoleLog(namespacePrefix + functionName, msg.callowableSpecialCharactersIs + allowableSpecialCharacters);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cspecifiedSuffixAndDomainIs + specifiedSuffixAndDomain);
   let returnData = '';
   let prefix = '';
   let numberOfPrefixCharacters = 0;
@@ -736,7 +736,7 @@ async function generateInvalidEmailWithSpecificSuffixAndDomainName(numberOfChara
   // NOTE: Cannot have a "." as part of a variable name in a {set}.
   failureMode = await ruleParsing.processRulesInternal([num.c1, [num.c3, gen.cTrue, gen.cTrue]], [biz.crandomlyGenerateNumberInRange]);
   // failureMode is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cfailureModeIs + failureMode);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cfailureModeIs + failureMode);
   // ************************************************************
   // Failure Mode Legend:
   // ************************************************************
@@ -772,40 +772,40 @@ async function generateInvalidEmailWithSpecificSuffixAndDomainName(numberOfChara
     // There are basically with and without the prefix, and we've refactored in all the other cases already above.
     numberOfPrefixCharacters = numberOfCharactersToGenerate;
     // numberOfCharactersToGenerate is:
-    await loggers.consoleLog(namespacePrefix + functionName, msg.cnumberOfCharactersToGenerateIs + numberOfCharactersToGenerate);
+    loggers.consoleLog(namespacePrefix + functionName, msg.cnumberOfCharactersToGenerateIs + numberOfCharactersToGenerate);
 
     if (numberOfPrefixCharacters > 0) {
       if (generateSpecialCharacters === false) {
-        prefix = await generateRandomMixedCaseAlphaNumericCodeByLength(numberOfPrefixCharacters.toString(), '');
+        prefix = generateRandomMixedCaseAlphaNumericCodeByLength(numberOfPrefixCharacters.toString(), '');
       } else {
-        prefix = await generateRandomMixedCaseAlphaNumericCodeWithSpecialCharactersByLength(numberOfPrefixCharacters.toString(), allowableSpecialCharacters);
+        prefix = generateRandomMixedCaseAlphaNumericCodeWithSpecialCharactersByLength(numberOfPrefixCharacters.toString(), allowableSpecialCharacters);
       }
     } // End-if (numberOfPrefixCharacters > 0)
 
     // prefix is:
-    await loggers.consoleLog(namespacePrefix + functionName, msg.cprefixIs + prefix);
+    loggers.consoleLog(namespacePrefix + functionName, msg.cprefixIs + prefix);
 
     switch (failureMode) {
       case 1: case num.c1: // Without the @ symbol.
-        await loggers.consoleLog(namespacePrefix + functionName, msg.cWithoutTheAtSymbol);
+        loggers.consoleLog(namespacePrefix + functionName, msg.cWithoutTheAtSymbol);
         returnData = prefix + specifiedSuffixAndDomain;
         break;
       case 2: case num.c2: // Without the prefix.
-        await loggers.consoleLog(namespacePrefix + functionName, msg.cWithoutThePrefix);
+        loggers.consoleLog(namespacePrefix + functionName, msg.cWithoutThePrefix);
         returnData = bas.cAt + specifiedSuffixAndDomain;
         break;
       case 3: case num.c3: // Without the @ and prefix.
-        await loggers.consoleLog(namespacePrefix + functionName, msg.cWithoutTheAtSymbolAndPrefix);
+        loggers.consoleLog(namespacePrefix + functionName, msg.cWithoutTheAtSymbolAndPrefix);
         returnData = specifiedSuffixAndDomain;
         break;
       default: // DEFAULT: Without the @ and prefix
-        await loggers.consoleLog(namespacePrefix + functionName, msg.cDEFAULTWithoutTheAtSymbolAndPrefix);
+        loggers.consoleLog(namespacePrefix + functionName, msg.cDEFAULTWithoutTheAtSymbolAndPrefix);
         returnData = specifiedSuffixAndDomain;
         break;
     } // End-switch (failureMode)
   } // End-if (numberOfCharactersToGenerate >= 6)
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -826,10 +826,10 @@ async function generateInvalidEmailWithSpecificSuffixAndDomainName(numberOfChara
  */
 async function generateRandomInvalidEmail(numberOfCharactersToGenerate, generateSpecialCharacters, allowableSpecialCharacters) {
   let functionName = generateRandomInvalidEmail.name;
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cnumberOfCharactersToGenerateIs + numberOfCharactersToGenerate);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cgenerateSpecialCharactersIs + generateSpecialCharacters);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.callowableSpecialCharactersIs + allowableSpecialCharacters);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cnumberOfCharactersToGenerateIs + numberOfCharactersToGenerate);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cgenerateSpecialCharactersIs + generateSpecialCharacters);
+  loggers.consoleLog(namespacePrefix + functionName, msg.callowableSpecialCharactersIs + allowableSpecialCharacters);
   let returnData = '';
   let prefix = '';
   let suffix = '';
@@ -842,7 +842,7 @@ async function generateRandomInvalidEmail(numberOfCharactersToGenerate, generate
   failureMode = await ruleParsing.processRulesInternal([num.c1, [num.c28 + gen.cTrue, gen.cTrue]], [biz.crandomlyGenerateNumberInRange]);
   failureMode = parseInt(failureMode);
   // failureMode is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cfailureModeIs + failureMode);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cfailureModeIs + failureMode);
   // ************************************************************
   // Failure Mode Legend:
   // ************************************************************
@@ -894,7 +894,7 @@ async function generateRandomInvalidEmail(numberOfCharactersToGenerate, generate
       numberOfCharactersToGenerate = numberOfCharactersToGenerate - 2;
     }
     // numberOfCharactersToGenerate is:
-    await loggers.consoleLog(namespacePrefix + functionName, msg.cnumberOfCharactersToGenerateIs + numberOfCharactersToGenerate);
+    loggers.consoleLog(namespacePrefix + functionName, msg.cnumberOfCharactersToGenerateIs + numberOfCharactersToGenerate);
 
     // Only work generating the domain name if we are not going to be building our invalid email on a missing domain name.
     if (failureMode === 1 || failureMode === 2 || failureMode === 3 || (failureMode >= 8 && failureMode <= 16) || failureMode === 19 || failureMode > 27) {
@@ -903,12 +903,12 @@ async function generateRandomInvalidEmail(numberOfCharactersToGenerate, generate
       if (numberOfCharactersToGenerate === 4) {
         // Stick with a 2-character domain name.
         if (generateSpecialCharacters === false) {
-          domainName = await generateRandomMixedCaseTextByLength(num.c2, '');
+          domainName = generateRandomMixedCaseTextByLength(num.c2, '');
         } else {
           if (!!allowableSpecialCharacters && allowableSpecialCharacters !== undefined) {
-            domainName = await generateRandomMixedCaseAlphaNumericCodeWithSpecialCharactersByLength(num.c2, allowableSpecialCharacters);
+            domainName = generateRandomMixedCaseAlphaNumericCodeWithSpecialCharactersByLength(num.c2, allowableSpecialCharacters);
           } else {
-            domainName = await generateRandomMixedCaseTextByLength(num.c2, '');
+            domainName = generateRandomMixedCaseTextByLength(num.c2, '');
           }
         }
         numberOfCharactersToGenerate = numberOfDomainNameCharacters - 2;
@@ -918,23 +918,23 @@ async function generateRandomInvalidEmail(numberOfCharactersToGenerate, generate
         // (That is generate 2-character domains roughly equal to the times we generate a 3-character domain.)
         if (await ruleParsing.processRulesInternal(['', ''], [biz.crandomlyGenerateBooleanValue]) === true) { // Stick with a 2-character domain name.
           if (generateSpecialCharacters === false) {
-            domainName = await generateRandomMixedCaseTextByLength(num.c2, '');
+            domainName = generateRandomMixedCaseTextByLength(num.c2, '');
           } else {
             if (!!allowableSpecialCharacters && allowableSpecialCharacters !== undefined) {
-              domainName = await generateRandomMixedCaseAlphaNumericCodeWithSpecialCharactersByLength(num.c2, allowableSpecialCharacters);
+              domainName = generateRandomMixedCaseAlphaNumericCodeWithSpecialCharactersByLength(num.c2, allowableSpecialCharacters);
             } else {
-              domainName = await generateRandomMixedCaseTextByLength(num.c2, '');
+              domainName = generateRandomMixedCaseTextByLength(num.c2, '');
             }
           }
           numberOfCharactersToGenerate = numberOfDomainNameCharacters - 2;
         } else { // Do a 3-character domain name.
           if (generateSpecialCharacters === false) {
-            domainName = await generateRandomMixedCaseTextByLength(num.c3, '');
+            domainName = generateRandomMixedCaseTextByLength(num.c3, '');
           } else {
             if (!!allowableSpecialCharacters && allowableSpecialCharacters !== undefined) {
-              domainName = await generateRandomMixedCaseAlphaNumericCodeWithSpecialCharactersByLength(num.c3, allowableSpecialCharacters);
+              domainName = generateRandomMixedCaseAlphaNumericCodeWithSpecialCharactersByLength(num.c3, allowableSpecialCharacters);
             } else {
-              domainName = await generateRandomMixedCaseTextByLength(num.c3, '');
+              domainName = generateRandomMixedCaseTextByLength(num.c3, '');
             }
           }
           numberOfCharactersToGenerate = numberOfDomainNameCharacters - 3
@@ -942,7 +942,7 @@ async function generateRandomInvalidEmail(numberOfCharactersToGenerate, generate
       } // End-else-if (numberOfCharactersToGenerate >= 5)
     } // End-if (failureMode === 1 || failureMode === 2 || failureMode === 3 || (failureMode >= 8 && failureMode <= 16) || failureMode === 19 || failureMode > 27)
     // domainName is:
-    await loggers.consoleLog(namespacePrefix + functionName, msg.cdomainNameIs + domainName);
+    loggers.consoleLog(namespacePrefix + functionName, msg.cdomainNameIs + domainName);
 
     // ONLY do suffix and prefix if our failure modes do not exclude both.
     if (failureMode >= 1 && failureMode <= 7) {
@@ -966,155 +966,155 @@ async function generateRandomInvalidEmail(numberOfCharactersToGenerate, generate
       numberOfSuffixCharacters = 0;
     }
     // numberOfPrefixCharacters is:
-    await loggers.consoleLog(namespacePrefix + functionName, msg.cnumberOfPrefixCharactersIs + numberOfPrefixCharacters);
+    loggers.consoleLog(namespacePrefix + functionName, msg.cnumberOfPrefixCharactersIs + numberOfPrefixCharacters);
     // numberOfSuffixCharacters is:
-    await loggers.consoleLog(namespacePrefix + functionName, msg.cnumberOfSuffixCharactersIs + numberOfSuffixCharacters);
+    loggers.consoleLog(namespacePrefix + functionName, msg.cnumberOfSuffixCharactersIs + numberOfSuffixCharacters);
 
     if (numberOfPrefixCharacters > 0) {
       if (generateSpecialCharacters === false) {
-        prefix = await generateRandomMixedCaseAlphaNumericCodeByLength(numberOfPrefixCharacters.toString(), '');
+        prefix = generateRandomMixedCaseAlphaNumericCodeByLength(numberOfPrefixCharacters.toString(), '');
       } else {
         if (!!allowableSpecialCharacters && allowableSpecialCharacters !== undefined) {
-          prefix = await generateRandomMixedCaseAlphaNumericCodeWithSpecialCharactersByLength(numberOfPrefixCharacters.toString(), allowableSpecialCharacters);
+          prefix = generateRandomMixedCaseAlphaNumericCodeWithSpecialCharactersByLength(numberOfPrefixCharacters.toString(), allowableSpecialCharacters);
         } else {
-          prefix = await generateRandomMixedCaseAlphaNumericCodeByLength(numberOfPrefixCharacters.toString(), '');
+          prefix = generateRandomMixedCaseAlphaNumericCodeByLength(numberOfPrefixCharacters.toString(), '');
         }
       }
     } // End-if (numberOfPrefixCharacters > 0)
     // prefix is:
-    await loggers.consoleLog(namespacePrefix + functionName, msg.cprefixIs + prefix);
+    loggers.consoleLog(namespacePrefix + functionName, msg.cprefixIs + prefix);
 
     if (numberOfSuffixCharacters > 0) {
       if (generateSpecialCharacters === false) {
-        suffix = await generateRandomMixedCaseAlphaNumericCodeByLength(numberOfSuffixCharacters.toString(), '');
+        suffix = generateRandomMixedCaseAlphaNumericCodeByLength(numberOfSuffixCharacters.toString(), '');
       } else {
         if (!!allowableSpecialCharacters && allowableSpecialCharacters !== undefined) {
-          suffix = await generateRandomMixedCaseAlphaNumericCodeWithSpecialCharactersByLength(numberOfSuffixCharacters.toString(), allowableSpecialCharacters);
+          suffix = generateRandomMixedCaseAlphaNumericCodeWithSpecialCharactersByLength(numberOfSuffixCharacters.toString(), allowableSpecialCharacters);
         } else {
-          suffix = await generateRandomMixedCaseAlphaNumericCodeByLength(numberOfSuffixCharacters.toString(), '');
+          suffix = generateRandomMixedCaseAlphaNumericCodeByLength(numberOfSuffixCharacters.toString(), '');
         }
       }
     } // End-if (numberOfSuffixCharacters > 0)
     // suffix is:
-    await loggers.consoleLog(namespacePrefix + functionName, msg.csuffixIs + suffix);
+    loggers.consoleLog(namespacePrefix + functionName, msg.csuffixIs + suffix);
   } // End-if (numberOfCharactersToGenerate >= 6)
 
   switch (failureMode) {
     case 1: // Without the @ symbol.
-      await loggers.consoleLog(namespacePrefix + functionName, msg.cWithoutTheAtSymbol);
+      loggers.consoleLog(namespacePrefix + functionName, msg.cWithoutTheAtSymbol);
       returnData = prefix + suffix + bas.cDot + domainName;
       break;
     case 2: // Without the . symbol.
-      await loggers.consoleLog(namespacePrefix + functionName, msg.cWithoutTheDotSymbol);
+      loggers.consoleLog(namespacePrefix + functionName, msg.cWithoutTheDotSymbol);
       returnData = prefix + bas.cAt + suffix + domainName;
       break;
     case 3: // Without bot the @ and . symbols
-      await loggers.consoleLog(namespacePrefix + functionName, msg.cWithoutTheAtAndDotSymbols);
+      loggers.consoleLog(namespacePrefix + functionName, msg.cWithoutTheAtAndDotSymbols);
       returnData = prefix + suffix + domainName;
       break;
     case 4: // Without the domain name.
-      await loggers.consoleLog(namespacePrefix + functionName, msg.cWithoutTheDomainName);
+      loggers.consoleLog(namespacePrefix + functionName, msg.cWithoutTheDomainName);
       returnData = prefix + bas.cAt + suffix + bas.cDot;
       break;
     case 5: // Without the @ and domain name.
-      await loggers.consoleLog(namespacePrefix + functionName, msg.cWithoutTheAtSymbolAndDomainName);
+      loggers.consoleLog(namespacePrefix + functionName, msg.cWithoutTheAtSymbolAndDomainName);
       returnData = prefix + suffix + bas.cDot + domainName;
       break;
     case 6: // Without the . and domain name.
-      await loggers.consoleLog(namespacePrefix + functionName, msg.cWithoutTheDotAndDomainName);
+      loggers.consoleLog(namespacePrefix + functionName, msg.cWithoutTheDotAndDomainName);
       returnData = prefix + bas.cAt + suffix;
       break;
     case 7: // Without the @, . and domain name.
-      await loggers.consoleLog(namespacePrefix + functionName, msg.cWithoutTheAtSymbolDotAndDomainName);
+      loggers.consoleLog(namespacePrefix + functionName, msg.cWithoutTheAtSymbolDotAndDomainName);
       returnData = prefix + suffix;
       break;
     case 8: // Without the prefix.
-      await loggers.consoleLog(namespacePrefix + functionName, msg.cWithoutThePrefix);
+      loggers.consoleLog(namespacePrefix + functionName, msg.cWithoutThePrefix);
       returnData = bas.cAt + suffix + bas.cDot + domainName;
       break;
     case 9: // Without the suffix.
-      await loggers.consoleLog(namespacePrefix + functionName, msg.cWithoutTheSuffix);
+      loggers.consoleLog(namespacePrefix + functionName, msg.cWithoutTheSuffix);
       returnData = prefix + bas.cAt + bas.cDot + domainName;
       break;
     case 10: // Without the @ and prefix.
-      await loggers.consoleLog(namespacePrefix + functionName, msg.cWithoutTheAtSymbolAndPrefix);
+      loggers.consoleLog(namespacePrefix + functionName, msg.cWithoutTheAtSymbolAndPrefix);
       returnData = suffix + bas.cDot + domainName;
       break;
     case 11: // Without the . and prefix.
-      await loggers.consoleLog(namespacePrefix + functionName, msg.cWithoutTheDotAndPrefix);
+      loggers.consoleLog(namespacePrefix + functionName, msg.cWithoutTheDotAndPrefix);
       returnData = bas.cAt + suffix + domainName;
       break;
     case 12: // Without the @ and suffix.
-      await loggers.consoleLog(namespacePrefix + functionName, msg.cWithoutTheAtSymbolAndSuffix);
+      loggers.consoleLog(namespacePrefix + functionName, msg.cWithoutTheAtSymbolAndSuffix);
       returnData = prefix + bas.cDot + domainName;
       break;
     case 13: // Without the . and suffix.
-      await loggers.consoleLog(namespacePrefix + functionName, msg.cWithoutTheDotAndSuffix);
+      loggers.consoleLog(namespacePrefix + functionName, msg.cWithoutTheDotAndSuffix);
       returnData = prefix + bas.cAt + domainName;
       break;
     case 14: // Without the @, . and prefix.
-      await loggers.consoleLog(namespacePrefix + functionName, msg.cWithoutTheAtSymbolDotAndPrefix);
+      loggers.consoleLog(namespacePrefix + functionName, msg.cWithoutTheAtSymbolDotAndPrefix);
       returnData = suffix + domainName;
       break;
     case 15: // Without the @, . and suffix.
-      await loggers.consoleLog(namespacePrefix + functionName, msg.cWithoutTheAtSymbolDotAndSuffix);
+      loggers.consoleLog(namespacePrefix + functionName, msg.cWithoutTheAtSymbolDotAndSuffix);
       returnData = prefix + domainName;
       break;
     case 16: // Without the @, ., prefix, and suffix.
-      await loggers.consoleLog(namespacePrefix + functionName, msg.cWithoutTheAtSymbolDotPrefixAndSuffix);
+      loggers.consoleLog(namespacePrefix + functionName, msg.cWithoutTheAtSymbolDotPrefixAndSuffix);
       returnData = domainName;
       break;
     case 17: // Without the prefix and domain name.
-      await loggers.consoleLog(namespacePrefix + functionName, msg.cWithoutThePrefixAndDomainName);
+      loggers.consoleLog(namespacePrefix + functionName, msg.cWithoutThePrefixAndDomainName);
       returnData = bas.cAt + suffix + bas.cDot;
       break;
     case 18: // Without the suffix and domain name.
-      await loggers.consoleLog(namespacePrefix + functionName, msg.cWithoutTheSuffixAndDomainName);
+      loggers.consoleLog(namespacePrefix + functionName, msg.cWithoutTheSuffixAndDomainName);
       returnData = prefix + bas.cAt + bas.cDot;
       break;
     case 19: // Without the prefix and  suffix.
-      await loggers.consoleLog(namespacePrefix + functionName, msg.cWithoutThePrefixAndSuffix);
+      loggers.consoleLog(namespacePrefix + functionName, msg.cWithoutThePrefixAndSuffix);
       returnData = bas.cAt + bas.cDot + domainName;
       break;
     case 20: // Without the prefix, suffix and domain name.
-      await loggers.consoleLog(namespacePrefix + functionName, msg.cWithoutThePrefixSuffixAndDomainName);
+      loggers.consoleLog(namespacePrefix + functionName, msg.cWithoutThePrefixSuffixAndDomainName);
       returnData = bas.cAt + bas.cDot;
       break;
     case 21: // Without the @, prefix and  domain name.
-      await loggers.consoleLog(namespacePrefix + functionName, msg.cWithoutTheAtSymbolPrefixAndDomainName);
+      loggers.consoleLog(namespacePrefix + functionName, msg.cWithoutTheAtSymbolPrefixAndDomainName);
       returnData = suffix + bas.cDot;
       break;
     case 22: // Without the ., prefix and  domain name.
-      await loggers.consoleLog(namespacePrefix + functionName, msg.cWithoutTheDotPrefixAndDomainName);
+      loggers.consoleLog(namespacePrefix + functionName, msg.cWithoutTheDotPrefixAndDomainName);
       returnData = bas.cAt + suffix;
       break;
     case 23: // Without the @, suffix and domain name.
-      await loggers.consoleLog(namespacePrefix + functionName, msg.cWithoutTheAtSymbolSuffixAndDomainName);
+      loggers.consoleLog(namespacePrefix + functionName, msg.cWithoutTheAtSymbolSuffixAndDomainName);
       returnData = prefix + bas.cDot;
       break;
     case 24: // Without the ., suffix and domain name.
-      await loggers.consoleLog(namespacePrefix + functionName, msg.cWithoutTheDotSuffixAndDomainName);
+      loggers.consoleLog(namespacePrefix + functionName, msg.cWithoutTheDotSuffixAndDomainName);
       returnData = prefix + bas.cAt + bas.cDot;
       break;
     case 25: // Without the @, prefix, suffix and  domain name.
-      await loggers.consoleLog(namespacePrefix + functionName, msg.cWithoutTheAtSymbolPrefixSuffixAndDomainName);
+      loggers.consoleLog(namespacePrefix + functionName, msg.cWithoutTheAtSymbolPrefixSuffixAndDomainName);
       returnData = bas.cDot;
       break;
     case 26: // Without the ., prefix, suffix and  domain name.
-      await loggers.consoleLog(namespacePrefix + functionName, msg.cWithoutTheDotPrefixSuffixAndDomainName);
+      loggers.consoleLog(namespacePrefix + functionName, msg.cWithoutTheDotPrefixSuffixAndDomainName);
       returnData = bas.cAt;
       break;
     case 27: // Without the prefix, suffix and @.
-      await loggers.consoleLog(namespacePrefix + functionName, msg.cWithoutThePrefixSuffixAndAtSymbol);
+      loggers.consoleLog(namespacePrefix + functionName, msg.cWithoutThePrefixSuffixAndAtSymbol);
       returnData = bas.cDot + domainName;
       break;
     case 28: // Without the prefix, suffix and ..
-      await loggers.consoleLog(namespacePrefix + functionName, msg.cWithoutThePrefixSuffixAndDot);
+      loggers.consoleLog(namespacePrefix + functionName, msg.cWithoutThePrefixSuffixAndDot);
       returnData = bas.cAt + domainName;
       break;
   } // End-switch (failureMode)
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -1133,8 +1133,8 @@ async function generateRandomInvalidEmail(numberOfCharactersToGenerate, generate
  */
 async function generateRandomBrightColor(inputData, inputMetaData) {
   let functionName = generateRandomBrightColor.name;
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  await await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
+  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
   loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
   let returnData = [255,255,255];
   let minimumColorRange = 127;
@@ -1147,8 +1147,8 @@ async function generateRandomBrightColor(inputData, inputMetaData) {
     maximumColorRange = parsedColorRangeArray[1];
   } // End-if (inputData && inputMetaData && inputData !== '' && inputMetaData !== '')
   returnData = await generateRandomColor(minimumColorRange, maximumColorRange);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -1167,9 +1167,9 @@ async function generateRandomBrightColor(inputData, inputMetaData) {
  */
 async function generateRandomDarkColor(inputData, inputMetaData) {
   let functionName = generateRandomDarkColor.name;
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
+  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
+  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
   let returnData = [0,0,0];
   let minimumColorRange = 0;
   let maximumColorRange = 127;
@@ -1181,8 +1181,8 @@ async function generateRandomDarkColor(inputData, inputMetaData) {
     maximumColorRange = parsedColorRangeArray[1];
   } // End-if (inputData && inputMetaData && inputData !== '' && inputMetaData !== '')
   returnData = await generateRandomColor(minimumColorRange, maximumColorRange);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -1197,9 +1197,9 @@ async function generateRandomDarkColor(inputData, inputMetaData) {
  */
 async function generateRandomColor(inputData, inputMetaData) {
   let functionName = generateRandomColor.name;
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
+  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
+  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
   let returnData = [0,0,0];
   let minimumColorRange = 0;
   let maximumColorRange = 255;
@@ -1211,14 +1211,14 @@ async function generateRandomColor(inputData, inputMetaData) {
     maximumColorRange = parsedColorRangeArray[1];
   } // End-if (inputData && inputMetaData && inputData !== '' && inputMetaData !== '')
   // minimumColorRange is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cminimumColorRangeIs + minimumColorRange);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cminimumColorRangeIs + minimumColorRange);
   // maximumColorRange is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cmaximumColorRangeIs + maximumColorRange);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cmaximumColorRangeIs + maximumColorRange);
   returnData[0] = await ruleParsing.processRulesInternal([minimumColorRange.toString(), [maximumColorRange.toString(), gen.ctrue, gen.ctrue]], [biz.crandomlyGenerateNumberInRange]); // Red
   returnData[1] = await ruleParsing.processRulesInternal([minimumColorRange.toString(), [maximumColorRange.toString(), gen.ctrue, gen.ctrue]], [biz.crandomlyGenerateNumberInRange]); // Green
   returnData[2] = await ruleParsing.processRulesInternal([minimumColorRange.toString(), [maximumColorRange.toString(), gen.ctrue, gen.ctrue]], [biz.crandomlyGenerateNumberInRange]); // Blue
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 

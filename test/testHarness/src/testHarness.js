@@ -180,10 +180,10 @@ async function application() {
   // NOW the application can continue with the interactive interface fi the flag was set to false.
   if (argumentDrivenInterface === false) {
     // BEGIN main program loop
-    await haystacks.consoleLog(namespacePrefix, functionName, app_msg.capplicationMessage01);
+    haystacks.consoleLog(namespacePrefix, functionName, app_msg.capplicationMessage01);
 
     // BEGIN command parser
-    await haystacks.consoleLog(namespacePrefix, functionName, app_msg.capplicationMessage02);
+    haystacks.consoleLog(namespacePrefix, functionName, app_msg.capplicationMessage02);
     while(programRunning === true) {
       if (await haystacks.isCommandQueueEmpty() === true) {
         // biz.cprompt is some how undefined here, although other biz.c<something-else> do still work.
@@ -194,21 +194,21 @@ async function application() {
       commandResult = await haystacks.processCommandQueue();
       if (commandResult[exitConditionArrayIndex] === false) {
         // END command parser
-        await haystacks.consoleLog(namespacePrefix, functionName, app_msg.capplicationMessage03);
+        haystacks.consoleLog(namespacePrefix, functionName, app_msg.capplicationMessage03);
         programRunning = false;
         // END main program loop
-        await haystacks.consoleLog(namespacePrefix, functionName, app_msg.capplicationMessage04);
+        haystacks.consoleLog(namespacePrefix, functionName, app_msg.capplicationMessage04);
         // Exiting TEST HARNESS APPLICATION
-        await haystacks.consoleLog(namespacePrefix, functionName, app_msg.capplicationMessage05);
+        haystacks.consoleLog(namespacePrefix, functionName, app_msg.capplicationMessage05);
         break;
       } // End-if (commandResult[exitConditionArrayIndex] === false)
     } // End-while (programRunning === true)
   } // End-if (argumentDrivenInterface === false)
-  await haystacks.consoleLog(namespacePrefix, functionName, msg.cEND_Function);
+  haystacks.consoleLog(namespacePrefix, functionName, msg.cEND_Function);
 }
 
 // Launch the Test Harness application!!
 let programRunning = false;
 await bootstrapApplication();
 programRunning = true;
-await application();
+application();

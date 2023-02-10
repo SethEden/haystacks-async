@@ -45,9 +45,9 @@ const namespacePrefix = wrd.cframework + bas.cDot + sys.ccommandsBlob + bas.cDot
  */
 async function validateConstants(inputData, inputMetaData) {
   let functionName = validateConstants.name;
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
+  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = [true, false];
   if (await configurator.getConfigurationSetting(wrd.csystem, cfg.cenableConstantsValidation) === true) {
     let pluginNamespace = '';
@@ -63,61 +63,61 @@ async function validateConstants(inputData, inputMetaData) {
     let phase2Results = {};
 
     // validationFrameworkArray is:
-    await loggers.consoleLog(namespacePrefix + functionName, msg.cvalidationFrameworkArrayIs + JSON.stringify(validationFrameworkArray));
+    loggers.consoleLog(namespacePrefix + functionName, msg.cvalidationFrameworkArrayIs + JSON.stringify(validationFrameworkArray));
     // validationApplicationArray is:
-    await loggers.consoleLog(namespacePrefix + functionName, msg.cvalidationApplicationArrayIs + JSON.stringify(validationApplicationArray));
+    loggers.consoleLog(namespacePrefix + functionName, msg.cvalidationApplicationArrayIs + JSON.stringify(validationApplicationArray));
     // validationPluginsMetaArray is:
-    await loggers.consoleLog(namespacePrefix + functionName, msg.cvalidationPluginsMetaArrayIs + JSON.stringify(validationPluginsMetaArray));
+    loggers.consoleLog(namespacePrefix + functionName, msg.cvalidationPluginsMetaArrayIs + JSON.stringify(validationPluginsMetaArray));
 
     validationArray = validationFrameworkArray;
     validationArray = Object.assign(validationArray, validationApplicationArray);
     // validationArray before plugin constants validation data merge is:
-    await loggers.consoleLog(namespacePrefix + functionName, msg.cvalidationArrayBeforePluginConstantsValidationDataMergeIs + JSON.stringify(validationArray));
+    loggers.consoleLog(namespacePrefix + functionName, msg.cvalidationArrayBeforePluginConstantsValidationDataMergeIs + JSON.stringify(validationArray));
 
     for (let plugin in validationPluginsMetaArray) {
       // plugin is:
-      await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginIs + plugin);
+      loggers.consoleLog(namespacePrefix + functionName, msg.cpluginIs + plugin);
       let pluginValidationPathData = validationPluginsMetaArray[plugin][sys.cConstantsFilePaths];
       for (let constantsFilePathName in pluginValidationPathData) {
         // constantsFilePathName is:
-        await loggers.consoleLog(namespacePrefix + functionName, msg.cconstantsFilePathNamesIs + constantsFilePathName);
+        loggers.consoleLog(namespacePrefix + functionName, msg.cconstantsFilePathNamesIs + constantsFilePathName);
         let constantsFilePathValue = pluginValidationPathData[constantsFilePathName];
         // constantsFilePathValue is:
-        await loggers.consoleLog(namespacePrefix + functionName, msg.cconstantsFilePathValueIs + constantsFilePathValue);
+        loggers.consoleLog(namespacePrefix + functionName, msg.cconstantsFilePathValueIs + constantsFilePathValue);
         let newPluginConstantValidationName = plugin + bas.cColon + constantsFilePathName;
         // newPluginConstantValidationName is:
-        await loggers.consoleLog(namespacePrefix + functionName, msg.cnewPluginConstantValidationNameIs + newPluginConstantValidationName);
+        loggers.consoleLog(namespacePrefix + functionName, msg.cnewPluginConstantValidationNameIs + newPluginConstantValidationName);
         let newPluginConstantValidationPathObject = {[newPluginConstantValidationName]: constantsFilePathValue};
         validationArray = Object.assign(validationArray, newPluginConstantValidationPathObject);
         // validationArray after plugin constants validation data merge is:
-        await loggers.consoleLog(namespacePrefix + functionName, msg.cvalidationArrayAfterPluginConstantsValidationDataMergeIs + JSON.stringify(validationArray));
+        loggers.consoleLog(namespacePrefix + functionName, msg.cvalidationArrayAfterPluginConstantsValidationDataMergeIs + JSON.stringify(validationArray));
       } // End-for (let constantsFilePathNames in pluginValidationPathData)
     } // End-for (let plugin in validationPluginsMetaArray)
 
     // Phase1 Constants Validation
     // BEGIN Phase 1 Constants Validation
-    await loggers.consoleLog(namespacePrefix + functionName, msg.cBeginPhase1ConstantsValidation);
+    loggers.consoleLog(namespacePrefix + functionName, msg.cBeginPhase1ConstantsValidation);
     // First scan through each file and validate that the constants defined in the constants code file are also contained in the validation file.
     for (let key1 in validationArray) {
       let constantsPath = validationArray[key1];
       phase1Results[key1] = await ruleBroker.processRules([constantsPath, key1], [biz.cvalidateConstantsDataValidation]);
     } // End-for (let key1 in validationArray)
     // END Phase 1 Constants Validation
-    await loggers.consoleLog(namespacePrefix + functionName, msg.cEndPhase1ConstantsValidation);
+    loggers.consoleLog(namespacePrefix + functionName, msg.cEndPhase1ConstantsValidation);
     // phase1Results is:
-    await loggers.consoleLog(namespacePrefix + functionName, msg.cphase1ResultsIs + JSON.stringify(phase1Results));
+    loggers.consoleLog(namespacePrefix + functionName, msg.cphase1ResultsIs + JSON.stringify(phase1Results));
 
     // Phase 2 Constants Validation
     // BEGIN Phase 2 Constants Validation
-    await loggers.consoleLog(namespacePrefix + functionName, msg.cBeginPhase2ConstantsValidation);
+    loggers.consoleLog(namespacePrefix + functionName, msg.cBeginPhase2ConstantsValidation);
     // Now verify that the values of the constants are what they are expected to be by using the constants validation data to validate.
     for (let key2 in validationArray) {
       phase2Results[key2] = await ruleBroker.processRules([key2, ''], [biz.cvalidateConstantsDataValues]);
     } // End-for (let key2 in validationArray)
     // END Phase 2 Constants Validation
-    await loggers.consoleLog(namespacePrefix + functionName, msg.cEndPhase2ConstantsValidation);
+    loggers.consoleLog(namespacePrefix + functionName, msg.cEndPhase2ConstantsValidation);
     // phase2Results is:
-    await loggers.consoleLog(namespacePrefix + functionName, msg.cphase2ResultsIs + JSON.stringify(phase2Results));
+    loggers.consoleLog(namespacePrefix + functionName, msg.cphase2ResultsIs + JSON.stringify(phase2Results));
 
     for (let key3 in phase1Results) {
       let constantsPhase1ValidationNamespaceParentObject = await ruleBroker.processRules([key3, ''], [biz.cgetConstantsValidationNamespaceParentObject]);
@@ -127,9 +127,9 @@ async function validateConstants(inputData, inputMetaData) {
         processingPluginResults = true;
       }
       if (processingPluginResults === false) {
-        await loggers.constantsValidationSummaryLog(constantsPhase1ValidationNamespaceParentObject[sys.cConstantsPhase1ValidationMessages][key3], phase1Results[key3]);
+        loggers.constantsValidationSummaryLog(constantsPhase1ValidationNamespaceParentObject[sys.cConstantsPhase1ValidationMessages][key3], phase1Results[key3]);
       } else if (processingPluginResults === true) {
-        await loggers.constantsValidationSummaryLog(constantsPhase1ValidationNamespaceParentObject[sys.cConstantsPhase1ValidationMessages][pluginNamespace], phase1Results[key3]);
+        loggers.constantsValidationSummaryLog(constantsPhase1ValidationNamespaceParentObject[sys.cConstantsPhase1ValidationMessages][pluginNamespace], phase1Results[key3]);
       }
       processingPluginResults = false;
       pluginNamespace = '';
@@ -147,9 +147,9 @@ async function validateConstants(inputData, inputMetaData) {
         processingPluginResults = true;
       }
       if (processingPluginResults === false) {
-        await loggers.constantsValidationSummaryLog(constantsPhase2ValidationNamespaceParentObject[sys.cConstantsPhase2ValidationMessages][key4], phase2Results[key4]); 
+        loggers.constantsValidationSummaryLog(constantsPhase2ValidationNamespaceParentObject[sys.cConstantsPhase2ValidationMessages][key4], phase2Results[key4]); 
       } else if (processingPluginResults === true) {
-        await loggers.constantsValidationSummaryLog(constantsPhase2ValidationNamespaceParentObject[sys.cConstantsPhase2ValidationMessages][pluginNamespace], phase2Results[key4]); 
+        loggers.constantsValidationSummaryLog(constantsPhase2ValidationNamespaceParentObject[sys.cConstantsPhase2ValidationMessages][pluginNamespace], phase2Results[key4]); 
       }
       processingPluginResults = false
       pluginNamespace = '';
@@ -160,20 +160,20 @@ async function validateConstants(inputData, inputMetaData) {
     } // End-for (let key4 in phase2Results)
 
     if (phase1FinalResult === true && phase2FinalResult === true) {
-      await configurator.setConfigurationSetting(wrd.csystem, cfg.cpassAllConstantsValidation, true);
+      configurator.setConfigurationSetting(wrd.csystem, cfg.cpassAllConstantsValidation, true);
       returnData[1] = true;
     } else {
-      await configurator.setConfigurationSetting(wrd.csystem, cfg.cpassAllConstantsValidation, false);
+      configurator.setConfigurationSetting(wrd.csystem, cfg.cpassAllConstantsValidation, false);
       returnData[1] = false;
     }
   } else {
     // The enableConstantsValidation flag is disabled. Enable this flag in the configuration settings to activate this command.
     console.log(msg.ccconstantsGeneratorMessage3 + msg.cconstantsGeneratorMessage4);
-    await configurator.setConfigurationSetting(wrd.csystem, cfg.cpassAllConstantsValidation, false);
+    configurator.setConfigurationSetting(wrd.csystem, cfg.cpassAllConstantsValidation, false);
     returnData[1] = false;
   }
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -189,9 +189,9 @@ async function validateConstants(inputData, inputMetaData) {
  */
 async function validateCommandAliases(inputData, inputMetaData) {
   let functionName = validateCommandAliases.name;
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
+  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = [true, false];
   let allCommandAliases = await commandBroker.getAllCommandAliasData(D[sys.cCommandsAliases]);
   let passedAllCommandAliasesDuplicateCheck = true;
@@ -200,33 +200,33 @@ async function validateCommandAliases(inputData, inputMetaData) {
   let redColorArray = await colorizer.getNamedColorData(clr.cRed, [255,0,0]);
   for (let key1 in allCommandAliases[0]) {
     // key1 is:
-    await loggers.consoleLog(namespacePrefix + functionName, msg.ckey1Is + key1);
+    loggers.consoleLog(namespacePrefix + functionName, msg.ckey1Is + key1);
     let currentCommand = allCommandAliases[0][key1];
     // currentCommand is:
-    await loggers.consoleLog(namespacePrefix + functionName, msg.ccurrentCommandIs + JSON.stringify(currentCommand));
+    loggers.consoleLog(namespacePrefix + functionName, msg.ccurrentCommandIs + JSON.stringify(currentCommand));
     console.log(msg.ccurrentCommandIs + key1);
     let aliasList = currentCommand[wrd.cAliases];
     // aliasList is:
-    await loggers.consoleLog(namespacePrefix + functionName, msg.caliasListIs + aliasList);
+    loggers.consoleLog(namespacePrefix + functionName, msg.caliasListIs + aliasList);
     let arrayOfAliases = aliasList.split(bas.cComa);
     for (let j = 0; j < arrayOfAliases.length; j++) {
       // BEGIN j-th loop:
-      await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_jthLoop + j);
+      loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_jthLoop + j);
       let currentAlias = arrayOfAliases[j];
       // currentAlias is:
-      await loggers.consoleLog(namespacePrefix + functionName, msg.ccurrentAliasIs + currentAlias);
+      loggers.consoleLog(namespacePrefix + functionName, msg.ccurrentAliasIs + currentAlias);
       duplicateAliasCount = await commandBroker.countMatchingCommandAlias(D[sys.cCommandsAliases], currentAlias);
       if (duplicateAliasCount > 1) {
 
         // duplicateAliasCount is:
         let duplicateAliasCountMessage = msg.cduplicateAliasCountIs + duplicateAliasCount;
-        duplicateAliasCountMessage = await colorizer.colorizeMessageSimple(duplicateAliasCountMessage, blackColorArray, true);
-        duplicateAliasCountMessage = await colorizer.colorizeMessageSimple(duplicateAliasCountMessage, redColorArray, false);
+        duplicateAliasCountMessage = colorizer.colorizeMessageSimple(duplicateAliasCountMessage, blackColorArray, true);
+        duplicateAliasCountMessage = colorizer.colorizeMessageSimple(duplicateAliasCountMessage, redColorArray, false);
         console.log(duplicateAliasCountMessage);
         // duplicate command alias is:
         let duplicateAliasCommandMessage = msg.cduplicateCommandAliasIs + currentAlias;
-        duplicateAliasCommandMessage = await colorizer.colorizeMessageSimple(duplicateAliasCommandMessage, blackColorArray, true);
-        duplicateAliasCommandMessage = await colorizer.colorizeMessageSimple(duplicateAliasCommandMessage, redColorArray, false);
+        duplicateAliasCommandMessage = colorizer.colorizeMessageSimple(duplicateAliasCommandMessage, blackColorArray, true);
+        duplicateAliasCommandMessage = colorizer.colorizeMessageSimple(duplicateAliasCommandMessage, redColorArray, false);
         console.log(duplicateAliasCommandMessage);
 
         passedAllCommandAliasesDuplicateCheck = false;
@@ -234,7 +234,7 @@ async function validateCommandAliases(inputData, inputMetaData) {
         // DO NOT break out of any loops here, the command should scan all command aliases!
       }
       // END j-th loop:
-      await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_jthLoop + j);
+      loggers.consoleLog(namespacePrefix + functionName, msg.cEND_jthLoop + j);
     } // End-for (let j = 0; j < arrayOfAliases.length; j++)
   } // End-for (let key1 in allCommandAliases[0])
   if (passedAllCommandAliasesDuplicateCheck === true) {
@@ -242,9 +242,9 @@ async function validateCommandAliases(inputData, inputMetaData) {
     console.log(msg.cvalidateCommandAliasesMessage1);
     returnData[1] = true;
   } // End-if (passedAllCommandAliasesDuplicateCheck === true)
-  await configurator.setConfigurationSetting(wrd.csystem, cfg.cpassedAllCommandAliasesDuplicateChecks, passedAllCommandAliasesDuplicateCheck);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  configurator.setConfigurationSetting(wrd.csystem, cfg.cpassedAllCommandAliasesDuplicateChecks, passedAllCommandAliasesDuplicateCheck);
+  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -260,9 +260,9 @@ async function validateCommandAliases(inputData, inputMetaData) {
  */
 async function validateWorkflows(inputData, inputMetaData) {
   let functionName = validateWorkflows.name;
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
+  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = [true, false];
   let numberOfDuplicatesFound = 0;
   let passedAllWorkflowDuplicateCheck = true;
@@ -270,17 +270,17 @@ async function validateWorkflows(inputData, inputMetaData) {
   let blackColorArray = await colorizer.getNamedColorData(clr.cBlack, [0,0,0]);
   let redColorArray = await colorizer.getNamedColorData(clr.cRed, [255,0,0]);
   // allWorkflowsData is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.callWorkflowsDataIs + JSON.stringify(allWorkflowsData));
+  loggers.consoleLog(namespacePrefix + functionName, msg.callWorkflowsDataIs + JSON.stringify(allWorkflowsData));
   for (let workflowKey in allWorkflowsData) {
     numberOfDuplicatesFound = 0;
     let workflowName = allWorkflowsData[workflowKey];
     // workflowName is:
-    await loggers.consoleLog(namespacePrefix + functionName, msg.cworkflowNameIs + workflowName);
+    loggers.consoleLog(namespacePrefix + functionName, msg.cworkflowNameIs + workflowName);
     console.log(msg.cworkflowNameIs + workflowName);
     for (const element of allWorkflowsData) {
       let secondTierWorkflowName = element;
       // secondTierWorkflowName is:
-      await loggers.consoleLog(namespacePrefix + functionName, msg.csecondTierWorkflowNameIs + secondTierWorkflowName);
+      loggers.consoleLog(namespacePrefix + functionName, msg.csecondTierWorkflowNameIs + secondTierWorkflowName);
       if (workflowName === secondTierWorkflowName) {
         numberOfDuplicatesFound = numberOfDuplicatesFound + 1;
       }
@@ -288,14 +288,14 @@ async function validateWorkflows(inputData, inputMetaData) {
     if (numberOfDuplicatesFound > 1) {
       // Duplicate workflow count is:
       let duplicateWorkflowCountMessage = msg.cDuplicateWorkflowCountIs + numberOfDuplicatesFound;
-      duplicateWorkflowCountMessage = await colorizer.colorizeMessageSimple(duplicateWorkflowCountMessage, blackColorArray, true);
-      duplicateWorkflowCountMessage = await colorizer.colorizeMessageSimple(duplicateWorkflowCountMessage, redColorArray, false);
+      duplicateWorkflowCountMessage = colorizer.colorizeMessageSimple(duplicateWorkflowCountMessage, blackColorArray, true);
+      duplicateWorkflowCountMessage = colorizer.colorizeMessageSimple(duplicateWorkflowCountMessage, redColorArray, false);
       console.log(duplicateWorkflowCountMessage);
 
       // Duplicate workflow name is:
       let duplicateWorkflowMessage = msg.cDuplicateWorkflowNameIs + workflowName;
-      duplicateWorkflowMessage = await colorizer.colorizeMessageSimple(duplicateWorkflowMessage, blackColorArray, true);
-      duplicateWorkflowMessage = await colorizer.colorizeMessageSimple(duplicateWorkflowMessage, redColorArray, false);
+      duplicateWorkflowMessage = colorizer.colorizeMessageSimple(duplicateWorkflowMessage, blackColorArray, true);
+      duplicateWorkflowMessage = colorizer.colorizeMessageSimple(duplicateWorkflowMessage, redColorArray, false);
       console.log(duplicateWorkflowMessage);
 
       passedAllWorkflowDuplicateCheck = false;
@@ -307,9 +307,9 @@ async function validateWorkflows(inputData, inputMetaData) {
     console.log(msg.cvalidateWorkflowsMessage01);
     returnData[1] = true;
   } // End-if (passedAllWorkflowDuplicateCheck === true)
-  await configurator.setConfigurationSetting(wrd.csystem, cfg.cpassedAllWorkflowDuplicateChecks, passedAllWorkflowDuplicateCheck);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  configurator.setConfigurationSetting(wrd.csystem, cfg.cpassedAllWorkflowDuplicateChecks, passedAllWorkflowDuplicateCheck);
+  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 

@@ -30,16 +30,16 @@ const namespacePrefix = wrd.cframework + bas.cDot + wrd.cbrokers + bas.cDot + ba
  * @param {string} pluginName The name of the current plugin these workflows belong to.
  * @param {object} pluginWorkflows A JSON object that contains the plugin workflows that should be merged with the system workflows.
  * @return {boolean} True or False to indicate if the merge was successful or not.
- * @autor Seth Hollingsead
+ * @author Seth Hollingsead
  * @date 2022/10/25
  */
 async function addPluginWorkflows(pluginName, pluginWorkflows) {
   let functionName = addPluginWorkflows.name;
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // pluginName is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginNameIs + pluginName);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cpluginNameIs + pluginName);
   // pluginWorkflows is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginWorkflowsIs + JSON.stringify(pluginWorkflows));
+  loggers.consoleLog(namespacePrefix + functionName, msg.cpluginWorkflowsIs + JSON.stringify(pluginWorkflows));
   let returnData = false;
   try {
     if (D[sys.cCommandWorkflows][wrd.cPlugins] === undefined) {
@@ -53,8 +53,8 @@ async function addPluginWorkflows(pluginName, pluginWorkflows) {
     console.log(msg.cErrorAddPluginWorkflowsMessage01 + pluginName);
     console.log(msg.cERROR_Colon + err);
   }
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -70,16 +70,16 @@ async function addPluginWorkflows(pluginName, pluginWorkflows) {
  */
 async function getWorkflow(workflowName) {
   let functionName = getWorkflow.name;
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // workflowName is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cworkflowNameIs + workflowName);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cworkflowNameIs + workflowName);
   let workflowValue = false;
   let currentWorkflow = await searchWorkflow(D[sys.cCommandWorkflows], workflowName);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.ccurrentWorkflowIs + JSON.stringify(currentWorkflow));
+  loggers.consoleLog(namespacePrefix + functionName, msg.ccurrentWorkflowIs + JSON.stringify(currentWorkflow));
   workflowValue = currentWorkflow;
   // workflowValue is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cworkflowValueIs + JSON.stringify(workflowValue));
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cworkflowValueIs + JSON.stringify(workflowValue));
+  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return workflowValue;
 }
 
@@ -93,17 +93,17 @@ async function getWorkflow(workflowName) {
  */
 async function doesWorkflowExist(workflowName) {
   let functionName = doesWorkflowExist.name;
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // workflowName is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cworkflowNameIs + workflowName);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cworkflowNameIs + workflowName);
   let workflowFound = false;
   let workflowSearchResult = await searchWorkflow(D[sys.cCommandWorkflows], workflowName);
   if (workflowSearchResult) {
     workflowFound = true;
   }
   // workflowFound is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cworkflowFoundIs + workflowFound);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cworkflowFoundIs + workflowFound);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return workflowFound;
 }
 
@@ -116,17 +116,17 @@ async function doesWorkflowExist(workflowName) {
  */
 async function doesWorkflowExistInWorkflowData(workflowData, workflowName) {
   let functionName = doesWorkflowExist.name;
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // workflowName is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cworkflowNameIs + workflowName);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cworkflowNameIs + workflowName);
   let workflowFound = false;
   let workflowSearchResult = await searchWorkflow(workflowData, workflowName);
   if (workflowSearchResult) {
     workflowFound = true;
   }
   // workflowFound is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cworkflowFoundIs + workflowFound);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cworkflowFoundIs + workflowFound);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return workflowFound;
 }
 
@@ -142,18 +142,18 @@ async function doesWorkflowExistInWorkflowData(workflowData, workflowName) {
  */
 async function searchWorkflow(workflowData, workflowName) {
   let functionName = searchWorkflow.name;
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // workflowData is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cworkflowDataIs + JSON.stringify(workflowData));
+  loggers.consoleLog(namespacePrefix + functionName, msg.cworkflowDataIs + JSON.stringify(workflowData));
   // workflowName is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cworkflowNameIs + workflowName);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cworkflowNameIs + workflowName);
   let workflowObject = false;
   if (typeof workflowData === wrd.cobject) {
     for (let workflowEntity in workflowData) {
       // workflowEntity is:
-      await loggers.consoleLog(namespacePrefix + functionName, msg.cworkflowEntityIs + JSON.stringify(workflowEntity));
+      loggers.consoleLog(namespacePrefix + functionName, msg.cworkflowEntityIs + JSON.stringify(workflowEntity));
       // workflow is:
-      await loggers.consoleLog(namespacePrefix + functionName, msg.cworkflowIs + JSON.stringify(workflowData[workflowEntity]));
+      loggers.consoleLog(namespacePrefix + functionName, msg.cworkflowIs + JSON.stringify(workflowData[workflowEntity]));
       if (workflowEntity != workflowName || (workflowEntity === workflowName && typeof workflowData[workflowEntity] === wrd.cobject)) {
         let workflowObjectTemp = await searchWorkflow(workflowData[workflowEntity], workflowName);
         if (workflowObjectTemp && typeof workflowObjectTemp != wrd.cobject) {
@@ -168,8 +168,8 @@ async function searchWorkflow(workflowData, workflowName) {
     } // End-for (let workflowEntity in workflowData)
   } // End-if (typeof workflowData === wrd.cobject)
   // workflowObject is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cworkflowObjectIs + workflowObject);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cworkflowObjectIs + workflowObject);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return workflowObject;
 }
 
@@ -185,9 +185,9 @@ async function searchWorkflow(workflowData, workflowName) {
  */
 async function getAllWorkflows(workflowDataStructure) {
   let functionName = getAllWorkflows.name;
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // workflowDataStructure is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cworkflowDataStructureIs + JSON.stringify(workflowDataStructure));
+  loggers.consoleLog(namespacePrefix + functionName, msg.cworkflowDataStructureIs + JSON.stringify(workflowDataStructure));
   let allWorkflows = false;
   let internalWorkflowDataStructure;
   if (workflowDataStructure === undefined) {
@@ -195,42 +195,42 @@ async function getAllWorkflows(workflowDataStructure) {
   } else {
     internalWorkflowDataStructure = JSON.parse(JSON.stringify(workflowDataStructure));
   }
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinternalWorkflowDataStructureIs + JSON.stringify(internalWorkflowDataStructure));
+  loggers.consoleLog(namespacePrefix + functionName, msg.cinternalWorkflowDataStructureIs + JSON.stringify(internalWorkflowDataStructure));
   if (typeof internalWorkflowDataStructure === wrd.cobject) {
     allWorkflows = [];
     for (let workflowEntity in internalWorkflowDataStructure) {
       // workflowEntity is:
-      await loggers.consoleLog(namespacePrefix + functionName, msg.cworkflowEntityIs + JSON.stringify(workflowEntity));
+      loggers.consoleLog(namespacePrefix + functionName, msg.cworkflowEntityIs + JSON.stringify(workflowEntity));
       // workflowDataStructure[workflowEntity] is:
-      await loggers.consoleLog(namespacePrefix + functionName, msg.cinternalWorkflowDataStructureWorkflowEntityIs + JSON.stringify(internalWorkflowDataStructure[workflowEntity]));
+      loggers.consoleLog(namespacePrefix + functionName, msg.cinternalWorkflowDataStructureWorkflowEntityIs + JSON.stringify(internalWorkflowDataStructure[workflowEntity]));
       if (typeof internalWorkflowDataStructure[workflowEntity] === wrd.cobject) {
         // internalWorkflowDataStructure[workflowEntity] is of type object!
-        await loggers.consoleLog(namespacePrefix + functionName, msg.cinternalWorkflowDataStructureWorkflowEntityIsOfTypeObject);
+        loggers.consoleLog(namespacePrefix + functionName, msg.cinternalWorkflowDataStructureWorkflowEntityIsOfTypeObject);
         let allWorkflowsTemp;
         allWorkflowsTemp = await getAllWorkflows(internalWorkflowDataStructure[workflowEntity]);
         // allWorkflowsTemp returned from the recursive call is:
-        await loggers.consoleLog(namespacePrefix + functionName, msg.callWorkflowsTempReturnedFromRecursiveCallIs + JSON.stringify(allWorkflowsTemp));
+        loggers.consoleLog(namespacePrefix + functionName, msg.callWorkflowsTempReturnedFromRecursiveCallIs + JSON.stringify(allWorkflowsTemp));
         if (allWorkflowsTemp === false) {
           // The recursive call returned false, so push the current entity to the output array!
-          await loggers.consoleLog(namespacePrefix + functionName, msg.cgetAllWorkflowsMessage01 + msg.cgetAllWorkflowsMessage02);
+          loggers.consoleLog(namespacePrefix + functionName, msg.cgetAllWorkflowsMessage01 + msg.cgetAllWorkflowsMessage02);
           allWorkflows.push(workflowEntity);
           // allWorkflows after pushing to the array 1 is:
-          await loggers.consoleLog(namespacePrefix + functionName, msg.callWorkflowsAfterPushingToArray1Is + JSON.stringify(allWorkflows));
+          loggers.consoleLog(namespacePrefix + functionName, msg.callWorkflowsAfterPushingToArray1Is + JSON.stringify(allWorkflows));
         } else {
           allWorkflows = allWorkflows.concat(allWorkflowsTemp);
         }
       } else {
         // workflowEntity is NOT an object type, so push it to the output array!
-        await loggers.consoleLog(namespacePrefix + functionName, msg.cgetAllWorkflowsMessage03 + msg.cgetAllWorkflowsMessage04);
+        loggers.consoleLog(namespacePrefix + functionName, msg.cgetAllWorkflowsMessage03 + msg.cgetAllWorkflowsMessage04);
         allWorkflows.push(workflowEntity);
         // allWorkflows after pushing to the array 2 is:
-        await loggers.consoleLog(namespacePrefix + functionName, msg.callWorkflowsAfterPushingToArray2Is + JSON.stringify(allWorkflows));
+        loggers.consoleLog(namespacePrefix + functionName, msg.callWorkflowsAfterPushingToArray2Is + JSON.stringify(allWorkflows));
       }
     } // End-for (let workflowEntity in internalWorkflowDataStructure)
   } // End-if (typeof workflowDataStructure === wrd.cobject)
   // workflow is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cworkflowIs + JSON.stringify(allWorkflows));
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cworkflowIs + JSON.stringify(allWorkflows));
+  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return allWorkflows;
 }
 
@@ -247,20 +247,20 @@ async function getAllWorkflows(workflowDataStructure) {
  */
 async function getWorkflowNamespaceDataObject(workflowDataStructure, namespaceToFind) {
   let functionName = getWorkflowNamespaceDataObject.name;
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // workflowDataStructure is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cworkflowDataStructureIs + JSON.stringify(workflowDataStructure));
+  loggers.consoleLog(namespacePrefix + functionName, msg.cworkflowDataStructureIs + JSON.stringify(workflowDataStructure));
   // namespaceToFind is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cnamespaceToFindIs + namespaceToFind);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cnamespaceToFindIs + namespaceToFind);
   let workflowNamespaceObject = false;
   if (workflowDataStructure === undefined) {
     workflowDataStructure = D[sys.cCommandWorkflows];
   }
   for (let workflowEntity in workflowDataStructure) {
     // workflowEntity is:
-    await loggers.consoleLog(namespacePrefix + functionName, msg.cworkflowEntityIs + JSON.stringify(workflowEntity));
+    loggers.consoleLog(namespacePrefix + functionName, msg.cworkflowEntityIs + JSON.stringify(workflowEntity));
     // workflowDataStructure[workflowEntity] is:
-    await loggers.consoleLog(namespacePrefix + functionName, msg.cworkflowDataStructureWorkflowEntityIs + JSON.stringify(workflowDataStructure[workflowEntity]));
+    loggers.consoleLog(namespacePrefix + functionName, msg.cworkflowDataStructureWorkflowEntityIs + JSON.stringify(workflowDataStructure[workflowEntity]));
     if (workflowEntity === namespaceToFind) {
       workflowNamespaceObject = workflowDataStructure[workflowEntity];
       break;
@@ -276,8 +276,8 @@ async function getWorkflowNamespaceDataObject(workflowDataStructure, namespaceTo
     }
   } // End-for (let workflowEntity in workflowDataStructure)
   // workflowNamespaceObject is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cworkflowNamespaceObjectIs + JSON.stringify(workflowNamespaceObject));
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cworkflowNamespaceObjectIs + JSON.stringify(workflowNamespaceObject));
+  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return workflowNamespaceObject;
 }
 
@@ -292,9 +292,9 @@ async function getWorkflowNamespaceDataObject(workflowDataStructure, namespaceTo
  */
 async function removePluginWorkflows(pluginName) {
   let functionName = removePluginWorkflows.name;
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // pluginName is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginNameIs + pluginName);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cpluginNameIs + pluginName);
   let returnData = false;
   let allPluginsWorkflowData = D[sys.cCommandWorkflows][wrd.cPlugins];
   if (allPluginsWorkflowData) {
@@ -311,8 +311,8 @@ async function removePluginWorkflows(pluginName) {
     // ERROR: Unable to locate the plugins workflow data. Plugin:
     console.log(msg.cremovePluginWorkflowsMessage02 + pluginName);
   }
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
