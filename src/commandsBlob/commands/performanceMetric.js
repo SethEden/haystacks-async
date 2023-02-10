@@ -44,9 +44,9 @@ const namespacePrefix = wrd.cframework + bas.cDot + sys.ccommandsBlob + bas.cDot
  */
 async function businessRulesMetrics(inputData, inputMetaData) {
    let functionName = businessRulesMetrics.name;
-   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
-   loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
+   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
+   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
    let returnData = [true, []];
    let businessRuleMetricsEnabled = await configurator.getConfigurationSetting(wrd.csystem, cfg.cenableBusinessRulePerformanceMetrics);
    if (businessRuleMetricsEnabled === true) {
@@ -69,48 +69,48 @@ async function businessRulesMetrics(inputData, inputMetaData) {
          if (D[cfg.cbusinessRulesPerformanceTrackingStack][j][wrd.cName] === currentBusinessRuleName) {
            businessRuleCounter = businessRuleCounter + 1;
            // businessRuleCounter is:
-           loggers.consoleLog(namespacePrefix + functionName, msg.cbusinessRuleCounterIs + businessRuleCounter);
+           await loggers.consoleLog(namespacePrefix + functionName, msg.cbusinessRuleCounterIs + businessRuleCounter);
            businessRulePerformanceSum = businessRulePerformanceSum + D[cfg.cbusinessRulesPerformanceTrackingStack][j][sys.cRunTime];
            // businessRulePerformanceSum is:
-           loggers.consoleLog(namespacePrefix + functionName, msg.cbusinessRulePerformanceSumIs + businessRulePerformanceSum);
+           await loggers.consoleLog(namespacePrefix + functionName, msg.cbusinessRulePerformanceSumIs + businessRulePerformanceSum);
          } // End-if (D[cfg.cBusinessRulePerformanceTrackingStack][j][wrd.cName] === currentBusinessRuleName)
        } // End-for (let j = 0; j < await stack.length(cfg.cBusinessRulePerformanceTrackingStack); j++)
        // DONE! businessRulePerformanceSum is:
-       loggers.consoleLog(namespacePrefix + functionName, msg.cDoneBusinessRulePerformanceSumIs + businessRulePerformanceSum);
+       await loggers.consoleLog(namespacePrefix + functionName, msg.cDoneBusinessRulePerformanceSumIs + businessRulePerformanceSum);
        average = businessRulePerformanceSum / businessRuleCounter;
        // average is:
-       loggers.consoleLog(namespacePrefix + functionName, msg.caverageIs + average);
+       await loggers.consoleLog(namespacePrefix + functionName, msg.caverageIs + average);
        // Now go back through them all so we can compute the standard deviation.
        for (let k = 0; k < await stack.length(cfg.cbusinessRulesPerformanceTrackingStack); k++) {
          if (D[cfg.cbusinessRulesPerformanceTrackingStack][k][wrd.cName] === currentBusinessRuleName) {
            businessRulePerformanceStdSum = businessRulePerformanceStdSum + math.pow((D[cfg.cbusinessRulesPerformanceTrackingStack][k][sys.cRunTime] - average), 2);
            // businessRulePerformanceStdSum is:
-           loggers.consoleLog(namespacePrefix + functionName, msg.cbusinessRulePerformanceStdSumIs + businessRulePerformanceStdSum);
+           await loggers.consoleLog(namespacePrefix + functionName, msg.cbusinessRulePerformanceStdSumIs + businessRulePerformanceStdSum);
          } // End-if (D[cfg.cBusinessRulePerformanceTrackingStack][k][wrd.cName] === currentBusinessRuleName)
        } // End-for (let k = 0; k < await stack.length(cfg.cBusinessRulePerformanceTrackingStack); k++)
        // DONE! businessRulePerformanceStdSum is:
-       loggers.consoleLog(namespacePrefix + functionName, msg.cDoneBusinessRulePerformanceStdSumIs + businessRulePerformanceStdSum);
+       await loggers.consoleLog(namespacePrefix + functionName, msg.cDoneBusinessRulePerformanceStdSumIs + businessRulePerformanceStdSum);
        standardDev = math.sqrt(businessRulePerformanceStdSum / businessRuleCounter);
        // standardDev is:
-       loggers.consoleLog(namespacePrefix + functionName, msg.cstandardDevIs + standardDev);
+       await loggers.consoleLog(namespacePrefix + functionName, msg.cstandardDevIs + standardDev);
 
        if (D[cfg.cbusinessRulesPerformanceAnalysisStack] === undefined) {
-        stack.initStack(cfg.cbusinessRulesPerformanceAnalysisStack);
+        await stack.initStack(cfg.cbusinessRulesPerformanceAnalysisStack);
        }
-       stack.push(cfg.cbusinessRulesPerformanceAnalysisStack, {Name: currentBusinessRuleName, Average: average, StandardDeviation: standardDev});
+       await stack.push(cfg.cbusinessRulesPerformanceAnalysisStack, {Name: currentBusinessRuleName, Average: average, StandardDeviation: standardDev});
      } // End-for (let i = 0; i < await stack.length(cfg.cBusinessRulesNamesPerformanceTrackingStack); i++)
-     loggers.consoleTableLog('', D[cfg.cbusinessRulesPerformanceAnalysisStack], [wrd.cName, wrd.cAverage, sys.cStandardDeviation]);
+     await loggers.consoleTableLog('', D[cfg.cbusinessRulesPerformanceAnalysisStack], [wrd.cName, wrd.cAverage, sys.cStandardDeviation]);
      returnData[1] = await ruleBroker.processRules([D[cfg.cbusinessRulesPerformanceAnalysisStack], ''], [biz.carrayDeepClone]);
-     stack.clearStack(cfg.cbusinessRulesPerformanceAnalysisStack);
+     await stack.clearStack(cfg.cbusinessRulesPerformanceAnalysisStack);
      // We need to have a flag that will enable the user to determine if the data should be cleared after the analysis is complete.
      // It might be that the user wants to do something else with this data in memory after it's done.
      if (await configurator.getConfigurationSetting(wrd.csystem, cfg.cclearBusinessRulesPerformanceDataAfterAnalysis) === true) {
-      stack.clearStack(cfg.cbusinessRulesPerformanceTrackingStack);
-      stack.clearStack(cfg.cbusinessRulesNamesPerformanceTrackingStack);
+      await stack.clearStack(cfg.cbusinessRulesPerformanceTrackingStack);
+      await stack.clearStack(cfg.cbusinessRulesNamesPerformanceTrackingStack);
      } // End-if (configurator.getConfigurationSetting(wrd.csystem, cfg.cclearBusinessRulesPerformanceDataAfterAnalysis) === true)
    } // End-if (businessRuleMetricsEnabled === true)
-   loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
-   loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
    return returnData;
 }
 
@@ -126,9 +126,9 @@ async function businessRulesMetrics(inputData, inputMetaData) {
  */
 async function commandMetrics(inputData, inputMetaData) {
    let functionName = commandMetrics.name;
-   loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-   loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
-   loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
+   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
+   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
    let returnData = [true, []];
    let commandMetricsEnabled = await configurator.getConfigurationSetting(wrd.csystem, cfg.cenableCommandPerformanceMetrics);
    if (commandMetricsEnabled === true) {
@@ -151,47 +151,47 @@ async function commandMetrics(inputData, inputMetaData) {
          if (D[cfg.ccommandsPerformanceTrackingStack][j][wrd.cName] === currentCommandName) {
            commandCounter = commandCounter + 1;
            // commandCounter is:
-           loggers.consoleLog(namespacePrefix + functionName, msg.ccommandCounterIs + commandCounter);
+           await loggers.consoleLog(namespacePrefix + functionName, msg.ccommandCounterIs + commandCounter);
            commandPerformanceSum = commandPerformanceSum + D[cfg.ccommandsPerformanceTrackingStack][j][sys.cRunTime];
            // commandPerformanceSum is:
-           loggers.consoleLog(namespacePrefix + functionName, msg.ccommandPerformanceSumIs + commandPerformanceSum);
+           await loggers.consoleLog(namespacePrefix + functionName, msg.ccommandPerformanceSumIs + commandPerformanceSum);
          } // End-if (D[cfg.ccommandsPerformanceTrackingStack][j][wrd.cName] === currentCommandName)
        } // End-for (let j = 0; j < stack.length(cfg.ccommandsPerformanceTrackingStack); j++)
        // DONE! commandPerformanceSum is:
-       loggers.consoleLog(namespacePrefix + functionName, msg.cDoneCommandPerformanceSumIs + commandPerformanceSum);
+       await loggers.consoleLog(namespacePrefix + functionName, msg.cDoneCommandPerformanceSumIs + commandPerformanceSum);
        average = commandPerformanceSum / commandCounter;
        // average is:
-       loggers.consoleLog(namespacePrefix + functionName, msg.caverageIs + average);
+       await loggers.consoleLog(namespacePrefix + functionName, msg.caverageIs + average);
        // Now go back through them allso we can compute the standard deviation.
        for (let k = 0; k < await stack.length(cfg.ccommandsPerformanceTrackingStack); k++) {
          if (D[cfg.ccommandsPerformanceTrackingStack][k][wrd.cName] === currentCommandName) {
            commandPerformanceStdSum = commandPerformanceStdSum + math.pow((D[cfg.ccommandsPerformanceTrackingStack][k][sys.cRunTime] - average), 2);
            // commandPerformanceStdSum is:
-           loggers.consoleLog(namespacePrefix + functionName, msg.ccommandPerformanceStdSumIs + commandPerformanceStdSum);
+           await loggers.consoleLog(namespacePrefix + functionName, msg.ccommandPerformanceStdSumIs + commandPerformanceStdSum);
          } // End-if (D[cfg.ccommandsPerformanceTrackingStack][k][wrd.cName] === currentCommandName)
        } // End-for (let k = 0; k < stack.length(cfg.ccommandsPerformanceTrackingStack); k++)
        // DONE! commandPerformanceStdSum is:
-       loggers.consoleLog(namespacePrefix + functionName, msg.cDoneCommandPerformanceStdSumIs + commandPerformanceStdSum);
+       await loggers.consoleLog(namespacePrefix + functionName, msg.cDoneCommandPerformanceStdSumIs + commandPerformanceStdSum);
        standardDev = math.sqrt(commandPerformanceStdSum / commandCounter);
        // standardDev is:
-       loggers.consoleLog(namespacePrefix + functionName, msg.cstandardDevIs + standardDev);
+       await loggers.consoleLog(namespacePrefix + functionName, msg.cstandardDevIs + standardDev);
        if (D[cfg.ccommandsPerformanceAnalysisStack] === undefined) {
-        stack.initStack(cfg.ccommandsPerformanceAnalysisStack);
+        await stack.initStack(cfg.ccommandsPerformanceAnalysisStack);
        }
-       stack.push(cfg.ccommandsPerformanceAnalysisStack, {Name: currentCommandName, Average: average, StandardDeviation: standardDev});
+       await stack.push(cfg.ccommandsPerformanceAnalysisStack, {Name: currentCommandName, Average: average, StandardDeviation: standardDev});
      } // End-for (let i = 0; i < stack.length(cfg.ccommandNamesPerformanceTrackingStack); i++)
-     loggers.consoleTableLog('', D[cfg.ccommandsPerformanceAnalysisStack], [wrd.cName, wrd.cAverage, sys.cStandardDeviation]);
+     await loggers.consoleTableLog('', D[cfg.ccommandsPerformanceAnalysisStack], [wrd.cName, wrd.cAverage, sys.cStandardDeviation]);
      returnData[1] = await ruleBroker.processRules([D[cfg.ccommandsPerformanceAnalysisStack], ''], [biz.carrayDeepClone]);
-     stack.clearStack(cfg.ccommandsPerformanceAnalysisStack);
+     await stack.clearStack(cfg.ccommandsPerformanceAnalysisStack);
      // We need to have a flag that will enable the user to determine if the data should be cleared after the analysis is complete.
      // It might be that the user wants to do something else with this data in memory after it's done.
      if (await configurator.getConfigurationSetting(wrd.csystem, cfg.cclearCommandPerformanceDataAfterAnalysis) === true) {
-      stack.clearStack(cfg.ccommandsPerformanceTrackingStack);
-      stack.clearStack(cfg.ccommandNamesPerformanceTrackingStack);
+      await stack.clearStack(cfg.ccommandsPerformanceTrackingStack);
+      await stack.clearStack(cfg.ccommandNamesPerformanceTrackingStack);
      } // End-if (configurator.getConfigurationSetting(wrd.csystem, cfg.cclearCommandPerformanceDataAfterAnalysis) === true)
    } // End-if (commandMetricsEnabled === true)
-   loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
-   loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
    return returnData;
 }
 

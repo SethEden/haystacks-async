@@ -43,13 +43,13 @@ const namespacePrefix = wrd.cframework + bas.cDot + sys.ccommandsBlob + bas.cDot
  */
 async function saveConfiguration(inputData, inputMetaData) {
   let functionName = saveConfiguration.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = [true, {}];
-  returnData[1] = dataBroker.writeJsonDataToFile(await configurator.getConfigurationSetting(wrd.csystem, cfg.cappConfigPath) + wrd.cconfig + gen.cDotjson, JSON.stringify(D));
-  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  returnData[1] = await dataBroker.writeJsonDataToFile(await configurator.getConfigurationSetting(wrd.csystem, cfg.cappConfigPath) + wrd.cconfig + gen.cDotjson, JSON.stringify(D));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -75,28 +75,28 @@ async function saveConfiguration(inputData, inputMetaData) {
  */
 async function changeConfigurationSetting(inputData, inputMetaData) {
   let functionName = changeConfigurationSetting.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = [true, {}];
   let errorMessage = '';
   if (inputData && inputData.length === 3) {
     let dataPath = inputData[1];
     dataPath = await ruleBroker.processRules([dataPath, ''], [biz.cgetWordsArrayFromString]);
     // dataPath is:
-    loggers.consoleLog(namespacePrefix + functionName, msg.cdataPathIs + JSON.stringify(dataPath));
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cdataPathIs + JSON.stringify(dataPath));
     let newValue = inputData[2];
     // newValue is:
-    loggers.consoleLog(namespacePrefix + functionName, msg.cnewValueIs + JSON.stringify(newValue));
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cnewValueIs + JSON.stringify(newValue));
     if (dataPath[0] === wrd.cconfiguration) {
       dataPath.shift(wrd.cconfiguration);
     }
     let configurationName = dataPath.pop();
     // dataPath is:
-    loggers.consoleLog(namespacePrefix + functionName, msg.cdataPathIs + JSON.stringify(dataPath));
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cdataPathIs + JSON.stringify(dataPath));
     dataPath = dataPath.join(bas.cDot);
     newValue = await ruleBroker.processRules([newValue, ''], [biz.cstringToDataType]);
-    configurator.setConfigurationSetting(dataPath, configurationName, newValue);
+    await configurator.setConfigurationSetting(dataPath, configurationName, newValue);
     returnData[1] = true;
   } else {
     // ERROR: Invalid entry, please enter a valid configuration namespace to change,
@@ -107,8 +107,8 @@ async function changeConfigurationSetting(inputData, inputMetaData) {
     // EXAMPLE: changeConfigurationSetting debugSetting.businessRules.rules.arrayParsing.commandArrayParsing.solveLehmerCode true
     console.log(msg.cchangeConfigurationSettingMessage03);
   }
-  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -124,20 +124,20 @@ async function changeConfigurationSetting(inputData, inputMetaData) {
  */
 async function listConfigurationThemes(inputData, inputMetaData) {
   let functionName = listConfigurationThemes.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = [true, {}];
   let frameworkThemesPath = await configurator.getConfigurationSetting(wrd.csystem, cfg.cframeworkThemesPath);
   frameworkThemesPath = path.resolve(frameworkThemesPath);
   // frameworkThemesPath is:
-  loggers.consoleLog(namespacePrefix + functionName, msg.cframeworkThemesPathIs + frameworkThemesPath);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cframeworkThemesPathIs + frameworkThemesPath);
   let themesList = await themeBroker.getNamedThemesFromRootPath(frameworkThemesPath);
   // themesList is:
   console.log(msg.cthemesListIs + JSON.stringify(themesList));
   returnData[1] = themesList;
-  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -155,28 +155,28 @@ async function listConfigurationThemes(inputData, inputMetaData) {
  */
 async function changeDebugConfigurationTheme(inputData, inputMetaData) {
   let functionName = changeDebugConfigurationTheme.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = [true, {}];
   let errorMessage = '';
   if (inputData && inputData.length === 2) {
     let desiredThemeName = inputData[1];
     // desiredThemeName is:
-    loggers.consoleLog(namespacePrefix + functionName, msg.cdesiredThemeNameIs + desiredThemeName);
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cdesiredThemeNameIs + desiredThemeName);
     let frameworkThemesPath = await configurator.getConfigurationSetting(wrd.csystem, cfg.cframeworkThemesPath);
     frameworkThemesPath = path.resolve(frameworkThemesPath);
     // frameworkThemesPath is:
-    loggers.consoleLog(namespacePrefix + functionName, msg.cframeworkThemesPathIs + frameworkThemesPath);
-    let namedThemePath = themeBroker.getNamedThemePathFromRootPath(desiredThemeName, frameworkThemesPath);
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cframeworkThemesPathIs + frameworkThemesPath);
+    let namedThemePath = await themeBroker.getNamedThemePathFromRootPath(desiredThemeName, frameworkThemesPath);
     if (namedThemePath !== false) {
       // namedThemePath is verified:
-      loggers.consoleLog(namespacePrefix + functionName, msg.cnamedThemePathIsVerified + namedThemePath);
-      configurator.setConfigurationSetting(wrd.csystem, sys.cthemeConfigPath, namedThemePath);
+      await loggers.consoleLog(namespacePrefix + functionName, msg.cnamedThemePathIsVerified + namedThemePath);
+      await configurator.setConfigurationSetting(wrd.csystem, sys.cthemeConfigPath, namedThemePath);
       let loadedThemeData = await themeBroker.loadTheme(namedThemePath);
       // loadedThemeData is:
-      loggers.consoleLog(namespacePrefix + functionName, msg.cloadedThemeDataIs + JSON.stringify(loadedThemeData));
-      let themeLoadedSuccessfully = themeBroker.applyTheme(loadedThemeData);
+      await loggers.consoleLog(namespacePrefix + functionName, msg.cloadedThemeDataIs + JSON.stringify(loadedThemeData));
+      let themeLoadedSuccessfully = await themeBroker.applyTheme(loadedThemeData);
       returnData[1] = themeLoadedSuccessfully;
       if (themeLoadedSuccessfully === false) {
         // ERROR: There was an error applying the selected theme to the active debug settings configuration.
@@ -201,8 +201,8 @@ async function changeDebugConfigurationTheme(inputData, inputMetaData) {
     // EXAMPLE: changeDebugConfigurationTheme Skywalker
     console.log(msg.cchangeDebugConfigurationThemeMessage05);
   }
-  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 

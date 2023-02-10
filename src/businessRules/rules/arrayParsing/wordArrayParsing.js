@@ -37,9 +37,9 @@ const namespacePrefix = wrd.cframework + bas.cDot + sys.cbusinessRules + bas.cDo
  */
 async function convertCamelCaseStringToArray(inputData, inputMetaData) {
   let functionName = convertCamelCaseStringToArray.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData;
   let caps = [];
   for (let i = 1; i < inputData.length; i++) {
@@ -57,8 +57,8 @@ async function convertCamelCaseStringToArray(inputData, inputMetaData) {
   } else {
     returnData = [inputData];
   }
-  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -74,33 +74,33 @@ async function convertCamelCaseStringToArray(inputData, inputMetaData) {
  */
 async function getWordsArrayFromString(inputData, inputMetaData) {
   let functionName = getWordsArrayFromString.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData;
   if (inputData) {
     let wordCount = await ruleParsing.processRulesInternal([inputData, ''], [biz.cgetWordCountInString]);
     // wordCount is:
-    loggers.consoleLog(namespacePrefix + functionName, msg.cwordCountIs + wordCount);
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cwordCountIs + wordCount);
     if (wordCount > 0) {
       let wordDelimiter = await ruleParsing.processRulesInternal([inputData, inputMetaData], [biz.cdetermineWordDelimiter]);
       // wordDelimiter is:
-      loggers.consoleLog(namespacePrefix + functionName, msg.cwordDelimiterIs + wordDelimiter);
+      await loggers.consoleLog(namespacePrefix + functionName, msg.cwordDelimiterIs + wordDelimiter);
       let stringContainsAcronym = await ruleParsing.processRulesInternal([inputData, ''], [biz.cdoesStringContainAcronym]);
       // stringContainsAcronym is:
-      loggers.consoleLog(namespacePrefix + functionName, msg.cstringContainsAcronymIs + stringContainsAcronym);
+      await loggers.consoleLog(namespacePrefix + functionName, msg.cstringContainsAcronymIs + stringContainsAcronym);
       if (wordDelimiter === sys.cCamelCase && stringContainsAcronym === false) {
         returnData = await convertCamelCaseStringToArray(inputData, '');
       } else if (wordDelimiter != '' && wordDelimiter != sys.cCamelCase) {
         returnData = inputData.split(wordDelimiter);
       } else {
         // We don't need to be showing this warning unless we are debugging.
-        loggers.consoleLog(namespacePrefix + functionName, msg.cGetWordsArrayFromStringMessage1 + msg.cGetWordsArrayFromStringMessage2 + msg.cGetWordsArrayFromStringMessage3);
+        await loggers.consoleLog(namespacePrefix + functionName, msg.cGetWordsArrayFromStringMessage1 + msg.cGetWordsArrayFromStringMessage2 + msg.cGetWordsArrayFromStringMessage3);
       }
     } // end-if (wordCount > 0)
   } // end-if (inputData)
-  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -118,9 +118,9 @@ async function getWordsArrayFromString(inputData, inputMetaData) {
  */
 async function recombineStringArrayWithSpaces(inputData, inputMetaData) {
   let functionName = recombineStringArrayWithSpaces.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData;
   if (inputData) {
     // returnData = inputData[1];
@@ -129,8 +129,8 @@ async function recombineStringArrayWithSpaces(inputData, inputMetaData) {
     // }
     returnData = inputData.join(bas.cSpace);
   }
-  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -145,16 +145,16 @@ async function recombineStringArrayWithSpaces(inputData, inputMetaData) {
  */
 async function convertArrayToCamelCaseString(inputData, inputMetaData) {
   let functionName = convertArrayToCamelCaseString.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData;
   if (inputData) {
     returnData = await Promise.all(inputData.map((key, index) => ruleParsing.processRulesInternal([key, index], [biz.cmapWordToCamelCaseWord])));
     returnData = returnData.join('');
   }
-  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -169,15 +169,15 @@ async function convertArrayToCamelCaseString(inputData, inputMetaData) {
  */
 async function doesArrayContainLowerCaseConsolidatedString(inputData, inputMetaData) {
   let functionName = doesArrayContainLowerCaseConsolidatedString.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData;
   if (inputData && inputMetaData) {
     // I'm not sure if value1 & value2 below should be referenced to inputData & inputMetaData?
     // I get the arrow function is pass in these values to the wordStringParsing.aggregateNumericalDifferenceBetweenTwoStrings function.
     // But I'm not sure how or what values are being passed for value1 & value2.
-    let stringDelta = (async (value1, value2) => ruleParsing.processRulesInternal([value1, value2], [biz.caggregateNumericalDifferenceBetweenTwoStrings]) < 2);
+    let stringDelta = await (async (value1, value2) => ruleParsing.processRulesInternal([value1, value2], [biz.caggregateNumericalDifferenceBetweenTwoStrings]) < 2);
 
     // If execution order mattered no the above line of code, then we would want to do something like this:
     // async function mapAsync(arr, cb) {
@@ -189,11 +189,11 @@ async function doesArrayContainLowerCaseConsolidatedString(inputData, inputMetaD
     // );
 
     // stringDelta value is:
-    loggers.consoleLog(namespacePrefix + functionName, msg.cstringDeltaValueIs + stringDelta);
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cstringDeltaValueIs + stringDelta);
     returnData = await ruleParsing.processRulesInternal([[inputData, inputMetaData], stringDelta], [biz.cdoesArrayContainValue]);
   }
-  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -208,23 +208,23 @@ async function doesArrayContainLowerCaseConsolidatedString(inputData, inputMetaD
  */
 async function ascertainMatchingElements(inputData, inputMetaData) {
   let functionName = ascertainMatchingElements.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
   let returnData = false;
   if (inputData && inputMetaData) {
     if (inputData === inputMetaData) {
       // Array elements match
-      loggers.consoleLog(namespacePrefix + functionName, msg.cArrayElementsMatch);
+      await loggers.consoleLog(namespacePrefix + functionName, msg.cArrayElementsMatch);
       returnData = true;
     } else {
       // Array elements do not match
-      loggers.consoleLog(namespacePrefix + functionName, msg.cArrayElementsDoNotMatch);
+      await loggers.consoleLog(namespacePrefix + functionName, msg.cArrayElementsDoNotMatch);
       returnData = false;
     }
   } // end-if (inputData && inputMetaData)
-  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 

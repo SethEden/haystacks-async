@@ -54,7 +54,7 @@ const namespacePrefix = wrd.cframework + bas.cDot + sys.ccommandsBlob + bas.cDot
  */
 async function initCommandsLibrary() {
   let functionName = initCommandsLibrary.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   D[wrd.cCommands] = {};
   D[wrd.cCommands] = {
     // Commands
@@ -143,7 +143,7 @@ async function initCommandsLibrary() {
     [wrd.chelp]: (inputData, inputMetaData) => systemCommands.help(inputData, inputMetaData),
     [cmd.cworkflowHelp]: (inputData, inputMetaData) => systemCommands.workflowHelp(inputData, inputMetaData),
   };
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
 }
 
 export default {

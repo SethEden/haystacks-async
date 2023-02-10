@@ -40,13 +40,13 @@ const namespacePrefix = wrd.cframework + bas.cDot + wrd.ccontrollers + bas.cDot 
  */
 async function loadPluginRegistryData(pluginRegistryPath) {
   let functionName = loadPluginRegistryData.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // pluginRegistryPath
-  loggers.consoleLog(namespacePrefix + functionName, msg.cpluginRegistryPathIs + pluginRegistryPath);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginRegistryPathIs + pluginRegistryPath);
   let returnData = {};
   returnData = await pluginBroker.loadPluginRegistry(pluginRegistryPath);
-  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -60,13 +60,13 @@ async function loadPluginRegistryData(pluginRegistryPath) {
  */
 async function persistPluginRegistryToDataStructure(pluginRegistryData) {
   let functionName = persistPluginRegistryToDataStructure.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // pluginRegistryData is:
-  loggers.consoleLog(namespacePrefix + functionName, msg.cpluginRegistryDataIs + JSON.stringify(pluginRegistryData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginRegistryDataIs + JSON.stringify(pluginRegistryData));
   let returnData = false;
-  returnData = pluginBroker.storePluginRegistryInDataStructure(pluginRegistryData);
-  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  returnData = await pluginBroker.storePluginRegistryInDataStructure(pluginRegistryData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -79,11 +79,11 @@ async function persistPluginRegistryToDataStructure(pluginRegistryData) {
  */
 async function listLoadedPlugins() {
   let functionName = listLoadedPlugins.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   let returnData = [];
   returnData = await pluginBroker.listAllLoadedPlugins();
-  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -96,11 +96,11 @@ async function listLoadedPlugins() {
  */
 async function getAllPluginsInRegistry() {
   let functionName = getAllPluginsInRegistry.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   let returnData = [];
   returnData = await pluginBroker.listPluginsInRegistry();
-  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -114,11 +114,11 @@ async function getAllPluginsInRegistry() {
  */
 async function getAllPluginsPathsInRegistry() {
   let functionName = getAllPluginsPathsInRegistry.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   let returnData = [];
   returnData = await pluginBroker.listPluginsPathsInRegistry();
-  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -132,11 +132,11 @@ async function getAllPluginsPathsInRegistry() {
  */
 async function getAllPluginsInRegistryPath() {
   let functionName = getAllPluginsInRegistryPath.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   let returnData = [];
   returnData = await pluginBroker.listPluginsInRegistryPath()
-  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -149,11 +149,11 @@ async function getAllPluginsInRegistryPath() {
  */
 async function countAllPluginsInRegistry() {
   let functionName = countAllPluginsInRegistry.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   let returnData = 0;
   returnData = await pluginBroker.countPluginsInRegistry();
-  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -166,11 +166,11 @@ async function countAllPluginsInRegistry() {
  */
 async function countAllPluginsInRegistryPath() {
   let functionName = countAllPluginsInRegistryPath.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   let returnData = 0;
   returnData = await pluginBroker.countPluginsInRegistryPath();
-  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -186,15 +186,15 @@ async function countAllPluginsInRegistryPath() {
  */
 async function registerNamedPlugin(pluginName, pluginPath) {
   let functionName = registerNamedPlugin.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // pluginName is:
-  loggers.consoleLog(namespacePrefix + functionName, msg.cpluginNameIs + pluginName);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginNameIs + pluginName);
   // pluginPath is:
-  loggers.consoleLog(namespacePrefix + functionName, msg.cpluginPathIs + pluginPath);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginPathIs + pluginPath);
   let returnData = false;
-  returnData = pluginBroker.registerPlugin(pluginName, pluginPath);
-  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  returnData = await pluginBroker.registerPlugin(pluginName, pluginPath);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -208,13 +208,13 @@ async function registerNamedPlugin(pluginName, pluginPath) {
  */
 async function unregisterNamedPlugin(pluginName) {
   let functionName = unregisterNamedPlugin.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // pluginName is:
-  loggers.consoleLog(namespacePrefix + functionName, msg.cpluginNameIs + pluginName);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginNameIs + pluginName);
   let returnData = false;
-  returnData = pluginBroker.unregisterPlugin(pluginName);
-  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  returnData = await pluginBroker.unregisterPlugin(pluginName);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -228,13 +228,13 @@ async function unregisterNamedPlugin(pluginName) {
  */
 async function unregisterPlugins(pluginListArray) {
   let functionName = unregisterPlugins.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // pluginListArray is:
-  loggers.consoleLog(namespacePrefix + functionName, msg.cpluginListArrayIs + JSON.stringify(pluginListArray));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginListArrayIs + JSON.stringify(pluginListArray));
   let returnData = false;
-  returnData = pluginBroker.unregisterPlugins(pluginListArray);
-  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  returnData = await pluginBroker.unregisterPlugins(pluginListArray);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -251,11 +251,11 @@ async function unregisterPlugins(pluginListArray) {
  */
 async function synchronizePluginRegistryWithPath() {
   let functionName = synchronizePluginRegistryWithPath.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   let returnData = false;
-  returnData = pluginBroker.syncPluginRegistryWithPluginRegistryPath();
-  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  returnData = await pluginBroker.syncPluginRegistryWithPluginRegistryPath();
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -268,11 +268,11 @@ async function synchronizePluginRegistryWithPath() {
  */
 async function clearPluginRegistry() {
   let functionName = clearPluginRegistry.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   let returnData = false;
-  returnData = pluginBroker.unregisterAllPlugins();
-  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  returnData = await pluginBroker.unregisterAllPlugins();
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -285,11 +285,11 @@ async function clearPluginRegistry() {
  */
 async function savePluginRegistryDisk() {
   let functionName = savePluginRegistryDisk.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   let returnData = false;
-  returnData = pluginBroker.savePluginRegistry();
-  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  returnData = await pluginBroker.savePluginRegistry();
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -306,24 +306,24 @@ async function savePluginRegistryDisk() {
  */
 async function loadAllPluginsMetaData(pluginsPaths) {
   let functionName = loadAllPluginsMetaData.name
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // pluginPaths are:
-  loggers.consoleLog(namespacePrefix + functionName, msg.cpluginsPathsAre + JSON.stringify(pluginsPaths));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginsPathsAre + JSON.stringify(pluginsPaths));
   let returnData = [];
   let index = 0;
   if (pluginsPaths && pluginsPaths.length > 0) {
     for (let pluginKey in pluginsPaths) {
       // pluginKey is:
-      loggers.consoleLog(namespacePrefix + functionName, msg.cpluginKeyIs + pluginKey);
+      await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginKeyIs + pluginKey);
       let pluginPath = pluginsPaths[pluginKey];
       // pluginPath is:
-      loggers.consoleLog(namespacePrefix + functionName, msg.cpluginPathIs + pluginPath);
+      await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginPathIs + pluginPath);
       returnData[index] = {};
       if (pluginPath != '') {
         returnData[index] = await pluginBroker.loadPluginMetaData(pluginPath);
       } // End-if (pluginPath != '')
       // loadedPluginMetaData at index:
-      loggers.consoleLog(namespacePrefix + functionName, msg.cloadedPluginMetaDataAtIndex +
+      await loggers.consoleLog(namespacePrefix + functionName, msg.cloadedPluginMetaDataAtIndex +
         index + ' data: ' + JSON.stringify(returnData[index]));
       index = index + 1;
     } // End-for (let pluginPath in pluginsPaths)
@@ -332,8 +332,8 @@ async function loadAllPluginsMetaData(pluginsPaths) {
     let errorMessage = msg.cErrorLoadAllPluginsMetaDataMessage01;
     console.log(errorMessage); // Make sure to output the error!
   }
-  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -352,25 +352,25 @@ async function loadAllPluginsMetaData(pluginsPaths) {
  */
 async function loadAllPluginsExecutionPaths(pluginsMetaData, pluginsPaths) {
   let functionName = loadAllPluginsExecutionPaths.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // pluginsMetaData is:
-  loggers.consoleLog(namespacePrefix + functionName, msg.cpluginsMetaDataIs + JSON.stringify(pluginsMetaData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginsMetaDataIs + JSON.stringify(pluginsMetaData));
   // pluginPaths are:
-  loggers.consoleLog(namespacePrefix + functionName, msg.cpluginsPathsAre + JSON.stringify(pluginsPaths));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginsPathsAre + JSON.stringify(pluginsPaths));
   let returnData = [];
   let index = 0;
   if (pluginsMetaData && pluginsMetaData.length > 0) {
     for (let pluginMetaDataKey in pluginsMetaData) {
       // pluginMetaDataKey is:
-      loggers.consoleLog(namespacePrefix + functionName, msg.cpluginMetaDataKeyIs + pluginMetaDataKey);
+      await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginMetaDataKeyIs + pluginMetaDataKey);
       let pluginMetaData = pluginsMetaData[pluginMetaDataKey];
       // pluginMetaData is:
-      loggers.consoleLog(namespacePrefix + functionName, msg.cpluginMetaDataIs + JSON.stringify(pluginMetaData));
+      await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginMetaDataIs + JSON.stringify(pluginMetaData));
       returnData[index] = '';
       if (pluginMetaData) {
-        returnData[index] = pluginBroker.extractAndProcessPluginEntryPointURI(pluginMetaData, pluginsPaths[index]);
+        returnData[index] = await pluginBroker.extractAndProcessPluginEntryPointURI(pluginMetaData, pluginsPaths[index]);
         // pluginPathURI at index:
-        loggers.consoleLog(namespacePrefix + functionName, msg.cpluginPathUriAtIndex + index + bas.cSpace + wrd.cData + bas.cColon + bas.cSpace + returnData[index]);
+        await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginPathUriAtIndex + index + bas.cSpace + wrd.cData + bas.cColon + bas.cSpace + returnData[index]);
       }
       index = index + 1;
     } // End-for (let pluginMetaData in pluginsMetaData)
@@ -379,8 +379,8 @@ async function loadAllPluginsExecutionPaths(pluginsMetaData, pluginsPaths) {
     let errorMessage = msg.cErrorLoadAllPluginsExecutionPathsMessage01;
     console.log(errorMessage); // Make sure to output the error!
   }
-  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -400,23 +400,23 @@ async function loadAllPluginsExecutionPaths(pluginsMetaData, pluginsPaths) {
  */
 async function loadAllPlugins(pluginsExecutionPaths, pluginsMetaData) {
   let functionName = loadAllPlugins.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // pluginsExecutionPaths is:
-  loggers.consoleLog(namespacePrefix + functionName, msg.cpluginsExecutionPathsIs + JSON.stringify(pluginsExecutionPaths));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginsExecutionPathsIs + JSON.stringify(pluginsExecutionPaths));
   // pluginsMetaData is:
-  loggers.consoleLog(namespacePrefix + functionName, msg.cpluginsMetaDataIs + JSON.stringify(pluginsMetaData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginsMetaDataIs + JSON.stringify(pluginsMetaData));
   let returnData = {};
   let index = 0;
   if (pluginsExecutionPaths && pluginsMetaData && pluginsExecutionPaths.length > 0 && pluginsMetaData.length > 0) {
-    stack.initStack(sys.cpluginsLoaded);
+    await stack.initStack(sys.cpluginsLoaded);
     for (let pluginExecutionPathKey in pluginsExecutionPaths) {
       let pluginExecutionPath = pluginsExecutionPaths[pluginExecutionPathKey];
       let pluginMetaData = pluginsMetaData[index];
       if (pluginExecutionPath && pluginMetaData) {
         // pluginExecutionPath is:
-        loggers.consoleLog(namespacePrefix + functionName, msg.cpluginExecutionPathIs + pluginExecutionPath);
+        await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginExecutionPathIs + pluginExecutionPath);
         // pluginMetaData is:
-        loggers.consoleLog(namespacePrefix + functionName, msg.cpluginMetaDataIs + JSON.stringify(pluginMetaData));
+        await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginMetaDataIs + JSON.stringify(pluginMetaData));
         returnData[pluginMetaData[wrd.cname]] = {}; // Initialize the data structure
         // Load the data and add it.
         try {
@@ -447,8 +447,8 @@ async function loadAllPlugins(pluginsExecutionPaths, pluginsMetaData) {
     // ERROR: No plugin execution paths or plugins metaData was specified:
     console.log(msg.cloadAllPluginsMessage03 + namespacePrefix + functionName);
   }
-  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -464,16 +464,16 @@ async function loadAllPlugins(pluginsExecutionPaths, pluginsMetaData) {
  */
 async function integrateAllPluginsData(allPluginsData) {
   let functionName = integrateAllPluginsData.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // allPluginsData is:
-  loggers.consoleLog(namespacePrefix + functionName, msg.callPluginsDataIs + JSON.stringify(allPluginsData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.callPluginsDataIs + JSON.stringify(allPluginsData));
   let returnData = true;
   if (allPluginsData) {
     for (const key in allPluginsData) {
       let pluginName = key;
       // pluginName is:
-      loggers.consoleLog(namespacePrefix + functionName, msg.cpluginNameIs + pluginName);
-      let dataIntegrationSuccess = integratePluginData(pluginName, allPluginsData[pluginName]);
+      await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginNameIs + pluginName);
+      let dataIntegrationSuccess = await integratePluginData(pluginName, allPluginsData[pluginName]);
       if (dataIntegrationSuccess === false) {
         returnData = dataIntegrationSuccess;
       }
@@ -482,8 +482,8 @@ async function integrateAllPluginsData(allPluginsData) {
     // ERROR: Invalid data input, unable to integrate all plugin data.
     console.log(msg.cErrorIntegrateAllPluginsDataMessage01);
   }
-  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -498,11 +498,11 @@ async function integrateAllPluginsData(allPluginsData) {
  */
 async function integratePluginData(pluginName, pluginData) {
   let functionName = integratePluginData.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // pluginName is:
-  loggers.consoleLog(namespacePrefix + functionName, msg.cpluginNameIs + pluginName);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginNameIs + pluginName);
   // pluginData is:
-  loggers.consoleLog(namespacePrefix + functionName, msg.cpluginDataIs + JSON.stringify(pluginData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginDataIs + JSON.stringify(pluginData));
   let returnData = false;
   let businessRulesIntegrationResult = false;
   let commandsIntegrationResult = false;
@@ -512,12 +512,12 @@ async function integratePluginData(pluginName, pluginData) {
   let constantsValidationDataIntegrationResult = false;
   let themeDataIntegrationResult = false;
   if (pluginData && pluginName) {
-    businessRulesIntegrationResult = pluginBroker.integratePluginBusinessRules(pluginName, pluginData[wrd.cdata][sys.cpluginBusinessRules]);
-    commandsIntegrationResult = pluginBroker.integratePluginCommands(pluginName, pluginData[wrd.cdata][sys.cpluginCommands]);
-    configurationDataIntegrationResult = pluginBroker.integratePluginConfigurationData(pluginName, pluginData[wrd.cdata][wrd.cconfiguration]);
-    commandAliasesIntegrationResult = pluginBroker.integratePluginCommandAliases(pluginName, pluginData[wrd.cdata][sys.cCommandsAliases]);
-    workflowsIntegrationResult = pluginBroker.integratePluginWorkflows(pluginName, pluginData[wrd.cdata][sys.cCommandWorkflows])
-    constantsValidationDataIntegrationResult = chiefConstant.addConstantsValidationData(pluginData[wrd.cdata][sys.cpluginConstantsValidationData],
+    businessRulesIntegrationResult = await pluginBroker.integratePluginBusinessRules(pluginName, pluginData[wrd.cdata][sys.cpluginBusinessRules]);
+    commandsIntegrationResult = await pluginBroker.integratePluginCommands(pluginName, pluginData[wrd.cdata][sys.cpluginCommands]);
+    configurationDataIntegrationResult = await pluginBroker.integratePluginConfigurationData(pluginName, pluginData[wrd.cdata][wrd.cconfiguration]);
+    commandAliasesIntegrationResult = await pluginBroker.integratePluginCommandAliases(pluginName, pluginData[wrd.cdata][sys.cCommandsAliases]);
+    workflowsIntegrationResult = await pluginBroker.integratePluginWorkflows(pluginName, pluginData[wrd.cdata][sys.cCommandWorkflows])
+    constantsValidationDataIntegrationResult = await chiefConstant.addConstantsValidationData(pluginData[wrd.cdata][sys.cpluginConstantsValidationData],
       wrd.cPlugin + bas.cColon + pluginName);
     themeDataIntegrationResult = await chiefTheme.addThemeData(pluginData[wrd.cdata][wrd.cThemes], wrd.cPlugin + bas.cColon + pluginName);
   } else {
@@ -537,8 +537,8 @@ async function integratePluginData(pluginName, pluginData) {
     themeDataIntegrationResult === true) {
       returnData = true;
     }
-  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -552,7 +552,7 @@ async function integratePluginData(pluginName, pluginData) {
  */
  async function verifyAllPluginsLoaded() {
   let functionName = verifyAllPluginsLoaded.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   let returnData = false;
   let foundFailedPlugin = false;
   let stackLength = stack.length(sys.cpluginsLoaded);
@@ -565,8 +565,8 @@ async function integratePluginData(pluginName, pluginData) {
     } // End-if (Array.isArray(pluginLoadedObject))
   } // End-for (let i = 0; i <= stackLength; i++)
   returnData = !foundFailedPlugin; // Invert the logic
-  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -582,13 +582,13 @@ async function integratePluginData(pluginName, pluginData) {
  */
 async function unloadPlugin(pluginName) {
   let functionName = unloadPlugin.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // pluginName is:
-  loggers.consoleLog(namespacePrefix + functionName, msg.cpluginNameIs + pluginName);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginNameIs + pluginName);
   let returnData = false;
-  returnData = pluginBroker.unloadPlugin(pluginName);
-  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  returnData = await pluginBroker.unloadPlugin(pluginName);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -601,11 +601,11 @@ async function unloadPlugin(pluginName) {
  */
 async function getPluginsRegistryPath() {
   let functionName = getPluginsRegistryPath.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   let returnData = '';
-  returnData = pluginBroker.getPluginsRegistryPath();
-  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  returnData = await pluginBroker.getPluginsRegistryPath();
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 

@@ -49,9 +49,9 @@ const namespacePrefix = wrd.cframework + bas.cDot + wrd.cbrokers + bas.cDot + ba
  */
 async function bootStrapCommands() {
   let functionName = bootStrapCommands.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  commandsLibrary.initCommandsLibrary();
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await commandsLibrary.initCommandsLibrary();
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
 }
 
 /**
@@ -64,14 +64,14 @@ async function bootStrapCommands() {
  */
 async function addClientCommands(clientCommands) {
   let functionName = addClientCommands.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // Object.assign(D[wrd.cCommands], clientCommands);
   // D[wrd.cCommands] = {...D[wrd.cCommands], Object.keys(clientCommands): clientCommands[Object.keys(clientCommands)]};
   for (const [key, value] of Object.entries(clientCommands)) {
     // console.log('%%%%%%%%%%%%%%%%%% ---- >>>>>>>>> key is: ' + key);
     D[wrd.cCommands] = {...D[wrd.cCommands], [`${key}`]: value};
   } // End-for (const [key, value] of Object.entries(clientCommands))
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
 }
 
 /**
@@ -85,11 +85,11 @@ async function addClientCommands(clientCommands) {
  */
 async function addPluginCommands(pluginName, pluginCommands) {
   let functionName = addPluginCommands.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // pluginName is:
-  loggers.consoleLog(namespacePrefix + functionName, msg.cpluginNameIs + pluginName);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginNameIs + pluginName);
   // pluginCommands is:
-  loggers.consoleLog(namespacePrefix + functionName, msg.cpluginCommandsIs + JSON.stringify(pluginCommands));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginCommandsIs + JSON.stringify(pluginCommands));
   let returnData = false;
   try {
     // if (D[wrd.cCommands][wrd.cplugins] === undefined) {
@@ -115,8 +115,8 @@ async function addPluginCommands(pluginName, pluginCommands) {
     console.log(msg.cErrorAddPluginCommandsMessage01 + pluginName);
     console.log(msg.cERROR_Colon + err);
   }
-  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -132,11 +132,11 @@ async function addPluginCommands(pluginName, pluginCommands) {
  */
 async function addPluginCommandAliases(pluginName, pluginCommandAliases) {
   let functionName = addPluginCommandAliases.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // pluginName is:
-  loggers.consoleLog(namespacePrefix + functionName, msg.cpluginNameIs + pluginName);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginNameIs + pluginName);
   // pluginCommandAliases is:
-  loggers.consoleLog(namespacePrefix + functionName, msg.cpluginCommandAliasesIs + JSON.stringify(pluginCommandAliases));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginCommandAliasesIs + JSON.stringify(pluginCommandAliases));
   let returnData = false;
   try {
     if (D[sys.cCommandsAliases][wrd.cPlugins] === undefined) {
@@ -150,8 +150,8 @@ async function addPluginCommandAliases(pluginName, pluginCommandAliases) {
     console.log(msg.cErrorAddPluginCommandAliasesMessage01 + pluginName);
     console.log(msg.cERROR_Colon + err);
   }
-  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -168,11 +168,11 @@ async function addPluginCommandAliases(pluginName, pluginCommandAliases) {
  */
 async function getValidCommand(commandString, commandDelimiter) {
   let functionName = getValidCommand.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // commandString is:
-  loggers.consoleLog(namespacePrefix + functionName, msg.ccommandStringIs + commandString);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.ccommandStringIs + commandString);
   // commandDelimiter is:
-  loggers.consoleLog(namespacePrefix + functionName, msg.ccommandDelimiterIs + commandDelimiter);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.ccommandDelimiterIs + commandDelimiter);
   let returnData = false;
   let foundValidCommand = false;
   let commandToExecute, commandArgs;
@@ -187,24 +187,24 @@ async function getValidCommand(commandString, commandDelimiter) {
     commandToExecute = commandString;
   }
   // commandString is:
-  loggers.consoleLog(namespacePrefix + functionName, msg.ccommandStringIs + commandString);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.ccommandStringIs + commandString);
   // commandToExecute is:
-  loggers.consoleLog(namespacePrefix + functionName, msg.ccommandToExecuteIs + commandToExecute);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.ccommandToExecuteIs + commandToExecute);
   if (commandString) {
     if (D[wrd.cCommands][commandToExecute] !== undefined) {
       returnData = commandToExecute;
     } else { // else-clause if (D[wrd.cCommands][commandToExecute] !== undefined)
       // else-clause looking for command aliases.
-      loggers.consoleLog(namespacePrefix + functionName, msg.celseClauseLookingForCommandAliases);
+      await loggers.consoleLog(namespacePrefix + functionName, msg.celseClauseLookingForCommandAliases);
       // NOTE: It could be that the user entered a command alias, so we will need to search through all of the command aliases,
       // to see if we can find a match, then get the actual command that should be executed.
       let allCommandAliases = D[sys.cCommandsAliases];
       // allCommandAliases is:
-      loggers.consoleLog(namespacePrefix + functionName, msg.callCommandAliasesIs + JSON.stringify(allCommandAliases));
+      await loggers.consoleLog(namespacePrefix + functionName, msg.callCommandAliasesIs + JSON.stringify(allCommandAliases));
       // Search through the data structure recursively to see if we can find the command or command alias.
       foundValidCommand = await searchCommandAlias(allCommandAliases, commandToExecute);
       // foundValidCommand is:
-      loggers.consoleLog(namespacePrefix + functionName, msg.cfoundValidCommandIs + JSON.stringify(foundValidCommand));
+      await loggers.consoleLog(namespacePrefix + functionName, msg.cfoundValidCommandIs + JSON.stringify(foundValidCommand));
       // Check if we found a valid command and return it if we did,
       // or pop a message to indicate the command was not found.
       if (foundValidCommand === false) {
@@ -221,8 +221,8 @@ async function getValidCommand(commandString, commandDelimiter) {
     // does not exist, please try again!
     console.log(msg.cWarningTheSpecifiedCommand + commandToExecute + msg.cdoesNotExistPleaseTryAgain);
   }
-  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -238,31 +238,31 @@ async function getValidCommand(commandString, commandDelimiter) {
  */
 async function countMatchingCommandAlias(commandAliasData, commandAliasName) {
   let functionName = countMatchingCommandAlias.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // commandAliasData is:
-  loggers.consoleLog(namespacePrefix + functionName, msg.ccommandAliasDataIs + JSON.stringify(commandAliasData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.ccommandAliasDataIs + JSON.stringify(commandAliasData));
   // commandAliasName is:
-  loggers.consoleLog(namespacePrefix + functionName, msg.ccommandAliasNameIs + commandAliasName);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.ccommandAliasNameIs + commandAliasName);
   let commandAliasCount = 0;
   let blackColorArray = await colorizer.getNamedColorData(clr.cBlack, [0,0,0]);
   let redColorArray = await colorizer.getNamedColorData(clr.cRed, [255,0,0]);
   if (typeof commandAliasData === wrd.cobject) {
     for (let commandAliasEntity in commandAliasData) {
       // commandAliasEntity is:
-      loggers.consoleLog(namespacePrefix + functionName, msg.ccommandAliasEntityIs + JSON.stringify(commandAliasEntity));
+      await loggers.consoleLog(namespacePrefix + functionName, msg.ccommandAliasEntityIs + JSON.stringify(commandAliasEntity));
       // commandAliasEntityValue is:
-      loggers.consoleLog(namespacePrefix + functionName, msg.ccommandAliasEntityValueIs + JSON.stringify(commandAliasData[commandAliasEntity]));
+      await loggers.consoleLog(namespacePrefix + functionName, msg.ccommandAliasEntityValueIs + JSON.stringify(commandAliasData[commandAliasEntity]));
       if (commandAliasEntity.toUpperCase() != commandAliasName.toUpperCase()) {
         if (commandAliasData[commandAliasEntity] != undefined && commandAliasData[commandAliasEntity][wrd.cAliases] != undefined) {
           let aliasList = commandAliasData[commandAliasEntity][wrd.cAliases];
           let arrayOfAliases = aliasList.split(bas.cComa);
           for (const element of arrayOfAliases) {
             let currentAlias = element;
-            loggers.consoleLog(namespacePrefix + functionName, msg.ccurrentAliasIs + currentAlias);
-            loggers.consoleLog(namespacePrefix + functionName, msg.ccommandAliasNameIs + commandAliasName);
+            await loggers.consoleLog(namespacePrefix + functionName, msg.ccurrentAliasIs + currentAlias);
+            await loggers.consoleLog(namespacePrefix + functionName, msg.ccommandAliasNameIs + commandAliasName);
             if (commandAliasName === currentAlias) {
               // Found a matching alias entry! 1
-              loggers.consoleLog(namespacePrefix + functionName, msg.cFoundMatchingAliasEntry1);
+              await loggers.consoleLog(namespacePrefix + functionName, msg.cFoundMatchingAliasEntry1);
               commandAliasCount = commandAliasCount + 1;
               // Don't break, continue searching, so we get a full count of any duplicates found.
             }
@@ -271,20 +271,20 @@ async function countMatchingCommandAlias(commandAliasData, commandAliasName) {
           if (commandAliasData[commandAliasEntity] != undefined) {
             let tempCommandAliasCount = await countMatchingCommandAlias(commandAliasData[commandAliasEntity], commandAliasName);
             // tempCommandAliasCount is:
-            loggers.consoleLog(namespacePrefix + functionName, msg.ctempCommandAliasCountIs + tempCommandAliasCount);
+            await loggers.consoleLog(namespacePrefix + functionName, msg.ctempCommandAliasCountIs + tempCommandAliasCount);
             if (tempCommandAliasCount > 0) {
               // adding commandAliasCount:
-              loggers.consoleLog(namespacePrefix + functionName, msg.caddingCommandAliasCount + commandAliasCount);
+              await loggers.consoleLog(namespacePrefix + functionName, msg.caddingCommandAliasCount + commandAliasCount);
               commandAliasCount = commandAliasCount + tempCommandAliasCount;
               // After adding commandAliasCount and tempCommandAliasCount:
-              loggers.consoleLog(namespacePrefix + functionName, msg.cAfterAddingCommandAliasCountAndTempCommandAliasCount + commandAliasCount);
+              await loggers.consoleLog(namespacePrefix + functionName, msg.cAfterAddingCommandAliasCountAndTempCommandAliasCount + commandAliasCount);
               // Don't break, continue searching, so we get a full count of any duplicates found.
             } // End-if (tempCommandAliasCount > 0)
           } else {
             // ERROR: A command is missing command aliases definitions. Data:
             let errorMessage = msg.cErrorCountMatchingCommandAliasMessage01 + JSON.stringify(commandAliasData);
-            errorMessage = colorizer.colorizeMessageSimple(errorMessage, blackColorArray, true);
-            errorMessage = colorizer.colorizeMessageSimple(errorMessage, redColorArray, false);
+            errorMessage = await colorizer.colorizeMessageSimple(errorMessage, blackColorArray, true);
+            errorMessage = await colorizer.colorizeMessageSimple(errorMessage, redColorArray, false);
             console.log(errorMessage);
             // Its an error, but not a duplicate error, however, we need to report it some how.
             commandAliasCount = commandAliasCount + 1; // We've console logged it as best we can, we need to raise the flag anyway.
@@ -292,15 +292,15 @@ async function countMatchingCommandAlias(commandAliasData, commandAliasName) {
         }
       } else if (commandAliasEntity.toUpperCase() === commandAliasName.toUpperCase()) {
         // Found a matching entry! 2
-        loggers.consoleLog(namespacePrefix + functionName, msg.cFoundMatchingAliasEntry2);
+        await loggers.consoleLog(namespacePrefix + functionName, msg.cFoundMatchingAliasEntry2);
         commandAliasCount = commandAliasCount + 1;
         // Don't break, continue searching, so we get a full count of any duplicates found.
       }
     } // End-for (let commandAliasEntity in commandAliasData)
   } // End-if (typeof commandAliasData === wrd.cobject)
   // commandAliasCount is:
-  loggers.consoleLog(namespacePrefix + functionName, msg.ccommandAliasCountIs + JSON.stringify(commandAliasCount));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.ccommandAliasCountIs + JSON.stringify(commandAliasCount));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return commandAliasCount;
 }
 
@@ -316,18 +316,18 @@ async function countMatchingCommandAlias(commandAliasData, commandAliasName) {
  */
 async function searchCommandAlias(commandAliasData, commandAliasName) {
   let functionName = searchCommandAlias.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // commandAliasData is:
-  loggers.consoleLog(namespacePrefix + functionName, msg.ccommandAliasDataIs + JSON.stringify(commandAliasData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.ccommandAliasDataIs + JSON.stringify(commandAliasData));
   // commandAliasName is:
-  loggers.consoleLog(namespacePrefix + functionName, msg.ccommandAliasNameIs + commandAliasName);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.ccommandAliasNameIs + commandAliasName);
   let commandAliasObject = false;
   if (typeof commandAliasData === wrd.cobject) {
     for (let commandAliasEntity in commandAliasData) {
       // commandAliasEntity is:
-      loggers.consoleLog(namespacePrefix + functionName, msg.ccommandAliasEntityIs + JSON.stringify(commandAliasEntity));
+      await loggers.consoleLog(namespacePrefix + functionName, msg.ccommandAliasEntityIs + JSON.stringify(commandAliasEntity));
       // commandAliasEntityValue is:
-      loggers.consoleLog(namespacePrefix + functionName, msg.ccommandAliasEntityValueIs + JSON.stringify(commandAliasData[commandAliasEntity]));
+      await loggers.consoleLog(namespacePrefix + functionName, msg.ccommandAliasEntityValueIs + JSON.stringify(commandAliasData[commandAliasEntity]));
       if (commandAliasEntity.toUpperCase() != commandAliasName.toUpperCase() && commandAliasData[commandAliasEntity]) {
         if (commandAliasData[commandAliasEntity][wrd.cAliases] != undefined) {
           let aliasList = commandAliasData[commandAliasEntity][wrd.cAliases];
@@ -350,7 +350,7 @@ async function searchCommandAlias(commandAliasData, commandAliasName) {
             commandAliasName.toLowerCase() === bas.cForwardSlash + currentAlias.toLowerCase() ||
             commandAliasName.toLowerCase() === bas.cBackSlash + currentAlias.toLowerCase()) {
               // Found a matching alias entry!
-              loggers.consoleLog(namespacePrefix + functionName, msg.cFoundMatchingAliasEntry1);
+              await loggers.consoleLog(namespacePrefix + functionName, msg.cFoundMatchingAliasEntry1);
               commandAliasObject = commandAliasData[commandAliasEntity];
               break;
             }
@@ -358,7 +358,7 @@ async function searchCommandAlias(commandAliasData, commandAliasName) {
         } else {
           let commandAliasesObjectTemp = await searchCommandAlias(commandAliasData[commandAliasEntity], commandAliasName);
           // commandAliasesObjectTemp is:
-          loggers.consoleLog(namespacePrefix + functionName, msg.ccommandAliasesObjectTempIs + JSON.stringify(commandAliasesObjectTemp));
+          await loggers.consoleLog(namespacePrefix + functionName, msg.ccommandAliasesObjectTempIs + JSON.stringify(commandAliasesObjectTemp));
           if (commandAliasesObjectTemp) {
             commandAliasObject = commandAliasesObjectTemp;
             break;
@@ -366,15 +366,15 @@ async function searchCommandAlias(commandAliasData, commandAliasName) {
         }
       } else if (commandAliasEntity.toUpperCase() === commandAliasName.toUpperCase()) {
         // Found a matching entry!
-        loggers.consoleLog(namespacePrefix + functionName, msg.cFoundMatchingAliasEntry2);
+        await loggers.consoleLog(namespacePrefix + functionName, msg.cFoundMatchingAliasEntry2);
         commandAliasObject = commandAliasData[commandAliasEntity];
         break;
       }
     } // End-for (let commandAliasEntity in commandAliasData)
   } // End-if (typeof commandAliasData === wrd.cobject)
   // commandAliasObject is:
-  loggers.consoleLog(namespacePrefix + functionName, msg.ccommandAliasObjectIs + JSON.stringify(commandAliasObject));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.ccommandAliasObjectIs + JSON.stringify(commandAliasObject));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return commandAliasObject;
 }
 
@@ -390,9 +390,9 @@ async function searchCommandAlias(commandAliasData, commandAliasName) {
  */
 async function getAllCommandAliasData(commandAliasDataStructure) {
   let functionName = getAllCommandAliasData.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // commandAliasDataStructure is:
-  loggers.consoleLog(namespacePrefix + functionName, msg.ccommandAliasDataStructureIs + JSON.stringify(commandAliasDataStructure));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.ccommandAliasDataStructureIs + JSON.stringify(commandAliasDataStructure));
   let allCommandsData = false;
   let internalCommandAliasDataStructure;
   if (commandAliasDataStructure === undefined) {
@@ -401,27 +401,27 @@ async function getAllCommandAliasData(commandAliasDataStructure) {
     internalCommandAliasDataStructure = JSON.parse(JSON.stringify(commandAliasDataStructure));
   }
   // internalCommandAliasDataStructure is:
-  loggers.consoleLog(namespacePrefix + functionName, msg.cinternalCommandAliasDataStructureIs + JSON.stringify(internalCommandAliasDataStructure));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinternalCommandAliasDataStructureIs + JSON.stringify(internalCommandAliasDataStructure));
   if (typeof internalCommandAliasDataStructure === wrd.cobject) {
     allCommandsData = [];
     for (let commandAliasEntity in internalCommandAliasDataStructure) {
       // commandAliasEntity is:
-      loggers.consoleLog(namespacePrefix + functionName, msg.ccommandAliasEntityIs + JSON.stringify(commandAliasEntity));
+      await loggers.consoleLog(namespacePrefix + functionName, msg.ccommandAliasEntityIs + JSON.stringify(commandAliasEntity));
       // internalCommandAliasDataStructure[commandAliasEntity] is:
-      loggers.consoleLog(namespacePrefix + functionName, msg.cinternalCommandAliasDataStructureCommandAliasEntityIs + JSON.stringify(internalCommandAliasDataStructure[commandAliasEntity]));
+      await loggers.consoleLog(namespacePrefix + functionName, msg.cinternalCommandAliasDataStructureCommandAliasEntityIs + JSON.stringify(internalCommandAliasDataStructure[commandAliasEntity]));
       if (typeof internalCommandAliasDataStructure[commandAliasEntity] === wrd.cobject) {
         // internalCommandAliasDataStructure[commandAliasEntity] is of type object!
-        loggers.consoleLog(namespacePrefix + functionName, msg.cgetAllCommandAliasDataMessage01);
+        await loggers.consoleLog(namespacePrefix + functionName, msg.cgetAllCommandAliasDataMessage01);
         let allCommandAliasesTemp;
         allCommandAliasesTemp = await getAllCommandAliasData(internalCommandAliasDataStructure[commandAliasEntity]);
         // allCommandAliasesTemp returned from the recursive call is:
-        loggers.consoleLog(namespacePrefix + functionName, msg.callCommandAliasesTempReturnedFromRecursiveCallIs + JSON.stringify(allCommandAliasesTemp));
+        await loggers.consoleLog(namespacePrefix + functionName, msg.callCommandAliasesTempReturnedFromRecursiveCallIs + JSON.stringify(allCommandAliasesTemp));
         if (allCommandAliasesTemp === false) {
           // The recursive call returned false, so push the current entity to the output array!
-          loggers.consoleLog(namespacePrefix + functionName, msg.cgetAllCommandAliasDataMessage02);
+          await loggers.consoleLog(namespacePrefix + functionName, msg.cgetAllCommandAliasDataMessage02);
           allCommandsData.push(internalCommandAliasDataStructure);
           // allCommandsData after pushing to the array is:
-          loggers.consoleLog(namespacePrefix + functionName, msg.callCommandsDataAfterPushingToTheArrayIs + JSON.stringify(allCommandsData));
+          await loggers.consoleLog(namespacePrefix + functionName, msg.callCommandsDataAfterPushingToTheArrayIs + JSON.stringify(allCommandsData));
           break;
         } else {
           allCommandsData = await ruleBroker.processRules([allCommandsData, allCommandAliasesTemp], [biz.cobjectDeepMerge]);
@@ -432,8 +432,8 @@ async function getAllCommandAliasData(commandAliasDataStructure) {
     } // End-for (let commandAliasEntity in internalCommandAliasDataStructure)
   } // End-if (typeof internalCommandAliasDataStructure === wrd.cobject)
   // allCommandsData is:
-  loggers.consoleLog(namespacePrefix + functionName, msg.callCommandsDataIs + JSON.stringify(allCommandsData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.callCommandsDataIs + JSON.stringify(allCommandsData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return allCommandsData;
 }
 
@@ -450,20 +450,20 @@ async function getAllCommandAliasData(commandAliasDataStructure) {
  */
 async function getCommandNamespaceDataObject(commandAliasDataStructure, namespaceToFind) {
   let functionName = getCommandNamespaceDataObject.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // commandAliasDataStructure is:
-  loggers.consoleLog(namespacePrefix + functionName, msg.ccommandAliasDataStructureIs + JSON.stringify(commandAliasDataStructure));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.ccommandAliasDataStructureIs + JSON.stringify(commandAliasDataStructure));
   // namespaceToFind is:
-  loggers.consoleLog(namespacePrefix + functionName, msg.cnamespaceToFindIs + namespaceToFind);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cnamespaceToFindIs + namespaceToFind);
   let namespaceCommandsObject = false;
   if (commandAliasDataStructure === undefined) {
     commandAliasDataStructure = D[sys.cCommandsAliases];
   }
   for (let commandAliasEntity in commandAliasDataStructure) {
     // commandAliasEntity is:
-    loggers.consoleLog(namespacePrefix + functionName, msg.ccommandAliasEntityIs + JSON.stringify(commandAliasEntity));
+    await loggers.consoleLog(namespacePrefix + functionName, msg.ccommandAliasEntityIs + JSON.stringify(commandAliasEntity));
     // commandAliasDataStructure[commandAliasEntity] is:
-    loggers.consoleLog(namespacePrefix + functionName, msg.ccommandAliasDataStructureCommandAliasEntityIs + JSON.stringify(commandAliasDataStructure[commandAliasEntity]));
+    await loggers.consoleLog(namespacePrefix + functionName, msg.ccommandAliasDataStructureCommandAliasEntityIs + JSON.stringify(commandAliasDataStructure[commandAliasEntity]));
     if (commandAliasEntity === namespaceToFind) {
       namespaceCommandsObject = commandAliasDataStructure[commandAliasEntity];
       break;
@@ -479,8 +479,8 @@ async function getCommandNamespaceDataObject(commandAliasDataStructure, namespac
     }
   } // End-for (let commandAliasEntity in commandAliasDataStructure)
   // namespaceCommandsObject is:
-  loggers.consoleLog(namespacePrefix + functionName, msg.cnamespaceCommandsObjectIs + JSON.stringify(namespaceCommandsObject));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cnamespaceCommandsObjectIs + JSON.stringify(namespaceCommandsObject));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return namespaceCommandsObject;
 }
 
@@ -495,11 +495,11 @@ async function getCommandNamespaceDataObject(commandAliasDataStructure, namespac
  */
 async function getCommandArgs(commandString, commandDelimiter) {
   let functionName = getCommandArgs.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // commandString is:
-  loggers.consoleLog(namespacePrefix + functionName, msg.ccommandStringIs + commandString);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.ccommandStringIs + commandString);
   // commandDelimiter is:
-  loggers.consoleLog(namespacePrefix + functionName, msg.ccommandDelimiterIs + commandDelimiter);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.ccommandDelimiterIs + commandDelimiter);
   let returnData = false;
   let commandArgsDelimiter = commandDelimiter;
   let isOddRule = [biz.cisOdd];
@@ -517,21 +517,21 @@ async function getCommandArgs(commandString, commandDelimiter) {
     // non-string array elements to parse command arguments without accidentally parsing string literal values as command arguments.
     if (commandString.includes(bas.cBackTickQuote) === true) {
       // commandString contains either a singleQuote or a backTickQuote
-      loggers.consoleLog(namespacePrefix + functionName, msg.ccommandStringContainsEitherSingleQuoteOrBackTickQuote);
+      await loggers.consoleLog(namespacePrefix + functionName, msg.ccommandStringContainsEitherSingleQuoteOrBackTickQuote);
       let preSplitCommandString;
       if (commandString.includes(bas.cBackTickQuote) === true) {
         // commandString contains a singleQuote!
-        loggers.consoleLog(namespacePrefix + functionName, msg.ccommandStringContainsSingleQuote);
+        await loggers.consoleLog(namespacePrefix + functionName, msg.ccommandStringContainsSingleQuote);
         // NOTE: We cannot actually just replace ach single quote, we need to tag each single quote in pairs of 2.
         // The first one should be post-tagged, i.e. replace "'" with "'~" and the second should be pre-tagged i.e. replace "'" with "~'".
         // Then if there are more single quotes, the thirst post-tagged, i.e. replace "'" with "'~", etc...
         let numberOfSingleQuotes = commandString.split(bas.cBackTickQuote).length - 1;
         // Determine if the number of single quotes is odd or even?
         // About to call the rule broker to process on the number of single quotes and determine if it-be even or odd.
-        loggers.consoleLog(namespacePrefix + functionName, msg.cgetCommandArgsMessage1 + sys.cgetCommandArgsMessage2);
+        await loggers.consoleLog(namespacePrefix + functionName, msg.cgetCommandArgsMessage1 + sys.cgetCommandArgsMessage2);
         if (numberOfSingleQuotes >= 2 && await ruleBroker.processRules([numberOfSingleQuotes, ''], isOddRule) === false) {
           // numberOfSingleQuotes is >= 2 & the numberOfSingleQuotes is EVEN! YAY!
-          loggers.consoleLog(namespacePrefix + functionName, msg.cnumberOfSingleQuotesIsEven);
+          await loggers.consoleLog(namespacePrefix + functionName, msg.cnumberOfSingleQuotesIsEven);
           let indexOfStringDelimiter;
           for (let i = 0; i < numberOfSingleQuotes; i++) {
             // Iterate over each one and if they are even or odd we will change how we replace ach single quote character as described above.
@@ -539,36 +539,36 @@ async function getCommandArgs(commandString, commandDelimiter) {
               // Get the index of the first string delimiter.
               indexOfStringDelimiter = commandString.indexOf(bas.cBackTickQuote, 0);
               // First index is:
-              loggers.consoleLog(namespacePrefix + functionName, msg.cFirstIndexIs + indexOfStringDelimiter);
+              await loggers.consoleLog(namespacePrefix + functionName, msg.cFirstIndexIs + indexOfStringDelimiter);
               // commandString.replace(bas.cBackTickQuote, bas.cBackTickQuote + bas.cTilde);
               // Rather than use the above, we will make a business rule o replace at index, the above replaces all isntances and we don't want that!
               commandString = await ruleBroker.processRules([commandString, [indexOfStringDelimiter, bas.cBackTickQuote + bas.cTilde]], replaceCharacterAtIndexRule);
               stringLiteralCommandDelimiterAdded = true;
               // commandString after tagging the first string delimiter:
-              loggers.consoleLog(namespacePrefix + functionName, msg.ccommandStringAfterTaggingTheFirstStringDelimiter + commandString);
+              await loggers.consoleLog(namespacePrefix + functionName, msg.ccommandStringAfterTaggingTheFirstStringDelimiter + commandString);
             } else {
               indexOfStringDelimiter = commandString.indexOf(bas.cBackTickQuote, indexOfStringDelimiter + 1);
               // Additional index is:
-              loggers.consoleLog(namespacePrefix + functionName, msg.cAdditionalIndexIs + indexOfStringDelimiter);
+              await loggers.consoleLog(namespacePrefix + functionName, msg.cAdditionalIndexIs + indexOfStringDelimiter);
               // Determine if it is odd or even.
               // NOTE: We start our count with 0 which would technically be our odd, then 1 should be even, but 1 is an odd number, so the logic here should actually be backwards.
               // an even value for "i" would be the odd i-th delimiter value.
               if (await ruleBroker.processRules([i.toString(), ''], isOddRule) === true) {
                 // We are on the odd index, 1, 3, 5, etc...
                 // odd index
-                loggers.consoleLog(namespacePrefix + functionName, msg.coddIndex);
+                await loggers.consoleLog(namespacePrefix + functionName, msg.coddIndex);
                 commandString = await ruleBroker.processRules([commandString, [indexOfStringDelimiter, bas.cTilde + bas.cBackTickQuote]], replaceCharacterAtIndexRule);
                 stringLiteralCommandDelimiterAdded = true;
                 // commandString after tagging an odd string delimiter:
-                loggers.consoleLog(namespacePrefix + functionName, msg.ccommandStringAfterTaggingAnOddStringDelimiter + commandString);
+                await loggers.consoleLog(namespacePrefix + functionName, msg.ccommandStringAfterTaggingAnOddStringDelimiter + commandString);
               } else {
                 // We are on the even index 2, 4, 6, etc...
                 // even index
-                loggers.consoleLog(namespacePrefix + functionName, msg.cevenIndex);
+                await loggers.consoleLog(namespacePrefix + functionName, msg.cevenIndex);
                 commandString = await ruleBroker.processRules([commandString, [indexOfStringDelimiter, bas.cBackTickQuote + bas.cTilde]], replaceCharacterAtIndexRule);
                 stringLiteralCommandDelimiterAdded = true;
                 // commandString after tagging an even string delimiter:
-                loggers.consoleLog(namespacePrefix + functionName, msg.ccommandStringAfterTaggingAnEvenStringDelimiter + commandString);
+                await loggers.consoleLog(namespacePrefix + functionName, msg.ccommandStringAfterTaggingAnEvenStringDelimiter + commandString);
               }
             }
           } // End-for (let i = 0; i < numberOfSingleQuotes; i++)
@@ -577,7 +577,7 @@ async function getCommandArgs(commandString, commandDelimiter) {
           // And the array element that contains the Tilde tag we wil not split.
           // Ultimately everything needs to be returned as an array, make sure we trim the array elements so we don't get any empty array elements.
           // preSpitCommandString is:
-          loggers.consoleLog(namespacePrefix + functionName, msg.cpreSplitCommandStringIs + JSON.stringify(preSplitCommandString));
+          await loggers.consoleLog(namespacePrefix + functionName, msg.cpreSplitCommandStringIs + JSON.stringify(preSplitCommandString));
           for (let j = 0; j < preSplitCommandString.length; j++) {
             let preSplitCommandStringElement = preSplitCommandString[j];
             preSplitCommandStringElement = preSplitCommandStringElement.trim(); // Make sure to get rid of any white space on the ends of the string.
@@ -590,9 +590,9 @@ async function getCommandArgs(commandString, commandDelimiter) {
               for (const element of postSplitCommandString) {
                 if (element !== '') {
                   // postSplitCommandString[k] is:
-                  loggers.consoleLog(namespacePrefix + functionName, msg.cpostSplitCommandStringIs + JSON.stringify(element));
+                  await loggers.consoleLog(namespacePrefix + functionName, msg.cpostSplitCommandStringIs + JSON.stringify(element));
                   returnData.push(element);
-                  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+                  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
                 } // End-if (postSplitCommandString[k] !== '')
               } // End-for (const element of postSplitCommandString)
             } else {
@@ -605,10 +605,10 @@ async function getCommandArgs(commandString, commandDelimiter) {
                 returnData[returnData.length - 1] = returnData[returnData.length - 1] + preSplitCommandStringElement;
               } else {
                 // preSplitCommandSringElement is:
-                loggers.consoleLog(namespacePrefix + functionName, msg.cpreSplitCommandStringElementIs + JSON.stringify(preSplitCommandStringElement));
+                await loggers.consoleLog(namespacePrefix + functionName, msg.cpreSplitCommandStringElementIs + JSON.stringify(preSplitCommandStringElement));
                 returnData.push(preSplitCommandStringElement); // Add the string now.
               }
-              loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+              await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
             }
           } // End-for (let j = 0; j < preSplitCommandString.length; j++)
         } // End-if (numberOfSingleQuotes >= 2 && ruleBroker.processRules(numberOfSingleQuotes, '', isOddRule) === false)
@@ -619,17 +619,17 @@ async function getCommandArgs(commandString, commandDelimiter) {
       // So I will handle that case if & when I come to it.
     } else {
       // Doing a straight split of the commandString:
-      loggers.consoleLog(namespacePrefix + functionName, msg.cDoingStraightSplitCommandString + commandString);
+      await loggers.consoleLog(namespacePrefix + functionName, msg.cDoingStraightSplitCommandString + commandString);
       returnData = commandString.split(commandArgsDelimiter);
-      loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+      await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
     }
   } // End-if (commandString.includes(commandArgsDelimiter) === true)
   if (stringLiteralCommandDelimiterAdded === true) {
     // This means we need to remove some bas.cTilde from one or more of the command args.
     await ruleBroker.processRules([returnData, ''], [biz.cremoveStringLiteralTagsFromArray]);
   }
-  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -651,22 +651,22 @@ async function executeCommand(commandString) {
   // tracking & command results processing such as pass-fail,
   // so that when a chain of commands has completed execution we can evaluate command statistics and metrics.
   let functionName = executeCommand.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // commandString is:
-  loggers.consoleLog(namespacePrefix + functionName, msg.ccommandStringIs + commandString);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.ccommandStringIs + commandString);
   let returnData = [];
-  let commandToExecute = getValidCommand(commandString, await configurator.getConfigurationSetting(wrd.csystem, cfg.cprimaryCommandDelimiter));
+  let commandToExecute = await getValidCommand(commandString, await configurator.getConfigurationSetting(wrd.csystem, cfg.cprimaryCommandDelimiter));
   // commandToExecute is:
-  loggers.consoleLog(namespacePrefix + functionName, msg.ccommandToExecuteIs + commandToExecute);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.ccommandToExecuteIs + commandToExecute);
   let commandArgs = await getCommandArgs(commandString, await configurator.getConfigurationSetting(wrd.csystem, cfg.cprimaryCommandDelimiter));
   // commandArgs is:
-  loggers.consoleLog(namespacePrefix + functionName, msg.ccommandArgsIs + commandArgs);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.ccommandArgsIs + commandArgs);
   let commandMetricsEnabled = await configurator.getConfigurationSetting(wrd.csystem, cfg.cenableCommandPerformanceMetrics);
   let commandStartTime = '';
   let commandEndTime = '';
   let commandDeltaTime = '';
-  // commandQueue is:
-  loggers.consoleLog(namespacePrefix + functionName, msg.ccommandQueueIs + queue.queuePrint(sys.cCommandQueue));
+
+  await loggers.consoleLog(namespacePrefix + functionName, 'commandQueue is: ' + await queue.queuePrint(sys.cCommandQueue));
 
   if (commandMetricsEnabled === true) {
     // Here we will capture the start time of the command we are about to execute.
@@ -674,7 +674,7 @@ async function executeCommand(commandString) {
     // compute the difference to determine how many milliseconds it took to run the command.
     commandStartTime = await ruleBroker.processRules([gen.cYYYYMMDD_HHmmss_SSS, ''], [biz.cgetNowMoment]);
     // Command Start time is:
-    loggers.consoleLog(namespacePrefix + functionName, msg.cCommandStartTimeIs + commandStartTime);
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cCommandStartTimeIs + commandStartTime);
   } // End-if (commandMetricsEnabled === true)
   try {
     if (commandToExecute !== false && commandArgs !== false) {
@@ -700,28 +700,28 @@ async function executeCommand(commandString) {
     let performanceTrackingObject = {};
     commandEndTime = await ruleBroker.processRules([gen.cYYYYMMDD_HHmmss_SSS, ''], [biz.cgetNowMoment]);
     // Command End time is:
-    loggers.consoleLog(namespacePrefix + functionName, msg.cCommandEndTimeIs + commandEndTime);
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cCommandEndTimeIs + commandEndTime);
     // Now compute the delta tme so we know how long it took to run that command.
     commandDeltaTime = await ruleBroker.processRules([commandStartTime, commandEndTime], [biz.ccomputeDeltaTime]);
     // Command run-time is:
-    loggers.consoleLog(namespacePrefix + functionName, msg.cCommandRunTimeIs + commandDeltaTime);
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cCommandRunTimeIs + commandDeltaTime);
     // Check to make sure the command performance tracking stack exists or does not exist.
     if (D[cfg.ccommandsPerformanceTrackingStack] === undefined) {
-      stack.initStack(cfg.ccommandsPerformanceTrackingStack);
+      await stack.initStack(cfg.ccommandsPerformanceTrackingStack);
     }
     if (D[cfg.ccommandNamesPerformanceTrackingStack] === undefined) {
-      stack.initStack(cfg.ccommandNamesPerformanceTrackingStack);
+      await stack.initStack(cfg.ccommandNamesPerformanceTrackingStack);
     }
     performanceTrackingObject = {Name: commandToExecute, RunTime: commandDeltaTime};
-    if (stack.contains(cfg.ccommandNamesPerformanceTrackingStack, commandToExecute) === false) {
-      stack.push(cfg.ccommandNamesPerformanceTrackingStack, commandToExecute);
+    if (await stack.contains(cfg.ccommandNamesPerformanceTrackingStack, commandToExecute) === false) {
+      await stack.push(cfg.ccommandNamesPerformanceTrackingStack, commandToExecute);
     }
-    stack.push(cfg.ccommandsPerformanceTrackingStack, performanceTrackingObject);
+    await stack.push(cfg.ccommandsPerformanceTrackingStack, performanceTrackingObject);
     // stack.print(cfg.ccommandNamesPerformanceTrackingStack);
     // stack.print(cfg.ccommandsPerformanceTrackingStack);
   } // End-if (commandMetricsEnabled === true && commandToExecute !== '' && commandToExecute !== false)
-  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -736,9 +736,9 @@ async function executeCommand(commandString) {
  */
 async function removePluginCommands(pluginName) {
   let functionName = removePluginCommands.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // pluginName is:
-  loggers.consoleLog(namespacePrefix + functionName, msg.cpluginNameIs + pluginName);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginNameIs + pluginName);
   let returnData = false;
   let allCommands = D[wrd.cCommands];
   // NOTE: We are going to have to get the names of the individual commands for the plugin,
@@ -757,9 +757,9 @@ async function removePluginCommands(pluginName) {
       for (const pluginCommandsRuleKey in pluginConstantsValidationCommands) {
         let pluginCommandConstValidationObject = pluginConstantsValidationCommands[pluginCommandsRuleKey];
         // pluginCommandConstValidationObject is:
-        loggers.consoleLog(namespacePrefix + functionName, msg.cpluginCommandsConstValidationObjectIs + JSON.stringify(pluginCommandConstValidationObject));
+        await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginCommandsConstValidationObjectIs + JSON.stringify(pluginCommandConstValidationObject));
         // Removing plugin command:
-        loggers.consoleLog(namespacePrefix + functionName, msg.cremovePluginCommandsMessage01 + pluginCommandConstValidationObject[wrd.cActual]);
+        await loggers.consoleLog(namespacePrefix + functionName, msg.cremovePluginCommandsMessage01 + pluginCommandConstValidationObject[wrd.cActual]);
         delete allCommands[pluginCommandConstValidationObject[wrd.cActual]];
       }
       returnData = true;
@@ -772,8 +772,8 @@ async function removePluginCommands(pluginName) {
     // ERROR: Plugin command constants validation data for the specified plugin was not found. Plugin:
     console.log(msg.cremovePluginCommandsMessage03 + pluginName);
   }
-  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
@@ -788,9 +788,9 @@ async function removePluginCommands(pluginName) {
  */
 async function removePluginCommandAliases(pluginName) {
   let functionName = removePluginCommandAliases.name;
-  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // pluginName is:
-  loggers.consoleLog(namespacePrefix + functionName, msg.cpluginNameIs + pluginName);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginNameIs + pluginName);
   let returnData = false;
   let allPluginsCommandAliases = D[sys.cCommandsAliases][wrd.cPlugins];
   if (allPluginsCommandAliases) {
@@ -807,8 +807,8 @@ async function removePluginCommandAliases(pluginName) {
     // ERROR: Unable to locate the plugins command aliases data. Plugin: 
     console.log(msg.cremovePluginCommandAliasesMessage02 + pluginName);
   }
-  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
-  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
