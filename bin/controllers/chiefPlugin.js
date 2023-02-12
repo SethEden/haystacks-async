@@ -324,7 +324,8 @@ async function loadAllPluginsMetaData(pluginsPaths) {
       } // End-if (pluginPath != '')
       // loadedPluginMetaData at index:
       await loggers.consoleLog(namespacePrefix + functionName, msg.cloadedPluginMetaDataAtIndex +
-        index + ' data: ' + JSON.stringify(returnData[index]));
+        // data:
+        index + msg.cSpaceDataColonSpace + JSON.stringify(returnData[index]));
       index = index + 1;
     } // End-for (let pluginPath in pluginsPaths)
   } else {

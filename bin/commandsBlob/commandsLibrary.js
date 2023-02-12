@@ -42,6 +42,20 @@ const baseFileName = path.basename(import.meta.url, path.extname(import.meta.url
 const namespacePrefix = wrd.cframework + bas.cDot + sys.ccommandsBlob + bas.cDot + baseFileName + bas.cDot;
 
 /**
+ * @function clearCommandsLibrary
+ * @description Clears out the commands data structure on D. Useful so that it can be re-initialized.
+ * @return {void}
+ * @author Seth Hollingsead
+ * @date 2023/02/12
+ */
+async function clearCommandsLibrary() {
+  // let functionName = clearCommandsLibrary.name;
+  // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
+  D[wrd.cCommands] = {};
+  // console.log(`END ${namespacePrefix}${functionName} function`);
+}
+
+/**
  * @function initCommandsLibrary
  * @description Initializes the commands function data structure on D.
  * @return {void}
@@ -147,5 +161,6 @@ async function initCommandsLibrary() {
 }
 
 export default {
+  clearCommandsLibrary,
   initCommandsLibrary
 };

@@ -46,6 +46,7 @@ async function parseSystemRootPath(inputData, inputMetaData) {
   let returnData = '';
   if (inputData && inputMetaData) {
     let applicationName;
+    let pathElements = '';
     if (inputMetaData.includes(bas.cForwardSlash)) {
       let applicationNameArray = inputMetaData.split(bas.cForwardSlash);
       // Assign the application name to the final name-element of the repo-namespace.
@@ -55,7 +56,13 @@ async function parseSystemRootPath(inputData, inputMetaData) {
     } else {
       applicationName = inputMetaData; // Rename it for readability.
     }
-    let pathElements = inputData.split(bas.cBackSlash);
+    if (inputData.includes(bas.cBackSlash) === true) {
+      // console.log('caught the case of back slash');
+      pathElements = inputData.split(bas.cBackSlash);
+    } else if (inputData.includes(bas.cForwardSlash) === true) {
+      // console.log('caught the case of forward slash');
+      pathElements = inputData.split(bas.cForwardSlash);
+    }    
     for (let i = 0; i < pathElements.length; i++) {
       // console.log(`BEGIN iteration i: ${i}`);
       let pathElement = pathElements[i];

@@ -45,6 +45,20 @@ async function bootStrapCommands() {
 }
 
 /**
+ * @function reinitializeCommands
+ * @description Clears out and then re-bootstraps the commands.
+ * @return {void}
+ * @author Seth Hollingsead
+ * @date 2023/02/12
+ */
+async function reinitializeCommands() {
+  let functionName = reinitializeCommands.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await commandBroker.resetCommands();
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+}
+
+/**
  * @function addClientCommands
  * @description This is a wrapper function for calling the commandBroker.addClientCommands.
  * @param {object} clientCommands A map of client defined command names and client defined command function calls.
@@ -170,6 +184,7 @@ async function processCommandQueue() {
 
 export default {
   bootStrapCommands,
+  reinitializeCommands,
   addClientCommands,
   loadCommandAliasesFromPath,
   enqueueCommand,
