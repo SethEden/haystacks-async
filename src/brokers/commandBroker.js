@@ -55,6 +55,20 @@ async function bootStrapCommands() {
 }
 
 /**
+ * @function resetCommands
+ * @description Clears out and reinitializes the commands.
+ * @return {void}
+ * @date 2023/02/12
+ */
+async function resetCommands() {
+  let functionName = resetCommands.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await commandsLibrary.clearCommandsLibrary();
+  await commandsLibrary.initCommandsLibrary();
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+}
+
+/**
  * @function addClientCommands
  * @description Merges client defined commands with the system defined commands.
  * @param {array<object>} clientCommands The client rules that should be merged with the system rules.
@@ -814,6 +828,7 @@ async function removePluginCommandAliases(pluginName) {
 
 export default {
   bootStrapCommands,
+  resetCommands,
   addClientCommands,
   addPluginCommands,
   addPluginCommandAliases,

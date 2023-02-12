@@ -219,3 +219,4 @@ let programRunning = false;
 await bootstrapApplication();
 programRunning = true;
 await application();
+process.exit();

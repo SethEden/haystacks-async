@@ -215,10 +215,10 @@ async function loadAsciiFileFromPath(inputData, inputMetaData) {
  */
 // eslint-disable-next-line no-unused-vars
 async function readDirectoryContents(inputData, inputMetaData) {
-  let functionName = readDirectoryContents.name;
-  console.log(`BEGIN ${namespacePrefix}${functionName} function`);
-  console.log(`inputData is: ${inputData}`);
-  console.log(`inputMetaData is: ${inputMetaData}`);
+  // let functionName = readDirectoryContents.name;
+  // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
+  // console.log(`inputData is: ${inputData}`);
+  // console.log(`inputMetaData is: ${inputMetaData}`);
   let returnData = [];
   // Make sure to resolve the path on the local system,
   // just in case there are issues with the OS that the code is running on.
@@ -227,9 +227,9 @@ async function readDirectoryContents(inputData, inputMetaData) {
   returnData = filesCollection; // Copy the data into a local variable first.
   filesCollection = undefined; // Make sure to clear it so we don't have a chance of it corrupting any other file operations.
   filesCollection = [];
-  console.log(`DONE loading data from: ${inputData}`);
-  console.log(msg.creturnDataIs + JSON.stringify(returnData));
-  console.log(`END ${namespacePrefix}${functionName} function`);
+  // console.log(`DONE loading data from: ${inputData}`);
+  // console.log(msg.creturnDataIs + JSON.stringify(returnData));
+  // console.log(`END ${namespacePrefix}${functionName} function`);
   return returnData;
 }
 

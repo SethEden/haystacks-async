@@ -114,13 +114,14 @@ async function accouterFramework(data) {
     // console.log('setting the data structure!');
     returnData = await D.setData(data);
 
-    // TODO: Haystacks-Plugin linking issue #40
+    // Haystacks-Plugin linking issue #40
     // Possible fix: Apparently the business rules and commands from the data that are cloned from the original instance of Haystacks,
     // can only execute from the code located at the path of the original location.
     // When we are using the plugin to call the accouterFramework function we are actually bootstrapping a Haystacks instance
     // from within the plugins own node_modules path, not the original path. This is why the plugins instance of Haystacks needed to be linked.
     // We can get around that by re-initializing the business rules and the commands for this instance of Haystacks and over-write the same
     // business rules and commands in the above data structure. That should in theory solve the linking issue.
+    await warden.resetRulesAndCommands();
   }
   // console.log('returnData is: ' + returnData);
   // console.log(`END ${namespacePrefix}${functionName} function`);
