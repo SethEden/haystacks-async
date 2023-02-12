@@ -64,10 +64,10 @@ async function processRootPath(inputPath, actualFrameworkName) {
   await chiefCommander.bootStrapCommands();
   let resolvedPath = await ruleBroker.processRules([inputPath, actualFrameworkName], [biz.cparseSystemRootPath]);
   await dataBroker.setupDataStorage();
-  let rootPath = path.resolve(resolvedPath);
-  // console.log(`rootPath is: ${rootPath}`);
+  resolvedPath = path.normalize(resolvedPath);
+  // console.log(`resolvedPath is: ${resolvedPath}`);
   // console.log(`END ${namespacePrefix}${functionName} function`);
-  return rootPath;
+  return resolvedPath;
 }
 
 /**

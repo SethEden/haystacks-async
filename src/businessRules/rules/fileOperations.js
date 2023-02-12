@@ -64,7 +64,7 @@ async function getXmlData(inputData, inputMetaData) {
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
   let returnData;
-  let pathAndFilename = path.resolve(inputData);
+  let pathAndFilename = path.normalize(inputData);
   let data = await fs.readFileSync(pathAndFilename, { encoding: gen.cUTF8 });
   let xml;
   await xml2js.parseString(data,
@@ -102,7 +102,7 @@ async function getCsvData(inputData, inputMetaData) {
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
   let returnData;
-  let pathAndFilename = path.resolve(inputData);
+  let pathAndFilename = path.normalize(inputData);
   let data = await fs.readFileSync(pathAndFilename, { encoding: gen.cUTF8 });
   returnData = await papa.parse(data, {
     delimiter: ',',
@@ -137,7 +137,7 @@ async function getJsonData(inputData, inputMetaData) {
   // console.log(`inputMetaData is: ${inputMetaData}`);
   // Make sure to resolve the path on the local system,
   // just in case there are issues with the OS that the code is running on.
-  let pathAndFilename = path.resolve(inputData);
+  let pathAndFilename = path.normalize(inputData);
   let rawData = await fs.readFileSync(pathAndFilename, { encoding: gen.cUTF8 });
   let returnData = JSON.parse(rawData);
   // console.log(`DONE loading data from: ${inputData}`);
@@ -215,21 +215,21 @@ async function loadAsciiFileFromPath(inputData, inputMetaData) {
  */
 // eslint-disable-next-line no-unused-vars
 async function readDirectoryContents(inputData, inputMetaData) {
-  // let functionName = readDirectoryContents.name;
-  // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
-  // console.log(`inputData is: ${inputData}`);
-  // console.log(`inputMetaData is: ${inputMetaData}`);
+  let functionName = readDirectoryContents.name;
+  console.log(`BEGIN ${namespacePrefix}${functionName} function`);
+  console.log(`inputData is: ${inputData}`);
+  console.log(`inputMetaData is: ${inputMetaData}`);
   let returnData = [];
   // Make sure to resolve the path on the local system,
   // just in case there are issues with the OS that the code is running on.
-  let directory = path.resolve(inputData);
+  let directory = path.normalize(inputData);
   await readDirectorySynchronously(directory);
   returnData = filesCollection; // Copy the data into a local variable first.
   filesCollection = undefined; // Make sure to clear it so we don't have a chance of it corrupting any other file operations.
   filesCollection = [];
-  // console.log(`DONE loading data from: ${inputData}`);
-  // console.log(msg.creturnDataIs + JSON.stringify(returnData));
-  // console.log(`END ${namespacePrefix}${functionName} function`);
+  console.log(`DONE loading data from: ${inputData}`);
+  console.log(msg.creturnDataIs + JSON.stringify(returnData));
+  console.log(`END ${namespacePrefix}${functionName} function`);
   return returnData;
 }
 
@@ -261,7 +261,7 @@ async function scanDirectoryContents(inputData, inputMetaData) {
   // filesLimit is:
   await loggers.consoleLog(namespacePrefix + functionName, msg.cfilesLimitIs + filesLimit);
   let filesFound = [];
-  let directory = path.resolve(inputData);
+  let directory = path.normalize(inputData);
   enableFilesListLimit = enableLimit;
   filesListLimit = filesLimit;
   await readDirectorySynchronously(directory, '');
@@ -321,7 +321,7 @@ async function readDirectorySynchronously(inputData, inputMetaData) {
   // console.log(`inputData is: ${inputData}`);
   // console.log(`inputMetaData is: ${inputMetaData}`);
   if (hitFileLimit === false) {
-    let directory = path.resolve(inputData); // Make sure to resolve the path on the local system.
+    let directory = path.normalize(inputData); // Make sure to resolve the path on the local system.
     let currentDirectoryPath = directory;
     let currentDirectory = '';
     try {
@@ -363,7 +363,7 @@ async function readDirectorySynchronously(inputData, inputMetaData) {
           // The ideal solution would be to detect which OS the code is being run on.
           // Then handle each case appropriately.
           let directoryPath = '';
-          directoryPath = path.resolve(directory + bas.cForwardSlash + file);
+          directoryPath = path.normalize(directory + bas.cForwardSlash + file);
           // console.log(`directoryPath is ${directoryPath}`);
           await readDirectorySynchronously(directoryPath, '');
           // console.log('filesCollection is: ' + JSON.stringify(filesCollection));
@@ -440,8 +440,8 @@ async function buildReleasePackage(inputData, inputMetaData) {
   // current version is:
   await loggers.consoleLog(namespacePrefix + functionName, msg.ccurrentVersionIs + currentVersion);
   originalSource = bas.cDot + inputData;
-  sourceFolder = path.resolve(rootPath + inputData);
-  destinationFolder = path.resolve(rootPath + inputMetaData);
+  sourceFolder = path.normalize(rootPath + inputData);
+  destinationFolder = path.normalize(rootPath + inputMetaData);
   releaseFiles = await readDirectoryContents(sourceFolder);
   releasedArchiveFiles = await readDirectoryContents(destinationFolder);
   // released archive files list is:
@@ -469,7 +469,7 @@ async function buildReleasePackage(inputData, inputMetaData) {
     let releaseFileName = releaseDateTimeStamp + bas.cUnderscore + currentVersion + bas.cUnderscore + applicationName;
     // release fileName is:
     await loggers.consoleLog(namespacePrefix + functionName, msg.creleaseFileNameIs + releaseFileName);
-    let fullReleasePath = path.resolve(destinationFolder + bas.cForwardSlash + releaseFileName + gen.cDotzip);
+    let fullReleasePath = path.normalize(destinationFolder + bas.cForwardSlash + releaseFileName + gen.cDotzip);
     try {
       await zip.addLocalFolder(sourceFolder, originalSource);
       await zip.writeZip(fullReleasePath);
@@ -675,7 +675,7 @@ async function copyFolderRecursiveSync(inputData, inputMetaData) {
   } else {
     targetFolder = path.join(target, pathLeafNode);
   }
-  targetFolder = path.resolve(targetFolder);
+  targetFolder = path.normalize(targetFolder);
   if (await fs.existsSync(targetFolder) !== true) {
     try {
       // console.log('making the path');

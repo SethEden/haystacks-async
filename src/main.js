@@ -28,7 +28,7 @@ import url from 'url';
 import dotenv from 'dotenv';
 import path from 'path';
 
-const {bas, cfg, msg, sys, wrd} = hayConst;
+const {bas, biz, cfg, gen, msg, sys, wrd} = hayConst;
 const baseFileName = path.basename(import.meta.url, path.extname(import.meta.url));
 // framework.main.
 const namespacePrefix = wrd.cframework + bas.cDot + baseFileName + bas.cDot;
@@ -52,12 +52,16 @@ async function initFramework(clientConfiguration) {
  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
  await loggers.consoleLog(namespacePrefix + functionName, msg.cclientConfigurationIs + clientConfiguration);
 
- // let frameworkRootPath = path.resolve(process.cwd());
- // let frameworkRootPath = path.resolve(path.dirname(import.meta.url));
+ // let frameworkRootPath = path.normalize(process.cwd());
+ // let frameworkRootPath = path.normalize(path.dirname(import.meta.url));
  let frameworkCodeRootPath = url.fileURLToPath(path.dirname(import.meta.url));
  let frameworkCommandAliasesPath = '';
  let frameworkWorkflowsPath = '';
  frameworkCodeRootPath = await warden.processRootPath(frameworkCodeRootPath, clientConfiguration[sys.cFrameworkName]) + bas.cDoubleForwardSlash;
+ // eslint-disable-next-line no-undef
+ if (process.platform != gen.cwin32) {
+  frameworkCodeRootPath = await warden.executeBusinessRules([frameworkCodeRootPath, ''], [biz.cswapBackSlashToForwardSlash]);
+ }
  let frameworkRootPath = frameworkCodeRootPath;
  if (NODE_ENV === wrd.cdevelopment) {
    frameworkCodeRootPath = frameworkCodeRootPath + sys.cFrameworkDevelopRootPath;
@@ -71,12 +75,12 @@ async function initFramework(clientConfiguration) {
  frameworkCommandAliasesPath = frameworkCodeRootPath + sys.cframeworkResourcesCommandAliasesPath;
  frameworkWorkflowsPath = frameworkCodeRootPath + sys.cframeworkResourcesWorkflowsPath;
 
- clientConfiguration[cfg.cframeworkRootPath] = path.resolve(frameworkRootPath);
+ clientConfiguration[cfg.cframeworkRootPath] = path.normalize(frameworkRootPath);
  clientConfiguration[cfg.cframeworkConstantsPath] = hayConst.constantsPath; // frameworkCodeRootPath + sys.cframeworkConstantsPath;
  clientConfiguration[cfg.cappConfigPath] = clientConfiguration[cfg.cappConfigReferencePath];
- clientConfiguration[cfg.cframeworkResourcesPath] = frameworkCodeRootPath + sys.cframeworkResourcesPath;
- clientConfiguration[cfg.cclientMetaDataPath] = path.resolve(clientConfiguration[cfg.cclientRootPath] + clientConfiguration[cfg.cclientMetaDataPath]);
- clientConfiguration[cfg.cframeworkFullMetaDataPath] = path.resolve(clientConfiguration[cfg.cframeworkResourcesPath] + sys.cmetaDatadotJson);
+ clientConfiguration[cfg.cframeworkResourcesPath] = path.join(frameworkCodeRootPath, sys.cframeworkResourcesPath);
+ clientConfiguration[cfg.cclientMetaDataPath] = path.join(clientConfiguration[cfg.cclientRootPath], clientConfiguration[cfg.cclientMetaDataPath]);
+ clientConfiguration[cfg.cframeworkFullMetaDataPath] = path.join(clientConfiguration[cfg.cframeworkResourcesPath], sys.cmetaDatadotJson);
  clientConfiguration[cfg.cframeworkConfigPath] = frameworkCodeRootPath + sys.cframeworkResourcesConfigurationPath;
  clientConfiguration[cfg.cframeworkThemesPath] = frameworkCodeRootPath + sys.cframeworkThemesPath;
  clientConfiguration[cfg.cframeworkCommandAliasesPath] = frameworkCommandAliasesPath;
@@ -84,8 +88,8 @@ async function initFramework(clientConfiguration) {
  await warden.initFrameworkSchema(clientConfiguration);
  await loggers.consoleLog(namespacePrefix + functionName, msg.cAllLoadedDataIs + JSON.stringify(D));
  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
-//  console.log('All loaded data is: ' + JSON.stringify(D));
-//  console.log(`END ${namespacePrefix}${functionName} function`);
+// console.log('All loaded data is: ' + JSON.stringify(D));
+// console.log(`END ${namespacePrefix}${functionName} function`);
 }
 
 /**
