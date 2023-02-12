@@ -48,6 +48,21 @@ async function bootStrapBusinessRules() {
 }
 
 /**
+ * @function resetBusinessRules
+ * @description Clears out and reinitializes the business rules.
+ * @return {void}
+ * @date 2023/02/12
+ * @NOTE Cannot use the loggers here, because of a circular dependency.
+ */
+async function resetBusinessRules() {
+  // let functionName = bootStrapBusinessRules.name;
+  // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
+  await rules.clearRulesLibrary();
+  await rules.initRulesLibrary();
+  // console.log(`END ${namespacePrefix}${functionName} function`);
+}
+
+/**
  * @function addClientRules
  * @description Merges client defined business rules with the system defined business rules.
  * @param {array<object>} clientRules The client rules that should be merged with the system rules.
@@ -205,6 +220,7 @@ async function removePluginBusinessRules(pluginName) {
 
 export default {
   bootStrapBusinessRules,
+  resetBusinessRules,
   addClientRules,
   addPluginRules,
   processRules,

@@ -30,7 +30,7 @@ const namespacePrefix = wrd.cframework + bas.cDot + wrd.cbrokers + bas.cDot + ba
  * @param {string} pluginName The name of the current plugin these workflows belong to.
  * @param {object} pluginWorkflows A JSON object that contains the plugin workflows that should be merged with the system workflows.
  * @return {boolean} True or False to indicate if the merge was successful or not.
- * @autor Seth Hollingsead
+ * @author Seth Hollingsead
  * @date 2022/10/25
  */
 async function addPluginWorkflows(pluginName, pluginWorkflows) {

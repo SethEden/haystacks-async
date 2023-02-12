@@ -248,7 +248,7 @@ async function loadAllXmlData(filesToLoad, contextName) {
       // BEGIN PROCESSING ADDITIONAL DATA
       await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_PROCESSING_ADDITIONAL_DATA);
       // j-th iteration:
-      await loggers.consoleLog(namespacePrefix + functionName, 'j-th iteration: ' + j);
+      await loggers.consoleLog(namespacePrefix + functionName, msg.cjthIteration + j);
       if (j === 0) {
         j++;
         multiMergedData = dataFile;
