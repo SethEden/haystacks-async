@@ -71,6 +71,20 @@ const baseFileName = path.basename(import.meta.url, path.extname(import.meta.url
 const namespacePrefix = wrd.cframework + bas.cDot + sys.cbusinessRules + bas.cDot + baseFileName + bas.cDot;
 
 /**
+ * @function clearRulesLibrary
+ * @description Clears out the business rules data structure on D. Useful so that it can be re-initialized.
+ * @return {void}
+ * @author Seth Hollingsead
+ * @date 2023/02/12
+ */
+async function clearRulesLibrary() {
+  // let functionName = clearRulesLibrary.name;
+  // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
+  D[sys.cbusinessRules] = {};
+  // console.log(`END ${namespacePrefix}${functionName} function`);
+}
+
+/**
  * @function initRulesLibrary
  * @description Initializes the business rules function data structure on D.
  * @return {void}
@@ -387,5 +401,6 @@ async function initRulesLibrary() {
 }
 
 export default {
+  clearRulesLibrary,
   initRulesLibrary
 };

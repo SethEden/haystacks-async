@@ -64,10 +64,10 @@ async function processRootPath(inputPath, actualFrameworkName) {
   await chiefCommander.bootStrapCommands();
   let resolvedPath = await ruleBroker.processRules([inputPath, actualFrameworkName], [biz.cparseSystemRootPath]);
   await dataBroker.setupDataStorage();
-  let rootPath = path.resolve(resolvedPath);
-  // console.log(`rootPath is: ${rootPath}`);
+  resolvedPath = path.normalize(resolvedPath);
+  // console.log(`resolvedPath is: ${resolvedPath}`);
   // console.log(`END ${namespacePrefix}${functionName} function`);
-  return rootPath;
+  return resolvedPath;
 }
 
 /**
@@ -250,6 +250,34 @@ async function initFrameworkSchema(configData) {
   // We can pass in a name of a configuration setting that has a path to load plugin data this way.
   // console.log('Contents of D are: ' + JSON.stringify(D));
   // console.log(`END ${namespacePrefix}${functionName} function`);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+}
+
+/**
+ * @function resetRulesAndCommands
+ * @description Clears and then re-initializes the Haystacks platform framework business rules and commands.
+ * This is needed because: When Haystacks is used to load plugins, the plugin needs to make a call back to Haystacks
+ * to load all the plugin resource non-code files. When the plugin does that it is creating a new instance of Haystacks.
+ * The new instance of Haystacks created by the plugin is not the same instance as the original instance of Haystacks.
+ * We get around that by injecting all of the data from the original Haystacks into the new plugin-instance of Haystacks.
+ * However, when trying to call the business rules or commands using the dependency injected data, the business rules are not found,
+ * and cannot be executed. It turns out because the paths are completely different.
+ * The original instance of Haystacks initialized all its business rules and commands from the original instance path.
+ * So when executing those business rules and those commands it executes that code from those files using that path.
+ * However, when trying to pump those same business rules and commands into the plugin instance and then execute the same code,
+ * the plugin instance doesn't have access to or know about the paths to those business rules or commands.
+ * So therefore the solution is to have the plugin instance of Haystacks to clear and re-initialize its own business rules and commands.
+ * That way the plugin instance of Haystacks, when it tries to execute its own business rules and commands it will be doing so using,
+ * its own path to those business rules and commands and should therefore work as expected.
+ * @return {void}
+ * @author Seth Hollingsead
+ * @date 2023/02/12
+ */
+async function resetRulesAndCommands() {
+  let functionName = resetRulesAndCommands.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await chiefCommander.reinitializeCommands();
+  await ruleBroker.resetBusinessRules();
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
 }
 
@@ -952,6 +980,7 @@ async function consoleLog(classPath, message) {
 export default {
   processRootPath,
   initFrameworkSchema,
+  resetRulesAndCommands,
   mergeClientBusinessRules,
   mergeClientCommands,
   loadCommandAliases,

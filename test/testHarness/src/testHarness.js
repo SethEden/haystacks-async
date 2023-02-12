@@ -62,9 +62,16 @@ async function bootstrapApplication() {
   // let functionName = bootstrapApplication.name;
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   rootPath = url.fileURLToPath(path.dirname(import.meta.url));
-  let rootPathArray = rootPath.split(bas.cBackSlash);
+  let rootPathArray = [];
+  let pathSeparator = '';
+  if (rootPath.includes(bas.cBackSlash) === true) {
+    pathSeparator = bas.cBackSlash;
+  } else if (rootPath.includes(bas.cForwardSlash) === true) {
+    pathSeparator = bas.cForwardSlash;
+  }
+  rootPathArray = rootPath.split(pathSeparator);
   rootPathArray.pop(); // remove any bin or src folder from the path.
-  rootPath = rootPathArray.join(bas.cBackSlash);
+  rootPath = rootPathArray.join(pathSeparator);
   let appConfig = {};
   if (NODE_ENV === wrd.cdevelopment) {
     appConfig = {
@@ -212,3 +219,4 @@ let programRunning = false;
 await bootstrapApplication();
 programRunning = true;
 await application();
+process.exit();

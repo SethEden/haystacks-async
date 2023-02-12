@@ -646,31 +646,35 @@ async function loadPlugin(pluginExecutionPath) {
   // pluginExecutionPath is:
   await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginExecutionPathIs + pluginExecutionPath);
   let returnData = {};
-  const pluginResponseData = new Promise((resolve, reject) => {
-    const loadAsyncImport = () => {
-      const asyncImport = async () => {
-        return await myDynamicImport(pluginExecutionPath);
+  try {
+    const pluginResponseData = new Promise((resolve, reject) => {
+      const loadAsyncImport = () => {
+        const asyncImport = async () => {
+          return await myDynamicImport(pluginExecutionPath);
+        };
+  
+        return asyncImport().then((result) => {
+          return result;
+        });
       };
-
-      return asyncImport().then((result) => {
-        return result;
-      });
-    };
-
-    const myDynamicImport = async (path) => {
-      return await import(path);
-    };
-    return loadAsyncImport().then(async value => {
-      resolve(returnData = await value[wrd.cdefault].initializePlugin(D));
-      // dataLoaded is:
-      loggers.consoleLog(namespacePrefix + functionName, msg.cdataLoadedIs + JSON.stringify(returnData));
-    }).catch (err => reject(err));
-  });
-
-  await Promise.all([pluginResponseData]).then((value) => {
-    loggers.consoleLog(namespacePrefix + functionName, msg.cvalueIs + JSON.stringify(value));
-  });
-
+  
+      const myDynamicImport = async (path) => {
+        return await import(path);
+      };
+      return loadAsyncImport().then(async value => {
+        resolve(returnData = await value[wrd.cdefault].initializePlugin(D));
+        // dataLoaded is:
+        loggers.consoleLog(namespacePrefix + functionName, msg.cdataLoadedIs + JSON.stringify(returnData));
+      }).catch (err => reject(err));
+    });
+  
+    await Promise.all([pluginResponseData]).then((value) => {
+      loggers.consoleLog(namespacePrefix + functionName, msg.cvalueIs + JSON.stringify(value));
+    });
+  } catch (err) {
+    // ERROR: There was an error attempting to load the specified plugin: 
+    console.log(msg.cloadPluginErrorMessage01 + pluginExecutionPath);
+  }
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
