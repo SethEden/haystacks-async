@@ -351,12 +351,12 @@ async function getPluginConfigurationNamespaceObject(dataStructure, configuratio
  * @date 2022/10/24
  */
 async function addPluginConfigurationData(pluginName, pluginConfigData) {
-  let functionName = addPluginConfigurationData.name;
-  console.log(`BEGIN ${namespacePrefix}${functionName} function`);
+  // let functionName = addPluginConfigurationData.name;
+  // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   // pluginName is:
-  console.log(msg.cpluginNameIs + pluginName);
+  // console.log(msg.cpluginNameIs + pluginName);
   // pluginConfigData is:
-  console.log(msg.cpluginConfigDataIs + JSON.stringify(pluginConfigData));
+  // console.log(msg.cpluginConfigDataIs + JSON.stringify(pluginConfigData));
   let returnData = false;
   try {
     if (D[wrd.cconfiguration][wrd.cplugins] === undefined) {

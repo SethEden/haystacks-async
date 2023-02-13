@@ -643,8 +643,6 @@ async function extractAndProcessPluginEntryPointURI(pluginMetaData, pluginPath) 
  */
 async function loadPlugin(pluginExecutionPath) {
   let functionName = loadPlugin.name;
-  console.log('BEGIN haystacks.brokers.pluginBroker.loadPlugin function');
-  console.log('pluginExecutionPath is: ' + pluginExecutionPath);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // pluginExecutionPath is:
   await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginExecutionPathIs + pluginExecutionPath);
@@ -682,7 +680,6 @@ async function loadPlugin(pluginExecutionPath) {
   }
   // await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
-  console.log('END haystacks.brokers.pluginBroker.loadPlugin function');
   return returnData;
 }
 
