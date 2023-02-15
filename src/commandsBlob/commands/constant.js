@@ -6,6 +6,7 @@
 * @requires module:configurator
 * @requires module:loggers
 * @requires module:queue
+* @requires module:stack
 * @requires {@link https://www.npmjs.com/package/@haystacks/constants|@haystacks/constants}
 * @requires {@link https://www.npmjs.com/package/path|path}
 * @author Seth Hollingsead
@@ -18,6 +19,7 @@ import ruleBroker from '../../brokers/ruleBroker.js';
 import configurator from '../../executrix/configurator.js';
 import loggers from '../../executrix/loggers.js';
 import queue from '../../structures/queue.js';
+import stack from '../../structures/stack.js';
 // External imports
 import hayConst from '@haystacks/constants';
 import path from 'path';
@@ -166,18 +168,30 @@ async function constantsGeneratorList(inputData, inputMetaData) {
        await loggers.consoleLog(namespacePrefix + functionName, msg.cuserDefinedConstantsListArrayIs + JSON.stringify(userDefinedConstantsListArray));
        if (userDefinedConstantsListArray.length > 1) {
          for (const element of userDefinedConstantsListArray) {
-          await queue.enqueue(sys.cCommandQueue, cmd.cconstantsGenerator + bas.cSpace + element.trim());
+          let commandToQueue1 = cmd.cconstantsGenerator + bas.cSpace + element.trim()
+            if (await configurator.getConfigurationSetting(wrd.csystem, cfg.clogAllCommands) === true) {
+              await stack.push(sys.cSystemCommandLog, commandToQueue1);
+            }
+            await queue.enqueue(sys.cCommandQueue, commandToQueue1);
          } // End-for (const element of userDefinedConstantsListArray)
          returnData[1] = true;
        } else if (userDefinedConstantsListArray.length === 1) {
          // Just enqueue the constants Generator command with the input directly.
-         await queue.enqueue(sys.cCommandQueue, cmd.cconstantsGenerator + bas.cSpace + userDefinedConstantsListArray[0].trim());
+         let commandToQueue2 = cmd.cconstantsGenerator + bas.cSpace + userDefinedConstantsListArray[0].trim();
+         if (await configurator.getConfigurationSetting(wrd.csystem, cfg.clogAllCommands) === true) {
+           await stack.push(sys.cSystemCommandLog, commandToQueue2);
+         }
+         await queue.enqueue(sys.cCommandQueue, commandToQueue2);
          returnData[1] = true;
        }
      } else {
        // userDefinedConstantsList DOES NOT contain comas
        await loggers.consoleLog(namespacePrefix + functionName, msg.cuserDefinedConstantsListDoesNotContainComas);
-       await queue.enqueue(sys.cCommandQueue, cmd.cconstantsGenerator + bas.cSpace + userDefinedConstantList.trim());
+       let commandToQueue3 = cmd.cconstantsGenerator + bas.cSpace + userDefinedConstantList.trim();
+       if (await configurator.getConfigurationSetting(wrd.csystem, cfg.clogAllCommands) === true) {
+         await stack.push(sys.cSystemCommandLog, commandToQueue3);
+       }
+       await queue.enqueue(sys.cCommandQueue, commandToQueue3);
        returnData[1] = true;
      }
    } else {
@@ -253,7 +267,11 @@ async function constantsPatternRecognizer(inputData, inputMetaData) {
     let newConstantsList = await ruleBroker.processRules([commonPatternsArray, ''], [biz.cvalidatePatternsThatNeedImplementation]);
     let constantsPatternGenerationSetting = await configurator.getConfigurationSetting(wrd.csystem, cfg.cenableConstantsPatternGeneration);
     if (constantsPatternGenerationSetting === true) {
-      await queue.enqueue(sys.cCommandQueue, cmd.cconstantsGeneratorList + bas.cSpace + newConstantsList);
+      let commandToQueue = cmd.cconstantsGeneratorList + bas.cSpace + newConstantsList
+      if (await configurator.getConfigurationSetting(wrd.csystem, cfg.clogAllCommands) === true) {
+        await stack.push(sys.cSystemCommandLog, commandToQueue);
+      }
+      await queue.enqueue(sys.cCommandQueue, commandToQueue);
       returnData[1] = newConstantsList;
     } // End-if (constantsPatternGenerationSetting === true)
   } else {
