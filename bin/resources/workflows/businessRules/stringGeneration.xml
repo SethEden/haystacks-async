@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?><CommandWorkflows>
+  <businessRules>
+    <stringGeneration>
+      <Workflow Name="generateRandomMixedCaseTextByLength" Value="cmdgen bizRul,generateRandomMixedCaseTextByLength,100 10"/>
+      <Workflow Name="generateRandomUpperCaseTextByLength" Value="cmdgen bizRul,generateRandomUpperCaseTextByLength,100 10"/>
+      <Workflow Name="generateRandomLowerCaseTextByLength" Value="cmdgen bizRul,generateRandomLowerCaseTextByLength,100 10"/>
+      <Workflow Name="generateRandomMixedCaseTextWithSpecialCharactersByLength" Value="cmdgen bizRul,generateRandomMixedCaseTextWithSpecialCharactersByLength,100,!@#$%^*()_+=-<>?;: 10"/>
+      <Workflow Name="generateRandomUpperCaseTextWithSpecialCharactersByLength" Value="cmdgen bizRul,generateRandomUpperCaseTextWithSpecialCharactersByLength,100,!@#$%^*()_+=-<>?;: 10"/>
+      <Workflow Name="generateRandomLowerCaseTextWithSpecialCharactersByLength" Value="cmdgen bizRul,generateRandomLowerCaseTextWithSpecialCharactersByLength,100,!@#$%^*()_+=-<>?;: 10"/>
+      <Workflow Name="generateRandomMixedCaseAlphaNumericCodeByLength" Value="cmdgen bizRul,generateRandomMixedCaseAlphaNumericCodeByLength,100 10"/>
+      <Workflow Name="generateRandomUpperCaseAlphaNumericCodeByLength" Value="cmdgen bizRul,generateRandomUpperCaseAlphaNumericCodeByLength,100 10"/>
+      <Workflow Name="generateRandomLowerCaseAlphaNumericCodeByLength" Value="cmdgen bizRul,generateRandomLowerCaseAlphaNumericCodeByLength,100 10"/>
+      <Workflow Name="generateRandomNumericCodeByLength" Value="cmdgen bizRul,generateRandomNumericCodeByLength,100 10"/>
+      <Workflow Name="generateRandomMixedCaseAlphaNumericCodeWithSpecialCharactersByLength" Value="cmdgen bizRul,generateRandomMixedCaseAlphaNumericCodeWithSpecialCharactersByLength,100,!@#$%^*()_+=-<>?;: 10"/>
+      <Workflow Name="generateRandomUpperCaseAlphaNumericCodeWithSpecialCharactersByLength" Value="cmdgen bizRul,generateRandomUpperCaseAlphaNumericCodeWithSpecialCharactersByLength,100,!@#$%^*()_+=-<>?;: 10"/>
+      <Workflow Name="generateRandomLowerCaseAlphaNumericCodeWithSpecialCharactersByLength" Value="cmdgen bizRul,generateRandomLowerCaseAlphaNumericCodeWithSpecialCharactersByLength,100,!@#$%^*()_+=-<>?;: 10"/>
+      <Workflow Name="generateRandomSpecialCharacterCodeByLength" Value="cmdgen bizRul,generateRandomSpecialCharacterCodeByLength,100,!@#$%^*()_+=-<>?;: 10"/>
+      <Workflow Name="generateValidEmaila" Value="cmdgen bizRul,generateValidEmail,100,[True|!#$%^*()_+-=|abcorp1.com] 10"/>
+      <Workflow Name="generateInvalidEmaila" Value="cmdgen bizRul,generateInvalidEmail,100,[True|!#$%^*()_+-=|abcorp3.com] 10"/>
+      <Workflow Name="generateValidEmailb" Value="cmdgen bizRul,generateValidEmail,100 10"/>
+      <Workflow Name="generateInvalidEmailb" Value="cmdgen bizRul,generateInvalidEmail,100 10"/>
+      <Workflow Name="stringGeneration" Value="cmdSeq wrkflo,generateRandomMixedCaseTextByLength wrkflo,generateRandomUpperCaseTextByLength wrkflo,generateRandomLowerCaseTextByLength wrkflo,generateRandomMixedCaseTextWithSpecialCharactersByLength wrkflo,generateRandomUpperCaseTextWithSpecialCharactersByLength wrkflo,generateRandomLowerCaseTextWithSpecialCharactersByLength wrkflo,generateRandomMixedCaseAlphaNumericCodeByLength wrkflo,generateRandomUpperCaseAlphaNumericCodeByLength wrkflo,generateRandomLowerCaseAlphaNumericCodeByLength wrkflo,generateRandomNumericCodeByLength wrkflo,generateRandomMixedCaseAlphaNumericCodeWithSpecialCharactersByLength wrkflo,generateRandomUpperCaseAlphaNumericCodeWithSpecialCharactersByLength wrkflo,generateRandomLowerCaseAlphaNumericCodeWithSpecialCharactersByLength wrkflo,generateRandomSpecialCharacterCodeByLength wrkflo,generateValidEmaila wrkflo,generateInvalidEmaila wrkflo,generateValidEmailb wrkflo,generateInvalidEmailb"/>
+    </stringGeneration>
+  </businessRules>
+</CommandWorkflows>

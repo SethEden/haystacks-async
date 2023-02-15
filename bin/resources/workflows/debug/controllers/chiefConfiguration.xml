@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?><CommandWorkflows>
+  <debug>
+    <controllers>
+      <chiefConfiguration>
+        <Workflow Name="chiefConfigurationEnable" Value="changeConfigSetting debugSetting.framework.controllers.chiefConfiguration true"/>
+        <Workflow Name="chiefConfigurationDisable" Value="changeConfigSetting debugSetting.framework.controllers.chiefConfiguration false"/>
+        <Workflow Name="setupConfigurationEnable" Value="changeConfigSetting debugSetting.framework.controllers.chiefConfiguration.setupConfiguration true"/>
+        <Workflow Name="setupConfigurationDisable" Value="changeConfigSetting debugSetting.framework.controllers.chiefConfiguration.setupConfiguration false"/>
+        <Workflow Name="setupPluginConfigurationEnable" Value="changeConfigSetting debugSetting.framework.controllers.chiefConfiguration.setupPluginConfiguration true"/>
+        <Workflow Name="setupPluginConfigurationDisable" Value="changeConfigSetting debugSetting.framework.controllers.chiefConfiguration.setupPluginConfiguration false"/>
+        <Workflow Name="parsePluginConfigurationDataEnable" Value="changeConfigSetting debugSetting.framework.controllers.chiefConfiguration.parsePluginConfigurationData true"/>
+        <Workflow Name="parsePluginConfigurationDataDisable" Value="changeConfigSetting debugSetting.framework.controllers.chiefConfiguration.parsePluginConfigurationData false"/>
+      </chiefConfiguration>
+    </controllers>
+  </debug>
+</CommandWorkflows>

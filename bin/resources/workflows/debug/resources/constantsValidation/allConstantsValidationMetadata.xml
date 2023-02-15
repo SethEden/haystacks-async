@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?><CommandWorkflows>
+  <debug>
+    <resources>
+      <constantsValidation>
+        <allConstantsValidationMetadata>
+          <Workflow Name="allConstantsValidationMetadataEnable" Value="changeConfigSetting debugSetting.framework.resources.constantsValidation.allConstantsValidationMetadata true"/>
+          <Workflow Name="allConstantsValidationMetadataDisable" Value="changeConfigSetting debugSetting.framework.resources.constantsValidation.allConstantsValidationMetadata false"/>
+          <Workflow Name="initiaizeAllSystemConstantsVaidationDataEnable" Value="changeConfigSetting debugSetting.framework.executrix.resources.constantsValidation.allConstantsValidationMetadata.initiaizeAllSystemConstantsVaidationData true"/>
+          <Workflow Name="initiaizeAllSystemConstantsVaidationDataDisable" Value="changeConfigSetting debugSetting.framework.executrix.resources.constantsValidation.allConstantsValidationMetadata.initiaizeAllSystemConstantsVaidationData false"/>
+        </allConstantsValidationMetadata>
+      </constantsValidation>
+    </resources>
+  </debug>
+</CommandWorkflows>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?><CommandWorkflows>
+  <debug>
+    <commandsBlob>
+      <commands>
+        <dataDirectorate>
+          <Workflow Name="dataDirectorateEnable" Value="changeConfigSetting debugSetting.framework.commandsBlob.commands.dataDirectorate true"/>
+          <Workflow Name="dataDirectorateDisable" Value="changeConfigSetting debugSetting.framework.commandsBlob.commands.dataDirectorate false"/>
+          <Workflow Name="printDataHiveEnable" Value="changeConfigSetting debugSetting.framework.commandsBlob.commands.dataDirectorate.printDataHive true"/>
+          <Workflow Name="printDataHiveDisable" Value="changeConfigSetting debugSetting.framework.commandsBlob.commands.dataDirectorate.printDataHive false"/>
+          <Workflow Name="printDataHiveAttributesEnable" Value="changeConfigSetting debugSetting.framework.commandsBlob.commands.dataDirectorate.printDataHiveAttributes true"/>
+          <Workflow Name="printDataHiveAttributesDisable" Value="changeConfigSetting debugSetting.framework.commandsBlob.commands.dataDirectorate.printDataHiveAttributes false"/>
+          <Workflow Name="clearDataStorageEnable" Value="changeConfigSetting debugSetting.framework.commandsBlob.commands.dataDirectorate.clearDataStorage true"/>
+          <Workflow Name="clearDataStorageDisable" Value="changeConfigSetting debugSetting.framework.commandsBlob.commands.dataDirectorate.clearDataStorage false"/>
+          <Workflow Name="changeSettingEnable" Value="changeConfigSetting debugSetting.framework.commandsBlob.commands.dataDirectorate.changeSetting true"/>
+          <Workflow Name="changeSettingDisable" Value="changeConfigSetting debugSetting.framework.commandsBlob.commands.dataDirectorate.changeSetting false"/>
+        </dataDirectorate>
+      </commands>
+    </commandsBlob>
+  </debug>
+</CommandWorkflows>
