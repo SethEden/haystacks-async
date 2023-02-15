@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?><CommandsAliases>
-  <performanceMetrics>
-    <Command Name="businessRulesMetrics" Aliases="BusinessRulesM,BusinessRulesMet,BusinessRulesMetr,BusinessRulesMets,BusinessRulesMetrics,BusinessRulM,BusinessRulMet,BusinessRulMetr,BusinessRulMets,BusinessRulMetrics,BusinessRM,BusinessRMet,BusinessRMetr,BusinessRMets,BusinessRMetrics,BusRulesM,BusRulesMet,BusRulesMetr,BusRulesMets,BusRulesMetrics,BusRulM,BusRulMet,BusRulMetr,BusRulMets,BusRulMetrics,BusRM,BusRMet,BusRMetr,BusRMets,BusRMetrics,BizRulesM,BizRulesMet,BizRulesMetr,BizRulesMets,BizRulesMetrics,BizRulM,BizRulMet,BizRulMetr,BizRulMets,BizRulMetrics,BizRM,BizRMet,BizRMetr,BizRMets,BizRMetrics,BRulesM,BRulesMet,BRulesMetr,BRulesMets,BRulesMetrics,BRulM,BRulMet,BRulMetr,BRulMets,BRulMetrics,BRM,BRMet,BRMetr,BRMets" Description="Computes statistics on business rule performance metrics and displays the results."/>
-    <Command Name="commandMetrics" Aliases="CommandM,CommandMet,CommandMetr,CommandMets,CommandMetrics,CmdM,CmdMet,CmdMetr,CmdMets,CmdMetrics,CM,CMet,CMetr,CMets" Description="Computes statistics on command performance metrics and displays the results."/>
-  </performanceMetrics>
-</CommandsAliases>
