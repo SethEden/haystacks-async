@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?><CommandWorkflows>
+  <debug>
+    <main>
+      <Workflow Name="mainEnable" Value="changeConfigSetting debugSetting.framework.main true"/>
+      <Workflow Name="mainDisable" Value="changeConfigSetting debugSetting.framework.main false"/>
+      <Workflow Name="initFrameworkEnable" Value="changeConfigSetting debugSetting.framework.main.initFramework true"/>
+      <Workflow Name="initFrameworkDisable" Value="changeConfigSetting debugSetting.framework.main.initFramework false"/>
+      <Workflow Name="mainMergeClientBusinessRulesEnable" Value="changeConfigSetting debugSetting.framework.main.mergeClientBusinessRules true"/>
+      <Workflow Name="mainMergeClientBusinessRulesDisable" Value="changeConfigSetting debugSetting.framework.main.mergeClientBusinessRules false"/>
+      <Workflow Name="mainMergeClientCommandsEnable" Value="changeConfigSetting debugSetting.framework.main.mergeClientCommands true"/>
+      <Workflow Name="mainMergeClientCommandsDisable" Value="changeConfigSetting debugSetting.framework.main.mergeClientCommands false"/>
+      <Workflow Name="mainLoadCommandAliasesEnable" Value="changeConfigSetting debugSetting.framework.main.loadCommandAliases true"/>
+      <Workflow Name="mainLoadCommandAliasesDisable" Value="changeConfigSetting debugSetting.framework.main.loadCommandAliases false"/>
+      <Workflow Name="mainLoadCommandWorkflowsEnable" Value="changeConfigSetting debugSetting.framework.main.loadCommandWorkflows true"/>
+      <Workflow Name="mainLoadCommandWorkflowsDisable" Value="changeConfigSetting debugSetting.framework.main.loadCommandWorkflows false"/>
+      <Workflow Name="mainListAllPluginsInRegistryEnable" Value="changeConfigSetting debugSetting.framework.main.listAllPluginsInRegistry true"/>
+      <Workflow Name="mainListAllPluginsInRegistryDisable" Value="changeConfigSetting debugSetting.framework.main.listAllPluginsInRegistry false"/>
+      <Workflow Name="mainListAllPluginsInRegistryPathEnable" Value="changeConfigSetting debugSetting.framework.main.listAllPluginsInRegistryPath true"/>
+      <Workflow Name="mainListAllPluginsInRegistryPathDisable" Value="changeConfigSetting debugSetting.framework.main.listAllPluginsInRegistryPath false"/>
+      <Workflow Name="mainNumberOfPluginsInRegistryEnable" Value="changeConfigSetting debugSetting.framework.main.numberOfPluginsInRegistry true"/>
+      <Workflow Name="mainNumberOfPluginsInRegistryDisable" Value="changeConfigSetting debugSetting.framework.main.numberOfPluginsInRegistry false"/>
+      <Workflow Name="mainNumberOfPluginsInRegistryPathEnable" Value="changeConfigSetting debugSetting.framework.main.numberOfPluginsInRegistryPath true"/>
+      <Workflow Name="mainNumberOfPluginsInRegistryPathDisable" Value="changeConfigSetting debugSetting.framework.main.numberOfPluginsInRegistryPath false"/>
+      <Workflow Name="mainRegisterPluginByNameAndPathEnable" Value="changeConfigSetting debugSetting.framework.main.registerPluginByNameAndPath true"/>
+      <Workflow Name="mainRegisterPluginByNameAndPathDisable" Value="changeConfigSetting debugSetting.framework.main.registerPluginByNameAndPath false"/>
+      <Workflow Name="mainUnregisterPluginByNameEnable" Value="changeConfigSetting debugSetting.framework.main.unregisterPluginByName true"/>
+      <Workflow Name="mainUnregisterPluginByNameDisable" Value="changeConfigSetting debugSetting.framework.main.unregisterPluginByName false"/>
+      <Workflow Name="mainSyncPluginRegistryWithPathEnable" Value="changeConfigSetting debugSetting.framework.main.syncPluginRegistryWithPath true"/>
+      <Workflow Name="mainSyncPluginRegistryWithPathDisable" Value="changeConfigSetting debugSetting.framework.main.syncPluginRegistryWithPath false"/>
+      <Workflow Name="mainClearAllPluginRegistryEnable" Value="changeConfigSetting debugSetting.framework.main.clearAllPluginRegistry true"/>
+      <Workflow Name="mainClearAllPluginRegistryDisable" Value="changeConfigSetting debugSetting.framework.main.clearAllPluginRegistry false"/>
+      <Workflow Name="mainWritePluginRegistryToDiskEnable" Value="changeConfigSetting debugSetting.framework.main.writePluginRegistryToDisk true"/>
+      <Workflow Name="mainWritePluginRegistryToDiskDisable" Value="changeConfigSetting debugSetting.framework.main.writePluginRegistryToDisk false"/>
+      <Workflow Name="mainLoadPluginEnable" Value="changeConfigSetting debugSetting.framework.main.loadPlugin true"/>
+      <Workflow Name="mainLoadPluginDisable" Value="changeConfigSetting debugSetting.framework.main.loadPlugin false"/>
+      <Workflow Name="mainLoadPluginsEnable" Value="changeConfigSetting debugSetting.framework.main.loadPlugins true"/>
+      <Workflow Name="mainLoadPluginsDisable" Value="changeConfigSetting debugSetting.framework.main.loadPlugins false"/>
+      <Workflow Name="mainLoadPluginsFromRegistryEnable" Value="changeConfigSetting debugSetting.framework.main.loadPluginsFromRegistry true"/>
+      <Workflow Name="mainLoadPluginsFromRegistryDisable" Value="changeConfigSetting debugSetting.framework.main.loadPluginsFromRegistry false"/>
+      <Workflow Name="mainUnloadPluginEnable" Value="changeConfigSetting debugSetting.framework.main.unloadPlugin true"/>
+      <Workflow Name="mainUnloadPluginDisable" Value="changeConfigSetting debugSetting.framework.main.unloadPlugin false"/>
+      <Workflow Name="mainUnloadPluginsEnable" Value="changeConfigSetting debugSetting.framework.main.unloadPlugins true"/>
+      <Workflow Name="mainUnloadPluginsDisable" Value="changeConfigSetting debugSetting.framework.main.unloadPlugins false"/>
+      <Workflow Name="mainUnloadAllPluginsEnable" Value="changeConfigSetting debugSetting.framework.main.unloadAllPlugins true"/>
+      <Workflow Name="mainUnloadAllPluginsDisable" Value="changeConfigSetting debugSetting.framework.main.unloadAllPlugins false"/>
+      <Workflow Name="mainLoadPluginResourceDataEnable" Value="changeConfigSetting debugSetting.framework.main.loadPluginResourceData true"/>
+      <Workflow Name="mainLoadPluginResourceDataDisable" Value="changeConfigSetting debugSetting.framework.main.loadPluginResourceData false"/>
+      <Workflow Name="executeBusinessRulesEnable" Value="changeConfigSetting debugSetting.framework.main.executeBusinessRules true"/>
+      <Workflow Name="executeBusinessRulesDisable" Value="changeConfigSetting debugSetting.framework.main.executeBusinessRules false"/>
+      <Workflow Name="mainEnqueueCommandEnable" Value="changeConfigSetting debugSetting.framework.main.enqueueCommand true"/>
+      <Workflow Name="mainEnqueueCommandDisable" Value="changeConfigSetting debugSetting.framework.main.enqueueCommand false"/>
+      <Workflow Name="mainIsCommandQueueEmptyEnable" Value="changeConfigSetting debugSetting.framework.main.isCommandQueueEmpty true"/>
+      <Workflow Name="mainIsCommandQueueEmptyDisable" Value="changeConfigSetting debugSetting.framework.main.isCommandQueueEmpty false"/>
+      <Workflow Name="mainProcessCommandQueueEnable" Value="changeConfigSetting debugSetting.framework.main.processCommandQueue true"/>
+      <Workflow Name="mainProcessCommandQueueDisable" Value="changeConfigSetting debugSetting.framework.main.processCommandQueue false"/>
+      <Workflow Name="mainSetConfigurationSettingEnable" Value="changeConfigSetting debugSetting.framework.main.setConfigurationSetting true"/>
+      <Workflow Name="mainSetConfigurationSettingDisable" Value="changeConfigSetting debugSetting.framework.main.setConfigurationSetting false"/>
+      <Workflow Name="mainGetConfigurationSettingEnable" Value="changeConfigSetting debugSetting.framework.main.getConfigurationSetting true"/>
+      <Workflow Name="mainGetConfigurationSettingDisable" Value="changeConfigSetting debugSetting.framework.main.getConfigurationSetting false"/>
+    </main>
+  </debug>
+</CommandWorkflows>

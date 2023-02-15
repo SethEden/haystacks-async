@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?><CommandWorkflows>
+  <debug>
+    <brokers>
+      <dataBroker>
+        <Workflow Name="dataBrokerEnable" Value="changeConfigSetting debugSetting.framework.brokers.dataBroker true"/>
+        <Workflow Name="dataBrokerDisable" Value="changeConfigSetting debugSetting.framework.brokers.dataBroker false"/>
+        <Workflow Name="dataBrokerAddPluginConfigurationDataEnable" Value="changeConfigSetting debugSetting.framework.brokers.dataBroker.addPluginConfigurationData true"/>
+        <Workflow Name="dataBrokerAddPluginConfigurationDataDisable" Value="changeConfigSetting debugSetting.framework.brokers.dataBroker.addPluginConfigurationData false"/>
+        <Workflow Name="scanDataPathEnable" Value="changeConfigSetting debugSetting.framework.brokers.dataBroker.scanDataPath true"/>
+        <Workflow Name="scanDataPathDisable" Value="changeConfigSetting debugSetting.framework.brokers.dataBroker.scanDataPath false"/>
+        <Workflow Name="loadAllCsvDataEnable" Value="changeConfigSetting debugSetting.framework.brokers.dataBroker.loadAllCsvData true"/>
+        <Workflow Name="loadAllCsvDataDisable" Value="changeConfigSetting debugSetting.framework.brokers.dataBroker.loadAllCsvData false"/>
+        <Workflow Name="loadAllXmlDataEnable" Value="changeConfigSetting debugSetting.framework.brokers.dataBroker.loadAllXmlData true"/>
+        <Workflow Name="loadAllXmlDataDisable" Value="changeConfigSetting debugSetting.framework.brokers.dataBroker.loadAllXmlData false"/>
+        <Workflow Name="loadAllJsonDataEnable" Value="changeConfigSetting debugSetting.framework.brokers.dataBroker.loadAllJsonData true"/>
+        <Workflow Name="loadAllJsonDataDisable" Value="changeConfigSetting debugSetting.framework.brokers.dataBroker.loadAllJsonData false"/>
+        <Workflow Name="processCsvDataEnable" Value="changeConfigSetting debugSetting.framework.brokers.dataBroker.processCsvData true"/>
+        <Workflow Name="processCsvDataDisable" Value="changeConfigSetting debugSetting.framework.brokers.dataBroker.processCsvData false"/>
+        <Workflow Name="processXmlDataEnable" Value="changeConfigSetting debugSetting.framework.brokers.dataBroker.processXmlData true"/>
+        <Workflow Name="processXmlDataDisable" Value="changeConfigSetting debugSetting.framework.brokers.dataBroker.processXmlData false"/>
+        <Workflow Name="processXmlLeafNodeEnable" Value="changeConfigSetting debugSetting.framework.brokers.dataBroker.processXmlLeafNode true"/>
+        <Workflow Name="processXmlLeafNodeDisable" Value="changeConfigSetting debugSetting.framework.brokers.dataBroker.processXmlLeafNode false"/>
+        <Workflow Name="preprocessJsonFileEnable" Value="changeConfigSetting debugSetting.framework.brokers.dataBroker.preprocessJsonFile true"/>
+        <Workflow Name="preprocessJsonFileDisable" Value="changeConfigSetting debugSetting.framework.brokers.dataBroker.preprocessJsonFile false"/>
+        <Workflow Name="writeJsonDataToFileEnable" Value="changeConfigSetting debugSetting.framework.brokers.dataBroker.writeJsonDataToFile true"/>
+        <Workflow Name="writeJsonDataToFileDisable" Value="changeConfigSetting debugSetting.framework.brokers.dataBroker.writeJsonDataToFile false"/>
+        <Workflow Name="setupDataStorageEnable" Value="changeConfigSetting debugSetting.framework.brokers.dataBroker.setupDataStorage true"/>
+        <Workflow Name="setupDataStorageDisable" Value="changeConfigSetting debugSetting.framework.brokers.dataBroker.setupDataStorage false"/>
+        <Workflow Name="dataBrokerStoreDataEnable" Value="changeConfigSetting debugSetting.framework.brokers.dataBroker.storeData true"/>
+        <Workflow Name="dataBrokerStoreDataDisable" Value="changeConfigSetting debugSetting.framework.brokers.dataBroker.storeData false"/>
+        <Workflow Name="getDataEnable" Value="changeConfigSetting debugSetting.framework.brokers.dataBroker.getData true"/>
+        <Workflow Name="getDataDisable" Value="changeConfigSetting debugSetting.framework.brokers.dataBroker.getData false"/>
+        <Workflow Name="clearDataEnable" Value="changeConfigSetting debugSetting.framework.brokers.dataBroker.clearData true"/>
+        <Workflow Name="clearDataDisable" Value="changeConfigSetting debugSetting.framework.brokers.dataBroker.clearData false"/>
+        <Workflow Name="getDataCatagoryFromContextNameEnable" Value="changeConfigSetting debugSetting.framework.brokers.dataBroker.getDataCatagoryFromContextName true"/>
+        <Workflow Name="getDataCatagoryFromContextNameDisable" Value="changeConfigSetting debugSetting.framework.brokers.dataBroker.getDataCatagoryFromContextName false"/>
+        <Workflow Name="getDataCatagoryDetailNameFromContextNameEnable" Value="changeConfigSetting debugSetting.framework.brokers.dataBroker.getDataCatagoryDetailNameFromContextName true"/>
+        <Workflow Name="getDataCatagoryDetailNameFromContextNameDisable" Value="changeConfigSetting debugSetting.framework.brokers.dataBroker.getDataCatagoryDetailNameFromContextName false"/>
+        <Workflow Name="extractDataFromPapaParseObjectEnable" Value="changeConfigSetting debugSetting.framework.brokers.dataBroker.extractDataFromPapaParseObject true"/>
+        <Workflow Name="extractDataFromPapaParseObjectDisable" Value="changeConfigSetting debugSetting.framework.brokers.dataBroker.extractDataFromPapaParseObject false"/>
+        <Workflow Name="determineMergeTargetEnable" Value="changeConfigSetting debugSetting.framework.brokers.dataBroker.determineMergeTarget true"/>
+        <Workflow Name="determineMergeTargetDisable" Value="changeConfigSetting debugSetting.framework.brokers.dataBroker.determineMergeTarget false"/>
+        <Workflow Name="mergeDataEnable" Value="changeConfigSetting debugSetting.framework.brokers.dataBroker.mergeData true"/>
+        <Workflow Name="mergeDataDisable" Value="changeConfigSetting debugSetting.framework.brokers.dataBroker.mergeData false"/>
+        <Workflow Name="getDataElementEnable" Value="changeConfigSetting debugSetting.framework.brokers.dataBroker.getDataElement true"/>
+        <Workflow Name="getDataElementDisable" Value="changeConfigSetting debugSetting.framework.brokers.dataBroker.getDataElement false"/>
+        <Workflow Name="getDataElementCountEnable" Value="changeConfigSetting debugSetting.framework.brokers.dataBroker.getDataElementCount true"/>
+        <Workflow Name="getDataElementCountDisable" Value="changeConfigSetting debugSetting.framework.brokers.dataBroker.getDataElementCount false"/>
+      </dataBroker>
+    </brokers>
+  </debug>
+</CommandWorkflows>
