@@ -89,6 +89,9 @@ async function commandSequencer(inputData, inputMetaData) {
         currentCommand = currentCommand + primaryCommandDelimiter + commandArgs[j];
       } // End-for (let j = 1; j < commandArgs.length; j++)
       await loggers.consoleLog(namespacePrefix + functionName, msg.ccommandSequencerCommandToEnqueueIs + currentCommand);
+      if (await configurator.getConfigurationSetting(wrd.csystem, cfg.clogAllCommands) === true) {
+        await stack.push(sys.cSystemCommandLog, currentCommand);
+      }
       await queue.enqueue(sys.cCommandQueue + wrd.cTemp, currentCommand);
     } else { // End-if (currentCommand !== false)
       // WARNING: advanced.commandSequencer: The specified command was not found, please enter a valid command and try again. <commandString>
@@ -358,7 +361,11 @@ async function commandGenerator(inputData, inputMetaData) {
         } // End-for (let i = 0; i < numberOfCommands; i++)
         // Now migrate the temporary command queue to the primary command queue,
         // pushing all command entities it to the front of the command queue.
-        await queue.enqueueFront(sys.cCommandQueue, await queue.queueContents(sys.cCommandQueue + wrd.cTemp));
+        let commandToQueue = await queue.queueContents(sys.cCommandQueue + wrd.cTemp);
+        if (await configurator.getConfigurationSetting(wrd.csystem, cfg.clogAllCommands) === true) {
+          await stack.push(sys.cSystemCommandLog, commandToQueue);
+        }
+        await queue.enqueueFront(sys.cCommandQueue, commandToQueue);
         returnData[1] = true;
       } else {
         // WARNING: advanced.commandGenerator: Must enter a number greater than 0, number entered:

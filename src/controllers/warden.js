@@ -13,6 +13,7 @@
  * @requires module:chiefWorkflow
  * @requires module:configurator
  * @requires module:loggers
+ * @requires module:stack
  * @requires {@link https://www.npmjs.com/package/@haystacks/constants|@haystacks/constants}
  * @requires {@link https://www.npmjs.com/package/path|path}
  * @author Seth Hollingsead
@@ -32,6 +33,7 @@ import chiefTheme from './chiefTheme.js';
 import chiefWorkflow from './chiefWorkflow.js';
 import configurator from '../executrix/configurator.js';
 import loggers from '../executrix/loggers.js';
+import stack from '../structures/stack.js';
 // import D from '../structures/data.js';
 // External imports
 import hayConst from '@haystacks/constants';
@@ -246,7 +248,12 @@ async function initFrameworkSchema(configData) {
       await loadPluginsFromRegistry();
     }
   }
-
+  if (await configurator.getConfigurationSetting(wrd.csystem, cfg.clogUserEnteredCommands) === true) {
+    await stack.initStack(sys.cUserEnteredCommandLog);
+  }
+  if (await configurator.getConfigurationSetting(wrd.csystem, cfg.clogAllCommands) === true) {
+    await stack.initStack(sys.cSystemCommandLog);
+  }
   // We can pass in a name of a configuration setting that has a path to load plugin data this way.
   // console.log('Contents of D are: ' + JSON.stringify(D));
   // console.log(`END ${namespacePrefix}${functionName} function`);

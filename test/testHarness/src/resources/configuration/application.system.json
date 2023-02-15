@@ -26,5 +26,9 @@
   "system.displaySummaryConstantsValidationPassMessages": true,
   "system.displaySummaryConstantsValidationFailMessages": true,
   "system.configurationInitialized": false,
+  "system.logUserEnteredCommands": true,
+  "system.logAllCommands": true,
+  "system.enableUserCommandsLogClearing": true,
+  "system.enableAllCommandsLogClearing": true,
   "system.AppSetting": "TrunkMonkey"
 }

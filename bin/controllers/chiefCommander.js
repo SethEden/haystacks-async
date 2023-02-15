@@ -8,6 +8,7 @@
  * @requires module:loggers
  * @requires module:data
  * @requires module:queue
+ * @requires module:stack
  * @requires {@link https://www.npmjs.com/package/@haystacks/constants|@haystacks/constants}
  * @requires {@link https://www.npmjs.com/package/path|path}
  * @author Seth Hollingsead
@@ -21,11 +22,13 @@ import chiefData from '../controllers/chiefData.js';
 import loggers from '../executrix/loggers.js';
 import D from '../structures/data.js';
 import queue from '../structures/queue.js';
+import stack from '../structures/stack.js';
 // External imports
 import hayConst from '@haystacks/constants';
 import path from 'path';
+import configurator from '../executrix/configurator.js'
 
-const {bas, msg, sys, wrd} = hayConst;
+const {bas, cfg, msg, sys, wrd} = hayConst;
 const baseFileName = path.basename(import.meta.url, path.extname(import.meta.url));
 // framework.controllers.chiefCommander.
 const namespacePrefix = wrd.cframework + bas.cDot + wrd.ccontrollers + bas.cDot + baseFileName + bas.cDot;
@@ -137,6 +140,9 @@ async function enqueueCommand(command) {
   await loggers.consoleLog(namespacePrefix + functionName, msg.ccommandIs + command);
   if (D[sys.cCommandQueue] === undefined) {
     await queue.initQueue(sys.cCommandQueue);
+  }
+  if (await configurator.getConfigurationSetting(wrd.csystem, cfg.clogAllCommands) === true) {
+    await stack.push(sys.cSystemCommandLog, command);
   }
   await queue.enqueue(sys.cCommandQueue, command);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
