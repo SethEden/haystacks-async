@@ -7,6 +7,7 @@
  * @requires module:warden
  * @requires module:loggers
  * @requires module:prompt
+ * @requires module:stack
  * @requires module:data
  * @requires {@link https://www.npmjs.com/package/haystacks|haystacks}
  * @requires {@link https://www.npmjs.com/package/@haystacks/constants|@haystacks/constants}
@@ -21,6 +22,7 @@
 // Internal imports
 import warden from './controllers/warden.js';
 import loggers from './executrix/loggers.js';
+import stack from './structures/stack.js';
 import D from './structures/data.js';
 // External imports
 import hayConst from '@haystacks/constants';
@@ -665,6 +667,9 @@ async function enqueueCommand(command) {
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // command is:
   await loggers.consoleLog(namespacePrefix + functionName, msg.ccommandIs + command);
+  if (await warden.getConfigurationSetting(wrd.csystem, cfg.clogUserEnteredCommands) === true) {
+    await stack.push(sys.cUserEnteredCommandLog, command);
+  }
   await warden.enqueueCommand(command);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
 }

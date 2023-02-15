@@ -8,6 +8,7 @@
 * @requires module:configurator
 * @requires module:loggers
 * @requires module:data
+* @requires module:stack
 * @requires {@link https://www.npmjs.com/package/@haystacks/constants|@haystacks/constants}
 * @requires {@link https://www.npmjs.com/package/figlet|figlet}
 * @requires {@link https://www.npmjs.com/package/path|path}
@@ -23,6 +24,7 @@ import workflowBroker from '../../brokers/workflowBroker.js';
 import configurator from '../../executrix/configurator.js';
 import loggers from '../../executrix/loggers.js';
 import D from '../../structures/data.js';
+import stack from '../../structures/stack.js';
 // External imports
 import hayConst from '@haystacks/constants';
 import figlet from 'figlet';
@@ -354,6 +356,150 @@ async function workflowHelp(inputData, inputMetaData) {
   return returnData;
 }
 
+/**
+ * @function printUserCommandsLog
+ * @description Prints out the command log of all the commands the user has entered since the start of the application for this instance it was running.
+ * @param {string} inputData Not used for this command.
+ * @param {string} inputMetaData Not used for this command.
+ * @return {array<boolean,array<string>>} An array with a boolean True or False value to
+ * indicate if the application should exit or not exit, followed by an array of strings that is the user entered commands.
+ * @author Seth Hollingsead
+ * @date 2023/02/14
+ */
+async function printUserCommandsLog(inputData, inputMetaData) {
+  let functionName = printUserCommandsLog.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
+  let returnData = [true, []];
+  if (await configurator.getConfigurationSetting(wrd.csystem, cfg.clogUserEnteredCommands) === true) {
+    if (await stack.isEmpty(sys.cUserEnteredCommandLog) === false) {
+      let userEnteredCommandLogArray = await stack.getStackContents(sys.cUserEnteredCommandLog);
+      let userEnteredCommandLog = userEnteredCommandLogArray.join(bas.cComa + bas.cNewLine + bas.cCarriageReturn);
+      returnData[1] = userEnteredCommandLog;
+      console.log(userEnteredCommandLog);
+    } else {
+      // User commands log is empty.
+      console.log(msg.cUserCommandsLogIsEmpty);
+      returnData[1] = '';
+    }    
+  } else {
+    // NOTE: The user entered command log setting is not enabled.
+    // Change the setting logUserEnteredCommands to enable user entered command log data to be captured for printing.
+    console.log(msg.cprintUserCommandLogMessage01 + bas.cSpace + msg.cprintUserCommandLogMessage02);
+    returnData[1] = false;
+  }
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
+/**
+ * @function printAllCommandsLog
+ * @description Prints out a log of all the commands executed by the system since the start of the application for this instance it was running.
+ * @param {string} inputData Not used for this command.
+ * @param {string} inputMetaData Not used for this command.
+ * @return {array<boolean,array<string>>} An array with a boolean True or False value to
+ * indicate if the application should exit or not exit, followed by an array of strings that is the user entered commands.
+ * @author Seth Hollingsead
+ * @date 2023/02/14
+ */
+async function printAllCommandsLog(inputData, inputMetaData) {
+  let functionName = printAllCommandsLog.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
+  let returnData = [true, []];
+  if (await configurator.getConfigurationSetting(wrd.csystem, cfg.clogAllCommands) === true) {
+    if (await stack.isEmpty(sys.cSystemCommandLog) === false) {
+      let allCommandsLogArray = await stack.getStackContents(sys.cSystemCommandLog);
+      let allCommandsLog = allCommandsLogArray.join(bas.cComa + bas.cNewLine + bas.cCarriageReturn);
+      returnData[1] = allCommandsLog;
+      console.log(allCommandsLog);
+    } else {
+      // All commands log is empty.
+      console.log(msg.cAllCommandsLogIsEmpty);
+      returnData[1] = '';
+    }
+  } else {
+    // NOTE: The command log setting is not enabled.
+    // Change the setting logAllCommands to enable command log data to be captured for printing.
+    console.log(msg.cprintAllCommandLogMessage01 + bas.cSpace + msg.cprintAllCommandLogMessage02);
+    returnData[1] = false;
+  }
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
+/**
+ * @function clearUserCommandsLog
+ * @description Wipes out the user command log, destroying all evidence of whatever commands the user has entered.
+ * @param {string} inputData Not used for this command.
+ * @param {string} inputMetaData Not used for this command.
+ * @return {array<boolean,boolean>} An array with a boolean True or False value to
+ * indicate if the application should exit or not exit, followed by another boolean value to indicate if the operation was successful or not.
+ * @author Seth Hollingsead
+ * @date 2023/02/14
+ */
+async function clearUserCommandsLog(inputData, inputMetaData) {
+  let functionName = clearUserCommandsLog.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
+  let returnData = [true, []];
+  if (await configurator.getConfigurationSetting(wrd.csystem, cfg.clogUserEnteredCommands) === true) {
+    if (await configurator.getConfigurationSetting(wrd.csystem, cfg.cenableUserCommandsLogClearing) === true) {
+      returnData[1] = await stack.clearStack(sys.cUserEnteredCommandLog);
+    } else {
+      // NOTE: User commands log clearing setting is not enabled.
+      console.log(msg.cclearUserCommandsLogMessage01);
+      returnData[1] = false;
+    }
+  } else {
+    // NOTE: The user entered command log setting is not enabled.
+    console.log(msg.cprintUserCommandLogMessage01);
+    returnData[1] = false;
+  }
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
+/**
+ * @function clearAllCommandsLog
+ * @description Wipes out the all commands log, destroying all evidence of whatever commands were executed by the system.
+ * @param {string} inputData Not used for this command.
+ * @param {string} inputMetaData Not used for this command.
+ * @return {array<boolean,boolean>} An aray ith a boolean True or False value to
+ * indicate if the application should exit or not exit, followed by another boolean value to indicate if the operation was successful or not.
+ * @autor Seth Hollingsead
+ * @date 2023/02/14
+ */
+async function clearAllCommandsLog(inputData, inputMetaData) {
+  let functionName = clearAllCommandsLog.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
+  let returnData = [true, []];
+  if (await configurator.getConfigurationSetting(wrd.csystem, cfg.clogAllCommands) === true) {
+    if (await configurator.getConfigurationSetting(wrd.csystem, cfg.cenableAllCommandsLogClearing) === true) {
+      returnData[1] = await stack.clearStack(sys.cSystemCommandLog);
+    } else {
+      // NOTE: All commands log clearing setting is not enabled.
+      console.log(msg.cclearAllCommandsLogMessage01);
+      returnData[1] = false;
+    }
+  } else {
+    // NOTE: The command log setting is not enabled.
+    console.log(msg.cprintAllCommandLogMessage01);
+    returnData[1] = false;
+  }
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
 export default {
   echoCommand,
   exit,
@@ -362,5 +508,9 @@ export default {
   name,
   clearScreen,
   help,
-  workflowHelp
+  workflowHelp,
+  printUserCommandsLog,
+  printAllCommandsLog,
+  clearUserCommandsLog,
+  clearAllCommandsLog
 };

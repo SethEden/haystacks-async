@@ -115,5 +115,18 @@
   "debugFunctions|debugSetting.framework.structures.stack.print@ModuleFontBackgroundColor": "Default",
   "debugFunctions|debugSetting.framework.structures.stack.print@FunctionFontBackgroundColor": "Default",
   "debugFunctions|debugSetting.framework.structures.stack.print@MessageFontBackgroundColor": "Default",
-  "debugFunctions|debugSetting.framework.structures.stack.print@DataFontBackgroundColor": "Default"
+  "debugFunctions|debugSetting.framework.structures.stack.print@DataFontBackgroundColor": "Default",
+  "debugFunctions|debugSetting.framework.structures.stack.getStackContents": false,
+  "debugFunctions|debugSetting.framework.structures.stack.getStackContents@ModuleFontStyle": "Default",
+  "debugFunctions|debugSetting.framework.structures.stack.getStackContents@FunctionFontStyle": "Default",
+  "debugFunctions|debugSetting.framework.structures.stack.getStackContents@MessageFontStyle": "Default",
+  "debugFunctions|debugSetting.framework.structures.stack.getStackContents@DataFontStyle": "Default",
+  "debugFunctions|debugSetting.framework.structures.stack.getStackContents@ModuleFontColor": "Default",
+  "debugFunctions|debugSetting.framework.structures.stack.getStackContents@FunctionFontColor": "Default",
+  "debugFunctions|debugSetting.framework.structures.stack.getStackContents@MessageFontColor": "Default",
+  "debugFunctions|debugSetting.framework.structures.stack.getStackContents@DataFontColor": "Default",
+  "debugFunctions|debugSetting.framework.structures.stack.getStackContents@ModuleFontBackgroundColor": "Default",
+  "debugFunctions|debugSetting.framework.structures.stack.getStackContents@FunctionFontBackgroundColor": "Default",
+  "debugFunctions|debugSetting.framework.structures.stack.getStackContents@MessageFontBackgroundColor": "Default",
+  "debugFunctions|debugSetting.framework.structures.stack.getStackContents@DataFontBackgroundColor": "Default"
 }

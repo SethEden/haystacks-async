@@ -227,6 +227,31 @@ async function print(stackNameSpace) {
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
 }
 
+/**
+ * @function getStackContents
+ * @description Returns the contents of the stack as specified by the namespace input parameter.
+ * @param {string} stackNameSpace The namespace that should be used to return the contents of the stack on the D-data structure.
+ * @return {array<string>} The contents of the stack as specified by the input parameter stack namespace.
+ * @author Seth Hollingsead
+ * @date 2023/02/14
+ */
+async function getStackContents(stackNameSpace) {
+  let functionName = print.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cstackNameSpaceIs + stackNameSpace);
+  let returnData = false;
+  if (D[stackNameSpace] !== undefined) {
+    returnData = D[stackNameSpace];
+  } else {
+    // WARNING: Stack:
+    // does not exists!
+    console.log(num.c8 + bas.cSpace + msg.cWarningStackColon + stackNameSpace + msg.cdoesNotExist + bas.cColon + bas.cSpace + functionName);
+  }
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
 export default {
   initStack,
   clearStack,
@@ -235,5 +260,6 @@ export default {
   isEmpty,
   length,
   contains,
-  print
+  print,
+  getStackContents
 };
