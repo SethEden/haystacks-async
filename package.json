@@ -1,6 +1,6 @@
 {
   "name": "@haystacks/async",
-  "version": "0.1.11",
+  "version": "0.1.12",
   "description": "A framework to build any number or any kind of native application or automation solution.",
   "main": "./src/main.js",
   "bin": "./bin/main.js",
