@@ -28,6 +28,7 @@
 // Internal imports
 import clientRules from './businessRules/clientRulesLibrary.js';
 import clientCommands from './commands/clientCommandsLibrary.js';
+import * as app_cmd from './constants/application.command.constants.js';
 import * as app_cfg from './constants/application.configuration.constants.js';
 import * as apc from './constants/application.constants.js';
 import * as app_msg from './constants/application.message.constants.js';
@@ -139,7 +140,7 @@ async function bootstrapApplication() {
  */
 async function application() {
   let functionName = application.name;
-  haystacks.consoleLog(namespacePrefix, functionName, msg.cBEGIN_Function);
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.cBEGIN_Function);
   let argumentDrivenInterface = false;
   let commandInput;
   let commandResult;
@@ -149,7 +150,7 @@ async function application() {
     argumentDrivenInterface = false;
   }
   // argumentDrivenInterface is:
-  // haystacks.consoleLog(namespacePrefix, functionName, app_msg.cargumentDrivenInterfaceIs + argumentDrivenInterface);
+  // await haystacks.consoleLog(namespacePrefix, functionName, app_msg.cargumentDrivenInterfaceIs + argumentDrivenInterface);
   await haystacks.enqueueCommand(cmd.cStartupWorkflow);
 
   // NOTE: We are processing the argument driven interface first that way even if we are not in an argument driven interface,
@@ -166,13 +167,17 @@ async function application() {
   } // End-while (haystacks.isCommandQueueEmpty() === false)
 
   // NOW process the command args and add them to the command queue for execution.
-  if (!process.argv && process.argv.length > 0) {
+  if (Array.isArray(process.argv) && process.argv.length > 2) {
+    console.log('Caught the case that some arguments were passed in as input to the function.');
     if (process.argv[2].includes(bas.cDash) === true ||
     process.argv[2].includes(bas.cForwardSlash) === true ||
     process.argv[2].includes(bas.cBackSlash) === true) {
       commandToExecute = await haystacks.executeBusinessRule([process.argv, ''], [biz.caggregateCommandArguments]);
+    } else {
+      commandToExecute = await haystacks.executeBusinessRules([process.argv, ''], [biz.caggregateCommandArguments]);
     }
     if (commandToExecute !== '') {
+      console.log('comandToExecute is:' + commandToExecute);
       await haystacks.enqueueCommand(commandToExecute);
     }
     while (await haystacks.isCommandQueueEmpty() === false) {

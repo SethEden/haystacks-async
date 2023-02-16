@@ -97,9 +97,11 @@ async function clearRulesLibrary() {
  */
 async function initRulesLibrary() {
   //  let functionName = initRulesLibrary.name;
-   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
-   D[sys.cbusinessRules] = {};
-   D[sys.cbusinessRules] = {
+  // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
+  if (D[sys.cbusinessRules] === undefined) {
+    D[sys.cbusinessRules] = {};
+  }
+  D[sys.cbusinessRules] = {
      // eslint-disable-next-line no-unused-vars
      [biz.cecho]: (inputData, inputMetaData) => console.log(JSON.stringify(inputData)),
 
@@ -150,6 +152,7 @@ async function initRulesLibrary() {
      [biz.cisArrayOrObject]: (inputData, inputMetaData) => dataArrayParsing.isArrayOrObject(inputData, inputMetaData),
      [biz.cisNonZeroLengthArray]: (inputData, inputMetaData) => dataArrayParsing.isNonZeroLengthArray(inputData, inputMetaData),
      [biz.carrayDeepClone]: (inputData, inputMetaData) => dataArrayParsing.arrayDeepClone(inputData, inputMetaData),
+     [biz.cobjectDeepClone]: (inputData, inputMetaData) => dataArrayParsing.objectDeepClone(inputData, inputMetaData),
      [biz.cobjectDeepMerge]: (inputData, inputMetaData) => dataArrayParsing.objectDeepMerge(inputData, inputMetaData),
      [biz.cgetNamespacedDataObject]: (inputData, inputMetaData) => dataArrayParsing.getNamespacedDataObject(inputData, inputMetaData),
      [biz.csetNamespacedDataObject]: (inputData, inputMetaData) => dataArrayParsing.setNamespacedDataObject(inputData, inputMetaData),

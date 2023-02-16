@@ -57,7 +57,7 @@ async function bootStrapBusinessRules() {
 async function resetBusinessRules() {
   // let functionName = bootStrapBusinessRules.name;
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
-  await rules.clearRulesLibrary();
+  // await rules.clearRulesLibrary();
   await rules.initRulesLibrary();
   // console.log(`END ${namespacePrefix}${functionName} function`);
 }

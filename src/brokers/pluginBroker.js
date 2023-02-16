@@ -647,13 +647,31 @@ async function loadPlugin(pluginExecutionPath) {
   // pluginExecutionPath is:
   await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginExecutionPathIs + pluginExecutionPath);
   let returnData = {};
+  console.log('pluginBroker.loadPlugin: D-command stack before loading is: ', D[wrd.cCommands]);
+  // NOTE: We really NEED to deeply clone the D-data structure here,
+  // because for some reason the plugin was mutating the D-data structure and removing the client application defined commands.
+  // This should be the fastest and safest way to get Haystacks context data into the plugin, for its own data dependency loading process.
+  // NOTE: The objectDeepClone function, should also clone functions and business rules,
+  // however, when that data is injected into the plugins instance of Haystacks, then that instance of Haystacks over-writes the commands and functions,
+  // and resets them loading its own business rules and commands.
+  // This is probably how the plugin was mutating the data, which is not safe, or correct.
+  // So in the cloned data, we don't care if the business rules or commands get over written.
+  let dClone = {};
+  try {
+    dClone = await ruleBroker.processRules([D, ''], [biz.cobjectDeepClone]);
+  } catch (err) {
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cERROR_Colon + err.message);
+  }
+  
+  await loggers.consoleLog(namespacePrefix + functionName, 'dClone object is: ' + JSON.stringify(dClone));
+  console.log('pluginBroker.loadPlugin: dClone-command stack before loading is: ', dClone[wrd.cCommands]);
   try {
     const pluginResponseData = new Promise((resolve, reject) => {
       const loadAsyncImport = () => {
         const asyncImport = async () => {
           return await myDynamicImport(pluginExecutionPath);
         };
-  
+
         return asyncImport().then((result) => {
           return result;
         });
@@ -678,6 +696,22 @@ async function loadPlugin(pluginExecutionPath) {
     console.log(msg.cerrorMessage + err.message);
     returnData = false;
   }
+  // const dDataReset = await D.setData(dClone); // This didn't work either!!
+  console.log('pluginBroker.loadPlugin: dClone-command stack after loading is: ', dClone[wrd.cCommands]);
+  console.log('pluginBroker.loadPlugin: D-command stack After loading is: ', D[wrd.cCommands]);
+
+  // Now copy all of the commands from the backup back to the original.
+  // NOTE: I tried to do this by calling the same business rule: biz.cobjectDeepClone as above.
+  // But that didn't work, so I'm just going to do it manually here in the code below.
+  for (let key in dClone[wrd.cCommands]) {
+    if (Object.prototype.hasOwnProperty.call(dClone[wrd.cCommands], key)) {
+      if (typeof dClone[wrd.cCommands][key] === wrd.cfunction) {
+        D[wrd.cCommands][key] = dClone[wrd.cCommands][key];
+      }
+    } // End-if (inputData.hasOwnProperty(key))
+  } // End-for (let key in inpuData)
+
+  console.log('pluginBroker.loadPlugin: D-command stack over-write is: ', D[wrd.cCommands]);
   // await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
