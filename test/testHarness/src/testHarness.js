@@ -28,7 +28,6 @@
 // Internal imports
 import clientRules from './businessRules/clientRulesLibrary.js';
 import clientCommands from './commands/clientCommandsLibrary.js';
-import * as app_cmd from './constants/application.command.constants.js';
 import * as app_cfg from './constants/application.configuration.constants.js';
 import * as apc from './constants/application.constants.js';
 import * as app_msg from './constants/application.message.constants.js';
@@ -168,7 +167,8 @@ async function application() {
 
   // NOW process the command args and add them to the command queue for execution.
   if (Array.isArray(process.argv) && process.argv.length > 2) {
-    console.log('Caught the case that some arguments were passed in as input to the function.');
+    // Caught the case that some arguments were passed in as input to the function.
+    console.log(app_msg.capplicationMessage00);
     if (process.argv[2].includes(bas.cDash) === true ||
     process.argv[2].includes(bas.cForwardSlash) === true ||
     process.argv[2].includes(bas.cBackSlash) === true) {
@@ -177,17 +177,13 @@ async function application() {
       commandToExecute = await haystacks.executeBusinessRules([process.argv, ''], [biz.caggregateCommandArguments]);
     }
     if (commandToExecute !== '') {
-      console.log('comandToExecute is:' + commandToExecute);
+      console.log(msg.ccommandToExecuteIs + commandToExecute);
       await haystacks.enqueueCommand(commandToExecute);
     }
     while (await haystacks.isCommandQueueEmpty() === false) {
       commandResult = await haystacks.processCommandQueue();
     } // End-while (haystacks.isCommandQueueEmpty() === false)
   } // End-if (!process.argv && process.argv.length > 0)
-
-  // let pluginLoadedSuccess = await haystacks.loadPlugins(['C:/haystacks-plugins/pluginOne/']);
-  // let pluginLoadedSuccess = await haystacks.
-  // console.log('testHarness App pluginData loaded: ' + pluginLoadedSuccess);
 
   // NOW the application can continue with the interactive interface fi the flag was set to false.
   if (argumentDrivenInterface === false) {

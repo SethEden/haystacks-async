@@ -85,7 +85,8 @@ async function addClientCommands(clientCommands) {
     // console.log('%%%%%%%%%%%%%%%%%% ---- >>>>>>>>> key is: ' + key);
     D[wrd.cCommands] = {...D[wrd.cCommands], [`${key}`]: value};
   } // End-for (const [key, value] of Object.entries(clientCommands))
-  console.log('commandBroker.addClientCommands: D-command stack is: ', D[wrd.cCommands]);
+  // D-command stack is:
+  // console.log(namespacePrefix + functionName + bas.cSpace + msg.cdCommandStackIs, D[wrd.cCommands]);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
 }
 
@@ -120,13 +121,15 @@ async function addPluginCommands(pluginName, pluginCommands) {
     // its basically calling a flat list. So rather than adding the plugin commands according to the above structure.
     // We will need to just add them to the flat list. If a plugin is unloaded,
     // then each of its commands will need to be individually searched out and removed from the flat list.
-    console.log('commandBroker.addPluginCommands: D-command stack before merge is: ', D[wrd.cCommands]);
+    // D-command stack before merge is:
+    // console.log(namespacePrefix + functionName + bas.cSpace + msg.cdCommandStackBeforeMergeIs, D[wrd.cCommands]);
     for (const [key, value] of Object.entries(pluginCommands[wrd.ccommands])) {
       // console.log('&&&&&&&&&&&&&&&&& ---- >>>>>>>> key is: ' + key);
       D[wrd.cCommands] = {...D[wrd.cCommands], [`${key}`]: value};
     } // End-for (const [key, value] of Object.entries(pluginCommands))
     returnData = true;
-    console.log('commandBroker.addPluginCommands: D-command stack after merge is: ', D[wrd.cCommands]);
+    // D-command stack after merge is:
+    // console.log(namespacePrefix + functionName + bas.cSpace + msg.cdCommandStackAfterMergeIs, D[wrd.cCommands]);
   } catch (err) {
     // ERROR: Failure to merge the plugin commands for plugin:
     console.log(msg.cErrorAddPluginCommandsMessage01 + pluginName);

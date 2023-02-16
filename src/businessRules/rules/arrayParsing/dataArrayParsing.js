@@ -301,7 +301,8 @@ async function objectDeepClone(inputData, inputMetaData) {
     if (typeof inputData === wrd.cstring || typeof inputData === wrd.cnumber || typeof inputData === wrd.cboolean) {
       returnData = inputData;
       fastExit = true;
-      await loggers.consoleLog(namespacePrefix + functionName, 'fast exit enabled');
+      // fast exit enabled
+      await loggers.consoleLog(namespacePrefix + functionName, msg.cfastExitEnabled);
     } else {
       // Invalid input object. Expected a valid JSON object. Object type is:
       throw new Error(msg.cErrorObjectDeepCloneMessage01 + typeof inputData);
@@ -310,18 +311,21 @@ async function objectDeepClone(inputData, inputMetaData) {
   if (fastExit === false) {
     if (Array.isArray(inputData)) {
       if (typeof inputData[1] === wrd.cobject) {
-        await loggers.consoleLog(namespacePrefix + functionName, 'array cloning object');
+        // array cloning object
+        await loggers.consoleLog(namespacePrefix + functionName, msg.carrayCloningObject);
         let cloneArray = [];
         for (let item in inputData) {
           cloneArray[item] = await objectDeepClone(inputData[item], '');
         }
         returnData = cloneArray;
       } else {
-        await loggers.consoleLog(namespacePrefix + functionName, 'array deep clone string');
+        // array deep clone string
+        await loggers.consoleLog(namespacePrefix + functionName, msg.carrayDeepCloneString);
         returnData = await arrayDeepClone(inputData, '');
       }      
     } else {
-      await loggers.consoleLog(namespacePrefix + functionName, 'object deep cloning');
+      // object deep cloning
+      await loggers.consoleLog(namespacePrefix + functionName, msg.cobjectDeepCloning);
       returnData = {};
       for (let key in inputData) {
         if (Object.prototype.hasOwnProperty.call(inputData, key)) {
@@ -330,7 +334,7 @@ async function objectDeepClone(inputData, inputMetaData) {
           } else if (typeof inputData[key] === wrd.cfunction) {
             // Solution from: https://stackoverflow.com/questions/1833588/javascript-clone-a-function
             // const newFunction = inputData.bind(this);
-            // // Shallow copy any function properties if any.
+            // Shallow copy any function properties if any.
             // returnData[key] = Object.assign(newFunction, inputData);
             returnData[key] = inputData[key];
           } else {

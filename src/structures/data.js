@@ -15,7 +15,7 @@ import ruleBroker from '../brokers/ruleBroker.js';
 // External imports
 import hayConst from '@haystacks/constants';
 
-const {biz, sys, wrd} = hayConst;
+const {biz, msg, sys, wrd} = hayConst;
 let data = {};
 
 /**
@@ -74,7 +74,8 @@ async function setData(newData) {
       data = await ruleBroker.processRules([newData, ''], [biz.cobjectDeepClone]);
     } catch (err) {
       // await loggers.consoleLog(namespacePrefix + functionName, msg.cERROR_Colon + err.message);
-      console.log('ERROR: Unable to clone data and re-assign it to the D-data structure');
+      // ERROR: Unable to clone data and re-assign it to the D-data structure.
+      console.log(msg.cErrorSetDataMessage01);
     }
     returnData = true;
   } else {
