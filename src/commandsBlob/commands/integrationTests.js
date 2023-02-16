@@ -131,6 +131,10 @@ async function validateConstants(inputData, inputMetaData) {
           console.log(msg.cWarningUserEnteredConstantsValidationDataTypeMessage02 + validConstantsValidationUserTypes.join(bas.cComa + bas.cSpace));
         }
       } // End-for (let validationTypesKey in validationTypesInputArray)
+
+      // validationTypesConfirmedArray is:
+      await loggers.consoleLog(namespacePrefix + functionName, msg.cvalidationTypesConfirmedArrayIs + JSON.stringify(validationTypesConfirmedArray));
+
       if (validationTypesConfirmedArray.length > 0) {
         validationTypesConfirmedList = validationTypesConfirmedArray.join(bas.cComa);
         validUserEntry = true;
@@ -145,6 +149,9 @@ async function validateConstants(inputData, inputMetaData) {
       validationTypesConfirmedList = validConstantsValidationTypes.join(bas.cComa);
       validUserEntry = true;
     }
+
+    // validationTypesConfirmedList is:
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cvalidationTypesConfirmedListIs + validationTypesConfirmedList);
     
     if (validUserEntry) {
       if (validationTypesConfirmedList.includes(wrd.cFramework)) {
@@ -178,6 +185,9 @@ async function validateConstants(inputData, inputMetaData) {
           } // End-for (let plugin in validationPluginsMetaArray)
         } // End-if (validationTypesConfirmedList.includes(wrd.cPlugins))
       } // End-if (await configurator.getConfigurationSetting(wrd.csystem, cfg.cenablePluginLoader))
+
+      // validationArray is:
+      await loggers.consoleLog(namespacePrefix + functionName, msg.cvalidationArrayIs + JSON.stringify(validationArray));
   
       // Phase1 Constants Validation
       // BEGIN Phase 1 Constants Validation
@@ -351,6 +361,10 @@ async function validateCommandAliases(inputData, inputMetaData) {
         console.log(msg.cWarningUserEnteredCommandAliasesValidationDataTypeMessage02 + validCommandAliasesValidationUserTypes.join(bas.cComa + bas.cSpace));
       }
     } // End-for (let validationTypesKey in validationTypesInputArray)
+
+    // validationTypesConfirmedArray is:
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cvalidationTypesConfirmedArrayIs + JSON.stringify(validationTypesConfirmedArray));
+
     if (validationTypesConfirmedArray.length > 0) {
       validationTypesConfirmedList = validationTypesConfirmedArray.join(bas.cComa);
       validUserEntry = true;
@@ -366,6 +380,9 @@ async function validateCommandAliases(inputData, inputMetaData) {
     validUserEntry = true;
   }
 
+  // validationTypesConfirmedList is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cvalidationTypesConfirmedListIs + validationTypesConfirmedList);
+
   if (validUserEntry === true) {
     if (validationTypesConfirmedList.includes(wrd.cFramework)) {
       allCommandAliasesToValidate = await commandBroker.getAllCommandAliasData(D[sys.cCommandsAliases][wrd.cFramework]);
@@ -380,6 +397,9 @@ async function validateCommandAliases(inputData, inputMetaData) {
     }
     // Old method of getting all the command aliases data:
     // allCommandAliasesToValidate = await commandBroker.getAllCommandAliasData(D[sys.cCommandsAliases]);
+
+    // allCommandAliasesToValidate is:
+    await loggers.consoleLog(namespacePrefix + functionName, msg.callCommandAliasesToValidateIs + JSON.stringify(allCommandAliasesToValidate));
 
     // Now do the validation from the flattened array of command aliases data.
     for (let key1 in allCommandAliasesToValidate[0]) {
@@ -515,6 +535,10 @@ async function validateWorkflows(inputData, inputMetaData) {
         console.log(msg.cWarningUserEnteredWorkflowsValidationDataTypeMessage02 + validWorkflowsValidationUserTypes.join(bas.cComa + bas.cSpace));
       }
     } // End-for (let validationTypesKey in validationTypesInputArray)
+
+    // validationTypesConfirmedArray is:
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cvalidationTypesConfirmedArrayIs + JSON.stringify(validationTypesConfirmedArray));
+
     if (validationTypesConfirmedArray.length > 0) {
       validationTypesConfirmedList = validationTypesConfirmedArray.join(bas.cComa);
       validUserEntry = true;
@@ -529,6 +553,9 @@ async function validateWorkflows(inputData, inputMetaData) {
     validationTypesConfirmedList = validWorkflowsValidationTypes.join(bas.cComa);
     validUserEntry = true;
   }
+
+  // validationTypesConfirmedList is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cvalidationTypesConfirmedListIs + validationTypesConfirmedList);
 
   if (validUserEntry === true) {
     if (validationTypesConfirmedList.includes(wrd.cFramework)) {
