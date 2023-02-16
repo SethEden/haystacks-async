@@ -63,7 +63,7 @@ async function bootStrapCommands() {
 async function resetCommands() {
   let functionName = resetCommands.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  // await commandsLibrary.clearCommandsLibrary();
+  await commandsLibrary.clearCommandsLibrary();
   await commandsLibrary.initCommandsLibrary();
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
 }
@@ -85,8 +85,6 @@ async function addClientCommands(clientCommands) {
     // console.log('%%%%%%%%%%%%%%%%%% ---- >>>>>>>>> key is: ' + key);
     D[wrd.cCommands] = {...D[wrd.cCommands], [`${key}`]: value};
   } // End-for (const [key, value] of Object.entries(clientCommands))
-  // D-command stack is:
-  // console.log(namespacePrefix + functionName + bas.cSpace + msg.cdCommandStackIs, D[wrd.cCommands]);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
 }
 
@@ -121,15 +119,11 @@ async function addPluginCommands(pluginName, pluginCommands) {
     // its basically calling a flat list. So rather than adding the plugin commands according to the above structure.
     // We will need to just add them to the flat list. If a plugin is unloaded,
     // then each of its commands will need to be individually searched out and removed from the flat list.
-    // D-command stack before merge is:
-    // console.log(namespacePrefix + functionName + bas.cSpace + msg.cdCommandStackBeforeMergeIs, D[wrd.cCommands]);
     for (const [key, value] of Object.entries(pluginCommands[wrd.ccommands])) {
       // console.log('&&&&&&&&&&&&&&&&& ---- >>>>>>>> key is: ' + key);
       D[wrd.cCommands] = {...D[wrd.cCommands], [`${key}`]: value};
     } // End-for (const [key, value] of Object.entries(pluginCommands))
     returnData = true;
-    // D-command stack after merge is:
-    // console.log(namespacePrefix + functionName + bas.cSpace + msg.cdCommandStackAfterMergeIs, D[wrd.cCommands]);
   } catch (err) {
     // ERROR: Failure to merge the plugin commands for plugin:
     console.log(msg.cErrorAddPluginCommandsMessage01 + pluginName);

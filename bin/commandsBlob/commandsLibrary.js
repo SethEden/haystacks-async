@@ -156,10 +156,6 @@ async function initCommandsLibrary() {
     [cmd.cclearScreen]: (inputData, inputMetaData) => systemCommands.clearScreen(inputData, inputMetaData),
     [wrd.chelp]: (inputData, inputMetaData) => systemCommands.help(inputData, inputMetaData),
     [cmd.cworkflowHelp]: (inputData, inputMetaData) => systemCommands.workflowHelp(inputData, inputMetaData),
-    [cmd.cprintUserCommandsLog]: (inputData, inputMetaData) => systemCommands.printUserCommandsLog(inputData, inputMetaData),
-    [cmd.cprintAllCommandsLog]: (inputData, inputMetaData) => systemCommands.printAllCommandsLog(inputData, inputMetaData),
-    [cmd.cclearUserCommandsLog]: (inputData, inputMetaData) => systemCommands.clearUserCommandsLog(inputData, inputMetaData),
-    [cmd.cclearAllCommandsLog]: (inputData, inputMetaData) => systemCommands.clearAllCommandsLog(inputData, inputMetaData)
   };
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
 }

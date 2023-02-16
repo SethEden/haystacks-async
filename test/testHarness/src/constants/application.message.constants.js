@@ -82,7 +82,6 @@ export const cy3Is = bas.cy + num.c3 + sys.cSpaceIsColonSpace; // y3 is:
 export const cx1x2x3Is = bas.cx + num.c1 + bas.cSpace + bas.cPlus + bas.cSpace + bas.cx + num.c2 + bas.cSpace + bas.cPlus + bas.cSpace + bas.cx + num.c3 + sys.cSpaceIsColonSpace; // x1 + x2 + x3 is:
 export const cy1y2y3Is = bas.cy + num.c1 + bas.cSpace + bas.cPlus + bas.cSpace + bas.cy + num.c2 + bas.cSpace + bas.cPlus + bas.cSpace + bas.cy + num.c3 + sys.cSpaceIsColonSpace; // y1 + y2 + y3 is:
 
-
 // Constants Validation
 export const callClientConstantsValidationDataIs = wrd.call + wrd.cClient + wrd.cConstants + wrd.cValidation + wrd.cData + sys.cSpaceIsColonSpace; // allClientConstantsValidationData is:
 export const cresolvedConstantsPath_ApplicationBusinessIs = app_sys.cresolvedConstantsPath_Application + wrd.cBusiness + sys.cSpaceIsColonSpace; // resolvedConstantsPath_ApplicationBusiness is:
@@ -109,8 +108,6 @@ export const cApplicationFunctionConstantsPhase2Validation = wrd.cApplication + 
 export const cApplicationMessageConstantsPhase2Validation = wrd.cApplication + bas.cSpace + wrd.cMessage + bas.cSpace + wrd.cConstants + bas.cSpace + wrd.cPhase + bas.cSpace + num.c2 + bas.cSpace + wrd.cValidation; // Application Message Constants Phase 2 Validation
 export const cApplicationSystemConstantsPhase2Validation = wrd.cApplication + bas.cSpace + wrd.cSystem + bas.cSpace + wrd.cConstants + bas.cSpace + wrd.cPhase + bas.cSpace + num.c2 + bas.cSpace + wrd.cValidation; // Application System Constants Phase 2 Validation
 
-// Caught the case that some arguments were passed in as input to the function.
-export const capplicationMessage00 = wrd.cCaught + bas.cSpace + wrd.cthe + bas.cSpace + wrd.ccase + bas.cSpace + wrd.cthat + bas.cSpace + wrd.csome + bas.cSpace + wrd.carguments + bas.cSpace + wrd.cwere + bas.cSpace + wrd.cpassed + bas.cSpace + wrd.cin + bas.cSpace + wrd.cas + bas.cSpace + wrd.cinput + bas.cSpace + wrd.cto + bas.cSpace + wrd.cthe + bas.cSpace + wrd.cfunction + bas.cDot; 
 export const capplicationMessage01 = wrd.cBEGIN + bas.cSpace + wrd.cmain + bas.cSpace + wrd.cprogram + bas.cSpace + wrd.cloop; // BEGIN main program loop
 export const capplicationMessage02 = wrd.cBEGIN + bas.cSpace + wrd.ccommand + bas.cSpace + wrd.cparser; // BEGIN command parser
 export const capplicationMessage03 = wrd.cEND + bas.cSpace + wrd.ccommand + bas.cSpace + wrd.cparser; // END command parser

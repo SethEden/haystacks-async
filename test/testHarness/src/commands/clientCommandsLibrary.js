@@ -13,17 +13,6 @@
 // Internal imports
 import clientCommands from './clientCommands/clientCommands.js';
 import * as app_cmd from '../constants/application.command.constants.js';
-import * as apc from '../constants/application.constants.js';
-// External imports
-import hayConst from '@haystacks/constants';
-import path from 'path';
-
-// eslint-disable-next-line no-unused-vars
-const {bas, msg, wrd} = hayConst;
-const baseFileName = path.basename(import.meta.url, path.extname(import.meta.url));
-// application.testHarness.businessRules.clientRules.clientStringParsing.
-// eslint-disable-next-line no-unused-vars
-const namespacePrefix = wrd.capplication + bas.cDot + apc.cApplicationName + bas.cDot + wrd.cbusiness + wrd.cRules + bas.cDot + baseFileName + bas.cDot;
 
 /**
  * @function initClientCommandsLibrary
@@ -37,8 +26,6 @@ const namespacePrefix = wrd.capplication + bas.cDot + apc.cApplicationName + bas
  * but could be really confusing if you are struggling, trying to debug commands or business rules that do not appear to exist.
  */
 const initClientCommandsLibrary = function() {
-  // let functionName = initClientCommandsLibrary.name;
-  // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   return {
     // Client commands
     // ***********************************************

@@ -317,7 +317,7 @@ async function mergeClientBusinessRules(clientBusinessRules) {
 async function mergeClientCommands(clientCommands) {
   let functionName = mergeClientCommands.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  // console.log(msg.cclientCommandsAre, clientCommands);
+  // console.log(`clientCommands is: ${JSON.stringify(clientCommands)}`);
   await chiefCommander.addClientCommands(clientCommands);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
 }

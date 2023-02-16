@@ -421,15 +421,9 @@ async function loadAllPlugins(pluginsExecutionPaths, pluginsMetaData) {
         returnData[pluginMetaData[wrd.cname]] = {}; // Initialize the data structure
         // Load the data and add it.
         try {
-          let pluginReturnedData = await pluginBroker.loadPlugin(pluginExecutionPath);
-          if (!pluginReturnedData) {
-            returnData[pluginMetaData[wrd.cname]] = pluginReturnedData
-            // loaded plugin:
-            console.log(msg.cloadedPlugin + pluginMetaData[wrd.cname]);
-          } else {
-            // There was an error attempting to load the plugin: 
-            console.log(msg.cErrorLoadingPlugin + pluginExecutionPath);
-          }
+          returnData[pluginMetaData[wrd.cname]] = await pluginBroker.loadPlugin(pluginExecutionPath);
+          // loaded plugin:
+          console.log(msg.cloadedPlugin + pluginMetaData[wrd.cname]);
         } catch (err) {
           // Failed to load the plugin:
           console.log(msg.cERROR_Colon + namespacePrefix + functionName + msg.cloadAllPluginsMessage01 + pluginMetaData[wrd.cname]);
@@ -519,54 +513,14 @@ async function integratePluginData(pluginName, pluginData) {
   let constantsValidationDataIntegrationResult = false;
   let themeDataIntegrationResult = false;
   if (pluginData && pluginName) {
-    if (pluginData[wrd.cdata] !== undefined) {
-      if (pluginData[wrd.cdata][sys.cpluginBusinessRules] !== undefined) {
-        businessRulesIntegrationResult = await pluginBroker.integratePluginBusinessRules(pluginName, pluginData[wrd.cdata][sys.cpluginBusinessRules]);
-      } else {
-        // ERROR: No plugin business rules data was loaded for the plugin:
-        console.log(msg.cErrorIntegratePluginDataMessage02 + pluginName);
-      }
-      if (pluginData[wrd.cdata][sys.cpluginCommands] !== undefined) {
-        commandsIntegrationResult = await pluginBroker.integratePluginCommands(pluginName, pluginData[wrd.cdata][sys.cpluginCommands]);
-      } else {
-        // ERROR: No plugin commands data was loaded for the plugin:
-        console.log(msg.cErrorIntegratePluginDataMessage03 + pluginName);
-      }
-      if (pluginData[wrd.cdata][wrd.cconfiguration] !== undefined) {
-        configurationDataIntegrationResult = await pluginBroker.integratePluginConfigurationData(pluginName, pluginData[wrd.cdata][wrd.cconfiguration]);
-      } else {
-        // ERROR: No plugin configuration data was loaded for the plugin:
-        console.log(msg.cErrorIntegratePluginDataMessage04 + pluginName);
-      }
-      if (pluginData[wrd.cdata][sys.cCommandsAliases] !== undefined) {
-        commandAliasesIntegrationResult = await pluginBroker.integratePluginCommandAliases(pluginName, pluginData[wrd.cdata][sys.cCommandsAliases]);
-      } else {
-        // ERROR: No plugin command aliases data was loaded for the plugin:
-        console.log(msg.cErrorIntegratePluginDataMessage05 + pluginName);
-      }
-      if (pluginData[wrd.cdata][sys.cCommandWorkflows] !== undefined) {
-        workflowsIntegrationResult = await pluginBroker.integratePluginWorkflows(pluginName, pluginData[wrd.cdata][sys.cCommandWorkflows]);
-      } else {
-        // ERROR: No plugin workflows data was loaded for the plugin:
-        console.log(msg.cErrorIntegratePluginDataMessage06 + pluginName);
-      }
-      if (pluginData[wrd.cdata][sys.cpluginConstantsValidationData] !== undefined) {
-        constantsValidationDataIntegrationResult = await chiefConstant.addConstantsValidationData(pluginData[wrd.cdata][sys.cpluginConstantsValidationData],
-          wrd.cPlugin + bas.cColon + pluginName);
-      } else {
-        // ERROR: No plugin constants validation data was loaded for the plugin:
-        console.log(msg.cErrorIntegratePluginDataMessage07 + pluginName);
-      }
-      if (pluginData[wrd.cdata][wrd.cThemes] !== undefined) {
-        themeDataIntegrationResult = await chiefTheme.addThemeData(pluginData[wrd.cdata][wrd.cThemes], wrd.cPlugin + bas.cColon + pluginName);
-      } else {
-        // ERROR: No plugin themes data was loaded for the plugin:
-        console.log(msg.cErrorIntegratePluginDataMessage08 + pluginName);
-      }
-    } else {
-      // ERROR: No plugin data was loaded at all for the plugin:
-      console.log(msg.cErrorIntegratePluginDataMessage09 + pluginName);
-    }    
+    businessRulesIntegrationResult = await pluginBroker.integratePluginBusinessRules(pluginName, pluginData[wrd.cdata][sys.cpluginBusinessRules]);
+    commandsIntegrationResult = await pluginBroker.integratePluginCommands(pluginName, pluginData[wrd.cdata][sys.cpluginCommands]);
+    configurationDataIntegrationResult = await pluginBroker.integratePluginConfigurationData(pluginName, pluginData[wrd.cdata][wrd.cconfiguration]);
+    commandAliasesIntegrationResult = await pluginBroker.integratePluginCommandAliases(pluginName, pluginData[wrd.cdata][sys.cCommandsAliases]);
+    workflowsIntegrationResult = await pluginBroker.integratePluginWorkflows(pluginName, pluginData[wrd.cdata][sys.cCommandWorkflows])
+    constantsValidationDataIntegrationResult = await chiefConstant.addConstantsValidationData(pluginData[wrd.cdata][sys.cpluginConstantsValidationData],
+      wrd.cPlugin + bas.cColon + pluginName);
+    themeDataIntegrationResult = await chiefTheme.addThemeData(pluginData[wrd.cdata][wrd.cThemes], wrd.cPlugin + bas.cColon + pluginName);
   } else {
     // ERROR: Invalid input, either the plugin name or plugin data was undefined. Please provide valid data and try again.
     console.log(msg.cErrorIntegratePluginDataMessage01);

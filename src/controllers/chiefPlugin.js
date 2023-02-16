@@ -21,7 +21,6 @@ import chiefConstant from './chiefConstant.js';
 import chiefTheme from './chiefTheme.js';
 import loggers from '../executrix/loggers.js'
 import stack from '../structures/stack.js'
-// import D from '../structures/data.js';
 // External imports
 import hayConst from '@haystacks/constants';
 import path from 'path';
@@ -423,7 +422,7 @@ async function loadAllPlugins(pluginsExecutionPaths, pluginsMetaData) {
         // Load the data and add it.
         try {
           let pluginReturnedData = await pluginBroker.loadPlugin(pluginExecutionPath);
-          if (pluginReturnedData) {
+          if (pluginReturnedData !== false) {
             returnData[pluginMetaData[wrd.cname]] = pluginReturnedData
             // loaded plugin:
             console.log(msg.cloadedPlugin + pluginMetaData[wrd.cname]);

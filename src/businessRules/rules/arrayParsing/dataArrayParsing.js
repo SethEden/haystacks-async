@@ -147,7 +147,7 @@ async function isArrayEmpty(inputData, inputMetaData) {
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
   let returnData = true;
   if (inputData) {
-    returnData = await !Object.keys(inputData).length;
+    returnData = !Object.keys(inputData).length;
   }
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
@@ -196,7 +196,7 @@ async function isArray(inputData, inputMetaData) {
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = false;
   if (inputData) {
-    returnData = await Array.isArray(inputData);
+    returnData = Array.isArray(inputData);
   }
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
@@ -273,76 +273,7 @@ async function arrayDeepClone(inputData, inputMetaData) {
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
   let returnData = false;
   if (inputData && await isArray(inputData, '') === true && await isArrayEmpty(inputData, '') === false) {
-    returnData = await JSON.parse(await JSON.stringify(inputData));
-  }
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
-  return returnData;
-}
-
-/**
- * @function objectDeepClone
- * @description Recursively walks through all levels of a JSON object and deeply clones all of its contents including function objects.
- * @param {object} inputData The JSON object that should be deeply cloned.
- * @param {string} inputMetaData Not used for this business rule.
- * @return {object} A clone of the original input JSON object.
- * @author Seth Hollingsead
- * @date 2023/02/15
- * @NOTE This function was generated with the help of ChatGPT.
- */
-async function objectDeepClone(inputData, inputMetaData) {
-  let functionName = objectDeepClone.name;
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
-  let returnData;
-  let fastExit = false;
-  if (typeof inputData !== wrd.cobject || inputData === null) {
-    if (typeof inputData === wrd.cstring || typeof inputData === wrd.cnumber || typeof inputData === wrd.cboolean) {
-      returnData = inputData;
-      fastExit = true;
-      // fast exit enabled
-      await loggers.consoleLog(namespacePrefix + functionName, msg.cfastExitEnabled);
-    } else {
-      // Invalid input object. Expected a valid JSON object. Object type is:
-      throw new Error(msg.cErrorObjectDeepCloneMessage01 + typeof inputData);
-    }
-  }
-  if (fastExit === false) {
-    if (Array.isArray(inputData)) {
-      if (typeof inputData[1] === wrd.cobject) {
-        // array cloning object
-        await loggers.consoleLog(namespacePrefix + functionName, msg.carrayCloningObject);
-        let cloneArray = [];
-        for (let item in inputData) {
-          cloneArray[item] = await objectDeepClone(inputData[item], '');
-        }
-        returnData = cloneArray;
-      } else {
-        // array deep clone string
-        await loggers.consoleLog(namespacePrefix + functionName, msg.carrayDeepCloneString);
-        returnData = await arrayDeepClone(inputData, '');
-      }      
-    } else {
-      // object deep cloning
-      await loggers.consoleLog(namespacePrefix + functionName, msg.cobjectDeepCloning);
-      returnData = {};
-      for (let key in inputData) {
-        if (Object.prototype.hasOwnProperty.call(inputData, key)) {
-          if (typeof inputData[key] === wrd.cobject && inputData[key] !== null) {
-            returnData[key] = await objectDeepClone(inputData[key], '');
-          } else if (typeof inputData[key] === wrd.cfunction) {
-            // Solution from: https://stackoverflow.com/questions/1833588/javascript-clone-a-function
-            // const newFunction = inputData.bind(this);
-            // Shallow copy any function properties if any.
-            // returnData[key] = Object.assign(newFunction, inputData);
-            returnData[key] = inputData[key];
-          } else {
-            returnData[key] = inputData[key];
-          }
-        } // End-if (inputData.hasOwnProperty(key))
-      } // End-for (let key in inpuData)
-    }
+    returnData = await JSON.parse(JSON.stringify(inputData));
   }
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
@@ -576,7 +507,6 @@ export default {
   isArrayOrObject,
   isNonZeroLengthArray,
   arrayDeepClone,
-  objectDeepClone,
   objectDeepMerge,
   getNamespacedDataObject,
   setNamespacedDataObject

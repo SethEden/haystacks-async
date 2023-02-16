@@ -168,7 +168,7 @@ async function constantsGeneratorList(inputData, inputMetaData) {
        await loggers.consoleLog(namespacePrefix + functionName, msg.cuserDefinedConstantsListArrayIs + JSON.stringify(userDefinedConstantsListArray));
        if (userDefinedConstantsListArray.length > 1) {
          for (const element of userDefinedConstantsListArray) {
-          let commandToQueue1 = cmd.cconstantsGenerator + bas.cSpace + element.trim()
+            let commandToQueue1 = cmd.cconstantsGenerator + bas.cSpace + element.trim()
             if (await configurator.getConfigurationSetting(wrd.csystem, cfg.clogAllCommands) === true) {
               await stack.push(sys.cSystemCommandLog, commandToQueue1);
             }

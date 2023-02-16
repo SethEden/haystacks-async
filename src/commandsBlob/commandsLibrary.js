@@ -69,9 +69,7 @@ async function clearCommandsLibrary() {
 async function initCommandsLibrary() {
   let functionName = initCommandsLibrary.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  if (D[wrd.cCommands] === undefined) {
-    D[wrd.cCommands] = {};
-  }
+  D[wrd.cCommands] = {};
   D[wrd.cCommands] = {
     // Commands
     // ***********************************************

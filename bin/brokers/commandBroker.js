@@ -441,10 +441,7 @@ async function getAllCommandAliasData(commandAliasDataStructure) {
           allCommandsData = await ruleBroker.processRules([allCommandsData, allCommandAliasesTemp], [biz.cobjectDeepMerge]);
         }
       } else {
-        if (Array.isArray(allCommandsData) === true && allCommandsData.length === 0) {
-          // NOTE: Only reset it if it does not already contain some data. We could loose data if we didn't check first.
-          allCommandsData = false; // Reset it, because it was reinitialized to an array.
-        }
+        allCommandsData = false; // Reset it, because it was reinitalized to an array.
       }
     } // End-for (let commandAliasEntity in internalCommandAliasDataStructure)
   } // End-if (typeof internalCommandAliasDataStructure === wrd.cobject)

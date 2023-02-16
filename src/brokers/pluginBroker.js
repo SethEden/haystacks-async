@@ -647,42 +647,13 @@ async function loadPlugin(pluginExecutionPath) {
   // pluginExecutionPath is:
   await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginExecutionPathIs + pluginExecutionPath);
   let returnData = {};
-  // D-command stack before loading is:
-  // console.log(namespacePrefix + functionName + bas.cSpace + msg.cdCommandStackBeforeLoadingIs, D[wrd.cCommands]);
-  // D-businessRules stack before loading is:
-  // console.log(namespacePrefix + functionName + bas.cSpace + msg.cdBusinessRulesStackBeforeLoadingIs, D[sys.cbusinessRules]);
-  // NOTE: We really NEED to deeply clone the D-data structure here,
-  // because for some reason the plugin was mutating the D-data structure and removing the client application defined commands.
-  // This should be the fastest and safest way to get Haystacks context data into the plugin, for its own data dependency loading process.
-  // NOTE: The objectDeepClone function, should also clone functions and business rules,
-  // however, when that data is injected into the plugins instance of Haystacks, then that instance of Haystacks over-writes the commands and functions,
-  // and resets them loading its own business rules and commands.
-  // This is probably how the plugin was mutating the data, which is not safe, or correct.
-  // So in the cloned data, we don't care if the business rules or commands get over written.
-  let dCommandClone = {};
-  let dBusinessRulesClone = {};
-  try {
-    dCommandClone = await ruleBroker.processRules([D[wrd.cCommands], ''], [biz.cobjectDeepClone]);
-  } catch (err1) {
-    await loggers.consoleLog(namespacePrefix + functionName, msg.cERROR_Colon + err1.message);
-  }
-  try {
-    dBusinessRulesClone = await ruleBroker.processRules([D[sys.cbusinessRules], ''], [biz.cobjectDeepClone]);
-  } catch (err2) {
-    await loggers.consoleLog(namespacePrefix + functionName, msg.cERROR_Colon + err2.message);
-  }
-  
-  // dCommandClone stack before loading is:
-  // console.log(namespacePrefix + functionName + bas.cSpace + msg.cdCommandCloneStackBeforeLoadingIs, dCommandClone);
-  // dBusinessRulesClone stack before loading is:
-  // console.log(namespacePrefix + functionName + bas.cSpace + msg.cdBusinessRulesCloneStackBeforeLoadingIs, dBusinessRulesClone);
   try {
     const pluginResponseData = new Promise((resolve, reject) => {
       const loadAsyncImport = () => {
         const asyncImport = async () => {
           return await myDynamicImport(pluginExecutionPath);
         };
-
+  
         return asyncImport().then((result) => {
           return result;
         });
@@ -707,45 +678,6 @@ async function loadPlugin(pluginExecutionPath) {
     console.log(msg.cerrorMessage + err.message);
     returnData = false;
   }
-  // const dDataReset = await D.setData(dCommandClone); // This didn't work either!!
-  // dCommandClone stack after loading is:
-  // console.log(namespacePrefix + functionName + bas.cSpace + msg.cdCommandCloneStackAfterLoadingIs, dCommandClone);
-  // dBusinessRulesClone stack after loading is:
-  // console.log(namespacePrefix + functionName + bas.cSpace + msg.cdBusinessRulesCloneStackAfterLoadingIs, dBusinessRulesClone);
-  // D-command stack after loading is:
-  // console.log(namespacePrefix + functionName + bas.cSpace + msg.cdCommandStackAfterLoadingIs, D[wrd.cCommands]);
-  // D-businessRules stack after loading is:
-  // console.log(namespacePrefix + functionName + bas.cSpace + msg.cdBusinessRulesStackAfterLoadingIs, D[sys.cbusinessRules]);
-
-  // NOTE: Even if the business rules were corrupted and that might be why its not possible to use them to re-clone the data back into the D-data structure.
-  // The system commands should not have been corrupted, unless they were corrupted by the plugins instance of haystacks over-writing the D-singleton.
-
-  // Now copy all of the commands from the backup back to the original.
-  // NOTE: I tried to do this by calling the same business rule: biz.cobjectDeepClone as above.
-  // But that didn't work, so I'm just going to do it manually here in the code below.
-  for (let key in dCommandClone) {
-    if (Object.prototype.hasOwnProperty.call(dCommandClone, key)) {
-      if (typeof dCommandClone[key] === wrd.cfunction) {
-        D[wrd.cCommands][key] = dCommandClone[key];
-      }
-    } // End-if (inputData.hasOwnProperty(key))
-  } // End-for (let key in inputData)
-
-  // Now copy all of the business rules from the backup back to the original.
-  // NOTE: I tried to do this by calling the same business rule: biz.cobjectDeepClone as above.
-  // But that didn't work, so I'm just going to do it manually here in the code below.
-  for (let key in dBusinessRulesClone) {
-    if (Object.prototype.hasOwnProperty.call(dBusinessRulesClone, key)) {
-      if (typeof dBusinessRulesClone[key] === wrd.cfunction) {
-        D[sys.cbusinessRules][key] = dBusinessRulesClone[key];
-      }
-    } // End-if (inputData.hasOwnProperty(key))
-  } // End-for (let key in inputData)
-
-  // D-command stack after over-write is:
-  // console.log(namespacePrefix + functionName + bas.cSpace + msg.cdCommandStackAfterOverWriteIs, D[wrd.cCommands]);
-  // D-businessRules stack after over-write is:
-  // console.log(namespacePrefix + functionName + bas.cSpace + msg.cdBusinessRulesStackAfterOverWriteIs, D[sys.cbusinessRules]);
   // await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;

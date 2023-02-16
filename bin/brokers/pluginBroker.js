@@ -618,7 +618,6 @@ async function extractAndProcessPluginEntryPointURI(pluginMetaData, pluginPath) 
     pluginMainPath = path.join(fullyQualifiedPluginPath, pluginMainPath);
     // pluginMainPath after join is:
     await loggers.consoleLog(namespacePrefix + functionName, msg.cextractAndProcessPluginEntryPointUriMessage02 + pluginMainPath);
-    pluginMainPath = path.normalize(pluginMainPath);
     pluginMainPath = url.pathToFileURL(pluginMainPath);
     // pluginMainPath URI is:
     await loggers.consoleLog(namespacePrefix + functionName, msg.cextractAndProcessPluginEntryPointUriMessage03 + pluginMainPath);
@@ -675,10 +674,8 @@ async function loadPlugin(pluginExecutionPath) {
   } catch (err) {
     // ERROR: There was an error attempting to load the specified plugin: 
     console.log(msg.cloadPluginErrorMessage01 + pluginExecutionPath);
-    console.log(msg.cerrorMessage + err.message);
-    returnData = false;
   }
-  // await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
