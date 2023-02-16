@@ -500,47 +500,89 @@ async function validateWorkflows(inputData, inputMetaData) {
   // This is where we need to process the array of inputs to normalize them to the validation types available by teh system.
   // Available types are: Framework,Platform,Appication,App,Plugins,Plugin
   if (validationTypesInputArray.length > 0) {
-    
+    for (let validationTypesKey in validationTypesInputArray) {
+      let userEnteredValidationType = validationTypesInputArray[validationTypesKey];
+      if (userEnteredValidationType.toUpperCase().trim() === wrd.cFRAMEWORK || userEnteredValidationType.toUpperCase().trim() === wrd.cPLATFORM) {
+        validationTypesConfirmedArray.push(wrd.cFramework);
+      } else if (userEnteredValidationType.toUpperCase().trim() === wrd.cAPPLICATION || userEnteredValidationType.toUpperCase().trim() === wrd.cAPP) {
+        validationTypesConfirmedArray.push(wrd.cApplication);
+      } else if (userEnteredValidationType.toUpperCase().trim() === wrd.cPLUGINS || userEnteredValidationType.toUpperCase().trim() === wrd.cPLUGIN) {
+        validationTypesConfirmedArray.push(wrd.cPlugins);
+      } else {
+        // WARNING: The specified validation type is not available, please enter a valid type and try again. Type not recognized:
+        console.log(msg.cWarningUserEnteredConstantsValidationDataTypeMessage01 + userEnteredValidationType);
+        // Workflows validation types are:
+        console.log(msg.cWarningUserEnteredWorkflowsValidationDataTypeMessage02 + validWorkflowsValidationUserTypes.join(bas.cComa + bas.cSpace));
+      }
+    } // End-for (let validationTypesKey in validationTypesInputArray)
+    if (validationTypesConfirmedArray.length > 0) {
+      validationTypesConfirmedList = validationTypesConfirmedArray.join(bas.cComa);
+      validUserEntry = true;
+    } else {
+      // WARNING: No valid workflow validation types were entered.
+      console.log(msg.cWarningUserEnteredWorkflowsValidationDataTypeMessage03);
+      // Workflows validation types are:
+      console.log(msg.cWarningUserEnteredWorkflowsValidationDataTypeMessage02 + validWorkflowsValidationUserTypes.join(bas.cComa + bas.cSpace));
+    }
   } else {
     // User didn't enter any parameters at all....just run it all!
     validationTypesConfirmedList = validWorkflowsValidationTypes.join(bas.cComa);
     validUserEntry = true;
   }
 
-  allWorkflowsToValidate = await workflowBroker.getAllWorkflows(D[sys.cCommandWorkflows]);
-  // allWorkflowsData is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.callWorkflowsDataIs + JSON.stringify(allWorkflowsData));
-  for (let workflowKey in allWorkflowsData) {
-    numberOfDuplicatesFound = 0;
-    let workflowName = allWorkflowsData[workflowKey];
-    // workflowName is:
-    await loggers.consoleLog(namespacePrefix + functionName, msg.cworkflowNameIs + workflowName);
-    console.log(msg.cworkflowNameIs + workflowName);
-    for (const element of allWorkflowsData) {
-      let secondTierWorkflowName = element;
-      // secondTierWorkflowName is:
-      await loggers.consoleLog(namespacePrefix + functionName, msg.csecondTierWorkflowNameIs + secondTierWorkflowName);
-      if (workflowName === secondTierWorkflowName) {
-        numberOfDuplicatesFound = numberOfDuplicatesFound + 1;
+  if (validUserEntry === true) {
+    if (validationTypesConfirmedList.includes(wrd.cFramework)) {
+      allWorkflowsToValidate = await workflowBroker.getAllWorkflows(D[sys.cCommandWorkflows][wrd.cFramework]);
+    }
+    if (validationTypesConfirmedList.includes(wrd.cApplication)) {
+      allWorkflowsToValidate.push(...await workflowBroker.getAllWorkflows(D[sys.cCommandWorkflows][wrd.cApplication]));
+    }
+    if (await configurator.getConfigurationSetting(wrd.csystem, cfg.cenablePluginLoader)) {
+      if (validationTypesConfirmedList.includes(wrd.cPlugins)) {
+        allWorkflowsToValidate.push(...await workflowBroker.getAllWorkflows(D[sys.cCommandWorkflows][wrd.cPlugins]));
       }
-    } // End-for (const element of allWorkflowsData)
-    if (numberOfDuplicatesFound > 1) {
-      // Duplicate workflow count is:
-      let duplicateWorkflowCountMessage = msg.cDuplicateWorkflowCountIs + numberOfDuplicatesFound;
-      duplicateWorkflowCountMessage = await colorizer.colorizeMessageSimple(duplicateWorkflowCountMessage, blackColorArray, true);
-      duplicateWorkflowCountMessage = await colorizer.colorizeMessageSimple(duplicateWorkflowCountMessage, redColorArray, false);
-      console.log(duplicateWorkflowCountMessage);
+    }
+    // Old method of getting all the command aliases data:
+    // allWorkflowsToValidate = await workflowBroker.getAllWorkflows(D[sys.cCommandWorkflows]);
+    // allWorkflowsToValidate is:
+    await loggers.consoleLog(namespacePrefix + functionName, msg.callWorkflowsToValidate + JSON.stringify(allWorkflowsToValidate));
+    for (let workflowKey in allWorkflowsToValidate) {
+      numberOfDuplicatesFound = 0;
+      let workflowName = allWorkflowsToValidate[workflowKey];
+      // workflowName is:
+      await loggers.consoleLog(namespacePrefix + functionName, msg.cworkflowNameIs + workflowName);
+      console.log(msg.cworkflowNameIs + workflowName);
+      for (const element of allWorkflowsToValidate) {
+        let secondTierWorkflowName = element;
+        // secondTierWorkflowName is:
+        await loggers.consoleLog(namespacePrefix + functionName, msg.csecondTierWorkflowNameIs + secondTierWorkflowName);
+        if (workflowName === secondTierWorkflowName) {
+          numberOfDuplicatesFound = numberOfDuplicatesFound + 1;
+        }
+      } // End-for (const element of allWorkflowsToValidate)
+      if (numberOfDuplicatesFound > 1) {
+        // Duplicate workflow count is:
+        let duplicateWorkflowCountMessage = msg.cDuplicateWorkflowCountIs + numberOfDuplicatesFound;
+        duplicateWorkflowCountMessage = await colorizer.colorizeMessageSimple(duplicateWorkflowCountMessage, blackColorArray, true);
+        duplicateWorkflowCountMessage = await colorizer.colorizeMessageSimple(duplicateWorkflowCountMessage, redColorArray, false);
+        console.log(duplicateWorkflowCountMessage);
 
-      // Duplicate workflow name is:
-      let duplicateWorkflowMessage = msg.cDuplicateWorkflowNameIs + workflowName;
-      duplicateWorkflowMessage = await colorizer.colorizeMessageSimple(duplicateWorkflowMessage, blackColorArray, true);
-      duplicateWorkflowMessage = await colorizer.colorizeMessageSimple(duplicateWorkflowMessage, redColorArray, false);
-      console.log(duplicateWorkflowMessage);
+        // Duplicate workflow name is:
+        let duplicateWorkflowMessage = msg.cDuplicateWorkflowNameIs + workflowName;
+        duplicateWorkflowMessage = await colorizer.colorizeMessageSimple(duplicateWorkflowMessage, blackColorArray, true);
+        duplicateWorkflowMessage = await colorizer.colorizeMessageSimple(duplicateWorkflowMessage, redColorArray, false);
+        console.log(duplicateWorkflowMessage);
 
-      passedAllWorkflowDuplicateCheck = false;
-      returnData[1] = false;
-    } // End-if (numberOfDuplicatesFound > 1)
-  } // End-for (let workflowName in allWorkflowsData)
+        passedAllWorkflowDuplicateCheck = false;
+        returnData[1] = false;
+      } // End-if (numberOfDuplicatesFound > 1)
+    } // End-for (let workflowName in allWorkflowsToValidate)
+  } else {
+    // No validation was run, YOU SHALL NOT PASS!!!!
+    passedAllWorkflowDuplicateCheck = false;
+    returnData[1] = false;
+  } // End-if (validUserEntry === true)
+  
   if (passedAllWorkflowDuplicateCheck === true) {
     // PASSED: All duplicate workflow validation tests!
     console.log(msg.cvalidateWorkflowsMessage01);
