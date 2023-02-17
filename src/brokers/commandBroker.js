@@ -86,7 +86,7 @@ async function addClientCommands(clientCommands) {
     D[wrd.cCommands] = {...D[wrd.cCommands], [`${key}`]: value};
   } // End-for (const [key, value] of Object.entries(clientCommands))
   // D-command stack is:
-  console.log(namespacePrefix + functionName + bas.cColon + bas.cSpace + msg.cdCommandStackIs, D[wrd.cCommands]);
+  // console.log(namespacePrefix + functionName + bas.cColon + bas.cSpace + msg.cdCommandStackIs, D[wrd.cCommands]);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
 }
 
@@ -122,14 +122,14 @@ async function addPluginCommands(pluginName, pluginCommands) {
     // We will need to just add them to the flat list. If a plugin is unloaded,
     // then each of its commands will need to be individually searched out and removed from the flat list.
     // D-command stack before merge is:
-  console.log(namespacePrefix + functionName + bas.cColon + bas.cSpace + msg.cdCommandStackBeforeMergeIs, D[wrd.cCommands]);
+  // console.log(namespacePrefix + functionName + bas.cColon + bas.cSpace + msg.cdCommandStackBeforeMergeIs, D[wrd.cCommands]);
     for (const [key, value] of Object.entries(pluginCommands[wrd.ccommands])) {
       // console.log('&&&&&&&&&&&&&&&&& ---- >>>>>>>> key is: ' + key);
       D[wrd.cCommands] = {...D[wrd.cCommands], [`${key}`]: value};
     } // End-for (const [key, value] of Object.entries(pluginCommands))
     returnData = true;
     // D-command stack after merge is:
-    console.log(namespacePrefix + functionName + bas.cColon + bas.cSpace + msg.cdCommandStackAfterMergeIs, D[wrd.cCommands]);
+    // console.log(namespacePrefix + functionName + bas.cColon + bas.cSpace + msg.cdCommandStackAfterMergeIs, D[wrd.cCommands]);
   } catch (err) {
     // ERROR: Failure to merge the plugin commands for plugin:
     console.log(msg.cErrorAddPluginCommandsMessage01 + pluginName);
