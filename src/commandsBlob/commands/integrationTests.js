@@ -388,16 +388,14 @@ async function validateCommandAliases(inputData, inputMetaData) {
       let frameworkCommandAliases = await commandBroker.getAllCommandAliasData(D[sys.cCommandsAliases][wrd.cFramework]);
       // frameworkCommandAliases is:
       await loggers.consoleLog(namespacePrefix + functionName, msg.cframeworkCommandAliasesIs + JSON.stringify(frameworkCommandAliases));
-      allCommandAliasesToValidate = frameworkCommandAliases;
+      allCommandAliasesToValidate = await ruleBroker.processRules([allCommandAliasesToValidate, frameworkCommandAliases], [biz.cobjectDeepMerge]);
     }
     if (validationTypesConfirmedList.includes(wrd.cApplication)) {
       let applicationCommandAliases = await commandBroker.getAllCommandAliasData(D[sys.cCommandsAliases][wrd.cApplication]);
       // applicationCommandAliases is: 
       await loggers.consoleLog(namespacePrefix + functionName, msg.capplicationCommandAliasesIs + JSON.stringify(applicationCommandAliases));
       if (Object.keys(allCommandAliasesToValidate).length != 0) {
-        const mergedCommandAliases1 = [...allCommandAliasesToValidate, ... applicationCommandAliases];
-        const flattenedCommands1 = mergedCommandAliases1.reduce((acc, curr) => Object.assign(acc, curr), {});
-        allCommandAliasesToValidate = Object.keys(flattenedCommands1).map(key => flattenedCommands1[key]);
+        allCommandAliasesToValidate = await ruleBroker.processRules([allCommandAliasesToValidate, applicationCommandAliases], [biz.cobjectDeepMerge]);
       } else {
         allCommandAliasesToValidate = applicationCommandAliases;
       }
@@ -408,9 +406,7 @@ async function validateCommandAliases(inputData, inputMetaData) {
         // pluginCommandAliases is:
         await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginCommandAliasesIs + JSON.stringify(pluginCommandAliases));
         if (Object.keys(allCommandAliasesToValidate).length != 0) {
-          const mergedCommandAliases2 = [...allCommandAliasesToValidate, ... pluginCommandAliases];
-          const flattenedCommands2 = mergedCommandAliases2.reduce((acc, curr) => Object.assign(acc, curr), {});
-          allCommandAliasesToValidate = Object.keys(flattenedCommands2).map(key => flattenedCommands2[key]);
+          allCommandAliasesToValidate = await ruleBroker.processRules([allCommandAliasesToValidate, pluginCommandAliases], [biz.cobjectDeepMerge]);
         } else {
           allCommandAliasesToValidate = pluginCommandAliases;
         }
@@ -423,10 +419,10 @@ async function validateCommandAliases(inputData, inputMetaData) {
     await loggers.consoleLog(namespacePrefix + functionName, msg.callCommandAliasesToValidateIs + JSON.stringify(allCommandAliasesToValidate));
 
     // Now do the validation from the flattened array of command aliases data.
-    for (let key1 in allCommandAliasesToValidate) {
+    for (let key1 in allCommandAliasesToValidate[0]) {
       // key1 is:
       await loggers.consoleLog(namespacePrefix + functionName, msg.ckey1Is + key1);
-      let currentCommand = allCommandAliasesToValidate[key1];
+      let currentCommand = allCommandAliasesToValidate[0][key1];
       // currentCommand is:
       await loggers.consoleLog(namespacePrefix + functionName, msg.ccurrentCommandIs + JSON.stringify(currentCommand));
       console.log(msg.ccurrentCommandIs + currentCommand[wrd.cName]);
