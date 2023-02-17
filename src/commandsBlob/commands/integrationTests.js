@@ -538,8 +538,8 @@ async function validateWorkflows(inputData, inputMetaData) {
   // validationTypesInputArray is:
   await loggers.consoleLog(namespacePrefix + functionName, msg.cvalidationTypesInputArrayIs + JSON.stringify(validationTypesInputArray));
 
-  // This is where we need to process the array of inputs to normalize them to the validation types available by teh system.
-  // Available types are: Framework,Platform,Appication,App,Plugins,Plugin
+  // This is where we need to process the array of inputs to normalize them to the validation types available by the system.
+  // Available types are: Framework,Platform,Application,App,Plugins,Plugin
   if (validationTypesInputArray.length > 0) {
     for (let validationTypesKey in validationTypesInputArray) {
       let userEnteredValidationType = validationTypesInputArray[validationTypesKey];

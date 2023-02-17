@@ -268,32 +268,144 @@ async function help(inputData, inputMetaData) {
   let functionName = help.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   let returnData = [true, []];
+  let commandNamespaceTypesInputArray = []; // Use this to process any inputs the user may have entered.
+  let commandNamespaceTypesConfirmedArray = []; // Use this once we've confirmed valid user entry for inputs given.
+  let validUserEntry = false;
   let errorMessage = '';
-  if (inputData.length > 1) {
-    // calling getCommandNamespaceDataObject() function,
-    // because the user entered some namespace we should look for!
-    let namespaceCommandsData = await commandBroker.getCommandNamespaceDataObject(undefined, inputData[1]);
-    // namespaceCommandsData is:
-    await loggers.consoleLog(namespacePrefix + functionName, msg.cnamespaceCommandsDataIs + JSON.stringify(namespaceCommandsData));
-    if (namespaceCommandsData === false) {
-      // ERROR: The command namespace was not found.
-      // Please make sure you have entered the correct name and try again.
-      errorMessage = msg.chelpCommandMessage01 + bas.cSpace + msg.chelpCommandMessage02;
-      console.log(errorMessage);
-      returnData[1] = errorMessage;
+  let namespaceAllCommandsDataObject = [];
+  let validCommandNamespaceTypes = [wrd.cFramework, wrd.cApplication, wrd.cPlugins];
+
+  // Process user input(s).
+  if (Array.isArray(inputData) && inputData.length === 2) {
+    // The user entered only 1 parameter namespace, but that could actually be a coma-separated list.
+    // inputData.length is:
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataLengthIs + inputData.length);
+    if (inputData[1].includes(bas.cComa)) {
+      commandNamespaceTypesInputArray = inputData[1].split(bas.cComa);
+    } else if (inputData[1].includes(bas.cSemiColon)) {
+      commandNamespaceTypesInputArray = inputData[1].split(bas.cSemiColon);
+    } else if (inputData[1].includes(bas.cForwardSlash)) {
+      commandNamespaceTypesInputArray = inputData[1].split(bas.cForwardSlash);
+    } else if (inputData[1].includes(bas.cBackSlash)) {
+      commandNamespaceTypesInputArray = inputData[1].split(bas.cBackSlash);
     } else {
-      // NOW call getAllCommandAliasData with the above found data!
-      await loggers.consoleLog(namespacePrefix + functionName, msg.chelpCommandMessage03);
-      let flattenedNamespaceCommandAliasData = await commandBroker.getAllCommandAliasData(namespaceCommandsData);
-      await loggers.consoleTableLog(baseFileName + bas.cDot + functionName, flattenedNamespaceCommandAliasData[0], [wrd.cName, wrd.cDescription]);
-      returnData[1] = await ruleBroker.processRules([flattenedNamespaceCommandAliasData[0], ''], [biz.carrayDeepClone]);
+      // shift the data1!
+      await loggers.consoleLog(namespacePrefix + functionName, msg.cshiftData1);
+      inputData.shift();
+      commandNamespaceTypesInputArray = inputData;
+    }
+  } else if (Array.isArray(inputData) && inputData.length > 2) {
+    // shift the data2!
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cshiftData2);
+    inputData.shift();
+    commandNamespaceTypesInputArray = inputData;
+  }
+
+  // commandNamespaceTypesInputArray is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.ccommandNamespaceTypesInputArrayIs + JSON.stringify(commandNamespaceTypesInputArray));
+
+  // This is where we need to process the array of inputs to normalize them to the command types available by the system,
+  // or run a generic search to find the command namespace alias data.
+  // Available official types are: Framework,Platform,Application,App,Plugins,Plugin
+  if (commandNamespaceTypesInputArray.length > 0) {
+    for (let commandNamespaceEntityKey in commandNamespaceTypesInputArray) {
+      let commandNamespaceEntity = commandNamespaceTypesInputArray[commandNamespaceEntityKey]
+      if (commandNamespaceEntity.toUpperCase().trim() === wrd.cFRAMEWORK || commandNamespaceEntity.toUpperCase().trim() === wrd.cPLATFORM) {
+        commandNamespaceTypesConfirmedArray.push(wrd.cFramework);
+      } else if (commandNamespaceEntity.toUpperCase().trim() === wrd.cAPPLICATION || commandNamespaceEntity.toUpperCase().trim() === wrd.cAPP) {
+        commandNamespaceTypesConfirmedArray.push(wrd.cApplication);
+      } else if (commandNamespaceEntity.toUpperCase().trim() === wrd.cPLUGINS || commandNamespaceEntity.toUpperCase().trim() === wrd.cPLUGIN) {
+        commandNamespaceTypesConfirmedArray.push(wrd.cPlugins);
+      } else {
+        // Not sure what the user may have entered here, but it could be some valid namespace, so just add it to the array, and assume best intent.
+        // If its going to error out, then it will print an error some place else.
+        commandNamespaceTypesConfirmedArray.push(commandNamespaceEntity);
+      }
+    } // End-for (let commandNamespaceEntity in commandNamespaceTypesInputArray)
+    if (commandNamespaceTypesConfirmedArray.length > 0) {
+      validUserEntry = true;
     }
   } else {
-    let allCommandAliasFlatData = await commandBroker.getAllCommandAliasData(D[sys.cCommandsAliases]);
-    returnData[1] = await ruleBroker.processRules([allCommandAliasFlatData, ''], [biz.carrayDeepClone]);
-    // allCommandAliasFlatData is:
-    await loggers.consoleLog(namespacePrefix + functionName, msg.callCommandAliasFlatDataIs + JSON.stringify(allCommandAliasFlatData[0]));
-    await loggers.consoleTableLog(baseFileName + bas.cDot + functionName, allCommandAliasFlatData[0], [wrd.cName, wrd.cDescription]);
+    // User didn't enter any parameters at all....just gather them all!
+    commandNamespaceTypesConfirmedArray = validCommandNamespaceTypes;
+    validUserEntry = true;
+  }
+
+  // commandNamespaceTypesConfirmedArray is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.ccommandNamespaceTypesConfirmedArrayIs + JSON.stringify(commandNamespaceTypesConfirmedArray));
+
+  if (validUserEntry) {
+    if (commandNamespaceTypesConfirmedArray.length > 0) {
+      for (const commandNamespaceTypeConfirmedKey in commandNamespaceTypesConfirmedArray) {
+        const commandNamespaceTypeConfirmedEntity = commandNamespaceTypesConfirmedArray[commandNamespaceTypeConfirmedKey];
+        if (commandNamespaceTypeConfirmedEntity === wrd.cFramework) {
+          // processing framework commands
+          await loggers.consoleLog(namespacePrefix + functionName, msg.cprocessingFrameworkCommands);
+          let frameworkCommandAliases = await commandBroker.getAllCommandAliasData(D[sys.cCommandsAliases][wrd.cFramework]);
+          if (Object.keys(namespaceAllCommandsDataObject).length != 0) {
+            // frameworkCommandAliases is:
+            await loggers.consoleLog(namespacePrefix + functionName, msg.cframeworkCommandAliasesIs + JSON.stringify(frameworkCommandAliases));
+            namespaceAllCommandsDataObject = await ruleBroker.processRules([namespaceAllCommandsDataObject, frameworkCommandAliases], [biz.cobjectDeepMerge]);
+          } else {
+            namespaceAllCommandsDataObject = frameworkCommandAliases;
+          }
+        } else if (commandNamespaceTypeConfirmedEntity === wrd.cApplication) {
+          // processing application commands
+          await loggers.consoleLog(namespacePrefix + functionName, msg.cprocessingApplicationCommands);
+          let applicationCommandAliases = await commandBroker.getAllCommandAliasData(D[sys.cCommandsAliases][wrd.cApplication]);
+          if (Object.keys(namespaceAllCommandsDataObject).length != 0) {
+            // applicationCommandAliases is:
+            await loggers.consoleLog(namespacePrefix + functionName, msg.capplicationCommandAliasesIs + JSON.stringify(applicationCommandAliases));
+            namespaceAllCommandsDataObject = await ruleBroker.processRules([namespaceAllCommandsDataObject, applicationCommandAliases], [biz.cobjectDeepMerge]);
+          } else {
+            namespaceAllCommandsDataObject = applicationCommandAliases;
+          }
+        } else if (commandNamespaceTypeConfirmedEntity === wrd.cPlugins) {
+          // processing plugins commands
+          await loggers.consoleLog(namespacePrefix + functionName, msg.cprocessingPluginsCommands);
+          let pluginsCommandAliases = await commandBroker.getAllCommandAliasData(D[sys.cCommandsAliases][wrd.cPlugins]);
+          if (Object.keys(namespaceAllCommandsDataObject).length != 0) {
+            // pluginsCommandAliases is:
+            await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginsCommandAliasesIs + JSON.stringify(pluginsCommandAliases));
+            namespaceAllCommandsDataObject = await ruleBroker.processRules([namespaceAllCommandsDataObject, pluginsCommandAliases], [biz.cobjectDeepMerge]);
+          } else {
+            namespaceAllCommandsDataObject = pluginsCommandAliases;
+          }
+        } else {
+          // calling getCommandNamespaceDataObject() function,
+          // because the user entered some namespace we should look for!
+          // processing commands for:
+          await loggers.consoleLog(namespacePrefix + functionName, msg.cprocessingCommandsFor + commandNamespaceTypeConfirmedEntity);
+          let namespaceCommandsData = await commandBroker.getCommandNamespaceDataObject(undefined, commandNamespaceTypeConfirmedEntity);
+          // namespaceCommandsData is:
+          await loggers.consoleLog(namespacePrefix + functionName, msg.cnamespaceCommandsDataIs + JSON.stringify(namespaceCommandsData));
+          if (namespaceCommandsData === false) {
+            // ERROR: The command namespace was not found.
+            // Please make sure you have entered the correct name and try again.
+            errorMessage = msg.chelpCommandMessage01 + bas.cSpace + msg.chelpCommandMessage02;
+            console.log(errorMessage);
+          } else {
+            // NOW call getAllCommandAliasData with the above found data!
+            await loggers.consoleLog(namespacePrefix + functionName, msg.chelpCommandMessage03);
+            let extraUserEnteredCommandAliases = await commandBroker.getAllCommandAliasData(namespaceCommandsData);
+            if (Object.keys(namespaceAllCommandsDataObject).length != 0) {
+              namespaceAllCommandsDataObject = await ruleBroker.processRules([namespaceAllCommandsDataObject, extraUserEnteredCommandAliases], [biz.cobjectDeepMerge]);
+            } else {
+              namespaceAllCommandsDataObject = extraUserEnteredCommandAliases;
+            }
+          }
+        }
+        // namespaceAllCommandsDataObject is:
+        await loggers.consoleLog(namespacePrefix + functionName, msg.cnamespaceAllCommandsDataObjectIs + JSON.stringify(namespaceAllCommandsDataObject));
+      } // End-for (const commandNamespaceTypeConfirmedKey in commandNamespaceTypesConfirmedArray)
+    } else {
+      // Should never get here, but just in case we do, protect the system and get all the command alias data so the command can still finish successfully.
+      namespaceAllCommandsDataObject = await commandBroker.getAllCommandAliasData(D[sys.cCommandsAliases]);
+    }
+    returnData[1] = await ruleBroker.processRules([namespaceAllCommandsDataObject, ''], [biz.carrayDeepClone]);
+    // namespaceAllCommandsDataObject is:
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cnamespaceAllCommandsDataObjectIs + JSON.stringify(namespaceAllCommandsDataObject[0]));
+    await loggers.consoleTableLog(baseFileName + bas.cDot + functionName, namespaceAllCommandsDataObject[0], [wrd.cName, wrd.cDescription]);
   }
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
