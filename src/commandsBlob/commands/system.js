@@ -367,15 +367,17 @@ async function help(inputData, inputMetaData) {
             namespaceAllCommandsDataObject = applicationCommandAliases;
           }
         } else if (commandNamespaceTypeConfirmedEntity === wrd.cPlugins) {
-          // processing plugins commands
-          await loggers.consoleLog(namespacePrefix + functionName, msg.cprocessingPluginsCommands);
-          let pluginsCommandAliases = await commandBroker.getAllCommandAliasData(D[sys.cCommandsAliases][wrd.cPlugins]);
-          if (Object.keys(namespaceAllCommandsDataObject).length != 0) {
-            // pluginsCommandAliases is:
-            await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginsCommandAliasesIs + JSON.stringify(pluginsCommandAliases));
-            namespaceAllCommandsDataObject = await ruleBroker.processRules([namespaceAllCommandsDataObject, pluginsCommandAliases], [biz.cobjectDeepMerge]);
-          } else {
-            namespaceAllCommandsDataObject = pluginsCommandAliases;
+          if (await configurator.getConfigurationSetting(wrd.csystem, cfg.cenablePluginLoader)) {
+            // processing plugins commands
+            await loggers.consoleLog(namespacePrefix + functionName, msg.cprocessingPluginsCommands);
+            let pluginsCommandAliases = await commandBroker.getAllCommandAliasData(D[sys.cCommandsAliases][wrd.cPlugins]);
+            if (Object.keys(namespaceAllCommandsDataObject).length != 0) {
+              // pluginsCommandAliases is:
+              await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginsCommandAliasesIs + JSON.stringify(pluginsCommandAliases));
+              namespaceAllCommandsDataObject = await ruleBroker.processRules([namespaceAllCommandsDataObject, pluginsCommandAliases], [biz.cobjectDeepMerge]);
+            } else {
+              namespaceAllCommandsDataObject = pluginsCommandAliases;
+            }
           }
         } else {
           // calling getCommandNamespaceDataObject() function,
@@ -537,15 +539,17 @@ async function workflowHelp(inputData, inputMetaData) {
             namespaceAllWorkflowsDataObject = applicationWorkflows;
           }
         } else if (workflowNamespaceTypeConfirmedEntity === wrd.cPlugins) {
-          // processing plugins workflows
-          await loggers.consoleLog(namespacePrefix + functionName, msg.cprocessingPluginsWorkflows);
-          let pluginWorkflows = await workflowBroker.getAllWorkflows(D[sys.cCommandWorkflows][wrd.cPlugins]);
-          if (namespaceAllWorkflowsDataObject.length != 0) {
-            // pluginWorkflows is:
-            await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginWorkflowsIs + JSON.stringify(pluginWorkflows));
-            namespaceAllWorkflowsDataObject.push(...pluginWorkflows);
-          } else {
-            namespaceAllWorkflowsDataObject = pluginWorkflows;
+          if (await configurator.getConfigurationSetting(wrd.csystem, cfg.cenablePluginLoader)) {
+            // processing plugins workflows
+            await loggers.consoleLog(namespacePrefix + functionName, msg.cprocessingPluginsWorkflows);
+            let pluginWorkflows = await workflowBroker.getAllWorkflows(D[sys.cCommandWorkflows][wrd.cPlugins]);
+            if (namespaceAllWorkflowsDataObject.length != 0) {
+              // pluginWorkflows is:
+              await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginWorkflowsIs + JSON.stringify(pluginWorkflows));
+              namespaceAllWorkflowsDataObject.push(...pluginWorkflows);
+            } else {
+              namespaceAllWorkflowsDataObject = pluginWorkflows;
+            }
           }
         } else {
           // calling getWorkflowNamespaceDataObject() function,
