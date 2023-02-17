@@ -57,7 +57,7 @@ async function bootStrapBusinessRules() {
 async function resetBusinessRules() {
   // let functionName = bootStrapBusinessRules.name;
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
-  await rules.clearRulesLibrary();
+  // await rules.clearRulesLibrary();
   await rules.initRulesLibrary();
   // console.log(`END ${namespacePrefix}${functionName} function`);
 }
@@ -75,6 +75,8 @@ async function addClientRules(clientRules) {
   // let functionName = bootStrapBusinessRules.name;
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   await Object.assign(D[sys.cbusinessRules], clientRules);
+  // D-businessRules stack is:
+  // console.log(namespacePrefix + functionName + bas.cSpace + msg.cdBusinessRulesStackIs, D[sys.cbusinessRules]);
   // console.log(`END ${namespacePrefix}${functionName} function`);
 }
 
@@ -107,7 +109,11 @@ async function addPluginRules(pluginName, pluginRules) {
     // its basically calling a flat list. So rather than adding the plugin rules according to the above structure.
     // We will need to just add them to the flat list. If a plugin is unloaded,
     // then each of its business rules will need to be individually searched out and removed from the flat list.
+    // D-businessRules stack before merge is:
+    // console.log(namespacePrefix + functionName + bas.cSpace + msg.cdBusinessRulesStackBeforeMergeIs, D[sys.cbusinessRules]);
     await Object.assign(D[sys.cbusinessRules], pluginRules[sys.cbusinessRules]);
+    // D-businessRules stack after merge is:
+    // console.log(namespacePrefix + functionName + bas.cSpace + msg.cdBusinessRulesStackAfterMergeIs, D[sys.cbusinessRules]);
     returnData = true;
   } catch (err) {
     // ERROR: Failure to merge the plugin rules for plugin:
