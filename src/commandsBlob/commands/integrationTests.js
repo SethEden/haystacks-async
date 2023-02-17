@@ -482,7 +482,14 @@ async function validateCommandAliases(inputData, inputMetaData) {
  * @function validateWorkflows
  * @description Validates all the workflows have no duplicates.
  * @param {string} inputData An array that could possibly include the name of this command,
- * and a list of top-level workflows data structures 
+ * and a ist of top-level workflows data structures to be validated.
+ * That way we can parameterize and optimize the validation of the workflows specific to the testing needs.
+ * Rather than always running the full set of workflows, as that could take longer,
+ * and only needs to be done exhaustively when releasing a new instance of the entire Haystacks platform.
+ * inputData[1] = validateWorkflows
+ * inputData[2] = Could be a coma-separated string list of workflow data types to validate.
+ * inputData[n] = Could be additional list of workflow data types list to validate if the user entered a space-separated list.
+ * Options are: Framework,Platform,Application,App,Plugins,Plugin
  * @param {string} inputMetaData Not used for this command.
  * @return {array<boolean,string|integer|boolean|object|array>} An array with a boolean True or False value to
  * indicate if the application should exit or not exit, followed by the command output.

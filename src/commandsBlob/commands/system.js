@@ -255,8 +255,14 @@ async function clearScreen(inputData, inputMetaData) {
  * @function help
  * @description Displays all the information about all of the commands in the system,
  * including both system defined commands and client defined commands.
- * @param {array<boolean|string|integer>} inputData Not used for this command.
+ * @param {array<boolean|string|integer>} inputData An array that could possibly include the name of this command,
+ * and a list of top-level command data structure data types to print help for.
+ * That way we can parameterize and optimize the help to print commands specific to the Haystacks platform,
+ * the host application, loaded plugins, or various combinations of these.
  * inputData[0] = 'help'
+ * inputData[1] = Could be a coma-separated string list of command catagories to get help for.
+ * inputData[n] = Could be additional list of command catagories to get help for if the user entered a space-separated list.
+ * Options are: Framework,Platform,Application,App,Plugins,Plugin
  * @param {string} inputMetaData Not used for this command.
  * @return {array<boolean,string|integer|boolean|object|array>} An array with a boolean True or False value to
  * indicate if the application should exit or not exit, followed by the command output.
@@ -389,6 +395,8 @@ async function help(inputData, inputMetaData) {
             await loggers.consoleLog(namespacePrefix + functionName, msg.chelpCommandMessage03);
             let extraUserEnteredCommandAliases = await commandBroker.getAllCommandAliasData(namespaceCommandsData);
             if (Object.keys(namespaceAllCommandsDataObject).length != 0) {
+              // extraUserEnteredCommandAliases is:
+              await loggers.consoleLog(namespacePrefix + functionName, msg.cextraUserEnteredCommandAliasesIs + JSON.stringify(extraUserEnteredCommandAliases));
               namespaceAllCommandsDataObject = await ruleBroker.processRules([namespaceAllCommandsDataObject, extraUserEnteredCommandAliases], [biz.cobjectDeepMerge]);
             } else {
               namespaceAllCommandsDataObject = extraUserEnteredCommandAliases;
@@ -416,8 +424,14 @@ async function help(inputData, inputMetaData) {
  * @function workflowHelp
  * @description Displays all the information about all the workflows in the system,
  * including both system defined workflows & client defined workflows.
- * @param {array<boolean|string|integer>} inputData Not used for this command.
+ * @param {array<boolean|string|integer>} inputData An array that could possibly include the name of this command,
+ * and a list of top-level workflow catagories data structures to be printed.
+ * That way we can parameterize and optimize the workflow help to print workflows specific to the Haystacks platform,
+ * the host application, loaded plugins, or various combinations of these.
  * inputData[0] = 'workflowHelp'
+ * inputData[1] = Could be a coma-separated string list of command catagories to get workflow help for.
+ * inputData[n] = Could be additional list of command catagories to get help for if the user entered a space-separated list.
+ * Options are: Framework,Platform,Application,App,Plugins,Plugin
  * @param {string} inputMetaData Not used for this command.
  * @return {array<boolean,string|integer|boolean|object|array>} An array with a boolean True or False value to
  * indicate if the application should exit or not exit, followed by the command output.
@@ -431,37 +445,148 @@ async function workflowHelp(inputData, inputMetaData) {
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = [true, []];
   let errorMessage = '';
-  // The old way of printing out all the workflows, when it was a flat data structure.
-  // loggers.consoleTableLog(baseFileName + bas.cDot + functionName, D[sys.cCommandWorkflows][wrd.cWorkflows], [wrd.cName]);
-  if (inputData.length > 1) {
-    // calling getWorkflowNamespaceDataObject() function,
-    // because the user entered some namespace we should look for!
-    await loggers.consoleLog(namespacePrefix + functionName, msg.cworkfowHelpMessage01 + msg.cworkfowHelpMessage02);
-    let namespaceWorkflowData = await workflowBroker.getWorkflowNamespaceDataObject(undefined, inputData[1]);
-    // namespaceWorkflowData is:
-    await loggers.consoleLog(namespacePrefix + functionName, msg.cnamespaceWorkflowDataIs + JSON.stringify(namespaceWorkflowData));
-    if (namespaceWorkflowData === false) {
-      // ERROR: The workflow namespace was not found.
-      // Please make sure you have entered the correct name and try again.
-      errorMessage = msg.cworkflowHelpCommandMessage01 + bas.cSpace + msg.chelpCommandMessage02;
-      console.log(errorMessage);
-      returnData[1] = errorMessage;
+  let workflowNamespaceTypesInputArray = []; // Use this to process any inputs the user may have entered.
+  let workflowNamespaceTypesConfirmedArray = []; // Use this once we've confirmed vaid user entry for inputs given.
+  let validUserEntry = false;
+  let namespaceAllWorkflowsDataObject = [];
+  let validWorkflowsNamespaceTypes = [wrd.cFramework, wrd.cApplication, wrd.cPlugins];
+
+  // Process user input(s).
+  if (Array.isArray(inputData) && inputData.length === 2) {
+    // The user entered only 1 parameter namespace, but that could actually be a coma-separated list.
+    // inputData.length is:
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataLengthIs + inputData.length);
+    if (inputData[1].includes(bas.cComa)) {
+      workflowNamespaceTypesInputArray = inputData[1].split(bas.cComa);
+    } else if (inputData[1].includes(bas.cSemiColon)) {
+      workflowNamespaceTypesInputArray = inputData[1].split(bas.cSemiColon);
+    } else if (inputData[1].includes(bas.cForwardSlash)) {
+      workflowNamespaceTypesInputArray = inputData[1].split(bas.cForwardSlash);
+    } else if (inputData[1].includes(bas.cBackSlash)) {
+      workflowNamespaceTypesInputArray = inputData[1].split(bas.cBackSlash);
     } else {
-      // NOW call getAllWorkflows with the above found data!
-      await loggers.consoleLog(namespacePrefix + functionName, msg.cworkfowHelpMessage03);
-      let flattenedNamespaceWorkflowData = await workflowBroker.getAllWorkflows(namespaceWorkflowData);
-      await loggers.consoleTableLog(baseFileName + bas.cDot + functionName, flattenedNamespaceWorkflowData);
-      returnData[1] = await ruleBroker.processRules([flattenedNamespaceWorkflowData, ''], [biz.carrayDeepClone]);
+      // shift the data1!
+      await loggers.consoleLog(namespacePrefix + functionName, msg.cshiftData1);
+      inputData.shift();
+      workflowNamespaceTypesInputArray = inputData;
+    }
+  } else if (Array.isArray(inputData) && inputData.length > 2) {
+    // shift the data2!
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cshiftData2);
+    inputData.shift();
+    workflowNamespaceTypesInputArray = inputData;
+  }
+
+  // workflowNamespaceTypesInputArray is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cworkflowNamespaceTypesInputArrayIs + JSON.stringify(workflowNamespaceTypesInputArray));
+
+  // This is where we need to process the array of inputs to normalize them to the workflow types available by the system,
+  // or run a generic search to find the workflow data.
+  // Available official types are: Framework,Platform,Application,App,Plugins,Plugin
+  if (workflowNamespaceTypesInputArray.length > 0) {
+    for (let workflowNamespaceEntityKey in workflowNamespaceTypesInputArray) {
+      let workflowNamespaceEntity = workflowNamespaceTypesInputArray[workflowNamespaceEntityKey];
+      if (workflowNamespaceEntity.toUpperCase().trim() === wrd.cFRAMEWORK || workflowNamespaceEntity.toUpperCase().trim() === wrd.cPLATFORM) {
+        workflowNamespaceTypesConfirmedArray.push(wrd.cFramework);
+      } else if (workflowNamespaceEntity.toUpperCase().trim() === wrd.cAPPLICATION || workflowNamespaceEntity.toUpperCase().trim() === wrd.cAPP) {
+        workflowNamespaceTypesConfirmedArray.push(wrd.cApplication);
+      } else if (workflowNamespaceEntity.toUpperCase().trim() === wrd.cPLUGINS || workflowNamespaceEntity.toUpperCase().trim() === wrd.cPLUGIN) {
+        workflowNamespaceTypesConfirmedArray.push(wrd.cPlugins);
+      } else {
+        // Not sure what the user may have entered here, but it could be some valid namespace, so just add it to the array, and assume best intent.
+        // If its going to error out, then it will print an error some place else.
+        workflowNamespaceTypesConfirmedArray.push(workflowNamespaceEntity);
+      }
+    } // End-for (let workflowNamespaceEntityKey in workflowNamespaceTypesInputArray)
+    if (workflowNamespaceTypesConfirmedArray.length > 0) {
+      validUserEntry = true;
     }
   } else {
-    // User did not enter any parameters,
-    // just call getAllWorkflows functions with no input,
-    // will return all and print all.
-    await loggers.consoleLog(namespacePrefix + functionName, msg.cworkfowHelpMessage04 + msg.cworkfowHelpMessage05 + msg.cworkfowHelpMessage06);
-    let allWorkflowData = await workflowBroker.getAllWorkflows();
-    await loggers.consoleLog(namespacePrefix + functionName, msg.callWorkflowDataIs + JSON.stringify(allWorkflowData));
-    await loggers.consoleTableLog(baseFileName + bas.cDot + functionName, allWorkflowData);
-    returnData[1] = await ruleBroker.processRules([allWorkflowData, ''], [biz.carrayDeepClone]);
+    // User didn't enter any parameters at al....just gather them all!
+    workflowNamespaceTypesConfirmedArray = validWorkflowsNamespaceTypes;
+    validUserEntry = true;
+  }
+
+  // workflowNamespaceTypesConfirmedArray is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cworkflowNamespaceTypesConfirmedArrayIs + JSON.stringify(workflowNamespaceTypesConfirmedArray));
+
+  if (validUserEntry) {
+    if (workflowNamespaceTypesConfirmedArray.length > 0) {
+      for (const workflowNamespaceTypeConfirmedKey in workflowNamespaceTypesConfirmedArray) {
+        const workflowNamespaceTypeConfirmedEntity = workflowNamespaceTypesConfirmedArray[workflowNamespaceTypeConfirmedKey];
+        if (workflowNamespaceTypeConfirmedEntity === wrd.cFramework) {
+          // processing framework workflows
+          await loggers.consoleLog(namespacePrefix + functionName, msg.cprocessingFrameworkWorkflows);
+          let frameworkWorkflows = await workflowBroker.getAllWorkflows(D[sys.cCommandWorkflows][wrd.cFramework]);
+          if (namespaceAllWorkflowsDataObject.length != 0) {
+            // frameworkWorkflows is:
+            await loggers.consoleLog(namespacePrefix + functionName, msg.cframeworkWorkflowsIs + JSON.stringify(frameworkWorkflows));
+            namespaceAllWorkflowsDataObject.push(...frameworkWorkflows);
+          } else {
+            namespaceAllWorkflowsDataObject = frameworkWorkflows;
+          }
+        } else if (workflowNamespaceTypeConfirmedEntity === wrd.cApplication) {
+          // processing application workflows
+          await loggers.consoleLog(namespacePrefix + functionName, msg.cprocessingApplicationWorkflows);
+          let applicationWorkflows = await workflowBroker.getAllWorkflows(D[sys.cCommandWorkflows][wrd.cApplication]);
+          if (namespaceAllWorkflowsDataObject.length != 0) {
+            // applicationWorkflows is:
+            await loggers.consoleLog(namespacePrefix + functionName, msg.capplicationWorkflowsIs + JSON.stringify(applicationWorkflows));
+            namespaceAllWorkflowsDataObject.push(...applicationWorkflows);
+          } else {
+            namespaceAllWorkflowsDataObject = applicationWorkflows;
+          }
+        } else if (workflowNamespaceTypeConfirmedEntity === wrd.cPlugins) {
+          // processing plugins workflows
+          await loggers.consoleLog(namespacePrefix + functionName, msg.cprocessingPluginsWorkflows);
+          let pluginWorkflows = await workflowBroker.getAllWorkflows(D[sys.cCommandWorkflows][wrd.cPlugins]);
+          if (namespaceAllWorkflowsDataObject.length != 0) {
+            // pluginWorkflows is:
+            await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginWorkflowsIs + JSON.stringify(pluginWorkflows));
+            namespaceAllWorkflowsDataObject.push(...pluginWorkflows);
+          } else {
+            namespaceAllWorkflowsDataObject = pluginWorkflows;
+          }
+        } else {
+          // calling getWorkflowNamespaceDataObject() function,
+          // because the user entered some namespace we should look for!
+          // processing workflows for:
+          await loggers.consoleLog(namespacePrefix + functionName, msg.cprocessingWorkflowsFor + workflowNamespaceTypeConfirmedEntity);
+          let namespaceWorkflowData = await workflowBroker.getWorkflowNamespaceDataObject(undefined, workflowNamespaceTypeConfirmedEntity);
+          // namespaceWorkflowData is:
+          await loggers.consoleLog(namespacePrefix + functionName, msg.cnamespaceWorkflowDataIs + JSON.stringify(namespaceWorkflowData));
+          if (namespaceWorkflowData === false) {
+            // ERROR: The workflow namespace was not found.
+            // Please make sure you have entered the correct name and try again.
+            errorMessage = msg.cworkflowHelpCommandMessage01 + bas.cSpace + msg.chelpCommandMessage02;
+            console.log(errorMessage);
+          } else {
+            // NOW call getAllWorkflows with the above found data!
+            await loggers.consoleLog(namespacePrefix + functionName, msg.cworkfowHelpMessage03);
+            let extraUserEnteredWorkflows = await workflowBroker.getAllWorkflows(namespaceWorkflowData);
+            if (namespaceAllWorkflowsDataObject.length != 0) {
+              // extraUserEnteredWorkflows is:
+              await loggers.consoleLog(namespacePrefix + functionName, msg.cextraUserEnteredWorkflowsIs + JSON.stringify(extraUserEnteredWorkflows));
+              // namespaceAllWorkflowsDataObject = await ruleBroker.processRules([namespaceAllWorkflowsDataObject, extraUserEnteredWorkflows], [biz.cobjectDeepMerge]);
+              namespaceAllWorkflowsDataObject.push(...extraUserEnteredWorkflows);
+            } else {
+              namespaceAllWorkflowsDataObject = extraUserEnteredWorkflows;
+            }
+          }
+        }
+        // namespaceAllWorkflowsDataObject is:
+        await loggers.consoleLog(namespacePrefix + functionName, msg.cnamespaceAllWorkflowsDataObjectIs + JSON.stringify(namespaceAllWorkflowsDataObject));
+      } // End-for (const workflowNamespaceTypeConfirmedKey in workflowNamespaceTypesConfirmedArray)
+    } else {
+      // Should never get here, but just in case we do, protect the system and get all the workflows data so the command can still finish successfully.
+      // just call getAllWorkflows functions with no input,
+      // will return all and print all.
+      namespaceAllWorkflowsDataObject = await workflowBroker.getAllWorkflows();
+    }
+    returnData[1] = await ruleBroker.processRules([namespaceAllWorkflowsDataObject, ''], [biz.carrayDeepClone]);
+    // namespaceAllWorkflowsDataObject is:
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cnamespaceAllWorkflowsDataObjectIs + JSON.stringify(namespaceAllWorkflowsDataObject));
+    await loggers.consoleTableLog(baseFileName + bas.cDot + functionName, namespaceAllWorkflowsDataObject);
   }
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
