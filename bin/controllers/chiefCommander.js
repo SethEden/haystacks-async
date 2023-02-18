@@ -144,6 +144,8 @@ async function enqueueCommand(command) {
   if (await configurator.getConfigurationSetting(wrd.csystem, cfg.clogAllCommands) === true) {
     await stack.push(sys.cSystemCommandLog, command);
   }
+  // D-command stack is:
+  // console.log(namespacePrefix + functionName + bas.cSpace + msg.cdCommandStackIs, D[wrd.cCommands]);
   await queue.enqueue(sys.cCommandQueue, command);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
 }
