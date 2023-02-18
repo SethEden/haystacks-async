@@ -139,7 +139,7 @@ async function bootstrapApplication() {
  */
 async function application() {
   let functionName = application.name;
-  haystacks.consoleLog(namespacePrefix, functionName, msg.cBEGIN_Function);
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.cBEGIN_Function);
   let argumentDrivenInterface = false;
   let commandInput;
   let commandResult;
@@ -149,7 +149,7 @@ async function application() {
     argumentDrivenInterface = false;
   }
   // argumentDrivenInterface is:
-  // haystacks.consoleLog(namespacePrefix, functionName, app_msg.cargumentDrivenInterfaceIs + argumentDrivenInterface);
+  // await haystacks.consoleLog(namespacePrefix, functionName, app_msg.cargumentDrivenInterfaceIs + argumentDrivenInterface);
   await haystacks.enqueueCommand(cmd.cStartupWorkflow);
 
   // NOTE: We are processing the argument driven interface first that way even if we are not in an argument driven interface,
@@ -166,23 +166,24 @@ async function application() {
   } // End-while (haystacks.isCommandQueueEmpty() === false)
 
   // NOW process the command args and add them to the command queue for execution.
-  if (!process.argv && process.argv.length > 0) {
+  if (Array.isArray(process.argv) && process.argv.length > 2) {
+    // Caught the case that some arguments were passed in as input to the function.
+    console.log(app_msg.capplicationMessage00);
     if (process.argv[2].includes(bas.cDash) === true ||
     process.argv[2].includes(bas.cForwardSlash) === true ||
     process.argv[2].includes(bas.cBackSlash) === true) {
       commandToExecute = await haystacks.executeBusinessRule([process.argv, ''], [biz.caggregateCommandArguments]);
+    } else {
+      commandToExecute = await haystacks.executeBusinessRules([process.argv, ''], [biz.caggregateCommandArguments]);
     }
     if (commandToExecute !== '') {
+      console.log(msg.ccommandToExecuteIs + commandToExecute);
       await haystacks.enqueueCommand(commandToExecute);
     }
     while (await haystacks.isCommandQueueEmpty() === false) {
       commandResult = await haystacks.processCommandQueue();
     } // End-while (haystacks.isCommandQueueEmpty() === false)
   } // End-if (!process.argv && process.argv.length > 0)
-
-  // let pluginLoadedSuccess = await haystacks.loadPlugins(['C:/haystacks-plugins/pluginOne/']);
-  // let pluginLoadedSuccess = await haystacks.
-  // console.log('testHarness App pluginData loaded: ' + pluginLoadedSuccess);
 
   // NOW the application can continue with the interactive interface fi the flag was set to false.
   if (argumentDrivenInterface === false) {

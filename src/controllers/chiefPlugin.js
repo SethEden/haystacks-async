@@ -422,7 +422,7 @@ async function loadAllPlugins(pluginsExecutionPaths, pluginsMetaData) {
         // Load the data and add it.
         try {
           let pluginReturnedData = await pluginBroker.loadPlugin(pluginExecutionPath);
-          if (!pluginReturnedData) {
+          if (pluginReturnedData) {
             returnData[pluginMetaData[wrd.cname]] = pluginReturnedData
             // loaded plugin:
             console.log(msg.cloadedPlugin + pluginMetaData[wrd.cname]);

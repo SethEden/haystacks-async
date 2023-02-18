@@ -3,6 +3,7 @@
  * @module data
  * @description Contains the singleton data structure definition that allows the entire application,
  * to share data between various components of the framework and greater application platform.
+ * @requires module:ruleBroker
  * @requires {@link https://www.npmjs.com/package/@haystacks/constants|@haystacks/constants}
  * @author Seth Hollingsead
  * @date 2021/10/13
@@ -10,11 +11,11 @@
  */
 
 // Internal imports
-
+import ruleBroker from '../brokers/ruleBroker.js';
 // External imports
 import hayConst from '@haystacks/constants';
 
-const {sys, wrd} = hayConst;
+const {biz, msg, sys, wrd} = hayConst;
 let data = {};
 
 /**
@@ -65,9 +66,16 @@ async function setData(newData) {
   let returnData = false;
   if (newData) {
     data = {};
-    for (let dataEntityKey in newData) {
-      data[dataEntityKey] = {};
-      data[dataEntityKey] = newData[dataEntityKey];
+    // for (let dataEntityKey in newData) {
+    //   data[dataEntityKey] = {};
+    //   data[dataEntityKey] = newData[dataEntityKey];
+    // }
+    try {
+      data = await ruleBroker.processRules([newData, ''], [biz.cobjectDeepClone]);
+    } catch (err) {
+      // await loggers.consoleLog(namespacePrefix + functionName, msg.cERROR_Colon + err.message);
+      // ERROR: Unable to clone data and re-assign it to the D-data structure.
+      console.log(msg.cErrorSetDataMessage01);
     }
     returnData = true;
   } else {
