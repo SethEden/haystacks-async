@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?><CommandWorkflows>
+  <debug>
+    <controllers>
+      <warden>
+        <Workflow Name="wardenEnable" Value="changeConfigSetting debugSetting.framework.controllers.warden true"/>
+        <Workflow Name="wardenDisable" Value="changeConfigSetting debugSetting.framework.controllers.warden false"/>
+        <Workflow Name="initFrameworkSchemaEnable" Value="changeConfigSetting debugSetting.framework.controllers.warden.initFrameworkSchema true"/>
+        <Workflow Name="initFrameworkSchemaDisable" Value="changeConfigSetting debugSetting.framework.controllers.warden.initFrameworkSchema false"/>
+        <Workflow Name="wardenMergeClientBusinessRulesEnable" Value="changeConfigSetting debugSetting.framework.controllers.warden.mergeClientBusinessRules true"/>
+        <Workflow Name="wardenMergeClientBusinessRulesDisable" Value="changeConfigSetting debugSetting.framework.controllers.warden.mergeClientBusinessRules false"/>
+        <Workflow Name="wardenMergeClientCommandsEnable" Value="changeConfigSetting debugSetting.framework.controllers.warden.mergeClientCommands true"/>
+        <Workflow Name="wardenMergeClientCommandsDisable" Value="changeConfigSetting debugSetting.framework.controllers.warden.mergeClientCommands false"/>
+        <Workflow Name="wardenLoadCommandAliasesEnable" Value="changeConfigSetting debugSetting.framework.controllers.warden.loadCommandAliases true"/>
+        <Workflow Name="wardenLoadCommandAliasesDisable" Value="changeConfigSetting debugSetting.framework.controllers.warden.loadCommandAliases false"/>
+        <Workflow Name="wardenLoadCommandWorkflowsEnable" Value="changeConfigSetting debugSetting.framework.controllers.warden.loadCommandWorkflows true"/>
+        <Workflow Name="wardenLoadCommandWorkflowsDisable" Value="changeConfigSetting debugSetting.framework.controllers.warden.loadCommandWorkflows false"/>
+        <Workflow Name="wardenListAllPluginsInRegistryEnable" Value="changeConfigSetting debugSetting.framework.controllers.warden.listAllPluginsInRegistry true"/>
+        <Workflow Name="wardenListAllPluginsInRegistryDisable" Value="changeConfigSetting debugSetting.framework.controllers.warden.listAllPluginsInRegistry false"/>
+        <Workflow Name="wardenListAllPluginsInRegistryPathEnable" Value="changeConfigSetting debugSetting.framework.controllers.warden.listAllPluginsInRegistryPath true"/>
+        <Workflow Name="wardenListAllPluginsInRegistryPathDisable" Value="changeConfigSetting debugSetting.framework.controllers.warden.listAllPluginsInRegistryPath false"/>
+        <Workflow Name="wardenNumberOfPluginsInRegistryEnable" Value="changeConfigSetting debugSetting.framework.controllers.warden.numberOfPluginsInRegistry true"/>
+        <Workflow Name="wardenNumberOfPluginsInRegistryDisable" Value="changeConfigSetting debugSetting.framework.controllers.warden.numberOfPluginsInRegistry false"/>
+        <Workflow Name="wardenNumberOfPluginsInRegistryPathEnable" Value="changeConfigSetting debugSetting.framework.controllers.warden.numberOfPluginsInRegistryPath true"/>
+        <Workflow Name="wardenNumberOfPluginsInRegistryPathDisable" Value="changeConfigSetting debugSetting.framework.controllers.warden.numberOfPluginsInRegistryPath false"/>
+        <Workflow Name="wardenRegisterPluginByNameAndPathEnable" Value="changeConfigSetting debugSetting.framework.controllers.warden.registerPluginByNameAndPath true"/>
+        <Workflow Name="wardenRegisterPluginByNameAndPathDisable" Value="changeConfigSetting debugSetting.framework.controllers.warden.registerPluginByNameAndPath false"/>
+        <Workflow Name="wardenUnregisterPluginByNameEnable" Value="changeConfigSetting debugSetting.framework.controllers.warden.unregisterPluginByName true"/>
+        <Workflow Name="wardenUnregisterPluginByNameDisable" Value="changeConfigSetting debugSetting.framework.controllers.warden.unregisterPluginByName false"/>
+        <Workflow Name="wardenSyncPluginRegistryWithPathEnable" Value="changeConfigSetting debugSetting.framework.controllers.warden.syncPluginRegistryWithPath true"/>
+        <Workflow Name="wardenSyncPluginRegistryWithPathDisable" Value="changeConfigSetting debugSetting.framework.controllers.warden.syncPluginRegistryWithPath false"/>
+        <Workflow Name="wardenClearAllPluginRegistryEnable" Value="changeConfigSetting debugSetting.framework.controllers.warden.clearAllPluginRegistry true"/>
+        <Workflow Name="wardenClearAllPluginRegistryDisable" value="changeConfigSetting debugSetting.framework.controllers.warden.clearAllPluginRegistry false"/>
+        <Workflow Name="wardenWritePluginRegistryToDiskEnable" Value="changeConfigSetting debugSetting.framework.controllers.warden.writePluginRegistryToDisk true"/>
+        <Workflow Name="wardenWritePluginRegistryToDiskDisable" Value="changeConfigSetting debugSetting.framework.controllers.warden.writePluginRegistryToDisk false"/>
+        <Workflow Name="wardenLoadPluginEnable" Value="changeConfigSetting debugSetting.framework.controllers.warden.loadPlugin true"/>
+        <Workflow Name="wardenLoadPluginDisable" Value="changeConfigSetting debugSetting.framework.controllers.warden.loadPlugin false"/>
+        <Workflow Name="wardenLoadPluginsEnable" Value="changeConfigSetting debugSetting.framework.controllers.warden.loadPlugins true"/>
+        <Workflow Name="wardenLoadPluginsDisable" Value="changeConfigSetting debugSetting.framework.controllers.warden.loadPlugins false"/>
+        <Workflow Name="wardenLoadPluginsFromRegistryEnable" Value="changeConfigSetting debugSetting.framework.controllers.warden.loadPluginsFromRegistry true"/>
+        <Workflow Name="wardenLoadPluginsFromRegistryDisable" Value="changeConfigSetting debugSetting.framework.controllers.warden.loadPluginsFromRegistry false"/>
+        <Workflow Name="wardenUnloadPluginEnable" Value="changeConfigSetting debugSetting.framework.controllers.warden.unloadPlugin true"/>
+        <Workflow Name="wardenUnloadPluginDisable" Value="changeConfigSetting debugSetting.framework.controllers.warden.unloadPlugin false"/>
+        <Workflow Name="wardenUnloadPluginsEnable" Value="changeConfigSetting debugSetting.framework.controllers.warden.unloadPlugins true"/>
+        <Workflow Name="wardenUnloadPluginsDisable" Value="changeConfigSetting debugSetting.framework.controllers.warden.unloadPlugins false"/>
+        <Workflow Name="wardenUnloadAllPluginsEnable" Value="changeConfigSetting debugSetting.framework.controllers.warden.unloadAllPlugins true"/>
+        <Workflow Name="wardenUnloadAllPluginsDisable" Value="changeConfigSetting debugSetting.framework.controllers.warden.unloadAllPlugins false"/>
+        <Workflow Name="wardenLoadPluginResourceDataEnable" Value="changeConfigSetting debugSetting.framework.controllers.warden.loadPluginResourceData true"/>
+        <Workflow Name="wardenLoadPluginResourceDataDisable" Value="changeConfigSetting debugSetting.framework.controllers.warden.loadPlugnResourceData false"/>
+        <Workflow Name="executeBusinessRuleEnable" Value="changeConfigSetting debugSetting.framework.controllers.warden.executeBusinessRule true"/>
+        <Workflow Name="executeBusinessRuleDisable" Value="changeConfigSetting debugSetting.framework.controllers.warden.executeBusinessRule false"/>
+        <Workflow Name="wardenEnqueueCommandEnable" Value="changeConfigSetting debugSetting.framework.controllers.warden.enqueueCommand true"/>
+        <Workflow Name="wardenEnqueueCommandDisable" Value="changeConfigSetting debugSetting.framework.controllers.warden.enqueueCommand false"/>
+        <Workflow Name="wardenIsCommandQueueEmptyEnable" Value="changeConfigSetting debugSetting.framework.controllers.warden.isCommandQueueEmpty true"/>
+        <Workflow Name="wardenIsCommandQueueEmptyDisable" Value="changeConfigSetting debugSetting.framework.controllers.warden.isCommandQueueEmpty false"/>
+        <Workflow Name="wardenProcessCommandQueueEnable" Value="changeConfigSetting debugSetting.framework.controllers.warden.processCommandQueue true"/>
+        <Workflow Name="wardenProcessCommandQueueDisable" Value="changeConfigSetting debugSetting.framework.controllers.warden.processCommandQueue false"/>
+        <Workflow Name="wardenSetConfigurationSettingEnable" Value="changeConfigSetting debugSetting.framework.controllers.warden.setConfigurationSetting true"/>
+        <Workflow Name="wardenSetConfigurationSettingDisable" Value="changeConfigSetting debugSetting.framework.controllers.warden.setConfigurationSetting false"/>
+        <Workflow Name="wardenGetConfigurationSettingEnable" Value="changeConfigSetting debugSetting.framework.controllers.warden.getConfigurationSetting true"/>
+        <Workflow Name="wardenGetConfigurationSettingDisable" Value="changeConfigSetting debugSetting.framework.controllers.warden.getConfigurationSetting false"/>
+        <Workflow Name="wardenSleepEnable" Value="changeConfigSetting debugSetting.framework.controllers.warden.sleep true"/>
+        <Workflow Name="wardenSleepDisable" Value="changeConfigSetting debugSetting.framework.controllers.warden.sleep false"/>
+      </warden>
+    </controllers>
+  </debug>
+</CommandWorkflows>
