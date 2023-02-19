@@ -2,6 +2,8 @@
  * @file clientCommandsLibrary.js
  * @module clientCommandsLibrary
  * @description Contains all of the client defined commands as a map between function names and function calls.
+ * @requires module:applicationSystem
+ * @requires module:applicationTest
  * @requires module:clientCommands
  * @requires module:application.command.constants
  * @requires module:application.function.constants
@@ -11,6 +13,8 @@
  */
 
 // Internal imports
+import applicationSystem from './clientCommands/applicationSystem.js';
+import applicationTest from './clientCommands/applicationTests.js';
 import clientCommands from './clientCommands/clientCommands.js';
 import * as app_cmd from '../constants/application.command.constants.js';
 
@@ -28,6 +32,20 @@ import * as app_cmd from '../constants/application.command.constants.js';
 const initClientCommandsLibrary = function() {
   return {
     // Client commands
+    // ***********************************************
+    // application system commands in order
+    // ***********************************************
+    [app_cmd.capplicationHelp]: (inputData, inputMetaData) => applicationSystem.applicationHelp(inputData, inputMetaData),
+    [app_cmd.capplicationWorkflowHelp]: (inputData, inputMetaData) => applicationSystem.applicationWorkflowHelp(inputData, inputMetaData),
+
+    // ***********************************************
+    // application test commands in order
+    // ***********************************************
+    [app_cmd.cvalidateApplicationConstants]: (inputData, inputMetaData) => applicationTest.validateApplicationConstants(inputData, inputMetaData),
+    [app_cmd.cvalidateApplicationCommandAliases]: (inputData, inputMetaData) => applicationTest.validateApplicationCommandAliases(inputData, inputMetaData),
+    [app_cmd.cvalidateApplicationWorkflows]: (inputData, inputMetaData) => applicationTest.validateApplicationWorkflows(inputData, inputMetaData),
+    [app_cmd.callApplicationValidations]: (inputData, inputMetaData) => applicationTest.allApplicationValidations(inputData, inputMetaData),
+
     // ***********************************************
     // client commands in order
     // ***********************************************

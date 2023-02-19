@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?><CommandsAliases>
+  <Command Name="applicationHelp" Aliases="" Description="Displays all application commands and all plugin commands for plugins loaded by the application."/>
+  <Command Name="applicationWorkflowHelp" Aliases="" Description="Displays all application workflows and all plugin workflows for plugins loaded by the application."/>
+</CommandsAliases>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?><CommandsAliases>
+  <Command Name="validateApplicationConstants" Aliases="" Description="Validates all application constants and all plugin constants for plugins loaded by the application."/>
+  <Command Name="validateApplicationCommandAliases" Aliases="" Description="Validates all application command aliases and all plugin command aliases for plugins loaded by the application."/>
+  <Command Name="validateApplicationWorkflows" Aliases="" Description="Validates all application workflows and all plugin workflows for plugins loaded by the application."/>
+  <Command Name="allApplicationValidations" Aliases="" Description="Validates all application validations and all plugin validations for plugins loaded by the application."/>
+</CommandsAliases>
