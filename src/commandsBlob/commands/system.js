@@ -322,6 +322,8 @@ async function help(inputData, inputMetaData) {
         commandNamespaceTypesConfirmedArray.push(wrd.cApplication);
       } else if (commandNamespaceEntity.toUpperCase().trim() === wrd.cPLUGINS || commandNamespaceEntity.toUpperCase().trim() === wrd.cPLUGIN) {
         commandNamespaceTypesConfirmedArray.push(wrd.cPlugins);
+      } else if (commandNamespaceEntity === '') {
+        // Just ignore it!
       } else {
         // Not sure what the user may have entered here, but it could be some valid namespace, so just add it to the array, and assume best intent.
         // If its going to error out, then it will print an error some place else.
@@ -502,6 +504,8 @@ async function workflowHelp(inputData, inputMetaData) {
         workflowNamespaceTypesConfirmedArray.push(wrd.cApplication);
       } else if (workflowNamespaceEntity.toUpperCase().trim() === wrd.cPLUGINS || workflowNamespaceEntity.toUpperCase().trim() === wrd.cPLUGIN) {
         workflowNamespaceTypesConfirmedArray.push(wrd.cPlugins);
+      } else if (workflowNamespaceEntity === '') {
+        // Just ignore it!
       } else {
         // Not sure what the user may have entered here, but it could be some valid namespace, so just add it to the array, and assume best intent.
         // If its going to error out, then it will print an error some place else.

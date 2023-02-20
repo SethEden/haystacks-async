@@ -112,10 +112,7 @@ async function allApplicationValidations(inputData, inputMetaData) {
   await haystacks.consoleLog(namespacePrefix, functionName, msg.cinputDataIs + inputData);
   await haystacks.consoleLog(namespacePrefix, functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = [false, ''];
-  await haystacks.enqueueCommand(cmd.ccommandSequencer +
-    bas.cSpace + app_cmd.cvalidateApplicationConstants +
-    bas.cSpace + app_cmd.cvalidateApplicationCommandAliases +
-    bas.cSpace + app_cmd.cvalidateApplicationWorkflows);
+  await haystacks.enqueueCommand(cmd.crunAllValidations + bas.cSpace + wrd.cApplication + bas.cComa + wrd.cPlugins);
   await haystacks.consoleLog(namespacePrefix, functionName, msg.creturnDataIs + JSON.stringify(returnData));
   await haystacks.consoleLog(namespacePrefix, functionName, msg.cEND_Function);
   return returnData;
