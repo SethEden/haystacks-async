@@ -302,9 +302,9 @@ async function numberOfPluginsInRegistry() {
 /**
  * @function numberOfPluginsInRegistryPath
  * @description This is a wrapper function for warden.numberOfPluginsInRegistryPath.
- * Which is in-turn a wrapper function for chiefPlugin.countAllPlugnsInRegistryPath.
+ * Which is in-turn a wrapper function for chiefPlugin.countAllPluginsInRegistryPath.
  * Which is in-turn a wrapper function for pluginBroker.countPluginsInRegistryPath.
- * @return {integer} Teh count of the number of plugn sub-folders in the plugins path listed in the plugn registry data hive.
+ * @return {integer} Teh count of the number of plugin sub-folders in the plugins path listed in the plugn registry data hive.
  * @author Seth Hollingsead
  * @date 2022/09/15
  */
@@ -503,9 +503,9 @@ async function loadPlugins(pluginsPaths) {
 }
 
 /**
- * @function loadPuginsFromRegistry
+ * @function loadPluginsFromRegistry
  * @description A wrapper call to warden.loadPluginsFromRegistry function.
- * Calls various functions in the cief Plugin and pluginBroker to oad plugin metaData and data:
+ * Calls various functions in the chief Plugin and pluginBroker to oad plugin metaData and data:
  * Business rules, Commands, Workflows, Constants, Configurations, dependencies ist (dependant plugns), etc...
  * @return {boolean} True or False to indicate if all the plugins were loaded or not.
  * @author Seth Hollingsead

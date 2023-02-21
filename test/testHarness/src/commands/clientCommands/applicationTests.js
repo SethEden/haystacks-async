@@ -14,7 +14,6 @@
  */
 
 // Internal imports
-import * as app_cmd from '../../constants/application.command.constants.js';
 import * as apc from '../../constants/application.constants.js';
 // External imports
 import haystacks from '@haystacks/async';
