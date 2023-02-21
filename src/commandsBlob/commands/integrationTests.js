@@ -198,6 +198,7 @@ async function validateConstants(inputData, inputMetaData) {
       // Phase1 Constants Validation
       // BEGIN Phase 1 Constants Validation
       await loggers.consoleLog(namespacePrefix + functionName, msg.cBeginPhase1ConstantsValidation);
+      console.log(msg.cBeginPhase1ConstantsValidation);
       // First scan through each file and validate that the constants defined in the constants code file are also contained in the validation file.
       for (let key1 in validationArray) {
         let constantsPath = validationArray[key1];
@@ -211,6 +212,7 @@ async function validateConstants(inputData, inputMetaData) {
       // Phase 2 Constants Validation
       // BEGIN Phase 2 Constants Validation
       await loggers.consoleLog(namespacePrefix + functionName, msg.cBeginPhase2ConstantsValidation);
+      console.log(msg.cBeginPhase2ConstantsValidation);
       // Now verify that the values of the constants are what they are expected to be by using the constants validation data to validate.
       for (let key2 in validationArray) {
         phase2Results[key2] = await ruleBroker.processRules([key2, ''], [biz.cvalidateConstantsDataValues]);
@@ -433,6 +435,8 @@ async function validateCommandAliases(inputData, inputMetaData) {
     await loggers.consoleLog(namespacePrefix + functionName, msg.callCommandAliasesToValidateIs + JSON.stringify(allCommandAliasesToValidate));
 
     // Now do the validation from the flattened array of command aliases data.
+    // Begin command aliases validation
+    console.log(msg.cBeginCommandAliasesValidationMessage);
     for (let key1 in allCommandAliasesToValidate[0]) {
       // key1 is:
       await loggers.consoleLog(namespacePrefix + functionName, msg.ckey1Is + key1);
@@ -613,6 +617,8 @@ async function validateWorkflows(inputData, inputMetaData) {
     // allWorkflowsToValidate = await workflowBroker.getAllWorkflows(D[sys.cCommandWorkflows]);
     // allWorkflowsToValidate is:
     await loggers.consoleLog(namespacePrefix + functionName, msg.callWorkflowsToValidate + JSON.stringify(allWorkflowsToValidate));
+    // Begin workflows validation
+    console.log(msg.cBeginWorkflowsValidationMessage);
     for (let workflowKey in allWorkflowsToValidate) {
       numberOfDuplicatesFound = 0;
       let workflowName = allWorkflowsToValidate[workflowKey];
@@ -776,6 +782,8 @@ async function runAllValidations(inputData, inputMetaData) {
       await stack.push(sys.cSystemCommandLog, workflowsValidationCommandToQueue);
     }
     // Now add them to the front of the command queue in reverse order, so they will get executed next.
+    // Running all validations
+    console.log(msg.cRunningAllValidationsMessage);
     await queue.enqueueFront(sys.cCommandQueue, workflowsValidationCommandToQueue);
     await queue.enqueueFront(sys.cCommandQueue, commandAliasesValidationCommandToQueue);
     await queue.enqueueFront(sys.cCommandQueue, constantsValidationCommandToQueue);

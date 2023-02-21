@@ -26,6 +26,8 @@
             <Workflow Name="isNonZeroLengthArrayDisable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.arrayParsing.dataArrayParsing.isNonZeroLengthArray false"/>
             <Workflow Name="arrayDeepCloneEnable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.arrayParsing.dataArrayParsing.arrayDeepClone true"/>
             <Workflow Name="arrayDeepCloneDisable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.arrayParsing.dataArrayParsing.arrayDeepClone false"/>
+            <Workflow Name="objectDeepCloneEnable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.arrayParsing.dataArrayParsing.objectDeepClone true"/>
+            <Workflow Name="objectDeepCloneDisable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.arrayParsing.dataArrayParsing.objectDeepClone false"/>
             <Workflow Name="objectDeepMergeEnable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.arrayParsing.dataArrayParsing.objectDeepMerge true"/>
             <Workflow Name="objectDeepMergeDisable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.arrayParsing.dataArrayParsing.objectDeepMerge false"/>
             <Workflow Name="getNamespacedDataObjectEnable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.arrayParsing.dataArrayParsing.getNamespacedDataObject true"/>

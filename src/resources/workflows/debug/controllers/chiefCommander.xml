@@ -6,6 +6,8 @@
         <Workflow Name="chiefCommanderDisable" Value="changeConfigSetting debugSetting.framework.controllers.chiefCommander false"/>
         <Workflow Name="chiefCommanderBootStrapCommandsEnable" Value="changeConfigSetting debugSetting.framework.controllers.chiefCommander.bootStrapCommands true"/>
         <Workflow Name="chiefCommanderBootStrapCommandsDisable" Value="changeConfigSetting debugSetting.framework.controllers.chiefCommander.bootStrapCommands false"/>
+        <Workflow Name="chiefCommanderReinitializeCommandsEnable" Value="changeConfigSetting debugSetting.framework.controllers.chiefCommander.reinitializeCommands true"/>
+        <Workflow Name="chiefCommanderReinitializeCommandsDisable" Value="changeConfigSetting debugSetting.framework.controllers.chiefCommander.reinitializeCommands false"/>
         <Workflow Name="chiefCommanderAddClientCommandsEnable" Value="changeConfigSetting debugSetting.framework.controllers.chiefCommander.addClientCommands true"/>
         <Workflow Name="chiefCommanderAddClientCommandsDisable" Value="changeConfigSetting debugSetting.framework.controllers.chiefCommander.addClientCommands false"/>
         <Workflow Name="loadCommandAliasesFromPathEnable" Value="changeConfigSetting debugSetting.framework.controllers.chiefCommander.loadCommandAliasesFromPath true"/>

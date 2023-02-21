@@ -11,6 +11,8 @@
           <Workflow Name="validateCommandAliasesDisable" Value="changeConfigSetting debugSetting.framework.commandsBlob.commands.integrationTests.validateCommandAliases false"/>
           <Workflow Name="validateWorkflowsEnable" Value="changeConfigSetting debugSetting.framework.commandsBlob.commands.integrationTests.validateWorkflows true"/>
           <Workflow Name="validateWorkflowsDisable" Value="changeConfigSetting debugSetting.framework.commandsBlob.commands.integrationTests.validateWorkflows false"/>
+          <Workflow Name="runAllValidationsEnable" Value="changeConfigSetting debugSetting.framework.commandsBlob.commands.integrationTests.runAllValidations true"/>
+          <Workflow Name="runAllValidationsDisable" Value="changeConfigSetting debugSetting.framework.commandsBlob.commands.integrationTests.runAllValidations false"/>
         </integrationTests>
       </commands>
     </commandsBlob>
