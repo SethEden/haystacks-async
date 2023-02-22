@@ -1,4 +1,4 @@
-This is a playbook for the reelase process.
+This is a playbook for the release process.
 Most of the steps are already automated, its just a matter of executing them in the right order.
 Some tasks are on GitHub, and some are commits that need to be done in a certain order.
 
