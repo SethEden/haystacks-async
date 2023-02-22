@@ -1,5 +1,5 @@
 {
-  "debugFiles|debugSetting.application.testHarness.commands.clientCommands.applicationSystem": false,
+  "debugFiles|debugSetting.application.testHarness.commands.clientCommands.applicationSystem": true,
   "debugFiles|debugSetting.application.testHarness.commands.clientCommands.applicationSystem@ModuleFontStyle": "Bold|Underline",
   "debugFiles|debugSetting.application.testHarness.commands.clientCommands.applicationSystem@FunctionFontStyle": "Bold|Underline",
   "debugFiles|debugSetting.application.testHarness.commands.clientCommands.applicationSystem@MessageFontStyle": "Underline",

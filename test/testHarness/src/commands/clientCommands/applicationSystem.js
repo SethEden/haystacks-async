@@ -39,7 +39,7 @@ async function applicationHelp(inputData, inputMetaData) {
   await haystacks.consoleLog(namespacePrefix, functionName, msg.cBEGIN_Function);
   await haystacks.consoleLog(namespacePrefix, functionName, msg.cinputDataIs + inputData);
   await haystacks.consoleLog(namespacePrefix, functionName, msg.cinputMetaDataIs + inputMetaData);
-  let returnData = [false, ''];
+  let returnData = [true, ''];
   await haystacks.enqueueCommand(wrd.chelp + bas.cSpace + wrd.cApplication + bas.cComa + wrd.cPlugins);
   await haystacks.consoleLog(namespacePrefix, functionName, msg.creturnDataIs + JSON.stringify(returnData));
   await haystacks.consoleLog(namespacePrefix, functionName, msg.cEND_Function);
@@ -62,7 +62,7 @@ async function applicationWorkflowHelp(inputData, inputMetaData) {
   await haystacks.consoleLog(namespacePrefix, functionName, msg.cBEGIN_Function);
   await haystacks.consoleLog(namespacePrefix, functionName, msg.cinputDataIs + inputData);
   await haystacks.consoleLog(namespacePrefix, functionName, msg.cinputMetaDataIs + inputMetaData);
-  let returnData = [false, ''];
+  let returnData = [true, ''];
   await haystacks.enqueueCommand(cmd.cworkflowHelp + bas.cSpace + wrd.cApplication + bas.cComa + wrd.cPlugins);
   await haystacks.consoleLog(namespacePrefix, functionName, msg.creturnDataIs + JSON.stringify(returnData));
   await haystacks.consoleLog(namespacePrefix, functionName, msg.cEND_Function);

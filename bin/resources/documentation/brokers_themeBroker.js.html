@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: brokers/themeBroker.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: brokers/themeBroker.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * @file themeBroker.js
+ * @module themeBroker
+ * @description Contains all the functions necessary to load and unload debugging themes.
+ * @requires module:ruleBroker
+ * @requires module:chiefConfiguration
+ * @requires module:chiefData
+ * @requires module:configurator
+ * @requires module:loggers
+ * @requires module:data
+ * @requires {@link https://www.npmjs.com/package/@haystacks/constants|@haystacks/constants}
+ * @requires {@link https://www.npmjs.com/package/path|path}
+ * @author Seth Hollingsead
+ * @date 2022/06/10
+ * @copyright Copyright © 2022-… by Seth Hollingsead. All rights reserved
+ */
+
+// Internal imports
+import ruleBroker from './ruleBroker.js';
+import chiefConfiguration from '../controllers/chiefConfiguration.js';
+import chiefData from '../controllers/chiefData.js';
+import configurator from '../executrix/configurator.js';
+import loggers from '../executrix/loggers.js';
+import D from '../structures/data.js';
+// import D from '../structures/data.js';
+// External imports
+import hayConst from '@haystacks/constants';
+import path from 'path';
+
+const {bas, biz, cfg, msg, sys, wrd} = hayConst;
+const baseFileName = path.basename(import.meta.url, path.extname(import.meta.url));
+// brokers.themeBroker.
+const namespacePrefix = wrd.cbrokers + bas.cDot + baseFileName + bas.cDot;
+
+/**
+ * @function initThemePathData
+ * @description Scans the themes folder and determines all of the available themes,
+ * their paths and saves that data to the D-data structure.
+ * @return {object} The JSON object that contains all of the theme names and theme paths.
+ * @author Seth Hollingsead
+ * @date 2022/10/25
+ */
+async function initThemePathData() {
+  let functionName = initThemePathData.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  let themesNames = await getNamedThemes();
+  // themesNames is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cthemesNamesIs + JSON.stringify(themesNames));
+  let themesData = [];
+  D[wrd.cThemes] = {};
+  D[wrd.cThemes][wrd.cFramework] = [];
+  let applicationThemes = D[wrd.cThemes][wrd.cFramework];
+  for (const key in themesNames) {
+    let themeName = themesNames[key];
+    // themeName is:
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cthemeNameIs + themeName);
+    let themePath = await getNamedThemePath(themeName);
+    // themePath is:
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cthemePathIs + themePath);
+    applicationThemes.push({Name: themeName, Path: themePath});
+    // applicationThemes is:
+    await loggers.consoleLog(namespacePrefix + functionName, msg.capplicationThemesIs + JSON.stringify(applicationThemes));
+  }
+  themesData = D[wrd.cThemes];
+  // themesData is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cthemesDataIs + JSON.stringify(themesData))
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return themesData;
+}
+
+/**
+ * @function addThemeData
+ * @description Merges application and plugin defined theme data paths with the system defined theme paths.
+ * @param {object} themeData A JSON object that contains the theme data for either the application or the current plugin.
+ * @param {string} contextName The context name where the theme data is coming from.
+ * Ex: Application, Plugin:&lt;PluginName>
+ * @return {boolean} True or False to indicate if the merge was successful or not.
+ * @author Seth Hollingsead
+ * @date 2022/10/25
+ */
+async function addThemeData(themeData, contextName) {
+  let functionName = addThemeData.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  // themeData is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cthemeDataIs + JSON.stringify(themeData));
+  // contextName is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.ccontextNameIs + contextName);
+  let returnData = false;
+  let pluginName = '';
+  try {
+    if (contextName.toUpperCase().includes(wrd.cPLUGIN) === true &amp;&amp; contextName.includes(bas.cColon) === true) {
+      let contextNameArray = contextName.split(bas.cColon);
+      pluginName = contextNameArray[1];
+      if (D[sys.cThemes][wrd.cPlugins] === undefined) {
+        D[sys.cThemes][wrd.cPlugins] = {};
+      }
+      D[sys.cThemes][wrd.cPlugins][pluginName] = {};
+      D[sys.cThemes][wrd.cPlugins][pluginName] = themeData;
+    } else {
+      D[sys.cThemes][wrd.cApplication] = themeData;
+    }
+    returnData = true;
+  } catch (err) {
+    // ERROR: Failure to merge the theme data for:
+    console.log(msg.cErrorAddThemeDataMessage01 + contextName);
+    console.log(msg.cERROR_Colon + err);
+  }
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
+/**
+ * @function generateThemeDataFromPath
+ * @description Takes a theme root path and scans the sub-folders that it contains and converts those to theme names,
+ * then builds a JSON data object with those names and also generates paths for each one based on the input themes root path.
+ * @param {string} themesRootPath The root path that should be used when building the JSON object with the themes meta-data.
+ * @return {object} A JSON object that contains all of the theme names and theme paths from the input theme root path.
+ * @author Seth Hollingsead
+ * @date 2022/10/26
+ */
+async function generateThemeDataFromPath(themesRootPath) {
+  let functionName = generateThemeDataFromPath.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  // themesRootPath is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cthemesRootPathIs + themesRootPath);
+  let themesNames = await getNamedThemesFromRootPath(themesRootPath);
+  // themesNames is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cthemesNamesIs + JSON.stringify(themesNames));
+  let themesData = [];
+  for (const key in themesNames) {
+    let themeName = themesNames[key];
+    // themeName is:
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cthemeNameIs + themeName);
+    let themePath = await getNamedThemePathFromRootPath(themeName, themesRootPath);
+    // themePath is:
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cthemePathIs + themePath);
+    if (themePath) {
+      themesData.push({Name: themeName, Path: themePath});
+    }
+    // themesData is:
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cthemesDataIs + JSON.stringify(themesData))
+  }
+  // themesData is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cthemesDataIs + JSON.stringify(themesData))
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return themesData;
+}
+
+/**
+ * @function getNamedThemes
+ * @description Gets the names of the themes installed in the resources/themes folder.
+ * @return {array&lt;string>} The list of names for the themes that are currently installed.
+ * @author Seth Hollingsead
+ * @date 2022/06/10
+ */
+async function getNamedThemes() {
+  let functionName = getNamedThemes.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  let themesNames = [];
+  let frameworkThemesPath = await configurator.getConfigurationSetting(wrd.csystem, cfg.cframeworkThemesPath);
+  frameworkThemesPath = path.resolve(frameworkThemesPath);
+  themesNames = await ruleBroker.processRules([frameworkThemesPath, ''], [biz.cgetDirectoryList]);
+  // themesNames is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cthemesNamesIs + JSON.stringify(themesNames));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return themesNames;
+}
+
+/**
+ * @function getNamedThemesFromRootPath
+ * @description Gets the names of the themes installed in the specified themes root path folder.
+ * @param {string} themesRootPath The root path that should be used when searching for a list of themes folders.
+ * @return {array&lt;string>} The list of names for the themes that are currently installed.
+ * @author Seth Hollingsead
+ * @date 2022/10/26
+ */
+async function getNamedThemesFromRootPath(themesRootPath) {
+  let functionName = getNamedThemesFromRootPath.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  // themesRootPath is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cthemesRootPathIs + themesRootPath);
+  let themesNames = [];
+  let frameorkThemesPath = path.resolve(themesRootPath);
+  themesNames = await ruleBroker.processRules([frameorkThemesPath, ''], [biz.cgetDirectoryList]);
+  // themesNames is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cthemesNamesIs + JSON.stringify(themesNames));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return themesNames;
+}
+
+/**
+ * @function getNamedThemePath
+ * @description Takes a named theme and validates that the theme name exists, then returns the path to that theme.
+ * @param {string} themeName The name of the theme that a path should be returned for.
+ * @return {string|boolean} The path of the theme, if it exists, or false if it does not.
+ * @author Seth Hollingsead
+ * @date 2022/06/13
+ */
+async function getNamedThemePath(themeName) {
+  let functionName = getNamedThemePath.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  // themeName is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cthemeNameIs + themeName);
+  let themesNames = [];
+  themesNames = await getNamedThemes();
+  // themesNames is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cthemesNamesIs + JSON.stringify(themesNames))
+  let themePath = false;
+  let frameworkThemesPath = await configurator.getConfigurationSetting(wrd.csystem, cfg.cframeworkThemesPath);
+  frameworkThemesPath = path.resolve(frameworkThemesPath);
+  for (const element of themesNames) {
+    if (element.toUpperCase() === themeName.toUpperCase()) {
+      themePath = frameworkThemesPath + bas.cDoubleForwardSlash + element + bas.cDoubleForwardSlash;
+      themePath = path.resolve(themePath);
+      break;
+    }
+  } // End-for (const element of themesNames)
+  // themePath is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cthemePathIs + themePath);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return themePath;
+}
+
+/**
+ * @function getNamedThemePathFromRootPath
+ * @descriptino Takes a named theme and theme root path and validates that the theme name exists,
+ * then returns the fully qualified path to that theme.
+ * @param {string} themeName The name of the theme that a path should be returned for.
+ * @param {string} themesRootPath The root path that should be used when searching for the named theme.
+ * @return {string|boolean} The path of the theme relative to the input root path it if exists, or false if it does not.
+ * @author Seth Hollingsead
+ * @date 2022/10/26
+ */
+async function getNamedThemePathFromRootPath(themeName, themesRootPath) {
+  let functionName = getNamedThemePathFromRootPath.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  // themeName is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cthemeNameIs + themeName);
+  // themesRootPath is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cthemesRootPathIs + themesRootPath);
+  let themePath = false;
+  let themesNames = [];
+  themesNames = await getNamedThemesFromRootPath(themesRootPath);
+  // themesNames is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cthemesNamesIs + JSON.stringify(themesNames));
+  let frameworkThemesPath = path.resolve(frameworkThemesPath);
+  for (const element of themesNames) {
+    if (element.toUpperCase() === themeName.toUpperCase()) {
+      themePath = frameworkThemesPath + bas.cDoubleForwardSlash + element + bas.cDoubleForwardSlash;
+      themePath = path.resolve(themePath);
+      break;
+    }
+  }
+  // themePath is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cthemePathIs + themePath);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return themePath;
+}
+
+/**
+ * @function loadTheme
+ * @description Takes a theme path and loads all the theme data debug configuration settings for that theme.
+ * @param {string} themePath The fully qualified path to the theme debug configuration settings.
+ * @return {object} All of the debug configuration data for a specified theme path.
+ * @author Seth Hollingsead
+ * @date 2022/06/13
+ */
+async function loadTheme(themePath) {
+  let functionName = loadTheme.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  // themePath is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cthemePathIs + themePath);
+  let themeData = {};
+  await chiefData.determineThemeDebugConfigFilesToLoad(sys.cthemeConfigPath);
+  themeData = await chiefData.setupAllJsonConfigData(sys.cthemeConfigPath, wrd.cconfiguration);
+  // themeData is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cthemeDataIs + JSON.stringify(themeData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return themeData;
+}
+
+/**
+ * @function applyTheme
+ * @description Takes theme data and applies it to the currently loaded
+ * debug configuration data set in the D-Data Structure configuration.debugSettings data hive.
+ * @param {object} themeData All the theme debug configuration settings data that control the debug log theme colors.
+ * @return {boolean} True or False to indicate if the theme data was applied successfully or not.
+ * @author Seth Hollingsead
+ * @date 2022/06/14
+ */
+async function applyTheme(themeData) {
+  let functionName = applyTheme.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  // themeData is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cthemeDataIs + JSON.stringify(themeData));
+  let returnData = false;
+  returnData = await chiefConfiguration.parseLoadedConfigurationData(themeData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
+export default {
+  initThemePathData,
+  addThemeData,
+  generateThemeDataFromPath,
+  getNamedThemes,
+  getNamedThemesFromRootPath,
+  getNamedThemePath,
+  getNamedThemePathFromRootPath,
+  loadTheme,
+  applyTheme
+};
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-advanced.html">advanced</a></li><li><a href="module-allConstantsValidationMetadata.html">allConstantsValidationMetadata</a></li><li><a href="module-auxiliary.html">auxiliary</a></li><li><a href="module-auxiliaryArrayParsing.html">auxiliaryArrayParsing</a></li><li><a href="module-auxiliaryStringParsing.html">auxiliaryStringParsing</a></li><li><a href="module-characterArrayParsing.html">characterArrayParsing</a></li><li><a href="module-characterGeneration.html">characterGeneration</a></li><li><a href="module-characterStringParsing.html">characterStringParsing</a></li><li><a href="module-chiefCommander.html">chiefCommander</a></li><li><a href="module-chiefConfiguration.html">chiefConfiguration</a></li><li><a href="module-chiefData.html">chiefData</a></li><li><a href="module-chiefPlugin.html">chiefPlugin</a></li><li><a href="module-chiefWorkflow.html">chiefWorkflow</a></li><li><a href="module-colorizer.html">colorizer</a></li><li><a href="module-commandArrayParsing.html">commandArrayParsing</a></li><li><a href="module-commandBroker.html">commandBroker</a></li><li><a href="module-commandsLibrary.html">commandsLibrary</a></li><li><a href="module-commandStringParsing.html">commandStringParsing</a></li><li><a href="module-configuration.html">configuration</a></li><li><a href="module-configurator.html">configurator</a></li><li><a href="module-constant.html">constant</a></li><li><a href="module-constantArrayParsing.html">constantArrayParsing</a></li><li><a href="module-constantStringParsing.html">constantStringParsing</a></li><li><a href="module-data.html">data</a></li><li><a href="module-dataArrayParsing.html">dataArrayParsing</a></li><li><a href="module-dataBroker.html">dataBroker</a></li><li><a href="module-dataDirectorate.html">dataDirectorate</a></li><li><a href="module-dataStringParsing.html">dataStringParsing</a></li><li><a href="module-fileOperations.html">fileOperations</a></li><li><a href="module-fileStringParsing.html">fileStringParsing</a></li><li><a href="module-integrationTests.html">integrationTests</a></li><li><a href="module-lexicalAnalyzer.html">lexicalAnalyzer</a></li><li><a href="module-loggers.html">loggers</a></li><li><a href="module-main.html">main</a></li><li><a href="module-mathOperations.html">mathOperations</a></li><li><a href="module-pathArrayParsing.html">pathArrayParsing</a></li><li><a href="module-performanceMetric.html">performanceMetric</a></li><li><a href="module-pluginBroker.html">pluginBroker</a></li><li><a href="module-plugins.html">plugins</a></li><li><a href="module-promptOperations.html">promptOperations</a></li><li><a href="module-queue.html">queue</a></li><li><a href="module-ruleBroker.html">ruleBroker</a></li><li><a href="module-ruleParsing.html">ruleParsing</a></li><li><a href="module-rulesLibrary.html">rulesLibrary</a></li><li><a href="module-stack.html">stack</a></li><li><a href="module-stringGeneration.html">stringGeneration</a></li><li><a href="module-stringParsingUtilities.html">stringParsingUtilities</a></li><li><a href="module-system.html">system</a></li><li><a href="module-themeBroker.html">themeBroker</a></li><li><a href="module-timeComputation.html">timeComputation</a></li><li><a href="module-warden.html">warden</a></li><li><a href="module-wordArrayParsing.html">wordArrayParsing</a></li><li><a href="module-wordStringParsing.html">wordStringParsing</a></li><li><a href="module-workflowBroker.html">workflowBroker</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Wed Oct 26 2022 17:51:53 GMT-0500 (Central Daylight Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

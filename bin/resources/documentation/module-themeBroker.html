@@ -1,0 +1,1647 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Module: themeBroker</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Module: themeBroker</h1>
+
+    
+
+
+
+
+<section>
+
+<header>
+    
+        
+            
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+            <div class="description"><p>Contains all the functions necessary to load and unload debugging themes.</p></div>
+        
+
+        
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-author">Author:</dt>
+    <dd class="tag-author">
+        <ul>
+            <li>Seth Hollingsead</li>
+        </ul>
+    </dd>
+    
+
+    
+    <dt class="tag-copyright">Copyright:</dt>
+    <dd class="tag-copyright"><ul class="dummy"><li>Copyright © 2022-… by Seth Hollingsead. All rights reserved</li></ul></dd>
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="brokers_themeBroker.js.html">brokers/themeBroker.js</a>, <a href="brokers_themeBroker.js.html#line1">line 1</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+    
+    </div>
+
+    
+
+    
+        <h3 class="subsection-title">Requires</h3>
+
+        <ul>
+            <li><a href="module-ruleBroker.html">module:ruleBroker</a></li>
+        
+            <li><a href="module-chiefConfiguration.html">module:chiefConfiguration</a></li>
+        
+            <li><a href="module-chiefData.html">module:chiefData</a></li>
+        
+            <li><a href="module-configurator.html">module:configurator</a></li>
+        
+            <li><a href="module-loggers.html">module:loggers</a></li>
+        
+            <li><a href="module-data.html">module:data</a></li>
+        
+            <li><a href="https://www.npmjs.com/package/@haystacks/constants">@haystacks/constants</a></li>
+        
+            <li><a href="https://www.npmjs.com/package/path">path</a></li>
+        </ul>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~addThemeData"><span class="type-signature">(inner) </span>addThemeData<span class="signature">(themeData, contextName)</span><span class="type-signature"> &rarr; {boolean}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Merges application and plugin defined theme data paths with the system defined theme paths.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>themeData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>A JSON object that contains the theme data for either the application or the current plugin.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>contextName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The context name where the theme data is coming from.
+Ex: Application, Plugin:<PluginName></p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-author">Author:</dt>
+    <dd class="tag-author">
+        <ul>
+            <li>Seth Hollingsead</li>
+        </ul>
+    </dd>
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="brokers_themeBroker.js.html">brokers/themeBroker.js</a>, <a href="brokers_themeBroker.js.html#line71">line 71</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>True or False to indicate if the merge was successful or not.</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">boolean</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~applyTheme"><span class="type-signature">(inner) </span>applyTheme<span class="signature">(themeData)</span><span class="type-signature"> &rarr; {boolean}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Takes theme data and applies it to the currently loaded
+debug configuration data set in the D-Data Structure configuration.debugSettings data hive.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>themeData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>All the theme debug configuration settings data that control the debug log theme colors.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-author">Author:</dt>
+    <dd class="tag-author">
+        <ul>
+            <li>Seth Hollingsead</li>
+        </ul>
+    </dd>
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="brokers_themeBroker.js.html">brokers/themeBroker.js</a>, <a href="brokers_themeBroker.js.html#line283">line 283</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>True or False to indicate if the theme data was applied successfully or not.</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">boolean</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~generateThemeDataFromPath"><span class="type-signature">(inner) </span>generateThemeDataFromPath<span class="signature">(themesRootPath)</span><span class="type-signature"> &rarr; {object}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Takes a theme root path and scans the sub-folders that it contains and converts those to theme names,
+then builds a JSON data object with those names and also generates paths for each one based on the input themes root path.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>themesRootPath</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The root path that should be used when building the JSON object with the themes meta-data.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-author">Author:</dt>
+    <dd class="tag-author">
+        <ul>
+            <li>Seth Hollingsead</li>
+        </ul>
+    </dd>
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="brokers_themeBroker.js.html">brokers/themeBroker.js</a>, <a href="brokers_themeBroker.js.html#line113">line 113</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>A JSON object that contains all of the theme names and theme paths from the input theme root path.</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">object</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~getNamedThemePath"><span class="type-signature">(inner) </span>getNamedThemePath<span class="signature">(themeName)</span><span class="type-signature"> &rarr; {string|boolean}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Takes a named theme and validates that the theme name exists, then returns the path to that theme.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>themeName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The name of the theme that a path should be returned for.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-author">Author:</dt>
+    <dd class="tag-author">
+        <ul>
+            <li>Seth Hollingsead</li>
+        </ul>
+    </dd>
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="brokers_themeBroker.js.html">brokers/themeBroker.js</a>, <a href="brokers_themeBroker.js.html#line192">line 192</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>The path of the theme, if it exists, or false if it does not.</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">string</span>
+|
+
+<span class="param-type">boolean</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~getNamedThemePathFromRootPath"><span class="type-signature">(inner) </span>getNamedThemePathFromRootPath<span class="signature">(themeName, themesRootPath)</span><span class="type-signature"> &rarr; {string|boolean}</span></h4>
+    
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>themeName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The name of the theme that a path should be returned for.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>themesRootPath</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The root path that should be used when searching for the named theme.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-author">Author:</dt>
+    <dd class="tag-author">
+        <ul>
+            <li>Seth Hollingsead</li>
+        </ul>
+    </dd>
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="brokers_themeBroker.js.html">brokers/themeBroker.js</a>, <a href="brokers_themeBroker.js.html#line225">line 225</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>The path of the theme relative to the input root path it if exists, or false if it does not.</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">string</span>
+|
+
+<span class="param-type">boolean</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~getNamedThemes"><span class="type-signature">(inner) </span>getNamedThemes<span class="signature">()</span><span class="type-signature"> &rarr; {array.&lt;string>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Gets the names of the themes installed in the resources/themes folder.</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-author">Author:</dt>
+    <dd class="tag-author">
+        <ul>
+            <li>Seth Hollingsead</li>
+        </ul>
+    </dd>
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="brokers_themeBroker.js.html">brokers/themeBroker.js</a>, <a href="brokers_themeBroker.js.html#line150">line 150</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>The list of names for the themes that are currently installed.</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">array.&lt;string></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~getNamedThemesFromRootPath"><span class="type-signature">(inner) </span>getNamedThemesFromRootPath<span class="signature">(themesRootPath)</span><span class="type-signature"> &rarr; {array.&lt;string>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Gets the names of the themes installed in the specified themes root path folder.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>themesRootPath</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The root path that should be used when searching for a list of themes folders.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-author">Author:</dt>
+    <dd class="tag-author">
+        <ul>
+            <li>Seth Hollingsead</li>
+        </ul>
+    </dd>
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="brokers_themeBroker.js.html">brokers/themeBroker.js</a>, <a href="brokers_themeBroker.js.html#line170">line 170</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>The list of names for the themes that are currently installed.</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">array.&lt;string></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~initThemePathData"><span class="type-signature">(inner) </span>initThemePathData<span class="signature">()</span><span class="type-signature"> &rarr; {object}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Scans the themes folder and determines all of the available themes,
+their paths and saves that data to the D-data structure.</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-author">Author:</dt>
+    <dd class="tag-author">
+        <ul>
+            <li>Seth Hollingsead</li>
+        </ul>
+    </dd>
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="brokers_themeBroker.js.html">brokers/themeBroker.js</a>, <a href="brokers_themeBroker.js.html#line35">line 35</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>The JSON object that contains all of the theme names and theme paths.</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">object</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~loadTheme"><span class="type-signature">(inner) </span>loadTheme<span class="signature">(themePath)</span><span class="type-signature"> &rarr; {object}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Takes a theme path and loads all the theme data debug configuration settings for that theme.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>themePath</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The fully qualified path to the theme debug configuration settings.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-author">Author:</dt>
+    <dd class="tag-author">
+        <ul>
+            <li>Seth Hollingsead</li>
+        </ul>
+    </dd>
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="brokers_themeBroker.js.html">brokers/themeBroker.js</a>, <a href="brokers_themeBroker.js.html#line261">line 261</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>All of the debug configuration data for a specified theme path.</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">object</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-advanced.html">advanced</a></li><li><a href="module-allConstantsValidationMetadata.html">allConstantsValidationMetadata</a></li><li><a href="module-auxiliary.html">auxiliary</a></li><li><a href="module-auxiliaryArrayParsing.html">auxiliaryArrayParsing</a></li><li><a href="module-auxiliaryStringParsing.html">auxiliaryStringParsing</a></li><li><a href="module-characterArrayParsing.html">characterArrayParsing</a></li><li><a href="module-characterGeneration.html">characterGeneration</a></li><li><a href="module-characterStringParsing.html">characterStringParsing</a></li><li><a href="module-chiefCommander.html">chiefCommander</a></li><li><a href="module-chiefConfiguration.html">chiefConfiguration</a></li><li><a href="module-chiefData.html">chiefData</a></li><li><a href="module-chiefPlugin.html">chiefPlugin</a></li><li><a href="module-chiefWorkflow.html">chiefWorkflow</a></li><li><a href="module-colorizer.html">colorizer</a></li><li><a href="module-commandArrayParsing.html">commandArrayParsing</a></li><li><a href="module-commandBroker.html">commandBroker</a></li><li><a href="module-commandsLibrary.html">commandsLibrary</a></li><li><a href="module-commandStringParsing.html">commandStringParsing</a></li><li><a href="module-configuration.html">configuration</a></li><li><a href="module-configurator.html">configurator</a></li><li><a href="module-constant.html">constant</a></li><li><a href="module-constantArrayParsing.html">constantArrayParsing</a></li><li><a href="module-constantStringParsing.html">constantStringParsing</a></li><li><a href="module-data.html">data</a></li><li><a href="module-dataArrayParsing.html">dataArrayParsing</a></li><li><a href="module-dataBroker.html">dataBroker</a></li><li><a href="module-dataDirectorate.html">dataDirectorate</a></li><li><a href="module-dataStringParsing.html">dataStringParsing</a></li><li><a href="module-fileOperations.html">fileOperations</a></li><li><a href="module-fileStringParsing.html">fileStringParsing</a></li><li><a href="module-integrationTests.html">integrationTests</a></li><li><a href="module-lexicalAnalyzer.html">lexicalAnalyzer</a></li><li><a href="module-loggers.html">loggers</a></li><li><a href="module-main.html">main</a></li><li><a href="module-mathOperations.html">mathOperations</a></li><li><a href="module-pathArrayParsing.html">pathArrayParsing</a></li><li><a href="module-performanceMetric.html">performanceMetric</a></li><li><a href="module-pluginBroker.html">pluginBroker</a></li><li><a href="module-plugins.html">plugins</a></li><li><a href="module-promptOperations.html">promptOperations</a></li><li><a href="module-queue.html">queue</a></li><li><a href="module-ruleBroker.html">ruleBroker</a></li><li><a href="module-ruleParsing.html">ruleParsing</a></li><li><a href="module-rulesLibrary.html">rulesLibrary</a></li><li><a href="module-stack.html">stack</a></li><li><a href="module-stringGeneration.html">stringGeneration</a></li><li><a href="module-stringParsingUtilities.html">stringParsingUtilities</a></li><li><a href="module-system.html">system</a></li><li><a href="module-themeBroker.html">themeBroker</a></li><li><a href="module-timeComputation.html">timeComputation</a></li><li><a href="module-warden.html">warden</a></li><li><a href="module-wordArrayParsing.html">wordArrayParsing</a></li><li><a href="module-wordStringParsing.html">wordStringParsing</a></li><li><a href="module-workflowBroker.html">workflowBroker</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Wed Oct 26 2022 17:51:53 GMT-0500 (Central Daylight Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

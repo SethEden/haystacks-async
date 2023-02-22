@@ -1,0 +1,1894 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Module: dataStringParsing</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Module: dataStringParsing</h1>
+
+    
+
+
+
+
+<section>
+
+<header>
+    
+        
+            
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+            <div class="description"><p>Contains all system defined business rules for parsing strings as related to data.</p></div>
+        
+
+        
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-author">Author:</dt>
+    <dd class="tag-author">
+        <ul>
+            <li>Seth Hollingsead</li>
+        </ul>
+    </dd>
+    
+
+    
+    <dt class="tag-copyright">Copyright:</dt>
+    <dd class="tag-copyright"><ul class="dummy"><li>Copyright © 2022-… by Seth Hollingsead. All rights reserved</li></ul></dd>
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="businessRules_rules_stringParsing_dataStringParsing.js.html">businessRules/rules/stringParsing/dataStringParsing.js</a>, <a href="businessRules_rules_stringParsing_dataStringParsing.js.html#line1">line 1</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+    
+    </div>
+
+    
+
+    
+        <h3 class="subsection-title">Requires</h3>
+
+        <ul>
+            <li><a href="module-ruleParsing.html">module:ruleParsing</a></li>
+        
+            <li><a href="module-loggers.html">module:loggers</a></li>
+        
+            <li><a href="https://www.npmjs.com/package/@haystacks/constants">@haystacks/constants</a></li>
+        
+            <li><a href="https://www.npmjs.com/package/path">path</a></li>
+        </ul>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~getAttributeName"><span class="type-signature">(inner) </span>getAttributeName<span class="signature">(inputData, inputMetaData)</span><span class="type-signature"> &rarr; {string}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Takes a string representation of a JSON attribute and gets the name (left hand assignment key).</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>inputData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Teh string representation of the JSON attribute that should be parsed.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>inputMetaData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Not used for this business rule.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-author">Author:</dt>
+    <dd class="tag-author">
+        <ul>
+            <li>Seth Hollingsead</li>
+        </ul>
+    </dd>
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="businessRules_rules_stringParsing_dataStringParsing.js.html">businessRules/rules/stringParsing/dataStringParsing.js</a>, <a href="businessRules_rules_stringParsing_dataStringParsing.js.html#line26">line 26</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>The name of the attribute.</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">string</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~getAttributeValue"><span class="type-signature">(inner) </span>getAttributeValue<span class="signature">(inputData, inputMetaData)</span><span class="type-signature"> &rarr; {string}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Takes a string representation of a JSON attribute and gets the value (Right hand assignment value).</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>inputData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The string representation of the JSON attribute that should be parsed.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>inputMetaData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Not used for this business rule.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-author">Author:</dt>
+    <dd class="tag-author">
+        <ul>
+            <li>Seth Hollingsead</li>
+        </ul>
+    </dd>
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="businessRules_rules_stringParsing_dataStringParsing.js.html">businessRules/rules/stringParsing/dataStringParsing.js</a>, <a href="businessRules_rules_stringParsing_dataStringParsing.js.html#line55">line 55</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>The value of the attribute.</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">string</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~getDataCategoryDetailNameFromDataContextName"><span class="type-signature">(inner) </span>getDataCategoryDetailNameFromDataContextName<span class="signature">(inputData, inputMetaData)</span><span class="type-signature"> &rarr; {string}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Gets the data category detail name from the context name, E.G. Input: Page_ProjectList, data category is 'ProjectList'.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>inputData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The data context name, which should also contain the
+data category and data category detail name separated by an underscore.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>inputMetaData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Not used for this business rule.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-author">Author:</dt>
+    <dd class="tag-author">
+        <ul>
+            <li>Seth Hollingsead</li>
+        </ul>
+    </dd>
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="businessRules_rules_stringParsing_dataStringParsing.js.html">businessRules/rules/stringParsing/dataStringParsing.js</a>, <a href="businessRules_rules_stringParsing_dataStringParsing.js.html#line136">line 136</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>The data category detail name, such as ProjectDetails or ProjectList.</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">string</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~getDataCategoryFromDataContextName"><span class="type-signature">(inner) </span>getDataCategoryFromDataContextName<span class="signature">(inputData, inputMetaData)</span><span class="type-signature"> &rarr; {string}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Gets the data category from the context name, E.g. Input: Page_ProjectList, data category is 'Page'.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>inputData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The data context name, which should also contain the data category separated by underscore.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>inputMetaData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Not used for this business rule.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-author">Author:</dt>
+    <dd class="tag-author">
+        <ul>
+            <li>Seth Hollingsead</li>
+        </ul>
+    </dd>
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="businessRules_rules_stringParsing_dataStringParsing.js.html">businessRules/rules/stringParsing/dataStringParsing.js</a>, <a href="businessRules_rules_stringParsing_dataStringParsing.js.html#line110">line 110</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>The data category, such as Page or Test.</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">string</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~getKeywordNameFromDataContextName"><span class="type-signature">(inner) </span>getKeywordNameFromDataContextName<span class="signature">(inputData, inputMetaData)</span><span class="type-signature"> &rarr; {string}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Gets the keyword name from the context name, E.g. Input: Keywords_ProjectDetails_DeleteEntireProject, keyword is: 'DeleteEntireProject'.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>inputData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The data context name, which should also contain the
+data category and data category detail name and keyword name separated by an underscore.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>inputMetaData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Not used for this business rule.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-author">Author:</dt>
+    <dd class="tag-author">
+        <ul>
+            <li>Seth Hollingsead</li>
+        </ul>
+    </dd>
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="businessRules_rules_stringParsing_dataStringParsing.js.html">businessRules/rules/stringParsing/dataStringParsing.js</a>, <a href="businessRules_rules_stringParsing_dataStringParsing.js.html#line163">line 163</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>The keyword name, such as DeleteEntireProject or EditProjectInfoClick.</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">string</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~getUserNameFromEmail"><span class="type-signature">(inner) </span>getUserNameFromEmail<span class="signature">(inputData, inputMetaData)</span><span class="type-signature"> &rarr; {string}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Converts an email input into a username.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>inputData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>A string that contains an email address value.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>inputMetaData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Not used for this business rule.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-author">Author:</dt>
+    <dd class="tag-author">
+        <ul>
+            <li>Seth Hollingsead</li>
+        </ul>
+    </dd>
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="businessRules_rules_stringParsing_dataStringParsing.js.html">businessRules/rules/stringParsing/dataStringParsing.js</a>, <a href="businessRules_rules_stringParsing_dataStringParsing.js.html#line276">line 276</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>A string value of the sub-string from before the '@' symbol.</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">string</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~getValueFromAssignmentOperationString"><span class="type-signature">(inner) </span>getValueFromAssignmentOperationString<span class="signature">(inputData, inputMetaData)</span><span class="type-signature"> &rarr; {string}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Parses the input string and finds the value on the right side of the '=' sign.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>inputData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The string that should be parsed for the value on the right side of the assignment operator.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>inputMetaData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Not used for this business rule.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-author">Author:</dt>
+    <dd class="tag-author">
+        <ul>
+            <li>Seth Hollingsead</li>
+        </ul>
+    </dd>
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="businessRules_rules_stringParsing_dataStringParsing.js.html">businessRules/rules/stringParsing/dataStringParsing.js</a>, <a href="businessRules_rules_stringParsing_dataStringParsing.js.html#line84">line 84</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>The string value of whatever is on the right side of the assignment operator.</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">string</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~loadDataFile"><span class="type-signature">(inner) </span>loadDataFile<span class="signature">(inputData, inputMetaData)</span><span class="type-signature"> &rarr; {boolean}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Loads data from a specified file and stores it in the specified data hive path.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>inputData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The full path and file name for the file that should be loaded into memory.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>inputMetaData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The data hive path where the data should be stored once it is loaded.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-author">Author:</dt>
+    <dd class="tag-author">
+        <ul>
+            <li>Seth Hollingsead</li>
+        </ul>
+    </dd>
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="businessRules_rules_stringParsing_dataStringParsing.js.html">businessRules/rules/stringParsing/dataStringParsing.js</a>, <a href="businessRules_rules_stringParsing_dataStringParsing.js.html#line190">line 190</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>The data that was loaded, because sometimes a client command might need to use this to load data.</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">boolean</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~saveDataFile"><span class="type-signature">(inner) </span>saveDataFile<span class="signature">(inputData, inputMetaData)</span><span class="type-signature"> &rarr; {boolean}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Saves data from a specified data to a specified path and file name.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>inputData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The full path and file name were the data should be saved.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>inputMetaData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The data that should be saved out to the specified file.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-author">Author:</dt>
+    <dd class="tag-author">
+        <ul>
+            <li>Seth Hollingsead</li>
+        </ul>
+    </dd>
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="businessRules_rules_stringParsing_dataStringParsing.js.html">businessRules/rules/stringParsing/dataStringParsing.js</a>, <a href="businessRules_rules_stringParsing_dataStringParsing.js.html#line238">line 238</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>True or False value to indicate if the file was saved successfully or not.</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">boolean</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-advanced.html">advanced</a></li><li><a href="module-allConstantsValidationMetadata.html">allConstantsValidationMetadata</a></li><li><a href="module-auxiliary.html">auxiliary</a></li><li><a href="module-auxiliaryArrayParsing.html">auxiliaryArrayParsing</a></li><li><a href="module-auxiliaryStringParsing.html">auxiliaryStringParsing</a></li><li><a href="module-characterArrayParsing.html">characterArrayParsing</a></li><li><a href="module-characterGeneration.html">characterGeneration</a></li><li><a href="module-characterStringParsing.html">characterStringParsing</a></li><li><a href="module-chiefCommander.html">chiefCommander</a></li><li><a href="module-chiefConfiguration.html">chiefConfiguration</a></li><li><a href="module-chiefData.html">chiefData</a></li><li><a href="module-chiefPlugin.html">chiefPlugin</a></li><li><a href="module-chiefWorkflow.html">chiefWorkflow</a></li><li><a href="module-colorizer.html">colorizer</a></li><li><a href="module-commandArrayParsing.html">commandArrayParsing</a></li><li><a href="module-commandBroker.html">commandBroker</a></li><li><a href="module-commandsLibrary.html">commandsLibrary</a></li><li><a href="module-commandStringParsing.html">commandStringParsing</a></li><li><a href="module-configuration.html">configuration</a></li><li><a href="module-configurator.html">configurator</a></li><li><a href="module-constant.html">constant</a></li><li><a href="module-constantArrayParsing.html">constantArrayParsing</a></li><li><a href="module-constantStringParsing.html">constantStringParsing</a></li><li><a href="module-data.html">data</a></li><li><a href="module-dataArrayParsing.html">dataArrayParsing</a></li><li><a href="module-dataBroker.html">dataBroker</a></li><li><a href="module-dataDirectorate.html">dataDirectorate</a></li><li><a href="module-dataStringParsing.html">dataStringParsing</a></li><li><a href="module-fileOperations.html">fileOperations</a></li><li><a href="module-fileStringParsing.html">fileStringParsing</a></li><li><a href="module-integrationTests.html">integrationTests</a></li><li><a href="module-lexicalAnalyzer.html">lexicalAnalyzer</a></li><li><a href="module-loggers.html">loggers</a></li><li><a href="module-main.html">main</a></li><li><a href="module-mathOperations.html">mathOperations</a></li><li><a href="module-pathArrayParsing.html">pathArrayParsing</a></li><li><a href="module-performanceMetric.html">performanceMetric</a></li><li><a href="module-pluginBroker.html">pluginBroker</a></li><li><a href="module-plugins.html">plugins</a></li><li><a href="module-promptOperations.html">promptOperations</a></li><li><a href="module-queue.html">queue</a></li><li><a href="module-ruleBroker.html">ruleBroker</a></li><li><a href="module-ruleParsing.html">ruleParsing</a></li><li><a href="module-rulesLibrary.html">rulesLibrary</a></li><li><a href="module-stack.html">stack</a></li><li><a href="module-stringGeneration.html">stringGeneration</a></li><li><a href="module-stringParsingUtilities.html">stringParsingUtilities</a></li><li><a href="module-system.html">system</a></li><li><a href="module-themeBroker.html">themeBroker</a></li><li><a href="module-timeComputation.html">timeComputation</a></li><li><a href="module-warden.html">warden</a></li><li><a href="module-wordArrayParsing.html">wordArrayParsing</a></li><li><a href="module-wordStringParsing.html">wordStringParsing</a></li><li><a href="module-workflowBroker.html">workflowBroker</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Wed Oct 26 2022 17:51:53 GMT-0500 (Central Daylight Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

@@ -1,0 +1,969 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Module: configuration</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Module: configuration</h1>
+
+    
+
+
+
+
+<section>
+
+<header>
+    
+        
+            
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+            <div class="description"><p>Contains all of the configuration system commands.</p></div>
+        
+
+        
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-author">Author:</dt>
+    <dd class="tag-author">
+        <ul>
+            <li>Seth Hollingsead</li>
+        </ul>
+    </dd>
+    
+
+    
+    <dt class="tag-copyright">Copyright:</dt>
+    <dd class="tag-copyright"><ul class="dummy"><li>Copyright © 2022-… by Seth Hollingsead. All rights reserved</li></ul></dd>
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="commandsBlob_commands_configuration.js.html">commandsBlob/commands/configuration.js</a>, <a href="commandsBlob_commands_configuration.js.html#line1">line 1</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+    
+    </div>
+
+    
+
+    
+        <h3 class="subsection-title">Requires</h3>
+
+        <ul>
+            <li><a href="module-dataBroker.html">module:dataBroker</a></li>
+        
+            <li><a href="module-ruleBroker.html">module:ruleBroker</a></li>
+        
+            <li><a href="module-themeBroker.html">module:themeBroker</a></li>
+        
+            <li><a href="module-configurator.html">module:configurator</a></li>
+        
+            <li><a href="module-loggers.html">module:loggers</a></li>
+        
+            <li><a href="module-data.html">module:data</a></li>
+        
+            <li><a href="https://www.npmjs.com/package/@haystacks/constants">@haystacks/constants</a></li>
+        
+            <li><a href="https://www.npmjs.com/package/path">path</a></li>
+        </ul>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~changeConfigurationSetting"><span class="type-signature">(inner) </span>changeConfigurationSetting<span class="signature">(inputData, inputMetaData)</span><span class="type-signature"> &rarr; {array.&lt;boolean, (string|integer|boolean|object|array)>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Persists a change to a user specified configuration setting.
+This enables the user to enable or disable console log flags to use for run-time debugging.
+This is useful also for automating changes to how and what is logged during execution.
+Further it is useful for when a test fails, it can be automatically re-run with a more detailed log.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>inputData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">array.&lt;string></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>An array that contains
+the fully qualified path to the configuration setting that should be changed and
+the data that should be assigned to it.
+inputData[0] = changeConfigurationSetting
+inputData[1] = fully.Qualified.Configuration.Path
+inputData[2] = value to assign to the configuration setting property</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>inputMetaData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Not used for this command.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-author">Author:</dt>
+    <dd class="tag-author">
+        <ul>
+            <li>Seth Hollingsead</li>
+        </ul>
+    </dd>
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="commandsBlob_commands_configuration.js.html">commandsBlob/commands/configuration.js</a>, <a href="commandsBlob_commands_configuration.js.html#line56">line 56</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>An array with a boolean True or False value to
+indicate if the application should exit or not exit, followed by the command output.</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">array.&lt;boolean, (string|integer|boolean|object|array)></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~changeDebugConfigurationTheme"><span class="type-signature">(inner) </span>changeDebugConfigurationTheme<span class="signature">(inputData, inputMetaData)</span><span class="type-signature"> &rarr; {array.&lt;boolean, (string|integer|boolean|object|array)>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Swaps out all of the debug settings with a different theme.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>inputData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>An array that contains the name of the theme the user would like to switch to.
+inputData[0] = changeDebugConfigurationTheme
+inputData[1] = The name of the theme that the user would like to switch to.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>inputMetaData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Not used for this command.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-author">Author:</dt>
+    <dd class="tag-author">
+        <ul>
+            <li>Seth Hollingsead</li>
+        </ul>
+    </dd>
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="commandsBlob_commands_configuration.js.html">commandsBlob/commands/configuration.js</a>, <a href="commandsBlob_commands_configuration.js.html#line140">line 140</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>An array with a boolean True or False value to
+indicate if the application should exit or not exit, followed by the command output.</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">array.&lt;boolean, (string|integer|boolean|object|array)></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~listConfigurationThemes"><span class="type-signature">(inner) </span>listConfigurationThemes<span class="signature">(inputData, inputMetaData)</span><span class="type-signature"> &rarr; {array.&lt;boolean, (string|integer|boolean|object|array)>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Lists all of the debug configuration themes currently installed in the resources/themes folder.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>inputData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Not used for this command.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>inputMetaData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Not used for this command.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-author">Author:</dt>
+    <dd class="tag-author">
+        <ul>
+            <li>Seth Hollingsead</li>
+        </ul>
+    </dd>
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="commandsBlob_commands_configuration.js.html">commandsBlob/commands/configuration.js</a>, <a href="commandsBlob_commands_configuration.js.html#line115">line 115</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>An array with a boolean True or False value to
+indicate if the application should exit or not exit, followed by the command output.</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">array.&lt;boolean, (string|integer|boolean|object|array)></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~saveConfiguration"><span class="type-signature">(inner) </span>saveConfiguration<span class="signature">(inputData, inputMetaData)</span><span class="type-signature"> &rarr; {array.&lt;boolean, (string|integer|boolean|object|array)>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Saves out all of the configuration data to a JSON file so custom user settings can be persisted between sessions.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>inputData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Not used for this command.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>inputMetaData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Not used for this command.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-author">Author:</dt>
+    <dd class="tag-author">
+        <ul>
+            <li>Seth Hollingsead</li>
+        </ul>
+    </dd>
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="commandsBlob_commands_configuration.js.html">commandsBlob/commands/configuration.js</a>, <a href="commandsBlob_commands_configuration.js.html#line34">line 34</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>An array with a boolean True or False value to
+indicate if the application should exit or not exit, followed by the command output.</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">array.&lt;boolean, (string|integer|boolean|object|array)></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-advanced.html">advanced</a></li><li><a href="module-allConstantsValidationMetadata.html">allConstantsValidationMetadata</a></li><li><a href="module-auxiliary.html">auxiliary</a></li><li><a href="module-auxiliaryArrayParsing.html">auxiliaryArrayParsing</a></li><li><a href="module-auxiliaryStringParsing.html">auxiliaryStringParsing</a></li><li><a href="module-characterArrayParsing.html">characterArrayParsing</a></li><li><a href="module-characterGeneration.html">characterGeneration</a></li><li><a href="module-characterStringParsing.html">characterStringParsing</a></li><li><a href="module-chiefCommander.html">chiefCommander</a></li><li><a href="module-chiefConfiguration.html">chiefConfiguration</a></li><li><a href="module-chiefData.html">chiefData</a></li><li><a href="module-chiefPlugin.html">chiefPlugin</a></li><li><a href="module-chiefWorkflow.html">chiefWorkflow</a></li><li><a href="module-colorizer.html">colorizer</a></li><li><a href="module-commandArrayParsing.html">commandArrayParsing</a></li><li><a href="module-commandBroker.html">commandBroker</a></li><li><a href="module-commandsLibrary.html">commandsLibrary</a></li><li><a href="module-commandStringParsing.html">commandStringParsing</a></li><li><a href="module-configuration.html">configuration</a></li><li><a href="module-configurator.html">configurator</a></li><li><a href="module-constant.html">constant</a></li><li><a href="module-constantArrayParsing.html">constantArrayParsing</a></li><li><a href="module-constantStringParsing.html">constantStringParsing</a></li><li><a href="module-data.html">data</a></li><li><a href="module-dataArrayParsing.html">dataArrayParsing</a></li><li><a href="module-dataBroker.html">dataBroker</a></li><li><a href="module-dataDirectorate.html">dataDirectorate</a></li><li><a href="module-dataStringParsing.html">dataStringParsing</a></li><li><a href="module-fileOperations.html">fileOperations</a></li><li><a href="module-fileStringParsing.html">fileStringParsing</a></li><li><a href="module-integrationTests.html">integrationTests</a></li><li><a href="module-lexicalAnalyzer.html">lexicalAnalyzer</a></li><li><a href="module-loggers.html">loggers</a></li><li><a href="module-main.html">main</a></li><li><a href="module-mathOperations.html">mathOperations</a></li><li><a href="module-pathArrayParsing.html">pathArrayParsing</a></li><li><a href="module-performanceMetric.html">performanceMetric</a></li><li><a href="module-pluginBroker.html">pluginBroker</a></li><li><a href="module-plugins.html">plugins</a></li><li><a href="module-promptOperations.html">promptOperations</a></li><li><a href="module-queue.html">queue</a></li><li><a href="module-ruleBroker.html">ruleBroker</a></li><li><a href="module-ruleParsing.html">ruleParsing</a></li><li><a href="module-rulesLibrary.html">rulesLibrary</a></li><li><a href="module-stack.html">stack</a></li><li><a href="module-stringGeneration.html">stringGeneration</a></li><li><a href="module-stringParsingUtilities.html">stringParsingUtilities</a></li><li><a href="module-system.html">system</a></li><li><a href="module-themeBroker.html">themeBroker</a></li><li><a href="module-timeComputation.html">timeComputation</a></li><li><a href="module-warden.html">warden</a></li><li><a href="module-wordArrayParsing.html">wordArrayParsing</a></li><li><a href="module-wordStringParsing.html">wordStringParsing</a></li><li><a href="module-workflowBroker.html">workflowBroker</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Wed Oct 26 2022 17:51:53 GMT-0500 (Central Daylight Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: businessRules/rules/arrayParsing/characterArrayParsing.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: businessRules/rules/arrayParsing/characterArrayParsing.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * @file characterArrayParsing.js
+ * @module characterArrayParsing
+ * @description Contains all system defined business rules for array parsing with a focus on characters.
+ * @requires module:stringParsingUtilities
+ * @requires module:ruleParsing
+ * @requires module:configurator
+ * @requires module:loggers
+ * @requires {@link https://www.npmjs.com/package/@haystacks/constants|@haystacks/constants}
+ * @requires {@link https://www.npmjs.com/package/path|path}
+ * @author Seth Hollingsead
+ * @date 2022/04/25
+ * @copyright Copyright © 2022-… by Seth Hollingsead. All rights reserved
+ */
+
+// Internal imports
+import stringParsingUtilities from '../stringParsingUtilities.js';
+import ruleParsing from '../ruleParsing.js';
+import configurator from '../../../executrix/configurator.js';
+import loggers from '../../../executrix/loggers.js';
+// External imports
+import hayConst from '@haystacks/constants';
+import path from 'path';
+
+const {bas, biz, cfg, msg, sys, wrd} = hayConst;
+const baseFileName = path.basename(import.meta.url, path.extname(import.meta.url));
+// framework.businessRules.rules.arrayParsing.characterArrayParsing.
+const namespacePrefix = wrd.cframework + bas.cDot + sys.cbusinessRules + bas.cDot + wrd.crules + bas.cDot + wrd.carray + wrd.cParsing + bas.cDot + baseFileName + bas.cDot;
+
+/**
+ * @function replaceCharacterWithCharacter
+ * @description Replaces all of the specified character in the inputData with another specified character.
+ * @param {string} inputData A string that may or may not contain the specified
+ * characters that should be converted to another specified character.
+ * @param {array&lt;string,string>} inputMetaData An array of data that contains 2 additional string parameters:
+ * inputMetaData[0] === character2Find - The character to be searched and replaced from the input string.
+ * inputMetaData[1] === character2Replace - The character that should be used to replace
+ * the character specified for replacement from the input data.
+ * @return {string} The same as the input string but with specified characters converted to the other specified character.
+ * @author Seth Hollingsead
+ * @date 2021/10/28
+ */
+async function replaceCharacterWithCharacter(inputData, inputMetaData) {
+  let functionName = replaceCharacterWithCharacter.name;
+  // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
+  // console.log(`inputData is: ${inputData}`);
+  // console.log(`inputMetaData is: ${JSON.stringify(inputMetaData)}`);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
+  let returnData;
+  if (!inputData &amp;&amp; !inputMetaData) {
+    returnData = false;
+  } else {
+    if (await configurator.getConfigurationSetting(wrd.csystem, cfg.cconfigurationInitialized) === true) {
+      returnData = await ruleParsing.processRulesInternal([inputData, inputMetaData], [biz.cutilitiesReplaceCharacterWithCharacter]);
+    } else {
+      returnData = await stringParsingUtilities.utilitiesReplaceCharacterWithCharacter(inputData, inputMetaData);
+    }
+  }
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  // console.log(`returnData is: ${JSON.stringify(returnData)}`);
+  // console.log(`END ${namespacePrefix}${functionName} function`);
+  return returnData;
+}
+
+/**
+ * @function doesArrayContainCharacter
+ * @description Parses through all the elements of an array and determines if any one of them contains the input character.
+ * @param {string|boolean|integer|object} inputData The character that should be searched for in the array of elements.
+ * @param {array&lt;string|boolean|integer|object>} inputMetaData The array that should be searched for the specified character/value/etc...
+ * @return {boolean} True or False to indicate if the value was found or not found.
+ * @author Seth Hollingsead
+ * @date 2022/01/19
+ */
+async function doesArrayContainCharacter(inputData, inputMetaData) {
+  let functionName = doesArrayContainCharacter.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
+  let returnData = false;
+  if (inputData &amp;&amp; inputMetaData) {
+    for (const element of inputMetaData) {
+      let arrayElement = element;
+      if (arrayElement.includes(inputData) === true) {
+        returnData = true;
+        break;
+      }
+    } // end-for (const element of inputMetaData)
+  } // end-if (inputData &amp;&amp; inputMetaData)
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
+/**
+ * @function removeCharacterFromArray
+ * @description Removes all instances of a character or value from all array elements.
+ * @param {string|integer|boolean|float|object} inputData The character, integer, boolean, float or object
+ * that should be removed from all instances of the input array.
+ * @param {array&lt;string|boolean|integer|object>} inputMetaData The array from which all instances of the input character, integer, etc...should be removed.
+ * @return {array&lt;string|boolean|integer|object>} The array after having the specified character removed from all elements of the input array.
+ * @author Seth Hollingsead
+ * @date 2022/01/19
+ */
+async function removeCharacterFromArray(inputData, inputMetaData) {
+  let functionName = removeCharacterFromArray.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
+  // console.log(msg.cinputDataIs + JSON.stringify(inputData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
+  // console.log(msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
+  let returnData = false;
+  if (inputData &amp;&amp; inputMetaData) {
+    for (let i = 0; i &lt; inputMetaData.length; i++) {
+      let arrayElement = inputMetaData[i];
+      if (arrayElement.includes(inputData) === true) {
+        inputMetaData[i] = await replaceCharacterWithCharacter(arrayElement, [RegExp('\\' + inputData, bas.cg), '']);
+      }
+    } // end-for (let i = 0; i &lt; inputMetaData.length; i++)
+    returnData = inputMetaData;
+  } // end-if (inputData &amp;&amp; inputMetaData)
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  // console.log(msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  // console.log(`END ${namespacePrefix}${functionName} function`);
+  return returnData;
+}
+
+/**
+ * @function replaceCharacterAtIndex
+ * @description Replaces a character at the specified index with another character.
+ * @param {string} inputData The string which should have the specified character changed, then returned.
+ * @param {array&lt;integer,string>} inputMetaData An array with an integer of what index the character should be replaced,
+ * and a string with the character or characters that should be inserted at the specified index.
+ * @return {string} The modified string.
+ * @author Seth Hollingsead
+ * @date 2022/01/21
+ * @reference: {@link https://stackoverflow.com/questions/1431094/how-do-i-replace-a-character-at-a-particular-index-in-javascript}
+ */
+async function replaceCharacterAtIndex(inputData, inputMetaData) {
+  let functionName = replaceCharacterAtIndex.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
+  let returnData = inputData;
+  if (inputData &amp;&amp; inputMetaData) {
+    let indexOfReplacement;
+    let stringToReplaceWith;
+    if (inputMetaData.length === 2) {
+      indexOfReplacement = inputMetaData[0];
+      stringToReplaceWith = inputMetaData[1];
+      let stringArray = inputData.split('');
+      stringArray.splice(indexOfReplacement, 1, stringToReplaceWith);
+      returnData = stringArray.join('');
+    } // End-if (inputMetaData.length === 2)
+  } // End-if (inputData)
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
+export default {
+  replaceCharacterWithCharacter,
+  doesArrayContainCharacter,
+  removeCharacterFromArray,
+  replaceCharacterAtIndex
+};
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-advanced.html">advanced</a></li><li><a href="module-auxiliary.html">auxiliary</a></li><li><a href="module-auxiliaryArrayParsing.html">auxiliaryArrayParsing</a></li><li><a href="module-auxiliaryStringParsing.html">auxiliaryStringParsing</a></li><li><a href="module-characterArrayParsing.html">characterArrayParsing</a></li><li><a href="module-characterGeneration.html">characterGeneration</a></li><li><a href="module-characterStringParsing.html">characterStringParsing</a></li><li><a href="module-chiefCommander.html">chiefCommander</a></li><li><a href="module-chiefConfiguration.html">chiefConfiguration</a></li><li><a href="module-chiefConstant.html">chiefConstant</a></li><li><a href="module-chiefData.html">chiefData</a></li><li><a href="module-chiefPlugin.html">chiefPlugin</a></li><li><a href="module-chiefTheme.html">chiefTheme</a></li><li><a href="module-chiefWorkflow.html">chiefWorkflow</a></li><li><a href="module-colorizer.html">colorizer</a></li><li><a href="module-commandArrayParsing.html">commandArrayParsing</a></li><li><a href="module-commandBroker.html">commandBroker</a></li><li><a href="module-commandsLibrary.html">commandsLibrary</a></li><li><a href="module-commandStringParsing.html">commandStringParsing</a></li><li><a href="module-configuration.html">configuration</a></li><li><a href="module-configurator.html">configurator</a></li><li><a href="module-constant.html">constant</a></li><li><a href="module-constantArrayParsing.html">constantArrayParsing</a></li><li><a href="module-constantBroker.html">constantBroker</a></li><li><a href="module-constantStringParsing.html">constantStringParsing</a></li><li><a href="module-data.html">data</a></li><li><a href="module-dataArrayParsing.html">dataArrayParsing</a></li><li><a href="module-dataBroker.html">dataBroker</a></li><li><a href="module-dataDirectorate.html">dataDirectorate</a></li><li><a href="module-dataStringParsing.html">dataStringParsing</a></li><li><a href="module-fileOperations.html">fileOperations</a></li><li><a href="module-fileStringParsing.html">fileStringParsing</a></li><li><a href="module-integrationTests.html">integrationTests</a></li><li><a href="module-lexicalAnalyzer.html">lexicalAnalyzer</a></li><li><a href="module-loggers.html">loggers</a></li><li><a href="module-main.html">main</a></li><li><a href="module-mathOperations.html">mathOperations</a></li><li><a href="module-pathArrayParsing.html">pathArrayParsing</a></li><li><a href="module-performanceMetric.html">performanceMetric</a></li><li><a href="module-pluginBroker.html">pluginBroker</a></li><li><a href="module-plugins.html">plugins</a></li><li><a href="module-promptOperations.html">promptOperations</a></li><li><a href="module-queue.html">queue</a></li><li><a href="module-ruleBroker.html">ruleBroker</a></li><li><a href="module-ruleParsing.html">ruleParsing</a></li><li><a href="module-rulesLibrary.html">rulesLibrary</a></li><li><a href="module-stack.html">stack</a></li><li><a href="module-stringGeneration.html">stringGeneration</a></li><li><a href="module-stringParsingUtilities.html">stringParsingUtilities</a></li><li><a href="module-system.html">system</a></li><li><a href="module-themeBroker.html">themeBroker</a></li><li><a href="module-timeComputation.html">timeComputation</a></li><li><a href="module-warden.html">warden</a></li><li><a href="module-wordArrayParsing.html">wordArrayParsing</a></li><li><a href="module-wordStringParsing.html">wordStringParsing</a></li><li><a href="module-workflowBroker.html">workflowBroker</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Wed Feb 22 2023 14:45:59 GMT-0600 (Central Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

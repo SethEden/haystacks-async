@@ -772,7 +772,6 @@ async function runAllValidations(inputData, inputMetaData) {
   await loggers.consoleLog(namespacePrefix + functionName, msg.cvalidationTypesConfirmedListIs + validationTypesConfirmedList);
 
   if (validUserEntry === true) {
-
     let constantsValidationCommandToQueue = cmd.cvalidateConstants + bas.cSpace + validationTypesConfirmedList;
     let commandAliasesValidationCommandToQueue = cmd.cvalidateCommandAliases + bas.cSpace + validationTypesConfirmedList;
     let workflowsValidationCommandToQueue = cmd.cvalidateWorkflows + bas.cSpace + validationTypesConfirmedList;
