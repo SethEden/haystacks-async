@@ -18,6 +18,8 @@
         <Workflow Name="getAllWorkflowsDisable" Value="changeConfigSetting debugSetting.framework.brokers.workflowBroker.getAllWorkflows false"/>
         <Workflow Name="getWorkflowNamespaceDataObjectEnable" Value="changeConfigSetting debugSetting.framework.brokers.workflowBroker.getWorkflowNamespaceDataObject true"/>
         <Workflow Name="getWorkflowNamespaceDataObjectDisable" Value="changeConfigSetting debugSetting.framework.brokers.workflowBroker.getWorkflowNamespaceDataObject false"/>
+        <Workflow Name="removePluginWorkflowsEnable" Value="changeConfigSetting debugSetting.framework.brokers.workflowBroker.removePluginWorkflows true"/>
+        <Workflow Name="removePluginWorkflowsDisable" Value="changeConfigSetting debugSetting.framework.brokers.workflowBroker.removePluginWorkflows false"/>
       </workflowBroker>
     </brokers>
   </debug>

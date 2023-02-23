@@ -32,10 +32,10 @@
         <Workflow Name="getDataDisable" Value="changeConfigSetting debugSetting.framework.brokers.dataBroker.getData false"/>
         <Workflow Name="clearDataEnable" Value="changeConfigSetting debugSetting.framework.brokers.dataBroker.clearData true"/>
         <Workflow Name="clearDataDisable" Value="changeConfigSetting debugSetting.framework.brokers.dataBroker.clearData false"/>
-        <Workflow Name="getDataCatagoryFromContextNameEnable" Value="changeConfigSetting debugSetting.framework.brokers.dataBroker.getDataCatagoryFromContextName true"/>
-        <Workflow Name="getDataCatagoryFromContextNameDisable" Value="changeConfigSetting debugSetting.framework.brokers.dataBroker.getDataCatagoryFromContextName false"/>
-        <Workflow Name="getDataCatagoryDetailNameFromContextNameEnable" Value="changeConfigSetting debugSetting.framework.brokers.dataBroker.getDataCatagoryDetailNameFromContextName true"/>
-        <Workflow Name="getDataCatagoryDetailNameFromContextNameDisable" Value="changeConfigSetting debugSetting.framework.brokers.dataBroker.getDataCatagoryDetailNameFromContextName false"/>
+        <Workflow Name="getDataCategoryFromContextNameEnable" Value="changeConfigSetting debugSetting.framework.brokers.dataBroker.getDataCategoryFromContextName true"/>
+        <Workflow Name="getDataCategoryFromContextNameDisable" Value="changeConfigSetting debugSetting.framework.brokers.dataBroker.getDataCategoryFromContextName false"/>
+        <Workflow Name="getDataCategoryDetailNameFromContextNameEnable" Value="changeConfigSetting debugSetting.framework.brokers.dataBroker.getDataCategoryDetailNameFromContextName true"/>
+        <Workflow Name="getDataCategoryDetailNameFromContextNameDisable" Value="changeConfigSetting debugSetting.framework.brokers.dataBroker.getDataCategoryDetailNameFromContextName false"/>
         <Workflow Name="extractDataFromPapaParseObjectEnable" Value="changeConfigSetting debugSetting.framework.brokers.dataBroker.extractDataFromPapaParseObject true"/>
         <Workflow Name="extractDataFromPapaParseObjectDisable" Value="changeConfigSetting debugSetting.framework.brokers.dataBroker.extractDataFromPapaParseObject false"/>
         <Workflow Name="determineMergeTargetEnable" Value="changeConfigSetting debugSetting.framework.brokers.dataBroker.determineMergeTarget true"/>
@@ -46,6 +46,8 @@
         <Workflow Name="getDataElementDisable" Value="changeConfigSetting debugSetting.framework.brokers.dataBroker.getDataElement false"/>
         <Workflow Name="getDataElementCountEnable" Value="changeConfigSetting debugSetting.framework.brokers.dataBroker.getDataElementCount true"/>
         <Workflow Name="getDataElementCountDisable" Value="changeConfigSetting debugSetting.framework.brokers.dataBroker.getDataElementCount false"/>
+        <Workflow Name="removePluginConfigurationDataEnable" Value="changeConfigSetting debugSetting.framework.brokers.dataBroker.removePluginConfigurationData true"/>
+        <Workflow Name="removePluginConfigurationDataDisable" Value="changeConfigSetting debugSetting.framework.brokers.dataBroker.removePluginConfigurationData false"/>
       </dataBroker>
     </brokers>
   </debug>

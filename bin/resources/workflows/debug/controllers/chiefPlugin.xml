@@ -8,6 +8,8 @@
         <Workflow Name="loadPluginRegistryDataDisable" Value="changeConfigSetting debugSetting.framework.controllers.chiefPlugin.loadPluginRegistryData false"/>
         <Workflow Name="persistPluginRegistryToDataStructureEnable" Value="changeConfigSetting debugSetting.framework.controllers.chiefPlugin.persistPluginRegistryToDataStructure true"/>
         <Workflow Name="persistPluginRegistryToDataStructureDisable" Value="changeConfigSetting debugSetting.framework.controllers.chiefPlugin.persistPluginRegistryToDataStructure false"/>
+        <Workflow Name="listLoadedPluginsEnable" Value="changeConfigSetting debugSetting.framework.controllers.chiefPlugin.listLoadedPlugins true"/>
+        <Workflow Name="listLoadedPluginsDisable" Value="changeConfigSetting debugSetting.framework.controllers.chiefPlugin.listLoadedPlugins false"/>
         <Workflow Name="getAllPluginsInRegistryEnable" Value="changeConfigSetting debugSetting.framework.controllers.chiefPlugin.getAllPluginsInRegistry true"/>
         <Workflow Name="getAllPluginsInRegistryDisable" Value="changeConfigSetting debugSetting.framework.controllers.chiefPlugin.getAllPluginsInRegistry false"/>
         <Workflow Name="getAllPluginsPathsInRegistryEnable" Value="changeConfigSetting debugSetting.framework.controllers.chiefPlugin.getAllPluginsPathsInRegistry true"/>
@@ -22,6 +24,8 @@
         <Workflow Name="registerNamedPluginDisable" Value="changeConfigSetting debugSetting.framework.controllers.chiefPlugin.registerNamedPlugin false"/>
         <Workflow Name="unregisterNamedPluginEnable" Value="changeConfigSetting debugSetting.framework.controllers.chiefPlugin.unregisterNamedPlugin true"/>
         <Workflow Name="unregisterNamedPluginDisable" Value="changeConfigSetting debugSetting.framework.controllers.chiefPlugin.unregisterNamedPlugin false"/>
+        <Workflow Name="unregisterPluginsEnable" Value="changeConfigSetting debugSetting.framework.controllers.chiefPlugin.unregisterPlugins true"/>
+        <Workflow Name="unregisterPluginsDisable" Value="changeConfigSetting debugSetting.framework.controllers.chiefPlugin.unregisterPlugins false"/>
         <Workflow Name="synchronizePluginRegistryWithPathEnable" Value="changeConfigSetting debugSetting.framework.controllers.chiefPlugin.synchronizePluginRegistryWithPath true"/>
         <Workflow Name="syncrhonizePluginRegistryWithPathDisable" Value="changeConfigSetting debugSetting.framework.controllers.chiefPlugin.synchronizePluginRegistryWithPath false"/>
         <Workflow Name="clearPluginRegistryEnable" Value="changeConfigSetting debugSetting.framework.controllers.chiefPlugin.clearPluginRegistry true"/>
@@ -40,6 +44,10 @@
         <Workflow Name="integratePluginDataDisable" Value="changeConfigSetting debugSetting.framework.controllers.chiefPlugin.integratePluginData false"/>
         <Workflow Name="verifyAllPluginsLoadedEnable" Value="changeConfigSetting debugSetting.framework.controllers.chiefPlugin.verifyAllPluginsLoaded true"/>
         <Workflow Name="verifyAllPluginsLoadedDisabled" Value="changeConfigSetting debugSetting.framework.controllers.chiefPlugin.verifyAllPluginsLoaded false"/>
+        <Workflow Name="unloadPluginEnable" Value="changeConfigSetting debugSetting.framework.controllers.chiefPlugin.unloadPlugin true"/>
+        <Workflow Name="unloadPluginDisabled" Value="changeConfigSetting debugSetting.framework.controllers.chiefPlugin.unloadPlugin false"/>
+        <Workflow Name="getPluginsRegistryPathEnable" Value="changeConfigSetting debugSetting.framework.controllers.chiefPlugin.getPluginsRegistryPath true"/>
+        <Workflow Name="getPluginsRegistryPathDisabled" Value="changeConfigSetting debugSetting.framework.controllers.chiefPlugin.getPluginsRegistryPath false"/>
       </chiefPlugin>
     </controllers>
   </debug>

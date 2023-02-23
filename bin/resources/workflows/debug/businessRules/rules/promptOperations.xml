@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?><CommandWorkflows>
+  <debug>
+    <businessRules>
+      <rules>
+        <promptOperations>
+          <Workflow Name="promptOperationsEnable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.promptOperations true"/>
+          <Workflow Name="promptOperationsDisable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.promptOperations false"/>
+          <Workflow Name="promptOperationsPromptEnable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.promptOperations.prompt true"/>
+          <Workflow Name="promptOperationsPromptDisable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.promptOperations.prompt false"/>
+        </promptOperations>
+      </rules>
+    </businessRules>
+  </debug>
+</CommandWorkflows>

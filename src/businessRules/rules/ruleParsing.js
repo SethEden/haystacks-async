@@ -102,7 +102,8 @@ async function getRule(inputData, inputMetaData) {
   let returnData = false;
   if (inputData && inputData != '') {
     if (await doesRuleExist(inputData, '') === true) {
-      console.log('D[sys.cbusinessRules][inputData] is: ' + D[sys.cbusinessRules][inputData], sys.cbusinessRules, inputData);
+      // D[sys.cbusinessRules][inputData] is:
+      console.log(msg.cgetRuleMessage01 + D[sys.cbusinessRules][inputData], sys.cbusinessRules, inputData);
       returnData = await D[sys.cbusinessRules][inputData];
     }
   } // End-if (inputData && inputData != '')

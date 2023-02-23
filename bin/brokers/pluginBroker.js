@@ -33,7 +33,7 @@ import configurator from '../executrix/configurator.js'
 import commandBroker from './commandBroker.js'
 import themeBroker from './themeBroker.js'
 
-const {bas, biz, cfg, msg, sys, wrd} = hayConst;
+const {bas, biz, cfg, gen, msg, sys, wrd} = hayConst;
 const baseFileName = path.basename(import.meta.url, path.extname(import.meta.url));
 // framework.brokers.pluginBroker.
 const namespacePrefix = wrd.cframework + bas.cDot + wrd.cbrokers + bas.cDot + baseFileName + bas.cDot;
@@ -567,6 +567,16 @@ async function loadPluginMetaData(pluginPath) {
     let prefixPluginPath = await getPluginsRegistryPath();
     // prefixPluginPath is:
     await loggers.consoleLog(namespacePrefix + functionName, msg.cprefixPluginPathIs + prefixPluginPath);
+    if (prefixPluginPath.slice(-1) != bas.cForwardSlash && prefixPluginPath.slice(-1) != bas.cBackSlash) {
+      let pathSeparator = '';
+      // eslint-disable-next-line no-undef
+      if (process.platform === gen.cwin32) {
+        pathSeparator = bas.cBackSlash;
+      } else {
+        pathSeparator = bas.cForwardSlash;
+      }
+      prefixPluginPath = prefixPluginPath + pathSeparator;
+    }
     fullyQualifiedPluginPath = prefixPluginPath + pluginPath;
   } else {
     fullyQualifiedPluginPath = pluginPath;

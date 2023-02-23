@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: structures/queue.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: structures/queue.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * @file queue.js
+ * @module queue
+ * @description Implements the various functions of a queue data structure,
+ * using the specified name-space on the D-data structure.
+ * @requires module:loggers
+ * @requires module:data
+ * @requires {@link https://www.npmjs.com/package/@haystacks/constants|@haystacks/constants}
+ * @requires {@link https://www.npmjs.com/package/path|path}
+ * @author Seth Hollingsead
+ * @date 2021/10/13
+ * @copyright Copyright © 2022-… by Seth Hollingsead. All rights reserved
+ */
+
+// Internal imports
+import loggers from '../executrix/loggers.js';
+import D from './data.js';
+// External imports
+import hayConst from '@haystacks/constants';
+import path from 'path';
+
+const {bas, msg, wrd} = hayConst;
+const baseFileName = path.basename(import.meta.url, path.extname(import.meta.url));
+// framework.structures.queue.
+const namespacePrefix = wrd.cframework + bas.cDot + wrd.cstructures + bas.cDot + baseFileName + bas.cDot;
+
+/**
+ * @function initQueue
+ * @description Initializes the queue with the provided namespace.
+ * @param {string} queueNameSpace The namespace the queue array should be created under.
+ * @return {void}
+ * @author Seth Hollingsead
+ * @date 2022/02/01
+ * @reference {@link https://www.youtube.com/watch?v=bK7I79hcm08}
+ */
+async function initQueue(queueNameSpace) {
+  let functionName = initQueue.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cqueueNameSpaceIs + queueNameSpace);
+  D[queueNameSpace] = [];
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+}
+
+/**
+ * @function dequeue
+ * @description Gets the entity at the front of the queue, removes it from the queue and returns that entity.
+ * @param {string} queueNameSpace The namespace the queue array should be dequeued from.
+ * @return {string} The item at the front of the queue and removes it from the queue.
+ * @author Seth Hollingsead
+ * @date 2022/02/01
+ * @reference {@link https://www.youtube.com/watch?v=bK7I79hcm08}
+ */
+async function dequeue(queueNameSpace) {
+  let functionName = dequeue.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cqueueNameSpaceIs + queueNameSpace);
+  let returnData;
+  returnData = D[queueNameSpace].shift();
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
+/**
+ * @function enqueue
+ * @description Adds the value to the specified namespace queue.
+ * @param {string} queueNameSpace The namespace the queue array should have a value added to.
+ * @param {string} value The value that should be added to the specified queue array.
+ * @return {void}
+ * @author Seth Hollingsead
+ * @date 2022/02/01
+ * @reference {@link https://www.youtube.com/watch?v=bK7I79hcm08}
+ */
+async function enqueue(queueNameSpace, value) {
+  let functionName = enqueue.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cqueueNameSpaceIs + queueNameSpace);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cvalueIs + value);
+  D[queueNameSpace].push(value);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+}
+
+/**
+ * @function enqueueFront
+ * @description Adds the value to the front of the specified namespace queue.
+ * @param {string} queueNameSpace The namespace the queue array should have a value added to.
+ * @param {string|array&lt;string>} value The value that should be added to the specified queue array,
+ * it could be a string value or an array of string values.
+ * @return {void}
+ * @author Seth Hollingsead
+ * @date 2022/08/31
+ */
+async function enqueueFront(queueNameSpace, value) {
+  let functionName = enqueueFront.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cqueueNameSpaceIs + queueNameSpace);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cvalueIs + JSON.stringify(value));
+  if (Array.isArray(value) === true) {
+    // If the value is an array, then decompose the array into variables all passed to the unshift command.
+    D[queueNameSpace].unshift(...value);
+  } else {
+    D[queueNameSpace].unshift(value);
+  }
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+}
+
+/**
+ * @function isEmpty
+ * @description Determines if the queue is empty or not empty.
+ * @param {string} queueNameSpace The namespace the queue array should have a value added to.
+ * @return {boolean} True or False to indicate if the queue is empty or not empty.
+ * @author Seth Hollingsead
+ * @date 2022/02/01
+ * @reference {@link https://www.youtube.com/watch?v=bK7I79hcm08}
+ */
+async function isEmpty(queueNameSpace) {
+  let functionName = isEmpty.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cqueueNameSpaceIs + queueNameSpace);
+  let returnData;
+  if (D[queueNameSpace] === undefined) {
+    returnData = true;
+  } else {
+    returnData = (D[queueNameSpace].length === 0);
+  }
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
+/**
+ * @function queueFront
+ * @description Gets the entity at the front of the queue.
+ * @param {string} queueNameSpace The namespace the queue array from which the front of the queue should be found.
+ * @return {string} The entity at the front of the queue.
+ * @author Seth Hollingsead
+ * @date 2022/02/01
+ * @reference {@link https://www.youtube.com/watch?v=bK7I79hcm08}
+ */
+async function queueFront(queueNameSpace) {
+  let functionName = queueFront.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cqueueNameSpaceIs + queueNameSpace);
+  let returnData;
+  if (D[queueNameSpace] !== undefined) {
+    returnData = D[queueNameSpace][0];
+  } else {
+    // WARNING: Queue:
+    // does not exist!
+  }
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
+/**
+ * @function queueSize
+ * @description Gets the current size of the queue.
+ * @param {string} queueNameSpace The namespace of the queue array from which we should get the current queue size.
+ * @return {integer} A count for the number of entities in the specified queue.
+ * @author Seth Hollingsead
+ * @date 2022/02/01
+ * @reference {@link https://www.youtube.com/watch?v=bK7I79hcm08}
+ */
+async function queueSize(queueNameSpace) {
+  let functionName = queueFront.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cqueueNameSpaceIs + queueNameSpace);
+  let returnData = 0;
+  if (D[queueNameSpace] !== undefined) {
+    returnData = D[queueNameSpace].length;
+  } else {
+    // WARNING: Queue:
+    // does not exist!
+  }
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
+/**
+ * @function queueContents
+ * @description Returns the contents of the queue as an array.
+ * @param {string} queueNameSpace The namespace of the queue who's contents should be returned as an array.
+ * @return {array&lt;string>} The entire queue and it's contents as an array.
+ * @author Seth Hollingsead
+ * @date 2022/09/01 
+ */
+async function queueContents(queueNameSpace) {
+  let functionName = queueFront.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cqueueNameSpaceIs + queueNameSpace);
+  let returnData = [];
+  if (D[queueNameSpace] !== undefined) {
+    returnData = D[queueNameSpace];
+  } else {
+    // WARNING: Queue:
+    // does not exist!
+  }
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
+/**
+ * @function queuePrint
+ * @description Prints out the queue as specified by the namespace input parameter.
+ * @param {string} queueNameSpace The namespace that should be used to print out the contents of the queue on the D-data structure.
+ * @return {void}
+ * @author Seth Hollingsead
+ * @date 2022/06/21
+ */
+async function queuePrint(queueNameSpace) {
+  let functionName = queuePrint.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cqueueNameSpaceIs + queueNameSpace);
+  let returnData = '';
+  if (D[queueNameSpace] !== undefined) {
+    // Contents of the queue namespace:
+    returnData = JSON.stringify(D[queueNameSpace]);
+    // let queueContentsMessage = msg.cContentsOfTheQueueNamespace + queueNameSpace + sys.cSpaceIsColonSpace + returnData;
+    // console.log(queueContentsMessage);
+  } else {
+    // WARNING: Queue:
+    // does not exist!
+    returnData = msg.cWarningQueue + queueNameSpace + bas.cSpace + msg.cdoesNotExist;
+    console.log(returnData);
+  }
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
+export default {
+  initQueue,
+  dequeue,
+  enqueue,
+  enqueueFront,
+  isEmpty,
+  queueFront,
+  queueSize,
+  queueContents,
+  queuePrint
+};
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-advanced.html">advanced</a></li><li><a href="module-auxiliary.html">auxiliary</a></li><li><a href="module-auxiliaryArrayParsing.html">auxiliaryArrayParsing</a></li><li><a href="module-auxiliaryStringParsing.html">auxiliaryStringParsing</a></li><li><a href="module-characterArrayParsing.html">characterArrayParsing</a></li><li><a href="module-characterGeneration.html">characterGeneration</a></li><li><a href="module-characterStringParsing.html">characterStringParsing</a></li><li><a href="module-chiefCommander.html">chiefCommander</a></li><li><a href="module-chiefConfiguration.html">chiefConfiguration</a></li><li><a href="module-chiefConstant.html">chiefConstant</a></li><li><a href="module-chiefData.html">chiefData</a></li><li><a href="module-chiefPlugin.html">chiefPlugin</a></li><li><a href="module-chiefTheme.html">chiefTheme</a></li><li><a href="module-chiefWorkflow.html">chiefWorkflow</a></li><li><a href="module-colorizer.html">colorizer</a></li><li><a href="module-commandArrayParsing.html">commandArrayParsing</a></li><li><a href="module-commandBroker.html">commandBroker</a></li><li><a href="module-commandsLibrary.html">commandsLibrary</a></li><li><a href="module-commandStringParsing.html">commandStringParsing</a></li><li><a href="module-configuration.html">configuration</a></li><li><a href="module-configurator.html">configurator</a></li><li><a href="module-constant.html">constant</a></li><li><a href="module-constantArrayParsing.html">constantArrayParsing</a></li><li><a href="module-constantBroker.html">constantBroker</a></li><li><a href="module-constantStringParsing.html">constantStringParsing</a></li><li><a href="module-data.html">data</a></li><li><a href="module-dataArrayParsing.html">dataArrayParsing</a></li><li><a href="module-dataBroker.html">dataBroker</a></li><li><a href="module-dataDirectorate.html">dataDirectorate</a></li><li><a href="module-dataStringParsing.html">dataStringParsing</a></li><li><a href="module-fileOperations.html">fileOperations</a></li><li><a href="module-fileStringParsing.html">fileStringParsing</a></li><li><a href="module-integrationTests.html">integrationTests</a></li><li><a href="module-lexicalAnalyzer.html">lexicalAnalyzer</a></li><li><a href="module-loggers.html">loggers</a></li><li><a href="module-main.html">main</a></li><li><a href="module-mathOperations.html">mathOperations</a></li><li><a href="module-pathArrayParsing.html">pathArrayParsing</a></li><li><a href="module-performanceMetric.html">performanceMetric</a></li><li><a href="module-pluginBroker.html">pluginBroker</a></li><li><a href="module-plugins.html">plugins</a></li><li><a href="module-promptOperations.html">promptOperations</a></li><li><a href="module-queue.html">queue</a></li><li><a href="module-ruleBroker.html">ruleBroker</a></li><li><a href="module-ruleParsing.html">ruleParsing</a></li><li><a href="module-rulesLibrary.html">rulesLibrary</a></li><li><a href="module-stack.html">stack</a></li><li><a href="module-stringGeneration.html">stringGeneration</a></li><li><a href="module-stringParsingUtilities.html">stringParsingUtilities</a></li><li><a href="module-system.html">system</a></li><li><a href="module-themeBroker.html">themeBroker</a></li><li><a href="module-timeComputation.html">timeComputation</a></li><li><a href="module-warden.html">warden</a></li><li><a href="module-wordArrayParsing.html">wordArrayParsing</a></li><li><a href="module-wordStringParsing.html">wordStringParsing</a></li><li><a href="module-workflowBroker.html">workflowBroker</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Wed Feb 22 2023 14:45:59 GMT-0600 (Central Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

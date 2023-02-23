@@ -9,6 +9,8 @@
           <Workflow Name="doAllRulesExistDisable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.ruleParsing.doAllRulesExist false"/>
           <Workflow Name="doesRuleExistEnable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.ruleParsing.doesRuleExist true"/>
           <Workflow Name="doesRuleExistDisable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.ruleParsing.doesRuleExist false"/>
+          <Workflow Name="getRuleEnable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.ruleParsing.getRule true"/>
+          <Workflow Name="getRuleDisable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.ruleParsing.getRule false"/>
           <Workflow Name="processRulesInternalEnable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.ruleParsing.processRulesInternal true"/>
           <Workflow Name="processRulesInternalDisable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.ruleParsing.processRulesInternal false"/>
         </ruleParsing>

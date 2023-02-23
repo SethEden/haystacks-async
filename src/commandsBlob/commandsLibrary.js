@@ -116,6 +116,7 @@ async function initCommandsLibrary() {
     [cmd.cvalidateConstants]: (inputData, inputMetaData) => integrationTestCommands.validateConstants(inputData, inputMetaData),
     [cmd.cvalidateCommandAliases]: (inputData, inputMetaData) => integrationTestCommands.validateCommandAliases(inputData, inputMetaData),
     [cmd.cvalidateWorkflows]: (inputData, inputMetaData) => integrationTestCommands.validateWorkflows(inputData, inputMetaData),
+    [cmd.crunAllValidations]: (inputData, inputMetaData) => integrationTestCommands.runAllValidations(inputData, inputMetaData),
 
     // ***********************************************
     // Performance Metrics commands in order

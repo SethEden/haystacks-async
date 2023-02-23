@@ -293,9 +293,15 @@ async function getDirectoryList(inputData, inputMetaData) {
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
   let returnData = false;
   if (inputData) {
-    returnData = await fs.readdirSync(inputData, { withFileTypes: true })
+    try {
+      returnData = await fs.readdirSync(inputData, { withFileTypes: true })
       .filter((item) => item.isDirectory())
       .map((item) => item.name);
+    } catch (err) {
+      // ERROR: The specified path does not exist or cannot be found:
+      console.log(msg.cErrorGetDirectoryListMessage01 + inputData);
+      console.log(msg.cerrorMessage + err.message);
+    }    
   } // End-if (inputData)
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);

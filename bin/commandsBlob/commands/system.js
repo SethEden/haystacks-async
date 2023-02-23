@@ -322,6 +322,8 @@ async function help(inputData, inputMetaData) {
         commandNamespaceTypesConfirmedArray.push(wrd.cApplication);
       } else if (commandNamespaceEntity.toUpperCase().trim() === wrd.cPLUGINS || commandNamespaceEntity.toUpperCase().trim() === wrd.cPLUGIN) {
         commandNamespaceTypesConfirmedArray.push(wrd.cPlugins);
+      } else if (commandNamespaceEntity === '') {
+        // Just ignore it!
       } else {
         // Not sure what the user may have entered here, but it could be some valid namespace, so just add it to the array, and assume best intent.
         // If its going to error out, then it will print an error some place else.
@@ -348,37 +350,43 @@ async function help(inputData, inputMetaData) {
           // processing framework commands
           await loggers.consoleLog(namespacePrefix + functionName, msg.cprocessingFrameworkCommands);
           let frameworkCommandAliases = await commandBroker.getAllCommandAliasData(D[sys.cCommandsAliases][wrd.cFramework]);
-          if (Object.keys(namespaceAllCommandsDataObject).length != 0) {
-            // frameworkCommandAliases is:
-            await loggers.consoleLog(namespacePrefix + functionName, msg.cframeworkCommandAliasesIs + JSON.stringify(frameworkCommandAliases));
-            namespaceAllCommandsDataObject = await ruleBroker.processRules([namespaceAllCommandsDataObject, frameworkCommandAliases], [biz.cobjectDeepMerge]);
-          } else {
-            namespaceAllCommandsDataObject = frameworkCommandAliases;
-          }
+          if (frameworkCommandAliases) {
+            if (Object.keys(namespaceAllCommandsDataObject).length != 0) {
+              // frameworkCommandAliases is:
+              await loggers.consoleLog(namespacePrefix + functionName, msg.cframeworkCommandAliasesIs + JSON.stringify(frameworkCommandAliases));
+              namespaceAllCommandsDataObject = await ruleBroker.processRules([namespaceAllCommandsDataObject, frameworkCommandAliases], [biz.cobjectDeepMerge]);
+            } else {
+              namespaceAllCommandsDataObject = frameworkCommandAliases;
+            }
+          } // End-if (frameworkCommandAliases)
         } else if (commandNamespaceTypeConfirmedEntity === wrd.cApplication) {
           // processing application commands
           await loggers.consoleLog(namespacePrefix + functionName, msg.cprocessingApplicationCommands);
           let applicationCommandAliases = await commandBroker.getAllCommandAliasData(D[sys.cCommandsAliases][wrd.cApplication]);
-          if (Object.keys(namespaceAllCommandsDataObject).length != 0) {
-            // applicationCommandAliases is:
-            await loggers.consoleLog(namespacePrefix + functionName, msg.capplicationCommandAliasesIs + JSON.stringify(applicationCommandAliases));
-            namespaceAllCommandsDataObject = await ruleBroker.processRules([namespaceAllCommandsDataObject, applicationCommandAliases], [biz.cobjectDeepMerge]);
-          } else {
-            namespaceAllCommandsDataObject = applicationCommandAliases;
-          }
+          if (applicationCommandAliases) {
+            if (Object.keys(namespaceAllCommandsDataObject).length != 0) {
+              // applicationCommandAliases is:
+              await loggers.consoleLog(namespacePrefix + functionName, msg.capplicationCommandAliasesIs + JSON.stringify(applicationCommandAliases));
+              namespaceAllCommandsDataObject = await ruleBroker.processRules([namespaceAllCommandsDataObject, applicationCommandAliases], [biz.cobjectDeepMerge]);
+            } else {
+              namespaceAllCommandsDataObject = applicationCommandAliases;
+            }
+          } // End-if (applicationCommandAliases)
         } else if (commandNamespaceTypeConfirmedEntity === wrd.cPlugins) {
           if (await configurator.getConfigurationSetting(wrd.csystem, cfg.cenablePluginLoader)) {
             // processing plugins commands
             await loggers.consoleLog(namespacePrefix + functionName, msg.cprocessingPluginsCommands);
             let pluginsCommandAliases = await commandBroker.getAllCommandAliasData(D[sys.cCommandsAliases][wrd.cPlugins]);
-            if (Object.keys(namespaceAllCommandsDataObject).length != 0) {
-              // pluginsCommandAliases is:
-              await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginsCommandAliasesIs + JSON.stringify(pluginsCommandAliases));
-              namespaceAllCommandsDataObject = await ruleBroker.processRules([namespaceAllCommandsDataObject, pluginsCommandAliases], [biz.cobjectDeepMerge]);
-            } else {
-              namespaceAllCommandsDataObject = pluginsCommandAliases;
-            }
-          }
+            if (pluginsCommandAliases) {
+              if (Object.keys(namespaceAllCommandsDataObject).length != 0) {
+                // pluginsCommandAliases is:
+                await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginsCommandAliasesIs + JSON.stringify(pluginsCommandAliases));
+                namespaceAllCommandsDataObject = await ruleBroker.processRules([namespaceAllCommandsDataObject, pluginsCommandAliases], [biz.cobjectDeepMerge]);
+              } else {
+                namespaceAllCommandsDataObject = pluginsCommandAliases;
+              }
+            } // End-if (pluginsCommandAliases)
+          } // End-if (await configurator.getConfigurationSetting(wrd.csystem, cfg.cenablePluginLoader))
         } else {
           // calling getCommandNamespaceDataObject() function,
           // because the user entered some namespace we should look for!
@@ -396,13 +404,15 @@ async function help(inputData, inputMetaData) {
             // NOW call getAllCommandAliasData with the above found data!
             await loggers.consoleLog(namespacePrefix + functionName, msg.chelpCommandMessage03);
             let extraUserEnteredCommandAliases = await commandBroker.getAllCommandAliasData(namespaceCommandsData);
-            if (Object.keys(namespaceAllCommandsDataObject).length != 0) {
-              // extraUserEnteredCommandAliases is:
-              await loggers.consoleLog(namespacePrefix + functionName, msg.cextraUserEnteredCommandAliasesIs + JSON.stringify(extraUserEnteredCommandAliases));
-              namespaceAllCommandsDataObject = await ruleBroker.processRules([namespaceAllCommandsDataObject, extraUserEnteredCommandAliases], [biz.cobjectDeepMerge]);
-            } else {
-              namespaceAllCommandsDataObject = extraUserEnteredCommandAliases;
-            }
+            if (extraUserEnteredCommandAliases) {
+              if (Object.keys(namespaceAllCommandsDataObject).length != 0) {
+                // extraUserEnteredCommandAliases is:
+                await loggers.consoleLog(namespacePrefix + functionName, msg.cextraUserEnteredCommandAliasesIs + JSON.stringify(extraUserEnteredCommandAliases));
+                namespaceAllCommandsDataObject = await ruleBroker.processRules([namespaceAllCommandsDataObject, extraUserEnteredCommandAliases], [biz.cobjectDeepMerge]);
+              } else {
+                namespaceAllCommandsDataObject = extraUserEnteredCommandAliases;
+              }
+            } // End-if (extraUserEnteredCommandAliases)
           }
         }
         // namespaceAllCommandsDataObject is:
@@ -494,6 +504,8 @@ async function workflowHelp(inputData, inputMetaData) {
         workflowNamespaceTypesConfirmedArray.push(wrd.cApplication);
       } else if (workflowNamespaceEntity.toUpperCase().trim() === wrd.cPLUGINS || workflowNamespaceEntity.toUpperCase().trim() === wrd.cPLUGIN) {
         workflowNamespaceTypesConfirmedArray.push(wrd.cPlugins);
+      } else if (workflowNamespaceEntity === '') {
+        // Just ignore it!
       } else {
         // Not sure what the user may have entered here, but it could be some valid namespace, so just add it to the array, and assume best intent.
         // If its going to error out, then it will print an error some place else.
@@ -520,37 +532,43 @@ async function workflowHelp(inputData, inputMetaData) {
           // processing framework workflows
           await loggers.consoleLog(namespacePrefix + functionName, msg.cprocessingFrameworkWorkflows);
           let frameworkWorkflows = await workflowBroker.getAllWorkflows(D[sys.cCommandWorkflows][wrd.cFramework]);
-          if (namespaceAllWorkflowsDataObject.length != 0) {
-            // frameworkWorkflows is:
-            await loggers.consoleLog(namespacePrefix + functionName, msg.cframeworkWorkflowsIs + JSON.stringify(frameworkWorkflows));
-            namespaceAllWorkflowsDataObject.push(...frameworkWorkflows);
-          } else {
-            namespaceAllWorkflowsDataObject = frameworkWorkflows;
-          }
+          if (frameworkWorkflows) {
+            if (namespaceAllWorkflowsDataObject.length != 0) {
+              // frameworkWorkflows is:
+              await loggers.consoleLog(namespacePrefix + functionName, msg.cframeworkWorkflowsIs + JSON.stringify(frameworkWorkflows));
+              namespaceAllWorkflowsDataObject.push(...frameworkWorkflows);
+            } else {
+              namespaceAllWorkflowsDataObject = frameworkWorkflows;
+            }
+          } // End-if (frameworkWorkflows)
         } else if (workflowNamespaceTypeConfirmedEntity === wrd.cApplication) {
           // processing application workflows
           await loggers.consoleLog(namespacePrefix + functionName, msg.cprocessingApplicationWorkflows);
           let applicationWorkflows = await workflowBroker.getAllWorkflows(D[sys.cCommandWorkflows][wrd.cApplication]);
-          if (namespaceAllWorkflowsDataObject.length != 0) {
-            // applicationWorkflows is:
-            await loggers.consoleLog(namespacePrefix + functionName, msg.capplicationWorkflowsIs + JSON.stringify(applicationWorkflows));
-            namespaceAllWorkflowsDataObject.push(...applicationWorkflows);
-          } else {
-            namespaceAllWorkflowsDataObject = applicationWorkflows;
-          }
+          if (applicationWorkflows) {
+            if (namespaceAllWorkflowsDataObject.length != 0) {
+              // applicationWorkflows is:
+              await loggers.consoleLog(namespacePrefix + functionName, msg.capplicationWorkflowsIs + JSON.stringify(applicationWorkflows));
+              namespaceAllWorkflowsDataObject.push(...applicationWorkflows);
+            } else {
+              namespaceAllWorkflowsDataObject = applicationWorkflows;
+            }
+          } // End-if (applicationWorkflows)
         } else if (workflowNamespaceTypeConfirmedEntity === wrd.cPlugins) {
           if (await configurator.getConfigurationSetting(wrd.csystem, cfg.cenablePluginLoader)) {
             // processing plugins workflows
             await loggers.consoleLog(namespacePrefix + functionName, msg.cprocessingPluginsWorkflows);
             let pluginWorkflows = await workflowBroker.getAllWorkflows(D[sys.cCommandWorkflows][wrd.cPlugins]);
-            if (namespaceAllWorkflowsDataObject.length != 0) {
-              // pluginWorkflows is:
-              await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginWorkflowsIs + JSON.stringify(pluginWorkflows));
-              namespaceAllWorkflowsDataObject.push(...pluginWorkflows);
-            } else {
-              namespaceAllWorkflowsDataObject = pluginWorkflows;
-            }
-          }
+            if (pluginWorkflows) {
+              if (namespaceAllWorkflowsDataObject.length != 0) {
+                // pluginWorkflows is:
+                await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginWorkflowsIs + JSON.stringify(pluginWorkflows));
+                namespaceAllWorkflowsDataObject.push(...pluginWorkflows);
+              } else {
+                namespaceAllWorkflowsDataObject = pluginWorkflows;
+              }
+            } // End-if (pluginWorkflows)
+          } // End-if (await configurator.getConfigurationSetting(wrd.csystem, cfg.cenablePluginLoader))
         } else {
           // calling getWorkflowNamespaceDataObject() function,
           // because the user entered some namespace we should look for!
@@ -568,14 +586,16 @@ async function workflowHelp(inputData, inputMetaData) {
             // NOW call getAllWorkflows with the above found data!
             await loggers.consoleLog(namespacePrefix + functionName, msg.cworkfowHelpMessage03);
             let extraUserEnteredWorkflows = await workflowBroker.getAllWorkflows(namespaceWorkflowData);
-            if (namespaceAllWorkflowsDataObject.length != 0) {
-              // extraUserEnteredWorkflows is:
-              await loggers.consoleLog(namespacePrefix + functionName, msg.cextraUserEnteredWorkflowsIs + JSON.stringify(extraUserEnteredWorkflows));
-              // namespaceAllWorkflowsDataObject = await ruleBroker.processRules([namespaceAllWorkflowsDataObject, extraUserEnteredWorkflows], [biz.cobjectDeepMerge]);
-              namespaceAllWorkflowsDataObject.push(...extraUserEnteredWorkflows);
-            } else {
-              namespaceAllWorkflowsDataObject = extraUserEnteredWorkflows;
-            }
+            if (extraUserEnteredWorkflows) {
+              if (namespaceAllWorkflowsDataObject.length != 0) {
+                // extraUserEnteredWorkflows is:
+                await loggers.consoleLog(namespacePrefix + functionName, msg.cextraUserEnteredWorkflowsIs + JSON.stringify(extraUserEnteredWorkflows));
+                // namespaceAllWorkflowsDataObject = await ruleBroker.processRules([namespaceAllWorkflowsDataObject, extraUserEnteredWorkflows], [biz.cobjectDeepMerge]);
+                namespaceAllWorkflowsDataObject.push(...extraUserEnteredWorkflows);
+              } else {
+                namespaceAllWorkflowsDataObject = extraUserEnteredWorkflows;
+              }
+            } // End-if (extraUserEnteredWorkflows)
           }
         }
         // namespaceAllWorkflowsDataObject is:
