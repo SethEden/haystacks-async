@@ -62,8 +62,8 @@ import path from 'path';
 
 const {bas, biz, cfg, gen, msg, sys, wrd} = hayConst;
 const baseFileName = path.basename(import.meta.url, path.extname(import.meta.url));
-// businessRules.rules.fileOperations.
-const namespacePrefix = sys.cbusinessRules + bas.cDot + wrd.crules + bas.cDot + baseFileName + bas.cDot;
+// framework.businessRules.rules.fileOperations.
+const namespacePrefix = wrd.cframework + bas.cDot + sys.cbusinessRules + bas.cDot + wrd.crules + bas.cDot + baseFileName + bas.cDot;
 const directoriesToSkip = ['browser_components', 'node_modules', 'www', 'platforms', 'Release', 'Documentation', 'Recycle', 'Trash', 'config.json'];
 let filesCollection = [];
 let enableFilesListLimit = false;
@@ -92,7 +92,7 @@ async function getXmlData(inputData, inputMetaData) {
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
   let returnData;
-  let pathAndFilename = path.resolve(inputData);
+  let pathAndFilename = path.normalize(inputData);
   let data = await fs.readFileSync(pathAndFilename, { encoding: gen.cUTF8 });
   let xml;
   await xml2js.parseString(data,
@@ -130,7 +130,7 @@ async function getCsvData(inputData, inputMetaData) {
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
   let returnData;
-  let pathAndFilename = path.resolve(inputData);
+  let pathAndFilename = path.normalize(inputData);
   let data = await fs.readFileSync(pathAndFilename, { encoding: gen.cUTF8 });
   returnData = await papa.parse(data, {
     delimiter: ',',
@@ -165,7 +165,7 @@ async function getJsonData(inputData, inputMetaData) {
   // console.log(`inputMetaData is: ${inputMetaData}`);
   // Make sure to resolve the path on the local system,
   // just in case there are issues with the OS that the code is running on.
-  let pathAndFilename = path.resolve(inputData);
+  let pathAndFilename = path.normalize(inputData);
   let rawData = await fs.readFileSync(pathAndFilename, { encoding: gen.cUTF8 });
   let returnData = JSON.parse(rawData);
   // console.log(`DONE loading data from: ${inputData}`);
@@ -204,6 +204,32 @@ async function writeJsonData(inputData, inputMetaData) {
 }
 
 /**
+ * @function loadAsciiFileFromPath
+ * @description Loads the contents of the ASCII file at the specified path and file name, returns the entire contents of the file.
+ * @param {string} inputData The path and file name of the file that should have its contents loaded into memory for reading and parsing.
+ * @param {string} inputMetaData Not used for this business rules.
+ * @return {object} The contents of the file loaded, False if nothing was loaded.
+ * @author Seth Hollingsead
+ * @date 2022/11/11
+ */
+async function loadAsciiFileFromPath(inputData, inputMetaData) {
+  let functionName = loadAsciiFileFromPath.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
+  let returnData = false;
+  try {
+    returnData = await fs.readFileSync(inputData, gen.cUTF8);
+  } catch (err) {
+    // ERROR: Failure to read from file: 
+    console.error(msg.cErrorLoadAsciiFileFromPathMessage01 + inputData);
+  }
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
+/**
  * @function readDirectoryContents
  * @description This function acts as a wrapper for calling readDirectorySynchronously since that function is recursive.
  * Also that function doesn't technically return anything, it works with a global variable that
@@ -224,7 +250,7 @@ async function readDirectoryContents(inputData, inputMetaData) {
   let returnData = [];
   // Make sure to resolve the path on the local system,
   // just in case there are issues with the OS that the code is running on.
-  let directory = path.resolve(inputData);
+  let directory = path.normalize(inputData);
   await readDirectorySynchronously(directory);
   returnData = filesCollection; // Copy the data into a local variable first.
   filesCollection = undefined; // Make sure to clear it so we don't have a chance of it corrupting any other file operations.
@@ -263,7 +289,7 @@ async function scanDirectoryContents(inputData, inputMetaData) {
   // filesLimit is:
   await loggers.consoleLog(namespacePrefix + functionName, msg.cfilesLimitIs + filesLimit);
   let filesFound = [];
-  let directory = path.resolve(inputData);
+  let directory = path.normalize(inputData);
   enableFilesListLimit = enableLimit;
   filesListLimit = filesLimit;
   await readDirectorySynchronously(directory, '');
@@ -295,9 +321,15 @@ async function getDirectoryList(inputData, inputMetaData) {
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
   let returnData = false;
   if (inputData) {
-    returnData = await fs.readdirSync(inputData, { withFileTypes: true })
+    try {
+      returnData = await fs.readdirSync(inputData, { withFileTypes: true })
       .filter((item) => item.isDirectory())
       .map((item) => item.name);
+    } catch (err) {
+      // ERROR: The specified path does not exist or cannot be found:
+      console.log(msg.cErrorGetDirectoryListMessage01 + inputData);
+      console.log(msg.cerrorMessage + err.message);
+    }    
   } // End-if (inputData)
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
@@ -323,7 +355,7 @@ async function readDirectorySynchronously(inputData, inputMetaData) {
   // console.log(`inputData is: ${inputData}`);
   // console.log(`inputMetaData is: ${inputMetaData}`);
   if (hitFileLimit === false) {
-    let directory = path.resolve(inputData); // Make sure to resolve the path on the local system.
+    let directory = path.normalize(inputData); // Make sure to resolve the path on the local system.
     let currentDirectoryPath = directory;
     let currentDirectory = '';
     try {
@@ -365,7 +397,7 @@ async function readDirectorySynchronously(inputData, inputMetaData) {
           // The ideal solution would be to detect which OS the code is being run on.
           // Then handle each case appropriately.
           let directoryPath = '';
-          directoryPath = path.resolve(directory + bas.cForwardSlash + file);
+          directoryPath = path.normalize(directory + bas.cForwardSlash + file);
           // console.log(`directoryPath is ${directoryPath}`);
           await readDirectorySynchronously(directoryPath, '');
           // console.log('filesCollection is: ' + JSON.stringify(filesCollection));
@@ -442,8 +474,8 @@ async function buildReleasePackage(inputData, inputMetaData) {
   // current version is:
   await loggers.consoleLog(namespacePrefix + functionName, msg.ccurrentVersionIs + currentVersion);
   originalSource = bas.cDot + inputData;
-  sourceFolder = path.resolve(rootPath + inputData);
-  destinationFolder = path.resolve(rootPath + inputMetaData);
+  sourceFolder = path.normalize(rootPath + inputData);
+  destinationFolder = path.normalize(rootPath + inputMetaData);
   releaseFiles = await readDirectoryContents(sourceFolder);
   releasedArchiveFiles = await readDirectoryContents(destinationFolder);
   // released archive files list is:
@@ -471,7 +503,7 @@ async function buildReleasePackage(inputData, inputMetaData) {
     let releaseFileName = releaseDateTimeStamp + bas.cUnderscore + currentVersion + bas.cUnderscore + applicationName;
     // release fileName is:
     await loggers.consoleLog(namespacePrefix + functionName, msg.creleaseFileNameIs + releaseFileName);
-    let fullReleasePath = path.resolve(destinationFolder + bas.cForwardSlash + releaseFileName + gen.cDotzip);
+    let fullReleasePath = path.normalize(destinationFolder + bas.cForwardSlash + releaseFileName + gen.cDotzip);
     try {
       await zip.addLocalFolder(sourceFolder, originalSource);
       await zip.writeZip(fullReleasePath);
@@ -677,7 +709,7 @@ async function copyFolderRecursiveSync(inputData, inputMetaData) {
   } else {
     targetFolder = path.join(target, pathLeafNode);
   }
-  targetFolder = path.resolve(targetFolder);
+  targetFolder = path.normalize(targetFolder);
   if (await fs.existsSync(targetFolder) !== true) {
     try {
       // console.log('making the path');
@@ -780,6 +812,7 @@ export default {
   getCsvData,
   getJsonData,
   writeJsonData,
+  loadAsciiFileFromPath,
   readDirectoryContents,
   scanDirectoryContents,
   getDirectoryList,
@@ -802,13 +835,13 @@ export default {
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-advanced.html">advanced</a></li><li><a href="module-allConstantsValidationMetadata.html">allConstantsValidationMetadata</a></li><li><a href="module-auxiliary.html">auxiliary</a></li><li><a href="module-auxiliaryArrayParsing.html">auxiliaryArrayParsing</a></li><li><a href="module-auxiliaryStringParsing.html">auxiliaryStringParsing</a></li><li><a href="module-characterArrayParsing.html">characterArrayParsing</a></li><li><a href="module-characterGeneration.html">characterGeneration</a></li><li><a href="module-characterStringParsing.html">characterStringParsing</a></li><li><a href="module-chiefCommander.html">chiefCommander</a></li><li><a href="module-chiefConfiguration.html">chiefConfiguration</a></li><li><a href="module-chiefData.html">chiefData</a></li><li><a href="module-chiefPlugin.html">chiefPlugin</a></li><li><a href="module-chiefWorkflow.html">chiefWorkflow</a></li><li><a href="module-colorizer.html">colorizer</a></li><li><a href="module-commandArrayParsing.html">commandArrayParsing</a></li><li><a href="module-commandBroker.html">commandBroker</a></li><li><a href="module-commandsLibrary.html">commandsLibrary</a></li><li><a href="module-commandStringParsing.html">commandStringParsing</a></li><li><a href="module-configuration.html">configuration</a></li><li><a href="module-configurator.html">configurator</a></li><li><a href="module-constant.html">constant</a></li><li><a href="module-constantArrayParsing.html">constantArrayParsing</a></li><li><a href="module-constantStringParsing.html">constantStringParsing</a></li><li><a href="module-data.html">data</a></li><li><a href="module-dataArrayParsing.html">dataArrayParsing</a></li><li><a href="module-dataBroker.html">dataBroker</a></li><li><a href="module-dataDirectorate.html">dataDirectorate</a></li><li><a href="module-dataStringParsing.html">dataStringParsing</a></li><li><a href="module-fileOperations.html">fileOperations</a></li><li><a href="module-fileStringParsing.html">fileStringParsing</a></li><li><a href="module-integrationTests.html">integrationTests</a></li><li><a href="module-lexicalAnalyzer.html">lexicalAnalyzer</a></li><li><a href="module-loggers.html">loggers</a></li><li><a href="module-main.html">main</a></li><li><a href="module-mathOperations.html">mathOperations</a></li><li><a href="module-pathArrayParsing.html">pathArrayParsing</a></li><li><a href="module-performanceMetric.html">performanceMetric</a></li><li><a href="module-pluginBroker.html">pluginBroker</a></li><li><a href="module-plugins.html">plugins</a></li><li><a href="module-promptOperations.html">promptOperations</a></li><li><a href="module-queue.html">queue</a></li><li><a href="module-ruleBroker.html">ruleBroker</a></li><li><a href="module-ruleParsing.html">ruleParsing</a></li><li><a href="module-rulesLibrary.html">rulesLibrary</a></li><li><a href="module-stack.html">stack</a></li><li><a href="module-stringGeneration.html">stringGeneration</a></li><li><a href="module-stringParsingUtilities.html">stringParsingUtilities</a></li><li><a href="module-system.html">system</a></li><li><a href="module-themeBroker.html">themeBroker</a></li><li><a href="module-timeComputation.html">timeComputation</a></li><li><a href="module-warden.html">warden</a></li><li><a href="module-wordArrayParsing.html">wordArrayParsing</a></li><li><a href="module-wordStringParsing.html">wordStringParsing</a></li><li><a href="module-workflowBroker.html">workflowBroker</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-advanced.html">advanced</a></li><li><a href="module-auxiliary.html">auxiliary</a></li><li><a href="module-auxiliaryArrayParsing.html">auxiliaryArrayParsing</a></li><li><a href="module-auxiliaryStringParsing.html">auxiliaryStringParsing</a></li><li><a href="module-characterArrayParsing.html">characterArrayParsing</a></li><li><a href="module-characterGeneration.html">characterGeneration</a></li><li><a href="module-characterStringParsing.html">characterStringParsing</a></li><li><a href="module-chiefCommander.html">chiefCommander</a></li><li><a href="module-chiefConfiguration.html">chiefConfiguration</a></li><li><a href="module-chiefConstant.html">chiefConstant</a></li><li><a href="module-chiefData.html">chiefData</a></li><li><a href="module-chiefPlugin.html">chiefPlugin</a></li><li><a href="module-chiefTheme.html">chiefTheme</a></li><li><a href="module-chiefWorkflow.html">chiefWorkflow</a></li><li><a href="module-colorizer.html">colorizer</a></li><li><a href="module-commandArrayParsing.html">commandArrayParsing</a></li><li><a href="module-commandBroker.html">commandBroker</a></li><li><a href="module-commandsLibrary.html">commandsLibrary</a></li><li><a href="module-commandStringParsing.html">commandStringParsing</a></li><li><a href="module-configuration.html">configuration</a></li><li><a href="module-configurator.html">configurator</a></li><li><a href="module-constant.html">constant</a></li><li><a href="module-constantArrayParsing.html">constantArrayParsing</a></li><li><a href="module-constantBroker.html">constantBroker</a></li><li><a href="module-constantStringParsing.html">constantStringParsing</a></li><li><a href="module-data.html">data</a></li><li><a href="module-dataArrayParsing.html">dataArrayParsing</a></li><li><a href="module-dataBroker.html">dataBroker</a></li><li><a href="module-dataDirectorate.html">dataDirectorate</a></li><li><a href="module-dataStringParsing.html">dataStringParsing</a></li><li><a href="module-fileOperations.html">fileOperations</a></li><li><a href="module-fileStringParsing.html">fileStringParsing</a></li><li><a href="module-integrationTests.html">integrationTests</a></li><li><a href="module-lexicalAnalyzer.html">lexicalAnalyzer</a></li><li><a href="module-loggers.html">loggers</a></li><li><a href="module-main.html">main</a></li><li><a href="module-mathOperations.html">mathOperations</a></li><li><a href="module-pathArrayParsing.html">pathArrayParsing</a></li><li><a href="module-performanceMetric.html">performanceMetric</a></li><li><a href="module-pluginBroker.html">pluginBroker</a></li><li><a href="module-plugins.html">plugins</a></li><li><a href="module-promptOperations.html">promptOperations</a></li><li><a href="module-queue.html">queue</a></li><li><a href="module-ruleBroker.html">ruleBroker</a></li><li><a href="module-ruleParsing.html">ruleParsing</a></li><li><a href="module-rulesLibrary.html">rulesLibrary</a></li><li><a href="module-stack.html">stack</a></li><li><a href="module-stringGeneration.html">stringGeneration</a></li><li><a href="module-stringParsingUtilities.html">stringParsingUtilities</a></li><li><a href="module-system.html">system</a></li><li><a href="module-themeBroker.html">themeBroker</a></li><li><a href="module-timeComputation.html">timeComputation</a></li><li><a href="module-warden.html">warden</a></li><li><a href="module-wordArrayParsing.html">wordArrayParsing</a></li><li><a href="module-wordStringParsing.html">wordStringParsing</a></li><li><a href="module-workflowBroker.html">workflowBroker</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Wed Oct 26 2022 17:51:53 GMT-0500 (Central Daylight Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Wed Feb 22 2023 14:45:59 GMT-0600 (Central Standard Time)
 </footer>
 
 <script> prettyPrint(); </script>

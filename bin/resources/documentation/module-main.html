@@ -143,7 +143,7 @@
         
             <li>module:prompt</li>
         
-            <li><a href="module-allConstantsValidationMetadata.html">module:allConstantsValidationMetadata</a></li>
+            <li><a href="module-stack.html">module:stack</a></li>
         
             <li><a href="module-data.html">module:data</a></li>
         
@@ -171,6 +171,175 @@
 
     
         <h3 class="subsection-title">Methods</h3>
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~accouterFramework"><span class="type-signature">(inner) </span>accouterFramework<span class="signature">(data)</span><span class="type-signature"> &rarr; {boolean}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Equip and outfit this instance of the haystacks framework with an existing data structure.
+This function essentially allows plugins to inject a clone of the D-data structure from another instance of
+Haystacks into this instance of Haystacks, essentially creating a clone of the original instance of Haystacks.
+The purpose being to be able to call back to Haystacks and have it perform loading and parsing operations on files.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>data</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>A JSON data structure, that is a clone of the D-data structure from another instance of Haystacks.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-author">Author:</dt>
+    <dd class="tag-author">
+        <ul>
+            <li>Seth Hollingsead</li>
+        </ul>
+    </dd>
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="main.js.html">main.js</a>, <a href="main.js.html#line97">line 97</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>A True or False value to indicate if the operation was completed successfully or not.</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">boolean</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
 
         
             
@@ -239,7 +408,7 @@ Which is in-turn a wrapper function for pluginBroker.unregisterAllPlugins.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="main.js.html">main.js</a>, <a href="main.js.html#line317">line 317</a>
+        <a href="main.js.html">main.js</a>, <a href="main.js.html#line423">line 423</a>
     </li></ul></dd>
     
 
@@ -454,7 +623,7 @@ Which is in-turn a wrapper function for pluginBroker.unregisterAllPlugins.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="main.js.html">main.js</a>, <a href="main.js.html#line640">line 640</a>
+        <a href="main.js.html">main.js</a>, <a href="main.js.html#line768">line 768</a>
     </li></ul></dd>
     
 
@@ -620,7 +789,7 @@ This also acts as a wrapper for the warden.enqueueCommand function.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="main.js.html">main.js</a>, <a href="main.js.html#line528">line 528</a>
+        <a href="main.js.html">main.js</a>, <a href="main.js.html#line653">line 653</a>
     </li></ul></dd>
     
 
@@ -807,7 +976,7 @@ inputs[1] = inputMetaData - Additional data the input to the rule.</p></td>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="main.js.html">main.js</a>, <a href="main.js.html#line504">line 504</a>
+        <a href="main.js.html">main.js</a>, <a href="main.js.html#line629">line 629</a>
     </li></ul></dd>
     
 
@@ -997,7 +1166,7 @@ where the configuration setting should be found.</p></td>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="main.js.html">main.js</a>, <a href="main.js.html#line615">line 615</a>
+        <a href="main.js.html">main.js</a>, <a href="main.js.html#line743">line 743</a>
     </li></ul></dd>
     
 
@@ -1050,6 +1219,243 @@ where the configuration setting should be found.</p></td>
 |
 
 <span class="param-type">object</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~getFrameworkData"><span class="type-signature">(inner) </span>getFrameworkData<span class="signature">()</span><span class="type-signature"> &rarr; {object}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Returns all the contents of the framework data. Can be used to pull the data contents of a Haystacks
+instance to swap it out with mock data, then swap back afterward.</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-author">Author:</dt>
+    <dd class="tag-author">
+        <ul>
+            <li>Seth Hollingsead</li>
+        </ul>
+    </dd>
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="main.js.html">main.js</a>, <a href="main.js.html#line133">line 133</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>A JSON object that contains the entire contents of the Haystacks D-data structure.</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">object</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~getPluginsRegistryPath"><span class="type-signature">(inner) </span>getPluginsRegistryPath<span class="signature">()</span><span class="type-signature"> &rarr; {string}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>A wrapper call to the warden.getPluginsRegistryPath function.
+Which is in-turn a wrapper function for the chiefPlugin.getPluginsRegistryPath.
+Which is in-turn a wrapper function for pluginBroker.getPluginsRegistryPath.</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-author">Author:</dt>
+    <dd class="tag-author">
+        <ul>
+            <li>Seth Hollingsead</li>
+        </ul>
+    </dd>
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="main.js.html">main.js</a>, <a href="main.js.html#line587">line 587</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>The path to the plugins listed in the plugin registry as meta-data.</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">string</span>
 
 
     </dd>
@@ -1290,7 +1696,7 @@ This is a wrapper function for the warden.isCommandQueueEmpty function.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="main.js.html">main.js</a>, <a href="main.js.html#line549">line 549</a>
+        <a href="main.js.html">main.js</a>, <a href="main.js.html#line677">line 677</a>
     </li></ul></dd>
     
 
@@ -1410,7 +1816,7 @@ Which is in-turn a wrapper function for pluginBroker.listPluginsInRegistry.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="main.js.html">main.js</a>, <a href="main.js.html#line170">line 170</a>
+        <a href="main.js.html">main.js</a>, <a href="main.js.html#line245">line 245</a>
     </li></ul></dd>
     
 
@@ -1529,7 +1935,7 @@ Which is in-turn a wrapper function for pluginBroker.listPluginsInRegistryPath.<
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="main.js.html">main.js</a>, <a href="main.js.html#line189">line 189</a>
+        <a href="main.js.html">main.js</a>, <a href="main.js.html#line264">line 264</a>
     </li></ul></dd>
     
 
@@ -1559,6 +1965,125 @@ Which is in-turn a wrapper function for pluginBroker.listPluginsInRegistryPath.<
         
 <div class="param-desc">
     <p>A list array of the names of the plugins in the plugin registry.</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">array.&lt;string></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~listLoadedPlugins"><span class="type-signature">(inner) </span>listLoadedPlugins<span class="signature">()</span><span class="type-signature"> &rarr; {array.&lt;string>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>This is a wrapper function for warden.listLoadedPlugins.
+Which is in-turn a wrapper function for chiefPlugin.listLoadedPlugins.
+Which is in-turn a wrapper function for pluginBroker.listAllLoadedPlugins.</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-author">Author:</dt>
+    <dd class="tag-author">
+        <ul>
+            <li>Seth Hollingsead</li>
+        </ul>
+    </dd>
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="main.js.html">main.js</a>, <a href="main.js.html#line226">line 226</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>A list array of the names of the plugins that are currently loaded.</p>
 </div>
 
 
@@ -1720,7 +2245,7 @@ used to store the path in the configuration system so it can be loaded by the fr
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="main.js.html">main.js</a>, <a href="main.js.html#line124">line 124</a>
+        <a href="main.js.html">main.js</a>, <a href="main.js.html#line180">line 180</a>
     </li></ul></dd>
     
 
@@ -1907,7 +2432,7 @@ to store the path in the configuration system so it can be loaded by the framewo
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="main.js.html">main.js</a>, <a href="main.js.html#line147">line 147</a>
+        <a href="main.js.html">main.js</a>, <a href="main.js.html#line203">line 203</a>
     </li></ul></dd>
     
 
@@ -2071,7 +2596,7 @@ Business rules, Commands, Workflows, Constants, Configurations, dependencies ist
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="main.js.html">main.js</a>, <a href="main.js.html#line355">line 355</a>
+        <a href="main.js.html">main.js</a>, <a href="main.js.html#line461">line 461</a>
     </li></ul></dd>
     
 
@@ -2260,7 +2785,7 @@ Business rules, Commands, Workflows, Constants, Configurations, dependencies ist
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="main.js.html">main.js</a>, <a href="main.js.html#line481">line 481</a>
+        <a href="main.js.html">main.js</a>, <a href="main.js.html#line606">line 606</a>
     </li></ul></dd>
     
 
@@ -2428,7 +2953,7 @@ Business rules, Commands, Workflows, Constants, Configurations, dependencies lis
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="main.js.html">main.js</a>, <a href="main.js.html#line377">line 377</a>
+        <a href="main.js.html">main.js</a>, <a href="main.js.html#line483">line 483</a>
     </li></ul></dd>
     
 
@@ -2486,7 +3011,7 @@ Business rules, Commands, Workflows, Constants, Configurations, dependencies lis
     
 
     
-    <h4 class="name" id="~loadPuginsFromRegistry"><span class="type-signature">(inner) </span>loadPuginsFromRegistry<span class="signature">()</span><span class="type-signature"> &rarr; {boolean}</span></h4>
+    <h4 class="name" id="~loadPluginsFromRegistry"><span class="type-signature">(inner) </span>loadPluginsFromRegistry<span class="signature">()</span><span class="type-signature"> &rarr; {boolean}</span></h4>
     
 
     
@@ -2495,7 +3020,7 @@ Business rules, Commands, Workflows, Constants, Configurations, dependencies lis
 
 <div class="description">
     <p>A wrapper call to warden.loadPluginsFromRegistry function.
-Calls various functions in the cief Plugin and pluginBroker to oad plugin metaData and data:
+Calls various functions in the chief Plugin and pluginBroker to oad plugin metaData and data:
 Business rules, Commands, Workflows, Constants, Configurations, dependencies ist (dependant plugns), etc...</p>
 </div>
 
@@ -2547,7 +3072,7 @@ Business rules, Commands, Workflows, Constants, Configurations, dependencies ist
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="main.js.html">main.js</a>, <a href="main.js.html#line399">line 399</a>
+        <a href="main.js.html">main.js</a>, <a href="main.js.html#line505">line 505</a>
     </li></ul></dd>
     
 
@@ -2713,7 +3238,7 @@ Business rules, Commands, Workflows, Constants, Configurations, dependencies ist
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="main.js.html">main.js</a>, <a href="main.js.html#line94">line 94</a>
+        <a href="main.js.html">main.js</a>, <a href="main.js.html#line150">line 150</a>
     </li></ul></dd>
     
 
@@ -2875,7 +3400,7 @@ Business rules, Commands, Workflows, Constants, Configurations, dependencies ist
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="main.js.html">main.js</a>, <a href="main.js.html#line109">line 109</a>
+        <a href="main.js.html">main.js</a>, <a href="main.js.html#line165">line 165</a>
     </li></ul></dd>
     
 
@@ -2990,7 +3515,7 @@ Which is in-turn a wrapper function for pluginBroker.countPluginsInRegistry.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="main.js.html">main.js</a>, <a href="main.js.html#line208">line 208</a>
+        <a href="main.js.html">main.js</a>, <a href="main.js.html#line283">line 283</a>
     </li></ul></dd>
     
 
@@ -3057,7 +3582,7 @@ Which is in-turn a wrapper function for pluginBroker.countPluginsInRegistry.</p>
 
 <div class="description">
     <p>This is a wrapper function for warden.numberOfPluginsInRegistryPath.
-Which is in-turn a wrapper function for chiefPlugin.countAllPlugnsInRegistryPath.
+Which is in-turn a wrapper function for chiefPlugin.countAllPluginsInRegistryPath.
 Which is in-turn a wrapper function for pluginBroker.countPluginsInRegistryPath.</p>
 </div>
 
@@ -3109,7 +3634,7 @@ Which is in-turn a wrapper function for pluginBroker.countPluginsInRegistryPath.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="main.js.html">main.js</a>, <a href="main.js.html#line227">line 227</a>
+        <a href="main.js.html">main.js</a>, <a href="main.js.html#line302">line 302</a>
     </li></ul></dd>
     
 
@@ -3138,7 +3663,7 @@ Which is in-turn a wrapper function for pluginBroker.countPluginsInRegistryPath.
 
         
 <div class="param-desc">
-    <p>Teh count of the number of plugn sub-folders in the plugins path listed in the plugn registry data hive.</p>
+    <p>Teh count of the number of plugin sub-folders in the plugins path listed in the plugn registry data hive.</p>
 </div>
 
 
@@ -3229,7 +3754,7 @@ to the command queue. All of them must be executed in sequence as part of the ma
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="main.js.html">main.js</a>, <a href="main.js.html#line568">line 568</a>
+        <a href="main.js.html">main.js</a>, <a href="main.js.html#line696">line 696</a>
     </li></ul></dd>
     
 
@@ -3422,7 +3947,7 @@ This should be the path to the plugin/package.json file, but not including the p
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="main.js.html">main.js</a>, <a href="main.js.html#line246">line 246</a>
+        <a href="main.js.html">main.js</a>, <a href="main.js.html#line321">line 321</a>
     </li></ul></dd>
     
 
@@ -3648,7 +4173,7 @@ Ex: businessRules.rules.stringParsing.countCamelCaseWords</p></td>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="main.js.html">main.js</a>, <a href="main.js.html#line589">line 589</a>
+        <a href="main.js.html">main.js</a>, <a href="main.js.html#line717">line 717</a>
     </li></ul></dd>
     
 
@@ -3763,7 +4288,7 @@ Which is in-turn a wrapper function for pluginBroker.synchPluginRegistryWithPlug
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="main.js.html">main.js</a>, <a href="main.js.html#line294">line 294</a>
+        <a href="main.js.html">main.js</a>, <a href="main.js.html#line400">line 400</a>
     </li></ul></dd>
     
 
@@ -3882,7 +4407,7 @@ Business rules, Commands, Workflows, Constants, Configurations, dependencies lis
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="main.js.html">main.js</a>, <a href="main.js.html#line462">line 462</a>
+        <a href="main.js.html">main.js</a>, <a href="main.js.html#line568">line 568</a>
     </li></ul></dd>
     
 
@@ -4050,7 +4575,7 @@ Business rules, Commands, Workflows, Constants, Configurations, dependencies lis
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="main.js.html">main.js</a>, <a href="main.js.html#line418">line 418</a>
+        <a href="main.js.html">main.js</a>, <a href="main.js.html#line524">line 524</a>
     </li></ul></dd>
     
 
@@ -4218,7 +4743,7 @@ Business rules, Commands, Workflows, Constants, Configurations, dependencies lis
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="main.js.html">main.js</a>, <a href="main.js.html#line440">line 440</a>
+        <a href="main.js.html">main.js</a>, <a href="main.js.html#line546">line 546</a>
     </li></ul></dd>
     
 
@@ -4386,7 +4911,7 @@ Which is in-turn a wrapper function for pluginBroker.unregisterPlugin.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="main.js.html">main.js</a>, <a href="main.js.html#line272">line 272</a>
+        <a href="main.js.html">main.js</a>, <a href="main.js.html#line347">line 347</a>
     </li></ul></dd>
     
 
@@ -4416,6 +4941,177 @@ Which is in-turn a wrapper function for pluginBroker.unregisterPlugin.</p>
         
 <div class="param-desc">
     <p>True or False to indicate if the plugin was removed from the plugin registry successfully or not.</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">boolean</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~unregisterPlugins"><span class="type-signature">(inner) </span>unregisterPlugins<span class="signature">(pluginsListArray)</span><span class="type-signature"> &rarr; {boolean}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>This is a wrapper function for warden.unregisterPlugins.
+Which is in-turn a wrapper function for chiefPlugin.unregisterPlugins.
+Which is in-turn a wrapper function for pluginBroker.unregisterPlugins.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>pluginsListArray</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+|
+
+<span class="param-type">array.&lt;string></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>A string or list array of plugin names that should be removed from the plugin registry.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-author">Author:</dt>
+    <dd class="tag-author">
+        <ul>
+            <li>Seth Hollingsead</li>
+        </ul>
+    </dd>
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="main.js.html">main.js</a>, <a href="main.js.html#line369">line 369</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>True or False to indicate if all the plugins were successfully removed from the plugin registry or not.</p>
 </div>
 
 
@@ -4505,7 +5201,7 @@ Which is in-turn a wrapper function for pluginBroker.savePluginRegistry.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="main.js.html">main.js</a>, <a href="main.js.html#line336">line 336</a>
+        <a href="main.js.html">main.js</a>, <a href="main.js.html#line442">line 442</a>
     </li></ul></dd>
     
 
@@ -4573,13 +5269,13 @@ Which is in-turn a wrapper function for pluginBroker.savePluginRegistry.</p>
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-advanced.html">advanced</a></li><li><a href="module-allConstantsValidationMetadata.html">allConstantsValidationMetadata</a></li><li><a href="module-auxiliary.html">auxiliary</a></li><li><a href="module-auxiliaryArrayParsing.html">auxiliaryArrayParsing</a></li><li><a href="module-auxiliaryStringParsing.html">auxiliaryStringParsing</a></li><li><a href="module-characterArrayParsing.html">characterArrayParsing</a></li><li><a href="module-characterGeneration.html">characterGeneration</a></li><li><a href="module-characterStringParsing.html">characterStringParsing</a></li><li><a href="module-chiefCommander.html">chiefCommander</a></li><li><a href="module-chiefConfiguration.html">chiefConfiguration</a></li><li><a href="module-chiefData.html">chiefData</a></li><li><a href="module-chiefPlugin.html">chiefPlugin</a></li><li><a href="module-chiefWorkflow.html">chiefWorkflow</a></li><li><a href="module-colorizer.html">colorizer</a></li><li><a href="module-commandArrayParsing.html">commandArrayParsing</a></li><li><a href="module-commandBroker.html">commandBroker</a></li><li><a href="module-commandsLibrary.html">commandsLibrary</a></li><li><a href="module-commandStringParsing.html">commandStringParsing</a></li><li><a href="module-configuration.html">configuration</a></li><li><a href="module-configurator.html">configurator</a></li><li><a href="module-constant.html">constant</a></li><li><a href="module-constantArrayParsing.html">constantArrayParsing</a></li><li><a href="module-constantStringParsing.html">constantStringParsing</a></li><li><a href="module-data.html">data</a></li><li><a href="module-dataArrayParsing.html">dataArrayParsing</a></li><li><a href="module-dataBroker.html">dataBroker</a></li><li><a href="module-dataDirectorate.html">dataDirectorate</a></li><li><a href="module-dataStringParsing.html">dataStringParsing</a></li><li><a href="module-fileOperations.html">fileOperations</a></li><li><a href="module-fileStringParsing.html">fileStringParsing</a></li><li><a href="module-integrationTests.html">integrationTests</a></li><li><a href="module-lexicalAnalyzer.html">lexicalAnalyzer</a></li><li><a href="module-loggers.html">loggers</a></li><li><a href="module-main.html">main</a></li><li><a href="module-mathOperations.html">mathOperations</a></li><li><a href="module-pathArrayParsing.html">pathArrayParsing</a></li><li><a href="module-performanceMetric.html">performanceMetric</a></li><li><a href="module-pluginBroker.html">pluginBroker</a></li><li><a href="module-plugins.html">plugins</a></li><li><a href="module-promptOperations.html">promptOperations</a></li><li><a href="module-queue.html">queue</a></li><li><a href="module-ruleBroker.html">ruleBroker</a></li><li><a href="module-ruleParsing.html">ruleParsing</a></li><li><a href="module-rulesLibrary.html">rulesLibrary</a></li><li><a href="module-stack.html">stack</a></li><li><a href="module-stringGeneration.html">stringGeneration</a></li><li><a href="module-stringParsingUtilities.html">stringParsingUtilities</a></li><li><a href="module-system.html">system</a></li><li><a href="module-themeBroker.html">themeBroker</a></li><li><a href="module-timeComputation.html">timeComputation</a></li><li><a href="module-warden.html">warden</a></li><li><a href="module-wordArrayParsing.html">wordArrayParsing</a></li><li><a href="module-wordStringParsing.html">wordStringParsing</a></li><li><a href="module-workflowBroker.html">workflowBroker</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-advanced.html">advanced</a></li><li><a href="module-auxiliary.html">auxiliary</a></li><li><a href="module-auxiliaryArrayParsing.html">auxiliaryArrayParsing</a></li><li><a href="module-auxiliaryStringParsing.html">auxiliaryStringParsing</a></li><li><a href="module-characterArrayParsing.html">characterArrayParsing</a></li><li><a href="module-characterGeneration.html">characterGeneration</a></li><li><a href="module-characterStringParsing.html">characterStringParsing</a></li><li><a href="module-chiefCommander.html">chiefCommander</a></li><li><a href="module-chiefConfiguration.html">chiefConfiguration</a></li><li><a href="module-chiefConstant.html">chiefConstant</a></li><li><a href="module-chiefData.html">chiefData</a></li><li><a href="module-chiefPlugin.html">chiefPlugin</a></li><li><a href="module-chiefTheme.html">chiefTheme</a></li><li><a href="module-chiefWorkflow.html">chiefWorkflow</a></li><li><a href="module-colorizer.html">colorizer</a></li><li><a href="module-commandArrayParsing.html">commandArrayParsing</a></li><li><a href="module-commandBroker.html">commandBroker</a></li><li><a href="module-commandsLibrary.html">commandsLibrary</a></li><li><a href="module-commandStringParsing.html">commandStringParsing</a></li><li><a href="module-configuration.html">configuration</a></li><li><a href="module-configurator.html">configurator</a></li><li><a href="module-constant.html">constant</a></li><li><a href="module-constantArrayParsing.html">constantArrayParsing</a></li><li><a href="module-constantBroker.html">constantBroker</a></li><li><a href="module-constantStringParsing.html">constantStringParsing</a></li><li><a href="module-data.html">data</a></li><li><a href="module-dataArrayParsing.html">dataArrayParsing</a></li><li><a href="module-dataBroker.html">dataBroker</a></li><li><a href="module-dataDirectorate.html">dataDirectorate</a></li><li><a href="module-dataStringParsing.html">dataStringParsing</a></li><li><a href="module-fileOperations.html">fileOperations</a></li><li><a href="module-fileStringParsing.html">fileStringParsing</a></li><li><a href="module-integrationTests.html">integrationTests</a></li><li><a href="module-lexicalAnalyzer.html">lexicalAnalyzer</a></li><li><a href="module-loggers.html">loggers</a></li><li><a href="module-main.html">main</a></li><li><a href="module-mathOperations.html">mathOperations</a></li><li><a href="module-pathArrayParsing.html">pathArrayParsing</a></li><li><a href="module-performanceMetric.html">performanceMetric</a></li><li><a href="module-pluginBroker.html">pluginBroker</a></li><li><a href="module-plugins.html">plugins</a></li><li><a href="module-promptOperations.html">promptOperations</a></li><li><a href="module-queue.html">queue</a></li><li><a href="module-ruleBroker.html">ruleBroker</a></li><li><a href="module-ruleParsing.html">ruleParsing</a></li><li><a href="module-rulesLibrary.html">rulesLibrary</a></li><li><a href="module-stack.html">stack</a></li><li><a href="module-stringGeneration.html">stringGeneration</a></li><li><a href="module-stringParsingUtilities.html">stringParsingUtilities</a></li><li><a href="module-system.html">system</a></li><li><a href="module-themeBroker.html">themeBroker</a></li><li><a href="module-timeComputation.html">timeComputation</a></li><li><a href="module-warden.html">warden</a></li><li><a href="module-wordArrayParsing.html">wordArrayParsing</a></li><li><a href="module-wordStringParsing.html">wordStringParsing</a></li><li><a href="module-workflowBroker.html">workflowBroker</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Wed Oct 26 2022 17:51:53 GMT-0500 (Central Daylight Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Wed Feb 22 2023 14:45:59 GMT-0600 (Central Standard Time)
 </footer>
 
 <script> prettyPrint(); </script>

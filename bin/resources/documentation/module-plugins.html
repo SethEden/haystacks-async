@@ -168,6 +168,196 @@
     
 
     
+    <h4 class="name" id="~countPluginsInRegistry"><span class="type-signature">(inner) </span>countPluginsInRegistry<span class="signature">(inputData, inputMetaData)</span><span class="type-signature"> &rarr; {array.&lt;boolean, integer>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>This is a command function that calls the chiefPlugin.countAllPluginsInRegistry function.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>inputData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Not used for this command.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>inputMetaData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Not used for this command.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-author">Author:</dt>
+    <dd class="tag-author">
+        <ul>
+            <li>Seth Hollingsead</li>
+        </ul>
+    </dd>
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="commandsBlob_commands_plugins.js.html">commandsBlob/commands/plugins.js</a>, <a href="commandsBlob_commands_plugins.js.html#line110">line 110</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>An array with a boolean True or False value to indicate if
+the application should exit or not exit, followed by the number of plugins found in the plugins registry.</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">array.&lt;boolean, integer></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
     <h4 class="name" id="~countPluginsInRegistryPath"><span class="type-signature">(inner) </span>countPluginsInRegistryPath<span class="signature">(inputData, inputMetaData)</span><span class="type-signature"> &rarr; {array.&lt;boolean, integer>}</span></h4>
     
 
@@ -299,7 +489,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="commandsBlob_commands_plugins.js.html">commandsBlob/commands/plugins.js</a>, <a href="commandsBlob_commands_plugins.js.html#line106">line 106</a>
+        <a href="commandsBlob_commands_plugins.js.html">commandsBlob/commands/plugins.js</a>, <a href="commandsBlob_commands_plugins.js.html#line136">line 136</a>
     </li></ul></dd>
     
 
@@ -358,7 +548,7 @@ the application should exit or not exit, followed by the number of plugins found
     
 
     
-    <h4 class="name" id="~countPluginsInRgistry"><span class="type-signature">(inner) </span>countPluginsInRgistry<span class="signature">(inputData, inputMetaData)</span><span class="type-signature"> &rarr; {array.&lt;boolean, integer>}</span></h4>
+    <h4 class="name" id="~listAllLoadedPlugins"><span class="type-signature">(inner) </span>listAllLoadedPlugins<span class="signature">(inputData, inputMetaData)</span><span class="type-signature"> &rarr; {array.&lt;boolean, array.&lt;string>>}</span></h4>
     
 
     
@@ -366,7 +556,7 @@ the application should exit or not exit, followed by the number of plugins found
 
 
 <div class="description">
-    <p>This is a command function that calls the chiefPlugin.countAllPluginsInRegistry function.</p>
+    <p>This is a command function that calls the warden.listLoadedPlugins function</p>
 </div>
 
 
@@ -489,7 +679,7 @@ the application should exit or not exit, followed by the number of plugins found
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="commandsBlob_commands_plugins.js.html">commandsBlob/commands/plugins.js</a>, <a href="commandsBlob_commands_plugins.js.html#line80">line 80</a>
+        <a href="commandsBlob_commands_plugins.js.html">commandsBlob/commands/plugins.js</a>, <a href="commandsBlob_commands_plugins.js.html#line28">line 28</a>
     </li></ul></dd>
     
 
@@ -519,7 +709,7 @@ the application should exit or not exit, followed by the number of plugins found
         
 <div class="param-desc">
     <p>An array with a boolean True or False value to indicate if
-the application should exit or not exit, followed by the number of plugins found in the plugins registry.</p>
+the application should exit or not, followed by the list of plugins that have been loaded.</p>
 </div>
 
 
@@ -530,7 +720,7 @@ the application should exit or not exit, followed by the number of plugins found
     </dt>
     <dd>
         
-<span class="param-type">array.&lt;boolean, integer></span>
+<span class="param-type">array.&lt;boolean, array.&lt;string>></span>
 
 
     </dd>
@@ -679,7 +869,7 @@ the application should exit or not exit, followed by the number of plugins found
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="commandsBlob_commands_plugins.js.html">commandsBlob/commands/plugins.js</a>, <a href="commandsBlob_commands_plugins.js.html#line28">line 28</a>
+        <a href="commandsBlob_commands_plugins.js.html">commandsBlob/commands/plugins.js</a>, <a href="commandsBlob_commands_plugins.js.html#line56">line 56</a>
     </li></ul></dd>
     
 
@@ -869,7 +1059,7 @@ the application should exit or not exit, followed by the list of plugins in the 
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="commandsBlob_commands_plugins.js.html">commandsBlob/commands/plugins.js</a>, <a href="commandsBlob_commands_plugins.js.html#line54">line 54</a>
+        <a href="commandsBlob_commands_plugins.js.html">commandsBlob/commands/plugins.js</a>, <a href="commandsBlob_commands_plugins.js.html#line84">line 84</a>
     </li></ul></dd>
     
 
@@ -911,6 +1101,196 @@ the application should exit or not exit, followed by the list of plugins in the 
     <dd>
         
 <span class="param-type">array.&lt;boolean, array.&lt;string>></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~listPluginsRegistryPath"><span class="type-signature">(inner) </span>listPluginsRegistryPath<span class="signature">(inputData, inputMetaData)</span><span class="type-signature"> &rarr; {array.&lt;boolean, string>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Prints out the plugins path that is listed in the plugin registry meta-data.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>inputData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Not used for this command.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>inputMetaData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Not used for this command.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-author">Author:</dt>
+    <dd class="tag-author">
+        <ul>
+            <li>Seth Hollingsead</li>
+        </ul>
+    </dd>
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="commandsBlob_commands_plugins.js.html">commandsBlob/commands/plugins.js</a>, <a href="commandsBlob_commands_plugins.js.html#line330">line 330</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>An array with a boolean True or False value to indicate if
+the application should exit or not exit, followed by a string that is the plugins path.</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">array.&lt;boolean, string></span>
 
 
     </dd>
@@ -992,7 +1372,8 @@ the application should exit or not exit, followed by the list of plugins in the 
 depending on what the user entered. But the function filters all of that internally and
 extracts the case the user has entered the correct input as follows:
 inputData[0] = 'loadPlugin'
-inputData[1] = pluginPath - The fully qualified path where to load the plugin from.</p></td>
+inputData[1] = pluginPath - The fully qualified path where to load the plugin from, or
+the name of the plugin folder in the plugins registry path where the plugin can be found.</p></td>
         </tr>
 
     
@@ -1063,7 +1444,7 @@ inputData[1] = pluginPath - The fully qualified path where to load the plugin fr
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="commandsBlob_commands_plugins.js.html">commandsBlob/commands/plugins.js</a>, <a href="commandsBlob_commands_plugins.js.html#line277">line 277</a>
+        <a href="commandsBlob_commands_plugins.js.html">commandsBlob/commands/plugins.js</a>, <a href="commandsBlob_commands_plugins.js.html#line408">line 408</a>
     </li></ul></dd>
     
 
@@ -1258,7 +1639,7 @@ inputData[1] = Array of fully qualified plugin paths were to load all the plugin
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="commandsBlob_commands_plugins.js.html">commandsBlob/commands/plugins.js</a>, <a href="commandsBlob_commands_plugins.js.html#line309">line 309</a>
+        <a href="commandsBlob_commands_plugins.js.html">commandsBlob/commands/plugins.js</a>, <a href="commandsBlob_commands_plugins.js.html#line441">line 441</a>
     </li></ul></dd>
     
 
@@ -1449,7 +1830,7 @@ all the plugins were loaded successfully or not.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="commandsBlob_commands_plugins.js.html">commandsBlob/commands/plugins.js</a>, <a href="commandsBlob_commands_plugins.js.html#line341">line 341</a>
+        <a href="commandsBlob_commands_plugins.js.html">commandsBlob/commands/plugins.js</a>, <a href="commandsBlob_commands_plugins.js.html#line480">line 480</a>
     </li></ul></dd>
     
 
@@ -1645,7 +2026,7 @@ inputData[2] = pluginPath</p></td>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="commandsBlob_commands_plugins.js.html">commandsBlob/commands/plugins.js</a>, <a href="commandsBlob_commands_plugins.js.html#line132">line 132</a>
+        <a href="commandsBlob_commands_plugins.js.html">commandsBlob/commands/plugins.js</a>, <a href="commandsBlob_commands_plugins.js.html#line162">line 162</a>
     </li></ul></dd>
     
 
@@ -1835,7 +2216,7 @@ the application should exit or not exit, followed by another boolean value to in
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="commandsBlob_commands_plugins.js.html">commandsBlob/commands/plugins.js</a>, <a href="commandsBlob_commands_plugins.js.html#line250">line 250</a>
+        <a href="commandsBlob_commands_plugins.js.html">commandsBlob/commands/plugins.js</a>, <a href="commandsBlob_commands_plugins.js.html#line381">line 381</a>
     </li></ul></dd>
     
 
@@ -2026,7 +2407,7 @@ the plugin registry was saved successfully or not.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="commandsBlob_commands_plugins.js.html">commandsBlob/commands/plugins.js</a>, <a href="commandsBlob_commands_plugins.js.html#line196">line 196</a>
+        <a href="commandsBlob_commands_plugins.js.html">commandsBlob/commands/plugins.js</a>, <a href="commandsBlob_commands_plugins.js.html#line303">line 303</a>
     </li></ul></dd>
     
 
@@ -2217,7 +2598,7 @@ the plugin registry synchronization was successful or not.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="commandsBlob_commands_plugins.js.html">commandsBlob/commands/plugins.js</a>, <a href="commandsBlob_commands_plugins.js.html#line432">line 432</a>
+        <a href="commandsBlob_commands_plugins.js.html">commandsBlob/commands/plugins.js</a>, <a href="commandsBlob_commands_plugins.js.html#line578">line 578</a>
     </li></ul></dd>
     
 
@@ -2412,7 +2793,7 @@ inputData[1] = pluginName - The name of the plugin that should be unloaded.</p><
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="commandsBlob_commands_plugins.js.html">commandsBlob/commands/plugins.js</a>, <a href="commandsBlob_commands_plugins.js.html#line368">line 368</a>
+        <a href="commandsBlob_commands_plugins.js.html">commandsBlob/commands/plugins.js</a>, <a href="commandsBlob_commands_plugins.js.html#line507">line 507</a>
     </li></ul></dd>
     
 
@@ -2607,7 +2988,7 @@ inputData[1] = Array of plugin names that should be unloaded.</p></td>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="commandsBlob_commands_plugins.js.html">commandsBlob/commands/plugins.js</a>, <a href="commandsBlob_commands_plugins.js.html#line400">line 400</a>
+        <a href="commandsBlob_commands_plugins.js.html">commandsBlob/commands/plugins.js</a>, <a href="commandsBlob_commands_plugins.js.html#line539">line 539</a>
     </li></ul></dd>
     
 
@@ -2798,7 +3179,7 @@ the specified plugin was unloaded successfully or not.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="commandsBlob_commands_plugins.js.html">commandsBlob/commands/plugins.js</a>, <a href="commandsBlob_commands_plugins.js.html#line223">line 223</a>
+        <a href="commandsBlob_commands_plugins.js.html">commandsBlob/commands/plugins.js</a>, <a href="commandsBlob_commands_plugins.js.html#line354">line 354</a>
     </li></ul></dd>
     
 
@@ -2919,7 +3300,7 @@ all the plugins were unregistered successfully or not.</p>
             
 
             <td class="description last"><p>An array that could actually contain anything,
-dependng on what the user entered. But the function filters all of that internally and
+depending on what the user entered. But the function filters all of that internally and
 extracts the case the user has entered the correct input as follows:
 inputData[0] = 'unregisterPlugin'
 inputData[1] = pluginName</p></td>
@@ -2993,7 +3374,7 @@ inputData[1] = pluginName</p></td>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="commandsBlob_commands_plugins.js.html">commandsBlob/commands/plugins.js</a>, <a href="commandsBlob_commands_plugins.js.html#line164">line 164</a>
+        <a href="commandsBlob_commands_plugins.js.html">commandsBlob/commands/plugins.js</a>, <a href="commandsBlob_commands_plugins.js.html#line232">line 232</a>
     </li></ul></dd>
     
 
@@ -3048,6 +3429,201 @@ the plugin was unregistered successfully or not.</p>
 
 
         
+            
+
+    
+
+    
+    <h4 class="name" id="~unregisterPlugins"><span class="type-signature">(inner) </span>unregisterPlugins<span class="signature">(inputData, inputMetaData)</span><span class="type-signature"> &rarr; {array.&lt;boolean, boolean>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>This is a command function that calls chiefPlugin.unregisterPlugins function.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>inputData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">array.&lt;string></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>An array that could actually contain anything,
+depending on what the user entered. But the function filters all of that internally and
+extracts the case the user has entered the correct input as follows:
+inputData[0] = 'unregisterPlugins'
+inputData[1] = pluginName1,pluginName2,pluginNameX...</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>inputMetaData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Not used for this command.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-author">Author:</dt>
+    <dd class="tag-author">
+        <ul>
+            <li>Seth Hollingsead</li>
+        </ul>
+    </dd>
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="commandsBlob_commands_plugins.js.html">commandsBlob/commands/plugins.js</a>, <a href="commandsBlob_commands_plugins.js.html#line264">line 264</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>An array with a boolean True or False value to indicate if
+the application should exit or not exit, followed by another boolean value to indicate if
+the plugins were unregistered successfully or not.</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">array.&lt;boolean, boolean></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
     
 
     
@@ -3063,13 +3639,13 @@ the plugin was unregistered successfully or not.</p>
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-advanced.html">advanced</a></li><li><a href="module-allConstantsValidationMetadata.html">allConstantsValidationMetadata</a></li><li><a href="module-auxiliary.html">auxiliary</a></li><li><a href="module-auxiliaryArrayParsing.html">auxiliaryArrayParsing</a></li><li><a href="module-auxiliaryStringParsing.html">auxiliaryStringParsing</a></li><li><a href="module-characterArrayParsing.html">characterArrayParsing</a></li><li><a href="module-characterGeneration.html">characterGeneration</a></li><li><a href="module-characterStringParsing.html">characterStringParsing</a></li><li><a href="module-chiefCommander.html">chiefCommander</a></li><li><a href="module-chiefConfiguration.html">chiefConfiguration</a></li><li><a href="module-chiefData.html">chiefData</a></li><li><a href="module-chiefPlugin.html">chiefPlugin</a></li><li><a href="module-chiefWorkflow.html">chiefWorkflow</a></li><li><a href="module-colorizer.html">colorizer</a></li><li><a href="module-commandArrayParsing.html">commandArrayParsing</a></li><li><a href="module-commandBroker.html">commandBroker</a></li><li><a href="module-commandsLibrary.html">commandsLibrary</a></li><li><a href="module-commandStringParsing.html">commandStringParsing</a></li><li><a href="module-configuration.html">configuration</a></li><li><a href="module-configurator.html">configurator</a></li><li><a href="module-constant.html">constant</a></li><li><a href="module-constantArrayParsing.html">constantArrayParsing</a></li><li><a href="module-constantStringParsing.html">constantStringParsing</a></li><li><a href="module-data.html">data</a></li><li><a href="module-dataArrayParsing.html">dataArrayParsing</a></li><li><a href="module-dataBroker.html">dataBroker</a></li><li><a href="module-dataDirectorate.html">dataDirectorate</a></li><li><a href="module-dataStringParsing.html">dataStringParsing</a></li><li><a href="module-fileOperations.html">fileOperations</a></li><li><a href="module-fileStringParsing.html">fileStringParsing</a></li><li><a href="module-integrationTests.html">integrationTests</a></li><li><a href="module-lexicalAnalyzer.html">lexicalAnalyzer</a></li><li><a href="module-loggers.html">loggers</a></li><li><a href="module-main.html">main</a></li><li><a href="module-mathOperations.html">mathOperations</a></li><li><a href="module-pathArrayParsing.html">pathArrayParsing</a></li><li><a href="module-performanceMetric.html">performanceMetric</a></li><li><a href="module-pluginBroker.html">pluginBroker</a></li><li><a href="module-plugins.html">plugins</a></li><li><a href="module-promptOperations.html">promptOperations</a></li><li><a href="module-queue.html">queue</a></li><li><a href="module-ruleBroker.html">ruleBroker</a></li><li><a href="module-ruleParsing.html">ruleParsing</a></li><li><a href="module-rulesLibrary.html">rulesLibrary</a></li><li><a href="module-stack.html">stack</a></li><li><a href="module-stringGeneration.html">stringGeneration</a></li><li><a href="module-stringParsingUtilities.html">stringParsingUtilities</a></li><li><a href="module-system.html">system</a></li><li><a href="module-themeBroker.html">themeBroker</a></li><li><a href="module-timeComputation.html">timeComputation</a></li><li><a href="module-warden.html">warden</a></li><li><a href="module-wordArrayParsing.html">wordArrayParsing</a></li><li><a href="module-wordStringParsing.html">wordStringParsing</a></li><li><a href="module-workflowBroker.html">workflowBroker</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-advanced.html">advanced</a></li><li><a href="module-auxiliary.html">auxiliary</a></li><li><a href="module-auxiliaryArrayParsing.html">auxiliaryArrayParsing</a></li><li><a href="module-auxiliaryStringParsing.html">auxiliaryStringParsing</a></li><li><a href="module-characterArrayParsing.html">characterArrayParsing</a></li><li><a href="module-characterGeneration.html">characterGeneration</a></li><li><a href="module-characterStringParsing.html">characterStringParsing</a></li><li><a href="module-chiefCommander.html">chiefCommander</a></li><li><a href="module-chiefConfiguration.html">chiefConfiguration</a></li><li><a href="module-chiefConstant.html">chiefConstant</a></li><li><a href="module-chiefData.html">chiefData</a></li><li><a href="module-chiefPlugin.html">chiefPlugin</a></li><li><a href="module-chiefTheme.html">chiefTheme</a></li><li><a href="module-chiefWorkflow.html">chiefWorkflow</a></li><li><a href="module-colorizer.html">colorizer</a></li><li><a href="module-commandArrayParsing.html">commandArrayParsing</a></li><li><a href="module-commandBroker.html">commandBroker</a></li><li><a href="module-commandsLibrary.html">commandsLibrary</a></li><li><a href="module-commandStringParsing.html">commandStringParsing</a></li><li><a href="module-configuration.html">configuration</a></li><li><a href="module-configurator.html">configurator</a></li><li><a href="module-constant.html">constant</a></li><li><a href="module-constantArrayParsing.html">constantArrayParsing</a></li><li><a href="module-constantBroker.html">constantBroker</a></li><li><a href="module-constantStringParsing.html">constantStringParsing</a></li><li><a href="module-data.html">data</a></li><li><a href="module-dataArrayParsing.html">dataArrayParsing</a></li><li><a href="module-dataBroker.html">dataBroker</a></li><li><a href="module-dataDirectorate.html">dataDirectorate</a></li><li><a href="module-dataStringParsing.html">dataStringParsing</a></li><li><a href="module-fileOperations.html">fileOperations</a></li><li><a href="module-fileStringParsing.html">fileStringParsing</a></li><li><a href="module-integrationTests.html">integrationTests</a></li><li><a href="module-lexicalAnalyzer.html">lexicalAnalyzer</a></li><li><a href="module-loggers.html">loggers</a></li><li><a href="module-main.html">main</a></li><li><a href="module-mathOperations.html">mathOperations</a></li><li><a href="module-pathArrayParsing.html">pathArrayParsing</a></li><li><a href="module-performanceMetric.html">performanceMetric</a></li><li><a href="module-pluginBroker.html">pluginBroker</a></li><li><a href="module-plugins.html">plugins</a></li><li><a href="module-promptOperations.html">promptOperations</a></li><li><a href="module-queue.html">queue</a></li><li><a href="module-ruleBroker.html">ruleBroker</a></li><li><a href="module-ruleParsing.html">ruleParsing</a></li><li><a href="module-rulesLibrary.html">rulesLibrary</a></li><li><a href="module-stack.html">stack</a></li><li><a href="module-stringGeneration.html">stringGeneration</a></li><li><a href="module-stringParsingUtilities.html">stringParsingUtilities</a></li><li><a href="module-system.html">system</a></li><li><a href="module-themeBroker.html">themeBroker</a></li><li><a href="module-timeComputation.html">timeComputation</a></li><li><a href="module-warden.html">warden</a></li><li><a href="module-wordArrayParsing.html">wordArrayParsing</a></li><li><a href="module-wordStringParsing.html">wordStringParsing</a></li><li><a href="module-workflowBroker.html">workflowBroker</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Wed Oct 26 2022 17:51:53 GMT-0500 (Central Daylight Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Wed Feb 22 2023 14:45:59 GMT-0600 (Central Standard Time)
 </footer>
 
 <script> prettyPrint(); </script>

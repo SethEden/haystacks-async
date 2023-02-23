@@ -52,8 +52,8 @@ import path from 'path';
 
 const {bas, biz, cfg, gen, msg, sys, wrd} = hayConst;
 const baseFileName = path.basename(import.meta.url, path.extname(import.meta.url));
-// businessRules.rules.stringParsing.wordStringParsing.
-const namespacePrefix = sys.cbusinessRules + bas.cDot + wrd.crules + bas.cDot + wrd.cstring + wrd.cParsing + bas.cDot + baseFileName + bas.cDot;
+// framework.businessRules.rules.stringParsing.wordStringParsing.
+const namespacePrefix = wrd.cframework + bas.cDot + sys.cbusinessRules + bas.cDot + wrd.crules + bas.cDot + wrd.cstring + wrd.cParsing + bas.cDot + baseFileName + bas.cDot;
 
 /**
  * @function isStringCamelCase
@@ -213,8 +213,13 @@ async function countCamelCaseWords(inputData, inputMetaData) {
   let returnData = 0;
   if (inputData) {
     let caps = [];
-    for (let i = 1; i &lt; inputData.length; i++) {
-      if (gen.cUpperCaseEnglishAlphabet.includes(inputData.charAt(i))) { caps.push(i); }
+    for (let i = 0; i &lt; inputData.length; i++) {
+      await loggers.consoleLog(namespacePrefix + functionName, msg.ccharacterIs + inputData.charAt(i));
+      if (gen.cUpperCaseEnglishAlphabet.includes(inputData.charAt(i))) {
+        // Upper case letter found.
+        await loggers.consoleLog(namespacePrefix + functionName, msg.cupperCaseLetterFound);
+        caps.push(i);
+      }
     } // End-for (let i = 1; i &lt; inputData.length; i++)
     returnData = caps.length;
   } // End-if (inputData)
@@ -324,10 +329,26 @@ async function determineWordDelimiter(inputData, inputMetaData) {
     } else if (spacesCount === 0 &amp;&amp; periodCount === 0 &amp;&amp; dashCount === 0 &amp;&amp; comaCount === 0 &amp;&amp; underscoreCount === 0 &amp;&amp; plusCount === 0 &amp;&amp; percentCount > 0) {
       returnData = bas.cPercent;
     } else {
-      // We don't need to be showing this warning unless we are debugging.
-      // WARNING: Mixed string. Cannot determine what delimiter should be used to break up the string into words.
-      await loggers.consoleLog(namespacePrefix + functionName, msg.cDetermineWordDelimiterMessage1 + msg.cDetermineWordDelimiterMessage2 +
-      msg.cDetermineWordDelimiterMessage3 + msg.cDetermineWordDelimiterMessage4);
+      if (spacesCount > periodCount &amp;&amp; spacesCount > dashCount &amp;&amp; spacesCount > comaCount &amp;&amp; spacesCount > underscoreCount &amp;&amp; spacesCount > plusCount &amp;&amp; spacesCount > percentCount) {
+        returnData = bas.cSpace;
+      } else if (periodCount > spacesCount &amp;&amp; periodCount > dashCount &amp;&amp; periodCount > comaCount &amp;&amp; periodCount > underscoreCount &amp;&amp; periodCount > plusCount &amp;&amp; periodCount > percentCount) {
+        returnData = bas.cDot;
+      } else if (dashCount > spacesCount &amp;&amp; dashCount > periodCount &amp;&amp; dashCount > comaCount &amp;&amp; dashCount > underscoreCount &amp;&amp; dashCount > plusCount &amp;&amp; dashCount > percentCount) {
+        returnData = bas.cDash;
+      } else if (comaCount > spacesCount &amp;&amp; comaCount > periodCount &amp;&amp; comaCount > dashCount &amp;&amp; comaCount > underscoreCount &amp;&amp; comaCount > plusCount &amp;&amp; comaCount > percentCount) {
+        returnData = bas.cComa;
+      } else if (underscoreCount > spacesCount &amp;&amp; underscoreCount > periodCount &amp;&amp; underscoreCount > dashCount &amp;&amp; underscoreCount > comaCount &amp;&amp; underscoreCount > plusCount &amp;&amp; underscoreCount > percentCount) {
+        returnData = bas.cUnderscore;
+      } else if (plusCount > spacesCount &amp;&amp; plusCount > periodCount &amp;&amp; plusCount > dashCount &amp;&amp; plusCount > comaCount &amp;&amp; plusCount > underscoreCount &amp;&amp; plusCount > percentCount) {
+        returnData = bas.cPlus;
+      } else if (percentCount > spacesCount &amp;&amp; percentCount > periodCount &amp;&amp; percentCount > dashCount &amp;&amp; percentCount > comaCount &amp;&amp; percentCount > underscoreCount &amp;&amp; percentCount > plusCount) {
+        returnData = bas.cPercent;
+      } else {
+        // We don't need to be showing this warning unless we are debugging.
+        // WARNING: Mixed string. Cannot determine what delimiter should be used to break up the string into words.
+        await loggers.consoleLog(namespacePrefix + functionName, msg.cDetermineWordDelimiterMessage1 + msg.cDetermineWordDelimiterMessage2 +
+          msg.cDetermineWordDelimiterMessage3 + msg.cDetermineWordDelimiterMessage4);
+      }
     }
   } // End-if (inputData)
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
@@ -508,13 +529,13 @@ export default {
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-advanced.html">advanced</a></li><li><a href="module-allConstantsValidationMetadata.html">allConstantsValidationMetadata</a></li><li><a href="module-auxiliary.html">auxiliary</a></li><li><a href="module-auxiliaryArrayParsing.html">auxiliaryArrayParsing</a></li><li><a href="module-auxiliaryStringParsing.html">auxiliaryStringParsing</a></li><li><a href="module-characterArrayParsing.html">characterArrayParsing</a></li><li><a href="module-characterGeneration.html">characterGeneration</a></li><li><a href="module-characterStringParsing.html">characterStringParsing</a></li><li><a href="module-chiefCommander.html">chiefCommander</a></li><li><a href="module-chiefConfiguration.html">chiefConfiguration</a></li><li><a href="module-chiefData.html">chiefData</a></li><li><a href="module-chiefPlugin.html">chiefPlugin</a></li><li><a href="module-chiefWorkflow.html">chiefWorkflow</a></li><li><a href="module-colorizer.html">colorizer</a></li><li><a href="module-commandArrayParsing.html">commandArrayParsing</a></li><li><a href="module-commandBroker.html">commandBroker</a></li><li><a href="module-commandsLibrary.html">commandsLibrary</a></li><li><a href="module-commandStringParsing.html">commandStringParsing</a></li><li><a href="module-configuration.html">configuration</a></li><li><a href="module-configurator.html">configurator</a></li><li><a href="module-constant.html">constant</a></li><li><a href="module-constantArrayParsing.html">constantArrayParsing</a></li><li><a href="module-constantStringParsing.html">constantStringParsing</a></li><li><a href="module-data.html">data</a></li><li><a href="module-dataArrayParsing.html">dataArrayParsing</a></li><li><a href="module-dataBroker.html">dataBroker</a></li><li><a href="module-dataDirectorate.html">dataDirectorate</a></li><li><a href="module-dataStringParsing.html">dataStringParsing</a></li><li><a href="module-fileOperations.html">fileOperations</a></li><li><a href="module-fileStringParsing.html">fileStringParsing</a></li><li><a href="module-integrationTests.html">integrationTests</a></li><li><a href="module-lexicalAnalyzer.html">lexicalAnalyzer</a></li><li><a href="module-loggers.html">loggers</a></li><li><a href="module-main.html">main</a></li><li><a href="module-mathOperations.html">mathOperations</a></li><li><a href="module-pathArrayParsing.html">pathArrayParsing</a></li><li><a href="module-performanceMetric.html">performanceMetric</a></li><li><a href="module-pluginBroker.html">pluginBroker</a></li><li><a href="module-plugins.html">plugins</a></li><li><a href="module-promptOperations.html">promptOperations</a></li><li><a href="module-queue.html">queue</a></li><li><a href="module-ruleBroker.html">ruleBroker</a></li><li><a href="module-ruleParsing.html">ruleParsing</a></li><li><a href="module-rulesLibrary.html">rulesLibrary</a></li><li><a href="module-stack.html">stack</a></li><li><a href="module-stringGeneration.html">stringGeneration</a></li><li><a href="module-stringParsingUtilities.html">stringParsingUtilities</a></li><li><a href="module-system.html">system</a></li><li><a href="module-themeBroker.html">themeBroker</a></li><li><a href="module-timeComputation.html">timeComputation</a></li><li><a href="module-warden.html">warden</a></li><li><a href="module-wordArrayParsing.html">wordArrayParsing</a></li><li><a href="module-wordStringParsing.html">wordStringParsing</a></li><li><a href="module-workflowBroker.html">workflowBroker</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-advanced.html">advanced</a></li><li><a href="module-auxiliary.html">auxiliary</a></li><li><a href="module-auxiliaryArrayParsing.html">auxiliaryArrayParsing</a></li><li><a href="module-auxiliaryStringParsing.html">auxiliaryStringParsing</a></li><li><a href="module-characterArrayParsing.html">characterArrayParsing</a></li><li><a href="module-characterGeneration.html">characterGeneration</a></li><li><a href="module-characterStringParsing.html">characterStringParsing</a></li><li><a href="module-chiefCommander.html">chiefCommander</a></li><li><a href="module-chiefConfiguration.html">chiefConfiguration</a></li><li><a href="module-chiefConstant.html">chiefConstant</a></li><li><a href="module-chiefData.html">chiefData</a></li><li><a href="module-chiefPlugin.html">chiefPlugin</a></li><li><a href="module-chiefTheme.html">chiefTheme</a></li><li><a href="module-chiefWorkflow.html">chiefWorkflow</a></li><li><a href="module-colorizer.html">colorizer</a></li><li><a href="module-commandArrayParsing.html">commandArrayParsing</a></li><li><a href="module-commandBroker.html">commandBroker</a></li><li><a href="module-commandsLibrary.html">commandsLibrary</a></li><li><a href="module-commandStringParsing.html">commandStringParsing</a></li><li><a href="module-configuration.html">configuration</a></li><li><a href="module-configurator.html">configurator</a></li><li><a href="module-constant.html">constant</a></li><li><a href="module-constantArrayParsing.html">constantArrayParsing</a></li><li><a href="module-constantBroker.html">constantBroker</a></li><li><a href="module-constantStringParsing.html">constantStringParsing</a></li><li><a href="module-data.html">data</a></li><li><a href="module-dataArrayParsing.html">dataArrayParsing</a></li><li><a href="module-dataBroker.html">dataBroker</a></li><li><a href="module-dataDirectorate.html">dataDirectorate</a></li><li><a href="module-dataStringParsing.html">dataStringParsing</a></li><li><a href="module-fileOperations.html">fileOperations</a></li><li><a href="module-fileStringParsing.html">fileStringParsing</a></li><li><a href="module-integrationTests.html">integrationTests</a></li><li><a href="module-lexicalAnalyzer.html">lexicalAnalyzer</a></li><li><a href="module-loggers.html">loggers</a></li><li><a href="module-main.html">main</a></li><li><a href="module-mathOperations.html">mathOperations</a></li><li><a href="module-pathArrayParsing.html">pathArrayParsing</a></li><li><a href="module-performanceMetric.html">performanceMetric</a></li><li><a href="module-pluginBroker.html">pluginBroker</a></li><li><a href="module-plugins.html">plugins</a></li><li><a href="module-promptOperations.html">promptOperations</a></li><li><a href="module-queue.html">queue</a></li><li><a href="module-ruleBroker.html">ruleBroker</a></li><li><a href="module-ruleParsing.html">ruleParsing</a></li><li><a href="module-rulesLibrary.html">rulesLibrary</a></li><li><a href="module-stack.html">stack</a></li><li><a href="module-stringGeneration.html">stringGeneration</a></li><li><a href="module-stringParsingUtilities.html">stringParsingUtilities</a></li><li><a href="module-system.html">system</a></li><li><a href="module-themeBroker.html">themeBroker</a></li><li><a href="module-timeComputation.html">timeComputation</a></li><li><a href="module-warden.html">warden</a></li><li><a href="module-wordArrayParsing.html">wordArrayParsing</a></li><li><a href="module-wordStringParsing.html">wordStringParsing</a></li><li><a href="module-workflowBroker.html">workflowBroker</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Wed Oct 26 2022 17:51:53 GMT-0500 (Central Daylight Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Wed Feb 22 2023 14:45:59 GMT-0600 (Central Standard Time)
 </footer>
 
 <script> prettyPrint(); </script>

@@ -149,6 +149,8 @@
         
             <li><a href="module-data.html">module:data</a></li>
         
+            <li><a href="module-stack.html">module:stack</a></li>
+        
             <li><a href="https://www.npmjs.com/package/@haystacks/constants">@haystacks/constants</a></li>
         
             <li><a href="https://www.npmjs.com/package/figlet">figlet</a></li>
@@ -309,7 +311,7 @@ inputData[1] === 'application|framework' (optional)</p></td>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="commandsBlob_commands_system.js.html">commandsBlob/commands/system.js</a>, <a href="commandsBlob_commands_system.js.html#line130">line 130</a>
+        <a href="commandsBlob_commands_system.js.html">commandsBlob/commands/system.js</a>, <a href="commandsBlob_commands_system.js.html#line132">line 132</a>
     </li></ul></dd>
     
 
@@ -351,6 +353,189 @@ indicate if the application should exit or not exit, followed by the command out
     <dd>
         
 <span class="param-type">array.&lt;boolean, (string|integer|boolean|object|array)></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~clearAllCommandsLog"><span class="type-signature">(inner) </span>clearAllCommandsLog<span class="signature">(inputData, inputMetaData)</span><span class="type-signature"> &rarr; {array.&lt;boolean, boolean>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Wipes out the all commands log, destroying all evidence of whatever commands were executed by the system.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>inputData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Not used for this command.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>inputMetaData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Not used for this command.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="commandsBlob_commands_system.js.html">commandsBlob/commands/system.js</a>, <a href="commandsBlob_commands_system.js.html#line730">line 730</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>An aray ith a boolean True or False value to
+indicate if the application should exit or not exit, followed by another boolean value to indicate if the operation was successful or not.</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">array.&lt;boolean, boolean></span>
 
 
     </dd>
@@ -499,7 +684,7 @@ indicate if the application should exit or not exit, followed by the command out
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="commandsBlob_commands_system.js.html">commandsBlob/commands/system.js</a>, <a href="commandsBlob_commands_system.js.html#line225">line 225</a>
+        <a href="commandsBlob_commands_system.js.html">commandsBlob/commands/system.js</a>, <a href="commandsBlob_commands_system.js.html#line227">line 227</a>
     </li></ul></dd>
     
 
@@ -541,6 +726,196 @@ indicate if the application should exit or not exit, followed by the command out
     <dd>
         
 <span class="param-type">array.&lt;boolean, (string|integer|boolean|object|array)></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~clearUserCommandsLog"><span class="type-signature">(inner) </span>clearUserCommandsLog<span class="signature">(inputData, inputMetaData)</span><span class="type-signature"> &rarr; {array.&lt;boolean, boolean>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Wipes out the user command log, destroying all evidence of whatever commands the user has entered.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>inputData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Not used for this command.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>inputMetaData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Not used for this command.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-author">Author:</dt>
+    <dd class="tag-author">
+        <ul>
+            <li>Seth Hollingsead</li>
+        </ul>
+    </dd>
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="commandsBlob_commands_system.js.html">commandsBlob/commands/system.js</a>, <a href="commandsBlob_commands_system.js.html#line696">line 696</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>An array with a boolean True or False value to
+indicate if the application should exit or not exit, followed by another boolean value to indicate if the operation was successful or not.</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">array.&lt;boolean, boolean></span>
 
 
     </dd>
@@ -690,7 +1065,7 @@ inputData[0] === 'echoCommand'</p></td>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="commandsBlob_commands_system.js.html">commandsBlob/commands/system.js</a>, <a href="commandsBlob_commands_system.js.html#line36">line 36</a>
+        <a href="commandsBlob_commands_system.js.html">commandsBlob/commands/system.js</a>, <a href="commandsBlob_commands_system.js.html#line38">line 38</a>
     </li></ul></dd>
     
 
@@ -881,7 +1256,7 @@ inputData[0] === 'exit'</p></td>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="commandsBlob_commands_system.js.html">commandsBlob/commands/system.js</a>, <a href="commandsBlob_commands_system.js.html#line69">line 69</a>
+        <a href="commandsBlob_commands_system.js.html">commandsBlob/commands/system.js</a>, <a href="commandsBlob_commands_system.js.html#line71">line 71</a>
     </li></ul></dd>
     
 
@@ -1001,8 +1376,14 @@ including both system defined commands and client defined commands.</p>
 
             
 
-            <td class="description last"><p>Not used for this command.
-inputData[0] = 'help'</p></td>
+            <td class="description last"><p>An array that could possibly include the name of this command,
+and a list of top-level command data structure data types to print help for.
+That way we can parameterize and optimize the help to print commands specific to the Haystacks platform,
+the host application, loaded plugins, or various combinations of these.
+inputData[0] = 'help'
+inputData[1] = Could be a coma-separated string list of command catagories to get help for.
+inputData[n] = Could be additional list of command catagories to get help for if the user entered a space-separated list.
+Options are: Framework,Platform,Application,App,Plugins,Plugin</p></td>
         </tr>
 
     
@@ -1073,7 +1454,7 @@ inputData[0] = 'help'</p></td>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="commandsBlob_commands_system.js.html">commandsBlob/commands/system.js</a>, <a href="commandsBlob_commands_system.js.html#line252">line 252</a>
+        <a href="commandsBlob_commands_system.js.html">commandsBlob/commands/system.js</a>, <a href="commandsBlob_commands_system.js.html#line254">line 254</a>
     </li></ul></dd>
     
 
@@ -1269,7 +1650,7 @@ inputData[2] === 'true|false' (optional)</p></td>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="commandsBlob_commands_system.js.html">commandsBlob/commands/system.js</a>, <a href="commandsBlob_commands_system.js.html#line169">line 169</a>
+        <a href="commandsBlob_commands_system.js.html">commandsBlob/commands/system.js</a>, <a href="commandsBlob_commands_system.js.html#line171">line 171</a>
     </li></ul></dd>
     
 
@@ -1311,6 +1692,386 @@ indicate if the application should exit or not exit, followed by the command out
     <dd>
         
 <span class="param-type">array.&lt;boolean, (string|integer|boolean|object|array)></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~printAllCommandsLog"><span class="type-signature">(inner) </span>printAllCommandsLog<span class="signature">(inputData, inputMetaData)</span><span class="type-signature"> &rarr; {array.&lt;boolean, array.&lt;string>>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Prints out a log of all the commands executed by the system since the start of the application for this instance it was running.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>inputData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Not used for this command.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>inputMetaData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Not used for this command.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-author">Author:</dt>
+    <dd class="tag-author">
+        <ul>
+            <li>Seth Hollingsead</li>
+        </ul>
+    </dd>
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="commandsBlob_commands_system.js.html">commandsBlob/commands/system.js</a>, <a href="commandsBlob_commands_system.js.html#line658">line 658</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>An array with a boolean True or False value to
+indicate if the application should exit or not exit, followed by an array of strings that is the user entered commands.</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">array.&lt;boolean, array.&lt;string>></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~printUserCommandsLog"><span class="type-signature">(inner) </span>printUserCommandsLog<span class="signature">(inputData, inputMetaData)</span><span class="type-signature"> &rarr; {array.&lt;boolean, array.&lt;string>>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Prints out the command log of all the commands the user has entered since the start of the application for this instance it was running.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>inputData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Not used for this command.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>inputMetaData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Not used for this command.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-author">Author:</dt>
+    <dd class="tag-author">
+        <ul>
+            <li>Seth Hollingsead</li>
+        </ul>
+    </dd>
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="commandsBlob_commands_system.js.html">commandsBlob/commands/system.js</a>, <a href="commandsBlob_commands_system.js.html#line620">line 620</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>An array with a boolean True or False value to
+indicate if the application should exit or not exit, followed by an array of strings that is the user entered commands.</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">array.&lt;boolean, array.&lt;string>></span>
 
 
     </dd>
@@ -1461,7 +2222,7 @@ inputData[1] === 'application|framework' (optional)</p></td>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="commandsBlob_commands_system.js.html">commandsBlob/commands/system.js</a>, <a href="commandsBlob_commands_system.js.html#line91">line 91</a>
+        <a href="commandsBlob_commands_system.js.html">commandsBlob/commands/system.js</a>, <a href="commandsBlob_commands_system.js.html#line93">line 93</a>
     </li></ul></dd>
     
 
@@ -1581,8 +2342,14 @@ including both system defined workflows &amp; client defined workflows.</p>
 
             
 
-            <td class="description last"><p>Not used for this command.
-inputData[0] = 'workflowHelp'</p></td>
+            <td class="description last"><p>An array that could possibly include the name of this command,
+and a list of top-level workflow catagories data structures to be printed.
+That way we can parameterize and optimize the workflow help to print workflows specific to the Haystacks platform,
+the host application, loaded plugins, or various combinations of these.
+inputData[0] = 'workflowHelp'
+inputData[1] = Could be a coma-separated string list of command catagories to get workflow help for.
+inputData[n] = Could be additional list of command catagories to get help for if the user entered a space-separated list.
+Options are: Framework,Platform,Application,App,Plugins,Plugin</p></td>
         </tr>
 
     
@@ -1653,7 +2420,7 @@ inputData[0] = 'workflowHelp'</p></td>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="commandsBlob_commands_system.js.html">commandsBlob/commands/system.js</a>, <a href="commandsBlob_commands_system.js.html#line301">line 301</a>
+        <a href="commandsBlob_commands_system.js.html">commandsBlob/commands/system.js</a>, <a href="commandsBlob_commands_system.js.html#line435">line 435</a>
     </li></ul></dd>
     
 
@@ -1722,13 +2489,13 @@ indicate if the application should exit or not exit, followed by the command out
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-advanced.html">advanced</a></li><li><a href="module-allConstantsValidationMetadata.html">allConstantsValidationMetadata</a></li><li><a href="module-auxiliary.html">auxiliary</a></li><li><a href="module-auxiliaryArrayParsing.html">auxiliaryArrayParsing</a></li><li><a href="module-auxiliaryStringParsing.html">auxiliaryStringParsing</a></li><li><a href="module-characterArrayParsing.html">characterArrayParsing</a></li><li><a href="module-characterGeneration.html">characterGeneration</a></li><li><a href="module-characterStringParsing.html">characterStringParsing</a></li><li><a href="module-chiefCommander.html">chiefCommander</a></li><li><a href="module-chiefConfiguration.html">chiefConfiguration</a></li><li><a href="module-chiefData.html">chiefData</a></li><li><a href="module-chiefPlugin.html">chiefPlugin</a></li><li><a href="module-chiefWorkflow.html">chiefWorkflow</a></li><li><a href="module-colorizer.html">colorizer</a></li><li><a href="module-commandArrayParsing.html">commandArrayParsing</a></li><li><a href="module-commandBroker.html">commandBroker</a></li><li><a href="module-commandsLibrary.html">commandsLibrary</a></li><li><a href="module-commandStringParsing.html">commandStringParsing</a></li><li><a href="module-configuration.html">configuration</a></li><li><a href="module-configurator.html">configurator</a></li><li><a href="module-constant.html">constant</a></li><li><a href="module-constantArrayParsing.html">constantArrayParsing</a></li><li><a href="module-constantStringParsing.html">constantStringParsing</a></li><li><a href="module-data.html">data</a></li><li><a href="module-dataArrayParsing.html">dataArrayParsing</a></li><li><a href="module-dataBroker.html">dataBroker</a></li><li><a href="module-dataDirectorate.html">dataDirectorate</a></li><li><a href="module-dataStringParsing.html">dataStringParsing</a></li><li><a href="module-fileOperations.html">fileOperations</a></li><li><a href="module-fileStringParsing.html">fileStringParsing</a></li><li><a href="module-integrationTests.html">integrationTests</a></li><li><a href="module-lexicalAnalyzer.html">lexicalAnalyzer</a></li><li><a href="module-loggers.html">loggers</a></li><li><a href="module-main.html">main</a></li><li><a href="module-mathOperations.html">mathOperations</a></li><li><a href="module-pathArrayParsing.html">pathArrayParsing</a></li><li><a href="module-performanceMetric.html">performanceMetric</a></li><li><a href="module-pluginBroker.html">pluginBroker</a></li><li><a href="module-plugins.html">plugins</a></li><li><a href="module-promptOperations.html">promptOperations</a></li><li><a href="module-queue.html">queue</a></li><li><a href="module-ruleBroker.html">ruleBroker</a></li><li><a href="module-ruleParsing.html">ruleParsing</a></li><li><a href="module-rulesLibrary.html">rulesLibrary</a></li><li><a href="module-stack.html">stack</a></li><li><a href="module-stringGeneration.html">stringGeneration</a></li><li><a href="module-stringParsingUtilities.html">stringParsingUtilities</a></li><li><a href="module-system.html">system</a></li><li><a href="module-themeBroker.html">themeBroker</a></li><li><a href="module-timeComputation.html">timeComputation</a></li><li><a href="module-warden.html">warden</a></li><li><a href="module-wordArrayParsing.html">wordArrayParsing</a></li><li><a href="module-wordStringParsing.html">wordStringParsing</a></li><li><a href="module-workflowBroker.html">workflowBroker</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-advanced.html">advanced</a></li><li><a href="module-auxiliary.html">auxiliary</a></li><li><a href="module-auxiliaryArrayParsing.html">auxiliaryArrayParsing</a></li><li><a href="module-auxiliaryStringParsing.html">auxiliaryStringParsing</a></li><li><a href="module-characterArrayParsing.html">characterArrayParsing</a></li><li><a href="module-characterGeneration.html">characterGeneration</a></li><li><a href="module-characterStringParsing.html">characterStringParsing</a></li><li><a href="module-chiefCommander.html">chiefCommander</a></li><li><a href="module-chiefConfiguration.html">chiefConfiguration</a></li><li><a href="module-chiefConstant.html">chiefConstant</a></li><li><a href="module-chiefData.html">chiefData</a></li><li><a href="module-chiefPlugin.html">chiefPlugin</a></li><li><a href="module-chiefTheme.html">chiefTheme</a></li><li><a href="module-chiefWorkflow.html">chiefWorkflow</a></li><li><a href="module-colorizer.html">colorizer</a></li><li><a href="module-commandArrayParsing.html">commandArrayParsing</a></li><li><a href="module-commandBroker.html">commandBroker</a></li><li><a href="module-commandsLibrary.html">commandsLibrary</a></li><li><a href="module-commandStringParsing.html">commandStringParsing</a></li><li><a href="module-configuration.html">configuration</a></li><li><a href="module-configurator.html">configurator</a></li><li><a href="module-constant.html">constant</a></li><li><a href="module-constantArrayParsing.html">constantArrayParsing</a></li><li><a href="module-constantBroker.html">constantBroker</a></li><li><a href="module-constantStringParsing.html">constantStringParsing</a></li><li><a href="module-data.html">data</a></li><li><a href="module-dataArrayParsing.html">dataArrayParsing</a></li><li><a href="module-dataBroker.html">dataBroker</a></li><li><a href="module-dataDirectorate.html">dataDirectorate</a></li><li><a href="module-dataStringParsing.html">dataStringParsing</a></li><li><a href="module-fileOperations.html">fileOperations</a></li><li><a href="module-fileStringParsing.html">fileStringParsing</a></li><li><a href="module-integrationTests.html">integrationTests</a></li><li><a href="module-lexicalAnalyzer.html">lexicalAnalyzer</a></li><li><a href="module-loggers.html">loggers</a></li><li><a href="module-main.html">main</a></li><li><a href="module-mathOperations.html">mathOperations</a></li><li><a href="module-pathArrayParsing.html">pathArrayParsing</a></li><li><a href="module-performanceMetric.html">performanceMetric</a></li><li><a href="module-pluginBroker.html">pluginBroker</a></li><li><a href="module-plugins.html">plugins</a></li><li><a href="module-promptOperations.html">promptOperations</a></li><li><a href="module-queue.html">queue</a></li><li><a href="module-ruleBroker.html">ruleBroker</a></li><li><a href="module-ruleParsing.html">ruleParsing</a></li><li><a href="module-rulesLibrary.html">rulesLibrary</a></li><li><a href="module-stack.html">stack</a></li><li><a href="module-stringGeneration.html">stringGeneration</a></li><li><a href="module-stringParsingUtilities.html">stringParsingUtilities</a></li><li><a href="module-system.html">system</a></li><li><a href="module-themeBroker.html">themeBroker</a></li><li><a href="module-timeComputation.html">timeComputation</a></li><li><a href="module-warden.html">warden</a></li><li><a href="module-wordArrayParsing.html">wordArrayParsing</a></li><li><a href="module-wordStringParsing.html">wordStringParsing</a></li><li><a href="module-workflowBroker.html">workflowBroker</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Wed Oct 26 2022 17:51:53 GMT-0500 (Central Daylight Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Wed Feb 22 2023 14:45:59 GMT-0600 (Central Standard Time)
 </footer>
 
 <script> prettyPrint(); </script>

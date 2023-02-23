@@ -32,6 +32,8 @@
  * @description Contains all of the functions to manage the loading, unloading, reloading,
  * registering, unregistering of plugins and plugin metaData.
  * @requires module:pluginBroker
+ * @requires module:chiefConstant
+ * @requires module:chiefTheme
  * @requires module:loggers
  * @requires module:stack
  * @requires {@link https://www.npmjs.com/package/@haystacks/constants|@haystacks/constants}
@@ -43,6 +45,8 @@
 
 // Internal imports
 import pluginBroker from '../brokers/pluginBroker.js';
+import chiefConstant from './chiefConstant.js';
+import chiefTheme from './chiefTheme.js';
 import loggers from '../executrix/loggers.js'
 import stack from '../structures/stack.js'
 // External imports
@@ -51,8 +55,8 @@ import path from 'path';
 
 const {bas, msg, sys, wrd} = hayConst;
 const baseFileName = path.basename(import.meta.url, path.extname(import.meta.url));
-// controllers.chiefPlugin.
-const namespacePrefix = wrd.ccontrollers + bas.cDot + baseFileName + bas.cDot;
+// framework.controllers.chiefPlugin.
+const namespacePrefix = wrd.cframework + bas.cDot + wrd.ccontrollers + bas.cDot + baseFileName + bas.cDot;
 
 /**
  * @function loadPluginRegistryData
@@ -89,6 +93,23 @@ async function persistPluginRegistryToDataStructure(pluginRegistryData) {
   await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginRegistryDataIs + JSON.stringify(pluginRegistryData));
   let returnData = false;
   returnData = await pluginBroker.storePluginRegistryInDataStructure(pluginRegistryData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
+/**
+ * @function listLoadedPlugins
+ * @description This is a wrapper function for pluginBroker.listAllLoadedPlugins.
+ * @return {array&lt;string>} A list array of the names of the plugins that are currently loaded.
+ * @author Seth Hollingsead
+ * @date 2023/02/06
+ */
+async function listLoadedPlugins() {
+  let functionName = listLoadedPlugins.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  let returnData = [];
+  returnData = await pluginBroker.listAllLoadedPlugins();
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
@@ -226,6 +247,26 @@ async function unregisterNamedPlugin(pluginName) {
 }
 
 /**
+ * @function unregisterPlugins
+ * @description This is a wrapper function for pluginBroker.unregisterPlugins.
+ * @param {array&lt;string>} pluginListArray A list array of plugin names that should be removed from the plugin registry.
+ * @return {boolean} True or False to indicate if all the plugins were removed from the plugin registry successfully or not.
+ * @author Seth Hollingsead
+ * @date 2023/02/07
+ */
+async function unregisterPlugins(pluginListArray) {
+  let functionName = unregisterPlugins.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  // pluginListArray is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginListArrayIs + JSON.stringify(pluginListArray));
+  let returnData = false;
+  returnData = await pluginBroker.unregisterPlugins(pluginListArray);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
+/**
  * @function synchronizePluginRegistryWithPath
  * @description This is a wrapper function for pluginBroker.syncPluginRegistryWithPluginRegistryPath.
  * @return {boolean} True or False to indicate if the synchronization was performed successfully or not.
@@ -283,7 +324,9 @@ async function savePluginRegistryDisk() {
 /**
  * @function loadAllPluginsMetaData
  * @description Loads the plugin meta data for all of the plugins in the input plugins path array.
- * @param {array&lt;string>} pluginsPaths
+ * @param {array&lt;string>} pluginsPaths Should be the entry-point to the plugin,
+ * but it could also be the name of the folder in the plugin registry path that is the entry-point to the plugin.
+ * If its the later than we will need to compose the fully qualified path.
  * @return {array&lt;object>} An array that contains all of the meta-data,
  * for each of the plugins in the input pluginsPaths array. 
  * @author Seth Hollingsead
@@ -309,7 +352,8 @@ async function loadAllPluginsMetaData(pluginsPaths) {
       } // End-if (pluginPath != '')
       // loadedPluginMetaData at index:
       await loggers.consoleLog(namespacePrefix + functionName, msg.cloadedPluginMetaDataAtIndex +
-        index + ' data: ' + JSON.stringify(returnData[index]));
+        // data:
+        index + msg.cSpaceDataColonSpace + JSON.stringify(returnData[index]));
       index = index + 1;
     } // End-for (let pluginPath in pluginsPaths)
   } else {
@@ -389,23 +433,31 @@ async function loadAllPlugins(pluginsExecutionPaths, pluginsMetaData) {
   // pluginsExecutionPaths is:
   await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginsExecutionPathsIs + JSON.stringify(pluginsExecutionPaths));
   // pluginsMetaData is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cplugnsMetaDataIs + JSON.stringify(pluginsMetaData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginsMetaDataIs + JSON.stringify(pluginsMetaData));
   let returnData = {};
   let index = 0;
   if (pluginsExecutionPaths &amp;&amp; pluginsMetaData &amp;&amp; pluginsExecutionPaths.length > 0 &amp;&amp; pluginsMetaData.length > 0) {
-    stack.initStack(sys.cpluginsLoaded);
+    await stack.initStack(sys.cpluginsLoaded);
     for (let pluginExecutionPathKey in pluginsExecutionPaths) {
       let pluginExecutionPath = pluginsExecutionPaths[pluginExecutionPathKey];
       let pluginMetaData = pluginsMetaData[index];
       if (pluginExecutionPath &amp;&amp; pluginMetaData) {
-        // pluginExectuionPath is:
+        // pluginExecutionPath is:
         await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginExecutionPathIs + pluginExecutionPath);
         // pluginMetaData is:
         await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginMetaDataIs + JSON.stringify(pluginMetaData));
         returnData[pluginMetaData[wrd.cname]] = {}; // Initialize the data structure
         // Load the data and add it.
         try {
-          returnData[pluginMetaData[wrd.cname]] = await pluginBroker.loadPlugin(pluginExecutionPath);
+          let pluginReturnedData = await pluginBroker.loadPlugin(pluginExecutionPath);
+          if (pluginReturnedData) {
+            returnData[pluginMetaData[wrd.cname]] = pluginReturnedData
+            // loaded plugin:
+            console.log(msg.cloadedPlugin + pluginMetaData[wrd.cname]);
+          } else {
+            // There was an error attempting to load the plugin: 
+            console.log(msg.cErrorLoadingPlugin + pluginExecutionPath);
+          }
         } catch (err) {
           // Failed to load the plugin:
           console.log(msg.cERROR_Colon + namespacePrefix + functionName + msg.cloadAllPluginsMessage01 + pluginMetaData[wrd.cname]);
@@ -424,6 +476,7 @@ async function loadAllPlugins(pluginsExecutionPaths, pluginsMetaData) {
         console.log(msg.cloadAllPluginsMessage02 + pluginExecutionPath);
         stack.push(sys.cpluginsLoaded, [pluginMetaData[wrd.cname], false]);
       }
+      index = index + 1;
     } // End-for (let pluginExecutionPath in pluginsExecutionPaths)
   } else {
     // ERROR: No plugin execution paths or plugins metaData was specified:
@@ -494,13 +547,54 @@ async function integratePluginData(pluginName, pluginData) {
   let constantsValidationDataIntegrationResult = false;
   let themeDataIntegrationResult = false;
   if (pluginData &amp;&amp; pluginName) {
-    businessRulesIntegrationResult = await pluginBroker.integratePluginBusinessRules(pluginName, pluginData[wrd.cdata][sys.cpluginBusinessRules]);
-    commandsIntegrationResult = await pluginBroker.integratePluginCommands(pluginName, pluginData[wrd.cdata][sys.cpluginCommands]);
-    configurationDataIntegrationResult = await pluginBroker.integratePluginConfigurationData(pluginName, pluginData[wrd.cdata][wrd.cconfiguration]);
-    commandAliasesIntegrationResult = await pluginBroker.integratePluginCommandAliases(pluginName, pluginData[wrd.cdata][sys.cCommandsAliases]);
-    workflowsIntegrationResult = await pluginBroker.integratePluginWorkflows(pluginName, pluginData[wrd.cdata][sys.cCommandWorkflows])
-    constantsValidationDataIntegrationResult = await pluginBroker.integratePluginConstantsValidation(pluginName, pluginData[wrd.cdata][sys.cpluginConstantsValidationData]);
-    themeDataIntegrationResult = await pluginBroker.integratePluginThemeData(pluginName, pluginData[wrd.cdata][sys.c])
+    if (pluginData[wrd.cdata] !== undefined) {
+      if (pluginData[wrd.cdata][sys.cpluginBusinessRules] !== undefined) {
+        businessRulesIntegrationResult = await pluginBroker.integratePluginBusinessRules(pluginName, pluginData[wrd.cdata][sys.cpluginBusinessRules]);
+      } else {
+        // ERROR: No plugin business rules data was loaded for the plugin:
+        console.log(msg.cErrorIntegratePluginDataMessage02 + pluginName);
+      }
+      if (pluginData[wrd.cdata][sys.cpluginCommands] !== undefined) {
+        commandsIntegrationResult = await pluginBroker.integratePluginCommands(pluginName, pluginData[wrd.cdata][sys.cpluginCommands]);
+      } else {
+        // ERROR: No plugin commands data was loaded for the plugin:
+        console.log(msg.cErrorIntegratePluginDataMessage03 + pluginName);
+      }
+      if (pluginData[wrd.cdata][wrd.cconfiguration] !== undefined) {
+        configurationDataIntegrationResult = await pluginBroker.integratePluginConfigurationData(pluginName, pluginData[wrd.cdata][wrd.cconfiguration]);
+      } else {
+        // ERROR: No plugin configuration data was loaded for the plugin:
+        console.log(msg.cErrorIntegratePluginDataMessage04 + pluginName);
+      }
+      if (pluginData[wrd.cdata][sys.cCommandsAliases] !== undefined) {
+        commandAliasesIntegrationResult = await pluginBroker.integratePluginCommandAliases(pluginName, pluginData[wrd.cdata][sys.cCommandsAliases]);
+      } else {
+        // ERROR: No plugin command aliases data was loaded for the plugin:
+        console.log(msg.cErrorIntegratePluginDataMessage05 + pluginName);
+      }
+      if (pluginData[wrd.cdata][sys.cCommandWorkflows] !== undefined) {
+        workflowsIntegrationResult = await pluginBroker.integratePluginWorkflows(pluginName, pluginData[wrd.cdata][sys.cCommandWorkflows]);
+      } else {
+        // ERROR: No plugin workflows data was loaded for the plugin:
+        console.log(msg.cErrorIntegratePluginDataMessage06 + pluginName);
+      }
+      if (pluginData[wrd.cdata][sys.cpluginConstantsValidationData] !== undefined) {
+        constantsValidationDataIntegrationResult = await chiefConstant.addConstantsValidationData(pluginData[wrd.cdata][sys.cpluginConstantsValidationData],
+          wrd.cPlugin + bas.cColon + pluginName);
+      } else {
+        // ERROR: No plugin constants validation data was loaded for the plugin:
+        console.log(msg.cErrorIntegratePluginDataMessage07 + pluginName);
+      }
+      if (pluginData[wrd.cdata][wrd.cThemes] !== undefined) {
+        themeDataIntegrationResult = await chiefTheme.addThemeData(pluginData[wrd.cdata][wrd.cThemes], wrd.cPlugin + bas.cColon + pluginName);
+      } else {
+        // ERROR: No plugin themes data was loaded for the plugin:
+        console.log(msg.cErrorIntegratePluginDataMessage08 + pluginName);
+      }
+    } else {
+      // ERROR: No plugin data was loaded at all for the plugin:
+      console.log(msg.cErrorIntegratePluginDataMessage09 + pluginName);
+    }    
   } else {
     // ERROR: Invalid input, either the plugin name or plugin data was undefined. Please provide valid data and try again.
     console.log(msg.cErrorIntegratePluginDataMessage01);
@@ -551,9 +645,49 @@ async function integratePluginData(pluginName, pluginData) {
   return returnData;
 }
 
+/**
+ * @function unloadPlugin
+ * @description Unloads a plugin by removing all of the plugin data and meta-data from all of the
+ * appropriate data structures in the D-data structure.
+ * This is a wrapper function for calling the pluginBroker to get the work done.
+ * @param {string} pluginName The name of the plugin that should have all its data unloaded from the D-data structure.
+ * @return {boolean} True or False to indicate if the plugin was unloaded successfully or not.
+ * @author Seth Hollingsead
+ * @date 2023/02/01
+ */
+async function unloadPlugin(pluginName) {
+  let functionName = unloadPlugin.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  // pluginName is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginNameIs + pluginName);
+  let returnData = false;
+  returnData = await pluginBroker.unloadPlugin(pluginName);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
+/**
+ * @function getPluginsRegistryPath
+ * @description This is a wrapper function for the pluginBroker.getPluginsRegistryPath.
+ * @return {string} The path to the plugins listed in the plugin registry as meta-data.
+ * @author Seth Hollingsead
+ * @date 2023/02/07
+ */
+async function getPluginsRegistryPath() {
+  let functionName = getPluginsRegistryPath.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  let returnData = '';
+  returnData = await pluginBroker.getPluginsRegistryPath();
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
 export default {
   loadPluginRegistryData,
   persistPluginRegistryToDataStructure,
+  listLoadedPlugins,
   getAllPluginsInRegistry,
   getAllPluginsPathsInRegistry,
   getAllPluginsInRegistryPath,
@@ -561,6 +695,7 @@ export default {
   countAllPluginsInRegistryPath,
   registerNamedPlugin,
   unregisterNamedPlugin,
+  unregisterPlugins,
   synchronizePluginRegistryWithPath,
   clearPluginRegistry,
   savePluginRegistryDisk,
@@ -569,7 +704,9 @@ export default {
   loadAllPlugins,
   integrateAllPluginsData,
   integratePluginData,
-  verifyAllPluginsLoaded
+  verifyAllPluginsLoaded,
+  unloadPlugin,
+  getPluginsRegistryPath
 };</code></pre>
         </article>
     </section>
@@ -580,13 +717,13 @@ export default {
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-advanced.html">advanced</a></li><li><a href="module-allConstantsValidationMetadata.html">allConstantsValidationMetadata</a></li><li><a href="module-auxiliary.html">auxiliary</a></li><li><a href="module-auxiliaryArrayParsing.html">auxiliaryArrayParsing</a></li><li><a href="module-auxiliaryStringParsing.html">auxiliaryStringParsing</a></li><li><a href="module-characterArrayParsing.html">characterArrayParsing</a></li><li><a href="module-characterGeneration.html">characterGeneration</a></li><li><a href="module-characterStringParsing.html">characterStringParsing</a></li><li><a href="module-chiefCommander.html">chiefCommander</a></li><li><a href="module-chiefConfiguration.html">chiefConfiguration</a></li><li><a href="module-chiefData.html">chiefData</a></li><li><a href="module-chiefPlugin.html">chiefPlugin</a></li><li><a href="module-chiefWorkflow.html">chiefWorkflow</a></li><li><a href="module-colorizer.html">colorizer</a></li><li><a href="module-commandArrayParsing.html">commandArrayParsing</a></li><li><a href="module-commandBroker.html">commandBroker</a></li><li><a href="module-commandsLibrary.html">commandsLibrary</a></li><li><a href="module-commandStringParsing.html">commandStringParsing</a></li><li><a href="module-configuration.html">configuration</a></li><li><a href="module-configurator.html">configurator</a></li><li><a href="module-constant.html">constant</a></li><li><a href="module-constantArrayParsing.html">constantArrayParsing</a></li><li><a href="module-constantStringParsing.html">constantStringParsing</a></li><li><a href="module-data.html">data</a></li><li><a href="module-dataArrayParsing.html">dataArrayParsing</a></li><li><a href="module-dataBroker.html">dataBroker</a></li><li><a href="module-dataDirectorate.html">dataDirectorate</a></li><li><a href="module-dataStringParsing.html">dataStringParsing</a></li><li><a href="module-fileOperations.html">fileOperations</a></li><li><a href="module-fileStringParsing.html">fileStringParsing</a></li><li><a href="module-integrationTests.html">integrationTests</a></li><li><a href="module-lexicalAnalyzer.html">lexicalAnalyzer</a></li><li><a href="module-loggers.html">loggers</a></li><li><a href="module-main.html">main</a></li><li><a href="module-mathOperations.html">mathOperations</a></li><li><a href="module-pathArrayParsing.html">pathArrayParsing</a></li><li><a href="module-performanceMetric.html">performanceMetric</a></li><li><a href="module-pluginBroker.html">pluginBroker</a></li><li><a href="module-plugins.html">plugins</a></li><li><a href="module-promptOperations.html">promptOperations</a></li><li><a href="module-queue.html">queue</a></li><li><a href="module-ruleBroker.html">ruleBroker</a></li><li><a href="module-ruleParsing.html">ruleParsing</a></li><li><a href="module-rulesLibrary.html">rulesLibrary</a></li><li><a href="module-stack.html">stack</a></li><li><a href="module-stringGeneration.html">stringGeneration</a></li><li><a href="module-stringParsingUtilities.html">stringParsingUtilities</a></li><li><a href="module-system.html">system</a></li><li><a href="module-themeBroker.html">themeBroker</a></li><li><a href="module-timeComputation.html">timeComputation</a></li><li><a href="module-warden.html">warden</a></li><li><a href="module-wordArrayParsing.html">wordArrayParsing</a></li><li><a href="module-wordStringParsing.html">wordStringParsing</a></li><li><a href="module-workflowBroker.html">workflowBroker</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-advanced.html">advanced</a></li><li><a href="module-auxiliary.html">auxiliary</a></li><li><a href="module-auxiliaryArrayParsing.html">auxiliaryArrayParsing</a></li><li><a href="module-auxiliaryStringParsing.html">auxiliaryStringParsing</a></li><li><a href="module-characterArrayParsing.html">characterArrayParsing</a></li><li><a href="module-characterGeneration.html">characterGeneration</a></li><li><a href="module-characterStringParsing.html">characterStringParsing</a></li><li><a href="module-chiefCommander.html">chiefCommander</a></li><li><a href="module-chiefConfiguration.html">chiefConfiguration</a></li><li><a href="module-chiefConstant.html">chiefConstant</a></li><li><a href="module-chiefData.html">chiefData</a></li><li><a href="module-chiefPlugin.html">chiefPlugin</a></li><li><a href="module-chiefTheme.html">chiefTheme</a></li><li><a href="module-chiefWorkflow.html">chiefWorkflow</a></li><li><a href="module-colorizer.html">colorizer</a></li><li><a href="module-commandArrayParsing.html">commandArrayParsing</a></li><li><a href="module-commandBroker.html">commandBroker</a></li><li><a href="module-commandsLibrary.html">commandsLibrary</a></li><li><a href="module-commandStringParsing.html">commandStringParsing</a></li><li><a href="module-configuration.html">configuration</a></li><li><a href="module-configurator.html">configurator</a></li><li><a href="module-constant.html">constant</a></li><li><a href="module-constantArrayParsing.html">constantArrayParsing</a></li><li><a href="module-constantBroker.html">constantBroker</a></li><li><a href="module-constantStringParsing.html">constantStringParsing</a></li><li><a href="module-data.html">data</a></li><li><a href="module-dataArrayParsing.html">dataArrayParsing</a></li><li><a href="module-dataBroker.html">dataBroker</a></li><li><a href="module-dataDirectorate.html">dataDirectorate</a></li><li><a href="module-dataStringParsing.html">dataStringParsing</a></li><li><a href="module-fileOperations.html">fileOperations</a></li><li><a href="module-fileStringParsing.html">fileStringParsing</a></li><li><a href="module-integrationTests.html">integrationTests</a></li><li><a href="module-lexicalAnalyzer.html">lexicalAnalyzer</a></li><li><a href="module-loggers.html">loggers</a></li><li><a href="module-main.html">main</a></li><li><a href="module-mathOperations.html">mathOperations</a></li><li><a href="module-pathArrayParsing.html">pathArrayParsing</a></li><li><a href="module-performanceMetric.html">performanceMetric</a></li><li><a href="module-pluginBroker.html">pluginBroker</a></li><li><a href="module-plugins.html">plugins</a></li><li><a href="module-promptOperations.html">promptOperations</a></li><li><a href="module-queue.html">queue</a></li><li><a href="module-ruleBroker.html">ruleBroker</a></li><li><a href="module-ruleParsing.html">ruleParsing</a></li><li><a href="module-rulesLibrary.html">rulesLibrary</a></li><li><a href="module-stack.html">stack</a></li><li><a href="module-stringGeneration.html">stringGeneration</a></li><li><a href="module-stringParsingUtilities.html">stringParsingUtilities</a></li><li><a href="module-system.html">system</a></li><li><a href="module-themeBroker.html">themeBroker</a></li><li><a href="module-timeComputation.html">timeComputation</a></li><li><a href="module-warden.html">warden</a></li><li><a href="module-wordArrayParsing.html">wordArrayParsing</a></li><li><a href="module-wordStringParsing.html">wordStringParsing</a></li><li><a href="module-workflowBroker.html">workflowBroker</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Wed Oct 26 2022 17:51:53 GMT-0500 (Central Daylight Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Wed Feb 22 2023 14:45:59 GMT-0600 (Central Standard Time)
 </footer>
 
 <script> prettyPrint(); </script>

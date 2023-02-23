@@ -33,12 +33,12 @@
  * which will actually be stored functions on the D-Data structure.
  * @requires module:ruleBroker
  * @requires module:commandsLibrary
+ * @requires module:colorizer
  * @requires module:configurator
  * @requires module:loggers
  * @requires module:data
  * @requires module:queue
  * @requires module:stack
- * @requires {@link https://www.npmjs.com/package/haystacks|haystacks}
  * @requires {@link https://www.npmjs.com/package/@haystacks/constants|@haystacks/constants}
  * @requires {@link https://www.npmjs.com/package/path|path}
  * @author Seth Hollingsead
@@ -49,6 +49,7 @@
 // Internal imports
 import ruleBroker from './ruleBroker.js';
 import commandsLibrary from '../commandsBlob/commandsLibrary.js';
+import colorizer from '../executrix/colorizer.js';
 import configurator from '../executrix/configurator.js';
 import loggers from '../executrix/loggers.js';
 import D from '../structures/data.js';
@@ -58,10 +59,10 @@ import stack from '../structures/stack.js';
 import hayConst from '@haystacks/constants';
 import path from 'path';
 
-const {bas, biz, cfg, gen, msg, num, sys, wrd} = hayConst;
+const {bas, biz, clr, cfg, gen, msg, num, sys, wrd} = hayConst;
 const baseFileName = path.basename(import.meta.url, path.extname(import.meta.url));
-// brokers.commandBroker.
-const namespacePrefix = wrd.cbrokers + bas.cDot + baseFileName + bas.cDot;
+// framework.brokers.commandBroker.
+const namespacePrefix = wrd.cframework + bas.cDot + wrd.cbrokers + bas.cDot + baseFileName + bas.cDot;
 
 /**
  * @function bootStrapCommands
@@ -77,6 +78,20 @@ const namespacePrefix = wrd.cbrokers + bas.cDot + baseFileName + bas.cDot;
 async function bootStrapCommands() {
   let functionName = bootStrapCommands.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await commandsLibrary.initCommandsLibrary();
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+}
+
+/**
+ * @function resetCommands
+ * @description Clears out and reinitializes the commands.
+ * @return {void}
+ * @date 2023/02/12
+ */
+async function resetCommands() {
+  let functionName = resetCommands.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  // await commandsLibrary.clearCommandsLibrary();
   await commandsLibrary.initCommandsLibrary();
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
 }
@@ -98,6 +113,8 @@ async function addClientCommands(clientCommands) {
     // console.log('%%%%%%%%%%%%%%%%%% ---- >>>>>>>>> key is: ' + key);
     D[wrd.cCommands] = {...D[wrd.cCommands], [`${key}`]: value};
   } // End-for (const [key, value] of Object.entries(clientCommands))
+  // D-command stack is:
+  // console.log(namespacePrefix + functionName + bas.cColon + bas.cSpace + msg.cdCommandStackIs, D[wrd.cCommands]);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
 }
 
@@ -132,11 +149,15 @@ async function addPluginCommands(pluginName, pluginCommands) {
     // its basically calling a flat list. So rather than adding the plugin commands according to the above structure.
     // We will need to just add them to the flat list. If a plugin is unloaded,
     // then each of its commands will need to be individually searched out and removed from the flat list.
+    // D-command stack before merge is:
+  // console.log(namespacePrefix + functionName + bas.cColon + bas.cSpace + msg.cdCommandStackBeforeMergeIs, D[wrd.cCommands]);
     for (const [key, value] of Object.entries(pluginCommands[wrd.ccommands])) {
       // console.log('&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp; ---- >>>>>>>> key is: ' + key);
       D[wrd.cCommands] = {...D[wrd.cCommands], [`${key}`]: value};
     } // End-for (const [key, value] of Object.entries(pluginCommands))
     returnData = true;
+    // D-command stack after merge is:
+    // console.log(namespacePrefix + functionName + bas.cColon + bas.cSpace + msg.cdCommandStackAfterMergeIs, D[wrd.cCommands]);
   } catch (err) {
     // ERROR: Failure to merge the plugin commands for plugin:
     console.log(msg.cErrorAddPluginCommandsMessage01 + pluginName);
@@ -207,7 +228,7 @@ async function getValidCommand(commandString, commandDelimiter) {
   if (commandDelimiter === null || commandDelimiter !== commandDelimiter || commandDelimiter === undefined) {
     commandArgsDelimiter = bas.cSpace;
   }
-  if (commandString &amp;&amp; commandString.includes(commandArgsDelimiter) === true) {
+  if (commandString &amp;&amp; typeof commandString === wrd.cstring &amp;&amp; commandString.includes(commandArgsDelimiter) === true) {
     commandArgs = commandString.split(commandArgsDelimiter);
     commandToExecute = commandArgs[0];
   } else {
@@ -218,9 +239,9 @@ async function getValidCommand(commandString, commandDelimiter) {
   // commandToExecute is:
   await loggers.consoleLog(namespacePrefix + functionName, msg.ccommandToExecuteIs + commandToExecute);
   if (commandString) {
-    if (D[wrd.cCommands][commandToExecute] !== undefined) {
+    if (D[wrd.cCommands][commandToExecute] != undefined) {
       returnData = commandToExecute;
-    } else { // else-clause if (D[wrd.cCommands][commandToExecute] !== undefined)
+    } else { // else-clause if (D[wrd.cCommands][commandToExecute] != undefined)
       // else-clause looking for command aliases.
       await loggers.consoleLog(namespacePrefix + functionName, msg.celseClauseLookingForCommandAliases);
       // NOTE: It could be that the user entered a command alias, so we will need to search through all of the command aliases,
@@ -271,6 +292,8 @@ async function countMatchingCommandAlias(commandAliasData, commandAliasName) {
   // commandAliasName is:
   await loggers.consoleLog(namespacePrefix + functionName, msg.ccommandAliasNameIs + commandAliasName);
   let commandAliasCount = 0;
+  let blackColorArray = await colorizer.getNamedColorData(clr.cBlack, [0,0,0]);
+  let redColorArray = await colorizer.getNamedColorData(clr.cRed, [255,0,0]);
   if (typeof commandAliasData === wrd.cobject) {
     for (let commandAliasEntity in commandAliasData) {
       // commandAliasEntity is:
@@ -278,7 +301,7 @@ async function countMatchingCommandAlias(commandAliasData, commandAliasName) {
       // commandAliasEntityValue is:
       await loggers.consoleLog(namespacePrefix + functionName, msg.ccommandAliasEntityValueIs + JSON.stringify(commandAliasData[commandAliasEntity]));
       if (commandAliasEntity.toUpperCase() != commandAliasName.toUpperCase()) {
-        if (commandAliasData[commandAliasEntity][wrd.cAliases] != undefined) {
+        if (commandAliasData[commandAliasEntity] != undefined &amp;&amp; commandAliasData[commandAliasEntity][wrd.cAliases] != undefined) {
           let aliasList = commandAliasData[commandAliasEntity][wrd.cAliases];
           let arrayOfAliases = aliasList.split(bas.cComa);
           for (const element of arrayOfAliases) {
@@ -293,17 +316,27 @@ async function countMatchingCommandAlias(commandAliasData, commandAliasName) {
             }
           } // End-for (const element of arrayOfAliases)
         } else {
-          let tempCommandAliasCount = await countMatchingCommandAlias(commandAliasData[commandAliasEntity], commandAliasName);
-          // tempCommandAliasCount is:
-          await loggers.consoleLog(namespacePrefix + functionName, msg.ctempCommandAliasCountIs + tempCommandAliasCount);
-          if (tempCommandAliasCount > 0) {
-            // adding commandAliasCount:
-            await loggers.consoleLog(namespacePrefix + functionName, msg.caddingCommandAliasCount + commandAliasCount);
-            commandAliasCount = commandAliasCount + tempCommandAliasCount;
-            // After adding commandAliasCount and tempCommandAliasCount:
-            await loggers.consoleLog(namespacePrefix + functionName, msg.cAfterAddingCommandAliasCountAndTempCommandAliasCount + commandAliasCount);
-            // Don't break, continue searching, so we get a full count of any duplicates found.
-          } // End-if (tempCommandAliasCount > 0)
+          if (commandAliasData[commandAliasEntity] != undefined) {
+            let tempCommandAliasCount = await countMatchingCommandAlias(commandAliasData[commandAliasEntity], commandAliasName);
+            // tempCommandAliasCount is:
+            await loggers.consoleLog(namespacePrefix + functionName, msg.ctempCommandAliasCountIs + tempCommandAliasCount);
+            if (tempCommandAliasCount > 0) {
+              // adding commandAliasCount:
+              await loggers.consoleLog(namespacePrefix + functionName, msg.caddingCommandAliasCount + commandAliasCount);
+              commandAliasCount = commandAliasCount + tempCommandAliasCount;
+              // After adding commandAliasCount and tempCommandAliasCount:
+              await loggers.consoleLog(namespacePrefix + functionName, msg.cAfterAddingCommandAliasCountAndTempCommandAliasCount + commandAliasCount);
+              // Don't break, continue searching, so we get a full count of any duplicates found.
+            } // End-if (tempCommandAliasCount > 0)
+          } else {
+            // ERROR: A command is missing command aliases definitions. Data:
+            let errorMessage = msg.cErrorCountMatchingCommandAliasMessage01 + JSON.stringify(commandAliasData);
+            errorMessage = await colorizer.colorizeMessageSimple(errorMessage, blackColorArray, true);
+            errorMessage = await colorizer.colorizeMessageSimple(errorMessage, redColorArray, false);
+            console.log(errorMessage);
+            // Its an error, but not a duplicate error, however, we need to report it some how.
+            commandAliasCount = commandAliasCount + 1; // We've console logged it as best we can, we need to raise the flag anyway.
+          }          
         }
       } else if (commandAliasEntity.toUpperCase() === commandAliasName.toUpperCase()) {
         // Found a matching entry! 2
@@ -337,13 +370,13 @@ async function searchCommandAlias(commandAliasData, commandAliasName) {
   // commandAliasName is:
   await loggers.consoleLog(namespacePrefix + functionName, msg.ccommandAliasNameIs + commandAliasName);
   let commandAliasObject = false;
-  if (typeof commandAliasData === wrd.cobject) {
+  if (typeof commandAliasData === wrd.cobject &amp;&amp; typeof commandAliasName === wrd.cstring) {
     for (let commandAliasEntity in commandAliasData) {
       // commandAliasEntity is:
       await loggers.consoleLog(namespacePrefix + functionName, msg.ccommandAliasEntityIs + JSON.stringify(commandAliasEntity));
       // commandAliasEntityValue is:
       await loggers.consoleLog(namespacePrefix + functionName, msg.ccommandAliasEntityValueIs + JSON.stringify(commandAliasData[commandAliasEntity]));
-      if (commandAliasEntity.toUpperCase() != commandAliasName.toUpperCase()) {
+      if (commandAliasEntity.toUpperCase() != commandAliasName.toUpperCase() &amp;&amp; commandAliasData[commandAliasEntity]) {
         if (commandAliasData[commandAliasEntity][wrd.cAliases] != undefined) {
           let aliasList = commandAliasData[commandAliasEntity][wrd.cAliases];
           let arrayOfAliases = aliasList.split(bas.cComa);
@@ -442,7 +475,10 @@ async function getAllCommandAliasData(commandAliasDataStructure) {
           allCommandsData = await ruleBroker.processRules([allCommandsData, allCommandAliasesTemp], [biz.cobjectDeepMerge]);
         }
       } else {
-        allCommandsData = false; // Reset it, because it was reinitalized to an array.
+        if (Array.isArray(allCommandsData) === true &amp;&amp; allCommandsData.length === 0) {
+          // NOTE: Only reset it if it does not already contain some data. We could loose data if we didn't check first.
+          allCommandsData = false; // Reset it, because it was reinitialized to an array.
+        }
       }
     } // End-for (let commandAliasEntity in internalCommandAliasDataStructure)
   } // End-if (typeof internalCommandAliasDataStructure === wrd.cobject)
@@ -525,7 +561,7 @@ async function getCommandArgs(commandString, commandDelimiter) {
   if (commandDelimiter === null || commandDelimiter !== commandDelimiter || commandDelimiter === undefined) {
     commandArgsDelimiter = bas.cSpace;
   }
-  if (commandString.includes(commandArgsDelimiter) === true) {
+  if (typeof commandString === wrd.cstring &amp;&amp; commandString.includes(commandArgsDelimiter) === true) {
     // NOTE: All commands that enqueue or execute commands need to pass through this function.
     // There is a case where the user might pass a string with spaces or other code/syntax.
     // So we need to split first by single character string delimiters and parse the
@@ -681,7 +717,7 @@ async function executeCommand(commandString) {
   let commandEndTime = '';
   let commandDeltaTime = '';
 
-  await loggers.consoleLog(namespacePrefix + functionName, 'commandQueue is: ' + await queue.queuePrint(sys.cCommandQueue));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.ccommandQueueIs + await queue.queuePrint(sys.cCommandQueue));
 
   if (commandMetricsEnabled === true) {
     // Here we will capture the start time of the command we are about to execute.
@@ -740,8 +776,96 @@ async function executeCommand(commandString) {
   return returnData;
 }
 
+/**
+ * @function removePluginCommands
+ * @description Parses through the commands and finds the commands associated with the named plugin.
+ * Then removes that data shredding it from existence at the edge of a black hole.
+ * @param {string} pluginName The name of the plugin that should have its commands removed from the D-data structure.
+ * @return {boolean} True or False to indicate if the removal of the data was completed successfully or not.
+ * @author Seth Hollingsead
+ * @date 2023/02/01
+ */
+async function removePluginCommands(pluginName) {
+  let functionName = removePluginCommands.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  // pluginName is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginNameIs + pluginName);
+  let returnData = false;
+  let allCommands = D[wrd.cCommands];
+  // NOTE: We are going to have to get the names of the individual commands for the plugin,
+  // from the plugin constants validation for the commands,
+  // then iterate over them to remove all of the plugin business rules one by one.
+  let pluginConstantsValidation = D[sys.cConstantsValidationData][wrd.cPlugins][pluginName];
+  let pluginConstantsValidationCommands = {};
+  if (pluginConstantsValidation) {
+    pluginConstantsValidationCommands = pluginConstantsValidation[sys.cpluginCommandConstantsValidation];
+  } else {
+    // ERROR: Constants validation data for the specified plugin was not found. Plugin:
+    console.log(msg.cremovePluginBusinessRulesMessage01 + pluginName);
+  }
+  if (pluginConstantsValidationCommands) {
+    try {
+      for (const pluginCommandsRuleKey in pluginConstantsValidationCommands) {
+        let pluginCommandConstValidationObject = pluginConstantsValidationCommands[pluginCommandsRuleKey];
+        // pluginCommandConstValidationObject is:
+        await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginCommandsConstValidationObjectIs + JSON.stringify(pluginCommandConstValidationObject));
+        // Removing plugin command:
+        await loggers.consoleLog(namespacePrefix + functionName, msg.cremovePluginCommandsMessage01 + pluginCommandConstValidationObject[wrd.cActual]);
+        delete allCommands[pluginCommandConstValidationObject[wrd.cActual]];
+      }
+      returnData = true;
+    } catch (err) {
+      // ERROR: Failure attempting to delete the plugin commands for plugin:
+      console.log(msg.cremovePluginCommandsMessage02 + pluginName);
+      console.log(msg.cerrorMessage + err.message);
+    }
+  } else {
+    // ERROR: Plugin command constants validation data for the specified plugin was not found. Plugin:
+    console.log(msg.cremovePluginCommandsMessage03 + pluginName);
+  }
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
+/**
+ * @function removePluginCommandAliases
+ * @description Parses through the command aliases and finds the command aliases associated with the named plugin.
+ * Then removes that data shredding it from existence at the edge of a black hole.
+ * @param {string} pluginName The name of the plugin that should have its command aliases removed from the D-data structure.
+ * @return {boolean} True or False to indicate if the removal of the data was completed successfully or not.
+ * @author Seth Hollingsead
+ * @date 2023/02/01
+ */
+async function removePluginCommandAliases(pluginName) {
+  let functionName = removePluginCommandAliases.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  // pluginName is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginNameIs + pluginName);
+  let returnData = false;
+  let allPluginsCommandAliases = D[sys.cCommandsAliases][wrd.cPlugins];
+  if (allPluginsCommandAliases) {
+    try {
+      delete allPluginsCommandAliases[pluginName];
+      returnData = true;
+    } catch (err) {
+      // ERROR: Unable to remove the plugin command aliases for the specified plugin:
+      console.log(msg.cremovePluginCommandAliasesMessage01 + pluginName);
+      // ERROR:
+      console.log(msg.cerrorMessage + err.message);
+    }
+  } else {
+    // ERROR: Unable to locate the plugins command aliases data. Plugin: 
+    console.log(msg.cremovePluginCommandAliasesMessage02 + pluginName);
+  }
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
 export default {
   bootStrapCommands,
+  resetCommands,
   addClientCommands,
   addPluginCommands,
   addPluginCommandAliases,
@@ -751,7 +875,9 @@ export default {
   getAllCommandAliasData,
   getCommandNamespaceDataObject,
   getCommandArgs,
-  executeCommand
+  executeCommand,
+  removePluginCommands,
+  removePluginCommandAliases
 };
 </code></pre>
         </article>
@@ -763,13 +889,13 @@ export default {
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-advanced.html">advanced</a></li><li><a href="module-allConstantsValidationMetadata.html">allConstantsValidationMetadata</a></li><li><a href="module-auxiliary.html">auxiliary</a></li><li><a href="module-auxiliaryArrayParsing.html">auxiliaryArrayParsing</a></li><li><a href="module-auxiliaryStringParsing.html">auxiliaryStringParsing</a></li><li><a href="module-characterArrayParsing.html">characterArrayParsing</a></li><li><a href="module-characterGeneration.html">characterGeneration</a></li><li><a href="module-characterStringParsing.html">characterStringParsing</a></li><li><a href="module-chiefCommander.html">chiefCommander</a></li><li><a href="module-chiefConfiguration.html">chiefConfiguration</a></li><li><a href="module-chiefData.html">chiefData</a></li><li><a href="module-chiefPlugin.html">chiefPlugin</a></li><li><a href="module-chiefWorkflow.html">chiefWorkflow</a></li><li><a href="module-colorizer.html">colorizer</a></li><li><a href="module-commandArrayParsing.html">commandArrayParsing</a></li><li><a href="module-commandBroker.html">commandBroker</a></li><li><a href="module-commandsLibrary.html">commandsLibrary</a></li><li><a href="module-commandStringParsing.html">commandStringParsing</a></li><li><a href="module-configuration.html">configuration</a></li><li><a href="module-configurator.html">configurator</a></li><li><a href="module-constant.html">constant</a></li><li><a href="module-constantArrayParsing.html">constantArrayParsing</a></li><li><a href="module-constantStringParsing.html">constantStringParsing</a></li><li><a href="module-data.html">data</a></li><li><a href="module-dataArrayParsing.html">dataArrayParsing</a></li><li><a href="module-dataBroker.html">dataBroker</a></li><li><a href="module-dataDirectorate.html">dataDirectorate</a></li><li><a href="module-dataStringParsing.html">dataStringParsing</a></li><li><a href="module-fileOperations.html">fileOperations</a></li><li><a href="module-fileStringParsing.html">fileStringParsing</a></li><li><a href="module-integrationTests.html">integrationTests</a></li><li><a href="module-lexicalAnalyzer.html">lexicalAnalyzer</a></li><li><a href="module-loggers.html">loggers</a></li><li><a href="module-main.html">main</a></li><li><a href="module-mathOperations.html">mathOperations</a></li><li><a href="module-pathArrayParsing.html">pathArrayParsing</a></li><li><a href="module-performanceMetric.html">performanceMetric</a></li><li><a href="module-pluginBroker.html">pluginBroker</a></li><li><a href="module-plugins.html">plugins</a></li><li><a href="module-promptOperations.html">promptOperations</a></li><li><a href="module-queue.html">queue</a></li><li><a href="module-ruleBroker.html">ruleBroker</a></li><li><a href="module-ruleParsing.html">ruleParsing</a></li><li><a href="module-rulesLibrary.html">rulesLibrary</a></li><li><a href="module-stack.html">stack</a></li><li><a href="module-stringGeneration.html">stringGeneration</a></li><li><a href="module-stringParsingUtilities.html">stringParsingUtilities</a></li><li><a href="module-system.html">system</a></li><li><a href="module-themeBroker.html">themeBroker</a></li><li><a href="module-timeComputation.html">timeComputation</a></li><li><a href="module-warden.html">warden</a></li><li><a href="module-wordArrayParsing.html">wordArrayParsing</a></li><li><a href="module-wordStringParsing.html">wordStringParsing</a></li><li><a href="module-workflowBroker.html">workflowBroker</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-advanced.html">advanced</a></li><li><a href="module-auxiliary.html">auxiliary</a></li><li><a href="module-auxiliaryArrayParsing.html">auxiliaryArrayParsing</a></li><li><a href="module-auxiliaryStringParsing.html">auxiliaryStringParsing</a></li><li><a href="module-characterArrayParsing.html">characterArrayParsing</a></li><li><a href="module-characterGeneration.html">characterGeneration</a></li><li><a href="module-characterStringParsing.html">characterStringParsing</a></li><li><a href="module-chiefCommander.html">chiefCommander</a></li><li><a href="module-chiefConfiguration.html">chiefConfiguration</a></li><li><a href="module-chiefConstant.html">chiefConstant</a></li><li><a href="module-chiefData.html">chiefData</a></li><li><a href="module-chiefPlugin.html">chiefPlugin</a></li><li><a href="module-chiefTheme.html">chiefTheme</a></li><li><a href="module-chiefWorkflow.html">chiefWorkflow</a></li><li><a href="module-colorizer.html">colorizer</a></li><li><a href="module-commandArrayParsing.html">commandArrayParsing</a></li><li><a href="module-commandBroker.html">commandBroker</a></li><li><a href="module-commandsLibrary.html">commandsLibrary</a></li><li><a href="module-commandStringParsing.html">commandStringParsing</a></li><li><a href="module-configuration.html">configuration</a></li><li><a href="module-configurator.html">configurator</a></li><li><a href="module-constant.html">constant</a></li><li><a href="module-constantArrayParsing.html">constantArrayParsing</a></li><li><a href="module-constantBroker.html">constantBroker</a></li><li><a href="module-constantStringParsing.html">constantStringParsing</a></li><li><a href="module-data.html">data</a></li><li><a href="module-dataArrayParsing.html">dataArrayParsing</a></li><li><a href="module-dataBroker.html">dataBroker</a></li><li><a href="module-dataDirectorate.html">dataDirectorate</a></li><li><a href="module-dataStringParsing.html">dataStringParsing</a></li><li><a href="module-fileOperations.html">fileOperations</a></li><li><a href="module-fileStringParsing.html">fileStringParsing</a></li><li><a href="module-integrationTests.html">integrationTests</a></li><li><a href="module-lexicalAnalyzer.html">lexicalAnalyzer</a></li><li><a href="module-loggers.html">loggers</a></li><li><a href="module-main.html">main</a></li><li><a href="module-mathOperations.html">mathOperations</a></li><li><a href="module-pathArrayParsing.html">pathArrayParsing</a></li><li><a href="module-performanceMetric.html">performanceMetric</a></li><li><a href="module-pluginBroker.html">pluginBroker</a></li><li><a href="module-plugins.html">plugins</a></li><li><a href="module-promptOperations.html">promptOperations</a></li><li><a href="module-queue.html">queue</a></li><li><a href="module-ruleBroker.html">ruleBroker</a></li><li><a href="module-ruleParsing.html">ruleParsing</a></li><li><a href="module-rulesLibrary.html">rulesLibrary</a></li><li><a href="module-stack.html">stack</a></li><li><a href="module-stringGeneration.html">stringGeneration</a></li><li><a href="module-stringParsingUtilities.html">stringParsingUtilities</a></li><li><a href="module-system.html">system</a></li><li><a href="module-themeBroker.html">themeBroker</a></li><li><a href="module-timeComputation.html">timeComputation</a></li><li><a href="module-warden.html">warden</a></li><li><a href="module-wordArrayParsing.html">wordArrayParsing</a></li><li><a href="module-wordStringParsing.html">wordStringParsing</a></li><li><a href="module-workflowBroker.html">workflowBroker</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Wed Oct 26 2022 17:51:53 GMT-0500 (Central Daylight Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Wed Feb 22 2023 14:45:59 GMT-0600 (Central Standard Time)
 </footer>
 
 <script> prettyPrint(); </script>

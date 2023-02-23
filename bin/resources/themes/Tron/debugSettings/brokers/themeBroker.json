@@ -102,5 +102,18 @@
   "debugFunctions|debugSetting.framework.brokers.themeBroker.applyTheme@ModuleFontBackgroundColor": "Default",
   "debugFunctions|debugSetting.framework.brokers.themeBroker.applyTheme@FunctionFontBackgroundColor": "Default",
   "debugFunctions|debugSetting.framework.brokers.themeBroker.applyTheme@MessageFontBackgroundColor": "Default",
-  "debugFunctions|debugSetting.framework.brokers.themeBroker.applyTheme@DataFontBackgroundColor": "Default"
+  "debugFunctions|debugSetting.framework.brokers.themeBroker.applyTheme@DataFontBackgroundColor": "Default",
+  "debugFunctions|debugSetting.framework.brokers.themeBroker.removePluginThemeData": true,
+  "debugFunctions|debugSetting.framework.brokers.themeBroker.removePluginThemeData@ModuleFontStyle": "Default",
+  "debugFunctions|debugSetting.framework.brokers.themeBroker.removePluginThemeData@FunctionFontStyle": "Default",
+  "debugFunctions|debugSetting.framework.brokers.themeBroker.removePluginThemeData@MessageFontStyle": "Default",
+  "debugFunctions|debugSetting.framework.brokers.themeBroker.removePluginThemeData@DataFontStyle": "Default",
+  "debugFunctions|debugSetting.framework.brokers.themeBroker.removePluginThemeData@ModuleFontColor": "Default",
+  "debugFunctions|debugSetting.framework.brokers.themeBroker.removePluginThemeData@FunctionFontColor": "Default",
+  "debugFunctions|debugSetting.framework.brokers.themeBroker.removePluginThemeData@MessageFontColor": "Default",
+  "debugFunctions|debugSetting.framework.brokers.themeBroker.removePluginThemeData@DataFontColor": "Default",
+  "debugFunctions|debugSetting.framework.brokers.themeBroker.removePluginThemeData@ModuleFontBackgroundColor": "Default",
+  "debugFunctions|debugSetting.framework.brokers.themeBroker.removePluginThemeData@FunctionFontBackgroundColor": "Default",
+  "debugFunctions|debugSetting.framework.brokers.themeBroker.removePluginThemeData@MessageFontBackgroundColor": "Default",
+  "debugFunctions|debugSetting.framework.brokers.themeBroker.removePluginThemeData@DataFontBackgroundColor": "Default"
 }

@@ -9,6 +9,8 @@
  * @requires module:configurator
  * @requires module:loggers
  * @requires module:data
+ * @requires module:queue
+ * @requires module:stack
  * @requires {@link https://www.npmjs.com/package/@haystacks/constants|@haystacks/constants}
  * @requires {@link https://www.npmjs.com/package/path|path}
  * @author Seth Hollingsead
@@ -24,11 +26,13 @@ import colorizer from '../../executrix/colorizer.js';
 import configurator from '../../executrix/configurator.js';
 import loggers from '../../executrix/loggers.js';
 import D from '../../structures/data.js';
+import queue from '../../structures/queue.js';
+import stack from '../../structures/stack.js';
 // External imports
 import hayConst from '@haystacks/constants';
 import path from 'path';
 
-const {bas, biz, clr, cfg, msg, sys, wrd} = hayConst;
+const {bas, biz, clr, cmd, cfg, msg, sys, wrd} = hayConst;
 const baseFileName = path.basename(import.meta.url, path.extname(import.meta.url));
 // framework.commandsBlob.commands.integrationTests.
 const namespacePrefix = wrd.cframework + bas.cDot + sys.ccommandsBlob + bas.cDot + wrd.ccommands + bas.cDot + baseFileName + bas.cDot;
@@ -36,7 +40,7 @@ const namespacePrefix = wrd.cframework + bas.cDot + sys.ccommandsBlob + bas.cDot
 /**
  * @function validateConstants
  * @description Validates all constants with a 2-phase verification process.
- * @param {string} inputData An array that could possibly include the name of this command,
+ * @param {array<string>} inputData An array that could possibly include the name of this command,
  * and a list of top-level constants validation data structures to be validated.
  * That way we can parameterize and optimize the validation of the constants specific to the testing needs.
  * Rather than always running the full set of constants validation, as that could take a very long time,
@@ -124,6 +128,8 @@ async function validateConstants(inputData, inputMetaData) {
           validationTypesConfirmedArray.push(wrd.cApplication);
         } else if (userEnteredValidationType.toUpperCase().trim() === wrd.cPLUGINS || userEnteredValidationType.toUpperCase().trim() === wrd.cPLUGIN) {
           validationTypesConfirmedArray.push(wrd.cPlugins);
+        } else if (userEnteredValidationType === '') {
+          // Just ignore it!
         } else {
           // WARNING: The specified validation type is not available, please enter a valid type and try again. Type not recognized: 
           // Constants validation types are:
@@ -192,6 +198,7 @@ async function validateConstants(inputData, inputMetaData) {
       // Phase1 Constants Validation
       // BEGIN Phase 1 Constants Validation
       await loggers.consoleLog(namespacePrefix + functionName, msg.cBeginPhase1ConstantsValidation);
+      console.log(msg.cBeginPhase1ConstantsValidation);
       // First scan through each file and validate that the constants defined in the constants code file are also contained in the validation file.
       for (let key1 in validationArray) {
         let constantsPath = validationArray[key1];
@@ -205,6 +212,7 @@ async function validateConstants(inputData, inputMetaData) {
       // Phase 2 Constants Validation
       // BEGIN Phase 2 Constants Validation
       await loggers.consoleLog(namespacePrefix + functionName, msg.cBeginPhase2ConstantsValidation);
+      console.log(msg.cBeginPhase2ConstantsValidation);
       // Now verify that the values of the constants are what they are expected to be by using the constants validation data to validate.
       for (let key2 in validationArray) {
         phase2Results[key2] = await ruleBroker.processRules([key2, ''], [biz.cvalidateConstantsDataValues]);
@@ -279,7 +287,7 @@ async function validateConstants(inputData, inputMetaData) {
 /**
  * @function validateCommandAliases
  * @description Validates all command aliases have no duplicates within a command, but also between commands.
- * @param {string} inputData An array that could possibly include the name of this command,
+ * @param {array<string>} inputData An array that could possibly include the name of this command,
  * and a list of top-level command aliases data structures to be validated.
  * That way we can parameterize and optimize the validation of the command aliases specific to the testing needs.
  * Rather than always running the full set of command aliases, as that could take a very long time,
@@ -354,6 +362,8 @@ async function validateCommandAliases(inputData, inputMetaData) {
         validationTypesConfirmedArray.push(wrd.cApplication);
       } else if (userEnteredValidationType.toUpperCase().trim() === wrd.cPLUGINS || userEnteredValidationType.toUpperCase().trim() === wrd.cPLUGIN) {
         validationTypesConfirmedArray.push(wrd.cPlugins);
+      } else if (userEnteredValidationType === '') {
+        // Just ignore it!
       } else {
         // WARNING: The specified validation type is not available, please enter a valid type and try again. Type not recognized:
         console.log(msg.cWarningUserEnteredConstantsValidationDataTypeMessage01 + userEnteredValidationType);
@@ -388,16 +398,20 @@ async function validateCommandAliases(inputData, inputMetaData) {
       let frameworkCommandAliases = await commandBroker.getAllCommandAliasData(D[sys.cCommandsAliases][wrd.cFramework]);
       // frameworkCommandAliases is:
       await loggers.consoleLog(namespacePrefix + functionName, msg.cframeworkCommandAliasesIs + JSON.stringify(frameworkCommandAliases));
-      allCommandAliasesToValidate = await ruleBroker.processRules([allCommandAliasesToValidate, frameworkCommandAliases], [biz.cobjectDeepMerge]);
+      if (frameworkCommandAliases) {
+        allCommandAliasesToValidate = await ruleBroker.processRules([allCommandAliasesToValidate, frameworkCommandAliases], [biz.cobjectDeepMerge]);
+      }
     }
     if (validationTypesConfirmedList.includes(wrd.cApplication)) {
       let applicationCommandAliases = await commandBroker.getAllCommandAliasData(D[sys.cCommandsAliases][wrd.cApplication]);
       // applicationCommandAliases is: 
       await loggers.consoleLog(namespacePrefix + functionName, msg.capplicationCommandAliasesIs + JSON.stringify(applicationCommandAliases));
-      if (Object.keys(allCommandAliasesToValidate).length != 0) {
-        allCommandAliasesToValidate = await ruleBroker.processRules([allCommandAliasesToValidate, applicationCommandAliases], [biz.cobjectDeepMerge]);
-      } else {
-        allCommandAliasesToValidate = applicationCommandAliases;
+      if (applicationCommandAliases) {
+        if (Object.keys(allCommandAliasesToValidate).length != 0) {
+          allCommandAliasesToValidate = await ruleBroker.processRules([allCommandAliasesToValidate, applicationCommandAliases], [biz.cobjectDeepMerge]);
+        } else {
+          allCommandAliasesToValidate = applicationCommandAliases;
+        }
       }
     }
     if (await configurator.getConfigurationSetting(wrd.csystem, cfg.cenablePluginLoader)) {
@@ -405,10 +419,12 @@ async function validateCommandAliases(inputData, inputMetaData) {
         let pluginCommandAliases = await commandBroker.getAllCommandAliasData(D[sys.cCommandsAliases][wrd.cPlugins]);
         // pluginCommandAliases is:
         await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginCommandAliasesIs + JSON.stringify(pluginCommandAliases));
-        if (Object.keys(allCommandAliasesToValidate).length != 0) {
-          allCommandAliasesToValidate = await ruleBroker.processRules([allCommandAliasesToValidate, pluginCommandAliases], [biz.cobjectDeepMerge]);
-        } else {
-          allCommandAliasesToValidate = pluginCommandAliases;
+        if (pluginCommandAliases) {
+          if (Object.keys(allCommandAliasesToValidate).length != 0) {
+            allCommandAliasesToValidate = await ruleBroker.processRules([allCommandAliasesToValidate, pluginCommandAliases], [biz.cobjectDeepMerge]);
+          } else {
+            allCommandAliasesToValidate = pluginCommandAliases;
+          }
         }
       }
     }
@@ -419,6 +435,8 @@ async function validateCommandAliases(inputData, inputMetaData) {
     await loggers.consoleLog(namespacePrefix + functionName, msg.callCommandAliasesToValidateIs + JSON.stringify(allCommandAliasesToValidate));
 
     // Now do the validation from the flattened array of command aliases data.
+    // Begin command aliases validation
+    console.log(msg.cBeginCommandAliasesValidationMessage);
     for (let key1 in allCommandAliasesToValidate[0]) {
       // key1 is:
       await loggers.consoleLog(namespacePrefix + functionName, msg.ckey1Is + key1);
@@ -477,7 +495,7 @@ async function validateCommandAliases(inputData, inputMetaData) {
 /**
  * @function validateWorkflows
  * @description Validates all the workflows have no duplicates.
- * @param {string} inputData An array that could possibly include the name of this command,
+ * @param {array<string>} inputData An array that could possibly include the name of this command,
  * and a ist of top-level workflows data structures to be validated.
  * That way we can parameterize and optimize the validation of the workflows specific to the testing needs.
  * Rather than always running the full set of workflows, as that could take longer,
@@ -552,6 +570,8 @@ async function validateWorkflows(inputData, inputMetaData) {
         validationTypesConfirmedArray.push(wrd.cApplication);
       } else if (userEnteredValidationType.toUpperCase().trim() === wrd.cPLUGINS || userEnteredValidationType.toUpperCase().trim() === wrd.cPLUGIN) {
         validationTypesConfirmedArray.push(wrd.cPlugins);
+      } else if (userEnteredValidationType === '') {
+        // Just ignore it!
       } else {
         // WARNING: The specified validation type is not available, please enter a valid type and try again. Type not recognized:
         console.log(msg.cWarningUserEnteredConstantsValidationDataTypeMessage01 + userEnteredValidationType);
@@ -597,6 +617,8 @@ async function validateWorkflows(inputData, inputMetaData) {
     // allWorkflowsToValidate = await workflowBroker.getAllWorkflows(D[sys.cCommandWorkflows]);
     // allWorkflowsToValidate is:
     await loggers.consoleLog(namespacePrefix + functionName, msg.callWorkflowsToValidate + JSON.stringify(allWorkflowsToValidate));
+    // Begin workflows validation
+    console.log(msg.cBeginWorkflowsValidationMessage);
     for (let workflowKey in allWorkflowsToValidate) {
       numberOfDuplicatesFound = 0;
       let workflowName = allWorkflowsToValidate[workflowKey];
@@ -645,8 +667,134 @@ async function validateWorkflows(inputData, inputMetaData) {
   return returnData;
 }
 
+/**
+ * @function runAllValidations
+ * @description Runs all validations together, constants validation, command alias validation and workflow validation.
+ * @param {string} inputData An array that could possibly include the name of this command,
+ * and a list of top-level data structures that all validations should be run against.
+ * Rather than always running the full set of validations against everything, as that could take longer,
+ * and only needs to be done exhaustively when releasing a new instance of the entire Haystacks platform.
+ * inputData[1] = runAllValidations
+ * inputData[2] = Could be a coma-separated string list of data types to run all validation with.
+ * inputData[n] = Could be additional list of workflow data types list to validate if the user entered a space-separated list.
+ * Options are: Framework,Platform,Application,App,Plugins,Plugin
+ * @param {string} inputMetaData Not used for this command.
+ * @return {array<boolean,string|integer|boolean|object|array>} An array with a boolean True or False value to
+ * indicate if the application should exit or not exit, followed by the command output.
+ * @author Seth Hollingsead
+ * @date 2023/02/20
+ */
+async function runAllValidations(inputData, inputMetaData) {
+  let functionName = runAllValidations.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
+  let returnData = [true, false];
+  let validationTypesInputArray = []; // Use this to process any inputs the user may have entered.
+  let validationTypesConfirmedArray = []; // Use this once we've confirmed valid user entry for inputs given the types of validation that are available.
+  let validationTypesConfirmedList = '';
+  let validUserEntry = false;
+  let validValidationTypes = [wrd.cFramework, wrd.cApplication, wrd.cPlugins];
+  let validValidationUserTypes = [wrd.cFramework, wrd.cPlatform, wrd.cApplication, wrd.cApp, wrd.cPlugins, wrd.cPlugin];
+
+  // Process user input(s).
+  // Check first to see what, if any options, the user may have entered nto this command,
+  // that will determine to what extent we do validation.
+  if (Array.isArray(inputData) && inputData.length === 2) {
+    // User either entered a single data structure to validate, or a coma-separated list.
+    // inputData.length is:
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataLengthIs + inputData.length);
+    if (inputData[1].includes(bas.cComa)) {
+      validationTypesInputArray = inputData[1].split(bas.cComa);
+    } else if (inputData[1].includes(bas.cSemiColon)) {
+      validationTypesInputArray = inputData[1].split(bas.cSemiColon);
+    } else if (inputData[1].includes(bas.cForwardSlash)) {
+      validationTypesInputArray = inputData[1].split(bas.cForwardSlash);
+    } else if (inputData[1].includes(bas.cBackSlash)) {
+      validationTypesInputArray = inputData[1].split(bas.cForwardSlash);
+    } else {
+      // shift the data1!
+      await loggers.consoleLog(namespacePrefix + functionName, msg.cshiftData1);
+      inputData.shift();
+      validationTypesInputArray = inputData;
+    }
+  } else if (Array.isArray(inputData) && inputData.length > 2) {
+    // shift the data2!
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cshiftData2);
+    inputData.shift();
+    validationTypesInputArray = inputData;
+  }
+
+  // validationTypesInputArray is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cvalidationTypesInputArrayIs + JSON.stringify(validationTypesInputArray));
+
+  // This is where we need to process the array of inputs to normalize them to the validation types available by the system.
+  // Available types are: Framework,Platform,Application,App,Plugins,Plugin
+  if (validationTypesInputArray.length > 0) {
+    for (let validationTypesKey in validationTypesInputArray) {
+      let userEnteredValidationType = validationTypesInputArray[validationTypesKey];
+      if (userEnteredValidationType.toUpperCase().trim() === wrd.cFRAMEWORK || userEnteredValidationType.toUpperCase().trim() === wrd.cPLATFORM) {
+        validationTypesConfirmedArray.push(wrd.cFramework);
+      } else if (userEnteredValidationType.toUpperCase().trim() === wrd.cAPPLICATION || userEnteredValidationType.toUpperCase().trim() === wrd.cAPP) {
+        validationTypesConfirmedArray.push(wrd.cApplication);
+      } else if (userEnteredValidationType.toUpperCase().trim() === wrd.cPLUGINS || userEnteredValidationType.toUpperCase().trim() === wrd.cPLUGIN) {
+        validationTypesConfirmedArray.push(wrd.cPlugins);
+      } else if (userEnteredValidationType === '') {
+        // Just ignore it
+      } else {
+        // WARNING: The specified validation type is not available, please enter a valid type and try again. Type not recognized:
+        console.log(msg.cWarningUserEnteredConstantsValidationDataTypeMessage01 + userEnteredValidationType);
+        // Validation types are:
+        console.log(msg.cWarningUserEnteredValidationDateTypeMessage02 + validValidationUserTypes.join(bas.cComa + bas.cSpace));
+      }
+    } // End-for (let validationTypesKey in validationTypesInputArray)
+
+    // validationTypesConfirmedArray is:
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cvalidationTypesConfirmedArrayIs + JSON.stringify(validationTypesConfirmedArray));
+
+    if (validationTypesConfirmedArray.length > 0) {
+      validationTypesConfirmedList = validationTypesConfirmedArray.join(bas.cComa);
+      validUserEntry = true;
+    } else {
+      // WARNING: No valid validation types were entered.
+      console.log(msg.cWarningUserEnteredValidationDataTypeMessage03);
+      // All validation types are:
+      console.log(msg.cWarningUserEnteredValidationDataTypeMessage02 + validValidationUserTypes.join(bas.cComa + bas.cSpace));
+    }
+  } else {
+    // User didn't enter any parameters at all....just run it all!
+    validationTypesConfirmedList = validValidationTypes.join(bas.cComa);
+    validationTypesConfirmedArray = validValidationTypes
+    validUserEntry = true;
+  }
+
+  // vaidationTypesConfirmedList is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cvalidationTypesConfirmedListIs + validationTypesConfirmedList);
+
+  if (validUserEntry === true) {
+    let constantsValidationCommandToQueue = cmd.cvalidateConstants + bas.cSpace + validationTypesConfirmedList;
+    let commandAliasesValidationCommandToQueue = cmd.cvalidateCommandAliases + bas.cSpace + validationTypesConfirmedList;
+    let workflowsValidationCommandToQueue = cmd.cvalidateWorkflows + bas.cSpace + validationTypesConfirmedList;
+    if (await configurator.getConfigurationSetting(wrd.csystem, cfg.clogAllCommands) === true) {
+      await stack.push(sys.cSystemCommandLog, constantsValidationCommandToQueue);
+      await stack.push(sys.cSystemCommandLog, commandAliasesValidationCommandToQueue);
+      await stack.push(sys.cSystemCommandLog, workflowsValidationCommandToQueue);
+    }
+    // Now add them to the front of the command queue in reverse order, so they will get executed next.
+    // Running all validations
+    console.log(msg.cRunningAllValidationsMessage);
+    await queue.enqueueFront(sys.cCommandQueue, workflowsValidationCommandToQueue);
+    await queue.enqueueFront(sys.cCommandQueue, commandAliasesValidationCommandToQueue);
+    await queue.enqueueFront(sys.cCommandQueue, constantsValidationCommandToQueue);
+  }
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
 export default {
   validateConstants,
   validateCommandAliases,
-  validateWorkflows
+  validateWorkflows,
+  runAllValidations
 }

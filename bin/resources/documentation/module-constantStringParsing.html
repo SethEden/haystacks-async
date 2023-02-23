@@ -149,7 +149,7 @@
         
             <li><a href="https://www.npmjs.com/package/chalk">chalk</a></li>
         
-            <li><a href="https://www.npmjs.com/package/n-readlines">n-readlines</a></li>
+            <li><a href="https://nodejs.dev/">https://nodejs.dev/</a></li>
         
             <li><a href="https://www.npmjs.com/package/path">path</a></li>
         </ul>
@@ -306,7 +306,7 @@ so the recursive algorithm can continue processing the rest of the string, after
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="businessRules_rules_stringParsing_constantStringParsing.js.html">businessRules/rules/stringParsing/constantStringParsing.js</a>, <a href="businessRules_rules_stringParsing_constantStringParsing.js.html#line566">line 566</a>
+        <a href="businessRules_rules_stringParsing_constantStringParsing.js.html">businessRules/rules/stringParsing/constantStringParsing.js</a>, <a href="businessRules_rules_stringParsing_constantStringParsing.js.html#line1032">line 1032</a>
     </li></ul></dd>
     
 
@@ -495,7 +495,7 @@ so the recursive algorithm can continue processing the rest of the string, after
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="businessRules_rules_stringParsing_constantStringParsing.js.html">businessRules/rules/stringParsing/constantStringParsing.js</a>, <a href="businessRules_rules_stringParsing_constantStringParsing.js.html#line534">line 534</a>
+        <a href="businessRules_rules_stringParsing_constantStringParsing.js.html">businessRules/rules/stringParsing/constantStringParsing.js</a>, <a href="businessRules_rules_stringParsing_constantStringParsing.js.html#line994">line 994</a>
     </li></ul></dd>
     
 
@@ -684,7 +684,7 @@ so the recursive algorithm can continue processing the rest of the string, after
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="businessRules_rules_stringParsing_constantStringParsing.js.html">businessRules/rules/stringParsing/constantStringParsing.js</a>, <a href="businessRules_rules_stringParsing_constantStringParsing.js.html#line505">line 505</a>
+        <a href="businessRules_rules_stringParsing_constantStringParsing.js.html">businessRules/rules/stringParsing/constantStringParsing.js</a>, <a href="businessRules_rules_stringParsing_constantStringParsing.js.html#line962">line 962</a>
     </li></ul></dd>
     
 
@@ -827,7 +827,7 @@ the full path and file name of the constants file. (Should work just the same wi
 
             
 
-            <td class="description last"><p>Not used for this business rule.</p></td>
+            <td class="description last"><p>The name of the data hive that contains the appropriate matching constants validation data.</p></td>
         </tr>
 
     
@@ -875,7 +875,7 @@ the full path and file name of the constants file. (Should work just the same wi
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="businessRules_rules_stringParsing_constantStringParsing.js.html">businessRules/rules/stringParsing/constantStringParsing.js</a>, <a href="businessRules_rules_stringParsing_constantStringParsing.js.html#line115">line 115</a>
+        <a href="businessRules_rules_stringParsing_constantStringParsing.js.html">businessRules/rules/stringParsing/constantStringParsing.js</a>, <a href="businessRules_rules_stringParsing_constantStringParsing.js.html#line139">line 139</a>
     </li></ul></dd>
     
 
@@ -1065,7 +1065,7 @@ This will make it really easy for developers to maintain the constants validatio
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="businessRules_rules_stringParsing_constantStringParsing.js.html">businessRules/rules/stringParsing/constantStringParsing.js</a>, <a href="businessRules_rules_stringParsing_constantStringParsing.js.html#line147">line 147</a>
+        <a href="businessRules_rules_stringParsing_constantStringParsing.js.html">businessRules/rules/stringParsing/constantStringParsing.js</a>, <a href="businessRules_rules_stringParsing_constantStringParsing.js.html#line175">line 175</a>
     </li></ul></dd>
     
 
@@ -1255,7 +1255,7 @@ checks to see if any of the expected values match the string that is passed in.<
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="businessRules_rules_stringParsing_constantStringParsing.js.html">businessRules/rules/stringParsing/constantStringParsing.js</a>, <a href="businessRules_rules_stringParsing_constantStringParsing.js.html#line222">line 222</a>
+        <a href="businessRules_rules_stringParsing_constantStringParsing.js.html">businessRules/rules/stringParsing/constantStringParsing.js</a>, <a href="businessRules_rules_stringParsing_constantStringParsing.js.html#line384">line 384</a>
     </li></ul></dd>
     
 
@@ -1285,6 +1285,576 @@ checks to see if any of the expected values match the string that is passed in.<
         
 <div class="param-desc">
     <p>True or False to indicate if a matching constant definition was found or not.</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">boolean</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~doesConstantExistInConstantLibraryObject"><span class="type-signature">(inner) </span>doesConstantExistInConstantLibraryObject<span class="signature">(inputData, inputMetaData)</span><span class="type-signature"> &rarr; {boolean}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>This is a middle management of the search, walks through all of the constants validation parent collection objects,
+filters out all the meta-data entries and ensures that searches are only performed on actual constants validation data values.
+This function provides a re-usability function so we don't need to have repeated code in the doesConstantExist function.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>inputData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The value that should be looked for in the constants validation data library, that is also provided as input.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>inputMetaData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>A JSON data object that contains all of the constants validation data namespace objects that should be searched.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-author">Author:</dt>
+    <dd class="tag-author">
+        <ul>
+            <li>Seth Hollingsead</li>
+        </ul>
+    </dd>
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="businessRules_rules_stringParsing_constantStringParsing.js.html">businessRules/rules/stringParsing/constantStringParsing.js</a>, <a href="businessRules_rules_stringParsing_constantStringParsing.js.html#line437">line 437</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>True or False to indicate if a matching constant definition was found or not.</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">boolean</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~doesConstantExistInConstantNamespaceObject"><span class="type-signature">(inner) </span>doesConstantExistInConstantNamespaceObject<span class="signature">(inputData, inputMetaData)</span><span class="type-signature"> &rarr; {boolean}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Walks through all of the constants validation data inside the specified input data structure.
+Checks to see if any of the expected values match the string that is passed in.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>inputData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The value that should be looked for in all the constants data that is provided also as input.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>inputMetaData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The constants validation data structure that should be searched.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-author">Author:</dt>
+    <dd class="tag-author">
+        <ul>
+            <li>Seth Hollingsead</li>
+        </ul>
+    </dd>
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="businessRules_rules_stringParsing_constantStringParsing.js.html">businessRules/rules/stringParsing/constantStringParsing.js</a>, <a href="businessRules_rules_stringParsing_constantStringParsing.js.html#line604">line 604</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>True or False to indicate if a matching constant definition was found or not.</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">boolean</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~doesConstantNamespaceExist"><span class="type-signature">(inner) </span>doesConstantNamespaceExist<span class="signature">(inputData, inputMetaData)</span><span class="type-signature"> &rarr; {boolean}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Searches through the input data structure to determine if it contains the specified constant namespace or not.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>inputData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The name of the data element that should be searched for.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>inputMetaData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The data that should be searched for the specified named data parameter.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-author">Author:</dt>
+    <dd class="tag-author">
+        <ul>
+            <li>Seth Hollingsead</li>
+        </ul>
+    </dd>
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="businessRules_rules_stringParsing_constantStringParsing.js.html">businessRules/rules/stringParsing/constantStringParsing.js</a>, <a href="businessRules_rules_stringParsing_constantStringParsing.js.html#line349">line 349</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>True or False to indicate if a matching namespace was found in the specified data structure or not.</p>
 </div>
 
 
@@ -1444,7 +2014,7 @@ checks to see if any of the expected values match the string that is passed in.<
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="businessRules_rules_stringParsing_constantStringParsing.js.html">businessRules/rules/stringParsing/constantStringParsing.js</a>, <a href="businessRules_rules_stringParsing_constantStringParsing.js.html#line450">line 450</a>
+        <a href="businessRules_rules_stringParsing_constantStringParsing.js.html">businessRules/rules/stringParsing/constantStringParsing.js</a>, <a href="businessRules_rules_stringParsing_constantStringParsing.js.html#line907">line 907</a>
     </li></ul></dd>
     
 
@@ -1633,7 +2203,7 @@ checks to see if any of the expected values match the string that is passed in.<
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="businessRules_rules_stringParsing_constantStringParsing.js.html">businessRules/rules/stringParsing/constantStringParsing.js</a>, <a href="businessRules_rules_stringParsing_constantStringParsing.js.html#line333">line 333</a>
+        <a href="businessRules_rules_stringParsing_constantStringParsing.js.html">businessRules/rules/stringParsing/constantStringParsing.js</a>, <a href="businessRules_rules_stringParsing_constantStringParsing.js.html#line795">line 795</a>
     </li></ul></dd>
     
 
@@ -1674,6 +2244,394 @@ checks to see if any of the expected values match the string that is passed in.<
     <dd>
         
 <span class="param-type">string</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~getConstantActualValueInConstantLibraryObject"><span class="type-signature">(inner) </span>getConstantActualValueInConstantLibraryObject<span class="signature">(inputData, inputMetaData)</span><span class="type-signature"> &rarr; {string|boolean}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>This is a middle management function to get the actual value of the constant that is found.
+Walks through all of the constants validation parent collection objects,
+filters out all of the meta-data entries and ensures that searches are only performed on actual constants validation data values.
+This function provides a re-usability function so we don't need to have repeated code in the getConstantName function.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>inputData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The value that should be looked for in the constants validation data library that is also provided as input.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>inputMetaData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>A JSON data object that contains all of the constants validation data namespace objects that should be searched.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-author">Author:</dt>
+    <dd class="tag-author">
+        <ul>
+            <li>Seth Hollingsead</li>
+        </ul>
+    </dd>
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="businessRules_rules_stringParsing_constantStringParsing.js.html">businessRules/rules/stringParsing/constantStringParsing.js</a>, <a href="businessRules_rules_stringParsing_constantStringParsing.js.html#line564">line 564</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>The actual value of the constant if a match is found, False if no match is found.</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">string</span>
+|
+
+<span class="param-type">boolean</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~getConstantActualValueInConstantNamespaceObject"><span class="type-signature">(inner) </span>getConstantActualValueInConstantNamespaceObject<span class="signature">(inputData, inputMetaData)</span><span class="type-signature"> &rarr; {string|boolean}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Walks through all of the constants validation data inside the specified input data structure.
+Checks to see if any of the expected values match the string that is passed in and returns the actual value of a match if/when it's found.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>inputData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The value that should be looked for in all the constants data that is provided also as input.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>inputMetaData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The constants validation data structure that should be searched.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-author">Author:</dt>
+    <dd class="tag-author">
+        <ul>
+            <li>Seth Hollingsead</li>
+        </ul>
+    </dd>
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="businessRules_rules_stringParsing_constantStringParsing.js.html">businessRules/rules/stringParsing/constantStringParsing.js</a>, <a href="businessRules_rules_stringParsing_constantStringParsing.js.html#line672">line 672</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>The actual value of the constant or False if it is not found.</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">string</span>
+|
+
+<span class="param-type">boolean</span>
 
 
     </dd>
@@ -1823,7 +2781,7 @@ Can only return the first instance.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="businessRules_rules_stringParsing_constantStringParsing.js.html">businessRules/rules/stringParsing/constantStringParsing.js</a>, <a href="businessRules_rules_stringParsing_constantStringParsing.js.html#line400">line 400</a>
+        <a href="businessRules_rules_stringParsing_constantStringParsing.js.html">businessRules/rules/stringParsing/constantStringParsing.js</a>, <a href="businessRules_rules_stringParsing_constantStringParsing.js.html#line854">line 854</a>
     </li></ul></dd>
     
 
@@ -1864,6 +2822,777 @@ Can only return the first instance.</p>
     <dd>
         
 <span class="param-type">string</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~getConstantNameInConstantLibraryObject"><span class="type-signature">(inner) </span>getConstantNameInConstantLibraryObject<span class="signature">(inputData, inputMetaData)</span><span class="type-signature"> &rarr; {string|boolean}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>This is a middle management function to get the name of the constant that is found.
+Walks through all of the constants validation parent collection objects,
+filters out all of the meta-data entries and ensures that searches are only performed on actual constants validation data values.
+This function provides a re-usability function so we don't need to have repeated code in the getConstantName function.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>inputData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The value that should be looked for in the constants validation data library, that is also provided as input.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>inputMetaData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>A JSON data object that contains all of the constants validation data namespace objects that should be searched.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-author">Author:</dt>
+    <dd class="tag-author">
+        <ul>
+            <li>Seth Hollingsead</li>
+        </ul>
+    </dd>
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="businessRules_rules_stringParsing_constantStringParsing.js.html">businessRules/rules/stringParsing/constantStringParsing.js</a>, <a href="businessRules_rules_stringParsing_constantStringParsing.js.html#line524">line 524</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>The name of the constant if a match is found, False if no match is found.</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">string</span>
+|
+
+<span class="param-type">boolean</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~getConstantNameInConstantNamespaceObject"><span class="type-signature">(inner) </span>getConstantNameInConstantNamespaceObject<span class="signature">(inputData, inputMetaData)</span><span class="type-signature"> &rarr; {string|boolean}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Walks through all of the constants validation data inside the specified input data structure.
+Checks to see if any of the expected values match the string that is passed in and returns the name of a match if/when it's found.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>inputData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The value that should be looked for in all the constants data that is provided also as input.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>inputMetaData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The constants validation data structure that should be searched.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-author">Author:</dt>
+    <dd class="tag-author">
+        <ul>
+            <li>Seth Hollingsead</li>
+        </ul>
+    </dd>
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="businessRules_rules_stringParsing_constantStringParsing.js.html">businessRules/rules/stringParsing/constantStringParsing.js</a>, <a href="businessRules_rules_stringParsing_constantStringParsing.js.html#line638">line 638</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>The name of the constant or False if it is not found.</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">string</span>
+|
+
+<span class="param-type">boolean</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~getConstantsValidationNamespaceObject"><span class="type-signature">(inner) </span>getConstantsValidationNamespaceObject<span class="signature">(inputData, inputMetaData)</span><span class="type-signature"> &rarr; {object}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Searches the constants validation top-level data structure,
+framework, applications, plugins for the specified namespace and returns the JSON object.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>inputData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The name of the constants data hive that we should search for and find as a namespace object.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>inputMetaData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Not used for this business rule.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-author">Author:</dt>
+    <dd class="tag-author">
+        <ul>
+            <li>Seth Hollingsead</li>
+        </ul>
+    </dd>
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="businessRules_rules_stringParsing_constantStringParsing.js.html">businessRules/rules/stringParsing/constantStringParsing.js</a>, <a href="businessRules_rules_stringParsing_constantStringParsing.js.html#line306">line 306</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>A JSON object that contains the constants validation data for the specified constants validation data-set,
+False if nothing is found.</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">object</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~getConstantsValidationNamespaceParentObject"><span class="type-signature">(inner) </span>getConstantsValidationNamespaceParentObject<span class="signature">(inputData, inputMetaData)</span><span class="type-signature"> &rarr; {object}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Searches the constants validation top-level data structure,
+framework, applications, plugins for the specified namespace and returns the parent JSON object,
+which contains all the meta-data necessary to generate failure messages and suggested line of code information.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>inputData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The name of the constants data hive that we should search for and find as a namespace object.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>inputMetaData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Not used for this business rule.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-author">Author:</dt>
+    <dd class="tag-author">
+        <ul>
+            <li>Seth Hollingsead</li>
+        </ul>
+    </dd>
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="businessRules_rules_stringParsing_constantStringParsing.js.html">businessRules/rules/stringParsing/constantStringParsing.js</a>, <a href="businessRules_rules_stringParsing_constantStringParsing.js.html#line262">line 262</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>A JSON object that contains the constants short names, file names, prefixes and file paths,
+validation messages and related constants validation data. In short the constants validation parent context object.</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">object</span>
 
 
     </dd>
@@ -2013,7 +3742,7 @@ Can only return the first instance.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="businessRules_rules_stringParsing_constantStringParsing.js.html">businessRules/rules/stringParsing/constantStringParsing.js</a>, <a href="businessRules_rules_stringParsing_constantStringParsing.js.html#line272">line 272</a>
+        <a href="businessRules_rules_stringParsing_constantStringParsing.js.html">businessRules/rules/stringParsing/constantStringParsing.js</a>, <a href="businessRules_rules_stringParsing_constantStringParsing.js.html#line706">line 706</a>
     </li></ul></dd>
     
 
@@ -2053,6 +3782,204 @@ Can only return the first instance.</p>
     </dt>
     <dd>
         
+<span class="param-type">string</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~getConstantTypeInConstantLibraryObject"><span class="type-signature">(inner) </span>getConstantTypeInConstantLibraryObject<span class="signature">(inputData, inputMetaData)</span><span class="type-signature"> &rarr; {boolean|string}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>This is a middle management function to get the type of constant that is found.
+Walks through all of the constants validation parent collection objects,
+filters out all of the meta-data entries and ensures that searches are only performed on actual constants validation data values.
+This function provides a re-usability function so we don't need to have repeated code in the getConstantType function.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>inputData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">array.&lt;string, boolean></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>An array that contains The value that should have it's matching type returned,
+and a boolean to indicate if the function should or should not continue searching for additional matches after the first match is found.
+inputData[0] = The value of the constant that should be searched for to find a match and return the type.
+inputData[1] = True or False value to indicate if the search should continue after finding the first match or not.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>inputMetaData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>A JSON data object that contains all of the constants validation data namespace objects that should be search.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-author">Author:</dt>
+    <dd class="tag-author">
+        <ul>
+            <li>Seth Hollingsead</li>
+        </ul>
+    </dd>
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="businessRules_rules_stringParsing_constantStringParsing.js.html">businessRules/rules/stringParsing/constantStringParsing.js</a>, <a href="businessRules_rules_stringParsing_constantStringParsing.js.html#line475">line 475</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>A string that contains the name of the matching constant type or False if its matching constant definition is not found.</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">boolean</span>
+|
+
 <span class="param-type">string</span>
 
 
@@ -2202,7 +4129,7 @@ Can only return the first instance.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="businessRules_rules_stringParsing_constantStringParsing.js.html">businessRules/rules/stringParsing/constantStringParsing.js</a>, <a href="businessRules_rules_stringParsing_constantStringParsing.js.html#line475">line 475</a>
+        <a href="businessRules_rules_stringParsing_constantStringParsing.js.html">businessRules/rules/stringParsing/constantStringParsing.js</a>, <a href="businessRules_rules_stringParsing_constantStringParsing.js.html#line932">line 932</a>
     </li></ul></dd>
     
 
@@ -2392,7 +4319,7 @@ valid constant type/library that exists within the system or not.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="businessRules_rules_stringParsing_constantStringParsing.js.html">businessRules/rules/stringParsing/constantStringParsing.js</a>, <a href="businessRules_rules_stringParsing_constantStringParsing.js.html#line678">line 678</a>
+        <a href="businessRules_rules_stringParsing_constantStringParsing.js.html">businessRules/rules/stringParsing/constantStringParsing.js</a>, <a href="businessRules_rules_stringParsing_constantStringParsing.js.html#line1152">line 1152</a>
     </li></ul></dd>
     
 
@@ -2582,7 +4509,7 @@ constants validation data matches with the actual constants definitions.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="businessRules_rules_stringParsing_constantStringParsing.js.html">businessRules/rules/stringParsing/constantStringParsing.js</a>, <a href="businessRules_rules_stringParsing_constantStringParsing.js.html#line34">line 34</a>
+        <a href="businessRules_rules_stringParsing_constantStringParsing.js.html">businessRules/rules/stringParsing/constantStringParsing.js</a>, <a href="businessRules_rules_stringParsing_constantStringParsing.js.html#line33">line 33</a>
     </li></ul></dd>
     
 
@@ -2771,7 +4698,7 @@ constants validation data matches with the actual constants definitions.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="businessRules_rules_stringParsing_constantStringParsing.js.html">businessRules/rules/stringParsing/constantStringParsing.js</a>, <a href="businessRules_rules_stringParsing_constantStringParsing.js.html#line191">line 191</a>
+        <a href="businessRules_rules_stringParsing_constantStringParsing.js.html">businessRules/rules/stringParsing/constantStringParsing.js</a>, <a href="businessRules_rules_stringParsing_constantStringParsing.js.html#line219">line 219</a>
     </li></ul></dd>
     
 
@@ -2962,7 +4889,7 @@ the validation data that should be used to execute the validation procedures.</p
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="businessRules_rules_stringParsing_constantStringParsing.js.html">businessRules/rules/stringParsing/constantStringParsing.js</a>, <a href="businessRules_rules_stringParsing_constantStringParsing.js.html#line610">line 610</a>
+        <a href="businessRules_rules_stringParsing_constantStringParsing.js.html">businessRules/rules/stringParsing/constantStringParsing.js</a>, <a href="businessRules_rules_stringParsing_constantStringParsing.js.html#line1076">line 1076</a>
     </li></ul></dd>
     
 
@@ -3031,13 +4958,13 @@ entire data hive or if it did not pass.</p>
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-advanced.html">advanced</a></li><li><a href="module-allConstantsValidationMetadata.html">allConstantsValidationMetadata</a></li><li><a href="module-auxiliary.html">auxiliary</a></li><li><a href="module-auxiliaryArrayParsing.html">auxiliaryArrayParsing</a></li><li><a href="module-auxiliaryStringParsing.html">auxiliaryStringParsing</a></li><li><a href="module-characterArrayParsing.html">characterArrayParsing</a></li><li><a href="module-characterGeneration.html">characterGeneration</a></li><li><a href="module-characterStringParsing.html">characterStringParsing</a></li><li><a href="module-chiefCommander.html">chiefCommander</a></li><li><a href="module-chiefConfiguration.html">chiefConfiguration</a></li><li><a href="module-chiefData.html">chiefData</a></li><li><a href="module-chiefPlugin.html">chiefPlugin</a></li><li><a href="module-chiefWorkflow.html">chiefWorkflow</a></li><li><a href="module-colorizer.html">colorizer</a></li><li><a href="module-commandArrayParsing.html">commandArrayParsing</a></li><li><a href="module-commandBroker.html">commandBroker</a></li><li><a href="module-commandsLibrary.html">commandsLibrary</a></li><li><a href="module-commandStringParsing.html">commandStringParsing</a></li><li><a href="module-configuration.html">configuration</a></li><li><a href="module-configurator.html">configurator</a></li><li><a href="module-constant.html">constant</a></li><li><a href="module-constantArrayParsing.html">constantArrayParsing</a></li><li><a href="module-constantStringParsing.html">constantStringParsing</a></li><li><a href="module-data.html">data</a></li><li><a href="module-dataArrayParsing.html">dataArrayParsing</a></li><li><a href="module-dataBroker.html">dataBroker</a></li><li><a href="module-dataDirectorate.html">dataDirectorate</a></li><li><a href="module-dataStringParsing.html">dataStringParsing</a></li><li><a href="module-fileOperations.html">fileOperations</a></li><li><a href="module-fileStringParsing.html">fileStringParsing</a></li><li><a href="module-integrationTests.html">integrationTests</a></li><li><a href="module-lexicalAnalyzer.html">lexicalAnalyzer</a></li><li><a href="module-loggers.html">loggers</a></li><li><a href="module-main.html">main</a></li><li><a href="module-mathOperations.html">mathOperations</a></li><li><a href="module-pathArrayParsing.html">pathArrayParsing</a></li><li><a href="module-performanceMetric.html">performanceMetric</a></li><li><a href="module-pluginBroker.html">pluginBroker</a></li><li><a href="module-plugins.html">plugins</a></li><li><a href="module-promptOperations.html">promptOperations</a></li><li><a href="module-queue.html">queue</a></li><li><a href="module-ruleBroker.html">ruleBroker</a></li><li><a href="module-ruleParsing.html">ruleParsing</a></li><li><a href="module-rulesLibrary.html">rulesLibrary</a></li><li><a href="module-stack.html">stack</a></li><li><a href="module-stringGeneration.html">stringGeneration</a></li><li><a href="module-stringParsingUtilities.html">stringParsingUtilities</a></li><li><a href="module-system.html">system</a></li><li><a href="module-themeBroker.html">themeBroker</a></li><li><a href="module-timeComputation.html">timeComputation</a></li><li><a href="module-warden.html">warden</a></li><li><a href="module-wordArrayParsing.html">wordArrayParsing</a></li><li><a href="module-wordStringParsing.html">wordStringParsing</a></li><li><a href="module-workflowBroker.html">workflowBroker</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-advanced.html">advanced</a></li><li><a href="module-auxiliary.html">auxiliary</a></li><li><a href="module-auxiliaryArrayParsing.html">auxiliaryArrayParsing</a></li><li><a href="module-auxiliaryStringParsing.html">auxiliaryStringParsing</a></li><li><a href="module-characterArrayParsing.html">characterArrayParsing</a></li><li><a href="module-characterGeneration.html">characterGeneration</a></li><li><a href="module-characterStringParsing.html">characterStringParsing</a></li><li><a href="module-chiefCommander.html">chiefCommander</a></li><li><a href="module-chiefConfiguration.html">chiefConfiguration</a></li><li><a href="module-chiefConstant.html">chiefConstant</a></li><li><a href="module-chiefData.html">chiefData</a></li><li><a href="module-chiefPlugin.html">chiefPlugin</a></li><li><a href="module-chiefTheme.html">chiefTheme</a></li><li><a href="module-chiefWorkflow.html">chiefWorkflow</a></li><li><a href="module-colorizer.html">colorizer</a></li><li><a href="module-commandArrayParsing.html">commandArrayParsing</a></li><li><a href="module-commandBroker.html">commandBroker</a></li><li><a href="module-commandsLibrary.html">commandsLibrary</a></li><li><a href="module-commandStringParsing.html">commandStringParsing</a></li><li><a href="module-configuration.html">configuration</a></li><li><a href="module-configurator.html">configurator</a></li><li><a href="module-constant.html">constant</a></li><li><a href="module-constantArrayParsing.html">constantArrayParsing</a></li><li><a href="module-constantBroker.html">constantBroker</a></li><li><a href="module-constantStringParsing.html">constantStringParsing</a></li><li><a href="module-data.html">data</a></li><li><a href="module-dataArrayParsing.html">dataArrayParsing</a></li><li><a href="module-dataBroker.html">dataBroker</a></li><li><a href="module-dataDirectorate.html">dataDirectorate</a></li><li><a href="module-dataStringParsing.html">dataStringParsing</a></li><li><a href="module-fileOperations.html">fileOperations</a></li><li><a href="module-fileStringParsing.html">fileStringParsing</a></li><li><a href="module-integrationTests.html">integrationTests</a></li><li><a href="module-lexicalAnalyzer.html">lexicalAnalyzer</a></li><li><a href="module-loggers.html">loggers</a></li><li><a href="module-main.html">main</a></li><li><a href="module-mathOperations.html">mathOperations</a></li><li><a href="module-pathArrayParsing.html">pathArrayParsing</a></li><li><a href="module-performanceMetric.html">performanceMetric</a></li><li><a href="module-pluginBroker.html">pluginBroker</a></li><li><a href="module-plugins.html">plugins</a></li><li><a href="module-promptOperations.html">promptOperations</a></li><li><a href="module-queue.html">queue</a></li><li><a href="module-ruleBroker.html">ruleBroker</a></li><li><a href="module-ruleParsing.html">ruleParsing</a></li><li><a href="module-rulesLibrary.html">rulesLibrary</a></li><li><a href="module-stack.html">stack</a></li><li><a href="module-stringGeneration.html">stringGeneration</a></li><li><a href="module-stringParsingUtilities.html">stringParsingUtilities</a></li><li><a href="module-system.html">system</a></li><li><a href="module-themeBroker.html">themeBroker</a></li><li><a href="module-timeComputation.html">timeComputation</a></li><li><a href="module-warden.html">warden</a></li><li><a href="module-wordArrayParsing.html">wordArrayParsing</a></li><li><a href="module-wordStringParsing.html">wordStringParsing</a></li><li><a href="module-workflowBroker.html">workflowBroker</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Wed Oct 26 2022 17:51:53 GMT-0500 (Central Daylight Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Wed Feb 22 2023 14:45:59 GMT-0600 (Central Standard Time)
 </footer>
 
 <script> prettyPrint(); </script>

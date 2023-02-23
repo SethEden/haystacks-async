@@ -150,11 +150,15 @@ Also provides an interface to easily manage all the framework features &amp; var
         
             <li><a href="module-chiefPlugin.html">module:chiefPlugin</a></li>
         
+            <li><a href="module-chiefTheme.html">module:chiefTheme</a></li>
+        
             <li><a href="module-chiefWorkflow.html">module:chiefWorkflow</a></li>
         
             <li><a href="module-configurator.html">module:configurator</a></li>
         
             <li><a href="module-loggers.html">module:loggers</a></li>
+        
+            <li><a href="module-stack.html">module:stack</a></li>
         
             <li><a href="https://www.npmjs.com/package/@haystacks/constants">@haystacks/constants</a></li>
         
@@ -241,7 +245,7 @@ Which is in-turn a wrapper function for pluginBroker.unregisterAllPlugins.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="controllers_warden.js.html">controllers/warden.js</a>, <a href="controllers_warden.js.html#line484">line 484</a>
+        <a href="controllers_warden.js.html">controllers/warden.js</a>, <a href="controllers_warden.js.html#line577">line 577</a>
     </li></ul></dd>
     
 
@@ -439,7 +443,7 @@ Which is in-turn a wrapper function for pluginBroker.unregisterAllPlugins.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="controllers_warden.js.html">controllers/warden.js</a>, <a href="controllers_warden.js.html#line854">line 854</a>
+        <a href="controllers_warden.js.html">controllers/warden.js</a>, <a href="controllers_warden.js.html#line967">line 967</a>
     </li></ul></dd>
     
 
@@ -605,7 +609,7 @@ This also acts as a wrapper for the chiefCommander.enqueueCommand function.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="controllers_warden.js.html">controllers/warden.js</a>, <a href="controllers_warden.js.html#line741">line 741</a>
+        <a href="controllers_warden.js.html">controllers/warden.js</a>, <a href="controllers_warden.js.html#line854">line 854</a>
     </li></ul></dd>
     
 
@@ -792,7 +796,7 @@ inputs[1] = inputMetaData - Additional data the input to the rule.</p></td>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="controllers_warden.js.html">controllers/warden.js</a>, <a href="controllers_warden.js.html#line716">line 716</a>
+        <a href="controllers_warden.js.html">controllers/warden.js</a>, <a href="controllers_warden.js.html#line829">line 829</a>
     </li></ul></dd>
     
 
@@ -982,7 +986,7 @@ where the configuration setting should be found.</p></td>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="controllers_warden.js.html">controllers/warden.js</a>, <a href="controllers_warden.js.html#line829">line 829</a>
+        <a href="controllers_warden.js.html">controllers/warden.js</a>, <a href="controllers_warden.js.html#line942">line 942</a>
     </li></ul></dd>
     
 
@@ -1032,6 +1036,124 @@ where the configuration setting should be found.</p></td>
 |
 
 <span class="param-type">double</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~getPluginsRegistryPath"><span class="type-signature">(inner) </span>getPluginsRegistryPath<span class="signature">()</span><span class="type-signature"> &rarr; {string}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>This is a wrapper function for the chiefPlugin.getPluginsRegistryPath.
+Which is in-turn a wrapper function for pluginBroker.getPluginsRegistryPath.</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-author">Author:</dt>
+    <dd class="tag-author">
+        <ul>
+            <li>Seth Hollingsead</li>
+        </ul>
+    </dd>
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="controllers_warden.js.html">controllers/warden.js</a>, <a href="controllers_warden.js.html#line771">line 771</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>The path to the plugins listed in the plugin registry as meta-data.</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">string</span>
 
 
     </dd>
@@ -1157,7 +1279,7 @@ where the configuration setting should be found.</p></td>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="controllers_warden.js.html">controllers/warden.js</a>, <a href="controllers_warden.js.html#line71">line 71</a>
+        <a href="controllers_warden.js.html">controllers/warden.js</a>, <a href="controllers_warden.js.html#line75">line 75</a>
     </li></ul></dd>
     
 
@@ -1273,7 +1395,7 @@ in sequential order or prompt for another command or exit.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="controllers_warden.js.html">controllers/warden.js</a>, <a href="controllers_warden.js.html#line762">line 762</a>
+        <a href="controllers_warden.js.html">controllers/warden.js</a>, <a href="controllers_warden.js.html#line875">line 875</a>
     </li></ul></dd>
     
 
@@ -1391,7 +1513,7 @@ Which is in-turn a wrapper function for pluginBroker.listPluginsInRegistry.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="controllers_warden.js.html">controllers/warden.js</a>, <a href="controllers_warden.js.html#line344">line 344</a>
+        <a href="controllers_warden.js.html">controllers/warden.js</a>, <a href="controllers_warden.js.html#line416">line 416</a>
     </li></ul></dd>
     
 
@@ -1509,7 +1631,7 @@ Which is in-turn a wrapper function for pluginBroker.listPluginsInRegistryPath.<
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="controllers_warden.js.html">controllers/warden.js</a>, <a href="controllers_warden.js.html#line362">line 362</a>
+        <a href="controllers_warden.js.html">controllers/warden.js</a>, <a href="controllers_warden.js.html#line434">line 434</a>
     </li></ul></dd>
     
 
@@ -1539,6 +1661,124 @@ Which is in-turn a wrapper function for pluginBroker.listPluginsInRegistryPath.<
         
 <div class="param-desc">
     <p>A list array of the names of the plugins in the plugin registry.</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">array.&lt;string></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~listLoadedPlugins"><span class="type-signature">(inner) </span>listLoadedPlugins<span class="signature">()</span><span class="type-signature"> &rarr; {array.&lt;string>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>This is a wrapper function for chiefPlugin.listLoadedPlugins.
+Which is in-turn a wrapper function for pluginBroker.listAllLoadedPlugins.</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-author">Author:</dt>
+    <dd class="tag-author">
+        <ul>
+            <li>Seth Hollingsead</li>
+        </ul>
+    </dd>
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="controllers_warden.js.html">controllers/warden.js</a>, <a href="controllers_warden.js.html#line398">line 398</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>A list array of the names of the plugins that are currently loaded.</p>
 </div>
 
 
@@ -1677,7 +1917,7 @@ the path to the commands aliases XML file is stored, that should be loaded (OPTI
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="controllers_warden.js.html">controllers/warden.js</a>, <a href="controllers_warden.js.html#line271">line 271</a>
+        <a href="controllers_warden.js.html">controllers/warden.js</a>, <a href="controllers_warden.js.html#line325">line 325</a>
     </li></ul></dd>
     
 
@@ -1841,7 +2081,7 @@ the path to the workflows XML file is stored, that should be loaded (OPTIONAL).<
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="controllers_warden.js.html">controllers/warden.js</a>, <a href="controllers_warden.js.html#line308">line 308</a>
+        <a href="controllers_warden.js.html">controllers/warden.js</a>, <a href="controllers_warden.js.html#line362">line 362</a>
     </li></ul></dd>
     
 
@@ -1904,7 +2144,7 @@ the path to the workflows XML file is stored, that should be loaded (OPTIONAL).<
 
 <div class="description">
     <p>Calls the plugin initializePlugin function to get the plugin data:
-Busienss rules, Commands, Workflows, Constants, Configurations, dependencies ist (dependant plugins), etc...</p>
+Business rules, Commands, Workflows, Constants, Configurations, dependencies ist (dependant plugins), etc...</p>
 </div>
 
 
@@ -1956,7 +2196,8 @@ Busienss rules, Commands, Workflows, Constants, Configurations, dependencies ist
 
             
 
-            <td class="description last"><p>The fully qualified path where to load the plugin from.</p></td>
+            <td class="description last"><p>The fully qualified path where to load the plugin from,
+or the folder name that will contain the plugin in the plugin registry path.</p></td>
         </tr>
 
     
@@ -2004,7 +2245,7 @@ Busienss rules, Commands, Workflows, Constants, Configurations, dependencies ist
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="controllers_warden.js.html">controllers/warden.js</a>, <a href="controllers_warden.js.html#line520">line 520</a>
+        <a href="controllers_warden.js.html">controllers/warden.js</a>, <a href="controllers_warden.js.html#line613">line 613</a>
     </li></ul></dd>
     
 
@@ -2193,7 +2434,7 @@ Busienss rules, Commands, Workflows, Constants, Configurations, dependencies ist
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="controllers_warden.js.html">controllers/warden.js</a>, <a href="controllers_warden.js.html#line676">line 676</a>
+        <a href="controllers_warden.js.html">controllers/warden.js</a>, <a href="controllers_warden.js.html#line789">line 789</a>
     </li></ul></dd>
     
 
@@ -2360,7 +2601,7 @@ Business rules, Commands, Workflows, Constants, Configurations, dependencies lis
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="controllers_warden.js.html">controllers/warden.js</a>, <a href="controllers_warden.js.html#line543">line 543</a>
+        <a href="controllers_warden.js.html">controllers/warden.js</a>, <a href="controllers_warden.js.html#line637">line 637</a>
     </li></ul></dd>
     
 
@@ -2478,7 +2719,7 @@ Business rules, Commands, Workflows, Constants, Configurations, dependencies lis
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="controllers_warden.js.html">controllers/warden.js</a>, <a href="controllers_warden.js.html#line592">line 592</a>
+        <a href="controllers_warden.js.html">controllers/warden.js</a>, <a href="controllers_warden.js.html#line669">line 669</a>
     </li></ul></dd>
     
 
@@ -2645,7 +2886,7 @@ with the existing D-data structure that should already have all of the system de
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="controllers_warden.js.html">controllers/warden.js</a>, <a href="controllers_warden.js.html#line237">line 237</a>
+        <a href="controllers_warden.js.html">controllers/warden.js</a>, <a href="controllers_warden.js.html#line291">line 291</a>
     </li></ul></dd>
     
 
@@ -2808,7 +3049,7 @@ with the existing D-data structure that should already have all of the system de
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="controllers_warden.js.html">controllers/warden.js</a>, <a href="controllers_warden.js.html#line254">line 254</a>
+        <a href="controllers_warden.js.html">controllers/warden.js</a>, <a href="controllers_warden.js.html#line308">line 308</a>
     </li></ul></dd>
     
 
@@ -2922,7 +3163,7 @@ Which is in-turn a wrapper function for pluginBroker.countPluginsInRegistry.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="controllers_warden.js.html">controllers/warden.js</a>, <a href="controllers_warden.js.html#line380">line 380</a>
+        <a href="controllers_warden.js.html">controllers/warden.js</a>, <a href="controllers_warden.js.html#line452">line 452</a>
     </li></ul></dd>
     
 
@@ -3040,7 +3281,7 @@ Which is in-turn a wrapper function for pluginBroker.countPluginsInRegistryPath.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="controllers_warden.js.html">controllers/warden.js</a>, <a href="controllers_warden.js.html#line398">line 398</a>
+        <a href="controllers_warden.js.html">controllers/warden.js</a>, <a href="controllers_warden.js.html#line470">line 470</a>
     </li></ul></dd>
     
 
@@ -3160,7 +3401,7 @@ to the command queue. All of them must be executed in sequence as part of the ma
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="controllers_warden.js.html">controllers/warden.js</a>, <a href="controllers_warden.js.html#line782">line 782</a>
+        <a href="controllers_warden.js.html">controllers/warden.js</a>, <a href="controllers_warden.js.html#line895">line 895</a>
     </li></ul></dd>
     
 
@@ -3350,7 +3591,7 @@ indicate if the application should exit or not exit, followed by the command out
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="controllers_warden.js.html">controllers/warden.js</a>, <a href="controllers_warden.js.html#line43">line 43</a>
+        <a href="controllers_warden.js.html">controllers/warden.js</a>, <a href="controllers_warden.js.html#line47">line 47</a>
     </li></ul></dd>
     
 
@@ -3541,7 +3782,7 @@ This should be the path to the plugin/package.json file, but not including the p
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="controllers_warden.js.html">controllers/warden.js</a>, <a href="controllers_warden.js.html#line416">line 416</a>
+        <a href="controllers_warden.js.html">controllers/warden.js</a>, <a href="controllers_warden.js.html#line488">line 488</a>
     </li></ul></dd>
     
 
@@ -3582,6 +3823,132 @@ This should be the path to the plugin/package.json file, but not including the p
     <dd>
         
 <span class="param-type">boolean</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~resetRulesAndCommands"><span class="type-signature">(inner) </span>resetRulesAndCommands<span class="signature">()</span><span class="type-signature"> &rarr; {void}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Clears and then re-initializes the Haystacks platform framework business rules and commands.
+This is needed because: When Haystacks is used to load plugins, the plugin needs to make a call back to Haystacks
+to load all the plugin resource non-code files. When the plugin does that it is creating a new instance of Haystacks.
+The new instance of Haystacks created by the plugin is not the same instance as the original instance of Haystacks.
+We get around that by injecting all of the data from the original Haystacks into the new plugin-instance of Haystacks.
+However, when trying to call the business rules or commands using the dependency injected data, the business rules are not found,
+and cannot be executed. It turns out because the paths are completely different.
+The original instance of Haystacks initialized all its business rules and commands from the original instance path.
+So when executing those business rules and those commands it executes that code from those files using that path.
+However, when trying to pump those same business rules and commands into the plugin instance and then execute the same code,
+the plugin instance doesn't have access to or know about the paths to those business rules or commands.
+So therefore the solution is to have the plugin instance of Haystacks to clear and re-initialize its own business rules and commands.
+That way the plugin instance of Haystacks, when it tries to execute its own business rules and commands it will be doing so using,
+its own path to those business rules and commands and should therefore work as expected.</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-author">Author:</dt>
+    <dd class="tag-author">
+        <ul>
+            <li>Seth Hollingsead</li>
+        </ul>
+    </dd>
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="controllers_warden.js.html">controllers/warden.js</a>, <a href="controllers_warden.js.html#line263">line 263</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">void</span>
 
 
     </dd>
@@ -3764,7 +4131,7 @@ Ex: businessRules.rules.stringParsing.countCamelCaseWords</p></td>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="controllers_warden.js.html">controllers/warden.js</a>, <a href="controllers_warden.js.html#line803">line 803</a>
+        <a href="controllers_warden.js.html">controllers/warden.js</a>, <a href="controllers_warden.js.html#line916">line 916</a>
     </li></ul></dd>
     
 
@@ -3878,7 +4245,7 @@ Which is in-turn a wrapper function for pluginBroker.synchPluginRegistryWithPlug
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="controllers_warden.js.html">controllers/warden.js</a>, <a href="controllers_warden.js.html#line462">line 462</a>
+        <a href="controllers_warden.js.html">controllers/warden.js</a>, <a href="controllers_warden.js.html#line555">line 555</a>
     </li></ul></dd>
     
 
@@ -3996,7 +4363,7 @@ Business rules, Commands, Workflows, Constants, Configurations, dependencies ist
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="controllers_warden.js.html">controllers/warden.js</a>, <a href="controllers_warden.js.html#line657">line 657</a>
+        <a href="controllers_warden.js.html">controllers/warden.js</a>, <a href="controllers_warden.js.html#line752">line 752</a>
     </li></ul></dd>
     
 
@@ -4163,7 +4530,7 @@ Business rules, Commands, Workflows, Constants, Configurations, dependencies lis
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="controllers_warden.js.html">controllers/warden.js</a>, <a href="controllers_warden.js.html#line613">line 613</a>
+        <a href="controllers_warden.js.html">controllers/warden.js</a>, <a href="controllers_warden.js.html#line690">line 690</a>
     </li></ul></dd>
     
 
@@ -4330,7 +4697,7 @@ Business rules, Commands, Workflows, Constants, Configurations, dependencies lis
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="controllers_warden.js.html">controllers/warden.js</a>, <a href="controllers_warden.js.html#line635">line 635</a>
+        <a href="controllers_warden.js.html">controllers/warden.js</a>, <a href="controllers_warden.js.html#line715">line 715</a>
     </li></ul></dd>
     
 
@@ -4497,7 +4864,7 @@ Which is in-turn a wrapper function for pluginBroker.unregisterPlugin.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="controllers_warden.js.html">controllers/warden.js</a>, <a href="controllers_warden.js.html#line441">line 441</a>
+        <a href="controllers_warden.js.html">controllers/warden.js</a>, <a href="controllers_warden.js.html#line513">line 513</a>
     </li></ul></dd>
     
 
@@ -4527,6 +4894,173 @@ Which is in-turn a wrapper function for pluginBroker.unregisterPlugin.</p>
         
 <div class="param-desc">
     <p>True or False to indicate if the plugin was removed from the plugin registry successfully or not.</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">boolean</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~unregisterPlugins"><span class="type-signature">(inner) </span>unregisterPlugins<span class="signature">(pluginsListArray)</span><span class="type-signature"> &rarr; {boolean}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>This is a wrapper function for chiefPlugin.unregisterPlugins.
+Which is in-turn a wrapper function for pluginBroker.unregisterPlugins.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>pluginsListArray</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">array.&lt;string></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>A list array of plugin names that should be removed from the plugin registry.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-author">Author:</dt>
+    <dd class="tag-author">
+        <ul>
+            <li>Seth Hollingsead</li>
+        </ul>
+    </dd>
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="controllers_warden.js.html">controllers/warden.js</a>, <a href="controllers_warden.js.html#line534">line 534</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>True or False to indicate if all the plugins were successfully removed from the plugin registry or not.</p>
 </div>
 
 
@@ -4615,7 +5149,7 @@ Which is in-turn a wrapper function for pluginBroker.savePluginRegistry.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="controllers_warden.js.html">controllers/warden.js</a>, <a href="controllers_warden.js.html#line502">line 502</a>
+        <a href="controllers_warden.js.html">controllers/warden.js</a>, <a href="controllers_warden.js.html#line595">line 595</a>
     </li></ul></dd>
     
 
@@ -4683,13 +5217,13 @@ Which is in-turn a wrapper function for pluginBroker.savePluginRegistry.</p>
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-advanced.html">advanced</a></li><li><a href="module-allConstantsValidationMetadata.html">allConstantsValidationMetadata</a></li><li><a href="module-auxiliary.html">auxiliary</a></li><li><a href="module-auxiliaryArrayParsing.html">auxiliaryArrayParsing</a></li><li><a href="module-auxiliaryStringParsing.html">auxiliaryStringParsing</a></li><li><a href="module-characterArrayParsing.html">characterArrayParsing</a></li><li><a href="module-characterGeneration.html">characterGeneration</a></li><li><a href="module-characterStringParsing.html">characterStringParsing</a></li><li><a href="module-chiefCommander.html">chiefCommander</a></li><li><a href="module-chiefConfiguration.html">chiefConfiguration</a></li><li><a href="module-chiefData.html">chiefData</a></li><li><a href="module-chiefPlugin.html">chiefPlugin</a></li><li><a href="module-chiefWorkflow.html">chiefWorkflow</a></li><li><a href="module-colorizer.html">colorizer</a></li><li><a href="module-commandArrayParsing.html">commandArrayParsing</a></li><li><a href="module-commandBroker.html">commandBroker</a></li><li><a href="module-commandsLibrary.html">commandsLibrary</a></li><li><a href="module-commandStringParsing.html">commandStringParsing</a></li><li><a href="module-configuration.html">configuration</a></li><li><a href="module-configurator.html">configurator</a></li><li><a href="module-constant.html">constant</a></li><li><a href="module-constantArrayParsing.html">constantArrayParsing</a></li><li><a href="module-constantStringParsing.html">constantStringParsing</a></li><li><a href="module-data.html">data</a></li><li><a href="module-dataArrayParsing.html">dataArrayParsing</a></li><li><a href="module-dataBroker.html">dataBroker</a></li><li><a href="module-dataDirectorate.html">dataDirectorate</a></li><li><a href="module-dataStringParsing.html">dataStringParsing</a></li><li><a href="module-fileOperations.html">fileOperations</a></li><li><a href="module-fileStringParsing.html">fileStringParsing</a></li><li><a href="module-integrationTests.html">integrationTests</a></li><li><a href="module-lexicalAnalyzer.html">lexicalAnalyzer</a></li><li><a href="module-loggers.html">loggers</a></li><li><a href="module-main.html">main</a></li><li><a href="module-mathOperations.html">mathOperations</a></li><li><a href="module-pathArrayParsing.html">pathArrayParsing</a></li><li><a href="module-performanceMetric.html">performanceMetric</a></li><li><a href="module-pluginBroker.html">pluginBroker</a></li><li><a href="module-plugins.html">plugins</a></li><li><a href="module-promptOperations.html">promptOperations</a></li><li><a href="module-queue.html">queue</a></li><li><a href="module-ruleBroker.html">ruleBroker</a></li><li><a href="module-ruleParsing.html">ruleParsing</a></li><li><a href="module-rulesLibrary.html">rulesLibrary</a></li><li><a href="module-stack.html">stack</a></li><li><a href="module-stringGeneration.html">stringGeneration</a></li><li><a href="module-stringParsingUtilities.html">stringParsingUtilities</a></li><li><a href="module-system.html">system</a></li><li><a href="module-themeBroker.html">themeBroker</a></li><li><a href="module-timeComputation.html">timeComputation</a></li><li><a href="module-warden.html">warden</a></li><li><a href="module-wordArrayParsing.html">wordArrayParsing</a></li><li><a href="module-wordStringParsing.html">wordStringParsing</a></li><li><a href="module-workflowBroker.html">workflowBroker</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-advanced.html">advanced</a></li><li><a href="module-auxiliary.html">auxiliary</a></li><li><a href="module-auxiliaryArrayParsing.html">auxiliaryArrayParsing</a></li><li><a href="module-auxiliaryStringParsing.html">auxiliaryStringParsing</a></li><li><a href="module-characterArrayParsing.html">characterArrayParsing</a></li><li><a href="module-characterGeneration.html">characterGeneration</a></li><li><a href="module-characterStringParsing.html">characterStringParsing</a></li><li><a href="module-chiefCommander.html">chiefCommander</a></li><li><a href="module-chiefConfiguration.html">chiefConfiguration</a></li><li><a href="module-chiefConstant.html">chiefConstant</a></li><li><a href="module-chiefData.html">chiefData</a></li><li><a href="module-chiefPlugin.html">chiefPlugin</a></li><li><a href="module-chiefTheme.html">chiefTheme</a></li><li><a href="module-chiefWorkflow.html">chiefWorkflow</a></li><li><a href="module-colorizer.html">colorizer</a></li><li><a href="module-commandArrayParsing.html">commandArrayParsing</a></li><li><a href="module-commandBroker.html">commandBroker</a></li><li><a href="module-commandsLibrary.html">commandsLibrary</a></li><li><a href="module-commandStringParsing.html">commandStringParsing</a></li><li><a href="module-configuration.html">configuration</a></li><li><a href="module-configurator.html">configurator</a></li><li><a href="module-constant.html">constant</a></li><li><a href="module-constantArrayParsing.html">constantArrayParsing</a></li><li><a href="module-constantBroker.html">constantBroker</a></li><li><a href="module-constantStringParsing.html">constantStringParsing</a></li><li><a href="module-data.html">data</a></li><li><a href="module-dataArrayParsing.html">dataArrayParsing</a></li><li><a href="module-dataBroker.html">dataBroker</a></li><li><a href="module-dataDirectorate.html">dataDirectorate</a></li><li><a href="module-dataStringParsing.html">dataStringParsing</a></li><li><a href="module-fileOperations.html">fileOperations</a></li><li><a href="module-fileStringParsing.html">fileStringParsing</a></li><li><a href="module-integrationTests.html">integrationTests</a></li><li><a href="module-lexicalAnalyzer.html">lexicalAnalyzer</a></li><li><a href="module-loggers.html">loggers</a></li><li><a href="module-main.html">main</a></li><li><a href="module-mathOperations.html">mathOperations</a></li><li><a href="module-pathArrayParsing.html">pathArrayParsing</a></li><li><a href="module-performanceMetric.html">performanceMetric</a></li><li><a href="module-pluginBroker.html">pluginBroker</a></li><li><a href="module-plugins.html">plugins</a></li><li><a href="module-promptOperations.html">promptOperations</a></li><li><a href="module-queue.html">queue</a></li><li><a href="module-ruleBroker.html">ruleBroker</a></li><li><a href="module-ruleParsing.html">ruleParsing</a></li><li><a href="module-rulesLibrary.html">rulesLibrary</a></li><li><a href="module-stack.html">stack</a></li><li><a href="module-stringGeneration.html">stringGeneration</a></li><li><a href="module-stringParsingUtilities.html">stringParsingUtilities</a></li><li><a href="module-system.html">system</a></li><li><a href="module-themeBroker.html">themeBroker</a></li><li><a href="module-timeComputation.html">timeComputation</a></li><li><a href="module-warden.html">warden</a></li><li><a href="module-wordArrayParsing.html">wordArrayParsing</a></li><li><a href="module-wordStringParsing.html">wordStringParsing</a></li><li><a href="module-workflowBroker.html">workflowBroker</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Wed Oct 26 2022 17:51:53 GMT-0500 (Central Daylight Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Wed Feb 22 2023 14:45:59 GMT-0600 (Central Standard Time)
 </footer>
 
 <script> prettyPrint(); </script>

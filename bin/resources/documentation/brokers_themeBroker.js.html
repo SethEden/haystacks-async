@@ -33,7 +33,7 @@
  * @requires module:ruleBroker
  * @requires module:chiefConfiguration
  * @requires module:chiefData
- * @requires module:configurator
+ * @requires module:chiefTheme
  * @requires module:loggers
  * @requires module:data
  * @requires {@link https://www.npmjs.com/package/@haystacks/constants|@haystacks/constants}
@@ -47,7 +47,7 @@
 import ruleBroker from './ruleBroker.js';
 import chiefConfiguration from '../controllers/chiefConfiguration.js';
 import chiefData from '../controllers/chiefData.js';
-import configurator from '../executrix/configurator.js';
+import chiefTheme from '../controllers/chiefTheme.js';
 import loggers from '../executrix/loggers.js';
 import D from '../structures/data.js';
 // import D from '../structures/data.js';
@@ -55,41 +55,58 @@ import D from '../structures/data.js';
 import hayConst from '@haystacks/constants';
 import path from 'path';
 
-const {bas, biz, cfg, msg, sys, wrd} = hayConst;
+const {bas, biz, msg, sys, wrd} = hayConst;
 const baseFileName = path.basename(import.meta.url, path.extname(import.meta.url));
-// brokers.themeBroker.
-const namespacePrefix = wrd.cbrokers + bas.cDot + baseFileName + bas.cDot;
+// framework.brokers.themeBroker.
+const namespacePrefix = wrd.cframework + bas.cDot + wrd.cbrokers + bas.cDot + baseFileName + bas.cDot;
 
 /**
- * @function initThemePathData
- * @description Scans the themes folder and determines all of the available themes,
- * their paths and saves that data to the D-data structure.
- * @return {object} The JSON object that contains all of the theme names and theme paths.
+ * @function initThemeData
+ * @description Initializes the theme data object on the D-data structure.
+ * @return {void}
  * @author Seth Hollingsead
- * @date 2022/10/25
+ * @date 2022/10/28
  */
-async function initThemePathData() {
-  let functionName = initThemePathData.name;
+async function initThemeData() {
+  let functionName = initThemeData.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  let themesNames = await getNamedThemes();
+  D[wrd.cThemes] = {};
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+}
+
+/**
+ * @function generateThemeDataFromPath
+ * @description Takes a theme root path and scans the sub-folders that it contains and converts those to theme names,
+ * then builds a JSON data object with those names and also generates paths for each one based on the input themes root path.
+ * @param {string} themesRootPath The root path that should be used when building the JSON object with the themes meta-data.
+ * @return {object} A JSON object that contains all of the theme names and theme paths from the input theme root path.
+ * @author Seth Hollingsead
+ * @date 2022/10/26
+ */
+ async function generateThemeDataFromPath(themesRootPath) {
+  let functionName = generateThemeDataFromPath.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  // themesRootPath is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cthemesRootPathIs + themesRootPath);
+  let themesNames = await getNamedThemesFromRootPath(themesRootPath);
   // themesNames is:
   await loggers.consoleLog(namespacePrefix + functionName, msg.cthemesNamesIs + JSON.stringify(themesNames));
   let themesData = [];
-  D[wrd.cThemes] = {};
-  D[wrd.cThemes][wrd.cFramework] = [];
-  let applicationThemes = D[wrd.cThemes][wrd.cFramework];
   for (const key in themesNames) {
+    // key is:
+    await loggers.consoleLog(namespacePrefix + functionName, msg.ckeyIs + key);
     let themeName = themesNames[key];
     // themeName is:
     await loggers.consoleLog(namespacePrefix + functionName, msg.cthemeNameIs + themeName);
-    let themePath = await getNamedThemePath(themeName);
+    let themePath = await getNamedThemePathFromRootPath(themeName, themesRootPath);
     // themePath is:
     await loggers.consoleLog(namespacePrefix + functionName, msg.cthemePathIs + themePath);
-    applicationThemes.push({Name: themeName, Path: themePath});
-    // applicationThemes is:
-    await loggers.consoleLog(namespacePrefix + functionName, msg.capplicationThemesIs + JSON.stringify(applicationThemes));
+    if (themePath) {
+      themesData.push({Name: themeName, Path: themePath});
+    }
+    // themesData is:
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cthemesDataIs + JSON.stringify(themesData))
   }
-  themesData = D[wrd.cThemes];
   // themesData is:
   await loggers.consoleLog(namespacePrefix + functionName, msg.cthemesDataIs + JSON.stringify(themesData))
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
@@ -119,13 +136,21 @@ async function addThemeData(themeData, contextName) {
     if (contextName.toUpperCase().includes(wrd.cPLUGIN) === true &amp;&amp; contextName.includes(bas.cColon) === true) {
       let contextNameArray = contextName.split(bas.cColon);
       pluginName = contextNameArray[1];
-      if (D[sys.cThemes][wrd.cPlugins] === undefined) {
-        D[sys.cThemes][wrd.cPlugins] = {};
+      if (D[wrd.cThemes][wrd.cPlugins] === undefined) {
+        D[wrd.cThemes][wrd.cPlugins] = {};
       }
-      D[sys.cThemes][wrd.cPlugins][pluginName] = {};
-      D[sys.cThemes][wrd.cPlugins][pluginName] = themeData;
-    } else {
-      D[sys.cThemes][wrd.cApplication] = themeData;
+      D[wrd.cThemes][wrd.cPlugins][pluginName] = {};
+      D[wrd.cThemes][wrd.cPlugins][pluginName] = themeData;
+    } else if (contextName.toUpperCase().includes(wrd.cAPPLICATION) === true) {
+      if (D[wrd.cThemes][wrd.cApplication] === undefined) {
+        D[wrd.cThemes][wrd.cApplication] = {};
+      }
+      D[wrd.cThemes][wrd.cApplication] = themeData;
+    } else if (contextName.toUpperCase().includes(wrd.cFRAMEWORK) === true) {
+      if (D[wrd.cThemes][wrd.cFramework] === undefined) {
+        D[wrd.cThemes][wrd.cFramework] = {};
+      }
+      D[wrd.cThemes][wrd.cFramework] = themeData;
     }
     returnData = true;
   } catch (err) {
@@ -136,63 +161,6 @@ async function addThemeData(themeData, contextName) {
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
-}
-
-/**
- * @function generateThemeDataFromPath
- * @description Takes a theme root path and scans the sub-folders that it contains and converts those to theme names,
- * then builds a JSON data object with those names and also generates paths for each one based on the input themes root path.
- * @param {string} themesRootPath The root path that should be used when building the JSON object with the themes meta-data.
- * @return {object} A JSON object that contains all of the theme names and theme paths from the input theme root path.
- * @author Seth Hollingsead
- * @date 2022/10/26
- */
-async function generateThemeDataFromPath(themesRootPath) {
-  let functionName = generateThemeDataFromPath.name;
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  // themesRootPath is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cthemesRootPathIs + themesRootPath);
-  let themesNames = await getNamedThemesFromRootPath(themesRootPath);
-  // themesNames is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cthemesNamesIs + JSON.stringify(themesNames));
-  let themesData = [];
-  for (const key in themesNames) {
-    let themeName = themesNames[key];
-    // themeName is:
-    await loggers.consoleLog(namespacePrefix + functionName, msg.cthemeNameIs + themeName);
-    let themePath = await getNamedThemePathFromRootPath(themeName, themesRootPath);
-    // themePath is:
-    await loggers.consoleLog(namespacePrefix + functionName, msg.cthemePathIs + themePath);
-    if (themePath) {
-      themesData.push({Name: themeName, Path: themePath});
-    }
-    // themesData is:
-    await loggers.consoleLog(namespacePrefix + functionName, msg.cthemesDataIs + JSON.stringify(themesData))
-  }
-  // themesData is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cthemesDataIs + JSON.stringify(themesData))
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
-  return themesData;
-}
-
-/**
- * @function getNamedThemes
- * @description Gets the names of the themes installed in the resources/themes folder.
- * @return {array&lt;string>} The list of names for the themes that are currently installed.
- * @author Seth Hollingsead
- * @date 2022/06/10
- */
-async function getNamedThemes() {
-  let functionName = getNamedThemes.name;
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  let themesNames = [];
-  let frameworkThemesPath = await configurator.getConfigurationSetting(wrd.csystem, cfg.cframeworkThemesPath);
-  frameworkThemesPath = path.resolve(frameworkThemesPath);
-  themesNames = await ruleBroker.processRules([frameworkThemesPath, ''], [biz.cgetDirectoryList]);
-  // themesNames is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cthemesNamesIs + JSON.stringify(themesNames));
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
-  return themesNames;
 }
 
 /**
@@ -218,39 +186,6 @@ async function getNamedThemesFromRootPath(themesRootPath) {
 }
 
 /**
- * @function getNamedThemePath
- * @description Takes a named theme and validates that the theme name exists, then returns the path to that theme.
- * @param {string} themeName The name of the theme that a path should be returned for.
- * @return {string|boolean} The path of the theme, if it exists, or false if it does not.
- * @author Seth Hollingsead
- * @date 2022/06/13
- */
-async function getNamedThemePath(themeName) {
-  let functionName = getNamedThemePath.name;
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  // themeName is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cthemeNameIs + themeName);
-  let themesNames = [];
-  themesNames = await getNamedThemes();
-  // themesNames is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cthemesNamesIs + JSON.stringify(themesNames))
-  let themePath = false;
-  let frameworkThemesPath = await configurator.getConfigurationSetting(wrd.csystem, cfg.cframeworkThemesPath);
-  frameworkThemesPath = path.resolve(frameworkThemesPath);
-  for (const element of themesNames) {
-    if (element.toUpperCase() === themeName.toUpperCase()) {
-      themePath = frameworkThemesPath + bas.cDoubleForwardSlash + element + bas.cDoubleForwardSlash;
-      themePath = path.resolve(themePath);
-      break;
-    }
-  } // End-for (const element of themesNames)
-  // themePath is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cthemePathIs + themePath);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
-  return themePath;
-}
-
-/**
  * @function getNamedThemePathFromRootPath
  * @descriptino Takes a named theme and theme root path and validates that the theme name exists,
  * then returns the fully qualified path to that theme.
@@ -272,7 +207,7 @@ async function getNamedThemePathFromRootPath(themeName, themesRootPath) {
   themesNames = await getNamedThemesFromRootPath(themesRootPath);
   // themesNames is:
   await loggers.consoleLog(namespacePrefix + functionName, msg.cthemesNamesIs + JSON.stringify(themesNames));
-  let frameworkThemesPath = path.resolve(frameworkThemesPath);
+  let frameworkThemesPath = path.resolve(themesRootPath);
   for (const element of themesNames) {
     if (element.toUpperCase() === themeName.toUpperCase()) {
       themePath = frameworkThemesPath + bas.cDoubleForwardSlash + element + bas.cDoubleForwardSlash;
@@ -300,7 +235,7 @@ async function loadTheme(themePath) {
   // themePath is:
   await loggers.consoleLog(namespacePrefix + functionName, msg.cthemePathIs + themePath);
   let themeData = {};
-  await chiefData.determineThemeDebugConfigFilesToLoad(sys.cthemeConfigPath);
+  await chiefTheme.determineThemeDebugConfigFilesToLoad(sys.cthemeConfigPath);
   themeData = await chiefData.setupAllJsonConfigData(sys.cthemeConfigPath, wrd.cconfiguration);
   // themeData is:
   await loggers.consoleLog(namespacePrefix + functionName, msg.cthemeDataIs + JSON.stringify(themeData));
@@ -329,16 +264,50 @@ async function applyTheme(themeData) {
   return returnData;
 }
 
+/**
+ * @function removePluginThemeData
+ * @description Parses through the theme data and finds the theme data associated with the named plugin.
+ * Then removes that data shredding it from existence at the edge of a black hole.
+ * @param {string} pluginName The name of the plugin that should have its theme data removed from the D-data structure.
+ * @return {boolean} True or False to indicate if the removal of the data was completed successfully or not.
+ * @author Seth Hollingsead
+ * @date 2023/02/01
+ */
+async function removePluginThemeData(pluginName) {
+  let functionName = removePluginThemeData.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  // pluginName is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginNameIs + pluginName);
+  let returnData = false;
+  let allPluginsThemesData = D[wrd.cThemes][wrd.cPlugins];
+  if (allPluginsThemesData) {
+    try {
+      delete allPluginsThemesData[pluginName];
+      returnData = true;
+    } catch (err) {
+      // ERROR: Unable to remove the plugin themes for the specified plugin:
+      console.log(msg.cremovePluginThemesMessage01 + pluginName);
+      // ERROR:
+      console.log(msg.cerrorMessage + err.message);
+    }
+  } else {
+    // ERROR: Unable to locate the plugins themes data. Plugin:
+    console.log(msg.cremovePluginThemesMessage02 + pluginName);
+  }
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
 export default {
-  initThemePathData,
-  addThemeData,
+  initThemeData,
   generateThemeDataFromPath,
-  getNamedThemes,
+  addThemeData,
   getNamedThemesFromRootPath,
-  getNamedThemePath,
   getNamedThemePathFromRootPath,
   loadTheme,
-  applyTheme
+  applyTheme,
+  removePluginThemeData
 };
 </code></pre>
         </article>
@@ -350,13 +319,13 @@ export default {
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-advanced.html">advanced</a></li><li><a href="module-allConstantsValidationMetadata.html">allConstantsValidationMetadata</a></li><li><a href="module-auxiliary.html">auxiliary</a></li><li><a href="module-auxiliaryArrayParsing.html">auxiliaryArrayParsing</a></li><li><a href="module-auxiliaryStringParsing.html">auxiliaryStringParsing</a></li><li><a href="module-characterArrayParsing.html">characterArrayParsing</a></li><li><a href="module-characterGeneration.html">characterGeneration</a></li><li><a href="module-characterStringParsing.html">characterStringParsing</a></li><li><a href="module-chiefCommander.html">chiefCommander</a></li><li><a href="module-chiefConfiguration.html">chiefConfiguration</a></li><li><a href="module-chiefData.html">chiefData</a></li><li><a href="module-chiefPlugin.html">chiefPlugin</a></li><li><a href="module-chiefWorkflow.html">chiefWorkflow</a></li><li><a href="module-colorizer.html">colorizer</a></li><li><a href="module-commandArrayParsing.html">commandArrayParsing</a></li><li><a href="module-commandBroker.html">commandBroker</a></li><li><a href="module-commandsLibrary.html">commandsLibrary</a></li><li><a href="module-commandStringParsing.html">commandStringParsing</a></li><li><a href="module-configuration.html">configuration</a></li><li><a href="module-configurator.html">configurator</a></li><li><a href="module-constant.html">constant</a></li><li><a href="module-constantArrayParsing.html">constantArrayParsing</a></li><li><a href="module-constantStringParsing.html">constantStringParsing</a></li><li><a href="module-data.html">data</a></li><li><a href="module-dataArrayParsing.html">dataArrayParsing</a></li><li><a href="module-dataBroker.html">dataBroker</a></li><li><a href="module-dataDirectorate.html">dataDirectorate</a></li><li><a href="module-dataStringParsing.html">dataStringParsing</a></li><li><a href="module-fileOperations.html">fileOperations</a></li><li><a href="module-fileStringParsing.html">fileStringParsing</a></li><li><a href="module-integrationTests.html">integrationTests</a></li><li><a href="module-lexicalAnalyzer.html">lexicalAnalyzer</a></li><li><a href="module-loggers.html">loggers</a></li><li><a href="module-main.html">main</a></li><li><a href="module-mathOperations.html">mathOperations</a></li><li><a href="module-pathArrayParsing.html">pathArrayParsing</a></li><li><a href="module-performanceMetric.html">performanceMetric</a></li><li><a href="module-pluginBroker.html">pluginBroker</a></li><li><a href="module-plugins.html">plugins</a></li><li><a href="module-promptOperations.html">promptOperations</a></li><li><a href="module-queue.html">queue</a></li><li><a href="module-ruleBroker.html">ruleBroker</a></li><li><a href="module-ruleParsing.html">ruleParsing</a></li><li><a href="module-rulesLibrary.html">rulesLibrary</a></li><li><a href="module-stack.html">stack</a></li><li><a href="module-stringGeneration.html">stringGeneration</a></li><li><a href="module-stringParsingUtilities.html">stringParsingUtilities</a></li><li><a href="module-system.html">system</a></li><li><a href="module-themeBroker.html">themeBroker</a></li><li><a href="module-timeComputation.html">timeComputation</a></li><li><a href="module-warden.html">warden</a></li><li><a href="module-wordArrayParsing.html">wordArrayParsing</a></li><li><a href="module-wordStringParsing.html">wordStringParsing</a></li><li><a href="module-workflowBroker.html">workflowBroker</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-advanced.html">advanced</a></li><li><a href="module-auxiliary.html">auxiliary</a></li><li><a href="module-auxiliaryArrayParsing.html">auxiliaryArrayParsing</a></li><li><a href="module-auxiliaryStringParsing.html">auxiliaryStringParsing</a></li><li><a href="module-characterArrayParsing.html">characterArrayParsing</a></li><li><a href="module-characterGeneration.html">characterGeneration</a></li><li><a href="module-characterStringParsing.html">characterStringParsing</a></li><li><a href="module-chiefCommander.html">chiefCommander</a></li><li><a href="module-chiefConfiguration.html">chiefConfiguration</a></li><li><a href="module-chiefConstant.html">chiefConstant</a></li><li><a href="module-chiefData.html">chiefData</a></li><li><a href="module-chiefPlugin.html">chiefPlugin</a></li><li><a href="module-chiefTheme.html">chiefTheme</a></li><li><a href="module-chiefWorkflow.html">chiefWorkflow</a></li><li><a href="module-colorizer.html">colorizer</a></li><li><a href="module-commandArrayParsing.html">commandArrayParsing</a></li><li><a href="module-commandBroker.html">commandBroker</a></li><li><a href="module-commandsLibrary.html">commandsLibrary</a></li><li><a href="module-commandStringParsing.html">commandStringParsing</a></li><li><a href="module-configuration.html">configuration</a></li><li><a href="module-configurator.html">configurator</a></li><li><a href="module-constant.html">constant</a></li><li><a href="module-constantArrayParsing.html">constantArrayParsing</a></li><li><a href="module-constantBroker.html">constantBroker</a></li><li><a href="module-constantStringParsing.html">constantStringParsing</a></li><li><a href="module-data.html">data</a></li><li><a href="module-dataArrayParsing.html">dataArrayParsing</a></li><li><a href="module-dataBroker.html">dataBroker</a></li><li><a href="module-dataDirectorate.html">dataDirectorate</a></li><li><a href="module-dataStringParsing.html">dataStringParsing</a></li><li><a href="module-fileOperations.html">fileOperations</a></li><li><a href="module-fileStringParsing.html">fileStringParsing</a></li><li><a href="module-integrationTests.html">integrationTests</a></li><li><a href="module-lexicalAnalyzer.html">lexicalAnalyzer</a></li><li><a href="module-loggers.html">loggers</a></li><li><a href="module-main.html">main</a></li><li><a href="module-mathOperations.html">mathOperations</a></li><li><a href="module-pathArrayParsing.html">pathArrayParsing</a></li><li><a href="module-performanceMetric.html">performanceMetric</a></li><li><a href="module-pluginBroker.html">pluginBroker</a></li><li><a href="module-plugins.html">plugins</a></li><li><a href="module-promptOperations.html">promptOperations</a></li><li><a href="module-queue.html">queue</a></li><li><a href="module-ruleBroker.html">ruleBroker</a></li><li><a href="module-ruleParsing.html">ruleParsing</a></li><li><a href="module-rulesLibrary.html">rulesLibrary</a></li><li><a href="module-stack.html">stack</a></li><li><a href="module-stringGeneration.html">stringGeneration</a></li><li><a href="module-stringParsingUtilities.html">stringParsingUtilities</a></li><li><a href="module-system.html">system</a></li><li><a href="module-themeBroker.html">themeBroker</a></li><li><a href="module-timeComputation.html">timeComputation</a></li><li><a href="module-warden.html">warden</a></li><li><a href="module-wordArrayParsing.html">wordArrayParsing</a></li><li><a href="module-wordStringParsing.html">wordStringParsing</a></li><li><a href="module-workflowBroker.html">workflowBroker</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Wed Oct 26 2022 17:51:53 GMT-0500 (Central Daylight Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Wed Feb 22 2023 14:45:59 GMT-0600 (Central Standard Time)
 </footer>
 
 <script> prettyPrint(); </script>
