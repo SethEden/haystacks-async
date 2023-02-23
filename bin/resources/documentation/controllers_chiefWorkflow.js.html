@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: controllers/chiefWorkflow.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: controllers/chiefWorkflow.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * @file chiefWorkflow.js
+ * @module chiefWorkflow
+ * @description Holds all of the functions that manage the workflows,
+ * system defined workflows, client defined workflows,
+ * setting the workflow data and getting the workflow data.
+ * @requires module:chiefData
+ * @requires module:loggers
+ * @requires module:data
+ * @requires {@link https://www.npmjs.com/package/@haystacks/constants|@haystacks/constants}
+ * @requires {@link https://www.npmjs.com/package/path|path}
+ * @author Seth Hollingsead
+ * @date 2022/02/04
+ * @copyright Copyright © 2022-… by Seth Hollingsead. All rights reserved
+ */
+
+// Internal imports
+import chiefData from './chiefData.js';
+import loggers from '../executrix/loggers.js';
+import D from '../structures/data.js';
+// External imports
+import hayConst from '@haystacks/constants';
+import path from 'path';
+
+const {bas, msg, sys, wrd} = hayConst;
+const baseFileName = path.basename(import.meta.url, path.extname(import.meta.url));
+// framework.controllers.chiefWorkflow.
+const namespacePrefix = wrd.cframework + bas.cDot + wrd.ccontrollers + bas.cDot + baseFileName + bas.cDot;
+
+/**
+ * @function loadCommandWorkflowsFromPath
+ * @description Loads the command workflows XML file that is specified by the input.
+ * @param {string} commandWorkflowFilePathConfigurationName The path and file name to the XML that contains the command workflows definitions.
+ * (Could be system defined command workflows or client command defined command workflows)
+ * @param {string} contextName The context name defines what parent workflow namespace the loaded and merged data should be stored in.
+ * Example:
+ * contextName = "framework" => D['CommandWorkflows']['Framework']
+ * contextName = "application" => D['CommandWorkflows']['Application']
+ * contextName = "plugin" => D['CommandWorkflows']['Plugins']['&lt;pluginName>']
+ * @return {boolean|object} True or False if the data to be loaded is not from a plugin, returns a JSON object is the data to be loaded is from a plugin.
+ * @author Seth Hollingsead
+ * @date 2022/02/04
+ */
+async function loadCommandWorkflowsFromPath(commandWorkflowFilePathConfigurationName, contextName) {
+  let functionName = loadCommandWorkflowsFromPath.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  // commandWorkflowFilePathConfigurationName is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.ccommandWorkflowFilePathConfigurationNameIs + commandWorkflowFilePathConfigurationName);
+  // contextName
+  await loggers.consoleLog(namespacePrefix + functionName, msg.ccontextNameIs + contextName);
+  let returnData = false;
+  let allCommandWorkflowsData = {};
+  if (!contextName.toUpperCase().includes(wrd.cPLUGIN)) {
+    allCommandWorkflowsData = await chiefData.setupAllXmlData(commandWorkflowFilePathConfigurationName, sys.cCommandWorkflows);
+  } else if (contextName.toUpperCase().includes(wrd.cPLUGIN)) {
+    allCommandWorkflowsData = await chiefData.setupAllXmlPluginData(commandWorkflowFilePathConfigurationName, sys.cPluginWorkflows);
+  }
+
+  // allCommandWorkflowsData is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.callCommandWorkflowsDataIs + JSON.stringify(allCommandWorkflowsData));
+  if (D[sys.cCommandWorkflows] === undefined) { // Make sure we only do this if it's undefined, otherwise we might wipe out previously loaded data.
+    D[sys.cCommandWorkflows] = {};
+    D[sys.cCommandWorkflows][sys.cFramework] = allCommandWorkflowsData;
+    returnData = true;
+  } else if (contextName.toUpperCase() === wrd.cAPPLICATION) {
+    // for (let i = 0; i &lt; allCommandWorkflowsData[sys.cCommandWorkflows][wrd.cWorkflows].length; i++) {
+      // D[sys.cCommandWorkflows][wrd.cWorkflows].push(allCommandWorkflowsData[sys.cCommandWorkflows][wrd.cWorkflows][i]);
+      // Object.assign(D[sys.cCommandWorkflows][wrd.cWorkflows], allCommandWorkflowsData[sys.cCommandWorkflows][wrd.cWorkflows]);
+      // D[sys.cCommandWorkflows] = ruleBroker.processRules([D[sys.cCommandWorkflows], allCommandWorkflowsData], [biz.cobjectDeepMerge]);
+      D[sys.cCommandWorkflows][wrd.cApplication] = allCommandWorkflowsData;
+      returnData = true;
+    // }
+  } else if (contextName.toUpperCase().includes(wrd.cPLUGIN)) {
+    returnData = allCommandWorkflowsData;
+  }
+  // console.log('All loaded workflow data is: ' + JSON.stringify(D[sys.cCommandWorkflows]));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
+export default {
+  loadCommandWorkflowsFromPath
+};
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-advanced.html">advanced</a></li><li><a href="module-auxiliary.html">auxiliary</a></li><li><a href="module-auxiliaryArrayParsing.html">auxiliaryArrayParsing</a></li><li><a href="module-auxiliaryStringParsing.html">auxiliaryStringParsing</a></li><li><a href="module-characterArrayParsing.html">characterArrayParsing</a></li><li><a href="module-characterGeneration.html">characterGeneration</a></li><li><a href="module-characterStringParsing.html">characterStringParsing</a></li><li><a href="module-chiefCommander.html">chiefCommander</a></li><li><a href="module-chiefConfiguration.html">chiefConfiguration</a></li><li><a href="module-chiefConstant.html">chiefConstant</a></li><li><a href="module-chiefData.html">chiefData</a></li><li><a href="module-chiefPlugin.html">chiefPlugin</a></li><li><a href="module-chiefTheme.html">chiefTheme</a></li><li><a href="module-chiefWorkflow.html">chiefWorkflow</a></li><li><a href="module-colorizer.html">colorizer</a></li><li><a href="module-commandArrayParsing.html">commandArrayParsing</a></li><li><a href="module-commandBroker.html">commandBroker</a></li><li><a href="module-commandsLibrary.html">commandsLibrary</a></li><li><a href="module-commandStringParsing.html">commandStringParsing</a></li><li><a href="module-configuration.html">configuration</a></li><li><a href="module-configurator.html">configurator</a></li><li><a href="module-constant.html">constant</a></li><li><a href="module-constantArrayParsing.html">constantArrayParsing</a></li><li><a href="module-constantBroker.html">constantBroker</a></li><li><a href="module-constantStringParsing.html">constantStringParsing</a></li><li><a href="module-data.html">data</a></li><li><a href="module-dataArrayParsing.html">dataArrayParsing</a></li><li><a href="module-dataBroker.html">dataBroker</a></li><li><a href="module-dataDirectorate.html">dataDirectorate</a></li><li><a href="module-dataStringParsing.html">dataStringParsing</a></li><li><a href="module-fileOperations.html">fileOperations</a></li><li><a href="module-fileStringParsing.html">fileStringParsing</a></li><li><a href="module-integrationTests.html">integrationTests</a></li><li><a href="module-lexicalAnalyzer.html">lexicalAnalyzer</a></li><li><a href="module-loggers.html">loggers</a></li><li><a href="module-main.html">main</a></li><li><a href="module-mathOperations.html">mathOperations</a></li><li><a href="module-pathArrayParsing.html">pathArrayParsing</a></li><li><a href="module-performanceMetric.html">performanceMetric</a></li><li><a href="module-pluginBroker.html">pluginBroker</a></li><li><a href="module-plugins.html">plugins</a></li><li><a href="module-promptOperations.html">promptOperations</a></li><li><a href="module-queue.html">queue</a></li><li><a href="module-ruleBroker.html">ruleBroker</a></li><li><a href="module-ruleParsing.html">ruleParsing</a></li><li><a href="module-rulesLibrary.html">rulesLibrary</a></li><li><a href="module-stack.html">stack</a></li><li><a href="module-stringGeneration.html">stringGeneration</a></li><li><a href="module-stringParsingUtilities.html">stringParsingUtilities</a></li><li><a href="module-system.html">system</a></li><li><a href="module-themeBroker.html">themeBroker</a></li><li><a href="module-timeComputation.html">timeComputation</a></li><li><a href="module-warden.html">warden</a></li><li><a href="module-wordArrayParsing.html">wordArrayParsing</a></li><li><a href="module-wordStringParsing.html">wordStringParsing</a></li><li><a href="module-workflowBroker.html">workflowBroker</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Wed Feb 22 2023 14:45:59 GMT-0600 (Central Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

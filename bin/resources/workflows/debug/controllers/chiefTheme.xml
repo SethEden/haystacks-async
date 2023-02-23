@@ -8,7 +8,7 @@
         <Workflow Name="initThemesDisable" Value="changeConfigSetting debugSetting.framework.controllers.chiefTheme.initThemes false"/>
         <Workflow Name="addThemeDataEnable" Value="changeConfigSetting debugSetting.framework.controllers.chiefTheme.addThemeData true"/>
         <Workflow Name="addThemeDataDisable" Value="changeConfigSetting debugSetting.framework.controllers.chiefTheme.addThemeData false"/>
-        <Workflow Name="generateThemeDataFromThemeRootPathEnable" Value="changeConfigSetting debguSetting.controllers.cheifTheme.generateThemeDataFromThemeRootPath true"/>
+        <Workflow Name="generateThemeDataFromThemeRootPathEnable" Value="changeConfigSetting debguSetting.frameworkcontrollers.cheifTheme.generateThemeDataFromThemeRootPath true"/>
         <Workflow Name="generateThemeDataFromThemeRootPathDisable" Value="changeConfigSetting debugSetting.framework.controllers.cheifTheme.generateThemeDataFromThemeRootPath false"/>
         <Workflow Name="determineThemeDebugConfigFilesToLoadEnable" Value="changeConfigSetting debugSetting.framework.controllers.chiefTheme.determineThemeDebugConfigFilesToLoad true"/>
         <Workflow Name="determineThemeDebugConfigFilesToLoadDisable" Value="changeConfigSetting debugSetting.framework.controllers.chiefTheme.determineThemeDebugConfigFilesToLoad false"/>

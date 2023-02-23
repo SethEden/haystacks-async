@@ -10,6 +10,8 @@
         <Workflow Name="constantBrokerGenerateFrameworkConstantsValidationDataDisable" Value="changeConfigSetting debugSetting.framework.brokers.constantBroker.generateFrameworkConstantsValidationData false"/>
         <Workflow Name="constantBrokerAddConstantsValidationDataEnable" Value="changeConfigSetting debugSetting.framework.brokers.constantBroker.addConstantsValidationData true"/>
         <Workflow Name="constantBrokerAddConstantsValidationDataDisable" Value="changeConfigSetting debugSetting.framework.brokers.constantBroker.addConstantsValidationData false"/>
+        <Workflow Name="removePluginConstantsValidationDataEnable" Value="changeConfigSetting debugSetting.framework.brokers.constantBroker.removePluginConstantsValidationData true"/>
+        <Workflow Name="removePluginConstantsValidationDataDisable" Value="changeConfigSetting debugSetting.framework.brokers.constantBroker.removePluginConstantsValidationData false"/>
       </constantBroker>
     </brokers>
   </debug>

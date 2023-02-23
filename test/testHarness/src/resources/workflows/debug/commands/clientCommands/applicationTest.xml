@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?><CommandWorkflows>
+  <debug>
+    <commandsBlob>
+      <commands>
+        <applicationTest>
+          <Workflow Name="applicationTestEnable" Value="changeConfigSetting debugSetting.application.testHarness.commands.clientCommands.applicationTest true"/>
+          <Workflow Name="applicationTestDisable" Value="changeConfigSetting debugSetting.application.testHarness.commands.clientCommands.applicationTest false"/>
+          <Workflow Name="validateApplicationConstantsEnable" Value="changeConfigSetting debugSetting.application.testHarness.commands.clientCommands.applicationTest.validateApplicationConstants true"/>
+          <Workflow Name="validateApplicationConstantsDisable" Value="changeConfigSetting debugSetting.application.testHarness.commands.clientCommands.applicationTest.validateApplicationConstants false"/>
+          <Workflow Name="validateApplicationCommandAliasesEnable" Value="changeConfigSetting debugSetting.application.testHarness.commands.clientCommands.applicationTest.validateApplicationCommandAliases true"/>
+          <Workflow Name="validateApplicationCommandAliasesDisable" Value="changeConfigSetting debugSetting.application.testHarness.commands.clientCommands.applicationTest.validateApplicationCommandAliases false"/>
+          <Workflow Name="validateApplicationWorkflowsEnable" Value="changeConfigSetting debugSetting.application.testHarness.commands.clientCommands.applicationTest.validateApplicationWorkflows true"/>
+          <Workflow Name="validateApplicationWorkflowsDisable" Value="changeConfigSetting debugSetting.application.testHarness.commands.clientCommands.applicationTest.validateApplicationWorkflows false"/>
+          <Workflow Name="allApplicationValidationsEnable" Value="changeConfigSetting debugSetting.application.testHarness.commands.clientCommands.applicationTest.allApplicationValidations true"/>
+          <Workflow Name="allApplicationValidationsDisable" Value="changeConfigSetting debugSetting.application.testHarness.commands.clientCommands.applicationTest.allApplicationValidations false"/>
+        </applicationTest>
+      </commands>
+    </commandsBlob>
+  </debug>
+</CommandWorkflows>

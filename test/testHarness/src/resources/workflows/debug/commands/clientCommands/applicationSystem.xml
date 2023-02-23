@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?><CommandWorkflows>
+  <debug>
+    <commandsBlob>
+      <commands>
+        <applicationSystem>
+          <Workflow Name="applicationSystemEnable" Value="changeConfigSetting debugSetting.application.testHarness.commands.clientCommands.applicationSystem true"/>
+          <Workflow Name="applicationSystemDisable" Value="changeConfigSetting debugSetting.application.testHarness.commands.clientCommands.applicationSystem false"/>
+          <Workflow Name="applicationHelpEnable" Value="changeConfigSetting debugSetting.application.testHarness.commands.clientCommands.applicationSystem.applicationHelp true"/>
+          <Workflow Name="applicationHelpDisable" Value="changeConfigSetting debugSetting.application.testHarness.commands.clientCommands.applicationSystem.applicationHelp false"/>
+          <Workflow Name="applicationWorkflowHelpEnable" Value="changeConfigSetting debugSetting.application.testHarness.commands.clientCommands.applicationSystem.applicationWorkflowHelp true"/>
+          <Workflow Name="applicationWorkflowHelpDisable" Value="changeConfigSetting debugSetting.application.testHarness.commands.clientCommands.applicationSystem.applicationWorkflowHelp false"/>
+        </applicationSystem>
+      </commands>
+    </commandsBlob>
+  </debug>
+</CommandWorkflows>

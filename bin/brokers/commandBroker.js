@@ -200,7 +200,7 @@ async function getValidCommand(commandString, commandDelimiter) {
   if (commandDelimiter === null || commandDelimiter !== commandDelimiter || commandDelimiter === undefined) {
     commandArgsDelimiter = bas.cSpace;
   }
-  if (commandString && commandString.includes(commandArgsDelimiter) === true) {
+  if (commandString && typeof commandString === wrd.cstring && commandString.includes(commandArgsDelimiter) === true) {
     commandArgs = commandString.split(commandArgsDelimiter);
     commandToExecute = commandArgs[0];
   } else {
@@ -211,9 +211,9 @@ async function getValidCommand(commandString, commandDelimiter) {
   // commandToExecute is:
   await loggers.consoleLog(namespacePrefix + functionName, msg.ccommandToExecuteIs + commandToExecute);
   if (commandString) {
-    if (D[wrd.cCommands][commandToExecute] !== undefined) {
+    if (D[wrd.cCommands][commandToExecute] != undefined) {
       returnData = commandToExecute;
-    } else { // else-clause if (D[wrd.cCommands][commandToExecute] !== undefined)
+    } else { // else-clause if (D[wrd.cCommands][commandToExecute] != undefined)
       // else-clause looking for command aliases.
       await loggers.consoleLog(namespacePrefix + functionName, msg.celseClauseLookingForCommandAliases);
       // NOTE: It could be that the user entered a command alias, so we will need to search through all of the command aliases,
@@ -342,7 +342,7 @@ async function searchCommandAlias(commandAliasData, commandAliasName) {
   // commandAliasName is:
   await loggers.consoleLog(namespacePrefix + functionName, msg.ccommandAliasNameIs + commandAliasName);
   let commandAliasObject = false;
-  if (typeof commandAliasData === wrd.cobject) {
+  if (typeof commandAliasData === wrd.cobject && typeof commandAliasName === wrd.cstring) {
     for (let commandAliasEntity in commandAliasData) {
       // commandAliasEntity is:
       await loggers.consoleLog(namespacePrefix + functionName, msg.ccommandAliasEntityIs + JSON.stringify(commandAliasEntity));
@@ -533,7 +533,7 @@ async function getCommandArgs(commandString, commandDelimiter) {
   if (commandDelimiter === null || commandDelimiter !== commandDelimiter || commandDelimiter === undefined) {
     commandArgsDelimiter = bas.cSpace;
   }
-  if (commandString.includes(commandArgsDelimiter) === true) {
+  if (typeof commandString === wrd.cstring && commandString.includes(commandArgsDelimiter) === true) {
     // NOTE: All commands that enqueue or execute commands need to pass through this function.
     // There is a case where the user might pass a string with spaces or other code/syntax.
     // So we need to split first by single character string delimiters and parse the
