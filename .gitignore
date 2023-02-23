@@ -6,3 +6,7 @@ node_modules/*
 *.log
 *.Log
 *.LOG
+*/documentation/*
+documentation/*
+*.html
+*.HTML
