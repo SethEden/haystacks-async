@@ -232,6 +232,8 @@ async function isBoolean(inputData, inputMetaData) {
   if (inputData) {
     if (typeof inputData === 'boolean') {
       returnData = true;
+    } else if (typeof inputData === 'number') {
+        returnData = false;
     } else {
       inputData = inputData.toLowerCase().trim();
       if (inputData === gen.ctrue || inputData === bas.ct || inputData === bas.cy || inputData === gen.cyes || inputData === bas.con ||
