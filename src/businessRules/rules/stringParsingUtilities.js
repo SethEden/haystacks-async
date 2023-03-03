@@ -178,7 +178,7 @@ async function stringToBoolean(inputData, inputMetaData) {
  * @description Determines if the contents of a string are actually a Boolean, Integer, Float, String or something else.
  * @param {string} inputData A string that contains some value that we should figure out
  * what kind of data type that data is, Boolean, Integer, Float, String or something else.
- * @param {string} inputMetaDataNot Not used for this business rule.
+ * @param {string} inputMetaData Not used for this business rule.
  * @return {string} A string that indicates if the data type should be Boolean, Integer, Float, String or something else.
  * @author Seth Hollingsead
  * @date 2021/11/10
