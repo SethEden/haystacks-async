@@ -103,7 +103,7 @@
   "debugFunctions|debugSetting.framework.controllers.chiefData.setupAllJsonConfigPluginData@FunctionFontBackgroundColor": "Default",
   "debugFunctions|debugSetting.framework.controllers.chiefData.setupAllJsonConfigPluginData@MessageFontBackgroundColor": "Default",
   "debugFunctions|debugSetting.framework.controllers.chiefData.setupAllJsonConfigPluginData@DataFontBackgroundColor": "Default",
-  "debugFunctions|debugSetting.framework.controllers.chiefData.loadAllJsonData": false,
+  "debugFunctions|debugSetting.framework.controllers.chiefData.loadAllJsonData": true,
   "debugFunctions|debugSetting.framework.controllers.chiefData.loadAllJsonData@ModuleFontStyle": "Default",
   "debugFunctions|debugSetting.framework.controllers.chiefData.loadAllJsonData@FunctionFontStyle": "Default",
   "debugFunctions|debugSetting.framework.controllers.chiefData.loadAllJsonData@MessageFontStyle": "Default",

@@ -337,7 +337,7 @@
   "debugFunctions|debugSetting.framework.controllers.warden.loadPluginResourceData@FunctionFontBackgroundColor": "Default",
   "debugFunctions|debugSetting.framework.controllers.warden.loadPluginResourceData@MessageFontBackgroundColor": "Default",
   "debugFunctions|debugSetting.framework.controllers.warden.loadPluginResourceData@DataFontBackgroundColor": "Default",
-  "debugFunctions|debugSetting.framework.controllers.warden.loadAllJsonData": false,
+  "debugFunctions|debugSetting.framework.controllers.warden.loadAllJsonData": true,
   "debugFunctions|debugSetting.framework.controllers.warden.loadAllJsonData@ModuleFontStyle": "Default",
   "debugFunctions|debugSetting.framework.controllers.warden.loadAllJsonData@FunctionFontStyle": "Default",
   "debugFunctions|debugSetting.framework.controllers.warden.loadAllJsonData@MessageFontStyle": "Default",

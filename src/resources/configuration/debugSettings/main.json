@@ -337,7 +337,7 @@
   "debugFunctions|debugSetting.framework.main.loadPluginResourceData@FunctionFontBackgroundColor": "Default",
   "debugFunctions|debugSetting.framework.main.loadPluginResourceData@MessageFontBackgroundColor": "Default",
   "debugFunctions|debugSetting.framework.main.loadPluginResourceData@DataFontBackgroundColor": "Default",
-  "debugFunctions|debugSetting.framework.main.loadAllJsonData": false,
+  "debugFunctions|debugSetting.framework.main.loadAllJsonData": true,
   "debugFunctions|debugSetting.framework.main.loadAllJsonData@ModuleFontStyle": "Default",
   "debugFunctions|debugSetting.framework.main.loadAllJsonData@FunctionFontStyle": "Default",
   "debugFunctions|debugSetting.framework.main.loadAllJsonData@MessageFontStyle": "Default",

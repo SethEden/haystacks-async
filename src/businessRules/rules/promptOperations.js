@@ -76,10 +76,13 @@ async function promptRaw(inputData, inputMetaData) {
 
   returnData = new Promise((resolve) => {
     process.stdin.once(wrd.cdata, (data) => {
-      const key = data.toString().trim();
+      const key = data.toString();
       if (key === '\u0003') { // gen.cCTRLC) { // CTRL+C
         console.log(wrd.cExiting + bas.cSpace + wrd.cApplication);
         process.exit(0);
+      } else if (key.name === wrd.cSpace || key.keyCode === 32 || key === bas.cSpace) {
+        process.stdin.setRawMode(false);
+        resolve(' ');
       } else if (key === '\u001b') { // gen.cESC_Key) {
         process.stdin.setRawMode(false); // disable raw mode
         resolve(false); // Return false, so the caller can exit the interactive raw process loop.
