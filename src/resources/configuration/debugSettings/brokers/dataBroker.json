@@ -64,7 +64,7 @@
   "debugFunctions|debugSetting.framework.brokers.dataBroker.loadAllXmlData@FunctionFontBackgroundColor": "Default",
   "debugFunctions|debugSetting.framework.brokers.dataBroker.loadAllXmlData@MessageFontBackgroundColor": "Default",
   "debugFunctions|debugSetting.framework.brokers.dataBroker.loadAllXmlData@DataFontBackgroundColor": "Default",
-  "debugFunctions|debugSetting.framework.brokers.dataBroker.loadAllJsonData": true,
+  "debugFunctions|debugSetting.framework.brokers.dataBroker.loadAllJsonData": false,
   "debugFunctions|debugSetting.framework.brokers.dataBroker.loadAllJsonData@ModuleFontStyle": "Default",
   "debugFunctions|debugSetting.framework.brokers.dataBroker.loadAllJsonData@FunctionFontStyle": "Default",
   "debugFunctions|debugSetting.framework.brokers.dataBroker.loadAllJsonData@MessageFontStyle": "Default",
