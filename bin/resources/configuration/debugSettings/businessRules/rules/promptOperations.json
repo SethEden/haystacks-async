@@ -24,5 +24,18 @@
   "debugFunctions|debugSetting.framework.businessRules.rules.promptOperations.prompt@ModuleFontBackgroundColor": "Default",
   "debugFunctions|debugSetting.framework.businessRules.rules.promptOperations.prompt@FunctionFontBackgroundColor": "Default",
   "debugFunctions|debugSetting.framework.businessRules.rules.promptOperations.prompt@MessageFontBackgroundColor": "Default",
-  "debugFunctions|debugSetting.framework.businessRules.rules.promptOperations.prompt@DataFontBackgroundColor": "Default"
+  "debugFunctions|debugSetting.framework.businessRules.rules.promptOperations.prompt@DataFontBackgroundColor": "Default",
+  "debugFunctions|debugSetting.framework.businessRules.rules.promptOperations.promptRaw": false,
+  "debugFunctions|debugSetting.framework.businessRules.rules.promptOperations.promptRaw@ModuleFontStyle": "Default",
+  "debugFunctions|debugSetting.framework.businessRules.rules.promptOperations.promptRaw@FunctionFontStyle": "Default",
+  "debugFunctions|debugSetting.framework.businessRules.rules.promptOperations.promptRaw@MessageFontStyle": "Default",
+  "debugFunctions|debugSetting.framework.businessRules.rules.promptOperations.promptRaw@DataFontStyle": "Default",
+  "debugFunctions|debugSetting.framework.businessRules.rules.promptOperations.promptRaw@ModuleFontColor": "Default",
+  "debugFunctions|debugSetting.framework.businessRules.rules.promptOperations.promptRaw@FunctionFontColor": "Default",
+  "debugFunctions|debugSetting.framework.businessRules.rules.promptOperations.promptRaw@MessageFontColor": "Default",
+  "debugFunctions|debugSetting.framework.businessRules.rules.promptOperations.promptRaw@DataFontColor": "Default",
+  "debugFunctions|debugSetting.framework.businessRules.rules.promptOperations.promptRaw@ModuleFontBackgroundColor": "Default",
+  "debugFunctions|debugSetting.framework.businessRules.rules.promptOperations.promptRaw@FunctionFontBackgroundColor": "Default",
+  "debugFunctions|debugSetting.framework.businessRules.rules.promptOperations.promptRaw@MessageFontBackgroundColor": "Default",
+  "debugFunctions|debugSetting.framework.businessRules.rules.promptOperations.promptRaw@DataFontBackgroundColor": "Default"
 }

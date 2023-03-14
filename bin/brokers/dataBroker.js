@@ -351,15 +351,29 @@ async function loadAllJsonData(filesToLoad, contextName) {
       let fileToLoad = element2;
       if (!fileToLoad.includes(systemConfigFileName) && !fileToLoad.includes(applicationConfigFileName) && !fileToLoad.includes(pluginConfigFileName)
       && fileToLoad.toUpperCase().includes(gen.cDotJSON) && !fileToLoad.toLowerCase().includes(wrd.cmetadata + gen.cDotjson)) {
-        
+        // Get the filename without the file extension, use that as a key for the data.
+        let filename = await ruleBroker.processRules([fileToLoad, ''], [biz.cgetFileNameFromPath, biz.cremoveFileExtensionFromFileName]);
+        // console.log('filename is: ' + filename);
         let dataFile = await preprocessJsonFile(fileToLoad);
         // console.log('dataFile to merge is: ' + JSON.stringify(dataFile));
         await loggers.consoleLog(namespacePrefix + functionName, msg.cdataFileToMergeIs + JSON.stringify(dataFile));
         if (!multiMergedData[cfg.cdebugSettings]) {
           multiMergedData[cfg.cdebugSettings] = {};
-          multiMergedData[cfg.cdebugSettings] = dataFile;
+          if (contextName.includes(wrd.cclient + wrd.cData)) {
+            // console.log('clientData first time merge!');
+            multiMergedData[cfg.cdebugSettings] = {[filename]: dataFile};
+          } else {
+            // console.log('regular old traditional first time data merge!');
+            multiMergedData[cfg.cdebugSettings] = dataFile;
+          }
         } else {
-          Object.assign(multiMergedData[cfg.cdebugSettings], dataFile);
+          if (contextName.includes(wrd.cclient + wrd.cData)) {
+            // console.log('clientData n-th data merge');
+            Object.assign(multiMergedData[cfg.cdebugSettings], {[filename]: dataFile});
+          } else {
+            // console.log('regular old n-th data merge');
+            Object.assign(multiMergedData[cfg.cdebugSettings], dataFile);
+          }
         }
       }
     } // End-for (const element2 of filesToLoad)

@@ -18,6 +18,14 @@
         <Workflow Name="setupAllJsonConfigDataDisable" Value="changeConfigSetting debugSetting.framework.controllers.chiefData.setupAllJsonConfigData false"/>
         <Workflow Name="setupAllJsonConfigPluginDataEnable" Value="changeConfigSetting debugSetting.framework.controllers.chiefData.setupAllJsonConfigPluginData true"/>
         <Workflow Name="setupAllJsonConfigPluginDataDisable" Value="changeConfigSetting debugSetting.framework.controllers.chiefData.setupAllJsonConfigPluginData false"/>
+        <Workflow Name="chiefDataloadAllJsonDataEnable" Value="changeConfigSetting debugSetting.framework.controllers.chiefData.loadAllJsonData true"/>
+        <Workflow Name="chiefDataloadAllJsonDataDisable" Value="changeConfigSetting debugSetting.framework.controllers.chiefData.loadAllJsonData false"/>
+        <Workflow Name="chiefDataStoreDataEnable" Value="changeConfigSetting debugSetting.framework.controllers.chiefData.storeData true"/>
+        <Workflow Name="chiefDataStoreDataDisable" Value="changeConfigSetting debugSetting.framework.controllers.chiefData.storeData false"/>
+        <Workflow Name="chiefDataGetDataEnable" Value="changeConfigSetting debugSetting.framework.controllers.chiefData.getData true"/>
+        <Workflow Name="chiefDataGetDataDisable" Value="changeConfigSetting debugSetting.framework.controllers.chiefData.getData false"/>
+        <Workflow Name="chiefDataClearDataEnable" Value="changeConfigSetting debugSetting.framework.controllers.chiefData.clearData true"/>
+        <Workflow Name="chiefDataClearDataDisable" Value="changeConfigSetting debugSetting.framework.controllers.chiefData.clearData false"/>
       </chiefData>
     </controllers>
   </debug>

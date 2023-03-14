@@ -2,6 +2,7 @@
  * @file auxiliaryArrayParsing.js
  * @module auxiliaryArrayParsing
  * @description Contains all system defined business rules for parsing arrays specific to auxiliary capabilities.
+ * @requires module:colorizer
  * @requires module:loggers
  * @requires {@link https://www.npmjs.com/package/@haystacks/constants|@haystacks/constants}
  * @requires {@link https://mathjs.org/index.html|math}
@@ -12,6 +13,7 @@
  */
 
 // Internal imports
+import colorizer from '../../../executrix/colorizer.js';
 import loggers from '../../../executrix/loggers.js';
 // External imports
 import hayConst from '@haystacks/constants';
@@ -80,23 +82,45 @@ async function parseColorRangeInputs(inputData, inputMetaData) {
    loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
    loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
    return returnData;
- }
+}
 
- /**
-  * @function doesArrayContainValue
-  * @description Checks if an array contains a value, checking equality by function(val, arr[i]).
-  * @NOTE Do not call this function from the rulesLibrary as it doesn't follow the business rule pattern.
-  * This function is strictly a supporting function to aid the business rules, for use internal to the business rules only.
-  * @param {array<array<string|integer|boolean|float|object>,string|integer|boolean|float|object>} inputData
-  * An array that contains the array that should be searched and the value that should be searched for in the array.
-  * inputData[0] = Array to be searched.
-  * inputData[1] = Value to be searched for in the array.
-  * the input array that should be searched for the given input value.
-  * @param {function} inputMetaData The function that should be used to do the search.
-  * @return {boolean} A True or False to indicate if the value was found in the array or not found.
-  * @author Seth Hollingsead
-  * @date 2022/01/21
-  */
+/**
+ * @function getNamedColorDataArray
+ * @description This is a business rule wrapper function for calling the colorizer to get named color array data.
+ * Looks up the named color data as loaded in the Haystacks engine.
+ * @param {string} inputData The name of the color that should be looked up.
+ * @param {array<integer>} inputMetaData A default array, if the color isn't found.
+ * @return {array<integer>} An array of integers that represent RGB values.
+ * @author Seth Hollingsead
+ * @date 2023/03/02
+ */
+async function getNamedColorDataArray(inputData, inputMetaData) {
+  let functionName = getNamedColorDataArray.name;
+  loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
+  loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
+  let returnData = [0,0,0];
+  returnData = await colorizer.getNamedColorData(inputData, inputMetaData);
+  loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
+/**
+ * @function doesArrayContainValue
+ * @description Checks if an array contains a value, checking equality by function(val, arr[i]).
+ * @NOTE Do not call this function from the rulesLibrary as it doesn't follow the business rule pattern.
+ * This function is strictly a supporting function to aid the business rules, for use internal to the business rules only.
+ * @param {array<array<string|integer|boolean|float|object>,string|integer|boolean|float|object>} inputData
+ * An array that contains the array that should be searched and the value that should be searched for in the array.
+ * inputData[0] = Array to be searched.
+ * inputData[1] = Value to be searched for in the array.
+ * the input array that should be searched for the given input value.
+ * @param {function} inputMetaData The function that should be used to do the search.
+ * @return {boolean} A True or False to indicate if the value was found in the array or not found.
+ * @author Seth Hollingsead
+ * @date 2022/01/21
+ */
 async function doesArrayContainValue(inputData, inputMetaData) {
   let functionName = doesArrayContainValue.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
@@ -132,5 +156,6 @@ async function doesArrayContainValue(inputData, inputMetaData) {
 
  export default {
    parseColorRangeInputs,
+   getNamedColorDataArray,
    doesArrayContainValue
  };

@@ -53,6 +53,14 @@
       <Workflow Name="mainGetPluginsRegistryPathDisable" Value="changeConfigSetting debugSetting.framework.main.getPluginsRegistryPath false"/>
       <Workflow Name="mainLoadPluginResourceDataEnable" Value="changeConfigSetting debugSetting.framework.main.loadPluginResourceData true"/>
       <Workflow Name="mainLoadPluginResourceDataDisable" Value="changeConfigSetting debugSetting.framework.main.loadPluginResourceData false"/>
+      <Workflow Name="mainLoadAllJsonDataEnable" Value="changeConfigSetting debugSetting.framework.main.loadAllJsonData true"/>
+      <Workflow Name="mainLoadAllJsonDataDisable" Value="changeConfigSetting debugSetting.framework.main.loadAllJsonData false"/>
+      <Workflow Name="mainStoreDataEnable" Value="changeConfigSetting debugSetting.framework.main.storeData true"/>
+      <Workflow Name="mainStoreDataDisable" Value="changeConfigSetting debugSetting.framework.main.storeData false"/>
+      <Workflow Name="mainGetDataEnable" Value="changeConfigSetting debugSetting.framework.main.getData true"/>
+      <Workflow Name="mainGetDataDisable" Value="changeConfigSetting debugSetting.framework.main.getData false"/>
+      <Workflow Name="mainClearDataEnable" Value="changeConfigSetting debugSetting.framework.main.clearData true"/>
+      <Workflow Name="mainClearDataDisable" Value="changeConfigSetting debugSetting.framework.main.clearData false"/>
       <Workflow Name="mainExecuteBusinessRulesEnable" Value="changeConfigSetting debugSetting.framework.main.executeBusinessRules true"/>
       <Workflow Name="mainExecuteBusinessRulesDisable" Value="changeConfigSetting debugSetting.framework.main.executeBusinessRules false"/>
       <Workflow Name="mainEnqueueCommandEnable" Value="changeConfigSetting debugSetting.framework.main.enqueueCommand true"/>
