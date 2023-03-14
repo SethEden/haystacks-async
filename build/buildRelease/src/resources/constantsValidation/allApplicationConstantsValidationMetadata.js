@@ -9,7 +9,6 @@
  * @requires module:application.command.constants.validation
  * @requires module:application.configuration.constants.validation
  * @requires module:application.constants.validation
- * @requires module:application.function.constants.validation
  * @requires module:application.message.constants.validation
  * @requires module:application.system.constants.validation
  * @requires {@link https://www.npmjs.com/package/@haystacks/async|@haystacks/async}
@@ -28,7 +27,6 @@ import * as app_biz_cv from './application.business.constants.validation.js';
 import * as app_cmd_cv from './application.command.constants.validation.js';
 import * as app_cfg_cv from './application.configuration.constants.validation.js';
 import * as apc_cv from './application.constants.validation.js';
-import * as app_fnc_cv from './application.function.constants.validation.js';
 import * as app_msg_cv from './application.message.constants.validation.js';
 import * as app_sys_cv from './application.system.constants.validation.js';
 
@@ -68,7 +66,6 @@ async function initializeAllClientConstantsValidationData() {
   allClientConstantsValidationData[sys.cConstantsValidationData][app_sys.capplicationCommandConstantsValidation] = [];
   allClientConstantsValidationData[sys.cConstantsValidationData][app_sys.capplicationConfigurationConstantsValidation] = [];
   allClientConstantsValidationData[sys.cConstantsValidationData][app_sys.capplicationConstantsValidation] = [];
-  allClientConstantsValidationData[sys.cConstantsValidationData][app_sys.capplicationFunctionConstantsValidation] = [];
   allClientConstantsValidationData[sys.cConstantsValidationData][app_sys.capplicationMessageConstantsValidation] = [];
   allClientConstantsValidationData[sys.cConstantsValidationData][app_sys.capplicationSystemConstantsValidation] = [];
 
@@ -76,7 +73,6 @@ async function initializeAllClientConstantsValidationData() {
   allClientConstantsValidationData[sys.cConstantsValidationData][app_sys.capplicationCommandConstantsValidation] = app_cmd_cv.applicationCommandConstantsValidation;
   allClientConstantsValidationData[sys.cConstantsValidationData][app_sys.capplicationConfigurationConstantsValidation] = app_cfg_cv.applicationConfigurationConstantsValidation;
   allClientConstantsValidationData[sys.cConstantsValidationData][app_sys.capplicationConstantsValidation] = apc_cv.applicationConstantsValidation;
-  allClientConstantsValidationData[sys.cConstantsValidationData][app_sys.capplicationFunctionConstantsValidation] = app_fnc_cv.applicationFunctionConstantsValidation;
   allClientConstantsValidationData[sys.cConstantsValidationData][app_sys.capplicationMessageConstantsValidation] = app_msg_cv.applicationMessageConstantsValidation;
   allClientConstantsValidationData[sys.cConstantsValidationData][app_sys.capplicationSystemConstantsValidation] = app_sys_cv.applicationSystemConstantsValidation;
 
@@ -85,7 +81,6 @@ async function initializeAllClientConstantsValidationData() {
   let resolvedConstantsPath_ApplicationCommand = path.resolve(constantsPath + bas.cForwardSlash + app_sys.capplication_command_constants_js);
   let resolvedConstantsPath_ApplicationConfiguration = path.resolve(constantsPath + bas.cForwardSlash + app_sys.capplication_configuration_constants_js);
   let resolvedConstantsPath_ApplicationConstant = path.resolve(constantsPath + bas.cForwardSlash + app_sys.capplication_constants_js);
-  let resolvedConstantsPath_ApplicationFunction = path.resolve(constantsPath + bas.cForwardSlash + app_sys.capplication_function_constants_js);
   let resolvedConstantsPath_ApplicationMessage = path.resolve(constantsPath + bas.cForwardSlash + app_sys.capplication_message_constants_js);
   let resolvedConstantsPath_ApplicationSystem = path.resolve(constantsPath + bas.cForwardSlash + app_sys.capplication_system_constants_js);
 
@@ -97,8 +92,6 @@ async function initializeAllClientConstantsValidationData() {
   await haystacks.consoleLog(namespacePrefix, functionName, app_msg.cresolvedConstantsPath_ApplicationConfigurationIs + resolvedConstantsPath_ApplicationConfiguration);
   // resolvedConstantsPath_ApplicationConstant is:
   await haystacks.consoleLog(namespacePrefix, functionName, app_msg.cresolvedConstantsPath_ApplicationConstantIs + resolvedConstantsPath_ApplicationConstant);
-  // resolvedConstantsPath_ApplicationFunction is:
-  await haystacks.consoleLog(namespacePrefix, functionName, app_msg.cresolvedConstantsPath_ApplicationFunctionIs + resolvedConstantsPath_ApplicationFunction);
   // resolvedConstantsPath_ApplicationMessage is:
   await haystacks.consoleLog(namespacePrefix, functionName, app_msg.cresolvedConstantsPath_ApplicationMessageIs + resolvedConstantsPath_ApplicationMessage);
   // resolvedConstantsPath_ApplicationSystem is:
@@ -108,7 +101,6 @@ async function initializeAllClientConstantsValidationData() {
   allClientConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsFilePaths][app_sys.capplicationCommandConstantsValidation] = resolvedConstantsPath_ApplicationCommand;
   allClientConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsFilePaths][app_sys.capplicationConfigurationConstantsValidation] = resolvedConstantsPath_ApplicationConfiguration;
   allClientConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsFilePaths][app_sys.capplicationConstantsValidation] = resolvedConstantsPath_ApplicationConstant;
-  allClientConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsFilePaths][app_sys.capplicationFunctionConstantsValidation] = resolvedConstantsPath_ApplicationFunction;
   allClientConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsFilePaths][app_sys.capplicationMessageConstantsValidation] = resolvedConstantsPath_ApplicationMessage;
   allClientConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsFilePaths][app_sys.capplicationSystemConstantsValidation] = resolvedConstantsPath_ApplicationSystem;
 
@@ -120,8 +112,6 @@ async function initializeAllClientConstantsValidationData() {
   allClientConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsPhase1ValidationMessages][app_sys.capplicationConfigurationConstantsValidation] = app_msg.cApplicationConfigurationConstantsPhase1Validation;
   // Application Constants Phase 1 Validation
   allClientConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsPhase1ValidationMessages][app_sys.capplicationConstantsValidation] = app_msg.cApplicationConstantsPhase1Validation;
-  // Application Function Constants Phase 1 Validation
-  allClientConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsPhase1ValidationMessages][app_sys.capplicationFunctionConstantsValidation] = app_msg.cApplicationFunctionConstantsPhase1Validation;
   // Application Message Constants Phase 1 Validation
   allClientConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsPhase1ValidationMessages][app_sys.capplicationMessageConstantsValidation] = app_msg.cApplicationMessageConstantsPhase1Validation;
   // Application System Constants Phase 1 Validation
@@ -135,8 +125,6 @@ async function initializeAllClientConstantsValidationData() {
   allClientConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsPhase2ValidationMessages][app_sys.capplicationConfigurationConstantsValidation] = app_msg.cApplicationConfigurationConstantsPhase2Validation;
   // Application Constants Phase 2 Validation
   allClientConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsPhase2ValidationMessages][app_sys.capplicationConstantsValidation] = app_msg.cApplicationConstantsPhase2Validation;
-  // Application Function Constants Phase 2 Validation
-  allClientConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsPhase2ValidationMessages][app_sys.capplicationFunctionConstantsValidation] = app_msg.cApplicationFunctionConstantsPhase2Validation;
   // Application Message Constants Phase 2 Validation
   allClientConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsPhase2ValidationMessages][app_sys.capplicationMessageConstantsValidation] = app_msg.cApplicationMessageConstantsPhase2Validation;
   // Application System Constants Phase 2 Validation
@@ -146,7 +134,6 @@ async function initializeAllClientConstantsValidationData() {
   allClientConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsShortNames][app_sys.capplicationCommandConstantsValidation] = gen.capp + bas.cUnderscore + gen.ccmd;
   allClientConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsShortNames][app_sys.capplicationConfigurationConstantsValidation] = gen.capp + bas.cUnderscore + gen.ccfg;
   allClientConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsShortNames][app_sys.capplicationConstantsValidation] = gen.capc;
-  allClientConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsShortNames][app_sys.capplicationFunctionConstantsValidation] = gen.capp + bas.cUnderscore + gen.cfnc;
   allClientConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsShortNames][app_sys.capplicationMessageConstantsValidation] = gen.capp + bas.cUnderscore + gen.cmsg;
   allClientConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsShortNames][app_sys.capplicationSystemConstantsValidation] = gen.capp + bas.cUnderscore + gen.csys;
 
@@ -154,7 +141,6 @@ async function initializeAllClientConstantsValidationData() {
   allClientConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsFileNames][app_sys.capplicationCommandConstantsValidation] = app_sys.capplication_command_constants_js;
   allClientConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsFileNames][app_sys.capplicationConfigurationConstantsValidation] = app_sys.capplication_configuration_constants_js;
   allClientConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsFileNames][app_sys.capplicationConstantsValidation] = app_sys.capplication_constants_js;
-  allClientConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsFileNames][app_sys.capplicationFunctionConstantsValidation] = app_sys.capplication_function_constants_js;
   allClientConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsFileNames][app_sys.capplicationMessageConstantsValidation] = app_sys.capplication_message_constants_js;
   allClientConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsFileNames][app_sys.capplicationSystemConstantsValidation] = app_sys.capplication_system_constants_js;
 
@@ -162,7 +148,6 @@ async function initializeAllClientConstantsValidationData() {
   allClientConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsPrefix][app_sys.capplicationCommandConstantsValidation] = gen.capp + bas.cUnderscore + gen.ccmd + bas.cDot;
   allClientConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsPrefix][app_sys.capplicationConfigurationConstantsValidation] = gen.capp + bas.cUnderscore + gen.ccfg + bas.cDot;
   allClientConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsPrefix][app_sys.capplicationConstantsValidation] = gen.capc + bas.cDot;
-  allClientConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsPrefix][app_sys.capplicationFunctionConstantsValidation] = gen.capp + bas.cUnderscore + gen.cfnc + bas.cDot;
   allClientConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsPrefix][app_sys.capplicationMessageConstantsValidation] = gen.capp + bas.cUnderscore + gen.cmsg + bas.cDot;
   allClientConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsPrefix][app_sys.capplicationSystemConstantsValidation] = gen.capp + bas.cUnderscore + gen.csys + bas.cDot;
 

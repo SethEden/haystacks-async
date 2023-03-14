@@ -351,6 +351,7 @@ async function loadAllJsonData(filesToLoad, contextName) {
       let fileToLoad = element2;
       if (!fileToLoad.includes(systemConfigFileName) && !fileToLoad.includes(applicationConfigFileName) && !fileToLoad.includes(pluginConfigFileName)
       && fileToLoad.toUpperCase().includes(gen.cDotJSON) && !fileToLoad.toLowerCase().includes(wrd.cmetadata + gen.cDotjson)) {
+        
         let dataFile = await preprocessJsonFile(fileToLoad);
         // console.log('dataFile to merge is: ' + JSON.stringify(dataFile));
         await loggers.consoleLog(namespacePrefix + functionName, msg.cdataFileToMergeIs + JSON.stringify(dataFile));

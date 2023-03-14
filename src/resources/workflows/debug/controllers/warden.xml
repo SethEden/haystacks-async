@@ -54,6 +54,14 @@
         <Workflow Name="wardenGetPluginsRegistryPathDisable" Value="changeConfigSetting debugSetting.framework.controllers.warden.getPluginsRegistryPath false"/>
         <Workflow Name="wardenLoadPluginResourceDataEnable" Value="changeConfigSetting debugSetting.framework.controllers.warden.loadPluginResourceData true"/>
         <Workflow Name="wardenLoadPluginResourceDataDisable" Value="changeConfigSetting debugSetting.framework.controllers.warden.loadPluginResourceData false"/>
+        <Workflow Name="wardenLoadAllJsonDataEnable" Value="changeConfigSetting debugSetting.framework.controllers.warden.loadAllJsonData true"/>
+        <Workflow Name="wardenLoadAllJsonDataDisable" Value="changeConfigSetting debugSetting.framework.controllers.warden.loadAllJsonData false"/>
+        <Workflow Name="wardenStoreDataEnable" Value="changeConfigSetting debugSetting.framework.controllers.warden.storeData true"/>
+        <Workflow Name="wardenStoreDataDisable" Value="changeConfigSetting debugSetting.framework.controllers.warden.storeData false"/>
+        <Workflow Name="wardenGetDataEnable" Value="changeConfigSetting debugSetting.framework.controllers.warden.getData true"/>
+        <Workflow Name="wardenGetDataDisable" Value="changeConfigSetting debugSetting.framework.controllers.warden.getData false"/>
+        <Workflow Name="wardenClearDataEnable" Value="changeConfigSetting debugSetting.framework.controllers.warden.clearData true"/>
+        <Workflow Name="wardenClearDataDisable" Value="changeConfigSetting debugSetting.framework.controllers.warden.clearData false"/>
         <Workflow Name="executeBusinessRulesEnable" Value="changeConfigSetting debugSetting.framework.controllers.warden.executeBusinessRules true"/>
         <Workflow Name="executeBusinessRulesDisable" Value="changeConfigSetting debugSetting.framework.controllers.warden.executeBusinessRules false"/>
         <Workflow Name="wardenEnqueueCommandEnable" Value="changeConfigSetting debugSetting.framework.controllers.warden.enqueueCommand true"/>

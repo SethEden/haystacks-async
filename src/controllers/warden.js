@@ -827,6 +827,94 @@ async function loadPluginResourceData(contextName, pluginResourcePath) {
 }
 
 /**
+ * @function loadAllJsonData
+ * @description Loads all of the JSON data at the specified path.
+ * Can be used to load account data, transaction history logs, activity logs, or any other kind of JSON data.
+ * @param {string} dataPath The path to the JSON files that should be loaded.
+ * @param {string} contextName The type of data that should be loaded.
+ * @return A JSON object that contains all of the data that was loaded and merged together.
+ * @author Seth Hollingsead
+ * @date 2023/02/27
+ */
+async function loadAllJsonData(dataPath, contextName) {
+  let functionName = loadAllJsonData.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  // dataPath is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cdataPathIs + dataPath);
+  // contextName is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.ccontextNameIs + contextName);
+  let returnData = false;
+  returnData = await chiefData.loadAllJsonData(dataPath, contextName);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
+/**
+ * @function storeData
+ * @description Persist some data to the data storage in the D-data structure.
+ * @param {string} dataName The name of the data, unique name used to store the data in the data structure.
+ * @param {object|string|boolean|number|array} data The data that should be stored.
+ * @return {boolean} True or False to indicate if the data was stored successfully or not.
+ * @author Seth Hollingsead
+ * @date 2023/02/27
+ */
+async function storeData(dataName, data) {
+  let functionName = storeData.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  // dataName is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cdataNameIs + dataName);
+  // data is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cdataIs + JSON.stringify(data));
+  let returnData = false;
+  returnData = await chiefData.storeData(dataName, data);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
+/**
+ * @function getData
+ * @description Gets data from the D-Data structure data storage data hive.
+ * @param {string} dataName The unique name the data should be stored under.
+ * @return {object|string|boolean|number|array} The data element or object that was stored if any was found.
+ * @author Seth Hollingsead
+ * @date 2023/02/27
+ */
+async function getData(dataName) {
+  let functionName = getData.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  // dataName is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cdataNameIs + dataName);
+  let returnData = false;
+  returnData = await chiefData.getData(dataName);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
+/**
+ * @function clearData
+ * @description Wipes out the data using the unique specified data name,
+ * if any is found in the D-0data structure data storage data hive.
+ * @param {string} dataName The unique name of the data that should be cleared.
+ * @return {boolean} True or False to indicate if the data was cleared successfully or not.
+ * @author Seth Hollingsead
+ * @date 2023/02/27 
+ */
+async function clearData(dataName) {
+  let functionName = clearData.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  // dataName is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cdataNameIs + dataName);
+  let returnData = false;
+  returnData = await chiefData.clearData(dataName);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
+/**
  * @function executeBusinessRules
  * @description A wrapper to call a business rule from the application level code.
  * @param {array<string|integer|boolean|object|function,string|integer|boolean|object|function>} inputs The array of inputs:
@@ -1011,6 +1099,10 @@ export default {
   unloadAllPlugins,
   getPluginsRegistryPath,
   loadPluginResourceData,
+  loadAllJsonData,
+  storeData,
+  getData,
+  clearData,
   executeBusinessRules,
   enqueueCommand,
   isCommandQueueEmpty,

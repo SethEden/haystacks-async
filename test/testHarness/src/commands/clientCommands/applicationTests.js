@@ -97,7 +97,7 @@ async function validateApplicationWorkflows(inputData, inputMetaData) {
 /**
  * @function allApplicationValidations
  * @description A command to execute all application validations.
- * This is better to hove here so we can define short name command aliases for this comand, rather than having a long workflow name.
+ * This is better to hove here so we can define short name command aliases for this command, rather than having a long workflow name.
  * @param {string} inputData Not used for this command.
  * @param {string} inputMetaData Not used for this command.
  * @return {array<boolean,string>} An array with a boolean True or False value to
