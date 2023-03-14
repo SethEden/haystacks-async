@@ -178,7 +178,7 @@ async function stringToBoolean(inputData, inputMetaData) {
  * @description Determines if the contents of a string are actually a Boolean, Integer, Float, String or something else.
  * @param {string} inputData A string that contains some value that we should figure out
  * what kind of data type that data is, Boolean, Integer, Float, String or something else.
- * @param {string} inputMetaDataNot Not used for this business rule.
+ * @param {string} inputMetaData Not used for this business rule.
  * @return {string} A string that indicates if the data type should be Boolean, Integer, Float, String or something else.
  * @author Seth Hollingsead
  * @date 2021/11/10
@@ -232,6 +232,8 @@ async function isBoolean(inputData, inputMetaData) {
   if (inputData) {
     if (typeof inputData === 'boolean') {
       returnData = true;
+    } else if (typeof inputData === 'number') {
+        returnData = false;
     } else {
       inputData = inputData.toLowerCase().trim();
       if (inputData === gen.ctrue || inputData === bas.ct || inputData === bas.cy || inputData === gen.cyes || inputData === bas.con ||
