@@ -56,6 +56,48 @@ async function prompt(inputData, inputMetaData) {
   return returnData;
 }
 
+/**
+ * @function promptRaw
+ * @description Allows for single keystroke character input from the keyboard, without pressing the enter key to confirm input.
+ * @param {string} inputData Not used for this business rule.
+ * @param {string} inputMetaData Not used for this business rule.
+ * @return {string} The character entered by the user.
+ * @author Seth Hollingsead
+ * @date 2023/03/01
+ */
+async function promptRaw(inputData, inputMetaData) {
+  let functionName = promptRaw.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
+  let returnData = '';
+  process.stdin.setRawMode(true); // Allows reading of single key presses
+  process.stdin.resume(); // Resume reading from stdin
+
+  returnData = new Promise((resolve) => {
+    process.stdin.once(wrd.cdata, (data) => {
+      const key = data.toString();
+      if (key === '\u0003') { // gen.cCTRLC) { // CTRL+C
+        console.log(wrd.cExiting + bas.cSpace + wrd.cApplication);
+        process.exit(0);
+      } else if (key.name === wrd.cSpace || key.keyCode === 32 || key === bas.cSpace) {
+        process.stdin.setRawMode(false);
+        resolve(' ');
+      } else if (key === '\u001b') { // gen.cESC_Key) {
+        process.stdin.setRawMode(false); // disable raw mode
+        resolve(false); // Return false, so the caller can exit the interactive raw process loop.
+      } else {
+        process.stdin.setRawMode(false); // disable raw mode
+        resolve(key);
+      }
+    });
+  });
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
 export default {
-  prompt
+  prompt,
+  promptRaw
 };

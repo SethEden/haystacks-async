@@ -24,7 +24,6 @@ export const applicationSystemConstantsValidation = [
   {Name: 'capplicationCommandConstantsValidation', Actual: app_sys.capplicationCommandConstantsValidation, Expected: 'applicationCommandConstantsValidation'},
   {Name: 'capplicationConfigurationConstantsValidation', Actual: app_sys.capplicationConfigurationConstantsValidation, Expected: 'applicationConfigurationConstantsValidation'},
   {Name: 'capplicationConstantsValidation', Actual: app_sys.capplicationConstantsValidation, Expected: 'applicationConstantsValidation'},
-  {Name: 'capplicationFunctionConstantsValidation', Actual: app_sys.capplicationFunctionConstantsValidation, Expected: 'applicationFunctionConstantsValidation'},
   {Name: 'capplicationMessageConstantsValidation', Actual: app_sys.capplicationMessageConstantsValidation, Expected: 'applicationMessageConstantsValidation'},
   {Name: 'capplicationSystemConstantsValidation', Actual: app_sys.capplicationSystemConstantsValidation, Expected: 'applicationSystemConstantsValidation'},
 
@@ -33,7 +32,6 @@ export const applicationSystemConstantsValidation = [
   {Name: 'capplication_command_constants_js', Actual: app_sys.capplication_command_constants_js, Expected: 'application.command.constants.js'},
   {Name: 'capplication_configuration_constants_js', Actual: app_sys.capplication_configuration_constants_js, Expected: 'application.configuration.constants.js'},
   {Name: 'capplication_constants_js', Actual: app_sys.capplication_constants_js, Expected: 'application.constants.js'},
-  {Name: 'capplication_function_constants_js', Actual: app_sys.capplication_function_constants_js, Expected: 'application.function.constants.js'},
   {Name: 'capplication_message_constants_js', Actual: app_sys.capplication_message_constants_js, Expected: 'application.message.constants.js'},
   {Name: 'capplication_system_constants_js', Actual: app_sys.capplication_system_constants_js, Expected: 'application.system.constants.js'}
 ];

@@ -111,6 +111,7 @@ async function initRulesLibrary() {
      // auxiliaryArrayParsing rules in order
      // ***********************************************
      [biz.cparseColorRangeInputs]: (inputData, inputMetaData) => auxiliaryArrayParsing.parseColorRangeInputs(inputData, inputMetaData),
+     [biz.cgetNamedColorDataArray]: (inputData, inputMetaData) => auxiliaryArrayParsing.getNamedColorDataArray(inputData, inputMetaData),
      [biz.cdoesArrayContainValue]: (inputData, inputMetaData) => auxiliaryArrayParsing.doesArrayContainValue(inputData, inputMetaData),
 
      // ***********************************************
@@ -344,6 +345,7 @@ async function initRulesLibrary() {
      // promptOperations rules in order
      // ***********************************************
      [biz.cprompt]: (inputData, inputMetaData) => promptOperations.prompt(inputData, inputMetaData),
+     [biz.cpromptRaw]: (inputData, inputMetaData) =>promptOperations.promptRaw(inputData, inputMetaData),
 
      // ***********************************************
      // ruleParsing rules in order
