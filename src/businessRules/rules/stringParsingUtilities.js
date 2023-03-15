@@ -39,7 +39,7 @@ const namespacePrefix = wrd.cframework + bas.cDot + sys.cbusinessRules + bas.cDo
  * @NOTE Cannot use the loggers here, because dependency data will have never been loaded.
  */
 async function parseSystemRootPath(inputData, inputMetaData) {
-  let functionName = parseSystemRootPath.name;
+  // let functionName = parseSystemRootPath.name;
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   // console.log(`inputData is: ${JSON.stringify(inputData)}`);
   // console.log(`inputMetaData is: ${JSON.stringify(inputMetaData)}`);
@@ -47,26 +47,7 @@ async function parseSystemRootPath(inputData, inputMetaData) {
   if (inputData && inputMetaData) {
     let applicationName;
     let pathElements = '';
-    // Check for either "/" or "-", catch the case for application name: @haystacks/async && @haystacks-async
-    if (inputMetaData.includes(bas.cForwardSlash) || inputMetaData.includes(bas.cDash)) {
-      let applicationNameArray = [];
-      if (inputMetaData.includes(bas.cForwardSlash)) {
-        applicationNameArray = inputMetaData.split(bas.cForwardSlash);
-      } else if (inputMetaData.includes(bas.cDash)) {
-        applicationNameArray = inputMetaData.split(bas.cDash);
-      }
-      // console.log('applicationNameArray is: ' + JSON.stringify(applicationNameArray));
-      // NOTE: Cannot have an else statement above because we don't know how the user will name their application.
-
-      // Assign the application name to the final name-element of the repo-namespace.
-      applicationName = applicationNameArray[applicationNameArray.length - 1];
-      // The above code handles the case that the framework is: @haystacks/sync or @haystacks/async
-      // Then the path will pickup to the "sync" or "async" and everything up to the point as part of the return path.
-      // console.log('capturing part of the application name: ' + applicationName);
-    } else {
-      applicationName = inputMetaData; // Rename it for readability.
-      // console.log('applicationName is: ' + applicationName);
-    }
+    applicationName = await parseSystemRootPathApplicationName(inputMetaData);
     if (inputData.includes(bas.cBackSlash) === true) {
       // console.log('caught the case of back slash');
       pathElements = inputData.split(bas.cBackSlash);
@@ -95,6 +76,56 @@ async function parseSystemRootPath(inputData, inputMetaData) {
   // console.log(`returnData is: ${JSON.stringify(returnData)}`);
   // console.log(`END ${namespacePrefix}${functionName} function`);
   return returnData;
+}
+
+/**
+ * @function parseSystemRootPathApplicationName
+ * @description Does the work of finding the application name or a component of the application name for hyphenated application names.
+ * @param {string} inputData The name of the application that should be processed.
+ * @param {string} inputMetaData Not used for this business rule.
+ * @return {string} The name of the application or a component of the application name.
+ * @author Seth Hollingsead
+ * @date 2023/03/15
+ */
+async function parseSystemRootPathApplicationName(inputData, inputMetaData) {
+  // let functionName = parseSystemRootPathApplicationName.name;
+  // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
+  // console.log(`inputData is: ${JSON.stringify(inputData)}`);
+  // console.log(`inputMetaData is: ${JSON.stringify(inputMetaData)}`);
+  let returnData = '';
+  // Check for either "/" or "-", catch the case for application name: @haystacks/async && @haystacks-async
+  if (inputData && (inputData.includes(bas.cForwardSlash) || inputData.includes(bas.cDash))) {
+    let applicationNameArray = [];
+    if (inputData.includes(bas.cForwardSlash)) {
+      applicationNameArray = inputData.split(bas.cForwardSlash);
+    } else if (inputData.includes(bas.cDash)) {
+      applicationNameArray = inputData.split(bas.cDash);
+    }
+    // console.log('applicationNameArray is: ' + JSON.stringify(applicationNameArray));
+    // NOTE: Cannot have an else statement above because we don't know how the user will name their application.
+
+    // Assign the application name to the final name-element of the repo-namespace.
+    returnData = applicationNameArray[applicationNameArray.length - 1];
+    // The above code handles the case that the framework is: @haystacks/sync or @haystacks/async
+    // Then the path will pickup to the "sync" or "async" and everything up to the point as part of the return path.
+    // console.log('capturing part of the application name: ' + applicationName);
+  } else {
+    returnData = inputData; // Rename it for readability.
+    // console.log('applicationName is: ' + applicationName);
+  }
+  // console.log(`returnData is: ${JSON.stringify(returnData)}`);
+  // console.log(`END ${namespacePrefix}${functionName} function`);
+  return returnData;
+}
+
+/**
+ * @function parseSystemRootPathReconstructRootPath
+ * @description Reconstructs the root Path
+ * @param {*} inputData 
+ * @param {*} inputMetaData 
+ */
+async function parseSystemRootPathReconstructRootPath(inputData, inputMetaData) {
+
 }
 
 /**
