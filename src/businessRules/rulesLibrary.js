@@ -382,6 +382,7 @@ async function initRulesLibrary() {
      // stringParsingutilities rules in order
      // ***********************************************
      [biz.cparseSystemRootPath]: (inputData, inputMetaData) => stringParsingUtilities.parseSystemRootPath(inputData, inputMetaData),
+     [biz.cparseSystemRootPathApplicationName]: (inputData, inputMetaData) => stringParsingUtilities.parseSystemRootPathApplicationName(inputData, inputMetaData),
      [biz.cstringToDataType]: (inputData, inputMetaData) => stringParsingUtilities.stringToDataType(inputData, inputMetaData),
      [biz.cstringToBoolean]: (inputData, inputMetaData) => stringParsingUtilities.stringToBoolean(inputData, inputMetaData),
      [biz.cdetermineObjectDataType]: (inputData, inputMetaData) => stringParsingUtilities.determineObjectDataType(inputData, inputMetaData),
