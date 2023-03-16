@@ -119,16 +119,6 @@ async function parseSystemRootPathApplicationName(inputData, inputMetaData) {
 }
 
 /**
- * @function parseSystemRootPathReconstructRootPath
- * @description Reconstructs the root Path
- * @param {*} inputData 
- * @param {*} inputMetaData 
- */
-async function parseSystemRootPathReconstructRootPath(inputData, inputMetaData) {
-
-}
-
-/**
  * @function stringToDataType
  * @description Converts a string to the appropriate data value.
  * So if it's a string value of "3.1415926535897932384626433832" Then it will get converted to a float of the same value.
@@ -454,6 +444,7 @@ async function utilitiesReplaceCharacterWithCharacter(inputData, inputMetaData) 
 
 export default {
   parseSystemRootPath,
+  parseSystemRootPathApplicationName,
   stringToDataType,
   stringToBoolean,
   determineObjectDataType,
