@@ -128,7 +128,7 @@ async function deployApplication(inputData, inputMetaData) {
   await haystacks.consoleLog(namespacePrefix, functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = [true, false];
   let passAllConstantsValidation = await haystacks.getConfigurationSetting(wrd.csystem, cfg.cpassAllConstantsValidation);
-  let passAllCommandAliasesDuplicateChecks = true; // await haystacks.getConfigurationSetting(wrd.csystem, cfg.cpassedAllCommandAliasesDuplicateChecks);
+  let passAllCommandAliasesDuplicateChecks = await haystacks.getConfigurationSetting(wrd.csystem, cfg.cpassedAllCommandAliasesDuplicateChecks);
   let passAllWorkflowDuplicateChecks = await haystacks.getConfigurationSetting(wrd.csystem, cfg.cpassedAllWorkflowDuplicateChecks);
 
   if (passAllConstantsValidation === true && passAllCommandAliasesDuplicateChecks === true && passAllWorkflowDuplicateChecks === true) {
@@ -184,8 +184,9 @@ async function releaseApplication(inputData, inputMetaData) {
   let returnData = [true, false];
   let errorMessage = '';
   let passAllConstantsValidation = await haystacks.getConfigurationSetting(wrd.csystem, cfg.cpassAllConstantsValidation);
-  let passAllCommandAliasesDuplicateChecks = true; // await haystacks.getConfigurationSetting(wrd.csystem, cfg.cpassedAllCommandAliasesDuplicateChecks)
-  if (passAllConstantsValidation === true && passAllCommandAliasesDuplicateChecks === true) {
+  let passAllCommandAliasesDuplicateChecks = await haystacks.getConfigurationSetting(wrd.csystem, cfg.cpassedAllCommandAliasesDuplicateChecks);
+  let passAllWorkflowDuplicateChecks = await haystacks.getConfigurationSetting(wrd.csystem, cfg.cpassedAllWorkflowDuplicateChecks);
+  if (passAllConstantsValidation === true && passAllCommandAliasesDuplicateChecks === true && passAllWorkflowDuplicateChecks === true) {
     // RELEASE APPLICATION
     console.log(msg.cRELEASE_APPLICATION);
     let frameworkRootPath = await haystacks.getConfigurationSetting(wrd.csystem, cfg.cframeworkRootPath)
