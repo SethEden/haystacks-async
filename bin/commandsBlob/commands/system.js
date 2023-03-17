@@ -214,7 +214,7 @@ async function name(inputData, inputMetaData) {
   }
   if (useFancyFont === true) {
     figletFont = await configurator.getConfigurationSetting(wrd.csystem, cfg.cfigletFont);
-    console.log(figlet.textSync(reportedName, {font: figletFont, horizontalLayout: sys.cfull}));
+    console.log(figlet.textSync(reportedName, {font: figletFont, horizontalLayout: wrd.cfull}));
   } else {
     console.log(reportedName);
   }
