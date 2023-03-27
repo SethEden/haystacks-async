@@ -1,6 +1,9 @@
 # Haystacks-Async
 A basic NodeJS platform that can be easily be used in your application as the command interface and execution environment written with ES6 syntax. The testHarness provides an example template application for how to use the platform, see instructions below on how to setup the environment locally or how to implement your own application using Haystacks. There is an example architecture with coding patterns you can follow to build out your own, cross platform (Windows, Mac & Linux) applications and enterprise scale business automation applications.
 
+Please consider supporting:
+https://www.buymeacoffee.com/iceversakah
+
 # Purpose
 The purpose of this repository is to provide a command-line utility, interface and design patterns to build any kind of command line application that you need or want. Special focus will be on automation, specifically testing automation. It's a general purpose automation development platform, but not to the exclusion of supporting the development of any other kind of command line application, such as an installer, a test data management system, a stock trading bot or network security scanning tool, data conversion tool or any other kind of application that can be run from a command line.
 

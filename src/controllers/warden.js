@@ -34,7 +34,7 @@ import chiefWorkflow from './chiefWorkflow.js';
 import configurator from '../executrix/configurator.js';
 import loggers from '../executrix/loggers.js';
 import stack from '../structures/stack.js';
-// import D from '../structures/data.js';
+import D from '../structures/data.js';
 // External imports
 import hayConst from '@haystacks/constants';
 import path from 'path';
@@ -82,8 +82,8 @@ async function processRootPath(inputPath, actualFrameworkName) {
  */
 async function initFrameworkSchema(configData) {
   let functionName = initFrameworkSchema.name;
-  // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
-  // console.log(`configData is: ${JSON.stringify(configData)}`);
+  console.log(`BEGIN ${namespacePrefix}${functionName} function`);
+  console.log(`configData is: ${JSON.stringify(configData)}`);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cconfigDataIs + JSON.stringify(configData));
   const appConfigPath = configData[cfg.cappConfigPath];
@@ -255,8 +255,8 @@ async function initFrameworkSchema(configData) {
     await stack.initStack(sys.cSystemCommandLog);
   }
   // We can pass in a name of a configuration setting that has a path to load plugin data this way.
-  // console.log('Contents of D are: ' + JSON.stringify(D));
-  // console.log(`END ${namespacePrefix}${functionName} function`);
+  console.log('Contents of D are: ' + JSON.stringify(D));
+  console.log(`END ${namespacePrefix}${functionName} function`);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
 }
 

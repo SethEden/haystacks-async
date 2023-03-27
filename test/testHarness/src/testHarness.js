@@ -126,6 +126,7 @@ async function bootstrapApplication() {
   }
   appConfig[sys.cclientBusinessRules] = await clientRules.initClientRulesLibrary();
   appConfig[sys.cclientCommands] = await clientCommands.initClientCommandsLibrary();
+  // console.log('appConfig is: ', appConfig);
   await haystacks.initFramework(appConfig);
   // console.log(`END ${namespacePrefix}${functionName} function`);
 }
