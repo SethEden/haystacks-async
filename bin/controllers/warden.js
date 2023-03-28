@@ -34,7 +34,7 @@ import chiefWorkflow from './chiefWorkflow.js';
 import configurator from '../executrix/configurator.js';
 import loggers from '../executrix/loggers.js';
 import stack from '../structures/stack.js';
-// import D from '../structures/data.js';
+import D from '../structures/data.js';
 // External imports
 import hayConst from '@haystacks/constants';
 import path from 'path';
