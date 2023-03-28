@@ -34,6 +34,7 @@ import chiefWorkflow from './chiefWorkflow.js';
 import configurator from '../executrix/configurator.js';
 import loggers from '../executrix/loggers.js';
 import stack from '../structures/stack.js';
+// eslint-disable-next-line no-unused-vars
 import D from '../structures/data.js';
 // External imports
 import hayConst from '@haystacks/constants';
