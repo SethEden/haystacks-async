@@ -95,14 +95,26 @@ async function initFrameworkSchema(configData) {
   await loggers.consoleLog(namespacePrefix + functionName, msg.cconfigDataIs + JSON.stringify(configData));
 
   let getJsonRule = [biz.cgetJsonData];
-  let applicationMetaDataPathAndFilename = configData[cfg.cclientMetaDataPath];
-  let frameworkMetaDataPathAndFilename = configData[cfg.cframeworkFullMetaDataPath];
+  let applicationMetaDataPathAndFilename = '';
+  let frameworkMetaDataPathAndFilename = '';
+  let pluginMetaDataPathAndFilename = '';
+  let applicationMetaData = {};
+  let frameworkMetaData = {};
+  let pluginMetaData = {};
+  applicationMetaDataPathAndFilename = configData[cfg.cclientMetaDataPath];
+  frameworkMetaDataPathAndFilename = configData[cfg.cframeworkFullMetaDataPath];  
   await loggers.consoleLog(namespacePrefix + functionName, msg.capplicationMetaDataPathAndFilenameIs + applicationMetaDataPathAndFilename);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cframeworkMetaDataPathAndFilenameIs + frameworkMetaDataPathAndFilename);
-  let applicationMetaData = await ruleBroker.processRules([applicationMetaDataPathAndFilename, ''], getJsonRule);
-  let frameworkMetaData = await ruleBroker.processRules([frameworkMetaDataPathAndFilename, ''], getJsonRule);
+  applicationMetaData = await ruleBroker.processRules([applicationMetaDataPathAndFilename, ''], getJsonRule);
+  frameworkMetaData = await ruleBroker.processRules([frameworkMetaDataPathAndFilename, ''], getJsonRule);
   await loggers.consoleLog(namespacePrefix + functionName, msg.capplicationMetaDataIs + JSON.stringify(applicationMetaData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cframeworkMetaDataIs + JSON.stringify(frameworkMetaData));
+  if (configData[sys.cPluginName]) {
+    pluginMetaDataPathAndFilename = configData[cfg.cpluginFullMetaDataPath];
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginMetaDataPathAndFilenameIs + pluginMetaDataPathAndFilename);
+    pluginMetaData = await ruleBroker.processRules([pluginMetaDataPathAndFilename, ''], getJsonRule);
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginMetaDataIs + JSON.stringify(pluginMetaData));
+  }
 
   await configurator.setConfigurationSetting(wrd.csystem, cfg.cclientRootPath, configData[cfg.cclientRootPath]);
   await configurator.setConfigurationSetting(wrd.csystem, cfg.cappConfigResourcesPath, configData[cfg.cappConfigResourcesPath]);
@@ -111,6 +123,10 @@ async function initFrameworkSchema(configData) {
   await configurator.setConfigurationSetting(wrd.csystem, cfg.cclientCommandAliasesPath, configData[cfg.cclientCommandAliasesPath]);
   await configurator.setConfigurationSetting(wrd.csystem, cfg.cclientWorkflowsPath, configData[cfg.cclientWorkflowsPath]);
   await configurator.setConfigurationSetting(wrd.csystem, cfg.cframeworkRootPath, configData[cfg.cframeworkRootPath]);
+  if (configData[sys.cPluginName]) {
+    await configurator.setConfigurationSetting(wrd.csystem, cfg.cpluginRootPath, configData[cfg.cpluginRootPath]);
+    await configurator.setConfigurationSetting(wrd.csystem, cfg.cpluginReleaseResourcesPath, configData[cfg.cpluginReleaseResourcesPath]);
+  }
   await configurator.setConfigurationSetting(wrd.csystem, cfg.cappConfigPath, configData[cfg.cappConfigPath]);
   await configurator.setConfigurationSetting(wrd.csystem, cfg.cframeworkResourcesPath, configData[cfg.cframeworkResourcesPath]);
   await configurator.setConfigurationSetting(wrd.csystem, cfg.cframeworkFullMetaDataPath, configData[cfg.cframeworkFullMetaDataPath]);
@@ -126,6 +142,10 @@ async function initFrameworkSchema(configData) {
   await loggers.consoleLog(namespacePrefix + functionName, msg.cclientCommandAliasesPathIs + configData[cfg.cclientCommandAliasesPath]);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cclientWorkflowsPathIs + configData[cfg.cclientWorkflowsPath]);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cframeworkRootPathIs + configData[cfg.cframeworkRootPath]);
+  if (configData[sys.cPluginName]) {
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginRootPathIs + configData[cfg.cpluginRootPath]);
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginReleaseResourcesPathIs + configData[cfg.cpluginReleaseResourcesPath]);
+  }
   await loggers.consoleLog(namespacePrefix + functionName, msg.cappConfigPathIs + configData[cfg.cappConfigPath]);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cframeworkResourcesPathIs + configData[cfg.cframeworkResourcesPath]);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cframeworkFullMetaDataPathIs + configData[cfg.cframeworkFullMetaDataPath]);
@@ -150,6 +170,15 @@ async function initFrameworkSchema(configData) {
   await loggers.consoleLog(namespacePrefix + functionName, msg.cFrameworkNameIs + frameworkMetaData[wrd.cName]);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cFrameworkVersionNumberIs + frameworkMetaData[wrd.cVersion]);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cFrameworkDescriptionIs + frameworkMetaData[wrd.cDescription]);
+
+  // Don't forget this could be a plugin, if the build-release is running and building a plugin for release.
+  if (configData[sys.cPluginName]) {
+    await configurator.setConfigurationSetting(wrd.csystem, sys.cPluginName, pluginMetaData[wrd.cName]);
+    await configurator.setConfigurationSetting(wrd.csystem, sys.cPluginVersionNumber, pluginMetaData[wrd.cVersion]);
+    await configurator.setConfigurationSetting(wrd.csystem, sys.cPluginDescription, pluginMetaData[wrd.cDescription]);
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cPluginNameIs + pluginMetaData[wrd.cName]);
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cPluginVersionNumberIs + pluginMetaData[wrd.cVersion]);
+  }
 
   if (await configurator.getConfigurationSetting(wrd.csystem, cfg.cenableConstantsValidation) === true) {
     let resolvedFrameworkConstantsPathActual = path.resolve(configData[cfg.cframeworkConstantsPath]);
