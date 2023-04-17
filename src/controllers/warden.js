@@ -396,7 +396,7 @@ async function loadCommandAliases(commandAliasesPathConfigName) {
       resolvedPluginCommandAliasesPath = await configurator.getConfigurationSetting(wrd.csystem, cfg.cpluginCommandAliasesPath);
 
       // resolvedPluginCommandAliasesPath is:
-      await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginCommandAliasesPathIs + resolvedPluginCommandAliasesPath);
+      await loggers.consoleLog(namespacePrefix + functionName, msg.cresolvedPluginCommandsAliasesPathIs + resolvedPluginCommandAliasesPath);
       await chiefCommander.loadCommandAliasesFromPath(cfg.cpluginCommandAliasesPath, wrd.cPlugin);
     }
   }
@@ -444,7 +444,7 @@ async function loadCommandWorkflows(workflowPathConfigName) {
 
       // resolvedPluginWorkflowsPath is:
       await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginWorkflowsPathIs + resolvedPluginWorkflowsPath);
-      await chiefCommander.loadCommandWorkflowsFromPath(cfg.cpluginWorkflowsPath, wrd.cPlugin);
+      await chiefWorkflow.loadCommandWorkflowsFromPath(cfg.cpluginWorkflowsPath, wrd.cPlugin);
     }
   }
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);

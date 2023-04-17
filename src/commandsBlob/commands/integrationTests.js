@@ -414,7 +414,10 @@ async function validateCommandAliases(inputData, inputMetaData) {
         }
       }
     }
-    if (await configurator.getConfigurationSetting(wrd.csystem, cfg.cenablePluginLoader)) {
+    // If the system is either loading plugins or plugin data has been loaded by the build-release-deployment system for
+    // the purpose of releasing a plugin and running plugin validations as part of the plugin release process.
+    if (await configurator.getConfigurationSetting(wrd.csystem, cfg.cenablePluginLoader) ||
+    await configurator.getConfigurationSetting(wrd.csystem, sys.cPluginName)) {
       if (validationTypesConfirmedList.includes(wrd.cPlugins)) {
         let pluginCommandAliases = await commandBroker.getAllCommandAliasData(D[sys.cCommandsAliases][wrd.cPlugins]);
         // pluginCommandAliases is:
@@ -610,7 +613,10 @@ async function validateWorkflows(inputData, inputMetaData) {
     if (validationTypesConfirmedList.includes(wrd.cApplication)) {
       allWorkflowsToValidate.push(...await workflowBroker.getAllWorkflows(D[sys.cCommandWorkflows][wrd.cApplication]));
     }
-    if (await configurator.getConfigurationSetting(wrd.csystem, cfg.cenablePluginLoader)) {
+    // If the system is either loading plugins or plugin data has been loaded by the build-release-deployment system for
+    // the purpose of releasing a plugin and running plugin validations as part of the plugin release process.
+    if (await configurator.getConfigurationSetting(wrd.csystem, cfg.cenablePluginLoader) ||
+    await configurator.getConfigurationSetting(wrd.csystem, sys.cPluginName)) {
       // NOTE: If the plugin system is enabled, but no plugins are loaded, then the following will be undefined if we don't check to see if it is also undefined.
       // The result would be the call to getAllWorkflows will return the contents of all workflows and they would get duplicate added to the allWorkflowsToValidate array.
       // This will generate many duplicate entries that are not actual duplicates, causing false positive failures.
