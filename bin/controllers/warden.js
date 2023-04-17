@@ -126,6 +126,8 @@ async function initFrameworkSchema(configData) {
   if (configData[sys.cPluginName]) {
     await configurator.setConfigurationSetting(wrd.csystem, cfg.cpluginRootPath, configData[cfg.cpluginRootPath]);
     await configurator.setConfigurationSetting(wrd.csystem, cfg.cpluginReleaseResourcesPath, configData[cfg.cpluginReleaseResourcesPath]);
+    await configurator.setConfigurationSetting(wrd.csystem, cfg.cpluginWorkflowsPath, configData[cfg.cpluginWorkflowsPath]);
+    await configurator.setConfigurationSetting(wrd.csystem, cfg.cpluginCommandAliasesPath, configData[cfg.cpluginCommandAliasesPath]);
   }
   await configurator.setConfigurationSetting(wrd.csystem, cfg.cappConfigPath, configData[cfg.cappConfigPath]);
   await configurator.setConfigurationSetting(wrd.csystem, cfg.cframeworkResourcesPath, configData[cfg.cframeworkResourcesPath]);
@@ -145,6 +147,8 @@ async function initFrameworkSchema(configData) {
   if (configData[sys.cPluginName]) {
     await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginRootPathIs + configData[cfg.cpluginRootPath]);
     await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginReleaseResourcesPathIs + configData[cfg.cpluginReleaseResourcesPath]);
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginWorkflowsPathIs + configData[cfg.cpluginWorkflowsPath]);
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginCommandAliasesPathIs + configData[cfg.cpluginCommandAliasesPath]);
   }
   await loggers.consoleLog(namespacePrefix + functionName, msg.cappConfigPathIs + configData[cfg.cappConfigPath]);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cframeworkResourcesPathIs + configData[cfg.cframeworkResourcesPath]);
@@ -369,6 +373,7 @@ async function loadCommandAliases(commandAliasesPathConfigName) {
   await loggers.consoleLog(namespacePrefix + functionName, msg.ccommandAliasesPathConfigNameIs + commandAliasesPathConfigName);
   let resolvedSystemCommandsAliasesPath;
   let resolvedClientCommandsAliasesPath;
+  let resolvedPluginCommandAliasesPath;
   let resolvedCustomCommandsAliasesPath;
   if (commandAliasesPathConfigName) {
     resolvedCustomCommandsAliasesPath = path.resolve(await configurator.getConfigurationSetting(wrd.csystem, commandAliasesPathConfigName));
@@ -382,8 +387,18 @@ async function loadCommandAliases(commandAliasesPathConfigName) {
     await loggers.consoleLog(namespacePrefix + functionName, msg.cresolvedSystemCommandsAliasesPathIs + resolvedSystemCommandsAliasesPath);
     // resolvedClientCommandsAliasesPath is:
     await loggers.consoleLog(namespacePrefix + functionName, msg.cresolvedClientCommandsAliasesPathIs + resolvedClientCommandsAliasesPath);
+
     await chiefCommander.loadCommandAliasesFromPath(cfg.cframeworkCommandAliasesPath, sys.cFramework);
     await chiefCommander.loadCommandAliasesFromPath(cfg.cclientCommandAliasesPath, wrd.cApplication);
+
+    if (await configurator.getConfigurationSetting(wrd.csystem, sys.cPluginName)) {
+      await configurator.getConfigurationSetting(wrd.csystem, cfg.cpluginWorkflowsPath);
+      resolvedPluginCommandAliasesPath = await configurator.getConfigurationSetting(wrd.csystem, cfg.cpluginCommandAliasesPath);
+
+      // resolvedPluginCommandAliasesPath is:
+      await loggers.consoleLog(namespacePrefix + functionName, msg.cresolvedPluginCommandsAliasesPathIs + resolvedPluginCommandAliasesPath);
+      await chiefCommander.loadCommandAliasesFromPath(cfg.cpluginCommandAliasesPath, wrd.cPlugin);
+    }
   }
   // console.log('ALL Loaded command aliases is: ' + JSON.stringify(D[sys.cCommandsAliases]));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
@@ -406,6 +421,7 @@ async function loadCommandWorkflows(workflowPathConfigName) {
   await loggers.consoleLog(namespacePrefix + functionName, msg.cworkflowPathConfigurationNameIs + workflowPathConfigName);
   let resolvedSystemWorkflowsPath;
   let resolvedClientWorkflowsPath;
+  let resolvedPluginWorkflowsPath;
   let resolvedCustomWorkflowsPath;
   if (workflowPathConfigName) {
     resolvedCustomWorkflowsPath = path.resolve(await configurator.getConfigurationSetting(wrd.csystem, workflowPathConfigName));
@@ -421,6 +437,15 @@ async function loadCommandWorkflows(workflowPathConfigName) {
     await loggers.consoleLog(namespacePrefix + functionName, msg.cresolvedClientWorkflowsPathIs + resolvedClientWorkflowsPath);
     await chiefWorkflow.loadCommandWorkflowsFromPath(cfg.cframeworkWorkflowsPath, sys.cFramework);
     await chiefWorkflow.loadCommandWorkflowsFromPath(cfg.cclientWorkflowsPath, wrd.cApplication);
+
+    if (await configurator.getConfigurationSetting(wrd.csystem, sys.cPluginName)) {
+      await configurator.getConfigurationSetting(wrd.csystem, cfg.cpluginWorkflowsPath);
+      resolvedPluginWorkflowsPath = await configurator.getConfigurationSetting(wrd.csystem, cfg.cpluginWorkflowsPath);
+
+      // resolvedPluginWorkflowsPath is:
+      await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginWorkflowsPathIs + resolvedPluginWorkflowsPath);
+      await chiefWorkflow.loadCommandWorkflowsFromPath(cfg.cpluginWorkflowsPath, wrd.cPlugin);
+    }
   }
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
 }
