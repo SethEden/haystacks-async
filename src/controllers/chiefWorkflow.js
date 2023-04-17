@@ -5,6 +5,7 @@
  * system defined workflows, client defined workflows,
  * setting the workflow data and getting the workflow data.
  * @requires module:chiefData
+ * @requires module:configurator
  * @requires module:loggers
  * @requires module:data
  * @requires {@link https://www.npmjs.com/package/@haystacks/constants|@haystacks/constants}
@@ -16,13 +17,14 @@
 
 // Internal imports
 import chiefData from './chiefData.js';
+import configurator from '../executrix/configurator.js';
 import loggers from '../executrix/loggers.js';
 import D from '../structures/data.js';
 // External imports
 import hayConst from '@haystacks/constants';
 import path from 'path';
 
-const {bas, msg, sys, wrd} = hayConst;
+const {bas, cfg, msg, sys, wrd} = hayConst;
 const baseFileName = path.basename(import.meta.url, path.extname(import.meta.url));
 // framework.controllers.chiefWorkflow.
 const namespacePrefix = wrd.cframework + bas.cDot + wrd.ccontrollers + bas.cDot + baseFileName + bas.cDot;
@@ -71,6 +73,14 @@ async function loadCommandWorkflowsFromPath(commandWorkflowFilePathConfiguration
       returnData = true;
     // }
   } else if (contextName.toUpperCase().includes(wrd.cPLUGIN)) {
+    let pluginName = await configurator.getConfigurationSetting(wrd.csystem, sys.cPluginName);
+    // NOTE: If there is a pluginName in the configuration setting, then we have a special condition that is running here.
+    // This is the case that the build-Release app is running to roll a release of a plugin, and plugin validation data is being loaded for validation.
+    if (pluginName) {
+      D[sys.cCommandWorkflows][wrd.cPlugins] = {};
+      D[sys.cCommandWorkflows][wrd.cPlugins][pluginName] = {};
+      D[sys.cCommandWorkflows][wrd.cPlugins][pluginName] = allCommandWorkflowsData;
+    }
     returnData = allCommandWorkflowsData;
   }
   // console.log('All loaded workflow data is: ' + JSON.stringify(D[sys.cCommandWorkflows]));

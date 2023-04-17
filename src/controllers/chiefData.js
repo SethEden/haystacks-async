@@ -160,6 +160,7 @@ async function setupAllXmlData(dataPathConfigurationName, contextName) {
   await loggers.consoleLog(namespacePrefix + functionName, msg.ccontextNameIs + contextName);
   let loadedAndMergedDataAllFiles = {};
   let dataPath = await configurator.getConfigurationSetting(wrd.csystem, dataPathConfigurationName);
+  dataPath = path.normalize(dataPath);
   dataPath = path.resolve(dataPath);
   // dataPath is:
   await loggers.consoleLog(namespacePrefix + functionName, msg.cdataPathIs + dataPath);
@@ -176,22 +177,39 @@ async function setupAllXmlData(dataPathConfigurationName, contextName) {
 /**
  * @function setupAllXmlPluginData
  * @description Sets up all of the specified XML data for the plugin.
- * @param {string} dataPath The fully qualified path to the data files that should be loaded and parsed. 
+ * @param {string} dataPathConfigurationName The fully qualified path to the data files that should be loaded and parsed or
+ * The name of the configuration setting that has the path we should search.. 
  * @param {string} contextName The context name that should describe the kind of data that is being loaded and parsed.
  * @return {object} A JSON object that contains all of the data that was loaded from all the XML files and merged together.
  * @author Seth Hollingsead
  * @date 2022/10/21 
  */
-async function setupAllXmlPluginData(dataPath, contextName) {
+async function setupAllXmlPluginData(dataPathConfigurationName, contextName) {
   let functionName = setupAllXmlPluginData.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  // dataPath is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cdataPathIs + dataPath);
+  // dataPathConfigurationName is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cdataPathConfigurationNameIs + dataPathConfigurationName);
   // contextName is:
   await loggers.consoleLog(namespacePrefix + functionName, msg.ccontextNameIs + contextName);
   let loadedAndMergedDataAllFiles = {};
+  let dataPath = path.normalize(dataPathConfigurationName);
+  // dataPath is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cdataPathIs + dataPath);
   dataPath = path.resolve(dataPath);
+  // dataPath is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cdataPathIs + dataPath);
   let filesToLoad = await dataBroker.scanDataPath(dataPath);
+  if (filesToLoad && Array.isArray(filesToLoad) && filesToLoad.length > 0) {
+    // filesToLoad is valid
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cfilesToLoadIsValid);
+  } else {
+    dataPath = await configurator.getConfigurationSetting(wrd.csystem, dataPathConfigurationName);
+    dataPath = path.normalize(dataPath);
+    dataPath = path.resolve(dataPath);
+    // dataPath is:
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cdataPathIs + dataPath);
+    filesToLoad = await dataBroker.scanDataPath(dataPath);
+  }
   // filesToLoad is:
   await loggers.consoleLog(namespacePrefix + functionName, msg.cfilesToLoadIs + JSON.stringify(filesToLoad));
   loadedAndMergedDataAllFiles = await dataBroker.loadAllXmlData(filesToLoad, contextName);

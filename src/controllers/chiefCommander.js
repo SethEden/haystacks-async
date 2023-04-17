@@ -116,6 +116,14 @@ async function loadCommandAliasesFromPath(commandAliasesFilePathConfigurationNam
     D[sys.cCommandsAliases][wrd.cApplication] = allCommandAliasesData;
     returnData = true;
   } else if (contextName.toUpperCase().includes(wrd.cPLUGIN)) {
+    let pluginName = await configurator.getConfigurationSetting(wrd.csystem, sys.cPluginName);
+    // NOTE: If there is a pluginName in the configuration setting, then we have a special condition that is running here.
+    // This is the case that the build-Release app is running to roll a release of a plugin, and plugin validation data is being loaded for validation.
+    if (pluginName) {
+      D[sys.cCommandsAliases][wrd.cPlugins] = {};
+      D[sys.cCommandsAliases][wrd.cPlugins][pluginName] = {};
+      D[sys.cCommandsAliases][wrd.cPlugins][pluginName] = allCommandAliasesData;
+    }
     returnData = allCommandAliasesData;
   }
   // console.log('All loaded command aliases data is: ' + JSON.stringify(D[sys.cCommandsAliases]));
