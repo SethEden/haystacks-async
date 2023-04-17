@@ -116,6 +116,8 @@ async function version(inputData, inputMetaData) {
         configVersion = await configurator.getConfigurationSetting(wrd.csystem, sys.cApplicationVersionNumber);
      } else if (appContext.toUpperCase() === wrd.cFRAMEWORK) {
         configVersion = await configurator.getConfigurationSetting(wrd.csystem, sys.cFrameworkVersionNumber);
+     } else if (appContext.toUpperCase().includes(wrd.cPLUGIN)) {
+      configVersion = await configurator.getConfigurationSetting(wrd.csystem, sys.cPluginVersionNumber);
      } else {
         configVersion = await configurator.getConfigurationSetting(wrd.csystem, sys.cApplicationVersionNumber);
      }
@@ -155,6 +157,8 @@ async function about(inputData, inputMetaData) {
       configDescription = await configurator.getConfigurationSetting(wrd.csystem, sys.cApplicationDescription);
     } else if (appContext.toUpperCase() === wrd.cFRAMEWORK) {
       configDescription = await configurator.getConfigurationSetting(wrd.csystem, sys.cFrameworkDescription);
+    } else if (appContext.toUpperCase().includes(wrd.cPLUGIN)) {
+      configDescription = await configurator.getConfigurationSetting(wrd.csystem, sys.cPluginDescription);
     } else {
       configDescription = await configurator.getConfigurationSetting(wrd.csystem, sys.cApplicationDescription);
     }
@@ -206,6 +210,8 @@ async function name(inputData, inputMetaData) {
       reportedName = await configurator.getConfigurationSetting(wrd.csystem, sys.cApplicationName);
     } else if (appContext.toUpperCase() === wrd.cFRAMEWORK) {
       reportedName = await configurator.getConfigurationSetting(wrd.csystem, sys.cFrameworkName);
+    } else if (appContext.toUpperCase().includes(wrd.cPLUGIN)) {
+      reportedName = await configurator.getConfigurationSetting(wrd.csystem, sys.cPluginName);
     } else {
       reportedName = await configurator.getConfigurationSetting(wrd.csystem, sys.cApplicationName);
     }
