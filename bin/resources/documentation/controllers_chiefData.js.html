@@ -188,6 +188,7 @@ async function setupAllXmlData(dataPathConfigurationName, contextName) {
   await loggers.consoleLog(namespacePrefix + functionName, msg.ccontextNameIs + contextName);
   let loadedAndMergedDataAllFiles = {};
   let dataPath = await configurator.getConfigurationSetting(wrd.csystem, dataPathConfigurationName);
+  dataPath = path.normalize(dataPath);
   dataPath = path.resolve(dataPath);
   // dataPath is:
   await loggers.consoleLog(namespacePrefix + functionName, msg.cdataPathIs + dataPath);
@@ -204,22 +205,39 @@ async function setupAllXmlData(dataPathConfigurationName, contextName) {
 /**
  * @function setupAllXmlPluginData
  * @description Sets up all of the specified XML data for the plugin.
- * @param {string} dataPath The fully qualified path to the data files that should be loaded and parsed. 
+ * @param {string} dataPathConfigurationName The fully qualified path to the data files that should be loaded and parsed or
+ * The name of the configuration setting that has the path we should search.. 
  * @param {string} contextName The context name that should describe the kind of data that is being loaded and parsed.
  * @return {object} A JSON object that contains all of the data that was loaded from all the XML files and merged together.
  * @author Seth Hollingsead
  * @date 2022/10/21 
  */
-async function setupAllXmlPluginData(dataPath, contextName) {
+async function setupAllXmlPluginData(dataPathConfigurationName, contextName) {
   let functionName = setupAllXmlPluginData.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  // dataPath is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cdataPathIs + dataPath);
+  // dataPathConfigurationName is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cdataPathConfigurationNameIs + dataPathConfigurationName);
   // contextName is:
   await loggers.consoleLog(namespacePrefix + functionName, msg.ccontextNameIs + contextName);
   let loadedAndMergedDataAllFiles = {};
+  let dataPath = path.normalize(dataPathConfigurationName);
+  // dataPath is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cdataPathIs + dataPath);
   dataPath = path.resolve(dataPath);
+  // dataPath is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cdataPathIs + dataPath);
   let filesToLoad = await dataBroker.scanDataPath(dataPath);
+  if (filesToLoad &amp;&amp; Array.isArray(filesToLoad) &amp;&amp; filesToLoad.length > 0) {
+    // filesToLoad is valid
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cfilesToLoadIsValid);
+  } else {
+    dataPath = await configurator.getConfigurationSetting(wrd.csystem, dataPathConfigurationName);
+    dataPath = path.normalize(dataPath);
+    dataPath = path.resolve(dataPath);
+    // dataPath is:
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cdataPathIs + dataPath);
+    filesToLoad = await dataBroker.scanDataPath(dataPath);
+  }
   // filesToLoad is:
   await loggers.consoleLog(namespacePrefix + functionName, msg.cfilesToLoadIs + JSON.stringify(filesToLoad));
   loadedAndMergedDataAllFiles = await dataBroker.loadAllXmlData(filesToLoad, contextName);
@@ -305,6 +323,97 @@ async function setupAllJsonConfigPluginData(configFilesPath, contextName) {
   return loadedAndMergeDataAllFiles;
 }
 
+/**
+ * @function loadAllJsonData
+ * @description Loads all of the JSON data at the specified path.
+ * Can be used to load account data, transaction history logs, activity logs, or any other kind of JSON data.
+ * @param {string} dataPath The path to the JSON files that should be loaded.
+ * @param {string} contextName The type of data that should be loaded.
+ * @return A JSON object that contains all of the data that was loaded and merged together.
+ * @author Seth Hollingsead
+ * @date 2023/02/27
+ */
+async function loadAllJsonData(dataPath, contextName) {
+  let functionName = loadAllJsonData.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  // dataPath is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cdataPathIs + dataPath);
+  // contextName is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.ccontextNameIs + contextName);
+  let loadedAndMergeDataAllFiles = {};
+  let filesToLoad = [];
+  filesToLoad = await dataBroker.scanDataPath(dataPath);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cfilesToLoadIs + JSON.stringify(filesToLoad));
+  loadedAndMergeDataAllFiles = await dataBroker.loadAllJsonData(filesToLoad, contextName);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cloadedAndMergedDataAllFilesIs + JSON.stringify(loadedAndMergeDataAllFiles));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return loadedAndMergeDataAllFiles;
+}
+
+/**
+ * @function storeData
+ * @description Persist some data to the data storage in the D-data structure.
+ * @param {string} dataName The name of the data, unique name used to store the data in the data structure.
+ * @param {object|string|boolean|number|array} data The data that should be stored.
+ * @return {boolean} True or False to indicate if the data was stored successfully or not.
+ * @author Seth Hollingsead
+ * @date 2023/02/27
+ */
+async function storeData(dataName, data) {
+  let functionName = storeData.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  // dataName is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cdataNameIs + dataName);
+  // data is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cdataIs + JSON.stringify(data));
+  let returnData = false;
+  returnData = await dataBroker.storeData(dataName, data);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
+/**
+ * @function getData
+ * @description Gets data from the D-Data structure data storage data hive.
+ * @param {string} dataName The unique name the data should be stored under.
+ * @return {object|string|boolean|number|array} The data element or object that was stored if any was found.
+ * @author Seth Hollingsead
+ * @date 2023/02/27
+ */
+async function getData(dataName) {
+  let functionName = getData.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  // dataName is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cdataNameIs + dataName);
+  let returnData = false;
+  returnData = await dataBroker.getData(dataName);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
+/**
+ * @function clearData
+ * @description Wipes out the data using the unique specified data name,
+ * if any is found in the D-0data structure data storage data hive.
+ * @param {string} dataName The unique name of the data that should be cleared.
+ * @return {boolean} True or False to indicate if the data was cleared successfully or not.
+ * @author Seth Hollingsead
+ * @date 2023/02/27 
+ */
+async function clearData(dataName) {
+  let functionName = clearData.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  // dataName is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cdataNameIs + dataName);
+  let returnData = false;
+  returnData = await dataBroker.clearData(dataName);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
 export default {
   searchForUniversalDebugConfigSetting,
   getAndProcessCsvData,
@@ -313,7 +422,11 @@ export default {
   setupAllXmlData,
   setupAllXmlPluginData,
   setupAllJsonConfigData,
-  setupAllJsonConfigPluginData
+  setupAllJsonConfigPluginData,
+  loadAllJsonData,
+  storeData,
+  getData,
+  clearData
 }
 </code></pre>
         </article>
@@ -331,7 +444,7 @@ export default {
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Wed Feb 22 2023 14:45:59 GMT-0600 (Central Standard Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Fri Apr 28 2023 11:16:50 GMT-0500 (Central Daylight Time)
 </footer>
 
 <script> prettyPrint(); </script>

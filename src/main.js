@@ -49,8 +49,8 @@ const {NODE_ENV} = process.env;
  */
 async function initFramework(clientConfiguration) {
   let functionName = initFramework.name;
-  //  console.log(`BEGIN ${namespacePrefix}${functionName} function`);
-  //  console.log(`clientConfiguration is: ${JSON.stringify(clientConfiguration)}`);
+  // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
+  // console.log(`clientConfiguration is: ${JSON.stringify(clientConfiguration)}`);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cclientConfigurationIs + clientConfiguration);
 
