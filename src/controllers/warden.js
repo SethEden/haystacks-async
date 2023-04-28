@@ -39,6 +39,7 @@ import D from '../structures/data.js';
 // External imports
 import hayConst from '@haystacks/constants';
 import path from 'path';
+import { config } from 'process'
 
 const {bas, biz, cmd, cfg, gen, msg, sys, wrd} = hayConst;
 const baseFileName = path.basename(import.meta.url, path.extname(import.meta.url));
@@ -161,27 +162,36 @@ async function initFrameworkSchema(configData) {
   // Make sure the color data gets loaded as well! File: colors.csv (This is used by the colorizer to colorize the fonts for the console output)
   await chiefData.setupAllCsvData(cfg.cframeworkConfigPath, wrd.ccolors);
 
-  await configurator.setConfigurationSetting(wrd.csystem, sys.cApplicationName, applicationMetaData[wrd.cName]);
-  await configurator.setConfigurationSetting(wrd.csystem, sys.cApplicationVersionNumber, applicationMetaData[wrd.cVersion]);
-  await configurator.setConfigurationSetting(wrd.csystem, sys.cApplicationDescription, applicationMetaData[wrd.cDescription]);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cApplicationNameIs + applicationMetaData[wrd.cName]);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cApplicationVersionNumberIs + applicationMetaData[wrd.cVersion]);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cApplicationDescriptionIs + applicationMetaData[wrd.cDescription]);
+  let applicationMetaDataName = await configurator.getAmbiguousDataElement(applicationMetaData, [wrd.cname, wrd.cName, wrd.cNAME]);
+  let applicationMetaDataVersion = await configurator.getAmbiguousDataElement(applicationMetaData, [wrd.cversion, wrd.cVersion, wrd.cVERSION]);
+  let applicationMetaDataDescription = await configurator.getAmbiguousDataElement(applicationMetaData, [wrd.cdescription, wrd.cDescription, wrd.cDESCRIPTION]);
+  await configurator.setConfigurationSetting(wrd.csystem, sys.cApplicationName, applicationMetaDataName);
+  await configurator.setConfigurationSetting(wrd.csystem, sys.cApplicationVersionNumber, applicationMetaDataVersion);
+  await configurator.setConfigurationSetting(wrd.csystem, sys.cApplicationDescription, applicationMetaDataDescription);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cApplicationNameIs + applicationMetaDataName);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cApplicationVersionNumberIs + applicationMetaDataVersion);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cApplicationDescriptionIs + applicationMetaDataDescription);
 
-  await configurator.setConfigurationSetting(wrd.csystem, sys.cFrameworkName, frameworkMetaData[wrd.cName]);
-  await configurator.setConfigurationSetting(wrd.csystem, sys.cFrameworkVersionNumber, frameworkMetaData[wrd.cVersion]);
-  await configurator.setConfigurationSetting(wrd.csystem, sys.cFrameworkDescription, frameworkMetaData[wrd.cDescription]);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cFrameworkNameIs + frameworkMetaData[wrd.cName]);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cFrameworkVersionNumberIs + frameworkMetaData[wrd.cVersion]);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cFrameworkDescriptionIs + frameworkMetaData[wrd.cDescription]);
+  let frameworkMetaDataName = await configurator.getAmbiguousDataElement(frameworkMetaData, [wrd.cname, wrd.cName, wrd.cNAME]);
+  let frameworkMetaDataVersion = await configurator.getAmbiguousDataElement(frameworkMetaData, [wrd.cversion, wrd.cVersion, wrd.cVERSION]);
+  let frameworkMetaDataDescription = await configurator.getAmbiguousDataElement(frameworkMetaData, [wrd.cdescription, wrd.cDescription, wrd.cDESCRIPTION]);
+  await configurator.setConfigurationSetting(wrd.csystem, sys.cFrameworkName, frameworkMetaDataName);
+  await configurator.setConfigurationSetting(wrd.csystem, sys.cFrameworkVersionNumber, frameworkMetaDataVersion);
+  await configurator.setConfigurationSetting(wrd.csystem, sys.cFrameworkDescription, frameworkMetaDataDescription);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cFrameworkNameIs + frameworkMetaDataName);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cFrameworkVersionNumberIs + frameworkMetaDataVersion);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cFrameworkDescriptionIs + frameworkMetaDataDescription);
 
   // Don't forget this could be a plugin, if the build-release is running and building a plugin for release.
   if (configData[sys.cPluginName]) {
-    await configurator.setConfigurationSetting(wrd.csystem, sys.cPluginName, pluginMetaData[wrd.cName]);
-    await configurator.setConfigurationSetting(wrd.csystem, sys.cPluginVersionNumber, pluginMetaData[wrd.cVersion]);
-    await configurator.setConfigurationSetting(wrd.csystem, sys.cPluginDescription, pluginMetaData[wrd.cDescription]);
-    await loggers.consoleLog(namespacePrefix + functionName, msg.cPluginNameIs + pluginMetaData[wrd.cName]);
-    await loggers.consoleLog(namespacePrefix + functionName, msg.cPluginVersionNumberIs + pluginMetaData[wrd.cVersion]);
+    let pluginMetaDataName = await configurator.getAmbiguousDataElement(pluginMetaData, [wrd.cname, wrd.cName, wrd.cNAME]);
+    let pluginMetaDataVersion = await configurator.getAmbiguousDataElement(pluginMetaData, [wrd.cversion, wrd.cVersion, wrd.cVERSION]);
+    let pluginMetaDataDescription = await configurator.getAmbiguousDataElement(pluginMetaData, [wrd.cdescription, wrd.cDescription, wrd.cDESCRIPTION]);
+    await configurator.setConfigurationSetting(wrd.csystem, sys.cPluginName, pluginMetaDataName);
+    await configurator.setConfigurationSetting(wrd.csystem, sys.cPluginVersionNumber, pluginMetaDataVersion);
+    await configurator.setConfigurationSetting(wrd.csystem, sys.cPluginDescription, pluginMetaDataDescription);
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginNameIs + pluginMetaDataName);
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cPluginVersionNumberIs + pluginMetaDataVersion);
   }
 
   if (await configurator.getConfigurationSetting(wrd.csystem, cfg.cenableConstantsValidation) === true) {

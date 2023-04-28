@@ -289,7 +289,7 @@ The purpose being to be able to call back to Haystacks and have it perform loadi
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="main.js.html">main.js</a>, <a href="main.js.html#line97">line 97</a>
+        <a href="main.js.html">main.js</a>, <a href="main.js.html#line132">line 132</a>
     </li></ul></dd>
     
 
@@ -408,7 +408,7 @@ Which is in-turn a wrapper function for pluginBroker.unregisterAllPlugins.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="main.js.html">main.js</a>, <a href="main.js.html#line423">line 423</a>
+        <a href="main.js.html">main.js</a>, <a href="main.js.html#line458">line 458</a>
     </li></ul></dd>
     
 
@@ -438,6 +438,173 @@ Which is in-turn a wrapper function for pluginBroker.unregisterAllPlugins.</p>
         
 <div class="param-desc">
     <p>True or False to indicate if the plugin registry data hive was cleared successfully or not.</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">boolean</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~clearData"><span class="type-signature">(inner) </span>clearData<span class="signature">(dataName)</span><span class="type-signature"> &rarr; {boolean}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Wipes out the data using the unique specified data name,
+if any is found in the D-0data structure data storage data hive.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>dataName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The unique name of the data that should be cleared.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-author">Author:</dt>
+    <dd class="tag-author">
+        <ul>
+            <li>Seth Hollingsead</li>
+        </ul>
+    </dd>
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="main.js.html">main.js</a>, <a href="main.js.html#line731">line 731</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>True or False to indicate if the data was cleared successfully or not.</p>
 </div>
 
 
@@ -623,7 +790,7 @@ Which is in-turn a wrapper function for pluginBroker.unregisterAllPlugins.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="main.js.html">main.js</a>, <a href="main.js.html#line768">line 768</a>
+        <a href="main.js.html">main.js</a>, <a href="main.js.html#line891">line 891</a>
     </li></ul></dd>
     
 
@@ -789,7 +956,7 @@ This also acts as a wrapper for the warden.enqueueCommand function.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="main.js.html">main.js</a>, <a href="main.js.html#line653">line 653</a>
+        <a href="main.js.html">main.js</a>, <a href="main.js.html#line776">line 776</a>
     </li></ul></dd>
     
 
@@ -976,7 +1143,7 @@ inputs[1] = inputMetaData - Additional data the input to the rule.</p></td>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="main.js.html">main.js</a>, <a href="main.js.html#line629">line 629</a>
+        <a href="main.js.html">main.js</a>, <a href="main.js.html#line752">line 752</a>
     </li></ul></dd>
     
 
@@ -1166,7 +1333,7 @@ where the configuration setting should be found.</p></td>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="main.js.html">main.js</a>, <a href="main.js.html#line743">line 743</a>
+        <a href="main.js.html">main.js</a>, <a href="main.js.html#line866">line 866</a>
     </li></ul></dd>
     
 
@@ -1219,6 +1386,184 @@ where the configuration setting should be found.</p></td>
 |
 
 <span class="param-type">object</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~getData"><span class="type-signature">(inner) </span>getData<span class="signature">(dataName)</span><span class="type-signature"> &rarr; {object|string|boolean|number|array}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Gets data from the D-Data structure data storage data hive.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>dataName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The unique name the data should be stored under.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-author">Author:</dt>
+    <dd class="tag-author">
+        <ul>
+            <li>Seth Hollingsead</li>
+        </ul>
+    </dd>
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="main.js.html">main.js</a>, <a href="main.js.html#line711">line 711</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>The data element or object that was stored if any was found.</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">object</span>
+|
+
+<span class="param-type">string</span>
+|
+
+<span class="param-type">boolean</span>
+|
+
+<span class="param-type">number</span>
+|
+
+<span class="param-type">array</span>
 
 
     </dd>
@@ -1296,7 +1641,7 @@ instance to swap it out with mock data, then swap back afterward.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="main.js.html">main.js</a>, <a href="main.js.html#line133">line 133</a>
+        <a href="main.js.html">main.js</a>, <a href="main.js.html#line168">line 168</a>
     </li></ul></dd>
     
 
@@ -1415,7 +1760,7 @@ Which is in-turn a wrapper function for pluginBroker.getPluginsRegistryPath.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="main.js.html">main.js</a>, <a href="main.js.html#line587">line 587</a>
+        <a href="main.js.html">main.js</a>, <a href="main.js.html#line622">line 622</a>
     </li></ul></dd>
     
 
@@ -1696,7 +2041,7 @@ This is a wrapper function for the warden.isCommandQueueEmpty function.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="main.js.html">main.js</a>, <a href="main.js.html#line677">line 677</a>
+        <a href="main.js.html">main.js</a>, <a href="main.js.html#line800">line 800</a>
     </li></ul></dd>
     
 
@@ -1816,7 +2161,7 @@ Which is in-turn a wrapper function for pluginBroker.listPluginsInRegistry.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="main.js.html">main.js</a>, <a href="main.js.html#line245">line 245</a>
+        <a href="main.js.html">main.js</a>, <a href="main.js.html#line280">line 280</a>
     </li></ul></dd>
     
 
@@ -1935,7 +2280,7 @@ Which is in-turn a wrapper function for pluginBroker.listPluginsInRegistryPath.<
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="main.js.html">main.js</a>, <a href="main.js.html#line264">line 264</a>
+        <a href="main.js.html">main.js</a>, <a href="main.js.html#line299">line 299</a>
     </li></ul></dd>
     
 
@@ -2054,7 +2399,7 @@ Which is in-turn a wrapper function for pluginBroker.listAllLoadedPlugins.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="main.js.html">main.js</a>, <a href="main.js.html#line226">line 226</a>
+        <a href="main.js.html">main.js</a>, <a href="main.js.html#line261">line 261</a>
     </li></ul></dd>
     
 
@@ -2099,6 +2444,184 @@ Which is in-turn a wrapper function for pluginBroker.listAllLoadedPlugins.</p>
 
     </dd>
 </dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~loadAllJsonData"><span class="type-signature">(inner) </span>loadAllJsonData<span class="signature">(dataPath, contextName)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Loads all of the JSON data at the specified path.
+Can be used to load account data, transaction history logs, activity logs, or any other kind of JSON data.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>dataPath</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The path to the JSON files that should be loaded.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>contextName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The type of data that should be loaded.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-author">Author:</dt>
+    <dd class="tag-author">
+        <ul>
+            <li>Seth Hollingsead</li>
+        </ul>
+    </dd>
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="main.js.html">main.js</a>, <a href="main.js.html#line664">line 664</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>A JSON object that contains all of the data that was loaded and merged together.</p>
+</div>
+
+
 
     
 
@@ -2245,7 +2768,7 @@ used to store the path in the configuration system so it can be loaded by the fr
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="main.js.html">main.js</a>, <a href="main.js.html#line180">line 180</a>
+        <a href="main.js.html">main.js</a>, <a href="main.js.html#line215">line 215</a>
     </li></ul></dd>
     
 
@@ -2432,7 +2955,7 @@ to store the path in the configuration system so it can be loaded by the framewo
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="main.js.html">main.js</a>, <a href="main.js.html#line203">line 203</a>
+        <a href="main.js.html">main.js</a>, <a href="main.js.html#line238">line 238</a>
     </li></ul></dd>
     
 
@@ -2596,7 +3119,7 @@ Business rules, Commands, Workflows, Constants, Configurations, dependencies ist
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="main.js.html">main.js</a>, <a href="main.js.html#line461">line 461</a>
+        <a href="main.js.html">main.js</a>, <a href="main.js.html#line496">line 496</a>
     </li></ul></dd>
     
 
@@ -2785,7 +3308,7 @@ Business rules, Commands, Workflows, Constants, Configurations, dependencies ist
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="main.js.html">main.js</a>, <a href="main.js.html#line606">line 606</a>
+        <a href="main.js.html">main.js</a>, <a href="main.js.html#line641">line 641</a>
     </li></ul></dd>
     
 
@@ -2953,7 +3476,7 @@ Business rules, Commands, Workflows, Constants, Configurations, dependencies lis
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="main.js.html">main.js</a>, <a href="main.js.html#line483">line 483</a>
+        <a href="main.js.html">main.js</a>, <a href="main.js.html#line518">line 518</a>
     </li></ul></dd>
     
 
@@ -3072,7 +3595,7 @@ Business rules, Commands, Workflows, Constants, Configurations, dependencies ist
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="main.js.html">main.js</a>, <a href="main.js.html#line505">line 505</a>
+        <a href="main.js.html">main.js</a>, <a href="main.js.html#line540">line 540</a>
     </li></ul></dd>
     
 
@@ -3238,7 +3761,7 @@ Business rules, Commands, Workflows, Constants, Configurations, dependencies ist
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="main.js.html">main.js</a>, <a href="main.js.html#line150">line 150</a>
+        <a href="main.js.html">main.js</a>, <a href="main.js.html#line185">line 185</a>
     </li></ul></dd>
     
 
@@ -3400,7 +3923,7 @@ Business rules, Commands, Workflows, Constants, Configurations, dependencies ist
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="main.js.html">main.js</a>, <a href="main.js.html#line165">line 165</a>
+        <a href="main.js.html">main.js</a>, <a href="main.js.html#line200">line 200</a>
     </li></ul></dd>
     
 
@@ -3515,7 +4038,7 @@ Which is in-turn a wrapper function for pluginBroker.countPluginsInRegistry.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="main.js.html">main.js</a>, <a href="main.js.html#line283">line 283</a>
+        <a href="main.js.html">main.js</a>, <a href="main.js.html#line318">line 318</a>
     </li></ul></dd>
     
 
@@ -3634,7 +4157,7 @@ Which is in-turn a wrapper function for pluginBroker.countPluginsInRegistryPath.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="main.js.html">main.js</a>, <a href="main.js.html#line302">line 302</a>
+        <a href="main.js.html">main.js</a>, <a href="main.js.html#line337">line 337</a>
     </li></ul></dd>
     
 
@@ -3754,7 +4277,7 @@ to the command queue. All of them must be executed in sequence as part of the ma
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="main.js.html">main.js</a>, <a href="main.js.html#line696">line 696</a>
+        <a href="main.js.html">main.js</a>, <a href="main.js.html#line819">line 819</a>
     </li></ul></dd>
     
 
@@ -3947,7 +4470,7 @@ This should be the path to the plugin/package.json file, but not including the p
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="main.js.html">main.js</a>, <a href="main.js.html#line321">line 321</a>
+        <a href="main.js.html">main.js</a>, <a href="main.js.html#line356">line 356</a>
     </li></ul></dd>
     
 
@@ -4173,7 +4696,7 @@ Ex: businessRules.rules.stringParsing.countCamelCaseWords</p></td>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="main.js.html">main.js</a>, <a href="main.js.html#line717">line 717</a>
+        <a href="main.js.html">main.js</a>, <a href="main.js.html#line840">line 840</a>
     </li></ul></dd>
     
 
@@ -4210,6 +4733,207 @@ Ex: businessRules.rules.stringParsing.countCamelCaseWords</p></td>
     <dd>
         
 <span class="param-type">void</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~storeData"><span class="type-signature">(inner) </span>storeData<span class="signature">(dataName, data)</span><span class="type-signature"> &rarr; {boolean}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Persist some data to the data storage in the D-data structure.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>dataName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The name of the data, unique name used to store the data in the data structure.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>data</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+|
+
+<span class="param-type">string</span>
+|
+
+<span class="param-type">boolean</span>
+|
+
+<span class="param-type">number</span>
+|
+
+<span class="param-type">array</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The data that should be stored.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-author">Author:</dt>
+    <dd class="tag-author">
+        <ul>
+            <li>Seth Hollingsead</li>
+        </ul>
+    </dd>
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="main.js.html">main.js</a>, <a href="main.js.html#line688">line 688</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>True or False to indicate if the data was stored successfully or not.</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">boolean</span>
 
 
     </dd>
@@ -4288,7 +5012,7 @@ Which is in-turn a wrapper function for pluginBroker.synchPluginRegistryWithPlug
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="main.js.html">main.js</a>, <a href="main.js.html#line400">line 400</a>
+        <a href="main.js.html">main.js</a>, <a href="main.js.html#line435">line 435</a>
     </li></ul></dd>
     
 
@@ -4407,7 +5131,7 @@ Business rules, Commands, Workflows, Constants, Configurations, dependencies lis
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="main.js.html">main.js</a>, <a href="main.js.html#line568">line 568</a>
+        <a href="main.js.html">main.js</a>, <a href="main.js.html#line603">line 603</a>
     </li></ul></dd>
     
 
@@ -4575,7 +5299,7 @@ Business rules, Commands, Workflows, Constants, Configurations, dependencies lis
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="main.js.html">main.js</a>, <a href="main.js.html#line524">line 524</a>
+        <a href="main.js.html">main.js</a>, <a href="main.js.html#line559">line 559</a>
     </li></ul></dd>
     
 
@@ -4743,7 +5467,7 @@ Business rules, Commands, Workflows, Constants, Configurations, dependencies lis
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="main.js.html">main.js</a>, <a href="main.js.html#line546">line 546</a>
+        <a href="main.js.html">main.js</a>, <a href="main.js.html#line581">line 581</a>
     </li></ul></dd>
     
 
@@ -4911,7 +5635,7 @@ Which is in-turn a wrapper function for pluginBroker.unregisterPlugin.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="main.js.html">main.js</a>, <a href="main.js.html#line347">line 347</a>
+        <a href="main.js.html">main.js</a>, <a href="main.js.html#line382">line 382</a>
     </li></ul></dd>
     
 
@@ -5082,7 +5806,7 @@ Which is in-turn a wrapper function for pluginBroker.unregisterPlugins.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="main.js.html">main.js</a>, <a href="main.js.html#line369">line 369</a>
+        <a href="main.js.html">main.js</a>, <a href="main.js.html#line404">line 404</a>
     </li></ul></dd>
     
 
@@ -5201,7 +5925,7 @@ Which is in-turn a wrapper function for pluginBroker.savePluginRegistry.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="main.js.html">main.js</a>, <a href="main.js.html#line442">line 442</a>
+        <a href="main.js.html">main.js</a>, <a href="main.js.html#line477">line 477</a>
     </li></ul></dd>
     
 
@@ -5275,7 +5999,7 @@ Which is in-turn a wrapper function for pluginBroker.savePluginRegistry.</p>
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Wed Feb 22 2023 14:45:59 GMT-0600 (Central Standard Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Fri Apr 28 2023 11:16:51 GMT-0500 (Central Daylight Time)
 </footer>
 
 <script> prettyPrint(); </script>
