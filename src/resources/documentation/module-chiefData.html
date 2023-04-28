@@ -171,6 +171,173 @@ such as XML files, CSV files or JSON files. Additional file type processing shou
     
 
     
+    <h4 class="name" id="~clearData"><span class="type-signature">(inner) </span>clearData<span class="signature">(dataName)</span><span class="type-signature"> &rarr; {boolean}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Wipes out the data using the unique specified data name,
+if any is found in the D-0data structure data storage data hive.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>dataName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The unique name of the data that should be cleared.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-author">Author:</dt>
+    <dd class="tag-author">
+        <ul>
+            <li>Seth Hollingsead</li>
+        </ul>
+    </dd>
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="controllers_chiefData.js.html">controllers/chiefData.js</a>, <a href="controllers_chiefData.js.html#line368">line 368</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>True or False to indicate if the data was cleared successfully or not.</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">boolean</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
     <h4 class="name" id="~getAndProcessCsvData"><span class="type-signature">(inner) </span>getAndProcessCsvData<span class="signature">(pathAndFilename, contextName)</span><span class="type-signature"> &rarr; {object}</span></h4>
     
 
@@ -513,6 +680,362 @@ such as XML files, CSV files or JSON files. Additional file type processing shou
 
     </dd>
 </dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~getData"><span class="type-signature">(inner) </span>getData<span class="signature">(dataName)</span><span class="type-signature"> &rarr; {object|string|boolean|number|array}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Gets data from the D-Data structure data storage data hive.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>dataName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The unique name the data should be stored under.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-author">Author:</dt>
+    <dd class="tag-author">
+        <ul>
+            <li>Seth Hollingsead</li>
+        </ul>
+    </dd>
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="controllers_chiefData.js.html">controllers/chiefData.js</a>, <a href="controllers_chiefData.js.html#line348">line 348</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>The data element or object that was stored if any was found.</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">object</span>
+|
+
+<span class="param-type">string</span>
+|
+
+<span class="param-type">boolean</span>
+|
+
+<span class="param-type">number</span>
+|
+
+<span class="param-type">array</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~loadAllJsonData"><span class="type-signature">(inner) </span>loadAllJsonData<span class="signature">(dataPath, contextName)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Loads all of the JSON data at the specified path.
+Can be used to load account data, transaction history logs, activity logs, or any other kind of JSON data.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>dataPath</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The path to the JSON files that should be loaded.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>contextName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The type of data that should be loaded.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-author">Author:</dt>
+    <dd class="tag-author">
+        <ul>
+            <li>Seth Hollingsead</li>
+        </ul>
+    </dd>
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="controllers_chiefData.js.html">controllers/chiefData.js</a>, <a href="controllers_chiefData.js.html#line298">line 298</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>A JSON object that contains all of the data that was loaded and merged together.</p>
+</div>
+
+
 
     
 
@@ -1039,7 +1562,7 @@ true in either of the configuration settings (appConfig Or frameworkConfig).</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="controllers_chiefData.js.html">controllers/chiefData.js</a>, <a href="controllers_chiefData.js.html#line204">line 204</a>
+        <a href="controllers_chiefData.js.html">controllers/chiefData.js</a>, <a href="controllers_chiefData.js.html#line222">line 222</a>
     </li></ul></dd>
     
 
@@ -1228,7 +1751,7 @@ true in either of the configuration settings (appConfig Or frameworkConfig).</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="controllers_chiefData.js.html">controllers/chiefData.js</a>, <a href="controllers_chiefData.js.html#line247">line 247</a>
+        <a href="controllers_chiefData.js.html">controllers/chiefData.js</a>, <a href="controllers_chiefData.js.html#line265">line 265</a>
     </li></ul></dd>
     
 
@@ -1463,7 +1986,7 @@ true in either of the configuration settings (appConfig Or frameworkConfig).</p>
     
 
     
-    <h4 class="name" id="~setupAllXmlPluginData"><span class="type-signature">(inner) </span>setupAllXmlPluginData<span class="signature">(dataPath, contextName)</span><span class="type-signature"> &rarr; {object}</span></h4>
+    <h4 class="name" id="~setupAllXmlPluginData"><span class="type-signature">(inner) </span>setupAllXmlPluginData<span class="signature">(dataPathConfigurationName, contextName)</span><span class="type-signature"> &rarr; {object}</span></h4>
     
 
     
@@ -1507,7 +2030,7 @@ true in either of the configuration settings (appConfig Or frameworkConfig).</p>
 
         <tr>
             
-                <td class="name"><code>dataPath</code></td>
+                <td class="name"><code>dataPathConfigurationName</code></td>
             
 
             <td class="type">
@@ -1523,7 +2046,8 @@ true in either of the configuration settings (appConfig Or frameworkConfig).</p>
 
             
 
-            <td class="description last"><p>The fully qualified path to the data files that should be loaded and parsed.</p></td>
+            <td class="description last"><p>The fully qualified path to the data files that should be loaded and parsed or
+The name of the configuration setting that has the path we should search..</p></td>
         </tr>
 
     
@@ -1594,7 +2118,7 @@ true in either of the configuration settings (appConfig Or frameworkConfig).</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="controllers_chiefData.js.html">controllers/chiefData.js</a>, <a href="controllers_chiefData.js.html#line176">line 176</a>
+        <a href="controllers_chiefData.js.html">controllers/chiefData.js</a>, <a href="controllers_chiefData.js.html#line177">line 177</a>
     </li></ul></dd>
     
 
@@ -1647,6 +2171,207 @@ true in either of the configuration settings (appConfig Or frameworkConfig).</p>
 
 
         
+            
+
+    
+
+    
+    <h4 class="name" id="~storeData"><span class="type-signature">(inner) </span>storeData<span class="signature">(dataName, data)</span><span class="type-signature"> &rarr; {boolean}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Persist some data to the data storage in the D-data structure.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>dataName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The name of the data, unique name used to store the data in the data structure.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>data</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+|
+
+<span class="param-type">string</span>
+|
+
+<span class="param-type">boolean</span>
+|
+
+<span class="param-type">number</span>
+|
+
+<span class="param-type">array</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The data that should be stored.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-author">Author:</dt>
+    <dd class="tag-author">
+        <ul>
+            <li>Seth Hollingsead</li>
+        </ul>
+    </dd>
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="controllers_chiefData.js.html">controllers/chiefData.js</a>, <a href="controllers_chiefData.js.html#line325">line 325</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>True or False to indicate if the data was stored successfully or not.</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">boolean</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
     
 
     
@@ -1668,7 +2393,7 @@ true in either of the configuration settings (appConfig Or frameworkConfig).</p>
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Wed Feb 22 2023 14:45:59 GMT-0600 (Central Standard Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Fri Apr 28 2023 11:16:50 GMT-0500 (Central Daylight Time)
 </footer>
 
 <script> prettyPrint(); </script>
