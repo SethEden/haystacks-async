@@ -1,0 +1,83 @@
+description: Test plan for constantBroker.js
+
+
+testName: initializeConstantsValidationData_validData
+output: ?
+--------------------------------------------------------------------------------
+testName: generateFrameworkConstantsValidationData_validData
+output: ?
+--------------------------------------------------------------------------------
+testName: addConstantsValidationData_validData
+input constantsValidationData: object
+input contextName: string
+output: boolean ?
+
+testName: addConstantsValidationData_inValidConstantsValidationDataString
+input constantsValidationData: string
+input contextName: string
+output: ?
+
+testName: addConstantsValidationData_inValidContextNameString
+input constantsValidationData: object
+input contextName: string
+output: ?
+
+testName: addConstantsValidationData_inValidConstantsValidationDataInteger
+input constantsValidationData: integer (123)
+input contextName: string
+output: ?
+
+testName: addConstantsValidationData_inValidConstantsValidationDataBoolean
+input constantsValidationData: boolean (false)
+input contextName: string
+output: ?
+
+testName: addConstantsValidationData_inValidContextNameInteger
+input constantsValidationData: object
+input contextName: integer (123)
+output: ?
+
+testName: addConstantsValidationData_inValidContextNameBoolean
+input constantsValidationData: object
+input contextName: boolean (false)
+output: ?
+
+testName: addConstantsValidationData_inValidConstantsValidationDataUndefined
+input constantsValidationData: undefined
+input contextName: string
+output: ?
+
+testName: addConstantsValidationData_inValidConstantsValidationDataNaN
+input constantsValidationData: NaN
+input contextName: string
+output: ?
+
+testName: addConstantsValidationData_inValidContextNameUndefined
+input constantsValidationData: object
+input contextName: undefined
+output: ?
+
+testName: addConstantsValidationData_inValidContextNameNaN
+input constantsValidationData: object
+input contextName: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: removePluginConstantsValidationData_validData
+input pluginName: string 
+output: boolean (?)
+
+testName: removePluginConstantsValidationData_inValidInteger
+input pluginName: integer (123)
+output: boolean (?)
+
+testName: removePluginConstantsValidationData_inValidBoolean
+input pluginName: boolean (false)
+output: boolean (?)
+
+testName: removePluginConstantsValidationData_inValidUndefined
+input pluginName: undefined
+output: boolean (?)
+
+testName: removePluginConstantsValidationData_inValidNaN
+input pluginName: NaN
+output: boolean (?)

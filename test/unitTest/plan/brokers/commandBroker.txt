@@ -17,6 +17,22 @@ testName: bootStrapCommands_inValidBoolean
 input: boolean (false)
 output: ?
 --------------------------------------------------------------------------------
+testName: resetCommands_validData
+input: undefined
+output: ?
+
+testName: resetCommands_inValidString
+input: string (464gsdsfae8f46)
+output: ?
+
+testName: resetCommands_inValidNumber
+input: integer (546)
+output: ?
+
+testName: resetCommands_inValidBoolean
+input: boolean (false)
+output: ?
+--------------------------------------------------------------------------------
 testName: addClientCommands_validData
 input: array<object>
 output: D[wrd.cCommands] - objects added
@@ -31,6 +47,106 @@ output: ?
 
 testName: addClientCommands_inValidBoolean
 input: boolean (false)
+output: ?
+--------------------------------------------------------------------------------
+testName: addPluginCommands_validData
+input pluginName: string
+input pluginCommands: D[wrd.cCommands]
+output: ?
+
+testName: addPluginCommands_inValidString
+input pluginName: string (464gsdsfae8f46)
+input pluginCommands: string
+output: ?
+
+testName: addPluginCommands_inValidPluginNameNumber
+input pluginName: number (123)
+input pluginCommands: D[wrd.cCommands]
+output: ?
+
+testName: addPluginCommands_inValidPluginNameBoolean
+input pluginName: boolean (false)
+input pluginComands: D[wrd.cCommands]
+output: ?
+
+testName: addPluginCommands_inValidPluginCommandsNumber
+input pluginName: string
+input pluginCommands: number (123)
+output: ?
+
+testName: addPluginCommands_inValidPluginCommandsBoolean
+input pluginName: string
+input pluginCommands: boolean (false)
+output: ?
+
+testName: addPluginCommands_inValidPluginNameUndefined
+input pluginName: undefined
+input pluginCommands: D[wrd.cCommands]
+output: ?
+
+testName: addPluginCommands_inValidPluginNameNaN
+input pluginName: NaN
+input pluginCommands: D[wrd.cCommands]
+output: ?
+
+testName: addPluginCommands_inValidPluginCommandsUndefined
+input pluginName: string
+input pluginComands: undefined
+output: ?
+
+testName: addPluginCommands_inValidPluginCommandsUndefined
+input pluginName: string
+input pluginCommands: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: addPluginCommandAliases_validData
+input pluginName: string
+input pluginComandAliases: D[sys.cCommandsAliases][wrd.cPlugins][pluginName]
+output: ?
+
+testName: addPluginCommandAliases_inValidString
+input pluginName: string
+input pluginCommandAliases: string
+output: ?
+
+testName: addPluginCommandAliases_inValidPluginNameNumber
+input pluginName: number (123)
+input pluginCommandAliases: D[sys.cCommandsAliases][wrd.cPlugins][pluginName]
+output: ?
+
+testName: addPluginCommandAliases_inValidPluginNameBoolean
+input pluginName: boolean (false)
+input pluginCommandAliases: D[sys.cCommandsAliases][wrd.cPlugins][pluginName]
+output: ?
+
+testName: addPluginCommandAliases_inValidPluginCommandAliasesNumber
+input pluginName: string
+input pluginCommandAliases: number (123)
+output: ?
+
+testName: addPluginCommandAliases_inValidPluginCommandAliasesBoolean
+input pluginName: string
+input pluginCommandAliases: boolean (false)
+output: ?
+
+testName: addPluginCommandAliases_inValidPluginNameUndefined
+input pluginName: undefined
+input pluginCommandAliases: D[sys.cCommandsAliases][wrd.cPlugins][pluginName]
+output: ?
+
+testName: addPluginCommandAliases_inValidPluginNameNaN
+input pluginName: NaN
+input pluginCommandAliases: D[sys.cCommandsAliases][wrd.cPlugins][pluginName]
+output: ?
+
+testName: addPluginCommandAliases_inValidPluginCommandAliasesUndefined
+input pluginName: string
+input pluginCommandAliases: undefined
+output: ?
+
+testName: addPluginCommandAliases_inValidPluginCommandAliasesNaN
+input pluginName: string
+input pluginCommandAliases: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: getValidCommand_validData
@@ -219,3 +335,51 @@ output: true
 testName: executeCommand_inValidBoolean
 input: boolean (false)
 output: true
+--------------------------------------------------------------------------------
+testName: removePluginCommands_validData
+input pluginName: string
+output: ?
+
+testName: removePluginCommands_inValidString
+input pluginName: string (464gsdsfae8f46)
+output: ?
+
+testName: removePluginCommands_inValidNumber
+input pluginName: number (123)
+output: ?
+
+testName: removePluginCommands_inValidBoolean
+input pluginName: boolean (false)
+output: ?
+
+testName: removePluginCommands_inValidUndefined
+input pluginName: undeinfed
+output: ?
+
+testName: removePluginCommands_inValidNaN
+input pluginName: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: removePluginCommandAliases_validData
+input pluginName: string
+output: ?
+
+testName: removePluginCommandAliases_inValidString
+input pluginName: string (464gsdsfae8f46)
+output: ?
+
+testName: removePluginCommandAliases_inValidNumber
+input pluginName: number (123)
+output: ?
+
+testName: removePluginCommandAliases_inValidBoolean
+input pluginName: boolean (false)
+output: ?
+
+testName: removePluginCommandAliases_inValidUndefined
+input pluginName: undeinfed
+output: ?
+
+testName: removePluginCommandAliases_inValidNaN
+input pluginName: NaN
+output: ?

@@ -17,6 +17,21 @@ testName: bootStrapBusinessRules_inValidBoolean
 input: boolean (false)
 output: Captures, call, and migrates business rule's data to data hive.
 --------------------------------------------------------------------------------
+testName: resetBusinessRules_validData
+output: Captures, call, and migrates business rule's data to data hive.
+
+testName: resetBusinessRules_inValidString
+input: string (464gsdsfae8f46)
+output: Captures, call, and migrates business rule's data to data hive.
+
+testName: resetBusinessRules_inValidNumber
+input: integer (546)
+output: Captures, call, and migrates business rule's data to data hive.
+
+testName: resetBusinessRules_inValidBoolean
+input: boolean (false)
+output: Captures, call, and migrates business rule's data to data hive.
+--------------------------------------------------------------------------------
 testName: addClientRules_validData
 input clientRules: array<object>
 output: cient rules that merged with the system rules.
@@ -75,3 +90,27 @@ testName: processRules_inValidRulesToExecuteBoolean
 input inputs: array ([1,2,3,4,5])
 input rulesToExecute: boolean (false)
 output: ?
+--------------------------------------------------------------------------------
+testName: removePluginBusinessRules_validData
+input pluginName: string
+output: boolean (?)
+
+testName: removePluginBusinessRules_inValidString
+input pluginName: string
+output: boolean (?)
+
+testName: removePluginBusinessRules_inValidInteger
+input pluginName: integer (123)
+output: boolean (?)
+
+testName: removePluginBusinessRules_inValidBoolean
+input pluginName: boolean (false)
+output: boolean (?)
+
+testName: removePluginBusinessRules_inValidUndefined
+input pluginName: undefined
+output: boolean (?)
+
+testName: removePluginBusinessRules_inValidNaN
+input pluginName: NaN
+output: boolean (?)

@@ -1,6 +1,60 @@
 description: Test plan for dataBroker.js
 
+testName: addPluginConfigurationData_validData
+input pluginName: string
+input pluginConfigData: object
+output: boolean (?)
 
+testName: addPluginConfigurationData_inValidPluginNameString
+input pluginName: string
+input pluginConfigData: object
+output: ?
+
+testName: addPluginConfigurationData_inValidPluginConfigDataString
+input pluginName: string
+input pluginConfigData: string
+output: ?
+
+testName: addPluginConfigurationData_inValidPluginNameInteger
+input pluginName: integer (123)
+input pluginConfigData: string
+output: ?
+
+testName: addPluginConfigurationData_inValidPluginNameBoolean
+input pluginName: boolean (false)
+input pluginConfigData: string
+output: ?
+
+testName: addPluginConfigurationData_inValidPluginConfigDataInteger
+input pluginName: string
+input pluginConfigData: integer (123)
+output: ?
+
+testName: addPluginConfigurationData_inValidPluginConfigDataBoolean
+input pluginName: string
+input pluginConfigData: boolean (false)
+output: ?
+
+testName: addPluginConfigurationData_inValidPluginNameUndefined
+input pluginName: undefined
+input pluginConfigData: string
+output: ?
+
+testName: addPluginConfigurationData_inValidPluginNameNaN
+input pluginName: NaN
+input pluginConfigData: string
+output: ?
+
+testName: addPluginConfigurationData_inValidPluginConfigDataUndefined
+input pluginName: string
+input pluginConfigData: undefined
+output: ?
+
+testName: addPluginConfigurationData_inValidPluginConfigDataNaN
+input pluginName: string
+input pluginConfigData: NaN
+output: ?
+--------------------------------------------------------------------------------
 testName: scanDataPath_validData
 input dataPath: C:\haystacks\src\resources\configuration\debugSettings
 output: [array of files & paths]
@@ -909,3 +963,27 @@ input dataObject: NaN
 input pageName: NaN
 input elementNamePattern: NaN
 output: false?
+--------------------------------------------------------------------------------
+testName: removePluginConfigurationData_validData
+input pluginName: string
+output: boolean (?)
+
+testName: removePluginConfigurationData_inValidString
+input pluginName: string ("hello")
+output: ?
+
+testName: removePluginConfigurationData_inValidInteger
+input pluginName: integer (123)
+output: ?
+
+testName: removePluginConfigurationData_inValidBoolean
+input pluginName: boolean (false)
+output: ?
+
+testName: removePluginConfigurationData_inValidUndefined
+input pluginName: undefined
+output: ?
+
+testName: removePluginConfigurationData_inValidNaN
+input pluginName: NaN
+output: ?
