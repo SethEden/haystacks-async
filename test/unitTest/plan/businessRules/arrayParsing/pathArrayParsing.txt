@@ -1,0 +1,112 @@
+Description: Test plan for pathArrayParsing.js
+
+--------------------------------------------------------------------------------
+testName: doesArrayContainFilename_validData
+input inputData: array<string>
+input inputMetaData: string
+output: boolean (?)
+
+testName: doesArrayContainFilename_inValidInputDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: doesArrayContainFilename_inValidInputMetaDataString
+input inputData: array<string>
+input inputMetaData: string
+output: ?
+
+testName: doesArrayContainFilename_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string
+output: ?
+
+testName: doesArrayContainFilename_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: string
+output: ?
+
+testName: doesArrayContainFilename_inValidInputMetaDataInteger
+input inputData: array<string>
+input inputMetaData: integer (123)
+output: ?
+
+testName: doesArrayContainFilename_inValidInputMetaDataBoolean
+input inputData: array<string>
+input inputMetaData: boolean (false)
+output: ?
+
+testName: doesArrayContainFilename_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string
+output: ?
+
+testName: doesArrayContainFilename_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string
+output: ?
+
+testName: doesArrayContainFilename_inValidInputMetaDataUndefined
+input inputData: array<string>
+input inputMetaData: undefined
+output: ?
+
+testName: doesArrayContainFilename_inValidInputMetaDataNaN
+input inputData: array<string>
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: getFileAndPathListForPath_validData
+input inputData: string
+input inputMetaData: integer
+output: array<string> (?)
+
+testName: getFileAndPathListForPath_inValidInputDataString
+input inputData: string
+input inputMetaData: integer
+output: ?
+
+testName: getFileAndPathListForPath_inValidInputMetaDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: getFileAndPathListForPath_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: integer
+output: ?
+
+testName: getFileAndPathListForPath_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: integer
+output: ?
+
+testName: getFileAndPathListForPath_inValidInputMetaDataInteger
+input inputData: string
+input inputMetaData: integer (123)
+output: ?
+
+testName: getFileAndPathListForPath_inValidInputMetaDataBoolean 
+input inputData: string
+input inputMetaData: boolean (false)
+output: ?
+
+testName: getFileAndPathListForPath_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: integer
+output: ?
+
+testName: getFileAndPathListForPath_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: integer
+output: ?
+
+testName: getFileAndPathListForPath_inValidInputMetaDataUndefined
+input inputData: string
+input inputMetaData: undefined
+output: ?
+
+testName: getFileAndPathListForPath_inValidInputMetaDataNaN
+input inputData: string
+input inputMetaData: NaN
+output: ?

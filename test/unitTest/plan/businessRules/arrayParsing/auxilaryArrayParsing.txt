@@ -47,6 +47,61 @@ input inputData: string|integer (represents the minimum range that is used to ge
 input inputMetaData: NaN
 output: ?
 --------------------------------------------------------------------------------
+testName: getNamedColorDataArray_validData
+input inputData: string
+input inputMetaData: array<integer> ([1, 2, 3, 4, 5])
+output: array<integer> (?)
+
+testName: getNamedColorDataArray_inValidInputDataString
+input inputData: string
+input inputMetaData: array<integer> ([1, 2, 3, 4, 5])
+output: ?
+
+testName: getNamedColorDataArray_inValidInputMetaDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: getNamedColorDataArray_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: array<integer> ([1, 2, 3, 4, 5])
+output: ?
+
+testName: getNamedColorDataArray_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: array<integer> ([1, 2, 3, 4, 5])
+output: ?
+
+testName: getNamedColorDataArray_inValidInputMetaDataInteger
+input inputData: string
+input inputMetaData: integer (123)
+output: ?
+
+testName: getNamedColorDataArray_inValidInputMetaDataBoolean
+input inputData: string
+input inputMetaData: boolean (false)
+output: ?
+
+testName: getNamedColorDataArray_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: array<integer> ([1, 2, 3, 4, 5])
+output: ?
+
+testName: getNamedColorDataArray_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: array<integer> ([1, 2, 3, 4, 5])
+output: ?
+
+testName: getNamedColorDataArray_inValidInputMetaDataUndefined
+input inputData: string
+input inputMetaData: undefined
+output: ?
+
+testName: getNamedColorDataArray_inValidInputMetaDataNaN
+input inputData: string
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
 testName: doesArrayContainValue_validDataString
 input inputData: array<array<string|integer|boolean|float|object>,string|integer|boolean|float|object>
 input inputMetaData: function (the function that should be used to do the search)

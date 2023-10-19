@@ -1,0 +1,112 @@
+description: Test plan for characterStringParsing.js
+
+--------------------------------------------------------------------------------
+testName: cleanCommandInput_validData
+input inputData: string
+input inputMetaData: string
+output: string (?)
+
+testName: cleanCommandInput_inValidInputDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: cleanCommandInput_inValidInputMetaDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: cleanCommandInput_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string
+output: ?
+
+testName: cleanCommandInput_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: string
+output: ?
+
+testName: cleanCommandInput_inValidInputMetaDataInteger
+input inputData: string
+input inputMetaData: integer (123)
+output: ?
+
+testName: cleanCommandInput_inValidInputMetaDataBoolean 
+input inputData: string
+input inputMetaData: boolean (false)
+output: ?
+
+testName: cleanCommandInput_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string
+output: ?
+
+testName: cleanCommandInput_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string
+output: ?
+
+testName: cleanCommandInput_inValidInputMetaDataUndefined
+input inputData: string
+input inputMetaData: undefined
+output: ?
+
+testName: cleanCommandInput_inValidInputMetaDataNaN
+input inputData: string
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: isValidCommandNameString_validData
+input inputData: string
+input inputMetaData: string
+output: boolean (?)
+
+testName: isValidCommandNameString_inValidInputDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: isValidCommandNameString_inValidInputMetaDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: isValidCommandNameString_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string
+output: ?
+
+testName: isValidCommandNameString_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: string
+output: ?
+
+testName: isValidCommandNameString_inValidInputMetaDataInteger
+input inputData: string
+input inputMetaData: integer (123)
+output: ?
+
+testName: isValidCommandNameString_inValidInputMetaDataBoolean 
+input inputData: string
+input inputMetaData: boolean (false)
+output: ?
+
+testName: isValidCommandNameString_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string
+output: ?
+
+testName: isValidCommandNameString_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string
+output: ?
+
+testName: isValidCommandNameString_inValidInputMetaDataUndefined
+input inputData: string
+input inputMetaData: undefined
+output: ?
+
+testName: isValidCommandNameString_inValidInputMetaDataNaN
+input inputData: string
+input inputMetaData: NaN
+output: ?

@@ -1,6 +1,59 @@
 description: Test plan for workflowBroker.js
 
+testName: addPluginWorkflows_validData
+input pluginName: string
+input pluginWorkflows: object
+output: boolean (?)
 
+testName: addPluginWorkflows_inValidPluginNameString
+input pluginName: string
+input pluginWorkflows: string
+output: ?
+
+testName: addPluginWorkflows_inValidPluginWorkflowsString
+input pluginName: string
+input pluginWorkflows: string
+output: ?
+
+testName: addPluginWorkflows_inValidPluginNameNumber
+input pluginName: number (123)
+input pluginWorkflows: object
+output: ?
+
+testName: addPluginWorkflows_inValidPluginNameBoolean
+input pluginName: boolean (false)
+input pluginWorkflows: object
+output: ?
+
+testName: addPluginWorkflows_inValidPluginWorkflowsNumber
+input pluginName: string
+input pluginWorkflows: Number (123)
+output: ?
+
+testName: addPluginWorkflows_inValidPluginWorkflowsBoolean
+input pluginName: string
+input pluginWorkflows: boolean (false)
+output: ?
+
+testName: addPluginWorkflows_inValidPluginNameUndefined
+input pluginName: undefined
+input pluginWorkflows: object
+output: ?
+
+testName: addPluginWorkflows_inValidPluginNameNaN
+input pluginName: NaN
+input pluginWorkflows: object
+output: ?
+
+testName: addPluginWorkflows_inValidPluginWorkflowsUndefined
+input pluginName: string
+input pluginWorkflows: Undefined
+output: ?
+
+testName: addPluginWorkflows_inValidPluginWorkflowsNaN
+input pluginName: string
+input pluginWorkflows: NaN
+output: ?
 --------------------------------------------------------------------------------
 testName: getWorkflow_validData
 input: string (the name of the workflow for which we are getting workflow data)
@@ -124,3 +177,27 @@ testName: getWorkflowNamespaceDataObject_inValidBoolean
 input workflowDataStructure: boolean (false)
 input namespaceToFind: string (The namespace to look for in the workflow metaData data structure)
 output: false
+--------------------------------------------------------------------------------
+testName: removePluginWorkflows_validData
+input pluginName: string
+output: boolean (?)
+
+testName: removePluginWorkflows_inValidString
+input pluginName: string
+output: ?
+
+testName: removePluginWorkflows_inValidNumber
+input pluginName: Number (123)
+output: ?
+
+testName: removePluginWorkflows_inValidBoolean
+input pluginName: boolean (false)
+output: ?
+
+testName: removePluginWorkflows_inValidUndefined
+input pluginName: Undefined
+output: ?
+
+testName: removePluginWorkflows_inValidNaN
+input pluginName: NaN
+output: ?

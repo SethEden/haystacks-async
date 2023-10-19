@@ -1,0 +1,167 @@
+description: Test plan for constantArrayParsing.js
+
+--------------------------------------------------------------------------------
+testName: getLengthOfLongestStringInArray_validData
+input inputData: array<string>
+input inputMetaData: string
+output: integer (?)
+
+testName: getLengthOfLongestStringInArray_inValidInputDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: getLengthOfLongestStringInArray_inValidInputMetaDataString
+input inputData: array<string>
+input inputMetaData: string
+output: ?
+
+testName: getLengthOfLongestStringInArray_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string
+output: ?
+
+testName: getLengthOfLongestStringInArray_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: string
+output: ?
+
+testName: getLengthOfLongestStringInArray_inValidInputMetaDataInteger
+input inputData: array<string>
+input inputMetaData: integer (123)
+output: ?
+
+testName: getLengthOfLongestStringInArray_inValidInputMetaDataBoolean
+input inputData: array<string>
+input inputMetaData: boolean (false)
+output: ?
+
+testName: getLengthOfLongestStringInArray_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string
+output: ?
+
+testName: getLengthOfLongestStringInArray_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string
+output: ?
+
+testName: getLengthOfLongestStringInArray_inValidInputMetaDataUndefined
+input inputData: array<string>
+input inputMetaData: undefined
+output: ?
+
+testName: getLengthOfLongestStringInArray_inValidInputMetaDataNaN
+input inputData: array<string>
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: searchForPatternsInStringArray_validData
+input inputData: array<string>
+input inputMetaData: string
+output: array<string> (?)
+
+testName: searchForPatternsInStringArray_inValidInputDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: searchForPatternsInStringArray_inValidInputMetaDataString
+input inputData: array<string>
+input inputMetaData: string
+output: ?
+
+testName: searchForPatternsInStringArray_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string
+output: ?
+
+testName: searchForPatternsInStringArray_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: string
+output: ?
+
+testName: searchForPatternsInStringArray_inValidInputMetaDataInteger
+input inputData: array<string>
+input inputMetaData: integer (123)
+output: ?
+
+testName: searchForPatternsInStringArray_inValidInputMetaDataBoolean
+input inputData: array<string>
+input inputMetaData: boolean (false)
+output: ?
+
+testName: searchForPatternsInStringArray_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string
+output: ?
+
+testName: searchForPatternsInStringArray_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string
+output: ?
+
+testName: searchForPatternsInStringArray_inValidInputMetaDataUndefined
+input inputData: array<string>
+input inputMetaData: undefined
+output: ?
+
+testName: searchForPatternsInStringArray_inValidInputMetaDataNaN
+input inputData: array<string>
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: validatePatternsThatNeedImplementation_validData
+input inputData: array<string>
+input inputMetaData: string
+output: string (?)
+
+testName: validatePatternsThatNeedImplementation_inValidInputDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: validatePatternsThatNeedImplementation_inValidInputMetaDataString
+input inputData: array<string>
+input inputMetaData: string
+output: ?
+
+testName: validatePatternsThatNeedImplementation_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string
+output: ?
+
+testName: validatePatternsThatNeedImplementation_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: string
+output: ?
+
+testName: validatePatternsThatNeedImplementation_inValidInputMetaDataInteger
+input inputData: array<string>
+input inputMetaData: integer (123)
+output: ?
+
+testName: validatePatternsThatNeedImplementation_inValidInputMetaDataBoolean
+input inputData: array<string>
+input inputMetaData: boolean (false)
+output: ?
+
+testName: validatePatternsThatNeedImplementation_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string
+output: ?
+
+testName: validatePatternsThatNeedImplementation_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string
+output: ?
+
+testName: validatePatternsThatNeedImplementation_inValidInputMetaDataUndefined
+input inputData: array<string>
+input inputMetaData: undefined
+output: ?
+
+testName: validatePatternsThatNeedImplementation_inValidInputMetaDataNaN
+input inputData: array<string>
+input inputMetaData: NaN
+output: ?

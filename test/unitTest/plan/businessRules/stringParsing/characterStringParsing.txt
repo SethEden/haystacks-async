@@ -1,0 +1,827 @@
+description: Test plan for characterStringParsing.js
+
+--------------------------------------------------------------------------------
+testName: singleQuoteSwapAfterEquals_validData
+input inputData: string
+input inputMetaData: string
+output: string (?)
+
+testName: singleQuoteSwapAfterEquals_inValidInputDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: singleQuoteSwapAfterEquals_inValidInputMetaDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: singleQuoteSwapAfterEquals_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string
+output: ?
+
+testName: singleQuoteSwapAfterEquals_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: string
+output: ?
+
+testName: singleQuoteSwapAfterEquals_inValidInputMetaDataInteger
+input inputData: string
+input inputMetaData: integer (123)
+output: ?
+
+testName: singleQuoteSwapAfterEquals_inValidInputMetaDataBoolean 
+input inputData: string
+input inputMetaData: boolean (false)
+output: ?
+
+testName: singleQuoteSwapAfterEquals_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string
+output: ?
+
+testName: singleQuoteSwapAfterEquals_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string
+output: ?
+
+testName: singleQuoteSwapAfterEquals_inValidInputMetaDataUndefined
+input inputData: string
+input inputMetaData: undefined
+output: ?
+
+testName: singleQuoteSwapAfterEquals_inValidInputMetaDataNaN
+input inputData: string
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: swapForwardSlashToBackSlash_validData
+input inputData: string
+input inputMetaData: string
+output: string (?)
+
+testName: swapForwardSlashToBackSlash_inValidInputDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: swapForwardSlashToBackSlash_inValidInputMetaDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: swapForwardSlashToBackSlash_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string
+output: ?
+
+testName: swapForwardSlashToBackSlash_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: string
+output: ?
+
+testName: swapForwardSlashToBackSlash_inValidInputMetaDataInteger
+input inputData: string
+input inputMetaData: integer (123)
+output: ?
+
+testName: swapForwardSlashToBackSlash_inValidInputMetaDataBoolean 
+input inputData: string
+input inputMetaData: boolean (false)
+output: ?
+
+testName: swapForwardSlashToBackSlash_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string
+output: ?
+
+testName: swapForwardSlashToBackSlash_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string
+output: ?
+
+testName: swapForwardSlashToBackSlash_inValidInputMetaDataUndefined
+input inputData: string
+input inputMetaData: undefined
+output: ?
+
+testName: swapForwardSlashToBackSlash_inValidInputMetaDataNaN
+input inputData: string
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: swapBackSlashToForwardSlash_validData
+input inputData: string
+input inputMetaData: string
+output: string (?)
+
+testName: swapBackSlashToForwardSlash_inValidInputDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: swapBackSlashToForwardSlash_inValidInputMetaDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: swapBackSlashToForwardSlash_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string
+output: ?
+
+testName: swapBackSlashToForwardSlash_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: string
+output: ?
+
+testName: swapBackSlashToForwardSlash_inValidInputMetaDataInteger
+input inputData: string
+input inputMetaData: integer (123)
+output: ?
+
+testName: swapBackSlashToForwardSlash_inValidInputMetaDataBoolean 
+input inputData: string
+input inputMetaData: boolean (false)
+output: ?
+
+testName: swapBackSlashToForwardSlash_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string
+output: ?
+
+testName: swapBackSlashToForwardSlash_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string
+output: ?
+
+testName: swapBackSlashToForwardSlash_inValidInputMetaDataUndefined
+input inputData: string
+input inputMetaData: undefined
+output: ?
+
+testName: swapBackSlashToForwardSlash_inValidInputMetaDataNaN
+input inputData: string
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: swapDoubleForwardSlashToSingleForwardSlash_validData
+input inputData: string
+input inputMetaData: string
+output: string (?)
+
+testName: swapDoubleForwardSlashToSingleForwardSlash_inValidInputDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: swapDoubleForwardSlashToSingleForwardSlash_inValidInputMetaDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: swapDoubleForwardSlashToSingleForwardSlash_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string
+output: ?
+
+testName: swapDoubleForwardSlashToSingleForwardSlash_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: string
+output: ?
+
+testName: swapDoubleForwardSlashToSingleForwardSlash_inValidInputMetaDataInteger
+input inputData: string
+input inputMetaData: integer (123)
+output: ?
+
+testName: swapDoubleForwardSlashToSingleForwardSlash_inValidInputMetaDataBoolean 
+input inputData: string
+input inputMetaData: boolean (false)
+output: ?
+
+testName: swapDoubleForwardSlashToSingleForwardSlash_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string
+output: ?
+
+testName: swapDoubleForwardSlashToSingleForwardSlash_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string
+output: ?
+
+testName: swapDoubleForwardSlashToSingleForwardSlash_inValidInputMetaDataUndefined
+input inputData: string
+input inputMetaData: undefined
+output: ?
+
+testName: swapDoubleForwardSlashToSingleForwardSlash_inValidInputMetaDataNaN
+input inputData: string
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: swapDoubleBackSlashToSingleBackSlash_validData
+input inputData: string
+input inputMetaData: string
+output: string (?)
+
+testName: swapDoubleBackSlashToSingleBackSlash_inValidInputDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: swapDoubleBackSlashToSingleBackSlash_inValidInputMetaDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: swapDoubleBackSlashToSingleBackSlash_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string
+output: ?
+
+testName: swapDoubleBackSlashToSingleBackSlash_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: string
+output: ?
+
+testName: swapDoubleBackSlashToSingleBackSlash_inValidInputMetaDataInteger
+input inputData: string
+input inputMetaData: integer (123)
+output: ?
+
+testName: swapDoubleBackSlashToSingleBackSlash_inValidInputMetaDataBoolean 
+input inputData: string
+input inputMetaData: boolean (false)
+output: ?
+
+testName: swapDoubleBackSlashToSingleBackSlash_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string
+output: ?
+
+testName: swapDoubleBackSlashToSingleBackSlash_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string
+output: ?
+
+testName: swapDoubleBackSlashToSingleBackSlash_inValidInputMetaDataUndefined
+input inputData: string
+input inputMetaData: undefined
+output: ?
+
+testName: swapDoubleBackSlashToSingleBackSlash_inValidInputMetaDataNaN
+input inputData: string
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: replaceSpacesWithPlus_validData
+input inputData: string
+input inputMetaData: string
+output: string (?)
+
+testName: replaceSpacesWithPlus_inValidInputDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: replaceSpacesWithPlus_inValidInputMetaDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: replaceSpacesWithPlus_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string
+output: ?
+
+testName: replaceSpacesWithPlus_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: string
+output: ?
+
+testName: replaceSpacesWithPlus_inValidInputMetaDataInteger
+input inputData: string
+input inputMetaData: integer (123)
+output: ?
+
+testName: replaceSpacesWithPlus_inValidInputMetaDataBoolean 
+input inputData: string
+input inputMetaData: boolean (false)
+output: ?
+
+testName: replaceSpacesWithPlus_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string
+output: ?
+
+testName: replaceSpacesWithPlus_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string
+output: ?
+
+testName: replaceSpacesWithPlus_inValidInputMetaDataUndefined
+input inputData: string
+input inputMetaData: undefined
+output: ?
+
+testName: replaceSpacesWithPlus_inValidInputMetaDataNaN
+input inputData: string
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: replaceColonWithUnderscore_validData
+input inputData: string
+input inputMetaData: string
+output: string (?)
+
+testName: replaceColonWithUnderscore_inValidInputDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: replaceColonWithUnderscore_inValidInputMetaDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: replaceColonWithUnderscore_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string
+output: ?
+
+testName: replaceColonWithUnderscore_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: string
+output: ?
+
+testName: replaceColonWithUnderscore_inValidInputMetaDataInteger
+input inputData: string
+input inputMetaData: integer (123)
+output: ?
+
+testName: replaceColonWithUnderscore_inValidInputMetaDataBoolean 
+input inputData: string
+input inputMetaData: boolean (false)
+output: ?
+
+testName: replaceColonWithUnderscore_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string
+output: ?
+
+testName: replaceColonWithUnderscore_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string
+output: ?
+
+testName: replaceColonWithUnderscore_inValidInputMetaDataUndefined
+input inputData: string
+input inputMetaData: undefined
+output: ?
+
+testName: replaceColonWithUnderscore_inValidInputMetaDataNaN
+input inputData: string
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: cleanCarriageReturnFromString_validData
+input inputData: string
+input inputMetaData: string
+output: string (?)
+
+testName: cleanCarriageReturnFromString_inValidInputDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: cleanCarriageReturnFromString_inValidInputMetaDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: cleanCarriageReturnFromString_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string
+output: ?
+
+testName: cleanCarriageReturnFromString_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: string
+output: ?
+
+testName: cleanCarriageReturnFromString_inValidInputMetaDataInteger
+input inputData: string
+input inputMetaData: integer (123)
+output: ?
+
+testName: cleanCarriageReturnFromString_inValidInputMetaDataBoolean 
+input inputData: string
+input inputMetaData: boolean (false)
+output: ?
+
+testName: cleanCarriageReturnFromString_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string
+output: ?
+
+testName: cleanCarriageReturnFromString_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string
+output: ?
+
+testName: cleanCarriageReturnFromString_inValidInputMetaDataUndefined
+input inputData: string
+input inputMetaData: undefined
+output: ?
+
+testName: cleanCarriageReturnFromString_inValidInputMetaDataNaN
+input inputData: string
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: convertStringToLowerCase_validData
+input inputData: string
+input inputMetaData: string
+output: string (?)
+
+testName: convertStringToLowerCase_inValidInputDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: convertStringToLowerCase_inValidInputMetaDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: convertStringToLowerCase_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string
+output: ?
+
+testName: convertStringToLowerCase_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: string
+output: ?
+
+testName: convertStringToLowerCase_inValidInputMetaDataInteger
+input inputData: string
+input inputMetaData: integer (123)
+output: ?
+
+testName: convertStringToLowerCase_inValidInputMetaDataBoolean 
+input inputData: string
+input inputMetaData: boolean (false)
+output: ?
+
+testName: convertStringToLowerCase_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string
+output: ?
+
+testName: convertStringToLowerCase_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string
+output: ?
+
+testName: convertStringToLowerCase_inValidInputMetaDataUndefined
+input inputData: string
+input inputMetaData: undefined
+output: ?
+
+testName: convertStringToLowerCase_inValidInputMetaDataNaN
+input inputData: string
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: convertStringToUpperCase_validData
+input inputData: string
+input inputMetaData: string
+output: string (?)
+
+testName: convertStringToUpperCase_inValidInputDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: convertStringToUpperCase_inValidInputMetaDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: convertStringToUpperCase_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string
+output: ?
+
+testName: convertStringToUpperCase_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: string
+output: ?
+
+testName: convertStringToUpperCase_inValidInputMetaDataInteger
+input inputData: string
+input inputMetaData: integer (123)
+output: ?
+
+testName: convertStringToUpperCase_inValidInputMetaDataBoolean 
+input inputData: string
+input inputMetaData: boolean (false)
+output: ?
+
+testName: convertStringToUpperCase_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string
+output: ?
+
+testName: convertStringToUpperCase_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string
+output: ?
+
+testName: convertStringToUpperCase_inValidInputMetaDataUndefined
+input inputData: string
+input inputMetaData: undefined
+output: ?
+
+testName: convertStringToUpperCase_inValidInputMetaDataNaN
+input inputData: string
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: doesStringContainUpperCaseCharacter_validData
+input inputData: string
+input inputMetaData: string
+output: boolean (?)
+
+testName: doesStringContainUpperCaseCharacter_inValidInputDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: doesStringContainUpperCaseCharacter_inValidInputMetaDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: doesStringContainUpperCaseCharacter_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string
+output: ?
+
+testName: doesStringContainUpperCaseCharacter_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: string
+output: ?
+
+testName: doesStringContainUpperCaseCharacter_inValidInputMetaDataInteger
+input inputData: string
+input inputMetaData: integer (123)
+output: ?
+
+testName: doesStringContainUpperCaseCharacter_inValidInputMetaDataBoolean 
+input inputData: string
+input inputMetaData: boolean (false)
+output: ?
+
+testName: doesStringContainUpperCaseCharacter_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string
+output: ?
+
+testName: doesStringContainUpperCaseCharacter_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string
+output: ?
+
+testName: doesStringContainUpperCaseCharacter_inValidInputMetaDataUndefined
+input inputData: string
+input inputMetaData: undefined
+output: ?
+
+testName: doesStringContainUpperCaseCharacter_inValidInputMetaDataNaN
+input inputData: string
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: doesStringContainLowerCaseCharacter_validData
+input inputData: string
+input inputMetaData: string
+output: boolean (?)
+
+testName: doesStringContainLowerCaseCharacter_inValidInputDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: doesStringContainLowerCaseCharacter_inValidInputMetaDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: doesStringContainLowerCaseCharacter_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string
+output: ?
+
+testName: doesStringContainLowerCaseCharacter_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: string
+output: ?
+
+testName: doesStringContainLowerCaseCharacter_inValidInputMetaDataInteger
+input inputData: string
+input inputMetaData: integer (123)
+output: ?
+
+testName: doesStringContainLowerCaseCharacter_inValidInputMetaDataBoolean 
+input inputData: string
+input inputMetaData: boolean (false)
+output: ?
+
+testName: doesStringContainLowerCaseCharacter_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string
+output: ?
+
+testName: doesStringContainLowerCaseCharacter_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string
+output: ?
+
+testName: doesStringContainLowerCaseCharacter_inValidInputMetaDataUndefined
+input inputData: string
+input inputMetaData: undefined
+output: ?
+
+testName: doesStringContainLowerCaseCharacter_inValidInputMetaDataNaN
+input inputData: string
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: isFirstCharacterLowerCase_validData
+input inputData: string
+input inputMetaData: string
+output: boolean (?)
+
+testName: isFirstCharacterLowerCase_inValidInputDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: isFirstCharacterLowerCase_inValidInputMetaDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: isFirstCharacterLowerCase_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string
+output: ?
+
+testName: isFirstCharacterLowerCase_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: string
+output: ?
+
+testName: isFirstCharacterLowerCase_inValidInputMetaDataInteger
+input inputData: string
+input inputMetaData: integer (123)
+output: ?
+
+testName: isFirstCharacterLowerCase_inValidInputMetaDataBoolean 
+input inputData: string
+input inputMetaData: boolean (false)
+output: ?
+
+testName: isFirstCharacterLowerCase_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string
+output: ?
+
+testName: isFirstCharacterLowerCase_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string
+output: ?
+
+testName: isFirstCharacterLowerCase_inValidInputMetaDataUndefined
+input inputData: string
+input inputMetaData: undefined
+output: ?
+
+testName: isFirstCharacterLowerCase_inValidInputMetaDataNaN
+input inputData: string
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: isFirstCharacterUpperCase_validData
+input inputData: string
+input inputMetaData: string
+output: boolean (?)
+
+testName: isFirstCharacterUpperCase_inValidInputDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: isFirstCharacterUpperCase_inValidInputMetaDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: isFirstCharacterUpperCase_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string
+output: ?
+
+testName: isFirstCharacterUpperCase_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: string
+output: ?
+
+testName: isFirstCharacterUpperCase_inValidInputMetaDataInteger
+input inputData: string
+input inputMetaData: integer (123)
+output: ?
+
+testName: isFirstCharacterUpperCase_inValidInputMetaDataBoolean 
+input inputData: string
+input inputMetaData: boolean (false)
+output: ?
+
+testName: isFirstCharacterUpperCase_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string
+output: ?
+
+testName: isFirstCharacterUpperCase_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string
+output: ?
+
+testName: isFirstCharacterUpperCase_inValidInputMetaDataUndefined
+input inputData: string
+input inputMetaData: undefined
+output: ?
+
+testName: isFirstCharacterUpperCase_inValidInputMetaDataNaN
+input inputData: string
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: replaceCharacterAtIndexOfString_validData
+input inputData: array<string,integer>
+input inputMetaData: string
+output: string (?)
+
+testName: replaceCharacterAtIndexOfString_inValidInputDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: replaceCharacterAtIndexOfString_inValidInputMetaDataString
+input inputData: array<string, integer>
+input inputMetaData: string
+output: ?
+
+testName: replaceCharacterAtIndexOfString_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string
+output: ?
+
+testName: replaceCharacterAtIndexOfString_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: string
+output: ?
+
+testName: replaceCharacterAtIndexOfString_inValidInputMetaDataInteger
+input inputData: array<string, integer>
+input inputMetaData: integer (123)
+output: ?
+
+testName: replaceCharacterAtIndexOfString_inValidInputMetaDataBoolean
+input inputData: array<string, integer>
+input inputMetaData: boolean (false)
+output: ?
+
+testName: replaceCharacterAtIndexOfString_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string
+output: ?
+
+testName: replaceCharacterAtIndexOfString_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string
+output: ?
+
+testName: replaceCharacterAtIndexOfString_inValidInputMetaDataUndefined
+input inputData: array<string, integer>
+input inputMetaData: undefined
+output: ?
+
+testName: replaceCharacterAtIndexOfString_inValidInputMetaDataNaN
+input inputData: array<string, integer>
+input inputMetaData: NaN
+output: ?

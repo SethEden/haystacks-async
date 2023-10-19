@@ -82,34 +82,34 @@ input themeData: object
 input contextName: NaN
 output: ?
 --------------------------------------------------------------------------------
-testName: getNamedThemes_validData
+testName: getNamedThemesFromRootPath_validData
 output: list of names for the themes that are currently installed.
 
-testName: getNamedThemes_inValidString
+testName: getNamedThemesFromRootPath_inValidString
 input: string (464gsdsfae8f46)
 output: list of names for the themes that are currently installed.
 
-testName: getNamedThemes_inValidNumber
+testName: getNamedThemesFromRootPath_inValidNumber
 input: integer (546)
 output: list of names for the themes that are currently installed.
 
-testName: getNamedThemes_inValidBoolean
+testName: getNamedThemesFromRootPath_inValidBoolean
 input: boolean (false)
 output: list of names for the themes that are currently installed.
 --------------------------------------------------------------------------------
-testName: getNamedThemePath_validData
+testName: getNamedThemePathFromRootPath_validData
 input: string (The name of the theme that a path is returned for)
 output: string (The path of the theme, if it exists)
 
-testName: getNamedThemePath_inValidString
+testName: getNamedThemePathFromRootPath_inValidString
 input: string (464gsdsfae8f46)
 output: false
 
-testName: getNamedThemePath_inValidNumber
+testName: getNamedThemePathFromRootPath_inValidNumber
 input: integer (546)
 output: false
 
-testName: getNamedThemePath_inValidBoolean
+testName: getNamedThemePathFromRootPath_inValidBoolean
 input: boolean (false)
 output: false
 --------------------------------------------------------------------------------
@@ -144,3 +144,27 @@ output: false
 testName: applyTheme_inValidBoolean
 input: boolean (false)
 output: false
+--------------------------------------------------------------------------------
+testName: removePluginThemeData_validData
+input pluginName: string 
+output: boolean
+
+testName: removePluginThemeData_inValidString
+input pluginName: string 
+output: boolean
+
+testName: removePluginThemeData_inValidNumber
+input pluginName: number (123)
+output: boolean
+
+testName: removePluginThemeData_inValidBoolean
+input pluginName: boolean (false)
+output: boolean
+
+testName: removePluginThemeData_inValidUndefined
+input pluginName: undefined
+output: boolean
+
+testName: removePluginThemeData_inValidNaN
+input pluginName: NaN
+output: boolean
