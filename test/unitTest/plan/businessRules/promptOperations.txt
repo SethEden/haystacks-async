@@ -1,0 +1,112 @@
+Description: Test plan for promptOperations.js
+
+--------------------------------------------------------------------------------
+testName: prompt_validData
+input inputData: string
+input inputMetaData: string
+output: string (?)
+
+testName: prompt_inValidInputDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: prompt_inValidInputMetaDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: prompt_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string
+output: ?
+
+testName: prompt_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: string
+output: ?
+
+testName: prompt_inValidInputMetaDataInteger
+input inputData: string
+input inputMetaData: integer (123)
+output: ?
+
+testName: prompt_inValidInputMetaDataBoolean
+input inputData: string
+input inputMetaData: boolean (false)
+output: ?
+
+testName: prompt_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string
+output: ?
+
+testName: prompt_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string
+output: ?
+
+testName: prompt_inValidInputMetaDataUndefined
+input inputData: string
+input inputMetaData: undefined
+output: ?
+
+testName: prompt_inValidInputMetaDataNaN
+input inputData: string
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: promptRaw_validData
+input inputData: string
+input inputMetaData: string
+output: string (?)
+
+testName: promptRaw_inValidInputDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: promptRaw_inValidInputMetaDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: promptRaw_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string
+output: ?
+
+testName: promptRaw_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: string
+output: ?
+
+testName: promptRaw_inValidInputMetaDataInteger
+input inputData: string
+input inputMetaData: integer (123)
+output: ?
+
+testName: promptRaw_inValidInputMetaDataBoolean
+input inputData: string
+input inputMetaData: boolean (false)
+output: ?
+
+testName: promptRaw_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string
+output: ?
+
+testName: promptRaw_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string
+output: ?
+
+testName: promptRaw_inValidInputMetaDataUndefined
+input inputData: string
+input inputMetaData: undefined
+output: ?
+
+testName: promptRaw_inValidInputMetaDataNaN
+input inputData: string
+input inputMetaData: NaN
+output: ?

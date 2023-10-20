@@ -1,0 +1,607 @@
+Description: Test plan for wordStringParsing.js
+
+--------------------------------------------------------------------------------
+testName: isStringCamelCase_validData
+input inputData: string
+input inputMetaData: string
+output: boolean (?)
+
+testName: isStringCamelCase_inValidInputDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: isStringCamelCase_inValidInputMetaDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: isStringCamelCase_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string
+output: ?
+
+testName: isStringCamelCase_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: string
+output: ?
+
+testName: isStringCamelCase_inValidInputMetaDataInteger
+input inputData: string
+input inputMetaData: integer (123)
+output: ?
+
+testName: isStringCamelCase_inValidInputMetaDataBoolean
+input inputData: string
+input inputMetaData: boolean (false)
+output: ?
+
+testName: isStringCamelCase_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string
+output: ?
+
+testName: isStringCamelCase_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string
+output: ?
+
+testName: isStringCamelCase_inValidInputMetaDataUndefined
+input inputData: string
+input inputMetaData: undefined
+output: ?
+
+testName: isStringCamelCase_inValidInputMetaDataNaN
+input inputData: string
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: mapWordToCamelCaseWord_validData
+input inputData: string
+input inputMetaData: string
+output: string (?)
+
+testName: mapWordToCamelCaseWord_inValidInputDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: mapWordToCamelCaseWord_inValidInputMetaDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: mapWordToCamelCaseWord_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string
+output: ?
+
+testName: mapWordToCamelCaseWord_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: string
+output: ?
+
+testName: mapWordToCamelCaseWord_inValidInputMetaDataInteger
+input inputData: string
+input inputMetaData: integer (123)
+output: ?
+
+testName: mapWordToCamelCaseWord_inValidInputMetaDataBoolean
+input inputData: string
+input inputMetaData: boolean (false)
+output: ?
+
+testName: mapWordToCamelCaseWord_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string
+output: ?
+
+testName: mapWordToCamelCaseWord_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string
+output: ?
+
+testName: mapWordToCamelCaseWord_inValidInputMetaDataUndefined
+input inputData: string
+input inputMetaData: undefined
+output: ?
+
+testName: mapWordToCamelCaseWord_inValidInputMetaDataNaN
+input inputData: string
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: simplifyAndConsolidateString_validData
+input inputData: string
+input inputMetaData: string
+output: string (?)
+
+testName: simplifyAndConsolidateString_inValidInputDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: simplifyAndConsolidateString_inValidInputMetaDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: simplifyAndConsolidateString_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string
+output: ?
+
+testName: simplifyAndConsolidateString_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: string
+output: ?
+
+testName: simplifyAndConsolidateString_inValidInputMetaDataInteger
+input inputData: string
+input inputMetaData: integer (123)
+output: ?
+
+testName: simplifyAndConsolidateString_inValidInputMetaDataBoolean
+input inputData: string
+input inputMetaData: boolean (false)
+output: ?
+
+testName: simplifyAndConsolidateString_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string
+output: ?
+
+testName: simplifyAndConsolidateString_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string
+output: ?
+
+testName: simplifyAndConsolidateString_inValidInputMetaDataUndefined
+input inputData: string
+input inputMetaData: undefined
+output: ?
+
+testName: simplifyAndConsolidateString_inValidInputMetaDataNaN
+input inputData: string
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: compareSimplifiedAndConsolidatedStrings_validData
+input inputData: string
+input inputMetaData: string
+output: boolean (?)
+
+testName: compareSimplifiedAndConsolidatedStrings_inValidInputDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: compareSimplifiedAndConsolidatedStrings_inValidInputMetaDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: compareSimplifiedAndConsolidatedStrings_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string
+output: ?
+
+testName: compareSimplifiedAndConsolidatedStrings_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: string
+output: ?
+
+testName: compareSimplifiedAndConsolidatedStrings_inValidInputMetaDataInteger
+input inputData: string
+input inputMetaData: integer (123)
+output: ?
+
+testName: compareSimplifiedAndConsolidatedStrings_inValidInputMetaDataBoolean
+input inputData: string
+input inputMetaData: boolean (false)
+output: ?
+
+testName: compareSimplifiedAndConsolidatedStrings_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string
+output: ?
+
+testName: compareSimplifiedAndConsolidatedStrings_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string
+output: ?
+
+testName: compareSimplifiedAndConsolidatedStrings_inValidInputMetaDataUndefined
+input inputData: string
+input inputMetaData: undefined
+output: ?
+
+testName: compareSimplifiedAndConsolidatedStrings_inValidInputMetaDataNaN
+input inputData: string
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: countCamelCaseWords_validData
+input inputData: string
+input inputMetaData: string
+output: integer (?)
+
+testName: countCamelCaseWords_inValidInputDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: countCamelCaseWords_inValidInputMetaDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: countCamelCaseWords_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string
+output: ?
+
+testName: countCamelCaseWords_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: string
+output: ?
+
+testName: countCamelCaseWords_inValidInputMetaDataInteger
+input inputData: string
+input inputMetaData: integer (123)
+output: ?
+
+testName: countCamelCaseWords_inValidInputMetaDataBoolean
+input inputData: string
+input inputMetaData: boolean (false)
+output: ?
+
+testName: countCamelCaseWords_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string
+output: ?
+
+testName: countCamelCaseWords_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string
+output: ?
+
+testName: countCamelCaseWords_inValidInputMetaDataUndefined
+input inputData: string
+input inputMetaData: undefined
+output: ?
+
+testName: countCamelCaseWords_inValidInputMetaDataNaN
+input inputData: string
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: doesStringContainAcronym_validData
+input inputData: string
+input inputMetaData: string
+output: boolean (?)
+
+testName: doesStringContainAcronym_inValidInputDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: doesStringContainAcronym_inValidInputMetaDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: doesStringContainAcronym_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string
+output: ?
+
+testName: doesStringContainAcronym_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: string
+output: ?
+
+testName: doesStringContainAcronym_inValidInputMetaDataInteger
+input inputData: string
+input inputMetaData: integer (123)
+output: ?
+
+testName: doesStringContainAcronym_inValidInputMetaDataBoolean
+input inputData: string
+input inputMetaData: boolean (false)
+output: ?
+
+testName: doesStringContainAcronym_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string
+output: ?
+
+testName: doesStringContainAcronym_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string
+output: ?
+
+testName: doesStringContainAcronym_inValidInputMetaDataUndefined
+input inputData: string
+input inputMetaData: undefined
+output: ?
+
+testName: doesStringContainAcronym_inValidInputMetaDataNaN
+input inputData: string
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: determineWordDelimiter_validData
+input inputData: string
+input inputMetaData: string
+output: string (?)
+
+testName: determineWordDelimiter_inValidInputDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: determineWordDelimiter_inValidInputMetaDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: determineWordDelimiter_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string
+output: ?
+
+testName: determineWordDelimiter_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: string
+output: ?
+
+testName: determineWordDelimiter_inValidInputMetaDataInteger
+input inputData: string
+input inputMetaData: integer (123)
+output: ?
+
+testName: determineWordDelimiter_inValidInputMetaDataBoolean
+input inputData: string
+input inputMetaData: boolean (false)
+output: ?
+
+testName: determineWordDelimiter_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string
+output: ?
+
+testName: determineWordDelimiter_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string
+output: ?
+
+testName: determineWordDelimiter_inValidInputMetaDataUndefined
+input inputData: string
+input inputMetaData: undefined
+output: ?
+
+testName: determineWordDelimiter_inValidInputMetaDataNaN
+input inputData: string
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: countDelimiterInString_validData
+input inputData: string
+input inputMetaData: string
+output: integer (?)
+
+testName: countDelimiterInString_inValidInputDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: countDelimiterInString_inValidInputMetaDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: countDelimiterInString_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string
+output: ?
+
+testName: countDelimiterInString_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: string
+output: ?
+
+testName: countDelimiterInString_inValidInputMetaDataInteger
+input inputData: string
+input inputMetaData: integer (123)
+output: ?
+
+testName: countDelimiterInString_inValidInputMetaDataBoolean
+input inputData: string
+input inputMetaData: boolean (false)
+output: ?
+
+testName: countDelimiterInString_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string
+output: ?
+
+testName: countDelimiterInString_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string
+output: ?
+
+testName: countDelimiterInString_inValidInputMetaDataUndefined
+input inputData: string
+input inputMetaData: undefined
+output: ?
+
+testName: countDelimiterInString_inValidInputMetaDataNaN
+input inputData: string
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: getWordCountInString_validData
+input inputData: string
+input inputMetaData: string
+output: integer (?)
+
+testName: getWordCountInString_inValidInputDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: getWordCountInString_inValidInputMetaDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: getWordCountInString_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string
+output: ?
+
+testName: getWordCountInString_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: string
+output: ?
+
+testName: getWordCountInString_inValidInputMetaDataInteger
+input inputData: string
+input inputMetaData: integer (123)
+output: ?
+
+testName: getWordCountInString_inValidInputMetaDataBoolean
+input inputData: string
+input inputMetaData: boolean (false)
+output: ?
+
+testName: getWordCountInString_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string
+output: ?
+
+testName: getWordCountInString_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string
+output: ?
+
+testName: getWordCountInString_inValidInputMetaDataUndefined
+input inputData: string
+input inputMetaData: undefined
+output: ?
+
+testName: getWordCountInString_inValidInputMetaDataNaN
+input inputData: string
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: isStringList_validData
+input inputData: string
+input inputMetaData: string
+output: boolean (?)
+
+testName: isStringList_inValidInputDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: isStringList_inValidInputMetaDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: isStringList_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string
+output: ?
+
+testName: isStringList_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: string
+output: ?
+
+testName: isStringList_inValidInputMetaDataInteger
+input inputData: string
+input inputMetaData: integer (123)
+output: ?
+
+testName: isStringList_inValidInputMetaDataBoolean
+input inputData: string
+input inputMetaData: boolean (false)
+output: ?
+
+testName: isStringList_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string
+output: ?
+
+testName: isStringList_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string
+output: ?
+
+testName: isStringList_inValidInputMetaDataUndefined
+input inputData: string
+input inputMetaData: undefined
+output: ?
+
+testName: isStringList_inValidInputMetaDataNaN
+input inputData: string
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: aggregateNumericalDifferenceBetweenTwoStrings_validData
+input inputData: string
+input inputMetaData: string
+output: integer (?)
+
+testName: aggregateNumericalDifferenceBetweenTwoStrings_inValidInputDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: aggregateNumericalDifferenceBetweenTwoStrings_inValidInputMetaDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: aggregateNumericalDifferenceBetweenTwoStrings_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string
+output: ?
+
+testName: aggregateNumericalDifferenceBetweenTwoStrings_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: string
+output: ?
+
+testName: aggregateNumericalDifferenceBetweenTwoStrings_inValidInputMetaDataInteger
+input inputData: string
+input inputMetaData: integer (123)
+output: ?
+
+testName: aggregateNumericalDifferenceBetweenTwoStrings_inValidInputMetaDataBoolean
+input inputData: string
+input inputMetaData: boolean (false)
+output: ?
+
+testName: aggregateNumericalDifferenceBetweenTwoStrings_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string
+output: ?
+
+testName: aggregateNumericalDifferenceBetweenTwoStrings_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string
+output: ?
+
+testName: aggregateNumericalDifferenceBetweenTwoStrings_inValidInputMetaDataUndefined
+input inputData: string
+input inputMetaData: undefined
+output: ?
+
+testName: aggregateNumericalDifferenceBetweenTwoStrings_inValidInputMetaDataNaN
+input inputData: string
+input inputMetaData: NaN
+output: ?

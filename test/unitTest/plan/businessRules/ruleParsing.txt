@@ -1,0 +1,222 @@
+Description: Test plan for ruleParsing.js
+
+--------------------------------------------------------------------------------
+testName: doAllRulesExist_validData
+input inputData: array<string>
+input inputMetaData: string
+output: boolean (?)
+
+testName: doAllRulesExist_inValidInputDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: doAllRulesExist_inValidInputMetaDataString
+input inputData: array<string>
+input inputMetaData: string
+output: ?
+
+testName: doAllRulesExist_inValidInputDataInteger
+input inputData: integer  (123)
+input inputMetaData: string
+output: ?
+
+testName: doAllRulesExist_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: string
+output: ?
+
+testName: doAllRulesExist_inValidInputMetaDataInteger
+input inputData: array<string>
+input inputMetaData: integer (123)
+output: ?
+
+testName: doAllRulesExist_inValidInputMetaDataBoolean
+input inputData: array<string>
+input inputMetaData: boolean (false)
+output: ?
+
+testName: doAllRulesExist_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string
+output: ?
+
+testName: doAllRulesExist_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string
+output: ?
+
+testName: doAllRulesExist_inValidInputMetaDataUndefined
+input inputData: array<string>
+input inputMetaData: undefined
+output: ?
+
+testName: doAllRulesExist_inValidInputMetaDataNaN
+input inputData: array<string>
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: doesRuleExist_validData
+input inputData: string
+input inputMetaData: string
+output: boolean (?)
+
+testName: doesRuleExist_inValidInputDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: doesRuleExist_inValidInputMetaDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: doesRuleExist_inValidInputDataInteger
+input inputData: integer  (123)
+input inputMetaData: string
+output: ?
+
+testName: doesRuleExist_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: string
+output: ?
+
+testName: doesRuleExist_inValidInputMetaDataInteger
+input inputData: string
+input inputMetaData: integer (123)
+output: ?
+
+testName: doesRuleExist_inValidInputMetaDataBoolean
+input inputData: string
+input inputMetaData: boolean (false)
+output: ?
+
+testName: doesRuleExist_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string
+output: ?
+
+testName: doesRuleExist_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string
+output: ?
+
+testName: doesRuleExist_inValidInputMetaDataUndefined
+input inputData: string
+input inputMetaData: undefined
+output: ?
+
+testName: doesRuleExist_inValidInputMetaDataNaN
+input inputData: string
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: getRule_validData
+input inputData: string
+input inputMetaData: string
+output: function (?)
+
+testName: getRule_inValidInputDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: getRule_inValidInputMetaDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: getRule_inValidInputDataInteger
+input inputData: integer  (123)
+input inputMetaData: string
+output: ?
+
+testName: getRule_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: string
+output: ?
+
+testName: getRule_inValidInputMetaDataInteger
+input inputData: string
+input inputMetaData: integer (123)
+output: ?
+
+testName: getRule_inValidInputMetaDataBoolean
+input inputData: string
+input inputMetaData: boolean (false)
+output: ?
+
+testName: getRule_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string
+output: ?
+
+testName: getRule_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string
+output: ?
+
+testName: getRule_inValidInputMetaDataUndefined
+input inputData: string
+input inputMetaData: undefined
+output: ?
+
+testName: getRule_inValidInputMetaDataNaN
+input inputData: string
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: processRulesInternal_validData
+input inputData: array<string|integer|boolean|object|function,string|integer|boolean|object|function>
+input inputMetaData: array<string>
+output: string|integer|boolean|object|function (?)
+
+testName: processRulesInternal_inValidInputDataString
+input inputData: string
+input inputMetaData: array<string>
+output: ?
+
+testName: processRulesInternal_inValidInputMetaDataString
+input inputData: array<string|integer|boolean|object|function,string|integer|boolean|object|function>
+input inputMetaData: string
+output: ?
+
+testName: processRulesInternal_inValidInputDataInteger
+input inputData: integer  (123)
+input inputMetaData: array<string>
+output: ?
+
+testName: processRulesInternal_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: array<string>
+output: ?
+
+testName: processRulesInternal_inValidInputMetaDataInteger
+input inputData: array<string|integer|boolean|object|function,string|integer|boolean|object|function>
+input inputMetaData: integer (123)
+output: ?
+
+testName: processRulesInternal_inValidInputMetaDataBoolean
+input inputData: array<string|integer|boolean|object|function,string|integer|boolean|object|function>
+input inputMetaData: boolean (false)
+output: ?
+
+testName: processRulesInternal_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: array<string>
+output: ?
+
+testName: processRulesInternal_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: array<string>
+output: ?
+
+testName: processRulesInternal_inValidInputMetaDataUndefined
+input inputData: array<string|integer|boolean|object|function,string|integer|boolean|object|function>
+input inputMetaData: undefined
+output: ?
+
+testName: processRulesInternal_inValidInputMetaDataNaN
+input inputData: array<string|integer|boolean|object|function,string|integer|boolean|object|function>
+input inputMetaData: NaN
+output: ?

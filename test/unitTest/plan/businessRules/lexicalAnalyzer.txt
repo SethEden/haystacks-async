@@ -1,0 +1,332 @@
+Description: Test plan for lexicalAnalyzer.js
+
+--------------------------------------------------------------------------------
+testName: parseBusinessRuleArgument_validData
+input inputData: string|array<string|integer|boolean|object>
+input inputMetaData: integer
+output: string|array<string|integer|boolean|object> (?)
+
+testName: parseBusinessRuleArgument_inValidInputDataString
+input inputData: string
+input inputMetaData: integer
+output: ?
+
+testName: parseBusinessRuleArgument_inValidInputMetaDataString
+input inputData: string|array<string|integer|boolean|object>
+input inputMetaData: string
+output: ?
+
+testName: parseBusinessRuleArgument_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: integer
+output: ?
+
+testName: parseBusinessRuleArgument_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: integer
+output: ?
+
+testName: parseBusinessRuleArgument_inValidInputMetaDataInteger
+input inputData: string|array<string|integer|boolean|object>
+input inputMetaData: integer (123)
+output: ?
+
+testName: parseBusinessRuleArgument_inValidInputMetaDataBoolean
+input inputData: string|array<string|integer|boolean|object>
+input inputMetaData: boolean (false)
+output: ?
+
+testName: parseBusinessRuleArgument_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: integer
+output: ?
+
+testName: parseBusinessRuleArgument_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: integer
+output: ?
+
+testName: parseBusinessRuleArgument_inValidInputMetaDataUndefined
+input inputData: string|array<string|integer|boolean|object>
+input inputMetaData: undefined
+output: ?
+
+testName: parseBusinessRuleArgument_inValidInputMetaDataNaN
+input inputData: string|array<string|integer|boolean|object>
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: analyzeArgument_validData
+input inputData: string
+input inputMetaData: string
+output: string|array<string|integer|boolean|object> (?)
+
+testName: analyzeArgument_inValidInputDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: analyzeArgument_inValidInputMetaDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: analyzeArgument_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string
+output: ?
+
+testName: analyzeArgument_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: string
+output: ?
+
+testName: analyzeArgument_inValidInputMetaDataInteger
+input inputData: string
+input inputMetaData: integer (123)
+output: ?
+
+testName: analyzeArgument_inValidInputMetaDataBoolean
+input inputData: string
+input inputMetaData: boolean (false)
+output: ?
+
+testName: analyzeArgument_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string
+output: ?
+
+testName: analyzeArgument_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string
+output: ?
+
+testName: analyzeArgument_inValidInputMetaDataUndefined
+input inputData: string
+input inputMetaData: undefined
+output: ?
+
+testName: analyzeArgument_inValidInputMetaDataNaN
+input inputData: string
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: analyzeForRegularExpression_validData
+input inputData: string
+input inputMetaData: string
+output: boolean (?)
+
+testName: analyzeForRegularExpression_inValidInputDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: analyzeForRegularExpression_inValidInputMetaDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: analyzeForRegularExpression_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string
+output: ?
+
+testName: analyzeForRegularExpression_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: string
+output: ?
+
+testName: analyzeForRegularExpression_inValidInputMetaDataInteger
+input inputData: string
+input inputMetaData: integer (123)
+output: ?
+
+testName: analyzeForRegularExpression_inValidInputMetaDataBoolean
+input inputData: string
+input inputMetaData: boolean (false)
+output: ?
+
+testName: analyzeForRegularExpression_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string
+output: ?
+
+testName: analyzeForRegularExpression_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string
+output: ?
+
+testName: analyzeForRegularExpression_inValidInputMetaDataUndefined
+input inputData: string
+input inputMetaData: undefined
+output: ?
+
+testName: analyzeForRegularExpression_inValidInputMetaDataNaN
+input inputData: string
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: parseArgumentAsRegularExpression_validData
+input inputData: string
+input inputMetaData: string
+output: object (?)
+
+testName: parseArgumentAsRegularExpression_inValidInputDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: parseArgumentAsRegularExpression_inValidInputMetaDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: parseArgumentAsRegularExpression_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string
+output: ?
+
+testName: parseArgumentAsRegularExpression_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: string
+output: ?
+
+testName: parseArgumentAsRegularExpression_inValidInputMetaDataInteger
+input inputData: string
+input inputMetaData: integer (123)
+output: ?
+
+testName: parseArgumentAsRegularExpression_inValidInputMetaDataBoolean
+input inputData: string
+input inputMetaData: boolean (false)
+output: ?
+
+testName: parseArgumentAsRegularExpression_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string
+output: ?
+
+testName: parseArgumentAsRegularExpression_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string
+output: ?
+
+testName: parseArgumentAsRegularExpression_inValidInputMetaDataUndefined
+input inputData: string
+input inputMetaData: undefined
+output: ?
+
+testName: parseArgumentAsRegularExpression_inValidInputMetaDataNaN
+input inputData: string
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: parseArgumentAsArray_validData
+input inputData: string
+input inputMetaData: string
+output: array<string> (?)
+
+testName: parseArgumentAsArray_inValidInputDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: parseArgumentAsArray_inValidInputMetaDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: parseArgumentAsArray_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string
+output: ?
+
+testName: parseArgumentAsArray_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: string
+output: ?
+
+testName: parseArgumentAsArray_inValidInputMetaDataInteger
+input inputData: string
+input inputMetaData: integer (123)
+output: ?
+
+testName: parseArgumentAsArray_inValidInputMetaDataBoolean
+input inputData: string
+input inputMetaData: boolean (false)
+output: ?
+
+testName: parseArgumentAsArray_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string
+output: ?
+
+testName: parseArgumentAsArray_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string
+output: ?
+
+testName: parseArgumentAsArray_inValidInputMetaDataUndefined
+input inputData: string
+input inputMetaData: undefined
+output: ?
+
+testName: parseArgumentAsArray_inValidInputMetaDataNaN
+input inputData: string
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: removeStringLiteralTagsFromArray_validData
+input inputData: array<string>
+input inputMetaData: string
+output: array<string> (?)
+
+testName: removeStringLiteralTagsFromArray_inValidInputDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: removeStringLiteralTagsFromArray_inValidInputMetaDataString
+input inputData: array<string>
+input inputMetaData: string
+output: ?
+
+testName: removeStringLiteralTagsFromArray_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string
+output: ?
+
+testName: removeStringLiteralTagsFromArray_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: string
+output: ?
+
+testName: removeStringLiteralTagsFromArray_inValidInputMetaDataInteger
+input inputData: array<string>
+input inputMetaData: integer (123)
+output: ?
+
+testName: removeStringLiteralTagsFromArray_inValidInputMetaDataBoolean
+input inputData: array<string>
+input inputMetaData: boolean (false)
+output: ?
+
+testName: removeStringLiteralTagsFromArray_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string
+output: ?
+
+testName: removeStringLiteralTagsFromArray_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string
+output: ?
+
+testName: removeStringLiteralTagsFromArray_inValidInputMetaDataUndefined
+input inputData: array<string>
+input inputMetaData: undefined
+output: ?
+
+testName: removeStringLiteralTagsFromArray_inValidInputMetaDataNaN
+input inputData: array<string>
+input inputMetaData: NaN
+output: ?

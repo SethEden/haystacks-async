@@ -1,0 +1,882 @@
+Description: Test plan for fileOperations.js
+
+--------------------------------------------------------------------------------
+testName: getXmlData_validData
+input inputData: string
+input inputMetaData: string
+output: object (?)
+
+testName: getXmlData_inValidInputDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: getXmlData_inValidInputMetaDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: getXmlData_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string
+output: ?
+
+testName: getXmlData_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: string
+output: ?
+
+testName: getXmlData_inValidInputMetaDataInteger
+input inputData: string
+input inputMetaData: integer (123)
+output: ?
+
+testName: getXmlData_inValidInputMetaDataBoolean
+input inputData: string
+input inputMetaData: boolean (false)
+output: ?
+
+testName: getXmlData_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string
+output: ?
+
+testName: getXmlData_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string
+output: ?
+
+testName: getXmlData_inValidInputMetaDataUndefined
+input inputData: string
+input inputMetaData: undefined
+output: ?
+
+testName: getXmlData_inValidInputMetaDataNaN
+input inputData: string
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: getCsvData_validData
+input inputData: string
+input inputMetaData: string
+output: object (?)
+
+testName: getCsvData_inValidInputDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: getCsvData_inValidInputMetaDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: getCsvData_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string
+output: ?
+
+testName: getCsvData_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: string
+output: ?
+
+testName: getCsvData_inValidInputMetaDataInteger
+input inputData: string
+input inputMetaData: integer (123)
+output: ?
+
+testName: getCsvData_inValidInputMetaDataBoolean
+input inputData: string
+input inputMetaData: boolean (false)
+output: ?
+
+testName: getCsvData_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string
+output: ?
+
+testName: getCsvData_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string
+output: ?
+
+testName: getCsvData_inValidInputMetaDataUndefined
+input inputData: string
+input inputMetaData: undefined
+output: ?
+
+testName: getCsvData_inValidInputMetaDataNaN
+input inputData: string
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: getJsonData_validData
+input inputData: string
+input inputMetaData: string
+output: object (?)
+
+testName: getJsonData_inValidInputDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: getJsonData_inValidInputMetaDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: getJsonData_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string
+output: ?
+
+testName: getJsonData_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: string
+output: ?
+
+testName: getJsonData_inValidInputMetaDataInteger
+input inputData: string
+input inputMetaData: integer (123)
+output: ?
+
+testName: getJsonData_inValidInputMetaDataBoolean
+input inputData: string
+input inputMetaData: boolean (false)
+output: ?
+
+testName: getJsonData_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string
+output: ?
+
+testName: getJsonData_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string
+output: ?
+
+testName: getJsonData_inValidInputMetaDataUndefined
+input inputData: string
+input inputMetaData: undefined
+output: ?
+
+testName: getJsonData_inValidInputMetaDataNaN
+input inputData: string
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: writeJsonData_validData
+input inputData: string
+input inputMetaData: object
+output: boolean (?)
+
+testName: writeJsonData_inValidInputDataString
+input inputData: string
+input inputMetaData: object
+output: ?
+
+testName: writeJsonData_inValidInputMetaDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: writeJsonData_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: object
+output: ?
+
+testName: writeJsonData_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: object
+output: ?
+
+testName: writeJsonData_inValidInputMetaDataInteger
+input inputData: string
+input inputMetaData: integer (123)
+output: ?
+
+testName: writeJsonData_inValidInputMetaDataBoolean
+input inputData: string
+input inputMetaData: boolean (false)
+output: ?
+
+testName: writeJsonData_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: object
+output: ?
+
+testName: writeJsonData_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: object
+output: ?
+
+testName: writeJsonData_inValidInputMetaDataUndefined
+input inputData: string
+input inputMetaData: undefined
+output: ?
+
+testName: writeJsonData_inValidInputMetaDataNaN
+input inputData: string
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: loadAsciiFileFromPath_validData
+input inputData: string
+input inputMetaData: string
+output: object (?)
+
+testName: loadAsciiFileFromPath_inValidInputDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: loadAsciiFileFromPath_inValidInputMetaDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: loadAsciiFileFromPath_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string
+output: ?
+
+testName: loadAsciiFileFromPath_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: string
+output: ?
+
+testName: loadAsciiFileFromPath_inValidInputMetaDataInteger
+input inputData: string
+input inputMetaData: integer (123)
+output: ?
+
+testName: loadAsciiFileFromPath_inValidInputMetaDataBoolean
+input inputData: string
+input inputMetaData: boolean (false)
+output: ?
+
+testName: loadAsciiFileFromPath_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string
+output: ?
+
+testName: loadAsciiFileFromPath_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string
+output: ?
+
+testName: loadAsciiFileFromPath_inValidInputMetaDataUndefined
+input inputData: string
+input inputMetaData: undefined
+output: ?
+
+testName: loadAsciiFileFromPath_inValidInputMetaDataNaN
+input inputData: string
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: readDirectoryContents_validData
+input inputData: string
+input inputMetaData: string
+output: object (?)
+
+testName: readDirectoryContents_inValidInputDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: readDirectoryContents_inValidInputMetaDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: readDirectoryContents_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string
+output: ?
+
+testName: readDirectoryContents_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: string
+output: ?
+
+testName: readDirectoryContents_inValidInputMetaDataInteger
+input inputData: string
+input inputMetaData: integer (123)
+output: ?
+
+testName: readDirectoryContents_inValidInputMetaDataBoolean
+input inputData: string
+input inputMetaData: boolean (false)
+output: ?
+
+testName: readDirectoryContents_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string
+output: ?
+
+testName: readDirectoryContents_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string
+output: ?
+
+testName: readDirectoryContents_inValidInputMetaDataUndefined
+input inputData: string
+input inputMetaData: undefined
+output: ?
+
+testName: readDirectoryContents_inValidInputMetaDataNaN
+input inputData: string
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: scanDirectoryContents_validData
+input inputData: string
+input inputMetaData: array<boolean,integer>
+output: array<string> (?)
+
+testName: scanDirectoryContents_inValidInputDataString
+input inputData: string
+input inputMetaData: array<boolean,integer>
+output: ?
+
+testName: scanDirectoryContents_inValidInputMetaDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: scanDirectoryContents_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: array<boolean,integer>
+output: ?
+
+testName: scanDirectoryContents_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: array<boolean,integer>
+output: ?
+
+testName: scanDirectoryContents_inValidInputMetaDataInteger
+input inputData: string
+input inputMetaData: integer (123)
+output: ?
+
+testName: scanDirectoryContents_inValidInputMetaDataBoolean
+input inputData: string
+input inputMetaData: boolean (false)
+output: ?
+
+testName: scanDirectoryContents_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: array<boolean,integer>
+output: ?
+
+testName: scanDirectoryContents_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: array<boolean,integer>
+output: ?
+
+testName: scanDirectoryContents_inValidInputMetaDataUndefined
+input inputData: string
+input inputMetaData: undefined
+output: ?
+
+testName: scanDirectoryContents_inValidInputMetaDataNaN
+input inputData: string
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: getDirectoryList_validData
+input inputData: string
+input inputMetaData: string
+output: array<string> (?)
+
+testName: getDirectoryList_inValidInputDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: getDirectoryList_inValidInputMetaDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: getDirectoryList_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string
+output: ?
+
+testName: getDirectoryList_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: string
+output: ?
+
+testName: getDirectoryList_inValidInputMetaDataInteger
+input inputData: string
+input inputMetaData: integer (123)
+output: ?
+
+testName: getDirectoryList_inValidInputMetaDataBoolean
+input inputData: string
+input inputMetaData: boolean (false)
+output: ?
+
+testName: getDirectoryList_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string
+output: ?
+
+testName: getDirectoryList_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string
+output: ?
+
+testName: getDirectoryList_inValidInputMetaDataUndefined
+input inputData: string
+input inputMetaData: undefined
+output: ?
+
+testName: getDirectoryList_inValidInputMetaDataNaN
+input inputData: string
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: readDirectorySynchronously_validData
+input inputData: string
+input inputMetaData: string
+output: object (?)
+
+testName: readDirectorySynchronously_inValidInputDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: readDirectorySynchronously_inValidInputMetaDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: readDirectorySynchronously_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string
+output: ?
+
+testName: readDirectorySynchronously_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: string
+output: ?
+
+testName: readDirectorySynchronously_inValidInputMetaDataInteger
+input inputData: string
+input inputMetaData: integer (123)
+output: ?
+
+testName: readDirectorySynchronously_inValidInputMetaDataBoolean
+input inputData: string
+input inputMetaData: boolean (false)
+output: ?
+
+testName: readDirectorySynchronously_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string
+output: ?
+
+testName: readDirectorySynchronously_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string
+output: ?
+
+testName: readDirectorySynchronously_inValidInputMetaDataUndefined
+input inputData: string
+input inputMetaData: undefined
+output: ?
+
+testName: readDirectorySynchronously_inValidInputMetaDataNaN
+input inputData: string
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: copyAllFilesAndFoldersFromFolderToFolder_validData
+input inputData: array<string>
+input inputMetaData: array<array<string>>
+output: boolean (?)
+
+testName: copyAllFilesAndFoldersFromFolderToFolder_inValidInputDataString
+input inputData: string
+input inputMetaData: array<array<string>>
+output: ?
+
+testName: copyAllFilesAndFoldersFromFolderToFolder_inValidInputMetaDataString
+input inputData: array<string>
+input inputMetaData: string
+output: ?
+
+testName: copyAllFilesAndFoldersFromFolderToFolder_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: array<array<string>>
+output: ?
+
+testName: copyAllFilesAndFoldersFromFolderToFolder_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: array<array<string>>
+output: ?
+
+testName: copyAllFilesAndFoldersFromFolderToFolder_inValidInputMetaDataInteger
+input inputData: array<string>
+input inputMetaData: integer (123)
+output: ?
+
+testName: copyAllFilesAndFoldersFromFolderToFolder_inValidInputMetaDataBoolean
+input inputData: array<string>
+input inputMetaData: boolean (false)
+output: ?
+
+testName: copyAllFilesAndFoldersFromFolderToFolder_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: array<array<string>>
+output: ?
+
+testName: copyAllFilesAndFoldersFromFolderToFolder_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: array<array<string>>
+output: ?
+
+testName: copyAllFilesAndFoldersFromFolderToFolder_inValidInputMetaDataUndefined
+input inputData: array<string>
+input inputMetaData: undefined
+output: ?
+
+testName: copyAllFilesAndFoldersFromFolderToFolder_inValidInputMetaDataNaN
+input inputData: array<string>
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: buildReleasePackage_validData
+input inputData: string
+input inputMetaData: string
+output: boolean (?)
+
+testName: buildReleasePackage_inValidInputDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: buildReleasePackage_inValidInputMetaDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: buildReleasePackage_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string
+output: ?
+
+testName: buildReleasePackage_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: string
+output: ?
+
+testName: buildReleasePackage_inValidInputMetaDataInteger
+input inputData: string
+input inputMetaData: integer (123)
+output: ?
+
+testName: buildReleasePackage_inValidInputMetaDataBoolean
+input inputData: string
+input inputMetaData: boolean (false)
+output: ?
+
+testName: buildReleasePackage_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string
+output: ?
+
+testName: buildReleasePackage_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string
+output: ?
+
+testName: buildReleasePackage_inValidInputMetaDataUndefined
+input inputData: string
+input inputMetaData: undefined
+output: ?
+
+testName: buildReleasePackage_inValidInputMetaDataNaN
+input inputData: string
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: createZipArchive_validData
+input inputData: array<string>
+input inputMetaData: string
+output: boolean (?)
+
+testName: createZipArchive_inValidInputDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: createZipArchive_inValidInputMetaDataString
+input inputData: array<string>
+input inputMetaData: string
+output: ?
+
+testName: createZipArchive_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string
+output: ?
+
+testName: createZipArchive_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: string
+output: ?
+
+testName: createZipArchive_inValidInputMetaDataInteger
+input inputData: array<string>
+input inputMetaData: integer (123)
+output: ?
+
+testName: createZipArchive_inValidInputMetaDataBoolean
+input inputData: array<string>
+input inputMetaData: boolean (false)
+output: ?
+
+testName: createZipArchive_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string
+output: ?
+
+testName: createZipArchive_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string
+output: ?
+
+testName: createZipArchive_inValidInputMetaDataUndefined
+input inputData: array<string>
+input inputMetaData: undefined
+output: ?
+
+testName: createZipArchive_inValidInputMetaDataNaN
+input inputData: array<string>
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: cleanRootPath_validData
+input inputData: string
+input inputMetaData: string
+output: string (?)
+
+testName: cleanRootPath_inValidInputDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: cleanRootPath_inValidInputMetaDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: cleanRootPath_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string
+output: ?
+
+testName: cleanRootPath_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: string
+output: ?
+
+testName: cleanRootPath_inValidInputMetaDataInteger
+input inputData: string
+input inputMetaData: integer (123)
+output: ?
+
+testName: cleanRootPath_inValidInputMetaDataBoolean
+input inputData: string
+input inputMetaData: boolean (false)
+output: ?
+
+testName: cleanRootPath_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string
+output: ?
+
+testName: cleanRootPath_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string
+output: ?
+
+testName: cleanRootPath_inValidInputMetaDataUndefined
+input inputData: string
+input inputMetaData: undefined
+output: ?
+
+testName: cleanRootPath_inValidInputMetaDataNaN
+input inputData: string
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: copyFileSync_validData
+input inputData: array<string>
+input inputMetaData: array<array<string>>
+output: boolean (?)
+
+testName: copyFileSync_inValidInputDataString
+input inputData: string
+input inputMetaData: array<array<string>>
+output: ?
+
+testName: copyFileSync_inValidInputMetaDataString
+input inputData: array<string>
+input inputMetaData: string
+output: ?
+
+testName: copyFileSync_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: array<array<string>>
+output: ?
+
+testName: copyFileSync_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: array<array<string>>
+output: ?
+
+testName: copyFileSync_inValidInputMetaDataInteger
+input inputData: array<string>
+input inputMetaData: integer (123)
+output: ?
+
+testName: copyFileSync_inValidInputMetaDataBoolean
+input inputData: array<string>
+input inputMetaData: boolean (false)
+output: ?
+
+testName: copyFileSync_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: array<array<string>>
+output: ?
+
+testName: copyFileSync_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: array<array<string>>
+output: ?
+
+testName: copyFileSync_inValidInputMetaDataUndefined
+input inputData: array<string>
+input inputMetaData: undefined
+output: ?
+
+testName: copyFileSync_inValidInputMetaDataNaN
+input inputData: array<string>
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: copyFolderRecursiveSync_validData
+input inputData: array<string>
+input inputMetaData: array<array<string>>
+output: boolean (?)
+
+testName: copyFolderRecursiveSync_inValidInputDataString
+input inputData: string
+input inputMetaData: array<array<string>>
+output: ?
+
+testName: copyFolderRecursiveSync_inValidInputMetaDataString
+input inputData: array<string>
+input inputMetaData: string
+output: ?
+
+testName: copyFolderRecursiveSync_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: array<array<string>>
+output: ?
+
+testName: copyFolderRecursiveSync_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: array<array<string>>
+output: ?
+
+testName: copyFolderRecursiveSync_inValidInputMetaDataInteger
+input inputData: array<string>
+input inputMetaData: integer (123)
+output: ?
+
+testName: copyFolderRecursiveSync_inValidInputMetaDataBoolean
+input inputData: array<string>
+input inputMetaData: boolean (false)
+output: ?
+
+testName: copyFolderRecursiveSync_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: array<array<string>>
+output: ?
+
+testName: copyFolderRecursiveSync_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: array<array<string>>
+output: ?
+
+testName: copyFolderRecursiveSync_inValidInputMetaDataUndefined
+input inputData: array<string>
+input inputMetaData: undefined
+output: ?
+
+testName: copyFolderRecursiveSync_inValidInputMetaDataNaN
+input inputData: array<string>
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: appendMessageToFile_validData
+input inputData: string
+input inputMetaData: string
+output: boolean (?)
+
+testName: appendMessageToFile_inValidInputDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: appendMessageToFile_inValidInputMetaDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: appendMessageToFile_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string
+output: ?
+
+testName: appendMessageToFile_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: string
+output: ?
+
+testName: appendMessageToFile_inValidInputMetaDataInteger
+input inputData: string
+input inputMetaData: integer (123)
+output: ?
+
+testName: appendMessageToFile_inValidInputMetaDataBoolean
+input inputData: string
+input inputMetaData: boolean (false)
+output: ?
+
+testName: appendMessageToFile_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string
+output: ?
+
+testName: appendMessageToFile_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string
+output: ?
+
+testName: appendMessageToFile_inValidInputMetaDataUndefined
+input inputData: string
+input inputMetaData: undefined
+output: ?
+
+testName: appendMessageToFile_inValidInputMetaDataNaN
+input inputData: string
+input inputMetaData: NaN
+output: ?

@@ -1,0 +1,167 @@
+Description: Test plan for mathOperations.js
+
+--------------------------------------------------------------------------------
+testName: hex2rgbConversion_validData
+input inputData: string
+input inputMetaData: string
+output: array<integer, integer, integer> (?)
+
+testName: hex2rgbConversion_inValidInputDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: hex2rgbConversion_inValidInputMetaDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: hex2rgbConversion_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string
+output: ?
+
+testName: hex2rgbConversion_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: string
+output: ?
+
+testName: hex2rgbConversion_inValidInputMetaDataInteger
+input inputData: string
+input inputMetaData: integer (123)
+output: ?
+
+testName: hex2rgbConversion_inValidInputMetaDataBoolean
+input inputData: string
+input inputMetaData: boolean (false)
+output: ?
+
+testName: hex2rgbConversion_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string
+output: ?
+
+testName: hex2rgbConversion_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string
+output: ?
+
+testName: hex2rgbConversion_inValidInputMetaDataUndefined
+input inputData: string
+input inputMetaData: undefined
+output: ?
+
+testName: hex2rgbConversion_inValidInputMetaDataNaN
+input inputData: string
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: isOdd_validData
+input inputData: string
+input inputMetaData: string
+output: boolean (?)
+
+testName: isOdd_inValidInputDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: isOdd_inValidInputMetaDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: isOdd_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string
+output: ?
+
+testName: isOdd_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: string
+output: ?
+
+testName: isOdd_inValidInputMetaDataInteger
+input inputData: string
+input inputMetaData: integer (123)
+output: ?
+
+testName: isOdd_inValidInputMetaDataBoolean
+input inputData: string
+input inputMetaData: boolean (false)
+output: ?
+
+testName: isOdd_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string
+output: ?
+
+testName: isOdd_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string
+output: ?
+
+testName: isOdd_inValidInputMetaDataUndefined
+input inputData: string
+input inputMetaData: undefined
+output: ?
+
+testName: isOdd_inValidInputMetaDataNaN
+input inputData: string
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: isEven_validData
+input inputData: string
+input inputMetaData: string
+output: boolean (?)
+
+testName: isEven_inValidInputDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: isEven_inValidInputMetaDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: isEven_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string
+output: ?
+
+testName: isEven_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: string
+output: ?
+
+testName: isEven_inValidInputMetaDataInteger
+input inputData: string
+input inputMetaData: integer (123)
+output: ?
+
+testName: isEven_inValidInputMetaDataBoolean
+input inputData: string
+input inputMetaData: boolean (false)
+output: ?
+
+testName: isEven_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string
+output: ?
+
+testName: isEven_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string
+output: ?
+
+testName: isEven_inValidInputMetaDataUndefined
+input inputData: string
+input inputMetaData: undefined
+output: ?
+
+testName: isEven_inValidInputMetaDataNaN
+input inputData: string
+input inputMetaData: NaN
+output: ?

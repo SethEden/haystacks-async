@@ -1,0 +1,442 @@
+Description: Test plan for fileStringParsing.js
+
+--------------------------------------------------------------------------------
+testName: getFileNameFromPath_validData
+input inputData: string
+input inputMetaData: string
+output: string (?)
+
+testName: getFileNameFromPath_inValidInputDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: getFileNameFromPath_inValidInputMetaDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: getFileNameFromPath_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string
+output: ?
+
+testName: getFileNameFromPath_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: string
+output: ?
+
+testName: getFileNameFromPath_inValidInputMetaDataInteger
+input inputData: string
+input inputMetaData: integer (123)
+output: ?
+
+testName: getFileNameFromPath_inValidInputMetaDataBoolean
+input inputData: string
+input inputMetaData: boolean (false)
+output: ?
+
+testName: getFileNameFromPath_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string
+output: ?
+
+testName: getFileNameFromPath_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string
+output: ?
+
+testName: getFileNameFromPath_inValidInputMetaDataUndefined
+input inputData: string
+input inputMetaData: undefined
+output: ?
+
+testName: getFileNameFromPath_inValidInputMetaDataNaN
+input inputData: string
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: getFileExtension_validData
+input inputData: string
+input inputMetaData: string
+output: string (?)
+
+testName: getFileExtension_inValidInputDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: getFileExtension_inValidInputMetaDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: getFileExtension_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string
+output: ?
+
+testName: getFileExtension_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: string
+output: ?
+
+testName: getFileExtension_inValidInputMetaDataInteger
+input inputData: string
+input inputMetaData: integer (123)
+output: ?
+
+testName: getFileExtension_inValidInputMetaDataBoolean
+input inputData: string
+input inputMetaData: boolean (false)
+output: ?
+
+testName: getFileExtension_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string
+output: ?
+
+testName: getFileExtension_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string
+output: ?
+
+testName: getFileExtension_inValidInputMetaDataUndefined
+input inputData: string
+input inputMetaData: undefined
+output: ?
+
+testName: getFileExtension_inValidInputMetaDataNaN
+input inputData: string
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: removeDotFromFileExtension_validData
+input inputData: string
+input inputMetaData: string
+output: string (?)
+
+testName: removeDotFromFileExtension_inValidInputDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: removeDotFromFileExtension_inValidInputMetaDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: removeDotFromFileExtension_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string
+output: ?
+
+testName: removeDotFromFileExtension_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: string
+output: ?
+
+testName: removeDotFromFileExtension_inValidInputMetaDataInteger
+input inputData: string
+input inputMetaData: integer (123)
+output: ?
+
+testName: removeDotFromFileExtension_inValidInputMetaDataBoolean
+input inputData: string
+input inputMetaData: boolean (false)
+output: ?
+
+testName: removeDotFromFileExtension_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string
+output: ?
+
+testName: removeDotFromFileExtension_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string
+output: ?
+
+testName: removeDotFromFileExtension_inValidInputMetaDataUndefined
+input inputData: string
+input inputMetaData: undefined
+output: ?
+
+testName: removeDotFromFileExtension_inValidInputMetaDataNaN
+input inputData: string
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: removeFileExtensionFromFileName_validData
+input inputData: string
+input inputMetaData: string
+output: string (?)
+
+testName: removeFileExtensionFromFileName_inValidInputDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: removeFileExtensionFromFileName_inValidInputMetaDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: removeFileExtensionFromFileName_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string
+output: ?
+
+testName: removeFileExtensionFromFileName_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: string
+output: ?
+
+testName: removeFileExtensionFromFileName_inValidInputMetaDataInteger
+input inputData: string
+input inputMetaData: integer (123)
+output: ?
+
+testName: removeFileExtensionFromFileName_inValidInputMetaDataBoolean
+input inputData: string
+input inputMetaData: boolean (false)
+output: ?
+
+testName: removeFileExtensionFromFileName_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string
+output: ?
+
+testName: removeFileExtensionFromFileName_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string
+output: ?
+
+testName: removeFileExtensionFromFileName_inValidInputMetaDataUndefined
+input inputData: string
+input inputMetaData: undefined
+output: ?
+
+testName: removeFileExtensionFromFileName_inValidInputMetaDataNaN
+input inputData: string
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: ascertainMatchingFilenames_validData
+input inputData: string
+input inputMetaData: string
+output: boolean (?)
+
+testName: ascertainMatchingFilenames_inValidInputDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: ascertainMatchingFilenames_inValidInputMetaDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: ascertainMatchingFilenames_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string
+output: ?
+
+testName: ascertainMatchingFilenames_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: string
+output: ?
+
+testName: ascertainMatchingFilenames_inValidInputMetaDataInteger
+input inputData: string
+input inputMetaData: integer (123)
+output: ?
+
+testName: ascertainMatchingFilenames_inValidInputMetaDataBoolean
+input inputData: string
+input inputMetaData: boolean (false)
+output: ?
+
+testName: ascertainMatchingFilenames_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string
+output: ?
+
+testName: ascertainMatchingFilenames_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string
+output: ?
+
+testName: ascertainMatchingFilenames_inValidInputMetaDataUndefined
+input inputData: string
+input inputMetaData: undefined
+output: ?
+
+testName: ascertainMatchingFilenames_inValidInputMetaDataNaN
+input inputData: string
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: supportedFileFormatsAre_validData
+input inputData: string
+input inputMetaData: string
+output: string (?)
+
+testName: supportedFileFormatsAre_inValidInputDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: supportedFileFormatsAre_inValidInputMetaDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: supportedFileFormatsAre_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string
+output: ?
+
+testName: supportedFileFormatsAre_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: string
+output: ?
+
+testName: supportedFileFormatsAre_inValidInputMetaDataInteger
+input inputData: string
+input inputMetaData: integer (123)
+output: ?
+
+testName: supportedFileFormatsAre_inValidInputMetaDataBoolean
+input inputData: string
+input inputMetaData: boolean (false)
+output: ?
+
+testName: supportedFileFormatsAre_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string
+output: ?
+
+testName: supportedFileFormatsAre_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string
+output: ?
+
+testName: supportedFileFormatsAre_inValidInputMetaDataUndefined
+input inputData: string
+input inputMetaData: undefined
+output: ?
+
+testName: supportedFileFormatsAre_inValidInputMetaDataNaN
+input inputData: string
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: removeXnumberOfFoldersFromEndOfPath_validData
+input inputData: string
+input inputMetaData: string
+output: string (?)
+
+testName: removeXnumberOfFoldersFromEndOfPath_inValidInputDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: removeXnumberOfFoldersFromEndOfPath_inValidInputMetaDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: removeXnumberOfFoldersFromEndOfPath_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string
+output: ?
+
+testName: removeXnumberOfFoldersFromEndOfPath_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: string
+output: ?
+
+testName: removeXnumberOfFoldersFromEndOfPath_inValidInputMetaDataInteger
+input inputData: string
+input inputMetaData: integer (123)
+output: ?
+
+testName: removeXnumberOfFoldersFromEndOfPath_inValidInputMetaDataBoolean
+input inputData: string
+input inputMetaData: boolean (false)
+output: ?
+
+testName: removeXnumberOfFoldersFromEndOfPath_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string
+output: ?
+
+testName: removeXnumberOfFoldersFromEndOfPath_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string
+output: ?
+
+testName: removeXnumberOfFoldersFromEndOfPath_inValidInputMetaDataUndefined
+input inputData: string
+input inputMetaData: undefined
+output: ?
+
+testName: removeXnumberOfFoldersFromEndOfPath_inValidInputMetaDataNaN
+input inputData: string
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: getFirstTopLevelFolderFromPath_validData
+input inputData: string
+input inputMetaData: string
+output: string (?)
+
+testName: getFirstTopLevelFolderFromPath_inValidInputDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: getFirstTopLevelFolderFromPath_inValidInputMetaDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: getFirstTopLevelFolderFromPath_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string
+output: ?
+
+testName: getFirstTopLevelFolderFromPath_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: string
+output: ?
+
+testName: getFirstTopLevelFolderFromPath_inValidInputMetaDataInteger
+input inputData: string
+input inputMetaData: integer (123)
+output: ?
+
+testName: getFirstTopLevelFolderFromPath_inValidInputMetaDataBoolean
+input inputData: string
+input inputMetaData: boolean (false)
+output: ?
+
+testName: getFirstTopLevelFolderFromPath_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string
+output: ?
+
+testName: getFirstTopLevelFolderFromPath_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string
+output: ?
+
+testName: getFirstTopLevelFolderFromPath_inValidInputMetaDataUndefined
+input inputData: string
+input inputMetaData: undefined
+output: ?
+
+testName: getFirstTopLevelFolderFromPath_inValidInputMetaDataNaN
+input inputData: string
+input inputMetaData: NaN
+output: ?

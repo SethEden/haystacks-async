@@ -550,3 +550,773 @@ testName: getConstantTypeInConstantLibraryObject_inValidInputMetaDataNaN
 input inputData: array<string, boolean>
 input inputMetaData: NaN
 output: ?
+--------------------------------------------------------------------------------
+testName: getConstantNameInConstantLibraryObject_validData
+input inputData: string
+input inputMetaData: object
+output: string|boolean (?)
+
+testName: getConstantNameInConstantLibraryObject_inValidInputDataString
+input inputData: string
+input inputMetaData: object
+output: ?
+
+testName: getConstantNameInConstantLibraryObject_inValidInputMetaDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: getConstantNameInConstantLibraryObject_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: object
+output: ?
+
+testName: getConstantNameInConstantLibraryObject_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: object
+output: ?
+
+testName: getConstantNameInConstantLibraryObject_inValidInputMetaDataInteger
+input inputData: string
+input inputMetaData: integer (123)
+output: ?
+
+testName: getConstantNameInConstantLibraryObject_inValidInputMetaDataBoolean
+input inputData: string
+input inputMetaData: boolean (false)
+output: ?
+
+testName: getConstantNameInConstantLibraryObject_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: object
+output: ?
+
+testName: getConstantNameInConstantLibraryObject_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: object
+output: ?
+
+testName: getConstantNameInConstantLibraryObject_inValidInputMetaDataUndefined
+input inputData: string
+input inputMetaData: undefined
+output: ?
+
+testName: getConstantNameInConstantLibraryObject_inValidInputMetaDataNaN
+input inputData: string
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: getConstantActualValueInConstantLibraryObject_validData
+input inputData: string
+input inputMetaData: object
+output: string|boolean (?)
+
+testName: getConstantActualValueInConstantLibraryObject_inValidInputDataString
+input inputData: string
+input inputMetaData: object
+output: ?
+
+testName: getConstantActualValueInConstantLibraryObject_inValidInputMetaDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: getConstantActualValueInConstantLibraryObject_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: object
+output: ?
+
+testName: getConstantActualValueInConstantLibraryObject_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: object
+output: ?
+
+testName: getConstantActualValueInConstantLibraryObject_inValidInputMetaDataInteger
+input inputData: string
+input inputMetaData: integer (123)
+output: ?
+
+testName: getConstantActualValueInConstantLibraryObject_inValidInputMetaDataBoolean
+input inputData: string
+input inputMetaData: boolean (false)
+output: ?
+
+testName: getConstantActualValueInConstantLibraryObject_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: object
+output: ?
+
+testName: getConstantActualValueInConstantLibraryObject_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: object
+output: ?
+
+testName: getConstantActualValueInConstantLibraryObject_inValidInputMetaDataUndefined
+input inputData: string
+input inputMetaData: undefined
+output: ?
+
+testName: getConstantActualValueInConstantLibraryObject_inValidInputMetaDataNaN
+input inputData: string
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: doesConstantExistInConstantNamespaceObject_validData
+input inputData: string
+input inputMetaData: object
+output: boolean (?)
+
+testName: doesConstantExistInConstantNamespaceObject_inValidInputDataString
+input inputData: string
+input inputMetaData: object
+output: ?
+
+testName: doesConstantExistInConstantNamespaceObject_inValidInputMetaDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: doesConstantExistInConstantNamespaceObject_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: object
+output: ?
+
+testName: doesConstantExistInConstantNamespaceObject_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: object
+output: ?
+
+testName: doesConstantExistInConstantNamespaceObject_inValidInputMetaDataInteger
+input inputData: string
+input inputMetaData: integer (123)
+output: ?
+
+testName: doesConstantExistInConstantNamespaceObject_inValidInputMetaDataBoolean
+input inputData: string
+input inputMetaData: boolean (false)
+output: ?
+
+testName: doesConstantExistInConstantNamespaceObject_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: object
+output: ?
+
+testName: doesConstantExistInConstantNamespaceObject_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: object
+output: ?
+
+testName: doesConstantExistInConstantNamespaceObject_inValidInputMetaDataUndefined
+input inputData: string
+input inputMetaData: undefined
+output: ?
+
+testName: doesConstantExistInConstantNamespaceObject_inValidInputMetaDataNaN
+input inputData: string
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: getConstantNameInConstantNamespaceObject_validData
+input inputData: string
+input inputMetaData: object
+output: string|boolean (?)
+
+testName: getConstantNameInConstantNamespaceObject_inValidInputDataString
+input inputData: string
+input inputMetaData: object
+output: ?
+
+testName: getConstantNameInConstantNamespaceObject_inValidInputMetaDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: getConstantNameInConstantNamespaceObject_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: object
+output: ?
+
+testName: getConstantNameInConstantNamespaceObject_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: object
+output: ?
+
+testName: getConstantNameInConstantNamespaceObject_inValidInputMetaDataInteger
+input inputData: string
+input inputMetaData: integer (123)
+output: ?
+
+testName: getConstantNameInConstantNamespaceObject_inValidInputMetaDataBoolean
+input inputData: string
+input inputMetaData: boolean (false)
+output: ?
+
+testName: getConstantNameInConstantNamespaceObject_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: object
+output: ?
+
+testName: getConstantNameInConstantNamespaceObject_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: object
+output: ?
+
+testName: getConstantNameInConstantNamespaceObject_inValidInputMetaDataUndefined
+input inputData: string
+input inputMetaData: undefined
+output: ?
+
+testName: getConstantNameInConstantNamespaceObject_inValidInputMetaDataNaN
+input inputData: string
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: getConstantActualValueInConstantNamespaceObject_validData
+input inputData: string
+input inputMetaData: object
+output: string|boolean (?)
+
+testName: getConstantActualValueInConstantNamespaceObject_inValidInputDataString
+input inputData: string
+input inputMetaData: object
+output: ?
+
+testName: getConstantActualValueInConstantNamespaceObject_inValidInputMetaDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: getConstantActualValueInConstantNamespaceObject_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: object
+output: ?
+
+testName: getConstantActualValueInConstantNamespaceObject_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: object
+output: ?
+
+testName: getConstantActualValueInConstantNamespaceObject_inValidInputMetaDataInteger
+input inputData: string
+input inputMetaData: integer (123)
+output: ?
+
+testName: getConstantActualValueInConstantNamespaceObject_inValidInputMetaDataBoolean
+input inputData: string
+input inputMetaData: boolean (false)
+output: ?
+
+testName: getConstantActualValueInConstantNamespaceObject_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: object
+output: ?
+
+testName: getConstantActualValueInConstantNamespaceObject_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: object
+output: ?
+
+testName: getConstantActualValueInConstantNamespaceObject_inValidInputMetaDataUndefined
+input inputData: string
+input inputMetaData: undefined
+output: ?
+
+testName: getConstantActualValueInConstantNamespaceObject_inValidInputMetaDataNaN
+input inputData: string
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: getConstantType_validData
+input inputData: string
+input inputMetaData: boolean
+output: string (?)
+
+testName: getConstantType_inValidInputDataString
+input inputData: string
+input inputMetaData: boolean
+output: ?
+
+testName: getConstantType_inValidInputMetaDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: getConstantType_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: boolean
+output: ?
+
+testName: getConstantType_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: boolean
+output: ?
+
+testName: getConstantType_inValidInputMetaDataInteger
+input inputData: string
+input inputMetaData: integer (123)
+output: ?
+
+testName: getConstantType_inValidInputMetaDataBoolean
+input inputData: string
+input inputMetaData: boolean (false)
+output: ?
+
+testName: getConstantType_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: boolean
+output: ?
+
+testName: getConstantType_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: boolean
+output: ?
+
+testName: getConstantType_inValidInputMetaDataUndefined
+input inputData: string
+input inputMetaData: undefined
+output: ?
+
+testName: getConstantType_inValidInputMetaDataNaN
+input inputData: string
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: getConstantActualValue_validData
+input inputData: string
+input inputMetaData: string
+output: string (?)
+
+testName: getConstantActualValue_inValidInputDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: getConstantActualValue_inValidInputMetaDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: getConstantActualValue_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string
+output: ?
+
+testName: getConstantActualValue_inValidInputDataBoolean 
+input inputData: boolean (false)
+input inputMetaData: string
+output: ?
+
+testName: getConstantActualValue_inValidInputMetaDataInteger
+input inputData: string
+input inputMetaData: integer (123)
+output: ?
+
+testName: getConstantActualValue_inValidInputMetaDataBoolean
+input inputData: string
+input inputMetaData: boolean (false)
+output: ?
+
+testName: getConstantActualValue_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string
+output: ?
+
+testName: getConstantActualValue_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string
+output: ?
+
+testName: getConstantActualValue_inValidInputMetaDataUndefined
+input inputData: string
+input inputMetaData: undefined
+output: ?
+
+testName: getConstantActualValue_inValidInputMetaDataNaN
+input inputData: string
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: getConstantName_validData
+input inputData: string
+input inputMetaData: string
+output: string (?)
+
+testName: getConstantName_inValidInputDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: getConstantName_inValidInputMetaDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: getConstantName_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string
+output: ?
+
+testName: getConstantName_inValidInputDataBoolean 
+input inputData: boolean (false)
+input inputMetaData: string
+output: ?
+
+testName: getConstantName_inValidInputMetaDataInteger
+input inputData: string
+input inputMetaData: integer (123)
+output: ?
+
+testName: getConstantName_inValidInputMetaDataBoolean
+input inputData: string
+input inputMetaData: boolean (false)
+output: ?
+
+testName: getConstantName_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string
+output: ?
+
+testName: getConstantName_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string
+output: ?
+
+testName: getConstantName_inValidInputMetaDataUndefined
+input inputData: string
+input inputMetaData: undefined
+output: ?
+
+testName: getConstantName_inValidInputMetaDataNaN
+input inputData: string
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: isConstantTypeValid_validData
+input inputData: string
+input inputMetaData: string
+output: string (?)
+
+testName: isConstantTypeValid_inValidInputDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: isConstantTypeValid_inValidInputMetaDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: isConstantTypeValid_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string
+output: ?
+
+testName: isConstantTypeValid_inValidInputDataBoolean 
+input inputData: boolean (false)
+input inputMetaData: string
+output: ?
+
+testName: isConstantTypeValid_inValidInputMetaDataInteger
+input inputData: string
+input inputMetaData: integer (123)
+output: ?
+
+testName: isConstantTypeValid_inValidInputMetaDataBoolean
+input inputData: string
+input inputMetaData: boolean (false)
+output: ?
+
+testName: isConstantTypeValid_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string
+output: ?
+
+testName: isConstantTypeValid_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string
+output: ?
+
+testName: isConstantTypeValid_inValidInputMetaDataUndefined
+input inputData: string
+input inputMetaData: undefined
+output: ?
+
+testName: isConstantTypeValid_inValidInputMetaDataNaN
+input inputData: string
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: convertConstantTypeToConstantPrefix_validData
+input inputData: string
+input inputMetaData: string
+output: string (?)
+
+testName: convertConstantTypeToConstantPrefix_inValidInputDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: convertConstantTypeToConstantPrefix_inValidInputMetaDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: convertConstantTypeToConstantPrefix_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string
+output: ?
+
+testName: convertConstantTypeToConstantPrefix_inValidInputDataBoolean 
+input inputData: boolean (false)
+input inputMetaData: string
+output: ?
+
+testName: convertConstantTypeToConstantPrefix_inValidInputMetaDataInteger
+input inputData: string
+input inputMetaData: integer (123)
+output: ?
+
+testName: convertConstantTypeToConstantPrefix_inValidInputMetaDataBoolean
+input inputData: string
+input inputMetaData: boolean (false)
+output: ?
+
+testName: convertConstantTypeToConstantPrefix_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string
+output: ?
+
+testName: convertConstantTypeToConstantPrefix_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string
+output: ?
+
+testName: convertConstantTypeToConstantPrefix_inValidInputMetaDataUndefined
+input inputData: string
+input inputMetaData: undefined
+output: ?
+
+testName: convertConstantTypeToConstantPrefix_inValidInputMetaDataNaN
+input inputData: string
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: constantsOptimizedFulfillmentSystem_validData
+input inputData: string
+input inputMetaData: string
+output: string (?)
+
+testName: constantsOptimizedFulfillmentSystem_inValidInputDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: constantsOptimizedFulfillmentSystem_inValidInputMetaDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: constantsOptimizedFulfillmentSystem_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string
+output: ?
+
+testName: constantsOptimizedFulfillmentSystem_inValidInputDataBoolean 
+input inputData: boolean (false)
+input inputMetaData: string
+output: ?
+
+testName: constantsOptimizedFulfillmentSystem_inValidInputMetaDataInteger
+input inputData: string
+input inputMetaData: integer (123)
+output: ?
+
+testName: constantsOptimizedFulfillmentSystem_inValidInputMetaDataBoolean
+input inputData: string
+input inputMetaData: boolean (false)
+output: ?
+
+testName: constantsOptimizedFulfillmentSystem_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string
+output: ?
+
+testName: constantsOptimizedFulfillmentSystem_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string
+output: ?
+
+testName: constantsOptimizedFulfillmentSystem_inValidInputMetaDataUndefined
+input inputData: string
+input inputMetaData: undefined
+output: ?
+
+testName: constantsOptimizedFulfillmentSystem_inValidInputMetaDataNaN
+input inputData: string
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: constantsFulfillmentSystem_validData
+input inputData: string
+input inputMetaData: string
+output: string (?)
+
+testName: constantsFulfillmentSystem_inValidInputDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: constantsFulfillmentSystem_inValidInputMetaDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: constantsFulfillmentSystem_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string
+output: ?
+
+testName: constantsFulfillmentSystem_inValidInputDataBoolean 
+input inputData: boolean (false)
+input inputMetaData: string
+output: ?
+
+testName: constantsFulfillmentSystem_inValidInputMetaDataInteger
+input inputData: string
+input inputMetaData: integer (123)
+output: ?
+
+testName: constantsFulfillmentSystem_inValidInputMetaDataBoolean
+input inputData: string
+input inputMetaData: boolean (false)
+output: ?
+
+testName: constantsFulfillmentSystem_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string
+output: ?
+
+testName: constantsFulfillmentSystem_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string
+output: ?
+
+testName: constantsFulfillmentSystem_inValidInputMetaDataUndefined
+input inputData: string
+input inputMetaData: undefined
+output: ?
+
+testName: constantsFulfillmentSystem_inValidInputMetaDataNaN
+input inputData: string
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: validateConstantsDataValues_validData
+input inputData: string
+input inputMetaData: string
+output: boolean (?)
+
+testName: validateConstantsDataValues_inValidInputDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: validateConstantsDataValues_inValidInputMetaDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: validateConstantsDataValues_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string
+output: ?
+
+testName: validateConstantsDataValues_inValidInputDataBoolean 
+input inputData: boolean (false)
+input inputMetaData: string
+output: ?
+
+testName: validateConstantsDataValues_inValidInputMetaDataInteger
+input inputData: string
+input inputMetaData: integer (123)
+output: ?
+
+testName: validateConstantsDataValues_inValidInputMetaDataBoolean
+input inputData: string
+input inputMetaData: boolean (false)
+output: ?
+
+testName: validateConstantsDataValues_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string
+output: ?
+
+testName: validateConstantsDataValues_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string
+output: ?
+
+testName: validateConstantsDataValues_inValidInputMetaDataUndefined
+input inputData: string
+input inputMetaData: undefined
+output: ?
+
+testName: validateConstantsDataValues_inValidInputMetaDataNaN
+input inputData: string
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: isConstantValid_validData
+input inputData: string
+input inputMetaData: string
+output: boolean (?)
+
+testName: isConstantValid_inValidInputDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: isConstantValid_inValidInputMetaDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: isConstantValid_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string
+output: ?
+
+testName: isConstantValid_inValidInputDataBoolean 
+input inputData: boolean (false)
+input inputMetaData: string
+output: ?
+
+testName: isConstantValid_inValidInputMetaDataInteger
+input inputData: string
+input inputMetaData: integer (123)
+output: ?
+
+testName: isConstantValid_inValidInputMetaDataBoolean
+input inputData: string
+input inputMetaData: boolean (false)
+output: ?
+
+testName: isConstantValid_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string
+output: ?
+
+testName: isConstantValid_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string
+output: ?
+
+testName: isConstantValid_inValidInputMetaDataUndefined
+input inputData: string
+input inputMetaData: undefined
+output: ?
+
+testName: isConstantValid_inValidInputMetaDataNaN
+input inputData: string
+input inputMetaData: NaN
+output: ?
