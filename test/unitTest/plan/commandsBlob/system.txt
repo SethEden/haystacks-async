@@ -1,0 +1,662 @@
+Description: Test plan for system.js
+
+--------------------------------------------------------------------------------
+testName: echoCommand_validData
+input inputData: array<boolean|string|integer>
+input inputMetaData: string
+output: array<boolean,string|integer|boolean|object|array> (?)
+
+testName: echoCommand_inValidInputDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: echoCommand_inValidInputMetaDataString
+input inputData: array<boolean|string|integer>
+input inputMetaData: string
+output: ?
+
+testName: echoCommand_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string
+output: ?
+
+testName: echoCommand_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: string
+output: ?
+
+testName: echoCommand_inValidInputMetaDataInteger
+input inputData: array<boolean|string|integer>
+input inputMetaData: integer (123)
+output: ?
+
+testName: echoCommand_inValidInputMetaDataBoolean
+input inputData: array<boolean|string|integer>
+input inputMetaData: boolean (false)
+output: ?
+
+testName: echoCommand_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string
+output: ?
+
+testName: echoCommand_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string
+output: ?
+
+testName: echoCommand_inValidInputMetaDataUndefined
+input inputData: array<boolean|string|integer>
+input inputMetaData: undefined
+output: ?
+
+testName: echoCommand_inValidInputMetaDataNaN
+input inputData: array<boolean|string|integer>
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: exit_validData
+input inputData: array<boolean|string|integer>
+input inputMetaData: string
+output: array<boolean,string|integer|boolean|object|array> (?)
+
+testName: exit_inValidInputDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: exit_inValidInputMetaDataString
+input inputData: array<boolean|string|integer>
+input inputMetaData: string
+output: ?
+
+testName: exit_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string
+output: ?
+
+testName: exit_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: string
+output: ?
+
+testName: exit_inValidInputMetaDataInteger
+input inputData: array<boolean|string|integer>
+input inputMetaData: integer (123)
+output: ?
+
+testName: exit_inValidInputMetaDataBoolean
+input inputData: array<boolean|string|integer>
+input inputMetaData: boolean (false)
+output: ?
+
+testName: exit_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string
+output: ?
+
+testName: exit_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string
+output: ?
+
+testName: exit_inValidInputMetaDataUndefined
+input inputData: array<boolean|string|integer>
+input inputMetaData: undefined
+output: ?
+
+testName: exit_inValidInputMetaDataNaN
+input inputData: array<boolean|string|integer>
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: version_validData
+input inputData: array<boolean|string|integer>
+input inputMetaData: string
+output: array<boolean,string|integer|boolean|object|array> (?)
+
+testName: version_inValidInputDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: version_inValidInputMetaDataString
+input inputData: array<boolean|string|integer>
+input inputMetaData: string
+output: ?
+
+testName: version_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string
+output: ?
+
+testName: version_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: string
+output: ?
+
+testName: version_inValidInputMetaDataInteger
+input inputData: array<boolean|string|integer>
+input inputMetaData: integer (123)
+output: ?
+
+testName: version_inValidInputMetaDataBoolean
+input inputData: array<boolean|string|integer>
+input inputMetaData: boolean (false)
+output: ?
+
+testName: version_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string
+output: ?
+
+testName: version_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string
+output: ?
+
+testName: version_inValidInputMetaDataUndefined
+input inputData: array<boolean|string|integer>
+input inputMetaData: undefined
+output: ?
+
+testName: version_inValidInputMetaDataNaN
+input inputData: array<boolean|string|integer>
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: about_validData
+input inputData: array<boolean|string|integer>
+input inputMetaData: string
+output: array<boolean,string|integer|boolean|object|array> (?)
+
+testName: about_inValidInputDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: about_inValidInputMetaDataString
+input inputData: array<boolean|string|integer>
+input inputMetaData: string
+output: ?
+
+testName: about_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string
+output: ?
+
+testName: about_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: string
+output: ?
+
+testName: about_inValidInputMetaDataInteger
+input inputData: array<boolean|string|integer>
+input inputMetaData: integer (123)
+output: ?
+
+testName: about_inValidInputMetaDataBoolean
+input inputData: array<boolean|string|integer>
+input inputMetaData: boolean (false)
+output: ?
+
+testName: about_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string
+output: ?
+
+testName: about_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string
+output: ?
+
+testName: about_inValidInputMetaDataUndefined
+input inputData: array<boolean|string|integer>
+input inputMetaData: undefined
+output: ?
+
+testName: about_inValidInputMetaDataNaN
+input inputData: array<boolean|string|integer>
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: name_validData
+input inputData: array<boolean|string|integer>
+input inputMetaData: string
+output: array<boolean,string|integer|boolean|object|array> (?)
+
+testName: name_inValidInputDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: name_inValidInputMetaDataString
+input inputData: array<boolean|string|integer>
+input inputMetaData: string
+output: ?
+
+testName: name_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string
+output: ?
+
+testName: name_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: string
+output: ?
+
+testName: name_inValidInputMetaDataInteger
+input inputData: array<boolean|string|integer>
+input inputMetaData: integer (123)
+output: ?
+
+testName: name_inValidInputMetaDataBoolean
+input inputData: array<boolean|string|integer>
+input inputMetaData: boolean (false)
+output: ?
+
+testName: name_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string
+output: ?
+
+testName: name_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string
+output: ?
+
+testName: name_inValidInputMetaDataUndefined
+input inputData: array<boolean|string|integer>
+input inputMetaData: undefined
+output: ?
+
+testName: name_inValidInputMetaDataNaN
+input inputData: array<boolean|string|integer>
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: clearScreen_validData
+input inputData: string
+input inputMetaData: string
+output: array<boolean,string|integer|boolean|object|array> (?)
+
+testName: clearScreen_inValidInputDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: clearScreen_inValidInputMetaDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: clearScreen_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string
+output: ?
+
+testName: clearScreen_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: string
+output: ?
+
+testName: clearScreen_inValidInputMetaDataInteger
+input inputData: string
+input inputMetaData: integer (123)
+output: ?
+
+testName: clearScreen_inValidInputMetaDataBoolean
+input inputData: string
+input inputMetaData: boolean (false)
+output: ?
+
+testName: clearScreen_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string
+output: ?
+
+testName: clearScreen_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string
+output: ?
+
+testName: clearScreen_inValidInputMetaDataUndefined
+input inputData: string
+input inputMetaData: undefined
+output: ?
+
+testName: clearScreen_inValidInputMetaDataNaN
+input inputData: string
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: help_validData
+input inputData: array<boolean|string|integer>
+input inputMetaData: string
+output: array<boolean,string|integer|boolean|object|array> (?)
+
+testName: help_inValidInputDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: help_inValidInputMetaDataString
+input inputData: array<boolean|string|integer>
+input inputMetaData: string
+output: ?
+
+testName: help_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string
+output: ?
+
+testName: help_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: string
+output: ?
+
+testName: help_inValidInputMetaDataInteger
+input inputData: array<boolean|string|integer>
+input inputMetaData: integer (123)
+output: ?
+
+testName: help_inValidInputMetaDataBoolean
+input inputData: array<boolean|string|integer>
+input inputMetaData: boolean (false)
+output: ?
+
+testName: help_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string
+output: ?
+
+testName: help_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string
+output: ?
+
+testName: help_inValidInputMetaDataUndefined
+input inputData: array<boolean|string|integer>
+input inputMetaData: undefined
+output: ?
+
+testName: help_inValidInputMetaDataNaN
+input inputData: array<boolean|string|integer>
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: workflowHelp_validData
+input inputData: array<boolean|string|integer>
+input inputMetaData: string
+output: array<boolean,string|integer|boolean|object|array> (?)
+
+testName: workflowHelp_inValidInputDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: workflowHelp_inValidInputMetaDataString
+input inputData: array<boolean|string|integer>
+input inputMetaData: string
+output: ?
+
+testName: workflowHelp_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string
+output: ?
+
+testName: workflowHelp_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: string
+output: ?
+
+testName: workflowHelp_inValidInputMetaDataInteger
+input inputData: array<boolean|string|integer>
+input inputMetaData: integer (123)
+output: ?
+
+testName: workflowHelp_inValidInputMetaDataBoolean
+input inputData: array<boolean|string|integer>
+input inputMetaData: boolean (false)
+output: ?
+
+testName: workflowHelp_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string
+output: ?
+
+testName: workflowHelp_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string
+output: ?
+
+testName: workflowHelp_inValidInputMetaDataUndefined
+input inputData: array<boolean|string|integer>
+input inputMetaData: undefined
+output: ?
+
+testName: workflowHelp_inValidInputMetaDataNaN
+input inputData: array<boolean|string|integer>
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: printUserCommandsLog_validData
+input inputData: string
+input inputMetaData: string
+output: array<boolean,array<string>> (?)
+
+testName: printUserCommandsLog_inValidInputDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: printUserCommandsLog_inValidInputMetaDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: printUserCommandsLog_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string
+output: ?
+
+testName: printUserCommandsLog_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: string
+output: ?
+
+testName: printUserCommandsLog_inValidInputMetaDataInteger
+input inputData: string
+input inputMetaData: integer (123)
+output: ?
+
+testName: printUserCommandsLog_inValidInputMetaDataBoolean
+input inputData: string
+input inputMetaData: boolean (false)
+output: ?
+
+testName: printUserCommandsLog_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string
+output: ?
+
+testName: printUserCommandsLog_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string
+output: ?
+
+testName: printUserCommandsLog_inValidInputMetaDataUndefined
+input inputData: string
+input inputMetaData: undefined
+output: ?
+
+testName: printUserCommandsLog_inValidInputMetaDataNaN
+input inputData: string
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: printAllCommandsLog_validData
+input inputData: string
+input inputMetaData: string
+output: array<boolean,array<string>> (?)
+
+testName: printAllCommandsLog_inValidInputDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: printAllCommandsLog_inValidInputMetaDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: printAllCommandsLog_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string
+output: ?
+
+testName: printAllCommandsLog_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: string
+output: ?
+
+testName: printAllCommandsLog_inValidInputMetaDataInteger
+input inputData: string
+input inputMetaData: integer (123)
+output: ?
+
+testName: printAllCommandsLog_inValidInputMetaDataBoolean
+input inputData: string
+input inputMetaData: boolean (false)
+output: ?
+
+testName: printAllCommandsLog_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string
+output: ?
+
+testName: printAllCommandsLog_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string
+output: ?
+
+testName: printAllCommandsLog_inValidInputMetaDataUndefined
+input inputData: string
+input inputMetaData: undefined
+output: ?
+
+testName: printAllCommandsLog_inValidInputMetaDataNaN
+input inputData: string
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: clearUserCommandsLog_validData
+input inputData: string
+input inputMetaData: string
+output: array<boolean,boolean> (?)
+
+testName: clearUserCommandsLog_inValidInputDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: clearUserCommandsLog_inValidInputMetaDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: clearUserCommandsLog_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string
+output: ?
+
+testName: clearUserCommandsLog_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: string
+output: ?
+
+testName: clearUserCommandsLog_inValidInputMetaDataInteger
+input inputData: string
+input inputMetaData: integer (123)
+output: ?
+
+testName: clearUserCommandsLog_inValidInputMetaDataBoolean
+input inputData: string
+input inputMetaData: boolean (false)
+output: ?
+
+testName: clearUserCommandsLog_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string
+output: ?
+
+testName: clearUserCommandsLog_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string
+output: ?
+
+testName: clearUserCommandsLog_inValidInputMetaDataUndefined
+input inputData: string
+input inputMetaData: undefined
+output: ?
+
+testName: clearUserCommandsLog_inValidInputMetaDataNaN
+input inputData: string
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: clearAllCommandsLog_validData
+input inputData: string
+input inputMetaData: string
+output: array<boolean,boolean> (?)
+
+testName: clearAllCommandsLog_inValidInputDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: clearAllCommandsLog_inValidInputMetaDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: clearAllCommandsLog_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string
+output: ?
+
+testName: clearAllCommandsLog_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: string
+output: ?
+
+testName: clearAllCommandsLog_inValidInputMetaDataInteger
+input inputData: string
+input inputMetaData: integer (123)
+output: ?
+
+testName: clearAllCommandsLog_inValidInputMetaDataBoolean
+input inputData: string
+input inputMetaData: boolean (false)
+output: ?
+
+testName: clearAllCommandsLog_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string
+output: ?
+
+testName: clearAllCommandsLog_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string
+output: ?
+
+testName: clearAllCommandsLog_inValidInputMetaDataUndefined
+input inputData: string
+input inputMetaData: undefined
+output: ?
+
+testName: clearAllCommandsLog_inValidInputMetaDataNaN
+input inputData: string
+input inputMetaData: NaN
+output: ?

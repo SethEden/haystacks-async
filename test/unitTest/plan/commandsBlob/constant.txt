@@ -1,0 +1,222 @@
+Description: Test plan for constant.js
+
+--------------------------------------------------------------------------------
+testName: constantsGenerator_validData
+input inputData: string
+input inputMetaData: string
+output: array<boolean,string|integer|boolean|object|array> (?)
+
+testName: constantsGenerator_inValidInputDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: constantsGenerator_inValidInputMetaDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: constantsGenerator_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string
+output: ?
+
+testName: constantsGenerator_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: string
+output: ?
+
+testName: constantsGenerator_inValidInputMetaDataInteger
+input inputData: string
+input inputMetaData: integer (123)
+output: ?
+
+testName: constantsGenerator_inValidInputMetaDataBoolean
+input inputData: string
+input inputMetaData: boolean (false)
+output: ?
+
+testName: constantsGenerator_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string
+output: ?
+
+testName: constantsGenerator_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string
+output: ?
+
+testName: constantsGenerator_inValidInputMetaDataUndefined
+input inputData: string
+input inputMetaData: undefined
+output: ?
+
+testName: constantsGenerator_inValidInputMetaDataNaN
+input inputData: string
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: constantsGeneratorList_validData
+input inputData: string
+input inputMetaData: string
+output: array<boolean,string|integer|boolean|object|array> (?)
+
+testName: constantsGeneratorList_inValidInputDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: constantsGeneratorList_inValidInputMetaDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: constantsGeneratorList_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string
+output: ?
+
+testName: constantsGeneratorList_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: string
+output: ?
+
+testName: constantsGeneratorList_inValidInputMetaDataInteger
+input inputData: string
+input inputMetaData: integer (123)
+output: ?
+
+testName: constantsGeneratorList_inValidInputMetaDataBoolean
+input inputData: string
+input inputMetaData: boolean (false)
+output: ?
+
+testName: constantsGeneratorList_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string
+output: ?
+
+testName: constantsGeneratorList_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string
+output: ?
+
+testName: constantsGeneratorList_inValidInputMetaDataUndefined
+input inputData: string
+input inputMetaData: undefined
+output: ?
+
+testName: constantsGeneratorList_inValidInputMetaDataNaN
+input inputData: string
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: constantsPatternRecognizer_validData
+input inputData: string
+input inputMetaData: string
+output: array<boolean,string|integer|boolean|object|array> (?)
+
+testName: constantsPatternRecognizer_inValidInputDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: constantsPatternRecognizer_inValidInputMetaDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: constantsPatternRecognizer_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string
+output: ?
+
+testName: constantsPatternRecognizer_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: string
+output: ?
+
+testName: constantsPatternRecognizer_inValidInputMetaDataInteger
+input inputData: string
+input inputMetaData: integer (123)
+output: ?
+
+testName: constantsPatternRecognizer_inValidInputMetaDataBoolean
+input inputData: string
+input inputMetaData: boolean (false)
+output: ?
+
+testName: constantsPatternRecognizer_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string
+output: ?
+
+testName: constantsPatternRecognizer_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string
+output: ?
+
+testName: constantsPatternRecognizer_inValidInputMetaDataUndefined
+input inputData: string
+input inputMetaData: undefined
+output: ?
+
+testName: constantsPatternRecognizer_inValidInputMetaDataNaN
+input inputData: string
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: evaluateConstant_validData
+input inputData: array<string>
+input inputMetaData: string
+output: array<boolean,string|integer|boolean|object|array> (?)
+
+testName: evaluateConstant_inValidInputDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: evaluateConstant_inValidInputMetaDataString
+input inputData: array<string>
+input inputMetaData: string
+output: ?
+
+testName: evaluateConstant_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string
+output: ?
+
+testName: evaluateConstant_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: string
+output: ?
+
+testName: evaluateConstant_inValidInputMetaDataInteger
+input inputData: array<string>
+input inputMetaData: integer (123)
+output: ?
+
+testName: evaluateConstant_inValidInputMetaDataBoolean
+input inputData: array<string>
+input inputMetaData: boolean (false)
+output: ?
+
+testName: evaluateConstant_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string
+output: ?
+
+testName: evaluateConstant_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string
+output: ?
+
+testName: evaluateConstant_inValidInputMetaDataUndefined
+input inputData: array<string>
+input inputMetaData: undefined
+output: ?
+
+testName: evaluateConstant_inValidInputMetaDataNaN
+input inputData: array<string>
+input inputMetaData: NaN
+output: ?

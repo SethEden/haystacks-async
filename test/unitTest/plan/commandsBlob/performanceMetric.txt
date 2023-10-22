@@ -1,0 +1,112 @@
+Description: Test plan for performanceMetric.js
+
+--------------------------------------------------------------------------------
+testName: businessRulesMetrics_validData
+input inputData: string
+input inputMetaData: string
+output: array<boolean,string|integer|boolean|object|array> (?)
+
+testName: businessRulesMetrics_inValidInputDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: businessRulesMetrics_inValidInputMetaDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: businessRulesMetrics_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string
+output: ?
+
+testName: businessRulesMetrics_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: string
+output: ?
+
+testName: businessRulesMetrics_inValidInputMetaDataInteger
+input inputData: string
+input inputMetaData: integer (123)
+output: ?
+
+testName: businessRulesMetrics_inValidInputMetaDataBoolean
+input inputData: string
+input inputMetaData: boolean (false)
+output: ?
+
+testName: businessRulesMetrics_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string
+output: ?
+
+testName: businessRulesMetrics_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string
+output: ?
+
+testName: businessRulesMetrics_inValidInputMetaDataUndefined
+input inputData: string
+input inputMetaData: undefined
+output: ?
+
+testName: businessRulesMetrics_inValidInputMetaDataNaN
+input inputData: string
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: commandMetrics_validData
+input inputData: string
+input inputMetaData: string
+output: array<boolean,string|integer|boolean|object|array> (?)
+
+testName: commandMetrics_inValidInputDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: commandMetrics_inValidInputMetaDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: commandMetrics_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string
+output: ?
+
+testName: commandMetrics_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: string
+output: ?
+
+testName: commandMetrics_inValidInputMetaDataInteger
+input inputData: string
+input inputMetaData: integer (123)
+output: ?
+
+testName: commandMetrics_inValidInputMetaDataBoolean
+input inputData: string
+input inputMetaData: boolean (false)
+output: ?
+
+testName: commandMetrics_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string
+output: ?
+
+testName: commandMetrics_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string
+output: ?
+
+testName: commandMetrics_inValidInputMetaDataUndefined
+input inputData: string
+input inputMetaData: undefined
+output: ?
+
+testName: commandMetrics_inValidInputMetaDataNaN
+input inputData: string
+input inputMetaData: NaN
+output: ?

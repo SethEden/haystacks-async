@@ -1,0 +1,222 @@
+Description: Test plan for dataDirectorate.js
+
+--------------------------------------------------------------------------------
+testName: printDataHive_validData
+input inputData: array<boolean|string|integer>
+input inputMetaData: string
+output: array<boolean,string|integer|boolean|object|array> (?)
+
+testName: printDataHive_inValidInputDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: printDataHive_inValidInputMetaDataString
+input inputData: array<boolean|string|integer>
+input inputMetaData: string
+output: ?
+
+testName: printDataHive_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string
+output: ?
+
+testName: printDataHive_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: string
+output: ?
+
+testName: printDataHive_inValidInputMetaDataInteger
+input inputData: array<boolean|string|integer>
+input inputMetaData: integer (123)
+output: ?
+
+testName: printDataHive_inValidInputMetaDataBoolean
+input inputData: array<boolean|string|integer>
+input inputMetaData: boolean (false)
+output: ?
+
+testName: printDataHive_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string
+output: ?
+
+testName: printDataHive_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string
+output: ?
+
+testName: printDataHive_inValidInputMetaDataUndefined
+input inputData: array<boolean|string|integer>
+input inputMetaData: undefined
+output: ?
+
+testName: printDataHive_inValidInputMetaDataNaN
+input inputData: array<boolean|string|integer>
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: printDataHiveAttributes_validData
+input inputData: array<boolean|string|integer>
+input inputMetaData: string
+output: array<boolean,string|integer|boolean|object|array> (?)
+
+testName: printDataHiveAttributes_inValidInputDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: printDataHiveAttributes_inValidInputMetaDataString
+input inputData: array<boolean|string|integer>
+input inputMetaData: string
+output: ?
+
+testName: printDataHiveAttributes_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string
+output: ?
+
+testName: printDataHiveAttributes_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: string
+output: ?
+
+testName: printDataHiveAttributes_inValidInputMetaDataInteger
+input inputData: array<boolean|string|integer>
+input inputMetaData: integer (123)
+output: ?
+
+testName: printDataHiveAttributes_inValidInputMetaDataBoolean
+input inputData: array<boolean|string|integer>
+input inputMetaData: boolean (false)
+output: ?
+
+testName: printDataHiveAttributes_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string
+output: ?
+
+testName: printDataHiveAttributes_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string
+output: ?
+
+testName: printDataHiveAttributes_inValidInputMetaDataUndefined
+input inputData: array<boolean|string|integer>
+input inputMetaData: undefined
+output: ?
+
+testName: printDataHiveAttributes_inValidInputMetaDataNaN
+input inputData: array<boolean|string|integer>
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: clearDataStorage_validData
+input inputData: array<boolean|string|integer>
+input inputMetaData: string
+output: array<boolean,string|integer|boolean|object|array> (?)
+
+testName: clearDataStorage_inValidInputDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: clearDataStorage_inValidInputMetaDataString
+input inputData: array<boolean|string|integer>
+input inputMetaData: string
+output: ?
+
+testName: clearDataStorage_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string
+output: ?
+
+testName: clearDataStorage_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: string
+output: ?
+
+testName: clearDataStorage_inValidInputMetaDataInteger
+input inputData: array<boolean|string|integer>
+input inputMetaData: integer (123)
+output: ?
+
+testName: clearDataStorage_inValidInputMetaDataBoolean
+input inputData: array<boolean|string|integer>
+input inputMetaData: boolean (false)
+output: ?
+
+testName: clearDataStorage_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string
+output: ?
+
+testName: clearDataStorage_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string
+output: ?
+
+testName: clearDataStorage_inValidInputMetaDataUndefined
+input inputData: array<boolean|string|integer>
+input inputMetaData: undefined
+output: ?
+
+testName: clearDataStorage_inValidInputMetaDataNaN
+input inputData: array<boolean|string|integer>
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: changeSetting_validData
+input inputData: array<string>
+input inputMetaData: string
+output: array<boolean,string|integer|boolean|object|array> (?)
+
+testName: changeSetting_inValidInputDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: changeSetting_inValidInputMetaDataString
+input inputData: array<boolean|string|integer>
+input inputMetaData: string
+output: ?
+
+testName: changeSetting_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string
+output: ?
+
+testName: changeSetting_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: string
+output: ?
+
+testName: changeSetting_inValidInputMetaDataInteger
+input inputData: array<boolean|string|integer>
+input inputMetaData: integer (123)
+output: ?
+
+testName: changeSetting_inValidInputMetaDataBoolean
+input inputData: array<boolean|string|integer>
+input inputMetaData: boolean (false)
+output: ?
+
+testName: changeSetting_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string
+output: ?
+
+testName: changeSetting_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string
+output: ?
+
+testName: changeSetting_inValidInputMetaDataUndefined
+input inputData: array<boolean|string|integer>
+input inputMetaData: undefined
+output: ?
+
+testName: changeSetting_inValidInputMetaDataNaN
+input inputData: array<boolean|string|integer>
+input inputMetaData: NaN
+output: ?

@@ -1,0 +1,222 @@
+Description: Test plan for integrationTests.js
+
+--------------------------------------------------------------------------------
+testName: validateConstants_validData
+input inputData: array<string>
+input inputMetaData: string
+output: array<boolean,string|integer|boolean|object|array> (?)
+
+testName: validateConstants_inValidInputDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: validateConstants_inValidInputMetaDataString
+input inputData: array<string>
+input inputMetaData: string
+output: ?
+
+testName: validateConstants_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string
+output: ?
+
+testName: validateConstants_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: string
+output: ?
+
+testName: validateConstants_inValidInputMetaDataInteger
+input inputData: array<string>
+input inputMetaData: integer (123)
+output: ?
+
+testName: validateConstants_inValidInputMetaDataBoolean
+input inputData: array<string>
+input inputMetaData: boolean (false)
+output: ?
+
+testName: validateConstants_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string
+output: ?
+
+testName: validateConstants_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string
+output: ?
+
+testName: validateConstants_inValidInputMetaDataUndefined
+input inputData: array<string>
+input inputMetaData: undefined
+output: ?
+
+testName: validateConstants_inValidInputMetaDataNaN
+input inputData: array<string>
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: validateCommandAliases_validData
+input inputData: array<string>
+input inputMetaData: string
+output: array<boolean,string|integer|boolean|object|array> (?)
+
+testName: validateCommandAliases_inValidInputDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: validateCommandAliases_inValidInputMetaDataString
+input inputData: array<string>
+input inputMetaData: string
+output: ?
+
+testName: validateCommandAliases_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string
+output: ?
+
+testName: validateCommandAliases_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: string
+output: ?
+
+testName: validateCommandAliases_inValidInputMetaDataInteger
+input inputData: array<string>
+input inputMetaData: integer (123)
+output: ?
+
+testName: validateCommandAliases_inValidInputMetaDataBoolean
+input inputData: array<string>
+input inputMetaData: boolean (false)
+output: ?
+
+testName: validateCommandAliases_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string
+output: ?
+
+testName: validateCommandAliases_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string
+output: ?
+
+testName: validateCommandAliases_inValidInputMetaDataUndefined
+input inputData: array<string>
+input inputMetaData: undefined
+output: ?
+
+testName: validateCommandAliases_inValidInputMetaDataNaN
+input inputData: array<string>
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: validateWorkflows_validData
+input inputData: array<string>
+input inputMetaData: string
+output: array<boolean,string|integer|boolean|object|array> (?)
+
+testName: validateWorkflows_inValidInputDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: validateWorkflows_inValidInputMetaDataString
+input inputData: array<string>
+input inputMetaData: string
+output: ?
+
+testName: validateWorkflows_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string
+output: ?
+
+testName: validateWorkflows_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: string
+output: ?
+
+testName: validateWorkflows_inValidInputMetaDataInteger
+input inputData: array<string>
+input inputMetaData: integer (123)
+output: ?
+
+testName: validateWorkflows_inValidInputMetaDataBoolean
+input inputData: array<string>
+input inputMetaData: boolean (false)
+output: ?
+
+testName: validateWorkflows_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string
+output: ?
+
+testName: validateWorkflows_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string
+output: ?
+
+testName: validateWorkflows_inValidInputMetaDataUndefined
+input inputData: array<string>
+input inputMetaData: undefined
+output: ?
+
+testName: validateWorkflows_inValidInputMetaDataNaN
+input inputData: array<string>
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: runAllValidations_validData
+input inputData: string
+input inputMetaData: string
+output: array<boolean,string|integer|boolean|object|array> (?)
+
+testName: runAllValidations_inValidInputDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: runAllValidations_inValidInputMetaDataString
+input inputData: string
+input inputMetaData: string
+output: ?
+
+testName: runAllValidations_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string
+output: ?
+
+testName: runAllValidations_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: string
+output: ?
+
+testName: runAllValidations_inValidInputMetaDataInteger
+input inputData: string
+input inputMetaData: integer (123)
+output: ?
+
+testName: runAllValidations_inValidInputMetaDataBoolean
+input inputData: string
+input inputMetaData: boolean (false)
+output: ?
+
+testName: runAllValidations_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string
+output: ?
+
+testName: runAllValidations_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string
+output: ?
+
+testName: runAllValidations_inValidInputMetaDataUndefined
+input inputData: array<string>
+input inputMetaData: undefined
+output: ?
+
+testName: runAllValidations_inValidInputMetaDataNaN
+input inputData: array<string>
+input inputMetaData: NaN
+output: ?
