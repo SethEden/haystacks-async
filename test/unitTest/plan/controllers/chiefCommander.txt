@@ -1,0 +1,117 @@
+Description: Test plan for chiefCommander.js
+
+--------------------------------------------------------------------------------
+testName: bootStrapCommands_validData
+output: void
+--------------------------------------------------------------------------------
+testName: reinitializeCommands_validData
+output: void
+--------------------------------------------------------------------------------
+testName: addClientCommands_validData
+input clientCommands: object
+output: void
+
+testName: addClientCommands_inValidString
+input clientCommands: string
+output: void
+
+testName: addClientCommands_inValidInteger
+input clientCommands: integer (123)
+output: void
+
+testName: addClientCommands_inValidBoolean
+input clientCommands: boolean (false)
+output: void
+
+testName: addClientCommands_inValidUndefined
+input clientCommands: undefined
+output: void
+
+testName: addClientCommands_inValidNaN
+input clientCommands: NaN
+output: void
+--------------------------------------------------------------------------------
+testName: loadCommandAliasesFromPath_validData
+input commandAliasesFilePathConfigurationName: string
+input contextName: string
+output: boolean|object (?)
+
+testName: loadCommandAliasesFromPath_inValidCommandAliasesFilePathConfigurationNameString
+input commandAliasesFilePathConfigurationName: string
+input contextName: string
+output: ?
+
+testName: loadCommandAliasesFromPath_inValidContextNameString
+input commandAliasesFilePathConfigurationName: string
+input contextName: string
+output: ?
+
+testName: loadCommandAliasesFromPath_inValidCommandAliasesFilePathConfigurationNameInteger
+input commandAliasesFilePathConfigurationName: integer (123)
+input contextName: string
+output: ?
+
+testName: loadCommandAliasesFromPath_inValidCommandAliasesFilePathConfigurationNameBoolean
+input commandAliasesFilePathConfigurationName: boolean (false)
+input contextName: string
+output: ?
+
+testName: loadCommandAliasesFromPath_inValidContextNameInteger
+input commandAliasesFilePathConfigurationName: string
+input contextName: integer (123)
+output: ?
+
+testName: loadCommandAliasesFromPath_inValidContextNameBoolean
+input commandAliasesFilePathConfigurationName: string
+input contextName: boolean (false)
+output: ?
+
+testName: loadCommandAliasesFromPath_inValidCommandAliasesFilePathConfigurationNameUndefined
+input commandAliasesFilePathConfigurationName: undefinend
+input contextName: string
+output: ?
+
+testName: loadCommandAliasesFromPath_inValidCommandAliasesFilePathConfigurationNameNaN
+input commandAliasesFilePathConfigurationName: NaN
+input contextName: string
+output: ?
+
+testName: loadCommandAliasesFromPath_inValidContextNameUndefined
+input commandAliasesFilePathConfigurationName: string
+input contextName: undefined
+output: ?
+
+testName: loadCommandAliasesFromPath_inValidContextNameNaN
+input commandAliasesFilePathConfigurationName: string
+input contextName: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: enqueueCommand_validData
+input command: string
+output: void
+
+testName: enqueueCommand_inValidCommandString
+input command: string
+output: void
+
+testName: enqueueCommand_inValidCommandInteger
+input command: integer (123)
+output: void
+
+testName: enqueueCommand_inValidCommandBoolean
+input command: boolean (false)
+output: void
+
+testName: enqueueCommand_inValidCommandUndefined
+input command: undefined
+output: void
+
+testName: enqueueCommand_inValidCommandNaN
+input command: NaN
+output: void
+--------------------------------------------------------------------------------
+testName: isCommandQueueEmpty_validData
+output: boolean (?)
+--------------------------------------------------------------------------------
+testName: processCommandQueue_validData
+output: array<boolean,string|integer|boolean|object|array> (?)

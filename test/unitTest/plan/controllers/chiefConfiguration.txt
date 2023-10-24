@@ -1,0 +1,129 @@
+Description: Test plan for chiefConfiguration.js
+
+--------------------------------------------------------------------------------
+testName: setupConfiguration_validData
+input appConfigPath: string
+input frameworkConfigPath: string
+output: void
+
+testName: setupConfiguration_inValidAppConfigPathString
+input appConfigPath: string
+input frameworkConfigPath: string
+output: void
+
+testName: setupConfiguration_inValidFrameworkConfigPathString
+input appConfigPath: string
+input frameworkConfigPath: string
+output: void
+
+testName: setupConfiguration_inValidAppConfigPathInteger
+input appConfigPath: integer (123)
+input frameworkConfigPath: string
+output: void
+
+testName: setupConfiguration_inValidAppConfigPathBoolean
+input appConfigPath: boolean (false)
+input frameworkConfigPath: string
+output: void
+
+testName: setupConfiguration_inValidFrameworkConfigPathInteger
+input appConfigPath: string
+input frameworkConfigPath: integer (123)
+output: void
+
+testName: setupConfiguration_inValidFrameworkConfigPathBoolean
+input appConfigPath: string
+input frameworkConfigPath: boolean (false)
+output: void
+
+testName: setupConfiguration_inValidAppConfigPathUndefined
+input appConfigPath: undefined
+input frameworkConfigPath: string
+output: void
+
+testName: setupConfiguration_inValidAppConfigPathNaN
+input appConfigPath: NaN
+input frameworkConfigPath: string
+output: void
+
+testName: setupConfiguration_inValidFrameworkConfigPathUndefined
+input appConfigPath: string
+input frameworkConfigPath: undefined
+output: void
+
+testName: setupConfiguration_inValidFrameworkConfigPathNaN
+input appConfigPath: string
+input frameworkConfigPath: NaN
+output: void
+--------------------------------------------------------------------------------
+testName: setupPluginConfiguration_validData
+input pluginConfigPath: string
+output: object (?)
+
+testName: setupPluginConfiguration_inValidPluginConfigPathString
+input pluginConfigPath: string
+output: ?
+
+testName: setupPluginConfiguration_inValidPluginConfigPathInteger
+input pluginConfigPath: integer (123)
+output: ?
+
+testName: setupPluginConfiguration_inValidPluginConfigPathBoolean
+input pluginConfigPath: boolean (false)
+output: ?
+
+testName: setupPluginConfiguration_inValidPluginConfigPathUndefined
+input pluginConfigPath: undefined
+output: ?
+
+testName: setupPluginConfiguration_inValidPluginConfigPathNaN
+input pluginConfigPath: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: parsePluginConfigurationData_validData
+input allPluginConfigData: string
+output: object (?)
+
+testName: parsePluginConfigurationData_inValidAllPluginConfigDataString
+input allPluginConfigData: string
+output: ?
+
+testName: parsePluginConfigurationData_inValidAllPluginConfigDataInteger
+input allPluginConfigData: integer (123)
+output: ?
+
+testName: parsePluginConfigurationData_inValidAllPluginConfigDataBoolean
+input allPluginConfigData: boolean (false)
+output: ?
+
+testName: parsePluginConfigurationData_inValidAllPluginConfigDataUndefined
+input allPluginConfigData: undefined
+output: ?
+
+testName: parsePluginConfigurationData_inValidAllPluginConfigDataNaN
+input allPluginConfigData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: parseLoadedConfigurationData_validData
+input allConfigurationData: object
+output: boolean (?)
+
+testName: parseLoadedConfigurationData_inValidAllConfigurationDataString
+input allConfigurationData: string
+output: ?
+
+testName: parseLoadedConfigurationData_inValidAllConfigurationDataInteger
+input allConfigurationData: integer (123)
+output: ?
+
+testName: parseLoadedConfigurationData_inValidAllConfigurationDataBoolean
+input allConfigurationData: boolean (false)
+output: ?
+
+testName: parseLoadedConfigurationData_inValidAllConfigurationDataUndefined
+input allConfigurationData: undefined
+output: ?
+
+testName: parseLoadedConfigurationData_inValidAllConfigurationDataNaN
+input allConfigurationData: NaN
+output: ?
