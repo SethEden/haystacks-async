@@ -1,0 +1,581 @@
+Description: Test plan for configurator.js
+
+--------------------------------------------------------------------------------
+testName: setConfigurationSetting_validData
+input configurationNamespace: string
+input configurationName: string
+input configurationValue: string|integer|boolean|double
+output: void
+
+testName: setConfigurationSetting_inValidConfigurationNamespaceString
+input configurationNamespace: string
+input configurationName: string
+input configurationValue: string|integer|boolean|double
+output: void
+
+testName: setConfigurationSetting_inValidConfigurationnameString
+input configurationNamespace: string
+input configurationName: string
+input configurationValue: string|integer|boolean|double
+output: void
+
+testName: setConfigurationSetting_inValidConfigurationValueString
+input configurationNamespace: string
+input configurationName: string
+input configurationValue: string|integer|boolean|double
+output: void
+
+testName: setConfigurationSetting_inValidConfigurationNamespaceInteger
+input configurationNamespace: integer (123)
+input configurationName: string
+input configurationValue: string|integer|boolean|double
+output: void
+
+testName: setConfigurationSetting_inValidConfigurationNamespaceBoolean
+input configurationNamespace: boolean (false)
+input configurationName: string
+input configurationValue: string|integer|boolean|double
+output: void
+
+testName: setConfigurationSetting_inValidConfigurationNameInteger
+input configurationNamespace: string
+input configurationName: integer (123)
+input configurationValue: string|integer|boolean|double
+output: void
+
+testName: setConfigurationSetting_inValidConfigurationNameBoolean
+input configurationNamespace: string
+input configurationName: boolean (false)
+input configurationValue: string|integer|boolean|double
+output: void
+
+testName: setConfigurationSetting_inValidConfigurationValueInteger
+input configurationNamespace: string
+input configurationName: string
+input configurationValue: integer (123)
+output: void
+
+testName: setConfigurationSetting_inValidConfigurationValueString
+input configurationNamespace: string
+input configurationName: string
+input configurationValue: boolean (false)
+output: void
+
+testName: setConfigurationSetting_inValidAllUndefined
+input configurationNamespace: undefined
+input configurationName: undefined
+input configurationValue: undefined
+output: void
+
+testName: setConfigurationSetting_inValidAllNaN
+input configurationNamespace: NaN
+input configurationName: NaN
+input configurationValue: NaN
+output: void
+--------------------------------------------------------------------------------
+testName: setPluginConfigurationSetting_validData
+input dataStructure: object
+input configurationNamespace: string
+input configurationName: string
+input configurationValue: string|integer|boolean|double
+output: void
+
+testName: setPluginConfigurationSetting_inValidDataStructureString
+input dataStructure: string
+input configurationNamespace: string
+input configurationName: string
+input configurationValue: string|integer|boolean|double
+output: void
+
+testName: setPluginConfigurationSetting_inValidConfigurationNamespaceString
+input dataStructure: object
+input configurationNamespace: string
+input configurationName: string
+input configurationValue: string|integer|boolean|double
+output: void
+
+testName: setPluginConfigurationSetting_inValidConfigurationnameString
+input dataStructure: object
+input configurationNamespace: string
+input configurationName: string
+input configurationValue: string|integer|boolean|double
+output: void
+
+testName: setPluginConfigurationSetting_inValidConfigurationValueString
+input dataStructure: object
+input configurationNamespace: string
+input configurationName: string
+input configurationValue: string|integer|boolean|double
+output: void
+
+testName: setPluginConfigurationSetting_inValidDataStructureInteger
+input dataStructure: integer (123)
+input configurationNamespace: string
+input configurationName: string
+input configurationValue: string|integer|boolean|double
+output: void
+
+testName: setPluginConfigurationSetting_inValidDataStructureBoolean
+input dataStructure: boolean (false)
+input configurationNamespace: string
+input configurationName: string
+input configurationValue: string|integer|boolean|double
+output: void
+
+testName: setPluginConfigurationSetting_inValidConfigurationNamespaceInteger
+input dataStructure: object
+input configurationNamespace: integer (123)
+input configurationName: string
+input configurationValue: string|integer|boolean|double
+output: void
+
+testName: setPluginConfigurationSetting_inValidConfigurationNamespaceBoolean
+input dataStructure: object
+input configurationNamespace: boolean (false)
+input configurationName: string
+input configurationValue: string|integer|boolean|double
+output: void
+
+testName: setPluginConfigurationSetting_inValidConfigurationNameInteger
+input dataStructure: object
+input configurationNamespace: string
+input configurationName: integer (123)
+input configurationValue: string|integer|boolean|double
+output: void
+
+testName: setPluginConfigurationSetting_inValidConfigurationNameBoolean
+input dataStructure: object
+input configurationNamespace: string
+input configurationName: boolean (false)
+input configurationValue: string|integer|boolean|double
+output: void
+
+testName: setPluginConfigurationSetting_inValidConfigurationValueInteger
+input dataStructure: object
+input configurationNamespace: string
+input configurationName: string
+input configurationValue: integer (123)
+output: void
+
+testName: setPluginConfigurationSetting_inValidConfigurationValueString
+input dataStructure: object
+input configurationNamespace: string
+input configurationName: string
+input configurationValue: boolean (false)
+output: void
+
+testName: setPluginConfigurationSetting_inValidAllUndefined
+input dataStructure: undefined
+input configurationNamespace: undefined
+input configurationName: undefined
+input configurationValue: undefined
+output: void
+
+testName: setPluginConfigurationSetting_inValidAllNaN
+input dataStructure: NaN
+input configurationNamespace: NaN
+input configurationName: NaN
+input configurationValue: NaN
+output: void
+--------------------------------------------------------------------------------
+testName: getConfigurationSetting_validData
+input configurationNamespace: string
+input configurationName: string
+output: string|integer|boolean|double (?)
+
+testName: getConfigurationSetting_inValidConfigurationNamespaceString
+input configurationNamespace: string
+input configurationName: string
+output: ?
+
+testName: getConfigurationSetting_inValidConfigurationNameString
+input configurationNamespace: string
+input configurationName: string
+output: ?
+
+testName: getConfigurationSetting_inValidConfigurationNamespaceInteger
+input configurationNamespace: integer (123)
+input configurationName: string
+output: ?
+
+testName: getConfigurationSetting_inValidConfigurationNamespaceBoolean
+input configurationNamespace: boolean (false)
+input configurationName: string
+output: ?
+
+testName: getConfigurationSetting_inValidConfigurationNameInteger
+input configurationNamespace: string
+input configurationName: integer (123)
+output: ?
+
+testName: getConfigurationSetting_inValidConfigurationNameBoolean
+input configurationNamespace: string
+input configurationName: boolean (false)
+output: ?
+
+testName: getConfigurationSetting_inValidConfigurationNamespaceUndefined
+input configurationNamespace: undefined
+input configurationName: string
+output: ?
+
+testName: getConfigurationSetting_inValidConfigurationNamespaceNaN
+input configurationNamespace: NaN
+input configurationName: string
+output: ?
+
+testName: getConfigurationSetting_inValidConfigurationNameUndefiend
+input configurationNamespace: string
+input configurationName: undefined
+output: ?
+
+testName: getConfigurationSetting_inValidConfigurationNameNaN
+input configurationNamespace: string
+input configurationName: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: processConfigurationNameRules_validData
+input fullyQualifiedName: string
+output: string (?)
+
+testName: processConfigurationNameRules_inValidProcessConfigurationNameRulesString
+input fullyQualifiedName: string
+output: ?
+
+testName: processConfigurationNameRules_inValidProcessConfigurationNameRulesInteger
+input fullyQualifiedName: integer (123)
+output: ?
+
+testName: processConfigurationNameRules_inValidProcessConfigurationNameRulesBoolean
+input fullyQualifiedName: boolean (false)
+output: ?
+
+testName: processConfigurationNameRules_inValidProcessConfigurationNameRulesUndefined
+input fullyQualifiedName: undefined
+output: ?
+
+testName: processConfigurationNameRules_inValidProcessConfigurationNameRulesNaN
+input fullyQualifiedName: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: processConfigurationNamespaceRules_validData
+input fullyQualifiedName: string
+output: string (?)
+
+testName: processConfigurationNamespaceRules_inValidProcessConfigurationNameRulesString
+input fullyQualifiedName: string
+output: ?
+
+testName: processConfigurationNamespaceRules_inValidProcessConfigurationNameRulesInteger
+input fullyQualifiedName: integer (123)
+output: ?
+
+testName: processConfigurationNamespaceRules_inValidProcessConfigurationNameRulesBoolean
+input fullyQualifiedName: boolean (false)
+output: ?
+
+testName: processConfigurationNamespaceRules_inValidProcessConfigurationNameRulesUndefined
+input fullyQualifiedName: undefined
+output: ?
+
+testName: processConfigurationNamespaceRules_inValidProcessConfigurationNameRulesNaN
+input fullyQualifiedName: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: processConfigurationValueRules_validData
+input name: string
+input value: string
+output: string|boolean|integer|float|object (?)
+
+testName: processConfigurationValueRules_inValidNameString
+input name: string
+input value: string
+output: ?
+
+testName: processConfigurationValueRules_inValidValueString
+input name: string
+input value: string
+output: ?
+
+testName: processConfigurationValueRules_inValidNameInteger
+input name: integer (123)
+input value: string
+output: ?
+
+testName: processConfigurationValueRules_inValidNameBoolean
+input name: boolean (false)
+input value: string
+output: ?
+
+testName: processConfigurationValueRules_inValidValueInteger
+input name: string
+input value: integer (123)
+output: ?
+
+testName: processConfigurationValueRules_inValidValueBoolean
+input name: string
+input value: boolean (false)
+output: ?
+
+testName: processConfigurationValueRules_inValidNameUndefined
+input name: undefined
+input value: string
+output: ?
+
+testName: processConfigurationValueRules_inValidNameNaN
+input name: NaN
+input value: string
+output: ?
+
+testName: processConfigurationValueRules_inValidValueUndefined
+input name: string
+input value: undefined
+output: ?
+
+testName: processConfigurationValueRules_inValidValueNaN
+input name: string
+input value: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: getParentConfigurationNamespaceObject_validData
+input configurationNamespace: string
+input optionalFunctionNameAppendix: string
+output: object|boolean (?)
+
+testName: getParentConfigurationNamespaceObject_inValidConfigurationNamespaceString
+input configurationNamespace: string
+input optionalFunctionNameAppendix: string
+output: ?
+
+testName: getParentConfigurationNamespaceObject_inValidOptionalFunctionNameAppendixString
+input configurationNamespace: string
+input optionalFunctionNameAppendix: string
+output: ?
+
+testName: getParentConfigurationNamespaceObject_inValidConfigurationNamespaceInteger
+input configurationNamespace: integer (123)
+input optionalFunctionNameAppendix: string
+output: ?
+
+testName: getParentConfigurationNamespaceObject_inValidConfigurationNamespaceBoolean
+input configurationNamespace: boolean (false)
+input optionalFunctionNameAppendix: string
+output: ?
+
+testName: getParentConfigurationNamespaceObject_inValidOptionalFunctionNameAppendixInteger
+input configurationNamespace: string
+input optionalFunctionNameAppendix: integer (123)
+output: ?
+
+testName: getParentConfigurationNamespaceObject_inValidOptionalFunctionNameAppendixBoolean
+input configurationNamespace: string
+input optionalFunctionNameAppendix: boolean (false)
+output: ?
+
+testName: getParentConfigurationNamespaceObject_inValidConfigurationNamespaceUndefined
+input configurationNamespace: undefined
+input optionalFunctionNameAppendix: string
+output: ?
+
+testName: getParentConfigurationNamespaceObject_inValidConfigurationNamespaceNaN
+input configurationNamespace: NaN
+input optionalFunctionNameAppendix: string
+output: ?
+
+testName: getParentConfigurationNamespaceObject_inValidOptionalFunctionNameAppendixUndefined
+input configurationNamespace: string
+input optionalFunctionNameAppendix: undefined
+output: ?
+
+testName: getParentConfigurationNamespaceObject_inValidOptionalFunctionNameAppendixNaN
+input configurationNamespace: string
+input optionalFunctionNameAppendix: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: getConfigurationNamespaceObject_validData
+input configurationNamespace: array<string>
+output: object|boolean (?)
+
+testName: getConfigurationNamespaceObject_inValidConfigurationNamespaceString
+input configurationNamespace: string
+output: ?
+
+testName: getConfigurationNamespaceObject_inValidConfigurationNamespaceInteger
+input configurationNamespace: integer (123)
+output: ?
+
+testName: getConfigurationNamespaceObject_inValidConfigurationNamespaceBoolean
+input configurationNamespace: boolean (false)
+output: ?
+
+testName: getConfigurationNamespaceObject_inValidConfigurationNamespaceUndefined
+input configurationNamespace: undefined
+output: ?
+
+testName: getConfigurationNamespaceObject_inValidConfigurationNamespaceNaN
+input configurationNamespace: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: getPluginConfigurationNamespaceObject_validData
+input dataStructure: object
+input configurationNamespace: object|boolean
+output: ?
+
+testName: getPluginConfigurationNamespaceObject_inValidDataStructureString
+input dataStructure: string
+input configurationNamespace: object|boolean
+output: ?
+
+testName: getPluginConfigurationNamespaceObject_inValidConfigurationNamespaceString
+input dataStructure: string
+input configurationNamespace: string
+output: ?
+
+testName: getPluginConfigurationNamespaceObject_inValidDataStructureInteger
+input dataStructure: integer (123)
+input configurationNamespace: object|boolean
+output: ?
+
+testName: getPluginConfigurationNamespaceObject_inValidDataStructureBoolean
+input dataStructure: boolean (false)
+input configurationNamespace: object|boolean
+output: ?
+
+testName: getPluginConfigurationNamespaceObject_inValidConfigurationNamespaceInteger
+input dataStructure: string
+input configurationNamespace: integer (123)
+output: ?
+
+testName: getPluginConfigurationNamespaceObject_inValidConfigurationNamespaceBoolean
+input dataStructure: string
+input configurationNamespace: boolean (false)
+output: ?
+
+testName: getPluginConfigurationNamespaceObject_inValidDataStructureUndefined
+input dataStructure: undefined
+input configurationNamespace: object|boolean
+output: ?
+
+testName: getPluginConfigurationNamespaceObject_inValidDataStructureNaN
+input dataStructure: NaN
+input configurationNamespace: object|boolean
+output: ?
+
+testName: getPluginConfigurationNamespaceObject_inValidConfigurationNamespaceUndefined
+input dataStructure: string
+input configurationNamespace: undefined
+output: ?
+
+testName: getPluginConfigurationNamespaceObject_inValidConfigurationNamespaceNaN
+input dataStructure: string
+input configurationNamespace: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: addPluginConfigurationData_validData
+input pluginName: string
+input pluginConfigData: object
+output: boolean (?)
+
+testName: addPluginConfigurationData_inValidPluginNameString
+input pluginName: string
+input pluginConfigData: object
+output: ?
+
+testName: addPluginConfigurationData_inValidPluginConfigDataString
+input pluginName: string
+input pluginConfigData: string
+output: ?
+
+testName: addPluginConfigurationData_inValidPluginNameInteger
+input pluginName: integer (123)
+input pluginConfigData: object
+output: ?
+
+testName: addPluginConfigurationData_inValidPluginNameBoolean
+input pluginName: boolean (false)
+input pluginConfigData: object
+output: ?
+
+testName: addPluginConfigurationData_inValidPluginConfigDataInteger
+input pluginName: string
+input pluginConfigData: integer (123)
+output: ?
+
+testName: addPluginConfigurationData_inValidPluginConfigDataBoolean
+input pluginName: string
+input pluginConfigData: boolean (false)
+output: ?
+
+testName: addPluginConfigurationData_inValidPluginNameUndefined
+input pluginName: undefined
+input pluginConfigData: object
+output: ?
+
+testName: addPluginConfigurationData_inValidPluginNameNaN
+input pluginName: NaN
+input pluginConfigData: object
+output: ?
+
+testName: addPluginConfigurationData_inValidPluginConfigDataUndefined
+input pluginName: string
+input pluginConfigData: undefined
+output: ?
+
+testName: addPluginConfigurationData_inValidPluginConfigDataNaN
+input pluginName: string
+input pluginConfigData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: getAmbiguousDataElement_validData
+input dataSource: object
+input possibleDataNamesArray: array<string>
+output: string|integer|boolean|float|object (?)
+
+testName: getAmbiguousDataElement_inValidDataSourceString
+input dataSource: string
+input possibleDataNamesArray: array<string>
+output: ?
+
+testName: getAmbiguousDataElement_inValidPossibleDataNamesArrayString
+input dataSource: string
+input possibleDataNamesArray: string
+output: ?
+
+testName: getAmbiguousDataElement_inValidDataSourceInteger
+input dataSource: integer (123)
+input possibleDataNamesArray: array<string>
+output: ?
+
+testName: getAmbiguousDataElement_inValidDataSourceBoolean
+input dataSource: boolean (false)
+input possibleDataNamesArray: array<string>
+output: ?
+
+testName: getAmbiguousDataElement_inValidPossibleDataNamesArrayInteger
+input dataSource: string
+input possibleDataNamesArray: integer (123)
+output: ?
+
+testName: getAmbiguousDataElement_inValidPossibleDataNamesArrayBoolean
+input dataSource: string
+input possibleDataNamesArray: boolean (false)
+output: ?
+
+testName: getAmbiguousDataElement_inValidDataSourceUndefined
+input dataSource: undefined
+input possibleDataNamesArray: array<string>
+output: ?
+
+testName: getAmbiguousDataElement_inValidDataSourceNaN
+input dataSource: NaN
+input possibleDataNamesArray: array<string>
+output: ?
+
+testName: getAmbiguousDataElement_inValidPossibleDataNamesArrayUndefiend
+input dataSource: string
+input possibleDataNamesArray: undefined
+output: ?
+
+testName: getAmbiguousDataElement_inValidPossibleDataNamesArrayNaN
+input dataSource: string
+input possibleDataNamesArray: NaN
+output: ?
