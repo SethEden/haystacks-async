@@ -1,0 +1,63 @@
+Description: Test plan for chiefConstant.js
+
+--------------------------------------------------------------------------------
+testName: initializeConstantsValidationData_validData
+output: void
+--------------------------------------------------------------------------------
+testName: generateFrameworkConstantsValidationData_validData
+output: object (?)
+--------------------------------------------------------------------------------
+testName: addConstantsValidationData_validData
+input arrayValidataionData: array<array<string, object>>
+input contextName: string
+output: boolean (?)
+
+testName: addConstantsValidationData_inValidArrayValidationDataString
+input arrayValidataionData: string
+input contextName: string
+output: ?
+
+testName: addConstantsValidationData_inValidContextNameString
+input arrayValidataionData: array<array<string, object>>
+input contextName: string
+output: ?
+
+testName: addConstantsValidationData_inValidArrayValidationDataInteger
+input arrayValidataionData: integer (123)
+input contextName: string
+output: ?
+
+testName: addConstantsValidationData_inValidArrayValidationDataBoolean
+input arrayValidataionData: boolean (false)
+input contextName: string
+output: ?
+
+testName: addConstantsValidationData_inValidContextNameInteger
+input arrayValidataionData: array<array<string, object>>
+input contextName: integer (123)
+output: ?
+
+testName: addConstantsValidationData_inValidContextNameBoolean
+input arrayValidataionData: array<array<string, object>>
+input contextName: boolean (false)
+output: ?
+
+testName: addConstantsValidationData_inValidArrayValidationDataUndefined
+input arrayValidataionData: undefined
+input contextName: string
+output: ?
+
+testName: addConstantsValidationData_inValidArrayValidationDataNaN
+input arrayValidataionData: NaN
+input contextName: string
+output: ?
+
+testName: addConstantsValidationData_inValidContextNameUndefined
+input arrayValidataionData: array<array<string, object>>
+input contextName: undefined
+output: ?
+
+testName: addConstantsValidationData_inValidContextNameNaN
+input arrayValidataionData: array<array<string, object>>
+input contextName: NaN
+output: ?

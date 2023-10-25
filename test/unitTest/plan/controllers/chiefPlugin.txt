@@ -1,0 +1,423 @@
+Description: Test plan for chiefPlugin.js
+
+--------------------------------------------------------------------------------
+testName: loadPluginRegistryData_validData
+input pluginRegistryPath: string
+output: object (?)
+
+testName: loadPluginRegistryData_inValidPluginRegistryPathString
+input pluginRegistryPath: string
+output: ?
+
+testName: loadPluginRegistryData_inValidPluginRegistryPathInteger
+input pluginRegistryPath: integer (123)
+output: ?
+
+testName: loadPluginRegistryData_inValidPluginRegistryPathBoolean
+input pluginRegistryPath: boolean (false)
+output: ?
+
+testName: loadPluginRegistryData_inValidPluginRegistryPathUndefined
+input pluginRegistryPath: undefined
+output: ?
+
+testName: loadPluginRegistryData_inValidPluginRegistryPathNaN
+input pluginRegistryPath: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: persistPluginRegistryToDataStructure_validData
+input pluginRegistryData: string
+output: object (?)
+
+testName: persistPluginRegistryToDataStructure_inValidPluginRegistryDataString
+input pluginRegistryData: string
+output: ?
+
+testName: persistPluginRegistryToDataStructure_inValidPluginRegistryDataInteger
+input pluginRegistryData: integer (123)
+output: ?
+
+testName: persistPluginRegistryToDataStructure_inValidPluginRegistryDataBoolean
+input pluginRegistryData: boolean (false)
+output: ?
+
+testName: persistPluginRegistryToDataStructure_inValidPluginRegistryDataUndefined
+input pluginRegistryData: undefined
+output: ?
+
+testName: persistPluginRegistryToDataStructure_inValidPluginRegistryDataNaN
+input pluginRegistryData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: listLoadedPlugins_validData
+output: array<string> (?)
+--------------------------------------------------------------------------------
+testName: getAllPluginsInRegistry_validData
+output: array<string> (?)
+--------------------------------------------------------------------------------
+testName: getAllPluginsPathsInRegistry_validData
+output: array<string> (?)
+--------------------------------------------------------------------------------
+testName: getAllPluginsInRegistryPath_validData
+output: array<string> (?)
+--------------------------------------------------------------------------------
+testName: countAllPluginsInRegistry_validData
+output: integer (?)
+--------------------------------------------------------------------------------
+testName: countAllPluginsInRegistryPath_validData
+output: integer (?)
+--------------------------------------------------------------------------------
+testName: registerNamedPlugin_validData
+input pluginName: string
+input pluginPath: string
+output: boolean (?)
+
+testName: registerNamedPlugin_inValidPluginNameString
+input pluginName: string
+input pluginPath: string
+output: ?
+
+testName: registerNamedPlugin_inValidPluginPathString
+input pluginName: string
+input pluginPath: string
+output: ?
+
+testName: registerNamedPlugin_inValidPluginNameInteger
+input pluginName: integer (123)
+input pluginPath: string
+output: ?
+
+testName: registerNamedPlugin_inValidPluginNameBoolean
+input pluginName: boolean (false)
+input pluginPath: string
+output: ?
+
+testName: registerNamedPlugin_inValidPluginPathInteger
+input pluginName: string
+input pluginPath: integer (123)
+output: ?
+
+testName: registerNamedPlugin_inValidPluginPathBoolean
+input pluginName: string
+input pluginPath: boolean (false)
+output: ?
+
+testName: registerNamedPlugin_inValidPluginNameUndefined
+input pluginName: undefined
+input pluginPath: string
+output: ?
+
+testName: registerNamedPlugin_inValidPluginNameNaN
+input pluginName: NaN
+input pluginPath: string
+output: ?
+
+testName: registerNamedPlugin_inValidPluginPathUndefined
+input pluginName: string
+input pluginPath: undefined
+output: ?
+
+testName: registerNamedPlugin_inValidPluginPathNaN
+input pluginName: string
+input pluginPath: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: unregisterNamedPlugin_validData
+input pluginName: string
+output: boolean (?)
+
+testName: unregisterNamedPlugin_inValidPluginNameString
+input pluginName: string
+output: ?
+
+testName: unregisterNamedPlugin_inValidPluginNameInteger
+input pluginName: integer (123)
+output: ?
+
+testName: unregisterNamedPlugin_inValidPluginNameBoolean
+input pluginName: boolean (false)
+output: ?
+
+testName: unregisterNamedPlugin_inValidPluginNameUndefined
+input pluginName: undefined
+output: ?
+
+testName: unregisterNamedPlugin_inValidPluginNameNaN
+input pluginName: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: unregisterPlugins_validData
+input pluginListArray: array<string>
+output: boolean (?)
+
+testName: unregisterPlugins_inValidPluginListArrayString
+input pluginListArray: string
+output: ?
+
+testName: unregisterPlugins_inValidPluginListArrayInteger
+input pluginListArray: integer (123)
+output: ?
+
+testName: unregisterPlugins_inValidPluginListArrayBoolean
+input pluginListArray: boolean (false)
+output: ?
+
+testName: unregisterPlugins_inValidPluginListArrayUndefined
+input pluginListArray: undefined
+output: ?
+
+testName: unregisterPlugins_inValidPluginListArrayNaN
+input pluginListArray: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: synchronizePluginRegistryWithPath_validData
+output: boolean (?)
+--------------------------------------------------------------------------------
+testName: clearPluginRegistry_validData
+output: boolean (?)
+--------------------------------------------------------------------------------
+testName: savePluginRegistryDisk_validData
+output: boolean (?)
+--------------------------------------------------------------------------------
+testName: loadAllPluginsMetaData_validData
+input pluginsPaths: array<string>
+output: array<string> (?)
+
+testName: loadAllPluginsMetaData_inValidPluginsPathsString
+input pluginsPaths: string
+output: ?
+
+testName: loadAllPluginsMetaData_inValidPluginsPathsInteger
+input pluginsPaths: integer (123)
+output: ?
+
+testName: loadAllPluginsMetaData_inValidPluginsPathsBoolean
+input pluginsPaths: boolean (false)
+output: ?
+
+testName: loadAllPluginsMetaData_inValidPluginsPathsUndefined
+input pluginsPaths: undefined
+output: ?
+
+testName: loadAllPluginsMetaData_inValidPluginsPathsNaN
+input pluginsPaths: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: loadAllPluginsExecutionPaths_validData
+input pluginsMetaData: array<object>
+input pluginsPaths: array<string>
+output: array<string> (?)
+
+testName: loadAllPluginsExecutionPaths_inValidPluginsMetaDataString
+input pluginsMetaData: string
+input pluginsPaths: array<string>
+output: ?
+
+testName: loadAllPluginsExecutionPaths_inValidPluginsPathsString
+input pluginsMetaData: array<object>
+input pluginsPaths: string
+output: ?
+
+testName: loadAllPluginsExecutionPaths_inValidPluginsMetaDataInteger
+input pluginsMetaData: integer (123)
+input pluginsPaths: array<string>
+output: ?
+
+testName: loadAllPluginsExecutionPaths_inValidPluginsMetaDataBoolean
+input pluginsMetaData: boolean (false)
+input pluginsPaths: array<string>
+output: ?
+
+testName: loadAllPluginsExecutionPaths_inValidPluginsPathsInteger
+input pluginsMetaData: array<object>
+input pluginsPaths: integer (123)
+output: ?
+
+testName: loadAllPluginsExecutionPaths_inValidPluginsPathsBoolean
+input pluginsMetaData: array<object>
+input pluginsPaths: boolean (false)
+output: ?
+
+testName: loadAllPluginsExecutionPaths_inValidPluginsMetaDataUndefined
+input pluginsMetaData: undefined
+input pluginsPaths: array<string>
+output: ?
+
+testName: loadAllPluginsExecutionPaths_inValidPluginsMetaDataNaN
+input pluginsMetaData: NaN
+input pluginsPaths: array<string>
+output: ?
+
+testName: loadAllPluginsExecutionPaths_inValidPluginsPathsUndefined
+input pluginsMetaData: array<object>
+input pluginsPaths: undefined
+output: ?
+
+testName: loadAllPluginsExecutionPaths_inValidPluginsPathsNaN
+input pluginsMetaData: array<object>
+input pluginsPaths: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: loadAllPlugins_validData
+input pluginsExecutionPaths: array<string>
+input pluginsMetaData: array<object>
+output: object (?)
+
+testName: loadAllPlugins_inValidPluginsExecutionPathsString
+input pluginsExecutionPaths: string
+input pluginsMetaData: array<object>
+output: ?
+
+testName: loadAllPlugins_inValidPluginsMetaDataString
+input pluginsExecutionPaths: array<string>
+input pluginsMetaData: string
+output: ?
+
+testName: loadAllPlugins_inValidPluginsExecutionPathsInteger
+input pluginsExecutionPaths: integer (123)
+input pluginsMetaData: array<object>
+output: ?
+
+testName: loadAllPlugins_inValidPluginsExecutionPathsBoolean
+input pluginsExecutionPaths: boolean (false)
+input pluginsMetaData: array<object>
+output: ?
+
+testName: loadAllPlugins_inValidPluginsMetaDataInteger
+input pluginsExecutionPaths: array<string>
+input pluginsMetaData: integer (123)
+output: ?
+
+testName: loadAllPlugins_inValidPluginsMetaDataBoolean
+input pluginsExecutionPaths: array<string>
+input pluginsMetaData: boolean (false)
+output: ?
+
+testName: loadAllPlugins_inValidPluginsExecutionPathsUndefined
+input pluginsExecutionPaths: undefined
+input pluginsMetaData: array<object>
+output: ?
+
+testName: loadAllPlugins_inValidPluginsExecutionPathsNaN
+input pluginsExecutionPaths: NaN
+input pluginsMetaData: array<object>
+output: ?
+
+testName: loadAllPlugins_inValidPluginsMetaDataUndefined
+input pluginsExecutionPaths: array<string>
+input pluginsMetaData: undefined
+output: ?
+
+testName: loadAllPlugins_inValidPluginsMetaDataNaN
+input pluginsExecutionPaths: array<string>
+input pluginsMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: integrateAllPluginsData_validData
+input allPluginsData: object
+output: boolean (?)
+
+testName: integrateAllPluginsData_inValidAllPluginsDataString
+input allPluginsData: string
+output: ?
+
+testName: integrateAllPluginsData_inValidAllPluginsDataInteger
+input allPluginsData: integer (123)
+output: ?
+
+testName: integrateAllPluginsData_inValidAllPluginsDataBoolean
+input allPluginsData: boolean (false)
+output: ?
+
+testName: integrateAllPluginsData_inValidAllPluginsDataUndefined
+input allPluginsData: undefined
+output: ?
+
+testName: integrateAllPluginsData_inValidAllPluginsDataNaN
+input allPluginsData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: integratePluginData_validData
+input pluginName: string
+input pluginData: object
+output: boolean (?)
+
+testName: integratePluginData_inValidPluginNameString
+input pluginName: string
+input pluginData: object
+output: ?
+
+testName: integratePluginData_inValidPluginDataString
+input pluginName: string
+input pluginData: string
+output: ?
+
+testName: integratePluginData_inValidPluginNameInteger
+input pluginName: integer (123)
+input pluginData: object
+output: ?
+
+testName: integratePluginData_inValidPluginNameBoolean
+input pluginName: boolean (false)
+input pluginData: object
+output: ?
+
+testName: integratePluginData_inValidPluginDataInteger
+input pluginName: string
+input pluginData: integer (123)
+output: ?
+
+testName: integratePluginData_inValidPluginDataBoolean
+input pluginName: string
+input pluginData: boolean (false)
+output: ?
+
+testName: integratePluginData_inValidPluginNameUndefined
+input pluginName: undefined
+input pluginData: object
+output: ?
+
+testName: integratePluginData_inValidPluginNameNaN
+input pluginName: NaN
+input pluginData: object
+output: ?
+
+testName: integratePluginData_inValidPluginDataUndefined
+input pluginName: string
+input pluginData: undefiend
+output: ?
+
+testName: integratePluginData_inValidPluginDataNaN
+input pluginName: string
+input pluginData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: verifyAllPluginsLoaded_validData
+output: boolean (?)
+--------------------------------------------------------------------------------
+testName: unloadPlugin_validData
+input pluginName: string
+output: boolean (?)
+
+testName: unloadPlugin_inValidPluginNameString
+input pluginName: string
+output: ?
+
+testName: unloadPlugin_inValidPluginNameInteger
+input pluginName: integer (123)
+output: ?
+
+testName: unloadPlugin_inValidPluginNameBoolean
+input pluginName: boolean (false)
+output: ?
+
+testName: unloadPlugin_inValidPluginNameUndefined
+input pluginName: undefined
+output: ?
+
+testName: unloadPlugin_inValidPluginNameNaN
+input pluginName: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: getPluginsRegistryPath_validData
+output: string (?)
