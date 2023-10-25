@@ -1,0 +1,29 @@
+Description: Test plan for data.js
+
+--------------------------------------------------------------------------------
+testName: getData_validData
+output: object (?)
+--------------------------------------------------------------------------------
+testName: storeData_validData
+input newData: object
+output: ?
+
+testName: storeData_inValidNewDataString
+input newData: string
+output: ?
+
+testName: storeData_inValidNewDataInteger
+input newData: integer (123)
+output: ?
+
+testName: storeData_inValidNewDataBoolean
+input newData: boolean (false)
+output: ?
+
+testName: storeData_inValidNewDataUndefined
+input newData: undefined
+output: ?
+
+testName: storeData_inValidNewDataNaN
+input newData: NaN
+output: ?

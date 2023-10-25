@@ -1,0 +1,280 @@
+Description: Test plan for queue.js
+
+--------------------------------------------------------------------------------
+testName: initQueue_validData
+input queueNameSpace: string
+output: void
+
+testName: initQueue_inValidQueueNameSpaceString
+input queueNameSpace: string
+output: void
+
+testName: initQueue_inValidQueueNameSpaceInteger
+input queueNameSpace: integer (123)
+output: void
+
+testName: initQueue_inValidQueueNameSpaceBoolean
+input queueNameSpace: boolean (false)
+output: void
+
+testName: initQueue_inValidQueueNameSpaceUndefined
+input queueNameSpace: undefined
+output: void
+
+testName: initQueue_inValidQueueNameSpaceNaN
+input queueNameSpace: NaN
+output: void
+--------------------------------------------------------------------------------
+testName: dequeue_validData
+input queueNameSpace: string
+output: string (?)
+
+testName: dequeue_inValidQueueNameSpaceString
+input queueNameSpace: string
+output: ?
+
+testName: dequeue_inValidQueueNameSpaceInteger
+input queueNameSpace: integer (123)
+output: ?
+
+testName: dequeue_inValidQueueNameSpaceBoolean
+input queueNameSpace: boolean (false)
+output: ?
+
+testName: dequeue_inValidQueueNameSpaceUndefined
+input queueNameSpace: undefined
+output: ?
+
+testName: dequeue_inValidQueueNameSpaceNaN
+input queueNameSpace: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: enqueue_validData
+input queueNameSpace: string
+input value: string
+output: void
+
+testName: enqueue_inValidQueueNameSpaceString
+input queueNameSpace: string
+input value: string
+output: void
+
+testName: enqueue_inValidValueString
+input queueNameSpace: string
+input value: string
+output: void
+
+testName: enqueue_inValidQueueNameSpaceInteger
+input queueNameSpace: integer (123)
+input value: string
+output: void
+
+testName: enqueue_inValidQueueNameSpaceBoolean
+input queueNameSpace: boolean (false)
+input value: string
+output: void
+
+testName: enqueue_inValidValueInteger
+input queueNameSpace: string
+input value: integer (123)
+output: void
+
+testName: enqueue_inValidValueBoolean
+input queueNameSpace: string
+input value: boolean (false)
+output: void
+
+testName: enqueue_inValidQueueNameSpaceUndefined
+input queueNameSpace: undefined
+input value: string
+output: void
+
+testName: enqueue_inValidQueueNameSpaceNaN
+input queueNameSpace: NaN
+input value: string
+output: void
+
+testName: enqueue_inValidValueUndefined
+input queueNameSpace: string
+input value: undefined
+output: void
+
+testName: enqueue_inValidValueNaN
+input queueNameSpace: string
+input value: NaN
+output: void
+--------------------------------------------------------------------------------
+testName: enqueueFront_validData
+input queueNameSpace: string
+input value: string|array<string>
+output: void
+
+testName: enqueueFront_inValidQueueNameSpaceString
+input queueNameSpace: string
+input value: string|array<string>
+output: void
+
+testName: enqueueFront_inValidValueString
+input queueNameSpace: string
+input value: string
+output: void
+
+testName: enqueueFront_inValidQueueNameSpaceInteger
+input queueNameSpace: integer (123)
+input value: string|array<string>
+output: void
+
+testName: enqueueFront_inValidQueueNameSpaceBoolean
+input queueNameSpace: boolean (false)
+input value: string|array<string>
+output: void
+
+testName: enqueueFront_inValidValueInteger
+input queueNameSpace: string
+input value: integer (123)
+output: void
+
+testName: enqueueFront_inValidValueBoolean
+input queueNameSpace: string
+input value: boolean (false)
+output: void
+
+testName: enqueueFront_inValidQueueNameSpaceUndefined
+input queueNameSpace: undefined
+input value: string|array<string>
+output: void
+
+testName: enqueueFront_inValidQueueNameSpaceNaN
+input queueNameSpace: NaN
+input value: string|array<string>
+output: void
+
+testName: enqueueFront_inValidValueUndefined
+input queueNameSpace: string
+input value: undefined
+output: void
+
+testName: enqueueFront_inValidValueNaN
+input queueNameSpace: string
+input value: NaN
+output: void
+--------------------------------------------------------------------------------
+testName: isEmpty_validData
+input queueNameSpace: string
+output: boolean (?)
+
+testName: isEmpty_inValidQueueNameSpaceString
+input queueNameSpace: string
+output: ?
+
+testName: isEmpty_inValidQueueNameSpaceInteger
+input queueNameSpace: integer (123)
+output: ?
+
+testName: isEmpty_inValidQueueNameSpaceBoolean
+input queueNameSpace: boolean (false)
+output: ?
+
+testName: isEmpty_inValidQueueNameSpaceUndefined
+input queueNameSpace: undefined
+output: ?
+
+testName: isEmpty_inValidQueueNameSpaceNaN
+input queueNameSpace: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: queueFront_validData
+input queueNameSpace: string
+output: string (?)
+
+testName: queueFront_inValidQueueNameSpaceString
+input queueNameSpace: string
+output: ?
+
+testName: queueFront_inValidQueueNameSpaceInteger
+input queueNameSpace: integer (123)
+output: ?
+
+testName: queueFront_inValidQueueNameSpaceBoolean
+input queueNameSpace: boolean (false)
+output: ?
+
+testName: queueFront_inValidQueueNameSpaceUndefined
+input queueNameSpace: undefined
+output: ?
+
+testName: queueFront_inValidQueueNameSpaceNaN
+input queueNameSpace: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: queueSize_validData
+input queueNameSpace: string
+output: integer (?)
+
+testName: queueSize_inValidQueueNameSpaceString
+input queueNameSpace: string
+output: ?
+
+testName: queueSize_inValidQueueNameSpaceInteger
+input queueNameSpace: integer (123)
+output: ?
+
+testName: queueSize_inValidQueueNameSpaceBoolean
+input queueNameSpace: boolean (false)
+output: ?
+
+testName: queueSize_inValidQueueNameSpaceUndefined
+input queueNameSpace: undefined
+output: ?
+
+testName: queueSize_inValidQueueNameSpaceNaN
+input queueNameSpace: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: queueContents_validData
+input queueNameSpace: string
+output: array<string> (?)
+
+testName: queueContents_inValidQueueNameSpaceString
+input queueNameSpace: string
+output: ?
+
+testName: queueContents_inValidQueueNameSpaceInteger
+input queueNameSpace: integer (123)
+output: ?
+
+testName: queueContents_inValidQueueNameSpaceBoolean
+input queueNameSpace: boolean (false)
+output: ?
+
+testName: queueContents_inValidQueueNameSpaceUndefined
+input queueNameSpace: undefined
+output: ?
+
+testName: queueContents_inValidQueueNameSpaceNaN
+input queueNameSpace: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: queuePrint_validData
+input queueNameSpace: string
+output: void
+
+testName: queuePrint_inValidQueueNameSpaceString
+input queueNameSpace: string
+output: void
+
+testName: queuePrint_inValidQueueNameSpaceInteger
+input queueNameSpace: integer (123)
+output: void
+
+testName: queuePrint_inValidQueueNameSpaceBoolean
+input queueNameSpace: boolean (false)
+output: void
+
+testName: queuePrint_inValidQueueNameSpaceUndefined
+input queueNameSpace: undefined
+output: void
+
+testName: queuePrint_inValidQueueNameSpaceNaN
+input queueNameSpace: NaN
+output: void

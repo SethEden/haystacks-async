@@ -1,0 +1,280 @@
+Description: Test plan for stack.js
+
+--------------------------------------------------------------------------------
+testName: initStack_validData
+input stackNameSpace: string
+output: void
+
+testName: initStack_inValidStackNameSpaceString
+input stackNameSpace: string
+output: void
+
+testName: initStack_inValidStackNameSpaceInteger
+input stackNameSpace: integer (123)
+output: void
+
+testName: initStack_inValidStackNameSpaceBoolean
+input stackNameSpace: boolean (false)
+output: void
+
+testName: initStack_inValidStackNameSpaceUndefined
+input stackNameSpace: undefined
+output: void
+
+testName: initStack_inValidStackNameSpaceNaN
+input stackNameSpace: NaN
+output: void
+--------------------------------------------------------------------------------
+testName: clearStack_validData
+input stackNameSpace: string
+output: void
+
+testName: clearStack_inValidStackNameSpaceString
+input stackNameSpace: string
+output: void
+
+testName: clearStack_inValidStackNameSpaceInteger
+input stackNameSpace: integer (123)
+output: void
+
+testName: clearStack_inValidStackNameSpaceBoolean
+input stackNameSpace: boolean (false)
+output: void
+
+testName: clearStack_inValidStackNameSpaceUndefined
+input stackNameSpace: undefined
+output: void
+
+testName: clearStack_inValidStackNameSpaceNaN
+input stackNameSpace: NaN
+output: void
+--------------------------------------------------------------------------------
+testName: push_validData
+input stackNameSpace: string
+input value: string|integer|boolean|object|array
+output: void
+
+testName: push_inValidStackNameSpaceString
+input stackNameSpace: string
+input value: string|integer|boolean|object|array
+output: void
+
+testName: push_inValidValueString
+input stackNameSpace: string
+input value: string
+output: void
+
+testName: push_inValidStackNameSpaceInteger
+input stackNameSpace: integer (123)
+input value: string|integer|boolean|object|array
+output: void
+
+testName: push_inValidStackNameSpaceBoolean
+input stackNameSpace: boolean (false)
+input value: string|integer|boolean|object|array
+output: void
+
+testName: push_inValidValueInteger
+input stackNameSpace: string
+input value: integer (123)
+output: void
+
+testName: push_inValidValueBoolean
+input stackNameSpace: string
+input value: boolean (false)
+output: void
+
+testName: push_inValidStackNameSpaceUndefined
+input stackNameSpace: undefined
+input value: string|integer|boolean|object|array
+output: void
+
+testName: push_inValidStackNameSpaceNaN
+input stackNameSpace: NaN
+input value: string|integer|boolean|object|array
+output: void
+
+testName: push_inValidValueUndefined
+input stackNameSpace: string
+input value: undefined
+output: void
+
+testName: push_inValidValueNaN
+input stackNameSpace: string
+input value: NaN
+output: void
+--------------------------------------------------------------------------------
+testName: pop_validData
+input stackNameSpace: string
+output: string|integer|boolean|object|array (?)
+
+testName: pop_inValidStackNameSpaceString
+input stackNameSpace: string
+output: ?
+
+testName: pop_inValidStackNameSpaceInteger
+input stackNameSpace: integer (123)
+output: ?
+
+testName: pop_inValidStackNameSpaceBoolean
+input stackNameSpace: boolean (false)
+output: ?
+
+testName: pop_inValidStackNameSpaceUndefined
+input stackNameSpace: undefined
+output: ?
+
+testName: pop_inValidStackNameSpaceNaN
+input stackNameSpace: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: isEmpty_validData
+input stackNameSpace: string
+output: boolean (?)
+
+testName: isEmpty_inValidStackNameSpaceString
+input stackNameSpace: string
+output: ?
+
+testName: isEmpty_inValidStackNameSpaceInteger
+input stackNameSpace: integer (123)
+output: ?
+
+testName: isEmpty_inValidStackNameSpaceBoolean
+input stackNameSpace: boolean (false)
+output: ?
+
+testName: isEmpty_inValidStackNameSpaceUndefined
+input stackNameSpace: undefined
+output: ?
+
+testName: isEmpty_inValidStackNameSpaceNaN
+input stackNameSpace: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: length_validData
+input stackNameSpace: string
+output: integer (?)
+
+testName: length_inValidStackNameSpaceString
+input stackNameSpace: string
+output: ?
+
+testName: length_inValidStackNameSpaceInteger
+input stackNameSpace: integer (123)
+output: ?
+
+testName: length_inValidStackNameSpaceBoolean
+input stackNameSpace: boolean (false)
+output: ?
+
+testName: length_inValidStackNameSpaceUndefined
+input stackNameSpace: undefined
+output: ?
+
+testName: length_inValidStackNameSpaceNaN
+input stackNameSpace: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: contains_validData
+input stackNameSpace: string
+input value: string|integer|boolean|object|array
+output: boolean (?)
+
+testName: contains_inValidStackNameSpaceString
+input stackNameSpace: string
+input value: string|integer|boolean|object|array
+output: ?
+
+testName: contains_inValidValueString
+input stackNameSpace: string
+input value: string
+output: ?
+
+testName: contains_inValidStackNameSpaceInteger
+input stackNameSpace: integer (123)
+input value: string|integer|boolean|object|array
+output: ?
+
+testName: contains_inValidStackNameSpaceBoolean
+input stackNameSpace: boolean (false)
+input value: string|integer|boolean|object|array
+output: ?
+
+testName: contains_inValidValueInteger
+input stackNameSpace: string
+input value: integer (123)
+output: ?
+
+testName: contains_inValidValueBoolean
+input stackNameSpace: string
+input value: boolean (false)
+output: ?
+
+testName: contains_inValidStackNameSpaceUndefined
+input stackNameSpace: undefined
+input value: string|integer|boolean|object|array
+output: ?
+
+testName: contains_inValidStackNameSpaceNaN
+input stackNameSpace: NaN
+input value: string|integer|boolean|object|array
+output: ?
+
+testName: contains_inValidValueUndefined
+input stackNameSpace: string
+input value: undefined
+output: ?
+
+testName: contains_inValidValueNaN
+input stackNameSpace: string
+input value: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: print_validData
+input stackNameSpace: string
+output: void
+
+testName: print_inValidStackNameSpaceString
+input stackNameSpace: string
+output: void
+
+testName: print_inValidStackNameSpaceInteger
+input stackNameSpace: integer (123)
+output: void
+
+testName: print_inValidStackNameSpaceBoolean
+input stackNameSpace: boolean (false)
+output: void
+
+testName: print_inValidStackNameSpaceUndefined
+input stackNameSpace: undefined
+output: void
+
+testName: print_inValidStackNameSpaceNaN
+input stackNameSpace: NaN
+output: void
+--------------------------------------------------------------------------------
+testName: getStackContents_validData
+input stackNameSpace: string
+output: array<string> (?)
+
+testName: getStackContents_inValidStackNameSpaceString
+input stackNameSpace: string
+output: ?
+
+testName: getStackContents_inValidStackNameSpaceInteger
+input stackNameSpace: integer (123)
+output: ?
+
+testName: getStackContents_inValidStackNameSpaceBoolean
+input stackNameSpace: boolean (false)
+output: ?
+
+testName: getStackContents_inValidStackNameSpaceUndefined
+input stackNameSpace: undefined
+output: ?
+
+testName: getStackContents_inValidStackNameSpaceNaN
+input stackNameSpace: NaN
+output: ?
