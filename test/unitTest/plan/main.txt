@@ -1,0 +1,920 @@
+Description: Test plan for main.js
+
+--------------------------------------------------------------------------------
+testName: initFramework_validData
+input clientConfiguration: object
+output: void
+
+testName: initFramework_inValidClientConfigurationString
+input clientConfiguration: string
+output: void
+
+testName: initFramework_inValidClientConfigurationInteger
+input clientConfiguration: integer (123)
+output: void
+
+testName: initFramework_inValidClientConfigurationBoolean
+input clientConfiguration: boolean (false)
+output: void
+
+testName: initFramework_inValidClientConfigurationUndefined
+input clientConfiguration: undefined
+output: void
+
+testName: initFramework_inValidClientConfigurationNaN
+input clientConfiguration: NaN
+output: void
+--------------------------------------------------------------------------------
+testName: accouterFramework_validData
+input data: object
+output: boolean (?)
+
+testName: accouterFramework_inValidDataString
+input data: string
+output: ?
+
+testName: accouterFramework_inValidDataInteger
+input data: integer (123)
+output: ?
+
+testName: accouterFramework_inValidDataBoolean
+input data: boolean (false)
+output: ?
+
+testName: accouterFramework_inValidDataUndefined
+input data: undefined
+output: ?
+
+testName: accouterFramework_inValidDataNaN
+input data: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: getFrameworkData_validData
+output: object (?)
+--------------------------------------------------------------------------------
+testName: mergeClientBusinessRules_validData
+input clientBusinessRules: object
+output: void
+
+testName: mergeClientBusinessRules_inValidClientBusinessRulesString
+input clientBusinessRules: string
+output: void
+
+testName: mergeClientBusinessRules_inValidClientBusinessRulesInteger
+input clientBusinessRules: integer (123)
+output: void
+
+testName: mergeClientBusinessRules_inValidClientBusinessRulesBoolean
+input clientBusinessRules: boolean (false)
+output: void
+
+testName: mergeClientBusinessRules_inValidClientBusinessRulesUndefined
+input clientBusinessRules: undefined
+output: void
+
+testName: mergeClientBusinessRules_inValidClientBusinessRulesNaN
+input clientBusinessRules: NaN
+output: void
+--------------------------------------------------------------------------------
+testName: mergeClientCommands_validData
+input clientCommands: object
+output: void
+
+testName: mergeClientCommands_inValidClientCommandsString
+input clientCommands: string
+output: void
+
+testName: mergeClientCommands_inValidClientCommandsInteger
+input clientCommands: integer (123)
+output: void
+
+testName: mergeClientCommands_inValidClientCommandsBoolean
+input clientCommands: boolean (false)
+output: void
+
+testName: mergeClientCommands_inValidClientCommandsUndefined
+input clientCommands: undefined
+output: void
+
+testName: mergeClientCommands_inValidClientCommandsNaN
+input clientCommands: NaN
+output: void
+--------------------------------------------------------------------------------
+testName: loadCommandAliases_validData
+input commandAliasesPath: string
+input contextName: string
+output: void
+
+testName: loadCommandAliases_inValidCommandAliasesPathString
+input commandAliasesPath: string
+input contextName: string
+output: void
+
+testName: loadCommandAliases_inValidContextNameString
+input commandAliasesPath: string
+input contextName: string
+output: void
+
+testName: loadCommandAliases_inValidCommandAliasesPathInteger
+input commandAliasesPath: integer (123)
+input contextName: string
+output: void
+
+testName: loadCommandAliases_inValidCommandAliasesPathBoolean
+input commandAliasesPath: boolean (false)
+input contextName: string
+output: void
+
+testName: loadCommandAliases_inValidContextNameInteger
+input commandAliasesPath: string
+input contextName: integer (123)
+output: void
+
+testName: loadCommandAliases_inValidContextNameBoolean
+input commandAliasesPath: string
+input contextName: boolean (false)
+output: void
+
+testName: loadCommandAliases_inValidCommandAliasesPathUndefined
+input commandAliasesPath: undefined
+input contextName: string
+output: void
+
+testName: loadCommandAliases_inValidCommandAliasesPathNaN
+input commandAliasesPath: NaN
+input contextName: string
+output: void
+
+testName: loadCommandAliases_inValidContextNameUndefined
+input commandAliasesPath: string
+input contextName: undefined
+output: void
+
+testName: loadCommandAliases_inValidContextNameNaN
+input commandAliasesPath: string
+input contextName: NaN
+output: void
+--------------------------------------------------------------------------------
+testName: loadCommandWorkflows_validData
+input workflowPath: string
+input contextName: string
+output: void
+
+testName: loadCommandWorkflows_inValidWorkflowPathString
+input workflowPath: string
+input contextName: string
+output: void
+
+testName: loadCommandWorkflows_inValidContextNameString
+input workflowPath: string
+input contextName: string
+output: void
+
+testName: loadCommandWorkflows_inValidWorkflowPathInteger
+input workflowPath: integer (123)
+input contextName: string
+output: void
+
+testName: loadCommandWorkflows_inValidWorkflowPathBoolean
+input workflowPath: boolean (false)
+input contextName: string
+output: void
+
+testName: loadCommandWorkflows_inValidContextNameInteger
+input workflowPath: string
+input contextName: integer (123)
+output: void
+
+testName: loadCommandWorkflows_inValidContextNameBoolean
+input workflowPath: string
+input contextName: boolean (false)
+output: void
+
+testName: loadCommandWorkflows_inValidWorkflowPathUndefined
+input workflowPath: undefined
+input contextName: string
+output: void
+
+testName: loadCommandWorkflows_inValidWorkflowPathNaN
+input workflowPath: NaN
+input contextName: string
+output: void
+
+testName: loadCommandWorkflows_inValidContextNameUndefined
+input workflowPath: string
+input contextName: undefined
+output: void
+
+testName: loadCommandWorkflows_inValidContextNameNaN
+input workflowPath: string
+input contextName: NaN
+output: void
+--------------------------------------------------------------------------------
+testName: listLoadedPlugins_validData
+output: array<string> (?)
+--------------------------------------------------------------------------------
+testName: listAllPluginsInRegistry_validData
+output: array<string> (?)
+--------------------------------------------------------------------------------
+testName: listAllPluginsInRegistryPath_validData
+output: array<string> (?)
+--------------------------------------------------------------------------------
+testName: numberOfPluginsInRegistry_validData
+output: integer (?)
+--------------------------------------------------------------------------------
+testName: numberOfPluginsInRegistryPath_validData
+output: integer (?)
+--------------------------------------------------------------------------------
+testName: registerPluginByNameAndPath_validData
+input pluginName: string
+input pluginPath: string
+output: boolean (?)
+
+testName: registerPluginByNameAndPath_inValidPluginNameString
+input pluginName: string
+input pluginPath: string
+output: ?
+
+testName: registerPluginByNameAndPath_inValidPluginPathString
+input pluginName: string
+input pluginPath: string
+output: ?
+
+testName: registerPluginByNameAndPath_inValidPluginNameInteger
+input pluginName: integer (123)
+input pluginPath: string
+output: ?
+
+testName: registerPluginByNameAndPath_inValidPluginNameBoolean
+input pluginName: boolean (false)
+input pluginPath: string
+output: ?
+
+testName: registerPluginByNameAndPath_inValidPluginPathInteger
+input pluginName: string
+input pluginPath: integer (123)
+output: ?
+
+testName: registerPluginByNameAndPath_inValidPluginPathBoolean
+input pluginName: string
+input pluginPath: boolean (false)
+output: ?
+
+testName: registerPluginByNameAndPath_inValidPluginNameUndefined
+input pluginName: undefined
+input pluginPath: string
+output: ?
+
+testName: registerPluginByNameAndPath_inValidPluginNameNaN
+input pluginName: NaN
+input pluginPath: string
+output: ?
+
+testName: registerPluginByNameAndPath_inValidPluginPathUndefined
+input pluginName: string
+input pluginPath: undefined
+output: ?
+
+testName: registerPluginByNameAndPath_inValidPluginPathNaN
+input pluginName: string
+input pluginPath: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: unregisterPluginByName_validData
+input pluginName: string
+output: boolean (?)
+
+testName: unregisterPluginByName_inValidPluginNameString
+input pluginName: string
+output: ?
+
+testName: unregisterPluginByName_inValidPluginNameInteger
+input pluginName: integer (123)
+output: ?
+
+testName: unregisterPluginByName_inValidPluginNameBoolean
+input pluginName: boolean (false)
+output: ?
+
+testName: unregisterPluginByName_inValidPluginNameUndefined
+input pluginName: undefined
+output: ?
+
+testName: unregisterPluginByName_inValidPluginNameNaN
+input pluginName: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: unregisterPlugins_validData
+input pluginName: string|array<string>
+output: boolean (?)
+
+testName: unregisterPlugins_inValidPluginNameString
+input pluginName: string
+output: ?
+
+testName: unregisterPlugins_inValidPluginNameInteger
+input pluginName: integer (123)
+output: ?
+
+testName: unregisterPlugins_inValidPluginNameBoolean
+input pluginName: boolean (false)
+output: ?
+
+testName: unregisterPlugins_inValidPluginNameUndefined
+input pluginName: undefined
+output: ?
+
+testName: unregisterPlugins_inValidPluginNameNaN
+input pluginName: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: syncPluginRegistryWithPath_validData
+output: boolean (?)
+--------------------------------------------------------------------------------
+testName: clearAllPluginRegistry_validData
+output: boolean (?)
+--------------------------------------------------------------------------------
+testName: writePluginRegistryToDisk_validData
+output: boolean (?)
+--------------------------------------------------------------------------------
+testName: loadPlugin_validData
+input pluginPath: string
+output: boolean (?)
+
+testName: loadPlugin_inValidPluginPathString
+input pluginPath: string
+output: ?
+
+testName: loadPlugin_inValidPluginPathInteger
+input pluginPath: integer (123)
+output: ?
+
+testName: loadPlugin_inValidPluginPathBoolean
+input pluginPath: boolean (false)
+output: ?
+
+testName: loadPlugin_inValidPluginPathUndefined
+input pluginPath: undefined
+output: ?
+
+testName: loadPlugin_inValidPluginPathNaN
+input pluginPath: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: loadPlugins_validData
+input pluginsPaths: string
+output: boolean (?)
+
+testName: loadPlugins_inValidPluginsPathsString
+input pluginsPaths: string
+output: ?
+
+testName: loadPlugins_inValidPluginsPathsInteger
+input pluginsPaths: integer (123)
+output: ?
+
+testName: loadPlugins_inValidPluginsPathsBoolean
+input pluginsPaths: boolean (false)
+output: ?
+
+testName: loadPlugins_inValidPluginsPathsUndefined
+input pluginsPaths: undefined
+output: ?
+
+testName: loadPlugins_inValidPluginsPathsNaN
+input pluginsPaths: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: loadPluginsFromRegistry_validData
+output: boolean (?)
+--------------------------------------------------------------------------------
+testName: unloadPlugin_validData
+input pluginName: string
+output: boolean (?)
+
+testName: unloadPlugin_inValidPluginNameString
+input pluginName: string
+output: ?
+
+testName: unloadPlugin_inValidPluginNameInteger
+input pluginName: integer (123)
+output: ?
+
+testName: unloadPlugin_inValidPluginNameBoolean
+input pluginName: boolean (false)
+output: ?
+
+testName: unloadPlugin_inValidPluginNameUndefined
+input pluginName: undefined
+output: ?
+
+testName: unloadPlugin_inValidPluginNameNaN
+input pluginName: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: unloadPlugins_validData
+input pluginNames: string
+output: boolean (?)
+
+testName: unloadPlugins_inValidPluginNamesString
+input pluginNames: string
+output: ?
+
+testName: unloadPlugins_inValidPluginNamesInteger
+input pluginNames: integer (123)
+output: ?
+
+testName: unloadPlugins_inValidPluginNamesBoolean
+input pluginNames: boolean (false)
+output: ?
+
+testName: unloadPlugins_inValidPluginNamesUndefined
+input pluginNames: undefined
+output: ?
+
+testName: unloadPlugins_inValidPluginNamesNaN
+input pluginNames: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: unloadAllPlugins_validData
+output: boolean (?)
+--------------------------------------------------------------------------------
+testName: getPluginsRegistryPath_validData
+output: string (?)
+--------------------------------------------------------------------------------
+testName: loadPluginResourceData_validData
+input contextName: string
+input pluginConfigPath: string
+output: object (?)
+
+testName: loadPluginResourceData_inValidContextNameString
+input contextName: string
+input pluginConfigPath: string
+output: ?
+
+testName: loadPluginResourceData_inValidPluginConfigPathString
+input contextName: string
+input pluginConfigPath: string
+output: ?
+
+testName: loadPluginResourceData_inValidContextNameInteger
+input contextName: integer (123)
+input pluginConfigPath: string
+output: ?
+
+testName: loadPluginResourceData_inValidContextNameBoolean
+input contextName: boolean (false)
+input pluginConfigPath: string
+output: ?
+
+testName: loadPluginResourceData_inValidPluginConfigPathInteger
+input contextName: string
+input pluginConfigPath: integer (123)
+output: ?
+
+testName: loadPluginResourceData_inValidPluginConfigPathBoolean
+input contextName: string
+input pluginConfigPath: boolean (false)
+output: ?
+
+testName: loadPluginResourceData_inValidContextNameUndefined
+input contextName: undefined
+input pluginConfigPath: string
+output: ?
+
+testName: loadPluginResourceData_inValidContextNameNaN
+input contextName: NaN
+input pluginConfigPath: string
+output: ?
+
+testName: loadPluginResourceData_inValidPluginConfigPathUndefined
+input contextName: string
+input pluginConfigPath: undefined
+output: ?
+
+testName: loadPluginResourceData_inValidPluginConfigPathNaN
+input contextName: string
+input pluginConfigPath: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: loadAllJsonData_validData
+input dataPath: string
+input contextName: string
+output: object (?)
+
+testName: loadAllJsonData_inValidDataPathString
+input dataPath: string
+input contextName: string
+output: ?
+
+testName: loadAllJsonData_inValidContextNameString
+input dataPath: string
+input contextName: string
+output: ?
+
+testName: loadAllJsonData_inValidDataPathInteger
+input dataPath: integer (123)
+input contextName: string
+output: ?
+
+testName: loadAllJsonData_inValidDataPathBoolean
+input dataPath: boolean (false)
+input contextName: string
+output: ?
+
+testName: loadAllJsonData_inValidContextNameInteger
+input dataPath: string
+input contextName: integer (123)
+output: ?
+
+testName: loadAllJsonData_inValidContextNameBoolean
+input dataPath: string
+input contextName: boolean (false)
+output: ?
+--------------------------------------------------------------------------------
+testName: storeData_validData
+input dataName: string
+input data: object|string|boolean|number|array
+output: boolean (?)
+
+testName: storeData_inValidDataNameString
+input dataName: string
+input data: object|string|boolean|number|array
+output: ?
+
+testName: storeData_inValidDataString
+input dataName: string
+input data: string
+output: ?
+
+testName: storeData_inValidDataNameInteger
+input dataName: integer (123)
+input data: object|string|boolean|number|array
+output: ?
+
+testName: storeData_inValidDataNameBoolean
+input dataName: boolean (false)
+input data: object|string|boolean|number|array
+output: ?
+
+testName: storeData_inValidDataInteger
+input dataName: string
+input data: integer (123)
+output: ?
+
+testName: storeData_inValidDataBoolean
+input dataName: string
+input data: boolean (false)
+output: ?
+
+testName: storeData_inValidDataNameUndefined
+input dataName: undefined
+input data: object|string|boolean|number|array
+output: ?
+
+testName: storeData_inValidDataNameNaN
+input dataName: NaN
+input data: object|string|boolean|number|array
+output: ?
+
+testName: storeData_inValidDataUndefined
+input dataName: string
+input data: undefined
+output: ?
+
+testName: storeData_inValidDataNaN
+input dataName: string
+input data: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: getData_validData
+input dataName: string
+output: object|string|boolean|number|array (?)
+
+testName: getData_inValidDataNameString
+input dataName: string
+output: ?
+
+testName: getData_inValidDataNameInteger
+input dataName: integer (123)
+output: ?
+
+testName: getData_inValidDataNameBoolean
+input dataName: boolean (false)
+output: ?
+
+testName: getData_inValidDataNameUndefined
+input dataName: undefined
+output: ?
+
+testName: getData_inValidDataNameNaN
+input dataName: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: clearData_validData
+input dataName: string
+output: boolean (?)
+
+testName: clearData_inValidDataNameString
+input dataName: string
+output: ?
+
+testName: clearData_inValidDataNameInteger
+input dataName: integer (123)
+output: ?
+
+testName: clearData_inValidDataNameBoolean
+input dataName: boolean (false)
+output: ?
+
+testName: clearData_inValidDataNameUndefined
+input dataName: undefined
+output: ?
+
+testName: clearData_inValidDataNameNaN
+input dataName: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: executeBusinessRules_validData
+input inputs: array<string|integer|boolean|object|function,string|integer|boolean|object|function>
+input businessRules: array<string>
+output: string (?)
+
+testName: executeBusinessRules_inValidInputsString
+input inputs: string
+input businessRules: array<string>
+output: ?
+
+testName: executeBusinessRules_inValidBusinessRulesString
+input inputs: array<string|integer|boolean|object|function,string|integer|boolean|object|function>
+input businessRules: string
+output: ?
+
+testName: executeBusinessRules_inValidInputsInteger
+input inputs: integer (123)
+input businessRules: array<string>
+output: ?
+
+testName: executeBusinessRules_inValidInputsBoolean
+input inputs: boolean (false)
+input businessRules: array<string>
+output: ?
+
+testName: executeBusinessRules_inValidBusinessRulesInteger
+input inputs: array<string|integer|boolean|object|function,string|integer|boolean|object|function>
+input businessRules: integer (123)
+output: ?
+
+testName: executeBusinessRules_inValidBusinessRulesBoolean
+input inputs: array<string|integer|boolean|object|function,string|integer|boolean|object|function>
+input businessRules: boolean (false)
+output: ?
+
+testName: executeBusinessRules_inValidInputsUndefined
+input inputs: undefined
+input businessRules: array<string>
+output: ?
+
+testName: executeBusinessRules_inValidInputsNaN
+input inputs: NaN
+input businessRules: array<string>
+output: ?
+
+testName: executeBusinessRules_inValidBusinessRulesUndefined
+input inputs: array<string|integer|boolean|object|function,string|integer|boolean|object|function>
+input businessRules: undefined
+output: ?
+
+testName: executeBusinessRules_inValidBusinessRulesNaN
+input inputs: array<string|integer|boolean|object|function,string|integer|boolean|object|function>
+input businessRules: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: enqueueCommand_validData
+input command: string
+output: void
+
+testName: enqueueCommand_inValidCommandString
+input command: string
+output: void
+
+testName: enqueueCommand_inValidCommandInteger
+input command: integer (123)
+output: void
+
+testName: enqueueCommand_inValidCommandBoolean
+input command: boolean (false)
+output: void
+
+testName: enqueueCommand_inValidCommandUndefined
+input command: undefined
+output: void
+
+testName: enqueueCommand_inValidCommandNaN
+input command: NaN
+output: void
+--------------------------------------------------------------------------------
+testName: isCommandQueueEmpty_validData
+output: boolean (?)
+--------------------------------------------------------------------------------
+testName: processCommandQueue_validData
+output: array<boolean,string|integer|boolean|object|array> (?)
+--------------------------------------------------------------------------------
+testName: setConfigurationSetting_validData
+input configurationNamespace: string
+input configurationName: string
+input configurationValue: string|integer|boolean|double|object
+output: void
+
+testName: setConfigurationSetting_inValidConfigurationNamespaceString
+input configurationNamespace: string
+input configurationName: string
+input configurationValue: string|integer|boolean|double|object
+output: void
+
+testName: setConfigurationSetting_inValidConfigurationNameString
+input configurationNamespace: string
+input configurationName: string
+input configurationValue: string|integer|boolean|double|object
+output: void
+
+testName: setConfigurationSetting_inValidConfigurationValueString
+input configurationNamespace: string
+input configurationName: string
+input configurationValue: string
+output: void
+
+testName: setConfigurationSetting_inValidConfigurationNamespaceInteger
+input configurationNamespace: integer (123)
+input configurationName: string
+input configurationValue: string|integer|boolean|double|object
+output: void
+
+testName: setConfigurationSetting_inValidConfigurationNamespaceBoolean
+input configurationNamespace: boolean (false)
+input configurationName: string
+input configurationValue: string|integer|boolean|double|object
+output: void
+
+testName: setConfigurationSetting_inValidConfigurationNameInteger
+input configurationNamespace: string
+input configurationName: integer (123)
+input configurationValue: string|integer|boolean|double|object
+output: void
+
+testName: setConfigurationSetting_inValidConfigurationNameBoolean
+input configurationNamespace: string
+input configurationName: boolean (false)
+input configurationValue: string|integer|boolean|double|object
+output: void
+
+testName: setConfigurationSetting_inValidConfigurationValueInteger
+input configurationNamespace: string
+input configurationName: string
+input configurationValue: integer (123)
+output: void
+
+testName: setConfigurationSetting_inValidConfigurationValueBoolean
+input configurationNamespace: string
+input configurationName: string
+input configurationValue: boolean (false)
+output: void
+
+testName: setConfigurationSetting_inValidAllUndefined
+input configurationNamespace: undefined
+input configurationName: undefined
+input configurationValue: undefined
+output: void
+
+testName: setConfigurationSetting_inValidAllNaN
+input configurationNamespace: NaN
+input configurationName: NaN
+input configurationValue: NaN
+output: void
+--------------------------------------------------------------------------------
+testName: getConfigurationSetting_validData
+input configurationNamespace: string
+input configurationName: string
+output: string|integer|boolean|double|object (?)
+
+testName: getConfigurationSetting_inValidConfigurationNamespaceString
+input configurationNamespace: string
+input configurationName: string
+output: ?
+
+testName: getConfigurationSetting_inValidConfigurationNameString
+input configurationNamespace: string
+input configurationName: string
+output: ?
+
+testName: getConfigurationSetting_inValidConfigurationNamespaceInteger
+input configurationNamespace: integer (123)
+input configurationName: string
+output: ?
+
+testName: getConfigurationSetting_inValidConfigurationNamespaceBoolean
+input configurationNamespace: boolean (false)
+input configurationName: string
+output: ?
+
+testName: getConfigurationSetting_inValidConfigurationNameInteger
+input configurationNamespace: string
+input configurationName: integer (123)
+output: ?
+
+testName: getConfigurationSetting_inValidConfigurationNameBoolean
+input configurationNamespace: string
+input configurationName: boolean (false)
+output: ?
+
+testName: getConfigurationSetting_inValidConfigurationNamespaceUndefined
+input configurationNamespace: undefined
+input configurationName: string
+output: ?
+
+testName: getConfigurationSetting_inValidConfigurationNamespaceNaN
+input configurationNamespace: NaN
+input configurationName: string
+output: ?
+
+testName: getConfigurationSetting_inValidConfigurationNameUndefined
+input configurationNamespace: string
+input configurationName: undefined
+output: ?
+
+testName: getConfigurationSetting_inValidConfigurationNameNaN
+input configurationNamespace: string
+input configurationName: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: consoleLog_validData
+input theNamespacePrefix: string
+input theFunctionName: string
+input message: string|object
+output: void
+
+testName: consoleLog_inValidTheNamespacePrefixString
+input theNamespacePrefix: string
+input theFunctionName: string
+input message: string|object
+output: void
+
+testName: consoleLog_inValidTheFunctionNameString
+input theNamespacePrefix: string
+input theFunctionName: string
+input message: string|object
+output: void
+
+testName: consoleLog_inValidMessageString
+input theNamespacePrefix: string
+input theFunctionName: string
+input message: string
+output: void
+
+testName: consoleLog_inValidTheNamespacePrefixInteger
+input theNamespacePrefix: integer (123)
+input theFunctionName: string
+input message: string|object
+output: void
+
+testName: consoleLog_inValidTheNamespacePrefixBoolean
+input theNamespacePrefix: boolean (false)
+input theFunctionName: string
+input message: string|object
+output: void
+
+testName: consoleLog_inValidTheFunctionNameInteger
+input theNamespacePrefix: string
+input theFunctionName: integer (123)
+input message: string|object
+output: void
+
+testName: consoleLog_inValidTheFunctionNameBoolean
+input theNamespacePrefix: string
+input theFunctionName: boolean (false)
+input message: string|object
+output: void
+
+testName: consoleLog_inValidMessageInteger
+input theNamespacePrefix: string
+input theFunctionName: string
+input message: integer (123)
+output: void
+
+testName: consoleLog_inValidMessageBoolean
+input theNamespacePrefix: string
+input theFunctionName: string
+input message: boolean (false)
+output: void
+
+testName: consoleLog_inValidAllUndefined
+input theNamespacePrefix: undefined
+input theFunctionName: undefined
+input message: undefined
+output: void
+
+testName: consoleLog_inValidAllNaN
+input theNamespacePrefix: NaN
+input theFunctionName: NaN
+input message: NaN
+output: void
