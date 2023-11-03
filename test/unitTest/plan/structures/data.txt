@@ -5,11 +5,11 @@ testName: getData_validData
 output: object (?)
 --------------------------------------------------------------------------------
 testName: storeData_validData
-input newData: object
+input newData: object (?)
 output: ?
 
 testName: storeData_inValidNewDataString
-input newData: string
+input newData: string (dfxg24346dfg)
 output: ?
 
 testName: storeData_inValidNewDataInteger
