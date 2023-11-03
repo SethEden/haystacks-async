@@ -2,117 +2,153 @@ Description: Test plan for loggers.js
 
 --------------------------------------------------------------------------------
 testName: consoleLog_validData
-input classPath: string
-input message: string
+input classPath: string (?)
+input message: string (?)
 output: void
 
 testName: consoleLog_inValidClassPathString
-input classPath: string
-input message: string
+input classPath: string (dfxg24346dfg)
+input message: string (?)
 output: void
 
 testName: consoleLog_inValidMessageString
-input classPath: string
-input message: string
+input classPath: string (?)
+input message: string (&)
 output: void
 
 testName: consoleLog_inValidClassPathInteger
 input classPath: integer (123)
-input message: string
+input message: string (?)
 output: void
 
 testName: consoleLog_inValidClassPathBoolean
 input classPath: boolean (false)
-input message: string
+input message: string (?)
 output: void
 
 testName: consoleLog_inValidMessageInteger
-input classPath: string
+input classPath: string (?)
 input message: integer (123)
 output: void
 
 testName: consoleLog_inValidMessageBoolean
-input classPath: string
+input classPath: string (?)
 input message: boolean (false)
 output: void
 
 testName: consoleLog_inValidClassPathUndefined
 input classPath: undefined
-input message: string
+input message: string (?)
 output: void
 
 testName: consoleLog_inValidClassPathNaN
 input classPath: NaN
-input message: string
+input message: string (?)
 output: void
 
 testName: consoleLog_inValidMessageUndefined
-input classPath: string
+input classPath: string (?)
 input message: undefined
 output: void
 
 testName: consoleLog_inValidMessageNaN
-input classPath: string
+input classPath: string (?)
 input message: NaN
 output: void
 --------------------------------------------------------------------------------
 testName: consoleTableLog_validData
-input classPath: string
-input tableData: array<object>
-input columnNames: array<string>
+input classPath: string (?)
+input tableData: array<object> (?)
+input columnNames: array<string> (?)
 output: void
 
 testName: consoleTableLog_inValidClassPathString
-input classPath: string
-input tableData: array<object>
-input columnNames: array<string>
+input classPath: string (dfxg24346dfg)
+input tableData: array<object> (?)
+input columnNames: array<string> (?)
 output: void
 
 testName: consoleTableLog_inValidTableDataString
-input classPath: string
-input tableData: string
-input columnNames: array<string>
+input classPath: string (?)
+input tableData: string (dfxg24346dfg)
+input columnNames: array<string> (?)
 output: void
 
 testName: consoleTableLog_inValidColumnNamesString
-input classPath: string
-input tableData: string
-input columnNames: array<string>
+input classPath: string (?)
+input tableData: array<object> (?)
+input columnNames: string (dfxg24346dfg)
 output: void
 
 testName: consoleTableLog_inValidClassPathInteger
 input classPath: integer (123)
-input tableData: array<object>
-input columnNames: array<string>
+input tableData: array<object> (?)
+input columnNames: array<string> (?)
 output: void
 
 testName: consoleTableLog_inValidClassPathBoolean
 input classPath: boolean (false)
-input tableData: array<object>
-input columnNames: array<string>
+input tableData: array<object> (?)
+input columnNames: array<string> (?)
+output: void
+
+testName: consoleTableLog_inValidClassPathUndefined
+input classPath: undefined
+input tableData: array<object> (?)
+input columnNames: array<string> (?)
+output: void
+
+testName: consoleTableLog_inValidClassPathNaN
+input classPath: NaN
+input tableData: array<object> (?)
+input columnNames: array<string> (?)
 output: void
 
 testName: consoleTableLog_inValidTableDataInteger
-input classPath: string
+input classPath: string (?)
 input tableData: integer (123)
-input columnNames: array<string>
+input columnNames: array<string> (?)
 output: void
 
 testName: consoleTableLog_inValidTableDataBoolean
-input classPath: string
+input classPath: string (?)
 input tableData: boolean (false)
-input columnNames: array<string>
+input columnNames: array<string> (?)
+output: void
+
+testName: consoleTableLog_inValidTableDataUndefined
+input classPath: string (?)
+input tableData: undefined
+input columnNames: array<string> (?)
+output: void
+
+testName: consoleTableLog_inValidTableDataNaN
+input classPath: string (?)
+input tableData: NaN
+input columnNames: array<string> (?)
 output: void
 
 testName: consoleTableLog_inValidColumnNamesInteger
-input classPath: string
-input tableData: string
+input classPath: string (?)
+input tableData: array<object> (?)
 input columnNames: integer (123)
 output: void
 
 testName: consoleTableLog_inValidColumnNamesBoolean
-input classPath: string
-input tableData: string
+input classPath: string (?)
+input tableData: array<object> (?)
+input columnNames: boolean (false)
+output: void
+
+testName: consoleTableLog_inValidColumnNamesUndefined
+input classPath: string (?)
+input tableData: array<object> (?)
+input columnNames: undefined
+output: void
+
+testName: consoleTableLog_inValidColumnNamesNaN
+input classPath: string (?)
+input tableData: array<object> (?)
 input columnNames: boolean (false)
 output: void
 
@@ -129,186 +165,266 @@ input columnNames: NaN
 output: void
 --------------------------------------------------------------------------------
 testName: constantsValidationSummaryLog_validData
-input message: string
-input passFail: boolean
+input message: string (?)
+input passFail: boolean (?)
 output: void
 
 testName: constantsValidationSummaryLog_inValidMessageString
-input message: string
-input passFail: boolean
+input message: string (dfxg24346dfg)
+input passFail: boolean (?)
 output: void
 
 testName: constantsValidationSummaryLog_inValidPassFailString
-input message: string
-input passFail: string
+input message: string (?)
+input passFail: string (&)
 output: void
 
 testName: constantsValidationSummaryLog_inValidMessageInteger
 input message: integer (123)
-input passFail: boolean
+input passFail: boolean (?)
 output: void
 
 testName: constantsValidationSummaryLog_inValidMessageBoolean
 input message: boolean (false)
-input passFail: boolean
+input passFail: boolean (?)
 output: void
 
 testName: constantsValidationSummaryLog_inValidPassFailInteger
-input message: string
+input message: string (?)
 input passFail: integer (123)
 output: void
 
 testName: constantsValidationSummaryLog_inValidPassFailBoolean
-input message: string
+input message: string (?)
 input passFail: boolean (false)
 output: void
 
 testName: constantsValidationSummaryLog_inValidMessageUndefined
 input message: undefined
-input passFail: boolean
+input passFail: boolean (?)
 output: void
 
 testName: constantsValidationSummaryLog_inValidMessageNaN
 input message: NaN
-input passFail: boolean
+input passFail: boolean (?)
 output: void
 
 testName: constantsValidationSummaryLog_inValidPassFailUndefined
-input message: string
+input message: string (?)
 input passFail: undefined
 output: void
 
 testName: constantsValidationSummaryLog_inValidPassFailNaN
-input message: string
+input message: string (?)
 input passFail: NaN
 output: void
 --------------------------------------------------------------------------------
 testName: consoleLogProcess_validData
-input debugSetting: boolean
-input logFile: string
-input classPath: string
-input message: string
-input loggingToFileAndConsole: boolean
+input debugSetting: boolean (?)
+input logFile: string (?)
+input classPath: string (?)
+input message: string (?)
+input loggingToFileAndConsole: boolean (?)
 output: void
 
 testName: consoleLogProcess_inValidDebugSettingString
-input debugSetting: string
-input logFile: string
-input classPath: string
-input message: string
-input loggingToFileAndConsole: boolean
+input debugSetting: string (dfxg24346dfg)
+input logFile: string (?)
+input classPath: string (?)
+input message: string (?)
+input loggingToFileAndConsole: boolean (?)
 output: void
 
 testName: consoleLogProcess_inValidLogFileString
-input debugSetting: boolean
-input logFile: string
-input classPath: string
-input message: string
-input loggingToFileAndConsole: boolean
+input debugSetting: boolean (?)
+input logFile: string (dfxg24346dfg)
+input classPath: string (?)
+input message: string (?)
+input loggingToFileAndConsole: boolean (?)
 output: void
 
 testName: consoleLogProcess_inValidClassPathString
-input debugSetting: boolean
-input logFile: string
-input classPath: string
-input message: string
-input loggingToFileAndConsole: boolean
+input debugSetting: boolean (?)
+input logFile: string (?)
+input classPath: string (dfxg24346dfg)
+input message: string (?)
+input loggingToFileAndConsole: boolean (?)
 output: void
 
 testName: consoleLogProcess_inValidMessageString
-input debugSetting: boolean
-input logFile: string
-input classPath: string
-input message: string
-input loggingToFileAndConsole: boolean
+input debugSetting: boolean (?)
+input logFile: string (?)
+input classPath: string (?)
+input message: string (dfxg24346dfg)
+input loggingToFileAndConsole: boolean (?)
 output: void
 
 testName: consoleLogProcess_inValidLoggingToFileAndConsoleString
-input debugSetting: boolean
-input logFile: string
-input classPath: string
-input message: string
-input loggingToFileAndConsole: string
+input debugSetting: boolean (?)
+input logFile: string (?)
+input classPath: string (?)
+input message: string (?)
+input loggingToFileAndConsole: string (dfxg24346dfg)
 output: void
 
 testName: consoleLogProcess_inValidDebugSettingInteger
 input debugSetting: integer (123)
-input logFile: string
-input classPath: string
-input message: string
-input loggingToFileAndConsole: boolean
+input logFile: string (?)
+input classPath: string (?)
+input message: string (?)
+input loggingToFileAndConsole: boolean (?)
 output: void
 
 testName: consoleLogProcess_inValidDebugSettingBoolean
 input debugSetting: boolean (false)
-input logFile: string
-input classPath: string
-input message: string
-input loggingToFileAndConsole: boolean
+input logFile: string (?)
+input classPath: string (?)
+input message: string (?)
+input loggingToFileAndConsole: boolean (?)
+output: void
+
+testName: consoleLogProcess_inValidDebugSettingUndefined
+input debugSetting: undefined
+input logFile: string (?)
+input classPath: string (?)
+input message: string (?)
+input loggingToFileAndConsole: boolean (?)
+output: void
+
+testName: consoleLogProcess_inValidDebugSettingNaN
+input debugSetting: NaN
+input logFile: string (?)
+input classPath: string (?)
+input message: string (?)
+input loggingToFileAndConsole: boolean (?)
 output: void
 
 testName: consoleLogProcess_inValidLogFileInteger
-input debugSetting: boolean
+input debugSetting: boolean (?)
 input logFile: integer (123)
-input classPath: string
-input message: string
-input loggingToFileAndConsole: boolean
+input classPath: string (?)
+input message: string (?)
+input loggingToFileAndConsole: boolean (?)
 output: void
 
 testName: consoleLogProcess_inValidLogFileBoolean
-input debugSetting: boolean
+input debugSetting: boolean (?)
 input logFile: boolean (false)
-input classPath: string
-input message: string
-input loggingToFileAndConsole: boolean
+input classPath: string (?)
+input message: string (?)
+input loggingToFileAndConsole: boolean (?)
+output: void
+
+testName: consoleLogProcess_inValidLogFileUndefined
+input debugSetting: boolean (?)
+input logFile: undefined
+input classPath: string (?)
+input message: string (?)
+input loggingToFileAndConsole: boolean (?)
+output: void
+
+testName: consoleLogProcess_inValidLogFileNaN
+input debugSetting: boolean (?)
+input logFile: NaN
+input classPath: string (?)
+input message: string (?)
+input loggingToFileAndConsole: boolean (?)
 output: void
 
 testName: consoleLogProcess_inValidClassPathInteger
-input debugSetting: boolean
-input logFile: string
+input debugSetting: boolean (?)
+input logFile: string (?)
 input classPath: integer (123)
-input message: string
-input loggingToFileAndConsole: boolean
+input message: string (?)
+input loggingToFileAndConsole: boolean (?)
 output: void
 
 testName: consoleLogProcess_inValidClassPathBoolean
-input debugSetting: boolean
-input logFile: string
+input debugSetting: boolean (?)
+input logFile: string (?)
 input classPath: boolean (false)
-input message: string
-input loggingToFileAndConsole: boolean
+input message: string (?)
+input loggingToFileAndConsole: boolean (?)
+output: void
+
+testName: consoleLogProcess_inValidClassPathUndefined
+input debugSetting: boolean (?)
+input logFile: string (?)
+input classPath: undefined
+input message: string (?)
+input loggingToFileAndConsole: boolean (?)
+output: void
+
+testName: consoleLogProcess_inValidClassPathNaN
+input debugSetting: boolean (?)
+input logFile: string (?)
+input classPath: NaN
+input message: string (?)
+input loggingToFileAndConsole: boolean (?)
 output: void
 
 testName: consoleLogProcess_inValidMessageInteger
-input debugSetting: boolean
-input logFile: string
-input classPath: string
+input debugSetting: boolean (?)
+input logFile: string (?)
+input classPath: string (?)
 input message: integer (123)
-input loggingToFileAndConsole: boolean
+input loggingToFileAndConsole: boolean (?)
 output: void
 
 testName: consoleLogProcess_inValidMessageBoolean
-input debugSetting: boolean
-input logFile: string
-input classPath: string
+input debugSetting: boolean (?)
+input logFile: string (?)
+input classPath: string (?)
 input message: boolean (false)
-input loggingToFileAndConsole: boolean
+input loggingToFileAndConsole: boolean (?)
+output: void
+
+testName: consoleLogProcess_inValidMessageUndefined
+input debugSetting: boolean (?)
+input logFile: string (?)
+input classPath: string (?)
+input message: undefined
+input loggingToFileAndConsole: boolean (?)
+output: void
+
+testName: consoleLogProcess_inValidMessageNaN
+input debugSetting: boolean (?)
+input logFile: string (?)
+input classPath: string (?)
+input message: NaN
+input loggingToFileAndConsole: boolean (?)
 output: void
 
 testName: consoleLogProcess_inValidLoggingToFileAndConsoleInteger
-input debugSetting: boolean
-input logFile: string
-input classPath: string
-input message: string
+input debugSetting: boolean (?)
+input logFile: string (?)
+input classPath: string (?)
+input message: string (?)
 input loggingToFileAndConsole: integer (123)
 output: void
 
 testName: consoleLogProcess_inValidLoggingToFileAndConsoleBoolean
-input debugSetting: boolean
-input logFile: string
-input classPath: string
-input message: string
+input debugSetting: boolean (?)
+input logFile: string (?)
+input classPath: string (?)
+input message: string (?)
 input loggingToFileAndConsole: boolean (false)
+output: void
+
+testName: consoleLogProcess_inValidLoggingToFileAndConsoleUndefined
+input debugSetting: boolean (?)
+input logFile: string (?)
+input classPath: string (?)
+input message: string (?)
+input loggingToFileAndConsole: undefined
+output: void
+
+testName: consoleLogProcess_inValidLoggingToFileAndConsoleNaN
+input debugSetting: boolean (?)
+input logFile: string (?)
+input classPath: string (?)
+input message: string (?)
+input loggingToFileAndConsole: NaN
 output: void
 
 testName: consoleLogProcess_inValidAllUndefined
@@ -328,118 +444,154 @@ input loggingToFileAndConsole: NaN
 output: void
 --------------------------------------------------------------------------------
 testName: validMessage_validData
-input outputMessage: string|integer|boolean|object
-input originalMessage: string|integer|boolean|object
+input outputMessage: string|integer|boolean|object (?)
+input originalMessage: string|integer|boolean|object (?)
 output: boolean (?)
 
 testName: validMessage_inValidOutputMessageString
-input outputMessage: string
-input originalMessage: string|integer|boolean|object
+input outputMessage: string (dfxg24346dfg)
+input originalMessage: string|integer|boolean|object (?)
 output: ?
 
 testName: validMessage_inValidOriginalMessageString
-input outputMessage: string|integer|boolean|object
-input originalMessage: string
+input outputMessage: string|integer|boolean|object (?)
+input originalMessage: string (&)
 output: ?
 
 testName: validMessage_inValidOutputMessageInteger
 input outputMessage: integer (123)
-input originalMessage: string|integer|boolean|object
+input originalMessage: string|integer|boolean|object (?)
 output: ?
 
 testName: validMessage_inValidOutputMessageBoolean
 input outputMessage: boolean (false)
-input originalMessage: string|integer|boolean|object
+input originalMessage: string|integer|boolean|object (?)
 output: ?
 
 testName: validMessage_inValidOriginalMessageInteger
-input outputMessage: string|integer|boolean|object
+input outputMessage: string|integer|boolean|object (?)
 input originalMessage: integer (123)
 output: ?
 
 testName: validMessage_inValidOriginalMessageBoolean
-input outputMessage: string|integer|boolean|object
+input outputMessage: string|integer|boolean|object (?)
 input originalMessage: boolean (false)
 output: ?
 
 testName: validMessage_inValidOutputMessageUndefined
 input outputMessage: undefined
-input originalMessage: string|integer|boolean|object
+input originalMessage: string|integer|boolean|object (?)
 output: ?
 
 testName: validMessage_inValidOutputMessageNaN
 input outputMessage: NaN
-input originalMessage: string|integer|boolean|object
+input originalMessage: string|integer|boolean|object (?)
 output: ?
 
 testName: validMessage_inValidOriginalMessageUndefined
-input outputMessage: string|integer|boolean|object
+input outputMessage: string|integer|boolean|object (?)
 input originalMessage: undefined
 output: ?
 
 testName: validMessage_inValidOriginalMessageNaN
-input outputMessage: string|integer|boolean|object
+input outputMessage: string|integer|boolean|object (?)
 input originalMessage: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: parseClassPath_validData
-input logFile: string
-input classPath: string
-input message: string
+input logFile: string (?)
+input classPath: string (?)
+input message: string (?)
 output: string (?)
 
 testName: parseClassPath_inValidLogFileString
-input logFile: string
-input classPath: string
-input message: string
+input logFile: string (dfxg24346dfg)
+input classPath: string (?)
+input message: string (?)
 output: ?
 
 testName: parseClassPath_inValidClassPathString
-input logFile: string
-input classPath: string
-input message: string
+input logFile: string (?)
+input classPath: string (dfxg24346dfg)
+input message: string (?)
 output: ?
 
 testName: parseClassPath_inValidMessageString
-input logFile: string
-input classPath: string
-input message: string
+input logFile: string (?)
+input classPath: string (?)
+input message: string (dfxg24346dfg)
 output: ?
 
 testName: parseClassPath_inValidLogFileInteger
 input logFile: integer (123)
-input classPath: string
-input message: string
+input classPath: string (?)
+input message: string (?)
 output: ?
 
 testName: parseClassPath_inValidLogFileBoolean
 input logFile: boolean (false)
-input classPath: string
-input message: string
+input classPath: string (?)
+input message: string (?)
+output: ?
+
+testName: parseClassPath_inValidLogFileUndefined
+input logFile: undefined
+input classPath: string (?)
+input message: string (?)
+output: ?
+
+testName: parseClassPath_inValidLogFileNaN
+input logFile: NaN
+input classPath: string (?)
+input message: string (?)
 output: ?
 
 testName: parseClassPath_inValidClassPathInteger
-input logFile: string
+input logFile: string (?)
 input classPath: integer (123)
-input message: string
+input message: string (?)
 output: ?
 
 testName: parseClassPath_inValidClassPathBoolean
-input logFile: string
+input logFile: string (?)
 input classPath: boolean (false)
-input message: string
+input message: string (?)
+output: ?
+
+testName: parseClassPath_inValidClassPathUndefined
+input logFile: string (?)
+input classPath: undefined
+input message: string (?)
+output: ?
+
+testName: parseClassPath_inValidClassPathNaN
+input logFile: string (?)
+input classPath: NaN
+input message: string (?)
 output: ?
 
 testName: parseClassPath_inValidMessageInteger
-input logFile: string
-input classPath: string
+input logFile: string (?)
+input classPath: string (?)
 input message: integer (123)
 output: ?
 
 testName: parseClassPath_inValidMessageBoolean
-input logFile: string
-input classPath: string
+input logFile: string (?)
+input classPath: string (?)
 input message: boolean (false)
+output: ?
+
+testName: parseClassPath_inValidMessageUndefined
+input logFile: string (?)
+input classPath: string (?)
+input message: undefined
+output: ?
+
+testName: parseClassPath_inValidMessageNaN
+input logFile: string (?)
+input classPath: string (?)
+input message: NaN
 output: ?
 
 testName: parseClassPath_inValidAllUndefined
@@ -458,56 +610,56 @@ testName: getLogFileNameAndPath_validData
 output: string (?)
 --------------------------------------------------------------------------------
 testName: printMessageToFile_validData
-input file: string
-input message: string
+input file: string (?)
+input message: string (?)
 output: void
 
 testName: printMessageToFile_inValidFileString
-input file: string
-input message: string
+input file: string (dfxg24346dfg)
+input message: string (?)
 output: void
 
 testName: printMessageToFile_inValidMessageString
-input file: string
-input message: string
+input file: string (?)
+input message: string (&)
 output: void
 
 testName: printMessageToFile_inValidFileInteger
 input file: integer (123)
-input message: string
+input message: string (?)
 output: void
 
 testName: printMessageToFile_inValidFileBoolean
 input file: boolean (false)
-input message: string
+input message: string (?)
 output: void
 
 testName: printMessageToFile_inValidMessageInteger
-input file: string
+input file: string (?)
 input message: integer (123)
 output: void
 
 testName: printMessageToFile_inValidMessageBoolean
-input file: string
+input file: string (?)
 input message: boolean (false)
 output: void
 
 testName: printMessageToFile_inValidFileUndefined
 input file: undefined
-input message: string
+input message: string (?)
 output: void
 
 testName: printMessageToFile_inValidFileNaN
 input file: NaN
-input message: string
+input message: string (?)
 output: void
 
 testName: printMessageToFile_inValidMessageUndefined
-input file: string
+input file: string (?)
 input message: undefined
 output: void
 
 testName: printMessageToFile_inValidMessageNaN
-input file: string
+input file: string (?)
 input message: NaN
 output: void

@@ -2,63 +2,99 @@ Description: Test plan for colorizer.js
 
 --------------------------------------------------------------------------------
 testName: colorizeMessageSimple_validData
-input message: string
-input colorArray: array<integers>
-input isForeground: boolean
+input message: string (?)
+input colorArray: array<integers> (?)
+input isForeground: boolean (?)
 output: string (?)
 
 testName: colorizeMessageSimple_inValidMessageString
-input message: string
-input colorArray: array<integers>
-input isForeground: boolean
+input message: string (dfxg24346dfg)
+input colorArray: array<integers> (?)
+input isForeground: boolean (?)
 output: ?
 
 testName: colorizeMessageSimple_inValidColorArrayString
-input message: string
-input colorArray: string
-input isForeground: boolean
+input message: string (?)
+input colorArray: string (dfxg24346dfg)
+input isForeground: boolean (?)
 output: ?
 
 testName: colorizeMessageSimple_inValidIsForegroundString
-input message: string
-input colorArray: array<integers>
-input isForeground: string
+input message: string (?)
+input colorArray: array<integers> (?)
+input isForeground: string (dfxg24346dfg)
 output: ?
 
 testName: colorizeMessageSimple_inValidMessageInteger
 input message: integer (123)
-input colorArray: array<integers>
-input isForeground: boolean
+input colorArray: array<integers> (?)
+input isForeground: boolean (?)
 output: ?
 
 testName: colorizeMessageSimple_inValidMessageBoolean
 input message: boolean (false)
-input colorArray: array<integers>
-input isForeground: boolean
+input colorArray: array<integers> (?)
+input isForeground: boolean (?)
+output: ?
+
+testName: colorizeMessageSimple_inValidMessageUndefined
+input message: undefined
+input colorArray: array<integers> (?)
+input isForeground: boolean (?)
+output: ?
+
+testName: colorizeMessageSimple_inValidMessageNaN
+input message: NaN
+input colorArray: array<integers> (?)
+input isForeground: boolean (?)
 output: ?
 
 testName: colorizeMessageSimple_inValidColorArrayInteger
-input message: string
+input message: string (?)
 input colorArray: integer (123)
-input isForeground: boolean
+input isForeground: boolean (?)
 output: ?
 
 testName: colorizeMessageSimple_inValidColorArrayBoolean
-input message: string
+input message: string (?)
 input colorArray: boolean (false)
-input isForeground: boolean
+input isForeground: boolean (?)
+output: ?
+
+testName: colorizeMessageSimple_inValidColorArrayUndefined
+input message: string (?)
+input colorArray: undefined
+input isForeground: boolean (?)
+output: ?
+
+testName: colorizeMessageSimple_inValidColorArrayNaN
+input message: string (?)
+input colorArray: NaN
+input isForeground: boolean (?)
 output: ?
 
 testName: colorizeMessageSimple_inValidIsForegroundInteger
-input message: string
-input colorArray: array<integers>
+input message: string (?)
+input colorArray: array<integers> (?)
 input isForeground: integer (123)
 output: ?
 
 testName: colorizeMessageSimple_inValidIsForegroundBoolean
-input message: string
-input colorArray: array<integers>
+input message: string (?)
+input colorArray: array<integers> (?)
 input isForeground: boolean (false)
+output: ?
+
+testName: colorizeMessageSimple_inValidIsForegroundUndefined
+input message: string (?)
+input colorArray: array<integers> (?)
+input isForeground: undefined
+output: ?
+
+testName: colorizeMessageSimple_inValidIsForegroundNaN
+input message: string (?)
+input colorArray: array<integers> (?)
+input isForeground: NaN
 output: ?
 
 testName: colorizeMessageSimple_inValidAllUndefined
@@ -74,156 +110,246 @@ input isForeground: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: colorizeMessage_validData
-input message: string
-input className: string
-input functionName: string
-input debugFilesSetting: boolean
-input debugFunctionsSetting: boolean
-input flatMessageLog: boolean
+input message: string (?)
+input className: string (?)
+input functionName: string (?)
+input debugFilesSetting: boolean (?)
+input debugFunctionsSetting: boolean (?)
+input flatMessageLog: boolean (?)
 output: string (?)
 
 testName: colorizeMessage_inValidMessageString
-input message: string
-input className: string
-input functionName: string
-input debugFilesSetting: boolean
-input debugFunctionsSetting: boolean
-input flatMessageLog: boolean
+input message: string (dfxg24346dfg)
+input className: string (?)
+input functionName: string (?)
+input debugFilesSetting: boolean (?)
+input debugFunctionsSetting: boolean (?)
+input flatMessageLog: boolean (?)
 output: ?
 
 testName: colorizeMessage_inValidClassNameString
-input message: string
-input className: string
-input functionName: string
-input debugFilesSetting: boolean
-input debugFunctionsSetting: boolean
-input flatMessageLog: boolean
+input message: string (?)
+input className: string (dfxg24346dfg)
+input functionName: string (?)
+input debugFilesSetting: boolean (?)
+input debugFunctionsSetting: boolean (?)
+input flatMessageLog: boolean (?)
 output: ?
 
 testName: colorizeMessage_inValidFunctionNameString
-input message: string
-input className: string
-input functionName: string
-input debugFilesSetting: boolean
-input debugFunctionsSetting: boolean
-input flatMessageLog: boolean
+input message: string (?)
+input className: string (?)
+input functionName: string (dfxg24346dfg)
+input debugFilesSetting: boolean (?)
+input debugFunctionsSetting: boolean (?)
+input flatMessageLog: boolean (?)
 output: ?
 
 testName: colorizeMessage_inValidDebugFilesSettingString
-input message: string
-input className: string
-input functionName: string
-input debugFilesSetting: string
-input debugFunctionsSetting: boolean
-input flatMessageLog: boolean
+input message: string (?)
+input className: string (?)
+input functionName: string (?)
+input debugFilesSetting: string (dfxg24346dfg)
+input debugFunctionsSetting: boolean (?)
+input flatMessageLog: boolean (?)
 output: ?
 
 testName: colorizeMessage_inValidDebugFunctionsSettingString
-input message: string
-input className: string
-input functionName: string
-input debugFilesSetting: boolean
-input debugFunctionsSetting: boolean
-input flatMessageLog: boolean
+input message: string (?)
+input className: string (?)
+input functionName: string (?)
+input debugFilesSetting: boolean (?)
+input debugFunctionsSetting: string (dfxg24346dfg)
+input flatMessageLog: boolean (?)
 output: ?
 
 testName: colorizeMessage_inValidFlatMessageLogString
-input message: string
-input className: string
-input functionName: string
-input debugFilesSetting: boolean
-input debugFunctionsSetting: boolean
-input flatMessageLog: boolean
+input message: string (?)
+input className: string (?)
+input functionName: string (?)
+input debugFilesSetting: boolean (?)
+input debugFunctionsSetting: boolean (?)
+input flatMessageLog: string (dfxg24346dfg)
 output: ?
 
 testName: colorizeMessage_inValidMessageInteger
 input message: integer (123)
-input className: string
-input functionName: string
-input debugFilesSetting: boolean
-input debugFunctionsSetting: boolean
-input flatMessageLog: boolean
+input className: string (?)
+input functionName: string (?)
+input debugFilesSetting: boolean (?)
+input debugFunctionsSetting: boolean (?)
+input flatMessageLog: boolean (?)
 output: ?
 
 testName: colorizeMessage_inValidMessageBoolean
 input message: boolean (false)
-input className: string
-input functionName: string
-input debugFilesSetting: boolean
-input debugFunctionsSetting: boolean
-input flatMessageLog: boolean
+input className: string (?)
+input functionName: string (?)
+input debugFilesSetting: boolean (?)
+input debugFunctionsSetting: boolean (?)
+input flatMessageLog: boolean (?)
+output: ?
+
+testName: colorizeMessage_inValidMessageUndefined
+input message: undefined
+input className: string (?)
+input functionName: string (?)
+input debugFilesSetting: boolean (?)
+input debugFunctionsSetting: boolean (?)
+input flatMessageLog: boolean (?)
+output: ?
+
+testName: colorizeMessage_inValidMessageNaN
+input message: NaN
+input className: string (?)
+input functionName: string (?)
+input debugFilesSetting: boolean (?)
+input debugFunctionsSetting: boolean (?)
+input flatMessageLog: boolean (?)
 output: ?
 
 testName: colorizeMessage_inValidClassNameInteger
-input message: string
+input message: string (?)
 input className: integer (123)
-input functionName: string
-input debugFilesSetting: boolean
-input debugFunctionsSetting: boolean
-input flatMessageLog: boolean
+input functionName: string (?)
+input debugFilesSetting: boolean (?)
+input debugFunctionsSetting: boolean (?)
+input flatMessageLog: boolean (?)
 output: ?
 
 testName: colorizeMessage_inValidClassNameBoolean
-input message: string
+input message: string (?)
 input className: boolean (false)
-input functionName: string
-input debugFilesSetting: boolean
-input debugFunctionsSetting: boolean
-input flatMessageLog: boolean
+input functionName: string (?)
+input debugFilesSetting: boolean (?)
+input debugFunctionsSetting: boolean (?)
+input flatMessageLog: boolean (?)
+output: ?
+
+testName: colorizeMessage_inValidClassNameUndefined
+input message: string (?)
+input className: undefined
+input functionName: string (?)
+input debugFilesSetting: boolean (?)
+input debugFunctionsSetting: boolean (?)
+input flatMessageLog: boolean (?)
+output: ?
+
+testName: colorizeMessage_inValidClassNameNaN
+input message: string (?)
+input className: NaN
+input functionName: string (?)
+input debugFilesSetting: boolean (?)
+input debugFunctionsSetting: boolean (?)
+input flatMessageLog: boolean (?)
 output: ?
 
 testName: colorizeMessage_inValidFunctionNameInteger
-input message: string
-input className: string
+input message: string (?)
+input className: string (?)
 input functionName: integer (123)
-input debugFilesSetting: boolean
-input debugFunctionsSetting: boolean
-input flatMessageLog: boolean
+input debugFilesSetting: boolean (?)
+input debugFunctionsSetting: boolean (?)
+input flatMessageLog: boolean (?)
 output: ?
 
 testName: colorizeMessage_inValidFunctionNameBoolean
-input message: string
-input className: string
+input message: string (?)
+input className: string (?)
 input functionName: boolean (false)
-input debugFilesSetting: boolean
-input debugFunctionsSetting: boolean
-input flatMessageLog: boolean
+input debugFilesSetting: boolean (?)
+input debugFunctionsSetting: boolean (?)
+input flatMessageLog: boolean (?)
+output: ?
+
+testName: colorizeMessage_inValidFunctionNameUndefined
+input message: string (?)
+input className: string (?)
+input functionName: undefined
+input debugFilesSetting: boolean (?)
+input debugFunctionsSetting: boolean (?)
+input flatMessageLog: boolean (?)
+output: ?
+
+testName: colorizeMessage_inValidFunctionNameNaN
+input message: string (?)
+input className: string (?)
+input functionName: NaN
+input debugFilesSetting: boolean (?)
+input debugFunctionsSetting: boolean (?)
+input flatMessageLog: boolean (?)
 output: ?
 
 testName: colorizeMessage_inValidDebugFunctionsSettingInteger
-input message: string
-input className: string
-input functionName: string
-input debugFilesSetting: boolean
+input message: string (?)
+input className: string (?)
+input functionName: string (?)
+input debugFilesSetting: boolean (?)
 input debugFunctionsSetting: integer (123)
-input flatMessageLog: boolean
+input flatMessageLog: boolean (?)
 output: ?
 
 testName: colorizeMessage_inValidDebugFunctionsSettingBoolean
-input message: string
-input className: string
-input functionName: string
-input debugFilesSetting: boolean
+input message: string (?)
+input className: string (?)
+input functionName: string (?)
+input debugFilesSetting: boolean (?)
 input debugFunctionsSetting: boolean (false)
 input flatMessageLog: boolean
 output: ?
 
+testName: colorizeMessage_inValidDebugFunctionsSettingUndefined
+input message: string (?)
+input className: string (?)
+input functionName: string (?)
+input debugFilesSetting: boolean (?)
+input debugFunctionsSetting: undefined
+input flatMessageLog: boolean (?)
+output: ?
+
+testName: colorizeMessage_inValidDebugFunctionsSettingNaN
+input message: string (?)
+input className: string (?)
+input functionName: string (?)
+input debugFilesSetting: boolean (?)
+input debugFunctionsSetting: NaN
+input flatMessageLog: boolean
+output: ?
+
 testName: colorizeMessage_inValidFlatMessageLogInteger
-input message: string
-input className: string
-input functionName: string
-input debugFilesSetting: boolean
-input debugFunctionsSetting: boolean
+input message: string (?)
+input className: string (?)
+input functionName: string (?)
+input debugFilesSetting: boolean (?)
+input debugFunctionsSetting: boolean (?)
 input flatMessageLog: integer (123)
 output: ?
 
 testName: colorizeMessage_inValidFlatMessageLogBoolean
-input message: string
-input className: string
-input functionName: string
-input debugFilesSetting: boolean
-input debugFunctionsSetting: boolean
+input message: string (?)
+input className: string (?)
+input functionName: string (?)
+input debugFilesSetting: boolean (?)
+input debugFunctionsSetting: boolean (?)
 input flatMessageLog: boolean (false)
+output: ?
+
+testName: colorizeMessage_inValidFlatMessageLogUndefined
+input message: string (?)
+input className: string (?)
+input functionName: string (?)
+input debugFilesSetting: boolean (?)
+input debugFunctionsSetting: boolean (?)
+input flatMessageLog: undefined
+output: ?
+
+testName: colorizeMessage_inValidFlatMessageLogNaN
+input message: string (?)
+input className: string (?)
+input functionName: string (?)
+input debugFilesSetting: boolean (?)
+input debugFunctionsSetting: boolean (?)
+input flatMessageLog: NaN
 output: ?
 
 testName: colorizeMessage_inValidAllUndefined
@@ -245,94 +371,150 @@ input flatMessageLog: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: aggregateStyleSetting_validData
-input settingValue1: string
-input settingValue2: string
-input defaultColorArray: array<integer>
-input processAsFontSetting: boolean
+input settingValue1: string (?)
+input settingValue2: string (?)
+input defaultColorArray: array<integer> (?)
+input processAsFontSetting: boolean (?)
 output: array<boolean> (?)
 
 testName: aggregateStyleSetting_inValidSettingValue1String
-input settingValue1: string
-input settingValue2: string
-input defaultColorArray: array<integer>
-input processAsFontSetting: boolean
+input settingValue1: string (dfxg24346dfg)
+input settingValue2: string (?)
+input defaultColorArray: array<integer> (?)
+input processAsFontSetting: boolean (?)
 output: ?
 
 testName: aggregateStyleSetting_inValidSettingValue2String
-input settingValue1: string
-input settingValue2: string
-input defaultColorArray: array<integer>
-input processAsFontSetting: boolean
+input settingValue1: string (?)
+input settingValue2: string (dfxg24346dfg)
+input defaultColorArray: array<integer> (?)
+input processAsFontSetting: boolean (?)
 output: ?
 
 testName: aggregateStyleSetting_inValidDefaultColorArrayString
-input settingValue1: string
-input settingValue2: string
-input defaultColorArray: string
-input processAsFontSetting: boolean
+input settingValue1: string (?)
+input settingValue2: string (?)
+input defaultColorArray: string (dfxg24346dfg)
+input processAsFontSetting: boolean (?)
 output: ?
 
 testName: aggregateStyleSetting_inValidProcessAsFontSettingString
-input settingValue1: string
-input settingValue2: string
-input defaultColorArray: array<integer>
-input processAsFontSetting: string
+input settingValue1: string (?)
+input settingValue2: string (?)
+input defaultColorArray: array<integer> (?)
+input processAsFontSetting: string (dfxg24346dfg)
 output: ?
 
 testName: aggregateStyleSetting_inValidSettingValue1Integer
 input settingValue1: integer (123)
-input settingValue2: string
-input defaultColorArray: array<integer>
-input processAsFontSetting: boolean
+input settingValue2: string (?)
+input defaultColorArray: array<integer> (?)
+input processAsFontSetting: boolean (?)
 output: ?
 
 testName: aggregateStyleSetting_inValidSettingValue1Boolean
 input settingValue1: boolean (false)
-input settingValue2: string
-input defaultColorArray: array<integer>
-input processAsFontSetting: boolean
+input settingValue2: string (?)
+input defaultColorArray: array<integer> (?)
+input processAsFontSetting: boolean (?)
+output: ?
+
+testName: aggregateStyleSetting_inValidSettingValue1Undefined
+input settingValue1: undefined
+input settingValue2: string (?)
+input defaultColorArray: array<integer> (?)
+input processAsFontSetting: boolean (?)
+output: ?
+
+testName: aggregateStyleSetting_inValidSettingValue1NaN
+input settingValue1: NaN
+input settingValue2: string (?)
+input defaultColorArray: array<integer> (?)
+input processAsFontSetting: boolean (?)
 output: ?
 
 testName: aggregateStyleSetting_inValidSettingValue2Integer
-input settingValue1: string
+input settingValue1: string (?)
 input settingValue2: integer (123)
-input defaultColorArray: array<integer>
-input processAsFontSetting: boolean
+input defaultColorArray: array<integer> (?)
+input processAsFontSetting: boolean (?)
 output: ?
 
 testName: aggregateStyleSetting_inValidSettingValue2Boolean
-input settingValue1: string
+input settingValue1: string (?)
 input settingValue2: boolean (false)
-input defaultColorArray: array<integer>
-input processAsFontSetting: boolean
+input defaultColorArray: array<integer> (?)
+input processAsFontSetting: boolean (?)
+output: ?
+
+testName: aggregateStyleSetting_inValidSettingValue2Undefined
+input settingValue1: string (?)
+input settingValue2: undefined
+input defaultColorArray: array<integer> (?)
+input processAsFontSetting: boolean (?)
+output: ?
+
+testName: aggregateStyleSetting_inValidSettingValue2NaN
+input settingValue1: string (?)
+input settingValue2: NaN
+input defaultColorArray: array<integer> (?)
+input processAsFontSetting: boolean (?)
 output: ?
 
 testName: aggregateStyleSetting_inValidDefaultColorArrayInteger
-input settingValue1: string
-input settingValue2: string
+input settingValue1: string (?)
+input settingValue2: string (?)
 input defaultColorArray: integer (123)
-input processAsFontSetting: boolean
+input processAsFontSetting: boolean (?)
 output: ?
 
 testName: aggregateStyleSetting_inValidDefaultColorArrayBoolean
-input settingValue1: string
-input settingValue2: string
+input settingValue1: string (?)
+input settingValue2: string (?)
 input defaultColorArray: boolean (false)
-input processAsFontSetting: boolean
+input processAsFontSetting: boolean (?)
+output: ?
+
+testName: aggregateStyleSetting_inValidDefaultColorArrayUndefined
+input settingValue1: string (?)
+input settingValue2: string (?)
+input defaultColorArray: undefined
+input processAsFontSetting: boolean (?)
+output: ?
+
+testName: aggregateStyleSetting_inValidDefaultColorArrayNaN
+input settingValue1: string (?)
+input settingValue2: string (?)
+input defaultColorArray: NaN
+input processAsFontSetting: boolean (?)
 output: ?
 
 testName: aggregateStyleSetting_inValidProcessAsFontSettingInteger
-input settingValue1: string
-input settingValue2: string
-input defaultColorArray: array<integer>
+input settingValue1: string (?)
+input settingValue2: string (?)
+input defaultColorArray: array<integer> (?)
 input processAsFontSetting: integer (123)
 output: ?
 
 testName: aggregateStyleSetting_inValidProcessAsFontSettingBoolean
-input settingValue1: string
-input settingValue2: string
-input defaultColorArray: array<integer>
+input settingValue1: string (?)
+input settingValue2: string (?)
+input defaultColorArray: array<integer> (?)
 input processAsFontSetting: boolean (false)
+output: ?
+
+testName: aggregateStyleSetting_inValidProcessAsFontSettingUndefined
+input settingValue1: string (?)
+input settingValue2: string (?)
+input defaultColorArray: array<integer> (?)
+input processAsFontSetting: undefined
+output: ?
+
+testName: aggregateStyleSetting_inValidProcessAsFontSettingNaN
+input settingValue1: string (?)
+input settingValue2: string (?)
+input defaultColorArray: array<integer> (?)
+input processAsFontSetting: NaN
 output: ?
 
 testName: aggregateStyleSetting_inValidAllUndefined
@@ -350,11 +532,11 @@ input processAsFontSetting: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: getFontStyleSettingsFromSetting_validData
-input settingValue: string
+input settingValue: string (?)
 output: array<boolean> (?)
 
 testName: getFontStyleSettingsFromSetting_inValidSettingValueString
-input settingValue: string
+input settingValue: string (dfxg24346dfg)
 output: ?
 
 testName: getFontStyleSettingsFromSetting_inValidSettingValueInteger
@@ -374,341 +556,341 @@ input settingValue: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: getColorStyleSettingFromSetting_validData
-input settingValue: string
-input defaultColorArray: array<integer>
+input settingValue: string (?)
+input defaultColorArray: array<integer> (?)
 output: object (?)
 
 testName: getColorStyleSettingFromSetting_inValidSettingValueString
-input settingValue: string
-input defaultColorArray: array<integer>
+input settingValue: string (dfxg24346dfg)
+input defaultColorArray: array<integer> (?)
 output: ?
 
 testName: getColorStyleSettingFromSetting_inValidDefaultColorArrayString
-input settingValue: string
-input defaultColorArray: string
+input settingValue: string (?)
+input defaultColorArray: string (&)
 output: ?
 
 testName: getColorStyleSettingFromSetting_inValidSettingValueInteger
 input settingValue: integer (123)
-input defaultColorArray: array<integer>
+input defaultColorArray: array<integer> (?)
 output: ?
 
 testName: getColorStyleSettingFromSetting_inValidSettingValueBoolean
 input settingValue: boolean (false)
-input defaultColorArray: array<integer>
+input defaultColorArray: array<integer> (?)
 output: ?
 
 testName: getColorStyleSettingFromSetting_inValidDefaultColorArrayInteger
-input settingValue: string
+input settingValue: string (?)
 input defaultColorArray: integer (123)
 output: ?
 
 testName: getColorStyleSettingFromSetting_inValidDefaultColorArrayBoolean
-input settingValue: string
+input settingValue: string (?)
 input defaultColorArray: boolean (false)
 output: ?
 
 testName: getColorStyleSettingFromSetting_inValidSettingValueUndefined
 input settingValue: undefined
-input defaultColorArray: array<integer>
+input defaultColorArray: array<integer> (?)
 output: ?
 
 testName: getColorStyleSettingFromSetting_inValidSettingValueNaN
 input settingValue: NaN
-input defaultColorArray: array<integer>
+input defaultColorArray: array<integer> (?)
 output: ?
 
 testName: getColorStyleSettingFromSetting_inValidDefaultColorArrayUndefined
-input settingValue: string
+input settingValue: string (?)
 input defaultColorArray: undefined
 output: ?
 
 testName: getColorStyleSettingFromSetting_inValidDefaultColorArrayNaN
-input settingValue: string
+input settingValue: string (?)
 input defaultColorArray: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: getNamedColorData_validData
-input colorName: string
-input defaultColorArray: array<integer>
+input colorName: string (?)
+input defaultColorArray: array<integer> (?)
 output: array<integer> (?)
 
 testName: getNamedColorData_inValidColorNameString
-input colorName: string
-input defaultColorArray: array<integer>
+input colorName: string (dfxg24346dfg)
+input defaultColorArray: array<integer> (?)
 output: ?
 
 testName: getNamedColorData_inValidDefaultColorArrayString
-input colorName: string
-input defaultColorArray: string
+input colorName: string (?)
+input defaultColorArray: string (&)
 output: ?
 
 testName: getNamedColorData_inValidColorNameInteger
 input colorName: integer (123)
-input defaultColorArray: array<integer>
+input defaultColorArray: array<integer> (?)
 output: ?
 
 testName: getNamedColorData_inValidColorNameBoolean
 input colorName: boolean (false)
-input defaultColorArray: array<integer>
+input defaultColorArray: array<integer> (?)
 output: ?
 
 testName: getNamedColorData_inValidDefaultColorArrayInteger
-input colorName: string
+input colorName: string (?)
 input defaultColorArray: integer (123)
 output: ?
 
 testName: getNamedColorData_inValidDefaultColorArrayBoolean
-input colorName: string
+input colorName: string (?)
 input defaultColorArray: boolean (false)
 output: ?
 
 testName: getNamedColorData_inValidColorNameUndefined
 input colorName: undefined
-input defaultColorArray: array<integer>
+input defaultColorArray: array<integer> (?)
 output: ?
 
 testName: getNamedColorData_inValidColorNameNaN
 input colorName: NaN
-input defaultColorArray: array<integer>
+input defaultColorArray: array<integer> (?)
 output: ?
 
 testName: getNamedColorData_inValidDefaultColorArrayUndefined
-input colorName: string
+input colorName: string (?)
 input defaultColorArray: undefined
 output: ?
 
 testName: getNamedColorData_inValidDefaultColorArrayNaN
-input colorName: string
+input colorName: string (?)
 input defaultColorArray: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: setUnderlineFontStyleOnMessageComponentAccordingToSetting_validData
-input messageComponent: string
-input underlineSettingValue: boolean
+input messageComponent: string (?)
+input underlineSettingValue: boolean (?)
 output: string (?)
 
 testName: setUnderlineFontStyleOnMessageComponentAccordingToSetting_inValidMessageComponentString
-input messageComponent: string
-input underlineSettingValue: boolean
+input messageComponent: string (dfxg24346dfg)
+input underlineSettingValue: boolean (?)
 output: ?
 
 testName: setUnderlineFontStyleOnMessageComponentAccordingToSetting_inValidUnderlineSettingValueString
-input messageComponent: string
-input underlineSettingValue: string
+input messageComponent: string (?)
+input underlineSettingValue: string (&)
 output: ?
 
 testName: setUnderlineFontStyleOnMessageComponentAccordingToSetting_inValidMessageComponentInteger
 input messageComponent: integer (123)
-input underlineSettingValue: boolean
+input underlineSettingValue: boolean (?)
 output: ?
 
 testName: setUnderlineFontStyleOnMessageComponentAccordingToSetting_inValidMessageComponentBoolean
 input messageComponent: boolean (false)
-input underlineSettingValue: boolean
+input underlineSettingValue: boolean (?)
 output: ?
 
 testName: setUnderlineFontStyleOnMessageComponentAccordingToSetting_inValidUnderlineSettingValueInteger
-input messageComponent: string
+input messageComponent: string (?)
 input underlineSettingValue: integer (123)
 output: ?
 
 testName: setUnderlineFontStyleOnMessageComponentAccordingToSetting_inValidUnderlineSettingValueBoolean
-input messageComponent: string
+input messageComponent: string (?)
 input underlineSettingValue: boolean (false)
 output: ?
 
 testName: setUnderlineFontStyleOnMessageComponentAccordingToSetting_inValidMessageComponentUndefined
 input messageComponent: undefined
-input underlineSettingValue: boolean
+input underlineSettingValue: boolean (?)
 output: ?
 
 testName: setUnderlineFontStyleOnMessageComponentAccordingToSetting_inValidMessageComponentNaN
 input messageComponent: NaN
-input underlineSettingValue: boolean
+input underlineSettingValue: boolean (?)
 output: ?
 
 testName: setUnderlineFontStyleOnMessageComponentAccordingToSetting_inValidUnderlineSettingValueUndefined
-input messageComponent: string
+input messageComponent: string (?)
 input underlineSettingValue: undefined
 output: ?
 
 testName: setUnderlineFontStyleOnMessageComponentAccordingToSetting_inValidUnderlineSettingValueNaN
-input messageComponent: string
+input messageComponent: string (?)
 input underlineSettingValue: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: setBoldFontStyleOnMessageComponentAccordingToSetting_validData
-input messageComponent: string
-input boldSettingValue: boolean
+input messageComponent: string (?)
+input boldSettingValue: boolean (?)
 output: string (?)
 
 testName: setBoldFontStyleOnMessageComponentAccordingToSetting_inValidMessageComponentString
-input messageComponent: string
-input boldSettingValue: boolean
+input messageComponent: string (dfxg24346dfg)
+input boldSettingValue: boolean (?)
 output: ?
 
 testName: setBoldFontStyleOnMessageComponentAccordingToSetting_inValidBoldSettingValueString
-input messageComponent: string
-input boldSettingValue: string
+input messageComponent: string (?)
+input boldSettingValue: string (&)
 output: ?
 
 testName: setBoldFontStyleOnMessageComponentAccordingToSetting_inValidMessageComponentInteger
 input messageComponent: integer (123)
-input boldSettingValue: boolean
+input boldSettingValue: boolean (?)
 output: ?
 
 testName: setBoldFontStyleOnMessageComponentAccordingToSetting_inValidMessageComponentBoolean
 input messageComponent: boolean (false)
-input boldSettingValue: boolean
+input boldSettingValue: boolean (?)
 output: ?
 
 testName: setBoldFontStyleOnMessageComponentAccordingToSetting_inValidBoldSettingValueInteger
-input messageComponent: string
+input messageComponent: string (?)
 input boldSettingValue: integer (123)
 output: ?
 
 testName: setBoldFontStyleOnMessageComponentAccordingToSetting_inValidBoldSettingValueBoolean
-input messageComponent: string
+input messageComponent: string (?)
 input boldSettingValue: boolean (false)
 output: ?
 
 testName: setBoldFontStyleOnMessageComponentAccordingToSetting_inValidMessageComponentUndefined
 input messageComponent: undefined
-input boldSettingValue: boolean
+input boldSettingValue: boolean (?)
 output: ?
 
 testName: setBoldFontStyleOnMessageComponentAccordingToSetting_inValidMessageComponentNaN
 input messageComponent: NaN
-input boldSettingValue: boolean
+input boldSettingValue: boolean (?)
 output: ?
 
 testName: setBoldFontStyleOnMessageComponentAccordingToSetting_inValidBoldSettingValueUndefined
-input messageComponent: string
+input messageComponent: string (?)
 input boldSettingValue: undefined
 output: ?
 
 testName: setBoldFontStyleOnMessageComponentAccordingToSetting_inValidBoldSettingValueNaN
-input messageComponent: string
+input messageComponent: string (?)
 input boldSettingValue: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: setFontForegroundColorOnMessageComponentAccordingToSetting_validData
-input messageComponent: string
-input colorSettingValue: boolean|array<integer>
+input messageComponent: string (?)
+input colorSettingValue: boolean|array<integer> (?)
 output: string (?)
 
 testName: setFontForegroundColorOnMessageComponentAccordingToSetting_inValidMessageComponentString
-input messageComponent: string
-input colorSettingValue: boolean
+input messageComponent: string (dfxg24346dfg)
+input colorSettingValue: boolean (?)
 output: ?
 
 testName: setFontForegroundColorOnMessageComponentAccordingToSetting_inValidColorSettingValueString
-input messageComponent: string
-input colorSettingValue: string
+input messageComponent: string (?)
+input colorSettingValue: string (&)
 output: ?
 
 testName: setFontForegroundColorOnMessageComponentAccordingToSetting_inValidMessageComponentInteger
 input messageComponent: integer (123)
-input colorSettingValue: boolean
+input colorSettingValue: boolean (?)
 output: ?
 
 testName: setFontForegroundColorOnMessageComponentAccordingToSetting_inValidMessageComponentBoolean
 input messageComponent: boolean (false)
-input colorSettingValue: boolean
+input colorSettingValue: boolean (?)
 output: ?
 
 testName: setFontForegroundColorOnMessageComponentAccordingToSetting_inValidColorSettingValueInteger
-input messageComponent: string
+input messageComponent: string (?)
 input colorSettingValue: integer (123)
 output: ?
 
 testName: setFontForegroundColorOnMessageComponentAccordingToSetting_inValidColorSettingValueBoolean
-input messageComponent: string
+input messageComponent: string (?)
 input colorSettingValue: boolean (false)
 output: ?
 
 testName: setFontForegroundColorOnMessageComponentAccordingToSetting_inValidMessageComponentUndefined
 input messageComponent: undefined
-input colorSettingValue: boolean
+input colorSettingValue: boolean (?)
 output: ?
 
 testName: setFontForegroundColorOnMessageComponentAccordingToSetting_inValidMessageComponentNaN
 input messageComponent: NaN
-input colorSettingValue: boolean
+input colorSettingValue: boolean (?)
 output: ?
 
 testName: setFontForegroundColorOnMessageComponentAccordingToSetting_inValidColorSettingValueUndefined
-input messageComponent: string
+input messageComponent: string (?)
 input colorSettingValue: undefined
 output: ?
 
 testName: setFontForegroundColorOnMessageComponentAccordingToSetting_inValidColorSettingValueNaN
-input messageComponent: string
+input messageComponent: string (?)
 input colorSettingValue: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: setFontBackgroundColorOnMessageComponentAccordingToSetting_validData
-input messageComponent: string
-input colorSettingValue: boolean|array<integer>
+input messageComponent: string (?)
+input colorSettingValue: boolean|array<integer> (?)
 output: string (?)
 
 testName: setFontBackgroundColorOnMessageComponentAccordingToSetting_inValidMessageComponentString
-input messageComponent: string
-input colorSettingValue: boolean
+input messageComponent: string (dfxg24346dfg)
+input colorSettingValue: boolean (?)
 output: ?
 
 testName: setFontBackgroundColorOnMessageComponentAccordingToSetting_inValidColorSettingValueString
-input messageComponent: string
-input colorSettingValue: string
+input messageComponent: string (?)
+input colorSettingValue: string (&)
 output: ?
 
 testName: setFontBackgroundColorOnMessageComponentAccordingToSetting_inValidMessageComponentInteger
 input messageComponent: integer (123)
-input colorSettingValue: boolean
+input colorSettingValue: boolean (?)
 output: ?
 
 testName: setFontBackgroundColorOnMessageComponentAccordingToSetting_inValidMessageComponentBoolean
 input messageComponent: boolean (false)
-input colorSettingValue: boolean
+input colorSettingValue: boolean (?)
 output: ?
 
 testName: setFontBackgroundColorOnMessageComponentAccordingToSetting_inValidColorSettingValueInteger
-input messageComponent: string
+input messageComponent: string (?)
 input colorSettingValue: integer (123)
 output: ?
 
 testName: setFontBackgroundColorOnMessageComponentAccordingToSetting_inValidColorSettingValueBoolean
-input messageComponent: string
+input messageComponent: string (?)
 input colorSettingValue: boolean (false)
 output: ?
 
 testName: setFontBackgroundColorOnMessageComponentAccordingToSetting_inValidMessageComponentUndefined
 input messageComponent: undefined
-input colorSettingValue: boolean
+input colorSettingValue: boolean (?)
 output: ?
 
 testName: setFontBackgroundColorOnMessageComponentAccordingToSetting_inValidMessageComponentNaN
 input messageComponent: NaN
-input colorSettingValue: boolean
+input colorSettingValue: boolean (?)
 output: ?
 
 testName: setFontBackgroundColorOnMessageComponentAccordingToSetting_inValidColorSettingValueUndefined
-input messageComponent: string
+input messageComponent: string (?)
 input colorSettingValue: undefined
 output: ?
 
 testName: setFontBackgroundColorOnMessageComponentAccordingToSetting_inValidColorSettingValueNaN
-input messageComponent: string
+input messageComponent: string (?)
 input colorSettingValue: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: removeFontStyles_validData
-input message: string
+input message: string (?)
 output: string (?)
 
 testName: removeFontStyles_inValidMessageString
-input message: string
+input message: string (dfxg24346dfg)
 output: ?
 
 testName: removeFontStyles_inValidMessageInteger
