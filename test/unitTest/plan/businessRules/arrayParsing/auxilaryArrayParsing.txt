@@ -12,19 +12,29 @@ input inputData: string (dfxg24346dfg)
 input inputMetaData: string|integer (represents the maximum range that is used to generate the random color) (testDataString)
 output: ?
 
-testName: parseColorRangeInputs_validDataInputDataInteger
-input inputData: integer (23456)
-input inputMetaData: string|integer (represents the maximum range that is used to generate the random color) (testDataInteger)
-output: ?
-
 testName: parseColorRangeInputs_validDataInputMetaDataString
 input inputData: string|integer (represents the minimum range that is used to generate the random color) (testDataString)
 input inputMetaData: string (dfxg24346dfg)
 output: ?
 
+testName: parseColorRangeInputs_validDataInputDataInteger
+input inputData: integer (23456)
+input inputMetaData: string|integer (represents the maximum range that is used to generate the random color) (testDataInteger)
+output: ?
+
+testName: parseColorRangeInputs_validDataInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: string|integer (represents the maximum range that is used to generate the random color) (testDataInteger)
+output: ?
+
 testName: parseColorRangeInputs_validDataInputMetaDataInteger
 input inputData: string|integer (represents the minimum range that is used to generate the random color) (testDataInteger)
 input inputMetaData: integer (23456)
+output: ?
+
+testName: parseColorRangeInputs_validDataInputMetaDataBoolean
+input inputData: string|integer (represents the minimum range that is used to generate the random color) (testDataInteger)
+input inputMetaData: boolean (false)
 output: ?
 
 testName: parseColorRangeInputs_inValidInputDataUndefined
@@ -48,18 +58,18 @@ input inputMetaData: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: getNamedColorDataArray_validData
-input inputData: string
+input inputData: string (?)
 input inputMetaData: array<integer> ([1, 2, 3, 4, 5])
 output: array<integer> (?)
 
 testName: getNamedColorDataArray_inValidInputDataString
-input inputData: string
+input inputData: string (dfxg24346dfg)
 input inputMetaData: array<integer> ([1, 2, 3, 4, 5])
 output: ?
 
 testName: getNamedColorDataArray_inValidInputMetaDataString
-input inputData: string
-input inputMetaData: string
+input inputData: string (?)
+input inputMetaData: string (&)
 output: ?
 
 testName: getNamedColorDataArray_inValidInputDataInteger
@@ -93,12 +103,12 @@ input inputMetaData: array<integer> ([1, 2, 3, 4, 5])
 output: ?
 
 testName: getNamedColorDataArray_inValidInputMetaDataUndefined
-input inputData: string
+input inputData: string (?)
 input inputMetaData: undefined
 output: ?
 
 testName: getNamedColorDataArray_inValidInputMetaDataNaN
-input inputData: string
+input inputData: string (?)
 input inputMetaData: NaN
 output: ?
 --------------------------------------------------------------------------------

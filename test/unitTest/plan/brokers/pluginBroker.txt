@@ -1,11 +1,11 @@
 description: Test plan for pluginBroker.js
 
 testName: loadPluginRegistry_validData
-input pluginRegistryPath: string
+input pluginRegistryPath: string (?)
 output: object (?)
 
 testName: loadPluginRegistry_inValidString
-input pluginRegistryPath: string
+input pluginRegistryPath: string (464gsdsfae8f46)
 output: ?
 
 testName: loadPluginRegistry_inValidInteger
@@ -25,11 +25,11 @@ input pluginRegistryPath: undefined
 output: ?
 --------------------------------------------------------------------------------
 testName: storePluginRegistryInDataStructure_validData
-input pluginRegistryData: object
+input pluginRegistryData: object (?)
 output: boolean (?)
 
 testName: storePluginRegistryInDataStructure_inValidString
-input pluginRegistryData: string
+input pluginRegistryData: string (464gsdsfae8f46)
 output: ?
 
 testName: storePluginRegistryInDataStructure_inValidInteger
@@ -58,11 +58,11 @@ testName: listPluginsPathsInRegistry_validData
 output: array<string> (?)
 --------------------------------------------------------------------------------
 testName: listPluginAttributeInRegistry_validData
-input attributeName: string
+input attributeName: string (?)
 output: array<string> (?)
 
 testName: listPluginAttributeInRegistry_inValidString
-input attributeName: string
+input attributeName: string (464gsdsfae8f46)
 output: ?
 
 testName: listPluginAttributeInRegistry_inValidInteger
@@ -91,66 +91,66 @@ testName: countPluginsInRegistryPath_validData
 output: integer (?)
 --------------------------------------------------------------------------------
 testName: registerPlugin_validData
-input pluginName: string
-input pluginPath: string
+input pluginName: string (?)
+input pluginPath: string (?)
 output: boolean (?)
 
 testName: registerPlugin_inValidPluginNameString
-input pluginName: string
-input pluginPath: string
+input pluginName: string (464gsdsfae8f46)
+input pluginPath: string (?)
 output: ?
 
 testName: registerPlugin_inValidPluginPathString
-input pluginName: string
-input pluginPath: string
+input pluginName: string (?)
+input pluginPath: string (&)
 output: ?
 
 testName: registerPlugin_inValidPluginNameInteger
 input pluginName: integer (123)
-input pluginPath: string
+input pluginPath: string (?)
 output: ?
 
 testName: registerPlugin_inValidPluginNameBoolean
 input pluginName: boolean (false) 
-input pluginPath: string
+input pluginPath: string (?)
 output: ?
 
 testName: registerPlugin_inValidPluginPathInteger
-input pluginName: string
+input pluginName: string (?)
 input pluginPath: integer (123)
 output: ?
 
 testName: registerPlugin_inValidPluginPathBoolean
-input pluginName: string
+input pluginName: string (?)
 input pluginPath: boolean (false)
 output: ?
 
 testName: registerPlugin_inValidPluginNameUndefined
 input pluginName: Undefined
-input pluginPath: string
+input pluginPath: string (?)
 output: ?
 
 testName: registerPlugin_inValidPluginNameNaN
 input pluginName: NaN
-input pluginPath: string
+input pluginPath: string (?)
 output: ?
 
 testName: registerPlugin_inValidPluginPathUndefined
-input pluginName: string
+input pluginName: string (?)
 input pluginPath: undefined
 output: ?
 
 testName: registerPlugin_inValidPluginPathNaN
-input pluginName: string
+input pluginName: string (?)
 input pluginPath: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: unregisterPlugin_validData
-input pluginName: string
+input pluginName: string (?)
 output: boolean (?)
 
 testName: unregisterPlugin_inValidString
-input pluginName: string
+input pluginName: string (464gsdsfae8f46)
 output: boolean (?)
 
 testName: unregisterPlugin_inValidInteger
@@ -170,11 +170,11 @@ input pluginName: NaN
 output: boolean (?)
 --------------------------------------------------------------------------------
 testName: unregisterPlugins_validData
-input pluginName: array<string>
+input pluginName: array<string> (?)
 output: boolean (?)
 
 testName: unregisterPlugins_inValidString
-input pluginName: string
+input pluginName: string (464gsdsfae8f46)
 output: boolean (?)
 
 testName: unregisterPlugins_inValidInteger
@@ -203,11 +203,11 @@ testName: savePluginRegistry_validData
 output: boolean (?)
 --------------------------------------------------------------------------------
 testName: loadPluginMetaData_validData
-input pluginPath: string
+input pluginPath: string (?)
 output: object (?)
 
 testName: loadPluginMetaData_inValidString
-input pluginPath: string
+input pluginPath: string (464gsdsfae8f46)
 output: ?
 
 testName: loadPluginMetaData_inValidInteger
@@ -227,127 +227,127 @@ input pluginPath: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: extractAndProcessPluginEntryPointURI_validData
-input pluginMetaData: object
-input pluginPath: string
+input pluginMetaData: object (?)
+input pluginPath: string (?)
 output: string (?)
 
 testName: extractAndProcessPluginEntryPointURI_inValidPluginMetaDataString
-input pluginMetaData: string
-input pluginPath: string
+input pluginMetaData: string (464gsdsfae8f46)
+input pluginPath: string (?)
 output: ?
 
 testName: extractAndProcessPluginEntryPointURI_inValidPluginPathString
-input pluginMetaData: object
-input pluginPath: string
+input pluginMetaData: object (?)
+input pluginPath: string (&)
 output: ?
 
 testName: extractAndProcessPluginEntryPointURI_inValidPluginMetaDataInteger
 input pluginMetaData: integer (123)
-input pluginPath: string
+input pluginPath: string (?)
 output: ?
 
 testName: extractAndProcessPluginEntryPointURI_inValidPluginMetaDataBoolean
 input pluginMetaData: boolean (false)
-input pluginPath: string
+input pluginPath: string (?)
 output: ?
 
 testName: extractAndProcessPluginEntryPointURI_inValidPluginPathInteger
-input pluginMetaData: object
+input pluginMetaData: object (?)
 input pluginPath: integer (123)
 output: ?
 
 testName: extractAndProcessPluginEntryPointURI_inValidPluginPathBoolean
-input pluginMetaData: object
+input pluginMetaData: object (?)
 input pluginPath: boolean (false)
 output: ?
 
 testName: extractAndProcessPluginEntryPointURI_inValidPluginMetaDataUndefined
 input pluginMetaData: undefined
-input pluginPath: string
+input pluginPath: string (?)
 output: ?
 
 testName: extractAndProcessPluginEntryPointURI_inValidPluginMetaDataNaN
 input pluginMetaData: NaN
-input pluginPath: string
+input pluginPath: string (?)
 output: ?
 
 testName: extractAndProcessPluginEntryPointURI_inValidPluginPathUndefined
-input pluginMetaData: object
+input pluginMetaData: object (?)
 input pluginPath: undefined
 output: ?
 
 testName: extractAndProcessPluginEntryPointURI_inValidPluginPathNaN
-input pluginMetaData: object
+input pluginMetaData: object (?)
 input pluginPath: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: loadPlugin_validData
-input pluginExecutionPath: string
+input pluginExecutionPath: string (?)
 output: object (?)
 
 testName: loadPlugin_inValidString
-input pluginExecutionPath: string
-output: object (?)
+input pluginExecutionPath: string (&)
+output: ?
 
 testName: loadPlugin_inValidInteger
 input pluginExecutionPath: integer (123)
-output: object (?)
+output: ?
 
 testName: loadPlugin_inValidBoolean
 input pluginExecutionPath: boolean (false)
-output: object (?)
+output: ?
 
 testName: loadPlugin_inValidUndefined
 input pluginExecutionPath: undefined
-output: object (?)
+output: ?
 
 testName: loadPlugin_inValidNaN
 input pluginExecutionPath: NaN
-output: object (?)
+output: ?
 --------------------------------------------------------------------------------
 testName: integratePluginBusinessRules_validData
-input pluginName: string
-input pluginBusinessRules: object
+input pluginName: string (?)
+input pluginBusinessRules: object (?)
 output: boolean (?)
 
 testName: integratePluginBusinessRules_inValidPluginNameString
-input pluginName: string
-input pluginBusinessRules: object
+input pluginName: string (464gsdsfae8f46)
+input pluginBusinessRules: object (?)
 output: ?
 
 testName: integratePluginBusinessRules_inValidPluginBusinessRulesString
-input pluginName: string
-input pluginBusinessRules: string
+input pluginName: string (?)
+input pluginBusinessRules: string (&)
 output: ?
 
 testName: integratePluginBusinessRules_inValidPluginNameInteger
 input pluginName: integer (123)
-input pluginBusinessRules: object
+input pluginBusinessRules: object (?)
 output: ?
 
 testName: integratePluginBusinessRules_inValidPluginNameBoolean
 input pluginName: boolean (false)
-input pluginBusinessRules: object
+input pluginBusinessRules: object (?)
 output: ?
 
 testName: integratePluginBusinessRules_inValidPluginBusinessRulesInteger
 input pluginName: integer (123)
-input pluginBusinessRules: string
+input pluginBusinessRules: string (?)
 output: ?
 
 testName: integratePluginBusinessRules_inValidPluginBusinessRulesBoolean
 input pluginName: boolean (false)
-input pluginBusinessRules: string
+input pluginBusinessRules: string (?)
 output: ?
 
 testName: integratePluginBusinessRules_inValidPluginNameUndefined
 input pluginName: undefined
-input pluginBusinessRules: object
+input pluginBusinessRules: object (?)
 output: ?
 
 testName: integratePluginBusinessRules_inValidPluginNameNaN
 input pluginName: NaN
-input pluginBusinessRules: object
+input pluginBusinessRules: object (?)
 output: ?
 
 testName: integratePluginBusinessRules_inValidPluginBusinessRulesUndefined
@@ -361,231 +361,286 @@ input pluginBusinessRules: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: integratePluginCommands_validData
-input pluginName: string
-input pluginCommands: object 
+input pluginName: string (?)
+input pluginCommands: object (?) 
 output: boolean (?)
 
 testName: integratePluginCommands_inValidPluginNameString
-input pluginName: string
-input pluginCommands: object
+input pluginName: string (464gsdsfae8f46)
+input pluginCommands: object (?)
 output: ?
 
 testName: integeratePluginCommands_inValidPluginCommandsString
-input pluginName: string
-input pluginCommands: string
+input pluginName: string (?)
+input pluginCommands: string (&)
 output: ?
 
 testName: integratePluginCommands_inValidPluginNameInteger
 input pluginName: integer (123)
-input pluginCommands: object
+input pluginCommands: object (?)
 output: ?
 
 testName: integratePluginCommands_inValidPluginNameBoolean
 input pluginName: boolean (false)
-input pluginCommands: object
+input pluginCommands: object (?)
 output: ?
 
 testName: integeratePluginCommands_inValidPluginCommandsInteger
-input pluginName: string
+input pluginName: string (?)
 input pluginCommands: integer (123)
 output: ?
 
 testName: integeratePluginCommands_inValidPluginCommandsBoolean
-input pluginName: string
+input pluginName: string (?)
 input pluginCommands: boolean (false)
 output: ?
 
 testName: integratePluginCommands_inValidPluginNameUndefined
 input pluginName: undefined
-input pluginCommands: object
+input pluginCommands: object (?)
 output: ?
 
 testName: integratePluginCommands_inValidPluginNameNaN
 input pluginName: NaN
-input pluginCommands: object
+input pluginCommands: object (?)
 output: ?
 
 testName: integeratePluginCommands_inValidPluginCommandsUndefined
-input pluginName: string
+input pluginName: string (?)
 input pluginCommands: undefined
 output: ?
 
 testName: integeratePluginCommands_inValidPluginCommandsNaN
-input pluginName: string
+input pluginName: string (?)
 input pluginCommands: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: integratePluginConfigurationData_validData
-input pluginName: string
-input pluginConfigurationData: object
+input pluginName: string (?)
+input pluginConfigurationData: object (?)
 output: boolean (?)
 
 testName: integratePluginConfigurationData_inValidPluginNameString
-input pluginName: string
-input pluginConfigurationData: object
+input pluginName: string (464gsdsfae8f46)
+input pluginConfigurationData: object (?)
 output: ?
 
 testName: integratePluginConfigurationData_inValidPluginConfigurationDataString
-input pluginName: string
-input pluginConfigurationData: string
+input pluginName: string (?)
+input pluginConfigurationData: string (&)
 output: ?
 
 testName: integratePluginConfigurationData_inValidPluginNameInteger
 input pluginName: integer (123)
-input pluginConfigurationData: object
+input pluginConfigurationData: object (?)
 output: ?
 
 testName: integratePluginConfigurationData_inValidPluginNameBoolean
 input pluginName: boolean (false)
-input pluginConfigurationData: object
+input pluginConfigurationData: object (?)
 output: ?
 
 testName: integratePluginConfigurationData_inValidPluginConfigurationDataInteger
-input pluginName: string
+input pluginName: string (?)
 input pluginConfigurationData: integer (123)
 output: ?
 
 testName: integratePluginConfigurationData_inValidPluginConfigurationDataBoolean
-input pluginName: string
+input pluginName: string (?)
 input pluginConfigurationData: boolean (false)
 output: ?
 
 testName: integratePluginConfigurationData_inValidPluginNameUndefined
 input pluginName: undefined
-input pluginConfigurationData: object
+input pluginConfigurationData: object (?)
 output: ?
 
 testName: integratePluginConfigurationData_inValidPluginNameNaN
 input pluginName: NaN
-input pluginConfigurationData: object
+input pluginConfigurationData: object (?)
 output: ?
 
 testName: integratePluginConfigurationData_inValidPluginConfigurationDataUndefined
-input pluginName: string
+input pluginName: string (?)
 input pluginConfigurationData: undefined
 output: ?
 
 testName: integratePluginConfigurationData_inValidPluginConfigurationDataNaN
-input pluginName: string
+input pluginName: string (?)
+input pluginConfigurationData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: integratePluginCommandAliases_validData
+input pluginName: string (?)
+input pluginConfigurationData: object (?)
+output: boolean (?)
+
+testName: integratePluginCommandAliases_inValidPluginNameString
+input pluginName: string (464gsdsfae8f46)
+input pluginConfigurationData: object (?)
+output: ?
+
+testName: integratePluginCommandAliases_inValidPluginConfigurationDataString
+input pluginName: string (?)
+input pluginConfigurationData: string (&)
+output: ?
+
+testName: integratePluginCommandAliases_inValidPluginNameInteger
+input pluginName: integer (123)
+input pluginConfigurationData: object (?)
+output: ?
+
+testName: integratePluginCommandAliases_inValidPluginNameBoolean
+input pluginName: boolean (false)
+input pluginConfigurationData: object (?)
+output: ?
+
+testName: integratePluginCommandAliases_inValidPluginConfigurationDataInteger
+input pluginName: string (?)
+input pluginConfigurationData: integer (123)
+output: ?
+
+testName: integratePluginCommandAliases_inValidPluginConfigurationDataBoolean
+input pluginName: string (?)
+input pluginConfigurationData: boolean (false)
+output: ?
+
+testName: integratePluginCommandAliases_inValidPluginNameUndefined
+input pluginName: undefined
+input pluginConfigurationData: object (?)
+output: ?
+
+testName: integratePluginCommandAliases_inValidPluginNameNaN
+input pluginName: NaN
+input pluginConfigurationData: object (?)
+output: ?
+
+testName: integratePluginCommandAliases_inValidPluginConfigurationDataUndefined
+input pluginName: string (?)
+input pluginConfigurationData: undefined
+output: ?
+
+testName: integratePluginCommandAliases_inValidPluginConfigurationDataNaN
+input pluginName: string (?)
 input pluginConfigurationData: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: integratePluginWorkflows_validData
-input pluginName: string
-input pluginWorkflows: object
+input pluginName: string (?)
+input pluginWorkflows: object (?)
 output: boolean (?)
 
 testName: integratePluginWorkflows_inValidPluginNameString
-input pluginName: string
-input pluginWorkflows: object
+input pluginName: string (464gsdsfae8f46)
+input pluginWorkflows: object (?)
 output: ?
 
 testName: integratePluginWorkflows_inValidPluginConfigurationDataString
-input pluginName: string
-input pluginWorkflows: string
+input pluginName: string (?)
+input pluginWorkflows: string (&)
 output: ?
 
 testName: integratePluginWorkflows_inValidPluginNameInteger
 input pluginName: integer (123)
-input pluginWorkflows: object
+input pluginWorkflows: object (?)
 output: ?
 
 testName: integratePluginWorkflows_inValidPluginNameBoolean
 input pluginName: boolean (false)
-input pluginWorkflows: object
+input pluginWorkflows: object (?)
 output: ?
 
 testName: integratePluginWorkflows_inValidPluginConfigurationDataInteger
-input pluginName: string
+input pluginName: string (?)
 input pluginWorkflows: integer (123)
 output: ?
 
 testName: integratePluginWorkflows_inValidPluginConfigurationDataBoolean
-input pluginName: string
+input pluginName: string (?)
 input pluginWorkflows: boolean (false)
 output: ?
 
 testName: integratePluginWorkflows_inValidPluginNameUndefined
 input pluginName: undefined
-input pluginWorkflows: object
+input pluginWorkflows: object (?)
 output: ?
 
 testName: integratePluginWorkflows_inValidPluginNameNaN
 input pluginName: NaN
-input pluginWorkflows: object
+input pluginWorkflows: object (?)
 output: ?
 
 testName: integratePluginWorkflows_inValidPluginConfigurationDataUndefined
-input pluginName: string
+input pluginName: string (?)
 input pluginWorkflows: undefined
 output: ?
 
 testName: integratePluginWorkflows_inValidPluginConfigurationDataNaN
-input pluginName: string
+input pluginName: string (?)
 input pluginWorkflows: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: integratePluginThemeData_validData
-input pluginName: string
-input pluginThemeData: object
+input pluginName: string (?)
+input pluginThemeData: object (?)
 output: boolean (?)
 
 testName: integratePluginThemeData_inValidPluginNameString
-input pluginName: string
-input pluginThemeData: object
+input pluginName: string (464gsdsfae8f46)
+input pluginThemeData: object (?)
 output: ?
 
 testName: integratePluginThemeData_inValidPluginConfigurationDataString
-input pluginName: string
-input pluginThemeData: string
+input pluginName: string (?)
+input pluginThemeData: string (&)
 output: ?
 
 testName: integratePluginThemeData_inValidPluginNameInteger
 input pluginName: integer (123)
-input pluginThemeData: object
+input pluginThemeData: object (?)
 output: ?
 
 testName: integratePluginThemeData_inValidPluginNameBoolean
 input pluginName: boolean (false)
-input pluginThemeData: object
+input pluginThemeData: object (?)
 output: ?
 
 testName: integratePluginThemeData_inValidPluginConfigurationDataInteger
-input pluginName: string
+input pluginName: string (?)
 input pluginThemeData: integer (123)
 output: ?
 
 testName: integratePluginThemeData_inValidPluginConfigurationDataBoolean
-input pluginName: string
+input pluginName: string (?)
 input pluginThemeData: boolean (false)
 output: ?
 
 testName: integratePluginThemeData_inValidPluginNameUndefined
 input pluginName: undefined
-input pluginThemeData: object
+input pluginThemeData: object (?)
 output: ?
 
 testName: integratePluginThemeData_inValidPluginNameNaN
 input pluginName: NaN
-input pluginThemeData: object
+input pluginThemeData: object (?)
 output: ?
 
 testName: integratePluginThemeData_inValidPluginConfigurationDataUndefined
-input pluginName: string
+input pluginName: string (?)
 input pluginThemeData: undefined
 output: ?
 
 testName: integratePluginThemeData_inValidPluginConfigurationDataNaN
-input pluginName: string
+input pluginName: string (?)
 input pluginThemeData: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: unloadPlugin_validData
-input pluginName: string
+input pluginName: string (?)
 output: boolean (?)
 
 testName: unloadPlugin_inValidString
-input pluginName: string
+input pluginName: string (464gsdsfae8f46)
 output: ?
 
 testName: unloadPlugin_inValidInteger

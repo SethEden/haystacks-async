@@ -1,75 +1,83 @@
 description: Test plan for workflowBroker.js
 
 testName: addPluginWorkflows_validData
-input pluginName: string
-input pluginWorkflows: object
+input pluginName: string (?)
+input pluginWorkflows: object (?)
 output: boolean (?)
 
 testName: addPluginWorkflows_inValidPluginNameString
-input pluginName: string
-input pluginWorkflows: string
+input pluginName: string (464gsdsfae8f46)
+input pluginWorkflows: object (?)
 output: ?
 
 testName: addPluginWorkflows_inValidPluginWorkflowsString
-input pluginName: string
-input pluginWorkflows: string
+input pluginName: string (?)
+input pluginWorkflows: string (&)
 output: ?
 
 testName: addPluginWorkflows_inValidPluginNameNumber
-input pluginName: number (123)
-input pluginWorkflows: object
+input pluginName: integer (123)
+input pluginWorkflows: object (?)
 output: ?
 
 testName: addPluginWorkflows_inValidPluginNameBoolean
 input pluginName: boolean (false)
-input pluginWorkflows: object
+input pluginWorkflows: object (?)
 output: ?
 
 testName: addPluginWorkflows_inValidPluginWorkflowsNumber
-input pluginName: string
-input pluginWorkflows: Number (123)
+input pluginName: string (?)
+input pluginWorkflows: integer (123)
 output: ?
 
 testName: addPluginWorkflows_inValidPluginWorkflowsBoolean
-input pluginName: string
+input pluginName: string (?)
 input pluginWorkflows: boolean (false)
 output: ?
 
 testName: addPluginWorkflows_inValidPluginNameUndefined
 input pluginName: undefined
-input pluginWorkflows: object
+input pluginWorkflows: object (?)
 output: ?
 
 testName: addPluginWorkflows_inValidPluginNameNaN
 input pluginName: NaN
-input pluginWorkflows: object
+input pluginWorkflows: object (?)
 output: ?
 
 testName: addPluginWorkflows_inValidPluginWorkflowsUndefined
-input pluginName: string
+input pluginName: string (?)
 input pluginWorkflows: Undefined
 output: ?
 
 testName: addPluginWorkflows_inValidPluginWorkflowsNaN
-input pluginName: string
+input pluginName: string (?)
 input pluginWorkflows: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: getWorkflow_validData
 input: string (the name of the workflow for which we are getting workflow data)
-output: string (the workflow value, which is a list of commands)
+output: string|boolean (the workflow value, which is a list of commands)
 
 testName: getWorkflow_inValidString
 input: string (464gsdsfae8f46)
-output: false?
+output: ?
 
 testName: getWorkflow_inValidNumber
 input: integer (546)
-output: false?
+output: ?
 
 testName: getWorkflow_inValidBoolean
 input: boolean (false)
-output: false?
+output: ?
+
+testName: getWorkflow_inValidUndefined
+input: undefined
+output: ?
+
+testName: getWorkflow_inValidNaN
+input: NaN
+output: ?
 --------------------------------------------------------------------------------
 testName: doesWorkflowExist_validData
 input: string (the name of the workflow for which we are getting workflow data)
@@ -77,15 +85,23 @@ output: true
 
 testName: doesWorkflowExist_inValidString
 input: string (464gsdsfae8f46)
-output: false
+output: ?
 
 testName: doesWorkflowExist_inValidNumber
 input: integer (546)
-output: false
+output: ?
 
 testName: doesWorkflowExist_inValidBoolean
 input: boolean (false)
-output: false
+output: ?
+
+testName: doesWorkflowExist_inValidUndefined
+input: undefined
+output: ?
+
+testName: doesWorkflowExist_inValidNaN
+input: NaN
+output: ?
 --------------------------------------------------------------------------------
 testName: doesWorkflowExistInWorkflowData_validData
 input workflowData: object (the workflow data that is searched recursively for the specified workflow)
@@ -95,22 +111,52 @@ output: true
 testName: doesWorkflowExistInWorkflowData_inValidWorkflowDataString
 input workflowData: string (464gsdsfae8f46)
 input workflowName: string (the name of the workflow)
-output: false
+output: ?
 
 testName: doesWorkflowExistInWorkflowData_inValidWorkflowNameString
 input workflowData: object (the workflow data that is searched recursively for the specified workflow)
 input workflowName: string (&)
-output: false
+output: ?
 
 testName: doesWorkflowExistInWorkflowData_inValidNumber
 input workflowData: integer (546)
 input workflowName: string (the name of the workflow)
-output: false
+output: ?
 
 testName: doesWorkflowExistInWorkflowData_inValidBoolean
 input workflowData: boolean (false)
 input workflowName: string (the name of the workflow)
-output: false
+output: ?
+
+testName: doesWorkflowExistInWorkflowData_inValidWorkflowNameNumber
+input workflowData: object (the workflow data that is searched recursively for the specified workflow)
+input workflowName: integer (123)
+output: ?
+
+testName: doesWorkflowExistInWorkflowData_inValidWorkflowNameBoolean
+input workflowData: object (the workflow data that is searched recursively for the specified workflow)
+input workflowName: boolean (false)
+output: ?
+
+testName: doesWorkflowExistInWorkflowData_inValidUndefined
+input workflowData: undefined
+input workflowName: string (the name of the workflow)
+output: ?
+
+testName: doesWorkflowExistInWorkflowData_inValidNaN
+input workflowData: NaN
+input workflowName: string (the name of the workflow)
+output: ?
+
+testName: doesWorkflowExistInWorkflowData_inValidWorkflowNameUndefined
+input workflowData: object (the workflow data that is searched recursively for the specified workflow)
+input workflowName: undefined
+output: ?
+
+testName: doesWorkflowExistInWorkflowData_inValidWorkflowNameNaN
+input workflowData: object (the workflow data that is searched recursively for the specified workflow)
+input workflowName: NaN
+output: ?
 --------------------------------------------------------------------------------
 testName: searchWorkflow_validData
 input allWorkflows: object (the workflow data that is searched recursively for the specified workflow)
@@ -120,70 +166,138 @@ output: object (the workflow object that corresponds to the input workflow name)
 testName: searchWorkflow_inValidWorkflowDataString
 input allWorkflows: string (464gsdsfae8f46)
 input workflowName: string (the name of the workflow)
-output: false
+output: ?
 
 testName: searchWorkflow_inValidWorkflowNameString
 input allWorkflows: object (the workflow data that is searched recursively for the specified workflow)
 input workflowName: string (&)
-output: false?
+output: ?
 
 testName: searchWorkflow_inValidNumber
 input allWorkflows: integer (546)
 input workflowName: string (the name of the workflow)
-output: false
+output: ?
 
 testName: searchWorkflow_inValidBoolean
 input allWorkflows: boolean (false)
 input workflowName: string (the name of the workflow)
-output: false
+output: ?
+
+testName: searchWorkflow_inValidWorkflowNameNumber
+input allWorkflows: object (the workflow data that is searched recursively for the specified workflow)
+input workflowName: integer (123)
+output: ?
+
+testName: searchWorkflow_inValidWorkflowNameBoolean
+input allWorkflows: object (the workflow data that is searched recursively for the specified workflow)
+input workflowName: boolean (false)
+output: ?
+
+testName: searchWorkflow_inValidUndefined
+input allWorkflows: undefined
+input workflowName: string (the name of the workflow)
+output: ?
+
+testName: searchWorkflow_inValidNaN
+input allWorkflows: NaN
+input workflowName: string (the name of the workflow)
+output: ?
+
+testName: searchWorkflow_inValidWorkflowNameUndefined
+input allWorkflows: object (the workflow data that is searched recursively for the specified workflow)
+input workflowName: undefined
+output: ?
+
+testName: searchWorkflow_inValidWorkflowNameNaN
+input allWorkflows: object (the workflow data that is searched recursively for the specified workflow)
+input workflowName: NaN
+output: ?
 --------------------------------------------------------------------------------
 testName: getAllWorkflows_validData
-input: object (The workflow data structure that is recursively flattened into a single array for output)
-output: array<string> (An array of all the workflows currently loaded into the D-data structure under the CommandWorkflows data hive)
+input workflowDataStructure: object (The workflow data structure that is recursively flattened into a single array for output)
+output: array<string>|boolean (An array of all the workflows currently loaded into the D-data structure under the CommandWorkflows data hive)
 
 testName: getAllWorkflows_inValidString
-input: string (464gsdsfae8f46)
-output: false
+input workflowDataStructure: string (464gsdsfae8f46)
+output: ?
 
 testName: getAllWorkflows_inValidNumber
-input: integer (546)
-output: false
+input workflowDataStructure: integer (546)
+output: ?
 
 testName: getAllWorkflows_inValidBoolean
-input: boolean (false)
-output: false
+input workflowDataStructure: boolean (false)
+output: ?
+
+testName: getAllWorkflows_inValidUndefined
+input workflowDataStructure: undefined
+output: ?
+
+testName: getAllWorkflows_inValidNaN
+input workflowDataStructure: NaN
+output: ?
 --------------------------------------------------------------------------------
 testName: getWorkflowNamespaceDataObject_validData
-input inputData:  object (The workflow data structure that is recursively searched for the namespace specified)
-input leafNodeName: string (The namespace to look for in the workflow metaData data structure)
-output: object (The namespace object if it is found)
+input workflowDataStructure:  object (The workflow data structure that is recursively searched for the namespace specified)
+input namespaceToFind: string (The namespace to look for in the workflow metaData data structure)
+output: object|boolen (The namespace object if it is found)
 
 testName: getWorkflowNamespaceDataObject_inValidWorkflowDataStructureString
 input workflowDataStructure: string (464gsdsfae8f46)
 input namespaceToFind: string (The namespace to look for in the workflow metaData data structure)
-output: false
+output: ?
 
 testName: getWorkflowNamespaceDataObject_inValidNamespaceToFindString
 input workflowDataStructure:  object (The workflow data structure that is recursively searched for the namespace specified)
 input namespaceToFind: string (&)
-output: false
+output: ?
 
 testName: getWorkflowNamespaceDataObject_inValidNumber
 input workflowDataStructure: integer (546)
 input namespaceToFind: string (The namespace to look for in the workflow metaData data structure)
-output: false
+output: ?
 
 testName: getWorkflowNamespaceDataObject_inValidBoolean
 input workflowDataStructure: boolean (false)
 input namespaceToFind: string (The namespace to look for in the workflow metaData data structure)
-output: false
+output: ?
+
+testName: getWorkflowNamespaceDataObject_inValidNamespaceToFindNumber
+input workflowDataStructure:  object (The workflow data structure that is recursively searched for the namespace specified)
+input namespaceToFind: integer (123)
+output: ?
+
+testName: getWorkflowNamespaceDataObject_inValidNamespaceToFindBoolean
+input workflowDataStructure:  object (The workflow data structure that is recursively searched for the namespace specified)
+input namespaceToFind: boolean (false)
+output: ?
+
+testName: getWorkflowNamespaceDataObject_inValidUndefined
+input workflowDataStructure: undefined
+input namespaceToFind: string (The namespace to look for in the workflow metaData data structure)
+output: ?
+
+testName: getWorkflowNamespaceDataObject_inValidNaN
+input workflowDataStructure: NaN
+input namespaceToFind: string (The namespace to look for in the workflow metaData data structure)
+output: ?
+
+testName: getWorkflowNamespaceDataObject_inValidNamespaceToFindUndefined
+input workflowDataStructure:  object (The workflow data structure that is recursively searched for the namespace specified)
+input namespaceToFind: undefined
+output: ?
+
+testName: getWorkflowNamespaceDataObject_inValidNamespaceToFindNaN
+input workflowDataStructure:  object (The workflow data structure that is recursively searched for the namespace specified)
+input namespaceToFind: NaN
+output: ?
 --------------------------------------------------------------------------------
 testName: removePluginWorkflows_validData
-input pluginName: string
+input pluginName: string (?)
 output: boolean (?)
 
 testName: removePluginWorkflows_inValidString
-input pluginName: string
+input pluginName: string (464gsdsfae8f46)
 output: ?
 
 testName: removePluginWorkflows_inValidNumber

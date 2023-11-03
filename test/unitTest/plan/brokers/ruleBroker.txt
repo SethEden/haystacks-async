@@ -4,32 +4,8 @@ description: Test plan for ruleBroker.js
 --------------------------------------------------------------------------------
 testName: bootStrapBusinessRules_validData
 output: Captures, call, and migrates business rule's data to data hive.
-
-testName: bootStrapBusinessRules_inValidString
-input: string (464gsdsfae8f46)
-output: Captures, call, and migrates business rule's data to data hive.
-
-testName: bootStrapBusinessRules_inValidNumber
-input: integer (546)
-output: Captures, call, and migrates business rule's data to data hive.
-
-testName: bootStrapBusinessRules_inValidBoolean
-input: boolean (false)
-output: Captures, call, and migrates business rule's data to data hive.
 --------------------------------------------------------------------------------
 testName: resetBusinessRules_validData
-output: Captures, call, and migrates business rule's data to data hive.
-
-testName: resetBusinessRules_inValidString
-input: string (464gsdsfae8f46)
-output: Captures, call, and migrates business rule's data to data hive.
-
-testName: resetBusinessRules_inValidNumber
-input: integer (546)
-output: Captures, call, and migrates business rule's data to data hive.
-
-testName: resetBusinessRules_inValidBoolean
-input: boolean (false)
 output: Captures, call, and migrates business rule's data to data hive.
 --------------------------------------------------------------------------------
 testName: addClientRules_validData
@@ -47,28 +23,83 @@ output: ?
 testName: addClientRules_inValidBoolean
 input clientRules: boolean (false)
 output: ?
+
+testName: addClientRules_inValidUndefined
+input clientRules: undefined
+output: ?
+
+testName: addClientRules_inValidNaN
+input clientRules: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: addPluginRules_validData
+input pluginName: string (?)
+input pluginRules: array<object> (?)
+output: boolean (?)
+
+testName: addPluginRules_inValidString
+input pluginName: string (464gsdsfae8f46)
+input pluginRules: array<object> (?)
+output: ?
+
+testName: addPluginRules_inValidPluginRulesString
+input plguinName: string (?)
+input pluginRules: string (&)
+output: ?
+
+testName: addPluginRules_inValidNumber
+input pluginName: integer (123)
+input pluginRules: array<object> (?)
+output: ?
+
+testName: addPluginRules_inValidBoolean
+input pluginName: boolean (false)
+input pluginRules: array<object> (?)
+output: ?
+
+testName: addPluginRules_inValidPluginRulesNumber
+input plguinName: string (?)
+input pluginRules: integer (123)
+output: ?
+
+testName: addPluginRules_inValidPluginRulesBoolean
+input plguinName: string (?)
+input pluginRules: boolean (false)
+output: ?
+
+testName: addPluginRules_inValidUndefined
+input pluginName: undefined
+input pluginRules: array<object> (?)
+output: ?
+
+testName: addPluginRules_inValidNaN
+input pluginName: NaN
+input pluginRules: array<object> (?)
+output: ?
+
+testName: addPluginRules_inValidPluginRulesUndefined
+input plguinName: string (?)
+input pluginRules: undefined
+output: ?
+
+testName: addPluginRules_inValidPluginRulesNaN
+input plguinName: string (?)
+input pluginRules: NaN
+output: ?
 --------------------------------------------------------------------------------
 testName: processRules_validData(ALL)
-NOTE: To be tested with integration testing.
+input inputs: array<string|integer|boolean|object|function,string|integer|boolean|object|function> (?)
+input rulesToExecute: array<string> (?)
+output: string|integer|boolean|object|function (?)
 
-testName: processRules_inValidInputsUndefined
-input inputs: undefined
-input rulesToExecute: string (inValidInputsUndefined)
+testName: processRules_inValidString
+input inputs: string (464gsdsfae8f46)
+input rulesToExecute: array<string> (?)
 output: ?
 
-testName: processRules_inValidInputsNaN
-input inputs: NaN
-input rulesToExecute: string (inValidInputsUndefined)
-output: ?
-
-testName: processRules_inValidRulesToExecuteUndefined
-input inputs: string (inValidRulesToExecuteUndefined)
-input rulesToExecute: undefined
-output: ?
-
-testName: processRules_inValidRulesToExecuteNaN
-input inputs: string (inValidRulesToExecuteNaN)
-input rulesToExecute: NaN
+testName: processRules_inValidRulesToExecuteString
+input inputs:array<string|integer|boolean|object|function,string|integer|boolean|object|function> (?)
+input rulesToExecute: string (&)
 output: ?
 
 testName: processRules_inValidInputsInteger
@@ -90,27 +121,47 @@ testName: processRules_inValidRulesToExecuteBoolean
 input inputs: array ([1,2,3,4,5])
 input rulesToExecute: boolean (false)
 output: ?
+
+testName: processRules_inValidInputsUndefined
+input inputs: undefined
+input rulesToExecute: string (inValidInputsUndefined)
+output: ?
+
+testName: processRules_inValidInputsNaN
+input inputs: NaN
+input rulesToExecute: string (inValidInputsUndefined)
+output: ?
+
+testName: processRules_inValidRulesToExecuteUndefined
+input inputs: string (inValidRulesToExecuteUndefined)
+input rulesToExecute: undefined
+output: ?
+
+testName: processRules_inValidRulesToExecuteNaN
+input inputs: string (inValidRulesToExecuteNaN)
+input rulesToExecute: NaN
+output: ?
 --------------------------------------------------------------------------------
 testName: removePluginBusinessRules_validData
-input pluginName: string
+input pluginName: string (?)
 output: boolean (?)
 
 testName: removePluginBusinessRules_inValidString
-input pluginName: string
-output: boolean (?)
+input pluginName: string (464gsdsfae8f46)
+output: ?
 
 testName: removePluginBusinessRules_inValidInteger
 input pluginName: integer (123)
-output: boolean (?)
+output: ?
 
 testName: removePluginBusinessRules_inValidBoolean
 input pluginName: boolean (false)
-output: boolean (?)
+output: ?
 
 testName: removePluginBusinessRules_inValidUndefined
 input pluginName: undefined
-output: boolean (?)
+output: ?
 
 testName: removePluginBusinessRules_inValidNaN
 input pluginName: NaN
-output: boolean (?)
+output: ?
