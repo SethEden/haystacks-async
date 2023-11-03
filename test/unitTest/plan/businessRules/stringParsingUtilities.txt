@@ -2,606 +2,606 @@ Description: Test plan for stringParsingUtilities.js
 
 --------------------------------------------------------------------------------
 testName: parseSystemRootPath_validData
-input inputData: string
-input inputMetaData: string
+input inputData: string (?)
+input inputMetaData: string (?)
 output: string (?)
 
 testName: parseSystemRootPath_inValidInputDataString
-input inputData: string
-input inputMetaData: string
+input inputData: string (dfxg24346dfg)
+input inputMetaData: string (?)
 output: ?
 
 testName: parseSystemRootPath_inValidInputMetaDataString
-input inputData: string
-input inputMetaData: string
+input inputData: string (?)
+input inputMetaData: string (&)
 output: ?
 
 testName: parseSystemRootPath_inValidInputDataInteger
 input inputData: integer (123)
-input inputMetaData: string
+input inputMetaData: string (?)
 output: ?
 
 testName: parseSystemRootPath_inValidInputDataBoolean
 input inputData: boolean (false)
-input inputMetaData: string
+input inputMetaData: string (?)
 output: ?
 
 testName: parseSystemRootPath_inValidInputMetaDataInteger
-input inputData: string
+input inputData: string (?)
 input inputMetaData: integer (123)
 output: ?
 
 testName: parseSystemRootPath_inValidInputMetaDataBoolean
-input inputData: string
+input inputData: string (?)
 input inputMetaData: boolean (false)
 output: ?
 
 testName: parseSystemRootPath_inValidInputDataUndefined
 input inputData: undefined
-input inputMetaData: string
+input inputMetaData: string (?)
 output: ?
 
 testName: parseSystemRootPath_inValidInputDataNaN
 input inputData: NaN
-input inputMetaData: string
+input inputMetaData: string (?)
 output: ?
 
 testName: parseSystemRootPath_inValidInputMetaDataUndefined
-input inputData: string
+input inputData: string (?)
 input inputMetaData: undefined
 output: ?
 
 testName: parseSystemRootPath_inValidInputMetaDataNaN
-input inputData: string
+input inputData: string (?)
 input inputMetaData: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: parseSystemRootPathApplicationName_validData
-input inputData: string
-input inputMetaData: string
+input inputData: string (?)
+input inputMetaData: string (?)
 output: string (?)
 
 testName: parseSystemRootPathApplicationName_inValidInputDataString
-input inputData: string
-input inputMetaData: string
+input inputData: string (dfxg24346dfg)
+input inputMetaData: string (?)
 output: ?
 
 testName: parseSystemRootPathApplicationName_inValidInputMetaDataString
-input inputData: string
-input inputMetaData: string
+input inputData: string (?)
+input inputMetaData: string (&)
 output: ?
 
 testName: parseSystemRootPathApplicationName_inValidInputDataInteger
 input inputData: integer (123)
-input inputMetaData: string
+input inputMetaData: string (?)
 output: ?
 
 testName: parseSystemRootPathApplicationName_inValidInputDataBoolean
 input inputData: boolean (false)
-input inputMetaData: string
+input inputMetaData: string (?)
 output: ?
 
 testName: parseSystemRootPathApplicationName_inValidInputMetaDataInteger
-input inputData: string
+input inputData: string (?)
 input inputMetaData: integer (123)
 output: ?
 
 testName: parseSystemRootPathApplicationName_inValidInputMetaDataBoolean
-input inputData: string
+input inputData: string (?)
 input inputMetaData: boolean (false)
 output: ?
 
 testName: parseSystemRootPathApplicationName_inValidInputDataUndefined
 input inputData: undefined
-input inputMetaData: string
+input inputMetaData: string (?)
 output: ?
 
 testName: parseSystemRootPathApplicationName_inValidInputDataNaN
 input inputData: NaN
-input inputMetaData: string
+input inputMetaData: string (?)
 output: ?
 
 testName: parseSystemRootPathApplicationName_inValidInputMetaDataUndefined
-input inputData: string
+input inputData: string (?)
 input inputMetaData: undefined
 output: ?
 
 testName: parseSystemRootPathApplicationName_inValidInputMetaDataNaN
-input inputData: string
+input inputData: string (?)
 input inputMetaData: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: stringToDataType_validData
-input inputData: string
-input inputMetaData: string
+input inputData: string (?)
+input inputMetaData: string (?)
 output: object|string|boolean|integer (?)
 
 testName: stringToDataType_inValidInputDataString
-input inputData: string
-input inputMetaData: string
+input inputData: string (dfxg24346dfg)
+input inputMetaData: string (?)
 output: ?
 
 testName: stringToDataType_inValidInputMetaDataString
-input inputData: string
-input inputMetaData: string
+input inputData: string (?)
+input inputMetaData: string (&)
 output: ?
 
 testName: stringToDataType_inValidInputDataInteger
 input inputData: integer (123)
-input inputMetaData: string
+input inputMetaData: string (?)
 output: ?
 
 testName: stringToDataType_inValidInputDataBoolean
 input inputData: boolean (false)
-input inputMetaData: string
+input inputMetaData: string (?)
 output: ?
 
 testName: stringToDataType_inValidInputMetaDataInteger
-input inputData: string
+input inputData: string (?)
 input inputMetaData: integer (123)
 output: ?
 
 testName: stringToDataType_inValidInputMetaDataBoolean
-input inputData: string
+input inputData: string (?)
 input inputMetaData: boolean (false)
 output: ?
 
 testName: stringToDataType_inValidInputDataUndefined
 input inputData: undefined
-input inputMetaData: string
+input inputMetaData: string (?)
 output: ?
 
 testName: stringToDataType_inValidInputDataNaN
 input inputData: NaN
-input inputMetaData: string
+input inputMetaData: string (?)
 output: ?
 
 testName: stringToDataType_inValidInputMetaDataUndefined
-input inputData: string
+input inputData: string (?)
 input inputMetaData: undefined
 output: ?
 
 testName: stringToDataType_inValidInputMetaDataNaN
-input inputData: string
+input inputData: string (?)
 input inputMetaData: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: stringToBoolean_validData
-input inputData: string
-input inputMetaData: string
+input inputData: string (?)
+input inputMetaData: string (?)
 output: boolean (?)
 
 testName: stringToBoolean_inValidInputDataString
-input inputData: string
-input inputMetaData: string
+input inputData: string (dfxg24346dfg)
+input inputMetaData: string (?)
 output: ?
 
 testName: stringToBoolean_inValidInputMetaDataString
-input inputData: string
-input inputMetaData: string
+input inputData: string (?)
+input inputMetaData: string (&)
 output: ?
 
 testName: stringToBoolean_inValidInputDataInteger
 input inputData: integer (123)
-input inputMetaData: string
+input inputMetaData: string (?)
 output: ?
 
 testName: stringToBoolean_inValidInputDataBoolean
 input inputData: boolean (false)
-input inputMetaData: string
+input inputMetaData: string (?)
 output: ?
 
 testName: stringToBoolean_inValidInputMetaDataInteger
-input inputData: string
+input inputData: string (?)
 input inputMetaData: integer (123)
 output: ?
 
 testName: stringToBoolean_inValidInputMetaDataBoolean
-input inputData: string
+input inputData: string (?)
 input inputMetaData: boolean (false)
 output: ?
 
 testName: stringToBoolean_inValidInputDataUndefined
 input inputData: undefined
-input inputMetaData: string
+input inputMetaData: string (?)
 output: ?
 
 testName: stringToBoolean_inValidInputDataNaN
 input inputData: NaN
-input inputMetaData: string
+input inputMetaData: string (?)
 output: ?
 
 testName: stringToBoolean_inValidInputMetaDataUndefined
-input inputData: string
+input inputData: string (?)
 input inputMetaData: undefined
 output: ?
 
 testName: stringToBoolean_inValidInputMetaDataNaN
-input inputData: string
+input inputData: string (?)
 input inputMetaData: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: determineObjectDataType_validData
-input inputData: string
-input inputMetaData: string
+input inputData: string (?)
+input inputMetaData: string (?)
 output: boolean (?)
 
 testName: determineObjectDataType_inValidInputDataString
-input inputData: string
-input inputMetaData: string
+input inputData: string (dfxg24346dfg)
+input inputMetaData: string (?)
 output: ?
 
 testName: determineObjectDataType_inValidInputMetaDataString
-input inputData: string
-input inputMetaData: string
+input inputData: string (?)
+input inputMetaData: string (&)
 output: ?
 
 testName: determineObjectDataType_inValidInputDataInteger
 input inputData: integer (123)
-input inputMetaData: string
+input inputMetaData: string (?)
 output: ?
 
 testName: determineObjectDataType_inValidInputDataBoolean
 input inputData: boolean (false)
-input inputMetaData: string
+input inputMetaData: string (?)
 output: ?
 
 testName: determineObjectDataType_inValidInputMetaDataInteger
-input inputData: string
+input inputData: string (?)
 input inputMetaData: integer (123)
 output: ?
 
 testName: determineObjectDataType_inValidInputMetaDataBoolean
-input inputData: string
+input inputData: string (?)
 input inputMetaData: boolean (false)
 output: ?
 
 testName: determineObjectDataType_inValidInputDataUndefined
 input inputData: undefined
-input inputMetaData: string
+input inputMetaData: string (?)
 output: ?
 
 testName: determineObjectDataType_inValidInputDataNaN
 input inputData: NaN
-input inputMetaData: string
+input inputMetaData: string (?)
 output: ?
 
 testName: determineObjectDataType_inValidInputMetaDataUndefined
-input inputData: string
+input inputData: string (?)
 input inputMetaData: undefined
 output: ?
 
 testName: determineObjectDataType_inValidInputMetaDataNaN
-input inputData: string
+input inputData: string (?)
 input inputMetaData: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: isBoolean_validData
-input inputData: string
-input inputMetaData: string
+input inputData: string (?)
+input inputMetaData: string (?)
 output: boolean (?)
 
 testName: isBoolean_inValidInputDataString
-input inputData: string
-input inputMetaData: string
+input inputData: string (dfxg24346dfg)
+input inputMetaData: string (?)
 output: ?
 
 testName: isBoolean_inValidInputMetaDataString
-input inputData: string
-input inputMetaData: string
+input inputData: string (?)
+input inputMetaData: string (&)
 output: ?
 
 testName: isBoolean_inValidInputDataInteger
 input inputData: integer (123)
-input inputMetaData: string
+input inputMetaData: string (?)
 output: ?
 
 testName: isBoolean_inValidInputDataBoolean
 input inputData: boolean (false)
-input inputMetaData: string
+input inputMetaData: string (?)
 output: ?
 
 testName: isBoolean_inValidInputMetaDataInteger
-input inputData: string
+input inputData: string (?)
 input inputMetaData: integer (123)
 output: ?
 
 testName: isBoolean_inValidInputMetaDataBoolean
-input inputData: string
+input inputData: string (?)
 input inputMetaData: boolean (false)
 output: ?
 
 testName: isBoolean_inValidInputDataUndefined
 input inputData: undefined
-input inputMetaData: string
+input inputMetaData: string (?)
 output: ?
 
 testName: isBoolean_inValidInputDataNaN
 input inputData: NaN
-input inputMetaData: string
+input inputMetaData: string (?)
 output: ?
 
 testName: isBoolean_inValidInputMetaDataUndefined
-input inputData: string
+input inputData: string (?)
 input inputMetaData: undefined
 output: ?
 
 testName: isBoolean_inValidInputMetaDataNaN
-input inputData: string
+input inputData: string (?)
 input inputMetaData: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: isInteger_validData
-input inputData: string
-input inputMetaData: string
+input inputData: string (?)
+input inputMetaData: string (?)
 output: boolean (?)
 
 testName: isInteger_inValidInputDataString
-input inputData: string
-input inputMetaData: string
+input inputData: string (dfxg24346dfg)
+input inputMetaData: string (?)
 output: ?
 
 testName: isInteger_inValidInputMetaDataString
-input inputData: string
-input inputMetaData: string
+input inputData: string (?)
+input inputMetaData: string (&)
 output: ?
 
 testName: isInteger_inValidInputDataInteger
 input inputData: integer (123)
-input inputMetaData: string
+input inputMetaData: string (?)
 output: ?
 
 testName: isInteger_inValidInputDataBoolean
 input inputData: boolean (false)
-input inputMetaData: string
+input inputMetaData: string (?)
 output: ?
 
 testName: isInteger_inValidInputMetaDataInteger
-input inputData: string
+input inputData: string (?)
 input inputMetaData: integer (123)
 output: ?
 
 testName: isInteger_inValidInputMetaDataBoolean
-input inputData: string
+input inputData: string (?)
 input inputMetaData: boolean (false)
 output: ?
 
 testName: isInteger_inValidInputDataUndefined
 input inputData: undefined
-input inputMetaData: string
+input inputMetaData: string (?)
 output: ?
 
 testName: isInteger_inValidInputDataNaN
 input inputData: NaN
-input inputMetaData: string
+input inputMetaData: string (?)
 output: ?
 
 testName: isInteger_inValidInputMetaDataUndefined
-input inputData: string
+input inputData: string (?)
 input inputMetaData: undefined
 output: ?
 
 testName: isInteger_inValidInputMetaDataNaN
-input inputData: string
+input inputData: string (?)
 input inputMetaData: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: isFloat_validData
-input inputData: string
-input inputMetaData: string
+input inputData: string (?)
+input inputMetaData: string (?)
 output: boolean (?)
 
 testName: isFloat_inValidInputDataString
-input inputData: string
-input inputMetaData: string
+input inputData: string (dfxg24346dfg)
+input inputMetaData: string (?)
 output: ?
 
 testName: isFloat_inValidInputMetaDataString
-input inputData: string
-input inputMetaData: string
+input inputData: string (?)
+input inputMetaData: string (&)
 output: ?
 
 testName: isFloat_inValidInputDataInteger
 input inputData: integer (123)
-input inputMetaData: string
+input inputMetaData: string (?)
 output: ?
 
 testName: isFloat_inValidInputDataBoolean
 input inputData: boolean (false)
-input inputMetaData: string
+input inputMetaData: string (?)
 output: ?
 
 testName: isFloat_inValidInputMetaDataInteger
-input inputData: string
+input inputData: string (?)
 input inputMetaData: integer (123)
 output: ?
 
 testName: isFloat_inValidInputMetaDataBoolean
-input inputData: string
+input inputData: string (?)
 input inputMetaData: boolean (false)
 output: ?
 
 testName: isFloat_inValidInputDataUndefined
 input inputData: undefined
-input inputMetaData: string
+input inputMetaData: string (?)
 output: ?
 
 testName: isFloat_inValidInputDataNaN
 input inputData: NaN
-input inputMetaData: string
+input inputMetaData: string (?)
 output: ?
 
 testName: isFloat_inValidInputMetaDataUndefined
-input inputData: string
+input inputData: string (?)
 input inputMetaData: undefined
 output: ?
 
 testName: isFloat_inValidInputMetaDataNaN
-input inputData: string
+input inputData: string (?)
 input inputMetaData: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: isString_validData
-input inputData: string
-input inputMetaData: string
+input inputData: string (?)
+input inputMetaData: string (?)
 output: boolean (?)
 
 testName: isString_inValidInputDataString
-input inputData: string
-input inputMetaData: string
+input inputData: string (dfxg24346dfg)
+input inputMetaData: string (?)
 output: ?
 
 testName: isString_inValidInputMetaDataString
-input inputData: string
-input inputMetaData: string
+input inputData: string (?)
+input inputMetaData: string (&)
 output: ?
 
 testName: isString_inValidInputDataInteger
 input inputData: integer (123)
-input inputMetaData: string
+input inputMetaData: string (?)
 output: ?
 
 testName: isString_inValidInputDataBoolean
 input inputData: boolean (false)
-input inputMetaData: string
+input inputMetaData: string (?)
 output: ?
 
 testName: isString_inValidInputMetaDataInteger
-input inputData: string
+input inputData: string (?)
 input inputMetaData: integer (123)
 output: ?
 
 testName: isString_inValidInputMetaDataBoolean
-input inputData: string
+input inputData: string (?)
 input inputMetaData: boolean (false)
 output: ?
 
 testName: isString_inValidInputDataUndefined
 input inputData: undefined
-input inputMetaData: string
+input inputMetaData: string (?)
 output: ?
 
 testName: isString_inValidInputDataNaN
 input inputData: NaN
-input inputMetaData: string
+input inputMetaData: string (?)
 output: ?
 
 testName: isString_inValidInputMetaDataUndefined
-input inputData: string
+input inputData: string (?)
 input inputMetaData: undefined
 output: ?
 
 testName: isString_inValidInputMetaDataNaN
-input inputData: string
+input inputData: string (?)
 input inputMetaData: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: replaceDoublePercentWithMessage_validData
-input inputData: string
-input inputMetaData: string
+input inputData: string (?)
+input inputMetaData: string (?)
 output: string (?)
 
 testName: replaceDoublePercentWithMessage_inValidInputDataString
-input inputData: string
-input inputMetaData: string
+input inputData: string (dfxg24346dfg)
+input inputMetaData: string (?)
 output: ?
 
 testName: replaceDoublePercentWithMessage_inValidInputMetaDataString
-input inputData: string
-input inputMetaData: string
+input inputData: string (?)
+input inputMetaData: string (&)
 output: ?
 
 testName: replaceDoublePercentWithMessage_inValidInputDataInteger
 input inputData: integer (123)
-input inputMetaData: string
+input inputMetaData: string (?)
 output: ?
 
 testName: replaceDoublePercentWithMessage_inValidInputDataBoolean
 input inputData: boolean (false)
-input inputMetaData: string
+input inputMetaData: string (?)
 output: ?
 
 testName: replaceDoublePercentWithMessage_inValidInputMetaDataInteger
-input inputData: string
+input inputData: string (?)
 input inputMetaData: integer (123)
 output: ?
 
 testName: replaceDoublePercentWithMessage_inValidInputMetaDataBoolean
-input inputData: string
+input inputData: string (?)
 input inputMetaData: boolean (false)
 output: ?
 
 testName: replaceDoublePercentWithMessage_inValidInputDataUndefined
 input inputData: undefined
-input inputMetaData: string
+input inputMetaData: string (?)
 output: ?
 
 testName: replaceDoublePercentWithMessage_inValidInputDataNaN
 input inputData: NaN
-input inputMetaData: string
+input inputMetaData: string (?)
 output: ?
 
 testName: replaceDoublePercentWithMessage_inValidInputMetaDataUndefined
-input inputData: string
+input inputData: string (?)
 input inputMetaData: undefined
 output: ?
 
 testName: replaceDoublePercentWithMessage_inValidInputMetaDataNaN
-input inputData: string
+input inputData: string (?)
 input inputMetaData: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: utilitiesReplaceCharacterWithCharacter_validData
-input inputData: string
-input inputMetaData: array<string, string>
+input inputData: string (?)
+input inputMetaData: array<string, string> (?)
 output: string (?)
 
 testName: utilitiesReplaceCharacterWithCharacter_inValidInputDataString
-input inputData: string
-input inputMetaData: array<string, string>
+input inputData: string (dfxg24346dfg)
+input inputMetaData: array<string, string> (?)
 output: ?
 
 testName: utilitiesReplaceCharacterWithCharacter_inValidInputMetaDataString
-input inputData: string
-input inputMetaData: string
+input inputData: string (?)
+input inputMetaData: string (&)
 output: ?
 
 testName: utilitiesReplaceCharacterWithCharacter_inValidInputDataInteger
 input inputData: integer (123)
-input inputMetaData: array<string, string>
+input inputMetaData: array<string, string> (?)
 output: ?
 
 testName: utilitiesReplaceCharacterWithCharacter_inValidInputDataBoolean
 input inputData: boolean (false)
-input inputMetaData: array<string, string>
+input inputMetaData: array<string, string> (?)
 output: ?
 
 testName: utilitiesReplaceCharacterWithCharacter_inValidInputMetaDataInteger
-input inputData: string
+input inputData: string (?)
 input inputMetaData: integer (123)
 output: ?
 
 testName: utilitiesReplaceCharacterWithCharacter_inValidInputMetaDataBoolean
-input inputData: string
+input inputData: string (?)
 input inputMetaData: boolean (false)
 output: ?
 
 testName: utilitiesReplaceCharacterWithCharacter_inValidInputDataUndefined
 input inputData: undefined
-input inputMetaData: array<string, string>
+input inputMetaData: array<string, string> (?)
 output: ?
 
 testName: utilitiesReplaceCharacterWithCharacter_inValidInputDataNaN
 input inputData: NaN
-input inputMetaData: array<string, string>
+input inputMetaData: array<string, string> (?)
 output: ?
 
 testName: utilitiesReplaceCharacterWithCharacter_inValidInputMetaDataUndefined
-input inputData: string
+input inputData: string (?)
 input inputMetaData: undefined
 output: ?
 
 testName: utilitiesReplaceCharacterWithCharacter_inValidInputMetaDataNaN
-input inputData: string
+input inputData: string (?)
 input inputMetaData: NaN
 output: ?

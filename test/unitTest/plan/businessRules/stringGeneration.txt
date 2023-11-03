@@ -2,974 +2,1030 @@ Description: Test plan for stringGeneration.js
 
 --------------------------------------------------------------------------------
 testName: generateRandomMixedCaseTextByLength_validData
-input inputData: string
-input inputMetaData: string
+input inputData: string (?)
+input inputMetaData: string (?)
 output: string (?)
 
 testName: generateRandomMixedCaseTextByLength_inValidInputDataString
-input inputData: string
-input inputMetaData: string
+input inputData: string (dfxg24346dfg)
+input inputMetaData: string (?)
 output: ?
 
 testName: generateRandomMixedCaseTextByLength_inValidInputMetaDataString
-input inputData: string
-input inputMetaData: string
+input inputData: string (?)
+input inputMetaData: string (&)
 output: ?
 
 testName: generateRandomMixedCaseTextByLength_inValidInputDataInteger
 input inputData: integer (123)
-input inputMetaData: string
+input inputMetaData: string (?)
 output: ?
 
 testName: generateRandomMixedCaseTextByLength_inValidInputDataBoolean
 input inputData: boolean (false)
-input inputMetaData: string
+input inputMetaData: string (?)
 output: ?
 
 testName: generateRandomMixedCaseTextByLength_inValidInputMetaDataInteger
-input inputData: string
+input inputData: string (?)
 input inputMetaData: integer (123)
 output: ?
 
 testName: generateRandomMixedCaseTextByLength_inValidInputMetaDataBoolean
-input inputData: string
+input inputData: string (?)
 input inputMetaData: boolean (false)
 output: ?
 
 testName: generateRandomMixedCaseTextByLength_inValidInputDataUndefined
 input inputData: undefined
-input inputMetaData: string
+input inputMetaData: string (?)
 output: ?
 
 testName: generateRandomMixedCaseTextByLength_inValidInputDataNaN
 input inputData: NaN
-input inputMetaData: string
+input inputMetaData: string (?)
 output: ?
 
 testName: generateRandomMixedCaseTextByLength_inValidInputMetaDataUndefined
-input inputData: string
+input inputData: string (?)
 input inputMetaData: undefined
 output: ?
 
 testName: generateRandomMixedCaseTextByLength_inValidInputMetaDataNaN
-input inputData: string
+input inputData: string (?)
 input inputMetaData: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: generateRandomUpperCaseTextByLength_validData
-input inputData: string
-input inputMetaData: string
+input inputData: string (?)
+input inputMetaData: string (?)
 output: string (?)
 
 testName: generateRandomUpperCaseTextByLength_inValidInputDataString
-input inputData: string
-input inputMetaData: string
+input inputData: string (dfxg24346dfg)
+input inputMetaData: string (?)
 output: ?
 
 testName: generateRandomUpperCaseTextByLength_inValidInputMetaDataString
-input inputData: string
-input inputMetaData: string
+input inputData: string (?)
+input inputMetaData: string (&)
 output: ?
 
 testName: generateRandomUpperCaseTextByLength_inValidInputDataInteger
 input inputData: integer (123)
-input inputMetaData: string
+input inputMetaData: string (?)
 output: ?
 
 testName: generateRandomUpperCaseTextByLength_inValidInputDataBoolean
 input inputData: boolean (false)
-input inputMetaData: string
+input inputMetaData: string (?)
 output: ?
 
 testName: generateRandomUpperCaseTextByLength_inValidInputMetaDataInteger
-input inputData: string
+input inputData: string (?)
 input inputMetaData: integer (123)
 output: ?
 
 testName: generateRandomUpperCaseTextByLength_inValidInputMetaDataBoolean
-input inputData: string
+input inputData: string (?)
 input inputMetaData: boolean (false)
 output: ?
 
 testName: generateRandomUpperCaseTextByLength_inValidInputDataUndefined
 input inputData: undefined
-input inputMetaData: string
+input inputMetaData: string (?)
 output: ?
 
 testName: generateRandomUpperCaseTextByLength_inValidInputDataNaN
 input inputData: NaN
-input inputMetaData: string
+input inputMetaData: string (?)
 output: ?
 
 testName: generateRandomUpperCaseTextByLength_inValidInputMetaDataUndefined
-input inputData: string
+input inputData: string (?)
 input inputMetaData: undefined
 output: ?
 
 testName: generateRandomUpperCaseTextByLength_inValidInputMetaDataNaN
-input inputData: string
+input inputData: string (?)
 input inputMetaData: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: generateRandomLowerCaseTextByLength_validData
-input inputData: string
-input inputMetaData: string
+input inputData: string (?)
+input inputMetaData: string (?)
 output: string (?)
 
 testName: generateRandomLowerCaseTextByLength_inValidInputDataString
-input inputData: string
-input inputMetaData: string
+input inputData: string (dfxg24346dfg)
+input inputMetaData: string (?)
 output: ?
 
 testName: generateRandomLowerCaseTextByLength_inValidInputMetaDataString
-input inputData: string
-input inputMetaData: string
+input inputData: string (?)
+input inputMetaData: string (&)
 output: ?
 
 testName: generateRandomLowerCaseTextByLength_inValidInputDataInteger
 input inputData: integer (123)
-input inputMetaData: string
+input inputMetaData: string (?)
 output: ?
 
 testName: generateRandomLowerCaseTextByLength_inValidInputDataBoolean
 input inputData: boolean (false)
-input inputMetaData: string
+input inputMetaData: string (?)
 output: ?
 
 testName: generateRandomLowerCaseTextByLength_inValidInputMetaDataInteger
-input inputData: string
+input inputData: string (?)
 input inputMetaData: integer (123)
 output: ?
 
 testName: generateRandomLowerCaseTextByLength_inValidInputMetaDataBoolean
-input inputData: string
+input inputData: string (?)
 input inputMetaData: boolean (false)
 output: ?
 
 testName: generateRandomLowerCaseTextByLength_inValidInputDataUndefined
 input inputData: undefined
-input inputMetaData: string
+input inputMetaData: string (?)
 output: ?
 
 testName: generateRandomLowerCaseTextByLength_inValidInputDataNaN
 input inputData: NaN
-input inputMetaData: string
+input inputMetaData: string (?)
 output: ?
 
 testName: generateRandomLowerCaseTextByLength_inValidInputMetaDataUndefined
-input inputData: string
+input inputData: string (?)
 input inputMetaData: undefined
 output: ?
 
 testName: generateRandomLowerCaseTextByLength_inValidInputMetaDataNaN
-input inputData: string
+input inputData: string (?)
 input inputMetaData: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: generateRandomMixedCaseTextWithSpecialCharactersByLength_validData
-input inputData: string
-input inputMetaData: string
+input inputData: string (?)
+input inputMetaData: string (?)
 output: string (?)
 
 testName: generateRandomMixedCaseTextWithSpecialCharactersByLength_inValidInputDataString
-input inputData: string
-input inputMetaData: string
+input inputData: string (dfxg24346dfg)
+input inputMetaData: string (?)
 output: ?
 
 testName: generateRandomMixedCaseTextWithSpecialCharactersByLength_inValidInputMetaDataString
-input inputData: string
-input inputMetaData: string
+input inputData: string (?)
+input inputMetaData: string (&)
 output: ?
 
 testName: generateRandomMixedCaseTextWithSpecialCharactersByLength_inValidInputDataInteger
 input inputData: integer (123)
-input inputMetaData: string
+input inputMetaData: string (?)
 output: ?
 
 testName: generateRandomMixedCaseTextWithSpecialCharactersByLength_inValidInputDataBoolean
 input inputData: boolean (false)
-input inputMetaData: string
+input inputMetaData: string (?)
 output: ?
 
 testName: generateRandomMixedCaseTextWithSpecialCharactersByLength_inValidInputMetaDataInteger
-input inputData: string
+input inputData: string (?)
 input inputMetaData: integer (123)
 output: ?
 
 testName: generateRandomMixedCaseTextWithSpecialCharactersByLength_inValidInputMetaDataBoolean
-input inputData: string
+input inputData: string (?)
 input inputMetaData: boolean (false)
 output: ?
 
 testName: generateRandomMixedCaseTextWithSpecialCharactersByLength_inValidInputDataUndefined
 input inputData: undefined
-input inputMetaData: string
+input inputMetaData: string (?)
 output: ?
 
 testName: generateRandomMixedCaseTextWithSpecialCharactersByLength_inValidInputDataNaN
 input inputData: NaN
-input inputMetaData: string
+input inputMetaData: string (?)
 output: ?
 
 testName: generateRandomMixedCaseTextWithSpecialCharactersByLength_inValidInputMetaDataUndefined
-input inputData: string
+input inputData: string (?)
 input inputMetaData: undefined
 output: ?
 
 testName: generateRandomMixedCaseTextWithSpecialCharactersByLength_inValidInputMetaDataNaN
-input inputData: string
+input inputData: string (?)
 input inputMetaData: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: generateRandomUpperCaseTextWithSpecialCharactersByLength_validData
-input inputData: string
-input inputMetaData: string
+input inputData: string (?)
+input inputMetaData: string (?)
 output: string (?)
 
 testName: generateRandomUpperCaseTextWithSpecialCharactersByLength_inValidInputDataString
-input inputData: string
-input inputMetaData: string
+input inputData: string (dfxg24346dfg)
+input inputMetaData: string (?)
 output: ?
 
 testName: generateRandomUpperCaseTextWithSpecialCharactersByLength_inValidInputMetaDataString
-input inputData: string
-input inputMetaData: string
+input inputData: string (?)
+input inputMetaData: string (&)
 output: ?
 
 testName: generateRandomUpperCaseTextWithSpecialCharactersByLength_inValidInputDataInteger
 input inputData: integer (123)
-input inputMetaData: string
+input inputMetaData: string (?)
 output: ?
 
 testName: generateRandomUpperCaseTextWithSpecialCharactersByLength_inValidInputDataBoolean
 input inputData: boolean (false)
-input inputMetaData: string
+input inputMetaData: string (?)
 output: ?
 
 testName: generateRandomUpperCaseTextWithSpecialCharactersByLength_inValidInputMetaDataInteger
-input inputData: string
+input inputData: string (?)
 input inputMetaData: integer (123)
 output: ?
 
 testName: generateRandomUpperCaseTextWithSpecialCharactersByLength_inValidInputMetaDataBoolean
-input inputData: string
+input inputData: string (?)
 input inputMetaData: boolean (false)
 output: ?
 
 testName: generateRandomUpperCaseTextWithSpecialCharactersByLength_inValidInputDataUndefined
 input inputData: undefined
-input inputMetaData: string
+input inputMetaData: string (?)
 output: ?
 
 testName: generateRandomUpperCaseTextWithSpecialCharactersByLength_inValidInputDataNaN
 input inputData: NaN
-input inputMetaData: string
+input inputMetaData: string (?)
 output: ?
 
 testName: generateRandomUpperCaseTextWithSpecialCharactersByLength_inValidInputMetaDataUndefined
-input inputData: string
+input inputData: string (?)
 input inputMetaData: undefined
 output: ?
 
 testName: generateRandomUpperCaseTextWithSpecialCharactersByLength_inValidInputMetaDataNaN
-input inputData: string
+input inputData: string (?)
 input inputMetaData: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: generateRandomLowerCaseTextWithSpecialCharactersByLength_validData
-input inputData: string
-input inputMetaData: string
+input inputData: string (?)
+input inputMetaData: string (?)
 output: string (?)
 
 testName: generateRandomLowerCaseTextWithSpecialCharactersByLength_inValidInputDataString
-input inputData: string
-input inputMetaData: string
+input inputData: string (dfxg24346dfg)
+input inputMetaData: string (?)
 output: ?
 
 testName: generateRandomLowerCaseTextWithSpecialCharactersByLength_inValidInputMetaDataString
-input inputData: string
-input inputMetaData: string
+input inputData: string (?)
+input inputMetaData: string (&)
 output: ?
 
 testName: generateRandomLowerCaseTextWithSpecialCharactersByLength_inValidInputDataInteger
 input inputData: integer (123)
-input inputMetaData: string
+input inputMetaData: string (?)
 output: ?
 
 testName: generateRandomLowerCaseTextWithSpecialCharactersByLength_inValidInputDataBoolean
 input inputData: boolean (false)
-input inputMetaData: string
+input inputMetaData: string (?)
 output: ?
 
 testName: generateRandomLowerCaseTextWithSpecialCharactersByLength_inValidInputMetaDataInteger
-input inputData: string
+input inputData: string (?)
 input inputMetaData: integer (123)
 output: ?
 
 testName: generateRandomLowerCaseTextWithSpecialCharactersByLength_inValidInputMetaDataBoolean
-input inputData: string
+input inputData: string (?)
 input inputMetaData: boolean (false)
 output: ?
 
 testName: generateRandomLowerCaseTextWithSpecialCharactersByLength_inValidInputDataUndefined
 input inputData: undefined
-input inputMetaData: string
+input inputMetaData: string (?)
 output: ?
 
 testName: generateRandomLowerCaseTextWithSpecialCharactersByLength_inValidInputDataNaN
 input inputData: NaN
-input inputMetaData: string
+input inputMetaData: string (?)
 output: ?
 
 testName: generateRandomLowerCaseTextWithSpecialCharactersByLength_inValidInputMetaDataUndefined
-input inputData: string
+input inputData: string (?)
 input inputMetaData: undefined
 output: ?
 
 testName: generateRandomLowerCaseTextWithSpecialCharactersByLength_inValidInputMetaDataNaN
-input inputData: string
+input inputData: string (?)
 input inputMetaData: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: generateRandomMixedCaseAlphaNumericCodeByLength_validData
-input inputData: string
-input inputMetaData: string
+input inputData: string (?)
+input inputMetaData: string (?)
 output: string (?)
 
 testName: generateRandomMixedCaseAlphaNumericCodeByLength_inValidInputDataString
-input inputData: string
-input inputMetaData: string
+input inputData: string (dfxg24346dfg)
+input inputMetaData: string (?)
 output: ?
 
 testName: generateRandomMixedCaseAlphaNumericCodeByLength_inValidInputMetaDataString
-input inputData: string
-input inputMetaData: string
+input inputData: string (?)
+input inputMetaData: string (&)
 output: ?
 
 testName: generateRandomMixedCaseAlphaNumericCodeByLength_inValidInputDataInteger
 input inputData: integer (123)
-input inputMetaData: string
+input inputMetaData: string (?)
 output: ?
 
 testName: generateRandomMixedCaseAlphaNumericCodeByLength_inValidInputDataBoolean
 input inputData: boolean (false)
-input inputMetaData: string
+input inputMetaData: string (?)
 output: ?
 
 testName: generateRandomMixedCaseAlphaNumericCodeByLength_inValidInputMetaDataInteger
-input inputData: string
+input inputData: string (?)
 input inputMetaData: integer (123)
 output: ?
 
 testName: generateRandomMixedCaseAlphaNumericCodeByLength_inValidInputMetaDataBoolean
-input inputData: string
+input inputData: string (?)
 input inputMetaData: boolean (false)
 output: ?
 
 testName: generateRandomMixedCaseAlphaNumericCodeByLength_inValidInputDataUndefined
 input inputData: undefined
-input inputMetaData: string
+input inputMetaData: string (?)
 output: ?
 
 testName: generateRandomMixedCaseAlphaNumericCodeByLength_inValidInputDataNaN
 input inputData: NaN
-input inputMetaData: string
+input inputMetaData: string (?)
 output: ?
 
 testName: generateRandomMixedCaseAlphaNumericCodeByLength_inValidInputMetaDataUndefined
-input inputData: string
+input inputData: string (?)
 input inputMetaData: undefined
 output: ?
 
 testName: generateRandomMixedCaseAlphaNumericCodeByLength_inValidInputMetaDataNaN
-input inputData: string
+input inputData: string (?)
 input inputMetaData: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: generateRandomUpperCaseAlphaNumericCodeByLength_validData
-input inputData: string
-input inputMetaData: string
+input inputData: string (?)
+input inputMetaData: string (?)
 output: string (?)
 
 testName: generateRandomUpperCaseAlphaNumericCodeByLength_inValidInputDataString
-input inputData: string
-input inputMetaData: string
+input inputData: string (dfxg24346dfg)
+input inputMetaData: string (?)
 output: ?
 
 testName: generateRandomUpperCaseAlphaNumericCodeByLength_inValidInputMetaDataString
-input inputData: string
-input inputMetaData: string
+input inputData: string (?)
+input inputMetaData: string (&)
 output: ?
 
 testName: generateRandomUpperCaseAlphaNumericCodeByLength_inValidInputDataInteger
 input inputData: integer (123)
-input inputMetaData: string
+input inputMetaData: string (?)
 output: ?
 
 testName: generateRandomUpperCaseAlphaNumericCodeByLength_inValidInputDataBoolean
 input inputData: boolean (false)
-input inputMetaData: string
+input inputMetaData: string (?)
 output: ?
 
 testName: generateRandomUpperCaseAlphaNumericCodeByLength_inValidInputMetaDataInteger
-input inputData: string
+input inputData: string (?)
 input inputMetaData: integer (123)
 output: ?
 
 testName: generateRandomUpperCaseAlphaNumericCodeByLength_inValidInputMetaDataBoolean
-input inputData: string
+input inputData: string (?)
 input inputMetaData: boolean (false)
 output: ?
 
 testName: generateRandomUpperCaseAlphaNumericCodeByLength_inValidInputDataUndefined
 input inputData: undefined
-input inputMetaData: string
+input inputMetaData: string (?)
 output: ?
 
 testName: generateRandomUpperCaseAlphaNumericCodeByLength_inValidInputDataNaN
 input inputData: NaN
-input inputMetaData: string
+input inputMetaData: string (?)
 output: ?
 
 testName: generateRandomUpperCaseAlphaNumericCodeByLength_inValidInputMetaDataUndefined
-input inputData: string
+input inputData: string (?)
 input inputMetaData: undefined
 output: ?
 
 testName: generateRandomUpperCaseAlphaNumericCodeByLength_inValidInputMetaDataNaN
-input inputData: string
+input inputData: string (?)
 input inputMetaData: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: generateRandomLowerCaseAlphaNumericCodeByLength_validData
-input inputData: string
-input inputMetaData: string
+input inputData: string (?)
+input inputMetaData: string (?)
 output: string (?)
 
 testName: generateRandomLowerCaseAlphaNumericCodeByLength_inValidInputDataString
-input inputData: string
-input inputMetaData: string
+input inputData: string (dfxg24346dfg)
+input inputMetaData: string (?)
 output: ?
 
 testName: generateRandomLowerCaseAlphaNumericCodeByLength_inValidInputMetaDataString
-input inputData: string
-input inputMetaData: string
+input inputData: string (?)
+input inputMetaData: string (&)
 output: ?
 
 testName: generateRandomLowerCaseAlphaNumericCodeByLength_inValidInputDataInteger
 input inputData: integer (123)
-input inputMetaData: string
+input inputMetaData: string (?)
 output: ?
 
 testName: generateRandomLowerCaseAlphaNumericCodeByLength_inValidInputDataBoolean
 input inputData: boolean (false)
-input inputMetaData: string
+input inputMetaData: string (?)
 output: ?
 
 testName: generateRandomLowerCaseAlphaNumericCodeByLength_inValidInputMetaDataInteger
-input inputData: string
+input inputData: string (?)
 input inputMetaData: integer (123)
 output: ?
 
 testName: generateRandomLowerCaseAlphaNumericCodeByLength_inValidInputMetaDataBoolean
-input inputData: string
+input inputData: string (?)
 input inputMetaData: boolean (false)
 output: ?
 
 testName: generateRandomLowerCaseAlphaNumericCodeByLength_inValidInputDataUndefined
 input inputData: undefined
-input inputMetaData: string
+input inputMetaData: string (?)
 output: ?
 
 testName: generateRandomLowerCaseAlphaNumericCodeByLength_inValidInputDataNaN
 input inputData: NaN
-input inputMetaData: string
+input inputMetaData: string (?)
 output: ?
 
 testName: generateRandomLowerCaseAlphaNumericCodeByLength_inValidInputMetaDataUndefined
-input inputData: string
+input inputData: string (?)
 input inputMetaData: undefined
 output: ?
 
 testName: generateRandomLowerCaseAlphaNumericCodeByLength_inValidInputMetaDataNaN
-input inputData: string
+input inputData: string (?)
 input inputMetaData: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: generateRandomNumericCodeByLength_validData
-input inputData: string
-input inputMetaData: string
+input inputData: string (?)
+input inputMetaData: string (?)
 output: string (?)
 
 testName: generateRandomNumericCodeByLength_inValidInputDataString
-input inputData: string
-input inputMetaData: string
+input inputData: string (dfxg24346dfg)
+input inputMetaData: string (?)
 output: ?
 
 testName: generateRandomNumericCodeByLength_inValidInputMetaDataString
-input inputData: string
-input inputMetaData: string
+input inputData: string (?)
+input inputMetaData: string (&)
 output: ?
 
 testName: generateRandomNumericCodeByLength_inValidInputDataInteger
 input inputData: integer (123)
-input inputMetaData: string
+input inputMetaData: string (?)
 output: ?
 
 testName: generateRandomNumericCodeByLength_inValidInputDataBoolean
 input inputData: boolean (false)
-input inputMetaData: string
+input inputMetaData: string (?)
 output: ?
 
 testName: generateRandomNumericCodeByLength_inValidInputMetaDataInteger
-input inputData: string
+input inputData: string (?)
 input inputMetaData: integer (123)
 output: ?
 
 testName: generateRandomNumericCodeByLength_inValidInputMetaDataBoolean
-input inputData: string
+input inputData: string (?)
 input inputMetaData: boolean (false)
 output: ?
 
 testName: generateRandomNumericCodeByLength_inValidInputDataUndefined
 input inputData: undefined
-input inputMetaData: string
+input inputMetaData: string (?)
 output: ?
 
 testName: generateRandomNumericCodeByLength_inValidInputDataNaN
 input inputData: NaN
-input inputMetaData: string
+input inputMetaData: string (?)
 output: ?
 
 testName: generateRandomNumericCodeByLength_inValidInputMetaDataUndefined
-input inputData: string
+input inputData: string (?)
 input inputMetaData: undefined
 output: ?
 
 testName: generateRandomNumericCodeByLength_inValidInputMetaDataNaN
-input inputData: string
+input inputData: string (?)
 input inputMetaData: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: generateRandomMixedCaseAlphaNumericCodeWithSpecialCharactersByLength_validData
-input inputData: string
-input inputMetaData: string
+input inputData: string (?)
+input inputMetaData: string (?)
 output: string (?)
 
 testName: generateRandomMixedCaseAlphaNumericCodeWithSpecialCharactersByLength_inValidInputDataString
-input inputData: string
-input inputMetaData: string
+input inputData: string (dfxg24346dfg)
+input inputMetaData: string (?)
 output: ?
 
 testName: generateRandomMixedCaseAlphaNumericCodeWithSpecialCharactersByLength_inValidInputMetaDataString
-input inputData: string
-input inputMetaData: string
+input inputData: string (?)
+input inputMetaData: string (&)
 output: ?
 
 testName: generateRandomMixedCaseAlphaNumericCodeWithSpecialCharactersByLength_inValidInputDataInteger
 input inputData: integer (123)
-input inputMetaData: string
+input inputMetaData: string (?)
 output: ?
 
 testName: generateRandomMixedCaseAlphaNumericCodeWithSpecialCharactersByLength_inValidInputDataBoolean
 input inputData: boolean (false)
-input inputMetaData: string
+input inputMetaData: string (?)
 output: ?
 
 testName: generateRandomMixedCaseAlphaNumericCodeWithSpecialCharactersByLength_inValidInputMetaDataInteger
-input inputData: string
+input inputData: string (?)
 input inputMetaData: integer (123)
 output: ?
 
 testName: generateRandomMixedCaseAlphaNumericCodeWithSpecialCharactersByLength_inValidInputMetaDataBoolean
-input inputData: string
+input inputData: string (?)
 input inputMetaData: boolean (false)
 output: ?
 
 testName: generateRandomMixedCaseAlphaNumericCodeWithSpecialCharactersByLength_inValidInputDataUndefined
 input inputData: undefined
-input inputMetaData: string
+input inputMetaData: string (?)
 output: ?
 
 testName: generateRandomMixedCaseAlphaNumericCodeWithSpecialCharactersByLength_inValidInputDataNaN
 input inputData: NaN
-input inputMetaData: string
+input inputMetaData: string (?)
 output: ?
 
 testName: generateRandomMixedCaseAlphaNumericCodeWithSpecialCharactersByLength_inValidInputMetaDataUndefined
-input inputData: string
+input inputData: string (?)
 input inputMetaData: undefined
 output: ?
 
 testName: generateRandomMixedCaseAlphaNumericCodeWithSpecialCharactersByLength_inValidInputMetaDataNaN
-input inputData: string
+input inputData: string (?)
 input inputMetaData: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: generateRandomUpperCaseAlphaNumericCodeWithSpecialCharactersByLength_validData
-input inputData: string
-input inputMetaData: string
+input inputData: string (?)
+input inputMetaData: string (?)
 output: string (?)
 
 testName: generateRandomUpperCaseAlphaNumericCodeWithSpecialCharactersByLength_inValidInputDataString
-input inputData: string
-input inputMetaData: string
+input inputData: string (dfxg24346dfg)
+input inputMetaData: string (?)
 output: ?
 
 testName: generateRandomUpperCaseAlphaNumericCodeWithSpecialCharactersByLength_inValidInputMetaDataString
-input inputData: string
-input inputMetaData: string
+input inputData: string (?)
+input inputMetaData: string (&)
 output: ?
 
 testName: generateRandomUpperCaseAlphaNumericCodeWithSpecialCharactersByLength_inValidInputDataInteger
 input inputData: integer (123)
-input inputMetaData: string
+input inputMetaData: string (?)
 output: ?
 
 testName: generateRandomUpperCaseAlphaNumericCodeWithSpecialCharactersByLength_inValidInputDataBoolean
 input inputData: boolean (false)
-input inputMetaData: string
+input inputMetaData: string (?)
 output: ?
 
 testName: generateRandomUpperCaseAlphaNumericCodeWithSpecialCharactersByLength_inValidInputMetaDataInteger
-input inputData: string
+input inputData: string (?)
 input inputMetaData: integer (123)
 output: ?
 
 testName: generateRandomUpperCaseAlphaNumericCodeWithSpecialCharactersByLength_inValidInputMetaDataBoolean
-input inputData: string
+input inputData: string (?)
 input inputMetaData: boolean (false)
 output: ?
 
 testName: generateRandomUpperCaseAlphaNumericCodeWithSpecialCharactersByLength_inValidInputDataUndefined
 input inputData: undefined
-input inputMetaData: string
+input inputMetaData: string (?)
 output: ?
 
 testName: generateRandomUpperCaseAlphaNumericCodeWithSpecialCharactersByLength_inValidInputDataNaN
 input inputData: NaN
-input inputMetaData: string
+input inputMetaData: string (?)
 output: ?
 
 testName: generateRandomUpperCaseAlphaNumericCodeWithSpecialCharactersByLength_inValidInputMetaDataUndefined
-input inputData: string
+input inputData: string (?)
 input inputMetaData: undefined
 output: ?
 
 testName: generateRandomUpperCaseAlphaNumericCodeWithSpecialCharactersByLength_inValidInputMetaDataNaN
-input inputData: string
+input inputData: string (?)
 input inputMetaData: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: generateRandomLowerCaseAlphaNumericCodeWithSpecialCharactersByLength_validData
-input inputData: string
-input inputMetaData: string
+input inputData: string (?)
+input inputMetaData: string (?)
 output: string (?)
 
 testName: generateRandomLowerCaseAlphaNumericCodeWithSpecialCharactersByLength_inValidInputDataString
-input inputData: string
-input inputMetaData: string
+input inputData: string (dfxg24346dfg)
+input inputMetaData: string (?)
 output: ?
 
 testName: generateRandomLowerCaseAlphaNumericCodeWithSpecialCharactersByLength_inValidInputMetaDataString
-input inputData: string
-input inputMetaData: string
+input inputData: string (?)
+input inputMetaData: string (&)
 output: ?
 
 testName: generateRandomLowerCaseAlphaNumericCodeWithSpecialCharactersByLength_inValidInputDataInteger
 input inputData: integer (123)
-input inputMetaData: string
+input inputMetaData: string (?)
 output: ?
 
 testName: generateRandomLowerCaseAlphaNumericCodeWithSpecialCharactersByLength_inValidInputDataBoolean
 input inputData: boolean (false)
-input inputMetaData: string
+input inputMetaData: string (?)
 output: ?
 
 testName: generateRandomLowerCaseAlphaNumericCodeWithSpecialCharactersByLength_inValidInputMetaDataInteger
-input inputData: string
+input inputData: string (?)
 input inputMetaData: integer (123)
 output: ?
 
 testName: generateRandomLowerCaseAlphaNumericCodeWithSpecialCharactersByLength_inValidInputMetaDataBoolean
-input inputData: string
+input inputData: string (?)
 input inputMetaData: boolean (false)
 output: ?
 
 testName: generateRandomLowerCaseAlphaNumericCodeWithSpecialCharactersByLength_inValidInputDataUndefined
 input inputData: undefined
-input inputMetaData: string
+input inputMetaData: string (?)
 output: ?
 
 testName: generateRandomLowerCaseAlphaNumericCodeWithSpecialCharactersByLength_inValidInputDataNaN
 input inputData: NaN
-input inputMetaData: string
+input inputMetaData: string (?)
 output: ?
 
 testName: generateRandomLowerCaseAlphaNumericCodeWithSpecialCharactersByLength_inValidInputMetaDataUndefined
-input inputData: string
+input inputData: string (?)
 input inputMetaData: undefined
 output: ?
 
 testName: generateRandomLowerCaseAlphaNumericCodeWithSpecialCharactersByLength_inValidInputMetaDataNaN
-input inputData: string
+input inputData: string (?)
 input inputMetaData: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: generateRandomSpecialCharacterCodeByLength_validData
-input inputData: string
-input inputMetaData: string
+input inputData: string (?)
+input inputMetaData: string (?)
 output: string (?)
 
 testName: generateRandomSpecialCharacterCodeByLength_inValidInputDataString
-input inputData: string
-input inputMetaData: string
+input inputData: string (dfxg24346dfg)
+input inputMetaData: string (?)
 output: ?
 
 testName: generateRandomSpecialCharacterCodeByLength_inValidInputMetaDataString
-input inputData: string
-input inputMetaData: string
+input inputData: string (?)
+input inputMetaData: string (&)
 output: ?
 
 testName: generateRandomSpecialCharacterCodeByLength_inValidInputDataInteger
 input inputData: integer (123)
-input inputMetaData: string
+input inputMetaData: string (?)
 output: ?
 
 testName: generateRandomSpecialCharacterCodeByLength_inValidInputDataBoolean
 input inputData: boolean (false)
-input inputMetaData: string
+input inputMetaData: string (?)
 output: ?
 
 testName: generateRandomSpecialCharacterCodeByLength_inValidInputMetaDataInteger
-input inputData: string
+input inputData: string (?)
 input inputMetaData: integer (123)
 output: ?
 
 testName: generateRandomSpecialCharacterCodeByLength_inValidInputMetaDataBoolean
-input inputData: string
+input inputData: string (?)
 input inputMetaData: boolean (false)
 output: ?
 
 testName: generateRandomSpecialCharacterCodeByLength_inValidInputDataUndefined
 input inputData: undefined
-input inputMetaData: string
+input inputMetaData: string (?)
 output: ?
 
 testName: generateRandomSpecialCharacterCodeByLength_inValidInputDataNaN
 input inputData: NaN
-input inputMetaData: string
+input inputMetaData: string (?)
 output: ?
 
 testName: generateRandomSpecialCharacterCodeByLength_inValidInputMetaDataUndefined
-input inputData: string
+input inputData: string (?)
 input inputMetaData: undefined
 output: ?
 
 testName: generateRandomSpecialCharacterCodeByLength_inValidInputMetaDataNaN
-input inputData: string
+input inputData: string (?)
 input inputMetaData: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: generateValidEmail_validData
-input inputData: string
-input inputMetaData: array<boolean,string,string>
+input inputData: string (?)
+input inputMetaData: array<boolean,string,string> (?)
 output: string (?)
 
 testName: generateValidEmail_inValidInputDataString
-input inputData: string
-input inputMetaData: array<boolean,string,string>
+input inputData: string (dfxg24346dfg)
+input inputMetaData: array<boolean,string,string> (?)
 output: ?
 
 testName: generateValidEmail_inValidInputMetaDataString
-input inputData: string
-input inputMetaData: string
+input inputData: string (?)
+input inputMetaData: string (&)
 output: ?
 
 testName: generateValidEmail_inValidInputDataInteger
 input inputData: integer (123)
-input inputMetaData: array<boolean,string,string>
+input inputMetaData: array<boolean,string,string> (?)
 output: ?
 
 testName: generateValidEmail_inValidInputDataBoolean
 input inputData: boolean (false)
-input inputMetaData: array<boolean,string,string>
+input inputMetaData: array<boolean,string,string> (?)
 output: ?
 
 testName: generateValidEmail_inValidInputMetaDataInteger
-input inputData: string
+input inputData: string (?)
 input inputMetaData: integer (123)
 output: ?
 
 testName: generateValidEmail_inValidInputMetaDataBoolean
-input inputData: string
+input inputData: string (?)
 input inputMetaData: boolean (false)
 output: ?
 
 testName: generateValidEmail_inValidInputDataUndefined
 input inputData: undefined
-input inputMetaData: array<boolean,string,string>
+input inputMetaData: array<boolean,string,string> (?)
 output: ?
 
 testName: generateValidEmail_inValidInputDataNaN
 input inputData: NaN
-input inputMetaData: array<boolean,string,string>
+input inputMetaData: array<boolean,string,string> (?)
 output: ?
 
 testName: generateValidEmail_inValidInputMetaDataUndefined
-input inputData: string
+input inputData: string (?)
 input inputMetaData: undefined
 output: ?
 
 testName: generateValidEmail_inValidInputMetaDataNaN
-input inputData: string
+input inputData: string (?)
 input inputMetaData: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: generateInvalidEmail_validData
-input inputData: string
-input inputMetaData: array<boolean,string,string>
+input inputData: string (?)
+input inputMetaData: array<boolean,string,string> (?)
 output: string (?)
 
 testName: generateInvalidEmail_inValidInputDataString
-input inputData: string
-input inputMetaData: array<boolean,string,string>
+input inputData: string (dfxg24346dfg)
+input inputMetaData: array<boolean,string,string> (?)
 output: ?
 
 testName: generateInvalidEmail_inValidInputMetaDataString
-input inputData: string
-input inputMetaData: string
+input inputData: string (?)
+input inputMetaData: string (&)
 output: ?
 
 testName: generateInvalidEmail_inValidInputDataInteger
 input inputData: integer (123)
-input inputMetaData: array<boolean,string,string>
+input inputMetaData: array<boolean,string,string> (?)
 output: ?
 
 testName: generateInvalidEmail_inValidInputDataBoolean
 input inputData: boolean (false)
-input inputMetaData: array<boolean,string,string>
+input inputMetaData: array<boolean,string,string> (?)
 output: ?
 
 testName: generateInvalidEmail_inValidInputMetaDataInteger
-input inputData: string
+input inputData: string (?)
 input inputMetaData: integer (123)
 output: ?
 
 testName: generateInvalidEmail_inValidInputMetaDataBoolean
-input inputData: string
+input inputData: string (?)
 input inputMetaData: boolean (false)
 output: ?
 
 testName: generateInvalidEmail_inValidInputDataUndefined
 input inputData: undefined
-input inputMetaData: array<boolean,string,string>
+input inputMetaData: array<boolean,string,string> (?)
 output: ?
 
 testName: generateInvalidEmail_inValidInputDataNaN
 input inputData: NaN
-input inputMetaData: array<boolean,string,string>
+input inputMetaData: array<boolean,string,string> (?)
 output: ?
 
 testName: generateInvalidEmail_inValidInputMetaDataUndefined
-input inputData: string
+input inputData: string (?)
 input inputMetaData: undefined
 output: ?
 
 testName: generateInvalidEmail_inValidInputMetaDataNaN
-input inputData: string
+input inputData: string (?)
 input inputMetaData: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: generateValidEmailWithSpecificSuffixAndDomainName_validData
-input numberOfCharactersToGenerate: integer
-input generateSpecialCharacters: boolean
-input allowableSpecialCharacters: string
-input specifiedSuffixAndDomain: string
+input numberOfCharactersToGenerate: integer (?)
+input generateSpecialCharacters: boolean (?)
+input allowableSpecialCharacters: string (?)
+input specifiedSuffixAndDomain: string (?)
 output: string (?)
 
 testName: generateValidEmailWithSpecificSuffixAndDomainName_inValidNumberOfCharactersToGenerateString
-input numberOfCharactersToGenerate: string 
-input generateSpecialCharacters: boolean
-input allowableSpecialCharacters: string
-input specifiedSuffixAndDomain: string
+input numberOfCharactersToGenerate: string (dfxg24346dfg)
+input generateSpecialCharacters: boolean (?)
+input allowableSpecialCharacters: string (?)
+input specifiedSuffixAndDomain: string (?)
+output: ?
+
+testName: generateValidEmailWithSpecificSuffixAndDomainName_inValidGenerateSpecialCharactersString
+input numberOfCharactersToGenerate: integer (?)
+input generateSpecialCharacters: string (dfxg24346dfg)
+input allowableSpecialCharacters: string (?)
+input specifiedSuffixAndDomain: string (?)
+output: ?
+
+testName: generateValidEmailWithSpecificSuffixAndDomainName_inValidAllowableSpecialCharactersString
+input numberOfCharactersToGenerate: integer (?)
+input generateSpecialCharacters: boolean (?)
+input allowableSpecialCharacters: string (&)
+input specifiedSuffixAndDomain: string (?)
+output: ?
+
+testName: generateValidEmailWithSpecificSuffixAndDomainName_inValidSpecifiedSuffixAndDomainString
+input numberOfCharactersToGenerate: integer (?)
+input generateSpecialCharacters: boolean (?)
+input allowableSpecialCharacters: string (?)
+input specifiedSuffixAndDomain: string (&)
 output: ?
 
 testName: generateValidEmailWithSpecificSuffixAndDomainName_inValidNumberOfCharactersToGenerateInteger
 input numberOfCharactersToGenerate: integer (123)
-input generateSpecialCharacters: boolean
-input allowableSpecialCharacters: string
-input specifiedSuffixAndDomain: string
+input generateSpecialCharacters: boolean (?)
+input allowableSpecialCharacters: string (?)
+input specifiedSuffixAndDomain: string (?)
 output: ?
 
 testName: generateValidEmailWithSpecificSuffixAndDomainName_inValidNumberOfCharactersToGenerateBoolean
 input numberOfCharactersToGenerate: boolean (false) 
-input generateSpecialCharacters: boolean
-input allowableSpecialCharacters: string
-input specifiedSuffixAndDomain: string
+input generateSpecialCharacters: boolean (?)
+input allowableSpecialCharacters: string (?)
+input specifiedSuffixAndDomain: string (?)
 output: ?
 
-testName: generateValidEmailWithSpecificSuffixAndDomainName_inValidGenerateSpecialCharactersString
-input numberOfCharactersToGenerate: integer
-input generateSpecialCharacters: string
-input allowableSpecialCharacters: string
-input specifiedSuffixAndDomain: string
+testName: generateValidEmailWithSpecificSuffixAndDomainName_inValidNumberOfCharactersToGenerateUndefined
+input numberOfCharactersToGenerate: undefined
+input generateSpecialCharacters: boolean (?)
+input allowableSpecialCharacters: string (?)
+input specifiedSuffixAndDomain: string (?)
+output: ?
+
+testName: generateValidEmailWithSpecificSuffixAndDomainName_inValidNumberOfCharactersToGenerateNaN
+input numberOfCharactersToGenerate: NaN
+input generateSpecialCharacters: boolean (?)
+input allowableSpecialCharacters: string (?)
+input specifiedSuffixAndDomain: string (?)
 output: ?
 
 testName: generateValidEmailWithSpecificSuffixAndDomainName_inValidGenerateSpecialCharactersInteger
-input numberOfCharactersToGenerate: integer
+input numberOfCharactersToGenerate: integer (?)
 input generateSpecialCharacters: integer (123)
-input allowableSpecialCharacters: string
-input specifiedSuffixAndDomain: string
+input allowableSpecialCharacters: string (?)
+input specifiedSuffixAndDomain: string (?)
 output: ?
 
 testName: generateValidEmailWithSpecificSuffixAndDomainName_inValidGenerateSpecialCharactersBoolean
-input numberOfCharactersToGenerate: integer
+input numberOfCharactersToGenerate: integer (?)
 input generateSpecialCharacters: boolean (false)
-input allowableSpecialCharacters: string
-input specifiedSuffixAndDomain: string
+input allowableSpecialCharacters: string (?)
+input specifiedSuffixAndDomain: string (?)
 output: ?
 
-testName: generateValidEmailWithSpecificSuffixAndDomainName_inValidAllowableSpecialCharactersString
-input numberOfCharactersToGenerate: integer
-input generateSpecialCharacters: boolean
-input allowableSpecialCharacters: string
-input specifiedSuffixAndDomain: string
+testName: generateValidEmailWithSpecificSuffixAndDomainName_inValidGenerateSpecialCharactersUndefined
+input numberOfCharactersToGenerate: integer (?)
+input generateSpecialCharacters: undefined
+input allowableSpecialCharacters: string (?)
+input specifiedSuffixAndDomain: string (?)
+output: ?
+
+testName: generateValidEmailWithSpecificSuffixAndDomainName_inValidGenerateSpecialCharactersNaN
+input numberOfCharactersToGenerate: integer (?)
+input generateSpecialCharacters: NaN
+input allowableSpecialCharacters: string (?)
+input specifiedSuffixAndDomain: string (?)
 output: ?
 
 testName: generateValidEmailWithSpecificSuffixAndDomainName_inValidAllowableSpecialCharactersInteger
-input numberOfCharactersToGenerate: integer
-input generateSpecialCharacters: boolean
+input numberOfCharactersToGenerate: integer (?)
+input generateSpecialCharacters: boolean (?)
 input allowableSpecialCharacters: integer (123)
-input specifiedSuffixAndDomain: string
+input specifiedSuffixAndDomain: string (?)
 output: ?
 
 testName: generateValidEmailWithSpecificSuffixAndDomainName_inValidAllowableSpecialCharactersBoolean
-input numberOfCharactersToGenerate: integer
-input generateSpecialCharacters: boolean
+input numberOfCharactersToGenerate: integer (?)
+input generateSpecialCharacters: boolean (?)
 input allowableSpecialCharacters: boolean (false)
-input specifiedSuffixAndDomain: string
+input specifiedSuffixAndDomain: string (?)
 output: ?
 
-testName: generateValidEmailWithSpecificSuffixAndDomainName_inValidSpecifiedSuffixAndDomainString
-input numberOfCharactersToGenerate: integer
-input generateSpecialCharacters: boolean
-input allowableSpecialCharacters: string
-input specifiedSuffixAndDomain: string
+testName: generateValidEmailWithSpecificSuffixAndDomainName_inValidAllowableSpecialCharactersUndefined
+input numberOfCharactersToGenerate: integer (?)
+input generateSpecialCharacters: boolean (?)
+input allowableSpecialCharacters: undefined
+input specifiedSuffixAndDomain: string (?)
+output: ?
+
+testName: generateValidEmailWithSpecificSuffixAndDomainName_inValidAllowableSpecialCharactersNaN
+input numberOfCharactersToGenerate: integer (?)
+input generateSpecialCharacters: boolean (?)
+input allowableSpecialCharacters: NaN
+input specifiedSuffixAndDomain: string (?)
 output: ?
 
 testName: generateValidEmailWithSpecificSuffixAndDomainName_inValidSpecifiedSuffixAndDomainInteger
-input numberOfCharactersToGenerate: integer
-input generateSpecialCharacters: boolean
-input allowableSpecialCharacters: string
+input numberOfCharactersToGenerate: integer (?)
+input generateSpecialCharacters: boolean (?)
+input allowableSpecialCharacters: string (?)
 input specifiedSuffixAndDomain: integer (123)
 output: ?
 
 testName: generateValidEmailWithSpecificSuffixAndDomainName_inValidSpecifiedSuffixAndDomainBoolean
-input numberOfCharactersToGenerate: integer
-input generateSpecialCharacters: boolean
-input allowableSpecialCharacters: string
+input numberOfCharactersToGenerate: integer (?)
+input generateSpecialCharacters: boolean (?)
+input allowableSpecialCharacters: string (?)
 input specifiedSuffixAndDomain: boolean (false)
+output: ?
+
+testName: generateValidEmailWithSpecificSuffixAndDomainName_inValidSpecifiedSuffixAndDomainUndefined
+input numberOfCharactersToGenerate: integer (?)
+input generateSpecialCharacters: boolean (?)
+input allowableSpecialCharacters: string (?)
+input specifiedSuffixAndDomain: undefined
+output: ?
+
+testName: generateValidEmailWithSpecificSuffixAndDomainName_inValidSpecifiedSuffixAndDomainNaN
+input numberOfCharactersToGenerate: integer (?)
+input generateSpecialCharacters: boolean (?)
+input allowableSpecialCharacters: string (?)
+input specifiedSuffixAndDomain: NaN
 output: ?
 
 testName: generateValidEmailWithSpecificSuffixAndDomainName_inValidAllUndefined
@@ -987,63 +1043,99 @@ input specifiedSuffixAndDomain: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: generateRandomValidEmail_validData
-input numberOfCharactersToGenerate: integer
-input generateSpecialCharacters: boolean
-input allowableSpecialCharacters: string
+input numberOfCharactersToGenerate: integer (?)
+input generateSpecialCharacters: boolean (?)
+input allowableSpecialCharacters: string (?)
 outputL string(?)
 
 testName: generateRandomValidEmail_inValidNumberOfCharactersToGenerateString
-input numberOfCharactersToGenerate: string
-input generateSpecialCharacters: boolean
-input allowableSpecialCharacters: string
+input numberOfCharactersToGenerate: string (dfxg24346dfg)
+input generateSpecialCharacters: boolean (?)
+input allowableSpecialCharacters: string (?)
+output: ?
+
+testName: generateRandomValidEmail_inValidGenerateSpecialCharactersString
+input numberOfCharactersToGenerate: integer (?)
+input generateSpecialCharacters: string  (dfxg24346dfg)
+input allowableSpecialCharacters: string (?)
+output: ?
+
+testName: generateRandomValidEmail_inValidAllowableSpecialCharactersString
+input numberOfCharactersToGenerate: integer (?)
+input generateSpecialCharacters: boolean (?)
+input allowableSpecialCharacters: string (dfxg24346dfg)
 output: ?
 
 testName: generateRandomValidEmail_inValidNumberOfCharactersToGenerateInteger
 input numberOfCharactersToGenerate: integer (123)
-input generateSpecialCharacters: boolean
-input allowableSpecialCharacters: string
+input generateSpecialCharacters: boolean (?)
+input allowableSpecialCharacters: string (?)
 output: ?
 
 testName: generateRandomValidEmail_inValidNumberOfCharactersToGenerateBoolean
 input numberOfCharactersToGenerate: boolean (false)
-input generateSpecialCharacters: boolean
-input allowableSpecialCharacters: string
+input generateSpecialCharacters: boolean (?)
+input allowableSpecialCharacters: string (?)
 output: ?
 
-testName: generateRandomValidEmail_inValidGenerateSpecialCharactersString
-input numberOfCharactersToGenerate: integer
-input generateSpecialCharacters: string 
-input allowableSpecialCharacters: string
+testName: generateRandomValidEmail_inValidNumberOfCharactersToGenerateUndefined
+input numberOfCharactersToGenerate: undefined
+input generateSpecialCharacters: boolean (?)
+input allowableSpecialCharacters: string (?)
+output: ?
+
+testName: generateRandomValidEmail_inValidNumberOfCharactersToGenerateNaN
+input numberOfCharactersToGenerate: NaN
+input generateSpecialCharacters: boolean (?)
+input allowableSpecialCharacters: string (?)
 output: ?
 
 testName: generateRandomValidEmail_inValidGenerateSpecialCharactersInteger
-input numberOfCharactersToGenerate: integer
+input numberOfCharactersToGenerate: integer (?)
 input generateSpecialCharacters: integer (123)
-input allowableSpecialCharacters: string
+input allowableSpecialCharacters: string (?)
 output: ?
 
 testName: generateRandomValidEmail_inValidGenerateSpecialCharactersBoolean
-input numberOfCharactersToGenerate: integer
+input numberOfCharactersToGenerate: integer (?)
 input generateSpecialCharacters: boolean (false)
-input allowableSpecialCharacters: string
+input allowableSpecialCharacters: string (?)
 output: ?
 
-testName: generateRandomValidEmail_inValidAllowableSpecialCharactersString
-input numberOfCharactersToGenerate: integer
-input generateSpecialCharacters: boolean
-input allowableSpecialCharacters: string
+testName: generateRandomValidEmail_inValidGenerateSpecialCharactersUndefined
+input numberOfCharactersToGenerate: integer (?)
+input generateSpecialCharacters: undefined
+input allowableSpecialCharacters: string (?)
+output: ?
+
+testName: generateRandomValidEmail_inValidGenerateSpecialCharactersNaN
+input numberOfCharactersToGenerate: integer (?)
+input generateSpecialCharacters: NaN
+input allowableSpecialCharacters: string (?)
 output: ?
 
 testName: generateRandomValidEmail_inValidAllowableSpecialCharactersInteger
-input numberOfCharactersToGenerate: integer
-input generateSpecialCharacters: boolean
+input numberOfCharactersToGenerate: integer (?)
+input generateSpecialCharacters: boolean (?)
 input allowableSpecialCharacters: integer (123)
 output: ?
 
 testName: generateRandomValidEmail_inValidAllowableSpecialCharactersBoolean
-input numberOfCharactersToGenerate: integer
-input generateSpecialCharacters: boolean
+input numberOfCharactersToGenerate: integer (?)
+input generateSpecialCharacters: boolean (?)
 input allowableSpecialCharacters: boolean (false)
+output: ?
+
+testName: generateRandomValidEmail_inValidAllowableSpecialCharactersUndefined
+input numberOfCharactersToGenerate: integer (?)
+input generateSpecialCharacters: boolean (?)
+input allowableSpecialCharacters: undefined
+output: ?
+
+testName: generateRandomValidEmail_inValidAllowableSpecialCharactersNaN
+input numberOfCharactersToGenerate: integer (?)
+input generateSpecialCharacters: boolean (?)
+input allowableSpecialCharacters: NaN
 output: ?
 
 testName: generateRandomValidEmail_inValidAllUndefined
@@ -1059,94 +1151,150 @@ input allowableSpecialCharacters: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: generateInvalidEmailWithSpecificSuffixAndDomainName_validData
-input numberOfCharactersToGenerate: string
-input generateSpecialCharacters: string
-input allowableSpecialCharacters: string
-input specifiedSuffixAndDomain: string
+input numberOfCharactersToGenerate: integer (?)
+input generateSpecialCharacters: boolean (?)
+input allowableSpecialCharacters: string (?)
+input specifiedSuffixAndDomain: string (?)
 output: string (?)
 
 testName: generateInvalidEmailWithSpecificSuffixAndDomainName_inValidNumberOfCharactersToGenerateString
-input numberOfCharactersToGenerate: string 
-input generateSpecialCharacters: string
-input allowableSpecialCharacters: string
-input specifiedSuffixAndDomain: string
+input numberOfCharactersToGenerate: string (dfxg24346dfg)
+input generateSpecialCharacters: boolean (?)
+input allowableSpecialCharacters: string (?)
+input specifiedSuffixAndDomain: string (?)
+output: ?
+
+testName: generateInvalidEmailWithSpecificSuffixAndDomainName_inValidGenerateSpecialCharactersString
+input numberOfCharactersToGenerate: integer (?)
+input generateSpecialCharacters: string (dfxg24346dfg)
+input allowableSpecialCharacters: string (?)
+input specifiedSuffixAndDomain: string (?)
+output: ?
+
+testName: generateInvalidEmailWithSpecificSuffixAndDomainName_inValidAllowableSpecialCharactersString
+input numberOfCharactersToGenerate: integer (?)
+input generateSpecialCharacters: boolean (?)
+input allowableSpecialCharacters: string (dfxg24346dfg)
+input specifiedSuffixAndDomain: string (?)
+output: ?
+
+testName: generateInvalidEmailWithSpecificSuffixAndDomainName_inValidSpecifiedSuffixAndDomainString
+input numberOfCharactersToGenerate: integer (?)
+input generateSpecialCharacters: boolean (?)
+input allowableSpecialCharacters: string (?)
+input specifiedSuffixAndDomain: string (dfxg24346dfg)
 output: ?
 
 testName: generateInvalidEmailWithSpecificSuffixAndDomainName_inValidNumberOfCharactersToGenerateInteger
 input numberOfCharactersToGenerate: integer (123)
-input generateSpecialCharacters: string
-input allowableSpecialCharacters: string
-input specifiedSuffixAndDomain: string
+input generateSpecialCharacters: boolean (?)
+input allowableSpecialCharacters: string (?)
+input specifiedSuffixAndDomain: string (?)
 output: ?
 
 testName: generateInvalidEmailWithSpecificSuffixAndDomainName_inValidNumberOfCharactersToGenerateBoolean
 input numberOfCharactersToGenerate: boolean (false) 
-input generateSpecialCharacters: string
-input allowableSpecialCharacters: string
-input specifiedSuffixAndDomain: string
+input generateSpecialCharacters: boolean (?)
+input allowableSpecialCharacters: string (?)
+input specifiedSuffixAndDomain: string (?)
 output: ?
 
-testName: generateInvalidEmailWithSpecificSuffixAndDomainName_inValidGenerateSpecialCharactersString
-input numberOfCharactersToGenerate: string
-input generateSpecialCharacters: string
-input allowableSpecialCharacters: string
-input specifiedSuffixAndDomain: string
+testName: generateInvalidEmailWithSpecificSuffixAndDomainName_inValidNumberOfCharactersToGenerateUndefined
+input numberOfCharactersToGenerate: undefined
+input generateSpecialCharacters: boolean (?)
+input allowableSpecialCharacters: string (?)
+input specifiedSuffixAndDomain: string (?)
+output: ?
+
+testName: generateInvalidEmailWithSpecificSuffixAndDomainName_inValidNumberOfCharactersToGenerateNaN
+input numberOfCharactersToGenerate: NaN
+input generateSpecialCharacters: boolean (?)
+input allowableSpecialCharacters: string (?)
+input specifiedSuffixAndDomain: string (?)
 output: ?
 
 testName: generateInvalidEmailWithSpecificSuffixAndDomainName_inValidGenerateSpecialCharactersInteger
-input numberOfCharactersToGenerate: string
+input numberOfCharactersToGenerate: integer (?)
 input generateSpecialCharacters: integer (123)
-input allowableSpecialCharacters: string
-input specifiedSuffixAndDomain: string
+input allowableSpecialCharacters: string (?)
+input specifiedSuffixAndDomain: string (?)
 output: ?
 
 testName: generateInvalidEmailWithSpecificSuffixAndDomainName_inValidGenerateSpecialCharactersBoolean
-input numberOfCharactersToGenerate: string
+input numberOfCharactersToGenerate: integer (?)
 input generateSpecialCharacters: boolean (false)
-input allowableSpecialCharacters: string
-input specifiedSuffixAndDomain: string
+input allowableSpecialCharacters: string (?)
+input specifiedSuffixAndDomain: string (?)
 output: ?
 
-testName: generateInvalidEmailWithSpecificSuffixAndDomainName_inValidAllowableSpecialCharactersString
-input numberOfCharactersToGenerate: string
-input generateSpecialCharacters: boolean
-input allowableSpecialCharacters: string
-input specifiedSuffixAndDomain: string
+testName: generateInvalidEmailWithSpecificSuffixAndDomainName_inValidGenerateSpecialCharactersUndefined
+input numberOfCharactersToGenerate: integer (?)
+input generateSpecialCharacters: undefined
+input allowableSpecialCharacters: string (?)
+input specifiedSuffixAndDomain: string (?)
+output: ?
+
+testName: generateInvalidEmailWithSpecificSuffixAndDomainName_inValidGenerateSpecialCharactersNaN
+input numberOfCharactersToGenerate: integer (?)
+input generateSpecialCharacters: NaN
+input allowableSpecialCharacters: string (?)
+input specifiedSuffixAndDomain: string (?)
 output: ?
 
 testName: generateInvalidEmailWithSpecificSuffixAndDomainName_inValidAllowableSpecialCharactersInteger
-input numberOfCharactersToGenerate: string
-input generateSpecialCharacters: string
+input numberOfCharactersToGenerate: integer (?)
+input generateSpecialCharacters: boolean  (?)
 input allowableSpecialCharacters: integer (123)
-input specifiedSuffixAndDomain: string
+input specifiedSuffixAndDomain: string (?)
 output: ?
 
 testName: generateInvalidEmailWithSpecificSuffixAndDomainName_inValidAllowableSpecialCharactersBoolean
-input numberOfCharactersToGenerate: string
-input generateSpecialCharacters: string
+input numberOfCharactersToGenerate: integer (?)
+input generateSpecialCharacters: boolean  (?)
 input allowableSpecialCharacters: boolean (false)
-input specifiedSuffixAndDomain: string
+input specifiedSuffixAndDomain: string (?)
 output: ?
 
-testName: generateInvalidEmailWithSpecificSuffixAndDomainName_inValidSpecifiedSuffixAndDomainString
-input numberOfCharactersToGenerate: string
-input generateSpecialCharacters: string
-input allowableSpecialCharacters: string
-input specifiedSuffixAndDomain: string
+testName: generateInvalidEmailWithSpecificSuffixAndDomainName_inValidAllowableSpecialCharactersUndefined
+input numberOfCharactersToGenerate: integer (?)
+input generateSpecialCharacters: boolean  (?)
+input allowableSpecialCharacters: undefined
+input specifiedSuffixAndDomain: string (?)
+output: ?
+
+testName: generateInvalidEmailWithSpecificSuffixAndDomainName_inValidAllowableSpecialCharactersNaN
+input numberOfCharactersToGenerate: integer (?)
+input generateSpecialCharacters: boolean  (?)
+input allowableSpecialCharacters: NaN
+input specifiedSuffixAndDomain: string (?)
 output: ?
 
 testName: generateInvalidEmailWithSpecificSuffixAndDomainName_inValidSpecifiedSuffixAndDomainInteger
-input numberOfCharactersToGenerate: string
-input generateSpecialCharacters: string
-input allowableSpecialCharacters: string
+input numberOfCharactersToGenerate: integer (?)
+input generateSpecialCharacters: boolean  (?)
+input allowableSpecialCharacters: string (?)
 input specifiedSuffixAndDomain: integer (123)
 output: ?
 
 testName: generateInvalidEmailWithSpecificSuffixAndDomainName_inValidSpecifiedSuffixAndDomainBoolean
-input numberOfCharactersToGenerate: string
-input generateSpecialCharacters: string
-input allowableSpecialCharacters: string
+input numberOfCharactersToGenerate: integer (?)
+input generateSpecialCharacters: boolean (?)
+input allowableSpecialCharacters: string (?)
 input specifiedSuffixAndDomain: boolean (false)
+output: ?
+
+testName: generateInvalidEmailWithSpecificSuffixAndDomainName_inValidSpecifiedSuffixAndDomainUndefined
+input numberOfCharactersToGenerate: integer (?)
+input generateSpecialCharacters: boolean  (?)
+input allowableSpecialCharacters: string (?)
+input specifiedSuffixAndDomain: undefined
+output: ?
+
+testName: generateInvalidEmailWithSpecificSuffixAndDomainName_inValidSpecifiedSuffixAndDomainNaN
+input numberOfCharactersToGenerate: integer (?)
+input generateSpecialCharacters: boolean (?)
+input allowableSpecialCharacters: string (?)
+input specifiedSuffixAndDomain: NaN
 output: ?
 
 testName: generateInvalidEmailWithSpecificSuffixAndDomainName_inValidAllUndefined
@@ -1164,63 +1312,99 @@ input specifiedSuffixAndDomain: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: generateRandomInvalidEmail_validData
-input numberOfCharactersToGenerate: integer
-input generateSpecialCharacters: boolean
-input allowableSpecialCharacters: string
+input numberOfCharactersToGenerate: integer (?)
+input generateSpecialCharacters: boolean (?)
+input allowableSpecialCharacters: string (?)
 outputL string(?)
 
 testName: generateRandomInvalidEmail_inValidNumberOfCharactersToGenerateString
-input numberOfCharactersToGenerate: string
-input generateSpecialCharacters: boolean
-input allowableSpecialCharacters: string
+input numberOfCharactersToGenerate: string (dfxg24346dfg)
+input generateSpecialCharacters: boolean (?)
+input allowableSpecialCharacters: string (?)
+output: ?
+
+testName: generateRandomInvalidEmail_inValidGenerateSpecialCharactersString
+input numberOfCharactersToGenerate: integer (?)
+input generateSpecialCharacters: string  (dfxg24346dfg)
+input allowableSpecialCharacters: string (?)
+output: ?
+
+testName: generateRandomInvalidEmail_inValidAllowableSpecialCharactersString
+input numberOfCharactersToGenerate: integer (?)
+input generateSpecialCharacters: boolean (?)
+input allowableSpecialCharacters: string (dfxg24346dfg)
 output: ?
 
 testName: generateRandomInvalidEmail_inValidNumberOfCharactersToGenerateInteger
 input numberOfCharactersToGenerate: integer (123)
-input generateSpecialCharacters: boolean
-input allowableSpecialCharacters: string
+input generateSpecialCharacters: boolean (?)
+input allowableSpecialCharacters: string (?)
 output: ?
 
 testName: generateRandomInvalidEmail_inValidNumberOfCharactersToGenerateBoolean
 input numberOfCharactersToGenerate: boolean (false)
-input generateSpecialCharacters: boolean
-input allowableSpecialCharacters: string
+input generateSpecialCharacters: boolean (?)
+input allowableSpecialCharacters: string (?)
 output: ?
 
-testName: generateRandomInvalidEmail_inValidGenerateSpecialCharactersString
-input numberOfCharactersToGenerate: integer
-input generateSpecialCharacters: string 
-input allowableSpecialCharacters: string
+testName: generateRandomInvalidEmail_inValidNumberOfCharactersToGenerateUndefined
+input numberOfCharactersToGenerate: undefined
+input generateSpecialCharacters: boolean (?)
+input allowableSpecialCharacters: string (?)
+output: ?
+
+testName: generateRandomInvalidEmail_inValidNumberOfCharactersToGenerateNaN
+input numberOfCharactersToGenerate: NaN
+input generateSpecialCharacters: boolean (?)
+input allowableSpecialCharacters: string (?)
 output: ?
 
 testName: generateRandomInvalidEmail_inValidGenerateSpecialCharactersInteger
-input numberOfCharactersToGenerate: integer
+input numberOfCharactersToGenerate: integer (?)
 input generateSpecialCharacters: integer (123)
-input allowableSpecialCharacters: string
+input allowableSpecialCharacters: string (?)
 output: ?
 
 testName: generateRandomInvalidEmail_inValidGenerateSpecialCharactersBoolean
-input numberOfCharactersToGenerate: integer
+input numberOfCharactersToGenerate: integer (?)
 input generateSpecialCharacters: boolean (false)
-input allowableSpecialCharacters: string
+input allowableSpecialCharacters: string (?)
 output: ?
 
-testName: generateRandomInvalidEmail_inValidAllowableSpecialCharactersString
-input numberOfCharactersToGenerate: integer
-input generateSpecialCharacters: boolean
-input allowableSpecialCharacters: string
+testName: generateRandomInvalidEmail_inValidGenerateSpecialCharactersUndefined
+input numberOfCharactersToGenerate: integer (?)
+input generateSpecialCharacters: undefined
+input allowableSpecialCharacters: string (?)
+output: ?
+
+testName: generateRandomInvalidEmail_inValidGenerateSpecialCharactersNaN
+input numberOfCharactersToGenerate: integer (?)
+input generateSpecialCharacters: NaN
+input allowableSpecialCharacters: string (?)
 output: ?
 
 testName: generateRandomInvalidEmail_inValidAllowableSpecialCharactersInteger
-input numberOfCharactersToGenerate: integer
-input generateSpecialCharacters: boolean
+input numberOfCharactersToGenerate: integer (?)
+input generateSpecialCharacters: boolean (?)
 input allowableSpecialCharacters: integer (123)
 output: ?
 
 testName: generateRandomInvalidEmail_inValidAllowableSpecialCharactersBoolean
-input numberOfCharactersToGenerate: integer
-input generateSpecialCharacters: boolean
+input numberOfCharactersToGenerate: integer (?)
+input generateSpecialCharacters: boolean (?)
 input allowableSpecialCharacters: boolean (false)
+output: ?
+
+testName: generateRandomInvalidEmail_inValidAllowableSpecialCharactersUndefined
+input numberOfCharactersToGenerate: integer (?)
+input generateSpecialCharacters: boolean (?)
+input allowableSpecialCharacters: undefined
+output: ?
+
+testName: generateRandomInvalidEmail_inValidAllowableSpecialCharactersNaN
+input numberOfCharactersToGenerate: integer (?)
+input generateSpecialCharacters: boolean (?)
+input allowableSpecialCharacters: NaN
 output: ?
 
 testName: generateRandomInvalidEmail_inValidAllUndefined
@@ -1236,166 +1420,166 @@ input allowableSpecialCharacters: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: generateRandomBrightColor_validData
-input inputData: string|integer
-input inputMetaData: string|integer
+input inputData: string|integer (?)
+input inputMetaData: string|integer (?)
 output: array<integer, integer, integer> (?)
 
 testName: generateRandomBrightColor_inValidInputDataString
-input inputData: string
-input inputMetaData: string|integer
+input inputData: string (dfxg24346dfg)
+input inputMetaData: string|integer (?)
 output: ?
 
 testName: generateRandomBrightColor_inValidInputMetaDataString
-input inputData: string|integer
-input inputMetaData: string
+input inputData: string|integer (?)
+input inputMetaData: string (dfxg24346dfg)
 output: ?
 
 testName: generateRandomBrightColor_inValidInputDataInteger
 input inputData: integer (123)
-input inputMetaData: string|integer
+input inputMetaData: string|integer (?)
 output: ?
 
 testName: generateRandomBrightColor_inValidInputDataBoolean
 input inputData: boolean (false)
-input inputMetaData: string|integer
+input inputMetaData: string|integer (?)
 output: ?
 
 testName: generateRandomBrightColor_inValidInputMetaDataInteger
-input inputData: string|integer
+input inputData: string|integer (?)
 input inputMetaData: integer (123)
 output: ?
 
 testName: generateRandomBrightColor_inValidInputMetaDataBoolean
-input inputData: string|integer
+input inputData: string|integer (?)
 input inputMetaData: boolean (false)
 output: ?
 
 testName: generateRandomBrightColor_inValidInputDataUndefined
 input inputData: undefined
-input inputMetaData: string|integer
+input inputMetaData: string|integer (?)
 output: ?
 
 testName: generateRandomBrightColor_inValidInputDataNaN
 input inputData: NaN
-input inputMetaData: string|integer
+input inputMetaData: string|integer (?)
 output: ?
 
 testName: generateRandomBrightColor_inValidInputMetaDataUndefined
-input inputData: string|integer
+input inputData: string|integer (?)
 input inputMetaData: undefined
 output: ?
 
 testName: generateRandomBrightColor_inValidInputMetaDataNaN
-input inputData: string|integer
+input inputData: string|integer (?)
 input inputMetaData: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: generateRandomDarkColor_validData
-input inputData: string|integer
-input inputMetaData: string|integer
+input inputData: string|integer (?)
+input inputMetaData: string|integer (?)
 output: array<integer, integer, integer> (?)
 
 testName: generateRandomDarkColor_inValidInputDataString
-input inputData: string
-input inputMetaData: string|integer
+input inputData: string (dfxg24346dfg)
+input inputMetaData: string|integer (?)
 output: ?
 
 testName: generateRandomDarkColor_inValidInputMetaDataString
-input inputData: string|integer
-input inputMetaData: string
+input inputData: string|integer (?)
+input inputMetaData: string (dfxg24346dfg)
 output: ?
 
 testName: generateRandomDarkColor_inValidInputDataInteger
 input inputData: integer (123)
-input inputMetaData: string|integer
+input inputMetaData: string|integer (?)
 output: ?
 
 testName: generateRandomDarkColor_inValidInputDataBoolean
 input inputData: boolean (false)
-input inputMetaData: string|integer
+input inputMetaData: string|integer (?)
 output: ?
 
 testName: generateRandomDarkColor_inValidInputMetaDataInteger
-input inputData: string|integer
+input inputData: string|integer (?)
 input inputMetaData: integer (123)
 output: ?
 
 testName: generateRandomDarkColor_inValidInputMetaDataBoolean
-input inputData: string|integer
+input inputData: string|integer (?)
 input inputMetaData: boolean (false)
 output: ?
 
 testName: generateRandomDarkColor_inValidInputDataUndefined
 input inputData: undefined
-input inputMetaData: string|integer
+input inputMetaData: string|integer (?)
 output: ?
 
 testName: generateRandomDarkColor_inValidInputDataNaN
 input inputData: NaN
-input inputMetaData: string|integer
+input inputMetaData: string|integer (?)
 output: ?
 
 testName: generateRandomDarkColor_inValidInputMetaDataUndefined
-input inputData: string|integer
+input inputData: string|integer (?)
 input inputMetaData: undefined
 output: ?
 
 testName: generateRandomDarkColor_inValidInputMetaDataNaN
-input inputData: string|integer
+input inputData: string|integer (?)
 input inputMetaData: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: generateRandomColor_validData
-input inputData: string|integer
-input inputMetaData: string|integer
+input inputData: string|integer (?)
+input inputMetaData: string|integer (?)
 output: array<integer, integer, integer> (?)
 
 testName: generateRandomColor_inValidInputDataString
-input inputData: string
-input inputMetaData: string|integer
+input inputData: string (dfxg24346dfg)
+input inputMetaData: string|integer (?)
 output: ?
 
 testName: generateRandomColor_inValidInputMetaDataString
-input inputData: string|integer
-input inputMetaData: string
+input inputData: string|integer (?)
+input inputMetaData: string (dfxg24346dfg)
 output: ?
 
 testName: generateRandomColor_inValidInputDataInteger
 input inputData: integer (123)
-input inputMetaData: string|integer
+input inputMetaData: string|integer (?)
 output: ?
 
 testName: generateRandomColor_inValidInputDataBoolean
 input inputData: boolean (false)
-input inputMetaData: string|integer
+input inputMetaData: string|integer (?)
 output: ?
 
 testName: generateRandomColor_inValidInputMetaDataInteger
-input inputData: string|integer
+input inputData: string|integer (?)
 input inputMetaData: integer (123)
 output: ?
 
 testName: generateRandomColor_inValidInputMetaDataBoolean
-input inputData: string|integer
+input inputData: string|integer (?)
 input inputMetaData: boolean (false)
 output: ?
 
 testName: generateRandomColor_inValidInputDataUndefined
 input inputData: undefined
-input inputMetaData: string|integer
+input inputMetaData: string|integer (?)
 output: ?
 
 testName: generateRandomColor_inValidInputDataNaN
 input inputData: NaN
-input inputMetaData: string|integer
+input inputMetaData: string|integer (?)
 output: ?
 
 testName: generateRandomColor_inValidInputMetaDataUndefined
-input inputData: string|integer
+input inputData: string|integer (?)
 input inputMetaData: undefined
 output: ?
 
 testName: generateRandomColor_inValidInputMetaDataNaN
-input inputData: string|integer
+input inputData: string|integer (?)
 input inputMetaData: NaN
 output: ?
