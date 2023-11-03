@@ -2,11 +2,11 @@ Description: Test plan for chiefPlugin.js
 
 --------------------------------------------------------------------------------
 testName: loadPluginRegistryData_validData
-input pluginRegistryPath: string
+input pluginRegistryPath: string (?)
 output: object (?)
 
 testName: loadPluginRegistryData_inValidPluginRegistryPathString
-input pluginRegistryPath: string
+input pluginRegistryPath: string (dfxg24346dfg)
 output: ?
 
 testName: loadPluginRegistryData_inValidPluginRegistryPathInteger
@@ -26,11 +26,11 @@ input pluginRegistryPath: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: persistPluginRegistryToDataStructure_validData
-input pluginRegistryData: string
+input pluginRegistryData: string (?)
 output: object (?)
 
 testName: persistPluginRegistryToDataStructure_inValidPluginRegistryDataString
-input pluginRegistryData: string
+input pluginRegistryData: string (dfxg24346dfg)
 output: ?
 
 testName: persistPluginRegistryToDataStructure_inValidPluginRegistryDataInteger
@@ -68,66 +68,66 @@ testName: countAllPluginsInRegistryPath_validData
 output: integer (?)
 --------------------------------------------------------------------------------
 testName: registerNamedPlugin_validData
-input pluginName: string
-input pluginPath: string
+input pluginName: string (?)
+input pluginPath: string (?)
 output: boolean (?)
 
 testName: registerNamedPlugin_inValidPluginNameString
-input pluginName: string
-input pluginPath: string
+input pluginName: string (dfxg24346dfg)
+input pluginPath: string (?)
 output: ?
 
 testName: registerNamedPlugin_inValidPluginPathString
-input pluginName: string
-input pluginPath: string
+input pluginName: string (?)
+input pluginPath: string (&)
 output: ?
 
 testName: registerNamedPlugin_inValidPluginNameInteger
 input pluginName: integer (123)
-input pluginPath: string
+input pluginPath: string (?)
 output: ?
 
 testName: registerNamedPlugin_inValidPluginNameBoolean
 input pluginName: boolean (false)
-input pluginPath: string
+input pluginPath: string (?)
 output: ?
 
 testName: registerNamedPlugin_inValidPluginPathInteger
-input pluginName: string
+input pluginName: string (?)
 input pluginPath: integer (123)
 output: ?
 
 testName: registerNamedPlugin_inValidPluginPathBoolean
-input pluginName: string
+input pluginName: string (?)
 input pluginPath: boolean (false)
 output: ?
 
 testName: registerNamedPlugin_inValidPluginNameUndefined
 input pluginName: undefined
-input pluginPath: string
+input pluginPath: string (?)
 output: ?
 
 testName: registerNamedPlugin_inValidPluginNameNaN
 input pluginName: NaN
-input pluginPath: string
+input pluginPath: string (?)
 output: ?
 
 testName: registerNamedPlugin_inValidPluginPathUndefined
-input pluginName: string
+input pluginName: string (?)
 input pluginPath: undefined
 output: ?
 
 testName: registerNamedPlugin_inValidPluginPathNaN
-input pluginName: string
+input pluginName: string (?)
 input pluginPath: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: unregisterNamedPlugin_validData
-input pluginName: string
+input pluginName: string (?)
 output: boolean (?)
 
 testName: unregisterNamedPlugin_inValidPluginNameString
-input pluginName: string
+input pluginName: string (dfxg24346dfg)
 output: ?
 
 testName: unregisterNamedPlugin_inValidPluginNameInteger
@@ -147,11 +147,11 @@ input pluginName: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: unregisterPlugins_validData
-input pluginListArray: array<string>
+input pluginListArray: array<string> (?)
 output: boolean (?)
 
 testName: unregisterPlugins_inValidPluginListArrayString
-input pluginListArray: string
+input pluginListArray: string (dfxg24346dfg)
 output: ?
 
 testName: unregisterPlugins_inValidPluginListArrayInteger
@@ -180,11 +180,11 @@ testName: savePluginRegistryDisk_validData
 output: boolean (?)
 --------------------------------------------------------------------------------
 testName: loadAllPluginsMetaData_validData
-input pluginsPaths: array<string>
+input pluginsPaths: array<string> (?)
 output: array<string> (?)
 
 testName: loadAllPluginsMetaData_inValidPluginsPathsString
-input pluginsPaths: string
+input pluginsPaths: string (dfxg24346dfg)
 output: ?
 
 testName: loadAllPluginsMetaData_inValidPluginsPathsInteger
@@ -204,121 +204,121 @@ input pluginsPaths: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: loadAllPluginsExecutionPaths_validData
-input pluginsMetaData: array<object>
-input pluginsPaths: array<string>
+input pluginsMetaData: array<object> (?)
+input pluginsPaths: array<string> (?)
 output: array<string> (?)
 
 testName: loadAllPluginsExecutionPaths_inValidPluginsMetaDataString
-input pluginsMetaData: string
-input pluginsPaths: array<string>
+input pluginsMetaData: string (dfxg24346dfg)
+input pluginsPaths: array<string> (?)
 output: ?
 
 testName: loadAllPluginsExecutionPaths_inValidPluginsPathsString
-input pluginsMetaData: array<object>
-input pluginsPaths: string
+input pluginsMetaData: array<object> (?)
+input pluginsPaths: string (&)
 output: ?
 
 testName: loadAllPluginsExecutionPaths_inValidPluginsMetaDataInteger
 input pluginsMetaData: integer (123)
-input pluginsPaths: array<string>
+input pluginsPaths: array<string> (?)
 output: ?
 
 testName: loadAllPluginsExecutionPaths_inValidPluginsMetaDataBoolean
 input pluginsMetaData: boolean (false)
-input pluginsPaths: array<string>
+input pluginsPaths: array<string> (?)
 output: ?
 
 testName: loadAllPluginsExecutionPaths_inValidPluginsPathsInteger
-input pluginsMetaData: array<object>
+input pluginsMetaData: array<object> (?)
 input pluginsPaths: integer (123)
 output: ?
 
 testName: loadAllPluginsExecutionPaths_inValidPluginsPathsBoolean
-input pluginsMetaData: array<object>
+input pluginsMetaData: array<object> (?)
 input pluginsPaths: boolean (false)
 output: ?
 
 testName: loadAllPluginsExecutionPaths_inValidPluginsMetaDataUndefined
 input pluginsMetaData: undefined
-input pluginsPaths: array<string>
+input pluginsPaths: array<string> (?)
 output: ?
 
 testName: loadAllPluginsExecutionPaths_inValidPluginsMetaDataNaN
 input pluginsMetaData: NaN
-input pluginsPaths: array<string>
+input pluginsPaths: array<string> (?)
 output: ?
 
 testName: loadAllPluginsExecutionPaths_inValidPluginsPathsUndefined
-input pluginsMetaData: array<object>
+input pluginsMetaData: array<object> (?)
 input pluginsPaths: undefined
 output: ?
 
 testName: loadAllPluginsExecutionPaths_inValidPluginsPathsNaN
-input pluginsMetaData: array<object>
+input pluginsMetaData: array<object> (?)
 input pluginsPaths: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: loadAllPlugins_validData
-input pluginsExecutionPaths: array<string>
-input pluginsMetaData: array<object>
+input pluginsExecutionPaths: array<string> (?)
+input pluginsMetaData: array<object> (?)
 output: object (?)
 
 testName: loadAllPlugins_inValidPluginsExecutionPathsString
-input pluginsExecutionPaths: string
-input pluginsMetaData: array<object>
+input pluginsExecutionPaths: string (dfxg24346dfg)
+input pluginsMetaData: array<object> (?)
 output: ?
 
 testName: loadAllPlugins_inValidPluginsMetaDataString
-input pluginsExecutionPaths: array<string>
-input pluginsMetaData: string
+input pluginsExecutionPaths: array<string> (?)
+input pluginsMetaData: string (dfxg24346dfg)
 output: ?
 
 testName: loadAllPlugins_inValidPluginsExecutionPathsInteger
 input pluginsExecutionPaths: integer (123)
-input pluginsMetaData: array<object>
+input pluginsMetaData: array<object> (?)
 output: ?
 
 testName: loadAllPlugins_inValidPluginsExecutionPathsBoolean
 input pluginsExecutionPaths: boolean (false)
-input pluginsMetaData: array<object>
+input pluginsMetaData: array<object> (?)
 output: ?
 
 testName: loadAllPlugins_inValidPluginsMetaDataInteger
-input pluginsExecutionPaths: array<string>
+input pluginsExecutionPaths: array<string> (?)
 input pluginsMetaData: integer (123)
 output: ?
 
 testName: loadAllPlugins_inValidPluginsMetaDataBoolean
-input pluginsExecutionPaths: array<string>
+input pluginsExecutionPaths: array<string> (?)
 input pluginsMetaData: boolean (false)
 output: ?
 
 testName: loadAllPlugins_inValidPluginsExecutionPathsUndefined
 input pluginsExecutionPaths: undefined
-input pluginsMetaData: array<object>
+input pluginsMetaData: array<object> (?)
 output: ?
 
 testName: loadAllPlugins_inValidPluginsExecutionPathsNaN
 input pluginsExecutionPaths: NaN
-input pluginsMetaData: array<object>
+input pluginsMetaData: array<object> (?)
 output: ?
 
 testName: loadAllPlugins_inValidPluginsMetaDataUndefined
-input pluginsExecutionPaths: array<string>
+input pluginsExecutionPaths: array<string> (?)
 input pluginsMetaData: undefined
 output: ?
 
 testName: loadAllPlugins_inValidPluginsMetaDataNaN
-input pluginsExecutionPaths: array<string>
+input pluginsExecutionPaths: array<string> (?)
 input pluginsMetaData: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: integrateAllPluginsData_validData
-input allPluginsData: object
+input allPluginsData: object (?)
 output: boolean (?)
 
 testName: integrateAllPluginsData_inValidAllPluginsDataString
-input allPluginsData: string
+input allPluginsData: string (dfxg24346dfg)
 output: ?
 
 testName: integrateAllPluginsData_inValidAllPluginsDataInteger
@@ -338,57 +338,57 @@ input allPluginsData: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: integratePluginData_validData
-input pluginName: string
-input pluginData: object
+input pluginName: string (?)
+input pluginData: object (?)
 output: boolean (?)
 
 testName: integratePluginData_inValidPluginNameString
-input pluginName: string
-input pluginData: object
+input pluginName: string (dfxg24346dfg)
+input pluginData: object (?)
 output: ?
 
 testName: integratePluginData_inValidPluginDataString
-input pluginName: string
-input pluginData: string
+input pluginName: string (?)
+input pluginData: string (dfxg24346dfg)
 output: ?
 
 testName: integratePluginData_inValidPluginNameInteger
 input pluginName: integer (123)
-input pluginData: object
+input pluginData: object (?)
 output: ?
 
 testName: integratePluginData_inValidPluginNameBoolean
 input pluginName: boolean (false)
-input pluginData: object
+input pluginData: object (?)
 output: ?
 
 testName: integratePluginData_inValidPluginDataInteger
-input pluginName: string
+input pluginName: string (?)
 input pluginData: integer (123)
 output: ?
 
 testName: integratePluginData_inValidPluginDataBoolean
-input pluginName: string
+input pluginName: string (?)
 input pluginData: boolean (false)
 output: ?
 
 testName: integratePluginData_inValidPluginNameUndefined
 input pluginName: undefined
-input pluginData: object
+input pluginData: object (?)
 output: ?
 
 testName: integratePluginData_inValidPluginNameNaN
 input pluginName: NaN
-input pluginData: object
+input pluginData: object (?)
 output: ?
 
 testName: integratePluginData_inValidPluginDataUndefined
-input pluginName: string
+input pluginName: string (?)
 input pluginData: undefiend
 output: ?
 
 testName: integratePluginData_inValidPluginDataNaN
-input pluginName: string
+input pluginName: string (?)
 input pluginData: NaN
 output: ?
 --------------------------------------------------------------------------------
@@ -396,11 +396,11 @@ testName: verifyAllPluginsLoaded_validData
 output: boolean (?)
 --------------------------------------------------------------------------------
 testName: unloadPlugin_validData
-input pluginName: string
+input pluginName: string (?)
 output: boolean (?)
 
 testName: unloadPlugin_inValidPluginNameString
-input pluginName: string
+input pluginName: string (dfxg24346dfg)
 output: ?
 
 testName: unloadPlugin_inValidPluginNameInteger

@@ -452,7 +452,7 @@ input: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: removePluginCommands_validData
-input pluginName: string
+input pluginName: string (?)
 output: boolean (?)
 
 testName: removePluginCommands_inValidString
@@ -476,7 +476,7 @@ input pluginName: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: removePluginCommandAliases_validData
-input pluginName: string
+input pluginName: string (?)
 output: boolean (?)
 
 testName: removePluginCommandAliases_inValidString
