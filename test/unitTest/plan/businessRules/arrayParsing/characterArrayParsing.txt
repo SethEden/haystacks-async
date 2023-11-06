@@ -147,22 +147,22 @@ input inputData: object ({"constants":"c,const","Generator":"g,gen,genrtr","List
 input inputMetaData: array<string|boolean|integer|object> (The array that should be searched for the specified character/value/etc...) (testDataObject)
 output: ?
 
-testName: removeCharacterFromArray_validDataInputDataString
+testName: removeCharacterFromArray_validDataInputMetaDataString
 input inputData: string|boolean|integer|object (The character that should be searched for in the array of elements) (testDataString)
 input inputMetaData: string (dfxg24346dfg)
 output: ?
 
-testName: removeCharacterFromArray_validDataInputDataInteger
+testName: removeCharacterFromArray_validDataInputMetaDataInteger
 input inputData: string|boolean|integer|object (The character that should be searched for in the array of elements) (testDataInteger)
 input inputMetaData: integer (23456)
 output: ?
 
-testName: removeCharacterFromArray_validDataInputDataBoolean
+testName: removeCharacterFromArray_validDataInputMetaDataBoolean
 input inputData: string|boolean|integer|object (The character that should be searched for in the array of elements) (testDataBoolean)
 input inputMetaData: boolean (false)
 output: ?
 
-testName: removeCharacterFromArray_validDataInputDataObject
+testName: removeCharacterFromArray_validDataInputMetaDataObject
 input inputData: string|boolean|integer|object (The character that should be searched for in the array of elements) (testDataObject)
 input inputMetaData: object ({"constants":"c,const","Generator":"g,gen,genrtr","List":"l,lst"})
 output: ?
@@ -177,12 +177,12 @@ input inputData: NaN
 input inputMetaData: array<string|boolean|integer|object> (The array that should be searched for the specified character/value/etc...) (inValidDataToStoreNaN)
 output: ?
 
-testName: removeCharacterFromArray_inValidInputDataUndefined
+testName: removeCharacterFromArray_inValidInputMetaDataUndefined
 input inputData: string|boolean|integer|object (The character that should be searched for in the array of elements) (inValidDataToStoreUndefined)
 input inputMetaData: undefined
 output: ?
 
-testName: removeCharacterFromArray_inValidInputDataNaN
+testName: removeCharacterFromArray_inValidInputMetaDataNaN
 input inputData: string|boolean|integer|object (The character that should be searched for in the array of elements) (inValidDataToStoreNaN)
 input inputMetaData: NaN
 output: ?

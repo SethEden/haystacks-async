@@ -11,23 +11,23 @@ testName: addClientCommands_validData
 input clientCommands: object (?)
 output: void
 
-testName: addClientCommands_inValidString
+testName: addClientCommands_inValidClientCommandsString
 input clientCommands: string (dfxg24346dfg)
 output: void
 
-testName: addClientCommands_inValidInteger
+testName: addClientCommands_inValidClientCommandsInteger
 input clientCommands: integer (123)
 output: void
 
-testName: addClientCommands_inValidBoolean
+testName: addClientCommands_inValidClientCommandsBoolean
 input clientCommands: boolean (false)
 output: void
 
-testName: addClientCommands_inValidUndefined
+testName: addClientCommands_inValidClientCommandsUndefined
 input clientCommands: undefined
 output: void
 
-testName: addClientCommands_inValidNaN
+testName: addClientCommands_inValidClientCommandsNaN
 input clientCommands: NaN
 output: void
 --------------------------------------------------------------------------------
