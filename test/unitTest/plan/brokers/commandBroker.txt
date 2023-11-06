@@ -8,19 +8,27 @@ testName: resetCommands_validData
 output: ?
 --------------------------------------------------------------------------------
 testName: addClientCommands_validData
-input: array<object> (?)
+input clientCommands: array<object> (?)
 output: D[wrd.cCommands] - objects added
 
-testName: addClientCommands_inValidString
-input: string (464gsdsfae8f46)
+testName: addClientCommands_inValidClientCommandsString
+input clientCommands: string (464gsdsfae8f46)
 output: ?
 
-testName: addClientCommands_inValidNumber
-input: integer (546)
+testName: addClientCommands_inValidClientCommandsNumber
+input clientCommands: integer (546)
 output: ?
 
-testName: addClientCommands_inValidBoolean
-input: boolean (false)
+testName: addClientCommands_inValidClientCommandsBoolean
+input clientCommands: boolean (false)
+output: ?
+
+testName: addClientCommands_inValidClientCommandsUndefined
+input clientCommands: undefined
+output: ?
+
+testName: addClientCommands_inValidClientCommandsNaN
+input clientCommands: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: addPluginCommands_validData
@@ -28,9 +36,14 @@ input pluginName: string (?)
 input pluginCommands: D[wrd.cCommands] (?)
 output: boolean (?)
 
-testName: addPluginCommands_inValidString
+testName: addPluginCommands_inValidPluginNameString
 input pluginName: string (464gsdsfae8f46)
 input pluginCommands: D[wrd.cCommands] (?)
+output: ?
+
+testName: addPluginCommands_inValidPluginCommandsString
+input pluginName: string (?)
+input pluginCommands: string (&)
 output: ?
 
 testName: addPluginCommands_inValidPluginNameNumber
@@ -78,7 +91,7 @@ input pluginName: string (?)
 input pluginComandAliases: D[sys.cCommandsAliases][wrd.cPlugins][pluginName] (?)
 output: boolean (?)
 
-testName: addPluginCommandAliases_inValidString
+testName: addPluginCommandAliases_inValidPluginNameString
 input pluginName: string (464gsdsfae8f46)
 input pluginCommandAliases: string (?)
 output: ?
@@ -133,7 +146,7 @@ input commandString: string (commandSequencer name,application,true version abou
 input commandDelimiter: string (  - space)
 output: commandSequencer name,application,true version about
 
-testName: getValidCommand_inValidString
+testName: getValidCommand_inValidCommandStringString
 input commandString: string (464gsdsfae8f46)
 input commandDelimiter: string (  - space)
 output: ?
@@ -143,12 +156,12 @@ input commandString: string (commandSequencer name,application,true version abou
 input commandDelimiter: string (&)
 output: ?
 
-testName: getValidCommand_inValidNumber
+testName: getValidCommand_inValidCommandStringNumber
 input commandString: integer (546)
 input commandDelimiter: string (  - space)
 output: ?
 
-testName: getValidCommand_inValidBoolean
+testName: getValidCommand_inValidCommandStringBoolean
 input commandString: boolean (false)
 input commandDelimiter: string (  - space)
 output: ?
@@ -163,12 +176,12 @@ input commandString: string (commandSequencer name,application,true version abou
 input commandDelimiter: boolean (false)
 output: ?
 
-testName: getValidCommand_inValidUndefined
+testName: getValidCommand_inValidCommandStringUndefined
 input commandString: undefined
 input commandDelimiter: string (  - space)
 output: ?
 
-testName: getValidCommand_inValidNaN
+testName: getValidCommand_inValidCommandStringNaN
 input commandString: NaN
 input commandDelimiter: string (  - space)
 output: ?
@@ -294,27 +307,27 @@ input commandAliasName: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: getAllCommandAliasData_validData
-input: commandString: object (?)
+input commandAliasDataStructure: object (?)
 output: array<string>|boolean (?)
 
-testName: getAllCommandAliasData_inValidString
-input: string (464gsdsfae8f46)
+testName: getAllCommandAliasData_inValidCommandAliasDataStructureString
+input commandAliasDataStructure: string (464gsdsfae8f46)
 output: ?
 
-testName: getAllCommandAliasData_inValidNumber
-input: integer (546)
+testName: getAllCommandAliasData_inValidCommandAliasDataStructureNumber
+input commandAliasDataStructure: integer (546)
 output: ?
 
-testName: getAllCommandAliasData_inValidBoolean
-input: boolean (false)
+testName: getAllCommandAliasData_inValidCommandAliasDataStructureBoolean
+input commandAliasDataStructure: boolean (false)
 output: ?
 
-testName: getAllCommandAliasData_inValidUndefined
-input: undefined
+testName: getAllCommandAliasData_inValidCommandAliasDataStructureUndefined
+input commandAliasDataStructure: undefined
 output: ?
 
-testName: getAllCommandAliasData_inValidNaN
-input: NaN
+testName: getAllCommandAliasData_inValidCommandAliasDataStructureNaN
+input commandAliasDataStructure: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: getCommandNamespaceDataObject_validData
@@ -377,7 +390,7 @@ input commandString: string (commandSequencer name,application,true version abou
 input commandDelimiter: string (  - space)
 output: array<boolean|string|integer> ([name,application,true version about])
 
-testName: getCommandArgs_inValidString
+testName: getCommandArgs_inValidCommandStringString
 input commandString: string (464gsdsfae8f46)
 input commandDelimiter: string (  - space)
 output: ?
@@ -387,12 +400,12 @@ input commandString: string (commandSequencer name,application,true version abou
 input commandDelimiter: string (&)
 output: ?
 
-testName: getCommandArgs_inValidNumber
+testName: getCommandArgs_inValidCommandStringNumber
 input commandString: integer (546)
 input commandDelimiter: string (  - space)
 output: ?
 
-testName: getCommandArgs_inValidBoolean
+testName: getCommandArgs_inValidCommandStringBoolean
 input commandString: boolean (false)
 input commandDelimiter: string (  - space)
 output: ?
@@ -407,12 +420,12 @@ input commandString: string (commandSequencer name,application,true version abou
 input commandDelimiter: boolean (false)
 output: ?
 
-testName: getCommandArgs_inValidUndefined
+testName: getCommandArgs_inValidCommandStringUndefined
 input commandString: undefined
 input commandDelimiter: string (  - space)
 output: ?
 
-testName: getCommandArgs_inValidNaN
+testName: getCommandArgs_inValidCommandStringNaN
 input commandString: NaN
 input commandDelimiter: string (  - space)
 output: ?
@@ -431,47 +444,47 @@ testName: executeCommand_validData
 input: commandString: string (commandSequencer name,application,true version about)
 output: array<boolean,string|integer|boolean|object|array> (true)
 
-testName: executeCommand_inValidString
-input: string (464gsdsfae8f46)
+testName: executeCommand_inValidCommandStringString
+input commandString: string (464gsdsfae8f46)
 output: ?
 
-testName: executeCommand_inValidNumber
-input: integer (546)
+testName: executeCommand_inValidCommandStringNumber
+input commandString: integer (546)
 output: ?
 
-testName: executeCommand_inValidBoolean
-input: boolean (false)
+testName: executeCommand_inValidCommandStringBoolean
+input commandString: boolean (false)
 output: ?
 
-testName: executeCommand_inValidundefiend
-input: undefined
+testName: executeCommand_inValidCommandStringUndefiend
+input commandString: undefined
 output: ?
 
-testName: executeCommand_inValidNaN
-input: NaN
+testName: executeCommand_inValidCommandStringNaN
+input commandString: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: removePluginCommands_validData
 input pluginName: string (?)
 output: boolean (?)
 
-testName: removePluginCommands_inValidString
+testName: removePluginCommands_inValidPluginNameString
 input pluginName: string (464gsdsfae8f46)
 output: ?
 
-testName: removePluginCommands_inValidNumber
+testName: removePluginCommands_inValidPluginNameNumber
 input pluginName: number (123)
 output: ?
 
-testName: removePluginCommands_inValidBoolean
+testName: removePluginCommands_inValidPluginNameBoolean
 input pluginName: boolean (false)
 output: ?
 
-testName: removePluginCommands_inValidUndefined
+testName: removePluginCommands_inValidPluginNameUndefined
 input pluginName: undeinfed
 output: ?
 
-testName: removePluginCommands_inValidNaN
+testName: removePluginCommands_inValidPluginNameNaN
 input pluginName: NaN
 output: ?
 --------------------------------------------------------------------------------
@@ -479,22 +492,22 @@ testName: removePluginCommandAliases_validData
 input pluginName: string (?)
 output: boolean (?)
 
-testName: removePluginCommandAliases_inValidString
+testName: removePluginCommandAliases_inValidPluginNameString
 input pluginName: string (464gsdsfae8f46)
 output: ?
 
-testName: removePluginCommandAliases_inValidNumber
+testName: removePluginCommandAliases_inValidPluginNameNumber
 input pluginName: number (123)
 output: ?
 
-testName: removePluginCommandAliases_inValidBoolean
+testName: removePluginCommandAliases_inValidPluginNameBoolean
 input pluginName: boolean (false)
 output: ?
 
-testName: removePluginCommandAliases_inValidUndefined
+testName: removePluginCommandAliases_inValidPluginNameUndefined
 input pluginName: undeinfed
 output: ?
 
-testName: removePluginCommandAliases_inValidNaN
+testName: removePluginCommandAliases_inValidPluginNameNaN
 input pluginName: NaN
 output: ?

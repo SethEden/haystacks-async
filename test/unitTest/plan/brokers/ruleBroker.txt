@@ -12,23 +12,23 @@ testName: addClientRules_validData
 input clientRules: array<object>
 output: cient rules that merged with the system rules.
 
-testName: addClientRules_inValidString
+testName: addClientRules_inValidClientRulesString
 input clientRules: string (464gsdsfae8f46)
 output: ?
 
-testName: addClientRules_inValidNumber
+testName: addClientRules_inValidClientRulesNumber
 input clientRules: integer (546)
 output: ?
 
-testName: addClientRules_inValidBoolean
+testName: addClientRules_inValidClientRulesBoolean
 input clientRules: boolean (false)
 output: ?
 
-testName: addClientRules_inValidUndefined
+testName: addClientRules_inValidClientRulesUndefined
 input clientRules: undefined
 output: ?
 
-testName: addClientRules_inValidNaN
+testName: addClientRules_inValidClientRulesNaN
 input clientRules: NaN
 output: ?
 --------------------------------------------------------------------------------
@@ -37,7 +37,7 @@ input pluginName: string (?)
 input pluginRules: array<object> (?)
 output: boolean (?)
 
-testName: addPluginRules_inValidString
+testName: addPluginRules_inValidPluginNameString
 input pluginName: string (464gsdsfae8f46)
 input pluginRules: array<object> (?)
 output: ?
@@ -47,12 +47,12 @@ input plguinName: string (?)
 input pluginRules: string (&)
 output: ?
 
-testName: addPluginRules_inValidNumber
+testName: addPluginRules_inValidPluginNameNumber
 input pluginName: integer (123)
 input pluginRules: array<object> (?)
 output: ?
 
-testName: addPluginRules_inValidBoolean
+testName: addPluginRules_inValidPluginNameBoolean
 input pluginName: boolean (false)
 input pluginRules: array<object> (?)
 output: ?
@@ -67,12 +67,12 @@ input plguinName: string (?)
 input pluginRules: boolean (false)
 output: ?
 
-testName: addPluginRules_inValidUndefined
+testName: addPluginRules_inValidPluginNameUndefined
 input pluginName: undefined
 input pluginRules: array<object> (?)
 output: ?
 
-testName: addPluginRules_inValidNaN
+testName: addPluginRules_inValidPluginNameNaN
 input pluginName: NaN
 input pluginRules: array<object> (?)
 output: ?
@@ -92,7 +92,7 @@ input inputs: array<string|integer|boolean|object|function,string|integer|boolea
 input rulesToExecute: array<string> (?)
 output: string|integer|boolean|object|function (?)
 
-testName: processRules_inValidString
+testName: processRules_inValidInputsString
 input inputs: string (464gsdsfae8f46)
 input rulesToExecute: array<string> (?)
 output: ?
@@ -146,22 +146,22 @@ testName: removePluginBusinessRules_validData
 input pluginName: string (?)
 output: boolean (?)
 
-testName: removePluginBusinessRules_inValidString
+testName: removePluginBusinessRules_inValidPluginNameString
 input pluginName: string (464gsdsfae8f46)
 output: ?
 
-testName: removePluginBusinessRules_inValidInteger
+testName: removePluginBusinessRules_inValidPluginNameInteger
 input pluginName: integer (123)
 output: ?
 
-testName: removePluginBusinessRules_inValidBoolean
+testName: removePluginBusinessRules_inValidPluginNameBoolean
 input pluginName: boolean (false)
 output: ?
 
-testName: removePluginBusinessRules_inValidUndefined
+testName: removePluginBusinessRules_inValidPluginNameUndefined
 input pluginName: undefined
 output: ?
 
-testName: removePluginBusinessRules_inValidNaN
+testName: removePluginBusinessRules_inValidPluginNameNaN
 input pluginName: NaN
 output: ?

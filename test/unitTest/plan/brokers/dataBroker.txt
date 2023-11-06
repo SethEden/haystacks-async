@@ -59,24 +59,24 @@ testName: scanDataPath_validData
 input dataPath: C:\haystacks\src\resources\configuration\debugSettings
 output: [array of files & paths]
 
-testName: scanDataPath_inValidString
-input: string (464gsdsfae8f46)
+testName: scanDataPath_inValidDataPathString
+input dataPath: string (464gsdsfae8f46)
 output: empty array
 
-testName: scanDataPath_inValidNumber
-input: integer (546)
+testName: scanDataPath_inValidDataPathNumber
+input dataPath: integer (546)
 output: empty array
 
-testName: scanDataPath_inValidBoolean
-input: boolean (false)
+testName: scanDataPath_inValidDataPathBoolean
+input dataPath: boolean (false)
 output: empty array
 
-testName: scanDataPath_inValidUndefined
-input: undefined
+testName: scanDataPath_inValidDataPathUndefined
+input dataPath: undefined
 output: empty array
 
-testName: scanDataPath_inValidNaN
-input: NaN
+testName: scanDataPath_inValidDataPathNaN
+input dataPath: NaN
 output: empty array
 --------------------------------------------------------------------------------
 testName: findUniversalDebugConfigSetting_validData
@@ -84,7 +84,7 @@ input appConfigFilesToLoad: array [C:\haystacks\test\unitTest\testData\applicati
 input frameworkConfigFilesToLoad: array [C:\haystacks\test\unitTest\testData\framework.system.json]
 output: boolean (true)
 
-testName: findUniversalDebugConfigSetting_inValidString
+testName: findUniversalDebugConfigSetting_inValidAppConfigFilesToLoadString
 input appConfigFilesToLoad: string (464gsdsfae8f46)
 input frameworkConfigFilesToLoad: string (  - space)
 output: ?
@@ -94,12 +94,12 @@ input appConfigFilesToLoad: array [C:\haystacks\test\unitTest\testData\applicati
 input frameworkConfigFilesToLoad: string (&)
 output: ?
 
-testName: findUniversalDebugConfigSetting_inValidNumber
+testName: findUniversalDebugConfigSetting_inValidAppConfigFilesToLoadNumber
 input appConfigFilesToLoad: integer (546)
 input frameworkConfigFilesToLoad: string (  - space)
 output: ?
 
-testName: findUniversalDebugConfigSetting_inValidBoolean
+testName: findUniversalDebugConfigSetting_inValidAppConfigFilesToLoadBoolean
 input appConfigFilesToLoad: boolean (false)
 input frameworkConfigFilesToLoad: string (  - space)
 output: ?
@@ -114,12 +114,12 @@ input appConfigFilesToLoad: array [C:\haystacks\test\unitTest\testData\applicati
 input frameworkConfigFilesToLoad: boolean (false)
 output: ?
 
-testName: findUniversalDebugConfigSetting_inValidUndefined
+testName: findUniversalDebugConfigSetting_inValidAppConfigFilesToLoadUndefined
 input appConfigFilesToLoad: undefined
 input frameworkConfigFilesToLoad: string (  - space)
 output: ?
 
-testName: findUniversalDebugConfigSetting_inValidNaN
+testName: findUniversalDebugConfigSetting_inValidAppConfigFilesToLoadNaN
 input appConfigFilesToLoad: NaN
 input frameworkConfigFilesToLoad: string (  - space)
 output: ?
@@ -138,23 +138,23 @@ testName: findIndividualDebugConfigSetting_validData
 input filesToLoad: array [C:\haystacks\test\unitTest\testData\config.json]
 output: boolean (true)
 
-testName: findIndividualDebugConfigSetting_inValidString
+testName: findIndividualDebugConfigSetting_inValidFilesToLoadString
 input filesToLoad: string (464gsdsfae8f46)
 output: ?
 
-testName: findIndividualDebugConfigSetting_inValidNumber
+testName: findIndividualDebugConfigSetting_inValidFilesToLoadNumber
 input filesToLoad: integer (546)
 output: ?
 
-testName: findIndividualDebugConfigSetting_inValidBoolean
+testName: findIndividualDebugConfigSetting_inValidFilesToLoadBoolean
 input filesToLoad: boolean (false)
 output: ?
 
-testName: findIndividualDebugConfigSetting_inValidUndefined
+testName: findIndividualDebugConfigSetting_inValidFilesToLoadUndefined
 input filesToLoad: undefined
 output: ?
 
-testName: findIndividualDebugConfigSetting_inValidNaN
+testName: findIndividualDebugConfigSetting_inValidFilesToLoadNaN
 input filesToLoad: NaN
 output: ?
 --------------------------------------------------------------------------------
@@ -163,7 +163,7 @@ input filesToLoad: array [C:\haystacks\test\unitTest\testData\test.csv]
 input contextName: string (  - space)
 output: object (the JSON data from test.csv)
 
-testName: loadAllCsvData_inValidString
+testName: loadAllCsvData_inValidFilesToLoadString
 input filesToLoad: string (464gsdsfae8f46)
 input contextName: string (  - space)
 output: ?
@@ -173,12 +173,12 @@ input filesToLoad: array [C:\haystacks\test\unitTest\testData\test.csv]
 input contextName: string (&)
 output: ?
 
-testName: loadAllCsvData_inValidNumber
+testName: loadAllCsvData_inValidFilesToLoadNumber
 input filesToLoad: integer (546)
 input contextName: string (  - space)
 output: ?
 
-testName: loadAllCsvData_inValidBoolean
+testName: loadAllCsvData_inValidFilesToLoadBoolean
 input filesToLoad: boolean (false)
 input contextName: string (  - space)
 output: ?
@@ -193,12 +193,12 @@ input filesToLoad: array [C:\haystacks\test\unitTest\testData\test.csv]
 input contextName: boolean (false)
 output: ?
 
-testName: loadAllCsvData_inValidUndefined
+testName: loadAllCsvData_inValidFilesToLoadUndefined
 input filesToLoad: undefined
 input contextName: string (  - space)
 output: ?
 
-testName: loadAllCsvData_inValidNaN
+testName: loadAllCsvData_inValidFilesToLoadNaN
 input filesToLoad: NaN
 input contextName: string (  - space)
 output: ?
@@ -218,7 +218,7 @@ input filesToLoad: array [C:\haystacks\test\unitTest\testData\system.xml]
 input contextName: string (  - space)
 output: object (the JSON data from system.xml)
 
-testName: loadedAllXmlData_inValidString
+testName: loadedAllXmlData_inValidFilesToLoadString
 input filesToLoad: string (464gsdsfae8f46)
 input contextName: string (  - space)
 output: ?
@@ -228,12 +228,12 @@ input filesToLoad: array [C:\haystacks\test\unitTest\testData\system.xml]
 input contextName: string (&)
 output: ?
 
-testName: loadedAllXmlData_inValidNumber
+testName: loadedAllXmlData_inValidFilesToLoadNumber
 input filesToLoad: integer (546)
 input contextName: string (  - space)
 output: ?
 
-testName: loadedAllXmlData_inValidBoolean
+testName: loadedAllXmlData_inValidFilesToLoadBoolean
 input filesToLoad: boolean (false)
 input contextName: string (  - space)
 output: ?
@@ -248,12 +248,12 @@ input filesToLoad: array [C:\haystacks\test\unitTest\testData\system.xml]
 input contextName: boolean (false)
 output: ?
 
-testName: loadedAllXmlData_inValidUndefined
+testName: loadedAllXmlData_inValidFilesToLoadUndefined
 input filesToLoad: undefined
 input contextName: string (  - space)
 output: ?
 
-testName: loadedAllXmlData_inValidNaN
+testName: loadedAllXmlData_inValidFilesToLoadNaN
 input filesToLoad: NaN
 input contextName: string (  - space)
 output: ?
@@ -273,7 +273,7 @@ input filesToLoad: array [C:\haystacks\test\unitTest\testData\config.json]
 input contextName: string (  - space)
 output: object (the JSON data from testHarness.json)
 
-testName: loadAllJsonData_inValidString
+testName: loadAllJsonData_inValidFilesToLoadString
 input filesToLoad: string (464gsdsfae8f46)
 input contextName: string (  - space)
 output: ?
@@ -283,12 +283,12 @@ input filesToLoad: array [C:\haystacks\test\unitTest\testData\config.json]
 input contextName: string (&)
 output: ?
 
-testName: loadAllJsonData_inValidNumber
+testName: loadAllJsonData_inValidFilesToLoadNumber
 input filesToLoad: integer (546)
 input contextName: string (  - space)
 output: ?
 
-testName: loadAllJsonData_inValidBoolean
+testName: loadAllJsonData_inValidFilesToLoadBoolean
 input filesToLoad: boolean (false)
 input contextName: string (  - space)
 output: ?
@@ -303,12 +303,12 @@ input filesToLoad: array [C:\haystacks\test\unitTest\testData\config.json]
 input contextName: boolean (false)
 output: ?
 
-testName: loadAllJsonData_inValidUndefined
+testName: loadAllJsonData_inValidFilesToLoadUndefined
 input filesToLoad: undefined
 input contextName: string (  - space)
 output: ?
 
-testName: loadAllJsonData_inValidNaN
+testName: loadAllJsonData_inValidFilesToLoadNaN
 input filesToLoad: NaN
 input contextName: string (  - space)
 output: ?
@@ -328,7 +328,7 @@ input data: object [C:\haystacks\test\unitTest\testData\test.csv]
 input contextName: string (pageData)
 output: object (the clean and ready to go JSON data from test.csv)
 
-testName: processCsvData_inValidString
+testName: processCsvData_inValidDataString
 input data: string (464gsdsfae8f46)
 input contextName: string (pageData)
 output: ?
@@ -338,12 +338,12 @@ input data: object [C:\haystacks\test\unitTest\testData\test.csv]
 input contextName: string (&)
 output: ?
 
-testName: processCsvData_inValidNumber
+testName: processCsvData_inValidDataNumber
 input data: integer (546)
 input contextName: string (pageData)
 output: ?
 
-testName: processCsvData_inValidBoolean
+testName: processCsvData_inValidDataBoolean
 input data: boolean (false)
 input contextName: string (pageData)
 output: ?
@@ -358,12 +358,12 @@ input data: object [C:\haystacks\test\unitTest\testData\test.csv]
 input contextName: boolean (false)
 output: ?
 
-testName: processCsvData_inValidUndefined
+testName: processCsvData_inValidDataUndefined
 input data: undefined
 input contextName: string (pageData)
 output: ?
 
-testName: processCsvData_inValidNaN
+testName: processCsvData_inValidDataNaN
 input data: NaN
 input contextName: string (pageData)
 output: ?
@@ -383,7 +383,7 @@ input data: JSON object
 input contextName: string (configuration)
 output: object (the JSON data from testHarness.json)
 
-testName: processXmlData_inValidString
+testName: processXmlData_inValidDataString
 input data: string (464gsdsfae8f46)
 input contextName: string (configuration)
 output: ?
@@ -393,12 +393,12 @@ input data: JSON object
 input contextName: string (&)
 output: ?
 
-testName: processXmlData_inValidNumber
+testName: processXmlData_inValidDataNumber
 input data: integer (546)
 input contextName: string (configuration)
 output: ?
 
-testName: processXmlData_inValidBoolean
+testName: processXmlData_inValidDataBoolean
 input data: boolean (false)
 input contextName: string (configuration)
 output: ?
@@ -413,12 +413,12 @@ input data: JSON object
 input contextName: boolean (false)
 output: ?
 
-testName: processXmlData_inValidUndefined
+testName: processXmlData_inValidDataUndefined
 input data: undefined
 input contextName: string (configuration)
 output: ?
 
-testName: processXmlData_inValidNaN
+testName: processXmlData_inValidDataNaN
 input data: NaN
 input contextName: string (configuration)
 output: ?
@@ -438,7 +438,7 @@ input inputData: JSON object
 input leafNodeName: string (?)
 output: object (the parsed JSON data)
 
-testName: processXmlLeafNode_inValidString
+testName: processXmlLeafNode_inValidInputDataString
 input inputData: string (464gsdsfae8f46)
 input leafNodeName: string (?)
 output: ?
@@ -448,12 +448,12 @@ input inputData: JSON object
 input leafNodeName: string (&)
 output: ?
 
-testName: processXmlLeafNode_inValidNumber
+testName: processXmlLeafNode_inValidInputDataNumber
 input inputData: integer (546)
 input leafNodeName: string (?)
 output: ?
 
-testName: processXmlLeafNode_inValidBoolean
+testName: processXmlLeafNode_inValidInputDataBoolean
 input inputData: boolean (false)
 input leafNodeName: string (?)
 output: ?
@@ -468,12 +468,12 @@ input inputData: JSON object
 input leafNodeName: boolean (false)
 output: ?
 
-testName: processXmlLeafNode_inValidUndefined
+testName: processXmlLeafNode_inValidInputDataUndefined
 input inputData: undefined
 input leafNodeName: string (?)
 output: ?
 
-testName: processXmlLeafNode_inValidNaN
+testName: processXmlLeafNode_inValidInputDataNaN
 input inputData: NaN
 input leafNodeName: string (?)
 output: ?
@@ -489,27 +489,27 @@ input leafNodeName: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: preprocessJsonFile_validData
-input: array [C:\haystacks\test\unitTest\testData\config.json]
+input filesToLoad: array [C:\haystacks\test\unitTest\testData\config.json]
 output: object (JSON)
 
-testName: preprocessJsonFile_inValidString
-input: string (464gsdsfae8f46)
+testName: preprocessJsonFile_inValidFilesToLoadString
+input filesToLoad: string (464gsdsfae8f46)
 output: ?
 
-testName: preprocessJsonFile_inValidNumber
-input: integer (546)
+testName: preprocessJsonFile_inValidFilesToLoadNumber
+input filesToLoad: integer (546)
 output: ?
 
-testName: preprocessJsonFile_inValidBoolean
-input: boolean (false)
+testName: preprocessJsonFile_inValidFilesToLoadBoolean
+input filesToLoad: boolean (false)
 output: ?
 
-testName: preprocessJsonFile_inValidUndefined
-input: Undefined
+testName: preprocessJsonFile_inValidFilesToLoadUndefined
+input filesToLoad: Undefined
 output: ?
 
-testName: preprocessJsonFile_inValidNaN
-input: NaN
+testName: preprocessJsonFile_inValidFilesToLoadNaN
+input filesToLoad: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: writeJsonDataToFile_validData
@@ -517,7 +517,7 @@ input fileToSaveTo: string (C:\haystacks\test\unitTest\testData\writeJsonDataToF
 input dataToWriteOut: object
 output: file written to disk
 
-testName: writeJsonDataToFile_inValidString
+testName: writeJsonDataToFile_inValidFileToSaveToString
 input fileToSaveTo: string (464gsdsfae8f46)
 input dataToWriteOut: object (?)
 output: ?
@@ -527,12 +527,12 @@ input fileToSaveTo: string (C:\haystacks\test\unitTest\testData\writeJsonDataToF
 input dataToWriteOut: string (&)
 output: ?
 
-testName: writeJsonDataToFile_inValidNumber
+testName: writeJsonDataToFile_inValidFileToSaveToNumber
 input fileToSaveTo: integer (546)
 input dataToWriteOut: object (?)
 output: ?
 
-testName: writeJsonDataToFile_inValidBoolean
+testName: writeJsonDataToFile_inValidFileToSaveToBoolean
 input fileToSaveTo: boolean (false)
 input dataToWriteOut: object (?)
 output: ?
@@ -547,12 +547,12 @@ input fileToSaveTo: string (C:\haystacks\test\unitTest\testData\writeJsonDataToF
 input dataToWriteOut: boolean (false)
 output: ?
 
-testName: writeJsonDataToFile_inValidUndefined
+testName: writeJsonDataToFile_inValidFileToSaveToUndefined
 input fileToSaveTo: undefined
 input dataToWriteOut: object (?)
 output: ?
 
-testName: writeJsonDataToFile_inValidNaN
+testName: writeJsonDataToFile_inValidFileToSaveToNaN
 input fileToSaveTo: NaN
 input dataToWriteOut: object (?)
 output: ?
@@ -619,23 +619,23 @@ testName: getData_validData
 input dataStorageContextName: string (testDataString)
 output: object
 
-testName: getData_inValidString
+testName: getData_inValidDataStorageContextNameString
 input dataStorageContextName: string (464gsdsfae8f46)
 output: ?
 
-testName: getData_inValidNumber
+testName: getData_inValidDataStorageContextNameNumber
 input dataStorageContextName: integer (546)
 output: ?
 
-testName: getData_inValidBoolean
+testName: getData_inValidDataStorageContextNameBoolean
 input dataStorageContextName: boolean (false)
 output: ?
 
-testName: getData_inValidUndefined
+testName: getData_inValidDataStorageContextNameUndefined
 input dataStorageContextName: undefined
 output: ?
 
-testName: getData_inValidNaN
+testName: getData_inValidDataStorageContextNameNaN
 input dataStorageContextName: NaN
 output: ?
 --------------------------------------------------------------------------------
@@ -643,23 +643,23 @@ testName: clearData_validData
 input dataStorageContextName: string (testDataString)
 output: cleared hive storage (testDataString)
 
-testName: clearData_inValidString
+testName: clearData_inValidDataStorageContextNameString
 input dataStorageContextName: string (464gsdsfae8f46)
 output: ?
 
-testName: clearData_inValidNumber
+testName: clearData_inValidDataStorageContextNameNumber
 input dataStorageContextName: integer (546)
 output: ?
 
-testName: clearData_inValidBoolean
+testName: clearData_inValidDataStorageContextNameBoolean
 input dataStorageContextName: boolean (false)
 output: ?
 
-testName: clearData_inValidUndefined
+testName: clearData_inValidDataStorageContextNameUndefined
 input dataStorageContextName: undefined
 output: ?
 
-testName: clearData_inValidNaN
+testName: clearData_inValidDataStorageContextNameNaN
 input dataStorageContextName: NaN
 output: ?
 --------------------------------------------------------------------------------
@@ -667,23 +667,23 @@ testName: getDataCatagoryFromContextName_validData
 input contextName: string (example of this will be something like Application_xxxx)
 output: string (Application)
 
-testName: getDataCatagoryFromContextName_inValidString
+testName: getDataCatagoryFromContextName_inValidContextNameString
 input contextName: string (Application5xxxx)
 output: ?
 
-testName: getDataCatagoryFromContextName_inValidNumber
+testName: getDataCatagoryFromContextName_inValidContextNameNumber
 input contextName: integer (546)
 output: ?
 
-testName: getDataCatagoryFromContextName_inValidBoolean
+testName: getDataCatagoryFromContextName_inValidContextNameBoolean
 input contextName: boolean (false)
 output: ?
 
-testName: getDataCatagoryFromContextName_inValidUndefined
+testName: getDataCatagoryFromContextName_inValidContextNameUndefined
 input contextName: undefined
 output: ?
 
-testName: getDataCatagoryFromContextName_inValidNaN
+testName: getDataCatagoryFromContextName_inValidContextNameNaN
 input contextName: NaN
 output: ?
 --------------------------------------------------------------------------------
@@ -691,23 +691,23 @@ testName: getDataCatagoryDetailNameFromContextName_validData
 input contextName: string (Command_ApiPost)
 output: string (ApiPost)
 
-testName: getDataCatagoryDetailNameFromContextName_inValidString
+testName: getDataCatagoryDetailNameFromContextName_inValidContextNameString
 input contextName: string (Command5ApiPost)
 output: ?
 
-testName: getDataCatagoryDetailNameFromContextName_inValidNumber
+testName: getDataCatagoryDetailNameFromContextName_inValidContextNameNumber
 input contextName: integer (546)
 output: ?
 
-testName: getDataCatagoryDetailNameFromContextName_inValidBoolean
+testName: getDataCatagoryDetailNameFromContextName_inValidContextNameBoolean
 input contextName: boolean (false)
 output: ?
 
-testName: getDataCatagoryDetailNameFromContextName_inValidUndefined
+testName: getDataCatagoryDetailNameFromContextName_inValidContextNameUndefined
 input contextName: undefined
 output: ?
 
-testName: getDataCatagoryDetailNameFromContextName_inValidNaN
+testName: getDataCatagoryDetailNameFromContextName_inValidContextNameNaN
 input contextName: NaN
 output: ?
 --------------------------------------------------------------------------------
@@ -726,12 +726,12 @@ input data: object (to get data out)
 input contextName: string (&)
 output: ?
 
-testName: extractDataFromPapaParseObject_inValidNumber
+testName: extractDataFromPapaParseObject_inValidDataNumber
 input data: integer (546)
 input contextName: string (  - space)
 output: ?
 
-testName: extractDataFromPapaParseObject_inValidBoolean
+testName: extractDataFromPapaParseObject_inValidDataBoolean
 input data: boolean (false)
 input contextName: string (  - space)
 output: ?
@@ -746,12 +746,12 @@ input data: object (to get data out)
 input contextName: boolean (false)
 output: ?
 
-testName: extractDataFromPapaParseObject_inValidUndefined
+testName: extractDataFromPapaParseObject_inValidDataUndefined
 input data: undefined
 input contextName: string (  - space)
 output: ?
 
-testName: extractDataFromPapaParseObject_inValidNaN
+testName: extractDataFromPapaParseObject_inValidDataNaN
 input data: NaN
 input contextName: string (  - space)
 output: ?
@@ -1203,22 +1203,22 @@ testName: removePluginConfigurationData_validData
 input pluginName: string
 output: boolean (?)
 
-testName: removePluginConfigurationData_inValidString
+testName: removePluginConfigurationData_inValidPluginNameString
 input pluginName: string (464gsdsfae8f46)
 output: ?
 
-testName: removePluginConfigurationData_inValidInteger
+testName: removePluginConfigurationData_inValidPluginNameInteger
 input pluginName: integer (123)
 output: ?
 
-testName: removePluginConfigurationData_inValidBoolean
+testName: removePluginConfigurationData_inValidPluginNameBoolean
 input pluginName: boolean (false)
 output: ?
 
-testName: removePluginConfigurationData_inValidUndefined
+testName: removePluginConfigurationData_inValidPluginNameUndefined
 input pluginName: undefined
 output: ?
 
-testName: removePluginConfigurationData_inValidNaN
+testName: removePluginConfigurationData_inValidPluginNameNaN
 input pluginName: NaN
 output: ?

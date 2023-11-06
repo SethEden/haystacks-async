@@ -4,23 +4,23 @@ testName: loadPluginRegistry_validData
 input pluginRegistryPath: string (?)
 output: object (?)
 
-testName: loadPluginRegistry_inValidString
+testName: loadPluginRegistry_inValidPluginRegistryPathString
 input pluginRegistryPath: string (464gsdsfae8f46)
 output: ?
 
-testName: loadPluginRegistry_inValidInteger
+testName: loadPluginRegistry_inValidPluginRegistryPathInteger
 input pluginRegistryPath: integer (123)
 output: ?
 
-testName: loadPluginRegistry_inValidBoolean
+testName: loadPluginRegistry_inValidPluginRegistryPathBoolean
 input pluginRegistryPath: boolean (false)
 output: ?
 
-testName: loadPluginRegistry_inValidUndefined
+testName: loadPluginRegistry_inValidPluginRegistryPathUndefined
 input pluginRegistryPath: undefined
 output: ?
 
-testName: loadPluginRegistry_inValidNaN
+testName: loadPluginRegistry_inValidPluginRegistryPathNaN
 input pluginRegistryPath: undefined
 output: ?
 --------------------------------------------------------------------------------
@@ -28,23 +28,23 @@ testName: storePluginRegistryInDataStructure_validData
 input pluginRegistryData: object (?)
 output: boolean (?)
 
-testName: storePluginRegistryInDataStructure_inValidString
+testName: storePluginRegistryInDataStructure_inValidPluginRegistryDataString
 input pluginRegistryData: string (464gsdsfae8f46)
 output: ?
 
-testName: storePluginRegistryInDataStructure_inValidInteger
+testName: storePluginRegistryInDataStructure_inValidPluginRegistryDataInteger
 input pluginRegistryData: integer (123)
 output: ?
 
-testName: storePluginRegistryInDataStructure_inValidBoolean
+testName: storePluginRegistryInDataStructure_inValidPluginRegistryDataBoolean
 input pluginRegistryData: boolean (false)
 output: ?
 
-testName: storePluginRegistryInDataStructure_inValidUndefined
+testName: storePluginRegistryInDataStructure_inValidPluginRegistryDataUndefined
 input pluginRegistryData: undefined
 output: ?
 
-testName: storePluginRegistryInDataStructure_inValidNaN
+testName: storePluginRegistryInDataStructure_inValidPluginRegistryDataNaN
 input pluginRegistryData: NaN
 output: ?
 --------------------------------------------------------------------------------
@@ -61,23 +61,23 @@ testName: listPluginAttributeInRegistry_validData
 input attributeName: string (?)
 output: array<string> (?)
 
-testName: listPluginAttributeInRegistry_inValidString
+testName: listPluginAttributeInRegistry_inValidAttributeNameString
 input attributeName: string (464gsdsfae8f46)
 output: ?
 
-testName: listPluginAttributeInRegistry_inValidInteger
+testName: listPluginAttributeInRegistry_inValidAttributeNameInteger
 input attributeName: integer
 output: ?
 
-testName: listPluginAttributeInRegistry_inValidBoolean
+testName: listPluginAttributeInRegistry_inValidAttributeNameBoolean
 input attributeName: boolean
 output: ?
 
-testName: listPluginAttributeInRegistry_inValidUndefined
+testName: listPluginAttributeInRegistry_inValidAttributeNameUndefined
 input attributeName: undefined
 output: ?
 
-testName: listPluginAttributeInRegistry_inValidNaN
+testName: listPluginAttributeInRegistry_inValidAttributeNameNaN
 input attributeName: NaN
 output: ?
 --------------------------------------------------------------------------------
@@ -149,23 +149,23 @@ testName: unregisterPlugin_validData
 input pluginName: string (?)
 output: boolean (?)
 
-testName: unregisterPlugin_inValidString
+testName: unregisterPlugin_inValidPluginNameString
 input pluginName: string (464gsdsfae8f46)
 output: boolean (?)
 
-testName: unregisterPlugin_inValidInteger
+testName: unregisterPlugin_inValidPluginNameInteger
 input pluginName: integer (123)
 output: boolean (?)
 
-testName: unregisterPlugin_inValidBoolean
+testName: unregisterPlugin_inValidPluginNameBoolean
 input pluginName: boolean (false)
 output: boolean (?)
 
-testName: unregisterPlugin_inValidUndefined
+testName: unregisterPlugin_inValidPluginNameUndefined
 input pluginName: undefined
 output: boolean (?)
 
-testName: unregisterPlugin_inValidNaN
+testName: unregisterPlugin_inValidPluginNameNaN
 input pluginName: NaN
 output: boolean (?)
 --------------------------------------------------------------------------------
@@ -173,23 +173,23 @@ testName: unregisterPlugins_validData
 input pluginName: array<string> (?)
 output: boolean (?)
 
-testName: unregisterPlugins_inValidString
+testName: unregisterPlugins_inValidPluginNameString
 input pluginName: string (464gsdsfae8f46)
 output: boolean (?)
 
-testName: unregisterPlugins_inValidInteger
+testName: unregisterPlugins_inValidPluginNameInteger
 input pluginName: integer (123)
 output: boolean (?)
 
-testName: unregisterPlugins_inValidBoolean
+testName: unregisterPlugins_inValidPluginNameBoolean
 input pluginName: boolean (false)
 output: boolean (?)
 
-testName: unregisterPlugins_inValidUndefined
+testName: unregisterPlugins_inValidPluginNameUndefined
 input pluginName: undefined
 output: boolean (?)
 
-testName: unregisterPlugins_inValidNaN
+testName: unregisterPlugins_inValidPluginNameNaN
 input pluginName: NaN
 output: boolean (?)
 --------------------------------------------------------------------------------
@@ -206,23 +206,23 @@ testName: loadPluginMetaData_validData
 input pluginPath: string (?)
 output: object (?)
 
-testName: loadPluginMetaData_inValidString
+testName: loadPluginMetaData_inValidPluginPathString
 input pluginPath: string (464gsdsfae8f46)
 output: ?
 
-testName: loadPluginMetaData_inValidInteger
+testName: loadPluginMetaData_inValidPluginPathInteger
 input pluginPath: integer (123)
 output: ?
 
-testName: loadPluginMetaData_inValidBoolean
+testName: loadPluginMetaData_inValidPluginPathBoolean
 input pluginPath: boolean (false)
 output: ?
 
-testName: loadPluginMetaData_inValidUndefined
+testName: loadPluginMetaData_inValidPluginPathUndefined
 input pluginPath: undefined
 output: ?
 
-testName: loadPluginMetaData_inValidNaN
+testName: loadPluginMetaData_inValidPluginPathNaN
 input pluginPath: NaN
 output: ?
 --------------------------------------------------------------------------------
@@ -285,23 +285,23 @@ testName: loadPlugin_validData
 input pluginExecutionPath: string (?)
 output: object (?)
 
-testName: loadPlugin_inValidString
+testName: loadPlugin_inValidPluginExecutionPathString
 input pluginExecutionPath: string (&)
 output: ?
 
-testName: loadPlugin_inValidInteger
+testName: loadPlugin_inValidPluginExecutionPathInteger
 input pluginExecutionPath: integer (123)
 output: ?
 
-testName: loadPlugin_inValidBoolean
+testName: loadPlugin_inValidPluginExecutionPathBoolean
 input pluginExecutionPath: boolean (false)
 output: ?
 
-testName: loadPlugin_inValidUndefined
+testName: loadPlugin_inValidPluginExecutionPathUndefined
 input pluginExecutionPath: undefined
 output: ?
 
-testName: loadPlugin_inValidNaN
+testName: loadPlugin_inValidPluginExecutionPathNaN
 input pluginExecutionPath: NaN
 output: ?
 --------------------------------------------------------------------------------
@@ -639,23 +639,23 @@ testName: unloadPlugin_validData
 input pluginName: string (?)
 output: boolean (?)
 
-testName: unloadPlugin_inValidString
+testName: unloadPlugin_inValidPluginNameString
 input pluginName: string (464gsdsfae8f46)
 output: ?
 
-testName: unloadPlugin_inValidInteger
+testName: unloadPlugin_inValidPluginNameInteger
 input pluginName: integer (123)
 output: ?
 
-testName: unloadPlugin_inValidBoolean
+testName: unloadPlugin_inValidPluginNameBoolean
 input pluginName: boolean (false)
 output: ?
 
-testName: unloadPlugin_inValidUndefined
+testName: unloadPlugin_inValidPluginNameUndefined
 input pluginName: undefined
 output: ?
 
-testName: unloadPlugin_inValidNaN
+testName: unloadPlugin_inValidPluginNameNaN
 input pluginName: NaN
 output: ?
 --------------------------------------------------------------------------------

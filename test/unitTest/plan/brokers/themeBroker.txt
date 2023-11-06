@@ -7,23 +7,23 @@ testName: generateThemeDataFromPath_validData
 input themesRootPath: string (?)
 output: object (?)
 
-testName: generateThemeDataFromPath_inValidString
+testName: generateThemeDataFromPath_inValidThemesRootPathString
 input themesRootPath: string (464gsdsfae8f46)
 output: ?
 
-testName: generateThemeDataFromPath_inValidInteger
+testName: generateThemeDataFromPath_inValidThemesRootPathInteger
 input themesRootPath: integer (123)
 output: ?
 
-testName: generateThemeDataFromPath_inValidBoolean
+testName: generateThemeDataFromPath_inValidThemesRootPathBoolean
 input themesRootPath: boolean
 output: ?
 
-testName: generateThemeDataFromPath_inValidUndefined
+testName: generateThemeDataFromPath_inValidThemesRootPathUndefined
 input themesRootPath: undefined
 output: ?
 
-testName: generateThemeDataFromPath_inValidNaN
+testName: generateThemeDataFromPath_inValidThemesRootPathNaN
 input themesRootPath: NaN
 output: ?
 --------------------------------------------------------------------------------
@@ -86,23 +86,23 @@ testName: getNamedThemesFromRootPath_validData
 input themesRootPath: string (?)
 output: list of names for the themes that are currently installed.
 
-testName: getNamedThemesFromRootPath_inValidString
+testName: getNamedThemesFromRootPath_inValidThemesRootPathString
 input themesRootPath: string (464gsdsfae8f46)
 output: ?
 
-testName: getNamedThemesFromRootPath_inValidNumber
+testName: getNamedThemesFromRootPath_inValidThemesRootPathNumber
 input themesRootPath: integer (546)
 output: ?
 
-testName: getNamedThemesFromRootPath_inValidBoolean
+testName: getNamedThemesFromRootPath_inValidThemesRootPathBoolean
 input themesRootPath: boolean (false)
 output: ?
 
-testName: getNamedThemesFromRootPath_inValidUndefined
+testName: getNamedThemesFromRootPath_inValidThemesRootPathUndefined
 input themesRootPath: undefined
 output: ?
 
-testName: getNamedThemesFromRootPath_inValidNaN
+testName: getNamedThemesFromRootPath_inValidThemesRootPathNaN
 input themesRootPath: NaN
 output: ?
 --------------------------------------------------------------------------------
@@ -111,7 +111,7 @@ input themeName: string (The name of the theme that a path is returned for)
 input themesRootPath: string (?)
 output: string|boolean (The path of the theme, if it exists)
 
-testName: getNamedThemePathFromRootPath_inValidString
+testName: getNamedThemePathFromRootPath_inValidThemeNameString
 input themeName: string (464gsdsfae8f46)
 input themesRootPath: string (?)
 output: ?
@@ -121,12 +121,12 @@ input themeName: string (?)
 input themesRootPath: string (&)
 output: ?
 
-testName: getNamedThemePathFromRootPath_inValidNumber
+testName: getNamedThemePathFromRootPath_inValidThemeNameNumber
 input themeName: integer (546)
 input themesRootPath: string (?)
 output: false
 
-testName: getNamedThemePathFromRootPath_inValidBoolean
+testName: getNamedThemePathFromRootPath_inValidThemeNameBoolean
 input themeName: boolean (false)
 input themesRootPath: string (?)
 output: false
@@ -141,12 +141,12 @@ input themeName: string (?)
 input themesRootPath: boolean (false)
 output: ?
 
-testName: getNamedThemePathFromRootPath_inValidUndefined
+testName: getNamedThemePathFromRootPath_inValidThemeNameUndefined
 input themeName: undefined
 input themesRootPath: string (?)
 output: false
 
-testName: getNamedThemePathFromRootPath_inValidNaN
+testName: getNamedThemePathFromRootPath_inValidThemeNameNaN
 input themeName: NaN
 input themesRootPath: string (?)
 output: false
@@ -165,23 +165,23 @@ testName: loadTheme_validData
 input themePath: string (The fully qualified path to the theme debug configuration settings)
 output: object (All of the debug configuration data for a specified theme path)
 
-testName: loadTheme_inValidString
+testName: loadTheme_inValidThemePathString
 input themePath: string (464gsdsfae8f46)
 output: ?
 
-testName: loadTheme_inValidNumber
+testName: loadTheme_inValidThemePathNumber
 input themePath: integer (546)
 output: ?
 
-testName: loadTheme_inValidBoolean
+testName: loadTheme_inValidThemePathBoolean
 input themePath: boolean (false)
 output: ?
 
-testName: loadTheme_inValidUndefined
+testName: loadTheme_inValidThemePathUndefined
 input themePath: undefined
 output: ?
 
-testName: loadTheme_inValidNaN
+testName: loadTheme_inValidThemePathNaN
 input themePath: NaN
 output: ?
 --------------------------------------------------------------------------------
@@ -189,23 +189,23 @@ testName: applyTheme_validData
 input themeData: object (All the theme debug configuration settings data that control the debug log theme colors)
 output: true
 
-testName: applyTheme_inValidString
+testName: applyTheme_inValidThemeDataString
 input themeData: string (464gsdsfae8f46)
 output: ?
 
-testName: applyTheme_inValidNumber
+testName: applyTheme_inValidThemeDataNumber
 input themeData: integer (546)
 output: ?
 
-testName: applyTheme_inValidBoolean
+testName: applyTheme_inValidThemeDataBoolean
 input themeData: boolean (false)
 output: ?
 
-testName: applyTheme_inValidUndefined
+testName: applyTheme_inValidThemeDataUndefined
 input themeData: undefined
 output: ?
 
-testName: applyTheme_inValidNaN
+testName: applyTheme_inValidThemeDataNaN
 input themeData: NaN
 output: ?
 --------------------------------------------------------------------------------
@@ -213,22 +213,22 @@ testName: removePluginThemeData_validData
 input pluginName: string (?)
 output: boolean
 
-testName: removePluginThemeData_inValidString
+testName: removePluginThemeData_inValidPluginNameString
 input pluginName: string (464gsdsfae8f46)
 output: boolean
 
-testName: removePluginThemeData_inValidNumber
+testName: removePluginThemeData_inValidPluginNameNumber
 input pluginName: number (123)
 output: boolean
 
-testName: removePluginThemeData_inValidBoolean
+testName: removePluginThemeData_inValidPluginNameBoolean
 input pluginName: boolean (false)
 output: boolean
 
-testName: removePluginThemeData_inValidUndefined
+testName: removePluginThemeData_inValidPluginNameUndefined
 input pluginName: undefined
 output: boolean
 
-testName: removePluginThemeData_inValidNaN
+testName: removePluginThemeData_inValidPluginNameNaN
 input pluginName: NaN
 output: boolean

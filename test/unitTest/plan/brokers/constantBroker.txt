@@ -66,22 +66,22 @@ testName: removePluginConstantsValidationData_validData
 input pluginName: string (?)
 output: boolean (?)
 
-testName: removePluginConstantsValidationData_inValidString
+testName: removePluginConstantsValidationData_inValidPluginNameString
 input pluginName: string (464gsdsfae8f46)
 output: ?
 
-testName: removePluginConstantsValidationData_inValidInteger
+testName: removePluginConstantsValidationData_inValidPluginNameInteger
 input pluginName: integer (123)
 output: ?
 
-testName: removePluginConstantsValidationData_inValidBoolean
+testName: removePluginConstantsValidationData_inValidPluginNameBoolean
 input pluginName: boolean (false)
 output: ?
 
-testName: removePluginConstantsValidationData_inValidUndefined
+testName: removePluginConstantsValidationData_inValidPluginNameUndefined
 input pluginName: undefined
 output: ?
 
-testName: removePluginConstantsValidationData_inValidNaN
+testName: removePluginConstantsValidationData_inValidPluginNameNaN
 input pluginName: NaN
 output: ?
