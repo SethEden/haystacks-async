@@ -3,13 +3,15 @@ description: Test plan for commandBroker.js
 
 testName: bootStrapCommands_validData
 output: ?
+NOTE: Test initialization of the commands date structure.
 --------------------------------------------------------------------------------
 testName: resetCommands_validData
 output: ?
+NOTE: Test initialization of the commands date structure.
 --------------------------------------------------------------------------------
 testName: addClientCommands_validData
-input clientCommands: array<object> (?)
-output: D[wrd.cCommands] - objects added
+input clientCommands: array<object> (The client rules that should be merged with the system rules)
+output: void
 
 testName: addClientCommands_inValidClientCommandsString
 input clientCommands: string (464gsdsfae8f46)
@@ -32,167 +34,167 @@ input clientCommands: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: addPluginCommands_validData
-input pluginName: string (?)
-input pluginCommands: D[wrd.cCommands] (?)
-output: boolean (?)
+input pluginName: string (The name of the current plugin these commands belong to)
+input pluginCommands: array<object> (The plugin commands that should be merged with the system commands)
+output: boolean (True or False to indicate if the merge was successful or not)
 
 testName: addPluginCommands_inValidPluginNameString
 input pluginName: string (464gsdsfae8f46)
-input pluginCommands: D[wrd.cCommands] (?)
+input pluginCommands: array<object> (The plugin commands that should be merged with the system commands)
 output: ?
 
 testName: addPluginCommands_inValidPluginCommandsString
-input pluginName: string (?)
-input pluginCommands: string (&)
+input pluginName: string (The name of the current plugin these commands belong to)
+input pluginCommands: string (464gsdsfae8f46)
 output: ?
 
 testName: addPluginCommands_inValidPluginNameNumber
 input pluginName: number (123)
-input pluginCommands: D[wrd.cCommands] (?)
+input pluginCommands: array<object> (The plugin commands that should be merged with the system commands)
 output: ?
 
 testName: addPluginCommands_inValidPluginNameBoolean
 input pluginName: boolean (false)
-input pluginComands: D[wrd.cCommands] (?)
+input pluginComands: array<object> (The plugin commands that should be merged with the system commands)
 output: ?
 
 testName: addPluginCommands_inValidPluginCommandsNumber
-input pluginName: string (?)
+input pluginName: string (The name of the current plugin these commands belong to)
 input pluginCommands: number (123)
 output: ?
 
 testName: addPluginCommands_inValidPluginCommandsBoolean
-input pluginName: string (?)
+input pluginName: string (The name of the current plugin these commands belong to)
 input pluginCommands: boolean (false)
 output: ?
 
 testName: addPluginCommands_inValidPluginNameUndefined
 input pluginName: undefined
-input pluginCommands: D[wrd.cCommands] (?)
+input pluginCommands: array<object> (The plugin commands that should be merged with the system commands)
 output: ?
 
 testName: addPluginCommands_inValidPluginNameNaN
 input pluginName: NaN
-input pluginCommands: D[wrd.cCommands] (?)
+input pluginCommands: array<object> (The plugin commands that should be merged with the system commands)
 output: ?
 
 testName: addPluginCommands_inValidPluginCommandsUndefined
-input pluginName: string (?)
+input pluginName: string (The name of the current plugin these commands belong to)
 input pluginComands: undefined
 output: ?
 
 testName: addPluginCommands_inValidPluginCommandsUndefined
-input pluginName: string (?)
+input pluginName: string (The name of the current plugin these commands belong to)
 input pluginCommands: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: addPluginCommandAliases_validData
-input pluginName: string (?)
-input pluginComandAliases: D[sys.cCommandsAliases][wrd.cPlugins][pluginName] (?)
+input pluginName: string (The name of the current plugin these command aliases belong to)
+input pluginComandAliases: object (A JSON object that contains the plugin command aliases that should be merged with the system command aliases)
 output: boolean (?)
 
 testName: addPluginCommandAliases_inValidPluginNameString
 input pluginName: string (464gsdsfae8f46)
-input pluginCommandAliases: string (?)
+input pluginCommandAliases: object (A JSON object that contains the plugin command aliases that should be merged with the system command aliases)
 output: ?
 
 testName: addPluginCommandAliases_inValidPluginCommandAliasesString
-input plguinName: string (?)
-input pluginCommandAliases: string (&)
+input plguinName: string (The name of the current plugin these command aliases belong to)
+input pluginCommandAliases: string (464gsdsfae8f46)
 output: ?
 
 testName: addPluginCommandAliases_inValidPluginNameNumber
 input pluginName: number (123)
-input pluginCommandAliases: D[sys.cCommandsAliases][wrd.cPlugins][pluginName] (?)
+input pluginCommandAliases: object (A JSON object that contains the plugin command aliases that should be merged with the system command aliases)
 output: ?
 
 testName: addPluginCommandAliases_inValidPluginNameBoolean
 input pluginName: boolean (false)
-input pluginCommandAliases: D[sys.cCommandsAliases][wrd.cPlugins][pluginName] (?)
+input pluginCommandAliases: object (A JSON object that contains the plugin command aliases that should be merged with the system command aliases)
 output: ?
 
 testName: addPluginCommandAliases_inValidPluginCommandAliasesNumber
-input pluginName: string (?)
+input pluginName: string (The name of the current plugin these command aliases belong to)
 input pluginCommandAliases: number (123)
 output: ?
 
 testName: addPluginCommandAliases_inValidPluginCommandAliasesBoolean
-input pluginName: string (?)
+input pluginName: string (The name of the current plugin these command aliases belong to)
 input pluginCommandAliases: boolean (false)
 output: ?
 
 testName: addPluginCommandAliases_inValidPluginNameUndefined
 input pluginName: undefined
-input pluginCommandAliases: D[sys.cCommandsAliases][wrd.cPlugins][pluginName]
+input pluginCommandAliases: object (A JSON object that contains the plugin command aliases that should be merged with the system command aliases)
 output: ?
 
 testName: addPluginCommandAliases_inValidPluginNameNaN
 input pluginName: NaN
-input pluginCommandAliases: D[sys.cCommandsAliases][wrd.cPlugins][pluginName]
+input pluginCommandAliases: object (A JSON object that contains the plugin command aliases that should be merged with the system command aliases)
 output: ?
 
 testName: addPluginCommandAliases_inValidPluginCommandAliasesUndefined
-input pluginName: string (?)
+input pluginName: string (The name of the current plugin these command aliases belong to)
 input pluginCommandAliases: undefined
 output: ?
 
 testName: addPluginCommandAliases_inValidPluginCommandAliasesNaN
-input pluginName: string (?)
+input pluginName: string (The name of the current plugin these command aliases belong to)
 input pluginCommandAliases: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: getValidCommand_validData
-input commandString: string (commandSequencer name,application,true version about)
-input commandDelimiter: string (  - space)
+input commandString: string (The command string that should be parsed for a valid command)
+input commandDelimiter: string (The delimiter that should be used to parse the command line)
 output: commandSequencer name,application,true version about
 
 testName: getValidCommand_inValidCommandStringString
 input commandString: string (464gsdsfae8f46)
-input commandDelimiter: string (  - space)
+input commandDelimiter: string (The delimiter that should be used to parse the command line)
 output: ?
 
 testName: getValidCommand_inValidDelimiterString
-input commandString: string (commandSequencer name,application,true version about)
-input commandDelimiter: string (&)
+input commandString: string (The command string that should be parsed for a valid command)
+input commandDelimiter: string (464gsdsfae8f46)
 output: ?
 
 testName: getValidCommand_inValidCommandStringNumber
 input commandString: integer (546)
-input commandDelimiter: string (  - space)
+input commandDelimiter: string (The delimiter that should be used to parse the command line)
 output: ?
 
 testName: getValidCommand_inValidCommandStringBoolean
 input commandString: boolean (false)
-input commandDelimiter: string (  - space)
+input commandDelimiter: string (The delimiter that should be used to parse the command line)
 output: ?
 
 testName: getValidCommand_inValidDelimiterNumber
-input commandString: string (commandSequencer name,application,true version about)
+input commandString: string (The command string that should be parsed for a valid command)
 input commandDelimiter: integer (123)
 output: ?
 
 testName: getValidCommand_inValidDelimiterBoolean
-input commandString: string (commandSequencer name,application,true version about)
+input commandString: string (The command string that should be parsed for a valid command)
 input commandDelimiter: boolean (false)
 output: ?
 
 testName: getValidCommand_inValidCommandStringUndefined
 input commandString: undefined
-input commandDelimiter: string (  - space)
+input commandDelimiter: string (The delimiter that should be used to parse the command line)
 output: ?
 
 testName: getValidCommand_inValidCommandStringNaN
 input commandString: NaN
-input commandDelimiter: string (  - space)
+input commandDelimiter: string (The delimiter that should be used to parse the command line)
 output: ?
 
 testName: getValidCommand_inValidDelimiterUndefined
-input commandString: string (commandSequencer name,application,true version about)
+input commandString: string (The command string that should be parsed for a valid command)
 input commandDelimiter: undefined
 output: ?
 
 testName: getValidCommand_inValidDelimiterNaN
-input commandString: string (commandSequencer name,application,true version about)
+input commandString: string (The command string that should be parsed for a valid command)
 input commandDelimiter: NaN
 output: ?
 --------------------------------------------------------------------------------
@@ -208,7 +210,7 @@ output: ?
 
 testName: countMatchingCommandAlias_inValidCommandAliasNameString
 input commandAliasData: object (The command alias data that searched recursively for the specified command alias)
-input commandAliasName: string (&)
+input commandAliasName: string (464gsdsfae8f46)
 output: ?
 
 testName: countMatchingCommandAlias_inValidCommandAliasDataNumber
@@ -263,7 +265,7 @@ output: ?
 
 testName: searchCommandAlias_inValidCommandAliasNameString
 input commandAliasData: object (The command alias data that searched recursively for the specified command alias)
-input commandAliasName: string (&)
+input commandAliasName: string (464gsdsfae8f46)
 output: ?
 
 testName: searchCommandAlias_inValidCommandAliasDataNumber
@@ -342,7 +344,7 @@ output: ?
 
 testName: getCommandNamespaceDataObject_inValidNamespaceToFindString
 input commandAliasDataStructure: object (The command alias data structure that recursively searched for the namespace specified)
-input namespaceToFind: string (&)
+input namespaceToFind: string (464gsdsfae8f46)
 output: ?
 
 testName: getCommandNamespaceDataObject_inValidCommandAliasDataStructureNumber
@@ -386,63 +388,63 @@ input namespaceToFind: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: getCommandArgs_validData
-input commandString: string (commandSequencer name,application,true version about)
-input commandDelimiter: string (  - space)
-output: array<boolean|string|integer> ([name,application,true version about])
+input commandString: string (The command string that should be parsed fro command arguments)
+input commandDelimiter: string (The delimiter that should be used to parse the command line)
+output: array<boolean|string|integer> (Any array of arguments, some times these might actually be nested command calls)
 
 testName: getCommandArgs_inValidCommandStringString
 input commandString: string (464gsdsfae8f46)
-input commandDelimiter: string (  - space)
+input commandDelimiter: string (The delimiter that should be used to parse the command line)
 output: ?
 
 testName: getCommandArgs_inValidDelimiterString
-input commandString: string (commandSequencer name,application,true version about)
-input commandDelimiter: string (&)
+input commandString: string (The command string that should be parsed fro command arguments)
+input commandDelimiter: string (464gsdsfae8f46)
 output: ?
 
 testName: getCommandArgs_inValidCommandStringNumber
 input commandString: integer (546)
-input commandDelimiter: string (  - space)
+input commandDelimiter: string (The delimiter that should be used to parse the command line)
 output: ?
 
 testName: getCommandArgs_inValidCommandStringBoolean
 input commandString: boolean (false)
-input commandDelimiter: string (  - space)
+input commandDelimiter: string (The delimiter that should be used to parse the command line)
 output: ?
 
 testName: getCommandArgs_inValidDelimiterNumber
-input commandString: string (commandSequencer name,application,true version about)
+input commandString: string (The command string that should be parsed fro command arguments)
 input commandDelimiter: integer (546)
 output: ?
 
 testName: getCommandArgs_inValidDelimiterBoolean
-input commandString: string (commandSequencer name,application,true version about)
+input commandString: string (The command string that should be parsed fro command arguments)
 input commandDelimiter: boolean (false)
 output: ?
 
 testName: getCommandArgs_inValidCommandStringUndefined
 input commandString: undefined
-input commandDelimiter: string (  - space)
+input commandDelimiter: string (The delimiter that should be used to parse the command line)
 output: ?
 
 testName: getCommandArgs_inValidCommandStringNaN
 input commandString: NaN
-input commandDelimiter: string (  - space)
+input commandDelimiter: string (The delimiter that should be used to parse the command line)
 output: ?
 
 testName: getCommandArgs_inValidDelimiterUndefined
-input commandString: string (commandSequencer name,application,true version about)
+input commandString: string (The command string that should be parsed fro command arguments)
 input commandDelimiter: undefined
 output: ?
 
 testName: getCommandArgs_inValidDelimiterNaN
-input commandString: string (commandSequencer name,application,true version about)
+input commandString: string (The command string that should be parsed fro command arguments)
 input commandDelimiter: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: executeCommand_validData
-input: commandString: string (commandSequencer name,application,true version about)
-output: array<boolean,string|integer|boolean|object|array> (true)
+input: commandString: string (The command to execute along with all the associated command arguments, data & meta-data)
+output: array<boolean,string|integer|boolean|object|array> (An array with a boolean True or False value to indicate if the application should exit or not exit, followed by the command output)
 
 testName: executeCommand_inValidCommandStringString
 input commandString: string (464gsdsfae8f46)
@@ -465,8 +467,8 @@ input commandString: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: removePluginCommands_validData
-input pluginName: string (?)
-output: boolean (?)
+input pluginName: string (The name of the plugin that should have its commands removed from the D-data structure)
+output: boolean (True or False to indicate if the removal of the data was completed successfully or not)
 
 testName: removePluginCommands_inValidPluginNameString
 input pluginName: string (464gsdsfae8f46)
@@ -489,8 +491,8 @@ input pluginName: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: removePluginCommandAliases_validData
-input pluginName: string (?)
-output: boolean (?)
+input pluginName: string (The name of the plugin that should have its command aliases removed from the D-data structure)
+output: boolean (True or False to indicate if the removal of the data was completed successfully or not)
 
 testName: removePluginCommandAliases_inValidPluginNameString
 input pluginName: string (464gsdsfae8f46)
