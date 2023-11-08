@@ -4,9 +4,49 @@ description: Test plan for ruleBroker.js
 --------------------------------------------------------------------------------
 testName: bootStrapBusinessRules_validData
 output: Captures, call, and migrates business rule's data to data hive.
+
+testName: bootStrapBusinessRules_inValidDataInputDataString
+input 1inputData: string (dfxg24346dfg)
+output: ?
+
+testName: bootStrapBusinessRules_inValidInputDataInteger
+input 1inputData: integer (4567)
+output: ?
+
+testName: bootStrapBusinessRules_inValidInputDataBoolean
+input 1inputData: boolean (false)
+output: ?
+
+testName: bootStrapBusinessRules_inValidInputDataUndefined
+input 1inputData: undefined
+output: ?
+
+testName: bootStrapBusinessRules_inValidInputDataNaN
+input 1inputData: NaN
+output: ?
 --------------------------------------------------------------------------------
 testName: resetBusinessRules_validData
 output: Captures, call, and migrates business rule's data to data hive.
+
+testName: resetBusinessRules_inValidDataInputDataString
+input 1inputData: string (dfxg24346dfg)
+output: ?
+
+testName: resetBusinessRules_inValidInputDataInteger
+input 1inputData: integer (4567)
+output: ?
+
+testName: resetBusinessRules_inValidInputDataBoolean
+input 1inputData: boolean (false)
+output: ?
+
+testName: resetBusinessRules_inValidInputDataUndefined
+input 1inputData: undefined
+output: ?
+
+testName: resetBusinessRules_inValidInputDataNaN
+input 1inputData: NaN
+output: ?
 --------------------------------------------------------------------------------
 testName: addClientRules_validData
 input clientRules: array<object>
@@ -33,73 +73,73 @@ input clientRules: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: addPluginRules_validData
-input pluginName: string (?)
-input pluginRules: array<object> (?)
-output: boolean (?)
+input pluginName: string (The name of the current plugin these rules belong to)
+input pluginRules: array<object> (The plugin rules that should be merged with the system rules)
+output: boolean (True or False to indicate if the merge was successful or not)
 
 testName: addPluginRules_inValidPluginNameString
 input pluginName: string (464gsdsfae8f46)
-input pluginRules: array<object> (?)
+input pluginRules: array<object> (The plugin rules that should be merged with the system rules)
 output: ?
 
 testName: addPluginRules_inValidPluginRulesString
-input plguinName: string (?)
-input pluginRules: string (&)
+input plguinName: string (The name of the current plugin these rules belong to)
+input pluginRules: string (464gsdsfae8f46)
 output: ?
 
 testName: addPluginRules_inValidPluginNameNumber
 input pluginName: integer (123)
-input pluginRules: array<object> (?)
+input pluginRules: array<object> (The plugin rules that should be merged with the system rules)
 output: ?
 
 testName: addPluginRules_inValidPluginNameBoolean
 input pluginName: boolean (false)
-input pluginRules: array<object> (?)
+input pluginRules: array<object> (The plugin rules that should be merged with the system rules)
 output: ?
 
 testName: addPluginRules_inValidPluginRulesNumber
-input plguinName: string (?)
+input plguinName: string (The name of the current plugin these rules belong to)
 input pluginRules: integer (123)
 output: ?
 
 testName: addPluginRules_inValidPluginRulesBoolean
-input plguinName: string (?)
+input plguinName: string (The name of the current plugin these rules belong to)
 input pluginRules: boolean (false)
 output: ?
 
 testName: addPluginRules_inValidPluginNameUndefined
 input pluginName: undefined
-input pluginRules: array<object> (?)
+input pluginRules: array<object> (The plugin rules that should be merged with the system rules)
 output: ?
 
 testName: addPluginRules_inValidPluginNameNaN
 input pluginName: NaN
-input pluginRules: array<object> (?)
+input pluginRules: array<object> (The plugin rules that should be merged with the system rules)
 output: ?
 
 testName: addPluginRules_inValidPluginRulesUndefined
-input plguinName: string (?)
+input plguinName: string (The name of the current plugin these rules belong to)
 input pluginRules: undefined
 output: ?
 
 testName: addPluginRules_inValidPluginRulesNaN
-input plguinName: string (?)
+input plguinName: string (The name of the current plugin these rules belong to)
 input pluginRules: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: processRules_validData(ALL)
-input inputs: array<string|integer|boolean|object|function,string|integer|boolean|object|function> (?)
-input rulesToExecute: array<string> (?)
-output: string|integer|boolean|object|function (?)
+input inputs: array<string|integer|boolean|object|function,string|integer|boolean|object|function> (An array of inputs, inputData 464gsdsfae8f46 inputMetaData)
+input rulesToExecute: array<string> (The name(s) of the rule(s) that should be executed for modding the input data)
+output: string|integer|boolean|object|function (A modified data Object/String/Integer/Boolean/Function where the data has been modified based on the input data, input meta-data, and business rule that was executed)
 
 testName: processRules_inValidInputsString
 input inputs: string (464gsdsfae8f46)
-input rulesToExecute: array<string> (?)
+input rulesToExecute: array<string> (The name(s) of the rule(s) that should be executed for modding the input data)
 output: ?
 
 testName: processRules_inValidRulesToExecuteString
-input inputs:array<string|integer|boolean|object|function,string|integer|boolean|object|function> (?)
-input rulesToExecute: string (&)
+input inputs: array<string|integer|boolean|object|function,string|integer|boolean|object|function> (An array of inputs, inputData 464gsdsfae8f46 inputMetaData)
+input rulesToExecute: string (464gsdsfae8f46)
 output: ?
 
 testName: processRules_inValidInputsInteger
@@ -133,18 +173,18 @@ input rulesToExecute: string (inValidInputsUndefined)
 output: ?
 
 testName: processRules_inValidRulesToExecuteUndefined
-input inputs: string (inValidRulesToExecuteUndefined)
+input inputs: array<string|integer|boolean|object|function,string|integer|boolean|object|function> (An array of inputs, inputData 464gsdsfae8f46 inputMetaData)
 input rulesToExecute: undefined
 output: ?
 
 testName: processRules_inValidRulesToExecuteNaN
-input inputs: string (inValidRulesToExecuteNaN)
+input inputs: array<string|integer|boolean|object|function,string|integer|boolean|object|function> (An array of inputs, inputData 464gsdsfae8f46 inputMetaData)
 input rulesToExecute: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: removePluginBusinessRules_validData
-input pluginName: string (?)
-output: boolean (?)
+input pluginName: string (The name of the plugin that should have its business rules removed from the D-data structure)
+output: boolean (True or False to indicate if the removal of the data was completed successfully or not)
 
 testName: removePluginBusinessRules_inValidPluginNameString
 input pluginName: string (464gsdsfae8f46)
