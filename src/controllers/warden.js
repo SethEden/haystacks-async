@@ -302,7 +302,6 @@ async function initFrameworkSchema(configData) {
   // console.log('Contents of D are: ' + JSON.stringify(D));
   // console.log(`END ${namespacePrefix}${functionName} function`);
 
-  // console.log('businessRules is: ', D[sys.cbusinessRules]);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
 }
 
@@ -1000,7 +999,6 @@ async function executeBusinessRules(inputs, businessRules) {
   // businessRules is:
   await loggers.consoleLog(namespacePrefix + functionName, msg.cbusinessRulesIs + JSON.stringify(businessRules));
   let returnData;
-  // console.log('businessRules is: ', D[sys.cbusinessRules]);
   returnData = await ruleBroker.processRules(inputs, businessRules);
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
