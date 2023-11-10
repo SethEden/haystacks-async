@@ -2,496 +2,496 @@ Description: Test plan for dataStringParsing.js
 
 --------------------------------------------------------------------------------
 testName: getAttributeName_validData
-input inputData: string (?)
-input inputMetaData: string (?)
-output: string (?)
+input inputData: string (The string representation of the JSON attribute that should be parsed)
+input inputMetaData: string (Not used for this business rule)
+output: string (The name of the attribute)
 
 testName: getAttributeName_inValidInputDataString
 input inputData: string (dfxg24346dfg)
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: getAttributeName_inValidInputMetaDataString
-input inputData: string (?)
-input inputMetaData: string (&)
+input inputData: string (The string representation of the JSON attribute that should be parsed)
+input inputMetaData: string (dfxg24346dfg)
 output: ?
 
 testName: getAttributeName_inValidInputDataInteger
 input inputData: integer (123)
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: getAttributeName_inValidInputDataBoolean
 input inputData: boolean (false)
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: getAttributeName_inValidInputMetaDataInteger
-input inputData: string (?)
+input inputData: string (The string representation of the JSON attribute that should be parsed)
 input inputMetaData: integer (123)
 output: ?
 
 testName: getAttributeName_inValidInputMetaDataBoolean
-input inputData: string (?)
+input inputData: string (The string representation of the JSON attribute that should be parsed)
 input inputMetaData: boolean (false)
 output: ?
 
 testName: getAttributeName_inValidInputDataUndefined
 input inputData: undefined
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: getAttributeName_inValidInputDataNaN
 input inputData: NaN
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: getAttributeName_inValidInputMetaDataUndefined
-input inputData: string (?)
+input inputData: string (The string representation of the JSON attribute that should be parsed)
 input inputMetaData: undefined
 output: ?
 
 testName: getAttributeName_inValidInputMetaDataNaN
-input inputData: string (?)
+input inputData: string (The string representation of the JSON attribute that should be parsed)
 input inputMetaData: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: getAttributeValue_validData
-input inputData: string (?)
-input inputMetaData: string (?)
-output: string (?)
+input inputData: string (The string representation of the JSON attribute that should be parsed)
+input inputMetaData: string (Not used for this business rule)
+output: string (The value of the attribute)
 
 testName: getAttributeValue_inValidInputDataString
 input inputData: string (dfxg24346dfg)
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: getAttributeValue_inValidInputMetaDataString
-input inputData: string (?)
-input inputMetaData: string (&)
+input inputData: string (The string representation of the JSON attribute that should be parsed)
+input inputMetaData: string (dfxg24346dfg)
 output: ?
 
 testName: getAttributeValue_inValidInputDataInteger
 input inputData: integer (123)
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: getAttributeValue_inValidInputDataBoolean
 input inputData: boolean (false)
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: getAttributeValue_inValidInputMetaDataInteger
-input inputData: string (?)
+input inputData: string (The string representation of the JSON attribute that should be parsed)
 input inputMetaData: integer (123)
 output: ?
 
 testName: getAttributeValue_inValidInputMetaDataBoolean
-input inputData: string (?)
+input inputData: string (The string representation of the JSON attribute that should be parsed)
 input inputMetaData: boolean (false)
 output: ?
 
 testName: getAttributeValue_inValidInputDataUndefined
 input inputData: undefined
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: getAttributeValue_inValidInputDataNaN
 input inputData: NaN
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: getAttributeValue_inValidInputMetaDataUndefined
-input inputData: string (?)
+input inputData: string (The string representation of the JSON attribute that should be parsed)
 input inputMetaData: undefined
 output: ?
 
 testName: getAttributeValue_inValidInputMetaDataNaN
-input inputData: string (?)
+input inputData: string (The string representation of the JSON attribute that should be parsed)
 input inputMetaData: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: getValueFromAssignmentOperationString_validData
-input inputData: string (?)
-input inputMetaData: string (?)
-output: string (?)
+input inputData: string (The string that should be parsed for the value on the right side of the assignment operator)
+input inputMetaData: string (Not used for this business rule)
+output: string (The string value of whatever is on the right side of the assignment operator)
 
 testName: getValueFromAssignmentOperationString_inValidInputDataString
 input inputData: string (dfxg24346dfg)
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: getValueFromAssignmentOperationString_inValidInputMetaDataString
-input inputData: string (?)
-input inputMetaData: string (&)
+input inputData: string (The string that should be parsed for the value on the right side of the assignment operator)
+input inputMetaData: string (dfxg24346dfg)
 output: ?
 
 testName: getValueFromAssignmentOperationString_inValidInputDataInteger
 input inputData: integer (123)
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: getValueFromAssignmentOperationString_inValidInputDataBoolean
 input inputData: boolean (false)
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: getValueFromAssignmentOperationString_inValidInputMetaDataInteger
-input inputData: string (?)
+input inputData: string (The string that should be parsed for the value on the right side of the assignment operator)
 input inputMetaData: integer (123)
 output: ?
 
 testName: getValueFromAssignmentOperationString_inValidInputMetaDataBoolean
-input inputData: string (?)
+input inputData: string (The string that should be parsed for the value on the right side of the assignment operator)
 input inputMetaData: boolean (false)
 output: ?
 
 testName: getValueFromAssignmentOperationString_inValidInputDataUndefined
 input inputData: undefined
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: getValueFromAssignmentOperationString_inValidInputDataNaN
 input inputData: NaN
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: getValueFromAssignmentOperationString_inValidInputMetaDataUndefined
-input inputData: string (?)
+input inputData: string (The string that should be parsed for the value on the right side of the assignment operator)
 input inputMetaData: undefined
 output: ?
 
 testName: getValueFromAssignmentOperationString_inValidInputMetaDataNaN
-input inputData: string (?)
+input inputData: string (The string that should be parsed for the value on the right side of the assignment operator)
 input inputMetaData: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: getDataCategoryFromDataContextName_validData
-input inputData: string (?)
-input inputMetaData: string (?)
-output: string (?)
+input inputData: string (The data context name, which should also contain the data category separated by underscore)
+input inputMetaData: string (Not used for this business rule)
+output: string (The data category, such as Page or Test)
 
 testName: getDataCategoryFromDataContextName_inValidInputDataString
 input inputData: string (dfxg24346dfg)
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: getDataCategoryFromDataContextName_inValidInputMetaDataString
-input inputData: string (?)
-input inputMetaData: string (&)
+input inputData: string (The data context name, which should also contain the data category separated by underscore)
+input inputMetaData: string (dfxg24346dfg)
 output: ?
 
 testName: getDataCategoryFromDataContextName_inValidInputDataInteger
 input inputData: integer (123)
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: getDataCategoryFromDataContextName_inValidInputDataBoolean
 input inputData: boolean (false)
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: getDataCategoryFromDataContextName_inValidInputMetaDataInteger
-input inputData: string (?)
+input inputData: string (The data context name, which should also contain the data category separated by underscore)
 input inputMetaData: integer (123)
 output: ?
 
 testName: getDataCategoryFromDataContextName_inValidInputMetaDataBoolean
-input inputData: string (?)
+input inputData: string (The data context name, which should also contain the data category separated by underscore)
 input inputMetaData: boolean (false)
 output: ?
 
 testName: getDataCategoryFromDataContextName_inValidInputDataUndefined
 input inputData: undefined
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: getDataCategoryFromDataContextName_inValidInputDataNaN
 input inputData: NaN
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: getDataCategoryFromDataContextName_inValidInputMetaDataUndefined
-input inputData: string (?)
+input inputData: string (The data context name, which should also contain the data category separated by underscore)
 input inputMetaData: undefined
 output: ?
 
 testName: getDataCategoryFromDataContextName_inValidInputMetaDataNaN
-input inputData: string (?)
+input inputData: string (The data context name, which should also contain the data category separated by underscore)
 input inputMetaData: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: getDataCategoryDetailNameFromDataContextName_validData
-input inputData: string (?)
-input inputMetaData: string (?)
-output: string (?)
+input inputData: string (The data context name, which should also contain the data category and data category detail name separated by an underscore)
+input inputMetaData: string (Not used for this business rule)
+output: string (The data category detail name, such as ProjectDetails or ProjectList)
 
 testName: getDataCategoryDetailNameFromDataContextName_inValidInputDataString
 input inputData: string (dfxg24346dfg)
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: getDataCategoryDetailNameFromDataContextName_inValidInputMetaDataString
-input inputData: string (?)
-input inputMetaData: string (&)
+input inputData: string (The data context name, which should also contain the data category and data category detail name separated by an underscore)
+input inputMetaData: string (dfxg24346dfg)
 output: ?
 
 testName: getDataCategoryDetailNameFromDataContextName_inValidInputDataInteger
 input inputData: integer (123)
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: getDataCategoryDetailNameFromDataContextName_inValidInputDataBoolean
 input inputData: boolean (false)
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: getDataCategoryDetailNameFromDataContextName_inValidInputMetaDataInteger
-input inputData: string (?)
+input inputData: string (The data context name, which should also contain the data category and data category detail name separated by an underscore)
 input inputMetaData: integer (123)
 output: ?
 
 testName: getDataCategoryDetailNameFromDataContextName_inValidInputMetaDataBoolean
-input inputData: string (?)
+input inputData: string (The data context name, which should also contain the data category and data category detail name separated by an underscore)
 input inputMetaData: boolean (false)
 output: ?
 
 testName: getDataCategoryDetailNameFromDataContextName_inValidInputDataUndefined
 input inputData: undefined
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: getDataCategoryDetailNameFromDataContextName_inValidInputDataNaN
 input inputData: NaN
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: getDataCategoryDetailNameFromDataContextName_inValidInputMetaDataUndefined
-input inputData: string (?)
+input inputData: string (The data context name, which should also contain the data category and data category detail name separated by an underscore)
 input inputMetaData: undefined
 output: ?
 
 testName: getDataCategoryDetailNameFromDataContextName_inValidInputMetaDataNaN
-input inputData: string (?)
+input inputData: string (The data context name, which should also contain the data category and data category detail name separated by an underscore)
 input inputMetaData: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: getKeywordNameFromDataContextName_validData
-input inputData: string (?)
-input inputMetaData: string (?)
-output: string (?)
+input inputData: string (The data context name, which should also contain the data category and data category detail name and keyword name separated by an underscore)
+input inputMetaData: string (Not used for this business rule)
+output: string (The keyword name, such as DeleteEntireProject or EditProjectInfoClick)
 
 testName: getKeywordNameFromDataContextName_inValidInputDataString
 input inputData: string (dfxg24346dfg)
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: getKeywordNameFromDataContextName_inValidInputMetaDataString
-input inputData: string (?)
-input inputMetaData: string (&)
+input inputData: string (The data context name, which should also contain the data category and data category detail name and keyword name separated by an underscore)
+input inputMetaData: string (dfxg24346dfg)
 output: ?
 
 testName: getKeywordNameFromDataContextName_inValidInputDataInteger
 input inputData: integer (123)
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: getKeywordNameFromDataContextName_inValidInputDataBoolean
 input inputData: boolean (false)
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: getKeywordNameFromDataContextName_inValidInputMetaDataInteger
-input inputData: string (?)
+input inputData: string (The data context name, which should also contain the data category and data category detail name and keyword name separated by an underscore)
 input inputMetaData: integer (123)
 output: ?
 
 testName: getKeywordNameFromDataContextName_inValidInputMetaDataBoolean
-input inputData: string (?)
+input inputData: string (The data context name, which should also contain the data category and data category detail name and keyword name separated by an underscore)
 input inputMetaData: boolean (false)
 output: ?
 
 testName: getKeywordNameFromDataContextName_inValidInputDataUndefined
 input inputData: undefined
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: getKeywordNameFromDataContextName_inValidInputDataNaN
 input inputData: NaN
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: getKeywordNameFromDataContextName_inValidInputMetaDataUndefined
-input inputData: string (?)
+input inputData: string (The data context name, which should also contain the data category and data category detail name and keyword name separated by an underscore)
 input inputMetaData: undefined
 output: ?
 
 testName: getKeywordNameFromDataContextName_inValidInputMetaDataNaN
-input inputData: string (?)
+input inputData: string (The data context name, which should also contain the data category and data category detail name and keyword name separated by an underscore)
 input inputMetaData: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: loadDataFile_validData
-input inputData: string (?)
-input inputMetaData: string (?)
-output: boolean (?)
+input inputData: string (The full path and file name for the file that should be loaded into memory)
+input inputMetaData: string (The data hive path where the data should be stored once it is loaded)
+output: boolean (The data that was loaded, because sometimes a client command might need to use this to load data)
 
 testName: loadDataFile_inValidInputDataString
 input inputData: string (dfxg24346dfg)
-input inputMetaData: string (?)
+input inputMetaData: string (The data hive path where the data should be stored once it is loaded)
 output: ?
 
 testName: loadDataFile_inValidInputMetaDataString
-input inputData: string (?)
-input inputMetaData: string (&)
+input inputData: string (The full path and file name for the file that should be loaded into memory)
+input inputMetaData: string (dfxg24346dfg)
 output: ?
 
 testName: loadDataFile_inValidInputDataInteger
 input inputData: integer (123)
-input inputMetaData: string (?)
+input inputMetaData: string (The data hive path where the data should be stored once it is loaded)
 output: ?
 
 testName: loadDataFile_inValidInputDataBoolean
 input inputData: boolean (false)
-input inputMetaData: string (?)
+input inputMetaData: string (The data hive path where the data should be stored once it is loaded)
 output: ?
 
 testName: loadDataFile_inValidInputMetaDataInteger
-input inputData: string (?)
+input inputData: string (The full path and file name for the file that should be loaded into memory)
 input inputMetaData: integer (123)
 output: ?
 
 testName: loadDataFile_inValidInputMetaDataBoolean
-input inputData: string (?)
+input inputData: string (The full path and file name for the file that should be loaded into memory)
 input inputMetaData: boolean (false)
 output: ?
 
 testName: loadDataFile_inValidInputDataUndefined
 input inputData: undefined
-input inputMetaData: string (?)
+input inputMetaData: string (The data hive path where the data should be stored once it is loaded)
 output: ?
 
 testName: loadDataFile_inValidInputDataNaN
 input inputData: NaN
-input inputMetaData: string (?)
+input inputMetaData: string (The data hive path where the data should be stored once it is loaded)
 output: ?
 
 testName: loadDataFile_inValidInputMetaDataUndefined
-input inputData: string (?)
+input inputData: string (The full path and file name for the file that should be loaded into memory)
 input inputMetaData: undefined
 output: ?
 
 testName: loadDataFile_inValidInputMetaDataNaN
-input inputData: string (?)
+input inputData: string (The full path and file name for the file that should be loaded into memory)
 input inputMetaData: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: saveDataFile_validData
-input inputData: string (?)
-input inputMetaData: object (?)
-output: boolean (?)
+input inputData: string (The full path and file name were the data should be saved)
+input inputMetaData: object (The data that should be saved out to the specified file)
+output: boolean (True or False value to indicate if the file was saved successfully or not)
 
 testName: saveDataFile_inValidInputDataString
 input inputData: string (dfxg24346dfg)
-input inputMetaData: object (?)
+input inputMetaData: object (The data that should be saved out to the specified file)
 output: ?
 
 testName: saveDataFile_inValidInputMetaDataString
-input inputData: string (?)
-input inputMetaData: string (&)
+input inputData: string (The full path and file name were the data should be saved)
+input inputMetaData: string (dfxg24346dfg)
 output: ?
 
 testName: saveDataFile_inValidInputDataInteger
 input inputData: integer (123)
-input inputMetaData: object (?)
+input inputMetaData: object (The data that should be saved out to the specified file)
 output: ?
 
 testName: saveDataFile_inValidInputDataBoolean
 input inputData: boolean (false)
-input inputMetaData: object (?)
+input inputMetaData: object (The data that should be saved out to the specified file)
 output: ?
 
 testName: saveDataFile_inValidInputMetaDataInteger
-input inputData: string (?)
+input inputData: string (The full path and file name were the data should be saved)
 input inputMetaData: integer (123)
 output: ?
 
 testName: saveDataFile_inValidInputMetaDataBoolean
-input inputData: string (?)
+input inputData: string (The full path and file name were the data should be saved)
 input inputMetaData: boolean (false)
 output: ?
 
 testName: saveDataFile_inValidInputDataUndefined
 input inputData: undefined
-input inputMetaData: object (?)
+input inputMetaData: object (The data that should be saved out to the specified file)
 output: ?
 
 testName: saveDataFile_inValidInputDataNaN
 input inputData: NaN
-input inputMetaData: object (?)
+input inputMetaData: object (The data that should be saved out to the specified file)
 output: ?
 
 testName: saveDataFile_inValidInputMetaDataUndefined
-input inputData: string (?)
+input inputData: string (The full path and file name were the data should be saved)
 input inputMetaData: undefined
 output: ?
 
 testName: saveDataFile_inValidInputMetaDataNaN
-input inputData: string (?)
+input inputData: string (The full path and file name were the data should be saved)
 input inputMetaData: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: getUserNameFromEmail_validData
-input inputData: string (?)
-input inputMetaData: string (?)
-output: string (?)
+input inputData: string (A string that contains an email address value)
+input inputMetaData: string (Not used for this business rule)
+output: string (A string value of the sub-string from before the '@' symbol)
 
 testName: getUserNameFromEmail_inValidInputDataString
 input inputData: string (dfxg24346dfg)
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: getUserNameFromEmail_inValidInputMetaDataString
-input inputData: string (?)
-input inputMetaData: string (&)
+input inputData: string (A string that contains an email address value)
+input inputMetaData: string (dfxg24346dfg)
 output: ?
 
 testName: getUserNameFromEmail_inValidInputDataInteger
 input inputData: integer (123)
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: getUserNameFromEmail_inValidInputDataBoolean
 input inputData: boolean (false)
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: getUserNameFromEmail_inValidInputMetaDataInteger
-input inputData: string (?)
+input inputData: string (A string that contains an email address value)
 input inputMetaData: integer (123)
 output: ?
 
 testName: getUserNameFromEmail_inValidInputMetaDataBoolean
-input inputData: string (?)
+input inputData: string (A string that contains an email address value)
 input inputMetaData: boolean (false)
 output: ?
 
 testName: getUserNameFromEmail_inValidInputDataUndefined
 input inputData: undefined
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: getUserNameFromEmail_inValidInputDataNaN
 input inputData: NaN
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: getUserNameFromEmail_inValidInputMetaDataUndefined
-input inputData: string (?)
+input inputData: string (A string that contains an email address value)
 input inputMetaData: undefined
 output: ?
 
 testName: getUserNameFromEmail_inValidInputMetaDataNaN
-input inputData: string (?)
+input inputData: string (A string that contains an email address value)
 input inputMetaData: NaN
 output: ?

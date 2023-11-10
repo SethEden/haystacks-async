@@ -2,331 +2,331 @@ Description: Test plan for wordArrayParsing.js
 
 --------------------------------------------------------------------------------
 testName: convertCamelCaseStringToArray_validData
-input inputData: string (?)
-input inputMetaData: string (?)
-output: array<string> (?)
+input inputData: string (String to decompose into an array)
+input inputMetaData: string (Not used for this business rule)
+output: array<string> (The array of words that were composed in the original string)
 
 testName: convertCamelCaseStringToArray_inValidInputDataString
 input inputData: string (dfxg24346dfg)
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: convertCamelCaseStringToArray_inValidInputMetaDataString
-input inputData: string (?)
-input inputMetaData: string (&)
+input inputData: string (String to decompose into an array)
+input inputMetaData: string (dfxg24346dfg)
 output: ?
 
 testName: convertCamelCaseStringToArray_inValidInputDataInteger
 input inputData: integer (123)
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: convertCamelCaseStringToArray_inValidInputDataBoolean
 input inputData: boolean (false)
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: convertCamelCaseStringToArray_inValidInputMetaDataInteger
-input inputData: string (?)
+input inputData: string (String to decompose into an array)
 input inputMetaData: integer (123)
 output: ?
 
 testName: convertCamelCaseStringToArray_inValidInputMetaDataBoolean
-input inputData: string (?)
+input inputData: string (String to decompose into an array)
 input inputMetaData: boolean (false)
 output: ?
 
 testName: convertCamelCaseStringToArray_inValidInputDataUndefined
 input inputData: undefined
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: convertCamelCaseStringToArray_inValidInputDataNaN
 input inputData: NaN
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: convertCamelCaseStringToArray_inValidInputMetaDataUndefined
-input inputData: string (?)
+input inputData: string (String to decompose into an array)
 input inputMetaData: undefined
 output: ?
 
 testName: convertCamelCaseStringToArray_inValidInputMetaDataNaN
-input inputData: string (?)
+input inputData: string (String to decompose into an array)
 input inputMetaData: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: getWordsArrayFromString_validData
-input inputData: string (?)
-input inputMetaData: string (?)
-output: array<string> (?)
+input inputData: string (The string that should be broken down into words and returned as an array)
+input inputMetaData: string (Not used for this business rule)
+output: array<string> (The array of words found in the string)
 
 testName: getWordsArrayFromString_inValidInputDataString
 input inputData: string (dfxg24346dfg)
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: getWordsArrayFromString_inValidInputMetaDataString
-input inputData: string (?)
-input inputMetaData: string (&)
+input inputData: string (The string that should be broken down into words and returned as an array)
+input inputMetaData: string (dfxg24346dfg)
 output: ?
 
 testName: getWordsArrayFromString_inValidInputDataInteger
 input inputData: integer (123)
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: getWordsArrayFromString_inValidInputDataBoolean
 input inputData: boolean (false)
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: getWordsArrayFromString_inValidInputMetaDataInteger
-input inputData: string (?)
+input inputData: string (The string that should be broken down into words and returned as an array)
 input inputMetaData: integer (123)
 output: ?
 
 testName: getWordsArrayFromString_inValidInputMetaDataBoolean
-input inputData: string (?)
+input inputData: string (The string that should be broken down into words and returned as an array)
 input inputMetaData: boolean (false)
 output: ?
 
 testName: getWordsArrayFromString_inValidInputDataUndefined
 input inputData: undefined
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: getWordsArrayFromString_inValidInputDataNaN
 input inputData: NaN
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: getWordsArrayFromString_inValidInputMetaDataUndefined
-input inputData: string (?)
+input inputData: string (The string that should be broken down into words and returned as an array)
 input inputMetaData: undefined
 output: ?
 
 testName: getWordsArrayFromString_inValidInputMetaDataNaN
-input inputData: string (?)
+input inputData: string (The string that should be broken down into words and returned as an array)
 input inputMetaData: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: recombineStringArrayWithSpaces_validData
-input inputData: array<string> (?)
-input inputMetaData: string (?)
-output: string (?)
+input inputData: array<string> (The array of strings that should be recombined)
+input inputMetaData: string (Not used for this business rule)
+output: string (The string array with spaces between array elements)
 
 testName: recombineStringArrayWithSpaces_inValidInputDataString
 input inputData: string (dfxg24346dfg)
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: recombineStringArrayWithSpaces_inValidInputMetaDataString
-input inputData: array<string> (?)
-input inputMetaData: string (&)
+input inputData: array<string> (The array of strings that should be recombined)
+input inputMetaData: string (dfxg24346dfg)
 output: ?
 
 testName: recombineStringArrayWithSpaces_inValidInputDataInteger
 input inputData: integer (123)
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: recombineStringArrayWithSpaces_inValidInputDataBoolean
 input inputData: boolean (false)
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: recombineStringArrayWithSpaces_inValidInputMetaDataInteger
-input inputData: array<string> (?)
+input inputData: array<string> (The array of strings that should be recombined)
 input inputMetaData: integer (123)
 output: ?
 
 testName: recombineStringArrayWithSpaces_inValidInputMetaDataBoolean
-input inputData: array<string> (?)
+input inputData: array<string> (The array of strings that should be recombined)
 input inputMetaData: boolean (false)
 output: ?
 
 testName: recombineStringArrayWithSpaces_inValidInputDataUndefined
 input inputData: undefined
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: recombineStringArrayWithSpaces_inValidInputDataNaN
 input inputData: NaN
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: recombineStringArrayWithSpaces_inValidInputMetaDataUndefined
-input inputData: array<string> (?)
+input inputData: array<string> (The array of strings that should be recombined)
 input inputMetaData: undefined
 output: ?
 
 testName: recombineStringArrayWithSpaces_inValidInputMetaDataNaN
-input inputData: array<string> (?)
+input inputData: array<string> (The array of strings that should be recombined)
 input inputMetaData: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: convertArrayToCamelCaseString_validData
-input inputData: array<string> (?)
-input inputMetaData: string (?)
-output: string (?)
+input inputData: array<string> (The array of words that should be strung together into a single long string)
+input inputMetaData: string (Not used for this business rule)
+output: string (A string that contains all of the words from the input array put together in sequential order)
 
 testName: convertArrayToCamelCaseString_inValidInputDataString
 input inputData: string (dfxg24346dfg)
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: convertArrayToCamelCaseString_inValidInputMetaDataString
-input inputData: array<string> (?)
-input inputMetaData: string (&)
+input inputData: array<string> (The array of words that should be strung together into a single long string)
+input inputMetaData: string (dfxg24346dfg)
 output: ?
 
 testName: convertArrayToCamelCaseString_inValidInputDataInteger
 input inputData: integer (123)
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: convertArrayToCamelCaseString_inValidInputDataBoolean
 input inputData: boolean (false)
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: convertArrayToCamelCaseString_inValidInputMetaDataInteger
-input inputData: array<string> (?)
+input inputData: array<string> (The array of words that should be strung together into a single long string)
 input inputMetaData: integer (123)
 output: ?
 
 testName: convertArrayToCamelCaseString_inValidInputMetaDataBoolean
-input inputData: array<string> (?)
+input inputData: array<string> (The array of words that should be strung together into a single long string)
 input inputMetaData: boolean (false)
 output: ?
 
 testName: convertArrayToCamelCaseString_inValidInputDataUndefined
 input inputData: undefined
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: convertArrayToCamelCaseString_inValidInputDataNaN
 input inputData: NaN
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: convertArrayToCamelCaseString_inValidInputMetaDataUndefined
-input inputData: array<string> (?)
+input inputData: array<string> (The array of words that should be strung together into a single long string)
 input inputMetaData: undefined
 output: ?
 
 testName: convertArrayToCamelCaseString_inValidInputMetaDataNaN
-input inputData: array<string> (?)
+input inputData: array<string> (The array of words that should be strung together into a single long string)
 input inputMetaData: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: doesArrayContainLowerCaseConsolidatedString_validData
-input inputData: array<string> (?)
-input inputMetaData: string (?)
-output: boolean (?)
+input inputData: array<string> (The array of strings that should be checked if it contains the specified string)
+input inputMetaData: string (The string we are looking for in the array)
+output: boolean (A Boolean to indicate if the string is found in the array or not)
 
 testName: doesArrayContainLowerCaseConsolidatedString_inValidInputDataString
 input inputData: string (dfxg24346dfg)
-input inputMetaData: string (?)
+input inputMetaData: string (The string we are looking for in the array)
 output: ?
 
 testName: doesArrayContainLowerCaseConsolidatedString_inValidInputMetaDataString
-input inputData: array<string> (?)
-input inputMetaData: string (&)
+input inputData: array<string> (The array of strings that should be checked if it contains the specified string)
+input inputMetaData: string (dfxg24346dfg)
 output: ?
 
 testName: doesArrayContainLowerCaseConsolidatedString_inValidInputDataInteger
 input inputData: integer (123)
-input inputMetaData: string (?)
+input inputMetaData: string (The string we are looking for in the array)
 output: ?
 
 testName: doesArrayContainLowerCaseConsolidatedString_inValidInputDataBoolean
 input inputData: boolean (false)
-input inputMetaData: string (?)
+input inputMetaData: string (The string we are looking for in the array)
 output: ?
 
 testName: doesArrayContainLowerCaseConsolidatedString_inValidInputMetaDataInteger
-input inputData: array<string> (?)
+input inputData: array<string> (The array of strings that should be checked if it contains the specified string)
 input inputMetaData: integer (123)
 output: ?
 
 testName: doesArrayContainLowerCaseConsolidatedString_inValidInputMetaDataBoolean
-input inputData: array<string> (?)
+input inputData: array<string> (The array of strings that should be checked if it contains the specified string)
 input inputMetaData: boolean (false)
 output: ?
 
 testName: doesArrayContainLowerCaseConsolidatedString_inValidInputDataUndefined
 input inputData: undefined
-input inputMetaData: string (?)
+input inputMetaData: string (The string we are looking for in the array)
 output: ?
 
 testName: doesArrayContainLowerCaseConsolidatedString_inValidInputDataNaN
 input inputData: NaN
-input inputMetaData: string (?)
+input inputMetaData: string (The string we are looking for in the array)
 output: ?
 
 testName: doesArrayContainLowerCaseConsolidatedString_inValidInputMetaDataUndefined
-input inputData: array<string> (?)
+input inputData: array<string> (The array of strings that should be checked if it contains the specified string)
 input inputMetaData: undefined
 output: ?
 
 testName: doesArrayContainLowerCaseConsolidatedString_inValidInputMetaDataNaN
-input inputData: array<string> (?)
+input inputData: array<string> (The array of strings that should be checked if it contains the specified string)
 input inputMetaData: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: ascertainMatchingElements_validData
-input inputData: array<string|boolean|integer|float|object> (?)
-input inputMetaData: array<string|boolean|integer|float|object> (?)
-output: boolean (?)
+input inputData: array<string|boolean|integer|float|object> (An array that should be compared for equality)
+input inputMetaData: array<string|boolean|integer|float|object> (Second array that should be compared for equality)
+output: boolean (True or False to indicate array equality or not)
 
 testName: ascertainMatchingElements_inValidInputDataString
 input inputData: string (dfxg24346dfg)
-input inputMetaData: array<string|boolean|integer|float|object> (?)
+input inputMetaData: array<string|boolean|integer|float|object> (Second array that should be compared for equality)
 output: ?
 
 testName: ascertainMatchingElements_inValidInputMetaDataString
-input inputData: array<string|boolean|integer|float|object> (?)
-input inputMetaData: string (&)
+input inputData: array<string|boolean|integer|float|object> (An array that should be compared for equality)
+input inputMetaData: string (dfxg24346dfg)
 output: ?
 
 testName: ascertainMatchingElements_inValidInputDataInteger
 input inputData: integer (123)
-input inputMetaData: array<string|boolean|integer|float|object> (?)
+input inputMetaData: array<string|boolean|integer|float|object> (Second array that should be compared for equality)
 output: ?
 
 testName: ascertainMatchingElements_inValidInputDataBoolean
 input inputData: boolean (false)
-input inputMetaData: array<string|boolean|integer|float|object> (?)
+input inputMetaData: array<string|boolean|integer|float|object> (Second array that should be compared for equality)
 output: ?
 
 testName: ascertainMatchingElements_inValidInputMetaDataInteger
-input inputData: array<string|boolean|integer|float|object> (?)
+input inputData: array<string|boolean|integer|float|object> (An array that should be compared for equality)
 input inputMetaData: integer (123)
 output: ?
 
 testName: ascertainMatchingElements_inValidInputMetaDataBoolean 
-input inputData: array<string|boolean|integer|float|object> (?)
+input inputData: array<string|boolean|integer|float|object> (An array that should be compared for equality)
 input inputMetaData: boolean (false)
 output: ?
 
 testName: ascertainMatchingElements_inValidInputDataUndefined
 input inputData: undefined 
-input inputMetaData: array<string|boolean|integer|float|object> (?)
+input inputMetaData: array<string|boolean|integer|float|object> (Second array that should be compared for equality)
 output: ?
 
 testName: ascertainMatchingElements_inValidInputDataNaN
 input inputData: NaN
-input inputMetaData: array<string|boolean|integer|float|object> (?)
+input inputMetaData: array<string|boolean|integer|float|object> (Second array that should be compared for equality)
 output: ?
 
 testName: ascertainMatchingElements_inValidInputMetaDataUndefined
-input inputData: array<string|boolean|integer|float|object> (?)
+input inputData: array<string|boolean|integer|float|object> (An array that should be compared for equality)
 input inputMetaData: undefined
 output: ?
 
 testName: ascertainMatchingElements_inValidInputMetaDataNaN
-input inputData: array<string|boolean|integer|float|object> (?)
+input inputData: array<string|boolean|integer|float|object> (An array that should be compared for equality)
 input inputMetaData: NaN
 output: ?

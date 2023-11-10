@@ -60,7 +60,7 @@ async function getFileNameFromPath(inputData, inputMetaData) {
  * @description Parses the file name and it may or may not also include the full path,
  * but regardless it gets the file extension of the file.
  * @param {string} inputData The string that should contain the file name to which we want to get the file extension from.
- * @param {string} inputMetaData Not sued for this business rule.
+ * @param {string} inputMetaData Not used for this business rule.
  * @return {string} The file extension such as txt, xml, csv, etc...
  * @author Seth Hollingsead
  * @date 2022/01/23

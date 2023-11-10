@@ -34,7 +34,7 @@ const namespacePrefix = wrd.cframework + bas.cDot + sys.cbusinessRules + bas.cDo
  * @function validateConstantsDataValidation
  * @description Validates that validation data to ensure that all the contents of the
  * constants validation data matches with the actual constants definitions.
- * @param {string} inputData the path of the constants file that should be validated.
+ * @param {string} inputData The path of the constants file that should be validated.
  * @param {string} inputMetaData The name of the data hive that contains the appropriate matching constants validation data.
  * @return {boolean} True or False to indicate if all of the contents of the constants are fully validated or not.
  * @author Seth Hollingsead
@@ -219,7 +219,7 @@ async function determineSuggestedConstantsValidationLineOfCode(inputData, inputM
 /**
  * @function validateConstantsDataValidationLineItemName
  * @description Loops through all of the constants validation data and verifies if a matching constant definition can be found, or not found.
- * @param {string} inputData the constant definition that should be searched for.
+ * @param {string} inputData The constant definition that should be searched for.
  * @param {string} inputMetaData The name of the data hive that contains the appropriate matching constants validation data.
  * @return {boolean} True or False to indicate if a match was found or not found.
  * @author Seth Hollingsead
@@ -994,7 +994,7 @@ async function convertConstantTypeToConstantPrefix(inputData, inputMetaData) {
 /**
  * @function constantsOptimizedFulfillmentSystem
  * @description Determines what is the most optimized way to define a string using existing constant strings.
- * @param {string} inputData the string that should be determined or find a constant to fulfill part of the string.
+ * @param {string} inputData The string that should be determined or find a constant to fulfill part of the string.
  * @param {string} inputMetaData Not used for this business rule.
  * @return {string} A constant that represents part of the input string.
  * @author Seth Hollingsead
