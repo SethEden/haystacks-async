@@ -2,881 +2,991 @@ Description: Test plan for characterGeneration.js
 
 --------------------------------------------------------------------------------
 testName: randomlyGenerateMixedCaseLetterOrSpecialCharacter_validData
-input inputData: string (?)
-input inputMetaData: string (?)
-output: string (?)
+input inputData: string (The list of allowable special characters that should be used to randomly select from)
+input inputMetaData: string (Not used for this business rule)
+output: string (Randomly returns a random mixed case letter of the english alphabet, or a random special character from the list of allowable special characters)
 
 testName: randomlyGenerateMixedCaseLetterOrSpecialCharacter_inValidInputDataString
 input inputData: string (dfxg24346dfg)
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: randomlyGenerateMixedCaseLetterOrSpecialCharacter_inValidInputMetaDataString
-input inputData: string (?)
-input inputMetaData: string (&)
+input inputData: string (The list of allowable special characters that should be used to randomly select from)
+input inputMetaData: string (dfxg24346dfg)
 output: ?
 
 testName: randomlyGenerateMixedCaseLetterOrSpecialCharacter_inValidInputDataInteger
 input inputData: integer (123)
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: randomlyGenerateMixedCaseLetterOrSpecialCharacter_inValidInputDataBoolean
 input inputData: boolean (false)
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: randomlyGenerateMixedCaseLetterOrSpecialCharacter_inValidInputMetaDataInteger
-input inputData: string (?)
+input inputData: string (The list of allowable special characters that should be used to randomly select from)
 input inputMetaData: integer (123)
 output: ?
 
 testName: randomlyGenerateMixedCaseLetterOrSpecialCharacter_inValidInputMetaDataBoolean
-input inputData: string (?)
+input inputData: string (The list of allowable special characters that should be used to randomly select from)
 input inputMetaData: boolean (false)
 output: ?
 
 testName: randomlyGenerateMixedCaseLetterOrSpecialCharacter_inValidInputDataUndefined
 input inputData: undefined
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: randomlyGenerateMixedCaseLetterOrSpecialCharacter_inValidInputDataNaN
 input inputData: NaN
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: randomlyGenerateMixedCaseLetterOrSpecialCharacter_inValidInputMetaDataUndefined
-input inputData: string (?)
+input inputData: string (The list of allowable special characters that should be used to randomly select from)
 input inputMetaData: undefined
 output: ?
 
 testName: randomlyGenerateMixedCaseLetterOrSpecialCharacter_inValidInputMetaDataNaN
-input inputData: string (?)
+input inputData: string (The list of allowable special characters that should be used to randomly select from)
 input inputMetaData: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: randomlyGenerateUpperCaseLetterOrSpecialCharacter_validData
-input inputData: string (?)
-input inputMetaData: string (?)
-output: string (?)
+input inputData: string (The list of allowable special characters that should be used to randomly select from)
+input inputMetaData: string (Not used for this business rule)
+output: string (Randomly returns a random upper case letter of the english alphabet, or a random special character from the ist of allowable special characters)
 
 testName: randomlyGenerateUpperCaseLetterOrSpecialCharacter_inValidInputDataString
 input inputData: string (dfxg24346dfg)
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: randomlyGenerateUpperCaseLetterOrSpecialCharacter_inValidInputMetaDataString
-input inputData: string (?)
-input inputMetaData: string (&)
+input inputData: string (The list of allowable special characters that should be used to randomly select from)
+input inputMetaData: string (dfxg24346dfg)
 output: ?
 
 testName: randomlyGenerateUpperCaseLetterOrSpecialCharacter_inValidInputDataInteger
 input inputData: integer (123)
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: randomlyGenerateUpperCaseLetterOrSpecialCharacter_inValidInputDataBoolean
 input inputData: boolean (false)
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: randomlyGenerateUpperCaseLetterOrSpecialCharacter_inValidInputMetaDataInteger
-input inputData: string (?)
+input inputData: string (The list of allowable special characters that should be used to randomly select from)
 input inputMetaData: integer (123)
 output: ?
 
 testName: randomlyGenerateUpperCaseLetterOrSpecialCharacter_inValidInputMetaDataBoolean
-input inputData: string (?)
+input inputData: string (The list of allowable special characters that should be used to randomly select from)
 input inputMetaData: boolean (false)
 output: ?
 
 testName: randomlyGenerateUpperCaseLetterOrSpecialCharacter_inValidInputDataUndefined
 input inputData: undefined
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: randomlyGenerateUpperCaseLetterOrSpecialCharacter_inValidInputDataNaN
 input inputData: NaN
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: randomlyGenerateUpperCaseLetterOrSpecialCharacter_inValidInputMetaDataUndefined
-input inputData: string (?)
+input inputData: string (The list of allowable special characters that should be used to randomly select from)
 input inputMetaData: undefined
 output: ?
 
 testName: randomlyGenerateUpperCaseLetterOrSpecialCharacter_inValidInputMetaDataNaN
-input inputData: string (?)
+input inputData: string (The list of allowable special characters that should be used to randomly select from)
 input inputMetaData: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: randomlyGenerateLowerCaseLetterOrSpecialCharacter_validData
-input inputData: string (?)
-input inputMetaData: string (?)
-output: string (?)
+input inputData: string (The list of allowable special characters that should be used to randomly select from)
+input inputMetaData: string (Not used for this business rule)
+output: string (Randomly returns a random lower case letter of the english alphabet, or a random special character from the list of allowable special characters)
 
 testName: randomlyGenerateLowerCaseLetterOrSpecialCharacter_inValidInputDataString
 input inputData: string (dfxg24346dfg)
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: randomlyGenerateLowerCaseLetterOrSpecialCharacter_inValidInputMetaDataString
-input inputData: string (?)
-input inputMetaData: string (&)
+input inputData: string (The list of allowable special characters that should be used to randomly select from)
+input inputMetaData: string (dfxg24346dfg)
 output: ?
 
 testName: randomlyGenerateLowerCaseLetterOrSpecialCharacter_inValidInputDataInteger
 input inputData: integer (123)
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: randomlyGenerateLowerCaseLetterOrSpecialCharacter_inValidInputDataBoolean
 input inputData: boolean (false)
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: randomlyGenerateLowerCaseLetterOrSpecialCharacter_inValidInputMetaDataInteger
-input inputData: string (?)
+input inputData: string (The list of allowable special characters that should be used to randomly select from)
 input inputMetaData: integer (123)
 output: ?
 
 testName: randomlyGenerateLowerCaseLetterOrSpecialCharacter_inValidInputMetaDataBoolean
-input inputData: string (?)
+input inputData: string (The list of allowable special characters that should be used to randomly select from)
 input inputMetaData: boolean (false)
 output: ?
 
 testName: randomlyGenerateLowerCaseLetterOrSpecialCharacter_inValidInputDataUndefined
 input inputData: undefined
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: randomlyGenerateLowerCaseLetterOrSpecialCharacter_inValidInputDataNaN
 input inputData: NaN
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: randomlyGenerateLowerCaseLetterOrSpecialCharacter_inValidInputMetaDataUndefined
-input inputData: string (?)
+input inputData: string (The list of allowable special characters that should be used to randomly select from)
 input inputMetaData: undefined
 output: ?
 
 testName: randomlyGenerateLowerCaseLetterOrSpecialCharacter_inValidInputMetaDataNaN
-input inputData: string (?)
+input inputData: string (The list of allowable special characters that should be used to randomly select from)
 input inputMetaData: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: randomlyGenerateEitherMixedCaseLetterOrNumberOrSpecialCharacter_validData
-input inputData: string (?)
-input inputMetaData: string (?)
-output: string (?)
+input inputData: string (The list of allowable special characters that should be used to randomly select from)
+input inputMetaData: string (Not used for this business rule)
+output: string (Randomly returns a random number, a random mixed case letter of the english alphabet, or a random special character from the ist of allowable special characters)
 
 testName: randomlyGenerateEitherMixedCaseLetterOrNumberOrSpecialCharacter_inValidInputDataString
 input inputData: string (dfxg24346dfg)
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: randomlyGenerateEitherMixedCaseLetterOrNumberOrSpecialCharacter_inValidInputMetaDataString
-input inputData: string (?)
-input inputMetaData: string (&)
+input inputData: string (The list of allowable special characters that should be used to randomly select from)
+input inputMetaData: string (dfxg24346dfg)
 output: ?
 
 testName: randomlyGenerateEitherMixedCaseLetterOrNumberOrSpecialCharacter_inValidInputDataInteger
 input inputData: integer (123)
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: randomlyGenerateEitherMixedCaseLetterOrNumberOrSpecialCharacter_inValidInputDataBoolean
 input inputData: boolean (false)
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: randomlyGenerateEitherMixedCaseLetterOrNumberOrSpecialCharacter_inValidInputMetaDataInteger
-input inputData: string (?)
+input inputData: string (The list of allowable special characters that should be used to randomly select from)
 input inputMetaData: integer (123)
 output: ?
 
 testName: randomlyGenerateEitherMixedCaseLetterOrNumberOrSpecialCharacter_inValidInputMetaDataBoolean
-input inputData: string (?)
+input inputData: string (The list of allowable special characters that should be used to randomly select from)
 input inputMetaData: boolean (false)
 output: ?
 
 testName: randomlyGenerateEitherMixedCaseLetterOrNumberOrSpecialCharacter_inValidInputDataUndefined
 input inputData: undefined
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: randomlyGenerateEitherMixedCaseLetterOrNumberOrSpecialCharacter_inValidInputDataNaN
 input inputData: NaN
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: randomlyGenerateEitherMixedCaseLetterOrNumberOrSpecialCharacter_inValidInputMetaDataUndefined
-input inputData: string (?)
+input inputData: string (The list of allowable special characters that should be used to randomly select from)
 input inputMetaData: undefined
 output: ?
 
 testName: randomlyGenerateEitherMixedCaseLetterOrNumberOrSpecialCharacter_inValidInputMetaDataNaN
-input inputData: string (?)
+input inputData: string (The list of allowable special characters that should be used to randomly select from)
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: randomlyGenerateEitherUpperCaseLetterOrNumberOrSpecialCharacter_validDataString
+input inputData: string (The list of allowable special characters that should be used to randomly select from)
+input inputMetaData: string (Not used for this business rule)
+output: string (Randomly returns a random number, a random upper case letter of the english alphabet, or a random special character from the list of allowable special characters)
+
+testName: randomlyGenerateEitherUpperCaseLetterOrNumberOrSpecialCharacter_inValidDataInputDataString
+input inputData: string (dfxg24346dfg)
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: randomlyGenerateEitherUpperCaseLetterOrNumberOrSpecialCharacter_inValidDataInputMetaDataString
+input inputData: string (The list of allowable special characters that should be used to randomly select from)
+input inputMetaData: string (dfxg24346dfg)
+output: ?
+
+testName: randomlyGenerateEitherUpperCaseLetterOrNumberOrSpecialCharacter_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: randomlyGenerateEitherUpperCaseLetterOrNumberOrSpecialCharacter_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: randomlyGenerateEitherUpperCaseLetterOrNumberOrSpecialCharacter_inValidInputMetaDataInteger
+input inputData: string (The list of allowable special characters that should be used to randomly select from)
+input inputMetaData: string
+output: ?
+
+testName: randomlyGenerateEitherUpperCaseLetterOrNumberOrSpecialCharacter_inValidInputMetaDataBoolean
+input inputData: string (The list of allowable special characters that should be used to randomly select from)
+input inputMetaData: string
+output: ?
+
+testName: randomlyGenerateEitherUpperCaseLetterOrNumberOrSpecialCharacter_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: randomlyGenerateEitherUpperCaseLetterOrNumberOrSpecialCharacter_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: randomlyGenerateEitherUpperCaseLetterOrNumberOrSpecialCharacter_inValidInputMetaDataUndefined
+input inputData: string (The list of allowable special characters that should be used to randomly select from)
+input inputMetaData: undefined
+output: ?
+
+testName: randomlyGenerateEitherUpperCaseLetterOrNumberOrSpecialCharacter_inValidInputMetaDataNaN
+input inputData: string (The list of allowable special characters that should be used to randomly select from)
 input inputMetaData: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: randomlyGenerateEitherLowerCaseLetterOrNumberOrSpecialCharacter_validData
-input inputData: string (?)
-input inputMetaData: string (?)
-output: string (?)
+input inputData: string (The list of allowable special characters that should be used to randomly select from)
+input inputMetaData: string (Not used for this business rule)
+output: string (Randomly returns a random number, a random lower case letter of the english alphabet, or a random special character from the list of allowable special characters)
 
 testName: randomlyGenerateEitherLowerCaseLetterOrNumberOrSpecialCharacter_inValidInputDataString
 input inputData: string (dfxg24346dfg)
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: randomlyGenerateEitherLowerCaseLetterOrNumberOrSpecialCharacter_inValidInputMetaDataString
-input inputData: string (?)
-input inputMetaData: string (&)
+input inputData: string (The list of allowable special characters that should be used to randomly select from)
+input inputMetaData: string (dfxg24346dfg)
 output: ?
 
 testName: randomlyGenerateEitherLowerCaseLetterOrNumberOrSpecialCharacter_inValidInputDataInteger
 input inputData: integer (123)
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: randomlyGenerateEitherLowerCaseLetterOrNumberOrSpecialCharacter_inValidInputDataBoolean
 input inputData: boolean (false)
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: randomlyGenerateEitherLowerCaseLetterOrNumberOrSpecialCharacter_inValidInputMetaDataInteger
-input inputData: string (?)
+input inputData: string (The list of allowable special characters that should be used to randomly select from)
 input inputMetaData: integer (123)
 output: ?
 
 testName: randomlyGenerateEitherLowerCaseLetterOrNumberOrSpecialCharacter_inValidInputMetaDataBoolean
-input inputData: string (?)
+input inputData: string (The list of allowable special characters that should be used to randomly select from)
 input inputMetaData: boolean (false)
 output: ?
 
 testName: randomlyGenerateEitherLowerCaseLetterOrNumberOrSpecialCharacter_inValidInputDataUndefined
 input inputData: undefined
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: randomlyGenerateEitherLowerCaseLetterOrNumberOrSpecialCharacter_inValidInputDataNaN
 input inputData: NaN
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: randomlyGenerateEitherLowerCaseLetterOrNumberOrSpecialCharacter_inValidInputMetaDataUndefined
-input inputData: string (?)
+input inputData: string (The list of allowable special characters that should be used to randomly select from)
 input inputMetaData: undefined
 output: ?
 
 testName: randomlyGenerateEitherLowerCaseLetterOrNumberOrSpecialCharacter_inValidInputMetaDataNaN
-input inputData: string (?)
+input inputData: string (The list of allowable special characters that should be used to randomly select from)
 input inputMetaData: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: randomlyGenerateMixedCaseAlphaNumericCharacter_validData
-input inputData: string (?)
-input inputMetaData: string (?)
-output: string (?)
+input inputData: string (Not used for this business rule)
+input inputMetaData: string (Not used for this business rule)
+output: string (Either a random letter (could be upper case or lower case, which is also random) or a random number)
 
 testName: randomlyGenerateMixedCaseAlphaNumericCharacter_inValidInputDataString
 input inputData: string (dfxg24346dfg)
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: randomlyGenerateMixedCaseAlphaNumericCharacter_inValidInputMetaDataString
-input inputData: string (?)
-input inputMetaData: string (&)
+input inputData: string (Not used for this business rule)
+input inputMetaData: string (dfxg24346dfg)
 output: ?
 
 testName: randomlyGenerateMixedCaseAlphaNumericCharacter_inValidInputDataInteger
 input inputData: integer (123)
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: randomlyGenerateMixedCaseAlphaNumericCharacter_inValidInputDataBoolean
 input inputData: boolean (false)
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: randomlyGenerateMixedCaseAlphaNumericCharacter_inValidInputMetaDataInteger
-input inputData: string (?)
+input inputData: string (Not used for this business rule)
 input inputMetaData: integer (123)
 output: ?
 
 testName: randomlyGenerateMixedCaseAlphaNumericCharacter_inValidInputMetaDataBoolean
-input inputData: string (?)
+input inputData: string (Not used for this business rule)
 input inputMetaData: boolean (false)
 output: ?
 
 testName: randomlyGenerateMixedCaseAlphaNumericCharacter_inValidInputDataUndefined
 input inputData: undefined
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: randomlyGenerateMixedCaseAlphaNumericCharacter_inValidInputDataNaN
 input inputData: NaN
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: randomlyGenerateMixedCaseAlphaNumericCharacter_inValidInputMetaDataUndefined
-input inputData: string (?)
+input inputData: string (Not used for this business rule)
 input inputMetaData: undefined
 output: ?
 
 testName: randomlyGenerateMixedCaseAlphaNumericCharacter_inValidInputMetaDataNaN
-input inputData: string (?)
+input inputData: string (Not used for this business rule)
 input inputMetaData: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: randomlyGenerateUpperCaseAlphaNumericCharacter_validData
-input inputData: string (?)
-input inputMetaData: string (?)
-output: string (?)
+input inputData: string (Not used for this business rule)
+input inputMetaData: string (Not used for this business rule)
+output: string (Either a random upper case letter or a random number)
 
 testName: randomlyGenerateUpperCaseAlphaNumericCharacter_inValidInputDataString
 input inputData: string (dfxg24346dfg)
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: randomlyGenerateUpperCaseAlphaNumericCharacter_inValidInputMetaDataString
-input inputData: string (?)
-input inputMetaData: string (&)
+input inputData: string (Not used for this business rule)
+input inputMetaData: string (dfxg24346dfg)
 output: ?
 
 testName: randomlyGenerateUpperCaseAlphaNumericCharacter_inValidInputDataInteger
 input inputData: integer (123)
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: randomlyGenerateUpperCaseAlphaNumericCharacter_inValidInputDataBoolean
 input inputData: boolean (false)
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: randomlyGenerateUpperCaseAlphaNumericCharacter_inValidInputMetaDataInteger
-input inputData: string (?)
+input inputData: string (Not used for this business rule)
 input inputMetaData: integer (123)
 output: ?
 
 testName: randomlyGenerateUpperCaseAlphaNumericCharacter_inValidInputMetaDataBoolean
-input inputData: string (?)
+input inputData: string (Not used for this business rule)
 input inputMetaData: boolean (false)
 output: ?
 
 testName: randomlyGenerateUpperCaseAlphaNumericCharacter_inValidInputDataUndefined
 input inputData: undefined
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: randomlyGenerateUpperCaseAlphaNumericCharacter_inValidInputDataNaN
 input inputData: NaN
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: randomlyGenerateUpperCaseAlphaNumericCharacter_inValidInputMetaDataUndefined
-input inputData: string (?)
+input inputData: string (Not used for this business rule)
 input inputMetaData: undefined
 output: ?
 
 testName: randomlyGenerateUpperCaseAlphaNumericCharacter_inValidInputMetaDataNaN
-input inputData: string (?)
+input inputData: string (Not used for this business rule)
 input inputMetaData: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: randomlyGenerateLowerCaseAlphaNumericCharacter_validData
-input inputData: string (?)
-input inputMetaData: string (?)
-output: string (?)
+input inputData: string (Not used for this business rule)
+input inputMetaData: string (Not used for this business rule)
+output: string (Either a random lower case letter or a random number)
 
 testName: randomlyGenerateLowerCaseAlphaNumericCharacter_inValidInputDataString
 input inputData: string (dfxg24346dfg)
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: randomlyGenerateLowerCaseAlphaNumericCharacter_inValidInputMetaDataString
-input inputData: string (?)
-input inputMetaData: string (&)
+input inputData: string (Not used for this business rule)
+input inputMetaData: string (dfxg24346dfg)
 output: ?
 
 testName: randomlyGenerateLowerCaseAlphaNumericCharacter_inValidInputDataInteger
 input inputData: integer (123)
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: randomlyGenerateLowerCaseAlphaNumericCharacter_inValidInputDataBoolean
 input inputData: boolean (false)
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: randomlyGenerateLowerCaseAlphaNumericCharacter_inValidInputMetaDataInteger
-input inputData: string (?)
+input inputData: string (Not used for this business rule)
 input inputMetaData: integer (123)
 output: ?
 
 testName: randomlyGenerateLowerCaseAlphaNumericCharacter_inValidInputMetaDataBoolean
-input inputData: string (?)
+input inputData: string (Not used for this business rule)
 input inputMetaData: boolean (false)
 output: ?
 
 testName: randomlyGenerateLowerCaseAlphaNumericCharacter_inValidInputDataUndefined
 input inputData: undefined
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: randomlyGenerateLowerCaseAlphaNumericCharacter_inValidInputDataNaN
 input inputData: NaN
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: randomlyGenerateLowerCaseAlphaNumericCharacter_inValidInputMetaDataUndefined
-input inputData: string (?)
+input inputData: string (Not used for this business rule)
 input inputMetaData: undefined
 output: ?
 
 testName: randomlyGenerateLowerCaseAlphaNumericCharacter_inValidInputMetaDataNaN
-input inputData: string (?)
+input inputData: string (Not used for this business rule)
 input inputMetaData: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: randomlyGenerateNumericCharacter_validData
-input inputData: string (?)
-input inputMetaData: string (?)
-output: string (?)
+input inputData: string (Not used for this business rule)
+input inputMetaData: string (Not used for this business rule)
+output: string (A single randomly generated string character in the range of 0-9)
 
 testName: randomlyGenerateNumericCharacter_inValidInputDataString
 input inputData: string (dfxg24346dfg)
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: randomlyGenerateNumericCharacter_inValidInputMetaDataString
-input inputData: string (?)
-input inputMetaData: string (&)
+input inputData: string (Not used for this business rule)
+input inputMetaData: string (dfxg24346dfg)
 output: ?
 
 testName: randomlyGenerateNumericCharacter_inValidInputDataInteger
 input inputData: integer (123)
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: randomlyGenerateNumericCharacter_inValidInputDataBoolean
 input inputData: boolean (false)
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: randomlyGenerateNumericCharacter_inValidInputMetaDataInteger
-input inputData: string (?)
+input inputData: string (Not used for this business rule)
 input inputMetaData: integer (123)
 output: ?
 
 testName: randomlyGenerateNumericCharacter_inValidInputMetaDataBoolean
-input inputData: string (?)
+input inputData: string (Not used for this business rule)
 input inputMetaData: boolean (false)
 output: ?
 
 testName: randomlyGenerateNumericCharacter_inValidInputDataUndefined
 input inputData: undefined
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: randomlyGenerateNumericCharacter_inValidInputDataNaN
 input inputData: NaN
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: randomlyGenerateNumericCharacter_inValidInputMetaDataUndefined
-input inputData: string (?)
+input inputData: string (Not used for this business rule)
 input inputMetaData: undefined
 output: ?
 
 testName: randomlyGenerateNumericCharacter_inValidInputMetaDataNaN
-input inputData: string (?)
+input inputData: string (Not used for this business rule)
 input inputMetaData: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: randomlyGenerateSpecialCharacter_validData
-input inputData: string (?)
-input inputMetaData: string (?)
-output: string (?)
+input inputData: string (The list of allowable special characters that should be used to randomly select from)
+input inputMetaData: string (Not used for this business rule)
+output: string (A character randomly selected from the input list of allowable characters)
 
 testName: randomlyGenerateSpecialCharacter_inValidInputDataString
 input inputData: string (dfxg24346dfg)
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: randomlyGenerateSpecialCharacter_inValidInputMetaDataString
-input inputData: string (?)
-input inputMetaData: string (&)
+input inputData: string (The list of allowable special characters that should be used to randomly select from)
+input inputMetaData: string (dfxg24346dfg)
 output: ?
 
 testName: randomlyGenerateSpecialCharacter_inValidInputDataInteger
 input inputData: integer (123)
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: randomlyGenerateSpecialCharacter_inValidInputDataBoolean
 input inputData: boolean (false)
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: randomlyGenerateSpecialCharacter_inValidInputMetaDataInteger
-input inputData: string (?)
+input inputData: string (The list of allowable special characters that should be used to randomly select from)
 input inputMetaData: integer (123)
 output: ?
 
 testName: randomlyGenerateSpecialCharacter_inValidInputMetaDataBoolean
-input inputData: string (?)
+input inputData: string (The list of allowable special characters that should be used to randomly select from)
 input inputMetaData: boolean (false)
 output: ?
 
 testName: randomlyGenerateSpecialCharacter_inValidInputDataUndefined
 input inputData: undefined
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: randomlyGenerateSpecialCharacter_inValidInputDataNaN
 input inputData: NaN
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: randomlyGenerateSpecialCharacter_inValidInputMetaDataUndefined
-input inputData: string (?)
+input inputData: string (The list of allowable special characters that should be used to randomly select from)
 input inputMetaData: undefined
 output: ?
 
 testName: randomlyGenerateSpecialCharacter_inValidInputMetaDataNaN
-input inputData: string (?)
+input inputData: string (The list of allowable special characters that should be used to randomly select from)
 input inputMetaData: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: randomlyGenerateNumberInRange_validData
-input inputData: string (?)
-input inputMetaData: array<string|integer,boolean,boolean> (?)
-output: string (?)
+input inputData: string (A string that contains the number with the minimum value)
+input inputMetaData: array<string|integer,boolean,boolean> (An array with multiple input parameters)
+output: string (The new random number that was generated according to the input parameters)
 
 testName: randomlyGenerateNumberInRange_inValidInputDataString
 input inputData: string (dfxg24346dfg)
-input inputMetaData: array<string|integer,boolean,boolean> (?)
+input inputMetaData: array<string|integer,boolean,boolean> (An array with multiple input parameters)
 output: ?
 
 testName: randomlyGenerateNumberInRange_inValidInputMetaDataString
-input inputData: string (?)
-input inputMetaData: string (&)
+input inputData: string (A string that contains the number with the minimum value)
+input inputMetaData: string (dfxg24346dfg)
 output: ?
 
 testName: randomlyGenerateNumberInRange_inValidInputDataInteger
 input inputData: integer (123)
-input inputMetaData: array<string|integer,boolean,boolean> (?)
+input inputMetaData: array<string|integer,boolean,boolean> (An array with multiple input parameters)
 output: ?
 
 testName: randomlyGenerateNumberInRange_inValidInputDataBoolean
 input inputData: boolean (false)
-input inputMetaData: array<string|integer,boolean,boolean> (?)
+input inputMetaData: array<string|integer,boolean,boolean> (An array with multiple input parameters)
 output: ?
 
 testName: randomlyGenerateNumberInRange_inValidInputMetaDataInteger
-input inputData: string (?)
+input inputData: string (A string that contains the number with the minimum value)
 input inputMetaData: integer (123)
 output: ?
 
 testName: randomlyGenerateNumberInRange_inValidInputMetaDataBoolean
-input inputData: string (?)
+input inputData: string (A string that contains the number with the minimum value)
 input inputMetaData: boolean (false)
 output: ?
 
 testName: randomlyGenerateNumberInRange_inValidInputDataUndefined
 input inputData: undefined
-input inputMetaData: array<string|integer,boolean,boolean> (?)
+input inputMetaData: array<string|integer,boolean,boolean> (An array with multiple input parameters)
 output: ?
 
 testName: randomlyGenerateNumberInRange_inValidInputDataNaN
 input inputData: NaN
-input inputMetaData: array<string|integer,boolean,boolean> (?)
+input inputMetaData: array<string|integer,boolean,boolean> (An array with multiple input parameters)
 output: ?
 
 testName: randomlyGenerateNumberInRange_inValidInputMetaDataUndefined
-input inputData: string (?)
+input inputData: string (A string that contains the number with the minimum value)
 input inputMetaData: undefined
 output: ?
 
 testName: randomlyGenerateNumberInRange_inValidInputMetaDataNaN
-input inputData: string (?)
+input inputData: string (A string that contains the number with the minimum value)
 input inputMetaData: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: randomlyGenerateBooleanValue_validData
-input inputData: string (?)
-input inputMetaData: string (?)
-output: boolean (?)
+input inputData: string (Not used for this business rule)
+input inputMetaData: string (Not used for this business rule)
+output: boolean (A boolean value that is either {TRUE} or {FALSE} as a random 50-50 chance of one or the other)
 
 testName: randomlyGenerateBooleanValue_inValidInputDataString
 input inputData: string (dfxg24346dfg)
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: randomlyGenerateBooleanValue_inValidInputMetaDataString
-input inputData: string (?)
-input inputMetaData: string (&)
+input inputData: string (Not used for this business rule)
+input inputMetaData: string (dfxg24346dfg)
 output: ?
 
 testName: randomlyGenerateBooleanValue_inValidInputDataInteger
 input inputData: integer (123)
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: randomlyGenerateBooleanValue_inValidInputDataBoolean
 input inputData: boolean (false)
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: randomlyGenerateBooleanValue_inValidInputMetaDataInteger
-input inputData: string (?)
+input inputData: string (Not used for this business rule)
 input inputMetaData: integer (123)
 output: ?
 
 testName: randomlyGenerateBooleanValue_inValidInputMetaDataBoolean
-input inputData: string (?)
+input inputData: string (Not used for this business rule)
 input inputMetaData: boolean (false)
 output: ?
 
 testName: randomlyGenerateBooleanValue_inValidInputDataUndefined
 input inputData: undefined
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: randomlyGenerateBooleanValue_inValidInputDataNaN
 input inputData: NaN
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: randomlyGenerateBooleanValue_inValidInputMetaDataUndefined
-input inputData: string (?)
+input inputData: string (Not used for this business rule)
 input inputMetaData: undefined
 output: ?
 
 testName: randomlyGenerateBooleanValue_inValidInputMetaDataNaN
-input inputData: string (?)
+input inputData: string (Not used for this business rule)
 input inputMetaData: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: randomlyGenerateMixedCaseAlphabeticCharacter_validData
-input inputData: string (?)
-input inputMetaData: string (?)
-output: string (?)
+input inputData: string (Not used for this business rule)
+input inputMetaData: string (Not used for this business rule)
+output: string (A randomly generated english alphabetic letter from a-z or A-Z)
 
 testName: randomlyGenerateMixedCaseAlphabeticCharacter_inValidInputDataString
 input inputData: string (dfxg24346dfg)
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: randomlyGenerateMixedCaseAlphabeticCharacter_inValidInputMetaDataString
-input inputData: string (?)
-input inputMetaData: string (&)
+input inputData: string (Not used for this business rule)
+input inputMetaData: string (dfxg24346dfg)
 output: ?
 
 testName: randomlyGenerateMixedCaseAlphabeticCharacter_inValidInputDataInteger
 input inputData: integer (123)
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: randomlyGenerateMixedCaseAlphabeticCharacter_inValidInputDataBoolean
 input inputData: boolean (false)
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: randomlyGenerateMixedCaseAlphabeticCharacter_inValidInputMetaDataInteger
-input inputData: string (?)
+input inputData: string (Not used for this business rule)
 input inputMetaData: integer (123)
 output: ?
 
 testName: randomlyGenerateMixedCaseAlphabeticCharacter_inValidInputMetaDataBoolean
-input inputData: string (?)
+input inputData: string (Not used for this business rule)
 input inputMetaData: boolean (false)
 output: ?
 
 testName: randomlyGenerateMixedCaseAlphabeticCharacter_inValidInputDataUndefined
 input inputData: undefined
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: randomlyGenerateMixedCaseAlphabeticCharacter_inValidInputDataNaN
 input inputData: NaN
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: randomlyGenerateMixedCaseAlphabeticCharacter_inValidInputMetaDataUndefined
-input inputData: string (?)
+input inputData: string (Not used for this business rule)
 input inputMetaData: undefined
 output: ?
 
 testName: randomlyGenerateMixedCaseAlphabeticCharacter_inValidInputMetaDataNaN
-input inputData: string (?)
+input inputData: string (Not used for this business rule)
 input inputMetaData: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: randomlyGenerateLowerCaseLetter_validData
-input inputData: string (?)
-input inputMetaData: string (?)
-output: string (?)
+input inputData: string (Not used for this business rule)
+input inputMetaData: string (Not used for this business rule)
+output: string (A randomly generated english alphabetic letter from a-z)
 
 testName: randomlyGenerateLowerCaseLetter_inValidInputDataString
 input inputData: string (dfxg24346dfg)
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: randomlyGenerateLowerCaseLetter_inValidInputMetaDataString
-input inputData: string (?)
-input inputMetaData: string (&)
+input inputData: string (Not used for this business rule)
+input inputMetaData: string (dfxg24346dfg)
 output: ?
 
 testName: randomlyGenerateLowerCaseLetter_inValidInputDataInteger
 input inputData: integer (123)
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: randomlyGenerateLowerCaseLetter_inValidInputDataBoolean
 input inputData: boolean (false)
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: randomlyGenerateLowerCaseLetter_inValidInputMetaDataInteger
-input inputData: string (?)
+input inputData: string (Not used for this business rule)
 input inputMetaData: integer (123)
 output: ?
 
 testName: randomlyGenerateLowerCaseLetter_inValidInputMetaDataBoolean
-input inputData: string (?)
+input inputData: string (Not used for this business rule)
 input inputMetaData: boolean (false)
 output: ?
 
 testName: randomlyGenerateLowerCaseLetter_inValidInputDataUndefined
 input inputData: undefined
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: randomlyGenerateLowerCaseLetter_inValidInputDataNaN
 input inputData: NaN
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: randomlyGenerateLowerCaseLetter_inValidInputMetaDataUndefined
-input inputData: string (?)
+input inputData: string (Not used for this business rule)
 input inputMetaData: undefined
 output: ?
 
 testName: randomlyGenerateLowerCaseLetter_inValidInputMetaDataNaN
-input inputData: string (?)
+input inputData: string (Not used for this business rule)
 input inputMetaData: NaN
 output: ?
 --------------------------------------------------------------------------------
+testName: randomlyGenerateUpperCaseLetter_validDataString
+input 1inputData: string (Not used for this business rule)
+input 1inputMetaData: string (Not used for this business rule)
+output: boolean (A randomly generated alphabetic letter from A-Z)
+
+testName: randomlyGenerateUpperCaseLetter_inValidDataInputDataString
+input 1inputData: string (dfxg24346dfg)
+input 1inputMetaData: string (Not used for this business rule) (testDataString)
+output: ?
+
+testName: randomlyGenerateUpperCaseLetter_inValidDataInputMetaDataString
+input 1inputData: string (Not used for this business rule) (testDataString)
+input 1inputMetaData: string (dfxg24346dfg)
+output: ?
+
+testName: randomlyGenerateUpperCaseLetter_inValidInputDataInteger
+input 1inputData: integer (4567)
+input 1inputMetaData: 123string321
+output: ?
+
+testName: randomlyGenerateUpperCaseLetter_inValidInputDataBoolean
+input 1inputData: boolean (false)
+input 1inputMetaData: 123string321
+output: ?
+
+testName: randomlyGenerateUpperCaseLetter_inValidInputMetaDataInteger
+input 1inputData: 234string432
+input 1inputMetaData: string
+output: ?
+
+testName: randomlyGenerateUpperCaseLetter_inValidInputMetaDataBoolean
+input 1inputData: 234string432
+input 1inputMetaData: string
+output: ?
+
+testName: randomlyGenerateUpperCaseLetter_inValidInputDataUndefined
+input 1inputData: undefined
+input 1inputMetaData: string (Not used for this business rule) (inValidDataToStoreUndefined)
+output: ?
+
+testName: randomlyGenerateUpperCaseLetter_inValidInputDataNaN
+input 1inputData: NaN
+input 1inputMetaData: string (Not used for this business rule) (inValidDataToStoreNaN)
+output: ?
+
+testName: randomlyGenerateUpperCaseLetter_inValidInputMetaDataUndefined
+input 1inputData: string (Not used for this business rule) (inValidDataToStoreUndefined)
+input 1inputMetaData: undefined
+output: ?
+
+testName: randomlyGenerateUpperCaseLetter_inValidInputMetaDataNaN
+input 1inputData: string (Not used for this business rule) (inValidDataToStoreNaN)
+input 1inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
 testName: convertNumberToUpperCaseLetter_validData
-input inputData: string (?)
-input inputMetaData: string (?)
-output: string (?)
+input inputData: string (A string that contains a number in the range of 1-26 that should be converted to an upper case letter of the english alphabet)
+input inputMetaData: string (Not used for this business rule)
+output: string (A letter of the alphabet where 1-26 is converted in a letter A-Z)
 
 testName: convertNumberToUpperCaseLetter_inValidInputDataString
 input inputData: string (dfxg24346dfg)
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: convertNumberToUpperCaseLetter_inValidInputMetaDataString
-input inputData: string (?)
-input inputMetaData: string (&)
+input inputData: string (A string that contains a number in the range of 1-26 that should be converted to an upper case letter of the english alphabet)
+input inputMetaData: string (dfxg24346dfg)
 output: ?
 
 testName: convertNumberToUpperCaseLetter_inValidInputDataInteger
 input inputData: integer (123)
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: convertNumberToUpperCaseLetter_inValidInputDataBoolean
 input inputData: boolean (false)
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: convertNumberToUpperCaseLetter_inValidInputMetaDataInteger
-input inputData: string (?)
+input inputData: string (A string that contains a number in the range of 1-26 that should be converted to an upper case letter of the english alphabet)
 input inputMetaData: integer (123)
 output: ?
 
 testName: convertNumberToUpperCaseLetter_inValidInputMetaDataBoolean
-input inputData: string (?)
+input inputData: string (A string that contains a number in the range of 1-26 that should be converted to an upper case letter of the english alphabet)
 input inputMetaData: boolean (false)
 output: ?
 
 testName: convertNumberToUpperCaseLetter_inValidInputDataUndefined
 input inputData: undefined
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: convertNumberToUpperCaseLetter_inValidInputDataNaN
 input inputData: NaN
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: convertNumberToUpperCaseLetter_inValidInputMetaDataUndefined
-input inputData: string (?)
+input inputData: string (A string that contains a number in the range of 1-26 that should be converted to an upper case letter of the english alphabet)
 input inputMetaData: undefined
 output: ?
 
 testName: convertNumberToUpperCaseLetter_inValidInputMetaDataNaN
-input inputData: string (?)
+input inputData: string (A string that contains a number in the range of 1-26 that should be converted to an upper case letter of the english alphabet)
 input inputMetaData: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: convertNumberToLowerCaseLetter_validData
-input inputData: string (?)
-input inputMetaData: string (?)
-output: string (?)
+input inputData: string (A string that contains a number in the range of 1-26 that should be converted in a lower case letter of the english alphabet)
+input inputMetaData: string (Not used for this business rule)
+output: string (A letter of the alphabet where 1-26 is converted to a letter a-z)
 
 testName: convertNumberToLowerCaseLetter_inValidInputDataString
 input inputData: string (dfxg24346dfg)
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: convertNumberToLowerCaseLetter_inValidInputMetaDataString
-input inputData: string (?)
-input inputMetaData: string (&)
+input inputData: string (A string that contains a number in the range of 1-26 that should be converted in a lower case letter of the english alphabet)
+input inputMetaData: string (dfxg24346dfg)
 output: ?
 
 testName: convertNumberToLowerCaseLetter_inValidInputDataInteger
 input inputData: integer (123)
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: convertNumberToLowerCaseLetter_inValidInputDataBoolean
 input inputData: boolean (false)
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: convertNumberToLowerCaseLetter_inValidInputMetaDataInteger
-input inputData: string (?)
+input inputData: string (A string that contains a number in the range of 1-26 that should be converted in a lower case letter of the english alphabet)
 input inputMetaData: integer (123)
 output: ?
 
 testName: convertNumberToLowerCaseLetter_inValidInputMetaDataBoolean
-input inputData: string (?)
+input inputData: string (A string that contains a number in the range of 1-26 that should be converted in a lower case letter of the english alphabet)
 input inputMetaData: boolean (false)
 output: ?
 
 testName: convertNumberToLowerCaseLetter_inValidInputDataUndefined
 input inputData: undefined
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: convertNumberToLowerCaseLetter_inValidInputDataNaN
 input inputData: NaN
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: convertNumberToLowerCaseLetter_inValidInputMetaDataUndefined
-input inputData: string (?)
+input inputData: string (A string that contains a number in the range of 1-26 that should be converted in a lower case letter of the english alphabet)
 input inputMetaData: undefined
 output: ?
 
 testName: convertNumberToLowerCaseLetter_inValidInputMetaDataNaN
-input inputData: string (?)
+input inputData: string (A string that contains a number in the range of 1-26 that should be converted in a lower case letter of the english alphabet)
 input inputMetaData: NaN
 output: ?

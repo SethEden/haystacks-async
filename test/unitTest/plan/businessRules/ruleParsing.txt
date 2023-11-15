@@ -2,221 +2,221 @@ Description: Test plan for ruleParsing.js
 
 --------------------------------------------------------------------------------
 testName: doAllRulesExist_validData
-input inputData: array<string> (?)
-input inputMetaData: string (?)
-output: boolean (?)
+input inputData: array<string> (The array of rule names that should be validated for existence in the runtime rules data structure)
+input inputMetaData: string (Not used for this business rule)
+output: boolean (A True or False value to indicate if all the rules in the input array exist or do not all exist)
 
 testName: doAllRulesExist_inValidInputDataString
 input inputData: string (dfxg24346dfg)
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: doAllRulesExist_inValidInputMetaDataString
-input inputData: array<string> (?)
-input inputMetaData: string (&)
+input inputData: array<string> (The array of rule names that should be validated for existence in the runtime rules data structure)
+input inputMetaData: string (dfxg24346dfg)
 output: ?
 
 testName: doAllRulesExist_inValidInputDataInteger
 input inputData: integer  (123)
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: doAllRulesExist_inValidInputDataBoolean
 input inputData: boolean (false)
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: doAllRulesExist_inValidInputMetaDataInteger
-input inputData: array<string> (?)
+input inputData: array<string> (The array of rule names that should be validated for existence in the runtime rules data structure)
 input inputMetaData: integer (123)
 output: ?
 
 testName: doAllRulesExist_inValidInputMetaDataBoolean
-input inputData: array<string> (?)
+input inputData: array<string> (The array of rule names that should be validated for existence in the runtime rules data structure)
 input inputMetaData: boolean (false)
 output: ?
 
 testName: doAllRulesExist_inValidInputDataUndefined
 input inputData: undefined
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: doAllRulesExist_inValidInputDataNaN
 input inputData: NaN
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: doAllRulesExist_inValidInputMetaDataUndefined
-input inputData: array<string> (?)
+input inputData: array<string> (The array of rule names that should be validated for existence in the runtime rules data structure)
 input inputMetaData: undefined
 output: ?
 
 testName: doAllRulesExist_inValidInputMetaDataNaN
-input inputData: array<string> (?)
+input inputData: array<string> (The array of rule names that should be validated for existence in the runtime rules data structure)
 input inputMetaData: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: doesRuleExist_validData
-input inputData: string (?)
-input inputMetaData: string (?)
-output: boolean (?)
+input inputData: string (The rule name that should be validated as existing in the runtime rules data structure)
+input inputMetaData: string (Not used for this business rule)
+output: boolean (A True or False value to indicate if the rule exists or does not exist)
 
 testName: doesRuleExist_inValidInputDataString
 input inputData: string (dfxg24346dfg)
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: doesRuleExist_inValidInputMetaDataString
-input inputData: string (?)
-input inputMetaData: string (&)
+input inputData: string (The rule name that should be validated as existing in the runtime rules data structure)
+input inputMetaData: string (dfxg24346dfg)
 output: ?
 
 testName: doesRuleExist_inValidInputDataInteger
 input inputData: integer  (123)
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: doesRuleExist_inValidInputDataBoolean
 input inputData: boolean (false)
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: doesRuleExist_inValidInputMetaDataInteger
-input inputData: string (?)
+input inputData: string (The rule name that should be validated as existing in the runtime rules data structure)
 input inputMetaData: integer (123)
 output: ?
 
 testName: doesRuleExist_inValidInputMetaDataBoolean
-input inputData: string (?)
+input inputData: string (The rule name that should be validated as existing in the runtime rules data structure)
 input inputMetaData: boolean (false)
 output: ?
 
 testName: doesRuleExist_inValidInputDataUndefined
 input inputData: undefined
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: doesRuleExist_inValidInputDataNaN
 input inputData: NaN
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: doesRuleExist_inValidInputMetaDataUndefined
-input inputData: string (?)
+input inputData: string (The rule name that should be validated as existing in the runtime rules data structure)
 input inputMetaData: undefined
 output: ?
 
 testName: doesRuleExist_inValidInputMetaDataNaN
-input inputData: string (?)
+input inputData: string (The rule name that should be validated as existing in the runtime rules data structure)
 input inputMetaData: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: getRule_validData
-input inputData: string (?)
-input inputMetaData: string (?)
-output: function (?)
+input inputData: string (The name of the rule that should be returned if it exists as a valid rule name)
+input inputMetaData: string (Not used for this business rule)
+output: function (The function that was found if it exists or False if no rule is found)
 
 testName: getRule_inValidInputDataString
 input inputData: string (dfxg24346dfg)
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: getRule_inValidInputMetaDataString
-input inputData: string (?)
-input inputMetaData: string (&)
+input inputData: string (The name of the rule that should be returned if it exists as a valid rule name)
+input inputMetaData: string (dfxg24346dfg)
 output: ?
 
 testName: getRule_inValidInputDataInteger
 input inputData: integer  (123)
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: getRule_inValidInputDataBoolean
 input inputData: boolean (false)
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: getRule_inValidInputMetaDataInteger
-input inputData: string (?)
+input inputData: string (The name of the rule that should be returned if it exists as a valid rule name)
 input inputMetaData: integer (123)
 output: ?
 
 testName: getRule_inValidInputMetaDataBoolean
-input inputData: string (?)
+input inputData: string (The name of the rule that should be returned if it exists as a valid rule name)
 input inputMetaData: boolean (false)
 output: ?
 
 testName: getRule_inValidInputDataUndefined
 input inputData: undefined
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: getRule_inValidInputDataNaN
 input inputData: NaN
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: getRule_inValidInputMetaDataUndefined
-input inputData: string (?)
+input inputData: string (The name of the rule that should be returned if it exists as a valid rule name)
 input inputMetaData: undefined
 output: ?
 
 testName: getRule_inValidInputMetaDataNaN
-input inputData: string (?)
+input inputData: string (The name of the rule that should be returned if it exists as a valid rule name)
 input inputMetaData: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: processRulesInternal_validData
-input inputData: array<string|integer|boolean|object|function,string|integer|boolean|object|function> (?)
-input inputMetaData: array<string> (?)
-output: string|integer|boolean|object|function (?)
+input inputData: array<string|integer|boolean|object|function,string|integer|boolean|object|function> (An array of inputs, inputData & inputMetaData)
+input inputMetaData: array<string> (The name(s) of the rule(s) that should be executed for modifying the input data)
+output: string|integer|boolean|object|function (A modified data Object/String/Integer/Boolean/Function where the data has been modified based on the input data, input meta-data, and business rule that was executed)
 
 testName: processRulesInternal_inValidInputDataString
 input inputData: string (dfxg24346dfg)
-input inputMetaData: array<string> (?)
+input inputMetaData: array<string> (The name(s) of the rule(s) that should be executed for modifying the input data)
 output: ?
 
 testName: processRulesInternal_inValidInputMetaDataString
-input inputData: array<string|integer|boolean|object|function,string|integer|boolean|object|function> (?)
-input inputMetaData: string (&)
+input inputData: array<string|integer|boolean|object|function,string|integer|boolean|object|function> (An array of inputs, inputData & inputMetaData)
+input inputMetaData: string (dfxg24346dfg)
 output: ?
 
 testName: processRulesInternal_inValidInputDataInteger
 input inputData: integer (123)
-input inputMetaData: array<string> (?)
+input inputMetaData: array<string> (The name(s) of the rule(s) that should be executed for modifying the input data)
 output: ?
 
 testName: processRulesInternal_inValidInputDataBoolean
 input inputData: boolean (false)
-input inputMetaData: array<string> (?)
+input inputMetaData: array<string> (The name(s) of the rule(s) that should be executed for modifying the input data)
 output: ?
 
 testName: processRulesInternal_inValidInputMetaDataInteger
-input inputData: array<string|integer|boolean|object|function,string|integer|boolean|object|function> (?)
+input inputData: array<string|integer|boolean|object|function,string|integer|boolean|object|function> (An array of inputs, inputData & inputMetaData)
 input inputMetaData: integer (123)
 output: ?
 
 testName: processRulesInternal_inValidInputMetaDataBoolean
-input inputData: array<string|integer|boolean|object|function,string|integer|boolean|object|function> (?)
+input inputData: array<string|integer|boolean|object|function,string|integer|boolean|object|function> (An array of inputs, inputData & inputMetaData)
 input inputMetaData: boolean (false)
 output: ?
 
 testName: processRulesInternal_inValidInputDataUndefined
 input inputData: undefined
-input inputMetaData: array<string> (?)
+input inputMetaData: array<string> (The name(s) of the rule(s) that should be executed for modifying the input data)
 output: ?
 
 testName: processRulesInternal_inValidInputDataNaN
 input inputData: NaN
-input inputMetaData: array<string> (?)
+input inputMetaData: array<string> (The name(s) of the rule(s) that should be executed for modifying the input data)
 output: ?
 
 testName: processRulesInternal_inValidInputMetaDataUndefined
-input inputData: array<string|integer|boolean|object|function,string|integer|boolean|object|function> (?)
+input inputData: array<string|integer|boolean|object|function,string|integer|boolean|object|function> (An array of inputs, inputData & inputMetaData)
 input inputMetaData: undefined
 output: ?
 
 testName: processRulesInternal_inValidInputMetaDataNaN
-input inputData: array<string|integer|boolean|object|function,string|integer|boolean|object|function> (?)
+input inputData: array<string|integer|boolean|object|function,string|integer|boolean|object|function> (An array of inputs, inputData & inputMetaData)
 input inputMetaData: NaN
 output: ?

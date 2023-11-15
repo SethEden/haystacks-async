@@ -2,331 +2,331 @@ Description: Test plan for lexicalAnalyzer.js
 
 --------------------------------------------------------------------------------
 testName: parseBusinessRuleArgument_validData
-input inputData: string|array<string|integer|boolean|object> (?)
-input inputMetaData: integer (?)
-output: string|array<string|integer|boolean|object> (?)
+input inputData: string|array<string|integer|boolean|object> (The value of the argument, could be an array or a string)
+input inputMetaData: integer (The index of the argument (1, 2, 3, 4))
+output: string|array<string|integer|boolean|object> (The value of the argument as it should be passed into the business rule call)
 
 testName: parseBusinessRuleArgument_inValidInputDataString
 input inputData: string (dfxg24346dfg)
-input inputMetaData: integer (?)
+input inputMetaData: integer (The index of the argument (1, 2, 3, 4))
 output: ?
 
 testName: parseBusinessRuleArgument_inValidInputMetaDataString
-input inputData: string|array<string|integer|boolean|object> (?)
-input inputMetaData: string (&)
+input inputData: string|array<string|integer|boolean|object> (The value of the argument, could be an array or a string)
+input inputMetaData: string (dfxg24346dfg)
 output: ?
 
 testName: parseBusinessRuleArgument_inValidInputDataInteger
 input inputData: integer (123)
-input inputMetaData: integer (?)
+input inputMetaData: integer (The index of the argument (1, 2, 3, 4))
 output: ?
 
 testName: parseBusinessRuleArgument_inValidInputDataBoolean
 input inputData: boolean (false)
-input inputMetaData: integer (?)
+input inputMetaData: integer (The index of the argument (1, 2, 3, 4))
 output: ?
 
 testName: parseBusinessRuleArgument_inValidInputMetaDataInteger
-input inputData: string|array<string|integer|boolean|object> (?)
+input inputData: string|array<string|integer|boolean|object> (The value of the argument, could be an array or a string)
 input inputMetaData: integer (123)
 output: ?
 
 testName: parseBusinessRuleArgument_inValidInputMetaDataBoolean
-input inputData: string|array<string|integer|boolean|object> (?)
+input inputData: string|array<string|integer|boolean|object> (The value of the argument, could be an array or a string)
 input inputMetaData: boolean (false)
 output: ?
 
 testName: parseBusinessRuleArgument_inValidInputDataUndefined
 input inputData: undefined
-input inputMetaData: integer (?)
+input inputMetaData: integer (The index of the argument (1, 2, 3, 4))
 output: ?
 
 testName: parseBusinessRuleArgument_inValidInputDataNaN
 input inputData: NaN
-input inputMetaData: integer (?)
+input inputMetaData: integer (The index of the argument (1, 2, 3, 4))
 output: ?
 
 testName: parseBusinessRuleArgument_inValidInputMetaDataUndefined
-input inputData: string|array<string|integer|boolean|object> (?)
+input inputData: string|array<string|integer|boolean|object> (The value of the argument, could be an array or a string)
 input inputMetaData: undefined
 output: ?
 
 testName: parseBusinessRuleArgument_inValidInputMetaDataNaN
-input inputData: string|array<string|integer|boolean|object> (?)
+input inputData: string|array<string|integer|boolean|object> (The value of the argument, could be an array or a string)
 input inputMetaData: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: analyzeArgument_validData
-input inputData: string (?)
-input inputMetaData: string (?)
-output: string|array<string|integer|boolean|object> (?)
+input inputData: string (The argument string that needs additional parsing)
+input inputMetaData: string (Not used for this business rule)
+output: string|array<string|integer|boolean|object> (The argument that should be returned and used by the system after all necessary parsing)
 
 testName: analyzeArgument_inValidInputDataString
 input inputData: string (dfxg24346dfg)
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: analyzeArgument_inValidInputMetaDataString
-input inputData: string (?)
-input inputMetaData: string (&)
+input inputData: string (The argument string that needs additional parsing)
+input inputMetaData: string (dfxg24346dfg)
 output: ?
 
 testName: analyzeArgument_inValidInputDataInteger
 input inputData: integer (123)
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: analyzeArgument_inValidInputDataBoolean
 input inputData: boolean (false)
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: analyzeArgument_inValidInputMetaDataInteger
-input inputData: string (?)
+input inputData: string (The argument string that needs additional parsing)
 input inputMetaData: integer (123)
 output: ?
 
 testName: analyzeArgument_inValidInputMetaDataBoolean
-input inputData: string (?)
+input inputData: string (The argument string that needs additional parsing)
 input inputMetaData: boolean (false)
 output: ?
 
 testName: analyzeArgument_inValidInputDataUndefined
 input inputData: undefined
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: analyzeArgument_inValidInputDataNaN
 input inputData: NaN
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: analyzeArgument_inValidInputMetaDataUndefined
-input inputData: string (?)
+input inputData: string (The argument string that needs additional parsing)
 input inputMetaData: undefined
 output: ?
 
 testName: analyzeArgument_inValidInputMetaDataNaN
-input inputData: string (?)
+input inputData: string (The argument string that needs additional parsing)
 input inputMetaData: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: analyzeForRegularExpression_validData
-input inputData: string (?)
-input inputMetaData: string (?)
-output: boolean (?)
+input inputData: string (The business rule argument that should be analyzed to determine if it includes a regular expression or not regular expression)
+input inputMetaData: string (Not used for this business rule)
+output: boolean (True or False to indicate if the argument contains a regular expression or no regular expression)
 
 testName: analyzeForRegularExpression_inValidInputDataString
 input inputData: string (dfxg24346dfg)
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: analyzeForRegularExpression_inValidInputMetaDataString
-input inputData: string (?)
-input inputMetaData: string (&)
+input inputData: string (The business rule argument that should be analyzed to determine if it includes a regular expression or not regular expression)
+input inputMetaData: string (dfxg24346dfg)
 output: ?
 
 testName: analyzeForRegularExpression_inValidInputDataInteger
 input inputData: integer (123)
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: analyzeForRegularExpression_inValidInputDataBoolean
 input inputData: boolean (false)
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: analyzeForRegularExpression_inValidInputMetaDataInteger
-input inputData: string (?)
+input inputData: string (The business rule argument that should be analyzed to determine if it includes a regular expression or not regular expression)
 input inputMetaData: integer (123)
 output: ?
 
 testName: analyzeForRegularExpression_inValidInputMetaDataBoolean
-input inputData: string (?)
+input inputData: string (The business rule argument that should be analyzed to determine if it includes a regular expression or not regular expression)
 input inputMetaData: boolean (false)
 output: ?
 
 testName: analyzeForRegularExpression_inValidInputDataUndefined
 input inputData: undefined
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: analyzeForRegularExpression_inValidInputDataNaN
 input inputData: NaN
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: analyzeForRegularExpression_inValidInputMetaDataUndefined
-input inputData: string (?)
+input inputData: string (The business rule argument that should be analyzed to determine if it includes a regular expression or not regular expression)
 input inputMetaData: undefined
 output: ?
 
 testName: analyzeForRegularExpression_inValidInputMetaDataNaN
-input inputData: string (?)
+input inputData: string (The business rule argument that should be analyzed to determine if it includes a regular expression or not regular expression)
 input inputMetaData: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: parseArgumentAsRegularExpression_validData
-input inputData: string (?)
-input inputMetaData: string (?)
-output: object (?)
+input inputData: string (The argument string that should be parsed as a RegExp)
+input inputMetaData: string (Not used for this business rule)
+output: object (A RegExp object)
 
 testName: parseArgumentAsRegularExpression_inValidInputDataString
 input inputData: string (dfxg24346dfg)
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: parseArgumentAsRegularExpression_inValidInputMetaDataString
-input inputData: string (?)
-input inputMetaData: string (&)
+input inputData: string (The argument string that should be parsed as a RegExp)
+input inputMetaData: string (dfxg24346dfg)
 output: ?
 
 testName: parseArgumentAsRegularExpression_inValidInputDataInteger
 input inputData: integer (123)
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: parseArgumentAsRegularExpression_inValidInputDataBoolean
 input inputData: boolean (false)
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: parseArgumentAsRegularExpression_inValidInputMetaDataInteger
-input inputData: string (?)
+input inputData: string (The argument string that should be parsed as a RegExp)
 input inputMetaData: integer (123)
 output: ?
 
 testName: parseArgumentAsRegularExpression_inValidInputMetaDataBoolean
-input inputData: string (?)
+input inputData: string (The argument string that should be parsed as a RegExp)
 input inputMetaData: boolean (false)
 output: ?
 
 testName: parseArgumentAsRegularExpression_inValidInputDataUndefined
 input inputData: undefined
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: parseArgumentAsRegularExpression_inValidInputDataNaN
 input inputData: NaN
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: parseArgumentAsRegularExpression_inValidInputMetaDataUndefined
-input inputData: string (?)
+input inputData: string (The argument string that should be parsed as a RegExp)
 input inputMetaData: undefined
 output: ?
 
 testName: parseArgumentAsRegularExpression_inValidInputMetaDataNaN
-input inputData: string (?)
+input inputData: string (The argument string that should be parsed as a RegExp)
 input inputMetaData: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: parseArgumentAsArray_validData
-input inputData: string (?)
-input inputMetaData: string (?)
-output: array<string> (?)
+input inputData: string (A string that contains an array, we will use the secondary command delimiter to split the string into an array)
+input inputMetaData: string (Not used for this business rule)
+output: array<string> (An array of strings)
 
 testName: parseArgumentAsArray_inValidInputDataString
 input inputData: string (dfxg24346dfg)
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: parseArgumentAsArray_inValidInputMetaDataString
-input inputData: string (?)
-input inputMetaData: string (&)
+input inputData: string (A string that contains an array, we will use the secondary command delimiter to split the string into an array)
+input inputMetaData: string (dfxg24346dfg)
 output: ?
 
 testName: parseArgumentAsArray_inValidInputDataInteger
 input inputData: integer (123)
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: parseArgumentAsArray_inValidInputDataBoolean
 input inputData: boolean (false)
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: parseArgumentAsArray_inValidInputMetaDataInteger
-input inputData: string (?)
+input inputData: string (A string that contains an array, we will use the secondary command delimiter to split the string into an array)
 input inputMetaData: integer (123)
 output: ?
 
 testName: parseArgumentAsArray_inValidInputMetaDataBoolean
-input inputData: string (?)
+input inputData: string (A string that contains an array, we will use the secondary command delimiter to split the string into an array)
 input inputMetaData: boolean (false)
 output: ?
 
 testName: parseArgumentAsArray_inValidInputDataUndefined
 input inputData: undefined
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: parseArgumentAsArray_inValidInputDataNaN
 input inputData: NaN
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: parseArgumentAsArray_inValidInputMetaDataUndefined
-input inputData: string (?)
+input inputData: string (A string that contains an array, we will use the secondary command delimiter to split the string into an array)
 input inputMetaData: undefined
 output: ?
 
 testName: parseArgumentAsArray_inValidInputMetaDataNaN
-input inputData: string (?)
+input inputData: string (A string that contains an array, we will use the secondary command delimiter to split the string into an array)
 input inputMetaData: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: removeStringLiteralTagsFromArray_validData
-input inputData: array<string> (?)
-input inputMetaData: string (?)
-output: array<string> (?)
+input inputData: array<string> (The argument array that should have the string literal tags removed. The string literal tag is the tilde character: "~")
+input inputMetaData: string (Not used for this business rule)
+output: array<string> (The same as the input, but just with the string literal tags removed from all array elements)
 
 testName: removeStringLiteralTagsFromArray_inValidInputDataString
 input inputData: string (dfxg24346dfg)
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: removeStringLiteralTagsFromArray_inValidInputMetaDataString
-input inputData: array<string> (?)
-input inputMetaData: string (&)
+input inputData: array<string> (The argument array that should have the string literal tags removed. The string literal tag is the tilde character: "~")
+input inputMetaData: string (dfxg24346dfg)
 output: ?
 
 testName: removeStringLiteralTagsFromArray_inValidInputDataInteger
 input inputData: integer (123)
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: removeStringLiteralTagsFromArray_inValidInputDataBoolean
 input inputData: boolean (false)
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: removeStringLiteralTagsFromArray_inValidInputMetaDataInteger
-input inputData: array<string> (?)
+input inputData: array<string> (The argument array that should have the string literal tags removed. The string literal tag is the tilde character: "~")
 input inputMetaData: integer (123)
 output: ?
 
 testName: removeStringLiteralTagsFromArray_inValidInputMetaDataBoolean
-input inputData: array<string> (?)
+input inputData: array<string> (The argument array that should have the string literal tags removed. The string literal tag is the tilde character: "~")
 input inputMetaData: boolean (false)
 output: ?
 
 testName: removeStringLiteralTagsFromArray_inValidInputDataUndefined
 input inputData: undefined
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: removeStringLiteralTagsFromArray_inValidInputDataNaN
 input inputData: NaN
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: removeStringLiteralTagsFromArray_inValidInputMetaDataUndefined
-input inputData: array<string> (?)
+input inputData: array<string> (The argument array that should have the string literal tags removed. The string literal tag is the tilde character: "~")
 input inputMetaData: undefined
 output: ?
 
 testName: removeStringLiteralTagsFromArray_inValidInputMetaDataNaN
-input inputData: array<string> (?)
+input inputData: array<string> (The argument array that should have the string literal tags removed. The string literal tag is the tilde character: "~")
 input inputMetaData: NaN
 output: ?

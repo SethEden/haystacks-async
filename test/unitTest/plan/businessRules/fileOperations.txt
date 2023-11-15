@@ -2,881 +2,881 @@ Description: Test plan for fileOperations.js
 
 --------------------------------------------------------------------------------
 testName: getXmlData_validData
-input inputData: string (?)
-input inputMetaData: string (?)
-output: object (?)
+input inputData: string (The path and file name of the XML file that should be loaded and parsed into JSON objects)
+input inputMetaData: string (Not used for this business rule)
+output: object (A parsed JSON object containing all of the data, meta-data, objects, values and attributes that were stored  in the specified XML file)
 
 testName: getXmlData_inValidInputDataString
 input inputData: string (dfxg24346dfg)
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: getXmlData_inValidInputMetaDataString
-input inputData: string (?)
-input inputMetaData: string (&)
+input inputData: string (The path and file name of the XML file that should be loaded and parsed into JSON objects)
+input inputMetaData: string (dfxg24346dfg)
 output: ?
 
 testName: getXmlData_inValidInputDataInteger
 input inputData: integer (123)
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: getXmlData_inValidInputDataBoolean
 input inputData: boolean (false)
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: getXmlData_inValidInputMetaDataInteger
-input inputData: string (?)
+input inputData: string (The path and file name of the XML file that should be loaded and parsed into JSON objects)
 input inputMetaData: integer (123)
 output: ?
 
 testName: getXmlData_inValidInputMetaDataBoolean
-input inputData: string (?)
+input inputData: string (The path and file name of the XML file that should be loaded and parsed into JSON objects)
 input inputMetaData: boolean (false)
 output: ?
 
 testName: getXmlData_inValidInputDataUndefined
 input inputData: undefined
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: getXmlData_inValidInputDataNaN
 input inputData: NaN
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: getXmlData_inValidInputMetaDataUndefined
-input inputData: string (?)
+input inputData: string (The path and file name of the XML file that should be loaded and parsed into JSON objects)
 input inputMetaData: undefined
 output: ?
 
 testName: getXmlData_inValidInputMetaDataNaN
-input inputData: string (?)
+input inputData: string (The path and file name of the XML file that should be loaded and parsed into JSON objects)
 input inputMetaData: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: getCsvData_validData
-input inputData: string (?)
-input inputMetaData: string (?)
-output: object (?)
+input inputData: string (The path and file name of the CSV file that should be loaded and parsed into JSON objects)
+input inputMetaData: string (Not used for this business rule)
+output: object (The JSON object as it was loaded from the file with minimal to no additional processing)
 
 testName: getCsvData_inValidInputDataString
 input inputData: string (dfxg24346dfg)
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: getCsvData_inValidInputMetaDataString
-input inputData: string (?)
-input inputMetaData: string (&)
+input inputData: string (The path and file name of the CSV file that should be loaded and parsed into JSON objects)
+input inputMetaData: string (dfxg24346dfg)
 output: ?
 
 testName: getCsvData_inValidInputDataInteger
 input inputData: integer (123)
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: getCsvData_inValidInputDataBoolean
 input inputData: boolean (false)
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: getCsvData_inValidInputMetaDataInteger
-input inputData: string (?)
+input inputData: string (The path and file name of the CSV file that should be loaded and parsed into JSON objects)
 input inputMetaData: integer (123)
 output: ?
 
 testName: getCsvData_inValidInputMetaDataBoolean
-input inputData: string (?)
+input inputData: string (The path and file name of the CSV file that should be loaded and parsed into JSON objects)
 input inputMetaData: boolean (false)
 output: ?
 
 testName: getCsvData_inValidInputDataUndefined
 input inputData: undefined
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: getCsvData_inValidInputDataNaN
 input inputData: NaN
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: getCsvData_inValidInputMetaDataUndefined
-input inputData: string (?)
+input inputData: string (The path and file name of the CSV file that should be loaded and parsed into JSON objects)
 input inputMetaData: undefined
 output: ?
 
 testName: getCsvData_inValidInputMetaDataNaN
-input inputData: string (?)
+input inputData: string (The path and file name of the CSV file that should be loaded and parsed into JSON objects)
 input inputMetaData: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: getJsonData_validData
-input inputData: string (?)
-input inputMetaData: string (?)
-output: object (?)
+input inputData: string (The path and file name of the JSON file that should be loaded and parsed into JSON objects)
+input inputMetaData: string (Not used for this business rule)
+output: object (The JSON object as it was loaded from the file with minimal to no additional processing)
 
 testName: getJsonData_inValidInputDataString
 input inputData: string (dfxg24346dfg)
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: getJsonData_inValidInputMetaDataString
-input inputData: string (?)
-input inputMetaData: string (&)
+input inputData: string (The path and file name of the JSON file that should be loaded and parsed into JSON objects)
+input inputMetaData: string (dfxg24346dfg)
 output: ?
 
 testName: getJsonData_inValidInputDataInteger
 input inputData: integer (123)
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: getJsonData_inValidInputDataBoolean
 input inputData: boolean (false)
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: getJsonData_inValidInputMetaDataInteger
-input inputData: string (?)
+input inputData: string (The path and file name of the JSON file that should be loaded and parsed into JSON objects)
 input inputMetaData: integer (123)
 output: ?
 
 testName: getJsonData_inValidInputMetaDataBoolean
-input inputData: string (?)
+input inputData: string (The path and file name of the JSON file that should be loaded and parsed into JSON objects)
 input inputMetaData: boolean (false)
 output: ?
 
 testName: getJsonData_inValidInputDataUndefined
 input inputData: undefined
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: getJsonData_inValidInputDataNaN
 input inputData: NaN
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: getJsonData_inValidInputMetaDataUndefined
-input inputData: string (?)
+input inputData: string (The path and file name of the JSON file that should be loaded and parsed into JSON objects)
 input inputMetaData: undefined
 output: ?
 
 testName: getJsonData_inValidInputMetaDataNaN
-input inputData: string (?)
+input inputData: string (The path and file name of the JSON file that should be loaded and parsed into JSON objects)
 input inputMetaData: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: writeJsonData_validData
-input inputData: string (?)
-input inputMetaData: object (?)
-output: boolean (?)
+input inputData: string (The path and file name for the file that should have data written to it)
+input inputMetaData: object (The data that should be written to the specified file)
+output: boolean (True of False to indicate if the file was written out successfully or not)
 
 testName: writeJsonData_inValidInputDataString
 input inputData: string (dfxg24346dfg)
-input inputMetaData: object (?)
+input inputMetaData: object (The data that should be written to the specified file)
 output: ?
 
 testName: writeJsonData_inValidInputMetaDataString
-input inputData: string (?)
-input inputMetaData: string (&)
+input inputData: string (The path and file name for the file that should have data written to it)
+input inputMetaData: string (dfxg24346dfg)
 output: ?
 
 testName: writeJsonData_inValidInputDataInteger
 input inputData: integer (123)
-input inputMetaData: object (?)
+input inputMetaData: object (The data that should be written to the specified file)
 output: ?
 
 testName: writeJsonData_inValidInputDataBoolean
 input inputData: boolean (false)
-input inputMetaData: object (?)
+input inputMetaData: object (The data that should be written to the specified file)
 output: ?
 
 testName: writeJsonData_inValidInputMetaDataInteger
-input inputData: string (?)
+input inputData: string (The path and file name for the file that should have data written to it)
 input inputMetaData: integer (123)
 output: ?
 
 testName: writeJsonData_inValidInputMetaDataBoolean
-input inputData: string (?)
+input inputData: string (The path and file name for the file that should have data written to it)
 input inputMetaData: boolean (false)
 output: ?
 
 testName: writeJsonData_inValidInputDataUndefined
 input inputData: undefined
-input inputMetaData: object (?)
+input inputMetaData: object (The data that should be written to the specified file)
 output: ?
 
 testName: writeJsonData_inValidInputDataNaN
 input inputData: NaN
-input inputMetaData: object (?)
+input inputMetaData: object (The data that should be written to the specified file)
 output: ?
 
 testName: writeJsonData_inValidInputMetaDataUndefined
-input inputData: string (?)
+input inputData: string (The path and file name for the file that should have data written to it)
 input inputMetaData: undefined
 output: ?
 
 testName: writeJsonData_inValidInputMetaDataNaN
-input inputData: string (?)
+input inputData: string (The path and file name for the file that should have data written to it)
 input inputMetaData: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: loadAsciiFileFromPath_validData
-input inputData: string (?)
-input inputMetaData: string (?)
-output: object (?)
+input inputData: string (The path and file name of the file that should have its contents loaded into memory for reading and parsing)
+input inputMetaData: string (Not used for this business rules)
+output: object (The contents of the file loaded, False if nothing was loaded)
 
 testName: loadAsciiFileFromPath_inValidInputDataString
 input inputData: string (dfxg24346dfg)
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rules)
 output: ?
 
 testName: loadAsciiFileFromPath_inValidInputMetaDataString
-input inputData: string (?)
-input inputMetaData: string (&)
+input inputData: string (The path and file name of the file that should have its contents loaded into memory for reading and parsing)
+input inputMetaData: string (dfxg24346dfg)
 output: ?
 
 testName: loadAsciiFileFromPath_inValidInputDataInteger
 input inputData: integer (123)
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rules)
 output: ?
 
 testName: loadAsciiFileFromPath_inValidInputDataBoolean
 input inputData: boolean (false)
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rules)
 output: ?
 
 testName: loadAsciiFileFromPath_inValidInputMetaDataInteger
-input inputData: string (?)
+input inputData: string (The path and file name of the file that should have its contents loaded into memory for reading and parsing)
 input inputMetaData: integer (123)
 output: ?
 
 testName: loadAsciiFileFromPath_inValidInputMetaDataBoolean
-input inputData: string (?)
+input inputData: string (The path and file name of the file that should have its contents loaded into memory for reading and parsing)
 input inputMetaData: boolean (false)
 output: ?
 
 testName: loadAsciiFileFromPath_inValidInputDataUndefined
 input inputData: undefined
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rules)
 output: ?
 
 testName: loadAsciiFileFromPath_inValidInputDataNaN
 input inputData: NaN
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rules)
 output: ?
 
 testName: loadAsciiFileFromPath_inValidInputMetaDataUndefined
-input inputData: string (?)
+input inputData: string (The path and file name of the file that should have its contents loaded into memory for reading and parsing)
 input inputMetaData: undefined
 output: ?
 
 testName: loadAsciiFileFromPath_inValidInputMetaDataNaN
-input inputData: string (?)
+input inputData: string (The path and file name of the file that should have its contents loaded into memory for reading and parsing)
 input inputMetaData: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: readDirectoryContents_validData
-input inputData: string (?)
-input inputMetaData: string (?)
-output: object (?)
+input inputData: string (The path that needs to be scanned)
+input inputMetaData: string (Not used for this business rule)
+output: object (An object containing any array of all the files in the folder and all sub-folders)
 
 testName: readDirectoryContents_inValidInputDataString
 input inputData: string (dfxg24346dfg)
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: readDirectoryContents_inValidInputMetaDataString
-input inputData: string (?)
-input inputMetaData: string (&)
+input inputData: string (The path that needs to be scanned)
+input inputMetaData: string (dfxg24346dfg)
 output: ?
 
 testName: readDirectoryContents_inValidInputDataInteger
 input inputData: integer (123)
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: readDirectoryContents_inValidInputDataBoolean
 input inputData: boolean (false)
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: readDirectoryContents_inValidInputMetaDataInteger
-input inputData: string (?)
+input inputData: string (The path that needs to be scanned)
 input inputMetaData: integer (123)
 output: ?
 
 testName: readDirectoryContents_inValidInputMetaDataBoolean
-input inputData: string (?)
+input inputData: string (The path that needs to be scanned)
 input inputMetaData: boolean (false)
 output: ?
 
 testName: readDirectoryContents_inValidInputDataUndefined
 input inputData: undefined
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: readDirectoryContents_inValidInputDataNaN
 input inputData: NaN
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: readDirectoryContents_inValidInputMetaDataUndefined
-input inputData: string (?)
+input inputData: string (The path that needs to be scanned)
 input inputMetaData: undefined
 output: ?
 
 testName: readDirectoryContents_inValidInputMetaDataNaN
-input inputData: string (?)
+input inputData: string (The path that needs to be scanned)
 input inputMetaData: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: scanDirectoryContents_validData
-input inputData: string (?)
-input inputMetaData: array<boolean,integer> (?)
-output: array<string> (?)
+input inputData: string (The path that should be scanned for files including all sub-folders and all sub-files)
+input inputMetaData: array<boolean,integer> (An array that contains a boolean flag for enable the limit and an integer for what the limit should be)
+output: array<string> (An array of all the files in the folder up to the limit if specified)
 
 testName: scanDirectoryContents_inValidInputDataString
 input inputData: string (dfxg24346dfg)
-input inputMetaData: array<boolean,integer> (?)
+input inputMetaData: array<boolean,integer> (An array that contains a boolean flag for enable the limit and an integer for what the limit should be)
 output: ?
 
 testName: scanDirectoryContents_inValidInputMetaDataString
-input inputData: string (?)
-input inputMetaData: string (&)
+input inputData: string (The path that should be scanned for files including all sub-folders and all sub-files)
+input inputMetaData: string (dfxg24346dfg)
 output: ?
 
 testName: scanDirectoryContents_inValidInputDataInteger
 input inputData: integer (123)
-input inputMetaData: array<boolean,integer> (?)
+input inputMetaData: array<boolean,integer> (An array that contains a boolean flag for enable the limit and an integer for what the limit should be)
 output: ?
 
 testName: scanDirectoryContents_inValidInputDataBoolean
 input inputData: boolean (false)
-input inputMetaData: array<boolean,integer> (?)
+input inputMetaData: array<boolean,integer> (An array that contains a boolean flag for enable the limit and an integer for what the limit should be)
 output: ?
 
 testName: scanDirectoryContents_inValidInputMetaDataInteger
-input inputData: string (?)
+input inputData: string (The path that should be scanned for files including all sub-folders and all sub-files)
 input inputMetaData: integer (123)
 output: ?
 
 testName: scanDirectoryContents_inValidInputMetaDataBoolean
-input inputData: string (?)
+input inputData: string (The path that should be scanned for files including all sub-folders and all sub-files)
 input inputMetaData: boolean (false)
 output: ?
 
 testName: scanDirectoryContents_inValidInputDataUndefined
 input inputData: undefined
-input inputMetaData: array<boolean,integer> (?)
+input inputMetaData: array<boolean,integer> (An array that contains a boolean flag for enable the limit and an integer for what the limit should be)
 output: ?
 
 testName: scanDirectoryContents_inValidInputDataNaN
 input inputData: NaN
-input inputMetaData: array<boolean,integer> (?)
+input inputMetaData: array<boolean,integer> (An array that contains a boolean flag for enable the limit and an integer for what the limit should be)
 output: ?
 
 testName: scanDirectoryContents_inValidInputMetaDataUndefined
-input inputData: string (?)
+input inputData: string (The path that should be scanned for files including all sub-folders and all sub-files)
 input inputMetaData: undefined
 output: ?
 
 testName: scanDirectoryContents_inValidInputMetaDataNaN
-input inputData: string (?)
+input inputData: string (The path that should be scanned for files including all sub-folders and all sub-files)
 input inputMetaData: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: getDirectoryList_validData
-input inputData: string (?)
-input inputMetaData: string (?)
-output: array<string> (?)
+input inputData: string (The path that should be scanned for getting a folder list at that folder level)
+input inputMetaData: string (Not used for this business rule)
+output: array<string> (The list of folders found at the specified path)
 
 testName: getDirectoryList_inValidInputDataString
 input inputData: string (dfxg24346dfg)
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: getDirectoryList_inValidInputMetaDataString
-input inputData: string (?)
-input inputMetaData: string (&)
+input inputData: string (The path that should be scanned for getting a folder list at that folder level)
+input inputMetaData: string (dfxg24346dfg)
 output: ?
 
 testName: getDirectoryList_inValidInputDataInteger
 input inputData: integer (123)
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: getDirectoryList_inValidInputDataBoolean
 input inputData: boolean (false)
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: getDirectoryList_inValidInputMetaDataInteger
-input inputData: string (?)
+input inputData: string (The path that should be scanned for getting a folder list at that folder level)
 input inputMetaData: integer (123)
 output: ?
 
 testName: getDirectoryList_inValidInputMetaDataBoolean
-input inputData: string (?)
+input inputData: string (The path that should be scanned for getting a folder list at that folder level)
 input inputMetaData: boolean (false)
 output: ?
 
 testName: getDirectoryList_inValidInputDataUndefined
 input inputData: undefined
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: getDirectoryList_inValidInputDataNaN
 input inputData: NaN
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: getDirectoryList_inValidInputMetaDataUndefined
-input inputData: string (?)
+input inputData: string (The path that should be scanned for getting a folder list at that folder level)
 input inputMetaData: undefined
 output: ?
 
 testName: getDirectoryList_inValidInputMetaDataNaN
-input inputData: string (?)
+input inputData: string (The path that should be scanned for getting a folder list at that folder level)
 input inputMetaData: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: readDirectorySynchronously_validData
-input inputData: string (?)
-input inputMetaData: string (?)
-output: object (?)
+input inputData: string (The system path that should be scanned recursively for files)
+input inputMetaData: string (Not used for this business rule)
+output: object (A map of all the files contained in all levels of the specified path in all the folders and sub-folders)
 
 testName: readDirectorySynchronously_inValidInputDataString
 input inputData: string (dfxg24346dfg)
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: readDirectorySynchronously_inValidInputMetaDataString
-input inputData: string (?)
-input inputMetaData: string (&)
+input inputData: string (The system path that should be scanned recursively for files)
+input inputMetaData: string (dfxg24346dfg)
 output: ?
 
 testName: readDirectorySynchronously_inValidInputDataInteger
 input inputData: integer (123)
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: readDirectorySynchronously_inValidInputDataBoolean
 input inputData: boolean (false)
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: readDirectorySynchronously_inValidInputMetaDataInteger
-input inputData: string (?)
+input inputData: string (The system path that should be scanned recursively for files)
 input inputMetaData: integer (123)
 output: ?
 
 testName: readDirectorySynchronously_inValidInputMetaDataBoolean
-input inputData: string (?)
+input inputData: string (The system path that should be scanned recursively for files)
 input inputMetaData: boolean (false)
 output: ?
 
 testName: readDirectorySynchronously_inValidInputDataUndefined
 input inputData: undefined
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: readDirectorySynchronously_inValidInputDataNaN
 input inputData: NaN
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: readDirectorySynchronously_inValidInputMetaDataUndefined
-input inputData: string (?)
+input inputData: string (The system path that should be scanned recursively for files)
 input inputMetaData: undefined
 output: ?
 
 testName: readDirectorySynchronously_inValidInputMetaDataNaN
-input inputData: string (?)
+input inputData: string (The system path that should be scanned recursively for files)
 input inputMetaData: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: copyAllFilesAndFoldersFromFolderToFolder_validData
-input inputData: array<string> (?)
-input inputMetaData: array<array<string>> (?)
-output: boolean (?)
+input inputData: array<string> (An array containing the source and destination paths)
+input inputMetaData: array<array<string>> (Two array's of strings that are exclusions and inclusions, file filters that should be avoided during the copy process, the inclusion array over-rides the exclusion array)
+output: boolean (A True or False value to indicate if the full copy process is successful or not)
 
 testName: copyAllFilesAndFoldersFromFolderToFolder_inValidInputDataString
 input inputData: string (dfxg24346dfg)
-input inputMetaData: array<array<string>> (?)
+input inputMetaData: array<array<string>> (Two array's of strings that are exclusions and inclusions, file filters that should be avoided during the copy process, the inclusion array over-rides the exclusion array)
 output: ?
 
 testName: copyAllFilesAndFoldersFromFolderToFolder_inValidInputMetaDataString
-input inputData: array<string> (?)
-input inputMetaData: string (&)
+input inputData: array<string> (An array containing the source and destination paths)
+input inputMetaData: string (dfxg24346dfg)
 output: ?
 
 testName: copyAllFilesAndFoldersFromFolderToFolder_inValidInputDataInteger
 input inputData: integer (123)
-input inputMetaData: array<array<string>> (?)
+input inputMetaData: array<array<string>> (Two array's of strings that are exclusions and inclusions, file filters that should be avoided during the copy process, the inclusion array over-rides the exclusion array)
 output: ?
 
 testName: copyAllFilesAndFoldersFromFolderToFolder_inValidInputDataBoolean
 input inputData: boolean (false)
-input inputMetaData: array<array<string>> (?)
+input inputMetaData: array<array<string>> (Two array's of strings that are exclusions and inclusions, file filters that should be avoided during the copy process, the inclusion array over-rides the exclusion array)
 output: ?
 
 testName: copyAllFilesAndFoldersFromFolderToFolder_inValidInputMetaDataInteger
-input inputData: array<string> (?)
+input inputData: array<string> (An array containing the source and destination paths)
 input inputMetaData: integer (123)
 output: ?
 
 testName: copyAllFilesAndFoldersFromFolderToFolder_inValidInputMetaDataBoolean
-input inputData: array<string> (?)
+input inputData: array<string> (An array containing the source and destination paths)
 input inputMetaData: boolean (false)
 output: ?
 
 testName: copyAllFilesAndFoldersFromFolderToFolder_inValidInputDataUndefined
 input inputData: undefined
-input inputMetaData: array<array<string>> (?)
+input inputMetaData: array<array<string>> (Two array's of strings that are exclusions and inclusions, file filters that should be avoided during the copy process, the inclusion array over-rides the exclusion array)
 output: ?
 
 testName: copyAllFilesAndFoldersFromFolderToFolder_inValidInputDataNaN
 input inputData: NaN
-input inputMetaData: array<array<string>> (?)
+input inputMetaData: array<array<string>> (Two array's of strings that are exclusions and inclusions, file filters that should be avoided during the copy process, the inclusion array over-rides the exclusion array)
 output: ?
 
 testName: copyAllFilesAndFoldersFromFolderToFolder_inValidInputMetaDataUndefined
-input inputData: array<string> (?)
+input inputData: array<string> (An array containing the source and destination paths)
 input inputMetaData: undefined
 output: ?
 
 testName: copyAllFilesAndFoldersFromFolderToFolder_inValidInputMetaDataNaN
-input inputData: array<string> (?)
+input inputData: array<string> (An array containing the source and destination paths)
 input inputMetaData: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: buildReleasePackage_validData
-input inputData: string (?)
-input inputMetaData: string (?)
-output: boolean (?)
+input inputData: string (The folder that should be packaged up for the release zip file)
+input inputMetaData: string (The folder where the zip file release package should be saved)
+output: boolean (A True or False value to indicate if the release package process is successful or not)
 
 testName: buildReleasePackage_inValidInputDataString
 input inputData: string (dfxg24346dfg)
-input inputMetaData: string (?)
+input inputMetaData: string (The folder where the zip file release package should be saved)
 output: ?
 
 testName: buildReleasePackage_inValidInputMetaDataString
-input inputData: string (?)
-input inputMetaData: string (&)
+input inputData: string (The folder that should be packaged up for the release zip file)
+input inputMetaData: string (dfxg24346dfg)
 output: ?
 
 testName: buildReleasePackage_inValidInputDataInteger
 input inputData: integer (123)
-input inputMetaData: string (?)
+input inputMetaData: string (The folder where the zip file release package should be saved)
 output: ?
 
 testName: buildReleasePackage_inValidInputDataBoolean
 input inputData: boolean (false)
-input inputMetaData: string (?)
+input inputMetaData: string (The folder where the zip file release package should be saved)
 output: ?
 
 testName: buildReleasePackage_inValidInputMetaDataInteger
-input inputData: string (?)
+input inputData: string (The folder that should be packaged up for the release zip file)
 input inputMetaData: integer (123)
 output: ?
 
 testName: buildReleasePackage_inValidInputMetaDataBoolean
-input inputData: string (?)
+input inputData: string (The folder that should be packaged up for the release zip file)
 input inputMetaData: boolean (false)
 output: ?
 
 testName: buildReleasePackage_inValidInputDataUndefined
 input inputData: undefined
-input inputMetaData: string (?)
+input inputMetaData: string (The folder where the zip file release package should be saved)
 output: ?
 
 testName: buildReleasePackage_inValidInputDataNaN
 input inputData: NaN
-input inputMetaData: string (?)
+input inputMetaData: string (The folder where the zip file release package should be saved)
 output: ?
 
 testName: buildReleasePackage_inValidInputMetaDataUndefined
-input inputData: string (?)
+input inputData: string (The folder that should be packaged up for the release zip file)
 input inputMetaData: undefined
 output: ?
 
 testName: buildReleasePackage_inValidInputMetaDataNaN
-input inputData: string (?)
+input inputData: string (The folder that should be packaged up for the release zip file)
 input inputMetaData: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: createZipArchive_validData
-input inputData: array<string> (?)
-input inputMetaData: string (?)
-output: boolean (?)
+input inputData: array<string> (All the folders and paths to include in the zip archive)
+input inputMetaData: string (The full path and file name to the destination where the zip file should be saved)
+output: boolean (A True or False value to indicate if the zip file was created successfully or not)
 
 testName: createZipArchive_inValidInputDataString
 input inputData: string (dfxg24346dfg)
-input inputMetaData: string (?)
+input inputMetaData: string (The full path and file name to the destination where the zip file should be saved)
 output: ?
 
 testName: createZipArchive_inValidInputMetaDataString
-input inputData: array<string> (?)
-input inputMetaData: string (&)
+input inputData: array<string> (All the folders and paths to include in the zip archive)
+input inputMetaData: string (dfxg24346dfg)
 output: ?
 
 testName: createZipArchive_inValidInputDataInteger
 input inputData: integer (123)
-input inputMetaData: string (?)
+input inputMetaData: string (The full path and file name to the destination where the zip file should be saved)
 output: ?
 
 testName: createZipArchive_inValidInputDataBoolean
 input inputData: boolean (false)
-input inputMetaData: string (?)
+input inputMetaData: string (The full path and file name to the destination where the zip file should be saved)
 output: ?
 
 testName: createZipArchive_inValidInputMetaDataInteger
-input inputData: array<string> (?)
+input inputData: array<string> (All the folders and paths to include in the zip archive)
 input inputMetaData: integer (123)
 output: ?
 
 testName: createZipArchive_inValidInputMetaDataBoolean
-input inputData: array<string> (?)
+input inputData: array<string> (All the folders and paths to include in the zip archive)
 input inputMetaData: boolean (false)
 output: ?
 
 testName: createZipArchive_inValidInputDataUndefined
 input inputData: undefined
-input inputMetaData: string (?)
+input inputMetaData: string (The full path and file name to the destination where the zip file should be saved)
 output: ?
 
 testName: createZipArchive_inValidInputDataNaN
 input inputData: NaN
-input inputMetaData: string (?)
+input inputMetaData: string (The full path and file name to the destination where the zip file should be saved)
 output: ?
 
 testName: createZipArchive_inValidInputMetaDataUndefined
-input inputData: array<string> (?)
+input inputData: array<string> (All the folders and paths to include in the zip archive)
 input inputMetaData: undefined
 output: ?
 
 testName: createZipArchive_inValidInputMetaDataNaN
-input inputData: array<string> (?)
+input inputData: array<string> (All the folders and paths to include in the zip archive)
 input inputMetaData: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: cleanRootPath_validData
-input inputData: string (?)
-input inputMetaData: string (?)
-output: string (?)
+input inputData: string (Not used for this business rule)
+input inputMetaData: string (Not used for this business rule)
+output: string (The real rot path or top-level path for the application)
 
 testName: cleanRootPath_inValidInputDataString
 input inputData: string (dfxg24346dfg)
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: cleanRootPath_inValidInputMetaDataString
-input inputData: string (?)
-input inputMetaData: string (&)
+input inputData: string (Not used for this business rule)
+input inputMetaData: string (dfxg24346dfg)
 output: ?
 
 testName: cleanRootPath_inValidInputDataInteger
 input inputData: integer (123)
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: cleanRootPath_inValidInputDataBoolean
 input inputData: boolean (false)
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: cleanRootPath_inValidInputMetaDataInteger
-input inputData: string (?)
+input inputData: string (Not used for this business rule)
 input inputMetaData: integer (123)
 output: ?
 
 testName: cleanRootPath_inValidInputMetaDataBoolean
-input inputData: string (?)
+input inputData: string (Not used for this business rule)
 input inputMetaData: boolean (false)
 output: ?
 
 testName: cleanRootPath_inValidInputDataUndefined
 input inputData: undefined
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: cleanRootPath_inValidInputDataNaN
 input inputData: NaN
-input inputMetaData: string (?)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: cleanRootPath_inValidInputMetaDataUndefined
-input inputData: string (?)
+input inputData: string (Not used for this business rule)
 input inputMetaData: undefined
 output: ?
 
 testName: cleanRootPath_inValidInputMetaDataNaN
-input inputData: string (?)
+input inputData: string (Not used for this business rule)
 input inputMetaData: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: copyFileSync_validData
-input inputData: array<string> (?)
-input inputMetaData: array<array<string>> (?)
-output: boolean (?)
+input inputData: array<string> (An array containing the source and destination paths)
+input inputMetaData: array<array<string>> (Two array's of strings that are exclusions and inclusions, file filters that should be avoided during the copy process, the inclusions array over-rides the exclusion array)
+output: boolean (A True or False value to indicate fi the copy operation was a success or not)
 
 testName: copyFileSync_inValidInputDataString
 input inputData: string (dfxg24346dfg)
-input inputMetaData: array<array<string>> (?)
+input inputMetaData: array<array<string>> (Two array's of strings that are exclusions and inclusions, file filters that should be avoided during the copy process, the inclusions array over-rides the exclusion array)
 output: ?
 
 testName: copyFileSync_inValidInputMetaDataString
-input inputData: array<string> (?)
-input inputMetaData: string (&)
+input inputData: array<string> (An array containing the source and destination paths)
+input inputMetaData: string (dfxg24346dfg)
 output: ?
 
 testName: copyFileSync_inValidInputDataInteger
 input inputData: integer (123)
-input inputMetaData: array<array<string>> (?)
+input inputMetaData: array<array<string>> (Two array's of strings that are exclusions and inclusions, file filters that should be avoided during the copy process, the inclusions array over-rides the exclusion array)
 output: ?
 
 testName: copyFileSync_inValidInputDataBoolean
 input inputData: boolean (false)
-input inputMetaData: array<array<string>> (?)
+input inputMetaData: array<array<string>> (Two array's of strings that are exclusions and inclusions, file filters that should be avoided during the copy process, the inclusions array over-rides the exclusion array)
 output: ?
 
 testName: copyFileSync_inValidInputMetaDataInteger
-input inputData: array<string> (?)
+input inputData: array<string> (An array containing the source and destination paths)
 input inputMetaData: integer (123)
 output: ?
 
 testName: copyFileSync_inValidInputMetaDataBoolean
-input inputData: array<string> (?)
+input inputData: array<string> (An array containing the source and destination paths)
 input inputMetaData: boolean (false)
 output: ?
 
 testName: copyFileSync_inValidInputDataUndefined
 input inputData: undefined
-input inputMetaData: array<array<string>> (?)
+input inputMetaData: array<array<string>> (Two array's of strings that are exclusions and inclusions, file filters that should be avoided during the copy process, the inclusions array over-rides the exclusion array)
 output: ?
 
 testName: copyFileSync_inValidInputDataNaN
 input inputData: NaN
-input inputMetaData: array<array<string>> (?)
+input inputMetaData: array<array<string>> (Two array's of strings that are exclusions and inclusions, file filters that should be avoided during the copy process, the inclusions array over-rides the exclusion array)
 output: ?
 
 testName: copyFileSync_inValidInputMetaDataUndefined
-input inputData: array<string> (?)
+input inputData: array<string> (An array containing the source and destination paths)
 input inputMetaData: undefined
 output: ?
 
 testName: copyFileSync_inValidInputMetaDataNaN
-input inputData: array<string> (?)
+input inputData: array<string> (An array containing the source and destination paths)
 input inputMetaData: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: copyFolderRecursiveSync_validData
-input inputData: array<string> (?)
-input inputMetaData: array<array<string>> (?)
-output: boolean (?)
+input inputData: array<string> (An array containing the source and destination paths)
+input inputMetaData: array<array<string>> (Two array's of strings that are exclusions and inclusions, file filters that should be avoided during the copy process, the inclusion array over-rides the exclusion array)
+output: boolean (A True or False value to indicate fi the copy operation was a success or not)
 
 testName: copyFolderRecursiveSync_inValidInputDataString
 input inputData: string (dfxg24346dfg)
-input inputMetaData: array<array<string>> (?)
+input inputMetaData: array<array<string>> (Two array's of strings that are exclusions and inclusions, file filters that should be avoided during the copy process, the inclusion array over-rides the exclusion array)
 output: ?
 
 testName: copyFolderRecursiveSync_inValidInputMetaDataString
-input inputData: array<string> (?)
-input inputMetaData: string (&)
+input inputData: array<string> (An array containing the source and destination paths)
+input inputMetaData: string (dfxg24346dfg)
 output: ?
 
 testName: copyFolderRecursiveSync_inValidInputDataInteger
 input inputData: integer (123)
-input inputMetaData: array<array<string>> (?)
+input inputMetaData: array<array<string>> (Two array's of strings that are exclusions and inclusions, file filters that should be avoided during the copy process, the inclusion array over-rides the exclusion array)
 output: ?
 
 testName: copyFolderRecursiveSync_inValidInputDataBoolean
 input inputData: boolean (false)
-input inputMetaData: array<array<string>> (?)
+input inputMetaData: array<array<string>> (Two array's of strings that are exclusions and inclusions, file filters that should be avoided during the copy process, the inclusion array over-rides the exclusion array)
 output: ?
 
 testName: copyFolderRecursiveSync_inValidInputMetaDataInteger
-input inputData: array<string> (?)
+input inputData: array<string> (An array containing the source and destination paths)
 input inputMetaData: integer (123)
 output: ?
 
 testName: copyFolderRecursiveSync_inValidInputMetaDataBoolean
-input inputData: array<string> (?)
+input inputData: array<string> (An array containing the source and destination paths)
 input inputMetaData: boolean (false)
 output: ?
 
 testName: copyFolderRecursiveSync_inValidInputDataUndefined
 input inputData: undefined
-input inputMetaData: array<array<string>> (?)
+input inputMetaData: array<array<string>> (Two array's of strings that are exclusions and inclusions, file filters that should be avoided during the copy process, the inclusion array over-rides the exclusion array)
 output: ?
 
 testName: copyFolderRecursiveSync_inValidInputDataNaN
 input inputData: NaN
-input inputMetaData: array<array<string>> (?)
+input inputMetaData: array<array<string>> (Two array's of strings that are exclusions and inclusions, file filters that should be avoided during the copy process, the inclusion array over-rides the exclusion array)
 output: ?
 
 testName: copyFolderRecursiveSync_inValidInputMetaDataUndefined
-input inputData: array<string> (?)
+input inputData: array<string> (An array containing the source and destination paths)
 input inputMetaData: undefined
 output: ?
 
 testName: copyFolderRecursiveSync_inValidInputMetaDataNaN
-input inputData: array<string> (?)
+input inputData: array<string> (An array containing the source and destination paths)
 input inputMetaData: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: appendMessageToFile_validData
-input inputData: string (?)
-input inputMetaData: string (?)
-output: boolean (?)
+input inputData: string (The fully qualified path and file name for the file that should be opened, appended and saved)
+input inputMetaData: string (The message that should be appended to the specified file)
+output: boolean (A True or False to indicate if the append happened successfully or not)
 
 testName: appendMessageToFile_inValidInputDataString
 input inputData: string (dfxg24346dfg)
-input inputMetaData: string (?)
+input inputMetaData: string (The message that should be appended to the specified file)
 output: ?
 
 testName: appendMessageToFile_inValidInputMetaDataString
-input inputData: string (?)
-input inputMetaData: string (&)
+input inputData: string (The fully qualified path and file name for the file that should be opened, appended and saved)
+input inputMetaData: string (dfxg24346dfg)
 output: ?
 
 testName: appendMessageToFile_inValidInputDataInteger
 input inputData: integer (123)
-input inputMetaData: string (?)
+input inputMetaData: string (The message that should be appended to the specified file)
 output: ?
 
 testName: appendMessageToFile_inValidInputDataBoolean
 input inputData: boolean (false)
-input inputMetaData: string (?)
+input inputMetaData: string (The message that should be appended to the specified file)
 output: ?
 
 testName: appendMessageToFile_inValidInputMetaDataInteger
-input inputData: string (?)
+input inputData: string (The fully qualified path and file name for the file that should be opened, appended and saved)
 input inputMetaData: integer (123)
 output: ?
 
 testName: appendMessageToFile_inValidInputMetaDataBoolean
-input inputData: string (?)
+input inputData: string (The fully qualified path and file name for the file that should be opened, appended and saved)
 input inputMetaData: boolean (false)
 output: ?
 
 testName: appendMessageToFile_inValidInputDataUndefined
 input inputData: undefined
-input inputMetaData: string (?)
+input inputMetaData: string (The message that should be appended to the specified file)
 output: ?
 
 testName: appendMessageToFile_inValidInputDataNaN
 input inputData: NaN
-input inputMetaData: string (?)
+input inputMetaData: string (The message that should be appended to the specified file)
 output: ?
 
 testName: appendMessageToFile_inValidInputMetaDataUndefined
-input inputData: string (?)
+input inputData: string (The fully qualified path and file name for the file that should be opened, appended and saved)
 input inputMetaData: undefined
 output: ?
 
 testName: appendMessageToFile_inValidInputMetaDataNaN
-input inputData: string (?)
+input inputData: string (The fully qualified path and file name for the file that should be opened, appended and saved)
 input inputMetaData: NaN
 output: ?
