@@ -649,7 +649,7 @@ async function printUserCommandsLog(inputData, inputMetaData) {
       // User commands log is empty.
       console.log(msg.cUserCommandsLogIsEmpty);
       returnData[1] = '';
-    }    
+    }
   } else {
     // NOTE: The user entered command log setting is not enabled.
     // Change the setting logUserEnteredCommands to enable user entered command log data to be captured for printing.

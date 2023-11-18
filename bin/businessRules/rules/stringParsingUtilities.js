@@ -54,7 +54,7 @@ async function parseSystemRootPath(inputData, inputMetaData) {
     } else if (inputData.includes(bas.cForwardSlash) === true) {
       // console.log('caught the case of forward slash');
       pathElements = inputData.split(bas.cForwardSlash);
-    }    
+    }
     for (let i = 0; i < pathElements.length; i++) {
       // console.log(`BEGIN iteration i: ${i}`);
       let pathElement = pathElements[i];

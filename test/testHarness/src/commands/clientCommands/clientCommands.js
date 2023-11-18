@@ -206,7 +206,7 @@ async function bossPanic(inputData, inputMetaData) {
 /**
  * @function clientCommand01
  * @description Client Command One.
- * @param {string} inputData Not used for this command. 
+ * @param {string} inputData Not used for this command.
  * @param {string} inputMetaData Not used for this command.
  * @return {array<boolean,string|integer|boolean|object|array,object>} An array with a boolean True or False value to
  * indicate if the application should exit or not exit, followed by the command output and finally the promise for the command execution.
@@ -231,7 +231,7 @@ async function bossPanic(inputData, inputMetaData) {
 /**
  * @function clientCommand02
  * @description Client Command Two.
- * @param {string} inputData Not used for this command. 
+ * @param {string} inputData Not used for this command.
  * @param {string} inputMetaData Not used for this command.
  * @return {array<boolean,string|integer|boolean|object|array,object>} An array with a boolean True or False value to
  * indicate if the application should exit or not exit, followed by the command output and finally the promise for the command execution.
@@ -256,7 +256,7 @@ async function bossPanic(inputData, inputMetaData) {
 /**
  * @function clientCommand03
  * @description Client Command Three.
- * @param {string} inputData Not used for this command. 
+ * @param {string} inputData Not used for this command.
  * @param {string} inputMetaData Not used for this command.
  * @return {array<boolean,string|integer|boolean|object|array,object>} An array with a boolean True or False value to
  * indicate if the application should exit or not exit, followed by the command output and finally the promise for the command execution.
@@ -281,7 +281,7 @@ async function bossPanic(inputData, inputMetaData) {
 /**
  * @function clientCommand04
  * @description Client Command Four.
- * @param {string} inputData Not used for this command. 
+ * @param {string} inputData Not used for this command.
  * @param {string} inputMetaData Not used for this command.
  * @return {array<boolean,string|integer|boolean|object|array,object>} An array with a boolean True or False value to
  * indicate if the application should exit or not exit, followed by the command output and finally the promise for the command execution.
@@ -306,7 +306,7 @@ async function bossPanic(inputData, inputMetaData) {
 /**
  * @function clientCommand05
  * @description Client Command Five.
- * @param {string} inputData Not used for this command. 
+ * @param {string} inputData Not used for this command.
  * @param {string} inputMetaData Not used for this command.
  * @return {array<boolean,string|integer|boolean|object|array,object>} An array with a boolean True or False value to
  * indicate if the application should exit or not exit, followed by the command output and finally the promise for the command execution.
@@ -331,7 +331,7 @@ async function bossPanic(inputData, inputMetaData) {
 /**
  * @function clientCommand06
  * @description Client Command Six.
- * @param {string} inputData Not used for this command. 
+ * @param {string} inputData Not used for this command.
  * @param {string} inputMetaData Not used for this command.
  * @return {array<boolean,string|integer|boolean|object|array,object>} An array with a boolean True or False value to
  * indicate if the application should exit or not exit, followed by the command output and finally the promise for the command execution.
@@ -356,7 +356,7 @@ async function bossPanic(inputData, inputMetaData) {
 /**
  * @function clientCommand07
  * @description Client Command Seven.
- * @param {string} inputData Not used for this command. 
+ * @param {string} inputData Not used for this command.
  * @param {string} inputMetaData Not used for this command.
  * @return {array<boolean,string|integer|boolean|object|array,object>} An array with a boolean True or False value to
  * indicate if the application should exit or not exit, followed by the command output and finally the promise for the command execution.
@@ -381,7 +381,7 @@ async function bossPanic(inputData, inputMetaData) {
 /**
  * @function clientCommand08
  * @description Client Command Eight.
- * @param {string} inputData Not used for this command. 
+ * @param {string} inputData Not used for this command.
  * @param {string} inputMetaData Not used for this command.
  * @return {array<boolean,string|integer|boolean|object|array,object>} An array with a boolean True or False value to
  * indicate if the application should exit or not exit, followed by the command output and finally the promise for the command execution.
@@ -406,7 +406,7 @@ async function bossPanic(inputData, inputMetaData) {
 /**
  * @function clientCommand09
  * @description Client Command Nine.
- * @param {string} inputData Not used for this command. 
+ * @param {string} inputData Not used for this command.
  * @param {string} inputMetaData Not used for this command.
  * @return {array<boolean,string|integer|boolean|object|array,object>} An array with a boolean True or False value to
  * indicate if the application should exit or not exit, followed by the command output and finally the promise for the command execution.
@@ -431,7 +431,7 @@ async function bossPanic(inputData, inputMetaData) {
 /**
  * @function clientCommand10
  * @description Client Command Ten.
- * @param {string} inputData Not used for this command. 
+ * @param {string} inputData Not used for this command.
  * @param {string} inputMetaData Not used for this command.
  * @return {array<boolean,string|integer|boolean|object|array,object>} An array with a boolean True or False value to
  * indicate if the application should exit or not exit, followed by the command output and finally the promise for the command execution.

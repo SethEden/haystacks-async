@@ -322,7 +322,7 @@ async function objectDeepClone(inputData, inputMetaData) {
         // array deep clone string
         await loggers.consoleLog(namespacePrefix + functionName, msg.carrayDeepCloneString);
         returnData = await arrayDeepClone(inputData, '');
-      }      
+      }
     } else {
       // object deep cloning
       await loggers.consoleLog(namespacePrefix + functionName, msg.cobjectDeepCloning);

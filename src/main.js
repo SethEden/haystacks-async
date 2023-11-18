@@ -523,7 +523,7 @@ async function writePluginRegistryToDisk() {
  * @param {array<string>} pluginsPaths The fully qualified paths where to load the plugins from.
  * @return {boolean} True or False to indicate if all the plugins were loaded or not.
  * @author Seth Hollingsead
- * @date 2022/09/01 
+ * @date 2022/09/01
  */
 async function loadPlugins(pluginsPaths) {
   let functionName = loadPlugins.name;
@@ -621,7 +621,7 @@ async function unloadAllPlugins() {
 
 /**
  * @function getPluginsRegistryPath
- * @description A wrapper call to the warden.getPluginsRegistryPath function. 
+ * @description A wrapper call to the warden.getPluginsRegistryPath function.
  * Which is in-turn a wrapper function for the chiefPlugin.getPluginsRegistryPath.
  * Which is in-turn a wrapper function for pluginBroker.getPluginsRegistryPath.
  * @return {string} The path to the plugins listed in the plugin registry as meta-data.
@@ -735,7 +735,7 @@ async function getData(dataName) {
  * @param {string} dataName The unique name of the data that should be cleared.
  * @return {boolean} True or False to indicate if the data was cleared successfully or not.
  * @author Seth Hollingsead
- * @date 2023/02/27 
+ * @date 2023/02/27
  */
 async function clearData(dataName) {
   let functionName = clearData.name;

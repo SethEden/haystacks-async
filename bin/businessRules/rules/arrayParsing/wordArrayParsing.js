@@ -183,7 +183,7 @@ async function doesArrayContainLowerCaseConsolidatedString(inputData, inputMetaD
     // async function mapAsync(arr, cb) {
     //   return arr.reduce((acc, value, index) => acc.then(async (res) => [...res, await cb(value, index)]), []);
     // }
-    
+
     // returnData = await mapAsync(inputData, (key, index) =>
     //   ruleParsing.processRulesInternal([key, index], [biz.cmapWordToCamelCaseWord]),
     // );

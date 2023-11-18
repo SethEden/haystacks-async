@@ -193,7 +193,7 @@ async function loadAsciiFileFromPath(inputData, inputMetaData) {
   try {
     returnData = await fs.readFileSync(inputData, gen.cUTF8);
   } catch (err) {
-    // ERROR: Failure to read from file: 
+    // ERROR: Failure to read from file:
     console.error(msg.cErrorLoadAsciiFileFromPathMessage01 + inputData);
   }
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
@@ -301,7 +301,7 @@ async function getDirectoryList(inputData, inputMetaData) {
       // ERROR: The specified path does not exist or cannot be found:
       console.log(msg.cErrorGetDirectoryListMessage01 + inputData);
       console.log(msg.cerrorMessage + err.message);
-    }    
+    }
   } // End-if (inputData)
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
