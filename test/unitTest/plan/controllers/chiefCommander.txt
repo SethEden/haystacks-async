@@ -3,115 +3,119 @@ Description: Test plan for chiefCommander.js
 --------------------------------------------------------------------------------
 testName: bootStrapCommands_validData
 output: void
+NOTE: Initializes all of the commands and gets them added to the D-data structure
 --------------------------------------------------------------------------------
 testName: reinitializeCommands_validData
 output: void
+NOTE: Clears out and then re-bootstraps the commands
 --------------------------------------------------------------------------------
 testName: addClientCommands_validData
-input clientCommands: object (?)
-output: void
+input clientCommands: object (A map of client defined command names and client defined command function calls)
+output: void (This is a wrapper function for calling the commandBroker.addClientCommands)
 
 testName: addClientCommands_inValidClientCommandsString
 input clientCommands: string (dfxg24346dfg)
-output: void
+output: ?
 
 testName: addClientCommands_inValidClientCommandsInteger
 input clientCommands: integer (123)
-output: void
+output: ?
 
 testName: addClientCommands_inValidClientCommandsBoolean
 input clientCommands: boolean (false)
-output: void
+output: ?
 
 testName: addClientCommands_inValidClientCommandsUndefined
 input clientCommands: undefined
-output: void
+output: ?
 
 testName: addClientCommands_inValidClientCommandsNaN
 input clientCommands: NaN
-output: void
+output: ?
 --------------------------------------------------------------------------------
 testName: loadCommandAliasesFromPath_validData
-input commandAliasesFilePathConfigurationName: string (?)
-input contextName: string (?)
-output: boolean|object (?)
+input commandAliasesFilePathConfigurationName: string (The path and file name to the XML file that contains the command aliases definitions)
+input contextName: string (The context name defines what parent command alias namespace the loaded and merged data should be stored in)
+output: boolean|object (True or False if the data to be loaded is not from a plugin, returns a JSON object is the data to be loaded is from a plugin)
 
 testName: loadCommandAliasesFromPath_inValidCommandAliasesFilePathConfigurationNameString
 input commandAliasesFilePathConfigurationName: string (dfxg24346dfg)
-input contextName: string (?)
+input contextName: string (The context name defines what parent command alias namespace the loaded and merged data should be stored in)
 output: ?
 
 testName: loadCommandAliasesFromPath_inValidContextNameString
-input commandAliasesFilePathConfigurationName: string (?)
-input contextName: string (&)
+input commandAliasesFilePathConfigurationName: string (The path and file name to the XML file that contains the command aliases definitions)
+input contextName: string (dfxg24346dfg)
 output: ?
 
 testName: loadCommandAliasesFromPath_inValidCommandAliasesFilePathConfigurationNameInteger
 input commandAliasesFilePathConfigurationName: integer (123)
-input contextName: string (?)
+input contextName: string (The context name defines what parent command alias namespace the loaded and merged data should be stored in)
 output: ?
 
 testName: loadCommandAliasesFromPath_inValidCommandAliasesFilePathConfigurationNameBoolean
 input commandAliasesFilePathConfigurationName: boolean (false)
-input contextName: string (?)
+input contextName: string (The context name defines what parent command alias namespace the loaded and merged data should be stored in)
 output: ?
 
 testName: loadCommandAliasesFromPath_inValidContextNameInteger
-input commandAliasesFilePathConfigurationName: string (?)
+input commandAliasesFilePathConfigurationName: string (The path and file name to the XML file that contains the command aliases definitions)
 input contextName: integer (123)
 output: ?
 
 testName: loadCommandAliasesFromPath_inValidContextNameBoolean
-input commandAliasesFilePathConfigurationName: string (?)
+input commandAliasesFilePathConfigurationName: string (The path and file name to the XML file that contains the command aliases definitions)
 input contextName: boolean (false)
 output: ?
 
 testName: loadCommandAliasesFromPath_inValidCommandAliasesFilePathConfigurationNameUndefined
 input commandAliasesFilePathConfigurationName: undefinend
-input contextName: string (?)
+input contextName: string (The context name defines what parent command alias namespace the loaded and merged data should be stored in)
 output: ?
 
 testName: loadCommandAliasesFromPath_inValidCommandAliasesFilePathConfigurationNameNaN
 input commandAliasesFilePathConfigurationName: NaN
-input contextName: string (?)
+input contextName: string (The context name defines what parent command alias namespace the loaded and merged data should be stored in)
 output: ?
 
 testName: loadCommandAliasesFromPath_inValidContextNameUndefined
-input commandAliasesFilePathConfigurationName: string (?)
+input commandAliasesFilePathConfigurationName: string (The path and file name to the XML file that contains the command aliases definitions)
 input contextName: undefined
 output: ?
 
 testName: loadCommandAliasesFromPath_inValidContextNameNaN
-input commandAliasesFilePathConfigurationName: string (?)
+input commandAliasesFilePathConfigurationName: string (The path and file name to the XML file that contains the command aliases definitions)
 input contextName: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: enqueueCommand_validData
-input command: string (?)
-output: void
+input command: string (The command that should be added  to the command queue)
+output: void (Determines if the command queue has been setup or not, if not then it is initialized, and the command is added to the command queue)
 
 testName: enqueueCommand_inValidCommandString
 input command: string (dfxg24346dfg)
-output: void
+output: ?
 
 testName: enqueueCommand_inValidCommandInteger
 input command: integer (123)
-output: void
+output: ?
 
 testName: enqueueCommand_inValidCommandBoolean
 input command: boolean (false)
-output: void
+output: ?
 
 testName: enqueueCommand_inValidCommandUndefined
 input command: undefined
-output: void
+output: ?
 
 testName: enqueueCommand_inValidCommandNaN
 input command: NaN
-output: void
+output: ?
 --------------------------------------------------------------------------------
 testName: isCommandQueueEmpty_validData
-output: boolean (?)
+output: boolean (A True or False value to indicate if the command queue is empty or not empty)
+NOTE: Determines if the command queue is empty or not empty
 --------------------------------------------------------------------------------
 testName: processCommandQueue_validData
-output: array<boolean,string|integer|boolean|object|array> (?)
+output: array<boolean,string|integer|boolean|object|array> (An array with a boolean True or False value to indicate if the application should exit or not exit, followed by the command output)
+NOTE: Pulls the command from the front of the command queue and executes it using the command broker

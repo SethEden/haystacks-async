@@ -2,221 +2,221 @@ Description: Test plan for configuration.js
 
 --------------------------------------------------------------------------------
 testName: saveConfiguration_validData
-input inputData: string
-input inputMetaData: string
-output: array<boolean,string|integer|boolean|object|array> (?)
+input inputData: string (Not used for this command)
+input inputMetaData: string (Not used for this command)
+output: array<boolean,string|integer|boolean|object|array> (An array with a boolean True or False value to indicate if the application should exit or not exit, followed by the command output)
 
 testName: saveConfiguration_inValidInputDataString
-input inputData: string
-input inputMetaData: string
+input inputData: string (dfxg24346dfg)
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: saveConfiguration_inValidInputMetaDataString
-input inputData: string
-input inputMetaData: string
+input inputData: string (Not used for this command)
+input inputMetaData: string (dfxg24346dfg)
 output: ?
 
 testName: saveConfiguration_inValidInputDataInteger
 input inputData: integer (123)
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: saveConfiguration_inValidInputDataBoolean
 input inputData: boolean (false)
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: saveConfiguration_inValidInputMetaDataInteger
-input inputData: string
+input inputData: string (Not used for this command)
 input inputMetaData: integer (123)
 output: ?
 
 testName: saveConfiguration_inValidInputMetaDataBoolean
-input inputData: string
+input inputData: string (Not used for this command)
 input inputMetaData: boolean (false)
 output: ?
 
 testName: saveConfiguration_inValidInputDataUndefined
 input inputData: undefined
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: saveConfiguration_inValidInputDataNaN
 input inputData: NaN
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: saveConfiguration_inValidInputMetaDataUndefined
-input inputData: string
+input inputData: string (Not used for this command)
 input inputMetaData: undefined
 output: ?
 
 testName: saveConfiguration_inValidInputMetaDataNaN
-input inputData: string
+input inputData: string (Not used for this command)
 input inputMetaData: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: changeConfigurationSetting_validData
-input inputData: array<string>
-input inputMetaData: string
-output: array<boolean,string|integer|boolean|object|array> (?)
+input inputData: array<string> (An array that contains the fully qualified path to the configuration setting that should be changed ands the data that should be assigned to it)
+input inputMetaData: string (Not used for this command)
+output: array<boolean,string|integer|boolean|object|array> (An array with a boolean True or False value to indicate if the application should exit or not exit, followed by the command output)
 
 testName: changeConfigurationSetting_inValidInputDataString
-input inputData: string
-input inputMetaData: string
+input inputData: string (dfxg24346dfg)
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: changeConfigurationSetting_inValidInputMetaDataString
-input inputData: array<string>
-input inputMetaData: string
+input inputData: array<string> (An array that contains the fully qualified path to the configuration setting that should be changed ands the data that should be assigned to it)
+input inputMetaData: string (dfxg24346dfg)
 output: ?
 
 testName: changeConfigurationSetting_inValidInputDataInteger
 input inputData: integer (123)
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: changeConfigurationSetting_inValidInputDataBoolean
 input inputData: boolean (false)
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: changeConfigurationSetting_inValidInputMetaDataInteger
-input inputData: array<string>
+input inputData: array<string> (An array that contains the fully qualified path to the configuration setting that should be changed ands the data that should be assigned to it)
 input inputMetaData: integer (123)
 output: ?
 
 testName: changeConfigurationSetting_inValidInputMetaDataBoolean
-input inputData: array<string>
+input inputData: array<string> (An array that contains the fully qualified path to the configuration setting that should be changed ands the data that should be assigned to it)
 input inputMetaData: boolean (false)
 output: ?
 
 testName: changeConfigurationSetting_inValidInputDataUndefined
 input inputData: undefined
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: changeConfigurationSetting_inValidInputDataNaN
 input inputData: NaN
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: changeConfigurationSetting_inValidInputMetaDataUndefined
-input inputData: array<string>
+input inputData: array<string> (An array that contains the fully qualified path to the configuration setting that should be changed ands the data that should be assigned to it)
 input inputMetaData: undefined
 output: ?
 
 testName: changeConfigurationSetting_inValidInputMetaDataNaN
-input inputData: array<string>
+input inputData: array<string> (An array that contains the fully qualified path to the configuration setting that should be changed ands the data that should be assigned to it)
 input inputMetaData: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: listConfigurationThemes_validData
-input inputData: string
-input inputMetaData: string
-output: array<boolean,string|integer|boolean|object|array> (?)
+input inputData: string (Not used for this command)
+input inputMetaData: string (Not used for this command)
+output: array<boolean,string|integer|boolean|object|array> (An array with a boolean True or False value to indicate if the application should exit or not exit, followed by the command output)
 
 testName: listConfigurationThemes_inValidInputDataString
-input inputData: string
-input inputMetaData: string
+input inputData: string (dfxg24346dfg)
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: listConfigurationThemes_inValidInputMetaDataString
-input inputData: string
-input inputMetaData: string
+input inputData: string (Not used for this command)
+input inputMetaData: string (dfxg24346dfg)
 output: ?
 
 testName: listConfigurationThemes_inValidInputDataInteger
 input inputData: integer (123)
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: listConfigurationThemes_inValidInputDataBoolean
 input inputData: boolean (false)
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: listConfigurationThemes_inValidInputMetaDataInteger
-input inputData: string
+input inputData: string (Not used for this command)
 input inputMetaData: integer (123)
 output: ?
 
 testName: listConfigurationThemes_inValidInputMetaDataBoolean
-input inputData: string
+input inputData: string (Not used for this command)
 input inputMetaData: boolean (false)
 output: ?
 
 testName: listConfigurationThemes_inValidInputDataUndefined
 input inputData: undefined
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: listConfigurationThemes_inValidInputDataNaN
 input inputData: NaN
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: listConfigurationThemes_inValidInputMetaDataUndefined
-input inputData: string
+input inputData: string (Not used for this command)
 input inputMetaData: undefined
 output: ?
 
 testName: listConfigurationThemes_inValidInputMetaDataNaN
-input inputData: string
+input inputData: string (Not used for this command)
 input inputMetaData: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: changeDebugConfigurationTheme_validData
-input inputData: string
-input inputMetaData: string
-output: array<boolean,string|integer|boolean|object|array> (?)
+input inputData: string (An array that contains the name of the theme the user would like to switch to)
+input inputMetaData: string (Not used for this command)
+output: array<boolean,string|integer|boolean|object|array> (An array with a boolean True or False value to indicate if the application should exit or not exit, followed by the command output)
 
 testName: changeDebugConfigurationTheme_inValidInputDataString
-input inputData: string
-input inputMetaData: string
+input inputData: string (dfxg24346dfg)
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: changeDebugConfigurationTheme_inValidInputMetaDataString
-input inputData: string
-input inputMetaData: string
+input inputData: string (An array that contains the name of the theme the user would like to switch to)
+input inputMetaData: string (dfxg24346dfg)
 output: ?
 
 testName: changeDebugConfigurationTheme_inValidInputDataInteger
 input inputData: integer (123)
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: changeDebugConfigurationTheme_inValidInputDataBoolean
 input inputData: boolean (false)
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: changeDebugConfigurationTheme_inValidInputMetaDataInteger
-input inputData: string
+input inputData: string (An array that contains the name of the theme the user would like to switch to)
 input inputMetaData: integer (123)
 output: ?
 
 testName: changeDebugConfigurationTheme_inValidInputMetaDataBoolean
-input inputData: string
+input inputData: string (An array that contains the name of the theme the user would like to switch to)
 input inputMetaData: boolean (false)
 output: ?
 
 testName: changeDebugConfigurationTheme_inValidInputDataUndefined
 input inputData: undefined
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: changeDebugConfigurationTheme_inValidInputDataNaN
 input inputData: NaN
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: changeDebugConfigurationTheme_inValidInputMetaDataUndefined
-input inputData: string
+input inputData: string (An array that contains the name of the theme the user would like to switch to)
 input inputMetaData: undefined
 output: ?
 
 testName: changeDebugConfigurationTheme_inValidInputMetaDataNaN
-input inputData: string
+input inputData: string (An array that contains the name of the theme the user would like to switch to)
 input inputMetaData: NaN
 output: ?

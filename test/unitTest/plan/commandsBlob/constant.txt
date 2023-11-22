@@ -2,221 +2,221 @@ Description: Test plan for constant.js
 
 --------------------------------------------------------------------------------
 testName: constantsGenerator_validData
-input inputData: string
-input inputMetaData: string
-output: array<boolean,string|integer|boolean|object|array> (?)
+input inputData: string (Parameterized constant to generate for)
+input inputMetaData: string (Not used for this business rule)
+output: array<boolean,string|integer|boolean|object|array> (An array with a boolean True or False value to indicate if the application should exit or not exit, followed by the command output)
 
 testName: constantsGenerator_inValidInputDataString
-input inputData: string
-input inputMetaData: string
+input inputData: string (dfxg24346dfg)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: constantsGenerator_inValidInputMetaDataString
-input inputData: string
-input inputMetaData: string
+input inputData: string (Parameterized constant to generate for)
+input inputMetaData: string (dfxg24346dfg)
 output: ?
 
 testName: constantsGenerator_inValidInputDataInteger
 input inputData: integer (123)
-input inputMetaData: string
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: constantsGenerator_inValidInputDataBoolean
 input inputData: boolean (false)
-input inputMetaData: string
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: constantsGenerator_inValidInputMetaDataInteger
-input inputData: string
+input inputData: string (Parameterized constant to generate for)
 input inputMetaData: integer (123)
 output: ?
 
 testName: constantsGenerator_inValidInputMetaDataBoolean
-input inputData: string
+input inputData: string (Parameterized constant to generate for)
 input inputMetaData: boolean (false)
 output: ?
 
 testName: constantsGenerator_inValidInputDataUndefined
 input inputData: undefined
-input inputMetaData: string
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: constantsGenerator_inValidInputDataNaN
 input inputData: NaN
-input inputMetaData: string
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: constantsGenerator_inValidInputMetaDataUndefined
-input inputData: string
+input inputData: string (Parameterized constant to generate for)
 input inputMetaData: undefined
 output: ?
 
 testName: constantsGenerator_inValidInputMetaDataNaN
-input inputData: string
+input inputData: string (Parameterized constant to generate for)
 input inputMetaData: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: constantsGeneratorList_validData
-input inputData: string
-input inputMetaData: string
-output: array<boolean,string|integer|boolean|object|array> (?)
+input inputData: string (Parameterized coma delimited list of constants to be auto-generated)
+input inputMetaData: string (Not used for this business rule)
+output: array<boolean,string|integer|boolean|object|array> (An array with a boolean True or False value to indicate if the application should exit or not exit, followed by the command output)
 
 testName: constantsGeneratorList_inValidInputDataString
-input inputData: string
-input inputMetaData: string
+input inputData: string (dfxg24346dfg)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: constantsGeneratorList_inValidInputMetaDataString
-input inputData: string
-input inputMetaData: string
+input inputData: string (Parameterized coma delimited list of constants to be auto-generated)
+input inputMetaData: string (dfxg24346dfg)
 output: ?
 
 testName: constantsGeneratorList_inValidInputDataInteger
 input inputData: integer (123)
-input inputMetaData: string
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: constantsGeneratorList_inValidInputDataBoolean
 input inputData: boolean (false)
-input inputMetaData: string
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: constantsGeneratorList_inValidInputMetaDataInteger
-input inputData: string
+input inputData: string (Parameterized coma delimited list of constants to be auto-generated)
 input inputMetaData: integer (123)
 output: ?
 
 testName: constantsGeneratorList_inValidInputMetaDataBoolean
-input inputData: string
+input inputData: string (Parameterized coma delimited list of constants to be auto-generated)
 input inputMetaData: boolean (false)
 output: ?
 
 testName: constantsGeneratorList_inValidInputDataUndefined
 input inputData: undefined
-input inputMetaData: string
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: constantsGeneratorList_inValidInputDataNaN
 input inputData: NaN
-input inputMetaData: string
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: constantsGeneratorList_inValidInputMetaDataUndefined
-input inputData: string
+input inputData: string (Parameterized coma delimited list of constants to be auto-generated)
 input inputMetaData: undefined
 output: ?
 
 testName: constantsGeneratorList_inValidInputMetaDataNaN
-input inputData: string
+input inputData: string (Parameterized coma delimited list of constants to be auto-generated)
 input inputMetaData: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: constantsPatternRecognizer_validData
-input inputData: string
-input inputMetaData: string
-output: array<boolean,string|integer|boolean|object|array> (?)
+input inputData: string (Parameterized coma delimited list of constants to be passed through pattern recognition to find common strings among them)
+input inputMetaData: string (Not used for this business rule)
+output: array<boolean,string|integer|boolean|object|array> (An array with a boolean True or False value to indicate if the application should exit or not exit, followed by the command output)
 
 testName: constantsPatternRecognizer_inValidInputDataString
-input inputData: string
-input inputMetaData: string
+input inputData: string (dfxg24346dfg)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: constantsPatternRecognizer_inValidInputMetaDataString
-input inputData: string
-input inputMetaData: string
+input inputData: string (Parameterized coma delimited list of constants to be passed through pattern recognition to find common strings among them)
+input inputMetaData: string (dfxg24346dfg)
 output: ?
 
 testName: constantsPatternRecognizer_inValidInputDataInteger
 input inputData: integer (123)
-input inputMetaData: string
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: constantsPatternRecognizer_inValidInputDataBoolean
 input inputData: boolean (false)
-input inputMetaData: string
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: constantsPatternRecognizer_inValidInputMetaDataInteger
-input inputData: string
+input inputData: string (Parameterized coma delimited list of constants to be passed through pattern recognition to find common strings among them)
 input inputMetaData: integer (123)
 output: ?
 
 testName: constantsPatternRecognizer_inValidInputMetaDataBoolean
-input inputData: string
+input inputData: string (Parameterized coma delimited list of constants to be passed through pattern recognition to find common strings among them)
 input inputMetaData: boolean (false)
 output: ?
 
 testName: constantsPatternRecognizer_inValidInputDataUndefined
 input inputData: undefined
-input inputMetaData: string
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: constantsPatternRecognizer_inValidInputDataNaN
 input inputData: NaN
-input inputMetaData: string
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: constantsPatternRecognizer_inValidInputMetaDataUndefined
-input inputData: string
+input inputData: string (Parameterized coma delimited list of constants to be passed through pattern recognition to find common strings among them)
 input inputMetaData: undefined
 output: ?
 
 testName: constantsPatternRecognizer_inValidInputMetaDataNaN
-input inputData: string
+input inputData: string (Parameterized coma delimited list of constants to be passed through pattern recognition to find common strings among them)
 input inputMetaData: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: evaluateConstant_validData
-input inputData: array<string>
-input inputMetaData: string
-output: array<boolean,string|integer|boolean|object|array> (?)
+input inputData: array<string> (A string array that contains the name of the constant that should be resolved and printed)
+input inputMetaData: string (Not used for this business rule)
+output: array<boolean,string|integer|boolean|object|array> (An array with a boolean True or False value to indicate if the application should exit or not exit, followed by the command output)
 
 testName: evaluateConstant_inValidInputDataString
-input inputData: string
-input inputMetaData: string
+input inputData: string (dfxg24346dfg)
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: evaluateConstant_inValidInputMetaDataString
-input inputData: array<string>
-input inputMetaData: string
+input inputData: array<string> (A string array that contains the name of the constant that should be resolved and printed)
+input inputMetaData: string (dfxg24346dfg)
 output: ?
 
 testName: evaluateConstant_inValidInputDataInteger
 input inputData: integer (123)
-input inputMetaData: string
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: evaluateConstant_inValidInputDataBoolean
 input inputData: boolean (false)
-input inputMetaData: string
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: evaluateConstant_inValidInputMetaDataInteger
-input inputData: array<string>
+input inputData: array<string> (A string array that contains the name of the constant that should be resolved and printed)
 input inputMetaData: integer (123)
 output: ?
 
 testName: evaluateConstant_inValidInputMetaDataBoolean
-input inputData: array<string>
+input inputData: array<string> (A string array that contains the name of the constant that should be resolved and printed)
 input inputMetaData: boolean (false)
 output: ?
 
 testName: evaluateConstant_inValidInputDataUndefined
 input inputData: undefined
-input inputMetaData: string
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: evaluateConstant_inValidInputDataNaN
 input inputData: NaN
-input inputMetaData: string
+input inputMetaData: string (Not used for this business rule)
 output: ?
 
 testName: evaluateConstant_inValidInputMetaDataUndefined
-input inputData: array<string>
+input inputData: array<string> (A string array that contains the name of the constant that should be resolved and printed)
 input inputMetaData: undefined
 output: ?
 
 testName: evaluateConstant_inValidInputMetaDataNaN
-input inputData: array<string>
+input inputData: array<string> (A string array that contains the name of the constant that should be resolved and printed)
 input inputMetaData: NaN
 output: ?

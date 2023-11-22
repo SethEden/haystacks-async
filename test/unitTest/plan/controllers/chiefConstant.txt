@@ -3,61 +3,62 @@ Description: Test plan for chiefConstant.js
 --------------------------------------------------------------------------------
 testName: initializeConstantsValidationData_validData
 output: void
+NOTE: Calls the dataBroker to initialize the constants verification data structure
 --------------------------------------------------------------------------------
 testName: generateFrameworkConstantsValidationData_validData
-output: object (?)
+output: object (A JSON object that contains all of the framework constants validation data)
 --------------------------------------------------------------------------------
 testName: addConstantsValidationData_validData
-input arrayValidataionData: array<array<string, object>> (?)
-input contextName: string (?)
-output: boolean (?)
+input arrayValidataionData: array<array<string, object>> (An array of arrays that contains all of the constants library validation names and data objects)
+input contextName: string (The name of the type of data that is being added)
+output: boolean (True or False to indicate if the data was added successfully or not)
 
 testName: addConstantsValidationData_inValidArrayValidationDataString
 input arrayValidataionData: string (dfxg24346dfg)
-input contextName: string (?)
+input contextName: string (The name of the type of data that is being added)
 output: ?
 
 testName: addConstantsValidationData_inValidContextNameString
-input arrayValidataionData: array<array<string, object>> (?)
+input arrayValidataionData: array<array<string, object>> (An array of arrays that contains all of the constants library validation names and data objects)
 input contextName: string (&)
 output: ?
 
 testName: addConstantsValidationData_inValidArrayValidationDataInteger
 input arrayValidataionData: integer (123)
-input contextName: string (?)
+input contextName: string (The name of the type of data that is being added)
 output: ?
 
 testName: addConstantsValidationData_inValidArrayValidationDataBoolean
 input arrayValidataionData: boolean (false)
-input contextName: string (?)
+input contextName: string (The name of the type of data that is being added)
 output: ?
 
 testName: addConstantsValidationData_inValidContextNameInteger
-input arrayValidataionData: array<array<string, object>> (?)
+input arrayValidataionData: array<array<string, object>> (An array of arrays that contains all of the constants library validation names and data objects)
 input contextName: integer (123)
 output: ?
 
 testName: addConstantsValidationData_inValidContextNameBoolean
-input arrayValidataionData: array<array<string, object>> (?)
+input arrayValidataionData: array<array<string, object>> (An array of arrays that contains all of the constants library validation names and data objects)
 input contextName: boolean (false)
 output: ?
 
 testName: addConstantsValidationData_inValidArrayValidationDataUndefined
 input arrayValidataionData: undefined
-input contextName: string (?)
+input contextName: string (The name of the type of data that is being added)
 output: ?
 
 testName: addConstantsValidationData_inValidArrayValidationDataNaN
 input arrayValidataionData: NaN
-input contextName: string (?)
+input contextName: string (The name of the type of data that is being added)
 output: ?
 
 testName: addConstantsValidationData_inValidContextNameUndefined
-input arrayValidataionData: array<array<string, object>> (?)
+input arrayValidataionData: array<array<string, object>> (An array of arrays that contains all of the constants library validation names and data objects)
 input contextName: undefined
 output: ?
 
 testName: addConstantsValidationData_inValidContextNameNaN
-input arrayValidataionData: array<array<string, object>> (?)
+input arrayValidataionData: array<array<string, object>> (An array of arrays that contains all of the constants library validation names and data objects)
 input contextName: NaN
 output: ?

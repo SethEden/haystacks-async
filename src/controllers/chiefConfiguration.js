@@ -101,7 +101,7 @@ async function setupPluginConfiguration(pluginConfigPath) {
 
 /**
  * @function parsePluginConfigurationData
- * @description loads and parses the plugin configuration data.
+ * @description Loads and parses the plugin configuration data.
  * @param {string} allPluginConfigData The plugin configuration data loaded from the path, that needs parsing.
  * @return {object} The JSON object after all the parsing and processing operations are completed.
  * @author Seth Hollingsead

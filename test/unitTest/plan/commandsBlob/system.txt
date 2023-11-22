@@ -2,661 +2,661 @@ Description: Test plan for system.js
 
 --------------------------------------------------------------------------------
 testName: echoCommand_validData
-input inputData: array<boolean|string|integer>
-input inputMetaData: string
-output: array<boolean,string|integer|boolean|object|array> (?)
+input inputData: array<boolean|string|integer> (String that should be echoed)
+input inputMetaData: string (Not used for this command)
+output: array<boolean,string|integer|boolean|object|array> (An array with a boolean True or False value to indicate if the application should exit or not exit, followed by the command output)
 
 testName: echoCommand_inValidInputDataString
-input inputData: string
-input inputMetaData: string
+input inputData: string (dfxg24346dfg)
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: echoCommand_inValidInputMetaDataString
-input inputData: array<boolean|string|integer>
-input inputMetaData: string
+input inputData: array<boolean|string|integer> (String that should be echoed)
+input inputMetaData: string (dfxg24346dfg)
 output: ?
 
 testName: echoCommand_inValidInputDataInteger
 input inputData: integer (123)
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: echoCommand_inValidInputDataBoolean
 input inputData: boolean (false)
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: echoCommand_inValidInputMetaDataInteger
-input inputData: array<boolean|string|integer>
+input inputData: array<boolean|string|integer> (String that should be echoed)
 input inputMetaData: integer (123)
 output: ?
 
 testName: echoCommand_inValidInputMetaDataBoolean
-input inputData: array<boolean|string|integer>
+input inputData: array<boolean|string|integer> (String that should be echoed)
 input inputMetaData: boolean (false)
 output: ?
 
 testName: echoCommand_inValidInputDataUndefined
 input inputData: undefined
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: echoCommand_inValidInputDataNaN
 input inputData: NaN
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: echoCommand_inValidInputMetaDataUndefined
-input inputData: array<boolean|string|integer>
+input inputData: array<boolean|string|integer> (String that should be echoed)
 input inputMetaData: undefined
 output: ?
 
 testName: echoCommand_inValidInputMetaDataNaN
-input inputData: array<boolean|string|integer>
+input inputData: array<boolean|string|integer> (String that should be echoed)
 input inputMetaData: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: exit_validData
-input inputData: array<boolean|string|integer>
-input inputMetaData: string
-output: array<boolean,string|integer|boolean|object|array> (?)
+input inputData: array<boolean|string|integer> (Not used for this command)
+input inputMetaData: string (Not used for this command)
+output: array<boolean,string|integer|boolean|object|array> (An array with a boolean False value to indicate if the application exit, followed by the command output)
 
 testName: exit_inValidInputDataString
-input inputData: string
-input inputMetaData: string
+input inputData: string (dfxg24346dfg)
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: exit_inValidInputMetaDataString
-input inputData: array<boolean|string|integer>
-input inputMetaData: string
+input inputData: array<boolean|string|integer> (Not used for this command)
+input inputMetaData: string (dfxg24346dfg)
 output: ?
 
 testName: exit_inValidInputDataInteger
 input inputData: integer (123)
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: exit_inValidInputDataBoolean
 input inputData: boolean (false)
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: exit_inValidInputMetaDataInteger
-input inputData: array<boolean|string|integer>
+input inputData: array<boolean|string|integer> (Not used for this command)
 input inputMetaData: integer (123)
 output: ?
 
 testName: exit_inValidInputMetaDataBoolean
-input inputData: array<boolean|string|integer>
+input inputData: array<boolean|string|integer> (Not used for this command)
 input inputMetaData: boolean (false)
 output: ?
 
 testName: exit_inValidInputDataUndefined
 input inputData: undefined
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: exit_inValidInputDataNaN
 input inputData: NaN
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: exit_inValidInputMetaDataUndefined
-input inputData: array<boolean|string|integer>
+input inputData: array<boolean|string|integer> (Not used for this command)
 input inputMetaData: undefined
 output: ?
 
 testName: exit_inValidInputMetaDataNaN
-input inputData: array<boolean|string|integer>
+input inputData: array<boolean|string|integer> (Not used for this command)
 input inputMetaData: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: version_validData
-input inputData: array<boolean|string|integer>
-input inputMetaData: string
-output: array<boolean,string|integer|boolean|object|array> (?)
+input inputData: array<boolean|string|integer> (Not used for this command)
+input inputMetaData: string (Not used for this command)
+output: array<boolean,string|integer|boolean|object|array> (An array with a boolean True or False value to indicate if the application should exit or not exit, followed by the command output)
 
 testName: version_inValidInputDataString
-input inputData: string
-input inputMetaData: string
+input inputData: string (dfxg24346dfg)
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: version_inValidInputMetaDataString
-input inputData: array<boolean|string|integer>
-input inputMetaData: string
+input inputData: array<boolean|string|integer> (Not used for this command)
+input inputMetaData: string (dfxg24346dfg)
 output: ?
 
 testName: version_inValidInputDataInteger
 input inputData: integer (123)
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: version_inValidInputDataBoolean
 input inputData: boolean (false)
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: version_inValidInputMetaDataInteger
-input inputData: array<boolean|string|integer>
+input inputData: array<boolean|string|integer> (Not used for this command)
 input inputMetaData: integer (123)
 output: ?
 
 testName: version_inValidInputMetaDataBoolean
-input inputData: array<boolean|string|integer>
+input inputData: array<boolean|string|integer> (Not used for this command)
 input inputMetaData: boolean (false)
 output: ?
 
 testName: version_inValidInputDataUndefined
 input inputData: undefined
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: version_inValidInputDataNaN
 input inputData: NaN
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: version_inValidInputMetaDataUndefined
-input inputData: array<boolean|string|integer>
+input inputData: array<boolean|string|integer> (Not used for this command)
 input inputMetaData: undefined
 output: ?
 
 testName: version_inValidInputMetaDataNaN
-input inputData: array<boolean|string|integer>
+input inputData: array<boolean|string|integer> (Not used for this command)
 input inputMetaData: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: about_validData
-input inputData: array<boolean|string|integer>
-input inputMetaData: string
-output: array<boolean,string|integer|boolean|object|array> (?)
+input inputData: array<boolean|string|integer> (Not used for this command)
+input inputMetaData: string (Not used for this command)
+output: array<boolean,string|integer|boolean|object|array> (An array with a boolean True or False value to indicate if the application should exit or not exit, followed by the command output)
 
 testName: about_inValidInputDataString
-input inputData: string
-input inputMetaData: string
+input inputData: string (dfxg24346dfg)
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: about_inValidInputMetaDataString
-input inputData: array<boolean|string|integer>
-input inputMetaData: string
+input inputData: array<boolean|string|integer> (Not used for this command)
+input inputMetaData: string (dfxg24346dfg)
 output: ?
 
 testName: about_inValidInputDataInteger
 input inputData: integer (123)
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: about_inValidInputDataBoolean
 input inputData: boolean (false)
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: about_inValidInputMetaDataInteger
-input inputData: array<boolean|string|integer>
+input inputData: array<boolean|string|integer> (Not used for this command)
 input inputMetaData: integer (123)
 output: ?
 
 testName: about_inValidInputMetaDataBoolean
-input inputData: array<boolean|string|integer>
+input inputData: array<boolean|string|integer> (Not used for this command)
 input inputMetaData: boolean (false)
 output: ?
 
 testName: about_inValidInputDataUndefined
 input inputData: undefined
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: about_inValidInputDataNaN
 input inputData: NaN
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: about_inValidInputMetaDataUndefined
-input inputData: array<boolean|string|integer>
+input inputData: array<boolean|string|integer> (Not used for this command)
 input inputMetaData: undefined
 output: ?
 
 testName: about_inValidInputMetaDataNaN
-input inputData: array<boolean|string|integer>
+input inputData: array<boolean|string|integer> (Not used for this command)
 input inputMetaData: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: name_validData
-input inputData: array<boolean|string|integer>
-input inputMetaData: string
-output: array<boolean,string|integer|boolean|object|array> (?)
+input inputData: array<boolean|string|integer> (An array that could really contain anything depending on what the user entered, but the function converts and filters out for a boolean True or False value internally to the function)
+input inputMetaData: string (Not used for this command)
+output: array<boolean,string|integer|boolean|object|array> (An array with a boolean True or False value to indicate if the application should exit or not exit, followed by the command output)
 
 testName: name_inValidInputDataString
-input inputData: string
-input inputMetaData: string
+input inputData: string (dfxg24346dfg)
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: name_inValidInputMetaDataString
-input inputData: array<boolean|string|integer>
-input inputMetaData: string
+input inputData: array<boolean|string|integer> (An array that could really contain anything depending on what the user entered, but the function converts and filters out for a boolean True or False value internally to the function)
+input inputMetaData: string (dfxg24346dfg)
 output: ?
 
 testName: name_inValidInputDataInteger
 input inputData: integer (123)
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: name_inValidInputDataBoolean
 input inputData: boolean (false)
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: name_inValidInputMetaDataInteger
-input inputData: array<boolean|string|integer>
+input inputData: array<boolean|string|integer> (An array that could really contain anything depending on what the user entered, but the function converts and filters out for a boolean True or False value internally to the function)
 input inputMetaData: integer (123)
 output: ?
 
 testName: name_inValidInputMetaDataBoolean
-input inputData: array<boolean|string|integer>
+input inputData: array<boolean|string|integer> (An array that could really contain anything depending on what the user entered, but the function converts and filters out for a boolean True or False value internally to the function)
 input inputMetaData: boolean (false)
 output: ?
 
 testName: name_inValidInputDataUndefined
 input inputData: undefined
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: name_inValidInputDataNaN
 input inputData: NaN
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: name_inValidInputMetaDataUndefined
-input inputData: array<boolean|string|integer>
+input inputData: array<boolean|string|integer> (An array that could really contain anything depending on what the user entered, but the function converts and filters out for a boolean True or False value internally to the function)
 input inputMetaData: undefined
 output: ?
 
 testName: name_inValidInputMetaDataNaN
-input inputData: array<boolean|string|integer>
+input inputData: array<boolean|string|integer> (An array that could really contain anything depending on what the user entered, but the function converts and filters out for a boolean True or False value internally to the function)
 input inputMetaData: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: clearScreen_validData
-input inputData: string
-input inputMetaData: string
-output: array<boolean,string|integer|boolean|object|array> (?)
+input inputData: string (Not used for this command)
+input inputMetaData: string (Not used for this command)
+output: array<boolean,string|integer|boolean|object|array> (An array with a boolean True or False value to indicate if the application should exit or not exit, followed by the command output)
 
 testName: clearScreen_inValidInputDataString
-input inputData: string
-input inputMetaData: string
+input inputData: string (dfxg24346dfg)
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: clearScreen_inValidInputMetaDataString
-input inputData: string
-input inputMetaData: string
+input inputData: string (Not used for this command)
+input inputMetaData: string (dfxg24346dfg)
 output: ?
 
 testName: clearScreen_inValidInputDataInteger
 input inputData: integer (123)
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: clearScreen_inValidInputDataBoolean
 input inputData: boolean (false)
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: clearScreen_inValidInputMetaDataInteger
-input inputData: string
+input inputData: string (Not used for this command)
 input inputMetaData: integer (123)
 output: ?
 
 testName: clearScreen_inValidInputMetaDataBoolean
-input inputData: string
+input inputData: string (Not used for this command)
 input inputMetaData: boolean (false)
 output: ?
 
 testName: clearScreen_inValidInputDataUndefined
 input inputData: undefined
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: clearScreen_inValidInputDataNaN
 input inputData: NaN
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: clearScreen_inValidInputMetaDataUndefined
-input inputData: string
+input inputData: string (Not used for this command)
 input inputMetaData: undefined
 output: ?
 
 testName: clearScreen_inValidInputMetaDataNaN
-input inputData: string
+input inputData: string (Not used for this command)
 input inputMetaData: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: help_validData
-input inputData: array<boolean|string|integer>
-input inputMetaData: string
-output: array<boolean,string|integer|boolean|object|array> (?)
+input inputData: array<boolean|string|integer> (An array that could possibly include the name of this command, and a list of top-level command data structure data types to print help for)
+input inputMetaData: string (Not used for this command)
+output: array<boolean,string|integer|boolean|object|array> (An array with a boolean True or False value to indicate if the application should exit or not exit, followed by the command output)
 
 testName: help_inValidInputDataString
-input inputData: string
-input inputMetaData: string
+input inputData: string (dfxg24346dfg)
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: help_inValidInputMetaDataString
-input inputData: array<boolean|string|integer>
-input inputMetaData: string
+input inputData: array<boolean|string|integer> (An array that could possibly include the name of this command, and a list of top-level command data structure data types to print help for)
+input inputMetaData: string (dfxg24346dfg)
 output: ?
 
 testName: help_inValidInputDataInteger
 input inputData: integer (123)
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: help_inValidInputDataBoolean
 input inputData: boolean (false)
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: help_inValidInputMetaDataInteger
-input inputData: array<boolean|string|integer>
+input inputData: array<boolean|string|integer> (An array that could possibly include the name of this command, and a list of top-level command data structure data types to print help for)
 input inputMetaData: integer (123)
 output: ?
 
 testName: help_inValidInputMetaDataBoolean
-input inputData: array<boolean|string|integer>
+input inputData: array<boolean|string|integer> (An array that could possibly include the name of this command, and a list of top-level command data structure data types to print help for)
 input inputMetaData: boolean (false)
 output: ?
 
 testName: help_inValidInputDataUndefined
 input inputData: undefined
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: help_inValidInputDataNaN
 input inputData: NaN
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: help_inValidInputMetaDataUndefined
-input inputData: array<boolean|string|integer>
+input inputData: array<boolean|string|integer> (An array that could possibly include the name of this command, and a list of top-level command data structure data types to print help for)
 input inputMetaData: undefined
 output: ?
 
 testName: help_inValidInputMetaDataNaN
-input inputData: array<boolean|string|integer>
+input inputData: array<boolean|string|integer> (An array that could possibly include the name of this command, and a list of top-level command data structure data types to print help for)
 input inputMetaData: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: workflowHelp_validData
-input inputData: array<boolean|string|integer>
-input inputMetaData: string
-output: array<boolean,string|integer|boolean|object|array> (?)
+input inputData: array<boolean|string|integer> (An array that could possibly include the name of this command, and a list of top-level workflow catagories data structures to be printed)
+input inputMetaData: string (Not used for this command)
+output: array<boolean,string|integer|boolean|object|array> (An array with a boolean True or False value to indicate if the application should exit or not exit, followed by the command output)
 
 testName: workflowHelp_inValidInputDataString
-input inputData: string
-input inputMetaData: string
+input inputData: string (dfxg24346dfg)
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: workflowHelp_inValidInputMetaDataString
-input inputData: array<boolean|string|integer>
-input inputMetaData: string
+input inputData: array<boolean|string|integer> (An array that could possibly include the name of this command, and a list of top-level workflow catagories data structures to be printed)
+input inputMetaData: string (dfxg24346dfg)
 output: ?
 
 testName: workflowHelp_inValidInputDataInteger
 input inputData: integer (123)
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: workflowHelp_inValidInputDataBoolean
 input inputData: boolean (false)
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: workflowHelp_inValidInputMetaDataInteger
-input inputData: array<boolean|string|integer>
+input inputData: array<boolean|string|integer> (An array that could possibly include the name of this command, and a list of top-level workflow catagories data structures to be printed)
 input inputMetaData: integer (123)
 output: ?
 
 testName: workflowHelp_inValidInputMetaDataBoolean
-input inputData: array<boolean|string|integer>
+input inputData: array<boolean|string|integer> (An array that could possibly include the name of this command, and a list of top-level workflow catagories data structures to be printed)
 input inputMetaData: boolean (false)
 output: ?
 
 testName: workflowHelp_inValidInputDataUndefined
 input inputData: undefined
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: workflowHelp_inValidInputDataNaN
 input inputData: NaN
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: workflowHelp_inValidInputMetaDataUndefined
-input inputData: array<boolean|string|integer>
+input inputData: array<boolean|string|integer> (An array that could possibly include the name of this command, and a list of top-level workflow catagories data structures to be printed)
 input inputMetaData: undefined
 output: ?
 
 testName: workflowHelp_inValidInputMetaDataNaN
-input inputData: array<boolean|string|integer>
+input inputData: array<boolean|string|integer> (An array that could possibly include the name of this command, and a list of top-level workflow catagories data structures to be printed)
 input inputMetaData: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: printUserCommandsLog_validData
-input inputData: string
-input inputMetaData: string
-output: array<boolean,array<string>> (?)
+input inputData: string (Not used for this command)
+input inputMetaData: string (Not used for this command)
+output: array<boolean,array<string>> (An array with a boolean True or False value to indicate if the application should exit or not exit, followed by an array of strings that is the user entered commands)
 
 testName: printUserCommandsLog_inValidInputDataString
-input inputData: string
-input inputMetaData: string
+input inputData: string (dfxg24346dfg)
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: printUserCommandsLog_inValidInputMetaDataString
-input inputData: string
-input inputMetaData: string
+input inputData: string (Not used for this command)
+input inputMetaData: string (dfxg24346dfg)
 output: ?
 
 testName: printUserCommandsLog_inValidInputDataInteger
 input inputData: integer (123)
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: printUserCommandsLog_inValidInputDataBoolean
 input inputData: boolean (false)
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: printUserCommandsLog_inValidInputMetaDataInteger
-input inputData: string
+input inputData: string (Not used for this command)
 input inputMetaData: integer (123)
 output: ?
 
 testName: printUserCommandsLog_inValidInputMetaDataBoolean
-input inputData: string
+input inputData: string (Not used for this command)
 input inputMetaData: boolean (false)
 output: ?
 
 testName: printUserCommandsLog_inValidInputDataUndefined
 input inputData: undefined
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: printUserCommandsLog_inValidInputDataNaN
 input inputData: NaN
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: printUserCommandsLog_inValidInputMetaDataUndefined
-input inputData: string
+input inputData: string (Not used for this command)
 input inputMetaData: undefined
 output: ?
 
 testName: printUserCommandsLog_inValidInputMetaDataNaN
-input inputData: string
+input inputData: string (Not used for this command)
 input inputMetaData: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: printAllCommandsLog_validData
-input inputData: string
-input inputMetaData: string
-output: array<boolean,array<string>> (?)
+input inputData: string (Not used for this command)
+input inputMetaData: string (Not used for this command)
+output: array<boolean,array<string>> (An array with a boolean True or False value to indicate if the application should exit or not exit, followed by an array of strings that is the user entered commands)
 
 testName: printAllCommandsLog_inValidInputDataString
-input inputData: string
-input inputMetaData: string
+input inputData: string (dfxg24346dfg)
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: printAllCommandsLog_inValidInputMetaDataString
-input inputData: string
-input inputMetaData: string
+input inputData: string (Not used for this command)
+input inputMetaData: string (dfxg24346dfg)
 output: ?
 
 testName: printAllCommandsLog_inValidInputDataInteger
 input inputData: integer (123)
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: printAllCommandsLog_inValidInputDataBoolean
 input inputData: boolean (false)
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: printAllCommandsLog_inValidInputMetaDataInteger
-input inputData: string
+input inputData: string (Not used for this command)
 input inputMetaData: integer (123)
 output: ?
 
 testName: printAllCommandsLog_inValidInputMetaDataBoolean
-input inputData: string
+input inputData: string (Not used for this command)
 input inputMetaData: boolean (false)
 output: ?
 
 testName: printAllCommandsLog_inValidInputDataUndefined
 input inputData: undefined
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: printAllCommandsLog_inValidInputDataNaN
 input inputData: NaN
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: printAllCommandsLog_inValidInputMetaDataUndefined
-input inputData: string
+input inputData: string (Not used for this command)
 input inputMetaData: undefined
 output: ?
 
 testName: printAllCommandsLog_inValidInputMetaDataNaN
-input inputData: string
+input inputData: string (Not used for this command)
 input inputMetaData: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: clearUserCommandsLog_validData
-input inputData: string
-input inputMetaData: string
-output: array<boolean,boolean> (?)
+input inputData: string (Not used for this command)
+input inputMetaData: string (Not used for this command)
+output: array<boolean,boolean> (An array with a boolean True or False value to indicate if the application should exit or not exit, followed by another boolean value to indicate if the operation was successful or not)
 
 testName: clearUserCommandsLog_inValidInputDataString
-input inputData: string
-input inputMetaData: string
+input inputData: string (dfxg24346dfg)
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: clearUserCommandsLog_inValidInputMetaDataString
-input inputData: string
-input inputMetaData: string
+input inputData: string (Not used for this command)
+input inputMetaData: string (dfxg24346dfg)
 output: ?
 
 testName: clearUserCommandsLog_inValidInputDataInteger
 input inputData: integer (123)
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: clearUserCommandsLog_inValidInputDataBoolean
 input inputData: boolean (false)
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: clearUserCommandsLog_inValidInputMetaDataInteger
-input inputData: string
+input inputData: string (Not used for this command)
 input inputMetaData: integer (123)
 output: ?
 
 testName: clearUserCommandsLog_inValidInputMetaDataBoolean
-input inputData: string
+input inputData: string (Not used for this command)
 input inputMetaData: boolean (false)
 output: ?
 
 testName: clearUserCommandsLog_inValidInputDataUndefined
 input inputData: undefined
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: clearUserCommandsLog_inValidInputDataNaN
 input inputData: NaN
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: clearUserCommandsLog_inValidInputMetaDataUndefined
-input inputData: string
+input inputData: string (Not used for this command)
 input inputMetaData: undefined
 output: ?
 
 testName: clearUserCommandsLog_inValidInputMetaDataNaN
-input inputData: string
+input inputData: string (Not used for this command)
 input inputMetaData: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: clearAllCommandsLog_validData
-input inputData: string
-input inputMetaData: string
-output: array<boolean,boolean> (?)
+input inputData: string (Not used for this command)
+input inputMetaData: string (Not used for this command)
+output: array<boolean,boolean> (An aray ith a boolean True or False value to indicate if the application should exit or not exit, followed by another boolean value to indicate if the operation was successful or not)
 
 testName: clearAllCommandsLog_inValidInputDataString
-input inputData: string
-input inputMetaData: string
+input inputData: string (dfxg24346dfg)
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: clearAllCommandsLog_inValidInputMetaDataString
-input inputData: string
-input inputMetaData: string
+input inputData: string (Not used for this command)
+input inputMetaData: string (dfxg24346dfg)
 output: ?
 
 testName: clearAllCommandsLog_inValidInputDataInteger
 input inputData: integer (123)
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: clearAllCommandsLog_inValidInputDataBoolean
 input inputData: boolean (false)
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: clearAllCommandsLog_inValidInputMetaDataInteger
-input inputData: string
+input inputData: string (Not used for this command)
 input inputMetaData: integer (123)
 output: ?
 
 testName: clearAllCommandsLog_inValidInputMetaDataBoolean
-input inputData: string
+input inputData: string (Not used for this command)
 input inputMetaData: boolean (false)
 output: ?
 
 testName: clearAllCommandsLog_inValidInputDataUndefined
 input inputData: undefined
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: clearAllCommandsLog_inValidInputDataNaN
 input inputData: NaN
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: clearAllCommandsLog_inValidInputMetaDataUndefined
-input inputData: string
+input inputData: string (Not used for this command)
 input inputMetaData: undefined
 output: ?
 
 testName: clearAllCommandsLog_inValidInputMetaDataNaN
-input inputData: string
+input inputData: string (Not used for this command)
 input inputMetaData: NaN
 output: ?

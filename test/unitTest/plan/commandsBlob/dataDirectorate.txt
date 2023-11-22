@@ -2,221 +2,221 @@ Description: Test plan for dataDirectorate.js
 
 --------------------------------------------------------------------------------
 testName: printDataHive_validData
-input inputData: array<boolean|string|integer>
-input inputMetaData: string
-output: array<boolean,string|integer|boolean|object|array> (?)
+input inputData: array<boolean|string|integer> (An array that could actually contain anything, depending on what the user entered)
+input inputMetaData: string (Not used for this command)
+output: array<boolean,string|integer|boolean|object|array> (An array with a boolean True or False value to indicate if the application should exit or not exit, followed by the command output)
 
 testName: printDataHive_inValidInputDataString
-input inputData: string
-input inputMetaData: string
+input inputData: string (dfxg24346dfg)
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: printDataHive_inValidInputMetaDataString
-input inputData: array<boolean|string|integer>
-input inputMetaData: string
+input inputData: array<boolean|string|integer> (An array that could actually contain anything, depending on what the user entered)
+input inputMetaData: string (dfxg24346dfg)
 output: ?
 
 testName: printDataHive_inValidInputDataInteger
 input inputData: integer (123)
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: printDataHive_inValidInputDataBoolean
 input inputData: boolean (false)
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: printDataHive_inValidInputMetaDataInteger
-input inputData: array<boolean|string|integer>
+input inputData: array<boolean|string|integer> (An array that could actually contain anything, depending on what the user entered)
 input inputMetaData: integer (123)
 output: ?
 
 testName: printDataHive_inValidInputMetaDataBoolean
-input inputData: array<boolean|string|integer>
+input inputData: array<boolean|string|integer> (An array that could actually contain anything, depending on what the user entered)
 input inputMetaData: boolean (false)
 output: ?
 
 testName: printDataHive_inValidInputDataUndefined
 input inputData: undefined
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: printDataHive_inValidInputDataNaN
 input inputData: NaN
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: printDataHive_inValidInputMetaDataUndefined
-input inputData: array<boolean|string|integer>
+input inputData: array<boolean|string|integer> (An array that could actually contain anything, depending on what the user entered)
 input inputMetaData: undefined
 output: ?
 
 testName: printDataHive_inValidInputMetaDataNaN
-input inputData: array<boolean|string|integer>
+input inputData: array<boolean|string|integer> (An array that could actually contain anything, depending on what the user entered)
 input inputMetaData: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: printDataHiveAttributes_validData
-input inputData: array<boolean|string|integer>
-input inputMetaData: string
-output: array<boolean,string|integer|boolean|object|array> (?)
+input inputData: array<boolean|string|integer> (An array that could actually contain anything, depending on what the user entered)
+input inputMetaData: string (Not used for this command)
+output: array<boolean,string|integer|boolean|object|array> (An array with a boolean True or False value to indicate if the application should exit or not exit, followed by the command output)
 
 testName: printDataHiveAttributes_inValidInputDataString
-input inputData: string
-input inputMetaData: string
+input inputData: string (dfxg24346dfg)
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: printDataHiveAttributes_inValidInputMetaDataString
-input inputData: array<boolean|string|integer>
-input inputMetaData: string
+input inputData: array<boolean|string|integer> (An array that could actually contain anything, depending on what the user entered)
+input inputMetaData: string (dfxg24346dfg)
 output: ?
 
 testName: printDataHiveAttributes_inValidInputDataInteger
 input inputData: integer (123)
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: printDataHiveAttributes_inValidInputDataBoolean
 input inputData: boolean (false)
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: printDataHiveAttributes_inValidInputMetaDataInteger
-input inputData: array<boolean|string|integer>
+input inputData: array<boolean|string|integer> (An array that could actually contain anything, depending on what the user entered)
 input inputMetaData: integer (123)
 output: ?
 
 testName: printDataHiveAttributes_inValidInputMetaDataBoolean
-input inputData: array<boolean|string|integer>
+input inputData: array<boolean|string|integer> (An array that could actually contain anything, depending on what the user entered)
 input inputMetaData: boolean (false)
 output: ?
 
 testName: printDataHiveAttributes_inValidInputDataUndefined
 input inputData: undefined
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: printDataHiveAttributes_inValidInputDataNaN
 input inputData: NaN
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: printDataHiveAttributes_inValidInputMetaDataUndefined
-input inputData: array<boolean|string|integer>
+input inputData: array<boolean|string|integer> (An array that could actually contain anything, depending on what the user entered)
 input inputMetaData: undefined
 output: ?
 
 testName: printDataHiveAttributes_inValidInputMetaDataNaN
-input inputData: array<boolean|string|integer>
+input inputData: array<boolean|string|integer> (An array that could actually contain anything, depending on what the user entered)
 input inputMetaData: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: clearDataStorage_validData
-input inputData: array<boolean|string|integer>
-input inputMetaData: string
-output: array<boolean,string|integer|boolean|object|array> (?)
+input inputData: array<boolean|string|integer> (An array that could actually contain anything, depending on what the user entered)
+input inputMetaData: string (Not used for this command)
+output: array<boolean,string|integer|boolean|object|array> (An array with a boolean True or False value to indicate if the application should exit or not exit, followed by the command output)
 
 testName: clearDataStorage_inValidInputDataString
-input inputData: string
-input inputMetaData: string
+input inputData: string (dfxg24346dfg)
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: clearDataStorage_inValidInputMetaDataString
-input inputData: array<boolean|string|integer>
-input inputMetaData: string
+input inputData: array<boolean|string|integer> (An array that could actually contain anything, depending on what the user entered)
+input inputMetaData: string (dfxg24346dfg)
 output: ?
 
 testName: clearDataStorage_inValidInputDataInteger
 input inputData: integer (123)
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: clearDataStorage_inValidInputDataBoolean
 input inputData: boolean (false)
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: clearDataStorage_inValidInputMetaDataInteger
-input inputData: array<boolean|string|integer>
+input inputData: array<boolean|string|integer> (An array that could actually contain anything, depending on what the user entered)
 input inputMetaData: integer (123)
 output: ?
 
 testName: clearDataStorage_inValidInputMetaDataBoolean
-input inputData: array<boolean|string|integer>
+input inputData: array<boolean|string|integer> (An array that could actually contain anything, depending on what the user entered)
 input inputMetaData: boolean (false)
 output: ?
 
 testName: clearDataStorage_inValidInputDataUndefined
 input inputData: undefined
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: clearDataStorage_inValidInputDataNaN
 input inputData: NaN
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: clearDataStorage_inValidInputMetaDataUndefined
-input inputData: array<boolean|string|integer>
+input inputData: array<boolean|string|integer> (An array that could actually contain anything, depending on what the user entered)
 input inputMetaData: undefined
 output: ?
 
 testName: clearDataStorage_inValidInputMetaDataNaN
-input inputData: array<boolean|string|integer>
+input inputData: array<boolean|string|integer> (An array that could actually contain anything, depending on what the user entered)
 input inputMetaData: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: changeSetting_validData
-input inputData: array<string>
-input inputMetaData: string
-output: array<boolean,string|integer|boolean|object|array> (?)
+input inputData: array<string> (An array that contains the fully qualified path to the setting that should be changed and the data that should be assigned to it)
+input inputMetaData: string (Not used for this command)
+output: array<boolean,string|integer|boolean|object|array> (An array with a boolean True or False value to indicate if the application should exit or not exit, followed by the command output)
 
 testName: changeSetting_inValidInputDataString
-input inputData: string
-input inputMetaData: string
+input inputData: string (dfxg24346dfg)
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: changeSetting_inValidInputMetaDataString
-input inputData: array<boolean|string|integer>
-input inputMetaData: string
+input inputData: array<string> (An array that contains the fully qualified path to the setting that should be changed and the data that should be assigned to it)
+input inputMetaData: string (dfxg24346dfg)
 output: ?
 
 testName: changeSetting_inValidInputDataInteger
 input inputData: integer (123)
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: changeSetting_inValidInputDataBoolean
 input inputData: boolean (false)
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: changeSetting_inValidInputMetaDataInteger
-input inputData: array<boolean|string|integer>
+input inputData: array<string> (An array that contains the fully qualified path to the setting that should be changed and the data that should be assigned to it)
 input inputMetaData: integer (123)
 output: ?
 
 testName: changeSetting_inValidInputMetaDataBoolean
-input inputData: array<boolean|string|integer>
+input inputData: array<string> (An array that contains the fully qualified path to the setting that should be changed and the data that should be assigned to it)
 input inputMetaData: boolean (false)
 output: ?
 
 testName: changeSetting_inValidInputDataUndefined
 input inputData: undefined
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: changeSetting_inValidInputDataNaN
 input inputData: NaN
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: changeSetting_inValidInputMetaDataUndefined
-input inputData: array<boolean|string|integer>
+input inputData: array<string> (An array that contains the fully qualified path to the setting that should be changed and the data that should be assigned to it)
 input inputMetaData: undefined
 output: ?
 
 testName: changeSetting_inValidInputMetaDataNaN
-input inputData: array<boolean|string|integer>
+input inputData: array<string> (An array that contains the fully qualified path to the setting that should be changed and the data that should be assigned to it)
 input inputMetaData: NaN
 output: ?

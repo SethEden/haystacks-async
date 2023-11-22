@@ -2,8 +2,8 @@ Description: Test plan for chiefPlugin.js
 
 --------------------------------------------------------------------------------
 testName: loadPluginRegistryData_validData
-input pluginRegistryPath: string (?)
-output: object (?)
+input pluginRegistryPath: string (This is the path to host application plugin registry file)
+output: object (A JSON object loaded from the specified path with the plugin paths and plugin metaData)
 
 testName: loadPluginRegistryData_inValidPluginRegistryPathString
 input pluginRegistryPath: string (dfxg24346dfg)
@@ -26,8 +26,8 @@ input pluginRegistryPath: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: persistPluginRegistryToDataStructure_validData
-input pluginRegistryData: string (?)
-output: object (?)
+input pluginRegistryData: string (This is the data from host application plugin registry file)
+output: object (True or False to indicate if the persistense was successful or not)
 
 testName: persistPluginRegistryToDataStructure_inValidPluginRegistryDataString
 input pluginRegistryData: string (dfxg24346dfg)
@@ -50,81 +50,81 @@ input pluginRegistryData: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: listLoadedPlugins_validData
-output: array<string> (?)
+output: array<string> (A list array of the names of the plugins that are currently loaded)
 --------------------------------------------------------------------------------
 testName: getAllPluginsInRegistry_validData
-output: array<string> (?)
+output: array<string> (A list array of the names of the plugins in the plugin registry)
 --------------------------------------------------------------------------------
 testName: getAllPluginsPathsInRegistry_validData
-output: array<string> (?)
+output: array<string> (A list array of all the paths of all the plugins in the plugin registry)
 --------------------------------------------------------------------------------
 testName: getAllPluginsInRegistryPath_validData
-output: array<string> (?)
+output: array<string> (A list array of the names of the plugins located at the specified path on the local system from the plugins registry data hive)
 --------------------------------------------------------------------------------
 testName: countAllPluginsInRegistry_validData
-output: integer (?)
+output: integer (The count of the number of plugins listed in the plugin registry data hive)
 --------------------------------------------------------------------------------
 testName: countAllPluginsInRegistryPath_validData
-output: integer (?)
+output: integer (The count of the number of plugin sub-folders in the plugins path listed in the plugin registry data hive)
 --------------------------------------------------------------------------------
 testName: registerNamedPlugin_validData
-input pluginName: string (?)
-input pluginPath: string (?)
-output: boolean (?)
+input pluginName: string (The name of the plugin that should be registered)
+input pluginPath: string (The path to the plugin, to be added to the plugin registry)
+output: boolean (True or False to indicate if the plugin was added to the plugin registry successfully or not)
 
 testName: registerNamedPlugin_inValidPluginNameString
 input pluginName: string (dfxg24346dfg)
-input pluginPath: string (?)
+input pluginPath: string (The path to the plugin, to be added to the plugin registry)
 output: ?
 
 testName: registerNamedPlugin_inValidPluginPathString
-input pluginName: string (?)
-input pluginPath: string (&)
+input pluginName: string (The name of the plugin that should be registered)
+input pluginPath: string (dfxg24346dfg)
 output: ?
 
 testName: registerNamedPlugin_inValidPluginNameInteger
 input pluginName: integer (123)
-input pluginPath: string (?)
+input pluginPath: string (The path to the plugin, to be added to the plugin registry)
 output: ?
 
 testName: registerNamedPlugin_inValidPluginNameBoolean
 input pluginName: boolean (false)
-input pluginPath: string (?)
+input pluginPath: string (The path to the plugin, to be added to the plugin registry)
 output: ?
 
 testName: registerNamedPlugin_inValidPluginPathInteger
-input pluginName: string (?)
+input pluginName: string (The name of the plugin that should be registered)
 input pluginPath: integer (123)
 output: ?
 
 testName: registerNamedPlugin_inValidPluginPathBoolean
-input pluginName: string (?)
+input pluginName: string (The name of the plugin that should be registered)
 input pluginPath: boolean (false)
 output: ?
 
 testName: registerNamedPlugin_inValidPluginNameUndefined
 input pluginName: undefined
-input pluginPath: string (?)
+input pluginPath: string (The path to the plugin, to be added to the plugin registry)
 output: ?
 
 testName: registerNamedPlugin_inValidPluginNameNaN
 input pluginName: NaN
-input pluginPath: string (?)
+input pluginPath: string (The path to the plugin, to be added to the plugin registry)
 output: ?
 
 testName: registerNamedPlugin_inValidPluginPathUndefined
-input pluginName: string (?)
+input pluginName: string (The name of the plugin that should be registered)
 input pluginPath: undefined
 output: ?
 
 testName: registerNamedPlugin_inValidPluginPathNaN
-input pluginName: string (?)
+input pluginName: string (The name of the plugin that should be registered)
 input pluginPath: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: unregisterNamedPlugin_validData
-input pluginName: string (?)
-output: boolean (?)
+input pluginName: string (The name of the plugin that should be removed from the plugin registry)
+output: boolean (True or False to indicate if the plugin was removed from the plugin registry successfully or not)
 
 testName: unregisterNamedPlugin_inValidPluginNameString
 input pluginName: string (dfxg24346dfg)
@@ -147,8 +147,8 @@ input pluginName: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: unregisterPlugins_validData
-input pluginListArray: array<string> (?)
-output: boolean (?)
+input pluginListArray: array<string> (A list array of plugin names that should be removed from the plugin registry)
+output: boolean (True or False to indicate if all the plugins were removed from the plugin registry successfully or not)
 
 testName: unregisterPlugins_inValidPluginListArrayString
 input pluginListArray: string (dfxg24346dfg)
@@ -171,17 +171,17 @@ input pluginListArray: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: synchronizePluginRegistryWithPath_validData
-output: boolean (?)
+output: boolean (True or False to indicate if the synchronization was performed successfully or not)
 --------------------------------------------------------------------------------
 testName: clearPluginRegistry_validData
-output: boolean (?)
+output: boolean (True or False to indicate if the plugin registry data hive was cleared successfully or not)
 --------------------------------------------------------------------------------
 testName: savePluginRegistryDisk_validData
-output: boolean (?)
+output: boolean (True or False to indicate if the plugin registry was successfully saved to the disk or not)
 --------------------------------------------------------------------------------
 testName: loadAllPluginsMetaData_validData
-input pluginsPaths: array<string> (?)
-output: array<string> (?)
+input pluginsPaths: array<string> (Should be the entry-point to the plugin, but it could also be the name of the folder in the plugin registry path that is the entry-point to the plugin)
+output: array<string> (An array that contains all of the meta-data, for each of the plugins in the input pluginsPaths array)
 
 testName: loadAllPluginsMetaData_inValidPluginsPathsString
 input pluginsPaths: string (dfxg24346dfg)
@@ -204,117 +204,117 @@ input pluginsPaths: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: loadAllPluginsExecutionPaths_validData
-input pluginsMetaData: array<object> (?)
-input pluginsPaths: array<string> (?)
-output: array<string> (?)
+input pluginsMetaData: array<object> (An array of JSON objects that contain all of the package.json data loaded for each plugin that should be imported)
+input pluginsPaths: array<string> (An array of fully qualified paths where each plugin was loaded from, used to path.join with the execution path entry point file for each plugin)
+output: array<string> (An array of fully qualified path URI's for each of the main entry points for all of the plugins that should be loaded)
 
 testName: loadAllPluginsExecutionPaths_inValidPluginsMetaDataString
 input pluginsMetaData: string (dfxg24346dfg)
-input pluginsPaths: array<string> (?)
+input pluginsPaths: array<string> (An array of fully qualified paths where each plugin was loaded from, used to path.join with the execution path entry point file for each plugin)
 output: ?
 
 testName: loadAllPluginsExecutionPaths_inValidPluginsPathsString
-input pluginsMetaData: array<object> (?)
-input pluginsPaths: string (&)
+input pluginsMetaData: array<object> (An array of JSON objects that contain all of the package.json data loaded for each plugin that should be imported)
+input pluginsPaths: string (dfxg24346dfg)
 output: ?
 
 testName: loadAllPluginsExecutionPaths_inValidPluginsMetaDataInteger
 input pluginsMetaData: integer (123)
-input pluginsPaths: array<string> (?)
+input pluginsPaths: array<string> (An array of fully qualified paths where each plugin was loaded from, used to path.join with the execution path entry point file for each plugin)
 output: ?
 
 testName: loadAllPluginsExecutionPaths_inValidPluginsMetaDataBoolean
 input pluginsMetaData: boolean (false)
-input pluginsPaths: array<string> (?)
+input pluginsPaths: array<string> (An array of fully qualified paths where each plugin was loaded from, used to path.join with the execution path entry point file for each plugin)
 output: ?
 
 testName: loadAllPluginsExecutionPaths_inValidPluginsPathsInteger
-input pluginsMetaData: array<object> (?)
+input pluginsMetaData: array<object> (An array of JSON objects that contain all of the package.json data loaded for each plugin that should be imported)
 input pluginsPaths: integer (123)
 output: ?
 
 testName: loadAllPluginsExecutionPaths_inValidPluginsPathsBoolean
-input pluginsMetaData: array<object> (?)
+input pluginsMetaData: array<object> (An array of JSON objects that contain all of the package.json data loaded for each plugin that should be imported)
 input pluginsPaths: boolean (false)
 output: ?
 
 testName: loadAllPluginsExecutionPaths_inValidPluginsMetaDataUndefined
 input pluginsMetaData: undefined
-input pluginsPaths: array<string> (?)
+input pluginsPaths: array<string> (An array of fully qualified paths where each plugin was loaded from, used to path.join with the execution path entry point file for each plugin)
 output: ?
 
 testName: loadAllPluginsExecutionPaths_inValidPluginsMetaDataNaN
 input pluginsMetaData: NaN
-input pluginsPaths: array<string> (?)
+input pluginsPaths: array<string> (An array of fully qualified paths where each plugin was loaded from, used to path.join with the execution path entry point file for each plugin)
 output: ?
 
 testName: loadAllPluginsExecutionPaths_inValidPluginsPathsUndefined
-input pluginsMetaData: array<object> (?)
+input pluginsMetaData: array<object> (An array of JSON objects that contain all of the package.json data loaded for each plugin that should be imported)
 input pluginsPaths: undefined
 output: ?
 
 testName: loadAllPluginsExecutionPaths_inValidPluginsPathsNaN
-input pluginsMetaData: array<object> (?)
+input pluginsMetaData: array<object> (An array of JSON objects that contain all of the package.json data loaded for each plugin that should be imported)
 input pluginsPaths: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: loadAllPlugins_validData
-input pluginsExecutionPaths: array<string> (?)
-input pluginsMetaData: array<object> (?)
-output: object (?)
+input pluginsExecutionPaths: array<string> (An array of fully qualified path URI's to be imported and executed for each plugin)
+input pluginsMetaData: array<object> (An array of JSON objects that contain all of the package.json data loaded for each plugin that should be imported, we are passing this along here, to have access to the name of each plugin as it is loaded)
+output: object (An object containing objects that contain all of the data and functions from each plugin, these will need to be decomposed and merged with the D-data structure as appropriate)
 
 testName: loadAllPlugins_inValidPluginsExecutionPathsString
 input pluginsExecutionPaths: string (dfxg24346dfg)
-input pluginsMetaData: array<object> (?)
+input pluginsMetaData: array<object> (An array of JSON objects that contain all of the package.json data loaded for each plugin that should be imported, we are passing this along here, to have access to the name of each plugin as it is loaded)
 output: ?
 
 testName: loadAllPlugins_inValidPluginsMetaDataString
-input pluginsExecutionPaths: array<string> (?)
+input pluginsExecutionPaths: array<string> (An array of fully qualified path URI's to be imported and executed for each plugin)
 input pluginsMetaData: string (dfxg24346dfg)
 output: ?
 
 testName: loadAllPlugins_inValidPluginsExecutionPathsInteger
 input pluginsExecutionPaths: integer (123)
-input pluginsMetaData: array<object> (?)
+input pluginsMetaData: array<object> (An array of JSON objects that contain all of the package.json data loaded for each plugin that should be imported, we are passing this along here, to have access to the name of each plugin as it is loaded)
 output: ?
 
 testName: loadAllPlugins_inValidPluginsExecutionPathsBoolean
 input pluginsExecutionPaths: boolean (false)
-input pluginsMetaData: array<object> (?)
+input pluginsMetaData: array<object> (An array of JSON objects that contain all of the package.json data loaded for each plugin that should be imported, we are passing this along here, to have access to the name of each plugin as it is loaded)
 output: ?
 
 testName: loadAllPlugins_inValidPluginsMetaDataInteger
-input pluginsExecutionPaths: array<string> (?)
+input pluginsExecutionPaths: array<string> (An array of fully qualified path URI's to be imported and executed for each plugin)
 input pluginsMetaData: integer (123)
 output: ?
 
 testName: loadAllPlugins_inValidPluginsMetaDataBoolean
-input pluginsExecutionPaths: array<string> (?)
+input pluginsExecutionPaths: array<string> (An array of fully qualified path URI's to be imported and executed for each plugin)
 input pluginsMetaData: boolean (false)
 output: ?
 
 testName: loadAllPlugins_inValidPluginsExecutionPathsUndefined
 input pluginsExecutionPaths: undefined
-input pluginsMetaData: array<object> (?)
+input pluginsMetaData: array<object> (An array of JSON objects that contain all of the package.json data loaded for each plugin that should be imported, we are passing this along here, to have access to the name of each plugin as it is loaded)
 output: ?
 
 testName: loadAllPlugins_inValidPluginsExecutionPathsNaN
 input pluginsExecutionPaths: NaN
-input pluginsMetaData: array<object> (?)
+input pluginsMetaData: array<object> (An array of JSON objects that contain all of the package.json data loaded for each plugin that should be imported, we are passing this along here, to have access to the name of each plugin as it is loaded)
 output: ?
 
 testName: loadAllPlugins_inValidPluginsMetaDataUndefined
-input pluginsExecutionPaths: array<string> (?)
+input pluginsExecutionPaths: array<string> (An array of fully qualified path URI's to be imported and executed for each plugin)
 input pluginsMetaData: undefined
 output: ?
 
 testName: loadAllPlugins_inValidPluginsMetaDataNaN
-input pluginsExecutionPaths: array<string> (?)
+input pluginsExecutionPaths: array<string> (An array of fully qualified path URI's to be imported and executed for each plugin)
 input pluginsMetaData: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: integrateAllPluginsData_validData
-input allPluginsData: object (?)
+input allPluginsData: object (All of the plugins data for each plugin all combined together into a single JSON data object)
 output: boolean (?)
 
 testName: integrateAllPluginsData_inValidAllPluginsDataString
@@ -338,66 +338,66 @@ input allPluginsData: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: integratePluginData_validData
-input pluginName: string (?)
-input pluginData: object (?)
-output: boolean (?)
+input pluginName: string (The name of the plugin that should have its data integrated with the haystacks data structure)
+input pluginData: object (The data for the named plugin that should be integrated wtih the haystacks data structure)
+output: boolean (True or False to indicate if all the plugin data was integrated successfully with the haystacks data structures)
 
 testName: integratePluginData_inValidPluginNameString
 input pluginName: string (dfxg24346dfg)
-input pluginData: object (?)
+input pluginData: object (The data for the named plugin that should be integrated wtih the haystacks data structure)
 output: ?
 
 testName: integratePluginData_inValidPluginDataString
-input pluginName: string (?)
+input pluginName: string (The name of the plugin that should have its data integrated with the haystacks data structure)
 input pluginData: string (dfxg24346dfg)
 output: ?
 
 testName: integratePluginData_inValidPluginNameInteger
 input pluginName: integer (123)
-input pluginData: object (?)
+input pluginData: object (The data for the named plugin that should be integrated wtih the haystacks data structure)
 output: ?
 
 testName: integratePluginData_inValidPluginNameBoolean
 input pluginName: boolean (false)
-input pluginData: object (?)
+input pluginData: object (The data for the named plugin that should be integrated wtih the haystacks data structure)
 output: ?
 
 testName: integratePluginData_inValidPluginDataInteger
-input pluginName: string (?)
+input pluginName: string (The name of the plugin that should have its data integrated with the haystacks data structure)
 input pluginData: integer (123)
 output: ?
 
 testName: integratePluginData_inValidPluginDataBoolean
-input pluginName: string (?)
+input pluginName: string (The name of the plugin that should have its data integrated with the haystacks data structure)
 input pluginData: boolean (false)
 output: ?
 
 testName: integratePluginData_inValidPluginNameUndefined
 input pluginName: undefined
-input pluginData: object (?)
+input pluginData: object (The data for the named plugin that should be integrated wtih the haystacks data structure)
 output: ?
 
 testName: integratePluginData_inValidPluginNameNaN
 input pluginName: NaN
-input pluginData: object (?)
+input pluginData: object (The data for the named plugin that should be integrated wtih the haystacks data structure)
 output: ?
 
 testName: integratePluginData_inValidPluginDataUndefined
-input pluginName: string (?)
+input pluginName: string (The name of the plugin that should have its data integrated with the haystacks data structure)
 input pluginData: undefiend
 output: ?
 
 testName: integratePluginData_inValidPluginDataNaN
-input pluginName: string (?)
+input pluginName: string (The name of the plugin that should have its data integrated with the haystacks data structure)
 input pluginData: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: verifyAllPluginsLoaded_validData
-output: boolean (?)
+output: boolean (True or False to indicate if all of the plugins were loaded successfully or not)
 --------------------------------------------------------------------------------
 testName: unloadPlugin_validData
-input pluginName: string (?)
-output: boolean (?)
+input pluginName: string (The name of the plugin that should have all its data unloaded from the D-data structure)
+output: boolean (True or False to indicate if the plugin was unloaded successfully or not)
 
 testName: unloadPlugin_inValidPluginNameString
 input pluginName: string (dfxg24346dfg)
@@ -420,4 +420,4 @@ input pluginName: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: getPluginsRegistryPath_validData
-output: string (?)
+output: string (The path to the plugins listed in the plugin registry as meta-data)

@@ -2,118 +2,118 @@ Description: Test plan for chiefData.js
 
 --------------------------------------------------------------------------------
 testName: searchForUniversalDebugConfigSetting_validData
-input appConfigPathName: string (?)
-input frameworkConfigPathName: string (?)
-output: boolean (?)
+input appConfigPathName: string (The name of the configuration setting that has the path for the appConfigPath)
+input frameworkConfigPathName: string (The name of the configuration setting that has the path for the frameworkConfigPath)
+output: boolean (A True or False to indicate if the debugSettings was found to be true in either of the configuration settings (appConfig Or frameworkConfig))
 
 testName: searchForUniversalDebugConfigSetting_inValidAppConfigPathNameString
 input appConfigPathName: string (dfxg24346dfg)
-input frameworkConfigPathName: string (?)
+input frameworkConfigPathName: string (The name of the configuration setting that has the path for the frameworkConfigPath)
 output: ?
 
 testName: searchForUniversalDebugConfigSetting_inValidFrameworkConfigPathNameString
-input appConfigPathName: string (?)
-input frameworkConfigPathName: string (&)
+input appConfigPathName: string (The name of the configuration setting that has the path for the appConfigPath)
+input frameworkConfigPathName: string (dfxg24346dfg)
 output: ?
 
 testName: searchForUniversalDebugConfigSetting_inValidAppConfigPathNameInteger
 input appConfigPathName: integer (123)
-input frameworkConfigPathName: string (?)
+input frameworkConfigPathName: string (The name of the configuration setting that has the path for the frameworkConfigPath)
 output: ?
 
 testName: searchForUniversalDebugConfigSetting_inValidAppConfigPathNameBoolean
 input appConfigPathName: boolean (false)
-input frameworkConfigPathName: string (?)
+input frameworkConfigPathName: string (The name of the configuration setting that has the path for the frameworkConfigPath)
 output: ?
 
 testName: searchForUniversalDebugConfigSetting_inValidFrameworkConfigPathNameInteger
-input appConfigPathName: string (?)
+input appConfigPathName: string (The name of the configuration setting that has the path for the appConfigPath)
 input frameworkConfigPathName: integer (123)
 output: ?
 
 testName: searchForUniversalDebugConfigSetting_inValidFrameworkConfigPathNameBoolean
-input appConfigPathName: string (?)
+input appConfigPathName: string (The name of the configuration setting that has the path for the appConfigPath)
 input frameworkConfigPathName: boolean (false)
 output: ?
 
 testName: searchForUniversalDebugConfigSetting_inValidAppConfigPathNameUndefined
 input appConfigPathName: undefined
-input frameworkConfigPathName: string (?)
+input frameworkConfigPathName: string (The name of the configuration setting that has the path for the frameworkConfigPath)
 output: ?
 
 testName: searchForUniversalDebugConfigSetting_inValidAppConfigPathNameNaN
 input appConfigPathName: NaN
-input frameworkConfigPathName: string (?)
+input frameworkConfigPathName: string (The name of the configuration setting that has the path for the frameworkConfigPath)
 output: ?
 
 testName: searchForUniversalDebugConfigSetting_inValidFrameworkConfigPathNameUndefined
-input appConfigPathName: string (?)
+input appConfigPathName: string (The name of the configuration setting that has the path for the appConfigPath)
 input frameworkConfigPathName: undefined
 output: ?
 
 testName: searchForUniversalDebugConfigSetting_inValidFrameworkConfigPathNameNaN
-input appConfigPathName: string (?)
+input appConfigPathName: string (The name of the configuration setting that has the path for the appConfigPath)
 input frameworkConfigPathName: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: getAndProcessCsvData_validData
-input pathAndFilename: string (?)
-input contextName: string (?)
-output: object (?)
+input pathAndFilename: string (The path and file name of the CSV file that should be loaded and parsed into JSON objects)
+input contextName: string (The name that should be used when adding the objects to the D data structure for data-sharing)
+output: object (A parsed CSV JSON object where all the values have been converted from their string representation into actual values of appropriate type)
 
 testName: getAndProcessCsvData_inValidPathAndFilenameString
 input pathAndFilename: string (dfxg24346dfg)
-input contextName: string (?)
+input contextName: string (The name that should be used when adding the objects to the D data structure for data-sharing)
 output: ?
 
 testName: getAndProcessCsvData_inValidContextNameString
-input pathAndFilename: string (?)
-input contextName: string (&)
+input pathAndFilename: string (The path and file name of the CSV file that should be loaded and parsed into JSON objects)
+input contextName: string (dfxg24346dfg)
 output: ?
 
 testName: getAndProcessCsvData_inValidPathAndFilenameInteger
 input pathAndFilename: integer (123)
-input contextName: string (?)
+input contextName: string (The name that should be used when adding the objects to the D data structure for data-sharing)
 output: ?
 
 testName: getAndProcessCsvData_inValidPathAndFilenameBoolean
 input pathAndFilename: boolean (false)
-input contextName: string (?)
+input contextName: string (The name that should be used when adding the objects to the D data structure for data-sharing)
 output: ?
 
 testName: getAndProcessCsvData_inValidContextNameInteger
-input pathAndFilename: string (?)
+input pathAndFilename: string (The path and file name of the CSV file that should be loaded and parsed into JSON objects)
 input contextName: integer (123)
 output: ?
 
 testName: getAndProcessCsvData_inValidContextNameBoolean
-input pathAndFilename: string (?)
+input pathAndFilename: string (The path and file name of the CSV file that should be loaded and parsed into JSON objects)
 input contextName: boolean (false)
 output: ?
 
 testName: getAndProcessCsvData_inValidPathAndFilenameUndefined
 input pathAndFilename: undefined
-input contextName: string (?)
+input contextName: string (The name that should be used when adding the objects to the D data structure for data-sharing)
 output: ?
 
 testName: getAndProcessCsvData_inValidPathAndFilenameNaN
 input pathAndFilename: NaN
-input contextName: string (?)
+input contextName: string (The name that should be used when adding the objects to the D data structure for data-sharing)
 output: ?
 
 testName: getAndProcessCsvData_inValidContextNameUndefined
-input pathAndFilename: string (?)
+input pathAndFilename: string (The path and file name of the CSV file that should be loaded and parsed into JSON objects)
 input contextName: undefined
 output: ?
 
 testName: getAndProcessCsvData_inValidContextNameNaN
-input pathAndFilename: string (?)
+input pathAndFilename: string (The path and file name of the CSV file that should be loaded and parsed into JSON objects)
 input contextName: boolean (false)
 output: ?
 --------------------------------------------------------------------------------
 testName: getAndProcessXmlData_validData
-input pathAndFilename: string (?)
-output: object (?)
+input pathAndFilename: string (The path and file name of the XML file that should be loaded and parsed into JSON objects)
+output: object (A parsed XML JSON object where all the values have been converted from their string representation into actual values of appropriate type)
 
 testName: getAndProcessXmlData_inValidPathAndFilenameString
 input pathAndFilename: string (dfxg24346dfg)
@@ -136,393 +136,393 @@ input pathAndFilename: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: setupAllCsvData_validData
-input dataPathConfigurationName: string (?)
-input contextName: string (?)
-output: object (?)
+input dataPathConfigurationName: string (The name of the configuration setting that has the path we should search)
+input contextName: string (The context name that should be used when adding data to the D data structure)
+output: object (A JSON object that contains all of the data that was loaded from all the CSV files and merged together)
 
 testName: setupAllCsvData_inValidDataPathConfigurationNameString
 input dataPathConfigurationName: string (dfxg24346dfg)
-input contextName: string (?)
+input contextName: string (The context name that should be used when adding data to the D data structure)
 output: ?
 
 testName: setupAllCsvData_inValidContextNameString
-input dataPathConfigurationName: string (?)
-input contextName: string (&)
+input dataPathConfigurationName: string (The name of the configuration setting that has the path we should search)
+input contextName: string (dfxg24346dfg)
 output: ?
 
 testName: setupAllCsvData_inValidDataPathConfigurationNameInteger
 input dataPathConfigurationName: integer (123)
-input contextName: string (?)
+input contextName: string (The context name that should be used when adding data to the D data structure)
 output: ?
 
 testName: setupAllCsvData_inValidDataPathConfigurationNameBoolean
 input dataPathConfigurationName: boolean (false)
-input contextName: string (?)
+input contextName: string (The context name that should be used when adding data to the D data structure)
 output: ?
 
 testName: setupAllCsvData_inValidContextNameInteger
-input dataPathConfigurationName: string (?)
+input dataPathConfigurationName: string (The name of the configuration setting that has the path we should search)
 input contextName: integer (123)
 output: ?
 
 testName: setupAllCsvData_inValidContextNameBoolean
-input dataPathConfigurationName: string (?)
+input dataPathConfigurationName: string (The name of the configuration setting that has the path we should search)
 input contextName: boolean (false)
 output: ?
 
 testName: setupAllCsvData_inValidDataPathConfigurationNameUndefined
 input dataPathConfigurationName: undefined
-input contextName: string (?)
+input contextName: string (The context name that should be used when adding data to the D data structure)
 output: ?
 
 testName: setupAllCsvData_inValidDataPathConfigurationNameNaN
 input dataPathConfigurationName: NaN
-input contextName: string (?)
+input contextName: string (The context name that should be used when adding data to the D data structure)
 output: ?
 
 testName: setupAllCsvData_inValidContextNameUndefined
-input dataPathConfigurationName: string (?)
+input dataPathConfigurationName: string (The name of the configuration setting that has the path we should search)
 input contextName: undefined
 output: ?
 
 testName: setupAllCsvData_inValidContextNameNaN
-input dataPathConfigurationName: string (?)
+input dataPathConfigurationName: string (The name of the configuration setting that has the path we should search)
 input contextName: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: setupAllXmlData_validData
-input dataPathConfigurationName: string (?)
-input contextName: string (?)
-output: object (?)
+input dataPathConfigurationName: string (The name of the configuration setting that has the path we should search)
+input contextName: string (The context name that should be used when adding data to the D data structure)
+output: object (A JSON object that contains all of the data that was loaded from all the XML files and merged together)
 
 testName: setupAllXmlData_inValidDataPathConfigurationNameString
 input dataPathConfigurationName: string (dfxg24346dfg)
-input contextName: string (?)
+input contextName: string (The context name that should be used when adding data to the D data structure)
 output: ?
 
 testName: setupAllXmlData_inValidContextNameString
-input dataPathConfigurationName: string (?)
-input contextName: string (&)
+input dataPathConfigurationName: string (The name of the configuration setting that has the path we should search)
+input contextName: string (dfxg24346dfg)
 output: ?
 
 testName: setupAllXmlData_inValidDataPathConfigurationNameInteger
 input dataPathConfigurationName: integer (123)
-input contextName: string (?)
+input contextName: string (The context name that should be used when adding data to the D data structure)
 output: ?
 
 testName: setupAllXmlData_inValidDataPathConfigurationNameBoolean
 input dataPathConfigurationName: boolean (false)
-input contextName: string (?)
+input contextName: string (The context name that should be used when adding data to the D data structure)
 output: ?
 
 testName: setupAllXmlData_inValidContextNameInteger
-input dataPathConfigurationName: string (?)
+input dataPathConfigurationName: string (The name of the configuration setting that has the path we should search)
 input contextName: integer (123)
 output: ?
 
 testName: setupAllXmlData_inValidContextNameBoolean
-input dataPathConfigurationName: string (?)
+input dataPathConfigurationName: string (The name of the configuration setting that has the path we should search)
 input contextName: boolean (false)
 output: ?
 
 testName: setupAllXmlData_inValidDataPathConfigurationNameUndefined
 input dataPathConfigurationName: undefined
-input contextName: string (?)
+input contextName: string (The context name that should be used when adding data to the D data structure)
 output: ?
 
 testName: setupAllXmlData_inValidDataPathConfigurationNameNaN
 input dataPathConfigurationName: NaN
-input contextName: string (?)
+input contextName: string (The context name that should be used when adding data to the D data structure)
 output: ?
 
 testName: setupAllXmlData_inValidContextNameUndefined
-input dataPathConfigurationName: string (?)
+input dataPathConfigurationName: string (The name of the configuration setting that has the path we should search)
 input contextName: undefined
 output: ?
 
 testName: setupAllXmlData_inValidContextNameNaN
-input dataPathConfigurationName: string (?)
+input dataPathConfigurationName: string (The name of the configuration setting that has the path we should search)
 input contextName: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: setupAllXmlPluginData_validData
-input dataPathConfigurationName: string (?)
-input contextName: string (?)
-output: object (?)
+input dataPathConfigurationName: string (The fully qualified path to the data files that should be loaded and parsed or the name of the configuration setting that has the path we should search)
+input contextName: string (The context name that should describe the kind of data that is being loaded and parsed)
+output: object (A JSON object that contains all of the data that was loaded from all the XML files and merged together)
 
 testName: setupAllXmlPluginData_inValidDataPathConfigurationNameString
 input dataPathConfigurationName: string (dfxg24346dfg)
-input contextName: string (?)
+input contextName: string (The context name that should describe the kind of data that is being loaded and parsed)
 output: ?
 
 testName: setupAllXmlPluginData_inValidContextNameString
-input dataPathConfigurationName: string (?)
-input contextName: string (&)
+input dataPathConfigurationName: string (The fully qualified path to the data files that should be loaded and parsed or the name of the configuration setting that has the path we should search)
+input contextName: string (dfxg24346dfg)
 output: ?
 
 testName: setupAllXmlPluginData_inValidDataPathConfigurationNameInteger
 input dataPathConfigurationName: integer (123)
-input contextName: string (?)
+input contextName: string (The context name that should describe the kind of data that is being loaded and parsed)
 output: ?
 
 testName: setupAllXmlPluginData_inValidDataPathConfigurationNameBoolean
 input dataPathConfigurationName: boolean (false)
-input contextName: string (?)
+input contextName: string (The context name that should describe the kind of data that is being loaded and parsed)
 output: ?
 
 testName: setupAllXmlPluginData_inValidContextNameInteger
-input dataPathConfigurationName: string (?)
+input dataPathConfigurationName: string (The fully qualified path to the data files that should be loaded and parsed or the name of the configuration setting that has the path we should search)
 input contextName: integer (123)
 output: ?
 
 testName: setupAllXmlPluginData_inValidContextNameBoolean
-input dataPathConfigurationName: string (?)
+input dataPathConfigurationName: string (The fully qualified path to the data files that should be loaded and parsed or the name of the configuration setting that has the path we should search)
 input contextName: boolean (false)
 output: ?
 
 testName: setupAllXmlPluginData_inValidDataPathConfigurationNameUndefined
 input dataPathConfigurationName: undefined
-input contextName: string (?)
+input contextName: string (The context name that should describe the kind of data that is being loaded and parsed)
 output: ?
 
 testName: setupAllXmlPluginData_inValidDataPathConfigurationNameNaN
 input dataPathConfigurationName: NaN
-input contextName: string (?)
+input contextName: string (The context name that should describe the kind of data that is being loaded and parsed)
 output: ?
 
 testName: setupAllXmlPluginData_inValidContextNameUndefined
-input dataPathConfigurationName: string (?)
+input dataPathConfigurationName: string (The fully qualified path to the data files that should be loaded and parsed or the name of the configuration setting that has the path we should search)
 input contextName: undefined
 output: ?
 
 testName: setupAllXmlPluginData_inValidContextNameNaN
-input dataPathConfigurationName: string (?)
+input dataPathConfigurationName: string (The fully qualified path to the data files that should be loaded and parsed or the name of the configuration setting that has the path we should search)
 input contextName: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: setupAllJsonConfigData_validData
-input dataPathConfigurationName: string (?)
-input contextName: string (?)
-output: object (?)
+input dataPathConfigurationName: string (The name of the configuration setting that has the path we should search)
+input contextName: string (The context name that should be used when adding data to the D data structure)
+output: object (A JSON object that contains all of the data that was loaded and merged together)
 
 testName: setupAllJsonConfigData_inValidDataPathConfigurationNameString
 input dataPathConfigurationName: string (dfxg24346dfg)
-input contextName: string (?)
+input contextName: string (The context name that should be used when adding data to the D data structure)
 output: ?
 
 testName: setupAllJsonConfigData_inValidContextNameString
-input dataPathConfigurationName: string (?)
-input contextName: string (&)
+input dataPathConfigurationName: string (The name of the configuration setting that has the path we should search)
+input contextName: string (dfxg24346dfg)
 output: ?
 
 testName: setupAllJsonConfigData_inValidDataPathConfigurationNameInteger
 input dataPathConfigurationName: integer (123)
-input contextName: string (?)
+input contextName: string (The context name that should be used when adding data to the D data structure)
 output: ?
 
 testName: setupAllJsonConfigData_inValidDataPathConfigurationNameBoolean
 input dataPathConfigurationName: boolean (false)
-input contextName: string (?)
+input contextName: string (The context name that should be used when adding data to the D data structure)
 output: ?
 
 testName: setupAllJsonConfigData_inValidContextNameInteger
-input dataPathConfigurationName: string (?)
+input dataPathConfigurationName: string (The name of the configuration setting that has the path we should search)
 input contextName: integer (123)
 output: ?
 
 testName: setupAllJsonConfigData_inValidContextNameBoolean
-input dataPathConfigurationName: string (?)
+input dataPathConfigurationName: string (The name of the configuration setting that has the path we should search)
 input contextName: boolean (false)
 output: ?
 
 testName: setupAllJsonConfigData_inValidDataPathConfigurationNameUndefined
 input dataPathConfigurationName: undefined
-input contextName: string (?)
+input contextName: string (The context name that should be used when adding data to the D data structure)
 output: ?
 
 testName: setupAllJsonConfigData_inValidDataPathConfigurationNameNaN
 input dataPathConfigurationName: NaN
-input contextName: string (?)
+input contextName: string (The context name that should be used when adding data to the D data structure)
 output: ?
 
 testName: setupAllJsonConfigData_inValidContextNameUndefined
-input dataPathConfigurationName: string (?)
+input dataPathConfigurationName: string (The name of the configuration setting that has the path we should search)
 input contextName: undefined
 output: ?
 
 testName: setupAllJsonConfigData_inValidContextNameNaN
-input dataPathConfigurationName: string (?)
+input dataPathConfigurationName: string (The name of the configuration setting that has the path we should search)
 input contextName: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: setupAllJsonConfigPluginData_validData
-input configFilesPath: string (?)
-input contextName: string (?)
-output: object (?)
+input configFilesPath: string (The path to the configuration files that should be loaded)
+input contextName: string (The type of configuration data that should be loaded)
+output: object (A JSON object that contains all of the data that was loaded and merged together)
 
 testName: setupAllJsonConfigPluginData_inValidConfigFilesPathString
 input configFilesPath: string (dfxg24346dfg)
-input contextName: string (?)
+input contextName: string (The type of configuration data that should be loaded)
 output: ?
 
 testName: setupAllJsonConfigPluginData_inValidContextNameString
-input configFilesPath: string (?)
-input contextName: string (&)
+input configFilesPath: string (The path to the configuration files that should be loaded)
+input contextName: string (dfxg24346dfg)
 output: ?
 
 testName: setupAllJsonConfigPluginData_inValidConfigFilesPathInteger
 input configFilesPath: integer (123)
-input contextName: string (?)
+input contextName: string (The type of configuration data that should be loaded)
 output: ?
 
 testName: setupAllJsonConfigPluginData_inValidConfigFilesPathBoolean
 input configFilesPath: boolean (false)
-input contextName: string (?)
+input contextName: string (The type of configuration data that should be loaded)
 output: ?
 
 testName: setupAllJsonConfigPluginData_inValidContextNameInteger
-input configFilesPath: string (?)
+input configFilesPath: string (The path to the configuration files that should be loaded)
 input contextName: integer (123)
 output: ?
 
 testName: setupAllJsonConfigPluginData_inValidContextNameBoolean
-input configFilesPath: string (?)
+input configFilesPath: string (The path to the configuration files that should be loaded)
 input contextName: boolean (false)
 output: ?
 
 testName: setupAllJsonConfigPluginData_inValidConfigFilesPathUndefined
 input configFilesPath: undefined
-input contextName: string (?)
+input contextName: string (The type of configuration data that should be loaded)
 output: ?
 
 testName: setupAllJsonConfigPluginData_inValidConfigFilesPathNaN
 input configFilesPath: NaN
-input contextName: string (?)
+input contextName: string (The type of configuration data that should be loaded)
 output: ?
 
 testName: setupAllJsonConfigPluginData_inValidContextNameUndefined
-input configFilesPath: string (?)
+input configFilesPath: string (The path to the configuration files that should be loaded)
 input contextName: undefined
 output: ?
 
 testName: setupAllJsonConfigPluginData_inValidContextNameNaN
-input configFilesPath: string (?)
+input configFilesPath: string (The path to the configuration files that should be loaded)
 input contextName: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: loadAllJsonData_validData
-input dataPath: string (?)
-input contextName: string (?)
-output: object (?)
+input dataPath: string (The path to the JSON files that should be loaded)
+input contextName: string (The type of data that should be loaded)
+output: object (A JSON object that contains all of the data that was loaded and merged together)
 
 testName: loadAllJsonData_inValidDataPathString
 input dataPath: string (dfxg24346dfg)
-input contextName: string (?)
+input contextName: string (The type of data that should be loaded)
 output: ?
 
 testName: loadAllJsonData_inValidContextNameString
-input dataPath: string (?)
-input contextName: string (&)
+input dataPath: string (The path to the JSON files that should be loaded)
+input contextName: string (dfxg24346dfg)
 output: ?
 
 testName: loadAllJsonData_inValidDataPathInteger
 input dataPath: integer (123)
-input contextName: string (?)
+input contextName: string (The type of data that should be loaded)
 output: ?
 
 testName: loadAllJsonData_inValidDataPathBoolean
 input dataPath: boolean (false)
-input contextName: string (?)
+input contextName: string (The type of data that should be loaded)
 output: ?
 
 testName: loadAllJsonData_inValidContextNameInteger
-input dataPath: string (?)
+input dataPath: string (The path to the JSON files that should be loaded)
 input contextName: integer (123)
 output: ?
 
 testName: loadAllJsonData_inValidContextNameBoolean
-input dataPath: string (?)
+input dataPath: string (The path to the JSON files that should be loaded)
 input contextName: boolean (false)
 output: ?
 
 testName: loadAllJsonData_inValidDataPathUndefined
 input dataPath: undefined
-input contextName: string (?)
+input contextName: string (The type of data that should be loaded)
 output: ?
 
 testName: loadAllJsonData_inValidDataPathNaN
 input dataPath: NaN
-input contextName: string (?)
+input contextName: string (The type of data that should be loaded)
 output: ?
 
 testName: loadAllJsonData_inValidContextNameUndefined
-input dataPath: string (?)
+input dataPath: string (The path to the JSON files that should be loaded)
 input contextName: undefined
 output: ?
 
 testName: loadAllJsonData_inValidContextNameNaN
-input dataPath: string (?)
+input dataPath: string (The path to the JSON files that should be loaded)
 input contextName: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: storeData_validData
-input dataName: string (?)
-input data: object|string|boolean|number|array (?)
-output: boolean (?)
+input dataName: string (The name of the data, unique name used to store the data in the data structure)
+input data: object|string|boolean|number|array (The data that should be stored)
+output: boolean (True or False to indicate if the data was stored successfully or not)
 
 testName: storeData_inValidDataNameString
 input dataName: string (dfxg24346dfg)
-input data: object|string|boolean|number|array (?)
+input data: object|string|boolean|number|array (The data that should be stored)
 output: ?
 
 testName: storeData_inValidDataString
-input dataName: string (?)
-input data: string (&)
+input dataName: string (The name of the data, unique name used to store the data in the data structure)
+input data: string (dfxg24346dfg)
 output: ?
 
 testName: storeData_inValidDataNameInteger
 input dataName: integer (123)
-input data: object|string|boolean|number|array (?)
+input data: object|string|boolean|number|array (The data that should be stored)
 output: ?
 
 testName: storeData_inValidDataNameBoolean
 input dataName: boolean (false)
-input data: object|string|boolean|number|array (?)
+input data: object|string|boolean|number|array (The data that should be stored)
 output: ?
 
 testName: storeData_inValidDataInteger
-input dataName: string (?)
+input dataName: string (The name of the data, unique name used to store the data in the data structure)
 input data: integer (123)
 output: ?
 
 testName: storeData_inValidDataString
-input dataName: string (?)
+input dataName: string (The name of the data, unique name used to store the data in the data structure)
 input data: boolean (false)
 output: ?
 
 testName: storeData_inValidDataNameUndefined
 input dataName: undefined
-input data: object|string|boolean|number|array (?)
+input data: object|string|boolean|number|array (The data that should be stored)
 output: ?
 
 testName: storeData_inValidDataNameNaN
 input dataName: NaN
-input data: object|string|boolean|number|array (?)
+input data: object|string|boolean|number|array (The data that should be stored)
 output: ?
 
 testName: storeData_inValidDataUndefined
-input dataName: string (?)
+input dataName: string (The name of the data, unique name used to store the data in the data structure)
 input data: undefined
 output: ?
 
 testName: storeData_inValidDataNaN
-input dataName: string (?)
+input dataName: string (The name of the data, unique name used to store the data in the data structure)
 input data: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: getData_validData
-input dataName: string (?)
-output: object|string|boolean|number|array (?)
+input dataName: string (The unique name the data should be stored under)
+output: object|string|boolean|number|array (The data element or object that was stored if any was found)
 
 testName: getData_inValidDataNameString
 input dataName: string (dfxg24346dfg)
@@ -545,8 +545,8 @@ input dataName: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: clearData_validData
-input dataName: string (?)
-output: object|string|boolean|number|array (?)
+input dataName: string (The unique name of the data that should be cleared)
+output: object|string|boolean|number|array (True or False to indicate if the data was cleared successfully or not)
 
 testName: clearData_inValidDataNameString
 input dataName: string (dfxg24346dfg)

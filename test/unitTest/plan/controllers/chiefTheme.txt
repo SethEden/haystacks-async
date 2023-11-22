@@ -3,65 +3,66 @@ Description: Test plan for chiefTheme.js
 --------------------------------------------------------------------------------
 testName: initThemes_validData
 output: void
+NOTE: Initializes the themes data on the D-data structure
 --------------------------------------------------------------------------------
 testName: addThemeData_validData
-input themeData: object (?)
-input contextName: string (?)
-output: ?
+input themeData: object (A JSON object that contains the externally defined theme data names and data paths)
+input contextName: string (A context name that indicates where the data is coming from)
+output: boolean (True or False to indicate if the merge was successful or not)
 
 testName: addThemeData_inValidThemeDataString
 input themeData: string  (dfxg24346dfg)
-input contextName: string (?)
+input contextName: string (A context name that indicates where the data is coming from)
 output: ?
 
 testName: addThemeData_inValidContextNameString
-input themeData: object (?)
-input contextName: string (&)
+input themeData: object (A JSON object that contains the externally defined theme data names and data paths)
+input contextName: string (dfxg24346dfg)
 output: ?
 
 testName: addThemeData_inValidThemeDataInteger
 input themeData: integer (123) 
-input contextName: string (?)
+input contextName: string (A context name that indicates where the data is coming from)
 output: ?
 
 testName: addThemeData_inValidThemeDataBoolean
 input themeData: boolean (false)
-input contextName: string (?)
+input contextName: string (A context name that indicates where the data is coming from)
 output: ?
 
 testName: addThemeData_inValidContextNameInteger
-input themeData: object (?)
+input themeData: object (A JSON object that contains the externally defined theme data names and data paths)
 input contextName: integer (123)
 output: ?
 
 testName: addThemeData_inValidContextNameBoolean
-input themeData: object (?)
+input themeData: object (A JSON object that contains the externally defined theme data names and data paths)
 input contextName: boolean (false)
 output: ?
 
 testName: addThemeData_inValidThemeDataUndefined
 input themeData: undefined
-input contextName: string (?)
+input contextName: string (A context name that indicates where the data is coming from)
 output: ?
 
 testName: addThemeData_inValidThemeDataNaN
 input themeData: NaN
-input contextName: string (?)
+input contextName: string (A context name that indicates where the data is coming from)
 output: ?
 
 testName: addThemeData_inValidContextNameUndefined
-input themeData: object (?)
+input themeData: object (A JSON object that contains the externally defined theme data names and data paths)
 input contextName: undefined
 output: ?
 
 testName: addThemeData_inValidContextNameNaN
-input themeData: object (?)
+input themeData: object (A JSON object that contains the externally defined theme data names and data paths)
 input contextName: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: generateThemeDataFromThemeRootPath_validData
-input themesRootPath: string (?)
-output: object (?)
+input themesRootPath: string (The root path where the themes folders are located. This is the path that should be scanned)
+output: object (A JSON object that contains the theme names and theme paths from the specified root path)
 
 testName: generateThemeDataFromThemeRootPath_inValidThemesRootPathString
 input themesRootPath: string (dfxg24346dfg)
@@ -84,8 +85,8 @@ input themesRootPath: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: determineThemeDebugConfigFilesToLoad_validData
-input themeConfigPathName: array<string> (?)
-output: object (?)
+input themeConfigPathName: array<string> (The configuration name of the path that should be looked up for scanningg purposes)
+output: object (An array of file names and paths that should be used when loading the theme debug configuration files)
 
 testName: determineThemeDebugConfigFilesToLoad_inValidThemeConfigPathNameString
 input themeConfigPathName: string (dfxg24346dfg)

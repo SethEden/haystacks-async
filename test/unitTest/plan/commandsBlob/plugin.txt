@@ -2,936 +2,991 @@ Description: Test plan for plugin.js
 
 --------------------------------------------------------------------------------
 testName: listAllLoadedPlugins_validData
-input inputData: string
-input inputMetaData: string
-output: array<boolean, array<string>> (?)
+input inputData: string (Not used for this command)
+input inputMetaData: string (Not used for this command)
+output: array<boolean, array<string>> (An array with a boolean True or False value to indicate if the application should exit or not, followed by the list of plugins that have been loaded)
 
 testName: listAllLoadedPlugins_inValidInputDataString
-input inputData: string
-input inputMetaData: string
+input inputData: string (dfxg24346dfg)
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: listAllLoadedPlugins_inValidInputMetaDataString
-input inputData: string
-input inputMetaData: string
+input inputData: string (Not used for this command)
+input inputMetaData: string (dfxg24346dfg)
 output: ?
 
 testName: listAllLoadedPlugins_inValidInputDataInteger
 input inputData: integer (123)
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: listAllLoadedPlugins_inValidInputDataBoolean
 input inputData: boolean (false)
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: listAllLoadedPlugins_inValidInputMetaDataInteger
-input inputData: string
+input inputData: string (Not used for this command)
 input inputMetaData: integer (123)
 output: ?
 
 testName: listAllLoadedPlugins_inValidInputMetaDataBoolean
-input inputData: string
+input inputData: string (Not used for this command)
 input inputMetaData: boolean (false)
 output: ?
 
 testName: listAllLoadedPlugins_inValidInputDataUndefined
 input inputData: undefined
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: listAllLoadedPlugins_inValidInputDataNaN
 input inputData: NaN
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: listAllLoadedPlugins_inValidInputMetaDataUndefined
-input inputData: string
+input inputData: string (Not used for this command)
 input inputMetaData: undefined
 output: ?
 
 testName: listAllLoadedPlugins_inValidInputMetaDataNaN
-input inputData: string
+input inputData: string (Not used for this command)
 input inputMetaData: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: listAllPluginsInRegistry_validData
-input inputData: string
-input inputMetaData: string
-output: array<boolean, array<string>> (?)
+input inputData: string (Not used for this command)
+input inputMetaData: string (Not used for this command)
+output: array<boolean, array<string>> (An array with a boolean True or False value to indicate if the application should exit or not exit, followed by the list of plugins in the registry)
 
 testName: listAllPluginsInRegistry_inValidInputDataString
-input inputData: string
-input inputMetaData: string
+input inputData: string (dfxg24346dfg)
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: listAllPluginsInRegistry_inValidInputMetaDataString
-input inputData: string
-input inputMetaData: string
+input inputData: string (Not used for this command)
+input inputMetaData: string (dfxg24346dfg)
 output: ?
 
 testName: listAllPluginsInRegistry_inValidInputDataInteger
 input inputData: integer (123)
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: listAllPluginsInRegistry_inValidInputDataBoolean
 input inputData: boolean (false)
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: listAllPluginsInRegistry_inValidInputMetaDataInteger
-input inputData: string
+input inputData: string (Not used for this command)
 input inputMetaData: integer (123)
 output: ?
 
 testName: listAllPluginsInRegistry_inValidInputMetaDataBoolean
-input inputData: string
+input inputData: string (Not used for this command)
 input inputMetaData: boolean (false)
 output: ?
 
 testName: listAllPluginsInRegistry_inValidInputDataUndefined
 input inputData: undefined
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: listAllPluginsInRegistry_inValidInputDataNaN
 input inputData: NaN
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: listAllPluginsInRegistry_inValidInputMetaDataUndefined
-input inputData: string
+input inputData: string (Not used for this command)
 input inputMetaData: undefined
 output: ?
 
 testName: listAllPluginsInRegistry_inValidInputMetaDataNaN
-input inputData: string
+input inputData: string (Not used for this command)
 input inputMetaData: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: listAllPluginsInRegistryPath_validData
-input inputData: string
-input inputMetaData: string
-output: array<boolean, array<string>> (?)
+input inputData: string (Not used for this command)
+input inputMetaData: string (Not used for this command)
+output: array<boolean, array<string>> (An array with a boolean True or False value to indicate if the application should exit or not exit, followed by the list of plugins in the plugins registry path)
 
 testName: listAllPluginsInRegistryPath_inValidInputDataString
-input inputData: string
-input inputMetaData: string
+input inputData: string (dfxg24346dfg)
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: listAllPluginsInRegistryPath_inValidInputMetaDataString
-input inputData: string
-input inputMetaData: string
+input inputData: string (Not used for this command)
+input inputMetaData: string (dfxg24346dfg)
 output: ?
 
 testName: listAllPluginsInRegistryPath_inValidInputDataInteger
 input inputData: integer (123)
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: listAllPluginsInRegistryPath_inValidInputDataBoolean
 input inputData: boolean (false)
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: listAllPluginsInRegistryPath_inValidInputMetaDataInteger
-input inputData: string
+input inputData: string (Not used for this command)
 input inputMetaData: integer (123)
 output: ?
 
 testName: listAllPluginsInRegistryPath_inValidInputMetaDataBoolean
-input inputData: string
+input inputData: string (Not used for this command)
 input inputMetaData: boolean (false)
 output: ?
 
 testName: listAllPluginsInRegistryPath_inValidInputDataUndefined
 input inputData: undefined
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: listAllPluginsInRegistryPath_inValidInputDataNaN
 input inputData: NaN
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: listAllPluginsInRegistryPath_inValidInputMetaDataUndefined
-input inputData: string
+input inputData: string (Not used for this command)
 input inputMetaData: undefined
 output: ?
 
 testName: listAllPluginsInRegistryPath_inValidInputMetaDataNaN
-input inputData: string
+input inputData: string (Not used for this command)
 input inputMetaData: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: countPluginsInRegistry_validData
-input inputData: string
-input inputMetaData: string
-output: array<boolean, array<string>> (?)
+input inputData: string (Not used for this command)
+input inputMetaData: string (Not used for this command)
+output: array<boolean, array<string>> (An array with a boolean True or False value to indicate if the application should exit or not exit, followed by the number of plugins found in the plugins registry)
 
 testName: countPluginsInRegistry_inValidInputDataString
-input inputData: string
-input inputMetaData: string
+input inputData: string (dfxg24346dfg)
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: countPluginsInRegistry_inValidInputMetaDataString
-input inputData: string
-input inputMetaData: string
+input inputData: string (Not used for this command)
+input inputMetaData: string (dfxg24346dfg)
 output: ?
 
 testName: countPluginsInRegistry_inValidInputDataInteger
 input inputData: integer (123)
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: countPluginsInRegistry_inValidInputDataBoolean
 input inputData: boolean (false)
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: countPluginsInRegistry_inValidInputMetaDataInteger
-input inputData: string
+input inputData: string (Not used for this command)
 input inputMetaData: integer (123)
 output: ?
 
 testName: countPluginsInRegistry_inValidInputMetaDataBoolean
-input inputData: string
+input inputData: string (Not used for this command)
 input inputMetaData: boolean (false)
 output: ?
 
 testName: countPluginsInRegistry_inValidInputDataUndefined
 input inputData: undefined
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: countPluginsInRegistry_inValidInputDataNaN
 input inputData: NaN
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: countPluginsInRegistry_inValidInputMetaDataUndefined
-input inputData: string
+input inputData: string (Not used for this command)
 input inputMetaData: undefined
 output: ?
 
 testName: countPluginsInRegistry_inValidInputMetaDataNaN
-input inputData: string
+input inputData: string (Not used for this command)
 input inputMetaData: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: countPluginsInRegistryPath_validData
-input inputData: string
-input inputMetaData: string
-output: array<boolean, array<string>> (?)
+input inputData: string (Not used for this command)
+input inputMetaData: string (Not used for this command)
+output: array<boolean, array<string>> (An array with a boolean True or False value to indicate if the application should exit or not exit, followed by the number of plugins found in the plugins registry)
 
 testName: countPluginsInRegistryPath_inValidInputDataString
-input inputData: string
-input inputMetaData: string
+input inputData: string (dfxg24346dfg)
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: countPluginsInRegistryPath_inValidInputMetaDataString
-input inputData: string
-input inputMetaData: string
+input inputData: string (Not used for this command)
+input inputMetaData: string (dfxg24346dfg)
 output: ?
 
 testName: countPluginsInRegistryPath_inValidInputDataInteger
 input inputData: integer (123)
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: countPluginsInRegistryPath_inValidInputDataBoolean
 input inputData: boolean (false)
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: countPluginsInRegistryPath_inValidInputMetaDataInteger
-input inputData: string
+input inputData: string (Not used for this command)
 input inputMetaData: integer (123)
 output: ?
 
 testName: countPluginsInRegistryPath_inValidInputMetaDataBoolean
-input inputData: string
+input inputData: string (Not used for this command)
 input inputMetaData: boolean (false)
 output: ?
 
 testName: countPluginsInRegistryPath_inValidInputDataUndefined
 input inputData: undefined
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: countPluginsInRegistryPath_inValidInputDataNaN
 input inputData: NaN
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: countPluginsInRegistryPath_inValidInputMetaDataUndefined
-input inputData: string
+input inputData: string (Not used for this command)
 input inputMetaData: undefined
 output: ?
 
 testName: countPluginsInRegistryPath_inValidInputMetaDataNaN
-input inputData: string
+input inputData: string (Not used for this command)
 input inputMetaData: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: registerPlugin_validData
-input inputData: array<string>
-input inputMetaData: string
-output: array<boolean, boolean> (?)
+input inputData: array<string> (An array that could actually contain anything, depending on what the user entered)
+input inputMetaData: string (Not used for this command)
+output: array<boolean, boolean> (An array with a boolean True or False value to indicate if the application should exit or not exit, followed by another boolean value to indicate if the plugin was registered successfully or not)
 
 testName: registerPlugin_inValidInputDataString
-input inputData: string
-input inputMetaData: string
+input inputData: string (dfxg24346dfg)
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: registerPlugin_inValidInputMetaDataString
-input inputData: array<string>
-input inputMetaData: string
+input inputData: array<string> (An array that could actually contain anything, depending on what the user entered)
+input inputMetaData: string (dfxg24346dfg)
 output: ?
 
 testName: registerPlugin_inValidInputDataInteger
 input inputData: integer (123)
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: registerPlugin_inValidInputDataBoolean
 input inputData: boolean (false)
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: registerPlugin_inValidInputMetaDataInteger
-input inputData: array<string>
+input inputData: array<string> (An array that could actually contain anything, depending on what the user entered)
 input inputMetaData: integer (123)
 output: ?
 
 testName: registerPlugin_inValidInputMetaDataBoolean
-input inputData: array<string>
+input inputData: array<string> (An array that could actually contain anything, depending on what the user entered)
 input inputMetaData: boolean (false)
 output: ?
 
 testName: registerPlugin_inValidInputDataUndefined
 input inputData: undefined
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: registerPlugin_inValidInputDataNaN
 input inputData: NaN
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: registerPlugin_inValidInputMetaDataUndefined
-input inputData: array<string>
+input inputData: array<string> (An array that could actually contain anything, depending on what the user entered)
 input inputMetaData: undefined
 output: ?
 
 testName: registerPlugin_inValidInputMetaDataNaN
-input inputData: array<string>
+input inputData: array<string> (An array that could actually contain anything, depending on what the user entered)
 input inputMetaData: NaN
 output: ?
 --------------------------------------------------------------------------------
+testName: unregisterPlugin_validDataString
+input 1inputData: array<string> (An array that could actually contain anything, depending on what the user entered)
+input 1inputMetaData: string (Not used for this command)
+output: array<boolean,boolean> (An array with a boolean True or False value to indicate if the application should exit or not exit, followed by another boolean value to indicate if the plugin was unregistered successfully or not)
+
+testName: unregisterPlugin_inValidDataInputDataString
+input 1inputData: string (dfxg24346dfg)
+input 1inputMetaData: string (Not used for this command)
+output: ?
+
+testName: unregisterPlugin_inValidDataInputMetaDataString
+input 1inputData: array<string> (An array that could actually contain anything, depending on what the user entered)
+input 1inputMetaData: string (dfxg24346dfg)
+output: ?
+
+testName: unregisterPlugin_inValidInputDataInteger
+input 1inputData: integer (4567)
+input 1inputMetaData: string (Not used for this command)
+output: ?
+
+testName: unregisterPlugin_inValidInputDataBoolean
+input 1inputData: boolean (false)
+input 1inputMetaData: string (Not used for this command)
+output: ?
+
+testName: unregisterPlugin_inValidInputMetaDataInteger
+input 1inputData: array<string> (An array that could actually contain anything, depending on what the user entered)
+input 1inputMetaData: string
+output: ?
+
+testName: unregisterPlugin_inValidInputMetaDataBoolean
+input 1inputData: array<string> (An array that could actually contain anything, depending on what the user entered)
+input 1inputMetaData: string
+output: ?
+
+testName: unregisterPlugin_inValidInputDataUndefined
+input 1inputData: undefined
+input 1inputMetaData: string (Not used for this command)
+output: ?
+
+testName: unregisterPlugin_inValidInputDataNaN
+input 1inputData: NaN
+input 1inputMetaData: string (Not used for this command)
+output: ?
+
+testName: unregisterPlugin_inValidInputMetaDataUndefined
+input 1inputData: array<string> (An array that could actually contain anything, depending on what the user entered)
+input 1inputMetaData: undefined
+output: ?
+
+testName: unregisterPlugin_inValidInputMetaDataNaN
+input 1inputData: array<string> (An array that could actually contain anything, depending on what the user entered)
+input 1inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
 testName: unregisterPlugins_validData
-input inputData: array<string>
-input inputMetaData: string
-output: array<boolean, boolean> (?)
+input inputData: array<string> (An array that could actually contain anything, depending on what the user entered)
+input inputMetaData: string (Not used for this command)
+output: array<boolean, boolean> (An array with a boolean True or False value to indicate if the application should exit or not exit, followed by another boolean value to indicate if the plugins were unregistered successfully or not)
 
 testName: unregisterPlugins_inValidInputDataString
-input inputData: string
-input inputMetaData: string
+input inputData: string (dfxg24346dfg)
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: unregisterPlugins_inValidInputMetaDataString
-input inputData: array<string>
-input inputMetaData: string
+input inputData: array<string> (An array that could actually contain anything, depending on what the user entered)
+input inputMetaData: string (dfxg24346dfg)
 output: ?
 
 testName: unregisterPlugins_inValidInputDataInteger
 input inputData: integer (123)
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: unregisterPlugins_inValidInputDataBoolean
 input inputData: boolean (false)
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: unregisterPlugins_inValidInputMetaDataInteger
-input inputData: array<string>
+input inputData: array<string> (An array that could actually contain anything, depending on what the user entered)
 input inputMetaData: integer (123)
 output: ?
 
 testName: unregisterPlugins_inValidInputMetaDataBoolean
-input inputData: array<string>
+input inputData: array<string> (An array that could actually contain anything, depending on what the user entered)
 input inputMetaData: boolean (false)
 output: ?
 
 testName: unregisterPlugins_inValidInputDataUndefined
 input inputData: undefined
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: unregisterPlugins_inValidInputDataNaN
 input inputData: NaN
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: unregisterPlugins_inValidInputMetaDataUndefined
-input inputData: array<string>
+input inputData: array<string> (An array that could actually contain anything, depending on what the user entered)
 input inputMetaData: undefined
 output: ?
 
 testName: unregisterPlugins_inValidInputMetaDataNaN
-input inputData: array<string>
+input inputData: array<string> (An array that could actually contain anything, depending on what the user entered)
 input inputMetaData: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: syncPluginRegistryWithPath_validData
-input inputData: string
-input inputMetaData: string
-output: array<boolean, boolean> (?)
+input inputData: string (Not used for this command)
+input inputMetaData: string (Not used for this command)
+output: array<boolean, boolean> (An array with a boolean True or False value to indicate if the application should exit or not exit, followed by another boolean value to indicate if the plugin registry synchronization was successful or not)
 
 testName: syncPluginRegistryWithPath_inValidInputDataString
-input inputData: string
-input inputMetaData: string
+input inputData: string (dfxg24346dfg)
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: syncPluginRegistryWithPath_inValidInputMetaDataString
-input inputData: string
-input inputMetaData: string
+input inputData: string (Not used for this command)
+input inputMetaData: string (dfxg24346dfg)
 output: ?
 
 testName: syncPluginRegistryWithPath_inValidInputDataInteger
 input inputData: integer (123)
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: syncPluginRegistryWithPath_inValidInputDataBoolean
 input inputData: boolean (false)
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: syncPluginRegistryWithPath_inValidInputMetaDataInteger
-input inputData: string
+input inputData: string (Not used for this command)
 input inputMetaData: integer (123)
 output: ?
 
 testName: syncPluginRegistryWithPath_inValidInputMetaDataBoolean
-input inputData: string
+input inputData: string (Not used for this command)
 input inputMetaData: boolean (false)
 output: ?
 
 testName: syncPluginRegistryWithPath_inValidInputDataUndefined
 input inputData: undefined
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: syncPluginRegistryWithPath_inValidInputDataNaN
 input inputData: NaN
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: syncPluginRegistryWithPath_inValidInputMetaDataUndefined
-input inputData: string
+input inputData: string (Not used for this command)
 input inputMetaData: undefined
 output: ?
 
 testName: syncPluginRegistryWithPath_inValidInputMetaDataNaN
-input inputData: string
+input inputData: string (Not used for this command)
 input inputMetaData: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: listPluginsRegistryPath_validData
-input inputData: string
-input inputMetaData: string
-output: array<boolean, string> (?)
+input inputData: string (Not used for this command)
+input inputMetaData: string (Not used for this command)
+output: array<boolean, string> (An array with a boolean True or False value to indicate if the application should exit or not exit, followed by a string that is the plugins path)
 
 testName: listPluginsRegistryPath_inValidInputDataString
-input inputData: string
-input inputMetaData: string
+input inputData: string (dfxg24346dfg)
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: listPluginsRegistryPath_inValidInputMetaDataString
-input inputData: string
-input inputMetaData: string
+input inputData: string (Not used for this command)
+input inputMetaData: string (dfxg24346dfg)
 output: ?
 
 testName: listPluginsRegistryPath_inValidInputDataInteger
 input inputData: integer (123)
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: listPluginsRegistryPath_inValidInputDataBoolean
 input inputData: boolean (false)
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: listPluginsRegistryPath_inValidInputMetaDataInteger
-input inputData: string
+input inputData: string (Not used for this command)
 input inputMetaData: integer (123)
 output: ?
 
 testName: listPluginsRegistryPath_inValidInputMetaDataBoolean
-input inputData: string
+input inputData: string (Not used for this command)
 input inputMetaData: boolean (false)
 output: ?
 
 testName: listPluginsRegistryPath_inValidInputDataUndefined
 input inputData: undefined
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: listPluginsRegistryPath_inValidInputDataNaN
 input inputData: NaN
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: listPluginsRegistryPath_inValidInputMetaDataUndefined
-input inputData: string
+input inputData: string (Not used for this command)
 input inputMetaData: undefined
 output: ?
 
 testName: listPluginsRegistryPath_inValidInputMetaDataNaN
-input inputData: string
+input inputData: string (Not used for this command)
 input inputMetaData: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: unregisterAllPlugins_validData
-input inputData: string
-input inputMetaData: string
-output: array<boolean, boolean> (?)
+input inputData: string (Not used for this command)
+input inputMetaData: string (Not used for this command)
+output: array<boolean, boolean> (An array with a boolean True or False value to indicate if the application should exit or not exit, followed by another boolean value to indicate if all the plugins were unregistered successfully or not)
 
 testName: unregisterAllPlugins_inValidInputDataString
-input inputData: string
-input inputMetaData: string
+input inputData: string (dfxg24346dfg)
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: unregisterAllPlugins_inValidInputMetaDataString
-input inputData: string
-input inputMetaData: string
+input inputData: string (Not used for this command)
+input inputMetaData: string (dfxg24346dfg)
 output: ?
 
 testName: unregisterAllPlugins_inValidInputDataInteger
 input inputData: integer (123)
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: unregisterAllPlugins_inValidInputDataBoolean
 input inputData: boolean (false)
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: unregisterAllPlugins_inValidInputMetaDataInteger
-input inputData: string
+input inputData: string (Not used for this command)
 input inputMetaData: integer (123)
 output: ?
 
 testName: unregisterAllPlugins_inValidInputMetaDataBoolean
-input inputData: string
+input inputData: string (Not used for this command)
 input inputMetaData: boolean (false)
 output: ?
 
 testName: unregisterAllPlugins_inValidInputDataUndefined
 input inputData: undefined
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: unregisterAllPlugins_inValidInputDataNaN
 input inputData: NaN
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: unregisterAllPlugins_inValidInputMetaDataUndefined
-input inputData: string
+input inputData: string (Not used for this command)
 input inputMetaData: undefined
 output: ?
 
 testName: unregisterAllPlugins_inValidInputMetaDataNaN
-input inputData: string
+input inputData: string (Not used for this command)
 input inputMetaData: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: savePluginRegistryToDisk_validData
-input inputData: string
-input inputMetaData: string
-output: array<boolean, boolean> (?)
+input inputData: string (Not used for this command)
+input inputMetaData: string (Not used for this command)
+output: array<boolean, boolean> (An array with a boolean True or False value to indicate if the application should exit or not exit, followed by another boolean value to indicate if the plugin registry was saved successfully or not)
 
 testName: savePluginRegistryToDisk_inValidInputDataString
-input inputData: string
-input inputMetaData: string
+input inputData: string (dfxg24346dfg)
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: savePluginRegistryToDisk_inValidInputMetaDataString
-input inputData: string
-input inputMetaData: string
+input inputData: string (Not used for this command)
+input inputMetaData: string (dfxg24346dfg)
 output: ?
 
 testName: savePluginRegistryToDisk_inValidInputDataInteger
 input inputData: integer (123)
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: savePluginRegistryToDisk_inValidInputDataBoolean
 input inputData: boolean (false)
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: savePluginRegistryToDisk_inValidInputMetaDataInteger
-input inputData: string
+input inputData: string (Not used for this command)
 input inputMetaData: integer (123)
 output: ?
 
 testName: savePluginRegistryToDisk_inValidInputMetaDataBoolean
-input inputData: string
+input inputData: string (Not used for this command)
 input inputMetaData: boolean (false)
 output: ?
 
 testName: savePluginRegistryToDisk_inValidInputDataUndefined
 input inputData: undefined
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: savePluginRegistryToDisk_inValidInputDataNaN
 input inputData: NaN
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: savePluginRegistryToDisk_inValidInputMetaDataUndefined
-input inputData: string
+input inputData: string (Not used for this command)
 input inputMetaData: undefined
 output: ?
 
 testName: savePluginRegistryToDisk_inValidInputMetaDataNaN
-input inputData: string
+input inputData: string (Not used for this command)
 input inputMetaData: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: loadPlugin_validData
-input inputData: array<string>
-input inputMetaData: string
-output: array<boolean, boolean> (?)
+input inputData: array<string> (An array that could actually contain anything, depending on what the user entered)
+input inputMetaData: string (Not used for this command)
+output: array<boolean, boolean> (An array with a boolean True or False value to indicate if the application should exit or not exit, followed by another boolean value to indicate if the plugin was loaded successfully or not)
 
 testName: loadPlugin_inValidInputDataString
-input inputData: string
-input inputMetaData: string
+input inputData: string (dfxg24346dfg)
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: loadPlugin_inValidInputMetaDataString
-input inputData: array<string>
-input inputMetaData: string
+input inputData: array<string> (An array that could actually contain anything, depending on what the user entered)
+input inputMetaData: string (dfxg24346dfg)
 output: ?
 
 testName: loadPlugin_inValidInputDataInteger
 input inputData: integer (123)
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: loadPlugin_inValidInputDataBoolean
 input inputData: boolean (false)
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: loadPlugin_inValidInputMetaDataInteger
-input inputData: array<string>
+input inputData: array<string> (An array that could actually contain anything, depending on what the user entered)
 input inputMetaData: integer (123)
 output: ?
 
 testName: loadPlugin_inValidInputMetaDataBoolean
-input inputData: array<string>
+input inputData: array<string> (An array that could actually contain anything, depending on what the user entered)
 input inputMetaData: boolean (false)
 output: ?
 
 testName: loadPlugin_inValidInputDataUndefined
 input inputData: undefined
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: loadPlugin_inValidInputDataNaN
 input inputData: NaN
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: loadPlugin_inValidInputMetaDataUndefined
-input inputData: array<string>
+input inputData: array<string> (An array that could actually contain anything, depending on what the user entered)
 input inputMetaData: undefined
 output: ?
 
 testName: loadPlugin_inValidInputMetaDataNaN
-input inputData: array<string>
+input inputData: array<string> (An array that could actually contain anything, depending on what the user entered)
 input inputMetaData: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: loadPlugins_validData
-input inputData: array<string,array<string>>
-input inputMetaData: string
-output: array<boolean, boolean> (?)
+input inputData: array<string,array<string>> (An array that could actually contain anything, depending on what the user entered)
+input inputMetaData: string (Not used for this command)
+output: array<boolean, boolean> (An array with a boolean True or False value to indicate if the application should exit or not exit, followed by another boolean value to indicate if all the plugins were loaded successfully or not)
 
 testName: loadPlugins_inValidInputDataString
-input inputData: string
-input inputMetaData: string
+input inputData: string (dfxg24346dfg)
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: loadPlugins_inValidInputMetaDataString
-input inputData: array<string,array<string>>
-input inputMetaData: string
+input inputData: array<string,array<string>> (An array that could actually contain anything, depending on what the user entered)
+input inputMetaData: string (dfxg24346dfg)
 output: ?
 
 testName: loadPlugins_inValidInputDataInteger
 input inputData: integer (123)
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: loadPlugins_inValidInputDataBoolean
 input inputData: boolean (false)
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: loadPlugins_inValidInputMetaDataInteger
-input inputData: array<string,array<string>>
+input inputData: array<string,array<string>> (An array that could actually contain anything, depending on what the user entered)
 input inputMetaData: integer (123)
 output: ?
 
 testName: loadPlugins_inValidInputMetaDataBoolean
-input inputData: array<string,array<string>>
+input inputData: array<string,array<string>> (An array that could actually contain anything, depending on what the user entered)
 input inputMetaData: boolean (false)
 output: ?
 
 testName: loadPlugins_inValidInputDataUndefined
 input inputData: undefined
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: loadPlugins_inValidInputDataNaN
 input inputData: NaN
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: loadPlugins_inValidInputMetaDataUndefined
-input inputData: array<string,array<string>>
+input inputData: array<string,array<string>> (An array that could actually contain anything, depending on what the user entered)
 input inputMetaData: undefined
 output: ?
 
 testName: loadPlugins_inValidInputMetaDataNaN
-input inputData: array<string,array<string>>
+input inputData: array<string,array<string>> (An array that could actually contain anything, depending on what the user entered)
 input inputMetaData: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: loadPluginsFromRegistry_validData
-input inputData: string
-input inputMetaData: string
-output: array<boolean, boolean> (?)
+input inputData: string (Not used for this command)
+input inputMetaData: string (Not used for this command)
+output: array<boolean, boolean> (An array with a boolean True or False value to indicate if the application should exit or not exit, followed by another boolean value to indicate if all the plugins from the plugin registry were loaded successfully or not)
 
 testName: loadPluginsFromRegistry_inValidInputDataString
-input inputData: string
-input inputMetaData: string
+input inputData: string (dfxg24346dfg)
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: loadPluginsFromRegistry_inValidInputMetaDataString
-input inputData: string
-input inputMetaData: string
+input inputData: string (Not used for this command)
+input inputMetaData: string (dfxg24346dfg)
 output: ?
 
 testName: loadPluginsFromRegistry_inValidInputDataInteger
 input inputData: integer (123)
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: loadPluginsFromRegistry_inValidInputDataBoolean
 input inputData: boolean (false)
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: loadPluginsFromRegistry_inValidInputMetaDataInteger
-input inputData: string
+input inputData: string (Not used for this command)
 input inputMetaData: integer (123)
 output: ?
 
 testName: loadPluginsFromRegistry_inValidInputMetaDataBoolean
-input inputData: string
+input inputData: string (Not used for this command)
 input inputMetaData: boolean (false)
 output: ?
 
 testName: loadPluginsFromRegistry_inValidInputDataUndefined
 input inputData: undefined
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: loadPluginsFromRegistry_inValidInputDataNaN
 input inputData: NaN
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: loadPluginsFromRegistry_inValidInputMetaDataUndefined
-input inputData: string
+input inputData: string (Not used for this command)
 input inputMetaData: undefined
 output: ?
 
 testName: loadPluginsFromRegistry_inValidInputMetaDataNaN
-input inputData: string
+input inputData: string (Not used for this command)
 input inputMetaData: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: unloadPlugin_validData
-input inputData: array<string>
-input inputMetaData: string
-output: array<boolean, boolean> (?)
+input inputData: array<string> (An array that could actually contain anything, depending on what the user entered)
+input inputMetaData: string (Not used for this command)
+output: array<boolean, boolean> (An array with a boolean True or False value to indicate if the application should exit or not exit, followed by another boolean value to indicate if the specified plugin was unloaded successfully or not)
 
 testName: unloadPlugin_inValidInputDataString
-input inputData: string
-input inputMetaData: string
+input inputData: string (dfxg24346dfg)
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: unloadPlugin_inValidInputMetaDataString
-input inputData: array<string>
-input inputMetaData: string
+input inputData: array<string> (An array that could actually contain anything, depending on what the user entered)
+input inputMetaData: string (dfxg24346dfg)
 output: ?
 
 testName: unloadPlugin_inValidInputDataInteger
 input inputData: integer (123)
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: unloadPlugin_inValidInputDataBoolean
 input inputData: boolean (false)
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: unloadPlugin_inValidInputMetaDataInteger
-input inputData: array<string>
+input inputData: array<string> (An array that could actually contain anything, depending on what the user entered)
 input inputMetaData: integer (123)
 output: ?
 
 testName: unloadPlugin_inValidInputMetaDataBoolean
-input inputData: array<string>
+input inputData: array<string> (An array that could actually contain anything, depending on what the user entered)
 input inputMetaData: boolean (false)
 output: ?
 
 testName: unloadPlugin_inValidInputDataUndefined
 input inputData: undefined
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: unloadPlugin_inValidInputDataNaN
 input inputData: NaN
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: unloadPlugin_inValidInputMetaDataUndefined
-input inputData: array<string>
+input inputData: array<string> (An array that could actually contain anything, depending on what the user entered)
 input inputMetaData: undefined
 output: ?
 
 testName: unloadPlugin_inValidInputMetaDataNaN
-input inputData: array<string>
+input inputData: array<string> (An array that could actually contain anything, depending on what the user entered)
 input inputMetaData: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: unloadPlugins_validData
-input inputData: array<string,array<string>>
-input inputMetaData: string
-output: array<boolean, boolean> (?)
+input inputData: array<string,array<string>> (An array that could actually contain anything, depending on what the user entered)
+input inputMetaData: string (Not used for this command)
+output: array<boolean, boolean> (An array with a boolean True or False value to indicate if the application should exit or not exit, followed by another boolean value to indicate if the specified plugin was unloaded successfully or not)
 
 testName: unloadPlugins_inValidInputDataString
-input inputData: string
-input inputMetaData: string
+input inputData: string (dfxg24346dfg)
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: unloadPlugins_inValidInputMetaDataString
-input inputData: array<string,array<string>>
-input inputMetaData: string
+input inputData: array<string,array<string>> (An array that could actually contain anything, depending on what the user entered)
+input inputMetaData: string (dfxg24346dfg)
 output: ?
 
 testName: unloadPlugins_inValidInputDataInteger
 input inputData: integer (123)
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: unloadPlugins_inValidInputDataBoolean
 input inputData: boolean (false)
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: unloadPlugins_inValidInputMetaDataInteger
-input inputData: array<string,array<string>>
+input inputData: array<string,array<string>> (An array that could actually contain anything, depending on what the user entered)
 input inputMetaData: integer (123)
 output: ?
 
 testName: unloadPlugins_inValidInputMetaDataBoolean
-input inputData: array<string,array<string>>
+input inputData: array<string,array<string>> (An array that could actually contain anything, depending on what the user entered)
 input inputMetaData: boolean (false)
 output: ?
 
 testName: unloadPlugins_inValidInputDataUndefined
 input inputData: undefined
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: unloadPlugins_inValidInputDataNaN
 input inputData: NaN
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: unloadPlugins_inValidInputMetaDataUndefined
-input inputData: array<string,array<string>>
+input inputData: array<string,array<string>> (An array that could actually contain anything, depending on what the user entered)
 input inputMetaData: undefined
 output: ?
 
 testName: unloadPlugins_inValidInputMetaDataNaN
-input inputData: array<string,array<string>>
+input inputData: array<string,array<string>> (An array that could actually contain anything, depending on what the user entered)
 input inputMetaData: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: unloadAllPlugins_validData
-input inputData: string
-input inputMetaData: string
-output: array<boolean, boolean> (?)
+input inputData: string (Not used for this command)
+input inputMetaData: string (Not used for this command)
+output: array<boolean, boolean> (An array with a boolean True or False value to indicate if the application should exit or not exit, followed by another boolean value to indicate if all the plugins were unloaded successfully or not)
 
 testName: unloadAllPlugins_inValidInputDataString
-input inputData: string
-input inputMetaData: string
+input inputData: string (dfxg24346dfg)
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: unloadAllPlugins_inValidInputMetaDataString
-input inputData: string
-input inputMetaData: string
+input inputData: string (Not used for this command)
+input inputMetaData: string (dfxg24346dfg)
 output: ?
 
 testName: unloadAllPlugins_inValidInputDataInteger
 input inputData: integer (123)
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: unloadAllPlugins_inValidInputDataBoolean
 input inputData: boolean (false)
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: unloadAllPlugins_inValidInputMetaDataInteger
-input inputData: string
+input inputData: string (Not used for this command)
 input inputMetaData: integer (123)
 output: ?
 
 testName: unloadAllPlugins_inValidInputMetaDataBoolean
-input inputData: string
+input inputData: string (Not used for this command)
 input inputMetaData: boolean (false)
 output: ?
 
 testName: unloadAllPlugins_inValidInputDataUndefined
 input inputData: undefined
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: unloadAllPlugins_inValidInputDataNaN
 input inputData: NaN
-input inputMetaData: string
+input inputMetaData: string (Not used for this command)
 output: ?
 
 testName: unloadAllPlugins_inValidInputMetaDataUndefined
-input inputData: string
+input inputData: string (Not used for this command)
 input inputMetaData: undefined
 output: ?
 
 testName: unloadAllPlugins_inValidInputMetaDataNaN
-input inputData: string
+input inputData: string (Not used for this command)
 input inputMetaData: NaN
 output: ?
