@@ -2,32 +2,32 @@ Description: Test plan for queue.js
 
 --------------------------------------------------------------------------------
 testName: initQueue_validData
-input queueNameSpace: string (?)
+input queueNameSpace: string (The namespace the queue array should be created under)
 output: void
 
 testName: initQueue_inValidQueueNameSpaceString
 input queueNameSpace: string (dfxg24346dfg)
-output: void
+output: ?
 
 testName: initQueue_inValidQueueNameSpaceInteger
 input queueNameSpace: integer (123)
-output: void
+output: ?
 
 testName: initQueue_inValidQueueNameSpaceBoolean
 input queueNameSpace: boolean (false)
-output: void
+output: ?
 
 testName: initQueue_inValidQueueNameSpaceUndefined
 input queueNameSpace: undefined
-output: void
+output: ?
 
 testName: initQueue_inValidQueueNameSpaceNaN
 input queueNameSpace: NaN
-output: void
+output: ?
 --------------------------------------------------------------------------------
 testName: dequeue_validData
-input queueNameSpace: string (?)
-output: string (?)
+input queueNameSpace: string (The namespace the queue array should be dequeued from)
+output: string (The item at the front of the queue and removes it from the queue)
 
 testName: dequeue_inValidQueueNameSpaceString
 input queueNameSpace: string (dfxg24346dfg)
@@ -50,118 +50,118 @@ input queueNameSpace: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: enqueue_validData
-input queueNameSpace: string (?)
-input value: string (?)
-output: void
+input queueNameSpace: string (The namespace the queue array should have a value added to)
+input value: string (The value that should be added to the specified queue array)
+output: ?
 
 testName: enqueue_inValidQueueNameSpaceString
 input queueNameSpace: string (dfxg24346dfg)
-input value: string (?)
-output: void
+input value: string (The value that should be added to the specified queue array)
+output: ?
 
 testName: enqueue_inValidValueString
-input queueNameSpace: string (?)
-input value: string (&)
-output: void
+input queueNameSpace: string (The namespace the queue array should have a value added to)
+input value: string (dfxg24346dfg)
+output: ?
 
 testName: enqueue_inValidQueueNameSpaceInteger
 input queueNameSpace: integer (123)
-input value: string (?)
-output: void
+input value: string (The value that should be added to the specified queue array)
+output: ?
 
 testName: enqueue_inValidQueueNameSpaceBoolean
 input queueNameSpace: boolean (false)
-input value: string (?)
-output: void
+input value: string (The value that should be added to the specified queue array)
+output: ?
 
 testName: enqueue_inValidValueInteger
-input queueNameSpace: string (?)
+input queueNameSpace: string (The namespace the queue array should have a value added to)
 input value: integer (123)
-output: void
+output: ?
 
 testName: enqueue_inValidValueBoolean
-input queueNameSpace: string (?)
+input queueNameSpace: string (The namespace the queue array should have a value added to)
 input value: boolean (false)
-output: void
+output: ?
 
 testName: enqueue_inValidQueueNameSpaceUndefined
 input queueNameSpace: undefined
-input value: string (?)
-output: void
+input value: string (The value that should be added to the specified queue array)
+output: ?
 
 testName: enqueue_inValidQueueNameSpaceNaN
 input queueNameSpace: NaN
-input value: string (?)
-output: void
+input value: string (The value that should be added to the specified queue array)
+output: ?
 
 testName: enqueue_inValidValueUndefined
-input queueNameSpace: string (?)
+input queueNameSpace: string (The namespace the queue array should have a value added to)
 input value: undefined
-output: void
+output: ?
 
 testName: enqueue_inValidValueNaN
-input queueNameSpace: string (?)
+input queueNameSpace: string (The namespace the queue array should have a value added to)
 input value: NaN
-output: void
+output: ?
 --------------------------------------------------------------------------------
 testName: enqueueFront_validData
-input queueNameSpace: string (?)
-input value: string|array<string> (?)
+input queueNameSpace: string (The namespace the queue array should have a value added to)
+input value: string|array<string> (The value that should be added to the specified queue array, it could be a string value or an array of string values)
 output: void
 
 testName: enqueueFront_inValidQueueNameSpaceString
 input queueNameSpace: string (dfxg24346dfg)
-input value: string|array<string> (?)
-output: void
+input value: string|array<string> (The value that should be added to the specified queue array, it could be a string value or an array of string values)
+output: ?
 
 testName: enqueueFront_inValidValueString
-input queueNameSpace: string (?)
-input value: string (&)
-output: void
+input queueNameSpace: string (The namespace the queue array should have a value added to)
+input value: string (dfxg24346dfg)
+output: ?
 
 testName: enqueueFront_inValidQueueNameSpaceInteger
 input queueNameSpace: integer (123)
-input value: string|array<string> (?)
-output: void
+input value: string|array<string> (The value that should be added to the specified queue array, it could be a string value or an array of string values)
+output: ?
 
 testName: enqueueFront_inValidQueueNameSpaceBoolean
 input queueNameSpace: boolean (false)
-input value: string|array<string> (?)
-output: void
+input value: string|array<string> (The value that should be added to the specified queue array, it could be a string value or an array of string values)
+output: ?
 
 testName: enqueueFront_inValidValueInteger
-input queueNameSpace: string (?)
+input queueNameSpace: string (The namespace the queue array should have a value added to)
 input value: integer (123)
-output: void
+output: ?
 
 testName: enqueueFront_inValidValueBoolean
-input queueNameSpace: string (?)
+input queueNameSpace: string (The namespace the queue array should have a value added to)
 input value: boolean (false)
-output: void
+output: ?
 
 testName: enqueueFront_inValidQueueNameSpaceUndefined
 input queueNameSpace: undefined
-input value: string|array<string> (?)
-output: void
+input value: string|array<string> (The value that should be added to the specified queue array, it could be a string value or an array of string values)
+output: ?
 
 testName: enqueueFront_inValidQueueNameSpaceNaN
 input queueNameSpace: NaN
-input value: string|array<string> (?)
-output: void
+input value: string|array<string> (The value that should be added to the specified queue array, it could be a string value or an array of string values)
+output: ?
 
 testName: enqueueFront_inValidValueUndefined
-input queueNameSpace: string (?)
+input queueNameSpace: string (The namespace the queue array should have a value added to)
 input value: undefined
-output: void
+output: ?
 
 testName: enqueueFront_inValidValueNaN
-input queueNameSpace: string (?)
+input queueNameSpace: string (The namespace the queue array should have a value added to)
 input value: NaN
-output: void
+output: ?
 --------------------------------------------------------------------------------
 testName: isEmpty_validData
-input queueNameSpace: string (?)
-output: boolean (?)
+input queueNameSpace: string (The namespace the queue array should have a value added to)
+output: boolean (True or False to indicate if the queue is empty or not empty)
 
 testName: isEmpty_inValidQueueNameSpaceString
 input queueNameSpace: string (dfxg24346dfg)
@@ -184,8 +184,8 @@ input queueNameSpace: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: queueFront_validData
-input queueNameSpace: string (?)
-output: string (?)
+input queueNameSpace: string (The namespace the queue array from which the front of the queue should be found)
+output: string (The entity at the front of the queue)
 
 testName: queueFront_inValidQueueNameSpaceString
 input queueNameSpace: string (dfxg24346dfg)
@@ -208,8 +208,8 @@ input queueNameSpace: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: queueSize_validData
-input queueNameSpace: string (?)
-output: integer (?)
+input queueNameSpace: string (The namespace of the queue array from which we should get the current queue size)
+output: integer (A count for the number of entities in the specified queue)
 
 testName: queueSize_inValidQueueNameSpaceString
 input queueNameSpace: string (dfxg24346dfg)
@@ -232,8 +232,8 @@ input queueNameSpace: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: queueContents_validData
-input queueNameSpace: string (?)
-output: array<string> (?)
+input queueNameSpace: string (The namespace of the queue who's contents should be returned as an array)
+output: array<string> (The entire queue and it's contents as an array)
 
 testName: queueContents_inValidQueueNameSpaceString
 input queueNameSpace: string (dfxg24346dfg)
@@ -256,25 +256,25 @@ input queueNameSpace: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: queuePrint_validData
-input queueNameSpace: string (?)
+input queueNameSpace: string (The namespace that should be used to print out the contents of the queue on the D-data structure)
 output: void
 
 testName: queuePrint_inValidQueueNameSpaceString
 input queueNameSpace: string (dfxg24346dfg)
-output: void
+output: ?
 
 testName: queuePrint_inValidQueueNameSpaceInteger
 input queueNameSpace: integer (123)
-output: void
+output: ?
 
 testName: queuePrint_inValidQueueNameSpaceBoolean
 input queueNameSpace: boolean (false)
-output: void
+output: ?
 
 testName: queuePrint_inValidQueueNameSpaceUndefined
 input queueNameSpace: undefined
-output: void
+output: ?
 
 testName: queuePrint_inValidQueueNameSpaceNaN
 input queueNameSpace: NaN
-output: void
+output: ?

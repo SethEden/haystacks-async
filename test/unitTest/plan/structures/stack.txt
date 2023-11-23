@@ -2,111 +2,111 @@ Description: Test plan for stack.js
 
 --------------------------------------------------------------------------------
 testName: initStack_validData
-input stackNameSpace: string (?)
+input stackNameSpace: string (The namespace the Stack array should be created under)
 output: void
 
 testName: initStack_inValidStackNameSpaceString
 input stackNameSpace: string (dfxg24346dfg)
-output: void
+output: ?
 
 testName: initStack_inValidStackNameSpaceInteger
 input stackNameSpace: integer (123)
-output: void
+output: ?
 
 testName: initStack_inValidStackNameSpaceBoolean
 input stackNameSpace: boolean (false)
-output: void
+output: ?
 
 testName: initStack_inValidStackNameSpaceUndefined
 input stackNameSpace: undefined
-output: void
+output: ?
 
 testName: initStack_inValidStackNameSpaceNaN
 input stackNameSpace: NaN
-output: void
+output: ?
 --------------------------------------------------------------------------------
 testName: clearStack_validData
-input stackNameSpace: string (?)
+input stackNameSpace: string (The namespace for the stack that should be cleared)
 output: void
 
 testName: clearStack_inValidStackNameSpaceString
 input stackNameSpace: string (dfxg24346dfg)
-output: void
+output: ?
 
 testName: clearStack_inValidStackNameSpaceInteger
 input stackNameSpace: integer (123)
-output: void
+output: ?
 
 testName: clearStack_inValidStackNameSpaceBoolean
 input stackNameSpace: boolean (false)
-output: void
+output: ?
 
 testName: clearStack_inValidStackNameSpaceUndefined
 input stackNameSpace: undefined
-output: void
+output: ?
 
 testName: clearStack_inValidStackNameSpaceNaN
 input stackNameSpace: NaN
-output: void
+output: ?
 --------------------------------------------------------------------------------
 testName: push_validData
-input stackNameSpace: string (?)
-input value: string|integer|boolean|object|array (?)
+input stackNameSpace: string (The namespace of the stack that should be used to push the data onto)
+input value: string|integer|boolean|object|array (The data that should be pushed on the stack)
 output: void
 
 testName: push_inValidStackNameSpaceString
 input stackNameSpace: string (dfxg24346dfg)
-input value: string|integer|boolean|object|array (?)
-output: void
+input value: string|integer|boolean|object|array (The data that should be pushed on the stack)
+output: ?
 
 testName: push_inValidValueString
-input stackNameSpace: string (?)
-input value: string (&)
-output: void
+input stackNameSpace: string (The namespace of the stack that should be used to push the data onto)
+input value: string (dfxg24346dfg)
+output: ?
 
 testName: push_inValidStackNameSpaceInteger
 input stackNameSpace: integer (123)
-input value: string|integer|boolean|object|array (?)
-output: void
+input value: string|integer|boolean|object|array (The data that should be pushed on the stack)
+output: ?
 
 testName: push_inValidStackNameSpaceBoolean
 input stackNameSpace: boolean (false)
-input value: string|integer|boolean|object|array (?)
-output: void
+input value: string|integer|boolean|object|array (The data that should be pushed on the stack)
+output: ?
 
 testName: push_inValidValueInteger
-input stackNameSpace: string (?)
+input stackNameSpace: string (The namespace of the stack that should be used to push the data onto)
 input value: integer (123)
-output: void
+output: ?
 
 testName: push_inValidValueBoolean
-input stackNameSpace: string (?)
+input stackNameSpace: string (The namespace of the stack that should be used to push the data onto)
 input value: boolean (false)
-output: void
+output: ?
 
 testName: push_inValidStackNameSpaceUndefined
 input stackNameSpace: undefined
-input value: string|integer|boolean|object|array (?)
-output: void
+input value: string|integer|boolean|object|array (The data that should be pushed on the stack)
+output: ?
 
 testName: push_inValidStackNameSpaceNaN
 input stackNameSpace: NaN
-input value: string|integer|boolean|object|array (?)
-output: void
+input value: string|integer|boolean|object|array (The data that should be pushed on the stack)
+output: ?
 
 testName: push_inValidValueUndefined
-input stackNameSpace: string (?)
+input stackNameSpace: string (The namespace of the stack that should be used to push the data onto)
 input value: undefined
-output: void
+output: ?
 
 testName: push_inValidValueNaN
-input stackNameSpace: string (?)
+input stackNameSpace: string (The namespace of the stack that should be used to push the data onto)
 input value: NaN
-output: void
+output: ?
 --------------------------------------------------------------------------------
 testName: pop_validData
-input stackNameSpace: string (?)
-output: string|integer|boolean|object|array (?)
+input stackNameSpace: string (The namespace of the stack that should be used to pop the data and return it)
+output: string|integer|boolean|object|array (Whatever data was stored at the top of the stack)
 
 testName: pop_inValidStackNameSpaceString
 input stackNameSpace: string (dfxg24346dfg)
@@ -129,8 +129,8 @@ input stackNameSpace: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: isEmpty_validData
-input stackNameSpace: string (?)
-output: boolean (?)
+input stackNameSpace: string (The namespace of the stack that should be checked if it is empty or not empty)
+output: boolean (True or False to indicate if the specified stack is empty or not empty)
 
 testName: isEmpty_inValidStackNameSpaceString
 input stackNameSpace: string (dfxg24346dfg)
@@ -153,8 +153,8 @@ input stackNameSpace: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: length_validData
-input stackNameSpace: string (?)
-output: integer (?)
+input stackNameSpace: string (The namespace of the stack that should return a length property)
+output: integer (A value that represents a count of the number of entities on the specified stack)
 
 testName: length_inValidStackNameSpaceString
 input stackNameSpace: string (dfxg24346dfg)
@@ -177,87 +177,87 @@ input stackNameSpace: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: contains_validData
-input stackNameSpace: string (?)
-input value: string|integer|boolean|object|array (?)
-output: boolean (?)
+input stackNameSpace: string (The namespace of the stack that should be searched for the specified value)
+input value: string|integer|boolean|object|array (The value/object that should be searched to see if it exists on the specified stack or does not exist)
+output: boolean (True or False to indicate if the value/object exists or does not exist)
 
 testName: contains_inValidStackNameSpaceString
 input stackNameSpace: string (dfxg24346dfg)
-input value: string|integer|boolean|object|array (?)
+string|integer|boolean|object|array (The value/object that should be searched to see if it exists on the specified stack or does not exist)
 output: ?
 
 testName: contains_inValidValueString
-input stackNameSpace: string (?)
-input value: string (&)
+input stackNameSpace: string (The namespace of the stack that should be searched for the specified value)
+input value: string (dfxg24346dfg)
 output: ?
 
 testName: contains_inValidStackNameSpaceInteger
 input stackNameSpace: integer (123)
-input value: string|integer|boolean|object|array (?)
+string|integer|boolean|object|array (The value/object that should be searched to see if it exists on the specified stack or does not exist)
 output: ?
 
 testName: contains_inValidStackNameSpaceBoolean
 input stackNameSpace: boolean (false)
-input value: string|integer|boolean|object|array (?)
+string|integer|boolean|object|array (The value/object that should be searched to see if it exists on the specified stack or does not exist)
 output: ?
 
 testName: contains_inValidValueInteger
-input stackNameSpace: string (?)
+input stackNameSpace: string (The namespace of the stack that should be searched for the specified value)
 input value: integer (123)
 output: ?
 
 testName: contains_inValidValueBoolean
-input stackNameSpace: string (?)
+input stackNameSpace: string (The namespace of the stack that should be searched for the specified value)
 input value: boolean (false)
 output: ?
 
 testName: contains_inValidStackNameSpaceUndefined
 input stackNameSpace: undefined
-input value: string|integer|boolean|object|array (?)
+string|integer|boolean|object|array (The value/object that should be searched to see if it exists on the specified stack or does not exist)
 output: ?
 
 testName: contains_inValidStackNameSpaceNaN
 input stackNameSpace: NaN
-input value: string|integer|boolean|object|array (?)
+string|integer|boolean|object|array (The value/object that should be searched to see if it exists on the specified stack or does not exist)
 output: ?
 
 testName: contains_inValidValueUndefined
-input stackNameSpace: string (?)
+input stackNameSpace: string (The namespace of the stack that should be searched for the specified value)
 input value: undefined
 output: ?
 
 testName: contains_inValidValueNaN
-input stackNameSpace: string (?)
+input stackNameSpace: string (The namespace of the stack that should be searched for the specified value)
 input value: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: print_validData
-input stackNameSpace: string (?)
+input stackNameSpace: string (The namespace that should be used to print out the contents of the stack on the D-data structure)
 output: void
 
 testName: print_inValidStackNameSpaceString
 input stackNameSpace: string (dfxg24346dfg)
-output: void
+output: ?
 
 testName: print_inValidStackNameSpaceInteger
 input stackNameSpace: integer (123)
-output: void
+output: ?
 
 testName: print_inValidStackNameSpaceBoolean
 input stackNameSpace: boolean (false)
-output: void
+output: ?
 
 testName: print_inValidStackNameSpaceUndefined
 input stackNameSpace: undefined
-output: void
+output: ?
 
 testName: print_inValidStackNameSpaceNaN
 input stackNameSpace: NaN
-output: void
+output: ?
 --------------------------------------------------------------------------------
 testName: getStackContents_validData
-input stackNameSpace: string (?)
-output: array<string> (?)
+input stackNameSpace: string (The namespace that should be used to return the contents of the stack on the D-data structure)
+output: array<string> (The contents of the stack as specified by the input parameter stack namespace)
 
 testName: getStackContents_inValidStackNameSpaceString
 input stackNameSpace: string (dfxg24346dfg)
