@@ -3,7 +3,7 @@ Description: Test plan for main.js
 --------------------------------------------------------------------------------
 testName: initFramework_validData
 input clientConfiguration: object (A configuration data object that contains all the data needed to bootstrap the framework for a client application)
-output: void
+output: object (The clientConfiguration data object that is used to initialize the haystacks-async framework)
 
 testName: initFramework_inValidClientConfigurationString
 input clientConfiguration: string (dfxg24346dfg)

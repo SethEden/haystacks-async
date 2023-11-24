@@ -15,7 +15,8 @@
     "test": "node ./test/testHarness/src/testHarness.js",
     "start": "node ./src/main.js",
     "vers": "standard-version -m \"chore(release) version %s \"",
-    "docs": "jsdoc -c jsdoc.json"
+    "docs": "jsdoc -c jsdoc.json",
+    "unitTest": "node --experimental-vm-modules node_modules/jest/bin/jest.js --watchAll"
   },
   "repository": {
     "type": "git",

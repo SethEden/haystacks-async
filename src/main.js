@@ -43,7 +43,7 @@ const {NODE_ENV} = process.env;
  * @description Initializes the framework systems.
  * @param {object} clientConfiguration A configuration data object that contains
  * all the data needed to bootstrap the framework for a client application.
- * @return {void}
+ * @return {object} The clientConfiguration data object that is used to initialize the haystacks-async framework.
  * @author Seth Hollingsead
  * @date 2021/10/07
  */
@@ -126,7 +126,10 @@ async function initFramework(clientConfiguration) {
   await loggers.consoleLog(namespacePrefix + functionName, msg.cAllLoadedDataIs + JSON.stringify(D));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   // console.log('All loaded data is: ' + JSON.stringify(D));
+  // clientConfiguration is:
+  // console.log(msg.cclientConfigurationIs + JSON.stringify(clientConfiguration));
   // console.log(`END ${namespacePrefix}${functionName} function`);
+  return clientConfiguration;
 }
 
 /**
