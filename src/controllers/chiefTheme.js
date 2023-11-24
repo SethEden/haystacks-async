@@ -49,6 +49,9 @@ const namespacePrefix = wrd.cframework + bas.cDot + wrd.ccontrollers + bas.cDot 
  * @param {object} themeData A JSON object that contains the externally defined theme data names and data paths.
  * @param {string} contextName A context name that indicates where the data is coming from.
  * Ex: Application, Plugins
+ * @return {boolean} True or False to indicate if the merge was successful or not.
+ * @author Seth Hollingsead
+ * @date 2022/10/27
  */
 async function addThemeData(themeData, contextName) {
   let functionName = addThemeData.name;

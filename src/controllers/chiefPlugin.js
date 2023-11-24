@@ -33,7 +33,7 @@ const namespacePrefix = wrd.cframework + bas.cDot + wrd.ccontrollers + bas.cDot 
 /**
  * @function loadPluginRegistryData
  * @description Loads the plugin registry meta data which includes paths to plugins.
- * @param {string} pluginRegistryPath 
+ * @param {string} pluginRegistryPath This is the path to host application plugin registry file.
  * @return {object} A JSON object loaded from the specified path with the plugin paths and plugin metaData.
  * @author Seth Hollingsead
  * @date 2022/09/13
@@ -53,7 +53,7 @@ async function loadPluginRegistryData(pluginRegistryPath) {
 /**
  * @function persistPluginRegistryToDataStructure
  * @description Saves the plugin registry data to the D-data structure.
- * @param {object} pluginRegistryData
+ * @param {object} pluginRegistryData This is the data from host application plugin registry file.
  * @return {boolean} True or False to indicate if the persistense was successful or not.
  * @author Seth Hollingsead
  * @date 2022/09/13

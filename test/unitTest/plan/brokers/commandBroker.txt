@@ -2,220 +2,514 @@ description: Test plan for commandBroker.js
 
 
 testName: bootStrapCommands_validData
-input: undefined
 output: ?
-
-testName: bootStrapCommands_inValidString
-input: string (464gsdsfae8f46)
+NOTE: Test initialization of the commands date structure.
+--------------------------------------------------------------------------------
+testName: resetCommands_validData
 output: ?
-
-testName: bootStrapCommands_inValidNumber
-input: integer (546)
-output: ?
-
-testName: bootStrapCommands_inValidBoolean
-input: boolean (false)
-output: ?
+NOTE: Test initialization of the commands date structure.
 --------------------------------------------------------------------------------
 testName: addClientCommands_validData
-input: array<object>
-output: D[wrd.cCommands] - objects added
+input clientCommands: array<object> (The client rules that should be merged with the system rules)
+output: void
 
-testName: addClientCommands_inValidString
-input: string (464gsdsfae8f46)
+testName: addClientCommands_inValidClientCommandsString
+input clientCommands: string (464gsdsfae8f46)
 output: ?
 
-testName: addClientCommands_inValidNumber
-input: integer (546)
+testName: addClientCommands_inValidClientCommandsNumber
+input clientCommands: integer (546)
 output: ?
 
-testName: addClientCommands_inValidBoolean
-input: boolean (false)
+testName: addClientCommands_inValidClientCommandsBoolean
+input clientCommands: boolean (false)
+output: ?
+
+testName: addClientCommands_inValidClientCommandsUndefined
+input clientCommands: undefined
+output: ?
+
+testName: addClientCommands_inValidClientCommandsNaN
+input clientCommands: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: addPluginCommands_validData
+input pluginName: string (The name of the current plugin these commands belong to)
+input pluginCommands: array<object> (The plugin commands that should be merged with the system commands)
+output: boolean (True or False to indicate if the merge was successful or not)
+
+testName: addPluginCommands_inValidPluginNameString
+input pluginName: string (464gsdsfae8f46)
+input pluginCommands: array<object> (The plugin commands that should be merged with the system commands)
+output: ?
+
+testName: addPluginCommands_inValidPluginCommandsString
+input pluginName: string (The name of the current plugin these commands belong to)
+input pluginCommands: string (464gsdsfae8f46)
+output: ?
+
+testName: addPluginCommands_inValidPluginNameNumber
+input pluginName: number (123)
+input pluginCommands: array<object> (The plugin commands that should be merged with the system commands)
+output: ?
+
+testName: addPluginCommands_inValidPluginNameBoolean
+input pluginName: boolean (false)
+input pluginComands: array<object> (The plugin commands that should be merged with the system commands)
+output: ?
+
+testName: addPluginCommands_inValidPluginCommandsNumber
+input pluginName: string (The name of the current plugin these commands belong to)
+input pluginCommands: number (123)
+output: ?
+
+testName: addPluginCommands_inValidPluginCommandsBoolean
+input pluginName: string (The name of the current plugin these commands belong to)
+input pluginCommands: boolean (false)
+output: ?
+
+testName: addPluginCommands_inValidPluginNameUndefined
+input pluginName: undefined
+input pluginCommands: array<object> (The plugin commands that should be merged with the system commands)
+output: ?
+
+testName: addPluginCommands_inValidPluginNameNaN
+input pluginName: NaN
+input pluginCommands: array<object> (The plugin commands that should be merged with the system commands)
+output: ?
+
+testName: addPluginCommands_inValidPluginCommandsUndefined
+input pluginName: string (The name of the current plugin these commands belong to)
+input pluginComands: undefined
+output: ?
+
+testName: addPluginCommands_inValidPluginCommandsUndefined
+input pluginName: string (The name of the current plugin these commands belong to)
+input pluginCommands: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: addPluginCommandAliases_validData
+input pluginName: string (The name of the current plugin these command aliases belong to)
+input pluginComandAliases: object (A JSON object that contains the plugin command aliases that should be merged with the system command aliases)
+output: boolean (?)
+
+testName: addPluginCommandAliases_inValidPluginNameString
+input pluginName: string (464gsdsfae8f46)
+input pluginCommandAliases: object (A JSON object that contains the plugin command aliases that should be merged with the system command aliases)
+output: ?
+
+testName: addPluginCommandAliases_inValidPluginCommandAliasesString
+input plguinName: string (The name of the current plugin these command aliases belong to)
+input pluginCommandAliases: string (464gsdsfae8f46)
+output: ?
+
+testName: addPluginCommandAliases_inValidPluginNameNumber
+input pluginName: number (123)
+input pluginCommandAliases: object (A JSON object that contains the plugin command aliases that should be merged with the system command aliases)
+output: ?
+
+testName: addPluginCommandAliases_inValidPluginNameBoolean
+input pluginName: boolean (false)
+input pluginCommandAliases: object (A JSON object that contains the plugin command aliases that should be merged with the system command aliases)
+output: ?
+
+testName: addPluginCommandAliases_inValidPluginCommandAliasesNumber
+input pluginName: string (The name of the current plugin these command aliases belong to)
+input pluginCommandAliases: number (123)
+output: ?
+
+testName: addPluginCommandAliases_inValidPluginCommandAliasesBoolean
+input pluginName: string (The name of the current plugin these command aliases belong to)
+input pluginCommandAliases: boolean (false)
+output: ?
+
+testName: addPluginCommandAliases_inValidPluginNameUndefined
+input pluginName: undefined
+input pluginCommandAliases: object (A JSON object that contains the plugin command aliases that should be merged with the system command aliases)
+output: ?
+
+testName: addPluginCommandAliases_inValidPluginNameNaN
+input pluginName: NaN
+input pluginCommandAliases: object (A JSON object that contains the plugin command aliases that should be merged with the system command aliases)
+output: ?
+
+testName: addPluginCommandAliases_inValidPluginCommandAliasesUndefined
+input pluginName: string (The name of the current plugin these command aliases belong to)
+input pluginCommandAliases: undefined
+output: ?
+
+testName: addPluginCommandAliases_inValidPluginCommandAliasesNaN
+input pluginName: string (The name of the current plugin these command aliases belong to)
+input pluginCommandAliases: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: getValidCommand_validData
-input commandString: string (commandSequencer name,application,true version about)
-input commandDelimiter: string (  - space)
+input commandString: string (The command string that should be parsed for a valid command)
+input commandDelimiter: string (The delimiter that should be used to parse the command line)
 output: commandSequencer name,application,true version about
 
-testName: getValidCommand_inValidString
+testName: getValidCommand_inValidCommandStringString
 input commandString: string (464gsdsfae8f46)
-input commandDelimiter: string (  - space)
-output: false
+input commandDelimiter: string (The delimiter that should be used to parse the command line)
+output: ?
 
 testName: getValidCommand_inValidDelimiterString
-input commandString: string (commandSequencer name,application,true version about)
-input commandDelimiter: string (&)
-output: false?
+input commandString: string (The command string that should be parsed for a valid command)
+input commandDelimiter: string (464gsdsfae8f46)
+output: ?
 
-testName: getValidCommand_inValidNumber
+testName: getValidCommand_inValidCommandStringNumber
 input commandString: integer (546)
-input commandDelimiter: string (  - space)
-output: false
+input commandDelimiter: string (The delimiter that should be used to parse the command line)
+output: ?
 
-testName: getValidCommand_inValidBoolean
+testName: getValidCommand_inValidCommandStringBoolean
 input commandString: boolean (false)
-input commandDelimiter: string (  - space)
-output: false
+input commandDelimiter: string (The delimiter that should be used to parse the command line)
+output: ?
+
+testName: getValidCommand_inValidDelimiterNumber
+input commandString: string (The command string that should be parsed for a valid command)
+input commandDelimiter: integer (123)
+output: ?
+
+testName: getValidCommand_inValidDelimiterBoolean
+input commandString: string (The command string that should be parsed for a valid command)
+input commandDelimiter: boolean (false)
+output: ?
+
+testName: getValidCommand_inValidCommandStringUndefined
+input commandString: undefined
+input commandDelimiter: string (The delimiter that should be used to parse the command line)
+output: ?
+
+testName: getValidCommand_inValidCommandStringNaN
+input commandString: NaN
+input commandDelimiter: string (The delimiter that should be used to parse the command line)
+output: ?
+
+testName: getValidCommand_inValidDelimiterUndefined
+input commandString: string (The command string that should be parsed for a valid command)
+input commandDelimiter: undefined
+output: ?
+
+testName: getValidCommand_inValidDelimiterNaN
+input commandString: string (The command string that should be parsed for a valid command)
+input commandDelimiter: NaN
+output: ?
 --------------------------------------------------------------------------------
 testName: countMatchingCommandAlias_validData
 input commandAliasData: object (The command alias data that searched recursively for the specified command alias)
 input commandAliasName: string (The command alias name/string that searched for and counted when matches are found)
-output: integer
+output: integer (?)
 
 testName: countMatchingCommandAlias_inValidCommandAliasDataString
 input commandAliasData: string (464gsdsfae8f46)
 input commandAliasName: string (The command alias name/string that searched for and counted when matches are found)
-output: false
+output: ?
 
 testName: countMatchingCommandAlias_inValidCommandAliasNameString
 input commandAliasData: object (The command alias data that searched recursively for the specified command alias)
-input commandAliasName: string (&)
-output: false?
+input commandAliasName: string (464gsdsfae8f46)
+output: ?
 
 testName: countMatchingCommandAlias_inValidCommandAliasDataNumber
 input commandAliasData: integer (546)
 input commandAliasName: string (The command alias name/string that searched for and counted when matches are found)
-output: false
+output: ?
 
 testName: countMatchingCommandAlias_inValidCommandAliasDataBoolean
 input commandAliasData: boolean (false)
 input commandAliasName: string (The command alias name/string that searched for and counted when matches are found)
-output: false
+output: ?
 
 testName: countMatchingCommandAlias_inValidCommandAliasNameNumber
 input commandAliasData: object (The command alias data that searched recursively for the specified command alias)
 input commandAliasName: integer (546)
-output: false
+output: ?
 
 testName: countMatchingCommandAlias_inValidCommandAliasNameBoolean
 input commandAliasData: object (The command alias data that searched recursively for the specified command alias)
 input commandAliasName: boolean (false)
-output: false
+output: ?
+
+testName: countMatchingCommandAlias_inValidCommandAliasDataUndefined
+input commandAliasData: undefined
+input commandAliasName: string (The command alias name/string that searched for and counted when matches are found)
+output: ?
+
+testName: countMatchingCommandAlias_inValidCommandAliasDataNaN
+input commandAliasData: NaN
+input commandAliasName: string (The command alias name/string that searched for and counted when matches are found)
+output: ?
+
+testName: countMatchingCommandAlias_inValidCommandAliasNameUndefined
+input commandAliasData: object (The command alias data that searched recursively for the specified command alias)
+input commandAliasName: undefined
+output: ?
+
+testName: countMatchingCommandAlias_inValidCommandAliasNameNaN
+input commandAliasData: object (The command alias data that searched recursively for the specified command alias)
+input commandAliasName: NaN
+output: ?
 --------------------------------------------------------------------------------
 testName: searchCommandAlias_validData
 input commandAliasData: object (The command alias data that searched recursively for the specified command alias)
 input commandAliasName: string (The command alias name/string that found)
-output: object
+output: object (?)
 
 testName: searchCommandAlias_inValidCommandAliasDataString
 input commandAliasData: string (464gsdsfae8f46)
 input commandAliasName: string (The command alias name/string that found)
-output: false
+output: ?
 
 testName: searchCommandAlias_inValidCommandAliasNameString
 input commandAliasData: object (The command alias data that searched recursively for the specified command alias)
-input commandAliasName: string (&)
-output: false?
+input commandAliasName: string (464gsdsfae8f46)
+output: ?
 
 testName: searchCommandAlias_inValidCommandAliasDataNumber
 input commandAliasData: integer (546)
 input commandAliasName: string (The command alias name/string that found)
-output: false
+output: ?
 
 testName: searchCommandAlias_inValidCommandAliasDataBoolean
 input commandAliasData: boolean (false)
 input commandAliasName: string (The command alias name/string that found)
-output: false
+output: ?
 
 testName: searchCommandAlias_inValidCommandAliasNameNumber
 input commandAliasData: object (The command alias data that searched recursively for the specified command alias)
 input commandAliasName: integer (546)
-output: false
+output: ?
 
 testName: searchCommandAlias_inValidCommandAliasNameBoolean
 input commandAliasData: object (The command alias data that searched recursively for the specified command alias)
 input commandAliasName: boolean (false)
-output: false
+output: ?
+
+testName: searchCommandAlias_inValidCommandAliasDataUndefined
+input commandAliasData: undefined
+input commandAliasName: string (The command alias name/string that found)
+output: ?
+
+testName: searchCommandAlias_inValidCommandAliasDataNaN
+input commandAliasData: NaN
+input commandAliasName: string (The command alias name/string that found)
+output: ?
+
+testName: searchCommandAlias_inValidCommandAliasNameUndefined
+input commandAliasData: undefined
+input commandAliasName: integer (546)
+output: ?
+
+testName: searchCommandAlias_inValidCommandAliasNameNaN
+input commandAliasData: object (The command alias data that searched recursively for the specified command alias)
+input commandAliasName: NaN
+output: ?
 --------------------------------------------------------------------------------
 testName: getAllCommandAliasData_validData
-input: commandString: object
-output: true
+input commandAliasDataStructure: object (?)
+output: array<string>|boolean (?)
 
-testName: getAllCommandAliasData_inValidString
-input: string (464gsdsfae8f46)
-output: true
+testName: getAllCommandAliasData_inValidCommandAliasDataStructureString
+input commandAliasDataStructure: string (464gsdsfae8f46)
+output: ?
 
-testName: getAllCommandAliasData_inValidNumber
-input: integer (546)
-output: true
+testName: getAllCommandAliasData_inValidCommandAliasDataStructureNumber
+input commandAliasDataStructure: integer (546)
+output: ?
 
-testName: getAllCommandAliasData_inValidBoolean
-input: boolean (false)
-output: true
+testName: getAllCommandAliasData_inValidCommandAliasDataStructureBoolean
+input commandAliasDataStructure: boolean (false)
+output: ?
+
+testName: getAllCommandAliasData_inValidCommandAliasDataStructureUndefined
+input commandAliasDataStructure: undefined
+output: ?
+
+testName: getAllCommandAliasData_inValidCommandAliasDataStructureNaN
+input commandAliasDataStructure: NaN
+output: ?
 --------------------------------------------------------------------------------
 testName: getCommandNamespaceDataObject_validData
 input commandAliasDataStructure: object (The command alias data structure that recursively searched for the namespace specified)
 input namespaceToFind: string (The namespace to look for in the command alias metaData data structure)
-output: object
+output: object|boolean (?)
 
 testName: getCommandNamespaceDataObject_inValidCommandAliasDataStructureString
 input commandAliasDataStructure: string (464gsdsfae8f46)
 input namespaceToFind: string (The namespace to look for in the command alias metaData data structure)
-output: false
+output: ?
 
 testName: getCommandNamespaceDataObject_inValidNamespaceToFindString
 input commandAliasDataStructure: object (The command alias data structure that recursively searched for the namespace specified)
-input namespaceToFind: string (&)
-output: false?
+input namespaceToFind: string (464gsdsfae8f46)
+output: ?
 
 testName: getCommandNamespaceDataObject_inValidCommandAliasDataStructureNumber
 input commandAliasDataStructure: integer (546)
 input namespaceToFind: string (The namespace to look for in the command alias metaData data structure)
-output: false
+output: ?
 
 testName: getCommandNamespaceDataObject_inValidCommandAliasDataStructureBoolean
 input commandAliasDataStructure: boolean (false)
 input namespaceToFind: string (The namespace to look for in the command alias metaData data structure)
-output: false
+output: ?
 
 testName: getCommandNamespaceDataObject_inValidNamespaceToFindNumber
 input commandAliasDataStructure: object (The command alias data structure that recursively searched for the namespace specified)
 input namespaceToFind: integer (546)
-output: false
+output: ?
 
 testName: getCommandNamespaceDataObject_inValidNamespaceToFindBoolean
 input commandAliasDataStructure: object (The command alias data structure that recursively searched for the namespace specified)
 input namespaceToFind: boolean (false)
-output: false
+output: ?
+
+testName: getCommandNamespaceDataObject_inValidCommandAliasDataStructureUndefined
+input commandAliasDataStructure: undefined
+input namespaceToFind: string (The namespace to look for in the command alias metaData data structure)
+output: ?
+
+testName: getCommandNamespaceDataObject_inValidCommandAliasDataStructureNaN
+input commandAliasDataStructure: NaN
+input namespaceToFind: string (The namespace to look for in the command alias metaData data structure)
+output: ?
+
+testName: getCommandNamespaceDataObject_inValidNamespaceToFindUndefined
+input commandAliasDataStructure: object (The command alias data structure that recursively searched for the namespace specified)
+input namespaceToFind: undefined
+output: ?
+
+testName: getCommandNamespaceDataObject_inValidNamespaceToFindNaN
+input commandAliasDataStructure: object (The command alias data structure that recursively searched for the namespace specified)
+input namespaceToFind: NaN
+output: ?
 --------------------------------------------------------------------------------
 testName: getCommandArgs_validData
-input commandString: string (commandSequencer name,application,true version about)
-input commandDelimiter: string (  - space)
-output: [name,application,true version about]
+input commandString: string (The command string that should be parsed fro command arguments)
+input commandDelimiter: string (The delimiter that should be used to parse the command line)
+output: array<boolean|string|integer> (Any array of arguments, some times these might actually be nested command calls)
 
-testName: getCommandArgs_inValidString
+testName: getCommandArgs_inValidCommandStringString
 input commandString: string (464gsdsfae8f46)
-input commandDelimiter: string (  - space)
-output: false
+input commandDelimiter: string (The delimiter that should be used to parse the command line)
+output: ?
 
 testName: getCommandArgs_inValidDelimiterString
-input commandString: string (commandSequencer name,application,true version about)
-input commandDelimiter: string (&)
-output: false?
+input commandString: string (The command string that should be parsed fro command arguments)
+input commandDelimiter: string (464gsdsfae8f46)
+output: ?
 
-testName: getCommandArgs_inValidNumber
+testName: getCommandArgs_inValidCommandStringNumber
 input commandString: integer (546)
-input commandDelimiter: string (  - space)
-output: false
+input commandDelimiter: string (The delimiter that should be used to parse the command line)
+output: ?
 
-testName: getCommandArgs_inValidBoolean
+testName: getCommandArgs_inValidCommandStringBoolean
 input commandString: boolean (false)
-input commandDelimiter: string (  - space)
-output: false
+input commandDelimiter: string (The delimiter that should be used to parse the command line)
+output: ?
+
+testName: getCommandArgs_inValidDelimiterNumber
+input commandString: string (The command string that should be parsed fro command arguments)
+input commandDelimiter: integer (546)
+output: ?
+
+testName: getCommandArgs_inValidDelimiterBoolean
+input commandString: string (The command string that should be parsed fro command arguments)
+input commandDelimiter: boolean (false)
+output: ?
+
+testName: getCommandArgs_inValidCommandStringUndefined
+input commandString: undefined
+input commandDelimiter: string (The delimiter that should be used to parse the command line)
+output: ?
+
+testName: getCommandArgs_inValidCommandStringNaN
+input commandString: NaN
+input commandDelimiter: string (The delimiter that should be used to parse the command line)
+output: ?
+
+testName: getCommandArgs_inValidDelimiterUndefined
+input commandString: string (The command string that should be parsed fro command arguments)
+input commandDelimiter: undefined
+output: ?
+
+testName: getCommandArgs_inValidDelimiterNaN
+input commandString: string (The command string that should be parsed fro command arguments)
+input commandDelimiter: NaN
+output: ?
 --------------------------------------------------------------------------------
 testName: executeCommand_validData
-input: commandString: string (commandSequencer name,application,true version about)
-output: true
+input: commandString: string (The command to execute along with all the associated command arguments, data & meta-data)
+output: array<boolean,string|integer|boolean|object|array> (An array with a boolean True or False value to indicate if the application should exit or not exit, followed by the command output)
 
-testName: executeCommand_inValidString
-input: string (464gsdsfae8f46)
-output: true
+testName: executeCommand_inValidCommandStringString
+input commandString: string (464gsdsfae8f46)
+output: ?
 
-testName: executeCommand_inValidNumber
-input: integer (546)
-output: true
+testName: executeCommand_inValidCommandStringNumber
+input commandString: integer (546)
+output: ?
 
-testName: executeCommand_inValidBoolean
-input: boolean (false)
-output: true
+testName: executeCommand_inValidCommandStringBoolean
+input commandString: boolean (false)
+output: ?
+
+testName: executeCommand_inValidCommandStringUndefiend
+input commandString: undefined
+output: ?
+
+testName: executeCommand_inValidCommandStringNaN
+input commandString: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: removePluginCommands_validData
+input pluginName: string (The name of the plugin that should have its commands removed from the D-data structure)
+output: boolean (True or False to indicate if the removal of the data was completed successfully or not)
+
+testName: removePluginCommands_inValidPluginNameString
+input pluginName: string (464gsdsfae8f46)
+output: ?
+
+testName: removePluginCommands_inValidPluginNameNumber
+input pluginName: number (123)
+output: ?
+
+testName: removePluginCommands_inValidPluginNameBoolean
+input pluginName: boolean (false)
+output: ?
+
+testName: removePluginCommands_inValidPluginNameUndefined
+input pluginName: undeinfed
+output: ?
+
+testName: removePluginCommands_inValidPluginNameNaN
+input pluginName: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: removePluginCommandAliases_validData
+input pluginName: string (The name of the plugin that should have its command aliases removed from the D-data structure)
+output: boolean (True or False to indicate if the removal of the data was completed successfully or not)
+
+testName: removePluginCommandAliases_inValidPluginNameString
+input pluginName: string (464gsdsfae8f46)
+output: ?
+
+testName: removePluginCommandAliases_inValidPluginNameNumber
+input pluginName: number (123)
+output: ?
+
+testName: removePluginCommandAliases_inValidPluginNameBoolean
+input pluginName: boolean (false)
+output: ?
+
+testName: removePluginCommandAliases_inValidPluginNameUndefined
+input pluginName: undeinfed
+output: ?
+
+testName: removePluginCommandAliases_inValidPluginNameNaN
+input pluginName: NaN
+output: ?

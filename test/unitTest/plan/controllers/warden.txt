@@ -1,0 +1,1037 @@
+Description: Test plan for warden.js
+
+--------------------------------------------------------------------------------
+testName: processRootPath_validData
+input inputPath: string (The path for the entry point to the framework, ie: main.js)
+input actualFrameworkName: string (The name of the framework that the application is expecting to use)
+output: string (The true root path of the application)
+
+testName: processRootPath_inValidInputPathString
+input inputPath: string (dfxg24346dfg)
+input actualFrameworkName: string (The name of the framework that the application is expecting to use)
+output: ?
+
+testName: processRootPath_inValidActualFrameworkNameString
+input inputPath: string (The path for the entry point to the framework, ie: main.js)
+input actualFrameworkName: string (dfxg24346dfg)
+output: ?
+
+testName: processRootPath_inValidInputPathInteger
+input inputPath: integer (123)
+input actualFrameworkName: string (The name of the framework that the application is expecting to use)
+output: ?
+
+testName: processRootPath_inValidInputPathBoolean
+input inputPath: boolean (false)
+input actualFrameworkName: string (The name of the framework that the application is expecting to use)
+output: ?
+
+testName: processRootPath_inValidActualFrameworkNameInteger
+input inputPath: string (The path for the entry point to the framework, ie: main.js)
+input actualFrameworkName: integer (123)
+output: ?
+
+testName: processRootPath_inValidActualFrameworkNameBoolean
+input inputPath: string (The path for the entry point to the framework, ie: main.js)
+input actualFrameworkName: boolean (false)
+output: ?
+
+testName: processRootPath_inValidInputPathUndefined
+input inputPath: undefined
+input actualFrameworkName: string (The name of the framework that the application is expecting to use)
+output: ?
+
+testName: processRootPath_inValidInputPathNaN
+input inputPath: NaN
+input actualFrameworkName: string (The name of the framework that the application is expecting to use)
+output: ?
+
+testName: processRootPath_inValidActualFrameworkNameUndefined
+input inputPath: string (The path for the entry point to the framework, ie: main.js)
+input actualFrameworkName: undefined
+output: ?
+
+testName: processRootPath_inValidActualFrameworkNameNaN
+input inputPath: string (The path for the entry point to the framework, ie: main.js)
+input actualFrameworkName: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: initFrameworkSchema_validData
+input configData: object (All of the configuration data that should be parsed as part of the setup process)
+output: void
+
+testName: initFrameworkSchema_inValidConfigDataString
+input configData: string (dfxg24346dfg)
+output: void
+
+testName: initFrameworkSchema_inValidConfigDataInteger
+input configData: integer (123)
+output: void
+
+testName: initFrameworkSchema_inValidConfigDataBoolean
+input configData: boolean (false)
+output: void
+
+testName: initFrameworkSchema_inValidConfigDataUndefined
+input configData: undefined
+output: void
+
+testName: initFrameworkSchema_inValidConfigDataNaN
+input configData: NaN
+output: void
+--------------------------------------------------------------------------------
+testName: resetRulesAndCommands_validData
+output: void
+NOTE: Clears and then re-initializes the Haystacks platform framework business rules and commands
+--------------------------------------------------------------------------------
+testName: mergeClientBusinessRules_validData
+input clientBusinessRules: object (A map of client defined business rule names and client defined business rule function calls)
+output: void
+
+testName: mergeClientBusinessRules_inValidClientBusinessRulesString
+input clientBusinessRules: string (dfxg24346dfg)
+output: void
+
+testName: mergeClientBusinessRules_inValidClientBusinessRulesInteger
+input clientBusinessRules: integer (123)
+output: void
+
+testName: mergeClientBusinessRules_inValidClientBusinessRulesBoolean
+input clientBusinessRules: boolean (false)
+output: void
+
+testName: mergeClientBusinessRules_inValidClientBusinessRulesUndefined
+input clientBusinessRules: undefined
+output: void
+
+testName: mergeClientBusinessRules_inValidClientBusinessRulesNaN
+input clientBusinessRules: NaN
+output: void
+--------------------------------------------------------------------------------
+testName: mergeClientCommands_validData
+input clientCommands: object (A map of client defined command names and client defined command function calls)
+output: void
+
+testName: mergeClientCommands_inValidClientCommandsString
+input clientCommands: string (dfxg24346dfg)
+output: void
+
+testName: mergeClientCommands_inValidClientCommandsInteger
+input clientCommands: integer (123)
+output: void
+
+testName: mergeClientCommands_inValidClientCommandsBoolean
+input clientCommands: boolean (false)
+output: void
+
+testName: mergeClientCommands_inValidClientCommandsUndefined
+input clientCommands: undefined
+output: void
+
+testName: mergeClientCommands_inValidClientCommandsNaN
+input clientCommands: NaN
+output: void
+--------------------------------------------------------------------------------
+testName: loadCommandAliases_validData
+input commandAliasesPath: object (The configuration name of the configuration setting where the path to the commands aliases XML file is stored, that should be loaded)
+output: void
+
+testName: loadCommandAliases_inValidCommandAliasesPathString
+input commandAliasesPath: string (dfxg24346dfg)
+output: void
+
+testName: loadCommandAliases_inValidCommandAliasesPathInteger
+input commandAliasesPath: integer (123)
+output: void
+
+testName: loadCommandAliases_inValidCommandAliasesPathBoolean
+input commandAliasesPath: boolean (false)
+output: void
+
+testName: loadCommandAliases_inValidCommandAliasesPathUndefined
+input commandAliasesPath: undefined
+output: void
+
+testName: loadCommandAliases_inValidCommandAliasesPathNaN
+input commandAliasesPath: NaN
+output: void
+--------------------------------------------------------------------------------
+testName: loadCommandWorkflows_validData
+input workflowPathConfigName: object (The configuration name of the configuration setting where the path to the workflows XML file is stored, that should be loaded)
+output: void
+
+testName: loadCommandWorkflows_inValidWorkflowPathConfigNameString
+input workflowPathConfigName: string (dfxg24346dfg)
+output: void
+
+testName: loadCommandWorkflows_inValidWorkflowPathConfigNameInteger
+input workflowPathConfigName: integer (123)
+output: void
+
+testName: loadCommandWorkflows_inValidWorkflowPathConfigNameBoolean
+input workflowPathConfigName: boolean (false)
+output: void
+
+testName: loadCommandWorkflows_inValidWorkflowPathConfigNameUndefined
+input workflowPathConfigName: undefined
+output: void
+
+testName: loadCommandWorkflows_inValidWorkflowPathConfigNameNaN
+input workflowPathConfigName: NaN
+output: void
+--------------------------------------------------------------------------------
+testName: listLoadedPlugins_validData
+output: array<string> (A list array of the names of the plugins that are currently loaded)
+--------------------------------------------------------------------------------
+testName: listAllPluginsInRegistry_validData
+output: array<string> (A list array of the names of the plugins in the plugin registry)
+--------------------------------------------------------------------------------
+testName: listAllPluginsInRegistryPath_validData
+output: array<string> (A list array of the names of the plugins in the plugin registry)
+--------------------------------------------------------------------------------
+testName: numberOfPluginsInRegistry_validData
+output: integer (The count of the number of plugins listed in the plugin registry data hive)
+--------------------------------------------------------------------------------
+testName: numberOfPluginsInRegistryPath_validData
+output: integer (The count of the number of plugin sub-folders in the plugins path listed in the plugin registry data hive)
+--------------------------------------------------------------------------------
+testName: registerPluginByNameAndPath_validData
+input pluginName: string (The name of the plugin that should be registered)
+input pluginPath: string (The path to the plugin, to be added to the plugin registry)
+output: boolean (True or False to indicate if the plugin was added to the plugin registry successfully or not)
+
+testName: registerPluginByNameAndPath_inValidPluginNameString
+input pluginName: string (dfxg24346dfg)
+input pluginPath: string (The path to the plugin, to be added to the plugin registry)
+output: ?
+
+testName: registerPluginByNameAndPath_inValidPluginPathString
+input pluginName: string (The name of the plugin that should be registered)
+input pluginPath: string (dfxg24346dfg)
+output: ?
+
+testName: registerPluginByNameAndPath_inValidPluginNameInteger
+input pluginName: integer (123)
+input pluginPath: string (The path to the plugin, to be added to the plugin registry)
+output: ?
+
+testName: registerPluginByNameAndPath_inValidPluginNameBoolean
+input pluginName: boolean (false)
+input pluginPath: string (The path to the plugin, to be added to the plugin registry)
+output: ?
+
+testName: registerPluginByNameAndPath_inValidPluginPathInteger
+input pluginName: string (The name of the plugin that should be registered)
+input pluginPath: integer (123)
+output: ?
+
+testName: registerPluginByNameAndPath_inValidPluginPathBoolean
+input pluginName: string (The name of the plugin that should be registered)
+input pluginPath: boolean (false)
+output: ?
+
+testName: registerPluginByNameAndPath_inValidPluginNameUndefined
+input pluginName: undefined
+input pluginPath: string (The path to the plugin, to be added to the plugin registry)
+output: ?
+
+testName: registerPluginByNameAndPath_inValidPluginNameNaN
+input pluginName: NaN
+input pluginPath: string (The path to the plugin, to be added to the plugin registry)
+output: ?
+
+testName: registerPluginByNameAndPath_inValidPluginPathUndefined
+input pluginName: string (The name of the plugin that should be registered)
+input pluginPath: undefined
+output: ?
+
+testName: registerPluginByNameAndPath_inValidPluginPathNaN
+input pluginName: string (The name of the plugin that should be registered)
+input pluginPath: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: unregisterPluginByName_validData
+input pluginName: string (The name of the plugin that should be removed form the plugin registry)
+output: boolean (True or False to indicate if the plugin was removed form the plugin registry successfully or not)
+
+testName: unregisterPluginByName_inValidPluginNameString
+input pluginName: string (dfxg24346dfg)
+output: ?
+
+testName: unregisterPluginByName_inValidPluginNameInteger
+input pluginName: integer (123)
+output: ?
+
+testName: unregisterPluginByName_inValidPluginNameBoolean
+input pluginName: boolean (false)
+output: ?
+
+testName: unregisterPluginByName_inValidPluginNameUndefined
+input pluginName: undefined
+output: ?
+
+testName: unregisterPluginByName_inValidPluginNameNaN
+input pluginName: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: unregisterPlugins_validData
+input pluginsListArray: string (A list array of plugin names that should be removed form the plugin registry)
+output: boolean (True or False to indicate if all the plugins were successfully removed form the plugin registry or not)
+
+testName: unregisterPlugins_inValidPluginsListArrayString
+input pluginsListArray: string (dfxg24346dfg)
+output: ?
+
+testName: unregisterPlugins_inValidPluginsListArrayInteger
+input pluginsListArray: integer (123)
+output: ?
+
+testName: unregisterPlugins_inValidPluginsListArrayBoolean
+input pluginsListArray: boolean (false)
+output: ?
+
+testName: unregisterPlugins_inValidPluginsListArrayUndefined
+input pluginsListArray: undefined
+output: ?
+
+testName: unregisterPlugins_inValidPluginsListArrayNaN
+input pluginsListArray: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: syncPluginRegistryWithPath_validData
+output: boolean (True or False to indicate if the synchronization was performed successfully or not)
+--------------------------------------------------------------------------------
+testName: clearAllPluginRegistry_validData
+output: boolean (True or False to indicate if the plugin registry data hive was cleared successfully or not)
+--------------------------------------------------------------------------------
+testName: writePluginRegistryToDisk_validData
+output: boolean (True or False to indicate if the plugin registry was successfully saved to the disk or not)
+--------------------------------------------------------------------------------
+testName: loadPlugin_validData
+input pluginPath: string (The fully qualified path where to load the plugin form, or the folder name that will contain the plugin in the plugin registry path)
+output: boolean (True or False to indicate if the plugin was loaded successfully or not)
+
+testName: loadPlugin_inValidPluginPathString
+input pluginPath: string (dfxg24346dfg)
+output: ?
+
+testName: loadPlugin_inValidPluginPathInteger
+input pluginPath: integer (123)
+output: ?
+
+testName: loadPlugin_inValidPluginPathBoolean
+input pluginPath: boolean (false)
+output: ?
+
+testName: loadPlugin_inValidPluginPathUndefined
+input pluginPath: undefined
+output: ?
+
+testName: loadPlugin_inValidPluginPathNaN
+input pluginPath: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: loadPlugins_validData
+input pluginsPaths: array<string> (An array of fully qualified paths where to load the plugins form)
+output: boolean (True or False to indicate if all the plugins were loaded or not)
+
+testName: loadPlugins_inValidPluginsPathsString
+input pluginsPaths: string (dfxg24346dfg)
+output: ?
+
+testName: loadPlugins_inValidPluginsPathsInteger
+input pluginsPaths: integer (123)
+output: ?
+
+testName: loadPlugins_inValidPluginsPathsBoolean
+input pluginsPaths: boolean (false)
+output: ?
+
+testName: loadPlugins_inValidPluginsPathsUndefined
+input pluginsPaths: undefined
+output: ?
+
+testName: loadPlugins_inValidPluginsPathsNaN
+input pluginsPaths: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: loadPluginsformRegistry_validData
+output: boolean (True or False to ndicate if all the plugins were loaded or not)
+--------------------------------------------------------------------------------
+testName: unloadPlugin_validData
+input pluginName: string (The name of the plugin that should be unloaded)
+output: boolean (True or False to indicate if the plugin was unloaded successfully or not)
+
+testName: unloadPlugin_inValidPluginNameString
+input pluginName: string (dfxg24346dfg)
+output: ?
+
+testName: unloadPlugin_inValidPluginNameInteger
+input pluginName: integer (123)
+output: ?
+
+testName: unloadPlugin_inValidPluginNameBoolean
+input pluginName: boolean (false)
+output: ?
+
+testName: unloadPlugin_inValidPluginNameUndefined
+input pluginName: undefined
+output: ?
+
+testName: unloadPlugin_inValidPluginNameNaN
+input pluginName: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: unloadPlugins_validData
+input pluginNames: array<string> (An array ist of names of plugins that should be unloaded)
+output: boolean (True or False to indicate if all the plugins were unloaded successfully or not)
+
+testName: unloadPlugins_inValidPluginNamesString
+input pluginNames: string (dfxg24346dfg)
+output: ?
+
+testName: unloadPlugins_inValidPluginNamesInteger
+input pluginNames: integer (123)
+output: ?
+
+testName: unloadPlugins_inValidPluginNamesBoolean
+input pluginNames: boolean (false)
+output: ?
+
+testName: unloadPlugins_inValidPluginNamesUndefined
+input pluginNames: undefined
+output: ?
+
+testName: unloadPlugins_inValidPluginNamesNaN
+input pluginNames: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: unloadAllPlugins_validData
+output: boolean (True or False to indicate if all the plugins were unloaded successfully or not)
+--------------------------------------------------------------------------------
+testName: getPluginsRegistryPath_validData
+output: string (The path to the plugins listed in the plugin registry as meta-data)
+--------------------------------------------------------------------------------
+testName: loadPluginResourceData_validData
+input contextName: string (The type of resource that is being loaded, eg: configuration, commandAliases, workflows, etc...)
+input pluginResourcePath: string (The fully qualified path to the plugin resource data)
+output: object (The JSON data that is loaded and parsed form the plugin path)
+
+testName: loadPluginResourceData_inValidContextNameString
+input contextName: string (dfxg24346dfg)
+input pluginResourcePath: string (The fully qualified path to the plugin resource data)
+output: ?
+
+testName: loadPluginResourceData_inValidPluginResourcePathString
+input contextName: string (The type of resource that is being loaded, eg: configuration, commandAliases, workflows, etc...)
+input pluginResourcePath: string (dfxg24346dfg)
+output: ?
+
+testName: loadPluginResourceData_inValidContextNameInteger
+input contextName: integer (123)
+input pluginResourcePath: string (The fully qualified path to the plugin resource data)
+output: ?
+
+testName: loadPluginResourceData_inValidContextNameBoolean
+input contextName: boolean (false)
+input pluginResourcePath: string (The fully qualified path to the plugin resource data)
+output: ?
+
+testName: loadPluginResourceData_inValidPluginResourcePathInteger
+input contextName: string (The type of resource that is being loaded, eg: configuration, commandAliases, workflows, etc...)
+input pluginResourcePath: integer (123)
+output: ?
+
+testName: loadPluginResourceData_inValidPluginResourcePathBoolean
+input contextName: string (The type of resource that is being loaded, eg: configuration, commandAliases, workflows, etc...)
+input pluginResourcePath: boolean (false)
+output: ?
+
+testName: loadPluginResourceData_inValidContextNameUndefined
+input contextName: undefined
+input pluginResourcePath: string (The fully qualified path to the plugin resource data)
+output: ?
+
+testName: loadPluginResourceData_inValidContextNameNaN
+input contextName: NaN
+input pluginResourcePath: string (The fully qualified path to the plugin resource data)
+output: ?
+
+testName: loadPluginResourceData_inValidPluginResourcePathUndefined
+input contextName: string (The type of resource that is being loaded, eg: configuration, commandAliases, workflows, etc...)
+input pluginResourcePath: undefined
+output: ?
+
+testName: loadPluginResourceData_inValidPluginResourcePathNaN
+input contextName: string (The type of resource that is being loaded, eg: configuration, commandAliases, workflows, etc...)
+input pluginResourcePath: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: loadAllJsonData_validData
+input dataPath: string (The path to the JSON files that should be loaded)
+input contextName: string (The type of data that should be loaded)
+output: object (A JSON object that contains all of the data that was loaded and merged together)
+
+testName: loadAllJsonData_inValidDataPathString
+input dataPath: string (dfxg24346dfg)
+input contextName: string (The type of data that should be loaded)
+output: ?
+
+testName: loadAllJsonData_inValidContextNameString
+input dataPath: string (The path to the JSON files that should be loaded)
+input contextName: string (dfxg24346dfg)
+output: ?
+
+testName: loadAllJsonData_inValidDataPathInteger
+input dataPath: integer (123)
+input contextName: string (The type of data that should be loaded)
+output: ?
+
+testName: loadAllJsonData_inValidDataPathBoolean
+input dataPath: boolean (false)
+input contextName: string (The type of data that should be loaded)
+output: ?
+
+testName: loadAllJsonData_inValidContextNameInteger
+input dataPath: string (The path to the JSON files that should be loaded)
+input contextName: integer (123)
+output: ?
+
+testName: loadAllJsonData_inValidContextNameBoolean
+input dataPath: string (The path to the JSON files that should be loaded)
+input contextName: boolean (false)
+output: ?
+
+testName: loadAllJsonData_inValidDataPathUndefined
+input dataPath: undefined
+input contextName: string (The type of data that should be loaded)
+output: ?
+
+testName: loadAllJsonData_inValidDataPathNaN
+input dataPath: NaN
+input contextName: string (The type of data that should be loaded)
+output: ?
+
+testName: loadAllJsonData_inValidContextNameUndefined
+input dataPath: string (The path to the JSON files that should be loaded)
+input contextName: undefined
+output: ?
+
+testName: loadAllJsonData_inValidContextNameNaN
+input dataPath: string (The path to the JSON files that should be loaded)
+input contextName: boolean (false)
+output: ?
+--------------------------------------------------------------------------------
+testName: storeData_validData
+input dataName: string (The name of the data, unique name used to store the data in the data structure)
+input data: object|string|boolean|number|array (The data that should be stored)
+output: boolean (True or False to indicate if the data was stored successfully or not)
+
+testName: storeData_inValidDataNameString
+input dataName: string (dfxg24346dfg)
+input data: object|string|boolean|number|array (The data that should be stored)
+output: ?
+
+testName: storeData_inValidDataString
+input dataName: string (The name of the data, unique name used to store the data in the data structure)
+input data: string (dfxg24346dfg)
+output: ?
+
+testName: storeData_inValidDataNameInteger
+input dataName: integer (123)
+input data: object|string|boolean|number|array (The data that should be stored)
+output: ?
+
+testName: storeData_inValidDataNameBoolean
+input dataName: boolean (false)
+input data: object|string|boolean|number|array (The data that should be stored)
+output: ?
+
+testName: storeData_inValidDataInteger
+input dataName: string (The name of the data, unique name used to store the data in the data structure)
+input data: integer (123)
+output: ?
+
+testName: storeData_inValidDataBoolean
+input dataName: string (The name of the data, unique name used to store the data in the data structure)
+input data: boolean (false)
+output: ?
+
+testName: storeData_inValidDataNameUndefined
+input dataName: undefined
+input data: object|string|boolean|number|array (The data that should be stored)
+output: ?
+
+testName: storeData_inValidDataNameNaN
+input dataName: NaN
+input data: object|string|boolean|number|array (The data that should be stored)
+output: ?
+
+testName: storeData_inValidDataUndefined
+input dataName: string (The name of the data, unique name used to store the data in the data structure)
+input data: undefined
+output: ?
+
+testName: storeData_inValidDataNaN
+input dataName: string (The name of the data, unique name used to store the data in the data structure)
+input data: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: getData_validData
+input dataName: string (The unique name the data should be stored under)
+output: object|string|boolean|number|array (The data element or object that was stored if any was found)
+
+testName: getData_inValidDataNameString
+input dataName: string (dfxg24346dfg)
+output: ?
+
+testName: getData_inValidDataNameInteger
+input dataName: integer (123)
+output: ?
+
+testName: getData_inValidDataNameBoolean
+input dataName: boolean (false)
+output: ?
+
+testName: getData_inValidDataNameUndefined
+input dataName: undefined
+output: ?
+
+testName: getData_inValidDataNameNaN
+input dataName: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: clearData_validData
+input dataName: string (The unique name of the data that should be cleared)
+output: boolean (True or False to indicate if the data was cleared successfully or not)
+
+testName: clearData_inValidDataNameString
+input dataName: string (dfxg24346dfg)
+output: ?
+
+testName: clearData_inValidDataNameInteger
+input dataName: integer (123)
+output: ?
+
+testName: clearData_inValidDataNameBoolean
+input dataName: boolean (false)
+output: ?
+
+testName: clearData_inValidDataNameUndefined
+input dataName: undefined
+output: ?
+
+testName: clearData_inValidDataNameNaN
+input dataName: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: executeBusinessRules_validData
+input inputs: array<string|integer|boolean|object|function,string|integer|boolean|object|function> (The array of inputs)
+input businessRules: array<string> (The array that contains the name(s) of the business rule that should be executed)
+output: string (The value that is returned form the rule is also returned)
+
+testName: executeBusinessRules_inValidInputsString
+input inputs: string (dfxg24346dfg)
+input businessRules: array<string> (The array that contains the name(s) of the business rule that should be executed)
+output: ?
+
+testName: executeBusinessRules_inValidBusinessRulesString
+input inputs: array<string|integer|boolean|object|function,string|integer|boolean|object|function> (The array of inputs)
+input businessRules: string (dfxg24346dfg)
+output: ?
+
+testName: executeBusinessRules_inValidInputsInteger
+input inputs: integer (123)
+input businessRules: array<string> (The array that contains the name(s) of the business rule that should be executed)
+output: ?
+
+testName: executeBusinessRules_inValidInputsBoolean
+input inputs: boolean (false)
+input businessRules: array<string> (The array that contains the name(s) of the business rule that should be executed)
+output: ?
+
+testName: executeBusinessRules_inValidBusinessRulesInteger
+input inputs: array<string|integer|boolean|object|function,string|integer|boolean|object|function> (The array of inputs)
+input businessRules: integer (123)
+output: ?
+
+testName: executeBusinessRules_inValidBusinessRulesBoolean
+input inputs: array<string|integer|boolean|object|function,string|integer|boolean|object|function> (The array of inputs)
+input businessRules: boolean (false)
+output: ?
+
+testName: executeBusinessRules_inValidInputsUndefined
+input inputs: undefined
+input businessRules: array<string> (The array that contains the name(s) of the business rule that should be executed)
+output: ?
+
+testName: executeBusinessRules_inValidInputsNaN
+input inputs: NaN
+input businessRules: array<string> (The array that contains the name(s) of the business rule that should be executed)
+output: ?
+
+testName: executeBusinessRules_inValidBusinessRulesUndefined
+input inputs: array<string|integer|boolean|object|function,string|integer|boolean|object|function> (The array of inputs)
+input businessRules: undefined
+output: ?
+
+testName: executeBusinessRules_inValidBusinessRulesNaN
+input inputs: array<string|integer|boolean|object|function,string|integer|boolean|object|function> (The array of inputs)
+input businessRules: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: enqueueCommand_validData
+input command: string (The command to add to the command queue for executing)
+output: void
+
+testName: enqueueCommand_inValidCommandString
+input command: string (dfxg24346dfg)
+output: ?
+
+testName: enqueueCommand_inValidCommandInteger
+input command: integer (123)
+output: ?
+
+testName: enqueueCommand_inValidCommandBoolean
+input command: boolean (false)
+output: ?
+
+testName: enqueueCommand_inValidCommandUndefined
+input command: undefined
+output: ?
+
+testName: enqueueCommand_inValidCommandNaN
+input command: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: isCommandQueueEmpty_validData
+output: boolean (True or False to indicate if command execution should continue or not)
+--------------------------------------------------------------------------------
+testName: processCommandQueue_validData
+output: array<boolean,string|integer|boolean|object|array> (An array with a boolean True or False value to indicate if the application should exit or not exit, followed by the command output)
+--------------------------------------------------------------------------------
+testName:  setConfigurationSetting_validData
+input configurationNamespace: string (The path in the configuration JSON object where the configuration setting should be set)
+input configurationName: string (The key of the configuration setting)
+input configurationValue: string|integer|boolean|double (The value of the configuration setting)
+output: string (data set from configurationNamespace and dataToMerge)
+
+testName:  setConfigurationSetting_inValidConfigurationNamespaceString
+input configurationNamespace: string (464gsdsfae8f46)
+input configurationName: string (The key of the configuration setting)
+input configurationValue: string|integer|boolean|double (The value of the configuration setting)
+output: false?
+
+testName:  setConfigurationSetting_inValidConfigurationNameString
+input configurationNamespace: string (The path in the configuration JSON object where the configuration setting should be set)
+input configurationName: string (464gsdsfae8f46)
+input configurationValue: string|integer|boolean|double (The value of the configuration setting)
+output: false?
+
+testName:  setConfigurationSetting_inValidConfigurationValueString
+input configurationNamespace: string (The path in the configuration JSON object where the configuration setting should be set)
+input configurationName: string (The key of the configuration setting)
+input configurationValue: string (464gsdsfae8f46)
+output: false?
+
+testName:  setConfigurationSetting_inValidConfigurationNamespaceNumber
+input configurationNamespace: integer (546)
+input configurationName: string (The key of the configuration setting)
+input configurationValue: string|integer|boolean|double (The value of the configuration setting)
+output: false?
+
+testName:  setConfigurationSetting_inValidConfigurationNamespaceBoolean
+input configurationNamespace: boolean (false)
+input configurationName: string (The key of the configuration setting)
+input configurationValue: string|integer|boolean|double (The value of the configuration setting)
+output: false?
+
+testName:  setConfigurationSetting_inValidConfigurationNamespaceUndefined
+input configurationNamespace: undefined
+input configurationName: string (The key of the configuration setting)
+input configurationValue: string|integer|boolean|double (The value of the configuration setting)
+output: false?
+
+testName:  setConfigurationSetting_inValidConfigurationNamespaceNaN
+input configurationNamespace: NaN
+input configurationName: string (The key of the configuration setting)
+input configurationValue: string|integer|boolean|double (The value of the configuration setting)
+output: false?
+
+testName:  setConfigurationSetting_inValidConfigurationNameNumber
+input configurationNamespace: string (The path in the configuration JSON object where the configuration setting should be set)
+input configurationName: integer (546)
+input configurationValue: string|integer|boolean|double (The value of the configuration setting)
+output: false?
+
+testName:  setConfigurationSetting_inValidConfigurationNameBoolean
+input configurationNamespace: string (The path in the configuration JSON object where the configuration setting should be set)
+input configurationName: boolean (false)
+input configurationValue: string|integer|boolean|double (The value of the configuration setting)
+output: false?
+
+testName:  setConfigurationSetting_inValidConfigurationNameUndefined
+input configurationNamespace: string (The path in the configuration JSON object where the configuration setting should be set)
+input configurationName: undefined
+input configurationValue: string|integer|boolean|double (The value of the configuration setting)
+output: false?
+
+testName:  setConfigurationSetting_inValidConfigurationNameNaN
+input configurationNamespace: string (The path in the configuration JSON object where the configuration setting should be set)
+input configurationName: NaN
+input configurationValue: string|integer|boolean|double (The value of the configuration setting)
+output: false?
+
+testName:  setConfigurationSetting_inValidConfigurationValueNumber
+input configurationNamespace: string (The path in the configuration JSON object where the configuration setting should be set)
+input configurationName: string (The key of the configuration setting)
+input configurationValue: integer (546)
+output: false?
+
+testName:  setConfigurationSetting_inValidConfigurationValueBoolean
+input configurationNamespace: string (The path in the configuration JSON object where the configuration setting should be set)
+input configurationName: string (The key of the configuration setting)
+input configurationValue: boolean (false)
+output: false?
+
+testName:  setConfigurationSetting_inValidConfigurationValueUndefined
+input configurationNamespace: string (The path in the configuration JSON object where the configuration setting should be set)
+input configurationName: string (The key of the configuration setting)
+input configurationValue: undefined
+output: false?
+
+testName:  setConfigurationSetting_inValidConfigurationValueNaN
+input configurationNamespace: string (The path in the configuration JSON object where the configuration setting should be set)
+input configurationName: string (The key of the configuration setting)
+input configurationValue: NaN
+output: false?
+
+testName:  setConfigurationSetting_inValidAllUndefined
+input configurationNamespace: undefined
+input configurationName: undefined
+input configurationValue: undefined
+output: false?
+
+testName:  setConfigurationSetting_inValidAllNaN
+input configurationNamespace: NaN
+input configurationName: NaN
+input configurationValue: NaN
+output: false?
+--------------------------------------------------------------------------------
+testName: getConfigurationSetting_validData
+input configurationNamespace: string (The path in the configuration JSON object where the configuration setting should be found)
+input configurationName: string (The key of the configuration setting)
+output: string|integer|boolean|double (The value of whatever was stored in the D[configuration])
+
+testName: getConfigurationSetting_inValidConfigurationNamespaceString
+input configurationNamespace: string (dfxg24346dfg)
+input configurationName: string (The key of the configuration setting)
+output: ?
+
+testName: getConfigurationSetting_inValidConfigurationNameString
+input configurationNamespace: string (The path in the configuration JSON object where the configuration setting should be found)
+input configurationName: string (dfxg24346dfg)
+output: ?
+
+testName: getConfigurationSetting_inValidConfigurationNamespaceInteger
+input configurationNamespace: integer (123)
+input configurationName: string (The key of the configuration setting)
+output: ?
+
+testName: getConfigurationSetting_inValidConfigurationNamespaceBoolean
+input configurationNamespace: boolean (false)
+input configurationName: string (The key of the configuration setting)
+output: ?
+
+testName: getConfigurationSetting_inValidConfigurationNameInteger
+input configurationNamespace: string (The path in the configuration JSON object where the configuration setting should be found)
+input configurationName: integer (123)
+output: ?
+
+testName: getConfigurationSetting_inValidConfigurationNameBoolean
+input configurationNamespace: string (The path in the configuration JSON object where the configuration setting should be found)
+input configurationName: boolean (false)
+output: ?
+
+testName: getConfigurationSetting_inValidConfigurationNamespaceUndefined
+input configurationNamespace: undefined
+input configurationName: string (The key of the configuration setting)
+output: ?
+
+testName: getConfigurationSetting_inValidConfigurationNamespaceNaN
+input configurationNamespace: NaN
+input configurationName: string (The key of the configuration setting)
+output: ?
+
+testName: getConfigurationSetting_inValidConfigurationNameUndefined
+input configurationNamespace: string (The path in the configuration JSON object where the configuration setting should be found)
+input configurationName: undefined
+output: ?
+
+testName: getConfigurationSetting_inValidConfigurationNameNaN
+input configurationNamespace: string (The path in the configuration JSON object where the configuration setting should be found)
+input configurationName: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: consoleLog_validData
+input classPath: string (The class path for the caller of this function file.function or class.method)
+input message: string|boolean|integer|object (The message or data content that should be dumped to the output)
+output: void
+
+testName: consoleLog_inValidClassPathString
+input classPath: string (dfxg24346dfg)
+input message: string|boolean|integer|object (The message or data content that should be dumped to the output)
+output: void
+
+testName: consoleLog_inValidMessageString
+input classPath: string (The class path for the caller of this function file.function or class.method)
+input message: string (dfxg24346dfg)
+output: void
+
+testName: consoleLog_inValidClassPathInteger
+input classPath: integer (123)
+input message: string|boolean|integer|object (The message or data content that should be dumped to the output)
+output: void
+
+testName: consoleLog_inValidClassPathBoolean
+input classPath: boolean (false)
+input message: string|boolean|integer|object (The message or data content that should be dumped to the output)
+output: void
+
+testName: consoleLog_inValidMessageInteger
+input classPath: string (The class path for the caller of this function file.function or class.method)
+input message: integer (123)
+output: void
+
+testName: consoleLog_inValidMessageBoolean
+input classPath: string (The class path for the caller of this function file.function or class.method)
+input message: boolean (false)
+output: void
+
+testName: consoleLog_inValidClassPathUndefined
+input classPath: undefined
+input message: string|boolean|integer|object (The message or data content that should be dumped to the output)
+output: void
+
+testName: consoleLog_inValidClassPathNaN
+input classPath: NaN
+input message: string|boolean|integer|object (The message or data content that should be dumped to the output)
+output: void
+
+testName: consoleLog_inValidMessageUndefined
+input classPath: string (The class path for the caller of this function file.function or class.method)
+input message: undefined
+output: void
+
+testName: consoleLog_inValidMessageNaN
+input classPath: string (The class path for the caller of this function file.function or class.method)
+input message: NaN
+output: void
+--------------------------------------------------------------------------------
+testName: consoleTableLog_validData
+input classPath: string (The class path for the caller of this function file.function or class.method)
+input tableData: array<object> (An array of objects that should be printed to the console as if it was data)
+input columnNames: array<string> (An array of column names that should be used when outputting the table)
+output: void
+
+testName: consoleTableLog_inValidConfigurationNamespaceString
+input classPath: string (464gsdsfae8f46)
+input tableData: array<object> (An array of objects that should be printed to the console as if it was data)
+input columnNames: array<string> (An array of column names that should be used when outputting the table)
+output: false?
+
+testName: consoleTableLog_inValidConfigurationNameString
+input classPath: string (The class path for the caller of this function file.function or class.method)
+input tableData: string (464gsdsfae8f46)
+input columnNames: array<string> (An array of column names that should be used when outputting the table)
+output: false?
+
+testName: consoleTableLog_inValidConfigurationValueString
+input classPath: string (The class path for the caller of this function file.function or class.method)
+input tableData: array<object> (An array of objects that should be printed to the console as if it was data)
+input columnNames: string (464gsdsfae8f46)
+output: false?
+
+testName: consoleTableLog_inValidConfigurationNamespaceNumber
+input classPath: integer (546)
+input tableData: array<object> (An array of objects that should be printed to the console as if it was data)
+input columnNames: array<string> (An array of column names that should be used when outputting the table)
+output: false?
+
+testName: consoleTableLog_inValidConfigurationNamespaceBoolean
+input classPath: boolean (false)
+input tableData: array<object> (An array of objects that should be printed to the console as if it was data)
+input columnNames: array<string> (An array of column names that should be used when outputting the table)
+output: false?
+
+testName: consoleTableLog_inValidConfigurationNamespaceUndefined
+input classPath: undefined
+input tableData: array<object> (An array of objects that should be printed to the console as if it was data)
+input columnNames: array<string> (An array of column names that should be used when outputting the table)
+output: false?
+
+testName: consoleTableLog_inValidConfigurationNamespaceNaN
+input classPath: NaN
+input tableData: array<object> (An array of objects that should be printed to the console as if it was data)
+input columnNames: array<string> (An array of column names that should be used when outputting the table)
+output: false?
+
+testName: consoleTableLog_inValidConfigurationNameNumber
+input classPath: string (The class path for the caller of this function file.function or class.method)
+input tableData: integer (546)
+input columnNames: array<string> (An array of column names that should be used when outputting the table)
+output: false?
+
+testName: consoleTableLog_inValidConfigurationNameBoolean
+input classPath: string (The class path for the caller of this function file.function or class.method)
+input tableData: boolean (false)
+input columnNames: array<string> (An array of column names that should be used when outputting the table)
+output: false?
+
+testName: consoleTableLog_inValidConfigurationNameUndefined
+input classPath: string (The class path for the caller of this function file.function or class.method)
+input tableData: undefined
+input columnNames: array<string> (An array of column names that should be used when outputting the table)
+output: false?
+
+testName: consoleTableLog_inValidConfigurationNameNaN
+input classPath: string (The class path for the caller of this function file.function or class.method)
+input tableData: NaN
+input columnNames: array<string> (An array of column names that should be used when outputting the table)
+output: false?
+
+testName: consoleTableLog_inValidConfigurationValueNumber
+input classPath: string (The class path for the caller of this function file.function or class.method)
+input tableData: array<object> (An array of objects that should be printed to the console as if it was data)
+input columnNames: integer (546)
+output: false?
+
+testName: consoleTableLog_inValidConfigurationValueBoolean
+input classPath: string (The class path for the caller of this function file.function or class.method)
+input tableData: array<object> (An array of objects that should be printed to the console as if it was data)
+input columnNames: boolean (false)
+output: false?
+
+testName: consoleTableLog_inValidConfigurationValueUndefined
+input classPath: string (The class path for the caller of this function file.function or class.method)
+input tableData: array<object> (An array of objects that should be printed to the console as if it was data)
+input columnNames: undefined
+output: false?
+
+testName: consoleTableLog_inValidConfigurationValueNaN
+input classPath: string (The class path for the caller of this function file.function or class.method)
+input tableData: array<object> (An array of objects that should be printed to the console as if it was data)
+input columnNames: NaN
+output: false?
+
+testName: consoleTableLog_inValidAllUndefined
+input classPath: undefined
+input tableData: undefined
+input columnNames: undefined
+output: false?
+
+testName: consoleTableLog_inValidAllNaN
+input classPath: NaN
+input tableData: NaN
+input columnNames: NaN
+output: false?
