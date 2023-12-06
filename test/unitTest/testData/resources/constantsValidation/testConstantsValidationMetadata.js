@@ -20,12 +20,12 @@
  */
 
 // Internal imports
-import * as apc from '../../constants/test.constants.js';
-import * as app_msg from '../../constants/test.message.constants.js';
-import * as app_sys from '../../constants/test.system.constants.js';
-import * as app_biz_cv from './test.business.constants.validation.js';
-import * as app_cmd_cv from './test.command.constants.validation.js';
-import * as app_cfg_cv from './test.configuration.constants.validation.js';
-import * as apc_cv from './test.constants.validation.js';
-import * as app_msg_cv from './test.message.constants.validation.js';
-import * as app_sys_cv from './test.system.constants.validation.js';
+import * as tst from '../../constants/test.constants.js';
+import * as tst_msg from '../../constants/test.message.constants.js';
+import * as tst_sys from '../../constants/test.system.constants.js';
+import * as tst_biz_cv from './test.business.constants.validation.js';
+import * as tst_cmd_cv from './test.command.constants.validation.js';
+import * as tst_cfg_cv from './test.configuration.constants.validation.js';
+import * as tst_cv from './test.constants.validation.js';
+import * as tst_msg_cv from './test.message.constants.validation.js';
+import * as tst_sys_cv from './test.system.constants.validation.js';

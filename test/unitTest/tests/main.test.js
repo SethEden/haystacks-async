@@ -48,6 +48,7 @@ describe(tst_con.cinitFramework, () => {
             "clientRegisteredPlugins": "C:/haystacks-async/test/testHarness/src/resources/plugins/plugins.json",
             "clientWorkflowsPath": "C:/haystacks-async/test/testHarness/src/resources/workflows/",
             "clientThemesPath": "C:/haystacks-async/test/testHarness/src/resources/themes/",
+            
             "clientBusinessRules": {},
             "clientCommands": {}
         };
