@@ -85,7 +85,7 @@ async function processRootPath(inputPath, actualFrameworkName) {
 async function initFrameworkSchema(configData) {
   let functionName = initFrameworkSchema.name;
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
-  // console.log(`configData is: ${JSON.stringify(configData)}`);
+  console.log(`configData is: ${JSON.stringify(configData)}`);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cconfigDataIs + JSON.stringify(configData));
   const appConfigPath = configData[cfg.cappConfigPath];
@@ -94,7 +94,7 @@ async function initFrameworkSchema(configData) {
   // re-declare the input now that the configuration is setup.
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cconfigDataIs + JSON.stringify(configData));
-
+  
   let getJsonRule = [biz.cgetJsonData];
   let applicationMetaDataPathAndFilename = '';
   let frameworkMetaDataPathAndFilename = '';
@@ -116,7 +116,7 @@ async function initFrameworkSchema(configData) {
     pluginMetaData = await ruleBroker.processRules([pluginMetaDataPathAndFilename, ''], getJsonRule);
     await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginMetaDataIs + JSON.stringify(pluginMetaData));
   }
-
+  
   await configurator.setConfigurationSetting(wrd.csystem, cfg.cclientRootPath, configData[cfg.cclientRootPath]);
   await configurator.setConfigurationSetting(wrd.csystem, cfg.cappConfigResourcesPath, configData[cfg.cappConfigResourcesPath]);
   await configurator.setConfigurationSetting(wrd.csystem, cfg.cappConfigReferencePath, configData[cfg.cappConfigReferencePath]);
@@ -137,7 +137,7 @@ async function initFrameworkSchema(configData) {
   await configurator.setConfigurationSetting(wrd.csystem, cfg.cframeworkThemesPath, configData[cfg.cframeworkThemesPath]);
   await configurator.setConfigurationSetting(wrd.csystem, cfg.cframeworkCommandAliasesPath, configData[cfg.cframeworkCommandAliasesPath]);
   await configurator.setConfigurationSetting(wrd.csystem, cfg.cframeworkWorkflowsPath, configData[cfg.cframeworkWorkflowsPath]);
-
+  
   await loggers.consoleLog(namespacePrefix + functionName, msg.cclientRootPathIs + configData[cfg.cclientRootPath]);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cappConfigResourcesPathIs + configData[cfg.cappConfigResourcesPath]);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cappConfigReferencePathIs + configData[cfg.cappConfigReferencePath]);
@@ -158,10 +158,10 @@ async function initFrameworkSchema(configData) {
   await loggers.consoleLog(namespacePrefix + functionName, msg.cframeworkThemesPathIs + configData[cfg.cframeworkThemesPath]);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cframeworkCommandAliasesPathIs + configData[cfg.cframeworkCommandAliasesPath]);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cframeworkWorkflowsPathIs + configData[cfg.cframeworkWorkflowsPath]);
-
+  
   // Make sure the color data gets loaded as well! File: colors.csv (This is used by the colorizer to colorize the fonts for the console output)
   await chiefData.setupAllCsvData(cfg.cframeworkConfigPath, wrd.ccolors);
-
+  
   let applicationMetaDataName = await configurator.getAmbiguousDataElement(applicationMetaData, [wrd.cname, wrd.cName, wrd.cNAME]);
   let applicationMetaDataVersion = await configurator.getAmbiguousDataElement(applicationMetaData, [wrd.cversion, wrd.cVersion, wrd.cVERSION]);
   let applicationMetaDataDescription = await configurator.getAmbiguousDataElement(applicationMetaData, [wrd.cdescription, wrd.cDescription, wrd.cDESCRIPTION]);
@@ -181,7 +181,7 @@ async function initFrameworkSchema(configData) {
   await loggers.consoleLog(namespacePrefix + functionName, msg.cFrameworkNameIs + frameworkMetaDataName);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cFrameworkVersionNumberIs + frameworkMetaDataVersion);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cFrameworkDescriptionIs + frameworkMetaDataDescription);
-
+  
   // Don't forget this could be a plugin, if the build-release is running and building a plugin for release.
   if (configData[sys.cPluginName]) {
     let pluginMetaDataName = await configurator.getAmbiguousDataElement(pluginMetaData, [wrd.cname, wrd.cName, wrd.cNAME]);
@@ -201,7 +201,7 @@ async function initFrameworkSchema(configData) {
     await loggers.consoleLog(namespacePrefix + functionName, msg.cresolvedClientConstantsPathActualIs + resolvedClientConstantsPathActual);
     await configurator.setConfigurationSetting(wrd.csystem, cfg.cframeworkConstantsPath, resolvedFrameworkConstantsPathActual);
     await configurator.setConfigurationSetting(wrd.csystem, cfg.capplicationConstantsPath, resolvedClientConstantsPathActual);
-
+    
     await chiefConstant.initializeConstantsValidationData(); // This just makes sure that the data structure is created on the D-Data structure.
     let frameworkConstantsValidationData = await chiefConstant.generateFrameworkConstantsValidationData();
     let applicationConstantsValidationData = await configData[cfg.capplicationConstantsValidationData].call();
@@ -210,7 +210,7 @@ async function initFrameworkSchema(configData) {
     await chiefConstant.addConstantsValidationData(frameworkConstantsValidationData, wrd.cFramework);
     await chiefConstant.addConstantsValidationData(applicationConstantsValidationData, wrd.cApplication);
   } // End-if (configurator.getConfigurationSetting(wrd.csystem, cfg.cenableConstantsValidation) === true)
-
+  
   let enableLogFileOutputSetting = await configurator.getConfigurationSetting(wrd.csystem, cfg.clogFileEnabled);
   if (enableLogFileOutputSetting === true) {
     await loggers.consoleLog(namespacePrefix + functionName, msg.cCaptureSessionDateTimeStampLogFileName);

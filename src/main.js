@@ -94,7 +94,7 @@ async function initFramework(clientConfiguration) {
     frameworkCodeRootPath = frameworkCodeRootPath + sys.cFrameworkProductionRootPath;
   } else {
     // WARNING: No .env file found! Going to default to the DEVELOPMENT ENVIRONMENT!
-    console.log(msg.cApplicationWarningMessage1a + msg.cApplicationWarningMessage1b);
+    // console.log(msg.cApplicationWarningMessage1a + msg.cApplicationWarningMessage1b);
     frameworkCodeRootPath = frameworkCodeRootPath + sys.cFrameworkDevelopRootPath;
   }
   // pluginCodeRootPath is:

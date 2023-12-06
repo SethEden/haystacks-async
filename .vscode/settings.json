@@ -4,5 +4,6 @@
     "permutate",
     "reinitializes",
     "resave"
-  ]
+  ],
+  "cmake.configureOnOpen": true
 }
