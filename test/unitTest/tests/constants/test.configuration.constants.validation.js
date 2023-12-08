@@ -9,4 +9,16 @@
  */
 
 // Internal imports
-import * as app_cfg from '../../constants/test.configuration.constants.js';
+import * as tst_cfg from '../../constants/test.configuration.constants.js';
+
+/**
+ * @function unitTestConfigurationConstantsValidation
+ * @description Initializes the unit test configuration constants validation data objects array.
+ * @return {array<Object<Name,Actual,Expected>>} An array of constants validation data objects.
+ * @author Vlad Sorokin
+ * @date 2022/03/22
+ */
+export const unitTestConfigurationConstantsValidation = [
+    {Name: 'cargumentDrivenInterface', Actual: tst_cfg.cargumentDrivenInterface, Expected: 'argumentDrivenInterface'}
+  ];
+  

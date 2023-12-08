@@ -11,11 +11,15 @@
 // External imports
 import hayConst from '@haystacks/constants';
 
-const {bas, num, wrd, gen, biz, phn} = hayConst;
+const {bas, cfg, gen, msg, sys, wrd} = hayConst;
 
 
 export const cUndefined = bas.cUn + bas.cde + bas.cf + bas.ci + bas.cn + bas.ce + bas.cd;
 export const cNaN = bas.cNa + bas.cN;
+
+
+// testConstantsValidationMetadata
+export const cUnitTestName = wrd.cUnit + wrd.cTest + wrd.cHarness; // testHarness
 
 // Describe names
 

@@ -212,3 +212,19 @@ export const testConstantsValidation = [
     /* main */
 
 ];
+
+export const unitTestConstantsValidation = [
+    {Name: 'cExpectedActualFrameworkDevName', Actual: apc.cExpectedActualFrameworkDevName, Expected: 'haystacks-async'},
+    {Name: 'cExpectedActualFrameworkProdName', Actual: apc.cExpectedActualFrameworkProdName, Expected: '@haystacks/async'},
+    {Name: 'cUnitTestName', Actual: apc.cUnitTestName, Expected: 'testHarness'},
+    {Name: 'cTstDevPath', Actual: apc.cTstDevPath, Expected: '/src/'},
+    {Name: 'cTstProdPath', Actual: apc.cTstProdPath, Expected: '/bin/'},
+    {Name: 'cResourcesCommonPath', Actual: apc.cResourcesCommonPath, Expected: 'resources/'},
+    {Name: 'cCommandsCommonPath', Actual: apc.cCommandsCommonPath, Expected: 'commands/'},
+    {Name: 'cConstantsPath', Actual: apc.cConstantsPath, Expected: 'constants/'},
+    {Name: 'cConfigurationCommonPath', Actual: apc.cConfigurationCommonPath, Expected: 'configuration/'},
+    {Name: 'cPluginsRegistryCommonPath', Actual: apc.cPluginsRegistryCommonPath, Expected: 'plugins/plugins.json'},
+    {Name: 'cWorkflowsCommonPath', Actual: apc.cWorkflowsCommonPath, Expected: 'workflows/'},
+    {Name: 'cThemesCommonPath', Actual: apc.cThemesCommonPath, Expected: 'themes/'},
+    {Name: 'cReleasePath', Actual: apc.cReleasePath, Expected: 'release/'},
+]
