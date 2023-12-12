@@ -11,8 +11,8 @@
  */
 
 // Internal imports
-import clientCommands from './clientCommands/clientCommands.js';
-import * as app_cmd from '../constants/application.command.constants.js';
+import clientCommands from "./clientCommands/clientCommands.js";
+import * as app_cmd from "../constants/application.command.constants.js";
 
 /**
  * @function initClientCommandsLibrary
@@ -25,19 +25,23 @@ import * as app_cmd from '../constants/application.command.constants.js';
  * This is because the functions cannot really be serialized in any way. It actually kind of makes sense,
  * but could be really confusing if you are struggling, trying to debug commands or business rules that do not appear to exist.
  */
-const initClientCommandsLibrary = function() {
+const initClientCommandsLibrary = function () {
   return {
     // Client commands
     // ***********************************************
     // client commands in order
     // ***********************************************
-    [app_cmd.ccustomEchoCommand]: (inputData, inputMetaData) => clientCommands.customEchoCommand(inputData, inputMetaData),
-    [app_cmd.cdeployMetaData]: (inputData, inputMetaData) => clientCommands.deployMetaData(inputData, inputMetaData),
-    [app_cmd.cdeployApplication]: (inputData, inputMetaData) => clientCommands.deployApplication(inputData, inputMetaData),
-    [app_cmd.creleaseApplication]: (inputData, inputMetaData) => clientCommands.releaseApplication(inputData, inputMetaData)
+    [app_cmd.ccustomEchoCommand]: (inputData, inputMetaData) =>
+      clientCommands.customEchoCommand(inputData, inputMetaData),
+    [app_cmd.cdeployMetaData]: (inputData, inputMetaData) =>
+      clientCommands.deployMetaData(inputData, inputMetaData),
+    [app_cmd.cdeployApplication]: (inputData, inputMetaData) =>
+      clientCommands.deployApplication(inputData, inputMetaData),
+    [app_cmd.creleaseApplication]: (inputData, inputMetaData) =>
+      clientCommands.releaseApplication(inputData, inputMetaData),
   };
 };
 
 export default {
-  initClientCommandsLibrary
+  initClientCommandsLibrary,
 };

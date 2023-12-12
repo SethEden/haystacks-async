@@ -10,8 +10,8 @@
  */
 
 // External imports
-import hayConst from '@haystacks/constants';
-const {num, wrd} = hayConst;
+import hayConst from "@haystacks/constants";
+const { num, wrd } = hayConst;
 
 // Client Business Rules
 export const cclientEcho = wrd.cclient + wrd.cEcho; // clientEcho

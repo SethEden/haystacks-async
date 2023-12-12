@@ -16,18 +16,27 @@
  */
 
 // Internal imports
-import chiefData from './chiefData.js';
-import configurator from '../executrix/configurator.js';
-import loggers from '../executrix/loggers.js';
-import D from '../structures/data.js';
+import chiefData from "./chiefData.js";
+import configurator from "../executrix/configurator.js";
+import loggers from "../executrix/loggers.js";
+import D from "../structures/data.js";
 // External imports
-import hayConst from '@haystacks/constants';
-import path from 'path';
+import hayConst from "@haystacks/constants";
+import path from "path";
 
-const {bas, cfg, msg, sys, wrd} = hayConst;
-const baseFileName = path.basename(import.meta.url, path.extname(import.meta.url));
+const { bas, cfg, msg, sys, wrd } = hayConst;
+const baseFileName = path.basename(
+  import.meta.url,
+  path.extname(import.meta.url),
+);
 // framework.controllers.chiefWorkflow.
-const namespacePrefix = wrd.cframework + bas.cDot + wrd.ccontrollers + bas.cDot + baseFileName + bas.cDot;
+const namespacePrefix =
+  wrd.cframework +
+  bas.cDot +
+  wrd.ccontrollers +
+  bas.cDot +
+  baseFileName +
+  bas.cDot;
 
 /**
  * @function loadCommandWorkflowsFromPath
@@ -43,52 +52,79 @@ const namespacePrefix = wrd.cframework + bas.cDot + wrd.ccontrollers + bas.cDot 
  * @author Seth Hollingsead
  * @date 2022/02/04
  */
-async function loadCommandWorkflowsFromPath(commandWorkflowFilePathConfigurationName, contextName) {
+async function loadCommandWorkflowsFromPath(
+  commandWorkflowFilePathConfigurationName,
+  contextName,
+) {
   let functionName = loadCommandWorkflowsFromPath.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // commandWorkflowFilePathConfigurationName is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.ccommandWorkflowFilePathConfigurationNameIs + commandWorkflowFilePathConfigurationName);
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.ccommandWorkflowFilePathConfigurationNameIs +
+      commandWorkflowFilePathConfigurationName,
+  );
   // contextName
-  await loggers.consoleLog(namespacePrefix + functionName, msg.ccontextNameIs + contextName);
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.ccontextNameIs + contextName,
+  );
   let returnData = false;
   let allCommandWorkflowsData = {};
   if (!contextName.toUpperCase().includes(wrd.cPLUGIN)) {
-    allCommandWorkflowsData = await chiefData.setupAllXmlData(commandWorkflowFilePathConfigurationName, sys.cCommandWorkflows);
+    allCommandWorkflowsData = await chiefData.setupAllXmlData(
+      commandWorkflowFilePathConfigurationName,
+      sys.cCommandWorkflows,
+    );
   } else if (contextName.toUpperCase().includes(wrd.cPLUGIN)) {
-    allCommandWorkflowsData = await chiefData.setupAllXmlPluginData(commandWorkflowFilePathConfigurationName, sys.cPluginWorkflows);
+    allCommandWorkflowsData = await chiefData.setupAllXmlPluginData(
+      commandWorkflowFilePathConfigurationName,
+      sys.cPluginWorkflows,
+    );
   }
 
   // allCommandWorkflowsData is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.callCommandWorkflowsDataIs + JSON.stringify(allCommandWorkflowsData));
-  if (D[sys.cCommandWorkflows] === undefined) { // Make sure we only do this if it's undefined, otherwise we might wipe out previously loaded data.
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.callCommandWorkflowsDataIs + JSON.stringify(allCommandWorkflowsData),
+  );
+  if (D[sys.cCommandWorkflows] === undefined) {
+    // Make sure we only do this if it's undefined, otherwise we might wipe out previously loaded data.
     D[sys.cCommandWorkflows] = {};
     D[sys.cCommandWorkflows][sys.cFramework] = allCommandWorkflowsData;
     returnData = true;
   } else if (contextName.toUpperCase() === wrd.cAPPLICATION) {
     // for (let i = 0; i < allCommandWorkflowsData[sys.cCommandWorkflows][wrd.cWorkflows].length; i++) {
-      // D[sys.cCommandWorkflows][wrd.cWorkflows].push(allCommandWorkflowsData[sys.cCommandWorkflows][wrd.cWorkflows][i]);
-      // Object.assign(D[sys.cCommandWorkflows][wrd.cWorkflows], allCommandWorkflowsData[sys.cCommandWorkflows][wrd.cWorkflows]);
-      // D[sys.cCommandWorkflows] = ruleBroker.processRules([D[sys.cCommandWorkflows], allCommandWorkflowsData], [biz.cobjectDeepMerge]);
-      D[sys.cCommandWorkflows][wrd.cApplication] = allCommandWorkflowsData;
-      returnData = true;
+    // D[sys.cCommandWorkflows][wrd.cWorkflows].push(allCommandWorkflowsData[sys.cCommandWorkflows][wrd.cWorkflows][i]);
+    // Object.assign(D[sys.cCommandWorkflows][wrd.cWorkflows], allCommandWorkflowsData[sys.cCommandWorkflows][wrd.cWorkflows]);
+    // D[sys.cCommandWorkflows] = ruleBroker.processRules([D[sys.cCommandWorkflows], allCommandWorkflowsData], [biz.cobjectDeepMerge]);
+    D[sys.cCommandWorkflows][wrd.cApplication] = allCommandWorkflowsData;
+    returnData = true;
     // }
   } else if (contextName.toUpperCase().includes(wrd.cPLUGIN)) {
-    let pluginName = await configurator.getConfigurationSetting(wrd.csystem, sys.cPluginName);
+    let pluginName = await configurator.getConfigurationSetting(
+      wrd.csystem,
+      sys.cPluginName,
+    );
     // NOTE: If there is a pluginName in the configuration setting, then we have a special condition that is running here.
     // This is the case that the build-Release app is running to roll a release of a plugin, and plugin validation data is being loaded for validation.
     if (pluginName) {
       D[sys.cCommandWorkflows][wrd.cPlugins] = {};
       D[sys.cCommandWorkflows][wrd.cPlugins][pluginName] = {};
-      D[sys.cCommandWorkflows][wrd.cPlugins][pluginName] = allCommandWorkflowsData;
+      D[sys.cCommandWorkflows][wrd.cPlugins][pluginName] =
+        allCommandWorkflowsData;
     }
     returnData = allCommandWorkflowsData;
   }
   // console.log('All loaded workflow data is: ' + JSON.stringify(D[sys.cCommandWorkflows]));
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.creturnDataIs + JSON.stringify(returnData),
+  );
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
 export default {
-  loadCommandWorkflowsFromPath
+  loadCommandWorkflowsFromPath,
 };

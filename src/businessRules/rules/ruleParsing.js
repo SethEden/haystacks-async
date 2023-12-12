@@ -13,16 +13,27 @@
  */
 
 // Internal imports
-import loggers from '../../executrix/loggers.js';
-import D from '../../structures/data.js';
+import loggers from "../../executrix/loggers.js";
+import D from "../../structures/data.js";
 // External imports
-import hayConst from '@haystacks/constants';
-import path from 'path';
+import hayConst from "@haystacks/constants";
+import path from "path";
 
-const {bas, msg, sys, wrd} = hayConst;
-const baseFileName = path.basename(import.meta.url, path.extname(import.meta.url));
+const { bas, msg, sys, wrd } = hayConst;
+const baseFileName = path.basename(
+  import.meta.url,
+  path.extname(import.meta.url),
+);
 // framework.businessRules.rules.ruleParsing.
-const namespacePrefix = wrd.cframework + bas.cDot + sys.cbusinessRules + bas.cDot + wrd.crules + bas.cDot + baseFileName + bas.cDot;
+const namespacePrefix =
+  wrd.cframework +
+  bas.cDot +
+  sys.cbusinessRules +
+  bas.cDot +
+  wrd.crules +
+  bas.cDot +
+  baseFileName +
+  bas.cDot;
 
 /**
  * @function doAllRulesExist
@@ -45,7 +56,7 @@ async function doAllRulesExist(inputData, inputMetaData) {
   let tempValidationResult = true;
   if (inputData && inputData.length > 0) {
     for (const element of inputData) {
-      if (await doesRuleExist(element) === false) {
+      if ((await doesRuleExist(element)) === false) {
         tempValidationResult = false;
       }
     } // End-for (const element of inputData)
@@ -97,17 +108,30 @@ async function doesRuleExist(inputData, inputMetaData) {
 async function getRule(inputData, inputMetaData) {
   let functionName = getRule.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.cinputDataIs + JSON.stringify(inputData),
+  );
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.cinputMetaDataIs + JSON.stringify(inputMetaData),
+  );
   let returnData = false;
-  if (inputData && inputData != '') {
-    if (await doesRuleExist(inputData, '') === true) {
+  if (inputData && inputData != "") {
+    if ((await doesRuleExist(inputData, "")) === true) {
       // D[sys.cbusinessRules][inputData] is:
-      console.log(msg.cgetRuleMessage01 + D[sys.cbusinessRules][inputData], sys.cbusinessRules, inputData);
+      console.log(
+        msg.cgetRuleMessage01 + D[sys.cbusinessRules][inputData],
+        sys.cbusinessRules,
+        inputData,
+      );
       returnData = await D[sys.cbusinessRules][inputData];
     }
   } // End-if (inputData && inputData != '')
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.creturnDataIs + returnData,
+  );
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
@@ -129,10 +153,16 @@ async function getRule(inputData, inputMetaData) {
 async function processRulesInternal(inputData, inputMetaData) {
   let functionName = processRulesInternal.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.cinputDataIs + JSON.stringify(inputData),
+  );
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.cinputMetaDataIs + JSON.stringify(inputMetaData),
+  );
   let returnData = inputData[0];
-  if (inputMetaData && await doAllRulesExist(inputMetaData)) {
+  if (inputMetaData && (await doAllRulesExist(inputMetaData))) {
     for (let rule in inputMetaData) {
       let inputLocalMetaData = inputData[1];
       if (await Object.prototype.hasOwnProperty.call(inputMetaData, rule)) {
@@ -140,14 +170,23 @@ async function processRulesInternal(inputData, inputMetaData) {
         // console.log(`key is ${key}`);
         let value = inputMetaData[key];
         // console.log(`value is: ${value}`);
-        returnData = await D[sys.cbusinessRules][value](returnData, inputLocalMetaData);
+        returnData = await D[sys.cbusinessRules][value](
+          returnData,
+          inputLocalMetaData,
+        );
       } // End-if (rulesToExecute.hasOwnProperty(rule))
     } // End-for (let rule in inputMetaData)
   } else {
     // WARNING: Some rules do not exist:
-    console.log(msg.cProcessRulesWarnngSomeRulesDoNotExist + JSON.stringify(inputMetaData));
+    console.log(
+      msg.cProcessRulesWarnngSomeRulesDoNotExist +
+        JSON.stringify(inputMetaData),
+    );
   } // End-if (rulesToExecute && doAllRulesExist(rulesToExecute))
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.creturnDataIs + JSON.stringify(returnData),
+  );
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
@@ -156,5 +195,5 @@ export default {
   doAllRulesExist,
   doesRuleExist,
   getRule,
-  processRulesInternal
+  processRulesInternal,
 };

@@ -14,18 +14,32 @@
  */
 
 // Internal imports
-import ruleParsing from '../ruleParsing.js';
-import configurator from '../../../executrix/configurator.js';
-import loggers from '../../../executrix/loggers.js';
+import ruleParsing from "../ruleParsing.js";
+import configurator from "../../../executrix/configurator.js";
+import loggers from "../../../executrix/loggers.js";
 // External imports
-import hayConst from '@haystacks/constants';
-import * as math from 'mathjs';
-import path from 'path';
+import hayConst from "@haystacks/constants";
+import * as math from "mathjs";
+import path from "path";
 
-const {bas, biz, cfg, gen, msg, sys, wrd} = hayConst;
-const baseFileName = path.basename(import.meta.url, path.extname(import.meta.url));
+const { bas, biz, cfg, gen, msg, sys, wrd } = hayConst;
+const baseFileName = path.basename(
+  import.meta.url,
+  path.extname(import.meta.url),
+);
 // framework.businessRules.rules.stringParsing.wordStringParsing.
-const namespacePrefix = wrd.cframework + bas.cDot + sys.cbusinessRules + bas.cDot + wrd.crules + bas.cDot + wrd.cstring + wrd.cParsing + bas.cDot + baseFileName + bas.cDot;
+const namespacePrefix =
+  wrd.cframework +
+  bas.cDot +
+  sys.cbusinessRules +
+  bas.cDot +
+  wrd.crules +
+  bas.cDot +
+  wrd.cstring +
+  wrd.cParsing +
+  bas.cDot +
+  baseFileName +
+  bas.cDot;
 
 /**
  * @function isStringCamelCase
@@ -47,8 +61,14 @@ const namespacePrefix = wrd.cframework + bas.cDot + sys.cbusinessRules + bas.cDo
 async function isStringCamelCase(inputData, inputMetaData) {
   let functionName = isStringCamelCase.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.cinputDataIs + inputData,
+  );
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.cinputMetaDataIs + inputMetaData,
+  );
   let returnData = false;
   if (inputData) {
     let foundFirstCapitalLetter = false;
@@ -57,12 +77,28 @@ async function isStringCamelCase(inputData, inputMetaData) {
     // 2. Contains at least 1 lower case letter or more.
     // 3. Contains at least 1 upper case letter or more.
     // 4. Has a lower case or upper case first letter of the first word.
-    let doesContainUpperCaseCharacter = await ruleParsing.processRulesInternal([inputData, ''], [biz.cdoesStringContainUpperCaseCharacter]);
-    let doesContainLowerCaseCharacter = await ruleParsing.processRulesInternal([inputData, ''], [biz.cdoesStringContainLowerCaseCharacter]);
-    let isFirstCharUpperCase = await ruleParsing.processRulesInternal([inputData, ''], [biz.cisFirstCharacterUpperCase]);
-    let isFirstCharLowerCase = await ruleParsing.processRulesInternal([inputData, ''], [biz.cisFirstCharacterLowerCase]);
-    if (!inputData.match(/[\s_-]/g) && doesContainUpperCaseCharacter &&
-    doesContainLowerCaseCharacter && (isFirstCharUpperCase || isFirstCharLowerCase)) {
+    let doesContainUpperCaseCharacter = await ruleParsing.processRulesInternal(
+      [inputData, ""],
+      [biz.cdoesStringContainUpperCaseCharacter],
+    );
+    let doesContainLowerCaseCharacter = await ruleParsing.processRulesInternal(
+      [inputData, ""],
+      [biz.cdoesStringContainLowerCaseCharacter],
+    );
+    let isFirstCharUpperCase = await ruleParsing.processRulesInternal(
+      [inputData, ""],
+      [biz.cisFirstCharacterUpperCase],
+    );
+    let isFirstCharLowerCase = await ruleParsing.processRulesInternal(
+      [inputData, ""],
+      [biz.cisFirstCharacterLowerCase],
+    );
+    if (
+      !inputData.match(/[\s_-]/g) &&
+      doesContainUpperCaseCharacter &&
+      doesContainLowerCaseCharacter &&
+      (isFirstCharUpperCase || isFirstCharLowerCase)
+    ) {
       for (let i = 1; i < inputData.length; i++) {
         // Now check or the final qualification:
         // 3. Ensure that upper case letters are separated by lower case letters
@@ -84,7 +120,10 @@ async function isStringCamelCase(inputData, inputMetaData) {
       } // End-for (let i = 1; i < inputData.length; i++)
     } // End-if (!inputData.match(/[\s_-]/g) && doesStringContainUpperCaseCharacter(inputData, '') &&...)
   } // End-if (inputData)
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.creturnDataIs + returnData,
+  );
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
@@ -101,13 +140,24 @@ async function isStringCamelCase(inputData, inputMetaData) {
 async function mapWordToCamelCaseWord(inputData, inputMetaData) {
   let functionName = mapWordToCamelCaseWord.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.cinputDataIs + inputData,
+  );
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.cinputMetaDataIs + inputMetaData,
+  );
   let returnData = false;
   if (inputData) {
-    returnData = inputData.replace(/^./, character => character.toUpperCase());
+    returnData = inputData.replace(/^./, (character) =>
+      character.toUpperCase(),
+    );
   }
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.creturnDataIs + returnData,
+  );
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
@@ -128,15 +178,30 @@ async function mapWordToCamelCaseWord(inputData, inputMetaData) {
 async function simplifyAndConsolidateString(inputData, inputMetaData) {
   let functionName = simplifyAndConsolidateString.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
-  let returnData = '';
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.cinputDataIs + inputData,
+  );
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.cinputMetaDataIs + inputMetaData,
+  );
+  let returnData = "";
   if (inputData) {
     // returnData = inputData.toLowerCase().replace(/[\W]/g, '');
-    returnData = await ruleParsing.processRulesInternal([inputData.toLowerCase().trim(), [/[^\w\s]/g, '']], [biz.cutilitiesReplaceCharacterWithCharacter]);
-    returnData = await ruleParsing.processRulesInternal([returnData, [/[\0-9]/g, '']], [biz.cutilitiesReplaceCharacterWithCharacter]);
+    returnData = await ruleParsing.processRulesInternal(
+      [inputData.toLowerCase().trim(), [/[^\w\s]/g, ""]],
+      [biz.cutilitiesReplaceCharacterWithCharacter],
+    );
+    returnData = await ruleParsing.processRulesInternal(
+      [returnData, [/[\0-9]/g, ""]],
+      [biz.cutilitiesReplaceCharacterWithCharacter],
+    );
   } // End-if (inputData)
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.creturnDataIs + returnData,
+  );
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
@@ -150,16 +215,30 @@ async function simplifyAndConsolidateString(inputData, inputMetaData) {
  * @author Seth Hollingsead
  * @date 2022/01/23
  */
-async function compareSimplifiedAndConsolidatedStrings(inputData, inputMetaData) {
+async function compareSimplifiedAndConsolidatedStrings(
+  inputData,
+  inputMetaData,
+) {
   let functionName = compareSimplifiedAndConsolidatedStrings.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.cinputDataIs + inputData,
+  );
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.cinputMetaDataIs + inputMetaData,
+  );
   let returnData = false;
   if (inputData && inputMetaData) {
-    returnData = await simplifyAndConsolidateString(inputData, '') === await simplifyAndConsolidateString(inputMetaData, '');
+    returnData =
+      (await simplifyAndConsolidateString(inputData, "")) ===
+      (await simplifyAndConsolidateString(inputMetaData, ""));
   }
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.creturnDataIs + returnData,
+  );
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
@@ -180,22 +259,37 @@ async function compareSimplifiedAndConsolidatedStrings(inputData, inputMetaData)
 async function countCamelCaseWords(inputData, inputMetaData) {
   let functionName = countCamelCaseWords.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.cinputDataIs + inputData,
+  );
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.cinputMetaDataIs + inputMetaData,
+  );
   let returnData = 0;
   if (inputData) {
     let caps = [];
     for (let i = 0; i < inputData.length; i++) {
-      await loggers.consoleLog(namespacePrefix + functionName, msg.ccharacterIs + inputData.charAt(i));
+      await loggers.consoleLog(
+        namespacePrefix + functionName,
+        msg.ccharacterIs + inputData.charAt(i),
+      );
       if (gen.cUpperCaseEnglishAlphabet.includes(inputData.charAt(i))) {
         // Upper case letter found.
-        await loggers.consoleLog(namespacePrefix + functionName, msg.cupperCaseLetterFound);
+        await loggers.consoleLog(
+          namespacePrefix + functionName,
+          msg.cupperCaseLetterFound,
+        );
         caps.push(i);
       }
     } // End-for (let i = 1; i < inputData.length; i++)
     returnData = caps.length;
   } // End-if (inputData)
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.creturnDataIs + returnData,
+  );
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
@@ -213,15 +307,24 @@ async function countCamelCaseWords(inputData, inputMetaData) {
 async function doesStringContainAcronym(inputData, inputMetaData) {
   let functionName = doesStringContainAcronym.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.cinputDataIs + inputData,
+  );
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.cinputMetaDataIs + inputMetaData,
+  );
   let returnData = false;
   let lastCharacterWasUpperCase = false;
   if (inputData) {
     for (let i = 1; i < inputData.length; i++) {
       // if the last character was upper case and the current character is upper case,
       // then we have found an acronym and we can exit the loop.
-      if (lastCharacterWasUpperCase === true && gen.cUpperCaseEnglishAlphabet.includes(inputData.charAt(i))) {
+      if (
+        lastCharacterWasUpperCase === true &&
+        gen.cUpperCaseEnglishAlphabet.includes(inputData.charAt(i))
+      ) {
         returnData = true;
         break;
       }
@@ -232,7 +335,10 @@ async function doesStringContainAcronym(inputData, inputMetaData) {
       }
     } // End-for (let i = 1; i < inputData.length; i++)
   } // End-if (inputData)
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.creturnDataIs + returnData,
+  );
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
@@ -249,81 +355,231 @@ async function doesStringContainAcronym(inputData, inputMetaData) {
 async function determineWordDelimiter(inputData, inputMetaData) {
   let functionName = determineWordDelimiter.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
-  let returnData = '';
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.cinputDataIs + inputData,
+  );
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.cinputMetaDataIs + inputMetaData,
+  );
+  let returnData = "";
   if (inputData) {
-    let camelCaseWordCount = await countCamelCaseWords(inputData, '');
-    await loggers.consoleLog(namespacePrefix + functionName, msg.ccamelCaseWordCountIs + camelCaseWordCount);
-    let containsAcronym = await doesStringContainAcronym(inputData, '');
-    await loggers.consoleLog(namespacePrefix + functionName, msg.ccontainsAcronymIs + containsAcronym);
+    let camelCaseWordCount = await countCamelCaseWords(inputData, "");
+    await loggers.consoleLog(
+      namespacePrefix + functionName,
+      msg.ccamelCaseWordCountIs + camelCaseWordCount,
+    );
+    let containsAcronym = await doesStringContainAcronym(inputData, "");
+    await loggers.consoleLog(
+      namespacePrefix + functionName,
+      msg.ccontainsAcronymIs + containsAcronym,
+    );
     let spacesCount = await countDelimiterInString(inputData, bas.cSpace);
-    await loggers.consoleLog(namespacePrefix + functionName, msg.cspacesCountIs + spacesCount);
+    await loggers.consoleLog(
+      namespacePrefix + functionName,
+      msg.cspacesCountIs + spacesCount,
+    );
     let periodCount = await countDelimiterInString(inputData, bas.cDot);
-    await loggers.consoleLog(namespacePrefix + functionName, msg.cperiodCountIs + periodCount);
+    await loggers.consoleLog(
+      namespacePrefix + functionName,
+      msg.cperiodCountIs + periodCount,
+    );
     let dashCount = await countDelimiterInString(inputData, bas.cDash);
-    await loggers.consoleLog(namespacePrefix + functionName, msg.cdashCountIs + dashCount);
+    await loggers.consoleLog(
+      namespacePrefix + functionName,
+      msg.cdashCountIs + dashCount,
+    );
     let comaCount = await countDelimiterInString(inputData, bas.cComa);
-    await loggers.consoleLog(namespacePrefix + functionName, msg.ccomaCountIs + comaCount);
-    let underscoreCount = await countDelimiterInString(inputData, bas.cUnderscore);
-    await loggers.consoleLog(namespacePrefix + functionName, msg.cunderscoreCountIs + underscoreCount);
+    await loggers.consoleLog(
+      namespacePrefix + functionName,
+      msg.ccomaCountIs + comaCount,
+    );
+    let underscoreCount = await countDelimiterInString(
+      inputData,
+      bas.cUnderscore,
+    );
+    await loggers.consoleLog(
+      namespacePrefix + functionName,
+      msg.cunderscoreCountIs + underscoreCount,
+    );
     let plusCount = await countDelimiterInString(inputData, bas.cPlus);
-    await loggers.consoleLog(namespacePrefix + functionName, msg.cplusCountIs + plusCount);
+    await loggers.consoleLog(
+      namespacePrefix + functionName,
+      msg.cplusCountIs + plusCount,
+    );
     let percentCount = await countDelimiterInString(inputData, bas.cPercent);
-    await loggers.consoleLog(namespacePrefix + functionName, msg.cpercentCountIs + percentCount);
+    await loggers.consoleLog(
+      namespacePrefix + functionName,
+      msg.cpercentCountIs + percentCount,
+    );
     if (
-    camelCaseWordCount > 0 &&
-    containsAcronym === false &&
-    spacesCount === 0 &&
-    periodCount === 0 &&
-    dashCount === 0 &&
-    comaCount === 0 &&
-    underscoreCount === 0 &&
-    plusCount === 0 &&
-    percentCount === 0) {
+      camelCaseWordCount > 0 &&
+      containsAcronym === false &&
+      spacesCount === 0 &&
+      periodCount === 0 &&
+      dashCount === 0 &&
+      comaCount === 0 &&
+      underscoreCount === 0 &&
+      plusCount === 0 &&
+      percentCount === 0
+    ) {
       returnData = sys.cCamelCase;
       // We haven't hit the case eyt where we need to differentiate between all these extra cases, and there are several of them.
       // We could have multiple acronyms in a word, or in multiple words that are camelCase.
       // Each of these could be really complex special cases.
       // If we get to that point we will handle those cases on a case by case basis to improve the algorithm.
-    } else if (spacesCount > 0 && periodCount === 0 && dashCount === 0 && comaCount === 0 && underscoreCount === 0 && plusCount === 0 && percentCount === 0) {
+    } else if (
+      spacesCount > 0 &&
+      periodCount === 0 &&
+      dashCount === 0 &&
+      comaCount === 0 &&
+      underscoreCount === 0 &&
+      plusCount === 0 &&
+      percentCount === 0
+    ) {
       returnData = bas.cSpace;
-    } else if (spacesCount === 0 && periodCount > 0 && dashCount === 0 && comaCount === 0 && underscoreCount === 0 && plusCount === 0 && percentCount === 0) {
+    } else if (
+      spacesCount === 0 &&
+      periodCount > 0 &&
+      dashCount === 0 &&
+      comaCount === 0 &&
+      underscoreCount === 0 &&
+      plusCount === 0 &&
+      percentCount === 0
+    ) {
       returnData = bas.cDot;
-    } else if (spacesCount === 0 && periodCount === 0 && dashCount > 0 && comaCount === 0 && underscoreCount === 0 && plusCount === 0 && percentCount === 0) {
+    } else if (
+      spacesCount === 0 &&
+      periodCount === 0 &&
+      dashCount > 0 &&
+      comaCount === 0 &&
+      underscoreCount === 0 &&
+      plusCount === 0 &&
+      percentCount === 0
+    ) {
       returnData = bas.cDash;
-    } else if (spacesCount === 0 && periodCount === 0 && dashCount === 0 && comaCount > 0 && underscoreCount === 0 && plusCount === 0 && percentCount === 0) {
+    } else if (
+      spacesCount === 0 &&
+      periodCount === 0 &&
+      dashCount === 0 &&
+      comaCount > 0 &&
+      underscoreCount === 0 &&
+      plusCount === 0 &&
+      percentCount === 0
+    ) {
       returnData = bas.cComa;
-    } else if (spacesCount === 0 && periodCount === 0 && dashCount === 0 && comaCount === 0 && underscoreCount > 0 && plusCount === 0 && percentCount === 0) {
+    } else if (
+      spacesCount === 0 &&
+      periodCount === 0 &&
+      dashCount === 0 &&
+      comaCount === 0 &&
+      underscoreCount > 0 &&
+      plusCount === 0 &&
+      percentCount === 0
+    ) {
       returnData = bas.cUnderscore;
-    } else if (spacesCount === 0 && periodCount === 0 && dashCount === 0 && comaCount === 0 && underscoreCount === 0 && plusCount > 0 && percentCount === 0) {
+    } else if (
+      spacesCount === 0 &&
+      periodCount === 0 &&
+      dashCount === 0 &&
+      comaCount === 0 &&
+      underscoreCount === 0 &&
+      plusCount > 0 &&
+      percentCount === 0
+    ) {
       returnData = bas.cPlus;
-    } else if (spacesCount === 0 && periodCount === 0 && dashCount === 0 && comaCount === 0 && underscoreCount === 0 && plusCount === 0 && percentCount > 0) {
+    } else if (
+      spacesCount === 0 &&
+      periodCount === 0 &&
+      dashCount === 0 &&
+      comaCount === 0 &&
+      underscoreCount === 0 &&
+      plusCount === 0 &&
+      percentCount > 0
+    ) {
       returnData = bas.cPercent;
     } else {
-      if (spacesCount > periodCount && spacesCount > dashCount && spacesCount > comaCount && spacesCount > underscoreCount && spacesCount > plusCount && spacesCount > percentCount) {
+      if (
+        spacesCount > periodCount &&
+        spacesCount > dashCount &&
+        spacesCount > comaCount &&
+        spacesCount > underscoreCount &&
+        spacesCount > plusCount &&
+        spacesCount > percentCount
+      ) {
         returnData = bas.cSpace;
-      } else if (periodCount > spacesCount && periodCount > dashCount && periodCount > comaCount && periodCount > underscoreCount && periodCount > plusCount && periodCount > percentCount) {
+      } else if (
+        periodCount > spacesCount &&
+        periodCount > dashCount &&
+        periodCount > comaCount &&
+        periodCount > underscoreCount &&
+        periodCount > plusCount &&
+        periodCount > percentCount
+      ) {
         returnData = bas.cDot;
-      } else if (dashCount > spacesCount && dashCount > periodCount && dashCount > comaCount && dashCount > underscoreCount && dashCount > plusCount && dashCount > percentCount) {
+      } else if (
+        dashCount > spacesCount &&
+        dashCount > periodCount &&
+        dashCount > comaCount &&
+        dashCount > underscoreCount &&
+        dashCount > plusCount &&
+        dashCount > percentCount
+      ) {
         returnData = bas.cDash;
-      } else if (comaCount > spacesCount && comaCount > periodCount && comaCount > dashCount && comaCount > underscoreCount && comaCount > plusCount && comaCount > percentCount) {
+      } else if (
+        comaCount > spacesCount &&
+        comaCount > periodCount &&
+        comaCount > dashCount &&
+        comaCount > underscoreCount &&
+        comaCount > plusCount &&
+        comaCount > percentCount
+      ) {
         returnData = bas.cComa;
-      } else if (underscoreCount > spacesCount && underscoreCount > periodCount && underscoreCount > dashCount && underscoreCount > comaCount && underscoreCount > plusCount && underscoreCount > percentCount) {
+      } else if (
+        underscoreCount > spacesCount &&
+        underscoreCount > periodCount &&
+        underscoreCount > dashCount &&
+        underscoreCount > comaCount &&
+        underscoreCount > plusCount &&
+        underscoreCount > percentCount
+      ) {
         returnData = bas.cUnderscore;
-      } else if (plusCount > spacesCount && plusCount > periodCount && plusCount > dashCount && plusCount > comaCount && plusCount > underscoreCount && plusCount > percentCount) {
+      } else if (
+        plusCount > spacesCount &&
+        plusCount > periodCount &&
+        plusCount > dashCount &&
+        plusCount > comaCount &&
+        plusCount > underscoreCount &&
+        plusCount > percentCount
+      ) {
         returnData = bas.cPlus;
-      } else if (percentCount > spacesCount && percentCount > periodCount && percentCount > dashCount && percentCount > comaCount && percentCount > underscoreCount && percentCount > plusCount) {
+      } else if (
+        percentCount > spacesCount &&
+        percentCount > periodCount &&
+        percentCount > dashCount &&
+        percentCount > comaCount &&
+        percentCount > underscoreCount &&
+        percentCount > plusCount
+      ) {
         returnData = bas.cPercent;
       } else {
         // We don't need to be showing this warning unless we are debugging.
         // WARNING: Mixed string. Cannot determine what delimiter should be used to break up the string into words.
-        await loggers.consoleLog(namespacePrefix + functionName, msg.cDetermineWordDelimiterMessage1 + msg.cDetermineWordDelimiterMessage2 +
-          msg.cDetermineWordDelimiterMessage3 + msg.cDetermineWordDelimiterMessage4);
+        await loggers.consoleLog(
+          namespacePrefix + functionName,
+          msg.cDetermineWordDelimiterMessage1 +
+            msg.cDetermineWordDelimiterMessage2 +
+            msg.cDetermineWordDelimiterMessage3 +
+            msg.cDetermineWordDelimiterMessage4,
+        );
       }
     }
   } // End-if (inputData)
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.creturnDataIs + returnData,
+  );
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
@@ -341,13 +597,22 @@ async function determineWordDelimiter(inputData, inputMetaData) {
 async function countDelimiterInString(inputData, inputMetaData) {
   let functionName = countDelimiterInString.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.cinputDataIs + inputData,
+  );
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.cinputMetaDataIs + inputMetaData,
+  );
   let returnData = 0;
   if (inputData && inputMetaData) {
-    returnData = (inputData.split(inputMetaData).length - 1);
+    returnData = inputData.split(inputMetaData).length - 1;
   }
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.creturnDataIs + returnData,
+  );
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
@@ -365,22 +630,36 @@ async function countDelimiterInString(inputData, inputMetaData) {
 async function getWordCountInString(inputData, inputMetaData) {
   let functionName = getWordCountInString.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.cinputDataIs + inputData,
+  );
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.cinputMetaDataIs + inputMetaData,
+  );
   let returnData = 0;
   if (inputData) {
     let wordDelimiter = await determineWordDelimiter(inputData, inputMetaData);
     if (wordDelimiter === sys.cCamelCase) {
-      returnData = await countCamelCaseWords(inputData, '');
-    } else if (wordDelimiter !== '') {
+      returnData = await countCamelCaseWords(inputData, "");
+    } else if (wordDelimiter !== "") {
       returnData = inputData.split(wordDelimiter).length;
     } else {
       // We don't need to be showing this warning unless we are debugging.
       // WARNING: Mixed string. Cannot determine how words are delimited in the string. Unable to count words.
-      await loggers.consoleLog(namespacePrefix + functionName, msg.cGetWordCountInStringMessage1 + msg.cGetWordCountInStringMessage2 + msg.cGetWordCountInStringMessage3);
+      await loggers.consoleLog(
+        namespacePrefix + functionName,
+        msg.cGetWordCountInStringMessage1 +
+          msg.cGetWordCountInStringMessage2 +
+          msg.cGetWordCountInStringMessage3,
+      );
     }
   } // End-if (inputData)
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.creturnDataIs + returnData,
+  );
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
@@ -399,22 +678,42 @@ async function isStringList(inputData, inputMetaData) {
   let functionName = isStringList.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   console.log(msg.cinputDataIs + inputData);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.cinputDataIs + inputData,
+  );
   console.log(msg.cinputMetaDataIs + inputMetaData);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.cinputMetaDataIs + inputMetaData,
+  );
   let returnData = false;
   if (inputData) {
-    let primaryCommandDelimiter = await configurator.getConfigurationSetting(wrd.csystem, cfg.cprimaryCommandDelimiter);
-    let secondaryCommandDelimiter = await configurator.getConfigurationSetting(wrd.csystem, cfg.csecondaryCommandDelimiter);
-    let tertiaryCommandDelimiter = await configurator.getConfigurationSetting(wrd.csystem, cfg.ctertiaryCommandDelimiter);
-    if (inputData.includes(primaryCommandDelimiter) === true ||
-    inputData.includes(secondaryCommandDelimiter) === true ||
-    inputData.includes(tertiaryCommandDelimiter) === true) {
+    let primaryCommandDelimiter = await configurator.getConfigurationSetting(
+      wrd.csystem,
+      cfg.cprimaryCommandDelimiter,
+    );
+    let secondaryCommandDelimiter = await configurator.getConfigurationSetting(
+      wrd.csystem,
+      cfg.csecondaryCommandDelimiter,
+    );
+    let tertiaryCommandDelimiter = await configurator.getConfigurationSetting(
+      wrd.csystem,
+      cfg.ctertiaryCommandDelimiter,
+    );
+    if (
+      inputData.includes(primaryCommandDelimiter) === true ||
+      inputData.includes(secondaryCommandDelimiter) === true ||
+      inputData.includes(tertiaryCommandDelimiter) === true
+    ) {
       returnData = true;
     }
   } // End-if (inputData)
   console.log(msg.creturnDataIs + returnData);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.creturnDataIs + returnData,
+  );
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
@@ -428,31 +727,63 @@ async function isStringList(inputData, inputMetaData) {
  * @author Seth Hollingsead
  * @date 2022/01/23
  */
-async function aggregateNumericalDifferenceBetweenTwoStrings(inputData, inputMetaData) {
+async function aggregateNumericalDifferenceBetweenTwoStrings(
+  inputData,
+  inputMetaData,
+) {
   let functionName = aggregateNumericalDifferenceBetweenTwoStrings.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.cinputDataIs + inputData,
+  );
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.cinputMetaDataIs + inputMetaData,
+  );
   let returnData = -1;
   if (inputData && inputMetaData) {
     // Convert the input strings to lower case and clean them up for parsing.
-    let string1 = inputData.toLowerCase().replace(/\W/g, '');
-    let string2 = inputMetaData.toLowerCase().replace(/\W/g, '');
-    await loggers.consoleLog(namespacePrefix + functionName, msg.cstring1Is + string1);
-    await loggers.consoleLog(namespacePrefix + functionName, msg.cstring2Is + string2);
+    let string1 = inputData.toLowerCase().replace(/\W/g, "");
+    let string2 = inputMetaData.toLowerCase().replace(/\W/g, "");
+    await loggers.consoleLog(
+      namespacePrefix + functionName,
+      msg.cstring1Is + string1,
+    );
+    await loggers.consoleLog(
+      namespacePrefix + functionName,
+      msg.cstring2Is + string2,
+    );
 
     // Build some arrays of variations on string 2, we will use these for doing the comparisons.
-    let variation0 = Array(string2.length + 1).fill(0).map((v, i) => i);
+    let variation0 = Array(string2.length + 1)
+      .fill(0)
+      .map((v, i) => i);
     let variation1 = Array(string2.length + 1).fill(0);
-    await loggers.consoleLog(namespacePrefix + functionName, msg.cvariation0ValueIs + variation0);
-    await loggers.consoleLog(namespacePrefix + functionName, msg.cvariation1ValueIs + variation1);
+    await loggers.consoleLog(
+      namespacePrefix + functionName,
+      msg.cvariation0ValueIs + variation0,
+    );
+    await loggers.consoleLog(
+      namespacePrefix + functionName,
+      msg.cvariation1ValueIs + variation1,
+    );
 
     for (let i = 0; i < string1.length; i++) {
-      await loggers.consoleLog(namespacePrefix + functionName, msg.ciValueIs + i);
+      await loggers.consoleLog(
+        namespacePrefix + functionName,
+        msg.ciValueIs + i,
+      );
       variation1[0] = i + 1;
-      await loggers.consoleLog(namespacePrefix + functionName, msg.cvariation0ValueIs + variation0);
+      await loggers.consoleLog(
+        namespacePrefix + functionName,
+        msg.cvariation0ValueIs + variation0,
+      );
       for (let j = 0; j < string2.length; j++) {
-        await loggers.consoleLog(namespacePrefix + functionName, msg.cjValueIs + j);
+        await loggers.consoleLog(
+          namespacePrefix + functionName,
+          msg.cjValueIs + j,
+        );
         let deletionCost = variation0[j + 1] + 1;
         let insertionCost = variation1[j] + 1;
         let substitutionCost;
@@ -461,11 +792,27 @@ async function aggregateNumericalDifferenceBetweenTwoStrings(inputData, inputMet
         } else {
           substitutionCost = variation0[j] + 1;
         }
-        await loggers.consoleLog(namespacePrefix + functionName, msg.cdeletionCostIs + deletionCost);
-        await loggers.consoleLog(namespacePrefix + functionName, msg.cinsertionCostIs + insertionCost);
-        await loggers.consoleLog(namespacePrefix + functionName, msg.csubstitutionCostIs + substitutionCost);
-        variation1[j + 1] = math.min(deletionCost, insertionCost, substitutionCost);
-        await loggers.consoleLog(namespacePrefix + functionName, msg.cvariation1ValueIs + variation1);
+        await loggers.consoleLog(
+          namespacePrefix + functionName,
+          msg.cdeletionCostIs + deletionCost,
+        );
+        await loggers.consoleLog(
+          namespacePrefix + functionName,
+          msg.cinsertionCostIs + insertionCost,
+        );
+        await loggers.consoleLog(
+          namespacePrefix + functionName,
+          msg.csubstitutionCostIs + substitutionCost,
+        );
+        variation1[j + 1] = math.min(
+          deletionCost,
+          insertionCost,
+          substitutionCost,
+        );
+        await loggers.consoleLog(
+          namespacePrefix + functionName,
+          msg.cvariation1ValueIs + variation1,
+        );
       } // End-for (let j = 0; j < string2.length; j++)
       let temp = variation1;
       variation1 = variation0;
@@ -473,7 +820,10 @@ async function aggregateNumericalDifferenceBetweenTwoStrings(inputData, inputMet
     } // End-for (let i = 0; i < string1.length; i++)
     returnData = variation0[string2.length];
   } // End-if (inputData && inputMetaData)
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.creturnDataIs + returnData,
+  );
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
@@ -489,5 +839,5 @@ export default {
   countDelimiterInString,
   getWordCountInString,
   isStringList,
-  aggregateNumericalDifferenceBetweenTwoStrings
+  aggregateNumericalDifferenceBetweenTwoStrings,
 };

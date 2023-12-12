@@ -13,18 +13,27 @@
  */
 
 // Internal imports
-import configurator from '../executrix/configurator.js';
-import D from '../structures/data.js';
+import configurator from "../executrix/configurator.js";
+import D from "../structures/data.js";
 // External imports
-import hayConst from '@haystacks/constants';
-import chalk from 'chalk';
-import path from 'path';
+import hayConst from "@haystacks/constants";
+import chalk from "chalk";
+import path from "path";
 
-const {bas, clr, cfg, msg, sys, wrd} = hayConst;
-const baseFileName = path.basename(import.meta.url, path.extname(import.meta.url));
+const { bas, clr, cfg, msg, sys, wrd } = hayConst;
+const baseFileName = path.basename(
+  import.meta.url,
+  path.extname(import.meta.url),
+);
 // framework.executrix.colorizer.
 // eslint-disable-next-line no-unused-vars
-const namespacePrefix = wrd.cframework + bas.cDot + wrd.cexecutrix + bas.cDot + baseFileName + bas.cDot;
+const namespacePrefix =
+  wrd.cframework +
+  bas.cDot +
+  wrd.cexecutrix +
+  bas.cDot +
+  baseFileName +
+  bas.cDot;
 
 /**
  * @function colorizeMessageSimple
@@ -44,15 +53,18 @@ async function colorizeMessageSimple(message, colorArray, isForeground) {
   // console.log(`colorArray is: ${JSON.stringify(colorArray)}`);
   // console.log(`isForeground is: ${isForeground}`);
   let colorizedMessage = message;
-  let colorizeLogsEnabled = await configurator.getConfigurationSetting(wrd.csystem, cfg.cenableColorizedConsoleLogs);
+  let colorizeLogsEnabled = await configurator.getConfigurationSetting(
+    wrd.csystem,
+    cfg.cenableColorizedConsoleLogs,
+  );
   if (colorizeLogsEnabled === true) {
     let red = colorArray[0];
     let green = colorArray[1];
     let blue = colorArray[2];
     if (isForeground === true) {
-      colorizedMessage = chalk.rgb(red,green,blue)(colorizedMessage);
+      colorizedMessage = chalk.rgb(red, green, blue)(colorizedMessage);
     } else {
-      colorizedMessage = chalk.bgRgb(red,green,blue)(colorizedMessage);
+      colorizedMessage = chalk.bgRgb(red, green, blue)(colorizedMessage);
     }
   } // End-if (colorizeLogsEnabled === true)
   // console.log('colorizedMessage is: ' + colorizedMessage);
@@ -78,7 +90,14 @@ async function colorizeMessageSimple(message, colorArray, isForeground) {
  * @author Seth Hollingsead
  * @date 2022/01/28
  */
-async function colorizeMessage(message, className, callerFunctionName, debugFilesSetting, debugFunctionsSetting, flatMessageLog) {
+async function colorizeMessage(
+  message,
+  className,
+  callerFunctionName,
+  debugFilesSetting,
+  debugFunctionsSetting,
+  flatMessageLog,
+) {
   // let functionName = colorizeMessage.name;
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   // console.log(`message is: ${message}`);
@@ -147,80 +166,228 @@ async function colorizeMessage(message, className, callerFunctionName, debugFile
 
   // debugFunctionsSetting = configurator.getConfigurationSetting(cfg.cdebugSetting + bas.cDot + configurationNamespace, configurationName);
 
-  debugFilesModuleFontStyleSetting = await configurator.getConfigurationSetting(cfg.cdebugSetting + bas.cDot + className, bas.cAt + sys.cModuleFontStyle);
+  debugFilesModuleFontStyleSetting = await configurator.getConfigurationSetting(
+    cfg.cdebugSetting + bas.cDot + className,
+    bas.cAt + sys.cModuleFontStyle,
+  );
   // console.log('debugFilesModuleFontStyleSetting is: ' + debugFilesModuleFontStyleSetting);
-  debugFilesFunctionFontStyleSetting = await configurator.getConfigurationSetting(cfg.cdebugSetting + bas.cDot + className, bas.cAt + sys.cFunctionFontStyle);
+  debugFilesFunctionFontStyleSetting =
+    await configurator.getConfigurationSetting(
+      cfg.cdebugSetting + bas.cDot + className,
+      bas.cAt + sys.cFunctionFontStyle,
+    );
   // console.log('debugFilesFunctionFontStyleSetting is: ' + debugFilesFunctionFontStyleSetting);
-  debugFilesMessageFontStyleSetting = await configurator.getConfigurationSetting(cfg.cdebugSetting + bas.cDot + className, bas.cAt + sys.cMessageFontStyle);
+  debugFilesMessageFontStyleSetting =
+    await configurator.getConfigurationSetting(
+      cfg.cdebugSetting + bas.cDot + className,
+      bas.cAt + sys.cMessageFontStyle,
+    );
   // console.log('debugFilesMessageFontStyleSetting is: ' + debugFilesMessageFontStyleSetting);
-  debugFilesDataFontStyleSetting = await configurator.getConfigurationSetting(cfg.cdebugSetting + bas.cDot + className, bas.cAt + sys.cDataFontStyle);
+  debugFilesDataFontStyleSetting = await configurator.getConfigurationSetting(
+    cfg.cdebugSetting + bas.cDot + className,
+    bas.cAt + sys.cDataFontStyle,
+  );
   // console.log('debugFilesDataFontStyleSetting is: ' + debugFilesDataFontStyleSetting);
-  debugFilesModuleFontColorSetting = await configurator.getConfigurationSetting(cfg.cdebugSetting + bas.cDot + className, bas.cAt + sys.cModuleFontColor);
+  debugFilesModuleFontColorSetting = await configurator.getConfigurationSetting(
+    cfg.cdebugSetting + bas.cDot + className,
+    bas.cAt + sys.cModuleFontColor,
+  );
   // console.log('debugFilesModuleFontColorSetting is: ' + debugFilesModuleFontColorSetting);
-  debugFilesFunctionFontColorSetting = await configurator.getConfigurationSetting(cfg.cdebugSetting + bas.cDot + className, bas.cAt + sys.cFunctionFontColor);
+  debugFilesFunctionFontColorSetting =
+    await configurator.getConfigurationSetting(
+      cfg.cdebugSetting + bas.cDot + className,
+      bas.cAt + sys.cFunctionFontColor,
+    );
   // console.log('debugFilesFunctionFontColorSetting is: ' + debugFilesFunctionFontColorSetting);
-  debugFilesMessageFontColorSetting = await configurator.getConfigurationSetting(cfg.cdebugSetting + bas.cDot + className, bas.cAt + sys.cMessageFontColor);
+  debugFilesMessageFontColorSetting =
+    await configurator.getConfigurationSetting(
+      cfg.cdebugSetting + bas.cDot + className,
+      bas.cAt + sys.cMessageFontColor,
+    );
   // console.log('debugFilesMessageFontColorSetting is: ' + debugFilesMessageFontColorSetting);
-  debugFilesDataFontColorSetting = await configurator.getConfigurationSetting(cfg.cdebugSetting + bas.cDot + className, bas.cAt + sys.cDataFontColor);
+  debugFilesDataFontColorSetting = await configurator.getConfigurationSetting(
+    cfg.cdebugSetting + bas.cDot + className,
+    bas.cAt + sys.cDataFontColor,
+  );
   // console.log('debugFilesDataFontColorSetting is: ' + debugFilesDataFontColorSetting);
-  debugFilesModuleFontBackgroundColorSetting = await configurator.getConfigurationSetting(cfg.cdebugSetting + bas.cDot + className, bas.cAt + sys.cModuleFontBackgroundColor);
+  debugFilesModuleFontBackgroundColorSetting =
+    await configurator.getConfigurationSetting(
+      cfg.cdebugSetting + bas.cDot + className,
+      bas.cAt + sys.cModuleFontBackgroundColor,
+    );
   // console.log('debugFilesModuleFontBackgroundColorSetting is: ' + debugFilesModuleFontBackgroundColorSetting);
-  debugFilesFunctionFontBackgroundColorSetting = await configurator.getConfigurationSetting(cfg.cdebugSetting + bas.cDot + className, bas.cAt + sys.cFunctionFontBackgroundColor);
+  debugFilesFunctionFontBackgroundColorSetting =
+    await configurator.getConfigurationSetting(
+      cfg.cdebugSetting + bas.cDot + className,
+      bas.cAt + sys.cFunctionFontBackgroundColor,
+    );
   // console.log('debugFilesFunctionFontBackgroundColorSetting is: ' + debugFilesFunctionFontBackgroundColorSetting);
-  debugFilesMessageFontBackgroundColorSetting = await configurator.getConfigurationSetting(cfg.cdebugSetting + bas.cDot + className, bas.cAt + sys.cMessageFontBackgroundColor);
+  debugFilesMessageFontBackgroundColorSetting =
+    await configurator.getConfigurationSetting(
+      cfg.cdebugSetting + bas.cDot + className,
+      bas.cAt + sys.cMessageFontBackgroundColor,
+    );
   // console.log('debugFilesMessageFontBackgroundColorSetting is: ' + debugFilesMessageFontBackgroundColorSetting);
-  debugFilesDataFontBackgroundColorSetting = await configurator.getConfigurationSetting(cfg.cdebugSetting + bas.cDot + className, bas.cAt + sys.cDataFontBackgroundColor);
+  debugFilesDataFontBackgroundColorSetting =
+    await configurator.getConfigurationSetting(
+      cfg.cdebugSetting + bas.cDot + className,
+      bas.cAt + sys.cDataFontBackgroundColor,
+    );
   // console.log('debugFilesDataFontBackgroundColorSetting is: ' + debugFilesDataFontBackgroundColorSetting);
 
-  debugFunctionsModuleFontStyleSetting = await configurator.getConfigurationSetting(cfg.cdebugSetting + bas.cDot + className, callerFunctionName + bas.cAt + sys.cModuleFontStyle);
+  debugFunctionsModuleFontStyleSetting =
+    await configurator.getConfigurationSetting(
+      cfg.cdebugSetting + bas.cDot + className,
+      callerFunctionName + bas.cAt + sys.cModuleFontStyle,
+    );
   // console.log('debugFunctionsModuleFontStyleSetting is: ' + debugFunctionsModuleFontStyleSetting);
-  debugFunctionsFunctionFontStyleSetting = await configurator.getConfigurationSetting(cfg.cdebugSetting + bas.cDot + className, callerFunctionName + bas.cAt + sys.cFunctionFontStyle);
+  debugFunctionsFunctionFontStyleSetting =
+    await configurator.getConfigurationSetting(
+      cfg.cdebugSetting + bas.cDot + className,
+      callerFunctionName + bas.cAt + sys.cFunctionFontStyle,
+    );
   // console.log('debugFunctionsFunctionFontStyleSetting is: ' + debugFunctionsFunctionFontStyleSetting);
-  debugFunctionsMessageFontStyleSetting = await configurator.getConfigurationSetting(cfg.cdebugSetting + bas.cDot + className, callerFunctionName + bas.cAt + sys.cMessageFontStyle);
+  debugFunctionsMessageFontStyleSetting =
+    await configurator.getConfigurationSetting(
+      cfg.cdebugSetting + bas.cDot + className,
+      callerFunctionName + bas.cAt + sys.cMessageFontStyle,
+    );
   // console.log('debugFunctionsMessageFontStyleSetting is: ' + debugFunctionsMessageFontStyleSetting);
-  debugFunctionsDataFontStyleSetting = await configurator.getConfigurationSetting(cfg.cdebugSetting + bas.cDot + className, callerFunctionName + bas.cAt + sys.cDataFontStyle);
+  debugFunctionsDataFontStyleSetting =
+    await configurator.getConfigurationSetting(
+      cfg.cdebugSetting + bas.cDot + className,
+      callerFunctionName + bas.cAt + sys.cDataFontStyle,
+    );
   // console.log('debugFunctionsDataFontStyleSetting is: ' + debugFunctionsDataFontStyleSetting);
-  debugFunctionsModuleFontColorSetting = await configurator.getConfigurationSetting(cfg.cdebugSetting + bas.cDot + className, callerFunctionName + bas.cAt + sys.cModuleFontColor);
+  debugFunctionsModuleFontColorSetting =
+    await configurator.getConfigurationSetting(
+      cfg.cdebugSetting + bas.cDot + className,
+      callerFunctionName + bas.cAt + sys.cModuleFontColor,
+    );
   // console.log('debugFunctionsModuleFontColorSetting is: ' + debugFunctionsModuleFontColorSetting);
-  debugFunctionsFunctionFontColorSetting = await configurator.getConfigurationSetting(cfg.cdebugSetting + bas.cDot + className, callerFunctionName + bas.cAt + sys.cFunctionFontColor);
+  debugFunctionsFunctionFontColorSetting =
+    await configurator.getConfigurationSetting(
+      cfg.cdebugSetting + bas.cDot + className,
+      callerFunctionName + bas.cAt + sys.cFunctionFontColor,
+    );
   // console.log('debugFunctionsFunctionFontColorSetting is: ' + debugFunctionsFunctionFontColorSetting);
-  debugFunctionsMessageFontColorSetting = await configurator.getConfigurationSetting(cfg.cdebugSetting + bas.cDot + className, callerFunctionName + bas.cAt + sys.cMessageFontColor);
+  debugFunctionsMessageFontColorSetting =
+    await configurator.getConfigurationSetting(
+      cfg.cdebugSetting + bas.cDot + className,
+      callerFunctionName + bas.cAt + sys.cMessageFontColor,
+    );
   // console.log('debugFunctionsMessageFontColorSetting is: ' + debugFunctionsMessageFontColorSetting);
-  debugFunctionsDataFontColorSetting = await configurator.getConfigurationSetting(cfg.cdebugSetting + bas.cDot + className, callerFunctionName + bas.cAt + sys.cDataFontColor);
+  debugFunctionsDataFontColorSetting =
+    await configurator.getConfigurationSetting(
+      cfg.cdebugSetting + bas.cDot + className,
+      callerFunctionName + bas.cAt + sys.cDataFontColor,
+    );
   // console.log('debugFunctionsDataFontColorSetting is: ' + debugFunctionsDataFontColorSetting);
-  debugFunctionsModuleFontBackgroundColorSetting = await configurator.getConfigurationSetting(cfg.cdebugSetting + bas.cDot + className, callerFunctionName + bas.cAt + sys.cModuleFontBackgroundColor);
+  debugFunctionsModuleFontBackgroundColorSetting =
+    await configurator.getConfigurationSetting(
+      cfg.cdebugSetting + bas.cDot + className,
+      callerFunctionName + bas.cAt + sys.cModuleFontBackgroundColor,
+    );
   // console.log('debugFunctionsModuleFontBackgroundColorSetting is: ' + debugFunctionsModuleFontBackgroundColorSetting);
-  debugFunctionsFunctionFontBackgroundColorSetting = await configurator.getConfigurationSetting(cfg.cdebugSetting + bas.cDot + className, callerFunctionName + bas.cAt + sys.cFunctionFontBackgroundColor);
+  debugFunctionsFunctionFontBackgroundColorSetting =
+    await configurator.getConfigurationSetting(
+      cfg.cdebugSetting + bas.cDot + className,
+      callerFunctionName + bas.cAt + sys.cFunctionFontBackgroundColor,
+    );
   // console.log('debugFunctionsFunctionFontBackgroundColorSetting is: ' + debugFunctionsFunctionFontBackgroundColorSetting);
-  debugFunctionsMessageFontBackgroundColorSetting = await configurator.getConfigurationSetting(cfg.cdebugSetting + bas.cDot + className, callerFunctionName + bas.cAt + sys.cMessageFontBackgroundColor);
+  debugFunctionsMessageFontBackgroundColorSetting =
+    await configurator.getConfigurationSetting(
+      cfg.cdebugSetting + bas.cDot + className,
+      callerFunctionName + bas.cAt + sys.cMessageFontBackgroundColor,
+    );
   // console.log('debugFunctionsMessageFontBackgroundColorSetting is: ' + debugFunctionsMessageFontBackgroundColorSetting);
-  debugFunctionsDataFontBackgroundColorSetting = await configurator.getConfigurationSetting(cfg.cdebugSetting + bas.cDot + className, callerFunctionName + bas.cAt + sys.cDataFontBackgroundColor);
+  debugFunctionsDataFontBackgroundColorSetting =
+    await configurator.getConfigurationSetting(
+      cfg.cdebugSetting + bas.cDot + className,
+      callerFunctionName + bas.cAt + sys.cDataFontBackgroundColor,
+    );
   // console.log('debugFunctionsDataFontBackgroundColorSetting is: ' + debugFunctionsDataFontBackgroundColorSetting);
 
-  aggregateUnderlineBoldArray = await aggregateStyleSetting(debugFilesModuleFontStyleSetting, debugFunctionsModuleFontStyleSetting, true);
+  aggregateUnderlineBoldArray = await aggregateStyleSetting(
+    debugFilesModuleFontStyleSetting,
+    debugFunctionsModuleFontStyleSetting,
+    true,
+  );
   aggregateModuleFontStyleUnderline = aggregateUnderlineBoldArray[0];
   aggregateModuleFontStyleBold = aggregateUnderlineBoldArray[1];
 
-  aggregateUnderlineBoldArray = await aggregateStyleSetting(debugFilesFunctionFontStyleSetting, debugFunctionsFunctionFontStyleSetting, true);
+  aggregateUnderlineBoldArray = await aggregateStyleSetting(
+    debugFilesFunctionFontStyleSetting,
+    debugFunctionsFunctionFontStyleSetting,
+    true,
+  );
   aggregateFunctionFontStyleUnderline = aggregateUnderlineBoldArray[0];
   aggregateFunctionFontStyleBold = aggregateUnderlineBoldArray[1];
 
-  aggregateUnderlineBoldArray = await aggregateStyleSetting(debugFilesMessageFontStyleSetting, debugFunctionsMessageFontStyleSetting, true);
+  aggregateUnderlineBoldArray = await aggregateStyleSetting(
+    debugFilesMessageFontStyleSetting,
+    debugFunctionsMessageFontStyleSetting,
+    true,
+  );
   aggregateMessageFontStyleUnderline = aggregateUnderlineBoldArray[0];
   aggregateMessageFontStyleBold = aggregateUnderlineBoldArray[1];
 
-  aggregateUnderlineBoldArray = await aggregateStyleSetting(debugFilesDataFontStyleSetting, debugFunctionsDataFontStyleSetting, true);
+  aggregateUnderlineBoldArray = await aggregateStyleSetting(
+    debugFilesDataFontStyleSetting,
+    debugFunctionsDataFontStyleSetting,
+    true,
+  );
   aggregateDataFontStyleUnderline = aggregateUnderlineBoldArray[0];
   aggregateDataFontStyleBold = aggregateUnderlineBoldArray[1];
 
-  aggregateModuleFontColorSetting = await aggregateStyleSetting(debugFilesModuleFontColorSetting, debugFunctionsModuleFontColorSetting, [0, 255, 255], false);
-  aggregateFunctionFontColorSetting = await aggregateStyleSetting(debugFilesFunctionFontColorSetting, debugFunctionsFunctionFontColorSetting, [0, 255, 255], false);
-  aggregateMessageFontColorSetting = await aggregateStyleSetting(debugFilesMessageFontColorSetting, debugFunctionsMessageFontColorSetting, [0, 255, 255], false);
-  aggregateDataFontColorSetting = await aggregateStyleSetting(debugFilesDataFontColorSetting, debugFunctionsDataFontColorSetting, [0, 255, 255], false);
-  aggregateModuleFontBackgroundColorSetting = await aggregateStyleSetting(debugFilesModuleFontBackgroundColorSetting, debugFunctionsModuleFontBackgroundColorSetting, [0, 0, 0], false);
-  aggregateFunctionFontBackgroundColorSetting = await aggregateStyleSetting(debugFilesFunctionFontBackgroundColorSetting, debugFunctionsFunctionFontBackgroundColorSetting, [0, 0, 0], false);
-  aggregateMessageFontBackgroundColorSetting = await aggregateStyleSetting(debugFilesMessageFontBackgroundColorSetting, debugFunctionsMessageFontBackgroundColorSetting, [0, 0, 0], false);
-  aggregateDataFontBackgroundColorSetting = await aggregateStyleSetting(debugFilesDataFontBackgroundColorSetting, debugFunctionsDataFontBackgroundColorSetting, [0, 0, 0], false);
+  aggregateModuleFontColorSetting = await aggregateStyleSetting(
+    debugFilesModuleFontColorSetting,
+    debugFunctionsModuleFontColorSetting,
+    [0, 255, 255],
+    false,
+  );
+  aggregateFunctionFontColorSetting = await aggregateStyleSetting(
+    debugFilesFunctionFontColorSetting,
+    debugFunctionsFunctionFontColorSetting,
+    [0, 255, 255],
+    false,
+  );
+  aggregateMessageFontColorSetting = await aggregateStyleSetting(
+    debugFilesMessageFontColorSetting,
+    debugFunctionsMessageFontColorSetting,
+    [0, 255, 255],
+    false,
+  );
+  aggregateDataFontColorSetting = await aggregateStyleSetting(
+    debugFilesDataFontColorSetting,
+    debugFunctionsDataFontColorSetting,
+    [0, 255, 255],
+    false,
+  );
+  aggregateModuleFontBackgroundColorSetting = await aggregateStyleSetting(
+    debugFilesModuleFontBackgroundColorSetting,
+    debugFunctionsModuleFontBackgroundColorSetting,
+    [0, 0, 0],
+    false,
+  );
+  aggregateFunctionFontBackgroundColorSetting = await aggregateStyleSetting(
+    debugFilesFunctionFontBackgroundColorSetting,
+    debugFunctionsFunctionFontBackgroundColorSetting,
+    [0, 0, 0],
+    false,
+  );
+  aggregateMessageFontBackgroundColorSetting = await aggregateStyleSetting(
+    debugFilesMessageFontBackgroundColorSetting,
+    debugFunctionsMessageFontBackgroundColorSetting,
+    [0, 0, 0],
+    false,
+  );
+  aggregateDataFontBackgroundColorSetting = await aggregateStyleSetting(
+    debugFilesDataFontBackgroundColorSetting,
+    debugFunctionsDataFontBackgroundColorSetting,
+    [0, 0, 0],
+    false,
+  );
 
   if (message.includes(bas.cColon) === true) {
     messageBrokenDown = message.split(/:(.+)/); // Use regular expression to split on the first instance of ":" ONLY!
@@ -240,78 +407,210 @@ async function colorizeMessage(message, className, callerFunctionName, debugFile
       messageContentSuffix = messageContent.split(bas.cSpace)[2];
     } // End-if (messageContent.includes(bas.cDoublePercent) === true)
 
-    className = await setUnderlineFontStyleOnMessageComponentAccordingToSetting(className, aggregateModuleFontStyleUnderline);
-    className = await setBoldFontStyleOnMessageComponentAccordingToSetting(className, aggregateModuleFontStyleBold);
+    className = await setUnderlineFontStyleOnMessageComponentAccordingToSetting(
+      className,
+      aggregateModuleFontStyleUnderline,
+    );
+    className = await setBoldFontStyleOnMessageComponentAccordingToSetting(
+      className,
+      aggregateModuleFontStyleBold,
+    );
     // console.log('Done processing underline & bold settings: className is: ' + className);
-    callerFunctionName = await setUnderlineFontStyleOnMessageComponentAccordingToSetting(callerFunctionName, aggregateFunctionFontStyleUnderline);
-    callerFunctionName = await setBoldFontStyleOnMessageComponentAccordingToSetting(callerFunctionName, aggregateFunctionFontStyleBold);
+    callerFunctionName =
+      await setUnderlineFontStyleOnMessageComponentAccordingToSetting(
+        callerFunctionName,
+        aggregateFunctionFontStyleUnderline,
+      );
+    callerFunctionName =
+      await setBoldFontStyleOnMessageComponentAccordingToSetting(
+        callerFunctionName,
+        aggregateFunctionFontStyleBold,
+      );
     // console.log('Done processing underline & bold settings: callerFunctionName is: ' + callerFunctionName);
 
     if (messageContent.includes(bas.cDoublePercent) === true) {
-      messageContent = await setUnderlineFontStyleOnMessageComponentAccordingToSetting(messageContent, aggregateMessageFontStyleUnderline);
-      messageContentPrefix = await setBoldFontStyleOnMessageComponentAccordingToSetting(messageContentPrefix, aggregateMessageFontStyleBold);
+      messageContent =
+        await setUnderlineFontStyleOnMessageComponentAccordingToSetting(
+          messageContent,
+          aggregateMessageFontStyleUnderline,
+        );
+      messageContentPrefix =
+        await setBoldFontStyleOnMessageComponentAccordingToSetting(
+          messageContentPrefix,
+          aggregateMessageFontStyleBold,
+        );
 
-      messageContentSuffix = await setUnderlineFontStyleOnMessageComponentAccordingToSetting(messageContentSuffix, aggregateMessageFontStyleUnderline);
-      messageContentSuffix = await setBoldFontStyleOnMessageComponentAccordingToSetting(messageContentSuffix, aggregateMessageFontStyleBold);
+      messageContentSuffix =
+        await setUnderlineFontStyleOnMessageComponentAccordingToSetting(
+          messageContentSuffix,
+          aggregateMessageFontStyleUnderline,
+        );
+      messageContentSuffix =
+        await setBoldFontStyleOnMessageComponentAccordingToSetting(
+          messageContentSuffix,
+          aggregateMessageFontStyleBold,
+        );
 
-      messageContentPrefix = await setFontForegroundColorOnMessageComponentAccordingToSetting(messageContentPrefix, aggregateMessageFontColorSetting);
-      messageContentSuffix = await setFontForegroundColorOnMessageComponentAccordingToSetting(messageContentSuffix, aggregateMessageFontColorSetting);
+      messageContentPrefix =
+        await setFontForegroundColorOnMessageComponentAccordingToSetting(
+          messageContentPrefix,
+          aggregateMessageFontColorSetting,
+        );
+      messageContentSuffix =
+        await setFontForegroundColorOnMessageComponentAccordingToSetting(
+          messageContentSuffix,
+          aggregateMessageFontColorSetting,
+        );
 
-      messageContentPrefix = await setFontBackgroundColorOnMessageComponentAccordingToSetting(messageContentPrefix, aggregateMessageFontBackgroundColorSetting);
-      messageContentSuffix = await setFontBackgroundColorOnMessageComponentAccordingToSetting(messageContentSuffix, aggregateMessageFontBackgroundColorSetting);
+      messageContentPrefix =
+        await setFontBackgroundColorOnMessageComponentAccordingToSetting(
+          messageContentPrefix,
+          aggregateMessageFontBackgroundColorSetting,
+        );
+      messageContentSuffix =
+        await setFontBackgroundColorOnMessageComponentAccordingToSetting(
+          messageContentSuffix,
+          aggregateMessageFontBackgroundColorSetting,
+        );
     } else {
-      messageContent = await setUnderlineFontStyleOnMessageComponentAccordingToSetting(messageContent, aggregateMessageFontStyleUnderline);
-      messageContent = await setBoldFontStyleOnMessageComponentAccordingToSetting(messageContent, aggregateMessageFontStyleBold);
+      messageContent =
+        await setUnderlineFontStyleOnMessageComponentAccordingToSetting(
+          messageContent,
+          aggregateMessageFontStyleUnderline,
+        );
+      messageContent =
+        await setBoldFontStyleOnMessageComponentAccordingToSetting(
+          messageContent,
+          aggregateMessageFontStyleBold,
+        );
       // console.log('Done processing underline & bold settings: messageContent is: ' + messageContent);
 
       if (processingMessageData === true) {
-        messageData = await setUnderlineFontStyleOnMessageComponentAccordingToSetting(messageData, aggregateDataFontStyleUnderline);
-        messageData = await setBoldFontStyleOnMessageComponentAccordingToSetting(messageData, aggregateDataFontStyleBold);
+        messageData =
+          await setUnderlineFontStyleOnMessageComponentAccordingToSetting(
+            messageData,
+            aggregateDataFontStyleUnderline,
+          );
+        messageData =
+          await setBoldFontStyleOnMessageComponentAccordingToSetting(
+            messageData,
+            aggregateDataFontStyleBold,
+          );
       } // End-if (processingMessageData === true)
 
-      messageContent = await setFontForegroundColorOnMessageComponentAccordingToSetting(messageContent, aggregateMessageFontColorSetting);
+      messageContent =
+        await setFontForegroundColorOnMessageComponentAccordingToSetting(
+          messageContent,
+          aggregateMessageFontColorSetting,
+        );
       // console.log('Done processing foreground color settings: messageContent is: ' + messageContent);
 
-      messageContent = await setFontBackgroundColorOnMessageComponentAccordingToSetting(messageContent, aggregateMessageFontBackgroundColorSetting);
+      messageContent =
+        await setFontBackgroundColorOnMessageComponentAccordingToSetting(
+          messageContent,
+          aggregateMessageFontBackgroundColorSetting,
+        );
       // console.log('Done processing background color settings: messageContent is: ' + messageContent);
     }
-    className = await setFontForegroundColorOnMessageComponentAccordingToSetting(className, aggregateModuleFontColorSetting);
+    className =
+      await setFontForegroundColorOnMessageComponentAccordingToSetting(
+        className,
+        aggregateModuleFontColorSetting,
+      );
     // console.log('Done processing foreground color settings: className is: ' + className);
-    callerFunctionName = await setFontForegroundColorOnMessageComponentAccordingToSetting(callerFunctionName, aggregateFunctionFontColorSetting);
+    callerFunctionName =
+      await setFontForegroundColorOnMessageComponentAccordingToSetting(
+        callerFunctionName,
+        aggregateFunctionFontColorSetting,
+      );
     // console.log('Done processing foreground color settings: callerFunctionName is: ' + callerFunctionName);
 
-    className = await setFontBackgroundColorOnMessageComponentAccordingToSetting(className, aggregateModuleFontBackgroundColorSetting);
+    className =
+      await setFontBackgroundColorOnMessageComponentAccordingToSetting(
+        className,
+        aggregateModuleFontBackgroundColorSetting,
+      );
     // console.log('Done processing background color settings: className is: ' + className);
-    callerFunctionName = await setFontBackgroundColorOnMessageComponentAccordingToSetting(callerFunctionName, aggregateFunctionFontBackgroundColorSetting);
+    callerFunctionName =
+      await setFontBackgroundColorOnMessageComponentAccordingToSetting(
+        callerFunctionName,
+        aggregateFunctionFontBackgroundColorSetting,
+      );
     // console.log('Done processing background color settings: callerFunctionName is: ' + callerFunctionName);
 
     if (processingMessageData === true) {
-      messageData = await setFontForegroundColorOnMessageComponentAccordingToSetting(messageData, aggregateDataFontColorSetting);
-      messageData = await setFontBackgroundColorOnMessageComponentAccordingToSetting(messageData, aggregateDataFontBackgroundColorSetting);
+      messageData =
+        await setFontForegroundColorOnMessageComponentAccordingToSetting(
+          messageData,
+          aggregateDataFontColorSetting,
+        );
+      messageData =
+        await setFontBackgroundColorOnMessageComponentAccordingToSetting(
+          messageData,
+          aggregateDataFontBackgroundColorSetting,
+        );
     } // End-if (processingMessageData === true)
 
     if (messageContent.includes(bas.cDoublePercent) === true) {
-      colorizedMessage = messageContentPrefix + bas.cSpace + className + bas.cDot + callerFunctionName + bas.cSpace + messageContentSuffix;
+      colorizedMessage =
+        messageContentPrefix +
+        bas.cSpace +
+        className +
+        bas.cDot +
+        callerFunctionName +
+        bas.cSpace +
+        messageContentSuffix;
     } else if (messageData !== undefined) {
       colorizedMessage = messageContent + bas.cColon + messageData;
     } else {
       colorizedMessage = messageContent;
     }
   } else if (flatMessageLog === true) {
-    messageContent = await setUnderlineFontStyleOnMessageComponentAccordingToSetting(messageContent, aggregateMessageFontStyleUnderline);
-    messageContent = await setBoldFontStyleOnMessageComponentAccordingToSetting(messageContent, aggregateMessageFontStyleBold);
+    messageContent =
+      await setUnderlineFontStyleOnMessageComponentAccordingToSetting(
+        messageContent,
+        aggregateMessageFontStyleUnderline,
+      );
+    messageContent = await setBoldFontStyleOnMessageComponentAccordingToSetting(
+      messageContent,
+      aggregateMessageFontStyleBold,
+    );
     if (processingMessageData === true) {
       // console.log('Attempting to format the message data component of the message: ' + messageData);
-      messageData = await setUnderlineFontStyleOnMessageComponentAccordingToSetting(messageData, aggregateDataFontStyleUnderline);
-      messageData = await setBoldFontStyleOnMessageComponentAccordingToSetting(messageData, aggregateDataFontStyleBold);
-      messageData = await setFontForegroundColorOnMessageComponentAccordingToSetting(messageData, aggregateDataFontColorSetting);
-      messageData = await setFontBackgroundColorOnMessageComponentAccordingToSetting(messageData, aggregateDataFontBackgroundColorSetting);
+      messageData =
+        await setUnderlineFontStyleOnMessageComponentAccordingToSetting(
+          messageData,
+          aggregateDataFontStyleUnderline,
+        );
+      messageData = await setBoldFontStyleOnMessageComponentAccordingToSetting(
+        messageData,
+        aggregateDataFontStyleBold,
+      );
+      messageData =
+        await setFontForegroundColorOnMessageComponentAccordingToSetting(
+          messageData,
+          aggregateDataFontColorSetting,
+        );
+      messageData =
+        await setFontBackgroundColorOnMessageComponentAccordingToSetting(
+          messageData,
+          aggregateDataFontBackgroundColorSetting,
+        );
       // console.log('Done formatting all of the messageData: ' + messageData);
     }
-    messageContent = await setFontForegroundColorOnMessageComponentAccordingToSetting(messageContent, aggregateMessageFontColorSetting);
-    messageContent = await setFontBackgroundColorOnMessageComponentAccordingToSetting(callerFunctionName, aggregateMessageFontBackgroundColorSetting);
+    messageContent =
+      await setFontForegroundColorOnMessageComponentAccordingToSetting(
+        messageContent,
+        aggregateMessageFontColorSetting,
+      );
+    messageContent =
+      await setFontBackgroundColorOnMessageComponentAccordingToSetting(
+        callerFunctionName,
+        aggregateMessageFontBackgroundColorSetting,
+      );
     colorizedMessage = messageContent + bas.cColon + messageData;
-  } else { // Just return the message as we got it and make sure it gets out!
+  } else {
+    // Just return the message as we got it and make sure it gets out!
     colorizedMessage = message; // Don't apply any colorizing to the default. We are not likely to hit this case anyway!!
   }
   // console.log('colorizedMessage is: ' + colorizedMessage);
@@ -330,31 +629,55 @@ async function colorizeMessage(message, className, callerFunctionName, debugFile
  * @author Seth Hollingsead
  * @date 2022/01/31
  */
-async function aggregateStyleSetting(settingValue1, settingValue2, defaultColorArray, processAsFontSetting) {
+async function aggregateStyleSetting(
+  settingValue1,
+  settingValue2,
+  defaultColorArray,
+  processAsFontSetting,
+) {
   // let functionName = aggregateStyleSetting.name;
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   // console.log(`settingValue1 is: ${settingValue1}`);
   // console.log(`settingValue2 is: ${settingValue2}`);
   // console.log(`processAsFontSetting is: ${processAsFontSetting}`);
   let styles = [];
-  if ((settingValue1 !== wrd.cDefault || settingValue2 !== wrd.cDefault) && (settingValue1 !== undefined || settingValue2 !== undefined)) {
-    if ((settingValue1 !== wrd.cDefault && settingValue2 === wrd.cDefault) || (settingValue1 !== undefined && settingValue2 === undefined)) {
+  if (
+    (settingValue1 !== wrd.cDefault || settingValue2 !== wrd.cDefault) &&
+    (settingValue1 !== undefined || settingValue2 !== undefined)
+  ) {
+    if (
+      (settingValue1 !== wrd.cDefault && settingValue2 === wrd.cDefault) ||
+      (settingValue1 !== undefined && settingValue2 === undefined)
+    ) {
       if (processAsFontSetting === true) {
         styles = await getFontStyleSettingsFromSetting(settingValue1);
       } else {
-        styles = await getColorStyleSettingFromSetting(settingValue1, defaultColorArray);
+        styles = await getColorStyleSettingFromSetting(
+          settingValue1,
+          defaultColorArray,
+        );
       }
-    } else if ((settingValue1 === wrd.cDefault && settingValue2 !== wrd.cDefault) || (settingValue1 === undefined && settingValue2 !== undefined)) {
+    } else if (
+      (settingValue1 === wrd.cDefault && settingValue2 !== wrd.cDefault) ||
+      (settingValue1 === undefined && settingValue2 !== undefined)
+    ) {
       if (processAsFontSetting === true) {
         styles = await getFontStyleSettingsFromSetting(settingValue2);
       } else {
-        styles = await getColorStyleSettingFromSetting(settingValue2, defaultColorArray);
+        styles = await getColorStyleSettingFromSetting(
+          settingValue2,
+          defaultColorArray,
+        );
       }
-    } else { // They both must be NOT default, so we set the aggregate value to the function setting.
+    } else {
+      // They both must be NOT default, so we set the aggregate value to the function setting.
       if (processAsFontSetting === true) {
         styles = await getFontStyleSettingsFromSetting(settingValue2);
       } else {
-        styles = await getColorStyleSettingFromSetting(settingValue2, defaultColorArray);
+        styles = await getColorStyleSettingFromSetting(
+          settingValue2,
+          defaultColorArray,
+        );
       }
     }
   } // End-if ((settingValue1 !== wrd.cDefault || settingValue2 !== wrd.cDefault) && (settingValue1 !== undefined || settingValue2 !== undefined))
@@ -383,18 +706,30 @@ async function getFontStyleSettingsFromSetting(settingValue) {
       // console.log('aggregateUnderlineBoldArray is: ' + JSON.stringify(aggregateUnderlineBoldArray));
       // console.log('aggregateUnderlineBoldArray[0] is: ' + aggregateUnderlineBoldArray[0]);
       // console.log('aggregateUnderlineBoldArray[1] is: ' + aggregateUnderlineBoldArray[1]);
-      if (aggregateUnderlineBoldArray[0] === wrd.cUnderline && aggregateUnderlineBoldArray[1] === wrd.cBold) {
+      if (
+        aggregateUnderlineBoldArray[0] === wrd.cUnderline &&
+        aggregateUnderlineBoldArray[1] === wrd.cBold
+      ) {
         // aggregateModuleFontStyleUnderline = true;
         // aggregateModuleFontStyleBold = true;
         fontStyles = [true, true];
-      } else if (aggregateUnderlineBoldArray[0] === wrd.cBold && aggregateUnderlineBoldArray[1] === wrd.cUnderline) {
+      } else if (
+        aggregateUnderlineBoldArray[0] === wrd.cBold &&
+        aggregateUnderlineBoldArray[1] === wrd.cUnderline
+      ) {
         // aggregateModuleFontStyleUnderline = true;
         // aggregateModuleFontStyleBold = true;
         fontStyles = [true, true];
-      } else if (aggregateUnderlineBoldArray[0] === wrd.cUnderline && aggregateUnderlineBoldArray[1] !== wrd.cBold) {
+      } else if (
+        aggregateUnderlineBoldArray[0] === wrd.cUnderline &&
+        aggregateUnderlineBoldArray[1] !== wrd.cBold
+      ) {
         // aggregateModuleFontStyleUnderline = true;
         fontStyles = [true, false];
-      } else if (aggregateUnderlineBoldArray[0] === wrd.cBold && aggregateUnderlineBoldArray[1] !== wrd.cUnderline) {
+      } else if (
+        aggregateUnderlineBoldArray[0] === wrd.cBold &&
+        aggregateUnderlineBoldArray[1] !== wrd.cUnderline
+      ) {
         // aggregateModuleFontStyleBold = true;
         fontStyles = [false, true];
       } else {
@@ -423,11 +758,14 @@ async function getFontStyleSettingsFromSetting(settingValue) {
  * @author Seth Hollingsead
  * @date 2022/01/31
  */
-async function getColorStyleSettingFromSetting(settingValue, defaultColorArray) {
+async function getColorStyleSettingFromSetting(
+  settingValue,
+  defaultColorArray,
+) {
   // let functionName = getColorStyleSettingFromSetting.name;
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   // console.log(`settingValue is: ${settingValue}`);
-  let colorStyle = {Red: 0, Green: 0, Blue: 0};
+  let colorStyle = { Red: 0, Green: 0, Blue: 0 };
   let aggregateColorArray = [];
   if (settingValue !== undefined) {
     if (settingValue.includes(bas.cComa) === true) {
@@ -437,7 +775,8 @@ async function getColorStyleSettingFromSetting(settingValue, defaultColorArray) 
       colorStyle[clr.cBlue] = aggregateColorArray[2];
     } else if (settingValue === wrd.cDefault) {
       colorStyle = false; // Do not apply any color settings of any kind!
-    } else { // It must be a named color.
+    } else {
+      // It must be a named color.
       colorStyle = await getNamedColorData(settingValue, defaultColorArray);
     }
   } else {
@@ -466,9 +805,12 @@ async function getNamedColorData(colorName, defaultColorArray) {
   if (D[wrd.ccolors] !== undefined) {
     if (D[wrd.ccolors][sys.cColorData] !== undefined) {
       if (D[wrd.ccolors][sys.cColorData][colorName] !== undefined) {
-        returnColorData[clr.cRed] = D[wrd.ccolors][sys.cColorData][colorName][clr.cRed];
-        returnColorData[clr.cGreen] = D[wrd.ccolors][sys.cColorData][colorName][clr.cGreen];
-        returnColorData[clr.cBlue] = D[wrd.ccolors][sys.cColorData][colorName][clr.cBlue];
+        returnColorData[clr.cRed] =
+          D[wrd.ccolors][sys.cColorData][colorName][clr.cRed];
+        returnColorData[clr.cGreen] =
+          D[wrd.ccolors][sys.cColorData][colorName][clr.cGreen];
+        returnColorData[clr.cBlue] =
+          D[wrd.ccolors][sys.cColorData][colorName][clr.cBlue];
       } else {
         returnColorData = defaultColorArray;
       }
@@ -492,14 +834,20 @@ async function getNamedColorData(colorName, defaultColorArray) {
  * @author Seth Hollingsead
  * @date 2022/01/31
  */
-async function setUnderlineFontStyleOnMessageComponentAccordingToSetting(messageComponent, underlineSettingValue) {
+async function setUnderlineFontStyleOnMessageComponentAccordingToSetting(
+  messageComponent,
+  underlineSettingValue,
+) {
   // let functionName = setUnderlineFontStyleOnMessageComponentAccordingToSetting.name;
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   // console.log(`messageComponent is: ${messageComponent}`);
   // console.log(`underlineSettingValue is: ${underlineSettingValue}`);
   let returnMessageComponent = messageComponent;
   if (underlineSettingValue === true) {
-    let colorizeLogsEnabled = await configurator.getConfigurationSetting(wrd.csystem, cfg.cenableColorizedConsoleLogs);
+    let colorizeLogsEnabled = await configurator.getConfigurationSetting(
+      wrd.csystem,
+      cfg.cenableColorizedConsoleLogs,
+    );
     if (colorizeLogsEnabled === true) {
       returnMessageComponent.chalk.underline(returnMessageComponent);
     }
@@ -518,14 +866,20 @@ async function setUnderlineFontStyleOnMessageComponentAccordingToSetting(message
  * @author Seth Hollingsead
  * @date 2022/01/31
  */
-async function setBoldFontStyleOnMessageComponentAccordingToSetting(messageComponent, boldSettingValue) {
+async function setBoldFontStyleOnMessageComponentAccordingToSetting(
+  messageComponent,
+  boldSettingValue,
+) {
   // let functionName = setBoldFontStyleOnMessageComponentAccordingToSetting.name;
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   // console.log(`messageComponent is: ${messageComponent}`);
   // console.log(`boldSettingValue is: ${boldSettingValue}`);
   let returnMessageComponent = messageComponent;
   if (boldSettingValue === true) {
-    let colorizeLogsEnabled = await configurator.getConfigurationSetting(wrd.csystem, cfg.cenableColorizedConsoleLogs);
+    let colorizeLogsEnabled = await configurator.getConfigurationSetting(
+      wrd.csystem,
+      cfg.cenableColorizedConsoleLogs,
+    );
     if (colorizeLogsEnabled === true) {
       returnMessageComponent = chalk.bold(returnMessageComponent);
     }
@@ -545,7 +899,10 @@ async function setBoldFontStyleOnMessageComponentAccordingToSetting(messageCompo
  * @author Seth Hollingsead
  * @date 2022/01/31
  */
-async function setFontForegroundColorOnMessageComponentAccordingToSetting(messageComponent, colorSettingValue) {
+async function setFontForegroundColorOnMessageComponentAccordingToSetting(
+  messageComponent,
+  colorSettingValue,
+) {
   // let functionName = setFontForegroundColorOnMessageComponentAccordingToSetting.name;
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   // console.log(`messageComponent is: ${messageComponent}`);
@@ -556,10 +913,21 @@ async function setFontForegroundColorOnMessageComponentAccordingToSetting(messag
     // console.log('Green color setting value is: ' + colorSettingValue[clr.cGreen]);
     // console.log('Blue color setting value is: ' + colorSettingValue[clr.cBlue]);
     // console.log('Before using chalk, returnMessageComponent is: ' + returnMessageComponent);
-    if (colorSettingValue[clr.cRed] !== undefined && colorSettingValue[clr.cGreen] !== undefined && colorSettingValue[clr.cBlue] !== undefined) {
-      let colorizeLogsEnabled = await configurator.getConfigurationSetting(wrd.csystem, cfg.cenableColorizedConsoleLogs);
+    if (
+      colorSettingValue[clr.cRed] !== undefined &&
+      colorSettingValue[clr.cGreen] !== undefined &&
+      colorSettingValue[clr.cBlue] !== undefined
+    ) {
+      let colorizeLogsEnabled = await configurator.getConfigurationSetting(
+        wrd.csystem,
+        cfg.cenableColorizedConsoleLogs,
+      );
       if (colorizeLogsEnabled === true) {
-        returnMessageComponent = chalk.rgb(colorSettingValue[clr.cRed], colorSettingValue[clr.cGreen], colorSettingValue[clr.cBlue])(returnMessageComponent);
+        returnMessageComponent = chalk.rgb(
+          colorSettingValue[clr.cRed],
+          colorSettingValue[clr.cGreen],
+          colorSettingValue[clr.cBlue],
+        )(returnMessageComponent);
       }
     } // End-if (colorSettingValue[clr.cRed] !== undefined && colorSettingValue[clr.cGreen] !== undefined && colorSettingValue[clr.cBlue] !== undefined)
   } // End-if (colorSettingValue !== false && colorSettingValue !== undefined)
@@ -578,7 +946,10 @@ async function setFontForegroundColorOnMessageComponentAccordingToSetting(messag
  * @author Seth Hollingsead
  * @date 2022/01/31
  */
-async function setFontBackgroundColorOnMessageComponentAccordingToSetting(messageComponent, colorSettingValue) {
+async function setFontBackgroundColorOnMessageComponentAccordingToSetting(
+  messageComponent,
+  colorSettingValue,
+) {
   // let functionName = setFontBackgroundColorOnMessageComponentAccordingToSetting.name;
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   // console.log(`messageComponent is: ${messageComponent}`);
@@ -589,10 +960,21 @@ async function setFontBackgroundColorOnMessageComponentAccordingToSetting(messag
     // console.log('Green color setting value is: ' + colorSettingValue[clr.cGreen]);
     // console.log('Blue color setting value is: ' + colorSettingValue[clr.cBlue]);
     // console.log('Before using chalk, returnMessageComponent is: ' + returnMessageComponent);
-    if (colorSettingValue[clr.cRed] !== undefined && colorSettingValue[clr.cGreen] !== undefined && colorSettingValue[clr.cBlue] !== undefined) {
-      let colorizeLogsEnabled = await configurator.getConfigurationSetting(wrd.csystem, cfg.cenableColorizedConsoleLogs);
+    if (
+      colorSettingValue[clr.cRed] !== undefined &&
+      colorSettingValue[clr.cGreen] !== undefined &&
+      colorSettingValue[clr.cBlue] !== undefined
+    ) {
+      let colorizeLogsEnabled = await configurator.getConfigurationSetting(
+        wrd.csystem,
+        cfg.cenableColorizedConsoleLogs,
+      );
       if (colorizeLogsEnabled === true) {
-        returnMessageComponent = chalk.bgRgb(colorSettingValue[clr.cRed], colorSettingValue[clr.cGreen], colorSettingValue[clr.cBlue])(returnMessageComponent);
+        returnMessageComponent = chalk.bgRgb(
+          colorSettingValue[clr.cRed],
+          colorSettingValue[clr.cGreen],
+          colorSettingValue[clr.cBlue],
+        )(returnMessageComponent);
       }
     } // End-if (colorSettingValue[clr.cRed] !== undefined && colorSettingValue[clr.cGreen] !== undefined && colorSettingValue[clr.cBlue] !== undefined)
   } // End-if (colorSettingValue !== false && colorSettingValue !== undefined)
@@ -616,10 +998,10 @@ async function removeFontStyles(message) {
   // let functionName = removeFontStyles.name;
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   // console.log(`message is: ${message}`);
-  let returnMessage = '';
+  let returnMessage = "";
   if (message) {
     // [48;2;255;255;255m[38;2;0;0;0mBEGIN main program loop[39m[49m
-    returnMessage = message.replace(/\u001b[^m]*?m/g,'');
+    returnMessage = message.replace(/\u001b[^m]*?m/g, "");
   } // End-if (message)
   // console.log('returnMessage is: ' + returnMessage);
   // console.log(`END ${namespacePrefix}${functionName} function`);
@@ -637,5 +1019,5 @@ export default {
   setBoldFontStyleOnMessageComponentAccordingToSetting,
   setFontForegroundColorOnMessageComponentAccordingToSetting,
   setFontBackgroundColorOnMessageComponentAccordingToSetting,
-  removeFontStyles
+  removeFontStyles,
 };

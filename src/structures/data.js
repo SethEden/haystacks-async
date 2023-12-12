@@ -11,11 +11,11 @@
  */
 
 // Internal imports
-import ruleBroker from '../brokers/ruleBroker.js';
+import ruleBroker from "../brokers/ruleBroker.js";
 // External imports
-import hayConst from '@haystacks/constants';
+import hayConst from "@haystacks/constants";
 
-const {biz, msg, sys, wrd} = hayConst;
+const { biz, msg, sys, wrd } = hayConst;
 let data = {};
 
 /**
@@ -27,14 +27,16 @@ let data = {};
  * @date 2023/01/09
  */
 async function getData() {
-  return {configuration: data[wrd.cconfiguration],
+  return {
+    configuration: data[wrd.cconfiguration],
     businessRules: data[sys.cbusinessRules],
     Commands: data[wrd.cCommands],
     colors: data[wrd.ccolors],
     ConstantsValidationData: data[sys.cConstantsValidationData],
     CommandsAliases: data[sys.cCommandsAliases],
     CommandWorkflow: data[sys.cCommandWorkflows],
-    Themes: data[wrd.cThemes]};
+    Themes: data[wrd.cThemes],
+  };
 }
 
 /**
@@ -71,7 +73,10 @@ async function setData(newData) {
     //   data[dataEntityKey] = newData[dataEntityKey];
     // }
     try {
-      data = await ruleBroker.processRules([newData, ''], [biz.cobjectDeepClone]);
+      data = await ruleBroker.processRules(
+        [newData, ""],
+        [biz.cobjectDeepClone],
+      );
     } catch (err) {
       // await loggers.consoleLog(namespacePrefix + functionName, msg.cERROR_Colon + err.message);
       // ERROR: Unable to clone data and re-assign it to the D-data structure.
@@ -88,5 +93,5 @@ async function setData(newData) {
 export default {
   [wrd.cdata]: data,
   getData,
-  setData
+  setData,
 };

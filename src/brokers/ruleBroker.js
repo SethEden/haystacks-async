@@ -13,18 +13,22 @@
  */
 
 // Internal imports
-import ruleParsing from '../businessRules/rules/ruleParsing.js';
-import rules from '../businessRules/rulesLibrary.js';
-import D from '../structures/data.js';
+import ruleParsing from "../businessRules/rules/ruleParsing.js";
+import rules from "../businessRules/rulesLibrary.js";
+import D from "../structures/data.js";
 // External imports
-import hayConst from '@haystacks/constants';
-import path from 'path';
+import hayConst from "@haystacks/constants";
+import path from "path";
 
-const {bas, biz, msg, sys, wrd} = hayConst;
-const baseFileName = path.basename(import.meta.url, path.extname(import.meta.url));
+const { bas, biz, msg, sys, wrd } = hayConst;
+const baseFileName = path.basename(
+  import.meta.url,
+  path.extname(import.meta.url),
+);
 // framework.brokers.ruleBroker.
 // eslint-disable-next-line no-unused-vars
-const namespacePrefix = wrd.cframework + bas.cDot + wrd.cbrokers + bas.cDot + baseFileName + bas.cDot;
+const namespacePrefix =
+  wrd.cframework + bas.cDot + wrd.cbrokers + bas.cDot + baseFileName + bas.cDot;
 
 /**
  * @function bootStrapBusinessRules
@@ -147,24 +151,33 @@ async function processRules(inputs, rulesToExecute) {
   // console.log(`rulesToExecute is: ${JSON.stringify(rulesToExecute)}`);
   let returnData;
   let inputMetaData;
-  if (rulesToExecute && await ruleParsing.doAllRulesExist(rulesToExecute)) {
+  if (rulesToExecute && (await ruleParsing.doAllRulesExist(rulesToExecute))) {
     if (inputs) {
       returnData = inputs[0];
       inputMetaData = inputs[1];
     }
     for (let rule in rulesToExecute) {
       // Make sure we don't call the internal rule processor, directly from the public interface.
-      if (await Object.prototype.hasOwnProperty.call(rulesToExecute, rule) && rule != biz.cprocessRulesInternal) {
+      if (
+        (await Object.prototype.hasOwnProperty.call(rulesToExecute, rule)) &&
+        rule != biz.cprocessRulesInternal
+      ) {
         let key = rule;
         // console.log(`key is: ${key}`);
         let value = rulesToExecute[key];
         // console.log(`value is: ${value}`);
-        returnData = await D[sys.cbusinessRules][value](returnData, inputMetaData);
+        returnData = await D[sys.cbusinessRules][value](
+          returnData,
+          inputMetaData,
+        );
       } // End-if (rulesToExecute.hasOwnProperty(rule))
     } // End-for (let rule in rulesToExecute)
   } else {
     // WARNING: Some rules do not exist:
-    console.log(msg.cProcessRulesWarningSomeRulesDoNotExist + JSON.stringify(rulesToExecute));
+    console.log(
+      msg.cProcessRulesWarningSomeRulesDoNotExist +
+        JSON.stringify(rulesToExecute),
+    );
   } // End-if (rulesToExecute && doAllRulesExist(rulesToExecute))
   // console.log(`returnData is: ${JSON.stringify(returnData)}`);
   // console.log(`END ${namespacePrefix}${functionName} function`);
@@ -191,10 +204,12 @@ async function removePluginBusinessRules(pluginName) {
   // NOTE: We are going to have to get the names of the individual business rules for the plugin,
   // from the plugin constants validation for business rules,
   // then iterate over them to remove all of the plugin business rules one by one.
-  let pluginConstantsValidation = D[sys.cConstantsValidationData][wrd.cPlugins][pluginName];
+  let pluginConstantsValidation =
+    D[sys.cConstantsValidationData][wrd.cPlugins][pluginName];
   let pluginConstantsValidationBusinessRules = {};
   if (pluginConstantsValidation) {
-    pluginConstantsValidationBusinessRules = pluginConstantsValidation[sys.cpluginBusinessConstantsValidation];
+    pluginConstantsValidationBusinessRules =
+      pluginConstantsValidation[sys.cpluginBusinessConstantsValidation];
   } else {
     // ERROR: Constants validation data for the specified plugin was not found. Plugin:
     console.log(msg.cremovePluginBusinessRulesMessage01 + pluginName);
@@ -202,12 +217,15 @@ async function removePluginBusinessRules(pluginName) {
   if (pluginConstantsValidationBusinessRules) {
     try {
       for (const pluginBusinessRuleKey in pluginConstantsValidationBusinessRules) {
-        let pluginBusinessRuleConstValidationObject = pluginConstantsValidationBusinessRules[pluginBusinessRuleKey];
+        let pluginBusinessRuleConstValidationObject =
+          pluginConstantsValidationBusinessRules[pluginBusinessRuleKey];
         // pluginBusinessRuleConstValidationObject is:
         // console.log(msg.cpluginBusinessRuleConstValidationObjectIs + JSON.stringify(pluginBusinessRuleConstValidationObject));
         // Removing plugin business rule:
         // console.log(msg.cremovePluginBusinessRulesMessage02 + pluginBusinessRuleConstValidationObject[wrd.cActual]);
-        delete allBusinessRules[pluginBusinessRuleConstValidationObject[wrd.cActual]];
+        delete allBusinessRules[
+          pluginBusinessRuleConstValidationObject[wrd.cActual]
+        ];
       }
       returnData = true;
     } catch (err) {
@@ -230,5 +248,5 @@ export default {
   addClientRules,
   addPluginRules,
   processRules,
-  removePluginBusinessRules
+  removePluginBusinessRules,
 };

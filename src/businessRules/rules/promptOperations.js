@@ -13,16 +13,27 @@
  */
 
 // Internal imports
-import loggers from '../../executrix/loggers.js';
+import loggers from "../../executrix/loggers.js";
 // External imports
-import hayConst from '@haystacks/constants';
+import hayConst from "@haystacks/constants";
 // import fs from 'fs';
-import path from 'path';
+import path from "path";
 
-const {bas, msg, sys, wrd} = hayConst;
-const baseFileName = path.basename(import.meta.url, path.extname(import.meta.url));
+const { bas, msg, sys, wrd } = hayConst;
+const baseFileName = path.basename(
+  import.meta.url,
+  path.extname(import.meta.url),
+);
 // framework.businessRules.rules.promptOperations.
-const namespacePrefix = wrd.cframework + bas.cDot + sys.cbusinessRules + bas.cDot + wrd.crules + bas.cDot + baseFileName + bas.cDot;
+const namespacePrefix =
+  wrd.cframework +
+  bas.cDot +
+  sys.cbusinessRules +
+  bas.cDot +
+  wrd.crules +
+  bas.cDot +
+  baseFileName +
+  bas.cDot;
 // const term = 13; // carriage return
 
 /**
@@ -39,9 +50,15 @@ const namespacePrefix = wrd.cframework + bas.cDot + sys.cbusinessRules + bas.cDo
 async function prompt(inputData, inputMetaData) {
   let functionName = prompt.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.caskIs + JSON.stringify(inputData));
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
-  let returnData = '';
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.caskIs + JSON.stringify(inputData),
+  );
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.cinputMetaDataIs + JSON.stringify(inputMetaData),
+  );
+  let returnData = "";
   if (inputData) {
     returnData = new Promise((resolve) => {
       process.stdout.write(inputData);
@@ -51,7 +68,10 @@ async function prompt(inputData, inputMetaData) {
       });
     });
   }
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.creturnDataIs + JSON.stringify(returnData),
+  );
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
@@ -68,22 +88,34 @@ async function prompt(inputData, inputMetaData) {
 async function promptRaw(inputData, inputMetaData) {
   let functionName = promptRaw.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
-  let returnData = '';
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.cinputDataIs + JSON.stringify(inputData),
+  );
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.cinputMetaDataIs + JSON.stringify(inputMetaData),
+  );
+  let returnData = "";
   process.stdin.setRawMode(true); // Allows reading of single key presses
   process.stdin.resume(); // Resume reading from stdin
 
   returnData = new Promise((resolve) => {
     process.stdin.once(wrd.cdata, (data) => {
       const key = data.toString();
-      if (key === '\u0003') { // gen.cCTRLC) { // CTRL+C
+      if (key === "\u0003") {
+        // gen.cCTRLC) { // CTRL+C
         console.log(wrd.cExiting + bas.cSpace + wrd.cApplication);
         process.exit(0);
-      } else if (key.name === wrd.cSpace || key.keyCode === 32 || key === bas.cSpace) {
+      } else if (
+        key.name === wrd.cSpace ||
+        key.keyCode === 32 ||
+        key === bas.cSpace
+      ) {
         process.stdin.setRawMode(false);
-        resolve(' ');
-      } else if (key === '\u001b') { // gen.cESC_Key) {
+        resolve(" ");
+      } else if (key === "\u001b") {
+        // gen.cESC_Key) {
         process.stdin.setRawMode(false); // disable raw mode
         resolve(false); // Return false, so the caller can exit the interactive raw process loop.
       } else {
@@ -92,12 +124,15 @@ async function promptRaw(inputData, inputMetaData) {
       }
     });
   });
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.creturnDataIs + JSON.stringify(returnData),
+  );
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
 export default {
   prompt,
-  promptRaw
+  promptRaw,
 };

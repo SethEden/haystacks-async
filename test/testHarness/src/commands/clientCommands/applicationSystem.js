@@ -12,16 +12,30 @@
  */
 
 // Internal imports
-import * as apc from '../../constants/application.constants.js';
+import * as apc from "../../constants/application.constants.js";
 // External imports
-import haystacks from '@haystacks/async';
-import hayConst from '@haystacks/constants';
-import path from 'path';
+import haystacks from "@haystacks/async";
+import hayConst from "@haystacks/constants";
+import path from "path";
 
-const {bas, cmd, msg, wrd} = hayConst;
-const baseFileName = path.basename(import.meta.url, path.extname(import.meta.url));
+const { bas, cmd, msg, wrd } = hayConst;
+const baseFileName = path.basename(
+  import.meta.url,
+  path.extname(import.meta.url),
+);
 // application.testHarness.commands.clientCommands.applicationSystem.
-const namespacePrefix = wrd.capplication + bas.cDot + apc.cApplicationName + bas.cDot + wrd.ccommands + bas.cDot + wrd.cclient + wrd.cCommands + bas.cDot + baseFileName + bas.cDot;
+const namespacePrefix =
+  wrd.capplication +
+  bas.cDot +
+  apc.cApplicationName +
+  bas.cDot +
+  wrd.ccommands +
+  bas.cDot +
+  wrd.cclient +
+  wrd.cCommands +
+  bas.cDot +
+  baseFileName +
+  bas.cDot;
 
 /**
  * @function applicationHelp
@@ -36,12 +50,30 @@ const namespacePrefix = wrd.capplication + bas.cDot + apc.cApplicationName + bas
  */
 async function applicationHelp(inputData, inputMetaData) {
   let functionName = applicationHelp.name;
-  await haystacks.consoleLog(namespacePrefix, functionName, msg.cBEGIN_Function);
-  await haystacks.consoleLog(namespacePrefix, functionName, msg.cinputDataIs + inputData);
-  await haystacks.consoleLog(namespacePrefix, functionName, msg.cinputMetaDataIs + inputMetaData);
-  let returnData = [true, ''];
-  await haystacks.enqueueCommand(wrd.chelp + bas.cSpace + wrd.cApplication + bas.cComa + wrd.cPlugins);
-  await haystacks.consoleLog(namespacePrefix, functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await haystacks.consoleLog(
+    namespacePrefix,
+    functionName,
+    msg.cBEGIN_Function,
+  );
+  await haystacks.consoleLog(
+    namespacePrefix,
+    functionName,
+    msg.cinputDataIs + inputData,
+  );
+  await haystacks.consoleLog(
+    namespacePrefix,
+    functionName,
+    msg.cinputMetaDataIs + inputMetaData,
+  );
+  let returnData = [true, ""];
+  await haystacks.enqueueCommand(
+    wrd.chelp + bas.cSpace + wrd.cApplication + bas.cComa + wrd.cPlugins,
+  );
+  await haystacks.consoleLog(
+    namespacePrefix,
+    functionName,
+    msg.creturnDataIs + JSON.stringify(returnData),
+  );
   await haystacks.consoleLog(namespacePrefix, functionName, msg.cEND_Function);
   return returnData;
 }
@@ -59,17 +91,39 @@ async function applicationHelp(inputData, inputMetaData) {
  */
 async function applicationWorkflowHelp(inputData, inputMetaData) {
   let functionName = applicationWorkflowHelp.name;
-  await haystacks.consoleLog(namespacePrefix, functionName, msg.cBEGIN_Function);
-  await haystacks.consoleLog(namespacePrefix, functionName, msg.cinputDataIs + inputData);
-  await haystacks.consoleLog(namespacePrefix, functionName, msg.cinputMetaDataIs + inputMetaData);
-  let returnData = [true, ''];
-  await haystacks.enqueueCommand(cmd.cworkflowHelp + bas.cSpace + wrd.cApplication + bas.cComa + wrd.cPlugins);
-  await haystacks.consoleLog(namespacePrefix, functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await haystacks.consoleLog(
+    namespacePrefix,
+    functionName,
+    msg.cBEGIN_Function,
+  );
+  await haystacks.consoleLog(
+    namespacePrefix,
+    functionName,
+    msg.cinputDataIs + inputData,
+  );
+  await haystacks.consoleLog(
+    namespacePrefix,
+    functionName,
+    msg.cinputMetaDataIs + inputMetaData,
+  );
+  let returnData = [true, ""];
+  await haystacks.enqueueCommand(
+    cmd.cworkflowHelp +
+      bas.cSpace +
+      wrd.cApplication +
+      bas.cComa +
+      wrd.cPlugins,
+  );
+  await haystacks.consoleLog(
+    namespacePrefix,
+    functionName,
+    msg.creturnDataIs + JSON.stringify(returnData),
+  );
   await haystacks.consoleLog(namespacePrefix, functionName, msg.cEND_Function);
   return returnData;
 }
 
 export default {
   applicationHelp,
-  applicationWorkflowHelp
-}
+  applicationWorkflowHelp,
+};

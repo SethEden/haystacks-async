@@ -9,13 +9,15 @@
  */
 
 // External imports
-import hayConst from '@haystacks/constants';
-const {wrd} = hayConst;
+import hayConst from "@haystacks/constants";
+const { wrd } = hayConst;
 
-export const cargumentDrivenInterface = wrd.cargument + wrd.cDriven + wrd.cInterface; // argumentDrivenInterface
+export const cargumentDrivenInterface =
+  wrd.cargument + wrd.cDriven + wrd.cInterface; // argumentDrivenInterface
 export const csourcePath = wrd.csource + wrd.cPath; // sourcePath
 export const cdestinationPath = wrd.cdestination + wrd.cPath; // destinationPath
 export const csourceResourcesPath = wrd.csource + wrd.cResources + wrd.cPath; // sourceResourcesPath
-export const cdestinationResourcesPath = wrd.cdestination + wrd.cResources + wrd.cPath; // destinationResourcesPath
+export const cdestinationResourcesPath =
+  wrd.cdestination + wrd.cResources + wrd.cPath; // destinationResourcesPath
 export const creleasePath = wrd.crelease + wrd.cPath; // releasePath
 export const cdeploymentCompleted = wrd.cdeployment + wrd.cCompleted; // deploymentCompleted

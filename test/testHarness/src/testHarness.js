@@ -26,29 +26,32 @@
  */
 
 // Internal imports
-import clientRules from './businessRules/clientRulesLibrary.js';
-import clientCommands from './commands/clientCommandsLibrary.js';
-import * as app_cfg from './constants/application.configuration.constants.js';
-import * as apc from './constants/application.constants.js';
-import * as app_msg from './constants/application.message.constants.js';
-import allAppCV from './resources/constantsValidation/allApplicationConstantsValidationMetadata.js';
+import clientRules from "./businessRules/clientRulesLibrary.js";
+import clientCommands from "./commands/clientCommandsLibrary.js";
+import * as app_cfg from "./constants/application.configuration.constants.js";
+import * as apc from "./constants/application.constants.js";
+import * as app_msg from "./constants/application.message.constants.js";
+import allAppCV from "./resources/constantsValidation/allApplicationConstantsValidationMetadata.js";
 // External imports
-import haystacks from '@haystacks/async';
-import hayConst from '@haystacks/constants';
-import url from 'url';
-import dotenv from 'dotenv';
-import path from 'path';
+import haystacks from "@haystacks/async";
+import hayConst from "@haystacks/constants";
+import url from "url";
+import dotenv from "dotenv";
+import path from "path";
 
-const {bas, biz, cmd, msg, sys, wrd} = hayConst;
-let rootPath = '';
-let baseFileName = path.basename(import.meta.url, path.extname(import.meta.url));
+const { bas, biz, cmd, msg, sys, wrd } = hayConst;
+let rootPath = "";
+let baseFileName = path.basename(
+  import.meta.url,
+  path.extname(import.meta.url),
+);
 // application.testHarness.
 let namespacePrefix = wrd.capplication + bas.cDot + baseFileName + bas.cDot;
 // eslint-disable-next-line no-undef
 global.appRoot = path.resolve(process.cwd());
 dotenv.config();
 // eslint-disable-next-line no-undef
-const {NODE_ENV} = process.env;
+const { NODE_ENV } = process.env;
 let exitConditionArrayIndex = 0;
 
 /**
@@ -63,7 +66,7 @@ async function bootstrapApplication() {
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   rootPath = url.fileURLToPath(path.dirname(import.meta.url));
   let rootPathArray = [];
-  let pathSeparator = '';
+  let pathSeparator = "";
   if (rootPath.includes(bas.cBackSlash) === true) {
     pathSeparator = bas.cBackSlash;
   } else if (rootPath.includes(bas.cForwardSlash) === true) {
@@ -85,9 +88,10 @@ async function bootstrapApplication() {
       clientRegisteredPlugins: rootPath + apc.cFullDevPluginsRegistryPath,
       clientWorkflowsPath: rootPath + apc.cFullDevWorkflowsPath,
       clientThemesPath: rootPath + apc.cFullDevThemesPath,
-      applicationConstantsValidationData: allAppCV.initializeAllClientConstantsValidationData,
+      applicationConstantsValidationData:
+        allAppCV.initializeAllClientConstantsValidationData,
       clientBusinessRules: {},
-      clientCommands: {}
+      clientCommands: {},
     };
   } else if (NODE_ENV === wrd.cproduction) {
     appConfig = {
@@ -101,13 +105,16 @@ async function bootstrapApplication() {
       clientRegisteredPlugins: rootPath + apc.cFullProdPluginsRegistryPath,
       clientWorkflowsPath: rootPath + apc.cFullProdWorkflowsPath,
       clientThemesPath: rootPath + apc.cFullProdThemesPath,
-      applicationConstantsValidationData: allAppCV.initializeAllClientConstantsValidationData,
+      applicationConstantsValidationData:
+        allAppCV.initializeAllClientConstantsValidationData,
       clientBusinessRules: {},
-      clientCommands: {}
+      clientCommands: {},
     };
   } else {
     // WARNING: No .env file found! Going to default to the DEVELOPMENT ENVIRONMENT!
-    console.log(msg.cApplicationWarningMessage1a + msg.cApplicationWarningMessage1b);
+    console.log(
+      msg.cApplicationWarningMessage1a + msg.cApplicationWarningMessage1b,
+    );
     appConfig = {
       FrameworkName: apc.cExpectedActualFrameworkDevName,
       clientRootPath: rootPath,
@@ -119,13 +126,16 @@ async function bootstrapApplication() {
       clientRegisteredPlugins: rootPath + apc.cFullDevPluginsRegistryPath,
       clientWorkflowsPath: rootPath + apc.cFullDevWorkflowsPath,
       clientThemesPath: rootPath + apc.cFullDevThemesPath,
-      applicationConstantsValidationData: allAppCV.initializeAllClientConstantsValidationData,
+      applicationConstantsValidationData:
+        allAppCV.initializeAllClientConstantsValidationData,
       clientBusinessRules: {},
-      clientCommands: {}
+      clientCommands: {},
     };
   }
-  appConfig[sys.cclientBusinessRules] = await clientRules.initClientRulesLibrary();
-  appConfig[sys.cclientCommands] = await clientCommands.initClientCommandsLibrary();
+  appConfig[sys.cclientBusinessRules] =
+    await clientRules.initClientRulesLibrary();
+  appConfig[sys.cclientCommands] =
+    await clientCommands.initClientCommandsLibrary();
   // console.log('appConfig is: ', appConfig);
   await haystacks.initFramework(appConfig);
   // console.log(`END ${namespacePrefix}${functionName} function`);
@@ -140,12 +150,19 @@ async function bootstrapApplication() {
  */
 async function application() {
   let functionName = application.name;
-  await haystacks.consoleLog(namespacePrefix, functionName, msg.cBEGIN_Function);
+  await haystacks.consoleLog(
+    namespacePrefix,
+    functionName,
+    msg.cBEGIN_Function,
+  );
   let argumentDrivenInterface = false;
   let commandInput;
   let commandResult;
 
-  argumentDrivenInterface = await haystacks.getConfigurationSetting(wrd.csystem, app_cfg.cargumentDrivenInterface);
+  argumentDrivenInterface = await haystacks.getConfigurationSetting(
+    wrd.csystem,
+    app_cfg.cargumentDrivenInterface,
+  );
   if (argumentDrivenInterface === undefined) {
     argumentDrivenInterface = false;
   }
@@ -158,11 +175,11 @@ async function application() {
   //
   // We need to strip off any preceding "--" before we try to process it as an actual command.
   // Also need to make sure that the command to execute actually contains the "--" or "/" or "\" or "-".
-  let commandToExecute = '';
+  let commandToExecute = "";
   // Make sure we execute any and all commands so the command queue is empty before
   // we process the command args and add more commands to the command queue.
   // Really this is about getting out the application name, version and about message.
-  while (await haystacks.isCommandQueueEmpty() === false) {
+  while ((await haystacks.isCommandQueueEmpty()) === false) {
     commandResult = await haystacks.processCommandQueue();
   } // End-while (haystacks.isCommandQueueEmpty() === false)
 
@@ -170,18 +187,26 @@ async function application() {
   if (Array.isArray(process.argv) && process.argv.length > 2) {
     // Caught the case that some arguments were passed in as input to the function.
     console.log(app_msg.capplicationMessage00);
-    if (process.argv[2].includes(bas.cDash) === true ||
-    process.argv[2].includes(bas.cForwardSlash) === true ||
-    process.argv[2].includes(bas.cBackSlash) === true) {
-      commandToExecute = await haystacks.executeBusinessRule([process.argv, ''], [biz.caggregateCommandArguments]);
+    if (
+      process.argv[2].includes(bas.cDash) === true ||
+      process.argv[2].includes(bas.cForwardSlash) === true ||
+      process.argv[2].includes(bas.cBackSlash) === true
+    ) {
+      commandToExecute = await haystacks.executeBusinessRule(
+        [process.argv, ""],
+        [biz.caggregateCommandArguments],
+      );
     } else {
-      commandToExecute = await haystacks.executeBusinessRules([process.argv, ''], [biz.caggregateCommandArguments]);
+      commandToExecute = await haystacks.executeBusinessRules(
+        [process.argv, ""],
+        [biz.caggregateCommandArguments],
+      );
     }
-    if (commandToExecute !== '') {
+    if (commandToExecute !== "") {
       console.log(msg.ccommandToExecuteIs + commandToExecute);
       await haystacks.enqueueCommand(commandToExecute);
     }
-    while (await haystacks.isCommandQueueEmpty() === false) {
+    while ((await haystacks.isCommandQueueEmpty()) === false) {
       commandResult = await haystacks.processCommandQueue();
     } // End-while (haystacks.isCommandQueueEmpty() === false)
   } // End-if (!process.argv && process.argv.length > 0)
@@ -189,26 +214,49 @@ async function application() {
   // NOW the application can continue with the interactive interface fi the flag was set to false.
   if (argumentDrivenInterface === false) {
     // BEGIN main program loop
-    await haystacks.consoleLog(namespacePrefix, functionName, app_msg.capplicationMessage01);
+    await haystacks.consoleLog(
+      namespacePrefix,
+      functionName,
+      app_msg.capplicationMessage01,
+    );
 
     // BEGIN command parser
-    await haystacks.consoleLog(namespacePrefix, functionName, app_msg.capplicationMessage02);
-    while(programRunning === true) {
-      if (await haystacks.isCommandQueueEmpty() === true) {
+    await haystacks.consoleLog(
+      namespacePrefix,
+      functionName,
+      app_msg.capplicationMessage02,
+    );
+    while (programRunning === true) {
+      if ((await haystacks.isCommandQueueEmpty()) === true) {
         // biz.cprompt is some how undefined here, although other biz.c<something-else> do still work.
         // We will use wrd.cprompt here because it is working. No idea what the issue is with biz.prompt.
-        commandInput = await haystacks.executeBusinessRules([bas.cGreaterThan, ''], [wrd.cprompt]);
+        commandInput = await haystacks.executeBusinessRules(
+          [bas.cGreaterThan, ""],
+          [wrd.cprompt],
+        );
         await haystacks.enqueueCommand(commandInput);
       } // End-if (haystacks.isCommandQueueEmpty() === true)
       commandResult = await haystacks.processCommandQueue();
       if (commandResult[exitConditionArrayIndex] === false) {
         // END command parser
-        await haystacks.consoleLog(namespacePrefix, functionName, app_msg.capplicationMessage03);
+        await haystacks.consoleLog(
+          namespacePrefix,
+          functionName,
+          app_msg.capplicationMessage03,
+        );
         programRunning = false;
         // END main program loop
-        await haystacks.consoleLog(namespacePrefix, functionName, app_msg.capplicationMessage04);
+        await haystacks.consoleLog(
+          namespacePrefix,
+          functionName,
+          app_msg.capplicationMessage04,
+        );
         // Exiting TEST HARNESS APPLICATION
-        await haystacks.consoleLog(namespacePrefix, functionName, app_msg.capplicationMessage05);
+        await haystacks.consoleLog(
+          namespacePrefix,
+          functionName,
+          app_msg.capplicationMessage05,
+        );
         break;
       } // End-if (commandResult[exitConditionArrayIndex] === false)
     } // End-while (programRunning === true)

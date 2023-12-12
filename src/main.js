@@ -20,23 +20,26 @@
  */
 
 // Internal imports
-import warden from './controllers/warden.js';
-import loggers from './executrix/loggers.js';
-import stack from './structures/stack.js';
-import D from './structures/data.js';
+import warden from "./controllers/warden.js";
+import loggers from "./executrix/loggers.js";
+import stack from "./structures/stack.js";
+import D from "./structures/data.js";
 // External imports
-import hayConst from '@haystacks/constants';
-import url from 'url';
-import dotenv from 'dotenv';
-import path from 'path';
+import hayConst from "@haystacks/constants";
+import url from "url";
+import dotenv from "dotenv";
+import path from "path";
 
-const {bas, biz, cfg, gen, msg, sys, wrd} = hayConst;
-const baseFileName = path.basename(import.meta.url, path.extname(import.meta.url));
+const { bas, biz, cfg, gen, msg, sys, wrd } = hayConst;
+const baseFileName = path.basename(
+  import.meta.url,
+  path.extname(import.meta.url),
+);
 // framework.main.
 const namespacePrefix = wrd.cframework + bas.cDot + baseFileName + bas.cDot;
 dotenv.config();
 // eslint-disable-next-line no-undef
-const {NODE_ENV} = process.env;
+const { NODE_ENV } = process.env;
 
 /**
  * @function initFramework
@@ -52,78 +55,141 @@ async function initFramework(clientConfiguration) {
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   // console.log(`clientConfiguration is: ${JSON.stringify(clientConfiguration)}`);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cclientConfigurationIs + clientConfiguration);
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.cclientConfigurationIs + clientConfiguration,
+  );
 
   // let frameworkRootPath = path.normalize(process.cwd());
   // let frameworkRootPath = path.normalize(path.dirname(import.meta.url));
   let frameworkCodeRootPath = url.fileURLToPath(path.dirname(import.meta.url));
   let pluginCodeRootPath = clientConfiguration[cfg.cclientRootPath];
-  let pluginRootPath = '';
+  let pluginRootPath = "";
   // pluginCodeRootPath is:
   // console.log(msg.cpluginCodeRootPathIs + pluginCodeRootPath);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginCodeRootPathIs + pluginCodeRootPath);
-  let frameworkCommandAliasesPath = '';
-  let pluginCommandAliasesPath = '';
-  let frameworkWorkflowsPath = '';
-  let pluginWorkflowsPath = '';
-  frameworkCodeRootPath = await warden.processRootPath(frameworkCodeRootPath, clientConfiguration[sys.cFrameworkName]) + bas.cDoubleForwardSlash;
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.cpluginCodeRootPathIs + pluginCodeRootPath,
+  );
+  let frameworkCommandAliasesPath = "";
+  let pluginCommandAliasesPath = "";
+  let frameworkWorkflowsPath = "";
+  let pluginWorkflowsPath = "";
+  frameworkCodeRootPath =
+    (await warden.processRootPath(
+      frameworkCodeRootPath,
+      clientConfiguration[sys.cFrameworkName],
+    )) + bas.cDoubleForwardSlash;
   if (clientConfiguration[sys.cPluginName]) {
-    let srcPath = '';
+    let srcPath = "";
     if (clientConfiguration[cfg.cappConfigReferencePath].includes(wrd.csrc)) {
       srcPath = wrd.csrc;
-    } else if (clientConfiguration[cfg.cappConfigReferencePath].includes(wrd.cbin)) {
+    } else if (
+      clientConfiguration[cfg.cappConfigReferencePath].includes(wrd.cbin)
+    ) {
       srcPath = wrd.cbin;
     }
-    pluginRootPath = await warden.processRootPath(pluginCodeRootPath, clientConfiguration[sys.cPluginName]);
-    pluginCodeRootPath = pluginRootPath + srcPath +  bas.cDoubleForwardSlash;
+    pluginRootPath = await warden.processRootPath(
+      pluginCodeRootPath,
+      clientConfiguration[sys.cPluginName],
+    );
+    pluginCodeRootPath = pluginRootPath + srcPath + bas.cDoubleForwardSlash;
     // pluginRootPath is:
     // console.log(msg.cpluginRootPathIs + pluginRootPath);
     // pluginCodeRootPath is:
     // console.log(msg.cpluginCodeRootPathIs + pluginCodeRootPath);
-    await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginCodeRootPathIs + pluginCodeRootPath);
+    await loggers.consoleLog(
+      namespacePrefix + functionName,
+      msg.cpluginCodeRootPathIs + pluginCodeRootPath,
+    );
   }
   // eslint-disable-next-line no-undef
   if (process.platform != gen.cwin32) {
-    frameworkCodeRootPath = await warden.executeBusinessRules([frameworkCodeRootPath, ''], [biz.cswapBackSlashToForwardSlash]);
-    pluginCodeRootPath = await warden.executeBusinessRules([pluginCodeRootPath, ''], [biz.cswapBackSlashToForwardSlash]);
+    frameworkCodeRootPath = await warden.executeBusinessRules(
+      [frameworkCodeRootPath, ""],
+      [biz.cswapBackSlashToForwardSlash],
+    );
+    pluginCodeRootPath = await warden.executeBusinessRules(
+      [pluginCodeRootPath, ""],
+      [biz.cswapBackSlashToForwardSlash],
+    );
   }
   let frameworkRootPath = frameworkCodeRootPath;
   if (NODE_ENV === wrd.cdevelopment) {
-    frameworkCodeRootPath = frameworkCodeRootPath + sys.cFrameworkDevelopRootPath;
+    frameworkCodeRootPath =
+      frameworkCodeRootPath + sys.cFrameworkDevelopRootPath;
   } else if (NODE_ENV === wrd.cproduction) {
-    frameworkCodeRootPath = frameworkCodeRootPath + sys.cFrameworkProductionRootPath;
+    frameworkCodeRootPath =
+      frameworkCodeRootPath + sys.cFrameworkProductionRootPath;
   } else {
     // WARNING: No .env file found! Going to default to the DEVELOPMENT ENVIRONMENT!
-    console.log(msg.cApplicationWarningMessage1a + msg.cApplicationWarningMessage1b);
-    frameworkCodeRootPath = frameworkCodeRootPath + sys.cFrameworkDevelopRootPath;
+    console.log(
+      msg.cApplicationWarningMessage1a + msg.cApplicationWarningMessage1b,
+    );
+    frameworkCodeRootPath =
+      frameworkCodeRootPath + sys.cFrameworkDevelopRootPath;
   }
   // pluginCodeRootPath is:
   // console.log(msg.cpluginCodeRootPathIs + pluginCodeRootPath);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginCodeRootPathIs + pluginCodeRootPath);
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.cpluginCodeRootPathIs + pluginCodeRootPath,
+  );
 
-  frameworkCommandAliasesPath = frameworkCodeRootPath + sys.cframeworkResourcesCommandAliasesPath;
-  pluginCommandAliasesPath = pluginCodeRootPath + sys.cframeworkResourcesCommandAliasesPath;
-  frameworkWorkflowsPath = frameworkCodeRootPath + sys.cframeworkResourcesWorkflowsPath;
-  pluginWorkflowsPath = pluginCodeRootPath + sys.cframeworkResourcesWorkflowsPath;
+  frameworkCommandAliasesPath =
+    frameworkCodeRootPath + sys.cframeworkResourcesCommandAliasesPath;
+  pluginCommandAliasesPath =
+    pluginCodeRootPath + sys.cframeworkResourcesCommandAliasesPath;
+  frameworkWorkflowsPath =
+    frameworkCodeRootPath + sys.cframeworkResourcesWorkflowsPath;
+  pluginWorkflowsPath =
+    pluginCodeRootPath + sys.cframeworkResourcesWorkflowsPath;
 
-  clientConfiguration[cfg.cframeworkRootPath] = path.normalize(frameworkRootPath);
+  clientConfiguration[cfg.cframeworkRootPath] =
+    path.normalize(frameworkRootPath);
   clientConfiguration[cfg.cpluginRootPath] = path.normalize(pluginRootPath);
-  clientConfiguration[cfg.cpluginReleaseResourcesPath] = path.normalize(pluginRootPath + sys.cFrameworkProductionRootPath + sys.cframeworkResourcesPath);
+  clientConfiguration[cfg.cpluginReleaseResourcesPath] = path.normalize(
+    pluginRootPath +
+      sys.cFrameworkProductionRootPath +
+      sys.cframeworkResourcesPath,
+  );
   clientConfiguration[cfg.cframeworkConstantsPath] = hayConst.constantsPath; // frameworkCodeRootPath + sys.cframeworkConstantsPath;
-  clientConfiguration[cfg.cappConfigPath] = clientConfiguration[cfg.cappConfigReferencePath];
-  clientConfiguration[cfg.cframeworkResourcesPath] = path.join(frameworkCodeRootPath, sys.cframeworkResourcesPath);
-  clientConfiguration[cfg.cpluginResourcesPath] = path.join(pluginCodeRootPath, sys.cframeworkResourcesPath);
-  clientConfiguration[cfg.cclientMetaDataPath] = path.join(clientConfiguration[cfg.cclientRootPath], clientConfiguration[cfg.cclientMetaDataPath]);
-  clientConfiguration[cfg.cframeworkFullMetaDataPath] = path.join(clientConfiguration[cfg.cframeworkResourcesPath], sys.cmetaDatadotJson);
-  clientConfiguration[cfg.cpluginFullMetaDataPath] = path.join(clientConfiguration[cfg.cpluginResourcesPath], sys.cmetaDatadotJson);
-  clientConfiguration[cfg.cframeworkConfigPath] = frameworkCodeRootPath + sys.cframeworkResourcesConfigurationPath;
-  clientConfiguration[cfg.cframeworkThemesPath] = frameworkCodeRootPath + sys.cframeworkThemesPath;
-  clientConfiguration[cfg.cframeworkCommandAliasesPath] = frameworkCommandAliasesPath;
+  clientConfiguration[cfg.cappConfigPath] =
+    clientConfiguration[cfg.cappConfigReferencePath];
+  clientConfiguration[cfg.cframeworkResourcesPath] = path.join(
+    frameworkCodeRootPath,
+    sys.cframeworkResourcesPath,
+  );
+  clientConfiguration[cfg.cpluginResourcesPath] = path.join(
+    pluginCodeRootPath,
+    sys.cframeworkResourcesPath,
+  );
+  clientConfiguration[cfg.cclientMetaDataPath] = path.join(
+    clientConfiguration[cfg.cclientRootPath],
+    clientConfiguration[cfg.cclientMetaDataPath],
+  );
+  clientConfiguration[cfg.cframeworkFullMetaDataPath] = path.join(
+    clientConfiguration[cfg.cframeworkResourcesPath],
+    sys.cmetaDatadotJson,
+  );
+  clientConfiguration[cfg.cpluginFullMetaDataPath] = path.join(
+    clientConfiguration[cfg.cpluginResourcesPath],
+    sys.cmetaDatadotJson,
+  );
+  clientConfiguration[cfg.cframeworkConfigPath] =
+    frameworkCodeRootPath + sys.cframeworkResourcesConfigurationPath;
+  clientConfiguration[cfg.cframeworkThemesPath] =
+    frameworkCodeRootPath + sys.cframeworkThemesPath;
+  clientConfiguration[cfg.cframeworkCommandAliasesPath] =
+    frameworkCommandAliasesPath;
   clientConfiguration[cfg.cpluginCommandAliasesPath] = pluginCommandAliasesPath;
   clientConfiguration[cfg.cframeworkWorkflowsPath] = frameworkWorkflowsPath;
   clientConfiguration[cfg.cpluginWorkflowsPath] = pluginWorkflowsPath;
   await warden.initFrameworkSchema(clientConfiguration);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cAllLoadedDataIs + JSON.stringify(D));
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.cAllLoadedDataIs + JSON.stringify(D),
+  );
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   // console.log('All loaded data is: ' + JSON.stringify(D));
   // console.log(`END ${namespacePrefix}${functionName} function`);
@@ -227,10 +293,20 @@ async function loadCommandAliases(commandAliasesPath, contextName) {
   let functionName = loadCommandAliases.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // commandAliasesPath is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.ccommandAliasesPathIs + commandAliasesPath);
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.ccommandAliasesPathIs + commandAliasesPath,
+  );
   // contextName is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.ccontextNameIs + contextName);
-  await warden.setConfigurationSetting(wrd.csystem, contextName, commandAliasesPath);
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.ccontextNameIs + contextName,
+  );
+  await warden.setConfigurationSetting(
+    wrd.csystem,
+    contextName,
+    commandAliasesPath,
+  );
   await warden.loadCommandAliases(contextName);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
 }
@@ -250,9 +326,15 @@ async function loadCommandWorkflows(workflowPath, contextName) {
   let functionName = loadCommandWorkflows.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // workflowPath is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cworkflowPathIs + workflowPath);
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.cworkflowPathIs + workflowPath,
+  );
   // contextName is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.ccontextNameIs + contextName);
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.ccontextNameIs + contextName,
+  );
   await warden.setConfigurationSetting(wrd.csystem, contextName, workflowPath);
   await warden.loadCommandWorkflows(contextName);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
@@ -272,7 +354,10 @@ async function listLoadedPlugins() {
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   let returnData = [];
   returnData = await warden.listLoadedPlugins();
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.creturnDataIs + JSON.stringify(returnData),
+  );
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
@@ -291,7 +376,10 @@ async function listAllPluginsInRegistry() {
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   let returnData = [];
   returnData = await warden.listAllPluginsInRegistry();
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.creturnDataIs + JSON.stringify(returnData),
+  );
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
@@ -310,7 +398,10 @@ async function listAllPluginsInRegistryPath() {
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   let returnData = [];
   returnData = await warden.listAllPluginsInRegistryPath();
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.creturnDataIs + JSON.stringify(returnData),
+  );
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
@@ -329,7 +420,10 @@ async function numberOfPluginsInRegistry() {
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   let returnData = 0;
   returnData = await warden.numberOfPluginsInRegistry();
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.creturnDataIs + JSON.stringify(returnData),
+  );
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
@@ -348,7 +442,10 @@ async function numberOfPluginsInRegistryPath() {
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   let returnData = 0;
   returnData = await warden.numberOfPluginsInRegistryPath();
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.creturnDataIs + JSON.stringify(returnData),
+  );
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
@@ -369,12 +466,21 @@ async function registerPluginByNameAndPath(pluginName, pluginPath) {
   let functionName = registerPluginByNameAndPath.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // pluginName is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginNameIs + pluginName);
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.cpluginNameIs + pluginName,
+  );
   // pluginPath is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginPathIs + pluginPath);
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.cpluginPathIs + pluginPath,
+  );
   let returnData = false;
   returnData = await warden.registerPluginByNameAndPath(pluginName, pluginPath);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.creturnDataIs + JSON.stringify(returnData),
+  );
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
@@ -393,10 +499,16 @@ async function unregisterPluginByName(pluginName) {
   let functionName = unregisterPluginByName.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // pluginName is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginNameIs + pluginName);
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.cpluginNameIs + pluginName,
+  );
   let returnData = false;
   returnData = await warden.unregisterPluginByName(pluginName);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.creturnDataIs + JSON.stringify(returnData),
+  );
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
@@ -414,7 +526,10 @@ async function unregisterPluginByName(pluginName) {
 async function unregisterPlugins(inputData) {
   let functionName = unregisterPlugins.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginListArrayIs + JSON.stringify(inputData));
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.cpluginListArrayIs + JSON.stringify(inputData),
+  );
   let returnData = false;
   let pluginsListArray = [];
   if (Array.isArray(inputData) === true && inputData.length >= 1) {
@@ -425,9 +540,15 @@ async function unregisterPlugins(inputData) {
     pluginsListArray = inputData.split(bas.cSpace);
   }
   // pluginsListArray is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginsListArrayIs + JSON.stringify(pluginsListArray));
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.cpluginsListArrayIs + JSON.stringify(pluginsListArray),
+  );
   returnData = await warden.unregisterPlugins(pluginsListArray);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.creturnDataIs + JSON.stringify(returnData),
+  );
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
@@ -450,7 +571,10 @@ async function syncPluginRegistryWithPath() {
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   let returnData = false;
   returnData = await warden.syncPluginRegistryWithPath();
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.creturnDataIs + JSON.stringify(returnData),
+  );
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
@@ -469,7 +593,10 @@ async function clearAllPluginRegistry() {
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   let returnData = false;
   returnData = await warden.clearAllPluginRegistry();
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.creturnDataIs + JSON.stringify(returnData),
+  );
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
@@ -488,7 +615,10 @@ async function writePluginRegistryToDisk() {
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   let returnData = false;
   returnData = await warden.writePluginRegistryToDisk();
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.creturnDataIs + JSON.stringify(returnData),
+  );
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
@@ -503,14 +633,20 @@ async function writePluginRegistryToDisk() {
  * @author Seth Hollingsead
  * @date 2022/09/15
  */
- async function loadPlugin(pluginPath) {
+async function loadPlugin(pluginPath) {
   let functionName = loadPlugin.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // pluginPath is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginPathIs + pluginPath);
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.cpluginPathIs + pluginPath,
+  );
   let returnData = false;
   returnData = await warden.loadPlugin(pluginPath);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.creturnDataIs + returnData,
+  );
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
@@ -529,10 +665,16 @@ async function loadPlugins(pluginsPaths) {
   let functionName = loadPlugins.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // pluginPaths are:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginsPathsAre + JSON.stringify(pluginsPaths));
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.cpluginsPathsAre + JSON.stringify(pluginsPaths),
+  );
   let returnData = false;
   returnData = await warden.loadPlugins(pluginsPaths);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.creturnDataIs + returnData,
+  );
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
@@ -551,7 +693,10 @@ async function loadPluginsFromRegistry() {
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   let returnData = false;
   returnData = warden.loadPluginsFromRegistry();
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.creturnDataIs + returnData,
+  );
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
@@ -570,10 +715,16 @@ async function unloadPlugin(pluginName) {
   let functionName = loadPlugins.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // pluginName is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginNameIs + pluginName);
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.cpluginNameIs + pluginName,
+  );
   let returnData = false;
   returnData = await warden.unloadPlugin(pluginName);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.creturnDataIs + returnData,
+  );
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
@@ -592,10 +743,16 @@ async function unloadPlugins(pluginNames) {
   let functionName = loadPlugins.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // pluginNames is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginNamesIs + JSON.stringify(pluginNames));
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.cpluginNamesIs + JSON.stringify(pluginNames),
+  );
   let returnData = false;
   returnData = await warden.unloadPlugins(pluginNames);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.creturnDataIs + returnData,
+  );
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
@@ -614,7 +771,10 @@ async function unloadAllPlugins() {
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   let returnData = false;
   returnData = await warden.unloadAllPlugins();
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.creturnDataIs + returnData,
+  );
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
@@ -631,9 +791,12 @@ async function unloadAllPlugins() {
 async function getPluginsRegistryPath() {
   let functionName = getPluginsRegistryPath.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  let returnData = '';
+  let returnData = "";
   returnData = await warden.getPluginsRegistryPath();
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.creturnDataIs + JSON.stringify(returnData),
+  );
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
@@ -651,12 +814,24 @@ async function loadPluginResourceData(contextName, pluginResourcePath) {
   let functionName = loadPluginResourceData.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // contextName is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.ccontextNameIs + contextName);
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.ccontextNameIs + contextName,
+  );
   // pluginResourcePath is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginResourcePathIs + pluginResourcePath);
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.cpluginResourcePathIs + pluginResourcePath,
+  );
   let returnData = {};
-  returnData = await warden.loadPluginResourceData(contextName, pluginResourcePath);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  returnData = await warden.loadPluginResourceData(
+    contextName,
+    pluginResourcePath,
+  );
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.creturnDataIs + JSON.stringify(returnData),
+  );
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
@@ -675,12 +850,21 @@ async function loadAllJsonData(dataPath, contextName) {
   let functionName = loadAllJsonData.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // dataPath is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cdataPathIs + dataPath);
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.cdataPathIs + dataPath,
+  );
   // contextName is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.ccontextNameIs + contextName);
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.ccontextNameIs + contextName,
+  );
   let returnData = false;
   returnData = await warden.loadAllJsonData(dataPath, contextName);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.creturnDataIs + JSON.stringify(returnData),
+  );
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
@@ -698,12 +882,21 @@ async function storeData(dataName, data) {
   let functionName = storeData.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // dataName is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cdataNameIs + dataName);
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.cdataNameIs + dataName,
+  );
   // data is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cdataIs + JSON.stringify(data));
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.cdataIs + JSON.stringify(data),
+  );
   let returnData = false;
   returnData = await warden.storeData(dataName, data);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.creturnDataIs + returnData,
+  );
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
@@ -720,10 +913,16 @@ async function getData(dataName) {
   let functionName = getData.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // dataName is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cdataNameIs + dataName);
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.cdataNameIs + dataName,
+  );
   let returnData = false;
   returnData = await warden.getData(dataName);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.creturnDataIs + returnData,
+  );
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
@@ -741,10 +940,16 @@ async function clearData(dataName) {
   let functionName = clearData.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // dataName is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cdataNameIs + dataName);
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.cdataNameIs + dataName,
+  );
   let returnData = false;
   returnData = await warden.clearData(dataName);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.creturnDataIs + returnData,
+  );
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
@@ -764,11 +969,20 @@ async function executeBusinessRules(inputs, businessRules) {
   let functionName = executeBusinessRules.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // inputs is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputsIs + JSON.stringify(inputs));
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.cinputsIs + JSON.stringify(inputs),
+  );
   // businessRules is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cbusinessRulesIs + JSON.stringify(businessRules));
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.cbusinessRulesIs + JSON.stringify(businessRules),
+  );
   let returnData = await warden.executeBusinessRules(inputs, businessRules);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.creturnDataIs + returnData,
+  );
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
@@ -789,8 +1003,16 @@ async function enqueueCommand(command) {
   let functionName = enqueueCommand.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // command is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.ccommandIs + command);
-  if (await warden.getConfigurationSetting(wrd.csystem, cfg.clogUserEnteredCommands) === true) {
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.ccommandIs + command,
+  );
+  if (
+    (await warden.getConfigurationSetting(
+      wrd.csystem,
+      cfg.clogUserEnteredCommands,
+    )) === true
+  ) {
     await stack.push(sys.cUserEnteredCommandLog, command);
   }
   await warden.enqueueCommand(command);
@@ -811,7 +1033,10 @@ async function isCommandQueueEmpty() {
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   let returnData = false;
   returnData = await warden.isCommandQueueEmpty();
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.creturnDataIs + returnData,
+  );
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
@@ -832,7 +1057,10 @@ async function processCommandQueue() {
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   let returnData = false;
   returnData = await warden.processCommandQueue();
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.creturnDataIs + JSON.stringify(returnData),
+  );
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
@@ -849,17 +1077,34 @@ async function processCommandQueue() {
  * @author Seth Hollingsead
  * @date 222/02/18
  */
-async function setConfigurationSetting(configurationNamespace, configurationName, configurationValue) {
+async function setConfigurationSetting(
+  configurationNamespace,
+  configurationName,
+  configurationValue,
+) {
   let functionName = setConfigurationSetting.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // configurationNamespace is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cconfigurationNamespaceIs + configurationNamespace);
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.cconfigurationNamespaceIs + configurationNamespace,
+  );
   // configurationName is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cconfigurationNameIs + configurationName);
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.cconfigurationNameIs + configurationName,
+  );
   // configurationValue is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cconfigurationValueIs + configurationValue);
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.cconfigurationValueIs + configurationValue,
+  );
   // D[sys.cConfiguration][configurationName] = configurationValue;
-  await warden.setConfigurationSetting(configurationNamespace, configurationName, configurationValue);
+  await warden.setConfigurationSetting(
+    configurationNamespace,
+    configurationName,
+    configurationValue,
+  );
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
 }
 
@@ -873,17 +1118,32 @@ async function setConfigurationSetting(configurationNamespace, configurationName
  * @author Seth Hollingsead
  * @date 2022/02/18
  */
-async function getConfigurationSetting(configurationNamespace, configurationName) {
+async function getConfigurationSetting(
+  configurationNamespace,
+  configurationName,
+) {
   let functionName = getConfigurationSetting.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // configurationNamespace is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cconfigurationNamespaceIs + configurationNamespace);
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.cconfigurationNamespaceIs + configurationNamespace,
+  );
   // configurationName is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cconfigurationNameIs + configurationName);
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.cconfigurationNameIs + configurationName,
+  );
   // let returnConfigurationValue = D[sys.cConfiguration][configurationName];
-  let returnConfigurationValue = await warden.getConfigurationSetting(configurationNamespace, configurationName);
+  let returnConfigurationValue = await warden.getConfigurationSetting(
+    configurationNamespace,
+    configurationName,
+  );
   // returnConfigurationValue is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnConfiguraitonValueIs + returnConfigurationValue);
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.creturnConfiguraitonValueIs + returnConfigurationValue,
+  );
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnConfigurationValue;
 }
@@ -945,5 +1205,5 @@ export default {
   processCommandQueue,
   setConfigurationSetting,
   getConfigurationSetting,
-  consoleLog
+  consoleLog,
 };

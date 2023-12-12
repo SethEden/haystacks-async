@@ -14,16 +14,30 @@
  */
 
 // Internal imports
-import * as apc from '../../constants/application.constants.js';
+import * as apc from "../../constants/application.constants.js";
 // External imports
-import haystacks from '@haystacks/async';
-import hayConst from '@haystacks/constants';
-import path from 'path';
+import haystacks from "@haystacks/async";
+import hayConst from "@haystacks/constants";
+import path from "path";
 
-const {bas, cmd, msg, wrd} = hayConst;
-const baseFileName = path.basename(import.meta.url, path.extname(import.meta.url));
+const { bas, cmd, msg, wrd } = hayConst;
+const baseFileName = path.basename(
+  import.meta.url,
+  path.extname(import.meta.url),
+);
 // applicatino.testHarness.commands.clientCommands.applicationTests.
-const namespacePrefix = wrd.capplication + bas.cDot + apc.cApplicationName + bas.cDot + wrd.ccommands + bas.cDot + wrd.cclient + wrd.cCommands + bas.cDot + baseFileName + bas.cDot;
+const namespacePrefix =
+  wrd.capplication +
+  bas.cDot +
+  apc.cApplicationName +
+  bas.cDot +
+  wrd.ccommands +
+  bas.cDot +
+  wrd.cclient +
+  wrd.cCommands +
+  bas.cDot +
+  baseFileName +
+  bas.cDot;
 
 /**
  * @function validateApplicationConstants
@@ -38,12 +52,34 @@ const namespacePrefix = wrd.capplication + bas.cDot + apc.cApplicationName + bas
  */
 async function validateApplicationConstants(inputData, inputMetaData) {
   let functionName = validateApplicationConstants.name;
-  await haystacks.consoleLog(namespacePrefix, functionName, msg.cBEGIN_Function);
-  await haystacks.consoleLog(namespacePrefix, functionName, msg.cinputDataIs + inputData);
-  await haystacks.consoleLog(namespacePrefix, functionName, msg.cinputMetaDataIs + inputMetaData);
-  let returnData = [true, ''];
-  await haystacks.enqueueCommand(cmd.cvalidateConstants + bas.cSpace + wrd.cApplication + bas.cComa + wrd.cPlugins);
-  await haystacks.consoleLog(namespacePrefix, functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await haystacks.consoleLog(
+    namespacePrefix,
+    functionName,
+    msg.cBEGIN_Function,
+  );
+  await haystacks.consoleLog(
+    namespacePrefix,
+    functionName,
+    msg.cinputDataIs + inputData,
+  );
+  await haystacks.consoleLog(
+    namespacePrefix,
+    functionName,
+    msg.cinputMetaDataIs + inputMetaData,
+  );
+  let returnData = [true, ""];
+  await haystacks.enqueueCommand(
+    cmd.cvalidateConstants +
+      bas.cSpace +
+      wrd.cApplication +
+      bas.cComa +
+      wrd.cPlugins,
+  );
+  await haystacks.consoleLog(
+    namespacePrefix,
+    functionName,
+    msg.creturnDataIs + JSON.stringify(returnData),
+  );
   await haystacks.consoleLog(namespacePrefix, functionName, msg.cEND_Function);
   return returnData;
 }
@@ -61,12 +97,34 @@ async function validateApplicationConstants(inputData, inputMetaData) {
  */
 async function validateApplicationCommandAliases(inputData, inputMetaData) {
   let functionName = validateApplicationCommandAliases.name;
-  await haystacks.consoleLog(namespacePrefix, functionName, msg.cBEGIN_Function);
-  await haystacks.consoleLog(namespacePrefix, functionName, msg.cinputDataIs + inputData);
-  await haystacks.consoleLog(namespacePrefix, functionName, msg.cinputMetaDataIs + inputMetaData);
-  let returnData = [true, ''];
-  await haystacks.enqueueCommand(cmd.cvalidateCommandAliases + bas.cSpace + wrd.cApplication + bas.cComa + wrd.cPlugins);
-  await haystacks.consoleLog(namespacePrefix, functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await haystacks.consoleLog(
+    namespacePrefix,
+    functionName,
+    msg.cBEGIN_Function,
+  );
+  await haystacks.consoleLog(
+    namespacePrefix,
+    functionName,
+    msg.cinputDataIs + inputData,
+  );
+  await haystacks.consoleLog(
+    namespacePrefix,
+    functionName,
+    msg.cinputMetaDataIs + inputMetaData,
+  );
+  let returnData = [true, ""];
+  await haystacks.enqueueCommand(
+    cmd.cvalidateCommandAliases +
+      bas.cSpace +
+      wrd.cApplication +
+      bas.cComa +
+      wrd.cPlugins,
+  );
+  await haystacks.consoleLog(
+    namespacePrefix,
+    functionName,
+    msg.creturnDataIs + JSON.stringify(returnData),
+  );
   await haystacks.consoleLog(namespacePrefix, functionName, msg.cEND_Function);
   return returnData;
 }
@@ -84,12 +142,34 @@ async function validateApplicationCommandAliases(inputData, inputMetaData) {
  */
 async function validateApplicationWorkflows(inputData, inputMetaData) {
   let functionName = validateApplicationWorkflows.name;
-  await haystacks.consoleLog(namespacePrefix, functionName, msg.cBEGIN_Function);
-  await haystacks.consoleLog(namespacePrefix, functionName, msg.cinputDataIs + inputData);
-  await haystacks.consoleLog(namespacePrefix, functionName, msg.cinputMetaDataIs + inputMetaData);
-  let returnData = [true, ''];
-  await haystacks.enqueueCommand(cmd.cvalidateWorkflows + bas.cSpace + wrd.cApplication + bas.cComa + wrd.cPlugins);
-  await haystacks.consoleLog(namespacePrefix, functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await haystacks.consoleLog(
+    namespacePrefix,
+    functionName,
+    msg.cBEGIN_Function,
+  );
+  await haystacks.consoleLog(
+    namespacePrefix,
+    functionName,
+    msg.cinputDataIs + inputData,
+  );
+  await haystacks.consoleLog(
+    namespacePrefix,
+    functionName,
+    msg.cinputMetaDataIs + inputMetaData,
+  );
+  let returnData = [true, ""];
+  await haystacks.enqueueCommand(
+    cmd.cvalidateWorkflows +
+      bas.cSpace +
+      wrd.cApplication +
+      bas.cComa +
+      wrd.cPlugins,
+  );
+  await haystacks.consoleLog(
+    namespacePrefix,
+    functionName,
+    msg.creturnDataIs + JSON.stringify(returnData),
+  );
   await haystacks.consoleLog(namespacePrefix, functionName, msg.cEND_Function);
   return returnData;
 }
@@ -107,12 +187,34 @@ async function validateApplicationWorkflows(inputData, inputMetaData) {
  */
 async function allApplicationValidations(inputData, inputMetaData) {
   let functionName = allApplicationValidations.name;
-  await haystacks.consoleLog(namespacePrefix, functionName, msg.cBEGIN_Function);
-  await haystacks.consoleLog(namespacePrefix, functionName, msg.cinputDataIs + inputData);
-  await haystacks.consoleLog(namespacePrefix, functionName, msg.cinputMetaDataIs + inputMetaData);
-  let returnData = [true, ''];
-  await haystacks.enqueueCommand(cmd.crunAllValidations + bas.cSpace + wrd.cApplication + bas.cComa + wrd.cPlugins);
-  await haystacks.consoleLog(namespacePrefix, functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await haystacks.consoleLog(
+    namespacePrefix,
+    functionName,
+    msg.cBEGIN_Function,
+  );
+  await haystacks.consoleLog(
+    namespacePrefix,
+    functionName,
+    msg.cinputDataIs + inputData,
+  );
+  await haystacks.consoleLog(
+    namespacePrefix,
+    functionName,
+    msg.cinputMetaDataIs + inputMetaData,
+  );
+  let returnData = [true, ""];
+  await haystacks.enqueueCommand(
+    cmd.crunAllValidations +
+      bas.cSpace +
+      wrd.cApplication +
+      bas.cComa +
+      wrd.cPlugins,
+  );
+  await haystacks.consoleLog(
+    namespacePrefix,
+    functionName,
+    msg.creturnDataIs + JSON.stringify(returnData),
+  );
   await haystacks.consoleLog(namespacePrefix, functionName, msg.cEND_Function);
   return returnData;
 }
@@ -121,5 +223,5 @@ export default {
   validateApplicationConstants,
   validateApplicationCommandAliases,
   validateApplicationWorkflows,
-  allApplicationValidations
-}
+  allApplicationValidations,
+};

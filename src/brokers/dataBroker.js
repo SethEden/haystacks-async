@@ -15,18 +15,22 @@
  */
 
 // Internal imports
-import ruleBroker from './ruleBroker.js';
-import configurator from '../executrix/configurator.js';
-import loggers from '../executrix/loggers.js';
-import D from '../structures/data.js';
+import ruleBroker from "./ruleBroker.js";
+import configurator from "../executrix/configurator.js";
+import loggers from "../executrix/loggers.js";
+import D from "../structures/data.js";
 // External imports
-import hayConst from '@haystacks/constants';
-import path from 'path';
+import hayConst from "@haystacks/constants";
+import path from "path";
 
-const {bas, biz, cfg, gen, msg, num, sys, wrd} = hayConst;
-const baseFileName = path.basename(import.meta.url, path.extname(import.meta.url));
+const { bas, biz, cfg, gen, msg, num, sys, wrd } = hayConst;
+const baseFileName = path.basename(
+  import.meta.url,
+  path.extname(import.meta.url),
+);
 // framework.brokers.dataBroker.
-const namespacePrefix = wrd.cframework + bas.cDot + wrd.cbrokers + bas.cDot + baseFileName + bas.cDot;
+const namespacePrefix =
+  wrd.cframework + bas.cDot + wrd.cbrokers + bas.cDot + baseFileName + bas.cDot;
 
 /**
  * @function addPluginConfigurationData
@@ -42,12 +46,24 @@ async function addPluginConfigurationData(pluginName, pluginConfigData) {
   let functionName = addPluginConfigurationData.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // pluginName is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginNameIs + pluginName);
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.cpluginNameIs + pluginName,
+  );
   // pluginConfigData is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginConfigDataIs + JSON.stringify(pluginConfigData));
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.cpluginConfigDataIs + JSON.stringify(pluginConfigData),
+  );
   let returnData = false;
-  returnData = await configurator.addPluginConfigurationData(pluginName, pluginConfigData);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  returnData = await configurator.addPluginConfigurationData(
+    pluginName,
+    pluginConfigData,
+  );
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.creturnDataIs + returnData,
+  );
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
@@ -67,12 +83,18 @@ async function scanDataPath(dataPath) {
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   // console.log(`dataPath is: ${dataPath}`);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cdataPathIs + dataPath);
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.cdataPathIs + dataPath,
+  );
   let rules = [biz.cswapBackSlashToForwardSlash, biz.creadDirectoryContents];
   let filesFound = [];
   // console.log(`execute business rules: ${JSON.stringify(rules)}`);
-  filesFound = await ruleBroker.processRules([dataPath, ''], rules);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cfilesFoundIs + JSON.stringify(filesFound));
+  filesFound = await ruleBroker.processRules([dataPath, ""], rules);
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.cfilesFoundIs + JSON.stringify(filesFound),
+  );
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   // console.log(`filesFound is: ${JSON.stringify(filesFound)}`);
   // console.log(`END ${namespacePrefix}${functionName} function`);
@@ -90,7 +112,10 @@ async function scanDataPath(dataPath) {
  * @author Seth Hollingsead
  * @date 2022/01/18
  */
-async function findUniversalDebugConfigSetting(appConfigFilesToLoad, frameworkConfigFilesToLoad) {
+async function findUniversalDebugConfigSetting(
+  appConfigFilesToLoad,
+  frameworkConfigFilesToLoad,
+) {
   // let functionName = findUniversalDebugConfigSetting.name;
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   // console.log(`appConfigFilesToLoad is: ${JSON.stringify(appConfigFilesToLoad)}`);
@@ -98,8 +123,11 @@ async function findUniversalDebugConfigSetting(appConfigFilesToLoad, frameworkCo
   let universalDebugConfigSetting = false;
   let appConfigDebugSetting = false;
   let frameworkConfigDebugSetting = false;
-  appConfigDebugSetting = await findIndividualDebugConfigSetting(appConfigFilesToLoad);
-  frameworkConfigDebugSetting = await findIndividualDebugConfigSetting(frameworkConfigFilesToLoad);
+  appConfigDebugSetting =
+    await findIndividualDebugConfigSetting(appConfigFilesToLoad);
+  frameworkConfigDebugSetting = await findIndividualDebugConfigSetting(
+    frameworkConfigFilesToLoad,
+  );
   if (appConfigDebugSetting === true || frameworkConfigDebugSetting === true) {
     universalDebugConfigSetting = true;
   }
@@ -132,7 +160,10 @@ async function findIndividualDebugConfigSetting(filesToLoad) {
   for (const element of filesToLoad) {
     let fileToLoad = element;
     // console.log('fileToLoad is: ' + fileToLoad);
-    if (fileToLoad.includes(systemConfigFileName) || fileToLoad.includes(applicationConfigFileName)) {
+    if (
+      fileToLoad.includes(systemConfigFileName) ||
+      fileToLoad.includes(applicationConfigFileName)
+    ) {
       let dataFile = await preprocessJsonFile(fileToLoad);
       multiMergedData[wrd.csystem] = {};
       multiMergedData[wrd.csystem] = dataFile;
@@ -166,37 +197,68 @@ async function loadAllCsvData(filesToLoad, contextName) {
   let functionName = loadAllCsvData.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // filesToLoad is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cfilesToLoadIs + JSON.stringify(filesToLoad));
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.cfilesToLoadIs + JSON.stringify(filesToLoad),
+  );
   // contextName is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.ccontextNameIs + contextName);
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.ccontextNameIs + contextName,
+  );
   // let rules = [biz.cgetFileNameFromPath, biz.cremoveFileExtensionFromFileName];
   let parsedDataFile;
   for (const element of filesToLoad) {
     let fileToLoad = element;
     // File to load is:
-    await loggers.consoleLog(namespacePrefix + functionName, msg.cFileToLoadIs + fileToLoad);
+    await loggers.consoleLog(
+      namespacePrefix + functionName,
+      msg.cFileToLoadIs + fileToLoad,
+    );
     // NOTE: We still need a filename to use as a context for the page data that we just loaded.
     // A context name will be composed of the input context name with the file name we are processing
     // which tells us where we will put the data in the D[contextName] sub-structure.
-    let fileExtension = await ruleBroker.processRules([fileToLoad, ''], [biz.cgetFileExtension, biz.cremoveDotFromFileExtension]);
+    let fileExtension = await ruleBroker.processRules(
+      [fileToLoad, ""],
+      [biz.cgetFileExtension, biz.cremoveDotFromFileExtension],
+    );
     // fileExtension is:
-    await loggers.consoleLog(namespacePrefix + functionName, msg.cfileExtensionIs + fileExtension);
-    if (fileExtension === gen.ccsv || fileExtension === gen.cCsv || fileExtension === gen.cCSV) {
+    await loggers.consoleLog(
+      namespacePrefix + functionName,
+      msg.cfileExtensionIs + fileExtension,
+    );
+    if (
+      fileExtension === gen.ccsv ||
+      fileExtension === gen.cCsv ||
+      fileExtension === gen.cCSV
+    ) {
       // execute business rules:
       // loggers.consoleLog(namespacePrefix + functionName, msg.cexecuteBusinessRulesColon + JSON.stringify(rules));
       // This next line is commented out because it was resulting in colors_colors, which didn't make any sense.
       // contextName = contextName + bas.cUnderscore + ruleBroker.processRules([fileToLoad, ''], rules);
 
       // contextName is:
-      await loggers.consoleLog(namespacePrefix + functionName, msg.ccontextNameIs + contextName);
-      let dataFile = await ruleBroker.processRules([fileToLoad, ''], [biz.cgetCsvData]);
+      await loggers.consoleLog(
+        namespacePrefix + functionName,
+        msg.ccontextNameIs + contextName,
+      );
+      let dataFile = await ruleBroker.processRules(
+        [fileToLoad, ""],
+        [biz.cgetCsvData],
+      );
       // loaded file data is:
-      await loggers.consoleLog(namespacePrefix + functionName , msg.cloadedFileDataIs + JSON.stringify(dataFile));
+      await loggers.consoleLog(
+        namespacePrefix + functionName,
+        msg.cloadedFileDataIs + JSON.stringify(dataFile),
+      );
       parsedDataFile = await processCsvData(dataFile, contextName);
     } // End-if (fileExtension === gen.ccsv || fileExtension === gen.cCsv || fileExtension === gen.cCSV)
   } // End-for (const element of filesToLoad)
   // parsedDataFile is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cparsedDataFileIs + JSON.stringify(parsedDataFile));
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.cparsedDataFileIs + JSON.stringify(parsedDataFile),
+  );
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return parsedDataFile;
 }
@@ -215,40 +277,89 @@ async function loadAllXmlData(filesToLoad, contextName) {
   let functionName = loadAllXmlData.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // filesToLoad is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cfilesToLoadIs + JSON.stringify(filesToLoad));
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.cfilesToLoadIs + JSON.stringify(filesToLoad),
+  );
   // contextName is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.ccontextNameIs + contextName);
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.ccontextNameIs + contextName,
+  );
   let j = 0;
   let multiMergedData = {};
   let parsedDataFile = {};
-  let fileNameRules = [biz.cgetFileNameFromPath, biz.cremoveFileExtensionFromFileName];
+  let fileNameRules = [
+    biz.cgetFileNameFromPath,
+    biz.cremoveFileExtensionFromFileName,
+  ];
   for (let i = 0; i < filesToLoad.length; i++) {
     // BEGIN i-th loop:
-    await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_ithLoop + i);
+    await loggers.consoleLog(
+      namespacePrefix + functionName,
+      msg.cBEGIN_ithLoop + i,
+    );
     let fileToLoad = filesToLoad[i];
-    fileToLoad = await ruleBroker.processRules([fileToLoad, ''], [biz.cswapDoubleForwardSlashToSingleForwardSlash]);
+    fileToLoad = await ruleBroker.processRules(
+      [fileToLoad, ""],
+      [biz.cswapDoubleForwardSlashToSingleForwardSlash],
+    );
     fileToLoad = path.resolve(fileToLoad);
     // File to load is:
-    await loggers.consoleLog(namespacePrefix + functionName, msg.cFileToLoadIs + fileToLoad);
+    await loggers.consoleLog(
+      namespacePrefix + functionName,
+      msg.cFileToLoadIs + fileToLoad,
+    );
     // NOTE: We still need a filename to use as a context for the page data that we just loaded.
     // A context name will be composed of the input context name with the file name we are processing
     // which tells us where we will put the data in the D[contextName] sub-structure.
-    let fileExtension = await ruleBroker.processRules([fileToLoad, ''], [biz.cgetFileExtension, biz.cremoveDotFromFileExtension]);
+    let fileExtension = await ruleBroker.processRules(
+      [fileToLoad, ""],
+      [biz.cgetFileExtension, biz.cremoveDotFromFileExtension],
+    );
     // fileExtension is:
-    await loggers.consoleLog(namespacePrefix + functionName, msg.cfileExtensionIs + fileExtension);
-    if (fileExtension === gen.cxml || fileExtension === gen.cXml || fileExtension === gen.cXML) {
+    await loggers.consoleLog(
+      namespacePrefix + functionName,
+      msg.cfileExtensionIs + fileExtension,
+    );
+    if (
+      fileExtension === gen.cxml ||
+      fileExtension === gen.cXml ||
+      fileExtension === gen.cXML
+    ) {
       // execute business rules:
-      await loggers.consoleLog(namespacePrefix + functionName, msg.cexecuteBusinessRulesColon + JSON.stringify(fileNameRules));
-      contextName = contextName + bas.cUnderscore + await ruleBroker.processRules([fileToLoad, ''], fileNameRules);
+      await loggers.consoleLog(
+        namespacePrefix + functionName,
+        msg.cexecuteBusinessRulesColon + JSON.stringify(fileNameRules),
+      );
+      contextName =
+        contextName +
+        bas.cUnderscore +
+        (await ruleBroker.processRules([fileToLoad, ""], fileNameRules));
       // contextName is:
-      await loggers.consoleLog(namespacePrefix + functionName, msg.ccontextNameIs + contextName);
-      let dataFile = await ruleBroker.processRules([fileToLoad, ''], [biz.cgetXmlData]);
+      await loggers.consoleLog(
+        namespacePrefix + functionName,
+        msg.ccontextNameIs + contextName,
+      );
+      let dataFile = await ruleBroker.processRules(
+        [fileToLoad, ""],
+        [biz.cgetXmlData],
+      );
       // loaded file data is:
-      await loggers.consoleLog(namespacePrefix + functionName, msg.cloadedFileDataIs + JSON.stringify(dataFile));
+      await loggers.consoleLog(
+        namespacePrefix + functionName,
+        msg.cloadedFileDataIs + JSON.stringify(dataFile),
+      );
       // BEGIN PROCESSING ADDITIONAL DATA
-      await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_PROCESSING_ADDITIONAL_DATA);
+      await loggers.consoleLog(
+        namespacePrefix + functionName,
+        msg.cBEGIN_PROCESSING_ADDITIONAL_DATA,
+      );
       // j-th iteration:
-      await loggers.consoleLog(namespacePrefix + functionName, msg.cjthIteration + j);
+      await loggers.consoleLog(
+        namespacePrefix + functionName,
+        msg.cjthIteration + j,
+      );
       if (j === 0) {
         j++;
         multiMergedData = dataFile;
@@ -258,7 +369,10 @@ async function loadAllXmlData(filesToLoad, contextName) {
         // console.log('dataFile is: ' + JSON.stringify(dataFile));
         // let mergeTargetNamespace = determineMergeTarget(multiMergedData, dataFile);
         // mergeTargetNamespace = mergeTargetNamespace.join(bas.cDot);
-        multiMergedData = await ruleBroker.processRules([multiMergedData, dataFile], [biz.cobjectDeepMerge]);
+        multiMergedData = await ruleBroker.processRules(
+          [multiMergedData, dataFile],
+          [biz.cobjectDeepMerge],
+        );
 
         // multiMergedData = mergeData(multiMergedData, wrd.cPage, '', dataFile);
         // multiMergedData = mergeData(multiMergedData, 'CommandWorkflows', '', dataFile);
@@ -266,17 +380,29 @@ async function loadAllXmlData(filesToLoad, contextName) {
         // multiMergedData = Object.assign(multiMergedData, dataFile);
       }
       // DONE PROCESSING ADDITIONAL DATA
-      await loggers.consoleLog(namespacePrefix + functionName, msg.cDONE_PROCESSING_ADDITIONAL_DATA);
+      await loggers.consoleLog(
+        namespacePrefix + functionName,
+        msg.cDONE_PROCESSING_ADDITIONAL_DATA,
+      );
       // MERGED data is:
-      await loggers.consoleLog(namespacePrefix + functionName, msg.cMERGED_dataIs + JSON.stringify(multiMergedData));
+      await loggers.consoleLog(
+        namespacePrefix + functionName,
+        msg.cMERGED_dataIs + JSON.stringify(multiMergedData),
+      );
       dataFile = {};
     } // End-if (fileExtension === gen.cxml || fileExtension === gen.cXml || fileExtension === gen.cXML)
     // END i-th loop:
-    await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_ithLoop + i);
+    await loggers.consoleLog(
+      namespacePrefix + functionName,
+      msg.cEND_ithLoop + i,
+    );
   } // End-for (let i = 0; i < filesToLoad.length; i++)
   parsedDataFile = await processXmlData(multiMergedData, contextName);
   // parsedDataFile contents are:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cparsedDataFileContentsAre + JSON.stringify(parsedDataFile));
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.cparsedDataFileContentsAre + JSON.stringify(parsedDataFile),
+  );
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return parsedDataFile;
 }
@@ -301,9 +427,15 @@ async function loadAllJsonData(filesToLoad, contextName) {
   // console.log(`contextName is: ${contextName}`);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // filesToLoad is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cfilesToLoadIs + JSON.stringify(filesToLoad));
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.cfilesToLoadIs + JSON.stringify(filesToLoad),
+  );
   // contextName is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.ccontextNameIs + contextName);
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.ccontextNameIs + contextName,
+  );
   let foundSystemData = false;
   let systemConfigFileName = sys.csystemConfigFileName; // 'framework.system.json';
   let applicationConfigFileName = sys.capplicationConfigFileName; // 'application.system.json';
@@ -317,7 +449,11 @@ async function loadAllJsonData(filesToLoad, contextName) {
   for (const element1 of filesToLoad) {
     let fileToLoad = element1;
     // console.log('fileToLoad is: ' + fileToLoad);
-    if (fileToLoad.includes(systemConfigFileName) || fileToLoad.includes(applicationConfigFileName) || fileToLoad.includes(pluginConfigFileName)) {
+    if (
+      fileToLoad.includes(systemConfigFileName) ||
+      fileToLoad.includes(applicationConfigFileName) ||
+      fileToLoad.includes(pluginConfigFileName)
+    ) {
       let dataFile = await preprocessJsonFile(fileToLoad);
 
       // NOTE: In this case we have just loaded either the framework configuration data or the application configuration data or the plugin configuration data,
@@ -331,7 +467,11 @@ async function loadAllJsonData(filesToLoad, contextName) {
       multiMergedData[wrd.csystem] = dataFile;
       if (fileToLoad.includes(pluginConfigFileName)) {
         // console.log('****--plugin config setting file is being processed.');
-        if (multiMergedData[wrd.csystem][wrd.csystem + bas.cDot + cfg.cdebugSettings] === true) {
+        if (
+          multiMergedData[wrd.csystem][
+            wrd.csystem + bas.cDot + cfg.cdebugSettings
+          ] === true
+        ) {
           // console.log('****--The plugin config debug settings value is set to true!');
           loadPluginDebugSettings = true;
         }
@@ -346,22 +486,39 @@ async function loadAllJsonData(filesToLoad, contextName) {
   // Now we need to determine if we should load the rest of the data.
   // NOTE: If the filesToLoad contained the pluginConfigFileName, then we will not be able to determine the debugSettings value from the configuration setting.
   // See note above.
-  if (await configurator.getConfigurationSetting(wrd.csystem, cfg.cdebugSettings) === true || loadPluginDebugSettings === true) {
+  if (
+    (await configurator.getConfigurationSetting(
+      wrd.csystem,
+      cfg.cdebugSettings,
+    )) === true ||
+    loadPluginDebugSettings === true
+  ) {
     for (const element2 of filesToLoad) {
       let fileToLoad = element2;
-      if (!fileToLoad.includes(systemConfigFileName) && !fileToLoad.includes(applicationConfigFileName) && !fileToLoad.includes(pluginConfigFileName)
-      && fileToLoad.toUpperCase().includes(gen.cDotJSON) && !fileToLoad.toLowerCase().includes(wrd.cmetadata + gen.cDotjson)) {
+      if (
+        !fileToLoad.includes(systemConfigFileName) &&
+        !fileToLoad.includes(applicationConfigFileName) &&
+        !fileToLoad.includes(pluginConfigFileName) &&
+        fileToLoad.toUpperCase().includes(gen.cDotJSON) &&
+        !fileToLoad.toLowerCase().includes(wrd.cmetadata + gen.cDotjson)
+      ) {
         // Get the filename without the file extension, use that as a key for the data.
-        let filename = await ruleBroker.processRules([fileToLoad, ''], [biz.cgetFileNameFromPath, biz.cremoveFileExtensionFromFileName]);
+        let filename = await ruleBroker.processRules(
+          [fileToLoad, ""],
+          [biz.cgetFileNameFromPath, biz.cremoveFileExtensionFromFileName],
+        );
         // console.log('filename is: ' + filename);
         let dataFile = await preprocessJsonFile(fileToLoad);
         // console.log('dataFile to merge is: ' + JSON.stringify(dataFile));
-        await loggers.consoleLog(namespacePrefix + functionName, msg.cdataFileToMergeIs + JSON.stringify(dataFile));
+        await loggers.consoleLog(
+          namespacePrefix + functionName,
+          msg.cdataFileToMergeIs + JSON.stringify(dataFile),
+        );
         if (!multiMergedData[cfg.cdebugSettings]) {
           multiMergedData[cfg.cdebugSettings] = {};
           if (contextName.includes(wrd.cclient + wrd.cData)) {
             // console.log('clientData first time merge!');
-            multiMergedData[cfg.cdebugSettings] = {[filename]: dataFile};
+            multiMergedData[cfg.cdebugSettings] = { [filename]: dataFile };
           } else {
             // console.log('regular old traditional first time data merge!');
             multiMergedData[cfg.cdebugSettings] = dataFile;
@@ -369,7 +526,9 @@ async function loadAllJsonData(filesToLoad, contextName) {
         } else {
           if (contextName.includes(wrd.cclient + wrd.cData)) {
             // console.log('clientData n-th data merge');
-            Object.assign(multiMergedData[cfg.cdebugSettings], {[filename]: dataFile});
+            Object.assign(multiMergedData[cfg.cdebugSettings], {
+              [filename]: dataFile,
+            });
           } else {
             // console.log('regular old n-th data merge');
             Object.assign(multiMergedData[cfg.cdebugSettings], dataFile);
@@ -381,7 +540,10 @@ async function loadAllJsonData(filesToLoad, contextName) {
   parsedDataFile = multiMergedData;
   // console.log(`parsedDataFile is: ${JSON.stringify(parsedDataFile)}`);
   // console.log(`END ${namespacePrefix}${functionName} function`);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cparsedDataFileIs + JSON.stringify(parsedDataFile));
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.cparsedDataFileIs + JSON.stringify(parsedDataFile),
+  );
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return parsedDataFile;
 }
@@ -399,13 +561,22 @@ async function processCsvData(data, contextName) {
   let functionName = processCsvData.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // input data is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(data));
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.cinputDataIs + JSON.stringify(data),
+  );
   // contextName is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.ccontextNameIs + contextName);
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.ccontextNameIs + contextName,
+  );
   let parsedData = await extractDataFromPapaParseObject(data, contextName);
   let dataCategory = await getDataCategoryFromContextName(contextName);
   // dataCategory is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cdataCategoryIs + dataCategory);
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.cdataCategoryIs + dataCategory,
+  );
   if (contextName.includes(wrd.cWorkflow)) {
     // Processing a workflow
     Object.assign(D[wrd.cWorkflow], parsedData[contextName]);
@@ -414,19 +585,25 @@ async function processCsvData(data, contextName) {
     Object.assign(D[wrd.ccolors], parsedData);
   } else {
     // Processing all other kinds of files.
-    if (typeof D[dataCategory] !== 'undefined' && D[dataCategory]) {
+    if (typeof D[dataCategory] !== "undefined" && D[dataCategory]) {
       Object.assign(D[dataCategory], parsedData);
-      await mergeData(D, dataCategory, '', parsedData);
+      await mergeData(D, dataCategory, "", parsedData);
     } else {
       D[dataCategory] = {};
       Object.assign(D[dataCategory], parsedData);
-      await mergeData(D, dataCategory, '', parsedData);
+      await mergeData(D, dataCategory, "", parsedData);
     }
   }
   // fully parsed data is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cfullyParsedDataIs + JSON.stringify(parsedData));
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.cfullyParsedDataIs + JSON.stringify(parsedData),
+  );
   // D final merge is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cD_finalMergeIs + JSON.stringify(D));
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.cD_finalMergeIs + JSON.stringify(D),
+  );
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return parsedData;
 }
@@ -445,18 +622,30 @@ async function processXmlData(inputData, contextName) {
   let functionName = processXmlData.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // inputData is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.cinputDataIs + JSON.stringify(inputData),
+  );
   // contextName is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.ccontextNameIs + contextName);
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.ccontextNameIs + contextName,
+  );
   let dataCategory = await getDataCategoryFromContextName(contextName);
   // dataCategory is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cdataCategoryIs + dataCategory);
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.cdataCategoryIs + dataCategory,
+  );
   let parsedDataFile = {};
   if (dataCategory === sys.cCommandsAliases) {
     parsedDataFile[sys.cCommandsAliases] = {};
     // eslint-disable-next-line no-unused-vars
     for (const _element1 of Object.keys(inputData[sys.cCommandsAliases])) {
-      inputData[sys.cCommandsAliases] = await processXmlLeafNode(inputData[sys.cCommandsAliases], wrd.cCommand);
+      inputData[sys.cCommandsAliases] = await processXmlLeafNode(
+        inputData[sys.cCommandsAliases],
+        wrd.cCommand,
+      );
     } // End-for (const _element1 of Object.keys(inputData[sys.cCommandsAliases]))
     parsedDataFile = inputData[sys.cCommandsAliases];
     // parsedDataFile[sys.cCommandsAliases][wrd.cCommands] = {};
@@ -464,23 +653,33 @@ async function processXmlData(inputData, contextName) {
     //   let command = inputData[sys.cCommandsAliases][wrd.cCommand][i][bas.cDollar];
     //   parsedDataFile[sys.cCommandsAliases][wrd.cCommands][command.Name] = command;
     // } // End-for (let i = 0; i < inputData[sys.cCommandAliases][wrd.cCommand].length; i++)
-  } else if (dataCategory === sys.cCommandWorkflows) { // End-if (dataCategory === sys.cCommandsAliases)
+  } else if (dataCategory === sys.cCommandWorkflows) {
+    // End-if (dataCategory === sys.cCommandsAliases)
     parsedDataFile[sys.cCommandWorkflows] = {};
     // eslint-disable-next-line no-unused-vars
     for (const _element2 of Object.keys(inputData[sys.cCommandWorkflows])) {
-      inputData[sys.cCommandWorkflows] = await processXmlLeafNode(inputData[sys.cCommandWorkflows], wrd.cWorkflows);
+      inputData[sys.cCommandWorkflows] = await processXmlLeafNode(
+        inputData[sys.cCommandWorkflows],
+        wrd.cWorkflows,
+      );
     } // End-for (const _element2 of Object.keys(inputData[sys.cCommandWorkflows]))
     parsedDataFile = inputData[sys.cCommandWorkflows];
   } else if (dataCategory === sys.cPluginWorkflows) {
     parsedDataFile[sys.cPluginWorkflows] = {};
     // eslint-disable-next-line no-unused-vars
     for (const _element3 of Object.keys(inputData[sys.cPluginWorkflows])) {
-      inputData[sys.cPluginWorkflows] = await processXmlLeafNode(inputData[sys.cPluginWorkflows], wrd.cWorkflows);
+      inputData[sys.cPluginWorkflows] = await processXmlLeafNode(
+        inputData[sys.cPluginWorkflows],
+        wrd.cWorkflows,
+      );
     } // End-for (const _element3 of Object.keys(inputData[sys.cPluginWorkflows]))
     parsedDataFile = inputData[sys.cPluginWorkflows];
   } // End-else-if (dataCategory === sys.cPluginWorkflows)
   // parsedDataFile is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cparsedDataFileIs + JSON.stringify(parsedDataFile));
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.cparsedDataFileIs + JSON.stringify(parsedDataFile),
+  );
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return parsedDataFile;
 }
@@ -502,9 +701,15 @@ async function processXmlLeafNode(inputData, leafNodeName) {
   let functionName = processXmlLeafNode.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // input data is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.cinputDataIs + JSON.stringify(inputData),
+  );
   // leafNodeName is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cleafNodeNameIs + leafNodeName);
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.cleafNodeNameIs + leafNodeName,
+  );
   let returnData = {};
   if (typeof inputData !== wrd.cobject) {
     // inputData ain't an objet.
@@ -515,49 +720,90 @@ async function processXmlLeafNode(inputData, leafNodeName) {
         continue; // Take into consideration only object's own properties.
       }
       // property is:
-      await loggers.consoleLog(namespacePrefix + functionName, msg.cpropertyIs + JSON.stringify(property));
+      await loggers.consoleLog(
+        namespacePrefix + functionName,
+        msg.cpropertyIs + JSON.stringify(property),
+      );
       // inputData[property] is:
-      await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataPropertyIs + JSON.stringify(inputData[property]));
+      await loggers.consoleLog(
+        namespacePrefix + functionName,
+        msg.cinputDataPropertyIs + JSON.stringify(inputData[property]),
+      );
       if (property === wrd.cWorkflow || property === wrd.cCommand) {
         let workflowParent = inputData[property];
         // workflowParent is:
-        await loggers.consoleLog(namespacePrefix + functionName, msg.cworkflowParentIs + JSON.stringify(workflowParent));
+        await loggers.consoleLog(
+          namespacePrefix + functionName,
+          msg.cworkflowParentIs + JSON.stringify(workflowParent),
+        );
         for (let i = 0; i < workflowParent.length; i++) {
           // BEGIN i-th loop:
-          await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_ithLoop + i);
+          await loggers.consoleLog(
+            namespacePrefix + functionName,
+            msg.cBEGIN_ithLoop + i,
+          );
           let workflowEntity = workflowParent[i][bas.cDollar];
           // workflowEntity is:
-          await loggers.consoleLog(namespacePrefix + functionName, msg.cworkflowEntityIs + JSON.stringify(workflowEntity));
+          await loggers.consoleLog(
+            namespacePrefix + functionName,
+            msg.cworkflowEntityIs + JSON.stringify(workflowEntity),
+          );
           if (property === wrd.cWorkflow) {
             // workflowEntity[Value] is:
-            await loggers.consoleLog(namespacePrefix + functionName, msg.cworkflowEntityValueIs + JSON.stringify(workflowEntity.Value));
+            await loggers.consoleLog(
+              namespacePrefix + functionName,
+              msg.cworkflowEntityValueIs + JSON.stringify(workflowEntity.Value),
+            );
             returnData[workflowEntity.Name] = workflowEntity.Value;
           } else if (property === wrd.cCommand) {
             returnData[workflowEntity.Name] = {};
             returnData[workflowEntity.Name][wrd.cName] = workflowEntity.Name;
-            returnData[workflowEntity.Name][wrd.cAliases] = workflowEntity.Aliases;
-            returnData[workflowEntity.Name][wrd.cDescription] = workflowEntity.Description;
+            returnData[workflowEntity.Name][wrd.cAliases] =
+              workflowEntity.Aliases;
+            returnData[workflowEntity.Name][wrd.cDescription] =
+              workflowEntity.Description;
           }
           // END i-th Loop:
-          await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_ithLoop + i);
+          await loggers.consoleLog(
+            namespacePrefix + functionName,
+            msg.cEND_ithLoop + i,
+          );
         } // End-for (let i = 0; i < workflowParent.length; i++)
         // Done with the for-loop, returnData is:
-        await loggers.consoleLog(namespacePrefix + functionName, msg.cDoneWithForLoopReturnDataIs + JSON.stringify(returnData));
+        await loggers.consoleLog(
+          namespacePrefix + functionName,
+          msg.cDoneWithForLoopReturnDataIs + JSON.stringify(returnData),
+        );
       } else {
         // property is not a Workflow or a Command,
         // so call processXmlLeafNode() recursively!
-        await loggers.consoleLog(namespacePrefix + functionName, msg.cprocessXmlLeafNodeMessage01 + msg.cprocessXmlLeafNodeMessage02);
+        await loggers.consoleLog(
+          namespacePrefix + functionName,
+          msg.cprocessXmlLeafNodeMessage01 + msg.cprocessXmlLeafNodeMessage02,
+        );
         if (property === num.c0) {
-          returnData = [await processXmlLeafNode(inputData[property], leafNodeName)];
+          returnData = [
+            await processXmlLeafNode(inputData[property], leafNodeName),
+          ];
         } else {
-          returnData[property] = await processXmlLeafNode(inputData[property], leafNodeName);
+          returnData[property] = await processXmlLeafNode(
+            inputData[property],
+            leafNodeName,
+          );
         }
         // AFTER recursive call returnData[property] is:
-        await loggers.consoleLog(namespacePrefix + functionName, msg.cAfterRecursiveCallReturnDataPropertyIs + JSON.stringify(returnData[property]));
+        await loggers.consoleLog(
+          namespacePrefix + functionName,
+          msg.cAfterRecursiveCallReturnDataPropertyIs +
+            JSON.stringify(returnData[property]),
+        );
       }
     } // End-for (let property in inputData)
   }
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.creturnDataIs + JSON.stringify(returnData),
+  );
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
@@ -575,12 +821,24 @@ async function preprocessJsonFile(fileToLoad) {
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   // console.log(`fileToLoad is: ${JSON.stringify(fileToLoad)}`);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cfileToLoadIs + JSON.stringify(fileToLoad));
-  let filePathRules = [biz.cswapDoubleForwardSlashToSingleForwardSlash, biz.cgetJsonData];
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.cfileToLoadIs + JSON.stringify(fileToLoad),
+  );
+  let filePathRules = [
+    biz.cswapDoubleForwardSlashToSingleForwardSlash,
+    biz.cgetJsonData,
+  ];
   // console.log(`execute business rules: ${JSON.stringify(filePathRules)}`);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cexecuteBusinessRules + JSON.stringify(filePathRules));
-  let dataFile = await ruleBroker.processRules([fileToLoad, ''], filePathRules);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cdataFileIs + JSON.stringify(dataFile));
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.cexecuteBusinessRules + JSON.stringify(filePathRules),
+  );
+  let dataFile = await ruleBroker.processRules([fileToLoad, ""], filePathRules);
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.cdataFileIs + JSON.stringify(dataFile),
+  );
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   // console.log(`dataFile is: ${JSON.stringify(dataFile)}`);
   // console.log(`END ${namespacePrefix}${functionName} function`);
@@ -599,11 +857,23 @@ async function preprocessJsonFile(fileToLoad) {
 async function writeJsonDataToFile(fileToSaveTo, dataToWriteOut) {
   let functionName = writeJsonDataToFile.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cfileToSaveToIs + fileToSaveTo);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cdataToWriteOutIs + JSON.stringify(dataToWriteOut));
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.cfileToSaveToIs + fileToSaveTo,
+  );
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.cdataToWriteOutIs + JSON.stringify(dataToWriteOut),
+  );
   let fileWriteRules = [biz.cwriteJsonData];
-  let returnData = await ruleBroker.processRules([path.resolve(fileToSaveTo), dataToWriteOut], fileWriteRules);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  let returnData = await ruleBroker.processRules(
+    [path.resolve(fileToSaveTo), dataToWriteOut],
+    fileWriteRules,
+  );
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.creturnDataIs + returnData,
+  );
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
@@ -635,14 +905,23 @@ async function storeData(dataStorageContextName, dataToStore) {
   let functionName = storeData.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // dataStorageContextName is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cdataStorageContextNameIs + dataStorageContextName);
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.cdataStorageContextNameIs + dataStorageContextName,
+  );
   // data To Store is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cdataToStoreIs + JSON.stringify(dataToStore));
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.cdataToStoreIs + JSON.stringify(dataToStore),
+  );
   let returnData = false;
   D[sys.cDataStorage][dataStorageContextName] = {};
   D[sys.cDataStorage][dataStorageContextName] = dataToStore;
   returnData = true;
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.creturnDataIs + returnData,
+  );
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
@@ -659,12 +938,21 @@ async function getData(dataStorageContextName) {
   let functionName = storeData.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // dataStorageContextName is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cdataStorageContextNameIs + dataStorageContextName);
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.cdataStorageContextNameIs + dataStorageContextName,
+  );
   let returnData = false;
-  if (D[sys.cDataStorage][dataStorageContextName] !== null && !!D[sys.cDataStorage][dataStorageContextName]) {
+  if (
+    D[sys.cDataStorage][dataStorageContextName] !== null &&
+    !!D[sys.cDataStorage][dataStorageContextName]
+  ) {
     returnData = D[sys.cDataStorage][dataStorageContextName];
   }
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.creturnDataIs + returnData,
+  );
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
@@ -682,8 +970,15 @@ async function clearData(dataStorageContextName) {
   let functionName = clearData.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // dataStorageContextName is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cdataStorageContextNameIs + dataStorageContextName);
-  if (D[sys.cDataStorage][dataStorageContextName] !== null && !!D[sys.cDataStorage][dataStorageContextName] && dataStorageContextName !== '') {
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.cdataStorageContextNameIs + dataStorageContextName,
+  );
+  if (
+    D[sys.cDataStorage][dataStorageContextName] !== null &&
+    !!D[sys.cDataStorage][dataStorageContextName] &&
+    dataStorageContextName !== ""
+  ) {
     D[sys.cDataStorage][dataStorageContextName] = {};
   } else {
     D[sys.cDataStorage] = {};
@@ -703,11 +998,20 @@ async function getDataCategoryFromContextName(contextName) {
   let functionName = getDataCategoryFromContextName.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // contextName is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.ccontextNameIs + contextName);
-  let dataCategory = '';
-  dataCategory = await ruleBroker.processRules([contextName, ''], [biz.cgetDataCategoryFromDataContextName]);
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.ccontextNameIs + contextName,
+  );
+  let dataCategory = "";
+  dataCategory = await ruleBroker.processRules(
+    [contextName, ""],
+    [biz.cgetDataCategoryFromDataContextName],
+  );
   // dataCategory is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cdataCategoryIs + dataCategory);
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.cdataCategoryIs + dataCategory,
+  );
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return dataCategory;
 }
@@ -725,11 +1029,20 @@ async function getDataCategoryDetailNameFromContextName(contextName) {
   let functionName = getDataCategoryDetailNameFromContextName.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // contextName is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.ccontextNameIs + contextName);
-  let dataCategoryDetailName = '';
-  dataCategoryDetailName = await ruleBroker.processRules([contextName, ''], [biz.cgetDataCategoryDetailNameFromDataContextName]);
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.ccontextNameIs + contextName,
+  );
+  let dataCategoryDetailName = "";
+  dataCategoryDetailName = await ruleBroker.processRules(
+    [contextName, ""],
+    [biz.cgetDataCategoryDetailNameFromDataContextName],
+  );
   // dataCategoryDetailsName is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cdataCategoryDetailsNameIs + dataCategoryDetailName);
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.cdataCategoryDetailsNameIs + dataCategoryDetailName,
+  );
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return dataCategoryDetailName;
 }
@@ -747,9 +1060,15 @@ async function extractDataFromPapaParseObject(data, contextName) {
   let functionName = extractDataFromPapaParseObject.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // input data is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(data));
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.cinputDataIs + JSON.stringify(data),
+  );
   // contextName is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.ccontextNameIs + contextName);
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.ccontextNameIs + contextName,
+  );
   let cleanKeysRules = [biz.ccleanCarriageReturnFromString];
   let tempData = {};
   let validDataAdded = false;
@@ -757,21 +1076,27 @@ async function extractDataFromPapaParseObject(data, contextName) {
     contextName = sys.cColorData;
   }
   // contextName is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.ccontextNameIs + contextName);
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.ccontextNameIs + contextName,
+  );
   tempData[contextName] = {};
   let highLevelDataCount = Object.keys(data[wrd.cdata]).length;
   for (let i = 0; i <= highLevelDataCount; i++) {
     validDataAdded = false;
     let lowLevelTempData = {};
     if (contextName === sys.cColorData) {
-      let colorName = '';
+      let colorName = "";
       for (let key1 in data[wrd.cdata][i]) {
         validDataAdded = true;
-        let newKey = await ruleBroker.processRules([key1, ''], cleanKeysRules);
+        let newKey = await ruleBroker.processRules([key1, ""], cleanKeysRules);
         if (key1 === sys.cColorName) {
           colorName = data[wrd.cdata][i][key1];
         }
-        lowLevelTempData[newKey] = await ruleBroker.processRules([data[wrd.cdata][i][key1], ''], cleanKeysRules);
+        lowLevelTempData[newKey] = await ruleBroker.processRules(
+          [data[wrd.cdata][i][key1], ""],
+          cleanKeysRules,
+        );
       } // End-for (let key1 in data[wrd.cdata][i])
       if (validDataAdded === true) {
         tempData[contextName][colorName] = {};
@@ -781,11 +1106,15 @@ async function extractDataFromPapaParseObject(data, contextName) {
           Object.assign(tempData[contextName][colorName], lowLevelTempData);
         }
       } // End-if (validDataAdded === true)
-    } else { // Else-clause (contextName === sys.cColorData)
+    } else {
+      // Else-clause (contextName === sys.cColorData)
       for (let key2 in data[wrd.cdata][i]) {
         validDataAdded = true;
-        let newKey = await ruleBroker.processRules([key2, ''], cleanKeysRules);
-        lowLevelTempData[newKey] = await ruleBroker.processRules([data[wrd.cdata][i][key2], ''], cleanKeysRules);
+        let newKey = await ruleBroker.processRules([key2, ""], cleanKeysRules);
+        lowLevelTempData[newKey] = await ruleBroker.processRules(
+          [data[wrd.cdata][i][key2], ""],
+          cleanKeysRules,
+        );
       } // End-for (let key2 in data[wrd.cdata][i])
       if (validDataAdded === true) {
         tempData[contextName][i] = {};
@@ -798,7 +1127,10 @@ async function extractDataFromPapaParseObject(data, contextName) {
     } // End-else
   } // End-for (let i = 0; i <= highLevelDataCount; i++)
   // tempData is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.ctempDataIs + JSON.stringify(tempData));
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.ctempDataIs + JSON.stringify(tempData),
+  );
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return tempData;
 }
@@ -817,48 +1149,79 @@ async function determineMergeTarget(targetData, dataToMerge) {
   let functionName = determineMergeTarget.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // targetData is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.ctargetDataIs + JSON.stringify(targetData));
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.ctargetDataIs + JSON.stringify(targetData),
+  );
   // data to Merge is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cdataToMergeIs + JSON.stringify(dataToMerge));
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.cdataToMergeIs + JSON.stringify(dataToMerge),
+  );
   let returnData = [];
-  if (targetData && dataToMerge && targetData != dataToMerge && (targetData != 0 || targetData != '0')) {
+  if (
+    targetData &&
+    dataToMerge &&
+    targetData != dataToMerge &&
+    (targetData != 0 || targetData != "0")
+  ) {
     let targetDataKeys = Object.keys(targetData);
     let dataToMergeKeys = Object.keys(dataToMerge);
-loop1:
-    for (let i = 0; i < targetDataKeys.length; i++) {
+    loop1: for (let i = 0; i < targetDataKeys.length; i++) {
       if (typeof dataToMergeKeys === wrd.cstring) {
         if (targetDataKeys[i] === dataToMergeKeys) {
           if (dataToMergeKeys[i] != num.c0) {
             returnData.push(dataToMergeKeys);
           } // End-if (dataToMergeKeys[i] != num.c0)
-          let recursiveData1 = await determineMergeTarget(targetData[targetDataKeys[i]], dataToMerge[dataToMergeKeys]);
+          let recursiveData1 = await determineMergeTarget(
+            targetData[targetDataKeys[i]],
+            dataToMerge[dataToMergeKeys],
+          );
           if (recursiveData1.length != 0) {
             returnData = returnData.concat(recursiveData1);
           } // End-if (recursiveData1.length != 0)
           break;
         } // End-if (targetDataKeys[i] === dataToMergeKeys)
-      } else if (typeof dataToMergeKeys === wrd.cobject && Array.isArray(dataToMergeKeys) === true) {
+      } else if (
+        typeof dataToMergeKeys === wrd.cobject &&
+        Array.isArray(dataToMergeKeys) === true
+      ) {
         for (let j = 0; j < dataToMergeKeys.length; j++) {
           // BEGIN j-th loop:
-          await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_jthLoop + j);
+          await loggers.consoleLog(
+            namespacePrefix + functionName,
+            msg.cBEGIN_jthLoop + j,
+          );
           // dataToMergeKeys[j] is:
-          await loggers.consoleLog(namespacePrefix + functionName, msg.cdataToMergeKeysJis + dataToMergeKeys[j]);
+          await loggers.consoleLog(
+            namespacePrefix + functionName,
+            msg.cdataToMergeKeysJis + dataToMergeKeys[j],
+          );
           if (targetDataKeys[i] === dataToMergeKeys[j]) {
             if (dataToMergeKeys[i] != num.c0) {
               returnData.push(dataToMergeKeys[j]);
             }
-            let recursiveData2 = await determineMergeTarget(targetData[targetDataKeys[i]], dataToMerge[dataToMergeKeys[j]]);
+            let recursiveData2 = await determineMergeTarget(
+              targetData[targetDataKeys[i]],
+              dataToMerge[dataToMergeKeys[j]],
+            );
             if (recursiveData2.length != 0) {
               returnData = returnData.concat(recursiveData2);
             }
             break loop1;
           } // End-if (targetDataKeys[i] === dataToMergeKeys[j])
-          await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_jthLoop + j);
+          await loggers.consoleLog(
+            namespacePrefix + functionName,
+            msg.cEND_jthLoop + j,
+          );
         } // End-for (let j = 0; j < dataToMergeKeys.length; j++)
       } // End-else-if (typeof dataToMergeKeys === wrd.cobject && Array.isArray(dataToMergeKeys) === true)
     } // End-for (let i = 0; i < targetDataKeys.length; i++)
   } // End-if (targetData && dataToMerge && (targetData != 0 || targetData != '0'))
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.creturnDataIs + JSON.stringify(returnData),
+  );
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
@@ -878,72 +1241,141 @@ async function mergeData(targetData, dataCategory, pageName, dataToMerge) {
   let functionName = mergeData.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // targetData is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.ctargetDataIs + JSON.stringify(targetData));
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.ctargetDataIs + JSON.stringify(targetData),
+  );
   // dataCategory is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cdataCategoryIs + dataCategory);
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.cdataCategoryIs + dataCategory,
+  );
   // pageName is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cpageNameIs + pageName);
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.cpageNameIs + pageName,
+  );
   // data to Merge is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cdataToMergeIs + JSON.stringify(dataToMerge));
-  let dataToMergeElementCount = await getDataElementCount(dataToMerge, '', '');
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.cdataToMergeIs + JSON.stringify(dataToMerge),
+  );
+  let dataToMergeElementCount = await getDataElementCount(dataToMerge, "", "");
   // dataToMergeElementCount is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cdataToMergeElementCountIs + dataToMergeElementCount);
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.cdataToMergeElementCountIs + dataToMergeElementCount,
+  );
   if (dataToMergeElementCount === 1) {
     // dataToMergeElementCoutn is 1
-    await loggers.consoleLog(namespacePrefix + functionName, msg.cdataToMergeElementCountIs1);
+    await loggers.consoleLog(
+      namespacePrefix + functionName,
+      msg.cdataToMergeElementCountIs1,
+    );
     // check if the pageName is not an empty string
-    await loggers.consoleLog(namespacePrefix + functionName, msg.ccheckIfThePageNameIsNotAnEmptyString);
-    if (pageName !== '') {
+    await loggers.consoleLog(
+      namespacePrefix + functionName,
+      msg.ccheckIfThePageNameIsNotAnEmptyString,
+    );
+    if (pageName !== "") {
       // pageName is not an empty string
-      await loggers.consoleLog(namespacePrefix + functionName, msg.cpageNameIsNotAnEmptyString);
+      await loggers.consoleLog(
+        namespacePrefix + functionName,
+        msg.cpageNameIsNotAnEmptyString,
+      );
       // Check if the dataCategory is an emptys string or not
-      await loggers.consoleLog(namespacePrefix + functionName, msg.cCheckIfTheDataCategoryIsAnEmptyStringOrNot);
-      if (dataCategory !== '') {
+      await loggers.consoleLog(
+        namespacePrefix + functionName,
+        msg.cCheckIfTheDataCategoryIsAnEmptyStringOrNot,
+      );
+      if (dataCategory !== "") {
         // dataCategory is not an empty string!
-        await loggers.consoleLog(namespacePrefix + functionName, msg.cdataCategoryIsNotAnEmptyString);
+        await loggers.consoleLog(
+          namespacePrefix + functionName,
+          msg.cdataCategoryIsNotAnEmptyString,
+        );
         Object.assign(targetData[dataCategory][pageName], dataToMerge);
       } else {
         // dataCategory IS an empty sring!
-        await loggers.consoleLog(namespacePrefix + functionName, msg.cdataCategoryIsAnEmptyString);
+        await loggers.consoleLog(
+          namespacePrefix + functionName,
+          msg.cdataCategoryIsAnEmptyString,
+        );
         // data to Merge is:
-        await loggers.consoleLog(namespacePrefix + functionName, msg.cdataToMergeIs + JSON.stringify(dataToMerge));
+        await loggers.consoleLog(
+          namespacePrefix + functionName,
+          msg.cdataToMergeIs + JSON.stringify(dataToMerge),
+        );
         // targetData content is:
-        await loggers.consoleLog(namespacePrefix + functionName, msg.ctargetDataContentIs + JSON.stringify(targetData));
+        await loggers.consoleLog(
+          namespacePrefix + functionName,
+          msg.ctargetDataContentIs + JSON.stringify(targetData),
+        );
         Object.assign(targetData[pageName], dataToMerge);
         // after attempt to merge, results are:
-        await loggers.consoleLog(namespacePrefix + functionName, msg.caferAttemptToMergeResultsAre);
+        await loggers.consoleLog(
+          namespacePrefix + functionName,
+          msg.caferAttemptToMergeResultsAre,
+        );
         // Merged data is:
-        await loggers.consoleLog(namespacePrefix + functionName, msg.cMergedDataIs + JSON.stringify(dataToMerge));
+        await loggers.consoleLog(
+          namespacePrefix + functionName,
+          msg.cMergedDataIs + JSON.stringify(dataToMerge),
+        );
         // targetData content is:
-        await loggers.consoleLog(namespacePrefix + functionName, msg.ctargetDataContentIs + JSON.stringify(targetData));
+        await loggers.consoleLog(
+          namespacePrefix + functionName,
+          msg.ctargetDataContentIs + JSON.stringify(targetData),
+        );
       }
     } else {
-        // pageName is an empty string
-        await loggers.consoleLog(namespacePrefix + functionName, msg.cpageNameIsAnEmptyString);
-        if (targetData[dataCategory] === undefined) {
-          targetData[dataCategory] = {}; // Make sure to create a landing place for it, before we attempt to dump the data over there.
-        }
-        // Otherwise it will just throw an error.
-        Object.assign(targetData[dataCategory], dataToMerge);
+      // pageName is an empty string
+      await loggers.consoleLog(
+        namespacePrefix + functionName,
+        msg.cpageNameIsAnEmptyString,
+      );
+      if (targetData[dataCategory] === undefined) {
+        targetData[dataCategory] = {}; // Make sure to create a landing place for it, before we attempt to dump the data over there.
+      }
+      // Otherwise it will just throw an error.
+      Object.assign(targetData[dataCategory], dataToMerge);
     }
   } else {
     // Caught the special case that we are merging a flat list.
-    await loggers.consoleLog(namespacePrefix + functionName, msg.cCaughtTheSpecialCaseThatWeAreMergingFlatList);
+    await loggers.consoleLog(
+      namespacePrefix + functionName,
+      msg.cCaughtTheSpecialCaseThatWeAreMergingFlatList,
+    );
     // targetData content is:
-    await loggers.consoleLog(namespacePrefix + functionName, msg.ctargetDataContentIs + JSON.stringify(targetData));
+    await loggers.consoleLog(
+      namespacePrefix + functionName,
+      msg.ctargetDataContentIs + JSON.stringify(targetData),
+    );
     for (let key in dataToMerge) {
       // inside the for-loop
-      await loggers.consoleLog(namespacePrefix + functionName, msg.cinsideTheForLoop);
+      await loggers.consoleLog(
+        namespacePrefix + functionName,
+        msg.cinsideTheForLoop,
+      );
       // key is:
-      await loggers.consoleLog(namespacePrefix + functionName, msg.ckeyIs + key);
+      await loggers.consoleLog(
+        namespacePrefix + functionName,
+        msg.ckeyIs + key,
+      );
       // pageName is:
-      await loggers.consoleLog(namespacePrefix + functionName, msg.cpageNameIs + pageName);
+      await loggers.consoleLog(
+        namespacePrefix + functionName,
+        msg.cpageNameIs + pageName,
+      );
       targetData[pageName][key] = dataToMerge[key];
     } // End-for (let key in dataToMerge)
   }
   // target data is modified in the input pass-by-reference variable content is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.ctargetDataIsModifiedInTheInputPassByReferenceVariableContentIs +
-    JSON.stringify(targetData));
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.ctargetDataIsModifiedInTheInputPassByReferenceVariableContentIs +
+      JSON.stringify(targetData),
+  );
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return targetData;
 }
@@ -963,17 +1395,32 @@ async function getDataElement(dataObject, pageName, elementName) {
   let functionName = getDataElement.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // dataObject value is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cdataObjectValueIs + JSON.stringify(dataObject));
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.cdataObjectValueIs + JSON.stringify(dataObject),
+  );
   // pageName is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cpageNameIs + pageName);
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.cpageNameIs + pageName,
+  );
   // elementName is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.celementNameIs + elementName);
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.celementNameIs + elementName,
+  );
   let returnData = dataObject[pageName][elementName];
   let rules = [biz.ccleanCarriageReturnFromString];
   // execute business rules:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cexecuteBusinessRulesColon + JSON.stringify(rules));
-  returnData = await ruleBroker.processRules([returnData, ''], rules);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.cexecuteBusinessRulesColon + JSON.stringify(rules),
+  );
+  returnData = await ruleBroker.processRules([returnData, ""], rules);
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.creturnDataIs + returnData,
+  );
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
@@ -995,19 +1442,28 @@ async function getDataElementCount(dataObject, pageName, elementNamePattern) {
   let functionName = getDataElementCount.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // dataObject is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cdataObjectIs + JSON.stringify(dataObject));
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.cdataObjectIs + JSON.stringify(dataObject),
+  );
   // pageName is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cpageNameIs + pageName);
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.cpageNameIs + pageName,
+  );
   // elementNamePattern is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.celementNamePatternIs + elementNamePattern);
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.celementNamePatternIs + elementNamePattern,
+  );
   let elementCollection;
   let elementCount = 0;
-  if (pageName === '') {
+  if (pageName === "") {
     elementCollection = dataObject;
   } else {
     elementCollection = dataObject[pageName];
   }
-  if (!elementNamePattern || elementNamePattern === '') {
+  if (!elementNamePattern || elementNamePattern === "") {
     elementCount = Object.keys(elementCollection).length;
   } else {
     for (let key in elementCollection) {
@@ -1019,7 +1475,10 @@ async function getDataElementCount(dataObject, pageName, elementNamePattern) {
     } // End-for (let key in elementCollection)
   }
   // elementCount is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.celementCountIs + elementCount);
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.celementCountIs + elementCount,
+  );
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return elementCount;
 }
@@ -1037,10 +1496,14 @@ async function removePluginConfigurationData(pluginName) {
   let functionName = removePluginConfigurationData.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // pluginName is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginNameIs + pluginName);
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.cpluginNameIs + pluginName,
+  );
   let returnData = false;
   let allPluginsConfigurationData = D[wrd.cconfiguration][wrd.cplugins];
-  let allPluginsDebugSettings = D[wrd.cconfiguration][cfg.cdebugSetting][wrd.cplugins];
+  let allPluginsDebugSettings =
+    D[wrd.cconfiguration][cfg.cdebugSetting][wrd.cplugins];
   if (allPluginsConfigurationData && allPluginsDebugSettings) {
     try {
       delete allPluginsConfigurationData[pluginName];
@@ -1062,7 +1525,10 @@ async function removePluginConfigurationData(pluginName) {
       console.log(msg.cremovePluginConfigurationDataMessage03 + pluginName);
     }
   }
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.creturnDataIs + returnData,
+  );
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
@@ -1081,5 +1547,5 @@ export default {
   storeData,
   getData,
   clearData,
-  removePluginConfigurationData
+  removePluginConfigurationData,
 };

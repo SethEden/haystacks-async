@@ -14,18 +14,32 @@
  */
 
 // Internal imports
-import stringParsingUtilities from '../stringParsingUtilities.js';
-import ruleParsing from '../ruleParsing.js';
-import configurator from '../../../executrix/configurator.js';
-import loggers from '../../../executrix/loggers.js';
+import stringParsingUtilities from "../stringParsingUtilities.js";
+import ruleParsing from "../ruleParsing.js";
+import configurator from "../../../executrix/configurator.js";
+import loggers from "../../../executrix/loggers.js";
 // External imports
-import hayConst from '@haystacks/constants';
-import path from 'path';
+import hayConst from "@haystacks/constants";
+import path from "path";
 
-const {bas, biz, cfg, msg, sys, wrd} = hayConst;
-const baseFileName = path.basename(import.meta.url, path.extname(import.meta.url));
+const { bas, biz, cfg, msg, sys, wrd } = hayConst;
+const baseFileName = path.basename(
+  import.meta.url,
+  path.extname(import.meta.url),
+);
 // framework.businessRules.rules.arrayParsing.characterArrayParsing.
-const namespacePrefix = wrd.cframework + bas.cDot + sys.cbusinessRules + bas.cDot + wrd.crules + bas.cDot + wrd.carray + wrd.cParsing + bas.cDot + baseFileName + bas.cDot;
+const namespacePrefix =
+  wrd.cframework +
+  bas.cDot +
+  sys.cbusinessRules +
+  bas.cDot +
+  wrd.crules +
+  bas.cDot +
+  wrd.carray +
+  wrd.cParsing +
+  bas.cDot +
+  baseFileName +
+  bas.cDot;
 
 /**
  * @function replaceCharacterWithCharacter
@@ -46,19 +60,40 @@ async function replaceCharacterWithCharacter(inputData, inputMetaData) {
   // console.log(`inputData is: ${inputData}`);
   // console.log(`inputMetaData is: ${JSON.stringify(inputMetaData)}`);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.cinputDataIs + inputData,
+  );
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.cinputMetaDataIs + JSON.stringify(inputMetaData),
+  );
   let returnData;
   if (!inputData && !inputMetaData) {
     returnData = false;
   } else {
-    if (await configurator.getConfigurationSetting(wrd.csystem, cfg.cconfigurationInitialized) === true) {
-      returnData = await ruleParsing.processRulesInternal([inputData, inputMetaData], [biz.cutilitiesReplaceCharacterWithCharacter]);
+    if (
+      (await configurator.getConfigurationSetting(
+        wrd.csystem,
+        cfg.cconfigurationInitialized,
+      )) === true
+    ) {
+      returnData = await ruleParsing.processRulesInternal(
+        [inputData, inputMetaData],
+        [biz.cutilitiesReplaceCharacterWithCharacter],
+      );
     } else {
-      returnData = await stringParsingUtilities.utilitiesReplaceCharacterWithCharacter(inputData, inputMetaData);
+      returnData =
+        await stringParsingUtilities.utilitiesReplaceCharacterWithCharacter(
+          inputData,
+          inputMetaData,
+        );
     }
   }
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.creturnDataIs + returnData,
+  );
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   // console.log(`returnData is: ${JSON.stringify(returnData)}`);
   // console.log(`END ${namespacePrefix}${functionName} function`);
@@ -77,8 +112,14 @@ async function replaceCharacterWithCharacter(inputData, inputMetaData) {
 async function doesArrayContainCharacter(inputData, inputMetaData) {
   let functionName = doesArrayContainCharacter.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.cinputDataIs + JSON.stringify(inputData),
+  );
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.cinputMetaDataIs + JSON.stringify(inputMetaData),
+  );
   let returnData = false;
   if (inputData && inputMetaData) {
     for (const element of inputMetaData) {
@@ -89,7 +130,10 @@ async function doesArrayContainCharacter(inputData, inputMetaData) {
       }
     } // end-for (const element of inputMetaData)
   } // end-if (inputData && inputMetaData)
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.creturnDataIs + returnData,
+  );
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
@@ -108,21 +152,33 @@ async function removeCharacterFromArray(inputData, inputMetaData) {
   let functionName = removeCharacterFromArray.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.cinputDataIs + JSON.stringify(inputData),
+  );
   // console.log(msg.cinputDataIs + JSON.stringify(inputData));
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.cinputMetaDataIs + JSON.stringify(inputMetaData),
+  );
   // console.log(msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
   let returnData = false;
   if (inputData && inputMetaData) {
     for (let i = 0; i < inputMetaData.length; i++) {
       let arrayElement = inputMetaData[i];
       if (arrayElement.includes(inputData) === true) {
-        inputMetaData[i] = await replaceCharacterWithCharacter(arrayElement, [RegExp('\\' + inputData, bas.cg), '']);
+        inputMetaData[i] = await replaceCharacterWithCharacter(arrayElement, [
+          RegExp("\\" + inputData, bas.cg),
+          "",
+        ]);
       }
     } // end-for (let i = 0; i < inputMetaData.length; i++)
     returnData = inputMetaData;
   } // end-if (inputData && inputMetaData)
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.creturnDataIs + returnData,
+  );
   // console.log(msg.creturnDataIs + returnData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   // console.log(`END ${namespacePrefix}${functionName} function`);
@@ -143,8 +199,14 @@ async function removeCharacterFromArray(inputData, inputMetaData) {
 async function replaceCharacterAtIndex(inputData, inputMetaData) {
   let functionName = replaceCharacterAtIndex.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.cinputDataIs + inputData,
+  );
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.cinputMetaDataIs + JSON.stringify(inputMetaData),
+  );
   let returnData = inputData;
   if (inputData && inputMetaData) {
     let indexOfReplacement;
@@ -152,12 +214,15 @@ async function replaceCharacterAtIndex(inputData, inputMetaData) {
     if (inputMetaData.length === 2) {
       indexOfReplacement = inputMetaData[0];
       stringToReplaceWith = inputMetaData[1];
-      let stringArray = inputData.split('');
+      let stringArray = inputData.split("");
       stringArray.splice(indexOfReplacement, 1, stringToReplaceWith);
-      returnData = stringArray.join('');
+      returnData = stringArray.join("");
     } // End-if (inputMetaData.length === 2)
   } // End-if (inputData)
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.creturnDataIs + returnData,
+  );
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
@@ -166,5 +231,5 @@ export default {
   replaceCharacterWithCharacter,
   doesArrayContainCharacter,
   removeCharacterFromArray,
-  replaceCharacterAtIndex
+  replaceCharacterAtIndex,
 };

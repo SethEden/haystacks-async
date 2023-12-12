@@ -11,8 +11,8 @@
  */
 
 // Internal imports
-import clientStringParsing from './clientRules/clientStringParsing.js';
-import * as app_biz from '../constants/application.business.constants.js';
+import clientStringParsing from "./clientRules/clientStringParsing.js";
+import * as app_biz from "../constants/application.business.constants.js";
 
 /**
  * @function initClientRulesLibrary
@@ -25,20 +25,24 @@ import * as app_biz from '../constants/application.business.constants.js';
  * This is because the functions cannot really be serialized in any way. It actually kind of makes sense,
  * but could be really confusing if you are struggling, trying to debug commands or business rules that do not appear to exist.
  */
-const initClientRulesLibrary = function() {
+const initClientRulesLibrary = function () {
   // console.log('BEGIN clientRulesLibrary.initClientRulesLibrary function');
   return {
-    [app_biz.cclientEcho]: (inputData, inputMetaData) => (inputData, inputMetaData),
+    [app_biz.cclientEcho]: (inputData, inputMetaData) => (
+      inputData, inputMetaData
+    ),
 
     // Client Business Rules
     // ***********************************************
     // clientStringParsing rules in order
     // ***********************************************
-    [app_biz.ccustomEcho]: (inputData, inputMetaData) => clientStringParsing.customEcho(inputData, inputMetaData),
-    [app_biz.cbuildReleasePackage]: (inputData, inputMetaData) => clientStringParsing.buildReleasePackage(inputData, inputMetaData)
+    [app_biz.ccustomEcho]: (inputData, inputMetaData) =>
+      clientStringParsing.customEcho(inputData, inputMetaData),
+    [app_biz.cbuildReleasePackage]: (inputData, inputMetaData) =>
+      clientStringParsing.buildReleasePackage(inputData, inputMetaData),
   };
 };
 
 export default {
-  initClientRulesLibrary
+  initClientRulesLibrary,
 };

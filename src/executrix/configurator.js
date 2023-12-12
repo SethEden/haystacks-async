@@ -14,18 +14,27 @@
  */
 
 // Internal imports
-import ruleBroker from '../brokers/ruleBroker.js';
-import D from '../structures/data.js';
+import ruleBroker from "../brokers/ruleBroker.js";
+import D from "../structures/data.js";
 // External imports
-import hayConst from '@haystacks/constants';
-import path from 'path';
+import hayConst from "@haystacks/constants";
+import path from "path";
 
 // eslint-disable-next-line no-unused-vars
-const {bas, biz, cfg, msg, wrd} = hayConst;
-const baseFileName = path.basename(import.meta.url, path.extname(import.meta.url));
+const { bas, biz, cfg, msg, wrd } = hayConst;
+const baseFileName = path.basename(
+  import.meta.url,
+  path.extname(import.meta.url),
+);
 // framework.executrix.configurator.
 // eslint-disable-next-line no-unused-vars
-const namespacePrefix = wrd.cframework + bas.cDot + wrd.cexecutrix + bas.cDot + baseFileName + bas.cDot;
+const namespacePrefix =
+  wrd.cframework +
+  bas.cDot +
+  wrd.cexecutrix +
+  bas.cDot +
+  baseFileName +
+  bas.cDot;
 
 /**
  * @function setConfigurationSetting
@@ -40,15 +49,22 @@ const namespacePrefix = wrd.cframework + bas.cDot + wrd.cexecutrix + bas.cDot + 
  * @date 2021/10/13
  * @NOTE Cannot use the loggers here, because of a circular dependency.
  */
-async function setConfigurationSetting(configurationNamespace, configurationName, configurationValue) {
+async function setConfigurationSetting(
+  configurationNamespace,
+  configurationName,
+  configurationValue,
+) {
   // let functionName = setConfigurationSetting.name;
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   // console.log(`configurationNamespace is: ${configurationNamespace}`);
   // console.log(`configurationName is: ${configurationName}`);
   // console.log(`configurationValue is: ${configurationValue}`);
-  let namespaceConfigObject = await getConfigurationNamespaceObject(configurationNamespace.split(bas.cDot));
+  let namespaceConfigObject = await getConfigurationNamespaceObject(
+    configurationNamespace.split(bas.cDot),
+  );
   if (namespaceConfigObject) {
-    namespaceConfigObject[`${configurationNamespace}.${configurationName}`] = configurationValue;
+    namespaceConfigObject[`${configurationNamespace}.${configurationName}`] =
+      configurationValue;
   }
   // console.log(`END ${namespacePrefix}${functionName} function`);
 }
@@ -68,7 +84,12 @@ async function setConfigurationSetting(configurationNamespace, configurationName
  * @NOTE Technically we could have the logger get used here, but it would cause the appearance of a circular dependency.
  * So we should avoid usage here anyway.
  */
-async function setPluginConfigurationSetting(dataStructure, configurationNamespace, configurationName, configurationValue) {
+async function setPluginConfigurationSetting(
+  dataStructure,
+  configurationNamespace,
+  configurationName,
+  configurationValue,
+) {
   // let functionName = setPluginConfigurationSetting.name;
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   // console.log(`dataStructure is ${JSON.stringify(dataStructure)}`);
@@ -81,14 +102,21 @@ async function setPluginConfigurationSetting(dataStructure, configurationNamespa
     returnData = {};
   } else {
     // console.log('dataStructure resolved as not false!');
-    returnData = await ruleBroker.processRules([dataStructure, ''], [biz.carrayDeepClone]);
+    returnData = await ruleBroker.processRules(
+      [dataStructure, ""],
+      [biz.carrayDeepClone],
+    );
   }
   // console.log('returnData after initialization and-or deep cloning: ' + JSON.stringify(returnData));
-  let namespaceConfigObject = await getPluginConfigurationNamespaceObject(dataStructure, configurationNamespace.split(bas.cDot));
+  let namespaceConfigObject = await getPluginConfigurationNamespaceObject(
+    dataStructure,
+    configurationNamespace.split(bas.cDot),
+  );
   // console.log('namespaceConfigObject after calling getPluginConfigurationNamespaceObject: ' + JSON.stringify(namespaceConfigObject));
   if (namespaceConfigObject) {
     // console.log('namespaceConfigObject resolved as true');
-    namespaceConfigObject[`${configurationNamespace}.${configurationName}`] = configurationValue;
+    namespaceConfigObject[`${configurationNamespace}.${configurationName}`] =
+      configurationValue;
     // console.log('namespaceConfigObject after adding the configurationValue: ' + JSON.stringify(namespaceConfigObject));
   }
   // console.log('namespaceConfigObject after parsing the namespaceConfigObject, configurationNamespace and configuration Name: ' + JSON.stringify(namespaceConfigObject));
@@ -111,23 +139,40 @@ async function setPluginConfigurationSetting(dataStructure, configurationNamespa
  * @date 2021/10/13
  * @NOTE Cannot use the loggers here, because of a circular dependency.
  */
-async function getConfigurationSetting(configurationNamespace, configurationName) {
+async function getConfigurationSetting(
+  configurationNamespace,
+  configurationName,
+) {
   // let functionName = getConfigurationSetting.name;
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   // console.log(`configurationNamespace is: ${configurationNamespace}`);
   // console.log(`configurationName is: ${configurationName}`);
   let returnConfigurationValue;
   let namespaceConfigObject = undefined;
-  namespaceConfigObject = await getConfigurationNamespaceObject(configurationNamespace.split(bas.cDot));
+  namespaceConfigObject = await getConfigurationNamespaceObject(
+    configurationNamespace.split(bas.cDot),
+  );
   if (namespaceConfigObject) {
     if (configurationName) {
-      if (configurationName.includes(bas.cAt) && configurationName.indexOf(bas.cAt) === 0) {
-        returnConfigurationValue = await getParentConfigurationNamespaceObject(configurationNamespace, configurationName);
+      if (
+        configurationName.includes(bas.cAt) &&
+        configurationName.indexOf(bas.cAt) === 0
+      ) {
+        returnConfigurationValue = await getParentConfigurationNamespaceObject(
+          configurationNamespace,
+          configurationName,
+        );
       } else {
-        returnConfigurationValue = namespaceConfigObject[configurationNamespace + bas.cDot + configurationName];
+        returnConfigurationValue =
+          namespaceConfigObject[
+            configurationNamespace + bas.cDot + configurationName
+          ];
       }
     } else {
-      returnConfigurationValue = await getParentConfigurationNamespaceObject(configurationNamespace, '');
+      returnConfigurationValue = await getParentConfigurationNamespaceObject(
+        configurationNamespace,
+        "",
+      );
     }
   } // End-if (namespaceConfigObject)
   // console.log(`returnConfigurationValue is: ${returnConfigurationValue}`);
@@ -170,9 +215,15 @@ async function processConfigurationNamespaceRules(fullyQualifiedName) {
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   // console.log(`fullyQualifiedName is: ${fullyQualifiedName}`);
   let returnValue;
-  returnValue = fullyQualifiedName.substr(0, fullyQualifiedName.lastIndexOf(bas.cDot));
+  returnValue = fullyQualifiedName.substr(
+    0,
+    fullyQualifiedName.lastIndexOf(bas.cDot),
+  );
   // console.log('returnValue is: ' + returnValue);
-  if (returnValue.includes(cfg.cdebugFunctions) || returnValue.includes(cfg.cdebugFiles)) {
+  if (
+    returnValue.includes(cfg.cdebugFunctions) ||
+    returnValue.includes(cfg.cdebugFiles)
+  ) {
     // console.log('contains debugFunctions or debugFiles');
     // We need to strip off the "debugFunctions" & "debugFiles" prefixes along with the pipe that delimits them.
     // At some point we might need these separate designations, like for the colorizer logic, but for now,
@@ -206,10 +257,15 @@ async function processConfigurationValueRules(name, value) {
   // console.log(`value is: ${value}`);
   let returnValue;
   switch (name) {
-    case cfg.cdateTimeStamp: case cfg.cdateStamp: case cfg.ctimeStamp:
+    case cfg.cdateTimeStamp:
+    case cfg.cdateStamp:
+    case cfg.ctimeStamp:
       // NOTE: All of these three configurations are processed exactly the same way.
       // As long as what is stored in the configuration file is correct, then they should be processed correctly here.
-      returnValue = await ruleBroker.processRules([value, ''], [biz.cgetNowMoment]);
+      returnValue = await ruleBroker.processRules(
+        [value, ""],
+        [biz.cgetNowMoment],
+      );
       break;
     default: // We don't know what the value is.
       // We have to just return the value as it was passed in, no processing.
@@ -238,20 +294,38 @@ async function processConfigurationValueRules(name, value) {
  * @date 2021/10/26
  * @NOTE Cannot use the loggers here, because of a circular dependency.
  */
-async function getParentConfigurationNamespaceObject(configurationNamespace, optionalFunctionNameAppendix) {
+async function getParentConfigurationNamespaceObject(
+  configurationNamespace,
+  optionalFunctionNameAppendix,
+) {
   // let functionName = getParentConfigurationNamespaceObject.name;
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   // console.log(`configurationNamespace is: ${configurationNamespace}`);
   // console.log(`optionalFunctionNameAppendix is: ${optionalFunctionNameAppendix}`);
   let returnValue = true;
-  let parentConfigurationNamespaceArray = configurationNamespace.split(bas.cDot);
+  let parentConfigurationNamespaceArray = configurationNamespace.split(
+    bas.cDot,
+  );
   let newParentConfigurationName = parentConfigurationNamespaceArray.pop();
-  let newParentConfigurationNamespace = parentConfigurationNamespaceArray.join(bas.cDot);
-  let parentNamespaceConfigObject = await getConfigurationNamespaceObject(parentConfigurationNamespaceArray);
-  if (optionalFunctionNameAppendix !== '') {
-    returnValue = parentNamespaceConfigObject[newParentConfigurationNamespace + bas.cDot + newParentConfigurationName + optionalFunctionNameAppendix];
+  let newParentConfigurationNamespace = parentConfigurationNamespaceArray.join(
+    bas.cDot,
+  );
+  let parentNamespaceConfigObject = await getConfigurationNamespaceObject(
+    parentConfigurationNamespaceArray,
+  );
+  if (optionalFunctionNameAppendix !== "") {
+    returnValue =
+      parentNamespaceConfigObject[
+        newParentConfigurationNamespace +
+          bas.cDot +
+          newParentConfigurationName +
+          optionalFunctionNameAppendix
+      ];
   } else {
-    returnValue = parentNamespaceConfigObject[newParentConfigurationNamespace + bas.cDot + newParentConfigurationName];
+    returnValue =
+      parentNamespaceConfigObject[
+        newParentConfigurationNamespace + bas.cDot + newParentConfigurationName
+      ];
   }
   // console.log(`returnValue is: ${JSON.stringify(returnValue)}`);
   // console.log(`END ${namespacePrefix}${functionName} function`);
@@ -278,7 +352,8 @@ async function getConfigurationNamespaceObject(configurationNamespace) {
   let returnValue = true; // DO NOT CHANGE! It will break the boot-strap protection mechanisms.
   let configurationDataRoot = D[wrd.cconfiguration];
   let configurationPathObject = configurationDataRoot;
-  if (!configurationPathObject) { // Need to handle the case that the configuration data object doesn't even exist at all!
+  if (!configurationPathObject) {
+    // Need to handle the case that the configuration data object doesn't even exist at all!
     D[wrd.cconfiguration] = {};
     configurationDataRoot = D[wrd.cconfiguration];
     configurationPathObject = configurationDataRoot;
@@ -315,7 +390,10 @@ async function getConfigurationNamespaceObject(configurationNamespace) {
  * So we should avoid usage here anyway.
  * @NOTE NOT A PUBLIC FUNCTION!!
  */
-async function getPluginConfigurationNamespaceObject(dataStructure, configurationNamespace) {
+async function getPluginConfigurationNamespaceObject(
+  dataStructure,
+  configurationNamespace,
+) {
   // let functionName = getConfigurationNamespaceObject.name;
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   // console.log(`dataStructure is ${JSON.stringify(dataStructure)}`);
@@ -323,7 +401,8 @@ async function getPluginConfigurationNamespaceObject(dataStructure, configuratio
   let returnValue = true; // No boot-strap protection needed here, but see logic below, still necessary!
   let configurationDataRoot = dataStructure;
   let configurationPathObject = configurationDataRoot;
-  if (!configurationPathObject) { // Need to handle the case that the configuration data object doesn't even exist at all!
+  if (!configurationPathObject) {
+    // Need to handle the case that the configuration data object doesn't even exist at all!
     dataStructure = {};
     configurationDataRoot = dataStructure;
     configurationPathObject = configurationDataRoot;
@@ -368,7 +447,8 @@ async function addPluginConfigurationData(pluginName, pluginConfigData) {
     // This is because it could be dangerous if we allow for plugins to over-write framework and application system settings.
     D[wrd.cconfiguration][wrd.cplugins][pluginName] = {};
     D[wrd.cconfiguration][wrd.cplugins][pluginName][wrd.csystem] = {};
-    D[wrd.cconfiguration][wrd.cplugins][pluginName][wrd.csystem] = pluginConfigData[wrd.csystem];
+    D[wrd.cconfiguration][wrd.cplugins][pluginName][wrd.csystem] =
+      pluginConfigData[wrd.csystem];
 
     // Now we still need to merge over the debugSetting data structure.
     // Rather than just blanket merge, there is a sub-structure that we can navigate that will allow us to do this with an assignment operation.
@@ -377,7 +457,8 @@ async function addPluginConfigurationData(pluginName, pluginConfigData) {
       D[wrd.cconfiguration][cfg.cdebugSetting][wrd.cplugins] = {};
     }
     D[wrd.cconfiguration][cfg.cdebugSetting][wrd.cplugins][pluginName] = {};
-    D[wrd.cconfiguration][cfg.cdebugSetting][wrd.cplugins][pluginName] = pluginConfigData[cfg.cdebugSetting][wrd.cplugins][pluginName];
+    D[wrd.cconfiguration][cfg.cdebugSetting][wrd.cplugins][pluginName] =
+      pluginConfigData[cfg.cdebugSetting][wrd.cplugins][pluginName];
     returnData = true;
   } catch (err) {
     // ERROR: Failure unable to persist the plugin configuration data for plugin:
@@ -434,5 +515,5 @@ export default {
   processConfigurationNamespaceRules,
   processConfigurationValueRules,
   addPluginConfigurationData,
-  getAmbiguousDataElement
+  getAmbiguousDataElement,
 };

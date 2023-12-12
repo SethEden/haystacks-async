@@ -14,18 +14,32 @@
  */
 
 // Internal imports
-import dataBroker from '../../../brokers/dataBroker.js';
-import ruleParsing from '../ruleParsing.js';
-import loggers from '../../../executrix/loggers.js';
-import D from '../../../structures/data.js';
+import dataBroker from "../../../brokers/dataBroker.js";
+import ruleParsing from "../ruleParsing.js";
+import loggers from "../../../executrix/loggers.js";
+import D from "../../../structures/data.js";
 // External imports
-import hayConst from '@haystacks/constants';
-import path from 'path';
+import hayConst from "@haystacks/constants";
+import path from "path";
 
-const {bas, biz, cfg, msg, sys, wrd} = hayConst;
-const baseFileName = path.basename(import.meta.url, path.extname(import.meta.url));
+const { bas, biz, cfg, msg, sys, wrd } = hayConst;
+const baseFileName = path.basename(
+  import.meta.url,
+  path.extname(import.meta.url),
+);
 // framework.businessRules.rules.arrayParsing.dataArrayParsing.
-const namespacePrefix = wrd.cframework + bas.cDot + sys.cbusinessRules + bas.cDot + wrd.crules + bas.cDot + wrd.carray + wrd.cParsing + bas.cDot + baseFileName + bas.cDot;
+const namespacePrefix =
+  wrd.cframework +
+  bas.cDot +
+  sys.cbusinessRules +
+  bas.cDot +
+  wrd.crules +
+  bas.cDot +
+  wrd.carray +
+  wrd.cParsing +
+  bas.cDot +
+  baseFileName +
+  bas.cDot;
 
 /**
  * @function arraysAreEqual
@@ -40,15 +54,30 @@ const namespacePrefix = wrd.cframework + bas.cDot + sys.cbusinessRules + bas.cDo
 async function arraysAreEqual(inputData, inputMetaData) {
   let functionName = arraysAreEqual.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.cinputDataIs + JSON.stringify(inputData),
+  );
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.cinputMetaDataIs + JSON.stringify(inputMetaData),
+  );
   let returnData = false;
   if (inputData && inputMetaData) {
-    if (inputData === inputMetaData) { returnData = true; }
-    if (inputData === null || inputMetaData === null) { returnData = false; }
-    if (inputData.length != inputMetaData.length) { returnData = false; }
+    if (inputData === inputMetaData) {
+      returnData = true;
+    }
+    if (inputData === null || inputMetaData === null) {
+      returnData = false;
+    }
+    if (inputData.length != inputMetaData.length) {
+      returnData = false;
+    }
   } // End-if (inputData && inputMetaData)
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.creturnDataIs + returnData,
+  );
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
@@ -65,14 +94,23 @@ async function arraysAreEqual(inputData, inputMetaData) {
 async function storeData(inputData, inputMetaData) {
   let functionName = arraysAreEqual.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.cinputDataIs + JSON.stringify(inputData),
+  );
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.cinputMetaDataIs + JSON.stringify(inputMetaData),
+  );
   let returnData = false;
   if (inputData && inputMetaData) {
     await dataBroker.storeData(inputData, inputMetaData);
     returnData = true;
   } // End-if (inputData && inputMetaData)
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.creturnDataIs + returnData,
+  );
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
@@ -89,13 +127,22 @@ async function storeData(inputData, inputMetaData) {
 async function getStoredData(inputData, inputMetaData) {
   let functionName = getStoredData.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.cinputDataIs + JSON.stringify(inputData),
+  );
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.cinputMetaDataIs + JSON.stringify(inputMetaData),
+  );
   let returnData = false;
   if (inputData) {
     returnData = await dataBroker.getData(inputData);
   }
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.creturnDataIs + returnData,
+  );
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
@@ -112,8 +159,14 @@ async function getStoredData(inputData, inputMetaData) {
 async function isObjectEmpty(inputData, inputMetaData) {
   let functionName = isObjectEmpty.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.cinputDataIs + JSON.stringify(inputData),
+  );
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.cinputMetaDataIs + inputMetaData,
+  );
   let returnData = true;
   if (inputData) {
     for (let key in inputData) {
@@ -126,7 +179,10 @@ async function isObjectEmpty(inputData, inputMetaData) {
       } // End-if (inputData.hasOwnProperty(key))
     } // End-for (let key in inputData)
   } // End-if (inputData)
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.creturnDataIs + returnData,
+  );
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
@@ -143,13 +199,22 @@ async function isObjectEmpty(inputData, inputMetaData) {
 async function isArrayEmpty(inputData, inputMetaData) {
   let functionName = isArrayEmpty.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.cinputDataIs + JSON.stringify(inputData),
+  );
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.cinputMetaDataIs + JSON.stringify(inputMetaData),
+  );
   let returnData = true;
   if (inputData) {
     returnData = await !Object.keys(inputData).length;
   }
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.creturnDataIs + returnData,
+  );
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
@@ -166,15 +231,24 @@ async function isArrayEmpty(inputData, inputMetaData) {
 async function isObject(inputData, inputMetaData) {
   let functionName = isObject.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.cinputDataIs + JSON.stringify(inputData),
+  );
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.cinputMetaDataIs + inputMetaData,
+  );
   let returnData = false;
   if (inputData) {
     if (typeof inputData === wrd.cobject) {
       returnData = true;
     }
   } // End-if (inputData)
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.creturnDataIs + returnData,
+  );
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
@@ -192,13 +266,22 @@ async function isObject(inputData, inputMetaData) {
 async function isArray(inputData, inputMetaData) {
   let functionName = isArray.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.cinputDataIs + JSON.stringify(inputData),
+  );
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.cinputMetaDataIs + inputMetaData,
+  );
   let returnData = false;
   if (inputData) {
     returnData = await Array.isArray(inputData);
   }
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.creturnDataIs + returnData,
+  );
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
@@ -216,15 +299,27 @@ async function isArray(inputData, inputMetaData) {
 async function isArrayOrObject(inputData, inputMetaData) {
   let functionName = isArrayOrObject.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.cinputDataIs + JSON.stringify(inputData),
+  );
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.cinputMetaDataIs + inputMetaData,
+  );
   let returnData = false;
   if (inputData) {
-    if (await isObject(inputData, '') === true || await isArray(inputData, '') === true) {
+    if (
+      (await isObject(inputData, "")) === true ||
+      (await isArray(inputData, "")) === true
+    ) {
       returnData = true;
     }
   } // End-if (inputData)
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.creturnDataIs + returnData,
+  );
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
@@ -242,15 +337,24 @@ async function isArrayOrObject(inputData, inputMetaData) {
 async function isNonZeroLengthArray(inputData, inputMetaData) {
   let functionName = isNonZeroLengthArray.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.cinputDataIs + JSON.stringify(inputData),
+  );
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.cinputMetaDataIs + inputMetaData,
+  );
   let returnData = false;
   if (inputData) {
-    if (await isArray(inputData, '') === true && inputData.length >= 1) {
+    if ((await isArray(inputData, "")) === true && inputData.length >= 1) {
       returnData = true;
     }
   } // End-if (inputData)
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.creturnDataIs + returnData,
+  );
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
@@ -269,13 +373,26 @@ async function isNonZeroLengthArray(inputData, inputMetaData) {
 async function arrayDeepClone(inputData, inputMetaData) {
   let functionName = arrayDeepClone.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.cinputDataIs + JSON.stringify(inputData),
+  );
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.cinputMetaDataIs + JSON.stringify(inputMetaData),
+  );
   let returnData = false;
-  if (inputData && await isArray(inputData, '') === true && await isArrayEmpty(inputData, '') === false) {
+  if (
+    inputData &&
+    (await isArray(inputData, "")) === true &&
+    (await isArrayEmpty(inputData, "")) === false
+  ) {
     returnData = await JSON.parse(await JSON.stringify(inputData));
   }
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.creturnDataIs + JSON.stringify(returnData),
+  );
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
@@ -293,16 +410,29 @@ async function arrayDeepClone(inputData, inputMetaData) {
 async function objectDeepClone(inputData, inputMetaData) {
   let functionName = objectDeepClone.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.cinputDataIs + JSON.stringify(inputData),
+  );
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.cinputMetaDataIs + JSON.stringify(inputMetaData),
+  );
   let returnData;
   let fastExit = false;
   if (typeof inputData !== wrd.cobject || inputData === null) {
-    if (typeof inputData === wrd.cstring || typeof inputData === wrd.cnumber || typeof inputData === wrd.cboolean) {
+    if (
+      typeof inputData === wrd.cstring ||
+      typeof inputData === wrd.cnumber ||
+      typeof inputData === wrd.cboolean
+    ) {
       returnData = inputData;
       fastExit = true;
       // fast exit enabled
-      await loggers.consoleLog(namespacePrefix + functionName, msg.cfastExitEnabled);
+      await loggers.consoleLog(
+        namespacePrefix + functionName,
+        msg.cfastExitEnabled,
+      );
     } else {
       // Invalid input object. Expected a valid JSON object. Object type is:
       throw new Error(msg.cErrorObjectDeepCloneMessage01 + typeof inputData);
@@ -312,25 +442,37 @@ async function objectDeepClone(inputData, inputMetaData) {
     if (Array.isArray(inputData)) {
       if (typeof inputData[1] === wrd.cobject) {
         // array cloning object
-        await loggers.consoleLog(namespacePrefix + functionName, msg.carrayCloningObject);
+        await loggers.consoleLog(
+          namespacePrefix + functionName,
+          msg.carrayCloningObject,
+        );
         let cloneArray = [];
         for (let item in inputData) {
-          cloneArray[item] = await objectDeepClone(inputData[item], '');
+          cloneArray[item] = await objectDeepClone(inputData[item], "");
         }
         returnData = cloneArray;
       } else {
         // array deep clone string
-        await loggers.consoleLog(namespacePrefix + functionName, msg.carrayDeepCloneString);
-        returnData = await arrayDeepClone(inputData, '');
+        await loggers.consoleLog(
+          namespacePrefix + functionName,
+          msg.carrayDeepCloneString,
+        );
+        returnData = await arrayDeepClone(inputData, "");
       }
     } else {
       // object deep cloning
-      await loggers.consoleLog(namespacePrefix + functionName, msg.cobjectDeepCloning);
+      await loggers.consoleLog(
+        namespacePrefix + functionName,
+        msg.cobjectDeepCloning,
+      );
       returnData = {};
       for (let key in inputData) {
         if (Object.prototype.hasOwnProperty.call(inputData, key)) {
-          if (typeof inputData[key] === wrd.cobject && inputData[key] !== null) {
-            returnData[key] = await objectDeepClone(inputData[key], '');
+          if (
+            typeof inputData[key] === wrd.cobject &&
+            inputData[key] !== null
+          ) {
+            returnData[key] = await objectDeepClone(inputData[key], "");
           } else if (typeof inputData[key] === wrd.cfunction) {
             // Solution from: https://stackoverflow.com/questions/1833588/javascript-clone-a-function
             // const newFunction = inputData.bind(this);
@@ -344,7 +486,10 @@ async function objectDeepClone(inputData, inputMetaData) {
       } // End-for (let key in inpuData)
     }
   }
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.creturnDataIs + JSON.stringify(returnData),
+  );
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
@@ -362,10 +507,19 @@ async function objectDeepClone(inputData, inputMetaData) {
 async function objectDeepMerge(inputData, inputMetaData) {
   let functionName = objectDeepMerge.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.cinputDataIs + JSON.stringify(inputData),
+  );
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.cinputMetaDataIs + JSON.stringify(inputMetaData),
+  );
   let returnData = false;
-  if (typeof inputData !== wrd.cobject || typeof inputMetaData !== wrd.cobject) {
+  if (
+    typeof inputData !== wrd.cobject ||
+    typeof inputMetaData !== wrd.cobject
+  ) {
     // inputData or inputMetaData or both ain't objets, merging doesn't make sense.
     returnData = false;
   } else {
@@ -374,58 +528,116 @@ async function objectDeepMerge(inputData, inputMetaData) {
         continue; // Take into consideration only object's own properties.
       }
       // property is:
-      await loggers.consoleLog(namespacePrefix + functionName, msg.cpropertyIs + JSON.stringify(property));
+      await loggers.consoleLog(
+        namespacePrefix + functionName,
+        msg.cpropertyIs + JSON.stringify(property),
+      );
       if (property in inputData) {
         // property is in inputData
-        await loggers.consoleLog(namespacePrefix + functionName, msg.cobjectDeepMergeMessage01);
+        await loggers.consoleLog(
+          namespacePrefix + functionName,
+          msg.cobjectDeepMergeMessage01,
+        );
         // inputData[property] is:
-        await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataPropertyIs + JSON.stringify(inputData[property]));
+        await loggers.consoleLog(
+          namespacePrefix + functionName,
+          msg.cinputDataPropertyIs + JSON.stringify(inputData[property]),
+        );
         // Handling merging of two properties with equal names.
         if (typeof inputData[property] !== wrd.cobject) {
           // inputData[property] is not an object!
           // Assign it directly.
-          await loggers.consoleLog(namespacePrefix + functionName, msg.cobjectDeepMergeMessage02 + bas.cSpace + msg.cobjectDeepMergeMessage03);
+          await loggers.consoleLog(
+            namespacePrefix + functionName,
+            msg.cobjectDeepMergeMessage02 +
+              bas.cSpace +
+              msg.cobjectDeepMergeMessage03,
+          );
           inputData[property] = inputMetaData[property];
         } else {
           // inputData[property] is an object!
-          await loggers.consoleLog(namespacePrefix + functionName, msg.cobjectDeepMergeMessage04);
+          await loggers.consoleLog(
+            namespacePrefix + functionName,
+            msg.cobjectDeepMergeMessage04,
+          );
           // inputMetaData[property] is:
-          await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataPropertyIs + JSON.stringify(inputMetaData[property]));
+          await loggers.consoleLog(
+            namespacePrefix + functionName,
+            msg.cinputMetaDataPropertyIs +
+              JSON.stringify(inputMetaData[property]),
+          );
           if (typeof inputMetaData[property] !== wrd.cobject) {
             // inputMetaData[property] is not an object,
             // Assign it directly.
-            await loggers.consoleLog(namespacePrefix + functionName, msg.cobjectDeepMergeMessage05 + msg.cobjectDeepMergeMessage03);
+            await loggers.consoleLog(
+              namespacePrefix + functionName,
+              msg.cobjectDeepMergeMessage05 + msg.cobjectDeepMergeMessage03,
+            );
             inputData[property] = inputMetaData[property];
           } else {
             // inputMetaData[property] is an object.
-            await loggers.consoleLog(namespacePrefix + functionName, msg.cobjectDeepMergeMessage06);
+            await loggers.consoleLog(
+              namespacePrefix + functionName,
+              msg.cobjectDeepMergeMessage06,
+            );
             if (inputData[property].concat && inputMetaData[property].concat) {
               // Are the arrays length 1 or greater?
-              if (inputData[property].length === 1 && inputMetaData[property].length === 1) {
+              if (
+                inputData[property].length === 1 &&
+                inputMetaData[property].length === 1
+              ) {
                 // Array lengths are the same at this level.
-                await loggers.consoleLog(namespacePrefix + functionName, msg.cobjectDeepMergeMessage07);
+                await loggers.consoleLog(
+                  namespacePrefix + functionName,
+                  msg.cobjectDeepMergeMessage07,
+                );
                 // We should deeply merge the contents of the arrays.
-                inputData[property] = await objectDeepMerge(inputData[property], inputMetaData[property]);
+                inputData[property] = await objectDeepMerge(
+                  inputData[property],
+                  inputMetaData[property],
+                );
               } else {
                 // Two arrays get concatenated.
-                await loggers.consoleLog(namespacePrefix + functionName, msg.cobjectDeepMergeMessage08);
-                inputData[property] = inputData[property].concat(inputMetaData[property]);
+                await loggers.consoleLog(
+                  namespacePrefix + functionName,
+                  msg.cobjectDeepMergeMessage08,
+                );
+                inputData[property] = inputData[property].concat(
+                  inputMetaData[property],
+                );
                 // AFTER concatenating two arrays: inputData[property] is:
-                await loggers.consoleLog(namespacePrefix + functionName, msg.cAfterConcatenating2ArraysInputDataPropertyIs + JSON.stringify(inputData[property]));
+                await loggers.consoleLog(
+                  namespacePrefix + functionName,
+                  msg.cAfterConcatenating2ArraysInputDataPropertyIs +
+                    JSON.stringify(inputData[property]),
+                );
               }
             } else {
               // Two objects get merged recursively.
-              await loggers.consoleLog(namespacePrefix + functionName, msg.cobjectDeepMergeMessage09);
-              inputData[property] = await objectDeepMerge(inputData[property], inputMetaData[property]);
+              await loggers.consoleLog(
+                namespacePrefix + functionName,
+                msg.cobjectDeepMergeMessage09,
+              );
+              inputData[property] = await objectDeepMerge(
+                inputData[property],
+                inputMetaData[property],
+              );
               // AFTER recursive merge: inputData[property] is:
-              await loggers.consoleLog(namespacePrefix + functionName, msg.cAfterRecursiveMergeInputDataPropertyIs + JSON.stringify(inputData[property]));
+              await loggers.consoleLog(
+                namespacePrefix + functionName,
+                msg.cAfterRecursiveMergeInputDataPropertyIs +
+                  JSON.stringify(inputData[property]),
+              );
             }
           }
         }
       } else {
         // property is not in inputData,
         // so add it directly.
-        await loggers.consoleLog(namespacePrefix + functionName, msg.cobjectDeepMergeMessage10 + msg.cobjectDeepMergeMessage11);
+        await loggers.consoleLog(
+          namespacePrefix + functionName,
+          msg.cobjectDeepMergeMessage10 + msg.cobjectDeepMergeMessage11,
+        );
         inputData[property] = inputMetaData[property];
       }
     } // End-for (let property in inputMetaData)
@@ -473,7 +685,10 @@ async function objectDeepMerge(inputData, inputMetaData) {
   // } // End-if (inputData && inputMetaData)
   // **************************************************
 
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.creturnDataIs + JSON.stringify(returnData),
+  );
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
@@ -500,8 +715,14 @@ async function objectDeepMerge(inputData, inputMetaData) {
 async function getNamespacedDataObject(inputData, inputMetaData) {
   let functionName = getNamespacedDataObject.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.cinputDataIs + JSON.stringify(inputData),
+  );
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.cinputMetaDataIs + inputMetaData,
+  );
   let returnData = false;
   let processingValidData = false;
   let namespaceDataObject = D;
@@ -512,7 +733,9 @@ async function getNamespacedDataObject(inputData, inputMetaData) {
         // It doesn't exist yet, so lets make it.
         namespaceDataObject[element] = {};
       } else if (!namespaceDataObject[element]) {
-        console.log(msg.cnamespaceDataObjectPathNotFound + JSON.stringify(element));
+        console.log(
+          msg.cnamespaceDataObjectPathNotFound + JSON.stringify(element),
+        );
         processingValidData = false;
         break;
       }
@@ -522,7 +745,10 @@ async function getNamespacedDataObject(inputData, inputMetaData) {
       returnData = namespaceDataObject;
     }
   } // End-if (inputData && inputData.length > 0)
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.creturnDataIs + returnData,
+  );
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
@@ -540,8 +766,14 @@ async function getNamespacedDataObject(inputData, inputMetaData) {
 async function setNamespacedDataObject(inputData, inputMetaData) {
   let functionName = setNamespacedDataObject.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.cinputDataIs + JSON.stringify(inputData),
+  );
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.cinputMetaDataIs + JSON.stringify(inputMetaData),
+  );
   let returnData = false;
   let namespaceDataObject = D;
   if (inputData && inputData.length > 0) {
@@ -549,9 +781,20 @@ async function setNamespacedDataObject(inputData, inputMetaData) {
       namespaceDataObject = namespaceDataObject[inputData[i]];
       if (i === inputData.length - 2) {
         // namespaceDataObject is:
-        await loggers.consoleLog(namespacePrefix + functionName, msg.cnamespaceDataObjectIs + JSON.stringify(namespaceDataObject));
+        await loggers.consoleLog(
+          namespacePrefix + functionName,
+          msg.cnamespaceDataObjectIs + JSON.stringify(namespaceDataObject),
+        );
         let fullyQualifiedKey = await namespaceDataObject.join(bas.cDot);
-        if (await ruleParsing.processRulesInternal([[namespaceDataObject, cfg.cdebugSetting], await ruleParsing.getRule(biz.cascertainMatchingElements)], [biz.cdoesArrayContainValue]) === true) {
+        if (
+          (await ruleParsing.processRulesInternal(
+            [
+              [namespaceDataObject, cfg.cdebugSetting],
+              await ruleParsing.getRule(biz.cascertainMatchingElements),
+            ],
+            [biz.cdoesArrayContainValue],
+          )) === true
+        ) {
           namespaceDataObject[fullyQualifiedKey] = inputMetaData;
         } else {
           namespaceDataObject[inputData[i + 1]] = inputMetaData;
@@ -560,7 +803,10 @@ async function setNamespacedDataObject(inputData, inputMetaData) {
       } // End-if (i === inputData.length - 2)
     } // End-for (let i = 0; i < inputData.length - 1; i++)
   } // End-if (inputData && inputData.length > 0)
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.creturnDataIs + returnData,
+  );
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
@@ -579,5 +825,5 @@ export default {
   objectDeepClone,
   objectDeepMerge,
   getNamespacedDataObject,
-  setNamespacedDataObject
+  setNamespacedDataObject,
 };

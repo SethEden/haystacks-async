@@ -13,16 +13,25 @@
  */
 
 // Internal imports
-import loggers from '../executrix/loggers.js';
-import D from './data.js';
+import loggers from "../executrix/loggers.js";
+import D from "./data.js";
 // External imports
-import hayConst from '@haystacks/constants';
-import path from 'path';
+import hayConst from "@haystacks/constants";
+import path from "path";
 
-const {bas, msg, wrd} = hayConst;
-const baseFileName = path.basename(import.meta.url, path.extname(import.meta.url));
+const { bas, msg, wrd } = hayConst;
+const baseFileName = path.basename(
+  import.meta.url,
+  path.extname(import.meta.url),
+);
 // framework.structures.queue.
-const namespacePrefix = wrd.cframework + bas.cDot + wrd.cstructures + bas.cDot + baseFileName + bas.cDot;
+const namespacePrefix =
+  wrd.cframework +
+  bas.cDot +
+  wrd.cstructures +
+  bas.cDot +
+  baseFileName +
+  bas.cDot;
 
 /**
  * @function initQueue
@@ -36,7 +45,10 @@ const namespacePrefix = wrd.cframework + bas.cDot + wrd.cstructures + bas.cDot +
 async function initQueue(queueNameSpace) {
   let functionName = initQueue.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cqueueNameSpaceIs + queueNameSpace);
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.cqueueNameSpaceIs + queueNameSpace,
+  );
   D[queueNameSpace] = [];
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
 }
@@ -53,10 +65,16 @@ async function initQueue(queueNameSpace) {
 async function dequeue(queueNameSpace) {
   let functionName = dequeue.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cqueueNameSpaceIs + queueNameSpace);
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.cqueueNameSpaceIs + queueNameSpace,
+  );
   let returnData;
   returnData = D[queueNameSpace].shift();
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.creturnDataIs + returnData,
+  );
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
@@ -74,8 +92,14 @@ async function dequeue(queueNameSpace) {
 async function enqueue(queueNameSpace, value) {
   let functionName = enqueue.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cqueueNameSpaceIs + queueNameSpace);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cvalueIs + value);
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.cqueueNameSpaceIs + queueNameSpace,
+  );
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.cvalueIs + value,
+  );
   D[queueNameSpace].push(value);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
 }
@@ -93,8 +117,14 @@ async function enqueue(queueNameSpace, value) {
 async function enqueueFront(queueNameSpace, value) {
   let functionName = enqueueFront.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cqueueNameSpaceIs + queueNameSpace);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cvalueIs + JSON.stringify(value));
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.cqueueNameSpaceIs + queueNameSpace,
+  );
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.cvalueIs + JSON.stringify(value),
+  );
   if (Array.isArray(value) === true) {
     // If the value is an array, then decompose the array into variables all passed to the unshift command.
     D[queueNameSpace].unshift(...value);
@@ -116,14 +146,20 @@ async function enqueueFront(queueNameSpace, value) {
 async function isEmpty(queueNameSpace) {
   let functionName = isEmpty.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cqueueNameSpaceIs + queueNameSpace);
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.cqueueNameSpaceIs + queueNameSpace,
+  );
   let returnData;
   if (D[queueNameSpace] === undefined) {
     returnData = true;
   } else {
-    returnData = (D[queueNameSpace].length === 0);
+    returnData = D[queueNameSpace].length === 0;
   }
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.creturnDataIs + returnData,
+  );
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
@@ -140,7 +176,10 @@ async function isEmpty(queueNameSpace) {
 async function queueFront(queueNameSpace) {
   let functionName = queueFront.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cqueueNameSpaceIs + queueNameSpace);
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.cqueueNameSpaceIs + queueNameSpace,
+  );
   let returnData;
   if (D[queueNameSpace] !== undefined) {
     returnData = D[queueNameSpace][0];
@@ -148,7 +187,10 @@ async function queueFront(queueNameSpace) {
     // WARNING: Queue:
     // does not exist!
   }
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.creturnDataIs + returnData,
+  );
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
@@ -165,7 +207,10 @@ async function queueFront(queueNameSpace) {
 async function queueSize(queueNameSpace) {
   let functionName = queueFront.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cqueueNameSpaceIs + queueNameSpace);
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.cqueueNameSpaceIs + queueNameSpace,
+  );
   let returnData = 0;
   if (D[queueNameSpace] !== undefined) {
     returnData = D[queueNameSpace].length;
@@ -173,7 +218,10 @@ async function queueSize(queueNameSpace) {
     // WARNING: Queue:
     // does not exist!
   }
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.creturnDataIs + returnData,
+  );
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
@@ -189,7 +237,10 @@ async function queueSize(queueNameSpace) {
 async function queueContents(queueNameSpace) {
   let functionName = queueFront.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cqueueNameSpaceIs + queueNameSpace);
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.cqueueNameSpaceIs + queueNameSpace,
+  );
   let returnData = [];
   if (D[queueNameSpace] !== undefined) {
     returnData = D[queueNameSpace];
@@ -197,7 +248,10 @@ async function queueContents(queueNameSpace) {
     // WARNING: Queue:
     // does not exist!
   }
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.creturnDataIs + returnData,
+  );
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
@@ -213,8 +267,11 @@ async function queueContents(queueNameSpace) {
 async function queuePrint(queueNameSpace) {
   let functionName = queuePrint.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cqueueNameSpaceIs + queueNameSpace);
-  let returnData = '';
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.cqueueNameSpaceIs + queueNameSpace,
+  );
+  let returnData = "";
   if (D[queueNameSpace] !== undefined) {
     // Contents of the queue namespace:
     returnData = JSON.stringify(D[queueNameSpace]);
@@ -223,10 +280,14 @@ async function queuePrint(queueNameSpace) {
   } else {
     // WARNING: Queue:
     // does not exist!
-    returnData = msg.cWarningQueue + queueNameSpace + bas.cSpace + msg.cdoesNotExist;
+    returnData =
+      msg.cWarningQueue + queueNameSpace + bas.cSpace + msg.cdoesNotExist;
     console.log(returnData);
   }
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(
+    namespacePrefix + functionName,
+    msg.creturnDataIs + returnData,
+  );
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
@@ -240,5 +301,5 @@ export default {
   queueFront,
   queueSize,
   queueContents,
-  queuePrint
+  queuePrint,
 };

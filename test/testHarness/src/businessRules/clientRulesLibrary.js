@@ -13,19 +13,31 @@
  */
 
 // Internal imports
-import clientStringParsing from './clientRules/clientStringParsing.js';
-import * as app_biz from '../constants/application.business.constants.js';
-import * as apc from '../constants/application.constants.js';
+import clientStringParsing from "./clientRules/clientStringParsing.js";
+import * as app_biz from "../constants/application.business.constants.js";
+import * as apc from "../constants/application.constants.js";
 // External imports
-import hayConst from '@haystacks/constants';
-import path from 'path';
+import hayConst from "@haystacks/constants";
+import path from "path";
 
 // eslint-disable-next-line no-unused-vars
-const {bas, msg, wrd} = hayConst;
-const baseFileName = path.basename(import.meta.url, path.extname(import.meta.url));
+const { bas, msg, wrd } = hayConst;
+const baseFileName = path.basename(
+  import.meta.url,
+  path.extname(import.meta.url),
+);
 // application.testHarness.businessRules.clientRules.clientStringParsing.
 // eslint-disable-next-line no-unused-vars
-const namespacePrefix = wrd.capplication + bas.cDot + apc.cApplicationName + bas.cDot + wrd.cbusiness + wrd.cRules + bas.cDot + baseFileName + bas.cDot;
+const namespacePrefix =
+  wrd.capplication +
+  bas.cDot +
+  apc.cApplicationName +
+  bas.cDot +
+  wrd.cbusiness +
+  wrd.cRules +
+  bas.cDot +
+  baseFileName +
+  bas.cDot;
 
 /**
  * @function initClientRulesLibrary
@@ -38,24 +50,31 @@ const namespacePrefix = wrd.capplication + bas.cDot + apc.cApplicationName + bas
  * This is because the functions cannot really be serialized in any way. It actually kind of makes sense,
  * but could be really confusing if you are struggling, trying to debug commands or business rules that do not appear to exist.
  */
-const initClientRulesLibrary = function() {
+const initClientRulesLibrary = function () {
   // let functionName = initClientRulesLibrary.name;
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   return {
-    [app_biz.cclientEcho]: (inputData, inputMetaData) => (inputData, inputMetaData),
+    [app_biz.cclientEcho]: (inputData, inputMetaData) => (
+      inputData, inputMetaData
+    ),
 
     // Client Business Rules
     // ***********************************************
     // clientStringParsing rules in order
     // ***********************************************
-    [app_biz.ccustomEcho]: (inputData, inputMetaData) => clientStringParsing.customEcho(inputData, inputMetaData),
-    [app_biz.cmostPopularNumber]: (inputData, inputMetaData) => clientStringParsing.mostPopularNumber(inputData, inputMetaData),
-    [app_biz.cisAlmostPalindrome]: (inputData, inputMetaData) => clientStringParsing.isAlmostPalindrome(inputData, inputMetaData),
-    [app_biz.cthreePointAverage]: (inputData, inputMetaData) => clientStringParsing.threePointAverage(inputData, inputMetaData),
-    [app_biz.carrayCounter]: (inputData, inputMetaData) => clientStringParsing.arrayCounter(inputData, inputMetaData)
+    [app_biz.ccustomEcho]: (inputData, inputMetaData) =>
+      clientStringParsing.customEcho(inputData, inputMetaData),
+    [app_biz.cmostPopularNumber]: (inputData, inputMetaData) =>
+      clientStringParsing.mostPopularNumber(inputData, inputMetaData),
+    [app_biz.cisAlmostPalindrome]: (inputData, inputMetaData) =>
+      clientStringParsing.isAlmostPalindrome(inputData, inputMetaData),
+    [app_biz.cthreePointAverage]: (inputData, inputMetaData) =>
+      clientStringParsing.threePointAverage(inputData, inputMetaData),
+    [app_biz.carrayCounter]: (inputData, inputMetaData) =>
+      clientStringParsing.arrayCounter(inputData, inputMetaData),
   };
 };
 
 export default {
-  initClientRulesLibrary
+  initClientRulesLibrary,
 };
