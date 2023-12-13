@@ -85,9 +85,9 @@ async function processRootPath(inputPath, actualFrameworkName) {
 async function initFrameworkSchema(configData) {
   let functionName = initFrameworkSchema.name;
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
-  console.log(`configData is: ${JSON.stringify(configData)}`);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cconfigDataIs + JSON.stringify(configData));
+  // console.log(`configData is: ${JSON.stringify(configData)}`);
+  // await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  // await loggers.consoleLog(namespacePrefix + functionName, msg.cconfigDataIs + JSON.stringify(configData));
   const appConfigPath = configData[cfg.cappConfigPath];
   const frameworkConfigPath = configData[cfg.cframeworkConfigPath];
   await chiefConfiguration.setupConfiguration(appConfigPath, frameworkConfigPath);

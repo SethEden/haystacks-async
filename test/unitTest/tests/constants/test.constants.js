@@ -211,3 +211,18 @@ export const cinitFramework = gen.cinit + wrd.cFramework; // initFramework
 
 /* main */
 
+
+/* test constants */
+export const cExpectedActualFrameworkDevName = wrd.chay + wrd.cstacks + bas.cDash + wrd.casync; // haystacks-async
+export const cExpectedActualFrameworkProdName = bas.cAt + wrd.chay + wrd.cstacks + bas.cForwardSlash + wrd.casync; // @haystacks/async
+export const cApplicationName = wrd.ctest + wrd.cHarness; // testHarness
+export const cAppDevPath = bas.cForwardSlash + wrd.csrc + bas.cForwardSlash; // /src/
+export const cAppProdPath = bas.cForwardSlash + wrd.cbin + bas.cForwardSlash; // /bin/
+export const cResourcesCommonPath = wrd.cresources + bas.cForwardSlash; // resources/
+export const cCommandsCommonPath = wrd.ccommands + bas.cForwardSlash; // commands/
+export const cConstantsPath = wrd.cconstants + bas.cForwardSlash; // constants/
+export const cConfigurationCommonPath = wrd.cconfiguration + bas.cForwardSlash; // configuration/
+export const cPluginsRegistryCommonPath = wrd.cplugins + bas.cForwardSlash + wrd.cplugins + gen.cDotjson; // plugins/plugins.json
+export const cWorkflowsCommonPath = wrd.cworkflows + bas.cForwardSlash; // workflows/
+export const cThemesCommonPath = wrd.cthemes + bas.cForwardSlash; // themes/
+export const cReleasePath = wrd.crelease + bas.cForwardSlash; // release/

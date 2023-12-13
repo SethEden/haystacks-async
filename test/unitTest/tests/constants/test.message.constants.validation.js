@@ -9,7 +9,7 @@
  */
 
 // Internal imports
-import * as tst_msg from '../../constants/test.message.constants.js';
+import * as tst_msg from './test.message.constants.js';
 
 /**
  * @function unitTestMessageConstantsValidation

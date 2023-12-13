@@ -9,7 +9,7 @@
  */
 
 // Internal imports
-import * as tst_cmd from '../../constants/test.command.constants.js';
+import * as tst_cmd from './test.command.constants.js';
 
 /**
  * @function unitTestCommandConstantsValidation

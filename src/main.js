@@ -122,7 +122,12 @@ async function initFramework(clientConfiguration) {
   clientConfiguration[cfg.cpluginCommandAliasesPath] = pluginCommandAliasesPath;
   clientConfiguration[cfg.cframeworkWorkflowsPath] = frameworkWorkflowsPath;
   clientConfiguration[cfg.cpluginWorkflowsPath] = pluginWorkflowsPath;
-  await warden.initFrameworkSchema(clientConfiguration);
+  try {
+    await warden.initFrameworkSchema(clientConfiguration);
+  } catch(err) {
+    // ERROR: There was a fatal error in warden.initFrameworkSchema function.
+    console.log('ERROR: There was a fatal error in warden.initFrameworkSchema function.');
+  }
   await loggers.consoleLog(namespacePrefix + functionName, msg.cAllLoadedDataIs + JSON.stringify(D));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   // console.log('All loaded data is: ' + JSON.stringify(D));

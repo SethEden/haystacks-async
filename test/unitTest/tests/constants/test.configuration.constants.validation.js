@@ -9,7 +9,7 @@
  */
 
 // Internal imports
-import * as tst_cfg from '../../constants/test.configuration.constants.js';
+import * as tst_cfg from './test.configuration.constants.js';
 
 /**
  * @function unitTestConfigurationConstantsValidation

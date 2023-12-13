@@ -9,7 +9,7 @@
  */
 
 // Internal imports
-import * as tst_biz from '../../constants/test.business.constants.js';
+import * as tst_biz from './test.business.constants.js';
 
 /**
  * @function unitTestBusinessConstantsValidation

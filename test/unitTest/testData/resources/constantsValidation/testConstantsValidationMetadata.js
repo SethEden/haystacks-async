@@ -20,15 +20,19 @@
  */
 
 // Internal imports
-import * as tst from '../../constants/test.constants.js';
-import * as tst_msg from '../../constants/test.message.constants.js';
-import * as tst_sys from '../../constants/test.system.constants.js';
-import * as tst_biz_cv from './test.business.constants.validation.js';
-import * as tst_cmd_cv from './test.command.constants.validation.js';
-import * as tst_cfg_cv from './test.configuration.constants.validation.js';
-import * as tst_cv from './test.constants.validation.js';
-import * as tst_msg_cv from './test.message.constants.validation.js';
-import * as tst_sys_cv from './test.system.constants.validation.js';
+import * as tst from '../../../tests/constants/test.constants.js';
+import * as tst_msg from '../../../tests/constants/test.message.constants.js';
+import * as tst_sys from '../../../tests/constants/test.system.constants.js';
+import * as tst_biz_cv from '../../../tests/constants/test.business.constants.validation.js';
+import * as tst_cmd_cv from '../../../tests/constants/test.command.constants.validation.js';
+import * as tst_cfg_cv from '../../../tests/constants/test.configuration.constants.validation.js';
+import * as tst_cv from '../../../tests/resources/test.constants.validation.js';
+import * as tst_msg_cv from '../../../tests/constants/test.message.constants.validation.js';
+import * as tst_sys_cv from '../../../tests/constants/test.system.constants.validation.js';
+
+// External imports
+import hayConst from '@haystacks/constants';
+import path from 'path';
 
 const {bas, cfg, gen, msg, sys, wrd} = hayConst;
 let baseFileName = path.basename(import.meta.url, path.extname(import.meta.url));

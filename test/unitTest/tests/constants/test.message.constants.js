@@ -9,7 +9,7 @@
  */
 
 // Internal imports
-import * as tst_sys from '../../constants/test.system.constants.js';
+import * as tst_sys from './test.system.constants.js';
 
 // External imports
 import hayConst from '@haystacks/constants';
@@ -84,7 +84,7 @@ export const cy1y2y3Is = bas.cy + num.c1 + bas.cSpace + bas.cPlus + bas.cSpace +
 
 
 // testConstantsValidationMetadata
-export const callClientConstantsValidationDataIs = wrd.call + wrd.cClient + wrd.cConstants + wrd.cValidation + wrd.cData + sys.cSpaceIsColonSpace; // allClientConstantsValidationData is:
+export const callUnitTestConstantsValidationDataIs = wrd.call + wrd.cUnit + wrd.cTest + wrd.cConstants + wrd.cValidation + wrd.cData + sys.cSpaceIsColonSpace; // allUnitTestConstantsValidationData is:
 export const cresolvedConstantsPath_UnitTestBusinessIs = tst_sys.cresolvedConstantsPath_UnitTest + wrd.cBusiness + sys.cSpaceIsColonSpace; // resolvedConstantsPath_UnitTestBusiness is:
 export const cresolvedConstantsPath_UnitTestCommandIs = tst_sys.cresolvedConstantsPath_UnitTest + wrd.cCommand + sys.cSpaceIsColonSpace; // resolvedConstantsPath_UnitTestCommand is:
 export const cresolvedConstantsPath_UnitTestConfigurationIs = tst_sys.cresolvedConstantsPath_UnitTest + wrd.cConfiguration + sys.cSpaceIsColonSpace; // resolvedConstantsPath_UnitTestConfiguration is:
