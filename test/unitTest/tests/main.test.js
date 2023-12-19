@@ -15,6 +15,7 @@
 import allTstCV from '../testData/resources/constantsValidation/testConstantsValidationMetadata.js';
 import * as tst_man from '../testData/mainTest.js';
 import * as tst_con from './constants/test.constants.js';
+import * as tst_sys from './constants/test.system.constants.js';
 import main from '../../../src/main.js'
 
 // External imports
@@ -39,27 +40,28 @@ describe(tst_con.cinitFramework, () => {
     test(tst_con.cinitFramework_validData, async () => {
         // Arrange
         let clientConfiguration = {
-            "FrameworkName": "haystacks-async",
-            "clientRootPath": "C:/haystacks-async",
-            "appConfigResourcesPath": "C:/haystacks-async/test/unitTest/testData/resources/",
-            "appConfigReferencePath": "C:/haystacks-async/test/unitTest/testData/resources/clientTestData/",
-            "clientMetaDataPath": "/test/unitTest/testData/resources/metaData.json",
-            "clientCommandAliasesPath": "C:/haystacks-async/test/testHarness/src/resources/commands/",
-            "clientConstantsPath": "C:/haystacks-async/test/testHarness/src/constants/",
-            "clientRegisteredPlugins": "C:/haystacks-async/test/testHarness/src/resources/plugins/plugins.json",
-            "clientWorkflowsPath": "C:/haystacks-async/test/testHarness/src/resources/workflows/",
-            "clientThemesPath": "C:/haystacks-async/test/testHarness/src/resources/themes/",
-            "clientBusinessRules": {},
-            "clientCommands": {}
+            [tst_sys.cFrameworkName]: "haystacks-async",
+            [tst_sys.cclientRootPath]: "C:/haystacks-async",
+            [tst_sys.cappConfigResourcesPath]: "C:/haystacks-async/test/unitTest/testData/resources/",
+            [tst_sys.cappConfigReferencePath]: "C:/haystacks-async/test/unitTest/testData/resources/clientTestData/",
+            [tst_sys.cclientMetaDataPath]: "/test/unitTest/testData/resources/metaData.json",
+            [tst_sys.cclientCommandAliasesPath]: "C:/haystacks-async/test/testHarness/src/resources/commands/",
+            [tst_sys.cclientConstantsPath]: "C:/haystacks-async/test/testHarness/src/constants/",
+            [tst_sys.cclientRegisteredPlugins]: "C:/haystacks-async/test/testHarness/src/resources/plugins/plugins.json",
+            [tst_sys.cclientWorkflowsPath]: "C:/haystacks-async/test/testHarness/src/resources/workflows/",
+            [tst_sys.cclientThemesPath]: "C:/haystacks-async/test/testHarness/src/resources/themes/",
+            [tst_sys.cclientBusinessRules]: {},
+            [tst_sys.cclientCommands]: {}
         };
         let mutatedClientConfiguration = {
             "FrameworkName": "haystacks-async",
             "appConfigPath": "C:/haystacks-async/test/unitTest/testData/resources/clientTestData/",
             "appConfigReferencePath": "C:/haystacks-async/test/unitTest/testData/resources/clientTestData/",
             "appConfigResourcesPath": "C:/haystacks-async/test/unitTest/testData/resources/",
-            // "clientBusinessRules": Object {},
             "clientMetaDataPath": "metaData.json",
+            "clientBusinessRules": {},
             "clientCommandAliasesPath": "C:/haystacks-async/test/testHarness/src/resources/commands/",
+            "clientCommands": {},
             "clientConstantsPath": "C:/haystacks-async/test/testHarness/src/constants/",
             "clientMetaDataPath": "C:\\haystacks-async\\test\\unitTest\\testData\\resources\\metaData.json",
             "clientRegisteredPlugins": "C:/haystacks-async/test/testHarness/src/resources/plugins/plugins.json",
@@ -86,7 +88,7 @@ describe(tst_con.cinitFramework, () => {
         let returnData = await main.initFramework(clientConfiguration);
 
         // Assert
-        expect(returnData).toBe(mutatedClientConfiguration)
+        expect(returnData).toEqual(mutatedClientConfiguration)
     });
 
     // /**
