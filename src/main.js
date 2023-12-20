@@ -102,9 +102,9 @@ async function initFramework(clientConfiguration) {
   await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginCodeRootPathIs + pluginCodeRootPath);
 
   frameworkCommandAliasesPath = frameworkCodeRootPath + sys.cframeworkResourcesCommandAliasesPath;
-  pluginCommandAliasesPath = pluginCodeRootPath + sys.cframeworkResourcesCommandAliasesPath;
+  pluginCommandAliasesPath = pluginCodeRootPath + bas.cDoubleForwardSlash + sys.cframeworkResourcesCommandAliasesPath;
   frameworkWorkflowsPath = frameworkCodeRootPath + sys.cframeworkResourcesWorkflowsPath;
-  pluginWorkflowsPath = pluginCodeRootPath + sys.cframeworkResourcesWorkflowsPath;
+  pluginWorkflowsPath = pluginCodeRootPath + bas.cDoubleForwardSlash + sys.cframeworkResourcesWorkflowsPath;
 
   clientConfiguration[cfg.cframeworkRootPath] = path.normalize(frameworkRootPath);
   clientConfiguration[cfg.cpluginRootPath] = path.normalize(pluginRootPath);

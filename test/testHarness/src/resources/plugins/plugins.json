@@ -1,16 +1,16 @@
 {
-  "path": "C:/Proj/hayPlugins",
+  "path": "C:/hayPlugins",
   "plugins": [
     {
       "plugin-three": {
         "Name": "plugin-three",
-        "Path": "C:\\Proj\\hayPlugins\\plugin-three\\"
+        "Path": "C:\\hayPlugins\\plugin-three\\"
       }
     },
     {
       "plugin-two": {
         "Name": "plugin-two",
-        "Path": "C:\\Proj\\hayPlugins\\plugin-two\\"
+        "Path": "C:\\hayPlugins\\plugin-two\\"
       }
     }
   ]

@@ -226,5 +226,5 @@ export const unitTestConstantsValidation = [
     {Name: 'cPluginsRegistryCommonPath', Actual: tst_con.cPluginsRegistryCommonPath, Expected: 'plugins/plugins.json'},
     {Name: 'cWorkflowsCommonPath', Actual: tst_con.cWorkflowsCommonPath, Expected: 'workflows/'},
     {Name: 'cThemesCommonPath', Actual: tst_con.cThemesCommonPath, Expected: 'themes/'},
-    {Name: 'cReleasePath', Actual: tst_con.cReleasePath, Expected: 'release/'},
+    {Name: 'cReleasePath', Actual: tst_con.cReleasePath, Expected: 'release/'}
 ]
