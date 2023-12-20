@@ -55,22 +55,22 @@ describe(tst_con.cinitFramework, () => {
         expect(returnData).toEqual(mutatedClientConfiguration)
     });
 
-    // /**
-    //  * @function initFramework_inValidClientConfigurationString
-    //  * @description Tests the main function initFramework with a invalid clientConfiguration string.
-    //  * @author Vlad Sorokin
-    //  * @date 2023/11/24
-    //  */
-    // test(tst_con.initFramework_inValidClientConfigurationString, () => {
-    //     // Arrange
-    //     let clientConfiguration = tst_man.ctestString1;
+    /**
+     * @function initFramework_inValidClientConfigurationString
+     * @description Tests the main function initFramework with a invalid clientConfiguration string.
+     * @author Vlad Sorokin
+     * @date 2023/11/24
+     */
+    test(tst_con.initFramework_inValidClientConfigurationString, async () => {
+        // Arrange
+        let clientConfiguration = tst_man.ctestString1;
 
-    //     // Act
-    //     let returnData = stack.initFramework(clientConfiguration);
+        // Act
+        let returnData = await main.initFramework(clientConfiguration);
 
-    //     // Assert
-    //     expect(returnData).toBeTruthy();
-    // });
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
 
 
 

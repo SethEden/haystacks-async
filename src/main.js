@@ -57,77 +57,88 @@ async function initFramework(clientConfiguration) {
   // let frameworkRootPath = path.normalize(process.cwd());
   // let frameworkRootPath = path.normalize(path.dirname(import.meta.url));
   let frameworkCodeRootPath = url.fileURLToPath(path.dirname(import.meta.url));
-  let pluginCodeRootPath = clientConfiguration[cfg.cclientRootPath];
-  let pluginRootPath = '';
-  // pluginCodeRootPath is:
-  // console.log(msg.cpluginCodeRootPathIs + pluginCodeRootPath);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginCodeRootPathIs + pluginCodeRootPath);
-  let frameworkCommandAliasesPath = '';
-  let pluginCommandAliasesPath = '';
-  let frameworkWorkflowsPath = '';
-  let pluginWorkflowsPath = '';
-  frameworkCodeRootPath = await warden.processRootPath(frameworkCodeRootPath, clientConfiguration[sys.cFrameworkName]) + bas.cDoubleForwardSlash;
-  if (clientConfiguration[sys.cPluginName]) {
-    let srcPath = '';
-    if (clientConfiguration[cfg.cappConfigReferencePath].includes(wrd.csrc)) {
-      srcPath = wrd.csrc;
-    } else if (clientConfiguration[cfg.cappConfigReferencePath].includes(wrd.cbin)) {
-      srcPath = wrd.cbin;
-    }
-    pluginRootPath = await warden.processRootPath(pluginCodeRootPath, clientConfiguration[sys.cPluginName]);
-    pluginCodeRootPath = pluginRootPath + srcPath +  bas.cDoubleForwardSlash;
-    // pluginRootPath is:
-    // console.log(msg.cpluginRootPathIs + pluginRootPath);
+  try {
+    let pluginCodeRootPath = clientConfiguration[cfg.cclientRootPath];
+    let pluginRootPath = '';
     // pluginCodeRootPath is:
     // console.log(msg.cpluginCodeRootPathIs + pluginCodeRootPath);
     await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginCodeRootPathIs + pluginCodeRootPath);
-  }
-  // eslint-disable-next-line no-undef
-  if (process.platform != gen.cwin32) {
-    frameworkCodeRootPath = await warden.executeBusinessRules([frameworkCodeRootPath, ''], [biz.cswapBackSlashToForwardSlash]);
-    pluginCodeRootPath = await warden.executeBusinessRules([pluginCodeRootPath, ''], [biz.cswapBackSlashToForwardSlash]);
-  }
-  let frameworkRootPath = frameworkCodeRootPath;
-  if (NODE_ENV === wrd.cdevelopment) {
-    frameworkCodeRootPath = frameworkCodeRootPath + sys.cFrameworkDevelopRootPath;
-  } else if (NODE_ENV === wrd.cproduction) {
-    frameworkCodeRootPath = frameworkCodeRootPath + sys.cFrameworkProductionRootPath;
-  } else {
-    // WARNING: No .env file found! Going to default to the DEVELOPMENT ENVIRONMENT!
-    // console.log(msg.cApplicationWarningMessage1a + msg.cApplicationWarningMessage1b);
-    frameworkCodeRootPath = frameworkCodeRootPath + sys.cFrameworkDevelopRootPath;
-  }
-  // pluginCodeRootPath is:
-  // console.log(msg.cpluginCodeRootPathIs + pluginCodeRootPath);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginCodeRootPathIs + pluginCodeRootPath);
+    let frameworkCommandAliasesPath = '';
+    let pluginCommandAliasesPath = '';
+    let frameworkWorkflowsPath = '';
+    let pluginWorkflowsPath = '';
+    frameworkCodeRootPath = await warden.processRootPath(frameworkCodeRootPath, clientConfiguration[sys.cFrameworkName]) + bas.cDoubleForwardSlash;
+    if (clientConfiguration[sys.cPluginName]) {
+      let srcPath = '';
+      if (clientConfiguration[cfg.cappConfigReferencePath].includes(wrd.csrc)) {
+        srcPath = wrd.csrc;
+      } else if (clientConfiguration[cfg.cappConfigReferencePath].includes(wrd.cbin)) {
+        srcPath = wrd.cbin;
+      }
+      pluginRootPath = await warden.processRootPath(pluginCodeRootPath, clientConfiguration[sys.cPluginName]);
+      pluginCodeRootPath = pluginRootPath + srcPath +  bas.cDoubleForwardSlash;
+      // pluginRootPath is:
+      // console.log(msg.cpluginRootPathIs + pluginRootPath);
+      // pluginCodeRootPath is:
+      // console.log(msg.cpluginCodeRootPathIs + pluginCodeRootPath);
+      await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginCodeRootPathIs + pluginCodeRootPath);
+    }
+    // eslint-disable-next-line no-undef
+    if (process.platform != gen.cwin32) {
+      frameworkCodeRootPath = await warden.executeBusinessRules([frameworkCodeRootPath, ''], [biz.cswapBackSlashToForwardSlash]);
+      pluginCodeRootPath = await warden.executeBusinessRules([pluginCodeRootPath, ''], [biz.cswapBackSlashToForwardSlash]);
+    }
+    let frameworkRootPath = frameworkCodeRootPath;
+    if (NODE_ENV === wrd.cdevelopment) {
+      frameworkCodeRootPath = frameworkCodeRootPath + sys.cFrameworkDevelopRootPath;
+    } else if (NODE_ENV === wrd.cproduction) {
+      frameworkCodeRootPath = frameworkCodeRootPath + sys.cFrameworkProductionRootPath;
+    } else {
+      // WARNING: No .env file found! Going to default to the DEVELOPMENT ENVIRONMENT!
+      // console.log(msg.cApplicationWarningMessage1a + msg.cApplicationWarningMessage1b);
+      frameworkCodeRootPath = frameworkCodeRootPath + sys.cFrameworkDevelopRootPath;
+    }
+    // pluginCodeRootPath is:
+    // console.log(msg.cpluginCodeRootPathIs + pluginCodeRootPath);
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginCodeRootPathIs + pluginCodeRootPath);
 
-  frameworkCommandAliasesPath = frameworkCodeRootPath + sys.cframeworkResourcesCommandAliasesPath;
-  pluginCommandAliasesPath = pluginCodeRootPath + bas.cDoubleForwardSlash + sys.cframeworkResourcesCommandAliasesPath;
-  frameworkWorkflowsPath = frameworkCodeRootPath + sys.cframeworkResourcesWorkflowsPath;
-  pluginWorkflowsPath = pluginCodeRootPath + bas.cDoubleForwardSlash + sys.cframeworkResourcesWorkflowsPath;
+    frameworkCommandAliasesPath = frameworkCodeRootPath + sys.cframeworkResourcesCommandAliasesPath;
+    pluginCommandAliasesPath = pluginCodeRootPath + bas.cDoubleForwardSlash + sys.cframeworkResourcesCommandAliasesPath;
+    frameworkWorkflowsPath = frameworkCodeRootPath + sys.cframeworkResourcesWorkflowsPath;
+    pluginWorkflowsPath = pluginCodeRootPath + bas.cDoubleForwardSlash + sys.cframeworkResourcesWorkflowsPath;
 
-  clientConfiguration[cfg.cframeworkRootPath] = path.normalize(frameworkRootPath);
-  clientConfiguration[cfg.cpluginRootPath] = path.normalize(pluginRootPath);
-  clientConfiguration[cfg.cpluginReleaseResourcesPath] = path.normalize(pluginRootPath + sys.cFrameworkProductionRootPath + sys.cframeworkResourcesPath);
-  clientConfiguration[cfg.cframeworkConstantsPath] = hayConst.constantsPath; // frameworkCodeRootPath + sys.cframeworkConstantsPath;
-  clientConfiguration[cfg.cappConfigPath] = clientConfiguration[cfg.cappConfigReferencePath];
-  clientConfiguration[cfg.cframeworkResourcesPath] = path.join(frameworkCodeRootPath, sys.cframeworkResourcesPath);
-  clientConfiguration[cfg.cpluginResourcesPath] = path.join(pluginCodeRootPath, sys.cframeworkResourcesPath);
-  clientConfiguration[cfg.cclientMetaDataPath] = path.join(clientConfiguration[cfg.cclientRootPath], clientConfiguration[cfg.cclientMetaDataPath]);
-  clientConfiguration[cfg.cframeworkFullMetaDataPath] = path.join(clientConfiguration[cfg.cframeworkResourcesPath], sys.cmetaDatadotJson);
-  clientConfiguration[cfg.cpluginFullMetaDataPath] = path.join(clientConfiguration[cfg.cpluginResourcesPath], sys.cmetaDatadotJson);
-  clientConfiguration[cfg.cframeworkConfigPath] = frameworkCodeRootPath + sys.cframeworkResourcesConfigurationPath;
-  clientConfiguration[cfg.cframeworkThemesPath] = frameworkCodeRootPath + sys.cframeworkThemesPath;
-  clientConfiguration[cfg.cframeworkCommandAliasesPath] = frameworkCommandAliasesPath;
-  clientConfiguration[cfg.cpluginCommandAliasesPath] = pluginCommandAliasesPath;
-  clientConfiguration[cfg.cframeworkWorkflowsPath] = frameworkWorkflowsPath;
-  clientConfiguration[cfg.cpluginWorkflowsPath] = pluginWorkflowsPath;
-  try {
-    await warden.initFrameworkSchema(clientConfiguration);
-  } catch(err) {
-    // ERROR: There was a fatal error in warden.initFrameworkSchema function.
-    console.log('ERROR: There was a fatal error in warden.initFrameworkSchema function.');
+    clientConfiguration[cfg.cframeworkRootPath] = path.normalize(frameworkRootPath);
+    clientConfiguration[cfg.cpluginRootPath] = path.normalize(pluginRootPath);
+    clientConfiguration[cfg.cpluginReleaseResourcesPath] = path.normalize(pluginRootPath + sys.cFrameworkProductionRootPath + sys.cframeworkResourcesPath);
+    clientConfiguration[cfg.cframeworkConstantsPath] = hayConst.constantsPath; // frameworkCodeRootPath + sys.cframeworkConstantsPath;
+    clientConfiguration[cfg.cappConfigPath] = clientConfiguration[cfg.cappConfigReferencePath];
+    clientConfiguration[cfg.cframeworkResourcesPath] = path.join(frameworkCodeRootPath, sys.cframeworkResourcesPath);
+    clientConfiguration[cfg.cpluginResourcesPath] = path.join(pluginCodeRootPath, sys.cframeworkResourcesPath);
+    clientConfiguration[cfg.cclientMetaDataPath] = path.join(clientConfiguration[cfg.cclientRootPath], clientConfiguration[cfg.cclientMetaDataPath]);
+    clientConfiguration[cfg.cframeworkFullMetaDataPath] = path.join(clientConfiguration[cfg.cframeworkResourcesPath], sys.cmetaDatadotJson);
+    clientConfiguration[cfg.cpluginFullMetaDataPath] = path.join(clientConfiguration[cfg.cpluginResourcesPath], sys.cmetaDatadotJson);
+    clientConfiguration[cfg.cframeworkConfigPath] = frameworkCodeRootPath + sys.cframeworkResourcesConfigurationPath;
+    clientConfiguration[cfg.cframeworkThemesPath] = frameworkCodeRootPath + sys.cframeworkThemesPath;
+    clientConfiguration[cfg.cframeworkCommandAliasesPath] = frameworkCommandAliasesPath;
+    clientConfiguration[cfg.cpluginCommandAliasesPath] = pluginCommandAliasesPath;
+    clientConfiguration[cfg.cframeworkWorkflowsPath] = frameworkWorkflowsPath;
+    clientConfiguration[cfg.cpluginWorkflowsPath] = pluginWorkflowsPath;
+    try {
+      await warden.initFrameworkSchema(clientConfiguration);
+    } catch(err1) {
+      // ERROR: There was a fatal error in warden.initFrameworkSchema function.
+      console.log(msg.cErrorInitFrameworkMessage01);
+      console.log(err1.message);
+    }
+  } catch(err2) {
+    // ERROR: There was a fatal error in main.initFramework function.
+    console.log(msg.cErrorInitFrameworkMessage02);
+    // ERROR: clientConfiguration was not properly defined.
+    console.log(msg.cErrorInitFrameworkMessage03);
+    console.log(err2.message);
+    clientConfiguration = false;
   }
+  
   await loggers.consoleLog(namespacePrefix + functionName, msg.cAllLoadedDataIs + JSON.stringify(D));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   // console.log('All loaded data is: ' + JSON.stringify(D));
