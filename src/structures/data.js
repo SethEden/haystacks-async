@@ -33,7 +33,7 @@ async function getData() {
     colors: data[wrd.ccolors],
     ConstantsValidationData: data[sys.cConstantsValidationData],
     CommandsAliases: data[sys.cCommandsAliases],
-    CommandWorkflow: data[sys.cCommandWorkflows],
+    CommandWorkflows: data[sys.cCommandWorkflows],
     Themes: data[wrd.cThemes]};
 }
 

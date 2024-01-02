@@ -1,0 +1,97 @@
+{
+    "configuration": {
+        "system": {
+            "system.appConfigPath": "C:\\haystacks-async\\test\\testHarness/src/resources/configuration/",
+            "system.frameworkConfigPath": "C:\\haystacks-async\\//src//resources//configuration//",
+            "system.appConfigFiles": ["C:\\haystacks-async\\test\\testHarness\\src\\resources\\configuration/application.system.json", "C:\\haystacks-async\\test\\testHarness\\src\\resources\\configuration\\debugSettings\\businessRules\\clientRules/clientStringParsing.json"]
+        },
+        "debugSetting": {
+            "framework": {
+                "brokers": {
+                    "debugSetting.framework.brokers.commandBroker": false,
+                    "debugSetting.framework.brokers.commandBroker@ModuleFontStyle": "Bold|Underline",
+                    "debugSetting.framework.brokers.commandBroker@FunctionFontStyle": "Bold|Underline",
+                    "debugSetting.framework.brokers.commandBroker@MessageFontStyle": "Underline"
+                }
+            }
+        }
+    },
+    "colors": {
+        "ColorData": {
+            "Red": {
+                "ColorName": "Red",
+                "HexValue": "#FF0000",
+                "Red": "255",
+                "Green": "0",
+                "Blue": "0"
+            },
+            "Green": {
+                "ColorName": "Green",
+                "HexValue": "#00FF00",
+                "Red": "0",
+                "Green": "255",
+                "Blue": "0"
+            }
+        }
+    },
+    "ConstantsValidationData": {
+        "Framework": {
+            "ConstantsShortNames": {
+                "BasicConstantsValidation": "bas",
+                "BusinessConstantsValidation": "biz",
+                "ColorConstantsValidation": "clr",
+                "CommandConstantsValidation": "cmd"
+            }
+        }
+    },
+    "Commands": false, 
+    "CommandsAliases": {
+        "Framework": {
+            "advanced": [{
+                    "commandSequencer": {
+                        "Name": "commandSequencer",
+                        "Aliases": "CommandS,CommandSeq,CommandSequencer,CmdS,CmdSeq,CmdSequencer,CSeq",
+                        "Description": "Takes a sequence of commands/aliases and enqueues all to the command queue."
+                    },
+                    "workflow": {
+                        "Name": "workflow",
+                        "Aliases": "WorkF,WorkFl,WorkFlo,WorkFlow,WrkF,WrkFl,WrkFlo,WrkFlow,WF,WFl,WFlo",
+                        "Description": "Loads the specified workflow, calls the command sequencer to get each commands enqueued."
+                    }
+                }
+            ]
+        }
+    },
+    "CommandWorkflows": {
+        "Framework": {
+            "system": [{
+                    "metrics": [{
+                            "businessRulesMetrics": "cmdSeq brm",
+                            "commandMetrics": "cmdSeq cmdMet",
+                            "metrics": "cmdSeq wrkflo,businessRulesMetrics wrkflo,commandMetrics"
+                        }
+                    ],
+                    "system": [{
+                            "startup": "commandSequencer name,application,true version about",
+                            "details": "commandSequencer name,application version about",
+                            "applicationDetails": "commandSequencer name,application version about",
+                            "frameworkDetails": "commandSequencer name,framework,true version,framework about,framework",
+                            "system": "cmdSeq wrkflo,startup wrkflo,details wrkflo,applicationDetails wrkflo,frameworkDetails"
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    "Themes": {
+        "Framework": [{
+                "Name": "Default",
+                "Path": "C:\\haystacks-async\\src\\resources\\themes\\Default"
+            }, {
+                "Name": "Matrix",
+                "Path": "C:\\haystacks-async\\src\\resources\\themes\\Matrix"
+            }
+        ]
+    },
+    "businessRules": false
+}

@@ -9,7 +9,7 @@
  */
 
 // Internal imports
-import * as tst_con from '../constants/test.constants';
+import * as tst_con from '../constants/test.constants.js';
 
 
 
@@ -114,7 +114,38 @@ export const testConstantsValidation = [
     /* stack */
 
     /* main */
-    {Name: 'cinitFramework', Actual: tst_con.cinitFramework, Expect: 'initFramework'}
+    //initFramework
+    {Name: 'cinitFramework', Actual: tst_con.cinitFramework, Expected: 'initFramework'},
+    {Name: 'cinitFramework_validData', Actual: tst_con.cinitFramework_validData, Expected: 'initFramework_validData'}, 
+    {Name: 'cinitFramework_inValidClientConfigurationString', Actual: tst_con.cinitFramework_inValidClientConfigurationString, Expected: 'initFramework_inValidClientConfigurationString'},
+    {Name: 'cinitFramework_inValidClientConfigurationInteger', Actual: tst_con.cinitFramework_inValidClientConfigurationInteger, Expected: 'initFramework_inValidClientConfigurationInteger'},
+    {Name: 'cinitFramework_inValidClientConfigurationBoolean', Actual: tst_con.cinitFramework_inValidClientConfigurationBoolean, Expected: 'initFramework_inValidClientConfigurationBoolean'},
+    {Name: 'cinitFramework_inValidClientConfigurationUndefined', Actual: tst_con.cinitFramework_inValidClientConfigurationUndefined, Expected: 'initFramework_inValidClientConfigurationUndefined'},
+    {Name: 'cinitFramework_inValidClientConfigurationNaN', Actual: tst_con.cinitFramework_inValidClientConfigurationNaN, Expected: 'initFramework_inValidClientConfigurationNaN'},
+
+    // accouterFramework
+    {Name: 'caccouterFramework', Actual: tst_con.caccouterFramework, Expected: 'accouterFramework'},
+    {Name: 'caccouterFramework_validData', Actual: tst_con.caccouterFramework_validData, Expected: 'accouterFramework_validData'}, 
+    {Name: 'caccouterFramework_inValidDataString', Actual: tst_con.caccouterFramework_inValidDataString, Expected: 'accouterFramework_inValidDataString'}, 
+    {Name: 'caccouterFramework_inValidDataInteger', Actual: tst_con.caccouterFramework_inValidDataInteger, Expected: 'accouterFramework_inValidDataInteger'}, 
+    {Name: 'caccouterFramework_inValidDataBoolean', Actual: tst_con.caccouterFramework_inValidDataBoolean, Expected: 'accouterFramework_inValidDataBoolean'}, 
+    {Name: 'caccouterFramework_inValidDataUndefined', Actual: tst_con.caccouterFramework_inValidDataUndefined, Expected: 'accouterFramework_inValidDataUndefined'}, 
+    {Name: 'caccouterFramework_inValidDataNaN', Actual: tst_con.caccouterFramework_inValidDataNaN, Expected: 'accouterFramework_inValidDataNaN'},
+
+    // getFrameworkData
+    {Name: 'cgetFrameworkData', Actual: tst_con.cgetFrameworkData, Expected: 'getFrameworkData'},
+    {Name: 'cgetFrameworkData_validData', Actual: tst_con.cgetFrameworkData_validData, Expected: 'getFrameworkData_validData'},
+    {Name: 'cgetFrameworkData_inValidString', Actual: tst_con.cgetFrameworkData_inValidString, Expected: 'getFrameworkData_inValidString'},
+    {Name: 'cgetFrameworkData_inValidInteger', Actual: tst_con.cgetFrameworkData_inValidInteger, Expected: 'getFrameworkData_inValidInteger'},
+    {Name: 'cgetFrameworkData_inValidBoolean', Actual: tst_con.cgetFrameworkData_inValidBoolean, Expected: 'getFrameworkData_inValidBoolean'},
+    {Name: 'cgetFrameworkData_inValidUndefined', Actual: tst_con.cgetFrameworkData_inValidUndefined, Expected: 'getFrameworkData_inValidUndefined'},
+    {Name: 'cgetFrameworkData_inValidNaN', Actual: tst_con.cgetFrameworkData_inValidNaN, Expected: 'getFrameworkData_inValidNaN'}
+    
+
+
+
+
+
 
 
     // Test names

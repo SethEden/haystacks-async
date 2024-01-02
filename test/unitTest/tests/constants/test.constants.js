@@ -114,7 +114,32 @@ export const cUnitTestName = wrd.cUnit + wrd.cTest + wrd.cHarness; // testHarnes
 /* stack */
 
 /* main */
+// initFramework
 export const cinitFramework = gen.cinit + wrd.cFramework; // initFramework
+export const cinitFramework_validData = cinitFramework + bas.cUnderscore + wrd.cvalid + wrd.cData; // initFramework_validData
+export const cinitFramework_inValidClientConfigurationString = cinitFramework + bas.cUnderscore + wrd.cinValid + wrd.cClient + wrd.cConfiguration + wrd.cString; // initFramework_inValidClientConfigurationString 
+export const cinitFramework_inValidClientConfigurationInteger = cinitFramework + bas.cUnderscore + wrd.cinValid + wrd.cClient + wrd.cConfiguration + wrd.cInteger; // initFramework_inValidClientConfigurationInteger 
+export const cinitFramework_inValidClientConfigurationBoolean = cinitFramework + bas.cUnderscore + wrd.cinValid + wrd.cClient + wrd.cConfiguration + wrd.cBoolean; // initFramework_inValidClientConfigurationBoolean 
+export const cinitFramework_inValidClientConfigurationUndefined = cinitFramework + bas.cUnderscore + wrd.cinValid + wrd.cClient + wrd.cConfiguration + 'Undefined'; // initFramework_inValidClientConfigurationUndefined 
+export const cinitFramework_inValidClientConfigurationNaN = cinitFramework + bas.cUnderscore + wrd.cinValid + wrd.cClient + wrd.cConfiguration + 'NaN'; // initFramework_inValidClientConfigurationNaN 
+
+// accouterFramework
+export const caccouterFramework = wrd.caccouter + wrd.cFramework; // accouterFramework
+export const caccouterFramework_validData = caccouterFramework + bas.cUnderscore + wrd.cvalid + wrd.cData; // accouterFramework_validData 
+export const caccouterFramework_inValidDataString = caccouterFramework + bas.cUnderscore + wrd.cinValid + wrd.cData + wrd.cString; // accouterFramework_inValidDataString 
+export const caccouterFramework_inValidDataInteger = caccouterFramework + bas.cUnderscore + wrd.cinValid + wrd.cData + wrd.cInteger; // accouterFramework_inValidDataInteger 
+export const caccouterFramework_inValidDataBoolean = caccouterFramework + bas.cUnderscore + wrd.cinValid + wrd.cData + wrd.cBoolean; // accouterFramework_inValidDataBoolean 
+export const caccouterFramework_inValidDataUndefined = caccouterFramework + bas.cUnderscore + wrd.cinValid + wrd.cData + 'Undefined'; // accouterFramework_inValidDataUndefined 
+export const caccouterFramework_inValidDataNaN = caccouterFramework + bas.cUnderscore + wrd.cinValid + wrd.cData + 'NaN'; //caccouterFramework_inValidDataNaN 
+
+//getFrameworkData
+export const cgetFrameworkData = wrd.cget + wrd.cFramework + wrd.cData; // getFrameworkData
+export const cgetFrameworkData_validData = cgetFrameworkData + bas.cUnderscore + wrd.cvalid + wrd.cData; // getFrameworkData_validData
+export const cgetFrameworkData_inValidString = cgetFrameworkData + bas.cUnderscore + wrd.cinValid + wrd.cString; // getFrameworkData_inValidString
+export const cgetFrameworkData_inValidInteger = cgetFrameworkData + bas.cUnderscore + wrd.cinValid + wrd.cInteger; // getFrameworkData_inValidInteger
+export const cgetFrameworkData_inValidBoolean = cgetFrameworkData + bas.cUnderscore + wrd.cinValid + wrd.cBoolean; // getFrameworkData_inValidBoolean
+export const cgetFrameworkData_inValidUndefined = cgetFrameworkData + bas.cUnderscore + wrd.cinValid + 'Undefined'; // getFrameworkData_inValidUndefined
+export const cgetFrameworkData_inValidNaN = cgetFrameworkData + bas.cUnderscore + wrd.cinValid + 'NaN'; // getFrameworkData_inValidNaN
 
 
 // Test names
