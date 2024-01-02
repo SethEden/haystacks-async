@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?><CommandsAliases>
+  <test>
+    <Command Name="unitTest" Aliases="UnitTst,UnitTs,UnitT,UnitTest,UtTst,UtTs,UtT,UtTest,UitTst,UitTs,UitT,UitTest,UntTst,UntTs,UntT" Description="Being used for unit testing."/>
+  </test>
+</CommandsAliases>

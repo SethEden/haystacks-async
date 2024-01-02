@@ -214,30 +214,43 @@ async function getFrameworkData() {
  * @function mergeClientBusinessRules
  * @description A wrapper function to expose the warden.mergeClientBusinessRules functionality.
  * @param {object} clientBusinessRules A map of client defined business rule names and client defined business rule function calls.
- * @return {void}
+  // console.log(`data is: ${JSON.stringify(data)}`);
+ * @return {boolean} True or false value to indicate if the client rules were processed correctly.
  * @author Seth Hollingsead
  * @date 2022/02/18
  */
 async function mergeClientBusinessRules(clientBusinessRules) {
   let functionName = mergeClientBusinessRules.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  await warden.mergeClientBusinessRules(clientBusinessRules);
+  let returnData = false;
+  if (clientBusinessRules && typeof clientBusinessRules === wrd.cobject) {
+    await warden.mergeClientBusinessRules(clientBusinessRules);
+    returnData = true;
+  }
+  await loggers.consoleLog(msg.creturnDataIs + returnData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
 }
 
 /**
  * @function mergeClientCommands
  * @description A wrapper function to expose the warden.mergeClientCommands functionality.
  * @param {object} clientCommands A map of client defined command names and client defined command function calls.
- * @return {void}
+ * @return {boolean} True or false value to indicate if the client commands were processed correctly.
  * @author Seth Hollingsead
  * @date 2022/02/18
  */
 async function mergeClientCommands(clientCommands) {
   let functionName = mergeClientCommands.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  await warden.mergeClientCommands(clientCommands);
+  let returnData = false;
+  if (clientCommands && typeof clientCommands === wrd.cobject) {
+    await warden.mergeClientCommands(clientCommands);
+    returnData = true;
+  }
+  await loggers.consoleLog(msg.creturnDataIs + returnData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
 }
 
 /**
@@ -247,20 +260,26 @@ async function mergeClientCommands(clientCommands) {
  * @param {string} commandAliasesPath The path to where the commands aliases XML file is stored, that should be loaded.
  * @param {string} contextName A name for the set of command aliases that should be
  * used to store the path in the configuration system so it can be loaded by the framework.
- * @return {void}
+ * @return {boolean} True or false to indicate if the input was correct.
  * @author Seth Hollingsead
  * @date 2022/02/18
  */
 async function loadCommandAliases(commandAliasesPath, contextName) {
   let functionName = loadCommandAliases.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  // commandAliasesPath is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.ccommandAliasesPathIs + commandAliasesPath);
-  // contextName is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.ccontextNameIs + contextName);
-  await warden.setConfigurationSetting(wrd.csystem, contextName, commandAliasesPath);
-  await warden.loadCommandAliases(contextName);
+  let returnData = false;
+  if ((commandAliasesPath && typeof commandAliasesPath === wrd.cstring)(contextName && typeof contextName === wrd.cstring)) {
+    // commandAliasesPath is:
+    await loggers.consoleLog(namespacePrefix + functionName, msg.ccommandAliasesPathIs + commandAliasesPath);
+    // contextName is:
+    await loggers.consoleLog(namespacePrefix + functionName, msg.ccontextNameIs + contextName);
+    await warden.setConfigurationSetting(wrd.csystem, contextName, commandAliasesPath);
+    await warden.loadCommandAliases(contextName);
+    returnData = true;
+  }
+  await loggers.consoleLog(msg.creturnDataIs + returnData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
 }
 
 /**

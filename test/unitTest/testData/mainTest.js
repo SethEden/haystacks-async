@@ -11,7 +11,7 @@
 
 // Internal imports
 import * as tst_cfg from '../tests/constants/test.configuration.constants.js';
-
+import * as tst_con from '../tests/constants/test.constants.js';
 
 // External imports
 import hayConst from '@haystacks/constants';
@@ -70,4 +70,24 @@ export const initFrameworkObjectExpected = {
     [tst_cfg.cpluginResourcesPath]: tst_cfg.cpluginResourcesPathExpectedValue,
     [tst_cfg.cpluginRootPath]: bas.cDot,
     [tst_cfg.cpluginWorkflowsPath]: tst_cfg.cpluginWorkflowsPathExpectedValue,
+};
+
+/**
+ * @function testHelloWorld
+ * @description Function made to be used for unit testing as a business rule data.
+ * @return {string} Returns a string for unit test use.
+ * @author Vlad Sorokin
+ * @date 2023/01/02
+ */
+async function testHelloWorld() {
+    let functionName = testHelloWorld.name;
+    console.log(`BEGIN ${namespacePrefix}${bas.cDot}${functionName} function`);
+    let returnData = wrd.chello + bas.cSpace + wrd.cWorld;
+    console.log(`returnData is: ${returnData}`);
+    console.log(`END ${namespacePrefix}${bas.cDot}${functionName} function`);
+    return returnData;
+}
+
+export const testBusinessRulesLibrary = {
+    [tst_con.ctestHelloWorld]: () => testHelloWorld()
 };

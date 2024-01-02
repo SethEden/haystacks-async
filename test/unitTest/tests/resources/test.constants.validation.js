@@ -139,10 +139,25 @@ export const testConstantsValidation = [
     {Name: 'cgetFrameworkData_inValidInteger', Actual: tst_con.cgetFrameworkData_inValidInteger, Expected: 'getFrameworkData_inValidInteger'},
     {Name: 'cgetFrameworkData_inValidBoolean', Actual: tst_con.cgetFrameworkData_inValidBoolean, Expected: 'getFrameworkData_inValidBoolean'},
     {Name: 'cgetFrameworkData_inValidUndefined', Actual: tst_con.cgetFrameworkData_inValidUndefined, Expected: 'getFrameworkData_inValidUndefined'},
-    {Name: 'cgetFrameworkData_inValidNaN', Actual: tst_con.cgetFrameworkData_inValidNaN, Expected: 'getFrameworkData_inValidNaN'}
+    {Name: 'cgetFrameworkData_inValidNaN', Actual: tst_con.cgetFrameworkData_inValidNaN, Expected: 'getFrameworkData_inValidNaN'},
     
+    // mergeClientBusinessRules
+    {Name: 'cmergeClientBusinessRules', Actual: tst_con.cmergeClientBusinessRules, Expected: 'mergeClientBusinessRules'},
+    {Name: 'cmergeClientBusinessRules_validData', Actual: tst_con.cmergeClientBusinessRules_validData, Expected: 'mergeClientBusinessRules_validData'},
+    {Name: 'cmergeClientBusinessRules_inValidClientBusinessRulesString', Actual: tst_con.cmergeClientBusinessRules_inValidClientBusinessRulesString, Expected: 'mergeClientBusinessRules_inValidClientBusinessRulesString'},
+    {Name: 'cmergeClientBusinessRules_inValidClientBusinessRulesInteger', Actual: tst_con.cmergeClientBusinessRules_inValidClientBusinessRulesInteger, Expected: 'mergeClientBusinessRules_inValidClientBusinessRulesInteger'},
+    {Name: 'cmergeClientBusinessRules_inValidClientBusinessRulesBoolean', Actual: tst_con.cmergeClientBusinessRules_inValidClientBusinessRulesBoolean, Expected: 'mergeClientBusinessRules_inValidClientBusinessRulesBoolean'},
+    {Name: 'cmergeClientBusinessRules_inValidClientBusinessRulesUndefined', Actual: tst_con.cmergeClientBusinessRules_inValidClientBusinessRulesUndefined, Expected: 'mergeClientBusinessRules_inValidClientBusinessRulesUndefined'},
+    {Name: 'cmergeClientBusinessRules_inValidClientBusinessRulesNaN', Actual: tst_con.cmergeClientBusinessRules_inValidClientBusinessRulesNaN, Expected: 'mergeClientBusinessRules_inValidClientBusinessRulesNaN'},
 
-
+    // mergeClientCommands
+    {Name: 'cmergeClientCommands', Actual: tst_con.cmergeClientCommands, Expected: 'mergeClientCommands'},
+    {Name: 'cmergeClientCommands_validData', Actual: tst_con.cmergeClientCommands_validData, Expected: 'mergeClientCommands_validData'},
+    {Name: 'cmergeClientCommands_inValidClientCommandsString', Actual: tst_con.cmergeClientCommands_inValidClientCommandsString, Expected: 'mergeClientCommands_inValidClientCommandsString'},
+    {Name: 'cmergeClientCommands_inValidClientCommandsInteger', Actual: tst_con.cmergeClientCommands_inValidClientCommandsInteger, Expected: 'mergeClientCommands_inValidClientCommandsInteger'},
+    {Name: 'cmergeClientCommands_inValidClientCommandsBoolean', Actual: tst_con.cmergeClientCommands_inValidClientCommandsBoolean, Expected: 'mergeClientCommands_inValidClientCommandsBoolean'},
+    {Name: 'cmergeClientCommands_inValidClientCommandsUndefined', Actual: tst_con.cmergeClientCommands_inValidClientCommandsUndefined, Expected: 'mergeClientCommands_inValidClientCommandsUndefined'},
+    {Name: 'cmergeClientCommands_inValidClientCommandsNaN', Actual: tst_con.cmergeClientCommands_inValidClientCommandsNaN, Expected: 'mergeClientCommands_inValidClientCommandsNaN'}
 
 
 

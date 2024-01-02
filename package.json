@@ -55,5 +55,17 @@
   "bugs": {
     "url": "https://github.com/SethEden/haystacks-async/issues"
   },
-  "homepage": "https://github.com/SethEden/haystacks-async#readme"
+  "homepage": "https://github.com/SethEden/haystacks-async#readme",
+  "jest": {
+    "transform": {
+      "\\.[jt]sx?$<>": "babel-jest"
+    },
+    "moduleFileExtensions": [
+       "ts",
+       "tsx",
+       "js",
+       "json"
+    ],
+    "setupTestFrameworkScriptFile": "<rootDir>/src/setupSpecs.ts"
+}
 }
