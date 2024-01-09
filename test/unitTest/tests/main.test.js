@@ -2,8 +2,16 @@
 /* eslint-disable no-undef */
 /**
  * @file main.test.js
- * @module constant.test
+ * @module main.test
  * @description Unit tests for the main.js
+ * @requires module:data
+ * @requires module:main
+ * @requires module:testAliases
+ * @requires module:testConstantsValidationMetadata
+ * @requires module:mainTest
+ * @requires module:testData
+ * @requires module:test.constants
+ * @requires module:test.system.constants
  * @requires {@link https://www.npmjs.com/package/@haystacks/constants|@haystacks/constants}
  * @requires {@link https://www.npmjs.com/package/jest|jest}
  * @author Vlad Sorokin
@@ -13,13 +21,13 @@
 
 // Internal imports
 import D from '../../../src/structures/data.js';
-import testAliases from '../testData/resources/commands/testAliases.xml';
+import main from '../../../src/main.js'
+// import testAliases from '../testData/resources/commands/testAliases.xml';
 import allTstCV from '../testData/resources/constantsValidation/testConstantsValidationMetadata.js';
 import * as tst_man from '../testData/mainTest.js';
 import testData from '../testData/testData.json'
 import * as tst_con from './constants/test.constants.js';
 import * as tst_sys from './constants/test.system.constants.js';
-import main from '../../../src/main.js'
 
 // External imports
 import hayConst from '@haystacks/constants';
@@ -616,27 +624,29 @@ describe(tst_con.cmergeClientCommands, () => {
  * @description Tests the positive and negative test cases of the loadCommandAliases
  * @author Vlad Sorokin
  * @date 2023/01/02
+ * @NOTE As of now this test needs jest xml file support, as it will not work unless there is a way for jest to read and use xml files. 
+ * Tried to use "jest-environment-jsdom" to solve this issue but couldn't get it to work, though it does seem that solution is use of jsdom.
  */
-describe(tst_con.cloadCommandAliases, () => {
-    /**
-     * @function loadCommandAliases_validCommandAliasesPathData
-     * @description Tests the main function loadCommandAliases with a valid input.
-     * @author Vlad Sorokin
-     * @date 2023/01/02
-     */
-    test(tst_con.cloadCommandAliases_validData, async () => {
-        // Arrange
-        let commandAliasesPath = '../testData/resources/commands/testAliases.xml';
-        let contextName = wrd.cunit + wrd.cTest;
-        let returnData = true;
-        let normalizedCommandAliasesPath = path.normalize(commandAliasesPath);
+// describe(tst_con.cloadCommandAliases, () => {
+//     /**
+//      * @function loadCommandAliases_validCommandAliasesPathData
+//      * @description Tests the main function loadCommandAliases with a valid input.
+//      * @author Vlad Sorokin
+//      * @date 2023/01/02
+//      */
+//     test(tst_con.cloadCommandAliases_validData, async () => {
+//         // Arrange
+//         let commandAliasesPath = '../testData/resources/commands/testAliases.xml';
+//         let contextName = wrd.cunit + wrd.cTest;
+//         let returnData = true;
+//         let normalizedCommandAliasesPath = path.normalize(commandAliasesPath);
 
-        // Act
-        returnData = await main.loadCommandAliases(normalizedCommandAliasesPath, contextName);
+//         // Act
+//         returnData = await main.loadCommandAliases(normalizedCommandAliasesPath, contextName);
 
-        // Assert
-        expect(returnData).toBeTruthy();
-    });
+//         // Assert
+//         expect(returnData).toBeTruthy();
+//     });
 
     // /**
     //  * @function loadCommandAliases_inValidCommandAliasesPathString
@@ -807,4 +817,518 @@ describe(tst_con.cloadCommandAliases, () => {
     //     // Assert
     //     expect(returnData).toBeFalsy();
     // });
+// })
+
+// /**
+//  * @function loadCommandWorkflows
+//  * @description Tests the positive and negative test cases of the loadCommandWorkflows
+//  * @author Vlad Sorokin
+//  * @date 2023/01/02
+//  */
+// describe(tst_con.cloadCommandWorkflows, () => {
+//     /**
+//      * @function loadCommandWorkflows_validWorkflowPathData
+//      * @description Tests the main function loadCommandWorkflows with a valid input.
+//      * @author Vlad Sorokin
+//      * @date 2023/01/02
+//      */
+//     test(tst_con.cloadCommandWorkflows_validData, async () => {
+//         // Arrange
+        
+
+//         // Act
+//         let returnData = await main.loadCommandWorkflows();
+
+//         // Assert
+//         expect(returnData).toEqual();
+//     });
+
+//     /**
+//      * @function loadCommandWorkflows_inValidWorkflowPathString
+//      * @description Tests the main function loadCommandWorkflows with a invalid data string.
+//      * @author Vlad Sorokin
+//      * @date 2023/01/02
+//      */
+//     test(tst_con.cloadCommandWorkflows_inValidWorkflowPathString, async () => {
+//         // Arrange
+        
+
+//         // Act
+//         let returnData = await main.loadCommandWorkflows();
+
+//         // Assert
+//         expect(returnData).toBeFalsy();
+//     });
+
+//     /**
+//      * @function loadCommandWorkflows_inValidContextNameString
+//      * @description Tests the main function loadCommandWorkflows with a invalid data string.
+//      * @author Vlad Sorokin
+//      * @date 2023/01/02
+//      */
+//     test(tst_con.cloadCommandWorkflows_inValidContextNameString, async () => {
+//         // Arrange
+        
+
+//         // Act
+//         let returnData = await main.loadCommandWorkflows();
+
+//         // Assert
+//         expect(returnData).toBeFalsy();
+//     });
+
+//     /**
+//      * @function loadCommandWorkflows_inValidWorkflowPathInteger
+//      * @description Tests the main function loadCommandWorkflows with a invalid data integer.
+//      * @author Vlad Sorokin
+//      * @date 2023/01/02
+//      */
+//     test(tst_con.cloadCommandWorkflows_inValidWorkflowPathInteger, async () => {
+//         // Arrange
+        
+
+//         // Act
+//         let returnData = await main.loadCommandWorkflows();
+
+//         // Assert
+//         expect(returnData).toBeFalsy();
+//     });
+
+//     /**
+//      * @function loadCommandWorkflows_inValidWorkflowPathBoolean
+//      * @description Tests the main function loadCommandWorkflows with a invalid data boolean.
+//      * @author Vlad Sorokin
+//      * @date 2023/01/02
+//      */
+//     test(tst_con.cloadCommandWorkflows_inValidWorkflowPathBoolean, async () => {
+//         // Arrange
+        
+
+//         // Act
+//         let returnData = await main.loadCommandWorkflows();
+
+//         // Assert
+//         expect(returnData).toBeFalsy();
+//     });
+
+//     /**
+//      * @function loadCommandWorkflows_inValidContextNameInteger
+//      * @description Tests the main function loadCommandWorkflows with a invalid data integer.
+//      * @author Vlad Sorokin
+//      * @date 2023/01/02
+//      */
+//     test(tst_con.cloadCommandWorkflows_inValidContextNameInteger, async () => {
+//         // Arrange
+        
+
+//         // Act
+//         let returnData = await main.loadCommandWorkflows();
+
+//         // Assert
+//         expect(returnData).toBeFalsy();
+//     });
+
+//     /**
+//      * @function loadCommandWorkflows_inValidContextNameBoolean
+//      * @description Tests the main function loadCommandWorkflows with a invalid data boolean.
+//      * @author Vlad Sorokin
+//      * @date 2023/01/02
+//      */
+//     test(tst_con.cloadCommandWorkflows_inValidContextNameBoolean, async () => {
+//         // Arrange
+        
+
+//         // Act
+//         let returnData = await main.loadCommandWorkflows();
+
+//         // Assert
+//         expect(returnData).toBeFalsy();
+//     });
+
+//     /**
+//      * @function loadCommandWorkflows_inValidWorkflowPathUndefined
+//      * @description Tests the main function loadCommandWorkflows with a invalid data undefined.
+//      * @author Vlad Sorokin
+//      * @date 2023/01/02
+//      */
+//     test(tst_con.cloadCommandWorkflows_inValidWorkflowPathUndefined, async () => {
+//         // Arrange
+        
+
+//         // Act
+//         let returnData = await main.loadCommandWorkflows();
+
+//         // Assert
+//         expect(returnData).toBeFalsy();
+//     });
+
+//     /**
+//      * @function loadCommandWorkflows_inValidWorkflowPathNaN
+//      * @description Tests the main function loadCommandWorkflows with a invalid data NaN.
+//      * @author Vlad Sorokin
+//      * @date 2023/01/02
+//      */
+//     test(tst_con.cloadCommandWorkflows_inValidWorkflowPathNaN, async () => {
+//         // Arrange
+        
+
+//         // Act
+//         let returnData = await main.loadCommandWorkflows();
+
+//         // Assert
+//         expect(returnData).toBeFalsy();
+//     });
+
+//     /**
+//      * @function loadCommandWorkflows_inValidContextNameUndefined
+//      * @description Tests the main function loadCommandWorkflows with a invalid data undefined.
+//      * @author Vlad Sorokin
+//      * @date 2023/01/02
+//      */
+//     test(tst_con.cloadCommandWorkflows_inValidContextNameUndefined, async () => {
+//         // Arrange
+        
+
+//         // Act
+//         let returnData = await main.loadCommandWorkflows();
+
+//         // Assert
+//         expect(returnData).toBeFalsy();
+//     });
+
+//     /**
+//      * @function loadCommandWorkflows_inValidContextNameNaN
+//      * @description Tests the main function loadCommandWorkflows with a invalid data NaN.
+//      * @author Vlad Sorokin
+//      * @date 2023/01/02
+//      */
+//     test(tst_con.cloadCommandWorkflows_inValidContextNameNaN, async () => {
+//         // Arrange
+        
+
+//         // Act
+//         let returnData = await main.loadCommandWorkflows();
+
+//         // Assert
+//         expect(returnData).toBeFalsy();
+//     });
+// })
+
+/**
+ * @function loadCommandWorkflows
+ * @description Tests the positive and negative test cases of the loadCommandWorkflows
+ * @author Vlad Sorokin
+ * @date 2023/01/08
+ * @NOTE As of now this test needs jest xml file support, as it will not work unless there is a way for jest to read and use xml files. 
+ * Tried to use "jest-environment-jsdom" to solve this issue but couldn't get it to work, though it does seem that solution is use of jsdom.
+ */
+// describe(tst_con.cloadCommandWorkflows, () => {
+//     /**
+//      * @function loadCommandWorkflows_validWorkflowPathData
+//      * @description Tests the main function loadCommandWorkflows with a valid input.
+//      * @author Vlad Sorokin
+//      * @date 2023/01/08
+//      */
+//     test(tst_con.cloadCommandWorkflows_validData, async () => {
+//         // Arrange
+        
+
+//         // Act
+//         let returnData = await main.loadCommandWorkflows();
+
+//         // Assert
+//         expect(returnData).toEqual();
+//     });
+
+//     /**
+//      * @function loadCommandWorkflows_inValidWorkflowPathString
+//      * @description Tests the main function loadCommandWorkflows with a invalid data string.
+//      * @author Vlad Sorokin
+//      * @date 2023/01/08
+//      */
+//     test(tst_con.cloadCommandWorkflows_inValidWorkflowPathString, async () => {
+//         // Arrange
+        
+
+//         // Act
+//         let returnData = await main.loadCommandWorkflows();
+
+//         // Assert
+//         expect(returnData).toBeFalsy();
+//     });
+
+//     /**
+//      * @function loadCommandWorkflows_inValidContextNameString
+//      * @description Tests the main function loadCommandWorkflows with a invalid data string.
+//      * @author Vlad Sorokin
+//      * @date 2023/01/08
+//      */
+//     test(tst_con.cloadCommandWorkflows_inValidContextNameString, async () => {
+//         // Arrange
+        
+
+//         // Act
+//         let returnData = await main.loadCommandWorkflows();
+
+//         // Assert
+//         expect(returnData).toBeFalsy();
+//     });
+
+//     /**
+//      * @function loadCommandWorkflows_inValidWorkflowPathInteger
+//      * @description Tests the main function loadCommandWorkflows with a invalid data integer.
+//      * @author Vlad Sorokin
+//      * @date 2023/01/08
+//      */
+//     test(tst_con.cloadCommandWorkflows_inValidWorkflowPathInteger, async () => {
+//         // Arrange
+        
+
+//         // Act
+//         let returnData = await main.loadCommandWorkflows();
+
+//         // Assert
+//         expect(returnData).toBeFalsy();
+//     });
+
+//     /**
+//      * @function loadCommandWorkflows_inValidWorkflowPathBoolean
+//      * @description Tests the main function loadCommandWorkflows with a invalid data boolean.
+//      * @author Vlad Sorokin
+//      * @date 2023/01/08
+//      */
+//     test(tst_con.cloadCommandWorkflows_inValidWorkflowPathBoolean, async () => {
+//         // Arrange
+        
+
+//         // Act
+//         let returnData = await main.loadCommandWorkflows();
+
+//         // Assert
+//         expect(returnData).toBeFalsy();
+//     });
+
+//     /**
+//      * @function loadCommandWorkflows_inValidContextNameInteger
+//      * @description Tests the main function loadCommandWorkflows with a invalid data integer.
+//      * @author Vlad Sorokin
+//      * @date 2023/01/08
+//      */
+//     test(tst_con.cloadCommandWorkflows_inValidContextNameInteger, async () => {
+//         // Arrange
+        
+
+//         // Act
+//         let returnData = await main.loadCommandWorkflows();
+
+//         // Assert
+//         expect(returnData).toBeFalsy();
+//     });
+
+//     /**
+//      * @function loadCommandWorkflows_inValidContextNameBoolean
+//      * @description Tests the main function loadCommandWorkflows with a invalid data boolean.
+//      * @author Vlad Sorokin
+//      * @date 2023/01/08
+//      */
+//     test(tst_con.cloadCommandWorkflows_inValidContextNameBoolean, async () => {
+//         // Arrange
+        
+
+//         // Act
+//         let returnData = await main.loadCommandWorkflows();
+
+//         // Assert
+//         expect(returnData).toBeFalsy();
+//     });
+
+//     /**
+//      * @function loadCommandWorkflows_inValidWorkflowPathUndefined
+//      * @description Tests the main function loadCommandWorkflows with a invalid data undefined.
+//      * @author Vlad Sorokin
+//      * @date 2023/01/08
+//      */
+//     test(tst_con.cloadCommandWorkflows_inValidWorkflowPathUndefined, async () => {
+//         // Arrange
+        
+
+//         // Act
+//         let returnData = await main.loadCommandWorkflows();
+
+//         // Assert
+//         expect(returnData).toBeFalsy();
+//     });
+
+//     /**
+//      * @function loadCommandWorkflows_inValidWorkflowPathNaN
+//      * @description Tests the main function loadCommandWorkflows with a invalid data NaN.
+//      * @author Vlad Sorokin
+//      * @date 2023/01/08
+//      */
+//     test(tst_con.cloadCommandWorkflows_inValidWorkflowPathNaN, async () => {
+//         // Arrange
+        
+
+//         // Act
+//         let returnData = await main.loadCommandWorkflows();
+
+//         // Assert
+//         expect(returnData).toBeFalsy();
+//     });
+
+//     /**
+//      * @function loadCommandWorkflows_inValidContextNameUndefined
+//      * @description Tests the main function loadCommandWorkflows with a invalid data undefined.
+//      * @author Vlad Sorokin
+//      * @date 2023/01/08
+//      */
+//     test(tst_con.cloadCommandWorkflows_inValidContextNameUndefined, async () => {
+//         // Arrange
+        
+
+//         // Act
+//         let returnData = await main.loadCommandWorkflows();
+
+//         // Assert
+//         expect(returnData).toBeFalsy();
+//     });
+
+//     /**
+//      * @function loadCommandWorkflows_inValidContextNameNaN
+//      * @description Tests the main function loadCommandWorkflows with a invalid data NaN.
+//      * @author Vlad Sorokin
+//      * @date 2023/01/08
+//      */
+//     test(tst_con.cloadCommandWorkflows_inValidContextNameNaN, async () => {
+//         // Arrange
+        
+
+//         // Act
+//         let returnData = await main.loadCommandWorkflows();
+
+//         // Assert
+//         expect(returnData).toBeFalsy();
+//     });
+// })
+
+/**
+ * @function listLoadedPlugins
+ * @description Tests the positive and negative test cases of the listLoadedPlugins
+ * @author Vlad Sorokin
+ * @date 2023/01/08
+ */
+describe(tst_con.clistLoadedPlugins, () => {
+    /**
+     * @function listLoadedPlugins_validData
+     * @description Tests the main function listLoadedPlugins with a valid input.
+     * @author Vlad Sorokin
+     * @date 2023/01/08
+     */
+    test(tst_con.clistLoadedPlugins_validData, async () => {
+        // Arrange
+        D.data = {};
+        D[sys.cpluginsLoaded] = [];
+        D[sys.cpluginsLoaded] = tst_man.listLoadedPlugins;
+
+        // Act
+        let returnData = await main.listLoadedPlugins();
+
+        // Assert
+        expect(returnData).toEqual(tst_man.expectedListLoadedPlugins);
+    });
+
+    /**
+     * @function listLoadedPlugins_inValidString
+     * @description Tests the main function listLoadedPlugins with a invalid data string.
+     * @author Vlad Sorokin
+     * @date 2023/01/08
+     */
+    test(tst_con.clistLoadedPlugins_inValidString, async () => {
+        // Arrange
+        D.data = {};
+        D[sys.cpluginsLoaded] = [];
+        D[sys.cpluginsLoaded] = tst_man.ctestString1;
+
+        // Act
+        let returnData = await main.listLoadedPlugins();
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function listLoadedPlugins_inValidInteger
+     * @description Tests the main function listLoadedPlugins with a invalid data integer.
+     * @author Vlad Sorokin
+     * @date 2023/01/08
+     */
+    test(tst_con.clistLoadedPlugins_inValidInteger, async () => {
+        // Arrange
+        D.data = {};
+        D[sys.cpluginsLoaded] = [];
+        D[sys.cpluginsLoaded] = 123;
+
+        // Act
+        let returnData = await main.listLoadedPlugins();
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function listLoadedPlugins_inValidBoolean
+     * @description Tests the main function listLoadedPlugins with a invalid data boolean.
+     * @author Vlad Sorokin
+     * @date 2023/01/08
+     */
+    test(tst_con.clistLoadedPlugins_inValidBoolean, async () => {
+        // Arrange
+        D.data = {};
+        D[sys.cpluginsLoaded] = [];
+        D[sys.cpluginsLoaded] = true;
+
+        // Act
+        let returnData = await main.listLoadedPlugins();
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function listLoadedPlugins_inValidUndefined
+     * @description Tests the main function listLoadedPlugins with a invalid data undefined.
+     * @author Vlad Sorokin
+     * @date 2023/01/08
+     */
+    test(tst_con.clistLoadedPlugins_inValidUndefined, async () => {
+        // Arrange
+        D.data = {};
+        D[sys.cpluginsLoaded] = [];
+        D[sys.cpluginsLoaded] = undefined;
+
+        // Act
+        let returnData = await main.listLoadedPlugins();
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function listLoadedPlugins_inValidNaN
+     * @description Tests the main function listLoadedPlugins with a invalid data NaN.
+     * @author Vlad Sorokin
+     * @date 2023/01/08
+     */
+    test(tst_con.clistLoadedPlugins_inValidNaN, async () => {
+        // Arrange
+        D.data = {};
+        D[sys.cpluginsLoaded] = [];
+        D[sys.cpluginsLoaded] = NaN;
+
+        // Act
+        let returnData = await main.listLoadedPlugins();
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
 })

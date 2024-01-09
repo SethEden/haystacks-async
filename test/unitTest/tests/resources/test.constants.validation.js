@@ -157,8 +157,20 @@ export const testConstantsValidation = [
     {Name: 'cmergeClientCommands_inValidClientCommandsInteger', Actual: tst_con.cmergeClientCommands_inValidClientCommandsInteger, Expected: 'mergeClientCommands_inValidClientCommandsInteger'},
     {Name: 'cmergeClientCommands_inValidClientCommandsBoolean', Actual: tst_con.cmergeClientCommands_inValidClientCommandsBoolean, Expected: 'mergeClientCommands_inValidClientCommandsBoolean'},
     {Name: 'cmergeClientCommands_inValidClientCommandsUndefined', Actual: tst_con.cmergeClientCommands_inValidClientCommandsUndefined, Expected: 'mergeClientCommands_inValidClientCommandsUndefined'},
-    {Name: 'cmergeClientCommands_inValidClientCommandsNaN', Actual: tst_con.cmergeClientCommands_inValidClientCommandsNaN, Expected: 'mergeClientCommands_inValidClientCommandsNaN'}
+    {Name: 'cmergeClientCommands_inValidClientCommandsNaN', Actual: tst_con.cmergeClientCommands_inValidClientCommandsNaN, Expected: 'mergeClientCommands_inValidClientCommandsNaN'},
 
+    // loadCommandAlieses
+
+    // loadCommandWorkflow
+
+    // listLoadedPlugins
+    {Name: 'clistLoadedPlugins', Actual: tst_con.clistLoadedPlugins, Expected: 'listLoadedPlugins'},
+    {Name: 'clistLoadedPlugins_validData', Actual: tst_con.clistLoadedPlugins_validData, Expected: 'listLoadedPlugins_validData'},
+    {Name: 'clistLoadedPlugins_inValidString', Actual: tst_con.clistLoadedPlugins_inValidString, Expected: 'listLoadedPlugins_inValidString'},
+    {Name: 'clistLoadedPlugins_inValidInteger', Actual: tst_con.clistLoadedPlugins_inValidInteger, Expected: 'listLoadedPlugins_inValidInteger'},
+    {Name: 'clistLoadedPlugins_inValidBoolean', Actual: tst_con.clistLoadedPlugins_inValidBoolean, Expected: 'listLoadedPlugins_inValidBoolean'},
+    {Name: 'clistLoadedPlugins_inValidUndefined', Actual: tst_con.clistLoadedPlugins_inValidUndefined, Expected: 'listLoadedPlugins_inValidUndefined'},
+    {Name: 'clistLoadedPlugins_inValidNaN', Actual: tst_con.clistLoadedPlugins_inValidNaN, Expected: 'listLoadedPlugins_inValidNaN'}
 
 
 

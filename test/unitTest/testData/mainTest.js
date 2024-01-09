@@ -10,6 +10,7 @@
  */
 
 // Internal imports
+import { numericConstantsValidation } from '@haystacks/constants/src/constantsValidation/numeric.constants.validation.js';
 import * as tst_cfg from '../tests/constants/test.configuration.constants.js';
 import * as tst_con from '../tests/constants/test.constants.js';
 
@@ -71,6 +72,9 @@ export const initFrameworkObjectExpected = {
     [tst_cfg.cpluginRootPath]: bas.cDot,
     [tst_cfg.cpluginWorkflowsPath]: tst_cfg.cpluginWorkflowsPathExpectedValue,
 };
+
+export const listLoadedPlugins = [[wrd.cplugin + bas.cDash + num.cone, true], [wrd.cplugin + bas.cDash + num.cthree, true], [wrd.cplugin + bas.cDash + num.ctwo, true]];
+export const expectedListLoadedPlugins = [wrd.cplugin + bas.cDash + num.cone, wrd.cplugin + bas.cDash + num.cthree, wrd.cplugin + bas.cDash + num.ctwo];
 
 /**
  * @function testHelloWorld
