@@ -540,7 +540,7 @@ describe(tst_con.cmergeClientCommands, () => {
         let returnData = true;
 
         // Act
-        returnData = await main.mergeClientBusinessRules(testCommandsLibrary);
+        returnData = await main.mergeClientCommands(testCommandsLibrary);
 
         // Assert
         expect(returnData).toBeFalsy();
@@ -558,7 +558,7 @@ describe(tst_con.cmergeClientCommands, () => {
         let returnData = true;
 
         // Act
-        returnData = await main.mergeClientBusinessRules(testCommandsLibrary);
+        returnData = await main.mergeClientCommands(testCommandsLibrary);
 
         // Assert
         expect(returnData).toBeFalsy();
@@ -576,7 +576,7 @@ describe(tst_con.cmergeClientCommands, () => {
         let returnData = true;
 
         // Act
-        returnData = await main.mergeClientBusinessRules(testCommandsLibrary);
+        returnData = await main.mergeClientCommands(testCommandsLibrary);
 
         // Assert
         expect(returnData).toBeFalsy();
@@ -594,7 +594,7 @@ describe(tst_con.cmergeClientCommands, () => {
         let returnData = true;
 
         // Act
-        returnData = await main.mergeClientBusinessRules(testCommandsLibrary);
+        returnData = await main.mergeClientCommands(testCommandsLibrary);
 
         // Assert
         expect(returnData).toBeFalsy();
@@ -612,7 +612,7 @@ describe(tst_con.cmergeClientCommands, () => {
         let returnData = true;
 
         // Act
-        returnData = await main.mergeClientBusinessRules(testCommandsLibrary);
+        returnData = await main.mergeClientCommands(testCommandsLibrary);
 
         // Assert
         expect(returnData).toBeFalsy();

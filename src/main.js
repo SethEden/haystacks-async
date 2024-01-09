@@ -222,12 +222,16 @@ async function getFrameworkData() {
 async function mergeClientBusinessRules(clientBusinessRules) {
   let functionName = mergeClientBusinessRules.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  let returnData = false;
+  let returnData;
   if (clientBusinessRules && typeof clientBusinessRules === wrd.cobject) {
     await warden.mergeClientBusinessRules(clientBusinessRules);
     returnData = true;
+  } else {
+    // ERROR: clientBusinessRules was not properly defined.
+    await console.log(msg.cErrorMergeClientBusinessRulesMessage01);
+    returnData = false;
   }
-  await loggers.consoleLog(msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
@@ -243,12 +247,16 @@ async function mergeClientBusinessRules(clientBusinessRules) {
 async function mergeClientCommands(clientCommands) {
   let functionName = mergeClientCommands.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  let returnData = false;
+  let returnData;
   if (clientCommands && typeof clientCommands === wrd.cobject) {
     await warden.mergeClientCommands(clientCommands);
     returnData = true;
+  } else {
+    // ERROR: clientCommands was not properly defined.
+    await console.log(msg.cErrorMergeClientCommandsMessage01);
+    returnData = false;
   }
-  await loggers.consoleLog(msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
@@ -267,8 +275,8 @@ async function mergeClientCommands(clientCommands) {
 async function loadCommandAliases(commandAliasesPath, contextName) {
   let functionName = loadCommandAliases.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  let returnData = false;
-  if ((commandAliasesPath && typeof commandAliasesPath === wrd.cstring)(contextName && typeof contextName === wrd.cstring)) {
+  let returnData;
+  if ((commandAliasesPath && typeof commandAliasesPath === wrd.cstring) && (contextName && typeof contextName === wrd.cstring)) {
     // commandAliasesPath is:
     await loggers.consoleLog(namespacePrefix + functionName, msg.ccommandAliasesPathIs + commandAliasesPath);
     // contextName is:
@@ -276,8 +284,19 @@ async function loadCommandAliases(commandAliasesPath, contextName) {
     await warden.setConfigurationSetting(wrd.csystem, contextName, commandAliasesPath);
     await warden.loadCommandAliases(contextName);
     returnData = true;
+  } else {
+    if (!commandAliasesPath && typeof commandAliasesPath === wrd.cstring) {
+      // ERROR: commandAliasesPath was not properly defined.
+      await console.log(msg.cErrorLoadCommandAliasesMessage01);
+      returnData = false;
+    }
+    if (!contextName && typeof contextName === wrd.cstring) {
+      // ERROR: contextName was not properly defined.
+      await console.log(msg.cErrorLoadCommandAliasesMessage02);
+      returnData = false;
+    }
   }
-  await loggers.consoleLog(msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
