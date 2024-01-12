@@ -96,11 +96,12 @@ export const listAllPluginsInRegistry = {
 };
 
 export const listAllPluginsInRegistryExpected = [tst_sys.cplugin_one, tst_sys.cplugin_three, tst_sys.cplugin_two];
-
-export const listAllPluginsInRegistryPath = {[wrd.cpath]: gen.cCroot + wrd.chay + wrd.cPlugins};
+export const pluginsPath = gen.cCroot + wrd.chay + wrd.cPlugins;
+export const pluginsPathObject = {[wrd.cpath]: pluginsPath};
 export const listLoadedPlugins = [[tst_sys.cplugin_one, true], [tst_sys.cplugin_three, true], [tst_sys.cplugin_two, true]];
 export const expectedListLoadedPlugins = [tst_sys.cplugin_one, tst_sys.cplugin_three, tst_sys.cplugin_two];
-export const listAllPluginsInRegistryBusinessRule = {[biz.cgetDirectoryList]: (inputData, inputMetaData) => fileOperations.getDirectoryList(inputData, inputMetaData)}
+export const listAllPluginsInRegistryBusinessRule = {[biz.cgetDirectoryList]: (inputData, inputMetaData) => fileOperations.getDirectoryList(inputData, inputMetaData)};
+export const pluginNameToUse = tst_sys.cplugin_one;
 
 /**
  * @function testHelloWorld

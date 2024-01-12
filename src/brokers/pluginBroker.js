@@ -286,7 +286,7 @@ async function registerPlugin(pluginName, pluginPath) {
   let returnData = false;
   let pluginRegistrationEntry = {};
   try {
-    if (pluginName && pluginPath) {
+    if ((pluginName && pluginPath) && (typeof pluginName === wrd.cstring && typeof pluginPath === wrd.cstring)) {
       pluginRegistrationEntry = {Name: pluginName, Path: pluginPath};
       // NOTE: We need to check and see if the plugin is already registered, and throw an error message if it is.
       // To prevent the user from being able to register the same plugin multiple times.
@@ -300,18 +300,31 @@ async function registerPlugin(pluginName, pluginPath) {
         }
       }
       if (pluginIsRegistered === false) {
-        D[cfg.cpluginRegistry][wrd.cplugins].push({[pluginName]: pluginRegistrationEntry});
-        returnData = true;
+        let pluginsFromPathArray = await listPluginsInRegistryPath();
+        // pluginsFromPathArray is:
+        await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginsFromPathArrayIs + pluginsFromPathArray);
+        if (pluginsFromPathArray && pluginsFromPathArray.length > 0) {
+          if (pluginsFromPathArray.includes(pluginName)) {
+            D[cfg.cpluginRegistry][wrd.cplugins].push({[pluginName]: pluginRegistrationEntry});
+            returnData = true;
+          } else {
+            // ERROR: The plugin does not exist in the plugin path. Plugin name:
+            console.log(msg.cErrorRegisterPluginMessage05 + pluginName);
+          }
+        } else {
+          // ERROR: There are no plugins in the plugin path. Plugin path:
+          console.log(msg.cErrorRegisterPluginMessage06 + pluginPath);
+        }
       } else {
         // ERROR: The specified plugin is already registered. Plugin name:
         console.log(msg.cErrorRegisterPluginMessage02 + pluginName);
       }    
     } else {
-      if (!pluginName) {
+      if (!pluginName || typeof pluginName !== wrd.cstring) {
         // ERROR: Plugin Name is an invalid value:
         console.log(msg.cErrorRegisterPluginMessage03 + pluginName);
       }
-      if (!pluginPath) {
+      if (!pluginPath || typeof pluginPath !== wrd.cstring) {
         // ERROR: Plugin Path is an invalid value:
         console.log(msg.cErrorRegisterPluginMessage04 + pluginPath);
       }

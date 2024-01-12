@@ -1453,7 +1453,7 @@ describe(tst_con.clistAllPluginsInRegistry, () => {
 
 /**
  * @function listAllPluginsInRegistryPath
- * @description Tests the positive and negative test cases of the listAllPluginsInRegistryPath
+ * @description Tests the positive test cases of the listAllPluginsInRegistryPath
  * @author Vlad Sorokin
  * @date 2023/01/11
  * @NOTE The remaining of invalid tests will be tested with the pluginBroker.js function: listPluginsInRegistryPath.
@@ -1467,9 +1467,9 @@ describe(tst_con.clistAllPluginsInRegistryPath, () => {
      */
     test(tst_con.clistAllPluginsInRegistryPath_validData, async () => {
         // Arrange
-        let pathToPluginsRegistred = tst_man.listAllPluginsInRegistryPath;
+        let pathToPluginsRegistred = tst_man.pluginsPathObject;
         let businessRuleToExecute = tst_man.listAllPluginsInRegistryBusinessRule;
-        let expectedPluginsList = tst_man.listAllPluginsInRegistryExpected
+        let expectedPluginsList = tst_man.listAllPluginsInRegistryExpected;
         D[cfg.cpluginRegistry] = {};
         D[cfg.cpluginRegistry] = pathToPluginsRegistred;
         D[sys.cbusinessRules] = {};
@@ -1480,5 +1480,291 @@ describe(tst_con.clistAllPluginsInRegistryPath, () => {
 
         // Assert
         expect(returnData).toEqual(expectedPluginsList);
+    });
+})
+
+/**
+ * @function numberOfPluginsInRegistry
+ * @description Tests the positive test cases of the numberOfPluginsInRegistry
+ * @author Vlad Sorokin
+ * @date 2023/01/12
+ */
+describe(tst_con.cnumberOfPluginsInRegistry, () => {
+    /**
+     * @function numberOfPluginsInRegistry_validData
+     * @description Tests the main function numberOfPluginsInRegistry with a valid input.
+     * @author Vlad Sorokin
+     * @date 2023/01/12
+     */
+    test(tst_con.cnumberOfPluginsInRegistry_validData, async () => {
+        // Arrange
+        let pluginsRegistred = tst_man.listAllPluginsInRegistry;
+        D[cfg.cpluginRegistry] = pluginsRegistred;
+
+        // Act
+        let returnData = await main.numberOfPluginsInRegistry();
+
+        // Assert
+        expect(returnData).toEqual(3);
+    });
+})
+
+/**
+ * @function numberOfPluginsInRegistryPath
+ * @description Tests the positive test cases of the numberOfPluginsInRegistryPath
+ * @author Vlad Sorokin
+ * @date 2023/01/12
+ */
+describe(tst_con.cnumberOfPluginsInRegistryPath, () => {
+    /**
+     * @function numberOfPluginsInRegistryPath_validData
+     * @description Tests the main function numberOfPluginsInRegistryPath with a valid input.
+     * @author Vlad Sorokin
+     * @date 2023/01/12
+     */
+    test(tst_con.cnumberOfPluginsInRegistryPath_validData, async () => {
+        // Arrange
+        let pathToPluginsRegistred = tst_man.pluginsPathObject;
+        let businessRuleToExecute = tst_man.listAllPluginsInRegistryBusinessRule;
+        D[cfg.cpluginRegistry] = {};
+        D[cfg.cpluginRegistry] = pathToPluginsRegistred;
+        D[sys.cbusinessRules] = {};
+        D[sys.cbusinessRules] = businessRuleToExecute;
+
+        // Act
+        let returnData = await main.numberOfPluginsInRegistryPath();
+
+        // Assert
+        expect(returnData).toEqual(3);
+    });
+})
+
+/**
+ * @function registerPluginByNameAndPath
+ * @description Tests the positive and negative test cases of the registerPluginByNameAndPath
+ * @author Vlad Sorokin
+ * @date 2023/01/12
+ */
+describe(tst_con.cregisterPluginByNameAndPath, () => {
+    /**
+     * @function registerPluginByNameAndPath_validPluginNameData
+     * @description Tests the main function registerPluginByNameAndPath with a valid input.
+     * @author Vlad Sorokin
+     * @date 2023/01/12
+     */
+    test(tst_con.cregisterPluginByNameAndPath_validData, async () => {
+        // Arrange
+        D[cfg.cpluginRegistry] = {};
+        let pluginName = tst_man.pluginNameToUse;
+        let pluginPath = tst_man.pluginsPath;
+        D[cfg.cpluginRegistry] = tst_man.pluginsPathObject;
+        D[cfg.cpluginRegistry][wrd.cplugins] = [];
+
+        // Act
+        let returnData = await main.registerPluginByNameAndPath(pluginName, pluginPath);
+
+        // Assert
+        expect(returnData).toEqual(true);
+    });
+
+    /**
+     * @function registerPluginByNameAndPath_inValidPluginNameString
+     * @description Tests the main function registerPluginByNameAndPath with a invalid data string.
+     * @author Vlad Sorokin
+     * @date 2023/01/12
+     */
+    test(tst_con.cregisterPluginByNameAndPath_inValidPluginNameString, async () => {
+        // Arrange
+        D[cfg.cpluginRegistry] = {};
+        D[cfg.cpluginRegistry] = tst_man.pluginsPathObject;
+        D[cfg.cpluginRegistry][wrd.cplugins] = [];
+        let pluginName = tst_man.ctestString1;
+        let pluginPath = tst_man.pluginsPath;
+
+        // Act
+        let returnData = await main.registerPluginByNameAndPath(pluginName, pluginPath);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function registerPluginByNameAndPath_inValidPluginPathString
+     * @description Tests the main function registerPluginByNameAndPath with a invalid data string.
+     * @author Vlad Sorokin
+     * @date 2023/01/12
+     */
+    test(tst_con.cregisterPluginByNameAndPath_inValidPluginPathString, async () => {
+        // Arrange
+        D[cfg.cpluginRegistry] = {};
+        D[cfg.cpluginRegistry][wrd.cplugins] = [];
+        let pluginName = tst_man.pluginNameToUse;
+        let pluginPath = tst_man.ctestString1;
+
+        // Act
+        let returnData = await main.registerPluginByNameAndPath(pluginName, pluginPath);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function registerPluginByNameAndPath_inValidPluginNameInteger
+     * @description Tests the main function registerPluginByNameAndPath with a invalid data integer.
+     * @author Vlad Sorokin
+     * @date 2023/01/12
+     */
+    test(tst_con.cregisterPluginByNameAndPath_inValidPluginNameInteger, async () => {
+        // Arrange
+        D[cfg.cpluginRegistry] = {};
+        D[cfg.cpluginRegistry][wrd.cplugins] = [];
+        let pluginName = 123;
+        let pluginPath = tst_man.pluginsPath;
+
+        // Act
+        let returnData = await main.registerPluginByNameAndPath(pluginName, pluginPath);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function registerPluginByNameAndPath_inValidPluginNameBoolean
+     * @description Tests the main function registerPluginByNameAndPath with a invalid data boolean.
+     * @author Vlad Sorokin
+     * @date 2023/01/12
+     */
+    test(tst_con.cregisterPluginByNameAndPath_inValidPluginNameBoolean, async () => {
+        // Arrange
+        D[cfg.cpluginRegistry] = {};
+        D[cfg.cpluginRegistry][wrd.cplugins] = [];
+        let pluginName = false;
+        let pluginPath = tst_man.pluginsPath;
+
+        // Act
+        let returnData = await main.registerPluginByNameAndPath(pluginName, pluginPath);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function registerPluginByNameAndPath_inValidPluginPathInteger
+     * @description Tests the main function registerPluginByNameAndPath with a invalid data integer.
+     * @author Vlad Sorokin
+     * @date 2023/01/12
+     */
+    test(tst_con.cregisterPluginByNameAndPath_inValidPluginPathInteger, async () => {
+        // Arrange
+        D[cfg.cpluginRegistry] = {};
+        D[cfg.cpluginRegistry][wrd.cplugins] = [];
+        let pluginName = tst_man.pluginNameToUse;
+        let pluginPath = 123;
+
+        // Act
+        let returnData = await main.registerPluginByNameAndPath(pluginName, pluginPath);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function registerPluginByNameAndPath_inValidPluginPathBoolean
+     * @description Tests the main function registerPluginByNameAndPath with a invalid data boolean.
+     * @author Vlad Sorokin
+     * @date 2023/01/12
+     */
+    test(tst_con.cregisterPluginByNameAndPath_inValidPluginPathBoolean, async () => {
+        // Arrange
+        D[cfg.cpluginRegistry] = {};
+        D[cfg.cpluginRegistry][wrd.cplugins] = [];
+        let pluginName = tst_man.pluginNameToUse;
+        let pluginPath = false;
+
+        // Act
+        let returnData = await main.registerPluginByNameAndPath(pluginName, pluginPath);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function registerPluginByNameAndPath_inValidPluginNameUndefined
+     * @description Tests the main function registerPluginByNameAndPath with a invalid data undefined.
+     * @author Vlad Sorokin
+     * @date 2023/01/12
+     */
+    test(tst_con.cregisterPluginByNameAndPath_inValidPluginNameUndefined, async () => {
+        // Arrange
+        D[cfg.cpluginRegistry] = {};
+        D[cfg.cpluginRegistry][wrd.cplugins] = [];
+        let pluginName = undefined;
+        let pluginPath = tst_man.pluginsPath;
+
+        // Act
+        let returnData = await main.registerPluginByNameAndPath(pluginName, pluginPath);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function registerPluginByNameAndPath_inValidPluginNameNaN
+     * @description Tests the main function registerPluginByNameAndPath with a invalid data NaN.
+     * @author Vlad Sorokin
+     * @date 2023/01/12
+     */
+    test(tst_con.cregisterPluginByNameAndPath_inValidPluginNameNaN, async () => {
+        // Arrange
+        D[cfg.cpluginRegistry] = {};
+        D[cfg.cpluginRegistry][wrd.cplugins] = [];
+        let pluginName = NaN;
+        let pluginPath = tst_man.pluginsPath;
+
+        // Act
+        let returnData = await main.registerPluginByNameAndPath(pluginName, pluginPath);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function registerPluginByNameAndPath_inValidPluginPathUndefined
+     * @description Tests the main function registerPluginByNameAndPath with a invalid data undefined.
+     * @author Vlad Sorokin
+     * @date 2023/01/12
+     */
+    test(tst_con.cregisterPluginByNameAndPath_inValidPluginPathUndefined, async () => {
+        // Arrange
+        D[cfg.cpluginRegistry] = {};
+        D[cfg.cpluginRegistry][wrd.cplugins] = [];
+        let pluginName = tst_man.pluginNameToUse;
+        let pluginPath = undefined;
+
+        // Act
+        let returnData = await main.registerPluginByNameAndPath(pluginName, pluginPath);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function registerPluginByNameAndPath_inValidPluginPathNaN
+     * @description Tests the main function registerPluginByNameAndPath with a invalid data NaN.
+     * @author Vlad Sorokin
+     * @date 2023/01/12
+     */
+    test(tst_con.cregisterPluginByNameAndPath_inValidPluginPathNaN, async () => {
+        // Arrange
+        D[cfg.cpluginRegistry] = {};
+        D[cfg.cpluginRegistry][wrd.cplugins] = [];
+        let pluginName = tst_man.pluginNameToUse;
+        let pluginPath = NaN;
+
+        // Act
+        let returnData = await main.registerPluginByNameAndPath(pluginName, pluginPath);
+
+        // Assert
+        expect(returnData).toBeFalsy();
     });
 })
