@@ -218,6 +218,7 @@ output: array<string> (A list array of the names of the plugins in the plugin re
 --------------------------------------------------------------------------------
 testName: listAllPluginsInRegistryPath_validData
 output: array<string> (A list array of the names of the plugins in the plugin registry)
+NOTE: The remaining of invalid tests will be tested with the pluginBroker.js function: listPluginsInRegistryPath
 --------------------------------------------------------------------------------
 testName: numberOfPluginsInRegistry_validData
 output: integer (The count of the number of plugins listed in the plugin registry data hive)

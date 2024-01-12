@@ -122,6 +122,8 @@ async function listAllLoadedPlugins() {
       }// End-for (let pluginLoadedKey in pluginsLoadedList)
     } // End-if (Array.isArray(pluginsLoadedList) === true && pluginsLoadedList >= 1)
   } else {
+    // ERROR: Plugin list does not exist or is not an array.
+    await console.log(msg.cErrorListAllLoadedPluginsMessage02);
     returnData = false;
   }
   // List of loaded plugins is:
@@ -169,7 +171,8 @@ async function listPluginsPathsInRegistry() {
  * @description Builds a list array of the specified attribute out of the plugin objects in the plugin registry.
  * @param {string} attributeName The name of the attribute that should be looked up in the plugin object,
  * for each of the plugin objects in the plugin registry.
- * @return {array<string>} A list array of the attributes from the plugins in the plugin registry.
+ * @return {array<string>|boolean} A list array of the attributes from the plugins in the plugin registry,
+ * or false if the D data structure cfg.cpluginRegistry containts invalid data.
  * @author Seth Hollingsead
  * @date 2023/01/31
  */
@@ -178,21 +181,28 @@ async function listPluginsAttributeInRegistry(attributeName) {
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // attributeName is:
   await loggers.consoleLog(namespacePrefix + functionName, msg.cattributeNameIs + attributeName);
-  let returnData = [];
+  let returnData;
   let pluginRegistryList = D[cfg.cpluginRegistry][wrd.cplugins];
   // pluginRegistryList is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginRegistryListIs + JSON.stringify(pluginRegistryList));
-  for (let pluginKey in pluginRegistryList) {
-    // pluginKey is:
-    await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginKeyIs + pluginKey);
-    let pluginParentObject = pluginRegistryList[pluginKey];
-    // pluginParentObject is:
-    await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginParentObjectIs + JSON.stringify(pluginParentObject));
-    let keys = Object.keys(pluginParentObject);
-    let pluginObject = pluginParentObject[keys[0]];
-    // pluginObject is:
-    await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginObjectIs + JSON.stringify(pluginObject));
-    returnData.push(pluginObject[attributeName]);
+  if (pluginRegistryList && await Array.isArray(pluginRegistryList)) {
+    returnData = [];
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginRegistryListIs + JSON.stringify(pluginRegistryList));
+    for (let pluginKey in pluginRegistryList) {
+      // pluginKey is:
+      await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginKeyIs + pluginKey);
+      let pluginParentObject = pluginRegistryList[pluginKey];
+      // pluginParentObject is:
+      await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginParentObjectIs + JSON.stringify(pluginParentObject));
+      let keys = Object.keys(pluginParentObject);
+      let pluginObject = pluginParentObject[keys[0]];
+      // pluginObject is:
+      await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginObjectIs + JSON.stringify(pluginObject));
+      returnData.push(pluginObject[attributeName]);
+    }
+  } else {
+    // ERROR: attributeName was not properly defined.
+    await console.log(msg.cErrorAttributeNameMessage01);
+    returnData = false;
   }
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);

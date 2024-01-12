@@ -13,12 +13,14 @@
 import { numericConstantsValidation } from '@haystacks/constants/src/constantsValidation/numeric.constants.validation.js';
 import * as tst_cfg from '../tests/constants/test.configuration.constants.js';
 import * as tst_con from '../tests/constants/test.constants.js';
+import * as tst_sys from '../tests/constants/test.system.constants.js';
 
 // External imports
 import hayConst from '@haystacks/constants';
 import path from 'path';
+import fileOperations from '../../../src/businessRules/rules/fileOperations.js';
 
-const {bas, msg, num, sys, wrd} = hayConst;
+const {bas, biz, gen, msg, num, sys, wrd} = hayConst;
 const baseFileName = path.basename(import.meta.url, path.extname(import.meta.url));
 const namespacePrefix = sys.cbusinessRules + bas.cDot + wrd.crules + bas.cDot + baseFileName + bas.cDot;
 
@@ -73,8 +75,32 @@ export const initFrameworkObjectExpected = {
     [tst_cfg.cpluginWorkflowsPath]: tst_cfg.cpluginWorkflowsPathExpectedValue,
 };
 
-export const listLoadedPlugins = [[wrd.cplugin + bas.cDash + num.cone, true], [wrd.cplugin + bas.cDash + num.cthree, true], [wrd.cplugin + bas.cDash + num.ctwo, true]];
-export const expectedListLoadedPlugins = [wrd.cplugin + bas.cDash + num.cone, wrd.cplugin + bas.cDash + num.cthree, wrd.cplugin + bas.cDash + num.ctwo];
+export const listAllPluginsInRegistry = {
+    [wrd.cplugins]: [{
+            [tst_sys.cplugin_one]: {
+                [wrd.cName]: tst_sys.cplugin_one,
+                [wrd.cPath]: gen.cCroot + wrd.chay + wrd.cPlugins + bas.cDoubleBackSlash + tst_sys.cplugin_one + bas.cDoubleBackSlash
+            }
+        }, {
+            [tst_sys.cplugin_three]: {
+                [wrd.cName]: tst_sys.cplugin_three,
+                [wrd.cPath]: gen.cCroot + wrd.chay + wrd.cPlugins + bas.cDoubleBackSlash + tst_sys.cplugin_three + bas.cDoubleBackSlash
+            }
+        }, {
+            [tst_sys.cplugin_three]: {
+                [wrd.cName]: tst_sys.cplugin_two,
+                [wrd.cPath]: gen.cCroot + wrd.chay + wrd.cPlugins + bas.cDoubleBackSlash + tst_sys.cplugin_two + bas.cDoubleBackSlash
+            }
+        }
+    ]
+};
+
+export const listAllPluginsInRegistryExpected = [tst_sys.cplugin_one, tst_sys.cplugin_three, tst_sys.cplugin_two];
+
+export const listAllPluginsInRegistryPath = {[wrd.cpath]: gen.cCroot + wrd.chay + wrd.cPlugins};
+export const listLoadedPlugins = [[tst_sys.cplugin_one, true], [tst_sys.cplugin_three, true], [tst_sys.cplugin_two, true]];
+export const expectedListLoadedPlugins = [tst_sys.cplugin_one, tst_sys.cplugin_three, tst_sys.cplugin_two];
+export const listAllPluginsInRegistryBusinessRule = {[biz.cgetDirectoryList]: (inputData, inputMetaData) => fileOperations.getDirectoryList(inputData, inputMetaData)}
 
 /**
  * @function testHelloWorld

@@ -34,7 +34,7 @@ import hayConst from '@haystacks/constants';
 import { describe, expect, test } from '@jest/globals';
 import { basicConstantsValidation } from '@haystacks/constants/src/constantsValidation/basic.constants.validation.js';
 
-const {bas, sys, wrd, num } = hayConst;
+const {bas, biz, cfg, sys, wrd, num } = hayConst;
 
 /**
  * @function initFramework
@@ -1021,6 +1021,7 @@ describe(tst_con.cmergeClientCommands, () => {
  * @date 2023/01/08
  * @NOTE As of now this test needs jest xml file support, as it will not work unless there is a way for jest to read and use xml files. 
  * Tried to use "jest-environment-jsdom" to solve this issue but couldn't get it to work, though it does seem that solution is use of jsdom.
+ * @NOTE When the fist problem will be solved boolean output needs to be added to the function for testing purposes.
  */
 // describe(tst_con.cloadCommandWorkflows, () => {
 //     /**
@@ -1330,5 +1331,154 @@ describe(tst_con.clistLoadedPlugins, () => {
 
         // Assert
         expect(returnData).toBeFalsy();
+    });
+})
+
+/**
+ * @function listAllPluginsInRegistry
+ * @description Tests the positive and negative test cases of the listAllPluginsInRegistry
+ * @author Vlad Sorokin
+ * @date 2023/01/10
+ */
+describe(tst_con.clistAllPluginsInRegistry, () => {
+    /**
+     * @function listAllPluginsInRegistry_validData
+     * @description Tests the main function listAllPluginsInRegistry with a valid input.
+     * @author Vlad Sorokin
+     * @date 2023/01/10
+     */
+    test(tst_con.clistAllPluginsInRegistry_validData, async () => {
+        // Arrange
+        let pluginsRegistred = tst_man.listAllPluginsInRegistry;
+        let pluginsExpected = tst_man.listAllPluginsInRegistryExpected;
+        D[cfg.cpluginRegistry] = pluginsRegistred;
+
+        // Act
+        let returnData = await main.listAllPluginsInRegistry();
+
+        // Assert
+        expect(returnData).toEqual(pluginsExpected);
+    });
+
+    /**
+     * @function listAllPluginsInRegistry_inValidString
+     * @description Tests the main function listAllPluginsInRegistry with a invalid data string.
+     * @author Vlad Sorokin
+     * @date 2023/01/10
+     */
+    test(tst_con.clistAllPluginsInRegistry_inValidString, async () => {
+        // Arrange
+        D[cfg.cpluginRegistry] = {};
+        D[cfg.cpluginRegistry][wrd.cplugins] = tst_man.ctestString1;
+
+        // Act
+        let returnData = await main.listAllPluginsInRegistry();
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function listAllPluginsInRegistry_inValidInteger
+     * @description Tests the main function listAllPluginsInRegistry with a invalid data integer.
+     * @author Vlad Sorokin
+     * @date 2023/01/10
+     */
+    test(tst_con.clistAllPluginsInRegistry_inValidInteger, async () => {
+        // Arrange
+        D[cfg.cpluginRegistry] = {};
+        D[cfg.cpluginRegistry][wrd.cplugins] = 123;
+
+        // Act
+        let returnData = await main.listAllPluginsInRegistry();
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function listAllPluginsInRegistry_inValidBoolean
+     * @description Tests the main function listAllPluginsInRegistry with a invalid data boolean.
+     * @author Vlad Sorokin
+     * @date 2023/01/10
+     */
+    test(tst_con.clistAllPluginsInRegistry_inValidBoolean, async () => {
+        // Arrange
+        D[cfg.cpluginRegistry] = {};
+        D[cfg.cpluginRegistry][wrd.cplugins] = true;
+
+        // Act
+        let returnData = await main.listAllPluginsInRegistry();
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function listAllPluginsInRegistry_inValidUndefined
+     * @description Tests the main function listAllPluginsInRegistry with a invalid data undefined.
+     * @author Vlad Sorokin
+     * @date 2023/01/10
+     */
+    test(tst_con.clistAllPluginsInRegistry_inValidUndefined, async () => {
+        // Arrange
+        D[cfg.cpluginRegistry] = {};
+        D[cfg.cpluginRegistry][wrd.cplugins] = undefined;
+
+        // Act
+        let returnData = await main.listAllPluginsInRegistry();
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function listAllPluginsInRegistry_inValidNaN
+     * @description Tests the main function listAllPluginsInRegistry with a invalid data NaN.
+     * @author Vlad Sorokin
+     * @date 2023/01/10
+     */
+    test(tst_con.clistAllPluginsInRegistry_inValidNaN, async () => {
+        // Arrange
+        D[cfg.cpluginRegistry] = {};
+        D[cfg.cpluginRegistry][wrd.cplugins] = NaN;
+
+        // Act
+        let returnData = await main.listAllPluginsInRegistry();
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+})
+
+/**
+ * @function listAllPluginsInRegistryPath
+ * @description Tests the positive and negative test cases of the listAllPluginsInRegistryPath
+ * @author Vlad Sorokin
+ * @date 2023/01/11
+ * @NOTE The remaining of invalid tests will be tested with the pluginBroker.js function: listPluginsInRegistryPath.
+ */
+describe(tst_con.clistAllPluginsInRegistryPath, () => {
+    /**
+     * @function listAllPluginsInRegistryPath_validData
+     * @description Tests the main function listAllPluginsInRegistryPath with a valid input.
+     * @author Vlad Sorokin
+     * @date 2023/01/11
+     */
+    test(tst_con.clistAllPluginsInRegistryPath_validData, async () => {
+        // Arrange
+        let pathToPluginsRegistred = tst_man.listAllPluginsInRegistryPath;
+        let businessRuleToExecute = tst_man.listAllPluginsInRegistryBusinessRule;
+        let expectedPluginsList = tst_man.listAllPluginsInRegistryExpected
+        D[cfg.cpluginRegistry] = {};
+        D[cfg.cpluginRegistry] = pathToPluginsRegistred;
+        D[sys.cbusinessRules] = {};
+        D[sys.cbusinessRules] = businessRuleToExecute;
+
+        // Act
+        let returnData = await main.listAllPluginsInRegistryPath();
+
+        // Assert
+        expect(returnData).toEqual(expectedPluginsList);
     });
 })

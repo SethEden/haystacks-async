@@ -11,7 +11,7 @@
 
 // External imports
 import hayConst from '@haystacks/constants';
-const {bas, gen, wrd} = hayConst
+const {bas, gen, num, wrd} = hayConst
 
 // Constants Validation
 export const cresolvedConstantsPath_UnitTest = wrd.cresolved + wrd.cConstants + wrd.cPath + bas.cUnderscore + wrd.cUnit + wrd.cTest; // resolvedConstantsPath_UnitTest
@@ -29,3 +29,7 @@ export const cunitTest_configuration_constants_js = wrd.cunit + wrd.cTest + bas.
 export const cunitTest_constants_js = wrd.cunit + wrd.cTest + bas.cDot + wrd.cconstants + gen.cDotjs; // unitTest.constants.js
 export const cunitTest_message_constants_js = wrd.cunit + wrd.cTest + bas.cDot + wrd.cmessage + bas.cDot + wrd.cconstants + gen.cDotjs; // unitTest.message.constants.js
 export const cunitTest_system_constants_js = wrd.cunit + wrd.cTest + bas.cDot + wrd.csystem + bas.cDot + wrd.cconstants + gen.cDotjs; // unitTest.system.constants.js
+
+export const cplugin_one = wrd.cplugin + bas.cDash + num.cone; // plugin-one
+export const cplugin_two = wrd.cplugin + bas.cDash + num.ctwo; // plugin-two
+export const cplugin_three = wrd.cplugin + bas.cDash + num.cthree; // plugin-three

@@ -33,5 +33,9 @@ export const unitTestSystemConstantsValidation = [
     {Name: 'cunitTest_configuration_constants_js', Actual: tst_sys.cunitTest_configuration_constants_js, Expected: 'unitTest.configuration.constants.js'},
     {Name: 'cunitTest_constants_js', Actual: tst_sys.cunitTest_constants_js, Expected: 'unitTest.constants.js'},
     {Name: 'cunitTest_message_constants_js', Actual: tst_sys.cunitTest_message_constants_js, Expected: 'unitTest.message.constants.js'},
-    {Name: 'cunitTest_system_constants_js', Actual: tst_sys.cunitTest_system_constants_js, Expected: 'unitTest.system.constants.js'}
+    {Name: 'cunitTest_system_constants_js', Actual: tst_sys.cunitTest_system_constants_js, Expected: 'unitTest.system.constants.js'},
+
+    {Name: 'cplugin_one', Actual: tst_sys.cplugin_one, Expected: 'plugin-one'},
+    {Name: 'cplugin_two', Actual: tst_sys.cplugin_two, Expected: 'plugin-two'},
+    {Name: 'cplugin_three', Actual: tst_sys.cplugin_three, Expected: 'plugin-three'}
   ];
