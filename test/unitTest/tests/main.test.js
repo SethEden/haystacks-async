@@ -4,6 +4,7 @@
  * @file main.test.js
  * @module main.test
  * @description Unit tests for the main.js
+ * @requires module:dataArrayParsing
  * @requires module:data
  * @requires module:main
  * @requires module:testAliases
@@ -20,6 +21,7 @@
  */
 
 // Internal imports
+import dataArrayParsing from '../../../src/businessRules/rules/arrayParsing/dataArrayParsing.js';
 import D from '../../../src/structures/data.js';
 import main from '../../../src/main.js'
 // import testAliases from '../testData/resources/commands/testAliases.xml';
@@ -1763,6 +1765,128 @@ describe(tst_con.cregisterPluginByNameAndPath, () => {
 
         // Act
         let returnData = await main.registerPluginByNameAndPath(pluginName, pluginPath);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+})
+
+/**
+ * @function unregisterPluginByName
+ * @description Tests the positive and negative test cases of the unregisterPluginByName
+ * @author Vlad Sorokin
+ * @date 2023/01/21
+ */
+describe(tst_con.cunregisterPluginByName, () => {
+    /**
+     * @function unregisterPluginByName_validPluginNameData
+     * @description Tests the main function unregisterPluginByName with a valid input.
+     * @author Vlad Sorokin
+     * @date 2023/01/21
+     */
+    test(tst_con.cunregisterPluginByName_validData, async () => {
+        // Arrange
+        D[cfg.cpluginRegistry] = {};
+        D[cfg.cpluginRegistry] = await dataArrayParsing.objectDeepClone(tst_man.listAllPluginsInRegistry, '');
+        let pluginName = tst_man.pluginNameToUse;
+
+        // Act
+        let returnData = await main.unregisterPluginByName(pluginName);
+
+        // Assert
+        expect(returnData).toEqual(true);
+    });
+
+    /**
+     * @function unregisterPluginByName_inValidPluginNameString
+     * @description Tests the main function unregisterPluginByName with a invalid data string.
+     * @author Vlad Sorokin
+     * @date 2023/01/21
+     */
+    test(tst_con.cunregisterPluginByName_inValidPluginNameString, async () => {
+        // Arrange
+        D[cfg.cpluginRegistry] = {};
+        D[cfg.cpluginRegistry] = await dataArrayParsing.objectDeepClone(tst_man.listAllPluginsInRegistry, '');
+        let pluginName =  tst_man.ctestString1;
+
+        // Act
+        let returnData = await main.unregisterPluginByName(pluginName);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function unregisterPluginByName_inValidPluginNameInteger
+     * @description Tests the main function unregisterPluginByName with a invalid data integer.
+     * @author Vlad Sorokin
+     * @date 2023/01/21
+     */
+    test(tst_con.cunregisterPluginByName_inValidPluginNameInteger, async () => {
+        // Arrange
+        D[cfg.cpluginRegistry] = {};
+        D[cfg.cpluginRegistry] = await dataArrayParsing.objectDeepClone(tst_man.listAllPluginsInRegistry, '');
+        let pluginName = 123;
+
+        // Act
+        let returnData = await main.unregisterPluginByName(pluginName);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function unregisterPluginByName_inValidPluginNameBoolean
+     * @description Tests the main function unregisterPluginByName with a invalid data boolean.
+     * @author Vlad Sorokin
+     * @date 2023/01/21
+     */
+    test(tst_con.cunregisterPluginByName_inValidPluginNameBoolean, async () => {
+        // Arrange
+        D[cfg.cpluginRegistry] = {};
+        D[cfg.cpluginRegistry] = await dataArrayParsing.objectDeepClone(tst_man.listAllPluginsInRegistry, '');
+        let pluginName = true;
+
+        // Act
+        let returnData = await main.unregisterPluginByName(pluginName);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function unregisterPluginByName_inValidPluginNameUndefined
+     * @description Tests the main function unregisterPluginByName with a invalid data undefined.
+     * @author Vlad Sorokin
+     * @date 2023/01/21
+     */
+    test(tst_con.cunregisterPluginByName_inValidPluginNameUndefined, async () => {
+        // Arrange
+        D[cfg.cpluginRegistry] = {};
+        D[cfg.cpluginRegistry] = await dataArrayParsing.objectDeepClone(tst_man.listAllPluginsInRegistry, '');
+        let pluginName = undefined;
+
+        // Act
+        let returnData = await main.unregisterPluginByName(pluginName);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function unregisterPluginByName_inValidPluginNameNaN
+     * @description Tests the main function unregisterPluginByName with a invalid data NaN.
+     * @author Vlad Sorokin
+     * @date 2023/01/21
+     */
+    test(tst_con.cunregisterPluginByName_inValidPluginNameNaN, async () => {
+        // Arrange
+        D[cfg.cpluginRegistry] = {};
+        D[cfg.cpluginRegistry] = await dataArrayParsing.objectDeepClone(tst_man.listAllPluginsInRegistry, '');
+        let pluginName = NaN;
+
+        // Act
+        let returnData = await main.unregisterPluginByName(pluginName);
 
         // Assert
         expect(returnData).toBeFalsy();

@@ -170,8 +170,51 @@ export const testConstantsValidation = [
     {Name: 'clistLoadedPlugins_inValidInteger', Actual: tst_con.clistLoadedPlugins_inValidInteger, Expected: 'listLoadedPlugins_inValidInteger'},
     {Name: 'clistLoadedPlugins_inValidBoolean', Actual: tst_con.clistLoadedPlugins_inValidBoolean, Expected: 'listLoadedPlugins_inValidBoolean'},
     {Name: 'clistLoadedPlugins_inValidUndefined', Actual: tst_con.clistLoadedPlugins_inValidUndefined, Expected: 'listLoadedPlugins_inValidUndefined'},
-    {Name: 'clistLoadedPlugins_inValidNaN', Actual: tst_con.clistLoadedPlugins_inValidNaN, Expected: 'listLoadedPlugins_inValidNaN'}
+    {Name: 'clistLoadedPlugins_inValidNaN', Actual: tst_con.clistLoadedPlugins_inValidNaN, Expected: 'listLoadedPlugins_inValidNaN'},
 
+    // listAllPluginsInRegistry
+    {Name: 'clistAllPluginsInRegistry', Actual: tst_con.clistAllPluginsInRegistry, Expected: 'listAllPluginsInRegistry'},
+    {Name: 'clistAllPluginsInRegistry_validData', Actual: tst_con.clistAllPluginsInRegistry_validData, Expected: 'listAllPluginsInRegistry_validData'},
+    {Name: 'clistAllPluginsInRegistry_inValidString', Actual: tst_con.clistAllPluginsInRegistry_inValidString, Expected: 'listAllPluginsInRegistry_inValidString'},
+    {Name: 'clistAllPluginsInRegistry_inValidInteger', Actual: tst_con.clistAllPluginsInRegistry_inValidInteger, Expected: 'listAllPluginsInRegistry_inValidInteger'},
+    {Name: 'clistAllPluginsInRegistry_inValidBoolean', Actual: tst_con.clistAllPluginsInRegistry_inValidBoolean, Expected: 'listAllPluginsInRegistry_inValidBoolean'},
+    {Name: 'clistAllPluginsInRegistry_inValidUndefined', Actual: tst_con.clistAllPluginsInRegistry_inValidUndefined, Expected: 'listAllPluginsInRegistry_inValidUndefined'},
+    {Name: 'clistAllPluginsInRegistry_inValidNaN', Actual: tst_con.clistAllPluginsInRegistry_inValidNaN, Expected: 'listAllPluginsInRegistry_inValidNaN'},
+
+    // listAllPluginsInRegistryPath
+    {Name: 'clistAllPluginsInRegistryPath', Actual: tst_con.clistAllPluginsInRegistryPath, Expected: 'listAllPluginsInRegistryPath'},
+    {Name: 'clistAllPluginsInRegistryPath_validData', Actual: tst_con.clistAllPluginsInRegistryPath_validData, Expected: 'listAllPluginsInRegistryPath_validData'},
+
+    // numberOfPluginsInRegistry
+    {Name: 'cnumberOfPluginsInRegistry', Actual: tst_con.cnumberOfPluginsInRegistry, Expected: 'numberOfPluginsInRegistry'},
+    {Name: 'cnumberOfPluginsInRegistry_validData', Actual: tst_con.cnumberOfPluginsInRegistry_validData, Expected: 'numberOfPluginsInRegistry_validData'},
+
+    // numberOfPluginsInRegistryPath
+    {Name: 'cnumberOfPluginsInRegistryPath', Actual: tst_con.cnumberOfPluginsInRegistryPath, Expected: 'numberOfPluginsInRegistryPath'},
+    {Name: 'cnumberOfPluginsInRegistryPath_validData', Actual: tst_con.cnumberOfPluginsInRegistryPath_validData, Expected: 'numberOfPluginsInRegistryPath_validData'},
+
+    // registerPluginByNameAndPath
+    {Name: 'cregisterPluginByNameAndPath', Actual: tst_con.cregisterPluginByNameAndPath, Expected: 'registerPluginByNameAndPath'},
+    {Name: 'cregisterPluginByNameAndPath_validData', Actual: tst_con.cregisterPluginByNameAndPath_validData, Expected: 'registerPluginByNameAndPath_validData'},
+    {Name: 'cregisterPluginByNameAndPath_inValidPluginNameString', Actual: tst_con.cregisterPluginByNameAndPath_inValidPluginNameString, Expected: 'registerPluginByNameAndPath_inValidPluginNameString'},
+    {Name: 'cregisterPluginByNameAndPath_inValidPluginPathString', Actual: tst_con.cregisterPluginByNameAndPath_inValidPluginPathString, Expected: 'registerPluginByNameAndPath_inValidPluginPathString'},
+    {Name: 'cregisterPluginByNameAndPath_inValidPluginNameInteger', Actual: tst_con.cregisterPluginByNameAndPath_inValidPluginNameInteger, Expected: 'registerPluginByNameAndPath_inValidPluginNameInteger'},
+    {Name: 'cregisterPluginByNameAndPath_inValidPluginNameBoolean', Actual: tst_con.cregisterPluginByNameAndPath_inValidPluginNameBoolean, Expected: 'registerPluginByNameAndPath_inValidPluginNameBoolean'},
+    {Name: 'cregisterPluginByNameAndPath_inValidPluginPathInteger', Actual: tst_con.cregisterPluginByNameAndPath_inValidPluginPathInteger, Expected: 'registerPluginByNameAndPath_inValidPluginPathInteger'},
+    {Name: 'cregisterPluginByNameAndPath_inValidPluginPathBoolean', Actual: tst_con.cregisterPluginByNameAndPath_inValidPluginPathBoolean, Expected: 'registerPluginByNameAndPath_inValidPluginPathBoolean'},
+    {Name: 'cregisterPluginByNameAndPath_inValidPluginNameUndefined', Actual: tst_con.cregisterPluginByNameAndPath_inValidPluginNameUndefined, Expected: 'registerPluginByNameAndPath_inValidPluginNameUndefined'},
+    {Name: 'cregisterPluginByNameAndPath_inValidPluginNameNaN', Actual: tst_con.cregisterPluginByNameAndPath_inValidPluginNameNaN, Expected: 'registerPluginByNameAndPath_inValidPluginNameNaN'},
+    {Name: 'cregisterPluginByNameAndPath_inValidPluginPathUndefined', Actual: tst_con.cregisterPluginByNameAndPath_inValidPluginPathUndefined, Expected: 'registerPluginByNameAndPath_inValidPluginPathUndefined'},
+    {Name: 'cregisterPluginByNameAndPath_inValidPluginPathNaN', Actual: tst_con.cregisterPluginByNameAndPath_inValidPluginPathNaN, Expected: 'registerPluginByNameAndPath_inValidPluginPathNaN'},
+
+    // unregisterPluginByName
+    {Name: 'cunregisterPluginByName', Actual: tst_con.cunregisterPluginByName, Expected: 'unregisterPluginByName'},
+    {Name: 'cunregisterPluginByName_validPluginNameData', Actual: tst_con.cunregisterPluginByName_validPluginNameData, Expected: 'unregisterPluginByName_validPluginNameData'},
+    {Name: 'cunregisterPluginByName_inValidPluginNameString', Actual: tst_con.cunregisterPluginByName_inValidPluginNameString, Expected: 'unregisterPluginByName_inValidPluginNameString'},
+    {Name: 'cunregisterPluginByName_inValidPluginNameInteger', Actual: tst_con.cunregisterPluginByName_inValidPluginNameInteger, Expected: 'unregisterPluginByName_inValidPluginNameInteger'},
+    {Name: 'cunregisterPluginByName_inValidPluginNameBoolean', Actual: tst_con.cunregisterPluginByName_inValidPluginNameBoolean, Expected: 'unregisterPluginByName_inValidPluginNameBoolean'},
+    {Name: 'cunregisterPluginByName_inValidPluginNameUndefined', Actual: tst_con.cunregisterPluginByName_inValidPluginNameUndefined, Expected: 'unregisterPluginByName_inValidPluginNameUndefined'},
+    {Name: 'cunregisterPluginByName_inValidPluginNameNaN', Actual: tst_con.cunregisterPluginByName_inValidPluginNameNaN, Expected: 'unregisterPluginByName_inValidPluginNameNaN'}
 
 
 

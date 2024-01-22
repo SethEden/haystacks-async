@@ -356,29 +356,47 @@ async function unregisterPlugin(pluginName) {
   // pluginName is:
   await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginNameIs + pluginName);
   let returnData = false;
+  let pluginNameFound = false;
+  let caughtAnError = false;
   // We need to find the index of the plugin we are looking for, then we can use the array.splice method to remove it.
   let pluginRegistryNames = await listPluginsInRegistry();
   let index = 0;
   try {
-    for (let currentPluginNameKey in pluginRegistryNames) {
-      let currentPluginName = pluginRegistryNames[currentPluginNameKey];
-      // currentPluginName is:
-      await loggers.consoleLog(namespacePrefix + functionName, msg.ccurrentPluginNameIs + currentPluginName);
-      if (currentPluginName === pluginName) {
-        break;
+    if(pluginName && typeof pluginName === wrd.cstring) {
+      for (let currentPluginNameKey in pluginRegistryNames) {
+        let currentPluginName = pluginRegistryNames[currentPluginNameKey];
+        // currentPluginName is:
+        await loggers.consoleLog(namespacePrefix + functionName, msg.ccurrentPluginNameIs + currentPluginName);
+        if (currentPluginName === pluginName) {
+          pluginNameFound = true;
+          break;
+        }
+        index = index + 1;
       }
-      index = index + 1;
+      if (pluginNameFound === true) {
+        let pluginObjects = D[cfg.cpluginRegistry][wrd.cplugins];
+        pluginObjects.splice(index, 1);
+        let newPluginObjects = pluginObjects;
+        D[cfg.cpluginRegistry][wrd.cplugins] = newPluginObjects;
+        returnData = true;
+      } else {
+        // ERROR: Plugin Name does not exist. Plugin Name:
+        console.log(msg.cErrorUnRegisterPluginMessage02 + pluginName);
+        caughtAnError = true;
+      }
+    } else {
+      // ERROR: Plugin Name is an invalid value: 
+      console.log(msg.cErrorUnRegisterPluginMessage03 + pluginName);
+      caughtAnError = true;
     }
-    let pluginObjects = D[cfg.cpluginRegistry][wrd.cplugins];
-    pluginObjects.splice(index, 1);
-    let newPluginObjects = pluginObjects;
-    D[cfg.cpluginRegistry][wrd.cplugins] = newPluginObjects;
-    returnData = true;
   } catch (err) {
-    // ERROR: Failure to unregister plugin:
     // error message:
-    console.log(msg.cErrorUnRegisterPluginMessage01 + pluginName);
     console.log(msg.cerrorMessage + err);
+    caughtAnError = true;
+  }
+  if (caughtAnError === true) {
+    // ERROR: Failure to unregister plugin: 
+    console.log(msg.cErrorUnRegisterPluginMessage01 + pluginName);
   }
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);

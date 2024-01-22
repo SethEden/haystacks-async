@@ -87,7 +87,7 @@ export const listAllPluginsInRegistry = {
                 [wrd.cPath]: gen.cCroot + wrd.chay + wrd.cPlugins + bas.cDoubleBackSlash + tst_sys.cplugin_three + bas.cDoubleBackSlash
             }
         }, {
-            [tst_sys.cplugin_three]: {
+            [tst_sys.cplugin_two]: {
                 [wrd.cName]: tst_sys.cplugin_two,
                 [wrd.cPath]: gen.cCroot + wrd.chay + wrd.cPlugins + bas.cDoubleBackSlash + tst_sys.cplugin_two + bas.cDoubleBackSlash
             }
