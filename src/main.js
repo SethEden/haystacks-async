@@ -483,16 +483,23 @@ async function unregisterPlugins(inputData) {
   await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginListArrayIs + JSON.stringify(inputData));
   let returnData = false;
   let pluginsListArray = [];
-  if (Array.isArray(inputData) === true && inputData.length >= 1) {
-    pluginsListArray = inputData;
-  } else if (inputData.includes(bas.cComa) === true) {
-    pluginsListArray = inputData.split(bas.cComa);
-  } else if (inputData.includes(bas.cSpace) === true) {
-    pluginsListArray = inputData.split(bas.cSpace);
+  if (inputData && (typeof inputData === wrd.cstring || Array.isArray(inputData))) {
+    if (Array.isArray(inputData) === true && inputData.length >= 1) {
+      pluginsListArray = inputData;
+    } else if (inputData.includes(bas.cComa) === true) {
+      pluginsListArray = inputData.split(bas.cComa);
+    } else if (inputData.includes(bas.cSpace) === true) {
+      pluginsListArray = inputData.split(bas.cSpace);
+    } else {
+      pluginsListArray = inputData;
+    }
+    // pluginsListArray is:
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginsListArrayIs + JSON.stringify(pluginsListArray));
+    returnData = await warden.unregisterPlugins(pluginsListArray);
+  } else {
+    // ERROR: Plugin List Array is an invalid value: 
+    console.log(msg.cErrorUnregisterPluginsMessage02 + inputData);
   }
-  // pluginsListArray is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginsListArrayIs + JSON.stringify(pluginsListArray));
-  returnData = await warden.unregisterPlugins(pluginsListArray);
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;

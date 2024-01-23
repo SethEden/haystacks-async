@@ -357,7 +357,7 @@ async function unregisterPlugin(pluginName) {
   await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginNameIs + pluginName);
   let returnData = false;
   let pluginNameFound = false;
-  let caughtAnError = false;
+  let noErrorFound = true;
   // We need to find the index of the plugin we are looking for, then we can use the array.splice method to remove it.
   let pluginRegistryNames = await listPluginsInRegistry();
   let index = 0;
@@ -382,19 +382,19 @@ async function unregisterPlugin(pluginName) {
       } else {
         // ERROR: Plugin Name does not exist. Plugin Name:
         console.log(msg.cErrorUnRegisterPluginMessage02 + pluginName);
-        caughtAnError = true;
+        noErrorFound = false;
       }
     } else {
       // ERROR: Plugin Name is an invalid value: 
       console.log(msg.cErrorUnRegisterPluginMessage03 + pluginName);
-      caughtAnError = true;
+      noErrorFound = false;
     }
   } catch (err) {
     // error message:
     console.log(msg.cerrorMessage + err);
-    caughtAnError = true;
+    noErrorFound = false;
   }
-  if (caughtAnError === true) {
+  if (noErrorFound === false) {
     // ERROR: Failure to unregister plugin: 
     console.log(msg.cErrorUnRegisterPluginMessage01 + pluginName);
   }
@@ -416,24 +416,38 @@ async function unregisterPlugins(pluginListArray) {
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // pluginListArray is:
   await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginListArrayIs + JSON.stringify(pluginListArray));
-  let returnData = true;
+  let returnData = false;
   let noErrorFound = true;
-  if (Array.isArray(pluginListArray) === true && pluginListArray.length >= 1) {
-    for (let pluginNameKey in pluginListArray) {
-      let pluginName = pluginListArray[pluginNameKey];
-      // pluginName is:
-      await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginNameIs + pluginName);
-      if (pluginName) {
-        noErrorFound = await unregisterPlugin(pluginName);
-      } else {
-        // ERROR: The plugin name was not a valid name: 
-        console.log(msg.cErrorUnregisterPluginsMessage01 + pluginName);
+  let noErrorFoundAfterLoop = true;
+  if (pluginListArray && (typeof pluginListArray === wrd.cstring || Array.isArray(pluginListArray))) {
+    if (Array.isArray(pluginListArray) === true && pluginListArray.length >= 1) {
+      for (let pluginNameKey in pluginListArray) {
+        noErrorFound = true;
+        let pluginName = pluginListArray[pluginNameKey];
+        // pluginName is:
+        await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginNameIs + pluginName);
+        if (pluginName && typeof pluginName === wrd.cstring) {
+          noErrorFound = await unregisterPlugin(pluginName);
+        } else {
+          // ERROR: The plugin name was not a valid name: 
+          console.log(msg.cErrorUnregisterPluginsMessage01 + pluginName);
+          noErrorFound = false;
+        }
+        if (noErrorFound === false) {
+          // ERROR: 
+          noErrorFoundAfterLoop = false;
+        }
+      } // End-for (let pluginNameKey in pluginListArray)
+      if (noErrorFoundAfterLoop === true) {
+        returnData = true;
       }
-      if (noErrorFound === false) {
-        returnData = false;
-      }
-    } // End-for (let pluginNameKey in pluginListArray)
-  } // End-if (Array.isArray(pluginListArray) === true && pluginListArray.length >= 1)
+    } else { // It must be a string
+      returnData = await unregisterPlugin(pluginListArray);
+    }
+  } else {
+    // ERROR: Plugin List Array is an invalid value: 
+    console.log(msg.cErrorUnregisterPluginsMessage02 + pluginListArray);
+  }
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;

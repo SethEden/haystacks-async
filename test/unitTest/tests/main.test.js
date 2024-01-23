@@ -1807,7 +1807,7 @@ describe(tst_con.cunregisterPluginByName, () => {
         // Arrange
         D[cfg.cpluginRegistry] = {};
         D[cfg.cpluginRegistry] = await dataArrayParsing.objectDeepClone(tst_man.listAllPluginsInRegistry, '');
-        let pluginName =  tst_man.ctestString1;
+        let pluginName = tst_man.ctestString1;
 
         // Act
         let returnData = await main.unregisterPluginByName(pluginName);
@@ -1887,6 +1887,128 @@ describe(tst_con.cunregisterPluginByName, () => {
 
         // Act
         let returnData = await main.unregisterPluginByName(pluginName);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+})
+
+/**
+ * @function unregisterPlugins
+ * @description Tests the positive and negative test cases of the unregisterPlugins
+ * @author Vlad Sorokin
+ * @date 2023/01/22
+ */
+describe(tst_con.cunregisterPlugins, () => {
+    /**
+     * @function unregisterPlugins_validData
+     * @description Tests the main function unregisterPlugins with a valid input.
+     * @author Vlad Sorokin
+     * @date 2023/01/22
+     */
+    test(tst_con.cunregisterPlugins_validData, async () => {
+        // Arrange
+        D[cfg.cpluginRegistry] = {};
+        D[cfg.cpluginRegistry] = await dataArrayParsing.objectDeepClone(tst_man.listAllPluginsInRegistry, '');
+        let pluginListArray = tst_man.expectedListLoadedPlugins;
+
+        // Act
+        let returnData = await main.unregisterPlugins(pluginListArray);
+
+        // Assert
+        expect(returnData).toEqual(true);
+    });
+
+    /**
+     * @function unregisterPlugins_inValidPluginsListArrayString
+     * @description Tests the main function unregisterPlugins with a invalid data string.
+     * @author Vlad Sorokin
+     * @date 2023/01/22
+     */
+    test(tst_con.cunregisterPlugins_inValidPluginsListArrayString, async () => {
+        // Arrange
+        D[cfg.cpluginRegistry] = {};
+        D[cfg.cpluginRegistry] = await dataArrayParsing.objectDeepClone(tst_man.listAllPluginsInRegistry, '');;
+        let pluginListArray = tst_man.ctestString1;
+
+        // Act
+        let returnData = await main.unregisterPlugins(pluginListArray);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function unregisterPlugins_inValidPluginsListArrayInteger
+     * @description Tests the main function unregisterPlugins with a invalid data integer.
+     * @author Vlad Sorokin
+     * @date 2023/01/22
+     */
+    test(tst_con.cunregisterPlugins_inValidPluginsListArrayInteger, async () => {
+        // Arrange
+        D[cfg.cpluginRegistry] = {};
+        D[cfg.cpluginRegistry] = await dataArrayParsing.objectDeepClone(tst_man.listAllPluginsInRegistry, '');;
+        let pluginListArray = 123;
+
+        // Act
+        let returnData = await main.unregisterPlugins(pluginListArray);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function unregisterPlugins_inValidPluginsListArrayBoolean
+     * @description Tests the main function unregisterPlugins with a invalid data boolean.
+     * @author Vlad Sorokin
+     * @date 2023/01/22
+     */
+    test(tst_con.cunregisterPlugins_inValidPluginsListArrayBoolean, async () => {
+        // Arrange
+        D[cfg.cpluginRegistry] = {};
+        D[cfg.cpluginRegistry] = await dataArrayParsing.objectDeepClone(tst_man.listAllPluginsInRegistry, '');;
+        let pluginListArray = false;
+
+        // Act
+        let returnData = await main.unregisterPlugins(pluginListArray);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function unregisterPlugins_inValidPluginsListArrayUndefined
+     * @description Tests the main function unregisterPlugins with a invalid data undefined.
+     * @author Vlad Sorokin
+     * @date 2023/01/22
+     */
+    test(tst_con.cunregisterPlugins_inValidPluginsListArrayUndefined, async () => {
+        // Arrange
+        D[cfg.cpluginRegistry] = {};
+        D[cfg.cpluginRegistry] = await dataArrayParsing.objectDeepClone(tst_man.listAllPluginsInRegistry, '');;
+        let pluginListArray = undefined;
+
+        // Act
+        let returnData = await main.unregisterPlugins(pluginListArray);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function unregisterPlugins_inValidPluginsListArrayNaN
+     * @description Tests the main function unregisterPlugins with a invalid data NaN.
+     * @author Vlad Sorokin
+     * @date 2023/01/22
+     */
+    test(tst_con.cunregisterPlugins_inValidPluginsListArrayNaN, async () => {
+        // Arrange
+        D[cfg.cpluginRegistry] = {};
+        D[cfg.cpluginRegistry] = await dataArrayParsing.objectDeepClone(tst_man.listAllPluginsInRegistry, '');;
+        let pluginListArray = NaN;
+
+        // Act
+        let returnData = await main.unregisterPlugins(pluginListArray);
 
         // Assert
         expect(returnData).toBeFalsy();

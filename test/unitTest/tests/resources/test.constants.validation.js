@@ -214,8 +214,16 @@ export const testConstantsValidation = [
     {Name: 'cunregisterPluginByName_inValidPluginNameInteger', Actual: tst_con.cunregisterPluginByName_inValidPluginNameInteger, Expected: 'unregisterPluginByName_inValidPluginNameInteger'},
     {Name: 'cunregisterPluginByName_inValidPluginNameBoolean', Actual: tst_con.cunregisterPluginByName_inValidPluginNameBoolean, Expected: 'unregisterPluginByName_inValidPluginNameBoolean'},
     {Name: 'cunregisterPluginByName_inValidPluginNameUndefined', Actual: tst_con.cunregisterPluginByName_inValidPluginNameUndefined, Expected: 'unregisterPluginByName_inValidPluginNameUndefined'},
-    {Name: 'cunregisterPluginByName_inValidPluginNameNaN', Actual: tst_con.cunregisterPluginByName_inValidPluginNameNaN, Expected: 'unregisterPluginByName_inValidPluginNameNaN'}
+    {Name: 'cunregisterPluginByName_inValidPluginNameNaN', Actual: tst_con.cunregisterPluginByName_inValidPluginNameNaN, Expected: 'unregisterPluginByName_inValidPluginNameNaN'},
 
+    // unregisterPluginByName
+    {Name: 'cunregisterPlugins', Actual: tst_con.cunregisterPlugins, Expected: 'unregisterPlugins'},
+    {Name: 'cunregisterPlugins_validData', Actual: tst_con.cunregisterPlugins_validData, Expected: 'unregisterPlugins_validData'},
+    {Name: 'cunregisterPlugins_inValidPluginsListArrayString', Actual: tst_con.cunregisterPlugins_inValidPluginsListArrayString, Expected: 'unregisterPlugins_inValidPluginsListArrayString'},
+    {Name: 'cunregisterPlugins_inValidPluginsListArrayInteger', Actual: tst_con.cunregisterPlugins_inValidPluginsListArrayInteger, Expected: 'unregisterPlugins_inValidPluginsListArrayInteger'},
+    {Name: 'cunregisterPlugins_inValidPluginsListArrayBoolean', Actual: tst_con.cunregisterPlugins_inValidPluginsListArrayBoolean, Expected: 'unregisterPlugins_inValidPluginsListArrayBoolean'},
+    {Name: 'cunregisterPlugins_inValidPluginsListArrayUndefined', Actual: tst_con.cunregisterPlugins_inValidPluginsListArrayUndefined, Expected: 'unregisterPlugins_inValidPluginsListArrayUndefined'},
+    {Name: 'cunregisterPlugins_inValidPluginsListArrayNaN', Actual: tst_con.cunregisterPlugins_inValidPluginsListArrayNaN, Expected: 'unregisterPlugins_inValidPluginsListArrayNaN'}
 
 
     // Test names
