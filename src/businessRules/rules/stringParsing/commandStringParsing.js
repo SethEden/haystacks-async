@@ -13,30 +13,16 @@
  */
 
 // Internal imports
-import ruleParsing from "../ruleParsing.js";
-import loggers from "../../../executrix/loggers.js";
+import ruleParsing from '../ruleParsing.js';
+import loggers from '../../../executrix/loggers.js';
 // External imports
-import hayConst from "@haystacks/constants";
-import path from "path";
+import hayConst from '@haystacks/constants';
+import path from 'path';
 
-const { bas, biz, msg, sys, wrd } = hayConst;
-const baseFileName = path.basename(
-  import.meta.url,
-  path.extname(import.meta.url),
-);
+const {bas, biz, msg, sys, wrd} = hayConst;
+const baseFileName = path.basename(import.meta.url, path.extname(import.meta.url));
 // framework.businessRules.rules.stringParsing.commandStringParsing.
-const namespacePrefix =
-  wrd.cframework +
-  bas.cDot +
-  sys.cbusinessRules +
-  bas.cDot +
-  wrd.crules +
-  bas.cDot +
-  wrd.cstring +
-  wrd.cParsing +
-  bas.cDot +
-  baseFileName +
-  bas.cDot;
+const namespacePrefix = wrd.cframework + bas.cDot + sys.cbusinessRules + bas.cDot + wrd.crules + bas.cDot + wrd.cstring + wrd.cParsing + bas.cDot + baseFileName + bas.cDot;
 
 /**
  * @function cleanCommandInput
@@ -50,33 +36,15 @@ const namespacePrefix =
 async function cleanCommandInput(inputData, inputMetaData) {
   let functionName = cleanCommandInput.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  await loggers.consoleLog(
-    namespacePrefix + functionName,
-    msg.cinputDataIs + inputData,
-  );
-  await loggers.consoleLog(
-    namespacePrefix + functionName,
-    msg.cinputMetaDataIs + inputMetaData,
-  );
-  let returnData = "";
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
+  let returnData = '';
   if (inputData) {
-    returnData = await ruleParsing.processRulesInternal(
-      [inputData, [/--/g, ""]],
-      [biz.creplaceCharacterWithCharacter],
-    );
-    returnData = await ruleParsing.processRulesInternal(
-      [returnData, [/\[/g, ""]],
-      [biz.creplaceCharacterWithCharacter],
-    );
-    returnData = await ruleParsing.processRulesInternal(
-      [returnData, [/\]/g, ""]],
-      [biz.creplaceCharacterWithCharacter],
-    );
+    returnData = await ruleParsing.processRulesInternal([inputData, [/--/g, '']], [biz.creplaceCharacterWithCharacter]);
+    returnData = await ruleParsing.processRulesInternal([returnData, [/\[/g, '']], [biz.creplaceCharacterWithCharacter]);
+    returnData = await ruleParsing.processRulesInternal([returnData, [/\]/g, '']], [biz.creplaceCharacterWithCharacter]);
   } // End-if (inputData)
-  await loggers.consoleLog(
-    namespacePrefix + functionName,
-    msg.creturnDataIs + JSON.stringify(returnData),
-  );
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
@@ -96,54 +64,28 @@ async function cleanCommandInput(inputData, inputMetaData) {
 async function isValidCommandNameString(inputData, inputMetaData) {
   let functionName = isValidCommandNameString.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  await loggers.consoleLog(
-    namespacePrefix + functionName,
-    msg.cinputDataIs + inputData,
-  );
-  await loggers.consoleLog(
-    namespacePrefix + functionName,
-    msg.cinputMetaDataIs + inputMetaData,
-  );
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = false;
   if (inputData) {
     // NOTE: The below call to convert the string to a camel-case array doesn't guarantee that the string is actually camel-case.
     // It could actually be a single word, but of course we want to make sure it's more than 3 characters long.
     // Less than that, shouldn't really be considered a valid word, but could be appropriate as a command alias/abbreviation.
     if (inputData.length > 3) {
-      let camelCaseArray = await ruleParsing.processRulesInternal(
-        [inputData, ""],
-        [biz.cconvertCamelCaseStringToArray],
-      );
+      let camelCaseArray = await ruleParsing.processRulesInternal([inputData, ''], [biz.cconvertCamelCaseStringToArray]);
       if (camelCaseArray.length === 1) {
-        if (
-          (await ruleParsing.processRulesInternal(
-            [inputData, ""],
-            [biz.cisFirstCharacterLowerCase],
-          )) === true
-        ) {
-          returnData = true;
-        }
+        if (await ruleParsing.processRulesInternal([inputData, ''], [biz.cisFirstCharacterLowerCase]) === true) { returnData = true; }
       } else if (camelCaseArray.length > 1) {
-        if (
-          (await ruleParsing.processRulesInternal(
-            [inputData, ""],
-            [biz.cisStringCamelCase],
-          )) === true
-        ) {
-          returnData = true;
-        }
+        if (await ruleParsing.processRulesInternal([inputData, ''], [biz.cisStringCamelCase]) === true) { returnData = true; }
       }
     } // End-if (inputData.length > 3)
   } // End-if (inputData)
-  await loggers.consoleLog(
-    namespacePrefix + functionName,
-    msg.creturnDataIs + returnData,
-  );
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
 export default {
   cleanCommandInput,
-  isValidCommandNameString,
+  isValidCommandNameString
 };

@@ -24,33 +24,30 @@
  */
 
 // Internal imports
-import clientRules from "./businessRules/clientRulesLibrary.js";
-import clientCommands from "./commands/clientCommandsLibrary.js";
-import * as app_cmd from "./constants/application.command.constants.js";
-import * as app_cfg from "./constants/application.configuration.constants.js";
-import * as apc from "./constants/application.constants.js";
-import * as app_msg from "./constants/application.message.constants.js";
-import allAppCV from "./resources/constantsValidation/allApplicationConstantsValidationMetadata.js";
+import clientRules from './businessRules/clientRulesLibrary.js';
+import clientCommands from './commands/clientCommandsLibrary.js';
+import * as app_cmd from './constants/application.command.constants.js';
+import * as app_cfg from './constants/application.configuration.constants.js';
+import * as apc from './constants/application.constants.js';
+import * as app_msg from './constants/application.message.constants.js';
+import allAppCV from './resources/constantsValidation/allApplicationConstantsValidationMetadata.js';
 // External imports
-import haystacks from "@haystacks/async";
-import hayConst from "@haystacks/constants";
-import url from "url";
-import dotenv from "dotenv";
-import path from "path";
+import haystacks from '@haystacks/async';
+import hayConst from '@haystacks/constants';
+import url from 'url';
+import dotenv from 'dotenv';
+import path from 'path';
 
-const { bas, cmd, cfg, gen, msg, sys, wrd } = hayConst;
-let rootPath = "";
-let baseFileName = path.basename(
-  import.meta.url,
-  path.extname(import.meta.url),
-);
+const {bas, cmd, cfg, gen, msg, sys, wrd} = hayConst;
+let rootPath = '';
+let baseFileName = path.basename(import.meta.url, path.extname(import.meta.url));
 // buildRelease.
 let namespacePrefix = baseFileName + bas.cDot;
 // eslint-disable-next-line no-undef
 global.appRoot = path.resolve(process.cwd());
 dotenv.config();
 // eslint-disable-next-line no-undef
-const { NODE_ENV } = process.env;
+const {NODE_ENV} = process.env;
 
 /**
  * @function bootStrapApplication
@@ -77,10 +74,9 @@ async function bootStrapApplication() {
       clientCommandAliasesPath: rootPath + apc.cFullDevCommandsPath,
       clientConstantsPath: rootPath + apc.cFullDevConstantsPath,
       clientWorkflowsPath: rootPath + apc.cFullDevWorkflowsPath,
-      applicationConstantsValidationData:
-        await allAppCV.initializeAllClientConstantsValidationData,
+      applicationConstantsValidationData: await allAppCV.initializeAllClientConstantsValidationData,
       clientBusinessRules: {},
-      clientCommands: {},
+      clientCommands: {}
     };
   } else if (NODE_ENV === wrd.cproduction) {
     appConfig = {
@@ -92,16 +88,13 @@ async function bootStrapApplication() {
       clientCommandAliasesPath: rootPath + apc.cFullProdCommandsPath,
       clientConstantsPath: rootPath + apc.cFullProdConstantsPath,
       clientWorkflowsPath: rootPath + apc.cFullProdWorkflowsPath,
-      applicationConstantsValidationData:
-        await allAppCV.initializeAllClientConstantsValidationData,
+      applicationConstantsValidationData: await allAppCV.initializeAllClientConstantsValidationData,
       clientBusinessRules: {},
-      clientCommands: {},
+      clientCommands: {}
     };
   } else {
     // WARNING: NO .env file found! Going to default to the DEVELOPMENT ENVIRONMENT!
-    console.log(
-      msg.cApplicationWarningMessage1a + msg.cApplicationWarningMessage1b,
-    );
+    console.log(msg.cApplicationWarningMessage1a + msg.cApplicationWarningMessage1b);
     appConfig = {
       FrameworkName: apc.cExpectedActualFrameworkDevName,
       clientRootPath: rootPath,
@@ -111,16 +104,13 @@ async function bootStrapApplication() {
       clientCommandAliasesPath: rootPath + apc.cFullDevCommandsPath,
       clientConstantsPath: rootPath + apc.cFullDevConstantsPath,
       clientWorkflowsPath: rootPath + apc.cFullDevWorkflowsPath,
-      applicationConstantsValidationData:
-        await allAppCV.initializeAllClientConstantsValidationData,
+      applicationConstantsValidationData: await allAppCV.initializeAllClientConstantsValidationData,
       clientBusinessRules: {},
-      clientCommands: {},
+      clientCommands: {}
     };
   }
-  appConfig[sys.cclientBusinessRules] =
-    await clientRules.initClientRulesLibrary();
-  appConfig[sys.cclientCommands] =
-    await clientCommands.initClientCommandsLibrary();
+  appConfig[sys.cclientBusinessRules] = await clientRules.initClientRulesLibrary();
+  appConfig[sys.cclientCommands] = await clientCommands.initClientCommandsLibrary();
   await haystacks.initFramework(appConfig);
   // console.log(`END ${namespacePrefix}${functionName} function`);
 }
@@ -138,78 +128,42 @@ async function bootStrapApplication() {
  */
 async function deployApplication() {
   let functionName = deployApplication.name;
-  await haystacks.consoleLog(
-    namespacePrefix,
-    functionName,
-    msg.cBEGIN_Function,
-  );
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.cBEGIN_Function);
   try {
     let deploymentResult = [];
     // fse.copySync('/src/*', '/bin/*');
-    await haystacks.setConfigurationSetting(
-      wrd.csystem,
-      cfg.creleaseCompleted,
-      false,
-    );
-    await haystacks.setConfigurationSetting(
-      wrd.csystem,
-      cfg.cpassAllConstantsValidation,
-      false,
-    );
-    await haystacks.setConfigurationSetting(
-      wrd.csystem,
-      cfg.cpassedAllCommandAliasesDuplicateChecks,
-      false,
-    );
-    await haystacks.setConfigurationSetting(
-      wrd.csystem,
-      app_cfg.csourcePath,
-      apc.cAppDevPath,
-    );
-    await haystacks.setConfigurationSetting(
-      wrd.csystem,
-      app_cfg.cdestinationPath,
-      apc.cAppProdPath,
-    );
-    await haystacks.setConfigurationSetting(
-      wrd.csystem,
-      app_cfg.csourceResourcesPath,
-      apc.cFullDevResourcesPath,
-    );
-    await haystacks.setConfigurationSetting(
-      wrd.csystem,
-      app_cfg.cdestinationResourcesPath,
-      apc.cAppProdPath,
-    );
-    await haystacks.setConfigurationSetting(
-      wrd.csystem,
-      app_cfg.creleasePath,
-      apc.cReleasePath,
-    );
+    await haystacks.setConfigurationSetting(wrd.csystem, cfg.creleaseCompleted, false);
+    await haystacks.setConfigurationSetting(wrd.csystem, cfg.cpassAllConstantsValidation, false);
+    await haystacks.setConfigurationSetting(wrd.csystem, cfg.cpassedAllCommandAliasesDuplicateChecks, false);
+    await haystacks.setConfigurationSetting(wrd.csystem, app_cfg.csourcePath, apc.cAppDevPath);
+    await haystacks.setConfigurationSetting(wrd.csystem, app_cfg.cdestinationPath, apc.cAppProdPath);
+    await haystacks.setConfigurationSetting(wrd.csystem, app_cfg.csourceResourcesPath, apc.cFullDevResourcesPath);
+    await haystacks.setConfigurationSetting(wrd.csystem, app_cfg.cdestinationResourcesPath, apc.cAppProdPath);
+    await haystacks.setConfigurationSetting(wrd.csystem, app_cfg.creleasePath, apc.cReleasePath);
     // NOTE: We could use a similar process to deploy an application that is based on the haystacks framework.
     // However, in this case we are only concerned with building & releasing the framework.
     // The test harness is not a concern for the release process, neither is the buildRelease application.
     await haystacks.enqueueCommand(cmd.cStartupWorkflow);
-    while ((await haystacks.isCommandQueueEmpty()) === false) {
+    while (await haystacks.isCommandQueueEmpty() === false) {
       await haystacks.processCommandQueue();
     } // End-while (haystacks.isCommandQueueEmpty() === false)
 
     // 2nd stage deploy-release process:
     console.log(app_msg.cReleasingFramework);
     await haystacks.enqueueCommand(cmd.cFrameworkDetailsWorkflow);
-    while ((await haystacks.isCommandQueueEmpty()) === false) {
+    while (await haystacks.isCommandQueueEmpty() === false) {
       await haystacks.processCommandQueue();
     } // End-while (haystacks.isCommandQueueEmpty() === false)
 
     // 3rd stage deploy-release process:
     await haystacks.enqueueCommand(app_cmd.cdeployMetaData);
-    while ((await haystacks.isCommandQueueEmpty()) === false) {
+    while (await haystacks.isCommandQueueEmpty() === false) {
       await haystacks.processCommandQueue();
     } // End-while (haystacks.isCommandQueueEmpty() === false)
 
     // 4th stage deploy-release process:
     await haystacks.enqueueCommand(app_cmd.cBuildWorkflow);
-    while ((await haystacks.isCommandQueueEmpty()) === false) {
+    while (await haystacks.isCommandQueueEmpty() === false) {
       deploymentResult = await haystacks.processCommandQueue();
     } // End-while (haystacks.isCommandQueueEmpty() === false)
 
@@ -223,20 +177,12 @@ async function deployApplication() {
       console.log(app_msg.cBuildMessage1 + deploymentResult[1]);
     } else {
       console.log(app_msg.cBuildMessage1 + gen.cFalse);
-      await haystacks.setConfigurationSetting(
-        wrd.csystem,
-        app_cfg.cdeploymentCompleted,
-        false,
-      );
+      await haystacks.setConfigurationSetting(wrd.csystem, app_cfg.cdeploymentCompleted, false);
     }
   } catch (err) {
     console.error(err);
     // deploymentCompleted
-    await haystacks.setConfigurationSetting(
-      wrd.csystem,
-      app_cfg.cdeploymentCompleted,
-      false,
-    );
+    await haystacks.setConfigurationSetting(wrd.csystem, app_cfg.cdeploymentCompleted, false);
   }
   await haystacks.consoleLog(namespacePrefix, functionName, msg.cEND_Function);
 }

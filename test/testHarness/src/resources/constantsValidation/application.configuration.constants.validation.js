@@ -9,7 +9,7 @@
  */
 
 // Internal imports
-import * as app_cfg from "../../constants/application.configuration.constants.js";
+import * as app_cfg from '../../constants/application.configuration.constants.js';
 
 /**
  * @function applicationConfigurationConstantsValidation
@@ -19,9 +19,5 @@ import * as app_cfg from "../../constants/application.configuration.constants.js
  * @date 2022/03/22
  */
 export const applicationConfigurationConstantsValidation = [
-  {
-    Name: "cargumentDrivenInterface",
-    Actual: app_cfg.cargumentDrivenInterface,
-    Expected: "argumentDrivenInterface",
-  },
+  {Name: 'cargumentDrivenInterface', Actual: app_cfg.cargumentDrivenInterface, Expected: 'argumentDrivenInterface'}
 ];

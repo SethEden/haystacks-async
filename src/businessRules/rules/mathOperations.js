@@ -12,27 +12,16 @@
  */
 
 // Internal imports
-import ruleParsing from "./ruleParsing.js";
-import loggers from "../../executrix/loggers.js";
+import ruleParsing from './ruleParsing.js';
+import loggers from '../../executrix/loggers.js';
 // External imports
-import hayConst from "@haystacks/constants";
-import path from "path";
+import hayConst from '@haystacks/constants';
+import path from 'path';
 
-const { bas, biz, msg, sys, wrd } = hayConst;
-const baseFileName = path.basename(
-  import.meta.url,
-  path.extname(import.meta.url),
-);
+const {bas, biz, msg, sys, wrd} = hayConst;
+const baseFileName = path.basename(import.meta.url, path.extname(import.meta.url));
 // framework.businessRules.rules.mathOperations.
-const namespacePrefix =
-  wrd.cframework +
-  bas.cDot +
-  sys.cbusinessRules +
-  bas.cDot +
-  wrd.crules +
-  bas.cDot +
-  baseFileName +
-  bas.cDot;
+const namespacePrefix = wrd.cframework + bas.cDot + sys.cbusinessRules + bas.cDot + wrd.crules + bas.cDot + baseFileName + bas.cDot;
 
 /**
  * @function hex2rgbConversion
@@ -47,14 +36,8 @@ const namespacePrefix =
 async function hex2rgbConversion(inputData, inputMetaData) {
   let functionName = hex2rgbConversion.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  await loggers.consoleLog(
-    namespacePrefix + functionName,
-    msg.cinputDataIs + JSON.stringify(inputData),
-  );
-  await loggers.consoleLog(
-    namespacePrefix + functionName,
-    msg.cinputMetaDataIs + JSON.stringify(inputMetaData),
-  );
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
   let returnData = false;
   if (inputData) {
     // A few different ways to implement this business rule, see link above.
@@ -76,19 +59,13 @@ async function hex2rgbConversion(inputData, inputMetaData) {
 
     let bigInteger = parseInt(inputData, 16);
     // bigInteger is:
-    await loggers.consoleLog(
-      namespacePrefix + functionName,
-      msg.cMathOperationsMessage1 + bigInteger,
-    );
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cMathOperationsMessage1 + bigInteger);
     let red = (bigInteger >> 16) & 255;
     let green = (bigInteger >> 8) & 255;
     let blue = bigInteger & 255;
     returnData = [red, green, blue];
   } // End-if (inputData)
-  await loggers.consoleLog(
-    namespacePrefix + functionName,
-    msg.creturnDataIs + JSON.stringify(returnData),
-  );
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
@@ -108,22 +85,11 @@ async function hex2rgbConversion(inputData, inputMetaData) {
 async function isOdd(inputData, inputMetaData) {
   let functionName = isOdd.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  await loggers.consoleLog(
-    namespacePrefix + functionName,
-    msg.cinputDataIs + inputData,
-  );
-  await loggers.consoleLog(
-    namespacePrefix + functionName,
-    msg.cinputMetaDataIs + inputMetaData,
-  );
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = false;
   if (inputData) {
-    if (
-      (await ruleParsing.processRulesInternal(
-        [inputData, ""],
-        [biz.cisInteger],
-      )) === true
-    ) {
+    if (await ruleParsing.processRulesInternal([inputData, ''], [biz.cisInteger]) === true) {
       let inputValue = parseInt(inputData);
       let result = inputValue % 2;
       if (result === 1) {
@@ -131,10 +97,7 @@ async function isOdd(inputData, inputMetaData) {
       }
     } // End-if (ruleParsing.processRulesInternal([inputData, ''], [biz.cisInteger]) === true)
   } // End-if (inputData)
-  await loggers.consoleLog(
-    namespacePrefix + functionName,
-    msg.creturnDataIs + JSON.stringify(returnData),
-  );
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
@@ -156,22 +119,11 @@ async function isOdd(inputData, inputMetaData) {
 async function isEven(inputData, inputMetaData) {
   let functionName = isEven.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  await loggers.consoleLog(
-    namespacePrefix + functionName,
-    msg.cinputDataIs + inputData,
-  );
-  await loggers.consoleLog(
-    namespacePrefix + functionName,
-    msg.cinputMetaDataIs + inputMetaData,
-  );
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = false;
   if (inputData) {
-    if (
-      (await ruleParsing.processRulesInternal(
-        [inputData, ""],
-        [biz.cisInteger],
-      )) === true
-    ) {
+    if (await ruleParsing.processRulesInternal([inputData, ''], [biz.cisInteger]) === true) {
       let inputValue = parseInt(inputData);
       let result = inputValue % 2;
       if (result === 0) {
@@ -179,10 +131,7 @@ async function isEven(inputData, inputMetaData) {
       }
     } // End-if (ruleParsing.processRulesInternal([inputData, ''], [biz.cisInteger]) === true)
   } // End-if (inputData)
-  await loggers.consoleLog(
-    namespacePrefix + functionName,
-    msg.creturnDataIs + JSON.stringify(returnData),
-  );
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
@@ -190,5 +139,5 @@ async function isEven(inputData, inputMetaData) {
 export default {
   hex2rgbConversion,
   isOdd,
-  isEven,
+  isEven
 };

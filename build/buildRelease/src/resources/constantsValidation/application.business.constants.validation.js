@@ -9,7 +9,7 @@
  */
 
 // Internal imports
-import * as app_biz from "../../constants/application.business.constants.js";
+import * as app_biz from '../../constants/application.business.constants.js';
 
 /**
  * @function applicationBusinessConstantsValidation
@@ -20,15 +20,11 @@ import * as app_biz from "../../constants/application.business.constants.js";
  */
 export const applicationBusinessConstantsValidation = [
   // Client Business Rules
-  { Name: "cclientEcho", Actual: app_biz.cclientEcho, Expected: "clientEcho" },
+  {Name: 'cclientEcho', Actual: app_biz.cclientEcho, Expected: 'clientEcho'},
 
   // ********************************
   // ClientStringParsing rules in order
   // ********************************
-  { Name: "ccustomEcho", Actual: app_biz.ccustomEcho, Expected: "customEcho" },
-  {
-    Name: "cbuildReleasePackage",
-    Actual: app_biz.cbuildReleasePackage,
-    Expected: "buildReleasePackage",
-  },
+  {Name: 'ccustomEcho', Actual: app_biz.ccustomEcho, Expected: 'customEcho'},
+  {Name: 'cbuildReleasePackage', Actual: app_biz.cbuildReleasePackage, Expected: 'buildReleasePackage'}
 ];

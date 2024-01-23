@@ -12,30 +12,16 @@
  */
 
 // Internal imports
-import ruleParsing from "../ruleParsing.js";
-import loggers from "../../../executrix/loggers.js";
+import ruleParsing from '../ruleParsing.js';
+import loggers from '../../../executrix/loggers.js';
 // External imports
-import hayConst from "@haystacks/constants";
-import path from "path";
+import hayConst from '@haystacks/constants';
+import path from 'path';
 
-const { bas, biz, gen, msg, num, sys, wrd } = hayConst;
-const baseFileName = path.basename(
-  import.meta.url,
-  path.extname(import.meta.url),
-);
+const {bas, biz, gen, msg, num, sys, wrd} = hayConst;
+const baseFileName = path.basename(import.meta.url, path.extname(import.meta.url));
 // framework.businessRules.rules.stringParsing.dataStringParsing.
-const namespacePrefix =
-  wrd.cframework +
-  bas.cDot +
-  sys.cbusinessRules +
-  bas.cDot +
-  wrd.crules +
-  bas.cDot +
-  wrd.cstring +
-  wrd.cParsing +
-  bas.cDot +
-  baseFileName +
-  bas.cDot;
+const namespacePrefix = wrd.cframework + bas.cDot + sys.cbusinessRules + bas.cDot + wrd.crules + bas.cDot + wrd.cstring + wrd.cParsing + bas.cDot + baseFileName + bas.cDot;
 
 /**
  * @function getAttributeName
@@ -49,37 +35,19 @@ const namespacePrefix =
 async function getAttributeName(inputData, inputMetaData) {
   let functionName = getAttributeName.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  await loggers.consoleLog(
-    namespacePrefix + functionName,
-    msg.cinputDataIs + inputData,
-  );
-  await loggers.consoleLog(
-    namespacePrefix + functionName,
-    msg.cinputMetaDataIs + inputMetaData,
-  );
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = false;
   if (inputData) {
     let attributeArray = inputData.split(bas.cColon);
     // attributeArray is:
-    await loggers.consoleLog(
-      namespacePrefix + functionName,
-      msg.cattributeArrayIs + JSON.stringify(attributeArray),
-    );
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cattributeArrayIs + JSON.stringify(attributeArray));
     // attributeArray[0] is:
-    await loggers.consoleLog(
-      namespacePrefix + functionName,
-      msg.cattributeArray0Is + attributeArray[0],
-    );
-    returnData = await ruleParsing.processRulesInternal(
-      [attributeArray[0], [/"/g, ""]],
-      [biz.creplaceCharacterWithCharacter],
-    );
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cattributeArray0Is + attributeArray[0]);
+    returnData = await ruleParsing.processRulesInternal([attributeArray[0], [/"/g, '']], [biz.creplaceCharacterWithCharacter]);
     returnData = returnData.trim();
   } // End-if (inputData)
-  await loggers.consoleLog(
-    namespacePrefix + functionName,
-    msg.creturnDataIs + JSON.stringify(returnData),
-  );
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
@@ -96,37 +64,19 @@ async function getAttributeName(inputData, inputMetaData) {
 async function getAttributeValue(inputData, inputMetaData) {
   let functionName = getAttributeValue.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  await loggers.consoleLog(
-    namespacePrefix + functionName,
-    msg.cinputDataIs + inputData,
-  );
-  await loggers.consoleLog(
-    namespacePrefix + functionName,
-    msg.cinputMetaDataIs + inputMetaData,
-  );
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = false;
   if (inputData) {
     let attributeArray = inputData.split(bas.cColon);
     // attributeArray is:
-    await loggers.consoleLog(
-      namespacePrefix + functionName,
-      msg.cattributeArrayIs + attributeArray,
-    );
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cattributeArrayIs + attributeArray);
     // attributeArray[0] is:
-    await loggers.consoleLog(
-      namespacePrefix + functionName,
-      msg.cattributeArray1Is + attributeArray[1],
-    );
-    returnData = await ruleParsing.processRulesInternal(
-      [attributeArray[1], [/"/g, ""]],
-      [biz.creplaceCharacterWithCharacter],
-    );
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cattributeArray1Is + attributeArray[1]);
+    returnData = await ruleParsing.processRulesInternal([attributeArray[1], [/"/g, '']], [biz.creplaceCharacterWithCharacter]);
     returnData = returnData.trim();
   } // End-if (inputData)
-  await loggers.consoleLog(
-    namespacePrefix + functionName,
-    msg.creturnDataIs + JSON.stringify(returnData),
-  );
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
@@ -143,39 +93,16 @@ async function getAttributeValue(inputData, inputMetaData) {
 async function getValueFromAssignmentOperationString(inputData, inputMetaData) {
   let functionName = getValueFromAssignmentOperationString.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  await loggers.consoleLog(
-    namespacePrefix + functionName,
-    msg.cinputDataIs + inputData,
-  );
-  await loggers.consoleLog(
-    namespacePrefix + functionName,
-    msg.cinputMetaDataIs + inputMetaData,
-  );
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = false;
   if (inputData) {
     let parsedString = inputData.split(bas.cEqual);
-    await loggers.consoleLog(
-      namespacePrefix + functionName,
-      msg.cparsedStringSpaceTerm +
-        bas.cSpace +
-        num.c1 +
-        msg.cSpaceIsColonSpace +
-        parsedString[0],
-    );
-    await loggers.consoleLog(
-      namespacePrefix + functionName,
-      msg.cparsedStringSpaceTerm +
-        bas.cSpace +
-        num.c2 +
-        msg.cSpaceIsColonSpace +
-        parsedString[1],
-    );
-    returnData = parsedString[1].replace(/['"]+/g, "");
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cparsedStringSpaceTerm + bas.cSpace + num.c1 + msg.cSpaceIsColonSpace + parsedString[0]);
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cparsedStringSpaceTerm + bas.cSpace + num.c2 + msg.cSpaceIsColonSpace + parsedString[1]);
+    returnData = parsedString[1].replace(/['"]+/g, '');
   } // End-if (inputData)
-  await loggers.consoleLog(
-    namespacePrefix + functionName,
-    msg.creturnDataIs + returnData,
-  );
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
@@ -192,28 +119,16 @@ async function getValueFromAssignmentOperationString(inputData, inputMetaData) {
 async function getDataCategoryFromDataContextName(inputData, inputMetaData) {
   let functionName = getDataCategoryFromDataContextName.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  await loggers.consoleLog(
-    namespacePrefix + functionName,
-    msg.cinputDataIs + inputData,
-  );
-  await loggers.consoleLog(
-    namespacePrefix + functionName,
-    msg.cinputMetaDataIs + inputMetaData,
-  );
-  let returnData = "";
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
+  let returnData = '';
   if (inputData) {
     let dataCategory = inputData.split(bas.cUnderscore);
     returnData = dataCategory[0];
     // Data Category should be:
-    await loggers.consoleLog(
-      namespacePrefix + functionName,
-      msg.cDataCategoryShouldBe + dataCategory[0],
-    );
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cDataCategoryShouldBe + dataCategory[0]);
   } // End-if (inputData)
-  await loggers.consoleLog(
-    namespacePrefix + functionName,
-    msg.creturnDataIs + returnData,
-  );
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
@@ -228,34 +143,19 @@ async function getDataCategoryFromDataContextName(inputData, inputMetaData) {
  * @author Seth Hollingsead
  * @date 2022/01/24
  */
-async function getDataCategoryDetailNameFromDataContextName(
-  inputData,
-  inputMetaData,
-) {
+async function getDataCategoryDetailNameFromDataContextName(inputData, inputMetaData) {
   let functionName = getDataCategoryDetailNameFromDataContextName.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  await loggers.consoleLog(
-    namespacePrefix + functionName,
-    msg.cinputDataIs + inputData,
-  );
-  await loggers.consoleLog(
-    namespacePrefix + functionName,
-    msg.cinputMetaDataIs + inputMetaData,
-  );
-  let returnData = "";
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
+  let returnData = '';
   if (inputData) {
     let dataCategoryDetailName = inputData.split(bas.cUnderscore);
     returnData = dataCategoryDetailName[1];
     // Data Category Detail Name should be:
-    await loggers.consoleLog(
-      namespacePrefix + functionName,
-      msg.cDataCategoryDetailNameShouldBe + dataCategoryDetailName[1],
-    );
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cDataCategoryDetailNameShouldBe + dataCategoryDetailName[1]);
   } // End-if (inputData)
-  await loggers.consoleLog(
-    namespacePrefix + functionName,
-    msg.creturnDataIs + returnData,
-  );
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
@@ -273,28 +173,16 @@ async function getDataCategoryDetailNameFromDataContextName(
 async function getKeywordNameFromDataContextName(inputData, inputMetaData) {
   let functionName = getKeywordNameFromDataContextName.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  await loggers.consoleLog(
-    namespacePrefix + functionName,
-    msg.cinputDataIs + inputData,
-  );
-  await loggers.consoleLog(
-    namespacePrefix + functionName,
-    msg.cinputMetaDataIs + inputMetaData,
-  );
-  let returnData = "";
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
+  let returnData = '';
   if (inputData) {
     let dataCategoryKeywordName = inputData.split(bas.cUnderscore);
     returnData = dataCategoryKeywordName[2];
     // Keyword Name should be:
-    await loggers.consoleLog(
-      namespacePrefix + functionName,
-      msg.cKeywordNameShouldBe + dataCategoryKeywordName[2],
-    );
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cKeywordNameShouldBe + dataCategoryKeywordName[2]);
   } // End-if (inputData)
-  await loggers.consoleLog(
-    namespacePrefix + functionName,
-    msg.creturnDataIs + returnData,
-  );
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
@@ -311,94 +199,38 @@ async function getKeywordNameFromDataContextName(inputData, inputMetaData) {
 async function loadDataFile(inputData, inputMetaData) {
   let functionName = loadDataFile.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  await loggers.consoleLog(
-    namespacePrefix + functionName,
-    msg.cinputDataIs + inputData,
-  );
-  await loggers.consoleLog(
-    namespacePrefix + functionName,
-    msg.cinputMetaDataIs + inputMetaData,
-  );
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = false;
   if (!inputData) {
     // WARNING: No data to load, please specify a valid path & filename!
-    await loggers.consoleLog(
-      namespacePrefix + functionName,
-      msg.cLoadDataFileMessage1 + msg.cloadDataFileMessage2,
-    );
-  } else {
-    // Else-clause if (!inputData)
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cLoadDataFileMessage1 + msg.cloadDataFileMessage2);
+  } else { // Else-clause if (!inputData)
     let loadedData = {};
-    if (
-      inputData.includes(gen.cDotxml) ||
-      inputData.includes(gen.cDotXml) ||
-      inputData.includes(gen.cDotXML)
-    ) {
+    if (inputData.includes(gen.cDotxml) || inputData.includes(gen.cDotXml) || inputData.includes(gen.cDotXML)) {
       // Attempting to load XML data!
-      await loggers.consoleLog(
-        namespacePrefix + functionName,
-        msg.cAttemptingToLoadXmlData,
-      );
-      loadedData = await ruleParsing.processRulesInternal(
-        [inputData, ""],
-        [biz.cgetXmlData],
-      );
-    } else if (
-      inputData.includes(gen.cDotcsv) ||
-      inputData.includes(gen.cDotCsv) ||
-      inputData.includes(gen.cDotCSV)
-    ) {
+      await loggers.consoleLog(namespacePrefix + functionName, msg.cAttemptingToLoadXmlData);
+      loadedData = await ruleParsing.processRulesInternal([inputData, ''], [biz.cgetXmlData]);
+    } else if (inputData.includes(gen.cDotcsv) || inputData.includes(gen.cDotCsv) || inputData.includes(gen.cDotCSV)) {
       // Attempting to load CSV data!
-      await loggers.consoleLog(
-        namespacePrefix + functionName,
-        msg.cAttemptingToLoadCsvData,
-      );
-      loadedData = await ruleParsing.processRulesInternal(
-        [inputData, ""],
-        [biz.cgetCsvData],
-      );
-    } else if (
-      inputData.includes(gen.cDotjson) ||
-      inputData.includes(gen.cDotJson) ||
-      inputData.includes(gen.cDotJSON)
-    ) {
+      await loggers.consoleLog(namespacePrefix + functionName, msg.cAttemptingToLoadCsvData);
+      loadedData = await ruleParsing.processRulesInternal([inputData, ''], [biz.cgetCsvData]);
+    } else if (inputData.includes(gen.cDotjson) || inputData.includes(gen.cDotJson) || inputData.includes(gen.cDotJSON)) {
       // Attempting to load JSON data!
-      await loggers.consoleLog(
-        namespacePrefix + functionName,
-        msg.cAttemptingToLoadJsonData,
-      );
-      loadedData = await ruleParsing.processRulesInternal(
-        [inputData, ""],
-        [biz.cgetJsonData],
-      );
+      await loggers.consoleLog(namespacePrefix + functionName, msg.cAttemptingToLoadJsonData);
+      loadedData = await ruleParsing.processRulesInternal([inputData, ''], [biz.cgetJsonData]);
     } else {
       // WARNING: Invalid file format, file formats supported are:
-      await loggers.consoleLog(
-        namespacePrefix + functionName,
-        msg.cloadedDataFileMessage3 +
-          (await ruleParsing.processRulesInternal(
-            ["", ""],
-            [biz.csupportedFileFormatsAre],
-          )),
-      );
+      await loggers.consoleLog(namespacePrefix + functionName, msg.cloadedDataFileMessage3 + await ruleParsing.processRulesInternal(['', ''], [biz.csupportedFileFormatsAre]));
     }
     // Loaded data is:
-    await loggers.consoleLog(
-      namespacePrefix + functionName,
-      msg.cLoadedDataIs + JSON.stringify(loadedData),
-    );
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cLoadedDataIs + JSON.stringify(loadedData));
     returnData = loadedData;
     if (loadedData !== null && loadedData && inputMetaData) {
-      await ruleParsing.processRulesInternal(
-        [inputMetaData, loadedData],
-        [biz.cstoreData],
-      );
+      await ruleParsing.processRulesInternal([inputMetaData, loadedData], [biz.cstoreData]);
     }
   } // End-else-clause if (!inputData)
-  await loggers.consoleLog(
-    namespacePrefix + functionName,
-    msg.creturnDataIs + JSON.stringify(returnData),
-  );
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
@@ -415,67 +247,28 @@ async function loadDataFile(inputData, inputMetaData) {
 async function saveDataFile(inputData, inputMetaData) {
   let functionName = saveDataFile.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  await loggers.consoleLog(
-    namespacePrefix + functionName,
-    msg.cinputDataIs + inputData,
-  );
-  await loggers.consoleLog(
-    namespacePrefix + functionName,
-    msg.cinputMetaDataIs + inputMetaData,
-  );
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = false;
   if (!inputData) {
     // WARNING: No data to save, please specify a valid path & filename!
-    await loggers.consoleLog(
-      namespacePrefix + functionName,
-      msg.csaveDataFileMessage1 + msg.cloadDataFileMessage2,
-    );
+    await loggers.consoleLog(namespacePrefix + functionName, msg.csaveDataFileMessage1 + msg.cloadDataFileMessage2);
   } else {
-    let supportedFileFormats = await ruleParsing.processRulesInternal(
-      ["", ""],
-      [biz.csupportedFileFormatsAre],
-    );
-    if (
-      inputData.includes(gen.cDotxml) ||
-      inputData.includes(gen.cDotXml) ||
-      inputData.includes(gen.cDotXML)
-    ) {
+    let supportedFileFormats = await ruleParsing.processRulesInternal(['', ''], [biz.csupportedFileFormatsAre]);
+    if (inputData.includes(gen.cDotxml) || inputData.includes(gen.cDotXml) || inputData.includes(gen.cDotXML)) {
       // WARNING: Invalid file format, file formats supported are:
-      await loggers.consoleLog(
-        namespacePrefix + functionName,
-        msg.cloadedDataFileMessage3 + supportedFileFormats,
-      );
-    } else if (
-      inputData.includes(gen.cDotcsv) ||
-      inputData.includes(gen.cDotCsv) ||
-      inputData.includes(gen.cDotCSV)
-    ) {
+      await loggers.consoleLog(namespacePrefix + functionName, msg.cloadedDataFileMessage3 + supportedFileFormats);
+    } else if (inputData.includes(gen.cDotcsv) || inputData.includes(gen.cDotCsv) || inputData.includes(gen.cDotCSV)) {
       // WARNING: Invalid file format, file formats supported are:
-      await loggers.consoleLog(
-        namespacePrefix + functionName,
-        msg.cloadedDataFileMessage3 + supportedFileFormats,
-      );
-    } else if (
-      inputData.includes(gen.cDotjson) ||
-      inputData.includes(gen.cDotJson) ||
-      inputData.includes(gen.cDotJSON)
-    ) {
-      returnData = await ruleParsing.processRulesInternal(
-        [inputData, inputMetaData],
-        [biz.cwriteJsonData],
-      ); // Should return true if the write is successful.
+      await loggers.consoleLog(namespacePrefix + functionName, msg.cloadedDataFileMessage3 + supportedFileFormats);
+    } else if (inputData.includes(gen.cDotjson) || inputData.includes(gen.cDotJson) || inputData.includes(gen.cDotJSON)) {
+      returnData = await ruleParsing.processRulesInternal([inputData, inputMetaData], [biz.cwriteJsonData]); // Should return true if the write is successful.
     } else {
       // WARNING: Invalid file format, file formats supported are:
-      await loggers.consoleLog(
-        namespacePrefix + functionName,
-        msg.cloadedDataFileMessage3 + supportedFileFormats,
-      );
+      await loggers.consoleLog(namespacePrefix + functionName, msg.cloadedDataFileMessage3 + supportedFileFormats);
     }
   }
-  await loggers.consoleLog(
-    namespacePrefix + functionName,
-    msg.creturnDataIs + JSON.stringify(returnData),
-  );
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
@@ -492,29 +285,15 @@ async function saveDataFile(inputData, inputMetaData) {
 async function getUserNameFromEmail(inputData, inputMetaData) {
   let functionName = getUserNameFromEmail.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  await loggers.consoleLog(
-    namespacePrefix + functionName,
-    msg.cinputDataIs + inputData,
-  );
-  await loggers.consoleLog(
-    namespacePrefix + functionName,
-    msg.cinputMetaDataIs + inputMetaData,
-  );
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = false;
   if (inputData) {
-    await loggers.consoleLog(
-      namespacePrefix + functionName,
-      msg.cIndexOfTheSpace +
-        bas.cAt +
-        sys.cSpaceIsColonSpace +
-        inputData.indexOf(bas.cAt),
-    );
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cIndexOfTheSpace + bas.cAt +
+      sys.cSpaceIsColonSpace + inputData.indexOf(bas.cAt));
     returnData = inputData.substring(0, inputData.indexOf(bas.cAt));
   } // End-if (inputData)
-  await loggers.consoleLog(
-    namespacePrefix + functionName,
-    msg.creturnDataIs + returnData,
-  );
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
@@ -528,5 +307,5 @@ export default {
   getKeywordNameFromDataContextName,
   loadDataFile,
   saveDataFile,
-  getUserNameFromEmail,
+  getUserNameFromEmail
 };

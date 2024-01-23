@@ -1,51 +1,40 @@
 /**
- * @file advanced.js
- * @module advanced
- * @description Contains all of the advanced system commands.
- * @requires module:commandBroker
- * @requires module:ruleBroker
- * @requires module:workflowBroker
- * @requires module:configurator
- * @requires module:loggers
- * @requires module:data
- * @requires module:queue
- * @requires module:stack
- * @requires {@link https://www.npmjs.com/package/@haystacks/constants|@haystacks/constants}
- * @requires {@link https://www.npmjs.com/package/path|path}
- * @author Seth Hollingsead
- * @date 2022/02/04
- * @copyright Copyright © 2022-… by Seth Hollingsead. All rights reserved
- */
+* @file advanced.js
+* @module advanced
+* @description Contains all of the advanced system commands.
+* @requires module:commandBroker
+* @requires module:ruleBroker
+* @requires module:workflowBroker
+* @requires module:configurator
+* @requires module:loggers
+* @requires module:data
+* @requires module:queue
+* @requires module:stack
+* @requires {@link https://www.npmjs.com/package/@haystacks/constants|@haystacks/constants}
+* @requires {@link https://www.npmjs.com/package/path|path}
+* @author Seth Hollingsead
+* @date 2022/02/04
+* @copyright Copyright © 2022-… by Seth Hollingsead. All rights reserved
+*/
 
 // Internal imports
-import commandBroker from "../../brokers/commandBroker.js";
-import ruleBroker from "../../brokers/ruleBroker.js";
-import workflowBroker from "../../brokers/workflowBroker.js";
-import configurator from "../../executrix/configurator.js";
-import loggers from "../../executrix/loggers.js";
-import D from "../../structures/data.js";
-import queue from "../../structures/queue.js";
-import stack from "../../structures/stack.js";
+import commandBroker from '../../brokers/commandBroker.js';
+import ruleBroker from '../../brokers/ruleBroker.js';
+import workflowBroker from '../../brokers/workflowBroker.js';
+import configurator from '../../executrix/configurator.js';
+import loggers from '../../executrix/loggers.js';
+import D from '../../structures/data.js';
+import queue from '../../structures/queue.js';
+import stack from '../../structures/stack.js';
 
 // External imports
-import hayConst from "@haystacks/constants";
-import path from "path";
+import hayConst from '@haystacks/constants';
+import path from 'path';
 
-const { bas, biz, cfg, gen, msg, sys, wrd } = hayConst;
-const baseFileName = path.basename(
-  import.meta.url,
-  path.extname(import.meta.url),
-);
+const {bas, biz, cfg, gen, msg, sys, wrd} = hayConst;
+const baseFileName = path.basename(import.meta.url, path.extname(import.meta.url));
 // framework.commandsBlob.commands.advanced.
-const namespacePrefix =
-  wrd.cframework +
-  bas.cDot +
-  sys.ccommandsBlob +
-  bas.cDot +
-  wrd.ccommands +
-  bas.cDot +
-  baseFileName +
-  bas.cDot;
+const namespacePrefix = wrd.cframework + bas.cDot + sys.ccommandsBlob + bas.cDot + wrd.ccommands + bas.cDot + baseFileName + bas.cDot;
 
 /**
  * @function commandSequencer
@@ -67,14 +56,8 @@ const namespacePrefix =
 async function commandSequencer(inputData, inputMetaData) {
   let functionName = commandSequencer.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  await loggers.consoleLog(
-    namespacePrefix + functionName,
-    msg.cinputDataIs + JSON.stringify(inputData),
-  );
-  await loggers.consoleLog(
-    namespacePrefix + functionName,
-    msg.cinputMetaDataIs + inputMetaData,
-  );
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = [true, {}];
   let commandSuccess = true;
   // Initialize a temporary command queue that can be used to aggregate all of the commands that will be added to the official command queue.
@@ -82,83 +65,37 @@ async function commandSequencer(inputData, inputMetaData) {
   await queue.initQueue(sys.cCommandQueue + wrd.cTemp);
   for (let i = 1; i < inputData.length; i++) {
     let commandString = inputData[i];
-    let primaryCommandDelimiter = await configurator.getConfigurationSetting(
-      wrd.csystem,
-      cfg.cprimaryCommandDelimiter,
-    );
-    await loggers.consoleLog(
-      namespacePrefix + functionName,
-      msg.cprimaryCommandDelimiterIs + primaryCommandDelimiter,
-    );
-    if (
-      primaryCommandDelimiter === null ||
-      primaryCommandDelimiter !== primaryCommandDelimiter ||
-      primaryCommandDelimiter === undefined
-    ) {
+    let primaryCommandDelimiter = await configurator.getConfigurationSetting(wrd.csystem, cfg.cprimaryCommandDelimiter);
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cprimaryCommandDelimiterIs + primaryCommandDelimiter);
+    if (primaryCommandDelimiter === null || primaryCommandDelimiter !== primaryCommandDelimiter || primaryCommandDelimiter === undefined) {
       primaryCommandDelimiter = bas.cSpace;
     }
-    let secondaryCommandArgsDelimiter =
-      await configurator.getConfigurationSetting(
-        wrd.csystem,
-        cfg.csecondaryCommandDelimiter,
-      );
-    await loggers.consoleLog(
-      namespacePrefix + functionName,
-      msg.csecondaryCommandDelimiterIs + secondaryCommandArgsDelimiter,
-    );
-    let tertiaryCommandDelimiter = await configurator.getConfigurationSetting(
-      wrd.csystem,
-      cfg.ctertiaryCommandDelimiter,
-    );
-    await loggers.consoleLog(
-      namespacePrefix + functionName,
-      msg.ctertiaryCommandDelimiterIs + tertiaryCommandDelimiter,
-    );
+    let secondaryCommandArgsDelimiter = await configurator.getConfigurationSetting(wrd.csystem, cfg.csecondaryCommandDelimiter);
+    await loggers.consoleLog(namespacePrefix + functionName, msg.csecondaryCommandDelimiterIs + secondaryCommandArgsDelimiter);
+    let tertiaryCommandDelimiter = await configurator.getConfigurationSetting(wrd.csystem, cfg.ctertiaryCommandDelimiter);
+    await loggers.consoleLog(namespacePrefix + functionName, msg.ctertiaryCommandDelimiterIs + tertiaryCommandDelimiter);
     // Replace 2nd & rd level delimiters and down-increment them so we are dealing with command strings that can actually be executed.
     const regEx1 = new RegExp(secondaryCommandArgsDelimiter, bas.cg);
     commandString = commandString.replace(regEx1, primaryCommandDelimiter);
     if (commandString.includes(tertiaryCommandDelimiter)) {
       const regEx2 = new RegExp(tertiaryCommandDelimiter, bas.cg);
-      commandString = commandString.replace(
-        regEx2,
-        secondaryCommandArgsDelimiter,
-      );
+      commandString = commandString.replace(regEx2, secondaryCommandArgsDelimiter);
     }
-    let currentCommand = await commandBroker.getValidCommand(
-      commandString,
-      primaryCommandDelimiter,
-    );
-    let commandArgs = await commandBroker.getCommandArgs(
-      commandString,
-      primaryCommandDelimiter,
-    );
+    let currentCommand = await commandBroker.getValidCommand(commandString, primaryCommandDelimiter);
+    let commandArgs = await commandBroker.getCommandArgs(commandString, primaryCommandDelimiter);
     // We need to recompose the command arguments for the current command using the sys.cPrimaryCommandDelimiter.
     if (currentCommand !== false) {
       for (let j = 1; j < commandArgs.length; j++) {
-        currentCommand =
-          currentCommand + primaryCommandDelimiter + commandArgs[j];
+        currentCommand = currentCommand + primaryCommandDelimiter + commandArgs[j];
       } // End-for (let j = 1; j < commandArgs.length; j++)
-      await loggers.consoleLog(
-        namespacePrefix + functionName,
-        msg.ccommandSequencerCommandToEnqueueIs + currentCommand,
-      );
-      if (
-        (await configurator.getConfigurationSetting(
-          wrd.csystem,
-          cfg.clogAllCommands,
-        )) === true
-      ) {
+      await loggers.consoleLog(namespacePrefix + functionName, msg.ccommandSequencerCommandToEnqueueIs + currentCommand);
+      if (await configurator.getConfigurationSetting(wrd.csystem, cfg.clogAllCommands) === true) {
         await stack.push(sys.cSystemCommandLog, currentCommand);
       }
       await queue.enqueue(sys.cCommandQueue + wrd.cTemp, currentCommand);
-    } else {
-      // End-if (currentCommand !== false)
+    } else { // End-if (currentCommand !== false)
       // WARNING: advanced.commandSequencer: The specified command was not found, please enter a valid command and try again. <commandString>
-      let errorMessage =
-        msg.ccommandSequencerMessage1 +
-        msg.ccommandSequencerMessage2 +
-        bas.cSpace +
-        commandString;
+      let errorMessage = msg.ccommandSequencerMessage1 + msg.ccommandSequencerMessage2 + bas.cSpace + commandString;
       console.log(errorMessage);
       returnData[1] = errorMessage;
       commandSuccess = false;
@@ -166,17 +103,11 @@ async function commandSequencer(inputData, inputMetaData) {
   } // End-for (let i = 1; i < inputData.length; i++)
   // Now migrate the temporary command queue to the primary command queue,
   // pushing all command entities it to the front of the command queue.
-  await queue.enqueueFront(
-    sys.cCommandQueue,
-    await queue.queueContents(sys.cCommandQueue + wrd.cTemp),
-  );
+  await queue.enqueueFront(sys.cCommandQueue, await queue.queueContents(sys.cCommandQueue + wrd.cTemp));
   if (commandSuccess === true) {
     returnData[1] = commandSuccess;
   }
-  await loggers.consoleLog(
-    namespacePrefix + functionName,
-    msg.creturnDataIs + JSON.stringify(returnData),
-  );
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
@@ -200,14 +131,8 @@ async function commandSequencer(inputData, inputMetaData) {
 async function workflow(inputData, inputMetaData) {
   let functionName = workflow.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  await loggers.consoleLog(
-    namespacePrefix + functionName,
-    msg.cinputDataIs + JSON.stringify(inputData),
-  );
-  await loggers.consoleLog(
-    namespacePrefix + functionName,
-    msg.cinputMetaDataIs + inputMetaData,
-  );
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = [true, {}];
   let workflowName = inputData[1];
   let workflowValue = await workflowBroker.getWorkflow(workflowName);
@@ -218,19 +143,11 @@ async function workflow(inputData, inputMetaData) {
     // WARNING: advanced.workflow: The specified workflow:
     // was not found in either the system defined workflows, or client defined workflows.
     // Please enter a valid workflow name and try again.
-    let errorMessage =
-      msg.cworkflowMessage1 +
-      workflowName +
-      bas.cComa +
-      msg.cworkflowMessage2 +
-      msg.cworkflowMessage3;
+    let errorMessage = msg.cworkflowMessage1 + workflowName + bas.cComa + msg.cworkflowMessage2 + msg.cworkflowMessage3;
     console.log(errorMessage);
     returnData[1] = errorMessage;
   }
-  await loggers.consoleLog(
-    namespacePrefix + functionName,
-    msg.creturnDataIs + JSON.stringify(returnData),
-  );
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
@@ -264,72 +181,42 @@ async function workflow(inputData, inputMetaData) {
 async function businessRule(inputData, inputMetaData) {
   let functionName = businessRule.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  await loggers.consoleLog(
-    namespacePrefix + functionName,
-    msg.cinputDataIs + JSON.stringify(inputData),
-  );
-  await loggers.consoleLog(
-    namespacePrefix + functionName,
-    msg.cinputMetaDataIs + inputMetaData,
-  );
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = [true, {}];
   let rules = [];
   let ruleInputData, ruleInputMetaData;
-  let ruleOutput = "";
-  let businessRuleOutput = await configurator.getConfigurationSetting(
-    wrd.csystem,
-    cfg.cenableBusinessRuleOutput,
-  );
-  let businessRuleMetricsEnabled = await configurator.getConfigurationSetting(
-    wrd.csystem,
-    cfg.cenableBusinessRulePerformanceMetrics,
-  );
-  let businessRuleStartTime = "";
-  let businessRuleEndTime = "";
-  let businessRuleDeltaTime = "";
+  let ruleOutput = '';
+  let businessRuleOutput = await configurator.getConfigurationSetting(wrd.csystem, cfg.cenableBusinessRuleOutput);
+  let businessRuleMetricsEnabled = await configurator.getConfigurationSetting(wrd.csystem, cfg.cenableBusinessRulePerformanceMetrics);
+  let businessRuleStartTime = '';
+  let businessRuleEndTime = '';
+  let businessRuleDeltaTime = '';
 
   // First go through each rule that should be executed and determine if
   // there are any inputs that need to be passed into the business rule.
   for (let i = 1; i < inputData.length; i++) {
     // Begin the i-th iteration fo the inputData array. i is:
-    await loggers.consoleLog(
-      namespacePrefix + functionName,
-      msg.cBEGIN_theIthIterationOfInputDataArray + i,
-    );
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_theIthIterationOfInputDataArray + i);
     let currentRuleArg = inputData[i]; // Check to see if this rule has inputs separate from the rule name.
     // currentRule is:
-    await loggers.consoleLog(
-      namespacePrefix + functionName,
-      msg.ccurrentRuleIs + JSON.stringify(currentRuleArg),
-    );
+    await loggers.consoleLog(namespacePrefix + functionName, msg.ccurrentRuleIs + JSON.stringify(currentRuleArg));
     if (i === 1) {
       // rules = lexical.parseBusinessRuleArgument(currentRuleArg, i);
-      rules = await ruleBroker.processRules(
-        [currentRuleArg, i],
-        [biz.cparseBusinessRuleArgument],
-      );
+      rules = await ruleBroker.processRules([currentRuleArg, i], [biz.cparseBusinessRuleArgument]);
     } else if (i === 2) {
       // ruleInputData = lexical.parseBusinessRuleArgument(currentRuleArg, i);
-      ruleInputData = await ruleBroker.processRules(
-        [currentRuleArg, i],
-        [biz.cparseBusinessRuleArgument],
-      );
+      ruleInputData = await ruleBroker.processRules([currentRuleArg, i], [biz.cparseBusinessRuleArgument]);
     } else if (i === 3 && inputData.length <= 4) {
       // ruleInputMetaData = lexical.parseBusinessRuleArgument(currentRuleArg, i);
-      ruleInputMetaData = await ruleBroker.processRules(
-        [currentRuleArg, i],
-        [biz.cparseBusinessRuleArgument],
-      );
+      ruleInputMetaData = await ruleBroker.processRules([currentRuleArg, i], [biz.cparseBusinessRuleArgument]);
     } else if (i === 3 && inputData.length > 4) {
       // // In this case all of the arguments will have been combined into a single array and added to the ruleInputData.
       ruleInputMetaData = [];
       for (let j = 3; j <= inputData.length - 1; j++) {
         let currentRuleArrayArg = inputData[j];
         // let tempArg = lexical.parseBusinessRuleArgument(currentRuleArrayArg, j);
-        let tempArg = await ruleBroker.processRules(
-          [currentRuleArrayArg, j],
-          [biz.cparseBusinessRuleArgument],
-        );
+        let tempArg = await ruleBroker.processRules([currentRuleArrayArg, j], [biz.cparseBusinessRuleArgument]);
         // console.log('tempArg is: ' + tempArg);
         if (tempArg) {
           ruleInputMetaData.push(tempArg);
@@ -339,60 +226,30 @@ async function businessRule(inputData, inputMetaData) {
     } // End-Else-if (i === 3 && inputData.length > 4)
   } // End-for (let i = 1; i < inputData.length; i++)
   // rules is:
-  await loggers.consoleLog(
-    namespacePrefix + functionName,
-    msg.crulesIs + JSON.stringify(rules),
-  );
+  await loggers.consoleLog(namespacePrefix + functionName, msg.crulesIs + JSON.stringify(rules));
   // ruleInputData is:
-  await loggers.consoleLog(
-    namespacePrefix + functionName,
-    msg.cruleInputDataIs + ruleInputData,
-  );
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cruleInputDataIs + ruleInputData);
   // ruleInputMetaData is:
-  await loggers.consoleLog(
-    namespacePrefix + functionName,
-    msg.cruleInputMetaData + JSON.stringify(ruleInputMetaData),
-  );
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cruleInputMetaData + JSON.stringify(ruleInputMetaData));
   if (businessRuleMetricsEnabled === true) {
     // Here we will capture the start time of the business rule we are about to execute.
     // After executing we will capture the end time and then
     // compare the difference to determine how many milliseconds it took to run the business rule.
-    businessRuleStartTime = await ruleBroker.processRules(
-      [gen.cYYYYMMDD_HHmmss_SSS, ""],
-      [biz.cgetNowMoment],
-    );
+    businessRuleStartTime = await ruleBroker.processRules([gen.cYYYYMMDD_HHmmss_SSS, ''], [biz.cgetNowMoment]);
     // Business Rule Start time is:
-    await loggers.consoleLog(
-      namespacePrefix + functionName,
-      msg.cBusinessRuleStartTimeIs + businessRuleStartTime,
-    );
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cBusinessRuleStartTimeIs + businessRuleStartTime);
   } // End-if (businessRuleMetricsEnabled === true)
-  ruleOutput = await ruleBroker.processRules(
-    [ruleInputData, ruleInputMetaData],
-    rules,
-  );
+  ruleOutput = await ruleBroker.processRules([ruleInputData, ruleInputMetaData], rules);
   returnData[1] = ruleOutput;
   if (businessRuleMetricsEnabled === true) {
     let performanceTrackingObject = {};
-    businessRuleEndTime = await ruleBroker.processRules(
-      [gen.cYYYYMMDD_HHmmss_SSS, ""],
-      [biz.cgetNowMoment],
-    );
+    businessRuleEndTime = await ruleBroker.processRules([gen.cYYYYMMDD_HHmmss_SSS, ''], [biz.cgetNowMoment]);
     // BusinessRule End time is:
-    await loggers.consoleLog(
-      namespacePrefix + functionName,
-      msg.cBusinessRuleEndTimeIs + businessRuleEndTime,
-    );
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cBusinessRuleEndTimeIs + businessRuleEndTime);
     // Now compute the delta time so we know how long it took to run that business rule.
-    businessRuleDeltaTime = await ruleBroker.processRules(
-      [businessRuleStartTime, businessRuleEndTime],
-      [biz.ccomputeDeltaTime],
-    );
+    businessRuleDeltaTime = await ruleBroker.processRules([businessRuleStartTime, businessRuleEndTime], [biz.ccomputeDeltaTime]);
     // BusinessRule run-time is:
-    await loggers.consoleLog(
-      namespacePrefix + functionName,
-      msg.cBusinessRuleRunTimeIs + businessRuleDeltaTime,
-    );
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cBusinessRuleRunTimeIs + businessRuleDeltaTime);
     // Check to make sure the business rule performance tracking stack exists or does not exist.
     if (D[cfg.cbusinessRulesPerformanceTrackingStack] === undefined) {
       await stack.initStack(cfg.cbusinessRulesPerformanceTrackingStack);
@@ -400,25 +257,11 @@ async function businessRule(inputData, inputMetaData) {
     if (D[cfg.cbusinessRulesNamesPerformanceTrackingStack] === undefined) {
       await stack.initStack(cfg.cbusinessRulesNamesPerformanceTrackingStack);
     }
-    performanceTrackingObject = {
-      Name: rules[0],
-      RunTime: businessRuleDeltaTime,
-    };
-    if (
-      (await stack.contains(
-        cfg.cbusinessRulesNamesPerformanceTrackingStack,
-        rules[0],
-      )) === false
-    ) {
-      await stack.push(
-        cfg.cbusinessRulesNamesPerformanceTrackingStack,
-        rules[0],
-      );
+    performanceTrackingObject = {Name: rules[0], RunTime: businessRuleDeltaTime};
+    if (await stack.contains(cfg.cbusinessRulesNamesPerformanceTrackingStack, rules[0]) === false) {
+      await stack.push(cfg.cbusinessRulesNamesPerformanceTrackingStack, rules[0]);
     }
-    await stack.push(
-      cfg.cbusinessRulesPerformanceTrackingStack,
-      performanceTrackingObject,
-    );
+    await stack.push(cfg.cbusinessRulesPerformanceTrackingStack, performanceTrackingObject);
     // stack.print(cfg.cBusinessRulePerformanceTrackingStack);
     // stack.print(cfg.cBusinessRuleNamesPerformanceTrackingStack);
   } // End-if (businessRuleMetricsEnabled === true)
@@ -426,10 +269,7 @@ async function businessRule(inputData, inputMetaData) {
     // Rule output is:
     console.log(msg.cRuleOutputIs + JSON.stringify(ruleOutput));
   }
-  await loggers.consoleLog(
-    namespacePrefix + functionName,
-    msg.creturnDataIs + JSON.stringify(returnData),
-  );
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
@@ -453,39 +293,19 @@ async function businessRule(inputData, inputMetaData) {
 async function commandGenerator(inputData, inputMetaData) {
   let functionName = commandGenerator.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  await loggers.consoleLog(
-    namespacePrefix + functionName,
-    msg.cinputDataIs + JSON.stringify(inputData),
-  );
-  await loggers.consoleLog(
-    namespacePrefix + functionName,
-    msg.cinputMetaDataIs + inputMetaData,
-  );
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = [true, {}];
-  let errorMessage = "";
+  let errorMessage = '';
   let legitNumberIndex = -1;
   let replaceCharacterWithCharacterRule = [biz.creplaceCharacterWithCharacter];
-  let primaryCommandDelimiter = await configurator.getConfigurationSetting(
-    wrd.csystem,
-    cfg.cprimaryCommandDelimiter,
-  );
-  if (
-    primaryCommandDelimiter === null ||
-    primaryCommandDelimiter !== primaryCommandDelimiter ||
-    primaryCommandDelimiter === undefined
-  ) {
+  let primaryCommandDelimiter = await configurator.getConfigurationSetting(wrd.csystem, cfg.cprimaryCommandDelimiter);
+  if (primaryCommandDelimiter === null || primaryCommandDelimiter !== primaryCommandDelimiter || primaryCommandDelimiter === undefined) {
     primaryCommandDelimiter = bas.cSpace;
   }
-  let secondaryCommandArgsDelimiter =
-    await configurator.getConfigurationSetting(
-      wrd.csystem,
-      cfg.csecondaryCommandDelimiter,
-    );
-  let tertiaryCommandDelimiter = await configurator.getConfigurationSetting(
-    wrd.csystem,
-    cfg.ctertiaryCommandDelimiter,
-  );
-  let commandString = "";
+  let secondaryCommandArgsDelimiter = await configurator.getConfigurationSetting(wrd.csystem, cfg.csecondaryCommandDelimiter);
+  let tertiaryCommandDelimiter = await configurator.getConfigurationSetting(wrd.csystem, cfg.ctertiaryCommandDelimiter);
+  let commandString = '';
   if (inputData.length === 3) {
     commandString = inputData[1];
   } else if (inputData.length >= 4) {
@@ -493,11 +313,7 @@ async function commandGenerator(inputData, inputMetaData) {
       if (i === 1) {
         commandString = inputData[1];
       } else {
-        commandString =
-          commandString +
-          bas.cBackTickQuote +
-          inputData[i].trim() +
-          bas.cBackTickQuote;
+        commandString = commandString + bas.cBackTickQuote + inputData[i].trim() + bas.cBackTickQuote;
       }
     } // End-for (let i = 1; i < inputData.length - 1; i++)
   }
@@ -510,54 +326,23 @@ async function commandGenerator(inputData, inputMetaData) {
   // commandString = commandString.replace(secondaryCommandArgsDelimiter, primaryCommandDelimiter);
   // commandString = commandString.replace(tertiaryCommandDelimiter, secondaryCommandArgsDelimiter);
   // commandString before attempted delimiter swap is:
-  await loggers.consoleLog(
-    namespacePrefix + functionName,
-    msg.ccommandStringBeforeAttemptedDelimiterSwapIs + commandString,
-  );
+  await loggers.consoleLog(namespacePrefix + functionName, msg.ccommandStringBeforeAttemptedDelimiterSwapIs + commandString);
   // replaceCharacterWithCharacterRule is:
-  await loggers.consoleLog(
-    namespacePrefix + functionName,
-    msg.creplaceCharacterWithCharacterRuleIs +
-      JSON.stringify(replaceCharacterWithCharacterRule),
-  );
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creplaceCharacterWithCharacterRuleIs + JSON.stringify(replaceCharacterWithCharacterRule));
   // let secondaryCommandDelimiterRegEx = new RegExp(bas.cBackSlash + secondaryCommandArgsDelimiter, bas.cg);
   // let secondaryCommandDelimiterRegEx = new RegExp(`[${secondaryCommandArgsDelimiter}]`, bas.cg);
-  commandString = await ruleBroker.processRules(
-    [commandString, [secondaryCommandArgsDelimiter, primaryCommandDelimiter]],
-    replaceCharacterWithCharacterRule,
-  );
+  commandString = await ruleBroker.processRules([commandString, [secondaryCommandArgsDelimiter, primaryCommandDelimiter]], replaceCharacterWithCharacterRule);
   // After attempting to replace the secondaryCommandArgsDelimiter with the primaryCommandDelimiter commandString is:
-  await loggers.consoleLog(
-    namespacePrefix + functionName,
-    msg.ccommandGeneratorMessage1 + commandString,
-  );
+  await loggers.consoleLog(namespacePrefix + functionName, msg.ccommandGeneratorMessage1 + commandString);
   // let tertiaryCommandDelimiterRegEx = new RegExp(bas.cBackSlash + tertiaryCommandDelimiter, bas.cg);
   // let tertiaryCommandDelimiterRegEx = new RegExp(`[${tertiaryCommandDelimiter}]`, bas.cg);
-  commandString = await ruleBroker.processRules(
-    [commandString, [tertiaryCommandDelimiter, secondaryCommandArgsDelimiter]],
-    replaceCharacterWithCharacterRule,
-  );
+  commandString = await ruleBroker.processRules([commandString, [tertiaryCommandDelimiter, secondaryCommandArgsDelimiter]], replaceCharacterWithCharacterRule);
   // After attempting to replace the teriaryCommandDelimiter with the secondaryCommandArgsDelimiter commandString is:
-  await loggers.consoleLog(
-    namespacePrefix + functionName,
-    msg.ccommandGeneratorMessage2 + commandString,
-  );
-  let currentCommand = await commandBroker.getValidCommand(
-    commandString,
-    primaryCommandDelimiter,
-  );
-  let commandArgs = await commandBroker.getCommandArgs(
-    commandString,
-    primaryCommandDelimiter,
-  );
-  await loggers.consoleLog(
-    namespacePrefix + functionName,
-    msg.ccurrentCommandIs + currentCommand,
-  );
-  await loggers.consoleLog(
-    namespacePrefix + functionName,
-    msg.ccommandArgsIs + JSON.stringify(commandArgs),
-  );
+  await loggers.consoleLog(namespacePrefix + functionName, msg.ccommandGeneratorMessage2 + commandString);
+  let currentCommand = await commandBroker.getValidCommand(commandString, primaryCommandDelimiter);
+  let commandArgs = await commandBroker.getCommandArgs(commandString, primaryCommandDelimiter);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.ccurrentCommandIs + currentCommand);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.ccommandArgsIs + JSON.stringify(commandArgs));
   if (currentCommand !== false) {
     if (inputData.length >= 3) {
       for (let j = 2; j <= inputData.length - 1; j++) {
@@ -567,8 +352,7 @@ async function commandGenerator(inputData, inputMetaData) {
         } // End-if (isNaN(inputData[j].trim()) === false)
       } // End-for (let j = 2; j <= inputData.length - 1; j++)
     } // End-if (inputData.length >= 3)
-    if (isNaN(inputData[legitNumberIndex]) === false) {
-      // Make sure the user passed in a number for the second argument.
+    if (isNaN(inputData[legitNumberIndex]) === false) { // Make sure the user passed in a number for the second argument.
       let numberOfCommands = parseInt(inputData[legitNumberIndex]);
       if (numberOfCommands > 0) {
         await queue.initQueue(sys.cCommandQueue + wrd.cTemp);
@@ -577,15 +361,8 @@ async function commandGenerator(inputData, inputMetaData) {
         } // End-for (let i = 0; i < numberOfCommands; i++)
         // Now migrate the temporary command queue to the primary command queue,
         // pushing all command entities it to the front of the command queue.
-        let commandToQueue = await queue.queueContents(
-          sys.cCommandQueue + wrd.cTemp,
-        );
-        if (
-          (await configurator.getConfigurationSetting(
-            wrd.csystem,
-            cfg.clogAllCommands,
-          )) === true
-        ) {
+        let commandToQueue = await queue.queueContents(sys.cCommandQueue + wrd.cTemp);
+        if (await configurator.getConfigurationSetting(wrd.csystem, cfg.clogAllCommands) === true) {
           await stack.push(sys.cSystemCommandLog, commandToQueue);
         }
         await queue.enqueueFront(sys.cCommandQueue, commandToQueue);
@@ -605,17 +382,11 @@ async function commandGenerator(inputData, inputMetaData) {
   } else {
     // WARNING: advanced.commandGenerator: The specified command:
     // was not found, please enter a valid command and try again.
-    errorMessage =
-      msg.ccommandGeneratorMessage5 +
-      commandString +
-      msg.ccommandGeneratorMessage6;
+    errorMessage = msg.ccommandGeneratorMessage5 + commandString + msg.ccommandGeneratorMessage6;
     console.log(errorMessage);
     returnData[1] = errorMessage;
   }
-  await loggers.consoleLog(
-    namespacePrefix + functionName,
-    msg.creturnDataIs + JSON.stringify(returnData),
-  );
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
@@ -642,17 +413,11 @@ async function commandGenerator(inputData, inputMetaData) {
 async function commandAliasGenerator(inputData, inputMetaData) {
   let functionName = commandAliasGenerator.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  await loggers.consoleLog(
-    namespacePrefix + functionName,
-    msg.cinputDataIs + JSON.stringify(inputData),
-  );
-  await loggers.consoleLog(
-    namespacePrefix + functionName,
-    msg.cinputMetaDataIs + inputMetaData,
-  );
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = [true, {}];
-  let commandName = "";
-  let commandWordAliasList = "";
+  let commandName = '';
+  let commandWordAliasList = '';
   let validCommandName = false;
   let validCommandWordAliasList = false;
   let validCommandInput = false;
@@ -669,55 +434,35 @@ async function commandAliasGenerator(inputData, inputMetaData) {
       console.log(msg.cCommandNamePrompt3);
       console.log(msg.cCommandNamePrompt4);
       console.log(msg.cCommandNamePrompt5);
-      commandName = await ruleBroker.processRules(
-        [bas.cGreaterThan, ""],
-        [biz.cprompt],
-      );
-      validCommandName = await ruleBroker.processRules(
-        [commandName, ""],
-        [biz.cisValidCommandNameString],
-      );
+      commandName = await ruleBroker.processRules([bas.cGreaterThan, ''], [biz.cprompt]);
+      validCommandName = await ruleBroker.processRules([commandName, ''], [biz.cisValidCommandNameString]);
       if (validCommandName === false) {
         // INVALID INPUT: Please enter a valid camel-case command name.
         console.log(msg.ccommandAliasGeneratorMessage3);
       } // End-if (validCommandName === false)
     } // End-while (validCommandName === false)
 
-    let camelCaseCommandNameArray = await ruleBroker.processRules(
-      [commandName, ""],
-      [biz.cconvertCamelCaseStringToArray],
-    );
+    let camelCaseCommandNameArray = await ruleBroker.processRules([commandName, ''], [biz.cconvertCamelCaseStringToArray]);
     // camelCaseCommandNameArray is:
-    await loggers.consoleLog(
-      namespacePrefix + functionName,
-      msg.ccamelCaseCommandNameArrayIs +
-        JSON.stringify(camelCaseCommandNameArray),
-    );
+    await loggers.consoleLog(namespacePrefix + functionName, msg.ccamelCaseCommandNameArrayIs + JSON.stringify(camelCaseCommandNameArray));
 
     for (const element of camelCaseCommandNameArray) {
       let commandWord = element;
       // current commandWord is:
       console.log(msg.ccurrentCommandWordIs + commandWord);
       validCommandWordAliasList = false;
-      if (commandWord !== "") {
+      if (commandWord !== '') {
         commandAliasDataStructure[commandWord] = {};
         while (validCommandWordAliasList === false) {
           console.log(msg.cCommandWordAliasPrompt1);
           console.log(msg.cCommandWordAliasPrompt2);
           console.log(msg.cCommandWordAliasPrompt3 + bas.cSpace + commandWord);
-          commandWordAliasList = await ruleBroker.processRules(
-            [bas.cGreaterThan, ""],
-            [biz.cprompt],
-          );
-          validCommandWordAliasList = await ruleBroker.processRules(
-            [commandWordAliasList, ""],
-            [biz.cisStringList],
-          );
+          commandWordAliasList = await ruleBroker.processRules([bas.cGreaterThan, ''], [biz.cprompt]);
+          validCommandWordAliasList = await ruleBroker.processRules([commandWordAliasList, ''], [biz.cisStringList]);
           if (validCommandWordAliasList === false) {
             // INVALID INPUT: Please enter a valid command word alias list.
             console.log(msg.ccommandAliasGeneratorMessage4);
-          } else if (commandWordAliasList !== "") {
-            // As long as the user entered something we should be able to proceed!
+          } else if (commandWordAliasList !== '') { // As long as the user entered something we should be able to proceed!
             validCommandWordAliasList = true;
           }
         } // End-while (validCommandWordAliasList === false)
@@ -748,22 +493,12 @@ async function commandAliasGenerator(inputData, inputMetaData) {
 
   if (validCommandInput === true) {
     // commandAliasDataStructure is:
-    await loggers.consoleLog(
-      namespacePrefix + functionName,
-      msg.ccommandAliasDataStructureIs +
-        JSON.stringify(commandAliasDataStructure),
-    );
+    await loggers.consoleLog(namespacePrefix + functionName, msg.ccommandAliasDataStructureIs + JSON.stringify(commandAliasDataStructure));
     // At this point the user should have entered all valid data and we should be ready to proceed.
     // Pass the data object to a business rule to do the above task.
-    returnData[1] = await ruleBroker.processRules(
-      [commandAliasDataStructure, ""],
-      [biz.cgenerateCommandAliases],
-    );
+    returnData[1] = await ruleBroker.processRules([commandAliasDataStructure, ''], [biz.cgenerateCommandAliases]);
   } // End-if (validCommandInput === true)
-  await loggers.consoleLog(
-    namespacePrefix + functionName,
-    msg.creturnDataIs + JSON.stringify(returnData),
-  );
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
@@ -773,5 +508,5 @@ export default {
   workflow,
   businessRule,
   commandGenerator,
-  commandAliasGenerator,
+  commandAliasGenerator
 };

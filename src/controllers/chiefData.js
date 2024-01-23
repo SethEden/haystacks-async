@@ -15,26 +15,17 @@
  */
 
 // Internal imports
-import dataBroker from "../brokers/dataBroker.js";
-import configurator from "../executrix/configurator.js";
-import loggers from "../executrix/loggers.js";
+import dataBroker from '../brokers/dataBroker.js';
+import configurator from '../executrix/configurator.js';
+import loggers from '../executrix/loggers.js';
 // External imports
-import hayConst from "@haystacks/constants";
-import path from "path";
+import hayConst from '@haystacks/constants';
+import path from 'path';
 
-const { bas, cfg, msg, sys, wrd } = hayConst;
-const baseFileName = path.basename(
-  import.meta.url,
-  path.extname(import.meta.url),
-);
+const {bas, cfg, msg, sys, wrd} = hayConst;
+const baseFileName = path.basename(import.meta.url, path.extname(import.meta.url));
 // framework.controllers.chiefData.
-const namespacePrefix =
-  wrd.cframework +
-  bas.cDot +
-  wrd.ccontrollers +
-  bas.cDot +
-  baseFileName +
-  bas.cDot;
+const namespacePrefix = wrd.cframework + bas.cDot + wrd.ccontrollers + bas.cDot + baseFileName + bas.cDot;
 
 /**
  * @function searchForUniversalDebugConfigSetting
@@ -50,49 +41,24 @@ const namespacePrefix =
  * @author Seth Hollingsead
  * @date 2022/01/18
  */
-async function searchForUniversalDebugConfigSetting(
-  appConfigPathName,
-  frameworkConfigPathName,
-) {
+async function searchForUniversalDebugConfigSetting(appConfigPathName, frameworkConfigPathName) {
   // let functionName = searchForUniversalDebugConfigSetting.name;
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   // console.log(`appConfigPathName is: ${appConfigPathName}`);
   // console.log(`frameworkConfigPathName is: ${frameworkConfigPathName}`);
   let universalDebugConfigSetting = false;
-  let appConfigDataPath = await configurator.getConfigurationSetting(
-    wrd.csystem,
-    appConfigPathName,
-  );
-  let frameworkConfigDataPath = await configurator.getConfigurationSetting(
-    wrd.csystem,
-    frameworkConfigPathName,
-  );
+  let appConfigDataPath = await configurator.getConfigurationSetting(wrd.csystem, appConfigPathName);
+  let frameworkConfigDataPath = await configurator.getConfigurationSetting(wrd.csystem, frameworkConfigPathName);
   appConfigDataPath = path.resolve(appConfigDataPath);
   frameworkConfigDataPath = path.resolve(frameworkConfigDataPath);
   let appConfigFilesToLoad = await dataBroker.scanDataPath(appConfigDataPath);
-  let frameworkConfigFilesToLoad = await dataBroker.scanDataPath(
-    frameworkConfigDataPath,
+  let frameworkConfigFilesToLoad = await dataBroker.scanDataPath(frameworkConfigDataPath);
+  await configurator.setConfigurationSetting(wrd.csystem, cfg.cappConfigFiles, appConfigFilesToLoad);
+  await configurator.setConfigurationSetting(wrd.csystem, cfg.cframeworkConfigFiles, frameworkConfigFilesToLoad);
+  universalDebugConfigSetting = await dataBroker.findUniversalDebugConfigSetting(
+    appConfigFilesToLoad, frameworkConfigFilesToLoad
   );
-  await configurator.setConfigurationSetting(
-    wrd.csystem,
-    cfg.cappConfigFiles,
-    appConfigFilesToLoad,
-  );
-  await configurator.setConfigurationSetting(
-    wrd.csystem,
-    cfg.cframeworkConfigFiles,
-    frameworkConfigFilesToLoad,
-  );
-  universalDebugConfigSetting =
-    await dataBroker.findUniversalDebugConfigSetting(
-      appConfigFilesToLoad,
-      frameworkConfigFilesToLoad,
-    );
-  await configurator.setConfigurationSetting(
-    wrd.csystem,
-    cfg.cdebugSettings,
-    universalDebugConfigSetting,
-  );
+  await configurator.setConfigurationSetting(wrd.csystem, cfg.cdebugSettings, universalDebugConfigSetting);
   // console.log(`universalDebugConfigSetting is: ${universalDebugConfigSetting}`);
   // console.log(`END ${namespacePrefix}${functionName} function`);
   return universalDebugConfigSetting;
@@ -111,22 +77,13 @@ async function getAndProcessCsvData(pathAndFilename, contextName) {
   let functionName = getAndProcessCsvData.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // pathAndFilename is:
-  await loggers.consoleLog(
-    namespacePrefix + functionName,
-    msg.cpathAndFilenameIs + pathAndFilename,
-  );
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cpathAndFilenameIs + pathAndFilename);
   // contextName is:
-  await loggers.consoleLog(
-    namespacePrefix + functionName,
-    msg.ccontextNameIs + contextName,
-  );
+  await loggers.consoleLog(namespacePrefix + functionName, msg.ccontextNameIs + contextName);
   pathAndFilename = path.resolve(pathAndFilename);
   let loadedData = await dataBroker.getCsvData(pathAndFilename);
   // Now pre-process the data into a usable format, string-numbers to actual numbers, string-booleans to actual booleans, etc...
-  let allLoadedData = await dataBroker.getAndProcessCsvData(
-    loadedData,
-    contextName,
-  );
+  let allLoadedData = await dataBroker.getAndProcessCsvData(loadedData, contextName);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return allLoadedData;
 }
@@ -143,19 +100,13 @@ async function getAndProcessXmlData(pathAndFilename) {
   let functionName = getAndProcessXmlData.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // pathAndFilename is:
-  await loggers.consoleLog(
-    namespacePrefix + functionName,
-    msg.cpathAndFilenameIs + pathAndFilename,
-  );
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cpathAndFilenameIs + pathAndFilename);
   pathAndFilename = path.resolve(pathAndFilename);
   let allLoadedXmlData = await dataBroker.getXmlData(pathAndFilename);
   // Now pre-process the data into a usable format, string-numbers to actual numbers, string-booleans to actual booleans, etc...
   let allXmlData = await dataBroker.processXmlData(allLoadedXmlData);
   // allXmlData is:
-  await loggers.consoleLog(
-    namespacePrefix + functionName,
-    msg.callXmlDataIs + JSON.stringify(allXmlData),
-  );
+  await loggers.consoleLog(namespacePrefix + functionName, msg.callXmlDataIs + JSON.stringify(allXmlData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return allXmlData;
 }
@@ -173,42 +124,20 @@ async function setupAllCsvData(dataPathConfigurationName, contextName) {
   let functionName = setupAllCsvData.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // dataPathConfigurationName is:
-  await loggers.consoleLog(
-    namespacePrefix + functionName,
-    msg.cdataPathConfigurationNameIs + dataPathConfigurationName,
-  );
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cdataPathConfigurationNameIs + dataPathConfigurationName);
   // contextName is:
-  await loggers.consoleLog(
-    namespacePrefix + functionName,
-    msg.ccontextNameIs + contextName,
-  );
+  await loggers.consoleLog(namespacePrefix + functionName, msg.ccontextNameIs + contextName);
   let loadedAndMergedDataAllFiles = {};
-  let dataPath = await configurator.getConfigurationSetting(
-    wrd.csystem,
-    dataPathConfigurationName,
-  );
+  let dataPath = await configurator.getConfigurationSetting(wrd.csystem, dataPathConfigurationName);
   dataPath = path.resolve(dataPath);
   // dataPath is:
-  await loggers.consoleLog(
-    namespacePrefix + functionName,
-    msg.cdataPathIs + dataPath,
-  );
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cdataPathIs + dataPath);
   let filesToLoad = await dataBroker.scanDataPath(dataPath);
   // filesToLoad is:
-  await loggers.consoleLog(
-    namespacePrefix + functionName,
-    msg.cfilesToLoadIs + JSON.stringify(filesToLoad),
-  );
-  loadedAndMergedDataAllFiles = await dataBroker.loadAllCsvData(
-    filesToLoad,
-    contextName,
-  );
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cfilesToLoadIs + JSON.stringify(filesToLoad));
+  loadedAndMergedDataAllFiles = await dataBroker.loadAllCsvData(filesToLoad, contextName);
   // loadedAndMergedDataAllFiles is:
-  await loggers.consoleLog(
-    namespacePrefix + functionName,
-    msg.cloadedAndMergedDataAllFilesIs +
-      JSON.stringify(loadedAndMergedDataAllFiles),
-  );
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cloadedAndMergedDataAllFilesIs + JSON.stringify(loadedAndMergedDataAllFiles));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return loadedAndMergedDataAllFiles;
 }
@@ -226,43 +155,21 @@ async function setupAllXmlData(dataPathConfigurationName, contextName) {
   let functionName = setupAllXmlData.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // dataPathConfigurationName is:
-  await loggers.consoleLog(
-    namespacePrefix + functionName,
-    msg.cdataPathConfigurationNameIs + dataPathConfigurationName,
-  );
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cdataPathConfigurationNameIs + dataPathConfigurationName);
   // contextName is:
-  await loggers.consoleLog(
-    namespacePrefix + functionName,
-    msg.ccontextNameIs + contextName,
-  );
+  await loggers.consoleLog(namespacePrefix + functionName, msg.ccontextNameIs + contextName);
   let loadedAndMergedDataAllFiles = {};
-  let dataPath = await configurator.getConfigurationSetting(
-    wrd.csystem,
-    dataPathConfigurationName,
-  );
+  let dataPath = await configurator.getConfigurationSetting(wrd.csystem, dataPathConfigurationName);
   dataPath = path.normalize(dataPath);
   dataPath = path.resolve(dataPath);
   // dataPath is:
-  await loggers.consoleLog(
-    namespacePrefix + functionName,
-    msg.cdataPathIs + dataPath,
-  );
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cdataPathIs + dataPath);
   let filesToLoad = await dataBroker.scanDataPath(dataPath);
   // filesToLoad is:
-  await loggers.consoleLog(
-    namespacePrefix + functionName,
-    msg.cfilesToLoadIs + JSON.stringify(filesToLoad),
-  );
-  loadedAndMergedDataAllFiles = await dataBroker.loadAllXmlData(
-    filesToLoad,
-    contextName,
-  );
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cfilesToLoadIs + JSON.stringify(filesToLoad));
+  loadedAndMergedDataAllFiles = await dataBroker.loadAllXmlData(filesToLoad, contextName);
   // loadedAndMergedDataAllFiles is:
-  await loggers.consoleLog(
-    namespacePrefix + functionName,
-    msg.cloadedAndMergedDataAllFilesIs +
-      JSON.stringify(loadedAndMergedDataAllFiles),
-  );
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cloadedAndMergedDataAllFilesIs + JSON.stringify(loadedAndMergedDataAllFiles));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return loadedAndMergedDataAllFiles;
 }
@@ -281,64 +188,33 @@ async function setupAllXmlPluginData(dataPathConfigurationName, contextName) {
   let functionName = setupAllXmlPluginData.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // dataPathConfigurationName is:
-  await loggers.consoleLog(
-    namespacePrefix + functionName,
-    msg.cdataPathConfigurationNameIs + dataPathConfigurationName,
-  );
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cdataPathConfigurationNameIs + dataPathConfigurationName);
   // contextName is:
-  await loggers.consoleLog(
-    namespacePrefix + functionName,
-    msg.ccontextNameIs + contextName,
-  );
+  await loggers.consoleLog(namespacePrefix + functionName, msg.ccontextNameIs + contextName);
   let loadedAndMergedDataAllFiles = {};
   let dataPath = path.normalize(dataPathConfigurationName);
   // dataPath is:
-  await loggers.consoleLog(
-    namespacePrefix + functionName,
-    msg.cdataPathIs + dataPath,
-  );
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cdataPathIs + dataPath);
   dataPath = path.resolve(dataPath);
   // dataPath is:
-  await loggers.consoleLog(
-    namespacePrefix + functionName,
-    msg.cdataPathIs + dataPath,
-  );
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cdataPathIs + dataPath);
   let filesToLoad = await dataBroker.scanDataPath(dataPath);
   if (filesToLoad && Array.isArray(filesToLoad) && filesToLoad.length > 0) {
     // filesToLoad is valid
-    await loggers.consoleLog(
-      namespacePrefix + functionName,
-      msg.cfilesToLoadIsValid,
-    );
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cfilesToLoadIsValid);
   } else {
-    dataPath = await configurator.getConfigurationSetting(
-      wrd.csystem,
-      dataPathConfigurationName,
-    );
+    dataPath = await configurator.getConfigurationSetting(wrd.csystem, dataPathConfigurationName);
     dataPath = path.normalize(dataPath);
     dataPath = path.resolve(dataPath);
     // dataPath is:
-    await loggers.consoleLog(
-      namespacePrefix + functionName,
-      msg.cdataPathIs + dataPath,
-    );
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cdataPathIs + dataPath);
     filesToLoad = await dataBroker.scanDataPath(dataPath);
   }
   // filesToLoad is:
-  await loggers.consoleLog(
-    namespacePrefix + functionName,
-    msg.cfilesToLoadIs + JSON.stringify(filesToLoad),
-  );
-  loadedAndMergedDataAllFiles = await dataBroker.loadAllXmlData(
-    filesToLoad,
-    contextName,
-  );
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cfilesToLoadIs + JSON.stringify(filesToLoad));
+  loadedAndMergedDataAllFiles = await dataBroker.loadAllXmlData(filesToLoad, contextName);
   // loadedAndMergedDataAllFiles is:
-  await loggers.consoleLog(
-    namespacePrefix + functionName,
-    msg.cloadedAndMergedDataAllFilesIs +
-      JSON.stringify(loadedAndMergedDataAllFiles),
-  );
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cloadedAndMergedDataAllFilesIs + JSON.stringify(loadedAndMergedDataAllFiles));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return loadedAndMergedDataAllFiles;
 }
@@ -362,22 +238,13 @@ async function setupAllJsonConfigData(dataPathConfigurationName, contextName) {
   let filesToLoad = [];
   switch (dataPathConfigurationName) {
     case sys.cappConfigPath:
-      filesToLoad = await configurator.getConfigurationSetting(
-        wrd.csystem,
-        cfg.cappConfigFiles,
-      );
+      filesToLoad = await configurator.getConfigurationSetting(wrd.csystem, cfg.cappConfigFiles);
       break;
     case sys.cframeworkConfigPath:
-      filesToLoad = await configurator.getConfigurationSetting(
-        wrd.csystem,
-        cfg.cframeworkConfigFiles,
-      );
+      filesToLoad = await configurator.getConfigurationSetting(wrd.csystem, cfg.cframeworkConfigFiles);
       break;
     case sys.cthemeConfigPath:
-      filesToLoad = await configurator.getConfigurationSetting(
-        wrd.csystem,
-        cfg.cthemeConfigFiles,
-      );
+      filesToLoad = await configurator.getConfigurationSetting(wrd.csystem, cfg.cthemeConfigFiles);
       break;
     // NOTE: We cannot put the plugin here, because there is no way to get or set configuration settings,
     // when calling haystacks from the plugin.
@@ -385,17 +252,11 @@ async function setupAllJsonConfigData(dataPathConfigurationName, contextName) {
     //   filesToLoad = await configurator.getConfigurationSetting(wrd.csystem, cfg.cpluginConfigFiles);
     //   break;
     default:
-      console.log(
-        msg.cWarningDataPathConfigurationNameNotSupported +
-          dataPathConfigurationName,
-      );
+      console.log(msg.cWarningDataPathConfigurationNameNotSupported + dataPathConfigurationName);
       break;
   }
   // console.log(`filesToLoad is: ${filesToLoad}`);
-  loadedAndMergedDataAllFiles = await dataBroker.loadAllJsonData(
-    filesToLoad,
-    contextName,
-  );
+  loadedAndMergedDataAllFiles = await dataBroker.loadAllJsonData(filesToLoad, contextName);
   // console.log(`loadedAndMergedDataAllFiles is: ${JSON.stringify(loadedAndMergedDataAllFiles)}`);
   // console.log(`END ${namespacePrefix}${functionName} function`);
   return loadedAndMergedDataAllFiles;
@@ -419,30 +280,17 @@ async function setupAllJsonConfigPluginData(configFilesPath, contextName) {
   // console.log(`contextName is: ${contextName}`);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // configFilesPath is:
-  await loggers.consoleLog(
-    namespacePrefix + functionName,
-    msg.cconfigFilesPathIs + configFilesPath,
-  );
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cconfigFilesPathIs + configFilesPath);
   // contextName is:
-  await loggers.consoleLog(
-    namespacePrefix + functionName,
-    msg.ccontextNameIs + contextName,
-  );
+  await loggers.consoleLog(namespacePrefix + functionName, msg.ccontextNameIs + contextName);
   let loadedAndMergeDataAllFiles = {};
   let filesToLoad = [];
   filesToLoad = await dataBroker.scanDataPath(configFilesPath);
   // console.log(`filesToLoad is ${filesToLoad}`);
-  loadedAndMergeDataAllFiles = await dataBroker.loadAllJsonData(
-    filesToLoad,
-    contextName,
-  );
+  loadedAndMergeDataAllFiles = await dataBroker.loadAllJsonData(filesToLoad, contextName);
   // console.log(`loadedAndMergedDataAllFiles is: ${JSON.stringify(loadedAndMergeDataAllFiles)}`);
   // console.log(`END ${namespacePrefix}${functionName} function`);
-  await loggers.consoleLog(
-    namespacePrefix + functionName,
-    msg.cloadedAndMergedDataAllFilesIs +
-      JSON.stringify(loadedAndMergeDataAllFiles),
-  );
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cloadedAndMergedDataAllFilesIs + JSON.stringify(loadedAndMergeDataAllFiles));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return loadedAndMergeDataAllFiles;
 }
@@ -461,31 +309,15 @@ async function loadAllJsonData(dataPath, contextName) {
   let functionName = loadAllJsonData.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // dataPath is:
-  await loggers.consoleLog(
-    namespacePrefix + functionName,
-    msg.cdataPathIs + dataPath,
-  );
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cdataPathIs + dataPath);
   // contextName is:
-  await loggers.consoleLog(
-    namespacePrefix + functionName,
-    msg.ccontextNameIs + contextName,
-  );
+  await loggers.consoleLog(namespacePrefix + functionName, msg.ccontextNameIs + contextName);
   let loadedAndMergeDataAllFiles = {};
   let filesToLoad = [];
   filesToLoad = await dataBroker.scanDataPath(dataPath);
-  await loggers.consoleLog(
-    namespacePrefix + functionName,
-    msg.cfilesToLoadIs + JSON.stringify(filesToLoad),
-  );
-  loadedAndMergeDataAllFiles = await dataBroker.loadAllJsonData(
-    filesToLoad,
-    contextName,
-  );
-  await loggers.consoleLog(
-    namespacePrefix + functionName,
-    msg.cloadedAndMergedDataAllFilesIs +
-      JSON.stringify(loadedAndMergeDataAllFiles),
-  );
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cfilesToLoadIs + JSON.stringify(filesToLoad));
+  loadedAndMergeDataAllFiles = await dataBroker.loadAllJsonData(filesToLoad, contextName);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cloadedAndMergedDataAllFilesIs + JSON.stringify(loadedAndMergeDataAllFiles));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return loadedAndMergeDataAllFiles;
 }
@@ -503,21 +335,12 @@ async function storeData(dataName, data) {
   let functionName = storeData.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // dataName is:
-  await loggers.consoleLog(
-    namespacePrefix + functionName,
-    msg.cdataNameIs + dataName,
-  );
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cdataNameIs + dataName);
   // data is:
-  await loggers.consoleLog(
-    namespacePrefix + functionName,
-    msg.cdataIs + JSON.stringify(data),
-  );
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cdataIs + JSON.stringify(data));
   let returnData = false;
   returnData = await dataBroker.storeData(dataName, data);
-  await loggers.consoleLog(
-    namespacePrefix + functionName,
-    msg.creturnDataIs + returnData,
-  );
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
@@ -534,16 +357,10 @@ async function getData(dataName) {
   let functionName = getData.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // dataName is:
-  await loggers.consoleLog(
-    namespacePrefix + functionName,
-    msg.cdataNameIs + dataName,
-  );
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cdataNameIs + dataName);
   let returnData = false;
   returnData = await dataBroker.getData(dataName);
-  await loggers.consoleLog(
-    namespacePrefix + functionName,
-    msg.creturnDataIs + returnData,
-  );
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
@@ -561,16 +378,10 @@ async function clearData(dataName) {
   let functionName = clearData.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // dataName is:
-  await loggers.consoleLog(
-    namespacePrefix + functionName,
-    msg.cdataNameIs + dataName,
-  );
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cdataNameIs + dataName);
   let returnData = false;
   returnData = await dataBroker.clearData(dataName);
-  await loggers.consoleLog(
-    namespacePrefix + functionName,
-    msg.creturnDataIs + returnData,
-  );
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
@@ -587,5 +398,5 @@ export default {
   loadAllJsonData,
   storeData,
   getData,
-  clearData,
-};
+  clearData
+}

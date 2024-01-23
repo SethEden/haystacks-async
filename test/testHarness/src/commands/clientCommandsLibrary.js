@@ -13,10 +13,10 @@
  */
 
 // Internal imports
-import applicationSystem from "./clientCommands/applicationSystem.js";
-import applicationTest from "./clientCommands/applicationTests.js";
-import clientCommands from "./clientCommands/clientCommands.js";
-import * as app_cmd from "../constants/application.command.constants.js";
+import applicationSystem from './clientCommands/applicationSystem.js';
+import applicationTest from './clientCommands/applicationTests.js';
+import clientCommands from './clientCommands/clientCommands.js';
+import * as app_cmd from '../constants/application.command.constants.js';
 
 /**
  * @function initClientCommandsLibrary
@@ -29,62 +29,41 @@ import * as app_cmd from "../constants/application.command.constants.js";
  * This is because the functions cannot really be serialized in any way. It actually kind of makes sense,
  * but could be really confusing if you are struggling, trying to debug commands or business rules that do not appear to exist.
  */
-const initClientCommandsLibrary = function () {
+const initClientCommandsLibrary = function() {
   return {
     // Client commands
     // ***********************************************
     // application system commands in order
     // ***********************************************
-    [app_cmd.capplicationHelp]: (inputData, inputMetaData) =>
-      applicationSystem.applicationHelp(inputData, inputMetaData),
-    [app_cmd.capplicationWorkflowHelp]: (inputData, inputMetaData) =>
-      applicationSystem.applicationWorkflowHelp(inputData, inputMetaData),
+    [app_cmd.capplicationHelp]: (inputData, inputMetaData) => applicationSystem.applicationHelp(inputData, inputMetaData),
+    [app_cmd.capplicationWorkflowHelp]: (inputData, inputMetaData) => applicationSystem.applicationWorkflowHelp(inputData, inputMetaData),
 
     // ***********************************************
     // application test commands in order
     // ***********************************************
-    [app_cmd.cvalidateApplicationConstants]: (inputData, inputMetaData) =>
-      applicationTest.validateApplicationConstants(inputData, inputMetaData),
-    [app_cmd.cvalidateApplicationCommandAliases]: (inputData, inputMetaData) =>
-      applicationTest.validateApplicationCommandAliases(
-        inputData,
-        inputMetaData,
-      ),
-    [app_cmd.cvalidateApplicationWorkflows]: (inputData, inputMetaData) =>
-      applicationTest.validateApplicationWorkflows(inputData, inputMetaData),
-    [app_cmd.callApplicationValidations]: (inputData, inputMetaData) =>
-      applicationTest.allApplicationValidations(inputData, inputMetaData),
+    [app_cmd.cvalidateApplicationConstants]: (inputData, inputMetaData) => applicationTest.validateApplicationConstants(inputData, inputMetaData),
+    [app_cmd.cvalidateApplicationCommandAliases]: (inputData, inputMetaData) => applicationTest.validateApplicationCommandAliases(inputData, inputMetaData),
+    [app_cmd.cvalidateApplicationWorkflows]: (inputData, inputMetaData) => applicationTest.validateApplicationWorkflows(inputData, inputMetaData),
+    [app_cmd.callApplicationValidations]: (inputData, inputMetaData) => applicationTest.allApplicationValidations(inputData, inputMetaData),
 
     // ***********************************************
     // client commands in order
     // ***********************************************
-    [app_cmd.ccustomEchoCommand]: (inputData, inputMetaData) =>
-      clientCommands.customEchoCommand(inputData, inputMetaData),
-    [app_cmd.cbossPanic]: (inputData, inputMetaData) =>
-      clientCommands.bossPanic(inputData, inputMetaData),
-    [app_cmd.ccommand01]: (inputData, inputMetaData) =>
-      clientCommands.clientCommand01(inputData, inputMetaData),
-    [app_cmd.ccommand02]: (inputData, inputMetaData) =>
-      clientCommands.clientCommand02(inputData, inputMetaData),
-    [app_cmd.ccommand03]: (inputData, inputMetaData) =>
-      clientCommands.clientCommand03(inputData, inputMetaData),
-    [app_cmd.ccommand04]: (inputData, inputMetaData) =>
-      clientCommands.clientCommand04(inputData, inputMetaData),
-    [app_cmd.ccommand05]: (inputData, inputMetaData) =>
-      clientCommands.clientCommand05(inputData, inputMetaData),
-    [app_cmd.ccommand06]: (inputData, inputMetaData) =>
-      clientCommands.clientCommand06(inputData, inputMetaData),
-    [app_cmd.ccommand07]: (inputData, inputMetaData) =>
-      clientCommands.clientCommand07(inputData, inputMetaData),
-    [app_cmd.ccommand08]: (inputData, inputMetaData) =>
-      clientCommands.clientCommand08(inputData, inputMetaData),
-    [app_cmd.ccommand09]: (inputData, inputMetaData) =>
-      clientCommands.clientCommand09(inputData, inputMetaData),
-    [app_cmd.ccommand10]: (inputData, inputMetaData) =>
-      clientCommands.clientCommand10(inputData, inputMetaData),
+    [app_cmd.ccustomEchoCommand]: (inputData, inputMetaData) => clientCommands.customEchoCommand(inputData, inputMetaData),
+    [app_cmd.cbossPanic]: (inputData, inputMetaData) => clientCommands.bossPanic(inputData, inputMetaData),
+    [app_cmd.ccommand01]: (inputData, inputMetaData) => clientCommands.clientCommand01(inputData, inputMetaData),
+    [app_cmd.ccommand02]: (inputData, inputMetaData) => clientCommands.clientCommand02(inputData, inputMetaData),
+    [app_cmd.ccommand03]: (inputData, inputMetaData) => clientCommands.clientCommand03(inputData, inputMetaData),
+    [app_cmd.ccommand04]: (inputData, inputMetaData) => clientCommands.clientCommand04(inputData, inputMetaData),
+    [app_cmd.ccommand05]: (inputData, inputMetaData) => clientCommands.clientCommand05(inputData, inputMetaData),
+    [app_cmd.ccommand06]: (inputData, inputMetaData) => clientCommands.clientCommand06(inputData, inputMetaData),
+    [app_cmd.ccommand07]: (inputData, inputMetaData) => clientCommands.clientCommand07(inputData, inputMetaData),
+    [app_cmd.ccommand08]: (inputData, inputMetaData) => clientCommands.clientCommand08(inputData, inputMetaData),
+    [app_cmd.ccommand09]: (inputData, inputMetaData) => clientCommands.clientCommand09(inputData, inputMetaData),
+    [app_cmd.ccommand10]: (inputData, inputMetaData) => clientCommands.clientCommand10(inputData, inputMetaData)
   };
 };
 
 export default {
-  initClientCommandsLibrary,
+  initClientCommandsLibrary
 };

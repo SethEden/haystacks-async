@@ -13,31 +13,17 @@
  */
 
 // Internal imports
-import ruleParsing from "../ruleParsing.js";
-import configurator from "../../../executrix/configurator.js";
-import loggers from "../../../executrix/loggers.js";
+import ruleParsing from '../ruleParsing.js';
+import configurator from '../../../executrix/configurator.js';
+import loggers from '../../../executrix/loggers.js';
 // External imports
-import hayConst from "@haystacks/constants";
-import path from "path";
+import hayConst from '@haystacks/constants';
+import path from 'path';
 
-const { bas, biz, cfg, msg, sys, wrd } = hayConst;
-const baseFileName = path.basename(
-  import.meta.url,
-  path.extname(import.meta.url),
-);
+const {bas, biz, cfg, msg, sys, wrd} = hayConst;
+const baseFileName = path.basename(import.meta.url, path.extname(import.meta.url));
 // framework.businessRules.rules.arrayParsing.pathArrayParsing.
-const namespacePrefix =
-  wrd.cframework +
-  bas.cDot +
-  sys.cbusinessRules +
-  bas.cDot +
-  wrd.crules +
-  bas.cDot +
-  wrd.carray +
-  wrd.cParsing +
-  bas.cDot +
-  baseFileName +
-  bas.cDot;
+const namespacePrefix = wrd.cframework + bas.cDot + sys.cbusinessRules + bas.cDot + wrd.crules + bas.cDot + wrd.carray + wrd.cParsing + bas.cDot + baseFileName + bas.cDot;
 
 /**
  * @function doesArrayContainFilename
@@ -51,23 +37,14 @@ const namespacePrefix =
 async function doesArrayContainFilename(inputData, inputMetaData) {
   let functionName = doesArrayContainFilename.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  await loggers.consoleLog(
-    namespacePrefix + functionName,
-    msg.cinputDataIs + JSON.stringify(inputData),
-  );
-  await loggers.consoleLog(
-    namespacePrefix + functionName,
-    msg.cinputMetaDataIs + inputMetaData,
-  );
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = false;
   // NOTE: This call doesn't actually work, it may have worked at one time, but it doesn't work now.
   // And I'm not going to spend the time trying to figure out why,
   // when it will be much simpler to ust call that same function in a loop to figure out the result.
   // Can solve this when we build unit tests.
-  returnData = await ruleParsing.processRulesInternal(
-    [[inputData, inputMetaData], ""],
-    [biz.cdoesArrayContainValue],
-  );
+  returnData = await ruleParsing.processRulesInternal([[inputData, inputMetaData], ''], [biz.cdoesArrayContainValue]);
 
   // NOTE: The below code also works, I am going to attempt to re-enable the above code and see if it also works.
   // YES! This is a second way of doing the same thing. If the above code ever has a problem, we can fall back to this method.
@@ -77,10 +54,7 @@ async function doesArrayContainFilename(inputData, inputMetaData) {
   //     break;
   //   }
   // } // End-for (let i = 0; i < inputData.Length; i++)
-  await loggers.consoleLog(
-    namespacePrefix + functionName,
-    msg.creturnDataIs + returnData,
-  );
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
@@ -99,52 +73,28 @@ async function doesArrayContainFilename(inputData, inputMetaData) {
 async function getFileAndPathListForPath(inputData, inputMetaData) {
   let functionName = getFileAndPathListForPath.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  await loggers.consoleLog(
-    namespacePrefix + functionName,
-    msg.cinputDataIs + JSON.stringify(inputData),
-  );
-  await loggers.consoleLog(
-    namespacePrefix + functionName,
-    msg.cinputMetaDataIs + inputMetaData,
-  );
-  let returnData = "";
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
+  let returnData = '';
   let enableFilesListLimit, filesListLimit;
   if (inputData) {
     if (inputMetaData) {
-      enableFilesListLimit = await configurator.getConfigurationSetting(
-        wrd.csystem,
-        cfg.cEnableFilesListLimit,
-      );
+      enableFilesListLimit = await configurator.getConfigurationSetting(wrd.csystem, cfg.cEnableFilesListLimit);
       filesListLimit = inputMetaData;
     } else {
-      enableFilesListLimit = await configurator.getConfigurationSetting(
-        wrd.csystem,
-        cfg.cEnableFilesListLimit,
-      );
-      filesListLimit = await configurator.getConfigurationSetting(
-        wrd.csystem,
-        cfg.cFilesListLimit,
-      );
+      enableFilesListLimit = await configurator.getConfigurationSetting(wrd.csystem, cfg.cEnableFilesListLimit);
+      filesListLimit = await configurator.getConfigurationSetting(wrd.csystem, cfg.cFilesListLimit);
     }
     // filesListLimit is:
-    await loggers.consoleLog(
-      namespacePrefix + functionName,
-      msg.cfilesListLimitIs + filesListLimit,
-    );
-    returnData = await ruleParsing.processRulesInternal(
-      [inputData, [enableFilesListLimit, filesListLimit]],
-      [biz.cscanDirectoryContents],
-    );
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cfilesListLimitIs + filesListLimit);
+    returnData = await ruleParsing.processRulesInternal([inputData, [enableFilesListLimit, filesListLimit]], [biz.cscanDirectoryContents]);
   } // End-if (inputData)
-  await loggers.consoleLog(
-    namespacePrefix + functionName,
-    msg.creturnDataIs + JSON.stringify(returnData),
-  );
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 
 export default {
   doesArrayContainFilename,
-  getFileAndPathListForPath,
+  getFileAndPathListForPath
 };

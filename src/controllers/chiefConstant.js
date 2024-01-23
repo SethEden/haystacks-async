@@ -12,25 +12,16 @@
  */
 
 // Internal imports
-import constantBroker from "../brokers/constantBroker.js";
-import loggers from "../executrix/loggers.js";
+import constantBroker from '../brokers/constantBroker.js';
+import loggers from '../executrix/loggers.js';
 // External imports
-import hayConst from "@haystacks/constants";
-import path from "path";
+import hayConst from '@haystacks/constants';
+import path from 'path';
 
-const { bas, msg, wrd } = hayConst;
-const baseFileName = path.basename(
-  import.meta.url,
-  path.extname(import.meta.url),
-);
+const {bas, msg, wrd} = hayConst
+const baseFileName = path.basename(import.meta.url, path.extname(import.meta.url));
 // framework.controllers.chiefConstant.
-const namespacePrefix =
-  wrd.cframework +
-  bas.cDot +
-  wrd.ccontrollers +
-  bas.cDot +
-  baseFileName +
-  bas.cDot;
+const namespacePrefix = wrd.cframework + bas.cDot + wrd.ccontrollers + bas.cDot + baseFileName +bas.cDot;
 
 /**
  * @function initializeConstantsValidationData
@@ -39,7 +30,7 @@ const namespacePrefix =
  * @author Seth Hollingsead
  * @date 2022/03/22
  */
-async function initializeConstantsValidationData() {
+ async function initializeConstantsValidationData() {
   let functionName = initializeConstantsValidationData.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   await constantBroker.initializeConstantsValidationData();
@@ -54,14 +45,11 @@ async function initializeConstantsValidationData() {
  * @date 2022/03/28
  */
 async function generateFrameworkConstantsValidationData() {
-  let functionName = generateFrameworkConstantsValidationData.name;
+  let functionName = generateFrameworkConstantsValidationData.name
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   let returnData = false;
   returnData = await constantBroker.generateFrameworkConstantsValidationData();
-  await loggers.consoleLog(
-    namespacePrefix + functionName,
-    msg.creturnDataIs + JSON.stringify(returnData),
-  );
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
@@ -80,24 +68,12 @@ async function addConstantsValidationData(arrayValidationData, contextName) {
   let functionName = addConstantsValidationData.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // contextName is:
-  await loggers.consoleLog(
-    namespacePrefix + functionName,
-    msg.ccontextNameIs + contextName,
-  );
+  await loggers.consoleLog(namespacePrefix + functionName, msg.ccontextNameIs + contextName);
   // arrayValidationData is:
-  await loggers.consoleLog(
-    namespacePrefix + functionName,
-    msg.carrayValidationDataIs + JSON.stringify(arrayValidationData),
-  );
+  await loggers.consoleLog(namespacePrefix + functionName, msg.carrayValidationDataIs + JSON.stringify(arrayValidationData));
   let returnData = false;
-  returnData = await constantBroker.addConstantsValidationData(
-    arrayValidationData,
-    contextName,
-  );
-  await loggers.consoleLog(
-    namespacePrefix + functionName,
-    msg.creturnDataIs + returnData,
-  );
+  returnData = await constantBroker.addConstantsValidationData(arrayValidationData, contextName);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
@@ -105,5 +81,5 @@ async function addConstantsValidationData(arrayValidationData, contextName) {
 export default {
   initializeConstantsValidationData,
   generateFrameworkConstantsValidationData,
-  addConstantsValidationData,
-};
+  addConstantsValidationData
+}

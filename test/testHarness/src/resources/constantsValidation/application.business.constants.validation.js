@@ -9,7 +9,7 @@
  */
 
 // Internal imports
-import * as app_biz from "../../constants/application.business.constants.js";
+import * as app_biz from '../../constants/application.business.constants.js';
 
 /**
  * @function applicationBusinessConstantsValidation
@@ -20,30 +20,14 @@ import * as app_biz from "../../constants/application.business.constants.js";
  */
 export const applicationBusinessConstantsValidation = [
   // Client Business Rules
-  { Name: "cclientEcho", Actual: app_biz.cclientEcho, Expected: "clientEcho" },
+  {Name: 'cclientEcho', Actual: app_biz.cclientEcho, Expected: 'clientEcho'},
 
   // ********************************
   // ClientStringParsing rules in order
   // ********************************
-  { Name: "ccustomEcho", Actual: app_biz.ccustomEcho, Expected: "customEcho" },
-  {
-    Name: "cmostPopularNumber",
-    Actual: app_biz.cmostPopularNumber,
-    Expected: "mostPopularNumber",
-  },
-  {
-    Name: "cisAlmostPalindrome",
-    Actual: app_biz.cisAlmostPalindrome,
-    Expected: "isAlmostPalindrome",
-  },
-  {
-    Name: "cthreePointAverage",
-    Actual: app_biz.cthreePointAverage,
-    Expected: "threePointAverage",
-  },
-  {
-    Name: "carrayCounter",
-    Actual: app_biz.carrayCounter,
-    Expected: "arrayCounter",
-  },
+  {Name: 'ccustomEcho', Actual: app_biz.ccustomEcho, Expected: 'customEcho'},
+  {Name: 'cmostPopularNumber', Actual: app_biz.cmostPopularNumber, Expected: 'mostPopularNumber'},
+  {Name: 'cisAlmostPalindrome', Actual: app_biz.cisAlmostPalindrome, Expected: 'isAlmostPalindrome'},
+  {Name: 'cthreePointAverage', Actual: app_biz.cthreePointAverage, Expected: 'threePointAverage'},
+  {Name: 'carrayCounter', Actual: app_biz.carrayCounter, Expected: 'arrayCounter'}
 ];

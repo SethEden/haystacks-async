@@ -17,30 +17,21 @@
  */
 
 // Internal imports
-import commandBroker from "../brokers/commandBroker.js";
-import chiefData from "../controllers/chiefData.js";
-import loggers from "../executrix/loggers.js";
-import D from "../structures/data.js";
-import queue from "../structures/queue.js";
-import stack from "../structures/stack.js";
+import commandBroker from '../brokers/commandBroker.js';
+import chiefData from '../controllers/chiefData.js';
+import loggers from '../executrix/loggers.js';
+import D from '../structures/data.js';
+import queue from '../structures/queue.js';
+import stack from '../structures/stack.js';
 // External imports
-import hayConst from "@haystacks/constants";
-import path from "path";
-import configurator from "../executrix/configurator.js";
+import hayConst from '@haystacks/constants';
+import path from 'path';
+import configurator from '../executrix/configurator.js'
 
-const { bas, cfg, msg, sys, wrd } = hayConst;
-const baseFileName = path.basename(
-  import.meta.url,
-  path.extname(import.meta.url),
-);
+const {bas, cfg, msg, sys, wrd} = hayConst;
+const baseFileName = path.basename(import.meta.url, path.extname(import.meta.url));
 // framework.controllers.chiefCommander.
-const namespacePrefix =
-  wrd.cframework +
-  bas.cDot +
-  wrd.ccontrollers +
-  bas.cDot +
-  baseFileName +
-  bas.cDot;
+const namespacePrefix = wrd.cframework + bas.cDot + wrd.ccontrollers + bas.cDot + baseFileName + bas.cDot;
 
 /**
  * @function bootStrapCommands
@@ -100,44 +91,24 @@ async function addClientCommands(clientCommands) {
  * @author Seth Hollingsead
  * @date 2022/02/02
  */
-async function loadCommandAliasesFromPath(
-  commandAliasesFilePathConfigurationName,
-  contextName,
-) {
+async function loadCommandAliasesFromPath(commandAliasesFilePathConfigurationName, contextName) {
   let functionName = loadCommandAliasesFromPath.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // commandAliasesFilePathConfigurationName is:
-  await loggers.consoleLog(
-    namespacePrefix + functionName,
-    msg.ccommandAliasesFilePathConfigurationNameIs +
-      commandAliasesFilePathConfigurationName,
-  );
+  await loggers.consoleLog(namespacePrefix + functionName, msg.ccommandAliasesFilePathConfigurationNameIs + commandAliasesFilePathConfigurationName);
   // contextName is:
-  await loggers.consoleLog(
-    namespacePrefix + functionName,
-    msg.ccontextNameIs + contextName,
-  );
+  await loggers.consoleLog(namespacePrefix + functionName, msg.ccontextNameIs + contextName);
   let returnData = false;
   let allCommandAliasesData = {};
   if (!contextName.toUpperCase().includes(wrd.cPLUGIN)) {
-    allCommandAliasesData = await chiefData.setupAllXmlData(
-      commandAliasesFilePathConfigurationName,
-      sys.cCommandsAliases,
-    );
+    allCommandAliasesData = await chiefData.setupAllXmlData(commandAliasesFilePathConfigurationName, sys.cCommandsAliases);
   } else if (contextName.toUpperCase().includes(wrd.cPLUGIN)) {
-    allCommandAliasesData = await chiefData.setupAllXmlPluginData(
-      commandAliasesFilePathConfigurationName,
-      sys.cCommandsAliases,
-    );
+    allCommandAliasesData = await chiefData.setupAllXmlPluginData(commandAliasesFilePathConfigurationName, sys.cCommandsAliases);
   }
 
   // allCommandAliasesData is:
-  await loggers.consoleLog(
-    namespacePrefix + functionName,
-    msg.callCommandAliasesDataIs + JSON.stringify(allCommandAliasesData),
-  );
-  if (D[sys.cCommandsAliases] === undefined) {
-    // Make sure we only do this if it's undefined, otherwise we might wipe out previously loaded data.
+  await loggers.consoleLog(namespacePrefix + functionName, msg.callCommandAliasesDataIs + JSON.stringify(allCommandAliasesData));
+  if (D[sys.cCommandsAliases] === undefined) { // Make sure we only do this if it's undefined, otherwise we might wipe out previously loaded data.
     D[sys.cCommandsAliases] = {};
     D[sys.cCommandsAliases][sys.cFramework] = allCommandAliasesData;
     returnData = true;
@@ -145,10 +116,7 @@ async function loadCommandAliasesFromPath(
     D[sys.cCommandsAliases][wrd.cApplication] = allCommandAliasesData;
     returnData = true;
   } else if (contextName.toUpperCase().includes(wrd.cPLUGIN)) {
-    let pluginName = await configurator.getConfigurationSetting(
-      wrd.csystem,
-      sys.cPluginName,
-    );
+    let pluginName = await configurator.getConfigurationSetting(wrd.csystem, sys.cPluginName);
     // NOTE: If there is a pluginName in the configuration setting, then we have a special condition that is running here.
     // This is the case that the build-Release app is running to roll a release of a plugin, and plugin validation data is being loaded for validation.
     if (pluginName) {
@@ -159,10 +127,7 @@ async function loadCommandAliasesFromPath(
     returnData = allCommandAliasesData;
   }
   // console.log('All loaded command aliases data is: ' + JSON.stringify(D[sys.cCommandsAliases]));
-  await loggers.consoleLog(
-    namespacePrefix + functionName,
-    msg.creturnDataIs + JSON.stringify(returnData),
-  );
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
@@ -180,19 +145,11 @@ async function enqueueCommand(command) {
   let functionName = enqueueCommand.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // command is:
-  await loggers.consoleLog(
-    namespacePrefix + functionName,
-    msg.ccommandIs + command,
-  );
+  await loggers.consoleLog(namespacePrefix + functionName, msg.ccommandIs + command);
   if (D[sys.cCommandQueue] === undefined) {
     await queue.initQueue(sys.cCommandQueue);
   }
-  if (
-    (await configurator.getConfigurationSetting(
-      wrd.csystem,
-      cfg.clogAllCommands,
-    )) === true
-  ) {
+  if (await configurator.getConfigurationSetting(wrd.csystem, cfg.clogAllCommands) === true) {
     await stack.push(sys.cSystemCommandLog, command);
   }
   // D-command stack is:
@@ -213,10 +170,7 @@ async function isCommandQueueEmpty() {
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   let returnData = false;
   returnData = await queue.isEmpty(sys.cCommandQueue);
-  await loggers.consoleLog(
-    namespacePrefix + functionName,
-    msg.creturnDataIs + returnData,
-  );
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
@@ -237,15 +191,9 @@ async function processCommandQueue() {
   await queue.queuePrint(sys.cCommandQueue);
   commandToExecute = await queue.dequeue(sys.cCommandQueue);
   // commandToExecute is:
-  await loggers.consoleLog(
-    namespacePrefix + functionName,
-    msg.ccommandToExecuteIs + commandToExecute,
-  );
+  await loggers.consoleLog(namespacePrefix + functionName, msg.ccommandToExecuteIs + commandToExecute);
   returnData = await commandBroker.executeCommand(commandToExecute);
-  await loggers.consoleLog(
-    namespacePrefix + functionName,
-    msg.creturnDataIs + returnData,
-  );
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
@@ -257,5 +205,5 @@ export default {
   loadCommandAliasesFromPath,
   enqueueCommand,
   isCommandQueueEmpty,
-  processCommandQueue,
+  processCommandQueue
 };

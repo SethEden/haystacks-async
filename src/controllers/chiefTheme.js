@@ -15,27 +15,18 @@
  */
 
 // Internal imports
-import dataBroker from "../brokers/dataBroker.js";
-import themeBroker from "../brokers/themeBroker.js";
-import configurator from "../executrix/configurator.js";
-import loggers from "../executrix/loggers.js";
+import dataBroker from '../brokers/dataBroker.js';
+import themeBroker from '../brokers/themeBroker.js';
+import configurator from '../executrix/configurator.js';
+import loggers from '../executrix/loggers.js';
 // External imports
-import hayConst from "@haystacks/constants";
-import path from "path";
+import hayConst from '@haystacks/constants';
+import path from 'path';
 
-const { bas, cfg, msg, wrd } = hayConst;
-const baseFileName = path.basename(
-  import.meta.url,
-  path.extname(import.meta.url),
-);
+const {bas, cfg, msg, wrd} = hayConst;
+const baseFileName = path.basename(import.meta.url, path.extname(import.meta.url));
 // framework.controllers.chiefTheme.
-const namespacePrefix =
-  wrd.cframework +
-  bas.cDot +
-  wrd.ccontrollers +
-  bas.cDot +
-  baseFileName +
-  bas.cDot;
+const namespacePrefix = wrd.cframework + bas.cDot + wrd.ccontrollers + bas.cDot + baseFileName +bas.cDot;
 
 /**
  * @function initThemes
@@ -44,7 +35,7 @@ const namespacePrefix =
  * @author Seth Hollingsead
  * @date 2022/10/23
  */
-async function initThemes() {
+ async function initThemes() {
   let functionName = initThemes.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   await themeBroker.initThemeData();
@@ -63,21 +54,12 @@ async function addThemeData(themeData, contextName) {
   let functionName = addThemeData.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // themeData is:
-  await loggers.consoleLog(
-    namespacePrefix + functionName,
-    msg.cthemeDataIs + JSON.stringify(themeData),
-  );
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cthemeDataIs + JSON.stringify(themeData));
   // contextName is:
-  await loggers.consoleLog(
-    namespacePrefix + functionName,
-    msg.ccontextNameIs + contextName,
-  );
+  await loggers.consoleLog(namespacePrefix + functionName, msg.ccontextNameIs + contextName);
   let returnData = false;
   returnData = await themeBroker.addThemeData(themeData, contextName);
-  await loggers.consoleLog(
-    namespacePrefix + functionName,
-    msg.creturnDataIs + returnData,
-  );
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
@@ -95,16 +77,10 @@ async function generateThemeDataFromThemeRootPath(themesRootPath) {
   let functionName = generateThemeDataFromThemeRootPath.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // themesRootPath is:
-  await loggers.consoleLog(
-    namespacePrefix + functionName,
-    msg.cthemesRootPathIs + themesRootPath,
-  );
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cthemesRootPathIs + themesRootPath);
   let returnData = false;
   returnData = await themeBroker.generateThemeDataFromPath(themesRootPath);
-  await loggers.consoleLog(
-    namespacePrefix + functionName,
-    msg.creturnDataIs + JSON.stringify(returnData),
-  );
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
@@ -123,29 +99,16 @@ async function determineThemeDebugConfigFilesToLoad(themeConfigPathName) {
   let functionName = determineThemeDebugConfigFilesToLoad.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // themeConfigPathName is:
-  await loggers.consoleLog(
-    namespacePrefix + functionName,
-    msg.cthemeConfigPathNameIs + themeConfigPathName,
-  );
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cthemeConfigPathNameIs + themeConfigPathName);
   let themeConfigFilesToLoad = false;
   if (themeConfigPathName) {
-    let themeConfigDataPath = await configurator.getConfigurationSetting(
-      wrd.csystem,
-      themeConfigPathName,
-    );
+    let themeConfigDataPath = await configurator.getConfigurationSetting(wrd.csystem, themeConfigPathName);
     themeConfigDataPath = path.resolve(themeConfigDataPath);
     themeConfigFilesToLoad = await dataBroker.scanDataPath(themeConfigDataPath);
-    await configurator.setConfigurationSetting(
-      wrd.csystem,
-      cfg.cthemeConfigFiles,
-      themeConfigFilesToLoad,
-    );
+    await configurator.setConfigurationSetting(wrd.csystem, cfg.cthemeConfigFiles, themeConfigFilesToLoad);
   } // End-if (themeConfigPathName)
   // themeConfigFilesToLoad is:
-  await loggers.consoleLog(
-    namespacePrefix + functionName,
-    msg.cthemeConfigFilesToLoadIs + JSON.stringify(themeConfigFilesToLoad),
-  );
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cthemeConfigFilesToLoadIs + JSON.stringify(themeConfigFilesToLoad));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return themeConfigFilesToLoad;
 }
@@ -154,5 +117,5 @@ export default {
   initThemes,
   addThemeData,
   generateThemeDataFromThemeRootPath,
-  determineThemeDebugConfigFilesToLoad,
-};
+  determineThemeDebugConfigFilesToLoad
+}

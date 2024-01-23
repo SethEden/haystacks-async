@@ -13,27 +13,16 @@
  */
 
 // Internal imports
-import loggers from "../../executrix/loggers.js";
+import loggers from '../../executrix/loggers.js';
 // External imports
-import hayConst from "@haystacks/constants";
-import moment from "moment";
-import path from "path";
+import hayConst from '@haystacks/constants';
+import moment from 'moment';
+import path from 'path';
 
-const { bas, gen, msg, sys, wrd } = hayConst;
-const baseFileName = path.basename(
-  import.meta.url,
-  path.extname(import.meta.url),
-);
+const {bas, gen, msg, sys, wrd} = hayConst;
+const baseFileName = path.basename(import.meta.url, path.extname(import.meta.url));
 // framework.businessRules.rules.timeComputation.
-const namespacePrefix =
-  wrd.cframework +
-  bas.cDot +
-  sys.cbusinessRules +
-  bas.cDot +
-  wrd.crules +
-  bas.cDot +
-  baseFileName +
-  bas.cDot;
+const namespacePrefix = wrd.cframework + bas.cDot + sys.cbusinessRules + bas.cDot + wrd.crules + bas.cDot + baseFileName + bas.cDot;
 
 /**
  * @function getNowMoment
@@ -52,7 +41,7 @@ async function getNowMoment(inputData, inputMetaData) {
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   // console.log(`inputData is: ${inputData}`);
   // console.log(`inputMetaData is: ${inputMetaData}`);
-  let returnData = "";
+  let returnData = '';
   returnData = moment().format(inputData);
   // console.log(`returnData is: ${returnData}`);
   // console.log(`END ${namespacePrefix}${functionName} function`);
@@ -71,22 +60,13 @@ async function getNowMoment(inputData, inputMetaData) {
 async function computeDeltaTime(inputData, inputMetaData) {
   let functionName = computeDeltaTime.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  await loggers.consoleLog(
-    namespacePrefix + functionName,
-    msg.cinputDataIs + inputData,
-  );
-  await loggers.consoleLog(
-    namespacePrefix + functionName,
-    msg.cinputMetaDataIs + inputMetaData,
-  );
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = 0;
   let startTime = moment(inputData, gen.cYYYYMMDD_HHmmss_SSS);
   let endTime = moment(inputMetaData, gen.cYYYYMMDD_HHmmss_SSS);
   returnData = endTime.diff(startTime); // Should work in milliseconds out of the box!
-  await loggers.consoleLog(
-    namespacePrefix + functionName,
-    msg.creturnDataIs + returnData,
-  );
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
@@ -103,20 +83,11 @@ async function computeDeltaTime(inputData, inputMetaData) {
 async function reformatDeltaTime(inputData, inputMetaData) {
   let functionName = reformatDeltaTime.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  await loggers.consoleLog(
-    namespacePrefix + functionName,
-    msg.cinputDataIs + inputData,
-  );
-  await loggers.consoleLog(
-    namespacePrefix + functionName,
-    msg.cinputMetaDataIs + inputMetaData,
-  );
-  let returnData = "";
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
+  let returnData = '';
   returnData = moment.duration(inputData).format(inputMetaData);
-  await loggers.consoleLog(
-    namespacePrefix + functionName,
-    msg.creturnDataIs + returnData,
-  );
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
@@ -134,14 +105,8 @@ async function reformatDeltaTime(inputData, inputMetaData) {
 async function sleep(inputData, inputMetaData) {
   let functionName = sleep.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  await loggers.consoleLog(
-    namespacePrefix + functionName,
-    msg.cinputDataIs + inputData,
-  );
-  await loggers.consoleLog(
-    namespacePrefix + functionName,
-    msg.cinputMetaDataIs + inputMetaData,
-  );
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   const date = moment();
   let currentDate = null;
   do {
@@ -154,5 +119,5 @@ export default {
   getNowMoment,
   computeDeltaTime,
   reformatDeltaTime,
-  sleep,
+  sleep
 };

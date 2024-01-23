@@ -15,31 +15,19 @@
  */
 
 // Internal imports
-import * as app_biz from "../../constants/application.business.constants.js";
-import * as app_cfg from "../../constants/application.configuration.constants.js";
-import * as apc from "../../constants/application.constants.js";
-import * as app_msg from "../../constants/application.message.constants.js";
+import * as app_biz from '../../constants/application.business.constants.js';
+import * as app_cfg from '../../constants/application.configuration.constants.js';
+import * as apc from '../../constants/application.constants.js';
+import * as app_msg from '../../constants/application.message.constants.js';
 // External imports
-import haystacks from "@haystacks/async";
-import hayConst from "@haystacks/constants";
-import path from "path";
+import haystacks from '@haystacks/async';
+import hayConst from '@haystacks/constants';
+import path from 'path';
 
-const { bas, biz, cfg, msg, sys, wrd } = hayConst;
-const baseFileName = path.basename(
-  import.meta.url,
-  path.extname(import.meta.url),
-);
+const {bas, biz, cfg, msg, sys, wrd} = hayConst;
+const baseFileName = path.basename(import.meta.url, path.extname(import.meta.url));
 // buildRelease.commands.clientCommands.clientCommands.
-const namespacePrefix =
-  apc.cApplicationName +
-  bas.cDot +
-  wrd.ccommands +
-  bas.cDot +
-  wrd.cclient +
-  wrd.cCommands +
-  bas.cDot +
-  baseFileName +
-  bas.cDot;
+const namespacePrefix = apc.cApplicationName + bas.cDot + wrd.ccommands + bas.cDot + wrd.cclient + wrd.cCommands + bas.cDot + baseFileName + bas.cDot;
 
 /**
  * @function customEchoCommand
@@ -53,29 +41,13 @@ const namespacePrefix =
  */
 async function customEchoCommand(inputData, inputMetaData) {
   let functionName = customEchoCommand.name;
-  await haystacks.consoleLog(
-    namespacePrefix,
-    functionName,
-    msg.cBEGIN_Function,
-  );
-  await haystacks.consoleLog(
-    namespacePrefix,
-    functionName,
-    msg.cinputDataIs + JSON.stringify(inputData),
-  );
-  await haystacks.consoleLog(
-    namespacePrefix,
-    functionName,
-    msg.cinputMetaDataIs + inputMetaData,
-  );
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.cBEGIN_Function);
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.cinputDataIs + JSON.stringify(inputData));
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = [false, false];
   returnData[1] = inputData + app_msg.cclientStringParsingDotCustomEcho;
   console.log(returnData[1]);
-  await haystacks.consoleLog(
-    namespacePrefix,
-    functionName,
-    msg.creturnDataIs + JSON.stringify(returnData),
-  );
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.creturnDataIs + JSON.stringify(returnData));
   await haystacks.consoleLog(namespacePrefix, functionName, msg.cEND_Function);
   return returnData;
 }
@@ -91,39 +63,17 @@ async function customEchoCommand(inputData, inputMetaData) {
  */
 async function deployMetaData(inputData, inputMetaData) {
   let functionName = deployMetaData.name;
-  await haystacks.consoleLog(
-    namespacePrefix,
-    functionName,
-    msg.cBEGIN_Function,
-  );
-  await haystacks.consoleLog(
-    namespacePrefix,
-    functionName,
-    msg.cinputDataIs + JSON.stringify(inputData),
-  );
-  await haystacks.consoleLog(
-    namespacePrefix,
-    functionName,
-    msg.cinputMetaDataIs + inputMetaData,
-  );
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.cBEGIN_Function);
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.cinputDataIs + JSON.stringify(inputData));
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = [true, false];
 
   // inputData.shift(); // Remove the first element of the array, because that is what is used to call this command.
   // @Reference: {@Link https://stackoverflow.com/questions/9153571/is-there-a-way-to-get-version-from-package-json-in-nodejs-code}
-  let frameworkMetaDataPathAndFilename =
-    await haystacks.getConfigurationSetting(
-      wrd.csystem,
-      cfg.cframeworkRootPath,
-    );
-  frameworkMetaDataPathAndFilename =
-    frameworkMetaDataPathAndFilename + bas.cForwardSlash + sys.cpackageDotJson;
-  frameworkMetaDataPathAndFilename = path.resolve(
-    frameworkMetaDataPathAndFilename,
-  );
-  let frameworkMetaData = await haystacks.executeBusinessRules(
-    [frameworkMetaDataPathAndFilename, false],
-    [biz.cloadDataFile],
-  );
+  let frameworkMetaDataPathAndFilename = await haystacks.getConfigurationSetting(wrd.csystem, cfg.cframeworkRootPath);
+  frameworkMetaDataPathAndFilename = frameworkMetaDataPathAndFilename + bas.cForwardSlash + sys.cpackageDotJson;
+  frameworkMetaDataPathAndFilename = path.resolve(frameworkMetaDataPathAndFilename);
+  let frameworkMetaData = await haystacks.executeBusinessRules([frameworkMetaDataPathAndFilename, false], [biz.cloadDataFile]);
   let frameworkName = frameworkMetaData[wrd.cname];
   let frameworkVersion = frameworkMetaData[wrd.cversion];
   let frameworkDescription = frameworkMetaData[wrd.cdescription];
@@ -131,8 +81,8 @@ async function deployMetaData(inputData, inputMetaData) {
   metaDataOutput = {
     Name: frameworkName,
     Version: frameworkVersion,
-    Description: frameworkDescription,
-  };
+    Description: frameworkDescription
+  }
 
   // We should check to see if the newly copied version is different than the version that was loaded initially.
   // Most likely if we are copying this file, then the version number should have been updated.
@@ -140,58 +90,23 @@ async function deployMetaData(inputData, inputMetaData) {
   // The application deployment process will try to generate a zip package for the previous version.
   // That would fail the process because the previous version would have already been released.
   // Which would mean that the release process would have to be run twice for every release, and we want to avoid that.
-  let currentFrameworkVersion = await haystacks.getConfigurationSetting(
-    wrd.csystem,
-    sys.cFrameworkVersionNumber,
-  );
+  let currentFrameworkVersion = await haystacks.getConfigurationSetting(wrd.csystem, sys.cFrameworkVersionNumber);
   if (currentFrameworkVersion != frameworkVersion) {
     // The current version number is out dated. We need to update it with the new version number.
     // Update all these generic fields that come from the metaData.json file.
-    await haystacks.setConfigurationSetting(
-      wrd.csystem,
-      sys.cFrameworkVersionNumber,
-      frameworkVersion,
-    );
-    await haystacks.setConfigurationSetting(
-      wrd.csystem,
-      sys.cFrameworkName,
-      frameworkName,
-    );
-    await haystacks.setConfigurationSetting(
-      wrd.csystem,
-      sys.cFrameworkDescription,
-      frameworkDescription,
-    );
+    await haystacks.setConfigurationSetting(wrd.csystem, sys.cFrameworkVersionNumber, frameworkVersion);
+    await haystacks.setConfigurationSetting(wrd.csystem, sys.cFrameworkName, frameworkName);
+    await haystacks.setConfigurationSetting(wrd.csystem, sys.cFrameworkDescription, frameworkDescription);
   } // End-if (currentFrameworkVersion != frameworkVersion)
 
-  let metaDataPathAndFilename = await haystacks.getConfigurationSetting(
-    wrd.csystem,
-    cfg.cframeworkResourcesPath,
-  );
-  metaDataPathAndFilename = path.resolve(
-    metaDataPathAndFilename + sys.cmetaDatadotJson,
-  );
+  let metaDataPathAndFilename = await haystacks.getConfigurationSetting(wrd.csystem, cfg.cframeworkResourcesPath);
+  metaDataPathAndFilename = path.resolve(metaDataPathAndFilename + sys.cmetaDatadotJson);
   // metaDataPathAndFilename is:
-  await haystacks.consoleLog(
-    namespacePrefix,
-    functionName,
-    msg.cmetaDataPathAndFilenameIs + metaDataPathAndFilename,
-  );
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.cmetaDataPathAndFilenameIs + metaDataPathAndFilename);
   // metaDataOutput is:
-  await haystacks.consoleLog(
-    namespacePrefix,
-    functionName,
-    msg.cmetaDataOutputIs + JSON.stringify(metaDataOutput),
-  );
-  returnData[1] = await haystacks.executeBusinessRules(
-    [metaDataPathAndFilename, metaDataOutput],
-    [biz.csaveDataFile],
-  );
-  await haystacks.consoleLog(
-    namespacePrefix,
-    functionName,
-    msg.creturnDataIs + JSON.stringify(returnData),
-  );
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.cmetaDataOutputIs + JSON.stringify(metaDataOutput));
+  returnData[1] = await haystacks.executeBusinessRules([metaDataPathAndFilename, metaDataOutput], [biz.csaveDataFile]);
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.creturnDataIs + JSON.stringify(returnData));
   await haystacks.consoleLog(namespacePrefix, functionName, msg.cEND_Function);
   return returnData;
 }
@@ -208,115 +123,43 @@ async function deployMetaData(inputData, inputMetaData) {
  */
 async function deployApplication(inputData, inputMetaData) {
   let functionName = deployApplication.name;
-  await haystacks.consoleLog(
-    namespacePrefix,
-    functionName,
-    msg.cBEGIN_Function,
-  );
-  await haystacks.consoleLog(
-    namespacePrefix,
-    functionName,
-    msg.cinputDataIs + JSON.stringify(inputData),
-  );
-  await haystacks.consoleLog(
-    namespacePrefix,
-    functionName,
-    msg.cinputMetaDataIs + inputMetaData,
-  );
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.cBEGIN_Function);
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.cinputDataIs + JSON.stringify(inputData));
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = [true, false];
-  let passAllConstantsValidation = await haystacks.getConfigurationSetting(
-    wrd.csystem,
-    cfg.cpassAllConstantsValidation,
-  );
-  let passAllCommandAliasesDuplicateChecks =
-    await haystacks.getConfigurationSetting(
-      wrd.csystem,
-      cfg.cpassedAllCommandAliasesDuplicateChecks,
-    );
-  let passAllWorkflowDuplicateChecks = await haystacks.getConfigurationSetting(
-    wrd.csystem,
-    cfg.cpassedAllWorkflowDuplicateChecks,
-  );
+  let passAllConstantsValidation = await haystacks.getConfigurationSetting(wrd.csystem, cfg.cpassAllConstantsValidation);
+  let passAllCommandAliasesDuplicateChecks = await haystacks.getConfigurationSetting(wrd.csystem, cfg.cpassedAllCommandAliasesDuplicateChecks);
+  let passAllWorkflowDuplicateChecks = await haystacks.getConfigurationSetting(wrd.csystem, cfg.cpassedAllWorkflowDuplicateChecks);
 
-  if (
-    passAllConstantsValidation === true &&
-    passAllCommandAliasesDuplicateChecks === true &&
-    passAllWorkflowDuplicateChecks === true
-  ) {
+  if (passAllConstantsValidation === true && passAllCommandAliasesDuplicateChecks === true && passAllWorkflowDuplicateChecks === true) {
     // DEPLOY APPLICATION
     console.log(msg.cDEPLOY_APPLICATION);
-    let frameworkRootPath = await haystacks.getConfigurationSetting(
-      wrd.csystem,
-      cfg.cframeworkRootPath,
-    );
-    let sourcePath =
-      frameworkRootPath +
-      (await haystacks.getConfigurationSetting(
-        wrd.csystem,
-        app_cfg.csourcePath,
-      ));
-    let destinationPath =
-      frameworkRootPath +
-      (await haystacks.getConfigurationSetting(
-        wrd.csystem,
-        app_cfg.cdestinationPath,
-      ));
+    let frameworkRootPath = await haystacks.getConfigurationSetting(wrd.csystem, cfg.cframeworkRootPath)
+    let sourcePath = frameworkRootPath + await haystacks.getConfigurationSetting(wrd.csystem, app_cfg.csourcePath);
+    let destinationPath = frameworkRootPath + await haystacks.getConfigurationSetting(wrd.csystem, app_cfg.cdestinationPath);
     // sourcePath is:
-    await haystacks.consoleLog(
-      namespacePrefix,
-      functionName,
-      app_msg.csourcePathIs + sourcePath,
-    );
+    await haystacks.consoleLog(namespacePrefix, functionName, app_msg.csourcePathIs + sourcePath);
     // destinationPath is:
-    await haystacks.consoleLog(
-      namespacePrefix,
-      functionName,
-      app_msg.cdestinationPathIs + destinationPath,
-    );
-    let deploymentStatus = await haystacks.executeBusinessRules(
-      [[sourcePath, destinationPath], []],
-      [biz.ccopyAllFilesAndFoldersFromFolderToFolder],
-    );
+    await haystacks.consoleLog(namespacePrefix, functionName, app_msg.cdestinationPathIs + destinationPath);
+    let deploymentStatus = await haystacks.executeBusinessRules([[sourcePath, destinationPath], []], [biz.ccopyAllFilesAndFoldersFromFolderToFolder]);
     if (deploymentStatus === true) {
-      await haystacks.consoleLog(
-        namespacePrefix,
-        functionName,
-        app_msg.cDeploymentWasCompleted + true,
-      );
-      await haystacks.setConfigurationSetting(
-        wrd.csystem,
-        app_cfg.cdeploymentCompleted,
-        true,
-      );
+      await haystacks.consoleLog(namespacePrefix, functionName, app_msg.cDeploymentWasCompleted + true);
+      await haystacks.setConfigurationSetting(wrd.csystem, app_cfg.cdeploymentCompleted, true);
       returnData[1] = true;
     } else {
-      await haystacks.consoleLog(
-        namespacePrefix,
-        functionName,
-        app_msg.cDeploymentFailed,
-      );
+      await haystacks.consoleLog(namespacePrefix, functionName, app_msg.cDeploymentFailed);
     }
   } else {
     if (passAllConstantsValidation === false) {
       // ERROR: Release failed because of a failure in the constants validation system. Please fix ASAP before attempting another deployment.
-      console.log(
-        app_msg.cdeployApplicationMessage1a +
-          app_msg.cdeployApplicationMessage2a,
-      );
+      console.log(app_msg.cdeployApplicationMessage1a + app_msg.cdeployApplicationMessage2a);
     } // End-if (passAllConstantsValidation === false)
     if (passAllCommandAliasesDuplicateChecks === false) {
       // ERROR: Release failed because of a failure in the commands alias validation system. Please fix ASAP before attempting another deployment.
-      console.log(
-        app_msg.cdeployApplicationMessage1b +
-          app_msg.cdeployApplicationMessage2a,
-      );
+      console.log(app_msg.cdeployApplicationMessage1b + app_msg.cdeployApplicationMessage2a);
     } // End-if (passAllCommandAliasesDuplicateChecks === false)
   }
-  await haystacks.consoleLog(
-    namespacePrefix,
-    functionName,
-    msg.creturnDataIs + JSON.stringify(returnData),
-  );
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.creturnDataIs + JSON.stringify(returnData));
   await haystacks.consoleLog(namespacePrefix, functionName, msg.cEND_Function);
   return returnData;
 }
@@ -335,101 +178,43 @@ async function deployApplication(inputData, inputMetaData) {
  */
 async function releaseApplication(inputData, inputMetaData) {
   let functionName = releaseApplication.name;
-  await haystacks.consoleLog(
-    namespacePrefix,
-    functionName,
-    msg.cBEGIN_Function,
-  );
-  await haystacks.consoleLog(
-    namespacePrefix,
-    functionName,
-    msg.cinputDataIs + JSON.stringify(inputData),
-  );
-  await haystacks.consoleLog(
-    namespacePrefix,
-    functionName,
-    msg.cinputMetaDataIs + inputMetaData,
-  );
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.cBEGIN_Function);
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.cinputDataIs + JSON.stringify(inputData));
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = [true, false];
-  let errorMessage = "";
-  let passAllConstantsValidation = await haystacks.getConfigurationSetting(
-    wrd.csystem,
-    cfg.cpassAllConstantsValidation,
-  );
-  let passAllCommandAliasesDuplicateChecks =
-    await haystacks.getConfigurationSetting(
-      wrd.csystem,
-      cfg.cpassedAllCommandAliasesDuplicateChecks,
-    );
-  let passAllWorkflowDuplicateChecks = await haystacks.getConfigurationSetting(
-    wrd.csystem,
-    cfg.cpassedAllWorkflowDuplicateChecks,
-  );
-  if (
-    passAllConstantsValidation === true &&
-    passAllCommandAliasesDuplicateChecks === true &&
-    passAllWorkflowDuplicateChecks === true
-  ) {
+  let errorMessage = '';
+  let passAllConstantsValidation = await haystacks.getConfigurationSetting(wrd.csystem, cfg.cpassAllConstantsValidation);
+  let passAllCommandAliasesDuplicateChecks = await haystacks.getConfigurationSetting(wrd.csystem, cfg.cpassedAllCommandAliasesDuplicateChecks);
+  let passAllWorkflowDuplicateChecks = await haystacks.getConfigurationSetting(wrd.csystem, cfg.cpassedAllWorkflowDuplicateChecks);
+  if (passAllConstantsValidation === true && passAllCommandAliasesDuplicateChecks === true && passAllWorkflowDuplicateChecks === true) {
     // RELEASE APPLICATION
     console.log(msg.cRELEASE_APPLICATION);
-    let frameworkRootPath = await haystacks.getConfigurationSetting(
-      wrd.csystem,
-      cfg.cframeworkRootPath,
-    );
+    let frameworkRootPath = await haystacks.getConfigurationSetting(wrd.csystem, cfg.cframeworkRootPath)
     // NOTE: The destinationResourcesPath works out to be the root/bin of the framework, for this next operation that will be our source path.
-    let sourcePath =
-      frameworkRootPath +
-      (await haystacks.getConfigurationSetting(
-        wrd.csystem,
-        app_cfg.cdestinationResourcesPath,
-      ));
-    let destinationPath =
-      frameworkRootPath +
-      (await haystacks.getConfigurationSetting(
-        wrd.csystem,
-        app_cfg.creleasePath,
-      ));
+    let sourcePath = frameworkRootPath + await haystacks.getConfigurationSetting(wrd.csystem, app_cfg.cdestinationResourcesPath);
+    let destinationPath = frameworkRootPath + await haystacks.getConfigurationSetting(wrd.csystem, app_cfg.creleasePath);
     // sourcePath is:
-    await haystacks.consoleLog(
-      namespacePrefix,
-      functionName,
-      app_msg.csourcePathIs + sourcePath,
-    );
+    await haystacks.consoleLog(namespacePrefix, functionName, app_msg.csourcePathIs + sourcePath);
     // destinationPath is:
-    await haystacks.consoleLog(
-      namespacePrefix,
-      functionName,
-      app_msg.cdestinationPathIs + destinationPath,
-    );
-    returnData[1] = await haystacks.executeBusinessRules(
-      [sourcePath, destinationPath],
-      [app_biz.cbuildReleasePackage],
-    );
+    await haystacks.consoleLog(namespacePrefix, functionName, app_msg.cdestinationPathIs + destinationPath);
+    returnData[1] = await haystacks.executeBusinessRules([sourcePath, destinationPath], [app_biz.cbuildReleasePackage]);
   } else {
     // Technically it should never even get here, because this same condition is caught at the deployApplication command.
     // The deployApplication command should be executing before this command.
     if (passAllConstantsValidation === false) {
       // ERROR: Release failed because of a failure in the constants validation system. Please fix ASAP before attempting another deployment.
-      errorMessage =
-        app_msg.cdeployApplicationMessage1a +
-        app_msg.cdeployApplicationMessage2a;
+      errorMessage = app_msg.cdeployApplicationMessage1a + app_msg.cdeployApplicationMessage2a;
       console.log(errorMessage);
       returnData[1] = errorMessage;
     } // End-if (passAllConstantsValidation === false)
     if (passAllCommandAliasesDuplicateChecks === false) {
       // ERROR: Release failed because of a failure in the commands alias validation system. Please fix ASAP before attempting another deployment.
-      errorMessage =
-        app_msg.cdeployApplicationMessage1b +
-        app_msg.cdeployApplicationMessage2a;
+      errorMessage = app_msg.cdeployApplicationMessage1b + app_msg.cdeployApplicationMessage2a;
       console.log(errorMessage);
       returnData[1] = errorMessage;
     } // End-if (passAllCommandAliasesDuplicateChecks === false)
   }
-  await haystacks.consoleLog(
-    namespacePrefix,
-    functionName,
-    msg.creturnDataIs + JSON.stringify(returnData),
-  );
+  await haystacks.consoleLog(namespacePrefix, functionName, msg.creturnDataIs + JSON.stringify(returnData));
   await haystacks.consoleLog(namespacePrefix, functionName, msg.cEND_Function);
   return returnData;
 }
@@ -438,5 +223,5 @@ export default {
   customEchoCommand,
   deployMetaData,
   deployApplication,
-  releaseApplication,
+  releaseApplication
 };

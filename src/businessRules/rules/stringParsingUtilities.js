@@ -15,24 +15,13 @@
 // Internal imports
 
 // External imports
-import hayConst from "@haystacks/constants";
-import path from "path";
+import hayConst from '@haystacks/constants';
+import path from 'path';
 
-const { bas, gen, sys, wrd } = hayConst;
-const baseFileName = path.basename(
-  import.meta.url,
-  path.extname(import.meta.url),
-);
+const {bas, gen, sys, wrd} = hayConst;
+const baseFileName = path.basename(import.meta.url, path.extname(import.meta.url));
 // framework.businessRules.rules.stringParsingUtilities.
-const namespacePrefix =
-  wrd.cframework +
-  bas.cDot +
-  sys.cbusinessRules +
-  bas.cDot +
-  wrd.crules +
-  bas.cDot +
-  baseFileName +
-  bas.cDot;
+const namespacePrefix = wrd.cframework + bas.cDot + sys.cbusinessRules + bas.cDot + wrd.crules + bas.cDot + baseFileName + bas.cDot;
 
 /**
  * @function parseSystemRootPath
@@ -54,10 +43,10 @@ async function parseSystemRootPath(inputData, inputMetaData) {
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   // console.log(`inputData is: ${JSON.stringify(inputData)}`);
   // console.log(`inputMetaData is: ${JSON.stringify(inputMetaData)}`);
-  let returnData = "";
+  let returnData = '';
   if (inputData && inputMetaData) {
     let applicationName;
-    let pathElements = "";
+    let pathElements = '';
     applicationName = await parseSystemRootPathApplicationName(inputMetaData);
     if (inputData.includes(bas.cBackSlash) === true) {
       // console.log('caught the case of back slash');
@@ -73,11 +62,7 @@ async function parseSystemRootPath(inputData, inputMetaData) {
       if (i === 0) {
         // console.log('case: i === 0');
         returnData = pathElement;
-      } else if (
-        pathElement === applicationName ||
-        pathElement === inputMetaData ||
-        pathElement.includes(applicationName)
-      ) {
+      } else if (pathElement === applicationName || pathElement === inputMetaData || pathElement.includes(applicationName)) {
         // console.log(`case: pathElement === ${applicationName}`);
         returnData = returnData + bas.cBackSlash + pathElement + bas.cBackSlash; // `${returnData}\\${pathElement}\\`;
         break;
@@ -107,12 +92,9 @@ async function parseSystemRootPathApplicationName(inputData, inputMetaData) {
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   // console.log(`inputData is: ${JSON.stringify(inputData)}`);
   // console.log(`inputMetaData is: ${JSON.stringify(inputMetaData)}`);
-  let returnData = "";
+  let returnData = '';
   // Check for either "/" or "-", catch the case for application name: @haystacks/async && @haystacks-async
-  if (
-    inputData &&
-    (inputData.includes(bas.cForwardSlash) || inputData.includes(bas.cDash))
-  ) {
+  if (inputData && (inputData.includes(bas.cForwardSlash) || inputData.includes(bas.cDash))) {
     let applicationNameArray = [];
     if (inputData.includes(bas.cForwardSlash)) {
       applicationNameArray = inputData.split(bas.cForwardSlash);
@@ -158,16 +140,16 @@ async function stringToDataType(inputData, inputMetaData) {
   // console.log(`inputMetaData is: ${JSON.stringify(inputMetaData)}`);
   let returnData = false;
   if (inputData) {
-    let dataType = await determineObjectDataType(inputData, "");
+    let dataType = await determineObjectDataType(inputData, '');
     switch (dataType) {
       case wrd.cBoolean:
-        returnData = await stringToBoolean(inputData, "");
+        returnData = await stringToBoolean(inputData, '');
         break;
       case wrd.cInteger:
-        returnData = parseInt(inputData, "");
+        returnData = parseInt(inputData, '');
         break;
       case wrd.cFloat:
-        returnData = parseFloat(inputData, "");
+        returnData = parseFloat(inputData, '');
         break;
       case wrd.cString:
         returnData = inputData;
@@ -175,7 +157,7 @@ async function stringToDataType(inputData, inputMetaData) {
       default: // We don't know what kind of object this is, better just return it the way it is.
         returnData = inputData;
         break;
-    } // End-switch (dataType)
+     } // End-switch (dataType)
   } // End-if (inputData)
   // console.log(`returnData is: ${JSON.stringify(returnData)}`);
   // console.log(`END ${namespacePrefix}${functionName} function`);
@@ -206,18 +188,10 @@ async function stringToBoolean(inputData, inputMetaData) {
       returnData = inputData;
     } else {
       switch (inputData.toLowerCase().trim()) {
-        case gen.ctrue:
-        case bas.ct:
-        case bas.cy:
-        case gen.cyes:
-        case bas.con:
+        case gen.ctrue: case bas.ct: case bas.cy: case gen.cyes: case bas.con:
           returnData = true;
           break;
-        case gen.cfalse:
-        case bas.cf:
-        case bas.cn:
-        case bas.cno:
-        case gen.coff:
+        case gen.cfalse: case bas.cf: case bas.cn: case bas.cno: case gen.coff:
           returnData = false;
           break;
         default:
@@ -225,10 +199,10 @@ async function stringToBoolean(inputData, inputMetaData) {
           break;
       } // End-switch (inputData.toLowerCase().trim())
     }
-  } // End-if (inputData)
-  // console.log(`returnData is: ${JSON.stringify(returnData)}`);
-  // console.log(`END ${namespacePrefix}${functionName} function`);
-  return returnData;
+ } // End-if (inputData)
+ // console.log(`returnData is: ${JSON.stringify(returnData)}`);
+ // console.log(`END ${namespacePrefix}${functionName} function`);
+ return returnData;
 }
 
 /**
@@ -249,16 +223,15 @@ async function determineObjectDataType(inputData, inputMetaData) {
   // console.log(`inputMetaData is: ${JSON.stringify(inputMetaData)}`);
   let returnData = false;
   if (inputData) {
-    if ((await isBoolean(inputData, "")) === true) {
+    if (await isBoolean(inputData, '') === true) {
       returnData = wrd.cBoolean;
-    } else if ((await isInteger(inputData, "")) === true) {
+    } else if (await isInteger(inputData, '') === true) {
       returnData = wrd.cInteger;
-    } else if ((await isFloat(inputData, "")) === true) {
+    } else if (await isFloat(inputData, '') === true) {
       returnData = wrd.cFloat;
-    } else if ((await isString(inputData, "")) === true) {
+    } else if (await isString(inputData, '') === true) {
       returnData = wrd.cString;
-    } else {
-      // Otherwise we cannot figure out what the data type is.
+    } else { // Otherwise we cannot figure out what the data type is.
       // No real way to tell the difference between Short, Long and Double.
       // And we don't really need to tell the difference between all these complicated data types.
       // At least not yet!
@@ -289,24 +262,14 @@ async function isBoolean(inputData, inputMetaData) {
   // console.log(`inputMetaData is: ${JSON.stringify(inputMetaData)}`);
   let returnData = false;
   if (inputData) {
-    if (typeof inputData === "boolean") {
+    if (typeof inputData === 'boolean') {
       returnData = true;
-    } else if (typeof inputData === "number") {
-      returnData = false;
+    } else if (typeof inputData === 'number') {
+        returnData = false;
     } else {
       inputData = inputData.toLowerCase().trim();
-      if (
-        inputData === gen.ctrue ||
-        inputData === bas.ct ||
-        inputData === bas.cy ||
-        inputData === gen.cyes ||
-        inputData === bas.con ||
-        inputData === gen.cfalse ||
-        inputData === bas.cf ||
-        inputData === bas.cn ||
-        inputData === bas.cno ||
-        inputData === gen.coff
-      ) {
+      if (inputData === gen.ctrue || inputData === bas.ct || inputData === bas.cy || inputData === gen.cyes || inputData === bas.con ||
+      inputData === gen.cfalse || inputData === bas.cf || inputData === bas.cn || inputData === bas.cno || inputData === gen.coff) {
         returnData = true;
       } else {
         returnData = false;
@@ -339,13 +302,11 @@ async function isInteger(inputData, inputMetaData) {
       if (inputData % 1 === 0) {
         // It's a whole number, aka: integer
         returnData = true;
-      } else {
-        // Else clause is redundant, but kept here for code completeness.
+      } else { // Else clause is redundant, but kept here for code completeness.
         // Might be a number, but not a whole number.
         returnData = false;
       }
-    } else {
-      // Else clause is redundant, but kept here for code completeness.
+    } else { // Else clause is redundant, but kept here for code completeness.
       // Possibly also console log here for debugging.
       returnData = false;
     }
@@ -374,8 +335,7 @@ async function isFloat(inputData, inputMetaData) {
   if (inputData) {
     if (!isNaN(inputData) && inputData.indexOf(bas.cDot) !== -1) {
       returnData = true;
-    } else {
-      // Else clause is redundant, but kept here for code completeness.
+    } else { // Else clause is redundant, but kept here for code completeness.
       // Possibly also console log here for debugging.
       returnData = false;
     }
@@ -404,16 +364,11 @@ async function isString(inputData, inputMetaData) {
   // console.log(`inputMetaData is: ${JSON.stringify(inputMetaData)}`);
   let returnData = false;
   if (inputData) {
-    if (
-      (await isBoolean(inputData, "")) === false &&
-      (await isInteger(inputData, "")) === false &&
-      (await isFloat(inputData, "")) === false &&
-      (typeof inputData === wrd.cstring || inputData instanceof String)
-    ) {
+    if (await isBoolean(inputData, '') === false && await isInteger(inputData, '') === false && await isFloat(inputData, '') === false &&
+    (typeof inputData === wrd.cstring || inputData instanceof String)) {
       returnData = true; // If it's not a Boolean, and not an Integer, and not a Float, then it must be a string,
       // especially given the type of the variable is a string!
-    } else {
-      // Else clause is redundant, but kept here for code completeness.
+    } else { // Else clause is redundant, but kept here for code completeness.
       // Possibly also console log here for debugging.
       returnData = false;
     }
@@ -439,12 +394,9 @@ async function replaceDoublePercentWithMessage(inputData, inputMetaData) {
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   // console.log(`inputData is: ${JSON.stringify(inputData)}`);
   // console.log(`inputMetaData is: ${JSON.stringify(inputMetaData)}`);
-  let returnData = "";
+  let returnData = '';
   if (inputData) {
-    returnData = await utilitiesReplaceCharacterWithCharacter(inputData, [
-      bas.cDoublePercent,
-      inputMetaData,
-    ]);
+    returnData = await utilitiesReplaceCharacterWithCharacter(inputData, [bas.cDoublePercent, inputMetaData]);
   }
   // console.log(`returnData is: ${JSON.stringify(returnData)}`);
   // console.log(`END ${namespacePrefix}${functionName} function`);
@@ -464,10 +416,7 @@ async function replaceDoublePercentWithMessage(inputData, inputMetaData) {
  * @author Seth Hollingsead
  * @date 2021/12/28
  */
-async function utilitiesReplaceCharacterWithCharacter(
-  inputData,
-  inputMetaData,
-) {
+async function utilitiesReplaceCharacterWithCharacter(inputData, inputMetaData) {
   // let functionName = utilitiesReplaceCharacterWithCharacter.name;
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   // console.log(`inputData is: ${JSON.stringify(inputData)}`);
@@ -504,5 +453,5 @@ export default {
   isFloat,
   isString,
   replaceDoublePercentWithMessage,
-  utilitiesReplaceCharacterWithCharacter,
+  utilitiesReplaceCharacterWithCharacter
 };
