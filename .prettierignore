@@ -1,8 +1,0 @@
-.git*
-**/*.json
-*.md
-
-# Ignore artifacts
-bin/**
-release/**
-

@@ -10,7 +10,6 @@
     "node": ">=16.0.0"
   },
   "scripts": {
-    "format": "prettier --write .",
     "lint": "npx eslint .",
     "release": "node ./build/buildRelease/src/buildRelease.js",
     "test": "node ./test/testHarness/src/testHarness.js",
@@ -51,18 +50,5 @@
   "bugs": {
     "url": "https://github.com/SethEden/haystacks-async/issues"
   },
-  "homepage": "https://github.com/SethEden/haystacks-async#readme",
-  "prettier": {
-    "overrides": [
-      {
-        "files": [
-          "./src/**/*.js",
-          "./test/**/*.js"
-        ],
-        "options": {
-          "semi": true
-        }
-      }
-    ]
-  }
+  "homepage": "https://github.com/SethEden/haystacks-async#readme"
 }
