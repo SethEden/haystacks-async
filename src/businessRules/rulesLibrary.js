@@ -322,6 +322,7 @@ async function initRulesLibrary() {
      [biz.ccleanRootPath]: (inputData, inputMetaData) => fileOperations.cleanRootPath(inputData, inputMetaData),
      [biz.ccopyFileSync]: (inputData, inputMetaData) => fileOperations.copyFileSync(inputData, inputMetaData),
      [biz.ccopyFolderRecursiveSync]: (inputData, inputMetaData) => fileOperations.copyFolderRecursiveSync(inputData, inputMetaData),
+     [biz.cdeleteFile]: (inputData, inputMetaData) => fileOperations.deleteFile(inputData, inputMetaData),
      [biz.cappendMessageToFile]: (inputData, inputMetaData) => fileOperations.appendMessageToFile(inputData, inputMetaData),
 
      // ***********************************************

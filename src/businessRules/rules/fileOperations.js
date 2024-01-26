@@ -743,6 +743,44 @@ async function copyFolderRecursiveSync(inputData, inputMetaData) {
 }
 
 /**
+ * @function deleteFile
+ * @description Deletes a file at the specified file path and file name.
+ * @param {string} inputData The fully qualified path and file name for the file that should be deleted.
+ * @param {string} inputMetaData Not used for this business rule.
+ * @return {boolean} A True or False to indicate if the delete was successful or not.
+ * @author Seth Hollingsead
+ * @date 2024/01/26
+ */
+async function deleteFile(inputData, inputMetaData) {
+  let functionName = deleteFile.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
+  let returnData = false;
+  let caughtAnError = false;
+  if (inputData) {
+    await fs.unlink(inputData, async (deleteError) => {
+      if (deleteError) {
+        // ERROR: There was an error attempting to delete the file:
+        console.log(msg.cErrorDeleteFileMessage02 + inputData);
+        console.log(deleteError);
+      } else {
+        caughtAnError = true;
+      }
+    });
+    if (caughtAnError === false) {
+      returnData = true;
+    }
+  } else {
+    // ERROR: No file specified, cannot delete nothing.
+    console.log(msg.cErrorDeleteFileMessage01);
+  }
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
+/**
  * @function appendMessageToFile
  * @description Opens a file and appends a message to the file, then closes the file.
  * @param {string} inputData The fully qualified path and file name for the file that should be opened, appended and saved.
@@ -795,5 +833,6 @@ export default {
   cleanRootPath,
   copyFileSync,
   copyFolderRecursiveSync,
+  deleteFile,
   appendMessageToFile
 }
