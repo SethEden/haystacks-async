@@ -1,0 +1,307 @@
+--------------------------------------OneInput------------------------------------------
+/**
+ * @function testNameHere
+ * @description Tests the positive and negative test cases of the testNameHere
+ * @author Vlad Sorokin
+ * @date 2023/Month/Day
+ */
+describe(tst_con.ctestNameHere, () => {
+    /**
+     * @function testNameHere_validData
+     * @description Tests the main function testNameHere with a valid input.
+     * @author Vlad Sorokin
+     * @date 2023/Month/Day
+     */
+    test(tst_con.ctestNameHere_validData, async () => {
+        // Arrange
+        
+
+        // Act
+        let returnData = await main.testNameHere(pluginListArray);
+
+        // Assert
+        expect(returnData).toEqual(true);
+    });
+
+    /**
+     * @function testNameHere_inValid UPPERCaseNameOfTheInput1 String
+     * @description Tests the main function testNameHere with a invalid data string.
+     * @author Vlad Sorokin
+     * @date 2023/Month/Day
+     */
+    test(tst_con.ctestNameHere_inValid UPPERCaseNameOfTheInput1 String, async () => {
+        // Arrange
+        
+        
+        // Act
+        let returnData = await main.testNameHere(pluginListArray);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function testNameHere_inValid UPPERCaseNameOfTheInput1 Integer
+     * @description Tests the main function testNameHere with a invalid data integer.
+     * @author Vlad Sorokin
+     * @date 2023/Month/Day
+     */
+    test(tst_con.ctestNameHere_inValid UPPERCaseNameOfTheInput1 Integer, async () => {
+        // Arrange
+        
+
+        // Act
+        let returnData = await main.testNameHere(pluginListArray);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function testNameHere_inValid UPPERCaseNameOfTheInput1 Boolean
+     * @description Tests the main function testNameHere with a invalid data boolean.
+     * @author Vlad Sorokin
+     * @date 2023/Month/Day
+     */
+    test(tst_con.ctestNameHere_inValid UPPERCaseNameOfTheInput1 Boolean, async () => {
+        // Arrange
+        
+        
+        // Act
+        let returnData = await main.testNameHere(pluginListArray);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function testNameHere_inValid UPPERCaseNameOfTheInput1 Undefined
+     * @description Tests the main function testNameHere with a invalid data undefined.
+     * @author Vlad Sorokin
+     * @date 2023/Month/Day
+     */
+    test(tst_con.ctestNameHere_inValid UPPERCaseNameOfTheInput1 Undefined, async () => {
+        // Arrange
+        
+        
+        // Act
+        let returnData = await main.testNameHere(pluginListArray);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function testNameHere_inValid UPPERCaseNameOfTheInput1 NaN
+     * @description Tests the main function testNameHere with a invalid data NaN.
+     * @author Vlad Sorokin
+     * @date 2023/Month/Day
+     */
+    test(tst_con.ctestNameHere_inValid UPPERCaseNameOfTheInput1 NaN, async () => {
+        // Arrange
+        
+        
+        // Act
+        let returnData = await main.testNameHere(pluginListArray);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+})
+--------------------------------------TwoInput------------------------------------------
+/**
+ * @function testNameHeree
+ * @description Tests the positive and negative test cases of the testNameHeree
+ * @author Vlad Sorokin
+ * @date 2023/01/12
+ */
+describe(tst_con.ctestNameHeree, () => {
+    /**
+     * @function testNameHeree_valid UPPERCaseNameOfTheInput1 Data
+     * @description Tests the main function testNameHeree with a valid input.
+     * @author Vlad Sorokin
+     * @date 2023/01/12
+     */
+    test(tst_con.ctestNameHeree_validData, async () => {
+        // Arrange
+        
+        
+        // Act
+        let returnData = await main.testNameHeree( UPPERCaseNameOfTheInput1 ,  UPPERCaseNameOfTheInput2 );
+
+        // Assert
+        expect(returnData).toEqual(true);
+    });
+
+    /**
+     * @function testNameHeree_inValid UPPERCaseNameOfTheInput1 String
+     * @description Tests the main function testNameHeree with a invalid data string.
+     * @author Vlad Sorokin
+     * @date 2023/01/12
+     */
+    test(tst_con.ctestNameHeree_inValid UPPERCaseNameOfTheInput1 String, async () => {
+        // Arrange
+        
+        
+        // Act
+        let returnData = await main.testNameHeree( UPPERCaseNameOfTheInput1 ,  UPPERCaseNameOfTheInput2 );
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function testNameHeree_inValid UPPERCaseNameOfTheInput2 String
+     * @description Tests the main function testNameHeree with a invalid data string.
+     * @author Vlad Sorokin
+     * @date 2023/01/12
+     */
+    test(tst_con.ctestNameHeree_inValid UPPERCaseNameOfTheInput2 String, async () => {
+        // Arrange
+        
+        
+        // Act
+        let returnData = await main.testNameHeree( UPPERCaseNameOfTheInput1 ,  UPPERCaseNameOfTheInput2 );
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function testNameHeree_inValid UPPERCaseNameOfTheInput1 Integer
+     * @description Tests the main function testNameHeree with a invalid data integer.
+     * @author Vlad Sorokin
+     * @date 2023/01/12
+     */
+    test(tst_con.ctestNameHeree_inValid UPPERCaseNameOfTheInput1 Integer, async () => {
+        // Arrange
+        
+        
+        // Act
+        let returnData = await main.testNameHeree( UPPERCaseNameOfTheInput1 ,  UPPERCaseNameOfTheInput2 );
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function testNameHeree_inValid UPPERCaseNameOfTheInput1 Boolean
+     * @description Tests the main function testNameHeree with a invalid data boolean.
+     * @author Vlad Sorokin
+     * @date 2023/01/12
+     */
+    test(tst_con.ctestNameHeree_inValid UPPERCaseNameOfTheInput1 Boolean, async () => {
+        // Arrange
+        
+        
+        // Act
+        let returnData = await main.testNameHeree( UPPERCaseNameOfTheInput1 ,  UPPERCaseNameOfTheInput2 );
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function testNameHeree_inValid UPPERCaseNameOfTheInput2 Integer
+     * @description Tests the main function testNameHeree with a invalid data integer.
+     * @author Vlad Sorokin
+     * @date 2023/01/12
+     */
+    test(tst_con.ctestNameHeree_inValid UPPERCaseNameOfTheInput2 Integer, async () => {
+        // Arrange
+        
+        
+        // Act
+        let returnData = await main.testNameHeree( UPPERCaseNameOfTheInput1 ,  UPPERCaseNameOfTheInput2 );
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function testNameHeree_inValid UPPERCaseNameOfTheInput2 Boolean
+     * @description Tests the main function testNameHeree with a invalid data boolean.
+     * @author Vlad Sorokin
+     * @date 2023/01/12
+     */
+    test(tst_con.ctestNameHeree_inValid UPPERCaseNameOfTheInput2 Boolean, async () => {
+        // Arrange
+        
+        
+        // Act
+        let returnData = await main.testNameHeree( UPPERCaseNameOfTheInput1 ,  UPPERCaseNameOfTheInput2 );
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function testNameHeree_inValid UPPERCaseNameOfTheInput1 Undefined
+     * @description Tests the main function testNameHeree with a invalid data undefined.
+     * @author Vlad Sorokin
+     * @date 2023/01/12
+     */
+    test(tst_con.ctestNameHeree_inValid UPPERCaseNameOfTheInput1 Undefined, async () => {
+        // Arrange
+        
+        
+        // Act
+        let returnData = await main.testNameHeree( UPPERCaseNameOfTheInput1 ,  UPPERCaseNameOfTheInput2 );
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function testNameHeree_inValid UPPERCaseNameOfTheInput1 NaN
+     * @description Tests the main function testNameHeree with a invalid data NaN.
+     * @author Vlad Sorokin
+     * @date 2023/01/12
+     */
+    test(tst_con.ctestNameHeree_inValid UPPERCaseNameOfTheInput1 NaN, async () => {
+        // Arrange
+        
+        
+        // Act
+        let returnData = await main.testNameHeree( UPPERCaseNameOfTheInput1 ,  UPPERCaseNameOfTheInput2 );
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function testNameHeree_inValid UPPERCaseNameOfTheInput2 Undefined
+     * @description Tests the main function testNameHeree with a invalid data undefined.
+     * @author Vlad Sorokin
+     * @date 2023/01/12
+     */
+    test(tst_con.ctestNameHeree_inValid UPPERCaseNameOfTheInput2 Undefined, async () => {
+        // Arrange
+        
+        
+        // Act
+        let returnData = await main.testNameHeree( UPPERCaseNameOfTheInput1 ,  UPPERCaseNameOfTheInput2 );
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function testNameHeree_inValid UPPERCaseNameOfTheInput2 NaN
+     * @description Tests the main function testNameHeree with a invalid data NaN.
+     * @author Vlad Sorokin
+     * @date 2023/01/12
+     */
+    test(tst_con.ctestNameHeree_inValid UPPERCaseNameOfTheInput2 NaN, async () => {
+        // Arrange
+        
+        
+        // Act
+        let returnData = await main.testNameHeree( UPPERCaseNameOfTheInput1 ,  UPPERCaseNameOfTheInput2 );
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+})
+
+01-30-2024 Almost finished work on debuging unit test initFramework function. Need to check spelling in test.configuration.constants.

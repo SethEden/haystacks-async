@@ -149,7 +149,7 @@ async function initFramework(clientConfiguration) {
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   // console.log('All loaded data is: ' + JSON.stringify(D));
   // clientConfiguration is:
-  // console.log(msg.cclientConfigurationIs + JSON.stringify(clientConfiguration));
+  console.log(msg.cclientConfigurationIs + JSON.stringify(clientConfiguration));
   // console.log(`END ${namespacePrefix}${functionName} function`);
   return clientConfiguration;
 }
