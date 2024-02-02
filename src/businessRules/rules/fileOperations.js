@@ -14,6 +14,8 @@
  * @requires {@link https://nodejs.dev/learn/the-nodejs-fs-module|fs}
  * @requires {@link https://www.npmjs.com/package/papaparse|papaparse}
  * @requires {@link https://www.npmjs.com/package/xml2js|xml2js}
+ * @requires {@link https://nodejs.org/api/child_process.html|child_process}
+ * @requires {@link https://www.nodejs.org/api/process.html|process}
  * @requires {@link https://www.npmjs.com/package/path|path}
  * @author Seth Hollingsead
  * @date 2022/04/28
@@ -30,6 +32,8 @@ import admZip from 'adm-zip';
 import fs from 'fs';
 import papa from 'papaparse';
 import xml2js from 'xml2js';
+import { exec } from 'child_process';
+import process from 'process';
 import path from 'path';
 
 const {bas, biz, cfg, gen, msg, sys, wrd} = hayConst;
@@ -746,10 +750,10 @@ async function copyFolderRecursiveSync(inputData, inputMetaData) {
  * @function deleteFile
  * @description Deletes a file at the specified file path and file name.
  * @param {string} inputData The fully qualified path and file name for the file that should be deleted.
- * @param {string} inputMetaData Not used for this business rule.
+ * @param {string} inputMetaData The current working directory.
  * @return {boolean} A True or False to indicate if the delete was successful or not.
- * @author Seth Hollingsead
- * @date 2024/01/26
+ * @author Karl-Edward F.P. Jean-Mehu
+ * @date 2024/02/02
  */
 async function deleteFile(inputData, inputMetaData) {
   let functionName = deleteFile.name;
@@ -757,25 +761,55 @@ async function deleteFile(inputData, inputMetaData) {
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = false;
-  let caughtAnError = false;
-  if (inputData) {
-    await fs.unlink(inputData, async (deleteError) => {
-      if (deleteError) {
-        // ERROR: There was an error attempting to delete the file:
-        console.log(msg.cErrorDeleteFileMessage02 + inputData);
-        console.log(deleteError);
-      } else {
-        caughtAnError = true;
-      }
-    });
-    if (caughtAnError === false) {
-      returnData = true;
+
+  if (typeof inputData === wrd.cstring && inputData.length > 0) {
+    // Normalize file paths
+    inputData = path.normalize(inputData);
+
+    // Normalize inputMetaData (cwd)
+    inputMetaData = (typeof inputMetaData === 'undefined') ? path.normalize('./') : path.normalize(inputMetaData);
+
+    // Obtain silentDeleteConfig config / deletes silently
+    let silentDeleteConfig = configurator.getConfigurationSetting(wrd.csystem, cfg.csilentDeleteFailure);
+    if (!silentDeleteConfig) silentDeleteConfig = true;
+
+    // The delete command to be used according to the current platform.
+    // Enforces a forced delete based on the silentDeleteConfig setting.
+    let deleteCommand = '';
+    let argumentString = '';
+    switch (platform) {
+      case gen.cwin32:
+        argumentString = bas.cSpace + bas.cForwardSlash + bas.cf;
+        deleteCommand = phn.del + (silentDeleteConfig ? argumentString : '');
+        break;
+
+      case gen.cdarwin: case gen.clinux:
+        argumentString = bas.cSpace + bas.cDash + bas.crf;
+        deleteCommand = bas.crm + (silentDeleteConfig ? argumentString : '');
+        break;
     }
-  } else {
-    // ERROR: No file specified, cannot delete nothing.
-    console.log(msg.cErrorDeleteFileMessage01);
+
+    await new Promise((resolve) => {
+      // [delete command] "filepath"
+     const execParam = deleteCommand + bas.cSpace + bas.cDoubleQuote + inputData + bas.cDoubleQuote
+      exec(execParam, { cwd: inputMetaData }, (error, _, stderr) => {
+        if (error) {
+          // ERROR: No file specified, cannot delete nothing.
+          console.log(msg.cErrorDeleteFileMessage01);
+        } else {
+          // ERROR: There was an error attempting to delete the file:
+          if (stderr) console.log(msg.cErrorDeleteFileMessage02 + inputData);
+
+          // Successful deletion
+          returnData = true;
+        }
+      });
+
+      resolve();
+    });
   }
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+
+  await loggers.consoleLog(namespaceprefix + functionname, msg.creturnDataIs + returndata);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
