@@ -624,6 +624,50 @@ async function workflowHelp(inputData, inputMetaData) {
 }
 
 /**
+ * @function printCommands
+ * @description Prints out a RAW dump of the commands data structure, useful for debugging the commands in the live environment.
+ * @param {string} inputData Not used for this command.
+ * @param {string} inputMetaData Not used for this command.
+ * @return {array<boolean,array<string>>} An array with a boolean True or False value to
+ * indicate if the application should exit or not exit, followed by an empty.
+ * @author Seth Hollingsead
+ * @date 2023/11/10
+ */
+async function printCommands(inputData, inputMetaData) {
+  let functionName = printCommands.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
+  let returnData = [true, []];
+  console.log(msg.ccommandsAre, D[wrd.cCommands]);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
+/**
+ * @function printBusinessRules
+ * @description Prints out a RAW dump of the business rules data structure, useful for debugging the business rules in the live environment.
+ * @param {string} inputData Not used for this command.
+ * @param {string} inputMetaData Not used for this command.
+ * @return {array<boolean,array<string>>} An array with a boolean True or False value to
+ * indicate if the application should exit or not exit, followed by an empty.
+ * @author Seth Hollingsead
+ * @date 2023/11/10
+ */
+async function printBusinessRules(inputData, inputMetaData) {
+  let functionName = printBusinessRules.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
+  let returnData = [true, []];
+  console.log(msg.cbusinessRulesAre, D[sys.cbusinessRules]);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
+/**
  * @function printUserCommandsLog
  * @description Prints out the command log of all the commands the user has entered since the start of the application for this instance it was running.
  * @param {string} inputData Not used for this command.
@@ -776,6 +820,8 @@ export default {
   clearScreen,
   help,
   workflowHelp,
+  printCommands,
+  printBusinessRules,
   printUserCommandsLog,
   printAllCommandsLog,
   clearUserCommandsLog,
