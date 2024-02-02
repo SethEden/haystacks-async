@@ -36,7 +36,7 @@ import { exec } from 'child_process';
 import process from 'process';
 import path from 'path';
 
-const {bas, biz, cfg, gen, msg, sys, wrd} = hayConst;
+const {bas, biz, cfg, gen, msg, phn, sys, wrd} = hayConst;
 const baseFileName = path.basename(import.meta.url, path.extname(import.meta.url));
 // framework.businessRules.rules.fileOperations.
 const namespacePrefix = wrd.cframework + bas.cDot + sys.cbusinessRules + bas.cDot + wrd.crules + bas.cDot + baseFileName + bas.cDot;
@@ -767,17 +767,17 @@ async function deleteFile(inputData, inputMetaData) {
     inputData = path.normalize(inputData);
 
     // Normalize inputMetaData (cwd)
-    inputMetaData = (typeof inputMetaData === 'undefined') ? path.normalize('./') : path.normalize(inputMetaData);
-
+    inputMetaData = (typeof inputMetaData === 'undefined') ? path.normalize(bas.cDot + bas.cForwardSlash) : path.normalize(inputMetaData);
+    
     // Obtain silentDeleteConfig config / deletes silently
     let silentDeleteConfig = configurator.getConfigurationSetting(wrd.csystem, cfg.csilentDeleteFailure);
     if (!silentDeleteConfig) silentDeleteConfig = true;
-
+    
     // The delete command to be used according to the current platform.
     // Enforces a forced delete based on the silentDeleteConfig setting.
     let deleteCommand = '';
     let argumentString = '';
-    switch (platform) {
+    switch (process.platform) {
       case gen.cwin32:
         argumentString = bas.cSpace + bas.cForwardSlash + bas.cf;
         deleteCommand = phn.del + (silentDeleteConfig ? argumentString : '');
@@ -809,7 +809,7 @@ async function deleteFile(inputData, inputMetaData) {
     });
   }
 
-  await loggers.consoleLog(namespaceprefix + functionname, msg.creturnDataIs + returndata);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
