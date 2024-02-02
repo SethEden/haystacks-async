@@ -52,32 +52,31 @@ export const unitTestConfigurationConstantsValidation = [
 
     // Test Configuration String Input Value
     {Name: 'cFrameworkNameInputValue', Actual: tst_cfg.cFrameworkNameInputValue, Expected: 'haystacks-async'},
-    {Name: 'cclientRootPathInputValue', Actual: tst_cfg.cclientRootPathInputValue, Expected: 'C:/haystacks-async'},
-    {Name: 'cappConfigResourcesPathInputValue', Actual: tst_cfg.cappConfigResourcesPathInputValue, Expected: 'C:/haystacks-async/test/unitTest/testData/resources/'},
-    {Name: 'cappConfigReferencePathInputValue', Actual: tst_cfg.cappConfigReferencePathInputValue, Expected: 'C:/haystacks-async/test/unitTest/testData/resources/clientTestData/'},
+    // {Name: 'cclientRootPathInputValue', Actual: tst_cfg.cclientRootPathInputValue, Expected: 'C:/haystacks-async'},
+    {Name: 'cappConfigResourcesPathInputValue', Actual: tst_cfg.cappConfigResourcesPathInputValue, Expected: '/test/unitTest/testData/resources/'},
+    {Name: 'cappConfigReferencePathInputValue', Actual: tst_cfg.cappConfigReferencePathInputValue, Expected: '/test/unitTest/testData/resources/clientTestData/'},
     {Name: 'cclientMetaDataPathInputValue', Actual: tst_cfg.cclientMetaDataPathInputValue, Expected: '/test/unitTest/testData/resources/metaData.json'},
-    {Name: 'cclientCommandAliasesPathInputValue', Actual: tst_cfg.cclientCommandAliasesPathInputValue, Expected: 'C:/haystacks-async/test/testHarness/src/resources/commands/'},
-    {Name: 'cclientConstantsPathInputValue', Actual: tst_cfg.cclientConstantsPathInputValue, Expected: 'C:/haystacks-async/test/testHarness/src/constants/'},
-    {Name: 'cclientRegisteredPluginsInputValue', Actual: tst_cfg.cclientRegisteredPluginsInputValue, Expected: 'C:/haystacks-async/test/testHarness/src/resources/plugins/plugins.json'},
-    {Name: 'cclientWorkflowsPathInputValue', Actual: tst_cfg.cclientWorkflowsPathInputValue, Expected: 'C:/haystacks-async/test/testHarness/src/resources/workflows/'},
-    {Name: 'cclientThemesPathInputValue', Actual: tst_cfg.cclientThemesPathInputValue, Expected: 'C:/haystacks-async/test/testHarness/src/resources/themes/'},
+    {Name: 'cclientCommandAliasesPathInputValue', Actual: tst_cfg.cclientCommandAliasesPathInputValue, Expected: '/test/testHarness/src/resources/commands/'},
+    {Name: 'cclientConstantsPathInputValue', Actual: tst_cfg.cclientConstantsPathInputValue, Expected: '/test/testHarness/src/constants/'},
+    {Name: 'cclientRegisteredPluginsInputValue', Actual: tst_cfg.cclientRegisteredPluginsInputValue, Expected: '/test/testHarness/src/resources/plugins/plugins.json'},
+    {Name: 'cclientWorkflowsPathInputValue', Actual: tst_cfg.cclientWorkflowsPathInputValue, Expected: '/test/testHarness/src/resources/workflows/'},
+    {Name: 'cclientThemesPathInputValue', Actual: tst_cfg.cclientThemesPathInputValue, Expected: '/test/testHarness/src/resources/themes/'},
 
     // Test Configuration String Expected Values
     {Name: 'cclientMetaDataPathChangedExpectedValue1', Actual: tst_cfg.cclientMetaDataPathChangedExpectedValue1, Expected: 'metaData.json'},
-    {Name: 'cclientMetaDataPathChangedExpectedValue2', Actual: tst_cfg.cclientMetaDataPathChangedExpectedValue2, Expected: 'C:/haystacks-async\\test\\unitTest\\testData\\resources\\metaData.json'},
-    {Name: 'cframeworkCommandAliasesPathExpectedValue', Actual: tst_cfg.cframeworkCommandAliasesPathExpectedValue, Expected: 'C:\\haystacks-async\\//src//resources//commands//'},
-    {Name: 'cframeworkConfigPathExpectedValue', Actual: tst_cfg.cframeworkConfigPathExpectedValue, Expected: 'C:\\haystacks-async\\//src//resources//configuration//'},
-    {Name: 'cframeworkConstantsPathExpectedLinkedValue', Actual: tst_cfg.cframeworkConstantsPathExpectedValue, Expected: 'C:\\haystacks-constants\\src/constants/'},
+    {Name: 'cclientMetaDataPathChangedExpectedValue2', Actual: tst_cfg.cclientMetaDataPathChangedExpectedValue2, Expected: 'test\\unitTest\\testData\\resources\\metaData.json'},
+    {Name: 'cframeworkCommandAliasesPathExpectedValue', Actual: tst_cfg.cframeworkCommandAliasesPathExpectedValue, Expected: '//src//resources//commands//'},
+    {Name: 'cframeworkConfigPathExpectedValue', Actual: tst_cfg.cframeworkConfigPathExpectedValue, Expected: '//src//resources//configuration//'},
+    {Name: 'cframeworkConstantsPathExpectedLinkedValue', Actual: tst_cfg.cframeworkConstantsPathExpectedValue, Expected: '/src/constants/'},
     // {Name: 'cframeworkConstantsPathExpectedUnlinkedValue', Actual: tst_cfg.cframeworkConstantsPathExpectedValue, Expected: 'C:/haystacks-async\\node_modules\\@haystacks\\constants\\src/constants/'},
     {Name: 'cframeworkFullMetaDataPathExpectedValue', Actual: tst_cfg.cframeworkFullMetaDataPathExpectedValue, Expected: 'C:\\haystacks-async\\src\\resources\\metaData.json'},
-    {Name: 'cframeworkResourcesPathExpectedValue', Actual: tst_cfg.cframeworkResourcesPathExpectedValue, Expected: 'C:\\haystacks-async\\src\\resources\\'},
-    {Name: 'cframeworkRootPathExpectedValue', Actual: tst_cfg.cframeworkRootPathExpectedValue, Expected: 'C:\\haystacks-async\\'},
-    {Name: 'cframeworkThemesPathExpectedValue', Actual: tst_cfg.cframeworkThemesPathExpectedValue, Expected: 'C:\\haystacks-async\\//src//resources//themes//'},
-    {Name: 'cframeworkWorkflowsPathExpectedValue', Actual: tst_cfg.cframeworkWorkflowsPathExpectedValue, Expected: 'C:\\haystacks-async\\//src//resources//workflows//'},
+    {Name: 'cframeworkResourcesPathExpectedValue', Actual: tst_cfg.cframeworkResourcesPathExpectedValue, Expected: '\\src\\resources\\'},
+    {Name: 'cframeworkThemesPathExpectedValue', Actual: tst_cfg.cframeworkThemesPathExpectedValue, Expected: '//src//resources//workflows//'},
+    {Name: 'cframeworkWorkflowsPathExpectedValue', Actual: tst_cfg.cframeworkWorkflowsPathExpectedValue, Expected: '\\haystacks-async\\resources\\metaData.json'},
     {Name: 'cpluginCommandAliasesPathExpectedValue', Actual: tst_cfg.cpluginCommandAliasesPathExpectedValue, Expected: 'C:\\haystacks-async//resources//commands//'},
     {Name: 'cpluginFullMetaDataPathExpectedValue', Actual: tst_cfg.cpluginFullMetaDataPathExpectedValue, Expected: 'C:\\haystacks-async\\resources\\metaData.json'},
     {Name: 'cpluginReleaseResourcesPathExpectedValue', Actual: tst_cfg.cpluginReleaseResourcesPathExpectedValue, Expected: 'bin\\resources\\'},
     {Name: 'cpluginResourcesPathExpectedValue', Actual: tst_cfg.cpluginResourcesPathExpectedValue, Expected: '\\haystacks-async\\resources\\'},
-    {Name: 'cpluginWorkflowsPathExpectedValue', Actual: tst_cfg.cpluginWorkflowsPathExpectedValue, Expected: 'C:/haystacks-async//resources//workflows//'}
+    {Name: 'cpluginWorkflowsPathExpectedValue', Actual: tst_cfg.cpluginWorkflowsPathExpectedValue, Expected: 'resources//workflows//'}
   ];
   
