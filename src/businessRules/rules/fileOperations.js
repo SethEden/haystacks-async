@@ -768,11 +768,11 @@ async function deleteFile(inputData, inputMetaData) {
 
     // Normalize inputMetaData (cwd)
     inputMetaData = (typeof inputMetaData === 'undefined') ? path.normalize(bas.cDot + bas.cForwardSlash) : path.normalize(inputMetaData);
-    
+
     // Obtain silentDeleteConfig config / deletes silently
     let silentDeleteConfig = configurator.getConfigurationSetting(wrd.csystem, cfg.csilentDeleteFailure);
     if (!silentDeleteConfig) silentDeleteConfig = true;
-    
+
     // The delete command to be used according to the current platform.
     // Enforces a forced delete based on the silentDeleteConfig setting.
     let deleteCommand = '';
@@ -780,7 +780,7 @@ async function deleteFile(inputData, inputMetaData) {
     switch (process.platform) {
       case gen.cwin32:
         argumentString = bas.cSpace + bas.cForwardSlash + bas.cf;
-        deleteCommand = phn.del + (silentDeleteConfig ? argumentString : '');
+        deleteCommand = phn.cdel + (silentDeleteConfig ? argumentString : '');
         break;
 
       case gen.cdarwin: case gen.clinux:
@@ -795,11 +795,12 @@ async function deleteFile(inputData, inputMetaData) {
       exec(execParam, { cwd: inputMetaData }, (error, _, stderr) => {
         if (error) {
           // ERROR: No file specified, cannot delete nothing.
-          console.log(msg.cErrorDeleteFileMessage01);
-        } else {
+          // console.log(msg.cErrorDeleteFileMessage01);
+          // hidden temporarily
+        } else if (stderr) {
           // ERROR: There was an error attempting to delete the file:
-          if (stderr) console.log(msg.cErrorDeleteFileMessage02 + inputData);
-
+          console.log(msg.cErrorDeleteFileMessage02 + inputData);
+        } else {
           // Successful deletion
           returnData = true;
         }
