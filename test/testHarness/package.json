@@ -22,7 +22,7 @@
   "dependencies": {
     "dotenv": "^16.0.0",
     "@haystacks/async": ">=0.2.11",
-    "@haystacks/constants": ">=0.2.11"
+    "@haystacks/constants": "^0.2.13"
   },
   "devDependencies": {
     "jsdoc": "3.6.7",
