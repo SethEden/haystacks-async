@@ -13,7 +13,7 @@
  */
 
 // Internal imports
-import configurator from '../executrix/configurator.js';
+import configurator from './configurator.js';
 import D from '../structures/data.js';
 // External imports
 import hayConst from '@haystacks/constants';

@@ -96,7 +96,7 @@ async function getXmlData(inputData, inputMetaData) {
  * We want to keep everything as modular as possible to allow for this future proofing flexibility.
  * @param {string} inputData The path and file name of the CSV file that should be loaded and parsed into JSON objects.
  * @param {string} inputMetaData Not used for this business rule.
- * @return {object} The JSON object as it was loaded from the file with minimal to no additional processin.
+ * @return {object} The JSON object as it was loaded from the file with minimal to no additional processing.
  * @author Seth Hollingsead
  * @date 2022/04/28
  */

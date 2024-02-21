@@ -1,0 +1,29 @@
+Description: Test plan for data.js
+
+--------------------------------------------------------------------------------
+testName: getData_validData
+output: object (A JSON object that contains all of the data that is currently stored in the data structure)
+--------------------------------------------------------------------------------
+testName: setData_validData
+input newData: object (The new data that should replace any data already stored on the data structure)
+output: boolean (True or false to indicate success or failure if the data was set)
+
+testName: setData_inValidNewDataString
+input newData: string (dfxg24346dfg)
+output: ?
+
+testName: setData_inValidNewDataInteger
+input newData: integer (123)
+output: ?
+
+testName: setData_inValidNewDataBoolean
+input newData: boolean (false)
+output: ?
+
+testName: setData_inValidNewDataUndefined
+input newData: undefined
+output: ?
+
+testName: setData_inValidNewDataNaN
+input newData: NaN
+output: ?

@@ -499,7 +499,7 @@ async function validateCommandAliases(inputData, inputMetaData) {
  * @function validateWorkflows
  * @description Validates all the workflows have no duplicates.
  * @param {array<string>} inputData An array that could possibly include the name of this command,
- * and a ist of top-level workflows data structures to be validated.
+ * and a list of top-level workflows data structures to be validated.
  * That way we can parameterize and optimize the validation of the workflows specific to the testing needs.
  * Rather than always running the full set of workflows, as that could take longer,
  * and only needs to be done exhaustively when releasing a new instance of the entire Haystacks platform.

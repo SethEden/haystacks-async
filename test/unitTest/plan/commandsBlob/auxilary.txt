@@ -1,0 +1,57 @@
+Description: Test plan for auxiliary.js
+
+--------------------------------------------------------------------------------
+testName: convertColors_validData
+input inputData: string (Not used for this command)
+input inputMetaData: string (Not used for this command)
+output: array<boolean,string|integer|boolean|object|array> (An array with a boolean True or False value to indicate if the application should exit or not exit, followed by the command output)
+
+testName: convertColors_inValidInputDataString
+input inputData: string (dfxg24346dfg)
+input inputMetaData: string (Not used for this command)
+output: ?
+
+testName: convertColors_inValidInputMetaDataString
+input inputData: string (Not used for this command)
+input inputMetaData: string (dfxg24346dfg)
+output: ?
+
+testName: convertColors_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string (Not used for this command)
+output: ?
+
+testName: convertColors_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: string (Not used for this command)
+output: ?
+
+testName: convertColors_inValidInputMetaDataInteger
+input inputData: string (Not used for this command)
+input inputMetaData: integer (123)
+output: ?
+
+testName: convertColors_inValidInputMetaDataBoolean
+input inputData: string (Not used for this command)
+input inputMetaData: boolean (false)
+output: ?
+
+testName: convertColors_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string (Not used for this command)
+output: ?
+
+testName: convertColors_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string (Not used for this command)
+output: ?
+
+testName: convertColors_inValidInputMetaDataUndefined
+input inputData: string (Not used for this command)
+input inputMetaData: undefined
+output: ?
+
+testName: convertColors_inValidInputMetaDataNaN
+input inputData: string (Not used for this command)
+input inputMetaData: NaN
+output: ?

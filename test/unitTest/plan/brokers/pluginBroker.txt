@@ -1,0 +1,863 @@
+description: Test plan for pluginBroker.js
+
+testName: loadPluginRegistry_validData
+input pluginRegistryPath: string (The path to the plugin registry for the app that loaded the haystacks framework)
+output: object (The JSON data object loaded from the specified plugin registry path by the input parameter)
+
+testName: loadPluginRegistry_inValidPluginRegistryPathString
+input pluginRegistryPath: string (464gsdsfae8f46)
+output: ?
+
+testName: loadPluginRegistry_inValidPluginRegistryPathInteger
+input pluginRegistryPath: integer (123)
+output: ?
+
+testName: loadPluginRegistry_inValidPluginRegistryPathBoolean
+input pluginRegistryPath: boolean (false)
+output: ?
+
+testName: loadPluginRegistry_inValidPluginRegistryPathUndefined
+input pluginRegistryPath: undefined
+output: ?
+
+testName: loadPluginRegistry_inValidPluginRegistryPathNaN
+input pluginRegistryPath: undefined
+output: ?
+--------------------------------------------------------------------------------
+testName: storePluginRegistryInDataStructure_validData
+input pluginRegistryData: object (The plugin registry data that should be stored in the D-data structure)
+output: boolean (A True or False value to indicate if the data was successfully stored in the D-data structure or not)
+
+testName: storePluginRegistryInDataStructure_inValidPluginRegistryDataString
+input pluginRegistryData: string (464gsdsfae8f46)
+output: ?
+
+testName: storePluginRegistryInDataStructure_inValidPluginRegistryDataInteger
+input pluginRegistryData: integer (123)
+output: ?
+
+testName: storePluginRegistryInDataStructure_inValidPluginRegistryDataBoolean
+input pluginRegistryData: boolean (false)
+output: ?
+
+testName: storePluginRegistryInDataStructure_inValidPluginRegistryDataUndefined
+input pluginRegistryData: undefined
+output: ?
+
+testName: storePluginRegistryInDataStructure_inValidPluginRegistryDataNaN
+input pluginRegistryData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: listAllLoadedPlugins_validData
+output: array<string> (A list array of the names of the plugins that are currently loaded in the Haystacks platform)
+
+testName: listAllLoadedPlugins_inValidDataInputDataString
+input 1inputData: string (dfxg24346dfg)
+output: ?
+
+testName: listAllLoadedPlugins_inValidInputDataInteger
+input 1inputData: integer (4567)
+output: ?
+
+testName: listAllLoadedPlugins_inValidInputDataBoolean
+input 1inputData: boolean (false)
+output: ?
+
+testName: listAllLoadedPlugins_inValidInputDataUndefined
+input 1inputData: undefined
+output: ?
+
+testName: listAllLoadedPlugins_inValidInputDataNaN
+input 1inputData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: listPluginsInRegistry_validData
+output: array<string> (A list array of the names of the plugins in the plugin registry)
+
+testName: listPluginsInRegistry_inValidDataInputDataString
+input 1inputData: string (dfxg24346dfg)
+output: ?
+
+testName: listPluginsInRegistry_inValidInputDataInteger
+input 1inputData: integer (4567)
+output: ?
+
+testName: listPluginsInRegistry_inValidInputDataBoolean
+input 1inputData: boolean (false)
+output: ?
+
+testName: listPluginsInRegistry_inValidInputDataUndefined
+input 1inputData: undefined
+output: ?
+
+testName: listPluginsInRegistry_inValidInputDataNaN
+input 1inputData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: listPluginsPathsInRegistry_validData
+output: array<string> (A list array of the paths of the plugins in the plugin registry)
+
+testName: listPluginsPathsInRegistry_inValidDataInputDataString
+input 1inputData: string (dfxg24346dfg)
+output: ?
+
+testName: listPluginsPathsInRegistry_inValidInputDataInteger
+input 1inputData: integer (4567)
+output: ?
+
+testName: listPluginsPathsInRegistry_inValidInputDataBoolean
+input 1inputData: boolean (false)
+output: ?
+
+testName: listPluginsPathsInRegistry_inValidInputDataUndefined
+input 1inputData: undefined
+output: ?
+
+testName: listPluginsPathsInRegistry_inValidInputDataNaN
+input 1inputData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: listPluginAttributeInRegistry_validData
+input attributeName: string (The name of the attribute that should be looked up in the plugin object, for each of the plugin objects in the plugin registry)
+output: array<string> (A list array of the attributes from the plugins in the plugin registry)
+
+testName: listPluginAttributeInRegistry_inValidAttributeNameString
+input attributeName: string (464gsdsfae8f46)
+output: ?
+
+testName: listPluginAttributeInRegistry_inValidAttributeNameInteger
+input attributeName: integer
+output: ?
+
+testName: listPluginAttributeInRegistry_inValidAttributeNameBoolean
+input attributeName: boolean
+output: ?
+
+testName: listPluginAttributeInRegistry_inValidAttributeNameUndefined
+input attributeName: undefined
+output: ?
+
+testName: listPluginAttributeInRegistry_inValidAttributeNameNaN
+input attributeName: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: listPluginsInRegistryPath_validData
+output: array<string> (A list array of the names of the plugins located at the specified path on the local system from the plugins registry data hive)
+
+testName: listPluginsInRegistryPath_inValidDataInputDataString
+input 1inputData: string (dfxg24346dfg)
+output: ?
+
+testName: listPluginsInRegistryPath_inValidInputDataInteger
+input 1inputData: integer (4567)
+output: ?
+
+testName: listPluginsInRegistryPath_inValidInputDataBoolean
+input 1inputData: boolean (false)
+output: ?
+
+testName: listPluginsInRegistryPath_inValidInputDataUndefined
+input 1inputData: undefined
+output: ?
+
+testName: listPluginsInRegistryPath_inValidInputDataNaN
+input 1inputData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: coutPluginsInRegistry_validData
+output: integer (The count of the number of plugins listed in the plugin registry data hive)
+
+testName: coutPluginsInRegistry_inValidDataInputDataString
+input 1inputData: string (dfxg24346dfg)
+output: ?
+
+testName: coutPluginsInRegistry_inValidInputDataInteger
+input 1inputData: integer (4567)
+output: ?
+
+testName: coutPluginsInRegistry_inValidInputDataBoolean
+input 1inputData: boolean (false)
+output: ?
+
+testName: coutPluginsInRegistry_inValidInputDataUndefined
+input 1inputData: undefined
+output: ?
+
+testName: coutPluginsInRegistry_inValidInputDataNaN
+input 1inputData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: countPluginsInRegistryPath_validData
+output: integer (The count of the number of plugin sub-folders in the plugins path listed in the plugin registry data hive)
+
+testName: countPluginsInRegistryPath_inValidDataInputDataString
+input 1inputData: string (dfxg24346dfg)
+output: ?
+
+testName: countPluginsInRegistryPath_inValidInputDataInteger
+input 1inputData: integer (4567)
+output: ?
+
+testName: countPluginsInRegistryPath_inValidInputDataBoolean
+input 1inputData: boolean (false)
+output: ?
+
+testName: countPluginsInRegistryPath_inValidInputDataUndefined
+input 1inputData: undefined
+output: ?
+
+testName: countPluginsInRegistryPath_inValidInputDataNaN
+input 1inputData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: registerPlugin_validData
+input pluginName: string (The name of the plugin that should be registered)
+input pluginPath: string (The path to the plugin, to be added to the plugin registry)
+output: boolean (True or False to indicate if the plugin was added to the plugin registry successfully or not)
+
+testName: registerPlugin_inValidPluginNameString
+input pluginName: string (464gsdsfae8f46)
+input pluginPath: string (The path to the plugin, to be added to the plugin registry)
+output: ?
+
+testName: registerPlugin_inValidPluginPathString
+input pluginName: string (The name of the plugin that should be registered)
+input pluginPath: string (464gsdsfae8f46)
+output: ?
+
+testName: registerPlugin_inValidPluginNameInteger
+input pluginName: integer (123)
+input pluginPath: string (The path to the plugin, to be added to the plugin registry)
+output: ?
+
+testName: registerPlugin_inValidPluginNameBoolean
+input pluginName: boolean (false) 
+input pluginPath: string (The path to the plugin, to be added to the plugin registry)
+output: ?
+
+testName: registerPlugin_inValidPluginPathInteger
+input pluginName: string (The name of the plugin that should be registered)
+input pluginPath: integer (123)
+output: ?
+
+testName: registerPlugin_inValidPluginPathBoolean
+input pluginName: string (The name of the plugin that should be registered)
+input pluginPath: boolean (false)
+output: ?
+
+testName: registerPlugin_inValidPluginNameUndefined
+input pluginName: Undefined
+input pluginPath: string (The path to the plugin, to be added to the plugin registry)
+output: ?
+
+testName: registerPlugin_inValidPluginNameNaN
+input pluginName: NaN
+input pluginPath: string (The path to the plugin, to be added to the plugin registry)
+output: ?
+
+testName: registerPlugin_inValidPluginPathUndefined
+input pluginName: string (The name of the plugin that should be registered)
+input pluginPath: undefined
+output: ?
+
+testName: registerPlugin_inValidPluginPathNaN
+input pluginName: string (The name of the plugin that should be registered)
+input pluginPath: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: unregisterPlugin_validData
+input pluginName: string (The name of the plugin that should be removed from the plugin registry)
+output: boolean (True or False to indicate if the plugin was removed from the plugin registry successfully or not)
+
+testName: unregisterPlugin_inValidPluginNameString
+input pluginName: string (464gsdsfae8f46)
+output: boolean (?)
+
+testName: unregisterPlugin_inValidPluginNameInteger
+input pluginName: integer (123)
+output: boolean (?)
+
+testName: unregisterPlugin_inValidPluginNameBoolean
+input pluginName: boolean (false)
+output: boolean (?)
+
+testName: unregisterPlugin_inValidPluginNameUndefined
+input pluginName: undefined
+output: boolean (?)
+
+testName: unregisterPlugin_inValidPluginNameNaN
+input pluginName: NaN
+output: boolean (?)
+--------------------------------------------------------------------------------
+testName: unregisterPlugins_validData
+input pluginName: array<string> (A list array of plugin names that should be removed from the plugin registry)
+output: boolean (True or False to indicate if all the plugins were removed from the plugin registry successfully or not)
+
+testName: unregisterPlugins_inValidPluginNameString
+input pluginName: string (464gsdsfae8f46)
+output: boolean (?)
+
+testName: unregisterPlugins_inValidPluginNameInteger
+input pluginName: integer (123)
+output: boolean (?)
+
+testName: unregisterPlugins_inValidPluginNameBoolean
+input pluginName: boolean (false)
+output: boolean (?)
+
+testName: unregisterPlugins_inValidPluginNameUndefined
+input pluginName: undefined
+output: boolean (?)
+
+testName: unregisterPlugins_inValidPluginNameNaN
+input pluginName: NaN
+output: boolean (?)
+--------------------------------------------------------------------------------
+testName: syncPluginRegistryWithPluginRegistryPath_validData
+output: boolean (True or False to indicate if the synchronization was performed successfully)
+
+testName: syncPluginRegistryWithPluginRegistryPath_inValidDataInputDataString
+input 1inputData: string (dfxg24346dfg)
+output: ?
+
+testName: syncPluginRegistryWithPluginRegistryPath_inValidInputDataInteger
+input 1inputData: integer (4567)
+output: ?
+
+testName: syncPluginRegistryWithPluginRegistryPath_inValidInputDataBoolean
+input 1inputData: boolean (false)
+output: ?
+
+testName: syncPluginRegistryWithPluginRegistryPath_inValidInputDataUndefined
+input 1inputData: undefined
+output: ?
+
+testName: syncPluginRegistryWithPluginRegistryPath_inValidInputDataNaN
+input 1inputData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: unregisterAllPlugins_validData
+output: boolean (True or False to indicate if the plugin registry data hive was cleared successfully or not)
+
+testName: unregisterAllPlugins_inValidDataInputDataString
+input 1inputData: string (dfxg24346dfg)
+output: ?
+
+testName: unregisterAllPlugins_inValidInputDataInteger
+input 1inputData: integer (4567)
+output: ?
+
+testName: unregisterAllPlugins_inValidInputDataBoolean
+input 1inputData: boolean (false)
+output: ?
+
+testName: unregisterAllPlugins_inValidInputDataUndefined
+input 1inputData: undefined
+output: ?
+
+testName: unregisterAllPlugins_inValidInputDataNaN
+input 1inputData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: savePluginRegistry_validData
+output: boolean (True or False to indicate if the export to file was completed successfully or not)
+
+testName: savePluginRegistry_inValidDataInputDataString
+input 1inputData: string (dfxg24346dfg)
+output: ?
+
+testName: savePluginRegistry_inValidInputDataInteger
+input 1inputData: integer (4567)
+output: ?
+
+testName: savePluginRegistry_inValidInputDataBoolean
+input 1inputData: boolean (false)
+output: ?
+
+testName: savePluginRegistry_inValidInputDataUndefined
+input 1inputData: undefined
+output: ?
+
+testName: savePluginRegistry_inValidInputDataNaN
+input 1inputData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: loadPluginMetaData_validData
+input pluginPath: string (The path to a plugin where a package.json should be expected to be found for that plugin)
+output: object (The JSON data object loaded from the plugin package.json file, specified by the input parameter)
+
+testName: loadPluginMetaData_inValidPluginPathString
+input pluginPath: string (464gsdsfae8f46)
+output: ?
+
+testName: loadPluginMetaData_inValidPluginPathInteger
+input pluginPath: integer (123)
+output: ?
+
+testName: loadPluginMetaData_inValidPluginPathBoolean
+input pluginPath: boolean (false)
+output: ?
+
+testName: loadPluginMetaData_inValidPluginPathUndefined
+input pluginPath: undefined
+output: ?
+
+testName: loadPluginMetaData_inValidPluginPathNaN
+input pluginPath: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: extractAndProcessPluginEntryPointURI_validData
+input pluginMetaData: object (The meta data for the given plugin loaded for the corresponding package.json)
+input pluginPath: string (The path to the plugin, used to form a fully-qualified path)
+output: string (The path entry point to the plugin as a URI file path)
+
+testName: extractAndProcessPluginEntryPointURI_inValidPluginMetaDataString
+input pluginMetaData: string (464gsdsfae8f46)
+input pluginPath: string (The path to the plugin, used to form a fully-qualified path)
+output: ?
+
+testName: extractAndProcessPluginEntryPointURI_inValidPluginPathString
+input pluginMetaData: object (The meta data for the given plugin loaded for the corresponding package.json)
+input pluginPath: string (464gsdsfae8f46)
+output: ?
+
+testName: extractAndProcessPluginEntryPointURI_inValidPluginMetaDataInteger
+input pluginMetaData: integer (123)
+input pluginPath: string (The path to the plugin, used to form a fully-qualified path)
+output: ?
+
+testName: extractAndProcessPluginEntryPointURI_inValidPluginMetaDataBoolean
+input pluginMetaData: boolean (false)
+input pluginPath: string (The path to the plugin, used to form a fully-qualified path)
+output: ?
+
+testName: extractAndProcessPluginEntryPointURI_inValidPluginPathInteger
+input pluginMetaData: object (The meta data for the given plugin loaded for the corresponding package.json)
+input pluginPath: integer (123)
+output: ?
+
+testName: extractAndProcessPluginEntryPointURI_inValidPluginPathBoolean
+input pluginMetaData: object (The meta data for the given plugin loaded for the corresponding package.json)
+input pluginPath: boolean (false)
+output: ?
+
+testName: extractAndProcessPluginEntryPointURI_inValidPluginMetaDataUndefined
+input pluginMetaData: undefined
+input pluginPath: string (The path to the plugin, used to form a fully-qualified path)
+output: ?
+
+testName: extractAndProcessPluginEntryPointURI_inValidPluginMetaDataNaN
+input pluginMetaData: NaN
+input pluginPath: string (The path to the plugin, used to form a fully-qualified path)
+output: ?
+
+testName: extractAndProcessPluginEntryPointURI_inValidPluginPathUndefined
+input pluginMetaData: object (The meta data for the given plugin loaded for the corresponding package.json)
+input pluginPath: undefined
+output: ?
+
+testName: extractAndProcessPluginEntryPointURI_inValidPluginPathNaN
+input pluginMetaData: object (The meta data for the given plugin loaded for the corresponding package.json)
+input pluginPath: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: loadPlugin_validData
+input pluginExecutionPath: string (The entry point for the plugin that should be loaded)
+output: object (The data that was returned and loaded from the plugin)
+
+testName: loadPlugin_inValidPluginExecutionPathString
+input pluginExecutionPath: string (464gsdsfae8f46)
+output: ?
+
+testName: loadPlugin_inValidPluginExecutionPathInteger
+input pluginExecutionPath: integer (123)
+output: ?
+
+testName: loadPlugin_inValidPluginExecutionPathBoolean
+input pluginExecutionPath: boolean (false)
+output: ?
+
+testName: loadPlugin_inValidPluginExecutionPathUndefined
+input pluginExecutionPath: undefined
+output: ?
+
+testName: loadPlugin_inValidPluginExecutionPathNaN
+input pluginExecutionPath: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: integratePluginBusinessRules_validData
+input pluginName: string (The name of the plugin who's business rules should be integrated with the haystacks business rules)
+input pluginBusinessRules: object (The business rules specific to this current plugin)
+output: boolean (True or False to indicate if this plugins business rules are successfully integrated or not)
+
+testName: integratePluginBusinessRules_inValidPluginNameString
+input pluginName: string (464gsdsfae8f46)
+input pluginBusinessRules: object (The business rules specific to this current plugin)
+output: ?
+
+testName: integratePluginBusinessRules_inValidPluginBusinessRulesString
+input pluginName: string (The name of the plugin who's business rules should be integrated with the haystacks business rules)
+input pluginBusinessRules: string (464gsdsfae8f46)
+output: ?
+
+testName: integratePluginBusinessRules_inValidPluginNameInteger
+input pluginName: integer (123)
+input pluginBusinessRules: object (The business rules specific to this current plugin)
+output: ?
+
+testName: integratePluginBusinessRules_inValidPluginNameBoolean
+input pluginName: boolean (false)
+input pluginBusinessRules: object (The business rules specific to this current plugin)
+output: ?
+
+testName: integratePluginBusinessRules_inValidPluginBusinessRulesInteger
+input pluginName: string (The name of the plugin who's business rules should be integrated with the haystacks business rules)
+input pluginBusinessRules: integer (123)
+output: ?
+
+testName: integratePluginBusinessRules_inValidPluginBusinessRulesBoolean
+input pluginName: string (The name of the plugin who's business rules should be integrated with the haystacks business rules)
+input pluginBusinessRules: boolean (false)
+output: ?
+
+testName: integratePluginBusinessRules_inValidPluginNameUndefined
+input pluginName: undefined
+input pluginBusinessRules: object (The business rules specific to this current plugin)
+output: ?
+
+testName: integratePluginBusinessRules_inValidPluginNameNaN
+input pluginName: NaN
+input pluginBusinessRules: object (The business rules specific to this current plugin)
+output: ?
+
+testName: integratePluginBusinessRules_inValidPluginBusinessRulesUndefined
+input pluginName: string (The name of the plugin who's business rules should be integrated with the haystacks business rules)
+input pluginBusinessRules: undefined
+output: ?
+
+testName: integratePluginBusinessRules_inValidPluginBusinessRulesNaN
+input pluginName: string (The name of the plugin who's business rules should be integrated with the haystacks business rules)
+input pluginBusinessRules: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: integratePluginCommands_validData
+input pluginName: string (The name of the plugin who's commands should be integrated with the haystacks commands)
+input pluginCommands: object (The commands specific to this current plugin) 
+output: boolean (True or False to indicate if this plugins commands are successfully integrated or not)
+
+testName: integratePluginCommands_inValidPluginNameString
+input pluginName: string (464gsdsfae8f46)
+input pluginCommands: object (The commands specific to this current plugin)
+output: ?
+
+testName: integeratePluginCommands_inValidPluginCommandsString
+input pluginName: string (The name of the plugin who's commands should be integrated with the haystacks commands)
+input pluginCommands: string (464gsdsfae8f46)
+output: ?
+
+testName: integratePluginCommands_inValidPluginNameInteger
+input pluginName: integer (123)
+input pluginCommands: object (The commands specific to this current plugin)
+output: ?
+
+testName: integratePluginCommands_inValidPluginNameBoolean
+input pluginName: boolean (false)
+input pluginCommands: object (The commands specific to this current plugin)
+output: ?
+
+testName: integeratePluginCommands_inValidPluginCommandsInteger
+input pluginName: string (The name of the plugin who's commands should be integrated with the haystacks commands)
+input pluginCommands: integer (123)
+output: ?
+
+testName: integeratePluginCommands_inValidPluginCommandsBoolean
+input pluginName: string (The name of the plugin who's commands should be integrated with the haystacks commands)
+input pluginCommands: boolean (false)
+output: ?
+
+testName: integratePluginCommands_inValidPluginNameUndefined
+input pluginName: undefined
+input pluginCommands: object (The commands specific to this current plugin)
+output: ?
+
+testName: integratePluginCommands_inValidPluginNameNaN
+input pluginName: NaN
+input pluginCommands: object (The commands specific to this current plugin)
+output: ?
+
+testName: integeratePluginCommands_inValidPluginCommandsUndefined
+input pluginName: string (The name of the plugin who's commands should be integrated with the haystacks commands)
+input pluginCommands: undefined
+output: ?
+
+testName: integeratePluginCommands_inValidPluginCommandsNaN
+input pluginName: string (The name of the plugin who's commands should be integrated with the haystacks commands)
+input pluginCommands: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: integratePluginConfigurationData_validData
+input pluginName: string (The name of the plugin who's configuration data should be integrated with the haystacks configuration data)
+input pluginConfigurationData: object (The JSON object that contains all of the configuration data specific to this current plugin)
+output: boolean (True or False to indicate if this plugins configuration data are successfully integrated or not)
+
+testName: integratePluginConfigurationData_inValidPluginNameString
+input pluginName: string (464gsdsfae8f46)
+input pluginConfigurationData: object (The JSON object that contains all of the configuration data specific to this current plugin)
+output: ?
+
+testName: integratePluginConfigurationData_inValidPluginConfigurationDataString
+input pluginName: string (The name of the plugin who's configuration data should be integrated with the haystacks configuration data)
+input pluginConfigurationData: string (464gsdsfae8f46)
+output: ?
+
+testName: integratePluginConfigurationData_inValidPluginNameInteger
+input pluginName: integer (123)
+input pluginConfigurationData: object (The JSON object that contains all of the configuration data specific to this current plugin)
+output: ?
+
+testName: integratePluginConfigurationData_inValidPluginNameBoolean
+input pluginName: boolean (false)
+input pluginConfigurationData: object (The JSON object that contains all of the configuration data specific to this current plugin)
+output: ?
+
+testName: integratePluginConfigurationData_inValidPluginConfigurationDataInteger
+input pluginName: string (The name of the plugin who's configuration data should be integrated with the haystacks configuration data)
+input pluginConfigurationData: integer (123)
+output: ?
+
+testName: integratePluginConfigurationData_inValidPluginConfigurationDataBoolean
+input pluginName: string (The name of the plugin who's configuration data should be integrated with the haystacks configuration data)
+input pluginConfigurationData: boolean (false)
+output: ?
+
+testName: integratePluginConfigurationData_inValidPluginNameUndefined
+input pluginName: undefined
+input pluginConfigurationData: object (The JSON object that contains all of the configuration data specific to this current plugin)
+output: ?
+
+testName: integratePluginConfigurationData_inValidPluginNameNaN
+input pluginName: NaN
+input pluginConfigurationData: object (The JSON object that contains all of the configuration data specific to this current plugin)
+output: ?
+
+testName: integratePluginConfigurationData_inValidPluginConfigurationDataUndefined
+input pluginName: string (The name of the plugin who's configuration data should be integrated with the haystacks configuration data)
+input pluginConfigurationData: undefined
+output: ?
+
+testName: integratePluginConfigurationData_inValidPluginConfigurationDataNaN
+input pluginName: string (The name of the plugin who's configuration data should be integrated with the haystacks configuration data)
+input pluginConfigurationData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: integratePluginCommandAliases_validData
+input pluginName: string (The name of the plugin who's command aliases should be integrated with the haystacks command aliases data)
+input pluginConfigurationData: object (The JSON object that contains all of the command aliases specific to this current plugin)
+output: boolean (True or False to indicate if this plugins command aliases data are successfully integrated or not)
+
+testName: integratePluginCommandAliases_inValidPluginNameString
+input pluginName: string (464gsdsfae8f46)
+input pluginConfigurationData: object (The JSON object that contains all of the command aliases specific to this current plugin)
+output: ?
+
+testName: integratePluginCommandAliases_inValidPluginConfigurationDataString
+input pluginName: string (The name of the plugin who's command aliases should be integrated with the haystacks command aliases data)
+input pluginConfigurationData: string (464gsdsfae8f46)
+output: ?
+
+testName: integratePluginCommandAliases_inValidPluginNameInteger
+input pluginName: integer (123)
+input pluginConfigurationData: object (The JSON object that contains all of the command aliases specific to this current plugin)
+output: ?
+
+testName: integratePluginCommandAliases_inValidPluginNameBoolean
+input pluginName: boolean (false)
+input pluginConfigurationData: object (The JSON object that contains all of the command aliases specific to this current plugin)
+output: ?
+
+testName: integratePluginCommandAliases_inValidPluginConfigurationDataInteger
+input pluginName: string (The name of the plugin who's command aliases should be integrated with the haystacks command aliases data)
+input pluginConfigurationData: integer (123)
+output: ?
+
+testName: integratePluginCommandAliases_inValidPluginConfigurationDataBoolean
+input pluginName: string (The name of the plugin who's command aliases should be integrated with the haystacks command aliases data)
+input pluginConfigurationData: boolean (false)
+output: ?
+
+testName: integratePluginCommandAliases_inValidPluginNameUndefined
+input pluginName: undefined
+input pluginConfigurationData: object (The JSON object that contains all of the command aliases specific to this current plugin)
+output: ?
+
+testName: integratePluginCommandAliases_inValidPluginNameNaN
+input pluginName: NaN
+input pluginConfigurationData: object (The JSON object that contains all of the command aliases specific to this current plugin)
+output: ?
+
+testName: integratePluginCommandAliases_inValidPluginConfigurationDataUndefined
+input pluginName: string (The name of the plugin who's command aliases should be integrated with the haystacks command aliases data)
+input pluginConfigurationData: undefined
+output: ?
+
+testName: integratePluginCommandAliases_inValidPluginConfigurationDataNaN
+input pluginName: string (The name of the plugin who's command aliases should be integrated with the haystacks command aliases data)
+input pluginConfigurationData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: integratePluginWorkflows_validData
+input pluginName: string (The name of the plugin who's workflows should be integrated with the haystacks workflows data)
+input pluginWorkflows: object (The JSON object that contains all of the workflows specific to this current plugin)
+output: boolean (True or False to indicate if the plugins workflows data are successfully integrated or not)
+
+testName: integratePluginWorkflows_inValidPluginNameString
+input pluginName: string (464gsdsfae8f46)
+input pluginWorkflows: object (The JSON object that contains all of the workflows specific to this current plugin)
+output: ?
+
+testName: integratePluginWorkflows_inValidPluginConfigurationDataString
+input pluginName: string (The name of the plugin who's workflows should be integrated with the haystacks workflows data)
+input pluginWorkflows: string (464gsdsfae8f46)
+output: ?
+
+testName: integratePluginWorkflows_inValidPluginNameInteger
+input pluginName: integer (123)
+input pluginWorkflows: object (The JSON object that contains all of the workflows specific to this current plugin)
+output: ?
+
+testName: integratePluginWorkflows_inValidPluginNameBoolean
+input pluginName: boolean (false)
+input pluginWorkflows: object (The JSON object that contains all of the workflows specific to this current plugin)
+output: ?
+
+testName: integratePluginWorkflows_inValidPluginConfigurationDataInteger
+input pluginName: string (The name of the plugin who's workflows should be integrated with the haystacks workflows data)
+input pluginWorkflows: integer (123)
+output: ?
+
+testName: integratePluginWorkflows_inValidPluginConfigurationDataBoolean
+input pluginName: string (The name of the plugin who's workflows should be integrated with the haystacks workflows data)
+input pluginWorkflows: boolean (false)
+output: ?
+
+testName: integratePluginWorkflows_inValidPluginNameUndefined
+input pluginName: undefined
+input pluginWorkflows: object (The JSON object that contains all of the workflows specific to this current plugin)
+output: ?
+
+testName: integratePluginWorkflows_inValidPluginNameNaN
+input pluginName: NaN
+input pluginWorkflows: object (The JSON object that contains all of the workflows specific to this current plugin)
+output: ?
+
+testName: integratePluginWorkflows_inValidPluginConfigurationDataUndefined
+input pluginName: string (The name of the plugin who's workflows should be integrated with the haystacks workflows data)
+input pluginWorkflows: undefined
+output: ?
+
+testName: integratePluginWorkflows_inValidPluginConfigurationDataNaN
+input pluginName: string (The name of the plugin who's workflows should be integrated with the haystacks workflows data)
+input pluginWorkflows: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: integratePluginThemeData_validData
+input pluginName: string (The name of the plugin who's theme data should be integrated with the haystacks theme data)
+input pluginThemeData: object (The JSON object that contains all of the theme data specific to this current plugin)
+output: boolean (True or False to indicate if the plugins theme data are successfully integrated or not)
+
+testName: integratePluginThemeData_inValidPluginNameString
+input pluginName: string (464gsdsfae8f46)
+input pluginThemeData: object (The JSON object that contains all of the theme data specific to this current plugin)
+output: ?
+
+testName: integratePluginThemeData_inValidPluginConfigurationDataString
+input pluginName: string (The name of the plugin who's theme data should be integrated with the haystacks theme data)
+input pluginThemeData: string (464gsdsfae8f46)
+output: ?
+
+testName: integratePluginThemeData_inValidPluginNameInteger
+input pluginName: integer (123)
+input pluginThemeData: object (The JSON object that contains all of the theme data specific to this current plugin)
+output: ?
+
+testName: integratePluginThemeData_inValidPluginNameBoolean
+input pluginName: boolean (false)
+input pluginThemeData: object (The JSON object that contains all of the theme data specific to this current plugin)
+output: ?
+
+testName: integratePluginThemeData_inValidPluginConfigurationDataInteger
+input pluginName: string (The name of the plugin who's theme data should be integrated with the haystacks theme data)
+input pluginThemeData: integer (123)
+output: ?
+
+testName: integratePluginThemeData_inValidPluginConfigurationDataBoolean
+input pluginName: string (The name of the plugin who's theme data should be integrated with the haystacks theme data)
+input pluginThemeData: boolean (false)
+output: ?
+
+testName: integratePluginThemeData_inValidPluginNameUndefined
+input pluginName: undefined
+input pluginThemeData: object (The JSON object that contains all of the theme data specific to this current plugin)
+output: ?
+
+testName: integratePluginThemeData_inValidPluginNameNaN
+input pluginName: NaN
+input pluginThemeData: object (The JSON object that contains all of the theme data specific to this current plugin)
+output: ?
+
+testName: integratePluginThemeData_inValidPluginConfigurationDataUndefined
+input pluginName: string (The name of the plugin who's theme data should be integrated with the haystacks theme data)
+input pluginThemeData: undefined
+output: ?
+
+testName: integratePluginThemeData_inValidPluginConfigurationDataNaN
+input pluginName: string (The name of the plugin who's theme data should be integrated with the haystacks theme data)
+input pluginThemeData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: unloadPlugin_validData
+input pluginName: string (The name of the plugin that should have all its data unloaded from the D-data structure)
+output: boolean (True or False to indicate if the plugin was unloaded successfully or not)
+
+testName: unloadPlugin_inValidPluginNameString
+input pluginName: string (464gsdsfae8f46)
+output: ?
+
+testName: unloadPlugin_inValidPluginNameInteger
+input pluginName: integer (123)
+output: ?
+
+testName: unloadPlugin_inValidPluginNameBoolean
+input pluginName: boolean (false)
+output: ?
+
+testName: unloadPlugin_inValidPluginNameUndefined
+input pluginName: undefined
+output: ?
+
+testName: unloadPlugin_inValidPluginNameNaN
+input pluginName: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: getPluginsRegistryPath_validData
+output: string (The path to the plugins listed in the plugin registry as meta-data)
+
+testName: getPluginsRegistryPath_inValidDataInputDataString
+input 1inputData: string (dfxg24346dfg)
+output: ?
+
+testName: getPluginsRegistryPath_inValidInputDataInteger
+input 1inputData: integer (4567)
+output: ?
+
+testName: getPluginsRegistryPath_inValidInputDataBoolean
+input 1inputData: boolean (false)
+output: ?
+
+testName: getPluginsRegistryPath_inValidInputDataUndefined
+input 1inputData: undefined
+output: ?
+
+testName: getPluginsRegistryPath_inValidInputDataNaN
+input 1inputData: NaN
+output: ?

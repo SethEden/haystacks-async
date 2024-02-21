@@ -2,38 +2,58 @@ description: Test plan for characterArrayParsing.js
 
 
 --------------------------------------------------------------------------------
-testName: replaceCharacterWithCharacter_validDataString
-input inputData: string (A string that may or may not contain the specified characters that is converted to another specified character)
+testName: replaceCharacterWithCharacter_validData
+input inputData: string (A string that may or may not contain the specified characters that should be converted to another specified character)
 input inputMetaData: array<string,string> (An array of data that contains 2 additional string parameters and the character specified for replacement from the input data)
 output: string (The same as the input string but with specified characters converted to the other specified character)
 
-testName: replaceCharacterWithCharacter_validDataInputDataString
+testName: replaceCharacterWithCharacter_inValidInputDataString
 input inputData: string (dfxg24346dfg)
 input inputMetaData: array<string,string> (An array of data that contains 2 additional string parameters and the character specified for replacement from the input data) (testDataString)
 output: ?
 
-testName: replaceCharacterWithCharacter_validDataInputMetaDataString
-input inputData: string (A string that may or may not contain the specified characters that is converted to another specified character) (testDataString)
+testName: replaceCharacterWithCharacter_inValidInputMetaDataString
+input inputData: string (A string that may or may not contain the specified characters that should be converted to another specified character) (testDataString)
 input inputMetaData: string (dfxg24346dfg)
 output: ?
 
-testName: replaceCharacterWithCharacter_inValidDataStorageInputMetaDataInteger
+testName: replaceCharacterWithCharacter_inValidInputDataInteger
 input inputData: integer (4567)
-input inputMetaData: array ([1,2,3,4,5])
+input inputMetaData: array<string,string> (An array of data that contains 2 additional string parameters and the character specified for replacement from the input data)
 output: ?
 
-testName: replaceCharacterWithCharacter_inValidDataStorageInputMetaDataBoolean
+testName: replaceCharacterWithCharacter_inValidInputDataBoolean
 input inputData: boolean (false)
-input inputMetaData: array ([1,2,3,4,5])
+input inputMetaData: array<string,string> (An array of data that contains 2 additional string parameters and the character specified for replacement from the input data)
+output: ?
+
+testName: replaceCharacterWithCharacter_inValidInputMetaDataInteger
+input inputData: string (A string that may or may not contain the specified characters that should be converted to another specified character) (testDataString)
+input inputMetaData: integer (123)
+output: ?
+
+testName: replaceCharacterWithCharacter_inValidInputMetaDataBoolean
+input inputData: string (A string that may or may not contain the specified characters that should be converted to another specified character) (testDataString)
+input inputMetaData: boolean (false)
+output: ?
+
+testName: replaceCharacterWithCharacter_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: array<string,string> (An array of data that contains 2 additional string parameters and the character specified for replacement from the input data)
+output: ?
+
+testName: replaceCharacterWithCharacter_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: array<string,string> (An array of data that contains 2 additional string parameters and the character specified for replacement from the input data)
 output: ?
 
 testName: replaceCharacterWithCharacter_inValidInputMetaDataUndefined
-input inputData: string (A string that may or may not contain the specified characters that is converted to another specified character) (inValidDataToStoreUndefined)
+input inputData: string (A string that may or may not contain the specified characters that should be converted to another specified character) (inValidDataToStoreUndefined)
 input inputMetaData: undefined
 output: ?
 
 testName: replaceCharacterWithCharacter_inValidInputMetaDataNaN
-input inputData: string (A string that may or may not contain the specified characters that is converted to another specified character) (inValidDataToStoreNaN)
+input inputData: string (A string that may or may not contain the specified characters that should be converted to another specified character) (inValidDataToStoreNaN)
 input inputMetaData: NaN
 output: ?
 --------------------------------------------------------------------------------
@@ -62,22 +82,22 @@ input inputData: object ({"constants":"c,const","Generator":"g,gen,genrtr","List
 input inputMetaData: array<string|boolean|integer|object> (The array that should be searched for the specified character/value/etc...) (testDataObject)
 output: ?
 
-testName: doesArrayContainCharacter_validDataInputDataString
+testName: doesArrayContainCharacter_validDataInputMetaDataString
 input inputData: string|boolean|integer|object (The character that should be searched for in the array of elements) (testDataString)
 input inputMetaData: string (dfxg24346dfg)
 output: ?
 
-testName: doesArrayContainCharacter_validDataInputDataInteger
+testName: doesArrayContainCharacter_validDataInputMetaDataInteger
 input inputData: string|boolean|integer|object (The character that should be searched for in the array of elements) (testDataInteger)
 input inputMetaData: integer (23456)
 output: ?
 
-testName: doesArrayContainCharacter_validDataInputDataBoolean
+testName: doesArrayContainCharacter_validDataInputMetaDataBoolean
 input inputData: string|boolean|integer|object (The character that should be searched for in the array of elements) (testDataBoolean)
 input inputMetaData: boolean (false)
 output: ?
 
-testName: doesArrayContainCharacter_validDataInputDataObject
+testName: doesArrayContainCharacter_validDataInputMetaDataObject
 input inputData: string|boolean|integer|object (The character that should be searched for in the array of elements) (testDataObject)
 input inputMetaData: object ({"constants":"c,const","Generator":"g,gen,genrtr","List":"l,lst"})
 output: ?
@@ -92,12 +112,12 @@ input inputData: NaN
 input inputMetaData: array<string|boolean|integer|object> (The array that should be searched for the specified character/value/etc...) (inValidDataToStoreNaN)
 output: ?
 
-testName: doesArrayContainCharacter_inValidInputDataUndefined
+testName: doesArrayContainCharacter_inValidInputMetaDataUndefined
 input inputData: string|boolean|integer|object (The character that should be searched for in the array of elements) (inValidDataToStoreUndefined)
 input inputMetaData: undefined
 output: ?
 
-testName: doesArrayContainCharacter_inValidInputDataNaN
+testName: doesArrayContainCharacter_inValidInputMetaDataNaN
 input inputData: string|boolean|integer|object (The character that should be searched for in the array of elements) (inValidDataToStoreNaN)
 input inputMetaData: NaN
 output: ?
@@ -127,22 +147,22 @@ input inputData: object ({"constants":"c,const","Generator":"g,gen,genrtr","List
 input inputMetaData: array<string|boolean|integer|object> (The array that should be searched for the specified character/value/etc...) (testDataObject)
 output: ?
 
-testName: removeCharacterFromArray_validDataInputDataString
+testName: removeCharacterFromArray_validDataInputMetaDataString
 input inputData: string|boolean|integer|object (The character that should be searched for in the array of elements) (testDataString)
 input inputMetaData: string (dfxg24346dfg)
 output: ?
 
-testName: removeCharacterFromArray_validDataInputDataInteger
+testName: removeCharacterFromArray_validDataInputMetaDataInteger
 input inputData: string|boolean|integer|object (The character that should be searched for in the array of elements) (testDataInteger)
 input inputMetaData: integer (23456)
 output: ?
 
-testName: removeCharacterFromArray_validDataInputDataBoolean
+testName: removeCharacterFromArray_validDataInputMetaDataBoolean
 input inputData: string|boolean|integer|object (The character that should be searched for in the array of elements) (testDataBoolean)
 input inputMetaData: boolean (false)
 output: ?
 
-testName: removeCharacterFromArray_validDataInputDataObject
+testName: removeCharacterFromArray_validDataInputMetaDataObject
 input inputData: string|boolean|integer|object (The character that should be searched for in the array of elements) (testDataObject)
 input inputMetaData: object ({"constants":"c,const","Generator":"g,gen,genrtr","List":"l,lst"})
 output: ?
@@ -157,12 +177,12 @@ input inputData: NaN
 input inputMetaData: array<string|boolean|integer|object> (The array that should be searched for the specified character/value/etc...) (inValidDataToStoreNaN)
 output: ?
 
-testName: removeCharacterFromArray_inValidInputDataUndefined
+testName: removeCharacterFromArray_inValidInputMetaDataUndefined
 input inputData: string|boolean|integer|object (The character that should be searched for in the array of elements) (inValidDataToStoreUndefined)
 input inputMetaData: undefined
 output: ?
 
-testName: removeCharacterFromArray_inValidInputDataNaN
+testName: removeCharacterFromArray_inValidInputMetaDataNaN
 input inputData: string|boolean|integer|object (The character that should be searched for in the array of elements) (inValidDataToStoreNaN)
 input inputMetaData: NaN
 output: ?
@@ -174,7 +194,7 @@ output: string (The modified string)
 
 testName: replaceCharacterAtIndex_validDataInputDataString
 input inputData: string (dfxg24346dfg)
-input inputMetaData: array<integer,string> (An array of data that contains 2 additional string parameters and the character specified for replacement from the input data) (testDataString)
+input inputMetaData: array<integer,string> (An array with an integer of what index the character is replaced, and a string with the character or characters that is inserted at the specified index) (testDataString)
 output: ?
 
 testName: replaceCharacterAtIndex_validDataInputMetaDataString
@@ -182,19 +202,34 @@ input inputData: string (A string that may or may not contain the specified char
 input inputMetaData: string (dfxg24346dfg)
 output: ?
 
-testName: removeCharacterFromArray_validDataInputDataInteger
-input inputData: string (The string which should have the specified character changed, then returned) (testDataInteger)
-input inputMetaData: integer (23456)
+testName: replaceCharacterAtIndex_validDataInputDataInteger
+input inputData: integer (23456)
+input inputMetaData: array<integer,string> (An array with an integer of what index the character is replaced, and a string with the character or characters that is inserted at the specified index) (testDataInteger)
+output: ?
+
+testName: replaceCharacterAtIndex_validDataInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: array<integer,string> (An array with an integer of what index the character is replaced, and a string with the character or characters that is inserted at the specified index) (testDataBoolean)
 output: ?
 
 testName: replaceCharacterAtIndex_inValidDataStorageInputMetaDataInteger
-input inputData: integer (4567)
-input inputMetaData: array ([1,2,3,4,5])
+input inputData: string (The string which should have the specified character changed, then returned) (testDataInteger)
+input inputMetaData: integer (4567)
 output: ?
 
 testName: replaceCharacterAtIndex_inValidDataStorageInputMetaDataBoolean
-input inputData: boolean (false)
-input inputMetaData: array ([1,2,3,4,5])
+input inputData: string (The string which should have the specified character changed, then returned) (testDataBoolean)
+input inputMetaData: boolean (false)
+output: ?
+
+testName: replaceCharacterAtIndex_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: array<integer,string> (An array with an integer of what index the character is replaced, and a string with the character or characters that is inserted at the specified index) (inValidDataToStoreUndefined)
+output: ?
+
+testName: replaceCharacterAtIndex_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: array<integer,string> (An array with an integer of what index the character is replaced, and a string with the character or characters that is inserted at the specified index) (inValidDataToStoreNaN)
 output: ?
 
 testName: replaceCharacterAtIndex_inValidInputMetaDataUndefined

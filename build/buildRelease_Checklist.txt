@@ -58,16 +58,18 @@ DO NOT APPROVE!!!
 
 18. Again push the latest changes to the feature branch. DO NOT APPROVE!!!
 
-19. Approve the Merge Request & delete the branch. (NOW APPROVE!!)
+19. Delete the contents of the bin folder, and push these changes to the branch. DO NOT APPROVE!!!
 
-20. Create another Merge Request to merge the develop branch to production as part of the release.
+20. Approve the Merge Request & delete the branch. (NOW APPROVE!!)
 
-21. Wait for SonarCloud to finish executing and then approve if its green.
+21. Create another Merge Request to merge the develop branch to production as part of the release.
 
-22. Confirm that the latest release is published on npm.
+22. Wait for SonarCloud to finish executing and then approve if its green.
 
-23. Go through all the dependency apps and switch back to the develop branch.
+23. Confirm that the latest release is published on npm.
 
-24. Pull the latest code.
+24. Go through all the dependency apps and switch back to the develop branch.
 
-25. execute "npm i" again to re-install pulling the latest code that was just published on npm wtih the latest version number.
+25. Pull the latest code.
+
+26. execute "npm i" again to re-install pulling the latest code that was just published on npm wtih the latest version number.

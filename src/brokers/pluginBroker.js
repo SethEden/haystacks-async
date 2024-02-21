@@ -41,7 +41,7 @@ const namespacePrefix = wrd.cframework + bas.cDot + wrd.cbrokers + bas.cDot + ba
 /**
  * @function loadPluginRegistry
  * @description Loads the plugin registry file, which specified the data with the paths were plugins should be loaded from.
- * @param {string} pluginRegistryPath Teh path to the plugin registry for the app that loaded the haystacks framework.
+ * @param {string} pluginRegistryPath The path to the plugin registry for the app that loaded the haystacks framework.
  * @return {object} The JSON data object loaded from the specified plugin registry path by the input parameter.
  * @author Seth Hollingsead
  * @date 2022/09/13

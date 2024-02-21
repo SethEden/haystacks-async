@@ -336,7 +336,7 @@ async function convertStringToUpperCase(inputData, inputMetaData) {
  * @function doesStringContainUpperCaseCharacter
  * @description Determines if the input string contains at least one upper case character or not.
  * @param {string} inputData The string that should be checked for upper case characters.
- * @param {string} inputMetaData Not used fro this business rule.
+ * @param {string} inputMetaData Not used for this business rule.
  * @return {boolean} True or False to indicate if the string contains
  * at least one upper case character or more, or not any upper case characters.
  * @author Seth Hollingsead
@@ -365,7 +365,7 @@ async function doesStringContainUpperCaseCharacter(inputData, inputMetaData) {
  * @function doesStringContainLowerCaseCharacter
  * @description Determines if the input string contains at least one lower case character or not.
  * @param {string} inputData The string that should be checked for lower case characters.
- * @param {string} inputMetaData Not used fro this business rule.
+ * @param {string} inputMetaData Not used for this business rule.
  * @return {boolean} True or False to indicate if the string contains
  * at least one lower case character or more, or not any lower case characters.
  * @author Seth Hollingsead

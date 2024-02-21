@@ -284,7 +284,7 @@ async function businessRule(inputData, inputMetaData) {
  * inputData[0] === 'commandGenerator'
  * inputData[1] === command string
  * inputData[2] === number of times to enqueue the above command string
- * @param {string} inputMetaData Not sued for this command.
+ * @param {string} inputMetaData Not used for this command.
  * @return {array<boolean,string|integer|boolean|object|array>} An array with a boolean True or False value to
  * indicate if the application should exit or not exit, followed by the command output.
  * @author Seth Hollingsead

@@ -55,7 +55,7 @@ const namespacePrefix = wrd.cframework + bas.cDot + wrd.ccontrollers + bas.cDot 
  * But what we really need for the root path is just C:/Calculator2/
  * @param {string} inputPath The path for the entry point to the framework, ie: main.js
  * @param {string} actualFrameworkName The name of the framework that the application is expecting to use.
- * @return {string} the true root path of the application.
+ * @return {string} The true root path of the application.
  * @author Seth Hollingsead
  * @date 2021/10/12
  * @NOTE Cannot use the loggers here, because dependency data will have never been loaded.
@@ -854,7 +854,7 @@ async function getPluginsRegistryPath() {
 /**
  * @function loadPluginResourceData
  * @description Calls the necessary functions to load and parse the resource data from the specified path.
- * @param {string} contextName The type of resource that is being loaded, eg: configuration, commandAliases, workflows, ect...
+ * @param {string} contextName The type of resource that is being loaded, eg: configuration, commandAliases, workflows, etc...
  * @param {string} pluginResourcePath The fully qualified path to the plugin resource data.
  * @return {object} The JSON data that is loaded and parsed from the plugin path.
  * @author Seth Hollingsead
@@ -1120,7 +1120,7 @@ async function getConfigurationSetting(configurationNamespace, configurationName
 /**
  * @function consoleLog
  * @description This is just a wrapper for the loggers.consoleLog function.
- * @param {string} classPath The class path fro the caller of this function file.function or class.method.
+ * @param {string} classPath The class path for the caller of this function file.function or class.method.
  * @param {string|boolean|integer|object} message The message or data content that should be dumped to the output.
  * @return {void}
  * @author Seth Hollingsead

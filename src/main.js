@@ -641,7 +641,7 @@ async function getPluginsRegistryPath() {
 /**
  * @function loadPluginResourceData
  * @description A wrapper call to the warden.loadPluginResourceData function.
- * @param {string} contextName The type of resource that is being loaded, eg: configuration, commandAliases, workflows, ect...
+ * @param {string} contextName The type of resource that is being loaded, eg: configuration, commandAliases, workflows, etc...
  * @param {string} pluginConfigPath The fully qualified path to where the plugin data is located and should be loaded from.
  * @return {object} The JSON data that is loaded and parsed from the plugin path.
  * @author Seth Hollingsead

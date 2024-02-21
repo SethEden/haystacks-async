@@ -1,0 +1,167 @@
+Description: Test plan for mathOperations.js
+
+--------------------------------------------------------------------------------
+testName: hex2rgbConversion_validData
+input inputData: string (The hexadecimal value that should be converted to an RGB value)
+input inputMetaData: string (Not used for this business rule)
+output: array<integer, integer, integer> (The RGB value)
+
+testName: hex2rgbConversion_inValidInputDataString
+input inputData: string (dfxg24346dfg)
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: hex2rgbConversion_inValidInputMetaDataString
+input inputData: string (The hexadecimal value that should be converted to an RGB value)
+input inputMetaData: string (dfxg24346dfg)
+output: ?
+
+testName: hex2rgbConversion_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: hex2rgbConversion_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: hex2rgbConversion_inValidInputMetaDataInteger
+input inputData: string (The hexadecimal value that should be converted to an RGB value)
+input inputMetaData: integer (123)
+output: ?
+
+testName: hex2rgbConversion_inValidInputMetaDataBoolean
+input inputData: string (The hexadecimal value that should be converted to an RGB value)
+input inputMetaData: boolean (false)
+output: ?
+
+testName: hex2rgbConversion_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: hex2rgbConversion_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: hex2rgbConversion_inValidInputMetaDataUndefined
+input inputData: string (The hexadecimal value that should be converted to an RGB value)
+input inputMetaData: undefined
+output: ?
+
+testName: hex2rgbConversion_inValidInputMetaDataNaN
+input inputData: string (The hexadecimal value that should be converted to an RGB value)
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: isOdd_validData
+input inputData: string (The value that should be evaluated to determine if it is odd or not odd)
+input inputMetaData: string (Not used for this business rule)
+output: boolean (True or False to indicate if the value passed in is an odd value or not an odd value)
+
+testName: isOdd_inValidInputDataString
+input inputData: string (dfxg24346dfg)
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: isOdd_inValidInputMetaDataString
+input inputData: string (The value that should be evaluated to determine if it is odd or not odd)
+input inputMetaData: string (dfxg24346dfg)
+output: ?
+
+testName: isOdd_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: isOdd_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: isOdd_inValidInputMetaDataInteger
+input inputData: string (The value that should be evaluated to determine if it is odd or not odd)
+input inputMetaData: integer (123)
+output: ?
+
+testName: isOdd_inValidInputMetaDataBoolean
+input inputData: string (The value that should be evaluated to determine if it is odd or not odd)
+input inputMetaData: boolean (false)
+output: ?
+
+testName: isOdd_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: isOdd_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: isOdd_inValidInputMetaDataUndefined
+input inputData: string (The value that should be evaluated to determine if it is odd or not odd)
+input inputMetaData: undefined
+output: ?
+
+testName: isOdd_inValidInputMetaDataNaN
+input inputData: string (The value that should be evaluated to determine if it is odd or not odd)
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: isEven_validData
+input inputData: string (The value that should be evaluated to determine if it is even or not even)
+input inputMetaData: string (Not used for this business rule)
+output: boolean (True or False to indicate if the value passed in is an even value or not an even value)
+
+testName: isEven_inValidInputDataString
+input inputData: string (dfxg24346dfg)
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: isEven_inValidInputMetaDataString
+input inputData: string (The value that should be evaluated to determine if it is even or not even)
+input inputMetaData: string (dfxg24346dfg)
+output: ?
+
+testName: isEven_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: isEven_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: isEven_inValidInputMetaDataInteger
+input inputData: string (The value that should be evaluated to determine if it is even or not even)
+input inputMetaData: integer (123)
+output: ?
+
+testName: isEven_inValidInputMetaDataBoolean
+input inputData: string (The value that should be evaluated to determine if it is even or not even)
+input inputMetaData: boolean (false)
+output: ?
+
+testName: isEven_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: isEven_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: isEven_inValidInputMetaDataUndefined
+input inputData: string (The value that should be evaluated to determine if it is even or not even)
+input inputMetaData: undefined
+output: ?
+
+testName: isEven_inValidInputMetaDataNaN
+input inputData: string (The value that should be evaluated to determine if it is even or not even)
+input inputMetaData: NaN
+output: ?

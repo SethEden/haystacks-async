@@ -361,7 +361,7 @@ async function parseArgumentAsArray(inputData, inputMetaData) {
  * @param {array<string>} inputData The argument array that should have the string literal tags removed.
  * The string literal tag is the tilde character: "~"
  * @param {string} inputMetaData Not used for this business rule.
- * @return {array<string>} Teh same as the input, but just with the string literal tags removed from all array elements.
+ * @return {array<string>} The same as the input, but just with the string literal tags removed from all array elements.
  * @author Seth Hollingsead
  * @date 2022/05/03
  */

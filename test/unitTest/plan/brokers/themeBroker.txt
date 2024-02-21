@@ -1,66 +1,254 @@
 description: Test plan for themeBroker.js
 
+testName: initThemeData_validData
+output: void
 
+testName: initThemeData_inValidDataInputDataString
+input 1inputData: string (dfxg24346dfg)
+output: ?
+
+testName: initThemeData_inValidInputDataInteger
+input 1inputData: integer (4567)
+output: ?
+
+testName: initThemeData_inValidInputDataBoolean
+input 1inputData: boolean (false)
+output: ?
+
+testName: initThemeData_inValidInputDataUndefined
+input 1inputData: undefined
+output: ?
+
+testName: initThemeData_inValidInputDataNaN
+input 1inputData: NaN
+output: ?
 --------------------------------------------------------------------------------
-testName: getNamedThemes_validData
-output: list of names for the themes that are currently installed.
+testName: generateThemeDataFromPath_validData
+input themesRootPath: string (The root path that should be used when building the JSON object with the themes meta-data)
+output: object (A JSON object that contains all of the theme names and theme paths from the input theme root path)
 
-testName: getNamedThemes_inValidString
-input: string (464gsdsfae8f46)
-output: list of names for the themes that are currently installed.
+testName: generateThemeDataFromPath_inValidThemesRootPathString
+input themesRootPath: string (464gsdsfae8f46)
+output: ?
 
-testName: getNamedThemes_inValidNumber
-input: integer (546)
-output: list of names for the themes that are currently installed.
+testName: generateThemeDataFromPath_inValidThemesRootPathInteger
+input themesRootPath: integer (123)
+output: ?
 
-testName: getNamedThemes_inValidBoolean
-input: boolean (false)
-output: list of names for the themes that are currently installed.
+testName: generateThemeDataFromPath_inValidThemesRootPathBoolean
+input themesRootPath: boolean
+output: ?
+
+testName: generateThemeDataFromPath_inValidThemesRootPathUndefined
+input themesRootPath: undefined
+output: ?
+
+testName: generateThemeDataFromPath_inValidThemesRootPathNaN
+input themesRootPath: NaN
+output: ?
 --------------------------------------------------------------------------------
-testName: getNamedThemePath_validData
-input: string (The name of the theme that a path is returned for)
-output: string (The path of the theme, if it exists)
+testName: addThemeData_validData
+input themeData: object (A JSON object that contains the theme data for either the application or the current plugin)
+input contextName: string  (The context name where the theme data is coming from)
+output: boolean (True or False to indicate if the merge was successful or not)
 
-testName: getNamedThemePath_inValidString
-input: string (464gsdsfae8f46)
+testName: addThemeData_inValidThemeDataString
+input themeData: string (464gsdsfae8f46)
+input contextName: string  (The context name where the theme data is coming from)
+output: ?
+
+testName: addThemeData_inValidContextNameString
+input themeData: object (A JSON object that contains the theme data for either the application or the current plugin)
+input contextName: string ()
+output: ?
+
+testName: addThemeData_inValidThemeDataInteger
+input themeData: integer (123)
+input contextName: string  (The context name where the theme data is coming from)
+output: ?
+
+testName: addThemeData_inValidThemeDataBoolean
+input themeData: boolean (false)
+input contextName: string  (The context name where the theme data is coming from)
+output: ?
+
+testName: addThemeData_inValidContextNameInteger
+input themeData: object (A JSON object that contains the theme data for either the application or the current plugin)
+input contextName: integer (123)
+output: ?
+
+testName: addThemeData_inValidContextNameBoolean
+input themeData: object (A JSON object that contains the theme data for either the application or the current plugin)
+input contextName: boolean (false)
+output: ?
+
+testName: addThemeData_inValidThemeDataUndefined
+input themeData: undefined
+input contextName: string  (The context name where the theme data is coming from)
+output: ?
+
+testName: addThemeData_inValidThemeDataNaN
+input themeData: NaN
+input contextName: string  (The context name where the theme data is coming from)
+output: ?
+
+testName: addThemeData_inValidContextNameUndefined
+input themeData: object (A JSON object that contains the theme data for either the application or the current plugin)
+input contextName: undefined
+output: ?
+
+testName: addThemeData_inValidContextNameNaN
+input themeData: object (A JSON object that contains the theme data for either the application or the current plugin)
+input contextName: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: getNamedThemesFromRootPath_validData
+input themesRootPath: string (The root path that should be used when searching for a list of themes folders)
+output: array<string> (The list of names for the themes that are currently installed)
+
+testName: getNamedThemesFromRootPath_inValidThemesRootPathString
+input themesRootPath: string (464gsdsfae8f46)
+output: ?
+
+testName: getNamedThemesFromRootPath_inValidThemesRootPathNumber
+input themesRootPath: integer (546)
+output: ?
+
+testName: getNamedThemesFromRootPath_inValidThemesRootPathBoolean
+input themesRootPath: boolean (false)
+output: ?
+
+testName: getNamedThemesFromRootPath_inValidThemesRootPathUndefined
+input themesRootPath: undefined
+output: ?
+
+testName: getNamedThemesFromRootPath_inValidThemesRootPathNaN
+input themesRootPath: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: getNamedThemePathFromRootPath_validData
+input themeName: string (The name of the theme that a path should be returned for)
+input themesRootPath: string (The root path that should be used when searching for the named theme)
+output: string|boolean (The path of the theme relative to the input root path it if exists, or false if it does not)
+
+testName: getNamedThemePathFromRootPath_inValidThemeNameString
+input themeName: string (464gsdsfae8f46)
+input themesRootPath: string (The root path that should be used when searching for the named theme)
+output: ?
+
+testName: getNamedThemePathFromRootPath_inValidThemesRootPathString
+input themeName: string (The name of the theme that a path should be returned for)
+input themesRootPath: string ()
+output: ?
+
+testName: getNamedThemePathFromRootPath_inValidThemeNameNumber
+input themeName: integer (546)
+input themesRootPath: string (The root path that should be used when searching for the named theme)
 output: false
 
-testName: getNamedThemePath_inValidNumber
-input: integer (546)
+testName: getNamedThemePathFromRootPath_inValidThemeNameBoolean
+input themeName: boolean (false)
+input themesRootPath: string (The root path that should be used when searching for the named theme)
 output: false
 
-testName: getNamedThemePath_inValidBoolean
-input: boolean (false)
+testName: getNamedThemePathFromRootPath_inValidThemesRootPathNumber
+input themeName: string (The name of the theme that a path should be returned for)
+input themesRootPath: integer (123)
+output: ?
+
+testName: getNamedThemePathFromRootPath_inValidThemesRootPathBoolean
+input themeName: string (The name of the theme that a path should be returned for)
+input themesRootPath: boolean (false)
+output: ?
+
+testName: getNamedThemePathFromRootPath_inValidThemeNameUndefined
+input themeName: undefined
+input themesRootPath: string (The root path that should be used when searching for the named theme)
 output: false
+
+testName: getNamedThemePathFromRootPath_inValidThemeNameNaN
+input themeName: NaN
+input themesRootPath: string (The root path that should be used when searching for the named theme)
+output: false
+
+testName: getNamedThemePathFromRootPath_inValidThemesRootPathUndefined
+input themeName: string (The name of the theme that a path should be returned for)
+input themesRootPath: undefined
+output: ?
+
+testName: getNamedThemePathFromRootPath_inValidThemesRootPathNaN
+input themeName: string (The name of the theme that a path should be returned for)
+input themesRootPath: NaN
+output: ?
 --------------------------------------------------------------------------------
 testName: loadTheme_validData
-input: string (The fully qualified path to the theme debug configuration settings)
+input themePath: string (The fully qualified path to the theme debug configuration settings)
 output: object (All of the debug configuration data for a specified theme path)
 
-testName: loadTheme_inValidString
-input: string (464gsdsfae8f46)
-output: false
+testName: loadTheme_inValidThemePathString
+input themePath: string (464gsdsfae8f46)
+output: ?
 
-testName: loadTheme_inValidNumber
-input: integer (546)
-output: false
+testName: loadTheme_inValidThemePathNumber
+input themePath: integer (546)
+output: ?
 
-testName: loadTheme_inValidBoolean
-input: boolean (false)
-output: false
+testName: loadTheme_inValidThemePathBoolean
+input themePath: boolean (false)
+output: ?
+
+testName: loadTheme_inValidThemePathUndefined
+input themePath: undefined
+output: ?
+
+testName: loadTheme_inValidThemePathNaN
+input themePath: NaN
+output: ?
 --------------------------------------------------------------------------------
 testName: applyTheme_validData
-input: object (All the theme debug configuration settings data that control the debug log theme colors)
-output: true
+input themeData: object (All the theme debug configuration settings data that control the debug log theme colors)
+output: True or False to indicate if the theme data was applied successfully or not
 
-testName: applyTheme_inValidString
-input: string (464gsdsfae8f46)
-output: false
+testName: applyTheme_inValidThemeDataString
+input themeData: string (464gsdsfae8f46)
+output: ?
 
-testName: applyTheme_inValidNumber
-input: integer (546)
-output: false
+testName: applyTheme_inValidThemeDataNumber
+input themeData: integer (546)
+output: ?
 
-testName: applyTheme_inValidBoolean
-input: boolean (false)
-output: false
+testName: applyTheme_inValidThemeDataBoolean
+input themeData: boolean (false)
+output: ?
+
+testName: applyTheme_inValidThemeDataUndefined
+input themeData: undefined
+output: ?
+
+testName: applyTheme_inValidThemeDataNaN
+input themeData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: removePluginThemeData_validData
+input pluginName: string (The name of the plugin that should have its theme data removed from the D-data structure)
+output: boolean (True or False to indicate if the removal of the data was completed successfully or not)
+
+testName: removePluginThemeData_inValidPluginNameString
+input pluginName: string (464gsdsfae8f46)
+output: ?
+
+testName: removePluginThemeData_inValidPluginNameNumber
+input pluginName: number (123)
+output: ?
+
+testName: removePluginThemeData_inValidPluginNameBoolean
+input pluginName: boolean (false)
+output: ?
+
+testName: removePluginThemeData_inValidPluginNameUndefined
+input pluginName: undefined
+output: ?
+
+testName: removePluginThemeData_inValidPluginNameNaN
+input pluginName: NaN
+output: ?

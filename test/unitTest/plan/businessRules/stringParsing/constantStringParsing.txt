@@ -1,0 +1,1322 @@
+description: Test plan for characterStringParsing.js
+
+--------------------------------------------------------------------------------
+testName: validateConstantsDataValidation_validData
+input inputData: string (The path of the constants file that should be validated)
+input inputMetaData: string (The name of the data hive that contains the appropriate matching constants validation data)
+output: boolean (True or False to indicate if all of the contents of the constants are fully validated or not)
+
+testName: validateConstantsDataValidation_inValidInputDataString
+input inputData: string (dfxg24346dfg)
+input inputMetaData: string (The name of the data hive that contains the appropriate matching constants validation data)
+output: ?
+
+testName: validateConstantsDataValidation_inValidInputMetaDataString
+input inputData: string (The path of the constants file that should be validated)
+input inputMetaData: string (dfxg24346dfg)
+output: ?
+
+testName: validateConstantsDataValidation_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string (The name of the data hive that contains the appropriate matching constants validation data)
+output: ?
+
+testName: validateConstantsDataValidation_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: string (The name of the data hive that contains the appropriate matching constants validation data)
+output: ?
+
+testName: validateConstantsDataValidation_inValidInputMetaDataInteger
+input inputData: string (The path of the constants file that should be validated)
+input inputMetaData: integer (123)
+output: ?
+
+testName: validateConstantsDataValidation_inValidInputMetaDataBoolean 
+input inputData: string (The path of the constants file that should be validated)
+input inputMetaData: boolean (false)
+output: ?
+
+testName: validateConstantsDataValidation_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string (The name of the data hive that contains the appropriate matching constants validation data)
+output: ?
+
+testName: validateConstantsDataValidation_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string (The name of the data hive that contains the appropriate matching constants validation data)
+output: ?
+
+testName: validateConstantsDataValidation_inValidInputMetaDataUndefined
+input inputData: string (The path of the constants file that should be validated)
+input inputMetaData: undefined
+output: ?
+
+testName: validateConstantsDataValidation_inValidInputMetaDataNaN
+input inputData: string (The path of the constants file that should be validated)
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: determineConstantsContextQualifiedPrefix_validData
+input inputData: string (The filename of the constants file or the full path and file name of the constants file)
+input inputMetaData: string (The name of the data hive that contains the appropriate matching constants validation data)
+output: string (A string code that represents the method to reference a constants file in the code)
+
+testName: determineConstantsContextQualifiedPrefix_inValidInputDataString
+input inputData: string (dfxg24346dfg)
+input inputMetaData: string (The name of the data hive that contains the appropriate matching constants validation data)
+output: ?
+
+testName: determineConstantsContextQualifiedPrefix_inValidInputMetaDataString
+input inputData: string (The filename of the constants file or the full path and file name of the constants file)
+input inputMetaData: string (dfxg24346dfg)
+output: ?
+
+testName: determineConstantsContextQualifiedPrefix_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string (The name of the data hive that contains the appropriate matching constants validation data)
+output: ?
+
+testName: determineConstantsContextQualifiedPrefix_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: string (The name of the data hive that contains the appropriate matching constants validation data)
+output: ?
+
+testName: determineConstantsContextQualifiedPrefix_inValidInputMetaDataInteger
+input inputData: string (The filename of the constants file or the full path and file name of the constants file)
+input inputMetaData: integer (123)
+output: ?
+
+testName: determineConstantsContextQualifiedPrefix_inValidInputMetaDataBoolean 
+input inputData: string (The filename of the constants file or the full path and file name of the constants file)
+input inputMetaData: boolean (false)
+output: ?
+
+testName: determineConstantsContextQualifiedPrefix_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string (The name of the data hive that contains the appropriate matching constants validation data)
+output: ?
+
+testName: determineConstantsContextQualifiedPrefix_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string (The name of the data hive that contains the appropriate matching constants validation data)
+output: ?
+
+testName: determineConstantsContextQualifiedPrefix_inValidInputMetaDataUndefined
+input inputData: string (The filename of the constants file or the full path and file name of the constants file)
+input inputMetaData: undefined
+output: ?
+
+testName: determineConstantsContextQualifiedPrefix_inValidInputMetaDataNaN
+input inputData: string (The filename of the constants file or the full path and file name of the constants file)
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: determineSuggestedConstantsValidationLineOfCode_validData
+input inputData: string (The name of the constant file that is missing and should have a line of code generated for it)
+input inputMetaData: string (The prefix used to reference the constants file in the code)
+output: string (The suggested line of code that should be added to the appropriate constants validation code file)
+
+testName: determineSuggestedConstantsValidationLineOfCode_inValidInputDataString
+input inputData: string (dfxg24346dfg)
+input inputMetaData: string (The prefix used to reference the constants file in the code)
+output: ?
+
+testName: determineSuggestedConstantsValidationLineOfCode_inValidInputMetaDataString
+input inputData: string (The name of the constant file that is missing and should have a line of code generated for it)
+input inputMetaData: string (dfxg24346dfg)
+output: ?
+
+testName: determineSuggestedConstantsValidationLineOfCode_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string (The prefix used to reference the constants file in the code)
+output: ?
+
+testName: determineSuggestedConstantsValidationLineOfCode_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: string (The prefix used to reference the constants file in the code)
+output: ?
+
+testName: determineSuggestedConstantsValidationLineOfCode_inValidInputMetaDataInteger
+input inputData: string (The name of the constant file that is missing and should have a line of code generated for it)
+input inputMetaData: integer (123)
+output: ?
+
+testName: determineSuggestedConstantsValidationLineOfCode_inValidInputMetaDataBoolean 
+input inputData: string (The name of the constant file that is missing and should have a line of code generated for it)
+input inputMetaData: boolean (false)
+output: ?
+
+testName: determineSuggestedConstantsValidationLineOfCode_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string (The prefix used to reference the constants file in the code)
+output: ?
+
+testName: determineSuggestedConstantsValidationLineOfCode_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string (The prefix used to reference the constants file in the code)
+output: ?
+
+testName: determineSuggestedConstantsValidationLineOfCode_inValidInputMetaDataUndefined
+input inputData: string (The name of the constant file that is missing and should have a line of code generated for it)
+input inputMetaData: undefined
+output: ?
+
+testName: determineSuggestedConstantsValidationLineOfCode_inValidInputMetaDataNaN
+input inputData: string (The name of the constant file that is missing and should have a line of code generated for it)
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: validateConstantsDataValidationLineItemName_validData
+input inputData: string (The constant definition that should be searched for)
+input inputMetaData: string (The name of the data hive that contains the appropriate matching constants validation data)
+output: boolean (True or False to indicate if a match was found or not found)
+
+testName: validateConstantsDataValidationLineItemName_inValidInputDataString
+input inputData: string (dfxg24346dfg)
+input inputMetaData: string (The name of the data hive that contains the appropriate matching constants validation data)
+output: ?
+
+testName: validateConstantsDataValidationLineItemName_inValidInputMetaDataString
+input inputData: string (The constant definition that should be searched for)
+input inputMetaData: string (dfxg24346dfg)
+output: ?
+
+testName: validateConstantsDataValidationLineItemName_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string (The name of the data hive that contains the appropriate matching constants validation data)
+output: ?
+
+testName: validateConstantsDataValidationLineItemName_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: string (The name of the data hive that contains the appropriate matching constants validation data)
+output: ?
+
+testName: validateConstantsDataValidationLineItemName_inValidInputMetaDataInteger
+input inputData: string (The constant definition that should be searched for)
+input inputMetaData: integer (123)
+output: ?
+
+testName: validateConstantsDataValidationLineItemName_inValidInputMetaDataBoolean 
+input inputData: string (The constant definition that should be searched for)
+input inputMetaData: boolean (false)
+output: ?
+
+testName: validateConstantsDataValidationLineItemName_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string (The name of the data hive that contains the appropriate matching constants validation data)
+output: ?
+
+testName: validateConstantsDataValidationLineItemName_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string (The name of the data hive that contains the appropriate matching constants validation data)
+output: ?
+
+testName: validateConstantsDataValidationLineItemName_inValidInputMetaDataUndefined
+input inputData: string (The constant definition that should be searched for)
+input inputMetaData: undefined
+output: ?
+
+testName: validateConstantsDataValidationLineItemName_inValidInputMetaDataNaN
+input inputData: string (The constant definition that should be searched for)
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: getConstantsValidationNamespaceParentObject_validData
+input inputData: string (The name of the constants data hive that we should search for and find as a namespace object)
+input inputMetaData: string (Not used for this business rule)
+output: object (A JSON object that contains the constants short names, file names, prefixes and file paths, validation messages and related constants validation data. In short the constants validation parent context object)
+
+testName: getConstantsValidationNamespaceParentObject_inValidInputDataString
+input inputData: string (dfxg24346dfg)
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: getConstantsValidationNamespaceParentObject_inValidInputMetaDataString
+input inputData: string (The name of the constants data hive that we should search for and find as a namespace object)
+input inputMetaData: string (dfxg24346dfg)
+output: ?
+
+testName: getConstantsValidationNamespaceParentObject_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: getConstantsValidationNamespaceParentObject_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: getConstantsValidationNamespaceParentObject_inValidInputMetaDataInteger
+input inputData: string (The name of the constants data hive that we should search for and find as a namespace object)
+input inputMetaData: integer (123)
+output: ?
+
+testName: getConstantsValidationNamespaceParentObject_inValidInputMetaDataBoolean 
+input inputData: string (The name of the constants data hive that we should search for and find as a namespace object)
+input inputMetaData: boolean (false)
+output: ?
+
+testName: getConstantsValidationNamespaceParentObject_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: getConstantsValidationNamespaceParentObject_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: getConstantsValidationNamespaceParentObject_inValidInputMetaDataUndefined
+input inputData: string (The name of the constants data hive that we should search for and find as a namespace object)
+input inputMetaData: undefined
+output: ?
+
+testName: getConstantsValidationNamespaceParentObject_inValidInputMetaDataNaN
+input inputData: string (The name of the constants data hive that we should search for and find as a namespace object)
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: getConstantsValidationNamespaceObject_validData
+input inputData: string (The name of the constants data hive that we should search for and find as a namespace object)
+input inputMetaData: string (Not used for this business rule)
+output: object (A JSON object that contains the constants validation data for the specified constants validation data-set, False if nothing is found)
+
+testName: getConstantsValidationNamespaceObject_inValidInputDataString
+input inputData: string (dfxg24346dfg)
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: getConstantsValidationNamespaceObject_inValidInputMetaDataString
+input inputData: string (The name of the constants data hive that we should search for and find as a namespace object)
+input inputMetaData: string (dfxg24346dfg)
+output: ?
+
+testName: getConstantsValidationNamespaceObject_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: getConstantsValidationNamespaceObject_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: getConstantsValidationNamespaceObject_inValidInputMetaDataInteger
+input inputData: string (The name of the constants data hive that we should search for and find as a namespace object)
+input inputMetaData: integer (123)
+output: ?
+
+testName: getConstantsValidationNamespaceObject_inValidInputMetaDataBoolean 
+input inputData: string (The name of the constants data hive that we should search for and find as a namespace object)
+input inputMetaData: boolean (false)
+output: ?
+
+testName: getConstantsValidationNamespaceObject_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: getConstantsValidationNamespaceObject_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: getConstantsValidationNamespaceObject_inValidInputMetaDataUndefined
+input inputData: string (The name of the constants data hive that we should search for and find as a namespace object)
+input inputMetaData: undefined
+output: ?
+
+testName: getConstantsValidationNamespaceObject_inValidInputMetaDataNaN
+input inputData: string (The name of the constants data hive that we should search for and find as a namespace object)
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: doesConstantNamespaceExist_validData
+input inputData: string (The name of the data element that should be searched for)
+input inputMetaData: string (The data that should be searched for the specified named data parameter)
+output: object (True or False to indicate if a matching namespace was found in the specified data structure or not)
+
+testName: doesConstantNamespaceExist_inValidInputDataString
+input inputData: string (dfxg24346dfg)
+input inputMetaData: string (The data that should be searched for the specified named data parameter)
+output: ?
+
+testName: doesConstantNamespaceExist_inValidInputMetaDataString
+input inputData: string (The name of the data element that should be searched for)
+input inputMetaData: string (dfxg24346dfg)
+output: ?
+
+testName: doesConstantNamespaceExist_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string (The data that should be searched for the specified named data parameter)
+output: ?
+
+testName: doesConstantNamespaceExist_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: string (The data that should be searched for the specified named data parameter)
+output: ?
+
+testName: doesConstantNamespaceExist_inValidInputMetaDataInteger
+input inputData: string (The name of the data element that should be searched for)
+input inputMetaData: integer (123)
+output: ?
+
+testName: doesConstantNamespaceExist_inValidInputMetaDataBoolean 
+input inputData: string (The name of the data element that should be searched for)
+input inputMetaData: boolean (false)
+output: ?
+
+testName: doesConstantNamespaceExist_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string (The data that should be searched for the specified named data parameter)
+output: ?
+
+testName: doesConstantNamespaceExist_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string (The data that should be searched for the specified named data parameter)
+output: ?
+
+testName: doesConstantNamespaceExist_inValidInputMetaDataUndefined
+input inputData: string (The name of the data element that should be searched for)
+input inputMetaData: undefined
+output: ?
+
+testName: doesConstantNamespaceExist_inValidInputMetaDataNaN
+input inputData: string (The name of the data element that should be searched for)
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: doesConstantExist_validData
+input inputData: string (The value that should be looked for in all the constants files)
+input inputMetaData: string (Not used for this business rule)
+output: boolean (True or False to indicate if a matching constant definition was found or not)
+
+testName: doesConstantExist_inValidInputDataString
+input inputData: string (dfxg24346dfg)
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: doesConstantExist_inValidInputMetaDataString
+input inputData: string (The value that should be looked for in all the constants files)
+input inputMetaData: string (dfxg24346dfg)
+output: ?
+
+testName: doesConstantExist_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: doesConstantExist_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: doesConstantExist_inValidInputMetaDataInteger
+input inputData: string (The value that should be looked for in all the constants files)
+input inputMetaData: integer (123)
+output: ?
+
+testName: doesConstantExist_inValidInputMetaDataBoolean 
+input inputData: string (The value that should be looked for in all the constants files)
+input inputMetaData: boolean (false)
+output: ?
+
+testName: doesConstantExist_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: doesConstantExist_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: doesConstantExist_inValidInputMetaDataUndefined
+input inputData: string (The value that should be looked for in all the constants files)
+input inputMetaData: undefined
+output: ?
+
+testName: doesConstantExist_inValidInputMetaDataNaN
+input inputData: string (The value that should be looked for in all the constants files)
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: doesConstantExistInConstantLibraryObject_validData
+input inputData: string (The value that should be looked for in the constants validation data library, that is also provided as input)
+input inputMetaData: object (A JSON data object that contains all of the constants validation data namespace objects that should be searched)
+output: boolean (True or False to indicate if a matching constant definition was found or not)
+
+testName: doesConstantExistInConstantLibraryObject_inValidInputDataString
+input inputData: string (dfxg24346dfg)
+input inputMetaData: object (A JSON data object that contains all of the constants validation data namespace objects that should be searched)
+output: ?
+
+testName: doesConstantExistInConstantLibraryObject_inValidInputMetaDataString
+input inputData: string (The value that should be looked for in the constants validation data library, that is also provided as input)
+input inputMetaData: string (dfxg24346dfg)
+output: ?
+
+testName: doesConstantExistInConstantLibraryObject_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: object (A JSON data object that contains all of the constants validation data namespace objects that should be searched)
+output: ?
+
+testName: doesConstantExistInConstantLibraryObject_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: object (A JSON data object that contains all of the constants validation data namespace objects that should be searched)
+output: ?
+
+testName: doesConstantExistInConstantLibraryObject_inValidInputMetaDataInteger
+input inputData: string (The value that should be looked for in the constants validation data library, that is also provided as input)
+input inputMetaData: integer (123)
+output: ?
+
+testName: doesConstantExistInConstantLibraryObject_inValidInputMetaDataBoolean 
+input inputData: string (The value that should be looked for in the constants validation data library, that is also provided as input)
+input inputMetaData: boolean (false)
+output: ?
+
+testName: doesConstantExistInConstantLibraryObject_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: object (A JSON data object that contains all of the constants validation data namespace objects that should be searched)
+output: ?
+
+testName: doesConstantExistInConstantLibraryObject_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: object (A JSON data object that contains all of the constants validation data namespace objects that should be searched)
+output: ?
+
+testName: doesConstantExistInConstantLibraryObject_inValidInputMetaDataUndefined
+input inputData: string (The value that should be looked for in the constants validation data library, that is also provided as input)
+input inputMetaData: undefined
+output: ?
+
+testName: doesConstantExistInConstantLibraryObject_inValidInputMetaDataNaN
+input inputData: string (The value that should be looked for in the constants validation data library, that is also provided as input)
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: getConstantTypeInConstantLibraryObject_validData
+input inputData: array<string, boolean> (An array that contains The value that should have it's matching type returned, and a boolean to indicate if the function should or should not continue searching for additional matches after the first match is found)
+input inputMetaData: object (A JSON data object that contains all of the constants validation data namespace objects that should be search)
+output: boolean|string (A string that contains the name of the matching constant type or False if its matching constant definition is not found)
+
+testName: getConstantTypeInConstantLibraryObject_inValidInputDataString
+input inputData: string (dfxg24346dfg)
+input inputMetaData: object (A JSON data object that contains all of the constants validation data namespace objects that should be search)
+output: ?
+
+testName: getConstantTypeInConstantLibraryObject_inValidInputMetaDataString
+input inputData: array<string, boolean> (An array that contains The value that should have it's matching type returned, and a boolean to indicate if the function should or should not continue searching for additional matches after the first match is found)
+input inputMetaData: string (dfxg24346dfg)
+output: ?
+
+testName: getConstantTypeInConstantLibraryObject_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: object (A JSON data object that contains all of the constants validation data namespace objects that should be search)
+output: ?
+
+testName: getConstantTypeInConstantLibraryObject_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: object (A JSON data object that contains all of the constants validation data namespace objects that should be search)
+output: ?
+
+testName: getConstantTypeInConstantLibraryObject_inValidInputMetaDataInteger
+input inputData: array<string, boolean> (An array that contains The value that should have it's matching type returned, and a boolean to indicate if the function should or should not continue searching for additional matches after the first match is found)
+input inputMetaData: integer (123)
+output: ?
+
+testName: getConstantTypeInConstantLibraryObject_inValidInputMetaDataBoolean
+input inputData: array<string, boolean> (An array that contains The value that should have it's matching type returned, and a boolean to indicate if the function should or should not continue searching for additional matches after the first match is found)
+input inputMetaData: boolean (false)
+output: ?
+
+testName: getConstantTypeInConstantLibraryObject_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: object (A JSON data object that contains all of the constants validation data namespace objects that should be search)
+output: ?
+
+testName: getConstantTypeInConstantLibraryObject_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: object (A JSON data object that contains all of the constants validation data namespace objects that should be search)
+output: ?
+
+testName: getConstantTypeInConstantLibraryObject_inValidInputMetaDataUndefined
+input inputData: array<string, boolean> (An array that contains The value that should have it's matching type returned, and a boolean to indicate if the function should or should not continue searching for additional matches after the first match is found)
+input inputMetaData: undefined
+output: ?
+
+testName: getConstantTypeInConstantLibraryObject_inValidInputMetaDataNaN
+input inputData: array<string, boolean> (An array that contains The value that should have it's matching type returned, and a boolean to indicate if the function should or should not continue searching for additional matches after the first match is found)
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: getConstantNameInConstantLibraryObject_validData
+input inputData: string (The value that should be looked for in the constants validation data library, that is also provided as input)
+input inputMetaData: object (A JSON data object that contains all of the constants validation data namespace objects that should be searched)
+output: string|boolean (The name of the constant if a match is found, False if no match is found)
+
+testName: getConstantNameInConstantLibraryObject_inValidInputDataString
+input inputData: string (dfxg24346dfg)
+input inputMetaData: object (A JSON data object that contains all of the constants validation data namespace objects that should be searched)
+output: ?
+
+testName: getConstantNameInConstantLibraryObject_inValidInputMetaDataString
+input inputData: string (The value that should be looked for in the constants validation data library, that is also provided as input)
+input inputMetaData: string (dfxg24346dfg)
+output: ?
+
+testName: getConstantNameInConstantLibraryObject_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: object (A JSON data object that contains all of the constants validation data namespace objects that should be searched)
+output: ?
+
+testName: getConstantNameInConstantLibraryObject_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: object (A JSON data object that contains all of the constants validation data namespace objects that should be searched)
+output: ?
+
+testName: getConstantNameInConstantLibraryObject_inValidInputMetaDataInteger
+input inputData: string (The value that should be looked for in the constants validation data library, that is also provided as input)
+input inputMetaData: integer (123)
+output: ?
+
+testName: getConstantNameInConstantLibraryObject_inValidInputMetaDataBoolean
+input inputData: string (The value that should be looked for in the constants validation data library, that is also provided as input)
+input inputMetaData: boolean (false)
+output: ?
+
+testName: getConstantNameInConstantLibraryObject_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: object (A JSON data object that contains all of the constants validation data namespace objects that should be searched)
+output: ?
+
+testName: getConstantNameInConstantLibraryObject_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: object (A JSON data object that contains all of the constants validation data namespace objects that should be searched)
+output: ?
+
+testName: getConstantNameInConstantLibraryObject_inValidInputMetaDataUndefined
+input inputData: string (The value that should be looked for in the constants validation data library, that is also provided as input)
+input inputMetaData: undefined
+output: ?
+
+testName: getConstantNameInConstantLibraryObject_inValidInputMetaDataNaN
+input inputData: string (The value that should be looked for in the constants validation data library, that is also provided as input)
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: getConstantActualValueInConstantLibraryObject_validData
+input inputData: string (The value that should be looked for in the constants validation data library that is also provided as input)
+input inputMetaData: object (A JSON data object that contains all of the constants validation data namespace objects that should)
+output: string|boolean (The actual value of the constant if a match is found, False if no match is found)
+
+testName: getConstantActualValueInConstantLibraryObject_inValidInputDataString
+input inputData: string (dfxg24346dfg)
+input inputMetaData: object (A JSON data object that contains all of the constants validation data namespace objects that should)
+output: ?
+
+testName: getConstantActualValueInConstantLibraryObject_inValidInputMetaDataString
+input inputData: string (The value that should be looked for in the constants validation data library that is also provided as input)
+input inputMetaData: string (dfxg24346dfg)
+output: ?
+
+testName: getConstantActualValueInConstantLibraryObject_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: object (A JSON data object that contains all of the constants validation data namespace objects that should)
+output: ?
+
+testName: getConstantActualValueInConstantLibraryObject_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: object (A JSON data object that contains all of the constants validation data namespace objects that should)
+output: ?
+
+testName: getConstantActualValueInConstantLibraryObject_inValidInputMetaDataInteger
+input inputData: string (The value that should be looked for in the constants validation data library that is also provided as input)
+input inputMetaData: integer (123)
+output: ?
+
+testName: getConstantActualValueInConstantLibraryObject_inValidInputMetaDataBoolean
+input inputData: string (The value that should be looked for in the constants validation data library that is also provided as input)
+input inputMetaData: boolean (false)
+output: ?
+
+testName: getConstantActualValueInConstantLibraryObject_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: object (A JSON data object that contains all of the constants validation data namespace objects that should)
+output: ?
+
+testName: getConstantActualValueInConstantLibraryObject_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: object (A JSON data object that contains all of the constants validation data namespace objects that should)
+output: ?
+
+testName: getConstantActualValueInConstantLibraryObject_inValidInputMetaDataUndefined
+input inputData: string (The value that should be looked for in the constants validation data library that is also provided as input)
+input inputMetaData: undefined
+output: ?
+
+testName: getConstantActualValueInConstantLibraryObject_inValidInputMetaDataNaN
+input inputData: string (The value that should be looked for in the constants validation data library that is also provided as input)
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: doesConstantExistInConstantNamespaceObject_validData
+input inputData: string (The value that should be looked for in all the constants data that is provided also as input)
+input inputMetaData: object (The constants validation data structure that should be searched)
+output: boolean (True or False to indicate if a matching constant definition was found or not)
+
+testName: doesConstantExistInConstantNamespaceObject_inValidInputDataString
+input inputData: string (dfxg24346dfg)
+input inputMetaData: object (The constants validation data structure that should be searched)
+output: ?
+
+testName: doesConstantExistInConstantNamespaceObject_inValidInputMetaDataString
+input inputData: string (The value that should be looked for in all the constants data that is provided also as input)
+input inputMetaData: string (dfxg24346dfg)
+output: ?
+
+testName: doesConstantExistInConstantNamespaceObject_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: object (The constants validation data structure that should be searched)
+output: ?
+
+testName: doesConstantExistInConstantNamespaceObject_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: object (The constants validation data structure that should be searched)
+output: ?
+
+testName: doesConstantExistInConstantNamespaceObject_inValidInputMetaDataInteger
+input inputData: string (The value that should be looked for in all the constants data that is provided also as input)
+input inputMetaData: integer (123)
+output: ?
+
+testName: doesConstantExistInConstantNamespaceObject_inValidInputMetaDataBoolean
+input inputData: string (The value that should be looked for in all the constants data that is provided also as input)
+input inputMetaData: boolean (false)
+output: ?
+
+testName: doesConstantExistInConstantNamespaceObject_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: object (The constants validation data structure that should be searched)
+output: ?
+
+testName: doesConstantExistInConstantNamespaceObject_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: object (The constants validation data structure that should be searched)
+output: ?
+
+testName: doesConstantExistInConstantNamespaceObject_inValidInputMetaDataUndefined
+input inputData: string (The value that should be looked for in all the constants data that is provided also as input)
+input inputMetaData: undefined
+output: ?
+
+testName: doesConstantExistInConstantNamespaceObject_inValidInputMetaDataNaN
+input inputData: string (The value that should be looked for in all the constants data that is provided also as input)
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: getConstantNameInConstantNamespaceObject_validData
+input inputData: string (The value that should be looked for in all the constants data that is provided also as input)
+input inputMetaData: object (The constants validation data structure that should be searched)
+output: string|boolean (The name of the constant or False if it is not found)
+
+testName: getConstantNameInConstantNamespaceObject_inValidInputDataString
+input inputData: string (dfxg24346dfg)
+input inputMetaData: object (The constants validation data structure that should be searched)
+output: ?
+
+testName: getConstantNameInConstantNamespaceObject_inValidInputMetaDataString
+input inputData: string (The value that should be looked for in all the constants data that is provided also as input)
+input inputMetaData: string (dfxg24346dfg)
+output: ?
+
+testName: getConstantNameInConstantNamespaceObject_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: object (The constants validation data structure that should be searched)
+output: ?
+
+testName: getConstantNameInConstantNamespaceObject_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: object (The constants validation data structure that should be searched)
+output: ?
+
+testName: getConstantNameInConstantNamespaceObject_inValidInputMetaDataInteger
+input inputData: string (The value that should be looked for in all the constants data that is provided also as input)
+input inputMetaData: integer (123)
+output: ?
+
+testName: getConstantNameInConstantNamespaceObject_inValidInputMetaDataBoolean
+input inputData: string (The value that should be looked for in all the constants data that is provided also as input)
+input inputMetaData: boolean (false)
+output: ?
+
+testName: getConstantNameInConstantNamespaceObject_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: object (The constants validation data structure that should be searched)
+output: ?
+
+testName: getConstantNameInConstantNamespaceObject_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: object (The constants validation data structure that should be searched)
+output: ?
+
+testName: getConstantNameInConstantNamespaceObject_inValidInputMetaDataUndefined
+input inputData: string (The value that should be looked for in all the constants data that is provided also as input)
+input inputMetaData: undefined
+output: ?
+
+testName: getConstantNameInConstantNamespaceObject_inValidInputMetaDataNaN
+input inputData: string (The value that should be looked for in all the constants data that is provided also as input)
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: getConstantActualValueInConstantNamespaceObject_validData
+input inputData: string (The value that should be looked for in all the constants data that is provided also as input)
+input inputMetaData: object (The constants validation data structure that should be searched)
+output: string|boolean (The actual value of the constant or False if it is not found)
+
+testName: getConstantActualValueInConstantNamespaceObject_inValidInputDataString
+input inputData: string (dfxg24346dfg)
+input inputMetaData: object (The constants validation data structure that should be searched)
+output: ?
+
+testName: getConstantActualValueInConstantNamespaceObject_inValidInputMetaDataString
+input inputData: string (The value that should be looked for in all the constants data that is provided also as input)
+input inputMetaData: string (dfxg24346dfg)
+output: ?
+
+testName: getConstantActualValueInConstantNamespaceObject_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: object (The constants validation data structure that should be searched)
+output: ?
+
+testName: getConstantActualValueInConstantNamespaceObject_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: object (The constants validation data structure that should be searched)
+output: ?
+
+testName: getConstantActualValueInConstantNamespaceObject_inValidInputMetaDataInteger
+input inputData: string (The value that should be looked for in all the constants data that is provided also as input)
+input inputMetaData: integer (123)
+output: ?
+
+testName: getConstantActualValueInConstantNamespaceObject_inValidInputMetaDataBoolean
+input inputData: string (The value that should be looked for in all the constants data that is provided also as input)
+input inputMetaData: boolean (false)
+output: ?
+
+testName: getConstantActualValueInConstantNamespaceObject_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: object (The constants validation data structure that should be searched)
+output: ?
+
+testName: getConstantActualValueInConstantNamespaceObject_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: object (The constants validation data structure that should be searched)
+output: ?
+
+testName: getConstantActualValueInConstantNamespaceObject_inValidInputMetaDataUndefined
+input inputData: string (The value that should be looked for in all the constants data that is provided also as input)
+input inputMetaData: undefined
+output: ?
+
+testName: getConstantActualValueInConstantNamespaceObject_inValidInputMetaDataNaN
+input inputData: string (The value that should be looked for in all the constants data that is provided also as input)
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: getConstantType_validData
+input inputData: string (The string value that should be searched in all of the constants libraries)
+input inputMetaData: boolean (True or False to indicate if the function should exit on first discovery or continue to discover all possible matches)
+output: string (A list of constants libraries where the constant was found to be defined in)
+
+testName: getConstantType_inValidInputDataString
+input inputData: string (dfxg24346dfg)
+input inputMetaData: boolean (True or False to indicate if the function should exit on first discovery or continue to discover all possible matches)
+output: ?
+
+testName: getConstantType_inValidInputMetaDataString
+input inputData: string (The string value that should be searched in all of the constants libraries)
+input inputMetaData: string (dfxg24346dfg)
+output: ?
+
+testName: getConstantType_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: boolean (True or False to indicate if the function should exit on first discovery or continue to discover all possible matches)
+output: ?
+
+testName: getConstantType_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: boolean (True or False to indicate if the function should exit on first discovery or continue to discover all possible matches)
+output: ?
+
+testName: getConstantType_inValidInputMetaDataInteger
+input inputData: string (The string value that should be searched in all of the constants libraries)
+input inputMetaData: integer (123)
+output: ?
+
+testName: getConstantType_inValidInputMetaDataBoolean
+input inputData: string (The string value that should be searched in all of the constants libraries)
+input inputMetaData: boolean (false)
+output: ?
+
+testName: getConstantType_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: boolean (True or False to indicate if the function should exit on first discovery or continue to discover all possible matches)
+output: ?
+
+testName: getConstantType_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: boolean (True or False to indicate if the function should exit on first discovery or continue to discover all possible matches)
+output: ?
+
+testName: getConstantType_inValidInputMetaDataUndefined
+input inputData: string (The string value that should be searched in all of the constants libraries)
+input inputMetaData: undefined
+output: ?
+
+testName: getConstantType_inValidInputMetaDataNaN
+input inputData: string (The string value that should be searched in all of the constants libraries)
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: getConstantActualValue_validData
+input inputData: string (The name of the constant we are looking for to get the actual value of the constant)
+input inputMetaData: string (The type or library where the constant should be found)
+output: string (The actual value of the string)
+
+testName: getConstantActualValue_inValidInputDataString
+input inputData: string (dfxg24346dfg)
+input inputMetaData: string (The type or library where the constant should be found)
+output: ?
+
+testName: getConstantActualValue_inValidInputMetaDataString
+input inputData: string (The name of the constant we are looking for to get the actual value of the constant)
+input inputMetaData: string (dfxg24346dfg)
+output: ?
+
+testName: getConstantActualValue_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string (The type or library where the constant should be found)
+output: ?
+
+testName: getConstantActualValue_inValidInputDataBoolean 
+input inputData: boolean (false)
+input inputMetaData: string (The type or library where the constant should be found)
+output: ?
+
+testName: getConstantActualValue_inValidInputMetaDataInteger
+input inputData: string (The name of the constant we are looking for to get the actual value of the constant)
+input inputMetaData: integer (123)
+output: ?
+
+testName: getConstantActualValue_inValidInputMetaDataBoolean
+input inputData: string (The name of the constant we are looking for to get the actual value of the constant)
+input inputMetaData: boolean (false)
+output: ?
+
+testName: getConstantActualValue_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string (The type or library where the constant should be found)
+output: ?
+
+testName: getConstantActualValue_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string (The type or library where the constant should be found)
+output: ?
+
+testName: getConstantActualValue_inValidInputMetaDataUndefined
+input inputData: string (The name of the constant we are looking for to get the actual value of the constant)
+input inputMetaData: undefined
+output: ?
+
+testName: getConstantActualValue_inValidInputMetaDataNaN
+input inputData: string (The name of the constant we are looking for to get the actual value of the constant)
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: getConstantName_validData
+input inputData: string (The constant string value that should be used when getting the constant name)
+input inputMetaData: string (Not used for this business rule)
+output: string (The name of the constant: eg: cSystem)
+
+testName: getConstantName_inValidInputDataString
+input inputData: string (dfxg24346dfg)
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: getConstantName_inValidInputMetaDataString
+input inputData: string (The constant string value that should be used when getting the constant name)
+input inputMetaData: string (dfxg24346dfg)
+output: ?
+
+testName: getConstantName_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: getConstantName_inValidInputDataBoolean 
+input inputData: boolean (false)
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: getConstantName_inValidInputMetaDataInteger
+input inputData: string (The constant string value that should be used when getting the constant name)
+input inputMetaData: integer (123)
+output: ?
+
+testName: getConstantName_inValidInputMetaDataBoolean
+input inputData: string (The constant string value that should be used when getting the constant name)
+input inputMetaData: boolean (false)
+output: ?
+
+testName: getConstantName_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: getConstantName_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: getConstantName_inValidInputMetaDataUndefined
+input inputData: string (The constant string value that should be used when getting the constant name)
+input inputMetaData: undefined
+output: ?
+
+testName: getConstantName_inValidInputMetaDataNaN
+input inputData: string (The constant string value that should be used when getting the constant name)
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: isConstantTypeValid_validData
+input inputData: string (The string that should be searched for a constant name)
+input inputMetaData: string (Not used for this business rule)
+output: string (The name of the constant that was found)
+
+testName: isConstantTypeValid_inValidInputDataString
+input inputData: string (dfxg24346dfg)
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: isConstantTypeValid_inValidInputMetaDataString
+input inputData: string (The string that should be searched for a constant name)
+input inputMetaData: string (dfxg24346dfg)
+output: ?
+
+testName: isConstantTypeValid_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: isConstantTypeValid_inValidInputDataBoolean 
+input inputData: boolean (false)
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: isConstantTypeValid_inValidInputMetaDataInteger
+input inputData: string (The string that should be searched for a constant name)
+input inputMetaData: integer (123)
+output: ?
+
+testName: isConstantTypeValid_inValidInputMetaDataBoolean
+input inputData: string (The string that should be searched for a constant name)
+input inputMetaData: boolean (false)
+output: ?
+
+testName: isConstantTypeValid_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: isConstantTypeValid_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: isConstantTypeValid_inValidInputMetaDataUndefined
+input inputData: string (The string that should be searched for a constant name)
+input inputMetaData: undefined
+output: ?
+
+testName: isConstantTypeValid_inValidInputMetaDataNaN
+input inputData: string (The string that should be searched for a constant name)
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: convertConstantTypeToConstantPrefix_validData
+input inputData: string (The string that should be validated if it is a valid constant type or not)
+input inputMetaData: string (Not used for this business rule)
+output: string (True or False to indicate if the string is a valid constant type/library that exists within the system or not)
+
+testName: convertConstantTypeToConstantPrefix_inValidInputDataString
+input inputData: string (dfxg24346dfg)
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: convertConstantTypeToConstantPrefix_inValidInputMetaDataString
+input inputData: string (The string that should be validated if it is a valid constant type or not)
+input inputMetaData: string (dfxg24346dfg)
+output: ?
+
+testName: convertConstantTypeToConstantPrefix_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: convertConstantTypeToConstantPrefix_inValidInputDataBoolean 
+input inputData: boolean (false)
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: convertConstantTypeToConstantPrefix_inValidInputMetaDataInteger
+input inputData: string (The string that should be validated if it is a valid constant type or not)
+input inputMetaData: integer (123)
+output: ?
+
+testName: convertConstantTypeToConstantPrefix_inValidInputMetaDataBoolean
+input inputData: string (The string that should be validated if it is a valid constant type or not)
+input inputMetaData: boolean (false)
+output: ?
+
+testName: convertConstantTypeToConstantPrefix_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: convertConstantTypeToConstantPrefix_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: convertConstantTypeToConstantPrefix_inValidInputMetaDataUndefined
+input inputData: string (The string that should be validated if it is a valid constant type or not)
+input inputMetaData: undefined
+output: ?
+
+testName: convertConstantTypeToConstantPrefix_inValidInputMetaDataNaN
+input inputData: string (The string that should be validated if it is a valid constant type or not)
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: constantsOptimizedFulfillmentSystem_validData
+input inputData: string (The string that should be determined or find a constant to fulfill part of the string)
+input inputMetaData: string (Not used for this business rule)
+output: string (A constant that represents part of the input string)
+
+testName: constantsOptimizedFulfillmentSystem_inValidInputDataString
+input inputData: string (dfxg24346dfg)
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: constantsOptimizedFulfillmentSystem_inValidInputMetaDataString
+input inputData: string (The string that should be determined or find a constant to fulfill part of the string)
+input inputMetaData: string (dfxg24346dfg)
+output: ?
+
+testName: constantsOptimizedFulfillmentSystem_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: constantsOptimizedFulfillmentSystem_inValidInputDataBoolean 
+input inputData: boolean (false)
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: constantsOptimizedFulfillmentSystem_inValidInputMetaDataInteger
+input inputData: string (The string that should be determined or find a constant to fulfill part of the string)
+input inputMetaData: integer (123)
+output: ?
+
+testName: constantsOptimizedFulfillmentSystem_inValidInputMetaDataBoolean
+input inputData: string (The string that should be determined or find a constant to fulfill part of the string)
+input inputMetaData: boolean (false)
+output: ?
+
+testName: constantsOptimizedFulfillmentSystem_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: constantsOptimizedFulfillmentSystem_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: constantsOptimizedFulfillmentSystem_inValidInputMetaDataUndefined
+input inputData: string (The string that should be determined or find a constant to fulfill part of the string)
+input inputMetaData: undefined
+output: ?
+
+testName: constantsOptimizedFulfillmentSystem_inValidInputMetaDataNaN
+input inputData: string (The string that should be determined or find a constant to fulfill part of the string)
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: constantsFulfillmentSystem_validData
+input inputData: string (The constant to be defined/fulfilled)
+input inputMetaData: string (The original user-defined constant to be fulfilled, so the recursive algorithm can continue processing the rest of the string, after a first match is found)
+output: string (The fully optimized definition for the new constant)
+
+testName: constantsFulfillmentSystem_inValidInputDataString
+input inputData: string (dfxg24346dfg)
+input inputMetaData: string (The original user-defined constant to be fulfilled, so the recursive algorithm can continue processing the rest of the string, after a first match is found)
+output: ?
+
+testName: constantsFulfillmentSystem_inValidInputMetaDataString
+input inputData: string (The constant to be defined/fulfilled)
+input inputMetaData: string (dfxg24346dfg)
+output: ?
+
+testName: constantsFulfillmentSystem_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string (The original user-defined constant to be fulfilled, so the recursive algorithm can continue processing the rest of the string, after a first match is found)
+output: ?
+
+testName: constantsFulfillmentSystem_inValidInputDataBoolean 
+input inputData: boolean (false)
+input inputMetaData: string (The original user-defined constant to be fulfilled, so the recursive algorithm can continue processing the rest of the string, after a first match is found)
+output: ?
+
+testName: constantsFulfillmentSystem_inValidInputMetaDataInteger
+input inputData: string (The constant to be defined/fulfilled)
+input inputMetaData: integer (123)
+output: ?
+
+testName: constantsFulfillmentSystem_inValidInputMetaDataBoolean
+input inputData: string (The constant to be defined/fulfilled)
+input inputMetaData: boolean (false)
+output: ?
+
+testName: constantsFulfillmentSystem_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string (The original user-defined constant to be fulfilled, so the recursive algorithm can continue processing the rest of the string, after a first match is found)
+output: ?
+
+testName: constantsFulfillmentSystem_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string (The original user-defined constant to be fulfilled, so the recursive algorithm can continue processing the rest of the string, after a first match is found)
+output: ?
+
+testName: constantsFulfillmentSystem_inValidInputMetaDataUndefined
+input inputData: string (The constant to be defined/fulfilled)
+input inputMetaData: undefined
+output: ?
+
+testName: constantsFulfillmentSystem_inValidInputMetaDataNaN
+input inputData: string (The constant to be defined/fulfilled)
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: validateConstantsDataValues_validData
+input inputData: string (The name of the data-hive that should contain all of the validation data that should be used to execute the validation procedures)
+input inputMetaData: string (Not used for this business rule)
+output: boolean (True or False to indicate if the validation passed for the entire data hive or if it did not pass)
+
+testName: validateConstantsDataValues_inValidInputDataString
+input inputData: string (dfxg24346dfg)
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: validateConstantsDataValues_inValidInputMetaDataString
+input inputData: string (The name of the data-hive that should contain all of the validation data that should be used to execute the validation procedures)
+input inputMetaData: string (dfxg24346dfg)
+output: ?
+
+testName: validateConstantsDataValues_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: validateConstantsDataValues_inValidInputDataBoolean 
+input inputData: boolean (false)
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: validateConstantsDataValues_inValidInputMetaDataInteger
+input inputData: string (The name of the data-hive that should contain all of the validation data that should be used to execute the validation procedures)
+input inputMetaData: integer (123)
+output: ?
+
+testName: validateConstantsDataValues_inValidInputMetaDataBoolean
+input inputData: string (The name of the data-hive that should contain all of the validation data that should be used to execute the validation procedures)
+input inputMetaData: boolean (false)
+output: ?
+
+testName: validateConstantsDataValues_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: validateConstantsDataValues_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: validateConstantsDataValues_inValidInputMetaDataUndefined
+input inputData: string (The name of the data-hive that should contain all of the validation data that should be used to execute the validation procedures)
+input inputMetaData: undefined
+output: ?
+
+testName: validateConstantsDataValues_inValidInputMetaDataNaN
+input inputData: string (The name of the data-hive that should contain all of the validation data that should be used to execute the validation procedures)
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: isConstantValid_validData
+input inputData: string (The value of the constant as a string)
+input inputMetaData: string (Not used for this business rule)
+output: boolean (True or False to indicate if the user entered a valid constant or not)
+
+testName: isConstantValid_inValidInputDataString
+input inputData: string (dfxg24346dfg)
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: isConstantValid_inValidInputMetaDataString
+input inputData: string (The value of the constant as a string)
+input inputMetaData: string (dfxg24346dfg)
+output: ?
+
+testName: isConstantValid_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: isConstantValid_inValidInputDataBoolean 
+input inputData: boolean (false)
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: isConstantValid_inValidInputMetaDataInteger
+input inputData: string (The value of the constant as a string)
+input inputMetaData: integer (123)
+output: ?
+
+testName: isConstantValid_inValidInputMetaDataBoolean
+input inputData: string (The value of the constant as a string)
+input inputMetaData: boolean (false)
+output: ?
+
+testName: isConstantValid_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: isConstantValid_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: isConstantValid_inValidInputMetaDataUndefined
+input inputData: string (The value of the constant as a string)
+input inputMetaData: undefined
+output: ?
+
+testName: isConstantValid_inValidInputMetaDataNaN
+input inputData: string (The value of the constant as a string)
+input inputMetaData: NaN
+output: ?
