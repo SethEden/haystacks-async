@@ -182,26 +182,31 @@ async function listPluginsAttributeInRegistry(attributeName) {
   // attributeName is:
   await loggers.consoleLog(namespacePrefix + functionName, msg.cattributeNameIs + attributeName);
   let returnData;
-  let pluginRegistryList = D[cfg.cpluginRegistry][wrd.cplugins];
-  // pluginRegistryList is:
-  if (pluginRegistryList && await Array.isArray(pluginRegistryList)) {
-    returnData = [];
-    await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginRegistryListIs + JSON.stringify(pluginRegistryList));
-    for (let pluginKey in pluginRegistryList) {
-      // pluginKey is:
-      await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginKeyIs + pluginKey);
-      let pluginParentObject = pluginRegistryList[pluginKey];
-      // pluginParentObject is:
-      await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginParentObjectIs + JSON.stringify(pluginParentObject));
-      let keys = Object.keys(pluginParentObject);
-      let pluginObject = pluginParentObject[keys[0]];
-      // pluginObject is:
-      await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginObjectIs + JSON.stringify(pluginObject));
-      returnData.push(pluginObject[attributeName]);
+  let pluginRegistryList;
+  if (D[cfg.cpluginRegistry] != undefined) {
+    pluginRegistryList = D[cfg.cpluginRegistry][wrd.cplugins];
+    if (pluginRegistryList && await Array.isArray(pluginRegistryList)) {
+      returnData = [];
+      // pluginRegistryList is:
+      await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginRegistryListIs + JSON.stringify(pluginRegistryList));
+      for (let pluginKey in pluginRegistryList) {
+        // pluginKey is:
+        await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginKeyIs + pluginKey);
+        let pluginParentObject = pluginRegistryList[pluginKey];
+        // pluginParentObject is:
+        await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginParentObjectIs + JSON.stringify(pluginParentObject));
+        let keys = Object.keys(pluginParentObject);
+        let pluginObject = pluginParentObject[keys[0]];
+        // pluginObject is:
+        await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginObjectIs + JSON.stringify(pluginObject));
+        returnData.push(pluginObject[attributeName]);
+      }
+    } else {
+      // ERROR: attributeName was not properly defined.
+      await console.log(msg.cErrorAttributeNameMessage01);
+      returnData = false;
     }
   } else {
-    // ERROR: attributeName was not properly defined.
-    await console.log(msg.cErrorAttributeNameMessage01);
     returnData = false;
   }
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
@@ -213,8 +218,8 @@ async function listPluginsAttributeInRegistry(attributeName) {
  * @function listPluginsInRegistryPath
  * @description In the plugin registry there should be an entry for the path of the plugins on the local system.
  * This function will load that path and return a list of the sub-folders located at that path.
- * @return {array<string>} A list array of the names of the plugins located at the specified path on
- * the local system from the plugins registry data hive.
+ * @return {array<string>|boolean} A list array of the names of the plugins located at the specified path on
+ * the local system from the plugins registry data hive, or returns false if the pluging registry is undefined.
  * @author Seth Hollingsead
  * @date 2022/09/14
  */
@@ -222,7 +227,11 @@ async function listPluginsInRegistryPath() {
   let functionName = listPluginsInRegistryPath.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   let returnData = [];
-  returnData = ruleBroker.processRules([D[cfg.cpluginRegistry][wrd.cpath], ''], [biz.cgetDirectoryList]);
+  if (D[cfg.cpluginRegistry] != undefined) {
+    returnData = ruleBroker.processRules([D[cfg.cpluginRegistry][wrd.cpath], ''], [biz.cgetDirectoryList]);
+  } else {
+    returnData = false;
+  }
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;

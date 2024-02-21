@@ -2021,108 +2021,114 @@ describe(tst_con.cunregisterPlugins, () => {
  * @function syncPluginRegistryWithPath
  * @description Tests the positive and negative test cases of the syncPluginRegistryWithPath
  * @author Vlad Sorokin
- * @date 2023/Month/Day
+ * @date 2023/02/20
  */
-// describe(tst_con.csyncPluginRegistryWithPath, () => {
-//     /**
-//      * @function syncPluginRegistryWithPath_validData
-//      * @description Tests the main function syncPluginRegistryWithPath with a valid input.
-//      * @author Vlad Sorokin
-//      * @date 2023/Month/Day
-//      */
-//     test(tst_con.csyncPluginRegistryWithPath_validData, async () => {
-//         // Arrange
+describe(tst_con.csyncPluginRegistryWithPath, () => {
+    /**
+     * @function syncPluginRegistryWithPath_validData
+     * @description Tests the main function syncPluginRegistryWithPath with a valid input.
+     * @author Vlad Sorokin
+     * @date 2023/02/20
+     */
+    test(tst_con.csyncPluginRegistryWithPath_validData, async () => {
+        // Arrange
+        let pluginsRegistred = tst_man.listAllPluginsInRegistry;
+        D[cfg.cpluginRegistry] = pluginsRegistred;
+
+        // Act
+        let returnData = await main.syncPluginRegistryWithPath();
+
+        // Assert
+        expect(returnData).toEqual(true);
+    });
+
+    /**
+     * @function syncPluginRegistryWithPath_inValidString
+     * @description Tests the main function syncPluginRegistryWithPath with a invalid data string.
+     * @author Vlad Sorokin
+     * @date 2023/02/20
+     */
+    test(tst_con.csyncPluginRegistryWithPath_inValidString, async () => {
+        // Arrange
+        let pluginsRegistred = tst_man.ctestString1;
+        D[cfg.cpluginRegistry] = pluginsRegistred;
         
+        // Act
+        let returnData = await main.syncPluginRegistryWithPath();
 
-//         // Act
-//         let returnData = await main.syncPluginRegistryWithPath(pluginListArray);
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
 
-//         // Assert
-//         expect(returnData).toEqual(true);
-//     });
+    /**
+     * @function syncPluginRegistryWithPath_inValidInteger
+     * @description Tests the main function syncPluginRegistryWithPath with a invalid data integer.
+     * @author Vlad Sorokin
+     * @date 2023/02/20
+     */
+    test(tst_con.csyncPluginRegistryWithPath_inValidInteger, async () => {
+        // Arrange
+        let pluginsRegistred = 123;
+        D[cfg.cpluginRegistry] = pluginsRegistred;
 
-//     // /**
-//     //  * @function syncPluginRegistryWithPath_inValidString
-//     //  * @description Tests the main function syncPluginRegistryWithPath with a invalid data string.
-//     //  * @author Vlad Sorokin
-//     //  * @date 2023/Month/Day
-//     //  */
-//     // test(tst_con.csyncPluginRegistryWithPath_inValidString, async () => {
-//     //     // Arrange
+        // Act
+        let returnData = await main.syncPluginRegistryWithPath();
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function syncPluginRegistryWithPath_inValidBoolean
+     * @description Tests the main function syncPluginRegistryWithPath with a invalid data boolean.
+     * @author Vlad Sorokin
+     * @date 2023/02/20
+     */
+    test(tst_con.csyncPluginRegistryWithPath_inValidBoolean, async () => {
+        // Arrange
+        let pluginsRegistred = false;
+        D[cfg.cpluginRegistry] = pluginsRegistred;
         
+        // Act
+        let returnData = await main.syncPluginRegistryWithPath();
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function syncPluginRegistryWithPath_inValidUndefined
+     * @description Tests the main function syncPluginRegistryWithPath with a invalid data undefined.
+     * @author Vlad Sorokin
+     * @date 2023/02/20
+     */
+    test(tst_con.csyncPluginRegistryWithPath_inValidUndefined, async () => {
+        // Arrange
+        let pluginsRegistred = undefined;
+        D[cfg.cpluginRegistry] = pluginsRegistred;
         
-//     //     // Act
-//     //     let returnData = await main.syncPluginRegistryWithPath(pluginListArray);
+        // Act
+        let returnData = await main.syncPluginRegistryWithPath();
 
-//     //     // Assert
-//     //     expect(returnData).toBeFalsy();
-//     // });
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
 
-//     // /**
-//     //  * @function syncPluginRegistryWithPath_inValidInteger
-//     //  * @description Tests the main function syncPluginRegistryWithPath with a invalid data integer.
-//     //  * @author Vlad Sorokin
-//     //  * @date 2023/Month/Day
-//     //  */
-//     // test(tst_con.csyncPluginRegistryWithPath_inValidInteger, async () => {
-//     //     // Arrange
+    /**
+     * @function syncPluginRegistryWithPath_inValidNaN
+     * @description Tests the main function syncPluginRegistryWithPath with a invalid data NaN.
+     * @author Vlad Sorokin
+     * @date 2023/02/20
+     */
+    test(tst_con.csyncPluginRegistryWithPath_inValidNaN, async () => {
+        // Arrange
+        let pluginsRegistred = NaN;
+        D[cfg.cpluginRegistry] = pluginsRegistred;
         
+        // Act
+        let returnData = await main.syncPluginRegistryWithPath();
 
-//     //     // Act
-//     //     let returnData = await main.syncPluginRegistryWithPath(pluginListArray);
-
-//     //     // Assert
-//     //     expect(returnData).toBeFalsy();
-//     // });
-
-//     // /**
-//     //  * @function syncPluginRegistryWithPath_inValidBoolean
-//     //  * @description Tests the main function syncPluginRegistryWithPath with a invalid data boolean.
-//     //  * @author Vlad Sorokin
-//     //  * @date 2023/Month/Day
-//     //  */
-//     // test(tst_con.csyncPluginRegistryWithPath_inValidBoolean, async () => {
-//     //     // Arrange
-        
-        
-//     //     // Act
-//     //     let returnData = await main.syncPluginRegistryWithPath(pluginListArray);
-
-//     //     // Assert
-//     //     expect(returnData).toBeFalsy();
-//     // });
-
-//     // /**
-//     //  * @function syncPluginRegistryWithPath_inValidUndefined
-//     //  * @description Tests the main function syncPluginRegistryWithPath with a invalid data undefined.
-//     //  * @author Vlad Sorokin
-//     //  * @date 2023/Month/Day
-//     //  */
-//     // test(tst_con.csyncPluginRegistryWithPath_inValidUndefined, async () => {
-//     //     // Arrange
-        
-        
-//     //     // Act
-//     //     let returnData = await main.syncPluginRegistryWithPath(pluginListArray);
-
-//     //     // Assert
-//     //     expect(returnData).toBeFalsy();
-//     // });
-
-//     // /**
-//     //  * @function syncPluginRegistryWithPath_inValidNaN
-//     //  * @description Tests the main function syncPluginRegistryWithPath with a invalid data NaN.
-//     //  * @author Vlad Sorokin
-//     //  * @date 2023/Month/Day
-//     //  */
-//     // test(tst_con.csyncPluginRegistryWithPath_inValidNaN, async () => {
-//     //     // Arrange
-        
-        
-//     //     // Act
-//     //     let returnData = await main.syncPluginRegistryWithPath(pluginListArray);
-
-//     //     // Assert
-//     //     expect(returnData).toBeFalsy();
-//     // });
-// })
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+})

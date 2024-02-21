@@ -509,7 +509,7 @@ async function unregisterPlugins(inputData) {
  * @function syncPluginRegistryWithPath
  * @description This is a wrapper function for warden.syncPluginRegistryWithPath.
  * Which is in-turn a wrapper function for chiefPlugin.synchronizePluginRegistryWithPath.
- * Which is in-turn a wrapper function for pluginBroker.synchPluginRegistryWithPluginRegistryPath.
+ * Which is in-turn a wrapper function for pluginBroker.syncPluginRegistryWithPluginRegistryPath.
  * @return {boolean} True or False to indicate if the synchronization was performed successfully or not.
  * @author Seth Hollingsead
  * @date 2022/09/15
