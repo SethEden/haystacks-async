@@ -523,7 +523,7 @@ async function writePluginRegistryToDisk() {
  * @param {array<string>} pluginsPaths The fully qualified paths where to load the plugins from.
  * @return {boolean} True or False to indicate if all the plugins were loaded or not.
  * @author Seth Hollingsead
- * @date 2022/09/01 
+ * @date 2022/09/01
  */
 async function loadPlugins(pluginsPaths) {
   let functionName = loadPlugins.name;
@@ -621,7 +621,7 @@ async function unloadAllPlugins() {
 
 /**
  * @function getPluginsRegistryPath
- * @description A wrapper call to the warden.getPluginsRegistryPath function. 
+ * @description A wrapper call to the warden.getPluginsRegistryPath function.
  * Which is in-turn a wrapper function for the chiefPlugin.getPluginsRegistryPath.
  * Which is in-turn a wrapper function for pluginBroker.getPluginsRegistryPath.
  * @return {string} The path to the plugins listed in the plugin registry as meta-data.
@@ -641,7 +641,7 @@ async function getPluginsRegistryPath() {
 /**
  * @function loadPluginResourceData
  * @description A wrapper call to the warden.loadPluginResourceData function.
- * @param {string} contextName The type of resource that is being loaded, eg: configuration, commandAliases, workflows, ect...
+ * @param {string} contextName The type of resource that is being loaded, eg: configuration, commandAliases, workflows, etc...
  * @param {string} pluginConfigPath The fully qualified path to where the plugin data is located and should be loaded from.
  * @return {object} The JSON data that is loaded and parsed from the plugin path.
  * @author Seth Hollingsead
@@ -735,7 +735,7 @@ async function getData(dataName) {
  * @param {string} dataName The unique name of the data that should be cleared.
  * @return {boolean} True or False to indicate if the data was cleared successfully or not.
  * @author Seth Hollingsead
- * @date 2023/02/27 
+ * @date 2023/02/27
  */
 async function clearData(dataName) {
   let functionName = clearData.name;
@@ -908,6 +908,27 @@ async function consoleLog(theNamespacePrefix, theFunctionName, message) {
   // console.log(`END ${namespacePrefix}${functionName} function`);
 }
 
+/**
+ * @function consoleTableLog
+ * @description This is just a wrapper for the loggers.consoleTableLog function,
+ * It prints out a table with the data provided in the input tableDataArray.
+ * @param {string} classPath The class path for the caller of this function file.function or class.method.
+ * @param {array<object>} tableData An array of objects that should be printed to the console as if it was data.
+ * @param {array<string>} columnNames An array of column names that should be used when outputting the table.
+ * @return {void}
+ * @author Seth Hollingsead
+ * @date 2023/11/07
+ */
+async function consoleTableLog(classPath, tableData, columnNames) {
+  // let functionName = consoleTableLog.name;
+  // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
+  // console.log(`classPath is: ${classPath}`);
+  // console.log(`tableData is: ${JSON.stringify(tableData)}`);
+  // console.log(`columnNames is: ${JSON.stringify(columnNames)}`);
+  await loggers.consoleTableLog(classPath, tableData, columnNames);
+  // console.log(`END ${namespacePrefix}${functionName} function`);
+}
+
 export default {
   initFramework,
   accouterFramework,
@@ -945,5 +966,6 @@ export default {
   processCommandQueue,
   setConfigurationSetting,
   getConfigurationSetting,
-  consoleLog
+  consoleLog,
+  consoleTableLog
 };

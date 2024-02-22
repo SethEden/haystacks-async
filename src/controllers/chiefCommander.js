@@ -105,7 +105,7 @@ async function loadCommandAliasesFromPath(commandAliasesFilePathConfigurationNam
   } else if (contextName.toUpperCase().includes(wrd.cPLUGIN)) {
     allCommandAliasesData = await chiefData.setupAllXmlPluginData(commandAliasesFilePathConfigurationName, sys.cCommandsAliases);
   }
-  
+
   // allCommandAliasesData is:
   await loggers.consoleLog(namespacePrefix + functionName, msg.callCommandAliasesDataIs + JSON.stringify(allCommandAliasesData));
   if (D[sys.cCommandsAliases] === undefined) { // Make sure we only do this if it's undefined, otherwise we might wipe out previously loaded data.

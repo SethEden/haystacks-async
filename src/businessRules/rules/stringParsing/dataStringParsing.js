@@ -26,7 +26,7 @@ const namespacePrefix = wrd.cframework + bas.cDot + sys.cbusinessRules + bas.cDo
 /**
  * @function getAttributeName
  * @description Takes a string representation of a JSON attribute and gets the name (left hand assignment key).
- * @param {string} inputData Teh string representation of the JSON attribute that should be parsed.
+ * @param {string} inputData The string representation of the JSON attribute that should be parsed.
  * @param {string} inputMetaData Not used for this business rule.
  * @return {string} The name of the attribute.
  * @author Seth Hollingsead

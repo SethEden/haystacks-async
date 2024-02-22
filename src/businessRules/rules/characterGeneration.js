@@ -27,7 +27,7 @@ const namespacePrefix = wrd.cframework + bas.cDot + sys.cbusinessRules + bas.cDo
  * @function randomlyGenerateMixedCaseLetterOrSpecialCharacter
  * @description Randomly generates an english alphabetic letter from A-Z, a-z or
  * a random special character from the input list of special characters.
- * @param {string} inputData the list of allowable special characters that should be used to randomly select from.
+ * @param {string} inputData The list of allowable special characters that should be used to randomly select from.
  * @param {string} inputMetaData Not used for this business rule.
  * @return {string} Randomly returns a random mixed case letter of the english alphabet,
  * or a random special character from the list of allowable special characters.
@@ -73,7 +73,7 @@ async function randomlyGenerateUpperCaseLetterOrSpecialCharacter(inputData, inpu
  * @function randomlyGenerateLowerCaseLetterOrSpecialCharacter
  * @description Randomly generates an english alphabetic letter from a-z or
  * a random special character from the input list of special characters.
- * @param {string} inputData The list of allowable special characters that should be used  to randomly select from.
+ * @param {string} inputData The list of allowable special characters that should be used to randomly select from.
  * @param {string} inputMetaData Not used for this business rule.
  * @return {string} Randomly returns a random lower case letter of the english alphabet,
  * or a random special character from the list of allowable special characters.
@@ -119,7 +119,7 @@ async function randomlyGenerateEitherMixedCaseLetterOrNumberOrSpecialCharacter(i
  * @function randomlyGenerateEitherUpperCaseLetterOrNumberOrSpecialCharacter
  * @description Randomly generates an english alphabetic letter from A-Z or a number 0-9 or
  * a random special character from the input ist of special characters.
- * @param {string} inputData The list orf allowable special characters that should be used to randomly select from.
+ * @param {string} inputData The list of allowable special characters that should be used to randomly select from.
  * @param {string} inputMetaData Not used for this business rule.
  * @return {string} Randomly returns a random number, a random upper case letter of the english alphabet,
  * or a random special character from the list of allowable special characters.

@@ -34,7 +34,7 @@ const namespacePrefix = wrd.cframework + bas.cDot + sys.cbusinessRules + bas.cDo
  * @function validateConstantsDataValidation
  * @description Validates that validation data to ensure that all the contents of the
  * constants validation data matches with the actual constants definitions.
- * @param {string} inputData the path of the constants file that should be validated.
+ * @param {string} inputData The path of the constants file that should be validated.
  * @param {string} inputMetaData The name of the data hive that contains the appropriate matching constants validation data.
  * @return {boolean} True or False to indicate if all of the contents of the constants are fully validated or not.
  * @author Seth Hollingsead
@@ -58,7 +58,7 @@ async function validateConstantsDataValidation(inputData, inputMetaData) {
     const fileContentsLineArray = fileContents.split(/\r?\n/);
 
     let colorizeLogsEnabled = await configurator.getConfigurationSetting(wrd.csystem, cfg.cenableColorizedConsoleLogs);
-    // BEGIN processing all lines from file: 
+    // BEGIN processing all lines from file:
     await loggers.consoleLog(namespacePrefix + functionName, msg.cBeginProcessingAllLinesFromFile + inputData);
     for (const lineKey in fileContentsLineArray) {
       // BEGIN processing a line
@@ -101,7 +101,7 @@ async function validateConstantsDataValidation(inputData, inputMetaData) {
               if (inputMetaData.includes(bas.cColon) && inputMetaData.toUpperCase().includes(wrd.cPLUGIN)) {
                 let pluginConstantNamespaceArray = inputMetaData.split(bas.cColon);
                 pluginName = pluginConstantNamespaceArray[0] + bas.cColon;
-              }              
+              }
               console.log(pluginName + qualifiedConstantsFilename + bas.cColon + bas.cSpace + failMessage);
               let suggestedLineOfCode = await determineSuggestedConstantsValidationLineOfCode(lineArray[2], qualifiedConstantsPrefix);
               if (suggestedLineOfCode !== '') {
@@ -123,7 +123,7 @@ async function validateConstantsDataValidation(inputData, inputMetaData) {
       // END processing a line
       await loggers.consoleLog(namespacePrefix + functionName, msg.cEndProcessingLine);
     } // End-for (const line in fileContentsLineArray)
-    // END processing all lines from file: 
+    // END processing all lines from file:
     await loggers.consoleLog(namespacePrefix + functionName, msg.cEndProcessingAllLinesFromFile + inputData);
   } // End-if (inputData && inputMetaData)
   if (foundAFailure === false && processed === true) {
@@ -219,7 +219,7 @@ async function determineSuggestedConstantsValidationLineOfCode(inputData, inputM
 /**
  * @function validateConstantsDataValidationLineItemName
  * @description Loops through all of the constants validation data and verifies if a matching constant definition can be found, or not found.
- * @param {string} inputData the constant definition that should be searched for.
+ * @param {string} inputData The constant definition that should be searched for.
  * @param {string} inputMetaData The name of the data hive that contains the appropriate matching constants validation data.
  * @return {boolean} True or False to indicate if a match was found or not found.
  * @author Seth Hollingsead
@@ -290,7 +290,7 @@ async function getConstantsValidationNamespaceParentObject(inputData, inputMetaD
         let pluginName = pluginNamespaceArray[0];
         let pluginConstantNamespace = pluginNamespaceArray[1];
         for (const pluginNamespace in D[sys.cConstantsValidationData][wrd.cPlugins]) {
-          if (pluginNamespace === pluginName && 
+          if (pluginNamespace === pluginName &&
           await doesConstantNamespaceExist(pluginConstantNamespace, D[sys.cConstantsValidationData][wrd.cPlugins][pluginNamespace]) === true) {
             returnData = D[sys.cConstantsValidationData][wrd.cPlugins][pluginName];
           }
@@ -994,7 +994,7 @@ async function convertConstantTypeToConstantPrefix(inputData, inputMetaData) {
 /**
  * @function constantsOptimizedFulfillmentSystem
  * @description Determines what is the most optimized way to define a string using existing constant strings.
- * @param {string} inputData the string that should be determined or find a constant to fulfill part of the string.
+ * @param {string} inputData The string that should be determined or find a constant to fulfill part of the string.
  * @param {string} inputMetaData Not used for this business rule.
  * @return {string} A constant that represents part of the input string.
  * @author Seth Hollingsead

@@ -1,0 +1,607 @@
+Description: Test plan for wordStringParsing.js
+
+--------------------------------------------------------------------------------
+testName: isStringCamelCase_validData
+input inputData: string (The string that should be checked for the camel case qualifications)
+input inputMetaData: string (Not used for this business rule)
+output: boolean (True or False to indicate if the string is camel case or not)
+
+testName: isStringCamelCase_inValidInputDataString
+input inputData: string (dfxg24346dfg)
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: isStringCamelCase_inValidInputMetaDataString
+input inputData: string (The string that should be checked for the camel case qualifications)
+input inputMetaData: string (dfxg24346dfg)
+output: ?
+
+testName: isStringCamelCase_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: isStringCamelCase_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: isStringCamelCase_inValidInputMetaDataInteger
+input inputData: string (The string that should be checked for the camel case qualifications)
+input inputMetaData: integer (123)
+output: ?
+
+testName: isStringCamelCase_inValidInputMetaDataBoolean
+input inputData: string (The string that should be checked for the camel case qualifications)
+input inputMetaData: boolean (false)
+output: ?
+
+testName: isStringCamelCase_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: isStringCamelCase_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: isStringCamelCase_inValidInputMetaDataUndefined
+input inputData: string (The string that should be checked for the camel case qualifications)
+input inputMetaData: undefined
+output: ?
+
+testName: isStringCamelCase_inValidInputMetaDataNaN
+input inputData: string (The string that should be checked for the camel case qualifications)
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: mapWordToCamelCaseWord_validData
+input inputData: string (The string key/value that should be converted to a camel case word)
+input inputMetaData: string (The string index for the map to the value that should be used)
+output: string (A string where the word has been converted into a camel case word)
+
+testName: mapWordToCamelCaseWord_inValidInputDataString
+input inputData: string (dfxg24346dfg)
+input inputMetaData: string (The string index for the map to the value that should be used)
+output: ?
+
+testName: mapWordToCamelCaseWord_inValidInputMetaDataString
+input inputData: string (The string key/value that should be converted to a camel case word)
+input inputMetaData: string (dfxg24346dfg)
+output: ?
+
+testName: mapWordToCamelCaseWord_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string (The string index for the map to the value that should be used)
+output: ?
+
+testName: mapWordToCamelCaseWord_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: string (The string index for the map to the value that should be used)
+output: ?
+
+testName: mapWordToCamelCaseWord_inValidInputMetaDataInteger
+input inputData: string (The string key/value that should be converted to a camel case word)
+input inputMetaData: integer (123)
+output: ?
+
+testName: mapWordToCamelCaseWord_inValidInputMetaDataBoolean
+input inputData: string (The string key/value that should be converted to a camel case word)
+input inputMetaData: boolean (false)
+output: ?
+
+testName: mapWordToCamelCaseWord_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string (The string index for the map to the value that should be used)
+output: ?
+
+testName: mapWordToCamelCaseWord_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string (The string index for the map to the value that should be used)
+output: ?
+
+testName: mapWordToCamelCaseWord_inValidInputMetaDataUndefined
+input inputData: string (The string key/value that should be converted to a camel case word)
+input inputMetaData: undefined
+output: ?
+
+testName: mapWordToCamelCaseWord_inValidInputMetaDataNaN
+input inputData: string (The string key/value that should be converted to a camel case word)
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: simplifyAndConsolidateString_validData
+input inputData: string (The string that should be simplified and consolidated)
+input inputMetaData: string (Not used for this business rule)
+output: string (A string that has been simplified and consolidated by converting to lower case, removing all digits, symbols and white space)
+
+testName: simplifyAndConsolidateString_inValidInputDataString
+input inputData: string (dfxg24346dfg)
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: simplifyAndConsolidateString_inValidInputMetaDataString
+input inputData: string (The string that should be simplified and consolidated)
+input inputMetaData: string (dfxg24346dfg)
+output: ?
+
+testName: simplifyAndConsolidateString_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: simplifyAndConsolidateString_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: simplifyAndConsolidateString_inValidInputMetaDataInteger
+input inputData: string (The string that should be simplified and consolidated)
+input inputMetaData: integer (123)
+output: ?
+
+testName: simplifyAndConsolidateString_inValidInputMetaDataBoolean
+input inputData: string (The string that should be simplified and consolidated)
+input inputMetaData: boolean (false)
+output: ?
+
+testName: simplifyAndConsolidateString_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: simplifyAndConsolidateString_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: simplifyAndConsolidateString_inValidInputMetaDataUndefined
+input inputData: string (The string that should be simplified and consolidated)
+input inputMetaData: undefined
+output: ?
+
+testName: simplifyAndConsolidateString_inValidInputMetaDataNaN
+input inputData: string (The string that should be simplified and consolidated)
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: compareSimplifiedAndConsolidatedStrings_validData
+input inputData: string (The first string to be compared)
+input inputMetaData: string (The second string to be compared)
+output: boolean (A True or False value to indicate if the strings are virtually identical or not)
+
+testName: compareSimplifiedAndConsolidatedStrings_inValidInputDataString
+input inputData: string (dfxg24346dfg)
+input inputMetaData: string (The second string to be compared)
+output: ?
+
+testName: compareSimplifiedAndConsolidatedStrings_inValidInputMetaDataString
+input inputData: string (The first string to be compared)
+input inputMetaData: string (dfxg24346dfg)
+output: ?
+
+testName: compareSimplifiedAndConsolidatedStrings_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string (The second string to be compared)
+output: ?
+
+testName: compareSimplifiedAndConsolidatedStrings_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: string (The second string to be compared)
+output: ?
+
+testName: compareSimplifiedAndConsolidatedStrings_inValidInputMetaDataInteger
+input inputData: string (The first string to be compared)
+input inputMetaData: integer (123)
+output: ?
+
+testName: compareSimplifiedAndConsolidatedStrings_inValidInputMetaDataBoolean
+input inputData: string (The first string to be compared)
+input inputMetaData: boolean (false)
+output: ?
+
+testName: compareSimplifiedAndConsolidatedStrings_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string (The second string to be compared)
+output: ?
+
+testName: compareSimplifiedAndConsolidatedStrings_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string (The second string to be compared)
+output: ?
+
+testName: compareSimplifiedAndConsolidatedStrings_inValidInputMetaDataUndefined
+input inputData: string (The first string to be compared)
+input inputMetaData: undefined
+output: ?
+
+testName: compareSimplifiedAndConsolidatedStrings_inValidInputMetaDataNaN
+input inputData: string (The first string to be compared)
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: countCamelCaseWords_validData
+input inputData: string (String to count words from)
+input inputMetaData: string (Not used for this business rule)
+output: integer (The number of camel case words found in the string)
+
+testName: countCamelCaseWords_inValidInputDataString
+input inputData: string (dfxg24346dfg)
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: countCamelCaseWords_inValidInputMetaDataString
+input inputData: string (String to count words from)
+input inputMetaData: string (dfxg24346dfg)
+output: ?
+
+testName: countCamelCaseWords_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: countCamelCaseWords_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: countCamelCaseWords_inValidInputMetaDataInteger
+input inputData: string (String to count words from)
+input inputMetaData: integer (123)
+output: ?
+
+testName: countCamelCaseWords_inValidInputMetaDataBoolean
+input inputData: string (String to count words from)
+input inputMetaData: boolean (false)
+output: ?
+
+testName: countCamelCaseWords_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: countCamelCaseWords_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: countCamelCaseWords_inValidInputMetaDataUndefined
+input inputData: string (String to count words from)
+input inputMetaData: undefined
+output: ?
+
+testName: countCamelCaseWords_inValidInputMetaDataNaN
+input inputData: string (String to count words from)
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: doesStringContainAcronym_validData
+input inputData: string (The string that should be scanned to determine if it contains an acronym or not)
+input inputMetaData: string (Not used for this business rule)
+output: boolean (True or False to indicate if the input string contains an acronym)
+
+testName: doesStringContainAcronym_inValidInputDataString
+input inputData: string (dfxg24346dfg)
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: doesStringContainAcronym_inValidInputMetaDataString
+input inputData: string (The string that should be scanned to determine if it contains an acronym or not)
+input inputMetaData: string (dfxg24346dfg)
+output: ?
+
+testName: doesStringContainAcronym_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: doesStringContainAcronym_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: doesStringContainAcronym_inValidInputMetaDataInteger
+input inputData: string (The string that should be scanned to determine if it contains an acronym or not)
+input inputMetaData: integer (123)
+output: ?
+
+testName: doesStringContainAcronym_inValidInputMetaDataBoolean
+input inputData: string (The string that should be scanned to determine if it contains an acronym or not)
+input inputMetaData: boolean (false)
+output: ?
+
+testName: doesStringContainAcronym_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: doesStringContainAcronym_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: doesStringContainAcronym_inValidInputMetaDataUndefined
+input inputData: string (The string that should be scanned to determine if it contains an acronym or not)
+input inputMetaData: undefined
+output: ?
+
+testName: doesStringContainAcronym_inValidInputMetaDataNaN
+input inputData: string (The string that should be scanned to determine if it contains an acronym or not)
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: determineWordDelimiter_validData
+input inputData: string (The string that should be examined to determine what delimiter should be used to break it up into words)
+input inputMetaData: string (Not used for this business rule)
+output: string (The delimiter that should be used, or if camelCase then the function will return the string "CamelCase")
+
+testName: determineWordDelimiter_inValidInputDataString
+input inputData: string (dfxg24346dfg)
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: determineWordDelimiter_inValidInputMetaDataString
+input inputData: string (The string that should be examined to determine what delimiter should be used to break it up into words)
+input inputMetaData: string (dfxg24346dfg)
+output: ?
+
+testName: determineWordDelimiter_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: determineWordDelimiter_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: determineWordDelimiter_inValidInputMetaDataInteger
+input inputData: string (The string that should be examined to determine what delimiter should be used to break it up into words)
+input inputMetaData: integer (123)
+output: ?
+
+testName: determineWordDelimiter_inValidInputMetaDataBoolean
+input inputData: string (The string that should be examined to determine what delimiter should be used to break it up into words)
+input inputMetaData: boolean (false)
+output: ?
+
+testName: determineWordDelimiter_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: determineWordDelimiter_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: determineWordDelimiter_inValidInputMetaDataUndefined
+input inputData: string (The string that should be examined to determine what delimiter should be used to break it up into words)
+input inputMetaData: undefined
+output: ?
+
+testName: determineWordDelimiter_inValidInputMetaDataNaN
+input inputData: string (The string that should be examined to determine what delimiter should be used to break it up into words)
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: countDelimiterInString_validData
+input inputData: string (String to count delimiters from)
+input inputMetaData: string (The delimiter that should be used when counting from the input string)
+output: integer (The number of delimiters found in the string)
+
+testName: countDelimiterInString_inValidInputDataString
+input inputData: string (dfxg24346dfg)
+input inputMetaData: string (The delimiter that should be used when counting from the input string)
+output: ?
+
+testName: countDelimiterInString_inValidInputMetaDataString
+input inputData: string (String to count delimiters from)
+input inputMetaData: string (dfxg24346dfg)
+output: ?
+
+testName: countDelimiterInString_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string (The delimiter that should be used when counting from the input string)
+output: ?
+
+testName: countDelimiterInString_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: string (The delimiter that should be used when counting from the input string)
+output: ?
+
+testName: countDelimiterInString_inValidInputMetaDataInteger
+input inputData: string (String to count delimiters from)
+input inputMetaData: integer (123)
+output: ?
+
+testName: countDelimiterInString_inValidInputMetaDataBoolean
+input inputData: string (String to count delimiters from)
+input inputMetaData: boolean (false)
+output: ?
+
+testName: countDelimiterInString_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string (The delimiter that should be used when counting from the input string)
+output: ?
+
+testName: countDelimiterInString_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string (The delimiter that should be used when counting from the input string)
+output: ?
+
+testName: countDelimiterInString_inValidInputMetaDataUndefined
+input inputData: string (String to count delimiters from)
+input inputMetaData: undefined
+output: ?
+
+testName: countDelimiterInString_inValidInputMetaDataNaN
+input inputData: string (String to count delimiters from)
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: getWordCountInString_validData
+input inputData: string (The string that words should be counted from)
+input inputMetaData: string (Not used for this business rule)
+output: integer (The number of words that were found in the string)
+
+testName: getWordCountInString_inValidInputDataString
+input inputData: string (dfxg24346dfg)
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: getWordCountInString_inValidInputMetaDataString
+input inputData: string (The string that words should be counted from)
+input inputMetaData: string (dfxg24346dfg)
+output: ?
+
+testName: getWordCountInString_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: getWordCountInString_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: getWordCountInString_inValidInputMetaDataInteger
+input inputData: string (The string that words should be counted from)
+input inputMetaData: integer (123)
+output: ?
+
+testName: getWordCountInString_inValidInputMetaDataBoolean
+input inputData: string (The string that words should be counted from)
+input inputMetaData: boolean (false)
+output: ?
+
+testName: getWordCountInString_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: getWordCountInString_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: getWordCountInString_inValidInputMetaDataUndefined
+input inputData: string (The string that words should be counted from)
+input inputMetaData: undefined
+output: ?
+
+testName: getWordCountInString_inValidInputMetaDataNaN
+input inputData: string (The string that words should be counted from)
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: isStringList_validData
+input inputData: string (The string that should be checked if it is a list or not)
+input inputMetaData: string (Not used for this business rule)
+output: boolean (True or False to indicate if the input string is a list or not a list. Using the list of system defined primary, secondary or tertiary command delimiters)
+
+testName: isStringList_inValidInputDataString
+input inputData: string (dfxg24346dfg)
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: isStringList_inValidInputMetaDataString
+input inputData: string (The string that should be checked if it is a list or not)
+input inputMetaData: string (dfxg24346dfg)
+output: ?
+
+testName: isStringList_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: isStringList_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: isStringList_inValidInputMetaDataInteger
+input inputData: string (The string that should be checked if it is a list or not)
+input inputMetaData: integer (123)
+output: ?
+
+testName: isStringList_inValidInputMetaDataBoolean
+input inputData: string (The string that should be checked if it is a list or not)
+input inputMetaData: boolean (false)
+output: ?
+
+testName: isStringList_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: isStringList_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: isStringList_inValidInputMetaDataUndefined
+input inputData: string (The string that should be checked if it is a list or not)
+input inputMetaData: undefined
+output: ?
+
+testName: isStringList_inValidInputMetaDataNaN
+input inputData: string (The string that should be checked if it is a list or not)
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: aggregateNumericalDifferenceBetweenTwoStrings_validData
+input inputData: string (String 1 to compare)
+input inputMetaData: string (String 2 to compare)
+output: integer (The delta difference between the two strings, expressed as a number)
+
+testName: aggregateNumericalDifferenceBetweenTwoStrings_inValidInputDataString
+input inputData: string (dfxg24346dfg)
+input inputMetaData: string (String 2 to compare)
+output: ?
+
+testName: aggregateNumericalDifferenceBetweenTwoStrings_inValidInputMetaDataString
+input inputData: string (String 1 to compare)
+input inputMetaData: string (dfxg24346dfg)
+output: ?
+
+testName: aggregateNumericalDifferenceBetweenTwoStrings_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string (String 2 to compare)
+output: ?
+
+testName: aggregateNumericalDifferenceBetweenTwoStrings_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: string (String 2 to compare)
+output: ?
+
+testName: aggregateNumericalDifferenceBetweenTwoStrings_inValidInputMetaDataInteger
+input inputData: string (String 1 to compare)
+input inputMetaData: integer (123)
+output: ?
+
+testName: aggregateNumericalDifferenceBetweenTwoStrings_inValidInputMetaDataBoolean
+input inputData: string (String 1 to compare)
+input inputMetaData: boolean (false)
+output: ?
+
+testName: aggregateNumericalDifferenceBetweenTwoStrings_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string (String 2 to compare)
+output: ?
+
+testName: aggregateNumericalDifferenceBetweenTwoStrings_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string (String 2 to compare)
+output: ?
+
+testName: aggregateNumericalDifferenceBetweenTwoStrings_inValidInputMetaDataUndefined
+input inputData: string (String 1 to compare)
+input inputMetaData: undefined
+output: ?
+
+testName: aggregateNumericalDifferenceBetweenTwoStrings_inValidInputMetaDataNaN
+input inputData: string (String 1 to compare)
+input inputMetaData: NaN
+output: ?

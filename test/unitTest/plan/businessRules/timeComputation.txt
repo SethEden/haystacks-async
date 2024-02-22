@@ -1,0 +1,222 @@
+Description: Test plan for timeComputation.js
+
+--------------------------------------------------------------------------------
+testName: getNowMoment_validData
+input inputData: string (The formatting string, that tells moment in what format to return the value for the day, month, year, hour, minute, second and millisecond)
+input inputMetaData: string (Not used for this business rule)
+output: string (A time stamp string that has been formatted according to the input format)
+
+testName: getNowMoment_inValidInputDataString
+input inputData: string (dfxg24346dfg)
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: getNowMoment_inValidInputMetaDataString
+input inputData: string (The formatting string, that tells moment in what format to return the value for the day, month, year, hour, minute, second and millisecond)
+input inputMetaData: string (dfxg24346dfg)
+output: ?
+
+testName: getNowMoment_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: getNowMoment_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: getNowMoment_inValidInputMetaDataInteger
+input inputData: string (The formatting string, that tells moment in what format to return the value for the day, month, year, hour, minute, second and millisecond)
+input inputMetaData: integer (123)
+output: ?
+
+testName: getNowMoment_inValidInputMetaDataBoolean
+input inputData: string (The formatting string, that tells moment in what format to return the value for the day, month, year, hour, minute, second and millisecond)
+input inputMetaData: boolean (false)
+output: ?
+
+testName: getNowMoment_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: getNowMoment_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: getNowMoment_inValidInputMetaDataUndefined
+input inputData: string (The formatting string, that tells moment in what format to return the value for the day, month, year, hour, minute, second and millisecond)
+input inputMetaData: undefined
+output: ?
+
+testName: getNowMoment_inValidInputMetaDataNaN
+input inputData: string (The formatting string, that tells moment in what format to return the value for the day, month, year, hour, minute, second and millisecond)
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: computeDeltaTime_validData
+input inputData: string (The start of the time period that should be computed)
+input inputMetaData: string (The end of the time period that should be computed)
+output: integer (The difference between the beginning time and ending time in milliseconds)
+
+testName: computeDeltaTime_inValidInputDataString
+input inputData: string (dfxg24346dfg)
+input inputMetaData: string (The end of the time period that should be computed)
+output: ?
+
+testName: computeDeltaTime_inValidInputMetaDataString
+input inputData: string (The start of the time period that should be computed)
+input inputMetaData: string (dfxg24346dfg)
+output: ?
+
+testName: computeDeltaTime_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string (The end of the time period that should be computed)
+output: ?
+
+testName: computeDeltaTime_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: string (The end of the time period that should be computed)
+output: ?
+
+testName: computeDeltaTime_inValidInputMetaDataInteger
+input inputData: string (The start of the time period that should be computed)
+input inputMetaData: integer (123)
+output: ?
+
+testName: computeDeltaTime_inValidInputMetaDataBoolean
+input inputData: string (The start of the time period that should be computed)
+input inputMetaData: boolean (false)
+output: ?
+
+testName: computeDeltaTime_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string (The end of the time period that should be computed)
+output: ?
+
+testName: computeDeltaTime_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string (The end of the time period that should be computed)
+output: ?
+
+testName: computeDeltaTime_inValidInputMetaDataUndefined
+input inputData: string (The start of the time period that should be computed)
+input inputMetaData: undefined
+output: ?
+
+testName: computeDeltaTime_inValidInputMetaDataNaN
+input inputData: string (The start of the time period that should be computed)
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: reformatDeltaTime_validData
+input inputData: integer  (A time interval measured in milliseconds)
+input inputMetaData: string (The formatting template that should be used to format the time interval)
+output: string (A time interval formatted according to the input format template string)
+
+testName: reformatDeltaTime_inValidInputDataString
+input inputData: string (dfxg24346dfg)
+input inputMetaData: string (The formatting template that should be used to format the time interval)
+output: ?
+
+testName: reformatDeltaTime_inValidInputMetaDataString
+input inputData: integer  (A time interval measured in milliseconds)
+input inputMetaData: string (dfxg24346dfg)
+output: ?
+
+testName: reformatDeltaTime_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string (The formatting template that should be used to format the time interval)
+output: ?
+
+testName: reformatDeltaTime_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: string (The formatting template that should be used to format the time interval)
+output: ?
+
+testName: reformatDeltaTime_inValidInputMetaDataInteger
+input inputData: integer  (A time interval measured in milliseconds)
+input inputMetaData: integer (123)
+output: ?
+
+testName: reformatDeltaTime_inValidInputMetaDataBoolean
+input inputData: integer  (A time interval measured in milliseconds)
+input inputMetaData: boolean (false)
+output: ?
+
+testName: reformatDeltaTime_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string (The formatting template that should be used to format the time interval)
+output: ?
+
+testName: reformatDeltaTime_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string (The formatting template that should be used to format the time interval)
+output: ?
+
+testName: reformatDeltaTime_inValidInputMetaDataUndefined
+input inputData: integer  (A time interval measured in milliseconds)
+input inputMetaData: undefined (?)
+output: ?
+
+testName: reformatDeltaTime_inValidInputMetaDataNaN
+input inputData: integer  (A time interval measured in milliseconds)
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: sleep_validData
+input inputData: integer  (The number of milliseconds that the system should sleep for)
+input inputMetaData: string (Not used for this business rule)
+output: void (?)
+
+testName: sleep_inValidInputDataString
+input inputData: string (dfxg24346dfg)
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: sleep_inValidInputMetaDataString
+input inputData: integer  (The number of milliseconds that the system should sleep for)
+input inputMetaData: string (dfxg24346dfg)
+output: ?
+
+testName: sleep_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: sleep_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: sleep_inValidInputMetaDataInteger
+input inputData: integer  (The number of milliseconds that the system should sleep for)
+input inputMetaData: integer (123)
+output: ?
+
+testName: sleep_inValidInputMetaDataBoolean
+input inputData: integer  (The number of milliseconds that the system should sleep for)
+input inputMetaData: boolean (false)
+output: ?
+
+testName: sleep_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: sleep_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: sleep_inValidInputMetaDataUndefined
+input inputData: integer  (The number of milliseconds that the system should sleep for)
+input inputMetaData: undefined
+output: ?
+
+testName: sleep_inValidInputMetaDataNaN
+input inputData: integer  (The number of milliseconds that the system should sleep for)
+input inputMetaData: NaN
+output: ?

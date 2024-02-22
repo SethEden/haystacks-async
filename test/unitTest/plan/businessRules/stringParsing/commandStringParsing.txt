@@ -1,0 +1,112 @@
+description: Test plan for characterStringParsing.js
+
+--------------------------------------------------------------------------------
+testName: cleanCommandInput_validData
+input inputData: string (The string that should have the "--" removed from it)
+input inputMetaData: string (Not used for this business rule)
+output: string (The same as the input, but with the "--" removed)
+
+testName: cleanCommandInput_inValidInputDataString
+input inputData: string (dfxg24346dfg)
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: cleanCommandInput_inValidInputMetaDataString
+input inputData: string (The string that should have the "--" removed from it)
+input inputMetaData: string (&)
+output: ?
+
+testName: cleanCommandInput_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: cleanCommandInput_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: cleanCommandInput_inValidInputMetaDataInteger
+input inputData: string (The string that should have the "--" removed from it)
+input inputMetaData: integer (123)
+output: ?
+
+testName: cleanCommandInput_inValidInputMetaDataBoolean 
+input inputData: string (The string that should have the "--" removed from it)
+input inputMetaData: boolean (false)
+output: ?
+
+testName: cleanCommandInput_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: cleanCommandInput_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: cleanCommandInput_inValidInputMetaDataUndefined
+input inputData: string (The string that should have the "--" removed from it)
+input inputMetaData: undefined
+output: ?
+
+testName: cleanCommandInput_inValidInputMetaDataNaN
+input inputData: string (The string that should have the "--" removed from it)
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: isValidCommandNameString_validData
+input inputData: string (The string that should be evaluated if it is sufficiently formatted such that it could qualify as a command name)
+input inputMetaData: string (Not used for this business rule)
+output: boolean (True or False to indicate if the string is sufficiently formatted to be considered as a command name in the system)
+
+testName: isValidCommandNameString_inValidInputDataString
+input inputData: string (dfxg24346dfg)
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: isValidCommandNameString_inValidInputMetaDataString
+input inputData: string (The string that should be evaluated if it is sufficiently formatted such that it could qualify as a command name)
+input inputMetaData: string (&)
+output: ?
+
+testName: isValidCommandNameString_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: isValidCommandNameString_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: isValidCommandNameString_inValidInputMetaDataInteger
+input inputData: string (The string that should be evaluated if it is sufficiently formatted such that it could qualify as a command name)
+input inputMetaData: integer (123)
+output: ?
+
+testName: isValidCommandNameString_inValidInputMetaDataBoolean 
+input inputData: string (The string that should be evaluated if it is sufficiently formatted such that it could qualify as a command name)
+input inputMetaData: boolean (false)
+output: ?
+
+testName: isValidCommandNameString_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: isValidCommandNameString_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: isValidCommandNameString_inValidInputMetaDataUndefined
+input inputData: string (The string that should be evaluated if it is sufficiently formatted such that it could qualify as a command name)
+input inputMetaData: undefined
+output: ?
+
+testName: isValidCommandNameString_inValidInputMetaDataNaN
+input inputData: string (The string that should be evaluated if it is sufficiently formatted such that it could qualify as a command name)
+input inputMetaData: NaN
+output: ?

@@ -1,0 +1,827 @@
+description: Test plan for characterStringParsing.js
+
+--------------------------------------------------------------------------------
+testName: singleQuoteSwapAfterEquals_validData
+input inputData: string (A string that contains text with single quotes that should be swapped for double quotes)
+input inputMetaData: string (Not used for this business rule)
+output: string (A string that contains text where single quotes have been exchanged for double quotes)
+
+testName: singleQuoteSwapAfterEquals_inValidInputDataString
+input inputData: string (dfxg24346dfg)
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: singleQuoteSwapAfterEquals_inValidInputMetaDataString
+input inputData: string (A string that contains text with single quotes that should be swapped for double quotes)
+input inputMetaData: string (dfxg24346dfg)
+output: ?
+
+testName: singleQuoteSwapAfterEquals_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: singleQuoteSwapAfterEquals_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: singleQuoteSwapAfterEquals_inValidInputMetaDataInteger
+input inputData: string (A string that contains text with single quotes that should be swapped for double quotes)
+input inputMetaData: integer (123)
+output: ?
+
+testName: singleQuoteSwapAfterEquals_inValidInputMetaDataBoolean 
+input inputData: string (A string that contains text with single quotes that should be swapped for double quotes)
+input inputMetaData: boolean (false)
+output: ?
+
+testName: singleQuoteSwapAfterEquals_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: singleQuoteSwapAfterEquals_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: singleQuoteSwapAfterEquals_inValidInputMetaDataUndefined
+input inputData: string (A string that contains text with single quotes that should be swapped for double quotes)
+input inputMetaData: undefined
+output: ?
+
+testName: singleQuoteSwapAfterEquals_inValidInputMetaDataNaN
+input inputData: string (A string that contains text with single quotes that should be swapped for double quotes)
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: swapForwardSlashToBackSlash_validData
+input inputData: string (String that might contain some forward slashes)
+input inputMetaData: string (Not used for this business rule)
+output: string (The same as the input string, just all forward slash characters swapped for back slash characters)
+
+testName: swapForwardSlashToBackSlash_inValidInputDataString
+input inputData: string (dfxg24346dfg)
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: swapForwardSlashToBackSlash_inValidInputMetaDataString
+input inputData: string (String that might contain some forward slashes)
+input inputMetaData: string (dfxg24346dfg)
+output: ?
+
+testName: swapForwardSlashToBackSlash_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: swapForwardSlashToBackSlash_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: swapForwardSlashToBackSlash_inValidInputMetaDataInteger
+input inputData: string (String that might contain some forward slashes)
+input inputMetaData: integer (123)
+output: ?
+
+testName: swapForwardSlashToBackSlash_inValidInputMetaDataBoolean 
+input inputData: string (String that might contain some forward slashes)
+input inputMetaData: boolean (false)
+output: ?
+
+testName: swapForwardSlashToBackSlash_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: swapForwardSlashToBackSlash_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: swapForwardSlashToBackSlash_inValidInputMetaDataUndefined
+input inputData: string (String that might contain some forward slashes)
+input inputMetaData: undefined
+output: ?
+
+testName: swapForwardSlashToBackSlash_inValidInputMetaDataNaN
+input inputData: string (String that might contain some forward slashes)
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: swapBackSlashToForwardSlash_validData
+input inputData: string (String that might contains some back slashes)
+input inputMetaData: string (Not used for this business rule)
+output: string (The same as the input string, just all back slash characters swapped for forward slash characters)
+
+testName: swapBackSlashToForwardSlash_inValidInputDataString
+input inputData: string (dfxg24346dfg)
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: swapBackSlashToForwardSlash_inValidInputMetaDataString
+input inputData: string (String that might contains some back slashes)
+input inputMetaData: string (dfxg24346dfg)
+output: ?
+
+testName: swapBackSlashToForwardSlash_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: swapBackSlashToForwardSlash_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: swapBackSlashToForwardSlash_inValidInputMetaDataInteger
+input inputData: string (String that might contains some back slashes)
+input inputMetaData: integer (123)
+output: ?
+
+testName: swapBackSlashToForwardSlash_inValidInputMetaDataBoolean 
+input inputData: string (String that might contains some back slashes)
+input inputMetaData: boolean (false)
+output: ?
+
+testName: swapBackSlashToForwardSlash_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: swapBackSlashToForwardSlash_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: swapBackSlashToForwardSlash_inValidInputMetaDataUndefined
+input inputData: string (String that might contains some back slashes)
+input inputMetaData: undefined
+output: ?
+
+testName: swapBackSlashToForwardSlash_inValidInputMetaDataNaN
+input inputData: string (String that might contains some back slashes)
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: swapDoubleForwardSlashToSingleForwardSlash_validData
+input inputData: string (String that might contain some double forward slashes)
+input inputMetaData: string (Not used for this business rule)
+output: string (The same as the input string, just all double forward slash characters swapped for single forward slash characters)
+
+testName: swapDoubleForwardSlashToSingleForwardSlash_inValidInputDataString
+input inputData: string (dfxg24346dfg)
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: swapDoubleForwardSlashToSingleForwardSlash_inValidInputMetaDataString
+input inputData: string (String that might contain some double forward slashes)
+input inputMetaData: string (dfxg24346dfg)
+output: ?
+
+testName: swapDoubleForwardSlashToSingleForwardSlash_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: swapDoubleForwardSlashToSingleForwardSlash_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: swapDoubleForwardSlashToSingleForwardSlash_inValidInputMetaDataInteger
+input inputData: string (String that might contain some double forward slashes)
+input inputMetaData: integer (123)
+output: ?
+
+testName: swapDoubleForwardSlashToSingleForwardSlash_inValidInputMetaDataBoolean 
+input inputData: string (String that might contain some double forward slashes)
+input inputMetaData: boolean (false)
+output: ?
+
+testName: swapDoubleForwardSlashToSingleForwardSlash_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: swapDoubleForwardSlashToSingleForwardSlash_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: swapDoubleForwardSlashToSingleForwardSlash_inValidInputMetaDataUndefined
+input inputData: string (String that might contain some double forward slashes)
+input inputMetaData: undefined 
+output: ?
+
+testName: swapDoubleForwardSlashToSingleForwardSlash_inValidInputMetaDataNaN
+input inputData: string (String that might contain some double forward slashes)
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: swapDoubleBackSlashToSingleBackSlash_validData
+input inputData: string (String that might contain some double back slashes)
+input inputMetaData: string (Not used for this business rule)
+output: string (The same as the input string, just all double back slash characters swapped for single back slash characters)
+
+testName: swapDoubleBackSlashToSingleBackSlash_inValidInputDataString
+input inputData: string (dfxg24346dfg)
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: swapDoubleBackSlashToSingleBackSlash_inValidInputMetaDataString
+input inputData: string (String that might contain some double back slashes)
+input inputMetaData: string (dfxg24346dfg)
+output: ?
+
+testName: swapDoubleBackSlashToSingleBackSlash_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: swapDoubleBackSlashToSingleBackSlash_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: swapDoubleBackSlashToSingleBackSlash_inValidInputMetaDataInteger
+input inputData: string (String that might contain some double back slashes)
+input inputMetaData: integer (123)
+output: ?
+
+testName: swapDoubleBackSlashToSingleBackSlash_inValidInputMetaDataBoolean 
+input inputData: string (String that might contain some double back slashes)
+input inputMetaData: boolean (false)
+output: ?
+
+testName: swapDoubleBackSlashToSingleBackSlash_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: swapDoubleBackSlashToSingleBackSlash_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: swapDoubleBackSlashToSingleBackSlash_inValidInputMetaDataUndefined
+input inputData: string (String that might contain some double back slashes)
+input inputMetaData: undefined
+output: ?
+
+testName: swapDoubleBackSlashToSingleBackSlash_inValidInputMetaDataNaN
+input inputData: string (String that might contain some double back slashes)
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: replaceSpacesWithPlus_validData
+input inputData: string (A string that contains spaces that should be converted to plus symbols)
+input inputMetaData: string (Not used for this business rule)
+output: string (The same as the input string but with space characters converted to plus symbols)
+
+testName: replaceSpacesWithPlus_inValidInputDataString
+input inputData: string (dfxg24346dfg)
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: replaceSpacesWithPlus_inValidInputMetaDataString
+input inputData: string (A string that contains spaces that should be converted to plus symbols)
+input inputMetaData: string (dfxg24346dfg)
+output: ?
+
+testName: replaceSpacesWithPlus_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: replaceSpacesWithPlus_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: replaceSpacesWithPlus_inValidInputMetaDataInteger
+input inputData: string (A string that contains spaces that should be converted to plus symbols)
+input inputMetaData: integer (123)
+output: ?
+
+testName: replaceSpacesWithPlus_inValidInputMetaDataBoolean 
+input inputData: string (A string that contains spaces that should be converted to plus symbols)
+input inputMetaData: boolean (false)
+output: ?
+
+testName: replaceSpacesWithPlus_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: replaceSpacesWithPlus_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: replaceSpacesWithPlus_inValidInputMetaDataUndefined
+input inputData: string (A string that contains spaces that should be converted to plus symbols)
+input inputMetaData: undefined
+output: ?
+
+testName: replaceSpacesWithPlus_inValidInputMetaDataNaN
+input inputData: string (A string that contains spaces that should be converted to plus symbols)
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: replaceColonWithUnderscore_validData
+input inputData: string (A string that contains colons that should be converted to underscore symbols)
+input inputMetaData: string (Not used for this business rule)
+output: string (The same as teh input String but with colon characters converted to underscore symbols)
+
+testName: replaceColonWithUnderscore_inValidInputDataString
+input inputData: string (dfxg24346dfg)
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: replaceColonWithUnderscore_inValidInputMetaDataString
+input inputData: string (A string that contains colons that should be converted to underscore symbols)
+input inputMetaData: string (dfxg24346dfg)
+output: ?
+
+testName: replaceColonWithUnderscore_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: replaceColonWithUnderscore_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: replaceColonWithUnderscore_inValidInputMetaDataInteger
+input inputData: string (A string that contains colons that should be converted to underscore symbols)
+input inputMetaData: integer (123)
+output: ?
+
+testName: replaceColonWithUnderscore_inValidInputMetaDataBoolean 
+input inputData: string (A string that contains colons that should be converted to underscore symbols)
+input inputMetaData: boolean (false)
+output: ?
+
+testName: replaceColonWithUnderscore_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: replaceColonWithUnderscore_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: replaceColonWithUnderscore_inValidInputMetaDataUndefined
+input inputData: string (A string that contains colons that should be converted to underscore symbols)
+input inputMetaData: undefined
+output: ?
+
+testName: replaceColonWithUnderscore_inValidInputMetaDataNaN
+input inputData: string (A string that contains colons that should be converted to underscore symbols)
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: cleanCarriageReturnFromString_validData
+input inputData: string (The string that should be scrubbed for carriage returns)
+input inputMetaData: string (Not used for this business rule)
+output: string (The same as teh input string, but with all carriage return characters removed)
+
+testName: cleanCarriageReturnFromString_inValidInputDataString
+input inputData: string (dfxg24346dfg)
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: cleanCarriageReturnFromString_inValidInputMetaDataString
+input inputData: string (The string that should be scrubbed for carriage returns)
+input inputMetaData: string (dfxg24346dfg)
+output: ?
+
+testName: cleanCarriageReturnFromString_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: cleanCarriageReturnFromString_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: cleanCarriageReturnFromString_inValidInputMetaDataInteger
+input inputData: string (The string that should be scrubbed for carriage returns)
+input inputMetaData: integer (123)
+output: ?
+
+testName: cleanCarriageReturnFromString_inValidInputMetaDataBoolean 
+input inputData: string (The string that should be scrubbed for carriage returns)
+input inputMetaData: boolean (false)
+output: ?
+
+testName: cleanCarriageReturnFromString_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: cleanCarriageReturnFromString_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: cleanCarriageReturnFromString_inValidInputMetaDataUndefined
+input inputData: string (The string that should be scrubbed for carriage returns)
+input inputMetaData: undefined
+output: ?
+
+testName: cleanCarriageReturnFromString_inValidInputMetaDataNaN
+input inputData: string (The string that should be scrubbed for carriage returns)
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: convertStringToLowerCase_validData
+input inputData: string (The string that should have all upper case letters changed to lower case letters)
+input inputMetaData: string (Not used for this business rule)
+output: string (The corrected string with all lower case letters)
+
+testName: convertStringToLowerCase_inValidInputDataString
+input inputData: string (dfxg24346dfg)
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: convertStringToLowerCase_inValidInputMetaDataString
+input inputData: string (The string that should have all upper case letters changed to lower case letters)
+input inputMetaData: string (dfxg24346dfg)
+output: ?
+
+testName: convertStringToLowerCase_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: convertStringToLowerCase_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: convertStringToLowerCase_inValidInputMetaDataInteger
+input inputData: string (The string that should have all upper case letters changed to lower case letters)
+input inputMetaData: integer (123)
+output: ?
+
+testName: convertStringToLowerCase_inValidInputMetaDataBoolean 
+input inputData: string (The string that should have all upper case letters changed to lower case letters)
+input inputMetaData: boolean (false)
+output: ?
+
+testName: convertStringToLowerCase_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: convertStringToLowerCase_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: convertStringToLowerCase_inValidInputMetaDataUndefined
+input inputData: string (The string that should have all upper case letters changed to lower case letters)
+input inputMetaData: undefined
+output: ?
+
+testName: convertStringToLowerCase_inValidInputMetaDataNaN
+input inputData: string (The string that should have all upper case letters changed to lower case letters)
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: convertStringToUpperCase_validData
+input inputData: string (The string that should have all lower case letters changed to upper case letters)
+input inputMetaData: string (Not used for this business rule)
+output: string (The corrected string with all upper case letters)
+
+testName: convertStringToUpperCase_inValidInputDataString
+input inputData: string (dfxg24346dfg)
+input inputMetaData: string (?)
+output: ?
+
+testName: convertStringToUpperCase_inValidInputMetaDataString
+input inputData: string (The string that should have all lower case letters changed to upper case letters)
+input inputMetaData: string (dfxg24346dfg)
+output: ?
+
+testName: convertStringToUpperCase_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: convertStringToUpperCase_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: convertStringToUpperCase_inValidInputMetaDataInteger
+input inputData: string (The string that should have all lower case letters changed to upper case letters)
+input inputMetaData: integer (123)
+output: ?
+
+testName: convertStringToUpperCase_inValidInputMetaDataBoolean 
+input inputData: string (The string that should have all lower case letters changed to upper case letters)
+input inputMetaData: boolean (false)
+output: ?
+
+testName: convertStringToUpperCase_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: convertStringToUpperCase_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: convertStringToUpperCase_inValidInputMetaDataUndefined
+input inputData: string (The string that should have all lower case letters changed to upper case letters)
+input inputMetaData: undefined
+output: ?
+
+testName: convertStringToUpperCase_inValidInputMetaDataNaN
+input inputData: string (The string that should have all lower case letters changed to upper case letters)
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: doesStringContainUpperCaseCharacter_validData
+input inputData: string (The string that should be checked for upper case characters)
+input inputMetaData: string (Not used for this business rule)
+output: boolean (True or False to indicate if the string contains)
+
+testName: doesStringContainUpperCaseCharacter_inValidInputDataString
+input inputData: string (dfxg24346dfg)
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: doesStringContainUpperCaseCharacter_inValidInputMetaDataString
+input inputData: string (The string that should be checked for upper case characters)
+input inputMetaData: string (dfxg24346dfg)
+output: ?
+
+testName: doesStringContainUpperCaseCharacter_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: doesStringContainUpperCaseCharacter_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: doesStringContainUpperCaseCharacter_inValidInputMetaDataInteger
+input inputData: string (The string that should be checked for upper case characters)
+input inputMetaData: integer (123)
+output: ?
+
+testName: doesStringContainUpperCaseCharacter_inValidInputMetaDataBoolean 
+input inputData: string (The string that should be checked for upper case characters)
+input inputMetaData: boolean (false)
+output: ?
+
+testName: doesStringContainUpperCaseCharacter_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: doesStringContainUpperCaseCharacter_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: doesStringContainUpperCaseCharacter_inValidInputMetaDataUndefined
+input inputData: string (The string that should be checked for upper case characters)
+input inputMetaData: undefined
+output: ?
+
+testName: doesStringContainUpperCaseCharacter_inValidInputMetaDataNaN
+input inputData: string (The string that should be checked for upper case characters)
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: doesStringContainLowerCaseCharacter_validData
+input inputData: string (The string that should be checked for lower case characters)
+input inputMetaData: string (Not used for this business rule)
+output: boolean (True or False to indicate if the string contains)
+
+testName: doesStringContainLowerCaseCharacter_inValidInputDataString
+input inputData: string (dfxg24346dfg)
+input inputMetaData: string (?)
+output: ?
+
+testName: doesStringContainLowerCaseCharacter_inValidInputMetaDataString
+input inputData: string (The string that should be checked for lower case characters)
+input inputMetaData: string (dfxg24346dfg)
+output: ?
+
+testName: doesStringContainLowerCaseCharacter_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: doesStringContainLowerCaseCharacter_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: doesStringContainLowerCaseCharacter_inValidInputMetaDataInteger
+input inputData: string (The string that should be checked for lower case characters)
+input inputMetaData: integer (123)
+output: ?
+
+testName: doesStringContainLowerCaseCharacter_inValidInputMetaDataBoolean 
+input inputData: string (The string that should be checked for lower case characters)
+input inputMetaData: boolean (false)
+output: ?
+
+testName: doesStringContainLowerCaseCharacter_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: doesStringContainLowerCaseCharacter_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: doesStringContainLowerCaseCharacter_inValidInputMetaDataUndefined
+input inputData: string (The string that should be checked for lower case characters)
+input inputMetaData: undefined
+output: ?
+
+testName: doesStringContainLowerCaseCharacter_inValidInputMetaDataNaN
+input inputData: string (The string that should be checked for lower case characters)
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: isFirstCharacterLowerCase_validData
+input inputData: string (The string that should be checked to determine if the first character is lower case or not)
+input inputMetaData: string (Not used for this business rule)
+output: boolean (True or False to indicate if the first character of the string is a lower case character or not)
+
+testName: isFirstCharacterLowerCase_inValidInputDataString
+input inputData: string (dfxg24346dfg)
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: isFirstCharacterLowerCase_inValidInputMetaDataString
+input inputData: string (The string that should be checked to determine if the first character is lower case or not)
+input inputMetaData: string (dfxg24346dfg)
+output: ?
+
+testName: isFirstCharacterLowerCase_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: isFirstCharacterLowerCase_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: isFirstCharacterLowerCase_inValidInputMetaDataInteger
+input inputData: string (The string that should be checked to determine if the first character is lower case or not)
+input inputMetaData: integer (123)
+output: ?
+
+testName: isFirstCharacterLowerCase_inValidInputMetaDataBoolean 
+input inputData: string (The string that should be checked to determine if the first character is lower case or not)
+input inputMetaData: boolean (false)
+output: ?
+
+testName: isFirstCharacterLowerCase_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: isFirstCharacterLowerCase_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: isFirstCharacterLowerCase_inValidInputMetaDataUndefined
+input inputData: string (The string that should be checked to determine if the first character is lower case or not)
+input inputMetaData: undefined
+output: ?
+
+testName: isFirstCharacterLowerCase_inValidInputMetaDataNaN
+input inputData: string (The string that should be checked to determine if the first character is lower case or not)
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: isFirstCharacterUpperCase_validData
+input inputData: string (The string that should be checked to determine if the first character is upper case or not)
+input inputMetaData: string (Not used for this business rule)
+output: boolean (True or False to indicate if the first character of the string is an upper case character or not)
+
+testName: isFirstCharacterUpperCase_inValidInputDataString
+input inputData: string (dfxg24346dfg)
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: isFirstCharacterUpperCase_inValidInputMetaDataString
+input inputData: string (The string that should be checked to determine if the first character is upper case or not)
+input inputMetaData: string (dfxg24346dfg)
+output: ?
+
+testName: isFirstCharacterUpperCase_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: isFirstCharacterUpperCase_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: isFirstCharacterUpperCase_inValidInputMetaDataInteger
+input inputData: string (The string that should be checked to determine if the first character is upper case or not)
+input inputMetaData: integer (123)
+output: ?
+
+testName: isFirstCharacterUpperCase_inValidInputMetaDataBoolean 
+input inputData: string (The string that should be checked to determine if the first character is upper case or not)
+input inputMetaData: boolean (false)
+output: ?
+
+testName: isFirstCharacterUpperCase_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: isFirstCharacterUpperCase_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: isFirstCharacterUpperCase_inValidInputMetaDataUndefined
+input inputData: string (The string that should be checked to determine if the first character is upper case or not)
+input inputMetaData: undefined
+output: ?
+
+testName: isFirstCharacterUpperCase_inValidInputMetaDataNaN
+input inputData: string (The string that should be checked to determine if the first character is upper case or not)
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: replaceCharacterAtIndexOfString_validData
+input inputData: array<string,integer> (An array that contains the original string and the index of the character that should be replaced)
+input inputMetaData: string (The character or string that should be used to make the replacement, inserted at the specified index)
+output: string (The string after the replacement has been made)
+
+testName: replaceCharacterAtIndexOfString_inValidInputDataString
+input inputData: string (dfxg24346dfg)
+input inputMetaData: string (The character or string that should be used to make the replacement, inserted at the specified index)
+output: ?
+
+testName: replaceCharacterAtIndexOfString_inValidInputMetaDataString
+input inputData: array<string,integer> (An array that contains the original string and the index of the character that should be replaced)
+input inputMetaData: string (dfxg24346dfg)
+output: ?
+
+testName: replaceCharacterAtIndexOfString_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string (The character or string that should be used to make the replacement, inserted at the specified index)
+output: ?
+
+testName: replaceCharacterAtIndexOfString_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: string (The character or string that should be used to make the replacement, inserted at the specified index)
+output: ?
+
+testName: replaceCharacterAtIndexOfString_inValidInputMetaDataInteger
+input inputData: array<string,integer> (An array that contains the original string and the index of the character that should be replaced)
+input inputMetaData: integer (123)
+output: ?
+
+testName: replaceCharacterAtIndexOfString_inValidInputMetaDataBoolean
+input inputData: array<string,integer> (An array that contains the original string and the index of the character that should be replaced)
+input inputMetaData: boolean (false)
+output: ?
+
+testName: replaceCharacterAtIndexOfString_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string (The character or string that should be used to make the replacement, inserted at the specified index)
+output: ?
+
+testName: replaceCharacterAtIndexOfString_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string (The character or string that should be used to make the replacement, inserted at the specified index)
+output: ?
+
+testName: replaceCharacterAtIndexOfString_inValidInputMetaDataUndefined
+input inputData: array<string,integer> (An array that contains the original string and the index of the character that should be replaced)
+input inputMetaData: undefined
+output: ?
+
+testName: replaceCharacterAtIndexOfString_inValidInputMetaDataNaN
+input inputData: array<string,integer> (An array that contains the original string and the index of the character that should be replaced)
+input inputMetaData: NaN
+output: ?

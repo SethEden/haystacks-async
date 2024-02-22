@@ -1,0 +1,607 @@
+Description: Test plan for stringParsingUtilities.js
+
+--------------------------------------------------------------------------------
+testName: parseSystemRootPath_validData
+input inputData: string (The root path as defined by calling path.resolve(__dirname);)
+input inputMetaData: string (The name of the application)
+output: string (A string with the path up to the application folder, where ever that is installed on the local system currently executing)
+
+testName: parseSystemRootPath_inValidInputDataString
+input inputData: string (dfxg24346dfg)
+input inputMetaData: string (The name of the application)
+output: ?
+
+testName: parseSystemRootPath_inValidInputMetaDataString
+input inputData: string (The root path as defined by calling path.resolve(__dirname);)
+input inputMetaData: string (dfxg24346dfg)
+output: ?
+
+testName: parseSystemRootPath_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string (The name of the application)
+output: ?
+
+testName: parseSystemRootPath_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: string (The name of the application)
+output: ?
+
+testName: parseSystemRootPath_inValidInputMetaDataInteger
+input inputData: string (The root path as defined by calling path.resolve(__dirname);)
+input inputMetaData: integer (123)
+output: ?
+
+testName: parseSystemRootPath_inValidInputMetaDataBoolean
+input inputData: string (The root path as defined by calling path.resolve(__dirname);)
+input inputMetaData: boolean (false)
+output: ?
+
+testName: parseSystemRootPath_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string (The name of the application)
+output: ?
+
+testName: parseSystemRootPath_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string (The name of the application)
+output: ?
+
+testName: parseSystemRootPath_inValidInputMetaDataUndefined
+input inputData: string (The root path as defined by calling path.resolve(__dirname);)
+input inputMetaData: undefined
+output: ?
+
+testName: parseSystemRootPath_inValidInputMetaDataNaN
+input inputData: string (The root path as defined by calling path.resolve(__dirname);)
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: parseSystemRootPathApplicationName_validData
+input inputData: string (The name of the application that should be processed)
+input inputMetaData: string (Not used for this business rule)
+output: string (The name of the application or a component of the application name)
+
+testName: parseSystemRootPathApplicationName_inValidInputDataString
+input inputData: string (dfxg24346dfg)
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: parseSystemRootPathApplicationName_inValidInputMetaDataString
+input inputData: string (The name of the application that should be processed)
+input inputMetaData: string (dfxg24346dfg)
+output: ?
+
+testName: parseSystemRootPathApplicationName_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: parseSystemRootPathApplicationName_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: parseSystemRootPathApplicationName_inValidInputMetaDataInteger
+input inputData: string (The name of the application that should be processed)
+input inputMetaData: integer (123)
+output: ?
+
+testName: parseSystemRootPathApplicationName_inValidInputMetaDataBoolean
+input inputData: string (The name of the application that should be processed)
+input inputMetaData: boolean (false)
+output: ?
+
+testName: parseSystemRootPathApplicationName_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: parseSystemRootPathApplicationName_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: parseSystemRootPathApplicationName_inValidInputMetaDataUndefined
+input inputData: string (The name of the application that should be processed)
+input inputMetaData: undefined
+output: ?
+
+testName: parseSystemRootPathApplicationName_inValidInputMetaDataNaN
+input inputData: string (The name of the application that should be processed)
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: stringToDataType_validData
+input inputData: string (The string that should be converted to some value)
+input inputMetaData: string (Not used for this business rule)
+output: object|string|boolean|integer (Returns a value of whatever type the string should be converted to as appropriate)
+
+testName: stringToDataType_inValidInputDataString
+input inputData: string (dfxg24346dfg)
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: stringToDataType_inValidInputMetaDataString
+input inputData: string (The string that should be converted to some value)
+input inputMetaData: string (dfxg24346dfg)
+output: ?
+
+testName: stringToDataType_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: stringToDataType_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: stringToDataType_inValidInputMetaDataInteger
+input inputData: string (The string that should be converted to some value)
+input inputMetaData: integer (123)
+output: ?
+
+testName: stringToDataType_inValidInputMetaDataBoolean
+input inputData: string (The string that should be converted to some value)
+input inputMetaData: boolean (false)
+output: ?
+
+testName: stringToDataType_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: stringToDataType_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: stringToDataType_inValidInputMetaDataUndefined
+input inputData: string (The string that should be converted to some value)
+input inputMetaData: undefined
+output: ?
+
+testName: stringToDataType_inValidInputMetaDataNaN
+input inputData: string (The string that should be converted to some value)
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: stringToBoolean_validData
+input inputData: string (A string that contains a truthy or falsy value and should be converted to a boolean value)
+input inputMetaData: string (Not used for this business rule)
+output: boolean (A Boolean value of either True or False according to the business rule conversion)
+
+testName: stringToBoolean_inValidInputDataString
+input inputData: string (dfxg24346dfg)
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: stringToBoolean_inValidInputMetaDataString
+input inputData: string (A string that contains a truthy or falsy value and should be converted to a boolean value)
+input inputMetaData: string (dfxg24346dfg)
+output: ?
+
+testName: stringToBoolean_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: stringToBoolean_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: stringToBoolean_inValidInputMetaDataInteger
+input inputData: string (A string that contains a truthy or falsy value and should be converted to a boolean value)
+input inputMetaData: integer (123)
+output: ?
+
+testName: stringToBoolean_inValidInputMetaDataBoolean
+input inputData: string (A string that contains a truthy or falsy value and should be converted to a boolean value)
+input inputMetaData: boolean (false)
+output: ?
+
+testName: stringToBoolean_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: stringToBoolean_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: stringToBoolean_inValidInputMetaDataUndefined
+input inputData: string (A string that contains a truthy or falsy value and should be converted to a boolean value)
+input inputMetaData: undefined
+output: ?
+
+testName: stringToBoolean_inValidInputMetaDataNaN
+input inputData: string (A string that contains a truthy or falsy value and should be converted to a boolean value)
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: determineObjectDataType_validData
+input inputData: string (A string that contains some value that we should figure out what kind of data type that data is, Boolean, Integer, Float, String or something else)
+input inputMetaData: string (Not used for this business rule)
+output: boolean (A string that indicates if the data type should be Boolean, Integer, Float, String or something else)
+
+testName: determineObjectDataType_inValidInputDataString
+input inputData: string (dfxg24346dfg)
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: determineObjectDataType_inValidInputMetaDataString
+input inputData: string (A string that contains some value that we should figure out what kind of data type that data is, Boolean, Integer, Float, String or something else)
+input inputMetaData: string (dfxg24346dfg)
+output: ?
+
+testName: determineObjectDataType_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: determineObjectDataType_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: determineObjectDataType_inValidInputMetaDataInteger
+input inputData: string (A string that contains some value that we should figure out what kind of data type that data is, Boolean, Integer, Float, String or something else)
+input inputMetaData: integer (123)
+output: ?
+
+testName: determineObjectDataType_inValidInputMetaDataBoolean
+input inputData: string (A string that contains some value that we should figure out what kind of data type that data is, Boolean, Integer, Float, String or something else)
+input inputMetaData: boolean (false)
+output: ?
+
+testName: determineObjectDataType_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: determineObjectDataType_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: determineObjectDataType_inValidInputMetaDataUndefined
+input inputData: string (A string that contains some value that we should figure out what kind of data type that data is, Boolean, Integer, Float, String or something else)
+input inputMetaData: undefined
+output: ?
+
+testName: determineObjectDataType_inValidInputMetaDataNaN
+input inputData: string (A string that contains some value that we should figure out what kind of data type that data is, Boolean, Integer, Float, String or something else)
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: isBoolean_validData
+input inputData: string (The string that should be checked if it is a Boolean style value or not, could be some form of "true" or "false")
+input inputMetaData: string (Not used for this business rule)
+output: boolean (A Boolean value of True or False to indicate if the input string is a Boolean or not)
+
+testName: isBoolean_inValidInputDataString
+input inputData: string (dfxg24346dfg)
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: isBoolean_inValidInputMetaDataString
+input inputData: string (The string that should be checked if it is a Boolean style value or not, could be some form of "true" or "false")
+input inputMetaData: string (dfxg24346dfg)
+output: ?
+
+testName: isBoolean_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: isBoolean_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: isBoolean_inValidInputMetaDataInteger
+input inputData: string (The string that should be checked if it is a Boolean style value or not, could be some form of "true" or "false")
+input inputMetaData: integer (123)
+output: ?
+
+testName: isBoolean_inValidInputMetaDataBoolean
+input inputData: string (The string that should be checked if it is a Boolean style value or not, could be some form of "true" or "false")
+input inputMetaData: boolean (false)
+output: ?
+
+testName: isBoolean_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: isBoolean_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: isBoolean_inValidInputMetaDataUndefined
+input inputData: string (The string that should be checked if it is a Boolean style value or not, could be some form of "true" or "false")
+input inputMetaData: undefined
+output: ?
+
+testName: isBoolean_inValidInputMetaDataNaN
+input inputData: string (The string that should be checked if it is a Boolean style value or not, could be some form of "true" or "false")
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: isInteger_validData
+input inputData: string (The string that should be checked if it is an integer style value or not)
+input inputMetaData: string (Not used for this business rule)
+output: boolean (A Boolean value of true or false to indicate if the input string is an integer or not)
+
+testName: isInteger_inValidInputDataString
+input inputData: string (dfxg24346dfg)
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: isInteger_inValidInputMetaDataString
+input inputData: string (The string that should be checked if it is an integer style value or not)
+input inputMetaData: string (dfxg24346dfg)
+output: ?
+
+testName: isInteger_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: isInteger_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: isInteger_inValidInputMetaDataInteger
+input inputData: string (The string that should be checked if it is an integer style value or not)
+input inputMetaData: integer (123)
+output: ?
+
+testName: isInteger_inValidInputMetaDataBoolean
+input inputData: string (The string that should be checked if it is an integer style value or not)
+input inputMetaData: boolean (false)
+output: ?
+
+testName: isInteger_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: isInteger_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: isInteger_inValidInputMetaDataUndefined
+input inputData: string (The string that should be checked if it is an integer style value or not)
+input inputMetaData: undefined
+output: ?
+
+testName: isInteger_inValidInputMetaDataNaN
+input inputData: string (The string that should be checked if it is an integer style value or not)
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: isFloat_validData
+input inputData: string (The string that should be checked if it is an integer style value or not)
+input inputMetaData: string (Not used for this business rule)
+output: boolean (A Boolean value of true or false to indicate if the input string is a floating point number or not)
+
+testName: isFloat_inValidInputDataString
+input inputData: string (dfxg24346dfg)
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: isFloat_inValidInputMetaDataString
+input inputData: string (The string that should be checked if it is an integer style value or not)
+input inputMetaData: string (dfxg24346dfg)
+output: ?
+
+testName: isFloat_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: isFloat_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: isFloat_inValidInputMetaDataInteger
+input inputData: string (The string that should be checked if it is an integer style value or not)
+input inputMetaData: integer (123)
+output: ?
+
+testName: isFloat_inValidInputMetaDataBoolean
+input inputData: string (The string that should be checked if it is an integer style value or not)
+input inputMetaData: boolean (false)
+output: ?
+
+testName: isFloat_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: isFloat_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: isFloat_inValidInputMetaDataUndefined
+input inputData: string (The string that should be checked if it is an integer style value or not)
+input inputMetaData: undefined
+output: ?
+
+testName: isFloat_inValidInputMetaDataNaN
+input inputData: string (The string that should be checked if it is an integer style value or not)
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: isString_validData
+input inputData: string (The string that should be checked if it is a string and not a Boolean, Integer or Float)
+input inputMetaData: string (Not used for this business rule)
+output: boolean (A Boolean value of true or false to indicate if the input string is a string and not a Boolean, Integer or Float; or not (meaning it would be one of those 3 data types, disguised as a string))
+
+testName: isString_inValidInputDataString
+input inputData: string (dfxg24346dfg)
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: isString_inValidInputMetaDataString
+input inputData: string (The string that should be checked if it is a string and not a Boolean, Integer or Float)
+input inputMetaData: string (dfxg24346dfg)
+output: ?
+
+testName: isString_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: isString_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: isString_inValidInputMetaDataInteger
+input inputData: string (The string that should be checked if it is a string and not a Boolean, Integer or Float)
+input inputMetaData: integer (123)
+output: ?
+
+testName: isString_inValidInputMetaDataBoolean
+input inputData: string (The string that should be checked if it is a string and not a Boolean, Integer or Float)
+input inputMetaData: boolean (false)
+output: ?
+
+testName: isString_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: isString_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string (Not used for this business rule)
+output: ?
+
+testName: isString_inValidInputMetaDataUndefined
+input inputData: string (The string that should be checked if it is a string and not a Boolean, Integer or Float)
+input inputMetaData: undefined
+output: ?
+
+testName: isString_inValidInputMetaDataNaN
+input inputData: string (The string that should be checked if it is a string and not a Boolean, Integer or Float)
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: replaceDoublePercentWithMessage_validData
+input inputData: string (The string that might contain the double percentage signs)
+input inputMetaData: string (The string that should replace the double percentage signs)
+output: string (The modified string with the message inserted)
+
+testName: replaceDoublePercentWithMessage_inValidInputDataString
+input inputData: string (dfxg24346dfg)
+input inputMetaData: string (The string that should replace the double percentage signs)
+output: ?
+
+testName: replaceDoublePercentWithMessage_inValidInputMetaDataString
+input inputData: string (The string that might contain the double percentage signs)
+input inputMetaData: string (dfxg24346dfg)
+output: ?
+
+testName: replaceDoublePercentWithMessage_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string (The string that should replace the double percentage signs)
+output: ?
+
+testName: replaceDoublePercentWithMessage_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: string (The string that should replace the double percentage signs)
+output: ?
+
+testName: replaceDoublePercentWithMessage_inValidInputMetaDataInteger
+input inputData: string (The string that might contain the double percentage signs)
+input inputMetaData: integer (123)
+output: ?
+
+testName: replaceDoublePercentWithMessage_inValidInputMetaDataBoolean
+input inputData: string (The string that might contain the double percentage signs)
+input inputMetaData: boolean (false)
+output: ?
+
+testName: replaceDoublePercentWithMessage_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string (The string that should replace the double percentage signs)
+output: ?
+
+testName: replaceDoublePercentWithMessage_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string (The string that should replace the double percentage signs)
+output: ?
+
+testName: replaceDoublePercentWithMessage_inValidInputMetaDataUndefined
+input inputData: string (The string that might contain the double percentage signs)
+input inputMetaData: undefined
+output: ?
+
+testName: replaceDoublePercentWithMessage_inValidInputMetaDataNaN
+input inputData: string (The string that might contain the double percentage signs)
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: utilitiesReplaceCharacterWithCharacter_validData
+input inputData: string (A string that may or may not contain the specified characters that should be converted to another specified character)
+input inputMetaData: array<string, string> (An array of data that contains 2 additional string parameters)
+output: string (The same as the input string but with specified characters converted to the other specified character)
+
+testName: utilitiesReplaceCharacterWithCharacter_inValidInputDataString
+input inputData: string (dfxg24346dfg)
+input inputMetaData: array<string, string> (An array of data that contains 2 additional string parameters)
+output: ?
+
+testName: utilitiesReplaceCharacterWithCharacter_inValidInputMetaDataString
+input inputData: string (A string that may or may not contain the specified characters that should be converted to another specified character)
+input inputMetaData: string (dfxg24346dfg)
+output: ?
+
+testName: utilitiesReplaceCharacterWithCharacter_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: array<string, string> (An array of data that contains 2 additional string parameters)
+output: ?
+
+testName: utilitiesReplaceCharacterWithCharacter_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: array<string, string> (An array of data that contains 2 additional string parameters)
+output: ?
+
+testName: utilitiesReplaceCharacterWithCharacter_inValidInputMetaDataInteger
+input inputData: string (A string that may or may not contain the specified characters that should be converted to another specified character)
+input inputMetaData: integer (123)
+output: ?
+
+testName: utilitiesReplaceCharacterWithCharacter_inValidInputMetaDataBoolean
+input inputData: string (A string that may or may not contain the specified characters that should be converted to another specified character)
+input inputMetaData: boolean (false)
+output: ?
+
+testName: utilitiesReplaceCharacterWithCharacter_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: array<string, string> (An array of data that contains 2 additional string parameters)
+output: ?
+
+testName: utilitiesReplaceCharacterWithCharacter_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: array<string, string> (An array of data that contains 2 additional string parameters)
+output: ?
+
+testName: utilitiesReplaceCharacterWithCharacter_inValidInputMetaDataUndefined
+input inputData: string (A string that may or may not contain the specified characters that should be converted to another specified character)
+input inputMetaData: undefined
+output: ?
+
+testName: utilitiesReplaceCharacterWithCharacter_inValidInputMetaDataNaN
+input inputData: string (A string that may or may not contain the specified characters that should be converted to another specified character)
+input inputMetaData: NaN
+output: ?

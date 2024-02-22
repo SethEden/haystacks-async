@@ -55,10 +55,10 @@ async function setConfigurationSetting(configurationNamespace, configurationName
 
 /**
  * @function setPluginConfigurationSetting
- * @description Sets a configurat setting on the configruation data structure stored on the input data structure and returned as an object.
+ * @description Sets a configuration setting on the configuration data structure stored on the input data structure and returned as an object.
  * @param {object} dataStructure The input data structure upon which the configuration setting should be set and then returned. 
- * @param {string} configurationNamespace The path n the configruation JSON object
- * where the coniguration setting should be set.
+ * @param {string} configurationNamespace The path in the configuration JSON object
+ * where the configuration setting should be set.
  * Ex: businessRules.rules.stringParsing.countCamelCaseWords 
  * @param {string} configurationName The key of the configuration setting. 
  * @param {string|integer|boolean|double} configurationValue The value of the configuration setting.
@@ -306,8 +306,10 @@ async function getConfigurationNamespaceObject(configurationNamespace) {
 /**
  * @function getPluginConfigurationNamespaceObject
  * @description Navigates the input data structure configuration JSON data object tree to fnd the namespace of configuration settings.
- * @param {object} dataStructure The input data structure upon which the configuration setting should be set and then returned. 
+ * @param {object} dataStructure The input data structure upon which the configuration setting should be set and then returned.
  * @param {object|boolean} configurationNamespace The object found at the specified namespace address in the input data structure configuration data object,
+ * or False if nothing was found.
+ * @return {object|boolean} The object found at the specified plugin namespace address in the configuration data object,
  * or False if nothing was found.
  * @author Seth Hollingsead
  * @date 2022/10/20
@@ -383,7 +385,7 @@ async function addPluginConfigurationData(pluginName, pluginConfigData) {
     // ERROR: Failure unable to persist the plugin configuration data for plugin:
     console.log(msg.cErrorAddPluginConfigurationDataMessage01 + pluginName);
     console.log(msg.cERROR_Colon + err);
-  }  
+  }
   // console.log(`returnData is: ${JSON.stringify(returnData)}`);
   // console.log(`END ${namespacePrefix}${functionName} function`);
   return returnData;

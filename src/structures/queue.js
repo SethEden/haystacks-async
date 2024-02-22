@@ -184,7 +184,7 @@ async function queueSize(queueNameSpace) {
  * @param {string} queueNameSpace The namespace of the queue who's contents should be returned as an array.
  * @return {array<string>} The entire queue and it's contents as an array.
  * @author Seth Hollingsead
- * @date 2022/09/01 
+ * @date 2022/09/01
  */
 async function queueContents(queueNameSpace) {
   let functionName = queueFront.name;

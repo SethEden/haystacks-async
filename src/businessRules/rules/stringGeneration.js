@@ -117,7 +117,7 @@ async function generateRandomLowerCaseTextByLength(inputData, inputMetaData) {
  * special characters and string them together.
  * @param {string} inputData The number of randomly generated mixed case letters and/or
  * special characters to generate the output string.
- * @param {string} inputMetaData The ist of special characters that should be used during the generation process.
+ * @param {string} inputMetaData The list of special characters that should be used during the generation process.
  * @return {string} A string of randomly generated mixed case letters and
  * special characters where the length of the string is defined by the input parameter.
  * @author Seth Hollingsead
@@ -348,7 +348,7 @@ async function generateRandomMixedCaseAlphaNumericCodeWithSpecialCharactersByLen
  * should be generated; generate them and string them together to the specified length.
  * @param {string} inputData The number of randomly generated upper case english letters,
  * numeric characters and special characters that should be generated.
- * @param {string} inputMetaData Teh list of special characters that should be used during the generation process.
+ * @param {string} inputMetaData The list of special characters that should be used during the generation process.
  * @return {string} A string of randomly generated upper case alpha numeric characters,
  * and special characters where the length of the string is defined as one of the input parameters.
  * @author Seth Hollingsead
@@ -406,7 +406,7 @@ async function generateRandomLowerCaseAlphaNumericCodeWithSpecialCharactersByLen
  * @description Generate a random selection of characters from the input allowable alphabet of characters,
  * generate them and string them together to the specified length.
  * @param {string} inputData The number of randomly generated special characters that should be generated.
- * @param {string} inputMetaData The ist of special characters that should be used during the generation process.
+ * @param {string} inputMetaData The list of special characters that should be used during the generation process.
  * @return {string} A string of randomly generated characters from the list of
  * allowable special characters that are passed in where the length of the string is defined as one of the input parameters.
  * @author Seth Hollingsead
@@ -1190,7 +1190,7 @@ async function generateRandomDarkColor(inputData, inputMetaData) {
  * @function generateRandomColor
  * @description Generates a random set of RGB values in the given color range.
  * @param {string|integer} inputData The number in either numeric or string format that represents the minimum range that should be used to generate the random color.
- * @param {string|integer} inputMetaData The number in either numeric or string format that represents the maximum range that should be used to generate the random coor.
+ * @param {string|integer} inputMetaData The number in either numeric or string format that represents the maximum range that should be used to generate the random color.
  * @return {array<integer,integer,integer>} An array of RGB values that will be used for a color value.
  * @author Seth Hollingsead
  * @date 2022/01/27

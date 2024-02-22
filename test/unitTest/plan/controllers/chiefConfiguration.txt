@@ -1,0 +1,129 @@
+Description: Test plan for chiefConfiguration.js
+
+--------------------------------------------------------------------------------
+testName: setupConfiguration_validData
+input appConfigPath: string (The path of the configuration files for the application layer)
+input frameworkConfigPath: string (The path of the configuration files for the framework layer)
+output: void (Sets up all of the application and framework configuration data)
+
+testName: setupConfiguration_inValidAppConfigPathString
+input appConfigPath: string (dfxg24346dfg)
+input frameworkConfigPath: string (The path of the configuration files for the framework layer)
+output: ?
+
+testName: setupConfiguration_inValidFrameworkConfigPathString
+input appConfigPath: string (The path of the configuration files for the application layer)
+input frameworkConfigPath: string (dfxg24346dfg)
+output: ?
+
+testName: setupConfiguration_inValidAppConfigPathInteger
+input appConfigPath: integer (123)
+input frameworkConfigPath: string (The path of the configuration files for the framework layer)
+output: ?
+
+testName: setupConfiguration_inValidAppConfigPathBoolean
+input appConfigPath: boolean (false)
+input frameworkConfigPath: string (The path of the configuration files for the framework layer)
+output: ?
+
+testName: setupConfiguration_inValidFrameworkConfigPathInteger
+input appConfigPath: string (The path of the configuration files for the application layer)
+input frameworkConfigPath: integer (123)
+output: ?
+
+testName: setupConfiguration_inValidFrameworkConfigPathBoolean
+input appConfigPath: string (The path of the configuration files for the application layer)
+input frameworkConfigPath: boolean (false)
+output: ?
+
+testName: setupConfiguration_inValidAppConfigPathUndefined
+input appConfigPath: undefined
+input frameworkConfigPath: string (The path of the configuration files for the framework layer)
+output: ?
+
+testName: setupConfiguration_inValidAppConfigPathNaN
+input appConfigPath: NaN
+input frameworkConfigPath: string (The path of the configuration files for the framework layer)
+output: ?
+
+testName: setupConfiguration_inValidFrameworkConfigPathUndefined
+input appConfigPath: string (The path of the configuration files for the application layer)
+input frameworkConfigPath: undefined
+output: ?
+
+testName: setupConfiguration_inValidFrameworkConfigPathNaN
+input appConfigPath: string (The path of the configuration files for the application layer)
+input frameworkConfigPath: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: setupPluginConfiguration_validData
+input pluginConfigPath: string (The path of the configuration files for the plugin layer)
+output: object (All of the loaded and parsed plugin configuration data)
+
+testName: setupPluginConfiguration_inValidPluginConfigPathString
+input pluginConfigPath: string (dfxg24346dfg)
+output: ?
+
+testName: setupPluginConfiguration_inValidPluginConfigPathInteger
+input pluginConfigPath: integer (123)
+output: ?
+
+testName: setupPluginConfiguration_inValidPluginConfigPathBoolean
+input pluginConfigPath: boolean (false)
+output: ?
+
+testName: setupPluginConfiguration_inValidPluginConfigPathUndefined
+input pluginConfigPath: undefined
+output: ?
+
+testName: setupPluginConfiguration_inValidPluginConfigPathNaN
+input pluginConfigPath: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: parsePluginConfigurationData_validData
+input allPluginConfigData: string (The plugin configuration data loaded from the path, that needs parsing)
+output: object (The JSON object after all the parsing and processing operations are completed)
+
+testName: parsePluginConfigurationData_inValidAllPluginConfigDataString
+input allPluginConfigData: string (dfxg24346dfg)
+output: ?
+
+testName: parsePluginConfigurationData_inValidAllPluginConfigDataInteger
+input allPluginConfigData: integer (123)
+output: ?
+
+testName: parsePluginConfigurationData_inValidAllPluginConfigDataBoolean
+input allPluginConfigData: boolean (false)
+output: ?
+
+testName: parsePluginConfigurationData_inValidAllPluginConfigDataUndefined
+input allPluginConfigData: undefined
+output: ?
+
+testName: parsePluginConfigurationData_inValidAllPluginConfigDataNaN
+input allPluginConfigData: NaN
+output: ?
+--------------------------------------------------------------------------------
+testName: parseLoadedConfigurationData_validData
+input allConfigurationData: object (A JSON data structure object that contains all configuration meta-data)
+output: boolean (True or False to indicate if the configuration data was applied successfully or not)
+
+testName: parseLoadedConfigurationData_inValidAllConfigurationDataString
+input allConfigurationData: string (dfxg24346dfg)
+output: ?
+
+testName: parseLoadedConfigurationData_inValidAllConfigurationDataInteger
+input allConfigurationData: integer (123)
+output: ?
+
+testName: parseLoadedConfigurationData_inValidAllConfigurationDataBoolean
+input allConfigurationData: boolean (false)
+output: ?
+
+testName: parseLoadedConfigurationData_inValidAllConfigurationDataUndefined
+input allConfigurationData: undefined
+output: ?
+
+testName: parseLoadedConfigurationData_inValidAllConfigurationDataNaN
+input allConfigurationData: NaN
+output: ?

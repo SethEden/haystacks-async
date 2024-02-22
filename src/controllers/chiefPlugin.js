@@ -33,7 +33,7 @@ const namespacePrefix = wrd.cframework + bas.cDot + wrd.ccontrollers + bas.cDot 
 /**
  * @function loadPluginRegistryData
  * @description Loads the plugin registry meta data which includes paths to plugins.
- * @param {string} pluginRegistryPath 
+ * @param {string} pluginRegistryPath This is the path to host application plugin registry file.
  * @return {object} A JSON object loaded from the specified path with the plugin paths and plugin metaData.
  * @author Seth Hollingsead
  * @date 2022/09/13
@@ -53,7 +53,7 @@ async function loadPluginRegistryData(pluginRegistryPath) {
 /**
  * @function persistPluginRegistryToDataStructure
  * @description Saves the plugin registry data to the D-data structure.
- * @param {object} pluginRegistryData
+ * @param {object} pluginRegistryData This is the data from host application plugin registry file.
  * @return {boolean} True or False to indicate if the persistense was successful or not.
  * @author Seth Hollingsead
  * @date 2022/09/13
@@ -177,7 +177,7 @@ async function countAllPluginsInRegistryPath() {
 /**
  * @function registerNamedPlugin
  * @description This is a wrapper function for pluginBroker.registerPlugin.
- * @param {string} pluginName The name of the plugin that should be registered. 
+ * @param {string} pluginName The name of the plugin that should be registered.
  * @param {string} pluginPath The path to the plugin, to be added to the plugin registry.
  * This should be the path to the plugin/package.json file, but not including the package.json as part of the path URI.
  * @return {boolean} True or False to indicate if the plugin was added to the plugin registry successfully or not.
@@ -300,7 +300,7 @@ async function savePluginRegistryDisk() {
  * but it could also be the name of the folder in the plugin registry path that is the entry-point to the plugin.
  * If its the later than we will need to compose the fully qualified path.
  * @return {array<object>} An array that contains all of the meta-data,
- * for each of the plugins in the input pluginsPaths array. 
+ * for each of the plugins in the input pluginsPaths array.
  * @author Seth Hollingsead
  * @date 2022/09/02
  */
@@ -427,7 +427,7 @@ async function loadAllPlugins(pluginsExecutionPaths, pluginsMetaData) {
             // loaded plugin:
             console.log(msg.cloadedPlugin + pluginMetaData[wrd.cname]);
           } else {
-            // There was an error attempting to load the plugin: 
+            // There was an error attempting to load the plugin:
             console.log(msg.cErrorLoadingPlugin + pluginExecutionPath);
           }
         } catch (err) {
@@ -566,7 +566,7 @@ async function integratePluginData(pluginName, pluginData) {
     } else {
       // ERROR: No plugin data was loaded at all for the plugin:
       console.log(msg.cErrorIntegratePluginDataMessage09 + pluginName);
-    }    
+    }
   } else {
     // ERROR: Invalid input, either the plugin name or plugin data was undefined. Please provide valid data and try again.
     console.log(msg.cErrorIntegratePluginDataMessage01);

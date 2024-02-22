@@ -1,911 +1,557 @@
 description: Test plan for dataBroker.js
 
 
+--------------------------------------------------------------------------------
+testName: addPluginConfigurationData_validData
+input pluginName: string (The name of the current plugin these configuration settings belong to)
+input pluginConfigData: object (A JSON object that contains all of the configuration settings for the current plugin)
+output: boolean (?)
+
+testName: addPluginConfigurationData_inValidPluginNameString
+input pluginName: string (464gsdsfae8f46)
+input pluginConfigData: object (A JSON object that contains all of the configuration settings for the current plugin)
+output: ?
+
+testName: addPluginConfigurationData_inValidPluginConfigDataString
+input pluginName: string (The name of the current plugin these configuration settings belong to)
+input pluginConfigData: string (464gsdsfae8f46)
+output: ?
+
+testName: addPluginConfigurationData_inValidPluginNameInteger
+input pluginName: integer (123)
+input pluginConfigData: object (A JSON object that contains all of the configuration settings for the current plugin)
+output: ?
+
+testName: addPluginConfigurationData_inValidPluginNameBoolean
+input pluginName: boolean (false)
+input pluginConfigData: object (A JSON object that contains all of the configuration settings for the current plugin)
+output: ?
+
+testName: addPluginConfigurationData_inValidPluginConfigDataInteger
+input pluginName: string (The name of the current plugin these configuration settings belong to)
+input pluginConfigData: integer (123)
+output: ?
+
+testName: addPluginConfigurationData_inValidPluginConfigDataBoolean
+input pluginName: string (The name of the current plugin these configuration settings belong to)
+input pluginConfigData: boolean (false)
+output: ?
+
+testName: addPluginConfigurationData_inValidPluginNameUndefined
+input pluginName: undefined
+input pluginConfigData: object (A JSON object that contains all of the configuration settings for the current plugin)
+output: ?
+
+testName: addPluginConfigurationData_inValidPluginNameNaN
+input pluginName: NaN
+input pluginConfigData: object (A JSON object that contains all of the configuration settings for the current plugin)
+output: ?
+
+testName: addPluginConfigurationData_inValidPluginConfigDataUndefined
+input pluginName: string (The name of the current plugin these configuration settings belong to)
+input pluginConfigData: undefined
+output: ?
+
+testName: addPluginConfigurationData_inValidPluginConfigDataNaN
+input pluginName: string (The name of the current plugin these configuration settings belong to)
+input pluginConfigData: NaN
+output: ?
+--------------------------------------------------------------------------------
 testName: scanDataPath_validData
-input dataPath: C:\haystacks\src\resources\configuration\debugSettings
-output: [array of files & paths]
+input dataPath: string (The path that should be recursively scanned for files in all the folders)
+output: array<string> (An array of strings that each have the full path and file name at all levels of the specified path including sub-folders)
 
-testName: scanDataPath_inValidString
-input: string (464gsdsfae8f46)
+testName: scanDataPath_inValidDataPathString
+input dataPath: string (464gsdsfae8f46)
 output: empty array
 
-testName: scanDataPath_inValidNumber
-input: integer (546)
+testName: scanDataPath_inValidDataPathNumber
+input dataPath: integer (546)
 output: empty array
 
-testName: scanDataPath_inValidBoolean
-input: boolean (false)
+testName: scanDataPath_inValidDataPathBoolean
+input dataPath: boolean (false)
+output: empty array
+
+testName: scanDataPath_inValidDataPathUndefined
+input dataPath: undefined
+output: empty array
+
+testName: scanDataPath_inValidDataPathNaN
+input dataPath: NaN
 output: empty array
 --------------------------------------------------------------------------------
 testName: findUniversalDebugConfigSetting_validData
-input appConfigFilesToLoad: array [C:\haystacks\test\unitTest\testData\application.system.json]
-input frameworkConfigFilesToLoad: array [C:\haystacks\test\unitTest\testData\framework.system.json]
-output: true
+input appConfigFilesToLoad: array<string> (The list of files for the app config files)
+input frameworkConfigFilesToLoad: array<string> (The list of files for the framework config files)
+output: boolean (A True or False value to indicate if debug setting value is set in either the app config system file or the framework config system file)
 
-testName: findUniversalDebugConfigSetting_inValidString
+testName: findUniversalDebugConfigSetting_inValidAppConfigFilesToLoadString
 input appConfigFilesToLoad: string (464gsdsfae8f46)
-input frameworkConfigFilesToLoad: string (  - space)
-output: false
+input frameworkConfigFilesToLoad: array<string> (The list of files for the framework config files)
+output: ?
 
 testName: findUniversalDebugConfigSetting_inValidFrameworkConfigFilesToLoadString
-input appConfigFilesToLoad: array [C:\haystacks\test\unitTest\testData\application.system.json]
-input frameworkConfigFilesToLoad: string (&)
-output: false?
+input appConfigFilesToLoad: array<string> (The list of files for the app config files)
+input frameworkConfigFilesToLoad: string (464gsdsfae8f46)
+output: ?
 
-testName: findUniversalDebugConfigSetting_inValidNumber
+testName: findUniversalDebugConfigSetting_inValidAppConfigFilesToLoadNumber
 input appConfigFilesToLoad: integer (546)
-input frameworkConfigFilesToLoad: string (  - space)
-output: false
+input frameworkConfigFilesToLoad: array<string> (The list of files for the framework config files)
+output: ?
 
-testName: findUniversalDebugConfigSetting_inValidBoolean
+testName: findUniversalDebugConfigSetting_inValidAppConfigFilesToLoadBoolean
 input appConfigFilesToLoad: boolean (false)
-input frameworkConfigFilesToLoad: string (  - space)
-output: false
---------------------------------------------------------------------------------
-testName: findIndividualDebugConfigSetting_validData
-input filesToLoad: array [C:\haystacks\test\unitTest\testData\config.json]
-output: true
+input frameworkConfigFilesToLoad: array<string> (The list of files for the framework config files)
+output: ?
 
-testName: findIndividualDebugConfigSetting_inValidString
-input filesToLoad: string (464gsdsfae8f46)
-output: false
+testName: findUniversalDebugConfigSetting_inValidFrameworkConfigFilesToLoadNumber
+input appConfigFilesToLoad: array<string> (The list of files for the app config files)
+input frameworkConfigFilesToLoad: integer (546)
+output: ?
 
-testName: findIndividualDebugConfigSetting_inValidNumber
-input filesToLoad: integer (546)
-output: false
+testName: findUniversalDebugConfigSetting_inValidFrameworkConfigFilesToLoadBoolean
+input appConfigFilesToLoad: array<string> (The list of files for the app config files)
+input frameworkConfigFilesToLoad: boolean (false)
+output: ?
 
-testName: findIndividualDebugConfigSetting_inValidBoolean
-input filesToLoad: boolean (false)
-output: false
+testName: findUniversalDebugConfigSetting_inValidAppConfigFilesToLoadUndefined
+input appConfigFilesToLoad: undefined
+input frameworkConfigFilesToLoad: array<string> (The list of files for the framework config files)
+output: ?
+
+testName: findUniversalDebugConfigSetting_inValidAppConfigFilesToLoadNaN
+input appConfigFilesToLoad: NaN
+input frameworkConfigFilesToLoad: array<string> (The list of files for the framework config files)
+output: ?
+
+testName: findUniversalDebugConfigSetting_inValidFrameworkConfigFilesToLoadUndefined
+input appConfigFilesToLoad: array<string> (The list of files for the app config files)
+input frameworkConfigFilesToLoad: undefined
+output: ?
+
+testName: findUniversalDebugConfigSetting_inValidFrameworkConfigFilesToLoadNaN
+input appConfigFilesToLoad: array<string> (The list of files for the app config files)
+input frameworkConfigFilesToLoad: NaN
+output: ?
 --------------------------------------------------------------------------------
 testName: loadAllCsvData_validData
-input filesToLoad: array [C:\haystacks\test\unitTest\testData\test.csv]
-input contextName: string (  - space)
-output: object (the JSON data from test.csv)
+input filesToLoad: array<string> (The data structure containing all of the files to load data from)
+input contextName: string (The context name that should be used when adding data to the D data structure)
+output: object (The data in a JSON object after it was loaded from the file)
 
-testName: loadAllCsvData_inValidString
+testName: loadAllCsvData_inValidFilesToLoadString
 input filesToLoad: string (464gsdsfae8f46)
-input contextName: string (  - space)
-output: false
+input contextName: string (The context name that should be used when adding data to the D data structure)
+output: ?
 
 testName: loadAllCsvData_inValidContextNameString
-input filesToLoad: array [C:\haystacks\test\unitTest\testData\test.csv]
-input contextName: string (&)
-output: false?
+input filesToLoad: array<string> (The data structure containing all of the files to load data from)
+input contextName: string (464gsdsfae8f46)
+output: ?
 
-testName: loadAllCsvData_inValidNumber
+testName: loadAllCsvData_inValidFilesToLoadNumber
 input filesToLoad: integer (546)
-input contextName: string (  - space)
-output: false
+input contextName: string (The context name that should be used when adding data to the D data structure)
+output: ?
 
-testName: loadAllCsvData_inValidBoolean
+testName: loadAllCsvData_inValidFilesToLoadBoolean
 input filesToLoad: boolean (false)
-input contextName: string (  - space)
-output: false
+input contextName: string (The context name that should be used when adding data to the D data structure)
+output: ?
+
+testName: loadAllCsvData_inValidContextNameNumber
+input filesToLoad: array<string> (The data structure containing all of the files to load data from)
+input contextName: integer (123)
+output: ?
+
+testName: loadAllCsvData_inValidContextNameBoolean
+input filesToLoad: array<string> (The data structure containing all of the files to load data from)
+input contextName: boolean (false)
+output: ?
+
+testName: loadAllCsvData_inValidFilesToLoadUndefined
+input filesToLoad: undefined
+input contextName: string (The context name that should be used when adding data to the D data structure)
+output: ?
+
+testName: loadAllCsvData_inValidFilesToLoadNaN
+input filesToLoad: NaN
+input contextName: string (The context name that should be used when adding data to the D data structure)
+output: ?
+
+testName: loadAllCsvData_inValidContextNameUndefined
+input filesToLoad: array<string> (The data structure containing all of the files to load data from)
+input contextName: undefined
+output: ?
+
+testName: loadAllCsvData_inValidContextNameNaN
+input filesToLoad: array<string> (The data structure containing all of the files to load data from)
+input contextName: NaN
+output: ?
 --------------------------------------------------------------------------------
 testName: loadedAllXmlData_validData
-input filesToLoad: array [C:\haystacks\test\unitTest\testData\system.xml]
-input contextName: string (  - space)
+input filesToLoad: array<string> (The data structure containing all of the files to load data from)
+input contextName: string (The context name that should be used when adding data to the D data structure)
 output: object (the JSON data from system.xml)
 
-testName: loadedAllXmlData_inValidString
+testName: loadedAllXmlData_inValidFilesToLoadString
 input filesToLoad: string (464gsdsfae8f46)
-input contextName: string (  - space)
-output: false
+input contextName: string (The context name that should be used when adding data to the D data structure)
+output: ?
 
 testName: loadAllCsvData_inValidContextNameString
-input filesToLoad: array [C:\haystacks\test\unitTest\testData\system.xml]
-input contextName: string (&)
-output: false?
+input filesToLoad: array<string> (The data structure containing all of the files to load data from)
+input contextName: string (464gsdsfae8f46)
+output: ?
 
-testName: loadedAllXmlData_inValidNumber
+testName: loadedAllXmlData_inValidFilesToLoadNumber
 input filesToLoad: integer (546)
-input contextName: string (  - space)
-output: false
+input contextName: string (The context name that should be used when adding data to the D data structure)
+output: ?
 
-testName: loadedAllXmlData_inValidBoolean
+testName: loadedAllXmlData_inValidFilesToLoadBoolean
 input filesToLoad: boolean (false)
-input contextName: string (  - space)
-output: false
+input contextName: string (The context name that should be used when adding data to the D data structure)
+output: ?
+
+testName: loadAllCsvData_inValidContextNameNumber
+input filesToLoad: array<string> (The data structure containing all of the files to load data from)
+input contextName: integer (123)
+output: ?
+
+testName: loadAllCsvData_inValidContextNameBoolean
+input filesToLoad: array<string> (The data structure containing all of the files to load data from)
+input contextName: boolean (false)
+output: ?
+
+testName: loadedAllXmlData_inValidFilesToLoadUndefined
+input filesToLoad: undefined
+input contextName: string (The context name that should be used when adding data to the D data structure)
+output: ?
+
+testName: loadedAllXmlData_inValidFilesToLoadNaN
+input filesToLoad: NaN
+input contextName: string (The context name that should be used when adding data to the D data structure)
+output: ?
+
+testName: loadAllCsvData_inValidContextNameUndefined
+input filesToLoad: array<string> (The data structure containing all of the files to load data from)
+input contextName: undefined
+output: ?
+
+testName: loadAllCsvData_inValidContextNameNaN
+input filesToLoad: array<string> (The data structure containing all of the files to load data from)
+input contextName: NaN
+output: ?
 --------------------------------------------------------------------------------
 testName: loadAllJsonData_validData
-input filesToLoad: array [C:\haystacks\test\unitTest\testData\config.json]
-input contextName: string (  - space)
-output: object (the JSON data from testHarness.json)
+input filesToLoad: array<string> (The data structure containing all of the files to load data from)
+input contextName: string (The context name that should be used when adding data to the D-data structure)
+output: object (A JSON object that contains all fo the data that was loaded and parsed from all the input files list)
 
-testName: loadAllJsonData_inValidString
+testName: loadAllJsonData_inValidFilesToLoadString
 input filesToLoad: string (464gsdsfae8f46)
-input contextName: string (  - space)
-output: false
+input contextName: string (The context name that should be used when adding data to the D-data structure)
+output: ?
 
 testName: loadAllJsonData_inValidContextNameString
-input filesToLoad: array [C:\haystacks\test\unitTest\testData\config.json]
-input contextName: string (&)
-output: false?
+input filesToLoad: array<string> (The data structure containing all of the files to load data from)
+input contextName: string (464gsdsfae8f46)
+output: ?
 
-testName: loadAllJsonData_inValidNumber
+testName: loadAllJsonData_inValidFilesToLoadNumber
 input filesToLoad: integer (546)
-input contextName: string (  - space)
-output: false
+input contextName: string (The context name that should be used when adding data to the D-data structure)
+output: ?
 
-testName: loadAllJsonData_inValidBoolean
+testName: loadAllJsonData_inValidFilesToLoadBoolean
 input filesToLoad: boolean (false)
-input contextName: string (  - space)
-output: false
+input contextName: string (The context name that should be used when adding data to the D-data structure)
+output: ?
+
+testName: loadAllJsonData_inValidContextNameNumber
+input filesToLoad: array<string> (The data structure containing all of the files to load data from)
+input contextName: integer (123)
+output: ?
+
+testName: loadAllJsonData_inValidContextNameBoolean
+input filesToLoad: array<string> (The data structure containing all of the files to load data from)
+input contextName: boolean (false)
+output: ?
+
+testName: loadAllJsonData_inValidFilesToLoadUndefined
+input filesToLoad: undefined
+input contextName: string (The context name that should be used when adding data to the D-data structure)
+output: ?
+
+testName: loadAllJsonData_inValidFilesToLoadNaN
+input filesToLoad: NaN
+input contextName: string (The context name that should be used when adding data to the D-data structure)
+output: ?
+
+testName: loadAllJsonData_inValidContextNameUndefined
+input filesToLoad: array<string> (The data structure containing all of the files to load data from)
+input contextName: undefined
+output: ?
+
+testName: loadAllJsonData_inValidContextNameNaN
+input filesToLoad: array<string> (The data structure containing all of the files to load data from)
+input contextName: NaN
+output: ?
 --------------------------------------------------------------------------------
 testName: processCsvData_validData
-input data: object [C:\haystacks\test\unitTest\testData\test.csv]
-input contextName: string (pageData)
+input data: object (A JSON object that contains all of the data loaded from a CSV file)
+input contextName: string (The name that should be used when adding the objects to the D data structure for data-sharing)
 output: object (the clean and ready to go JSON data from test.csv)
 
-testName: processCsvData_inValidString
+testName: processCsvData_inValidDataString
 input data: string (464gsdsfae8f46)
-input contextName: string (pageData)
-output: false
+input contextName: string (The name that should be used when adding the objects to the D data structure for data-sharing)
+output: ?
 
 testName: processCsvData_inValidContextNameString
-input data: object [C:\haystacks\test\unitTest\testData\test.csv]
-input contextName: string (&)
-output: false?
+input data: object (A JSON object that contains all of the data loaded from a CSV file)
+input contextName: string (464gsdsfae8f46)
+output: ?
 
-testName: processCsvData_inValidNumber
+testName: processCsvData_inValidDataNumber
 input data: integer (546)
-input contextName: string (pageData)
-output: false
+input contextName: string (The name that should be used when adding the objects to the D data structure for data-sharing)
+output: ?
 
-testName: processCsvData_inValidBoolean
+testName: processCsvData_inValidDataBoolean
 input data: boolean (false)
-input contextName: string (pageData)
-output: false
---------------------------------------------------------------------------------
-testName: processXmlData_validData
-input data: JSON object
-input contextName: string (configuration)
-output: object (the JSON data from testHarness.json)
-
-testName: processXmlData_inValidString
-input data: string (464gsdsfae8f46)
-input contextName: string (configuration)
-output: false
-
-testName: processXmlData_inValidContextNameString
-input data: JSON object
-input contextName: string (&)
-output: false?
-
-testName: processXmlData_inValidNumber
-input data: integer (546)
-input contextName: string (configuration)
-output: false
-
-testName: processXmlData_inValidBoolean
-input data: boolean (false)
-input contextName: string (configuration)
-output: false
---------------------------------------------------------------------------------
-testName: processXmlLeafNode_validData
-input inputData: JSON object
-input leafNodeName: string (?)
-output: object (the parsed JSON data)
-
-testName: processXmlLeafNode_inValidString
-input inputData: string (464gsdsfae8f46)
-input leafNodeName: string (?)
+input contextName: string (The name that should be used when adding the objects to the D data structure for data-sharing)
 output: ?
 
-testName: processXmlLeafNode_inValidLeafNodeNameString
-input inputData: JSON object
-input leafNodeName: string (&)
+testName: processCsvData_inValidContextNameNumber
+input data: object (A JSON object that contains all of the data loaded from a CSV file)
+input contextName: integer (123)
 output: ?
 
-testName: processXmlLeafNode_inValidNumber
-input inputData: integer (546)
-input leafNodeName: string (?)
+testName: processCsvData_inValidContextNameBoolean
+input data: object (A JSON object that contains all of the data loaded from a CSV file)
+input contextName: boolean (false)
 output: ?
 
-testName: processXmlLeafNode_inValidBoolean
-input inputData: boolean (false)
-input leafNodeName: string (?)
+testName: processCsvData_inValidDataUndefined
+input data: undefined
+input contextName: string (The name that should be used when adding the objects to the D data structure for data-sharing)
+output: ?
+
+testName: processCsvData_inValidDataNaN
+input data: NaN
+input contextName: string (The name that should be used when adding the objects to the D data structure for data-sharing)
+output: ?
+
+testName: processCsvData_inValidContextNameUndefined
+input data: object (A JSON object that contains all of the data loaded from a CSV file)
+input contextName: undefined
+output: ?
+
+testName: processCsvData_inValidContextNameNaN
+input data: object (A JSON object that contains all of the data loaded from a CSV file)
+input contextName: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: preprocessJsonFile_validData
-input: array [C:\haystacks\test\unitTest\testData\config.json]
-output: object (JSON)
+input filesToLoad: string (The fully qualified path to the file that should be loaded)
+output: object (The JSON data object that was loaded from the specified JSON data file)
 
-testName: preprocessJsonFile_inValidString
-input: string (464gsdsfae8f46)
-output: false
+testName: preprocessJsonFile_inValidFilesToLoadString
+input filesToLoad: string (464gsdsfae8f46)
+output: ?
 
-testName: preprocessJsonFile_inValidNumber
-input: integer (546)
-output: false
+testName: preprocessJsonFile_inValidFilesToLoadNumber
+input filesToLoad: integer (546)
+output: ?
 
-testName: preprocessJsonFile_inValidBoolean
-input: boolean (false)
-output: false
+testName: preprocessJsonFile_inValidFilesToLoadBoolean
+input filesToLoad: boolean (false)
+output: ?
+
+testName: preprocessJsonFile_inValidFilesToLoadUndefined
+input filesToLoad: Undefined
+output: ?
+
+testName: preprocessJsonFile_inValidFilesToLoadNaN
+input filesToLoad: NaN
+output: ?
 --------------------------------------------------------------------------------
 testName: writeJsonDataToFile_validData
-input fileToSaveTo: string (C:\haystacks\test\unitTest\testData\writeJsonDataToFile_validData.json)
+input fileToSaveTo: string (The full path to the file that should have the data written to it)
 input dataToWriteOut: object
 output: file written to disk
 
-testName: writeJsonDataToFile_inValidString
+testName: writeJsonDataToFile_inValidFileToSaveToString
 input fileToSaveTo: string (464gsdsfae8f46)
-input dataToWriteOut: object
+input dataToWriteOut: object (The JSON data that should be written out to the specified JSON file)
 output: ?
 
-testName: writeJsonDataToFile_inValidDataToWrite
-input fileToSaveTo: string (C:\haystacks\test\unitTest\testData\writeJsonDataToFile_validData.json)
-input dataToWriteOut: object (&)
+testName: writeJsonDataToFile_inValidDataToWriteString
+input fileToSaveTo: string (The full path to the file that should have the data written to it)
+input dataToWriteOut: string (464gsdsfae8f46)
 output: ?
 
-testName: writeJsonDataToFile_inValidNumber
+testName: writeJsonDataToFile_inValidFileToSaveToNumber
 input fileToSaveTo: integer (546)
-input dataToWriteOut: object
+input dataToWriteOut: object (The JSON data that should be written out to the specified JSON file)
 output: ?
 
-testName: writeJsonDataToFile_inValidBoolean
+testName: writeJsonDataToFile_inValidFileToSaveToBoolean
 input fileToSaveTo: boolean (false)
-input dataToWriteOut: object
+input dataToWriteOut: object (The JSON data that should be written out to the specified JSON file)
 output: ?
---------------------------------------------------------------------------------
+
+testName: writeJsonDataToFile_inValidDataToWriteNumber
+input fileToSaveTo: string (The full path to the file that should have the data written to it)
+input dataToWriteOut: integer (123)
+output: ?
+
+testName: writeJsonDataToFile_inValidDataToWriteBoolean
+input fileToSaveTo: string (The full path to the file that should have the data written to it)
+input dataToWriteOut: boolean (false)
+output: ?
+
+testName: writeJsonDataToFile_inValidFileToSaveToUndefined
+input fileToSaveTo: undefined
+input dataToWriteOut: object (The JSON data that should be written out to the specified JSON file)
+output: ?
+
+testName: writeJsonDataToFile_inValidFileToSaveToNaN
+input fileToSaveTo: NaN
+input dataToWriteOut: object (The JSON data that should be written out to the specified JSON file)
+output: ?
+
+testName: writeJsonDataToFile_inValidDataToWriteUndefined
+input fileToSaveTo: string (The full path to the file that should have the data written to it)
+input dataToWriteOut: undefined
+output: ?
+
+testName: writeJsonDataToFile_inValidDataToWriteNaN
+input fileToSaveTo: string (The full path to the file that should have the data written to it)
+input dataToWriteOut: NaN
+output: ?
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
 testName: setupDataStorage_validData
 output: data storage exists on data hive.
-
-testName: setupDataStorage_inValidString
-input: string (464gsdsfae8f46)
-output: data storage exists on data hive.
-
-testName: setupDataStorage_inValidNumber
-input: integer (546)
-output: data storage exists on data hive.
-
-testName: setupDataStorage_inValidBoolean
-input: boolean (false)
-output: data storage exists on data hive.
---------------------------------------------------------------------------------
+NOTE: Test initialization of the commands date structure.
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
 testName: storeData_validDataString
-input dataStorageContextName: string (testDataString)
-input dataToStore: string (dfxg24346dfg)
-output: true
+input dataStorageContextName: string (The sub-data storage hive under-which the data should be stored)
+input dataToStore: string|boolean|integer|float|array|object (The data that should be stored, in any format)
+output: boolean (A True or False to indicate if the data storage was successful or not)
 
 testName: storeData_validDataBoolean
 input dataStorageContextName: string (testDataBoolean)
 input dataToStore: boolean (false)
-output: true
+output: ?
 
 testName: storeData_validDataInteger
-input dataStorageContextName: string (testDataInteger)
+input dataStorageContextName: string (The sub-data storage hive under-which the data should be stored)
 input dataToStore: integer (23456)
-output: true
+output: ?
 
 testName: storeData_validDataArray
-input dataStorageContextName: string (testDataArray)
+input dataStorageContextName: string (The sub-data storage hive under-which the data should be stored)
 input dataToStore: array ([1,2,3,4,5])
-output: true
+output: ?
 
 testName: storeData_validDataObject
-input dataStorageContextName: string (testDataObject)
-input dataToStore: object ({"constants":"c,const","Generator":"g,gen,genrtr","List":"l,lst"})
-output: true
+input dataStorageContextName: string (The sub-data storage hive under-which the data should be stored)
+input dataToStore: string|boolean|integer|float|array|object (The data that should be stored, in any format)
+output: ?
 
 testName: storeData_inValidDataToStoreUndefined
-input dataStorageContextName: string (inValidDataToStoreUndefined)
+input dataStorageContextName: string (The sub-data storage hive under-which the data should be stored)
 input dataToStore: undefined
-output: false
+output: ?
 
 testName: storeData_inValidDataToStoreNaN
-input dataStorageContextName: string (inValidDataToStoreNaN)
+input dataStorageContextName: string (The sub-data storage hive under-which the data should be stored)
 input dataToStore: NaN
-output: false
+output: ?
 
 testName: storeData_inValidDataStorageDataToStoreNumber
 input dataStorageContextName: integer (4567)
 input dataToStore: array ([1,2,3,4,5])
-output: false
+output: ?
 
 testName: storeData_inValidDataStorageDataToStoreBoolean
 input dataStorageContextName: boolean (false)
 input dataToStore: array ([1,2,3,4,5])
-output: false
+output: ?
 --------------------------------------------------------------------------------
 testName: getData_validData
-input dataStorageContextName: string (testDataString)
-output: object
+input dataStorageContextName: string (The sub-data storage hive which should be retrieved)
+output: object (the data that is found, if any at the specified location on the data storage hive)
 
-testName: getData_inValidString
+testName: getData_inValidDataStorageContextNameString
 input dataStorageContextName: string (464gsdsfae8f46)
-output: false
+output: ?
 
-testName: getData_inValidNumber
+testName: getData_inValidDataStorageContextNameNumber
 input dataStorageContextName: integer (546)
-output: false
+output: ?
 
-testName: getData_inValidBoolean
+testName: getData_inValidDataStorageContextNameBoolean
 input dataStorageContextName: boolean (false)
-output: false
---------------------------------------------------------------------------------
-testName: clearData_validData
-input dataStorageContextName: string (testDataString)
-output: cleared hive storage (testDataString)
+output: ?
 
-testName: clearData_inValidUndefined
+testName: getData_inValidDataStorageContextNameUndefined
 input dataStorageContextName: undefined
-output: cleared hive storage
+output: ?
 
-testName: clearData_inValidNaN
+testName: getData_inValidDataStorageContextNameNaN
 input dataStorageContextName: NaN
 output: ?
+--------------------------------------------------------------------------------
+testName: clearData_validData
+input dataStorageContextName: string (The sub-data storage hive which should be cleared)
+output: void
 
-testName: clearData_inValidNumber
+testName: clearData_inValidDataStorageContextNameString
+input dataStorageContextName: string (464gsdsfae8f46)
+output: ?
+
+testName: clearData_inValidDataStorageContextNameNumber
 input dataStorageContextName: integer (546)
-output: cleared hive storage
+output: ?
 
-testName: clearData_inValidBoolean
+testName: clearData_inValidDataStorageContextNameBoolean
 input dataStorageContextName: boolean (false)
-output: cleared hive storage
---------------------------------------------------------------------------------
-testName: initializeConstantsValidationData_validData
-output: Validate data is as follows.
-D[sys.cConstantsValidationData][sys.cConstantsShortNames] = {};
-D[sys.cConstantsValidationData][sys.cConstantsFileNames] = {};
-D[sys.cConstantsValidationData][sys.cConstantsPrefix] = {};
-D[sys.cConstantsValidationData][sys.cConstantsFilePaths] = {};
-D[sys.cConstantsValidationData][sys.cConstantsPhase1ValidationMessages] = {};
-D[sys.cConstantsValidationData][sys.cConstantsPhase2ValidationMessages] = {};
-
-testName: initializeConstantsValidationData_inValidString
-input filesToLoad: string (464gsdsfae8f46)
-output: Validate data is as follows.
-D[sys.cConstantsValidationData][sys.cConstantsShortNames] = {};
-D[sys.cConstantsValidationData][sys.cConstantsFileNames] = {};
-D[sys.cConstantsValidationData][sys.cConstantsPrefix] = {};
-D[sys.cConstantsValidationData][sys.cConstantsFilePaths] = {};
-D[sys.cConstantsValidationData][sys.cConstantsPhase1ValidationMessages] = {};
-D[sys.cConstantsValidationData][sys.cConstantsPhase2ValidationMessages] = {};
-
-testName: initializeConstantsValidationData_inValidNumber
-input filesToLoad: integer (546)
-output: Validate data is as follows.
-D[sys.cConstantsValidationData][sys.cConstantsShortNames] = {};
-D[sys.cConstantsValidationData][sys.cConstantsFileNames] = {};
-D[sys.cConstantsValidationData][sys.cConstantsPrefix] = {};
-D[sys.cConstantsValidationData][sys.cConstantsFilePaths] = {};
-D[sys.cConstantsValidationData][sys.cConstantsPhase1ValidationMessages] = {};
-D[sys.cConstantsValidationData][sys.cConstantsPhase2ValidationMessages] = {};
-
-testName: initializeConstantsValidationData_inValidBoolean
-input filesToLoad: boolean (false)
-output: Validate data is as follows.
-D[sys.cConstantsValidationData][sys.cConstantsShortNames] = {};
-D[sys.cConstantsValidationData][sys.cConstantsFileNames] = {};
-D[sys.cConstantsValidationData][sys.cConstantsPrefix] = {};
-D[sys.cConstantsValidationData][sys.cConstantsFilePaths] = {};
-D[sys.cConstantsValidationData][sys.cConstantsPhase1ValidationMessages] = {};
-D[sys.cConstantsValidationData][sys.cConstantsPhase2ValidationMessages] = {};
---------------------------------------------------------------------------------
-testName: addConstantsValidationData_validData
-input constantLibraryData: array<array<string,object>>
-output: the array of data that was added to the validation data.
-
-testName: addConstantsValidationData_inValidString
-input constantLibraryData: string (464gsdsfae8f46)
 output: ?
 
-testName: addConstantsValidationData_inValidNumber
-input constantLibraryData: integer (546)
+testName: clearData_inValidDataStorageContextNameUndefined
+input dataStorageContextName: undefined
 output: ?
 
-testName: addConstantsValidationData_inValidBoolean
-input constantLibraryData: boolean (false)
+testName: clearData_inValidDataStorageContextNameNaN
+input dataStorageContextName: NaN
 output: ?
 --------------------------------------------------------------------------------
-testName: addDeeplyNestedConstantsValidationData_validData
-input contextName: string (testDataString)
-input deeplyNestedData: array<array<string,object>>
-output: data with a name that was added to the D-data structure. (testDataString)
+testName: removePluginConfigurationData_validData
+input pluginName: string (The name of the plugin that should have its configuration data removed from the D-data structure)
+output: boolean (True or False to indicate if the removal of the data was completed successfully or not)
 
-testName: addDeeplyNestedConstantsValidationData_inValidDeeplyNestedDataString
-input contextName: string (testDataString)
-input deeplyNestedData: string (&)
+testName: removePluginConfigurationData_inValidPluginNameString
+input pluginName: string (464gsdsfae8f46)
 output: ?
 
-testName: addDeeplyNestedConstantsValidationData_inValidDeeplyNestedDataNumber
-input contextName: string (testDataString)
-input deeplyNestedData: integer (654)
+testName: removePluginConfigurationData_inValidPluginNameInteger
+input pluginName: integer (123)
 output: ?
 
-testName: addDeeplyNestedConstantsValidationData_inValidDeeplyNestedDataBoolean
-input contextName: string (testDataString)
-input deeplyNestedData: boolean (false)
+testName: removePluginConfigurationData_inValidPluginNameBoolean
+input pluginName: boolean (false)
 output: ?
 
-testName: addDeeplyNestedConstantsValidationData_inValidContextNameUndefined
-input contextName: undefined
-input deeplyNestedData: array<array<string,object>>
+testName: removePluginConfigurationData_inValidPluginNameUndefined
+input pluginName: undefined
 output: ?
 
-testName: addDeeplyNestedConstantsValidationData_inValidContextNameNaN
-input contextName: NaN
-input deeplyNestedData: array<array<string,object>>
+testName: removePluginConfigurationData_inValidPluginNameNaN
+input pluginName: NaN
 output: ?
-
-testName: addDeeplyNestedConstantsValidationData_inValidContextNameNumber
-input contextName: integer (654)
-input deeplyNestedData: array<array<string,object>>
-output: ?
-
-testName: addDeeplyNestedConstantsValidationData_inValidContextNameBoolean
-input contextName: boolean (false)
-input deeplyNestedData: array<array<string,object>>
-output: ?
---------------------------------------------------------------------------------
-testName: getDataCatagoryFromContextName_validData
-input contextName: string (example of this will be something like Application_xxxx)
-output: string (Application)
-
-testName: getDataCatagoryFromContextName_inValidString
-input contextName: string (Application5xxxx)
-output: ?
-
-testName: getDataCatagoryFromContextName_inValidNumber
-input contextName: integer (546)
-output: ?
-
-testName: getDataCatagoryFromContextName_inValidBoolean
-input contextName: boolean (false)
-output: ?
---------------------------------------------------------------------------------
-testName: getDataCatagoryDetailNameFromContextName_validData
-input contextName: string (Command_ApiPost)
-output: string (ApiPost)
-
-testName: getDataCatagoryDetailNameFromContextName_inValidString
-input contextName: string (Command5ApiPost)
-output: ?
-
-testName: getDataCatagoryDetailNameFromContextName_inValidNumber
-input contextName: integer (546)
-output: ?
-
-testName: getDataCatagoryDetailNameFromContextName_inValidBoolean
-input contextName: boolean (false)
-output: ?
---------------------------------------------------------------------------------
-testName: extractDataFromPapaParseObject_validData
-input data: object (to get data out)
-input contextName: string (name of the context either Command or Macro)
-output: object (parsed data)
-
-testName: extractDataFromPapaParseObject_inValidDataString
-input data: string (464gsdsfae8f46)
-input contextName: string (  - space)
-output: false
-
-testName: extractDataFromPapaParseObject_inValidContextNameString
-input data: object (to get data out)
-input contextName: string (&)
-output: false?
-
-testName: extractDataFromPapaParseObject_inValidNumber
-input data: integer (546)
-input contextName: string (  - space)
-output: false
-
-testName: extractDataFromPapaParseObject_inValidBoolean
-input data: boolean (false)
-input contextName: string (  - space)
-output: false
---------------------------------------------------------------------------------
-testName: determineMergeTarget_validData
-input targetData: object (the target data should be merged with simulated merge)
-input dataToMerge: object (the data should be merged with simulated merge scenario)
-output: string (namespace where the dataToMerge should be merged with the target data)
-
-testName: determineMergeTarget_inValidTargetDataString
-input targetData: string (464gsdsfae8f46)
-input dataToMerge: string (  - space)
-output: false
-
-testName: determineMergeTarget_inValidDataToMergeString
-input targetData: object (the target data should be merged with simulated merge)
-input dataToMerge: string (&)
-output: false?
-
-testName: determineMergeTarget_inValidTargetDataNumber
-input targetData: integer (546)
-input dataToMerge: object (the data should be merged with simulated merge scenario)
-output: false?
-
-testName: determineMergeTarget_inValidTargetDataBoolean
-input targetData: boolean (false)
-input dataToMerge: object (the data should be merged with simulated merge scenario)
-output: false?
-
-testName: determineMergeTarget_inValidDataToMergeNumber
-input targetData:  object (the target data should be merged with simulated merge)
-input dataToMerge: integer (546)
-output: false?
-
-testName: determineMergeTarget_inValidDataToMergeBoolean
-input targetData:  object (the target data should be merged with simulated merge)
-input dataToMerge: boolean (false)
-output: false?
---------------------------------------------------------------------------------mergeData
-testName: mergeData_validData
-input targetData: object (data to be merged with dataToMerge)
-input dataCatagory: string (valid string?)
-input pageName: string (valid string?)
-input dataToMerge: object (data to be merged)
-output: object (data set from targetData and dataToMerge)
-
-testName: mergeData_inValidTargetDataString
-input targetData: string (464gsdsfae8f46)
-input dataCatagory: string (valid string?)
-input pageName: string (valid string?)
-input dataToMerge: object (data to be merged)
-output: false?
-
-testName: mergeData_inValidDataCatagoryString
-input targetData: object (data to be merged with dataToMerge)
-input dataCatagory: string (464gsdsfae8f46)
-input pageName: string (valid string?)
-input dataToMerge: object (data to be merged)
-output: false?
-
-testName: mergeData_inValidPageNameString
-input targetData: object (data to be merged with dataToMerge)
-input dataCatagory: string (valid string?)
-input pageName: string (464gsdsfae8f46)
-input dataToMerge: object (data to be merged)
-output: false?
-
-testName: mergeData_inValidDataToMergeString
-input targetData: object (data to be merged with dataToMerge)
-input dataCatagory: string (valid string?)
-input pageName: string (valid string?)
-input dataToMerge: string (464gsdsfae8f46)
-output: false?
-
-testName: mergeData_inValidTargetDataNumber
-input targetData: integer (546)
-input dataCatagory: string (valid string?)
-input pageName: string (valid string?)
-input dataToMerge: object (data to be merged)
-output: false?
-
-testName: mergeData_inValidTargetDataBoolean
-input targetData: boolean (false)
-input dataCatagory: string (valid string?)
-input pageName: string (valid string?)
-input dataToMerge: object (data to be merged)
-output: false?
-
-testName: mergeData_inValidTargetDataUndefined
-input targetData: undefined
-input dataCatagory: string (valid string?)
-input pageName: string (valid string?)
-input dataToMerge: object (data to be merged)
-output: false?
-
-testName: mergeData_inValidTargetDataNaN
-input targetData: NaN
-input dataCatagory: string (valid string?)
-input pageName: string (valid string?)
-input dataToMerge: object (data to be merged)
-output: false?
-
-testName: mergeData_inValidDataCatagoryNumber
-input targetData: object (data to be merged with dataToMerge)
-input dataCatagory: integer (546)
-input pageName: string (valid string?)
-input dataToMerge: object (data to be merged)
-output: false?
-
-testName: mergeData_inValidDataCatagoryBoolean
-input targetData: object (data to be merged with dataToMerge)
-input dataCatagory: boolean (false)
-input pageName: string (valid string?)
-input dataToMerge: object (data to be merged)
-output: false?
-
-testName: mergeData_inValidDataCatagoryUndefined
-input targetData: object (data to be merged with dataToMerge)
-input dataCatagory: undefined
-input pageName: string (valid string?)
-input dataToMerge: object (data to be merged)
-output: false?
-
-testName: mergeData_inValidDataCatagoryNaN
-input targetData: object (data to be merged with dataToMerge)
-input dataCatagory: NaN
-input pageName: string (valid string?)
-input dataToMerge: object (data to be merged)
-output: false?
-
-testName: mergeData_inValidPageNameNumber
-input targetData: object (data to be merged with dataToMerge)
-input dataCatagory: string (valid string?)
-input pageName: integer (546)
-input dataToMerge: object (data to be merged)
-output: false?
-
-testName: mergeData_inValidPageNameBoolean
-input targetData: object (data to be merged with dataToMerge)
-input dataCatagory: string (valid string?)
-input pageName: boolean (false)
-input dataToMerge: object (data to be merged)
-output: false?
-
-testName: mergeData_inValidPageNameUndefined
-input targetData: object (data to be merged with dataToMerge)
-input dataCatagory: string (valid string?)
-input pageName: undefined
-input dataToMerge: object (data to be merged)
-output: false?
-
-testName: mergeData_inValidPageNameNaN
-input targetData: object (data to be merged with dataToMerge)
-input dataCatagory: string (valid string?)
-input pageName: NaN
-input dataToMerge: object (data to be merged)
-output: false?
-
-testName: mergeData_inValidDataToMergeNumber
-input targetData: object (data to be merged with dataToMerge)
-input dataCatagory: string (valid string?)
-input pageName: string (valid string?)
-input dataToMerge: integer (546)
-output: false?
-
-testName: mergeData_inValidDataToMergeBoolean
-input targetData: object (data to be merged with dataToMerge)
-input dataCatagory: string (valid string?)
-input pageName: string (valid string?)
-input dataToMerge: boolean (false)
-output: false?
-
-testName: mergeData_inValidDataToMergeUndefined
-input targetData: object (data to be merged with dataToMerge)
-input dataCatagory: string (valid string?)
-input pageName: string (valid string?)
-input dataToMerge: undefined
-output: false?
-
-testName: mergeData_inValidDataToMergeNaN
-input targetData: object (data to be merged with dataToMerge)
-input dataCatagory: string (valid string?)
-input pageName: string (valid string?)
-input dataToMerge: NaN
-output: false?
-
-testName: mergeData_inValidAllUndefined
-input targetData: undefined
-input dataCatagory: undefined
-input pageName: undefined
-input dataToMerge: undefined
-output: false?
-
-testName: mergeData_inValidAllNaN
-input targetData: NaN
-input dataCatagory: NaN
-input pageName: NaN
-input dataToMerge: NaN
-output: false?
---------------------------------------------------------------------------------
-testName: getDataElement_validData
-input dataObject: object (the data object with all data.)
-input pageName: string (valid string?)
-input elementName: string (valid string?)
-output: string (data element with all carriage return characters removed from it)
-
-testName: getDataElement_inValidDataObjectString
-input dataObject: string (464gsdsfae8f46)
-input pageName: string (valid string?)
-input elementName: string (valid string?)
-output: false?
-
-testName: getDataElement_inValidPageNameString
-input dataObject: object (the data object with all data.)
-input pageName: string (464gsdsfae8f46)
-input elementName: string (valid string?)
-output: false?
-
-testName: getDataElement_inValidElementNameString
-input dataObject: object (the data object with all data.)
-input pageName: string (valid string?)
-input elementName: string (464gsdsfae8f46)
-output: false?
-
-testName: getDataElement_inValidDataObjectNumber
-input dataObject: integer (546)
-input pageName: string (valid string?)
-input elementName: string (valid string?)
-output: false?
-
-testName: getDataElement_inValidDataObjectBoolean
-input dataObject: boolean (false)
-input pageName: string (valid string?)
-input elementName: string (valid string?)
-output: false?
-
-testName: getDataElement_inValidDataObjectUndefined
-input dataObject: undefined
-input pageName: string (valid string?)
-input elementName: string (valid string?)
-output: false?
-
-testName: getDataElement_inValidDataObjectNaN
-input dataObject: NaN
-input pageName: string (valid string?)
-input elementName: string (valid string?)
-output: false?
-
-testName: getDataElement_inValidPageNameNumber
-input dataObject: object (the data object with all data.)
-input pageName: integer (546)
-input elementName: string (valid string?)
-output: false?
-
-testName: getDataElement_inValidPageNameBoolean
-input dataObject: object (the data object with all data.)
-input pageName: boolean (false)
-input elementName: string (valid string?)
-output: false?
-
-testName: getDataElement_inValidPageNameUndefined
-input dataObject: object (the data object with all data.)
-input pageName: undefined
-input elementName: string (valid string?)
-output: false?
-
-testName: getDataElement_inValidPageNameNaN
-input dataObject: object (the data object with all data.)
-input pageName: NaN
-input elementName: string (valid string?)
-output: false?
-
-testName: getDataElement_inValidElementNameNumber
-input dataObject: object (the data object with all data.)
-input pageName: string (valid string?)
-input elementName: integer (546)
-output: false?
-
-testName: getDataElement_inValidElementNameBoolean
-input dataObject: object (the data object with all data.)
-input pageName: string (valid string?)
-input elementName: boolean (false)
-output: false?
-
-testName: getDataElement_inValidElementNameUndefined
-input dataObject: object (the data object with all data.)
-input pageName: string (valid string?)
-input elementName: undefined
-output: false?
-
-testName: getDataElement_inValidElementNameNaN
-input dataObject: object (the data object with all data.)
-input pageName: string (valid string?)
-input elementName: NaN
-output: false?
-
-testName: getDataElement_inValidAllUndefined
-input dataObject: undefined
-input pageName: undefined
-input elementName: undefined
-output: false?
-
-testName: getDataElement_inValidAllNaN
-input dataObject: NaN
-input pageName: NaN
-input elementName: NaN
-output: false?
---------------------------------------------------------------------------------
-testName: getDataElementCount_validData
-input dataObject: object (the data map with all data.)
-input pageName: string (valid string?)
-input elementNamePattern: string (valid string?)
-output: integer (the number of data elements in the object collection or a count
-for the number of data elements that match a pattern)
-
-testName: getDataElementCount_inValidDataObjectString
-input dataObject: string (464gsdsfae8f46)
-input pageName: string (valid string?)
-input elementNamePattern: string (valid string?)
-output: false?
-
-testName: getDataElementCount_inValidPageNameString
-input dataObject: object (the data map with all data.)
-input pageName: string (464gsdsfae8f46)
-input elementNamePattern: string (valid string?)
-output: false?
-
-testName: getDataElementCount_inValidElementNamePatternString
-input dataObject: object (the data map with all data.)
-input pageName: string (valid string?)
-input elementNamePattern: string (464gsdsfae8f46)
-output: false?
-
-testName: getDataElementCount_inValidDataObjectNumber
-input dataObject: integer (546)
-input pageName: string (valid string?)
-input elementNamePattern: string (valid string?)
-output: false?
-
-testName: getDataElementCount_inValidDataObjectBoolean
-input dataObject: boolean (false)
-input pageName: string (valid string?)
-input elementNamePattern: string (valid string?)
-output: false?
-
-testName: getDataElementCount_inValidDataObjectUndefined
-input dataObject: undefined
-input pageName: string (valid string?)
-input elementNamePattern: string (valid string?)
-output: false?
-
-testName: getDataElementCount_inValidDataObjectNaN
-input dataObject: NaN
-input pageName: string (valid string?)
-input elementNamePattern: string (valid string?)
-output: false?
-
-testName: getDataElementCount_inValidPageNameNumber
-input dataObject: object (the data map with all data.)
-input pageName: integer (546)
-input elementNamePattern: string (valid string?)
-output: false?
-
-testName: getDataElementCount_inValidPageNameBoolean
-input dataObject: object (the data map with all data.)
-input pageName: boolean (false)
-input elementNamePattern: string (valid string?)
-output: false?
-
-testName: getDataElementCount_inValidPageNameUndefined
-input dataObject: object (the data map with all data.)
-input pageName: undefined
-input elementNamePattern: string (valid string?)
-output: false?
-
-testName: getDataElementCount_inValidPageNameNaN
-input dataObject: object (the data map with all data.)
-input pageName: NaN
-input elementNamePattern: string (valid string?)
-output: false?
-
-testName: getDataElementCount_inValidElementNamePatternNumber
-input dataObject: object (the data map with all data.)
-input pageName: string (valid string?)
-input elementNamePattern: integer (546)
-output: false?
-
-testName: getDataElementCount_inValidElementNamePatternBoolean
-input dataObject: object (the data map with all data.)
-input pageName: string (valid string?)
-input elementNamePattern: boolean (false)
-output: false?
-
-testName: getDataElementCount_inValidElementNamePatternUndefined
-input dataObject: object (the data map with all data.)
-input pageName: string (valid string?)
-input elementNamePattern: undefined
-output: false?
-
-testName: getDataElementCount_inValidElementNamePatternNaN
-input dataObject: object (the data map with all data.)
-input pageName: string (valid string?)
-input elementNamePattern: NaN
-output: false?
-
-testName: getDataElementCount_inValidAllUndefined
-input dataObject: undefined
-input pageName: undefined
-input elementNamePattern: undefined
-output: false?
-
-testName: getDataElementCount_inValidAllNaN
-input dataObject: NaN
-input pageName: NaN
-input elementNamePattern: NaN
-output: false?

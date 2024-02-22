@@ -308,7 +308,7 @@ async function countMatchingCommandAlias(commandAliasData, commandAliasName) {
             console.log(errorMessage);
             // Its an error, but not a duplicate error, however, we need to report it some how.
             commandAliasCount = commandAliasCount + 1; // We've console logged it as best we can, we need to raise the flag anyway.
-          }          
+          }
         }
       } else if (commandAliasEntity.toUpperCase() === commandAliasName.toUpperCase()) {
         // Found a matching entry! 2
@@ -827,7 +827,7 @@ async function removePluginCommandAliases(pluginName) {
       console.log(msg.cerrorMessage + err.message);
     }
   } else {
-    // ERROR: Unable to locate the plugins command aliases data. Plugin: 
+    // ERROR: Unable to locate the plugins command aliases data. Plugin:
     console.log(msg.cremovePluginCommandAliasesMessage02 + pluginName);
   }
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);

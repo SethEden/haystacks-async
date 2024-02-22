@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?><CommandWorkflows>
-  <businessRules>
-    <mathOperations>
-      <Workflow Name="isOdd" Value="cmdgen bizRul,isOdd,8 4"/>
-      <Workflow Name="isEven" Value="cmdgen bizRul,isEven,8 4"/>
-      <Workflow Name="mathOperations" Value="cmdSeq wrkflo,isOdd wrkflo,isEven"/>
-    </mathOperations>
-  </businessRules>
-</CommandWorkflows>
