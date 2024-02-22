@@ -182,7 +182,7 @@ async function setupAllXmlData(dataPathConfigurationName, contextName) {
  * @param {string} contextName The context name that should describe the kind of data that is being loaded and parsed.
  * @return {object} A JSON object that contains all of the data that was loaded from all the XML files and merged together.
  * @author Seth Hollingsead
- * @date 2022/10/21 
+ * @date 2022/10/21
  */
 async function setupAllXmlPluginData(dataPathConfigurationName, contextName) {
   let functionName = setupAllXmlPluginData.name;
@@ -372,7 +372,7 @@ async function getData(dataName) {
  * @param {string} dataName The unique name of the data that should be cleared.
  * @return {boolean} True or False to indicate if the data was cleared successfully or not.
  * @author Seth Hollingsead
- * @date 2023/02/27 
+ * @date 2023/02/27
  */
 async function clearData(dataName) {
   let functionName = clearData.name;

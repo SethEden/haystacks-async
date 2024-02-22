@@ -131,7 +131,7 @@ async function validateConstants(inputData, inputMetaData) {
         } else if (userEnteredValidationType === '') {
           // Just ignore it!
         } else {
-          // WARNING: The specified validation type is not available, please enter a valid type and try again. Type not recognized: 
+          // WARNING: The specified validation type is not available, please enter a valid type and try again. Type not recognized:
           // Constants validation types are:
           console.log(msg.cWarningUserEnteredConstantsValidationDataTypeMessage01 + userEnteredValidationType);
           console.log(msg.cWarningUserEnteredConstantsValidationDataTypeMessage02 + validConstantsValidationUserTypes.join(bas.cComa + bas.cSpace));
@@ -158,7 +158,7 @@ async function validateConstants(inputData, inputMetaData) {
 
     // validationTypesConfirmedList is:
     await loggers.consoleLog(namespacePrefix + functionName, msg.cvalidationTypesConfirmedListIs + validationTypesConfirmedList);
-    
+
     if (validUserEntry) {
       if (validationTypesConfirmedList.includes(wrd.cFramework)) {
         validationArray = validationFrameworkArray;
@@ -194,7 +194,7 @@ async function validateConstants(inputData, inputMetaData) {
 
       // validationArray is:
       await loggers.consoleLog(namespacePrefix + functionName, msg.cvalidationArrayIs + JSON.stringify(validationArray));
-  
+
       // Phase1 Constants Validation
       // BEGIN Phase 1 Constants Validation
       await loggers.consoleLog(namespacePrefix + functionName, msg.cBeginPhase1ConstantsValidation);
@@ -208,7 +208,7 @@ async function validateConstants(inputData, inputMetaData) {
       await loggers.consoleLog(namespacePrefix + functionName, msg.cEndPhase1ConstantsValidation);
       // phase1Results is:
       await loggers.consoleLog(namespacePrefix + functionName, msg.cphase1ResultsIs + JSON.stringify(phase1Results));
-  
+
       // Phase 2 Constants Validation
       // BEGIN Phase 2 Constants Validation
       await loggers.consoleLog(namespacePrefix + functionName, msg.cBeginPhase2ConstantsValidation);
@@ -221,7 +221,7 @@ async function validateConstants(inputData, inputMetaData) {
       await loggers.consoleLog(namespacePrefix + functionName, msg.cEndPhase2ConstantsValidation);
       // phase2Results is:
       await loggers.consoleLog(namespacePrefix + functionName, msg.cphase2ResultsIs + JSON.stringify(phase2Results));
-  
+
       for (let key3 in phase1Results) {
         let constantsPhase1ValidationNamespaceParentObject = await ruleBroker.processRules([key3, ''], [biz.cgetConstantsValidationNamespaceParentObject]);
         if (key3.includes(bas.cColon) && key3.toUpperCase().includes(wrd.cPLUGIN)) {
@@ -236,12 +236,12 @@ async function validateConstants(inputData, inputMetaData) {
         }
         processingPluginResults = false;
         pluginNamespace = '';
-        
+
         if (phase1Results[key3] === false) {
           phase1FinalResult = false;
         }
       } // End-for (let key3 in phase1ResultsArray)
-  
+
       for (let key4 in phase2Results) {
         let constantsPhase2ValidationNamespaceParentObject = await ruleBroker.processRules([key4, ''], [biz.cgetConstantsValidationNamespaceParentObject]);
         if (key4.includes(bas.cColon) && key4.toUpperCase().includes(wrd.cPLUGIN)) {
@@ -250,18 +250,18 @@ async function validateConstants(inputData, inputMetaData) {
           processingPluginResults = true;
         }
         if (processingPluginResults === false) {
-          await loggers.constantsValidationSummaryLog(constantsPhase2ValidationNamespaceParentObject[sys.cConstantsPhase2ValidationMessages][key4], phase2Results[key4]); 
+          await loggers.constantsValidationSummaryLog(constantsPhase2ValidationNamespaceParentObject[sys.cConstantsPhase2ValidationMessages][key4], phase2Results[key4]);
         } else if (processingPluginResults === true) {
-          await loggers.constantsValidationSummaryLog(constantsPhase2ValidationNamespaceParentObject[sys.cConstantsPhase2ValidationMessages][pluginNamespace], phase2Results[key4]); 
+          await loggers.constantsValidationSummaryLog(constantsPhase2ValidationNamespaceParentObject[sys.cConstantsPhase2ValidationMessages][pluginNamespace], phase2Results[key4]);
         }
         processingPluginResults = false
         pluginNamespace = '';
-           
+
         if (phase2Results[key4] === false) {
           phase2FinalResult = false;
         }
       } // End-for (let key4 in phase2Results)
-  
+
       if (phase1FinalResult === true && phase2FinalResult === true) {
         await configurator.setConfigurationSetting(wrd.csystem, cfg.cpassAllConstantsValidation, true);
         returnData[1] = true;
@@ -404,7 +404,7 @@ async function validateCommandAliases(inputData, inputMetaData) {
     }
     if (validationTypesConfirmedList.includes(wrd.cApplication)) {
       let applicationCommandAliases = await commandBroker.getAllCommandAliasData(D[sys.cCommandsAliases][wrd.cApplication]);
-      // applicationCommandAliases is: 
+      // applicationCommandAliases is:
       await loggers.consoleLog(namespacePrefix + functionName, msg.capplicationCommandAliasesIs + JSON.stringify(applicationCommandAliases));
       if (applicationCommandAliases) {
         if (Object.keys(allCommandAliasesToValidate).length != 0) {
@@ -459,7 +459,7 @@ async function validateCommandAliases(inputData, inputMetaData) {
         await loggers.consoleLog(namespacePrefix + functionName, msg.ccurrentAliasIs + currentAlias);
         duplicateAliasCount = await commandBroker.countMatchingCommandAlias(D[sys.cCommandsAliases], currentAlias);
         if (duplicateAliasCount > 1) {
-  
+
           // duplicateAliasCount is:
           let duplicateAliasCountMessage = msg.cduplicateAliasCountIs + duplicateAliasCount;
           duplicateAliasCountMessage = await colorizer.colorizeMessageSimple(duplicateAliasCountMessage, blackColorArray, true);
@@ -470,7 +470,7 @@ async function validateCommandAliases(inputData, inputMetaData) {
           duplicateAliasCommandMessage = await colorizer.colorizeMessageSimple(duplicateAliasCommandMessage, blackColorArray, true);
           duplicateAliasCommandMessage = await colorizer.colorizeMessageSimple(duplicateAliasCommandMessage, redColorArray, false);
           console.log(duplicateAliasCommandMessage);
-  
+
           passedAllCommandAliasesDuplicateCheck = false;
           returnData[1] = false;
           // DO NOT break out of any loops here, the command should scan all command aliases!
@@ -666,7 +666,7 @@ async function validateWorkflows(inputData, inputMetaData) {
     passedAllWorkflowDuplicateCheck = false;
     returnData[1] = false;
   } // End-if (validUserEntry === true)
-  
+
   if (passedAllWorkflowDuplicateCheck === true) {
     // PASSED: All duplicate workflow validation tests!
     console.log(msg.cvalidateWorkflowsMessage01);

@@ -82,7 +82,7 @@ async function storePluginRegistryInDataStructure(pluginRegistryData) {
     D[cfg.cpluginRegistry] = pluginRegistryData;
     returnData = true;
   } catch (err) {
-    // ERROR: There was a problem saving the registry data to the plugin registry in the d-data structure: 
+    // ERROR: There was a problem saving the registry data to the plugin registry in the d-data structure:
     console.log(msg.cstorePluginRegistryInDataStoreMessage01 + err);
   }
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
@@ -253,7 +253,7 @@ async function countPluginsInRegistryPath() {
  * @description Manually registers a plugin with the plugin registry data hive.
  * Allows for special case where plugins can be registered from a different path, then the path specified by the plugin registry.
  * Caution should be emphasized when loading plugins from a custom path location, this should be used primarily for debugging and triage use cases.
- * @param {string} pluginName The name of the plugin that should be registered. 
+ * @param {string} pluginName The name of the plugin that should be registered.
  * @param {string} pluginPath The path to the plugin, to be added to the plugin registry.
  * This should be the path to the plugin/package.json file, but not including the package.json as part of the path URI.
  * @return {boolean} True or False to indicate if the plugin was added to the plugin registry successfully or not.
@@ -289,7 +289,7 @@ async function registerPlugin(pluginName, pluginPath) {
       } else {
         // ERROR: The specified plugin is already registered. Plugin name:
         console.log(msg.cErrorRegisterPluginMessage02 + pluginName);
-      }    
+      }
     } else {
       if (!pluginName) {
         // ERROR: Plugin Name is an invalid value:
@@ -379,7 +379,7 @@ async function unregisterPlugins(pluginListArray) {
       if (pluginName) {
         noErrorFound = await unregisterPlugin(pluginName);
       } else {
-        // ERROR: The plugin name was not a valid name: 
+        // ERROR: The plugin name was not a valid name:
         console.log(msg.cErrorUnregisterPluginsMessage01 + pluginName);
       }
       if (noErrorFound === false) {
@@ -534,11 +534,11 @@ async function savePluginRegistry() {
     await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginRegistryPathIs + pluginRegistryPath);
     returnData = ruleBroker.processRules([pluginRegistryPath, pluginRegistry], [biz.cwriteJsonData]);
   } catch (err) {
-    // ERROR: Failure to write out the plugin registry to the plugin path specified by the application: 
+    // ERROR: Failure to write out the plugin registry to the plugin path specified by the application:
     // error message:
     console.log(msg.cErrorSavePluginRegistryMessage01);
     console.log(msg.cerrorMessage + err);
-  }  
+  }
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
@@ -553,7 +553,7 @@ async function savePluginRegistry() {
  * and the path should be acquired from the plugin registry path.
  * @return {object} The JSON data object loaded from the plugin package.json file, specified by the input parameter.
  * @author Seth Hollingsead
- * @date 2022/09/02 
+ * @date 2022/09/02
  */
 async function loadPluginMetaData(pluginPath) {
   let functionName = loadPluginMetaData.name;
@@ -649,7 +649,7 @@ async function extractAndProcessPluginEntryPointURI(pluginMetaData, pluginPath) 
  * @param {string} pluginExecutionPath The entry point for the plugin that should be loaded.
  * @return {object} The data that was returned and loaded from the plugin.
  * @author Seth Hollingsead
- * @date 2022/09/02 
+ * @date 2022/09/02
  */
 async function loadPlugin(pluginExecutionPath) {
   let functionName = loadPlugin.name;
@@ -681,7 +681,7 @@ async function loadPlugin(pluginExecutionPath) {
   } catch (err2) {
     await loggers.consoleLog(namespacePrefix + functionName, msg.cERROR_Colon + err2.message);
   }
-  
+
   // dCommandClone stack before loading is:
   // console.log(namespacePrefix + functionName + bas.cSpace + msg.cdCommandCloneStackBeforeLoadingIs, dCommandClone);
   // dBusinessRulesClone stack before loading is:
@@ -697,7 +697,7 @@ async function loadPlugin(pluginExecutionPath) {
           return result;
         });
       };
-  
+
       const myDynamicImport = async (path) => {
         return await import(path);
       };
@@ -707,12 +707,12 @@ async function loadPlugin(pluginExecutionPath) {
         loggers.consoleLog(namespacePrefix + functionName, msg.cdataLoadedIs + JSON.stringify(returnData));
       }).catch (err => reject(err));
     });
-  
+
     await Promise.all([pluginResponseData]).then((value) => {
       loggers.consoleLog(namespacePrefix + functionName, msg.cvalueIs + JSON.stringify(value));
     });
   } catch (err) {
-    // ERROR: There was an error attempting to load the specified plugin: 
+    // ERROR: There was an error attempting to load the specified plugin:
     console.log(msg.cloadPluginErrorMessage01 + pluginExecutionPath);
     console.log(msg.cerrorMessage + err.message);
     returnData = false;

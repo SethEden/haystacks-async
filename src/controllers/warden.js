@@ -103,7 +103,7 @@ async function initFrameworkSchema(configData) {
   let frameworkMetaData = {};
   let pluginMetaData = {};
   applicationMetaDataPathAndFilename = configData[cfg.cclientMetaDataPath];
-  frameworkMetaDataPathAndFilename = configData[cfg.cframeworkFullMetaDataPath];  
+  frameworkMetaDataPathAndFilename = configData[cfg.cframeworkFullMetaDataPath];
   await loggers.consoleLog(namespacePrefix + functionName, msg.capplicationMetaDataPathAndFilenameIs + applicationMetaDataPathAndFilename);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cframeworkMetaDataPathAndFilenameIs + frameworkMetaDataPathAndFilename);
   applicationMetaData = await ruleBroker.processRules([applicationMetaDataPathAndFilename, ''], getJsonRule);
@@ -769,7 +769,7 @@ async function unloadPlugin(pluginName) {
   let returnData = false;
   returnData = await chiefPlugin.unloadPlugin(pluginName);
   if (returnData === false) {
-    // ERROR: There was an error unloading the plugin: 
+    // ERROR: There was an error unloading the plugin:
     console.log(msg.cErrorUnloadPluginMessage01 + pluginName);
   }
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
@@ -798,7 +798,7 @@ async function unloadPlugins(pluginNames) {
       let pluginName = pluginNames[pluginNameKey];
       if (pluginName) {
         await enqueueCommand(cmd.cunloadPlugin + bas.cSpace + pluginName);
-        
+
       } else {
         // ERROR: No plugin name specified:
         console.log(msg.cErrorUnloadPluginsMessage01 + pluginName);
@@ -965,7 +965,7 @@ async function getData(dataName) {
  * @param {string} dataName The unique name of the data that should be cleared.
  * @return {boolean} True or False to indicate if the data was cleared successfully or not.
  * @author Seth Hollingsead
- * @date 2023/02/27 
+ * @date 2023/02/27
  */
 async function clearData(dataName) {
   let functionName = clearData.name;
@@ -1137,6 +1137,27 @@ async function consoleLog(classPath, message) {
   // console.log(`END ${namespacePrefix}${functionName} function`);
 }
 
+/**
+ * @function consoleTableLog
+ * @description This is just a wrapper for the loggers.consoleTableLog function,
+ * It prints out a table with the data provided in the input tableDataArray.
+ * @param {string} classPath The class path for the caller of this function file.function or class.method.
+ * @param {array<object>} tableData An array of objects that should be printed to the console as if it was data.
+ * @param {array<string>} columnNames An array of column names that should be used when outputting the table.
+ * @return {void}
+ * @author Seth Hollingsead
+ * @date 2023/11/07
+ */
+async function consoleTableLog(classPath, tableData, columnNames) {
+  // let functionName = consoleTableLog.name;
+  // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
+  // console.log(`classPath is: ${classPath}`);
+  // console.log(`tableData is: ${JSON.stringify(tableData)}`);
+  // console.log(`columnNames is: ${JSON.stringify(columnNames)}`);
+  await loggers.consoleTableLog(classPath, tableData, columnNames);
+  // console.log(`END ${namespacePrefix}${functionName} function`);
+}
+
 export default {
   processRootPath,
   initFrameworkSchema,
@@ -1174,5 +1195,6 @@ export default {
   processCommandQueue,
   setConfigurationSetting,
   getConfigurationSetting,
-  consoleLog
+  consoleLog,
+  consoleTableLog
 };

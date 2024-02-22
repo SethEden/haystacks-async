@@ -58,7 +58,7 @@ async function validateConstantsDataValidation(inputData, inputMetaData) {
     const fileContentsLineArray = fileContents.split(/\r?\n/);
 
     let colorizeLogsEnabled = await configurator.getConfigurationSetting(wrd.csystem, cfg.cenableColorizedConsoleLogs);
-    // BEGIN processing all lines from file: 
+    // BEGIN processing all lines from file:
     await loggers.consoleLog(namespacePrefix + functionName, msg.cBeginProcessingAllLinesFromFile + inputData);
     for (const lineKey in fileContentsLineArray) {
       // BEGIN processing a line
@@ -101,7 +101,7 @@ async function validateConstantsDataValidation(inputData, inputMetaData) {
               if (inputMetaData.includes(bas.cColon) && inputMetaData.toUpperCase().includes(wrd.cPLUGIN)) {
                 let pluginConstantNamespaceArray = inputMetaData.split(bas.cColon);
                 pluginName = pluginConstantNamespaceArray[0] + bas.cColon;
-              }              
+              }
               console.log(pluginName + qualifiedConstantsFilename + bas.cColon + bas.cSpace + failMessage);
               let suggestedLineOfCode = await determineSuggestedConstantsValidationLineOfCode(lineArray[2], qualifiedConstantsPrefix);
               if (suggestedLineOfCode !== '') {
@@ -123,7 +123,7 @@ async function validateConstantsDataValidation(inputData, inputMetaData) {
       // END processing a line
       await loggers.consoleLog(namespacePrefix + functionName, msg.cEndProcessingLine);
     } // End-for (const line in fileContentsLineArray)
-    // END processing all lines from file: 
+    // END processing all lines from file:
     await loggers.consoleLog(namespacePrefix + functionName, msg.cEndProcessingAllLinesFromFile + inputData);
   } // End-if (inputData && inputMetaData)
   if (foundAFailure === false && processed === true) {
@@ -290,7 +290,7 @@ async function getConstantsValidationNamespaceParentObject(inputData, inputMetaD
         let pluginName = pluginNamespaceArray[0];
         let pluginConstantNamespace = pluginNamespaceArray[1];
         for (const pluginNamespace in D[sys.cConstantsValidationData][wrd.cPlugins]) {
-          if (pluginNamespace === pluginName && 
+          if (pluginNamespace === pluginName &&
           await doesConstantNamespaceExist(pluginConstantNamespace, D[sys.cConstantsValidationData][wrd.cPlugins][pluginNamespace]) === true) {
             returnData = D[sys.cConstantsValidationData][wrd.cPlugins][pluginName];
           }

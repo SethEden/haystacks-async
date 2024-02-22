@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?><CommandWorkflows>
-  <converters>
-    <Workflow Name="hex2rgbConversion" Value="cmdgen convertColors 1"/>
-    <Workflow Name="converters" Value="cmdSeq wrkflo,hex2rgbConversion"/>
-  </converters>
-</CommandWorkflows>
