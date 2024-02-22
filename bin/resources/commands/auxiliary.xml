@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?><CommandsAliases>
-  <auxiliary>
-    <Command Name="convertColors" Aliases="ConvertC,ConvertClr,ConvertColr,ConvertColrs,ConvertColors,ConvrtC,ConvrtClr,ConvrtColr,ConvrtColrs,ConvrtColors,ConvrC,ConvrClr,ConvrColr,ConvrColrs,ConvrColors,ConvC,ConvClr,ConvColr,ConvColrs,ConvColors,ConC,ConClr,ConColr,ConColrs,ConColors,CC,CClr,CColr,CColrs" Description="Converts all the colors in the color library from hex values to RGB values."/>
-  </auxiliary>
-</CommandsAliases>
