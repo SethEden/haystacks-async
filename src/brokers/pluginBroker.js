@@ -464,7 +464,7 @@ async function unregisterPlugins(pluginListArray) {
 
 /**
  * @function syncPluginRegistryWithPluginRegistryPath
- * @description performs a synchronization procedure on the plugin registry to ensure that the contents and
+ * @description Performs a synchronization procedure on the plugin registry to ensure that the contents and
  * plugins registered in the plugin registry match with the list of plugin folders located at the path specified in
  * the plugin registry as the default plugin path. The updates are made to the plugin registry data hive.
  * @return {boolean} True or False to indicate if the synchronization was performed successfully.

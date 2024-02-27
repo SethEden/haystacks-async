@@ -2132,3 +2132,120 @@ describe(tst_con.csyncPluginRegistryWithPath, () => {
         expect(returnData).toBeFalsy();
     });
 })
+
+/**
+ * @function clearAllPluginRegistry
+ * @description Tests the positive and negative test cases of the clearAllPluginRegistry
+ * @author Vlad Sorokin
+ * @date 2023/02/26
+ */
+describe(tst_con.cclearAllPluginRegistry, () => {
+    /**
+     * @function clearAllPluginRegistry_validData
+     * @description Tests the main function clearAllPluginRegistry with a valid input.
+     * @author Vlad Sorokin
+     * @date 2023/02/26
+     */
+    test(tst_con.cclearAllPluginRegistry_validData, async () => {
+        // Arrange
+        let pluginsRegistred = tst_man.listAllPluginsInRegistry;
+        D[cfg.cpluginRegistry] = pluginsRegistred;
+
+        // Act
+        let returnData = await main.clearAllPluginRegistry();
+
+        // Assert
+        expect(returnData).toBeTruthy();
+    });
+
+    /**
+     * @function clearAllPluginRegistry_inValidString
+     * @description Tests the main function clearAllPluginRegistry with a invalid data string.
+     * @author Vlad Sorokin
+     * @date 2023/02/26
+     */
+    test(tst_con.cclearAllPluginRegistry_inValidString, async () => {
+        // Arrange
+        let pluginsRegistred = tst_man.ctestString1;
+        D[cfg.cpluginRegistry] = pluginsRegistred;
+
+        // Act
+        let returnData = await main.clearAllPluginRegistry();
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function clearAllPluginRegistry_inValidInteger
+     * @description Tests the main function clearAllPluginRegistry with a invalid data integer.
+     * @author Vlad Sorokin
+     * @date 2023/02/26
+     */
+    test(tst_con.cclearAllPluginRegistry_inValidInteger, async () => {
+        // Arrange
+        let pluginsRegistred = 123;
+        D[cfg.cpluginRegistry] = pluginsRegistred;
+
+        // Act
+        let returnData = await main.clearAllPluginRegistry();
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function clearAllPluginRegistry_inValidBoolean
+     * @description Tests the main function clearAllPluginRegistry with a invalid data boolean.
+     * @author Vlad Sorokin
+     * @date 2023/02/26
+     */
+    test(tst_con.cclearAllPluginRegistry_inValidBoolean, async () => {
+        // Arrange
+        let pluginsRegistred = true;
+        D[cfg.cpluginRegistry] = pluginsRegistred;
+
+        // Act
+        let returnData = await main.clearAllPluginRegistry();
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function clearAllPluginRegistry_inValidUndefined
+     * @description Tests the main function clearAllPluginRegistry with a invalid data undefined.
+     * @author Vlad Sorokin
+     * @date 2023/02/26
+     */
+    test(tst_con.cclearAllPluginRegistry_inValidUndefined, async () => {
+        // Arrange
+        let pluginsRegistred = undefined;
+        D[cfg.cpluginRegistry] = pluginsRegistred;
+
+        // Act
+        let returnData = await main.clearAllPluginRegistry();
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function clearAllPluginRegistry_inValidNaN
+     * @description Tests the main function clearAllPluginRegistry with a invalid data NaN.
+     * @author Vlad Sorokin
+     * @date 2023/02/26
+     */
+    test(tst_con.cclearAllPluginRegistry_inValidNaN, async () => {
+        // Arrange
+        let pluginsRegistred = NaN;
+        D[cfg.cpluginRegistry] = pluginsRegistred;
+
+        // Act
+        let returnData = await main.clearAllPluginRegistry();
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+})
+

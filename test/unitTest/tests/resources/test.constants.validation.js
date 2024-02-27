@@ -225,14 +225,23 @@ export const testConstantsValidation = [
     {Name: 'cunregisterPlugins_inValidPluginsListArrayUndefined', Actual: tst_con.cunregisterPlugins_inValidPluginsListArrayUndefined, Expected: 'unregisterPlugins_inValidPluginsListArrayUndefined'},
     {Name: 'cunregisterPlugins_inValidPluginsListArrayNaN', Actual: tst_con.cunregisterPlugins_inValidPluginsListArrayNaN, Expected: 'unregisterPlugins_inValidPluginsListArrayNaN'},
 
-    //syncPluginRegistryWithPath
+    // syncPluginRegistryWithPath
     {Name: 'csyncPluginRegistryWithPath', Actual: tst_con.csyncPluginRegistryWithPath, Expected: 'syncPluginRegistryWithPath'},
     {Name: 'csyncPluginRegistryWithPath_validData', Actual: tst_con.csyncPluginRegistryWithPath_validData, Expected: 'syncPluginRegistryWithPath_validData'},
     {Name: 'csyncPluginRegistryWithPath_inValidString', Actual: tst_con.csyncPluginRegistryWithPath_inValidString, Expected: 'syncPluginRegistryWithPath_inValidString'},
     {Name: 'csyncPluginRegistryWithPath_inValidInteger', Actual: tst_con.csyncPluginRegistryWithPath_inValidInteger, Expected: 'syncPluginRegistryWithPath_inValidInteger'},
     {Name: 'csyncPluginRegistryWithPath_inValidBoolean', Actual: tst_con.csyncPluginRegistryWithPath_inValidBoolean, Expected: 'syncPluginRegistryWithPath_inValidBoolean'},
     {Name: 'csyncPluginRegistryWithPath_inValidUndefined', Actual: tst_con.csyncPluginRegistryWithPath_inValidUndefined, Expected: 'syncPluginRegistryWithPath_inValidUndefined'},
-    {Name: 'csyncPluginRegistryWithPath_inValidNaN', Actual: tst_con.csyncPluginRegistryWithPath_inValidNaN, Expected: 'syncPluginRegistryWithPath_inValidNaN'}
+    {Name: 'csyncPluginRegistryWithPath_inValidNaN', Actual: tst_con.csyncPluginRegistryWithPath_inValidNaN, Expected: 'syncPluginRegistryWithPath_inValidNaN'},
+
+    // clearAllPluginRegistry
+    {Name: 'cclearAllPluginRegistry', Actual: tst_con.cclearAllPluginRegistry, Expected: 'clearAllPluginRegistry'},
+    {Name: 'cclearAllPluginRegistry_validData', Actual: tst_con.cclearAllPluginRegistry_validData, Expected: 'clearAllPluginRegistry_validData'},
+    {Name: 'cclearAllPluginRegistry_inValidString', Actual: tst_con.cclearAllPluginRegistry_inValidString, Expected: 'clearAllPluginRegistry_inValidString'},
+    {Name: 'cclearAllPluginRegistry_inValidInteger', Actual: tst_con.cclearAllPluginRegistry_inValidInteger, Expected: 'clearAllPluginRegistry_inValidInteger'},
+    {Name: 'cclearAllPluginRegistry_inValidBoolean', Actual: tst_con.cclearAllPluginRegistry_inValidBoolean, Expected: 'clearAllPluginRegistry_inValidBoolean'},
+    {Name: 'cclearAllPluginRegistry_inValidUndefined', Actual: tst_con.cclearAllPluginRegistry_inValidUndefined, Expected: 'clearAllPluginRegistry_inValidUndefined'},
+    {Name: 'cclearAllPluginRegistry_inValidNaN', Actual: tst_con.cclearAllPluginRegistry_inValidNaN, Expected: 'clearAllPluginRegistry_inValidNaN'}
 
     // Test names
 
