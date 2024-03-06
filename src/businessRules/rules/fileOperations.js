@@ -14,6 +14,8 @@
  * @requires {@link https://nodejs.dev/learn/the-nodejs-fs-module|fs}
  * @requires {@link https://www.npmjs.com/package/papaparse|papaparse}
  * @requires {@link https://www.npmjs.com/package/xml2js|xml2js}
+ * @requires {@link https://nodejs.org/api/child_process.html|child_process}
+ * @requires {@link https://www.nodejs.org/api/process.html|process}
  * @requires {@link https://www.npmjs.com/package/path|path}
  * @author Seth Hollingsead
  * @date 2022/04/28
@@ -30,9 +32,11 @@ import admZip from 'adm-zip';
 import fs from 'fs';
 import papa from 'papaparse';
 import xml2js from 'xml2js';
+import { exec } from 'child_process';
+import process from 'process';
 import path from 'path';
 
-const {bas, biz, cfg, gen, msg, sys, wrd} = hayConst;
+const {bas, biz, cfg, gen, msg, phn, sys, wrd} = hayConst;
 const baseFileName = path.basename(import.meta.url, path.extname(import.meta.url));
 // framework.businessRules.rules.fileOperations.
 const namespacePrefix = wrd.cframework + bas.cDot + sys.cbusinessRules + bas.cDot + wrd.crules + bas.cDot + baseFileName + bas.cDot;
@@ -193,7 +197,7 @@ async function loadAsciiFileFromPath(inputData, inputMetaData) {
   try {
     returnData = await fs.readFileSync(inputData, gen.cUTF8);
   } catch (err) {
-    // ERROR: Failure to read from file: 
+    // ERROR: Failure to read from file:
     console.error(msg.cErrorLoadAsciiFileFromPathMessage01 + inputData);
   }
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
@@ -301,7 +305,7 @@ async function getDirectoryList(inputData, inputMetaData) {
       // ERROR: The specified path does not exist or cannot be found:
       console.log(msg.cErrorGetDirectoryListMessage01 + inputData);
       console.log(msg.cerrorMessage + err.message);
-    }    
+    }
   } // End-if (inputData)
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
@@ -743,6 +747,75 @@ async function copyFolderRecursiveSync(inputData, inputMetaData) {
 }
 
 /**
+ * @function deleteFile
+ * @description Deletes a file at the specified file path and file name.
+ * @param {string} inputData The fully qualified path and file name for the file that should be deleted.
+ * @param {string} inputMetaData The current working directory.
+ * @return {boolean} A True or False to indicate if the delete was successful or not.
+ * @author Karl-Edward F.P. Jean-Mehu
+ * @date 2024/02/02
+ */
+async function deleteFile(inputData, inputMetaData) {
+  let functionName = deleteFile.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
+  let returnData = false;
+
+  if (typeof inputData === wrd.cstring && inputData.length > 0) {
+    // Normalize file paths
+    inputData = path.normalize(inputData);
+
+    // Normalize inputMetaData (cwd)
+    inputMetaData = (typeof inputMetaData === 'undefined') ? path.normalize(bas.cDot + bas.cForwardSlash) : path.normalize(inputMetaData);
+
+    // Obtain silentDeleteConfig config / deletes silently
+    let silentDeleteConfig = configurator.getConfigurationSetting(wrd.csystem, cfg.csilentDeleteFailure);
+    if (!silentDeleteConfig) silentDeleteConfig = true;
+
+    // The delete command to be used according to the current platform.
+    // Enforces a forced delete based on the silentDeleteConfig setting.
+    let deleteCommand = '';
+    let argumentString = '';
+    switch (process.platform) {
+      case gen.cwin32:
+        argumentString = bas.cSpace + bas.cForwardSlash + bas.cf;
+        deleteCommand = phn.cdel + (silentDeleteConfig ? argumentString : '');
+        break;
+
+      case gen.cdarwin: case gen.clinux:
+        argumentString = bas.cSpace + bas.cDash + bas.crf;
+        deleteCommand = bas.crm + (silentDeleteConfig ? argumentString : '');
+        break;
+    }
+
+    await new Promise((resolve) => {
+      // [delete command] "filepath"
+     const execParam = deleteCommand + bas.cSpace + bas.cDoubleQuote + inputData + bas.cDoubleQuote
+      exec(execParam, { cwd: inputMetaData }, (error, _, stderr) => {
+        if (error) {
+          // ERROR: No file specified, cannot delete nothing.
+          // console.log(msg.cErrorDeleteFileMessage01);
+          // hidden temporarily
+        } else if (stderr) {
+          // ERROR: There was an error attempting to delete the file:
+          console.log(msg.cErrorDeleteFileMessage02 + inputData);
+        } else {
+          // Successful deletion
+          returnData = true;
+        }
+      });
+
+      resolve();
+    });
+  }
+
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
+/**
  * @function appendMessageToFile
  * @description Opens a file and appends a message to the file, then closes the file.
  * @param {string} inputData The fully qualified path and file name for the file that should be opened, appended and saved.
@@ -795,5 +868,6 @@ export default {
   cleanRootPath,
   copyFileSync,
   copyFolderRecursiveSync,
+  deleteFile,
   appendMessageToFile
 }

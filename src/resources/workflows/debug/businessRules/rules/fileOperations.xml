@@ -31,6 +31,8 @@
           <Workflow Name="copyFileSyncDisable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.fileOperations.copyFileSync false"/>
           <Workflow Name="copyFolderRecursiveSyncEnable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.fileOperations.copyFolderRecursiveSync true"/>
           <Workflow Name="copyFolderRecursiveSyncDisable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.fileOperations.copyFolderRecursiveSync false"/>
+          <Workflow Name="deleteFileEnable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.fileOperations.deleteFile true"/>
+          <Workflow Name="deleteFileDisable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.fileOperations.deleteFile false"/>
         </fileOperations>
       </rules>
     </businessRules>

@@ -218,7 +218,7 @@ async function registerPlugin(inputData, inputMetaData) {
       }
     }
   } else {
-    // ERROR: Failure to register the specified plugin, invalid input: 
+    // ERROR: Failure to register the specified plugin, invalid input:
     console.log(msg.cErrorRegisterPluginCommandMessage01 + JSON.stringify(inputData));
   }
   if (foundValidData === true) {

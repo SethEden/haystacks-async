@@ -9,5 +9,8 @@
         "sourceType": "module"
     },
     "rules": {
+        "no-mixed-spaces-and-tabs": "warn",
+        "spaced-comment": "warn",
+        "no-trailing-spaces": "warn" 
     }
 }

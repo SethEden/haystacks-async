@@ -457,7 +457,7 @@ async function processXmlData(inputData, contextName) {
     // eslint-disable-next-line no-unused-vars
     for (const _element1 of Object.keys(inputData[sys.cCommandsAliases])) {
       inputData[sys.cCommandsAliases] = await processXmlLeafNode(inputData[sys.cCommandsAliases], wrd.cCommand);
-    } //End-for (const _element1 of Object.keys(inputData[sys.cCommandsAliases]))
+    } // End-for (const _element1 of Object.keys(inputData[sys.cCommandsAliases]))
     parsedDataFile = inputData[sys.cCommandsAliases];
     // parsedDataFile[sys.cCommandsAliases][wrd.cCommands] = {};
     // for (let i = 0; i < inputData[sys.cCommandsAliases][wrd.cCommand].length; i++) {
@@ -1047,7 +1047,7 @@ async function removePluginConfigurationData(pluginName) {
       delete allPluginsDebugSettings[pluginName];
       returnData = true;
     } catch (err) {
-      // ERROR: Unable to remove the plugin configuration data for the specified plugin: 
+      // ERROR: Unable to remove the plugin configuration data for the specified plugin:
       console.log(msg.cremovePluginConfigurationDataMessage01 + pluginName);
       // ERROR:
       console.log(msg.cerrorMessage + err.message);
