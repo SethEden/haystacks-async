@@ -77,6 +77,10 @@ export const unitTestConfigurationConstantsValidation = [
     {Name: 'cpluginFullMetaDataPathExpectedValue', Actual: tst_cfg.cpluginFullMetaDataPathExpectedValue, Expected: 'C:\\haystacks-async\\resources\\metaData.json'},
     {Name: 'cpluginReleaseResourcesPathExpectedValue', Actual: tst_cfg.cpluginReleaseResourcesPathExpectedValue, Expected: 'bin\\resources\\'},
     {Name: 'cpluginResourcesPathExpectedValue', Actual: tst_cfg.cpluginResourcesPathExpectedValue, Expected: '\\haystacks-async\\resources\\'},
-    {Name: 'cpluginWorkflowsPathExpectedValue', Actual: tst_cfg.cpluginWorkflowsPathExpectedValue, Expected: 'resources//workflows//'}
+    {Name: 'cpluginWorkflowsPathExpectedValue', Actual: tst_cfg.cpluginWorkflowsPathExpectedValue, Expected: 'resources//workflows//'},
+
+    // Unit Testing paths
+    {Name: 'cpathToTheTempFolderForUnitTests', Actual: tst_cfg.cpathToTheTempFolderForUnitTests, Expected: '/test/unitTest/testData/testTemp/'}
+
   ];
   

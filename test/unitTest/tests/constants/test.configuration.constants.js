@@ -76,3 +76,6 @@ export const cpluginReleaseResourcesPathExpectedValue = wrd.cbin + bas.cBackSlas
 export const cpluginResourcesPathExpectedValue = bas.cBackSlash + wrd.cresources + bas.cBackSlash; // \\haystacks-async\resources\
 export const cpluginWorkflowsPathExpectedValue = bas.cDoubleForwardSlash + wrd.cresources + bas.cDoubleForwardSlash + wrd.cworkflows + bas.cDoubleForwardSlash; // resources//workflows//
 
+
+// Unit Testing paths
+export const cpathToTheTempFolderForUnitTests = bas.cForwardSlash + wrd.ctest + bas.cForwardSlash + wrd.cunit + wrd.cTest + bas.cForwardSlash + wrd.ctest + wrd.cData + bas.cForwardSlash + wrd.ctest + wrd.cTemp + bas.cForwardSlash; // /test/unitTest/testData/testTemp/

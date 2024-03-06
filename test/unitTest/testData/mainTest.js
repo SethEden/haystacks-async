@@ -107,6 +107,8 @@ export const listLoadedPlugins = [[tst_sys.cplugin_one, true], [tst_sys.cplugin_
 export const expectedListLoadedPlugins = [tst_sys.cplugin_one, tst_sys.cplugin_three, tst_sys.cplugin_two];
 export const listAllPluginsInRegistryBusinessRule = {[biz.cgetDirectoryList]: (inputData, inputMetaData) => fileOperations.getDirectoryList(inputData, inputMetaData)};
 export const pluginNameToUse = tst_sys.cplugin_one;
+export const pathForUnitTestWritePluginRegistryToDiskValid = rootPathAsync + tst_cfg.cpathToTheTempFolderForUnitTests;
+export const tempPluginRegistryTestFileName = wrd.ctemp + wrd.cPlugin + wrd.cRegistry + wrd.cTest + wrd.cDotjson;
 
 /**
  * @function testHelloWorld

@@ -21,7 +21,11 @@
  */
 
 // Internal imports
+import ruleBroker from '../../../src/brokers/ruleBroker.js';
 import dataArrayParsing from '../../../src/businessRules/rules/arrayParsing/dataArrayParsing.js';
+import fileOperations from '../../../src/businessRules/rules/fileOperations.js';
+import timeComputation from '../../../src/businessRules/rules/timeComputation.js';
+import configurator from '../../../src/executrix/configurator.js';
 import D from '../../../src/structures/data.js';
 import main from '../../../src/main.js'
 // import testAliases from '../testData/resources/commands/testAliases.xml';
@@ -39,7 +43,7 @@ import { basicConstantsValidation } from '@haystacks/constants/src/constantsVali
 import url from 'url';
 import path from 'path';
 
-const {bas, biz, cfg, msg, sys, wrd, num } = hayConst;
+const { bas, biz, cfg, gen, msg, sys, wrd, num } = hayConst;
 let rootPath = '';
 
 /**
@@ -161,14 +165,14 @@ describe(tst_con.cinitFramework, () => {
  * @function accouterFramework
  * @description Tests the positive and negative test cases of the accouterFramework
  * @author Vlad Sorokin
- * @date 2023/01/01
+ * @date 2024/01/01
  */
 describe(tst_con.caccouterFramework, () => {
     /**
      * @function accouterFramework_validData
      * @description Tests the main function accouterFramework with a valid input.
      * @author Vlad Sorokin
-     * @date 2023/01/01
+     * @date 2024/01/01
      */
     test(tst_con.caccouterFramework_validData, async () => {
         // Arrange
@@ -185,7 +189,7 @@ describe(tst_con.caccouterFramework, () => {
      * @function accouterFramework_inValidDataString
      * @description Tests the main function accouterFramework with a invalid data string.
      * @author Vlad Sorokin
-     * @date 2023/01/01
+     * @date 2024/01/01
      */
     test(tst_con.caccouterFramework_inValidDataString, async () => {
         // Arrange
@@ -202,7 +206,7 @@ describe(tst_con.caccouterFramework, () => {
      * @function accouterFramework_inValidDataInteger
      * @description Tests the main function accouterFramework with a invalid data integer.
      * @author Vlad Sorokin
-     * @date 2023/01/01
+     * @date 2024/01/01
      */
     test(tst_con.caccouterFramework_inValidDataInteger, async () => {
         // Arrange
@@ -219,7 +223,7 @@ describe(tst_con.caccouterFramework, () => {
      * @function accouterFramework_inValidDataBoolean
      * @description Tests the main function accouterFramework with a invalid data boolean.
      * @author Vlad Sorokin
-     * @date 2023/01/01
+     * @date 2024/01/01
      */
     test(tst_con.caccouterFramework_inValidDataBoolean, async () => {
         // Arrange
@@ -236,7 +240,7 @@ describe(tst_con.caccouterFramework, () => {
      * @function accouterFramework_inValidDataUndefined
      * @description Tests the main function accouterFramework with a invalid data undefined.
      * @author Vlad Sorokin
-     * @date 2023/01/01
+     * @date 2024/01/01
      */
     test(tst_con.caccouterFramework_inValidDataUndefined, async () => {
         // Arrange
@@ -253,7 +257,7 @@ describe(tst_con.caccouterFramework, () => {
      * @function accouterFramework_inValidDataNaN
      * @description Tests the main function accouterFramework with a invalid data NaN.
      * @author Vlad Sorokin
-     * @date 2023/01/01
+     * @date 2024/01/01
      */
     test(tst_con.caccouterFramework_inValidDataNaN, async () => {
         // Arrange
@@ -271,7 +275,7 @@ describe(tst_con.caccouterFramework, () => {
  * @function getFrameworkData
  * @description Tests the positive and negative test cases of the getFrameworkData
  * @author Vlad Sorokin
- * @date 2023/01/01
+ * @date 2024/01/01
  * @NOTE Consider revisiting the D.getData, function called by main.getFrameworkData.
  * @NOTE Invalid tests are not passing.
  * This is due to unfinished work in data.js. When unit testing gets to data.js this function is supposed to be returned to and finished.
@@ -282,7 +286,7 @@ describe(tst_con.cgetFrameworkData, () => {
      * @function getFrameworkData_validData
      * @description Tests the main function getFrameworkData with a valid input.
      * @author Vlad Sorokin
-     * @date 2023/01/01
+     * @date 2024/01/01
      */
     test(tst_con.cgetFrameworkData_validData, async () => {
         // Arrange
@@ -300,7 +304,7 @@ describe(tst_con.cgetFrameworkData, () => {
     //  * @function getFrameworkData_inValidString
     //  * @description Tests the main function getFrameworkData with a invalid data string.
     //  * @author Vlad Sorokin
-    //  * @date 2023/01/01
+    //  * @date 2024/01/01
     //  */
     // test(tst_con.cgetFrameworkData_inValidString, async () => {
     //     // Arrange
@@ -317,7 +321,7 @@ describe(tst_con.cgetFrameworkData, () => {
     //  * @function getFrameworkData_inValidInteger
     //  * @description Tests the main function getFrameworkData with a invalid data integer.
     //  * @author Vlad Sorokin
-    //  * @date 2023/01/01
+    //  * @date 2024/01/01
     //  */
     // test(tst_con.getFrameworkData_inValidInteger, async () => {
     //     // Arrange
@@ -334,7 +338,7 @@ describe(tst_con.cgetFrameworkData, () => {
     //  * @function getFrameworkData_inValidBoolean
     //  * @description Tests the main function getFrameworkData with a invalid data boolean.
     //  * @author Vlad Sorokin
-    //  * @date 2023/01/01
+    //  * @date 2024/01/01
     //  */
     // test(tst_con.getFrameworkData_inValidBoolean, async () => {
     //     // Arrange
@@ -351,7 +355,7 @@ describe(tst_con.cgetFrameworkData, () => {
     //  * @function getFrameworkData_inValidUndefined
     //  * @description Tests the main function getFrameworkData with a invalid data undefined.
     //  * @author Vlad Sorokin
-    //  * @date 2023/01/01
+    //  * @date 2024/01/01
     //  */
     // test(tst_con.getFrameworkData_inValidUndefined, async () => {
     //     // Arrange
@@ -368,7 +372,7 @@ describe(tst_con.cgetFrameworkData, () => {
     //  * @function getFrameworkData_inValidNaN
     //  * @description Tests the main function getFrameworkData with a invalid data NaN.
     //  * @author Vlad Sorokin
-    //  * @date 2023/01/01
+    //  * @date 2024/01/01
     //  */
     // test(tst_con.getFrameworkData_inValidNaN, async () => {
     //     // Arrange
@@ -386,14 +390,14 @@ describe(tst_con.cgetFrameworkData, () => {
  * @function mergeClientBusinessRules
  * @description Tests the positive and negative test cases of the mergeClientBusinessRules
  * @author Vlad Sorokin
- * @date 2023/01/02
+ * @date 2024/01/02
  */
 describe(tst_con.cmergeClientBusinessRules, () => {
     /**
      * @function mergeClientBusinessRules_validClientBusinessRulesData
      * @description Tests the main function mergeClientBusinessRules with a valid input.
      * @author Vlad Sorokin
-     * @date 2023/01/02
+     * @date 2024/01/02
      */
     test(tst_con.cmergeClientBusinessRules_validData, async () => {
         // Arrange
@@ -413,7 +417,7 @@ describe(tst_con.cmergeClientBusinessRules, () => {
      * @function mergeClientBusinessRules_inValidClientBusinessRulesString
      * @description Tests the main function mergeClientBusinessRules with a invalid data string.
      * @author Vlad Sorokin
-     * @date 2023/01/02
+     * @date 2024/01/02
      */
     test(tst_con.cmergeClientBusinessRules_inValidClientBusinessRulesString, async () => {
         // Arrange
@@ -432,7 +436,7 @@ describe(tst_con.cmergeClientBusinessRules, () => {
      * @function mergeClientBusinessRules_inValidClientBusinessRulesInteger
      * @description Tests the main function mergeClientBusinessRules with a invalid data integer.
      * @author Vlad Sorokin
-     * @date 2023/01/02
+     * @date 2024/01/02
      */
     test(tst_con.cmergeClientBusinessRules_inValidClientBusinessRulesInteger, async () => {
         // Arrange
@@ -451,7 +455,7 @@ describe(tst_con.cmergeClientBusinessRules, () => {
      * @function mergeClientBusinessRules_inValidClientBusinessRulesBoolean
      * @description Tests the main function mergeClientBusinessRules with a invalid data boolean.
      * @author Vlad Sorokin
-     * @date 2023/01/02
+     * @date 2024/01/02
      */
     test(tst_con.cmergeClientBusinessRules_inValidClientBusinessRulesBoolean, async () => {
         // Arrange
@@ -470,7 +474,7 @@ describe(tst_con.cmergeClientBusinessRules, () => {
      * @function mergeClientBusinessRules_inValidClientBusinessRulesUndefined
      * @description Tests the main function mergeClientBusinessRules with a invalid data undefined.
      * @author Vlad Sorokin
-     * @date 2023/01/02
+     * @date 2024/01/02
      */
     test(tst_con.cmergeClientBusinessRules_inValidClientBusinessRulesUndefined, async () => {
         // Arrange
@@ -489,7 +493,7 @@ describe(tst_con.cmergeClientBusinessRules, () => {
      * @function mergeClientBusinessRules_inValidClientBusinessRulesNaN
      * @description Tests the main function mergeClientBusinessRules with a invalid data NaN.
      * @author Vlad Sorokin
-     * @date 2023/01/02
+     * @date 2024/01/02
      */
     test(tst_con.cmergeClientBusinessRules_inValidClientBusinessRulesNaN, async () => {
         // Arrange
@@ -509,14 +513,14 @@ describe(tst_con.cmergeClientBusinessRules, () => {
  * @function mergeClientCommands
  * @description Tests the positive and negative test cases of the mergeClientCommands
  * @author Vlad Sorokin
- * @date 2023/01/02
+ * @date 2024/01/02
  */
 describe(tst_con.cmergeClientCommands, () => {
     /**
      * @function mergeClientCommands_validclientCommandsData
      * @description Tests the main function mergeClientCommands with a valid input.
      * @author Vlad Sorokin
-     * @date 2023/01/02
+     * @date 2024/01/02
      */
     test(tst_con.cmergeClientCommands_validData, async () => {
         // Arrange
@@ -536,7 +540,7 @@ describe(tst_con.cmergeClientCommands, () => {
      * @function mergeClientCommands_inValidclientCommandsString
      * @description Tests the main function mergeClientCommands with a invalid data string.
      * @author Vlad Sorokin
-     * @date 2023/01/02
+     * @date 2024/01/02
      */
     test(tst_con.cmergeClientCommands_inValidClientCommandsString, async () => {
         D[wrd.cCommands] = {};
@@ -554,7 +558,7 @@ describe(tst_con.cmergeClientCommands, () => {
      * @function mergeClientCommands_inValidclientCommandsInteger
      * @description Tests the main function mergeClientCommands with a invalid data integer.
      * @author Vlad Sorokin
-     * @date 2023/01/02
+     * @date 2024/01/02
      */
     test(tst_con.cmergeClientCommands_inValidClientCommandsInteger, async () => {
         D[wrd.cCommands] = {};
@@ -572,7 +576,7 @@ describe(tst_con.cmergeClientCommands, () => {
      * @function mergeClientCommands_inValidclientCommandsBoolean
      * @description Tests the main function mergeClientCommands with a invalid data boolean.
      * @author Vlad Sorokin
-     * @date 2023/01/02
+     * @date 2024/01/02
      */
     test(tst_con.cmergeClientCommands_inValidClientCommandsBoolean, async () => {
         D[wrd.cCommands] = {};
@@ -590,7 +594,7 @@ describe(tst_con.cmergeClientCommands, () => {
      * @function mergeClientCommands_inValidclientCommandsUndefined
      * @description Tests the main function mergeClientCommands with a invalid data undefined.
      * @author Vlad Sorokin
-     * @date 2023/01/02
+     * @date 2024/01/02
      */
     test(tst_con.cmergeClientCommands_inValidClientCommandsUndefined, async () => {
         D[wrd.cCommands] = {};
@@ -608,7 +612,7 @@ describe(tst_con.cmergeClientCommands, () => {
      * @function mergeClientCommands_inValidclientCommandsNaN
      * @description Tests the main function mergeClientCommands with a invalid data NaN.
      * @author Vlad Sorokin
-     * @date 2023/01/02
+     * @date 2024/01/02
      */
     test(tst_con.cmergeClientCommands_inValidClientCommandsNaN, async () => {
         D[wrd.cCommands] = {};
@@ -627,7 +631,7 @@ describe(tst_con.cmergeClientCommands, () => {
  * @function loadCommandAliases
  * @description Tests the positive and negative test cases of the loadCommandAliases
  * @author Vlad Sorokin
- * @date 2023/01/02
+ * @date 2024/01/02
  * @NOTE As of now this test needs jest xml file support, as it will not work unless there is a way for jest to read and use xml files. 
  * Tried to use "jest-environment-jsdom" to solve this issue but couldn't get it to work, though it does seem that solution is use of jsdom.
  */
@@ -636,7 +640,7 @@ describe(tst_con.cmergeClientCommands, () => {
 //      * @function loadCommandAliases_validCommandAliasesPathData
 //      * @description Tests the main function loadCommandAliases with a valid input.
 //      * @author Vlad Sorokin
-//      * @date 2023/01/02
+//      * @date 2024/01/02
 //      */
 //     test(tst_con.cloadCommandAliases_validData, async () => {
 //         // Arrange
@@ -656,7 +660,7 @@ describe(tst_con.cmergeClientCommands, () => {
     //  * @function loadCommandAliases_inValidCommandAliasesPathString
     //  * @description Tests the main function loadCommandAliases with a invalid data string.
     //  * @author Vlad Sorokin
-    //  * @date 2023/01/02
+    //  * @date 2024/01/02
     //  */
     // test(tst_con.cloadCommandAliases_inValidCommandAliasesPathString, async () => {
     //     // Arrange
@@ -673,7 +677,7 @@ describe(tst_con.cmergeClientCommands, () => {
     //  * @function loadCommandAliases_inValidContextNameString
     //  * @description Tests the main function loadCommandAliases with a invalid data string.
     //  * @author Vlad Sorokin
-    //  * @date 2023/01/02
+    //  * @date 2024/01/02
     //  */
     // test(tst_con.cloadCommandAliases_inValidContextNameString, async () => {
     //     // Arrange
@@ -690,7 +694,7 @@ describe(tst_con.cmergeClientCommands, () => {
     //  * @function loadCommandAliases_inValidCommandAliasesPathInteger
     //  * @description Tests the main function loadCommandAliases with a invalid data integer.
     //  * @author Vlad Sorokin
-    //  * @date 2023/01/02
+    //  * @date 2024/01/02
     //  */
     // test(tst_con.cloadCommandAliases_inValidCommandAliasesPathInteger, async () => {
     //     // Arrange
@@ -707,7 +711,7 @@ describe(tst_con.cmergeClientCommands, () => {
     //  * @function loadCommandAliases_inValidCommandAliasesPathBoolean
     //  * @description Tests the main function loadCommandAliases with a invalid data boolean.
     //  * @author Vlad Sorokin
-    //  * @date 2023/01/02
+    //  * @date 2024/01/02
     //  */
     // test(tst_con.cloadCommandAliases_inValidCommandAliasesPathBoolean, async () => {
     //     // Arrange
@@ -724,7 +728,7 @@ describe(tst_con.cmergeClientCommands, () => {
     //  * @function loadCommandAliases_inValidContextNameInteger
     //  * @description Tests the main function loadCommandAliases with a invalid data integer.
     //  * @author Vlad Sorokin
-    //  * @date 2023/01/02
+    //  * @date 2024/01/02
     //  */
     // test(tst_con.cloadCommandAliases_inValidContextNameInteger, async () => {
     //     // Arrange
@@ -741,7 +745,7 @@ describe(tst_con.cmergeClientCommands, () => {
     //  * @function loadCommandAliases_inValidContextNameBoolean
     //  * @description Tests the main function loadCommandAliases with a invalid data boolean.
     //  * @author Vlad Sorokin
-    //  * @date 2023/01/02
+    //  * @date 2024/01/02
     //  */
     // test(tst_con.cloadCommandAliases_inValidContextNameBoolean, async () => {
     //     // Arrange
@@ -758,7 +762,7 @@ describe(tst_con.cmergeClientCommands, () => {
     //  * @function loadCommandAliases_inValidCommandAliasesPathUndefined
     //  * @description Tests the main function loadCommandAliases with a invalid data undefined.
     //  * @author Vlad Sorokin
-    //  * @date 2023/01/02
+    //  * @date 2024/01/02
     //  */
     // test(tst_con.cloadCommandAliases_inValidCommandAliasesPathUndefined, async () => {
     //     // Arrange
@@ -775,7 +779,7 @@ describe(tst_con.cmergeClientCommands, () => {
     //  * @function loadCommandAliases_inValidCommandAliasesPathNaN
     //  * @description Tests the main function loadCommandAliases with a invalid data NaN.
     //  * @author Vlad Sorokin
-    //  * @date 2023/01/02
+    //  * @date 2024/01/02
     //  */
     // test(tst_con.cloadCommandAliases_inValidCommandAliasesPathNaN, async () => {
     //     // Arrange
@@ -792,7 +796,7 @@ describe(tst_con.cmergeClientCommands, () => {
     //  * @function loadCommandAliases_inValidContextNameUndefined
     //  * @description Tests the main function loadCommandAliases with a invalid data undefined.
     //  * @author Vlad Sorokin
-    //  * @date 2023/01/02
+    //  * @date 2024/01/02
     //  */
     // test(tst_con.cloadCommandAliases_inValidContextNameUndefined, async () => {
     //     // Arrange
@@ -809,7 +813,7 @@ describe(tst_con.cmergeClientCommands, () => {
     //  * @function loadCommandAliases_inValidContextNameNaN
     //  * @description Tests the main function loadCommandAliases with a invalid data NaN.
     //  * @author Vlad Sorokin
-    //  * @date 2023/01/02
+    //  * @date 2024/01/02
     //  */
     // test(tst_con.cloadCommandAliases_inValidContextNameNaN, async () => {
     //     // Arrange
@@ -827,14 +831,14 @@ describe(tst_con.cmergeClientCommands, () => {
 //  * @function loadCommandWorkflows
 //  * @description Tests the positive and negative test cases of the loadCommandWorkflows
 //  * @author Vlad Sorokin
-//  * @date 2023/01/02
+//  * @date 2024/01/02
 //  */
 // describe(tst_con.cloadCommandWorkflows, () => {
 //     /**
 //      * @function loadCommandWorkflows_validWorkflowPathData
 //      * @description Tests the main function loadCommandWorkflows with a valid input.
 //      * @author Vlad Sorokin
-//      * @date 2023/01/02
+//      * @date 2024/01/02
 //      */
 //     test(tst_con.cloadCommandWorkflows_validData, async () => {
 //         // Arrange
@@ -851,7 +855,7 @@ describe(tst_con.cmergeClientCommands, () => {
 //      * @function loadCommandWorkflows_inValidWorkflowPathString
 //      * @description Tests the main function loadCommandWorkflows with a invalid data string.
 //      * @author Vlad Sorokin
-//      * @date 2023/01/02
+//      * @date 2024/01/02
 //      */
 //     test(tst_con.cloadCommandWorkflows_inValidWorkflowPathString, async () => {
 //         // Arrange
@@ -868,7 +872,7 @@ describe(tst_con.cmergeClientCommands, () => {
 //      * @function loadCommandWorkflows_inValidContextNameString
 //      * @description Tests the main function loadCommandWorkflows with a invalid data string.
 //      * @author Vlad Sorokin
-//      * @date 2023/01/02
+//      * @date 2024/01/02
 //      */
 //     test(tst_con.cloadCommandWorkflows_inValidContextNameString, async () => {
 //         // Arrange
@@ -885,7 +889,7 @@ describe(tst_con.cmergeClientCommands, () => {
 //      * @function loadCommandWorkflows_inValidWorkflowPathInteger
 //      * @description Tests the main function loadCommandWorkflows with a invalid data integer.
 //      * @author Vlad Sorokin
-//      * @date 2023/01/02
+//      * @date 2024/01/02
 //      */
 //     test(tst_con.cloadCommandWorkflows_inValidWorkflowPathInteger, async () => {
 //         // Arrange
@@ -902,7 +906,7 @@ describe(tst_con.cmergeClientCommands, () => {
 //      * @function loadCommandWorkflows_inValidWorkflowPathBoolean
 //      * @description Tests the main function loadCommandWorkflows with a invalid data boolean.
 //      * @author Vlad Sorokin
-//      * @date 2023/01/02
+//      * @date 2024/01/02
 //      */
 //     test(tst_con.cloadCommandWorkflows_inValidWorkflowPathBoolean, async () => {
 //         // Arrange
@@ -919,7 +923,7 @@ describe(tst_con.cmergeClientCommands, () => {
 //      * @function loadCommandWorkflows_inValidContextNameInteger
 //      * @description Tests the main function loadCommandWorkflows with a invalid data integer.
 //      * @author Vlad Sorokin
-//      * @date 2023/01/02
+//      * @date 2024/01/02
 //      */
 //     test(tst_con.cloadCommandWorkflows_inValidContextNameInteger, async () => {
 //         // Arrange
@@ -936,7 +940,7 @@ describe(tst_con.cmergeClientCommands, () => {
 //      * @function loadCommandWorkflows_inValidContextNameBoolean
 //      * @description Tests the main function loadCommandWorkflows with a invalid data boolean.
 //      * @author Vlad Sorokin
-//      * @date 2023/01/02
+//      * @date 2024/01/02
 //      */
 //     test(tst_con.cloadCommandWorkflows_inValidContextNameBoolean, async () => {
 //         // Arrange
@@ -953,7 +957,7 @@ describe(tst_con.cmergeClientCommands, () => {
 //      * @function loadCommandWorkflows_inValidWorkflowPathUndefined
 //      * @description Tests the main function loadCommandWorkflows with a invalid data undefined.
 //      * @author Vlad Sorokin
-//      * @date 2023/01/02
+//      * @date 2024/01/02
 //      */
 //     test(tst_con.cloadCommandWorkflows_inValidWorkflowPathUndefined, async () => {
 //         // Arrange
@@ -970,7 +974,7 @@ describe(tst_con.cmergeClientCommands, () => {
 //      * @function loadCommandWorkflows_inValidWorkflowPathNaN
 //      * @description Tests the main function loadCommandWorkflows with a invalid data NaN.
 //      * @author Vlad Sorokin
-//      * @date 2023/01/02
+//      * @date 2024/01/02
 //      */
 //     test(tst_con.cloadCommandWorkflows_inValidWorkflowPathNaN, async () => {
 //         // Arrange
@@ -987,7 +991,7 @@ describe(tst_con.cmergeClientCommands, () => {
 //      * @function loadCommandWorkflows_inValidContextNameUndefined
 //      * @description Tests the main function loadCommandWorkflows with a invalid data undefined.
 //      * @author Vlad Sorokin
-//      * @date 2023/01/02
+//      * @date 2024/01/02
 //      */
 //     test(tst_con.cloadCommandWorkflows_inValidContextNameUndefined, async () => {
 //         // Arrange
@@ -1004,7 +1008,7 @@ describe(tst_con.cmergeClientCommands, () => {
 //      * @function loadCommandWorkflows_inValidContextNameNaN
 //      * @description Tests the main function loadCommandWorkflows with a invalid data NaN.
 //      * @author Vlad Sorokin
-//      * @date 2023/01/02
+//      * @date 2024/01/02
 //      */
 //     test(tst_con.cloadCommandWorkflows_inValidContextNameNaN, async () => {
 //         // Arrange
@@ -1022,7 +1026,7 @@ describe(tst_con.cmergeClientCommands, () => {
  * @function loadCommandWorkflows
  * @description Tests the positive and negative test cases of the loadCommandWorkflows
  * @author Vlad Sorokin
- * @date 2023/01/08
+ * @date 2024/01/08
  * @NOTE As of now this test needs jest xml file support, as it will not work unless there is a way for jest to read and use xml files. 
  * Tried to use "jest-environment-jsdom" to solve this issue but couldn't get it to work, though it does seem that solution is use of jsdom.
  * @NOTE When the fist problem will be solved boolean output needs to be added to the function for testing purposes.
@@ -1032,7 +1036,7 @@ describe(tst_con.cmergeClientCommands, () => {
 //      * @function loadCommandWorkflows_validWorkflowPathData
 //      * @description Tests the main function loadCommandWorkflows with a valid input.
 //      * @author Vlad Sorokin
-//      * @date 2023/01/08
+//      * @date 2024/01/08
 //      */
 //     test(tst_con.cloadCommandWorkflows_validData, async () => {
 //         // Arrange
@@ -1049,7 +1053,7 @@ describe(tst_con.cmergeClientCommands, () => {
 //      * @function loadCommandWorkflows_inValidWorkflowPathString
 //      * @description Tests the main function loadCommandWorkflows with a invalid data string.
 //      * @author Vlad Sorokin
-//      * @date 2023/01/08
+//      * @date 2024/01/08
 //      */
 //     test(tst_con.cloadCommandWorkflows_inValidWorkflowPathString, async () => {
 //         // Arrange
@@ -1066,7 +1070,7 @@ describe(tst_con.cmergeClientCommands, () => {
 //      * @function loadCommandWorkflows_inValidContextNameString
 //      * @description Tests the main function loadCommandWorkflows with a invalid data string.
 //      * @author Vlad Sorokin
-//      * @date 2023/01/08
+//      * @date 2024/01/08
 //      */
 //     test(tst_con.cloadCommandWorkflows_inValidContextNameString, async () => {
 //         // Arrange
@@ -1083,7 +1087,7 @@ describe(tst_con.cmergeClientCommands, () => {
 //      * @function loadCommandWorkflows_inValidWorkflowPathInteger
 //      * @description Tests the main function loadCommandWorkflows with a invalid data integer.
 //      * @author Vlad Sorokin
-//      * @date 2023/01/08
+//      * @date 2024/01/08
 //      */
 //     test(tst_con.cloadCommandWorkflows_inValidWorkflowPathInteger, async () => {
 //         // Arrange
@@ -1100,7 +1104,7 @@ describe(tst_con.cmergeClientCommands, () => {
 //      * @function loadCommandWorkflows_inValidWorkflowPathBoolean
 //      * @description Tests the main function loadCommandWorkflows with a invalid data boolean.
 //      * @author Vlad Sorokin
-//      * @date 2023/01/08
+//      * @date 2024/01/08
 //      */
 //     test(tst_con.cloadCommandWorkflows_inValidWorkflowPathBoolean, async () => {
 //         // Arrange
@@ -1117,7 +1121,7 @@ describe(tst_con.cmergeClientCommands, () => {
 //      * @function loadCommandWorkflows_inValidContextNameInteger
 //      * @description Tests the main function loadCommandWorkflows with a invalid data integer.
 //      * @author Vlad Sorokin
-//      * @date 2023/01/08
+//      * @date 2024/01/08
 //      */
 //     test(tst_con.cloadCommandWorkflows_inValidContextNameInteger, async () => {
 //         // Arrange
@@ -1134,7 +1138,7 @@ describe(tst_con.cmergeClientCommands, () => {
 //      * @function loadCommandWorkflows_inValidContextNameBoolean
 //      * @description Tests the main function loadCommandWorkflows with a invalid data boolean.
 //      * @author Vlad Sorokin
-//      * @date 2023/01/08
+//      * @date 2024/01/08
 //      */
 //     test(tst_con.cloadCommandWorkflows_inValidContextNameBoolean, async () => {
 //         // Arrange
@@ -1151,7 +1155,7 @@ describe(tst_con.cmergeClientCommands, () => {
 //      * @function loadCommandWorkflows_inValidWorkflowPathUndefined
 //      * @description Tests the main function loadCommandWorkflows with a invalid data undefined.
 //      * @author Vlad Sorokin
-//      * @date 2023/01/08
+//      * @date 2024/01/08
 //      */
 //     test(tst_con.cloadCommandWorkflows_inValidWorkflowPathUndefined, async () => {
 //         // Arrange
@@ -1168,7 +1172,7 @@ describe(tst_con.cmergeClientCommands, () => {
 //      * @function loadCommandWorkflows_inValidWorkflowPathNaN
 //      * @description Tests the main function loadCommandWorkflows with a invalid data NaN.
 //      * @author Vlad Sorokin
-//      * @date 2023/01/08
+//      * @date 2024/01/08
 //      */
 //     test(tst_con.cloadCommandWorkflows_inValidWorkflowPathNaN, async () => {
 //         // Arrange
@@ -1185,7 +1189,7 @@ describe(tst_con.cmergeClientCommands, () => {
 //      * @function loadCommandWorkflows_inValidContextNameUndefined
 //      * @description Tests the main function loadCommandWorkflows with a invalid data undefined.
 //      * @author Vlad Sorokin
-//      * @date 2023/01/08
+//      * @date 2024/01/08
 //      */
 //     test(tst_con.cloadCommandWorkflows_inValidContextNameUndefined, async () => {
 //         // Arrange
@@ -1202,7 +1206,7 @@ describe(tst_con.cmergeClientCommands, () => {
 //      * @function loadCommandWorkflows_inValidContextNameNaN
 //      * @description Tests the main function loadCommandWorkflows with a invalid data NaN.
 //      * @author Vlad Sorokin
-//      * @date 2023/01/08
+//      * @date 2024/01/08
 //      */
 //     test(tst_con.cloadCommandWorkflows_inValidContextNameNaN, async () => {
 //         // Arrange
@@ -1220,14 +1224,14 @@ describe(tst_con.cmergeClientCommands, () => {
  * @function listLoadedPlugins
  * @description Tests the positive and negative test cases of the listLoadedPlugins
  * @author Vlad Sorokin
- * @date 2023/01/08
+ * @date 2024/01/08
  */
 describe(tst_con.clistLoadedPlugins, () => {
     /**
      * @function listLoadedPlugins_validData
      * @description Tests the main function listLoadedPlugins with a valid input.
      * @author Vlad Sorokin
-     * @date 2023/01/08
+     * @date 2024/01/08
      */
     test(tst_con.clistLoadedPlugins_validData, async () => {
         // Arrange
@@ -1246,7 +1250,7 @@ describe(tst_con.clistLoadedPlugins, () => {
      * @function listLoadedPlugins_inValidString
      * @description Tests the main function listLoadedPlugins with a invalid data string.
      * @author Vlad Sorokin
-     * @date 2023/01/08
+     * @date 2024/01/08
      */
     test(tst_con.clistLoadedPlugins_inValidString, async () => {
         // Arrange
@@ -1265,7 +1269,7 @@ describe(tst_con.clistLoadedPlugins, () => {
      * @function listLoadedPlugins_inValidInteger
      * @description Tests the main function listLoadedPlugins with a invalid data integer.
      * @author Vlad Sorokin
-     * @date 2023/01/08
+     * @date 2024/01/08
      */
     test(tst_con.clistLoadedPlugins_inValidInteger, async () => {
         // Arrange
@@ -1284,7 +1288,7 @@ describe(tst_con.clistLoadedPlugins, () => {
      * @function listLoadedPlugins_inValidBoolean
      * @description Tests the main function listLoadedPlugins with a invalid data boolean.
      * @author Vlad Sorokin
-     * @date 2023/01/08
+     * @date 2024/01/08
      */
     test(tst_con.clistLoadedPlugins_inValidBoolean, async () => {
         // Arrange
@@ -1303,7 +1307,7 @@ describe(tst_con.clistLoadedPlugins, () => {
      * @function listLoadedPlugins_inValidUndefined
      * @description Tests the main function listLoadedPlugins with a invalid data undefined.
      * @author Vlad Sorokin
-     * @date 2023/01/08
+     * @date 2024/01/08
      */
     test(tst_con.clistLoadedPlugins_inValidUndefined, async () => {
         // Arrange
@@ -1322,7 +1326,7 @@ describe(tst_con.clistLoadedPlugins, () => {
      * @function listLoadedPlugins_inValidNaN
      * @description Tests the main function listLoadedPlugins with a invalid data NaN.
      * @author Vlad Sorokin
-     * @date 2023/01/08
+     * @date 2024/01/08
      */
     test(tst_con.clistLoadedPlugins_inValidNaN, async () => {
         // Arrange
@@ -1342,14 +1346,14 @@ describe(tst_con.clistLoadedPlugins, () => {
  * @function listAllPluginsInRegistry
  * @description Tests the positive and negative test cases of the listAllPluginsInRegistry
  * @author Vlad Sorokin
- * @date 2023/01/10
+ * @date 2024/01/10
  */
 describe(tst_con.clistAllPluginsInRegistry, () => {
     /**
      * @function listAllPluginsInRegistry_validData
      * @description Tests the main function listAllPluginsInRegistry with a valid input.
      * @author Vlad Sorokin
-     * @date 2023/01/10
+     * @date 2024/01/10
      */
     test(tst_con.clistAllPluginsInRegistry_validData, async () => {
         // Arrange
@@ -1368,7 +1372,7 @@ describe(tst_con.clistAllPluginsInRegistry, () => {
      * @function listAllPluginsInRegistry_inValidString
      * @description Tests the main function listAllPluginsInRegistry with a invalid data string.
      * @author Vlad Sorokin
-     * @date 2023/01/10
+     * @date 2024/01/10
      */
     test(tst_con.clistAllPluginsInRegistry_inValidString, async () => {
         // Arrange
@@ -1386,7 +1390,7 @@ describe(tst_con.clistAllPluginsInRegistry, () => {
      * @function listAllPluginsInRegistry_inValidInteger
      * @description Tests the main function listAllPluginsInRegistry with a invalid data integer.
      * @author Vlad Sorokin
-     * @date 2023/01/10
+     * @date 2024/01/10
      */
     test(tst_con.clistAllPluginsInRegistry_inValidInteger, async () => {
         // Arrange
@@ -1404,7 +1408,7 @@ describe(tst_con.clistAllPluginsInRegistry, () => {
      * @function listAllPluginsInRegistry_inValidBoolean
      * @description Tests the main function listAllPluginsInRegistry with a invalid data boolean.
      * @author Vlad Sorokin
-     * @date 2023/01/10
+     * @date 2024/01/10
      */
     test(tst_con.clistAllPluginsInRegistry_inValidBoolean, async () => {
         // Arrange
@@ -1422,7 +1426,7 @@ describe(tst_con.clistAllPluginsInRegistry, () => {
      * @function listAllPluginsInRegistry_inValidUndefined
      * @description Tests the main function listAllPluginsInRegistry with a invalid data undefined.
      * @author Vlad Sorokin
-     * @date 2023/01/10
+     * @date 2024/01/10
      */
     test(tst_con.clistAllPluginsInRegistry_inValidUndefined, async () => {
         // Arrange
@@ -1440,7 +1444,7 @@ describe(tst_con.clistAllPluginsInRegistry, () => {
      * @function listAllPluginsInRegistry_inValidNaN
      * @description Tests the main function listAllPluginsInRegistry with a invalid data NaN.
      * @author Vlad Sorokin
-     * @date 2023/01/10
+     * @date 2024/01/10
      */
     test(tst_con.clistAllPluginsInRegistry_inValidNaN, async () => {
         // Arrange
@@ -1459,7 +1463,7 @@ describe(tst_con.clistAllPluginsInRegistry, () => {
  * @function listAllPluginsInRegistryPath
  * @description Tests the positive test cases of the listAllPluginsInRegistryPath
  * @author Vlad Sorokin
- * @date 2023/01/11
+ * @date 2024/01/11
  * @NOTE The remaining of invalid tests will be tested with the pluginBroker.js function: listPluginsInRegistryPath.
  */
 describe(tst_con.clistAllPluginsInRegistryPath, () => {
@@ -1467,7 +1471,7 @@ describe(tst_con.clistAllPluginsInRegistryPath, () => {
      * @function listAllPluginsInRegistryPath_validData
      * @description Tests the main function listAllPluginsInRegistryPath with a valid input.
      * @author Vlad Sorokin
-     * @date 2023/01/11
+     * @date 2024/01/11
      */
     test(tst_con.clistAllPluginsInRegistryPath_validData, async () => {
         // Arrange
@@ -1491,14 +1495,14 @@ describe(tst_con.clistAllPluginsInRegistryPath, () => {
  * @function numberOfPluginsInRegistry
  * @description Tests the positive test cases of the numberOfPluginsInRegistry
  * @author Vlad Sorokin
- * @date 2023/01/12
+ * @date 2024/01/12
  */
 describe(tst_con.cnumberOfPluginsInRegistry, () => {
     /**
      * @function numberOfPluginsInRegistry_validData
      * @description Tests the main function numberOfPluginsInRegistry with a valid input.
      * @author Vlad Sorokin
-     * @date 2023/01/12
+     * @date 2024/01/12
      */
     test(tst_con.cnumberOfPluginsInRegistry_validData, async () => {
         // Arrange
@@ -1517,14 +1521,14 @@ describe(tst_con.cnumberOfPluginsInRegistry, () => {
  * @function numberOfPluginsInRegistryPath
  * @description Tests the positive test cases of the numberOfPluginsInRegistryPath
  * @author Vlad Sorokin
- * @date 2023/01/12
+ * @date 2024/01/12
  */
 describe(tst_con.cnumberOfPluginsInRegistryPath, () => {
     /**
      * @function numberOfPluginsInRegistryPath_validData
      * @description Tests the main function numberOfPluginsInRegistryPath with a valid input.
      * @author Vlad Sorokin
-     * @date 2023/01/12
+     * @date 2024/01/12
      */
     test(tst_con.cnumberOfPluginsInRegistryPath_validData, async () => {
         // Arrange
@@ -1547,14 +1551,14 @@ describe(tst_con.cnumberOfPluginsInRegistryPath, () => {
  * @function registerPluginByNameAndPath
  * @description Tests the positive and negative test cases of the registerPluginByNameAndPath
  * @author Vlad Sorokin
- * @date 2023/01/12
+ * @date 2024/01/12
  */
 describe(tst_con.cregisterPluginByNameAndPath, () => {
     /**
      * @function registerPluginByNameAndPath_validPluginNameData
      * @description Tests the main function registerPluginByNameAndPath with a valid input.
      * @author Vlad Sorokin
-     * @date 2023/01/12
+     * @date 2024/01/12
      */
     test(tst_con.cregisterPluginByNameAndPath_validData, async () => {
         // Arrange
@@ -1575,7 +1579,7 @@ describe(tst_con.cregisterPluginByNameAndPath, () => {
      * @function registerPluginByNameAndPath_inValidPluginNameString
      * @description Tests the main function registerPluginByNameAndPath with a invalid data string.
      * @author Vlad Sorokin
-     * @date 2023/01/12
+     * @date 2024/01/12
      */
     test(tst_con.cregisterPluginByNameAndPath_inValidPluginNameString, async () => {
         // Arrange
@@ -1596,7 +1600,7 @@ describe(tst_con.cregisterPluginByNameAndPath, () => {
      * @function registerPluginByNameAndPath_inValidPluginPathString
      * @description Tests the main function registerPluginByNameAndPath with a invalid data string.
      * @author Vlad Sorokin
-     * @date 2023/01/12
+     * @date 2024/01/12
      */
     test(tst_con.cregisterPluginByNameAndPath_inValidPluginPathString, async () => {
         // Arrange
@@ -1616,7 +1620,7 @@ describe(tst_con.cregisterPluginByNameAndPath, () => {
      * @function registerPluginByNameAndPath_inValidPluginNameInteger
      * @description Tests the main function registerPluginByNameAndPath with a invalid data integer.
      * @author Vlad Sorokin
-     * @date 2023/01/12
+     * @date 2024/01/12
      */
     test(tst_con.cregisterPluginByNameAndPath_inValidPluginNameInteger, async () => {
         // Arrange
@@ -1636,7 +1640,7 @@ describe(tst_con.cregisterPluginByNameAndPath, () => {
      * @function registerPluginByNameAndPath_inValidPluginNameBoolean
      * @description Tests the main function registerPluginByNameAndPath with a invalid data boolean.
      * @author Vlad Sorokin
-     * @date 2023/01/12
+     * @date 2024/01/12
      */
     test(tst_con.cregisterPluginByNameAndPath_inValidPluginNameBoolean, async () => {
         // Arrange
@@ -1656,7 +1660,7 @@ describe(tst_con.cregisterPluginByNameAndPath, () => {
      * @function registerPluginByNameAndPath_inValidPluginPathInteger
      * @description Tests the main function registerPluginByNameAndPath with a invalid data integer.
      * @author Vlad Sorokin
-     * @date 2023/01/12
+     * @date 2024/01/12
      */
     test(tst_con.cregisterPluginByNameAndPath_inValidPluginPathInteger, async () => {
         // Arrange
@@ -1676,7 +1680,7 @@ describe(tst_con.cregisterPluginByNameAndPath, () => {
      * @function registerPluginByNameAndPath_inValidPluginPathBoolean
      * @description Tests the main function registerPluginByNameAndPath with a invalid data boolean.
      * @author Vlad Sorokin
-     * @date 2023/01/12
+     * @date 2024/01/12
      */
     test(tst_con.cregisterPluginByNameAndPath_inValidPluginPathBoolean, async () => {
         // Arrange
@@ -1696,7 +1700,7 @@ describe(tst_con.cregisterPluginByNameAndPath, () => {
      * @function registerPluginByNameAndPath_inValidPluginNameUndefined
      * @description Tests the main function registerPluginByNameAndPath with a invalid data undefined.
      * @author Vlad Sorokin
-     * @date 2023/01/12
+     * @date 2024/01/12
      */
     test(tst_con.cregisterPluginByNameAndPath_inValidPluginNameUndefined, async () => {
         // Arrange
@@ -1716,7 +1720,7 @@ describe(tst_con.cregisterPluginByNameAndPath, () => {
      * @function registerPluginByNameAndPath_inValidPluginNameNaN
      * @description Tests the main function registerPluginByNameAndPath with a invalid data NaN.
      * @author Vlad Sorokin
-     * @date 2023/01/12
+     * @date 2024/01/12
      */
     test(tst_con.cregisterPluginByNameAndPath_inValidPluginNameNaN, async () => {
         // Arrange
@@ -1736,7 +1740,7 @@ describe(tst_con.cregisterPluginByNameAndPath, () => {
      * @function registerPluginByNameAndPath_inValidPluginPathUndefined
      * @description Tests the main function registerPluginByNameAndPath with a invalid data undefined.
      * @author Vlad Sorokin
-     * @date 2023/01/12
+     * @date 2024/01/12
      */
     test(tst_con.cregisterPluginByNameAndPath_inValidPluginPathUndefined, async () => {
         // Arrange
@@ -1756,7 +1760,7 @@ describe(tst_con.cregisterPluginByNameAndPath, () => {
      * @function registerPluginByNameAndPath_inValidPluginPathNaN
      * @description Tests the main function registerPluginByNameAndPath with a invalid data NaN.
      * @author Vlad Sorokin
-     * @date 2023/01/12
+     * @date 2024/01/12
      */
     test(tst_con.cregisterPluginByNameAndPath_inValidPluginPathNaN, async () => {
         // Arrange
@@ -1777,14 +1781,14 @@ describe(tst_con.cregisterPluginByNameAndPath, () => {
  * @function unregisterPluginByName
  * @description Tests the positive and negative test cases of the unregisterPluginByName
  * @author Vlad Sorokin
- * @date 2023/01/21
+ * @date 2024/01/21
  */
 describe(tst_con.cunregisterPluginByName, () => {
     /**
      * @function unregisterPluginByName_validPluginNameData
      * @description Tests the main function unregisterPluginByName with a valid input.
      * @author Vlad Sorokin
-     * @date 2023/01/21
+     * @date 2024/01/21
      */
     test(tst_con.cunregisterPluginByName_validData, async () => {
         // Arrange
@@ -1803,7 +1807,7 @@ describe(tst_con.cunregisterPluginByName, () => {
      * @function unregisterPluginByName_inValidPluginNameString
      * @description Tests the main function unregisterPluginByName with a invalid data string.
      * @author Vlad Sorokin
-     * @date 2023/01/21
+     * @date 2024/01/21
      */
     test(tst_con.cunregisterPluginByName_inValidPluginNameString, async () => {
         // Arrange
@@ -1822,7 +1826,7 @@ describe(tst_con.cunregisterPluginByName, () => {
      * @function unregisterPluginByName_inValidPluginNameInteger
      * @description Tests the main function unregisterPluginByName with a invalid data integer.
      * @author Vlad Sorokin
-     * @date 2023/01/21
+     * @date 2024/01/21
      */
     test(tst_con.cunregisterPluginByName_inValidPluginNameInteger, async () => {
         // Arrange
@@ -1841,7 +1845,7 @@ describe(tst_con.cunregisterPluginByName, () => {
      * @function unregisterPluginByName_inValidPluginNameBoolean
      * @description Tests the main function unregisterPluginByName with a invalid data boolean.
      * @author Vlad Sorokin
-     * @date 2023/01/21
+     * @date 2024/01/21
      */
     test(tst_con.cunregisterPluginByName_inValidPluginNameBoolean, async () => {
         // Arrange
@@ -1860,7 +1864,7 @@ describe(tst_con.cunregisterPluginByName, () => {
      * @function unregisterPluginByName_inValidPluginNameUndefined
      * @description Tests the main function unregisterPluginByName with a invalid data undefined.
      * @author Vlad Sorokin
-     * @date 2023/01/21
+     * @date 2024/01/21
      */
     test(tst_con.cunregisterPluginByName_inValidPluginNameUndefined, async () => {
         // Arrange
@@ -1879,7 +1883,7 @@ describe(tst_con.cunregisterPluginByName, () => {
      * @function unregisterPluginByName_inValidPluginNameNaN
      * @description Tests the main function unregisterPluginByName with a invalid data NaN.
      * @author Vlad Sorokin
-     * @date 2023/01/21
+     * @date 2024/01/21
      */
     test(tst_con.cunregisterPluginByName_inValidPluginNameNaN, async () => {
         // Arrange
@@ -1899,14 +1903,14 @@ describe(tst_con.cunregisterPluginByName, () => {
  * @function unregisterPlugins
  * @description Tests the positive and negative test cases of the unregisterPlugins
  * @author Vlad Sorokin
- * @date 2023/01/22
+ * @date 2024/01/22
  */
 describe(tst_con.cunregisterPlugins, () => {
     /**
      * @function unregisterPlugins_validData
      * @description Tests the main function unregisterPlugins with a valid input.
      * @author Vlad Sorokin
-     * @date 2023/01/22
+     * @date 2024/01/22
      */
     test(tst_con.cunregisterPlugins_validData, async () => {
         // Arrange
@@ -1925,7 +1929,7 @@ describe(tst_con.cunregisterPlugins, () => {
      * @function unregisterPlugins_inValidPluginsListArrayString
      * @description Tests the main function unregisterPlugins with a invalid data string.
      * @author Vlad Sorokin
-     * @date 2023/01/22
+     * @date 2024/01/22
      */
     test(tst_con.cunregisterPlugins_inValidPluginsListArrayString, async () => {
         // Arrange
@@ -1944,7 +1948,7 @@ describe(tst_con.cunregisterPlugins, () => {
      * @function unregisterPlugins_inValidPluginsListArrayInteger
      * @description Tests the main function unregisterPlugins with a invalid data integer.
      * @author Vlad Sorokin
-     * @date 2023/01/22
+     * @date 2024/01/22
      */
     test(tst_con.cunregisterPlugins_inValidPluginsListArrayInteger, async () => {
         // Arrange
@@ -1963,7 +1967,7 @@ describe(tst_con.cunregisterPlugins, () => {
      * @function unregisterPlugins_inValidPluginsListArrayBoolean
      * @description Tests the main function unregisterPlugins with a invalid data boolean.
      * @author Vlad Sorokin
-     * @date 2023/01/22
+     * @date 2024/01/22
      */
     test(tst_con.cunregisterPlugins_inValidPluginsListArrayBoolean, async () => {
         // Arrange
@@ -1982,7 +1986,7 @@ describe(tst_con.cunregisterPlugins, () => {
      * @function unregisterPlugins_inValidPluginsListArrayUndefined
      * @description Tests the main function unregisterPlugins with a invalid data undefined.
      * @author Vlad Sorokin
-     * @date 2023/01/22
+     * @date 2024/01/22
      */
     test(tst_con.cunregisterPlugins_inValidPluginsListArrayUndefined, async () => {
         // Arrange
@@ -2001,7 +2005,7 @@ describe(tst_con.cunregisterPlugins, () => {
      * @function unregisterPlugins_inValidPluginsListArrayNaN
      * @description Tests the main function unregisterPlugins with a invalid data NaN.
      * @author Vlad Sorokin
-     * @date 2023/01/22
+     * @date 2024/01/22
      */
     test(tst_con.cunregisterPlugins_inValidPluginsListArrayNaN, async () => {
         // Arrange
@@ -2021,14 +2025,14 @@ describe(tst_con.cunregisterPlugins, () => {
  * @function syncPluginRegistryWithPath
  * @description Tests the positive and negative test cases of the syncPluginRegistryWithPath
  * @author Vlad Sorokin
- * @date 2023/02/20
+ * @date 2024/02/20
  */
 describe(tst_con.csyncPluginRegistryWithPath, () => {
     /**
      * @function syncPluginRegistryWithPath_validData
      * @description Tests the main function syncPluginRegistryWithPath with a valid input.
      * @author Vlad Sorokin
-     * @date 2023/02/20
+     * @date 2024/02/20
      */
     test(tst_con.csyncPluginRegistryWithPath_validData, async () => {
         // Arrange
@@ -2046,7 +2050,7 @@ describe(tst_con.csyncPluginRegistryWithPath, () => {
      * @function syncPluginRegistryWithPath_inValidString
      * @description Tests the main function syncPluginRegistryWithPath with a invalid data string.
      * @author Vlad Sorokin
-     * @date 2023/02/20
+     * @date 2024/02/20
      */
     test(tst_con.csyncPluginRegistryWithPath_inValidString, async () => {
         // Arrange
@@ -2064,7 +2068,7 @@ describe(tst_con.csyncPluginRegistryWithPath, () => {
      * @function syncPluginRegistryWithPath_inValidInteger
      * @description Tests the main function syncPluginRegistryWithPath with a invalid data integer.
      * @author Vlad Sorokin
-     * @date 2023/02/20
+     * @date 2024/02/20
      */
     test(tst_con.csyncPluginRegistryWithPath_inValidInteger, async () => {
         // Arrange
@@ -2082,7 +2086,7 @@ describe(tst_con.csyncPluginRegistryWithPath, () => {
      * @function syncPluginRegistryWithPath_inValidBoolean
      * @description Tests the main function syncPluginRegistryWithPath with a invalid data boolean.
      * @author Vlad Sorokin
-     * @date 2023/02/20
+     * @date 2024/02/20
      */
     test(tst_con.csyncPluginRegistryWithPath_inValidBoolean, async () => {
         // Arrange
@@ -2100,7 +2104,7 @@ describe(tst_con.csyncPluginRegistryWithPath, () => {
      * @function syncPluginRegistryWithPath_inValidUndefined
      * @description Tests the main function syncPluginRegistryWithPath with a invalid data undefined.
      * @author Vlad Sorokin
-     * @date 2023/02/20
+     * @date 2024/02/20
      */
     test(tst_con.csyncPluginRegistryWithPath_inValidUndefined, async () => {
         // Arrange
@@ -2118,7 +2122,7 @@ describe(tst_con.csyncPluginRegistryWithPath, () => {
      * @function syncPluginRegistryWithPath_inValidNaN
      * @description Tests the main function syncPluginRegistryWithPath with a invalid data NaN.
      * @author Vlad Sorokin
-     * @date 2023/02/20
+     * @date 2024/02/20
      */
     test(tst_con.csyncPluginRegistryWithPath_inValidNaN, async () => {
         // Arrange
@@ -2137,14 +2141,14 @@ describe(tst_con.csyncPluginRegistryWithPath, () => {
  * @function clearAllPluginRegistry
  * @description Tests the positive and negative test cases of the clearAllPluginRegistry
  * @author Vlad Sorokin
- * @date 2023/02/26
+ * @date 2024/02/26
  */
 describe(tst_con.cclearAllPluginRegistry, () => {
     /**
      * @function clearAllPluginRegistry_validData
      * @description Tests the main function clearAllPluginRegistry with a valid input.
      * @author Vlad Sorokin
-     * @date 2023/02/26
+     * @date 2024/02/26
      */
     test(tst_con.cclearAllPluginRegistry_validData, async () => {
         // Arrange
@@ -2162,7 +2166,7 @@ describe(tst_con.cclearAllPluginRegistry, () => {
      * @function clearAllPluginRegistry_inValidString
      * @description Tests the main function clearAllPluginRegistry with a invalid data string.
      * @author Vlad Sorokin
-     * @date 2023/02/26
+     * @date 2024/02/26
      */
     test(tst_con.cclearAllPluginRegistry_inValidString, async () => {
         // Arrange
@@ -2180,7 +2184,7 @@ describe(tst_con.cclearAllPluginRegistry, () => {
      * @function clearAllPluginRegistry_inValidInteger
      * @description Tests the main function clearAllPluginRegistry with a invalid data integer.
      * @author Vlad Sorokin
-     * @date 2023/02/26
+     * @date 2024/02/26
      */
     test(tst_con.cclearAllPluginRegistry_inValidInteger, async () => {
         // Arrange
@@ -2198,7 +2202,7 @@ describe(tst_con.cclearAllPluginRegistry, () => {
      * @function clearAllPluginRegistry_inValidBoolean
      * @description Tests the main function clearAllPluginRegistry with a invalid data boolean.
      * @author Vlad Sorokin
-     * @date 2023/02/26
+     * @date 2024/02/26
      */
     test(tst_con.cclearAllPluginRegistry_inValidBoolean, async () => {
         // Arrange
@@ -2216,7 +2220,7 @@ describe(tst_con.cclearAllPluginRegistry, () => {
      * @function clearAllPluginRegistry_inValidUndefined
      * @description Tests the main function clearAllPluginRegistry with a invalid data undefined.
      * @author Vlad Sorokin
-     * @date 2023/02/26
+     * @date 2024/02/26
      */
     test(tst_con.cclearAllPluginRegistry_inValidUndefined, async () => {
         // Arrange
@@ -2234,7 +2238,7 @@ describe(tst_con.cclearAllPluginRegistry, () => {
      * @function clearAllPluginRegistry_inValidNaN
      * @description Tests the main function clearAllPluginRegistry with a invalid data NaN.
      * @author Vlad Sorokin
-     * @date 2023/02/26
+     * @date 2024/02/26
      */
     test(tst_con.cclearAllPluginRegistry_inValidNaN, async () => {
         // Arrange
@@ -2247,5 +2251,124 @@ describe(tst_con.cclearAllPluginRegistry, () => {
         // Assert
         expect(returnData).toBeFalsy();
     });
+})
+
+/**
+ * @function writePluginRegistryToDisk
+ * @description Tests the positive and negative test cases of the writePluginRegistryToDisk
+ * @author Vlad Sorokin
+ * @date 2024/02/29
+ */
+describe(tst_con.cwritePluginRegistryToDisk, () => {
+    /**
+     * @function writePluginRegistryToDisk_validData
+     * @description Tests the main function writePluginRegistryToDisk with a valid input.
+     * @author Vlad Sorokin
+     * @date 2024/02/29
+     */
+    test(tst_con.cwritePluginRegistryToDisk_validData, async () => {
+        // Arrange
+        let pluginsRegistred = tst_man.expectedListLoadedPlugins;
+        D[cfg.cpluginRegistry] = pluginsRegistred;
+        D[sys.cbusinessRules] = {
+        [biz.cwriteJsonData]: (inputData, inputMetaData) => fileOperations.writeJsonData(inputData, inputMetaData),
+        [biz.cgetNowMoment]: (inputData, inputMetaData) => timeComputation.getNowMoment(inputData, inputMetaData)
+        }
+        D[wrd.cconfiguration] = {};
+        let dateTimeStamp = await ruleBroker.processRules([gen.cYYYYMMDD_HHmmss_SSS, ''], [biz.cgetNowMoment]);
+        let tempPluginRegistryTestFileName = dateTimeStamp + tst_man.tempPluginRegistryTestFileName;
+        configurator.setConfigurationSetting(wrd.csystem, cfg.cpluginRegistryPath, tst_man.pathForUnitTestWritePluginRegistryToDiskValid + tempPluginRegistryTestFileName);
+
+        // Act
+        let returnData = await main.writePluginRegistryToDisk();
+
+        // Assert
+        expect(returnData).toBeTruthy();
+    });
+
+    // /**
+    //  * @function writePluginRegistryToDisk_inValidString
+    //  * @description Tests the main function writePluginRegistryToDisk with a invalid data string.
+    //  * @author Vlad Sorokin
+    //  * @date 2024/02/29
+    //  */
+    // test(tst_con.cwritePluginRegistryToDisk_inValidString, async () => {
+    //     // Arrange
+        
+
+    //     // Act
+    //     let returnData = await main.writePluginRegistryToDisk();
+
+    //     // Assert
+    //     expect(returnData).toBeFalsy();
+    // });
+
+    // /**
+    //  * @function writePluginRegistryToDisk_inValidInteger
+    //  * @description Tests the main function writePluginRegistryToDisk with a invalid data integer.
+    //  * @author Vlad Sorokin
+    //  * @date 2024/02/29
+    //  */
+    // test(tst_con.cwritePluginRegistryToDisk_inValidInteger, async () => {
+    //     // Arrange
+        
+
+    //     // Act
+    //     let returnData = await main.writePluginRegistryToDisk();
+
+    //     // Assert
+    //     expect(returnData).toBeFalsy();
+    // });
+
+    // /**
+    //  * @function writePluginRegistryToDisk_inValidBoolean
+    //  * @description Tests the main function writePluginRegistryToDisk with a invalid data boolean.
+    //  * @author Vlad Sorokin
+    //  * @date 2024/02/29
+    //  */
+    // test(tst_con.cwritePluginRegistryToDisk_inValidBoolean, async () => {
+    //     // Arrange
+        
+
+    //     // Act
+    //     let returnData = await main.writePluginRegistryToDisk();
+
+    //     // Assert
+    //     expect(returnData).toBeFalsy();
+    // });
+
+    // /**
+    //  * @function writePluginRegistryToDisk_inValidUndefined
+    //  * @description Tests the main function writePluginRegistryToDisk with a invalid data undefined.
+    //  * @author Vlad Sorokin
+    //  * @date 2024/02/29
+    //  */
+    // test(tst_con.cwritePluginRegistryToDisk_inValidUndefined, async () => {
+    //     // Arrange
+        
+
+    //     // Act
+    //     let returnData = await main.writePluginRegistryToDisk();
+
+    //     // Assert
+    //     expect(returnData).toBeFalsy();
+    // });
+
+    // /**
+    //  * @function writePluginRegistryToDisk_inValidNaN
+    //  * @description Tests the main function writePluginRegistryToDisk with a invalid data NaN.
+    //  * @author Vlad Sorokin
+    //  * @date 2024/02/29
+    //  */
+    // test(tst_con.cwritePluginRegistryToDisk_inValidNaN, async () => {
+    //     // Arrange
+        
+
+    //     // Act
+    //     let returnData = await main.writePluginRegistryToDisk();
+
+    //     // Assert
+    //     expect(returnData).toBeFalsy();
+    // });
 })
 

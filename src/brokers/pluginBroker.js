@@ -595,14 +595,16 @@ async function savePluginRegistry() {
   let functionName = savePluginRegistry.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   let returnData = false;
-  let pluginRegistry = D[cfg.cpluginRegistry]
+  let pluginRegistry = D[cfg.cpluginRegistry];
   // pluginRegistry is:
   await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginRegistryIs + JSON.stringify(pluginRegistry));
   try {
     let pluginRegistryPath = await configurator.getConfigurationSetting(wrd.csystem, cfg.cpluginRegistryPath);
     // pluginRegistryPath is:
+    console.log(msg.cpluginRegistryPathIs + pluginRegistryPath);
     await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginRegistryPathIs + pluginRegistryPath);
-    returnData = ruleBroker.processRules([pluginRegistryPath, pluginRegistry], [biz.cwriteJsonData]);
+    // console.log("pluginRegistry is: " + pluginRegistry);
+    returnData = await ruleBroker.processRules([pluginRegistryPath, pluginRegistry], [biz.cwriteJsonData]);
   } catch (err) {
     // ERROR: Failure to write out the plugin registry to the plugin path specified by the application:
     // error message:

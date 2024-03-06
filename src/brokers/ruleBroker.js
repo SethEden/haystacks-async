@@ -141,7 +141,7 @@ async function addPluginRules(pluginName, pluginRules) {
  * @NOTE Cannot use the loggers here, because of a circular dependency.
  */
 async function processRules(inputs, rulesToExecute) {
-  // let functionName = processRules.name;
+  let functionName = processRules.name;
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   // console.log(`inputs is: ${JSON.stringify(inputs)}`);
   // console.log(`rulesToExecute is: ${JSON.stringify(rulesToExecute)}`);
