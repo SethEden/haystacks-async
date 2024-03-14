@@ -56,5 +56,8 @@
   "bugs": {
     "url": "https://github.com/SethEden/haystacks-async/issues"
   },
-  "homepage": "https://github.com/SethEden/haystacks-async#readme"
+  "homepage": "https://github.com/SethEden/haystacks-async#readme",
+  "jest": {
+    "modulePathIgnorePatterns": ["./test/unitTest/testData/testTemp/tempPluginRegistryTest*.json"]
+  }
 }

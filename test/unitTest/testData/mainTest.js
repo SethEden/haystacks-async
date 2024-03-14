@@ -29,6 +29,7 @@ const namespacePrefix = sys.cbusinessRules + bas.cDot + wrd.crules + bas.cDot + 
 const rootPathArray = await rootPathDiscovery();
 const rootPathAsync = rootPathArray[0];
 const rootPathConstants = rootPathArray[1];
+const rootPathHayPlugins = rootPathArray[2];
 
 export const ctestString1 = bas.cdf + bas.cxg + num.c243 + num.c46 + bas.cdf + bas.cg; // dfxg24346dfg
 
@@ -66,7 +67,7 @@ export const initFrameworkObjectExpected = {
     [tst_cfg.cframeworkConfigPath]: rootPathAsync + tst_cfg.cframeworkConfigPathExpectedValue,
     [tst_cfg.cframeworkConstantsPath]: rootPathConstants + tst_cfg.cframeworkConstantsPathExpectedLinkedValue,
     // NOTE: Look at the initFramework_validData note in unit test header.
-    // [tst_cfg.cframeworkConstantsPath]: rootPathConstants + tst_cfg.cframeworkConstantsPathExpectedUnlinkedValue,
+    // [tst_cfg.cframeworkConstantsPath]: rootPathAsync + tst_cfg.cframeworkConstantsPathExpectedUnlinkedValue,
     [tst_cfg.cframeworkFullMetaDataPath]: rootPathAsync + tst_cfg.cframeworkFullMetaDataPathExpectedValue,
     [tst_cfg.cframeworkResourcesPath]: rootPathAsync + tst_cfg.cframeworkResourcesPathExpectedValue,
     [tst_cfg.cframeworkRootPath]: rootPathAsync + bas.cBackSlash,
@@ -84,31 +85,32 @@ export const listAllPluginsInRegistry = {
     [wrd.cplugins]: [{
             [tst_sys.cplugin_one]: {
                 [wrd.cName]: tst_sys.cplugin_one,
-                [wrd.cPath]: gen.cCroot + wrd.chay + wrd.cPlugins + bas.cDoubleBackSlash + tst_sys.cplugin_one + bas.cDoubleBackSlash
+                [wrd.cPath]: rootPathHayPlugins + bas.cDoubleBackSlash + tst_sys.cplugin_one + bas.cDoubleBackSlash
             }
         }, {
             [tst_sys.cplugin_three]: {
                 [wrd.cName]: tst_sys.cplugin_three,
-                [wrd.cPath]: gen.cCroot + wrd.chay + wrd.cPlugins + bas.cDoubleBackSlash + tst_sys.cplugin_three + bas.cDoubleBackSlash
+                [wrd.cPath]: rootPathHayPlugins + bas.cDoubleBackSlash + tst_sys.cplugin_three + bas.cDoubleBackSlash
             }
         }, {
             [tst_sys.cplugin_two]: {
                 [wrd.cName]: tst_sys.cplugin_two,
-                [wrd.cPath]: gen.cCroot + wrd.chay + wrd.cPlugins + bas.cDoubleBackSlash + tst_sys.cplugin_two + bas.cDoubleBackSlash
+                [wrd.cPath]: rootPathHayPlugins + bas.cDoubleBackSlash + tst_sys.cplugin_two + bas.cDoubleBackSlash
             }
         }
     ]
 };
 
 export const listAllPluginsInRegistryExpected = [tst_sys.cplugin_one, tst_sys.cplugin_three, tst_sys.cplugin_two];
-export const pluginsPath = gen.cCroot + wrd.chay + wrd.cPlugins;
+export const pluginPath = bas.cC + bas.cColon + bas.cDoubleForwardSlash + wrd.chaystacks + bas.cDash + wrd.casync + bas.cDoubleForwardSlash + wrd.ctest + bas.cDoubleForwardSlash + wrd.cunit + wrd.cTest + bas.cDoubleForwardSlash + wrd.ctest + wrd.cData + bas.cDoubleForwardSlash + wrd.ctest + wrd.cPlugins + bas.cDoubleForwardSlash + wrd.ctest + bas.cDash + wrd.cplugin + bas.cDash + num.cone + bas.cDoubleForwardSlash;
+export const pluginsPath = rootPathHayPlugins;
 export const pluginsPathObject = {[wrd.cpath]: pluginsPath};
 export const listLoadedPlugins = [[tst_sys.cplugin_one, true], [tst_sys.cplugin_three, true], [tst_sys.cplugin_two, true]];
 export const expectedListLoadedPlugins = [tst_sys.cplugin_one, tst_sys.cplugin_three, tst_sys.cplugin_two];
 export const listAllPluginsInRegistryBusinessRule = {[biz.cgetDirectoryList]: (inputData, inputMetaData) => fileOperations.getDirectoryList(inputData, inputMetaData)};
 export const pluginNameToUse = tst_sys.cplugin_one;
 export const pathForUnitTestWritePluginRegistryToDiskValid = rootPathAsync + tst_cfg.cpathToTheTempFolderForUnitTests;
-export const tempPluginRegistryTestFileName = wrd.ctemp + wrd.cPlugin + wrd.cRegistry + wrd.cTest + wrd.cDotjson;
+export const tempPluginRegistryTestFileName = wrd.ctemp + wrd.cPlugin + wrd.cRegistry + wrd.cTest + gen.cDotjson;
 
 /**
  * @function testHelloWorld
@@ -136,15 +138,17 @@ export const testBusinessRulesLibrary = {
  * @returns {array<string>} Returnts two strings: 
  * rootPathDiscovery[0] is a root string including haystacks-async path.
  * rootPathDiscovery[1] is a root string including haystacks-constants path.
+ * rootPathDiscovery[2] is a root string including hayPlugins path
  * @author Vlad Sorokin
  * @date 2024/01/30
  */
 export async function rootPathDiscovery() {
     let functionName = rootPathDiscovery.name;
-    console.log(msg.cBEGIN_Space + namespacePrefix + functionName + msg.cSpaceFunction);
+    // console.log(msg.cBEGIN_Space + namespacePrefix + functionName + msg.cSpaceFunction);
     let rootPath = '';
     let rootPathAsync = '';
     let rootPathConstants = '';
+    let rootPathHayPlugins = '';
     let rootPathArray = [];
     let pathSeparator = '';
     let returnData = [];
@@ -158,9 +162,10 @@ export async function rootPathDiscovery() {
 
     rootPathAsync = rootPath + wrd.chaystacks + bas.cDash + wrd.casync;
     rootPathConstants = rootPath + wrd.chaystacks + bas.cDash + wrd.cconstants;
+    rootPathHayPlugins = rootPath + wrd.chay + wrd.cPlugins;
 
-    returnData = [rootPathAsync, rootPathConstants];
-    console.log(msg.creturnDataIs + returnData);
-    console.log(msg.cEND_Space + namespacePrefix + functionName + msg.cSpaceFunction);
+    returnData = [rootPathAsync, rootPathConstants, rootPathHayPlugins];
+    // console.log(msg.creturnDataIs + returnData);
+    // console.log(msg.cEND_Space + namespacePrefix + functionName + msg.cSpaceFunction);
     return returnData;
 }

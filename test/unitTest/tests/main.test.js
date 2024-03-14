@@ -636,25 +636,25 @@ describe(tst_con.cmergeClientCommands, () => {
  * Tried to use "jest-environment-jsdom" to solve this issue but couldn't get it to work, though it does seem that solution is use of jsdom.
  */
 // describe(tst_con.cloadCommandAliases, () => {
-//     /**
-//      * @function loadCommandAliases_validCommandAliasesPathData
-//      * @description Tests the main function loadCommandAliases with a valid input.
-//      * @author Vlad Sorokin
-//      * @date 2024/01/02
-//      */
-//     test(tst_con.cloadCommandAliases_validData, async () => {
-//         // Arrange
-//         let commandAliasesPath = '../testData/resources/commands/testAliases.xml';
-//         let contextName = wrd.cunit + wrd.cTest;
-//         let returnData = true;
-//         let normalizedCommandAliasesPath = path.normalize(commandAliasesPath);
+    // /**
+    //  * @function loadCommandAliases_validCommandAliasesPathData
+    //  * @description Tests the main function loadCommandAliases with a valid input.
+    //  * @author Vlad Sorokin
+    //  * @date 2024/01/02
+    //  */
+    // test(tst_con.cloadCommandAliases_validData, async () => {
+    //     // Arrange
+    //     let commandAliasesPath = '../testData/resources/commands/testAliases.xml';
+    //     let contextName = wrd.cunit + wrd.cTest;
+    //     let returnData = true;
+    //     let normalizedCommandAliasesPath = path.normalize(commandAliasesPath);
 
-//         // Act
-//         returnData = await main.loadCommandAliases(normalizedCommandAliasesPath, contextName);
+    //     // Act
+    //     returnData = await main.loadCommandAliases(normalizedCommandAliasesPath, contextName);
 
-//         // Assert
-//         expect(returnData).toBeTruthy();
-//     });
+    //     // Assert
+    //     expect(returnData).toBeTruthy();
+    // });
 
     // /**
     //  * @function loadCommandAliases_inValidCommandAliasesPathString
@@ -2271,104 +2271,289 @@ describe(tst_con.cwritePluginRegistryToDisk, () => {
         let pluginsRegistred = tst_man.expectedListLoadedPlugins;
         D[cfg.cpluginRegistry] = pluginsRegistred;
         D[sys.cbusinessRules] = {
-        [biz.cwriteJsonData]: (inputData, inputMetaData) => fileOperations.writeJsonData(inputData, inputMetaData),
-        [biz.cgetNowMoment]: (inputData, inputMetaData) => timeComputation.getNowMoment(inputData, inputMetaData)
-        }
-        D[wrd.cconfiguration] = {};
-        let dateTimeStamp = await ruleBroker.processRules([gen.cYYYYMMDD_HHmmss_SSS, ''], [biz.cgetNowMoment]);
-        let tempPluginRegistryTestFileName = dateTimeStamp + tst_man.tempPluginRegistryTestFileName;
-        configurator.setConfigurationSetting(wrd.csystem, cfg.cpluginRegistryPath, tst_man.pathForUnitTestWritePluginRegistryToDiskValid + tempPluginRegistryTestFileName);
+            [biz.cwriteJsonData]: (inputData, inputMetaData) => fileOperations.writeJsonData(inputData, inputMetaData),
+            [biz.cgetNowMoment]: (inputData, inputMetaData) => timeComputation.getNowMoment(inputData, inputMetaData),
+            [biz.cdeleteFile]: (inputData, inputMetaData) => fileOperations.deleteFile(inputData, inputMetaData)
+        };
+
+        let dateTimeStamp = await ruleBroker.processRules([gen.cYYYYMMDD + gen.cHHmmss + gen.cSSS, ''], [biz.cgetNowMoment]);
+        let tempPluginRegistryTestFileName = tst_man.tempPluginRegistryTestFileName + dateTimeStamp;
+        let fullTempFilePathRegistryTest = tst_man.pathForUnitTestWritePluginRegistryToDiskValid + tempPluginRegistryTestFileName;
+        await configurator.setConfigurationSetting(wrd.csystem, cfg.cpluginRegistryPath, fullTempFilePathRegistryTest);
 
         // Act
         let returnData = await main.writePluginRegistryToDisk();
+
+        // Assert
+        if (returnData==true) {
+            await ruleBroker.processRules([fullTempFilePathRegistryTest, ''], [biz.cdeleteFile]); // Deletes created file
+        }
+        
+        expect(returnData).toBeTruthy();
+        
+    });
+
+    /**
+     * @function writePluginRegistryToDisk_inValidString
+     * @description Tests the main function writePluginRegistryToDisk with a invalid data string.
+     * @author Vlad Sorokin
+     * @date 2024/02/29
+     */
+    test(tst_con.cwritePluginRegistryToDisk_inValidString, async () => {
+        let pluginsRegistred = tst_man.ctestString1;
+        D[cfg.cpluginRegistry] = pluginsRegistred;
+        D[sys.cbusinessRules] = {
+            [biz.cwriteJsonData]: (inputData, inputMetaData) => fileOperations.writeJsonData(inputData, inputMetaData),
+            [biz.cgetNowMoment]: (inputData, inputMetaData) => timeComputation.getNowMoment(inputData, inputMetaData),
+            [biz.cdeleteFile]: (inputData, inputMetaData) => fileOperations.deleteFile(inputData, inputMetaData)
+        };
+
+        let dateTimeStamp = await ruleBroker.processRules([gen.cYYYYMMDD + gen.cHHmmss + gen.cSSS, ''], [biz.cgetNowMoment]);
+        let tempPluginRegistryTestFileName = dateTimeStamp + tst_man.tempPluginRegistryTestFileName;
+        let fullTempFilePathRegistryTest = tst_man.pathForUnitTestWritePluginRegistryToDiskValid + tempPluginRegistryTestFileName;
+        await configurator.setConfigurationSetting(wrd.csystem, cfg.cpluginRegistryPath, fullTempFilePathRegistryTest);
+
+        // Act
+        let returnData = await main.writePluginRegistryToDisk();
+
+        // Assert
+        if (returnData==true) {
+            await ruleBroker.processRules([fullTempFilePathRegistryTest, ''], [biz.cdeleteFile]); // Deletes created file
+        }
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function writePluginRegistryToDisk_inValidInteger
+     * @description Tests the main function writePluginRegistryToDisk with a invalid data integer.
+     * @author Vlad Sorokin
+     * @date 2024/02/29
+     */
+    test(tst_con.cwritePluginRegistryToDisk_inValidInteger, async () => {
+        // Arrange
+        let pluginsRegistred = 123;
+        D[cfg.cpluginRegistry] = pluginsRegistred;
+        D[sys.cbusinessRules] = {
+            [biz.cwriteJsonData]: (inputData, inputMetaData) => fileOperations.writeJsonData(inputData, inputMetaData),
+            [biz.cgetNowMoment]: (inputData, inputMetaData) => timeComputation.getNowMoment(inputData, inputMetaData),
+            [biz.cdeleteFile]: (inputData, inputMetaData) => fileOperations.deleteFile(inputData, inputMetaData)
+        };
+
+        let dateTimeStamp = await ruleBroker.processRules([gen.cYYYYMMDD + gen.cHHmmss + gen.cSSS, ''], [biz.cgetNowMoment]);
+        let tempPluginRegistryTestFileName = dateTimeStamp + tst_man.tempPluginRegistryTestFileName;
+        let fullTempFilePathRegistryTest = tst_man.pathForUnitTestWritePluginRegistryToDiskValid + tempPluginRegistryTestFileName;
+        await configurator.setConfigurationSetting(wrd.csystem, cfg.cpluginRegistryPath, fullTempFilePathRegistryTest);
+
+        // Act
+        let returnData = await main.writePluginRegistryToDisk();
+
+        // Assert
+        if (returnData==true) {
+            await ruleBroker.processRules([fullTempFilePathRegistryTest, ''], [biz.cdeleteFile]); // Deletes created file
+        }
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function writePluginRegistryToDisk_inValidBoolean
+     * @description Tests the main function writePluginRegistryToDisk with a invalid data boolean.
+     * @author Vlad Sorokin
+     * @date 2024/02/29
+     */
+    test(tst_con.cwritePluginRegistryToDisk_inValidBoolean, async () => {
+        let pluginsRegistred = true;
+        D[cfg.cpluginRegistry] = pluginsRegistred;
+        D[sys.cbusinessRules] = {
+            [biz.cwriteJsonData]: (inputData, inputMetaData) => fileOperations.writeJsonData(inputData, inputMetaData),
+            [biz.cgetNowMoment]: (inputData, inputMetaData) => timeComputation.getNowMoment(inputData, inputMetaData),
+            [biz.cdeleteFile]: (inputData, inputMetaData) => fileOperations.deleteFile(inputData, inputMetaData)
+        };
+
+        let dateTimeStamp = await ruleBroker.processRules([gen.cYYYYMMDD + gen.cHHmmss + gen.cSSS, ''], [biz.cgetNowMoment]);
+        let tempPluginRegistryTestFileName = dateTimeStamp + tst_man.tempPluginRegistryTestFileName;
+        let fullTempFilePathRegistryTest = tst_man.pathForUnitTestWritePluginRegistryToDiskValid + tempPluginRegistryTestFileName;
+        await configurator.setConfigurationSetting(wrd.csystem, cfg.cpluginRegistryPath, fullTempFilePathRegistryTest);
+
+        // Act
+        let returnData = await main.writePluginRegistryToDisk();
+
+        // Assert
+        if (returnData==true) {
+            await ruleBroker.processRules([fullTempFilePathRegistryTest, ''], [biz.cdeleteFile]); // Deletes created file
+        }
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function writePluginRegistryToDisk_inValidUndefined
+     * @description Tests the main function writePluginRegistryToDisk with a invalid data undefined.
+     * @author Vlad Sorokin
+     * @date 2024/02/29
+     */
+    test(tst_con.cwritePluginRegistryToDisk_inValidUndefined, async () => {
+        let pluginsRegistred = undefined;
+        D[cfg.cpluginRegistry] = pluginsRegistred;
+        D[sys.cbusinessRules] = {
+            [biz.cwriteJsonData]: (inputData, inputMetaData) => fileOperations.writeJsonData(inputData, inputMetaData),
+            [biz.cgetNowMoment]: (inputData, inputMetaData) => timeComputation.getNowMoment(inputData, inputMetaData),
+            [biz.cdeleteFile]: (inputData, inputMetaData) => fileOperations.deleteFile(inputData, inputMetaData)
+        };
+
+        let dateTimeStamp = await ruleBroker.processRules([gen.cYYYYMMDD + gen.cHHmmss + gen.cSSS, ''], [biz.cgetNowMoment]);
+        let tempPluginRegistryTestFileName = dateTimeStamp + tst_man.tempPluginRegistryTestFileName;
+        let fullTempFilePathRegistryTest = tst_man.pathForUnitTestWritePluginRegistryToDiskValid + tempPluginRegistryTestFileName;
+        await configurator.setConfigurationSetting(wrd.csystem, cfg.cpluginRegistryPath, fullTempFilePathRegistryTest);
+
+        // Act
+        let returnData = await main.writePluginRegistryToDisk();
+
+        // Assert
+        if (returnData==true) {
+            await ruleBroker.processRules([fullTempFilePathRegistryTest, ''], [biz.cdeleteFile]); // Deletes created file
+        }
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function writePluginRegistryToDisk_inValidNaN
+     * @description Tests the main function writePluginRegistryToDisk with a invalid data NaN.
+     * @author Vlad Sorokin
+     * @date 2024/02/29
+     */
+    test(tst_con.cwritePluginRegistryToDisk_inValidNaN, async () => {
+        let pluginsRegistred = NaN;
+        D[cfg.cpluginRegistry] = pluginsRegistred;
+        D[sys.cbusinessRules] = {
+            [biz.cwriteJsonData]: (inputData, inputMetaData) => fileOperations.writeJsonData(inputData, inputMetaData),
+            [biz.cgetNowMoment]: (inputData, inputMetaData) => timeComputation.getNowMoment(inputData, inputMetaData),
+            [biz.cdeleteFile]: (inputData, inputMetaData) => fileOperations.deleteFile(inputData, inputMetaData)
+        };
+
+        let dateTimeStamp = await ruleBroker.processRules([gen.cYYYYMMDD + gen.cHHmmss + gen.cSSS, ''], [biz.cgetNowMoment]);
+        let tempPluginRegistryTestFileName = dateTimeStamp + tst_man.tempPluginRegistryTestFileName;
+        let fullTempFilePathRegistryTest = tst_man.pathForUnitTestWritePluginRegistryToDiskValid + tempPluginRegistryTestFileName;
+        await configurator.setConfigurationSetting(wrd.csystem, cfg.cpluginRegistryPath, fullTempFilePathRegistryTest);
+
+        // Act
+        let returnData = await main.writePluginRegistryToDisk();
+
+        // Assert
+        if (returnData==true) {
+            await ruleBroker.processRules([fullTempFilePathRegistryTest, ''], [biz.cdeleteFile]); // Deletes created file
+        }
+        expect(returnData).toBeFalsy();
+    });
+})
+
+/**
+ * @function loadPlugin
+ * @description Tests the positive and negative test cases of the loadPlugin
+ * @author Vlad Sorokin
+ * @date 2024/03/14
+ */
+describe(tst_con.cloadPlugin, () => {
+    /**
+     * @function loadPlugin_validPluginPathData
+     * @description Tests the main function loadPlugin with a valid input.
+     * @author Vlad Sorokin
+     * @date 2024/03/14
+     */
+    test(tst_con.cloadPlugin_validData, async () => {
+        // Arrange
+        let pluginPath = tst_man.pluginPath;
+        D[sys.cbusinessRules] = {
+            [biz.cgetJsonData]: (inputData, inputMetaData) => fileOperations.getJsonData(inputData, inputMetaData),
+            [biz.cobjectDeepClone]: (inputData, inputMetaData) => dataArrayParsing.objectDeepClone(inputData, inputMetaData)
+        };
+        // Act
+        let returnData = await main.loadPlugin(pluginPath);
 
         // Assert
         expect(returnData).toBeTruthy();
     });
 
     // /**
-    //  * @function writePluginRegistryToDisk_inValidString
-    //  * @description Tests the main function writePluginRegistryToDisk with a invalid data string.
+    //  * @function loadPlugin_inValidPluginPathString
+    //  * @description Tests the main function loadPlugin with a invalid data string.
     //  * @author Vlad Sorokin
-    //  * @date 2024/02/29
+    //  * @date 2024/03/14
     //  */
-    // test(tst_con.cwritePluginRegistryToDisk_inValidString, async () => {
+    // test(tst_con.cloadPlugin_inValidPluginPathString, async () => {
     //     // Arrange
         
 
     //     // Act
-    //     let returnData = await main.writePluginRegistryToDisk();
+    //     let returnData = await main.loadPlugin();
 
     //     // Assert
     //     expect(returnData).toBeFalsy();
     // });
 
     // /**
-    //  * @function writePluginRegistryToDisk_inValidInteger
-    //  * @description Tests the main function writePluginRegistryToDisk with a invalid data integer.
+    //  * @function loadPlugin_inValidPluginPathInteger
+    //  * @description Tests the main function loadPlugin with a invalid data integer.
     //  * @author Vlad Sorokin
-    //  * @date 2024/02/29
+    //  * @date 2024/03/14
     //  */
-    // test(tst_con.cwritePluginRegistryToDisk_inValidInteger, async () => {
+    // test(tst_con.cloadPlugin_inValidPluginPathInteger, async () => {
     //     // Arrange
         
 
     //     // Act
-    //     let returnData = await main.writePluginRegistryToDisk();
+    //     let returnData = await main.loadPlugin();
 
     //     // Assert
     //     expect(returnData).toBeFalsy();
     // });
 
     // /**
-    //  * @function writePluginRegistryToDisk_inValidBoolean
-    //  * @description Tests the main function writePluginRegistryToDisk with a invalid data boolean.
+    //  * @function loadPlugin_inValidPluginPathBoolean
+    //  * @description Tests the main function loadPlugin with a invalid data boolean.
     //  * @author Vlad Sorokin
-    //  * @date 2024/02/29
+    //  * @date 2024/03/14
     //  */
-    // test(tst_con.cwritePluginRegistryToDisk_inValidBoolean, async () => {
+    // test(tst_con.cloadPlugin_inValidPluginPathBoolean, async () => {
     //     // Arrange
         
 
     //     // Act
-    //     let returnData = await main.writePluginRegistryToDisk();
+    //     let returnData = await main.loadPlugin();
 
     //     // Assert
     //     expect(returnData).toBeFalsy();
     // });
 
     // /**
-    //  * @function writePluginRegistryToDisk_inValidUndefined
-    //  * @description Tests the main function writePluginRegistryToDisk with a invalid data undefined.
+    //  * @function loadPlugin_inValidPluginPathUndefined
+    //  * @description Tests the main function loadPlugin with a invalid data undefined.
     //  * @author Vlad Sorokin
-    //  * @date 2024/02/29
+    //  * @date 2024/03/14
     //  */
-    // test(tst_con.cwritePluginRegistryToDisk_inValidUndefined, async () => {
+    // test(tst_con.cloadPlugin_inValidPluginPathUndefined, async () => {
     //     // Arrange
         
 
     //     // Act
-    //     let returnData = await main.writePluginRegistryToDisk();
+    //     let returnData = await main.loadPlugin();
 
     //     // Assert
     //     expect(returnData).toBeFalsy();
     // });
 
     // /**
-    //  * @function writePluginRegistryToDisk_inValidNaN
-    //  * @description Tests the main function writePluginRegistryToDisk with a invalid data NaN.
+    //  * @function loadPlugin_inValidPluginPathNaN
+    //  * @description Tests the main function loadPlugin with a invalid data NaN.
     //  * @author Vlad Sorokin
-    //  * @date 2024/02/29
+    //  * @date 2024/03/14
     //  */
-    // test(tst_con.cwritePluginRegistryToDisk_inValidNaN, async () => {
+    // test(tst_con.cloadPlugin_inValidPluginPathNaN, async () => {
     //     // Arrange
         
 
     //     // Act
-    //     let returnData = await main.writePluginRegistryToDisk();
+    //     let returnData = await main.loadPlugin();
 
     //     // Assert
     //     expect(returnData).toBeFalsy();
     // });
 })
-

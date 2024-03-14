@@ -330,7 +330,7 @@ input pluginsListArray: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: syncPluginRegistryWithPath_validData
-output: boolean (True or False to indicate if the synchronization was performed successfully or not)
+output: boolean (True or False to indicate if the synchronization was performed successfully or not)C:\WINDOWS\system32
 --------------------------------------------------------------------------------
 testName: clearAllPluginRegistry_validData
 output: boolean (True or False to indicate if the plugin registry data hive was cleared successfully or not)

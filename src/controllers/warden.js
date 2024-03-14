@@ -690,10 +690,16 @@ async function loadPlugin(pluginPath) {
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // pluginPath is:
   await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginPathIs + pluginPath);
+  console.log(msg.cpluginPathIs + pluginPath);
   let returnData = false;
   let pluginPathArray = [];
-  pluginPathArray[0] = pluginPath;
-  returnData = await loadPlugins(pluginPathArray);
+  if (pluginPath && typeof pluginPath === wrd.cstring) {
+    pluginPathArray[0] = pluginPath;
+    returnData = await loadPlugins(pluginPathArray);
+  } else {
+    // ERROR: Plugin Path is an invalid value: 
+    console.log('Plugin Path is an invalid value: ' + pluginPath);
+  }
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;

@@ -10,6 +10,7 @@
 
 // External imports
 import hayConst from '@haystacks/constants';
+import { basicConstantsValidation } from '@haystacks/constants/src/constantsValidation/basic.constants.validation';
 const {bas, gen, wrd} = hayConst;
 
 
@@ -61,16 +62,16 @@ export const cclientThemesPathInputValue = bas.cForwardSlash + wrd.ctest + bas.c
 
 // Test Configuration String Expected Values
 export const cclientMetaDataPathChangedExpectedValue1 = wrd.cmeta + wrd.cData + gen.cDotjson; // metaData.json
-export const cclientMetaDataPathChangedExpectedValue2 = bas.cBackSlash + wrd.ctest + bas.cBackSlash + wrd.cunit + wrd.cTest + bas.cBackSlash + wrd.ctest + wrd.cData + bas.cBackSlash + wrd.cresources + bas.cBackSlash + wrd.cmeta + wrd.cData + gen.cDotjson; // test\unitTest\testData\resources\metaData.json
-export const cframeworkCommandAliasesPathExpectedValue = bas.cBackSlash + bas.cDoubleForwardSlash + wrd.csrc + bas.cDoubleForwardSlash + wrd.cresources + bas.cDoubleForwardSlash + wrd.ccommands + bas.cDoubleForwardSlash; // //src//resources//commands//
-export const cframeworkConfigPathExpectedValue = bas.cBackSlash + bas.cDoubleForwardSlash + wrd.csrc + bas.cDoubleForwardSlash + wrd.cresources + bas.cDoubleForwardSlash + wrd.cconfiguration + bas.cDoubleForwardSlash; // //src//resources//configuration//
-export const cframeworkConstantsPathExpectedLinkedValue = bas.cBackSlash + wrd.csrc + bas.cForwardSlash + wrd.cconstants + bas.cForwardSlash; // /src/constants/
+export const cclientMetaDataPathChangedExpectedValue2 = bas.cBackSlash + wrd.ctest + bas.cBackSlash + wrd.cunit + wrd.cTest + bas.cBackSlash + wrd.ctest + wrd.cData + bas.cBackSlash + wrd.cresources + bas.cBackSlash + wrd.cmeta + wrd.cData + gen.cDotjson; // \\test\unitTest\testData\resources\metaData.json
+export const cframeworkCommandAliasesPathExpectedValue = bas.cBackSlash + bas.cDoubleForwardSlash + wrd.csrc + bas.cDoubleForwardSlash + wrd.cresources + bas.cDoubleForwardSlash + wrd.ccommands + bas.cDoubleForwardSlash; // \\src//resources//commands//
+export const cframeworkConfigPathExpectedValue = bas.cBackSlash + bas.cDoubleForwardSlash + wrd.csrc + bas.cDoubleForwardSlash + wrd.cresources + bas.cDoubleForwardSlash + wrd.cconfiguration + bas.cDoubleForwardSlash; // \\src//resources//configuration//
+export const cframeworkConstantsPathExpectedLinkedValue = bas.cBackSlash + wrd.csrc + bas.cForwardSlash + wrd.cconstants + bas.cForwardSlash; // \\src/constants/
 // smuggle something cframeworkConstantsPathExpectedUnlinkedValue = bas.cBackSlash + wrd.cnode + bas.cUnderscore + wrd.cmodules + bas.cBackSlash + bas.cAt + wrd.chaystacks + bas.cBackSlash + wrd.cconstanst + bas.cBackSlash + wrd.csrc + bas.cForwardSlash + wrd.cconstants + bas.cForwardSlash; // node_modules\@haystacks\constants\src/constants/
 export const cframeworkFullMetaDataPathExpectedValue = bas.cBackSlash + wrd.csrc + bas.cBackSlash + wrd.cresources + bas.cBackSlash + wrd.cmeta + wrd.cData + gen.cDotjson; // \\resources\\metaData.json
 export const cframeworkResourcesPathExpectedValue = bas.cBackSlash + wrd.csrc + bas.cBackSlash + wrd.cresources + bas.cBackSlash; // \\src\resources\
 export const cframeworkThemesPathExpectedValue = bas.cBackSlash + bas.cDoubleForwardSlash + wrd.csrc + bas.cDoubleForwardSlash + wrd.cresources + bas.cDoubleForwardSlash + wrd.cthemes + bas.cDoubleForwardSlash; // //src//resources//themes//
 export const cframeworkWorkflowsPathExpectedValue = bas.cBackSlash + bas.cDoubleForwardSlash + wrd.csrc + bas.cDoubleForwardSlash + wrd.cresources + bas.cDoubleForwardSlash + wrd.cworkflows + bas.cDoubleForwardSlash; // //src//resources//workflows//
-export const cpluginCommandAliasesPathExpectedValue = bas.cDoubleForwardSlash + wrd.cresources + bas.cDoubleForwardSlash + wrd.ccommands + bas.cDoubleForwardSlash; // resources//commands//
+export const cpluginCommandAliasesPathExpectedValue = bas.cDoubleForwardSlash + wrd.cresources + bas.cDoubleForwardSlash + wrd.ccommands + bas.cDoubleForwardSlash; // //resources//commands//
 export const cpluginFullMetaDataPathExpectedValue = bas.cBackSlash + wrd.cresources + bas.cBackSlash + wrd.cmeta + wrd.cData + gen.cDotjson; // \\haystacks-async\\resources\\metaData.json
 export const cpluginReleaseResourcesPathExpectedValue = wrd.cbin + bas.cBackSlash + wrd.cresources + bas.cBackSlash; // bin\resources\
 export const cpluginResourcesPathExpectedValue = bas.cBackSlash + wrd.cresources + bas.cBackSlash; // \\haystacks-async\resources\

@@ -241,7 +241,15 @@ export const testConstantsValidation = [
     {Name: 'cclearAllPluginRegistry_inValidInteger', Actual: tst_con.cclearAllPluginRegistry_inValidInteger, Expected: 'clearAllPluginRegistry_inValidInteger'},
     {Name: 'cclearAllPluginRegistry_inValidBoolean', Actual: tst_con.cclearAllPluginRegistry_inValidBoolean, Expected: 'clearAllPluginRegistry_inValidBoolean'},
     {Name: 'cclearAllPluginRegistry_inValidUndefined', Actual: tst_con.cclearAllPluginRegistry_inValidUndefined, Expected: 'clearAllPluginRegistry_inValidUndefined'},
-    {Name: 'cclearAllPluginRegistry_inValidNaN', Actual: tst_con.cclearAllPluginRegistry_inValidNaN, Expected: 'clearAllPluginRegistry_inValidNaN'}
+    {Name: 'cclearAllPluginRegistry_inValidNaN', Actual: tst_con.cclearAllPluginRegistry_inValidNaN, Expected: 'clearAllPluginRegistry_inValidNaN'},
+
+    {Name: 'cwritePluginRegistryToDisk', Actual: tst_con.cwritePluginRegistryToDisk, Expected: 'writePluginRegistryToDisk'},
+    {Name: 'cwritePluginRegistryToDisk_validData', Actual: tst_con.cwritePluginRegistryToDisk_validData, Expected: 'writePluginRegistryToDisk_validData'},
+    {Name: 'cwritePluginRegistryToDisk_inValidString', Actual: tst_con.cwritePluginRegistryToDisk_inValidString, Expected: 'writePluginRegistryToDisk_inValidString'},
+    {Name: 'cwritePluginRegistryToDisk_inValidInteger', Actual: tst_con.cwritePluginRegistryToDisk_inValidInteger, Expected: 'writePluginRegistryToDisk_inValidInteger'},
+    {Name: 'cwritePluginRegistryToDisk_inValidBoolean', Actual: tst_con.cwritePluginRegistryToDisk_inValidBoolean, Expected: 'writePluginRegistryToDisk_inValidBoolean'},
+    {Name: 'cwritePluginRegistryToDisk_inValidUndefined', Actual: tst_con.cwritePluginRegistryToDisk_inValidUndefined, Expected: 'writePluginRegistryToDisk_inValidUndefined'},
+    {Name: 'cwritePluginRegistryToDisk_inValidNaN', Actual: tst_con.cwritePluginRegistryToDisk_inValidNaN, Expected: 'writePluginRegistryToDisk_inValidNaN'}
 
     // Test names
 

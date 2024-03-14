@@ -233,7 +233,7 @@
   "debugFunctions|debugSetting.framework.brokers.pluginBroker.extractAndProcessPluginEntryPointURI@FunctionFontBackgroundColor": "Default",
   "debugFunctions|debugSetting.framework.brokers.pluginBroker.extractAndProcessPluginEntryPointURI@MessageFontBackgroundColor": "Default",
   "debugFunctions|debugSetting.framework.brokers.pluginBroker.extractAndProcessPluginEntryPointURI@DataFontBackgroundColor": "Default",
-  "debugFunctions|debugSetting.framework.brokers.pluginBroker.loadPlugin": false,
+  "debugFunctions|debugSetting.framework.brokers.pluginBroker.loadPlugin": true,
   "debugFunctions|debugSetting.framework.brokers.pluginBroker.loadPlugin@ModuleFontStyle": "Default",
   "debugFunctions|debugSetting.framework.brokers.pluginBroker.loadPlugin@FunctionFontStyle": "Default",
   "debugFunctions|debugSetting.framework.brokers.pluginBroker.loadPlugin@MessageFontStyle": "Default",

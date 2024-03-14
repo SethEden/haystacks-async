@@ -220,7 +220,7 @@
   "debugFunctions|debugSetting.framework.controllers.chiefPlugin.loadAllPluginsExecutionPaths@FunctionFontBackgroundColor": "Default",
   "debugFunctions|debugSetting.framework.controllers.chiefPlugin.loadAllPluginsExecutionPaths@MessageFontBackgroundColor": "Default",
   "debugFunctions|debugSetting.framework.controllers.chiefPlugin.loadAllPluginsExecutionPaths@DataFontBackgroundColor": "Default",
-  "debugFunctions|debugSetting.framework.controllers.chiefPlugin.loadAllPlugins": false,
+  "debugFunctions|debugSetting.framework.controllers.chiefPlugin.loadAllPlugins": true,
   "debugFunctions|debugSetting.framework.controllers.chiefPlugin.loadAllPlugins@ModuleFontStyle": "Default",
   "debugFunctions|debugSetting.framework.controllers.chiefPlugin.loadAllPlugins@FunctionFontStyle": "Default",
   "debugFunctions|debugSetting.framework.controllers.chiefPlugin.loadAllPlugins@MessageFontStyle": "Default",

@@ -599,12 +599,16 @@ async function savePluginRegistry() {
   // pluginRegistry is:
   await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginRegistryIs + JSON.stringify(pluginRegistry));
   try {
-    let pluginRegistryPath = await configurator.getConfigurationSetting(wrd.csystem, cfg.cpluginRegistryPath);
-    // pluginRegistryPath is:
-    console.log(msg.cpluginRegistryPathIs + pluginRegistryPath);
-    await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginRegistryPathIs + pluginRegistryPath);
-    // console.log("pluginRegistry is: " + pluginRegistry);
-    returnData = await ruleBroker.processRules([pluginRegistryPath, pluginRegistry], [biz.cwriteJsonData]);
+    if (pluginRegistry && Array.isArray(pluginRegistry)) {
+        let pluginRegistryPath = await configurator.getConfigurationSetting(wrd.csystem, cfg.cpluginRegistryPath);
+        // pluginRegistryPath is:
+        await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginRegistryPathIs + pluginRegistryPath);
+        // console.log("pluginRegistry is: " + pluginRegistry);
+        returnData = await ruleBroker.processRules([pluginRegistryPath, pluginRegistry], [biz.cwriteJsonData]);
+    } else {
+      // ERROR: pluginRegistry is an invalid value: 
+      console.log(msg.cErrorSavePluginRegistryMessage02 + pluginRegistry);
+    }
   } catch (err) {
     // ERROR: Failure to write out the plugin registry to the plugin path specified by the application:
     // error message:
@@ -769,7 +773,6 @@ async function loadPlugin(pluginExecutionPath) {
           return result;
         });
       };
-
       const myDynamicImport = async (path) => {
         return await import(path);
       };
@@ -779,7 +782,6 @@ async function loadPlugin(pluginExecutionPath) {
         loggers.consoleLog(namespacePrefix + functionName, msg.cdataLoadedIs + JSON.stringify(returnData));
       }).catch (err => reject(err));
     });
-
     await Promise.all([pluginResponseData]).then((value) => {
       loggers.consoleLog(namespacePrefix + functionName, msg.cvalueIs + JSON.stringify(value));
     });
