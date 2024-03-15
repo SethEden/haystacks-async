@@ -690,7 +690,6 @@ async function loadPlugin(pluginPath) {
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // pluginPath is:
   await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginPathIs + pluginPath);
-  console.log(msg.cpluginPathIs + pluginPath);
   let returnData = false;
   let pluginPathArray = [];
   if (pluginPath && typeof pluginPath === wrd.cstring) {

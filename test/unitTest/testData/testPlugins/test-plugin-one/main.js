@@ -33,27 +33,7 @@ const {cfg, wrd} = hayConst;
  * @date 2022/05/12
  */
 async function initializePlugin(inputMetaData) {
-    // let functionName = initializePlugin.name;
-    // await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-    // await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
-    // rootPath = url.fileURLToPath(path.dirname(import.meta.url));
-    // let pathSeparator = '';
-    // if (process.platform === gen.cwin32) {
-    //     pathSeparator = bas.cBackSlash;
-    // } else {
-    //     pathSeparator = bas.cForwardSlash;
-    // }
-    // let rootPathArray = rootPath.split(pathSeparator);
-    // rootPathArray.pop(); // Remove any bin or src folder from the path.
-    // rootPath = rootPathArray.join(pathSeparator);
-    // // await loggers.consoleLog(namespacePrefix + functionName, msg.crootPathIs + rootPath);
-    // pluginConfig[sys.cpluginBusinessRules] = await warden.initPluginRules();
-    // pluginConfig[sys.cpluginCommands] = await warden.initPluginCommands();
-    // await warden.initPluginSchema(pluginConfig);
-    D[wrd.cdata][cfg.cpluginData] = {};
     let returnData = D;
-    // await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
-    // await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
     return returnData;
 }
 

@@ -168,7 +168,6 @@ async function length(stackNameSpace) {
   let returnData = -1;
   if (D[stackNameSpace] !== undefined) {
     returnData = D[stackNameSpace].length;
-    console.log(returnData);
   } else {
     // WARNING: Stack:
     // does not exists!
