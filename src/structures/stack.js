@@ -84,7 +84,7 @@ async function push(stackNameSpace, value) {
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cstackNameSpaceIs + stackNameSpace);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cvalueIs + JSON.stringify(value));
-  if (D[stackNameSpace] !== undefined) {
+  if (D[stackNameSpace]) {
     D[stackNameSpace].push(value);
   } else {
     // WARNING: Stack:

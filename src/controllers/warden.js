@@ -738,9 +738,9 @@ async function loadPlugins(pluginsPaths) {
 
 /**
  * @function loadPluginsFromRegistry
- * @description Calls the plugin initializePlugin function to get teh plugin data, for each of the plugins and their paths from the plugin registry.
+ * @description Calls the plugin initializePlugin function to get the plugin data, for each of the plugins and their paths from the plugin registry.
  * Business rules, Commands, Workflows, Constants, Configurations, dependencies list (dependant plugins), etc...
- * @return {boolean} True or False to ndicate if all the plugins were loaded or not.
+ * @return {boolean} True or False to indicate if all the plugins were loaded or not.
  * @author Seth Hollingsead
  * @date 2022/09/16
  */
@@ -784,7 +784,7 @@ async function unloadPlugin(pluginName) {
 
 /**
  * @function unloadPlugins
- * @description Calls various functions n the chiefPlugin and pluginBroker to unload and remove all the metaData and data for a list of plugins:
+ * @description Calls various functions in the chiefPlugin and pluginBroker to unload and remove all the metaData and data for a list of plugins:
  * Business rules, Commands, Workflows, Constants, Configurations, dependencies list (dependant plugins), etc...
  * @param {array<string>} pluginNames An array ist of names of plugins that should be unloaded.
  * @return {boolean} True or False to indicate if all the plugins were unloaded successfully or not.

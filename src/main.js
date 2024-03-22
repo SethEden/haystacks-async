@@ -613,8 +613,8 @@ async function loadPlugins(pluginsPaths) {
 /**
  * @function loadPluginsFromRegistry
  * @description A wrapper call to warden.loadPluginsFromRegistry function.
- * Calls various functions in the chief Plugin and pluginBroker to oad plugin metaData and data:
- * Business rules, Commands, Workflows, Constants, Configurations, dependencies ist (dependant plugns), etc...
+ * Calls various functions in the chief Plugin and pluginBroker to load plugin metaData and data:
+ * Business rules, Commands, Workflows, Constants, Configurations, dependencies list (dependant plugns), etc...
  * @return {boolean} True or False to indicate if all the plugins were loaded or not.
  * @author Seth Hollingsead
  * @date 2022/09/16

@@ -627,7 +627,7 @@ async function savePluginRegistry() {
  * @param {string} pluginPath The path to a plugin where a package.json should be expected to be found for that plugin.
  * It could also be that the pluginPath just contains the name of the folder that is the plugin,
  * and the path should be acquired from the plugin registry path.
- * @return {object} The JSON data object loaded from the plugin package.json file, specified by the input parameter.
+ * @return {object|} The JSON data object loaded from the plugin package.json file, specified by the input parameter or false if the path error is encountered.
  * @author Seth Hollingsead
  * @date 2022/09/02
  */
@@ -638,29 +638,40 @@ async function loadPluginMetaData(pluginPath) {
   await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginPathIs + pluginPath);
   let returnData = {};
   let fullyQualifiedPluginPath = '';
+  let encounteredPathError = false;
   if (pluginPath.includes(bas.cForwardSlash) !== true && pluginPath.includes(bas.cBackSlash) !== true) {
     // It's just a name, we need to get the first part of the path from the plugin registry path.
     let prefixPluginPath = await getPluginsRegistryPath();
     // prefixPluginPath is:
     await loggers.consoleLog(namespacePrefix + functionName, msg.cprefixPluginPathIs + prefixPluginPath);
-    if (prefixPluginPath.slice(-1) != bas.cForwardSlash && prefixPluginPath.slice(-1) != bas.cBackSlash) {
-      let pathSeparator = '';
-      // eslint-disable-next-line no-undef
-      if (process.platform === gen.cwin32) {
-        pathSeparator = bas.cBackSlash;
-      } else {
-        pathSeparator = bas.cForwardSlash;
+    if (prefixPluginPath !== false) {
+      if (prefixPluginPath.slice(-1) != bas.cForwardSlash && prefixPluginPath.slice(-1) != bas.cBackSlash) {
+        let pathSeparator = '';
+        // eslint-disable-next-line no-undef
+        if (process.platform === gen.cwin32) {
+          pathSeparator = bas.cBackSlash;
+        } else {
+          pathSeparator = bas.cForwardSlash;
+        }
+        prefixPluginPath = prefixPluginPath + pathSeparator;
       }
-      prefixPluginPath = prefixPluginPath + pathSeparator;
+      fullyQualifiedPluginPath = prefixPluginPath + pluginPath;
+    } else {
+      encounteredPathError = true;
     }
-    fullyQualifiedPluginPath = prefixPluginPath + pluginPath;
   } else {
     fullyQualifiedPluginPath = pluginPath;
   }
-  let resolvedPluginPath = path.resolve(fullyQualifiedPluginPath + bas.cForwardSlash + sys.cpackageDotJson);
-  // resolvedPluginPath is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cresolvedPluginPathIs + resolvedPluginPath);
-  returnData = await ruleBroker.processRules([resolvedPluginPath, ''], [biz.cgetJsonData]);
+  if (encounteredPathError === false) {
+    let resolvedPluginPath = path.resolve(fullyQualifiedPluginPath + bas.cForwardSlash + sys.cpackageDotJson);
+    // resolvedPluginPath is:
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cresolvedPluginPathIs + resolvedPluginPath);
+    returnData = await ruleBroker.processRules([resolvedPluginPath, ''], [biz.cgetJsonData]);
+  } else {
+    // ERROR: prefixPluginPath is an undefined string.
+    console.log('ERROR: prefixPluginPath is an undefined string.');
+    returnData = false;
+  }
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
@@ -1062,19 +1073,22 @@ async function unloadPlugin(pluginName) {
 /**
  * @function getPluginsRegistryPath
  * @description Looks up the plugin registry meta-data and finds the attribute that contains the plugins path.
- * @return {string} The path to the plugins listed in the plugin registry as meta-data.
+ * @return {string|boolean} The path to the plugins listed in the plugin registry as meta-data or false if none is found.
  * @author Seth Hollingsead
  * @date 2023/02/07
  */
 async function getPluginsRegistryPath() {
   let functionName = getPluginsRegistryPath.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  let returnData = '';
+  let returnData = false;
   if (D[cfg.cpluginRegistry] !== 'undefined') {
     returnData = D[cfg.cpluginRegistry][wrd.cpath]
   } else {
     // ERROR: There is no defined plugin registry.
     console.log(msg.cErrorGetPluginsRegistryPathMessage01);
+  }
+  if (returnData === 'undefined' || returnData === undefined) {
+    returnData = false; // Reset it to false just in case in an event of an error
   }
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);

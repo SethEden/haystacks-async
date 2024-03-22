@@ -102,7 +102,7 @@ export const listAllPluginsInRegistry = {
 };
 
 export const listAllPluginsInRegistryExpected = [tst_sys.cplugin_one, tst_sys.cplugin_three, tst_sys.cplugin_two];
-export const pluginPath = bas.cC + bas.cColon + bas.cDoubleForwardSlash + wrd.chaystacks + bas.cDash + wrd.casync + bas.cDoubleForwardSlash + wrd.ctest + bas.cDoubleForwardSlash + wrd.cunit + wrd.cTest + bas.cDoubleForwardSlash + wrd.ctest + wrd.cData + bas.cDoubleForwardSlash + wrd.ctest + wrd.cPlugins + bas.cDoubleForwardSlash + wrd.ctest + bas.cDash + wrd.cplugin + bas.cDash + num.cone + bas.cDoubleForwardSlash;
+export const testPluginPath = rootPathAsync + bas.cDoubleForwardSlash + wrd.ctest + bas.cDoubleForwardSlash + wrd.cunit + wrd.cTest + bas.cDoubleForwardSlash + wrd.ctest + wrd.cData + bas.cDoubleForwardSlash + wrd.ctest + wrd.cPlugins + bas.cDoubleForwardSlash + wrd.ctest + bas.cDash + wrd.cplugin + bas.cDash + num.cone + bas.cDoubleForwardSlash;
 export const pluginsPath = rootPathHayPlugins;
 export const pluginsPathObject = {[wrd.cpath]: pluginsPath};
 export const listLoadedPlugins = [[tst_sys.cplugin_one, true], [tst_sys.cplugin_three, true], [tst_sys.cplugin_two, true]];
@@ -111,6 +111,16 @@ export const listAllPluginsInRegistryBusinessRule = {[biz.cgetDirectoryList]: (i
 export const pluginNameToUse = tst_sys.cplugin_one;
 export const pathForUnitTestWritePluginRegistryToDiskValid = rootPathAsync + tst_cfg.cpathToTheTempFolderForUnitTests;
 export const tempPluginRegistryTestFileName = wrd.ctemp + wrd.cPlugin + wrd.cRegistry + wrd.cTest + gen.cDotjson;
+
+export const listPluginInRegistry = {
+    [wrd.cplugins]: [{
+            ["test-plugin-one"]: {
+                [wrd.cName]: "test-plugin-one",
+                [wrd.cPath]: testPluginPath
+            }
+        }
+    ]
+};
 
 /**
  * @function testHelloWorld
