@@ -2462,30 +2462,30 @@ describe(tst_con.cwritePluginRegistryToDisk, () => {
  * @date 2024/03/14
  */
 describe(tst_con.cloadPlugin, () => {
-    // /**
-    //  * @function loadPlugin_validPluginPathData
-    //  * @description Tests the main function loadPlugin with a valid input.
-    //  * @author Vlad Sorokin
-    //  * @date 2024/03/14
-    //  */
-    // test(tst_con.cloadPlugin_validData, async () => {
-    //     // Arrange
-    //     let pluginPath = tst_man.testPluginPath;
-    //     D[sys.cbusinessRules] = {
-    //         [biz.cgetJsonData]: (inputData, inputMetaData) => fileOperations.getJsonData(inputData, inputMetaData),
-    //         [biz.cobjectDeepClone]: (inputData, inputMetaData) => dataArrayParsing.objectDeepClone(inputData, inputMetaData)
-    //     };
-    //     D[sys.cCommandsAliases] = {};
-    //     D[sys.cCommandWorkflows] = {};
-    //     D[wrd.cThemes] = {};
-    //     D[sys.cpluginsLoaded] = [{}];
+    /**
+     * @function loadPlugin_validPluginPathData
+     * @description Tests the main function loadPlugin with a valid input.
+     * @author Vlad Sorokin
+     * @date 2024/03/14
+     */
+    test(tst_con.cloadPlugin_validData, async () => {
+        // Arrange
+        let pluginPath = tst_man.testPluginPath;
+        D[sys.cbusinessRules] = {
+            [biz.cgetJsonData]: (inputData, inputMetaData) => fileOperations.getJsonData(inputData, inputMetaData),
+            [biz.cobjectDeepClone]: (inputData, inputMetaData) => dataArrayParsing.objectDeepClone(inputData, inputMetaData)
+        };
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+        D[sys.cpluginsLoaded] = [{}];
 
-    //     // Act
-    //     let returnData = await main.loadPlugin(pluginPath);
+        // Act
+        let returnData = await main.loadPlugin(pluginPath);
 
-    //     // Assert
-    //     expect(returnData).toBeTruthy();
-    // });
+        // Assert
+        expect(returnData).toBeTruthy();
+    });
 
     /**
      * @function loadPlugin_inValidPluginPathString

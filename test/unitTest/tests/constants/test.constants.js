@@ -252,6 +252,16 @@ export const cwritePluginRegistryToDisk_inValidBoolean = cwritePluginRegistryToD
 export const cwritePluginRegistryToDisk_inValidUndefined = cwritePluginRegistryToDisk + bas.cUnderscore + wrd.cin + wrd.cValid + 'Undefined'; // cwritePluginRegistryToDisk_inValidUndefined
 export const cwritePluginRegistryToDisk_inValidNaN = cwritePluginRegistryToDisk + bas.cUnderscore + wrd.cin + wrd.cValid + 'NaN'; // cwritePluginRegistryToDisk_inValidNaN
 
+// loadPlugin
+export const cloadPlugin = wrd.cload + wrd.cPlugin; // loadPlugin
+export const cloadPlugin_validData = cloadPlugin + bas.cUnderscore + wrd.cvalid + wrd.cData; // loadPlugin_validData
+export const cloadPlugin_inValidPluginPathString = cloadPlugin + bas.cUnderscore + wrd.cinvalid + wrd.cData + wrd.cString; // loadPlugin_inValidPluginPathString
+export const cloadPlugin_inValidPluginPathInteger = cloadPlugin + bas.cUnderscore + wrd.cinvalid + wrd.cData + wrd.cInteger; // loadPlugin_inValidPluginPathInteger
+export const cloadPlugin_inValidPluginPathBoolean = cloadPlugin + bas.cUnderscore + wrd.cinvalid + wrd.cData + wrd.cBoolean; // loadPlugin_inValidPluginPathBoolean
+export const cloadPlugin_inValidPluginPathUndefined = cloadPlugin + bas.cUnderscore + wrd.cinvalid + wrd.cData + 'Undefined'; // loadPlugin_inValidPluginPathUndefined
+export const cloadPlugin_inValidPluginPathNaN = cloadPlugin + bas.cUnderscore + wrd.cinvalid + wrd.cData + 'NaN'; // loadPlugin_inValidPluginPathNaN
+
+
 
 // Test names
 
