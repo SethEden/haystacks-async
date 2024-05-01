@@ -243,13 +243,33 @@ export const testConstantsValidation = [
     {Name: 'cclearAllPluginRegistry_inValidUndefined', Actual: tst_con.cclearAllPluginRegistry_inValidUndefined, Expected: 'clearAllPluginRegistry_inValidUndefined'},
     {Name: 'cclearAllPluginRegistry_inValidNaN', Actual: tst_con.cclearAllPluginRegistry_inValidNaN, Expected: 'clearAllPluginRegistry_inValidNaN'},
 
+    // writePluginRegistryToDisk
     {Name: 'cwritePluginRegistryToDisk', Actual: tst_con.cwritePluginRegistryToDisk, Expected: 'writePluginRegistryToDisk'},
     {Name: 'cwritePluginRegistryToDisk_validData', Actual: tst_con.cwritePluginRegistryToDisk_validData, Expected: 'writePluginRegistryToDisk_validData'},
     {Name: 'cwritePluginRegistryToDisk_inValidString', Actual: tst_con.cwritePluginRegistryToDisk_inValidString, Expected: 'writePluginRegistryToDisk_inValidString'},
     {Name: 'cwritePluginRegistryToDisk_inValidInteger', Actual: tst_con.cwritePluginRegistryToDisk_inValidInteger, Expected: 'writePluginRegistryToDisk_inValidInteger'},
     {Name: 'cwritePluginRegistryToDisk_inValidBoolean', Actual: tst_con.cwritePluginRegistryToDisk_inValidBoolean, Expected: 'writePluginRegistryToDisk_inValidBoolean'},
     {Name: 'cwritePluginRegistryToDisk_inValidUndefined', Actual: tst_con.cwritePluginRegistryToDisk_inValidUndefined, Expected: 'writePluginRegistryToDisk_inValidUndefined'},
-    {Name: 'cwritePluginRegistryToDisk_inValidNaN', Actual: tst_con.cwritePluginRegistryToDisk_inValidNaN, Expected: 'writePluginRegistryToDisk_inValidNaN'}
+    {Name: 'cwritePluginRegistryToDisk_inValidNaN', Actual: tst_con.cwritePluginRegistryToDisk_inValidNaN, Expected: 'writePluginRegistryToDisk_inValidNaN'},
+
+    // loadPlugin
+    {Name: 'cloadPlugin', Actual: tst_con.cloadPlugin, Expected: 'loadPlugin'},
+    {Name: 'cloadPlugin_validData', Actual: tst_con.cloadPlugin_validData, Expected: 'loadPlugin_validData'},
+    {Name: 'cloadPlugin_inValidPluginPathString', Actual: tst_con.cloadPlugin_inValidPluginPathString, Expected: 'loadPlugin_inValidPluginPathString'},
+    {Name: 'cloadPlugin_inValidPluginPathInteger', Actual: tst_con.cloadPlugin_inValidPluginPathInteger, Expected: 'loadPlugin_inValidPluginPathInteger'},
+    {Name: 'cloadPlugin_inValidPluginPathBoolean', Actual: tst_con.cloadPlugin_inValidPluginPathBoolean, Expected: 'loadPlugin_inValidPluginPathBoolean'},
+    {Name: 'cloadPlugin_inValidPluginPathUndefined', Actual: tst_con.cloadPlugin_inValidPluginPathUndefined, Expected: 'loadPlugin_inValidPluginPathUndefined'},
+    {Name: 'cloadPlugin_inValidPluginPathNaN', Actual: tst_con.cloadPlugin_inValidPluginPathNaN, Expected: 'loadPlugin_inValidPluginPathNaN'},
+
+    // loadPlugins
+    {Name: 'cloadPlugins', Actual: tst_con.cloadPlugins, Expected: 'loadPlugins'},
+    {Name: 'cloadPlugins_validData', Actual: tst_con.cloadPlugins_validData, Expected: 'loadPlugins_validData'},
+    {Name: 'cloadPlugins_inValidPluginPathString', Actual: tst_con.cloadPlugins_inValidPluginPathString, Expected: 'loadPlugins_inValidPluginPathString'},
+    {Name: 'cloadPlugins_inValidPluginPathInteger', Actual: tst_con.cloadPlugins_inValidPluginPathInteger, Expected: 'loadPlugins_inValidPluginPathInteger'},
+    {Name: 'cloadPlugins_inValidPluginPathBoolean', Actual: tst_con.cloadPlugins_inValidPluginPathBoolean, Expected: 'loadPlugins_inValidPluginPathBoolean'},
+    {Name: 'cloadPlugins_inValidPluginPathUndefined', Actual: tst_con.cloadPlugins_inValidPluginPathUndefined, Expected: 'loadPlugins_inValidPluginPathUndefined'},
+    {Name: 'cloadPlugins_inValidPluginPathNaN', Actual: tst_con.cloadPlugins_inValidPluginPathNaN, Expected: 'loadPlugins_inValidPluginPathNaN'}
+
 
     // Test names
 

@@ -2445,16 +2445,6 @@ describe(tst_con.cwritePluginRegistryToDisk, () => {
     });
 })
 
-// NOTE: This function is giving out an error with a promise.
-
-// node:internal/process/promises:265
-//             triggerUncaughtException(err, true /* fromPromise */);
-//             ^
-
-// [UnhandledPromiseRejection: This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). The promise rejected with the reason "TypeError: D[stackNameSpace].push is not a function".] {
-//   code: 'ERR_UNHANDLED_REJECTION'
-// }
-
 /**
  * @function loadPlugin
  * @description Tests the positive and negative test cases of the loadPlugin
@@ -2609,117 +2599,166 @@ describe(tst_con.cloadPlugin, () => {
     });
 })
 
-// Cannon implement this function until main.loadPlugin gets resolved.
-
-// /**
-//  * @function loadPlugins
-//  * @description Tests the positive and negative test cases of the loadPlugins
-//  * @author Vlad Sorokin
-//  * @date 2024/03/20
-//  */
-// describe(tst_con.cloadPlugins, () => {
-//     /**
-//      * @function loadPlugins_validPluginsPathsData
-//      * @description Tests the main function loadPlugins with a valid input.
-//      * @author Vlad Sorokin
-//      * @date 2024/03/20
-//      */
-//     test(tst_con.cloadPlugins_validData, async () => {
-//         // Arrange
+/**
+ * @function loadPlugins
+ * @description Tests the positive and negative test cases of the loadPlugins
+ * @author Vlad Sorokin
+ * @date 2024/03/20
+ */
+describe(tst_con.cloadPlugins, () => {
+    /**
+     * @function loadPlugins_validPluginsPathsData
+     * @description Tests the main function loadPlugins with a valid input.
+     * @author Vlad Sorokin
+     * @date 2024/03/20
+     */
+    test(tst_con.cloadPlugins_validData, async () => {
+        // Arrange
+        let pluginPathArray = [tst_man.testPluginPath];
+        D[sys.cbusinessRules] = {
+            [biz.cgetJsonData]: (inputData, inputMetaData) => fileOperations.getJsonData(inputData, inputMetaData),
+            [biz.cobjectDeepClone]: (inputData, inputMetaData) => dataArrayParsing.objectDeepClone(inputData, inputMetaData)
+        };
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+        D[sys.cpluginsLoaded] = [{}];
         
+        // Act
+        let returnData = await main.loadPlugins(pluginPathArray);
 
-//         // Act
-//         let returnData = await main.loadPlugins();
+        // Assert
+        expect(returnData).toBeTruthy();
+    });
 
-//         // Assert
-//         expect(returnData).toEqual();
-//     });
+    /**
+     * @function loadPlugins_inValidPluginsPathsString
+     * @description Tests the main function loadPlugins with a invalid data string.
+     * @author Vlad Sorokin
+     * @date 2024/03/20
+     */
+    test(tst_con.cloadPlugins_inValidPluginsPathsString, async () => {
+        // Arrange
+        let pluginPathArray = [tst_man.ctestString1];
+        D[sys.cbusinessRules] = {
+            [biz.cgetJsonData]: (inputData, inputMetaData) => fileOperations.getJsonData(inputData, inputMetaData),
+            [biz.cobjectDeepClone]: (inputData, inputMetaData) => dataArrayParsing.objectDeepClone(inputData, inputMetaData)
+        };
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+        D[sys.cpluginsLoaded] = [{}];
 
-//     /**
-//      * @function loadPlugins_inValidPluginsPathsString
-//      * @description Tests the main function loadPlugins with a invalid data string.
-//      * @author Vlad Sorokin
-//      * @date 2024/03/20
-//      */
-//     test(tst_con.cloadPlugins_inValidPluginsPathsString, async () => {
-//         // Arrange
-        
+        // Act
+        let returnData = await main.loadPlugins(pluginPathArray);
 
-//         // Act
-//         let returnData = await main.loadPlugins();
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
 
-//         // Assert
-//         expect(returnData).toBeFalsy();
-//     });
+    /**
+     * @function loadPlugins_inValidPluginsPathsInteger
+     * @description Tests the main function loadPlugins with a invalid data integer.
+     * @author Vlad Sorokin
+     * @date 2024/03/20
+     */
+    test(tst_con.cloadPlugins_inValidPluginsPathsInteger, async () => {
+        // Arrange
+        let pluginPathArray = [123];
+        D[sys.cbusinessRules] = {
+            [biz.cgetJsonData]: (inputData, inputMetaData) => fileOperations.getJsonData(inputData, inputMetaData),
+            [biz.cobjectDeepClone]: (inputData, inputMetaData) => dataArrayParsing.objectDeepClone(inputData, inputMetaData)
+        };
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+        D[sys.cpluginsLoaded] = [{}];
 
-//     /**
-//      * @function loadPlugins_inValidPluginsPathsInteger
-//      * @description Tests the main function loadPlugins with a invalid data integer.
-//      * @author Vlad Sorokin
-//      * @date 2024/03/20
-//      */
-//     test(tst_con.cloadPlugins_inValidPluginsPathsInteger, async () => {
-//         // Arrange
-        
+        // Act
+        let returnData = await main.loadPlugins(pluginPathArray);
 
-//         // Act
-//         let returnData = await main.loadPlugins();
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
 
-//         // Assert
-//         expect(returnData).toBeFalsy();
-//     });
+    /**
+     * @function loadPlugins_inValidPluginsPathsBoolean
+     * @description Tests the main function loadPlugins with a invalid data boolean.
+     * @author Vlad Sorokin
+     * @date 2024/03/20
+     */
+    test(tst_con.cloadPlugins_inValidPluginsPathsBoolean, async () => {
+        // Arrange
+        let pluginPathArray = [false];
+        D[sys.cbusinessRules] = {
+            [biz.cgetJsonData]: (inputData, inputMetaData) => fileOperations.getJsonData(inputData, inputMetaData),
+            [biz.cobjectDeepClone]: (inputData, inputMetaData) => dataArrayParsing.objectDeepClone(inputData, inputMetaData)
+        };
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+        D[sys.cpluginsLoaded] = [{}];
 
-//     /**
-//      * @function loadPlugins_inValidPluginsPathsBoolean
-//      * @description Tests the main function loadPlugins with a invalid data boolean.
-//      * @author Vlad Sorokin
-//      * @date 2024/03/20
-//      */
-//     test(tst_con.cloadPlugins_inValidPluginsPathsBoolean, async () => {
-//         // Arrange
-        
+        // Act
+        let returnData = await main.loadPlugins(pluginPathArray);
 
-//         // Act
-//         let returnData = await main.loadPlugins();
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
 
-//         // Assert
-//         expect(returnData).toBeFalsy();
-//     });
+    /**
+     * @function loadPlugins_inValidPluginsPathsUndefined
+     * @description Tests the main function loadPlugins with a invalid data undefined.
+     * @author Vlad Sorokin
+     * @date 2024/03/20
+     */
+    test(tst_con.cloadPlugins_inValidPluginsPathsUndefined, async () => {
+        // Arrange
+        let pluginPathArray = [undefined];
+        D[sys.cbusinessRules] = {
+            [biz.cgetJsonData]: (inputData, inputMetaData) => fileOperations.getJsonData(inputData, inputMetaData),
+            [biz.cobjectDeepClone]: (inputData, inputMetaData) => dataArrayParsing.objectDeepClone(inputData, inputMetaData)
+        };
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+        D[sys.cpluginsLoaded] = [{}];
 
-//     /**
-//      * @function loadPlugins_inValidPluginsPathsUndefined
-//      * @description Tests the main function loadPlugins with a invalid data undefined.
-//      * @author Vlad Sorokin
-//      * @date 2024/03/20
-//      */
-//     test(tst_con.cloadPlugins_inValidPluginsPathsUndefined, async () => {
-//         // Arrange
-        
+        // Act
+        let returnData = await main.loadPlugins(pluginPathArray);
 
-//         // Act
-//         let returnData = await main.loadPlugins();
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
 
-//         // Assert
-//         expect(returnData).toBeFalsy();
-//     });
+    /**
+     * @function loadPlugins_inValidPluginsPathsNaN
+     * @description Tests the main function loadPlugins with a invalid data NaN.
+     * @author Vlad Sorokin
+     * @date 2024/03/20
+     */
+    test(tst_con.cloadPlugins_inValidPluginsPathsNaN, async () => {
+        // Arrange
+        let pluginPathArray = [NaN];
+        D[sys.cbusinessRules] = {
+            [biz.cgetJsonData]: (inputData, inputMetaData) => fileOperations.getJsonData(inputData, inputMetaData),
+            [biz.cobjectDeepClone]: (inputData, inputMetaData) => dataArrayParsing.objectDeepClone(inputData, inputMetaData)
+        };
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+        D[sys.cpluginsLoaded] = [{}];
 
-//     /**
-//      * @function loadPlugins_inValidPluginsPathsNaN
-//      * @description Tests the main function loadPlugins with a invalid data NaN.
-//      * @author Vlad Sorokin
-//      * @date 2024/03/20
-//      */
-//     test(tst_con.cloadPlugins_inValidPluginsPathsNaN, async () => {
-//         // Arrange
-        
+        // Act
+        let returnData = await main.loadPlugins(pluginPathArray);
 
-//         // Act
-//         let returnData = await main.loadPlugins();
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+})
 
-//         // Assert
-//         expect(returnData).toBeFalsy();
-//     });
-// })
+
+
 
 // /**
 //  * @function loadPluginsFromRegistry
@@ -2753,88 +2792,88 @@ describe(tst_con.cloadPlugin, () => {
 //         expect(returnData).toEqual();
 //     });
 
-    // /**
-    //  * @function loadPluginsFromRegistry_inValidString
-    //  * @description Tests the main function loadPluginsFromRegistry with a invalid data string.
-    //  * @author Vlad Sorokin
-    //  * @date 2024/03/20
-    //  */
-    // test(tst_con.cloadPluginsFromRegistry_inValidString, async () => {
-    //     // Arrange
+//     /**
+//      * @function loadPluginsFromRegistry_inValidString
+//      * @description Tests the main function loadPluginsFromRegistry with a invalid data string.
+//      * @author Vlad Sorokin
+//      * @date 2024/03/20
+//      */
+//     test(tst_con.cloadPluginsFromRegistry_inValidString, async () => {
+//         // Arrange
         
 
-    //     // Act
-    //     let returnData = await main.loadPluginsFromRegistry();
+//         // Act
+//         let returnData = await main.loadPluginsFromRegistry();
 
-    //     // Assert
-    //     expect(returnData).toBeFalsy();
-    // });
+//         // Assert
+//         expect(returnData).toBeFalsy();
+//     });
 
-    // /**
-    //  * @function loadPluginsFromRegistry_inValidInteger
-    //  * @description Tests the main function loadPluginsFromRegistry with a invalid data integer.
-    //  * @author Vlad Sorokin
-    //  * @date 2024/03/20
-    //  */
-    // test(tst_con.cloadPluginsFromRegistry_inValidInteger, async () => {
-    //     // Arrange
+//     /**
+//      * @function loadPluginsFromRegistry_inValidInteger
+//      * @description Tests the main function loadPluginsFromRegistry with a invalid data integer.
+//      * @author Vlad Sorokin
+//      * @date 2024/03/20
+//      */
+//     test(tst_con.cloadPluginsFromRegistry_inValidInteger, async () => {
+//         // Arrange
         
 
-    //     // Act
-    //     let returnData = await main.loadPluginsFromRegistry();
+//         // Act
+//         let returnData = await main.loadPluginsFromRegistry();
 
-    //     // Assert
-    //     expect(returnData).toBeFalsy();
-    // });
+//         // Assert
+//         expect(returnData).toBeFalsy();
+//     });
 
-    // /**
-    //  * @function loadPluginsFromRegistry_inValidBoolean
-    //  * @description Tests the main function loadPluginsFromRegistry with a invalid data boolean.
-    //  * @author Vlad Sorokin
-    //  * @date 2024/03/20
-    //  */
-    // test(tst_con.cloadPluginsFromRegistry_inValidBoolean, async () => {
-    //     // Arrange
+//     /**
+//      * @function loadPluginsFromRegistry_inValidBoolean
+//      * @description Tests the main function loadPluginsFromRegistry with a invalid data boolean.
+//      * @author Vlad Sorokin
+//      * @date 2024/03/20
+//      */
+//     test(tst_con.cloadPluginsFromRegistry_inValidBoolean, async () => {
+//         // Arrange
         
 
-    //     // Act
-    //     let returnData = await main.loadPluginsFromRegistry();
+//         // Act
+//         let returnData = await main.loadPluginsFromRegistry();
 
-    //     // Assert
-    //     expect(returnData).toBeFalsy();
-    // });
+//         // Assert
+//         expect(returnData).toBeFalsy();
+//     });
 
-    // /**
-    //  * @function loadPluginsFromRegistry_inValidUndefined
-    //  * @description Tests the main function loadPluginsFromRegistry with a invalid data undefined.
-    //  * @author Vlad Sorokin
-    //  * @date 2024/03/20
-    //  */
-    // test(tst_con.cloadPluginsFromRegistry_inValidUndefined, async () => {
-    //     // Arrange
+//     /**
+//      * @function loadPluginsFromRegistry_inValidUndefined
+//      * @description Tests the main function loadPluginsFromRegistry with a invalid data undefined.
+//      * @author Vlad Sorokin
+//      * @date 2024/03/20
+//      */
+//     test(tst_con.cloadPluginsFromRegistry_inValidUndefined, async () => {
+//         // Arrange
         
 
-    //     // Act
-    //     let returnData = await main.loadPluginsFromRegistry();
+//         // Act
+//         let returnData = await main.loadPluginsFromRegistry();
 
-    //     // Assert
-    //     expect(returnData).toBeFalsy();
-    // });
+//         // Assert
+//         expect(returnData).toBeFalsy();
+//     });
 
-    // /**
-    //  * @function loadPluginsFromRegistry_inValidNaN
-    //  * @description Tests the main function loadPluginsFromRegistry with a invalid data NaN.
-    //  * @author Vlad Sorokin
-    //  * @date 2024/03/20
-    //  */
-    // test(tst_con.cloadPluginsFromRegistry_inValidNaN, async () => {
-    //     // Arrange
+//     /**
+//      * @function loadPluginsFromRegistry_inValidNaN
+//      * @description Tests the main function loadPluginsFromRegistry with a invalid data NaN.
+//      * @author Vlad Sorokin
+//      * @date 2024/03/20
+//      */
+//     test(tst_con.cloadPluginsFromRegistry_inValidNaN, async () => {
+//         // Arrange
         
 
-    //     // Act
-    //     let returnData = await main.loadPluginsFromRegistry();
+//         // Act
+//         let returnData = await main.loadPluginsFromRegistry();
 
-    //     // Assert
-    //     expect(returnData).toBeFalsy();
-    // });
+//         // Assert
+//         expect(returnData).toBeFalsy();
+//     });
 // })

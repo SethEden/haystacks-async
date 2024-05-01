@@ -31,6 +31,8 @@ const rootPathAsync = rootPathArray[0];
 const rootPathConstants = rootPathArray[1];
 const rootPathHayPlugins = rootPathArray[2];
 
+export const ctestPluginOne = wrd.ctest + bas.cDash + wrd.cplugin + bas.cDash + num.cone; // test-plugin-one
+
 export const ctestString1 = bas.cdf + bas.cxg + num.c243 + num.c46 + bas.cdf + bas.cg; // dfxg24346dfg
 
 export const initFrameworkObjectInput = {
@@ -114,13 +116,14 @@ export const tempPluginRegistryTestFileName = wrd.ctemp + wrd.cPlugin + wrd.cReg
 
 export const listPluginInRegistry = {
     [wrd.cplugins]: [{
-            ["test-plugin-one"]: {
-                [wrd.cName]: "test-plugin-one",
+            [ctestPluginOne]: {
+                [wrd.cName]: ctestPluginOne,
                 [wrd.cPath]: testPluginPath
             }
         }
     ]
 };
+
 
 /**
  * @function testHelloWorld

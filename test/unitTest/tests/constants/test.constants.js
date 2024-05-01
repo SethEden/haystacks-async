@@ -243,6 +243,7 @@ export const cclearAllPluginRegistry_inValidInteger = cclearAllPluginRegistry + 
 export const cclearAllPluginRegistry_inValidBoolean = cclearAllPluginRegistry + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cBoolean; // cclearAllPluginRegistry_inValidBoolean
 export const cclearAllPluginRegistry_inValidUndefined = cclearAllPluginRegistry + bas.cUnderscore + wrd.cin + wrd.cValid + 'Undefined'; // cclearAllPluginRegistry_inValidUndefined
 export const cclearAllPluginRegistry_inValidNaN = cclearAllPluginRegistry + bas.cUnderscore + wrd.cin + wrd.cValid + 'NaN'; // cclearAllPluginRegistry_inValidNaN
+
 // writePluginRegistryToDisk
 export const cwritePluginRegistryToDisk = wrd.cwrite + wrd.cPlugin + wrd.cRegistry + wrd.cTo + wrd.cDisk; // cwritePluginRegistryToDisk
 export const cwritePluginRegistryToDisk_validData = cwritePluginRegistryToDisk + bas.cUnderscore + wrd.cvalid + wrd.cData; // cwritePluginRegistryToDisk_validData
@@ -255,12 +256,20 @@ export const cwritePluginRegistryToDisk_inValidNaN = cwritePluginRegistryToDisk 
 // loadPlugin
 export const cloadPlugin = wrd.cload + wrd.cPlugin; // loadPlugin
 export const cloadPlugin_validData = cloadPlugin + bas.cUnderscore + wrd.cvalid + wrd.cData; // loadPlugin_validData
-export const cloadPlugin_inValidPluginPathString = cloadPlugin + bas.cUnderscore + wrd.cinvalid + wrd.cData + wrd.cString; // loadPlugin_inValidPluginPathString
-export const cloadPlugin_inValidPluginPathInteger = cloadPlugin + bas.cUnderscore + wrd.cinvalid + wrd.cData + wrd.cInteger; // loadPlugin_inValidPluginPathInteger
-export const cloadPlugin_inValidPluginPathBoolean = cloadPlugin + bas.cUnderscore + wrd.cinvalid + wrd.cData + wrd.cBoolean; // loadPlugin_inValidPluginPathBoolean
-export const cloadPlugin_inValidPluginPathUndefined = cloadPlugin + bas.cUnderscore + wrd.cinvalid + wrd.cData + 'Undefined'; // loadPlugin_inValidPluginPathUndefined
-export const cloadPlugin_inValidPluginPathNaN = cloadPlugin + bas.cUnderscore + wrd.cinvalid + wrd.cData + 'NaN'; // loadPlugin_inValidPluginPathNaN
+export const cloadPlugin_inValidPluginPathString = cloadPlugin + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cData + wrd.cString; // loadPlugin_inValidPluginPathString
+export const cloadPlugin_inValidPluginPathInteger = cloadPlugin + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cData + wrd.cInteger; // loadPlugin_inValidPluginPathInteger
+export const cloadPlugin_inValidPluginPathBoolean = cloadPlugin + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cData + wrd.cBoolean; // loadPlugin_inValidPluginPathBoolean
+export const cloadPlugin_inValidPluginPathUndefined = cloadPlugin + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cData + 'Undefined'; // loadPlugin_inValidPluginPathUndefined
+export const cloadPlugin_inValidPluginPathNaN = cloadPlugin + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cData + 'NaN'; // loadPlugin_inValidPluginPathNaN
 
+// loadPlugins
+export const cloadPlugins = wrd.cload + wrd.cPlugins; // loadPlugin
+export const cloadPlugins_validData = cloadPlugins + bas.cUnderscore + wrd.cvalid + wrd.cData; // loadPlugin_validData
+export const cloadPlugins_inValidPluginsPathsString = cloadPlugins + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cData + wrd.cString; // loadPlugin_inValidPluginPathString
+export const cloadPlugins_inValidPluginsPathsInteger = cloadPlugins + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cData + wrd.cInteger; // loadPlugin_inValidPluginPathInteger
+export const cloadPlugins_inValidPluginsPathsBoolean = cloadPlugins + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cData + wrd.cBoolean; // loadPlugin_inValidPluginPathBoolean
+export const cloadPlugins_inValidPluginsPathsUndefined = cloadPlugins + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cData + 'Undefined'; // loadPlugin_inValidPluginPathUndefined
+export const cloadPlugins_inValidPluginsPathsNaN = cloadPlugins + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cData + 'NaN'; // loadPlugin_inValidPluginPathNaN
 
 
 // Test names

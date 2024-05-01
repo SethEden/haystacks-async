@@ -692,13 +692,9 @@ async function loadPlugin(pluginPath) {
   await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginPathIs + pluginPath);
   let returnData = false;
   let pluginPathArray = [];
-  if (pluginPath && typeof pluginPath === wrd.cstring && (pluginPath.includes(bas.cForwardSlash) === true || pluginPath.includes(bas.cBackSlash) === true)) {
-    pluginPathArray[0] = pluginPath;
-    returnData = await loadPlugins(pluginPathArray);
-  } else {
-    // ERROR: Plugin Path is an invalid value: 
-    console.log(msg.cErrorRegisterPluginMessage04 + pluginPath);
-  }
+  pluginPathArray[0] = pluginPath;
+  returnData = await loadPlugins(pluginPathArray);
+  
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
@@ -719,13 +715,25 @@ async function loadPlugins(pluginsPaths) {
   // pluginsPaths are:
   await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginsPathsAre + JSON.stringify(pluginsPaths));
   let returnData = false;
+  let errorFound = false;
+  let allPluginsDataIntegrated = false;
+  let loadedVerification = false;
+  for (let pluginsPathsKey in pluginsPaths) {
+    if (!(pluginsPaths[pluginsPathsKey] && typeof pluginsPaths[pluginsPathsKey] === wrd.cstring && (pluginsPaths[pluginsPathsKey].includes(bas.cForwardSlash) === true || pluginsPaths[pluginsPathsKey].includes(bas.cBackSlash) === true))) {
+      // ERROR: Plugin Path is an invalid value: 
+      console.log(msg.cErrorRegisterPluginMessage04 + pluginsPaths[pluginsPathsKey]);
+      errorFound = true;
+    }
+  }
 
-  let pluginsMetaData = await chiefPlugin.loadAllPluginsMetaData(pluginsPaths);
-  let pluginsExecutionPaths = await chiefPlugin.loadAllPluginsExecutionPaths(pluginsMetaData, pluginsPaths);
-  let allPluginsData = await chiefPlugin.loadAllPlugins(pluginsExecutionPaths, pluginsMetaData);
-  let allPluginsDataIntegrated = await chiefPlugin.integrateAllPluginsData(allPluginsData);
-  let loadedVerification = await chiefPlugin.verifyAllPluginsLoaded();
-
+  if (errorFound === false) {
+    let pluginsMetaData = await chiefPlugin.loadAllPluginsMetaData(pluginsPaths);
+    let pluginsExecutionPaths = await chiefPlugin.loadAllPluginsExecutionPaths(pluginsMetaData, pluginsPaths);
+    let allPluginsData = await chiefPlugin.loadAllPlugins(pluginsExecutionPaths, pluginsMetaData);
+    allPluginsDataIntegrated = await chiefPlugin.integrateAllPluginsData(allPluginsData);
+    loadedVerification = await chiefPlugin.verifyAllPluginsLoaded();
+  }
+  
   if (allPluginsDataIntegrated === true && loadedVerification === true) {
     // If and ONLY if both are true, then set returnData to true.
     // This means all the plugins were loaded successfully and all the data from all the plugins was also integrated successfully.
