@@ -2757,123 +2757,368 @@ describe(tst_con.cloadPlugins, () => {
     });
 })
 
+/**
+ * @function loadPluginsFromRegistry
+ * @description Tests the positive and negative test cases of the loadPluginsFromRegistry
+ * @author Vlad Sorokin
+ * @date 2024/03/20
+ */
+describe(tst_con.cloadPluginsFromRegistry, () => {
+    /**
+     * @function loadPluginsFromRegistry_validData
+     * @description Tests the main function loadPluginsFromRegistry with a valid input.
+     * @author Vlad Sorokin
+     * @date 2024/03/20
+     */
+    test(tst_con.cloadPluginsFromRegistry_validData, async () => {
+        // Arrange
+        
+        D[cfg.cpluginRegistry] = tst_man.listPluginInRegistry;
+        D[sys.cbusinessRules] = {
+            [biz.cgetJsonData]: (inputData, inputMetaData) => fileOperations.getJsonData(inputData, inputMetaData),
+            [biz.cobjectDeepClone]: (inputData, inputMetaData) => dataArrayParsing.objectDeepClone(inputData, inputMetaData)
+        };
+
+        // Act
+        let returnData = await main.loadPluginsFromRegistry();
+       
+        // Assert
+        expect(returnData).toBeTruthy();
+    });
+})
+
+/**
+ * @function unloadPlugin
+ * @description Tests the positive and negative test cases of the unloadPlugin function
+ * @author Vlad Sorokin
+ * @date 2024/05/08
+ */
+describe(tst_con.cunloadPlugin, () => {
+    /**
+     * @function unloadPlugin_validData
+     * @description Tests the main function unloadPlugin with a valid plugin name.
+     * @author Vlad Sorokin
+     * @date 2024/05/08
+     */
+    test(tst_con.cunloadPlugin_validData, async () => {
+        // Arrange
+        let pluginPath = tst_man.testPluginPath;
+        D[sys.cbusinessRules] = {
+            [biz.cgetJsonData]: (inputData, inputMetaData) => fileOperations.getJsonData(inputData, inputMetaData),
+            [biz.cobjectDeepClone]: (inputData, inputMetaData) => dataArrayParsing.objectDeepClone(inputData, inputMetaData)
+        };
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+        D[sys.cpluginsLoaded] = [{}];
+
+        let returnDataSetup = await main.loadPlugin(pluginPath);
+
+
+        let pluginName = tst_man.ctestPluginOne;
+        
+        console.log('returnDataSetup is HERE: ' + returnDataSetup);
+
+        // Act
+        let returnData = await main.unloadPlugin(pluginName);
+        
+        // Assert
+        expect(returnData).toBeTruthy();
+    });
+
+    // /**
+    //  * @function unloadPlugin_inValidPluginNameString
+    //  * @description Tests the main function unloadPlugin with an invalid plugin name string.
+    //  * @author Vlad Sorokin
+    //  * @date 2024/05/08
+    //  */
+    // test(tst_con.cunloadPlugin_inValidPluginNameString, async () => {
+    //     // Arrange
+    //     let pluginName = "dfxg24346dfg";
+        
+    //     // Act
+    //     let returnData = await main.unloadPlugin(pluginName);
+        
+    //     // Assert
+    //     expect(returnData).toBeFalsy();
+    // });
+
+    // /**
+    //  * @function unloadPlugin_inValidPluginNameInteger
+    //  * @description Tests the main function unloadPlugin with an invalid plugin name integer.
+    //  * @author Vlad Sorokin
+    //  * @date 2024/05/08
+    //  */
+    // test(tst_con.cunloadPlugin_inValidPluginNameInteger, async () => {
+    //     // Arrange
+    //     let pluginName = 123;
+        
+    //     // Act
+    //     let returnData = await main.unloadPlugin(pluginName);
+        
+    //     // Assert
+    //     expect(returnData).toBeFalsy();
+    // });
+
+    // /**
+    //  * @function unloadPlugin_inValidPluginNameBoolean
+    //  * @description Tests the main function unloadPlugin with an invalid plugin name boolean.
+    //  * @author Vlad Sorokin
+    //  * @date 2024/05/08
+    //  */
+    // test(tst_con.cunloadPlugin_inValidPluginNameBoolean, async () => {
+    //     // Arrange
+    //     let pluginName = false;
+        
+    //     // Act
+    //     let returnData = await main.unloadPlugin(pluginName);
+        
+    //     // Assert
+    //     expect(returnData).toBeFalsy();
+    // });
+
+    // /**
+    //  * @function unloadPlugin_inValidPluginNameUndefined
+    //  * @description Tests the main function unloadPlugin with an invalid plugin name undefined.
+    //  * @author Vlad Sorokin
+    //  * @date 2024/05/08
+    //  */
+    // test(tst_con.cunloadPlugin_inValidPluginNameUndefined, async () => {
+    //     // Arrange
+    //     let pluginName = undefined;
+        
+    //     // Act
+    //     let returnData = await main.unloadPlugin(pluginName);
+        
+    //     // Assert
+    //     expect(returnData).toBeFalsy();
+    // });
+
+    // /**
+    //  * @function unloadPlugin_inValidPluginNameNaN
+    //  * @description Tests the main function unloadPlugin with an invalid plugin name NaN.
+    //  * @author Vlad Sorokin
+    //  * @date 2024/05/08
+    //  */
+    // test(tst_con.cunloadPlugin_inValidPluginNameNaN, async () => {
+    //     // Arrange
+    //     let pluginName = NaN;
+        
+    //     // Act
+    //     let returnData = await main.unloadPlugin(pluginName);
+        
+    //     // Assert
+    //     expect(returnData).toBeFalsy();
+    // });
+});
+
+
+
 
 
 
 // /**
-//  * @function loadPluginsFromRegistry
-//  * @description Tests the positive and negative test cases of the loadPluginsFromRegistry
+//  * @function loadPluginResourceData
+//  * @description Tests the positive and negative test cases of the loadPluginResourceData function
 //  * @author Vlad Sorokin
-//  * @date 2024/03/20
+//  * @date 2024/05/datedhdhdhi
 //  */
-// describe(tst_con.cloadPluginsFromRegistry, () => {
+// describe(tst_con.cloadPluginResourceData, () => {
 //     /**
-//      * @function loadPluginsFromRegistry_validData
-//      * @description Tests the main function loadPluginsFromRegistry with a valid input.
+//      * @function loadPluginResourceData_validData
+//      * @description Tests the main function loadPluginResourceData with valid input data.
 //      * @author Vlad Sorokin
-//      * @date 2024/03/20
+//      * @date 2024/05/datedhdhdhi
 //      */
-//     test(tst_con.cloadPluginsFromRegistry_validData, async () => {
+//     test(tst_con.cloadPluginResourceData_validData, async () => {
 //         // Arrange
-//         console.log("tst_man.listPluginInRegistry is: " + JSON.stringify(tst_man.listPluginInRegistry))
-//         D[cfg.cpluginRegistry] = tst_man.listPluginInRegistry;
-//         D[sys.cbusinessRules] = {
-//             [biz.cgetJsonData]: (inputData, inputMetaData) => fileOperations.getJsonData(inputData, inputMetaData)
-//         };
-
-//         let pluginRegistryList = D[cfg.cpluginRegistry][wrd.cplugins];
-//         console.log("pluginRegistryList is: " + JSON.stringify(pluginRegistryList));
-
+//         let contextName = "validContextName";
+//         let pluginConfigPath = "validPluginConfigPath";
+        
 //         // Act
-//         let returnData = await main.loadPluginsFromRegistry();
-
-//         console.log("pluginsLoaded is: " + JSON.stringify(D[sys.cpluginsLoaded]));        
+//         let returnData = await main.loadPluginResourceData(contextName, pluginConfigPath);
+        
 //         // Assert
-//         expect(returnData).toEqual();
+//         expect(returnData).toEqual(expect.any(Object));
 //     });
 
 //     /**
-//      * @function loadPluginsFromRegistry_inValidString
-//      * @description Tests the main function loadPluginsFromRegistry with a invalid data string.
+//      * @function loadPluginResourceData_inValidContextNameString
+//      * @description Tests the main function loadPluginResourceData with an invalid context name string input.
 //      * @author Vlad Sorokin
-//      * @date 2024/03/20
+//      * @date 2024/05/datedhdhdhi
 //      */
-//     test(tst_con.cloadPluginsFromRegistry_inValidString, async () => {
+//     test(tst_con.cloadPluginResourceData_inValidContextNameString, async () => {
 //         // Arrange
+//         let contextName = "dfxg24346dfg";
+//         let pluginConfigPath = "validPluginConfigPath";
         
-
 //         // Act
-//         let returnData = await main.loadPluginsFromRegistry();
-
+//         let returnData = await main.loadPluginResourceData(contextName, pluginConfigPath);
+        
 //         // Assert
 //         expect(returnData).toBeFalsy();
 //     });
 
 //     /**
-//      * @function loadPluginsFromRegistry_inValidInteger
-//      * @description Tests the main function loadPluginsFromRegistry with a invalid data integer.
+//      * @function loadPluginResourceData_inValidPluginResourcePathString
+//      * @description Tests the main function loadPluginResourceData with an invalid plugin resource path string input.
 //      * @author Vlad Sorokin
-//      * @date 2024/03/20
+//      * @date 2024/05/datedhdhdhi
 //      */
-//     test(tst_con.cloadPluginsFromRegistry_inValidInteger, async () => {
+//     test(tst_con.cloadPluginResourceData_inValidPluginResourcePathString, async () => {
 //         // Arrange
+//         let contextName = "validContextName";
+//         let pluginResourcePath = "dfxg24346dfg";
         
-
 //         // Act
-//         let returnData = await main.loadPluginsFromRegistry();
-
+//         let returnData = await main.loadPluginResourceData(contextName, pluginResourcePath);
+        
 //         // Assert
 //         expect(returnData).toBeFalsy();
 //     });
 
 //     /**
-//      * @function loadPluginsFromRegistry_inValidBoolean
-//      * @description Tests the main function loadPluginsFromRegistry with a invalid data boolean.
+//      * @function loadPluginResourceData_inValidContextNameInteger
+//      * @description Tests the main function loadPluginResourceData with an invalid context name integer input.
 //      * @author Vlad Sorokin
-//      * @date 2024/03/20
+//      * @date 2024/05/datedhdhdhi
 //      */
-//     test(tst_con.cloadPluginsFromRegistry_inValidBoolean, async () => {
+//     test(tst_con.cloadPluginResourceData_inValidContextNameInteger, async () => {
 //         // Arrange
+//         let contextName = 123;
+//         let pluginConfigPath = "validPluginConfigPath";
         
-
 //         // Act
-//         let returnData = await main.loadPluginsFromRegistry();
-
+//         let returnData = await main.loadPluginResourceData(contextName, pluginConfigPath);
+        
 //         // Assert
 //         expect(returnData).toBeFalsy();
 //     });
 
 //     /**
-//      * @function loadPluginsFromRegistry_inValidUndefined
-//      * @description Tests the main function loadPluginsFromRegistry with a invalid data undefined.
+//      * @function loadPluginResourceData_inValidContextNameBoolean
+//      * @description Tests the main function loadPluginResourceData with an invalid context name boolean input.
 //      * @author Vlad Sorokin
-//      * @date 2024/03/20
+//      * @date 2024/05/datedhdhdhi
 //      */
-//     test(tst_con.cloadPluginsFromRegistry_inValidUndefined, async () => {
+//     test(tst_con.cloadPluginResourceData_inValidContextNameBoolean, async () => {
 //         // Arrange
+//         let contextName = false;
+//         let pluginConfigPath = "validPluginConfigPath";
         
-
 //         // Act
-//         let returnData = await main.loadPluginsFromRegistry();
-
+//         let returnData = await main.loadPluginResourceData(contextName, pluginConfigPath);
+        
 //         // Assert
 //         expect(returnData).toBeFalsy();
 //     });
 
 //     /**
-//      * @function loadPluginsFromRegistry_inValidNaN
-//      * @description Tests the main function loadPluginsFromRegistry with a invalid data NaN.
+//      * @function loadPluginResourceData_inValidPluginResourcePathInteger
+//      * @description Tests the main function loadPluginResourceData with an invalid plugin resource path integer input.
 //      * @author Vlad Sorokin
-//      * @date 2024/03/20
+//      * @date 2024/05/datedhdhdhi
 //      */
-//     test(tst_con.cloadPluginsFromRegistry_inValidNaN, async () => {
+//     test(tst_con.cloadPluginResourceData_inValidPluginResourcePathInteger, async () => {
 //         // Arrange
+//         let contextName = "validContextName";
+//         let pluginResourcePath = 123;
         
-
 //         // Act
-//         let returnData = await main.loadPluginsFromRegistry();
-
+//         let returnData = await main.loadPluginResourceData(contextName, pluginResourcePath);
+        
 //         // Assert
 //         expect(returnData).toBeFalsy();
 //     });
-// })
+
+//     /**
+//      * @function loadPluginResourceData_inValidPluginResourcePathBoolean
+//      * @description Tests the main function loadPluginResourceData with an invalid plugin resource path boolean input.
+//      * @author Vlad Sorokin
+//      * @date 2024/05/datedhdhdhi
+//      */
+//     test(tst_con.cloadPluginResourceData_inValidPluginResourcePathBoolean, async () => {
+//         // Arrange
+//         let contextName = "validContextName";
+//         let pluginResourcePath = false;
+        
+//         // Act
+//         let returnData = await main.loadPluginResourceData(contextName, pluginResourcePath);
+        
+//         // Assert
+//         expect(returnData).toBeFalsy();
+//     });
+
+//     /**
+//      * @function loadPluginResourceData_inValidContextNameUndefined
+//      * @description Tests the main function loadPluginResourceData with an invalid context name undefined input.
+//      * @author Vlad Sorokin
+//      * @date 2024/05/datedhdhdhi
+//      */
+//     test(tst_con.cloadPluginResourceData_inValidContextNameUndefined, async () => {
+//         // Arrange
+//         let contextName = undefined;
+//         let pluginConfigPath = "validPluginConfigPath";
+        
+//         // Act
+//         let returnData = await main.loadPluginResourceData(contextName, pluginConfigPath);
+        
+//         // Assert
+//         expect(returnData).toBeFalsy();
+//     });
+
+//     /**
+//      * @function loadPluginResourceData_inValidContextNameNaN
+//      * @description Tests the main function loadPluginResourceData with an invalid context name NaN input.
+//      * @author Vlad Sorokin
+//      * @date 2024/05/datedhdhdhi
+//      */
+//     test(tst_con.cloadPluginResourceData_inValidContextNameNaN, async () => {
+//         // Arrange
+//         let contextName = NaN;
+//         let pluginConfigPath = "validPluginConfigPath";
+        
+//         // Act
+//         let returnData = await main.loadPluginResourceData(contextName, pluginConfigPath);
+        
+//         // Assert
+//         expect(returnData).toBeFalsy();
+//     });
+
+//     /**
+//      * @function loadPluginResourceData_inValidPluginResourcePathUndefined
+//      * @description Tests the main function loadPluginResourceData with an invalid plugin resource path undefined input.
+//      * @author Vlad Sorokin
+//      * @date 2024/05/datedhdhdhi
+//      */
+//     test(tst_con.cloadPluginResourceData_inValidPluginResourcePathUndefined, async () => {
+//         // Arrange
+//         let contextName = "validContextName";
+//         let pluginResourcePath = undefined;
+        
+//         // Act
+//         let returnData = await main.loadPluginResourceData(contextName, pluginResourcePath);
+        
+//         // Assert
+//         expect(returnData).toBeFalsy();
+//     });
+
+//     /**
+//      * @function loadPluginResourceData_inValidPluginResourcePathNaN
+//      * @description Tests the main function loadPluginResourceData with an invalid plugin resource path NaN input.
+//      * @author Vlad Sorokin
+//      * @date 2024/05/datedhdhdhi
+//      */
+//     test(tst_con.cloadPluginResourceData_inValidPluginResourcePathNaN, async () => {
+//         // Arrange
+//         let contextName = "validContextName";
+//         let pluginResourcePath = NaN;
+        
+//         // Act
+//         let returnData = await main.loadPluginResourceData(contextName, pluginResourcePath);
+        
+//         // Assert
+//         expect(returnData).toBeFalsy();
+//     });
+// });
