@@ -2803,6 +2803,35 @@ describe(tst_con.cunloadPlugin, () => {
     test(tst_con.cunloadPlugin_validData, async () => {
         // Arrange
         let pluginPath = tst_man.testPluginPath;
+        let pluginName = tst_man.ctestPluginOne;
+        D[sys.cbusinessRules] = {
+            [biz.cgetJsonData]: (inputData, inputMetaData) => fileOperations.getJsonData(inputData, inputMetaData),
+            [biz.cobjectDeepClone]: (inputData, inputMetaData) => dataArrayParsing.objectDeepClone(inputData, inputMetaData)
+        };
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+        D[sys.cpluginsLoaded] = [{}];
+        
+        let returnDataSetup = await main.loadPlugin(pluginPath);
+
+        // Act
+        let returnData = await main.unloadPlugin(pluginName);
+
+        // Assert
+        expect(returnData).toBeTruthy();
+    });
+
+    /**
+     * @function unloadPlugin_inValidPluginNameString
+     * @description Tests the main function unloadPlugin with an invalid plugin name string.
+     * @author Vlad Sorokin
+     * @date 2024/05/08
+     */
+    test(tst_con.cunloadPlugin_inValidPluginNameString, async () => {
+        // Arrange
+        let pluginName = tst_man.ctestString1;
+        let pluginPath = tst_man.testPluginPath;
         D[sys.cbusinessRules] = {
             [biz.cgetJsonData]: (inputData, inputMetaData) => fileOperations.getJsonData(inputData, inputMetaData),
             [biz.cobjectDeepClone]: (inputData, inputMetaData) => dataArrayParsing.objectDeepClone(inputData, inputMetaData)
@@ -2814,102 +2843,124 @@ describe(tst_con.cunloadPlugin, () => {
 
         let returnDataSetup = await main.loadPlugin(pluginPath);
 
-
-        let pluginName = tst_man.ctestPluginOne;
+        // Act
+        let returnData = await main.unloadPlugin(pluginName);
         
-        console.log('returnDataSetup is HERE: ' + returnDataSetup);
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function unloadPlugin_inValidPluginNameInteger
+     * @description Tests the main function unloadPlugin with an invalid plugin name integer.
+     * @author Vlad Sorokin
+     * @date 2024/05/08
+     */
+    test(tst_con.cunloadPlugin_inValidPluginNameInteger, async () => {
+        // Arrange
+        let pluginName = 123;
+        let pluginPath = tst_man.testPluginPath;
+        D[sys.cbusinessRules] = {
+            [biz.cgetJsonData]: (inputData, inputMetaData) => fileOperations.getJsonData(inputData, inputMetaData),
+            [biz.cobjectDeepClone]: (inputData, inputMetaData) => dataArrayParsing.objectDeepClone(inputData, inputMetaData)
+        };
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+        D[sys.cpluginsLoaded] = [{}];
+
+        let returnDataSetup = await main.loadPlugin(pluginPath);
 
         // Act
         let returnData = await main.unloadPlugin(pluginName);
         
         // Assert
-        expect(returnData).toBeTruthy();
+        expect(returnData).toBeFalsy();
     });
 
-    // /**
-    //  * @function unloadPlugin_inValidPluginNameString
-    //  * @description Tests the main function unloadPlugin with an invalid plugin name string.
-    //  * @author Vlad Sorokin
-    //  * @date 2024/05/08
-    //  */
-    // test(tst_con.cunloadPlugin_inValidPluginNameString, async () => {
-    //     // Arrange
-    //     let pluginName = "dfxg24346dfg";
-        
-    //     // Act
-    //     let returnData = await main.unloadPlugin(pluginName);
-        
-    //     // Assert
-    //     expect(returnData).toBeFalsy();
-    // });
+    /**
+     * @function unloadPlugin_inValidPluginNameBoolean
+     * @description Tests the main function unloadPlugin with an invalid plugin name boolean.
+     * @author Vlad Sorokin
+     * @date 2024/05/08
+     */
+    test(tst_con.cunloadPlugin_inValidPluginNameBoolean, async () => {
+        // Arrange
+        let pluginName = false;
+        let pluginPath = tst_man.testPluginPath;
+        D[sys.cbusinessRules] = {
+            [biz.cgetJsonData]: (inputData, inputMetaData) => fileOperations.getJsonData(inputData, inputMetaData),
+            [biz.cobjectDeepClone]: (inputData, inputMetaData) => dataArrayParsing.objectDeepClone(inputData, inputMetaData)
+        };
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+        D[sys.cpluginsLoaded] = [{}];
 
-    // /**
-    //  * @function unloadPlugin_inValidPluginNameInteger
-    //  * @description Tests the main function unloadPlugin with an invalid plugin name integer.
-    //  * @author Vlad Sorokin
-    //  * @date 2024/05/08
-    //  */
-    // test(tst_con.cunloadPlugin_inValidPluginNameInteger, async () => {
-    //     // Arrange
-    //     let pluginName = 123;
-        
-    //     // Act
-    //     let returnData = await main.unloadPlugin(pluginName);
-        
-    //     // Assert
-    //     expect(returnData).toBeFalsy();
-    // });
+        let returnDataSetup = await main.loadPlugin(pluginPath);
 
-    // /**
-    //  * @function unloadPlugin_inValidPluginNameBoolean
-    //  * @description Tests the main function unloadPlugin with an invalid plugin name boolean.
-    //  * @author Vlad Sorokin
-    //  * @date 2024/05/08
-    //  */
-    // test(tst_con.cunloadPlugin_inValidPluginNameBoolean, async () => {
-    //     // Arrange
-    //     let pluginName = false;
+        // Act
+        let returnData = await main.unloadPlugin(pluginName);
         
-    //     // Act
-    //     let returnData = await main.unloadPlugin(pluginName);
-        
-    //     // Assert
-    //     expect(returnData).toBeFalsy();
-    // });
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
 
-    // /**
-    //  * @function unloadPlugin_inValidPluginNameUndefined
-    //  * @description Tests the main function unloadPlugin with an invalid plugin name undefined.
-    //  * @author Vlad Sorokin
-    //  * @date 2024/05/08
-    //  */
-    // test(tst_con.cunloadPlugin_inValidPluginNameUndefined, async () => {
-    //     // Arrange
-    //     let pluginName = undefined;
-        
-    //     // Act
-    //     let returnData = await main.unloadPlugin(pluginName);
-        
-    //     // Assert
-    //     expect(returnData).toBeFalsy();
-    // });
+    /**
+     * @function unloadPlugin_inValidPluginNameUndefined
+     * @description Tests the main function unloadPlugin with an invalid plugin name undefined.
+     * @author Vlad Sorokin
+     * @date 2024/05/08
+     */
+    test(tst_con.cunloadPlugin_inValidPluginNameUndefined, async () => {
+        // Arrange
+        let pluginName = undefined;
+        let pluginPath = tst_man.testPluginPath;
+        D[sys.cbusinessRules] = {
+            [biz.cgetJsonData]: (inputData, inputMetaData) => fileOperations.getJsonData(inputData, inputMetaData),
+            [biz.cobjectDeepClone]: (inputData, inputMetaData) => dataArrayParsing.objectDeepClone(inputData, inputMetaData)
+        };
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+        D[sys.cpluginsLoaded] = [{}];
 
-    // /**
-    //  * @function unloadPlugin_inValidPluginNameNaN
-    //  * @description Tests the main function unloadPlugin with an invalid plugin name NaN.
-    //  * @author Vlad Sorokin
-    //  * @date 2024/05/08
-    //  */
-    // test(tst_con.cunloadPlugin_inValidPluginNameNaN, async () => {
-    //     // Arrange
-    //     let pluginName = NaN;
+        let returnDataSetup = await main.loadPlugin(pluginPath);
+
+        // Act
+        let returnData = await main.unloadPlugin(pluginName);
         
-    //     // Act
-    //     let returnData = await main.unloadPlugin(pluginName);
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function unloadPlugin_inValidPluginNameNaN
+     * @description Tests the main function unloadPlugin with an invalid plugin name NaN.
+     * @author Vlad Sorokin
+     * @date 2024/05/08
+     */
+    test(tst_con.cunloadPlugin_inValidPluginNameNaN, async () => {
+        // Arrange
+        let pluginName = NaN;
+        let pluginPath = tst_man.testPluginPath;
+        D[sys.cbusinessRules] = {
+            [biz.cgetJsonData]: (inputData, inputMetaData) => fileOperations.getJsonData(inputData, inputMetaData),
+            [biz.cobjectDeepClone]: (inputData, inputMetaData) => dataArrayParsing.objectDeepClone(inputData, inputMetaData)
+        };
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+        D[sys.cpluginsLoaded] = [{}];
         
-    //     // Assert
-    //     expect(returnData).toBeFalsy();
-    // });
+        let returnDataSetup = await main.loadPlugin(pluginPath);
+
+        // Act
+        let returnData = await main.unloadPlugin(pluginName);
+        
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
 });
 
 

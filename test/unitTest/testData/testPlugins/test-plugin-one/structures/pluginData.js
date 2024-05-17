@@ -65,6 +65,61 @@ let pluginData = {
         "pluginMessageConstantsValidation": "plg_msg",
         "pluginSystemConstantsValidation": "plg_sys"
       },
+      "ConstantsFileNames": {
+        "pluginBusinessConstantsValidation": "plugin.business.constants.js",
+        "pluginCommandConstantsValidation": "plugin.command.constants.js",
+        "pluginConstantsValidation": "plugin.constants.js",
+        "pluginMessageConstantsValidation": "plugin.message.constants.js",
+        "pluginSystemConstantsValidation": "plugin.system.constants.js"
+      },
+      "ConstantsPrefix": {
+          "pluginBusinessConstantsValidation": "plg_biz.",
+          "pluginCommandConstantsValidation": "plg_cmd.",
+          "pluginConstantsValidation": "plg.",
+          "pluginMessageConstantsValidation": "plg_msg.",
+          "pluginSystemConstantsValidation": "plg_sys."
+      },
+      "ConstantsFilePaths": {
+          "pluginBusinessConstantsValidation": rootPathTestPluginOne + "constants/plugin.business.constants.js",
+          "pluginCommandConstantsValidation": rootPathTestPluginOne + "constants/plugin.command.constants.js",
+          "pluginConstantsValidation": rootPathTestPluginOne + "constants/plugin.constants.js",
+          "pluginMessageConstantsValidation": rootPathTestPluginOne + "constants/plugin.message.constants.js",
+          "pluginSystemConstantsValidation": rootPathTestPluginOne + "constants/plugin.system.constants.js"
+      },
+      "ConstantsPhase1ValidationMessages": {
+        "pluginBusinessConstantsValidation": "Plugin Business Constants Phase 1 Validation",
+        "pluginCommandConstantsValidation": "Plugin Command Constants Phase 1 Validation",
+        "pluginConstantsValidation": "Plugin Constants Phase 1 Validation",
+        "pluginMessageConstantsValidation": "Plugin Message Constants Phase 1 Validation",
+        "pluginSystemConstantsValidation": "Plugin System Constants Phase 1 Validation"
+      },
+      "ConstantsPhase2ValidationMessages": {
+          "pluginBusinessConstantsValidation": "Plugin Business Constants Phase 2 Validation",
+          "pluginCommandConstantsValidation": "Plugin Command Constants Phase 2 Validation",
+          "pluginConstantsValidation": "Plugin Constants Phase 2 Validation",
+          "pluginMessageConstantsValidation": "Plugin Message Constants Phase 2 Validation",
+          "pluginSystemConstantsValidation": "Plugin System Constants Phase 2 Validation"
+      },
+        "pluginBusinessConstantsValidation": [{
+              "Name": "cpluginOneRule01",
+              "Actual": "pluginOneRule01",
+              "Expected": "pluginOneRule01"
+        }, {
+              "Name": "cpluginOneRule02",
+              "Actual": "pluginOneRule02",
+              "Expected": "pluginOneRule02"
+        }
+        ],
+        "pluginCommandConstantsValidation": [{
+          "Name": "cpluginOneCommand01",
+          "Actual": "pluginOneCommand01",
+          "Expected": "pluginOneCommand01"
+        }, {
+          "Name": "cpluginOneCommand02",
+          "Actual": "pluginOneCommand02",
+          "Expected": "pluginOneCommand02"
+        }
+      ],
     }
   },
   "pluginBusinessRules": {

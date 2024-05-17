@@ -182,10 +182,10 @@ async function processRules(inputs, rulesToExecute) {
  * @NOTE Cannot use the loggers here, because of a circular dependency.
  */
 async function removePluginBusinessRules(pluginName) {
-  // let functionName = removePluginBusinessRules.name;
+  let functionName = removePluginBusinessRules.name;
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   // pluginName is:
-  // console.log(msg.cpluginNameIs + pluginName);
+  console.log(msg.cpluginNameIs + pluginName);
   let returnData = false;
   let allBusinessRules = D[sys.cbusinessRules];
   // NOTE: We are going to have to get the names of the individual business rules for the plugin,

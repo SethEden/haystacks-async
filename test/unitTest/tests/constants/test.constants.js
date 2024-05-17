@@ -275,6 +275,16 @@ export const cloadPlugins_inValidPluginsPathsNaN = cloadPlugins + bas.cUnderscor
 export const cloadPluginsFromRegistry = wrd.cload + wrd.cPlugins + wrd.cFrom + wrd.cRegistry; // loadPluginsFromRegistry
 export const cloadPluginsFromRegistry_validData = cloadPluginsFromRegistry + bas.cUnderscore + wrd.cvalid + wrd.cData; //loadPluginsFromRegistry_validData
 
+// unloadPlugin
+export const cunloadPlugin = wrd.cunload + wrd.cPlugin;//unloadPlugin
+export const cunloadPlugin_validData = cunloadPlugin + bas.cUnderscore + wrd.cvalid + wrd.cData; //unloadPlugin_validData
+export const cunloadPlugin_inValidPluginNameString = cunloadPlugin + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cName + wrd.cString; //unloadPlugin_inValidPluginNameString
+export const cunloadPlugin_inValidPluginNameInteger = cunloadPlugin + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cName + wrd.cInteger; //unloadPlugin_inValidPluginNameInteger
+export const cunloadPlugin_inValidPluginNameBoolean = cunloadPlugin + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cName + wrd.cBoolean; //unloadPlugin_inValidPluginNameBoolean
+export const cunloadPlugin_inValidPluginNameUndefined = cunloadPlugin + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cName + "Undefined"; // //unloadPlugin_inValidPluginNameUndefined
+export const cunloadPlugin_inValidPluginNameNaN = cunloadPlugin + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cName + "NaN"; // //unloadPlugin_inValidPluginNameNaN
+
+
 // Test names
 
 /* commandBroker */
