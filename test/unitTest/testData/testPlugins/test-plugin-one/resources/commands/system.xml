@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?><CommandsAliases>
+  <system>
+    <Command Name="testPluginOneCommand01" Aliases="tstPluginOneComand01,tstPluginOneComnd01,tstPluginOneComd01,tstPluginOneCmd01,tstPluginOneC01,tstPluginOneCommand01,tstPluginOComand01,tstPluginOComnd01" Description="The first demo command as part of test-plugin-one."/>
+    <Command Name="testPluginOneCommand02" Aliases="tstPluginOneComand02,tstPluginOneComnd02,tstPluginOneComd02,tstPluginOneCmd02,tstPluginOneC02,tstPluginOneCommand02,tstPluginOComand02,tstPluginOComnd02" Description="The second demo command as part of test-plugin-one."/>
+  </system>
+</CommandsAliases>

@@ -1108,7 +1108,7 @@ async function getPluginsRegistryPath() {
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   let returnData = false;
   if (D[cfg.cpluginRegistry] !== 'undefined') {
-    returnData = D[cfg.cpluginRegistry][wrd.cpath]
+    returnData = D[cfg.cpluginRegistry][wrd.cpath];
   } else {
     // ERROR: There is no defined plugin registry.
     console.log(msg.cErrorGetPluginsRegistryPathMessage01);

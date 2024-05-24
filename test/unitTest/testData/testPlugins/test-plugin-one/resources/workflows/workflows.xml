@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?><PluginWorkflows>
+  <system>
+    <Workflow Name="testPluginOneWorkflow" Value="commandSequencer pluginOneCommand01 pluginOneCommand02"/>
+  </system>
+</PluginWorkflows>

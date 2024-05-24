@@ -380,7 +380,7 @@ async function initRulesLibrary() {
      [biz.cgenerateRandomColor]: (inputData, inputMetaData) => stringGeneration.generateRandomColor(inputData, inputMetaData),
 
      // ***********************************************
-     // stringParsingutilities rules in order
+     // stringParsingUtilities rules in order
      // ***********************************************
      [biz.cparseSystemRootPath]: (inputData, inputMetaData) => stringParsingUtilities.parseSystemRootPath(inputData, inputMetaData),
      [biz.cparseSystemRootPathApplicationName]: (inputData, inputMetaData) => stringParsingUtilities.parseSystemRootPathApplicationName(inputData, inputMetaData),

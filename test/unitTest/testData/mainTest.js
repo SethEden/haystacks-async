@@ -20,6 +20,7 @@ import hayConst from '@haystacks/constants';
 import fileOperations from '../../../src/businessRules/rules/fileOperations.js';
 import url from 'url';
 import path from 'path';
+import { wordConstantsValidation } from '@haystacks/constants/src/constantsValidation/word.constants.validation.js';
 
 
 const {bas, biz, gen, msg, num, sys, wrd} = hayConst;
@@ -113,6 +114,10 @@ export const listAllPluginsInRegistryBusinessRule = {[biz.cgetDirectoryList]: (i
 export const pluginNameToUse = tst_sys.cplugin_one;
 export const pathForUnitTestWritePluginRegistryToDiskValid = rootPathAsync + tst_cfg.cpathToTheTempFolderForUnitTests;
 export const tempPluginRegistryTestFileName = wrd.ctemp + wrd.cPlugin + wrd.cRegistry + wrd.cTest + gen.cDotjson;
+export const pluginResourcesDataPathConfiguration = testPluginPath + wrd.cresources + bas.cDoubleForwardSlash + wrd.cconfiguration + bas.cDoubleForwardSlash;
+export const pluginResourcesDataPathCommands = testPluginPath + wrd.cresources + bas.cDoubleForwardSlash + wrd.ccommands + bas.cDoubleForwardSlash;
+export const pluginResourcesDataPathWorkflows = testPluginPath + wrd.cresources + bas.cDoubleForwardSlash + wrd.cworkflows + bas.cDoubleForwardSlash;
+export const pluginResourcesDataPathThemes = testPluginPath + wrd.cresources + bas.cDoubleForwardSlash + wrd.cthemes + bas.cDoubleForwardSlash;
 
 export const listPluginInRegistry = {
     [wrd.cplugins]: [{

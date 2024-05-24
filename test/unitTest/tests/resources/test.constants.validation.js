@@ -268,7 +268,29 @@ export const testConstantsValidation = [
     {Name: 'cloadPlugins_inValidPluginPathInteger', Actual: tst_con.cloadPlugins_inValidPluginPathInteger, Expected: 'loadPlugins_inValidPluginPathInteger'},
     {Name: 'cloadPlugins_inValidPluginPathBoolean', Actual: tst_con.cloadPlugins_inValidPluginPathBoolean, Expected: 'loadPlugins_inValidPluginPathBoolean'},
     {Name: 'cloadPlugins_inValidPluginPathUndefined', Actual: tst_con.cloadPlugins_inValidPluginPathUndefined, Expected: 'loadPlugins_inValidPluginPathUndefined'},
-    {Name: 'cloadPlugins_inValidPluginPathNaN', Actual: tst_con.cloadPlugins_inValidPluginPathNaN, Expected: 'loadPlugins_inValidPluginPathNaN'}
+    {Name: 'cloadPlugins_inValidPluginPathNaN', Actual: tst_con.cloadPlugins_inValidPluginPathNaN, Expected: 'loadPlugins_inValidPluginPathNaN'},
+
+    // loadPluginsFromRegistry
+    {Name: 'cloadPluginsFromRegistry', Actual: tst_con.cloadPluginsFromRegistry, Expected: 'loadPluginsFromRegistry'},
+    {Name: 'cloadPluginsFromRegistry_validData', Actual: tst_con.cloadPluginsFromRegistry_validData, Expected: 'loadPluginsFromRegistry_validData'},
+
+    // unloadPlugin
+    {Name: 'cunloadPlugin', Actual: tst_con.cunloadPlugin, Expected: 'unloadPlugin'},
+    {Name: 'cunloadPlugin_validData', Actual: tst_con.cunloadPlugin_validData, Expected: 'unloadPlugin_validData'},
+    {Name: 'cunloadPlugin_inValidPluginNameString', Actual: tst_con.cunloadPlugin_inValidPluginNameString, Expected: 'unloadPlugin_inValidPluginNameString'},
+    {Name: 'cunloadPlugin_inValidPluginNameInteger', Actual: tst_con.cunloadPlugin_inValidPluginNameInteger, Expected: 'unloadPlugin_inValidPluginNameInteger'},
+    {Name: 'cunloadPlugin_inValidPluginNameBoolean', Actual: tst_con.cunloadPlugin_inValidPluginNameBoolean, Expected: 'unloadPlugin_inValidPluginNameBoolean'},
+    {Name: 'cunloadPlugin_inValidPluginNameUndefined', Actual: tst_con.cunloadPlugin_inValidPluginNameUndefined, Expected: 'unloadPlugin_inValidPluginNameUndefined'},
+    {Name: 'cunloadPlugin_inValidPluginNameNaN', Actual: tst_con.cunloadPlugin_inValidPluginNameNaN, Expected: 'unloadPlugin_inValidPluginNameNaN'},
+
+    // unloadPlugins
+    {Name: 'cunloadPlugins', Actual: tst_con.cunloadPlugins, Expected: 'unloadPlugins'},
+    {Name: 'cunloadPlugins_validData', Actual: tst_con.cunloadPlugins_validData, Expected: 'unloadPlugins_validData'},
+    {Name: 'cunloadPlugins_inValidPluginNamesString', Actual: tst_con.cunloadPlugins_inValidPluginNamesString, Expected: 'unloadPlugins_inValidPluginNamesString'},
+    {Name: 'cunloadPlugins_inValidPluginNamesInteger', Actual: tst_con.cunloadPlugins_inValidPluginNamesInteger, Expected: 'unloadPlugins_inValidPluginNamesInteger'},
+    {Name: 'cunloadPlugins_inValidPluginNamesBoolean', Actual: tst_con.cunloadPlugins_inValidPluginNamesBoolean, Expected: 'unloadPlugins_inValidPluginNamesBoolean'},
+    {Name: 'cunloadPlugins_inValidPluginNamesUndefined', Actual: tst_con.cunloadPlugins_inValidPluginNamesUndefined, Expected: 'unloadPlugins_inValidPluginNamesUndefined'},
+    {Name: 'cunloadPlugins_inValidPluginNamesNaN', Actual: tst_con.cunloadPlugins_inValidPluginNamesNaN, Expected: 'unloadPlugins_inValidPluginNamesNaN'},
 
 
     // Test names

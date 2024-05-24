@@ -101,23 +101,23 @@ let pluginData = {
           "pluginSystemConstantsValidation": "Plugin System Constants Phase 2 Validation"
       },
         "pluginBusinessConstantsValidation": [{
-              "Name": "cpluginOneRule01",
-              "Actual": "pluginOneRule01",
-              "Expected": "pluginOneRule01"
+              "Name": "ctestPluginOneRule01",
+              "Actual": "testPluginOneRule01",
+              "Expected": "testPluginOneRule01"
         }, {
-              "Name": "cpluginOneRule02",
-              "Actual": "pluginOneRule02",
-              "Expected": "pluginOneRule02"
+              "Name": "ctestPluginOneRule02",
+              "Actual": "testPluginOneRule02",
+              "Expected": "testPluginOneRule02"
         }
         ],
         "pluginCommandConstantsValidation": [{
-          "Name": "cpluginOneCommand01",
-          "Actual": "pluginOneCommand01",
-          "Expected": "pluginOneCommand01"
+          "Name": "ctestPluginOneCommand01",
+          "Actual": "testPluginOneCommand01",
+          "Expected": "testPluginOneCommand01"
         }, {
-          "Name": "cpluginOneCommand02",
-          "Actual": "pluginOneCommand02",
-          "Expected": "pluginOneCommand02"
+          "Name": "ctestPluginOneCommand02",
+          "Actual": "testPluginOneCommand02",
+          "Expected": "testPluginOneCommand02"
         }
       ],
     }
@@ -143,15 +143,15 @@ let pluginData = {
   },
   "CommandsAliases": {
     "system": [{
-      "pluginOneCommand01": {
-        "Name": "pluginOneCommand01",
-        "Aliases": "PluginOneComand01,PluginOneComnd01,PluginOneComd01,PluginOneCmd01,PluginOneC01,PluginOneCommand01,PluginOComand01,PluginOComnd01",
-        "Description": "The first demo command as part of pluginOne."
+      "testPluginOneCommand01": {
+        "Name": "testPluginOneCommand01",
+        "Aliases": "tstPluginOneComand01,tstPluginOneComnd01,tstPluginOneComd01,tstPluginOneCmd01,tstPluginOneC01,tstPluginOneCommand01,tstPluginOComand01,tstPluginOComnd01",
+        "Description": "The first demo command as part of test-plugin-one."
       },
-      "pluginOneCommand02": {
-        "Name": "pluginOneCommand02",
-        "Aliases": "PluginOneComand02,PluginOneComnd02,PluginOneComd02,PluginOneCmd02,PluginOneC02,PluginOneCommand02,PluginOComand02,PluginOComnd02",
-        "Description": "The second demo command as part of pluginOne."
+      "testPluginOneCommand02": {
+        "Name": "testPluginOneCommand02",
+        "Aliases": "tstPluginOneComand02,tstPluginOneComnd02,tstPluginOneComd02,tstPluginOneCmd02,tstPluginOneC02,tstPluginOneCommand02,tstPluginOComand02,tstPluginOComnd02",
+        "Description": "The second demo command as part of test-plugin-one."
       }
     }]
   },

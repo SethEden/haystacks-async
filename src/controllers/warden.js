@@ -805,18 +805,11 @@ async function unloadPlugins(pluginNames) {
   // pluginNames is:
   await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginNamesIs + JSON.stringify(pluginNames));
   let returnData = false;
-  let noFailureEncountered = true;
+  let noFailureEncountered = false;
   if (Array.isArray(pluginNames) === true) {
     for (let pluginNameKey in pluginNames) {
       let pluginName = pluginNames[pluginNameKey];
-      if (pluginName) {
-        await enqueueCommand(cmd.cunloadPlugin + bas.cSpace + pluginName);
-
-      } else {
-        // ERROR: No plugin name specified:
-        console.log(msg.cErrorUnloadPluginsMessage01 + pluginName);
-        noFailureEncountered = false;
-      }
+      noFailureEncountered = await chiefPlugin.unloadPlugin(pluginName);
     }
   } // End-if (Array.isArray(pluginNames) === true)
   if (noFailureEncountered === true) {
@@ -881,23 +874,30 @@ async function loadPluginResourceData(contextName, pluginResourcePath) {
   // pluginResourcePath is:
   await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginResourcePathIs + pluginResourcePath);
   let returnData = {};
-  switch (contextName) {
-    case wrd.cconfiguration:
-      returnData = await chiefConfiguration.setupPluginConfiguration(pluginResourcePath);
-      break;
-    case wrd.ccommand + wrd.cAliases:
-      returnData = await chiefCommander.loadCommandAliasesFromPath(pluginResourcePath, wrd.cPlugin);
-      break;
-    case wrd.cworkflows:
-      returnData = await chiefWorkflow.loadCommandWorkflowsFromPath(pluginResourcePath, wrd.cPlugin);
-      break;
-    case wrd.cthemes:
-      returnData = await chiefTheme.generateThemeDataFromThemeRootPath(pluginResourcePath);
-      break;
-    default:
-      // ERROR: Invalid data type specified:
-      console.log(msg.cloadPluginResourceDataMessage01 + contextName);
-      break;
+  if (pluginResourcePath && typeof pluginResourcePath === wrd.cstring && (pluginResourcePath.includes(bas.cForwardSlash) === true || pluginResourcePath.includes(bas.cBackSlash) === true)) {
+    switch (contextName) {
+      case wrd.cconfiguration:
+        returnData = await chiefConfiguration.setupPluginConfiguration(pluginResourcePath);
+        break;
+      case wrd.ccommand + wrd.cAliases:
+        returnData = await chiefCommander.loadCommandAliasesFromPath(pluginResourcePath, wrd.cPlugin);
+        break;
+      case wrd.cworkflows:
+        returnData = await chiefWorkflow.loadCommandWorkflowsFromPath(pluginResourcePath, wrd.cPlugin);
+        break;
+      case wrd.cthemes:
+        returnData = await chiefTheme.generateThemeDataFromThemeRootPath(pluginResourcePath);
+        break;
+      default:
+        // ERROR: Invalid data type specified:
+        console.log(msg.cloadPluginResourceDataMessage01 + contextName);
+        returnData = false;
+        break;
+    }
+  } else {
+    // ERROR: pluginResourcePath is an invalid value, pluginResourcePath is: 
+    console.log("ERROR: pluginResourcePath is an invalid value, pluginResourcePath is: ", pluginResourcePath);
+    returnData = false;
   }
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);

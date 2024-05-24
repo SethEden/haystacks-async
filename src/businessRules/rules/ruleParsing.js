@@ -145,7 +145,7 @@ async function processRulesInternal(inputData, inputMetaData) {
     } // End-for (let rule in inputMetaData)
   } else {
     // WARNING: Some rules do not exist:
-    console.log(msg.cProcessRulesWarnngSomeRulesDoNotExist + JSON.stringify(inputMetaData));
+    console.log(msg.cProcessRulesWarningSomeRulesDoNotExist + JSON.stringify(inputMetaData));
   } // End-if (rulesToExecute && doAllRulesExist(rulesToExecute))
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);

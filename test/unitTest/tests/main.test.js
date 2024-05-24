@@ -23,7 +23,12 @@
 // Internal imports
 import ruleBroker from '../../../src/brokers/ruleBroker.js';
 import dataArrayParsing from '../../../src/businessRules/rules/arrayParsing/dataArrayParsing.js';
+import characterArrayParsing from '../../../src/businessRules/rules/arrayParsing/characterArrayParsing.js';
+import characterStringParsing from '../../../src/businessRules/rules/stringParsing/characterStringParsing.js';
+import dataStringParsing from '../../../src/businessRules/rules/stringParsing/dataStringParsing.js';
+import fileStringParsing from '../../../src/businessRules/rules/stringParsing/fileStringParsing.js';
 import fileOperations from '../../../src/businessRules/rules/fileOperations.js';
+import stringParsingUtilities from '../../../src/businessRules/rules/stringParsingUtilities.js';
 import timeComputation from '../../../src/businessRules/rules/timeComputation.js';
 import configurator from '../../../src/executrix/configurator.js';
 import D from '../../../src/structures/data.js';
@@ -2814,7 +2819,7 @@ describe(tst_con.cunloadPlugin, () => {
         D[wrd.cThemes] = {};
         D[sys.cpluginsLoaded] = [{}];
         
-        let returnDataSetup = await main.loadPlugin(pluginPath);
+        await main.loadPlugin(pluginPath);
 
         // Act
         let returnData = await main.unloadPlugin(pluginName);
@@ -2842,7 +2847,7 @@ describe(tst_con.cunloadPlugin, () => {
         D[wrd.cThemes] = {};
         D[sys.cpluginsLoaded] = [{}];
 
-        let returnDataSetup = await main.loadPlugin(pluginPath);
+        await main.loadPlugin(pluginPath);
 
         // Act
         let returnData = await main.unloadPlugin(pluginName);
@@ -2870,7 +2875,7 @@ describe(tst_con.cunloadPlugin, () => {
         D[wrd.cThemes] = {};
         D[sys.cpluginsLoaded] = [{}];
 
-        let returnDataSetup = await main.loadPlugin(pluginPath);
+        await main.loadPlugin(pluginPath);
 
         // Act
         let returnData = await main.unloadPlugin(pluginName);
@@ -2898,7 +2903,7 @@ describe(tst_con.cunloadPlugin, () => {
         D[wrd.cThemes] = {};
         D[sys.cpluginsLoaded] = [{}];
 
-        let returnDataSetup = await main.loadPlugin(pluginPath);
+        await main.loadPlugin(pluginPath);
 
         // Act
         let returnData = await main.unloadPlugin(pluginName);
@@ -2926,7 +2931,7 @@ describe(tst_con.cunloadPlugin, () => {
         D[wrd.cThemes] = {};
         D[sys.cpluginsLoaded] = [{}];
 
-        let returnDataSetup = await main.loadPlugin(pluginPath);
+        await main.loadPlugin(pluginPath);
 
         // Act
         let returnData = await main.unloadPlugin(pluginName);
@@ -2954,7 +2959,7 @@ describe(tst_con.cunloadPlugin, () => {
         D[wrd.cThemes] = {};
         D[sys.cpluginsLoaded] = [{}];
         
-        let returnDataSetup = await main.loadPlugin(pluginPath);
+        await main.loadPlugin(pluginPath);
 
         // Act
         let returnData = await main.unloadPlugin(pluginName);
@@ -2990,7 +2995,7 @@ describe(tst_con.cunloadPlugins, () => {
         D[wrd.cThemes] = {};
         D[sys.cpluginsLoaded] = [{}];
         
-        let returnDataSetup = await main.loadPlugin(pluginPath);
+        await main.loadPlugin(pluginPath);
 
         // Act
         let returnData = await main.unloadPlugins(pluginNameArray);
@@ -3006,6 +3011,7 @@ describe(tst_con.cunloadPlugins, () => {
      * @date 2024/05/23
      */
     test(tst_con.cunloadPlugins_inValidPluginNamesString, async () => {
+        // Arrange
         let pluginNameArray = [tst_man.ctestString1];
         let pluginPath = tst_man.testPluginPath;
         D[sys.cbusinessRules] = {
@@ -3017,7 +3023,7 @@ describe(tst_con.cunloadPlugins, () => {
         D[wrd.cThemes] = {};
         D[sys.cpluginsLoaded] = [{}];
         
-        let returnDataSetup = await main.loadPlugin(pluginPath);
+        await main.loadPlugin(pluginPath);
 
         // Act
         let returnData = await main.unloadPlugins(pluginNameArray);
@@ -3033,6 +3039,7 @@ describe(tst_con.cunloadPlugins, () => {
      * @date 2024/05/23
      */
     test(tst_con.cunloadPlugins_inValidPluginNamesInteger, async () => {
+        // Arrange
         let pluginNameArray = [123];
         let pluginPath = tst_man.testPluginPath;
         D[sys.cbusinessRules] = {
@@ -3044,7 +3051,7 @@ describe(tst_con.cunloadPlugins, () => {
         D[wrd.cThemes] = {};
         D[sys.cpluginsLoaded] = [{}];
         
-        let returnDataSetup = await main.loadPlugin(pluginPath);
+        await main.loadPlugin(pluginPath);
 
         // Act
         let returnData = await main.unloadPlugins(pluginNameArray);
@@ -3060,6 +3067,7 @@ describe(tst_con.cunloadPlugins, () => {
      * @date 2024/05/23
      */
     test(tst_con.cunloadPlugins_inValidPluginNamesBoolean, async () => {
+        // Arrange
         let pluginNameArray = [false];
         let pluginPath = tst_man.testPluginPath;
         D[sys.cbusinessRules] = {
@@ -3071,7 +3079,7 @@ describe(tst_con.cunloadPlugins, () => {
         D[wrd.cThemes] = {};
         D[sys.cpluginsLoaded] = [{}];
         
-        let returnDataSetup = await main.loadPlugin(pluginPath);
+        await main.loadPlugin(pluginPath);
 
         // Act
         let returnData = await main.unloadPlugins(pluginNameArray);
@@ -3087,6 +3095,7 @@ describe(tst_con.cunloadPlugins, () => {
      * @date 2024/05/23
      */
     test(tst_con.cunloadPlugins_inValidPluginNamesUndefined, async () => {
+        // Arrange
         let pluginNameArray = [undefined];
         let pluginPath = tst_man.testPluginPath;
         D[sys.cbusinessRules] = {
@@ -3098,7 +3107,7 @@ describe(tst_con.cunloadPlugins, () => {
         D[wrd.cThemes] = {};
         D[sys.cpluginsLoaded] = [{}];
         
-        let returnDataSetup = await main.loadPlugin(pluginPath);
+        await main.loadPlugin(pluginPath);
 
         // Act
         let returnData = await main.unloadPlugins(pluginNameArray);
@@ -3114,6 +3123,7 @@ describe(tst_con.cunloadPlugins, () => {
      * @date 2024/05/23
      */
     test(tst_con.cunloadPlugins_inValidPluginNamesNaN, async () => {
+        // Arrange
         let pluginNameArray = [NaN];
         let pluginPath = tst_man.testPluginPath;
         D[sys.cbusinessRules] = {
@@ -3125,7 +3135,7 @@ describe(tst_con.cunloadPlugins, () => {
         D[wrd.cThemes] = {};
         D[sys.cpluginsLoaded] = [{}];
         
-        let returnDataSetup = await main.loadPlugin(pluginPath);
+        await main.loadPlugin(pluginPath);
 
         // Act
         let returnData = await main.unloadPlugins(pluginNameArray);
@@ -3135,8 +3145,656 @@ describe(tst_con.cunloadPlugins, () => {
     });
 })
 
+/**
+ * @function unloadAllPlugins
+ * @description Tests the positive and negative test cases of the unloadAllPlugins
+ * @author Vlad Sorokin
+ * @date 2024/05/24
+ */
+describe(tst_con.cunloadAllPlugins, () => {
+    /**
+     * @function unloadAllPlugins_validData
+     * @description Tests the main function unloadAllPlugins with a valid input.
+     * @author Vlad Sorokin
+     * @date 2024/05/24
+     */
+    test(tst_con.cunloadAllPlugins_validData, async () => {
+        // Arrange
+        let pluginPath = tst_man.testPluginPath;
+        D[sys.cbusinessRules] = {
+            [biz.cgetJsonData]: (inputData, inputMetaData) => fileOperations.getJsonData(inputData, inputMetaData),
+            [biz.cobjectDeepClone]: (inputData, inputMetaData) => dataArrayParsing.objectDeepClone(inputData, inputMetaData)
+        };
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+        D[sys.cpluginsLoaded] = [{}];
+        
+        await main.loadPlugin(pluginPath);
+
+        // Act
+        let returnData = await main.unloadAllPlugins();
+
+        // Assert
+        expect(returnData).toBeTruthy();
+    });
+
+    /**
+     * @function unloadAllPlugins_emptyData
+     * @description Tests the main function unloadAllPlugins with a  empty data.
+     * @author Vlad Sorokin
+     * @date 2024/05/24
+     */
+    test(tst_con.cunloadAllPlugins_emptyData, async () => {
+        // Arrange
+        D[sys.cbusinessRules] = {
+            [biz.cgetJsonData]: (inputData, inputMetaData) => fileOperations.getJsonData(inputData, inputMetaData),
+            [biz.cobjectDeepClone]: (inputData, inputMetaData) => dataArrayParsing.objectDeepClone(inputData, inputMetaData)
+        };
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+        D[sys.cpluginsLoaded] = [{}];
+
+        // Act
+        let returnData = await main.unloadAllPlugins();
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+})
+
+/**
+ * @function getPluginsRegistryPath
+ * @description Tests the positive and negative test cases of the getPluginsRegistryPath
+ * @author Vlad Sorokin
+ * @date 2024/05/24
+ */
+describe(tst_con.cgetPluginsRegistryPath, () => {
+    /**
+     * @function getPluginsRegistryPath_validData
+     * @description Tests the main function getPluginsRegistryPath with a valid input.
+     * @author Vlad Sorokin
+     * @date 2024/05/24
+     */
+    test(tst_con.cgetPluginsRegistryPath_validData, async () => {
+        // Arrange
+        let pluginPath = tst_man.testPluginPath;
+        D[sys.cbusinessRules] = {
+            [biz.cgetJsonData]: (inputData, inputMetaData) => fileOperations.getJsonData(inputData, inputMetaData),
+            [biz.cobjectDeepClone]: (inputData, inputMetaData) => dataArrayParsing.objectDeepClone(inputData, inputMetaData)
+        };
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+        D[cfg.cpluginRegistry][wrd.cpath] = pluginPath;
+
+        // Act
+        let returnData = await main.getPluginsRegistryPath();
+
+        // Assert
+        expect(returnData).toEqual(pluginPath);
+    });
+})
+
+/**
+ * @function loadPluginResourceData
+ * @description Tests the positive and negative test cases of the loadPluginResourceData
+ * @author Vlad Sorokin
+ * @date 2024/05/24
+ */
+describe(tst_con.cloadPluginResourceData, () => {
+    /**
+     * @function loadPluginResourceData_validConfigurationData
+     * @description Tests the main function loadPluginResourceData with a valid input.
+     * @author Vlad Sorokin
+     * @date 2024/05/24
+     */
+    test(tst_con.cloadPluginResourceData_validConfigurationData, async () => {
+        // Arrange
+        D[sys.cbusinessRules] = {
+            [biz.cobjectDeepClone]: (inputData, inputMetaData) => dataArrayParsing.objectDeepClone(inputData, inputMetaData),
+            [biz.carrayDeepClone]: (inputData, inputMetaData) => dataArrayParsing.arrayDeepClone(inputData, inputMetaData),
+            [biz.creplaceCharacterWithCharacter]: (inputData, inputMetaData) => characterArrayParsing.replaceCharacterWithCharacter(inputData, inputMetaData),
+            [biz.cswapForwardSlashToBackSlash]: (inputData, inputMetaData) => characterStringParsing.swapForwardSlashToBackSlash(inputData, inputMetaData),
+            [biz.cswapBackSlashToForwardSlash]: (inputData, inputMetaData) => characterStringParsing.swapBackSlashToForwardSlash(inputData, inputMetaData),
+            [biz.cswapDoubleForwardSlashToSingleForwardSlash]: (inputData, inputMetaData) => characterStringParsing.swapDoubleForwardSlashToSingleForwardSlash(inputData, inputMetaData),
+            [biz.cgetFileExtension]: (inputData, inputMetaData) => fileStringParsing.getFileExtension(inputData, inputMetaData),
+            [biz.cremoveDotFromFileExtension]: (inputData, inputMetaData) => fileStringParsing.removeDotFromFileExtension(inputData, inputMetaData),
+            [biz.cgetFileNameFromPath]: (inputData, inputMetaData) => fileStringParsing.getFileNameFromPath(inputData, inputMetaData),
+            [biz.cremoveFileExtensionFromFileName]: (inputData, inputMetaData) => fileStringParsing.removeFileExtensionFromFileName(inputData, inputMetaData),
+            [biz.cgetJsonData]: (inputData, inputMetaData) => fileOperations.getJsonData(inputData, inputMetaData),
+            [biz.creadDirectoryContents]: (inputData, inputMetaData) => fileOperations.readDirectoryContents(inputData, inputMetaData),
+            [biz.cgetXmlData]: (inputData, inputMetaData) => fileOperations.getXmlData(inputData, inputMetaData),
+            [biz.cgetDataCategoryFromDataContextName]: (inputData, inputMetaData) => dataStringParsing.getDataCategoryFromDataContextName(inputData, inputMetaData),
+            [biz.cstringToDataType]: (inputData, inputMetaData) => stringParsingUtilities.stringToDataType(inputData, inputMetaData),
+            [biz.cstringToDataType]: (inputData, inputMetaData) => stringParsingUtilities.stringToDataType(inputData, inputMetaData),
+            [biz.cutilitiesReplaceCharacterWithCharacter]: (inputData, inputMetaData) => stringParsingUtilities.utilitiesReplaceCharacterWithCharacter(inputData, inputMetaData)
+        };
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+
+        let contextName = wrd.cconfiguration;
+        let pluginResourcePath = tst_man.pluginResourcesDataPathConfiguration;
+
+        // Act
+        let returnData = await main.loadPluginResourceData(contextName, pluginResourcePath);
+
+        // Assert
+        expect(returnData).toEqual({"debugSettings": {}, "system": {"system.debugSettings": true, "system.demoPluginSetting": false, "system.unitTesting": true}});
+    });
+
+    /**
+     * @function loadPluginResourceData_validCommanderAliasesData
+     * @description Tests the main function loadPluginResourceData with a valid input.
+     * @author Vlad Sorokin
+     * @date 2024/05/24
+     */
+    test(tst_con.cloadPluginResourceData_validCommanderAliasesData, async () => {
+        // Arrange
+        let pluginPath = tst_man.testPluginPath;
+        D[sys.cbusinessRules] = {
+            [biz.cobjectDeepClone]: (inputData, inputMetaData) => dataArrayParsing.objectDeepClone(inputData, inputMetaData),
+            [biz.carrayDeepClone]: (inputData, inputMetaData) => dataArrayParsing.arrayDeepClone(inputData, inputMetaData),
+            [biz.creplaceCharacterWithCharacter]: (inputData, inputMetaData) => characterArrayParsing.replaceCharacterWithCharacter(inputData, inputMetaData),
+            [biz.cswapForwardSlashToBackSlash]: (inputData, inputMetaData) => characterStringParsing.swapForwardSlashToBackSlash(inputData, inputMetaData),
+            [biz.cswapBackSlashToForwardSlash]: (inputData, inputMetaData) => characterStringParsing.swapBackSlashToForwardSlash(inputData, inputMetaData),
+            [biz.cswapDoubleForwardSlashToSingleForwardSlash]: (inputData, inputMetaData) => characterStringParsing.swapDoubleForwardSlashToSingleForwardSlash(inputData, inputMetaData),
+            [biz.cgetFileExtension]: (inputData, inputMetaData) => fileStringParsing.getFileExtension(inputData, inputMetaData),
+            [biz.cremoveDotFromFileExtension]: (inputData, inputMetaData) => fileStringParsing.removeDotFromFileExtension(inputData, inputMetaData),
+            [biz.cgetFileNameFromPath]: (inputData, inputMetaData) => fileStringParsing.getFileNameFromPath(inputData, inputMetaData),
+            [biz.cremoveFileExtensionFromFileName]: (inputData, inputMetaData) => fileStringParsing.removeFileExtensionFromFileName(inputData, inputMetaData),
+            [biz.cgetJsonData]: (inputData, inputMetaData) => fileOperations.getJsonData(inputData, inputMetaData),
+            [biz.creadDirectoryContents]: (inputData, inputMetaData) => fileOperations.readDirectoryContents(inputData, inputMetaData),
+            [biz.cgetXmlData]: (inputData, inputMetaData) => fileOperations.getXmlData(inputData, inputMetaData),
+            [biz.cgetDataCategoryFromDataContextName]: (inputData, inputMetaData) => dataStringParsing.getDataCategoryFromDataContextName(inputData, inputMetaData),
+            [biz.cstringToDataType]: (inputData, inputMetaData) => stringParsingUtilities.stringToDataType(inputData, inputMetaData),
+            [biz.cstringToDataType]: (inputData, inputMetaData) => stringParsingUtilities.stringToDataType(inputData, inputMetaData),
+            [biz.cutilitiesReplaceCharacterWithCharacter]: (inputData, inputMetaData) => stringParsingUtilities.utilitiesReplaceCharacterWithCharacter(inputData, inputMetaData)
+        };
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+
+        let contextName = wrd.ccommand + wrd.cAliases;
+        let pluginResourcePath = tst_man.pluginResourcesDataPathCommands;
+
+        // Act
+        let returnData = await main.loadPluginResourceData(contextName, pluginResourcePath);
+
+        // Assert
+        expect(returnData).toEqual({"system": [{"testPluginOneCommand01": {"Aliases": "tstPluginOneComand01,tstPluginOneComnd01,tstPluginOneComd01,tstPluginOneCmd01,tstPluginOneC01,tstPluginOneCommand01,tstPluginOComand01,tstPluginOComnd01", "Description": "The first demo command as part of test-plugin-one.", "Name": "testPluginOneCommand01"}, "testPluginOneCommand02": {"Aliases": "tstPluginOneComand02,tstPluginOneComnd02,tstPluginOneComd02,tstPluginOneCmd02,tstPluginOneC02,tstPluginOneCommand02,tstPluginOComand02,tstPluginOComnd02", "Description": "The second demo command as part of test-plugin-one.", "Name": "testPluginOneCommand02"}}]});
+    });
+
+    /**
+     * @function loadPluginResourceData_validWorkflowsData
+     * @description Tests the main function loadPluginResourceData with a valid input.
+     * @author Vlad Sorokin
+     * @date 2024/05/24
+     */
+    test(tst_con.cloadPluginResourceData_validWorkflowsData, async () => {
+        // Arrange
+        D[sys.cbusinessRules] = {
+            [biz.cobjectDeepClone]: (inputData, inputMetaData) => dataArrayParsing.objectDeepClone(inputData, inputMetaData),
+            [biz.carrayDeepClone]: (inputData, inputMetaData) => dataArrayParsing.arrayDeepClone(inputData, inputMetaData),
+            [biz.creplaceCharacterWithCharacter]: (inputData, inputMetaData) => characterArrayParsing.replaceCharacterWithCharacter(inputData, inputMetaData),
+            [biz.cswapForwardSlashToBackSlash]: (inputData, inputMetaData) => characterStringParsing.swapForwardSlashToBackSlash(inputData, inputMetaData),
+            [biz.cswapBackSlashToForwardSlash]: (inputData, inputMetaData) => characterStringParsing.swapBackSlashToForwardSlash(inputData, inputMetaData),
+            [biz.cswapDoubleForwardSlashToSingleForwardSlash]: (inputData, inputMetaData) => characterStringParsing.swapDoubleForwardSlashToSingleForwardSlash(inputData, inputMetaData),
+            [biz.cgetFileExtension]: (inputData, inputMetaData) => fileStringParsing.getFileExtension(inputData, inputMetaData),
+            [biz.cremoveDotFromFileExtension]: (inputData, inputMetaData) => fileStringParsing.removeDotFromFileExtension(inputData, inputMetaData),
+            [biz.cgetFileNameFromPath]: (inputData, inputMetaData) => fileStringParsing.getFileNameFromPath(inputData, inputMetaData),
+            [biz.cremoveFileExtensionFromFileName]: (inputData, inputMetaData) => fileStringParsing.removeFileExtensionFromFileName(inputData, inputMetaData),
+            [biz.cgetJsonData]: (inputData, inputMetaData) => fileOperations.getJsonData(inputData, inputMetaData),
+            [biz.creadDirectoryContents]: (inputData, inputMetaData) => fileOperations.readDirectoryContents(inputData, inputMetaData),
+            [biz.cgetXmlData]: (inputData, inputMetaData) => fileOperations.getXmlData(inputData, inputMetaData),
+            [biz.cgetDataCategoryFromDataContextName]: (inputData, inputMetaData) => dataStringParsing.getDataCategoryFromDataContextName(inputData, inputMetaData),
+            [biz.cstringToDataType]: (inputData, inputMetaData) => stringParsingUtilities.stringToDataType(inputData, inputMetaData),
+            [biz.cstringToDataType]: (inputData, inputMetaData) => stringParsingUtilities.stringToDataType(inputData, inputMetaData),
+            [biz.cutilitiesReplaceCharacterWithCharacter]: (inputData, inputMetaData) => stringParsingUtilities.utilitiesReplaceCharacterWithCharacter(inputData, inputMetaData)
+        };
+
+        let contextName = wrd.cworkflows;
+        let pluginResourcePath = tst_man.pluginResourcesDataPathWorkflows;
+
+        // Act
+        let returnData = await main.loadPluginResourceData(contextName, pluginResourcePath);
+
+        // Assert
+        expect(returnData).toEqual({"system": [{"testPluginOneWorkflow": "commandSequencer pluginOneCommand01 pluginOneCommand02"}]});
+    });
+
+    /**
+     * @function loadPluginResourceData_validThemesData
+     * @description Tests the main function loadPluginResourceData with a valid input.
+     * @author Vlad Sorokin
+     * @date 2024/05/24
+     */
+    test(tst_con.cloadPluginResourceData_validThemesData, async () => {
+        // Arrange
+        D[sys.cbusinessRules] = {
+            [biz.cobjectDeepClone]: (inputData, inputMetaData) => dataArrayParsing.objectDeepClone(inputData, inputMetaData),
+            [biz.carrayDeepClone]: (inputData, inputMetaData) => dataArrayParsing.arrayDeepClone(inputData, inputMetaData),
+            [biz.creplaceCharacterWithCharacter]: (inputData, inputMetaData) => characterArrayParsing.replaceCharacterWithCharacter(inputData, inputMetaData),
+            [biz.cswapForwardSlashToBackSlash]: (inputData, inputMetaData) => characterStringParsing.swapForwardSlashToBackSlash(inputData, inputMetaData),
+            [biz.cswapBackSlashToForwardSlash]: (inputData, inputMetaData) => characterStringParsing.swapBackSlashToForwardSlash(inputData, inputMetaData),
+            [biz.cswapDoubleForwardSlashToSingleForwardSlash]: (inputData, inputMetaData) => characterStringParsing.swapDoubleForwardSlashToSingleForwardSlash(inputData, inputMetaData),
+            [biz.cgetFileExtension]: (inputData, inputMetaData) => fileStringParsing.getFileExtension(inputData, inputMetaData),
+            [biz.cremoveDotFromFileExtension]: (inputData, inputMetaData) => fileStringParsing.removeDotFromFileExtension(inputData, inputMetaData),
+            [biz.cgetFileNameFromPath]: (inputData, inputMetaData) => fileStringParsing.getFileNameFromPath(inputData, inputMetaData),
+            [biz.cremoveFileExtensionFromFileName]: (inputData, inputMetaData) => fileStringParsing.removeFileExtensionFromFileName(inputData, inputMetaData),
+            [biz.cgetJsonData]: (inputData, inputMetaData) => fileOperations.getJsonData(inputData, inputMetaData),
+            [biz.cgetDirectoryList]: (inputData, inputMetaData) => fileOperations.getDirectoryList(inputData, inputMetaData),
+            [biz.creadDirectoryContents]: (inputData, inputMetaData) => fileOperations.readDirectoryContents(inputData, inputMetaData),
+            [biz.cgetXmlData]: (inputData, inputMetaData) => fileOperations.getXmlData(inputData, inputMetaData),
+            [biz.cgetDataCategoryFromDataContextName]: (inputData, inputMetaData) => dataStringParsing.getDataCategoryFromDataContextName(inputData, inputMetaData),
+            [biz.cstringToDataType]: (inputData, inputMetaData) => stringParsingUtilities.stringToDataType(inputData, inputMetaData),
+            [biz.cstringToDataType]: (inputData, inputMetaData) => stringParsingUtilities.stringToDataType(inputData, inputMetaData),
+            [biz.cutilitiesReplaceCharacterWithCharacter]: (inputData, inputMetaData) => stringParsingUtilities.utilitiesReplaceCharacterWithCharacter(inputData, inputMetaData)
+        };
+
+        let contextName = wrd.cthemes;
+        let pluginResourcePath = tst_man.pluginResourcesDataPathThemes;
+
+        // Act
+        let returnData = await main.loadPluginResourceData(contextName, pluginResourcePath);
+
+        // Assert
+        expect(returnData).toEqual([{"Name": "Default", "Path": "C:\\haystacks-async\\test\\unitTest\\testData\\testPlugins\\test-plugin-one\\resources\\themes\\Default"}]);
+    });
+
+    /**
+     * @function loadPluginResourceData_inValidContextNameString
+     * @description Tests the main function loadPluginResourceData with a invalid data string.
+     * @author Vlad Sorokin
+     * @date 2024/05/24
+     */
+    test(tst_con.cloadPluginResourceData_inValidContextNameString, async () => {
+        // Arrange
+        D[sys.cbusinessRules] = {
+            [biz.cobjectDeepClone]: (inputData, inputMetaData) => dataArrayParsing.objectDeepClone(inputData, inputMetaData),
+            [biz.carrayDeepClone]: (inputData, inputMetaData) => dataArrayParsing.arrayDeepClone(inputData, inputMetaData),
+            [biz.creplaceCharacterWithCharacter]: (inputData, inputMetaData) => characterArrayParsing.replaceCharacterWithCharacter(inputData, inputMetaData),
+            [biz.cswapForwardSlashToBackSlash]: (inputData, inputMetaData) => characterStringParsing.swapForwardSlashToBackSlash(inputData, inputMetaData),
+            [biz.cswapBackSlashToForwardSlash]: (inputData, inputMetaData) => characterStringParsing.swapBackSlashToForwardSlash(inputData, inputMetaData),
+            [biz.cswapDoubleForwardSlashToSingleForwardSlash]: (inputData, inputMetaData) => characterStringParsing.swapDoubleForwardSlashToSingleForwardSlash(inputData, inputMetaData),
+            [biz.cgetFileExtension]: (inputData, inputMetaData) => fileStringParsing.getFileExtension(inputData, inputMetaData),
+            [biz.cremoveDotFromFileExtension]: (inputData, inputMetaData) => fileStringParsing.removeDotFromFileExtension(inputData, inputMetaData),
+            [biz.cgetFileNameFromPath]: (inputData, inputMetaData) => fileStringParsing.getFileNameFromPath(inputData, inputMetaData),
+            [biz.cremoveFileExtensionFromFileName]: (inputData, inputMetaData) => fileStringParsing.removeFileExtensionFromFileName(inputData, inputMetaData),
+            [biz.cgetJsonData]: (inputData, inputMetaData) => fileOperations.getJsonData(inputData, inputMetaData),
+            [biz.cgetDirectoryList]: (inputData, inputMetaData) => fileOperations.getDirectoryList(inputData, inputMetaData),
+            [biz.creadDirectoryContents]: (inputData, inputMetaData) => fileOperations.readDirectoryContents(inputData, inputMetaData),
+            [biz.cgetXmlData]: (inputData, inputMetaData) => fileOperations.getXmlData(inputData, inputMetaData),
+            [biz.cgetDataCategoryFromDataContextName]: (inputData, inputMetaData) => dataStringParsing.getDataCategoryFromDataContextName(inputData, inputMetaData),
+            [biz.cstringToDataType]: (inputData, inputMetaData) => stringParsingUtilities.stringToDataType(inputData, inputMetaData),
+            [biz.cstringToDataType]: (inputData, inputMetaData) => stringParsingUtilities.stringToDataType(inputData, inputMetaData),
+            [biz.cutilitiesReplaceCharacterWithCharacter]: (inputData, inputMetaData) => stringParsingUtilities.utilitiesReplaceCharacterWithCharacter(inputData, inputMetaData)
+        };
+
+        let contextName = tst_man.ctestString1;
+        let pluginResourcePath = tst_man.pluginResourcesDataPathConfiguration;
 
 
+        // Act
+        let returnData = await main.loadPluginResourceData(contextName, pluginResourcePath);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function loadPluginResourceData_inValidPluginConfigPathString
+     * @description Tests the main function loadPluginResourceData with a invalid data string.
+     * @author Vlad Sorokin
+     * @date 2024/05/24
+     */
+    test(tst_con.cloadPluginResourceData_inValidPluginConfigPathString, async () => {
+        // Arrange
+        D[sys.cbusinessRules] = {
+            [biz.cobjectDeepClone]: (inputData, inputMetaData) => dataArrayParsing.objectDeepClone(inputData, inputMetaData),
+            [biz.carrayDeepClone]: (inputData, inputMetaData) => dataArrayParsing.arrayDeepClone(inputData, inputMetaData),
+            [biz.creplaceCharacterWithCharacter]: (inputData, inputMetaData) => characterArrayParsing.replaceCharacterWithCharacter(inputData, inputMetaData),
+            [biz.cswapForwardSlashToBackSlash]: (inputData, inputMetaData) => characterStringParsing.swapForwardSlashToBackSlash(inputData, inputMetaData),
+            [biz.cswapBackSlashToForwardSlash]: (inputData, inputMetaData) => characterStringParsing.swapBackSlashToForwardSlash(inputData, inputMetaData),
+            [biz.cswapDoubleForwardSlashToSingleForwardSlash]: (inputData, inputMetaData) => characterStringParsing.swapDoubleForwardSlashToSingleForwardSlash(inputData, inputMetaData),
+            [biz.cgetFileExtension]: (inputData, inputMetaData) => fileStringParsing.getFileExtension(inputData, inputMetaData),
+            [biz.cremoveDotFromFileExtension]: (inputData, inputMetaData) => fileStringParsing.removeDotFromFileExtension(inputData, inputMetaData),
+            [biz.cgetFileNameFromPath]: (inputData, inputMetaData) => fileStringParsing.getFileNameFromPath(inputData, inputMetaData),
+            [biz.cremoveFileExtensionFromFileName]: (inputData, inputMetaData) => fileStringParsing.removeFileExtensionFromFileName(inputData, inputMetaData),
+            [biz.cgetJsonData]: (inputData, inputMetaData) => fileOperations.getJsonData(inputData, inputMetaData),
+            [biz.cgetDirectoryList]: (inputData, inputMetaData) => fileOperations.getDirectoryList(inputData, inputMetaData),
+            [biz.creadDirectoryContents]: (inputData, inputMetaData) => fileOperations.readDirectoryContents(inputData, inputMetaData),
+            [biz.cgetXmlData]: (inputData, inputMetaData) => fileOperations.getXmlData(inputData, inputMetaData),
+            [biz.cgetDataCategoryFromDataContextName]: (inputData, inputMetaData) => dataStringParsing.getDataCategoryFromDataContextName(inputData, inputMetaData),
+            [biz.cstringToDataType]: (inputData, inputMetaData) => stringParsingUtilities.stringToDataType(inputData, inputMetaData),
+            [biz.cstringToDataType]: (inputData, inputMetaData) => stringParsingUtilities.stringToDataType(inputData, inputMetaData),
+            [biz.cutilitiesReplaceCharacterWithCharacter]: (inputData, inputMetaData) => stringParsingUtilities.utilitiesReplaceCharacterWithCharacter(inputData, inputMetaData)
+        };
+
+        let contextName = wrd.cconfiguration;
+        let pluginResourcePath = tst_man.ctestString1;
+
+        // Act
+        let returnData = await main.loadPluginResourceData(contextName, pluginResourcePath);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function loadPluginResourceData_inValidContextNameInteger
+     * @description Tests the main function loadPluginResourceData with a invalid data integer.
+     * @author Vlad Sorokin
+     * @date 2024/05/24
+     */
+    test(tst_con.cloadPluginResourceData_inValidContextNameInteger, async () => {
+        // Arrange
+        D[sys.cbusinessRules] = {
+            [biz.cobjectDeepClone]: (inputData, inputMetaData) => dataArrayParsing.objectDeepClone(inputData, inputMetaData),
+            [biz.carrayDeepClone]: (inputData, inputMetaData) => dataArrayParsing.arrayDeepClone(inputData, inputMetaData),
+            [biz.creplaceCharacterWithCharacter]: (inputData, inputMetaData) => characterArrayParsing.replaceCharacterWithCharacter(inputData, inputMetaData),
+            [biz.cswapForwardSlashToBackSlash]: (inputData, inputMetaData) => characterStringParsing.swapForwardSlashToBackSlash(inputData, inputMetaData),
+            [biz.cswapBackSlashToForwardSlash]: (inputData, inputMetaData) => characterStringParsing.swapBackSlashToForwardSlash(inputData, inputMetaData),
+            [biz.cswapDoubleForwardSlashToSingleForwardSlash]: (inputData, inputMetaData) => characterStringParsing.swapDoubleForwardSlashToSingleForwardSlash(inputData, inputMetaData),
+            [biz.cgetFileExtension]: (inputData, inputMetaData) => fileStringParsing.getFileExtension(inputData, inputMetaData),
+            [biz.cremoveDotFromFileExtension]: (inputData, inputMetaData) => fileStringParsing.removeDotFromFileExtension(inputData, inputMetaData),
+            [biz.cgetFileNameFromPath]: (inputData, inputMetaData) => fileStringParsing.getFileNameFromPath(inputData, inputMetaData),
+            [biz.cremoveFileExtensionFromFileName]: (inputData, inputMetaData) => fileStringParsing.removeFileExtensionFromFileName(inputData, inputMetaData),
+            [biz.cgetJsonData]: (inputData, inputMetaData) => fileOperations.getJsonData(inputData, inputMetaData),
+            [biz.cgetDirectoryList]: (inputData, inputMetaData) => fileOperations.getDirectoryList(inputData, inputMetaData),
+            [biz.creadDirectoryContents]: (inputData, inputMetaData) => fileOperations.readDirectoryContents(inputData, inputMetaData),
+            [biz.cgetXmlData]: (inputData, inputMetaData) => fileOperations.getXmlData(inputData, inputMetaData),
+            [biz.cgetDataCategoryFromDataContextName]: (inputData, inputMetaData) => dataStringParsing.getDataCategoryFromDataContextName(inputData, inputMetaData),
+            [biz.cstringToDataType]: (inputData, inputMetaData) => stringParsingUtilities.stringToDataType(inputData, inputMetaData),
+            [biz.cstringToDataType]: (inputData, inputMetaData) => stringParsingUtilities.stringToDataType(inputData, inputMetaData),
+            [biz.cutilitiesReplaceCharacterWithCharacter]: (inputData, inputMetaData) => stringParsingUtilities.utilitiesReplaceCharacterWithCharacter(inputData, inputMetaData)
+        };
+
+        let contextName = 123;
+        let pluginResourcePath = tst_man.pluginResourcesDataPathConfiguration;
+
+        // Act
+        let returnData = await main.loadPluginResourceData(contextName, pluginResourcePath);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function loadPluginResourceData_inValidContextNameBoolean
+     * @description Tests the main function loadPluginResourceData with a invalid data boolean.
+     * @author Vlad Sorokin
+     * @date 2024/05/24
+     */
+    test(tst_con.cloadPluginResourceData_inValidContextNameBoolean, async () => {
+        // Arrange
+        D[sys.cbusinessRules] = {
+            [biz.cobjectDeepClone]: (inputData, inputMetaData) => dataArrayParsing.objectDeepClone(inputData, inputMetaData),
+            [biz.carrayDeepClone]: (inputData, inputMetaData) => dataArrayParsing.arrayDeepClone(inputData, inputMetaData),
+            [biz.creplaceCharacterWithCharacter]: (inputData, inputMetaData) => characterArrayParsing.replaceCharacterWithCharacter(inputData, inputMetaData),
+            [biz.cswapForwardSlashToBackSlash]: (inputData, inputMetaData) => characterStringParsing.swapForwardSlashToBackSlash(inputData, inputMetaData),
+            [biz.cswapBackSlashToForwardSlash]: (inputData, inputMetaData) => characterStringParsing.swapBackSlashToForwardSlash(inputData, inputMetaData),
+            [biz.cswapDoubleForwardSlashToSingleForwardSlash]: (inputData, inputMetaData) => characterStringParsing.swapDoubleForwardSlashToSingleForwardSlash(inputData, inputMetaData),
+            [biz.cgetFileExtension]: (inputData, inputMetaData) => fileStringParsing.getFileExtension(inputData, inputMetaData),
+            [biz.cremoveDotFromFileExtension]: (inputData, inputMetaData) => fileStringParsing.removeDotFromFileExtension(inputData, inputMetaData),
+            [biz.cgetFileNameFromPath]: (inputData, inputMetaData) => fileStringParsing.getFileNameFromPath(inputData, inputMetaData),
+            [biz.cremoveFileExtensionFromFileName]: (inputData, inputMetaData) => fileStringParsing.removeFileExtensionFromFileName(inputData, inputMetaData),
+            [biz.cgetJsonData]: (inputData, inputMetaData) => fileOperations.getJsonData(inputData, inputMetaData),
+            [biz.cgetDirectoryList]: (inputData, inputMetaData) => fileOperations.getDirectoryList(inputData, inputMetaData),
+            [biz.creadDirectoryContents]: (inputData, inputMetaData) => fileOperations.readDirectoryContents(inputData, inputMetaData),
+            [biz.cgetXmlData]: (inputData, inputMetaData) => fileOperations.getXmlData(inputData, inputMetaData),
+            [biz.cgetDataCategoryFromDataContextName]: (inputData, inputMetaData) => dataStringParsing.getDataCategoryFromDataContextName(inputData, inputMetaData),
+            [biz.cstringToDataType]: (inputData, inputMetaData) => stringParsingUtilities.stringToDataType(inputData, inputMetaData),
+            [biz.cstringToDataType]: (inputData, inputMetaData) => stringParsingUtilities.stringToDataType(inputData, inputMetaData),
+            [biz.cutilitiesReplaceCharacterWithCharacter]: (inputData, inputMetaData) => stringParsingUtilities.utilitiesReplaceCharacterWithCharacter(inputData, inputMetaData)
+        };
+
+        let contextName = false;
+        let pluginResourcePath = tst_man.pluginResourcesDataPathConfiguration;
+
+        // Act
+        let returnData = await main.loadPluginResourceData(contextName, pluginResourcePath);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function loadPluginResourceData_inValidPluginConfigPathInteger
+     * @description Tests the main function loadPluginResourceData with a invalid data integer.
+     * @author Vlad Sorokin
+     * @date 2024/05/24
+     */
+    test(tst_con.cloadPluginResourceData_inValidPluginConfigPathInteger, async () => {
+        // Arrange
+        D[sys.cbusinessRules] = {
+            [biz.cobjectDeepClone]: (inputData, inputMetaData) => dataArrayParsing.objectDeepClone(inputData, inputMetaData),
+            [biz.carrayDeepClone]: (inputData, inputMetaData) => dataArrayParsing.arrayDeepClone(inputData, inputMetaData),
+            [biz.creplaceCharacterWithCharacter]: (inputData, inputMetaData) => characterArrayParsing.replaceCharacterWithCharacter(inputData, inputMetaData),
+            [biz.cswapForwardSlashToBackSlash]: (inputData, inputMetaData) => characterStringParsing.swapForwardSlashToBackSlash(inputData, inputMetaData),
+            [biz.cswapBackSlashToForwardSlash]: (inputData, inputMetaData) => characterStringParsing.swapBackSlashToForwardSlash(inputData, inputMetaData),
+            [biz.cswapDoubleForwardSlashToSingleForwardSlash]: (inputData, inputMetaData) => characterStringParsing.swapDoubleForwardSlashToSingleForwardSlash(inputData, inputMetaData),
+            [biz.cgetFileExtension]: (inputData, inputMetaData) => fileStringParsing.getFileExtension(inputData, inputMetaData),
+            [biz.cremoveDotFromFileExtension]: (inputData, inputMetaData) => fileStringParsing.removeDotFromFileExtension(inputData, inputMetaData),
+            [biz.cgetFileNameFromPath]: (inputData, inputMetaData) => fileStringParsing.getFileNameFromPath(inputData, inputMetaData),
+            [biz.cremoveFileExtensionFromFileName]: (inputData, inputMetaData) => fileStringParsing.removeFileExtensionFromFileName(inputData, inputMetaData),
+            [biz.cgetJsonData]: (inputData, inputMetaData) => fileOperations.getJsonData(inputData, inputMetaData),
+            [biz.cgetDirectoryList]: (inputData, inputMetaData) => fileOperations.getDirectoryList(inputData, inputMetaData),
+            [biz.creadDirectoryContents]: (inputData, inputMetaData) => fileOperations.readDirectoryContents(inputData, inputMetaData),
+            [biz.cgetXmlData]: (inputData, inputMetaData) => fileOperations.getXmlData(inputData, inputMetaData),
+            [biz.cgetDataCategoryFromDataContextName]: (inputData, inputMetaData) => dataStringParsing.getDataCategoryFromDataContextName(inputData, inputMetaData),
+            [biz.cstringToDataType]: (inputData, inputMetaData) => stringParsingUtilities.stringToDataType(inputData, inputMetaData),
+            [biz.cstringToDataType]: (inputData, inputMetaData) => stringParsingUtilities.stringToDataType(inputData, inputMetaData),
+            [biz.cutilitiesReplaceCharacterWithCharacter]: (inputData, inputMetaData) => stringParsingUtilities.utilitiesReplaceCharacterWithCharacter(inputData, inputMetaData)
+        };
+
+        let contextName = wrd.cconfiguration;
+        let pluginResourcePath = 123;
+
+        // Act
+        let returnData = await main.loadPluginResourceData(contextName, pluginResourcePath);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function loadPluginResourceData_inValidPluginConfigPathBoolean
+     * @description Tests the main function loadPluginResourceData with a invalid data boolean.
+     * @author Vlad Sorokin
+     * @date 2024/05/24
+     */
+    test(tst_con.cloadPluginResourceData_inValidPluginConfigPathBoolean, async () => {
+        // Arrange
+        D[sys.cbusinessRules] = {
+            [biz.cobjectDeepClone]: (inputData, inputMetaData) => dataArrayParsing.objectDeepClone(inputData, inputMetaData),
+            [biz.carrayDeepClone]: (inputData, inputMetaData) => dataArrayParsing.arrayDeepClone(inputData, inputMetaData),
+            [biz.creplaceCharacterWithCharacter]: (inputData, inputMetaData) => characterArrayParsing.replaceCharacterWithCharacter(inputData, inputMetaData),
+            [biz.cswapForwardSlashToBackSlash]: (inputData, inputMetaData) => characterStringParsing.swapForwardSlashToBackSlash(inputData, inputMetaData),
+            [biz.cswapBackSlashToForwardSlash]: (inputData, inputMetaData) => characterStringParsing.swapBackSlashToForwardSlash(inputData, inputMetaData),
+            [biz.cswapDoubleForwardSlashToSingleForwardSlash]: (inputData, inputMetaData) => characterStringParsing.swapDoubleForwardSlashToSingleForwardSlash(inputData, inputMetaData),
+            [biz.cgetFileExtension]: (inputData, inputMetaData) => fileStringParsing.getFileExtension(inputData, inputMetaData),
+            [biz.cremoveDotFromFileExtension]: (inputData, inputMetaData) => fileStringParsing.removeDotFromFileExtension(inputData, inputMetaData),
+            [biz.cgetFileNameFromPath]: (inputData, inputMetaData) => fileStringParsing.getFileNameFromPath(inputData, inputMetaData),
+            [biz.cremoveFileExtensionFromFileName]: (inputData, inputMetaData) => fileStringParsing.removeFileExtensionFromFileName(inputData, inputMetaData),
+            [biz.cgetJsonData]: (inputData, inputMetaData) => fileOperations.getJsonData(inputData, inputMetaData),
+            [biz.cgetDirectoryList]: (inputData, inputMetaData) => fileOperations.getDirectoryList(inputData, inputMetaData),
+            [biz.creadDirectoryContents]: (inputData, inputMetaData) => fileOperations.readDirectoryContents(inputData, inputMetaData),
+            [biz.cgetXmlData]: (inputData, inputMetaData) => fileOperations.getXmlData(inputData, inputMetaData),
+            [biz.cgetDataCategoryFromDataContextName]: (inputData, inputMetaData) => dataStringParsing.getDataCategoryFromDataContextName(inputData, inputMetaData),
+            [biz.cstringToDataType]: (inputData, inputMetaData) => stringParsingUtilities.stringToDataType(inputData, inputMetaData),
+            [biz.cstringToDataType]: (inputData, inputMetaData) => stringParsingUtilities.stringToDataType(inputData, inputMetaData),
+            [biz.cutilitiesReplaceCharacterWithCharacter]: (inputData, inputMetaData) => stringParsingUtilities.utilitiesReplaceCharacterWithCharacter(inputData, inputMetaData)
+        };
+
+        let contextName = wrd.cconfiguration;
+        let pluginResourcePath = false;
+
+        // Act
+        let returnData = await main.loadPluginResourceData(contextName, pluginResourcePath);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function loadPluginResourceData_inValidContextNameUndefined
+     * @description Tests the main function loadPluginResourceData with a invalid data undefined.
+     * @author Vlad Sorokin
+     * @date 2024/05/24
+     */
+    test(tst_con.cloadPluginResourceData_inValidContextNameUndefined, async () => {
+        // Arrange
+        D[sys.cbusinessRules] = {
+            [biz.cobjectDeepClone]: (inputData, inputMetaData) => dataArrayParsing.objectDeepClone(inputData, inputMetaData),
+            [biz.carrayDeepClone]: (inputData, inputMetaData) => dataArrayParsing.arrayDeepClone(inputData, inputMetaData),
+            [biz.creplaceCharacterWithCharacter]: (inputData, inputMetaData) => characterArrayParsing.replaceCharacterWithCharacter(inputData, inputMetaData),
+            [biz.cswapForwardSlashToBackSlash]: (inputData, inputMetaData) => characterStringParsing.swapForwardSlashToBackSlash(inputData, inputMetaData),
+            [biz.cswapBackSlashToForwardSlash]: (inputData, inputMetaData) => characterStringParsing.swapBackSlashToForwardSlash(inputData, inputMetaData),
+            [biz.cswapDoubleForwardSlashToSingleForwardSlash]: (inputData, inputMetaData) => characterStringParsing.swapDoubleForwardSlashToSingleForwardSlash(inputData, inputMetaData),
+            [biz.cgetFileExtension]: (inputData, inputMetaData) => fileStringParsing.getFileExtension(inputData, inputMetaData),
+            [biz.cremoveDotFromFileExtension]: (inputData, inputMetaData) => fileStringParsing.removeDotFromFileExtension(inputData, inputMetaData),
+            [biz.cgetFileNameFromPath]: (inputData, inputMetaData) => fileStringParsing.getFileNameFromPath(inputData, inputMetaData),
+            [biz.cremoveFileExtensionFromFileName]: (inputData, inputMetaData) => fileStringParsing.removeFileExtensionFromFileName(inputData, inputMetaData),
+            [biz.cgetJsonData]: (inputData, inputMetaData) => fileOperations.getJsonData(inputData, inputMetaData),
+            [biz.cgetDirectoryList]: (inputData, inputMetaData) => fileOperations.getDirectoryList(inputData, inputMetaData),
+            [biz.creadDirectoryContents]: (inputData, inputMetaData) => fileOperations.readDirectoryContents(inputData, inputMetaData),
+            [biz.cgetXmlData]: (inputData, inputMetaData) => fileOperations.getXmlData(inputData, inputMetaData),
+            [biz.cgetDataCategoryFromDataContextName]: (inputData, inputMetaData) => dataStringParsing.getDataCategoryFromDataContextName(inputData, inputMetaData),
+            [biz.cstringToDataType]: (inputData, inputMetaData) => stringParsingUtilities.stringToDataType(inputData, inputMetaData),
+            [biz.cstringToDataType]: (inputData, inputMetaData) => stringParsingUtilities.stringToDataType(inputData, inputMetaData),
+            [biz.cutilitiesReplaceCharacterWithCharacter]: (inputData, inputMetaData) => stringParsingUtilities.utilitiesReplaceCharacterWithCharacter(inputData, inputMetaData)
+        };
+
+        let contextName = undefined;
+        let pluginResourcePath = tst_man.pluginResourcesDataPathConfiguration;
+
+        // Act
+        let returnData = await main.loadPluginResourceData(contextName, pluginResourcePath);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function loadPluginResourceData_inValidContextNameNaN
+     * @description Tests the main function loadPluginResourceData with a invalid data NaN.
+     * @author Vlad Sorokin
+     * @date 2024/05/24
+     */
+    test(tst_con.cloadPluginResourceData_inValidContextNameNaN, async () => {
+        // Arrange
+        D[sys.cbusinessRules] = {
+            [biz.cobjectDeepClone]: (inputData, inputMetaData) => dataArrayParsing.objectDeepClone(inputData, inputMetaData),
+            [biz.carrayDeepClone]: (inputData, inputMetaData) => dataArrayParsing.arrayDeepClone(inputData, inputMetaData),
+            [biz.creplaceCharacterWithCharacter]: (inputData, inputMetaData) => characterArrayParsing.replaceCharacterWithCharacter(inputData, inputMetaData),
+            [biz.cswapForwardSlashToBackSlash]: (inputData, inputMetaData) => characterStringParsing.swapForwardSlashToBackSlash(inputData, inputMetaData),
+            [biz.cswapBackSlashToForwardSlash]: (inputData, inputMetaData) => characterStringParsing.swapBackSlashToForwardSlash(inputData, inputMetaData),
+            [biz.cswapDoubleForwardSlashToSingleForwardSlash]: (inputData, inputMetaData) => characterStringParsing.swapDoubleForwardSlashToSingleForwardSlash(inputData, inputMetaData),
+            [biz.cgetFileExtension]: (inputData, inputMetaData) => fileStringParsing.getFileExtension(inputData, inputMetaData),
+            [biz.cremoveDotFromFileExtension]: (inputData, inputMetaData) => fileStringParsing.removeDotFromFileExtension(inputData, inputMetaData),
+            [biz.cgetFileNameFromPath]: (inputData, inputMetaData) => fileStringParsing.getFileNameFromPath(inputData, inputMetaData),
+            [biz.cremoveFileExtensionFromFileName]: (inputData, inputMetaData) => fileStringParsing.removeFileExtensionFromFileName(inputData, inputMetaData),
+            [biz.cgetJsonData]: (inputData, inputMetaData) => fileOperations.getJsonData(inputData, inputMetaData),
+            [biz.cgetDirectoryList]: (inputData, inputMetaData) => fileOperations.getDirectoryList(inputData, inputMetaData),
+            [biz.creadDirectoryContents]: (inputData, inputMetaData) => fileOperations.readDirectoryContents(inputData, inputMetaData),
+            [biz.cgetXmlData]: (inputData, inputMetaData) => fileOperations.getXmlData(inputData, inputMetaData),
+            [biz.cgetDataCategoryFromDataContextName]: (inputData, inputMetaData) => dataStringParsing.getDataCategoryFromDataContextName(inputData, inputMetaData),
+            [biz.cstringToDataType]: (inputData, inputMetaData) => stringParsingUtilities.stringToDataType(inputData, inputMetaData),
+            [biz.cstringToDataType]: (inputData, inputMetaData) => stringParsingUtilities.stringToDataType(inputData, inputMetaData),
+            [biz.cutilitiesReplaceCharacterWithCharacter]: (inputData, inputMetaData) => stringParsingUtilities.utilitiesReplaceCharacterWithCharacter(inputData, inputMetaData)
+        };
+
+        let contextName = NaN;
+        let pluginResourcePath = tst_man.pluginResourcesDataPathConfiguration;
+
+        // Act
+        let returnData = await main.loadPluginResourceData(contextName, pluginResourcePath);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function loadPluginResourceData_inValidPluginConfigPathUndefined
+     * @description Tests the main function loadPluginResourceData with a invalid data undefined.
+     * @author Vlad Sorokin
+     * @date 2024/05/24
+     */
+    test(tst_con.cloadPluginResourceData_inValidPluginConfigPathUndefined, async () => {
+        // Arrange
+        D[sys.cbusinessRules] = {
+            [biz.cobjectDeepClone]: (inputData, inputMetaData) => dataArrayParsing.objectDeepClone(inputData, inputMetaData),
+            [biz.carrayDeepClone]: (inputData, inputMetaData) => dataArrayParsing.arrayDeepClone(inputData, inputMetaData),
+            [biz.creplaceCharacterWithCharacter]: (inputData, inputMetaData) => characterArrayParsing.replaceCharacterWithCharacter(inputData, inputMetaData),
+            [biz.cswapForwardSlashToBackSlash]: (inputData, inputMetaData) => characterStringParsing.swapForwardSlashToBackSlash(inputData, inputMetaData),
+            [biz.cswapBackSlashToForwardSlash]: (inputData, inputMetaData) => characterStringParsing.swapBackSlashToForwardSlash(inputData, inputMetaData),
+            [biz.cswapDoubleForwardSlashToSingleForwardSlash]: (inputData, inputMetaData) => characterStringParsing.swapDoubleForwardSlashToSingleForwardSlash(inputData, inputMetaData),
+            [biz.cgetFileExtension]: (inputData, inputMetaData) => fileStringParsing.getFileExtension(inputData, inputMetaData),
+            [biz.cremoveDotFromFileExtension]: (inputData, inputMetaData) => fileStringParsing.removeDotFromFileExtension(inputData, inputMetaData),
+            [biz.cgetFileNameFromPath]: (inputData, inputMetaData) => fileStringParsing.getFileNameFromPath(inputData, inputMetaData),
+            [biz.cremoveFileExtensionFromFileName]: (inputData, inputMetaData) => fileStringParsing.removeFileExtensionFromFileName(inputData, inputMetaData),
+            [biz.cgetJsonData]: (inputData, inputMetaData) => fileOperations.getJsonData(inputData, inputMetaData),
+            [biz.cgetDirectoryList]: (inputData, inputMetaData) => fileOperations.getDirectoryList(inputData, inputMetaData),
+            [biz.creadDirectoryContents]: (inputData, inputMetaData) => fileOperations.readDirectoryContents(inputData, inputMetaData),
+            [biz.cgetXmlData]: (inputData, inputMetaData) => fileOperations.getXmlData(inputData, inputMetaData),
+            [biz.cgetDataCategoryFromDataContextName]: (inputData, inputMetaData) => dataStringParsing.getDataCategoryFromDataContextName(inputData, inputMetaData),
+            [biz.cstringToDataType]: (inputData, inputMetaData) => stringParsingUtilities.stringToDataType(inputData, inputMetaData),
+            [biz.cstringToDataType]: (inputData, inputMetaData) => stringParsingUtilities.stringToDataType(inputData, inputMetaData),
+            [biz.cutilitiesReplaceCharacterWithCharacter]: (inputData, inputMetaData) => stringParsingUtilities.utilitiesReplaceCharacterWithCharacter(inputData, inputMetaData)
+        };
+
+        let contextName = wrd.cconfiguration;
+        let pluginResourcePath = undefined;
+
+        // Act
+        let returnData = await main.loadPluginResourceData(contextName, pluginResourcePath);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function loadPluginResourceData_inValidPluginConfigPathNaN
+     * @description Tests the main function loadPluginResourceData with a invalid data NaN.
+     * @author Vlad Sorokin
+     * @date 2024/05/24
+     */
+    test(tst_con.cloadPluginResourceData_inValidPluginConfigPathNaN, async () => {
+        // Arrange
+        D[sys.cbusinessRules] = {
+            [biz.cobjectDeepClone]: (inputData, inputMetaData) => dataArrayParsing.objectDeepClone(inputData, inputMetaData),
+            [biz.carrayDeepClone]: (inputData, inputMetaData) => dataArrayParsing.arrayDeepClone(inputData, inputMetaData),
+            [biz.creplaceCharacterWithCharacter]: (inputData, inputMetaData) => characterArrayParsing.replaceCharacterWithCharacter(inputData, inputMetaData),
+            [biz.cswapForwardSlashToBackSlash]: (inputData, inputMetaData) => characterStringParsing.swapForwardSlashToBackSlash(inputData, inputMetaData),
+            [biz.cswapBackSlashToForwardSlash]: (inputData, inputMetaData) => characterStringParsing.swapBackSlashToForwardSlash(inputData, inputMetaData),
+            [biz.cswapDoubleForwardSlashToSingleForwardSlash]: (inputData, inputMetaData) => characterStringParsing.swapDoubleForwardSlashToSingleForwardSlash(inputData, inputMetaData),
+            [biz.cgetFileExtension]: (inputData, inputMetaData) => fileStringParsing.getFileExtension(inputData, inputMetaData),
+            [biz.cremoveDotFromFileExtension]: (inputData, inputMetaData) => fileStringParsing.removeDotFromFileExtension(inputData, inputMetaData),
+            [biz.cgetFileNameFromPath]: (inputData, inputMetaData) => fileStringParsing.getFileNameFromPath(inputData, inputMetaData),
+            [biz.cremoveFileExtensionFromFileName]: (inputData, inputMetaData) => fileStringParsing.removeFileExtensionFromFileName(inputData, inputMetaData),
+            [biz.cgetJsonData]: (inputData, inputMetaData) => fileOperations.getJsonData(inputData, inputMetaData),
+            [biz.cgetDirectoryList]: (inputData, inputMetaData) => fileOperations.getDirectoryList(inputData, inputMetaData),
+            [biz.creadDirectoryContents]: (inputData, inputMetaData) => fileOperations.readDirectoryContents(inputData, inputMetaData),
+            [biz.cgetXmlData]: (inputData, inputMetaData) => fileOperations.getXmlData(inputData, inputMetaData),
+            [biz.cgetDataCategoryFromDataContextName]: (inputData, inputMetaData) => dataStringParsing.getDataCategoryFromDataContextName(inputData, inputMetaData),
+            [biz.cstringToDataType]: (inputData, inputMetaData) => stringParsingUtilities.stringToDataType(inputData, inputMetaData),
+            [biz.cstringToDataType]: (inputData, inputMetaData) => stringParsingUtilities.stringToDataType(inputData, inputMetaData),
+            [biz.cutilitiesReplaceCharacterWithCharacter]: (inputData, inputMetaData) => stringParsingUtilities.utilitiesReplaceCharacterWithCharacter(inputData, inputMetaData)
+        };
+
+        let contextName = wrd.cconfiguration;
+        let pluginResourcePath = NaN;
+
+        // Act
+        let returnData = await main.loadPluginResourceData(contextName, pluginResourcePath);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+})
 
 
 // /**
