@@ -103,7 +103,7 @@
   "debugFunctions|debugSetting.framework.brokers.workflowBroker.getWorkflowNamespaceDataObject@FunctionFontBackgroundColor": "Default",
   "debugFunctions|debugSetting.framework.brokers.workflowBroker.getWorkflowNamespaceDataObject@MessageFontBackgroundColor": "Default",
   "debugFunctions|debugSetting.framework.brokers.workflowBroker.getWorkflowNamespaceDataObject@DataFontBackgroundColor": "Default",
-  "debugFunctions|debugSetting.framework.brokers.workflowBroker.removePluginWorkflows": true,
+  "debugFunctions|debugSetting.framework.brokers.workflowBroker.removePluginWorkflows": false,
   "debugFunctions|debugSetting.framework.brokers.workflowBroker.removePluginWorkflows@ModuleFontStyle": "Default",
   "debugFunctions|debugSetting.framework.brokers.workflowBroker.removePluginWorkflows@FunctionFontStyle": "Default",
   "debugFunctions|debugSetting.framework.brokers.workflowBroker.removePluginWorkflows@MessageFontStyle": "Default",

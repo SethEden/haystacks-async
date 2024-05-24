@@ -16,7 +16,7 @@
     "start": "node ./src/main.js",
     "vers": "standard-version -m \"chore(release) version %s \"",
     "docs": "jsdoc -c jsdoc.json",
-    "unitTest": "node --trace-warnings --experimental-vm-modules node_modules/jest/bin/jest.js --watchAll" 
+    "unitTest": "node --trace-warnings --experimental-vm-modules node_modules/jest/bin/jest.js --watchAll"
   },
   "repository": {
     "type": "git",
@@ -45,7 +45,8 @@
   "devDependencies": {
     "@babel/preset-env": "^7.23.5",
     "@jest/globals": "^29.7.0",
-    "eslint": "^8.18.0",
+    "eslint": "^9.3.0",
+    "globals": "^15.3.0",
     "jest": "^29.7.0",
     "jest-environment-jsdom": "^29.7.0",
     "jsdoc": "3.6.7",
@@ -58,6 +59,8 @@
   },
   "homepage": "https://github.com/SethEden/haystacks-async#readme",
   "jest": {
-    "modulePathIgnorePatterns": ["./test/unitTest/testData/testTemp/tempPluginRegistryTest*.json"]
+    "modulePathIgnorePatterns": [
+      "./test/unitTest/testData/testTemp/tempPluginRegistryTest*.json"
+    ]
   }
 }

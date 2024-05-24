@@ -1,3 +1,4 @@
+
 {
   "debugFiles|debugSetting.framework.brokers.themeBroker": false,
   "debugFiles|debugSetting.framework.brokers.themeBroker@ModuleFontStyle": "Bold|Underline",
@@ -103,7 +104,7 @@
   "debugFunctions|debugSetting.framework.brokers.themeBroker.applyTheme@FunctionFontBackgroundColor": "Default",
   "debugFunctions|debugSetting.framework.brokers.themeBroker.applyTheme@MessageFontBackgroundColor": "Default",
   "debugFunctions|debugSetting.framework.brokers.themeBroker.applyTheme@DataFontBackgroundColor": "Default",
-  "debugFunctions|debugSetting.framework.brokers.themeBroker.removePluginThemeData": true,
+  "debugFunctions|debugSetting.framework.brokers.themeBroker.removePluginThemeData": false,
   "debugFunctions|debugSetting.framework.brokers.themeBroker.removePluginThemeData@ModuleFontStyle": "Default",
   "debugFunctions|debugSetting.framework.brokers.themeBroker.removePluginThemeData@FunctionFontStyle": "Default",
   "debugFunctions|debugSetting.framework.brokers.themeBroker.removePluginThemeData@MessageFontStyle": "Default",

@@ -41,8 +41,7 @@ async function initStack(stackNameSpace) {
   if (D[stackNameSpace] === undefined) {
     D[stackNameSpace] = [];
   } else {
-    // WARNING: Stack:
-    // ALREADY exists!
+    // WARNING: Stack: ALREADY exists!
     console.log(num.c1 + bas.cSpace + msg.cWarningStackColon + stackNameSpace + msg.cAlreadyExists);
   }
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
@@ -63,8 +62,7 @@ async function clearStack(stackNameSpace) {
   if (D[stackNameSpace] !== undefined) {
     D[stackNameSpace] = [];
   } else {
-    // WARNING: Stack:
-    // does not exists!
+    // WARNING: Stack: does not exists!
     console.log(num.c2 + bas.cSpace + msg.cWarningStackColon + stackNameSpace + msg.cdoesNotExist + bas.cColon + bas.cSpace + functionName);
   }
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
@@ -87,8 +85,7 @@ async function push(stackNameSpace, value) {
   if (D[stackNameSpace]) {
     D[stackNameSpace].push(value);
   } else {
-    // WARNING: Stack:
-    // does not exists!
+    // WARNING: Stack: does not exists!
     console.log(num.c3 + bas.cSpace + msg.cWarningStackColon + stackNameSpace + msg.cdoesNotExist + bas.cColon + bas.cSpace + functionName);
   }
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
@@ -109,16 +106,14 @@ async function pop(stackNameSpace) {
   let returnData;
   if (D[stackNameSpace] !== undefined) {
     if (D[stackNameSpace].length === 0) {
-      // WARNING: Stack:
-      // is empty!
+      // WARNING: Stack: is empty!
       returnData = msg.cWarningStackColon + stackNameSpace + bas.cisEmpty;
       console.log(returnData);
     } else {
       returnData = D[stackNameSpace].pop();
     }
   } else {
-    // WARNING: Stack:
-    // does not exists!
+    // WARNING: Stack: does not exists!
     console.log(num.c4 + bas.cSpace + msg.cWarningStackColon + stackNameSpace + msg.cdoesNotExist + bas.cColon + bas.cSpace + functionName);
   }
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
@@ -144,8 +139,7 @@ async function isEmpty(stackNameSpace) {
       returnData = true;
     }
   } else {
-    // WARNING: Stack:
-    // does not exists!
+    // WARNING: Stack: does not exists!
     console.log(num.c5 + bas.cSpace + msg.cWarningStackColon + stackNameSpace + msg.cdoesNotExist + bas.cColon + bas.cSpace + functionName);
   }
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
@@ -169,8 +163,7 @@ async function length(stackNameSpace) {
   if (D[stackNameSpace] !== undefined) {
     returnData = D[stackNameSpace].length;
   } else {
-    // WARNING: Stack:
-    // does not exists!
+    // WARNING: Stack: does not exists!
     console.log(num.c6 + bas.cSpace + msg.cWarningStackColon + stackNameSpace + msg.cdoesNotExist + bas.cColon + bas.cSpace + functionName);
   }
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
@@ -195,8 +188,7 @@ async function contains(stackNameSpace, value) {
   if (D[stackNameSpace] !== undefined) {
     returnData = await ruleBroker.processRules([value, D[stackNameSpace]], [biz.cdoesArrayContainCharacter]);
   } else {
-    // WARNING: Stack:
-    // does not exists!
+    // WARNING: Stack: does not exists!
     console.log(num.c7 + bas.cSpace + msg.cWarningStackColon + stackNameSpace + msg.cdoesNotExist + bas.cColon + bas.cSpace + functionName);
   }
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
@@ -220,8 +212,7 @@ async function print(stackNameSpace) {
     // Contents of the stack namespace:
     console.log(msg.cContentsOfTheStackNamespace + stackNameSpace + sys.cSpaceIsColonSpace + JSON.stringify(D[stackNameSpace]));
   } else {
-    // WARNING: Stack:
-    // does not exists!
+    // WARNING: Stack: does not exists!
     console.log(num.c8 + bas.cSpace + msg.cWarningStackColon + stackNameSpace + msg.cdoesNotExist + bas.cColon + bas.cSpace + functionName);
   }
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
@@ -243,8 +234,7 @@ async function getStackContents(stackNameSpace) {
   if (D[stackNameSpace] !== undefined) {
     returnData = D[stackNameSpace];
   } else {
-    // WARNING: Stack:
-    // does not exists!
+    // WARNING: Stack: does not exists!
     console.log(num.c8 + bas.cSpace + msg.cWarningStackColon + stackNameSpace + msg.cdoesNotExist + bas.cColon + bas.cSpace + functionName);
   }
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);

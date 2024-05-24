@@ -998,17 +998,80 @@ async function unloadPlugin(pluginName) {
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // pluginName is:
   await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginNameIs + pluginName);
-  let returnData = false;
-  let businessRulesRemovalSuccess = await ruleBroker.removePluginBusinessRules(pluginName);
-  let commandsRemovalSuccess = await commandBroker.removePluginCommands(pluginName);
-  let configurationDataRemovalSuccess = await dataBroker.removePluginConfigurationData(pluginName);
-  let commandAliasesRemovalSuccess = await commandBroker.removePluginCommandAliases(pluginName);
-  let workflowRemovalSuccess = await workflowBroker.removePluginWorkflows(pluginName);
-  let themeDataRemovalSuccess = await themeBroker.removePluginThemeData(pluginName);
-  let constantsValidationDataRemovalSuccess = await constantBroker.removePluginConstantsValidationData(pluginName);
-
-  // Still need to remove the plugin from the list of loaded plugins.
   let pluginsLoadedList = D[sys.cpluginsLoaded];
+  let inputCheckFlag = false;
+  let returnData = false;
+  let businessRulesRemovalSuccess = false;
+  let commandsRemovalSuccess = false;
+  let configurationDataRemovalSuccess = false;
+  let commandAliasesRemovalSuccess = false;
+  let workflowRemovalSuccess = false;
+  let themeDataRemovalSuccess = false;
+  let constantsValidationDataRemovalSuccess = false;
+  if (pluginName && typeof pluginName === wrd.cstring) {
+    for (let index = 0; index < pluginsLoadedList.length; index++) {
+      if (pluginsLoadedList[index][0] === pluginName) {
+        inputCheckFlag = true;
+        break;
+      }
+    }
+  } else {
+    // ERROR: pluginName is an invalid value, pluginName is: 
+    console.log(msg.cErrorUnloadPluginMessage09, pluginName);
+  }
+
+  if (inputCheckFlag === true) {
+    businessRulesRemovalSuccess = await ruleBroker.removePluginBusinessRules(pluginName);
+    commandsRemovalSuccess = await commandBroker.removePluginCommands(pluginName);
+    configurationDataRemovalSuccess = await dataBroker.removePluginConfigurationData(pluginName);
+    commandAliasesRemovalSuccess = await commandBroker.removePluginCommandAliases(pluginName);
+    workflowRemovalSuccess = await workflowBroker.removePluginWorkflows(pluginName);
+    themeDataRemovalSuccess = await themeBroker.removePluginThemeData(pluginName);
+    constantsValidationDataRemovalSuccess = await constantBroker.removePluginConstantsValidationData(pluginName);
+    if (businessRulesRemovalSuccess === true &&
+      commandsRemovalSuccess === true &&
+      configurationDataRemovalSuccess === true &&
+      commandAliasesRemovalSuccess === true &&
+      workflowRemovalSuccess === true &&
+      themeDataRemovalSuccess === true &&
+      constantsValidationDataRemovalSuccess === true) {
+        returnData = true;
+    }
+    if (businessRulesRemovalSuccess === false) {
+      // ERROR: Failure to remove business rules for the plugin:
+      console.log(msg.cErrorUnloadPluginMessage02 + pluginName);
+    }
+    if (commandsRemovalSuccess === false) {
+      // ERROR: Failure to remove commands for the plugin:
+      console.log(msg.cErrorUnloadPluginMessage03 + pluginName);
+    }
+    if (configurationDataRemovalSuccess === false) {
+      // ERROR: Failure to remove configuration data for the plugin:
+      console.log(msg.cErrorUnloadPluginMessage04 + pluginName);
+    }
+    if (commandAliasesRemovalSuccess === false) {
+      // ERROR: Failure to remove command aliases for the plugin:
+      console.log(msg.cErrorUnloadPluginMessage05 + pluginName);
+    }
+    if (workflowRemovalSuccess === false) {
+      // ERROR: Failure to remove workflows for the plugin:
+      console.log(msg.cErrorUnloadPluginMessage06 + pluginName);
+    }
+    if (themeDataRemovalSuccess === false) {
+      // ERROR: Failure to remove theme data for the plugin:
+      console.log(msg.cErrorUnloadPluginMessage07 + pluginName);
+    }
+    if (constantsValidationDataRemovalSuccess === false) {
+      // ERROR: Failure to remove constants validation data for the plugin:
+      console.log(msg.cErrorUnloadPluginMessage08 + pluginName);
+    }
+  } else {
+    // ERROR: pluginName was not found in plugins loaded, pluginName is: 
+    console.log(msg.cErrorUnloadPluginMessage10, pluginName);
+  }
+  
+  // Still need to remove the plugin from the list of loaded plugins.
+  pluginsLoadedList = D[sys.cpluginsLoaded];
   // pluginsLoadedList is:
   await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginsLoadedListIs + JSON.stringify(pluginsLoadedList));
   if (Array.isArray(pluginsLoadedList) === true && pluginsLoadedList.length >= 1) {
@@ -1028,43 +1091,6 @@ async function unloadPlugin(pluginName) {
     } // End-for (let pluginLoadedKey in pluginsLoadedList)
   } // End-if (Array.isArray(pluginsLoadedList) === true && pluginsLoadedList >= 1)
 
-  if (businessRulesRemovalSuccess === true &&
-    commandsRemovalSuccess === true &&
-    configurationDataRemovalSuccess === true &&
-    commandAliasesRemovalSuccess === true &&
-    workflowRemovalSuccess === true &&
-    themeDataRemovalSuccess === true &&
-    constantsValidationDataRemovalSuccess === true) {
-      returnData = true;
-  }
-  if (businessRulesRemovalSuccess === false) {
-    // ERROR: Failure to remove business rules for the plugin:
-    console.log(msg.cErrorUnloadPluginMessage02 + pluginName);
-  }
-  if (commandsRemovalSuccess === false) {
-    // ERROR: Failure to remove commands for the plugin:
-    console.log(msg.cErrorUnloadPluginMessage03 + pluginName);
-  }
-  if (configurationDataRemovalSuccess === false) {
-    // ERROR: Failure to remove configuration data for the plugin:
-    console.log(msg.cErrorUnloadPluginMessage04 + pluginName);
-  }
-  if (commandAliasesRemovalSuccess === false) {
-    // ERROR: Failure to remove command aliases for the plugin:
-    console.log(msg.cErrorUnloadPluginMessage05 + pluginName);
-  }
-  if (workflowRemovalSuccess === false) {
-    // ERROR: Failure to remove workflows for the plugin:
-    console.log(msg.cErrorUnloadPluginMessage06 + pluginName);
-  }
-  if (themeDataRemovalSuccess === false) {
-    // ERROR: Failure to remove theme data for the plugin:
-    console.log(msg.cErrorUnloadPluginMessage07 + pluginName);
-  }
-  if (constantsValidationDataRemovalSuccess === false) {
-    // ERROR: Failure to remove constants validation data for the plugin:
-    console.log(msg.cErrorUnloadPluginMessage08 + pluginName);
-  }
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;

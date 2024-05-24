@@ -285,7 +285,7 @@
   "debugFunctions|debugSetting.framework.brokers.dataBroker.getDataElementCount@FunctionFontBackgroundColor": "Default",
   "debugFunctions|debugSetting.framework.brokers.dataBroker.getDataElementCount@MessageFontBackgroundColor": "Default",
   "debugFunctions|debugSetting.framework.brokers.dataBroker.getDataElementCount@DataFontBackgroundColor": "Default",
-  "debugFunctions|debugSetting.framework.brokers.dataBroker.removePluginConfigurationData": true,
+  "debugFunctions|debugSetting.framework.brokers.dataBroker.removePluginConfigurationData": false,
   "debugFunctions|debugSetting.framework.brokers.dataBroker.removePluginConfigurationData@ModuleFontStyle": "Default",
   "debugFunctions|debugSetting.framework.brokers.dataBroker.removePluginConfigurationData@FunctionFontStyle": "Default",
   "debugFunctions|debugSetting.framework.brokers.dataBroker.removePluginConfigurationData@MessageFontStyle": "Default",

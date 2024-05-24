@@ -51,7 +51,7 @@
   "debugFunctions|debugSetting.framework.brokers.constantBroker.addConstantsValidationData@FunctionFontBackgroundColor": "Default",
   "debugFunctions|debugSetting.framework.brokers.constantBroker.addConstantsValidationData@MessageFontBackgroundColor": "Default",
   "debugFunctions|debugSetting.framework.brokers.constantBroker.addConstantsValidationData@DataFontBackgroundColor": "Default",
-  "debugFunctions|debugSetting.framework.brokers.constantBroker.removePluginConstantsValidationData": true,
+  "debugFunctions|debugSetting.framework.brokers.constantBroker.removePluginConstantsValidationData": false,
   "debugFunctions|debugSetting.framework.brokers.constantBroker.removePluginConstantsValidationData@ModuleFontStyle": "Default",
   "debugFunctions|debugSetting.framework.brokers.constantBroker.removePluginConstantsValidationData@FunctionFontStyle": "Default",
   "debugFunctions|debugSetting.framework.brokers.constantBroker.removePluginConstantsValidationData@MessageFontStyle": "Default",
