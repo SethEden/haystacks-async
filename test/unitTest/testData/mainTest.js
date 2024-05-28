@@ -21,9 +21,10 @@ import fileOperations from '../../../src/businessRules/rules/fileOperations.js';
 import url from 'url';
 import path from 'path';
 import { wordConstantsValidation } from '@haystacks/constants/src/constantsValidation/word.constants.validation.js';
+import { cDescription } from '@haystacks/constants/src/constants/word.constants.js';
 
 
-const {bas, biz, gen, msg, num, sys, wrd} = hayConst;
+const {bas, biz, cmd, cfg, gen, msg, num, sys, wrd} = hayConst;
 const baseFileName = path.basename(import.meta.url, path.extname(import.meta.url));
 const namespacePrefix = sys.cbusinessRules + bas.cDot + wrd.crules + bas.cDot + baseFileName + bas.cDot;
 
@@ -104,6 +105,8 @@ export const listAllPluginsInRegistry = {
     ]
 };
 
+export const ctst = bas.cts + bas.ct;
+export const cComnd = bas.cCo + bas.cmn + bas.cd;
 export const listAllPluginsInRegistryExpected = [tst_sys.cplugin_one, tst_sys.cplugin_three, tst_sys.cplugin_two];
 export const testPluginPath = rootPathAsync + bas.cDoubleForwardSlash + wrd.ctest + bas.cDoubleForwardSlash + wrd.cunit + wrd.cTest + bas.cDoubleForwardSlash + wrd.ctest + wrd.cData + bas.cDoubleForwardSlash + wrd.ctest + wrd.cPlugins + bas.cDoubleForwardSlash + wrd.ctest + bas.cDash + wrd.cplugin + bas.cDash + num.cone + bas.cDoubleForwardSlash;
 export const pluginsPath = rootPathHayPlugins;
@@ -118,6 +121,10 @@ export const pluginResourcesDataPathConfiguration = testPluginPath + wrd.cresour
 export const pluginResourcesDataPathCommands = testPluginPath + wrd.cresources + bas.cDoubleForwardSlash + wrd.ccommands + bas.cDoubleForwardSlash;
 export const pluginResourcesDataPathWorkflows = testPluginPath + wrd.cresources + bas.cDoubleForwardSlash + wrd.cworkflows + bas.cDoubleForwardSlash;
 export const pluginResourcesDataPathThemes = testPluginPath + wrd.cresources + bas.cDoubleForwardSlash + wrd.cthemes + bas.cDoubleForwardSlash;
+export const pluginConfigurationDataExpected = {[cfg.cdebugSettings]: {}, [wrd.csystem]: {[wrd.csystem + bas.cDot + cfg.cdebugSettings]: true, [wrd.csystem + bas.cDot + wrd.cdemo + wrd.cPlugin + wrd.cSetting]: false, [wrd.csystem + bas.cDot + wrd.cunit + wrd.cTesting]: true}}; // {"debugSettings": {}, "system": {"system.debugSettings": true, "system.demoPluginSetting": false, "system.unitTesting": true}}
+export const pluginCommanderDataExpected = {[wrd.csystem]: [{[wrd.ctest + wrd.cPlugin + num.cOne + wrd.cCommand + num.c01]: {[wrd.cAliases]: ctst + wrd.cPlugin + num.cOne + wrd.cCommand + num.c01 + bas.cComa + ctst + wrd.cPlugin + num.cOne + cComnd + num.c01, [wrd.cDescription]: wrd.cThe + bas.cSpace + num.cfirst + bas.cSpace + wrd.cdemo + bas.cSpace + wrd.ccommand + bas.cSpace + wrd.cas + bas.cSpace + wrd.cpart + bas.cSpace + wrd.cof + bas.cSpace + wrd.ctest + bas.cDash + wrd.cplugin + bas.cDash + num.cone + bas.cDot,  [wrd.cName]: wrd.ctest + wrd.cPlugin + num.cOne + wrd.cCommand + num.c01}, [wrd.ctest + wrd.cPlugin + num.cOne + wrd.cCommand + num.c02]: {[wrd.cAliases]: ctst + wrd.cPlugin + num.cOne + wrd.cCommand + num.c02 + bas.cComa + ctst + wrd.cPlugin + num.cOne + cComnd + num.c02, [wrd.cDescription]: wrd.cThe + bas.cSpace + num.csecond + bas.cSpace + wrd.cdemo + bas.cSpace + wrd.ccommand + bas.cSpace + wrd.cas + bas.cSpace + wrd.cpart + bas.cSpace + wrd.cof + bas.cSpace + wrd.ctest + bas.cDash + wrd.cplugin + bas.cDash + num.cone + bas.cDot, [wrd.cName]: wrd.ctest + wrd.cPlugin + num.cOne + wrd.cCommand + num.c02}}]}; // {"system": [{"testPluginOneCommand01": {"Aliases": "tstPluginOneComand01,tstPluginOneComnd01", "Description": "The first demo command as part of test-plugin-one.", "Name": "testPluginOneCommand01"}, "testPluginOneCommand02": {"Aliases": "tstPluginOneComand02,tstPluginOneComnd02", "Description": "The second demo command as part of test-plugin-one.", "Name": "testPluginOneCommand02"}}]}
+export const pluginWorkflowsDataExpected = {[wrd.csystem]: [{[wrd.ctest + wrd.cPlugin + num.cOne + wrd.cWorkflow]: cmd.ccommandSequencer + bas.cSpace + wrd.ctest + wrd.cPlugin + num.cOne + wrd.cCommand + num.c01 + bas.cSpace + wrd.ctest + wrd.cPlugin + num.cOne + wrd.cCommand + num.c02}]}; // {"system": [{"testPluginOneWorkflow": "commandSequencer pluginOneCommand01 pluginOneCommand02"}]}
+export const pluginThemesDataExpected = [{[wrd.cName]: wrd.cDefault, [wrd.cPath]: rootPathAsync + bas.cBackSlash + wrd.ctest + bas.cBackSlash + wrd.cunit + wrd.cTest + bas.cBackSlash + wrd.ctest + wrd.cData + bas.cBackSlash + wrd.ctest + wrd.cPlugins + bas.cBackSlash + wrd.ctest + bas.cDash + wrd.cplugin + bas.cDash + num.cone + bas.cBackSlash + wrd.cresources + bas.cBackSlash + wrd.cthemes + bas.cBackSlash + wrd.cDefault}]; // [{"Name": "Default", "Path": "*root of your system*\\test\\unitTest\\testData\\testPlugins\\test-plugin-one\\resources\\themes\\Default"}]
 
 export const listPluginInRegistry = {
     [wrd.cplugins]: [{

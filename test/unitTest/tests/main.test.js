@@ -3282,7 +3282,7 @@ describe(tst_con.cloadPluginResourceData, () => {
         let returnData = await main.loadPluginResourceData(contextName, pluginResourcePath);
 
         // Assert
-        expect(returnData).toEqual({"debugSettings": {}, "system": {"system.debugSettings": true, "system.demoPluginSetting": false, "system.unitTesting": true}});
+        expect(returnData).toEqual(tst_man.pluginConfigurationDataExpected);
     });
 
     /**
@@ -3324,7 +3324,7 @@ describe(tst_con.cloadPluginResourceData, () => {
         let returnData = await main.loadPluginResourceData(contextName, pluginResourcePath);
 
         // Assert
-        expect(returnData).toEqual({"system": [{"testPluginOneCommand01": {"Aliases": "tstPluginOneComand01,tstPluginOneComnd01,tstPluginOneComd01,tstPluginOneCmd01,tstPluginOneC01,tstPluginOneCommand01,tstPluginOComand01,tstPluginOComnd01", "Description": "The first demo command as part of test-plugin-one.", "Name": "testPluginOneCommand01"}, "testPluginOneCommand02": {"Aliases": "tstPluginOneComand02,tstPluginOneComnd02,tstPluginOneComd02,tstPluginOneCmd02,tstPluginOneC02,tstPluginOneCommand02,tstPluginOComand02,tstPluginOComnd02", "Description": "The second demo command as part of test-plugin-one.", "Name": "testPluginOneCommand02"}}]});
+        expect(returnData).toEqual(tst_man.pluginCommanderDataExpected/**{"system": [{"testPluginOneCommand01": {"Aliases": "tstPluginOneComand01,tstPluginOneComnd01", "Description": "The first demo command as part of test-plugin-one.", "Name": "testPluginOneCommand01"}, "testPluginOneCommand02": {"Aliases": "tstPluginOneComand02,tstPluginOneComnd02", "Description": "The second demo command as part of test-plugin-one.", "Name": "testPluginOneCommand02"}}]}*/);
     });
 
     /**
@@ -3362,7 +3362,7 @@ describe(tst_con.cloadPluginResourceData, () => {
         let returnData = await main.loadPluginResourceData(contextName, pluginResourcePath);
 
         // Assert
-        expect(returnData).toEqual({"system": [{"testPluginOneWorkflow": "commandSequencer pluginOneCommand01 pluginOneCommand02"}]});
+        expect(returnData).toEqual(tst_man.pluginWorkflowsDataExpected);
     });
 
     /**
@@ -3401,7 +3401,7 @@ describe(tst_con.cloadPluginResourceData, () => {
         let returnData = await main.loadPluginResourceData(contextName, pluginResourcePath);
 
         // Assert
-        expect(returnData).toEqual([{"Name": "Default", "Path": "C:\\haystacks-async\\test\\unitTest\\testData\\testPlugins\\test-plugin-one\\resources\\themes\\Default"}]);
+        expect(returnData).toEqual(tst_man.pluginThemesDataExpected);
     });
 
     /**

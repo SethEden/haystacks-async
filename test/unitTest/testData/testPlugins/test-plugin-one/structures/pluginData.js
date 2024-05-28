@@ -145,12 +145,12 @@ let pluginData = {
     "system": [{
       "testPluginOneCommand01": {
         "Name": "testPluginOneCommand01",
-        "Aliases": "tstPluginOneComand01,tstPluginOneComnd01,tstPluginOneComd01,tstPluginOneCmd01,tstPluginOneC01,tstPluginOneCommand01,tstPluginOComand01,tstPluginOComnd01",
+        "Aliases": "tstPluginOneCommand01,tstPluginOneComnd01",
         "Description": "The first demo command as part of test-plugin-one."
       },
       "testPluginOneCommand02": {
         "Name": "testPluginOneCommand02",
-        "Aliases": "tstPluginOneComand02,tstPluginOneComnd02,tstPluginOneComd02,tstPluginOneCmd02,tstPluginOneC02,tstPluginOneCommand02,tstPluginOComand02,tstPluginOComnd02",
+        "Aliases": "tstPluginOneCommand02,tstPluginOneComnd02",
         "Description": "The second demo command as part of test-plugin-one."
       }
     }]
