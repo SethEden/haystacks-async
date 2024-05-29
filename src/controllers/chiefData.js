@@ -312,11 +312,21 @@ async function loadAllJsonData(dataPath, contextName) {
   await loggers.consoleLog(namespacePrefix + functionName, msg.cdataPathIs + dataPath);
   // contextName is:
   await loggers.consoleLog(namespacePrefix + functionName, msg.ccontextNameIs + contextName);
-  let loadedAndMergeDataAllFiles = {};
-  let filesToLoad = [];
-  filesToLoad = await dataBroker.scanDataPath(dataPath);
+  let loadedAndMergeDataAllFiles = false;
+  let filesToLoad = false;
+  if ((dataPath && typeof dataPath === wrd.cstring && (dataPath.includes(bas.cForwardSlash) === true || dataPath.includes(bas.cBackSlash) === true))) {
+    filesToLoad = await dataBroker.scanDataPath(dataPath);
+    if (contextName && typeof contextName === wrd.cstring && !(/\d/.test(contextName))) { // Checking if contextName is a valid string and does not contain numbers.
+      loadedAndMergeDataAllFiles = await dataBroker.loadAllJsonData(filesToLoad, contextName);
+    } else {
+      // ERROR: Invalid input for contextName: 
+      console.log('ERROR: Invalid input for contextName: ', contextName);
+    }
+  } else {
+    // ERROR: Invalid input for dataPath: 
+    console.log('ERROR: Invalid input for dataPath: ', dataPath);
+  }
   await loggers.consoleLog(namespacePrefix + functionName, msg.cfilesToLoadIs + JSON.stringify(filesToLoad));
-  loadedAndMergeDataAllFiles = await dataBroker.loadAllJsonData(filesToLoad, contextName);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cloadedAndMergedDataAllFilesIs + JSON.stringify(loadedAndMergeDataAllFiles));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return loadedAndMergeDataAllFiles;

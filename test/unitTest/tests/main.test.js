@@ -3796,209 +3796,208 @@ describe(tst_con.cloadPluginResourceData, () => {
     });
 })
 
+/**
+ * @function loadAllJsonData
+ * @description Tests the positive and negative test cases of the loadAllJsonData
+ * @author Vlad Sorokin
+ * @date 2024/05/29
+ */
+describe(tst_con.cloadAllJsonData, () => {
+    /**
+     * @function loadAllJsonData_validData
+     * @description Tests the main function loadAllJsonData with a valid input.
+     * @author Vlad Sorokin
+     * @date 2024/05/29
+     */
+    test(tst_con.cloadAllJsonData_validData, async () => {
+        // Arrange
+        let dataPath = tst_man.jsonDataPath;
+        let contextName = wrd.cconfiguration;
 
-// /**
-//  * @function loadPluginResourceData
-//  * @description Tests the positive and negative test cases of the loadPluginResourceData function
-//  * @author Vlad Sorokin
-//  * @date 2024/05/datedhdhdhi
-//  */
-// describe(tst_con.cloadPluginResourceData, () => {
-//     /**
-//      * @function loadPluginResourceData_validData
-//      * @description Tests the main function loadPluginResourceData with valid input data.
-//      * @author Vlad Sorokin
-//      * @date 2024/05/datedhdhdhi
-//      */
-//     test(tst_con.cloadPluginResourceData_validData, async () => {
-//         // Arrange
-//         let contextName = "validContextName";
-//         let pluginConfigPath = "validPluginConfigPath";
-        
-//         // Act
-//         let returnData = await main.loadPluginResourceData(contextName, pluginConfigPath);
-        
-//         // Assert
-//         expect(returnData).toEqual(expect.any(Object));
-//     });
+        // Act
+        let returnData = await main.loadAllJsonData(dataPath, contextName);
 
-//     /**
-//      * @function loadPluginResourceData_inValidContextNameString
-//      * @description Tests the main function loadPluginResourceData with an invalid context name string input.
-//      * @author Vlad Sorokin
-//      * @date 2024/05/datedhdhdhi
-//      */
-//     test(tst_con.cloadPluginResourceData_inValidContextNameString, async () => {
-//         // Arrange
-//         let contextName = "dfxg24346dfg";
-//         let pluginConfigPath = "validPluginConfigPath";
-        
-//         // Act
-//         let returnData = await main.loadPluginResourceData(contextName, pluginConfigPath);
-        
-//         // Assert
-//         expect(returnData).toBeFalsy();
-//     });
+        // Assert
+        expect(returnData).toEqual(tst_man.expectedDataFromJsonTestFile);
+    });
 
-//     /**
-//      * @function loadPluginResourceData_inValidPluginResourcePathString
-//      * @description Tests the main function loadPluginResourceData with an invalid plugin resource path string input.
-//      * @author Vlad Sorokin
-//      * @date 2024/05/datedhdhdhi
-//      */
-//     test(tst_con.cloadPluginResourceData_inValidPluginResourcePathString, async () => {
-//         // Arrange
-//         let contextName = "validContextName";
-//         let pluginResourcePath = "dfxg24346dfg";
-        
-//         // Act
-//         let returnData = await main.loadPluginResourceData(contextName, pluginResourcePath);
-        
-//         // Assert
-//         expect(returnData).toBeFalsy();
-//     });
+    /**
+     * @function loadAllJsonData_inValidDataPathString
+     * @description Tests the main function loadAllJsonData with a invalid data string.
+     * @author Vlad Sorokin
+     * @date 2024/05/29
+     */
+    test(tst_con.cloadAllJsonData_inValidDataPathString, async () => {
+        // Arrange
+        let dataPath = tst_man.ctestString1;
+        let contextName = wrd.cconfiguration;
 
-//     /**
-//      * @function loadPluginResourceData_inValidContextNameInteger
-//      * @description Tests the main function loadPluginResourceData with an invalid context name integer input.
-//      * @author Vlad Sorokin
-//      * @date 2024/05/datedhdhdhi
-//      */
-//     test(tst_con.cloadPluginResourceData_inValidContextNameInteger, async () => {
-//         // Arrange
-//         let contextName = 123;
-//         let pluginConfigPath = "validPluginConfigPath";
-        
-//         // Act
-//         let returnData = await main.loadPluginResourceData(contextName, pluginConfigPath);
-        
-//         // Assert
-//         expect(returnData).toBeFalsy();
-//     });
+        // Act
+        let returnData = await main.loadAllJsonData(dataPath, contextName);
 
-//     /**
-//      * @function loadPluginResourceData_inValidContextNameBoolean
-//      * @description Tests the main function loadPluginResourceData with an invalid context name boolean input.
-//      * @author Vlad Sorokin
-//      * @date 2024/05/datedhdhdhi
-//      */
-//     test(tst_con.cloadPluginResourceData_inValidContextNameBoolean, async () => {
-//         // Arrange
-//         let contextName = false;
-//         let pluginConfigPath = "validPluginConfigPath";
-        
-//         // Act
-//         let returnData = await main.loadPluginResourceData(contextName, pluginConfigPath);
-        
-//         // Assert
-//         expect(returnData).toBeFalsy();
-//     });
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
 
-//     /**
-//      * @function loadPluginResourceData_inValidPluginResourcePathInteger
-//      * @description Tests the main function loadPluginResourceData with an invalid plugin resource path integer input.
-//      * @author Vlad Sorokin
-//      * @date 2024/05/datedhdhdhi
-//      */
-//     test(tst_con.cloadPluginResourceData_inValidPluginResourcePathInteger, async () => {
-//         // Arrange
-//         let contextName = "validContextName";
-//         let pluginResourcePath = 123;
-        
-//         // Act
-//         let returnData = await main.loadPluginResourceData(contextName, pluginResourcePath);
-        
-//         // Assert
-//         expect(returnData).toBeFalsy();
-//     });
+    /**
+     * @function loadAllJsonData_inValidContextNameString
+     * @description Tests the main function loadAllJsonData with a invalid data string.
+     * @author Vlad Sorokin
+     * @date 2024/05/29
+     */
+    test(tst_con.cloadAllJsonData_inValidContextNameString, async () => {
+        // Arrange
+        let dataPath = tst_man.jsonDataPath;
+        let contextName = tst_man.ctestString1;
 
-//     /**
-//      * @function loadPluginResourceData_inValidPluginResourcePathBoolean
-//      * @description Tests the main function loadPluginResourceData with an invalid plugin resource path boolean input.
-//      * @author Vlad Sorokin
-//      * @date 2024/05/datedhdhdhi
-//      */
-//     test(tst_con.cloadPluginResourceData_inValidPluginResourcePathBoolean, async () => {
-//         // Arrange
-//         let contextName = "validContextName";
-//         let pluginResourcePath = false;
-        
-//         // Act
-//         let returnData = await main.loadPluginResourceData(contextName, pluginResourcePath);
-        
-//         // Assert
-//         expect(returnData).toBeFalsy();
-//     });
+        // Act
+        let returnData = await main.loadAllJsonData(dataPath, contextName);
 
-//     /**
-//      * @function loadPluginResourceData_inValidContextNameUndefined
-//      * @description Tests the main function loadPluginResourceData with an invalid context name undefined input.
-//      * @author Vlad Sorokin
-//      * @date 2024/05/datedhdhdhi
-//      */
-//     test(tst_con.cloadPluginResourceData_inValidContextNameUndefined, async () => {
-//         // Arrange
-//         let contextName = undefined;
-//         let pluginConfigPath = "validPluginConfigPath";
-        
-//         // Act
-//         let returnData = await main.loadPluginResourceData(contextName, pluginConfigPath);
-        
-//         // Assert
-//         expect(returnData).toBeFalsy();
-//     });
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
 
-//     /**
-//      * @function loadPluginResourceData_inValidContextNameNaN
-//      * @description Tests the main function loadPluginResourceData with an invalid context name NaN input.
-//      * @author Vlad Sorokin
-//      * @date 2024/05/datedhdhdhi
-//      */
-//     test(tst_con.cloadPluginResourceData_inValidContextNameNaN, async () => {
-//         // Arrange
-//         let contextName = NaN;
-//         let pluginConfigPath = "validPluginConfigPath";
-        
-//         // Act
-//         let returnData = await main.loadPluginResourceData(contextName, pluginConfigPath);
-        
-//         // Assert
-//         expect(returnData).toBeFalsy();
-//     });
+    /**
+     * @function loadAllJsonData_inValidDataPathInteger
+     * @description Tests the main function loadAllJsonData with a invalid data integer.
+     * @author Vlad Sorokin
+     * @date 2024/05/29
+     */
+    test(tst_con.cloadAllJsonData_inValidDataPathInteger, async () => {
+        // Arrange
+        let dataPath = 123;
+        let contextName = wrd.cconfiguration;
 
-//     /**
-//      * @function loadPluginResourceData_inValidPluginResourcePathUndefined
-//      * @description Tests the main function loadPluginResourceData with an invalid plugin resource path undefined input.
-//      * @author Vlad Sorokin
-//      * @date 2024/05/datedhdhdhi
-//      */
-//     test(tst_con.cloadPluginResourceData_inValidPluginResourcePathUndefined, async () => {
-//         // Arrange
-//         let contextName = "validContextName";
-//         let pluginResourcePath = undefined;
-        
-//         // Act
-//         let returnData = await main.loadPluginResourceData(contextName, pluginResourcePath);
-        
-//         // Assert
-//         expect(returnData).toBeFalsy();
-//     });
+        // Act
+        let returnData = await main.loadAllJsonData(dataPath, contextName);
 
-//     /**
-//      * @function loadPluginResourceData_inValidPluginResourcePathNaN
-//      * @description Tests the main function loadPluginResourceData with an invalid plugin resource path NaN input.
-//      * @author Vlad Sorokin
-//      * @date 2024/05/datedhdhdhi
-//      */
-//     test(tst_con.cloadPluginResourceData_inValidPluginResourcePathNaN, async () => {
-//         // Arrange
-//         let contextName = "validContextName";
-//         let pluginResourcePath = NaN;
-        
-//         // Act
-//         let returnData = await main.loadPluginResourceData(contextName, pluginResourcePath);
-        
-//         // Assert
-//         expect(returnData).toBeFalsy();
-//     });
-// });
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function loadAllJsonData_inValidDataPathBoolean
+     * @description Tests the main function loadAllJsonData with a invalid data boolean.
+     * @author Vlad Sorokin
+     * @date 2024/05/29
+     */
+    test(tst_con.cloadAllJsonData_inValidDataPathBoolean, async () => {
+        // Arrange
+        let dataPath = false;
+        let contextName = wrd.cconfiguration;
+
+        // Act
+        let returnData = await main.loadAllJsonData(dataPath, contextName);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function loadAllJsonData_inValidContextNameInteger
+     * @description Tests the main function loadAllJsonData with a invalid data integer.
+     * @author Vlad Sorokin
+     * @date 2024/05/29
+     */
+    test(tst_con.cloadAllJsonData_inValidContextNameInteger, async () => {
+        // Arrange
+        let dataPath = tst_man.jsonDataPath;
+        let contextName = 123;
+
+        // Act
+        let returnData = await main.loadAllJsonData(dataPath, contextName);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function loadAllJsonData_inValidContextNameBoolean
+     * @description Tests the main function loadAllJsonData with a invalid data boolean.
+     * @author Vlad Sorokin
+     * @date 2024/05/29
+     */
+    test(tst_con.cloadAllJsonData_inValidContextNameBoolean, async () => {
+        // Arrange
+        let dataPath = tst_man.jsonDataPath;
+        let contextName = false;
+
+        // Act
+        let returnData = await main.loadAllJsonData(dataPath, contextName);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function loadAllJsonData_inValidDataPathUndefined
+     * @description Tests the main function loadAllJsonData with a invalid data undefined.
+     * @author Vlad Sorokin
+     * @date 2024/05/29
+     */
+    test(tst_con.cloadAllJsonData_inValidDataPathUndefined, async () => {
+        // Arrange
+        let dataPath = undefined;
+        let contextName = wrd.cconfiguration;
+
+        // Act
+        let returnData = await main.loadAllJsonData(dataPath, contextName);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function loadAllJsonData_inValidDataPathNaN
+     * @description Tests the main function loadAllJsonData with a invalid data NaN.
+     * @author Vlad Sorokin
+     * @date 2024/05/29
+     */
+    test(tst_con.cloadAllJsonData_inValidDataPathNaN, async () => {
+        // Arrange
+        let dataPath = NaN;
+        let contextName = wrd.cconfiguration;
+
+        // Act
+        let returnData = await main.loadAllJsonData(dataPath, contextName);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function loadAllJsonData_inValidContextNameUndefined
+     * @description Tests the main function loadAllJsonData with a invalid data undefined.
+     * @author Vlad Sorokin
+     * @date 2024/05/29
+     */
+    test(tst_con.cloadAllJsonData_inValidContextNameUndefined, async () => {
+        // Arrange
+        let dataPath = tst_man.jsonDataPath;
+        let contextName = undefined;
+
+        // Act
+        let returnData = await main.loadAllJsonData(dataPath, contextName);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function loadAllJsonData_inValidContextNameNaN
+     * @description Tests the main function loadAllJsonData with a invalid data NaN.
+     * @author Vlad Sorokin
+     * @date 2024/05/29
+     */
+    test(tst_con.cloadAllJsonData_inValidContextNameNaN, async () => {
+        // Arrange
+        let dataPath = tst_man.jsonDataPath;
+        let contextName = undefined;
+
+        // Act
+        let returnData = await main.loadAllJsonData(dataPath, contextName);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+})
