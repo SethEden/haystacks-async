@@ -292,6 +292,72 @@ export const testConstantsValidation = [
     {Name: 'cunloadPlugins_inValidPluginNamesUndefined', Actual: tst_con.cunloadPlugins_inValidPluginNamesUndefined, Expected: 'unloadPlugins_inValidPluginNamesUndefined'},
     {Name: 'cunloadPlugins_inValidPluginNamesNaN', Actual: tst_con.cunloadPlugins_inValidPluginNamesNaN, Expected: 'unloadPlugins_inValidPluginNamesNaN'},
 
+    // unloadAllPlugins
+    {Name: 'cunloadAllPlugins', Actual: tst_con.cunloadAllPlugins, Expected: 'unloadAllPlugins'},
+    {Name: 'cunloadAllPlugins_validData', Actual: tst_con.cunloadAllPlugins_validData, Expected: 'unloadAllPlugins_validData'},
+    {Name: 'cunloadAllPlugins_emptyData', Actual: tst_con.cunloadAllPlugins_emptyData, Expected: 'unloadAllPlugins_emptyData'},
+
+    // getPluginsRegistryPath
+    {Name: 'cgetPluginsRegistryPath', Actual: tst_con.cgetPluginsRegistryPath, Expected: 'getPluginsRegistryPath'},
+    {Name: 'cgetPluginsRegistryPath_validData', Actual: tst_con.cgetPluginsRegistryPath_validData, Expected: 'getPluginsRegistryPath_validData'},
+
+    // loadPluginResourceData 
+    {Name: 'cloadPluginResourceData', Actual: tst_con.cloadPluginResourceData, Expected: 'loadPluginResourceData'},
+    {Name: 'cloadPluginResourceData_validConfigurationData', Actual: tst_con.cloadPluginResourceData_validConfigurationData, Expected: 'loadPluginResourceData_validConfigurationData'},
+    {Name: 'cloadPluginResourceData_validCommanderAliasesData', Actual: tst_con.cloadPluginResourceData_validCommanderAliasesData, Expected: 'loadPluginResourceData_validCommanderAliasesData'},
+    {Name: 'cloadPluginResourceData_validWorkflowsData', Actual: tst_con.cloadPluginResourceData_validWorkflowsData, Expected: 'loadPluginResourceData_validWorkflowsData'},
+    {Name: 'cloadPluginResourceData_validThemesData', Actual: tst_con.cloadPluginResourceData_validThemesData, Expected: 'loadPluginResourceData_validThemesData'},
+    {Name: 'cloadPluginResourceData_inValidContextNameString', Actual: tst_con.cloadPluginResourceData_inValidContextNameString, Expected: 'loadPluginResourceData_inValidContextNameString'},
+    {Name: 'cloadPluginResourceData_inValidPluginConfigPathString', Actual: tst_con.cloadPluginResourceData_inValidPluginConfigPathString, Expected: 'loadPluginResourceData_inValidPluginConfigPathString'},
+    {Name: 'cloadPluginResourceData_inValidContextNameInteger', Actual: tst_con.cloadPluginResourceData_inValidContextNameInteger, Expected: 'loadPluginResourceData_inValidContextNameInteger'},
+    {Name: 'cloadPluginResourceData_inValidContextNameBoolean', Actual: tst_con.cloadPluginResourceData_inValidContextNameBoolean, Expected: 'loadPluginResourceData_inValidContextNameBoolean'},
+    {Name: 'cloadPluginResourceData_inValidPluginConfigPathInteger', Actual: tst_con.cloadPluginResourceData_inValidPluginConfigPathInteger, Expected: 'loadPluginResourceData_inValidPluginConfigPathInteger'},
+    {Name: 'cloadPluginResourceData_inValidPluginConfigPathBoolean', Actual: tst_con.cloadPluginResourceData_inValidPluginConfigPathBoolean, Expected: 'loadPluginResourceData_inValidPluginConfigPathBoolean'},
+    {Name: 'cloadPluginResourceData_inValidContextNameUndefined', Actual: tst_con.cloadPluginResourceData_inValidContextNameUndefined, Expected: 'loadPluginResourceData_inValidContextNameUndefined'},
+    {Name: 'cloadPluginResourceData_inValidContextNameNaN', Actual: tst_con.cloadPluginResourceData_inValidContextNameNaN, Expected: 'loadPluginResourceData_inValidContextNameNaN'},
+    {Name: 'cloadPluginResourceData_inValidPluginConfigPathUndefined', Actual: tst_con.cloadPluginResourceData_inValidPluginConfigPathUndefined, Expected: 'loadPluginResourceData_inValidPluginConfigPathUndefined'},
+    {Name: 'cloadPluginResourceData_inValidPluginConfigPathNaN', Actual: tst_con.cloadPluginResourceData_inValidPluginConfigPathNaN, Expected: 'loadPluginResourceData_inValidPluginConfigPathNaN'},
+
+    // loadAllJsonData
+    {Name: 'cloadAllJsonData', Actual: tst_con.cloadAllJsonData, Expected: 'loadAllJsonData'},
+    {Name: 'cloadAllJsonData_validData', Actual: tst_con.cloadAllJsonData_validData, Expected: 'loadAllJsonData_validData'},
+    {Name: 'cloadAllJsonData_inValidDataPathString', Actual: tst_con.cloadAllJsonData_inValidDataPathString, Expected: 'loadAllJsonData_inValidDataPathString'},
+    {Name: 'cloadAllJsonData_inValidContextNameString', Actual: tst_con.cloadAllJsonData_inValidContextNameString, Expected: 'loadAllJsonData_inValidContextNameString'},
+    {Name: 'cloadAllJsonData_inValidDataPathInteger', Actual: tst_con.cloadAllJsonData_inValidDataPathInteger, Expected: 'loadAllJsonData_inValidDataPathInteger'},
+    {Name: 'cloadAllJsonData_inValidDataPathBoolean', Actual: tst_con.cloadAllJsonData_inValidDataPathBoolean, Expected: 'loadAllJsonData_inValidDataPathBoolean'},
+    {Name: 'cloadAllJsonData_inValidContextNameInteger', Actual: tst_con.cloadAllJsonData_inValidContextNameInteger, Expected: 'loadAllJsonData_inValidContextNameInteger'},
+    {Name: 'cloadAllJsonData_inValidContextNameBoolean', Actual: tst_con.cloadAllJsonData_inValidContextNameBoolean, Expected: 'loadAllJsonData_inValidContextNameBoolean'},
+    {Name: 'cloadAllJsonData_inValidDataPathUndefined', Actual: tst_con.cloadAllJsonData_inValidDataPathUndefined, Expected: 'loadAllJsonData_inValidDataPathUndefined'},
+    {Name: 'cloadAllJsonData_inValidDataPathNaN', Actual: tst_con.cloadAllJsonData_inValidDataPathNaN, Expected: 'loadAllJsonData_inValidDataPathNaN'},
+    {Name: 'cloadAllJsonData_inValidContextNameUndefined', Actual: tst_con.cloadAllJsonData_inValidContextNameUndefined, Expected: 'loadAllJsonData_inValidContextNameUndefined'},
+    {Name: 'cloadAllJsonData_inValidContextNameNaN', Actual: tst_con.cloadAllJsonData_inValidContextNameNaN, Expected: 'loadAllJsonData_inValidContextNameNaN'},
+
+    // storeData
+    {Name: 'cstoreData', Actual: tst_con.cstoreData, Expected: 'storeData'},
+    {Name: 'cstoreData_validData', Actual: tst_con.cstoreData_validData, Expected: 'storeData_validData'},
+    {Name: 'cstoreData_inValidDataName', Actual: tst_con.cstoreData_inValidDataName, Expected: 'storeData_inValidDataName'},
+    {Name: 'cstoreData_inValidDataNameInteger', Actual: tst_con.cstoreData_inValidDataNameInteger, Expected: 'storeData_inValidDataNameInteger'},
+    {Name: 'cstoreData_inValidDataNameBoolean', Actual: tst_con.cstoreData_inValidDataNameBoolean, Expected: 'storeData_inValidDataNameBoolean'},
+    {Name: 'cstoreData_inValidDataNameUndefined', Actual: tst_con.cstoreData_inValidDataNameUndefined, Expected: 'storeData_inValidDataNameUndefined'},
+    {Name: 'cstoreData_inValidDataNameNaN', Actual: tst_con.cstoreData_inValidDataNameNaN, Expected: 'storeData_inValidDataNameNaN'},
+    {Name: 'cstoreData_inValidDataUndefined', Actual: tst_con.cstoreData_inValidDataUndefined, Expected: 'storeData_inValidDataUndefined'},
+    {Name: 'cstoreData_inValidDataNaN', Actual: tst_con.cstoreData_inValidDataNaN, Expected: 'storeData_inValidDataNaN'},
+
+    // getData
+    {Name: 'cgetData', Actual: tst_con.cgetData, Expected: 'getData'},
+    {Name: 'cgetData_validData', Actual: tst_con.cgetData_validData, Expected: 'getData_validData'},
+    {Name: 'cgetData_inValidDataNameInteger', Actual: tst_con.cgetData_inValidDataNameInteger, Expected: 'getData_inValidDataNameInteger'},
+    {Name: 'cgetData_inValidDataNameBoolean', Actual: tst_con.cgetData_inValidDataNameBoolean, Expected: 'getData_inValidDataNameBoolean'},
+    {Name: 'cgetData_inValidDataNameUndefined', Actual: tst_con.cgetData_inValidDataNameUndefined, Expected: 'getData_inValidDataNameUndefined'},
+    {Name: 'cgetData_inValidDataNameNaN', Actual: tst_con.cgetData_inValidDataNameNaN, Expected: 'getData_inValidDataNameNaN'},
+
+    // clearData
+    {Name: 'cclearData', Actual: tst_con.cclearData, Expected: 'clearData'},
+    {Name: 'cclearData_validData', Actual: tst_con.cclearData_validData, Expected: 'clearData_validData'},
+    {Name: 'cclearData_validDataNameUndefined', Actual: tst_con.cclearData_validDataNameUndefined, Expected: 'clearData_validDataNameUndefined'},
+    {Name: 'cclearData_inValidDataNameInteger', Actual: tst_con.cclearData_inValidDataNameInteger, Expected: 'clearData_inValidDataNameInteger'},
+    {Name: 'cclearData_inValidDataNameBoolean', Actual: tst_con.cclearData_inValidDataNameBoolean, Expected: 'clearData_inValidDataNameBoolean'},
+    {Name: 'cclearData_inValidDataNameNaN', Actual: tst_con.cclearData_inValidDataNameNaN, Expected: 'clearData_inValidDataNameNaN'},
 
     // Test names
 

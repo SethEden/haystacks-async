@@ -804,7 +804,7 @@ async function getData(dataName) {
 /**
  * @function clearData
  * @description Wipes out the data using the unique specified data name,
- * if any is found in the D-0data structure data storage data hive.
+ * if any is found in the D-data structure data storage data hive.
  * @param {string} dataName The unique name of the data that should be cleared.
  * @return {boolean} True or False to indicate if the data was cleared successfully or not.
  * @author Seth Hollingsead

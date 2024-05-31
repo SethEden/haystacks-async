@@ -4001,3 +4001,360 @@ describe(tst_con.cloadAllJsonData, () => {
         expect(returnData).toBeFalsy();
     });
 })
+
+/**
+ * @function storeData
+ * @description Tests the positive and negative test cases of the storeData
+ * @author Vlad Sorokin
+ * @date 2024/05/31
+ */
+describe(tst_con.cstoreData, () => {
+    /**
+     * @function storeData_validData
+     * @description Tests the main function storeData with a valid input.
+     * @author Vlad Sorokin
+     * @date 2024/05/31
+     */
+    test(tst_con.cstoreData_validData, async () => {
+        // Arrange
+        D[sys.cDataStorage] = {}; 
+        let dataName = wrd.cunit + wrd.cTest + wrd.cData;
+        let data = wrd.cunit + wrd.cTesting;
+
+        // Act
+        let returnData = await main.storeData(dataName, data);
+
+        // Assert
+        expect(returnData).toBeTruthy();
+    });
+
+    /**
+     * @function storeData_inValidDataName
+     * @description Tests the main function storeData with a in valid input.
+     * @author Vlad Sorokin
+     * @date 2024/05/31
+     */
+    test(tst_con.cstoreData_inValidDataName, async () => {
+        // Arrange
+        let dataName = wrd.cunit + wrd.cTest + wrd.cData;
+        let data = wrd.cunit + wrd.cTesting;
+
+        // Act
+        let returnData = await main.storeData(dataName, data);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function storeData_inValidDataNameInteger
+     * @description Tests the main function storeData with a invalid data integer.
+     * @author Vlad Sorokin
+     * @date 2024/05/31
+     */
+    test(tst_con.cstoreData_inValidDataNameInteger, async () => {
+        // Arrange
+        D[sys.cDataStorage] = {}; 
+        let dataName = 123;
+        let data = wrd.cunit + wrd.cTesting;
+
+        // Act
+        let returnData = await main.storeData(dataName, data);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function storeData_inValidDataNameBoolean
+     * @description Tests the main function storeData with a invalid data boolean.
+     * @author Vlad Sorokin
+     * @date 2024/05/31
+     */
+    test(tst_con.cstoreData_inValidDataNameBoolean, async () => {
+        // Arrange
+        D[sys.cDataStorage] = {}; 
+        let dataName = false;
+        let data = wrd.cunit + wrd.cTesting;
+
+        // Act
+        let returnData = await main.storeData(dataName, data);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function storeData_inValidDataNameUndefined
+     * @description Tests the main function storeData with a invalid data undefined.
+     * @author Vlad Sorokin
+     * @date 2024/05/31
+     */
+    test(tst_con.cstoreData_inValidDataNameUndefined, async () => {
+        // Arrange
+        D[sys.cDataStorage] = {}; 
+        let dataName = undefined;
+        let data = wrd.cunit + wrd.cTesting;
+
+        // Act
+        let returnData = await main.storeData(dataName, data);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function storeData_inValidDataNameNaN
+     * @description Tests the main function storeData with a invalid data NaN.
+     * @author Vlad Sorokin
+     * @date 2024/05/31
+     */
+    test(tst_con.cstoreData_inValidDataNameNaN, async () => {
+        // Arrange
+        D[sys.cDataStorage] = {}; 
+        let dataName = NaN;
+        let data = wrd.cunit + wrd.cTesting;
+
+        // Act
+        let returnData = await main.storeData(dataName, data);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function storeData_inValidDataUndefined
+     * @description Tests the main function storeData with a invalid data undefined.
+     * @author Vlad Sorokin
+     * @date 2024/05/31
+     */
+    test(tst_con.cstoreData_inValidDataUndefined, async () => {
+        // Arrange
+        D[sys.cDataStorage] = {}; 
+        let dataName = wrd.cunit + wrd.cTest + wrd.cData;
+        let data = undefined;
+
+        // Act
+        let returnData = await main.storeData(dataName, data);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function storeData_inValidDataNaN
+     * @description Tests the main function storeData with a invalid data NaN.
+     * @author Vlad Sorokin
+     * @date 2024/05/31
+     */
+    test(tst_con.cstoreData_inValidDataNaN, async () => {
+        // Arrange
+        D[sys.cDataStorage] = {}; 
+        let dataName = wrd.cunit + wrd.cTest + wrd.cData;
+        let data = NaN;
+
+        // Act
+        let returnData = await main.storeData(dataName, data);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+})
+
+/**
+ * @function getData
+ * @description Tests the positive and negative test cases of the getData
+ * @author Vlad Sorokin
+ * @date 2024/05/31
+ */
+describe(tst_con.cgetData, () => {
+    /**
+     * @function getData_validDataNameData
+     * @description Tests the main function getData with a valid input.
+     * @author Vlad Sorokin
+     * @date 2024/05/31
+     */
+    test(tst_con.cgetData_validData, async () => {
+        // Arrange
+        let dataName = wrd.cunit + wrd.cTest + wrd.cData;
+        let data = wrd.cunit + wrd.cTesting;
+
+        await main.storeData(dataName, data);
+
+        // Act
+        let returnData = await main.getData(dataName);
+
+        // Assert
+        expect(returnData).toEqual(wrd.cunit + wrd.cTesting);
+    });
+
+    /**
+     * @function getData_inValidDataNameInteger
+     * @description Tests the main function getData with a invalid data integer.
+     * @author Vlad Sorokin
+     * @date 2024/05/31
+     */
+    test(tst_con.cgetData_inValidDataNameInteger, async () => {
+        // Arrange
+        let dataName = 123;
+
+        // Act
+        let returnData = await main.getData(dataName);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function getData_inValidDataNameBoolean
+     * @description Tests the main function getData with a invalid data boolean.
+     * @author Vlad Sorokin
+     * @date 2024/05/31
+     */
+    test(tst_con.cgetData_inValidDataNameBoolean, async () => {
+        // Arrange
+        let dataName = false;
+
+        // Act
+        let returnData = await main.getData(dataName);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function getData_inValidDataNameUndefined
+     * @description Tests the main function getData with a invalid data undefined.
+     * @author Vlad Sorokin
+     * @date 2024/05/31
+     */
+    test(tst_con.cgetData_inValidDataNameUndefined, async () => {
+        // Arrange
+        let dataName = undefined;
+
+        // Act
+        let returnData = await main.getData(dataName);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function getData_inValidDataNameNaN
+     * @description Tests the main function getData with a invalid data NaN.
+     * @author Vlad Sorokin
+     * @date 2024/05/31
+     */
+    test(tst_con.cgetData_inValidDataNameNaN, async () => {
+        // Arrange
+        let dataName = NaN;
+
+        // Act
+        let returnData = await main.getData(dataName);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+})
+
+/**
+ * @function clearData
+ * @description Tests the positive and negative test cases of the clearData
+ * @author Vlad Sorokin
+ * @date 2024/05/31
+ */
+describe(tst_con.cclearData, () => {
+    /**
+     * @function clearData_validDataNameData
+     * @description Tests the main function clearData with a valid input.
+     * @author Vlad Sorokin
+     * @date 2024/05/31
+     */
+    test(tst_con.cclearData_validData, async () => {
+        // Arrange
+        await main.clearData();
+        let dataName = wrd.cunit + wrd.cTest + wrd.cData;
+        let data = wrd.cunit + wrd.cTesting;
+        
+        await main.storeData(dataName, data);
+        
+        // Act
+        let returnData = await main.clearData(dataName);
+        
+        // Assert
+        expect(returnData).toBeTruthy();
+    });
+    
+    /**
+     * @function clearData_validDataNameUndefined
+     * @description Tests the main function clearData with a valid data undefined.
+     * @author Vlad Sorokin
+     * @date 2024/05/31
+     */
+    test(tst_con.cclearData_validDataNameUndefined, async () => {
+        // Arrange
+        await main.clearData();
+        let dataName = undefined;
+
+        // Act
+        let returnData = await main.clearData(dataName);
+
+        // Assert
+        expect(returnData).toBeTruthy();
+    });
+    
+    /**
+     * @function clearData_inValidDataNameInteger
+     * @description Tests the main function clearData with a invalid data integer.
+     * @author Vlad Sorokin
+     * @date 2024/05/31
+     */
+    test(tst_con.cclearData_inValidDataNameInteger, async () => {
+        // Arrange
+        await main.clearData();
+        let dataName = 123;
+
+        // Act
+        let returnData = await main.clearData(dataName);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function clearData_inValidDataNameBoolean
+     * @description Tests the main function clearData with a invalid data boolean.
+     * @author Vlad Sorokin
+     * @date 2024/05/31
+     */
+    test(tst_con.cclearData_inValidDataNameBoolean, async () => {
+        // Arrange
+        await main.clearData();
+        let dataName = false;
+
+        // Act
+        let returnData = await main.clearData(dataName);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+
+    /**
+     * @function clearData_inValidDataNameNaN
+     * @description Tests the main function clearData with a invalid data NaN.
+     * @author Vlad Sorokin
+     * @date 2024/05/31
+     */
+    test(tst_con.cclearData_inValidDataNameNaN, async () => {
+        // Arrange
+        await main.clearData();
+        let dataName = NaN;
+
+        // Act
+        let returnData = await main.clearData(dataName);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+})

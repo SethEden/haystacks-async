@@ -639,9 +639,24 @@ async function storeData(dataStorageContextName, dataToStore) {
   // data To Store is:
   await loggers.consoleLog(namespacePrefix + functionName, msg.cdataToStoreIs + JSON.stringify(dataToStore));
   let returnData = false;
-  D[sys.cDataStorage][dataStorageContextName] = {};
-  D[sys.cDataStorage][dataStorageContextName] = dataToStore;
-  returnData = true;
+  if (dataStorageContextName && typeof dataStorageContextName === wrd.cstring) {
+    if (dataToStore) {
+      if (D[sys.cDataStorage][dataStorageContextName] === undefined) {
+        D[sys.cDataStorage][dataStorageContextName] = {};
+        D[sys.cDataStorage][dataStorageContextName] = dataToStore;
+        returnData = true;
+      } else {
+        // ERROR: Given data name already exists. Data context name is: 
+        console.log(msg.cErrorStoreDataMessage01, dataStorageContextName);
+      }
+    } else {
+      // ERROR: Data to store is undefined.
+      console.log(msg.cErrorStoreDataMessage02);
+    }
+  } else {
+    // ERROR: Data name is an invalid value. Data name is: 
+    console.log(msg.cErrorStoreDataMessage03, dataStorageContextName);
+  }
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
@@ -661,8 +676,13 @@ async function getData(dataStorageContextName) {
   // dataStorageContextName is:
   await loggers.consoleLog(namespacePrefix + functionName, msg.cdataStorageContextNameIs + dataStorageContextName);
   let returnData = false;
-  if (D[sys.cDataStorage][dataStorageContextName] !== null && !!D[sys.cDataStorage][dataStorageContextName]) {
-    returnData = D[sys.cDataStorage][dataStorageContextName];
+  if (dataStorageContextName && typeof dataStorageContextName === wrd.cstring) {
+    if (D[sys.cDataStorage][dataStorageContextName] !== null && !!D[sys.cDataStorage][dataStorageContextName]) {
+      returnData = D[sys.cDataStorage][dataStorageContextName];
+    }
+  } else {
+    // ERROR: Data name is an invalid value. Data name is: 
+    console.log(msg.cErrorStoreDataMessage03, dataStorageContextName);
   }
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
@@ -674,7 +694,7 @@ async function getData(dataStorageContextName) {
  * @description Clears out all of the data stored in the DataStorage data hive of the D data structure,
  * or a particular stored data element if a contextName is provided.
  * @param {string} dataStorageContextName (OPTIONAL) The sub-data storage hive which should be cleared.
- * @return {void}
+ * @return {boolean} True or False to indicate if the data was cleared successfully or not.
  * @author Seth Hollingsead
  * @date 2022/01/20
  */
@@ -683,12 +703,22 @@ async function clearData(dataStorageContextName) {
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // dataStorageContextName is:
   await loggers.consoleLog(namespacePrefix + functionName, msg.cdataStorageContextNameIs + dataStorageContextName);
-  if (D[sys.cDataStorage][dataStorageContextName] !== null && !!D[sys.cDataStorage][dataStorageContextName] && dataStorageContextName !== '') {
-    D[sys.cDataStorage][dataStorageContextName] = {};
-  } else {
+  let returnData = false;
+  if (dataStorageContextName && typeof dataStorageContextName === wrd.cstring) {
+    if (D[sys.cDataStorage][dataStorageContextName] !== null && !!D[sys.cDataStorage][dataStorageContextName] && dataStorageContextName !== '') {
+      D[sys.cDataStorage][dataStorageContextName] = undefined;
+      returnData = true;
+    }
+  } else if (dataStorageContextName === undefined) {
     D[sys.cDataStorage] = {};
+    returnData = true;
+  } else {
+    // ERROR: Data name is an invalid value. Data name is: 
+    console.log(msg.cErrorStoreDataMessage03, dataStorageContextName);
   }
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
 }
 
 /**

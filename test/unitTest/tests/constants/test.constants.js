@@ -333,6 +333,34 @@ export const cloadAllJsonData_inValidDataPathNaN = cloadAllJsonData + bas.cUnder
 export const cloadAllJsonData_inValidContextNameUndefined = cloadAllJsonData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cContext + wrd.cName + 'Undefined'; // loadAllJsonData_inValidContextNameUndefined
 export const cloadAllJsonData_inValidContextNameNaN = cloadAllJsonData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cContext + wrd.cName + 'NaN'; // loadAllJsonData_inValidContextNameNaN
 
+// storeData
+export const cstoreData = wrd.cstore + wrd.cData;
+export const cstoreData_validData = cstoreData + bas.cUnderscore + wrd.cvalid + wrd.cName; // cstoreData_validData
+export const cstoreData_inValidDataName = cstoreData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cData + wrd.cName; // cstoreData_inValidDataName
+export const cstoreData_inValidDataNameInteger = cstoreData + cstoreData_inValidDataName + wrd.cInteger; // cstoreData_inValidDataNameInteger
+export const cstoreData_inValidDataNameBoolean = cstoreData + cstoreData_inValidDataName + wrd.cBoolean; // cstoreData_inValidDataNameBoolean
+export const cstoreData_inValidDataNameUndefined = cstoreData + cstoreData_inValidDataName + 'Undefined'; // cstoreData_inValidDataNameUndefined
+export const cstoreData_inValidDataNameNaN = cstoreData + cstoreData_inValidDataName + 'NaN'; // cstoreData_inValidDataNameNaN
+export const cstoreData_inValidDataUndefined = cstoreData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cData + 'Undefined'; // cstoreData_inValidDataUndefined
+export const cstoreData_inValidDataNaN = cstoreData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cData + 'NaN'; // cstoreData_inValidDataNaN
+
+// getData
+export const cgetData = wrd.cget + wrd.cData; // getData
+export const cgetData_validData = cgetData + bas.cUnderscore + wrd.cvalid + wrd.cData; // cgetData_validData
+export const cgetData_inValidDataNameInteger = cgetData + bas.cUnderscore + wrd.cin + wrd.cValue + wrd.cData + wrd.cName + wrd.cInteger; // cgetData_inValidDataNameInteger
+export const cgetData_inValidDataNameBoolean = cgetData + bas.cUnderscore + wrd.cin + wrd.cValue + wrd.cData + wrd.cName + wrd.cBoolean; // cgetData_inValidDataNameBoolean
+export const cgetData_inValidDataNameUndefined = cgetData + bas.cUnderscore + wrd.cin + wrd.cValue + wrd.cData + wrd.cName + 'Undefined'; // cgetData_inValidDataNameUndefined
+export const cgetData_inValidDataNameNaN = cgetData + bas.cUnderscore + wrd.cin + wrd.cValue + wrd.cData + wrd.cName + 'NaN'; // cgetData_inValidDataNameNaN
+
+// clearData
+export const cclearData = wrd.cclear + wrd.cData; // clearData
+export const cclearData_validData = cclearData + bas.cUnderscore + wrd.cvalid + wrd.cData; // clearData_validData
+export const cclearData_validDataNameUndefined = cclearData + bas.cUnderscore + wrd.cvalid + wrd.cData + wrd.cName + "Undefined"; // clearData_validDataNameUndefined
+export const cclearData_inValidDataNameInteger = cclearData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cData + wrd.cName + wrd.cInteger; // clearData_inValidDataNameInteger
+export const cclearData_inValidDataNameBoolean = cclearData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cData + wrd.cName + wrd.cBoolean; // clearData_inValidDataNameBoolean
+export const cclearData_inValidDataNameNaN = cclearData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cData + wrd.cName + "NaN"; // clearData_inValidDataNameNaN
+
+
 // Test names
 
 /* commandBroker */

@@ -320,11 +320,11 @@ async function loadAllJsonData(dataPath, contextName) {
       loadedAndMergeDataAllFiles = await dataBroker.loadAllJsonData(filesToLoad, contextName);
     } else {
       // ERROR: Invalid input for contextName: 
-      console.log('ERROR: Invalid input for contextName: ', contextName);
+      console.log(msg.cErrorLoadAllJsonDataMessage01, contextName);
     }
   } else {
     // ERROR: Invalid input for dataPath: 
-    console.log('ERROR: Invalid input for dataPath: ', dataPath);
+    console.log(msg.cErrorLoadAllJsonDataMessage02, dataPath);
   }
   await loggers.consoleLog(namespacePrefix + functionName, msg.cfilesToLoadIs + JSON.stringify(filesToLoad));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cloadedAndMergedDataAllFilesIs + JSON.stringify(loadedAndMergeDataAllFiles));
