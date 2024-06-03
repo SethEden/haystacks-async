@@ -4358,3 +4358,253 @@ describe(tst_con.cclearData, () => {
         expect(returnData).toBeFalsy();
     });
 })
+
+/**
+ * @function executeBusinessRules
+ * @description Tests the positive and negative test cases of the executeBusinessRules
+ * @author Vlad Sorokin
+ * @date 2024/06/03
+ */
+describe(tst_con.cexecuteBusinessRules, () => {
+    /**
+     * @function executeBusinessRules_validData
+     * @description Tests the main function executeBusinessRules with a valid input.
+     * @author Vlad Sorokin
+     * @date 2024/06/03
+     */
+    test(tst_con.cexecuteBusinessRules_validData, async () => {
+        // Arrange
+        D[sys.cbusinessRules] = {};
+        D[sys.cbusinessRules] = {
+            [biz.cobjectDeepClone]: (inputData, inputMetaData) => dataArrayParsing.objectDeepClone(inputData, inputMetaData)
+        };
+        let inputs = [tst_man.objectTestSample];
+        let businessRules = [biz.cobjectDeepClone];
+
+        // Act
+        let returnData = await main.executeBusinessRules(inputs, businessRules);
+
+        // Assert
+        expect(returnData).toEqual(tst_man.objectTestSample);
+    });
+
+    /**
+     * @function executeBusinessRules_inValidInputsString
+     * @description Tests the main function executeBusinessRules with a invalid data string.
+     * @author Vlad Sorokin
+     * @date 2024/06/03
+     */
+    test(tst_con.cexecuteBusinessRules_inValidInputsString, async () => {
+        // Arrange
+        D[sys.cbusinessRules] = {};
+        D[sys.cbusinessRules] = {
+            [biz.cobjectDeepClone]: (inputData, inputMetaData) => dataArrayParsing.objectDeepClone(inputData, inputMetaData)
+        };
+        let inputs = tst_man.ctestString1;
+        let businessRules = [biz.cobjectDeepClone];
+
+        // Act
+        let returnData = await main.executeBusinessRules(inputs, businessRules);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function executeBusinessRules_inValidBusinessRulesString
+     * @description Tests the main function executeBusinessRules with a invalid data string.
+     * @author Vlad Sorokin
+     * @date 2024/06/03
+     */
+    test(tst_con.cexecuteBusinessRules_inValidBusinessRulesString, async () => {
+        // Arrange
+        D[sys.cbusinessRules] = {};
+        D[sys.cbusinessRules] = {
+            [biz.cobjectDeepClone]: (inputData, inputMetaData) => dataArrayParsing.objectDeepClone(inputData, inputMetaData)
+        };
+        let inputs = [tst_man.objectTestSample];
+        let businessRules = tst_man.ctestString1;
+
+        // Act
+        let returnData = await main.executeBusinessRules(inputs, businessRules);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function executeBusinessRules_inValidInputsInteger
+     * @description Tests the main function executeBusinessRules with a invalid data integer.
+     * @author Vlad Sorokin
+     * @date 2024/06/03
+     */
+    test(tst_con.cexecuteBusinessRules_inValidInputsInteger, async () => {
+        // Arrange
+        D[sys.cbusinessRules] = {};
+        D[sys.cbusinessRules] = {
+            [biz.cobjectDeepClone]: (inputData, inputMetaData) => dataArrayParsing.objectDeepClone(inputData, inputMetaData)
+        };
+        let inputs = 123;
+        let businessRules = [biz.cobjectDeepClone];
+
+        // Act
+        let returnData = await main.executeBusinessRules(inputs, businessRules);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function executeBusinessRules_inValidInputsBoolean
+     * @description Tests the main function executeBusinessRules with a invalid data boolean.
+     * @author Vlad Sorokin
+     * @date 2024/06/03
+     */
+    test(tst_con.cexecuteBusinessRules_inValidInputsBoolean, async () => {
+        // Arrange
+        D[sys.cbusinessRules] = {};
+        D[sys.cbusinessRules] = {
+            [biz.cobjectDeepClone]: (inputData, inputMetaData) => dataArrayParsing.objectDeepClone(inputData, inputMetaData)
+        };
+        let inputs = false;
+        let businessRules = [biz.cobjectDeepClone];
+
+        // Act
+        let returnData = await main.executeBusinessRules(inputs, businessRules);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function executeBusinessRules_inValidBusinessRulesInteger
+     * @description Tests the main function executeBusinessRules with a invalid data integer.
+     * @author Vlad Sorokin
+     * @date 2024/06/03
+     */
+    test(tst_con.cexecuteBusinessRules_inValidBusinessRulesInteger, async () => {
+        // Arrange
+        D[sys.cbusinessRules] = {};
+        D[sys.cbusinessRules] = {
+            [biz.cobjectDeepClone]: (inputData, inputMetaData) => dataArrayParsing.objectDeepClone(inputData, inputMetaData)
+        };
+        let inputs = [tst_man.objectTestSample];
+        let businessRules = 123;
+
+        // Act
+        let returnData = await main.executeBusinessRules(inputs, businessRules);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function executeBusinessRules_inValidBusinessRulesBoolean
+     * @description Tests the main function executeBusinessRules with a invalid data boolean.
+     * @author Vlad Sorokin
+     * @date 2024/06/03
+     */
+    test(tst_con.cexecuteBusinessRules_inValidBusinessRulesBoolean, async () => {
+        // Arrange
+        D[sys.cbusinessRules] = {};
+        D[sys.cbusinessRules] = {
+            [biz.cobjectDeepClone]: (inputData, inputMetaData) => dataArrayParsing.objectDeepClone(inputData, inputMetaData)
+        };
+        let inputs = [tst_man.objectTestSample];
+        let businessRules = false;
+
+        // Act
+        let returnData = await main.executeBusinessRules(inputs, businessRules);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function executeBusinessRules_inValidInputsUndefined
+     * @description Tests the main function executeBusinessRules with a invalid data undefined.
+     * @author Vlad Sorokin
+     * @date 2024/06/03
+     */
+    test(tst_con.cexecuteBusinessRules_inValidInputsUndefined, async () => {
+        // Arrange
+        D[sys.cbusinessRules] = {};
+        D[sys.cbusinessRules] = {
+            [biz.cobjectDeepClone]: (inputData, inputMetaData) => dataArrayParsing.objectDeepClone(inputData, inputMetaData)
+        };
+        let inputs = undefined;
+        let businessRules = [biz.cobjectDeepClone];
+
+        // Act
+        let returnData = await main.executeBusinessRules(inputs, businessRules);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function executeBusinessRules_inValidInputsNaN
+     * @description Tests the main function executeBusinessRules with a invalid data NaN.
+     * @author Vlad Sorokin
+     * @date 2024/06/03
+     */
+    test(tst_con.cexecuteBusinessRules_inValidInputsNaN, async () => {
+        // Arrange
+        D[sys.cbusinessRules] = {};
+        D[sys.cbusinessRules] = {
+            [biz.cobjectDeepClone]: (inputData, inputMetaData) => dataArrayParsing.objectDeepClone(inputData, inputMetaData)
+        };
+        let inputs = NaN;
+        let businessRules = [biz.cobjectDeepClone];
+
+        // Act
+        let returnData = await main.executeBusinessRules(inputs, businessRules);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function executeBusinessRules_inValidBusinessRulesUndefined
+     * @description Tests the main function executeBusinessRules with a invalid data undefined.
+     * @author Vlad Sorokin
+     * @date 2024/06/03
+     */
+    test(tst_con.cexecuteBusinessRules_inValidBusinessRulesUndefined, async () => {
+        // Arrange
+        D[sys.cbusinessRules] = {};
+        D[sys.cbusinessRules] = {
+            [biz.cobjectDeepClone]: (inputData, inputMetaData) => dataArrayParsing.objectDeepClone(inputData, inputMetaData)
+        };
+        let inputs = [tst_man.objectTestSample];
+        let businessRules = undefined;
+
+        // Act
+        let returnData = await main.executeBusinessRules(inputs, businessRules);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function executeBusinessRules_inValidBusinessRulesNaN
+     * @description Tests the main function executeBusinessRules with a invalid data NaN.
+     * @author Vlad Sorokin
+     * @date 2024/06/03
+     */
+    test(tst_con.cexecuteBusinessRules_inValidBusinessRulesNaN, async () => {
+        // Arrange
+        D[sys.cbusinessRules] = {};
+        D[sys.cbusinessRules] = {
+            [biz.cobjectDeepClone]: (inputData, inputMetaData) => dataArrayParsing.objectDeepClone(inputData, inputMetaData)
+        };
+        let inputs = [tst_man.objectTestSample];
+        let businessRules = NaN;
+
+        // Act
+        let returnData = await main.executeBusinessRules(inputs, businessRules);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+})

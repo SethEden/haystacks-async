@@ -145,27 +145,32 @@ async function processRules(inputs, rulesToExecute) {
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   // console.log(`inputs is: ${JSON.stringify(inputs)}`);
   // console.log(`rulesToExecute is: ${JSON.stringify(rulesToExecute)}`);
-  let returnData;
+  let returnData = false;
   let inputMetaData;
-  if (rulesToExecute && await ruleParsing.doAllRulesExist(rulesToExecute)) {
-    if (inputs) {
-      returnData = inputs[0];
-      inputMetaData = inputs[1];
-    }
-    for (let rule in rulesToExecute) {
-      // Make sure we don't call the internal rule processor, directly from the public interface.
-      if (await Object.prototype.hasOwnProperty.call(rulesToExecute, rule) && rule != biz.cprocessRulesInternal) {
-        let key = rule;
-        // console.log(`key is: ${key}`);
-        let value = rulesToExecute[key];
-        // console.log(`value is: ${value}`);
-        returnData = await D[sys.cbusinessRules][value](returnData, inputMetaData);
-      } // End-if (rulesToExecute.hasOwnProperty(rule))
-    } // End-for (let rule in rulesToExecute)
+  if (rulesToExecute && inputs && Array.isArray(rulesToExecute) && Array.isArray(inputs)) {
+    if (await ruleParsing.doAllRulesExist(rulesToExecute)) {
+      if (inputs) {
+        returnData = inputs[0];
+        inputMetaData = inputs[1];
+      }
+      for (let rule in rulesToExecute) {
+        // Make sure we don't call the internal rule processor, directly from the public interface.
+        if (await Object.prototype.hasOwnProperty.call(rulesToExecute, rule) && rule != biz.cprocessRulesInternal) {
+          let key = rule;
+          // console.log(`key is: ${key}`);
+          let value = rulesToExecute[key];
+          // console.log(`value is: ${value}`);
+          returnData = await D[sys.cbusinessRules][value](returnData, inputMetaData);
+        } // End-if (rulesToExecute.hasOwnProperty(rule))
+      } // End-for (let rule in rulesToExecute)
+    } else {
+      // WARNING: Some rules do not exist:
+      console.log(msg.cProcessRulesWarningSomeRulesDoNotExist + JSON.stringify(rulesToExecute));
+    } // End-if (rulesToExecute && doAllRulesExist(rulesToExecute))
   } else {
-    // WARNING: Some rules do not exist:
-    console.log(msg.cProcessRulesWarningSomeRulesDoNotExist + JSON.stringify(rulesToExecute));
-  } // End-if (rulesToExecute && doAllRulesExist(rulesToExecute))
+    //ERROR: Incorrect inputs for processRules, inputs are: rulesToExecute are: 
+    console.log('ERROR: Incorrect inputs for processRules, inputs are:', inputs, '\n\rrulesToExecute are: ', rulesToExecute)
+  }
   // console.log(`returnData is: ${JSON.stringify(returnData)}`);
   // console.log(`END ${namespacePrefix}${functionName} function`);
   return returnData;

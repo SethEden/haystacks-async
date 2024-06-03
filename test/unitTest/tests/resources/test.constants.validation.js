@@ -359,6 +359,20 @@ export const testConstantsValidation = [
     {Name: 'cclearData_inValidDataNameBoolean', Actual: tst_con.cclearData_inValidDataNameBoolean, Expected: 'clearData_inValidDataNameBoolean'},
     {Name: 'cclearData_inValidDataNameNaN', Actual: tst_con.cclearData_inValidDataNameNaN, Expected: 'clearData_inValidDataNameNaN'},
 
+    // executeBusinessRules
+    {Name: 'cexecuteBusinessRules', Actual: tst_con.cexecuteBusinessRules, Expected: 'executeBusinessRules'},
+    {Name: 'cexecuteBusinessRules_validData', Actual: tst_con.cexecuteBusinessRules_validData, Expected: 'executeBusinessRules_validData'},
+    {Name: 'cexecuteBusinessRules_inValidInputsString', Actual: tst_con.cexecuteBusinessRules_inValidInputsString, Expected: 'executeBusinessRules_inValidInputsString'},
+    {Name: 'cexecuteBusinessRules_inValidBusinessRulesString', Actual: tst_con.cexecuteBusinessRules_inValidBusinessRulesString, Expected: 'executeBusinessRules_inValidBusinessRulesString'},
+    {Name: 'cexecuteBusinessRules_inValidInputsInteger', Actual: tst_con.cexecuteBusinessRules_inValidInputsInteger, Expected: 'executeBusinessRules_inValidInputsInteger'},
+    {Name: 'cexecuteBusinessRules_inValidInputsBoolean', Actual: tst_con.cexecuteBusinessRules_inValidInputsBoolean, Expected: 'executeBusinessRules_inValidInputsBoolean'},
+    {Name: 'cexecuteBusinessRules_inValidBusinessRulesInteger', Actual: tst_con.cexecuteBusinessRules_inValidBusinessRulesInteger, Expected: 'executeBusinessRules_inValidBusinessRulesInteger'},
+    {Name: 'cexecuteBusinessRules_inValidBusinessRulesBoolean', Actual: tst_con.cexecuteBusinessRules_inValidBusinessRulesBoolean, Expected: 'executeBusinessRules_inValidBusinessRulesBoolean'},
+    {Name: 'cexecuteBusinessRules_inValidInputsUndefined', Actual: tst_con.cexecuteBusinessRules_inValidInputsUndefined, Expected: 'executeBusinessRules_inValidInputsUndefined'},
+    {Name: 'cexecuteBusinessRules_inValidInputsNaN', Actual: tst_con.cexecuteBusinessRules_inValidInputsNaN, Expected: 'executeBusinessRules_inValidInputsNaN'},
+    {Name: 'cexecuteBusinessRules_inValidBusinessRulesUndefined', Actual: tst_con.cexecuteBusinessRules_inValidBusinessRulesUndefined, Expected: 'executeBusinessRules_inValidBusinessRulesUndefined'},
+    {Name: 'cexecuteBusinessRules_inValidBusinessRulesNaN', Actual: tst_con.cexecuteBusinessRules_inValidBusinessRulesNaN, Expected: 'executeBusinessRules_inValidBusinessRulesNaN'},
+
     // Test names
 
     /* commandBroker */

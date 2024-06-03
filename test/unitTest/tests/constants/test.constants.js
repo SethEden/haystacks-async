@@ -360,6 +360,20 @@ export const cclearData_inValidDataNameInteger = cclearData + bas.cUnderscore + 
 export const cclearData_inValidDataNameBoolean = cclearData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cData + wrd.cName + wrd.cBoolean; // clearData_inValidDataNameBoolean
 export const cclearData_inValidDataNameNaN = cclearData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cData + wrd.cName + "NaN"; // clearData_inValidDataNameNaN
 
+// executeBusinessRules
+export const cexecuteBusinessRules = wrd.cexecute + wrd.cBusiness + wrd.cRules; // executeBusinessRules
+export const cexecuteBusinessRules_validData = cexecuteBusinessRules + bas.cUnderscore + wrd.cvalid + wrd.cData; // executeBusinessRules_validData
+export const cexecuteBusinessRules_inValidInputsString  = cexecuteBusinessRules + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cInputs + wrd.cString; // executeBusinessRules_inValidInputsString 
+export const cexecuteBusinessRules_inValidBusinessRulesString = cexecuteBusinessRules + bas.cUnderscore + wrd.cin + wrd.cValid + sys.cBusinessRules + wrd.cString; // executeBusinessRules_inValidBusinessRulesString
+export const cexecuteBusinessRules_inValidInputsInteger  = cexecuteBusinessRules + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cInputs + wrd.cInteger; // executeBusinessRules_inValidInputsInteger 
+export const cexecuteBusinessRules_inValidInputsBoolean  = cexecuteBusinessRules + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cInputs + wrd.cBoolean; // executeBusinessRules_inValidInputsBoolean 
+export const cexecuteBusinessRules_inValidBusinessRulesInteger = cexecuteBusinessRules + bas.cUnderscore + wrd.cin + wrd.cValid + sys.cBusinessRules + wrd.cInteger; // executeBusinessRules_inValidBusinessRulesInteger
+export const cexecuteBusinessRules_inValidBusinessRulesBoolean = cexecuteBusinessRules + bas.cUnderscore + wrd.cin + wrd.cValid + sys.cBusinessRules + wrd.cBoolean; // executeBusinessRules_inValidBusinessRulesBoolean
+export const cexecuteBusinessRules_inValidInputsUndefined  = cexecuteBusinessRules + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cInputs + 'Undefined'; // executeBusinessRules_inValidInputsUndefined 
+export const cexecuteBusinessRules_inValidInputsNaN  = cexecuteBusinessRules + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cInputs + 'NaN'; // executeBusinessRules_inValidInputsNaN 
+export const cexecuteBusinessRules_inValidBusinessRulesUndefined = cexecuteBusinessRules + bas.cUnderscore + wrd.cin + wrd.cValid + sys.cBusinessRules + 'Undefined'; // executeBusinessRules_inValidBusinessRulesUndefined
+export const cexecuteBusinessRules_inValidBusinessRulesNaN = cexecuteBusinessRules + bas.cUnderscore + wrd.cin + wrd.cValid + sys.cBusinessRules + 'NaN'; // executeBusinessRules_inValidBusinessRulesNaN
+
 
 // Test names
 
