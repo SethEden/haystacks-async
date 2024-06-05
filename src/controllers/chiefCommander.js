@@ -137,25 +137,34 @@ async function loadCommandAliasesFromPath(commandAliasesFilePathConfigurationNam
  * @description Determines if the command queue has been setup or not,
  * if not then it is initialized, and the command is added to the command queue.
  * @param {string} command The command that should be added  to the command queue.
- * @return {void}
+ * @return {boolean} True or False to indicate if command was enqueued succsesfully.
  * @author Seth Hollingsead
  * @date 2022/02/02
  */
 async function enqueueCommand(command) {
   let functionName = enqueueCommand.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  let returnData = false;
   // command is:
   await loggers.consoleLog(namespacePrefix + functionName, msg.ccommandIs + command);
-  if (D[sys.cCommandQueue] === undefined) {
-    await queue.initQueue(sys.cCommandQueue);
+  if (command && typeof command === wrd.cstring) {
+    if (D[sys.cCommandQueue] === undefined) {
+      await queue.initQueue(sys.cCommandQueue);
+    }
+    if (await configurator.getConfigurationSetting(wrd.csystem, cfg.clogAllCommands) === true) {
+      await stack.push(sys.cSystemCommandLog, command);
+    }
+    // D-command stack is:
+    // console.log(namespacePrefix + functionName + bas.cSpace + msg.cdCommandStackIs, D[wrd.cCommands]);
+    await queue.enqueue(sys.cCommandQueue, command);
+    returnData = true;
+  } else {
+    //ERROR: Incorrect input for command: 
+    console.log(msg.cErrorEnqueueCommandMessage01, command);
   }
-  if (await configurator.getConfigurationSetting(wrd.csystem, cfg.clogAllCommands) === true) {
-    await stack.push(sys.cSystemCommandLog, command);
-  }
-  // D-command stack is:
-  // console.log(namespacePrefix + functionName + bas.cSpace + msg.cdCommandStackIs, D[wrd.cCommands]);
-  await queue.enqueue(sys.cCommandQueue, command);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
 }
 
 /**

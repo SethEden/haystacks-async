@@ -117,7 +117,7 @@ async function isEmpty(queueNameSpace) {
   let functionName = isEmpty.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cqueueNameSpaceIs + queueNameSpace);
-  let returnData;
+  let returnData = false;
   if (D[queueNameSpace] === undefined) {
     returnData = true;
   } else {

@@ -30,6 +30,7 @@ import fileStringParsing from '../../../src/businessRules/rules/stringParsing/fi
 import fileOperations from '../../../src/businessRules/rules/fileOperations.js';
 import stringParsingUtilities from '../../../src/businessRules/rules/stringParsingUtilities.js';
 import timeComputation from '../../../src/businessRules/rules/timeComputation.js';
+import pluginCommands from '../../../src/commandsBlob/commands/plugins.js';
 import configurator from '../../../src/executrix/configurator.js';
 import D from '../../../src/structures/data.js';
 import main from '../../../src/main.js'
@@ -48,7 +49,7 @@ import { basicConstantsValidation } from '@haystacks/constants/src/constantsVali
 import url from 'url';
 import path from 'path';
 
-const { bas, biz, cfg, gen, msg, sys, wrd, num } = hayConst;
+const { bas, cmd, biz, cfg, gen, msg, sys, wrd, num } = hayConst;
 let rootPath = '';
 
 /**
@@ -4608,3 +4609,858 @@ describe(tst_con.cexecuteBusinessRules, () => {
         expect(returnData).toBeFalsy();
     });
 })
+
+/**
+ * @function enqueueCommand
+ * @description Tests the positive and negative test cases of the enqueueCommand
+ * @author Vlad Sorokin
+ * @date 2024/06/05
+ */
+describe(tst_con.cenqueueCommand, () => {
+    /**
+     * @function enqueueCommand_validCommandData
+     * @description Tests the main function enqueueCommand with a valid input.
+     * @author Vlad Sorokin
+     * @date 2024/06/05
+     */
+    test(tst_con.cenqueueCommand_validData, async () => {
+        // Arrange
+        D[sys.cUserEnteredCommandLog] = [];
+        D[sys.cSystemCommandLog] = [];
+        let command = cmd.cloadPlugin;
+
+        // Act
+        let returnData = await main.enqueueCommand(command);
+
+        // Assert
+        expect(returnData).toBeTruthy();
+    });
+
+    /**
+     * @function enqueueCommand_inValidCommandInteger
+     * @description Tests the main function enqueueCommand with a invalid data integer.
+     * @author Vlad Sorokin
+     * @date 2024/06/05
+     */
+    test(tst_con.cenqueueCommand_inValidCommandInteger, async () => {
+        // Arrange
+        D[sys.cUserEnteredCommandLog] = [];
+        D[sys.cSystemCommandLog] = [];
+        let command = 123;
+
+        // Act
+        let returnData = await main.enqueueCommand(command);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function enqueueCommand_inValidCommandBoolean
+     * @description Tests the main function enqueueCommand with a invalid data boolean.
+     * @author Vlad Sorokin
+     * @date 2024/06/05
+     */
+    test(tst_con.cenqueueCommand_inValidCommandBoolean, async () => {
+        // Arrange
+        D[sys.cUserEnteredCommandLog] = [];
+        D[sys.cSystemCommandLog] = [];
+        let command = false;
+
+        // Act
+        let returnData = await main.enqueueCommand(command);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function enqueueCommand_inValidCommandUndefined
+     * @description Tests the main function enqueueCommand with a invalid data undefined.
+     * @author Vlad Sorokin
+     * @date 2024/06/05
+     */
+    test(tst_con.cenqueueCommand_inValidCommandUndefined, async () => {
+        // Arrange
+        D[sys.cUserEnteredCommandLog] = [];
+        D[sys.cSystemCommandLog] = [];
+        let command = undefined;
+
+        // Act
+        let returnData = await main.enqueueCommand(command);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function enqueueCommand_inValidCommandNaN
+     * @description Tests the main function enqueueCommand with a invalid data NaN.
+     * @author Vlad Sorokin
+     * @date 2024/06/05
+     */
+    test(tst_con.cenqueueCommand_inValidCommandNaN, async () => {
+        // Arrange
+        D[sys.cUserEnteredCommandLog] = [];
+        D[sys.cSystemCommandLog] = [];
+        let command = NaN;
+
+        // Act
+        let returnData = await main.enqueueCommand(command);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+})
+
+/**
+ * @function isCommandQueueEmpty
+ * @description Tests the positive and negative test cases of the isCommandQueueEmpty
+ * @author Vlad Sorokin
+ * @date 2024/06/05
+ */
+describe(tst_con.cisCommandQueueEmpty, () => {
+    /**
+     * @function isCommandQueueEmpty_validTruthyData
+     * @description Tests the main function isCommandQueueEmpty with a valid input.
+     * @author Vlad Sorokin
+     * @date 2024/06/05
+     */
+    test(tst_con.cisCommandQueueEmpty_validTruthyData, async () => {
+        // Arrange
+        D[sys.cCommandQueue] = [];
+
+        // Act
+        let returnData = await main.isCommandQueueEmpty();
+
+        // Assert
+        expect(returnData).toBeTruthy();
+    });
+
+    /**
+     * @function isCommandQueueEmpty_validFalsyData
+     * @description Tests the main function isCommandQueueEmpty with a valid input.
+     * @author Vlad Sorokin
+     * @date 2024/06/05
+     */
+    test(tst_con.cisCommandQueueEmpty_validFalsyData, async () => {
+        // Arrange
+        D[sys.cCommandQueue] = [
+            cmd.cloadPlugin
+        ];
+
+        // Act
+        let returnData = await main.isCommandQueueEmpty();
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+})
+
+/**
+ * @function processCommandQueue
+ * @description Tests the positive and negative test cases of the processCommandQueue
+ * @author Vlad Sorokin
+ * @date 2024/06/05
+ */
+describe(tst_con.cprocessCommandQueue, () => {
+    /**
+     * @function processCommandQueue_validData
+     * @description Tests the main function processCommandQueue with a valid input.
+     * @author Vlad Sorokin
+     * @date 2024/06/05
+     */
+    test(tst_con.cprocessCommandQueue_validData, async () => {
+        // Arrange
+        let pluginLoadWithData = cmd.cloadPlugin + bas.cSpace + tst_man.testPluginPath;
+        D[sys.cbusinessRules] = {
+            [biz.cgetJsonData]: (inputData, inputMetaData) => fileOperations.getJsonData(inputData, inputMetaData),
+            [biz.cgetNowMoment]: (inputData, inputMetaData) => timeComputation.getNowMoment(inputData, inputMetaData),
+            [biz.cobjectDeepClone]: (inputData, inputMetaData) => dataArrayParsing.objectDeepClone(inputData, inputMetaData),
+            [biz.cdoesArrayContainCharacter]: (inputData, inputMetaData) => characterArrayParsing.doesArrayContainCharacter(inputData, inputMetaData),
+            [biz.ccomputeDeltaTime]: (inputData, inputMetaData) => timeComputation.computeDeltaTime(inputData, inputMetaData)
+        };
+        D[wrd.cCommands] = {
+            [cmd.cloadPlugin]: (inputData, inputMetaData) => pluginCommands.loadPlugin(inputData, inputMetaData)
+        }
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+        D[sys.cpluginsLoaded] = [{}];
+        D[sys.cCommandQueue] = [
+            pluginLoadWithData
+        ];
+
+        // Act
+        let returnData = await main.processCommandQueue();
+
+        // Assert
+        expect(returnData).toEqual([true, true]);
+    });
+})
+
+/**
+ * @function setConfigurationSetting
+ * @description Tests the positive and negative test cases of the setConfigurationSetting
+ * @author Vlad Sorokin
+ * @date 2024/06/05
+ */
+describe(tst_con.csetConfigurationSetting, () => {
+    /**
+     * @function setConfigurationSetting_validData
+     * @description Tests the main function setConfigurationSetting with a valid input.
+     * @author Vlad Sorokin
+     * @date 2024/06/05
+     */
+    test(tst_con.csetConfigurationSetting_validData, async () => {
+        // Arrange
+        D[wrd.cconfiguration] = {};
+        let configurationNamespace = wrd.cunit + bas.cDot + wrd.ctest;
+        let configurationName = wrd.ctesting;
+        let configurationValue = true;
+
+
+        // Act
+        let returnData = await main.setConfigurationSetting(configurationNamespace, configurationName, configurationValue);
+
+        // Assert
+        expect(returnData).toEqual(true);
+    });
+
+    /**
+     * @function setConfigurationSetting_inValidConfigurationNamespaceString
+     * @description Tests the main function setConfigurationSetting with a invalid data string.
+     * @author Vlad Sorokin
+     * @date 2024/06/05
+     */
+    test(tst_con.csetConfigurationSetting_inValidConfigurationNamespaceString, async () => {
+        // Arrange
+        D[wrd.cconfiguration] = {};
+        let configurationNamespace = tst_man.ctestString1;
+        let configurationName = wrd.ctesting;
+        let configurationValue = true;
+
+
+        // Act
+        let returnData = await main.setConfigurationSetting(configurationNamespace, configurationName, configurationValue);
+
+        // Assert
+        expect(returnData).toBeTruthy();
+    });
+
+    /**
+     * @function setConfigurationSetting_inValidConfigurationNameString
+     * @description Tests the main function setConfigurationSetting with a invalid data string.
+     * @author Vlad Sorokin
+     * @date 2024/06/05
+     */
+    test(tst_con.csetConfigurationSetting_inValidConfigurationNameString, async () => {
+        // Arrange
+        D[wrd.cconfiguration] = {};
+        let configurationNamespace = wrd.cunit + bas.cDot + wrd.ctest;
+        let configurationName = tst_man.ctestString1;
+        let configurationValue = true;
+
+
+        // Act
+        let returnData = await main.setConfigurationSetting(configurationNamespace, configurationName, configurationValue);
+
+        // Assert
+        expect(returnData).toBeTruthy();
+    });
+
+    /**
+     * @function setConfigurationSetting_inValidConfigurationValueString
+     * @description Tests the main function setConfigurationSetting with a invalid data string.
+     * @author Vlad Sorokin
+     * @date 2024/06/05
+     */
+    test(tst_con.csetConfigurationSetting_inValidConfigurationValueString, async () => {
+        // Arrange
+        D[wrd.cconfiguration] = {};
+        let configurationNamespace = wrd.cunit + bas.cDot + wrd.ctest;
+        let configurationName = wrd.ctesting;
+        let configurationValue = tst_man.ctestString1;
+
+
+        // Act
+        let returnData = await main.setConfigurationSetting(configurationNamespace, configurationName, configurationValue);
+
+        // Assert
+        expect(returnData).toBeTruthy();
+    });
+
+    /**
+     * @function setConfigurationSetting_inValidConfigurationNamespaceInteger
+     * @description Tests the main function setConfigurationSetting with a invalid data integer.
+     * @author Vlad Sorokin
+     * @date 2024/06/05
+     */
+    test(tst_con.csetConfigurationSetting_inValidConfigurationNamespaceInteger, async () => {
+        // Arrange
+        D[wrd.cconfiguration] = {};
+        let configurationNamespace = 123;
+        let configurationName = wrd.ctesting;
+        let configurationValue = true;
+
+
+        // Act
+        let returnData = await main.setConfigurationSetting(configurationNamespace, configurationName, configurationValue);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function setConfigurationSetting_inValidConfigurationNamespaceBoolean
+     * @description Tests the main function setConfigurationSetting with a invalid data boolean.
+     * @author Vlad Sorokin
+     * @date 2024/06/05
+     */
+    test(tst_con.csetConfigurationSetting_inValidConfigurationNamespaceBoolean, async () => {
+        // Arrange
+        D[wrd.cconfiguration] = {};
+        let configurationNamespace = false;
+        let configurationName = wrd.ctesting;
+        let configurationValue = true;
+
+
+        // Act
+        let returnData = await main.setConfigurationSetting(configurationNamespace, configurationName, configurationValue);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function setConfigurationSetting_inValidConfigurationNamespaceUndefined
+     * @description Tests the main function setConfigurationSetting with a invalid data undefined.
+     * @author Vlad Sorokin
+     * @date 2024/06/05
+     */
+    test(tst_con.csetConfigurationSetting_inValidConfigurationNamespaceUndefined, async () => {
+        // Arrange
+        D[wrd.cconfiguration] = {};
+        let configurationNamespace = undefined;
+        let configurationName = wrd.ctesting;
+        let configurationValue = true;
+
+
+        // Act
+        let returnData = await main.setConfigurationSetting(configurationNamespace, configurationName, configurationValue);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function setConfigurationSetting_inValidConfigurationNamespaceNaN
+     * @description Tests the main function setConfigurationSetting with a invalid data NaN.
+     * @author Vlad Sorokin
+     * @date 2024/06/05
+     */
+    test(tst_con.csetConfigurationSetting_inValidConfigurationNamespaceNaN, async () => {
+        // Arrange
+        D[wrd.cconfiguration] = {};
+        let configurationNamespace = NaN;
+        let configurationName = wrd.ctesting;
+        let configurationValue = true;
+
+
+        // Act
+        let returnData = await main.setConfigurationSetting(configurationNamespace, configurationName, configurationValue);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function setConfigurationSetting_inValidConfigurationNameInteger
+     * @description Tests the main function setConfigurationSetting with a invalid data integer.
+     * @author Vlad Sorokin
+     * @date 2024/06/05
+     */
+    test(tst_con.csetConfigurationSetting_inValidConfigurationNameInteger, async () => {
+        // Arrange
+        D[wrd.cconfiguration] = {};
+        let configurationNamespace = wrd.cunit + bas.cDot + wrd.ctest;
+        let configurationName = 123;
+        let configurationValue = true;
+
+
+        // Act
+        let returnData = await main.setConfigurationSetting(configurationNamespace, configurationName, configurationValue);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function setConfigurationSetting_inValidConfigurationNameBoolean
+     * @description Tests the main function setConfigurationSetting with a invalid data boolean.
+     * @author Vlad Sorokin
+     * @date 2024/06/05
+     */
+    test(tst_con.csetConfigurationSetting_inValidConfigurationNameBoolean, async () => {
+        // Arrange
+        D[wrd.cconfiguration] = {};
+        let configurationNamespace = wrd.cunit + bas.cDot + wrd.ctest;
+        let configurationName = false;
+        let configurationValue = true;
+
+
+        // Act
+        let returnData = await main.setConfigurationSetting(configurationNamespace, configurationName, configurationValue);
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function setConfigurationSetting_inValidConfigurationNameUndefined
+     * @description Tests the main function setConfigurationSetting with a invalid data undefined.
+     * @author Vlad Sorokin
+     * @date 2024/06/05
+     */
+    test(tst_con.csetConfigurationSetting_inValidConfigurationNameUndefined, async () => {
+        // Arrange
+        D[wrd.cconfiguration] = {};
+        let configurationNamespace = wrd.cunit + bas.cDot + wrd.ctest;
+        let configurationName = undefined;
+        let configurationValue = true;
+
+
+        // Act
+        let returnData = await main.setConfigurationSetting(configurationNamespace, configurationName, configurationValue);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function setConfigurationSetting_inValidConfigurationNameNaN
+     * @description Tests the main function setConfigurationSetting with a invalid data NaN.
+     * @author Vlad Sorokin
+     * @date 2024/06/05
+     */
+    test(tst_con.csetConfigurationSetting_inValidConfigurationNameNaN, async () => {
+        // Arrange
+        D[wrd.cconfiguration] = {};
+        let configurationNamespace = wrd.cunit + bas.cDot + wrd.ctest;
+        let configurationName = NaN;
+        let configurationValue = true;
+
+
+        // Act
+        let returnData = await main.setConfigurationSetting(configurationNamespace, configurationName, configurationValue);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function setConfigurationSetting_inValidConfigurationValueInteger
+     * @description Tests the main function setConfigurationSetting with a invalid data integer.
+     * @author Vlad Sorokin
+     * @date 2024/06/05
+     */
+    test(tst_con.csetConfigurationSetting_inValidConfigurationValueInteger, async () => {
+        // Arrange
+        D[wrd.cconfiguration] = {};
+        let configurationNamespace = wrd.cunit + bas.cDot + wrd.ctest;
+        let configurationName = wrd.ctesting;
+        let configurationValue = 123;
+
+
+        // Act
+        let returnData = await main.setConfigurationSetting(configurationNamespace, configurationName, configurationValue);
+
+        // Assert
+        expect(returnData).toBeTruthy();
+    });
+
+    /**
+     * @function setConfigurationSetting_inValidConfigurationValueBoolean
+     * @description Tests the main function setConfigurationSetting with a invalid data boolean.
+     * @author Vlad Sorokin
+     * @date 2024/06/05
+     */
+    test(tst_con.csetConfigurationSetting_inValidConfigurationValueBoolean, async () => {
+        // Arrange
+        D[wrd.cconfiguration] = {};
+        let configurationNamespace = wrd.cunit + bas.cDot + wrd.ctest;
+        let configurationName = wrd.ctesting;
+        let configurationValue = false;
+
+
+        // Act
+        let returnData = await main.setConfigurationSetting(configurationNamespace, configurationName, configurationValue);
+
+        // Assert
+        expect(returnData).toBeTruthy();
+    });
+
+    /**
+     * @function setConfigurationSetting_inValidConfigurationValueUndefined
+     * @description Tests the main function setConfigurationSetting with a invalid data undefined.
+     * @author Vlad Sorokin
+     * @date 2024/06/05
+     */
+    test(tst_con.csetConfigurationSetting_inValidConfigurationValueUndefined, async () => {
+        // Arrange
+        D[wrd.cconfiguration] = {};
+        let configurationNamespace = wrd.cunit + bas.cDot + wrd.ctest;
+        let configurationName = wrd.ctesting;
+        let configurationValue = undefined;
+
+
+        // Act
+        let returnData = await main.setConfigurationSetting(configurationNamespace, configurationName, configurationValue);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function setConfigurationSetting_inValidConfigurationValueNaN
+     * @description Tests the main function setConfigurationSetting with a invalid data NaN.
+     * @author Vlad Sorokin
+     * @date 2024/06/05
+     */
+    test(tst_con.csetConfigurationSetting_inValidConfigurationValueNaN, async () => {
+        // Arrange
+        D[wrd.cconfiguration] = {};
+        let configurationNamespace = wrd.cunit + bas.cDot + wrd.ctest;
+        let configurationName = wrd.ctesting;
+        let configurationValue = NaN;
+
+
+        // Act
+        let returnData = await main.setConfigurationSetting(configurationNamespace, configurationName, configurationValue);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function setConfigurationSetting_inValidAllUndefined
+     * @description Tests the main function setConfigurationSetting with a invalid data undefined.
+     * @author Vlad Sorokin
+     * @date 2024/06/05
+     */
+    test(tst_con.csetConfigurationSetting_inValidAllUndefined, async () => {
+        // Arrange
+        D[wrd.cconfiguration] = {};
+        let configurationNamespace = undefined;
+        let configurationName = undefined;
+        let configurationValue = undefined;
+
+
+        // Act
+        let returnData = await main.setConfigurationSetting(configurationNamespace, configurationName, configurationValue);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function setConfigurationSetting_inValidAllNaN
+     * @description Tests the main function setConfigurationSetting with a invalid data NaN.
+     * @author Vlad Sorokin
+     * @date 2024/06/05
+     */
+    test(tst_con.csetConfigurationSetting_inValidAllNaN, async () => {
+        // Arrange
+        D[wrd.cconfiguration] = {};
+        let configurationNamespace = NaN;
+        let configurationName = NaN;
+        let configurationValue = NaN;
+
+
+        // Act
+        let returnData = await main.setConfigurationSetting(configurationNamespace, configurationName, configurationValue);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+})
+
+/**
+ * @function getConfigurationSetting
+ * @description Tests the positive and negative test cases of the getConfigurationSetting
+ * @author Vlad Sorokin
+ * @date 2024/06/05
+ */
+describe(tst_con.cgetConfigurationSetting, () => {
+    /**
+     * @function getConfigurationSetting_validData
+     * @description Tests the main function getConfigurationSetting with a valid input.
+     * @author Vlad Sorokin
+     * @date 2024/06/05
+     */
+    test(tst_con.cgetConfigurationSetting_validData, async () => {
+        // Arrange
+        D[wrd.cconfiguration] = {};
+        let configurationNamespace = wrd.cunit + bas.cDot + wrd.ctest;
+        let configurationName = wrd.ctesting;
+        let configurationValue = true;
+
+        await main.setConfigurationSetting(configurationNamespace, configurationName, configurationValue);
+
+        // Act
+        let returnData = await main.getConfigurationSetting(configurationNamespace, configurationName);
+
+        // Assert
+        expect(returnData).toBeTruthy();
+    });
+
+    /**
+     * @function getConfigurationSetting_inValidConfigurationNamespaceString
+     * @description Tests the main function getConfigurationSetting with a invalid data string.
+     * @author Vlad Sorokin
+     * @date 2024/06/05
+     */
+    test(tst_con.cgetConfigurationSetting_inValidConfigurationNamespaceString, async () => {
+        // Arrange
+        D[wrd.cconfiguration] = {};
+        let configurationNamespace = wrd.cunit + bas.cDot + wrd.ctest;
+        let configurationName = wrd.ctesting;
+        let configurationValue = true;
+
+        await main.setConfigurationSetting(configurationNamespace, configurationName, configurationValue);
+
+        configurationNamespace = tst_man.ctestString1;
+        configurationName = wrd.ctesting;
+
+        // Act
+        let returnData = await main.getConfigurationSetting(configurationNamespace, configurationName);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function getConfigurationSetting_inValidConfigurationNameString
+     * @description Tests the main function getConfigurationSetting with a invalid data string.
+     * @author Vlad Sorokin
+     * @date 2024/06/05
+     */
+    test(tst_con.cgetConfigurationSetting_inValidConfigurationNameString, async () => {
+        // Arrange
+        D[wrd.cconfiguration] = {};
+        let configurationNamespace = wrd.cunit + bas.cDot + wrd.ctest;
+        let configurationName = wrd.ctesting;
+        let configurationValue = true;
+
+        await main.setConfigurationSetting(configurationNamespace, configurationName, configurationValue);
+
+        configurationNamespace = wrd.cunit + bas.cDot + wrd.ctest;
+        configurationName = tst_man.ctestString1;
+
+        // Act
+        let returnData = await main.getConfigurationSetting(configurationNamespace, configurationName);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function getConfigurationSetting_inValidConfigurationNamespaceInteger
+     * @description Tests the main function getConfigurationSetting with a invalid data integer.
+     * @author Vlad Sorokin
+     * @date 2024/06/05
+     */
+    test(tst_con.cgetConfigurationSetting_inValidConfigurationNamespaceInteger, async () => {
+        // Arrange
+        D[wrd.cconfiguration] = {};
+        let configurationNamespace = wrd.cunit + bas.cDot + wrd.ctest;
+        let configurationName = wrd.ctesting;
+        let configurationValue = true;
+
+        await main.setConfigurationSetting(configurationNamespace, configurationName, configurationValue);
+
+        configurationNamespace = 123;
+        configurationName = wrd.ctesting;
+
+        // Act
+        let returnData = await main.getConfigurationSetting(configurationNamespace, configurationName);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function getConfigurationSetting_inValidConfigurationNamespaceBoolean
+     * @description Tests the main function getConfigurationSetting with a invalid data boolean.
+     * @author Vlad Sorokin
+     * @date 2024/06/05
+     */
+    test(tst_con.cgetConfigurationSetting_inValidConfigurationNamespaceBoolean, async () => {
+        // Arrange
+        D[wrd.cconfiguration] = {};
+        let configurationNamespace = wrd.cunit + bas.cDot + wrd.ctest;
+        let configurationName = wrd.ctesting;
+        let configurationValue = true;
+
+        await main.setConfigurationSetting(configurationNamespace, configurationName, configurationValue);
+
+        configurationNamespace = false;
+        configurationName = wrd.ctesting;
+
+        // Act
+        let returnData = await main.getConfigurationSetting(configurationNamespace, configurationName);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function getConfigurationSetting_inValidConfigurationNameInteger
+     * @description Tests the main function getConfigurationSetting with a invalid data integer.
+     * @author Vlad Sorokin
+     * @date 2024/06/05
+     */
+    test(tst_con.cgetConfigurationSetting_inValidConfigurationNameInteger, async () => {
+        // Arrange
+        D[wrd.cconfiguration] = {};
+        let configurationNamespace = wrd.cunit + bas.cDot + wrd.ctest;
+        let configurationName = wrd.ctesting;
+        let configurationValue = true;
+
+        await main.setConfigurationSetting(configurationNamespace, configurationName, configurationValue);
+
+        configurationNamespace = wrd.cunit + bas.cDot + wrd.ctest;
+        configurationName = 123;
+
+        // Act
+        let returnData = await main.getConfigurationSetting(configurationNamespace, configurationName);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function getConfigurationSetting_inValidConfigurationNameBoolean
+     * @description Tests the main function getConfigurationSetting with a invalid data boolean.
+     * @author Vlad Sorokin
+     * @date 2024/06/05
+     */
+    test(tst_con.cgetConfigurationSetting_inValidConfigurationNameBoolean, async () => {
+        // Arrange
+        D[wrd.cconfiguration] = {};
+        let configurationNamespace = wrd.cunit + bas.cDot + wrd.ctest;
+        let configurationName = wrd.ctesting;
+        let configurationValue = true;
+
+        await main.setConfigurationSetting(configurationNamespace, configurationName, configurationValue);
+
+        configurationNamespace = wrd.cunit + bas.cDot + wrd.ctest;
+        configurationName = false;
+
+        // Act
+        let returnData = await main.getConfigurationSetting(configurationNamespace, configurationName);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function getConfigurationSetting_inValidConfigurationNamespaceUndefined
+     * @description Tests the main function getConfigurationSetting with a invalid data undefined.
+     * @author Vlad Sorokin
+     * @date 2024/06/05
+     */
+    test(tst_con.cgetConfigurationSetting_inValidConfigurationNamespaceUndefined, async () => {
+        // Arrange
+        D[wrd.cconfiguration] = {};
+        let configurationNamespace = wrd.cunit + bas.cDot + wrd.ctest;
+        let configurationName = wrd.ctesting;
+        let configurationValue = true;
+
+        await main.setConfigurationSetting(configurationNamespace, configurationName, configurationValue);
+
+        configurationNamespace = undefined;
+        configurationName = wrd.ctesting;
+
+        // Act
+        let returnData = await main.getConfigurationSetting(configurationNamespace, configurationName);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function getConfigurationSetting_inValidConfigurationNamespaceNaN
+     * @description Tests the main function getConfigurationSetting with a invalid data NaN.
+     * @author Vlad Sorokin
+     * @date 2024/06/05
+     */
+    test(tst_con.cgetConfigurationSetting_inValidConfigurationNamespaceNaN, async () => {
+        // Arrange
+        D[wrd.cconfiguration] = {};
+        let configurationNamespace = wrd.cunit + bas.cDot + wrd.ctest;
+        let configurationName = wrd.ctesting;
+        let configurationValue = true;
+
+        await main.setConfigurationSetting(configurationNamespace, configurationName, configurationValue);
+
+        configurationNamespace = NaN;
+        configurationName = wrd.ctesting;
+
+        // Act
+        let returnData = await main.getConfigurationSetting(configurationNamespace, configurationName);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function getConfigurationSetting_inValidConfigurationNameUndefined
+     * @description Tests the main function getConfigurationSetting with a invalid data undefined.
+     * @author Vlad Sorokin
+     * @date 2024/06/05
+     */
+    test(tst_con.cgetConfigurationSetting_inValidConfigurationNameUndefined, async () => {
+        // Arrange
+        D[wrd.cconfiguration] = {};
+        let configurationNamespace = wrd.cunit + bas.cDot + wrd.ctest;
+        let configurationName = wrd.ctesting;
+        let configurationValue = true;
+
+        await main.setConfigurationSetting(configurationNamespace, configurationName, configurationValue);
+
+        configurationNamespace = wrd.cunit + bas.cDot + wrd.ctest;
+        configurationName = undefined;
+
+        // Act
+        let returnData = await main.getConfigurationSetting(configurationNamespace, configurationName);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function getConfigurationSetting_inValidConfigurationNameNaN
+     * @description Tests the main function getConfigurationSetting with a invalid data NaN.
+     * @author Vlad Sorokin
+     * @date 2024/06/05
+     */
+    test(tst_con.cgetConfigurationSetting_inValidConfigurationNameNaN, async () => {
+        // Arrange
+        D[wrd.cconfiguration] = {};
+        let configurationNamespace = wrd.cunit + bas.cDot + wrd.ctest;
+        let configurationName = wrd.ctesting;
+        let configurationValue = true;
+
+        await main.setConfigurationSetting(configurationNamespace, configurationName, configurationValue);
+
+        configurationNamespace = wrd.cunit + bas.cDot + wrd.ctest;
+        configurationName = NaN;
+
+        // Act
+        let returnData = await main.getConfigurationSetting(configurationNamespace, configurationName);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+})
+

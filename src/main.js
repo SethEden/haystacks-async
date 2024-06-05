@@ -854,20 +854,23 @@ async function executeBusinessRules(inputs, businessRules) {
  * the command queue to be very full with a very complicated workflow.
  * This also acts as a wrapper for the warden.enqueueCommand function.
  * @param {string} command The command to add to the command queue for executing.
- * @return {void}
+ * @return {boolean} True or False to indicate if command was enqueued succsesfully.
  * @author Seth Hollingsead
  * @date 2022/02/18
  */
 async function enqueueCommand(command) {
   let functionName = enqueueCommand.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  let returnData = false;
   // command is:
   await loggers.consoleLog(namespacePrefix + functionName, msg.ccommandIs + command);
   if (await warden.getConfigurationSetting(wrd.csystem, cfg.clogUserEnteredCommands) === true) {
     await stack.push(sys.cUserEnteredCommandLog, command);
   }
-  await warden.enqueueCommand(command);
+  returnData = await warden.enqueueCommand(command);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
 }
 
 /**
@@ -918,13 +921,14 @@ async function processCommandQueue() {
  * Ex: businessRules.rules.stringParsing.countCamelCaseWords
  * @param {string} configurationName The key of the configuration setting.
  * @param {string|integer|boolean|double|object} configurationValue The value of the configuration setting.
- * @return {void}
+ * @return {boolean} True or False to indicate if the configuration was stored succesfully.
  * @author Seth Hollingsead
  * @date 222/02/18
  */
 async function setConfigurationSetting(configurationNamespace, configurationName, configurationValue) {
   let functionName = setConfigurationSetting.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  let returnData = false;
   // configurationNamespace is:
   await loggers.consoleLog(namespacePrefix + functionName, msg.cconfigurationNamespaceIs + configurationNamespace);
   // configurationName is:
@@ -932,8 +936,10 @@ async function setConfigurationSetting(configurationNamespace, configurationName
   // configurationValue is:
   await loggers.consoleLog(namespacePrefix + functionName, msg.cconfigurationValueIs + configurationValue);
   // D[sys.cConfiguration][configurationName] = configurationValue;
-  await warden.setConfigurationSetting(configurationNamespace, configurationName, configurationValue);
+  returnData = await warden.setConfigurationSetting(configurationNamespace, configurationName, configurationValue);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
 }
 
 /**

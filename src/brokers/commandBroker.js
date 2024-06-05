@@ -659,7 +659,7 @@ async function getCommandArgs(commandString, commandDelimiter) {
 /**
  * @function executeCommand
  * @description Takes a command string with all its associated arguments, data & meta-data.
- * This function will parse all of that out of the command lien variable that is passed in.
+ * This function will parse all of that out of the command line variable that is passed in.
  * And finally pass all of that data on the execution of the actual command.
  * @param {string} commandString The command to execute along with all the associated command arguments, data & meta-data.
  * @return {array<boolean,string|integer|boolean|object|array>} An array with a boolean True or False value to
@@ -702,6 +702,7 @@ async function executeCommand(commandString) {
   try {
     if (commandToExecute !== false && commandArgs !== false) {
       // console.log('commandToExecute is: ' + commandToExecute);
+      // console.log('commandArgs are: ' + commandArgs);
       returnData = await D[wrd.cCommands][commandToExecute](commandArgs, '');
     } else if (commandToExecute !== false && commandArgs === false) {
       // This could be a command without any arguments.
@@ -716,6 +717,7 @@ async function executeCommand(commandString) {
     }
   } catch (err) {
     console.log(msg.cERROR_Colon + bas.cSpace + err);
+    // WARNING: Command does not exist, please enter a valid command and try again!
     console.log(msg.cexecuteCommandMessage1);
     returnData = [true, false];
   }

@@ -555,12 +555,12 @@ output: ?
 --------------------------------------------------------------------------------
 testName: storeData_validData
 input dataName: string (The name of the data, unique name used to store the data in the data structure)
-input data: object|string|boolean|number|array (The data that should be stored)
+input data: object|string|boolean|integer|array (The data that should be stored)
 output: boolean (True or False to indicate if the data was stored successfully or not)
 
 testName: storeData_inValidDataNameString
 input dataName: string (dfxg24346dfg)
-input data: object|string|boolean|number|array (The data that should be stored)
+input data: object|string|boolean|integer|array (The data that should be stored)
 output: ?
 
 testName: storeData_inValidDataString
@@ -570,12 +570,12 @@ output: ?
 
 testName: storeData_inValidDataNameInteger
 input dataName: integer (123)
-input data: object|string|boolean|number|array (The data that should be stored)
+input data: object|string|boolean|integer|array (The data that should be stored)
 output: ?
 
 testName: storeData_inValidDataNameBoolean
 input dataName: boolean (false)
-input data: object|string|boolean|number|array (The data that should be stored)
+input data: object|string|boolean|integer|array (The data that should be stored)
 output: ?
 
 testName: storeData_inValidDataInteger
@@ -590,12 +590,12 @@ output: ?
 
 testName: storeData_inValidDataNameUndefined
 input dataName: undefined
-input data: object|string|boolean|number|array (The data that should be stored)
+input data: object|string|boolean|integer|array (The data that should be stored)
 output: ?
 
 testName: storeData_inValidDataNameNaN
 input dataName: NaN
-input data: object|string|boolean|number|array (The data that should be stored)
+input data: object|string|boolean|integer|array (The data that should be stored)
 output: ?
 
 testName: storeData_inValidDataUndefined
@@ -610,7 +610,7 @@ output: ?
 --------------------------------------------------------------------------------
 testName: getData_validData
 input dataName: string (The unique name the data should be stored under)
-output: object|string|boolean|number|array (The data element or object that was stored if any was found)
+output: object|string|boolean|integer|array (The data element or object that was stored if any was found)
 
 testName: getData_inValidDataNameString
 input dataName: string (dfxg24346dfg)
@@ -713,11 +713,9 @@ output: ?
 --------------------------------------------------------------------------------
 testName: enqueueCommand_validData
 input command: string (The command to add to the command queue for executing)
-output: void
+output: boolean (True or False to indicate if command was enqueued succsesfully.)
 
-testName: enqueueCommand_inValidCommandString
-input command: string (dfxg24346dfg)
-output: ?
+NOTE: inValidString test was removed, as it is not possible to test it in this function.
 
 testName: enqueueCommand_inValidCommandInteger
 input command: integer (123)
@@ -735,8 +733,11 @@ testName: enqueueCommand_inValidCommandNaN
 input command: NaN
 output: ?
 --------------------------------------------------------------------------------
-testName: isCommandQueueEmpty_validData
-output: boolean (True or False to indicate if command execution should continue or not)
+testName: isCommandQueueEmpty_validTruthyData
+output: true
+
+testName: isCommandQueueEmpty_validFalsyData
+output: false
 --------------------------------------------------------------------------------
 testName: processCommandQueue_validData
 output: array<boolean,string|integer|boolean|object|array> (An array with a boolean True or False value to indicate if the application should exit or not exit, followed by the command output)
@@ -765,7 +766,7 @@ input configurationName: string (The key of the configuration setting)
 input configurationValue: string (464gsdsfae8f46)
 output: false?
 
-testName:  setConfigurationSetting_inValidConfigurationNamespaceNumber
+testName:  setConfigurationSetting_inValidConfigurationNamespaceInteger
 input configurationNamespace: integer (546)
 input configurationName: string (The key of the configuration setting)
 input configurationValue: string|integer|boolean|double (The value of the configuration setting)
@@ -789,7 +790,7 @@ input configurationName: string (The key of the configuration setting)
 input configurationValue: string|integer|boolean|double (The value of the configuration setting)
 output: false?
 
-testName:  setConfigurationSetting_inValidConfigurationNameNumber
+testName:  setConfigurationSetting_inValidConfigurationNameInteger
 input configurationNamespace: string (The path in the configuration JSON object where the configuration setting should be set)
 input configurationName: integer (546)
 input configurationValue: string|integer|boolean|double (The value of the configuration setting)
@@ -813,7 +814,7 @@ input configurationName: NaN
 input configurationValue: string|integer|boolean|double (The value of the configuration setting)
 output: false?
 
-testName:  setConfigurationSetting_inValidConfigurationValueNumber
+testName:  setConfigurationSetting_inValidConfigurationValueInteger
 input configurationNamespace: string (The path in the configuration JSON object where the configuration setting should be set)
 input configurationName: string (The key of the configuration setting)
 input configurationValue: integer (546)
@@ -901,61 +902,6 @@ output: ?
 
 testName: getConfigurationSetting_inValidConfigurationNameNaN
 input configurationNamespace: string (The path in the configuration JSON object where the configuration setting should be found)
-input configurationName: NaN
-output: ?
---------------------------------------------------------------------------------
-testName: getConfigurationSetting_validData
-input configurationNamespace: string (?)
-input configurationName: string (?)
-output: string|integer|boolean|double|object (?)
-
-testName: getConfigurationSetting_inValidConfigurationNamespaceString
-input configurationNamespace: string (dfxg24346dfg)
-input configurationName: string (?)
-output: ?
-
-testName: getConfigurationSetting_inValidConfigurationNameString
-input configurationNamespace: string (?)
-input configurationName: string (dfxg24346dfg)
-output: ?
-
-testName: getConfigurationSetting_inValidConfigurationNamespaceInteger
-input configurationNamespace: integer (123)
-input configurationName: string (?)
-output: ?
-
-testName: getConfigurationSetting_inValidConfigurationNamespaceBoolean
-input configurationNamespace: boolean (false)
-input configurationName: string (?)
-output: ?
-
-testName: getConfigurationSetting_inValidConfigurationNameInteger
-input configurationNamespace: string (?)
-input configurationName: integer (123)
-output: ?
-
-testName: getConfigurationSetting_inValidConfigurationNameBoolean
-input configurationNamespace: string (?)
-input configurationName: boolean (false)
-output: ?
-
-testName: getConfigurationSetting_inValidConfigurationNamespaceUndefined
-input configurationNamespace: undefined
-input configurationName: string (?)
-output: ?
-
-testName: getConfigurationSetting_inValidConfigurationNamespaceNaN
-input configurationNamespace: NaN
-input configurationName: string (?)
-output: ?
-
-testName: getConfigurationSetting_inValidConfigurationNameUndefined
-input configurationNamespace: string (?)
-input configurationName: undefined
-output: ?
-
-testName: getConfigurationSetting_inValidConfigurationNameNaN
-input configurationNamespace: string (?)
 input configurationName: NaN
 output: ?
 --------------------------------------------------------------------------------
@@ -1091,7 +1037,7 @@ input tableData: array<object> (An array of objects that should be printed to th
 input columnNames: string (464gsdsfae8f46)
 output: false?
 
-testName: consoleTableLog_inValidConfigurationNamespaceNumber
+testName: consoleTableLog_inValidConfigurationNamespaceInteger
 input classPath: integer (546)
 input tableData: array<object> (An array of objects that should be printed to the console as if it was data)
 input columnNames: array<string> (An array of column names that should be used when outputting the table)
@@ -1115,7 +1061,7 @@ input tableData: array<object> (An array of objects that should be printed to th
 input columnNames: array<string> (An array of column names that should be used when outputting the table)
 output: false?
 
-testName: consoleTableLog_inValidConfigurationNameNumber
+testName: consoleTableLog_inValidConfigurationNameInteger
 input classPath: string (The class path for the caller of this function file.function or class.method)
 input tableData: integer (546)
 input columnNames: array<string> (An array of column names that should be used when outputting the table)
@@ -1139,7 +1085,7 @@ input tableData: NaN
 input columnNames: array<string> (An array of column names that should be used when outputting the table)
 output: false?
 
-testName: consoleTableLog_inValidConfigurationValueNumber
+testName: consoleTableLog_inValidConfigurationValueInteger
 input classPath: string (The class path for the caller of this function file.function or class.method)
 input tableData: array<object> (An array of objects that should be printed to the console as if it was data)
 input columnNames: integer (546)

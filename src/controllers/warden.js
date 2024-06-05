@@ -896,7 +896,7 @@ async function loadPluginResourceData(contextName, pluginResourcePath) {
     }
   } else {
     // ERROR: pluginResourcePath is an invalid value, pluginResourcePath is: 
-    console.log("ERROR: pluginResourcePath is an invalid value, pluginResourcePath is: ", pluginResourcePath);
+    console.log(msg.cErrorLoadPluginResourceDataMessage01, pluginResourcePath);
     returnData = false;
   }
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
@@ -1025,17 +1025,20 @@ async function executeBusinessRules(inputs, businessRules) {
  * the command queue to be very full with a very complicated workflow.
  * This also acts as a wrapper for the chiefCommander.enqueueCommand function.
  * @param {string} command The command to add to the command queue for executing.
- * @return {void}
+ * @return {boolean} True or False to indicate if command was enqueued succsesfully.
  * @author Seth Hollingsead
  * @date 2022/02/16
  */
 async function enqueueCommand(command) {
   let functionName = enqueueCommand.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  let returnData = false;
   // command is:
   await loggers.consoleLog(namespacePrefix + functionName, msg.ccommandIs + command);
-  await chiefCommander.enqueueCommand(command);
+  returnData = await chiefCommander.enqueueCommand(command);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
 }
 
 /**
@@ -1087,13 +1090,14 @@ async function processCommandQueue() {
  * Ex: businessRules.rules.stringParsing.countCamelCaseWords
  * @param {string} configurationName The key of the configuration setting.
  * @param {string|integer|boolean|double} configurationValue The value of the configuration setting.
- * @return {void}
+ * @return {boolean} True or False to indicate if the configuration was stored succesfully.
  * @author Seth Hollingsead
  * @date 2022/02/16
  */
 async function setConfigurationSetting(configurationNamespace, configurationName, configurationValue) {
   let functionName = setConfigurationSetting.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  let returnData = false;
   // configurationNamespace is:
   await loggers.consoleLog(namespacePrefix + functionName, msg.cconfigurationNamespaceIs + configurationNamespace);
   // configurationName is:
@@ -1101,8 +1105,10 @@ async function setConfigurationSetting(configurationNamespace, configurationName
   // configurationValue is:
   await loggers.consoleLog(namespacePrefix + functionName, msg.cconfigurationValueIs + configurationValue);
   // D[sys.cConfiguration][configurationName] = configurationValue;
-  await configurator.setConfigurationSetting(configurationNamespace, configurationName, configurationValue);
+  returnData = await configurator.setConfigurationSetting(configurationNamespace, configurationName, configurationValue);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
 }
 
 /**

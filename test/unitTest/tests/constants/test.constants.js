@@ -374,6 +374,58 @@ export const cexecuteBusinessRules_inValidInputsNaN  = cexecuteBusinessRules + b
 export const cexecuteBusinessRules_inValidBusinessRulesUndefined = cexecuteBusinessRules + bas.cUnderscore + wrd.cin + wrd.cValid + sys.cBusinessRules + 'Undefined'; // executeBusinessRules_inValidBusinessRulesUndefined
 export const cexecuteBusinessRules_inValidBusinessRulesNaN = cexecuteBusinessRules + bas.cUnderscore + wrd.cin + wrd.cValid + sys.cBusinessRules + 'NaN'; // executeBusinessRules_inValidBusinessRulesNaN
 
+// enqueueCommand
+export const cenqueueCommand = wrd.cenqueue + wrd.cCommand; // enqueueCommand
+export const cenqueueCommand_validData = cenqueueCommand + bas.cUnderscore + wrd.cvalid + wrd.cData; // enqueueCommand_validData
+export const cenqueueCommand_inValidCommandInteger = cenqueueCommand + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cCommand + wrd.cInteger; // enqueueCommand_inValidCommandInteger
+export const cenqueueCommand_inValidCommandBoolean = cenqueueCommand + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cCommand + wrd.cBoolean; // enqueueCommand_inValidCommandBoolean
+export const cenqueueCommand_inValidCommandUndefined = cenqueueCommand + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cCommand + "Undefined"; // enqueueCommand_inValidCommandUndefined
+export const cenqueueCommand_inValidCommandNaN = cenqueueCommand + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cCommand + "NaN"; // enqueueCommand_inValidCommandNaN
+
+// isCommandQueueEmpty
+export const cisCommandQueueEmpty = wrd.cis + wrd.cCommand + wrd.cQueue + wrd.cEmpty; // isCommandQueueEmpty
+export const cisCommandQueueEmpty_validTruthyData = cisCommandQueueEmpty + bas.cUnderscore + wrd.cvalid + gen.cTruthy + wrd.cData; // isCommandQueueEmpty_validData
+export const cisCommandQueueEmpty_validFalsyData = cisCommandQueueEmpty + bas.cUnderscore + wrd.cvalid + gen.cFalsy + wrd.cData; // isCommandQueueEmpty_validData
+
+// processCommandQueue
+export const cprocessCommandQueue = wrd.cprocess + wrd.cCommand + wrd.cQueue; // processCommandQueue
+export const cprocessCommandQueue_validData = cprocessCommandQueue + bas.cUnderscore + wrd.cvalid + wrd.cData; // processCommandQueue_validData
+
+// setConfigurationSetting
+export const csetConfigurationSetting = wrd.cset + wrd.cConfiguration + wrd.cSetting; // setConfigurationSetting
+export const csetConfigurationSetting_validData = csetConfigurationSetting + bas.cUnderscore + wrd.cvalid + wrd.cData; // setConfigurationSetting_validData
+export const csetConfigurationSetting_inValidConfigurationNamespaceString = csetConfigurationSetting + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cConfiguration + wrd.cName + wrd.cspace + wrd.cString; // setConfigurationSetting_inValid ConfigurationNamespaceString
+export const csetConfigurationSetting_inValidConfigurationNameString = csetConfigurationSetting + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cConfiguration + wrd.cName + wrd.cString; // setConfigurationSetting_inValidConfigurationNameString
+export const csetConfigurationSetting_inValidConfigurationValueString = csetConfigurationSetting + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cConfiguration + wrd.cValue + wrd.cString; // setConfigurationSetting_inValidConfigurationValueString
+export const csetConfigurationSetting_inValidConfigurationNamespaceInteger = csetConfigurationSetting + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cConfiguration + wrd.cName + wrd.cspace + wrd.cInteger; // setConfigurationSetting_inValid ConfigurationNamespaceInteger
+export const csetConfigurationSetting_inValidConfigurationNamespaceBoolean = csetConfigurationSetting + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cConfiguration + wrd.cName + wrd.cspace + wrd.cBoolean; // setConfigurationSetting_inValid ConfigurationNamespaceBoolean
+export const csetConfigurationSetting_inValidConfigurationNamespaceUndefined = csetConfigurationSetting + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cConfiguration + wrd.cName + wrd.cspace + 'Undefined'; // setConfigurationSetting_inValid ConfigurationNamespaceUndefined
+export const csetConfigurationSetting_inValidConfigurationNamespaceNaN = csetConfigurationSetting + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cConfiguration + wrd.cName + wrd.cspace + 'NaN'; // setConfigurationSetting_inValid ConfigurationNamespaceNaN
+export const csetConfigurationSetting_inValidConfigurationNameInteger = csetConfigurationSetting + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cConfiguration + wrd.cName + wrd.cInteger; // setConfigurationSetting_inValidConfigurationNameInteger
+export const csetConfigurationSetting_inValidConfigurationNameBoolean = csetConfigurationSetting + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cConfiguration + wrd.cName + wrd.cBoolean; // setConfigurationSetting_inValidConfigurationNameBoolean
+export const csetConfigurationSetting_inValidConfigurationNameUndefined = csetConfigurationSetting + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cConfiguration + wrd.cName + 'Undefined'; // setConfigurationSetting_inValidConfigurationNameUndefined
+export const csetConfigurationSetting_inValidConfigurationNameNaN = csetConfigurationSetting + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cConfiguration + wrd.cName + 'NaN'; // setConfigurationSetting_inValidConfigurationNameNaN
+export const csetConfigurationSetting_inValidConfigurationValueInteger = csetConfigurationSetting + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cConfiguration + wrd.cValue + wrd.cInteger; // setConfigurationSetting_inValidConfigurationValueInteger
+export const csetConfigurationSetting_inValidConfigurationValueBoolean = csetConfigurationSetting + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cConfiguration + wrd.cValue + wrd.cBoolean; // setConfigurationSetting_inValidConfigurationValueBoolean
+export const csetConfigurationSetting_inValidConfigurationValueUndefined = csetConfigurationSetting + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cConfiguration + wrd.cValue + 'Undefined'; // setConfigurationSetting_inValidConfigurationValueUndefined
+export const csetConfigurationSetting_inValidConfigurationValueNaN = csetConfigurationSetting + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cConfiguration + wrd.cValue + 'NaN'; // setConfigurationSetting_inValidConfigurationValueNaN
+export const csetConfigurationSetting_inValidAllUndefined = csetConfigurationSetting + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cAll + 'Undefined'; // setConfigurationSetting_inValidAllUndefined
+export const csetConfigurationSetting_inValidAllNaN = csetConfigurationSetting + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cAll + 'NaN'; // setConfigurationSetting_inValidAllNaN
+
+// getConfigurationSetting
+export const cgetConfigurationSetting = wrd.cget + wrd.cConfiguration + wrd.cSetting; // getConfigurationSetting
+export const cgetConfigurationSetting_validData = cgetConfigurationSetting + bas.cUnderscore + wrd.cvalid + wrd.cData; // getConfigurationSetting_validData
+export const cgetConfigurationSetting_inValidConfigurationNamespaceString = cgetConfigurationSetting + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cConfiguration + wrd.cName + wrd.cspace + wrd.cString; // getConfigurationSetting_inValid ConfigurationNamespaceString
+export const cgetConfigurationSetting_inValidConfigurationNameString = cgetConfigurationSetting + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cConfiguration + wrd.cName + wrd.cString; // getConfigurationSetting_inValidConfigurationNameString
+export const cgetConfigurationSetting_inValidConfigurationNamespaceInteger = cgetConfigurationSetting + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cConfiguration + wrd.cName + wrd.cspace + wrd.cInteger; // getConfigurationSetting_inValid ConfigurationNamespaceInteger
+export const cgetConfigurationSetting_inValidConfigurationNamespaceBoolean = cgetConfigurationSetting + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cConfiguration + wrd.cName + wrd.cspace + wrd.cBoolean; // getConfigurationSetting_inValid ConfigurationNamespaceBoolean
+export const cgetConfigurationSetting_inValidConfigurationNameInteger = cgetConfigurationSetting + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cConfiguration + wrd.cName + wrd.cInteger; // getConfigurationSetting_inValidConfigurationNameInteger
+export const cgetConfigurationSetting_inValidConfigurationNameBoolean = cgetConfigurationSetting + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cConfiguration + wrd.cName + wrd.cBoolean; // getConfigurationSetting_inValidConfigurationNameBoolean
+export const cgetConfigurationSetting_inValidConfigurationNamespaceUndefined = cgetConfigurationSetting + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cConfiguration + wrd.cName + wrd.cspace + 'Undefined'; // getConfigurationSetting_inValid ConfigurationNamespaceUndefined
+export const cgetConfigurationSetting_inValidConfigurationNamespaceNaN = cgetConfigurationSetting + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cConfiguration + wrd.cName + wrd.cspace + 'NaN'; // getConfigurationSetting_inValid ConfigurationNamespaceNaN
+export const cgetConfigurationSetting_inValidConfigurationNameUndefined = cgetConfigurationSetting + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cConfiguration + wrd.cName + 'Undefined'; // getConfigurationSetting_inValidConfigurationNameUndefined
+export const cgetConfigurationSetting_inValidConfigurationNameNaN = cgetConfigurationSetting + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cConfiguration + wrd.cName + 'NaN'; // getConfigurationSetting_inValidConfigurationNameNaN
+
 
 // Test names
 

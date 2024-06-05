@@ -35,7 +35,7 @@ const namespacePrefix = wrd.cframework + bas.cDot + wrd.cexecutrix + bas.cDot + 
  * Ex: businessRules.rules.stringParsing.countCamelCaseWords
  * @param {string} configurationName The key of the configuration setting.
  * @param {string|integer|boolean|double} configurationValue The value of the configuration setting.
- * @return {void}
+ * @return {boolean} True or False to indicate if the configuration was stored succesfully.
  * @author Seth Hollingsead
  * @date 2021/10/13
  * @NOTE Cannot use the loggers here, because of a circular dependency.
@@ -43,13 +43,32 @@ const namespacePrefix = wrd.cframework + bas.cDot + wrd.cexecutrix + bas.cDot + 
 async function setConfigurationSetting(configurationNamespace, configurationName, configurationValue) {
   // let functionName = setConfigurationSetting.name;
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
+  let returnData = false;
   // console.log(`configurationNamespace is: ${configurationNamespace}`);
   // console.log(`configurationName is: ${configurationName}`);
   // console.log(`configurationValue is: ${configurationValue}`);
-  let namespaceConfigObject = await getConfigurationNamespaceObject(configurationNamespace.split(bas.cDot));
-  if (namespaceConfigObject) {
-    namespaceConfigObject[`${configurationNamespace}.${configurationName}`] = configurationValue;
+  if (configurationNamespace && typeof configurationNamespace === wrd.cstring) {
+    if (configurationName && typeof configurationName === wrd.cstring) {
+      if (configurationValue != null && !Number.isNaN(configurationValue)) {
+        let namespaceConfigObject = await getConfigurationNamespaceObject(configurationNamespace.split(bas.cDot));
+        if (namespaceConfigObject) {
+          namespaceConfigObject[`${configurationNamespace}.${configurationName}`] = configurationValue;
+          returnData = true;
+        } 
+      } else {
+          // ERROR: Incorrect type of input for configuration value: 
+          console.log(msg.cErrorConfigurationSettingMessage01, configurationValue);
+      }
+    } else {
+      // ERROR: Incorrect type of input for configuration name: 
+      console.log(msg.cErrorConfigurationSettingMessage02 + configurationName);
+    }
+  } else {
+    // ERROR: Incorrect type of input for configuration path: 
+    console.log(msg.cErrorConfigurationSettingMessage03, configurationNamespace);
   }
+  // console.log(`returnData is: ` + JSON.stringify(returnData));
+  return returnData;
   // console.log(`END ${namespacePrefix}${functionName} function`);
 }
 
@@ -118,18 +137,33 @@ async function getConfigurationSetting(configurationNamespace, configurationName
   // console.log(`configurationName is: ${configurationName}`);
   let returnConfigurationValue;
   let namespaceConfigObject = undefined;
-  namespaceConfigObject = await getConfigurationNamespaceObject(configurationNamespace.split(bas.cDot));
-  if (namespaceConfigObject) {
-    if (configurationName) {
-      if (configurationName.includes(bas.cAt) && configurationName.indexOf(bas.cAt) === 0) {
-        returnConfigurationValue = await getParentConfigurationNamespaceObject(configurationNamespace, configurationName);
-      } else {
-        returnConfigurationValue = namespaceConfigObject[configurationNamespace + bas.cDot + configurationName];
-      }
+  if (configurationNamespace && typeof configurationNamespace === wrd.cstring) {
+    if (typeof configurationName === wrd.cstring || configurationName === undefined) {
+      namespaceConfigObject = await getConfigurationNamespaceObject(configurationNamespace.split(bas.cDot));
+      if (namespaceConfigObject) {
+        if (configurationName) {
+          if (configurationName.includes(bas.cAt) && configurationName.indexOf(bas.cAt) === 0) {
+            returnConfigurationValue = await getParentConfigurationNamespaceObject(configurationNamespace, configurationName);
+          } else {
+            returnConfigurationValue = namespaceConfigObject[configurationNamespace + bas.cDot + configurationName];
+          }
+        } else {
+          returnConfigurationValue = await getParentConfigurationNamespaceObject(configurationNamespace, '');
+        }
+      } // End-if (namespaceConfigObject)
     } else {
-      returnConfigurationValue = await getParentConfigurationNamespaceObject(configurationNamespace, '');
+      // ERROR: Incorrect type of input for configuration name: 
+      console.log(msg.cErrorConfigurationSettingMessage02, configurationName);
+      returnConfigurationValue = false;
     }
-  } // End-if (namespaceConfigObject)
+  } else {
+    // ERROR: Incorrect type of input for configuration path: 
+    console.log(msg.cErrorConfigurationSettingMessage03, configurationNamespace);
+    returnConfigurationValue = false;
+  }
+  if (returnConfigurationValue === undefined) {
+    returnConfigurationValue = false;
+  }
   // console.log(`returnConfigurationValue is: ${returnConfigurationValue}`);
   // console.log(`END ${namespacePrefix}${functionName} function`);
   return returnConfigurationValue;
@@ -272,7 +306,7 @@ async function getParentConfigurationNamespaceObject(configurationNamespace, opt
  * @NOTE NOT A PUBLIC FUNCTION!!
  */
 async function getConfigurationNamespaceObject(configurationNamespace) {
-  // let functionName = getConfigurationNamespaceObject.name;
+  let functionName = getConfigurationNamespaceObject.name;
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   // console.log(`configurationNamespace is: ${configurationNamespace}`);
   let returnValue = true; // DO NOT CHANGE! It will break the boot-strap protection mechanisms.

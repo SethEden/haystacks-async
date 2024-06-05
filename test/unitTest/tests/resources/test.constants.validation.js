@@ -373,6 +373,58 @@ export const testConstantsValidation = [
     {Name: 'cexecuteBusinessRules_inValidBusinessRulesUndefined', Actual: tst_con.cexecuteBusinessRules_inValidBusinessRulesUndefined, Expected: 'executeBusinessRules_inValidBusinessRulesUndefined'},
     {Name: 'cexecuteBusinessRules_inValidBusinessRulesNaN', Actual: tst_con.cexecuteBusinessRules_inValidBusinessRulesNaN, Expected: 'executeBusinessRules_inValidBusinessRulesNaN'},
 
+    // enqueueCommand
+    {Name: 'cenqueueCommand', Actual: tst_con.cenqueueCommand, Expected: 'enqueueCommand'},
+    {Name: 'cenqueueCommand_validData', Actual: tst_con.cenqueueCommand_validData, Expected: 'enqueueCommand_validData'},
+    {Name: 'cenqueueCommand_inValidCommandString', Actual: tst_con.cenqueueCommand_inValidCommandString, Expected: 'enqueueCommand_inValidCommandString'},
+    {Name: 'cenqueueCommand_inValidCommandInteger', Actual: tst_con.cenqueueCommand_inValidCommandInteger, Expected: 'enqueueCommand_inValidCommandInteger'},
+    {Name: 'cenqueueCommand_inValidCommandBoolean', Actual: tst_con.cenqueueCommand_inValidCommandBoolean, Expected: 'enqueueCommand_inValidCommandBoolean'},
+    {Name: 'cenqueueCommand_inValidCommandUndefined', Actual: tst_con.cenqueueCommand_inValidCommandUndefined, Expected: 'enqueueCommand_inValidCommandUndefined'},
+    {Name: 'cenqueueCommand_inValidCommandNaN', Actual: tst_con.cenqueueCommand_inValidCommandNaN, Expected: 'enqueueCommand_inValidCommandNaN'},
+
+    // isCommandQueueEmpty
+    {Name: 'cisCommandQueueEmpty', Actual: tst_con.cisCommandQueueEmpty, Expected: 'isCommandQueueEmpty'},
+    {Name: 'cisCommandQueueEmpty_validTruthyData', Actual: tst_con.cisCommandQueueEmpty_validTruthyData, Expected: 'isCommandQueueEmpty_validTruthyData'},
+    {Name: 'cisCommandQueueEmpty_validFalsyData', Actual: tst_con.cisCommandQueueEmpty_validFalsyData, Expected: 'isCommandQueueEmpty_validFalsyData'},
+    {Name: 'cprocessCommandQueue', Actual: tst_con.cprocessCommandQueue, Expected: 'processCommandQueue'},
+    {Name: 'cprocessCommandQueue_validData', Actual: tst_con.cprocessCommandQueue_validData, Expected: 'processCommandQueue_validData'},
+
+    // setConfigurationSetting
+    {Name: 'csetConfigurationSetting', Actual: tst_con.csetConfigurationSetting, Expected: 'setConfigurationSetting'},
+    {Name: 'csetConfigurationSetting_validData', Actual: tst_con.csetConfigurationSetting_validData, Expected: 'setConfigurationSetting_validData'},
+    {Name: 'csetConfigurationSetting_inValidConfigurationNamespaceString', Actual: tst_con.csetConfigurationSetting_inValidConfigurationNamespaceString, Expected: 'setConfigurationSetting_inValidConfigurationNamespaceString'},
+    {Name: 'csetConfigurationSetting_inValidConfigurationNameString', Actual: tst_con.csetConfigurationSetting_inValidConfigurationNameString, Expected: 'setConfigurationSetting_inValidConfigurationNameString'},
+    {Name: 'csetConfigurationSetting_inValidConfigurationValueString', Actual: tst_con.csetConfigurationSetting_inValidConfigurationValueString, Expected: 'setConfigurationSetting_inValidConfigurationValueString'},
+    {Name: 'csetConfigurationSetting_inValidConfigurationNamespaceInteger', Actual: tst_con.csetConfigurationSetting_inValidConfigurationNamespaceInteger, Expected: 'setConfigurationSetting_inValidConfigurationNamespaceInteger'},
+    {Name: 'csetConfigurationSetting_inValidConfigurationNamespaceBoolean', Actual: tst_con.csetConfigurationSetting_inValidConfigurationNamespaceBoolean, Expected: 'setConfigurationSetting_inValidConfigurationNamespaceBoolean'},
+    {Name: 'csetConfigurationSetting_inValidConfigurationNamespaceUndefined', Actual: tst_con.csetConfigurationSetting_inValidConfigurationNamespaceUndefined, Expected: 'setConfigurationSetting_inValidConfigurationNamespaceUndefined'},
+    {Name: 'csetConfigurationSetting_inValidConfigurationNamespaceNaN', Actual: tst_con.csetConfigurationSetting_inValidConfigurationNamespaceNaN, Expected: 'setConfigurationSetting_inValidConfigurationNamespaceNaN'},
+    {Name: 'csetConfigurationSetting_inValidConfigurationNameInteger', Actual: tst_con.csetConfigurationSetting_inValidConfigurationNameInteger, Expected: 'setConfigurationSetting_inValidConfigurationNameInteger'},
+    {Name: 'csetConfigurationSetting_inValidConfigurationNameBoolean', Actual: tst_con.csetConfigurationSetting_inValidConfigurationNameBoolean, Expected: 'setConfigurationSetting_inValidConfigurationNameBoolean'},
+    {Name: 'csetConfigurationSetting_inValidConfigurationNameUndefined', Actual: tst_con.csetConfigurationSetting_inValidConfigurationNameUndefined, Expected: 'setConfigurationSetting_inValidConfigurationNameUndefined'},
+    {Name: 'csetConfigurationSetting_inValidConfigurationNameNaN', Actual: tst_con.csetConfigurationSetting_inValidConfigurationNameNaN, Expected: 'setConfigurationSetting_inValidConfigurationNameNaN'},
+    {Name: 'csetConfigurationSetting_inValidConfigurationValueInteger', Actual: tst_con.csetConfigurationSetting_inValidConfigurationValueInteger, Expected: 'setConfigurationSetting_inValidConfigurationValueInteger'},
+    {Name: 'csetConfigurationSetting_inValidConfigurationValueBoolean', Actual: tst_con.csetConfigurationSetting_inValidConfigurationValueBoolean, Expected: 'setConfigurationSetting_inValidConfigurationValueBoolean'},
+    {Name: 'csetConfigurationSetting_inValidConfigurationValueUndefined', Actual: tst_con.csetConfigurationSetting_inValidConfigurationValueUndefined, Expected: 'setConfigurationSetting_inValidConfigurationValueUndefined'},
+    {Name: 'csetConfigurationSetting_inValidConfigurationValueNaN', Actual: tst_con.csetConfigurationSetting_inValidConfigurationValueNaN, Expected: 'setConfigurationSetting_inValidConfigurationValueNaN'},
+    {Name: 'csetConfigurationSetting_inValidAllUndefined', Actual: tst_con.csetConfigurationSetting_inValidAllUndefined, Expected: 'setConfigurationSetting_inValidAllUndefined'},
+    {Name: 'csetConfigurationSetting_inValidAllNaN', Actual: tst_con.csetConfigurationSetting_inValidAllNaN, Expected: 'setConfigurationSetting_inValidAllNaN'},
+
+    // getConfigurationSetting
+    {Name: 'cgetConfigurationSetting', Actual: tst_con.cgetConfigurationSetting, Expected: 'getConfigurationSetting'},
+    {Name: 'cgetConfigurationSetting_validData', Actual: tst_con.cgetConfigurationSetting_validData, Expected: 'getConfigurationSetting_validData'},
+    {Name: 'cgetConfigurationSetting_inValidConfigurationNamespaceString', Actual: tst_con.cgetConfigurationSetting_inValidConfigurationNamespaceString, Expected: 'getConfigurationSetting_inValidConfigurationNamespaceString'},
+    {Name: 'cgetConfigurationSetting_inValidConfigurationNameString', Actual: tst_con.cgetConfigurationSetting_inValidConfigurationNameString, Expected: 'getConfigurationSetting_inValidConfigurationNameString'},
+    {Name: 'cgetConfigurationSetting_inValidConfigurationNamespaceInteger', Actual: tst_con.cgetConfigurationSetting_inValidConfigurationNamespaceInteger, Expected: 'getConfigurationSetting_inValidConfigurationNamespaceInteger'},
+    {Name: 'cgetConfigurationSetting_inValidConfigurationNamespaceBoolean', Actual: tst_con.cgetConfigurationSetting_inValidConfigurationNamespaceBoolean, Expected: 'getConfigurationSetting_inValidConfigurationNamespaceBoolean'},
+    {Name: 'cgetConfigurationSetting_inValidConfigurationNameInteger', Actual: tst_con.cgetConfigurationSetting_inValidConfigurationNameInteger, Expected: 'getConfigurationSetting_inValidConfigurationNameInteger'},
+    {Name: 'cgetConfigurationSetting_inValidConfigurationNameBoolean', Actual: tst_con.cgetConfigurationSetting_inValidConfigurationNameBoolean, Expected: 'getConfigurationSetting_inValidConfigurationNameBoolean'},
+    {Name: 'cgetConfigurationSetting_inValidConfigurationNamespaceUndefined', Actual: tst_con.cgetConfigurationSetting_inValidConfigurationNamespaceUndefined, Expected: 'getConfigurationSetting_inValidConfigurationNamespaceUndefined'},
+    {Name: 'cgetConfigurationSetting_inValidConfigurationNamespaceNaN', Actual: tst_con.cgetConfigurationSetting_inValidConfigurationNamespaceNaN, Expected: 'getConfigurationSetting_inValidConfigurationNamespaceNaN'},
+    {Name: 'cgetConfigurationSetting_inValidConfigurationNameUndefined', Actual: tst_con.cgetConfigurationSetting_inValidConfigurationNameUndefined, Expected: 'getConfigurationSetting_inValidConfigurationNameUndefined'},
+    {Name: 'cgetConfigurationSetting_inValidConfigurationNameNaN', Actual: tst_con.cgetConfigurationSetting_inValidConfigurationNameNaN, Expected: 'getConfigurationSetting_inValidConfigurationNameNaN'},
+
+
     // Test names
 
     /* commandBroker */

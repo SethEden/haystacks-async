@@ -182,7 +182,7 @@ async function initRulesLibrary() {
      // ***********************************************
      // auxiliaryStringParsing rules in order
      // ***********************************************
-     // NONE - getNowMoment was here, but it was a wrapper function, so it was removed.
+     // NONE - getNowMoment was here, but it was a wrapper function, so it was removed from here and added to timeComputation.
      // I am going to leave this here as a landing place for future auxiliaryStringParsing utility business rules.
 
      // ***********************************************
