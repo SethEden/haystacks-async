@@ -49,7 +49,10 @@ import { basicConstantsValidation } from '@haystacks/constants/src/constantsVali
 import url from 'url';
 import path from 'path';
 
-const { bas, cmd, biz, cfg, gen, msg, sys, wrd, num } = hayConst;
+const { bas, cmd, biz, cfg, fnc, gen, msg, sys, wrd, num } = hayConst;
+const baseFileName = path.basename(import.meta.url, path.extname(import.meta.url));
+// framework.main.test.
+const namespacePrefix = wrd.cframework + bas.cDot + baseFileName + bas.cDot;
 let rootPath = '';
 
 /**
@@ -5458,6 +5461,372 @@ describe(tst_con.cgetConfigurationSetting, () => {
 
         // Act
         let returnData = await main.getConfigurationSetting(configurationNamespace, configurationName);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+})
+
+/**
+ * @function consoleLog
+ * @description Tests the positive and negative test cases of the consoleLog
+ * @author Vlad Sorokin
+ * @date 2024/06/06
+ */
+describe(tst_con.cconsoleLog, () => {
+    /**
+     * @function consoleLog_validData
+     * @description Tests the main function consoleLog with a valid input.
+     * @author Vlad Sorokin
+     * @date 2024/06/06
+     */
+    test(tst_con.cconsoleLog_validData, async () => {
+        // Arrange
+        let theNamespacePrefix = wrd.cframework + bas.cDot + wrd.cmain + bas.cDot;
+        let theFunctionName = fnc.cconsoleLog + wrd.cTest;
+        let message = wrd.ctesting;
+        D[wrd.cconfiguration] = {};
+        D[wrd.cconfiguration][wrd.csystem] = {};
+        D[wrd.cconfiguration][wrd.csystem] = {
+            [wrd.csystem + bas.cDot + cfg.cconsoleLogEnabled]: true
+        };
+        D[wrd.cconfiguration][cfg.cdebugSetting] = {};
+        D[wrd.cconfiguration][cfg.cdebugSetting][wrd.cframework] = {};
+        D[wrd.cconfiguration][cfg.cdebugSetting][wrd.cframework] = {[cfg.cdebugSetting + bas.cDot + wrd.cframework + bas.cDot + wrd.cmain]: true};
+        D[wrd.cconfiguration][cfg.cdebugSetting][wrd.cframework][wrd.cmain] = {[cfg.cdebugSetting + bas.cDot + wrd.cframework + bas.cDot + wrd.cmain + bas.cDot + fnc.cconsoleLog + wrd.cTest]: true}
+
+        // Act
+        let returnData = await main.consoleLog(theNamespacePrefix, theFunctionName, message);
+
+        // Assert
+        expect(returnData).toBeTruthy();
+    });
+
+    /**
+     * @function consoleLog_inValidTheNamespacePrefixString
+     * @description Tests the main function consoleLog with a invalid data string.
+     * @author Vlad Sorokin
+     * @date 2024/06/06
+     */
+    test(tst_con.cconsoleLog_inValidTheNamespacePrefixString, async () => {
+        // Arrange
+        let theNamespacePrefix = tst_man.ctestString1;
+        let theFunctionName = fnc.cconsoleLog + wrd.cTest;
+        let message = wrd.ctesting;
+        D[wrd.cconfiguration] = {};
+        D[wrd.cconfiguration][wrd.csystem] = {};
+        D[wrd.cconfiguration][wrd.csystem] = {
+            [wrd.csystem + bas.cDot + cfg.cconsoleLogEnabled]: true
+        };
+        D[wrd.cconfiguration][cfg.cdebugSetting] = {};
+        D[wrd.cconfiguration][cfg.cdebugSetting][wrd.cframework] = {};
+        D[wrd.cconfiguration][cfg.cdebugSetting][wrd.cframework] = {[cfg.cdebugSetting + bas.cDot + wrd.cframework + bas.cDot + wrd.cmain]: true};
+        D[wrd.cconfiguration][cfg.cdebugSetting][wrd.cframework][wrd.cmain] = {[cfg.cdebugSetting + bas.cDot + wrd.cframework + bas.cDot + wrd.cmain + bas.cDot + fnc.cconsoleLog + wrd.cTest]: true}
+
+        // Act
+        let returnData = await main.consoleLog(theNamespacePrefix, theFunctionName, message);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function consoleLog_inValidTheFunctionNameString
+     * @description Tests the main function consoleLog with a invalid data string.
+     * @author Vlad Sorokin
+     * @date 2024/06/06
+     */
+    test(tst_con.cconsoleLog_inValidTheFunctionNameString, async () => {
+        // Arrange
+        let theNamespacePrefix = wrd.cframework + bas.cDot + wrd.cmain + bas.cDot;
+        let theFunctionName = tst_man.ctestString1;
+        let message = wrd.ctesting;
+        D[wrd.cconfiguration] = {};
+        D[wrd.cconfiguration][wrd.csystem] = {};
+        D[wrd.cconfiguration][wrd.csystem] = {
+            [wrd.csystem + bas.cDot + cfg.cconsoleLogEnabled]: true
+        };
+        D[wrd.cconfiguration][cfg.cdebugSetting] = {};
+        D[wrd.cconfiguration][cfg.cdebugSetting][wrd.cframework] = {};
+        D[wrd.cconfiguration][cfg.cdebugSetting][wrd.cframework][wrd.cmain] = {[cfg.cdebugSetting + bas.cDot + wrd.cframework + bas.cDot + wrd.cmain + bas.cDot + fnc.cconsoleLog + wrd.cTest]: true}
+
+        // Act
+        let returnData = await main.consoleLog(theNamespacePrefix, theFunctionName, message);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function consoleLog_inValidTheNamespacePrefixInteger
+     * @description Tests the main function consoleLog with a invalid data integer.
+     * @author Vlad Sorokin
+     * @date 2024/06/06
+     */
+    test(tst_con.cconsoleLog_inValidTheNamespacePrefixInteger, async () => {
+        // Arrange
+        let theNamespacePrefix = 123;
+        let theFunctionName = fnc.cconsoleLog + wrd.cTest;
+        let message = wrd.ctesting;
+        D[wrd.cconfiguration] = {};
+        D[wrd.cconfiguration][wrd.csystem] = {};
+        D[wrd.cconfiguration][wrd.csystem] = {
+            [wrd.csystem + bas.cDot + cfg.cconsoleLogEnabled]: true
+        };
+        D[wrd.cconfiguration][cfg.cdebugSetting] = {};
+        D[wrd.cconfiguration][cfg.cdebugSetting][wrd.cframework] = {};
+        D[wrd.cconfiguration][cfg.cdebugSetting][wrd.cframework] = {[cfg.cdebugSetting + bas.cDot + wrd.cframework + bas.cDot + wrd.cmain]: true};
+        D[wrd.cconfiguration][cfg.cdebugSetting][wrd.cframework][wrd.cmain] = {[cfg.cdebugSetting + bas.cDot + wrd.cframework + bas.cDot + wrd.cmain + bas.cDot + fnc.cconsoleLog + wrd.cTest]: true}
+
+        // Act
+        let returnData = await main.consoleLog(theNamespacePrefix, theFunctionName, message);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function consoleLog_inValidTheNamespacePrefixBoolean
+     * @description Tests the main function consoleLog with a invalid data boolean.
+     * @author Vlad Sorokin
+     * @date 2024/06/06
+     */
+    test(tst_con.cconsoleLog_inValidTheNamespacePrefixBoolean, async () => {
+        // Arrange
+        let theNamespacePrefix = false;
+        let theFunctionName = fnc.cconsoleLog + wrd.cTest;
+        let message = wrd.ctesting;
+        D[wrd.cconfiguration] = {};
+        D[wrd.cconfiguration][wrd.csystem] = {};
+        D[wrd.cconfiguration][wrd.csystem] = {
+            [wrd.csystem + bas.cDot + cfg.cconsoleLogEnabled]: true
+        };
+        D[wrd.cconfiguration][cfg.cdebugSetting] = {};
+        D[wrd.cconfiguration][cfg.cdebugSetting][wrd.cframework] = {};
+        D[wrd.cconfiguration][cfg.cdebugSetting][wrd.cframework] = {[cfg.cdebugSetting + bas.cDot + wrd.cframework + bas.cDot + wrd.cmain]: true};
+        D[wrd.cconfiguration][cfg.cdebugSetting][wrd.cframework][wrd.cmain] = {[cfg.cdebugSetting + bas.cDot + wrd.cframework + bas.cDot + wrd.cmain + bas.cDot + fnc.cconsoleLog + wrd.cTest]: true}
+
+        // Act
+        let returnData = await main.consoleLog(theNamespacePrefix, theFunctionName, message);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function consoleLog_inValidTheNamespacePrefixUndefined
+     * @description Tests the main function consoleLog with a invalid data undefined.
+     * @author Vlad Sorokin
+     * @date 2024/06/06
+     */
+    test(tst_con.cconsoleLog_inValidTheNamespacePrefixUndefined, async () => {
+        // Arrange
+        let theNamespacePrefix = undefined;
+        let theFunctionName = fnc.cconsoleLog + wrd.cTest;
+        let message = wrd.ctesting;
+        D[wrd.cconfiguration] = {};
+        D[wrd.cconfiguration][wrd.csystem] = {};
+        D[wrd.cconfiguration][wrd.csystem] = {
+            [wrd.csystem + bas.cDot + cfg.cconsoleLogEnabled]: true
+        };
+        D[wrd.cconfiguration][cfg.cdebugSetting] = {};
+        D[wrd.cconfiguration][cfg.cdebugSetting][wrd.cframework] = {};
+        D[wrd.cconfiguration][cfg.cdebugSetting][wrd.cframework] = {[cfg.cdebugSetting + bas.cDot + wrd.cframework + bas.cDot + wrd.cmain]: true};
+        D[wrd.cconfiguration][cfg.cdebugSetting][wrd.cframework][wrd.cmain] = {[cfg.cdebugSetting + bas.cDot + wrd.cframework + bas.cDot + wrd.cmain + bas.cDot + fnc.cconsoleLog + wrd.cTest]: true}
+
+        // Act
+        let returnData = await main.consoleLog(theNamespacePrefix, theFunctionName, message);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function consoleLog_inValidTheNamespacePrefixNaN
+     * @description Tests the main function consoleLog with a invalid data NaN.
+     * @author Vlad Sorokin
+     * @date 2024/06/06
+     */
+    test(tst_con.cconsoleLog_inValidTheNamespacePrefixNaN, async () => {
+        // Arrange
+        let theNamespacePrefix = NaN;
+        let theFunctionName = fnc.cconsoleLog + wrd.cTest;
+        let message = wrd.ctesting;
+        D[wrd.cconfiguration] = {};
+        D[wrd.cconfiguration][wrd.csystem] = {};
+        D[wrd.cconfiguration][wrd.csystem] = {
+            [wrd.csystem + bas.cDot + cfg.cconsoleLogEnabled]: true
+        };
+        D[wrd.cconfiguration][cfg.cdebugSetting] = {};
+        D[wrd.cconfiguration][cfg.cdebugSetting][wrd.cframework] = {};
+        D[wrd.cconfiguration][cfg.cdebugSetting][wrd.cframework] = {[cfg.cdebugSetting + bas.cDot + wrd.cframework + bas.cDot + wrd.cmain]: true};
+        D[wrd.cconfiguration][cfg.cdebugSetting][wrd.cframework][wrd.cmain] = {[cfg.cdebugSetting + bas.cDot + wrd.cframework + bas.cDot + wrd.cmain + bas.cDot + fnc.cconsoleLog + wrd.cTest]: true}
+
+        // Act
+        let returnData = await main.consoleLog(theNamespacePrefix, theFunctionName, message);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function consoleLog_inValidTheFunctionNameInteger
+     * @description Tests the main function consoleLog with a invalid data integer.
+     * @author Vlad Sorokin
+     * @date 2024/06/06
+     */
+    test(tst_con.cconsoleLog_inValidTheFunctionNameInteger, async () => {
+        // Arrange
+        let theNamespacePrefix = wrd.cframework + bas.cDot + wrd.cmain + bas.cDot;
+        let theFunctionName = 123;
+        let message = wrd.ctesting;
+        D[wrd.cconfiguration] = {};
+        D[wrd.cconfiguration][wrd.csystem] = {};
+        D[wrd.cconfiguration][wrd.csystem] = {
+            [wrd.csystem + bas.cDot + cfg.cconsoleLogEnabled]: true
+        };
+        D[wrd.cconfiguration][cfg.cdebugSetting] = {};
+        D[wrd.cconfiguration][cfg.cdebugSetting][wrd.cframework] = {};
+        D[wrd.cconfiguration][cfg.cdebugSetting][wrd.cframework][wrd.cmain] = {[cfg.cdebugSetting + bas.cDot + wrd.cframework + bas.cDot + wrd.cmain + bas.cDot + fnc.cconsoleLog + wrd.cTest]: true}
+
+        // Act
+        let returnData = await main.consoleLog(theNamespacePrefix, theFunctionName, message);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function consoleLog_inValidTheFunctionNameBoolean
+     * @description Tests the main function consoleLog with a invalid data boolean.
+     * @author Vlad Sorokin
+     * @date 2024/06/06
+     */
+    test(tst_con.cconsoleLog_inValidTheFunctionNameBoolean, async () => {
+        // Arrange
+        let theNamespacePrefix = wrd.cframework + bas.cDot + wrd.cmain + bas.cDot;
+        let theFunctionName = false;
+        let message = wrd.ctesting;
+        D[wrd.cconfiguration] = {};
+        D[wrd.cconfiguration][wrd.csystem] = {};
+        D[wrd.cconfiguration][wrd.csystem] = {
+            [wrd.csystem + bas.cDot + cfg.cconsoleLogEnabled]: true
+        };
+        D[wrd.cconfiguration][cfg.cdebugSetting] = {};
+        D[wrd.cconfiguration][cfg.cdebugSetting][wrd.cframework] = {};
+        D[wrd.cconfiguration][cfg.cdebugSetting][wrd.cframework][wrd.cmain] = {[cfg.cdebugSetting + bas.cDot + wrd.cframework + bas.cDot + wrd.cmain + bas.cDot + fnc.cconsoleLog + wrd.cTest]: true}
+
+        // Act
+        let returnData = await main.consoleLog(theNamespacePrefix, theFunctionName, message);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function consoleLog_inValidTheFunctionNameUndefined
+     * @description Tests the main function consoleLog with a invalid data undefined.
+     * @author Vlad Sorokin
+     * @date 2024/06/06
+     */
+    test(tst_con.cconsoleLog_inValidTheFunctionNameUndefined, async () => {
+        // Arrange
+        let theNamespacePrefix = wrd.cframework + bas.cDot + wrd.cmain + bas.cDot;
+        let theFunctionName = undefined;
+        let message = wrd.ctesting;
+        D[wrd.cconfiguration] = {};
+        D[wrd.cconfiguration][wrd.csystem] = {};
+        D[wrd.cconfiguration][wrd.csystem] = {
+            [wrd.csystem + bas.cDot + cfg.cconsoleLogEnabled]: true
+        };
+        D[wrd.cconfiguration][cfg.cdebugSetting] = {};
+        D[wrd.cconfiguration][cfg.cdebugSetting][wrd.cframework] = {};
+        D[wrd.cconfiguration][cfg.cdebugSetting][wrd.cframework][wrd.cmain] = {[cfg.cdebugSetting + bas.cDot + wrd.cframework + bas.cDot + wrd.cmain + bas.cDot + fnc.cconsoleLog + wrd.cTest]: true}
+
+        // Act
+        let returnData = await main.consoleLog(theNamespacePrefix, theFunctionName, message);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function consoleLog_inValidTheFunctionNameNaN
+     * @description Tests the main function consoleLog with a invalid data NaN.
+     * @author Vlad Sorokin
+     * @date 2024/06/06
+     */
+    test(tst_con.cconsoleLog_inValidTheFunctionNameNaN, async () => {
+        // Arrange
+        let theNamespacePrefix = wrd.cframework + bas.cDot + wrd.cmain + bas.cDot;
+        let theFunctionName = NaN;
+        let message = wrd.ctesting;
+        D[wrd.cconfiguration] = {};
+        D[wrd.cconfiguration][wrd.csystem] = {};
+        D[wrd.cconfiguration][wrd.csystem] = {
+            [wrd.csystem + bas.cDot + cfg.cconsoleLogEnabled]: true
+        };
+        D[wrd.cconfiguration][cfg.cdebugSetting] = {};
+        D[wrd.cconfiguration][cfg.cdebugSetting][wrd.cframework] = {};
+        D[wrd.cconfiguration][cfg.cdebugSetting][wrd.cframework][wrd.cmain] = {[cfg.cdebugSetting + bas.cDot + wrd.cframework + bas.cDot + wrd.cmain + bas.cDot + fnc.cconsoleLog + wrd.cTest]: true}
+
+        // Act
+        let returnData = await main.consoleLog(theNamespacePrefix, theFunctionName, message);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function consoleLog_inValidAllUndefined
+     * @description Tests the main function consoleLog with a invalid data undefined.
+     * @author Vlad Sorokin
+     * @date 2024/06/06
+     */
+    test(tst_con.cconsoleLog_inValidAllUndefined, async () => {
+        // Arrange
+        let theNamespacePrefix = undefined;
+        let theFunctionName = undefined;
+        let message = undefined;
+        D[wrd.cconfiguration] = {};
+        D[wrd.cconfiguration][wrd.csystem] = {};
+        D[wrd.cconfiguration][wrd.csystem] = {
+            [wrd.csystem + bas.cDot + cfg.cconsoleLogEnabled]: true
+        };
+        D[wrd.cconfiguration][cfg.cdebugSetting] = {};
+        D[wrd.cconfiguration][cfg.cdebugSetting][wrd.cframework] = {};
+        D[wrd.cconfiguration][cfg.cdebugSetting][wrd.cframework] = {[cfg.cdebugSetting + bas.cDot + wrd.cframework + bas.cDot + wrd.cmain]: true};
+        D[wrd.cconfiguration][cfg.cdebugSetting][wrd.cframework][wrd.cmain] = {[cfg.cdebugSetting + bas.cDot + wrd.cframework + bas.cDot + wrd.cmain + bas.cDot + fnc.cconsoleLog + wrd.cTest]: true}
+
+        // Act
+        let returnData = await main.consoleLog(theNamespacePrefix, theFunctionName, message);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function consoleLog_inValidAllNaN
+     * @description Tests the main function consoleLog with a invalid data NaN.
+     * @author Vlad Sorokin
+     * @date 2024/06/06
+     */
+    test(tst_con.cconsoleLog_inValidAllNaN, async () => {
+        // Arrange
+        let theNamespacePrefix = NaN;
+        let theFunctionName = NaN;
+        let message = NaN;
+        D[wrd.cconfiguration] = {};
+        D[wrd.cconfiguration][wrd.csystem] = {};
+        D[wrd.cconfiguration][wrd.csystem] = {
+            [wrd.csystem + bas.cDot + cfg.cconsoleLogEnabled]: true
+        };
+        D[wrd.cconfiguration][cfg.cdebugSetting] = {};
+        D[wrd.cconfiguration][cfg.cdebugSetting][wrd.cframework] = {};
+        D[wrd.cconfiguration][cfg.cdebugSetting][wrd.cframework][wrd.cmain] = {[cfg.cdebugSetting + bas.cDot + wrd.cframework + bas.cDot + wrd.cmain + bas.cDot + fnc.cconsoleLog + wrd.cTest]: true}
+
+        // Act
+        let returnData = await main.consoleLog(theNamespacePrefix, theFunctionName, message);
 
         // Assert
         expect(returnData).toBeFalsy();

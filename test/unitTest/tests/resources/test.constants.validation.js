@@ -424,6 +424,21 @@ export const testConstantsValidation = [
     {Name: 'cgetConfigurationSetting_inValidConfigurationNameUndefined', Actual: tst_con.cgetConfigurationSetting_inValidConfigurationNameUndefined, Expected: 'getConfigurationSetting_inValidConfigurationNameUndefined'},
     {Name: 'cgetConfigurationSetting_inValidConfigurationNameNaN', Actual: tst_con.cgetConfigurationSetting_inValidConfigurationNameNaN, Expected: 'getConfigurationSetting_inValidConfigurationNameNaN'},
 
+    // consoleLog
+    {Name: 'cconsoleLog', Actual: tst_con.cconsoleLog, Expected: 'cconsoleLog'},
+    {Name: 'cconsoleLog_validData', Actual: tst_con.cconsoleLog_validData, Expected: 'cconsoleLog_validData'},
+    {Name: 'cconsoleLog_inValidTheNamespacePrefixString', Actual: tst_con.cconsoleLog_inValidTheNamespacePrefixString, Expected: 'cconsoleLog_inValidTheNamespacePrefixString'},
+    {Name: 'cconsoleLog_inValidTheFunctionNameString', Actual: tst_con.cconsoleLog_inValidTheFunctionNameString, Expected: 'cconsoleLog_inValidTheFunctionNameString'},
+    {Name: 'cconsoleLog_inValidTheNamespacePrefixInteger', Actual: tst_con.cconsoleLog_inValidTheNamespacePrefixInteger, Expected: 'cconsoleLog_inValidTheNamespacePrefixInteger'},
+    {Name: 'cconsoleLog_inValidTheNamespacePrefixBoolean', Actual: tst_con.cconsoleLog_inValidTheNamespacePrefixBoolean, Expected: 'cconsoleLog_inValidTheNamespacePrefixBoolean'},
+    {Name: 'cconsoleLog_inValidTheNamespacePrefixUndefined', Actual: tst_con.cconsoleLog_inValidTheNamespacePrefixUndefined, Expected: 'cconsoleLog_inValidTheNamespacePrefixUndefined'},
+    {Name: 'cconsoleLog_inValidTheNamespacePrefixNaN', Actual: tst_con.cconsoleLog_inValidTheNamespacePrefixNaN, Expected: 'cconsoleLog_inValidTheNamespacePrefixNaN'},
+    {Name: 'cconsoleLog_inValidTheFunctionNameInteger', Actual: tst_con.cconsoleLog_inValidTheFunctionNameInteger, Expected: 'cconsoleLog_inValidTheFunctionNameInteger'},
+    {Name: 'cconsoleLog_inValidTheFunctionNameBoolean', Actual: tst_con.cconsoleLog_inValidTheFunctionNameBoolean, Expected: 'cconsoleLog_inValidTheFunctionNameBoolean'},
+    {Name: 'cconsoleLog_inValidTheFunctionNameUndefined', Actual: tst_con.cconsoleLog_inValidTheFunctionNameUndefined, Expected: 'cconsoleLog_inValidTheFunctionNameUndefined'},
+    {Name: 'cconsoleLog_inValidTheFunctionNameNaN', Actual: tst_con.cconsoleLog_inValidTheFunctionNameNaN, Expected: 'cconsoleLog_inValidTheFunctionNameNaN'},
+    {Name: 'cconsoleLog_inValidAllUndefined', Actual: tst_con.cconsoleLog_inValidAllUndefined, Expected: 'cconsoleLog_inValidAllUndefined'},
+    {Name: 'cconsoleLog_inValidAllNaN', Actual: tst_con.cconsoleLog_inValidAllNaN, Expected: 'cconsoleLog_inValidAllNaN'},
 
     // Test names
 

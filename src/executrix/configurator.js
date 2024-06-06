@@ -131,7 +131,7 @@ async function setPluginConfigurationSetting(dataStructure, configurationNamespa
  * @NOTE Cannot use the loggers here, because of a circular dependency.
  */
 async function getConfigurationSetting(configurationNamespace, configurationName) {
-  // let functionName = getConfigurationSetting.name;
+  let functionName = getConfigurationSetting.name;
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   // console.log(`configurationNamespace is: ${configurationNamespace}`);
   // console.log(`configurationName is: ${configurationName}`);
@@ -162,6 +162,7 @@ async function getConfigurationSetting(configurationNamespace, configurationName
     returnConfigurationValue = false;
   }
   if (returnConfigurationValue === undefined) {
+    // console.log(`returnConfigurationValue is: ${returnConfigurationValue}`);
     returnConfigurationValue = false;
   }
   // console.log(`returnConfigurationValue is: ${returnConfigurationValue}`);
@@ -273,14 +274,16 @@ async function processConfigurationValueRules(name, value) {
  * @NOTE Cannot use the loggers here, because of a circular dependency.
  */
 async function getParentConfigurationNamespaceObject(configurationNamespace, optionalFunctionNameAppendix) {
-  // let functionName = getParentConfigurationNamespaceObject.name;
+  let functionName = getParentConfigurationNamespaceObject.name;
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   // console.log(`configurationNamespace is: ${configurationNamespace}`);
   // console.log(`optionalFunctionNameAppendix is: ${optionalFunctionNameAppendix}`);
   let returnValue = true;
   let parentConfigurationNamespaceArray = configurationNamespace.split(bas.cDot);
   let newParentConfigurationName = parentConfigurationNamespaceArray.pop();
+  // console.log(`newParentConfigurationName is: ${newParentConfigurationName}`);
   let newParentConfigurationNamespace = parentConfigurationNamespaceArray.join(bas.cDot);
+  // console.log(`newParentConfigurationNamespace is: ${newParentConfigurationNamespace}`);
   let parentNamespaceConfigObject = await getConfigurationNamespaceObject(parentConfigurationNamespaceArray);
   if (optionalFunctionNameAppendix !== '') {
     returnValue = parentNamespaceConfigObject[newParentConfigurationNamespace + bas.cDot + newParentConfigurationName + optionalFunctionNameAppendix];

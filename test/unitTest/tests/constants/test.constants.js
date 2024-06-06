@@ -12,7 +12,7 @@
 import hayConst from '@haystacks/constants';
 import { basicConstantsValidation } from '@haystacks/constants/src/constantsValidation/basic.constants.validation';
 
-const {bas, cfg, gen, msg, sys, wrd} = hayConst;
+const {bas, cfg, fnc, gen, msg, sys, wrd} = hayConst;
 
 
 export const cUndefined = bas.cUn + bas.cde + bas.cf + bas.ci + bas.cn + bas.ce + bas.cd;
@@ -425,6 +425,22 @@ export const cgetConfigurationSetting_inValidConfigurationNamespaceUndefined = c
 export const cgetConfigurationSetting_inValidConfigurationNamespaceNaN = cgetConfigurationSetting + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cConfiguration + wrd.cName + wrd.cspace + 'NaN'; // getConfigurationSetting_inValid ConfigurationNamespaceNaN
 export const cgetConfigurationSetting_inValidConfigurationNameUndefined = cgetConfigurationSetting + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cConfiguration + wrd.cName + 'Undefined'; // getConfigurationSetting_inValidConfigurationNameUndefined
 export const cgetConfigurationSetting_inValidConfigurationNameNaN = cgetConfigurationSetting + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cConfiguration + wrd.cName + 'NaN'; // getConfigurationSetting_inValidConfigurationNameNaN
+
+// consoleLog
+export const cconsoleLog = fnc.cconsoleLog; // consoleLog
+export const cconsoleLog_validData = cconsoleLog + bas.cUnderscore + wrd.cvalid + wrd.cData; // consoleLog_validData
+export const cconsoleLog_inValidTheNamespacePrefixString = cconsoleLog + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cThe + wrd.cNamespace + wrd.cPrefix + wrd.cString; // consoleLog_inValidTheNamespacePrefixString
+export const cconsoleLog_inValidTheFunctionNameString = cconsoleLog + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cThe + wrd.cFunction + wrd.cName + wrd.cString; // consoleLog_inValidTheFunctionNameString
+export const cconsoleLog_inValidTheNamespacePrefixInteger = cconsoleLog + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cThe + wrd.cNamespace + wrd.cPrefix + wrd.cInteger; // consoleLog_inValidTheNamespacePrefixInteger
+export const cconsoleLog_inValidTheNamespacePrefixBoolean = cconsoleLog + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cThe + wrd.cNamespace + wrd.cPrefix + wrd.cBoolean; // consoleLog_inValidTheNamespacePrefixBoolean
+export const cconsoleLog_inValidTheNamespacePrefixUndefined = cconsoleLog + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cThe + wrd.cNamespace + wrd.cPrefix + 'Undefined'; // consoleLog_inValidTheNamespacePrefixUndefined
+export const cconsoleLog_inValidTheNamespacePrefixNaN = cconsoleLog + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cThe + wrd.cNamespace + wrd.cPrefix + 'NaN'; // consoleLog_inValidTheNamespacePrefixNaN
+export const cconsoleLog_inValidTheFunctionNameInteger = cconsoleLog + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cThe + wrd.cFunction + wrd.cName + wrd.cInteger; // consoleLog_inValidTheFunctionNameInteger
+export const cconsoleLog_inValidTheFunctionNameBoolean = cconsoleLog + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cThe + wrd.cFunction + wrd.cName + wrd.cBoolean; // consoleLog_inValidTheFunctionNameBoolean
+export const cconsoleLog_inValidTheFunctionNameUndefined = cconsoleLog + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cThe + wrd.cFunction + wrd.cName + 'Undefined'; // consoleLog_inValidTheFunctionNameUndefined
+export const cconsoleLog_inValidTheFunctionNameNaN = cconsoleLog + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cThe + wrd.cFunction + wrd.cName + 'NaN'; // consoleLog_inValidTheFunctionNameNaN
+export const cconsoleLog_inValidAllUndefined = cconsoleLog + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cAll + 'Undefined'; // consoleLog_inValidAllUndefined
+export const cconsoleLog_inValidAllNaN = cconsoleLog + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cAll + 'NaN'; // consoleLog_inValidAllNaN
 
 
 // Test names

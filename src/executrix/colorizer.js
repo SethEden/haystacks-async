@@ -87,7 +87,8 @@ async function colorizeMessage(message, className, callerFunctionName, debugFile
   // console.log(`debugFilesSetting is: ${debugFilesSetting}`);
   // console.log(`debugFunctionsSetting is: ${debugFunctionsSetting}`);
   // console.log(`flatMessageLog is: ${flatMessageLog}`);
-  let colorizedMessage;
+  let errorFound = false;
+  let returnData = '';
   let messageContent;
   let messageContentPrefix;
   let messageContentSuffix;
@@ -149,174 +150,321 @@ async function colorizeMessage(message, className, callerFunctionName, debugFile
 
   debugFilesModuleFontStyleSetting = await configurator.getConfigurationSetting(cfg.cdebugSetting + bas.cDot + className, bas.cAt + sys.cModuleFontStyle);
   // console.log('debugFilesModuleFontStyleSetting is: ' + debugFilesModuleFontStyleSetting);
+  if (debugFilesModuleFontStyleSetting === false) {
+    // ERROR: debugFilesModuleFontStyleSetting not defined in debug setting configuration file.
+    console.log(msg.cErrorDebugFilesModuleFontStyleSettingMessage);
+    errorFound = true;
+  }
+
   debugFilesFunctionFontStyleSetting = await configurator.getConfigurationSetting(cfg.cdebugSetting + bas.cDot + className, bas.cAt + sys.cFunctionFontStyle);
   // console.log('debugFilesFunctionFontStyleSetting is: ' + debugFilesFunctionFontStyleSetting);
+  if (debugFilesFunctionFontStyleSetting === false) {
+    // ERROR: debugFilesFunctionFontStyleSetting not defined in debug setting configuration file.
+    console.log(msg.cErrorDebugFilesFunctionFontStyleSettingMessage);
+    errorFound = true;
+  }
+
   debugFilesMessageFontStyleSetting = await configurator.getConfigurationSetting(cfg.cdebugSetting + bas.cDot + className, bas.cAt + sys.cMessageFontStyle);
   // console.log('debugFilesMessageFontStyleSetting is: ' + debugFilesMessageFontStyleSetting);
+  if (debugFilesMessageFontStyleSetting === false) {
+    // ERROR: debugFilesMessageFontStyleSetting not defined in debug setting configuration file.
+    console.log(msg.cErrorDebugFilesMessageFontStyleSettingMessage);
+    errorFound = true;
+  }
+
   debugFilesDataFontStyleSetting = await configurator.getConfigurationSetting(cfg.cdebugSetting + bas.cDot + className, bas.cAt + sys.cDataFontStyle);
   // console.log('debugFilesDataFontStyleSetting is: ' + debugFilesDataFontStyleSetting);
+  if (debugFilesDataFontStyleSetting === false) {
+    // ERROR: debugFilesDataFontStyleSetting not defined in debug setting configuration file.
+    console.log(msg.cErrorDebugFilesDataFontStyleSettingMessage);
+    errorFound = true;
+  }
+
   debugFilesModuleFontColorSetting = await configurator.getConfigurationSetting(cfg.cdebugSetting + bas.cDot + className, bas.cAt + sys.cModuleFontColor);
   // console.log('debugFilesModuleFontColorSetting is: ' + debugFilesModuleFontColorSetting);
+  if (debugFilesModuleFontColorSetting === false) {
+    // ERROR: debugFilesModuleFontColorSetting not defined in debug setting configuration file.
+    console.log(msg.cErrorDebugFilesModuleFontColorSettingMessage);
+    errorFound = true;
+  }
+
   debugFilesFunctionFontColorSetting = await configurator.getConfigurationSetting(cfg.cdebugSetting + bas.cDot + className, bas.cAt + sys.cFunctionFontColor);
   // console.log('debugFilesFunctionFontColorSetting is: ' + debugFilesFunctionFontColorSetting);
+  if (debugFilesFunctionFontColorSetting === false) {
+    // ERROR: debugFilesFunctionFontColorSetting not defined in debug setting configuration file.
+    console.log(msg.cErrorDebugFilesFunctionFontColorSettingMessage);
+    errorFound = true;
+  }
+
   debugFilesMessageFontColorSetting = await configurator.getConfigurationSetting(cfg.cdebugSetting + bas.cDot + className, bas.cAt + sys.cMessageFontColor);
   // console.log('debugFilesMessageFontColorSetting is: ' + debugFilesMessageFontColorSetting);
+  if (debugFilesMessageFontColorSetting === false) {
+    // ERROR: debugFilesMessageFontColorSetting not defined in debug setting configuration file.
+    console.log(msg.cErrorDebugFilesMessageFontColorSettingMessage);
+    errorFound = true;
+  }
+
   debugFilesDataFontColorSetting = await configurator.getConfigurationSetting(cfg.cdebugSetting + bas.cDot + className, bas.cAt + sys.cDataFontColor);
   // console.log('debugFilesDataFontColorSetting is: ' + debugFilesDataFontColorSetting);
+  if (debugFilesDataFontColorSetting === false) {
+    // ERROR: debugFilesDataFontColorSetting not defined in debug setting configuration file.
+    console.log(msg.cErrorDebugFilesDataFontColorSettingMessage);
+    errorFound = true;
+  }
+
   debugFilesModuleFontBackgroundColorSetting = await configurator.getConfigurationSetting(cfg.cdebugSetting + bas.cDot + className, bas.cAt + sys.cModuleFontBackgroundColor);
   // console.log('debugFilesModuleFontBackgroundColorSetting is: ' + debugFilesModuleFontBackgroundColorSetting);
+  if (debugFilesModuleFontBackgroundColorSetting === false) {
+    // ERROR: debugFilesModuleFontBackgroundColorSetting not defined in debug setting configuration file.
+    console.log(msg.cErrorDebugFilesModuleFontBackgroundColorSettingMessage);
+    errorFound = true;
+  }
+
   debugFilesFunctionFontBackgroundColorSetting = await configurator.getConfigurationSetting(cfg.cdebugSetting + bas.cDot + className, bas.cAt + sys.cFunctionFontBackgroundColor);
   // console.log('debugFilesFunctionFontBackgroundColorSetting is: ' + debugFilesFunctionFontBackgroundColorSetting);
+  if (debugFilesFunctionFontBackgroundColorSetting === false) {
+    // ERROR: debugFilesFunctionFontBackgroundColorSetting not defined in debug setting configuration file.
+    console.log(msg.cErrorDebugFilesFunctionFontBackgroundColorSettingMessage);
+    errorFound = true;
+  }
+
   debugFilesMessageFontBackgroundColorSetting = await configurator.getConfigurationSetting(cfg.cdebugSetting + bas.cDot + className, bas.cAt + sys.cMessageFontBackgroundColor);
   // console.log('debugFilesMessageFontBackgroundColorSetting is: ' + debugFilesMessageFontBackgroundColorSetting);
+  if (debugFilesMessageFontBackgroundColorSetting === false) {
+    // ERROR: debugFilesMessageFontBackgroundColorSetting not defined in debug setting configuration file.
+    console.log(msg.cErrorDebugFilesMessageFontBackgroundColorSettingMessage);
+    errorFound = true;
+  }
+
   debugFilesDataFontBackgroundColorSetting = await configurator.getConfigurationSetting(cfg.cdebugSetting + bas.cDot + className, bas.cAt + sys.cDataFontBackgroundColor);
   // console.log('debugFilesDataFontBackgroundColorSetting is: ' + debugFilesDataFontBackgroundColorSetting);
+  if (debugFilesDataFontBackgroundColorSetting === false) {
+    // ERROR: debugFilesDataFontBackgroundColorSetting not defined in debug setting configuration file.
+    console.log(msg.cErrorDebugFilesDataFontBackgroundColorSettingMessage);
+    errorFound = true;
+  }
+
 
   debugFunctionsModuleFontStyleSetting = await configurator.getConfigurationSetting(cfg.cdebugSetting + bas.cDot + className, callerFunctionName + bas.cAt + sys.cModuleFontStyle);
   // console.log('debugFunctionsModuleFontStyleSetting is: ' + debugFunctionsModuleFontStyleSetting);
+  if (debugFunctionsModuleFontStyleSetting === false) {
+    // ERROR: debugFunctionsModuleFontStyleSetting not defined in debug setting configuration file.
+    console.log(msg.cErrorDebugFunctionsModuleFontStyleSettingMessage);
+    errorFound = true;
+  }
+
   debugFunctionsFunctionFontStyleSetting = await configurator.getConfigurationSetting(cfg.cdebugSetting + bas.cDot + className, callerFunctionName + bas.cAt + sys.cFunctionFontStyle);
   // console.log('debugFunctionsFunctionFontStyleSetting is: ' + debugFunctionsFunctionFontStyleSetting);
+  if (debugFunctionsFunctionFontStyleSetting === false) {
+    // ERROR: debugFunctionsFunctionFontStyleSetting not defined in debug setting configuration file.
+    console.log(msg.cErrorDebugFunctionsFunctionFontStyleSettingMessage);
+    errorFound = true;
+  }
+
   debugFunctionsMessageFontStyleSetting = await configurator.getConfigurationSetting(cfg.cdebugSetting + bas.cDot + className, callerFunctionName + bas.cAt + sys.cMessageFontStyle);
   // console.log('debugFunctionsMessageFontStyleSetting is: ' + debugFunctionsMessageFontStyleSetting);
+  if (debugFunctionsMessageFontStyleSetting === false) {
+    // ERROR: debugFunctionsMessageFontStyleSetting not defined in debug setting configuration file.
+    console.log(msg.cErrorDebugFunctionsMessageFontStyleSettingMessage);
+    errorFound = true;
+  }
+
   debugFunctionsDataFontStyleSetting = await configurator.getConfigurationSetting(cfg.cdebugSetting + bas.cDot + className, callerFunctionName + bas.cAt + sys.cDataFontStyle);
   // console.log('debugFunctionsDataFontStyleSetting is: ' + debugFunctionsDataFontStyleSetting);
+  if (debugFunctionsDataFontStyleSetting === false) {
+    // ERROR: debugFunctionsDataFontStyleSetting not defined in debug setting configuration file.
+    console.log(msg.cErrorDebugFunctionsDataFontStyleSettingMessage);
+    errorFound = true;
+  }
+
   debugFunctionsModuleFontColorSetting = await configurator.getConfigurationSetting(cfg.cdebugSetting + bas.cDot + className, callerFunctionName + bas.cAt + sys.cModuleFontColor);
   // console.log('debugFunctionsModuleFontColorSetting is: ' + debugFunctionsModuleFontColorSetting);
+  if (debugFunctionsModuleFontColorSetting === false) {
+    // ERROR: debugFunctionsModuleFontColorSetting not defined in debug setting configuration file.
+    console.log(msg.cErrorDebugFunctionsModuleFontColorSettingMessage);
+    errorFound = true;
+  }
+
   debugFunctionsFunctionFontColorSetting = await configurator.getConfigurationSetting(cfg.cdebugSetting + bas.cDot + className, callerFunctionName + bas.cAt + sys.cFunctionFontColor);
   // console.log('debugFunctionsFunctionFontColorSetting is: ' + debugFunctionsFunctionFontColorSetting);
+  if (debugFunctionsFunctionFontColorSetting === false) {
+    // ERROR: debugFunctionsFunctionFontColorSetting not defined in debug setting configuration file.
+    console.log(msg.cErrorDebugFunctionsFunctionFontColorSettingMessage);
+    errorFound = true;
+  }
+
   debugFunctionsMessageFontColorSetting = await configurator.getConfigurationSetting(cfg.cdebugSetting + bas.cDot + className, callerFunctionName + bas.cAt + sys.cMessageFontColor);
   // console.log('debugFunctionsMessageFontColorSetting is: ' + debugFunctionsMessageFontColorSetting);
+  if (debugFunctionsMessageFontColorSetting === false) {
+    // ERROR: debugFunctionsMessageFontColorSetting not defined in debug setting configuration file.
+    console.log(msg.cErrorDebugFunctionsMessageFontColorSettingMessage);
+    errorFound = true;
+  }
+
   debugFunctionsDataFontColorSetting = await configurator.getConfigurationSetting(cfg.cdebugSetting + bas.cDot + className, callerFunctionName + bas.cAt + sys.cDataFontColor);
   // console.log('debugFunctionsDataFontColorSetting is: ' + debugFunctionsDataFontColorSetting);
+  if (debugFunctionsDataFontColorSetting === false) {
+    // ERROR: debugFunctionsDataFontColorSetting not defined in debug setting configuration file.
+    console.log(msg.cErrorDebugFunctionsDataFontColorSettingMessage);
+    errorFound = true;
+  }
+
   debugFunctionsModuleFontBackgroundColorSetting = await configurator.getConfigurationSetting(cfg.cdebugSetting + bas.cDot + className, callerFunctionName + bas.cAt + sys.cModuleFontBackgroundColor);
   // console.log('debugFunctionsModuleFontBackgroundColorSetting is: ' + debugFunctionsModuleFontBackgroundColorSetting);
+  if (debugFunctionsModuleFontBackgroundColorSetting === false) {
+    // ERROR: debugFunctionsModuleFontBackgroundColorSetting not defined in debug setting configuration file.
+    console.log(msg.cErrorDebugFunctionsModuleFontBackgroundColorSettingMessage);
+    errorFound = true;
+  }
+
   debugFunctionsFunctionFontBackgroundColorSetting = await configurator.getConfigurationSetting(cfg.cdebugSetting + bas.cDot + className, callerFunctionName + bas.cAt + sys.cFunctionFontBackgroundColor);
   // console.log('debugFunctionsFunctionFontBackgroundColorSetting is: ' + debugFunctionsFunctionFontBackgroundColorSetting);
+  if (debugFunctionsFunctionFontBackgroundColorSetting === false) {
+    // ERROR: debugFunctionsFunctionFontBackgroundColorSetting not defined in debug setting configuration file.
+    console.log(msg.cErrorDebugFunctionsFunctionFontBackgroundColorSettingMessage);
+    errorFound = true;
+  }
+
   debugFunctionsMessageFontBackgroundColorSetting = await configurator.getConfigurationSetting(cfg.cdebugSetting + bas.cDot + className, callerFunctionName + bas.cAt + sys.cMessageFontBackgroundColor);
   // console.log('debugFunctionsMessageFontBackgroundColorSetting is: ' + debugFunctionsMessageFontBackgroundColorSetting);
+  if (debugFunctionsMessageFontBackgroundColorSetting === false) {
+    // ERROR: debugFunctionsMessageFontBackgroundColorSetting not defined in debug setting configuration file.
+    console.log(msg.cErrorDebugFunctionsMessageFontBackgroundColorSettingMessage);
+    errorFound = true;
+  }
+
   debugFunctionsDataFontBackgroundColorSetting = await configurator.getConfigurationSetting(cfg.cdebugSetting + bas.cDot + className, callerFunctionName + bas.cAt + sys.cDataFontBackgroundColor);
   // console.log('debugFunctionsDataFontBackgroundColorSetting is: ' + debugFunctionsDataFontBackgroundColorSetting);
-
-  aggregateUnderlineBoldArray = await aggregateStyleSetting(debugFilesModuleFontStyleSetting, debugFunctionsModuleFontStyleSetting, true);
-  aggregateModuleFontStyleUnderline = aggregateUnderlineBoldArray[0];
-  aggregateModuleFontStyleBold = aggregateUnderlineBoldArray[1];
-
-  aggregateUnderlineBoldArray = await aggregateStyleSetting(debugFilesFunctionFontStyleSetting, debugFunctionsFunctionFontStyleSetting, true);
-  aggregateFunctionFontStyleUnderline = aggregateUnderlineBoldArray[0];
-  aggregateFunctionFontStyleBold = aggregateUnderlineBoldArray[1];
-
-  aggregateUnderlineBoldArray = await aggregateStyleSetting(debugFilesMessageFontStyleSetting, debugFunctionsMessageFontStyleSetting, true);
-  aggregateMessageFontStyleUnderline = aggregateUnderlineBoldArray[0];
-  aggregateMessageFontStyleBold = aggregateUnderlineBoldArray[1];
-
-  aggregateUnderlineBoldArray = await aggregateStyleSetting(debugFilesDataFontStyleSetting, debugFunctionsDataFontStyleSetting, true);
-  aggregateDataFontStyleUnderline = aggregateUnderlineBoldArray[0];
-  aggregateDataFontStyleBold = aggregateUnderlineBoldArray[1];
-
-  aggregateModuleFontColorSetting = await aggregateStyleSetting(debugFilesModuleFontColorSetting, debugFunctionsModuleFontColorSetting, [0, 255, 255], false);
-  aggregateFunctionFontColorSetting = await aggregateStyleSetting(debugFilesFunctionFontColorSetting, debugFunctionsFunctionFontColorSetting, [0, 255, 255], false);
-  aggregateMessageFontColorSetting = await aggregateStyleSetting(debugFilesMessageFontColorSetting, debugFunctionsMessageFontColorSetting, [0, 255, 255], false);
-  aggregateDataFontColorSetting = await aggregateStyleSetting(debugFilesDataFontColorSetting, debugFunctionsDataFontColorSetting, [0, 255, 255], false);
-  aggregateModuleFontBackgroundColorSetting = await aggregateStyleSetting(debugFilesModuleFontBackgroundColorSetting, debugFunctionsModuleFontBackgroundColorSetting, [0, 0, 0], false);
-  aggregateFunctionFontBackgroundColorSetting = await aggregateStyleSetting(debugFilesFunctionFontBackgroundColorSetting, debugFunctionsFunctionFontBackgroundColorSetting, [0, 0, 0], false);
-  aggregateMessageFontBackgroundColorSetting = await aggregateStyleSetting(debugFilesMessageFontBackgroundColorSetting, debugFunctionsMessageFontBackgroundColorSetting, [0, 0, 0], false);
-  aggregateDataFontBackgroundColorSetting = await aggregateStyleSetting(debugFilesDataFontBackgroundColorSetting, debugFunctionsDataFontBackgroundColorSetting, [0, 0, 0], false);
-
-  if (message.includes(bas.cColon) === true) {
-    messageBrokenDown = message.split(/:(.+)/); // Use regular expression to split on the first instance of ":" ONLY!
-    messageContent = messageBrokenDown[0];
-    messageData = messageBrokenDown[1];
-    processingMessageData = true;
-  } else {
-    messageContent = message;
-    processingMessageData = false;
+  if (debugFunctionsDataFontBackgroundColorSetting === false) {
+    // ERROR: debugFunctionsDataFontBackgroundColorSetting not defined in debug setting configuration file.
+    console.log(msg.cErrorDebugFunctionsDataFontBackgroundColorSettingMessage);
+    errorFound = true;
   }
-  // "good_luck_buddy".split(/_(.+)/)[1]
-  // @see https://stackoverflow.com/questions/4607745/split-string-only-on-first-instance-of-specified-character
-  if (flatMessageLog === false) {
-    // console.log('processing flatMessageLot === false');
-    if (messageContent.includes(bas.cDoublePercent) === true) {
-      messageContentPrefix = messageContent.split(bas.cSpace)[0];
-      messageContentSuffix = messageContent.split(bas.cSpace)[2];
-    } // End-if (messageContent.includes(bas.cDoublePercent) === true)
 
-    className = await setUnderlineFontStyleOnMessageComponentAccordingToSetting(className, aggregateModuleFontStyleUnderline);
-    className = await setBoldFontStyleOnMessageComponentAccordingToSetting(className, aggregateModuleFontStyleBold);
-    // console.log('Done processing underline & bold settings: className is: ' + className);
-    callerFunctionName = await setUnderlineFontStyleOnMessageComponentAccordingToSetting(callerFunctionName, aggregateFunctionFontStyleUnderline);
-    callerFunctionName = await setBoldFontStyleOnMessageComponentAccordingToSetting(callerFunctionName, aggregateFunctionFontStyleBold);
-    // console.log('Done processing underline & bold settings: callerFunctionName is: ' + callerFunctionName);
-
-    if (messageContent.includes(bas.cDoublePercent) === true) {
-      messageContent = await setUnderlineFontStyleOnMessageComponentAccordingToSetting(messageContent, aggregateMessageFontStyleUnderline);
-      messageContentPrefix = await setBoldFontStyleOnMessageComponentAccordingToSetting(messageContentPrefix, aggregateMessageFontStyleBold);
-
-      messageContentSuffix = await setUnderlineFontStyleOnMessageComponentAccordingToSetting(messageContentSuffix, aggregateMessageFontStyleUnderline);
-      messageContentSuffix = await setBoldFontStyleOnMessageComponentAccordingToSetting(messageContentSuffix, aggregateMessageFontStyleBold);
-
-      messageContentPrefix = await setFontForegroundColorOnMessageComponentAccordingToSetting(messageContentPrefix, aggregateMessageFontColorSetting);
-      messageContentSuffix = await setFontForegroundColorOnMessageComponentAccordingToSetting(messageContentSuffix, aggregateMessageFontColorSetting);
-
-      messageContentPrefix = await setFontBackgroundColorOnMessageComponentAccordingToSetting(messageContentPrefix, aggregateMessageFontBackgroundColorSetting);
-      messageContentSuffix = await setFontBackgroundColorOnMessageComponentAccordingToSetting(messageContentSuffix, aggregateMessageFontBackgroundColorSetting);
+  if (errorFound === false) {
+    aggregateUnderlineBoldArray = await aggregateStyleSetting(debugFilesModuleFontStyleSetting, debugFunctionsModuleFontStyleSetting, true);
+    aggregateModuleFontStyleUnderline = aggregateUnderlineBoldArray[0];
+    aggregateModuleFontStyleBold = aggregateUnderlineBoldArray[1];
+  
+    aggregateUnderlineBoldArray = await aggregateStyleSetting(debugFilesFunctionFontStyleSetting, debugFunctionsFunctionFontStyleSetting, true);
+    aggregateFunctionFontStyleUnderline = aggregateUnderlineBoldArray[0];
+    aggregateFunctionFontStyleBold = aggregateUnderlineBoldArray[1];
+  
+    aggregateUnderlineBoldArray = await aggregateStyleSetting(debugFilesMessageFontStyleSetting, debugFunctionsMessageFontStyleSetting, true);
+    aggregateMessageFontStyleUnderline = aggregateUnderlineBoldArray[0];
+    aggregateMessageFontStyleBold = aggregateUnderlineBoldArray[1];
+  
+    aggregateUnderlineBoldArray = await aggregateStyleSetting(debugFilesDataFontStyleSetting, debugFunctionsDataFontStyleSetting, true);
+    aggregateDataFontStyleUnderline = aggregateUnderlineBoldArray[0];
+    aggregateDataFontStyleBold = aggregateUnderlineBoldArray[1];
+  
+    aggregateModuleFontColorSetting = await aggregateStyleSetting(debugFilesModuleFontColorSetting, debugFunctionsModuleFontColorSetting, [0, 255, 255], false);
+    aggregateFunctionFontColorSetting = await aggregateStyleSetting(debugFilesFunctionFontColorSetting, debugFunctionsFunctionFontColorSetting, [0, 255, 255], false);
+    aggregateMessageFontColorSetting = await aggregateStyleSetting(debugFilesMessageFontColorSetting, debugFunctionsMessageFontColorSetting, [0, 255, 255], false);
+    aggregateDataFontColorSetting = await aggregateStyleSetting(debugFilesDataFontColorSetting, debugFunctionsDataFontColorSetting, [0, 255, 255], false);
+    aggregateModuleFontBackgroundColorSetting = await aggregateStyleSetting(debugFilesModuleFontBackgroundColorSetting, debugFunctionsModuleFontBackgroundColorSetting, [0, 0, 0], false);
+    aggregateFunctionFontBackgroundColorSetting = await aggregateStyleSetting(debugFilesFunctionFontBackgroundColorSetting, debugFunctionsFunctionFontBackgroundColorSetting, [0, 0, 0], false);
+    aggregateMessageFontBackgroundColorSetting = await aggregateStyleSetting(debugFilesMessageFontBackgroundColorSetting, debugFunctionsMessageFontBackgroundColorSetting, [0, 0, 0], false);
+    aggregateDataFontBackgroundColorSetting = await aggregateStyleSetting(debugFilesDataFontBackgroundColorSetting, debugFunctionsDataFontBackgroundColorSetting, [0, 0, 0], false);
+  
+    if (message.includes(bas.cColon) === true) {
+      messageBrokenDown = message.split(/:(.+)/); // Use regular expression to split on the first instance of ":" ONLY!
+      messageContent = messageBrokenDown[0];
+      messageData = messageBrokenDown[1];
+      processingMessageData = true;
     } else {
+      messageContent = message;
+      processingMessageData = false;
+    }
+    // "good_luck_buddy".split(/_(.+)/)[1]
+    // @see https://stackoverflow.com/questions/4607745/split-string-only-on-first-instance-of-specified-character
+    if (flatMessageLog === false) {
+      // console.log('processing flatMessageLot === false');
+      if (messageContent.includes(bas.cDoublePercent) === true) {
+        messageContentPrefix = messageContent.split(bas.cSpace)[0];
+        messageContentSuffix = messageContent.split(bas.cSpace)[2];
+      } // End-if (messageContent.includes(bas.cDoublePercent) === true)
+  
+      className = await setUnderlineFontStyleOnMessageComponentAccordingToSetting(className, aggregateModuleFontStyleUnderline);
+      className = await setBoldFontStyleOnMessageComponentAccordingToSetting(className, aggregateModuleFontStyleBold);
+      // console.log('Done processing underline & bold settings: className is: ' + className);
+      callerFunctionName = await setUnderlineFontStyleOnMessageComponentAccordingToSetting(callerFunctionName, aggregateFunctionFontStyleUnderline);
+      callerFunctionName = await setBoldFontStyleOnMessageComponentAccordingToSetting(callerFunctionName, aggregateFunctionFontStyleBold);
+      // console.log('Done processing underline & bold settings: callerFunctionName is: ' + callerFunctionName);
+  
+      if (messageContent.includes(bas.cDoublePercent) === true) {
+        messageContent = await setUnderlineFontStyleOnMessageComponentAccordingToSetting(messageContent, aggregateMessageFontStyleUnderline);
+        messageContentPrefix = await setBoldFontStyleOnMessageComponentAccordingToSetting(messageContentPrefix, aggregateMessageFontStyleBold);
+  
+        messageContentSuffix = await setUnderlineFontStyleOnMessageComponentAccordingToSetting(messageContentSuffix, aggregateMessageFontStyleUnderline);
+        messageContentSuffix = await setBoldFontStyleOnMessageComponentAccordingToSetting(messageContentSuffix, aggregateMessageFontStyleBold);
+  
+        messageContentPrefix = await setFontForegroundColorOnMessageComponentAccordingToSetting(messageContentPrefix, aggregateMessageFontColorSetting);
+        messageContentSuffix = await setFontForegroundColorOnMessageComponentAccordingToSetting(messageContentSuffix, aggregateMessageFontColorSetting);
+  
+        messageContentPrefix = await setFontBackgroundColorOnMessageComponentAccordingToSetting(messageContentPrefix, aggregateMessageFontBackgroundColorSetting);
+        messageContentSuffix = await setFontBackgroundColorOnMessageComponentAccordingToSetting(messageContentSuffix, aggregateMessageFontBackgroundColorSetting);
+      } else {
+        messageContent = await setUnderlineFontStyleOnMessageComponentAccordingToSetting(messageContent, aggregateMessageFontStyleUnderline);
+        messageContent = await setBoldFontStyleOnMessageComponentAccordingToSetting(messageContent, aggregateMessageFontStyleBold);
+        // console.log('Done processing underline & bold settings: messageContent is: ' + messageContent);
+  
+        if (processingMessageData === true) {
+          messageData = await setUnderlineFontStyleOnMessageComponentAccordingToSetting(messageData, aggregateDataFontStyleUnderline);
+          messageData = await setBoldFontStyleOnMessageComponentAccordingToSetting(messageData, aggregateDataFontStyleBold);
+        } // End-if (processingMessageData === true)
+  
+        messageContent = await setFontForegroundColorOnMessageComponentAccordingToSetting(messageContent, aggregateMessageFontColorSetting);
+        // console.log('Done processing foreground color settings: messageContent is: ' + messageContent);
+  
+        messageContent = await setFontBackgroundColorOnMessageComponentAccordingToSetting(messageContent, aggregateMessageFontBackgroundColorSetting);
+        // console.log('Done processing background color settings: messageContent is: ' + messageContent);
+      }
+      className = await setFontForegroundColorOnMessageComponentAccordingToSetting(className, aggregateModuleFontColorSetting);
+      // console.log('Done processing foreground color settings: className is: ' + className);
+      callerFunctionName = await setFontForegroundColorOnMessageComponentAccordingToSetting(callerFunctionName, aggregateFunctionFontColorSetting);
+      // console.log('Done processing foreground color settings: callerFunctionName is: ' + callerFunctionName);
+  
+      className = await setFontBackgroundColorOnMessageComponentAccordingToSetting(className, aggregateModuleFontBackgroundColorSetting);
+      // console.log('Done processing background color settings: className is: ' + className);
+      callerFunctionName = await setFontBackgroundColorOnMessageComponentAccordingToSetting(callerFunctionName, aggregateFunctionFontBackgroundColorSetting);
+      // console.log('Done processing background color settings: callerFunctionName is: ' + callerFunctionName);
+  
+      if (processingMessageData === true) {
+        messageData = await setFontForegroundColorOnMessageComponentAccordingToSetting(messageData, aggregateDataFontColorSetting);
+        messageData = await setFontBackgroundColorOnMessageComponentAccordingToSetting(messageData, aggregateDataFontBackgroundColorSetting);
+      } // End-if (processingMessageData === true)
+  
+      if (messageContent.includes(bas.cDoublePercent) === true) {
+        returnData = messageContentPrefix + bas.cSpace + className + bas.cDot + callerFunctionName + bas.cSpace + messageContentSuffix;
+      } else if (messageData !== undefined) {
+        returnData = messageContent + bas.cColon + messageData;
+      } else {
+        returnData = messageContent;
+      }
+    } else if (flatMessageLog === true) {
       messageContent = await setUnderlineFontStyleOnMessageComponentAccordingToSetting(messageContent, aggregateMessageFontStyleUnderline);
       messageContent = await setBoldFontStyleOnMessageComponentAccordingToSetting(messageContent, aggregateMessageFontStyleBold);
-      // console.log('Done processing underline & bold settings: messageContent is: ' + messageContent);
-
       if (processingMessageData === true) {
+        // console.log('Attempting to format the message data component of the message: ' + messageData);
         messageData = await setUnderlineFontStyleOnMessageComponentAccordingToSetting(messageData, aggregateDataFontStyleUnderline);
         messageData = await setBoldFontStyleOnMessageComponentAccordingToSetting(messageData, aggregateDataFontStyleBold);
-      } // End-if (processingMessageData === true)
-
+        messageData = await setFontForegroundColorOnMessageComponentAccordingToSetting(messageData, aggregateDataFontColorSetting);
+        messageData = await setFontBackgroundColorOnMessageComponentAccordingToSetting(messageData, aggregateDataFontBackgroundColorSetting);
+        // console.log('Done formatting all of the messageData: ' + messageData);
+      }
       messageContent = await setFontForegroundColorOnMessageComponentAccordingToSetting(messageContent, aggregateMessageFontColorSetting);
-      // console.log('Done processing foreground color settings: messageContent is: ' + messageContent);
-
-      messageContent = await setFontBackgroundColorOnMessageComponentAccordingToSetting(messageContent, aggregateMessageFontBackgroundColorSetting);
-      // console.log('Done processing background color settings: messageContent is: ' + messageContent);
+      messageContent = await setFontBackgroundColorOnMessageComponentAccordingToSetting(callerFunctionName, aggregateMessageFontBackgroundColorSetting);
+      returnData = messageContent + bas.cColon + messageData;
+    } else { // Just return the message as we got it and make sure it gets out!
+      returnData = message; // Don't apply any colorizing to the default. We are not likely to hit this case anyway!!
     }
-    className = await setFontForegroundColorOnMessageComponentAccordingToSetting(className, aggregateModuleFontColorSetting);
-    // console.log('Done processing foreground color settings: className is: ' + className);
-    callerFunctionName = await setFontForegroundColorOnMessageComponentAccordingToSetting(callerFunctionName, aggregateFunctionFontColorSetting);
-    // console.log('Done processing foreground color settings: callerFunctionName is: ' + callerFunctionName);
-
-    className = await setFontBackgroundColorOnMessageComponentAccordingToSetting(className, aggregateModuleFontBackgroundColorSetting);
-    // console.log('Done processing background color settings: className is: ' + className);
-    callerFunctionName = await setFontBackgroundColorOnMessageComponentAccordingToSetting(callerFunctionName, aggregateFunctionFontBackgroundColorSetting);
-    // console.log('Done processing background color settings: callerFunctionName is: ' + callerFunctionName);
-
-    if (processingMessageData === true) {
-      messageData = await setFontForegroundColorOnMessageComponentAccordingToSetting(messageData, aggregateDataFontColorSetting);
-      messageData = await setFontBackgroundColorOnMessageComponentAccordingToSetting(messageData, aggregateDataFontBackgroundColorSetting);
-    } // End-if (processingMessageData === true)
-
-    if (messageContent.includes(bas.cDoublePercent) === true) {
-      colorizedMessage = messageContentPrefix + bas.cSpace + className + bas.cDot + callerFunctionName + bas.cSpace + messageContentSuffix;
-    } else if (messageData !== undefined) {
-      colorizedMessage = messageContent + bas.cColon + messageData;
-    } else {
-      colorizedMessage = messageContent;
-    }
-  } else if (flatMessageLog === true) {
-    messageContent = await setUnderlineFontStyleOnMessageComponentAccordingToSetting(messageContent, aggregateMessageFontStyleUnderline);
-    messageContent = await setBoldFontStyleOnMessageComponentAccordingToSetting(messageContent, aggregateMessageFontStyleBold);
-    if (processingMessageData === true) {
-      // console.log('Attempting to format the message data component of the message: ' + messageData);
-      messageData = await setUnderlineFontStyleOnMessageComponentAccordingToSetting(messageData, aggregateDataFontStyleUnderline);
-      messageData = await setBoldFontStyleOnMessageComponentAccordingToSetting(messageData, aggregateDataFontStyleBold);
-      messageData = await setFontForegroundColorOnMessageComponentAccordingToSetting(messageData, aggregateDataFontColorSetting);
-      messageData = await setFontBackgroundColorOnMessageComponentAccordingToSetting(messageData, aggregateDataFontBackgroundColorSetting);
-      // console.log('Done formatting all of the messageData: ' + messageData);
-    }
-    messageContent = await setFontForegroundColorOnMessageComponentAccordingToSetting(messageContent, aggregateMessageFontColorSetting);
-    messageContent = await setFontBackgroundColorOnMessageComponentAccordingToSetting(callerFunctionName, aggregateMessageFontBackgroundColorSetting);
-    colorizedMessage = messageContent + bas.cColon + messageData;
-  } else { // Just return the message as we got it and make sure it gets out!
-    colorizedMessage = message; // Don't apply any colorizing to the default. We are not likely to hit this case anyway!!
+  } else {
+    returnData = message;
   }
-  // console.log('colorizedMessage is: ' + colorizedMessage);
+  // console.log(msg.creturnDataIs + JSON.stringify(returnData));
   // console.log(`END ${namespacePrefix}${functionName} function`);
-  return colorizedMessage;
+  return returnData;
 }
 
 /**

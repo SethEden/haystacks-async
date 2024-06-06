@@ -923,11 +923,7 @@ input theFunctionName: string (dfxg24346dfg)
 input message: string|object (The message that should be logged)
 output: ?
 
-testName: consoleLog_inValidMessageString
-input theNamespacePrefix: string (The namespace of the log that is being sent)
-input theFunctionName: string (The name of the function that log is being called from)
-input message: string (dfxg24346dfg)
-output: ?
+NOTE: This test was taken out because of it being unusable.
 
 testName: consoleLog_inValidTheNamespacePrefixInteger
 input theNamespacePrefix: integer (123)
@@ -977,29 +973,13 @@ input theFunctionName: NaN
 input message: string|object (The message that should be logged)
 output: ?
 
-testName: consoleLog_inValidMessageInteger
-input theNamespacePrefix: string (The namespace of the log that is being sent)
-input theFunctionName: string (The name of the function that log is being called from)
-input message: integer (123)
-output: ?
+NOTE: This test was taken out because of it being unusable.
 
-testName: consoleLog_inValidMessageBoolean
-input theNamespacePrefix: string (The namespace of the log that is being sent)
-input theFunctionName: string (The name of the function that log is being called from)
-input message: boolean (false)
-output: ?
+NOTE: This test was taken out because of it being unusable.
 
-testName: consoleLog_inValidMessageUndefined
-input theNamespacePrefix: string (The namespace of the log that is being sent)
-input theFunctionName: string (The name of the function that log is being called from)
-input message: undefined
-output: ?
+NOTE: This test was taken out because of it being unusable.
 
-testName: consoleLog_inValidMessageNaN
-input theNamespacePrefix: string (The namespace of the log that is being sent)
-input theFunctionName: string (The name of the function that log is being called from)
-input message: NaN
-output: ?
+NOTE: This test was taken out because of it being unusable.
 
 testName: consoleLog_inValidAllUndefined
 input theNamespacePrefix: undefined

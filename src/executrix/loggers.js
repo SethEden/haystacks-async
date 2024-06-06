@@ -41,16 +41,17 @@ const namespacePrefix =  wrd.cframework + bas.cDot + wrd.cexecutrix + bas.cDot +
  * And dumping data to an output log file is critical to debugging certain tests and workflows.
  * @param {string} classPath The class path for the caller of this function file.function or class.method.
  * @param {string} message The message or data contents that should be dumped to the output.
- * @return {void}
+ * @return {boolean} True or False to indicate if the console.log was successful.
  * @author Seth Hollingsead
  * @date 2021/12/27
  * @NOTE Cannot use the loggers here, because of a circular dependency.
  */
 async function consoleLog(classPath, message) {
-  // let functionName = consoleLog.name;
+  let functionName = consoleLog.name;
+  let returnData = false;
   if (Object.keys(D).length !== 0 && message !== undefined) { // Make sure we don't log anything if we haven't yet loaded the configuration data.
     let consoleLogEnabled = await configurator.getConfigurationSetting(wrd.csystem, cfg.cconsoleLogEnabled);
-    if (consoleLogEnabled === true) {
+    if (consoleLogEnabled === true && !Number.isNaN(classPath)) {
       // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
       // console.log(`classPath is: ${classPath}`);
       // console.log(`message is: ${message}`);
@@ -71,7 +72,7 @@ async function consoleLog(classPath, message) {
       let debugSetting = false;
       let configurationName = '';
       let configurationNamespace = '';
-
+      
       // console.log('Determine if there is a configuration setting for the class path.');
       configurationName = await configurator.processConfigurationNameRules(classPath);
       // console.log(`configurationName is: ${configurationName}`);
@@ -87,9 +88,9 @@ async function consoleLog(classPath, message) {
       // console.log(`debugSetting is: ${debugSetting}`);
       // console.log('DONE attempting to get the configuration setting for the class path, now check if it is not undefined and true');
       if (logFile !== undefined && (logFile.toUpperCase().includes(gen.cLOG) || logFile.toUpperCase().includes(gen.cTXT))) {
-        await consoleLogProcess(debugSetting, logFile, classPath, message, true);
+        returnData = await consoleLogProcess(debugSetting, logFile, classPath, message, true);
       } else { // No text log file specified, proceed with the same process for console only.
-        await consoleLogProcess(debugSetting, undefined, classPath, message, false);
+        returnData = await consoleLogProcess(debugSetting, undefined, classPath, message, false);
       }
       // console.log(`END ${namespacePrefix}${functionName} function`);
     } // end-if (consoleLogEnabled === true)
@@ -97,6 +98,7 @@ async function consoleLog(classPath, message) {
     console.log(msg.cWarningMessageIsUndefined);
     console.log(msg.cclassPathIs + classPath);
   }
+  return returnData;
 }
 
 /**
@@ -166,19 +168,20 @@ async function constantsValidationSummaryLog(message, passFail) {
  * @param {string} message The message or data contents that should be dumped to the output (log file and/or console).
  * @param {boolean} loggingToFileAndConsole A TRUE or FALSE value to indicate if the log should be done to the specified log file and the console.
  * If no log file is specified by the caller/settings system then this will be FALSE and only the console will be logged.
- * @return {void}
+ * @return {boolean} True or False to indicate if the console.log was successful.
  * @author Seth Hollingsead
  * @date 2021/10/27
  * @NOTE Cannot use the loggers here, because of a circular dependency.
  */
 async function consoleLogProcess(debugSetting, logFile, classPath, message, loggingToFileAndConsole) {
-  // let functionName = consoleLogProcess.name;
+  let functionName = consoleLogProcess.name;
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   // console.log(`debugSetting is: ${debugSetting}`);
   // console.log(`logFile is: ${logFile}`);
   // console.log(`classPath is: ${classPath}`);
   // console.log(`message is: ${message}`);
   // console.log(`loggingToFileAndConsole is: ${loggingToFileAndConsole}`);
+  let returnData = false;
   let outputMessage = '';
   let messageIsValid = false;
 
@@ -190,6 +193,7 @@ async function consoleLogProcess(debugSetting, logFile, classPath, message, logg
     messageIsValid = await validMessage(outputMessage, message);
     if (messageIsValid === true) {
       await console.log(outputMessage);
+      returnData = true;
     }
     if (messageIsValid === true && loggingToFileAndConsole === true) {
       await printMessageToFile(logFile, outputMessage);
@@ -202,13 +206,16 @@ async function consoleLogProcess(debugSetting, logFile, classPath, message, logg
     // enable or disable the console specifically. Right now there is no real business need for it.
     // If you really wanted to disable it just comment it out here.
     await console.log(outputMessage);
+    returnData = true;
     if (loggingToFileAndConsole === true) {
       await printMessageToFile(logFile, outputMessage);
       // console.log('done printing the message to the log file.');
     } // End-if (loggingToFileAndConsole === true)
   }
   // console.log('Past all of the if-else-if-else blocks of code.');
+
   // console.log(`END ${namespacePrefix}${functionName} function`);
+  return returnData;
 }
 
 /**
@@ -286,9 +293,9 @@ async function parseClassPath(logFile, classPath, message) {
     message = await colorizer.colorizeMessage(message, configurationNamespace, configurationName, debugFilesSetting, debugFunctionsSetting, false);
     // if (message.includes(bas.cDoublePercent)) {
     //   let myNameSpace = configurationNamespace + bas.cDot + configurationName;
-    //   // console.log('message is: ' + message);
-    //   // console.log('myNameSpace is: ' + myNameSpace);
-    //   // console.log('rules is: ' + JSON.stringify(rules));
+      // console.log('message is: ' + message);
+      // console.log('myNameSpace is: ' + myNameSpace);
+      // console.log('rules is: ' + JSON.stringify(rules));
     //   // NOTE: Calling this directly is an anti-pattern, but it is necessary at this time because of a circular dependency with loggers.
     //   // We will need to refactor the business rules to accept a callback function that does the logging.
     //   // Essentially we will need to use a dependency injection design pattern to prevent the chance of a circular dependency.

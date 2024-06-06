@@ -921,7 +921,7 @@ async function processCommandQueue() {
  * Ex: businessRules.rules.stringParsing.countCamelCaseWords
  * @param {string} configurationName The key of the configuration setting.
  * @param {string|integer|boolean|double|object} configurationValue The value of the configuration setting.
- * @return {boolean} True or False to indicate if the configuration was stored succesfully.
+ * @return {boolean} True or False to indicate if the configuration was stored successfully.
  * @author Seth Hollingsead
  * @date 222/02/18
  */
@@ -973,18 +973,21 @@ async function getConfigurationSetting(configurationNamespace, configurationName
  * @param {string} theNamespacePrefix The namespace of the log that is being sent. Ex: folder.filename
  * @param {string} theFunctionName The name of the function that log is being called from.
  * @param {string|object} message The message that should be logged.
- * @return {void}
+ * @return {boolean} True or False to indicate if the consoleLog was successful.
  * @author Seth Hollingsead
  * @date 2021/12/30
  */
 async function consoleLog(theNamespacePrefix, theFunctionName, message) {
-  // let functionName = consoleLog.name;
+  let functionName = consoleLog.name;
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   // console.log(`theNamespacePrefix is: ${theNamespacePrefix}`);
   // console.log(`theFunctionName is: ${theFunctionName}`);
   // console.log(`message is: ${JSON.stringify(message)}`);
-  await loggers.consoleLog(theNamespacePrefix + theFunctionName, message);
+  let returnData = false;
+  returnData = await loggers.consoleLog(theNamespacePrefix + theFunctionName, message);
+  // console.log(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   // console.log(`END ${namespacePrefix}${functionName} function`);
+  return returnData;
 }
 
 /**
@@ -1005,6 +1008,7 @@ async function consoleTableLog(classPath, tableData, columnNames) {
   // console.log(`tableData is: ${JSON.stringify(tableData)}`);
   // console.log(`columnNames is: ${JSON.stringify(columnNames)}`);
   await loggers.consoleTableLog(classPath, tableData, columnNames);
+  // console.log(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   // console.log(`END ${namespacePrefix}${functionName} function`);
 }
 
