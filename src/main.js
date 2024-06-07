@@ -997,7 +997,7 @@ async function consoleLog(theNamespacePrefix, theFunctionName, message) {
  * @param {string} classPath The class path for the caller of this function file.function or class.method.
  * @param {array<object>} tableData An array of objects that should be printed to the console as if it was data.
  * @param {array<string>} columnNames An array of column names that should be used when outputting the table.
- * @return {void}
+ * @return {boolean} True or False to indicate if the console.table call was successful.
  * @author Seth Hollingsead
  * @date 2023/11/07
  */
@@ -1007,9 +1007,11 @@ async function consoleTableLog(classPath, tableData, columnNames) {
   // console.log(`classPath is: ${classPath}`);
   // console.log(`tableData is: ${JSON.stringify(tableData)}`);
   // console.log(`columnNames is: ${JSON.stringify(columnNames)}`);
-  await loggers.consoleTableLog(classPath, tableData, columnNames);
+  let returnData = false;
+  returnData = await loggers.consoleTableLog(classPath, tableData, columnNames);
   // console.log(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   // console.log(`END ${namespacePrefix}${functionName} function`);
+  return returnData;
 }
 
 export default {

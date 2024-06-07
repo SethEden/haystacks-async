@@ -78,7 +78,7 @@ async function validateConstants(inputData, inputMetaData) {
     let phase1Results = {};
     let phase2Results = {};
     let validConstantsValidationTypes = [wrd.cFramework, wrd.cApplication, wrd.cPlugins];
-    let validConstantsValidationUserTypes = [wrd.cFramework, wrd.cPlatform, wrd.cApplication, wrd.cApp, wrd.cPlugins, wrd.cPlugin]
+    let validConstantsValidationUserTypes = [wrd.cFramework, wrd.cPlatform, wrd.cApplication, wrd.cApp, wrd.cPlugins, wrd.cPlugin];
 
     // validationFrameworkArray is:
     await loggers.consoleLog(namespacePrefix + functionName, msg.cvalidationFrameworkArrayIs + JSON.stringify(validationFrameworkArray));
@@ -279,6 +279,81 @@ async function validateConstants(inputData, inputMetaData) {
     await configurator.setConfigurationSetting(wrd.csystem, cfg.cpassAllConstantsValidation, false);
     returnData[1] = false;
   }
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
+/**
+ * @function validateConstantFile
+ * @description Validates the specified constants file(s).
+ * @param {array<string>} inputData An array that could possibly include a name of the file to validate,
+ * or a list of files to validate.
+ * @param {string} inputMetaData Not used for this business rule.
+ * @return {array<boolean,string|integer|boolean|object|array>} An array with a boolean True or False value to
+ * indicate if the application should exit or not exit, followed by the command output.
+ * @author Vlad Sorokin
+ * @data 2024/06/07
+ */
+async function validateConstantFile(inputData, inputMetaData) {
+  let functionName = validateConstantFile.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
+  let returnData = [true, false];
+  let validationTypesInputArray = []; // Use this to process any inputs the user may have entered.
+
+  if (await configurator.getConfigurationSetting(wrd.csystem, cfg.cenableConstantsValidation) === true) {
+    // Check first to see what, if any options, the user may have entered into this command,
+    // that will determine to what extent we do validation.
+    if (Array.isArray(inputData) && inputData.length >= 2) {
+      // User either entered a single data structure to validate, or a coma-separated list.
+      // inputData.length is:
+      await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataLengthIs + inputData.length);
+      if (inputData[1].includes(bas.cComa)) {
+        validationTypesInputArray = inputData[1].split(bas.cComa);
+      } else if (inputData[1].includes(bas.cSemiColon)) {
+        validationTypesInputArray = inputData[1].split(bas.cSemiColon);
+      } else if (inputData[1].includes(bas.cForwardSlash)) {
+        validationTypesInputArray = inputData[1].split(bas.cForwardSlash);
+      } else if (inputData[1].includes(bas.cBackSlash)) {
+        validationTypesInputArray = inputData[1].split(bas.cBackSlash);
+      } else {
+        // shift the data1!
+        await loggers.consoleLog(namespacePrefix + functionName, msg.cshiftData1);
+        inputData.shift();
+        validationTypesInputArray = inputData;
+      }
+    } else {
+      // ERROR: Please enter a valid constants file(s) to validate.
+      console.log('ERROR: Please enter a valid constants file(s) to validate.');
+    }
+    // allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsFileNames][sys.cBasicConstantsValidation] = sys.cbasic_constants_js;
+    // allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsFileNames][sys.cBusinessConstantsValidation] = sys.cbusiness_constants_js;
+    // allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsFileNames][sys.cColorConstantsValidation] = sys.ccolor_constants_js;
+    // allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsFileNames][sys.cCommandConstantsValidation] = sys.ccommand_constants_js;
+    // allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsFileNames][sys.cConfigurationConstantsValidation] = sys.cconfiguration_constants_js;
+    // allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsFileNames][sys.cCountryConstantsValidation] = sys.ccountry_constants_js;
+    // allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsFileNames][sys.cElementConstantsValidation] = sys.celement_constants_js;
+    // allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsFileNames][sys.cFunctionConstantsValidation] = sys.cfunction_constants_js;
+    // allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsFileNames][sys.cGenericConstantsValidation] = sys.cgeneric_constants_js;
+    // allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsFileNames][sys.cIsotopeConstantsValidation] = sys.cisotope_constants_js;
+    // allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsFileNames][sys.cKnotConstantsValidation] = sys.cknot_constants_js;
+    // allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsFileNames][sys.cLanguageConstantsValidation] = sys.clanguage_constants_js;
+    // allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsFileNames][sys.cMessageConstantsValidation] = sys.cmessage_constants_js;
+    // allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsFileNames][sys.cNumericConstantsValidation] = sys.cnumeric_constants_js;
+    // allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsFileNames][sys.cPhonicConstantsValidation] = sys.cphonic_constants_js;
+    // allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsFileNames][sys.cSystemConstantsValidation] = sys.csystem_constants_js;
+    // allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsFileNames][sys.cUnitConstantsValidation] = sys.cunit_constants_js;
+    // allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsFileNames][sys.cWordConstantsValidation] = sys.cword_constants_js;
+    // validationTypesInputArray is:
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cvalidationTypesInputArrayIs + JSON.stringify(validationTypesInputArray));
+
+
+  }
+
+
+
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
@@ -805,6 +880,7 @@ async function runAllValidations(inputData, inputMetaData) {
 
 export default {
   validateConstants,
+  validateConstantFile,
   validateCommandAliases,
   validateWorkflows,
   runAllValidations

@@ -999,91 +999,83 @@ input tableData: array<object> (An array of objects that should be printed to th
 input columnNames: array<string> (An array of column names that should be used when outputting the table)
 output: ?
 
-testName: consoleTableLog_inValidConfigurationNamespaceString
-input classPath: string (464gsdsfae8f46)
-input tableData: array<object> (An array of objects that should be printed to the console as if it was data)
-input columnNames: array<string> (An array of column names that should be used when outputting the table)
-output: false?
+NOTE: This test was taken out because of it being unusable.
 
-testName: consoleTableLog_inValidConfigurationNameString
+testName: consoleTableLog_inValidTableDataString
 input classPath: string (The class path for the caller of this function file.function or class.method)
 input tableData: string (464gsdsfae8f46)
 input columnNames: array<string> (An array of column names that should be used when outputting the table)
 output: false?
 
-testName: consoleTableLog_inValidConfigurationValueString
+testName: consoleTableLog_inValidColumnNamesString
 input classPath: string (The class path for the caller of this function file.function or class.method)
 input tableData: array<object> (An array of objects that should be printed to the console as if it was data)
 input columnNames: string (464gsdsfae8f46)
 output: false?
 
-testName: consoleTableLog_inValidConfigurationNamespaceInteger
+testName: consoleTableLog_inValidClassPathInteger
 input classPath: integer (546)
 input tableData: array<object> (An array of objects that should be printed to the console as if it was data)
 input columnNames: array<string> (An array of column names that should be used when outputting the table)
 output: false?
 
-testName: consoleTableLog_inValidConfigurationNamespaceBoolean
+testName: consoleTableLog_inValidClassPathBoolean
 input classPath: boolean (false)
 input tableData: array<object> (An array of objects that should be printed to the console as if it was data)
 input columnNames: array<string> (An array of column names that should be used when outputting the table)
 output: false?
 
-testName: consoleTableLog_inValidConfigurationNamespaceUndefined
-input classPath: undefined
-input tableData: array<object> (An array of objects that should be printed to the console as if it was data)
-input columnNames: array<string> (An array of column names that should be used when outputting the table)
-output: false?
+NOTE: This test was taken out because of it being unusable.
 
-testName: consoleTableLog_inValidConfigurationNamespaceNaN
+testName: consoleTableLog_inValidClassPathNaN
 input classPath: NaN
 input tableData: array<object> (An array of objects that should be printed to the console as if it was data)
 input columnNames: array<string> (An array of column names that should be used when outputting the table)
 output: false?
 
-testName: consoleTableLog_inValidConfigurationNameInteger
+testName: consoleTableLog_inValidTableDataInteger
 input classPath: string (The class path for the caller of this function file.function or class.method)
 input tableData: integer (546)
 input columnNames: array<string> (An array of column names that should be used when outputting the table)
 output: false?
 
-testName: consoleTableLog_inValidConfigurationNameBoolean
+testName: consoleTableLog_inValidTableDataBoolean
 input classPath: string (The class path for the caller of this function file.function or class.method)
 input tableData: boolean (false)
 input columnNames: array<string> (An array of column names that should be used when outputting the table)
 output: false?
 
-testName: consoleTableLog_inValidConfigurationNameUndefined
+testName: consoleTableLog_inValidTableDataUndefined
 input classPath: string (The class path for the caller of this function file.function or class.method)
 input tableData: undefined
 input columnNames: array<string> (An array of column names that should be used when outputting the table)
 output: false?
 
-testName: consoleTableLog_inValidConfigurationNameNaN
+testName: consoleTableLog_inValidTableDataNaN
 input classPath: string (The class path for the caller of this function file.function or class.method)
 input tableData: NaN
 input columnNames: array<string> (An array of column names that should be used when outputting the table)
 output: false?
 
-testName: consoleTableLog_inValidConfigurationValueInteger
+testName: consoleTableLog_inValidColumnNamesInteger
 input classPath: string (The class path for the caller of this function file.function or class.method)
 input tableData: array<object> (An array of objects that should be printed to the console as if it was data)
 input columnNames: integer (546)
 output: false?
 
-testName: consoleTableLog_inValidConfigurationValueBoolean
+testName: consoleTableLog_inValidColumnNamesBoolean
 input classPath: string (The class path for the caller of this function file.function or class.method)
 input tableData: array<object> (An array of objects that should be printed to the console as if it was data)
 input columnNames: boolean (false)
 output: false?
 
-testName: consoleTableLog_inValidConfigurationValueUndefined
+testName: consoleTableLog_inValidColumnNamesUndefined
 input classPath: string (The class path for the caller of this function file.function or class.method)
 input tableData: array<object> (An array of objects that should be printed to the console as if it was data)
 input columnNames: undefined
 output: false?
 
-testName: consoleTableLog_inValidConfigurationValueNaN
+testName: consoleTableLog_inValidColumnNamesNaN
 input classPath: string (The class path for the caller of this function file.function or class.method)
 input tableData: array<object> (An array of objects that should be printed to the console as if it was data)
 input columnNames: NaN

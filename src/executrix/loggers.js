@@ -105,9 +105,9 @@ async function consoleLog(classPath, message) {
  * @function consoleTableLog
  * @description Prints out a table with the data provided in the input tableDataArray.
  * @param {string} classPath The class path for the caller of this function file.function or class.method.
- * @param {array<object>} tableData An array of objects that should be printed to the console as if it was data.
+ * @param {array<object>|object} tableData An array of objects or an object that should be printed to the console as if it was data.
  * @param {array<string>} columnNames An array of column names that should be used when outputting the table.
- * @return {void}
+ * @return {boolean} True or False to indicate if the console.table call was successful.
  * @author Seth Hollingsead
  * @date 2022/02/22
  */
@@ -117,8 +117,27 @@ async function consoleTableLog(classPath, tableData, columnNames) {
   // console.log(`classPath is: ${classPath}`);
   // console.log(`tableData is: ${JSON.stringify(tableData)}`);
   // console.log(`columnNames is: ${JSON.stringify(columnNames)}`);
-  console.table(tableData, columnNames);
+  let returnData = false;
+  if (classPath === undefined || classPath === '' || typeof classPath === wrd.cstring) {
+    if (Array.isArray(tableData) || typeof tableData === wrd.cobject) {
+      if (Array.isArray(columnNames) || columnNames === undefined || columnNames === '' ) {
+        console.table(tableData, columnNames);
+        returnData = true;
+      } else {
+        // ERROR: columnNames is not an array of strings.
+        console.log(msg.cErrorConsoleLogTableMessage01);
+      }
+    } else {
+      // ERROR: tableData is not an array of objects.
+      console.log(msg.cErrorConsoleLogTableMessage02, tableData);
+    }
+  } else {
+    // ERROR: classPath is an invalid value.
+    console.log(msg.cErrorConsoleLogTableMessage03);
+  }
+  // console.log(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   // console.log(`END ${namespacePrefix}${functionName} function`);
+  return returnData;
 }
 
 /**

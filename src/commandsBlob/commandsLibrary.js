@@ -114,6 +114,7 @@ async function initCommandsLibrary() {
     // Integration Test commands in order
     // ***********************************************
     [cmd.cvalidateConstants]: (inputData, inputMetaData) => integrationTestCommands.validateConstants(inputData, inputMetaData),
+    [cmd.cvalidateConstantFile]: (inputData, inputMetaData) => integrationTestCommands.validateConstantFile(inputData, inputMetaData),
     [cmd.cvalidateCommandAliases]: (inputData, inputMetaData) => integrationTestCommands.validateCommandAliases(inputData, inputMetaData),
     [cmd.cvalidateWorkflows]: (inputData, inputMetaData) => integrationTestCommands.validateWorkflows(inputData, inputMetaData),
     [cmd.crunAllValidations]: (inputData, inputMetaData) => integrationTestCommands.runAllValidations(inputData, inputMetaData),

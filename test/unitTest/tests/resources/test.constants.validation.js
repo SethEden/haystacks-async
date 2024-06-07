@@ -116,7 +116,7 @@ export const testConstantsValidation = [
     /* main */
     //initFramework
     {Name: 'cinitFramework', Actual: tst_con.cinitFramework, Expected: 'initFramework'},
-    {Name: 'cinitFramework_validData', Actual: tst_con.cinitFramework_validData, Expected: 'initFramework_validData'}, 
+    {Name: 'cinitFramework_validClientConfigurationData', Actual: tst_con.cinitFramework_validClientConfigurationData, Expected: 'initFramework_validClientConfigurationData'}, 
     {Name: 'cinitFramework_inValidClientConfigurationString', Actual: tst_con.cinitFramework_inValidClientConfigurationString, Expected: 'initFramework_inValidClientConfigurationString'},
     {Name: 'cinitFramework_inValidClientConfigurationInteger', Actual: tst_con.cinitFramework_inValidClientConfigurationInteger, Expected: 'initFramework_inValidClientConfigurationInteger'},
     {Name: 'cinitFramework_inValidClientConfigurationBoolean', Actual: tst_con.cinitFramework_inValidClientConfigurationBoolean, Expected: 'initFramework_inValidClientConfigurationBoolean'},
@@ -143,7 +143,7 @@ export const testConstantsValidation = [
     
     // mergeClientBusinessRules
     {Name: 'cmergeClientBusinessRules', Actual: tst_con.cmergeClientBusinessRules, Expected: 'mergeClientBusinessRules'},
-    {Name: 'cmergeClientBusinessRules_validData', Actual: tst_con.cmergeClientBusinessRules_validData, Expected: 'mergeClientBusinessRules_validData'},
+    {Name: 'cmergeClientBusinessRules_validClientBusinessRulesData', Actual: tst_con.cmergeClientBusinessRules_validClientBusinessRulesData, Expected: 'mergeClientBusinessRules_validClientBusinessRulesData'},
     {Name: 'cmergeClientBusinessRules_inValidClientBusinessRulesString', Actual: tst_con.cmergeClientBusinessRules_inValidClientBusinessRulesString, Expected: 'mergeClientBusinessRules_inValidClientBusinessRulesString'},
     {Name: 'cmergeClientBusinessRules_inValidClientBusinessRulesInteger', Actual: tst_con.cmergeClientBusinessRules_inValidClientBusinessRulesInteger, Expected: 'mergeClientBusinessRules_inValidClientBusinessRulesInteger'},
     {Name: 'cmergeClientBusinessRules_inValidClientBusinessRulesBoolean', Actual: tst_con.cmergeClientBusinessRules_inValidClientBusinessRulesBoolean, Expected: 'mergeClientBusinessRules_inValidClientBusinessRulesBoolean'},
@@ -152,7 +152,7 @@ export const testConstantsValidation = [
 
     // mergeClientCommands
     {Name: 'cmergeClientCommands', Actual: tst_con.cmergeClientCommands, Expected: 'mergeClientCommands'},
-    {Name: 'cmergeClientCommands_validData', Actual: tst_con.cmergeClientCommands_validData, Expected: 'mergeClientCommands_validData'},
+    {Name: 'cmergeClientCommands_validClientCommandsData', Actual: tst_con.cmergeClientCommands_validClientCommandsData, Expected: 'mergeClientCommands_validClientCommandsData'},
     {Name: 'cmergeClientCommands_inValidClientCommandsString', Actual: tst_con.cmergeClientCommands_inValidClientCommandsString, Expected: 'mergeClientCommands_inValidClientCommandsString'},
     {Name: 'cmergeClientCommands_inValidClientCommandsInteger', Actual: tst_con.cmergeClientCommands_inValidClientCommandsInteger, Expected: 'mergeClientCommands_inValidClientCommandsInteger'},
     {Name: 'cmergeClientCommands_inValidClientCommandsBoolean', Actual: tst_con.cmergeClientCommands_inValidClientCommandsBoolean, Expected: 'mergeClientCommands_inValidClientCommandsBoolean'},
@@ -209,16 +209,16 @@ export const testConstantsValidation = [
 
     // unregisterPluginByName
     {Name: 'cunregisterPluginByName', Actual: tst_con.cunregisterPluginByName, Expected: 'unregisterPluginByName'},
-    {Name: 'cunregisterPluginByName_validPluginNameData', Actual: tst_con.cunregisterPluginByName_validData, Expected: 'unregisterPluginByName_validPluginNameData'},
+    {Name: 'cunregisterPluginByName_validPluginNameData', Actual: tst_con.cunregisterPluginByName_validPluginNameData, Expected: 'unregisterPluginByName_validPluginNameData'},
     {Name: 'cunregisterPluginByName_inValidPluginNameString', Actual: tst_con.cunregisterPluginByName_inValidPluginNameString, Expected: 'unregisterPluginByName_inValidPluginNameString'},
     {Name: 'cunregisterPluginByName_inValidPluginNameInteger', Actual: tst_con.cunregisterPluginByName_inValidPluginNameInteger, Expected: 'unregisterPluginByName_inValidPluginNameInteger'},
     {Name: 'cunregisterPluginByName_inValidPluginNameBoolean', Actual: tst_con.cunregisterPluginByName_inValidPluginNameBoolean, Expected: 'unregisterPluginByName_inValidPluginNameBoolean'},
     {Name: 'cunregisterPluginByName_inValidPluginNameUndefined', Actual: tst_con.cunregisterPluginByName_inValidPluginNameUndefined, Expected: 'unregisterPluginByName_inValidPluginNameUndefined'},
     {Name: 'cunregisterPluginByName_inValidPluginNameNaN', Actual: tst_con.cunregisterPluginByName_inValidPluginNameNaN, Expected: 'unregisterPluginByName_inValidPluginNameNaN'},
 
-    // unregisterPluginByName
+    // unregisterPlugins
     {Name: 'cunregisterPlugins', Actual: tst_con.cunregisterPlugins, Expected: 'unregisterPlugins'},
-    {Name: 'cunregisterPlugins_validData', Actual: tst_con.cunregisterPlugins_validData, Expected: 'unregisterPlugins_validData'},
+    {Name: 'cunregisterPlugins_validPluginsListArrayData', Actual: tst_con.cunregisterPlugins_validPluginsListArrayData, Expected: 'unregisterPlugins_validPluginsListArrayData'},
     {Name: 'cunregisterPlugins_inValidPluginsListArrayString', Actual: tst_con.cunregisterPlugins_inValidPluginsListArrayString, Expected: 'unregisterPlugins_inValidPluginsListArrayString'},
     {Name: 'cunregisterPlugins_inValidPluginsListArrayInteger', Actual: tst_con.cunregisterPlugins_inValidPluginsListArrayInteger, Expected: 'unregisterPlugins_inValidPluginsListArrayInteger'},
     {Name: 'cunregisterPlugins_inValidPluginsListArrayBoolean', Actual: tst_con.cunregisterPlugins_inValidPluginsListArrayBoolean, Expected: 'unregisterPlugins_inValidPluginsListArrayBoolean'},
@@ -254,8 +254,8 @@ export const testConstantsValidation = [
 
     // loadPlugin
     {Name: 'cloadPlugin', Actual: tst_con.cloadPlugin, Expected: 'loadPlugin'},
-    {Name: 'cloadPlugin_validData', Actual: tst_con.cloadPlugin_validData, Expected: 'loadPlugin_validData'},
-    {Name: 'cloadPlugin_inValidPluginPathString', Actual: tst_con.cloadPlugin_inValidPluginPathString, Expected: 'loadPlugin_inValidPluginPathString'},
+    {Name: 'cloadPlugin_validPluginsPathData', Actual: tst_con.cloadPlugin_validPluginsPathData, Expected: 'loadPlugin_validData'},
+    {Name: 'cloadPlugin_inValidPluginPathString', Actual: tst_con.cloadPlugin_inValidPluginPathString, Expected: 'loadPlugin_inValidPluginPluginsPathPathString'},
     {Name: 'cloadPlugin_inValidPluginPathInteger', Actual: tst_con.cloadPlugin_inValidPluginPathInteger, Expected: 'loadPlugin_inValidPluginPathInteger'},
     {Name: 'cloadPlugin_inValidPluginPathBoolean', Actual: tst_con.cloadPlugin_inValidPluginPathBoolean, Expected: 'loadPlugin_inValidPluginPathBoolean'},
     {Name: 'cloadPlugin_inValidPluginPathUndefined', Actual: tst_con.cloadPlugin_inValidPluginPathUndefined, Expected: 'loadPlugin_inValidPluginPathUndefined'},
@@ -263,7 +263,7 @@ export const testConstantsValidation = [
 
     // loadPlugins
     {Name: 'cloadPlugins', Actual: tst_con.cloadPlugins, Expected: 'loadPlugins'},
-    {Name: 'cloadPlugins_validData', Actual: tst_con.cloadPlugins_validData, Expected: 'loadPlugins_validData'},
+    {Name: 'cloadPlugins_validPluginsPathsData', Actual: tst_con.cloadPlugins_valiPluginsPathsdData, Expected: 'loadPlugins_validPluginsPathsData'},
     {Name: 'cloadPlugins_inValidPluginPathString', Actual: tst_con.cloadPlugins_inValidPluginPathString, Expected: 'loadPlugins_inValidPluginPathString'},
     {Name: 'cloadPlugins_inValidPluginPathInteger', Actual: tst_con.cloadPlugins_inValidPluginPathInteger, Expected: 'loadPlugins_inValidPluginPathInteger'},
     {Name: 'cloadPlugins_inValidPluginPathBoolean', Actual: tst_con.cloadPlugins_inValidPluginPathBoolean, Expected: 'loadPlugins_inValidPluginPathBoolean'},
@@ -285,7 +285,7 @@ export const testConstantsValidation = [
 
     // unloadPlugins
     {Name: 'cunloadPlugins', Actual: tst_con.cunloadPlugins, Expected: 'unloadPlugins'},
-    {Name: 'cunloadPlugins_validData', Actual: tst_con.cunloadPlugins_validData, Expected: 'unloadPlugins_validData'},
+    {Name: 'cunloadPlugins_validPluginNamesData', Actual: tst_con.cunloadPlugins_validPluginNamesData, Expected: 'unloadPlugins_validPluginNamesData'},
     {Name: 'cunloadPlugins_inValidPluginNamesString', Actual: tst_con.cunloadPlugins_inValidPluginNamesString, Expected: 'unloadPlugins_inValidPluginNamesString'},
     {Name: 'cunloadPlugins_inValidPluginNamesInteger', Actual: tst_con.cunloadPlugins_inValidPluginNamesInteger, Expected: 'unloadPlugins_inValidPluginNamesInteger'},
     {Name: 'cunloadPlugins_inValidPluginNamesBoolean', Actual: tst_con.cunloadPlugins_inValidPluginNamesBoolean, Expected: 'unloadPlugins_inValidPluginNamesBoolean'},
@@ -345,7 +345,7 @@ export const testConstantsValidation = [
 
     // getData
     {Name: 'cgetData', Actual: tst_con.cgetData, Expected: 'getData'},
-    {Name: 'cgetData_validData', Actual: tst_con.cgetData_validData, Expected: 'getData_validData'},
+    {Name: 'cgetData_validDataNameData', Actual: tst_con.cgetData_validDataNameData, Expected: 'getData_validDataNameData'},
     {Name: 'cgetData_inValidDataNameInteger', Actual: tst_con.cgetData_inValidDataNameInteger, Expected: 'getData_inValidDataNameInteger'},
     {Name: 'cgetData_inValidDataNameBoolean', Actual: tst_con.cgetData_inValidDataNameBoolean, Expected: 'getData_inValidDataNameBoolean'},
     {Name: 'cgetData_inValidDataNameUndefined', Actual: tst_con.cgetData_inValidDataNameUndefined, Expected: 'getData_inValidDataNameUndefined'},
@@ -353,7 +353,7 @@ export const testConstantsValidation = [
 
     // clearData
     {Name: 'cclearData', Actual: tst_con.cclearData, Expected: 'clearData'},
-    {Name: 'cclearData_validData', Actual: tst_con.cclearData_validData, Expected: 'clearData_validData'},
+    {Name: 'cclearData_validDataNameData', Actual: tst_con.cclearData_validDataNameData, Expected: 'clearData_validDataNameData'},
     {Name: 'cclearData_validDataNameUndefined', Actual: tst_con.cclearData_validDataNameUndefined, Expected: 'clearData_validDataNameUndefined'},
     {Name: 'cclearData_inValidDataNameInteger', Actual: tst_con.cclearData_inValidDataNameInteger, Expected: 'clearData_inValidDataNameInteger'},
     {Name: 'cclearData_inValidDataNameBoolean', Actual: tst_con.cclearData_inValidDataNameBoolean, Expected: 'clearData_inValidDataNameBoolean'},
@@ -375,7 +375,7 @@ export const testConstantsValidation = [
 
     // enqueueCommand
     {Name: 'cenqueueCommand', Actual: tst_con.cenqueueCommand, Expected: 'enqueueCommand'},
-    {Name: 'cenqueueCommand_validData', Actual: tst_con.cenqueueCommand_validData, Expected: 'enqueueCommand_validData'},
+    {Name: 'cenqueueCommand_validCommandData', Actual: tst_con.cenqueueCommand_validCommandData, Expected: 'enqueueCommand_validCommandData'},
     {Name: 'cenqueueCommand_inValidCommandString', Actual: tst_con.cenqueueCommand_inValidCommandString, Expected: 'enqueueCommand_inValidCommandString'},
     {Name: 'cenqueueCommand_inValidCommandInteger', Actual: tst_con.cenqueueCommand_inValidCommandInteger, Expected: 'enqueueCommand_inValidCommandInteger'},
     {Name: 'cenqueueCommand_inValidCommandBoolean', Actual: tst_con.cenqueueCommand_inValidCommandBoolean, Expected: 'enqueueCommand_inValidCommandBoolean'},
@@ -439,6 +439,27 @@ export const testConstantsValidation = [
     {Name: 'cconsoleLog_inValidTheFunctionNameNaN', Actual: tst_con.cconsoleLog_inValidTheFunctionNameNaN, Expected: 'cconsoleLog_inValidTheFunctionNameNaN'},
     {Name: 'cconsoleLog_inValidAllUndefined', Actual: tst_con.cconsoleLog_inValidAllUndefined, Expected: 'cconsoleLog_inValidAllUndefined'},
     {Name: 'cconsoleLog_inValidAllNaN', Actual: tst_con.cconsoleLog_inValidAllNaN, Expected: 'cconsoleLog_inValidAllNaN'},
+
+    // consoleTableLog
+    {Name: 'cconsoleTableLog', Actual: tst_con.cconsoleTableLog, Expected: 'cconsoleTableLog'},
+    {Name: 'cconsoleTableLog_validData', Actual: tst_con.cconsoleTableLog_validData, Expected: 'cconsoleTableLog_validData'},
+    {Name: 'cconsoleTableLog_inValidClassPathString', Actual: tst_con.cconsoleTableLog_inValidClassPathString, Expected: 'cconsoleTableLog_inValidClassPathString'},
+    {Name: 'cconsoleTableLog_inValidTableDataString', Actual: tst_con.cconsoleTableLog_inValidTableDataString, Expected: 'cconsoleTableLog_inValidTableDataString'},
+    {Name: 'cconsoleTableLog_inValidColumnNamesString', Actual: tst_con.cconsoleTableLog_inValidColumnNamesString, Expected: 'cconsoleTableLog_inValidColumnNamesString'},
+    {Name: 'cconsoleTableLog_inValidClassPathInteger', Actual: tst_con.cconsoleTableLog_inValidClassPathInteger, Expected: 'cconsoleTableLog_inValidClassPathInteger'},
+    {Name: 'cconsoleTableLog_inValidClassPathBoolean', Actual: tst_con.cconsoleTableLog_inValidClassPathBoolean, Expected: 'cconsoleTableLog_inValidClassPathBoolean'},
+    {Name: 'cconsoleTableLog_inValidClassPathUndefined', Actual: tst_con.cconsoleTableLog_inValidClassPathUndefined, Expected: 'cconsoleTableLog_inValidClassPathUndefined'},
+    {Name: 'cconsoleTableLog_inValidClassPathNaN', Actual: tst_con.cconsoleTableLog_inValidClassPathNaN, Expected: 'cconsoleTableLog_inValidClassPathNaN'},
+    {Name: 'cconsoleTableLog_inValidTableDataInteger', Actual: tst_con.cconsoleTableLog_inValidTableDataInteger, Expected: 'cconsoleTableLog_inValidTableDataInteger'},
+    {Name: 'cconsoleTableLog_inValidTableDataBoolean', Actual: tst_con.cconsoleTableLog_inValidTableDataBoolean, Expected: 'cconsoleTableLog_inValidTableDataBoolean'},
+    {Name: 'cconsoleTableLog_inValidTableDataUndefined', Actual: tst_con.cconsoleTableLog_inValidTableDataUndefined, Expected: 'cconsoleTableLog_inValidTableDataUndefined'},
+    {Name: 'cconsoleTableLog_inValidTableDataNaN', Actual: tst_con.cconsoleTableLog_inValidTableDataNaN, Expected: 'cconsoleTableLog_inValidTableDataNaN'},
+    {Name: 'cconsoleTableLog_inValidColumnNamesInteger', Actual: tst_con.cconsoleTableLog_inValidColumnNamesInteger, Expected: 'cconsoleTableLog_inValidColumnNamesInteger'},
+    {Name: 'cconsoleTableLog_inValidColumnNamesBoolean', Actual: tst_con.cconsoleTableLog_inValidColumnNamesBoolean, Expected: 'cconsoleTableLog_inValidColumnNamesBoolean'},
+    {Name: 'cconsoleTableLog_inValidColumnNamesUndefined', Actual: tst_con.cconsoleTableLog_inValidColumnNamesUndefined, Expected: 'cconsoleTableLog_inValidColumnNamesUndefined'},
+    {Name: 'cconsoleTableLog_inValidColumnNamesNaN', Actual: tst_con.cconsoleTableLog_inValidColumnNamesNaN, Expected: 'cconsoleTableLog_inValidColumnNamesNaN'},
+    {Name: 'cconsoleTableLog_inValidAllUndefined', Actual: tst_con.cconsoleTableLog_inValidAllUndefined, Expected: 'cconsoleTableLog_inValidAllUndefined'},
+    {Name: 'cconsoleTableLog_inValidAllNaN', Actual: tst_con.cconsoleTableLog_inValidAllNaN, Expected: 'cconsoleTableLog_inValidAllNaN'},
 
     // Test names
 

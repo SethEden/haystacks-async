@@ -63,7 +63,7 @@ let rootPath = '';
  */
 describe(tst_con.cinitFramework, () => {
     /**
-     * @function initFramework_validData
+     * @function initFramework_validClientConfigurationData
      * @description Tests the main function initFramework with a valid input.
      * @author Vlad Sorokin
      * @date 2023/11/24
@@ -73,7 +73,7 @@ describe(tst_con.cinitFramework, () => {
      * Given the above statement its recommended to run unit tests with the constats unlinked, 
      * because the local paths on your system might be different.
      */
-    test(tst_con.cinitFramework_validData, async () => {
+    test(tst_con.cinitFramework_validClientConfigurationData, async () => {
         // Arrange
         let clientConfiguration = tst_man.initFrameworkObjectInput;
         let mutatedClientConfiguration = tst_man.initFrameworkObjectExpected;
@@ -409,7 +409,7 @@ describe(tst_con.cmergeClientBusinessRules, () => {
      * @author Vlad Sorokin
      * @date 2024/01/02
      */
-    test(tst_con.cmergeClientBusinessRules_validData, async () => {
+    test(tst_con.cmergeClientBusinessRules_validClientBusinessRulesData, async () => {
         // Arrange
         D[sys.cbusinessRules] = {};
         let testRulesLibrary = tst_man.testBusinessRulesLibrary;
@@ -527,7 +527,7 @@ describe(tst_con.cmergeClientBusinessRules, () => {
  */
 describe(tst_con.cmergeClientCommands, () => {
     /**
-     * @function mergeClientCommands_validclientCommandsData
+     * @function mergeClientCommands_validClientCommandsData
      * @description Tests the main function mergeClientCommands with a valid input.
      * @author Vlad Sorokin
      * @date 2024/01/02
@@ -547,7 +547,7 @@ describe(tst_con.cmergeClientCommands, () => {
     });
 
     /**
-     * @function mergeClientCommands_inValidclientCommandsString
+     * @function mergeClientCommands_inValidClientCommandsString
      * @description Tests the main function mergeClientCommands with a invalid data string.
      * @author Vlad Sorokin
      * @date 2024/01/02
@@ -565,7 +565,7 @@ describe(tst_con.cmergeClientCommands, () => {
     });
 
     /**
-     * @function mergeClientCommands_inValidclientCommandsInteger
+     * @function mergeClientCommands_inValidClientCommandsInteger
      * @description Tests the main function mergeClientCommands with a invalid data integer.
      * @author Vlad Sorokin
      * @date 2024/01/02
@@ -583,7 +583,7 @@ describe(tst_con.cmergeClientCommands, () => {
     });
 
     /**
-     * @function mergeClientCommands_inValidclientCommandsBoolean
+     * @function mergeClientCommands_inValidClientCommandsBoolean
      * @description Tests the main function mergeClientCommands with a invalid data boolean.
      * @author Vlad Sorokin
      * @date 2024/01/02
@@ -601,7 +601,7 @@ describe(tst_con.cmergeClientCommands, () => {
     });
 
     /**
-     * @function mergeClientCommands_inValidclientCommandsUndefined
+     * @function mergeClientCommands_inValidClientCommandsUndefined
      * @description Tests the main function mergeClientCommands with a invalid data undefined.
      * @author Vlad Sorokin
      * @date 2024/01/02
@@ -619,7 +619,7 @@ describe(tst_con.cmergeClientCommands, () => {
     });
 
     /**
-     * @function mergeClientCommands_inValidclientCommandsNaN
+     * @function mergeClientCommands_inValidClientCommandsNaN
      * @description Tests the main function mergeClientCommands with a invalid data NaN.
      * @author Vlad Sorokin
      * @date 2024/01/02
@@ -1800,7 +1800,7 @@ describe(tst_con.cunregisterPluginByName, () => {
      * @author Vlad Sorokin
      * @date 2024/01/21
      */
-    test(tst_con.cunregisterPluginByName_validData, async () => {
+    test(tst_con.cunregisterPluginByName_validPluginNameData, async () => {
         // Arrange
         D[cfg.cpluginRegistry] = {};
         D[cfg.cpluginRegistry] = await dataArrayParsing.objectDeepClone(tst_man.listAllPluginsInRegistry, '');
@@ -1917,12 +1917,12 @@ describe(tst_con.cunregisterPluginByName, () => {
  */
 describe(tst_con.cunregisterPlugins, () => {
     /**
-     * @function unregisterPlugins_validData
+     * @function unregisterPlugins_validPluginsListArrayData
      * @description Tests the main function unregisterPlugins with a valid input.
      * @author Vlad Sorokin
      * @date 2024/01/22
      */
-    test(tst_con.cunregisterPlugins_validData, async () => {
+    test(tst_con.cunregisterPlugins_validPluginsListArrayData, async () => {
         // Arrange
         D[cfg.cpluginRegistry] = {};
         D[cfg.cpluginRegistry] = await dataArrayParsing.objectDeepClone(tst_man.listAllPluginsInRegistry, '');
@@ -2468,7 +2468,7 @@ describe(tst_con.cloadPlugin, () => {
      * @author Vlad Sorokin
      * @date 2024/03/14
      */
-    test(tst_con.cloadPlugin_validData, async () => {
+    test(tst_con.cloadPlugin_validPluginsPathData, async () => {
         // Arrange
         let pluginPath = tst_man.testPluginPath;
         D[sys.cbusinessRules] = {
@@ -2622,7 +2622,7 @@ describe(tst_con.cloadPlugins, () => {
      * @author Vlad Sorokin
      * @date 2024/03/20
      */
-    test(tst_con.cloadPlugins_validData, async () => {
+    test(tst_con.cloadPlugins_validPluginsPathsData, async () => {
         // Arrange
         let pluginPathArray = [tst_man.testPluginPath];
         D[sys.cbusinessRules] = {
@@ -2805,12 +2805,12 @@ describe(tst_con.cloadPluginsFromRegistry, () => {
  */
 describe(tst_con.cunloadPlugin, () => {
     /**
-     * @function unloadPlugin_validData
+     * @function unloadPlugin_validPluginNameData
      * @description Tests the main function unloadPlugin with a valid plugin name.
      * @author Vlad Sorokin
      * @date 2024/05/08
      */
-    test(tst_con.cunloadPlugin_validData, async () => {
+    test(tst_con.cunloadPlugin_validPluginNameData, async () => {
         // Arrange
         let pluginPath = tst_man.testPluginPath;
         let pluginName = tst_man.ctestPluginOne;
@@ -2986,7 +2986,7 @@ describe(tst_con.cunloadPlugins, () => {
      * @author Vlad Sorokin
      * @date 2024/05/23
      */
-    test(tst_con.cunloadPlugins_validData, async () => {
+    test(tst_con.cunloadPlugins_validPluginNamesData, async () => {
         // Arrange
         let pluginNameArray = [tst_man.ctestPluginOne];
         let pluginPath = tst_man.testPluginPath;
@@ -4178,7 +4178,7 @@ describe(tst_con.cgetData, () => {
      * @author Vlad Sorokin
      * @date 2024/05/31
      */
-    test(tst_con.cgetData_validData, async () => {
+    test(tst_con.cgetData_validDataNameData, async () => {
         // Arrange
         let dataName = wrd.cunit + wrd.cTest + wrd.cData;
         let data = wrd.cunit + wrd.cTesting;
@@ -4274,7 +4274,7 @@ describe(tst_con.cclearData, () => {
      * @author Vlad Sorokin
      * @date 2024/05/31
      */
-    test(tst_con.cclearData_validData, async () => {
+    test(tst_con.cclearData_validDataNameData, async () => {
         // Arrange
         await main.clearData();
         let dataName = wrd.cunit + wrd.cTest + wrd.cData;
@@ -4626,7 +4626,7 @@ describe(tst_con.cenqueueCommand, () => {
      * @author Vlad Sorokin
      * @date 2024/06/05
      */
-    test(tst_con.cenqueueCommand_validData, async () => {
+    test(tst_con.cenqueueCommand_validCommandData, async () => {
         // Arrange
         D[sys.cUserEnteredCommandLog] = [];
         D[sys.cSystemCommandLog] = [];
@@ -5827,6 +5827,346 @@ describe(tst_con.cconsoleLog, () => {
 
         // Act
         let returnData = await main.consoleLog(theNamespacePrefix, theFunctionName, message);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+})
+
+
+/**
+ * @function consoleTableLog
+ * @description Tests the positive and negative test cases of the consoleTableLog
+ * @author Vlad Sorokin
+ * @date 2024/06/07
+ */
+describe(tst_con.cconsoleTableLog, () => {
+    /**
+     * @function consoleTableLog_validData
+     * @description Tests the main function consoleTableLog with a valid input.
+     * @author Vlad Sorokin
+     * @date 2024/06/07
+     */
+    test(tst_con.cconsoleTableLog_validData, async () => {
+        // Arrange
+        let classPath = '';
+        let tableData = [
+            { value: wrd.cunit + wrd.ctesting },
+            { value: wrd.ctest },
+        ];
+        let columnNames = [wrd.cvalue];
+
+        // Act
+        let returnData = await main.consoleTableLog(classPath, tableData, columnNames);
+
+        // Assert
+        expect(returnData).toBeTruthy();
+    });
+
+    /**
+     * @function consoleTableLog_inValidTableDataString
+     * @description Tests the main function consoleTableLog with a invalid data string.
+     * @author Vlad Sorokin
+     * @date 2024/06/07
+     */
+    test(tst_con.cconsoleTableLog_inValidTableDataString, async () => {
+        // Arrange
+        let classPath = '';
+        let tableData = tst_man.ctestString1;
+        let columnNames = [wrd.cvalue];
+
+        // Act
+        let returnData = await main.consoleTableLog(classPath, tableData, columnNames);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function consoleTableLog_inValidColumnNamesString
+     * @description Tests the main function consoleTableLog with a invalid data string.
+     * @author Vlad Sorokin
+     * @date 2024/06/07
+     */
+    test(tst_con.cconsoleTableLog_inValidColumnNamesString, async () => {
+        // Arrange
+        let classPath = '';
+        let tableData = [
+            { value: wrd.cunit + wrd.ctesting },
+            { value: wrd.ctest },
+        ];
+        let columnNames = tst_man.ctestString1;
+
+        // Act
+        let returnData = await main.consoleTableLog(classPath, tableData, columnNames);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function consoleTableLog_inValidClassPathInteger
+     * @description Tests the main function consoleTableLog with a invalid data integer.
+     * @author Vlad Sorokin
+     * @date 2024/06/07
+     */
+    test(tst_con.cconsoleTableLog_inValidClassPathInteger, async () => {
+        // Arrange
+        let classPath = 123;
+        let tableData = [
+            { value: wrd.cunit + wrd.ctesting },
+            { value: wrd.ctest },
+        ];
+        let columnNames = [wrd.cvalue];
+
+        // Act
+        let returnData = await main.consoleTableLog(classPath, tableData, columnNames);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function consoleTableLog_inValidClassPathBoolean
+     * @description Tests the main function consoleTableLog with a invalid data boolean.
+     * @author Vlad Sorokin
+     * @date 2024/06/07
+     */
+    test(tst_con.cconsoleTableLog_inValidClassPathBoolean, async () => {
+        // Arrange
+        let classPath = false;
+        let tableData = [
+            { value: wrd.cunit + wrd.ctesting },
+            { value: wrd.ctest },
+        ];
+        let columnNames = [wrd.cvalue];
+
+        // Act
+        let returnData = await main.consoleTableLog(classPath, tableData, columnNames);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function consoleTableLog_inValidClassPathNaN
+     * @description Tests the main function consoleTableLog with a invalid data NaN.
+     * @author Vlad Sorokin
+     * @date 2024/06/07
+     */
+    test(tst_con.cconsoleTableLog_inValidClassPathNaN, async () => {
+        // Arrange
+        let classPath = NaN;
+        let tableData = [
+            { value: wrd.cunit + wrd.ctesting },
+            { value: wrd.ctest },
+        ];
+        let columnNames = [wrd.cvalue];
+
+        // Act
+        let returnData = await main.consoleTableLog(classPath, tableData, columnNames);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function consoleTableLog_inValidTableDataInteger
+     * @description Tests the main function consoleTableLog with a invalid data integer.
+     * @author Vlad Sorokin
+     * @date 2024/06/07
+     */
+    test(tst_con.cconsoleTableLog_inValidTableDataInteger, async () => {
+        // Arrange
+        let classPath = '';
+        let tableData = 123;
+        let columnNames = [wrd.cvalue];
+
+        // Act
+        let returnData = await main.consoleTableLog(classPath, tableData, columnNames);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function consoleTableLog_inValidTableDataBoolean
+     * @description Tests the main function consoleTableLog with a invalid data boolean.
+     * @author Vlad Sorokin
+     * @date 2024/06/07
+     */
+    test(tst_con.cconsoleTableLog_inValidTableDataBoolean, async () => {
+        // Arrange
+        let classPath = '';
+        let tableData = false;
+        let columnNames = [wrd.cvalue];
+
+        // Act
+        let returnData = await main.consoleTableLog(classPath, tableData, columnNames);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function consoleTableLog_inValidTableDataUndefined
+     * @description Tests the main function consoleTableLog with a invalid data undefined.
+     * @author Vlad Sorokin
+     * @date 2024/06/07
+     */
+    test(tst_con.cconsoleTableLog_inValidTableDataUndefined, async () => {
+        // Arrange
+        let classPath = '';
+        let tableData = undefined;
+        let columnNames = [wrd.cvalue];
+
+        // Act
+        let returnData = await main.consoleTableLog(classPath, tableData, columnNames);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function consoleTableLog_inValidTableDataNaN
+     * @description Tests the main function consoleTableLog with a invalid data NaN.
+     * @author Vlad Sorokin
+     * @date 2024/06/07
+     */
+    test(tst_con.cconsoleTableLog_inValidTableDataNaN, async () => {
+        // Arrange
+        let classPath = '';
+        let tableData = NaN;
+        let columnNames = [wrd.cvalue];
+
+        // Act
+        let returnData = await main.consoleTableLog(classPath, tableData, columnNames);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function consoleTableLog_inValidColumnNamesInteger
+     * @description Tests the main function consoleTableLog with a invalid data integer.
+     * @author Vlad Sorokin
+     * @date 2024/06/07
+     */
+    test(tst_con.cconsoleTableLog_inValidColumnNamesInteger, async () => {
+        // Arrange
+        let classPath = '';
+        let tableData = [
+            { value: wrd.cunit + wrd.ctesting },
+            { value: wrd.ctest },
+        ];
+        let columnNames = 123;
+
+        // Act
+        let returnData = await main.consoleTableLog(classPath, tableData, columnNames);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function consoleTableLog_inValidColumnNamesBoolean
+     * @description Tests the main function consoleTableLog with a invalid data boolean.
+     * @author Vlad Sorokin
+     * @date 2024/06/07
+     */
+    test(tst_con.cconsoleTableLog_inValidColumnNamesBoolean, async () => {
+        // Arrange
+        let classPath = '';
+        let tableData = [
+            { value: wrd.cunit + wrd.ctesting },
+            { value: wrd.ctest },
+        ];
+        let columnNames = false;
+
+        // Act
+        let returnData = await main.consoleTableLog(classPath, tableData, columnNames);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function consoleTableLog_inValidColumnNamesUndefined
+     * @description Tests the main function consoleTableLog with a invalid data undefined.
+     * @author Vlad Sorokin
+     * @date 2024/06/07
+     */
+    test(tst_con.cconsoleTableLog_inValidColumnNamesUndefined, async () => {
+        // Arrange
+        let classPath = '';
+        let tableData = [
+            { value: wrd.cunit + wrd.ctesting },
+            { value: wrd.ctest },
+        ];
+        let columnNames = undefined;
+
+        // Act
+        let returnData = await main.consoleTableLog(classPath, tableData, columnNames);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function consoleTableLog_inValidColumnNamesNaN
+     * @description Tests the main function consoleTableLog with a invalid data NaN.
+     * @author Vlad Sorokin
+     * @date 2024/06/07
+     */
+    test(tst_con.cconsoleTableLog_inValidColumnNamesNaN, async () => {
+        // Arrange
+        let classPath = '';
+        let tableData = [
+            { value: wrd.cunit + wrd.ctesting },
+            { value: wrd.ctest },
+        ];
+        let columnNames = NaN;
+
+        // Act
+        let returnData = await main.consoleTableLog(classPath, tableData, columnNames);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function consoleTableLog_inValidAllUndefined
+     * @description Tests the main function consoleTableLog with a invalid data undefined.
+     * @author Vlad Sorokin
+     * @date 2024/06/07
+     */
+    test(tst_con.cconsoleTableLog_inValidAllUndefined, async () => {
+        // Arrange
+        let classPath = undefined;
+        let tableData = undefined;
+        let columnNames = undefined;
+
+        // Act
+        let returnData = await main.consoleTableLog(classPath, tableData, columnNames);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function consoleTableLog_inValidAllNaN
+     * @description Tests the main function consoleTableLog with a invalid data NaN.
+     * @author Vlad Sorokin
+     * @date 2024/06/07
+     */
+    test(tst_con.cconsoleTableLog_inValidAllNaN, async () => {
+        // Arrange
+        let classPath = NaN;
+        let tableData = NaN;
+        let columnNames = NaN;
+
+        // Act
+        let returnData = await main.consoleTableLog(classPath, tableData, columnNames);
 
         // Assert
         expect(returnData).toBeFalsy();

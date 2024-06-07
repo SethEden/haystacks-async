@@ -117,7 +117,7 @@ export const cUnitTestName = wrd.cUnit + wrd.cTest + wrd.cHarness; // testHarnes
 /* main */
 // initFramework
 export const cinitFramework = gen.cinit + wrd.cFramework; // initFramework
-export const cinitFramework_validData = cinitFramework + bas.cUnderscore + wrd.cvalid + wrd.cData; // initFramework_validData
+export const cinitFramework_validClientConfigurationData = cinitFramework + bas.cUnderscore + wrd.cvalid + wrd.cClient + wrd.cConfiguration + wrd.cData; // initFramework_validClientConfigurationData
 export const cinitFramework_inValidClientConfigurationString = cinitFramework + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cClient + wrd.cConfiguration + wrd.cString; // initFramework_inValidClientConfigurationString 
 export const cinitFramework_inValidClientConfigurationInteger = cinitFramework + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cClient + wrd.cConfiguration + wrd.cInteger; // initFramework_inValidClientConfigurationInteger 
 export const cinitFramework_inValidClientConfigurationBoolean = cinitFramework + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cClient + wrd.cConfiguration + wrd.cBoolean; // initFramework_inValidClientConfigurationBoolean 
@@ -144,7 +144,7 @@ export const cgetFrameworkData_inValidNaN = cgetFrameworkData + bas.cUnderscore 
 
 // mergeClientBusinessRules
 export const cmergeClientBusinessRules = wrd.cmerge + wrd.cClient + wrd.cBusiness + wrd.cRules; // mergeClientBusinessRules
-export const cmergeClientBusinessRules_validData = cmergeClientBusinessRules + bas.cUnderscore + wrd.cvalid + wrd.cData; // mergeClientBusinessRules_validData
+export const cmergeClientBusinessRules_validClientBusinessRulesData = cmergeClientBusinessRules + bas.cUnderscore + wrd.cvalid + wrd.cClient + wrd.cBusiness + wrd.cRules + wrd.cData; // mergeClientBusinessRules_validClientBusinessRulesData
 export const cmergeClientBusinessRules_inValidClientBusinessRulesString = cmergeClientBusinessRules + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cClient + wrd.cBusiness + wrd.cRules + wrd.cString; // mergeClientBusinessRules_inValidClientBusinessRulesString
 export const cmergeClientBusinessRules_inValidClientBusinessRulesInteger = cmergeClientBusinessRules + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cClient + wrd.cBusiness + wrd.cRules + wrd.cInteger; // mergeClientBusinessRules_inValidClientBusinessRulesInteger
 export const cmergeClientBusinessRules_inValidClientBusinessRulesBoolean = cmergeClientBusinessRules + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cClient + wrd.cBusiness + wrd.cRules + wrd.cBoolean; // mergeClientBusinessRules_inValidClientBusinessRulesBoolean
@@ -153,7 +153,7 @@ export const cmergeClientBusinessRules_inValidClientBusinessRulesNaN = cmergeCli
 
 // mergeClientCommands
 export const cmergeClientCommands = wrd.cmerge + wrd.cClient + wrd.cCommands; // mergeClientCommands
-export const cmergeClientCommands_validData = cmergeClientCommands + bas.cUnderscore + wrd.cvalid + wrd.cData; // mergeClientCommands_validData
+export const cmergeClientCommands_validClientCommandsData = cmergeClientCommands + bas.cUnderscore + wrd.cvalid + wrd.cClient + wrd.cCommands + wrd.cData; // mergeClientCommands_validClientCommandsData
 export const cmergeClientCommands_inValidClientCommandsString = cmergeClientCommands + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cClient + wrd.cCommand + wrd.cString; // mergeClientCommands_inValidClientCommandsString
 export const cmergeClientCommands_inValidClientCommandsInteger = cmergeClientCommands + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cClient + wrd.cCommand + wrd.cInteger; // mergeClientCommands_inValidClientCommandsInteger
 export const cmergeClientCommands_inValidClientCommandsBoolean = cmergeClientCommands + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cClient + wrd.cCommand + wrd.cBoolean; // mergeClientCommands_inValidClientCommandsBoolean
@@ -210,7 +210,7 @@ export const cregisterPluginByNameAndPath_inValidPluginPathNaN = cregisterPlugin
 
 // unregisterPlugin
 export const cunregisterPluginByName = wrd.cunregister + wrd.cPlugin + wrd.cBy + wrd.cName; // unregisterPluginByName
-export const cunregisterPluginByName_validData = cunregisterPluginByName + bas.cUnderscore + wrd.cvalid + wrd.cData; // unregisterPluginByName_validPluginNameData
+export const cunregisterPluginByName_validPluginNameData = cunregisterPluginByName + bas.cUnderscore + wrd.cvalid + wrd.cPlugin + wrd.cName + wrd.cData; // unregisterPluginByName_validPluginNameData
 export const cunregisterPluginByName_inValidPluginNameString = cunregisterPluginByName + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cName + wrd.cString; // unregisterPluginByName_inValidPluginNameString
 export const cunregisterPluginByName_inValidPluginNameInteger = cunregisterPluginByName + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cName + wrd.cInteger; // unregisterPluginByName_inValidPluginNameInteger
 export const cunregisterPluginByName_inValidPluginNameBoolean = cunregisterPluginByName + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cName + wrd.cBoolean; // unregisterPluginByName_inValidPluginNameBoolean
@@ -219,7 +219,7 @@ export const cunregisterPluginByName_inValidPluginNameNaN = cunregisterPluginByN
 
 // unregisterPlugins
 export const cunregisterPlugins = wrd.cunregister + wrd.cPlugins; // cunregisterPlugins
-export const cunregisterPlugins_validData = cunregisterPlugins + bas.cUnderscore + wrd.cvalid + wrd.cData; // cunregisterPlugins_validData
+export const cunregisterPlugins_validPluginsListArrayData = cunregisterPlugins + bas.cUnderscore + wrd.cvalid + wrd.cPlugins + wrd.cList + wrd.cArray + wrd.cData; // cunregisterPlugins_validPluginsListArrayData
 export const cunregisterPlugins_inValidPluginsListArrayString = cunregisterPlugins + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugins + wrd.cList + wrd.cArray + wrd.cString; // cunregisterPlugins_inValidPluginListArrayString
 export const cunregisterPlugins_inValidPluginsListArrayInteger = cunregisterPlugins + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugins + wrd.cList + wrd.cArray + wrd.cInteger; // cunregisterPlugins_inValidPluginListArrayInteger
 export const cunregisterPlugins_inValidPluginsListArrayBoolean = cunregisterPlugins + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugins + wrd.cList + wrd.cArray + wrd.cBoolean; // cunregisterPlugins_inValidPluginListArrayBoolean
@@ -255,7 +255,7 @@ export const cwritePluginRegistryToDisk_inValidNaN = cwritePluginRegistryToDisk 
 
 // loadPlugin
 export const cloadPlugin = wrd.cload + wrd.cPlugin; // loadPlugin
-export const cloadPlugin_validData = cloadPlugin + bas.cUnderscore + wrd.cvalid + wrd.cData; // loadPlugin_validData
+export const cloadPlugin_validPluginsPathData = cloadPlugin + bas.cUnderscore + wrd.cvalid + wrd.cPlugins + wrd.cPath + wrd.cData; // loadPlugin_validPluginsPathData
 export const cloadPlugin_inValidPluginPathString = cloadPlugin + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cData + wrd.cString; // loadPlugin_inValidPluginPathString
 export const cloadPlugin_inValidPluginPathInteger = cloadPlugin + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cData + wrd.cInteger; // loadPlugin_inValidPluginPathInteger
 export const cloadPlugin_inValidPluginPathBoolean = cloadPlugin + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cData + wrd.cBoolean; // loadPlugin_inValidPluginPathBoolean
@@ -264,7 +264,7 @@ export const cloadPlugin_inValidPluginPathNaN = cloadPlugin + bas.cUnderscore + 
 
 // loadPlugins
 export const cloadPlugins = wrd.cload + wrd.cPlugins; // loadPlugin
-export const cloadPlugins_validData = cloadPlugins + bas.cUnderscore + wrd.cvalid + wrd.cData; // loadPlugin_validData
+export const cloadPlugins_validPluginsPathsData = cloadPlugins + bas.cUnderscore + wrd.cvalid + wrd.cPlugins + wrd.cPaths + wrd.cData; // loadPlugin_validPluginsPathsData
 export const cloadPlugins_inValidPluginsPathsString = cloadPlugins + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cData + wrd.cString; // loadPlugin_inValidPluginPathString
 export const cloadPlugins_inValidPluginsPathsInteger = cloadPlugins + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cData + wrd.cInteger; // loadPlugin_inValidPluginPathInteger
 export const cloadPlugins_inValidPluginsPathsBoolean = cloadPlugins + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cData + wrd.cBoolean; // loadPlugin_inValidPluginPathBoolean
@@ -277,7 +277,7 @@ export const cloadPluginsFromRegistry_validData = cloadPluginsFromRegistry + bas
 
 // unloadPlugin
 export const cunloadPlugin = wrd.cunload + wrd.cPlugin;// unloadPlugin
-export const cunloadPlugin_validData = cunloadPlugin + bas.cUnderscore + wrd.cvalid + wrd.cData; // unloadPlugin_validData
+export const cunloadPlugin_validPluginNameData = cunloadPlugin + bas.cUnderscore + wrd.cvalid + wrd.cPlugin + wrd.cName + wrd.cData; // unloadPlugin_validPluginNameData
 export const cunloadPlugin_inValidPluginNameString = cunloadPlugin + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cName + wrd.cString; // unloadPlugin_inValidPluginNameString
 export const cunloadPlugin_inValidPluginNameInteger = cunloadPlugin + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cName + wrd.cInteger; // unloadPlugin_inValidPluginNameInteger
 export const cunloadPlugin_inValidPluginNameBoolean = cunloadPlugin + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cName + wrd.cBoolean; // unloadPlugin_inValidPluginNameBoolean
@@ -286,7 +286,7 @@ export const cunloadPlugin_inValidPluginNameNaN = cunloadPlugin + bas.cUnderscor
 
 // unloadPlugins
 export const cunloadPlugins = wrd.cunload + wrd.cPlugins;//unloadPlugin
-export const cunloadPlugins_validData = cunloadPlugins + bas.cUnderscore + wrd.cvalid + wrd.cData; //unloadPlugin_validData
+export const cunloadPlugins_validPluginNamesData = cunloadPlugins + bas.cUnderscore + wrd.cvalid + wrd.cPlugin + wrd.cNames + wrd.cData; //unloadPlugin_validPluginNamesData
 export const cunloadPlugins_inValidPluginNamesString = cunloadPlugins + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cNames + wrd.cString; // unloadPlugin_inValidPluginNameString
 export const cunloadPlugins_inValidPluginNamesInteger = cunloadPlugins + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cNames + wrd.cInteger; // unloadPlugin_inValidPluginNameInteger
 export const cunloadPlugins_inValidPluginNamesBoolean = cunloadPlugins + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cNames + wrd.cBoolean; // unloadPlugin_inValidPluginNameBoolean
@@ -346,7 +346,7 @@ export const cstoreData_inValidDataNaN = cstoreData + bas.cUnderscore + wrd.cin 
 
 // getData
 export const cgetData = wrd.cget + wrd.cData; // getData
-export const cgetData_validData = cgetData + bas.cUnderscore + wrd.cvalid + wrd.cData; // cgetData_validData
+export const cgetData_validDataNameData = cgetData + bas.cUnderscore + wrd.cvalid + wrd.cData + wrd.cName + wrd.cData; // cgetData_validDataNameData
 export const cgetData_inValidDataNameInteger = cgetData + bas.cUnderscore + wrd.cin + wrd.cValue + wrd.cData + wrd.cName + wrd.cInteger; // cgetData_inValidDataNameInteger
 export const cgetData_inValidDataNameBoolean = cgetData + bas.cUnderscore + wrd.cin + wrd.cValue + wrd.cData + wrd.cName + wrd.cBoolean; // cgetData_inValidDataNameBoolean
 export const cgetData_inValidDataNameUndefined = cgetData + bas.cUnderscore + wrd.cin + wrd.cValue + wrd.cData + wrd.cName + 'Undefined'; // cgetData_inValidDataNameUndefined
@@ -354,7 +354,7 @@ export const cgetData_inValidDataNameNaN = cgetData + bas.cUnderscore + wrd.cin 
 
 // clearData
 export const cclearData = wrd.cclear + wrd.cData; // clearData
-export const cclearData_validData = cclearData + bas.cUnderscore + wrd.cvalid + wrd.cData; // clearData_validData
+export const cclearData_validDataNameData = cclearData + bas.cUnderscore + wrd.cvalid + wrd.cData + wrd.cName + wrd.cData; // clearData_validData
 export const cclearData_validDataNameUndefined = cclearData + bas.cUnderscore + wrd.cvalid + wrd.cData + wrd.cName + "Undefined"; // clearData_validDataNameUndefined
 export const cclearData_inValidDataNameInteger = cclearData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cData + wrd.cName + wrd.cInteger; // clearData_inValidDataNameInteger
 export const cclearData_inValidDataNameBoolean = cclearData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cData + wrd.cName + wrd.cBoolean; // clearData_inValidDataNameBoolean
@@ -362,7 +362,7 @@ export const cclearData_inValidDataNameNaN = cclearData + bas.cUnderscore + wrd.
 
 // executeBusinessRules
 export const cexecuteBusinessRules = wrd.cexecute + wrd.cBusiness + wrd.cRules; // executeBusinessRules
-export const cexecuteBusinessRules_validData = cexecuteBusinessRules + bas.cUnderscore + wrd.cvalid + wrd.cData; // executeBusinessRules_validData
+export const cexecuteBusinessRules_validData = cexecuteBusinessRules + bas.cUnderscore + wrd.cvalid + wrd.cData; // executeBusinessRules_validDataNameData
 export const cexecuteBusinessRules_inValidInputsString  = cexecuteBusinessRules + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cInputs + wrd.cString; // executeBusinessRules_inValidInputsString 
 export const cexecuteBusinessRules_inValidBusinessRulesString = cexecuteBusinessRules + bas.cUnderscore + wrd.cin + wrd.cValid + sys.cBusinessRules + wrd.cString; // executeBusinessRules_inValidBusinessRulesString
 export const cexecuteBusinessRules_inValidInputsInteger  = cexecuteBusinessRules + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cInputs + wrd.cInteger; // executeBusinessRules_inValidInputsInteger 
@@ -376,7 +376,7 @@ export const cexecuteBusinessRules_inValidBusinessRulesNaN = cexecuteBusinessRul
 
 // enqueueCommand
 export const cenqueueCommand = wrd.cenqueue + wrd.cCommand; // enqueueCommand
-export const cenqueueCommand_validData = cenqueueCommand + bas.cUnderscore + wrd.cvalid + wrd.cData; // enqueueCommand_validData
+export const cenqueueCommand_validCommandData = cenqueueCommand + bas.cUnderscore + wrd.cvalid + wrd.cCommand + wrd.cData; // enqueueCommand_validCommandData
 export const cenqueueCommand_inValidCommandInteger = cenqueueCommand + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cCommand + wrd.cInteger; // enqueueCommand_inValidCommandInteger
 export const cenqueueCommand_inValidCommandBoolean = cenqueueCommand + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cCommand + wrd.cBoolean; // enqueueCommand_inValidCommandBoolean
 export const cenqueueCommand_inValidCommandUndefined = cenqueueCommand + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cCommand + "Undefined"; // enqueueCommand_inValidCommandUndefined
@@ -441,6 +441,28 @@ export const cconsoleLog_inValidTheFunctionNameUndefined = cconsoleLog + bas.cUn
 export const cconsoleLog_inValidTheFunctionNameNaN = cconsoleLog + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cThe + wrd.cFunction + wrd.cName + 'NaN'; // consoleLog_inValidTheFunctionNameNaN
 export const cconsoleLog_inValidAllUndefined = cconsoleLog + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cAll + 'Undefined'; // consoleLog_inValidAllUndefined
 export const cconsoleLog_inValidAllNaN = cconsoleLog + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cAll + 'NaN'; // consoleLog_inValidAllNaN
+
+// consoleTableLog
+export const cconsoleTableLog = wrd.cconsole + wrd.cTable + wrd.cLog; // consoleTableLog
+export const cconsoleTableLog_validData = cconsoleTableLog + bas.cUnderscore + wrd.cvalid + wrd.cData; // consoleTableLog_validData
+export const cconsoleTableLog_inValidClassPathString = cconsoleTableLog + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cClass + wrd.cPath + wrd.cString; // consoleTableLog_inValidClassPathString
+export const cconsoleTableLog_inValidTableDataString = cconsoleTableLog + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cTable + wrd.cData + wrd.cString; // consoleTableLog_inValidTableDataString
+export const cconsoleTableLog_inValidColumnNamesString = cconsoleTableLog + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cColumn + wrd.cNames + wrd.cString; // consoleTableLog_inValidColumnNamesString
+export const cconsoleTableLog_inValidClassPathInteger = cconsoleTableLog + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cClass + wrd.cPath + wrd.cInteger; // consoleTableLog_inValidClassPathInteger
+export const cconsoleTableLog_inValidClassPathBoolean = cconsoleTableLog + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cClass + wrd.cPath + wrd.cBoolean; // consoleTableLog_inValidClassPathBoolean
+export const cconsoleTableLog_inValidClassPathUndefined = cconsoleTableLog + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cClass + wrd.cPath + 'Undefined'; // consoleTableLog_inValidClassPathUndefined
+export const cconsoleTableLog_inValidClassPathNaN = cconsoleTableLog + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cClass + wrd.cPath + 'NaN'; // consoleTableLog_inValidClassPathNaN
+export const cconsoleTableLog_inValidTableDataInteger = cconsoleTableLog + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cTable + wrd.cData + wrd.cInteger; // consoleTableLog_inValidTableDataInteger
+export const cconsoleTableLog_inValidTableDataBoolean = cconsoleTableLog + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cTable + wrd.cData + wrd.cBoolean; // consoleTableLog_inValidTableDataBoolean
+export const cconsoleTableLog_inValidTableDataUndefined = cconsoleTableLog + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cTable + wrd.cData + 'Undefined'; // consoleTableLog_inValidTableDataUndefined
+export const cconsoleTableLog_inValidTableDataNaN = cconsoleTableLog + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cTable + wrd.cData + 'NaN'; // consoleTableLog_inValidTableDataNaN
+export const cconsoleTableLog_inValidColumnNamesInteger = cconsoleTableLog + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cColumn + wrd.cNames + wrd.cInteger; // consoleTableLog_inValidColumnNamesInteger
+export const cconsoleTableLog_inValidColumnNamesBoolean = cconsoleTableLog + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cColumn + wrd.cNames + wrd.cBoolean; // consoleTableLog_inValidColumnNamesBoolean
+export const cconsoleTableLog_inValidColumnNamesUndefined = cconsoleTableLog + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cColumn + wrd.cNames + 'Undefined'; // consoleTableLog_inValidColumnNamesUndefined
+export const cconsoleTableLog_inValidColumnNamesNaN = cconsoleTableLog + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cColumn + wrd.cNames + 'NaN'; // consoleTableLog_inValidColumnNamesNaN
+export const cconsoleTableLog_inValidAllUndefined = cconsoleTableLog + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cAll + 'Undefined'; // consoleTableLog_inValidAllUndefined
+export const cconsoleTableLog_inValidAllNaN = cconsoleTableLog + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cAll + 'NaN'; // consoleTableLog_inValidAllNaN
+
 
 
 // Test names
