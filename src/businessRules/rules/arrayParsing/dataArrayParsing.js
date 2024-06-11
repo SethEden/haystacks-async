@@ -479,6 +479,31 @@ async function objectDeepMerge(inputData, inputMetaData) {
 }
 
 /**
+ * @function conditionalObjectAssignment
+ * @description Conditionally assigns an object or sets it to the return.
+ * @param {object} inputData An object which needs assigned or set equal to another object.
+ * @param {object} inputMetaData An object which inputData is supposed to be assigned to.
+ * @return {object} The object with newly added/assigned string.
+ * @author Vlad Sorokin
+ * @date 2024/06/10
+ */
+async function conditionalObjectAssignment(inputData, inputMetaData) {
+  let functionName = conditionalObjectAssignment.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
+  let returnData = {};
+  if (await isObjectEmpty(inputMetaData, '') === true) {
+    returnData = inputData;
+  } else {
+    returnData = Object.assign(inputMetaData, inputData);
+  }
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
+/**
  * @function getNamespacedDataObject
  * @description Navigates the D data structure JSON data object tree to find the namespace of data settings.
  * @param {array<string>} inputData The path in the data JSON object where the
@@ -578,6 +603,7 @@ export default {
   arrayDeepClone,
   objectDeepClone,
   objectDeepMerge,
+  conditionalObjectAssignment,
   getNamespacedDataObject,
   setNamespacedDataObject
 };

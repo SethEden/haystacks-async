@@ -153,6 +153,7 @@ async function initRulesLibrary() {
      [biz.carrayDeepClone]: (inputData, inputMetaData) => dataArrayParsing.arrayDeepClone(inputData, inputMetaData),
      [biz.cobjectDeepClone]: (inputData, inputMetaData) => dataArrayParsing.objectDeepClone(inputData, inputMetaData),
      [biz.cobjectDeepMerge]: (inputData, inputMetaData) => dataArrayParsing.objectDeepMerge(inputData, inputMetaData),
+     [biz.cconditionalObjectAssignment]: (inputData, inputMetaData) => dataArrayParsing.conditionalObjectAssignment(inputData, inputMetaData),
      [biz.cgetNamespacedDataObject]: (inputData, inputMetaData) => dataArrayParsing.getNamespacedDataObject(inputData, inputMetaData),
      [biz.csetNamespacedDataObject]: (inputData, inputMetaData) => dataArrayParsing.setNamespacedDataObject(inputData, inputMetaData),
 

@@ -7,6 +7,8 @@
           <Workflow Name="integrationTestsDisable" Value="changeConfigSetting debugSetting.framework.commandsBlob.commands.integrationTests false"/>
           <Workflow Name="validateConstantsEnable" Value="changeConfigSetting debugSetting.framework.commandsBlob.commands.integrationTests.validateConstants true"/>
           <Workflow Name="validateConstantsDisable" Value="changeConfigSetting debugSetting.framework.commandsBlob.commands.integrationTests.validateConstants false"/>
+          <Workflow Name="validateConstantFileEnable" Value="changeConfigSetting debugSetting.framework.commandsBlob.commands.integrationTests.validateConstantFile true"/>
+          <Workflow Name="validateConstantFileDisable" Value="changeConfigSetting debugSetting.framework.commandsBlob.commands.integrationTests.validateConstantFile false"/>
           <Workflow Name="validateCommandAliasesEnable" Value="changeConfigSetting debugSetting.framework.commandsBlob.commands.integrationTests.validateCommandAliases true"/>
           <Workflow Name="validateCommandAliasesDisable" Value="changeConfigSetting debugSetting.framework.commandsBlob.commands.integrationTests.validateCommandAliases false"/>
           <Workflow Name="validateWorkflowsEnable" Value="changeConfigSetting debugSetting.framework.commandsBlob.commands.integrationTests.validateWorkflows true"/>

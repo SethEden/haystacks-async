@@ -25,7 +25,7 @@
   "debugFunctions|debugSetting.framework.commandsBlob.commands.integrationTests.validateConstants@FunctionFontBackgroundColor": "Black",
   "debugFunctions|debugSetting.framework.commandsBlob.commands.integrationTests.validateConstants@MessageFontBackgroundColor": "Black",
   "debugFunctions|debugSetting.framework.commandsBlob.commands.integrationTests.validateConstants@DataFontBackgroundColor": "Black",
-  "debugFunctions|debugSetting.framework.commandsBlob.commands.integrationTests.validateConstantFile": true,
+  "debugFunctions|debugSetting.framework.commandsBlob.commands.integrationTests.validateConstantFile": false,
   "debugFunctions|debugSetting.framework.commandsBlob.commands.integrationTests.validateConstantFile@ModuleFontStyle": "Default",
   "debugFunctions|debugSetting.framework.commandsBlob.commands.integrationTests.validateConstantFile@FunctionFontStyle": "Default",
   "debugFunctions|debugSetting.framework.commandsBlob.commands.integrationTests.validateConstantFile@MessageFontStyle": "Default",

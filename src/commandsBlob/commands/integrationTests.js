@@ -22,6 +22,7 @@
 import commandBroker from '../../brokers/commandBroker.js';
 import ruleBroker from '../../brokers/ruleBroker.js';
 import workflowBroker from '../../brokers/workflowBroker.js';
+import dataArrayParsing from '../../businessRules/rules/arrayParsing/dataArrayParsing.js';
 import colorizer from '../../executrix/colorizer.js';
 import configurator from '../../executrix/configurator.js';
 import loggers from '../../executrix/loggers.js';
@@ -32,7 +33,7 @@ import stack from '../../structures/stack.js';
 import hayConst from '@haystacks/constants';
 import path from 'path';
 
-const {bas, biz, clr, cmd, cfg, msg, num, sys, wrd} = hayConst;
+const {bas, biz, clr, cmd, cfg, gen, msg, num, sys, wrd} = hayConst;
 const baseFileName = path.basename(import.meta.url, path.extname(import.meta.url));
 // framework.commandsBlob.commands.integrationTests.
 const namespacePrefix = wrd.cframework + bas.cDot + sys.ccommandsBlob + bas.cDot + wrd.ccommands + bas.cDot + baseFileName + bas.cDot;
@@ -193,6 +194,7 @@ async function validateConstants(inputData, inputMetaData) {
       } // End-if (await configurator.getConfigurationSetting(wrd.csystem, cfg.cenablePluginLoader))
 
       // validationArray is:
+      console.log(msg.cvalidationArrayIs, validationArray)
       await loggers.consoleLog(namespacePrefix + functionName, msg.cvalidationArrayIs + JSON.stringify(validationArray));
 
       // Phase1 Constants Validation
@@ -301,7 +303,36 @@ async function validateConstantFile(inputData, inputMetaData) {
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = [true, false];
-  let validationTypesInputArray = []; // Use this to process any inputs the user may have entered.
+  let validationFileNameInputArray = []; // Use this to process any inputs the user may have entered.
+  let validationFileNameConfirmedArray = []; // Use this once we've confirmed valid user entry for inputs given the types of validation that are available.
+  let validationFileNameConfirmedList = '';
+  let validUserEntry = false;
+  // Get the array of keys and values for all the constants that need to be validated.
+  let validationArray = []; // D[sys.cConstantsValidationData][sys.cConstantsFilePaths]; // This will return an object with all of the key-value pair attributes we need.
+  let validationBasicArray = {[sys.cBasicConstantsValidation]: D[sys.cConstantsValidationData][sys.cFramework][sys.cConstantsFilePaths][sys.cBasicConstantsValidation]};
+  let validationBusinessArray = {[sys.cBusinessConstantsValidation]: D[sys.cConstantsValidationData][sys.cFramework][sys.cConstantsFilePaths][sys.cBusinessConstantsValidation]};
+  let validationColorArray = {[sys.cColorConstantsValidation]: D[sys.cConstantsValidationData][sys.cFramework][sys.cConstantsFilePaths][sys.cColorConstantsValidation]};
+  let validationCommandArray = {[sys.cCommandConstantsValidation]: D[sys.cConstantsValidationData][sys.cFramework][sys.cConstantsFilePaths][sys.cCommandConstantsValidation]};
+  let validationConfigurationArray = {[sys.cConfigurationConstantsValidation]: D[sys.cConstantsValidationData][sys.cFramework][sys.cConstantsFilePaths][sys.cConfigurationConstantsValidation]};
+  let validationCountryArray = {[sys.cCountryConstantsValidation]: D[sys.cConstantsValidationData][sys.cFramework][sys.cConstantsFilePaths][sys.cCountryConstantsValidation]};
+  let validationElementArray = {[sys.cElementConstantsValidation]: D[sys.cConstantsValidationData][sys.cFramework][sys.cConstantsFilePaths][sys.cElementConstantsValidation]};
+  let validationFunctionArray = {[sys.cFunctionConstantsValidation]: D[sys.cConstantsValidationData][sys.cFramework][sys.cConstantsFilePaths][sys.cFunctionConstantsValidation]};
+  let validationGenericArray = {[sys.cGenericConstantsValidation]: D[sys.cConstantsValidationData][sys.cFramework][sys.cConstantsFilePaths][sys.cGenericConstantsValidation]};
+  let validationIsotopeArray = {[sys.cIsotopeConstantsValidation]: D[sys.cConstantsValidationData][sys.cFramework][sys.cConstantsFilePaths][sys.cIsotopeConstantsValidation]};
+  let validationKnotArray = {[sys.cKnotConstantsValidation]: D[sys.cConstantsValidationData][sys.cFramework][sys.cConstantsFilePaths][sys.cKnotConstantsValidation]};
+  let validationLanguageArray = {[sys.cLanguageConstantsValidation]: D[sys.cConstantsValidationData][sys.cFramework][sys.cConstantsFilePaths][sys.cLanguageConstantsValidation]};
+  let validationMessageArray = {[sys.cMessageConstantsValidation]: D[sys.cConstantsValidationData][sys.cFramework][sys.cConstantsFilePaths][sys.cMessageConstantsValidation]};
+  let validationNumericArray = {[sys.cNumericConstantsValidation]: D[sys.cConstantsValidationData][sys.cFramework][sys.cConstantsFilePaths][sys.cNumericConstantsValidation]};
+  let validationPhonicArray = {[sys.cPhonicConstantsValidation]: D[sys.cConstantsValidationData][sys.cFramework][sys.cConstantsFilePaths][sys.cPhonicConstantsValidation]};
+  let validationSystemArray = {[sys.cSystemConstantsValidation]: D[sys.cConstantsValidationData][sys.cFramework][sys.cConstantsFilePaths][sys.cSystemConstantsValidation]};
+  let validationUnitArray = {[sys.cUnitConstantsValidation]: D[sys.cConstantsValidationData][sys.cFramework][sys.cConstantsFilePaths][sys.cUnitConstantsValidation]};
+  let validationWordArray = {[sys.cWordConstantsValidation]: D[sys.cConstantsValidationData][sys.cFramework][sys.cConstantsFilePaths][sys.cWordConstantsValidation]};
+  let phase1FinalResult = true;
+  let phase2FinalResult = true;
+  let phase1Results = {};
+  let phase2Results = {};
+  let validConstantsValidationFileNames = [wrd.cBasic, wrd.cBusiness, wrd.cColor, wrd.cCommand, wrd.cConfiguration, wrd.cCountry, wrd.cElement, wrd.cFunction,
+    wrd.cGeneric, wrd.cIsotope, wrd.cKnot, wrd.cLanguage, wrd.cMessage, wrd.cNumeric, wrd.cPhonic, wrd.cSystem, wrd.cUnit, wrd.cWord];
 
   if (await configurator.getConfigurationSetting(wrd.csystem, cfg.cenableConstantsValidation) === true) {
     // Check first to see what, if any options, the user may have entered into this command,
@@ -311,49 +342,217 @@ async function validateConstantFile(inputData, inputMetaData) {
       // inputData.length is:
       await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataLengthIs + inputData.length);
       if (inputData[1].includes(bas.cComa)) {
-        validationTypesInputArray = inputData[1].split(bas.cComa);
+        validationFileNameInputArray = inputData[1].split(bas.cComa);
       } else if (inputData[1].includes(bas.cSemiColon)) {
-        validationTypesInputArray = inputData[1].split(bas.cSemiColon);
+        validationFileNameInputArray = inputData[1].split(bas.cSemiColon);
       } else if (inputData[1].includes(bas.cForwardSlash)) {
-        validationTypesInputArray = inputData[1].split(bas.cForwardSlash);
+        validationFileNameInputArray = inputData[1].split(bas.cForwardSlash);
       } else if (inputData[1].includes(bas.cBackSlash)) {
-        validationTypesInputArray = inputData[1].split(bas.cBackSlash);
+        validationFileNameInputArray = inputData[1].split(bas.cBackSlash);
       } else {
         // shift the data1!
         await loggers.consoleLog(namespacePrefix + functionName, msg.cshiftData1);
         inputData.shift();
-        validationTypesInputArray = inputData;
+        validationFileNameInputArray = inputData;
       }
     } else {
       // ERROR: Please enter a valid constants file(s) to validate.
-      console.log('ERROR: Please enter a valid constants file(s) to validate.');
+      console.log(msg.cErrorInvalidConstantsFileNameMessage01);
     }
-    // allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsFileNames][sys.cBasicConstantsValidation] = sys.cbasic_constants_js;
-    // allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsFileNames][sys.cBusinessConstantsValidation] = sys.cbusiness_constants_js;
-    // allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsFileNames][sys.cColorConstantsValidation] = sys.ccolor_constants_js;
-    // allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsFileNames][sys.cCommandConstantsValidation] = sys.ccommand_constants_js;
-    // allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsFileNames][sys.cConfigurationConstantsValidation] = sys.cconfiguration_constants_js;
-    // allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsFileNames][sys.cCountryConstantsValidation] = sys.ccountry_constants_js;
-    // allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsFileNames][sys.cElementConstantsValidation] = sys.celement_constants_js;
-    // allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsFileNames][sys.cFunctionConstantsValidation] = sys.cfunction_constants_js;
-    // allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsFileNames][sys.cGenericConstantsValidation] = sys.cgeneric_constants_js;
-    // allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsFileNames][sys.cIsotopeConstantsValidation] = sys.cisotope_constants_js;
-    // allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsFileNames][sys.cKnotConstantsValidation] = sys.cknot_constants_js;
-    // allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsFileNames][sys.cLanguageConstantsValidation] = sys.clanguage_constants_js;
-    // allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsFileNames][sys.cMessageConstantsValidation] = sys.cmessage_constants_js;
-    // allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsFileNames][sys.cNumericConstantsValidation] = sys.cnumeric_constants_js;
-    // allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsFileNames][sys.cPhonicConstantsValidation] = sys.cphonic_constants_js;
-    // allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsFileNames][sys.cSystemConstantsValidation] = sys.csystem_constants_js;
-    // allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsFileNames][sys.cUnitConstantsValidation] = sys.cunit_constants_js;
-    // allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsFileNames][sys.cWordConstantsValidation] = sys.cword_constants_js;
-    // validationTypesInputArray is:
-    await loggers.consoleLog(namespacePrefix + functionName, msg.cvalidationTypesInputArrayIs + JSON.stringify(validationTypesInputArray));
 
+    // validationFileNameInputArray is:
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cvalidationFileNameInputArrayIs + JSON.stringify(validationFileNameInputArray));
 
+    // This is where we need to process the array of inputs to normalize them to the validation file names available in the system.
+    // Available file names are: Basic,Business,Color,Command,Configuration,Country,Element,
+    // Function,Generic,Isotope,Knot,Language,Message,Numeric,Phonic,System,Unit,Word.
+    if (validationFileNameInputArray.length > 0) {
+      for (let validationFileNameKey in validationFileNameInputArray) {
+        let userEnteredValidationFileName = validationFileNameInputArray[validationFileNameKey];
+        if (userEnteredValidationFileName.toUpperCase().trim() === wrd.cBASIC || userEnteredValidationFileName.toLowerCase().trim() === gen.cbas) {
+          validationFileNameConfirmedArray.push(sys.cbasic_constants_js);
+        } else if (userEnteredValidationFileName.toUpperCase().trim() === wrd.cBUSINESS || userEnteredValidationFileName.toLowerCase().trim() === gen.cbiz) {
+          validationFileNameConfirmedArray.push(sys.cbusiness_constants_js);
+        } else if (userEnteredValidationFileName.toUpperCase().trim() === wrd.cCOLOR || userEnteredValidationFileName.toLowerCase().trim() === gen.cclr) {
+          validationFileNameConfirmedArray.push(sys.ccolor_constants_js);
+        } else if (userEnteredValidationFileName.toUpperCase().trim() === wrd.cCOMMAND || userEnteredValidationFileName.toLowerCase().trim() === gen.ccmd) {
+          validationFileNameConfirmedArray.push(sys.ccommand_constants_js);
+        } else if (userEnteredValidationFileName.toUpperCase().trim() === wrd.cCONFIGURATION || userEnteredValidationFileName.toLowerCase().trim() === gen.ccfg) {
+          validationFileNameConfirmedArray.push(sys.cconfiguration_constants_js);
+        } else if (userEnteredValidationFileName.toUpperCase().trim() === wrd.cCOUNTRY || userEnteredValidationFileName.toLowerCase().trim() === gen.cctr) {
+          validationFileNameConfirmedArray.push(sys.ccountry_constants_js);
+        } else if (userEnteredValidationFileName.toUpperCase().trim() === wrd.cELEMENT || userEnteredValidationFileName.toLowerCase().trim() === gen.celm) {
+          validationFileNameConfirmedArray.push(sys.celement_constants_js);
+        } else if (userEnteredValidationFileName.toUpperCase().trim() === wrd.cFUNCTION || userEnteredValidationFileName.toLowerCase().trim() === gen.cfnc) {
+          validationFileNameConfirmedArray.push(sys.cfunction_constants_js);
+        } else if (userEnteredValidationFileName.toUpperCase().trim() === wrd.cGENERIC || userEnteredValidationFileName.toLowerCase().trim() === gen.cgen) {
+          validationFileNameConfirmedArray.push(sys.cgeneric_constants_js);
+        } else if (userEnteredValidationFileName.toUpperCase().trim() === wrd.cISOTOPE || userEnteredValidationFileName.toLowerCase().trim() === gen.ciso) {
+          validationFileNameConfirmedArray.push(sys.cisotope_constants_js);
+        } else if (userEnteredValidationFileName.toUpperCase().trim() === wrd.cKNOT || userEnteredValidationFileName.toLowerCase().trim() === gen.cknt) {
+          validationFileNameConfirmedArray.push(sys.cknot_constants_js);
+        } else if (userEnteredValidationFileName.toUpperCase().trim() === wrd.cLANGUAGE || userEnteredValidationFileName.toLowerCase().trim() === gen.clng) {
+          validationFileNameConfirmedArray.push(sys.clanguage_constants_js);
+        } else if (userEnteredValidationFileName.toUpperCase().trim() === wrd.cMESSAGE || userEnteredValidationFileName.toLowerCase().trim() === gen.cmsg) {
+          validationFileNameConfirmedArray.push(sys.cmessage_constants_js);
+        } else if (userEnteredValidationFileName.toUpperCase().trim() === wrd.cNUMERIC || userEnteredValidationFileName.toLowerCase().trim() === gen.cnum) {
+          validationFileNameConfirmedArray.push(sys.cnumeric_constants_js);
+        } else if (userEnteredValidationFileName.toUpperCase().trim() === wrd.cPHONIC || userEnteredValidationFileName.toLowerCase().trim() === gen.cphn) {
+          validationFileNameConfirmedArray.push(sys.cphonic_constants_js);
+        } else if (userEnteredValidationFileName.toUpperCase().trim() === wrd.cSYSTEM || userEnteredValidationFileName.toLowerCase().trim() === gen.csys) {
+          validationFileNameConfirmedArray.push(sys.csystem_constants_js);
+        } else if (userEnteredValidationFileName.toUpperCase().trim() === wrd.cUNIT || userEnteredValidationFileName.toLowerCase().trim() === gen.cunt) {
+          validationFileNameConfirmedArray.push(sys.cunit_constants_js);
+        } else if (userEnteredValidationFileName.toUpperCase().trim() === wrd.cWORD || userEnteredValidationFileName.toLowerCase().trim() === gen.cwrd) {
+          validationFileNameConfirmedArray.push(sys.cword_constants_js);
+        } else {
+          // WARNING: The specified validation file name is not available, please enter a valid file name and try again. Name not recognized:
+          // Constants validation names are:
+          console.log(msg.cWarningUserEnteredValidationDataFileNameMessage01 + userEnteredValidationFileName);
+          console.log(msg.cConstantsValidationFileNamesAre + validConstantsValidationFileNames.join(bas.cComa + bas.cSpace));
+        }
+      } // End-for (let validationFileNameKey in validationFileNameInputArray)
+
+      // validationFileNameConfirmedArray is:
+      await loggers.consoleLog(namespacePrefix + functionName, msg.cvalidationFileNameConfirmedArrayIs + JSON.stringify(validationFileNameConfirmedArray));
+
+      if (validationFileNameConfirmedArray.length > 0) {
+        validationFileNameConfirmedList = validationFileNameConfirmedArray.join(bas.cComa);
+        validUserEntry = true;
+      } else {
+        // WARNING: No valid constants validation file names were entered.
+        console.log(msg.cWarningUserEnteredValidationDataFileNameMessage02);
+        // Constants validation file names are:
+        console.log(msg.cConstantsValidationFileNamesAre + validationFileNameConfirmedList.join(bas.cComa + bas.cSpace));
+      }
+    } else {
+      // WARNING: You have to enter a file name(s) to run constants validations of that file(s).
+      console.log(msg.cWarningUserEnteredValidationDataFileNameMessage03);
+    }
+
+    // validationFileNameConfirmedList is:
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cvalidationFileNameConfirmedListIs + validationFileNameConfirmedList);
+
+    if (validUserEntry) {
+      if (validationFileNameConfirmedList.includes(sys.cbasic_constants_js)) {
+        validationArray = await dataArrayParsing.conditionalObjectAssignment(validationBasicArray, validationArray);
+      }
+      if (validationFileNameConfirmedList.includes(sys.cbusiness_constants_js)) {
+        validationArray = await dataArrayParsing.conditionalObjectAssignment(validationBusinessArray, validationArray);
+      }
+      if (validationFileNameConfirmedList.includes(sys.ccolor_constants_js)) {
+        validationArray = await dataArrayParsing.conditionalObjectAssignment(validationColorArray, validationArray);
+      }
+      if (validationFileNameConfirmedList.includes(sys.ccommand_constants_js)) {
+        validationArray = await dataArrayParsing.conditionalObjectAssignment(validationCommandArray, validationArray);
+      }
+      if (validationFileNameConfirmedList.includes(sys.cconfiguration_constants_js)) {
+        validationArray = await dataArrayParsing.conditionalObjectAssignment(validationConfigurationArray, validationArray);
+      }
+      if (validationFileNameConfirmedList.includes(sys.ccountry_constants_js)) {
+        validationArray = await dataArrayParsing.conditionalObjectAssignment(validationCountryArray, validationArray);
+      }
+      if (validationFileNameConfirmedList.includes(sys.celement_constants_js)) {
+        validationArray = await dataArrayParsing.conditionalObjectAssignment(validationElementArray, validationArray);
+      }
+      if (validationFileNameConfirmedList.includes(sys.cfunction_constants_js)) {
+        validationArray = await dataArrayParsing.conditionalObjectAssignment(validationFunctionArray, validationArray);
+      }
+      if (validationFileNameConfirmedList.includes(sys.cgeneric_constants_js)) {
+        validationArray = await dataArrayParsing.conditionalObjectAssignment(validationGenericArray, validationArray);
+      }
+      if (validationFileNameConfirmedList.includes(sys.cisotope_constants_js)) {
+        validationArray = await dataArrayParsing.conditionalObjectAssignment(validationIsotopeArray, validationArray);
+      }
+      if (validationFileNameConfirmedList.includes(sys.cknot_constants_js)) {
+        validationArray = await dataArrayParsing.conditionalObjectAssignment(validationKnotArray, validationArray);
+      }
+      if (validationFileNameConfirmedList.includes(sys.clanguage_constants_js)) {
+        validationArray = await dataArrayParsing.conditionalObjectAssignment(validationLanguageArray, validationArray);
+      }
+      if (validationFileNameConfirmedList.includes(sys.cmessage_constants_js)) {
+        validationArray = await dataArrayParsing.conditionalObjectAssignment(validationMessageArray, validationArray);
+      }
+      if (validationFileNameConfirmedList.includes(sys.cnumeric_constants_js)) {
+        validationArray = await dataArrayParsing.conditionalObjectAssignment(validationNumericArray, validationArray);
+      }
+      if (validationFileNameConfirmedList.includes(sys.cphonic_constants_js)) {
+        validationArray = await dataArrayParsing.conditionalObjectAssignment(validationPhonicArray, validationArray);
+      }
+      if (validationFileNameConfirmedList.includes(sys.csystem_constants_js)) {
+        validationArray = await dataArrayParsing.conditionalObjectAssignment(validationSystemArray, validationArray);
+      }
+      if (validationFileNameConfirmedList.includes(sys.cunit_constants_js)) {
+        validationArray = await dataArrayParsing.conditionalObjectAssignment(validationUnitArray, validationArray);
+      }
+      if (validationFileNameConfirmedList.includes(sys.cword_constants_js)) {
+        validationArray = await dataArrayParsing.conditionalObjectAssignment(validationWordArray, validationArray);
+      }
+
+      // validationArray is:
+      console.log(msg.cvalidationArrayIs, validationArray)
+      await loggers.consoleLog(namespacePrefix + functionName, msg.cvalidationArrayIs + JSON.stringify(validationArray));
+
+      // Phase1 Constants Validation
+      // BEGIN Phase 1 Constants Validation
+      await loggers.consoleLog(namespacePrefix + functionName, msg.cBeginPhase1ConstantsValidation);
+      console.log(msg.cBeginPhase1ConstantsValidation);
+      // First scan through each file and validate that the constants defined in the constants code file are also contained in the validation file.
+      for (let key1 in validationArray) {
+        let constantsPath = validationArray[key1];
+        phase1Results[key1] = await ruleBroker.processRules([constantsPath, key1], [biz.cvalidateConstantsDataValidation]);
+      } // End-for (let key1 in validationArray)
+      // END Phase 1 Constants Validation
+      await loggers.consoleLog(namespacePrefix + functionName, msg.cEndPhase1ConstantsValidation);
+      // phase1Results is:
+      await loggers.consoleLog(namespacePrefix + functionName, msg.cphase1ResultsIs + JSON.stringify(phase1Results));
+
+      // Phase 2 Constants Validation
+      // BEGIN Phase 2 Constants Validation
+      await loggers.consoleLog(namespacePrefix + functionName, msg.cBeginPhase2ConstantsValidation);
+      console.log(msg.cBeginPhase2ConstantsValidation);
+      // Now verify that the values of the constants are what they are expected to be by using the constants validation data to validate.
+      for (let key2 in validationArray) {
+        phase2Results[key2] = await ruleBroker.processRules([key2, ''], [biz.cvalidateConstantsDataValues]);
+      } // End-for (let key2 in validationArray)
+      // END Phase 2 Constants Validation
+      await loggers.consoleLog(namespacePrefix + functionName, msg.cEndPhase2ConstantsValidation);
+      // phase2Results is:
+      await loggers.consoleLog(namespacePrefix + functionName, msg.cphase2ResultsIs + JSON.stringify(phase2Results));
+
+      for (let key3 in phase1Results) {
+        let constantsPhase1ValidationNamespaceParentObject = await ruleBroker.processRules([key3, ''], [biz.cgetConstantsValidationNamespaceParentObject]);
+        await loggers.constantsValidationSummaryLog(constantsPhase1ValidationNamespaceParentObject[sys.cConstantsPhase1ValidationMessages][key3], phase1Results[key3]);
+        if (phase1Results[key3] === false) {
+          phase1FinalResult = false;
+        }
+      } // End-for (let key3 in phase1ResultsArray)
+
+      for (let key4 in phase2Results) {
+        let constantsPhase2ValidationNamespaceParentObject = await ruleBroker.processRules([key4, ''], [biz.cgetConstantsValidationNamespaceParentObject]);
+        await loggers.constantsValidationSummaryLog(constantsPhase2ValidationNamespaceParentObject[sys.cConstantsPhase2ValidationMessages][key4], phase2Results[key4]);
+        if (phase2Results[key4] === false) {
+          phase2FinalResult = false;
+        }
+      } // End-for (let key4 in phase2Results)
+
+      if (phase1FinalResult === true && phase2FinalResult === true) {
+        await configurator.setConfigurationSetting(wrd.csystem, cfg.cpassAllConstantsValidation, true);
+        returnData[1] = true;
+      } else {
+        await configurator.setConfigurationSetting(wrd.csystem, cfg.cpassAllConstantsValidation, false);
+        returnData[1] = false;
+      }
+    } else {
+      await configurator.setConfigurationSetting(wrd.csystem, cfg.cpassAllConstantsValidation, false);
+      returnData[1] = false;
+    } // End-if (validUserEntry)
+  } else {
+    // The enableConstantsValidation flag is disabled. Enable this flag in the configuration settings to activate this command.
+    console.log(msg.ccconstantsGeneratorMessage3 + msg.cconstantsGeneratorMessage4);
+    await configurator.setConfigurationSetting(wrd.csystem, cfg.cpassAllConstantsValidation, false);
+    returnData[1] = false;
   }
-
-
-
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
