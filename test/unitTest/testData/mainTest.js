@@ -11,9 +11,9 @@
 
 // Internal imports
 import { numericConstantsValidation } from '@haystacks/constants/src/constantsValidation/numeric.constants.validation.js';
-import * as tst_cfg from '../tests/constants/test.configuration.constants.js';
-import * as tst_con from '../tests/constants/test.constants.js';
-import * as tst_sys from '../tests/constants/test.system.constants.js';
+import * as tst_cfg from '../tests/resources/constants/test.configuration.constants.js';
+import * as tst_con from '../tests/resources/constants/test.constants.js';
+import * as tst_sys from '../tests/resources/constants/test.system.constants.js';
 
 // External imports
 import hayConst from '@haystacks/constants';

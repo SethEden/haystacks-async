@@ -58,7 +58,7 @@ async function clearCommandsLibrary() {
 /**
  * @function initCommandsLibrary
  * @description Initializes the commands function data structure on D.
- * @return {void}
+ * @return {boolean} True or False to indicate if commandsLibrary was initialized.
  * @author Seth Hollingsead
  * @date 2022/02/04
  * @NOTE Please be aware that the Commands and BusinessRules data fields in the
@@ -69,6 +69,7 @@ async function clearCommandsLibrary() {
 async function initCommandsLibrary() {
   let functionName = initCommandsLibrary.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  let returnData = false;
   D[wrd.cCommands] = {};
   D[wrd.cCommands] = {
     // Commands
@@ -165,7 +166,12 @@ async function initCommandsLibrary() {
     [cmd.cclearUserCommandsLog]: (inputData, inputMetaData) => systemCommands.clearUserCommandsLog(inputData, inputMetaData),
     [cmd.cclearAllCommandsLog]: (inputData, inputMetaData) => systemCommands.clearAllCommandsLog(inputData, inputMetaData)
   };
+  if (D[wrd.cCommands] !== undefined) {
+    returnData = true;
+  }
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
 }
 
 export default {

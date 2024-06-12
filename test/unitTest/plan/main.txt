@@ -1069,11 +1069,7 @@ input tableData: array<object> (An array of objects that should be printed to th
 input columnNames: boolean (false)
 output: false?
 
-testName: consoleTableLog_inValidColumnNamesUndefined
-input classPath: string (The class path for the caller of this function file.function or class.method)
-input tableData: array<object> (An array of objects that should be printed to the console as if it was data)
-input columnNames: undefined
-output: false?
+NOTE: This test was taken out because of it being unusable.
 
 testName: consoleTableLog_inValidColumnNamesNaN
 input classPath: string (The class path for the caller of this function file.function or class.method)

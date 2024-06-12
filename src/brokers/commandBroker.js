@@ -38,34 +38,40 @@ const namespacePrefix = wrd.cframework + bas.cDot + wrd.cbrokers + bas.cDot + ba
 
 /**
  * @function bootStrapCommands
- * @description Captures all of the commands string-to-function cal map data in the commandsLibrary and migrates that dat a to the D-data structure.
+ * @description Captures all of the commands string-to-function call map data in the commandsLibrary and migrates that data to the D-data structure.
  * This is important now because we are going to allow the client to define their own commands separate from the system defined commands.
- * So we need a way to merge al the client defined and system defined commands into one location.
- * Then the command broker will execute commands rom the D-Data structure and not the commands library per-say.
+ * So we need a way to merge all the client defined and system defined commands into one location.
+ * Then the command broker will execute commands from the D-Data structure and not the commands library per-say.
  * This will allow the system to expand much more dynamically and even be user-defined & flexible to client needs.
- * @return {void}
+ * @return {boolean} True or False to indicate if commandsLibrary was initialized.
  * @author Seth Hollingsead
  * @date 2022/02/02
  */
 async function bootStrapCommands() {
   let functionName = bootStrapCommands.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  await commandsLibrary.initCommandsLibrary();
+  let returnData = false;
+  returnData = await commandsLibrary.initCommandsLibrary();
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
 }
 
 /**
  * @function resetCommands
  * @description Clears out and reinitializes the commands.
- * @return {void}
+ * @return {boolean} True or False to indicate if commandsLibrary was cleared out and reinitialized.
  * @date 2023/02/12
  */
 async function resetCommands() {
   let functionName = resetCommands.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  let returnData = false;
   // await commandsLibrary.clearCommandsLibrary();
-  await commandsLibrary.initCommandsLibrary();
+  returnData = await commandsLibrary.initCommandsLibrary();
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
 }
 
 /**
@@ -79,15 +85,25 @@ async function resetCommands() {
 async function addClientCommands(clientCommands) {
   let functionName = addClientCommands.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  // Object.assign(D[wrd.cCommands], clientCommands);
-  // D[wrd.cCommands] = {...D[wrd.cCommands], Object.keys(clientCommands): clientCommands[Object.keys(clientCommands)]};
-  for (const [key, value] of Object.entries(clientCommands)) {
-    // console.log('%%%%%%%%%%%%%%%%%% ---- >>>>>>>>> key is: ' + key);
-    D[wrd.cCommands] = {...D[wrd.cCommands], [`${key}`]: value};
-  } // End-for (const [key, value] of Object.entries(clientCommands))
-  // D-command stack is:
-  // console.log(namespacePrefix + functionName + bas.cColon + bas.cSpace + msg.cdCommandStackIs, D[wrd.cCommands]);
+  let returnData = false;
+  if (clientCommands && typeof clientCommands === wrd.cobject) {
+    // Object.assign(D[wrd.cCommands], clientCommands);
+    // D[wrd.cCommands] = {...D[wrd.cCommands], Object.keys(clientCommands): clientCommands[Object.keys(clientCommands)]};
+    for (const [key, value] of Object.entries(clientCommands)) {
+      // console.log('%%%%%%%%%%%%%%%%%% ---- >>>>>>>>> key is: ' + key);
+      D[wrd.cCommands] = {...D[wrd.cCommands], [`${key}`]: value};
+    } // End-for (const [key, value] of Object.entries(clientCommands))
+    // D-command stack is:
+    // console.log(namespacePrefix + functionName + bas.cColon + bas.cSpace + msg.cdCommandStackIs, D[wrd.cCommands]);
+    returnData = true;
+  } else {
+    // ERROR: clientCommands was not properly defined.
+    await console.log(msg.cErrorMergeClientCommandsMessage01);
+    returnData = false;
+  }
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
 }
 
 /**

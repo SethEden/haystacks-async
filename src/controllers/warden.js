@@ -354,16 +354,19 @@ async function mergeClientBusinessRules(clientBusinessRules) {
  * @description Merges the map of client defined command names and client defined command function calls
  * with the existing D-data structure that should already have all of the system defined commands.
  * @param {object} clientCommands A map of client defined command names and client defined command function calls.
- * @return {void}
+ * @return {boolean} True or false value to indicate if the client commands were processed correctly.
  * @author Seth Hollingsead
  * @date 2022/02/09
  */
 async function mergeClientCommands(clientCommands) {
   let functionName = mergeClientCommands.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  let returnData = false;
   // console.log(`clientCommands is: ${JSON.stringify(clientCommands)}`);
-  await chiefCommander.addClientCommands(clientCommands);
+  returnData = await chiefCommander.addClientCommands(clientCommands);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
 }
 
 /**

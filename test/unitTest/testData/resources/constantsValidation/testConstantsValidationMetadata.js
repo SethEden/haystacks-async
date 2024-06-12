@@ -20,15 +20,15 @@
  */
 
 // Internal imports
-import * as tst from '../../../tests/constants/test.constants.js';
-import * as tst_msg from '../../../tests/constants/test.message.constants.js';
-import * as tst_sys from '../../../tests/constants/test.system.constants.js';
-import * as tst_biz_cv from '../../../tests/constants/test.business.constants.validation.js';
-import * as tst_cmd_cv from '../../../tests/constants/test.command.constants.validation.js';
-import * as tst_cfg_cv from '../../../tests/constants/test.configuration.constants.validation.js';
-import * as tst_cv from '../../../tests/resources/test.constants.validation.js';
-import * as tst_msg_cv from '../../../tests/constants/test.message.constants.validation.js';
-import * as tst_sys_cv from '../../../tests/constants/test.system.constants.validation.js';
+import * as tst from '../../../tests/resources/constants/test.constants.js';
+import * as tst_msg from '../../../tests/resources/constants/test.message.constants.js';
+import * as tst_sys from '../../../tests/resources/constants/test.system.constants.js';
+import * as tst_biz_cv from '../../../tests/resources/constants/test.business.constants.validation.js';
+import * as tst_cmd_cv from '../../../tests/resources/constants/test.command.constants.validation.js';
+import * as tst_cfg_cv from '../../../tests/resources/constants/test.configuration.constants.validation.js';
+import * as tst_cv from '../../../tests/resources/constants/test.constants.validation.js';
+import * as tst_msg_cv from '../../../tests/resources/constants/test.message.constants.validation.js';
+import * as tst_sys_cv from '../../../tests/resources/constants/test.system.constants.validation.js';
 
 // External imports
 import hayConst from '@haystacks/constants';

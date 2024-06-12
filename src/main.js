@@ -248,14 +248,7 @@ async function mergeClientCommands(clientCommands) {
   let functionName = mergeClientCommands.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   let returnData;
-  if (clientCommands && typeof clientCommands === wrd.cobject) {
-    await warden.mergeClientCommands(clientCommands);
-    returnData = true;
-  } else {
-    // ERROR: clientCommands was not properly defined.
-    await console.log(msg.cErrorMergeClientCommandsMessage01);
-    returnData = false;
-  }
+  returnData = await warden.mergeClientCommands(clientCommands);
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;

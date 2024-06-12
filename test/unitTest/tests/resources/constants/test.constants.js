@@ -12,11 +12,7 @@
 import hayConst from '@haystacks/constants';
 import { basicConstantsValidation } from '@haystacks/constants/src/constantsValidation/basic.constants.validation';
 
-const {bas, cfg, fnc, gen, msg, sys, wrd} = hayConst;
-
-
-export const cUndefined = bas.cUn + bas.cde + bas.cf + bas.ci + bas.cn + bas.ce + bas.cd;
-export const cNaN = bas.cNa + bas.cN;
+const {bas, cfg, fnc, gen, msg, phn, sys, wrd} = hayConst;
 
 
 // testConstantsValidationMetadata
@@ -25,6 +21,156 @@ export const cUnitTestName = wrd.cUnit + wrd.cTest + wrd.cHarness; // testHarnes
 // Describe names
 
 /* commandBroker */
+export const cbootStrapCommands = wrd.cboot + wrd.cStrap + wrd.cCommands; // bootStrapCommands
+export const cresetCommands = wrd.creset + wrd.cCommands; // resetCommands
+export const caddClientCommands = wrd.c_add + wrd.cClient + wrd.cCommands; // addClientCommands
+
+
+
+/* dataBroker */
+
+/* ruleBroker */
+
+/* themeBroker */
+
+/* workflowBroker */
+
+/* auxiliaryArrayParsing */
+
+/* characterArrayParsing */
+
+/* commandArrayParsing */
+
+/* constantArrayParsing */
+
+/* dataArrayParsing */
+
+/* pathArrayParsing */
+
+/* wordArrayParsing */
+
+/* characterStringParsing */
+
+/* commandStringParsing */
+
+/* constantStringParsing */
+
+/* dataStringParsing */
+
+/* fileStringParsing */
+
+/* wordStringParsing */
+
+/* characterGeneration */
+
+/* fileOperations */
+
+/* lexycalAnalyzer */
+
+/* mathOperations */
+
+/* promptOperations */
+
+/* ruleParsing */
+
+/* stringGeneration */
+
+/* stringParsingUtilities */
+
+/* timeComputation */
+
+/* advanced */
+
+/* auxiliary */
+
+/* configuration */
+
+/* constant */
+
+/* dataDirectorate */
+
+/* integrationTests */
+
+/* performanceMetric */
+
+/* system */
+
+/* chiefCommander */
+
+/* chiefConfiguration */
+
+/* chiefData */
+
+/* chiefWorkflow */
+
+/* warden */
+
+/* colorizer */
+
+/* configurator */
+
+/* loggers */
+
+/* queue */
+
+/* stack */
+
+/* main */
+export const cinitFramework = gen.cinit + wrd.cFramework; // initFramework
+export const caccouterFramework = wrd.caccouter + wrd.cFramework; // accouterFramework
+export const cgetFrameworkData = wrd.cget + wrd.cFramework + wrd.cData; // getFrameworkData
+export const cmergeClientBusinessRules = wrd.cmerge + wrd.cClient + wrd.cBusiness + wrd.cRules; // mergeClientBusinessRules
+export const cmergeClientCommands = wrd.cmerge + wrd.cClient + wrd.cCommands; // mergeClientCommands
+export const clistLoadedPlugins = wrd.clist + wrd.cLoaded + wrd.cPlugins; // listLoadedPlugins
+export const clistAllPluginsInRegistry = wrd.clist + wrd.cAll + wrd.cPlugins + wrd.cIn + wrd.cRegistry; // listAllPluginsInRegistry
+export const clistAllPluginsInRegistryPath = wrd.clist + wrd.cAll + wrd.cPlugins + wrd.cIn + wrd.cRegistry + wrd.cPath; // listAllPluginsInRegistry
+export const cnumberOfPluginsInRegistry = wrd.cnumber + wrd.cOf + wrd.cPlugins + wrd.cIn + wrd.cRegistry; // numberOfPluginsInRegistry
+export const cnumberOfPluginsInRegistryPath = wrd.cnumber + wrd.cOf + wrd.cPlugins + wrd.cIn + wrd.cRegistry + wrd.cPath; // numberOfPluginsInRegistryPath
+export const cregisterPluginByNameAndPath = wrd.cregister + wrd.cPlugin + wrd.cBy + wrd.cName + wrd.cAnd + wrd.cPath; // registerPluginByNameAndPath
+export const cunregisterPluginByName = wrd.cunregister + wrd.cPlugin + wrd.cBy + wrd.cName; // unregisterPluginByName
+export const cunregisterPlugins = wrd.cunregister + wrd.cPlugins; // cunregisterPlugins
+export const csyncPluginRegistryWithPath = wrd.csync + wrd.cPlugin + wrd.cRegistry + wrd.cWith + wrd.cPath; // syncPluginRegistryWithPath
+export const cclearAllPluginRegistry = wrd.cclear + wrd.cAll + wrd.cPlugin + wrd.cRegistry; // cclearAllPluginRegistry
+export const cwritePluginRegistryToDisk = wrd.cwrite + wrd.cPlugin + wrd.cRegistry + wrd.cTo + wrd.cDisk; // cwritePluginRegistryToDisk
+export const cloadPlugin = wrd.cload + wrd.cPlugin; // loadPlugin
+export const cloadPlugins = wrd.cload + wrd.cPlugins; // loadPlugin
+export const cloadPluginsFromRegistry = wrd.cload + wrd.cPlugins + wrd.cFrom + wrd.cRegistry; // loadPluginsFromRegistry
+export const cunloadPlugin = wrd.cunload + wrd.cPlugin;// unloadPlugin
+export const cunloadPlugins = wrd.cunload + wrd.cPlugins;//unloadPlugin
+export const cunloadAllPlugins = wrd.cunload + wrd.cAll + wrd.cPlugins; // cunloadAllPlugins
+export const cgetPluginsRegistryPath = wrd.cget + wrd.cPlugins + wrd.cRegistry + wrd.cPath; // getPluginsRegistryPath
+export const cloadPluginResourceData = wrd.cload + wrd.cPlugin + wrd.cResource + wrd.cData; // loadPluginResourceData
+export const cloadAllJsonData = wrd.cload + wrd.cAll + gen.cJson + wrd.cData; // loadAllJsonData
+export const cstoreData = wrd.cstore + wrd.cData;
+export const cgetData = wrd.cget + wrd.cData; // getData
+export const cclearData = wrd.cclear + wrd.cData; // clearData
+export const cexecuteBusinessRules = wrd.cexecute + wrd.cBusiness + wrd.cRules; // executeBusinessRules
+export const cenqueueCommand = wrd.cenqueue + wrd.cCommand; // enqueueCommand
+export const cisCommandQueueEmpty = wrd.cis + wrd.cCommand + wrd.cQueue + wrd.cEmpty; // isCommandQueueEmpty
+export const cprocessCommandQueue = wrd.cprocess + wrd.cCommand + wrd.cQueue; // processCommandQueue
+export const csetConfigurationSetting = wrd.cset + wrd.cConfiguration + wrd.cSetting; // setConfigurationSetting
+export const cgetConfigurationSetting = wrd.cget + wrd.cConfiguration + wrd.cSetting; // getConfigurationSetting
+export const cconsoleLog = fnc.cconsoleLog; // consoleLog
+export const cconsoleTableLog = wrd.cconsole + wrd.cTable + wrd.cLog; // consoleTableLog
+
+
+
+// Test names
+
+/* commandBroker */
+// bootStrapCommands
+export const cbootStrapCommands_validData = cbootStrapCommands + bas.cUnderscore + wrd.cvalid + wrd.cData; // bootStrapCommands_validData
+
+// resetCommands
+export const cresetCommands_validData = cresetCommands + bas.cUnderscore + wrd.cvalid + wrd.cData; // resetCommands_validData
+
+// addClientCommands
+export const caddClientCommands_validClientCommandsData = caddClientCommands + bas.cUnderscore + wrd.cvalid + wrd.cClient + wrd.cCommands + wrd.cData; // addClientCommands_validClientCommandsData
+export const caddClientCommands_inValidClientCommandsString = caddClientCommands + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cClient + wrd.cCommands + wrd.cString; // addClientCommands_inValidClientCommandsString
+export const caddClientCommands_inValidClientCommandsInteger = caddClientCommands + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cClient + wrd.cCommands + wrd.cInteger; // addClientCommands_inValidClientCommandsInteger
+export const caddClientCommands_inValidClientCommandsBoolean = caddClientCommands + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cClient + wrd.cCommands + wrd.cBoolean; // addClientCommands_inValidClientCommandsBoolean
+export const caddClientCommands_inValidClientCommandsUndefined = caddClientCommands + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cClient + wrd.cCommands + "Undefined"; // addClientCommands_inValidClientCommandsUndefined
+export const caddClientCommands_inValidClientCommandsNaN = caddClientCommands + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cClient + wrd.cCommands + "NaN"; // addClientCommands_inValidClientCommandsNaN
 
 /* dataBroker */
 
@@ -116,7 +262,6 @@ export const cUnitTestName = wrd.cUnit + wrd.cTest + wrd.cHarness; // testHarnes
 
 /* main */
 // initFramework
-export const cinitFramework = gen.cinit + wrd.cFramework; // initFramework
 export const cinitFramework_validClientConfigurationData = cinitFramework + bas.cUnderscore + wrd.cvalid + wrd.cClient + wrd.cConfiguration + wrd.cData; // initFramework_validClientConfigurationData
 export const cinitFramework_inValidClientConfigurationString = cinitFramework + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cClient + wrd.cConfiguration + wrd.cString; // initFramework_inValidClientConfigurationString 
 export const cinitFramework_inValidClientConfigurationInteger = cinitFramework + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cClient + wrd.cConfiguration + wrd.cInteger; // initFramework_inValidClientConfigurationInteger 
@@ -125,7 +270,6 @@ export const cinitFramework_inValidClientConfigurationUndefined = cinitFramework
 export const cinitFramework_inValidClientConfigurationNaN = cinitFramework + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cClient + wrd.cConfiguration + 'NaN'; // initFramework_inValidClientConfigurationNaN 
 
 // accouterFramework
-export const caccouterFramework = wrd.caccouter + wrd.cFramework; // accouterFramework
 export const caccouterFramework_validData = caccouterFramework + bas.cUnderscore + wrd.cvalid + wrd.cData; // accouterFramework_validData 
 export const caccouterFramework_inValidDataString = caccouterFramework + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cData + wrd.cString; // accouterFramework_inValidDataString 
 export const caccouterFramework_inValidDataInteger = caccouterFramework + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cData + wrd.cInteger; // accouterFramework_inValidDataInteger 
@@ -134,7 +278,6 @@ export const caccouterFramework_inValidDataUndefined = caccouterFramework + bas.
 export const caccouterFramework_inValidDataNaN = caccouterFramework + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cData + 'NaN'; //caccouterFramework_inValidDataNaN 
 
 // getFrameworkData
-export const cgetFrameworkData = wrd.cget + wrd.cFramework + wrd.cData; // getFrameworkData
 export const cgetFrameworkData_validData = cgetFrameworkData + bas.cUnderscore + wrd.cvalid + wrd.cData; // getFrameworkData_validData
 export const cgetFrameworkData_inValidString = cgetFrameworkData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cString; // getFrameworkData_inValidString
 export const cgetFrameworkData_inValidInteger = cgetFrameworkData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cInteger; // getFrameworkData_inValidInteger
@@ -143,7 +286,6 @@ export const cgetFrameworkData_inValidUndefined = cgetFrameworkData + bas.cUnder
 export const cgetFrameworkData_inValidNaN = cgetFrameworkData + bas.cUnderscore + wrd.cin + wrd.cValid + 'NaN'; // getFrameworkData_inValidNaN
 
 // mergeClientBusinessRules
-export const cmergeClientBusinessRules = wrd.cmerge + wrd.cClient + wrd.cBusiness + wrd.cRules; // mergeClientBusinessRules
 export const cmergeClientBusinessRules_validClientBusinessRulesData = cmergeClientBusinessRules + bas.cUnderscore + wrd.cvalid + wrd.cClient + wrd.cBusiness + wrd.cRules + wrd.cData; // mergeClientBusinessRules_validClientBusinessRulesData
 export const cmergeClientBusinessRules_inValidClientBusinessRulesString = cmergeClientBusinessRules + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cClient + wrd.cBusiness + wrd.cRules + wrd.cString; // mergeClientBusinessRules_inValidClientBusinessRulesString
 export const cmergeClientBusinessRules_inValidClientBusinessRulesInteger = cmergeClientBusinessRules + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cClient + wrd.cBusiness + wrd.cRules + wrd.cInteger; // mergeClientBusinessRules_inValidClientBusinessRulesInteger
@@ -152,7 +294,6 @@ export const cmergeClientBusinessRules_inValidClientBusinessRulesUndefined = cme
 export const cmergeClientBusinessRules_inValidClientBusinessRulesNaN = cmergeClientBusinessRules + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cClient + wrd.cBusiness + wrd.cRules + 'Undefined'; // mergeClientBusinessRules_inValidClientBusinessRulesNaN
 
 // mergeClientCommands
-export const cmergeClientCommands = wrd.cmerge + wrd.cClient + wrd.cCommands; // mergeClientCommands
 export const cmergeClientCommands_validClientCommandsData = cmergeClientCommands + bas.cUnderscore + wrd.cvalid + wrd.cClient + wrd.cCommands + wrd.cData; // mergeClientCommands_validClientCommandsData
 export const cmergeClientCommands_inValidClientCommandsString = cmergeClientCommands + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cClient + wrd.cCommand + wrd.cString; // mergeClientCommands_inValidClientCommandsString
 export const cmergeClientCommands_inValidClientCommandsInteger = cmergeClientCommands + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cClient + wrd.cCommand + wrd.cInteger; // mergeClientCommands_inValidClientCommandsInteger
@@ -165,7 +306,6 @@ export const cmergeClientCommands_inValidClientCommandsNaN = cmergeClientCommand
 // loadCommandWorkflow
 
 // listLoadedPlugins
-export const clistLoadedPlugins = wrd.clist + wrd.cLoaded + wrd.cPlugins; // listLoadedPlugins
 export const clistLoadedPlugins_validData = clistLoadedPlugins + bas.cUnderscore + wrd.cvalid + wrd.cData; // listLoadedPlugins_validData
 export const clistLoadedPlugins_inValidString = clistLoadedPlugins + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cString; // listLoadedPlugins_inValidString
 export const clistLoadedPlugins_inValidInteger = clistLoadedPlugins + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cInteger; // listLoadedPlugins_inValidInteger
@@ -174,7 +314,6 @@ export const clistLoadedPlugins_inValidUndefined = clistLoadedPlugins + bas.cUnd
 export const clistLoadedPlugins_inValidNaN = clistLoadedPlugins + bas.cUnderscore + wrd.cin + wrd.cValid + "NaN"; // listLoadedPlugins_inValidNaN
 
 // listAllPluginsInRegistry
-export const clistAllPluginsInRegistry = wrd.clist + wrd.cAll + wrd.cPlugins + wrd.cIn + wrd.cRegistry; // listAllPluginsInRegistry
 export const clistAllPluginsInRegistry_validData = clistAllPluginsInRegistry + bas.cUnderscore + wrd.cvalid + wrd.cData; // listLoadedPlugins_validData
 export const clistAllPluginsInRegistry_inValidString = clistAllPluginsInRegistry + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cString; // clistAllPluginsInRegistry_inValidString
 export const clistAllPluginsInRegistry_inValidInteger = clistAllPluginsInRegistry + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cInteger; // clistAllPluginsInRegistry_inValidInteger
@@ -183,19 +322,15 @@ export const clistAllPluginsInRegistry_inValidUndefined = clistAllPluginsInRegis
 export const clistAllPluginsInRegistry_inValidNaN = clistAllPluginsInRegistry + bas.cUnderscore + wrd.cin + wrd.cValid + "NaN"; // clistAllPluginsInRegistry_inValidNaN
 
 // listAllPluginsInRegistryPath
-export const clistAllPluginsInRegistryPath = wrd.clist + wrd.cAll + wrd.cPlugins + wrd.cIn + wrd.cRegistry + wrd.cPath; // listAllPluginsInRegistry
 export const clistAllPluginsInRegistryPath_validData = clistAllPluginsInRegistryPath + bas.cUnderscore + wrd.cvalid + wrd.cData; // listAllPluginsInRegistry_validData
 
 // numberOfPluginsInRegistry
-export const cnumberOfPluginsInRegistry = wrd.cnumber + wrd.cOf + wrd.cPlugins + wrd.cIn + wrd.cRegistry; // numberOfPluginsInRegistry
 export const cnumberOfPluginsInRegistry_validData = cnumberOfPluginsInRegistry + bas.cUnderscore + wrd.cvalid + wrd.cData; // numberOfPluginsInRegistry_validData
 
 // numberOfPluginsInRegistryPath
-export const cnumberOfPluginsInRegistryPath = wrd.cnumber + wrd.cOf + wrd.cPlugins + wrd.cIn + wrd.cRegistry + wrd.cPath; // numberOfPluginsInRegistryPath
 export const cnumberOfPluginsInRegistryPath_validData = cnumberOfPluginsInRegistryPath + bas.cUnderscore + wrd.cvalid + wrd.cData; // numberOfPluginsInRegistryPath_validData
 
 // registerPluginByNameAndPath
-export const cregisterPluginByNameAndPath = wrd.cregister + wrd.cPlugin + wrd.cBy + wrd.cName + wrd.cAnd + wrd.cPath; // registerPluginByNameAndPath
 export const cregisterPluginByNameAndPath_validData = cregisterPluginByNameAndPath + bas.cUnderscore + wrd.cvalid + wrd.cData; // registerPluginByNameAndPath_validData
 export const cregisterPluginByNameAndPath_inValidPluginNameString = cregisterPluginByNameAndPath + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cName + wrd.cString; // registerPluginByNameAndPath_inValidPluginNameString
 export const cregisterPluginByNameAndPath_inValidPluginPathString = cregisterPluginByNameAndPath + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cPath + wrd.cString; // registerPluginByNameAndPath_inValidPluginPathString
@@ -209,7 +344,6 @@ export const cregisterPluginByNameAndPath_inValidPluginPathUndefined = cregister
 export const cregisterPluginByNameAndPath_inValidPluginPathNaN = cregisterPluginByNameAndPath + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cPath + "NaN"; // registerPluginByNameAndPath_inValidPluginPathNaN
 
 // unregisterPlugin
-export const cunregisterPluginByName = wrd.cunregister + wrd.cPlugin + wrd.cBy + wrd.cName; // unregisterPluginByName
 export const cunregisterPluginByName_validPluginNameData = cunregisterPluginByName + bas.cUnderscore + wrd.cvalid + wrd.cPlugin + wrd.cName + wrd.cData; // unregisterPluginByName_validPluginNameData
 export const cunregisterPluginByName_inValidPluginNameString = cunregisterPluginByName + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cName + wrd.cString; // unregisterPluginByName_inValidPluginNameString
 export const cunregisterPluginByName_inValidPluginNameInteger = cunregisterPluginByName + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cName + wrd.cInteger; // unregisterPluginByName_inValidPluginNameInteger
@@ -218,7 +352,6 @@ export const cunregisterPluginByName_inValidPluginNameUndefined = cunregisterPlu
 export const cunregisterPluginByName_inValidPluginNameNaN = cunregisterPluginByName + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cName + "NaN"; // unregisterPluginByName_inValidPluginNameNaN
 
 // unregisterPlugins
-export const cunregisterPlugins = wrd.cunregister + wrd.cPlugins; // cunregisterPlugins
 export const cunregisterPlugins_validPluginsListArrayData = cunregisterPlugins + bas.cUnderscore + wrd.cvalid + wrd.cPlugins + wrd.cList + wrd.cArray + wrd.cData; // cunregisterPlugins_validPluginsListArrayData
 export const cunregisterPlugins_inValidPluginsListArrayString = cunregisterPlugins + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugins + wrd.cList + wrd.cArray + wrd.cString; // cunregisterPlugins_inValidPluginListArrayString
 export const cunregisterPlugins_inValidPluginsListArrayInteger = cunregisterPlugins + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugins + wrd.cList + wrd.cArray + wrd.cInteger; // cunregisterPlugins_inValidPluginListArrayInteger
@@ -227,7 +360,6 @@ export const cunregisterPlugins_inValidPluginsListArrayUndefined = cunregisterPl
 export const cunregisterPlugins_inValidPluginsListArrayNaN = cunregisterPlugins + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugins + wrd.cList + wrd.cArray + "NaN"; // cunregisterPlugins_inValidPluginListArrayNaN
 
 // syncPluginRegistryWithPath
-export const csyncPluginRegistryWithPath = wrd.csync + wrd.cPlugin + wrd.cRegistry + wrd.cWith + wrd.cPath; // syncPluginRegistryWithPath
 export const csyncPluginRegistryWithPath_validData = csyncPluginRegistryWithPath + bas.cUnderscore + wrd.cvalid + wrd.cData; // syncPluginRegistryWithPath_validData
 export const csyncPluginRegistryWithPath_inValidString = csyncPluginRegistryWithPath + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cString; // syncPluginRegistryWithPath_inValidString
 export const csyncPluginRegistryWithPath_inValidInteger = csyncPluginRegistryWithPath + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cInteger; // syncPluginRegistryWithPath_inValidInteger
@@ -236,7 +368,6 @@ export const csyncPluginRegistryWithPath_inValidUndefined = csyncPluginRegistryW
 export const csyncPluginRegistryWithPath_inValidNaN = csyncPluginRegistryWithPath + bas.cUnderscore + wrd.cin + wrd.cValid + "NaN"; // syncPluginRegistryWithPath_inValidNaN
 
 // clearAllPluginRegistry
-export const cclearAllPluginRegistry = wrd.cclear + wrd.cAll + wrd.cPlugin + wrd.cRegistry; // cclearAllPluginRegistry
 export const cclearAllPluginRegistry_validData = cclearAllPluginRegistry + bas.cUnderscore + wrd.cvalid + wrd.cData; // cclearAllPluginRegistry_validData
 export const cclearAllPluginRegistry_inValidString = cclearAllPluginRegistry + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cString; // cclearAllPluginRegistry_inValidString
 export const cclearAllPluginRegistry_inValidInteger = cclearAllPluginRegistry + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cInteger; // cclearAllPluginRegistry_inValidInteger
@@ -245,7 +376,6 @@ export const cclearAllPluginRegistry_inValidUndefined = cclearAllPluginRegistry 
 export const cclearAllPluginRegistry_inValidNaN = cclearAllPluginRegistry + bas.cUnderscore + wrd.cin + wrd.cValid + 'NaN'; // cclearAllPluginRegistry_inValidNaN
 
 // writePluginRegistryToDisk
-export const cwritePluginRegistryToDisk = wrd.cwrite + wrd.cPlugin + wrd.cRegistry + wrd.cTo + wrd.cDisk; // cwritePluginRegistryToDisk
 export const cwritePluginRegistryToDisk_validData = cwritePluginRegistryToDisk + bas.cUnderscore + wrd.cvalid + wrd.cData; // cwritePluginRegistryToDisk_validData
 export const cwritePluginRegistryToDisk_inValidString = cwritePluginRegistryToDisk + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cString; // cwritePluginRegistryToDisk_inValidString
 export const cwritePluginRegistryToDisk_inValidInteger = cwritePluginRegistryToDisk + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cInteger; // cwritePluginRegistryToDisk_inValidInteger
@@ -254,7 +384,6 @@ export const cwritePluginRegistryToDisk_inValidUndefined = cwritePluginRegistryT
 export const cwritePluginRegistryToDisk_inValidNaN = cwritePluginRegistryToDisk + bas.cUnderscore + wrd.cin + wrd.cValid + 'NaN'; // cwritePluginRegistryToDisk_inValidNaN
 
 // loadPlugin
-export const cloadPlugin = wrd.cload + wrd.cPlugin; // loadPlugin
 export const cloadPlugin_validPluginsPathData = cloadPlugin + bas.cUnderscore + wrd.cvalid + wrd.cPlugins + wrd.cPath + wrd.cData; // loadPlugin_validPluginsPathData
 export const cloadPlugin_inValidPluginPathString = cloadPlugin + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cData + wrd.cString; // loadPlugin_inValidPluginPathString
 export const cloadPlugin_inValidPluginPathInteger = cloadPlugin + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cData + wrd.cInteger; // loadPlugin_inValidPluginPathInteger
@@ -263,7 +392,6 @@ export const cloadPlugin_inValidPluginPathUndefined = cloadPlugin + bas.cUndersc
 export const cloadPlugin_inValidPluginPathNaN = cloadPlugin + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cData + 'NaN'; // loadPlugin_inValidPluginPathNaN
 
 // loadPlugins
-export const cloadPlugins = wrd.cload + wrd.cPlugins; // loadPlugin
 export const cloadPlugins_validPluginsPathsData = cloadPlugins + bas.cUnderscore + wrd.cvalid + wrd.cPlugins + wrd.cPaths + wrd.cData; // loadPlugin_validPluginsPathsData
 export const cloadPlugins_inValidPluginsPathsString = cloadPlugins + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cData + wrd.cString; // loadPlugin_inValidPluginPathString
 export const cloadPlugins_inValidPluginsPathsInteger = cloadPlugins + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cData + wrd.cInteger; // loadPlugin_inValidPluginPathInteger
@@ -272,11 +400,9 @@ export const cloadPlugins_inValidPluginsPathsUndefined = cloadPlugins + bas.cUnd
 export const cloadPlugins_inValidPluginsPathsNaN = cloadPlugins + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cData + 'NaN'; // loadPlugin_inValidPluginPathNaN
 
 // loadPluginsFromRegistry
-export const cloadPluginsFromRegistry = wrd.cload + wrd.cPlugins + wrd.cFrom + wrd.cRegistry; // loadPluginsFromRegistry
 export const cloadPluginsFromRegistry_validData = cloadPluginsFromRegistry + bas.cUnderscore + wrd.cvalid + wrd.cData; // loadPluginsFromRegistry_validData
 
 // unloadPlugin
-export const cunloadPlugin = wrd.cunload + wrd.cPlugin;// unloadPlugin
 export const cunloadPlugin_validPluginNameData = cunloadPlugin + bas.cUnderscore + wrd.cvalid + wrd.cPlugin + wrd.cName + wrd.cData; // unloadPlugin_validPluginNameData
 export const cunloadPlugin_inValidPluginNameString = cunloadPlugin + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cName + wrd.cString; // unloadPlugin_inValidPluginNameString
 export const cunloadPlugin_inValidPluginNameInteger = cunloadPlugin + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cName + wrd.cInteger; // unloadPlugin_inValidPluginNameInteger
@@ -285,7 +411,6 @@ export const cunloadPlugin_inValidPluginNameUndefined = cunloadPlugin + bas.cUnd
 export const cunloadPlugin_inValidPluginNameNaN = cunloadPlugin + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cName + "NaN"; // unloadPlugin_inValidPluginNameNaN
 
 // unloadPlugins
-export const cunloadPlugins = wrd.cunload + wrd.cPlugins;//unloadPlugin
 export const cunloadPlugins_validPluginNamesData = cunloadPlugins + bas.cUnderscore + wrd.cvalid + wrd.cPlugin + wrd.cNames + wrd.cData; //unloadPlugin_validPluginNamesData
 export const cunloadPlugins_inValidPluginNamesString = cunloadPlugins + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cNames + wrd.cString; // unloadPlugin_inValidPluginNameString
 export const cunloadPlugins_inValidPluginNamesInteger = cunloadPlugins + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cNames + wrd.cInteger; // unloadPlugin_inValidPluginNameInteger
@@ -294,16 +419,13 @@ export const cunloadPlugins_inValidPluginNamesUndefined = cunloadPlugins + bas.c
 export const cunloadPlugins_inValidPluginNamesNaN = cunloadPlugins + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cNames + "NaN"; // unloadPlugin_inValidPluginNameNaN
 
 // unloadAllPlugins
-export const cunloadAllPlugins = wrd.cunload + wrd.cAll + wrd.cPlugins; // cunloadAllPlugins
 export const cunloadAllPlugins_validData = cunloadAllPlugins + bas.cUnderscore + wrd.cvalid + wrd.cData; // unloadAllPlugins_validData
 export const cunloadAllPlugins_emptyData = cunloadAllPlugins + bas.cUnderscore + wrd.cempty + wrd.cData; // unloadAllPlugins_emptyData
 
 // getPluginsRegistryPath
-export const cgetPluginsRegistryPath = wrd.cget + wrd.cPlugins + wrd.cRegistry + wrd.cPath; // getPluginsRegistryPath
 export const cgetPluginsRegistryPath_validData = cgetPluginsRegistryPath + bas.cUnderscore + wrd.cvalid + wrd.cData; // getPluginsRegistryPath_validData
 
 // loadPluginResourceData 
-export const cloadPluginResourceData = wrd.cload + wrd.cPlugin + wrd.cResource + wrd.cData; // loadPluginResourceData
 export const cloadPluginResourceData_validConfigurationData = cloadPluginResourceData + bas.cUnderscore + wrd.cvalid + wrd.cConfiguration + wrd.cData; // loadPluginResourceData_validConfigurationData
 export const cloadPluginResourceData_validCommanderAliasesData = cloadPluginResourceData + bas.cUnderscore + wrd.cvalid + wrd.cCommander + wrd.cData; // loadPluginResourceData_validCommanderAliasesData
 export const cloadPluginResourceData_validWorkflowsData = cloadPluginResourceData + bas.cUnderscore + wrd.cvalid + wrd.cWorkflows + wrd.cData; // loadPluginResourceData_validWorkflowsData
@@ -320,7 +442,6 @@ export const cloadPluginResourceData_inValidPluginConfigPathUndefined = cloadPlu
 export const cloadPluginResourceData_inValidPluginConfigPathNaN = cloadPluginResourceData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cConfig + wrd.cResource + wrd.cData; // loadPluginResourceData_inValidPluginConfigPathNaN
 
 // loadAllJsonData
-export const cloadAllJsonData = wrd.cload + wrd.cAll + gen.cJson + wrd.cData; // loadAllJsonData
 export const cloadAllJsonData_validData = cloadAllJsonData + bas.cUnderscore + wrd.cvalid + wrd.cData; // loadAllJsonData_validData
 export const cloadAllJsonData_inValidDataPathString = cloadAllJsonData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cData + wrd.cPath + wrd.cString; // loadAllJsonData_inValidDataPathString
 export const cloadAllJsonData_inValidContextNameString = cloadAllJsonData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cContext + wrd.cName + wrd.cString; // loadAllJsonData_inValidContextNameString
@@ -334,7 +455,6 @@ export const cloadAllJsonData_inValidContextNameUndefined = cloadAllJsonData + b
 export const cloadAllJsonData_inValidContextNameNaN = cloadAllJsonData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cContext + wrd.cName + 'NaN'; // loadAllJsonData_inValidContextNameNaN
 
 // storeData
-export const cstoreData = wrd.cstore + wrd.cData;
 export const cstoreData_validData = cstoreData + bas.cUnderscore + wrd.cvalid + wrd.cName; // cstoreData_validData
 export const cstoreData_inValidDataName = cstoreData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cData + wrd.cName; // cstoreData_inValidDataName
 export const cstoreData_inValidDataNameInteger = cstoreData + cstoreData_inValidDataName + wrd.cInteger; // cstoreData_inValidDataNameInteger
@@ -345,7 +465,6 @@ export const cstoreData_inValidDataUndefined = cstoreData + bas.cUnderscore + wr
 export const cstoreData_inValidDataNaN = cstoreData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cData + 'NaN'; // cstoreData_inValidDataNaN
 
 // getData
-export const cgetData = wrd.cget + wrd.cData; // getData
 export const cgetData_validDataNameData = cgetData + bas.cUnderscore + wrd.cvalid + wrd.cData + wrd.cName + wrd.cData; // cgetData_validDataNameData
 export const cgetData_inValidDataNameInteger = cgetData + bas.cUnderscore + wrd.cin + wrd.cValue + wrd.cData + wrd.cName + wrd.cInteger; // cgetData_inValidDataNameInteger
 export const cgetData_inValidDataNameBoolean = cgetData + bas.cUnderscore + wrd.cin + wrd.cValue + wrd.cData + wrd.cName + wrd.cBoolean; // cgetData_inValidDataNameBoolean
@@ -353,7 +472,6 @@ export const cgetData_inValidDataNameUndefined = cgetData + bas.cUnderscore + wr
 export const cgetData_inValidDataNameNaN = cgetData + bas.cUnderscore + wrd.cin + wrd.cValue + wrd.cData + wrd.cName + 'NaN'; // cgetData_inValidDataNameNaN
 
 // clearData
-export const cclearData = wrd.cclear + wrd.cData; // clearData
 export const cclearData_validDataNameData = cclearData + bas.cUnderscore + wrd.cvalid + wrd.cData + wrd.cName + wrd.cData; // clearData_validData
 export const cclearData_validDataNameUndefined = cclearData + bas.cUnderscore + wrd.cvalid + wrd.cData + wrd.cName + "Undefined"; // clearData_validDataNameUndefined
 export const cclearData_inValidDataNameInteger = cclearData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cData + wrd.cName + wrd.cInteger; // clearData_inValidDataNameInteger
@@ -361,7 +479,6 @@ export const cclearData_inValidDataNameBoolean = cclearData + bas.cUnderscore + 
 export const cclearData_inValidDataNameNaN = cclearData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cData + wrd.cName + "NaN"; // clearData_inValidDataNameNaN
 
 // executeBusinessRules
-export const cexecuteBusinessRules = wrd.cexecute + wrd.cBusiness + wrd.cRules; // executeBusinessRules
 export const cexecuteBusinessRules_validData = cexecuteBusinessRules + bas.cUnderscore + wrd.cvalid + wrd.cData; // executeBusinessRules_validDataNameData
 export const cexecuteBusinessRules_inValidInputsString  = cexecuteBusinessRules + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cInputs + wrd.cString; // executeBusinessRules_inValidInputsString 
 export const cexecuteBusinessRules_inValidBusinessRulesString = cexecuteBusinessRules + bas.cUnderscore + wrd.cin + wrd.cValid + sys.cBusinessRules + wrd.cString; // executeBusinessRules_inValidBusinessRulesString
@@ -375,7 +492,6 @@ export const cexecuteBusinessRules_inValidBusinessRulesUndefined = cexecuteBusin
 export const cexecuteBusinessRules_inValidBusinessRulesNaN = cexecuteBusinessRules + bas.cUnderscore + wrd.cin + wrd.cValid + sys.cBusinessRules + 'NaN'; // executeBusinessRules_inValidBusinessRulesNaN
 
 // enqueueCommand
-export const cenqueueCommand = wrd.cenqueue + wrd.cCommand; // enqueueCommand
 export const cenqueueCommand_validCommandData = cenqueueCommand + bas.cUnderscore + wrd.cvalid + wrd.cCommand + wrd.cData; // enqueueCommand_validCommandData
 export const cenqueueCommand_inValidCommandInteger = cenqueueCommand + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cCommand + wrd.cInteger; // enqueueCommand_inValidCommandInteger
 export const cenqueueCommand_inValidCommandBoolean = cenqueueCommand + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cCommand + wrd.cBoolean; // enqueueCommand_inValidCommandBoolean
@@ -383,16 +499,13 @@ export const cenqueueCommand_inValidCommandUndefined = cenqueueCommand + bas.cUn
 export const cenqueueCommand_inValidCommandNaN = cenqueueCommand + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cCommand + "NaN"; // enqueueCommand_inValidCommandNaN
 
 // isCommandQueueEmpty
-export const cisCommandQueueEmpty = wrd.cis + wrd.cCommand + wrd.cQueue + wrd.cEmpty; // isCommandQueueEmpty
 export const cisCommandQueueEmpty_validTruthyData = cisCommandQueueEmpty + bas.cUnderscore + wrd.cvalid + gen.cTruthy + wrd.cData; // isCommandQueueEmpty_validData
 export const cisCommandQueueEmpty_validFalsyData = cisCommandQueueEmpty + bas.cUnderscore + wrd.cvalid + gen.cFalsy + wrd.cData; // isCommandQueueEmpty_validData
 
 // processCommandQueue
-export const cprocessCommandQueue = wrd.cprocess + wrd.cCommand + wrd.cQueue; // processCommandQueue
 export const cprocessCommandQueue_validData = cprocessCommandQueue + bas.cUnderscore + wrd.cvalid + wrd.cData; // processCommandQueue_validData
 
 // setConfigurationSetting
-export const csetConfigurationSetting = wrd.cset + wrd.cConfiguration + wrd.cSetting; // setConfigurationSetting
 export const csetConfigurationSetting_validData = csetConfigurationSetting + bas.cUnderscore + wrd.cvalid + wrd.cData; // setConfigurationSetting_validData
 export const csetConfigurationSetting_inValidConfigurationNamespaceString = csetConfigurationSetting + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cConfiguration + wrd.cName + wrd.cspace + wrd.cString; // setConfigurationSetting_inValid ConfigurationNamespaceString
 export const csetConfigurationSetting_inValidConfigurationNameString = csetConfigurationSetting + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cConfiguration + wrd.cName + wrd.cString; // setConfigurationSetting_inValidConfigurationNameString
@@ -413,7 +526,6 @@ export const csetConfigurationSetting_inValidAllUndefined = csetConfigurationSet
 export const csetConfigurationSetting_inValidAllNaN = csetConfigurationSetting + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cAll + 'NaN'; // setConfigurationSetting_inValidAllNaN
 
 // getConfigurationSetting
-export const cgetConfigurationSetting = wrd.cget + wrd.cConfiguration + wrd.cSetting; // getConfigurationSetting
 export const cgetConfigurationSetting_validData = cgetConfigurationSetting + bas.cUnderscore + wrd.cvalid + wrd.cData; // getConfigurationSetting_validData
 export const cgetConfigurationSetting_inValidConfigurationNamespaceString = cgetConfigurationSetting + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cConfiguration + wrd.cName + wrd.cspace + wrd.cString; // getConfigurationSetting_inValid ConfigurationNamespaceString
 export const cgetConfigurationSetting_inValidConfigurationNameString = cgetConfigurationSetting + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cConfiguration + wrd.cName + wrd.cString; // getConfigurationSetting_inValidConfigurationNameString
@@ -427,7 +539,6 @@ export const cgetConfigurationSetting_inValidConfigurationNameUndefined = cgetCo
 export const cgetConfigurationSetting_inValidConfigurationNameNaN = cgetConfigurationSetting + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cConfiguration + wrd.cName + 'NaN'; // getConfigurationSetting_inValidConfigurationNameNaN
 
 // consoleLog
-export const cconsoleLog = fnc.cconsoleLog; // consoleLog
 export const cconsoleLog_validData = cconsoleLog + bas.cUnderscore + wrd.cvalid + wrd.cData; // consoleLog_validData
 export const cconsoleLog_inValidTheNamespacePrefixString = cconsoleLog + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cThe + wrd.cNamespace + wrd.cPrefix + wrd.cString; // consoleLog_inValidTheNamespacePrefixString
 export const cconsoleLog_inValidTheFunctionNameString = cconsoleLog + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cThe + wrd.cFunction + wrd.cName + wrd.cString; // consoleLog_inValidTheFunctionNameString
@@ -443,7 +554,6 @@ export const cconsoleLog_inValidAllUndefined = cconsoleLog + bas.cUnderscore + w
 export const cconsoleLog_inValidAllNaN = cconsoleLog + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cAll + 'NaN'; // consoleLog_inValidAllNaN
 
 // consoleTableLog
-export const cconsoleTableLog = wrd.cconsole + wrd.cTable + wrd.cLog; // consoleTableLog
 export const cconsoleTableLog_validData = cconsoleTableLog + bas.cUnderscore + wrd.cvalid + wrd.cData; // consoleTableLog_validData
 export const cconsoleTableLog_inValidClassPathString = cconsoleTableLog + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cClass + wrd.cPath + wrd.cString; // consoleTableLog_inValidClassPathString
 export const cconsoleTableLog_inValidTableDataString = cconsoleTableLog + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cTable + wrd.cData + wrd.cString; // consoleTableLog_inValidTableDataString
@@ -458,106 +568,9 @@ export const cconsoleTableLog_inValidTableDataUndefined = cconsoleTableLog + bas
 export const cconsoleTableLog_inValidTableDataNaN = cconsoleTableLog + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cTable + wrd.cData + 'NaN'; // consoleTableLog_inValidTableDataNaN
 export const cconsoleTableLog_inValidColumnNamesInteger = cconsoleTableLog + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cColumn + wrd.cNames + wrd.cInteger; // consoleTableLog_inValidColumnNamesInteger
 export const cconsoleTableLog_inValidColumnNamesBoolean = cconsoleTableLog + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cColumn + wrd.cNames + wrd.cBoolean; // consoleTableLog_inValidColumnNamesBoolean
-export const cconsoleTableLog_inValidColumnNamesUndefined = cconsoleTableLog + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cColumn + wrd.cNames + 'Undefined'; // consoleTableLog_inValidColumnNamesUndefined
 export const cconsoleTableLog_inValidColumnNamesNaN = cconsoleTableLog + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cColumn + wrd.cNames + 'NaN'; // consoleTableLog_inValidColumnNamesNaN
 export const cconsoleTableLog_inValidAllUndefined = cconsoleTableLog + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cAll + 'Undefined'; // consoleTableLog_inValidAllUndefined
 export const cconsoleTableLog_inValidAllNaN = cconsoleTableLog + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cAll + 'NaN'; // consoleTableLog_inValidAllNaN
-
-
-
-// Test names
-
-/* commandBroker */
-
-/* dataBroker */
-
-/* ruleBroker */
-
-/* themeBroker */
-
-/* workflowBroker */
-
-/* auxiliaryArrayParsing */
-
-/* characterArrayParsing */
-
-/* commandArrayParsing */
-
-/* constantArrayParsing */
-
-/* dataArrayParsing */
-
-/* pathArrayParsing */
-
-/* wordArrayParsing */
-
-/* characterStringParsing */
-
-/* commandStringParsing */
-
-/* constantStringParsing */
-
-/* dataStringParsing */
-
-/* fileStringParsing */
-
-/* wordStringParsing */
-
-/* characterGeneration */
-
-/* fileOperations */
-
-/* lexycalAnalyzer */
-
-/* mathOperations */
-
-/* promptOperations */
-
-/* ruleParsing */
-
-/* stringGeneration */
-
-/* stringParsingUtilities */
-
-/* timeComputation */
-
-/* advanced */
-
-/* auxiliary */
-
-/* configuration */
-
-/* constant */
-
-/* dataDirectorate */
-
-/* integrationTests */
-
-/* performanceMetric */
-
-/* system */
-
-/* chiefCommander */
-
-/* chiefConfiguration */
-
-/* chiefData */
-
-/* chiefWorkflow */
-
-/* warden */
-
-/* colorizer */
-
-/* configurator */
-
-/* loggers */
-
-/* queue */
-
-/* stack */
-
-/* main */
 
 
 /* test constants */

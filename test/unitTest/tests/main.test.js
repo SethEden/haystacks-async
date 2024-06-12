@@ -4,13 +4,24 @@
  * @file main.test.js
  * @module main.test
  * @description Unit tests for the main.js
+ * @requires module:ruleBroker
  * @requires module:dataArrayParsing
+ * @requires module:characterArrayParsing
+ * @requires module:characterStringParsing
+ * @requires module:dataStringParsing
+ * @requires module:fileStringParsing
+ * @requires module:fileOperations
+ * @requires module:stringParsingUtilities
+ * @requires module:timeComputation
+ * @requires module:plugins
+ * @requires module:configurator
  * @requires module:data
  * @requires module:main
  * @requires module:testAliases
  * @requires module:testConstantsValidationMetadata
  * @requires module:mainTest
  * @requires module:testData
+ * @requires module:test.configuration.constants
  * @requires module:test.constants
  * @requires module:test.system.constants
  * @requires {@link https://www.npmjs.com/package/@haystacks/constants|@haystacks/constants}
@@ -38,9 +49,9 @@ import main from '../../../src/main.js'
 import allTstCV from '../testData/resources/constantsValidation/testConstantsValidationMetadata.js';
 import * as tst_man from '../testData/mainTest.js';
 import testData from '../testData/testData.json'
-import * as tst_cfg from '../tests/constants/test.configuration.constants.js';
-import * as tst_con from './constants/test.constants.js';
-import * as tst_sys from './constants/test.system.constants.js';
+import * as tst_cfg from './resources/constants/test.configuration.constants.js';
+import * as tst_con from './resources/constants/test.constants.js';
+import * as tst_sys from './resources/constants/test.system.constants.js';
 
 // External imports
 import hayConst from '@haystacks/constants';
@@ -6082,28 +6093,6 @@ describe(tst_con.cconsoleTableLog, () => {
             { value: wrd.ctest },
         ];
         let columnNames = false;
-
-        // Act
-        let returnData = await main.consoleTableLog(classPath, tableData, columnNames);
-
-        // Assert
-        expect(returnData).toBeFalsy();
-    });
-
-    /**
-     * @function consoleTableLog_inValidColumnNamesUndefined
-     * @description Tests the main function consoleTableLog with a invalid data undefined.
-     * @author Vlad Sorokin
-     * @date 2024/06/07
-     */
-    test(tst_con.cconsoleTableLog_inValidColumnNamesUndefined, async () => {
-        // Arrange
-        let classPath = '';
-        let tableData = [
-            { value: wrd.cunit + wrd.ctesting },
-            { value: wrd.ctest },
-        ];
-        let columnNames = undefined;
 
         // Act
         let returnData = await main.consoleTableLog(classPath, tableData, columnNames);

@@ -65,15 +65,18 @@ async function reinitializeCommands() {
  * @function addClientCommands
  * @description This is a wrapper function for calling the commandBroker.addClientCommands.
  * @param {object} clientCommands A map of client defined command names and client defined command function calls.
- * @return {void}
+ * @return {boolean} True or false value to indicate if the client commands were processed correctly.
  * @author Seth Hollingsead
  * @date 2022/02/17
  */
 async function addClientCommands(clientCommands) {
   let functionName = addClientCommands.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  await commandBroker.addClientCommands(clientCommands);
+  let returnData = false;
+  returnData = await commandBroker.addClientCommands(clientCommands);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
 }
 
 /**
