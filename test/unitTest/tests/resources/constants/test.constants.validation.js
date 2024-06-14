@@ -24,6 +24,10 @@ export const testConstantsValidation = [
     // Describe words
 
     /* commandBroker */
+    {Name: 'cbootStrapCommands', Actual: wrd.cbootStrapCommands, Expected: 'bootStrapCommands'},
+    {Name: 'cresetCommands', Actual: wrd.cresetCommands, Expected: 'resetCommands'},
+    {Name: 'caddClientCommands', Actual: wrd.caddClientCommands, Expected: 'addClientCommands'},
+    {Name: 'caddPluginCommands', Actual: wrd.caddPluginCommands, Expected: 'addPluginCommands'},
 
     /* dataBroker */
 
@@ -114,81 +118,72 @@ export const testConstantsValidation = [
     /* stack */
 
     /* main */
-    //initFramework
     {Name: 'cinitFramework', Actual: tst_con.cinitFramework, Expected: 'initFramework'},
-    // accouterFramework
     {Name: 'caccouterFramework', Actual: tst_con.caccouterFramework, Expected: 'accouterFramework'},
-    // getFrameworkData
     {Name: 'cgetFrameworkData', Actual: tst_con.cgetFrameworkData, Expected: 'getFrameworkData'},
-    // mergeClientBusinessRules
     {Name: 'cmergeClientBusinessRules', Actual: tst_con.cmergeClientBusinessRules, Expected: 'mergeClientBusinessRules'},
-    // mergeClientCommands
     {Name: 'cmergeClientCommands', Actual: tst_con.cmergeClientCommands, Expected: 'mergeClientCommands'},
-    // listLoadedPlugins
     {Name: 'clistLoadedPlugins', Actual: tst_con.clistLoadedPlugins, Expected: 'listLoadedPlugins'},
-    // listAllPluginsInRegistry
     {Name: 'clistAllPluginsInRegistry', Actual: tst_con.clistAllPluginsInRegistry, Expected: 'listAllPluginsInRegistry'},
-    // listAllPluginsInRegistryPath
     {Name: 'clistAllPluginsInRegistryPath', Actual: tst_con.clistAllPluginsInRegistryPath, Expected: 'listAllPluginsInRegistryPath'},
-    // numberOfPluginsInRegistry
     {Name: 'cnumberOfPluginsInRegistry', Actual: tst_con.cnumberOfPluginsInRegistry, Expected: 'numberOfPluginsInRegistry'},
-    // numberOfPluginsInRegistryPath
     {Name: 'cnumberOfPluginsInRegistryPath', Actual: tst_con.cnumberOfPluginsInRegistryPath, Expected: 'numberOfPluginsInRegistryPath'},
-    // registerPluginByNameAndPath
     {Name: 'cregisterPluginByNameAndPath', Actual: tst_con.cregisterPluginByNameAndPath, Expected: 'registerPluginByNameAndPath'},
-    // unregisterPluginByName
     {Name: 'cunregisterPluginByName', Actual: tst_con.cunregisterPluginByName, Expected: 'unregisterPluginByName'},
-    // unregisterPlugins
     {Name: 'cunregisterPlugins', Actual: tst_con.cunregisterPlugins, Expected: 'unregisterPlugins'},
-    // syncPluginRegistryWithPath
     {Name: 'csyncPluginRegistryWithPath', Actual: tst_con.csyncPluginRegistryWithPath, Expected: 'syncPluginRegistryWithPath'},
-    // clearAllPluginRegistry
     {Name: 'cclearAllPluginRegistry', Actual: tst_con.cclearAllPluginRegistry, Expected: 'clearAllPluginRegistry'},
-    // writePluginRegistryToDisk
     {Name: 'cwritePluginRegistryToDisk', Actual: tst_con.cwritePluginRegistryToDisk, Expected: 'writePluginRegistryToDisk'},
-    // loadPlugin
     {Name: 'cloadPlugin', Actual: tst_con.cloadPlugin, Expected: 'loadPlugin'},
-    // loadPlugins
     {Name: 'cloadPlugins', Actual: tst_con.cloadPlugins, Expected: 'loadPlugins'},
-    // loadPluginsFromRegistry
     {Name: 'cloadPluginsFromRegistry', Actual: tst_con.cloadPluginsFromRegistry, Expected: 'loadPluginsFromRegistry'},
-    // unloadPlugin
     {Name: 'cunloadPlugin', Actual: tst_con.cunloadPlugin, Expected: 'unloadPlugin'},
-    // unloadPlugins
     {Name: 'cunloadPlugins', Actual: tst_con.cunloadPlugins, Expected: 'unloadPlugins'},
-    // unloadAllPlugins
     {Name: 'cunloadAllPlugins', Actual: tst_con.cunloadAllPlugins, Expected: 'unloadAllPlugins'},
-    // getPluginsRegistryPath
-    {Name: 'cgetPluginsRegistryPath', Actual: tst_con.cgetPluginsRegistryPath, Expected: 'getPluginsRegistryPath'},
-    // loadPluginResourceData 
+    {Name: 'cgetPluginsRegistryPath', Actual: tst_con.cgetPluginsRegistryPath, Expected: 'getPluginsRegistryPath'}, 
     {Name: 'cloadPluginResourceData', Actual: tst_con.cloadPluginResourceData, Expected: 'loadPluginResourceData'},
-    // loadAllJsonData
     {Name: 'cloadAllJsonData', Actual: tst_con.cloadAllJsonData, Expected: 'loadAllJsonData'},
-    // storeData
     {Name: 'cstoreData', Actual: tst_con.cstoreData, Expected: 'storeData'},
-    // getData
     {Name: 'cgetData', Actual: tst_con.cgetData, Expected: 'getData'},
-    // clearData
     {Name: 'cclearData', Actual: tst_con.cclearData, Expected: 'clearData'},
-    // executeBusinessRules
     {Name: 'cexecuteBusinessRules', Actual: tst_con.cexecuteBusinessRules, Expected: 'executeBusinessRules'},
-    // enqueueCommand
     {Name: 'cenqueueCommand', Actual: tst_con.cenqueueCommand, Expected: 'enqueueCommand'},
-    // isCommandQueueEmpty
     {Name: 'cisCommandQueueEmpty', Actual: tst_con.cisCommandQueueEmpty, Expected: 'isCommandQueueEmpty'},
-    // setConfigurationSetting
     {Name: 'csetConfigurationSetting', Actual: tst_con.csetConfigurationSetting, Expected: 'setConfigurationSetting'},
-    // getConfigurationSetting
     {Name: 'cgetConfigurationSetting', Actual: tst_con.cgetConfigurationSetting, Expected: 'getConfigurationSetting'},
-    // consoleLog
     {Name: 'cconsoleLog', Actual: tst_con.cconsoleLog, Expected: 'cconsoleLog'},
-    // consoleTableLog
     {Name: 'cconsoleTableLog', Actual: tst_con.cconsoleTableLog, Expected: 'cconsoleTableLog'},
 
 
     // Test names
 
     /* commandBroker */
+    // bootStrapCommands
+    {Name: 'cbootStrapCommands_validData', Actual: wrd.cbootStrapCommands_validData, Expected: 'bootStrapCommands_validData'},
+
+    // resetCommands
+    {Name: 'cresetCommands_validData', Actual: wrd.cresetCommands_validData, Expected: 'resetCommands_validData'},
+
+    // addClientCommands
+    {Name: 'caddClientCommands_validClientCommandsData', Actual: wrd.caddClientCommands_validClientCommandsData, Expected: 'addClientCommands_validClientCommandsData'},
+    {Name: 'caddClientCommands_inValidClientCommandsString', Actual: wrd.caddClientCommands_inValidClientCommandsString, Expected: 'addClientCommands_inValidClientCommandsString'},
+    {Name: 'caddClientCommands_inValidClientCommandsInteger', Actual: wrd.caddClientCommands_inValidClientCommandsInteger, Expected: 'addClientCommands_inValidClientCommandsInteger'},
+    {Name: 'caddClientCommands_inValidClientCommandsBoolean', Actual: wrd.caddClientCommands_inValidClientCommandsBoolean, Expected: 'addClientCommands_inValidClientCommandsBoolean'},
+    {Name: 'caddClientCommands_inValidClientCommandsUndefined', Actual: wrd.caddClientCommands_inValidClientCommandsUndefined, Expected: 'addClientCommands_inValidClientCommandsUndefined'},
+    {Name: 'caddClientCommands_inValidClientCommandsNaN', Actual: wrd.caddClientCommands_inValidClientCommandsNaN, Expected: 'addClientCommands_inValidClientCommandsNaN'},
+
+    // addPluginCommands
+    {Name: 'caddPluginCommands_validData', Actual: wrd.caddPluginCommands_validData, Expected: 'addPluginCommands_validData'},
+    {Name: 'caddPluginCommands_inValidPluginNameString', Actual: wrd.caddPluginCommands_inValidPluginNameString, Expected: 'addPluginCommands_inValidPluginNameString'},
+    {Name: 'caddPluginCommands_inValidPluginCommandsString', Actual: wrd.caddPluginCommands_inValidPluginCommandsString, Expected: 'addPluginCommands_inValidPluginCommandsString'},
+    {Name: 'caddPluginCommands_inValidPluginNameInteger', Actual: wrd.caddPluginCommands_inValidPluginNameInteger, Expected: 'addPluginCommands_inValidPluginNameInteger'},
+    {Name: 'caddPluginCommands_inValidPluginNameBoolean', Actual: wrd.caddPluginCommands_inValidPluginNameBoolean, Expected: 'addPluginCommands_inValidPluginNameBoolean'},
+    {Name: 'caddPluginCommands_inValidPluginCommandsInteger', Actual: wrd.caddPluginCommands_inValidPluginCommandsInteger, Expected: 'addPluginCommands_inValidPluginCommandsInteger'},
+    {Name: 'caddPluginCommands_inValidPluginCommandsBoolean', Actual: wrd.caddPluginCommands_inValidPluginCommandsBoolean, Expected: 'addPluginCommands_inValidPluginCommandsBoolean'},
+    {Name: 'caddPluginCommands_inValidPluginNameUndefined', Actual: wrd.caddPluginCommands_inValidPluginNameUndefined, Expected: 'addPluginCommands_inValidPluginNameUndefined'},
+    {Name: 'caddPluginCommands_inValidPluginNameNaN', Actual: wrd.caddPluginCommands_inValidPluginNameNaN, Expected: 'addPluginCommands_inValidPluginNameNaN'},
+    {Name: 'caddPluginCommands_inValidPluginCommandsUndefined', Actual: wrd.caddPluginCommands_inValidPluginCommandsUndefined, Expected: 'addPluginCommands_inValidPluginCommandsUndefined'},
+    {Name: 'caddPluginCommands_inValidPluginCommandsNaN', Actual: wrd.caddPluginCommands_inValidPluginCommandsNaN, Expected: 'addPluginCommands_inValidPluginCommandsNaN'},
 
     /* dataBroker */
 

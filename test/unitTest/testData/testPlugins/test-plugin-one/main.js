@@ -14,12 +14,13 @@
  */
 
 // Internal imports
+import commands from './commandsBlob/commandsLibrary.js'
 import D from './structures/pluginData.js';
 
 // External imports
 import hayConst from '@haystacks/constants';
 
-const {cfg, wrd} = hayConst;
+const {sys, cfg, wrd} = hayConst;
 
 /**
  * @function initializePlugin
@@ -33,8 +34,11 @@ const {cfg, wrd} = hayConst;
  * @date 2022/05/12
  */
 async function initializePlugin(inputMetaData) {
-    let returnData = D;
-    return returnData;
+  D[wrd.cdata][sys.cpluginCommands] = {};
+  D[wrd.cdata][sys.cpluginCommands] = await commands.initPluginCommandsLibrary();
+  let returnData = D;
+  console.log('D is: ', D)
+  return returnData;
 }
 
 export default {

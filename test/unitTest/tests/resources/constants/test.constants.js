@@ -24,7 +24,7 @@ export const cUnitTestName = wrd.cUnit + wrd.cTest + wrd.cHarness; // testHarnes
 export const cbootStrapCommands = wrd.cboot + wrd.cStrap + wrd.cCommands; // bootStrapCommands
 export const cresetCommands = wrd.creset + wrd.cCommands; // resetCommands
 export const caddClientCommands = wrd.c_add + wrd.cClient + wrd.cCommands; // addClientCommands
-
+export const caddPluginCommands = wrd.c_add + wrd.cPlugin + wrd.cCommands; // addPluginCommands
 
 
 /* dataBroker */
@@ -171,6 +171,19 @@ export const caddClientCommands_inValidClientCommandsInteger = caddClientCommand
 export const caddClientCommands_inValidClientCommandsBoolean = caddClientCommands + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cClient + wrd.cCommands + wrd.cBoolean; // addClientCommands_inValidClientCommandsBoolean
 export const caddClientCommands_inValidClientCommandsUndefined = caddClientCommands + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cClient + wrd.cCommands + "Undefined"; // addClientCommands_inValidClientCommandsUndefined
 export const caddClientCommands_inValidClientCommandsNaN = caddClientCommands + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cClient + wrd.cCommands + "NaN"; // addClientCommands_inValidClientCommandsNaN
+
+// addPluginCommands
+export const caddPluginCommands_validData = caddPluginCommands + bas.cUnderscore + wrd.cvalid + wrd.cData; // addPluginCommands_validData
+export const caddPluginCommands_inValidPluginNameString = caddPluginCommands + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cName + wrd.cString; // addPluginCommands_inValid PluginNameString
+export const caddPluginCommands_inValidPluginCommandsString = caddPluginCommands + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cCommands + wrd.cString; // addPluginCommands_inValidPluginCommandsString
+export const caddPluginCommands_inValidPluginNameInteger = caddPluginCommands + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cName + wrd.cInteger; // addPluginCommands_inValid PluginNameInteger
+export const caddPluginCommands_inValidPluginNameBoolean = caddPluginCommands + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cName + wrd.cBoolean; // addPluginCommands_inValid PluginNameBoolean
+export const caddPluginCommands_inValidPluginCommandsInteger = caddPluginCommands + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cCommands + wrd.cInteger; // addPluginCommands_inValidPluginCommandsInteger
+export const caddPluginCommands_inValidPluginCommandsBoolean = caddPluginCommands + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cCommands + wrd.cBoolean; // addPluginCommands_inValidPluginCommandsBoolean
+export const caddPluginCommands_inValidPluginNameUndefined = caddPluginCommands + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cName + 'Undefined'; // addPluginCommands_inValid PluginNameUndefined
+export const caddPluginCommands_inValidPluginNameNaN = caddPluginCommands + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cName + 'NaN'; // addPluginCommands_inValid PluginNameNaN
+export const caddPluginCommands_inValidPluginCommandsUndefined = caddPluginCommands + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cCommands + 'Undefined'; // addPluginCommands_inValidPluginCommandsUndefined
+export const caddPluginCommands_inValidPluginCommandsNaN = caddPluginCommands + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cCommands + 'NaN'; // addPluginCommands_inValidPluginCommandsNaN
 
 /* dataBroker */
 

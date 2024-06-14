@@ -139,9 +139,9 @@ async function addPluginCommands(pluginName, pluginCommands) {
     // then each of its commands will need to be individually searched out and removed from the flat list.
     // D-command stack before merge is:
   // console.log(namespacePrefix + functionName + bas.cColon + bas.cSpace + msg.cdCommandStackBeforeMergeIs, D[wrd.cCommands]);
-    for (const [key, value] of Object.entries(pluginCommands[wrd.ccommands])) {
-      // console.log('&&&&&&&&&&&&&&&&& ---- >>>>>>>> key is: ' + key);
-      D[wrd.cCommands] = {...D[wrd.cCommands], [`${key}`]: value};
+  for (const [key, value] of Object.entries(pluginCommands[wrd.ccommands])) {
+    // console.log('&&&&&&&&&&&&&&&&& ---- >>>>>>>> key is: ' + key);
+    D[wrd.cCommands] = {...D[wrd.cCommands], [`${key}`]: value};
     } // End-for (const [key, value] of Object.entries(pluginCommands))
     returnData = true;
     // D-command stack after merge is:

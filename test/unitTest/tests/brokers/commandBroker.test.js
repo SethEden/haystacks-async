@@ -3,16 +3,16 @@
 /**
  * @file commandBroker.test.js
  * @module commandBroker.test
+ * @requires module:
  * @description Unit tests for the commandBroker.js
- * @requires module:
- * @requires module:
- * @requires module:
- * @requires module:
- * @requires module:
- * @requires module:
- * @requires module:
+ * @requires module:commandBroker
+ * @requires module:dataArrayParsing
+ * @requires module:fileOperations
+ * @requires module:warden
+ * @requires module:D
+ * @requires module:tst_man
  * @requires module:test.constants
- * @requires module:
+ * @requires module:tst_con
  * @requires {@link https://www.npmjs.com/package/@haystacks/constants|@haystacks/constants}
  * @requires {@link https://www.npmjs.com/package/jest|jest}
  * @author Vlad Sorokin
@@ -22,8 +22,12 @@
 
 // Internal imports
 import commandBroker from '../../../../src/brokers/commandBroker.js'
-import D from '../../../../src/structures/data.js';
+import dataArrayParsing from '../../../../src/businessRules/rules/arrayParsing/dataArrayParsing.js';
+import fileOperations from '../../../../src/businessRules/rules/fileOperations.js';
+import warden from '../../../../src/controllers/warden.js'
+import pluginCommandsLibrary from '../../testData/testPlugins/test-plugin-one/commandsBlob/commandsLibrary.js'
 import * as tst_man from '../../testData/mainTest.js';
+import D from '../../../../src/structures/data.js';
 import * as tst_con from '../resources/constants/test.constants.js';
 
 // External imports
@@ -212,3 +216,213 @@ describe(tst_con.caddClientCommands, () => {
         expect(returnData).toBeFalsy();
     });
 })
+
+/**
+ * @function addPluginCommands
+ * @description Tests the positive and negative test cases of the addPluginCommands
+ * @author Vlad Sorokin
+ * @date 2024/06/13
+ */
+describe(tst_con.caddPluginCommands, () => {
+    /**
+     * @function addPluginCommands_validData
+     * @description Tests the commandBroker function addPluginCommands with a valid input.
+     * @author Vlad Sorokin
+     * @date 2024/06/13
+     */
+    test(tst_con.caddPluginCommands_validData, async () => {
+        // Arrange
+        D[wrd.cCommands] = {};
+        D[sys.cbusinessRules] = {
+            [biz.cgetJsonData]: (inputData, inputMetaData) => fileOperations.getJsonData(inputData, inputMetaData),
+            [biz.cobjectDeepClone]: (inputData, inputMetaData) => dataArrayParsing.objectDeepClone(inputData, inputMetaData)
+        };
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+        D[sys.cpluginsLoaded] = [{}];
+        D[wrd.cconfiguration][cfg.cdebugSetting] = {};
+        D[sys.cConstantsValidationData] = {};
+        await warden.loadPlugin(tst_man.testPluginPath);
+        let pluginName = tst_man.ctestPluginOne;
+        let pluginCommands = [await pluginCommandsLibrary.initPluginCommandsLibrary()];
+
+
+        // Act
+        let returnData = await commandBroker.addPluginCommands(pluginName,pluginCommands);
+
+        // Assert
+        expect(returnData).toEqual();
+    });
+
+    // /**
+    //  * @function addPluginCommands_inValidPluginNameString
+    //  * @description Tests the commandBroker function addPluginCommands with a invalid data string.
+    //  * @author Vlad Sorokin
+    //  * @date 2024/06/13
+    //  */
+    // test(tst_con.caddPluginCommands_inValidPluginNameString, async () => {
+    //     // Arrange
+        
+
+    //     // Act
+    //     let returnData = await commandBroker.addPluginCommands();
+
+    //     // Assert
+    //     expect(returnData).toBeFalsy();
+    // });
+
+    // /**
+    //  * @function addPluginCommands_inValidPluginCommandsString
+    //  * @description Tests the commandBroker function addPluginCommands with a invalid data string.
+    //  * @author Vlad Sorokin
+    //  * @date 2024/06/13
+    //  */
+    // test(tst_con.caddPluginCommands_inValidPluginCommandsString, async () => {
+    //     // Arrange
+        
+
+    //     // Act
+    //     let returnData = await commandBroker.addPluginCommands();
+
+    //     // Assert
+    //     expect(returnData).toBeFalsy();
+    // });
+
+    // /**
+    //  * @function addPluginCommands_inValidPluginNameInteger
+    //  * @description Tests the commandBroker function addPluginCommands with a invalid data integer.
+    //  * @author Vlad Sorokin
+    //  * @date 2024/06/13
+    //  */
+    // test(tst_con.caddPluginCommands_inValidPluginNameInteger, async () => {
+    //     // Arrange
+        
+
+    //     // Act
+    //     let returnData = await commandBroker.addPluginCommands();
+
+    //     // Assert
+    //     expect(returnData).toBeFalsy();
+    // });
+
+    // /**
+    //  * @function addPluginCommands_inValidPluginNameBoolean
+    //  * @description Tests the commandBroker function addPluginCommands with a invalid data boolean.
+    //  * @author Vlad Sorokin
+    //  * @date 2024/06/13
+    //  */
+    // test(tst_con.caddPluginCommands_inValidPluginNameBoolean, async () => {
+    //     // Arrange
+        
+
+    //     // Act
+    //     let returnData = await commandBroker.addPluginCommands();
+
+    //     // Assert
+    //     expect(returnData).toBeFalsy();
+    // });
+
+    // /**
+    //  * @function addPluginCommands_inValidPluginCommandsInteger
+    //  * @description Tests the commandBroker function addPluginCommands with a invalid data integer.
+    //  * @author Vlad Sorokin
+    //  * @date 2024/06/13
+    //  */
+    // test(tst_con.caddPluginCommands_inValidPluginCommandsInteger, async () => {
+    //     // Arrange
+        
+
+    //     // Act
+    //     let returnData = await commandBroker.addPluginCommands();
+
+    //     // Assert
+    //     expect(returnData).toBeFalsy();
+    // });
+
+    // /**
+    //  * @function addPluginCommands_inValidPluginCommandsBoolean
+    //  * @description Tests the commandBroker function addPluginCommands with a invalid data boolean.
+    //  * @author Vlad Sorokin
+    //  * @date 2024/06/13
+    //  */
+    // test(tst_con.caddPluginCommands_inValidPluginCommandsBoolean, async () => {
+    //     // Arrange
+        
+
+    //     // Act
+    //     let returnData = await commandBroker.addPluginCommands();
+
+    //     // Assert
+    //     expect(returnData).toBeFalsy();
+    // });
+
+    // /**
+    //  * @function addPluginCommands_inValidPluginNameUndefined
+    //  * @description Tests the commandBroker function addPluginCommands with a invalid data undefined.
+    //  * @author Vlad Sorokin
+    //  * @date 2024/06/13
+    //  */
+    // test(tst_con.caddPluginCommands_inValidPluginNameUndefined, async () => {
+    //     // Arrange
+        
+
+    //     // Act
+    //     let returnData = await commandBroker.addPluginCommands();
+
+    //     // Assert
+    //     expect(returnData).toBeFalsy();
+    // });
+
+    // /**
+    //  * @function addPluginCommands_inValidPluginNameNaN
+    //  * @description Tests the commandBroker function addPluginCommands with a invalid data NaN.
+    //  * @author Vlad Sorokin
+    //  * @date 2024/06/13
+    //  */
+    // test(tst_con.caddPluginCommands_inValidPluginNameNaN, async () => {
+    //     // Arrange
+        
+
+    //     // Act
+    //     let returnData = await commandBroker.addPluginCommands();
+
+    //     // Assert
+    //     expect(returnData).toBeFalsy();
+    // });
+
+    // /**
+    //  * @function addPluginCommands_inValidPluginCommandsUndefined
+    //  * @description Tests the commandBroker function addPluginCommands with a invalid data undefined.
+    //  * @author Vlad Sorokin
+    //  * @date 2024/06/13
+    //  */
+    // test(tst_con.caddPluginCommands_inValidPluginCommandsUndefined, async () => {
+    //     // Arrange
+        
+
+    //     // Act
+    //     let returnData = await commandBroker.addPluginCommands();
+
+    //     // Assert
+    //     expect(returnData).toBeFalsy();
+    // });
+
+    // /**
+    //  * @function addPluginCommands_inValidPluginCommandsNaN
+    //  * @description Tests the commandBroker function addPluginCommands with a invalid data NaN.
+    //  * @author Vlad Sorokin
+    //  * @date 2024/06/13
+    //  */
+    // test(tst_con.caddPluginCommands_inValidPluginCommandsNaN, async () => {
+    //     // Arrange
+        
+
+    //     // Act
+    //     let returnData = await commandBroker.addPluginCommands();
+
+    //     // Assert
+    //     expect(returnData).toBeFalsy();
+    // });
+})
+
