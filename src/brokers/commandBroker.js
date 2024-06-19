@@ -110,7 +110,7 @@ async function addClientCommands(clientCommands) {
  * @function addPluginCommands
  * @description Merges plugin defined commands with the system defined commands.
  * @param {string} pluginName The name of the current plugin these commands belong to.
- * @param {array<object>} pluginCommands The plugin commands that should be merged with the system commands.
+ * @param {array<object>|object} pluginCommands The plugin commands that should be merged with the system commands.
  * @return {boolean} True or False to indicate if the merge was successful or not.
  * @author Seth Hollingsead
  * @date 2022/10/24
@@ -138,12 +138,23 @@ async function addPluginCommands(pluginName, pluginCommands) {
     // We will need to just add them to the flat list. If a plugin is unloaded,
     // then each of its commands will need to be individually searched out and removed from the flat list.
     // D-command stack before merge is:
-  // console.log(namespacePrefix + functionName + bas.cColon + bas.cSpace + msg.cdCommandStackBeforeMergeIs, D[wrd.cCommands]);
-  for (const [key, value] of Object.entries(pluginCommands[wrd.ccommands])) {
-    // console.log('&&&&&&&&&&&&&&&&& ---- >>>>>>>> key is: ' + key);
-    D[wrd.cCommands] = {...D[wrd.cCommands], [`${key}`]: value};
-    } // End-for (const [key, value] of Object.entries(pluginCommands))
-    returnData = true;
+    // console.log(namespacePrefix + functionName + bas.cColon + bas.cSpace + msg.cdCommandStackBeforeMergeIs, D[wrd.cCommands]);
+    if (pluginName && typeof pluginName === wrd.cstring) {
+      if (pluginCommands && (Array.isArray(pluginCommands) || typeof pluginCommands === wrd.cobject)) {
+        for (const [key, value] of Object.entries(pluginCommands[wrd.ccommands])) {
+          // console.log('&&&&&&&&&&&&&&&&& ---- >>>>>>>> key is: ' + key);
+          // console.log('&&&&&&&&&&&&&&&&& ---- >>>>>>>> value is: ' + value);
+          D[wrd.cCommands] = {...D[wrd.cCommands], [`${key}`]: value};
+        } // End-for (const [key, value] of Object.entries(pluginCommands))
+        returnData = true;
+      } else {
+        // ERROR: pluginCommands is an invalid value. pluginCommands is: 
+        console.log(msg.cErrorAddPluginsCommandsMessage01, pluginCommands);
+      }
+    } else {
+      // ERROR: pluginName is an invalid value. pluginName is: 
+      console.log(msg.cErrorAddPluginsCommandsMessage02, pluginName);
+    }
     // D-command stack after merge is:
     // console.log(namespacePrefix + functionName + bas.cColon + bas.cSpace + msg.cdCommandStackAfterMergeIs, D[wrd.cCommands]);
   } catch (err) {
@@ -175,12 +186,22 @@ async function addPluginCommandAliases(pluginName, pluginCommandAliases) {
   await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginCommandAliasesIs + JSON.stringify(pluginCommandAliases));
   let returnData = false;
   try {
-    if (D[sys.cCommandsAliases][wrd.cPlugins] === undefined) {
-      D[sys.cCommandsAliases][wrd.cPlugins] = {};
+    if (pluginName && typeof pluginName === wrd.cstring) {
+      if (pluginCommandAliases && typeof pluginCommandAliases === wrd.cobject) {
+        if (D[sys.cCommandsAliases][wrd.cPlugins] === undefined) {
+          D[sys.cCommandsAliases][wrd.cPlugins] = {};
+        }
+        D[sys.cCommandsAliases][wrd.cPlugins][pluginName] = {};
+        D[sys.cCommandsAliases][wrd.cPlugins][pluginName] = pluginCommandAliases;
+        returnData = true;
+      } else {
+        // ERROR: pluginCommandAliases is an invalid value. pluginCommandAliases is: 
+        console.log(msg.cErrorAddPluginCommandAliasesMessage02, pluginCommandAliases);
+      }
+    } else {
+      // ERROR: pluginName is an invalid value. pluginName is: 
+      console.log(msg.cErrorAddPluginCommandAliasesMessage03, pluginName);
     }
-    D[sys.cCommandsAliases][wrd.cPlugins][pluginName] = {};
-    D[sys.cCommandsAliases][wrd.cPlugins][pluginName] = pluginCommandAliases;
-    returnData = true;
   } catch (err) {
     // ERROR: Failure to merge the plugin command aliases for plugin:
     console.log(msg.cErrorAddPluginCommandAliasesMessage01 + pluginName);
@@ -264,7 +285,7 @@ async function getValidCommand(commandString, commandDelimiter) {
 
 /**
  * @function countMatchingCommandAlias
- * @description This is a recursive function that searches through all teh command aliases
+ * @description This is a recursive function that searches through all the command aliases
  * data structures and counts the number of command aliases that match the input alias.
  * @param {object} commandAliasData The command alias data that should be searched recursively for the specified command alias.
  * @param {string} commandAliasName The command alias name/string that should be searched for and counted when matches are found.
@@ -277,8 +298,10 @@ async function countMatchingCommandAlias(commandAliasData, commandAliasName) {
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // commandAliasData is:
   await loggers.consoleLog(namespacePrefix + functionName, msg.ccommandAliasDataIs + JSON.stringify(commandAliasData));
+  console.log(namespacePrefix + functionName, msg.ccommandAliasDataIs + JSON.stringify(commandAliasData));
   // commandAliasName is:
   await loggers.consoleLog(namespacePrefix + functionName, msg.ccommandAliasNameIs + commandAliasName);
+  console.log(namespacePrefix + functionName, msg.ccommandAliasNameIs + commandAliasName);
   let commandAliasCount = 0;
   let blackColorArray = await colorizer.getNamedColorData(clr.cBlack, [0,0,0]);
   let redColorArray = await colorizer.getNamedColorData(clr.cRed, [255,0,0]);
@@ -295,7 +318,9 @@ async function countMatchingCommandAlias(commandAliasData, commandAliasName) {
           for (const element of arrayOfAliases) {
             let currentAlias = element;
             await loggers.consoleLog(namespacePrefix + functionName, msg.ccurrentAliasIs + currentAlias);
+            console.log(namespacePrefix + functionName, msg.ccurrentAliasIs + currentAlias);
             await loggers.consoleLog(namespacePrefix + functionName, msg.ccommandAliasNameIs + commandAliasName);
+            console.log(namespacePrefix + functionName, msg.ccommandAliasNameIs + commandAliasName);
             if (commandAliasName === currentAlias) {
               // Found a matching alias entry! 1
               await loggers.consoleLog(namespacePrefix + functionName, msg.cFoundMatchingAliasEntry1);
@@ -308,12 +333,15 @@ async function countMatchingCommandAlias(commandAliasData, commandAliasName) {
             let tempCommandAliasCount = await countMatchingCommandAlias(commandAliasData[commandAliasEntity], commandAliasName);
             // tempCommandAliasCount is:
             await loggers.consoleLog(namespacePrefix + functionName, msg.ctempCommandAliasCountIs + tempCommandAliasCount);
+            console.log(namespacePrefix + functionName, msg.ctempCommandAliasCountIs + tempCommandAliasCount);
             if (tempCommandAliasCount > 0) {
               // adding commandAliasCount:
               await loggers.consoleLog(namespacePrefix + functionName, msg.caddingCommandAliasCount + commandAliasCount);
+              console.log(namespacePrefix + functionName, msg.caddingCommandAliasCount + commandAliasCount);
               commandAliasCount = commandAliasCount + tempCommandAliasCount;
               // After adding commandAliasCount and tempCommandAliasCount:
               await loggers.consoleLog(namespacePrefix + functionName, msg.cAfterAddingCommandAliasCountAndTempCommandAliasCount + commandAliasCount);
+              console.log(namespacePrefix + functionName, msg.cAfterAddingCommandAliasCountAndTempCommandAliasCount + commandAliasCount);
               // Don't break, continue searching, so we get a full count of any duplicates found.
             } // End-if (tempCommandAliasCount > 0)
           } else {
@@ -333,7 +361,11 @@ async function countMatchingCommandAlias(commandAliasData, commandAliasName) {
         // Don't break, continue searching, so we get a full count of any duplicates found.
       }
     } // End-for (let commandAliasEntity in commandAliasData)
-  } // End-if (typeof commandAliasData === wrd.cobject)
+  } else {
+    // ERROR: commandAliasData is an invalid value.
+    // console.log('ERROR: commandAliasData is an invalid value.');
+    // NOTE: This console.log should only be used for debugging, as if you uncomment it out this error will be displayed too many times.
+  }
   // commandAliasCount is:
   await loggers.consoleLog(namespacePrefix + functionName, msg.ccommandAliasCountIs + JSON.stringify(commandAliasCount));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);

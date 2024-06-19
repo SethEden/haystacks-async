@@ -490,7 +490,6 @@ async function validateConstantFile(inputData, inputMetaData) {
       }
 
       // validationArray is:
-      console.log(msg.cvalidationArrayIs, validationArray)
       await loggers.consoleLog(namespacePrefix + functionName, msg.cvalidationArrayIs + JSON.stringify(validationArray));
 
       // Phase1 Constants Validation

@@ -38,10 +38,7 @@ input pluginName: string (The name of the current plugin these commands belong t
 input pluginCommands: array<object> (The plugin commands that should be merged with the system commands)
 output: boolean (True or False to indicate if the merge was successful or not)
 
-testName: addPluginCommands_inValidPluginNameString
-input pluginName: string (464gsdsfae8f46)
-input pluginCommands: array<object> (The plugin commands that should be merged with the system commands)
-output: ?
+NOTE: inValidPluginNameString test was removed for it is not usable in this case.
 
 testName: addPluginCommands_inValidPluginCommandsString
 input pluginName: string (The name of the current plugin these commands belong to)
@@ -93,10 +90,7 @@ input pluginName: string (The name of the current plugin these command aliases b
 input pluginComandAliases: object (A JSON object that contains the plugin command aliases that should be merged with the system command aliases)
 output: boolean (?)
 
-testName: addPluginCommandAliases_inValidPluginNameString
-input pluginName: string (464gsdsfae8f46)
-input pluginCommandAliases: object (A JSON object that contains the plugin command aliases that should be merged with the system command aliases)
-output: ?
+NOTE: inValidPluginNameString test was removed for it is not usable in this case.
 
 testName: addPluginCommandAliases_inValidPluginCommandAliasesString
 input plguinName: string (The name of the current plugin these command aliases belong to)
@@ -188,15 +182,9 @@ input commandString: NaN
 input commandDelimiter: string (The delimiter that should be used to parse the command line)
 output: ?
 
-testName: getValidCommand_inValidDelimiterUndefined
-input commandString: string (The command string that should be parsed for a valid command)
-input commandDelimiter: undefined
-output: ?
+NOTE: inValidDelimiterUndefined test was removed for it is not usable in this case.
 
-testName: getValidCommand_inValidDelimiterNaN
-input commandString: string (The command string that should be parsed for a valid command)
-input commandDelimiter: NaN
-output: ?
+NOTE: inValidDelimiterNaN test was removed for it is not usable in this case.
 --------------------------------------------------------------------------------
 testName: countMatchingCommandAlias_validData
 input commandAliasData: object (The command alias data that searched recursively for the specified command alias)

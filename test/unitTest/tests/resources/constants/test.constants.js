@@ -25,7 +25,9 @@ export const cbootStrapCommands = wrd.cboot + wrd.cStrap + wrd.cCommands; // boo
 export const cresetCommands = wrd.creset + wrd.cCommands; // resetCommands
 export const caddClientCommands = wrd.c_add + wrd.cClient + wrd.cCommands; // addClientCommands
 export const caddPluginCommands = wrd.c_add + wrd.cPlugin + wrd.cCommands; // addPluginCommands
-
+export const caddPluginCommandAliases = wrd.c_add + wrd.cPlugin + wrd.cCommand + wrd.cAliases; // addPluginCommandAliases
+export const cgetValidCommand = wrd.cget + wrd.cValid + wrd.cCommand; // getValidCommand
+export const ccountMatchingCommandAlias = wrd.ccount + wrd.cMatching + wrd.cCommand + wrd.cAlias; // countMatchingCommandAlias
 
 /* dataBroker */
 
@@ -174,7 +176,6 @@ export const caddClientCommands_inValidClientCommandsNaN = caddClientCommands + 
 
 // addPluginCommands
 export const caddPluginCommands_validData = caddPluginCommands + bas.cUnderscore + wrd.cvalid + wrd.cData; // addPluginCommands_validData
-export const caddPluginCommands_inValidPluginNameString = caddPluginCommands + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cName + wrd.cString; // addPluginCommands_inValid PluginNameString
 export const caddPluginCommands_inValidPluginCommandsString = caddPluginCommands + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cCommands + wrd.cString; // addPluginCommands_inValidPluginCommandsString
 export const caddPluginCommands_inValidPluginNameInteger = caddPluginCommands + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cName + wrd.cInteger; // addPluginCommands_inValid PluginNameInteger
 export const caddPluginCommands_inValidPluginNameBoolean = caddPluginCommands + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cName + wrd.cBoolean; // addPluginCommands_inValid PluginNameBoolean
@@ -184,6 +185,45 @@ export const caddPluginCommands_inValidPluginNameUndefined = caddPluginCommands 
 export const caddPluginCommands_inValidPluginNameNaN = caddPluginCommands + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cName + 'NaN'; // addPluginCommands_inValid PluginNameNaN
 export const caddPluginCommands_inValidPluginCommandsUndefined = caddPluginCommands + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cCommands + 'Undefined'; // addPluginCommands_inValidPluginCommandsUndefined
 export const caddPluginCommands_inValidPluginCommandsNaN = caddPluginCommands + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cCommands + 'NaN'; // addPluginCommands_inValidPluginCommandsNaN
+
+// addPluginCommandAliases
+export const caddPluginCommandAliases_validData = caddPluginCommandAliases + bas.cUnderscore + wrd.cvalid + wrd.cData; // addPluginCommandAliases_validData
+export const caddPluginCommandAliases_inValidPluginCommandAliasesString = caddPluginCommandAliases + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cCommand + wrd.cAliases + wrd.cString; // addPluginCommandAliases_inValidPluginCommandAliasesString
+export const caddPluginCommandAliases_inValidPluginNameInteger = caddPluginCommandAliases + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cName + wrd.cInteger; // addPluginCommandAliases_inValidPluginNameInteger
+export const caddPluginCommandAliases_inValidPluginNameBoolean = caddPluginCommandAliases + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cName + wrd.cBoolean; // addPluginCommandAliases_inValidPluginNameBoolean
+export const caddPluginCommandAliases_inValidPluginCommandAliasesInteger = caddPluginCommandAliases + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cCommand + wrd.cAliases + wrd.cInteger; // addPluginCommandAliases_inValidPluginCommandAliasesInteger
+export const caddPluginCommandAliases_inValidPluginCommandAliasesBoolean = caddPluginCommandAliases + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cCommand + wrd.cAliases + wrd.cBoolean; // addPluginCommandAliases_inValidPluginCommandAliasesBoolean
+export const caddPluginCommandAliases_inValidPluginNameUndefined = caddPluginCommandAliases + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cName + 'Undefined'; // addPluginCommandAliases_inValidPluginNameUndefined
+export const caddPluginCommandAliases_inValidPluginNameNaN = caddPluginCommandAliases + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cName + 'NaN'; // addPluginCommandAliases_inValidPluginNameNaN
+export const caddPluginCommandAliases_inValidPluginCommandAliasesUndefined = caddPluginCommandAliases + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cCommand + wrd.cAliases + 'Undefined'; // addPluginCommandAliases_inValidPluginCommandAliasesUndefined
+export const caddPluginCommandAliases_inValidPluginCommandAliasesNaN = caddPluginCommandAliases + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cCommand + wrd.cAliases + 'NaN'; // addPluginCommandAliases_inValidPluginCommandAliasesNaN
+
+// getValidCommand
+export const cgetValidCommand_validData = cgetValidCommand + bas.cUnderscore + wrd.cvalid + wrd.cData; // getValidCommand_validData
+export const cgetValidCommand_inValidCommandStringString = cgetValidCommand + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cCommand + wrd.cString + wrd.cString; // getValidCommand_inValidCommandStringString
+export const cgetValidCommand_inValidCommandDelimiterString = cgetValidCommand + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cCommand + wrd.cDelimiter + wrd.cString; // getValidCommand_inValidCommandDelimiterString
+export const cgetValidCommand_inValidCommandStringInteger = cgetValidCommand + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cCommand + wrd.cString + wrd.cInteger; // getValidCommand_inValidCommandStringInteger
+export const cgetValidCommand_inValidCommandStringBoolean = cgetValidCommand + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cCommand + wrd.cString + wrd.cBoolean; // getValidCommand_inValidCommandStringBoolean
+export const cgetValidCommand_inValidCommandDelimiterInteger = cgetValidCommand + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cCommand + wrd.cDelimiter + wrd.cInteger; // getValidCommand_inValidCommandDelimiterInteger
+export const cgetValidCommand_inValidCommandDelimiterBoolean = cgetValidCommand + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cCommand + wrd.cDelimiter + wrd.cBoolean; // getValidCommand_inValidCommandDelimiterBoolean
+export const cgetValidCommand_inValidCommandStringUndefined = cgetValidCommand + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cCommand + wrd.cString + 'Undefined'; // getValidCommand_inValidCommandStringUndefined
+export const cgetValidCommand_inValidCommandStringNaN = cgetValidCommand + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cCommand + wrd.cString + 'NaN'; // getValidCommand_inValidCommandStringNaN
+export const cgetValidCommand_inValidCommandDelimiterUndefined = cgetValidCommand + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cCommand + wrd.cDelimiter + 'Undefined'; // getValidCommand_inValidCommandDelimiterUndefined
+export const cgetValidCommand_inValidCommandDelimiterNaN = cgetValidCommand + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cCommand + wrd.cDelimiter + 'NaN'; // getValidCommand_inValidCommandDelimiterNaN
+
+// countMatchingCommandAlias
+export const ccountMatchingCommandAlias_validData = ccountMatchingCommandAlias + bas.cUnderscore + wrd.cvalid + wrd.cData; // countMatchingCommandAlias_validData
+export const ccountMatchingCommandAlias_inValidCommandAliasDataString = ccountMatchingCommandAlias + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cCommand + wrd.cAlias + wrd.cData + wrd.cString; // countMatchingCommandAlias_inValidCommandAliasDataString
+export const ccountMatchingCommandAlias_inValidCommandAliasNameString = ccountMatchingCommandAlias + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cCommand + wrd.cAlias + wrd.cName + wrd.cString; // countMatchingCommandAlias_inValidCommandAliasNameString
+export const ccountMatchingCommandAlias_inValidCommandAliasDataInteger = ccountMatchingCommandAlias + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cCommand + wrd.cAlias + wrd.cData + wrd.cInteger; // countMatchingCommandAlias_inValidCommandAliasDataInteger
+export const ccountMatchingCommandAlias_inValidCommandAliasDataBoolean = ccountMatchingCommandAlias + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cCommand + wrd.cAlias + wrd.cData + wrd.cBoolean; // countMatchingCommandAlias_inValidCommandAliasDataBoolean
+export const ccountMatchingCommandAlias_inValidCommandAliasNameInteger = ccountMatchingCommandAlias + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cCommand + wrd.cAlias + wrd.cName + wrd.cInteger; // countMatchingCommandAlias_inValidCommandAliasNameInteger
+export const ccountMatchingCommandAlias_inValidCommandAliasNameBoolean = ccountMatchingCommandAlias + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cCommand + wrd.cAlias + wrd.cName + wrd.cBoolean; // countMatchingCommandAlias_inValidCommandAliasNameBoolean
+export const ccountMatchingCommandAlias_inValidCommandAliasDataUndefined = ccountMatchingCommandAlias + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cCommand + wrd.cAlias + wrd.cData + 'Undefined'; // countMatchingCommandAlias_inValidCommandAliasDataUndefined
+export const ccountMatchingCommandAlias_inValidCommandAliasDataNaN = ccountMatchingCommandAlias + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cCommand + wrd.cAlias + wrd.cData + 'NaN'; // countMatchingCommandAlias_inValidCommandAliasDataNaN
+export const ccountMatchingCommandAlias_inValidCommandAliasNameUndefined = ccountMatchingCommandAlias + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cCommand + wrd.cAlias + wrd.cName + 'Undefined'; // countMatchingCommandAlias_inValidCommandAliasNameUndefined
+export const ccountMatchingCommandAlias_inValidCommandAliasNameNaN = ccountMatchingCommandAlias + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cCommand + wrd.cAlias + wrd.cName + 'NaN'; // countMatchingCommandAlias_inValidCommandAliasNameNaN
+
 
 /* dataBroker */
 

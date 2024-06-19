@@ -24,11 +24,14 @@ export const testConstantsValidation = [
     // Describe words
 
     /* commandBroker */
-    {Name: 'cbootStrapCommands', Actual: wrd.cbootStrapCommands, Expected: 'bootStrapCommands'},
-    {Name: 'cresetCommands', Actual: wrd.cresetCommands, Expected: 'resetCommands'},
-    {Name: 'caddClientCommands', Actual: wrd.caddClientCommands, Expected: 'addClientCommands'},
-    {Name: 'caddPluginCommands', Actual: wrd.caddPluginCommands, Expected: 'addPluginCommands'},
-
+    {Name: 'cbootStrapCommands', Actual: tst_con.cbootStrapCommands, Expected: 'bootStrapCommands'},
+    {Name: 'cresetCommands', Actual: tst_con.cresetCommands, Expected: 'resetCommands'},
+    {Name: 'caddClientCommands', Actual: tst_con.caddClientCommands, Expected: 'addClientCommands'},
+    {Name: 'caddPluginCommands', Actual: tst_con.caddPluginCommands, Expected: 'addPluginCommands'},
+    {Name: 'caddPluginCommandAliases', Actual: tst_con.caddPluginCommandAliases, Expected: 'addPluginCommandAliases'},
+    {Name: 'cgetValidCommand', Actual: tst_con.cgetValidCommand, Expected: 'cgetValidCommand'},
+    {Name: 'ccountMatchingCommandAlias', Actual: tst_con.ccountMatchingCommandAlias, Expected: 'countMatchingCommandAlias'},
+    
     /* dataBroker */
 
     /* ruleBroker */
@@ -159,31 +162,68 @@ export const testConstantsValidation = [
 
     /* commandBroker */
     // bootStrapCommands
-    {Name: 'cbootStrapCommands_validData', Actual: wrd.cbootStrapCommands_validData, Expected: 'bootStrapCommands_validData'},
+    {Name: 'cbootStrapCommands_validData', Actual: tst_con.cbootStrapCommands_validData, Expected: 'bootStrapCommands_validData'},
 
     // resetCommands
-    {Name: 'cresetCommands_validData', Actual: wrd.cresetCommands_validData, Expected: 'resetCommands_validData'},
+    {Name: 'cresetCommands_validData', Actual: tst_con.cresetCommands_validData, Expected: 'resetCommands_validData'},
 
     // addClientCommands
-    {Name: 'caddClientCommands_validClientCommandsData', Actual: wrd.caddClientCommands_validClientCommandsData, Expected: 'addClientCommands_validClientCommandsData'},
-    {Name: 'caddClientCommands_inValidClientCommandsString', Actual: wrd.caddClientCommands_inValidClientCommandsString, Expected: 'addClientCommands_inValidClientCommandsString'},
-    {Name: 'caddClientCommands_inValidClientCommandsInteger', Actual: wrd.caddClientCommands_inValidClientCommandsInteger, Expected: 'addClientCommands_inValidClientCommandsInteger'},
-    {Name: 'caddClientCommands_inValidClientCommandsBoolean', Actual: wrd.caddClientCommands_inValidClientCommandsBoolean, Expected: 'addClientCommands_inValidClientCommandsBoolean'},
-    {Name: 'caddClientCommands_inValidClientCommandsUndefined', Actual: wrd.caddClientCommands_inValidClientCommandsUndefined, Expected: 'addClientCommands_inValidClientCommandsUndefined'},
-    {Name: 'caddClientCommands_inValidClientCommandsNaN', Actual: wrd.caddClientCommands_inValidClientCommandsNaN, Expected: 'addClientCommands_inValidClientCommandsNaN'},
+    {Name: 'caddClientCommands_validClientCommandsData', Actual: tst_con.caddClientCommands_validClientCommandsData, Expected: 'addClientCommands_validClientCommandsData'},
+    {Name: 'caddClientCommands_inValidClientCommandsString', Actual: tst_con.caddClientCommands_inValidClientCommandsString, Expected: 'addClientCommands_inValidClientCommandsString'},
+    {Name: 'caddClientCommands_inValidClientCommandsInteger', Actual: tst_con.caddClientCommands_inValidClientCommandsInteger, Expected: 'addClientCommands_inValidClientCommandsInteger'},
+    {Name: 'caddClientCommands_inValidClientCommandsBoolean', Actual: tst_con.caddClientCommands_inValidClientCommandsBoolean, Expected: 'addClientCommands_inValidClientCommandsBoolean'},
+    {Name: 'caddClientCommands_inValidClientCommandsUndefined', Actual: tst_con.caddClientCommands_inValidClientCommandsUndefined, Expected: 'addClientCommands_inValidClientCommandsUndefined'},
+    {Name: 'caddClientCommands_inValidClientCommandsNaN', Actual: tst_con.caddClientCommands_inValidClientCommandsNaN, Expected: 'addClientCommands_inValidClientCommandsNaN'},
 
     // addPluginCommands
-    {Name: 'caddPluginCommands_validData', Actual: wrd.caddPluginCommands_validData, Expected: 'addPluginCommands_validData'},
-    {Name: 'caddPluginCommands_inValidPluginNameString', Actual: wrd.caddPluginCommands_inValidPluginNameString, Expected: 'addPluginCommands_inValidPluginNameString'},
-    {Name: 'caddPluginCommands_inValidPluginCommandsString', Actual: wrd.caddPluginCommands_inValidPluginCommandsString, Expected: 'addPluginCommands_inValidPluginCommandsString'},
-    {Name: 'caddPluginCommands_inValidPluginNameInteger', Actual: wrd.caddPluginCommands_inValidPluginNameInteger, Expected: 'addPluginCommands_inValidPluginNameInteger'},
-    {Name: 'caddPluginCommands_inValidPluginNameBoolean', Actual: wrd.caddPluginCommands_inValidPluginNameBoolean, Expected: 'addPluginCommands_inValidPluginNameBoolean'},
-    {Name: 'caddPluginCommands_inValidPluginCommandsInteger', Actual: wrd.caddPluginCommands_inValidPluginCommandsInteger, Expected: 'addPluginCommands_inValidPluginCommandsInteger'},
-    {Name: 'caddPluginCommands_inValidPluginCommandsBoolean', Actual: wrd.caddPluginCommands_inValidPluginCommandsBoolean, Expected: 'addPluginCommands_inValidPluginCommandsBoolean'},
-    {Name: 'caddPluginCommands_inValidPluginNameUndefined', Actual: wrd.caddPluginCommands_inValidPluginNameUndefined, Expected: 'addPluginCommands_inValidPluginNameUndefined'},
-    {Name: 'caddPluginCommands_inValidPluginNameNaN', Actual: wrd.caddPluginCommands_inValidPluginNameNaN, Expected: 'addPluginCommands_inValidPluginNameNaN'},
-    {Name: 'caddPluginCommands_inValidPluginCommandsUndefined', Actual: wrd.caddPluginCommands_inValidPluginCommandsUndefined, Expected: 'addPluginCommands_inValidPluginCommandsUndefined'},
-    {Name: 'caddPluginCommands_inValidPluginCommandsNaN', Actual: wrd.caddPluginCommands_inValidPluginCommandsNaN, Expected: 'addPluginCommands_inValidPluginCommandsNaN'},
+    {Name: 'caddPluginCommands_validData', Actual: tst_con.caddPluginCommands_validData, Expected: 'addPluginCommands_validData'},
+    {Name: 'caddPluginCommands_inValidPluginCommandsString', Actual: tst_con.caddPluginCommands_inValidPluginCommandsString, Expected: 'addPluginCommands_inValidPluginCommandsString'},
+    {Name: 'caddPluginCommands_inValidPluginNameInteger', Actual: tst_con.caddPluginCommands_inValidPluginNameInteger, Expected: 'addPluginCommands_inValidPluginNameInteger'},
+    {Name: 'caddPluginCommands_inValidPluginNameBoolean', Actual: tst_con.caddPluginCommands_inValidPluginNameBoolean, Expected: 'addPluginCommands_inValidPluginNameBoolean'},
+    {Name: 'caddPluginCommands_inValidPluginCommandsInteger', Actual: tst_con.caddPluginCommands_inValidPluginCommandsInteger, Expected: 'addPluginCommands_inValidPluginCommandsInteger'},
+    {Name: 'caddPluginCommands_inValidPluginCommandsBoolean', Actual: tst_con.caddPluginCommands_inValidPluginCommandsBoolean, Expected: 'addPluginCommands_inValidPluginCommandsBoolean'},
+    {Name: 'caddPluginCommands_inValidPluginNameUndefined', Actual: tst_con.caddPluginCommands_inValidPluginNameUndefined, Expected: 'addPluginCommands_inValidPluginNameUndefined'},
+    {Name: 'caddPluginCommands_inValidPluginNameNaN', Actual: tst_con.caddPluginCommands_inValidPluginNameNaN, Expected: 'addPluginCommands_inValidPluginNameNaN'},
+    {Name: 'caddPluginCommands_inValidPluginCommandsUndefined', Actual: tst_con.caddPluginCommands_inValidPluginCommandsUndefined, Expected: 'addPluginCommands_inValidPluginCommandsUndefined'},
+    {Name: 'caddPluginCommands_inValidPluginCommandsNaN', Actual: tst_con.caddPluginCommands_inValidPluginCommandsNaN, Expected: 'addPluginCommands_inValidPluginCommandsNaN'},
+
+    // addPluginCommandAliases
+    {Name: 'caddPluginCommandAliases_validData', Actual: tst_con.caddPluginCommandAliases_validData, Expected: 'addPluginCommandAliases_validData'},
+    {Name: 'caddPluginCommandAliases_inValidPluginCommandAliasesString', Actual: tst_con.caddPluginCommandAliases_inValidPluginCommandAliasesString, Expected: 'addPluginCommandAliases_inValidPluginCommandAliasesString'},
+    {Name: 'caddPluginCommandAliases_inValidPluginNameInteger', Actual: tst_con.caddPluginCommandAliases_inValidPluginNameInteger, Expected: 'addPluginCommandAliases_inValidPluginNameInteger'},
+    {Name: 'caddPluginCommandAliases_inValidPluginNameBoolean', Actual: tst_con.caddPluginCommandAliases_inValidPluginNameBoolean, Expected: 'addPluginCommandAliases_inValidPluginNameBoolean'},
+    {Name: 'caddPluginCommandAliases_inValidPluginCommandAliasesInteger', Actual: tst_con.caddPluginCommandAliases_inValidPluginCommandAliasesInteger, Expected: 'addPluginCommandAliases_inValidPluginCommandAliasesInteger'},
+    {Name: 'caddPluginCommandAliases_inValidPluginCommandAliasesBoolean', Actual: tst_con.caddPluginCommandAliases_inValidPluginCommandAliasesBoolean, Expected: 'addPluginCommandAliases_inValidPluginCommandAliasesBoolean'},
+    {Name: 'caddPluginCommandAliases_inValidPluginNameUndefined', Actual: tst_con.caddPluginCommandAliases_inValidPluginNameUndefined, Expected: 'addPluginCommandAliases_inValidPluginNameUndefined'},
+    {Name: 'caddPluginCommandAliases_inValidPluginNameNaN', Actual: tst_con.caddPluginCommandAliases_inValidPluginNameNaN, Expected: 'addPluginCommandAliases_inValidPluginNameNaN'},
+    {Name: 'caddPluginCommandAliases_inValidPluginCommandAliasesUndefined', Actual: tst_con.caddPluginCommandAliases_inValidPluginCommandAliasesUndefined, Expected: 'addPluginCommandAliases_inValidPluginCommandAliasesUndefined'},
+    {Name: 'caddPluginCommandAliases_inValidPluginCommandAliasesNaN', Actual: tst_con.caddPluginCommandAliases_inValidPluginCommandAliasesNaN, Expected: 'addPluginCommandAliases_inValidPluginCommandAliasesNaN'},
+    
+    // getValidCommand
+    {Name: 'cgetValidCommand_validData', Actual: tst_con.cgetValidCommand_validData, Expected: 'cgetValidCommand_validData'},
+    {Name: 'cgetValidCommand_inValidCommandStringString', Actual: tst_con.cgetValidCommand_inValidCommandStringString, Expected: 'cgetValidCommand_inValidCommandStringString'},
+    {Name: 'cgetValidCommand_inValidCommandDelimiterString', Actual: tst_con.cgetValidCommand_inValidCommandDelimiterString, Expected: 'cgetValidCommand_inValidCommandDelimiterString'},
+    {Name: 'cgetValidCommand_inValidCommandStringInteger', Actual: tst_con.cgetValidCommand_inValidCommandStringInteger, Expected: 'cgetValidCommand_inValidCommandStringInteger'},
+    {Name: 'cgetValidCommand_inValidCommandStringBoolean', Actual: tst_con.cgetValidCommand_inValidCommandStringBoolean, Expected: 'cgetValidCommand_inValidCommandStringBoolean'},
+    {Name: 'cgetValidCommand_inValidCommandDelimiterInteger', Actual: tst_con.cgetValidCommand_inValidCommandDelimiterInteger, Expected: 'cgetValidCommand_inValidCommandDelimiterInteger'},
+    {Name: 'cgetValidCommand_inValidCommandDelimiterBoolean', Actual: tst_con.cgetValidCommand_inValidCommandDelimiterBoolean, Expected: 'cgetValidCommand_inValidCommandDelimiterBoolean'},
+    {Name: 'cgetValidCommand_inValidCommandStringUndefined', Actual: tst_con.cgetValidCommand_inValidCommandStringUndefined, Expected: 'cgetValidCommand_inValidCommandStringUndefined'},
+    {Name: 'cgetValidCommand_inValidCommandStringNaN', Actual: tst_con.cgetValidCommand_inValidCommandStringNaN, Expected: 'cgetValidCommand_inValidCommandStringNaN'},
+    {Name: 'cgetValidCommand_inValidCommandDelimiterUndefined', Actual: tst_con.cgetValidCommand_inValidCommandDelimiterUndefined, Expected: 'cgetValidCommand_inValidCommandDelimiterUndefined'},
+    {Name: 'cgetValidCommand_inValidCommandDelimiterNaN', Actual: tst_con.cgetValidCommand_inValidCommandDelimiterNaN, Expected: 'cgetValidCommand_inValidCommandDelimiterNaN'},
+
+    
+    {Name: 'ccountMatchingCommandAlias_validData', Actual: tst_con.ccountMatchingCommandAlias, Expected: 'countMatchingCommandAlias'},
+    {Name: 'ccountMatchingCommandAlias_inValidCommandAliasDataString', Actual: tst_con.ccountMatchingCommandAlias, Expected: 'countMatchingCommandAlias'},
+    {Name: 'ccountMatchingCommandAlias_inValidCommandAliasNameString', Actual: tst_con.ccountMatchingCommandAlias, Expected: 'countMatchingCommandAlias'},
+    {Name: 'ccountMatchingCommandAlias_inValidCommandAliasDataInteger', Actual: tst_con.ccountMatchingCommandAlias, Expected: 'countMatchingCommandAlias'},
+    {Name: 'ccountMatchingCommandAlias_inValidCommandAliasDataBoolean', Actual: tst_con.ccountMatchingCommandAlias, Expected: 'countMatchingCommandAlias'},
+    {Name: 'ccountMatchingCommandAlias_inValidCommandAliasNameInteger', Actual: tst_con.ccountMatchingCommandAlias, Expected: 'countMatchingCommandAlias'},
+    {Name: 'ccountMatchingCommandAlias_inValidCommandAliasNameBoolean', Actual: tst_con.ccountMatchingCommandAlias, Expected: 'countMatchingCommandAlias'},
+    {Name: 'ccountMatchingCommandAlias_inValidCommandAliasDataUndefined', Actual: tst_con.ccountMatchingCommandAlias, Expected: 'countMatchingCommandAlias'},
+    {Name: 'ccountMatchingCommandAlias_inValidCommandAliasDataNaN', Actual: tst_con.ccountMatchingCommandAlias, Expected: 'countMatchingCommandAlias'},
+    {Name: 'ccountMatchingCommandAlias_inValidCommandAliasNameUndefined', Actual: tst_con.ccountMatchingCommandAlias, Expected: 'countMatchingCommandAlias'},
+    {Name: 'ccountMatchingCommandAlias_inValidCommandAliasNameNaN', Actual: tst_con.ccountMatchingCommandAlias, Expected: 'countMatchingCommandAlias'},
 
     /* dataBroker */
 
