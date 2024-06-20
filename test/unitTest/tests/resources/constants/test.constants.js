@@ -28,6 +28,7 @@ export const caddPluginCommands = wrd.c_add + wrd.cPlugin + wrd.cCommands; // ad
 export const caddPluginCommandAliases = wrd.c_add + wrd.cPlugin + wrd.cCommand + wrd.cAliases; // addPluginCommandAliases
 export const cgetValidCommand = wrd.cget + wrd.cValid + wrd.cCommand; // getValidCommand
 export const ccountMatchingCommandAlias = wrd.ccount + wrd.cMatching + wrd.cCommand + wrd.cAlias; // countMatchingCommandAlias
+export const csearchCommandAlias = wrd.csearch + wrd.cCommand + wrd.cAlias; // searchCommandAlias
 
 /* dataBroker */
 
@@ -223,6 +224,19 @@ export const ccountMatchingCommandAlias_inValidCommandAliasDataUndefined = ccoun
 export const ccountMatchingCommandAlias_inValidCommandAliasDataNaN = ccountMatchingCommandAlias + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cCommand + wrd.cAlias + wrd.cData + 'NaN'; // countMatchingCommandAlias_inValidCommandAliasDataNaN
 export const ccountMatchingCommandAlias_inValidCommandAliasNameUndefined = ccountMatchingCommandAlias + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cCommand + wrd.cAlias + wrd.cName + 'Undefined'; // countMatchingCommandAlias_inValidCommandAliasNameUndefined
 export const ccountMatchingCommandAlias_inValidCommandAliasNameNaN = ccountMatchingCommandAlias + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cCommand + wrd.cAlias + wrd.cName + 'NaN'; // countMatchingCommandAlias_inValidCommandAliasNameNaN
+
+// searchCommandAlias
+export const csearchCommandAlias_validData = csearchCommandAlias + bas.cUnderscore + wrd.cvalid + wrd.cData; // searchCommandAlias_validData
+export const csearchCommandAlias_inValidCommandAliasDataString = csearchCommandAlias + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cCommand + wrd.cAlias + wrd.cData + wrd.cString; // searchCommandAlias_inValidCommandAliasDataString
+export const csearchCommandAlias_inValidCommandAliasNameString = csearchCommandAlias + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cCommand + wrd.cAlias + wrd.cName + wrd.cString; // searchCommandAlias_inValidCommandAliasNameString
+export const csearchCommandAlias_inValidCommandAliasDataInteger = csearchCommandAlias + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cCommand + wrd.cAlias + wrd.cData + wrd.cInteger; // searchCommandAlias_inValidCommandAliasDataInteger
+export const csearchCommandAlias_inValidCommandAliasDataBoolean = csearchCommandAlias + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cCommand + wrd.cAlias + wrd.cData + wrd.cBoolean; // searchCommandAlias_inValidCommandAliasDataBoolean
+export const csearchCommandAlias_inValidCommandAliasNameInteger = csearchCommandAlias + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cCommand + wrd.cAlias + wrd.cName + wrd.cInteger; // searchCommandAlias_inValidCommandAliasNameInteger
+export const csearchCommandAlias_inValidCommandAliasNameBoolean = csearchCommandAlias + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cCommand + wrd.cAlias + wrd.cName + wrd.cBoolean; // searchCommandAlias_inValidCommandAliasNameBoolean
+export const csearchCommandAlias_inValidCommandAliasDataUndefined = csearchCommandAlias + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cCommand + wrd.cAlias + wrd.cData + 'Undefined'; // searchCommandAlias_inValidCommandAliasDataUndefined
+export const csearchCommandAlias_inValidCommandAliasDataNaN = csearchCommandAlias + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cCommand + wrd.cAlias + wrd.cData + 'NaN'; // searchCommandAlias_inValidCommandAliasDataNaN
+export const csearchCommandAlias_inValidCommandAliasNameUndefined = csearchCommandAlias + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cCommand + wrd.cAlias + wrd.cName + 'Undefined'; // searchCommandAlias_inValidCommandAliasNameUndefined
+export const csearchCommandAlias_inValidCommandAliasNameNaN = csearchCommandAlias + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cCommand + wrd.cAlias + wrd.cName + 'NaN'; // searchCommandAlias_inValidCommandAliasNameNaN
 
 
 /* dataBroker */

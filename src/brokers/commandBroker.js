@@ -298,73 +298,71 @@ async function countMatchingCommandAlias(commandAliasData, commandAliasName) {
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // commandAliasData is:
   await loggers.consoleLog(namespacePrefix + functionName, msg.ccommandAliasDataIs + JSON.stringify(commandAliasData));
-  console.log(namespacePrefix + functionName, msg.ccommandAliasDataIs + JSON.stringify(commandAliasData));
   // commandAliasName is:
   await loggers.consoleLog(namespacePrefix + functionName, msg.ccommandAliasNameIs + commandAliasName);
-  console.log(namespacePrefix + functionName, msg.ccommandAliasNameIs + commandAliasName);
   let commandAliasCount = 0;
   let blackColorArray = await colorizer.getNamedColorData(clr.cBlack, [0,0,0]);
   let redColorArray = await colorizer.getNamedColorData(clr.cRed, [255,0,0]);
-  if (typeof commandAliasData === wrd.cobject) {
-    for (let commandAliasEntity in commandAliasData) {
-      // commandAliasEntity is:
-      await loggers.consoleLog(namespacePrefix + functionName, msg.ccommandAliasEntityIs + JSON.stringify(commandAliasEntity));
-      // commandAliasEntityValue is:
-      await loggers.consoleLog(namespacePrefix + functionName, msg.ccommandAliasEntityValueIs + JSON.stringify(commandAliasData[commandAliasEntity]));
-      if (commandAliasEntity.toUpperCase() != commandAliasName.toUpperCase()) {
-        if (commandAliasData[commandAliasEntity] != undefined && commandAliasData[commandAliasEntity][wrd.cAliases] != undefined) {
-          let aliasList = commandAliasData[commandAliasEntity][wrd.cAliases];
-          let arrayOfAliases = aliasList.split(bas.cComa);
-          for (const element of arrayOfAliases) {
-            let currentAlias = element;
-            await loggers.consoleLog(namespacePrefix + functionName, msg.ccurrentAliasIs + currentAlias);
-            console.log(namespacePrefix + functionName, msg.ccurrentAliasIs + currentAlias);
-            await loggers.consoleLog(namespacePrefix + functionName, msg.ccommandAliasNameIs + commandAliasName);
-            console.log(namespacePrefix + functionName, msg.ccommandAliasNameIs + commandAliasName);
-            if (commandAliasName === currentAlias) {
-              // Found a matching alias entry! 1
-              await loggers.consoleLog(namespacePrefix + functionName, msg.cFoundMatchingAliasEntry1);
-              commandAliasCount = commandAliasCount + 1;
-              // Don't break, continue searching, so we get a full count of any duplicates found.
-            }
-          } // End-for (const element of arrayOfAliases)
-        } else {
-          if (commandAliasData[commandAliasEntity] != undefined) {
-            let tempCommandAliasCount = await countMatchingCommandAlias(commandAliasData[commandAliasEntity], commandAliasName);
-            // tempCommandAliasCount is:
-            await loggers.consoleLog(namespacePrefix + functionName, msg.ctempCommandAliasCountIs + tempCommandAliasCount);
-            console.log(namespacePrefix + functionName, msg.ctempCommandAliasCountIs + tempCommandAliasCount);
-            if (tempCommandAliasCount > 0) {
-              // adding commandAliasCount:
-              await loggers.consoleLog(namespacePrefix + functionName, msg.caddingCommandAliasCount + commandAliasCount);
-              console.log(namespacePrefix + functionName, msg.caddingCommandAliasCount + commandAliasCount);
-              commandAliasCount = commandAliasCount + tempCommandAliasCount;
-              // After adding commandAliasCount and tempCommandAliasCount:
-              await loggers.consoleLog(namespacePrefix + functionName, msg.cAfterAddingCommandAliasCountAndTempCommandAliasCount + commandAliasCount);
-              console.log(namespacePrefix + functionName, msg.cAfterAddingCommandAliasCountAndTempCommandAliasCount + commandAliasCount);
-              // Don't break, continue searching, so we get a full count of any duplicates found.
-            } // End-if (tempCommandAliasCount > 0)
+  if (commandAliasName && typeof commandAliasName === wrd.cstring) {
+    if (typeof commandAliasData === wrd.cobject) {
+      for (let commandAliasEntity in commandAliasData) {
+        // commandAliasEntity is:
+        await loggers.consoleLog(namespacePrefix + functionName, msg.ccommandAliasEntityIs + JSON.stringify(commandAliasEntity));
+        // commandAliasEntityValue is:
+        await loggers.consoleLog(namespacePrefix + functionName, msg.ccommandAliasEntityValueIs + JSON.stringify(commandAliasData[commandAliasEntity]));
+        if (commandAliasEntity.toUpperCase() != commandAliasName.toUpperCase()) {
+          if (commandAliasData[commandAliasEntity] != undefined && commandAliasData[commandAliasEntity][wrd.cAliases] != undefined) {
+            let aliasList = commandAliasData[commandAliasEntity][wrd.cAliases];
+            let arrayOfAliases = aliasList.split(bas.cComa);
+            for (const element of arrayOfAliases) {
+              let currentAlias = element;
+              await loggers.consoleLog(namespacePrefix + functionName, msg.ccurrentAliasIs + currentAlias);
+              await loggers.consoleLog(namespacePrefix + functionName, msg.ccommandAliasNameIs + commandAliasName);
+              if (commandAliasName === currentAlias) {
+                // Found a matching alias entry! 1
+                await loggers.consoleLog(namespacePrefix + functionName, msg.cFoundMatchingAliasEntry1);
+                commandAliasCount = commandAliasCount + 1;
+                // Don't break, continue searching, so we get a full count of any duplicates found.
+              }
+            } // End-for (const element of arrayOfAliases)
           } else {
-            // ERROR: A command is missing command aliases definitions. Data:
-            let errorMessage = msg.cErrorCountMatchingCommandAliasMessage01 + JSON.stringify(commandAliasData);
-            errorMessage = await colorizer.colorizeMessageSimple(errorMessage, blackColorArray, true);
-            errorMessage = await colorizer.colorizeMessageSimple(errorMessage, redColorArray, false);
-            console.log(errorMessage);
-            // Its an error, but not a duplicate error, however, we need to report it some how.
-            commandAliasCount = commandAliasCount + 1; // We've console logged it as best we can, we need to raise the flag anyway.
+            if (commandAliasData[commandAliasEntity] != undefined) {
+              let tempCommandAliasCount = await countMatchingCommandAlias(commandAliasData[commandAliasEntity], commandAliasName);
+              // tempCommandAliasCount is:
+              await loggers.consoleLog(namespacePrefix + functionName, msg.ctempCommandAliasCountIs + tempCommandAliasCount);
+              if (tempCommandAliasCount > 0) {
+                // adding commandAliasCount:
+                await loggers.consoleLog(namespacePrefix + functionName, msg.caddingCommandAliasCount + commandAliasCount);
+                commandAliasCount = commandAliasCount + tempCommandAliasCount;
+                // After adding commandAliasCount and tempCommandAliasCount:
+                await loggers.consoleLog(namespacePrefix + functionName, msg.cAfterAddingCommandAliasCountAndTempCommandAliasCount + commandAliasCount);
+                // Don't break, continue searching, so we get a full count of any duplicates found.
+              } // End-if (tempCommandAliasCount > 0)
+            } else {
+              // ERROR: A command is missing command aliases definitions. Data:
+              let errorMessage = msg.cErrorCountMatchingCommandAliasMessage01 + JSON.stringify(commandAliasData);
+              errorMessage = await colorizer.colorizeMessageSimple(errorMessage, blackColorArray, true);
+              errorMessage = await colorizer.colorizeMessageSimple(errorMessage, redColorArray, false);
+              console.log(errorMessage);
+              // Its an error, but not a duplicate error, however, we need to report it some how.
+              commandAliasCount = commandAliasCount + 1; // We've console logged it as best we can, we need to raise the flag anyway.
+            }
           }
+        } else if (commandAliasEntity.toUpperCase() === commandAliasName.toUpperCase()) {
+          // Found a matching entry! 2
+          await loggers.consoleLog(namespacePrefix + functionName, msg.cFoundMatchingAliasEntry2);
+          commandAliasCount = commandAliasCount + 1;
+          // Don't break, continue searching, so we get a full count of any duplicates found.
         }
-      } else if (commandAliasEntity.toUpperCase() === commandAliasName.toUpperCase()) {
-        // Found a matching entry! 2
-        await loggers.consoleLog(namespacePrefix + functionName, msg.cFoundMatchingAliasEntry2);
-        commandAliasCount = commandAliasCount + 1;
-        // Don't break, continue searching, so we get a full count of any duplicates found.
-      }
-    } // End-for (let commandAliasEntity in commandAliasData)
+      } // End-for (let commandAliasEntity in commandAliasData)
+    } else {
+      // ERROR: commandAliasData is an invalid value.
+      // console.log(msg.cErrorCountMatchingCommandAliasMessage02);
+      // NOTE: This console.log should only be used for debugging, as if you uncomment it out this error will be displayed too many times.
+    }
   } else {
-    // ERROR: commandAliasData is an invalid value.
-    // console.log('ERROR: commandAliasData is an invalid value.');
-    // NOTE: This console.log should only be used for debugging, as if you uncomment it out this error will be displayed too many times.
+    // ERROR: commandAliasName is an invalid value.
+    console.log(msg.cErrorCountMatchingCommandAliasMessage03);
   }
   // commandAliasCount is:
   await loggers.consoleLog(namespacePrefix + functionName, msg.ccommandAliasCountIs + JSON.stringify(commandAliasCount));
@@ -378,7 +376,7 @@ async function countMatchingCommandAlias(commandAliasData, commandAliasName) {
  * data structures and returns the one command data object that matches the input name.
  * @param {object} commandAliasData The command alias data that should be searched recursively for the specified command alias.
  * @param {string} commandAliasName The command alias name/string that should be found.
- * @return {object} The command object that corresponds to the input command alias name.
+ * @return {object|boolean} The command object that corresponds to the input command alias name.
  * @author Seth Hollingsead
  * @date 2022/05/27
  */

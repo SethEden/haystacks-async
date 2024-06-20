@@ -197,3 +197,7 @@ export async function rootPathDiscovery() {
     // console.log(msg.cEND_Space + namespacePrefix + functionName + msg.cSpaceFunction);
     return returnData;
 }
+
+export default {
+    rootPathDiscovery
+};

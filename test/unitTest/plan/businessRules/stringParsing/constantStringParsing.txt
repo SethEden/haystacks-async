@@ -1156,6 +1156,8 @@ input inputData: string (The string that should be determined or find a constant
 input inputMetaData: NaN
 output: ?
 --------------------------------------------------------------------------------
+NOTE: Need to check a valid test case PluginOneComand01 != cPluginOneComand01 = wrd.cPlugin + num.cOne + wrd.cComa + bas.com + phn.cand + num.c01
+
 testName: constantsFulfillmentSystem_validData
 input inputData: string (The constant to be defined/fulfilled)
 input inputMetaData: string (The original user-defined constant to be fulfilled, so the recursive algorithm can continue processing the rest of the string, after a first match is found)

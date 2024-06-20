@@ -10,6 +10,7 @@
  * @requires module:fileOperations
  * @requires module:warden
  * @requires module:D
+ * @requires module:tst_cbt
  * @requires module:tst_man
  * @requires module:test.constants
  * @requires module:tst_con
@@ -21,11 +22,12 @@
  */
 
 // Internal imports
-import commandBroker from '../../../../src/brokers/commandBroker.js'
+import commandBroker from '../../../../src/brokers/commandBroker.js';
 import dataArrayParsing from '../../../../src/businessRules/rules/arrayParsing/dataArrayParsing.js';
 import fileOperations from '../../../../src/businessRules/rules/fileOperations.js';
-import warden from '../../../../src/controllers/warden.js'
-import pluginCommandsLibrary from '../../testData/testPlugins/test-plugin-one/commandsBlob/commandsLibrary.js'
+import warden from '../../../../src/controllers/warden.js';
+import pluginCommandsLibrary from '../../testData/testPlugins/test-plugin-one/commandsBlob/commandsLibrary.js';
+import * as tst_cbt from '../../testData/brokers/commandBrokerTest.js'
 import * as tst_man from '../../testData/mainTest.js';
 import D from '../../../../src/structures/data.js';
 import * as tst_con from '../resources/constants/test.constants.js';
@@ -437,22 +439,7 @@ describe(tst_con.caddPluginCommandAliases, () => {
         // Arrange
         D[sys.cCommandsAliases] = {};
         let pluginName = tst_man.ctestPluginOne;
-        let pluginCommandAliases = {
-            "CommandsAliases": {
-                "system": [{
-                    "testPluginOneCommand01": {
-                        "Name": "testPluginOneCommand01",
-                        "Aliases": "tstPluginOneCommand01,tstPluginOneComnd01",
-                        "Description": "The first demo command as part of test-plugin-one."
-                    },
-                    "testPluginOneCommand02": {
-                        "Name": "testPluginOneCommand02",
-                        "Aliases": "tstPluginOneCommand02,tstPluginOneComnd02",
-                        "Description": "The second demo command as part of test-plugin-one."
-                    }
-                }]
-            }
-        };
+        let pluginCommandAliases = tst_cbt.testPluginCommandAliases;
 
         // Act
         let returnData = await commandBroker.addPluginCommandAliases(pluginName,pluginCommandAliases[sys.cCommandsAliases]);
@@ -490,22 +477,7 @@ describe(tst_con.caddPluginCommandAliases, () => {
         // Arrange
         D[sys.cCommandsAliases] = {};
         let pluginName = 123;
-        let pluginCommandAliases = {
-            "CommandsAliases": {
-                "system": [{
-                    "testPluginOneCommand01": {
-                        "Name": "testPluginOneCommand01",
-                        "Aliases": "tstPluginOneCommand01,tstPluginOneComnd01",
-                        "Description": "The first demo command as part of test-plugin-one."
-                    },
-                    "testPluginOneCommand02": {
-                        "Name": "testPluginOneCommand02",
-                        "Aliases": "tstPluginOneCommand02,tstPluginOneComnd02",
-                        "Description": "The second demo command as part of test-plugin-one."
-                    }
-                }]
-            }
-        };
+        let pluginCommandAliases = tst_cbt.testPluginCommandAliases;
 
         // Act
         let returnData = await commandBroker.addPluginCommandAliases(pluginName,pluginCommandAliases[sys.cCommandsAliases]);
@@ -524,22 +496,7 @@ describe(tst_con.caddPluginCommandAliases, () => {
         // Arrange
         D[sys.cCommandsAliases] = {};
         let pluginName = false;
-        let pluginCommandAliases = {
-            "CommandsAliases": {
-                "system": [{
-                    "testPluginOneCommand01": {
-                        "Name": "testPluginOneCommand01",
-                        "Aliases": "tstPluginOneCommand01,tstPluginOneComnd01",
-                        "Description": "The first demo command as part of test-plugin-one."
-                    },
-                    "testPluginOneCommand02": {
-                        "Name": "testPluginOneCommand02",
-                        "Aliases": "tstPluginOneCommand02,tstPluginOneComnd02",
-                        "Description": "The second demo command as part of test-plugin-one."
-                    }
-                }]
-            }
-        };
+        let pluginCommandAliases = tst_cbt.testPluginCommandAliases;
 
         // Act
         let returnData = await commandBroker.addPluginCommandAliases(pluginName,pluginCommandAliases[sys.cCommandsAliases]);
@@ -596,22 +553,7 @@ describe(tst_con.caddPluginCommandAliases, () => {
         // Arrange
         D[sys.cCommandsAliases] = {};
         let pluginName = undefined;
-        let pluginCommandAliases = {
-            "CommandsAliases": {
-                "system": [{
-                    "testPluginOneCommand01": {
-                        "Name": "testPluginOneCommand01",
-                        "Aliases": "tstPluginOneCommand01,tstPluginOneComnd01",
-                        "Description": "The first demo command as part of test-plugin-one."
-                    },
-                    "testPluginOneCommand02": {
-                        "Name": "testPluginOneCommand02",
-                        "Aliases": "tstPluginOneCommand02,tstPluginOneComnd02",
-                        "Description": "The second demo command as part of test-plugin-one."
-                    }
-                }]
-            }
-        };
+        let pluginCommandAliases = tst_cbt.testPluginCommandAliases;
 
         // Act
         let returnData = await commandBroker.addPluginCommandAliases(pluginName,pluginCommandAliases[sys.cCommandsAliases]);
@@ -630,22 +572,7 @@ describe(tst_con.caddPluginCommandAliases, () => {
         // Arrange
         D[sys.cCommandsAliases] = {};
         let pluginName = NaN;
-        let pluginCommandAliases = {
-            "CommandsAliases": {
-                "system": [{
-                    "testPluginOneCommand01": {
-                        "Name": "testPluginOneCommand01",
-                        "Aliases": "tstPluginOneCommand01,tstPluginOneComnd01",
-                        "Description": "The first demo command as part of test-plugin-one."
-                    },
-                    "testPluginOneCommand02": {
-                        "Name": "testPluginOneCommand02",
-                        "Aliases": "tstPluginOneCommand02,tstPluginOneComnd02",
-                        "Description": "The second demo command as part of test-plugin-one."
-                    }
-                }]
-            }
-        };
+        let pluginCommandAliases = tst_cbt.testPluginCommandAliases;
 
         // Act
         let returnData = await commandBroker.addPluginCommandAliases(pluginName,pluginCommandAliases[sys.cCommandsAliases]);
@@ -890,201 +817,450 @@ describe(tst_con.cgetValidCommand, () => {
     });
 })
 
-// /**
-//  * @function countMatchingCommandAlias
-//  * @description Tests the positive and negative test cases of the countMatchingCommandAlias
-//  * @author Vlad Sorokin
-//  * @date 2024/06/19
-//  */
-// describe(tst_con.ccountMatchingCommandAlias, () => {
-//     /**
-//      * @function countMatchingCommandAlias_validData
-//      * @description Tests the commandBroker function countMatchingCommandAlias with a valid input.
-//      * @author Vlad Sorokin
-//      * @date 2024/06/19
-//      */
-//     test(tst_con.ccountMatchingCommandAlias_validData, async () => {
-//         // Arrange
-        
-//         let commandAliasData = {["Aliases"]: "tstPluginOneCommand01,tstPluginOneComnd01"};
-//         let commandAliasName = 'tstPluginOneCommand01';
+/**
+ * @function countMatchingCommandAlias
+ * @description Tests the positive and negative test cases of the countMatchingCommandAlias
+ * @author Vlad Sorokin
+ * @date 2024/06/19
+ */
+describe(tst_con.ccountMatchingCommandAlias, () => {
+    /**
+     * @function countMatchingCommandAlias_validData
+     * @description Tests the commandBroker function countMatchingCommandAlias with a valid input.
+     * @author Vlad Sorokin
+     * @date 2024/06/19
+     */
+    test(tst_con.ccountMatchingCommandAlias_validData, async () => {
+        // Arrange
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandsAliases] = tst_cbt.testPluginCommandAliases;
+        let commandAliasData = D[sys.cCommandsAliases];
+        let commandAliasName = bas.cts + bas.ct + wrd.cPlugin + num.cOne + wrd.cCommand + num.c01;
 
-//         // Act
-//         let returnData = await commandBroker.countMatchingCommandAlias(commandAliasData, commandAliasName);
+        // Act
+        let returnData = await commandBroker.countMatchingCommandAlias(commandAliasData, commandAliasName);
 
-//         // Assert
-//         expect(returnData).toEqual();
-//     });
+        // Assert
+        expect(returnData).toEqual(1);
+    });
 
-//     // /**
-//     //  * @function countMatchingCommandAlias_inValidCommandAliasDataString
-//     //  * @description Tests the commandBroker function countMatchingCommandAlias with a invalid data string.
-//     //  * @author Vlad Sorokin
-//     //  * @date 2024/06/19
-//     //  */
-//     // test(tst_con.ccountMatchingCommandAlias_inValidCommandAliasDataString, async () => {
-//     //     // Arrange
-        
+    /**
+     * @function countMatchingCommandAlias_inValidCommandAliasDataString
+     * @description Tests the commandBroker function countMatchingCommandAlias with a invalid data string.
+     * @author Vlad Sorokin
+     * @date 2024/06/19
+     */
+    test(tst_con.ccountMatchingCommandAlias_inValidCommandAliasDataString, async () => {
+        // Arrange
+        D[sys.cCommandsAliases] = {};
+        let commandAliasData = tst_man.ctestString1;
+        let commandAliasName = bas.cts + bas.ct + wrd.cPlugin + num.cOne + wrd.cCommand + num.c01;
 
-//     //     // Act
-//     //     let returnData = await commandBroker.countMatchingCommandAlias();
+        // Act
+        let returnData = await commandBroker.countMatchingCommandAlias(commandAliasData, commandAliasName);
 
-//     //     // Assert
-//     //     expect(returnData).toBeFalsy();
-//     // });
+        // Assert
+        expect(returnData).toEqual(0);
+    });
 
-//     // /**
-//     //  * @function countMatchingCommandAlias_inValidCommandAliasNameString
-//     //  * @description Tests the commandBroker function countMatchingCommandAlias with a invalid data string.
-//     //  * @author Vlad Sorokin
-//     //  * @date 2024/06/19
-//     //  */
-//     // test(tst_con.ccountMatchingCommandAlias_inValidCommandAliasNameString, async () => {
-//     //     // Arrange
-        
+    /**
+     * @function countMatchingCommandAlias_inValidCommandAliasNameString
+     * @description Tests the commandBroker function countMatchingCommandAlias with a invalid data string.
+     * @author Vlad Sorokin
+     * @date 2024/06/19
+     */
+    test(tst_con.ccountMatchingCommandAlias_inValidCommandAliasNameString, async () => {
+        // Arrange
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandsAliases] = tst_cbt.testPluginCommandAliases;
+        let commandAliasData = D[sys.cCommandsAliases];
+        let commandAliasName = tst_man.ctestString1;
 
-//     //     // Act
-//     //     let returnData = await commandBroker.countMatchingCommandAlias();
+        // Act
+        let returnData = await commandBroker.countMatchingCommandAlias(commandAliasData, commandAliasName);
 
-//     //     // Assert
-//     //     expect(returnData).toBeFalsy();
-//     // });
+        // Assert
+        expect(returnData).toEqual(0);
+    });
 
-//     // /**
-//     //  * @function countMatchingCommandAlias_inValidCommandAliasDataInteger
-//     //  * @description Tests the commandBroker function countMatchingCommandAlias with a invalid data integer.
-//     //  * @author Vlad Sorokin
-//     //  * @date 2024/06/19
-//     //  */
-//     // test(tst_con.ccountMatchingCommandAlias_inValidCommandAliasDataInteger, async () => {
-//     //     // Arrange
-        
+    /**
+     * @function countMatchingCommandAlias_inValidCommandAliasDataInteger
+     * @description Tests the commandBroker function countMatchingCommandAlias with a invalid data integer.
+     * @author Vlad Sorokin
+     * @date 2024/06/19
+     */
+    test(tst_con.ccountMatchingCommandAlias_inValidCommandAliasDataInteger, async () => {
+        // Arrange
+        D[sys.cCommandsAliases] = {};
+        let commandAliasData = 123;
+        let commandAliasName = bas.cts + bas.ct + wrd.cPlugin + num.cOne + wrd.cCommand + num.c01;
 
-//     //     // Act
-//     //     let returnData = await commandBroker.countMatchingCommandAlias();
+        // Act
+        let returnData = await commandBroker.countMatchingCommandAlias(commandAliasData, commandAliasName);
 
-//     //     // Assert
-//     //     expect(returnData).toBeFalsy();
-//     // });
+        // Assert
+        expect(returnData).toEqual(0);
+    });
 
-//     // /**
-//     //  * @function countMatchingCommandAlias_inValidCommandAliasDataBoolean
-//     //  * @description Tests the commandBroker function countMatchingCommandAlias with a invalid data boolean.
-//     //  * @author Vlad Sorokin
-//     //  * @date 2024/06/19
-//     //  */
-//     // test(tst_con.ccountMatchingCommandAlias_inValidCommandAliasDataBoolean, async () => {
-//     //     // Arrange
-        
+    /**
+     * @function countMatchingCommandAlias_inValidCommandAliasDataBoolean
+     * @description Tests the commandBroker function countMatchingCommandAlias with a invalid data boolean.
+     * @author Vlad Sorokin
+     * @date 2024/06/19
+     */
+    test(tst_con.ccountMatchingCommandAlias_inValidCommandAliasDataBoolean, async () => {
+        // Arrange
+        D[sys.cCommandsAliases] = {};
+        let commandAliasData = false;
+        let commandAliasName = bas.cts + bas.ct + wrd.cPlugin + num.cOne + wrd.cCommand + num.c01;
 
-//     //     // Act
-//     //     let returnData = await commandBroker.countMatchingCommandAlias();
+        // Act
+        let returnData = await commandBroker.countMatchingCommandAlias(commandAliasData, commandAliasName);
 
-//     //     // Assert
-//     //     expect(returnData).toBeFalsy();
-//     // });
+        // Assert
+        expect(returnData).toEqual(0);
+    });
 
-//     // /**
-//     //  * @function countMatchingCommandAlias_inValidCommandAliasNameInteger
-//     //  * @description Tests the commandBroker function countMatchingCommandAlias with a invalid data integer.
-//     //  * @author Vlad Sorokin
-//     //  * @date 2024/06/19
-//     //  */
-//     // test(tst_con.ccountMatchingCommandAlias_inValidCommandAliasNameInteger, async () => {
-//     //     // Arrange
-        
+    /**
+     * @function countMatchingCommandAlias_inValidCommandAliasNameInteger
+     * @description Tests the commandBroker function countMatchingCommandAlias with a invalid data integer.
+     * @author Vlad Sorokin
+     * @date 2024/06/19
+     */
+    test(tst_con.ccountMatchingCommandAlias_inValidCommandAliasNameInteger, async () => {
+        // Arrange
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandsAliases] = tst_cbt.testPluginCommandAliases;
+        let commandAliasData = D[sys.cCommandsAliases];
+        let commandAliasName = 123;
 
-//     //     // Act
-//     //     let returnData = await commandBroker.countMatchingCommandAlias();
+        // Act
+        let returnData = await commandBroker.countMatchingCommandAlias(commandAliasData, commandAliasName);
 
-//     //     // Assert
-//     //     expect(returnData).toBeFalsy();
-//     // });
+        // Assert
+        expect(returnData).toEqual(0);
+    });
 
-//     // /**
-//     //  * @function countMatchingCommandAlias_inValidCommandAliasNameBoolean
-//     //  * @description Tests the commandBroker function countMatchingCommandAlias with a invalid data boolean.
-//     //  * @author Vlad Sorokin
-//     //  * @date 2024/06/19
-//     //  */
-//     // test(tst_con.ccountMatchingCommandAlias_inValidCommandAliasNameBoolean, async () => {
-//     //     // Arrange
-        
+    /**
+     * @function countMatchingCommandAlias_inValidCommandAliasNameBoolean
+     * @description Tests the commandBroker function countMatchingCommandAlias with a invalid data boolean.
+     * @author Vlad Sorokin
+     * @date 2024/06/19
+     */
+    test(tst_con.ccountMatchingCommandAlias_inValidCommandAliasNameBoolean, async () => {
+        // Arrange
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandsAliases] = tst_cbt.testPluginCommandAliases;
+        let commandAliasData = D[sys.cCommandsAliases];
+        let commandAliasName = false;
 
-//     //     // Act
-//     //     let returnData = await commandBroker.countMatchingCommandAlias();
+        // Act
+        let returnData = await commandBroker.countMatchingCommandAlias(commandAliasData, commandAliasName);
 
-//     //     // Assert
-//     //     expect(returnData).toBeFalsy();
-//     // });
+        // Assert
+        expect(returnData).toEqual(0);
+    });
 
-//     // /**
-//     //  * @function countMatchingCommandAlias_inValidCommandAliasDataUndefined
-//     //  * @description Tests the commandBroker function countMatchingCommandAlias with a invalid data undefined.
-//     //  * @author Vlad Sorokin
-//     //  * @date 2024/06/19
-//     //  */
-//     // test(tst_con.ccountMatchingCommandAlias_inValidCommandAliasDataUndefined, async () => {
-//     //     // Arrange
-        
+    /**
+     * @function countMatchingCommandAlias_inValidCommandAliasDataUndefined
+     * @description Tests the commandBroker function countMatchingCommandAlias with a invalid data undefined.
+     * @author Vlad Sorokin
+     * @date 2024/06/19
+     */
+    test(tst_con.ccountMatchingCommandAlias_inValidCommandAliasDataUndefined, async () => {
+        // Arrange
+        D[sys.cCommandsAliases] = {};
+        let commandAliasData = undefined;
+        let commandAliasName = bas.cts + bas.ct + wrd.cPlugin + num.cOne + wrd.cCommand + num.c01;
 
-//     //     // Act
-//     //     let returnData = await commandBroker.countMatchingCommandAlias();
+        // Act
+        let returnData = await commandBroker.countMatchingCommandAlias(commandAliasData, commandAliasName);
 
-//     //     // Assert
-//     //     expect(returnData).toBeFalsy();
-//     // });
+        // Assert
+        expect(returnData).toEqual(0);
+    });
 
-//     // /**
-//     //  * @function countMatchingCommandAlias_inValidCommandAliasDataNaN
-//     //  * @description Tests the commandBroker function countMatchingCommandAlias with a invalid data NaN.
-//     //  * @author Vlad Sorokin
-//     //  * @date 2024/06/19
-//     //  */
-//     // test(tst_con.ccountMatchingCommandAlias_inValidCommandAliasDataNaN, async () => {
-//     //     // Arrange
-        
+    /**
+     * @function countMatchingCommandAlias_inValidCommandAliasDataNaN
+     * @description Tests the commandBroker function countMatchingCommandAlias with a invalid data NaN.
+     * @author Vlad Sorokin
+     * @date 2024/06/19
+     */
+    test(tst_con.ccountMatchingCommandAlias_inValidCommandAliasDataNaN, async () => {
+        // Arrange
+        D[sys.cCommandsAliases] = {};
+        let commandAliasData = NaN;
+        let commandAliasName = bas.cts + bas.ct + wrd.cPlugin + num.cOne + wrd.cCommand + num.c01;
 
-//     //     // Act
-//     //     let returnData = await commandBroker.countMatchingCommandAlias();
+        // Act
+        let returnData = await commandBroker.countMatchingCommandAlias(commandAliasData, commandAliasName);
 
-//     //     // Assert
-//     //     expect(returnData).toBeFalsy();
-//     // });
+        // Assert
+        expect(returnData).toEqual(0);
+    });
 
-//     // /**
-//     //  * @function countMatchingCommandAlias_inValidCommandAliasNameUndefined
-//     //  * @description Tests the commandBroker function countMatchingCommandAlias with a invalid data undefined.
-//     //  * @author Vlad Sorokin
-//     //  * @date 2024/06/19
-//     //  */
-//     // test(tst_con.ccountMatchingCommandAlias_inValidCommandAliasNameUndefined, async () => {
-//     //     // Arrange
-        
+    /**
+     * @function countMatchingCommandAlias_inValidCommandAliasNameUndefined
+     * @description Tests the commandBroker function countMatchingCommandAlias with a invalid data undefined.
+     * @author Vlad Sorokin
+     * @date 2024/06/19
+     */
+    test(tst_con.ccountMatchingCommandAlias_inValidCommandAliasNameUndefined, async () => {
+        // Arrange
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandsAliases] = tst_cbt.testPluginCommandAliases;
+        let commandAliasData = D[sys.cCommandsAliases];
+        let commandAliasName = undefined;
 
-//     //     // Act
-//     //     let returnData = await commandBroker.countMatchingCommandAlias();
+        // Act
+        let returnData = await commandBroker.countMatchingCommandAlias(commandAliasData, commandAliasName);
 
-//     //     // Assert
-//     //     expect(returnData).toBeFalsy();
-//     // });
+        // Assert
+        expect(returnData).toEqual(0);
+    });
 
-//     // /**
-//     //  * @function countMatchingCommandAlias_inValidCommandAliasNameNaN
-//     //  * @description Tests the commandBroker function countMatchingCommandAlias with a invalid data NaN.
-//     //  * @author Vlad Sorokin
-//     //  * @date 2024/06/19
-//     //  */
-//     // test(tst_con.ccountMatchingCommandAlias_inValidCommandAliasNameNaN, async () => {
-//     //     // Arrange
-        
+    /**
+     * @function countMatchingCommandAlias_inValidCommandAliasNameNaN
+     * @description Tests the commandBroker function countMatchingCommandAlias with a invalid data NaN.
+     * @author Vlad Sorokin
+     * @date 2024/06/19
+     */
+    test(tst_con.ccountMatchingCommandAlias_inValidCommandAliasNameNaN, async () => {
+        // Arrange
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandsAliases] = tst_cbt.testPluginCommandAliases;
+        let commandAliasData = D[sys.cCommandsAliases];
+        let commandAliasName = NaN;
 
-//     //     // Act
-//     //     let returnData = await commandBroker.countMatchingCommandAlias();
+        // Act
+        let returnData = await commandBroker.countMatchingCommandAlias(commandAliasData, commandAliasName);
 
-//     //     // Assert
-//     //     expect(returnData).toBeFalsy();
-//     // });
-// })
+        // Assert
+        expect(returnData).toEqual(0);
+    });
+})
+
+/**
+ * @function searchCommandAlias
+ * @description Tests the positive and negative test cases of the searchCommandAlias
+ * @author Vlad Sorokin
+ * @date 2024/06/20
+ */
+describe(tst_con.csearchCommandAlias, () => {
+    /**
+     * @function searchCommandAlias_validData
+     * @description Tests the commandBroker function searchCommandAlias with a valid input.
+     * @author Vlad Sorokin
+     * @date 2024/06/20
+     */
+    test(tst_con.csearchCommandAlias_validData, async () => {
+        // Arrange
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandsAliases] = tst_cbt.testPluginCommandAliases;
+        let commandAliasData = D[sys.cCommandsAliases];
+        let commandAliasName = bas.cts + bas.ct + wrd.cPlugin + num.cOne + wrd.cCommand + num.c01;
+
+        // Act
+        let returnData = await commandBroker.searchCommandAlias(commandAliasData, commandAliasName);
+
+        // Assert
+        expect(returnData).toEqual(tst_cbt.testPluginCommandAliasesExpected);
+    });
+
+    /**
+     * @function searchCommandAlias_inValidCommandAliasDataString
+     * @description Tests the commandBroker function searchCommandAlias with a invalid data string.
+     * @author Vlad Sorokin
+     * @date 2024/06/20
+     */
+    test(tst_con.csearchCommandAlias_inValidCommandAliasDataString, async () => {
+        // Arrange
+        D[sys.cCommandsAliases] = {};
+        let commandAliasData = tst_man.ctestString1;
+        let commandAliasName = bas.cts + bas.ct + wrd.cPlugin + num.cOne + wrd.cCommand + num.c01;
+
+        // Act
+        let returnData = await commandBroker.searchCommandAlias(commandAliasData, commandAliasName);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function searchCommandAlias_inValidCommandAliasNameString
+     * @description Tests the commandBroker function searchCommandAlias with a invalid data string.
+     * @author Vlad Sorokin
+     * @date 2024/06/20
+     */
+    test(tst_con.csearchCommandAlias_inValidCommandAliasNameString, async () => {
+        // Arrange
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandsAliases] = tst_cbt.testPluginCommandAliases;
+        let commandAliasData = D[sys.cCommandsAliases];
+        let commandAliasName = tst_man.ctestString1;
+
+        // Act
+        let returnData = await commandBroker.searchCommandAlias(commandAliasData, commandAliasName);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function searchCommandAlias_inValidCommandAliasDataInteger
+     * @description Tests the commandBroker function searchCommandAlias with a invalid data integer.
+     * @author Vlad Sorokin
+     * @date 2024/06/20
+     */
+    test(tst_con.csearchCommandAlias_inValidCommandAliasDataInteger, async () => {
+        // Arrange
+        D[sys.cCommandsAliases] = {};
+        let commandAliasData = 123;
+        let commandAliasName = bas.cts + bas.ct + wrd.cPlugin + num.cOne + wrd.cCommand + num.c01;
+
+        // Act
+        let returnData = await commandBroker.searchCommandAlias(commandAliasData, commandAliasName);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function searchCommandAlias_inValidCommandAliasDataBoolean
+     * @description Tests the commandBroker function searchCommandAlias with a invalid data boolean.
+     * @author Vlad Sorokin
+     * @date 2024/06/20
+     */
+    test(tst_con.csearchCommandAlias_inValidCommandAliasDataBoolean, async () => {
+        // Arrange
+        D[sys.cCommandsAliases] = {};
+        let commandAliasData = false;
+        let commandAliasName = bas.cts + bas.ct + wrd.cPlugin + num.cOne + wrd.cCommand + num.c01;
+
+        // Act
+        let returnData = await commandBroker.searchCommandAlias(commandAliasData, commandAliasName);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function searchCommandAlias_inValidCommandAliasNameInteger
+     * @description Tests the commandBroker function searchCommandAlias with a invalid data integer.
+     * @author Vlad Sorokin
+     * @date 2024/06/20
+     */
+    test(tst_con.csearchCommandAlias_inValidCommandAliasNameInteger, async () => {
+        // Arrange
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandsAliases] = tst_cbt.testPluginCommandAliases;
+        let commandAliasData = D[sys.cCommandsAliases];
+        let commandAliasName = 123;
+
+        // Act
+        let returnData = await commandBroker.searchCommandAlias(commandAliasData, commandAliasName);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function searchCommandAlias_inValidCommandAliasNameBoolean
+     * @description Tests the commandBroker function searchCommandAlias with a invalid data boolean.
+     * @author Vlad Sorokin
+     * @date 2024/06/20
+     */
+    test(tst_con.csearchCommandAlias_inValidCommandAliasNameBoolean, async () => {
+        // Arrange
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandsAliases] = tst_cbt.testPluginCommandAliases;
+        let commandAliasData = D[sys.cCommandsAliases];
+        let commandAliasName = false;
+
+        // Act
+        let returnData = await commandBroker.searchCommandAlias(commandAliasData, commandAliasName);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function searchCommandAlias_inValidCommandAliasDataUndefined
+     * @description Tests the commandBroker function searchCommandAlias with a invalid data undefined.
+     * @author Vlad Sorokin
+     * @date 2024/06/20
+     */
+    test(tst_con.csearchCommandAlias_inValidCommandAliasDataUndefined, async () => {
+        // Arrange
+        D[sys.cCommandsAliases] = {};
+        let commandAliasData = undefined;
+        let commandAliasName = bas.cts + bas.ct + wrd.cPlugin + num.cOne + wrd.cCommand + num.c01;
+
+        // Act
+        let returnData = await commandBroker.searchCommandAlias(commandAliasData, commandAliasName);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function searchCommandAlias_inValidCommandAliasDataNaN
+     * @description Tests the commandBroker function searchCommandAlias with a invalid data NaN.
+     * @author Vlad Sorokin
+     * @date 2024/06/20
+     */
+    test(tst_con.csearchCommandAlias_inValidCommandAliasDataNaN, async () => {
+        // Arrange
+        D[sys.cCommandsAliases] = {};
+        let commandAliasData = NaN;
+        let commandAliasName = bas.cts + bas.ct + wrd.cPlugin + num.cOne + wrd.cCommand + num.c01;
+
+        // Act
+        let returnData = await commandBroker.searchCommandAlias(commandAliasData, commandAliasName);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function searchCommandAlias_inValidCommandAliasNameUndefined
+     * @description Tests the commandBroker function searchCommandAlias with a invalid data undefined.
+     * @author Vlad Sorokin
+     * @date 2024/06/20
+     */
+    test(tst_con.csearchCommandAlias_inValidCommandAliasNameUndefined, async () => {
+        // Arrange
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandsAliases] = tst_cbt.testPluginCommandAliases;
+        let commandAliasData = D[sys.cCommandsAliases];
+        let commandAliasName = undefined;
+
+        // Act
+        let returnData = await commandBroker.searchCommandAlias(commandAliasData, commandAliasName);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function searchCommandAlias_inValidCommandAliasNameNaN
+     * @description Tests the commandBroker function searchCommandAlias with a invalid data NaN.
+     * @author Vlad Sorokin
+     * @date 2024/06/20
+     */
+    test(tst_con.csearchCommandAlias_inValidCommandAliasNameNaN, async () => {
+        // Arrange
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandsAliases] = tst_cbt.testPluginCommandAliases;
+        let commandAliasData = D[sys.cCommandsAliases];
+        let commandAliasName = NaN;
+
+        // Act
+        let returnData = await commandBroker.searchCommandAlias(commandAliasData, commandAliasName);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+})
 
 
