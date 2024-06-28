@@ -312,9 +312,10 @@ testName: getAllCommandAliasData_inValidCommandAliasDataStructureBoolean
 input commandAliasDataStructure: boolean (false)
 output: ?
 
-testName: getAllCommandAliasData_inValidCommandAliasDataStructureUndefined
+testName: getAllCommandAliasData_validCommandAliasDataStructureUndefined
 input commandAliasDataStructure: undefined
 output: ?
+NOTE: inValid test was changed to valid due to the function's implementation.
 
 testName: getAllCommandAliasData_inValidCommandAliasDataStructureNaN
 input commandAliasDataStructure: NaN
@@ -355,10 +356,11 @@ input commandAliasDataStructure: object (The command alias data structure that r
 input namespaceToFind: boolean (false)
 output: ?
 
-testName: getCommandNamespaceDataObject_inValidCommandAliasDataStructureUndefined
+testName: getCommandNamespaceDataObject_validCommandAliasDataStructureUndefined
 input commandAliasDataStructure: undefined
 input namespaceToFind: string (The namespace to look for in the command alias metaData data structure)
 output: ?
+NOTE: inValid test was changed to valid due to the function's implementation.
 
 testName: getCommandNamespaceDataObject_inValidCommandAliasDataStructureNaN
 input commandAliasDataStructure: NaN
@@ -420,15 +422,17 @@ input commandString: NaN
 input commandDelimiter: string (The delimiter that should be used to parse the command line)
 output: ?
 
-testName: getCommandArgs_inValidDelimiterUndefined
+testName: getCommandArgs_validDelimiterUndefined
 input commandString: string (The command string that should be parsed fro command arguments)
 input commandDelimiter: undefined
 output: ?
+NOTE: inValid test was changed to valid due to the function's implementation.
 
-testName: getCommandArgs_inValidDelimiterNaN
+testName: getCommandArgs_validDelimiterNaN
 input commandString: string (The command string that should be parsed fro command arguments)
 input commandDelimiter: NaN
 output: ?
+NOTE: inValid test was changed to valid due to the function's implementation.
 --------------------------------------------------------------------------------
 testName: executeCommand_validData
 input: commandString: string (The command to execute along with all the associated command arguments, data & meta-data)

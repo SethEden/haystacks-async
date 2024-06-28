@@ -37,7 +37,6 @@ async function initializePlugin(inputMetaData) {
   D[wrd.cdata][sys.cpluginCommands] = {};
   D[wrd.cdata][sys.cpluginCommands] = await commands.initPluginCommandsLibrary();
   let returnData = D;
-  console.log('D is: ', D)
   return returnData;
 }
 

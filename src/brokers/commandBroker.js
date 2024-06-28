@@ -468,7 +468,7 @@ async function getAllCommandAliasData(commandAliasDataStructure) {
   }
   // internalCommandAliasDataStructure is:
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinternalCommandAliasDataStructureIs + JSON.stringify(internalCommandAliasDataStructure));
-  if (typeof internalCommandAliasDataStructure === wrd.cobject) {
+  if (typeof internalCommandAliasDataStructure === wrd.cobject && internalCommandAliasDataStructure !== null) {
     allCommandsData = [];
     for (let commandAliasEntity in internalCommandAliasDataStructure) {
       // commandAliasEntity is:
@@ -494,7 +494,7 @@ async function getAllCommandAliasData(commandAliasDataStructure) {
         }
       } else {
         if (Array.isArray(allCommandsData) === true && allCommandsData.length === 0) {
-          // NOTE: Only reset it if it does not already contain some data. We could loose data if we didn't check first.
+          // NOTE: Only reset it if it does not already contain some data. We could lose data if we didn't check first.
           allCommandsData = false; // Reset it, because it was reinitialized to an array.
         }
       }
@@ -556,7 +556,7 @@ async function getCommandNamespaceDataObject(commandAliasDataStructure, namespac
 /**
  * @function getCommandArgs
  * @description Gets the arguments of the current command.
- * @param {string} commandString The command string that should be parsed fro command arguments.
+ * @param {string} commandString The command string that should be parsed for command arguments.
  * @param {string} commandDelimiter The delimiter that should be used to parse the command line.
  * @return {array<boolean|string|integer>} Any array of arguments, some times these might actually be nested command calls.
  * @author Seth Hollingsead
@@ -746,6 +746,8 @@ async function executeCommand(commandString) {
     await loggers.consoleLog(namespacePrefix + functionName, msg.cCommandStartTimeIs + commandStartTime);
   } // End-if (commandMetricsEnabled === true)
   try {
+    console.log('commandToExecute is: ' + commandToExecute);
+    console.log('commandArgs are: ' + commandArgs);
     if (commandToExecute !== false && commandArgs !== false) {
       // console.log('commandToExecute is: ' + commandToExecute);
       // console.log('commandArgs are: ' + commandArgs);

@@ -40,7 +40,7 @@ export default {
 
     // Enable or Disable unit test files.
     testPathIgnorePatterns: [
-      //"<rootDir>/test/unitTest/tests/brokers/commandBroker.test.js"
+      // "<rootDir>/test/unitTest/tests/brokers/commandBroker.test.js"
       //"<rootDir>/test/unitTest/tests/brokers/constantBroker.test.js"
       //"<rootDir>/test/unitTest/tests/brokers/dataBroker.test.js"
       //"<rootDir>/test/unitTest/tests/brokers/pluginBroker.test.js"

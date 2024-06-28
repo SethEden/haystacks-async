@@ -31,7 +31,12 @@ export const testConstantsValidation = [
     {Name: 'caddPluginCommandAliases', Actual: tst_con.caddPluginCommandAliases, Expected: 'addPluginCommandAliases'},
     {Name: 'cgetValidCommand', Actual: tst_con.cgetValidCommand, Expected: 'cgetValidCommand'},
     {Name: 'ccountMatchingCommandAlias', Actual: tst_con.ccountMatchingCommandAlias, Expected: 'countMatchingCommandAlias'},
-    
+    {Name: 'cgetAllCommandAliasData', Actual: tst_con.cgetAllCommandAliasData, Expected: 'getAllCommandAliasData'},
+    {Name: 'cgetCommandNamespaceDataObject', Actual: tst_con.cgetCommandNamespaceDataObject, Expected: 'getCommandNamespaceDataObject'},
+    {Name: 'cgetCommandArgs', Actual: tst_con.cgetCommandArgs, Expected: 'getCommandArgs'},
+    {Name: 'cexecuteCommand', Actual: tst_con.cexecuteCommand, Expected: 'cexecuteCommand'},
+
+
     /* dataBroker */
 
     /* ruleBroker */
@@ -212,18 +217,63 @@ export const testConstantsValidation = [
     {Name: 'cgetValidCommand_inValidCommandDelimiterUndefined', Actual: tst_con.cgetValidCommand_inValidCommandDelimiterUndefined, Expected: 'cgetValidCommand_inValidCommandDelimiterUndefined'},
     {Name: 'cgetValidCommand_inValidCommandDelimiterNaN', Actual: tst_con.cgetValidCommand_inValidCommandDelimiterNaN, Expected: 'cgetValidCommand_inValidCommandDelimiterNaN'},
 
+    // countMatchingCommandAlias
+    {Name: 'ccountMatchingCommandAlias_validData', Actual: tst_con.ccountMatchingCommandAlias_validData, Expected: 'countMatchingCommandAlias_validData'},
+    {Name: 'ccountMatchingCommandAlias_inValidCommandAliasDataString', Actual: tst_con.ccountMatchingCommandAlias_inValidCommandAliasDataString, Expected: 'countMatchingCommandAlias_inValidCommandAliasDataString'},
+    {Name: 'ccountMatchingCommandAlias_inValidCommandAliasNameString', Actual: tst_con.ccountMatchingCommandAlias_inValidCommandAliasNameString, Expected: 'countMatchingCommandAlias_inValidCommandAliasNameString'},
+    {Name: 'ccountMatchingCommandAlias_inValidCommandAliasDataInteger', Actual: tst_con.ccountMatchingCommandAlias_inValidCommandAliasDataInteger, Expected: 'countMatchingCommandAlias_inValidCommandAliasDataInteger'},
+    {Name: 'ccountMatchingCommandAlias_inValidCommandAliasDataBoolean', Actual: tst_con.ccountMatchingCommandAlias_inValidCommandAliasDataBoolean, Expected: 'countMatchingCommandAlias_inValidCommandAliasDataBoolean'},
+    {Name: 'ccountMatchingCommandAlias_inValidCommandAliasNameInteger', Actual: tst_con.ccountMatchingCommandAlias_inValidCommandAliasNameInteger, Expected: 'countMatchingCommandAlias_inValidCommandAliasNameInteger'},
+    {Name: 'ccountMatchingCommandAlias_inValidCommandAliasNameBoolean', Actual: tst_con.ccountMatchingCommandAlias_inValidCommandAliasNameBoolean, Expected: 'countMatchingCommandAlias_inValidCommandAliasNameBoolean'},
+    {Name: 'ccountMatchingCommandAlias_inValidCommandAliasDataUndefined', Actual: tst_con.ccountMatchingCommandAlias_inValidCommandAliasDataUndefined, Expected: 'countMatchingCommandAlias_inValidCommandAliasDataUndefined'},
+    {Name: 'ccountMatchingCommandAlias_inValidCommandAliasDataNaN', Actual: tst_con.ccountMatchingCommandAlias_inValidCommandAliasDataNaN, Expected: 'countMatchingCommandAlias_inValidCommandAliasDataNaN'},
+    {Name: 'ccountMatchingCommandAlias_inValidCommandAliasNameUndefined', Actual: tst_con.ccountMatchingCommandAlias_inValidCommandAliasNameUndefined, Expected: 'countMatchingCommandAlias_inValidCommandAliasNameUndefined'},
+    {Name: 'ccountMatchingCommandAlias_inValidCommandAliasNameNaN', Actual: tst_con.ccountMatchingCommandAlias_inValidCommandAliasNameNaN, Expected: 'countMatchingCommandAlias_inValidCommandAliasNameNaN'},
+
+    // getAllCommandAliasData
+    {Name: 'cgetAllCommandAliasData_validCommandAliasDataStructureData', Actual: tst_con.cgetAllCommandAliasData_validCommandAliasDataStructureData, Expected: 'getAllCommandAliasData_validCommandAliasDataStructureData'},
+    {Name: 'cgetAllCommandAliasData_inValidCommandAliasDataStructureString', Actual: tst_con.cgetAllCommandAliasData_inValidCommandAliasDataStructureString, Expected: 'getAllCommandAliasData_inValidCommandAliasDataStructureString'},
+    {Name: 'cgetAllCommandAliasData_inValidCommandAliasDataStructureInteger', Actual: tst_con.cgetAllCommandAliasData_inValidCommandAliasDataStructureInteger, Expected: 'getAllCommandAliasData_inValidCommandAliasDataStructureInteger'},
+    {Name: 'cgetAllCommandAliasData_inValidCommandAliasDataStructureBoolean', Actual: tst_con.cgetAllCommandAliasData_inValidCommandAliasDataStructureBoolean, Expected: 'getAllCommandAliasData_inValidCommandAliasDataStructureBoolean'},
+    {Name: 'cgetAllCommandAliasData_validCommandAliasDataStructureUndefined', Actual: tst_con.cgetAllCommandAliasData_validCommandAliasDataStructureUndefined, Expected: 'getAllCommandAliasData_validCommandAliasDataStructureUndefined'},
+    {Name: 'cgetAllCommandAliasData_inValidCommandAliasDataStructureNaN', Actual: tst_con.cgetAllCommandAliasData_inValidCommandAliasDataStructureNaN, Expected: 'getAllCommandAliasData_inValidCommandAliasDataStructureNaN'},
+
+    // cgetCommandNamespaceDataObject
+    {Name: 'cgetCommandNamespaceDataObject_validData', Actual: tst_con.cgetCommandNamespaceDataObject, Expected: 'getCommandNamespaceDataObject'},
+    {Name: 'cgetCommandNamespaceDataObject_inValidCommandAliasDataStructureString', Actual: tst_con.cgetCommandNamespaceDataObject, Expected: 'getCommandNamespaceDataObject'},
+    {Name: 'cgetCommandNamespaceDataObject_inValidNamespaceToFindString', Actual: tst_con.cgetCommandNamespaceDataObject, Expected: 'getCommandNamespaceDataObject'},
+    {Name: 'cgetCommandNamespaceDataObject_inValidCommandAliasDataStructureInteger', Actual: tst_con.cgetCommandNamespaceDataObject, Expected: 'getCommandNamespaceDataObject'},
+    {Name: 'cgetCommandNamespaceDataObject_inValidCommandAliasDataStructureBoolean', Actual: tst_con.cgetCommandNamespaceDataObject, Expected: 'getCommandNamespaceDataObject'},
+    {Name: 'cgetCommandNamespaceDataObject_inValidNamespaceToFindInteger', Actual: tst_con.cgetCommandNamespaceDataObject, Expected: 'getCommandNamespaceDataObject'},
+    {Name: 'cgetCommandNamespaceDataObject_inValidNamespaceToFindBoolean', Actual: tst_con.cgetCommandNamespaceDataObject, Expected: 'getCommandNamespaceDataObject'},
+    {Name: 'cgetCommandNamespaceDataObject_validCommandAliasDataStructureUndefined', Actual: tst_con.cgetCommandNamespaceDataObject, Expected: 'getCommandNamespaceDataObject'},
+    {Name: 'cgetCommandNamespaceDataObject_inValidCommandAliasDataStructureNaN', Actual: tst_con.cgetCommandNamespaceDataObject, Expected: 'getCommandNamespaceDataObject'},
+    {Name: 'cgetCommandNamespaceDataObject_inValidNamespaceToFindUndefined', Actual: tst_con.cgetCommandNamespaceDataObject, Expected: 'getCommandNamespaceDataObject'},
+    {Name: 'cgetCommandNamespaceDataObject_inValidNamespaceToFindNaN', Actual: tst_con.cgetCommandNamespaceDataObject, Expected: 'getCommandNamespaceDataObject'},
+
+    // cgetCommandArgs
+    {Name: 'cgetCommandArgs_validData', Actual: tst_con.cgetCommandArgs_validData, Expected: 'getCommandArgs_validData'},
+    {Name: 'cgetCommandArgs_inValidCommandStringString', Actual: tst_con.cgetCommandArgs_inValidCommandStringString, Expected: 'getCommandArgs_inValidCommandStringString'},
+    {Name: 'cgetCommandArgs_inValidCommandDelimiterString', Actual: tst_con.cgetCommandArgs_inValidCommandDelimiterString, Expected: 'getCommandArgs_inValidCommandDelimiterString'},
+    {Name: 'cgetCommandArgs_inValidCommandStringInteger', Actual: tst_con.cgetCommandArgs_inValidCommandStringInteger, Expected: 'getCommandArgs_inValidCommandStringInteger'},
+    {Name: 'cgetCommandArgs_inValidCommandStringBoolean', Actual: tst_con.cgetCommandArgs_inValidCommandStringBoolean, Expected: 'getCommandArgs_inValidCommandStringBoolean'},
+    {Name: 'cgetCommandArgs_inValidCommandDelimiterInteger', Actual: tst_con.cgetCommandArgs_inValidCommandDelimiterInteger, Expected: 'getCommandArgs_inValidCommandDelimiterInteger'},
+    {Name: 'cgetCommandArgs_inValidCommandDelimiterBoolean', Actual: tst_con.cgetCommandArgs_inValidCommandDelimiterBoolean, Expected: 'getCommandArgs_inValidCommandDelimiterBoolean'},
+    {Name: 'cgetCommandArgs_inValidCommandStringUndefined', Actual: tst_con.cgetCommandArgs_inValidCommandStringUndefined, Expected: 'getCommandArgs_inValidCommandStringUndefined'},
+    {Name: 'cgetCommandArgs_inValidCommandStringNaN', Actual: tst_con.cgetCommandArgs_inValidCommandStringNaN, Expected: 'getCommandArgs_inValidCommandStringNaN'},
+    {Name: 'cgetCommandArgs_validCommandDelimiterUndefined', Actual: tst_con.cgetCommandArgs_validCommandDelimiterUndefined, Expected: 'getCommandArgs_validCommandDelimiterUndefined'},
+    {Name: 'cgetCommandArgs_validCommandDelimiterNaN', Actual: tst_con.cgetCommandArgs_validCommandDelimiterNaN, Expected: 'getCommandArgs_validCommandDelimiterNaN'},
     
-    {Name: 'ccountMatchingCommandAlias_validData', Actual: tst_con.ccountMatchingCommandAlias, Expected: 'countMatchingCommandAlias'},
-    {Name: 'ccountMatchingCommandAlias_inValidCommandAliasDataString', Actual: tst_con.ccountMatchingCommandAlias, Expected: 'countMatchingCommandAlias'},
-    {Name: 'ccountMatchingCommandAlias_inValidCommandAliasNameString', Actual: tst_con.ccountMatchingCommandAlias, Expected: 'countMatchingCommandAlias'},
-    {Name: 'ccountMatchingCommandAlias_inValidCommandAliasDataInteger', Actual: tst_con.ccountMatchingCommandAlias, Expected: 'countMatchingCommandAlias'},
-    {Name: 'ccountMatchingCommandAlias_inValidCommandAliasDataBoolean', Actual: tst_con.ccountMatchingCommandAlias, Expected: 'countMatchingCommandAlias'},
-    {Name: 'ccountMatchingCommandAlias_inValidCommandAliasNameInteger', Actual: tst_con.ccountMatchingCommandAlias, Expected: 'countMatchingCommandAlias'},
-    {Name: 'ccountMatchingCommandAlias_inValidCommandAliasNameBoolean', Actual: tst_con.ccountMatchingCommandAlias, Expected: 'countMatchingCommandAlias'},
-    {Name: 'ccountMatchingCommandAlias_inValidCommandAliasDataUndefined', Actual: tst_con.ccountMatchingCommandAlias, Expected: 'countMatchingCommandAlias'},
-    {Name: 'ccountMatchingCommandAlias_inValidCommandAliasDataNaN', Actual: tst_con.ccountMatchingCommandAlias, Expected: 'countMatchingCommandAlias'},
-    {Name: 'ccountMatchingCommandAlias_inValidCommandAliasNameUndefined', Actual: tst_con.ccountMatchingCommandAlias, Expected: 'countMatchingCommandAlias'},
-    {Name: 'ccountMatchingCommandAlias_inValidCommandAliasNameNaN', Actual: tst_con.ccountMatchingCommandAlias, Expected: 'countMatchingCommandAlias'},
+    // cexecuteCommand
+    {Name: 'cexecuteCommand_validCommandStringData', Actual: tst_con.cexecuteCommand_validCommandStringData, Expected: 'cexecuteCommand_validCommandStringData'},
+    {Name: 'cexecuteCommand_inValidCommandStringString', Actual: tst_con.cexecuteCommand_inValidCommandStringString, Expected: 'cexecuteCommand_inValidCommandStringString'},
+    {Name: 'cexecuteCommand_inValidCommandStringInteger', Actual: tst_con.cexecuteCommand_inValidCommandStringInteger, Expected: 'cexecuteCommand_inValidCommandStringInteger'},
+    {Name: 'cexecuteCommand_inValidCommandStringBoolean', Actual: tst_con.cexecuteCommand_inValidCommandStringBoolean, Expected: 'cexecuteCommand_inValidCommandStringBoolean'},
+    {Name: 'cexecuteCommand_inValidCommandStringUndefined', Actual: tst_con.cexecuteCommand_inValidCommandStringUndefined, Expected: 'cexecuteCommand_inValidCommandStringUndefined'},
+    {Name: 'cexecuteCommand_inValidCommandStringNaN', Actual: tst_con.cexecuteCommand_inValidCommandStringNaN, Expected: 'cexecuteCommand_inValidCommandStringNaN'},
+
+
+
 
     /* dataBroker */
 

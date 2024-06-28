@@ -1263,4 +1263,707 @@ describe(tst_con.csearchCommandAlias, () => {
     });
 })
 
+/**
+ * @function getAllCommandAliasData
+ * @description Tests the positive and negative test cases of the getAllCommandAliasData
+ * @author Vlad Sorokin
+ * @date 2024/06/26
+ */
+describe(tst_con.cgetAllCommandAliasData, () => {
+    /**
+     * @function getAllCommandAliasData_validCommandAliasDataStructureData
+     * @description Tests the commandBroker function getAllCommandAliasData with a valid input.
+     * @author Vlad Sorokin
+     * @date 2024/06/26
+     */
+    test(tst_con.cgetAllCommandAliasData_validCommandAliasDataStructureData, async () => {
+        // Arrange
+        D[sys.cbusinessRules] = {
+            [biz.cobjectDeepMerge]: (inputData, inputMetaData) => dataArrayParsing.objectDeepMerge(inputData, inputMetaData)
+        };
+        D[sys.cCommandsAliases] = {};
+        let commandAliasDataStructured = tst_cbt.testPluginCommandAliases;
+
+        // Act
+        let returnData = await commandBroker.getAllCommandAliasData(commandAliasDataStructured);
+
+        // Assert
+        expect(returnData).toEqual([tst_cbt.allTestPluginCommandAliases]);
+    });
+
+    /**
+     * @function getAllCommandAliasData_inValidCommandAliasDataStructureString
+    
+     * @description Tests the commandBroker function getAllCommandAliasData with a invalid data string.
+     * @author Vlad Sorokin
+     * @date 2024/06/26
+     */
+    test(tst_con.cgetAllCommandAliasData_inValidCommandAliasDataStructureString, async () => {
+        // Arrange
+        D[sys.cbusinessRules] = {
+            [biz.cobjectDeepMerge]: (inputData, inputMetaData) => dataArrayParsing.objectDeepMerge(inputData, inputMetaData)
+        };
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandsAliases] = tst_cbt.testPluginCommandAliases;
+        let commandAliasDataStructured = tst_man.ctestString1;
+
+        // Act
+        let returnData = await commandBroker.getAllCommandAliasData(commandAliasDataStructured);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function getAllCommandAliasData_inValidCommandAliasDataStructureInteger
+     * @description Tests the commandBroker function getAllCommandAliasData with a invalid data integer.
+     * @author Vlad Sorokin
+     * @date 2024/06/26
+     */
+    test(tst_con.cgetAllCommandAliasData_inValidCommandAliasDataStructureInteger, async () => {
+        // Arrange
+        D[sys.cbusinessRules] = {
+            [biz.cobjectDeepMerge]: (inputData, inputMetaData) => dataArrayParsing.objectDeepMerge(inputData, inputMetaData)
+        };
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandsAliases] = tst_cbt.testPluginCommandAliases;
+        let commandAliasDataStructured = 123;
+
+        // Act
+        let returnData = await commandBroker.getAllCommandAliasData(commandAliasDataStructured);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function getAllCommandAliasData_inValidCommandAliasDataStructureBoolean
+     * @description Tests the commandBroker function getAllCommandAliasData with a invalid data boolean.
+     * @author Vlad Sorokin
+     * @date 2024/06/26
+     */
+    test(tst_con.cgetAllCommandAliasData_inValidCommandAliasDataStructureBoolean, async () => {
+        // Arrange
+        D[sys.cbusinessRules] = {
+            [biz.cobjectDeepMerge]: (inputData, inputMetaData) => dataArrayParsing.objectDeepMerge(inputData, inputMetaData)
+        };
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandsAliases] = tst_cbt.testPluginCommandAliases;
+        let commandAliasDataStructured = false;
+
+        // Act
+        let returnData = await commandBroker.getAllCommandAliasData(commandAliasDataStructured);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function getAllCommandAliasData_validCommandAliasDataStructureUndefined
+     * @description Tests the commandBroker function getAllCommandAliasData with a invalid data undefined.
+     * @author Vlad Sorokin
+     * @date 2024/06/26
+     */
+    test(tst_con.cgetAllCommandAliasData_validCommandAliasDataStructureUndefined, async () => {
+        // Arrange
+        D[sys.cbusinessRules] = {
+            [biz.cobjectDeepMerge]: (inputData, inputMetaData) => dataArrayParsing.objectDeepMerge(inputData, inputMetaData)
+        };
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandsAliases] = tst_cbt.testPluginCommandAliases;
+        let commandAliasDataStructured = undefined;
+
+        // Act
+        let returnData = await commandBroker.getAllCommandAliasData(commandAliasDataStructured);
+
+        // Assert
+        expect(returnData).toEqual([tst_cbt.allTestPluginCommandAliases]);
+    });
+
+    /**
+     * @function getAllCommandAliasData_inValidCommandAliasDataStructureNaN
+     * @description Tests the commandBroker function getAllCommandAliasData with a invalid data NaN.
+     * @author Vlad Sorokin
+     * @date 2024/06/26
+     */
+    test(tst_con.cgetAllCommandAliasData_inValidCommandAliasDataStructureNaN, async () => {
+        // Arrange
+        D[sys.cbusinessRules] = {
+            [biz.cobjectDeepMerge]: (inputData, inputMetaData) => dataArrayParsing.objectDeepMerge(inputData, inputMetaData)
+        };
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandsAliases] = tst_cbt.testPluginCommandAliases;
+        let commandAliasDataStructured = NaN;
+
+        // Act
+        let returnData = await commandBroker.getAllCommandAliasData(commandAliasDataStructured);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+})
+
+/**
+ * @function getCommandNamespaceDataObject
+ * @description Tests the positive and negative test cases of the getCommandNamespaceDataObject
+ * @author Vlad Sorokin
+ * @date 2024/06/27
+ */
+describe(tst_con.cgetCommandNamespaceDataObject, () => {
+    /**
+     * @function getCommandNamespaceDataObject_validData
+     * @description Tests the commandBroker function getCommandNamespaceDataObject with a valid input.
+     * @author Vlad Sorokin
+     * @date 2024/06/27
+     */
+    test(tst_con.cgetCommandNamespaceDataObject_validData, async () => {
+        // Arrange
+        D[sys.cCommandsAliases] = {};
+        let commandAliasDataStructure = tst_cbt.testPluginCommandAliases;
+        let namespaceToFind = wrd.cName;
+
+        // Act
+        let returnData = await commandBroker.getCommandNamespaceDataObject(commandAliasDataStructure, namespaceToFind);
+
+        // Assert
+        expect(returnData).toEqual(tst_cbt.testPluginOneCommand01);
+    });
+
+    /**
+     * @function getCommandNamespaceDataObject_inValidCommandAliasDataStructureString
+     * @description Tests the commandBroker function getCommandNamespaceDataObject with a invalid data string.
+     * @author Vlad Sorokin
+     * @date 2024/06/27
+     */
+    test(tst_con.cgetCommandNamespaceDataObject_inValidCommandAliasDataStructureString, async () => {
+        // Arrange
+        D[sys.cCommandsAliases] = {};
+        let commandAliasDataStructure = tst_man.ctestString1;
+        let namespaceToFind = wrd.cName;
+
+        // Act
+        let returnData = await commandBroker.getCommandNamespaceDataObject(commandAliasDataStructure, namespaceToFind);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function getCommandNamespaceDataObject_inValidNamespaceToFindString
+     * @description Tests the commandBroker function getCommandNamespaceDataObject with a invalid data string.
+     * @author Vlad Sorokin
+     * @date 2024/06/27
+     */
+    test(tst_con.cgetCommandNamespaceDataObject_inValidNamespaceToFindString, async () => {
+        // Arrange
+        D[sys.cCommandsAliases] = {};
+        let commandAliasDataStructure = tst_cbt.testPluginCommandAliases;
+        let namespaceToFind = tst_man.ctestString1;
+
+        // Act
+        let returnData = await commandBroker.getCommandNamespaceDataObject(commandAliasDataStructure, namespaceToFind);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function getCommandNamespaceDataObject_inValidCommandAliasDataStructureInteger
+     * @description Tests the commandBroker function getCommandNamespaceDataObject with a invalid data integer.
+     * @author Vlad Sorokin
+     * @date 2024/06/27
+     */
+    test(tst_con.cgetCommandNamespaceDataObject_inValidCommandAliasDataStructureInteger, async () => {
+        // Arrange
+        D[sys.cCommandsAliases] = {};
+        let commandAliasDataStructure = 123;
+        let namespaceToFind = wrd.cName;
+
+        // Act
+        let returnData = await commandBroker.getCommandNamespaceDataObject(commandAliasDataStructure, namespaceToFind);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function getCommandNamespaceDataObject_inValidCommandAliasDataStructureBoolean
+     * @description Tests the commandBroker function getCommandNamespaceDataObject with a invalid data boolean.
+     * @author Vlad Sorokin
+     * @date 2024/06/27
+     */
+    test(tst_con.cgetCommandNamespaceDataObject_inValidCommandAliasDataStructureBoolean, async () => {
+        // Arrange
+        D[sys.cCommandsAliases] = {};
+        let commandAliasDataStructure = false;
+        let namespaceToFind = wrd.cName;
+
+        // Act
+        let returnData = await commandBroker.getCommandNamespaceDataObject(commandAliasDataStructure, namespaceToFind);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function getCommandNamespaceDataObject_inValidNamespaceToFindInteger
+     * @description Tests the commandBroker function getCommandNamespaceDataObject with a invalid data integer.
+     * @author Vlad Sorokin
+     * @date 2024/06/27
+     */
+    test(tst_con.cgetCommandNamespaceDataObject_inValidNamespaceToFindInteger, async () => {
+        // Arrange
+        D[sys.cCommandsAliases] = {};
+        let commandAliasDataStructure = tst_cbt.testPluginCommandAliases;
+        let namespaceToFind = 123;
+
+        // Act
+        let returnData = await commandBroker.getCommandNamespaceDataObject(commandAliasDataStructure, namespaceToFind);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function getCommandNamespaceDataObject_inValidNamespaceToFindBoolean
+     * @description Tests the commandBroker function getCommandNamespaceDataObject with a invalid data boolean.
+     * @author Vlad Sorokin
+     * @date 2024/06/27
+     */
+    test(tst_con.cgetCommandNamespaceDataObject_inValidNamespaceToFindBoolean, async () => {
+        // Arrange
+        D[sys.cCommandsAliases] = {};
+        let commandAliasDataStructure = tst_cbt.testPluginCommandAliases;
+        let namespaceToFind = false;
+
+        // Act
+        let returnData = await commandBroker.getCommandNamespaceDataObject(commandAliasDataStructure, namespaceToFind);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function getCommandNamespaceDataObject_validCommandAliasDataStructureUndefined
+     * @description Tests the commandBroker function getCommandNamespaceDataObject with a invalid data undefined.
+     * @author Vlad Sorokin
+     * @date 2024/06/27
+     */
+    test(tst_con.cgetCommandNamespaceDataObject_validCommandAliasDataStructureUndefined, async () => {
+        // Arrange
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandsAliases] = tst_cbt.testPluginCommandAliases;
+        let commandAliasDataStructure = undefined;
+        let namespaceToFind = wrd.cName;
+
+        // Act
+        let returnData = await commandBroker.getCommandNamespaceDataObject(commandAliasDataStructure, namespaceToFind);
+
+        // Assert
+        expect(returnData).toEqual(tst_cbt.testPluginOneCommand01);
+    });
+
+    /**
+     * @function getCommandNamespaceDataObject_inValidCommandAliasDataStructureNaN
+     * @description Tests the commandBroker function getCommandNamespaceDataObject with a invalid data NaN.
+     * @author Vlad Sorokin
+     * @date 2024/06/27
+     */
+    test(tst_con.cgetCommandNamespaceDataObject_inValidCommandAliasDataStructureNaN, async () => {
+        // Arrange
+        D[sys.cCommandsAliases] = {};
+        let commandAliasDataStructure = NaN;
+        let namespaceToFind = wrd.cName;
+
+        // Act
+        let returnData = await commandBroker.getCommandNamespaceDataObject(commandAliasDataStructure, namespaceToFind);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function getCommandNamespaceDataObject_inValidNamespaceToFindUndefined
+     * @description Tests the commandBroker function getCommandNamespaceDataObject with a invalid data undefined.
+     * @author Vlad Sorokin
+     * @date 2024/06/27
+     */
+    test(tst_con.cgetCommandNamespaceDataObject_inValidNamespaceToFindUndefined, async () => {
+        // Arrange
+        D[sys.cCommandsAliases] = {};
+        let commandAliasDataStructure = tst_cbt.testPluginCommandAliases;
+        let namespaceToFind = undefined;
+
+        // Act
+        let returnData = await commandBroker.getCommandNamespaceDataObject(commandAliasDataStructure, namespaceToFind);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function getCommandNamespaceDataObject_inValidNamespaceToFindNaN
+     * @description Tests the commandBroker function getCommandNamespaceDataObject with a invalid data NaN.
+     * @author Vlad Sorokin
+     * @date 2024/06/27
+     */
+    test(tst_con.cgetCommandNamespaceDataObject_inValidNamespaceToFindNaN, async () => {
+        // Arrange
+        D[sys.cCommandsAliases] = {};
+        let commandAliasDataStructure = tst_cbt.testPluginCommandAliases;
+        let namespaceToFind = NaN;
+
+        // Act
+        let returnData = await commandBroker.getCommandNamespaceDataObject(commandAliasDataStructure, namespaceToFind);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+})
+
+/**
+ * @function getCommandArgs
+ * @description Tests the positive and negative test cases of the getCommandArgs
+ * @author Vlad Sorokin
+ * @date 2024/06/26
+ */
+describe(tst_con.cgetCommandArgs, () => {
+    /**
+     * @function getCommandArgs_validData
+     * @description Tests the commandBroker function getCommandArgs with a valid input.
+     * @author Vlad Sorokin
+     * @date 2024/06/26
+     */
+    test(tst_con.cgetCommandArgs_validData, async () => {
+        // Arrange
+        D[sys.cCommandsAliases] = tst_cbt.testPluginCommandAliases;
+        let commandString = tst_cbt.testPluginOneCommand01 + bas.cSpace + tst_cbt.testPluginOneCommand02;
+        let commandDelimiter = bas.cSpace;
+
+        // Act
+        let returnData = await commandBroker.getCommandArgs(commandString, commandDelimiter);
+
+        // Assert
+        expect(returnData).toEqual([tst_cbt.testPluginOneCommand01, tst_cbt.testPluginOneCommand02]);
+    });
+
+    /**
+     * @function getCommandArgs_inValidCommandStringString
+     * @description Tests the commandBroker function getCommandArgs with a invalid data string.
+     * @author Vlad Sorokin
+     * @date 2024/06/26
+     */
+    test(tst_con.cgetCommandArgs_inValidCommandStringString, async () => {
+        // Arrange
+        D[sys.cCommandsAliases] = tst_cbt.testPluginCommandAliases;
+        let commandString = tst_man.ctestString1;
+        let commandDelimiter = bas.cSpace;
+
+        // Act
+        let returnData = await commandBroker.getCommandArgs(commandString, commandDelimiter);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function getCommandArgs_inValidCommandDelimiterString
+     * @description Tests the commandBroker function getCommandArgs with a invalid data string.
+     * @author Vlad Sorokin
+     * @date 2024/06/26
+     */
+    test(tst_con.cgetCommandArgs_inValidCommandDelimiterString, async () => {
+        // Arrange
+        D[sys.cCommandsAliases] = tst_cbt.testPluginCommandAliases;
+        let commandString = tst_cbt.testPluginOneCommand01 + bas.cSpace + tst_cbt.testPluginOneCommand02;
+        let commandDelimiter = tst_man.ctestString1;
+
+        // Act
+        let returnData = await commandBroker.getCommandArgs(commandString, commandDelimiter);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function getCommandArgs_inValidCommandStringInteger
+     * @description Tests the commandBroker function getCommandArgs with a invalid data integer.
+     * @author Vlad Sorokin
+     * @date 2024/06/26
+     */
+    test(tst_con.cgetCommandArgs_inValidCommandStringInteger, async () => {
+        // Arrange
+        D[sys.cCommandsAliases] = tst_cbt.testPluginCommandAliases;
+        let commandString = 123;
+        let commandDelimiter = bas.cSpace;
+
+        // Act
+        let returnData = await commandBroker.getCommandArgs(commandString, commandDelimiter);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function getCommandArgs_inValidCommandStringBoolean
+     * @description Tests the commandBroker function getCommandArgs with a invalid data boolean.
+     * @author Vlad Sorokin
+     * @date 2024/06/26
+     */
+    test(tst_con.cgetCommandArgs_inValidCommandStringBoolean, async () => {
+        // Arrange
+        D[sys.cCommandsAliases] = tst_cbt.testPluginCommandAliases;
+        let commandString = false;
+        let commandDelimiter = bas.cSpace;
+
+        // Act
+        let returnData = await commandBroker.getCommandArgs(commandString, commandDelimiter);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function getCommandArgs_inValidCommandDelimiterInteger
+     * @description Tests the commandBroker function getCommandArgs with a invalid data integer.
+     * @author Vlad Sorokin
+     * @date 2024/06/26
+     */
+    test(tst_con.cgetCommandArgs_inValidCommandDelimiterInteger, async () => {
+        // Arrange
+        D[sys.cCommandsAliases] = tst_cbt.testPluginCommandAliases;
+        let commandString = tst_cbt.testPluginOneCommand01 + bas.cSpace + tst_cbt.testPluginOneCommand02;
+        let commandDelimiter = 123;
+
+        // Act
+        let returnData = await commandBroker.getCommandArgs(commandString, commandDelimiter);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function getCommandArgs_inValidCommandDelimiterBoolean
+     * @description Tests the commandBroker function getCommandArgs with a invalid data boolean.
+     * @author Vlad Sorokin
+     * @date 2024/06/26
+     */
+    test(tst_con.cgetCommandArgs_inValidCommandDelimiterBoolean, async () => {
+        // Arrange
+        D[sys.cCommandsAliases] = tst_cbt.testPluginCommandAliases;
+        let commandString = tst_cbt.testPluginOneCommand01 + bas.cSpace + tst_cbt.testPluginOneCommand02;
+        let commandDelimiter = false;
+
+        // Act
+        let returnData = await commandBroker.getCommandArgs(commandString, commandDelimiter);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function getCommandArgs_inValidCommandStringUndefined
+     * @description Tests the commandBroker function getCommandArgs with a invalid data undefined.
+     * @author Vlad Sorokin
+     * @date 2024/06/26
+     */
+    test(tst_con.cgetCommandArgs_inValidCommandStringUndefined, async () => {
+        // Arrange
+        D[sys.cCommandsAliases] = tst_cbt.testPluginCommandAliases;
+        let commandString = undefined;
+        let commandDelimiter = bas.cSpace;
+
+        // Act
+        let returnData = await commandBroker.getCommandArgs(commandString, commandDelimiter);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function getCommandArgs_inValidCommandStringNaN
+     * @description Tests the commandBroker function getCommandArgs with a invalid data NaN.
+     * @author Vlad Sorokin
+     * @date 2024/06/26
+     */
+    test(tst_con.cgetCommandArgs_inValidCommandStringNaN, async () => {
+        // Arrange
+        D[sys.cCommandsAliases] = tst_cbt.testPluginCommandAliases;
+        let commandString = NaN;
+        let commandDelimiter = bas.cSpace;
+
+        // Act
+        let returnData = await commandBroker.getCommandArgs(commandString, commandDelimiter);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function getCommandArgs_validCommandDelimiterUndefined
+     * @description Tests the commandBroker function getCommandArgs with a invalid data undefined.
+     * @author Vlad Sorokin
+     * @date 2024/06/26
+     */
+    test(tst_con.cgetCommandArgs_validCommandDelimiterUndefined, async () => {
+        // Arrange
+        D[sys.cCommandsAliases] = tst_cbt.testPluginCommandAliases;
+        let commandString = tst_cbt.testPluginOneCommand01 + bas.cSpace + tst_cbt.testPluginOneCommand02;
+        let commandDelimiter = undefined;
+
+        // Act
+        let returnData = await commandBroker.getCommandArgs(commandString, commandDelimiter);
+
+        // Assert
+        expect(returnData).toEqual([tst_cbt.testPluginOneCommand01, tst_cbt.testPluginOneCommand02]);
+    });
+
+    /**
+     * @function getCommandArgs_validCommandDelimiterNaN
+     * @description Tests the commandBroker function getCommandArgs with a invalid data NaN.
+     * @author Vlad Sorokin
+     * @date 2024/06/26
+     */
+    test(tst_con.cgetCommandArgs_validCommandDelimiterNaN, async () => {
+        // Arrange
+        D[sys.cCommandsAliases] = tst_cbt.testPluginCommandAliases;
+        let commandString = tst_cbt.testPluginOneCommand01 + bas.cSpace + tst_cbt.testPluginOneCommand02;
+        let commandDelimiter = NaN;
+
+        // Act
+        let returnData = await commandBroker.getCommandArgs(commandString, commandDelimiter);
+
+        // Assert
+        expect(returnData).toEqual([tst_cbt.testPluginOneCommand01, tst_cbt.testPluginOneCommand02]);
+    });
+})
+
+/**
+ * @function executeCommand
+ * @description Tests the positive and negative test cases of the executeCommand
+ * @author Vlad Sorokin
+ * @date 2024/06/28
+ */
+describe(tst_con.cexecuteCommand, () => {
+    /**
+     * @function executeCommand_validCommandStringData
+     * @description Tests the commandBroker function executeCommand with a valid input.
+     * @author Vlad Sorokin
+     * @date 2024/06/28
+     */
+    test(tst_con.cexecuteCommand_validCommandStringData, async () => {
+        // Arrange
+        let pluginLoadWithData = cmd.cloadPlugin + bas.cSpace + tst_man.testPluginPath;
+        D[sys.cbusinessRules] = {
+            [biz.cgetJsonData]: (inputData, inputMetaData) => fileOperations.getJsonData(inputData, inputMetaData),
+            [biz.cgetNowMoment]: (inputData, inputMetaData) => timeComputation.getNowMoment(inputData, inputMetaData),
+            [biz.cobjectDeepClone]: (inputData, inputMetaData) => dataArrayParsing.objectDeepClone(inputData, inputMetaData),
+            [biz.cdoesArrayContainCharacter]: (inputData, inputMetaData) => characterArrayParsing.doesArrayContainCharacter(inputData, inputMetaData),
+            [biz.ccomputeDeltaTime]: (inputData, inputMetaData) => timeComputation.computeDeltaTime(inputData, inputMetaData)
+        };
+        D[wrd.cCommands] = {
+            [cmd.cloadPlugin]: (inputData, inputMetaData) => pluginCommands.loadPlugin(inputData, inputMetaData)
+        }
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+        D[sys.cpluginsLoaded] = [{}];
+        D[sys.cCommandQueue] = [
+            pluginLoadWithData
+        ];
+
+        // Act
+        let returnData = await commandBroker.executeCommand(pluginLoadWithData);
+
+        // Assert
+        expect(returnData).toEqual();
+    });
+
+    // /**
+    //  * @function executeCommand_inValidCommandStringString
+    //  * @description Tests the commandBroker function executeCommand with a invalid data string.
+    //  * @author Vlad Sorokin
+    //  * @date 2024/06/28
+    //  */
+    // test(tst_con.cexecuteCommand_inValidCommandStringString, async () => {
+    //     // Arrange
+        
+
+    //     // Act
+    //     let returnData = await commandBroker.executeCommand();
+
+    //     // Assert
+    //     expect(returnData).toBeFalsy();
+    // });
+
+    // /**
+    //  * @function executeCommand_inValidCommandStringInteger
+    //  * @description Tests the commandBroker function executeCommand with a invalid data integer.
+    //  * @author Vlad Sorokin
+    //  * @date 2024/06/28
+    //  */
+    // test(tst_con.cexecuteCommand_inValidCommandStringInteger, async () => {
+    //     // Arrange
+        
+
+    //     // Act
+    //     let returnData = await commandBroker.executeCommand();
+
+    //     // Assert
+    //     expect(returnData).toBeFalsy();
+    // });
+
+    // /**
+    //  * @function executeCommand_inValidCommandStringBoolean
+    //  * @description Tests the commandBroker function executeCommand with a invalid data boolean.
+    //  * @author Vlad Sorokin
+    //  * @date 2024/06/28
+    //  */
+    // test(tst_con.cexecuteCommand_inValidCommandStringBoolean, async () => {
+    //     // Arrange
+        
+
+    //     // Act
+    //     let returnData = await commandBroker.executeCommand();
+
+    //     // Assert
+    //     expect(returnData).toBeFalsy();
+    // });
+
+    // /**
+    //  * @function executeCommand_inValidCommandStringUndefined
+    //  * @description Tests the commandBroker function executeCommand with a invalid data undefined.
+    //  * @author Vlad Sorokin
+    //  * @date 2024/06/28
+    //  */
+    // test(tst_con.cexecuteCommand_inValidCommandStringUndefined, async () => {
+    //     // Arrange
+        
+
+    //     // Act
+    //     let returnData = await commandBroker.executeCommand();
+
+    //     // Assert
+    //     expect(returnData).toBeFalsy();
+    // });
+
+    // /**
+    //  * @function executeCommand_inValidCommandStringNaN
+    //  * @description Tests the commandBroker function executeCommand with a invalid data NaN.
+    //  * @author Vlad Sorokin
+    //  * @date 2024/06/28
+    //  */
+    // test(tst_con.cexecuteCommand_inValidCommandStringNaN, async () => {
+    //     // Arrange
+        
+
+    //     // Act
+    //     let returnData = await commandBroker.executeCommand();
+
+    //     // Assert
+    //     expect(returnData).toBeFalsy();
+    // });
+})
+
+
 

@@ -29,6 +29,12 @@ export const caddPluginCommandAliases = wrd.c_add + wrd.cPlugin + wrd.cCommand +
 export const cgetValidCommand = wrd.cget + wrd.cValid + wrd.cCommand; // getValidCommand
 export const ccountMatchingCommandAlias = wrd.ccount + wrd.cMatching + wrd.cCommand + wrd.cAlias; // countMatchingCommandAlias
 export const csearchCommandAlias = wrd.csearch + wrd.cCommand + wrd.cAlias; // searchCommandAlias
+export const cgetAllCommandAliasData = wrd.cget + wrd.cAll + wrd.cCommand + wrd.cAlias + wrd.cData; // getAllCommandAliasData
+export const cgetCommandNamespaceDataObject = wrd.cget + wrd.cCommand + wrd.cNamespace + wrd.cData + wrd.cObject; // getCommandNamespaceDataObject
+export const cgetCommandArgs = wrd.cget + wrd.cCommand + gen.cArgs; // getCommandArgs
+export const cexecuteCommand = wrd.cexecute + wrd.cCommand; // executeCommand
+
+
 
 /* dataBroker */
 
@@ -237,6 +243,50 @@ export const csearchCommandAlias_inValidCommandAliasDataUndefined = csearchComma
 export const csearchCommandAlias_inValidCommandAliasDataNaN = csearchCommandAlias + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cCommand + wrd.cAlias + wrd.cData + 'NaN'; // searchCommandAlias_inValidCommandAliasDataNaN
 export const csearchCommandAlias_inValidCommandAliasNameUndefined = csearchCommandAlias + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cCommand + wrd.cAlias + wrd.cName + 'Undefined'; // searchCommandAlias_inValidCommandAliasNameUndefined
 export const csearchCommandAlias_inValidCommandAliasNameNaN = csearchCommandAlias + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cCommand + wrd.cAlias + wrd.cName + 'NaN'; // searchCommandAlias_inValidCommandAliasNameNaN
+
+// getAllCommandAliasData
+export const cgetAllCommandAliasData_validCommandAliasDataStructureData = cgetAllCommandAliasData + bas.cUnderscore + wrd.cvalid + wrd.cCommand + wrd.cAlias + wrd.cData + wrd.cStructure + wrd.cData; // getAllCommandAliasData_validCommandAliasDataStructureData
+export const cgetAllCommandAliasData_inValidCommandAliasDataStructureString = cgetAllCommandAliasData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cCommand + wrd.cAlias + wrd.cData + wrd.cStructure + wrd.cString; // getAllCommandAliasData_inValidCommandAliasDataStructureString
+export const cgetAllCommandAliasData_inValidCommandAliasDataStructureInteger = cgetAllCommandAliasData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cCommand + wrd.cAlias + wrd.cData + wrd.cStructure + wrd.cInteger; // getAllCommandAliasData_inValidCommandAliasDataStructureInteger
+export const cgetAllCommandAliasData_inValidCommandAliasDataStructureBoolean = cgetAllCommandAliasData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cCommand + wrd.cAlias + wrd.cData + wrd.cStructure + wrd.cBoolean; // getAllCommandAliasData_inValidCommandAliasDataStructureBoolean
+export const cgetAllCommandAliasData_validCommandAliasDataStructureUndefined = cgetAllCommandAliasData + bas.cUnderscore + wrd.cvalid + wrd.cCommand + wrd.cAlias + wrd.cData + wrd.cStructure + "Undefined"; // getAllCommandAliasData_validCommandAliasDataStructureUndefined
+export const cgetAllCommandAliasData_inValidCommandAliasDataStructureNaN = cgetAllCommandAliasData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cCommand + wrd.cAlias + wrd.cData + wrd.cStructure + "NaN"; // getAllCommandAliasData_inValidCommandAliasDataStructureNaN
+
+// getCommandNamespaceDataObject
+export const cgetCommandNamespaceDataObject_validData = cgetCommandNamespaceDataObject + bas.cUnderscore + wrd.cvalid + wrd.cData; // getCommandNamespaceDataObject_validData
+export const cgetCommandNamespaceDataObject_inValidCommandAliasDataStructureString = cgetCommandNamespaceDataObject + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cCommand + wrd.cAlias + wrd.cData + wrd.cStructure + wrd.cString; // getCommandNamespaceDataObject_inValidCommandAliasDataStructureString
+export const cgetCommandNamespaceDataObject_inValidNamespaceToFindString = cgetCommandNamespaceDataObject + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cNamespace + wrd.cTo + wrd.cFind + wrd.cString; // getCommandNamespaceDataObject_inValidNamespaceToFindString
+export const cgetCommandNamespaceDataObject_inValidCommandAliasDataStructureInteger = cgetCommandNamespaceDataObject + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cCommand + wrd.cAlias + wrd.cData + wrd.cStructure + wrd.cInteger; // getCommandNamespaceDataObject_inValidCommandAliasDataStructureInteger
+export const cgetCommandNamespaceDataObject_inValidCommandAliasDataStructureBoolean = cgetCommandNamespaceDataObject + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cCommand + wrd.cAlias + wrd.cData + wrd.cStructure + wrd.cBoolean; // getCommandNamespaceDataObject_inValidCommandAliasDataStructureBoolean
+export const cgetCommandNamespaceDataObject_inValidNamespaceToFindInteger = cgetCommandNamespaceDataObject + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cNamespace + wrd.cTo + wrd.cFind + wrd.cInteger; // getCommandNamespaceDataObject_inValidNamespaceToFindInteger
+export const cgetCommandNamespaceDataObject_inValidNamespaceToFindBoolean = cgetCommandNamespaceDataObject + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cNamespace + wrd.cTo + wrd.cFind + wrd.cBoolean; // getCommandNamespaceDataObject_inValidNamespaceToFindBoolean
+export const cgetCommandNamespaceDataObject_validCommandAliasDataStructureUndefined = cgetCommandNamespaceDataObject + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cCommand + wrd.cAlias + wrd.cData + wrd.cStructure + 'Undefined'; // getCommandNamespaceDataObject_inValidCommandAliasDataStructureUndefined
+export const cgetCommandNamespaceDataObject_inValidCommandAliasDataStructureNaN = cgetCommandNamespaceDataObject + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cCommand + wrd.cAlias + wrd.cData + wrd.cStructure + 'NaN'; // getCommandNamespaceDataObject_inValidCommandAliasDataStructureNaN
+export const cgetCommandNamespaceDataObject_inValidNamespaceToFindUndefined = cgetCommandNamespaceDataObject + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cNamespace + wrd.cTo + wrd.cFind + 'Undefined'; // getCommandNamespaceDataObject_inValidNamespaceToFindUndefined
+export const cgetCommandNamespaceDataObject_inValidNamespaceToFindNaN = cgetCommandNamespaceDataObject + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cNamespace + wrd.cTo + wrd.cFind + 'NaN'; // getCommandNamespaceDataObject_inValidNamespaceToFindNaN
+
+// getCommandArgs
+export const cgetCommandArgs_validData = cgetCommandArgs + bas.cUnderscore + wrd.cvalid + wrd.cData; // getCommandArgs_validData
+export const cgetCommandArgs_inValidCommandStringString = cgetCommandArgs + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cCommand + wrd.cString + wrd.cString; // getCommandArgs_inValidCommandStringString
+export const cgetCommandArgs_inValidCommandDelimiterString = cgetCommandArgs + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cCommand + wrd.cDelimiter + wrd.cString; // getCommandArgs_inValidCommandDelimiterString
+export const cgetCommandArgs_inValidCommandStringInteger = cgetCommandArgs + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cCommand + wrd.cString + wrd.cInteger; // getCommandArgs_inValidCommandStringInteger
+export const cgetCommandArgs_inValidCommandStringBoolean = cgetCommandArgs + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cCommand + wrd.cString + wrd.cBoolean; // getCommandArgs_inValidCommandStringBoolean
+export const cgetCommandArgs_inValidCommandDelimiterInteger = cgetCommandArgs + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cCommand + wrd.cDelimiter + wrd.cInteger; // getCommandArgs_inValidCommandDelimiterInteger
+export const cgetCommandArgs_inValidCommandDelimiterBoolean = cgetCommandArgs + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cCommand + wrd.cDelimiter + wrd.cBoolean; // getCommandArgs_inValidCommandDelimiterBoolean
+export const cgetCommandArgs_inValidCommandStringUndefined = cgetCommandArgs + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cCommand + wrd.cString + 'Undefined'; // getCommandArgs_inValidCommandStringUndefined
+export const cgetCommandArgs_inValidCommandStringNaN = cgetCommandArgs + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cCommand + wrd.cString + 'NaN'; // getCommandArgs_inValidCommandStringNaN
+export const cgetCommandArgs_validCommandDelimiterUndefined = cgetCommandArgs + bas.cUnderscore + wrd.cvalid + wrd.cCommand + wrd.cDelimiter + 'Undefined'; // getCommandArgs_inValidCommandDelimiterUndefined
+export const cgetCommandArgs_validCommandDelimiterNaN = cgetCommandArgs + bas.cUnderscore + wrd.cvalid + wrd.cCommand + wrd.cDelimiter + 'NaN'; // getCommandArgs_inValidCommandDelimiterNaN
+
+// executeCommand
+export const cexecuteCommand_validCommandStringData = cexecuteCommand + bas.cUnderscore + wrd.cvalid + wrd.cCommand + wrd.cString + wrd.cData; // executeCommand_validCommandStringData
+export const cexecuteCommand_inValidCommandStringString = cexecuteCommand + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cCommand + wrd.cString + wrd.cString; // executeCommand_inValidCommandStringString
+export const cexecuteCommand_inValidCommandStringInteger = cexecuteCommand + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cCommand + wrd.cString + wrd.cInteger; // executeCommand_inValidCommandStringInteger
+export const cexecuteCommand_inValidCommandStringBoolean = cexecuteCommand + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cCommand + wrd.cString + wrd.cBoolean; // executeCommand_inValidCommandStringBoolean
+export const cexecuteCommand_inValidCommandStringUndefined = cexecuteCommand + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cCommand + wrd.cString + "Undefined"; // executeCommand_inValidCommandStringUndefined
+export const cexecuteCommand_inValidCommandStringNaN = cexecuteCommand + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cCommand + wrd.cString + "NaN"; // executeCommand_inValidCommandStringNaN
+
+
 
 
 /* dataBroker */
