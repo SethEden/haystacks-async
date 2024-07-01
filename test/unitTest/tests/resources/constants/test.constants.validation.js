@@ -29,16 +29,21 @@ export const testConstantsValidation = [
     {Name: 'caddClientCommands', Actual: tst_con.caddClientCommands, Expected: 'addClientCommands'},
     {Name: 'caddPluginCommands', Actual: tst_con.caddPluginCommands, Expected: 'addPluginCommands'},
     {Name: 'caddPluginCommandAliases', Actual: tst_con.caddPluginCommandAliases, Expected: 'addPluginCommandAliases'},
-    {Name: 'cgetValidCommand', Actual: tst_con.cgetValidCommand, Expected: 'cgetValidCommand'},
+    {Name: 'cgetValidCommand', Actual: tst_con.cgetValidCommand, Expected: 'getValidCommand'},
     {Name: 'ccountMatchingCommandAlias', Actual: tst_con.ccountMatchingCommandAlias, Expected: 'countMatchingCommandAlias'},
     {Name: 'cgetAllCommandAliasData', Actual: tst_con.cgetAllCommandAliasData, Expected: 'getAllCommandAliasData'},
     {Name: 'cgetCommandNamespaceDataObject', Actual: tst_con.cgetCommandNamespaceDataObject, Expected: 'getCommandNamespaceDataObject'},
     {Name: 'cgetCommandArgs', Actual: tst_con.cgetCommandArgs, Expected: 'getCommandArgs'},
-    {Name: 'cexecuteCommand', Actual: tst_con.cexecuteCommand, Expected: 'cexecuteCommand'},
+    {Name: 'cexecuteCommand', Actual: tst_con.cexecuteCommand, Expected: 'executeCommand'},
+    {Name: 'cremovePluginCommands', Actual: tst_con.cremovePluginCommands, Expected: 'removePluginCommands'},
+    {Name: 'cremovePluginCommandAliases', Actual: tst_con.cremovePluginCommandAliases, Expected: 'removePluginCommandAliases'},
+
+
+
 
 
     /* dataBroker */
-
+    
     /* ruleBroker */
 
     /* themeBroker */
@@ -205,17 +210,17 @@ export const testConstantsValidation = [
     {Name: 'caddPluginCommandAliases_inValidPluginCommandAliasesNaN', Actual: tst_con.caddPluginCommandAliases_inValidPluginCommandAliasesNaN, Expected: 'addPluginCommandAliases_inValidPluginCommandAliasesNaN'},
     
     // getValidCommand
-    {Name: 'cgetValidCommand_validData', Actual: tst_con.cgetValidCommand_validData, Expected: 'cgetValidCommand_validData'},
-    {Name: 'cgetValidCommand_inValidCommandStringString', Actual: tst_con.cgetValidCommand_inValidCommandStringString, Expected: 'cgetValidCommand_inValidCommandStringString'},
-    {Name: 'cgetValidCommand_inValidCommandDelimiterString', Actual: tst_con.cgetValidCommand_inValidCommandDelimiterString, Expected: 'cgetValidCommand_inValidCommandDelimiterString'},
-    {Name: 'cgetValidCommand_inValidCommandStringInteger', Actual: tst_con.cgetValidCommand_inValidCommandStringInteger, Expected: 'cgetValidCommand_inValidCommandStringInteger'},
-    {Name: 'cgetValidCommand_inValidCommandStringBoolean', Actual: tst_con.cgetValidCommand_inValidCommandStringBoolean, Expected: 'cgetValidCommand_inValidCommandStringBoolean'},
-    {Name: 'cgetValidCommand_inValidCommandDelimiterInteger', Actual: tst_con.cgetValidCommand_inValidCommandDelimiterInteger, Expected: 'cgetValidCommand_inValidCommandDelimiterInteger'},
-    {Name: 'cgetValidCommand_inValidCommandDelimiterBoolean', Actual: tst_con.cgetValidCommand_inValidCommandDelimiterBoolean, Expected: 'cgetValidCommand_inValidCommandDelimiterBoolean'},
-    {Name: 'cgetValidCommand_inValidCommandStringUndefined', Actual: tst_con.cgetValidCommand_inValidCommandStringUndefined, Expected: 'cgetValidCommand_inValidCommandStringUndefined'},
-    {Name: 'cgetValidCommand_inValidCommandStringNaN', Actual: tst_con.cgetValidCommand_inValidCommandStringNaN, Expected: 'cgetValidCommand_inValidCommandStringNaN'},
-    {Name: 'cgetValidCommand_inValidCommandDelimiterUndefined', Actual: tst_con.cgetValidCommand_inValidCommandDelimiterUndefined, Expected: 'cgetValidCommand_inValidCommandDelimiterUndefined'},
-    {Name: 'cgetValidCommand_inValidCommandDelimiterNaN', Actual: tst_con.cgetValidCommand_inValidCommandDelimiterNaN, Expected: 'cgetValidCommand_inValidCommandDelimiterNaN'},
+    {Name: 'cgetValidCommand_validData', Actual: tst_con.cgetValidCommand_validData, Expected: 'getValidCommand_validData'},
+    {Name: 'cgetValidCommand_inValidCommandStringString', Actual: tst_con.cgetValidCommand_inValidCommandStringString, Expected: 'getValidCommand_inValidCommandStringString'},
+    {Name: 'cgetValidCommand_inValidCommandDelimiterString', Actual: tst_con.cgetValidCommand_inValidCommandDelimiterString, Expected: 'getValidCommand_inValidCommandDelimiterString'},
+    {Name: 'cgetValidCommand_inValidCommandStringInteger', Actual: tst_con.cgetValidCommand_inValidCommandStringInteger, Expected: 'getValidCommand_inValidCommandStringInteger'},
+    {Name: 'cgetValidCommand_inValidCommandStringBoolean', Actual: tst_con.cgetValidCommand_inValidCommandStringBoolean, Expected: 'getValidCommand_inValidCommandStringBoolean'},
+    {Name: 'cgetValidCommand_inValidCommandDelimiterInteger', Actual: tst_con.cgetValidCommand_inValidCommandDelimiterInteger, Expected: 'getValidCommand_inValidCommandDelimiterInteger'},
+    {Name: 'cgetValidCommand_inValidCommandDelimiterBoolean', Actual: tst_con.cgetValidCommand_inValidCommandDelimiterBoolean, Expected: 'getValidCommand_inValidCommandDelimiterBoolean'},
+    {Name: 'cgetValidCommand_inValidCommandStringUndefined', Actual: tst_con.cgetValidCommand_inValidCommandStringUndefined, Expected: 'getValidCommand_inValidCommandStringUndefined'},
+    {Name: 'cgetValidCommand_inValidCommandStringNaN', Actual: tst_con.cgetValidCommand_inValidCommandStringNaN, Expected: 'getValidCommand_inValidCommandStringNaN'},
+    {Name: 'cgetValidCommand_inValidCommandDelimiterUndefined', Actual: tst_con.cgetValidCommand_inValidCommandDelimiterUndefined, Expected: 'getValidCommand_inValidCommandDelimiterUndefined'},
+    {Name: 'cgetValidCommand_inValidCommandDelimiterNaN', Actual: tst_con.cgetValidCommand_inValidCommandDelimiterNaN, Expected: 'getValidCommand_inValidCommandDelimiterNaN'},
 
     // countMatchingCommandAlias
     {Name: 'ccountMatchingCommandAlias_validData', Actual: tst_con.ccountMatchingCommandAlias_validData, Expected: 'countMatchingCommandAlias_validData'},
@@ -265,16 +270,37 @@ export const testConstantsValidation = [
     {Name: 'cgetCommandArgs_validCommandDelimiterNaN', Actual: tst_con.cgetCommandArgs_validCommandDelimiterNaN, Expected: 'getCommandArgs_validCommandDelimiterNaN'},
     
     // cexecuteCommand
-    {Name: 'cexecuteCommand_validCommandStringData', Actual: tst_con.cexecuteCommand_validCommandStringData, Expected: 'cexecuteCommand_validCommandStringData'},
-    {Name: 'cexecuteCommand_inValidCommandStringString', Actual: tst_con.cexecuteCommand_inValidCommandStringString, Expected: 'cexecuteCommand_inValidCommandStringString'},
-    {Name: 'cexecuteCommand_inValidCommandStringInteger', Actual: tst_con.cexecuteCommand_inValidCommandStringInteger, Expected: 'cexecuteCommand_inValidCommandStringInteger'},
-    {Name: 'cexecuteCommand_inValidCommandStringBoolean', Actual: tst_con.cexecuteCommand_inValidCommandStringBoolean, Expected: 'cexecuteCommand_inValidCommandStringBoolean'},
-    {Name: 'cexecuteCommand_inValidCommandStringUndefined', Actual: tst_con.cexecuteCommand_inValidCommandStringUndefined, Expected: 'cexecuteCommand_inValidCommandStringUndefined'},
-    {Name: 'cexecuteCommand_inValidCommandStringNaN', Actual: tst_con.cexecuteCommand_inValidCommandStringNaN, Expected: 'cexecuteCommand_inValidCommandStringNaN'},
+    {Name: 'cexecuteCommand_validCommandStringData', Actual: tst_con.cexecuteCommand_validCommandStringData, Expected: 'executeCommand_validCommandStringData'},
+    {Name: 'cexecuteCommand_inValidCommandStringString', Actual: tst_con.cexecuteCommand_inValidCommandStringString, Expected: 'executeCommand_inValidCommandStringString'},
+    {Name: 'cexecuteCommand_inValidCommandStringInteger', Actual: tst_con.cexecuteCommand_inValidCommandStringInteger, Expected: 'executeCommand_inValidCommandStringInteger'},
+    {Name: 'cexecuteCommand_inValidCommandStringBoolean', Actual: tst_con.cexecuteCommand_inValidCommandStringBoolean, Expected: 'executeCommand_inValidCommandStringBoolean'},
+    {Name: 'cexecuteCommand_inValidCommandStringUndefined', Actual: tst_con.cexecuteCommand_inValidCommandStringUndefined, Expected: 'executeCommand_inValidCommandStringUndefined'},
+    {Name: 'cexecuteCommand_inValidCommandStringNaN', Actual: tst_con.cexecuteCommand_inValidCommandStringNaN, Expected: 'executeCommand_inValidCommandStringNaN'},
+    
+    // cremovePluginCommands
+    {Name: 'cremovePluginCommands_validPluginNameData', Actual: tst_con.cremovePluginCommands_validPluginNameData, Expected: 'removePluginCommands_validPluginNameData'},
+    {Name: 'cremovePluginCommands_inValidPluginNameString', Actual: tst_con.cremovePluginCommands_inValidPluginNameString, Expected: 'removePluginCommands_inValidPluginNameString'},
+    {Name: 'cremovePluginCommands_inValidPluginNameInteger', Actual: tst_con.cremovePluginCommands_inValidPluginNameInteger, Expected: 'removePluginCommands_inValidPluginNameInteger'},
+    {Name: 'cremovePluginCommands_inValidPluginNameBoolean', Actual: tst_con.cremovePluginCommands_inValidPluginNameBoolean, Expected: 'removePluginCommands_inValidPluginNameBoolean'},
+    {Name: 'cremovePluginCommands_inValidPluginNameUndefined', Actual: tst_con.cremovePluginCommands_inValidPluginNameUndefined, Expected: 'removePluginCommands_inValidPluginNameUndefined'},
+    {Name: 'cremovePluginCommands_inValidPluginNameNaN', Actual: tst_con.cremovePluginCommands_inValidPluginNameNaN, Expected: 'removePluginCommands_inValidPluginNameNaN'},
+        
+    // cremovePluginCommandAliases
+    {Name: 'cremovePluginCommandAliases_validPluginNameData', Actual: tst_con.cremovePluginCommandAliases_validPluginNameData, Expected: 'removePluginCommandAliases_validPluginNameData'},
+    {Name: 'cremovePluginCommandAliases_inValidPluginNameString', Actual: tst_con.cremovePluginCommandAliases_inValidPluginNameString, Expected: 'removePluginCommandAliases_inValidPluginNameString'},
+    {Name: 'cremovePluginCommandAliases_inValidPluginNameInteger', Actual: tst_con.cremovePluginCommandAliases_inValidPluginNameInteger, Expected: 'removePluginCommandAliases_inValidPluginNameInteger'},
+    {Name: 'cremovePluginCommandAliases_inValidPluginNameBoolean', Actual: tst_con.cremovePluginCommandAliases_inValidPluginNameBoolean, Expected: 'removePluginCommandAliases_inValidPluginNameBoolean'},
+    {Name: 'cremovePluginCommandAliases_inValidPluginNameUndefined', Actual: tst_con.cremovePluginCommandAliases_inValidPluginNameUndefined, Expected: 'removePluginCommandAliases_inValidPluginNameUndefined'},
+    {Name: 'cremovePluginCommandAliases_inValidPluginNameNaN', Actual: tst_con.cremovePluginCommandAliases_inValidPluginNameNaN, Expected: 'removePluginCommandAliases_inValidPluginNameNaN'},
 
 
 
 
+
+
+
+    
+    
     /* dataBroker */
 
     /* ruleBroker */

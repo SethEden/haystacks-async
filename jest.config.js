@@ -38,7 +38,7 @@ export default {
     ],
     verbose: true,
 
-    // Enable or Disable unit test files.
+    // Enable or Disable unit test files. (commented out - enabled | not commented - disabled)
     testPathIgnorePatterns: [
       // "<rootDir>/test/unitTest/tests/brokers/commandBroker.test.js"
       //"<rootDir>/test/unitTest/tests/brokers/constantBroker.test.js"

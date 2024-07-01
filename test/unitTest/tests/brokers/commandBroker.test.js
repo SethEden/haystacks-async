@@ -25,7 +25,9 @@
 import commandBroker from '../../../../src/brokers/commandBroker.js';
 import dataArrayParsing from '../../../../src/businessRules/rules/arrayParsing/dataArrayParsing.js';
 import fileOperations from '../../../../src/businessRules/rules/fileOperations.js';
+import pluginCommands from '../../../../src/commandsBlob/commands/plugins.js';
 import warden from '../../../../src/controllers/warden.js';
+import main from '../../../../src/main.js';
 import pluginCommandsLibrary from '../../testData/testPlugins/test-plugin-one/commandsBlob/commandsLibrary.js';
 import * as tst_cbt from '../../testData/brokers/commandBrokerTest.js'
 import * as tst_man from '../../testData/mainTest.js';
@@ -1864,10 +1866,15 @@ describe(tst_con.cexecuteCommand, () => {
         D[wrd.cCommands] = {
             [cmd.cloadPlugin]: (inputData, inputMetaData) => pluginCommands.loadPlugin(inputData, inputMetaData)
         }
+        D[wrd.cconfiguration] = {};
+        D[wrd.cconfiguration][cfg.cdebugSetting] = {};
+        D[sys.cConstantsValidationData] = {};
+        D[wrd.cconfiguration][wrd.csystem] = {
+            "system.primaryCommandDelimiter": " ",
+        };
         D[sys.cCommandsAliases] = {};
         D[sys.cCommandWorkflows] = {};
         D[wrd.cThemes] = {};
-        D[sys.cpluginsLoaded] = [{}];
         D[sys.cCommandQueue] = [
             pluginLoadWithData
         ];
@@ -1876,93 +1883,563 @@ describe(tst_con.cexecuteCommand, () => {
         let returnData = await commandBroker.executeCommand(pluginLoadWithData);
 
         // Assert
-        expect(returnData).toEqual();
+        expect(returnData).toEqual([true, true]);
     });
 
-    // /**
-    //  * @function executeCommand_inValidCommandStringString
-    //  * @description Tests the commandBroker function executeCommand with a invalid data string.
-    //  * @author Vlad Sorokin
-    //  * @date 2024/06/28
-    //  */
-    // test(tst_con.cexecuteCommand_inValidCommandStringString, async () => {
-    //     // Arrange
+    /**
+     * @function executeCommand_inValidCommandStringString
+     * @description Tests the commandBroker function executeCommand with a invalid data string.
+     * @author Vlad Sorokin
+     * @date 2024/06/28
+     */
+    test(tst_con.cexecuteCommand_inValidCommandStringString, async () => {
+        // Arrange
+        let pluginLoadWithData = tst_man.ctestString1;
+        D[sys.cbusinessRules] = {
+            [biz.cgetJsonData]: (inputData, inputMetaData) => fileOperations.getJsonData(inputData, inputMetaData),
+            [biz.cgetNowMoment]: (inputData, inputMetaData) => timeComputation.getNowMoment(inputData, inputMetaData),
+            [biz.cobjectDeepClone]: (inputData, inputMetaData) => dataArrayParsing.objectDeepClone(inputData, inputMetaData),
+            [biz.cdoesArrayContainCharacter]: (inputData, inputMetaData) => characterArrayParsing.doesArrayContainCharacter(inputData, inputMetaData),
+            [biz.ccomputeDeltaTime]: (inputData, inputMetaData) => timeComputation.computeDeltaTime(inputData, inputMetaData)
+        };
+        D[wrd.cCommands] = {
+            [cmd.cloadPlugin]: (inputData, inputMetaData) => pluginCommands.loadPlugin(inputData, inputMetaData)
+        }
+        D[wrd.cconfiguration] = {};
+        D[wrd.cconfiguration][cfg.cdebugSetting] = {};
+        D[sys.cConstantsValidationData] = {};
+        D[wrd.cconfiguration][wrd.csystem] = {
+            "system.primaryCommandDelimiter": " ",
+        };
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+        D[sys.cCommandQueue] = [
+            pluginLoadWithData
+        ];
+
+        // Act
+        let returnData = await commandBroker.executeCommand(pluginLoadWithData);
+
+        // Assert
+        expect(returnData).toEqual([true, false]);
+    });
+
+    /**
+     * @function executeCommand_inValidCommandStringInteger
+     * @description Tests the commandBroker function executeCommand with a invalid data integer.
+     * @author Vlad Sorokin
+     * @date 2024/06/28
+     */
+    test(tst_con.cexecuteCommand_inValidCommandStringInteger, async () => {
+        // Arrange
+        let pluginLoadWithData = 123;
+        D[sys.cbusinessRules] = {
+            [biz.cgetJsonData]: (inputData, inputMetaData) => fileOperations.getJsonData(inputData, inputMetaData),
+            [biz.cgetNowMoment]: (inputData, inputMetaData) => timeComputation.getNowMoment(inputData, inputMetaData),
+            [biz.cobjectDeepClone]: (inputData, inputMetaData) => dataArrayParsing.objectDeepClone(inputData, inputMetaData),
+            [biz.cdoesArrayContainCharacter]: (inputData, inputMetaData) => characterArrayParsing.doesArrayContainCharacter(inputData, inputMetaData),
+            [biz.ccomputeDeltaTime]: (inputData, inputMetaData) => timeComputation.computeDeltaTime(inputData, inputMetaData)
+        };
+        D[wrd.cCommands] = {
+            [cmd.cloadPlugin]: (inputData, inputMetaData) => pluginCommands.loadPlugin(inputData, inputMetaData)
+        }
+        D[wrd.cconfiguration] = {};
+        D[wrd.cconfiguration][cfg.cdebugSetting] = {};
+        D[sys.cConstantsValidationData] = {};
+        D[wrd.cconfiguration][wrd.csystem] = {
+            "system.primaryCommandDelimiter": " ",
+        };
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+        D[sys.cCommandQueue] = [
+            pluginLoadWithData
+        ];
+
+        // Act
+        let returnData = await commandBroker.executeCommand(pluginLoadWithData);
+
+        // Assert
+        expect(returnData).toEqual([true, false]);
+    });
+
+    /**
+     * @function executeCommand_inValidCommandStringBoolean
+     * @description Tests the commandBroker function executeCommand with a invalid data boolean.
+     * @author Vlad Sorokin
+     * @date 2024/06/28
+     */
+    test(tst_con.cexecuteCommand_inValidCommandStringBoolean, async () => {
+        // Arrange
+        let pluginLoadWithData = false;
+        D[sys.cbusinessRules] = {
+            [biz.cgetJsonData]: (inputData, inputMetaData) => fileOperations.getJsonData(inputData, inputMetaData),
+            [biz.cgetNowMoment]: (inputData, inputMetaData) => timeComputation.getNowMoment(inputData, inputMetaData),
+            [biz.cobjectDeepClone]: (inputData, inputMetaData) => dataArrayParsing.objectDeepClone(inputData, inputMetaData),
+            [biz.cdoesArrayContainCharacter]: (inputData, inputMetaData) => characterArrayParsing.doesArrayContainCharacter(inputData, inputMetaData),
+            [biz.ccomputeDeltaTime]: (inputData, inputMetaData) => timeComputation.computeDeltaTime(inputData, inputMetaData)
+        };
+        D[wrd.cCommands] = {
+            [cmd.cloadPlugin]: (inputData, inputMetaData) => pluginCommands.loadPlugin(inputData, inputMetaData)
+        }
+        D[wrd.cconfiguration] = {};
+        D[wrd.cconfiguration][cfg.cdebugSetting] = {};
+        D[sys.cConstantsValidationData] = {};
+        D[wrd.cconfiguration][wrd.csystem] = {
+            "system.primaryCommandDelimiter": " ",
+        };
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+        D[sys.cCommandQueue] = [
+            pluginLoadWithData
+        ];
+
+        // Act
+        let returnData = await commandBroker.executeCommand(pluginLoadWithData);
+
+        // Assert
+        expect(returnData).toEqual([true, false]);
+    });
+
+    /**
+     * @function executeCommand_inValidCommandStringUndefined
+     * @description Tests the commandBroker function executeCommand with a invalid data undefined.
+     * @author Vlad Sorokin
+     * @date 2024/06/28
+     */
+    test(tst_con.cexecuteCommand_inValidCommandStringUndefined, async () => {
+        // Arrange
+        let pluginLoadWithData = undefined;
+        D[sys.cbusinessRules] = {
+            [biz.cgetJsonData]: (inputData, inputMetaData) => fileOperations.getJsonData(inputData, inputMetaData),
+            [biz.cgetNowMoment]: (inputData, inputMetaData) => timeComputation.getNowMoment(inputData, inputMetaData),
+            [biz.cobjectDeepClone]: (inputData, inputMetaData) => dataArrayParsing.objectDeepClone(inputData, inputMetaData),
+            [biz.cdoesArrayContainCharacter]: (inputData, inputMetaData) => characterArrayParsing.doesArrayContainCharacter(inputData, inputMetaData),
+            [biz.ccomputeDeltaTime]: (inputData, inputMetaData) => timeComputation.computeDeltaTime(inputData, inputMetaData)
+        };
+        D[wrd.cCommands] = {
+            [cmd.cloadPlugin]: (inputData, inputMetaData) => pluginCommands.loadPlugin(inputData, inputMetaData)
+        }
+        D[wrd.cconfiguration] = {};
+        D[wrd.cconfiguration][cfg.cdebugSetting] = {};
+        D[sys.cConstantsValidationData] = {};
+        D[wrd.cconfiguration][wrd.csystem] = {
+            "system.primaryCommandDelimiter": " ",
+        };
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+        D[sys.cCommandQueue] = [
+            pluginLoadWithData
+        ];
+
+        // Act
+        let returnData = await commandBroker.executeCommand(pluginLoadWithData);
+
+        // Assert
+        expect(returnData).toEqual([true, false]);
+    });
+
+    /**
+     * @function executeCommand_inValidCommandStringNaN
+     * @description Tests the commandBroker function executeCommand with a invalid data NaN.
+     * @author Vlad Sorokin
+     * @date 2024/06/28
+     */
+    test(tst_con.cexecuteCommand_inValidCommandStringNaN, async () => {
+        // Arrange
+        let pluginLoadWithData = NaN;
+        D[sys.cbusinessRules] = {
+            [biz.cgetJsonData]: (inputData, inputMetaData) => fileOperations.getJsonData(inputData, inputMetaData),
+            [biz.cgetNowMoment]: (inputData, inputMetaData) => timeComputation.getNowMoment(inputData, inputMetaData),
+            [biz.cobjectDeepClone]: (inputData, inputMetaData) => dataArrayParsing.objectDeepClone(inputData, inputMetaData),
+            [biz.cdoesArrayContainCharacter]: (inputData, inputMetaData) => characterArrayParsing.doesArrayContainCharacter(inputData, inputMetaData),
+            [biz.ccomputeDeltaTime]: (inputData, inputMetaData) => timeComputation.computeDeltaTime(inputData, inputMetaData)
+        };
+        D[wrd.cCommands] = {
+            [cmd.cloadPlugin]: (inputData, inputMetaData) => pluginCommands.loadPlugin(inputData, inputMetaData)
+        }
+        D[wrd.cconfiguration] = {};
+        D[wrd.cconfiguration][cfg.cdebugSetting] = {};
+        D[sys.cConstantsValidationData] = {};
+        D[wrd.cconfiguration][wrd.csystem] = {
+            "system.primaryCommandDelimiter": " ",
+        };
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+        D[sys.cCommandQueue] = [
+            pluginLoadWithData
+        ];
+
+        // Act
+        let returnData = await commandBroker.executeCommand(pluginLoadWithData);
+
+        // Assert
+        expect(returnData).toEqual([true, false]);
+    });
+})
+
+// /**
+//  * @function removePluginCommands
+//  * @description Tests the positive and negative test cases of the removePluginCommands
+//  * @author Vlad Sorokin
+//  * @date 2024/07/01
+//  */
+// describe(tst_con.cremovePluginCommands, () => {
+//     /**
+//      * @function removePluginCommands_validPluginNameData
+//      * @description Tests the commandBroker function removePluginCommands with a valid input.
+//      * @author Vlad Sorokin
+//      * @date 2024/07/01
+//      */
+//     test(tst_con.cremovePluginCommands_validPluginNameData, async () => {
+//         // Arrange
+//         D[sys.cbusinessRules] = {
+//             [biz.cgetJsonData]: (inputData, inputMetaData) => fileOperations.getJsonData(inputData, inputMetaData),
+//             [biz.cgetNowMoment]: (inputData, inputMetaData) => timeComputation.getNowMoment(inputData, inputMetaData),
+//             [biz.cobjectDeepClone]: (inputData, inputMetaData) => dataArrayParsing.objectDeepClone(inputData, inputMetaData),
+//             [biz.cdoesArrayContainCharacter]: (inputData, inputMetaData) => characterArrayParsing.doesArrayContainCharacter(inputData, inputMetaData),
+//             [biz.ccomputeDeltaTime]: (inputData, inputMetaData) => timeComputation.computeDeltaTime(inputData, inputMetaData)
+//         };
+//         D[wrd.cCommands] = {}
+//         D[wrd.cconfiguration] = {};
+//         D[wrd.cconfiguration][cfg.cdebugSetting] = {};
+//         D[sys.cConstantsValidationData] = {};
+//         D[sys.cConstantsValidationData][wrd.cPlugins]
+//         D[wrd.cconfiguration][wrd.csystem] = {};
+//         D[sys.cCommandsAliases] = {};
+//         D[sys.cCommandWorkflows] = {};
+//         D[wrd.cThemes] = {};
+//         D[sys.cCommandQueue] = [];
+        
+//         let pluginName = tst_man.ctestPluginOne;
+
+//         await main.loadPlugin(tst_man.testPluginPath);
+        
+//         // Act
+//         let returnData = await commandBroker.removePluginCommands(pluginName);
+
+//         // Assert
+//         expect(returnData).toEqual();
+//     });
+
+//     // /**
+//     //  * @function removePluginCommands_inValidPluginNameString
+//     //  * @description Tests the commandBroker function removePluginCommands with a invalid data string.
+//     //  * @author Vlad Sorokin
+//     //  * @date 2024/07/01
+//     //  */
+//     // test(tst_con.cremovePluginCommands_inValidPluginNameString, async () => {
+//     //     // Arrange
         
 
-    //     // Act
-    //     let returnData = await commandBroker.executeCommand();
+//     //     // Act
+//     //     let returnData = await commandBroker.removePluginCommands();
 
-    //     // Assert
-    //     expect(returnData).toBeFalsy();
-    // });
+//     //     // Assert
+//     //     expect(returnData).toBeFalsy();
+//     // });
 
-    // /**
-    //  * @function executeCommand_inValidCommandStringInteger
-    //  * @description Tests the commandBroker function executeCommand with a invalid data integer.
-    //  * @author Vlad Sorokin
-    //  * @date 2024/06/28
-    //  */
-    // test(tst_con.cexecuteCommand_inValidCommandStringInteger, async () => {
-    //     // Arrange
+//     // /**
+//     //  * @function removePluginCommands_inValidPluginNameInteger
+//     //  * @description Tests the commandBroker function removePluginCommands with a invalid data integer.
+//     //  * @author Vlad Sorokin
+//     //  * @date 2024/07/01
+//     //  */
+//     // test(tst_con.cremovePluginCommands_inValidPluginNameInteger, async () => {
+//     //     // Arrange
         
 
-    //     // Act
-    //     let returnData = await commandBroker.executeCommand();
+//     //     // Act
+//     //     let returnData = await commandBroker.removePluginCommands();
 
-    //     // Assert
-    //     expect(returnData).toBeFalsy();
-    // });
+//     //     // Assert
+//     //     expect(returnData).toBeFalsy();
+//     // });
 
-    // /**
-    //  * @function executeCommand_inValidCommandStringBoolean
-    //  * @description Tests the commandBroker function executeCommand with a invalid data boolean.
-    //  * @author Vlad Sorokin
-    //  * @date 2024/06/28
-    //  */
-    // test(tst_con.cexecuteCommand_inValidCommandStringBoolean, async () => {
-    //     // Arrange
+//     // /**
+//     //  * @function removePluginCommands_inValidPluginNameBoolean
+//     //  * @description Tests the commandBroker function removePluginCommands with a invalid data boolean.
+//     //  * @author Vlad Sorokin
+//     //  * @date 2024/07/01
+//     //  */
+//     // test(tst_con.cremovePluginCommands_inValidPluginNameBoolean, async () => {
+//     //     // Arrange
         
 
-    //     // Act
-    //     let returnData = await commandBroker.executeCommand();
+//     //     // Act
+//     //     let returnData = await commandBroker.removePluginCommands();
 
-    //     // Assert
-    //     expect(returnData).toBeFalsy();
-    // });
+//     //     // Assert
+//     //     expect(returnData).toBeFalsy();
+//     // });
 
-    // /**
-    //  * @function executeCommand_inValidCommandStringUndefined
-    //  * @description Tests the commandBroker function executeCommand with a invalid data undefined.
-    //  * @author Vlad Sorokin
-    //  * @date 2024/06/28
-    //  */
-    // test(tst_con.cexecuteCommand_inValidCommandStringUndefined, async () => {
-    //     // Arrange
+//     // /**
+//     //  * @function removePluginCommands_inValidPluginNameUndefined
+//     //  * @description Tests the commandBroker function removePluginCommands with a invalid data undefined.
+//     //  * @author Vlad Sorokin
+//     //  * @date 2024/07/01
+//     //  */
+//     // test(tst_con.cremovePluginCommands_inValidPluginNameUndefined, async () => {
+//     //     // Arrange
         
 
-    //     // Act
-    //     let returnData = await commandBroker.executeCommand();
+//     //     // Act
+//     //     let returnData = await commandBroker.removePluginCommands();
 
-    //     // Assert
-    //     expect(returnData).toBeFalsy();
-    // });
+//     //     // Assert
+//     //     expect(returnData).toBeFalsy();
+//     // });
 
-    // /**
-    //  * @function executeCommand_inValidCommandStringNaN
-    //  * @description Tests the commandBroker function executeCommand with a invalid data NaN.
-    //  * @author Vlad Sorokin
-    //  * @date 2024/06/28
-    //  */
-    // test(tst_con.cexecuteCommand_inValidCommandStringNaN, async () => {
-    //     // Arrange
+//     // /**
+//     //  * @function removePluginCommands_inValidPluginNameNaN
+//     //  * @description Tests the commandBroker function removePluginCommands with a invalid data NaN.
+//     //  * @author Vlad Sorokin
+//     //  * @date 2024/07/01
+//     //  */
+//     // test(tst_con.cremovePluginCommands_inValidPluginNameNaN, async () => {
+//     //     // Arrange
         
 
-    //     // Act
-    //     let returnData = await commandBroker.executeCommand();
+//     //     // Act
+//     //     let returnData = await commandBroker.removePluginCommands();
 
-    //     // Assert
-    //     expect(returnData).toBeFalsy();
-    // });
+//     //     // Assert
+//     //     expect(returnData).toBeFalsy();
+//     // });
+// })
+
+/**
+ * @function removePluginCommandAliases
+ * @description Tests the positive and negative test cases of the removePluginCommandAliases
+ * @author Vlad Sorokin
+ * @date 2024/07/01
+ */
+describe(tst_con.cremovePluginCommandAliases, () => {
+    /**
+     * @function removePluginCommandAliases_validPluginNameData
+     * @description Tests the commandBroker function removePluginCommandAliases with a valid input.
+     * @author Vlad Sorokin
+     * @date 2024/07/01
+     */
+    test(tst_con.cremovePluginCommandAliases_validPluginNameData, async () => {
+        // Arrange
+        D[sys.cbusinessRules] = {
+            [biz.cgetJsonData]: (inputData, inputMetaData) => fileOperations.getJsonData(inputData, inputMetaData),
+            [biz.cgetNowMoment]: (inputData, inputMetaData) => timeComputation.getNowMoment(inputData, inputMetaData),
+            [biz.cobjectDeepClone]: (inputData, inputMetaData) => dataArrayParsing.objectDeepClone(inputData, inputMetaData),
+            [biz.cdoesArrayContainCharacter]: (inputData, inputMetaData) => characterArrayParsing.doesArrayContainCharacter(inputData, inputMetaData),
+            [biz.ccomputeDeltaTime]: (inputData, inputMetaData) => timeComputation.computeDeltaTime(inputData, inputMetaData)
+        };
+        D[wrd.cCommands] = {}
+        D[wrd.cconfiguration] = {};
+        D[wrd.cconfiguration][cfg.cdebugSetting] = {};
+        D[sys.cConstantsValidationData] = {};
+        D[sys.cConstantsValidationData][wrd.cPlugins]
+        D[wrd.cconfiguration][wrd.csystem] = {};
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+        D[sys.cCommandQueue] = [];
+        
+        let pluginName = tst_man.ctestPluginOne;
+
+        await main.loadPlugin(tst_man.testPluginPath);
+
+        // Act
+        let returnData = await commandBroker.removePluginCommandAliases(pluginName);
+
+        // Assert
+        expect(returnData).toBeTruthy();
+    });
+
+    /**
+     * @function removePluginCommandAliases_inValidPluginNameString
+     * @description Tests the commandBroker function removePluginCommandAliases with a invalid data string.
+     * @author Vlad Sorokin
+     * @date 2024/07/01
+     */
+    test(tst_con.cremovePluginCommandAliases_inValidPluginNameString, async () => {
+        // Arrange
+        D[sys.cbusinessRules] = {
+            [biz.cgetJsonData]: (inputData, inputMetaData) => fileOperations.getJsonData(inputData, inputMetaData),
+            [biz.cgetNowMoment]: (inputData, inputMetaData) => timeComputation.getNowMoment(inputData, inputMetaData),
+            [biz.cobjectDeepClone]: (inputData, inputMetaData) => dataArrayParsing.objectDeepClone(inputData, inputMetaData),
+            [biz.cdoesArrayContainCharacter]: (inputData, inputMetaData) => characterArrayParsing.doesArrayContainCharacter(inputData, inputMetaData),
+            [biz.ccomputeDeltaTime]: (inputData, inputMetaData) => timeComputation.computeDeltaTime(inputData, inputMetaData)
+        };
+        D[wrd.cCommands] = {}
+        D[wrd.cconfiguration] = {};
+        D[wrd.cconfiguration][cfg.cdebugSetting] = {};
+        D[sys.cConstantsValidationData] = {};
+        D[sys.cConstantsValidationData][wrd.cPlugins]
+        D[wrd.cconfiguration][wrd.csystem] = {};
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+        D[sys.cCommandQueue] = [];
+        
+        let pluginName = tst_man.ctestString1;
+
+        await main.loadPlugin(tst_man.testPluginPath);
+
+        // Act
+        let returnData = await commandBroker.removePluginCommandAliases(pluginName);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function removePluginCommandAliases_inValidPluginNameInteger
+     * @description Tests the commandBroker function removePluginCommandAliases with a invalid data integer.
+     * @author Vlad Sorokin
+     * @date 2024/07/01
+     */
+    test(tst_con.cremovePluginCommandAliases_inValidPluginNameInteger, async () => {
+        // Arrange
+        D[sys.cbusinessRules] = {
+            [biz.cgetJsonData]: (inputData, inputMetaData) => fileOperations.getJsonData(inputData, inputMetaData),
+            [biz.cgetNowMoment]: (inputData, inputMetaData) => timeComputation.getNowMoment(inputData, inputMetaData),
+            [biz.cobjectDeepClone]: (inputData, inputMetaData) => dataArrayParsing.objectDeepClone(inputData, inputMetaData),
+            [biz.cdoesArrayContainCharacter]: (inputData, inputMetaData) => characterArrayParsing.doesArrayContainCharacter(inputData, inputMetaData),
+            [biz.ccomputeDeltaTime]: (inputData, inputMetaData) => timeComputation.computeDeltaTime(inputData, inputMetaData)
+        };
+        D[wrd.cCommands] = {}
+        D[wrd.cconfiguration] = {};
+        D[wrd.cconfiguration][cfg.cdebugSetting] = {};
+        D[sys.cConstantsValidationData] = {};
+        D[sys.cConstantsValidationData][wrd.cPlugins]
+        D[wrd.cconfiguration][wrd.csystem] = {};
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+        D[sys.cCommandQueue] = [];
+        
+        let pluginName = 123;
+
+        await main.loadPlugin(tst_man.testPluginPath);
+
+        // Act
+        let returnData = await commandBroker.removePluginCommandAliases(pluginName);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function removePluginCommandAliases_inValidPluginNameBoolean
+     * @description Tests the commandBroker function removePluginCommandAliases with a invalid data boolean.
+     * @author Vlad Sorokin
+     * @date 2024/07/01
+     */
+    test(tst_con.cremovePluginCommandAliases_inValidPluginNameBoolean, async () => {
+        // Arrange
+        D[sys.cbusinessRules] = {
+            [biz.cgetJsonData]: (inputData, inputMetaData) => fileOperations.getJsonData(inputData, inputMetaData),
+            [biz.cgetNowMoment]: (inputData, inputMetaData) => timeComputation.getNowMoment(inputData, inputMetaData),
+            [biz.cobjectDeepClone]: (inputData, inputMetaData) => dataArrayParsing.objectDeepClone(inputData, inputMetaData),
+            [biz.cdoesArrayContainCharacter]: (inputData, inputMetaData) => characterArrayParsing.doesArrayContainCharacter(inputData, inputMetaData),
+            [biz.ccomputeDeltaTime]: (inputData, inputMetaData) => timeComputation.computeDeltaTime(inputData, inputMetaData)
+        };
+        D[wrd.cCommands] = {}
+        D[wrd.cconfiguration] = {};
+        D[wrd.cconfiguration][cfg.cdebugSetting] = {};
+        D[sys.cConstantsValidationData] = {};
+        D[sys.cConstantsValidationData][wrd.cPlugins]
+        D[wrd.cconfiguration][wrd.csystem] = {};
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+        D[sys.cCommandQueue] = [];
+        
+        let pluginName = false;
+
+        await main.loadPlugin(tst_man.testPluginPath);
+
+        // Act
+        let returnData = await commandBroker.removePluginCommandAliases(pluginName);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function removePluginCommandAliases_inValidPluginNameUndefined
+     * @description Tests the commandBroker function removePluginCommandAliases with a invalid data undefined.
+     * @author Vlad Sorokin
+     * @date 2024/07/01
+     */
+    test(tst_con.cremovePluginCommandAliases_inValidPluginNameUndefined, async () => {
+        // Arrange
+        D[sys.cbusinessRules] = {
+            [biz.cgetJsonData]: (inputData, inputMetaData) => fileOperations.getJsonData(inputData, inputMetaData),
+            [biz.cgetNowMoment]: (inputData, inputMetaData) => timeComputation.getNowMoment(inputData, inputMetaData),
+            [biz.cobjectDeepClone]: (inputData, inputMetaData) => dataArrayParsing.objectDeepClone(inputData, inputMetaData),
+            [biz.cdoesArrayContainCharacter]: (inputData, inputMetaData) => characterArrayParsing.doesArrayContainCharacter(inputData, inputMetaData),
+            [biz.ccomputeDeltaTime]: (inputData, inputMetaData) => timeComputation.computeDeltaTime(inputData, inputMetaData)
+        };
+        D[wrd.cCommands] = {}
+        D[wrd.cconfiguration] = {};
+        D[wrd.cconfiguration][cfg.cdebugSetting] = {};
+        D[sys.cConstantsValidationData] = {};
+        D[sys.cConstantsValidationData][wrd.cPlugins]
+        D[wrd.cconfiguration][wrd.csystem] = {};
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+        D[sys.cCommandQueue] = [];
+        
+        let pluginName = undefined;
+
+        await main.loadPlugin(tst_man.testPluginPath);
+
+        // Act
+        let returnData = await commandBroker.removePluginCommandAliases(pluginName);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function removePluginCommandAliases_inValidPluginNameNaN
+     * @description Tests the commandBroker function removePluginCommandAliases with a invalid data NaN.
+     * @author Vlad Sorokin
+     * @date 2024/07/01
+     */
+    test(tst_con.cremovePluginCommandAliases_inValidPluginNameNaN, async () => {
+        // Arrange
+        D[sys.cbusinessRules] = {
+            [biz.cgetJsonData]: (inputData, inputMetaData) => fileOperations.getJsonData(inputData, inputMetaData),
+            [biz.cgetNowMoment]: (inputData, inputMetaData) => timeComputation.getNowMoment(inputData, inputMetaData),
+            [biz.cobjectDeepClone]: (inputData, inputMetaData) => dataArrayParsing.objectDeepClone(inputData, inputMetaData),
+            [biz.cdoesArrayContainCharacter]: (inputData, inputMetaData) => characterArrayParsing.doesArrayContainCharacter(inputData, inputMetaData),
+            [biz.ccomputeDeltaTime]: (inputData, inputMetaData) => timeComputation.computeDeltaTime(inputData, inputMetaData)
+        };
+        D[wrd.cCommands] = {}
+        D[wrd.cconfiguration] = {};
+        D[wrd.cconfiguration][cfg.cdebugSetting] = {};
+        D[sys.cConstantsValidationData] = {};
+        D[sys.cConstantsValidationData][wrd.cPlugins]
+        D[wrd.cconfiguration][wrd.csystem] = {};
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+        D[sys.cCommandQueue] = [];
+        
+        let pluginName = NaN;
+
+        await main.loadPlugin(tst_man.testPluginPath);
+
+        // Act
+        let returnData = await commandBroker.removePluginCommandAliases(pluginName);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
 })
 
 

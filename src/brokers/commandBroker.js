@@ -746,8 +746,6 @@ async function executeCommand(commandString) {
     await loggers.consoleLog(namespacePrefix + functionName, msg.cCommandStartTimeIs + commandStartTime);
   } // End-if (commandMetricsEnabled === true)
   try {
-    console.log('commandToExecute is: ' + commandToExecute);
-    console.log('commandArgs are: ' + commandArgs);
     if (commandToExecute !== false && commandArgs !== false) {
       // console.log('commandToExecute is: ' + commandToExecute);
       // console.log('commandArgs are: ' + commandArgs);
@@ -865,20 +863,38 @@ async function removePluginCommandAliases(pluginName) {
   // pluginName is:
   await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginNameIs + pluginName);
   let returnData = false;
+  let pluginsLoaded = D[sys.cpluginsLoaded];
   let allPluginsCommandAliases = D[sys.cCommandsAliases][wrd.cPlugins];
-  if (allPluginsCommandAliases) {
-    try {
-      delete allPluginsCommandAliases[pluginName];
-      returnData = true;
-    } catch (err) {
-      // ERROR: Unable to remove the plugin command aliases for the specified plugin:
-      console.log(msg.cremovePluginCommandAliasesMessage01 + pluginName);
-      // ERROR:
-      console.log(msg.cerrorMessage + err.message);
+  if (pluginName && typeof pluginName === wrd.cstring) {
+    const arraysEqual = (arr1, arr2) => {
+      if (arr1.length !== arr2.length) return false;
+      return arr1.every((value, index) => value === arr2[index]);
+    };
+    // NOTE: The arraysEqual function compares two arrays for equality by first checking if they have the same length. 
+    // If they do, it then checks if all corresponding elements in both arrays are equal, returning true if they are and false otherwise.
+    // This function is used for the if statement on the next line.
+    if (pluginsLoaded.some(innerArray => arraysEqual(innerArray, [pluginName, true]))) {
+      if (allPluginsCommandAliases) {
+        try {
+          delete allPluginsCommandAliases[pluginName];
+          returnData = true;
+        } catch (err) {
+          // ERROR: Unable to remove the plugin command aliases for the specified plugin:
+          console.log(msg.cremovePluginCommandAliasesMessage01 + pluginName);
+          // ERROR:
+          console.log(msg.cerrorMessage + err.message);
+        }
+      } else {
+        // ERROR: Unable to locate the plugins command aliases data. Plugin:
+        console.log(msg.cremovePluginCommandAliasesMessage02 + pluginName);
+      }
+    } else {
+      // ERROR: Unable to verify that the plugin was loaded. Plugin:
+      console.log('ERROR: Unable to verify that the plugin was loaded. Plugin: ' + pluginName);
     }
   } else {
-    // ERROR: Unable to locate the plugins command aliases data. Plugin:
-    console.log(msg.cremovePluginCommandAliasesMessage02 + pluginName);
+    // ERROR: Invalid input plugin name is: 
+    console.log('ERROR: Invalid input plugin name is: ' + pluginName);
   }
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);

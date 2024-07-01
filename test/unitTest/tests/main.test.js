@@ -2825,6 +2825,7 @@ describe(tst_con.cunloadPlugin, () => {
         // Arrange
         let pluginPath = tst_man.testPluginPath;
         let pluginName = tst_man.ctestPluginOne;
+        D[sys.cbusinessRules] = {};
         D[sys.cbusinessRules] = {
             [biz.cgetJsonData]: (inputData, inputMetaData) => fileOperations.getJsonData(inputData, inputMetaData),
             [biz.cobjectDeepClone]: (inputData, inputMetaData) => dataArrayParsing.objectDeepClone(inputData, inputMetaData)
@@ -2836,8 +2837,14 @@ describe(tst_con.cunloadPlugin, () => {
         
         await main.loadPlugin(pluginPath);
 
+        let pluginData = D[sys.cConstantsValidationData][wrd.cPlugins][pluginName];
+        console.log("HERERERERERERE: ", D[sys.cConstantsValidationData][wrd.cPlugins][pluginName]);
+        console.log(sys.cpluginBusinessConstantsValidation, pluginData[sys.cpluginBusinessConstantsValidation]);
+
+
         // Act
         let returnData = await main.unloadPlugin(pluginName);
+
 
         // Assert
         expect(returnData).toBeTruthy();
