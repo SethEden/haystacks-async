@@ -4,9 +4,9 @@
  * @description Contains the singleton data structure definition that allows the entire plugin,
  * to collect and share all of its various data components with the Haystacks platform once the plugin is loaded.
  * @requires {@link https://www.npmjs.com/package/@haystacks/constants|@haystacks/constants}
- * @author Seth Hollingsead
- * @date 2022/09/06
- * @copyright Copyright © 2022-… by Seth Hollingsead. All rights reserved
+ * @author Vlad Sorokin
+ * @date 2024/03/14
+ * @copyright Copyright © 2024-… by Vlad Sorokin. All rights reserved
  */
 
 // Internal imports

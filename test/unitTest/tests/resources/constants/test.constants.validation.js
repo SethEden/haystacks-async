@@ -38,7 +38,10 @@ export const testConstantsValidation = [
     {Name: 'cremovePluginCommands', Actual: tst_con.cremovePluginCommands, Expected: 'removePluginCommands'},
     {Name: 'cremovePluginCommandAliases', Actual: tst_con.cremovePluginCommandAliases, Expected: 'removePluginCommandAliases'},
 
-
+    /* commandBroker */
+    {Name: 'cinitializeConstantsValidationData', Actual: tst_con.cinitializeConstantsValidationData, Expected: 'initializeConstantsValidationData'},
+    {Name: 'cgenerateFrameworkConstantsValidationData', Actual: tst_con.cgenerateFrameworkConstantsValidationData, Expected: 'generateFrameworkConstantsValidationData'},
+    {Name: 'caddConstantsValidationData', Actual: tst_con.caddConstantsValidationData, Expected: 'addConstantsValidationData'},
 
 
 
@@ -293,11 +296,25 @@ export const testConstantsValidation = [
     {Name: 'cremovePluginCommandAliases_inValidPluginNameUndefined', Actual: tst_con.cremovePluginCommandAliases_inValidPluginNameUndefined, Expected: 'removePluginCommandAliases_inValidPluginNameUndefined'},
     {Name: 'cremovePluginCommandAliases_inValidPluginNameNaN', Actual: tst_con.cremovePluginCommandAliases_inValidPluginNameNaN, Expected: 'removePluginCommandAliases_inValidPluginNameNaN'},
 
+    /* commandBroker */
+    // cinitializeConstantsValidationData
+    {Name: 'cinitializeConstantsValidationData_validData', Actual: tst_con.cinitializeConstantsValidationData_validData, Expected: 'initializeConstantsValidationData_validData'},
 
-
-
-
-
+    // cgenerateFrameworkConstantsValidationData
+    {Name: 'cgenerateFrameworkConstantsValidationData_validData', Actual: tst_con.cgenerateFrameworkConstantsValidationData_validData, Expected: 'generateFrameworkConstantsValidationData_validData'},
+    
+    // caddConstantsValidationData
+    {Name: 'caddConstantsValidationData_validData', Actual: tst_con.caddConstantsValidationData_validData, Expected: 'addConstantsValidationData_validData'},
+    {Name: 'caddConstantsValidationData_inValidConstantsValidationDataString', Actual: tst_con.caddConstantsValidationData_inValidConstantsValidationDataString, Expected: 'addConstantsValidationData_inValidConstantsValidationDataString'},
+    {Name: 'caddConstantsValidationData_inValidContextNameString', Actual: tst_con.caddConstantsValidationData_inValidContextNameString, Expected: 'addConstantsValidationData_inValidContextNameString'},
+    {Name: 'caddConstantsValidationData_inValidConstantsValidationDataInteger', Actual: tst_con.caddConstantsValidationData_inValidConstantsValidationDataInteger, Expected: 'addConstantsValidationData_inValidConstantsValidationDataInteger'},
+    {Name: 'caddConstantsValidationData_inValidConstantsValidationDataBoolean', Actual: tst_con.caddConstantsValidationData_inValidConstantsValidationDataBoolean, Expected: 'addConstantsValidationData_inValidConstantsValidationDataBoolean'},
+    {Name: 'caddConstantsValidationData_inValidContextNameInteger', Actual: tst_con.caddConstantsValidationData_inValidContextNameInteger, Expected: 'addConstantsValidationData_inValidContextNameInteger'},
+    {Name: 'caddConstantsValidationData_inValidContextNameBoolean', Actual: tst_con.caddConstantsValidationData_inValidContextNameBoolean, Expected: 'addConstantsValidationData_inValidContextNameBoolean'},
+    {Name: 'caddConstantsValidationData_inValidConstantsValidationDataUndefined', Actual: tst_con.caddConstantsValidationData_inValidConstantsValidationDataUndefined, Expected: 'addConstantsValidationData_inValidConstantsValidationDataUndefined'},
+    {Name: 'caddConstantsValidationData_inValidConstantsValidationDataNaN', Actual: tst_con.caddConstantsValidationData_inValidConstantsValidationDataNaN, Expected: 'addConstantsValidationData_inValidConstantsValidationDataNaN'},
+    {Name: 'caddConstantsValidationData_inValidContextNameUndefined', Actual: tst_con.caddConstantsValidationData_inValidContextNameUndefined, Expected: 'addConstantsValidationData_inValidContextNameUndefined'},
+    {Name: 'caddConstantsValidationData_inValidContextNameNaN', Actual: tst_con.caddConstantsValidationData_inValidContextNameNaN, Expected: 'addConstantsValidationData_inValidContextNameNaN'},
 
     
     

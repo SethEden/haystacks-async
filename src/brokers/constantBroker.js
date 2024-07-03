@@ -29,13 +29,14 @@ const namespacePrefix = wrd.cframework + bas.cDot + wrd.cbrokers + bas.cDot + ba
 /**
  * @function initializeConstantsValidationData
  * @description Initializes the constants validation data structure.
- * @return {void}
+ * @return {boolean} True or False to indicate if the data was initialized successfully or not.
  * @author Seth Hollingsead
  * @date 2022/03/22
  */
  async function initializeConstantsValidationData() {
   let functionName = initializeConstantsValidationData.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  let returnData = false;
   D[sys.cConstantsValidationData] = {};
   D[sys.cConstantsValidationData][wrd.cFramework] = {};
   D[sys.cConstantsValidationData][wrd.cFramework][sys.cConstantsShortNames] = {};
@@ -44,13 +45,28 @@ const namespacePrefix = wrd.cframework + bas.cDot + wrd.cbrokers + bas.cDot + ba
   D[sys.cConstantsValidationData][wrd.cFramework][sys.cConstantsFilePaths] = {};
   D[sys.cConstantsValidationData][wrd.cFramework][sys.cConstantsPhase1ValidationMessages] = {};
   D[sys.cConstantsValidationData][wrd.cFramework][sys.cConstantsPhase2ValidationMessages] = {};
+  if (D[sys.cConstantsValidationData] !== undefined &&
+      D[sys.cConstantsValidationData][wrd.cFramework] !== undefined &&
+      D[sys.cConstantsValidationData][wrd.cFramework][sys.cConstantsShortNames] !== undefined &&
+      D[sys.cConstantsValidationData][wrd.cFramework][sys.cConstantsFileNames] !== undefined &&
+      D[sys.cConstantsValidationData][wrd.cFramework][sys.cConstantsPrefix] !== undefined &&
+      D[sys.cConstantsValidationData][wrd.cFramework][sys.cConstantsFilePaths] !== undefined &&
+      D[sys.cConstantsValidationData][wrd.cFramework][sys.cConstantsPhase1ValidationMessages] !== undefined &&
+      D[sys.cConstantsValidationData][wrd.cFramework][sys.cConstantsPhase2ValidationMessages] !== undefined) {
+    returnData = true;
+  } else {
+    // ERROR: Initialization of constants validation data was unsuccesseful.
+    console.log(msg.cErrorInitializeConstantsValidationDataMessage01);
+  }
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
 }
 
 /**
  * @function generateFrameworkConstantsValidationData
- * @description Generate all of the framework constants validation data so that it cn be used to validate all of the framework constants.
- * @return {void}
+ * @description Generate all of the framework constants validation data so that it can be used to validate all of the framework constants.
+ * @return {boolean} True or False to indicate if the data was generated successfully or not.
  * @author Seth Hollingsead
  * @date 2022/03/22
  */
@@ -60,6 +76,7 @@ async function generateFrameworkConstantsValidationData() {
   let constantsPath = await configurator.getConfigurationSetting(wrd.csystem, cfg.cframeworkConstantsPath);
   // constantsPath is:
   await loggers.consoleLog(namespacePrefix + functionName, msg.cconstantsPathIs + constantsPath);
+  let returnData = true;
 
   let allSystemConstantsValidationData = {};
   allSystemConstantsValidationData[sys.cConstantsValidationData] = {};
@@ -88,6 +105,34 @@ async function generateFrameworkConstantsValidationData() {
   allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cUnitConstantsValidation] = [];
   allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cWordConstantsValidation] = [];
 
+  if (allSystemConstantsValidationData[sys.cConstantsValidationData] === undefined ||
+      allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsShortNames] === undefined ||
+      allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsFileNames] === undefined ||
+      allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsPrefix] === undefined ||
+      allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsFilePaths] === undefined ||
+      allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsPhase1ValidationMessages] === undefined ||
+      allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsPhase2ValidationMessages] === undefined ||
+      allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cBasicConstantsValidation] === undefined ||
+      allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cBusinessConstantsValidation] === undefined ||
+      allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cColorConstantsValidation] === undefined ||
+      allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cCommandConstantsValidation] === undefined ||
+      allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConfigurationConstantsValidation] === undefined ||
+      allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cCountryConstantsValidation] === undefined ||
+      allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cElementConstantsValidation] === undefined ||
+      allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cFunctionConstantsValidation] === undefined ||
+      allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cGenericConstantsValidation] === undefined ||
+      allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cIsotopeConstantsValidation] === undefined ||
+      allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cKnotConstantsValidation] === undefined ||
+      allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cLanguageConstantsValidation] === undefined ||
+      allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cMessageConstantsValidation] === undefined ||
+      allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cNumericConstantsValidation] === undefined ||
+      allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cPhonicConstantsValidation] === undefined ||
+      allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cSystemConstantsValidation] === undefined ||
+      allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cUnitConstantsValidation] === undefined ||
+      allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cWordConstantsValidation] === undefined) {
+    returnData = false;
+  }
+
   allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cBasicConstantsValidation] = bas_cv.basicConstantsValidation;
   allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cBusinessConstantsValidation] = biz_cv.businessConstantsValidation;
   allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cColorConstantsValidation] = clr_cv.colorConstantsValidation;
@@ -106,6 +151,27 @@ async function generateFrameworkConstantsValidationData() {
   allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cSystemConstantsValidation] = sys_cv.systemConstantsValidation;
   allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cUnitConstantsValidation] = unt_cv.unitConstantsValidation;
   allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cWordConstantsValidation] = wrd_cv.wordConstantsValidation;
+
+  if (allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cBasicConstantsValidation] === undefined ||
+      allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cBusinessConstantsValidation] === undefined ||
+      allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cColorConstantsValidation] === undefined ||
+      allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cCommandConstantsValidation] === undefined ||
+      allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConfigurationConstantsValidation] === undefined ||
+      allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cCountryConstantsValidation] === undefined ||
+      allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cElementConstantsValidation] === undefined ||
+      allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cFunctionConstantsValidation] === undefined ||
+      allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cGenericConstantsValidation] === undefined ||
+      allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cIsotopeConstantsValidation] === undefined ||
+      allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cKnotConstantsValidation] === undefined ||
+      allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cLanguageConstantsValidation] === undefined ||
+      allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cMessageConstantsValidation] === undefined ||
+      allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cNumericConstantsValidation] === undefined ||
+      allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cPhonicConstantsValidation] === undefined ||
+      allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cSystemConstantsValidation] === undefined ||
+      allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cUnitConstantsValidation] === undefined ||
+      allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cWordConstantsValidation] === undefined) {
+    returnData = false;
+  }
 
   // Setup all the paths to the constants files.
   let resolvedConstantsPath_Basic = path.resolve(constantsPath + bas.cForwardSlash + sys.cbasic_constants_js);
@@ -183,6 +249,26 @@ async function generateFrameworkConstantsValidationData() {
   allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsFilePaths][sys.cUnitConstantsValidation] = resolvedConstantsPath_Unit;
   allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsFilePaths][sys.cWordConstantsValidation] = resolvedConstantsPath_Word;
 
+  if (allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsFilePaths][sys.cBasicConstantsValidation] === undefined ||
+      allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsFilePaths][sys.cBusinessConstantsValidation] === undefined ||
+      allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsFilePaths][sys.cColorConstantsValidation] === undefined ||
+      allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsFilePaths][sys.cCommandConstantsValidation] === undefined ||
+      allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsFilePaths][sys.cConfigurationConstantsValidation] === undefined ||
+      allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsFilePaths][sys.cCountryConstantsValidation] === undefined ||
+      allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsFilePaths][sys.cElementConstantsValidation] === undefined ||
+      allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsFilePaths][sys.cFunctionConstantsValidation] === undefined ||
+      allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsFilePaths][sys.cGenericConstantsValidation] === undefined ||
+      allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsFilePaths][sys.cIsotopeConstantsValidation] === undefined ||
+      allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsFilePaths][sys.cKnotConstantsValidation] === undefined ||
+      allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsFilePaths][sys.cLanguageConstantsValidation] === undefined ||
+      allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsFilePaths][sys.cMessageConstantsValidation] === undefined ||
+      allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsFilePaths][sys.cNumericConstantsValidation] === undefined ||
+      allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsFilePaths][sys.cPhonicConstantsValidation] === undefined ||
+      allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsFilePaths][sys.cSystemConstantsValidation] === undefined ||
+      allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsFilePaths][sys.cUnitConstantsValidation] === undefined ||
+      allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsFilePaths][sys.cWordConstantsValidation] === undefined) {
+    returnData = false;
+  }
   // Basic Constants Phase 1 Validation
   allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsPhase1ValidationMessages][sys.cBasicConstantsValidation] = msg.cBasicConstantsPhase1Validation;
   // Business Constants Phase 1 Validation
@@ -275,6 +361,27 @@ async function generateFrameworkConstantsValidationData() {
   allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsShortNames][sys.cSystemConstantsValidation] = gen.csys;
   allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsShortNames][sys.cUnitConstantsValidation] = gen.cunt;
   allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsShortNames][sys.cWordConstantsValidation] = gen.cwrd;
+  
+  if (allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsShortNames][sys.cBasicConstantsValidation] === undefined ||
+      allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsShortNames][sys.cBusinessConstantsValidation] === undefined ||
+      allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsShortNames][sys.cColorConstantsValidation] === undefined ||
+      allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsShortNames][sys.cCommandConstantsValidation] === undefined ||
+      allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsShortNames][sys.cConfigurationConstantsValidation] === undefined ||
+      allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsShortNames][sys.cCountryConstantsValidation] === undefined ||
+      allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsShortNames][sys.cElementConstantsValidation] === undefined ||
+      allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsShortNames][sys.cFunctionConstantsValidation] === undefined ||
+      allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsShortNames][sys.cGenericConstantsValidation] === undefined ||
+      allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsShortNames][sys.cIsotopeConstantsValidation] === undefined ||
+      allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsShortNames][sys.cKnotConstantsValidation] === undefined ||
+      allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsShortNames][sys.cLanguageConstantsValidation] === undefined ||
+      allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsShortNames][sys.cMessageConstantsValidation] === undefined ||
+      allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsShortNames][sys.cNumericConstantsValidation] === undefined ||
+      allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsShortNames][sys.cPhonicConstantsValidation] === undefined ||
+      allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsShortNames][sys.cSystemConstantsValidation] === undefined ||
+      allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsShortNames][sys.cUnitConstantsValidation] === undefined ||
+      allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsShortNames][sys.cWordConstantsValidation] === undefined) {
+    returnData = false;
+  }
 
   allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsFileNames][sys.cBasicConstantsValidation] = sys.cbasic_constants_js;
   allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsFileNames][sys.cBusinessConstantsValidation] = sys.cbusiness_constants_js;
@@ -295,6 +402,27 @@ async function generateFrameworkConstantsValidationData() {
   allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsFileNames][sys.cUnitConstantsValidation] = sys.cunit_constants_js;
   allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsFileNames][sys.cWordConstantsValidation] = sys.cword_constants_js;
 
+  if (allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsFileNames][sys.cBasicConstantsValidation] === undefined ||
+      allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsFileNames][sys.cBusinessConstantsValidation] === undefined ||
+      allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsFileNames][sys.cColorConstantsValidation] === undefined ||
+      allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsFileNames][sys.cCommandConstantsValidation] === undefined ||
+      allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsFileNames][sys.cConfigurationConstantsValidation] === undefined ||
+      allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsFileNames][sys.cCountryConstantsValidation] === undefined ||
+      allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsFileNames][sys.cElementConstantsValidation] === undefined ||
+      allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsFileNames][sys.cFunctionConstantsValidation] === undefined ||
+      allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsFileNames][sys.cGenericConstantsValidation] === undefined ||
+      allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsFileNames][sys.cIsotopeConstantsValidation] === undefined ||
+      allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsFileNames][sys.cKnotConstantsValidation] === undefined ||
+      allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsFileNames][sys.cLanguageConstantsValidation] === undefined ||
+      allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsFileNames][sys.cMessageConstantsValidation] === undefined ||
+      allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsFileNames][sys.cNumericConstantsValidation] === undefined ||
+      allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsFileNames][sys.cPhonicConstantsValidation] === undefined ||
+      allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsFileNames][sys.cSystemConstantsValidation] === undefined ||
+      allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsFileNames][sys.cUnitConstantsValidation] === undefined ||
+      allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsFileNames][sys.cWordConstantsValidation] === undefined) {
+    returnData = false;
+  }
+
   allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsPrefix][sys.cBasicConstantsValidation] = gen.cbas + bas.cDot;
   allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsPrefix][sys.cBusinessConstantsValidation] = gen.cbiz + bas.cDot;
   allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsPrefix][sys.cColorConstantsValidation] = gen.cclr + bas.cDot;
@@ -313,6 +441,27 @@ async function generateFrameworkConstantsValidationData() {
   allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsPrefix][sys.cSystemConstantsValidation] = gen.csys + bas.cDot;
   allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsPrefix][sys.cUnitConstantsValidation] = gen.cunt + bas.cDot;
   allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsPrefix][sys.cWordConstantsValidation] = gen.cwrd + bas.cDot;
+
+  if (allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsPrefix][sys.cBasicConstantsValidation] === undefined ||
+      allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsPrefix][sys.cBusinessConstantsValidation] === undefined ||
+      allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsPrefix][sys.cColorConstantsValidation] === undefined ||
+      allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsPrefix][sys.cCommandConstantsValidation] === undefined ||
+      allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsPrefix][sys.cConfigurationConstantsValidation] === undefined ||
+      allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsPrefix][sys.cCountryConstantsValidation] === undefined ||
+      allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsPrefix][sys.cElementConstantsValidation] === undefined ||
+      allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsPrefix][sys.cFunctionConstantsValidation] === undefined ||
+      allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsPrefix][sys.cGenericConstantsValidation] === undefined ||
+      allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsPrefix][sys.cIsotopeConstantsValidation] === undefined ||
+      allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsPrefix][sys.cKnotConstantsValidation] === undefined ||
+      allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsPrefix][sys.cLanguageConstantsValidation] === undefined ||
+      allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsPrefix][sys.cMessageConstantsValidation] === undefined ||
+      allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsPrefix][sys.cNumericConstantsValidation] === undefined ||
+      allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsPrefix][sys.cPhonicConstantsValidation] === undefined ||
+      allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsPrefix][sys.cSystemConstantsValidation] === undefined ||
+      allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsPrefix][sys.cUnitConstantsValidation] === undefined ||
+      allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsPrefix][sys.cWordConstantsValidation] === undefined) {
+    returnData = false;
+  }
 
   await loggers.consoleLog(namespacePrefix + functionName, msg.callSystemConstantsValidationDataIs + JSON.stringify(allSystemConstantsValidationData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);

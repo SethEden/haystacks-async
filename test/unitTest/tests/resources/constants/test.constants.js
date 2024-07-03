@@ -36,6 +36,11 @@ export const cexecuteCommand = wrd.cexecute + wrd.cCommand; // executeCommand
 export const cremovePluginCommands = wrd.cremove + wrd.cPlugin + wrd.cCommands; // removePluginCommands
 export const cremovePluginCommandAliases = wrd.cremove + wrd.cPlugin + wrd.cCommand + wrd.cAliases; // removePluginCommandAliases
 
+/* commandBroker */
+export const cinitializeConstantsValidationData = wrd.cinitialize + wrd.cConstants + wrd.cValidation + wrd.cData; // initializeConstantsValidationData
+export const cgenerateFrameworkConstantsValidationData = wrd.cgenerate + wrd.cFramework + wrd.cConstants + wrd.cValidation + wrd.cData; // generateFrameworkConstantsValidationData
+export const caddConstantsValidationData = wrd.c_add + wrd.cConstants + wrd.cValidation + wrd.cData; // addConstantsValidationDat
+
 
 /* dataBroker */
 
@@ -302,6 +307,26 @@ export const cremovePluginCommandAliases_inValidPluginNameInteger = cremovePlugi
 export const cremovePluginCommandAliases_inValidPluginNameBoolean = cremovePluginCommandAliases + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cName + wrd.cBoolean; // removePluginCommandAliases_inValidPluginNameBoolean
 export const cremovePluginCommandAliases_inValidPluginNameUndefined = cremovePluginCommandAliases + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cName + "Undefined"; // removePluginCommandAliases_inValidPluginNameUndefined
 export const cremovePluginCommandAliases_inValidPluginNameNaN = cremovePluginCommandAliases + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cName + "NaN"; // removePluginCommandAliases_inValidPluginNameNaN
+
+/* constantBroker */
+// initializeConstantsValidationData
+export const cinitializeConstantsValidationData_validData = cinitializeConstantsValidationData + bas.cUnderscore + wrd.cvalid + wrd.cData; // initializeConstantsValidationData_validData
+
+// generateFrameworkConstantsValidationData
+export const cgenerateFrameworkConstantsValidationData_validData = cgenerateFrameworkConstantsValidationData + bas.cUnderscore + wrd.cvalid + wrd.cData; // generateFrameworkConstantsValidationData_validData
+
+// addConstantsValidationData
+export const caddConstantsValidationData_validData = caddConstantsValidationData + bas.cUnderscore + wrd.cvalid + wrd.cData; // addConstantsValidationData_validData
+export const caddConstantsValidationData_inValidConstantsValidationDataString = caddConstantsValidationData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cConstants + wrd.cValidation + wrd.cData + wrd.cString; // addConstantsValidationData_inValidConstantsValidationDataString
+export const caddConstantsValidationData_inValidContextNameString = caddConstantsValidationData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cContext + wrd.cName + wrd.cString; // addConstantsValidationData_inValidContextNameString
+export const caddConstantsValidationData_inValidConstantsValidationDataInteger = caddConstantsValidationData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cConstants + wrd.cValidation + wrd.cData + wrd.cInteger; // addConstantsValidationData_inValidConstantsValidationDataInteger
+export const caddConstantsValidationData_inValidConstantsValidationDataBoolean = caddConstantsValidationData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cConstants + wrd.cValidation + wrd.cData + wrd.cBoolean; // addConstantsValidationData_inValidConstantsValidationDataBoolean
+export const caddConstantsValidationData_inValidContextNameInteger = caddConstantsValidationData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cContext + wrd.cName + wrd.cInteger; // addConstantsValidationData_inValidContextNameInteger
+export const caddConstantsValidationData_inValidContextNameBoolean = caddConstantsValidationData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cContext + wrd.cName + wrd.cBoolean; // addConstantsValidationData_inValidContextNameBoolean
+export const caddConstantsValidationData_inValidConstantsValidationDataUndefined = caddConstantsValidationData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cConstants + wrd.cValidation + wrd.cData + 'Undefined'; // addConstantsValidationData_inValidConstantsValidationDataUndefined
+export const caddConstantsValidationData_inValidConstantsValidationDataNaN = caddConstantsValidationData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cConstants + wrd.cValidation + wrd.cData + 'NaN'; // addConstantsValidationData_inValidConstantsValidationDataNaN
+export const caddConstantsValidationData_inValidContextNameUndefined = caddConstantsValidationData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cContext + wrd.cName + 'Undefined'; // addConstantsValidationData_inValidContextNameUndefined
+export const caddConstantsValidationData_inValidContextNameNaN = caddConstantsValidationData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cContext + wrd.cName + 'NaN'; // addConstantsValidationData_inValidContextNameNaN
 
 
 /* dataBroker */

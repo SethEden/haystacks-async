@@ -40,37 +40,37 @@ export default {
 
     // Enable or Disable unit test files. (commented out - enabled | not commented - disabled)
     testPathIgnorePatterns: [
-      // "<rootDir>/test/unitTest/tests/brokers/commandBroker.test.js"
-      //"<rootDir>/test/unitTest/tests/brokers/constantBroker.test.js"
-      //"<rootDir>/test/unitTest/tests/brokers/dataBroker.test.js"
-      //"<rootDir>/test/unitTest/tests/brokers/pluginBroker.test.js"
-      //"<rootDir>/test/unitTest/tests/brokers/ruleBroker.test.js"
-      //"<rootDir>/test/unitTest/tests/brokers/themeBroker.test.js"
-      //"<rootDir>/test/unitTest/tests/brokers/workflowBroker.test.js"
-      //"<rootDir>/test/unitTest/tests/businessRules/rules/arrayParsing/auxilaryArrayParsing.test.js"
-      //"<rootDir>/test/unitTest/tests/businessRules/rules/arrayParsing/characterArrayParsing.test.js"
-      //"<rootDir>/test/unitTest/tests/businessRules/rules/arrayParsing/commandArrayParsing.test.js"
-      //"<rootDir>/test/unitTest/tests/businessRules/rules/arrayParsing/constantArrayParsing.test.js"
-      //"<rootDir>/test/unitTest/tests/businessRules/rules/arrayParsing/dataArrayParsing.test.js"
-      //"<rootDir>/test/unitTest/tests/businessRules/rules/arrayParsing/pathArrayParsing.test.js"
-      //"<rootDir>/test/unitTest/tests/businessRules/rules/arrayParsing/wordArrayParsing.test.js"
-      //"<rootDir>/test/unitTest/tests/businessRules/rules/stringParsing/auxilaryStringParsing.test.js"
-      //"<rootDir>/test/unitTest/tests/businessRules/rules/stringParsing/characterStringParsing.test.js"
-      //"<rootDir>/test/unitTest/tests/businessRules/rules/stringParsing/commandStringParsing.test.js"
-      //"<rootDir>/test/unitTest/tests/businessRules/rules/stringParsing/constantStringParsing.test.js"
-      //"<rootDir>/test/unitTest/tests/businessRules/rules/stringParsing/dataStringParsing.test.js"
-      //"<rootDir>/test/unitTest/tests/businessRules/rules/stringParsing/pathStringParsing.test.js"
-      //"<rootDir>/test/unitTest/tests/businessRules/rules/stringParsing/wordStringParsing.test.js"
-      //"<rootDir>/test/unitTest/tests/businessRules/rules/characterGeneration.test.js"
-      //"<rootDir>/test/unitTest/tests/businessRules/rules/fileOperations.test.js"
-      //"<rootDir>/test/unitTest/tests/businessRules/rules/lexicalAnalyzer.test.js"
-      //"<rootDir>/test/unitTest/tests/businessRules/rules/mathOperations.test.js"
-      //"<rootDir>/test/unitTest/tests/businessRules/rules/promptOperations.test.js"
-      //"<rootDir>/test/unitTest/tests/businessRules/rules/ruleParsing.test.js"
-      //"<rootDir>/test/unitTest/tests/businessRules/rules/stringGeneration.test.js"
-      //"<rootDir>/test/unitTest/tests/businessRules/rules/stringParsingUtilities.test.js"
-      //"<rootDir>/test/unitTest/tests/businessRules/rules/timeComputation.test.js"
-      //"<rootDir>/test/unitTest/tests/businessRules/rulesLibrary.test.js"
+      "<rootDir>/test/unitTest/tests/brokers/commandBroker.test.js",
+      // "<rootDir>/test/unitTest/tests/brokers/constantBroker.test.js",
+      //"<rootDir>/test/unitTest/tests/brokers/dataBroker.test.js",
+      //"<rootDir>/test/unitTest/tests/brokers/pluginBroker.test.js",
+      //"<rootDir>/test/unitTest/tests/brokers/ruleBroker.test.js",
+      //"<rootDir>/test/unitTest/tests/brokers/themeBroker.test.js",
+      //"<rootDir>/test/unitTest/tests/brokers/workflowBroker.test.js",
+      //"<rootDir>/test/unitTest/tests/businessRules/rules/arrayParsing/auxilaryArrayParsing.test.js",
+      //"<rootDir>/test/unitTest/tests/businessRules/rules/arrayParsing/characterArrayParsing.test.js",
+      //"<rootDir>/test/unitTest/tests/businessRules/rules/arrayParsing/commandArrayParsing.test.js",
+      //"<rootDir>/test/unitTest/tests/businessRules/rules/arrayParsing/constantArrayParsing.test.js",
+      //"<rootDir>/test/unitTest/tests/businessRules/rules/arrayParsing/dataArrayParsing.test.js",
+      //"<rootDir>/test/unitTest/tests/businessRules/rules/arrayParsing/pathArrayParsing.test.js",
+      //"<rootDir>/test/unitTest/tests/businessRules/rules/arrayParsing/wordArrayParsing.test.js",
+      //"<rootDir>/test/unitTest/tests/businessRules/rules/stringParsing/auxilaryStringParsing.test.js",
+      //"<rootDir>/test/unitTest/tests/businessRules/rules/stringParsing/characterStringParsing.test.js",
+      //"<rootDir>/test/unitTest/tests/businessRules/rules/stringParsing/commandStringParsing.test.js",
+      //"<rootDir>/test/unitTest/tests/businessRules/rules/stringParsing/constantStringParsing.test.js",
+      //"<rootDir>/test/unitTest/tests/businessRules/rules/stringParsing/dataStringParsing.test.js",
+      //"<rootDir>/test/unitTest/tests/businessRules/rules/stringParsing/pathStringParsing.test.js",
+      //"<rootDir>/test/unitTest/tests/businessRules/rules/stringParsing/wordStringParsing.test.js",
+      //"<rootDir>/test/unitTest/tests/businessRules/rules/characterGeneration.test.js",
+      //"<rootDir>/test/unitTest/tests/businessRules/rules/fileOperations.test.js",
+      //"<rootDir>/test/unitTest/tests/businessRules/rules/lexicalAnalyzer.test.js",
+      //"<rootDir>/test/unitTest/tests/businessRules/rules/mathOperations.test.js",
+      //"<rootDir>/test/unitTest/tests/businessRules/rules/promptOperations.test.js",
+      //"<rootDir>/test/unitTest/tests/businessRules/rules/ruleParsing.test.js",
+      //"<rootDir>/test/unitTest/tests/businessRules/rules/stringGeneration.test.js",
+      //"<rootDir>/test/unitTest/tests/businessRules/rules/stringParsingUtilities.test.js",
+      //"<rootDir>/test/unitTest/tests/businessRules/rules/timeComputation.test.js",
+      //"<rootDir>/test/unitTest/tests/businessRules/rulesLibrary.test.js",
       "<rootDir>/test/unitTest/tests/main.test.js"
     ],
   };

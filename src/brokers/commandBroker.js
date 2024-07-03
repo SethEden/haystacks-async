@@ -823,6 +823,8 @@ async function removePluginCommands(pluginName) {
     // ERROR: Constants validation data for the specified plugin was not found. Plugin:
     console.log(msg.cremovePluginBusinessRulesMessage01 + pluginName);
   }
+  console.log('this thing is: ' + JSON.stringify(pluginConstantsValidation));
+  console.log('this thing is: ' + JSON.stringify(D[sys.cConstantsValidationData][wrd.cPlugins][pluginName]['pluginCommandConstantsValidation']));
   if (pluginConstantsValidationCommands) {
     try {
       for (const pluginCommandsRuleKey in pluginConstantsValidationCommands) {
@@ -890,11 +892,11 @@ async function removePluginCommandAliases(pluginName) {
       }
     } else {
       // ERROR: Unable to verify that the plugin was loaded. Plugin:
-      console.log('ERROR: Unable to verify that the plugin was loaded. Plugin: ' + pluginName);
+      console.log(wrd.ccErrorRemovePluginCommandAliasesMessage03 + pluginName);
     }
   } else {
     // ERROR: Invalid input plugin name is: 
-    console.log('ERROR: Invalid input plugin name is: ' + pluginName);
+    console.log(wrd.ccErrorRemovePluginCommandAliasesMessage04 + pluginName);
   }
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
