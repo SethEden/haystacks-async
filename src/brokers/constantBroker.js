@@ -66,7 +66,7 @@ const namespacePrefix = wrd.cframework + bas.cDot + wrd.cbrokers + bas.cDot + ba
 /**
  * @function generateFrameworkConstantsValidationData
  * @description Generate all of the framework constants validation data so that it can be used to validate all of the framework constants.
- * @return {boolean} True or False to indicate if the data was generated successfully or not.
+ * @return {boolean|object} Returns system constants validation data or false to indicate if the data was generated unsuccessfully.
  * @author Seth Hollingsead
  * @date 2022/03/22
  */
@@ -487,27 +487,42 @@ async function addConstantsValidationData(constantsValidationData, contextName) 
   await loggers.consoleLog(namespacePrefix + functionName, msg.ccontextNameIs + contextName);
   let returnData = false;
   try {
-    if (contextName.toUpperCase().includes(wrd.cPLUGIN) === true && contextName.includes(bas.cColon) === true) {
-      let pluginNameArray = contextName.split(bas.cColon);
-      // pluginNameArray is:
-      await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginNameArrayIs + JSON.stringify(pluginNameArray));
-      let pluginName = pluginNameArray[1];
-      // pluginName is:
-      await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginNameIs + pluginName);
-      if (D[sys.cConstantsValidationData][wrd.cPlugins] === undefined) {
-        D[sys.cConstantsValidationData][wrd.cPlugins] = {};
+    if (constantsValidationData && typeof constantsValidationData === wrd.cobject) {
+      if (contextName && typeof contextName === wrd.cstring) {
+        if (contextName.toUpperCase().includes(wrd.cPLUGIN) === true && contextName.includes(bas.cColon) === true) {
+          let pluginNameArray = contextName.split(bas.cColon);
+          // pluginNameArray is:
+          await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginNameArrayIs + JSON.stringify(pluginNameArray));
+          let pluginName = pluginNameArray[1];
+          // pluginName is:
+          await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginNameIs + pluginName);
+          if (D[sys.cConstantsValidationData][wrd.cPlugins] === undefined) {
+            D[sys.cConstantsValidationData][wrd.cPlugins] = {};
+          }
+          D[sys.cConstantsValidationData][wrd.cPlugins][pluginName] = {};
+          D[sys.cConstantsValidationData][wrd.cPlugins][pluginName] = constantsValidationData[sys.cConstantsValidationData];
+          returnData = true;
+        } else if (contextName.toUpperCase().includes(wrd.cAPPLICATION) === true) {
+          if (D[sys.cConstantsValidationData][wrd.cApplication] === undefined) {
+            D[sys.cConstantsValidationData][wrd.cApplication] = {};
+          }
+          D[sys.cConstantsValidationData][wrd.cApplication] = constantsValidationData[sys.cConstantsValidationData];
+          returnData = true;
+        } else if (contextName.toUpperCase().includes(wrd.cFRAMEWORK) === true) {
+          D[sys.cConstantsValidationData][wrd.cFramework] = constantsValidationData[sys.cConstantsValidationData];
+          returnData = true;
+        } else {
+          // WARNING: Context name is invalid for addConstantsValidationData.
+          console.log('WARNING: Context name is invalid for addConstantsValidationData.');
+        }
+      } else {
+        // ERROR: Invalid input, contextName is: 
+        console.log('ERROR: Invalid input, contextName is: ', contextName);
       }
-      D[sys.cConstantsValidationData][wrd.cPlugins][pluginName] = {};
-      D[sys.cConstantsValidationData][wrd.cPlugins][pluginName] = constantsValidationData[sys.cConstantsValidationData];
-    } else if (contextName.toUpperCase().includes(wrd.cAPPLICATION) === true) {
-      if (D[sys.cConstantsValidationData][wrd.cApplication] === undefined) {
-        D[sys.cConstantsValidationData][wrd.cApplication] = {};
-      }
-      D[sys.cConstantsValidationData][wrd.cApplication] = constantsValidationData[sys.cConstantsValidationData];
-    } else if (contextName.toUpperCase().includes(wrd.cFRAMEWORK) === true) {
-      D[sys.cConstantsValidationData][wrd.cFramework] = constantsValidationData[sys.cConstantsValidationData];
+    } else {
+      // ERROR: Invalid input, constantsValidationData is: 
+      console.log('ERROR: Invalid input, constantsValidationData is: ', constantsValidationData);
     }
-    returnData = true;
   } catch (err) {
     // ERROR: Failure to merge the constants validation data for the type:
     console.log(msg.cErrorAddConstantsValidationDataMessage01 + contextName);

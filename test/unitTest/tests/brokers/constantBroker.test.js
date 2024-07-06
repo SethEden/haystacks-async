@@ -29,6 +29,7 @@ import * as tst_con from '../resources/constants/test.constants.js';
 // External imports
 import hayConst from '@haystacks/constants';
 import { describe, expect, test } from '@jest/globals';
+import { phonicConstantsValidation } from '@haystacks/constants/src/constantsValidation/phonic.constants.validation.js';
 
 const { bas, cmd, biz, cfg, fnc, gen, msg, sys, wrd, num } = hayConst;
 
@@ -77,199 +78,246 @@ describe(tst_con.cgenerateFrameworkConstantsValidationData, () => {
     });
 })
 
-// /**
-//  * @function addConstantsValidationData
-//  * @description Tests the positive and negative test cases of the addConstantsValidationData
-//  * @author Vlad Sorokin
-//  * @date 2024/Month1/Day1
-//  */
-// describe(tst_con.caddConstantsValidationData, () => {
-//     /**
-//      * @function addConstantsValidationData_validData
-//      * @description Tests the constantBroker function addConstantsValidationData with a valid input.
-//      * @author Vlad Sorokin
-//      * @date 2024/Month1/Day1
-//      */
-//     test(tst_con.caddConstantsValidationData_validData, async () => {
-//         // Arrange
-        
+/**
+ * @function addConstantsValidationData
+ * @description Tests the positive and negative test cases of the addConstantsValidationData
+ * @author Vlad Sorokin
+ * @date 2024/07/05
+ */
+describe(tst_con.caddConstantsValidationData, () => {
+    /**
+     * @function addConstantsValidationData_validData
+     * @description Tests the constantBroker function addConstantsValidationData with a valid input.
+     * @author Vlad Sorokin
+     * @date 2024/07/05
+     */
+    test(tst_con.caddConstantsValidationData_validData, async () => {
+        // Arrange
+        let constantsValidationData = {
+            [sys.cConstantsValidationData]: {
+                [sys.cConstantsShortNames]: {
+                    [sys.cBasicConstantsValidation]: gen.cbas
+                }
+            }
+        };
+        let contextName = wrd.cFramework;
+    
+        // Act
+        let returnData = await constantBroker.addConstantsValidationData(constantsValidationData, contextName);
 
-//         // Act
-//         let returnData = await constantBroker.addConstantsValidationData();
+        // Assert
+        expect(returnData).toBeTruthy();
+    });
 
-//         // Assert
-//         expect(returnData).toEqual();
-//     });
+    /**
+     * @function addConstantsValidationData_inValidConstantsValidationDataString
+     * @description Tests the constantBroker function addConstantsValidationData with a invalid data string.
+     * @author Vlad Sorokin
+     * @date 2024/07/05
+     */
+    test(tst_con.caddConstantsValidationData_inValidConstantsValidationDataString, async () => {
+        // Arrange
+        let constantsValidationData = tst_man.ctestString1;
+        let contextName = wrd.cFramework;
+    
+        // Act
+        let returnData = await constantBroker.addConstantsValidationData(constantsValidationData, contextName);
 
-//     // /**
-//     //  * @function addConstantsValidationData_inValidConstantsValidationDataString
-//     //  * @description Tests the constantBroker function addConstantsValidationData with a invalid data string.
-//     //  * @author Vlad Sorokin
-//     //  * @date 2024/Month1/Day1
-//     //  */
-//     // test(tst_con.caddConstantsValidationData_inValidConstantsValidationDataString, async () => {
-//     //     // Arrange
-        
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
 
-//     //     // Act
-//     //     let returnData = await constantBroker.addConstantsValidationData();
+    /**
+     * @function addConstantsValidationData_inValidContextNameString
+     * @description Tests the constantBroker function addConstantsValidationData with a invalid data string.
+     * @author Vlad Sorokin
+     * @date 2024/07/05
+     */
+    test(tst_con.caddConstantsValidationData_inValidContextNameString, async () => {
+        // Arrange
+        let constantsValidationData = {
+            [sys.cConstantsValidationData]: {
+                [sys.cConstantsShortNames]: {
+                    [sys.cBasicConstantsValidation]: gen.cbas
+                }
+            }
+        };
+        let contextName = tst_man.ctestString1;
+    
+        // Act
+        let returnData = await constantBroker.addConstantsValidationData(constantsValidationData, contextName);
 
-//     //     // Assert
-//     //     expect(returnData).toBeFalsy();
-//     // });
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
 
-//     // /**
-//     //  * @function addConstantsValidationData_inValidContextNameString
-//     //  * @description Tests the constantBroker function addConstantsValidationData with a invalid data string.
-//     //  * @author Vlad Sorokin
-//     //  * @date 2024/Month1/Day1
-//     //  */
-//     // test(tst_con.caddConstantsValidationData_inValidContextNameString, async () => {
-//     //     // Arrange
-        
+    /**
+     * @function addConstantsValidationData_inValidConstantsValidationDataInteger
+     * @description Tests the constantBroker function addConstantsValidationData with a invalid data integer.
+     * @author Vlad Sorokin
+     * @date 2024/07/05
+     */
+    test(tst_con.caddConstantsValidationData_inValidConstantsValidationDataInteger, async () => {
+        // Arrange
+        let constantsValidationData = 123;
+        let contextName = wrd.cFramework;
+    
+        // Act
+        let returnData = await constantBroker.addConstantsValidationData(constantsValidationData, contextName);
 
-//     //     // Act
-//     //     let returnData = await constantBroker.addConstantsValidationData();
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
 
-//     //     // Assert
-//     //     expect(returnData).toBeFalsy();
-//     // });
+    /**
+     * @function addConstantsValidationData_inValidConstantsValidationDataBoolean
+     * @description Tests the constantBroker function addConstantsValidationData with a invalid data boolean.
+     * @author Vlad Sorokin
+     * @date 2024/07/05
+     */
+    test(tst_con.caddConstantsValidationData_inValidConstantsValidationDataBoolean, async () => {
+        // Arrange
+        let constantsValidationData = false;
+        let contextName = wrd.cFramework;
+    
+        // Act
+        let returnData = await constantBroker.addConstantsValidationData(constantsValidationData, contextName);
 
-//     // /**
-//     //  * @function addConstantsValidationData_inValidConstantsValidationDataInteger
-//     //  * @description Tests the constantBroker function addConstantsValidationData with a invalid data integer.
-//     //  * @author Vlad Sorokin
-//     //  * @date 2024/Month1/Day1
-//     //  */
-//     // test(tst_con.caddConstantsValidationData_inValidConstantsValidationDataInteger, async () => {
-//     //     // Arrange
-        
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
 
-//     //     // Act
-//     //     let returnData = await constantBroker.addConstantsValidationData();
+    /**
+     * @function addConstantsValidationData_inValidContextNameInteger
+     * @description Tests the constantBroker function addConstantsValidationData with a invalid data integer.
+     * @author Vlad Sorokin
+     * @date 2024/07/05
+     */
+    test(tst_con.caddConstantsValidationData_inValidContextNameInteger, async () => {
+        // Arrange
+        let constantsValidationData = {
+            [sys.cConstantsValidationData]: {
+                [sys.cConstantsShortNames]: {
+                    [sys.cBasicConstantsValidation]: gen.cbas
+                }
+            }
+        };
+        let contextName = 123;
+    
+        // Act
+        let returnData = await constantBroker.addConstantsValidationData(constantsValidationData, contextName);
 
-//     //     // Assert
-//     //     expect(returnData).toBeFalsy();
-//     // });
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
 
-//     // /**
-//     //  * @function addConstantsValidationData_inValidConstantsValidationDataBoolean
-//     //  * @description Tests the constantBroker function addConstantsValidationData with a invalid data boolean.
-//     //  * @author Vlad Sorokin
-//     //  * @date 2024/Month1/Day1
-//     //  */
-//     // test(tst_con.caddConstantsValidationData_inValidConstantsValidationDataBoolean, async () => {
-//     //     // Arrange
-        
+    /**
+     * @function addConstantsValidationData_inValidContextNameBoolean
+     * @description Tests the constantBroker function addConstantsValidationData with a invalid data boolean.
+     * @author Vlad Sorokin
+     * @date 2024/07/05
+     */
+    test(tst_con.caddConstantsValidationData_inValidContextNameBoolean, async () => {
+        // Arrange
+        let constantsValidationData = {
+            [sys.cConstantsValidationData]: {
+                [sys.cConstantsShortNames]: {
+                    [sys.cBasicConstantsValidation]: gen.cbas
+                }
+            }
+        };
+        let contextName = false;
+    
+        // Act
+        let returnData = await constantBroker.addConstantsValidationData(constantsValidationData, contextName);
 
-//     //     // Act
-//     //     let returnData = await constantBroker.addConstantsValidationData();
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
 
-//     //     // Assert
-//     //     expect(returnData).toBeFalsy();
-//     // });
+    /**
+     * @function addConstantsValidationData_inValidConstantsValidationDataUndefined
+     * @description Tests the constantBroker function addConstantsValidationData with a invalid data undefined.
+     * @author Vlad Sorokin
+     * @date 2024/07/05
+     */
+    test(tst_con.caddConstantsValidationData_inValidConstantsValidationDataUndefined, async () => {
+        // Arrange
+        let constantsValidationData = undefined;
+        let contextName = wrd.cFramework;
+    
+        // Act
+        let returnData = await constantBroker.addConstantsValidationData(constantsValidationData, contextName);
 
-//     // /**
-//     //  * @function addConstantsValidationData_inValidContextNameInteger
-//     //  * @description Tests the constantBroker function addConstantsValidationData with a invalid data integer.
-//     //  * @author Vlad Sorokin
-//     //  * @date 2024/Month1/Day1
-//     //  */
-//     // test(tst_con.caddConstantsValidationData_inValidContextNameInteger, async () => {
-//     //     // Arrange
-        
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
 
-//     //     // Act
-//     //     let returnData = await constantBroker.addConstantsValidationData();
+    /**
+     * @function addConstantsValidationData_inValidConstantsValidationDataNaN
+     * @description Tests the constantBroker function addConstantsValidationData with a invalid data NaN.
+     * @author Vlad Sorokin
+     * @date 2024/07/05
+     */
+    test(tst_con.caddConstantsValidationData_inValidConstantsValidationDataNaN, async () => {
+        // Arrange
+        let constantsValidationData = NaN;
+        let contextName = wrd.cFramework;
+    
+        // Act
+        let returnData = await constantBroker.addConstantsValidationData(constantsValidationData, contextName);
 
-//     //     // Assert
-//     //     expect(returnData).toBeFalsy();
-//     // });
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
 
-//     // /**
-//     //  * @function addConstantsValidationData_inValidContextNameBoolean
-//     //  * @description Tests the constantBroker function addConstantsValidationData with a invalid data boolean.
-//     //  * @author Vlad Sorokin
-//     //  * @date 2024/Month1/Day1
-//     //  */
-//     // test(tst_con.caddConstantsValidationData_inValidContextNameBoolean, async () => {
-//     //     // Arrange
-        
+    /**
+     * @function addConstantsValidationData_inValidContextNameUndefined
+     * @description Tests the constantBroker function addConstantsValidationData with a invalid data undefined.
+     * @author Vlad Sorokin
+     * @date 2024/07/05
+     */
+    test(tst_con.caddConstantsValidationData_inValidContextNameUndefined, async () => {
+        // Arrange
+        let constantsValidationData = {
+            [sys.cConstantsValidationData]: {
+                [sys.cConstantsShortNames]: {
+                    [sys.cBasicConstantsValidation]: gen.cbas
+                }
+            }
+        };
+        let contextName = undefined;
+    
+        // Act
+        let returnData = await constantBroker.addConstantsValidationData(constantsValidationData, contextName);
 
-//     //     // Act
-//     //     let returnData = await constantBroker.addConstantsValidationData();
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
 
-//     //     // Assert
-//     //     expect(returnData).toBeFalsy();
-//     // });
+    /**
+     * @function addConstantsValidationData_inValidContextNameNaN
+     * @description Tests the constantBroker function addConstantsValidationData with a invalid data NaN.
+     * @author Vlad Sorokin
+     * @date 2024/07/05
+     */
+    test(tst_con.caddConstantsValidationData_inValidContextNameNaN, async () => {
+        // Arrange
+        let constantsValidationData = {
+            [sys.cConstantsValidationData]: {
+                [sys.cConstantsShortNames]: {
+                    [sys.cBasicConstantsValidation]: gen.cbas
+                }
+            }
+        };
+        let contextName = NaN;
+    
+        // Act
+        let returnData = await constantBroker.addConstantsValidationData(constantsValidationData, contextName);
 
-//     // /**
-//     //  * @function addConstantsValidationData_inValidConstantsValidationDataUndefined
-//     //  * @description Tests the constantBroker function addConstantsValidationData with a invalid data undefined.
-//     //  * @author Vlad Sorokin
-//     //  * @date 2024/Month1/Day1
-//     //  */
-//     // test(tst_con.caddConstantsValidationData_inValidConstantsValidationDataUndefined, async () => {
-//     //     // Arrange
-        
-
-//     //     // Act
-//     //     let returnData = await constantBroker.addConstantsValidationData();
-
-//     //     // Assert
-//     //     expect(returnData).toBeFalsy();
-//     // });
-
-//     // /**
-//     //  * @function addConstantsValidationData_inValidConstantsValidationDataNaN
-//     //  * @description Tests the constantBroker function addConstantsValidationData with a invalid data NaN.
-//     //  * @author Vlad Sorokin
-//     //  * @date 2024/Month1/Day1
-//     //  */
-//     // test(tst_con.caddConstantsValidationData_inValidConstantsValidationDataNaN, async () => {
-//     //     // Arrange
-        
-
-//     //     // Act
-//     //     let returnData = await constantBroker.addConstantsValidationData();
-
-//     //     // Assert
-//     //     expect(returnData).toBeFalsy();
-//     // });
-
-//     // /**
-//     //  * @function addConstantsValidationData_inValidContextNameUndefined
-//     //  * @description Tests the constantBroker function addConstantsValidationData with a invalid data undefined.
-//     //  * @author Vlad Sorokin
-//     //  * @date 2024/Month1/Day1
-//     //  */
-//     // test(tst_con.caddConstantsValidationData_inValidContextNameUndefined, async () => {
-//     //     // Arrange
-        
-
-//     //     // Act
-//     //     let returnData = await constantBroker.addConstantsValidationData();
-
-//     //     // Assert
-//     //     expect(returnData).toBeFalsy();
-//     // });
-
-//     // /**
-//     //  * @function addConstantsValidationData_inValidContextNameNaN
-//     //  * @description Tests the constantBroker function addConstantsValidationData with a invalid data NaN.
-//     //  * @author Vlad Sorokin
-//     //  * @date 2024/Month1/Day1
-//     //  */
-//     // test(tst_con.caddConstantsValidationData_inValidContextNameNaN, async () => {
-//     //     // Arrange
-        
-
-//     //     // Act
-//     //     let returnData = await constantBroker.addConstantsValidationData();
-
-//     //     // Assert
-//     //     expect(returnData).toBeFalsy();
-//     // });
-// })
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+})
 
 
