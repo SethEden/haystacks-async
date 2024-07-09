@@ -97,20 +97,32 @@ async function scanDataPath(dataPath) {
  * @date 2022/01/18
  */
 async function findUniversalDebugConfigSetting(appConfigFilesToLoad, frameworkConfigFilesToLoad) {
-  let functionName = findUniversalDebugConfigSetting.name;
-  console.log(`BEGIN ${namespacePrefix}${functionName} function`);
-  console.log(`appConfigFilesToLoad is: ${JSON.stringify(appConfigFilesToLoad)}`);
-  console.log(`frameworkConfigFilesToLoad is: ${JSON.stringify(frameworkConfigFilesToLoad)}`);
+  // let functionName = findUniversalDebugConfigSetting.name;
+  // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
+  // console.log(`appConfigFilesToLoad is: ${JSON.stringify(appConfigFilesToLoad)}`);
+  // console.log(`frameworkConfigFilesToLoad is: ${JSON.stringify(frameworkConfigFilesToLoad)}`);
   let universalDebugConfigSetting = false;
   let appConfigDebugSetting = false;
   let frameworkConfigDebugSetting = false;
-  appConfigDebugSetting = await findIndividualDebugConfigSetting(appConfigFilesToLoad);
-  frameworkConfigDebugSetting = await findIndividualDebugConfigSetting(frameworkConfigFilesToLoad);
+  if (Array.isArray(appConfigFilesToLoad) && appConfigFilesToLoad.every(item => typeof item === wrd.cstring)) {
+    appConfigDebugSetting = await findIndividualDebugConfigSetting(appConfigFilesToLoad);
+  } else {
+    // WARNING: Invalid input, appConfigFilesToLoad is: 
+    console.log(msg.cWarningFindUniversalDebugConfigSettingMessage01 + appConfigFilesToLoad);
+    appConfigDebugSetting = false;
+  }
+  if (Array.isArray(frameworkConfigFilesToLoad) && frameworkConfigFilesToLoad.every(item => typeof item === wrd.cstring)) {
+    frameworkConfigDebugSetting = await findIndividualDebugConfigSetting(frameworkConfigFilesToLoad);
+  } else {
+    // WARNING: Invalid input, frameworkConfigFilesToLoad is: 
+    console.log(msg.cWarningFindUniversalDebugConfigSettingMessage02 + frameworkConfigFilesToLoad);
+    frameworkConfigDebugSetting = false;
+  }
   if (appConfigDebugSetting === true || frameworkConfigDebugSetting === true) {
     universalDebugConfigSetting = true;
   }
-  console.log(`universalDebugConfigSetting is: ${universalDebugConfigSetting}`);
-  console.log(`END ${namespacePrefix}${functionName} function`);
+  // console.log(`universalDebugConfigSetting is: ${universalDebugConfigSetting}`);
+  // console.log(`END ${namespacePrefix}${functionName} function`);
   return universalDebugConfigSetting;
 }
 
@@ -125,9 +137,9 @@ async function findUniversalDebugConfigSetting(appConfigFilesToLoad, frameworkCo
  * @date 2022/01/18
  */
 async function findIndividualDebugConfigSetting(filesToLoad) {
-  let functionName = findIndividualDebugConfigSetting.name;
-  console.log(`BEGIN ${namespacePrefix}${functionName} function`);
-  console.log(`filesToLoad is: ${JSON.stringify(filesToLoad)}`);
+  // let functionName = findIndividualDebugConfigSetting.name;
+  // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
+  // console.log(`filesToLoad is: ${JSON.stringify(filesToLoad)}`);
   let individualDebugConfigSetting = false;
   let foundSystemData = false;
   let systemConfigFileName = sys.csystemConfigFileName; // 'framework.system.json';
@@ -137,7 +149,7 @@ async function findIndividualDebugConfigSetting(filesToLoad) {
 
   for (const element of filesToLoad) {
     let fileToLoad = element;
-    console.log('fileToLoad is: ' + fileToLoad);
+    // console.log('fileToLoad is: ' + fileToLoad);
     if (fileToLoad.includes(systemConfigFileName) || fileToLoad.includes(applicationConfigFileName)) {
       let dataFile = await preprocessJsonFile(fileToLoad);
       multiMergedData[wrd.csystem] = {};
@@ -153,8 +165,8 @@ async function findIndividualDebugConfigSetting(filesToLoad) {
       individualDebugConfigSetting = true;
     }
   } // End-if (multiMergedData[wrd.csystem])
-  console.log(`individualDebugConfigSetting is: ${individualDebugConfigSetting}`);
-  console.log(`END ${namespacePrefix}${functionName} function`);
+  // console.log(`individualDebugConfigSetting is: ${individualDebugConfigSetting}`);
+  // console.log(`END ${namespacePrefix}${functionName} function`);
   return individualDebugConfigSetting;
 }
 
@@ -578,18 +590,18 @@ async function processXmlLeafNode(inputData, leafNodeName) {
  */
 async function preprocessJsonFile(fileToLoad) {
   let functionName = preprocessJsonFile.name;
-  console.log(`BEGIN ${namespacePrefix}${functionName} function`);
-  console.log(`fileToLoad is: ${JSON.stringify(fileToLoad)}`);
+  // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
+  // console.log(`fileToLoad is: ${JSON.stringify(fileToLoad)}`);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cfileToLoadIs + JSON.stringify(fileToLoad));
   let filePathRules = [biz.cswapDoubleForwardSlashToSingleForwardSlash, biz.cgetJsonData];
-  console.log(`execute business rules: ${JSON.stringify(filePathRules)}`);
+  // console.log(`execute business rules: ${JSON.stringify(filePathRules)}`);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cexecuteBusinessRules + JSON.stringify(filePathRules));
   let dataFile = await ruleBroker.processRules([fileToLoad, ''], filePathRules);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cdataFileIs + JSON.stringify(dataFile));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
-  console.log(`dataFile is: ${JSON.stringify(dataFile)}`);
-  console.log(`END ${namespacePrefix}${functionName} function`);
+  // console.log(`dataFile is: ${JSON.stringify(dataFile)}`);
+  // console.log(`END ${namespacePrefix}${functionName} function`);
   return dataFile;
 }
 

@@ -627,7 +627,7 @@ async function savePluginRegistry() {
  * @param {string} pluginPath The path to a plugin where a package.json should be expected to be found for that plugin.
  * It could also be that the pluginPath just contains the name of the folder that is the plugin,
  * and the path should be acquired from the plugin registry path.
- * @return {object|} The JSON data object loaded from the plugin package.json file, specified by the input parameter or false if the path error is encountered.
+ * @return {object} The JSON data object loaded from the plugin package.json file, specified by the input parameter or false if the path error is encountered.
  * @author Seth Hollingsead
  * @date 2022/09/02
  */

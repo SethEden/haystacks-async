@@ -513,153 +513,243 @@ describe(tst_con.cfindUniversalDebugConfigSetting, () => {
             [biz.cswapDoubleForwardSlashToSingleForwardSlash]: (inputData, inputMetaData) => characterStringParsing.swapDoubleForwardSlashToSingleForwardSlash(inputData, inputMetaData),
             [biz.cgetJsonData]: (inputData, inputMetaData) => fileOperations.getJsonData(inputData, inputMetaData)
         };
-        let appConfigFilesToLoad = ['C:\\haystacks-async\\test\\unitTest\\testData\\resources\\fakeTestDebugSettings\\appDebugSettings\\application.system.json'];
-        let frameworkConfigFilesToLoad = ['C:\\haystacks-async\\test\\unitTest\\testData\\resources\\fakeTestDebugSettings\\frameworkDebugSettings\\framework.system.json'];
+        let appConfigFilesToLoad = [tst_dbt.cpathToUnitTestApplicationDebugSettings];
+        let frameworkConfigFilesToLoad = [tst_dbt.cpathToUnitTestFrameworkDebugSettings];
 
         // Act
         let returnData = await dataBroker.findUniversalDebugConfigSetting(appConfigFilesToLoad, frameworkConfigFilesToLoad);
 
         // Assert
-        expect(returnData).toEqual();
+        expect(returnData).toBeTruthy();
     });
 
-    // /**
-    //  * @function findUniversalDebugConfigSetting_inValidAppConfigFilesToLoadString
-    //  * @description Tests the dataBroker function findUniversalDebugConfigSetting with a invalid data string.
-    //  * @author Vlad Sorokin
-    //  * @date 2024/07/09
-    //  */
-    // test(tst_con.cfindUniversalDebugConfigSetting_inValidAppConfigFilesToLoadString, async () => {
-    //     // Arrange
-    //     1data1
+    /**
+     * @function findUniversalDebugConfigSetting_inValidAppConfigFilesToLoadString
+     * @description Tests the dataBroker function findUniversalDebugConfigSetting with a invalid data string.
+     * @author Vlad Sorokin
+     * @date 2024/07/09
+     */
+    test(tst_con.cfindUniversalDebugConfigSetting_inValidAppConfigFilesToLoadString, async () => {
+        // Arrange
+        D[sys.cbusinessRules] = {};
+        D[sys.cbusinessRules] = {
+            [biz.cswapDoubleForwardSlashToSingleForwardSlash]: (inputData, inputMetaData) => characterStringParsing.swapDoubleForwardSlashToSingleForwardSlash(inputData, inputMetaData),
+            [biz.cgetJsonData]: (inputData, inputMetaData) => fileOperations.getJsonData(inputData, inputMetaData)
+        };
+        let appConfigFilesToLoad = tst_man.ctestString1;
+        let frameworkConfigFilesToLoad = [tst_dbt.cpathToUnitTestFrameworkDebugSettings];
 
-    //     // Assert
-    //     expect(returnData).toBeFalsy();
-    // });
+        // Act
+        let returnData = await dataBroker.findUniversalDebugConfigSetting(appConfigFilesToLoad, frameworkConfigFilesToLoad);
 
-    // /**
-    //  * @function findUniversalDebugConfigSetting_inValidFrameworkConfigFilesToLoadString
-    //  * @description Tests the dataBroker function findUniversalDebugConfigSetting with a invalid data string.
-    //  * @author Vlad Sorokin
-    //  * @date 2024/07/09
-    //  */
-    // test(tst_con.cfindUniversalDebugConfigSetting_inValidFrameworkConfigFilesToLoadString, async () => {
-    //     // Arrange
-    //     1data2
+        // Assert
+        expect(returnData).toBeTruthy();
+    });
 
-    //     // Assert
-    //     expect(returnData).toBeFalsy();
-    // });
+    /**
+     * @function findUniversalDebugConfigSetting_inValidFrameworkConfigFilesToLoadString
+     * @description Tests the dataBroker function findUniversalDebugConfigSetting with a invalid data string.
+     * @author Vlad Sorokin
+     * @date 2024/07/09
+     */
+    test(tst_con.cfindUniversalDebugConfigSetting_inValidFrameworkConfigFilesToLoadString, async () => {
+        // Arrange
+        D[sys.cbusinessRules] = {};
+        D[sys.cbusinessRules] = {
+            [biz.cswapDoubleForwardSlashToSingleForwardSlash]: (inputData, inputMetaData) => characterStringParsing.swapDoubleForwardSlashToSingleForwardSlash(inputData, inputMetaData),
+            [biz.cgetJsonData]: (inputData, inputMetaData) => fileOperations.getJsonData(inputData, inputMetaData)
+        };
+        let appConfigFilesToLoad = [tst_dbt.cpathToUnitTestApplicationDebugSettings];
+        let frameworkConfigFilesToLoad = tst_man.ctestString1;
 
-    // /**
-    //  * @function findUniversalDebugConfigSetting_inValidAppConfigFilesToLoadInteger
-    //  * @description Tests the dataBroker function findUniversalDebugConfigSetting with a invalid data integer.
-    //  * @author Vlad Sorokin
-    //  * @date 2024/07/09
-    //  */
-    // test(tst_con.cfindUniversalDebugConfigSetting_inValidAppConfigFilesToLoadInteger, async () => {
-    //     // Arrange
-    //     1data1
+        // Act
+        let returnData = await dataBroker.findUniversalDebugConfigSetting(appConfigFilesToLoad, frameworkConfigFilesToLoad);
 
-    //     // Assert
-    //     expect(returnData).toBeFalsy();
-    // });
+        // Assert
+        expect(returnData).toBeTruthy();
+    });
 
-    // /**
-    //  * @function findUniversalDebugConfigSetting_inValidAppConfigFilesToLoadBoolean
-    //  * @description Tests the dataBroker function findUniversalDebugConfigSetting with a invalid data boolean.
-    //  * @author Vlad Sorokin
-    //  * @date 2024/07/09
-    //  */
-    // test(tst_con.cfindUniversalDebugConfigSetting_inValidAppConfigFilesToLoadBoolean, async () => {
-    //     // Arrange
-    //     1data1
+    /**
+     * @function findUniversalDebugConfigSetting_inValidAppConfigFilesToLoadInteger
+     * @description Tests the dataBroker function findUniversalDebugConfigSetting with a invalid data integer.
+     * @author Vlad Sorokin
+     * @date 2024/07/09
+     */
+    test(tst_con.cfindUniversalDebugConfigSetting_inValidAppConfigFilesToLoadInteger, async () => {
+        // Arrange
+        D[sys.cbusinessRules] = {};
+        D[sys.cbusinessRules] = {
+            [biz.cswapDoubleForwardSlashToSingleForwardSlash]: (inputData, inputMetaData) => characterStringParsing.swapDoubleForwardSlashToSingleForwardSlash(inputData, inputMetaData),
+            [biz.cgetJsonData]: (inputData, inputMetaData) => fileOperations.getJsonData(inputData, inputMetaData)
+        };
+        let appConfigFilesToLoad = 123;
+        let frameworkConfigFilesToLoad = [tst_dbt.cpathToUnitTestFrameworkDebugSettings];
 
-    //     // Assert
-    //     expect(returnData).toBeFalsy();
-    // });
+        // Act
+        let returnData = await dataBroker.findUniversalDebugConfigSetting(appConfigFilesToLoad, frameworkConfigFilesToLoad);
 
-    // /**
-    //  * @function findUniversalDebugConfigSetting_inValidFrameworkConfigFilesToLoadInteger
-    //  * @description Tests the dataBroker function findUniversalDebugConfigSetting with a invalid data integer.
-    //  * @author Vlad Sorokin
-    //  * @date 2024/07/09
-    //  */
-    // test(tst_con.cfindUniversalDebugConfigSetting_inValidFrameworkConfigFilesToLoadInteger, async () => {
-    //     // Arrange
-    //     1data2
+        // Assert
+        expect(returnData).toBeTruthy();
+    });
 
-    //     // Assert
-    //     expect(returnData).toBeFalsy();
-    // });
+    /**
+     * @function findUniversalDebugConfigSetting_inValidAppConfigFilesToLoadBoolean
+     * @description Tests the dataBroker function findUniversalDebugConfigSetting with a invalid data boolean.
+     * @author Vlad Sorokin
+     * @date 2024/07/09
+     */
+    test(tst_con.cfindUniversalDebugConfigSetting_inValidAppConfigFilesToLoadBoolean, async () => {
+        // Arrange
+        D[sys.cbusinessRules] = {};
+        D[sys.cbusinessRules] = {
+            [biz.cswapDoubleForwardSlashToSingleForwardSlash]: (inputData, inputMetaData) => characterStringParsing.swapDoubleForwardSlashToSingleForwardSlash(inputData, inputMetaData),
+            [biz.cgetJsonData]: (inputData, inputMetaData) => fileOperations.getJsonData(inputData, inputMetaData)
+        };
+        let appConfigFilesToLoad = false;
+        let frameworkConfigFilesToLoad = [tst_dbt.cpathToUnitTestFrameworkDebugSettings];
 
-    // /**
-    //  * @function findUniversalDebugConfigSetting_inValidFrameworkConfigFilesToLoadBoolean
-    //  * @description Tests the dataBroker function findUniversalDebugConfigSetting with a invalid data boolean.
-    //  * @author Vlad Sorokin
-    //  * @date 2024/07/09
-    //  */
-    // test(tst_con.cfindUniversalDebugConfigSetting_inValidFrameworkConfigFilesToLoadBoolean, async () => {
-    //     // Arrange
-    //     1data2
+        // Act
+        let returnData = await dataBroker.findUniversalDebugConfigSetting(appConfigFilesToLoad, frameworkConfigFilesToLoad);
 
-    //     // Assert
-    //     expect(returnData).toBeFalsy();
-    // });
+        // Assert
+        expect(returnData).toBeTruthy();
+    });
 
-    // /**
-    //  * @function findUniversalDebugConfigSetting_inValidAppConfigFilesToLoadUndefined
-    //  * @description Tests the dataBroker function findUniversalDebugConfigSetting with a invalid data undefined.
-    //  * @author Vlad Sorokin
-    //  * @date 2024/07/09
-    //  */
-    // test(tst_con.cfindUniversalDebugConfigSetting_inValidAppConfigFilesToLoadUndefined, async () => {
-    //     // Arrange
-    //     1data1
+    /**
+     * @function findUniversalDebugConfigSetting_inValidFrameworkConfigFilesToLoadInteger
+     * @description Tests the dataBroker function findUniversalDebugConfigSetting with a invalid data integer.
+     * @author Vlad Sorokin
+     * @date 2024/07/09
+     */
+    test(tst_con.cfindUniversalDebugConfigSetting_inValidFrameworkConfigFilesToLoadInteger, async () => {
+        // Arrange
+        D[sys.cbusinessRules] = {};
+        D[sys.cbusinessRules] = {
+            [biz.cswapDoubleForwardSlashToSingleForwardSlash]: (inputData, inputMetaData) => characterStringParsing.swapDoubleForwardSlashToSingleForwardSlash(inputData, inputMetaData),
+            [biz.cgetJsonData]: (inputData, inputMetaData) => fileOperations.getJsonData(inputData, inputMetaData)
+        };
+        let appConfigFilesToLoad = [tst_dbt.cpathToUnitTestApplicationDebugSettings];
+        let frameworkConfigFilesToLoad = 123;
 
-    //     // Assert
-    //     expect(returnData).toBeFalsy();
-    // });
+        // Act
+        let returnData = await dataBroker.findUniversalDebugConfigSetting(appConfigFilesToLoad, frameworkConfigFilesToLoad);
 
-    // /**
-    //  * @function findUniversalDebugConfigSetting_inValidAppConfigFilesToLoadNaN
-    //  * @description Tests the dataBroker function findUniversalDebugConfigSetting with a invalid data NaN.
-    //  * @author Vlad Sorokin
-    //  * @date 2024/07/09
-    //  */
-    // test(tst_con.cfindUniversalDebugConfigSetting_inValidAppConfigFilesToLoadNaN, async () => {
-    //     // Arrange
-    //     1data1
+        // Assert
+        expect(returnData).toBeTruthy();
+    });
 
-    //     // Assert
-    //     expect(returnData).toBeFalsy();
-    // });
+    /**
+     * @function findUniversalDebugConfigSetting_inValidFrameworkConfigFilesToLoadBoolean
+     * @description Tests the dataBroker function findUniversalDebugConfigSetting with a invalid data boolean.
+     * @author Vlad Sorokin
+     * @date 2024/07/09
+     */
+    test(tst_con.cfindUniversalDebugConfigSetting_inValidFrameworkConfigFilesToLoadBoolean, async () => {
+        // Arrange
+        D[sys.cbusinessRules] = {};
+        D[sys.cbusinessRules] = {
+            [biz.cswapDoubleForwardSlashToSingleForwardSlash]: (inputData, inputMetaData) => characterStringParsing.swapDoubleForwardSlashToSingleForwardSlash(inputData, inputMetaData),
+            [biz.cgetJsonData]: (inputData, inputMetaData) => fileOperations.getJsonData(inputData, inputMetaData)
+        };
+        let appConfigFilesToLoad = [tst_dbt.cpathToUnitTestApplicationDebugSettings];
+        let frameworkConfigFilesToLoad = false;
 
-    // /**
-    //  * @function findUniversalDebugConfigSetting_inValidFrameworkConfigFilesToLoadUndefined
-    //  * @description Tests the dataBroker function findUniversalDebugConfigSetting with a invalid data undefined.
-    //  * @author Vlad Sorokin
-    //  * @date 2024/07/09
-    //  */
-    // test(tst_con.cfindUniversalDebugConfigSetting_inValidFrameworkConfigFilesToLoadUndefined, async () => {
-    //     // Arrange
-    //     1data2
+        // Act
+        let returnData = await dataBroker.findUniversalDebugConfigSetting(appConfigFilesToLoad, frameworkConfigFilesToLoad);
 
-    //     // Assert
-    //     expect(returnData).toBeFalsy();
-    // });
+        // Assert
+        expect(returnData).toBeTruthy();
+    });
 
-    // /**
-    //  * @function findUniversalDebugConfigSetting_inValidFrameworkConfigFilesToLoadNaN
-    //  * @description Tests the dataBroker function findUniversalDebugConfigSetting with a invalid data NaN.
-    //  * @author Vlad Sorokin
-    //  * @date 2024/07/09
-    //  */
-    // test(tst_con.cfindUniversalDebugConfigSetting_inValidFrameworkConfigFilesToLoadNaN, async () => {
-    //     // Arrange
-    //     1data2
+    /**
+     * @function findUniversalDebugConfigSetting_inValidAppConfigFilesToLoadUndefined
+     * @description Tests the dataBroker function findUniversalDebugConfigSetting with a invalid data undefined.
+     * @author Vlad Sorokin
+     * @date 2024/07/09
+     */
+    test(tst_con.cfindUniversalDebugConfigSetting_inValidAppConfigFilesToLoadUndefined, async () => {
+        // Arrange
+        D[sys.cbusinessRules] = {};
+        D[sys.cbusinessRules] = {
+            [biz.cswapDoubleForwardSlashToSingleForwardSlash]: (inputData, inputMetaData) => characterStringParsing.swapDoubleForwardSlashToSingleForwardSlash(inputData, inputMetaData),
+            [biz.cgetJsonData]: (inputData, inputMetaData) => fileOperations.getJsonData(inputData, inputMetaData)
+        };
+        let appConfigFilesToLoad = undefined;
+        let frameworkConfigFilesToLoad = [tst_dbt.cpathToUnitTestFrameworkDebugSettings];
 
-    //     // Assert
-    //     expect(returnData).toBeFalsy();
-    // });
+        // Act
+        let returnData = await dataBroker.findUniversalDebugConfigSetting(appConfigFilesToLoad, frameworkConfigFilesToLoad);
+
+        // Assert
+        expect(returnData).toBeTruthy();
+    });
+
+    /**
+     * @function findUniversalDebugConfigSetting_inValidAppConfigFilesToLoadNaN
+     * @description Tests the dataBroker function findUniversalDebugConfigSetting with a invalid data NaN.
+     * @author Vlad Sorokin
+     * @date 2024/07/09
+     */
+    test(tst_con.cfindUniversalDebugConfigSetting_inValidAppConfigFilesToLoadNaN, async () => {
+        // Arrange
+        D[sys.cbusinessRules] = {};
+        D[sys.cbusinessRules] = {
+            [biz.cswapDoubleForwardSlashToSingleForwardSlash]: (inputData, inputMetaData) => characterStringParsing.swapDoubleForwardSlashToSingleForwardSlash(inputData, inputMetaData),
+            [biz.cgetJsonData]: (inputData, inputMetaData) => fileOperations.getJsonData(inputData, inputMetaData)
+        };
+        let appConfigFilesToLoad = NaN;
+        let frameworkConfigFilesToLoad = [tst_dbt.cpathToUnitTestFrameworkDebugSettings];
+
+        // Act
+        let returnData = await dataBroker.findUniversalDebugConfigSetting(appConfigFilesToLoad, frameworkConfigFilesToLoad);
+
+        // Assert
+        expect(returnData).toBeTruthy();
+    });
+
+    /**
+     * @function findUniversalDebugConfigSetting_inValidFrameworkConfigFilesToLoadUndefined
+     * @description Tests the dataBroker function findUniversalDebugConfigSetting with a invalid data undefined.
+     * @author Vlad Sorokin
+     * @date 2024/07/09
+     */
+    test(tst_con.cfindUniversalDebugConfigSetting_inValidFrameworkConfigFilesToLoadUndefined, async () => {
+        // Arrange
+        D[sys.cbusinessRules] = {};
+        D[sys.cbusinessRules] = {
+            [biz.cswapDoubleForwardSlashToSingleForwardSlash]: (inputData, inputMetaData) => characterStringParsing.swapDoubleForwardSlashToSingleForwardSlash(inputData, inputMetaData),
+            [biz.cgetJsonData]: (inputData, inputMetaData) => fileOperations.getJsonData(inputData, inputMetaData)
+        };
+        let appConfigFilesToLoad = [tst_dbt.cpathToUnitTestApplicationDebugSettings];
+        let frameworkConfigFilesToLoad = undefined;
+
+        // Act
+        let returnData = await dataBroker.findUniversalDebugConfigSetting(appConfigFilesToLoad, frameworkConfigFilesToLoad);
+
+        // Assert
+        expect(returnData).toBeTruthy();
+    });
+
+    /**
+     * @function findUniversalDebugConfigSetting_inValidFrameworkConfigFilesToLoadNaN
+     * @description Tests the dataBroker function findUniversalDebugConfigSetting with a invalid data NaN.
+     * @author Vlad Sorokin
+     * @date 2024/07/09
+     */
+    test(tst_con.cfindUniversalDebugConfigSetting_inValidFrameworkConfigFilesToLoadNaN, async () => {
+        // Arrange
+        D[sys.cbusinessRules] = {};
+        D[sys.cbusinessRules] = {
+            [biz.cswapDoubleForwardSlashToSingleForwardSlash]: (inputData, inputMetaData) => characterStringParsing.swapDoubleForwardSlashToSingleForwardSlash(inputData, inputMetaData),
+            [biz.cgetJsonData]: (inputData, inputMetaData) => fileOperations.getJsonData(inputData, inputMetaData)
+        };
+        let appConfigFilesToLoad = [tst_dbt.cpathToUnitTestApplicationDebugSettings];
+        let frameworkConfigFilesToLoad = NaN;
+
+        // Act
+        let returnData = await dataBroker.findUniversalDebugConfigSetting(appConfigFilesToLoad, frameworkConfigFilesToLoad);
+
+        // Assert
+        expect(returnData).toBeTruthy();
+    });
 })
