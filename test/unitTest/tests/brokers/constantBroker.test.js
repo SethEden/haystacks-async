@@ -4,10 +4,9 @@
  * @file constantBroker.test.js
  * @module constantBroker.test
  * @description Unit tests for the constantBroker.js
- * @requires module:
- * @requires module:
- * @requires module:
- * @requires module:
+ * @requires module:constantBroker
+ * @requires module:fileOperations
+ * @requires module:main
  * @requires module:D
  * @requires module:constantBrokerTest
  * @requires module:mainTest
@@ -21,7 +20,8 @@
 
 // Internal imports
 import constantBroker from '../../../../src/brokers/constantBroker.js';
-// import * as tst_cbt from '../../testData/brokers/constantBrokerTest.js'
+import fileOperations from '../../../../src/businessRules/rules/fileOperations.js';
+import main from '../../../../src/main.js';
 import * as tst_man from '../../testData/mainTest.js';
 import D from '../../../../src/structures/data.js';
 import * as tst_con from '../resources/constants/test.constants.js';
@@ -93,6 +93,7 @@ describe(tst_con.caddConstantsValidationData, () => {
      */
     test(tst_con.caddConstantsValidationData_validData, async () => {
         // Arrange
+        D[sys.cConstantsValidationData][wrd.cFramework][sys.cConstantsShortNames] = {};
         let constantsValidationData = {
             [sys.cConstantsValidationData]: {
                 [sys.cConstantsShortNames]: {
@@ -117,6 +118,7 @@ describe(tst_con.caddConstantsValidationData, () => {
      */
     test(tst_con.caddConstantsValidationData_inValidConstantsValidationDataString, async () => {
         // Arrange
+        D[sys.cConstantsValidationData][wrd.cFramework][sys.cConstantsShortNames] = {};
         let constantsValidationData = tst_man.ctestString1;
         let contextName = wrd.cFramework;
     
@@ -135,6 +137,7 @@ describe(tst_con.caddConstantsValidationData, () => {
      */
     test(tst_con.caddConstantsValidationData_inValidContextNameString, async () => {
         // Arrange
+        D[sys.cConstantsValidationData][wrd.cFramework][sys.cConstantsShortNames] = {};
         let constantsValidationData = {
             [sys.cConstantsValidationData]: {
                 [sys.cConstantsShortNames]: {
@@ -159,6 +162,7 @@ describe(tst_con.caddConstantsValidationData, () => {
      */
     test(tst_con.caddConstantsValidationData_inValidConstantsValidationDataInteger, async () => {
         // Arrange
+        D[sys.cConstantsValidationData][wrd.cFramework][sys.cConstantsShortNames] = {};
         let constantsValidationData = 123;
         let contextName = wrd.cFramework;
     
@@ -177,6 +181,7 @@ describe(tst_con.caddConstantsValidationData, () => {
      */
     test(tst_con.caddConstantsValidationData_inValidConstantsValidationDataBoolean, async () => {
         // Arrange
+        D[sys.cConstantsValidationData][wrd.cFramework][sys.cConstantsShortNames] = {};
         let constantsValidationData = false;
         let contextName = wrd.cFramework;
     
@@ -195,6 +200,7 @@ describe(tst_con.caddConstantsValidationData, () => {
      */
     test(tst_con.caddConstantsValidationData_inValidContextNameInteger, async () => {
         // Arrange
+        D[sys.cConstantsValidationData][wrd.cFramework][sys.cConstantsShortNames] = {};
         let constantsValidationData = {
             [sys.cConstantsValidationData]: {
                 [sys.cConstantsShortNames]: {
@@ -219,6 +225,7 @@ describe(tst_con.caddConstantsValidationData, () => {
      */
     test(tst_con.caddConstantsValidationData_inValidContextNameBoolean, async () => {
         // Arrange
+        D[sys.cConstantsValidationData][wrd.cFramework][sys.cConstantsShortNames] = {};
         let constantsValidationData = {
             [sys.cConstantsValidationData]: {
                 [sys.cConstantsShortNames]: {
@@ -243,6 +250,7 @@ describe(tst_con.caddConstantsValidationData, () => {
      */
     test(tst_con.caddConstantsValidationData_inValidConstantsValidationDataUndefined, async () => {
         // Arrange
+        D[sys.cConstantsValidationData][wrd.cFramework][sys.cConstantsShortNames] = {};
         let constantsValidationData = undefined;
         let contextName = wrd.cFramework;
     
@@ -261,6 +269,7 @@ describe(tst_con.caddConstantsValidationData, () => {
      */
     test(tst_con.caddConstantsValidationData_inValidConstantsValidationDataNaN, async () => {
         // Arrange
+        D[sys.cConstantsValidationData][wrd.cFramework][sys.cConstantsShortNames] = {};
         let constantsValidationData = NaN;
         let contextName = wrd.cFramework;
     
@@ -279,6 +288,7 @@ describe(tst_con.caddConstantsValidationData, () => {
      */
     test(tst_con.caddConstantsValidationData_inValidContextNameUndefined, async () => {
         // Arrange
+        D[sys.cConstantsValidationData][wrd.cFramework][sys.cConstantsShortNames] = {};
         let constantsValidationData = {
             [sys.cConstantsValidationData]: {
                 [sys.cConstantsShortNames]: {
@@ -303,6 +313,7 @@ describe(tst_con.caddConstantsValidationData, () => {
      */
     test(tst_con.caddConstantsValidationData_inValidContextNameNaN, async () => {
         // Arrange
+        D[sys.cConstantsValidationData][wrd.cFramework][sys.cConstantsShortNames] = {};
         let constantsValidationData = {
             [sys.cConstantsValidationData]: {
                 [sys.cConstantsShortNames]: {
@@ -314,6 +325,188 @@ describe(tst_con.caddConstantsValidationData, () => {
     
         // Act
         let returnData = await constantBroker.addConstantsValidationData(constantsValidationData, contextName);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+})
+
+/**
+ * @function removePluginConstantsValidationData
+ * @description Tests the positive and negative test cases of the removePluginConstantsValidationData
+ * @author Vlad Sorokin
+ * @date 2024/07/08
+ */
+describe(tst_con.cremovePluginConstantsValidationData, () => {
+    /**
+     * @function removePluginConstantsValidationData_validPluginNameData
+     * @description Tests the constantBroker function removePluginConstantsValidationData with a valid input.
+     * @author Vlad Sorokin
+     * @date 2024/07/08
+     */
+    test(tst_con.cremovePluginConstantsValidationData_validPluginNameData, async () => {
+        // Arrange
+        D[sys.cbusinessRules] = {
+            [biz.cgetJsonData]: (inputData, inputMetaData) => fileOperations.getJsonData(inputData, inputMetaData),
+            [biz.cobjectDeepClone]: (inputData, inputMetaData) => dataArrayParsing.objectDeepClone(inputData, inputMetaData)
+        };
+        D[wrd.cconfiguration] = {};
+        D[wrd.cconfiguration][cfg.cdebugSetting] = {};
+        D[wrd.cconfiguration][wrd.cplugins] = {};
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+        D[sys.cpluginsLoaded] = [{}];
+        await main.loadPlugin(tst_man.testPluginPath);
+        let pluginName = tst_man.ctestPluginOne;
+
+        // Act
+        let returnData = await constantBroker.removePluginConstantsValidationData(pluginName);
+
+        // Assert
+        expect(returnData).toBeTruthy();
+    });
+
+    /**
+     * @function removePluginConstantsValidationData_inValidPluginNameString
+     * @description Tests the constantBroker function removePluginConstantsValidationData with a invalid data string.
+     * @author Vlad Sorokin
+     * @date 2024/07/08
+     */
+    test(tst_con.cremovePluginConstantsValidationData_inValidPluginNameString, async () => {
+        // Arrange
+        D[sys.cbusinessRules] = {
+            [biz.cgetJsonData]: (inputData, inputMetaData) => fileOperations.getJsonData(inputData, inputMetaData),
+            [biz.cobjectDeepClone]: (inputData, inputMetaData) => dataArrayParsing.objectDeepClone(inputData, inputMetaData)
+        };
+        D[wrd.cconfiguration] = {};
+        D[wrd.cconfiguration][cfg.cdebugSetting] = {};
+        D[wrd.cconfiguration][wrd.cplugins] = {};
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+        D[sys.cpluginsLoaded] = [{}];
+        await main.loadPlugin(tst_man.testPluginPath);
+        let pluginName = tst_man.ctestString1;
+
+        // Act
+        let returnData = await constantBroker.removePluginConstantsValidationData(pluginName);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function removePluginConstantsValidationData_inValidPluginNameInteger
+     * @description Tests the constantBroker function removePluginConstantsValidationData with a invalid data integer.
+     * @author Vlad Sorokin
+     * @date 2024/07/08
+     */
+    test(tst_con.cremovePluginConstantsValidationData_inValidPluginNameInteger, async () => {
+        // Arrange
+        D[sys.cbusinessRules] = {
+            [biz.cgetJsonData]: (inputData, inputMetaData) => fileOperations.getJsonData(inputData, inputMetaData),
+            [biz.cobjectDeepClone]: (inputData, inputMetaData) => dataArrayParsing.objectDeepClone(inputData, inputMetaData)
+        };
+        D[wrd.cconfiguration] = {};
+        D[wrd.cconfiguration][cfg.cdebugSetting] = {};
+        D[wrd.cconfiguration][wrd.cplugins] = {};
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+        D[sys.cpluginsLoaded] = [{}];
+        await main.loadPlugin(tst_man.testPluginPath);
+        let pluginName = 123;
+
+        // Act
+        let returnData = await constantBroker.removePluginConstantsValidationData(pluginName);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function removePluginConstantsValidationData_inValidPluginNameBoolean
+     * @description Tests the constantBroker function removePluginConstantsValidationData with a invalid data boolean.
+     * @author Vlad Sorokin
+     * @date 2024/07/08
+     */
+    test(tst_con.cremovePluginConstantsValidationData_inValidPluginNameBoolean, async () => {
+        // Arrange
+        D[sys.cbusinessRules] = {
+            [biz.cgetJsonData]: (inputData, inputMetaData) => fileOperations.getJsonData(inputData, inputMetaData),
+            [biz.cobjectDeepClone]: (inputData, inputMetaData) => dataArrayParsing.objectDeepClone(inputData, inputMetaData)
+        };
+        D[wrd.cconfiguration] = {};
+        D[wrd.cconfiguration][cfg.cdebugSetting] = {};
+        D[wrd.cconfiguration][wrd.cplugins] = {};
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+        D[sys.cpluginsLoaded] = [{}];
+        await main.loadPlugin(tst_man.testPluginPath);
+        let pluginName = false;
+
+        // Act
+        let returnData = await constantBroker.removePluginConstantsValidationData(pluginName);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function removePluginConstantsValidationData_inValidPluginNameUndefined
+     * @description Tests the constantBroker function removePluginConstantsValidationData with a invalid data undefined.
+     * @author Vlad Sorokin
+     * @date 2024/07/08
+     */
+    test(tst_con.cremovePluginConstantsValidationData_inValidPluginNameUndefined, async () => {
+        // Arrange
+        D[sys.cbusinessRules] = {
+            [biz.cgetJsonData]: (inputData, inputMetaData) => fileOperations.getJsonData(inputData, inputMetaData),
+            [biz.cobjectDeepClone]: (inputData, inputMetaData) => dataArrayParsing.objectDeepClone(inputData, inputMetaData)
+        };
+        D[wrd.cconfiguration] = {};
+        D[wrd.cconfiguration][cfg.cdebugSetting] = {};
+        D[wrd.cconfiguration][wrd.cplugins] = {};
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+        D[sys.cpluginsLoaded] = [{}];
+        await main.loadPlugin(tst_man.testPluginPath);
+        let pluginName = undefined;
+
+        // Act
+        let returnData = await constantBroker.removePluginConstantsValidationData(pluginName);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function removePluginConstantsValidationData_inValidPluginNameNaN
+     * @description Tests the constantBroker function removePluginConstantsValidationData with a invalid data NaN.
+     * @author Vlad Sorokin
+     * @date 2024/07/08
+     */
+    test(tst_con.cremovePluginConstantsValidationData_inValidPluginNameNaN, async () => {
+        // Arrange
+        D[sys.cbusinessRules] = {
+            [biz.cgetJsonData]: (inputData, inputMetaData) => fileOperations.getJsonData(inputData, inputMetaData),
+            [biz.cobjectDeepClone]: (inputData, inputMetaData) => dataArrayParsing.objectDeepClone(inputData, inputMetaData)
+        };
+        D[wrd.cconfiguration] = {};
+        D[wrd.cconfiguration][cfg.cdebugSetting] = {};
+        D[wrd.cconfiguration][wrd.cplugins] = {};
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+        D[sys.cpluginsLoaded] = [{}];
+        await main.loadPlugin(tst_man.testPluginPath);
+        let pluginName = NaN;
+
+        // Act
+        let returnData = await constantBroker.removePluginConstantsValidationData(pluginName);
 
         // Assert
         expect(returnData).toBeFalsy();

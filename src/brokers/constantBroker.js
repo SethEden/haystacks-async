@@ -513,15 +513,15 @@ async function addConstantsValidationData(constantsValidationData, contextName) 
           returnData = true;
         } else {
           // WARNING: Context name is invalid for addConstantsValidationData.
-          console.log('WARNING: Context name is invalid for addConstantsValidationData.');
+          console.log(msg.cWarningAddConstantsValidationDataMessage02);
         }
       } else {
         // ERROR: Invalid input, contextName is: 
-        console.log('ERROR: Invalid input, contextName is: ', contextName);
+        console.log(msg.cErrorAddConstantsValidationDataMessage03, contextName);
       }
     } else {
       // ERROR: Invalid input, constantsValidationData is: 
-      console.log('ERROR: Invalid input, constantsValidationData is: ', constantsValidationData);
+      console.log(msg.cErrorAddConstantsValidationDataMessage04, constantsValidationData);
     }
   } catch (err) {
     // ERROR: Failure to merge the constants validation data for the type:
@@ -535,7 +535,7 @@ async function addConstantsValidationData(constantsValidationData, contextName) 
 
 /**
  * @function removePluginConstantsValidationData
- * @description Parses through the constants validation data and finds the constants validation data data associated with the named plugin.
+ * @description Parses through the constants validation data and finds the constants validation data associated with the named plugin.
  * Then removes that data shredding it from existence at the edge of a black hole.
  * @param {string} pluginName The name of the plugin that should have its constants vaidation data removed from the D-data structure.
  * @return {boolean} True or False to indicate if the removal of the data was completed successfully or not.
@@ -548,11 +548,29 @@ async function removePluginConstantsValidationData(pluginName) {
   // pluginName is:
   await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginNameIs + pluginName);
   let returnData = false;
+  let pluginsLoaded = D[sys.cpluginsLoaded];
   let allPluginsConstantsValidationData = D[sys.cConstantsValidationData][wrd.cPlugins];
   if (allPluginsConstantsValidationData) {
     try {
-      delete allPluginsConstantsValidationData[pluginName];
-      returnData = true;
+      if (pluginName && typeof pluginName === wrd.cstring) {
+        const arraysEqual = (arr1, arr2) => {
+          if (arr1.length !== arr2.length) return false;
+          return arr1.every((value, index) => value === arr2[index]);
+        };
+        // NOTE: The arraysEqual function compares two arrays for equality by first checking if they have the same length. 
+        // If they do, it then checks if all corresponding elements in both arrays are equal, returning true if they are and false otherwise.
+        // This function is used for the if statement on the next line.
+        if (pluginsLoaded.some(innerArray => arraysEqual(innerArray, [pluginName, true]))) {
+          delete allPluginsConstantsValidationData[pluginName];
+          returnData = true;
+        } else {
+          // ERROR: Unable to verify that the plugin was loaded. Plugin:
+          console.log(msg.cErrorRemovePluginCommandAliasesMessage03 + pluginName);
+        }
+      } else {
+        // ERROR: pluginName is an invalid value. pluginName is: 
+        console.log(msg.cErrorAddPluginCommandAliasesMessage03, pluginName);
+      }
     } catch (err) {
       // ERROR: Unable to remove the plugin constants validation data for the specified plugin:
       console.log(msg.cremovePluginConstantsValidationDataMessage01 + pluginName);

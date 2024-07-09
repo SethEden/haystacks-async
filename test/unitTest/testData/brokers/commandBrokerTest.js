@@ -6,7 +6,7 @@
  * @requires {@link https://www.npmjs.com/package/path|path}
  * @author Vlad Sorokin
  * @date 2024/06/20
- * @copyright Copyright © 2023-… by Vlad Sorokin. All rights reserved
+ * @copyright Copyright © 2024-… by Vlad Sorokin. All rights reserved
  */
 
 // Internal imports

@@ -21,7 +21,7 @@ import hayConst from '@haystacks/constants';
 import path from 'path';
 
 // eslint-disable-next-line no-unused-vars
-const {bas, biz, cfg, msg, wrd} = hayConst;
+const {bas, biz, cfg, msg, sys, wrd} = hayConst;
 const baseFileName = path.basename(import.meta.url, path.extname(import.meta.url));
 // framework.executrix.configurator.
 // eslint-disable-next-line no-unused-vars
@@ -397,27 +397,50 @@ async function addPluginConfigurationData(pluginName, pluginConfigData) {
   // pluginConfigData is:
   // console.log(msg.cpluginConfigDataIs + JSON.stringify(pluginConfigData));
   let returnData = false;
+  let pluginsLoaded = D[sys.cpluginsLoaded];
   try {
-    if (D[wrd.cconfiguration][wrd.cplugins] === undefined) {
-      D[wrd.cconfiguration][wrd.cplugins] = {};
+    if (pluginName && typeof pluginName === wrd.cstring) {
+      if (pluginConfigData && typeof pluginConfigData === wrd.cobject) {
+        const arraysEqual = (arr1, arr2) => {
+            if (arr1.length !== arr2.length) return false;
+            return arr1.every((value, index) => value === arr2[index]);
+        };
+        // NOTE: The arraysEqual function compares two arrays for equality by first checking if they have the same length. 
+        // If they do, it then checks if all corresponding elements in both arrays are equal, returning true if they are and false otherwise.
+        // This function is used for the if statement on the next line.
+        if (pluginsLoaded.some(innerArray => arraysEqual(innerArray, [pluginName, true]))) {
+          if (D[wrd.cconfiguration][wrd.cplugins] === undefined) {
+            D[wrd.cconfiguration][wrd.cplugins] = {};
+          }
+          // Capture the system settings here, so we don't over-write the framework or application system settings.
+          // There could be an argument made to merge all of these plugin system settings with the rest of the framework & application system settings.
+          // So long as we make sure to check for duplicates and throw errors when a duplicate is found.
+          // This is because it could be dangerous if we allow for plugins to over-write framework and application system settings.
+          D[wrd.cconfiguration][wrd.cplugins][pluginName] = {};
+          D[wrd.cconfiguration][wrd.cplugins][pluginName][wrd.csystem] = {};
+          D[wrd.cconfiguration][wrd.cplugins][pluginName][wrd.csystem] = pluginConfigData[wrd.csystem];
+          
+          // Now we still need to merge over the debugSetting data structure.
+          // Rather than just blanket merge, there is a sub-structure that we can navigate that will allow us to do this with an assignment operation.
+          if (D[wrd.cconfiguration][cfg.cdebugSetting][wrd.cplugins] === undefined) {
+            // ONLY initialize it if it does not yet exist, otherwise we might end up destroying previously loaded plugin configuration debug settings.
+            D[wrd.cconfiguration][cfg.cdebugSetting][wrd.cplugins] = {};
+          }
+          D[wrd.cconfiguration][cfg.cdebugSetting][wrd.cplugins][pluginName] = {};
+          D[wrd.cconfiguration][cfg.cdebugSetting][wrd.cplugins][pluginName] = pluginConfigData[cfg.cdebugSetting][wrd.cplugins][pluginName];
+          returnData = true;
+        } else {
+            // ERROR: Unable to verify that the plugin was loaded. Plugin:
+            console.log(msg.cErrorRemovePluginCommandAliasesMessage03 + pluginName);
+        }
+      } else {
+        // ERROR: Invalid input, pluginConfigData is: 
+        console.log(msg.cErrorAddPluginConfigurationDataMessage02, pluginConfigData);
+      }
+    } else {
+    // ERROR: pluginName is an invalid value. pluginName is: 
+    console.log(msg.cErrorAddPluginCommandAliasesMessage03, pluginName);
     }
-    // Capture the system settings here, so we don't over-write the framework or application system settings.
-    // There could be an argument made to merge all of these plugin system settings with the rest of the framework & application system settings.
-    // So long as we make sure to check for duplicates and throw errors when a duplicate is found.
-    // This is because it could be dangerous if we allow for plugins to over-write framework and application system settings.
-    D[wrd.cconfiguration][wrd.cplugins][pluginName] = {};
-    D[wrd.cconfiguration][wrd.cplugins][pluginName][wrd.csystem] = {};
-    D[wrd.cconfiguration][wrd.cplugins][pluginName][wrd.csystem] = pluginConfigData[wrd.csystem];
-
-    // Now we still need to merge over the debugSetting data structure.
-    // Rather than just blanket merge, there is a sub-structure that we can navigate that will allow us to do this with an assignment operation.
-    if (D[wrd.cconfiguration][cfg.cdebugSetting][wrd.cplugins] === undefined) {
-      // ONLY initialize it if it does not yet exist, otherwise we might end up destroying previously loaded plugin configuration debug settings.
-      D[wrd.cconfiguration][cfg.cdebugSetting][wrd.cplugins] = {};
-    }
-    D[wrd.cconfiguration][cfg.cdebugSetting][wrd.cplugins][pluginName] = {};
-    D[wrd.cconfiguration][cfg.cdebugSetting][wrd.cplugins][pluginName] = pluginConfigData[cfg.cdebugSetting][wrd.cplugins][pluginName];
-    returnData = true;
   } catch (err) {
     // ERROR: Failure unable to persist the plugin configuration data for plugin:
     console.log(msg.cErrorAddPluginConfigurationDataMessage01 + pluginName);

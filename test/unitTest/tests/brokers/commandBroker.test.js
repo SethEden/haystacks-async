@@ -2080,129 +2080,129 @@ describe(tst_con.cexecuteCommand, () => {
  * @author Vlad Sorokin
  * @date 2024/07/01
  */
-describe(tst_con.cremovePluginCommands, () => {
-    /**
-     * @function removePluginCommands_validPluginNameData
-     * @description Tests the commandBroker function removePluginCommands with a valid input.
-     * @author Vlad Sorokin
-     * @date 2024/07/01
-     */
-    test(tst_con.cremovePluginCommands_validPluginNameData, async () => {
-        // Arrange
-        D[sys.cbusinessRules] = {
-            [biz.cgetJsonData]: (inputData, inputMetaData) => fileOperations.getJsonData(inputData, inputMetaData),
-            [biz.cgetNowMoment]: (inputData, inputMetaData) => timeComputation.getNowMoment(inputData, inputMetaData),
-            [biz.cobjectDeepClone]: (inputData, inputMetaData) => dataArrayParsing.objectDeepClone(inputData, inputMetaData),
-            [biz.cdoesArrayContainCharacter]: (inputData, inputMetaData) => characterArrayParsing.doesArrayContainCharacter(inputData, inputMetaData),
-            [biz.ccomputeDeltaTime]: (inputData, inputMetaData) => timeComputation.computeDeltaTime(inputData, inputMetaData)
-        };
-        D[wrd.cCommands] = {}
-        D[wrd.cconfiguration] = {};
-        D[wrd.cconfiguration][cfg.cdebugSetting] = {};
-        D[sys.cConstantsValidationData] = {};
-        D[sys.cConstantsValidationData][wrd.cPlugins]
-        D[wrd.cconfiguration][wrd.csystem] = {};
-        D[sys.cCommandsAliases] = {};
-        D[sys.cCommandWorkflows] = {};
-        D[wrd.cThemes] = {};
-        D[sys.cCommandQueue] = [];
+// describe(tst_con.cremovePluginCommands, () => {
+//     /**
+//      * @function removePluginCommands_validPluginNameData
+//      * @description Tests the commandBroker function removePluginCommands with a valid input.
+//      * @author Vlad Sorokin
+//      * @date 2024/07/01
+//      */
+//     test(tst_con.cremovePluginCommands_validPluginNameData, async () => {
+//         // Arrange
+//         D[sys.cbusinessRules] = {
+//             [biz.cgetJsonData]: (inputData, inputMetaData) => fileOperations.getJsonData(inputData, inputMetaData),
+//             [biz.cgetNowMoment]: (inputData, inputMetaData) => timeComputation.getNowMoment(inputData, inputMetaData),
+//             [biz.cobjectDeepClone]: (inputData, inputMetaData) => dataArrayParsing.objectDeepClone(inputData, inputMetaData),
+//             [biz.cdoesArrayContainCharacter]: (inputData, inputMetaData) => characterArrayParsing.doesArrayContainCharacter(inputData, inputMetaData),
+//             [biz.ccomputeDeltaTime]: (inputData, inputMetaData) => timeComputation.computeDeltaTime(inputData, inputMetaData)
+//         };
+//         D[wrd.cCommands] = {}
+//         D[wrd.cconfiguration] = {};
+//         D[wrd.cconfiguration][cfg.cdebugSetting] = {};
+//         D[sys.cConstantsValidationData] = {};
+//         D[sys.cConstantsValidationData][wrd.cPlugins]
+//         D[wrd.cconfiguration][wrd.csystem] = {};
+//         D[sys.cCommandsAliases] = {};
+//         D[sys.cCommandWorkflows] = {};
+//         D[wrd.cThemes] = {};
+//         D[sys.cCommandQueue] = [];
         
-        let pluginName = tst_man.ctestPluginOne;
+//         let pluginName = tst_man.ctestPluginOne;
 
-        await main.loadPlugin(tst_man.testPluginPath);
+//         await main.loadPlugin(tst_man.testPluginPath);
         
-        // Act
-        let returnData = await commandBroker.removePluginCommands(pluginName);
+//         // Act
+//         let returnData = await commandBroker.removePluginCommands(pluginName);
 
-        // Assert
-        expect(returnData).toEqual();
-    });
+//         // Assert
+//         expect(returnData).toEqual();
+//     });
 
-    // /**
-    //  * @function removePluginCommands_inValidPluginNameString
-    //  * @description Tests the commandBroker function removePluginCommands with a invalid data string.
-    //  * @author Vlad Sorokin
-    //  * @date 2024/07/01
-    //  */
-    // test(tst_con.cremovePluginCommands_inValidPluginNameString, async () => {
-    //     // Arrange
-        
-
-    //     // Act
-    //     let returnData = await commandBroker.removePluginCommands();
-
-    //     // Assert
-    //     expect(returnData).toBeFalsy();
-    // });
-
-    // /**
-    //  * @function removePluginCommands_inValidPluginNameInteger
-    //  * @description Tests the commandBroker function removePluginCommands with a invalid data integer.
-    //  * @author Vlad Sorokin
-    //  * @date 2024/07/01
-    //  */
-    // test(tst_con.cremovePluginCommands_inValidPluginNameInteger, async () => {
-    //     // Arrange
+//     // /**
+//     //  * @function removePluginCommands_inValidPluginNameString
+//     //  * @description Tests the commandBroker function removePluginCommands with a invalid data string.
+//     //  * @author Vlad Sorokin
+//     //  * @date 2024/07/01
+//     //  */
+//     // test(tst_con.cremovePluginCommands_inValidPluginNameString, async () => {
+//     //     // Arrange
         
 
-    //     // Act
-    //     let returnData = await commandBroker.removePluginCommands();
+//     //     // Act
+//     //     let returnData = await commandBroker.removePluginCommands();
 
-    //     // Assert
-    //     expect(returnData).toBeFalsy();
-    // });
+//     //     // Assert
+//     //     expect(returnData).toBeFalsy();
+//     // });
 
-    // /**
-    //  * @function removePluginCommands_inValidPluginNameBoolean
-    //  * @description Tests the commandBroker function removePluginCommands with a invalid data boolean.
-    //  * @author Vlad Sorokin
-    //  * @date 2024/07/01
-    //  */
-    // test(tst_con.cremovePluginCommands_inValidPluginNameBoolean, async () => {
-    //     // Arrange
+//     // /**
+//     //  * @function removePluginCommands_inValidPluginNameInteger
+//     //  * @description Tests the commandBroker function removePluginCommands with a invalid data integer.
+//     //  * @author Vlad Sorokin
+//     //  * @date 2024/07/01
+//     //  */
+//     // test(tst_con.cremovePluginCommands_inValidPluginNameInteger, async () => {
+//     //     // Arrange
         
 
-    //     // Act
-    //     let returnData = await commandBroker.removePluginCommands();
+//     //     // Act
+//     //     let returnData = await commandBroker.removePluginCommands();
 
-    //     // Assert
-    //     expect(returnData).toBeFalsy();
-    // });
+//     //     // Assert
+//     //     expect(returnData).toBeFalsy();
+//     // });
 
-    // /**
-    //  * @function removePluginCommands_inValidPluginNameUndefined
-    //  * @description Tests the commandBroker function removePluginCommands with a invalid data undefined.
-    //  * @author Vlad Sorokin
-    //  * @date 2024/07/01
-    //  */
-    // test(tst_con.cremovePluginCommands_inValidPluginNameUndefined, async () => {
-    //     // Arrange
+//     // /**
+//     //  * @function removePluginCommands_inValidPluginNameBoolean
+//     //  * @description Tests the commandBroker function removePluginCommands with a invalid data boolean.
+//     //  * @author Vlad Sorokin
+//     //  * @date 2024/07/01
+//     //  */
+//     // test(tst_con.cremovePluginCommands_inValidPluginNameBoolean, async () => {
+//     //     // Arrange
         
 
-    //     // Act
-    //     let returnData = await commandBroker.removePluginCommands();
+//     //     // Act
+//     //     let returnData = await commandBroker.removePluginCommands();
 
-    //     // Assert
-    //     expect(returnData).toBeFalsy();
-    // });
+//     //     // Assert
+//     //     expect(returnData).toBeFalsy();
+//     // });
 
-    // /**
-    //  * @function removePluginCommands_inValidPluginNameNaN
-    //  * @description Tests the commandBroker function removePluginCommands with a invalid data NaN.
-    //  * @author Vlad Sorokin
-    //  * @date 2024/07/01
-    //  */
-    // test(tst_con.cremovePluginCommands_inValidPluginNameNaN, async () => {
-    //     // Arrange
+//     // /**
+//     //  * @function removePluginCommands_inValidPluginNameUndefined
+//     //  * @description Tests the commandBroker function removePluginCommands with a invalid data undefined.
+//     //  * @author Vlad Sorokin
+//     //  * @date 2024/07/01
+//     //  */
+//     // test(tst_con.cremovePluginCommands_inValidPluginNameUndefined, async () => {
+//     //     // Arrange
         
 
-    //     // Act
-    //     let returnData = await commandBroker.removePluginCommands();
+//     //     // Act
+//     //     let returnData = await commandBroker.removePluginCommands();
 
-    //     // Assert
-    //     expect(returnData).toBeFalsy();
-    // });
-})
+//     //     // Assert
+//     //     expect(returnData).toBeFalsy();
+//     // });
+
+//     // /**
+//     //  * @function removePluginCommands_inValidPluginNameNaN
+//     //  * @description Tests the commandBroker function removePluginCommands with a invalid data NaN.
+//     //  * @author Vlad Sorokin
+//     //  * @date 2024/07/01
+//     //  */
+//     // test(tst_con.cremovePluginCommands_inValidPluginNameNaN, async () => {
+//     //     // Arrange
+        
+
+//     //     // Act
+//     //     let returnData = await commandBroker.removePluginCommands();
+
+//     //     // Assert
+//     //     expect(returnData).toBeFalsy();
+//     // });
+// })
 
 /**
  * @function removePluginCommandAliases

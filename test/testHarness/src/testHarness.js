@@ -24,7 +24,7 @@
  * @date 2021/10/07
  * @copyright Copyright © 2022-… by Seth Hollingsead. All rights reserved
  */
-
+console.log('HERE');
 // Internal imports
 import clientRules from './businessRules/clientRulesLibrary.js';
 import clientCommands from './commands/clientCommandsLibrary.js';
@@ -50,6 +50,7 @@ dotenv.config();
 // eslint-disable-next-line no-undef
 const {NODE_ENV} = process.env;
 let exitConditionArrayIndex = 0;
+
 
 /**
  * @function bootstrapApplication

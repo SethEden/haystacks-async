@@ -42,11 +42,14 @@ export const testConstantsValidation = [
     {Name: 'cinitializeConstantsValidationData', Actual: tst_con.cinitializeConstantsValidationData, Expected: 'initializeConstantsValidationData'},
     {Name: 'cgenerateFrameworkConstantsValidationData', Actual: tst_con.cgenerateFrameworkConstantsValidationData, Expected: 'generateFrameworkConstantsValidationData'},
     {Name: 'caddConstantsValidationData', Actual: tst_con.caddConstantsValidationData, Expected: 'addConstantsValidationData'},
-
+    {Name: 'cremovePluginConstantsValidationData', Actual: tst_con.cremovePluginConstantsValidationData, Expected: 'removePluginConstantsValidationData'},
 
 
     /* dataBroker */
-    
+    {Name: 'caddPluginConfigurationData', Actual: tst_con.caddPluginConfigurationData, Expected: 'addPluginConfigurationData'}, 
+    {Name: 'cscanDataPath', Actual: tst_con.cscanDataPath, Expected: 'scanDataPath'},
+    {Name: 'cfindUniversalDebugConfigSetting', Actual: tst_con.cfindUniversalDebugConfigSetting, Expected: 'findUniversalDebugConfigSetting'},
+
     /* ruleBroker */
 
     /* themeBroker */
@@ -294,7 +297,7 @@ export const testConstantsValidation = [
     {Name: 'cremovePluginCommandAliases_inValidPluginNameInteger', Actual: tst_con.cremovePluginCommandAliases_inValidPluginNameInteger, Expected: 'removePluginCommandAliases_inValidPluginNameInteger'},
     {Name: 'cremovePluginCommandAliases_inValidPluginNameBoolean', Actual: tst_con.cremovePluginCommandAliases_inValidPluginNameBoolean, Expected: 'removePluginCommandAliases_inValidPluginNameBoolean'},
     {Name: 'cremovePluginCommandAliases_inValidPluginNameUndefined', Actual: tst_con.cremovePluginCommandAliases_inValidPluginNameUndefined, Expected: 'removePluginCommandAliases_inValidPluginNameUndefined'},
-    {Name: 'cremovePluginCommandAliases_inValidPluginNameNaN', Actual: tst_con.cremovePluginCommandAliases_inValidPluginNameNaN, Expected: 'removePluginCommandAliases_inValidPluginNameNaN'},
+    {Name: 'cremovePluginCommandAliases_inValidPluginN ameNaN', Actual: tst_con.cremovePluginCommandAliases_inValidPluginNameNaN, Expected: 'removePluginCommandAliases_inValidPluginNameNaN'},
 
     /* commandBroker */
     // cinitializeConstantsValidationData
@@ -316,9 +319,48 @@ export const testConstantsValidation = [
     {Name: 'caddConstantsValidationData_inValidContextNameUndefined', Actual: tst_con.caddConstantsValidationData_inValidContextNameUndefined, Expected: 'addConstantsValidationData_inValidContextNameUndefined'},
     {Name: 'caddConstantsValidationData_inValidContextNameNaN', Actual: tst_con.caddConstantsValidationData_inValidContextNameNaN, Expected: 'addConstantsValidationData_inValidContextNameNaN'},
 
-    
-    
+    // removePluginConstantsValidationData
+    {Name: 'cremovePluginConstantsValidationData_validPluginNameData', Actual: tst_con.cremovePluginConstantsValidationData_validPluginNameData, Expected: 'removePluginConstantsValidationData_validPluginNameData'},
+    {Name: 'cremovePluginConstantsValidationData_inValidPluginNameString', Actual: tst_con.cremovePluginConstantsValidationData_inValidPluginNameString, Expected: 'removePluginConstantsValidationData_inValidPluginNameString'},
+    {Name: 'cremovePluginConstantsValidationData_inValidPluginNameInteger', Actual: tst_con.cremovePluginConstantsValidationData_inValidPluginNameInteger, Expected: 'removePluginConstantsValidationData_inValidPluginNameInteger'},
+    {Name: 'cremovePluginConstantsValidationData_inValidPluginNameBoolean', Actual: tst_con.cremovePluginConstantsValidationData_inValidPluginNameBoolean, Expected: 'removePluginConstantsValidationData_inValidPluginNameBoolean'},
+    {Name: 'cremovePluginConstantsValidationData_inValidPluginNameUndefined', Actual: tst_con.cremovePluginConstantsValidationData_inValidPluginNameUndefined, Expected: 'removePluginConstantsValidationData_inValidPluginNameUndefined'},
+    {Name: 'cremovePluginConstantsValidationData_inValidPluginNameNaN', Actual: tst_con.cremovePluginConstantsValidationData_inValidPluginNameNaN, Expected: 'removePluginConstantsValidationData_inValidPluginNameNaN'},
+
     /* dataBroker */
+    // addPluginConfigurationData
+    {Name: 'caddPluginConfigurationData_validData', Actual: tst_con.caddPluginConfigurationData_validData, Expected: 'addPluginConfigurationData_validData'},   
+    {Name: 'caddPluginConfigurationData_inValidPluginNameString', Actual: tst_con.caddPluginConfigurationData_inValidPluginNameString, Expected: 'addPluginConfigurationData_inValidPluginNameString'}, 
+    {Name: 'caddPluginConfigurationData_inValidPluginConfigDataString', Actual: tst_con.caddPluginConfigurationData_inValidPluginConfigDataString, Expected: 'addPluginConfigurationData_inValidPluginConfigDataString'},   
+    {Name: 'caddPluginConfigurationData_inValidPluginNameInteger', Actual: tst_con.caddPluginConfigurationData_inValidPluginNameInteger, Expected: 'addPluginConfigurationData_inValidPluginNameInteger'},  
+    {Name: 'caddPluginConfigurationData_inValidPluginNameBoolean', Actual: tst_con.caddPluginConfigurationData_inValidPluginNameBoolean, Expected: 'addPluginConfigurationData_inValidPluginNameBoolean'},  
+    {Name: 'caddPluginConfigurationData_inValidPluginConfigDataInteger', Actual: tst_con.caddPluginConfigurationData_inValidPluginConfigDataInteger, Expected: 'addPluginConfigurationData_inValidPluginConfigDataInteger'},    
+    {Name: 'caddPluginConfigurationData_inValidPluginConfigDataBoolean', Actual: tst_con.caddPluginConfigurationData_inValidPluginConfigDataBoolean, Expected: 'addPluginConfigurationData_inValidPluginConfigDataBoolean'},    
+    {Name: 'caddPluginConfigurationData_inValidPluginNameUndefined', Actual: tst_con.caddPluginConfigurationData_inValidPluginNameUndefined, Expected: 'addPluginConfigurationData_inValidPluginNameUndefined'},    
+    {Name: 'caddPluginConfigurationData_inValidPluginNameNaN', Actual: tst_con.caddPluginConfigurationData_inValidPluginNameNaN, Expected: 'addPluginConfigurationData_inValidPluginNameNaN'},  
+    {Name: 'caddPluginConfigurationData_inValidPluginConfigDataUndefined', Actual: tst_con.caddPluginConfigurationData_inValidPluginConfigDataUndefined, Expected: 'addPluginConfigurationData_inValidPluginConfigDataUndefined'},  
+    {Name: 'caddPluginConfigurationData_inValidPluginConfigDataNaN', Actual: tst_con.caddPluginConfigurationData_inValidPluginConfigDataNaN, Expected: 'addPluginConfigurationData_inValidPluginConfigDataNaN'},    
+
+    // scanDataPath
+    {Name: 'cscanDataPath_validDataPathData', Actual: tst_con.cscanDataPath_validDataPathData, Expected: 'scanDataPath_validDataPathData'},
+    {Name: 'cscanDataPath_inValidDataPathString', Actual: tst_con.cscanDataPath_inValidDataPathString, Expected: 'scanDataPath_inValidDataPathString'},
+    {Name: 'cscanDataPath_inValidDataPathInteger', Actual: tst_con.cscanDataPath_inValidDataPathInteger, Expected: 'scanDataPath_inValidDataPathInteger'},
+    {Name: 'cscanDataPath_inValidDataPathBoolean', Actual: tst_con.cscanDataPath_inValidDataPathBoolean, Expected: 'scanDataPath_inValidDataPathBoolean'},
+    {Name: 'cscanDataPath_inValidDataPathUndefined', Actual: tst_con.cscanDataPath_inValidDataPathUndefined, Expected: 'scanDataPath_inValidDataPathUndefined'},
+    {Name: 'cscanDataPath_inValidDataPathNaN', Actual: tst_con.cscanDataPath_inValidDataPathNaN, Expected: 'scanDataPath_inValidDataPathNaN'},
+
+    // findUniversalDebugConfigSetting
+    {Name: 'cfindUniversalDebugConfigSetting_validData', Actual: tst_con.cfindUniversalDebugConfigSetting_validData, Expected: 'findUniversalDebugConfigSetting_validData'},
+    {Name: 'cfindUniversalDebugConfigSetting_inValidAppConfigFilesToLoadString', Actual: tst_con.cfindUniversalDebugConfigSetting_inValidAppConfigFilesToLoadString, Expected: 'findUniversalDebugConfigSetting_inValidAppConfigFilesToLoadString'},
+    {Name: 'cfindUniversalDebugConfigSetting_inValidFrameworkConfigFilesToLoadString', Actual: tst_con.cfindUniversalDebugConfigSetting_inValidFrameworkConfigFilesToLoadString, Expected: 'findUniversalDebugConfigSetting_inValidFrameworkConfigFilesToLoadString'},
+    {Name: 'cfindUniversalDebugConfigSetting_inValidAppConfigFilesToLoadInteger', Actual: tst_con.cfindUniversalDebugConfigSetting_inValidAppConfigFilesToLoadInteger, Expected: 'findUniversalDebugConfigSetting_inValidAppConfigFilesToLoadInteger'},
+    {Name: 'cfindUniversalDebugConfigSetting_inValidAppConfigFilesToLoadBoolean', Actual: tst_con.cfindUniversalDebugConfigSetting_inValidAppConfigFilesToLoadBoolean, Expected: 'findUniversalDebugConfigSetting_inValidAppConfigFilesToLoadBoolean'},
+    {Name: 'cfindUniversalDebugConfigSetting_inValidFrameworkConfigFilesToLoadInteger', Actual: tst_con.cfindUniversalDebugConfigSetting_inValidFrameworkConfigFilesToLoadInteger, Expected: 'findUniversalDebugConfigSetting_inValidFrameworkConfigFilesToLoadInteger'},
+    {Name: 'cfindUniversalDebugConfigSetting_inValidFrameworkConfigFilesToLoadBoolean', Actual: tst_con.cfindUniversalDebugConfigSetting_inValidFrameworkConfigFilesToLoadBoolean, Expected: 'findUniversalDebugConfigSetting_inValidFrameworkConfigFilesToLoadBoolean'},
+    {Name: 'cfindUniversalDebugConfigSetting_inValidAppConfigFilesToLoadUndefined', Actual: tst_con.cfindUniversalDebugConfigSetting_inValidAppConfigFilesToLoadUndefined, Expected: 'findUniversalDebugConfigSetting_inValidAppConfigFilesToLoadUndefined'},
+    {Name: 'cfindUniversalDebugConfigSetting_inValidAppConfigFilesToLoadNaN', Actual: tst_con.cfindUniversalDebugConfigSetting_inValidAppConfigFilesToLoadNaN, Expected: 'findUniversalDebugConfigSetting_inValidAppConfigFilesToLoadNaN'},
+    {Name: 'cfindUniversalDebugConfigSetting_inValidFrameworkConfigFilesToLoadUndefined', Actual: tst_con.cfindUniversalDebugConfigSetting_inValidFrameworkConfigFilesToLoadUndefined, Expected: 'findUniversalDebugConfigSetting_inValidFrameworkConfigFilesToLoadUndefined'},
+    {Name: 'cfindUniversalDebugConfigSetting_inValidFrameworkConfigFilesToLoadNaN', Actual: tst_con.cfindUniversalDebugConfigSetting_inValidFrameworkConfigFilesToLoadNaN, Expected: 'findUniversalDebugConfigSetting_inValidFrameworkConfigFilesToLoadNaN'},
 
     /* ruleBroker */
 

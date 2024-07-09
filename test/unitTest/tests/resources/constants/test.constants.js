@@ -36,13 +36,16 @@ export const cexecuteCommand = wrd.cexecute + wrd.cCommand; // executeCommand
 export const cremovePluginCommands = wrd.cremove + wrd.cPlugin + wrd.cCommands; // removePluginCommands
 export const cremovePluginCommandAliases = wrd.cremove + wrd.cPlugin + wrd.cCommand + wrd.cAliases; // removePluginCommandAliases
 
-/* commandBroker */
+/* constantBroker */
 export const cinitializeConstantsValidationData = wrd.cinitialize + wrd.cConstants + wrd.cValidation + wrd.cData; // initializeConstantsValidationData
 export const cgenerateFrameworkConstantsValidationData = wrd.cgenerate + wrd.cFramework + wrd.cConstants + wrd.cValidation + wrd.cData; // generateFrameworkConstantsValidationData
 export const caddConstantsValidationData = wrd.c_add + wrd.cConstants + wrd.cValidation + wrd.cData; // addConstantsValidationDat
-
+export const cremovePluginConstantsValidationData = wrd.cremove + wrd.cPlugin + wrd.cConstants + wrd.cValidation + wrd.cData; // removePluginConstantsValidationData
 
 /* dataBroker */
+export const caddPluginConfigurationData = wrd.c_add + wrd.cPlugin + wrd.cConfiguration + wrd.cData; // addPluginConfigurationData
+export const cscanDataPath = wrd.cscan + wrd.cData + wrd.cPath; // scanDataPath
+export const cfindUniversalDebugConfigSetting = wrd.cfind + wrd.cUniversal + wrd.cDebug + wrd.cConfig + wrd.cSetting; // findUniversalDebugConfigSetting
 
 /* ruleBroker */
 
@@ -328,8 +331,49 @@ export const caddConstantsValidationData_inValidConstantsValidationDataNaN = cad
 export const caddConstantsValidationData_inValidContextNameUndefined = caddConstantsValidationData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cContext + wrd.cName + 'Undefined'; // addConstantsValidationData_inValidContextNameUndefined
 export const caddConstantsValidationData_inValidContextNameNaN = caddConstantsValidationData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cContext + wrd.cName + 'NaN'; // addConstantsValidationData_inValidContextNameNaN
 
+// removePluginConstantsValidationData
+export const cremovePluginConstantsValidationData_validPluginNameData = cremovePluginConstantsValidationData + bas.cUnderscore + wrd.cvalid + wrd.cPlugin + wrd.cName + wrd.cData; // removePluginConstantsValidationData_validPluginNameData
+export const cremovePluginConstantsValidationData_inValidPluginNameString = cremovePluginConstantsValidationData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cName + wrd.cString; // removePluginConstantsValidationData_inValidPluginNameString
+export const cremovePluginConstantsValidationData_inValidPluginNameInteger = cremovePluginConstantsValidationData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cName + wrd.cInteger; // removePluginConstantsValidationData_inValidPluginNameInteger
+export const cremovePluginConstantsValidationData_inValidPluginNameBoolean = cremovePluginConstantsValidationData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cName + wrd.cBoolean; // removePluginConstantsValidationData_inValidPluginNameBoolean
+export const cremovePluginConstantsValidationData_inValidPluginNameUndefined = cremovePluginConstantsValidationData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cName + "Undefined"; // removePluginConstantsValidationData_inValidPluginNameUndefined
+export const cremovePluginConstantsValidationData_inValidPluginNameNaN = cremovePluginConstantsValidationData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cName + "NaN"; // removePluginConstantsValidationData_inValidPluginNameNaN
 
 /* dataBroker */
+// addPluginConfigurationData
+export const caddPluginConfigurationData_validData = caddPluginConfigurationData + bas.cUnderscore + wrd.cvalid + wrd.cData; // addPluginConfigurationData_validData
+export const caddPluginConfigurationData_inValidPluginNameString = caddPluginConfigurationData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cName + wrd.cString; // addPluginConfigurationData_inValidPluginNameString
+export const caddPluginConfigurationData_inValidPluginConfigDataString = caddPluginConfigurationData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cConfig + wrd.cData + wrd.cString; // addPluginConfigurationData_inValidPluginConfigDataString
+export const caddPluginConfigurationData_inValidPluginNameInteger = caddPluginConfigurationData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cName + wrd.cInteger; // addPluginConfigurationData_inValidPluginNameInteger
+export const caddPluginConfigurationData_inValidPluginNameBoolean = caddPluginConfigurationData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cName + wrd.cBoolean; // addPluginConfigurationData_inValidPluginNameBoolean
+export const caddPluginConfigurationData_inValidPluginConfigDataInteger = caddPluginConfigurationData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cConfig + wrd.cData + wrd.cInteger; // addPluginConfigurationData_inValidPluginConfigDataInteger
+export const caddPluginConfigurationData_inValidPluginConfigDataBoolean = caddPluginConfigurationData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cConfig + wrd.cData + wrd.cBoolean; // addPluginConfigurationData_inValidPluginConfigDataBoolean
+export const caddPluginConfigurationData_inValidPluginNameUndefined = caddPluginConfigurationData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cName + 'Undefined'; // addPluginConfigurationData_inValidPluginNameUndefined
+export const caddPluginConfigurationData_inValidPluginNameNaN = caddPluginConfigurationData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cName + 'NaN'; // addPluginConfigurationData_inValidPluginNameNaN
+export const caddPluginConfigurationData_inValidPluginConfigDataUndefined = caddPluginConfigurationData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cConfig + wrd.cData + 'Undefined'; // addPluginConfigurationData_inValidPluginConfigDataUndefined
+export const caddPluginConfigurationData_inValidPluginConfigDataNaN = caddPluginConfigurationData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cConfig + wrd.cData + 'NaN'; // addPluginConfigurationData_inValidPluginConfigDataNaN
+
+// scanDataPath
+export const cscanDataPath_validDataPathData = cscanDataPath + bas.cUnderscore + wrd.cvalid + wrd.cData + wrd.cPath + wrd.cData; // scanDataPath_validDataPathData
+export const cscanDataPath_inValidDataPathString = cscanDataPath + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cData + wrd.cPath + wrd.cString; // scanDataPath_inValidDataPathString
+export const cscanDataPath_inValidDataPathInteger = cscanDataPath + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cData + wrd.cPath + wrd.cInteger; // scanDataPath_inValidDataPathInteger
+export const cscanDataPath_inValidDataPathBoolean = cscanDataPath + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cData + wrd.cPath + wrd.cBoolean; // scanDataPath_inValidDataPathBoolean
+export const cscanDataPath_inValidDataPathUndefined = cscanDataPath + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cData + wrd.cPath + "Undefined"; // scanDataPath_inValidDataPathUndefined
+export const cscanDataPath_inValidDataPathNaN = cscanDataPath + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cData + wrd.cPath + "NaN"; // scanDataPath_inValidDataPathNaN
+
+// findUniversalDebugConfigSetting
+export const cfindUniversalDebugConfigSetting_validData = cfindUniversalDebugConfigSetting + bas.cUnderscore + wrd.cvalid + wrd.cData; // findUniversalDebugConfigSetting_validData
+export const cfindUniversalDebugConfigSetting_inValidAppConfigFilesToLoadString = cfindUniversalDebugConfigSetting + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cApp + wrd.cConfig + wrd.cFiles + wrd.cTo + wrd.cLoad + wrd.cString; // findUniversalDebugConfigSetting_inValidAppConfigFilesToLoadString
+export const cfindUniversalDebugConfigSetting_inValidFrameworkConfigFilesToLoadString = cfindUniversalDebugConfigSetting + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cFramework + wrd.cConfig + wrd.cFiles + wrd.cTo + wrd.cLoad + wrd.cString; // findUniversalDebugConfigSetting_inValidFrameworkConfigFilesToLoadString
+export const cfindUniversalDebugConfigSetting_inValidAppConfigFilesToLoadInteger = cfindUniversalDebugConfigSetting + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cApp + wrd.cConfig + wrd.cFiles + wrd.cTo + wrd.cLoad + wrd.cInteger; // findUniversalDebugConfigSetting_inValidAppConfigFilesToLoadInteger
+export const cfindUniversalDebugConfigSetting_inValidAppConfigFilesToLoadBoolean = cfindUniversalDebugConfigSetting + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cApp + wrd.cConfig + wrd.cFiles + wrd.cTo + wrd.cLoad + wrd.cBoolean; // findUniversalDebugConfigSetting_inValidAppConfigFilesToLoadBoolean
+export const cfindUniversalDebugConfigSetting_inValidFrameworkConfigFilesToLoadInteger = cfindUniversalDebugConfigSetting + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cFramework + wrd.cConfig + wrd.cFiles + wrd.cTo + wrd.cLoad + wrd.cInteger; // findUniversalDebugConfigSetting_inValidFrameworkConfigFilesToLoadInteger
+export const cfindUniversalDebugConfigSetting_inValidFrameworkConfigFilesToLoadBoolean = cfindUniversalDebugConfigSetting + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cFramework + wrd.cConfig + wrd.cFiles + wrd.cTo + wrd.cLoad + wrd.cBoolean; // findUniversalDebugConfigSetting_inValidFrameworkConfigFilesToLoadBoolean
+export const cfindUniversalDebugConfigSetting_inValidAppConfigFilesToLoadUndefined = cfindUniversalDebugConfigSetting + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cApp + wrd.cConfig + wrd.cFiles + wrd.cTo + wrd.cLoad + 'Undefined'; // findUniversalDebugConfigSetting_inValidAppConfigFilesToLoadUndefined
+export const cfindUniversalDebugConfigSetting_inValidAppConfigFilesToLoadNaN = cfindUniversalDebugConfigSetting + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cApp + wrd.cConfig + wrd.cFiles + wrd.cTo + wrd.cLoad + 'NaN'; // findUniversalDebugConfigSetting_inValidAppConfigFilesToLoadNaN
+export const cfindUniversalDebugConfigSetting_inValidFrameworkConfigFilesToLoadUndefined = cfindUniversalDebugConfigSetting + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cFramework + wrd.cConfig + wrd.cFiles + wrd.cTo + wrd.cLoad + 'Undefined'; // findUniversalDebugConfigSetting_inValidFrameworkConfigFilesToLoadUndefined
+export const cfindUniversalDebugConfigSetting_inValidFrameworkConfigFilesToLoadNaN = cfindUniversalDebugConfigSetting + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cFramework + wrd.cConfig + wrd.cFiles + wrd.cTo + wrd.cLoad + 'NaN'; // findUniversalDebugConfigSetting_inValidFrameworkConfigFilesToLoadNaN
+
 
 /* ruleBroker */
 
