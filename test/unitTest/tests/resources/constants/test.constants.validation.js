@@ -37,18 +37,19 @@ export const testConstantsValidation = [
     {Name: 'cexecuteCommand', Actual: tst_con.cexecuteCommand, Expected: 'executeCommand'},
     {Name: 'cremovePluginCommands', Actual: tst_con.cremovePluginCommands, Expected: 'removePluginCommands'},
     {Name: 'cremovePluginCommandAliases', Actual: tst_con.cremovePluginCommandAliases, Expected: 'removePluginCommandAliases'},
-
+ 
     /* commandBroker */
     {Name: 'cinitializeConstantsValidationData', Actual: tst_con.cinitializeConstantsValidationData, Expected: 'initializeConstantsValidationData'},
     {Name: 'cgenerateFrameworkConstantsValidationData', Actual: tst_con.cgenerateFrameworkConstantsValidationData, Expected: 'generateFrameworkConstantsValidationData'},
     {Name: 'caddConstantsValidationData', Actual: tst_con.caddConstantsValidationData, Expected: 'addConstantsValidationData'},
     {Name: 'cremovePluginConstantsValidationData', Actual: tst_con.cremovePluginConstantsValidationData, Expected: 'removePluginConstantsValidationData'},
 
-
     /* dataBroker */
     {Name: 'caddPluginConfigurationData', Actual: tst_con.caddPluginConfigurationData, Expected: 'addPluginConfigurationData'}, 
     {Name: 'cscanDataPath', Actual: tst_con.cscanDataPath, Expected: 'scanDataPath'},
     {Name: 'cfindUniversalDebugConfigSetting', Actual: tst_con.cfindUniversalDebugConfigSetting, Expected: 'findUniversalDebugConfigSetting'},
+    {Name: 'cloadAllCsvData', Actual: tst_con.cloadAllCsvData, Expected: 'loadAllCsvData'},
+    {Name: 'cloadAllXmlData', Actual: tst_con.cloadAllXmlData, Expected: 'loadAllXmlData'},
 
     /* ruleBroker */
 
@@ -361,6 +362,31 @@ export const testConstantsValidation = [
     {Name: 'cfindUniversalDebugConfigSetting_inValidAppConfigFilesToLoadNaN', Actual: tst_con.cfindUniversalDebugConfigSetting_inValidAppConfigFilesToLoadNaN, Expected: 'findUniversalDebugConfigSetting_inValidAppConfigFilesToLoadNaN'},
     {Name: 'cfindUniversalDebugConfigSetting_inValidFrameworkConfigFilesToLoadUndefined', Actual: tst_con.cfindUniversalDebugConfigSetting_inValidFrameworkConfigFilesToLoadUndefined, Expected: 'findUniversalDebugConfigSetting_inValidFrameworkConfigFilesToLoadUndefined'},
     {Name: 'cfindUniversalDebugConfigSetting_inValidFrameworkConfigFilesToLoadNaN', Actual: tst_con.cfindUniversalDebugConfigSetting_inValidFrameworkConfigFilesToLoadNaN, Expected: 'findUniversalDebugConfigSetting_inValidFrameworkConfigFilesToLoadNaN'},
+
+    // loadAllCsvData
+    {Name: 'cloadAllCsvData_validData', Actual: tst_con.cloadAllCsvData_validData, Expected: 'loadAllCsvData_validData'},
+    {Name: 'cloadAllCsvData_inValidFilesToLoadString', Actual: tst_con.cloadAllCsvData_inValidFilesToLoadString, Expected: 'loadAllCsvData_inValidFilesToLoadString'},
+    {Name: 'cloadAllCsvData_inValidFilesToLoadInteger', Actual: tst_con.cloadAllCsvData_inValidFilesToLoadInteger, Expected: 'loadAllCsvData_inValidFilesToLoadInteger'},
+    {Name: 'cloadAllCsvData_inValidFilesToLoadBoolean', Actual: tst_con.cloadAllCsvData_inValidFilesToLoadBoolean, Expected: 'loadAllCsvData_inValidFilesToLoadBoolean'},
+    {Name: 'cloadAllCsvData_inValidContextNameInteger', Actual: tst_con.cloadAllCsvData_inValidContextNameInteger, Expected: 'loadAllCsvData_inValidContextNameInteger'},
+    {Name: 'cloadAllCsvData_inValidContextNameBoolean', Actual: tst_con.cloadAllCsvData_inValidContextNameBoolean, Expected: 'loadAllCsvData_inValidContextNameBoolean'},
+    {Name: 'cloadAllCsvData_inValidFilesToLoadUndefined', Actual: tst_con.cloadAllCsvData_inValidFilesToLoadUndefined, Expected: 'loadAllCsvData_inValidFilesToLoadUndefined'},
+    {Name: 'cloadAllCsvData_inValidFilesToLoadNaN', Actual: tst_con.cloadAllCsvData_inValidFilesToLoadNaN, Expected: 'loadAllCsvData_inValidFilesToLoadNaN'},
+    {Name: 'cloadAllCsvData_inValidContextNameUndefined', Actual: tst_con.cloadAllCsvData_inValidContextNameUndefined, Expected: 'loadAllCsvData_inValidContextNameUndefined'},
+    {Name: 'cloadAllCsvData_inValidContextNameNaN', Actual: tst_con.cloadAllCsvData_inValidContextNameNaN, Expected: 'loadAllCsvData_inValidContextNameNaN'},
+
+    // loadAllXmlData
+    {Name: 'cloadAllXmlData_validData', Actual: tst_con.cloadAllXmlData_validData, Expected: 'loadAllXmlData_validData'},
+    {Name: 'cloadAllXmlData_inValidFilesToLoadString', Actual: tst_con.cloadAllXmlData_inValidFilesToLoadString, Expected: 'loadAllXmlData_inValidFilesToLoadString'},
+    {Name: 'cloadAllXmlData_inValidFilesToLoadInteger', Actual: tst_con.cloadAllXmlData_inValidFilesToLoadInteger, Expected: 'loadAllXmlData_inValidFilesToLoadInteger'},
+    {Name: 'cloadAllXmlData_inValidFilesToLoadBoolean', Actual: tst_con.cloadAllXmlData_inValidFilesToLoadBoolean, Expected: 'loadAllXmlData_inValidFilesToLoadBoolean'},
+    {Name: 'cloadAllXmlData_inValidContextNameInteger', Actual: tst_con.cloadAllXmlData_inValidContextNameInteger, Expected: 'loadAllXmlData_inValidContextNameInteger'},
+    {Name: 'cloadAllXmlData_inValidContextNameBoolean', Actual: tst_con.cloadAllXmlData_inValidContextNameBoolean, Expected: 'loadAllXmlData_inValidContextNameBoolean'},
+    {Name: 'cloadAllXmlData_inValidFilesToLoadUndefined', Actual: tst_con.cloadAllXmlData_inValidFilesToLoadUndefined, Expected: 'loadAllXmlData_inValidFilesToLoadUndefined'},
+    {Name: 'cloadAllXmlData_inValidFilesToLoadNaN', Actual: tst_con.cloadAllXmlData_inValidFilesToLoadNaN, Expected: 'loadAllXmlData_inValidFilesToLoadNaN'},
+    {Name: 'cloadAllXmlData_inValidContextNameUndefined', Actual: tst_con.cloadAllXmlData_inValidContextNameUndefined, Expected: 'loadAllXmlData_inValidContextNameUndefined'},
+    {Name: 'cloadAllXmlData_inValidContextNameNaN', Actual: tst_con.cloadAllXmlData_inValidContextNameNaN, Expected: 'loadAllXmlData_inValidContextNameNaN'},
+
 
     /* ruleBroker */
 

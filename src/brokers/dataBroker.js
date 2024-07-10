@@ -114,7 +114,7 @@ async function findUniversalDebugConfigSetting(appConfigFilesToLoad, frameworkCo
   if (Array.isArray(frameworkConfigFilesToLoad) && frameworkConfigFilesToLoad.every(item => typeof item === wrd.cstring)) {
     frameworkConfigDebugSetting = await findIndividualDebugConfigSetting(frameworkConfigFilesToLoad);
   } else {
-    // WARNING: Invalid input, frameworkConfigFilesToLoad is: 
+    // WARNING: Invalid input, frameworkConfigFilesToLoad are: 
     console.log(msg.cWarningFindUniversalDebugConfigSettingMessage02 + frameworkConfigFilesToLoad);
     frameworkConfigDebugSetting = false;
   }
@@ -172,11 +172,11 @@ async function findIndividualDebugConfigSetting(filesToLoad) {
 
 /**
  * @function loadAllCsvData
- * @description Loads al of the contents of all files and  folders and sub-folders at the specified path and builds a list of files to load,
+ * @description Loads all of the contents of all files and folders and sub-folders at the specified path and builds a list of files to load,
  * then loads them accordingly in the D.contextName_fileName.
  * @param {array<string>} filesToLoad The data structure containing all of the files to load data from.
  * @param {string} contextName The context name that should be used when adding data to the D data structure.
- * @return {object} The data in a JSON object after it was loaded from the file.
+ * @return {object|boolean} The data in a JSON object after it was loaded from the file or false if loading process was unsuccessful.
  * @author Seth Hollingsead
  * @date 2022/01/27
  */
@@ -188,35 +188,44 @@ async function loadAllCsvData(filesToLoad, contextName) {
   // contextName is:
   await loggers.consoleLog(namespacePrefix + functionName, msg.ccontextNameIs + contextName);
   // let rules = [biz.cgetFileNameFromPath, biz.cremoveFileExtensionFromFileName];
-  let parsedDataFile;
-  for (const element of filesToLoad) {
-    let fileToLoad = element;
-    // File to load is:
-    await loggers.consoleLog(namespacePrefix + functionName, msg.cFileToLoadIs + fileToLoad);
-    // NOTE: We still need a filename to use as a context for the page data that we just loaded.
-    // A context name will be composed of the input context name with the file name we are processing
-    // which tells us where we will put the data in the D[contextName] sub-structure.
-    let fileExtension = await ruleBroker.processRules([fileToLoad, ''], [biz.cgetFileExtension, biz.cremoveDotFromFileExtension]);
-    // fileExtension is:
-    await loggers.consoleLog(namespacePrefix + functionName, msg.cfileExtensionIs + fileExtension);
-    if (fileExtension === gen.ccsv || fileExtension === gen.cCsv || fileExtension === gen.cCSV) {
-      // execute business rules:
-      // loggers.consoleLog(namespacePrefix + functionName, msg.cexecuteBusinessRulesColon + JSON.stringify(rules));
-      // This next line is commented out because it was resulting in colors_colors, which didn't make any sense.
-      // contextName = contextName + bas.cUnderscore + ruleBroker.processRules([fileToLoad, ''], rules);
-
-      // contextName is:
-      await loggers.consoleLog(namespacePrefix + functionName, msg.ccontextNameIs + contextName);
-      let dataFile = await ruleBroker.processRules([fileToLoad, ''], [biz.cgetCsvData]);
-      // loaded file data is:
-      await loggers.consoleLog(namespacePrefix + functionName , msg.cloadedFileDataIs + JSON.stringify(dataFile));
-      parsedDataFile = await processCsvData(dataFile, contextName);
-    } // End-if (fileExtension === gen.ccsv || fileExtension === gen.cCsv || fileExtension === gen.cCSV)
-  } // End-for (const element of filesToLoad)
-  // parsedDataFile is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cparsedDataFileIs + JSON.stringify(parsedDataFile));
+  let returnData = false;
+  if (Array.isArray(filesToLoad) && filesToLoad.every(item => typeof item === wrd.cstring && (item.includes(bas.cForwardSlash) === true || item.includes(bas.cBackSlash) === true))) {
+    if (contextName && typeof contextName === wrd.cstring) {
+      for (const element of filesToLoad) {
+        let fileToLoad = element;
+        // File to load is:
+        await loggers.consoleLog(namespacePrefix + functionName, msg.cFileToLoadIs + fileToLoad);
+        // NOTE: We still need a filename to use as a context for the page data that we just loaded.
+        // A context name will be composed of the input context name with the file name we are processing
+        // which tells us where we will put the data in the D[contextName] sub-structure.
+        let fileExtension = await ruleBroker.processRules([fileToLoad, ''], [biz.cgetFileExtension, biz.cremoveDotFromFileExtension]);
+        // fileExtension is:
+        await loggers.consoleLog(namespacePrefix + functionName, msg.cfileExtensionIs + fileExtension);
+        if (fileExtension === gen.ccsv || fileExtension === gen.cCsv || fileExtension === gen.cCSV) {
+          // execute business rules:
+          // loggers.consoleLog(namespacePrefix + functionName, msg.cexecuteBusinessRulesColon + JSON.stringify(rules));
+          // This next line is commented out because it was resulting in colors_colors, which didn't make any sense.
+          // contextName = contextName + bas.cUnderscore + ruleBroker.processRules([fileToLoad, ''], rules);
+    
+          // contextName is:
+          await loggers.consoleLog(namespacePrefix + functionName, msg.ccontextNameIs + contextName);
+          let dataFile = await ruleBroker.processRules([fileToLoad, ''], [biz.cgetCsvData]);
+          // loaded file data is:
+          await loggers.consoleLog(namespacePrefix + functionName , msg.cloadedFileDataIs + JSON.stringify(dataFile));
+          returnData = await processCsvData(dataFile, contextName);
+        } // End-if (fileExtension === gen.ccsv || fileExtension === gen.cCsv || fileExtension === gen.cCSV)
+      } // End-for (const element of filesToLoad)
+    } else {
+      // ERROR: Invalid input, contextName: 
+      console.log(msg.cErrorLoadAllCsvDataMessage01 + contextName);
+    }
+  } else {
+    // ERROR: Invalid input, filesToLoad:
+    console.log(msg.cErrorLoadAllCsvDataMessage02 + filesToLoad);
+  }
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
-  return parsedDataFile;
+  return returnData;
 }
 
 /**
@@ -238,65 +247,73 @@ async function loadAllXmlData(filesToLoad, contextName) {
   await loggers.consoleLog(namespacePrefix + functionName, msg.ccontextNameIs + contextName);
   let j = 0;
   let multiMergedData = {};
-  let parsedDataFile = {};
+  let returnData = false;
   let fileNameRules = [biz.cgetFileNameFromPath, biz.cremoveFileExtensionFromFileName];
-  for (let i = 0; i < filesToLoad.length; i++) {
-    // BEGIN i-th loop:
-    await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_ithLoop + i);
-    let fileToLoad = filesToLoad[i];
-    fileToLoad = await ruleBroker.processRules([fileToLoad, ''], [biz.cswapDoubleForwardSlashToSingleForwardSlash]);
-    fileToLoad = path.resolve(fileToLoad);
-    // File to load is:
-    await loggers.consoleLog(namespacePrefix + functionName, msg.cFileToLoadIs + fileToLoad);
-    // NOTE: We still need a filename to use as a context for the page data that we just loaded.
-    // A context name will be composed of the input context name with the file name we are processing
-    // which tells us where we will put the data in the D[contextName] sub-structure.
-    let fileExtension = await ruleBroker.processRules([fileToLoad, ''], [biz.cgetFileExtension, biz.cremoveDotFromFileExtension]);
-    // fileExtension is:
-    await loggers.consoleLog(namespacePrefix + functionName, msg.cfileExtensionIs + fileExtension);
-    if (fileExtension === gen.cxml || fileExtension === gen.cXml || fileExtension === gen.cXML) {
-      // execute business rules:
-      await loggers.consoleLog(namespacePrefix + functionName, msg.cexecuteBusinessRulesColon + JSON.stringify(fileNameRules));
-      contextName = contextName + bas.cUnderscore + await ruleBroker.processRules([fileToLoad, ''], fileNameRules);
-      // contextName is:
-      await loggers.consoleLog(namespacePrefix + functionName, msg.ccontextNameIs + contextName);
-      let dataFile = await ruleBroker.processRules([fileToLoad, ''], [biz.cgetXmlData]);
-      // loaded file data is:
-      await loggers.consoleLog(namespacePrefix + functionName, msg.cloadedFileDataIs + JSON.stringify(dataFile));
-      // BEGIN PROCESSING ADDITIONAL DATA
-      await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_PROCESSING_ADDITIONAL_DATA);
-      // j-th iteration:
-      await loggers.consoleLog(namespacePrefix + functionName, msg.cjthIteration + j);
-      if (j === 0) {
-        j++;
-        multiMergedData = dataFile;
-      } else {
-        j++;
-        // console.log('multiMergedData is: ' + JSON.stringify(multiMergedData));
-        // console.log('dataFile is: ' + JSON.stringify(dataFile));
-        // let mergeTargetNamespace = determineMergeTarget(multiMergedData, dataFile);
-        // mergeTargetNamespace = mergeTargetNamespace.join(bas.cDot);
-        multiMergedData = await ruleBroker.processRules([multiMergedData, dataFile], [biz.cobjectDeepMerge]);
+  if (Array.isArray(filesToLoad) && filesToLoad.every(item => typeof item === wrd.cstring && (item.includes(bas.cForwardSlash) === true || item.includes(bas.cBackSlash) === true))) {
+    if (contextName && typeof contextName === wrd.cstring) {
+      for (let i = 0; i < filesToLoad.length; i++) {
+        // BEGIN i-th loop:
+        await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_ithLoop + i);
+        let fileToLoad = filesToLoad[i];
+        fileToLoad = await ruleBroker.processRules([fileToLoad, ''], [biz.cswapDoubleForwardSlashToSingleForwardSlash]);
+        fileToLoad = path.resolve(fileToLoad);
+        // File to load is:
+        await loggers.consoleLog(namespacePrefix + functionName, msg.cFileToLoadIs + fileToLoad);
+        // NOTE: We still need a filename to use as a context for the page data that we just loaded.
+        // A context name will be composed of the input context name with the file name we are processing
+        // which tells us where we will put the data in the D[contextName] sub-structure.
+        let fileExtension = await ruleBroker.processRules([fileToLoad, ''], [biz.cgetFileExtension, biz.cremoveDotFromFileExtension]);
+        // fileExtension is:
+        await loggers.consoleLog(namespacePrefix + functionName, msg.cfileExtensionIs + fileExtension);
+        if (fileExtension === gen.cxml || fileExtension === gen.cXml || fileExtension === gen.cXML) {
+          // execute business rules:
+          await loggers.consoleLog(namespacePrefix + functionName, msg.cexecuteBusinessRulesColon + JSON.stringify(fileNameRules));
+          contextName = contextName + bas.cUnderscore + await ruleBroker.processRules([fileToLoad, ''], fileNameRules);
+          // contextName is:
+          await loggers.consoleLog(namespacePrefix + functionName, msg.ccontextNameIs + contextName);
+          let dataFile = await ruleBroker.processRules([fileToLoad, ''], [biz.cgetXmlData]);
+          // loaded file data is:
+          await loggers.consoleLog(namespacePrefix + functionName, msg.cloadedFileDataIs + JSON.stringify(dataFile));
+          // BEGIN PROCESSING ADDITIONAL DATA
+          await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_PROCESSING_ADDITIONAL_DATA);
+          // j-th iteration:
+          await loggers.consoleLog(namespacePrefix + functionName, msg.cjthIteration + j);
+          if (j === 0) {
+            j++;
+            multiMergedData = dataFile;
+          } else {
+            j++;
+            // console.log('multiMergedData is: ' + JSON.stringify(multiMergedData));
+            // console.log('dataFile is: ' + JSON.stringify(dataFile));
+            // let mergeTargetNamespace = determineMergeTarget(multiMergedData, dataFile);
+            // mergeTargetNamespace = mergeTargetNamespace.join(bas.cDot);
+            multiMergedData = await ruleBroker.processRules([multiMergedData, dataFile], [biz.cobjectDeepMerge]);
+    
+            // multiMergedData = mergeData(multiMergedData, wrd.cPage, '', dataFile);
+            // multiMergedData = mergeData(multiMergedData, 'CommandWorkflows', '', dataFile);
+            // multiMergedData = mergeData(multiMergedData, '', '', dataFile);
+            // multiMergedData = Object.assign(multiMergedData, dataFile);
+          }
+          // DONE PROCESSING ADDITIONAL DATA
+          await loggers.consoleLog(namespacePrefix + functionName, msg.cDONE_PROCESSING_ADDITIONAL_DATA);
+          // MERGED data is:
+          await loggers.consoleLog(namespacePrefix + functionName, msg.cMERGED_dataIs + JSON.stringify(multiMergedData));
+          dataFile = {};
+        } // End-if (fileExtension === gen.cxml || fileExtension === gen.cXml || fileExtension === gen.cXML)
+        // END i-th loop:
+        await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_ithLoop + i);
+      } // End-for (let i = 0; i < filesToLoad.length; i++)
+      returnData = await processXmlData(multiMergedData, contextName);
+    } else {
 
-        // multiMergedData = mergeData(multiMergedData, wrd.cPage, '', dataFile);
-        // multiMergedData = mergeData(multiMergedData, 'CommandWorkflows', '', dataFile);
-        // multiMergedData = mergeData(multiMergedData, '', '', dataFile);
-        // multiMergedData = Object.assign(multiMergedData, dataFile);
-      }
-      // DONE PROCESSING ADDITIONAL DATA
-      await loggers.consoleLog(namespacePrefix + functionName, msg.cDONE_PROCESSING_ADDITIONAL_DATA);
-      // MERGED data is:
-      await loggers.consoleLog(namespacePrefix + functionName, msg.cMERGED_dataIs + JSON.stringify(multiMergedData));
-      dataFile = {};
-    } // End-if (fileExtension === gen.cxml || fileExtension === gen.cXml || fileExtension === gen.cXML)
-    // END i-th loop:
-    await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_ithLoop + i);
-  } // End-for (let i = 0; i < filesToLoad.length; i++)
-  parsedDataFile = await processXmlData(multiMergedData, contextName);
-  // parsedDataFile contents are:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cparsedDataFileContentsAre + JSON.stringify(parsedDataFile));
+    }
+  } else {
+
+  }
+  // returnData contents are:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
-  return parsedDataFile;
+  return returnData;
 }
 
 /**
@@ -453,7 +470,7 @@ async function processCsvData(data, contextName) {
  * @function processXmlData
  * @description Does some final processing on JSON data loaded from an XML file,
  * converting the data into a usable format and executes any additional data processing rules.
- * @param {object} data A JSON object that contains all of the data loaded from a XML file.
+ * @param {object} inputData A JSON object that contains all of the data loaded from a XML file.
  * @param {string} contextName The name that should be used when adding the objects to the D data structure for data-sharing.
  * @return {object} A parsed and cleaned up JSON object where all of the XML data is collated and organized and cleaned up ready for use.
  * @author Seth Hollingsead

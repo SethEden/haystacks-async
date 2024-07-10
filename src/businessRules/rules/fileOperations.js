@@ -112,6 +112,7 @@ async function getCsvData(inputData, inputMetaData) {
     delimiter: ',',
     newline: '/n',
     header: true,
+    transformHeader: header => header.trim(),
     skipEmptyLines: true,
     encoding: gen.cUTF8
   });

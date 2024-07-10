@@ -46,6 +46,8 @@ export const cremovePluginConstantsValidationData = wrd.cremove + wrd.cPlugin + 
 export const caddPluginConfigurationData = wrd.c_add + wrd.cPlugin + wrd.cConfiguration + wrd.cData; // addPluginConfigurationData
 export const cscanDataPath = wrd.cscan + wrd.cData + wrd.cPath; // scanDataPath
 export const cfindUniversalDebugConfigSetting = wrd.cfind + wrd.cUniversal + wrd.cDebug + wrd.cConfig + wrd.cSetting; // findUniversalDebugConfigSetting
+export const cloadAllCsvData = wrd.cload + wrd.cAll + gen.cCsv + wrd.cData; // loadAllCsvData
+export const cloadAllXmlData = wrd.cload + wrd.cAll + gen.cXml + wrd.cData; // loadAllXmlData
 
 /* ruleBroker */
 
@@ -374,6 +376,29 @@ export const cfindUniversalDebugConfigSetting_inValidAppConfigFilesToLoadNaN = c
 export const cfindUniversalDebugConfigSetting_inValidFrameworkConfigFilesToLoadUndefined = cfindUniversalDebugConfigSetting + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cFramework + wrd.cConfig + wrd.cFiles + wrd.cTo + wrd.cLoad + 'Undefined'; // findUniversalDebugConfigSetting_inValidFrameworkConfigFilesToLoadUndefined
 export const cfindUniversalDebugConfigSetting_inValidFrameworkConfigFilesToLoadNaN = cfindUniversalDebugConfigSetting + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cFramework + wrd.cConfig + wrd.cFiles + wrd.cTo + wrd.cLoad + 'NaN'; // findUniversalDebugConfigSetting_inValidFrameworkConfigFilesToLoadNaN
 
+// loadAllCsvData
+export const cloadAllCsvData_validData = cloadAllCsvData + bas.cUnderscore + wrd.cvalid + wrd.cData; // loadAllCsvData_validData
+export const cloadAllCsvData_inValidFilesToLoadString = cloadAllCsvData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cFiles + wrd.cTo + wrd.cLoad + wrd.cString; // loadAllCsvData_inValidFilesToLoadString
+export const cloadAllCsvData_inValidFilesToLoadInteger = cloadAllCsvData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cFiles + wrd.cTo + wrd.cLoad + wrd.cInteger; // loadAllCsvData_inValidFilesToLoadInteger
+export const cloadAllCsvData_inValidFilesToLoadBoolean = cloadAllCsvData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cFiles + wrd.cTo + wrd.cLoad + wrd.cBoolean; // loadAllCsvData_inValidFilesToLoadBoolean
+export const cloadAllCsvData_inValidContextNameInteger = cloadAllCsvData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cContext + wrd.cName + wrd.cInteger; // loadAllCsvData_inValidContextNameInteger
+export const cloadAllCsvData_inValidContextNameBoolean = cloadAllCsvData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cContext + wrd.cName + wrd.cBoolean; // loadAllCsvData_inValidContextNameBoolean
+export const cloadAllCsvData_inValidFilesToLoadUndefined = cloadAllCsvData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cFiles + wrd.cTo + wrd.cLoad + 'Undefined'; // loadAllCsvData_inValidFilesToLoadUndefined
+export const cloadAllCsvData_inValidFilesToLoadNaN = cloadAllCsvData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cFiles + wrd.cTo + wrd.cLoad + 'NaN'; // loadAllCsvData_inValidFilesToLoadNaN
+export const cloadAllCsvData_inValidContextNameUndefined = cloadAllCsvData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cContext + wrd.cName + 'Undefined'; // loadAllCsvData_inValidContextNameUndefined
+export const cloadAllCsvData_inValidContextNameNaN = cloadAllCsvData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cContext + wrd.cName + 'NaN'; // loadAllCsvData_inValidContextNameNaN
+
+// loadAllXmlData
+export const cloadAllXmlData_validData = cloadAllXmlData + bas.cUnderscore + wrd.cvalid + wrd.cData; // loadAllXmlData_validData
+export const cloadAllXmlData_inValidFilesToLoadString = cloadAllXmlData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cFiles + wrd.cTo + wrd.cLoad + wrd.cString; // loadAllXmlData_inValidFilesToLoadString
+export const cloadAllXmlData_inValidFilesToLoadInteger = cloadAllXmlData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cFiles + wrd.cTo + wrd.cLoad + wrd.cInteger; // loadAllXmlData_inValidFilesToLoadInteger
+export const cloadAllXmlData_inValidFilesToLoadBoolean = cloadAllXmlData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cFiles + wrd.cTo + wrd.cLoad + wrd.cBoolean; // loadAllXmlData_inValidFilesToLoadBoolean
+export const cloadAllXmlData_inValidContextNameInteger = cloadAllXmlData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cContext + wrd.cName + wrd.cInteger; // loadAllXmlData_inValidContextNameInteger
+export const cloadAllXmlData_inValidContextNameBoolean = cloadAllXmlData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cContext + wrd.cName + wrd.cBoolean; // loadAllXmlData_inValidContextNameBoolean
+export const cloadAllXmlData_inValidFilesToLoadUndefined = cloadAllXmlData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cFiles + wrd.cTo + wrd.cLoad + 'Undefined'; // loadAllXmlData_inValidFilesToLoadUndefined
+export const cloadAllXmlData_inValidFilesToLoadNaN = cloadAllXmlData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cFiles + wrd.cTo + wrd.cLoad + 'NaN'; // loadAllXmlData_inValidFilesToLoadNaN
+export const cloadAllXmlData_inValidContextNameUndefined = cloadAllXmlData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cContext + wrd.cName + 'Undefined'; // loadAllXmlData_inValidContextNameUndefined
+export const cloadAllXmlData_inValidContextNameNaN = cloadAllXmlData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cContext + wrd.cName + 'NaN'; // loadAllXmlData_inValidContextNameNaN
 
 /* ruleBroker */
 

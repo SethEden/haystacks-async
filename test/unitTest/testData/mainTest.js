@@ -10,7 +10,6 @@
  */
 
 // Internal imports
-import { numericConstantsValidation } from '@haystacks/constants/src/constantsValidation/numeric.constants.validation.js';
 import * as tst_cfg from '../tests/resources/constants/test.configuration.constants.js';
 import * as tst_con from '../tests/resources/constants/test.constants.js';
 import * as tst_sys from '../tests/resources/constants/test.system.constants.js';
@@ -20,8 +19,6 @@ import hayConst from '@haystacks/constants';
 import fileOperations from '../../../src/businessRules/rules/fileOperations.js';
 import url from 'url';
 import path from 'path';
-import { wordConstantsValidation } from '@haystacks/constants/src/constantsValidation/word.constants.validation.js';
-import { cDescription } from '@haystacks/constants/src/constants/word.constants.js';
 
 
 const {bas, biz, cmd, cfg, gen, msg, num, sys, wrd} = hayConst;
