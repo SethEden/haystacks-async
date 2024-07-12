@@ -146,7 +146,10 @@ input filesToLoad: string (464gsdsfae8f46)
 input contextName: string (The context name that should be used when adding data to the D data structure)
 output: ?
 
-NOTE: loadAllCsvData_inValidContextNameString test was removed as it is unusable in this function.
+testName: loadAllCsvData_inValidContextNameString
+input filesToLoad: array<string> (The data structure containing all of the files to load data from)
+input contextName: string (464gsdsfae8f46)
+output: ?
 
 testName: loadAllCsvData_inValidFilesToLoadNumber
 input filesToLoad: integer (546)
@@ -198,7 +201,10 @@ input filesToLoad: string (464gsdsfae8f46)
 input contextName: string (The context name that should be used when adding data to the D data structure)
 output: ?
 
-NOTE: loadAllXmlData_inValidContextNameString test was removed as it is unusable in this function.
+testName: loadedAllXmlData_inValidContextNameString
+input filesToLoad: array<string> (The data structure containing all of the files to load data from)
+input contextName: string (464gsdsfae8f46)
+output: ?
 
 testName: loadedAllXmlData_inValidFilesToLoadNumber
 input filesToLoad: integer (546)

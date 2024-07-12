@@ -22,6 +22,8 @@
 // Internal imports
 import constantBroker from '../../../../src/brokers/constantBroker.js';
 import dataBroker from '../../../../src/brokers/dataBroker.js'
+import ruleBroker from '../../../../src/brokers/ruleBroker.js';
+import characterArrayParsing from '../../../../src/businessRules/rules/arrayParsing/characterArrayParsing.js';
 import characterStringParsing from '../../../../src/businessRules/rules/stringParsing/characterStringParsing.js'
 import dataStringParsing from '../../../../src/businessRules/rules/stringParsing/dataStringParsing.js';
 import fileStringParsing from '../../../../src/businessRules/rules/stringParsing/fileStringParsing.js';
@@ -35,7 +37,6 @@ import * as tst_dbt from '../../testData/brokers/dataBrokerTest.js'
 // External imports
 import hayConst from '@haystacks/constants';
 import { describe, expect, test } from '@jest/globals';
-import { phonicConstantsValidation } from '@haystacks/constants/src/constantsValidation/phonic.constants.validation.js';
 
 const { bas, cmd, biz, cfg, fnc, gen, msg, sys, wrd, num } = hayConst;
 
@@ -818,6 +819,32 @@ describe(tst_con.cloadAllCsvData, () => {
     });
 
     /**
+     * @function loadAllCsvData_inValidContextNameString
+     * @description Tests the dataBroker function loadAllCsvData with a invalid data string.
+     * @author Vlad Sorokin
+     * @date 2024/07/10
+     */
+    test(tst_con.cloadAllCsvData_inValidContextNameString, async () => {
+        // Arrange
+        D[sys.cbusinessRules] = {};
+        D[sys.cbusinessRules] = {
+            [biz.ccleanCarriageReturnFromString]: (inputData, inputMetaData) => characterStringParsing.cleanCarriageReturnFromString(inputData, inputMetaData),
+            [biz.cgetDataCategoryFromDataContextName]: (inputData, inputMetaData) => dataStringParsing.getDataCategoryFromDataContextName(inputData, inputMetaData),
+            [biz.cgetFileExtension]: (inputData, inputMetaData) => fileStringParsing.getFileExtension(inputData, inputMetaData),
+            [biz.cremoveDotFromFileExtension]: (inputData, inputMetaData) => fileStringParsing.removeDotFromFileExtension(inputData, inputMetaData),
+            [biz.cgetCsvData]: (inputData, inputMetaData) => fileOperations.getCsvData(inputData, inputMetaData)
+        }
+        let filesToLoad = [tst_dbt.cpathToBasicCsvFile];
+        let contextName = tst_man.ctestString1;
+
+        // Act
+        let returnData = await dataBroker.loadAllCsvData(filesToLoad, contextName);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
      * @function loadAllCsvData_inValidFilesToLoadInteger
      * @description Tests the dataBroker function loadAllCsvData with a invalid data integer.
      * @author Vlad Sorokin
@@ -1094,6 +1121,34 @@ describe(tst_con.cloadAllXmlData, () => {
     });
 
     /**
+     * @function loadAllXmlData_inValidContextNameString
+     * @description Tests the dataBroker function loadAllXmlData with a invalid data string.
+     * @author Vlad Sorokin
+     * @date 2024/07/10
+     */
+    test(tst_con.cloadAllXmlData_inValidContextNameString, async () => {
+        // Arrange
+        D[sys.cbusinessRules] = {};
+        D[sys.cbusinessRules] = {
+            [biz.cswapDoubleForwardSlashToSingleForwardSlash]: (inputData, inputMetaData) => characterStringParsing.swapDoubleForwardSlashToSingleForwardSlash(inputData, inputMetaData),
+            [biz.cgetDataCategoryFromDataContextName]: (inputData, inputMetaData) => dataStringParsing.getDataCategoryFromDataContextName(inputData, inputMetaData),
+            [biz.cgetFileNameFromPath]: (inputData, inputMetaData) => fileStringParsing.getFileNameFromPath(inputData, inputMetaData),
+            [biz.cgetFileExtension]: (inputData, inputMetaData) => fileStringParsing.getFileExtension(inputData, inputMetaData),
+            [biz.cremoveFileExtensionFromFileName]: (inputData, inputMetaData) => fileStringParsing.removeFileExtensionFromFileName(inputData, inputMetaData),
+            [biz.cremoveDotFromFileExtension]: (inputData, inputMetaData) => fileStringParsing.removeDotFromFileExtension(inputData, inputMetaData),
+            [biz.cgetXmlData]: (inputData, inputMetaData) => fileOperations.getXmlData(inputData, inputMetaData)
+        }
+        let filesToLoad = [tst_dbt.cpathToSystemXmlFile];
+        let contextName = tst_man.ctestString1;
+
+        // Act
+        let returnData = await dataBroker.loadAllXmlData(filesToLoad, contextName);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
      * @function loadAllXmlData_inValidFilesToLoadInteger
      * @description Tests the dataBroker function loadAllXmlData with a invalid data integer.
      * @author Vlad Sorokin
@@ -1317,6 +1372,759 @@ describe(tst_con.cloadAllXmlData, () => {
         expect(returnData).toBeFalsy();
     });
 })
+
+/**
+ * @function loadAllJsonData
+ * @description Tests the positive and negative test cases of the loadAllJsonData
+ * @author Vlad Sorokin
+ * @date 2024/07/11
+ */
+describe(tst_con.cloadAllJsonData, () => {
+    /**
+     * @function loadAllJsonData_validData
+     * @description Tests the dataBroker function loadAllJsonData with a valid input.
+     * @author Vlad Sorokin
+     * @date 2024/07/11
+     */
+    test(tst_con.cloadAllJsonData_validData, async () => {
+        // Arrange
+        D[wrd.cconfiguration] = {};
+        D[wrd.cconfiguration][wrd.csystem] = {[wrd.csystem + bas.cDot + cfg.cdebugSettings]: true};
+        D[sys.cbusinessRules] = {
+            [biz.creplaceCharacterWithCharacter]: (inputData, inputMetaData) => characterArrayParsing.replaceCharacterWithCharacter(inputData, inputMetaData),
+            [biz.cswapForwardSlashToBackSlash]: (inputData, inputMetaData) => characterStringParsing.swapForwardSlashToBackSlash(inputData, inputMetaData),
+            [biz.cswapBackSlashToForwardSlash]: (inputData, inputMetaData) => characterStringParsing.swapBackSlashToForwardSlash(inputData, inputMetaData),
+            [biz.cswapDoubleForwardSlashToSingleForwardSlash]: (inputData, inputMetaData) => characterStringParsing.swapDoubleForwardSlashToSingleForwardSlash(inputData, inputMetaData),
+            [biz.cgetFileNameFromPath]: (inputData, inputMetaData) => fileStringParsing.getFileNameFromPath(inputData, inputMetaData),
+            [biz.cremoveFileExtensionFromFileName]: (inputData, inputMetaData) => fileStringParsing.removeFileExtensionFromFileName(inputData, inputMetaData),
+            [biz.cgetJsonData]: (inputData, inputMetaData) => fileOperations.getJsonData(inputData, inputMetaData),
+            [biz.creadDirectoryContents]: (inputData, inputMetaData) => fileOperations.readDirectoryContents(inputData, inputMetaData),
+        }
+        let filesToLoad = [tst_dbt.cpathToJsonTestFile];
+        let contextName = wrd.cconfiguration;
+
+        // Act
+        let returnData = await dataBroker.loadAllJsonData(filesToLoad, contextName);
+
+        // Assert
+        expect(returnData).toEqual(tst_man.expectedDataFromJsonTestFile);
+    });
+
+    /**
+     * @function loadAllJsonData_inValidFilesToLoadString
+     * @description Tests the dataBroker function loadAllJsonData with a invalid data string.
+     * @author Vlad Sorokin
+     * @date 2024/07/11
+     */
+    test(tst_con.cloadAllJsonData_inValidFilesToLoadString, async () => {
+        // Arrange
+        D[wrd.cconfiguration][wrd.csystem] = {[wrd.csystem + bas.cDot + cfg.cdebugSettings]: true};
+        D[sys.cbusinessRules] = {
+            [biz.creplaceCharacterWithCharacter]: (inputData, inputMetaData) => characterArrayParsing.replaceCharacterWithCharacter(inputData, inputMetaData),
+            [biz.cswapForwardSlashToBackSlash]: (inputData, inputMetaData) => characterStringParsing.swapForwardSlashToBackSlash(inputData, inputMetaData),
+            [biz.cswapBackSlashToForwardSlash]: (inputData, inputMetaData) => characterStringParsing.swapBackSlashToForwardSlash(inputData, inputMetaData),
+            [biz.cswapDoubleForwardSlashToSingleForwardSlash]: (inputData, inputMetaData) => characterStringParsing.swapDoubleForwardSlashToSingleForwardSlash(inputData, inputMetaData),
+            [biz.cgetFileNameFromPath]: (inputData, inputMetaData) => fileStringParsing.getFileNameFromPath(inputData, inputMetaData),
+            [biz.cremoveFileExtensionFromFileName]: (inputData, inputMetaData) => fileStringParsing.removeFileExtensionFromFileName(inputData, inputMetaData),
+            [biz.cgetJsonData]: (inputData, inputMetaData) => fileOperations.getJsonData(inputData, inputMetaData),
+            [biz.creadDirectoryContents]: (inputData, inputMetaData) => fileOperations.readDirectoryContents(inputData, inputMetaData),
+        }
+        let filesToLoad = tst_man.ctestString1;
+        let contextName = wrd.cconfiguration;
+
+        // Act
+        let returnData = await dataBroker.loadAllJsonData(filesToLoad, contextName);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function loadAllJsonData_inValidContextNameString
+     * @description Tests the dataBroker function loadAllJsonData with a invalid data string.
+     * @author Vlad Sorokin
+     * @date 2024/07/11
+     */
+    test(tst_con.cloadAllJsonData_inValidContextNameString, async () => {
+        // Arrange
+        D[wrd.cconfiguration][wrd.csystem] = {[wrd.csystem + bas.cDot + cfg.cdebugSettings]: true};
+        D[sys.cbusinessRules] = {
+            [biz.creplaceCharacterWithCharacter]: (inputData, inputMetaData) => characterArrayParsing.replaceCharacterWithCharacter(inputData, inputMetaData),
+            [biz.cswapForwardSlashToBackSlash]: (inputData, inputMetaData) => characterStringParsing.swapForwardSlashToBackSlash(inputData, inputMetaData),
+            [biz.cswapBackSlashToForwardSlash]: (inputData, inputMetaData) => characterStringParsing.swapBackSlashToForwardSlash(inputData, inputMetaData),
+            [biz.cswapDoubleForwardSlashToSingleForwardSlash]: (inputData, inputMetaData) => characterStringParsing.swapDoubleForwardSlashToSingleForwardSlash(inputData, inputMetaData),
+            [biz.cgetFileNameFromPath]: (inputData, inputMetaData) => fileStringParsing.getFileNameFromPath(inputData, inputMetaData),
+            [biz.cremoveFileExtensionFromFileName]: (inputData, inputMetaData) => fileStringParsing.removeFileExtensionFromFileName(inputData, inputMetaData),
+            [biz.cgetJsonData]: (inputData, inputMetaData) => fileOperations.getJsonData(inputData, inputMetaData),
+            [biz.creadDirectoryContents]: (inputData, inputMetaData) => fileOperations.readDirectoryContents(inputData, inputMetaData),
+        }
+        let filesToLoad = [tst_dbt.cpathToJsonTestFile];
+        let contextName = tst_man.ctestString1;
+
+        // Act
+        let returnData = await dataBroker.loadAllJsonData(filesToLoad, contextName);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function loadAllJsonData_inValidFilesToLoadInteger
+     * @description Tests the dataBroker function loadAllJsonData with a invalid data integer.
+     * @author Vlad Sorokin
+     * @date 2024/07/11
+     */
+    test(tst_con.cloadAllJsonData_inValidFilesToLoadInteger, async () => {
+        // Arrange
+        D[wrd.cconfiguration][wrd.csystem] = {[wrd.csystem + bas.cDot + cfg.cdebugSettings]: true};
+        D[sys.cbusinessRules] = {
+            [biz.creplaceCharacterWithCharacter]: (inputData, inputMetaData) => characterArrayParsing.replaceCharacterWithCharacter(inputData, inputMetaData),
+            [biz.cswapForwardSlashToBackSlash]: (inputData, inputMetaData) => characterStringParsing.swapForwardSlashToBackSlash(inputData, inputMetaData),
+            [biz.cswapBackSlashToForwardSlash]: (inputData, inputMetaData) => characterStringParsing.swapBackSlashToForwardSlash(inputData, inputMetaData),
+            [biz.cswapDoubleForwardSlashToSingleForwardSlash]: (inputData, inputMetaData) => characterStringParsing.swapDoubleForwardSlashToSingleForwardSlash(inputData, inputMetaData),
+            [biz.cgetFileNameFromPath]: (inputData, inputMetaData) => fileStringParsing.getFileNameFromPath(inputData, inputMetaData),
+            [biz.cremoveFileExtensionFromFileName]: (inputData, inputMetaData) => fileStringParsing.removeFileExtensionFromFileName(inputData, inputMetaData),
+            [biz.cgetJsonData]: (inputData, inputMetaData) => fileOperations.getJsonData(inputData, inputMetaData),
+            [biz.creadDirectoryContents]: (inputData, inputMetaData) => fileOperations.readDirectoryContents(inputData, inputMetaData),
+        }
+        let filesToLoad = 123;
+        let contextName = wrd.cconfiguration;
+
+        // Act
+        let returnData = await dataBroker.loadAllJsonData(filesToLoad, contextName);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function loadAllJsonData_inValidFilesToLoadBoolean
+     * @description Tests the dataBroker function loadAllJsonData with a invalid data boolean.
+     * @author Vlad Sorokin
+     * @date 2024/07/11
+     */
+    test(tst_con.cloadAllJsonData_inValidFilesToLoadBoolean, async () => {
+        // Arrange
+        D[wrd.cconfiguration][wrd.csystem] = {[wrd.csystem + bas.cDot + cfg.cdebugSettings]: true};
+        D[sys.cbusinessRules] = {
+            [biz.creplaceCharacterWithCharacter]: (inputData, inputMetaData) => characterArrayParsing.replaceCharacterWithCharacter(inputData, inputMetaData),
+            [biz.cswapForwardSlashToBackSlash]: (inputData, inputMetaData) => characterStringParsing.swapForwardSlashToBackSlash(inputData, inputMetaData),
+            [biz.cswapBackSlashToForwardSlash]: (inputData, inputMetaData) => characterStringParsing.swapBackSlashToForwardSlash(inputData, inputMetaData),
+            [biz.cswapDoubleForwardSlashToSingleForwardSlash]: (inputData, inputMetaData) => characterStringParsing.swapDoubleForwardSlashToSingleForwardSlash(inputData, inputMetaData),
+            [biz.cgetFileNameFromPath]: (inputData, inputMetaData) => fileStringParsing.getFileNameFromPath(inputData, inputMetaData),
+            [biz.cremoveFileExtensionFromFileName]: (inputData, inputMetaData) => fileStringParsing.removeFileExtensionFromFileName(inputData, inputMetaData),
+            [biz.cgetJsonData]: (inputData, inputMetaData) => fileOperations.getJsonData(inputData, inputMetaData),
+            [biz.creadDirectoryContents]: (inputData, inputMetaData) => fileOperations.readDirectoryContents(inputData, inputMetaData),
+        }
+        let filesToLoad = false;
+        let contextName = wrd.cconfiguration;
+
+        // Act
+        let returnData = await dataBroker.loadAllJsonData(filesToLoad, contextName);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function loadAllJsonData_inValidContextNameInteger
+     * @description Tests the dataBroker function loadAllJsonData with a invalid data integer.
+     * @author Vlad Sorokin
+     * @date 2024/07/11
+     */
+    test(tst_con.cloadAllJsonData_inValidContextNameInteger, async () => {
+        // Arrange
+        D[wrd.cconfiguration][wrd.csystem] = {[wrd.csystem + bas.cDot + cfg.cdebugSettings]: true};
+        D[sys.cbusinessRules] = {
+            [biz.creplaceCharacterWithCharacter]: (inputData, inputMetaData) => characterArrayParsing.replaceCharacterWithCharacter(inputData, inputMetaData),
+            [biz.cswapForwardSlashToBackSlash]: (inputData, inputMetaData) => characterStringParsing.swapForwardSlashToBackSlash(inputData, inputMetaData),
+            [biz.cswapBackSlashToForwardSlash]: (inputData, inputMetaData) => characterStringParsing.swapBackSlashToForwardSlash(inputData, inputMetaData),
+            [biz.cswapDoubleForwardSlashToSingleForwardSlash]: (inputData, inputMetaData) => characterStringParsing.swapDoubleForwardSlashToSingleForwardSlash(inputData, inputMetaData),
+            [biz.cgetFileNameFromPath]: (inputData, inputMetaData) => fileStringParsing.getFileNameFromPath(inputData, inputMetaData),
+            [biz.cremoveFileExtensionFromFileName]: (inputData, inputMetaData) => fileStringParsing.removeFileExtensionFromFileName(inputData, inputMetaData),
+            [biz.cgetJsonData]: (inputData, inputMetaData) => fileOperations.getJsonData(inputData, inputMetaData),
+            [biz.creadDirectoryContents]: (inputData, inputMetaData) => fileOperations.readDirectoryContents(inputData, inputMetaData),
+        }
+        let filesToLoad = [tst_dbt.cpathToJsonTestFile];
+        let contextName = 123;
+
+        // Act
+        let returnData = await dataBroker.loadAllJsonData(filesToLoad, contextName);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function loadAllJsonData_inValidContextNameBoolean
+     * @description Tests the dataBroker function loadAllJsonData with a invalid data boolean.
+     * @author Vlad Sorokin
+     * @date 2024/07/11
+     */
+    test(tst_con.cloadAllJsonData_inValidContextNameBoolean, async () => {
+        // Arrange
+        D[wrd.cconfiguration][wrd.csystem] = {[wrd.csystem + bas.cDot + cfg.cdebugSettings]: true};
+        D[sys.cbusinessRules] = {
+            [biz.creplaceCharacterWithCharacter]: (inputData, inputMetaData) => characterArrayParsing.replaceCharacterWithCharacter(inputData, inputMetaData),
+            [biz.cswapForwardSlashToBackSlash]: (inputData, inputMetaData) => characterStringParsing.swapForwardSlashToBackSlash(inputData, inputMetaData),
+            [biz.cswapBackSlashToForwardSlash]: (inputData, inputMetaData) => characterStringParsing.swapBackSlashToForwardSlash(inputData, inputMetaData),
+            [biz.cswapDoubleForwardSlashToSingleForwardSlash]: (inputData, inputMetaData) => characterStringParsing.swapDoubleForwardSlashToSingleForwardSlash(inputData, inputMetaData),
+            [biz.cgetFileNameFromPath]: (inputData, inputMetaData) => fileStringParsing.getFileNameFromPath(inputData, inputMetaData),
+            [biz.cremoveFileExtensionFromFileName]: (inputData, inputMetaData) => fileStringParsing.removeFileExtensionFromFileName(inputData, inputMetaData),
+            [biz.cgetJsonData]: (inputData, inputMetaData) => fileOperations.getJsonData(inputData, inputMetaData),
+            [biz.creadDirectoryContents]: (inputData, inputMetaData) => fileOperations.readDirectoryContents(inputData, inputMetaData),
+        }
+        let filesToLoad = [tst_dbt.cpathToJsonTestFile];
+        let contextName = false;
+
+        // Act
+        let returnData = await dataBroker.loadAllJsonData(filesToLoad, contextName);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function loadAllJsonData_inValidFilesToLoadUndefined
+     * @description Tests the dataBroker function loadAllJsonData with a invalid data undefined.
+     * @author Vlad Sorokin
+     * @date 2024/07/11
+     */
+    test(tst_con.cloadAllJsonData_inValidFilesToLoadUndefined, async () => {
+        // Arrange
+        D[wrd.cconfiguration][wrd.csystem] = {[wrd.csystem + bas.cDot + cfg.cdebugSettings]: true};
+        D[sys.cbusinessRules] = {
+            [biz.creplaceCharacterWithCharacter]: (inputData, inputMetaData) => characterArrayParsing.replaceCharacterWithCharacter(inputData, inputMetaData),
+            [biz.cswapForwardSlashToBackSlash]: (inputData, inputMetaData) => characterStringParsing.swapForwardSlashToBackSlash(inputData, inputMetaData),
+            [biz.cswapBackSlashToForwardSlash]: (inputData, inputMetaData) => characterStringParsing.swapBackSlashToForwardSlash(inputData, inputMetaData),
+            [biz.cswapDoubleForwardSlashToSingleForwardSlash]: (inputData, inputMetaData) => characterStringParsing.swapDoubleForwardSlashToSingleForwardSlash(inputData, inputMetaData),
+            [biz.cgetFileNameFromPath]: (inputData, inputMetaData) => fileStringParsing.getFileNameFromPath(inputData, inputMetaData),
+            [biz.cremoveFileExtensionFromFileName]: (inputData, inputMetaData) => fileStringParsing.removeFileExtensionFromFileName(inputData, inputMetaData),
+            [biz.cgetJsonData]: (inputData, inputMetaData) => fileOperations.getJsonData(inputData, inputMetaData),
+            [biz.creadDirectoryContents]: (inputData, inputMetaData) => fileOperations.readDirectoryContents(inputData, inputMetaData),
+        }
+        let filesToLoad = undefined;
+        let contextName = wrd.cconfiguration;
+
+        // Act
+        let returnData = await dataBroker.loadAllJsonData(filesToLoad, contextName);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function loadAllJsonData_inValidFilesToLoadNaN
+     * @description Tests the dataBroker function loadAllJsonData with a invalid data NaN.
+     * @author Vlad Sorokin
+     * @date 2024/07/11
+     */
+    test(tst_con.cloadAllJsonData_inValidFilesToLoadNaN, async () => {
+        // Arrange
+        D[wrd.cconfiguration][wrd.csystem] = {[wrd.csystem + bas.cDot + cfg.cdebugSettings]: true};
+        D[sys.cbusinessRules] = {
+            [biz.creplaceCharacterWithCharacter]: (inputData, inputMetaData) => characterArrayParsing.replaceCharacterWithCharacter(inputData, inputMetaData),
+            [biz.cswapForwardSlashToBackSlash]: (inputData, inputMetaData) => characterStringParsing.swapForwardSlashToBackSlash(inputData, inputMetaData),
+            [biz.cswapBackSlashToForwardSlash]: (inputData, inputMetaData) => characterStringParsing.swapBackSlashToForwardSlash(inputData, inputMetaData),
+            [biz.cswapDoubleForwardSlashToSingleForwardSlash]: (inputData, inputMetaData) => characterStringParsing.swapDoubleForwardSlashToSingleForwardSlash(inputData, inputMetaData),
+            [biz.cgetFileNameFromPath]: (inputData, inputMetaData) => fileStringParsing.getFileNameFromPath(inputData, inputMetaData),
+            [biz.cremoveFileExtensionFromFileName]: (inputData, inputMetaData) => fileStringParsing.removeFileExtensionFromFileName(inputData, inputMetaData),
+            [biz.cgetJsonData]: (inputData, inputMetaData) => fileOperations.getJsonData(inputData, inputMetaData),
+            [biz.creadDirectoryContents]: (inputData, inputMetaData) => fileOperations.readDirectoryContents(inputData, inputMetaData),
+        }
+        let filesToLoad = NaN;
+        let contextName = wrd.cconfiguration;
+
+        // Act
+        let returnData = await dataBroker.loadAllJsonData(filesToLoad, contextName);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function loadAllJsonData_inValidContextNameUndefined
+     * @description Tests the dataBroker function loadAllJsonData with a invalid data undefined.
+     * @author Vlad Sorokin
+     * @date 2024/07/11
+     */
+    test(tst_con.cloadAllJsonData_inValidContextNameUndefined, async () => {
+        // Arrange
+        D[wrd.cconfiguration][wrd.csystem] = {[wrd.csystem + bas.cDot + cfg.cdebugSettings]: true};
+        D[sys.cbusinessRules] = {
+            [biz.creplaceCharacterWithCharacter]: (inputData, inputMetaData) => characterArrayParsing.replaceCharacterWithCharacter(inputData, inputMetaData),
+            [biz.cswapForwardSlashToBackSlash]: (inputData, inputMetaData) => characterStringParsing.swapForwardSlashToBackSlash(inputData, inputMetaData),
+            [biz.cswapBackSlashToForwardSlash]: (inputData, inputMetaData) => characterStringParsing.swapBackSlashToForwardSlash(inputData, inputMetaData),
+            [biz.cswapDoubleForwardSlashToSingleForwardSlash]: (inputData, inputMetaData) => characterStringParsing.swapDoubleForwardSlashToSingleForwardSlash(inputData, inputMetaData),
+            [biz.cgetFileNameFromPath]: (inputData, inputMetaData) => fileStringParsing.getFileNameFromPath(inputData, inputMetaData),
+            [biz.cremoveFileExtensionFromFileName]: (inputData, inputMetaData) => fileStringParsing.removeFileExtensionFromFileName(inputData, inputMetaData),
+            [biz.cgetJsonData]: (inputData, inputMetaData) => fileOperations.getJsonData(inputData, inputMetaData),
+            [biz.creadDirectoryContents]: (inputData, inputMetaData) => fileOperations.readDirectoryContents(inputData, inputMetaData),
+        }
+        let filesToLoad = [tst_dbt.cpathToJsonTestFile];
+        let contextName = undefined;
+
+        // Act
+        let returnData = await dataBroker.loadAllJsonData(filesToLoad, contextName);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function loadAllJsonData_inValidContextNameNaN
+     * @description Tests the dataBroker function loadAllJsonData with a invalid data NaN.
+     * @author Vlad Sorokin
+     * @date 2024/07/11
+     */
+    test(tst_con.cloadAllJsonData_inValidContextNameNaN, async () => {
+        // Arrange
+        D[wrd.cconfiguration][wrd.csystem] = {[wrd.csystem + bas.cDot + cfg.cdebugSettings]: true};
+        D[sys.cbusinessRules] = {
+            [biz.creplaceCharacterWithCharacter]: (inputData, inputMetaData) => characterArrayParsing.replaceCharacterWithCharacter(inputData, inputMetaData),
+            [biz.cswapForwardSlashToBackSlash]: (inputData, inputMetaData) => characterStringParsing.swapForwardSlashToBackSlash(inputData, inputMetaData),
+            [biz.cswapBackSlashToForwardSlash]: (inputData, inputMetaData) => characterStringParsing.swapBackSlashToForwardSlash(inputData, inputMetaData),
+            [biz.cswapDoubleForwardSlashToSingleForwardSlash]: (inputData, inputMetaData) => characterStringParsing.swapDoubleForwardSlashToSingleForwardSlash(inputData, inputMetaData),
+            [biz.cgetFileNameFromPath]: (inputData, inputMetaData) => fileStringParsing.getFileNameFromPath(inputData, inputMetaData),
+            [biz.cremoveFileExtensionFromFileName]: (inputData, inputMetaData) => fileStringParsing.removeFileExtensionFromFileName(inputData, inputMetaData),
+            [biz.cgetJsonData]: (inputData, inputMetaData) => fileOperations.getJsonData(inputData, inputMetaData),
+            [biz.creadDirectoryContents]: (inputData, inputMetaData) => fileOperations.readDirectoryContents(inputData, inputMetaData),
+        }
+        let filesToLoad = [tst_dbt.cpathToJsonTestFile];
+        let contextName = NaN;
+
+        // Act
+        let returnData = await dataBroker.loadAllJsonData(filesToLoad, contextName);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+})
+
+/**
+ * @function processCsvData
+ * @description Tests the positive and negative test cases of the processCsvData
+ * @author Vlad Sorokin
+ * @date 2024/07/11
+ */
+describe(tst_con.cprocessCsvData, () => {
+    /**
+     * @function processCsvData_validData
+     * @description Tests the dataBroker function processCsvData with a valid input.
+     * @author Vlad Sorokin
+     * @date 2024/07/11
+     */
+    test(tst_con.cprocessCsvData_validData, async () => {
+        // Arrange
+        D[sys.cbusinessRules] = {};
+        D[sys.cbusinessRules] = {
+            [biz.ccleanCarriageReturnFromString]: (inputData, inputMetaData) => characterStringParsing.cleanCarriageReturnFromString(inputData, inputMetaData),
+            [biz.cgetDataCategoryFromDataContextName]: (inputData, inputMetaData) => dataStringParsing.getDataCategoryFromDataContextName(inputData, inputMetaData),
+            [biz.cgetCsvData]: (inputData, inputMetaData) => fileOperations.getCsvData(inputData, inputMetaData)
+        }
+        let data = await ruleBroker.processRules([tst_dbt.cpathToBasicCsvFile, ''], [biz.cgetCsvData]);
+        let contextName = tst_dbt.cunitTestData;
+
+        // Act
+        let returnData = await dataBroker.processCsvData(data, contextName);
+
+        // Assert
+        expect(returnData).toEqual(tst_dbt.cexpectedDataFromBasicCsv);
+        delete D[tst_dbt.cunitTestData]; // clean up on isle 4
+    });
+
+    /**
+     * @function processCsvData_inValidDataString
+     * @description Tests the dataBroker function processCsvData with a invalid data string.
+     * @author Vlad Sorokin
+     * @date 2024/07/11
+     */
+    test(tst_con.cprocessCsvData_inValidDataString, async () => {
+        // Arrange
+        D[sys.cbusinessRules] = {};
+        D[sys.cbusinessRules] = {
+            [biz.ccleanCarriageReturnFromString]: (inputData, inputMetaData) => characterStringParsing.cleanCarriageReturnFromString(inputData, inputMetaData),
+            [biz.cgetDataCategoryFromDataContextName]: (inputData, inputMetaData) => dataStringParsing.getDataCategoryFromDataContextName(inputData, inputMetaData),
+            [biz.cgetCsvData]: (inputData, inputMetaData) => fileOperations.getCsvData(inputData, inputMetaData)
+        }
+        let data = tst_man.ctestString1;
+        let contextName = tst_dbt.cunitTestData;
+
+        // Act
+        let returnData = await dataBroker.processCsvData(data, contextName);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+        delete D[tst_dbt.cunitTestData]; // clean up on isle 4
+    });
+
+    /**
+     * @function processCsvData_inValidContextNameString
+     * @description Tests the dataBroker function processCsvData with a invalid data string.
+     * @author Vlad Sorokin
+     * @date 2024/07/11
+     */
+    test(tst_con.cprocessCsvData_inValidContextNameString, async () => {
+        // Arrange
+        D[sys.cbusinessRules] = {};
+        D[sys.cbusinessRules] = {
+            [biz.ccleanCarriageReturnFromString]: (inputData, inputMetaData) => characterStringParsing.cleanCarriageReturnFromString(inputData, inputMetaData),
+            [biz.cgetDataCategoryFromDataContextName]: (inputData, inputMetaData) => dataStringParsing.getDataCategoryFromDataContextName(inputData, inputMetaData),
+            [biz.cgetCsvData]: (inputData, inputMetaData) => fileOperations.getCsvData(inputData, inputMetaData)
+        }
+        let data = await ruleBroker.processRules([tst_dbt.cpathToBasicCsvFile, ''], [biz.cgetCsvData]);
+        let contextName = tst_man.ctestString1;
+
+        // Act
+        let returnData = await dataBroker.processCsvData(data, contextName);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+        delete D[tst_dbt.cunitTestData]; // clean up on isle 4
+    });
+
+    /**
+     * @function processCsvData_inValidDataInteger
+     * @description Tests the dataBroker function processCsvData with a invalid data integer.
+     * @author Vlad Sorokin
+     * @date 2024/07/11
+     */
+    test(tst_con.cprocessCsvData_inValidDataInteger, async () => {
+        // Arrange
+        D[sys.cbusinessRules] = {};
+        D[sys.cbusinessRules] = {
+            [biz.ccleanCarriageReturnFromString]: (inputData, inputMetaData) => characterStringParsing.cleanCarriageReturnFromString(inputData, inputMetaData),
+            [biz.cgetDataCategoryFromDataContextName]: (inputData, inputMetaData) => dataStringParsing.getDataCategoryFromDataContextName(inputData, inputMetaData),
+            [biz.cgetCsvData]: (inputData, inputMetaData) => fileOperations.getCsvData(inputData, inputMetaData)
+        }
+        let data = 123;
+        let contextName = tst_dbt.cunitTestData;
+
+        // Act
+        let returnData = await dataBroker.processCsvData(data, contextName);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+        delete D[tst_dbt.cunitTestData]; // clean up on isle 4
+    });
+
+    /**
+     * @function processCsvData_inValidDataBoolean
+     * @description Tests the dataBroker function processCsvData with a invalid data boolean.
+     * @author Vlad Sorokin
+     * @date 2024/07/11
+     */
+    test(tst_con.cprocessCsvData_inValidDataBoolean, async () => {
+        // Arrange
+        D[sys.cbusinessRules] = {};
+        D[sys.cbusinessRules] = {
+            [biz.ccleanCarriageReturnFromString]: (inputData, inputMetaData) => characterStringParsing.cleanCarriageReturnFromString(inputData, inputMetaData),
+            [biz.cgetDataCategoryFromDataContextName]: (inputData, inputMetaData) => dataStringParsing.getDataCategoryFromDataContextName(inputData, inputMetaData),
+            [biz.cgetCsvData]: (inputData, inputMetaData) => fileOperations.getCsvData(inputData, inputMetaData)
+        }
+        let data = false;
+        let contextName = tst_dbt.cunitTestData;
+
+        // Act
+        let returnData = await dataBroker.processCsvData(data, contextName);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+        delete D[tst_dbt.cunitTestData]; // clean up on isle 4
+    });
+
+    /**
+     * @function processCsvData_inValidContextNameInteger
+     * @description Tests the dataBroker function processCsvData with a invalid data integer.
+     * @author Vlad Sorokin
+     * @date 2024/07/11
+     */
+    test(tst_con.cprocessCsvData_inValidContextNameInteger, async () => {
+        // Arrange
+        D[sys.cbusinessRules] = {};
+        D[sys.cbusinessRules] = {
+            [biz.ccleanCarriageReturnFromString]: (inputData, inputMetaData) => characterStringParsing.cleanCarriageReturnFromString(inputData, inputMetaData),
+            [biz.cgetDataCategoryFromDataContextName]: (inputData, inputMetaData) => dataStringParsing.getDataCategoryFromDataContextName(inputData, inputMetaData),
+            [biz.cgetCsvData]: (inputData, inputMetaData) => fileOperations.getCsvData(inputData, inputMetaData)
+        }
+        let data = await ruleBroker.processRules([tst_dbt.cpathToBasicCsvFile, ''], [biz.cgetCsvData]);
+        let contextName = 123;
+
+        // Act
+        let returnData = await dataBroker.processCsvData(data, contextName);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+        delete D[tst_dbt.cunitTestData]; // clean up on isle 4
+    });
+
+    /**
+     * @function processCsvData_inValidContextNameBoolean
+     * @description Tests the dataBroker function processCsvData with a invalid data boolean.
+     * @author Vlad Sorokin
+     * @date 2024/07/11
+     */
+    test(tst_con.cprocessCsvData_inValidContextNameBoolean, async () => {
+        // Arrange
+        D[sys.cbusinessRules] = {};
+        D[sys.cbusinessRules] = {
+            [biz.ccleanCarriageReturnFromString]: (inputData, inputMetaData) => characterStringParsing.cleanCarriageReturnFromString(inputData, inputMetaData),
+            [biz.cgetDataCategoryFromDataContextName]: (inputData, inputMetaData) => dataStringParsing.getDataCategoryFromDataContextName(inputData, inputMetaData),
+            [biz.cgetCsvData]: (inputData, inputMetaData) => fileOperations.getCsvData(inputData, inputMetaData)
+        }
+        let data = await ruleBroker.processRules([tst_dbt.cpathToBasicCsvFile, ''], [biz.cgetCsvData]);
+        let contextName = false;
+
+        // Act
+        let returnData = await dataBroker.processCsvData(data, contextName);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+        delete D[tst_dbt.cunitTestData]; // clean up on isle 4
+    });
+
+    /**
+     * @function processCsvData_inValidDataUndefined
+     * @description Tests the dataBroker function processCsvData with a invalid data undefined.
+     * @author Vlad Sorokin
+     * @date 2024/07/11
+     */
+    test(tst_con.cprocessCsvData_inValidDataUndefined, async () => {
+        // Arrange
+        D[sys.cbusinessRules] = {};
+        D[sys.cbusinessRules] = {
+            [biz.ccleanCarriageReturnFromString]: (inputData, inputMetaData) => characterStringParsing.cleanCarriageReturnFromString(inputData, inputMetaData),
+            [biz.cgetDataCategoryFromDataContextName]: (inputData, inputMetaData) => dataStringParsing.getDataCategoryFromDataContextName(inputData, inputMetaData),
+            [biz.cgetCsvData]: (inputData, inputMetaData) => fileOperations.getCsvData(inputData, inputMetaData)
+        }
+        let data = undefined;
+        let contextName = tst_dbt.cunitTestData;
+
+        // Act
+        let returnData = await dataBroker.processCsvData(data, contextName);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+        delete D[tst_dbt.cunitTestData]; // clean up on isle 4
+    });
+
+    /**
+     * @function processCsvData_inValidDataNaN
+     * @description Tests the dataBroker function processCsvData with a invalid data NaN.
+     * @author Vlad Sorokin
+     * @date 2024/07/11
+     */
+    test(tst_con.cprocessCsvData_inValidDataNaN, async () => {
+        // Arrange
+        D[sys.cbusinessRules] = {};
+        D[sys.cbusinessRules] = {
+            [biz.ccleanCarriageReturnFromString]: (inputData, inputMetaData) => characterStringParsing.cleanCarriageReturnFromString(inputData, inputMetaData),
+            [biz.cgetDataCategoryFromDataContextName]: (inputData, inputMetaData) => dataStringParsing.getDataCategoryFromDataContextName(inputData, inputMetaData),
+            [biz.cgetCsvData]: (inputData, inputMetaData) => fileOperations.getCsvData(inputData, inputMetaData)
+        }
+        let data = NaN;
+        let contextName = tst_dbt.cunitTestData;
+
+        // Act
+        let returnData = await dataBroker.processCsvData(data, contextName);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+        delete D[tst_dbt.cunitTestData]; // clean up on isle 4
+    });
+
+    /**
+     * @function processCsvData_inValidContextNameUndefined
+     * @description Tests the dataBroker function processCsvData with a invalid data undefined.
+     * @author Vlad Sorokin
+     * @date 2024/07/11
+     */
+    test(tst_con.cprocessCsvData_inValidContextNameUndefined, async () => {
+        // Arrange
+        D[sys.cbusinessRules] = {};
+        D[sys.cbusinessRules] = {
+            [biz.ccleanCarriageReturnFromString]: (inputData, inputMetaData) => characterStringParsing.cleanCarriageReturnFromString(inputData, inputMetaData),
+            [biz.cgetDataCategoryFromDataContextName]: (inputData, inputMetaData) => dataStringParsing.getDataCategoryFromDataContextName(inputData, inputMetaData),
+            [biz.cgetCsvData]: (inputData, inputMetaData) => fileOperations.getCsvData(inputData, inputMetaData)
+        }
+        let data = await ruleBroker.processRules([tst_dbt.cpathToBasicCsvFile, ''], [biz.cgetCsvData]);
+        let contextName = undefined;
+
+        // Act
+        let returnData = await dataBroker.processCsvData(data, contextName);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+        delete D[tst_dbt.cunitTestData]; // clean up on isle 4
+    });
+
+    /**
+     * @function processCsvData_inValidContextNameNaN
+     * @description Tests the dataBroker function processCsvData with a invalid data NaN.
+     * @author Vlad Sorokin
+     * @date 2024/07/11
+     */
+    test(tst_con.cprocessCsvData_inValidContextNameNaN, async () => {
+        // Arrange
+        D[sys.cbusinessRules] = {};
+        D[sys.cbusinessRules] = {
+            [biz.ccleanCarriageReturnFromString]: (inputData, inputMetaData) => characterStringParsing.cleanCarriageReturnFromString(inputData, inputMetaData),
+            [biz.cgetDataCategoryFromDataContextName]: (inputData, inputMetaData) => dataStringParsing.getDataCategoryFromDataContextName(inputData, inputMetaData),
+            [biz.cgetCsvData]: (inputData, inputMetaData) => fileOperations.getCsvData(inputData, inputMetaData)
+        }
+        let data = await ruleBroker.processRules([tst_dbt.cpathToBasicCsvFile, ''], [biz.cgetCsvData]);
+        let contextName = NaN;
+
+        // Act
+        let returnData = await dataBroker.processCsvData(data, contextName);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+        delete D[tst_dbt.cunitTestData]; // clean up on isle 4
+    });
+})
+
+
+/**
+ * @function preprocessJsonFile
+ * @description Tests the positive and negative test cases of the preprocessJsonFile
+ * @author Vlad Sorokin
+ * @date 2024/07/11
+ */
+describe(tst_con.cpreprocessJsonFile, () => {
+    /**
+     * @function preprocessJsonFile_validFileToLoadData
+     * @description Tests the dataBroker function preprocessJsonFile with a valid input.
+     * @author Vlad Sorokin
+     * @date 2024/07/11
+     */
+    test(tst_con.cpreprocessJsonFile_validFileToLoadData, async () => {
+        // Arrange
+        D[wrd.cconfiguration] = {};
+        D[sys.cbusinessRules] = {
+            [biz.cswapDoubleForwardSlashToSingleForwardSlash]: (inputData, inputMetaData) => characterStringParsing.swapDoubleForwardSlashToSingleForwardSlash(inputData, inputMetaData),
+            [biz.cgetJsonData]: (inputData, inputMetaData) => fileOperations.getJsonData(inputData, inputMetaData),
+        }
+        let fileToLoad = tst_dbt.cpathToJsonTestFile;
+
+        // Act
+        let returnData = await dataBroker.preprocessJsonFile(fileToLoad);
+
+        // Assert
+        expect(returnData).toEqual(tst_dbt.cexpectedDataFromJsonTestFile);
+    });
+
+    /**
+     * @function preprocessJsonFile_inValidFileToLoadString
+     * @description Tests the dataBroker function preprocessJsonFile with a invalid data string.
+     * @author Vlad Sorokin
+     * @date 2024/07/11
+     */
+    test(tst_con.cpreprocessJsonFile_inValidFileToLoadString, async () => {
+        // Arrange
+        D[wrd.cconfiguration] = {};
+        D[sys.cbusinessRules] = {
+            [biz.cswapDoubleForwardSlashToSingleForwardSlash]: (inputData, inputMetaData) => characterStringParsing.swapDoubleForwardSlashToSingleForwardSlash(inputData, inputMetaData),
+            [biz.cgetJsonData]: (inputData, inputMetaData) => fileOperations.getJsonData(inputData, inputMetaData),
+        }
+        let fileToLoad = tst_man.ctestString1;
+
+        // Act
+        let returnData = await dataBroker.preprocessJsonFile(fileToLoad);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function preprocessJsonFile_inValidFileToLoadInteger
+     * @description Tests the dataBroker function preprocessJsonFile with a invalid data integer.
+     * @author Vlad Sorokin
+     * @date 2024/07/11
+     */
+    test(tst_con.cpreprocessJsonFile_inValidFileToLoadInteger, async () => {
+        // Arrange
+        D[wrd.cconfiguration] = {};
+        D[sys.cbusinessRules] = {
+            [biz.cswapDoubleForwardSlashToSingleForwardSlash]: (inputData, inputMetaData) => characterStringParsing.swapDoubleForwardSlashToSingleForwardSlash(inputData, inputMetaData),
+            [biz.cgetJsonData]: (inputData, inputMetaData) => fileOperations.getJsonData(inputData, inputMetaData),
+        }
+        let fileToLoad = 123;
+
+        // Act
+        let returnData = await dataBroker.preprocessJsonFile(fileToLoad);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function preprocessJsonFile_inValidFileToLoadBoolean
+     * @description Tests the dataBroker function preprocessJsonFile with a invalid data boolean.
+     * @author Vlad Sorokin
+     * @date 2024/07/11
+     */
+    test(tst_con.cpreprocessJsonFile_inValidFileToLoadBoolean, async () => {
+        // Arrange
+        D[wrd.cconfiguration] = {};
+        D[sys.cbusinessRules] = {
+            [biz.cswapDoubleForwardSlashToSingleForwardSlash]: (inputData, inputMetaData) => characterStringParsing.swapDoubleForwardSlashToSingleForwardSlash(inputData, inputMetaData),
+            [biz.cgetJsonData]: (inputData, inputMetaData) => fileOperations.getJsonData(inputData, inputMetaData),
+        }
+        let fileToLoad = false;
+
+        // Act
+        let returnData = await dataBroker.preprocessJsonFile(fileToLoad);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function preprocessJsonFile_inValidFileToLoadUndefined
+     * @description Tests the dataBroker function preprocessJsonFile with a invalid data undefined.
+     * @author Vlad Sorokin
+     * @date 2024/07/11
+     */
+    test(tst_con.cpreprocessJsonFile_inValidFileToLoadUndefined, async () => {
+        // Arrange
+        D[wrd.cconfiguration] = {};
+        D[sys.cbusinessRules] = {
+            [biz.cswapDoubleForwardSlashToSingleForwardSlash]: (inputData, inputMetaData) => characterStringParsing.swapDoubleForwardSlashToSingleForwardSlash(inputData, inputMetaData),
+            [biz.cgetJsonData]: (inputData, inputMetaData) => fileOperations.getJsonData(inputData, inputMetaData),
+        }
+        let fileToLoad = undefined;
+
+        // Act
+        let returnData = await dataBroker.preprocessJsonFile(fileToLoad);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function preprocessJsonFile_inValidFileToLoadNaN
+     * @description Tests the dataBroker function preprocessJsonFile with a invalid data NaN.
+     * @author Vlad Sorokin
+     * @date 2024/07/11
+     */
+    test(tst_con.cpreprocessJsonFile_inValidFileToLoadNaN, async () => {
+        // Arrange
+        D[wrd.cconfiguration] = {};
+        D[sys.cbusinessRules] = {
+            [biz.cswapDoubleForwardSlashToSingleForwardSlash]: (inputData, inputMetaData) => characterStringParsing.swapDoubleForwardSlashToSingleForwardSlash(inputData, inputMetaData),
+            [biz.cgetJsonData]: (inputData, inputMetaData) => fileOperations.getJsonData(inputData, inputMetaData),
+        }
+        let fileToLoad = NaN;
+
+        // Act
+        let returnData = await dataBroker.preprocessJsonFile(fileToLoad);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+})
+
 
 
 

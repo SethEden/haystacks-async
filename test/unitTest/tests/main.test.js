@@ -2837,9 +2837,9 @@ describe(tst_con.cunloadPlugin, () => {
         
         await main.loadPlugin(pluginPath);
 
-        let pluginData = D[sys.cConstantsValidationData][wrd.cPlugins][pluginName];
-        console.log("HERERERERERERE: ", D[sys.cConstantsValidationData][wrd.cPlugins][pluginName]);
-        console.log(sys.cpluginBusinessConstantsValidation, pluginData[sys.cpluginBusinessConstantsValidation]);
+        // let pluginData = D[sys.cConstantsValidationData][wrd.cPlugins][pluginName];
+        // console.log("HERERERERERERE: ", D[sys.cConstantsValidationData][wrd.cPlugins][pluginName]);
+        // console.log(sys.cpluginBusinessConstantsValidation, pluginData[sys.cpluginBusinessConstantsValidation]);
 
 
         // Act
@@ -3835,7 +3835,7 @@ describe(tst_con.cloadAllJsonData, () => {
         // Arrange
         let dataPath = tst_man.jsonDataPath;
         let contextName = wrd.cconfiguration;
-
+        
         // Act
         let returnData = await main.loadAllJsonData(dataPath, contextName);
 

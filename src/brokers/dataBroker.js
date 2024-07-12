@@ -190,7 +190,7 @@ async function loadAllCsvData(filesToLoad, contextName) {
   // let rules = [biz.cgetFileNameFromPath, biz.cremoveFileExtensionFromFileName];
   let returnData = false;
   if (Array.isArray(filesToLoad) && filesToLoad.every(item => typeof item === wrd.cstring && (item.includes(bas.cForwardSlash) === true || item.includes(bas.cBackSlash) === true))) {
-    if (contextName && typeof contextName === wrd.cstring) {
+    if (contextName && typeof contextName === wrd.cstring && !(/\d/.test(contextName))) { // Checking if contextName is a valid string and does not contain numbers.
       for (const element of filesToLoad) {
         let fileToLoad = element;
         // File to load is:
@@ -234,7 +234,7 @@ async function loadAllCsvData(filesToLoad, contextName) {
  * then loads them accordingly in the D.contextName_fileName.
  * @param {array<string>} filesToLoad The data structure containing all of the files to load data from.
  * @param {string} contextName The context name that should be used when adding data to the D data structure.
- * @return {object} A JSON object that contains all of the data that was loaded and parsed from all the input files list.
+ * @return {object|boolean} A JSON object that contains all of the data that was loaded and parsed from all the input files list or false if loading process was unsuccessful.
  * @author Seth Hollingsead
  * @date 2022/01/27
  */
@@ -250,7 +250,7 @@ async function loadAllXmlData(filesToLoad, contextName) {
   let returnData = false;
   let fileNameRules = [biz.cgetFileNameFromPath, biz.cremoveFileExtensionFromFileName];
   if (Array.isArray(filesToLoad) && filesToLoad.every(item => typeof item === wrd.cstring && (item.includes(bas.cForwardSlash) === true || item.includes(bas.cBackSlash) === true))) {
-    if (contextName && typeof contextName === wrd.cstring) {
+    if (contextName && typeof contextName === wrd.cstring && !(/\d/.test(contextName))) { // Checking if contextName is a valid string and does not contain numbers.
       for (let i = 0; i < filesToLoad.length; i++) {
         // BEGIN i-th loop:
         await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_ithLoop + i);
@@ -322,7 +322,7 @@ async function loadAllXmlData(filesToLoad, contextName) {
  * then loads them accordingly in the D.contextName.
  * @param {array<string>} filesToLoad The data structure containing all of the files to load data from.
  * @param {string} contextName The context name that should be used when adding data to the D-data structure.
- * @return {object} A JSON object that contains all fo the data that was loaded and parsed from all the input files list.
+ * @return {object|boolean} A JSON object that contains all fo the data that was loaded and parsed from all the input files list or false if loading process was unsuccessful.
  * @author Seth Hollingsead
  * @date 2021/10/15
  * @NOTE When the plugin uses haystacks to load the plugin data from the plugins configuration files,
@@ -345,80 +345,91 @@ async function loadAllJsonData(filesToLoad, contextName) {
   let pluginConfigFileName = sys.cpluginConfigFileName; // 'plugin.system.json';
   let loadPluginDebugSettings = false;
   let multiMergedData = {};
-  let parsedDataFile = {};
+  let returnData = false;
 
-  // Before we load all configuration data we need to FIRST load all the system configuration settings.
-  // There will be a system configuration setting that will tell us if we need to load the debug settings or not.
-  for (const element1 of filesToLoad) {
-    let fileToLoad = element1;
-    // console.log('fileToLoad is: ' + fileToLoad);
-    if (fileToLoad.includes(systemConfigFileName) || fileToLoad.includes(applicationConfigFileName) || fileToLoad.includes(pluginConfigFileName)) {
-      let dataFile = await preprocessJsonFile(fileToLoad);
-
-      // NOTE: In this case we have just loaded either the framework configuration data or the application configuration data or the plugin configuration data,
-      // and nothing else. So we can just assign the data to the multiMergedData.
-      // We will need to merge all the other files,
-      // but there will be a setting here we should examine to determine if the rest of the data should even be load or not.
-      // We will have a new setting that determines if all the extra debug settings should be loaded or not.
-      // This way the application performance can be seriously optimized to greater levels of lean performance.
-      // Adding all that extra debugging configuration settings can affect load times, and application performance to a much lesser degree.
-      multiMergedData[wrd.csystem] = {};
-      multiMergedData[wrd.csystem] = dataFile;
-      if (fileToLoad.includes(pluginConfigFileName)) {
-        // console.log('****--plugin config setting file is being processed.');
-        if (multiMergedData[wrd.csystem][wrd.csystem + bas.cDot + cfg.cdebugSettings] === true) {
-          // console.log('****--The plugin config debug settings value is set to true!');
-          loadPluginDebugSettings = true;
+  if (Array.isArray(filesToLoad) && filesToLoad.every(item => typeof item === wrd.cstring && (item.includes(bas.cForwardSlash) === true || item.includes(bas.cBackSlash) === true))) {
+    if (contextName && typeof contextName === wrd.cstring && !(/\d/.test(contextName))) { // Checking if contextName is a valid string and does not contain numbers.
+      // Before we load all configuration data we need to FIRST load all the system configuration settings.
+      // There will be a system configuration setting that will tell us if we need to load the debug settings or not.
+      for (const element1 of filesToLoad) {
+        let fileToLoad = element1;
+        // console.log('fileToLoad is: ' + fileToLoad);
+        if (fileToLoad.includes(systemConfigFileName) || fileToLoad.includes(applicationConfigFileName) || fileToLoad.includes(pluginConfigFileName)) {
+          let dataFile = await preprocessJsonFile(fileToLoad);
+    
+          // NOTE: In this case we have just loaded either the framework configuration data or the application configuration data or the plugin configuration data,
+          // and nothing else. So we can just assign the data to the multiMergedData.
+          // We will need to merge all the other files,
+          // but there will be a setting here we should examine to determine if the rest of the data should even be load or not.
+          // We will have a new setting that determines if all the extra debug settings should be loaded or not.
+          // This way the application performance can be seriously optimized to greater levels of lean performance.
+          // Adding all that extra debugging configuration settings can affect load times, and application performance to a much lesser degree.
+          multiMergedData[wrd.csystem] = {};
+          multiMergedData[wrd.csystem] = dataFile;
+          if (fileToLoad.includes(pluginConfigFileName)) {
+            // console.log('****--plugin config setting file is being processed.');
+            if (multiMergedData[wrd.csystem][wrd.csystem + bas.cDot + cfg.cdebugSettings] === true) {
+              // console.log('****--The plugin config debug settings value is set to true!');
+              loadPluginDebugSettings = true;
+            }
+          }
+          foundSystemData = true;
+        } // End-if (fileToLoad.includes(systemConfigFileName) || fileToLoad.includes(applicationConfigFileName))
+        if (foundSystemData === true) {
+          break;
         }
-      }
-      foundSystemData = true;
-    } // End-if (fileToLoad.includes(systemConfigFileName) || fileToLoad.includes(applicationConfigFileName))
-    if (foundSystemData === true) {
-      break;
+      } // End-for (const element of filesToLoad)
+    
+      // Now we need to determine if we should load the rest of the data.
+      // NOTE: If the filesToLoad contained the pluginConfigFileName, then we will not be able to determine the debugSettings value from the configuration setting.
+      // See note above.
+      if (await configurator.getConfigurationSetting(wrd.csystem, cfg.cdebugSettings) === true || loadPluginDebugSettings === true) {
+        for (const element2 of filesToLoad) {
+          let fileToLoad = element2;
+          if (!fileToLoad.includes(systemConfigFileName) && !fileToLoad.includes(applicationConfigFileName) && !fileToLoad.includes(pluginConfigFileName)
+          && fileToLoad.toUpperCase().includes(gen.cDotJSON) && !fileToLoad.toLowerCase().includes(wrd.cmetadata + gen.cDotjson)) {
+            // Get the filename without the file extension, use that as a key for the data.
+            let filename = await ruleBroker.processRules([fileToLoad, ''], [biz.cgetFileNameFromPath, biz.cremoveFileExtensionFromFileName]);
+            // console.log('filename is: ' + filename);
+            // console.log('fileToLoad is: ' + fileToLoad);
+            let dataFile = await preprocessJsonFile(fileToLoad);
+            // console.log('dataFile to merge is: ' + JSON.stringify(dataFile));
+            await loggers.consoleLog(namespacePrefix + functionName, msg.cdataFileToMergeIs + JSON.stringify(dataFile));
+            if (!multiMergedData[cfg.cdebugSettings]) {
+              multiMergedData[cfg.cdebugSettings] = {};
+              if (contextName.includes(wrd.cclient + wrd.cData)) {
+                // console.log('clientData first time merge!');
+                multiMergedData[cfg.cdebugSettings] = {[filename]: dataFile};
+              } else {
+                // console.log('regular old traditional first time data merge!');
+                multiMergedData[cfg.cdebugSettings] = dataFile;
+              }
+            } else {
+              if (contextName.includes(wrd.cclient + wrd.cData)) {
+                // console.log('clientData n-th data merge');
+                Object.assign(multiMergedData[cfg.cdebugSettings], {[filename]: dataFile});
+              } else {
+                // console.log('regular old n-th data merge');
+                Object.assign(multiMergedData[cfg.cdebugSettings], dataFile);
+              }
+            }
+          }
+        } // End-for (const element2 of filesToLoad)
+      } // End-if (configurator.getConfigurationSetting(wrd.csystem, cfg.cdebugSettings) === true)
+      returnData = multiMergedData;
+    } else {
+      // ERROR: Invalid input, contextName is: 
+      console.log(msg.cErrorLoadAllCsvDataMessage01 + contextName);
     }
-  } // End-for (const element of filesToLoad)
-
-  // Now we need to determine if we should load the rest of the data.
-  // NOTE: If the filesToLoad contained the pluginConfigFileName, then we will not be able to determine the debugSettings value from the configuration setting.
-  // See note above.
-  if (await configurator.getConfigurationSetting(wrd.csystem, cfg.cdebugSettings) === true || loadPluginDebugSettings === true) {
-    for (const element2 of filesToLoad) {
-      let fileToLoad = element2;
-      if (!fileToLoad.includes(systemConfigFileName) && !fileToLoad.includes(applicationConfigFileName) && !fileToLoad.includes(pluginConfigFileName)
-      && fileToLoad.toUpperCase().includes(gen.cDotJSON) && !fileToLoad.toLowerCase().includes(wrd.cmetadata + gen.cDotjson)) {
-        // Get the filename without the file extension, use that as a key for the data.
-        let filename = await ruleBroker.processRules([fileToLoad, ''], [biz.cgetFileNameFromPath, biz.cremoveFileExtensionFromFileName]);
-        // console.log('filename is: ' + filename);
-        let dataFile = await preprocessJsonFile(fileToLoad);
-        // console.log('dataFile to merge is: ' + JSON.stringify(dataFile));
-        await loggers.consoleLog(namespacePrefix + functionName, msg.cdataFileToMergeIs + JSON.stringify(dataFile));
-        if (!multiMergedData[cfg.cdebugSettings]) {
-          multiMergedData[cfg.cdebugSettings] = {};
-          if (contextName.includes(wrd.cclient + wrd.cData)) {
-            // console.log('clientData first time merge!');
-            multiMergedData[cfg.cdebugSettings] = {[filename]: dataFile};
-          } else {
-            // console.log('regular old traditional first time data merge!');
-            multiMergedData[cfg.cdebugSettings] = dataFile;
-          }
-        } else {
-          if (contextName.includes(wrd.cclient + wrd.cData)) {
-            // console.log('clientData n-th data merge');
-            Object.assign(multiMergedData[cfg.cdebugSettings], {[filename]: dataFile});
-          } else {
-            // console.log('regular old n-th data merge');
-            Object.assign(multiMergedData[cfg.cdebugSettings], dataFile);
-          }
-        }
-      }
-    } // End-for (const element2 of filesToLoad)
-  } // End-if (configurator.getConfigurationSetting(wrd.csystem, cfg.cdebugSettings) === true)
-  parsedDataFile = multiMergedData;
-  // console.log(`parsedDataFile is: ${JSON.stringify(parsedDataFile)}`);
+  } else {
+    // ERROR: Invalid input, filesToLoad is: 
+    console.log(msg.cErrorLoadAllCsvDataMessage02 + filesToLoad);
+  }
+  // console.log(`returnData is: ${JSON.stringify(returnData)}`);
   // console.log(`END ${namespacePrefix}${functionName} function`);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cparsedDataFileIs + JSON.stringify(parsedDataFile));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
-  return parsedDataFile;
+  return returnData;
 }
 
 /**
@@ -437,31 +448,42 @@ async function processCsvData(data, contextName) {
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(data));
   // contextName is:
   await loggers.consoleLog(namespacePrefix + functionName, msg.ccontextNameIs + contextName);
-  let parsedData = await extractDataFromPapaParseObject(data, contextName);
-  let dataCategory = await getDataCategoryFromContextName(contextName);
-  // dataCategory is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cdataCategoryIs + dataCategory);
-  if (contextName.includes(wrd.cWorkflow)) {
-    // Processing a workflow
-    Object.assign(D[wrd.cWorkflow], parsedData[contextName]);
-  } else if (contextName.includes(wrd.ccolors)) {
-    D[wrd.ccolors] = {};
-    Object.assign(D[wrd.ccolors], parsedData);
-  } else {
-    // Processing all other kinds of files.
-    if (typeof D[dataCategory] !== 'undefined' && D[dataCategory]) {
-      Object.assign(D[dataCategory], parsedData);
-      await mergeData(D, dataCategory, '', parsedData);
+  let parsedData = false;
+  if (data && typeof data === wrd.cobject) {
+    if (contextName && typeof contextName === wrd.cstring && !(/\d/.test(contextName))) { // Checking if contextName is a valid string and does not contain numbers.
+      parsedData = await extractDataFromPapaParseObject(data, contextName);
+      let dataCategory = await getDataCategoryFromContextName(contextName);
+      // dataCategory is:
+      await loggers.consoleLog(namespacePrefix + functionName, msg.cdataCategoryIs + dataCategory);
+      if (contextName.includes(wrd.cWorkflow)) {
+        // Processing a workflow
+        Object.assign(D[wrd.cWorkflow], parsedData[contextName]);
+      } else if (contextName.includes(wrd.ccolors)) {
+        D[wrd.ccolors] = {};
+        Object.assign(D[wrd.ccolors], parsedData);
+      } else {
+        // Processing all other kinds of files.
+        if (typeof D[dataCategory] !== 'undefined' && D[dataCategory]) {
+          Object.assign(D[dataCategory], parsedData);
+          await mergeData(D, dataCategory, '', parsedData);
+        } else {
+          D[dataCategory] = {};
+          Object.assign(D[dataCategory], parsedData);
+          await mergeData(D, dataCategory, '', parsedData);
+        }
+      }
+      // fully parsed data is:
+      await loggers.consoleLog(namespacePrefix + functionName, msg.cfullyParsedDataIs + JSON.stringify(parsedData));
+      // D final merge is:
+      await loggers.consoleLog(namespacePrefix + functionName, msg.cD_finalMergeIs + JSON.stringify(D));
     } else {
-      D[dataCategory] = {};
-      Object.assign(D[dataCategory], parsedData);
-      await mergeData(D, dataCategory, '', parsedData);
-    }
+      // ERROR: Invalid input, contextName: 
+      console.log(msg.cErrorLoadAllCsvDataMessage01 + contextName);
+    } 
+  } else {
+    // ERROR: Invalid input, data is: 
+    console.log(msg.cErrorProcessCsvDataMessage01 + data);
   }
-  // fully parsed data is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cfullyParsedDataIs + JSON.stringify(parsedData));
-  // D final merge is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cD_finalMergeIs + JSON.stringify(D));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return parsedData;
 }
@@ -611,10 +633,16 @@ async function preprocessJsonFile(fileToLoad) {
   // console.log(`fileToLoad is: ${JSON.stringify(fileToLoad)}`);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cfileToLoadIs + JSON.stringify(fileToLoad));
-  let filePathRules = [biz.cswapDoubleForwardSlashToSingleForwardSlash, biz.cgetJsonData];
-  // console.log(`execute business rules: ${JSON.stringify(filePathRules)}`);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cexecuteBusinessRules + JSON.stringify(filePathRules));
-  let dataFile = await ruleBroker.processRules([fileToLoad, ''], filePathRules);
+  let dataFile = false;
+  if (fileToLoad && typeof fileToLoad === wrd.cstring && (fileToLoad.includes(bas.cForwardSlash) === true || fileToLoad.includes(bas.cBackSlash) === true)) {
+    let filePathRules = [biz.cswapDoubleForwardSlashToSingleForwardSlash, biz.cgetJsonData];
+    // console.log(`execute business rules: ${JSON.stringify(filePathRules)}`);
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cexecuteBusinessRules + JSON.stringify(filePathRules));
+    dataFile = await ruleBroker.processRules([fileToLoad, ''], filePathRules);
+  } else {
+    // ERROR: Invalid input, fileToLoad is:
+    console.log(msg.cErrorPreprocessJsonFileMessage01 + fileToLoad);
+  }
   await loggers.consoleLog(namespacePrefix + functionName, msg.cdataFileIs + JSON.stringify(dataFile));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   // console.log(`dataFile is: ${JSON.stringify(dataFile)}`);

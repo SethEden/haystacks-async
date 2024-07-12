@@ -48,6 +48,11 @@ export const cscanDataPath = wrd.cscan + wrd.cData + wrd.cPath; // scanDataPath
 export const cfindUniversalDebugConfigSetting = wrd.cfind + wrd.cUniversal + wrd.cDebug + wrd.cConfig + wrd.cSetting; // findUniversalDebugConfigSetting
 export const cloadAllCsvData = wrd.cload + wrd.cAll + gen.cCsv + wrd.cData; // loadAllCsvData
 export const cloadAllXmlData = wrd.cload + wrd.cAll + gen.cXml + wrd.cData; // loadAllXmlData
+// export const cloadAllJsonData = wrd.cload + wrd.cAll + gen.cJson + wrd.cData; // loadAllJsonData
+export const cprocessCsvData = wrd.cprocess + gen.cCsv + wrd.cData; // processCsvData
+export const cpreprocessJsonFile = wrd.cpreprocess + gen.cJson + wrd.cFile; // preprocessJsonFile
+
+
 
 /* ruleBroker */
 
@@ -379,6 +384,7 @@ export const cfindUniversalDebugConfigSetting_inValidFrameworkConfigFilesToLoadN
 // loadAllCsvData
 export const cloadAllCsvData_validData = cloadAllCsvData + bas.cUnderscore + wrd.cvalid + wrd.cData; // loadAllCsvData_validData
 export const cloadAllCsvData_inValidFilesToLoadString = cloadAllCsvData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cFiles + wrd.cTo + wrd.cLoad + wrd.cString; // loadAllCsvData_inValidFilesToLoadString
+export const cloadAllCsvData_inValidContextNameString = cloadAllCsvData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cContext + wrd.cName + wrd.cString; // loadAllCsvData_inValidContextNameString
 export const cloadAllCsvData_inValidFilesToLoadInteger = cloadAllCsvData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cFiles + wrd.cTo + wrd.cLoad + wrd.cInteger; // loadAllCsvData_inValidFilesToLoadInteger
 export const cloadAllCsvData_inValidFilesToLoadBoolean = cloadAllCsvData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cFiles + wrd.cTo + wrd.cLoad + wrd.cBoolean; // loadAllCsvData_inValidFilesToLoadBoolean
 export const cloadAllCsvData_inValidContextNameInteger = cloadAllCsvData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cContext + wrd.cName + wrd.cInteger; // loadAllCsvData_inValidContextNameInteger
@@ -391,6 +397,7 @@ export const cloadAllCsvData_inValidContextNameNaN = cloadAllCsvData + bas.cUnde
 // loadAllXmlData
 export const cloadAllXmlData_validData = cloadAllXmlData + bas.cUnderscore + wrd.cvalid + wrd.cData; // loadAllXmlData_validData
 export const cloadAllXmlData_inValidFilesToLoadString = cloadAllXmlData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cFiles + wrd.cTo + wrd.cLoad + wrd.cString; // loadAllXmlData_inValidFilesToLoadString
+export const cloadAllXmlData_inValidContextNameString = cloadAllXmlData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cContext + wrd.cName + wrd.cString; // loadAllXmlData_inValidContextNameString
 export const cloadAllXmlData_inValidFilesToLoadInteger = cloadAllXmlData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cFiles + wrd.cTo + wrd.cLoad + wrd.cInteger; // loadAllXmlData_inValidFilesToLoadInteger
 export const cloadAllXmlData_inValidFilesToLoadBoolean = cloadAllXmlData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cFiles + wrd.cTo + wrd.cLoad + wrd.cBoolean; // loadAllXmlData_inValidFilesToLoadBoolean
 export const cloadAllXmlData_inValidContextNameInteger = cloadAllXmlData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cContext + wrd.cName + wrd.cInteger; // loadAllXmlData_inValidContextNameInteger
@@ -399,6 +406,37 @@ export const cloadAllXmlData_inValidFilesToLoadUndefined = cloadAllXmlData + bas
 export const cloadAllXmlData_inValidFilesToLoadNaN = cloadAllXmlData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cFiles + wrd.cTo + wrd.cLoad + 'NaN'; // loadAllXmlData_inValidFilesToLoadNaN
 export const cloadAllXmlData_inValidContextNameUndefined = cloadAllXmlData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cContext + wrd.cName + 'Undefined'; // loadAllXmlData_inValidContextNameUndefined
 export const cloadAllXmlData_inValidContextNameNaN = cloadAllXmlData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cContext + wrd.cName + 'NaN'; // loadAllXmlData_inValidContextNameNaN
+
+// loadAllJsonData
+export const cloadAllJsonData_inValidFilesToLoadString = cloadAllJsonData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cFiles + wrd.cTo + wrd.cLoad + wrd.cString; // loadAllJsonData_inValidFilesToLoadString
+export const cloadAllJsonData_inValidFilesToLoadInteger = cloadAllJsonData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cFiles + wrd.cTo + wrd.cLoad + wrd.cInteger; // loadAllJsonData_inValidFilesToLoadInteger
+export const cloadAllJsonData_inValidFilesToLoadBoolean = cloadAllJsonData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cFiles + wrd.cTo + wrd.cLoad + wrd.cBoolean; // loadAllJsonData_inValidFilesToLoadBoolean
+export const cloadAllJsonData_inValidFilesToLoadUndefined = cloadAllJsonData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cFiles + wrd.cTo + wrd.cLoad + 'Undefined'; // loadAllJsonData_inValidFilesToLoadUndefined
+export const cloadAllJsonData_inValidFilesToLoadNaN = cloadAllJsonData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cFiles + wrd.cTo + wrd.cLoad + 'NaN'; // loadAllJsonData_inValidFilesToLoadNaN
+
+// processCsvData
+export const cprocessCsvData_validData = cprocessCsvData + bas.cUnderscore + wrd.cvalid + wrd.cData; // processCsvData_validData
+export const cprocessCsvData_inValidDataString = cprocessCsvData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cData + wrd.cString; // processCsvData_inValidDataString
+export const cprocessCsvData_inValidContextNameString = cprocessCsvData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cContext + wrd.cName + wrd.cString; // processCsvData_inValidContextNameString
+export const cprocessCsvData_inValidDataInteger = cprocessCsvData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cData + wrd.cInteger; // processCsvData_inValidDataInteger
+export const cprocessCsvData_inValidDataBoolean = cprocessCsvData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cData + wrd.cBoolean; // processCsvData_inValidDataBoolean
+export const cprocessCsvData_inValidContextNameInteger = cprocessCsvData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cContext + wrd.cName + wrd.cInteger; // processCsvData_inValidContextNameInteger
+export const cprocessCsvData_inValidContextNameBoolean = cprocessCsvData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cContext + wrd.cName + wrd.cBoolean; // processCsvData_inValidContextNameBoolean
+export const cprocessCsvData_inValidDataUndefined = cprocessCsvData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cData + 'Undefined'; // processCsvData_inValidDataUndefined
+export const cprocessCsvData_inValidDataNaN = cprocessCsvData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cData + 'NaN'; // processCsvData_inValidDataNaN
+export const cprocessCsvData_inValidContextNameUndefined = cprocessCsvData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cContext + wrd.cName + 'Undefined'; // processCsvData_inValidContextNameUndefined
+export const cprocessCsvData_inValidContextNameNaN = cprocessCsvData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cContext + wrd.cName + 'NaN'; // processCsvData_inValidContextNameNaN
+
+// preprocessJsonFile
+export const cpreprocessJsonFile_validFileToLoadData = cpreprocessJsonFile + bas.cUnderscore + wrd.cvalid + wrd.cFile + wrd.cTo + wrd.cLoad + wrd.cData; // preprocessJsonFile_validFileToLoadData
+export const cpreprocessJsonFile_inValidFileToLoadString = cpreprocessJsonFile + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cFile + wrd.cTo + wrd.cLoad + wrd.cString; // preprocessJsonFile_inValidFileToLoadString
+export const cpreprocessJsonFile_inValidFileToLoadInteger = cpreprocessJsonFile + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cFile + wrd.cTo + wrd.cLoad + wrd.cInteger; // preprocessJsonFile_inValidFileToLoadInteger
+export const cpreprocessJsonFile_inValidFileToLoadBoolean = cpreprocessJsonFile + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cFile + wrd.cTo + wrd.cLoad + wrd.cBoolean; // preprocessJsonFile_inValidFileToLoadBoolean
+export const cpreprocessJsonFile_inValidFileToLoadUndefined = cpreprocessJsonFile + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cFile + wrd.cTo + wrd.cLoad + "Undefined"; // preprocessJsonFile_inValidFileToLoadUndefined
+export const cpreprocessJsonFile_inValidFileToLoadNaN = cpreprocessJsonFile + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cFile + wrd.cTo + wrd.cLoad + "NaN"; // preprocessJsonFile_inValidFileToLoadNaN
+
+
+
 
 /* ruleBroker */
 

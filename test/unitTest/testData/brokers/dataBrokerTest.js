@@ -36,6 +36,7 @@ export const cpathToUnitTestApplicationDebugSettings = rootPathAsync + bas.cBack
 export const cpathToUnitTestFrameworkDebugSettings = rootPathAsync + bas.cBackSlash + wrd.ctest + bas.cBackSlash + wrd.cunit + wrd.cTest + bas.cBackSlash + wrd.ctestData + bas.cBackSlash + wrd.cresources + bas.cBackSlash + wrd.cfake + wrd.cTest + wrd.cDebug + wrd.cSettings + bas.cBackSlash + wrd.cframework + wrd.cDebug + wrd.cSettings + bas.cBackSlash + wrd.cframework + bas.cDot + wrd.csystem + gen.cDotjson; // C:\\haystacks-async\\test\\unitTest\\testData\\resources\\fakeTestDebugSettings\\frameworkDebugSettings\\framework.system.json
 export const cpathToBasicCsvFile = rootPathAsync + bas.cBackSlash + wrd.ctest + bas.cBackSlash + wrd.cunit + wrd.cTest + bas.cBackSlash + wrd.ctest + wrd.cData + bas.cBackSlash + wrd.cgeneric + bas.cBackSlash + wrd.cbasic + wrd.cTest + gen.cDotcsv; // C:\haystacks-async\test\unitTest\testData\generic\basicTest.csv
 export const cpathToSystemXmlFile = rootPathAsync + bas.cBackSlash + wrd.ctest + bas.cBackSlash + wrd.cunit + wrd.cTest + bas.cBackSlash + wrd.ctest + wrd.cData + bas.cBackSlash + wrd.cgeneric + bas.cBackSlash + wrd.csystem + gen.cDotxml; // C:\haystacks-async\test\unitTest\testData\generic\system.xml
+export const cpathToJsonTestFile = rootPathAsync + bas.cBackSlash + wrd.ctest + bas.cBackSlash + wrd.cunit + wrd.cTest + bas.cBackSlash + wrd.ctestData + bas.cBackSlash + wrd.cresources + bas.cBackSlash + gen.cjson + wrd.cTest + wrd.cData + bas.cBackSlash + bas.cForwardSlash + gen.cjson + wrd.cTest + wrd.cFile + gen.cDotjson; // C:\\haystacks-async\\test\\unitTest\\testData\\resources\\jsonTestData\\/jsonTestFile.json
 
 // Expected data
 export const cexpectedDataFromBasicCsv = {
@@ -60,3 +61,8 @@ export const cexpectedDataFromSystemXmlFile = {
         }
     ]
 }
+export const cexpectedDataFromJsonTestFile = {
+    [wrd.csystem + bas.cDot + wrd.cargument + wrd.cDriven + wrd.cInterface]: false,
+    [wrd.csystem + bas.cDot + wrd.cdebug + wrd.cSettings]: true,
+    [wrd.csystem + bas.cDot + wrd.cfiglet + wrd.cFont]: wrd.cStar + bas.cSpace + wrd.cWars
+} // {"system.argumentDrivenInterface": false, "system.debugSettings": true, "system.figletFont": "Star Wars"}

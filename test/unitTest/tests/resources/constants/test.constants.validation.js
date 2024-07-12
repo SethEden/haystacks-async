@@ -50,6 +50,11 @@ export const testConstantsValidation = [
     {Name: 'cfindUniversalDebugConfigSetting', Actual: tst_con.cfindUniversalDebugConfigSetting, Expected: 'findUniversalDebugConfigSetting'},
     {Name: 'cloadAllCsvData', Actual: tst_con.cloadAllCsvData, Expected: 'loadAllCsvData'},
     {Name: 'cloadAllXmlData', Actual: tst_con.cloadAllXmlData, Expected: 'loadAllXmlData'},
+    // {Name: 'cloadAllJsonData', Actual: tst_con.cloadAllJsonData, Expected: 'loadAllJsonData'},
+    {Name: 'cprocessCsvData', Actual: tst_con.cprocessCsvData, Expected: 'processCsvData'},
+    {Name: 'cpreprocessJsonFile', Actual: tst_con.cpreprocessJsonFile, Expected: 'preprocessJsonFile'},
+
+
 
     /* ruleBroker */
 
@@ -366,6 +371,7 @@ export const testConstantsValidation = [
     // loadAllCsvData
     {Name: 'cloadAllCsvData_validData', Actual: tst_con.cloadAllCsvData_validData, Expected: 'loadAllCsvData_validData'},
     {Name: 'cloadAllCsvData_inValidFilesToLoadString', Actual: tst_con.cloadAllCsvData_inValidFilesToLoadString, Expected: 'loadAllCsvData_inValidFilesToLoadString'},
+    {Name: 'cloadAllCsvData_inValidContextNameString', Actual: tst_con.cloadAllCsvData_inValidContextNameString, Expected: 'loadAllCsvData_inValidContextNameString'},
     {Name: 'cloadAllCsvData_inValidFilesToLoadInteger', Actual: tst_con.cloadAllCsvData_inValidFilesToLoadInteger, Expected: 'loadAllCsvData_inValidFilesToLoadInteger'},
     {Name: 'cloadAllCsvData_inValidFilesToLoadBoolean', Actual: tst_con.cloadAllCsvData_inValidFilesToLoadBoolean, Expected: 'loadAllCsvData_inValidFilesToLoadBoolean'},
     {Name: 'cloadAllCsvData_inValidContextNameInteger', Actual: tst_con.cloadAllCsvData_inValidContextNameInteger, Expected: 'loadAllCsvData_inValidContextNameInteger'},
@@ -378,6 +384,7 @@ export const testConstantsValidation = [
     // loadAllXmlData
     {Name: 'cloadAllXmlData_validData', Actual: tst_con.cloadAllXmlData_validData, Expected: 'loadAllXmlData_validData'},
     {Name: 'cloadAllXmlData_inValidFilesToLoadString', Actual: tst_con.cloadAllXmlData_inValidFilesToLoadString, Expected: 'loadAllXmlData_inValidFilesToLoadString'},
+    {Name: 'cloadAllXmlData_inValidContextNameString', Actual: tst_con.cloadAllXmlData_inValidContextNameString, Expected: 'loadAllXmlData_inValidContextNameString'},
     {Name: 'cloadAllXmlData_inValidFilesToLoadInteger', Actual: tst_con.cloadAllXmlData_inValidFilesToLoadInteger, Expected: 'loadAllXmlData_inValidFilesToLoadInteger'},
     {Name: 'cloadAllXmlData_inValidFilesToLoadBoolean', Actual: tst_con.cloadAllXmlData_inValidFilesToLoadBoolean, Expected: 'loadAllXmlData_inValidFilesToLoadBoolean'},
     {Name: 'cloadAllXmlData_inValidContextNameInteger', Actual: tst_con.cloadAllXmlData_inValidContextNameInteger, Expected: 'loadAllXmlData_inValidContextNameInteger'},
@@ -386,6 +393,38 @@ export const testConstantsValidation = [
     {Name: 'cloadAllXmlData_inValidFilesToLoadNaN', Actual: tst_con.cloadAllXmlData_inValidFilesToLoadNaN, Expected: 'loadAllXmlData_inValidFilesToLoadNaN'},
     {Name: 'cloadAllXmlData_inValidContextNameUndefined', Actual: tst_con.cloadAllXmlData_inValidContextNameUndefined, Expected: 'loadAllXmlData_inValidContextNameUndefined'},
     {Name: 'cloadAllXmlData_inValidContextNameNaN', Actual: tst_con.cloadAllXmlData_inValidContextNameNaN, Expected: 'loadAllXmlData_inValidContextNameNaN'},
+
+    // loadAllJsonData
+    {Name: 'cloadAllJsonData_inValidFilesToLoadString', Actual: tst_con.cloadAllJsonData_inValidFilesToLoadString, Expected: 'loadAllJsonData_inValidFilesToLoadString'},
+    {Name: 'cloadAllJsonData_inValidFilesToLoadInteger', Actual: tst_con.cloadAllJsonData_inValidFilesToLoadInteger, Expected: 'loadAllJsonData_inValidFilesToLoadInteger'},
+    {Name: 'cloadAllJsonData_inValidFilesToLoadBoolean', Actual: tst_con.cloadAllJsonData_inValidFilesToLoadBoolean, Expected: 'loadAllJsonData_inValidFilesToLoadBoolean'},
+    {Name: 'cloadAllJsonData_inValidFilesToLoadUndefined', Actual: tst_con.cloadAllJsonData_inValidFilesToLoadUndefined, Expected: 'loadAllJsonData_inValidFilesToLoadUndefined'},
+    {Name: 'cloadAllJsonData_inValidFilesToLoadNaN', Actual: tst_con.cloadAllJsonData_inValidFilesToLoadNaN, Expected: 'loadAllJsonData_inValidFilesToLoadNaN'},
+
+    // processCsvData
+    {Name: 'cprocessCsvData_validData', Actual: tst_con.cprocessCsvData_validData, Expected: 'processCsvData_validData'},
+    {Name: 'cprocessCsvData_inValidDataString', Actual: tst_con.cprocessCsvData_inValidDataString, Expected: 'processCsvData_inValidDataString'},
+    {Name: 'cprocessCsvData_inValidContextNameString', Actual: tst_con.cprocessCsvData_inValidContextNameString, Expected: 'processCsvData_inValidContextNameString'},
+    {Name: 'cprocessCsvData_inValidDataInteger', Actual: tst_con.cprocessCsvData_inValidDataInteger, Expected: 'processCsvData_inValidDataInteger'},
+    {Name: 'cprocessCsvData_inValidDataBoolean', Actual: tst_con.cprocessCsvData_inValidDataBoolean, Expected: 'processCsvData_inValidDataBoolean'},
+    {Name: 'cprocessCsvData_inValidContextNameInteger', Actual: tst_con.cprocessCsvData_inValidContextNameInteger, Expected: 'processCsvData_inValidContextNameInteger'},
+    {Name: 'cprocessCsvData_inValidContextNameBoolean', Actual: tst_con.cprocessCsvData_inValidContextNameBoolean, Expected: 'processCsvData_inValidContextNameBoolean'},
+    {Name: 'cprocessCsvData_inValidDataUndefined', Actual: tst_con.cprocessCsvData_inValidDataUndefined, Expected: 'processCsvData_inValidDataUndefined'},
+    {Name: 'cprocessCsvData_inValidDataNaN', Actual: tst_con.cprocessCsvData_inValidDataNaN, Expected: 'processCsvData_inValidDataNaN'},
+    {Name: 'cprocessCsvData_inValidContextNameUndefined', Actual: tst_con.cprocessCsvData_inValidContextNameUndefined, Expected: 'processCsvData_inValidContextNameUndefined'},
+    {Name: 'cprocessCsvData_inValidContextNameNaN', Actual: tst_con.cprocessCsvData_inValidContextNameNaN, Expected: 'processCsvData_inValidContextNameNaN'},
+        
+    // preprocessJsonFile
+    {Name: 'cpreprocessJsonFile_validFileToLoadData', Actual: tst_con.cpreprocessJsonFile_validFileToLoadData, Expected: 'preprocessJsonFile_validFileToLoadData'},
+    {Name: 'cpreprocessJsonFile_inValidFileToLoadString', Actual: tst_con.cpreprocessJsonFile_inValidFileToLoadString, Expected: 'preprocessJsonFile_inValidFileToLoadString'},
+    {Name: 'cpreprocessJsonFile_inValidFileToLoadInteger', Actual: tst_con.cpreprocessJsonFile_inValidFileToLoadInteger, Expected: 'preprocessJsonFile_inValidFileToLoadInteger'},
+    {Name: 'cpreprocessJsonFile_inValidFileToLoadBoolean', Actual: tst_con.cpreprocessJsonFile_inValidFileToLoadBoolean, Expected: 'preprocessJsonFile_inValidFileToLoadBoolean'},
+    {Name: 'cpreprocessJsonFile_inValidFileToLoadUndefined', Actual: tst_con.cpreprocessJsonFile_inValidFileToLoadUndefined, Expected: 'preprocessJsonFile_inValidFileToLoadUndefined'},
+    {Name: 'cpreprocessJsonFile_inValidFileToLoadNaN', Actual: tst_con.cpreprocessJsonFile_inValidFileToLoadNaN, Expected: 'preprocessJsonFile_inValidFileToLoadNaN'},
+
+
+
+
 
 
     /* ruleBroker */
