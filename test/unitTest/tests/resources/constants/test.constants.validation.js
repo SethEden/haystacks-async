@@ -53,6 +53,9 @@ export const testConstantsValidation = [
     // {Name: 'cloadAllJsonData', Actual: tst_con.cloadAllJsonData, Expected: 'loadAllJsonData'},
     {Name: 'cprocessCsvData', Actual: tst_con.cprocessCsvData, Expected: 'processCsvData'},
     {Name: 'cpreprocessJsonFile', Actual: tst_con.cpreprocessJsonFile, Expected: 'preprocessJsonFile'},
+    {Name: 'cwriteJsonDataToFile', Actual: tst_con.cwriteJsonDataToFile, Expected: 'writeJsonDataToFile'},
+    {Name: 'csetupDataStorage', Actual: tst_con.csetupDataStorage, Expected: 'setupDataStorage'},
+
 
 
 
@@ -422,7 +425,33 @@ export const testConstantsValidation = [
     {Name: 'cpreprocessJsonFile_inValidFileToLoadUndefined', Actual: tst_con.cpreprocessJsonFile_inValidFileToLoadUndefined, Expected: 'preprocessJsonFile_inValidFileToLoadUndefined'},
     {Name: 'cpreprocessJsonFile_inValidFileToLoadNaN', Actual: tst_con.cpreprocessJsonFile_inValidFileToLoadNaN, Expected: 'preprocessJsonFile_inValidFileToLoadNaN'},
 
+    // writeJsonDataToFile
+    {Name: 'cwriteJsonDataToFile_validData', Actual: tst_con.cwriteJsonDataToFile_validData, Expected: 'writeJsonDataToFile_validData'},
+    {Name: 'cwriteJsonDataToFile_inValidFileToSaveToString', Actual: tst_con.cwriteJsonDataToFile_inValidFileToSaveToString, Expected: 'writeJsonDataToFile_inValidFileToSaveToString'},
+    {Name: 'cwriteJsonDataToFile_inValidDataToWriteOutString', Actual: tst_con.cwriteJsonDataToFile_inValidDataToWriteOutString, Expected: 'writeJsonDataToFile_inValidDataToWriteOutString'},
+    {Name: 'cwriteJsonDataToFile_inValidFileToSaveToInteger', Actual: tst_con.cwriteJsonDataToFile_inValidFileToSaveToInteger, Expected: 'writeJsonDataToFile_inValidFileToSaveToInteger'},
+    {Name: 'cwriteJsonDataToFile_inValidFileToSaveToBoolean', Actual: tst_con.cwriteJsonDataToFile_inValidFileToSaveToBoolean, Expected: 'writeJsonDataToFile_inValidFileToSaveToBoolean'},
+    {Name: 'cwriteJsonDataToFile_inValidDataToWriteOutInteger', Actual: tst_con.cwriteJsonDataToFile_inValidDataToWriteOutInteger, Expected: 'writeJsonDataToFile_inValidDataToWriteOutInteger'},
+    {Name: 'cwriteJsonDataToFile_inValidDataToWriteOutBoolean', Actual: tst_con.cwriteJsonDataToFile_inValidDataToWriteOutBoolean, Expected: 'writeJsonDataToFile_inValidDataToWriteOutBoolean'},
+    {Name: 'cwriteJsonDataToFile_inValidFileToSaveToUndefined', Actual: tst_con.cwriteJsonDataToFile_inValidFileToSaveToUndefined, Expected: 'writeJsonDataToFile_inValidFileToSaveToUndefined'},
+    {Name: 'cwriteJsonDataToFile_inValidFileToSaveToNaN', Actual: tst_con.cwriteJsonDataToFile_inValidFileToSaveToNaN, Expected: 'writeJsonDataToFile_inValidFileToSaveToNaN'},
+    {Name: 'cwriteJsonDataToFile_inValidDataToWriteOutUndefined', Actual: tst_con.cwriteJsonDataToFile_inValidDataToWriteOutUndefined, Expected: 'writeJsonDataToFile_inValidDataToWriteOutUndefined'},
+    {Name: 'cwriteJsonDataToFile_inValidDataToWriteOutNaN', Actual: tst_con.cwriteJsonDataToFile_inValidDataToWriteOutNaN, Expected: 'writeJsonDataToFile_inValidDataToWriteOutNaN'},
 
+    // setupDataStorage
+    {Name: 'csetupDataStorage_validData', Actual: tst_con.csetupDataStorage_validData, Expected: 'setupDataStorage_validData'},
+
+    // storeData
+    {Name: 'cstoreData_inValidDataStorageContextNameString', Actual: tst_con.cstoreData_inValidDataStorageContextNameString, Expected: 'storeData_inValidDataStorageContextNameString'},
+    {Name: 'cstoreData_inValidDataToStoreString', Actual: tst_con.cstoreData_inValidDataToStoreString, Expected: 'storeData_inValidDataToStoreString'},
+    {Name: 'cstoreData_inValidDataStorageContextNameInteger', Actual: tst_con.cstoreData_inValidDataStorageContextNameInteger, Expected: 'storeData_inValidDataStorageContextNameInteger'},
+    {Name: 'cstoreData_inValidDataStorageContextNameBoolean', Actual: tst_con.cstoreData_inValidDataStorageContextNameBoolean, Expected: 'storeData_inValidDataStorageContextNameBoolean'},
+    {Name: 'cstoreData_inValidDataToStoreInteger', Actual: tst_con.cstoreData_inValidDataToStoreInteger, Expected: 'storeData_inValidDataToStoreInteger'},
+    {Name: 'cstoreData_inValidDataToStoreBoolean', Actual: tst_con.cstoreData_inValidDataToStoreBoolean, Expected: 'storeData_inValidDataToStoreBoolean'},
+    {Name: 'cstoreData_inValidDataStorageContextNameUndefined', Actual: tst_con.cstoreData_inValidDataStorageContextNameUndefined, Expected: 'storeData_inValidDataStorageContextNameUndefined'},
+    {Name: 'cstoreData_inValidDataStorageContextNameNaN', Actual: tst_con.cstoreData_inValidDataStorageContextNameNaN, Expected: 'storeData_inValidDataStorageContextNameNaN'},
+    {Name: 'cstoreData_inValidDataToStoreUndefined', Actual: tst_con.cstoreData_inValidDataToStoreUndefined, Expected: 'storeData_inValidDataToStoreUndefined'},
+    {Name: 'cstoreData_inValidDataToStoreNaN', Actual: tst_con.cstoreData_inValidDataToStoreNaN, Expected: 'storeData_inValidDataToStoreNaN'},
 
 
 

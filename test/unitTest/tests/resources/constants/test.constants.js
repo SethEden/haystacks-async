@@ -51,6 +51,8 @@ export const cloadAllXmlData = wrd.cload + wrd.cAll + gen.cXml + wrd.cData; // l
 // export const cloadAllJsonData = wrd.cload + wrd.cAll + gen.cJson + wrd.cData; // loadAllJsonData
 export const cprocessCsvData = wrd.cprocess + gen.cCsv + wrd.cData; // processCsvData
 export const cpreprocessJsonFile = wrd.cpreprocess + gen.cJson + wrd.cFile; // preprocessJsonFile
+export const cwriteJsonDataToFile = wrd.cwrite + gen.cJson + wrd.cData + wrd.cTo + wrd.cFile; // writeJsonDataToFile
+export const csetupDataStorage = wrd.csetup + wrd.cData + wrd.cStorage; // setupDataStorage
 
 
 
@@ -435,6 +437,33 @@ export const cpreprocessJsonFile_inValidFileToLoadBoolean = cpreprocessJsonFile 
 export const cpreprocessJsonFile_inValidFileToLoadUndefined = cpreprocessJsonFile + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cFile + wrd.cTo + wrd.cLoad + "Undefined"; // preprocessJsonFile_inValidFileToLoadUndefined
 export const cpreprocessJsonFile_inValidFileToLoadNaN = cpreprocessJsonFile + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cFile + wrd.cTo + wrd.cLoad + "NaN"; // preprocessJsonFile_inValidFileToLoadNaN
 
+// writeJsonDataToFile
+export const cwriteJsonDataToFile_validData = cwriteJsonDataToFile + bas.cUnderscore + wrd.cvalid + wrd.cData; // writeJsonDataToFile_validData
+export const cwriteJsonDataToFile_inValidFileToSaveToString = cwriteJsonDataToFile + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cFile + wrd.cTo + wrd.cSave + wrd.cTo + wrd.cString; // writeJsonDataToFile_inValidFileToSaveToString
+export const cwriteJsonDataToFile_inValidDataToWriteOutString = cwriteJsonDataToFile + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cData + wrd.cTo + wrd.cWrite + wrd.cOut + wrd.cString; // writeJsonDataToFile_inValidDataToWriteOutString
+export const cwriteJsonDataToFile_inValidFileToSaveToInteger = cwriteJsonDataToFile + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cFile + wrd.cTo + wrd.cSave + wrd.cTo + wrd.cInteger; // writeJsonDataToFile_inValidFileToSaveToInteger
+export const cwriteJsonDataToFile_inValidFileToSaveToBoolean = cwriteJsonDataToFile + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cFile + wrd.cTo + wrd.cSave + wrd.cTo + wrd.cBoolean; // writeJsonDataToFile_inValidFileToSaveToBoolean
+export const cwriteJsonDataToFile_inValidDataToWriteOutInteger = cwriteJsonDataToFile + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cData + wrd.cTo + wrd.cWrite + wrd.cOut + wrd.cInteger; // writeJsonDataToFile_inValidDataToWriteOutInteger
+export const cwriteJsonDataToFile_inValidDataToWriteOutBoolean = cwriteJsonDataToFile + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cData + wrd.cTo + wrd.cWrite + wrd.cOut + wrd.cBoolean; // writeJsonDataToFile_inValidDataToWriteOutBoolean
+export const cwriteJsonDataToFile_inValidFileToSaveToUndefined = cwriteJsonDataToFile + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cFile + wrd.cTo + wrd.cSave + wrd.cTo + 'Undefined'; // writeJsonDataToFile_inValidFileToSaveToUndefined
+export const cwriteJsonDataToFile_inValidFileToSaveToNaN = cwriteJsonDataToFile + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cFile + wrd.cTo + wrd.cSave + wrd.cTo + 'NaN'; // writeJsonDataToFile_inValidFileToSaveToNaN
+export const cwriteJsonDataToFile_inValidDataToWriteOutUndefined = cwriteJsonDataToFile + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cData + wrd.cTo + wrd.cWrite + wrd.cOut + 'Undefined'; // writeJsonDataToFile_inValidDataToWriteOutUndefined
+export const cwriteJsonDataToFile_inValidDataToWriteOutNaN = cwriteJsonDataToFile + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cData + wrd.cTo + wrd.cWrite + wrd.cOut + 'NaN'; // writeJsonDataToFile_inValidDataToWriteOutNaN
+
+// setupDataStorage
+export const csetupDataStorage_validData = csetupDataStorage + bas.cUnderscore + wrd.cvalid + wrd.cData; // setupDataStorage_validData
+
+// storeData
+export const cstoreData_inValidDataStorageContextNameString = cstoreData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cData + wrd.cStorage + wrd.cContext + wrd.cName + wrd.cString; // storeData_inValidDataStorageContextNameString
+export const cstoreData_inValidDataToStoreString = cstoreData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cData + wrd.cTo + wrd.cStore + wrd.cString; // storeData_inValidDataToStoreString
+export const cstoreData_inValidDataStorageContextNameInteger = cstoreData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cData + wrd.cStorage + wrd.cContext + wrd.cName + wrd.cInteger; // storeData_inValidDataStorageContextNameInteger
+export const cstoreData_inValidDataStorageContextNameBoolean = cstoreData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cData + wrd.cStorage + wrd.cContext + wrd.cName + wrd.cBoolean; // storeData_inValidDataStorageContextNameBoolean
+export const cstoreData_inValidDataToStoreInteger = cstoreData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cData + wrd.cTo + wrd.cStore + wrd.cInteger; // storeData_inValidDataToStoreInteger
+export const cstoreData_inValidDataToStoreBoolean = cstoreData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cData + wrd.cTo + wrd.cStore + wrd.cBoolean; // storeData_inValidDataToStoreBoolean
+export const cstoreData_inValidDataStorageContextNameUndefined = cstoreData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cData + wrd.cStorage + wrd.cContext + wrd.cName + 'Undefined'; // storeData_inValidDataStorageContextNameUndefined
+export const cstoreData_inValidDataStorageContextNameNaN = cstoreData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cData + wrd.cStorage + wrd.cContext + wrd.cName + 'NaN'; // storeData_inValidDataStorageContextNameNaN
+export const cstoreData_inValidDataToStoreUndefined = cstoreData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cData + wrd.cTo + wrd.cStore + 'Undefined'; // storeData_inValidDataToStoreUndefined
+export const cstoreData_inValidDataToStoreNaN = cstoreData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cData + wrd.cTo + wrd.cStore + 'NaN'; // storeData_inValidDataToStoreNaN
 
 
 

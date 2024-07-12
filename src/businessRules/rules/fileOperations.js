@@ -156,7 +156,7 @@ async function getJsonData(inputData, inputMetaData) {
  * @description Writes out JSON data to the specified file and path location, it will automatically over-write any existing file.
  * @param {string} inputData The path and file name for the file that should have data written to it.
  * @param {object} inputMetaData The data that should be written to the specified file.
- * @return {boolean} True of False to indicate if the file was written out successfully or not.
+ * @return {boolean} True or False to indicate if the file was written out successfully or not.
  * @author Seth Hollingsead
  * @date 2022/04/28
  */
@@ -166,14 +166,39 @@ async function writeJsonData(inputData, inputMetaData) {
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
   let returnData = false;
-  try {
-    await fs.writeFileSync(inputData, JSON.stringify(inputMetaData, null, 2));
-    returnData = true;
-  } catch (err) {
-    // ERROR:
-    console.error(sys.cERROR_Colon + err);
+  const isValidJSON = (inputMetaData) => {
+    try {
+      JSON.parse(inputMetaData);
+      return true; // Valid JSON
+    } catch (err) {
+      return false; // Invalid JSON
+    }
+  };
+  if ((inputData && typeof inputData === wrd.cstring && (inputData.includes(bas.cForwardSlash) === true || inputData.includes(bas.cBackSlash) === true))) {
+    inputData = await ruleParsing.processRulesInternal([inputData, ''], [biz.cswapDoubleForwardSlashToSingleForwardSlash]);
+    inputData = path.resolve(inputData);
+    let fileExtension = await ruleParsing.processRulesInternal([inputData, ''], [biz.cgetFileExtension, biz.cremoveDotFromFileExtension]);
+    if (fileExtension.toUpperCase() !== gen.cJSON) {
+      // WARNING: You are writing JSON data to a file that is not a JSON file.
+      console.log(msg.cWarningWriteJsonDataMessage01);
+    }
+    if (inputMetaData && typeof inputMetaData === wrd.cobject && isValidJSON) {
+      try {
+        await fs.writeFileSync(inputData, JSON.stringify(inputMetaData, null, 2));
+        returnData = true;
+      } catch (err) {
+        // ERROR:
+        console.error(sys.cERROR_Colon + err);
+      }
+      // Data was written to the file;
+    } else {
+      // ERROR: Invalid input, inputMetaData is:
+      console.log(msg.cErrorInvalidInputMetaDataMessage + inputMetaData);
+    }
+  } else {
+    // ERROR: Invalid input, inputData is:
+    console.log(msg.cErrorInvalidInputDataMessage + inputData);
   }
-  // Data was written to the file;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cDataWasWrittenToTheFile + inputData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);

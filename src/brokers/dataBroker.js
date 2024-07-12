@@ -201,7 +201,7 @@ async function loadAllCsvData(filesToLoad, contextName) {
         let fileExtension = await ruleBroker.processRules([fileToLoad, ''], [biz.cgetFileExtension, biz.cremoveDotFromFileExtension]);
         // fileExtension is:
         await loggers.consoleLog(namespacePrefix + functionName, msg.cfileExtensionIs + fileExtension);
-        if (fileExtension === gen.ccsv || fileExtension === gen.cCsv || fileExtension === gen.cCSV) {
+        if (fileExtension.toUpperCase() === gen.cCSV) {
           // execute business rules:
           // loggers.consoleLog(namespacePrefix + functionName, msg.cexecuteBusinessRulesColon + JSON.stringify(rules));
           // This next line is commented out because it was resulting in colors_colors, which didn't make any sense.
@@ -213,7 +213,7 @@ async function loadAllCsvData(filesToLoad, contextName) {
           // loaded file data is:
           await loggers.consoleLog(namespacePrefix + functionName , msg.cloadedFileDataIs + JSON.stringify(dataFile));
           returnData = await processCsvData(dataFile, contextName);
-        } // End-if (fileExtension === gen.ccsv || fileExtension === gen.cCsv || fileExtension === gen.cCSV)
+        } // End-if (fileExtension.toUpperCase() === gen.cCSV)
       } // End-for (const element of filesToLoad)
     } else {
       // ERROR: Invalid input, contextName: 
@@ -265,7 +265,7 @@ async function loadAllXmlData(filesToLoad, contextName) {
         let fileExtension = await ruleBroker.processRules([fileToLoad, ''], [biz.cgetFileExtension, biz.cremoveDotFromFileExtension]);
         // fileExtension is:
         await loggers.consoleLog(namespacePrefix + functionName, msg.cfileExtensionIs + fileExtension);
-        if (fileExtension === gen.cxml || fileExtension === gen.cXml || fileExtension === gen.cXML) {
+        if (fileExtension.toUpperCase() === gen.cXML) {
           // execute business rules:
           await loggers.consoleLog(namespacePrefix + functionName, msg.cexecuteBusinessRulesColon + JSON.stringify(fileNameRules));
           contextName = contextName + bas.cUnderscore + await ruleBroker.processRules([fileToLoad, ''], fileNameRules);
@@ -299,7 +299,7 @@ async function loadAllXmlData(filesToLoad, contextName) {
           // MERGED data is:
           await loggers.consoleLog(namespacePrefix + functionName, msg.cMERGED_dataIs + JSON.stringify(multiMergedData));
           dataFile = {};
-        } // End-if (fileExtension === gen.cxml || fileExtension === gen.cXml || fileExtension === gen.cXML)
+        } // End-if (fileExtension.toUpperCase() === gen.cXML)
         // END i-th loop:
         await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_ithLoop + i);
       } // End-for (let i = 0; i < filesToLoad.length; i++)
@@ -654,7 +654,7 @@ async function preprocessJsonFile(fileToLoad) {
  * @function writeJsonDataToFile
  * @description This is a wrapper function for businessRules.rules.fileOperations.writeJsonData.
  * @param {string} fileToSaveTo The full path to the file that should have the data written to it.
- * @param {object} dataToWriteOut The JSON data that should be written out to the specified JSON file.
+ * @param {object} dataToWriteOut The JSON data that should be written out to the specified file.
  * @return {boolean} True or False to indicate if the file was saved successfully or not.
  * @author Seth Hollingsead
  * @date 2022/03/11
@@ -665,7 +665,7 @@ async function writeJsonDataToFile(fileToSaveTo, dataToWriteOut) {
   await loggers.consoleLog(namespacePrefix + functionName, msg.cfileToSaveToIs + fileToSaveTo);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cdataToWriteOutIs + JSON.stringify(dataToWriteOut));
   let fileWriteRules = [biz.cwriteJsonData];
-  let returnData = await ruleBroker.processRules([path.resolve(fileToSaveTo), dataToWriteOut], fileWriteRules);
+  let returnData = await ruleBroker.processRules([fileToSaveTo, dataToWriteOut], fileWriteRules);
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
@@ -674,15 +674,21 @@ async function writeJsonDataToFile(fileToSaveTo, dataToWriteOut) {
 /**
  * @function setupDataStorage
  * @description Does the initial setup of data storage on the D data structure.
- * @return {void} Nothing to return.
+ * @return {boolean} True or False to indicate if the operation was successful.
  * @author Seth Hollingsead
  * @date 2022/01/20
  */
 async function setupDataStorage() {
   let functionName = storeData.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  let returnData = false;
   D[sys.cDataStorage] = {};
+  if (D[sys.cDataStorage] !== undefined && D[sys.cDataStorage] !== null) {
+    returnData = true;
+  }
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
 }
 
 /**

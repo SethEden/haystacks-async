@@ -37,6 +37,7 @@ import * as tst_dbt from '../../testData/brokers/dataBrokerTest.js'
 // External imports
 import hayConst from '@haystacks/constants';
 import { describe, expect, test } from '@jest/globals';
+import fs from 'fs';
 
 const { bas, cmd, biz, cfg, fnc, gen, msg, sys, wrd, num } = hayConst;
 
@@ -376,13 +377,13 @@ describe(tst_con.cscanDataPath, () => {
             [biz.cswapBackSlashToForwardSlash]: (inputData, inputMetaData) => characterStringParsing.swapBackSlashToForwardSlash(inputData, inputMetaData),
             [biz.creadDirectoryContents]: (inputData, inputMetaData) => fileOperations.readDirectoryContents(inputData, inputMetaData)
         };
-        let dataPath = tst_dbt.cpathForUnitTestingData;
+        let dataPath = tst_dbt.cpathForTestFolder;
 
         // Act
         let returnData = await dataBroker.scanDataPath(dataPath);
 
         // Assert
-        expect(returnData).toEqual([tst_dbt.cexpectedPathForUnitTestData]);
+        expect(returnData).toEqual([tst_dbt.cexpectedPathForTestFolder]);
     });
 
     /**
@@ -2124,6 +2125,480 @@ describe(tst_con.cpreprocessJsonFile, () => {
         expect(returnData).toBeFalsy();
     });
 })
+
+/**
+ * @function writeJsonDataToFile
+ * @description Tests the positive and negative test cases of the writeJsonDataToFile
+ * @author Vlad Sorokin
+ * @date 2024/07/12
+ */
+describe(tst_con.cwriteJsonDataToFile, () => {
+    /**
+     * @function writeJsonDataToFile_validData
+     * @description Tests the dataBroker function writeJsonDataToFile with a valid input.
+     * @author Vlad Sorokin
+     * @date 2024/07/12
+     */
+    test(tst_con.cwriteJsonDataToFile_validData, async () => {
+        // Arrange
+        D[wrd.cconfiguration] = {};
+        D[sys.cbusinessRules] = {
+            [biz.cswapDoubleForwardSlashToSingleForwardSlash]: (inputData, inputMetaData) => characterStringParsing.swapDoubleForwardSlashToSingleForwardSlash(inputData, inputMetaData),
+            [biz.cgetFileExtension]: (inputData, inputMetaData) => fileStringParsing.getFileExtension(inputData, inputMetaData),
+            [biz.cremoveDotFromFileExtension]: (inputData, inputMetaData) => fileStringParsing.removeDotFromFileExtension(inputData, inputMetaData),
+            [biz.cwriteJsonData]: (inputData, inputMetaData) => fileOperations.writeJsonData(inputData, inputMetaData)
+        }
+        let fileToSaveTo = tst_dbt.cpathToJsonTestFile;
+        let dataToWriteOut = tst_dbt.cexpectedDataFromJsonTestFile;
+
+        // Act
+        let returnData = await dataBroker.writeJsonDataToFile(fileToSaveTo, dataToWriteOut);
+
+        // Assert
+        expect(returnData).toBeTruthy();
+    });
+
+    /**
+     * @function writeJsonDataToFile_inValidFileToSaveToString
+     * @description Tests the dataBroker function writeJsonDataToFile with a invalid data string.
+     * @author Vlad Sorokin
+     * @date 2024/07/12
+     */
+    test(tst_con.cwriteJsonDataToFile_inValidFileToSaveToString, async () => {
+        // Arrange
+        D[wrd.cconfiguration] = {};
+        D[sys.cbusinessRules] = {
+            [biz.cswapDoubleForwardSlashToSingleForwardSlash]: (inputData, inputMetaData) => characterStringParsing.swapDoubleForwardSlashToSingleForwardSlash(inputData, inputMetaData),
+            [biz.cgetFileExtension]: (inputData, inputMetaData) => fileStringParsing.getFileExtension(inputData, inputMetaData),
+            [biz.cremoveDotFromFileExtension]: (inputData, inputMetaData) => fileStringParsing.removeDotFromFileExtension(inputData, inputMetaData),
+            [biz.cwriteJsonData]: (inputData, inputMetaData) => fileOperations.writeJsonData(inputData, inputMetaData)
+        }
+        let fileToSaveTo = tst_man.ctestString1;
+        let dataToWriteOut = tst_dbt.cexpectedDataFromJsonTestFile;
+
+        // Act
+        let returnData = await dataBroker.writeJsonDataToFile(fileToSaveTo, dataToWriteOut);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function writeJsonDataToFile_inValidDataToWriteOutString
+     * @description Tests the dataBroker function writeJsonDataToFile with a invalid data string.
+     * @author Vlad Sorokin
+     * @date 2024/07/12
+     */
+    test(tst_con.cwriteJsonDataToFile_inValidDataToWriteOutString, async () => {
+        // Arrange
+        D[wrd.cconfiguration] = {};
+        D[sys.cbusinessRules] = {
+            [biz.cswapDoubleForwardSlashToSingleForwardSlash]: (inputData, inputMetaData) => characterStringParsing.swapDoubleForwardSlashToSingleForwardSlash(inputData, inputMetaData),
+            [biz.cgetFileExtension]: (inputData, inputMetaData) => fileStringParsing.getFileExtension(inputData, inputMetaData),
+            [biz.cremoveDotFromFileExtension]: (inputData, inputMetaData) => fileStringParsing.removeDotFromFileExtension(inputData, inputMetaData),
+            [biz.cwriteJsonData]: (inputData, inputMetaData) => fileOperations.writeJsonData(inputData, inputMetaData)
+        }
+        let fileToSaveTo = tst_dbt.cpathToJsonTestFile;
+        let dataToWriteOut = tst_man.ctestString1;
+
+        // Act
+        let returnData = await dataBroker.writeJsonDataToFile(fileToSaveTo, dataToWriteOut);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function writeJsonDataToFile_inValidFileToSaveToInteger
+     * @description Tests the dataBroker function writeJsonDataToFile with a invalid data integer.
+     * @author Vlad Sorokin
+     * @date 2024/07/12
+     */
+    test(tst_con.cwriteJsonDataToFile_inValidFileToSaveToInteger, async () => {
+        // Arrange
+        D[wrd.cconfiguration] = {};
+        D[sys.cbusinessRules] = {
+            [biz.cswapDoubleForwardSlashToSingleForwardSlash]: (inputData, inputMetaData) => characterStringParsing.swapDoubleForwardSlashToSingleForwardSlash(inputData, inputMetaData),
+            [biz.cgetFileExtension]: (inputData, inputMetaData) => fileStringParsing.getFileExtension(inputData, inputMetaData),
+            [biz.cremoveDotFromFileExtension]: (inputData, inputMetaData) => fileStringParsing.removeDotFromFileExtension(inputData, inputMetaData),
+            [biz.cwriteJsonData]: (inputData, inputMetaData) => fileOperations.writeJsonData(inputData, inputMetaData)
+        }
+        let fileToSaveTo = 123;
+        let dataToWriteOut = tst_dbt.cexpectedDataFromJsonTestFile;
+
+        // Act
+        let returnData = await dataBroker.writeJsonDataToFile(fileToSaveTo, dataToWriteOut);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function writeJsonDataToFile_inValidFileToSaveToBoolean
+     * @description Tests the dataBroker function writeJsonDataToFile with a invalid data boolean.
+     * @author Vlad Sorokin
+     * @date 2024/07/12
+     */
+    test(tst_con.cwriteJsonDataToFile_inValidFileToSaveToBoolean, async () => {
+        // Arrange
+        D[wrd.cconfiguration] = {};
+        D[sys.cbusinessRules] = {
+            [biz.cswapDoubleForwardSlashToSingleForwardSlash]: (inputData, inputMetaData) => characterStringParsing.swapDoubleForwardSlashToSingleForwardSlash(inputData, inputMetaData),
+            [biz.cgetFileExtension]: (inputData, inputMetaData) => fileStringParsing.getFileExtension(inputData, inputMetaData),
+            [biz.cremoveDotFromFileExtension]: (inputData, inputMetaData) => fileStringParsing.removeDotFromFileExtension(inputData, inputMetaData),
+            [biz.cwriteJsonData]: (inputData, inputMetaData) => fileOperations.writeJsonData(inputData, inputMetaData)
+        }
+        let fileToSaveTo = false;
+        let dataToWriteOut = tst_dbt.cexpectedDataFromJsonTestFile;
+
+        // Act
+        let returnData = await dataBroker.writeJsonDataToFile(fileToSaveTo, dataToWriteOut);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function writeJsonDataToFile_inValidDataToWriteOutInteger
+     * @description Tests the dataBroker function writeJsonDataToFile with a invalid data integer.
+     * @author Vlad Sorokin
+     * @date 2024/07/12
+     */
+    test(tst_con.cwriteJsonDataToFile_inValidDataToWriteOutInteger, async () => {
+        // Arrange
+        D[wrd.cconfiguration] = {};
+        D[sys.cbusinessRules] = {
+            [biz.cswapDoubleForwardSlashToSingleForwardSlash]: (inputData, inputMetaData) => characterStringParsing.swapDoubleForwardSlashToSingleForwardSlash(inputData, inputMetaData),
+            [biz.cgetFileExtension]: (inputData, inputMetaData) => fileStringParsing.getFileExtension(inputData, inputMetaData),
+            [biz.cremoveDotFromFileExtension]: (inputData, inputMetaData) => fileStringParsing.removeDotFromFileExtension(inputData, inputMetaData),
+            [biz.cwriteJsonData]: (inputData, inputMetaData) => fileOperations.writeJsonData(inputData, inputMetaData)
+        }
+        let fileToSaveTo = tst_dbt.cpathToJsonTestFile;
+        let dataToWriteOut = 123;
+
+        // Act
+        let returnData = await dataBroker.writeJsonDataToFile(fileToSaveTo, dataToWriteOut);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function writeJsonDataToFile_inValidDataToWriteOutBoolean
+     * @description Tests the dataBroker function writeJsonDataToFile with a invalid data boolean.
+     * @author Vlad Sorokin
+     * @date 2024/07/12
+     */
+    test(tst_con.cwriteJsonDataToFile_inValidDataToWriteOutBoolean, async () => {
+        // Arrange
+        D[wrd.cconfiguration] = {};
+        D[sys.cbusinessRules] = {
+            [biz.cswapDoubleForwardSlashToSingleForwardSlash]: (inputData, inputMetaData) => characterStringParsing.swapDoubleForwardSlashToSingleForwardSlash(inputData, inputMetaData),
+            [biz.cgetFileExtension]: (inputData, inputMetaData) => fileStringParsing.getFileExtension(inputData, inputMetaData),
+            [biz.cremoveDotFromFileExtension]: (inputData, inputMetaData) => fileStringParsing.removeDotFromFileExtension(inputData, inputMetaData),
+            [biz.cwriteJsonData]: (inputData, inputMetaData) => fileOperations.writeJsonData(inputData, inputMetaData)
+        }
+        let fileToSaveTo = tst_dbt.cpathToJsonTestFile;
+        let dataToWriteOut = false;
+
+        // Act
+        let returnData = await dataBroker.writeJsonDataToFile(fileToSaveTo, dataToWriteOut);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function writeJsonDataToFile_inValidFileToSaveToUndefined
+     * @description Tests the dataBroker function writeJsonDataToFile with a invalid data undefined.
+     * @author Vlad Sorokin
+     * @date 2024/07/12
+     */
+    test(tst_con.cwriteJsonDataToFile_inValidFileToSaveToUndefined, async () => {
+        // Arrange
+        D[wrd.cconfiguration] = {};
+        D[sys.cbusinessRules] = {
+            [biz.cswapDoubleForwardSlashToSingleForwardSlash]: (inputData, inputMetaData) => characterStringParsing.swapDoubleForwardSlashToSingleForwardSlash(inputData, inputMetaData),
+            [biz.cgetFileExtension]: (inputData, inputMetaData) => fileStringParsing.getFileExtension(inputData, inputMetaData),
+            [biz.cremoveDotFromFileExtension]: (inputData, inputMetaData) => fileStringParsing.removeDotFromFileExtension(inputData, inputMetaData),
+            [biz.cwriteJsonData]: (inputData, inputMetaData) => fileOperations.writeJsonData(inputData, inputMetaData)
+        }
+        let fileToSaveTo = undefined;
+        let dataToWriteOut = tst_dbt.cexpectedDataFromJsonTestFile;
+
+        // Act
+        let returnData = await dataBroker.writeJsonDataToFile(fileToSaveTo, dataToWriteOut);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function writeJsonDataToFile_inValidFileToSaveToNaN
+     * @description Tests the dataBroker function writeJsonDataToFile with a invalid data NaN.
+     * @author Vlad Sorokin
+     * @date 2024/07/12
+     */
+    test(tst_con.cwriteJsonDataToFile_inValidFileToSaveToNaN, async () => {
+        // Arrange
+        D[wrd.cconfiguration] = {};
+        D[sys.cbusinessRules] = {
+            [biz.cswapDoubleForwardSlashToSingleForwardSlash]: (inputData, inputMetaData) => characterStringParsing.swapDoubleForwardSlashToSingleForwardSlash(inputData, inputMetaData),
+            [biz.cgetFileExtension]: (inputData, inputMetaData) => fileStringParsing.getFileExtension(inputData, inputMetaData),
+            [biz.cremoveDotFromFileExtension]: (inputData, inputMetaData) => fileStringParsing.removeDotFromFileExtension(inputData, inputMetaData),
+            [biz.cwriteJsonData]: (inputData, inputMetaData) => fileOperations.writeJsonData(inputData, inputMetaData)
+        }
+        let fileToSaveTo = NaN;
+        let dataToWriteOut = tst_dbt.cexpectedDataFromJsonTestFile;
+
+        // Act
+        let returnData = await dataBroker.writeJsonDataToFile(fileToSaveTo, dataToWriteOut);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function writeJsonDataToFile_inValidDataToWriteOutUndefined
+     * @description Tests the dataBroker function writeJsonDataToFile with a invalid data undefined.
+     * @author Vlad Sorokin
+     * @date 2024/07/12
+     */
+    test(tst_con.cwriteJsonDataToFile_inValidDataToWriteOutUndefined, async () => {
+        // Arrange
+        D[wrd.cconfiguration] = {};
+        D[sys.cbusinessRules] = {
+            [biz.cswapDoubleForwardSlashToSingleForwardSlash]: (inputData, inputMetaData) => characterStringParsing.swapDoubleForwardSlashToSingleForwardSlash(inputData, inputMetaData),
+            [biz.cgetFileExtension]: (inputData, inputMetaData) => fileStringParsing.getFileExtension(inputData, inputMetaData),
+            [biz.cremoveDotFromFileExtension]: (inputData, inputMetaData) => fileStringParsing.removeDotFromFileExtension(inputData, inputMetaData),
+            [biz.cwriteJsonData]: (inputData, inputMetaData) => fileOperations.writeJsonData(inputData, inputMetaData)
+        }
+        let fileToSaveTo = tst_dbt.cpathToJsonTestFile;
+        let dataToWriteOut = undefined;
+
+        // Act
+        let returnData = await dataBroker.writeJsonDataToFile(fileToSaveTo, dataToWriteOut);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function writeJsonDataToFile_inValidDataToWriteOutNaN
+     * @description Tests the dataBroker function writeJsonDataToFile with a invalid data NaN.
+     * @author Vlad Sorokin
+     * @date 2024/07/12
+     */
+    test(tst_con.cwriteJsonDataToFile_inValidDataToWriteOutNaN, async () => {
+        // Arrange
+        D[wrd.cconfiguration] = {};
+        D[sys.cbusinessRules] = {
+            [biz.cswapDoubleForwardSlashToSingleForwardSlash]: (inputData, inputMetaData) => characterStringParsing.swapDoubleForwardSlashToSingleForwardSlash(inputData, inputMetaData),
+            [biz.cgetFileExtension]: (inputData, inputMetaData) => fileStringParsing.getFileExtension(inputData, inputMetaData),
+            [biz.cremoveDotFromFileExtension]: (inputData, inputMetaData) => fileStringParsing.removeDotFromFileExtension(inputData, inputMetaData),
+            [biz.cwriteJsonData]: (inputData, inputMetaData) => fileOperations.writeJsonData(inputData, inputMetaData)
+        }
+        let fileToSaveTo = tst_dbt.cpathToJsonTestFile;
+        let dataToWriteOut = NaN;
+
+        // Act
+        let returnData = await dataBroker.writeJsonDataToFile(fileToSaveTo, dataToWriteOut);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+})
+
+/**
+ * @function setupDataStorage
+ * @description Tests the positive and negative test cases of the setupDataStorage
+ * @author Vlad Sorokin
+ * @date 2024/07/12
+ */
+describe(tst_con.csetupDataStorage, () => {
+    /**
+     * @function setupDataStorage_validData
+     * @description Tests the dataBroker function setupDataStorage with a valid input.
+     * @author Vlad Sorokin
+     * @date 2024/07/12
+     */
+    test(tst_con.csetupDataStorage_validData, async () => {
+        // Arrange
+        delete D[sys.cDataStorage];
+
+        // Act
+        let returnData = await dataBroker.setupDataStorage();
+
+        // Assert
+        expect(returnData).toBeTruthy();
+    });
+})
+
+// /**
+//  * @function storeData
+//  * @description Tests the positive and negative test cases of the storeData
+//  * @author Vlad Sorokin
+//  * @date 2024/Month1/Day1
+//  */
+// describe(tst_con.cstoreData, () => {
+//     /**
+//      * @function storeData_validData
+//      * @description Tests the dataBroker function storeData with a valid input.
+//      * @author Vlad Sorokin
+//      * @date 2024/Month1/Day1
+//      */
+//     test(tst_con.cstoreData_validData, async () => {
+//         // Arrange
+        
+
+//         // Act
+//         let returnData = await dataBroker.storeData();
+
+//         // Assert
+//         expect(returnData).toEqual();
+//     });
+
+//     // /**
+//     //  * @function storeData_inValidDataStorageContextNameString
+//     //  * @description Tests the dataBroker function storeData with a invalid data string.
+//     //  * @author Vlad Sorokin
+//     //  * @date 2024/Month1/Day1
+//     //  */
+//     // test(tst_con.cstoreData_inValidDataStorageContextNameString, async () => {
+//     //     // Arrange
+//     //     1data1
+
+//     //     // Assert
+//     //     expect(returnData).toBeFalsy();
+//     // });
+
+//     // /**
+//     //  * @function storeData_inValidDataToStoreString
+//     //  * @description Tests the dataBroker function storeData with a invalid data string.
+//     //  * @author Vlad Sorokin
+//     //  * @date 2024/Month1/Day1
+//     //  */
+//     // test(tst_con.cstoreData_inValidDataToStoreString, async () => {
+//     //     // Arrange
+//     //     1data2
+
+//     //     // Assert
+//     //     expect(returnData).toBeFalsy();
+//     // });
+
+//     // /**
+//     //  * @function storeData_inValidDataStorageContextNameInteger
+//     //  * @description Tests the dataBroker function storeData with a invalid data integer.
+//     //  * @author Vlad Sorokin
+//     //  * @date 2024/Month1/Day1
+//     //  */
+//     // test(tst_con.cstoreData_inValidDataStorageContextNameInteger, async () => {
+//     //     // Arrange
+//     //     1data1
+
+//     //     // Assert
+//     //     expect(returnData).toBeFalsy();
+//     // });
+
+//     // /**
+//     //  * @function storeData_inValidDataStorageContextNameBoolean
+//     //  * @description Tests the dataBroker function storeData with a invalid data boolean.
+//     //  * @author Vlad Sorokin
+//     //  * @date 2024/Month1/Day1
+//     //  */
+//     // test(tst_con.cstoreData_inValidDataStorageContextNameBoolean, async () => {
+//     //     // Arrange
+//     //     1data1
+
+//     //     // Assert
+//     //     expect(returnData).toBeFalsy();
+//     // });
+
+//     // /**
+//     //  * @function storeData_inValidDataToStoreInteger
+//     //  * @description Tests the dataBroker function storeData with a invalid data integer.
+//     //  * @author Vlad Sorokin
+//     //  * @date 2024/Month1/Day1
+//     //  */
+//     // test(tst_con.cstoreData_inValidDataToStoreInteger, async () => {
+//     //     // Arrange
+//     //     1data2
+
+//     //     // Assert
+//     //     expect(returnData).toBeFalsy();
+//     // });
+
+//     // /**
+//     //  * @function storeData_inValidDataToStoreBoolean
+//     //  * @description Tests the dataBroker function storeData with a invalid data boolean.
+//     //  * @author Vlad Sorokin
+//     //  * @date 2024/Month1/Day1
+//     //  */
+//     // test(tst_con.cstoreData_inValidDataToStoreBoolean, async () => {
+//     //     // Arrange
+//     //     1data2
+
+//     //     // Assert
+//     //     expect(returnData).toBeFalsy();
+//     // });
+
+//     // /**
+//     //  * @function storeData_inValidDataStorageContextNameUndefined
+//     //  * @description Tests the dataBroker function storeData with a invalid data undefined.
+//     //  * @author Vlad Sorokin
+//     //  * @date 2024/Month1/Day1
+//     //  */
+//     // test(tst_con.cstoreData_inValidDataStorageContextNameUndefined, async () => {
+//     //     // Arrange
+//     //     1data1
+
+//     //     // Assert
+//     //     expect(returnData).toBeFalsy();
+//     // });
+
+//     // /**
+//     //  * @function storeData_inValidDataStorageContextNameNaN
+//     //  * @description Tests the dataBroker function storeData with a invalid data NaN.
+//     //  * @author Vlad Sorokin
+//     //  * @date 2024/Month1/Day1
+//     //  */
+//     // test(tst_con.cstoreData_inValidDataStorageContextNameNaN, async () => {
+//     //     // Arrange
+//     //     1data1
+
+//     //     // Assert
+//     //     expect(returnData).toBeFalsy();
+//     // });
+
+//     // /**
+//     //  * @function storeData_inValidDataToStoreUndefined
+//     //  * @description Tests the dataBroker function storeData with a invalid data undefined.
+//     //  * @author Vlad Sorokin
+//     //  * @date 2024/Month1/Day1
+//     //  */
+//     // test(tst_con.cstoreData_inValidDataToStoreUndefined, async () => {
+//     //     // Arrange
+//     //     1data2
+
+//     //     // Assert
+//     //     expect(returnData).toBeFalsy();
+//     // });
+
+//     // /**
+//     //  * @function storeData_inValidDataToStoreNaN
+//     //  * @description Tests the dataBroker function storeData with a invalid data NaN.
+//     //  * @author Vlad Sorokin
+//     //  * @date 2024/Month1/Day1
+//     //  */
+//     // test(tst_con.cstoreData_inValidDataToStoreNaN, async () => {
+//     //     // Arrange
+//     //     1data2
+
+//     //     // Assert
+//     //     expect(returnData).toBeFalsy();
+//     // });
+// })
+
 
 
 

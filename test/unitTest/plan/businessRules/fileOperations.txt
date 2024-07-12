@@ -169,7 +169,7 @@ output: ?
 testName: writeJsonData_validData
 input inputData: string (The path and file name for the file that should have data written to it)
 input inputMetaData: object (The data that should be written to the specified file)
-output: boolean (True of False to indicate if the file was written out successfully or not)
+output: boolean (True or False to indicate if the file was written out successfully or not)
 
 testName: writeJsonData_inValidInputDataString
 input inputData: string (dfxg24346dfg)

@@ -1,5 +1,5 @@
 {
-    "system.argumentDrivenInterface": false,
-    "system.figletFont": "Star Wars",
-    "system.debugSettings": true
+  "system.argumentDrivenInterface": false,
+  "system.debugSettings": true,
+  "system.figletFont": "Star Wars"
 }

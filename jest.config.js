@@ -1,6 +1,7 @@
 export default {
     modulePathIgnorePatterns: [
-      "./test/unitTest/testData/testTemp/tempPluginRegistryTest*.json"
+      "./test/unitTest/testData/testTemp/tempPluginRegistryTest*.json",
+      "./test/unitTest/testData/resources/jsonTestData/*.json"
     ],
     // Automatically clear mock calls and instances between every test
     clearMocks: true,
