@@ -65,7 +65,7 @@ testName: scanDataPath_inValidDataPathString
 input dataPath: string (464gsdsfae8f46)
 output: empty array
 
-testName: scanDataPath_inValidDataPathNumber
+testName: scanDataPath_inValidDataPathInteger
 input dataPath: integer (546)
 output: empty array
 
@@ -96,7 +96,7 @@ input appConfigFilesToLoad: array<string> (The list of files for the app config 
 input frameworkConfigFilesToLoad: string (464gsdsfae8f46)
 output: ?
 
-testName: findUniversalDebugConfigSetting_inValidAppConfigFilesToLoadNumber
+testName: findUniversalDebugConfigSetting_inValidAppConfigFilesToLoadInteger
 input appConfigFilesToLoad: integer (546)
 input frameworkConfigFilesToLoad: array<string> (The list of files for the framework config files)
 output: ?
@@ -106,7 +106,7 @@ input appConfigFilesToLoad: boolean (false)
 input frameworkConfigFilesToLoad: array<string> (The list of files for the framework config files)
 output: ?
 
-testName: findUniversalDebugConfigSetting_inValidFrameworkConfigFilesToLoadNumber
+testName: findUniversalDebugConfigSetting_inValidFrameworkConfigFilesToLoadInteger
 input appConfigFilesToLoad: array<string> (The list of files for the app config files)
 input frameworkConfigFilesToLoad: integer (546)
 output: ?
@@ -151,7 +151,7 @@ input filesToLoad: array<string> (The data structure containing all of the files
 input contextName: string (464gsdsfae8f46)
 output: ?
 
-testName: loadAllCsvData_inValidFilesToLoadNumber
+testName: loadAllCsvData_inValidFilesToLoadInteger
 input filesToLoad: integer (546)
 input contextName: string (The context name that should be used when adding data to the D data structure)
 output: ?
@@ -161,7 +161,7 @@ input filesToLoad: boolean (false)
 input contextName: string (The context name that should be used when adding data to the D data structure)
 output: ?
 
-testName: loadAllCsvData_inValidContextNameNumber
+testName: loadAllCsvData_inValidContextNameInteger
 input filesToLoad: array<string> (The data structure containing all of the files to load data from)
 input contextName: integer (123)
 output: ?
@@ -206,7 +206,7 @@ input filesToLoad: array<string> (The data structure containing all of the files
 input contextName: string (464gsdsfae8f46)
 output: ?
 
-testName: loadedAllXmlData_inValidFilesToLoadNumber
+testName: loadedAllXmlData_inValidFilesToLoadInteger
 input filesToLoad: integer (546)
 input contextName: string (The context name that should be used when adding data to the D data structure)
 output: ?
@@ -216,7 +216,7 @@ input filesToLoad: boolean (false)
 input contextName: string (The context name that should be used when adding data to the D data structure)
 output: ?
 
-testName: loadAllXmlData_inValidContextNameNumber
+testName: loadAllXmlData_inValidContextNameInteger
 input filesToLoad: array<string> (The data structure containing all of the files to load data from)
 input contextName: integer (123)
 output: ?
@@ -261,7 +261,7 @@ input filesToLoad: array<string> (The data structure containing all of the files
 input contextName: string (464gsdsfae8f46)
 output: ?
 
-testName: loadAllJsonData_inValidFilesToLoadNumber
+testName: loadAllJsonData_inValidFilesToLoadInteger
 input filesToLoad: integer (546)
 input contextName: string (The context name that should be used when adding data to the D-data structure)
 output: ?
@@ -271,7 +271,7 @@ input filesToLoad: boolean (false)
 input contextName: string (The context name that should be used when adding data to the D-data structure)
 output: ?
 
-testName: loadAllJsonData_inValidContextNameNumber
+testName: loadAllJsonData_inValidContextNameInteger
 input filesToLoad: array<string> (The data structure containing all of the files to load data from)
 input contextName: integer (123)
 output: ?
@@ -316,7 +316,7 @@ input data: object (A JSON object that contains all of the data loaded from a CS
 input contextName: string (464gsdsfae8f46)
 output: ?
 
-testName: processCsvData_inValidDataNumber
+testName: processCsvData_inValidDataInteger
 input data: integer (546)
 input contextName: string (The name that should be used when adding the objects to the D data structure for data-sharing)
 output: ?
@@ -326,7 +326,7 @@ input data: boolean (false)
 input contextName: string (The name that should be used when adding the objects to the D data structure for data-sharing)
 output: ?
 
-testName: processCsvData_inValidContextNameNumber
+testName: processCsvData_inValidContextNameInteger
 input data: object (A JSON object that contains all of the data loaded from a CSV file)
 input contextName: integer (123)
 output: ?
@@ -364,7 +364,7 @@ testName: preprocessJsonFile_inValidFilesToLoadString
 input filesToLoad: string (464gsdsfae8f46)
 output: ?
 
-testName: preprocessJsonFile_inValidFilesToLoadNumber
+testName: preprocessJsonFile_inValidFilesToLoadInteger
 input filesToLoad: integer (546)
 output: ?
 
@@ -395,7 +395,7 @@ input fileToSaveTo: string (The full path to the file that should have the data 
 input dataToWriteOut: string (464gsdsfae8f46)
 output: ?
 
-testName: writeJsonDataToFile_inValidFileToSaveToNumber
+testName: writeJsonDataToFile_inValidFileToSaveToInteger
 input fileToSaveTo: integer (546)
 input dataToWriteOut: object (The JSON data that should be written out to the specified JSON file)
 output: ?
@@ -405,7 +405,7 @@ input fileToSaveTo: boolean (false)
 input dataToWriteOut: object (The JSON data that should be written out to the specified JSON file)
 output: ?
 
-testName: writeJsonDataToFile_inValidDataToWriteNumber
+testName: writeJsonDataToFile_inValidDataToWriteInteger
 input fileToSaveTo: string (The full path to the file that should have the data written to it)
 input dataToWriteOut: integer (123)
 output: ?
@@ -439,28 +439,48 @@ testName: setupDataStorage_validData
 output: data storage exists on data hive.
 NOTE: Test initialization of the commands date structure.
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------
-testName: storeData_validDataString
+testName: storeData_inValidDataStorageContextNameInteger
+input dataStorageContextName: integer (4567)
+input dataToStore: array ([1,2,3,4,5])
+output: ?
+
+testName: storeData_inValidDataStorageContextNameBoolean
+input dataStorageContextName: boolean (false)
+input dataToStore: array ([1,2,3,4,5])
+output: ?
+
+testName: storeData_validDataToStoreString
 input dataStorageContextName: string (The sub-data storage hive under-which the data should be stored)
-input dataToStore: string|boolean|integer|float|array|object (The data that should be stored, in any format)
+input dataToStore: string
 output: boolean (A True or False to indicate if the data storage was successful or not)
 
-testName: storeData_validDataBoolean
+testName: storeData_validDataToStoreBoolean
 input dataStorageContextName: string (testDataBoolean)
 input dataToStore: boolean (false)
 output: ?
 
-testName: storeData_validDataInteger
+testName: storeData_validDataToStoreInteger
 input dataStorageContextName: string (The sub-data storage hive under-which the data should be stored)
 input dataToStore: integer (23456)
 output: ?
 
-testName: storeData_validDataArray
+testName: storeData_validDataToStoreArray
 input dataStorageContextName: string (The sub-data storage hive under-which the data should be stored)
 input dataToStore: array ([1,2,3,4,5])
 output: ?
 
-testName: storeData_validDataObject
+testName: storeData_validDataToStoreObject
 input dataStorageContextName: string (The sub-data storage hive under-which the data should be stored)
+input dataToStore: object
+output: ?
+
+testName: storeData_inValidDataStorageContextNameUndefined
+input dataStorageContextName: undefined
+input dataToStore: string|boolean|integer|float|array|object (The data that should be stored, in any format)
+output: ?
+
+testName: storeData_inValidDataStorageContextNameNaN
+input dataStorageContextName: NaN
 input dataToStore: string|boolean|integer|float|array|object (The data that should be stored, in any format)
 output: ?
 
@@ -474,37 +494,28 @@ input dataStorageContextName: string (The sub-data storage hive under-which the 
 input dataToStore: NaN
 output: ?
 
-testName: storeData_inValidDataStorageDataToStoreNumber
-input dataStorageContextName: integer (4567)
-input dataToStore: array ([1,2,3,4,5])
-output: ?
-
-testName: storeData_inValidDataStorageDataToStoreBoolean
-input dataStorageContextName: boolean (false)
-input dataToStore: array ([1,2,3,4,5])
-output: ?
 --------------------------------------------------------------------------------
 testName: getData_validData
 input dataStorageContextName: string (The sub-data storage hive which should be retrieved)
 output: object (the data that is found, if any at the specified location on the data storage hive)
 
-testName: getData_inValidDataStorageContextNameString
+testName: getData_inValidDataToStoreString
 input dataStorageContextName: string (464gsdsfae8f46)
 output: ?
 
-testName: getData_inValidDataStorageContextNameNumber
+testName: getData_inValidDataToStoreInteger
 input dataStorageContextName: integer (546)
 output: ?
 
-testName: getData_inValidDataStorageContextNameBoolean
+testName: getData_inValidDataToStoreBoolean
 input dataStorageContextName: boolean (false)
 output: ?
 
-testName: getData_inValidDataStorageContextNameUndefined
+testName: getData_inValidDataToStoreUndefined
 input dataStorageContextName: undefined
 output: ?
 
-testName: getData_inValidDataStorageContextNameNaN
+testName: getData_inValidDataToStoreNaN
 input dataStorageContextName: NaN
 output: ?
 --------------------------------------------------------------------------------
@@ -512,23 +523,23 @@ testName: clearData_validData
 input dataStorageContextName: string (The sub-data storage hive which should be cleared)
 output: void
 
-testName: clearData_inValidDataStorageContextNameString
+testName: clearData_inValidDataToStoreString
 input dataStorageContextName: string (464gsdsfae8f46)
 output: ?
 
-testName: clearData_inValidDataStorageContextNameNumber
+testName: clearData_inValidDataToStoreInteger
 input dataStorageContextName: integer (546)
 output: ?
 
-testName: clearData_inValidDataStorageContextNameBoolean
+testName: clearData_inValidDataToStoreBoolean
 input dataStorageContextName: boolean (false)
 output: ?
 
-testName: clearData_inValidDataStorageContextNameUndefined
+testName: clearData_inValidDataToStoreUndefined
 input dataStorageContextName: undefined
 output: ?
 
-testName: clearData_inValidDataStorageContextNameNaN
+testName: clearData_inValidDataToStoreNaN
 input dataStorageContextName: NaN
 output: ?
 --------------------------------------------------------------------------------

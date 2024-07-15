@@ -48,15 +48,25 @@ export const cscanDataPath = wrd.cscan + wrd.cData + wrd.cPath; // scanDataPath
 export const cfindUniversalDebugConfigSetting = wrd.cfind + wrd.cUniversal + wrd.cDebug + wrd.cConfig + wrd.cSetting; // findUniversalDebugConfigSetting
 export const cloadAllCsvData = wrd.cload + wrd.cAll + gen.cCsv + wrd.cData; // loadAllCsvData
 export const cloadAllXmlData = wrd.cload + wrd.cAll + gen.cXml + wrd.cData; // loadAllXmlData
-// export const cloadAllJsonData = wrd.cload + wrd.cAll + gen.cJson + wrd.cData; // loadAllJsonData
 export const cprocessCsvData = wrd.cprocess + gen.cCsv + wrd.cData; // processCsvData
 export const cpreprocessJsonFile = wrd.cpreprocess + gen.cJson + wrd.cFile; // preprocessJsonFile
 export const cwriteJsonDataToFile = wrd.cwrite + gen.cJson + wrd.cData + wrd.cTo + wrd.cFile; // writeJsonDataToFile
 export const csetupDataStorage = wrd.csetup + wrd.cData + wrd.cStorage; // setupDataStorage
-
-
+export const cremovePluginConfigurationData = wrd.cremove + wrd.cPlugin + wrd.cConfiguration + wrd.cData; // removePluginConfigurationData
 
 /* ruleBroker */
+export const cloadPluginRegistry = wrd.cload + wrd.cPlugin + wrd.cRegistry; // loadPluginRegistry
+export const cstorePluginRegistryInDataStructure = wrd.cstore + wrd.cPlugin + wrd.cRegistry + wrd.cIn + wrd.cData + wrd.cStructure; // storePluginRegistryInDataStructure
+export const clistAllLoadedPlugins = wrd.clist + wrd.cAll + wrd.cLoaded + wrd.cPlugins; // listAllLoadedPlugins
+export const clistPluginsInRegistry = wrd.clist + wrd.cPlugins + wrd.cIn + wrd.cRegistry; // listPluginsInRegistry
+export const clistPluginsPathsInRegistry = wrd.clist + wrd.cPlugins + wrd.cPaths + wrd.cIn + wrd.cRegistry; // listPluginsPathsInRegistry
+export const clistPluginsAttributeInRegistry = wrd.clist + wrd.cPlugins + wrd.cAttribute + wrd.cIn + wrd.cRegistry; // listPluginsAttributeInRegistry
+
+
+
+
+
+
 
 /* themeBroker */
 
@@ -454,20 +464,91 @@ export const cwriteJsonDataToFile_inValidDataToWriteOutNaN = cwriteJsonDataToFil
 export const csetupDataStorage_validData = csetupDataStorage + bas.cUnderscore + wrd.cvalid + wrd.cData; // setupDataStorage_validData
 
 // storeData
-export const cstoreData_inValidDataStorageContextNameString = cstoreData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cData + wrd.cStorage + wrd.cContext + wrd.cName + wrd.cString; // storeData_inValidDataStorageContextNameString
-export const cstoreData_inValidDataToStoreString = cstoreData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cData + wrd.cTo + wrd.cStore + wrd.cString; // storeData_inValidDataToStoreString
 export const cstoreData_inValidDataStorageContextNameInteger = cstoreData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cData + wrd.cStorage + wrd.cContext + wrd.cName + wrd.cInteger; // storeData_inValidDataStorageContextNameInteger
 export const cstoreData_inValidDataStorageContextNameBoolean = cstoreData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cData + wrd.cStorage + wrd.cContext + wrd.cName + wrd.cBoolean; // storeData_inValidDataStorageContextNameBoolean
-export const cstoreData_inValidDataToStoreInteger = cstoreData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cData + wrd.cTo + wrd.cStore + wrd.cInteger; // storeData_inValidDataToStoreInteger
-export const cstoreData_inValidDataToStoreBoolean = cstoreData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cData + wrd.cTo + wrd.cStore + wrd.cBoolean; // storeData_inValidDataToStoreBoolean
+export const cstoreData_validDataToStoreString = cstoreData + bas.cUnderscore + wrd.cvalid + wrd.cData + wrd.cTo + wrd.cStore + wrd.cString; // storeData_validDataToStoreString
+export const cstoreData_validDataToStoreBoolean = cstoreData + bas.cUnderscore + wrd.cvalid + wrd.cData + wrd.cTo + wrd.cStore + wrd.cBoolean; // storeData_validDataToStoreBoolean
+export const cstoreData_validDataToStoreInteger = cstoreData + bas.cUnderscore + wrd.cvalid + wrd.cData + wrd.cTo + wrd.cStore + wrd.cInteger; // storeData_validDataToStoreInteger
+export const cstoreData_validDataToStoreArray = cstoreData + bas.cUnderscore + wrd.cvalid + wrd.cData + wrd.cTo + wrd.cStore + wrd.cArray; // storeData_validDataToStoreArray
+export const cstoreData_validDataToStoreObject = cstoreData + bas.cUnderscore + wrd.cvalid + wrd.cData + wrd.cTo + wrd.cStore + wrd.cObject; // storeData_validDataToStoreObject
 export const cstoreData_inValidDataStorageContextNameUndefined = cstoreData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cData + wrd.cStorage + wrd.cContext + wrd.cName + 'Undefined'; // storeData_inValidDataStorageContextNameUndefined
 export const cstoreData_inValidDataStorageContextNameNaN = cstoreData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cData + wrd.cStorage + wrd.cContext + wrd.cName + 'NaN'; // storeData_inValidDataStorageContextNameNaN
 export const cstoreData_inValidDataToStoreUndefined = cstoreData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cData + wrd.cTo + wrd.cStore + 'Undefined'; // storeData_inValidDataToStoreUndefined
 export const cstoreData_inValidDataToStoreNaN = cstoreData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cData + wrd.cTo + wrd.cStore + 'NaN'; // storeData_inValidDataToStoreNaN
 
+// getData
+export const cgetData_validDataToStoreData = cgetData + bas.cUnderscore + wrd.cvalid + wrd.cData + wrd.cTo + wrd.cStore + wrd.cData; // getData_validDataToStoreData
+export const cgetData_inValidDataToStoreString = cgetData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cData + wrd.cTo + wrd.cStore + wrd.cString; // getData_inValidDataToStoreString
+export const cgetData_inValidDataToStoreInteger = cgetData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cData + wrd.cTo + wrd.cStore + wrd.cInteger; // getData_inValidDataToStoreInteger
+export const cgetData_inValidDataToStoreBoolean = cgetData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cData + wrd.cTo + wrd.cStore + wrd.cBoolean; // getData_inValidDataToStoreBoolean
+export const cgetData_inValidDataToStoreUndefined = cgetData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cData + wrd.cTo + wrd.cStore + "Undefined"; // getData_inValidDataToStoreUndefined
+export const cgetData_inValidDataToStoreNaN = cgetData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cData + wrd.cTo + wrd.cStore + "NaN"; // getData_inValidDataToStoreNaN
 
+// clearData
+export const cclearData_validDataStorageContextNameData = cclearData + bas.cUnderscore + wrd.cvalid + wrd.cData + wrd.cStorage + wrd.cContext + wrd.cName + wrd.cData; // clearData_validDataStorageContextNameData
+export const cclearData_inValidDataStorageContextNameString = cclearData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cData + wrd.cStorage + wrd.cContext + wrd.cName + wrd.cString; // clearData_inValidDataStorageContextNameString
+export const cclearData_inValidDataStorageContextNameInteger = cclearData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cData + wrd.cStorage + wrd.cContext + wrd.cName + wrd.cInteger; // clearData_inValidDataStorageContextNameInteger
+export const cclearData_inValidDataStorageContextNameBoolean = cclearData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cData + wrd.cStorage + wrd.cContext + wrd.cName + wrd.cBoolean; // clearData_inValidDataStorageContextNameBoolean
+export const cclearData_validDataStorageContextNameUndefined = cclearData + bas.cUnderscore + wrd.cvalid + wrd.cData + wrd.cStorage + wrd.cContext + wrd.cName + "Undefined"; // clearData_validDataStorageContextNameUndefined
+export const cclearData_inValidDataStorageContextNameNaN = cclearData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cData + wrd.cStorage + wrd.cContext + wrd.cName + "NaN"; // clearData_inValidDataStorageContextNameNaN
+
+// removePluginConfigurationData
+export const cremovePluginConfigurationData_validPluginNameData = cremovePluginConfigurationData + bas.cUnderscore + wrd.cvalid + wrd.cPlugin + wrd.cName + wrd.cData; // removePluginConfigurationData_validPluginNameData
+export const cremovePluginConfigurationData_inValidPluginNameString = cremovePluginConfigurationData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cName + wrd.cString; // removePluginConfigurationData_inValidPluginNameString
+export const cremovePluginConfigurationData_inValidPluginNameInteger = cremovePluginConfigurationData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cName + wrd.cInteger; // removePluginConfigurationData_inValidPluginNameInteger
+export const cremovePluginConfigurationData_inValidPluginNameBoolean = cremovePluginConfigurationData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cName + wrd.cBoolean; // removePluginConfigurationData_inValidPluginNameBoolean
+export const cremovePluginConfigurationData_inValidPluginNameUndefined = cremovePluginConfigurationData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cName + "Undefined"; // removePluginConfigurationData_inValidPluginNameUndefined
+export const cremovePluginConfigurationData_inValidPluginNameNaN = cremovePluginConfigurationData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cName + "NaN"; // removePluginConfigurationData_inValidPluginNameNaN
 
 /* ruleBroker */
+// loadPluginRegistry
+export const cloadPluginRegistry_validPluginRegistryPathData = cloadPluginRegistry + bas.cUnderscore + wrd.cvalid + wrd.cPlugin + wrd.cRegistry + wrd.cPath + wrd.cData; // loadPluginRegistry_validPluginRegistryPathData
+export const cloadPluginRegistry_inValidPluginRegistryPathString = cloadPluginRegistry + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cRegistry + wrd.cPath + wrd.cString; // loadPluginRegistry_inValidPluginRegistryPathString
+export const cloadPluginRegistry_inValidPluginRegistryPathInteger = cloadPluginRegistry + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cRegistry + wrd.cPath + wrd.cInteger; // loadPluginRegistry_inValidPluginRegistryPathInteger
+export const cloadPluginRegistry_inValidPluginRegistryPathBoolean = cloadPluginRegistry + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cRegistry + wrd.cPath + wrd.cBoolean; // loadPluginRegistry_inValidPluginRegistryPathBoolean
+export const cloadPluginRegistry_inValidPluginRegistryPathUndefined = cloadPluginRegistry + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cRegistry + wrd.cPath + "Undefined"; // loadPluginRegistry_inValidPluginRegistryPathUndefined
+export const cloadPluginRegistry_inValidPluginRegistryPathNaN = cloadPluginRegistry + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cRegistry + wrd.cPath + "NaN"; // loadPluginRegistry_inValidPluginRegistryPathNaN
+
+// storePluginRegistryInDataStructure
+export const cstorePluginRegistryInDataStructure_validPluginRegistryDataData = cstorePluginRegistryInDataStructure + bas.cUnderscore + wrd.cvalid + wrd.cPlugin + wrd.cRegistry + wrd.cData + wrd.cData; // storePluginRegistryInDataStructure_validPluginRegistryDataData
+export const cstorePluginRegistryInDataStructure_inValidPluginRegistryDataString = cstorePluginRegistryInDataStructure + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cRegistry + wrd.cData + wrd.cString; // storePluginRegistryInDataStructure_inValidPluginRegistryDataString
+export const cstorePluginRegistryInDataStructure_inValidPluginRegistryDataInteger = cstorePluginRegistryInDataStructure + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cRegistry + wrd.cData + wrd.cInteger; // storePluginRegistryInDataStructure_inValidPluginRegistryDataInteger
+export const cstorePluginRegistryInDataStructure_inValidPluginRegistryDataBoolean = cstorePluginRegistryInDataStructure + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cRegistry + wrd.cData + wrd.cBoolean; // storePluginRegistryInDataStructure_inValidPluginRegistryDataBoolean
+export const cstorePluginRegistryInDataStructure_inValidPluginRegistryDataUndefined = cstorePluginRegistryInDataStructure + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cRegistry + wrd.cData + "Undefined"; // storePluginRegistryInDataStructure_inValidPluginRegistryDataUndefined
+export const cstorePluginRegistryInDataStructure_inValidPluginRegistryDataNaN = cstorePluginRegistryInDataStructure + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cRegistry + wrd.cData + "NaN"; // storePluginRegistryInDataStructure_inValidPluginRegistryDataNaN
+
+// listAllLoadedPlugins
+export const clistAllLoadedPlugins_validData = clistAllLoadedPlugins + bas.cUnderscore + wrd.cvalid + wrd.cData; // listAllLoadedPlugins_validData
+
+// listPluginsInRegistry
+export const clistPluginsInRegistry_validData = clistPluginsInRegistry + bas.cUnderscore + wrd.cvalid + wrd.cData; // listPluginsInRegistry_validData
+
+// listPluginsPathsInRegistry
+export const clistPluginsPathsInRegistry_validData = clistPluginsPathsInRegistry + bas.cUnderscore + wrd.cvalid + wrd.cData; // listPluginsPathsInRegistry_validData
+
+// listPluginsAttributeInRegistry
+export const clistPluginsAttributeInRegistry_validAttributeNameData = clistPluginsAttributeInRegistry + bas.cUnderscore + wrd.cvalid + wrd.cAttribute + wrd.cName + wrd.cData; // listPluginsAttributeInRegistry_validAttributeNameData
+export const clistPluginsAttributeInRegistry_inValidAttributeNameString = clistPluginsAttributeInRegistry + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cAttribute + wrd.cName + wrd.cString; // listPluginsAttributeInRegistry_inValidAttributeNameString
+export const clistPluginsAttributeInRegistry_inValidAttributeNameInteger = clistPluginsAttributeInRegistry + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cAttribute + wrd.cName + wrd.cInteger; // listPluginsAttributeInRegistry_inValidAttributeNameInteger
+export const clistPluginsAttributeInRegistry_inValidAttributeNameBoolean = clistPluginsAttributeInRegistry + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cAttribute + wrd.cName + wrd.cBoolean; // listPluginsAttributeInRegistry_inValidAttributeNameBoolean
+export const clistPluginsAttributeInRegistry_inValidAttributeNameUndefined = clistPluginsAttributeInRegistry + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cAttribute + wrd.cName + "Undefined"; // listPluginsAttributeInRegistry_inValidAttributeNameUndefined
+export const clistPluginsAttributeInRegistry_inValidAttributeNameNaN = clistPluginsAttributeInRegistry + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cAttribute + wrd.cName + "NaN"; // listPluginsAttributeInRegistry_inValidAttributeNameNaN
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* themeBroker */
 

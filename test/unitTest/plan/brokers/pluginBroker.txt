@@ -121,9 +121,7 @@ testName: listPluginAttributeInRegistry_validData
 input attributeName: string (The name of the attribute that should be looked up in the plugin object, for each of the plugin objects in the plugin registry)
 output: array<string> (A list array of the attributes from the plugins in the plugin registry)
 
-testName: listPluginAttributeInRegistry_inValidAttributeNameString
-input attributeName: string (464gsdsfae8f46)
-output: ?
+NOTE: listPluginAttributeInRegistry_inValidAttributeNameString was removed as it cant be used
 
 testName: listPluginAttributeInRegistry_inValidAttributeNameInteger
 input attributeName: integer

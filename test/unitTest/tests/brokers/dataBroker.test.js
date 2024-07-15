@@ -6,12 +6,17 @@
  * @description Unit tests for the dataBroker.js
  * @requires module:constantBroker
  * @requires module:dataBroker
+ * @requires module:ruleBroker
+ * @requires module:characterArrayParsing
+ * @requires module:characterStringParsing
+ * @requires module:dataStringParsing
+ * @requires module:fileStringParsing
  * @requires module:fileOperations
  * @requires module:main
  * @requires module:D
- * @requires module:constantBrokerTest
  * @requires module:mainTest
  * @requires module:test.constants
+ * @requires module:dataBrokerTest
  * @requires {@link https://www.npmjs.com/package/@haystacks/constants|@haystacks/constants}
  * @requires {@link https://www.npmjs.com/package/jest|jest}
  * @author Vlad Sorokin
@@ -37,7 +42,6 @@ import * as tst_dbt from '../../testData/brokers/dataBrokerTest.js'
 // External imports
 import hayConst from '@haystacks/constants';
 import { describe, expect, test } from '@jest/globals';
-import fs from 'fs';
 
 const { bas, cmd, biz, cfg, fnc, gen, msg, sys, wrd, num } = hayConst;
 
@@ -2434,172 +2438,696 @@ describe(tst_con.csetupDataStorage, () => {
     });
 })
 
-// /**
-//  * @function storeData
-//  * @description Tests the positive and negative test cases of the storeData
-//  * @author Vlad Sorokin
-//  * @date 2024/Month1/Day1
-//  */
-// describe(tst_con.cstoreData, () => {
-//     /**
-//      * @function storeData_validData
-//      * @description Tests the dataBroker function storeData with a valid input.
-//      * @author Vlad Sorokin
-//      * @date 2024/Month1/Day1
-//      */
-//     test(tst_con.cstoreData_validData, async () => {
-//         // Arrange
+/**
+ * @function storeData
+ * @description Tests the positive and negative test cases of the storeData
+ * @author Vlad Sorokin
+ * @date 2024/07/15
+ */
+describe(tst_con.cstoreData, () => {
+    /**
+     * @function storeData_inValidDataStorageContextNameInteger
+     * @description Tests the dataBroker function storeData with a invalid data integer.
+     * @author Vlad Sorokin
+     * @date 2024/07/15
+     */
+    test(tst_con.cstoreData_inValidDataStorageContextNameInteger, async () => {
+        // Arrange
+        D[sys.cDataStorage] = {};
+        D[sys.cBusinessRules] = {};
+        let dataStorageContextName = 123;
+        let dataToStore = tst_dbt.cexpectedDataFromJsonTestFile;
+
+        // Act
+        let returnData = await dataBroker.storeData(dataStorageContextName, dataToStore);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+        delete D[sys.cDataStorage];
+    });
+
+    /**
+     * @function storeData_inValidDataStorageContextNameBoolean
+     * @description Tests the dataBroker function storeData with a invalid data boolean.
+     * @author Vlad Sorokin
+     * @date 2024/07/15
+     */
+    test(tst_con.cstoreData_inValidDataStorageContextNameBoolean, async () => {
+        // Arrange
+        D[sys.cDataStorage] = {};
+        D[sys.cBusinessRules] = {};
+        let dataStorageContextName = false;
+        let dataToStore = tst_dbt.cexpectedDataFromJsonTestFile;
+
+        // Act
+        let returnData = await dataBroker.storeData(dataStorageContextName, dataToStore);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+        delete D[sys.cDataStorage];
+    });
+    
+    /**
+     * @function storeData_validDataToStoreString
+     * @description Tests the dataBroker function storeData with a valid input.
+     * @author Vlad Sorokin
+     * @date 2024/07/15
+     */
+    test(tst_con.cstoreData_validDataToStoreString, async () => {
+        // Arrange
+        D[sys.cDataStorage] = {};
+        D[sys.cBusinessRules] = {};
+        let dataStorageContextName = tst_dbt.cunitTestData;
+        let dataToStore = tst_man.ctestString1;
+
+        // Act
+        let returnData = await dataBroker.storeData(dataStorageContextName, dataToStore);
+
+        // Assert
+        expect(returnData).toBeTruthy();
+        delete D[sys.cDataStorage];
+    });
+
+    /**
+     * @function storeData_validDataToStoreBoolean
+     * @description Tests the dataBroker function storeData with a invalid data string.
+     * @author Vlad Sorokin
+     * @date 2024/07/15
+     */
+    test(tst_con.cstoreData_validDataToStoreBoolean, async () => {
+        // Arrange
+        D[sys.cDataStorage] = {};
+        D[sys.cBusinessRules] = {};
+        let dataStorageContextName = tst_dbt.cunitTestData;
+        let dataToStore = false;
+
+        // Act
+        let returnData = await dataBroker.storeData(dataStorageContextName, dataToStore);
+
+        // Assert
+        expect(returnData).toBeTruthy();
+        delete D[sys.cDataStorage];
+    })
+
+    /**
+     * @function storeData_validDataToStoreInteger
+     * @description Tests the dataBroker function storeData with a invalid data string.
+     * @author Vlad Sorokin
+     * @date 2024/07/15
+     */
+    test(tst_con.cstoreData_validDataToStoreInteger, async () => {
+        // Arrange
+        D[sys.cDataStorage] = {};
+        D[sys.cBusinessRules] = {};
+        let dataStorageContextName = tst_dbt.cunitTestData;
+        let dataToStore = 123;
+
+        // Act
+        let returnData = await dataBroker.storeData(dataStorageContextName, dataToStore);
+
+        // Assert
+        expect(returnData).toBeTruthy();
+        delete D[sys.cDataStorage];
+    });
+
+    /**
+     * @function storeData_validDataToStoreArray
+     * @description Tests the dataBroker function storeData with a invalid data integer.
+     * @author Vlad Sorokin
+     * @date 2024/07/15
+     */
+    test(tst_con.cstoreData_validDataToStoreArray, async () => {
+        // Arrange
+        D[sys.cDataStorage] = {};
+        D[sys.cBusinessRules] = {};
+        let dataStorageContextName = tst_dbt.cunitTestData;
+        let dataToStore = [1,2,3,4,5];
+
+        // Act
+        let returnData = await dataBroker.storeData(dataStorageContextName, dataToStore);
+
+        // Assert
+        expect(returnData).toBeTruthy();
+        delete D[sys.cDataStorage];
+    });
+
+    /**
+     * @function storeData_validDataToStoreObject
+     * @description Tests the dataBroker function storeData with a invalid data boolean.
+     * @author Vlad Sorokin
+     * @date 2024/07/15
+     */
+    test(tst_con.cstoreData_validDataToStoreObject, async () => {
+        // Arrange
+        D[sys.cDataStorage] = {};
+        D[sys.cBusinessRules] = {};
+        let dataStorageContextName = tst_dbt.cunitTestData;
+        let dataToStore = tst_dbt.cexpectedDataFromJsonTestFile;
+
+        // Act
+        let returnData = await dataBroker.storeData(dataStorageContextName, dataToStore);
+
+        // Assert
+        expect(returnData).toBeTruthy();
+        delete D[sys.cDataStorage];
+    });
+
+    /**
+     * @function storeData_inValidDataStorageContextNameUndefined
+     * @description Tests the dataBroker function storeData with a invalid data undefined.
+     * @author Vlad Sorokin
+     * @date 2024/07/15
+     */
+    test(tst_con.cstoreData_inValidDataStorageContextNameUndefined, async () => {
+        // Arrange
+        D[sys.cDataStorage] = {};
+        D[sys.cBusinessRules] = {};
+        let dataStorageContextName = undefined;
+        let dataToStore = tst_dbt.cexpectedDataFromJsonTestFile;
+
+        // Act
+        let returnData = await dataBroker.storeData(dataStorageContextName, dataToStore);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+        delete D[sys.cDataStorage];
+    });
+    
+    /**
+     * @function storeData_inValidDataStorageContextNameNaN
+     * @description Tests the dataBroker function storeData with a invalid data NaN.
+     * @author Vlad Sorokin
+     * @date 2024/07/15
+     */
+    test(tst_con.cstoreData_inValidDataStorageContextNameNaN, async () => {
+        // Arrange
+        D[sys.cDataStorage] = {};
+        D[sys.cBusinessRules] = {};
+        let dataStorageContextName = NaN;
+        let dataToStore = tst_dbt.cexpectedDataFromJsonTestFile;
+
+        // Act
+        let returnData = await dataBroker.storeData(dataStorageContextName, dataToStore);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+        delete D[sys.cDataStorage];
+    });
+
+    /**
+     * @function storeData_inValidDataToStoreUndefined
+     * @description Tests the dataBroker function storeData with a invalid data undefined.
+     * @author Vlad Sorokin
+     * @date 2024/07/15
+     */
+    test(tst_con.cstoreData_inValidDataToStoreUndefined, async () => {
+        // Arrange
+        D[sys.cDataStorage] = {};
+        D[sys.cBusinessRules] = {};
+        let dataStorageContextName = tst_dbt.cunitTestData;
+        let dataToStore = undefined;
+
+        // Act
+        let returnData = await dataBroker.storeData(dataStorageContextName, dataToStore);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+        delete D[sys.cDataStorage];
+    });
+
+    /**
+     * @function storeData_inValidDataToStoreNaN
+     * @description Tests the dataBroker function storeData with a invalid data NaN.
+     * @author Vlad Sorokin
+     * @date 2024/07/15
+     */
+    test(tst_con.cstoreData_inValidDataToStoreNaN, async () => {
+        // Arrange
+        D[sys.cDataStorage] = {};
+        D[sys.cBusinessRules] = {};
+        let dataStorageContextName = tst_dbt.cunitTestData;
+        let dataToStore = NaN;
+
+        // Act
+        let returnData = await dataBroker.storeData(dataStorageContextName, dataToStore);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+        delete D[sys.cDataStorage];
+    });
+})
+
+/**
+ * @function getData
+ * @description Tests the positive and negative test cases of the getData
+ * @author Vlad Sorokin
+ * @date 2024/07/15
+ */
+describe(tst_con.cgetData, () => {
+    /**
+     * @function getData_validDataToStoreData
+     * @description Tests the dataBroker function getData with a valid input.
+     * @author Vlad Sorokin
+     * @date 2024/07/15
+     */
+    test(tst_con.cgetData_validDataToStoreData, async () => {
+        // Arrange
+        D[sys.cDataStorage] = {};
+        D[sys.cBusinessRules] = {};
+        let dataStorageContextName = tst_dbt.cunitTestData;
+        let dataToStore = tst_dbt.cexpectedDataFromJsonTestFile;
+
+        // Act
+        await dataBroker.storeData(dataStorageContextName, dataToStore);
+        let returnData = await dataBroker.getData(dataStorageContextName);
+
+        // Assert
+        expect(returnData).toEqual(tst_dbt.cexpectedDataFromJsonTestFile);
+        delete D[sys.cDataStorage];
+    });
+
+    /**
+     * @function getData_inValidDataToStoreString
+     * @description Tests the dataBroker function getData with a invalid data string.
+     * @author Vlad Sorokin
+     * @date 2024/07/15
+     */
+    test(tst_con.cgetData_inValidDataToStoreString, async () => {
+        // Arrange
+        D[sys.cDataStorage] = {};
+        D[sys.cBusinessRules] = {};
+        let dataStorageContextName = tst_man.ctestString1;
+
+        // Act
+        let returnData = await dataBroker.getData(dataStorageContextName);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function getData_inValidDataToStoreInteger
+     * @description Tests the dataBroker function getData with a invalid data integer.
+     * @author Vlad Sorokin
+     * @date 2024/07/15
+     */
+    test(tst_con.cgetData_inValidDataToStoreInteger, async () => {
+        // Arrange
+        D[sys.cDataStorage] = {};
+        D[sys.cBusinessRules] = {};
+        let dataStorageContextName = 123;
+
+        // Act
+        let returnData = await dataBroker.getData(dataStorageContextName);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function getData_inValidDataToStoreBoolean
+     * @description Tests the dataBroker function getData with a invalid data boolean.
+     * @author Vlad Sorokin
+     * @date 2024/07/15
+     */
+    test(tst_con.cgetData_inValidDataToStoreBoolean, async () => {
+        // Arrange
+        D[sys.cDataStorage] = {};
+        D[sys.cBusinessRules] = {};
+        let dataStorageContextName = false;
+
+        // Act
+        let returnData = await dataBroker.getData(dataStorageContextName);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function getData_inValidDataToStoreUndefined
+     * @description Tests the dataBroker function getData with a invalid data undefined.
+     * @author Vlad Sorokin
+     * @date 2024/07/15
+     */
+    test(tst_con.cgetData_inValidDataToStoreUndefined, async () => {
+        // Arrange
+        D[sys.cDataStorage] = {};
+        D[sys.cBusinessRules] = {};
+        let dataStorageContextName = undefined;
+
+        // Act
+        let returnData = await dataBroker.getData(dataStorageContextName);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function getData_inValidDataToStoreNaN
+     * @description Tests the dataBroker function getData with a invalid data NaN.
+     * @author Vlad Sorokin
+     * @date 2024/07/15
+     */
+    test(tst_con.cgetData_inValidDataToStoreNaN, async () => {
+        // Arrange
+        D[sys.cDataStorage] = {};
+        D[sys.cBusinessRules] = {};
+        let dataStorageContextName = NaN;
+
+        // Act
+        let returnData = await dataBroker.getData(dataStorageContextName);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+})
+
+/**
+ * @function clearData
+ * @description Tests the positive and negative test cases of the clearData
+ * @author Vlad Sorokin
+ * @date 2024/07/15
+ */
+describe(tst_con.cclearData, () => {
+    /**
+     * @function clearData_validDataStorageContextNameData
+     * @description Tests the dataBroker function clearData with a valid input.
+     * @author Vlad Sorokin
+     * @date 2024/07/15
+     */
+    test(tst_con.cclearData_validDataStorageContextNameData, async () => {
+        // Arrange
+        D[sys.cDataStorage] = {};
+        D[sys.cBusinessRules] = {};
+        let dataStorageContextName = tst_dbt.cunitTestData;
+        let dataToStore = tst_dbt.cexpectedDataFromJsonTestFile;
+
+        // Act
+        await dataBroker.storeData(dataStorageContextName, dataToStore);
+        let returnData = await dataBroker.clearData(dataStorageContextName);
+
+        // Assert
+        expect(returnData).toBeTruthy();
+    });
+
+    /**
+     * @function clearData_inValidDataStorageContextNameString
+     * @description Tests the dataBroker function clearData with a invalid data string.
+     * @author Vlad Sorokin
+     * @date 2024/07/15
+     */
+    test(tst_con.cclearData_inValidDataStorageContextNameString, async () => {
+        // Arrange
+        D[sys.cDataStorage] = {};
+        D[sys.cBusinessRules] = {};
+        let dataStorageContextName = tst_man.ctestString1;
+
+        // Act
+        let returnData = await dataBroker.clearData(dataStorageContextName);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function clearData_inValidDataStorageContextNameInteger
+     * @description Tests the dataBroker function clearData with a invalid data integer.
+     * @author Vlad Sorokin
+     * @date 2024/07/15
+     */
+    test(tst_con.cclearData_inValidDataStorageContextNameInteger, async () => {
+        // Arrange
+        D[sys.cDataStorage] = {};
+        D[sys.cBusinessRules] = {};
+        let dataStorageContextName = 123;
+
+        // Act
+        let returnData = await dataBroker.clearData(dataStorageContextName);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function clearData_inValidDataStorageContextNameBoolean
+     * @description Tests the dataBroker function clearData with a invalid data boolean.
+     * @author Vlad Sorokin
+     * @date 2024/07/15
+     */
+    test(tst_con.cclearData_inValidDataStorageContextNameBoolean, async () => {
+        // Arrange
+        D[sys.cDataStorage] = {};
+        D[sys.cBusinessRules] = {};
+        let dataStorageContextName = false;
+
+        // Act
+        let returnData = await dataBroker.clearData(dataStorageContextName);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function clearData_validDataStorageContextNameUndefined
+     * @description Tests the dataBroker function clearData with a valid data undefined.
+     * @author Vlad Sorokin
+     * @date 2024/07/15
+     */
+    test(tst_con.cclearData_validDataStorageContextNameUndefined, async () => {
+        // Arrange
+        D[sys.cDataStorage] = {};
+        D[sys.cBusinessRules] = {};
+        let dataStorageContextName = undefined;
+
+        // Act
+        let returnData = await dataBroker.clearData(dataStorageContextName);
+
+        // Assert
+        expect(returnData).toBeTruthy();
+    });
+
+    /**
+     * @function clearData_inValidDataStorageContextNameNaN
+     * @description Tests the dataBroker function clearData with a invalid data NaN.
+     * @author Vlad Sorokin
+     * @date 2024/07/15
+     */
+    test(tst_con.cclearData_inValidDataStorageContextNameNaN, async () => {
+        // Arrange
+        D[sys.cDataStorage] = {};
+        D[sys.cBusinessRules] = {};
+        let dataStorageContextName = NaN;
+
+        // Act
+        let returnData = await dataBroker.clearData(dataStorageContextName);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+})
+
+/**
+ * @function removePluginConfigurationData
+ * @description Tests the positive and negative test cases of the removePluginConfigurationData
+ * @author Vlad Sorokin
+ * @date 2024/07/15
+ */
+describe(tst_con.cremovePluginConfigurationData, () => {
+    /**
+     * @function removePluginConfigurationData_validPluginNameData
+     * @description Tests the dataBroker function removePluginConfigurationData with a valid input.
+     * @author Vlad Sorokin
+     * @date 2024/07/15
+     */
+    test(tst_con.cremovePluginConfigurationData_validPluginNameData, async () => {
+        // Arrange
+        D[wrd.cconfiguration] = {};
+        D[wrd.cconfiguration][wrd.cplugins] = {};
+        D[wrd.cconfiguration][cfg.cdebugSetting] = {};
+        D[wrd.cconfiguration][cfg.cdebugSetting][wrd.cplugins] = {};
+        D[sys.cbusinessRules] = {
+            [biz.cgetJsonData]: (inputData, inputMetaData) => fileOperations.getJsonData(inputData, inputMetaData),
+            [biz.cobjectDeepClone]: (inputData, inputMetaData) => dataArrayParsing.objectDeepClone(inputData, inputMetaData)
+        };
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+        D[sys.cpluginsLoaded] = [{}];
+        D[sys.cConstantsValidationData] = {};
+        let pluginPath = tst_man.testPluginPath;
+        let pluginName = tst_man.ctestPluginOne;
         
+        await main.loadPlugin(pluginPath);
 
-//         // Act
-//         let returnData = await dataBroker.storeData();
+        // Act
+        let returnData = await dataBroker.removePluginConfigurationData(pluginName);
 
-//         // Assert
-//         expect(returnData).toEqual();
-//     });
+        // Assert
+        expect(returnData).toBeTruthy();
+    });
 
-//     // /**
-//     //  * @function storeData_inValidDataStorageContextNameString
-//     //  * @description Tests the dataBroker function storeData with a invalid data string.
-//     //  * @author Vlad Sorokin
-//     //  * @date 2024/Month1/Day1
-//     //  */
-//     // test(tst_con.cstoreData_inValidDataStorageContextNameString, async () => {
-//     //     // Arrange
-//     //     1data1
+    /**
+     * @function removePluginConfigurationData_inValidPluginNameString
+     * @description Tests the dataBroker function removePluginConfigurationData with a invalid data string.
+     * @author Vlad Sorokin
+     * @date 2024/07/15
+     */
+    test(tst_con.cremovePluginConfigurationData_inValidPluginNameString, async () => {
+        // Arrange
+        D[wrd.cconfiguration] = {};
+        D[wrd.cconfiguration][wrd.cplugins] = {};
+        D[wrd.cconfiguration][cfg.cdebugSetting] = {};
+        D[wrd.cconfiguration][cfg.cdebugSetting][wrd.cplugins] = {};
+        D[sys.cbusinessRules] = {
+            [biz.cgetJsonData]: (inputData, inputMetaData) => fileOperations.getJsonData(inputData, inputMetaData),
+            [biz.cobjectDeepClone]: (inputData, inputMetaData) => dataArrayParsing.objectDeepClone(inputData, inputMetaData)
+        };
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+        D[sys.cpluginsLoaded] = [{}];
+        D[sys.cConstantsValidationData] = {};
+        let pluginPath = tst_man.testPluginPath;
+        let pluginName = tst_man.ctestString1;
+        
+        await main.loadPlugin(pluginPath);
 
-//     //     // Assert
-//     //     expect(returnData).toBeFalsy();
-//     // });
+        // Act
+        let returnData = await dataBroker.removePluginConfigurationData(pluginName);
 
-//     // /**
-//     //  * @function storeData_inValidDataToStoreString
-//     //  * @description Tests the dataBroker function storeData with a invalid data string.
-//     //  * @author Vlad Sorokin
-//     //  * @date 2024/Month1/Day1
-//     //  */
-//     // test(tst_con.cstoreData_inValidDataToStoreString, async () => {
-//     //     // Arrange
-//     //     1data2
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
 
-//     //     // Assert
-//     //     expect(returnData).toBeFalsy();
-//     // });
+    /**
+     * @function removePluginConfigurationData_inValidPluginNameInteger
+     * @description Tests the dataBroker function removePluginConfigurationData with a invalid data integer.
+     * @author Vlad Sorokin
+     * @date 2024/07/15
+     */
+    test(tst_con.cremovePluginConfigurationData_inValidPluginNameInteger, async () => {
+        // Arrange
+        D[wrd.cconfiguration] = {};
+        D[wrd.cconfiguration][wrd.cplugins] = {};
+        D[wrd.cconfiguration][cfg.cdebugSetting] = {};
+        D[wrd.cconfiguration][cfg.cdebugSetting][wrd.cplugins] = {};
+        D[sys.cbusinessRules] = {
+            [biz.cgetJsonData]: (inputData, inputMetaData) => fileOperations.getJsonData(inputData, inputMetaData),
+            [biz.cobjectDeepClone]: (inputData, inputMetaData) => dataArrayParsing.objectDeepClone(inputData, inputMetaData)
+        };
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+        D[sys.cpluginsLoaded] = [{}];
+        D[sys.cConstantsValidationData] = {};
+        let pluginPath = tst_man.testPluginPath;
+        let pluginName = 123;
+        
+        await main.loadPlugin(pluginPath);
 
-//     // /**
-//     //  * @function storeData_inValidDataStorageContextNameInteger
-//     //  * @description Tests the dataBroker function storeData with a invalid data integer.
-//     //  * @author Vlad Sorokin
-//     //  * @date 2024/Month1/Day1
-//     //  */
-//     // test(tst_con.cstoreData_inValidDataStorageContextNameInteger, async () => {
-//     //     // Arrange
-//     //     1data1
+        // Act
+        let returnData = await dataBroker.removePluginConfigurationData(pluginName);
 
-//     //     // Assert
-//     //     expect(returnData).toBeFalsy();
-//     // });
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
 
-//     // /**
-//     //  * @function storeData_inValidDataStorageContextNameBoolean
-//     //  * @description Tests the dataBroker function storeData with a invalid data boolean.
-//     //  * @author Vlad Sorokin
-//     //  * @date 2024/Month1/Day1
-//     //  */
-//     // test(tst_con.cstoreData_inValidDataStorageContextNameBoolean, async () => {
-//     //     // Arrange
-//     //     1data1
+    /**
+     * @function removePluginConfigurationData_inValidPluginNameBoolean
+     * @description Tests the dataBroker function removePluginConfigurationData with a invalid data boolean.
+     * @author Vlad Sorokin
+     * @date 2024/07/15
+     */
+    test(tst_con.cremovePluginConfigurationData_inValidPluginNameBoolean, async () => {
+        // Arrange
+        D[wrd.cconfiguration] = {};
+        D[wrd.cconfiguration][wrd.cplugins] = {};
+        D[wrd.cconfiguration][cfg.cdebugSetting] = {};
+        D[wrd.cconfiguration][cfg.cdebugSetting][wrd.cplugins] = {};
+        D[sys.cbusinessRules] = {
+            [biz.cgetJsonData]: (inputData, inputMetaData) => fileOperations.getJsonData(inputData, inputMetaData),
+            [biz.cobjectDeepClone]: (inputData, inputMetaData) => dataArrayParsing.objectDeepClone(inputData, inputMetaData)
+        };
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+        D[sys.cpluginsLoaded] = [{}];
+        D[sys.cConstantsValidationData] = {};
+        let pluginPath = tst_man.testPluginPath;
+        let pluginName = false;
+        
+        await main.loadPlugin(pluginPath);
 
-//     //     // Assert
-//     //     expect(returnData).toBeFalsy();
-//     // });
+        // Act
+        let returnData = await dataBroker.removePluginConfigurationData(pluginName);
 
-//     // /**
-//     //  * @function storeData_inValidDataToStoreInteger
-//     //  * @description Tests the dataBroker function storeData with a invalid data integer.
-//     //  * @author Vlad Sorokin
-//     //  * @date 2024/Month1/Day1
-//     //  */
-//     // test(tst_con.cstoreData_inValidDataToStoreInteger, async () => {
-//     //     // Arrange
-//     //     1data2
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
 
-//     //     // Assert
-//     //     expect(returnData).toBeFalsy();
-//     // });
+    /**
+     * @function removePluginConfigurationData_inValidPluginNameUndefined
+     * @description Tests the dataBroker function removePluginConfigurationData with a invalid data undefined.
+     * @author Vlad Sorokin
+     * @date 2024/07/15
+     */
+    test(tst_con.cremovePluginConfigurationData_inValidPluginNameUndefined, async () => {
+        // Arrange
+        D[wrd.cconfiguration] = {};
+        D[wrd.cconfiguration][wrd.cplugins] = {};
+        D[wrd.cconfiguration][cfg.cdebugSetting] = {};
+        D[wrd.cconfiguration][cfg.cdebugSetting][wrd.cplugins] = {};
+        D[sys.cbusinessRules] = {
+            [biz.cgetJsonData]: (inputData, inputMetaData) => fileOperations.getJsonData(inputData, inputMetaData),
+            [biz.cobjectDeepClone]: (inputData, inputMetaData) => dataArrayParsing.objectDeepClone(inputData, inputMetaData)
+        };
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+        D[sys.cpluginsLoaded] = [{}];
+        D[sys.cConstantsValidationData] = {};
+        let pluginPath = tst_man.testPluginPath;
+        let pluginName = undefined;
+        
+        await main.loadPlugin(pluginPath);
 
-//     // /**
-//     //  * @function storeData_inValidDataToStoreBoolean
-//     //  * @description Tests the dataBroker function storeData with a invalid data boolean.
-//     //  * @author Vlad Sorokin
-//     //  * @date 2024/Month1/Day1
-//     //  */
-//     // test(tst_con.cstoreData_inValidDataToStoreBoolean, async () => {
-//     //     // Arrange
-//     //     1data2
+        // Act
+        let returnData = await dataBroker.removePluginConfigurationData(pluginName);
 
-//     //     // Assert
-//     //     expect(returnData).toBeFalsy();
-//     // });
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
 
-//     // /**
-//     //  * @function storeData_inValidDataStorageContextNameUndefined
-//     //  * @description Tests the dataBroker function storeData with a invalid data undefined.
-//     //  * @author Vlad Sorokin
-//     //  * @date 2024/Month1/Day1
-//     //  */
-//     // test(tst_con.cstoreData_inValidDataStorageContextNameUndefined, async () => {
-//     //     // Arrange
-//     //     1data1
+    /**
+     * @function removePluginConfigurationData_inValidPluginNameNaN
+     * @description Tests the dataBroker function removePluginConfigurationData with a invalid data NaN.
+     * @author Vlad Sorokin
+     * @date 2024/07/15
+     */
+    test(tst_con.cremovePluginConfigurationData_inValidPluginNameNaN, async () => {
+        // Arrange
+        D[wrd.cconfiguration] = {};
+        D[wrd.cconfiguration][wrd.cplugins] = {};
+        D[wrd.cconfiguration][cfg.cdebugSetting] = {};
+        D[wrd.cconfiguration][cfg.cdebugSetting][wrd.cplugins] = {};
+        D[sys.cbusinessRules] = {
+            [biz.cgetJsonData]: (inputData, inputMetaData) => fileOperations.getJsonData(inputData, inputMetaData),
+            [biz.cobjectDeepClone]: (inputData, inputMetaData) => dataArrayParsing.objectDeepClone(inputData, inputMetaData)
+        };
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+        D[sys.cpluginsLoaded] = [{}];
+        D[sys.cConstantsValidationData] = {};
+        let pluginPath = tst_man.testPluginPath;
+        let pluginName = NaN;
+        
+        await main.loadPlugin(pluginPath);
 
-//     //     // Assert
-//     //     expect(returnData).toBeFalsy();
-//     // });
+        // Act
+        let returnData = await dataBroker.removePluginConfigurationData(pluginName);
 
-//     // /**
-//     //  * @function storeData_inValidDataStorageContextNameNaN
-//     //  * @description Tests the dataBroker function storeData with a invalid data NaN.
-//     //  * @author Vlad Sorokin
-//     //  * @date 2024/Month1/Day1
-//     //  */
-//     // test(tst_con.cstoreData_inValidDataStorageContextNameNaN, async () => {
-//     //     // Arrange
-//     //     1data1
-
-//     //     // Assert
-//     //     expect(returnData).toBeFalsy();
-//     // });
-
-//     // /**
-//     //  * @function storeData_inValidDataToStoreUndefined
-//     //  * @description Tests the dataBroker function storeData with a invalid data undefined.
-//     //  * @author Vlad Sorokin
-//     //  * @date 2024/Month1/Day1
-//     //  */
-//     // test(tst_con.cstoreData_inValidDataToStoreUndefined, async () => {
-//     //     // Arrange
-//     //     1data2
-
-//     //     // Assert
-//     //     expect(returnData).toBeFalsy();
-//     // });
-
-//     // /**
-//     //  * @function storeData_inValidDataToStoreNaN
-//     //  * @description Tests the dataBroker function storeData with a invalid data NaN.
-//     //  * @author Vlad Sorokin
-//     //  * @date 2024/Month1/Day1
-//     //  */
-//     // test(tst_con.cstoreData_inValidDataToStoreNaN, async () => {
-//     //     // Arrange
-//     //     1data2
-
-//     //     // Assert
-//     //     expect(returnData).toBeFalsy();
-//     // });
-// })
-
-
-
-
-
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+})

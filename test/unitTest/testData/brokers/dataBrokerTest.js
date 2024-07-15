@@ -29,6 +29,7 @@ const rootPathHayPlugins = rootPathArray[2];
 
 export const cunitTestData = wrd.cunit + wrd.cTest + wrd.cData; // unitTestData
 
+// Paths
 export const cpathForTestFolder = rootPathAsync + bas.cBackSlash + wrd.ctest + bas.cBackSlash + wrd.cunit + wrd.cTest + bas.cBackSlash + wrd.ctest + wrd.cData + bas.cBackSlash + wrd.cresources + bas.cBackSlash + wrd.ctest + wrd.cFolder; // C:\\haystacks-async\\test\\unitTest\\testData\\resources\\testFolder
 export const cexpectedPathForTestFolder = cpathForTestFolder + bas.cForwardSlash + wrd.cempty + wrd.cFile + wrd.cFor + wrd.cTest + bas.cDot + bas.cjs; // C:\\haystacks-async\\test\\unitTest\\testData\\resources\\testFolder/emptyFileForTest.js
 export const cpathToUnitTestApplicationDebugSettings = rootPathAsync + bas.cBackSlash + wrd.ctest + bas.cBackSlash + wrd.cunit + wrd.cTest + bas.cBackSlash + wrd.ctestData + bas.cBackSlash + wrd.cresources + bas.cBackSlash + wrd.cfake + wrd.cTest + wrd.cDebug + wrd.cSettings + bas.cBackSlash + wrd.capp + wrd.cDebug + wrd.cSettings + bas.cBackSlash + wrd.capplication + bas.cDot + wrd.csystem + gen.cDotjson; // C:\\haystacks-async\\test\\unitTest\\testData\\resources\\fakeTestDebugSettings\\appDebugSettings\\application.system.json

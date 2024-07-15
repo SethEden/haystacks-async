@@ -42,7 +42,8 @@ const namespacePrefix = wrd.cframework + bas.cDot + wrd.cbrokers + bas.cDot + ba
  * @function loadPluginRegistry
  * @description Loads the plugin registry file, which specified the data with the paths were plugins should be loaded from.
  * @param {string} pluginRegistryPath The path to the plugin registry for the app that loaded the haystacks framework.
- * @return {object} The JSON data object loaded from the specified plugin registry path by the input parameter.
+ * @return {object|boolean} The JSON data object loaded from the specified plugin registry path by the input parameter
+ * or false to indicate error in a load process.
  * @author Seth Hollingsead
  * @date 2022/09/13
  */
@@ -51,11 +52,16 @@ async function loadPluginRegistry(pluginRegistryPath) {
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // pluginRegistryPath is:
   await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginRegistryPathIs + pluginRegistryPath);
-  let returnData = {};
-  let resolvedPluginRegistryPath = path.resolve(pluginRegistryPath);
-  // resolvedPluginRegistryPath is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cresolvedPluginRegistryPathIs + resolvedPluginRegistryPath);
-  returnData = await ruleBroker.processRules([resolvedPluginRegistryPath, ''], [biz.cgetJsonData]);
+  let returnData = false;
+  if (pluginRegistryPath && typeof pluginRegistryPath === wrd.cstring && (pluginRegistryPath.includes(bas.cForwardSlash) === true || pluginRegistryPath.includes(bas.cBackSlash) === true)) {
+    let resolvedPluginRegistryPath = path.resolve(pluginRegistryPath);
+    // resolvedPluginRegistryPath is:
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cresolvedPluginRegistryPathIs + resolvedPluginRegistryPath);
+    returnData = await ruleBroker.processRules([resolvedPluginRegistryPath, ''], [biz.cgetJsonData]);
+  } else {
+    // ERROR: Invalid input, pluginRegistryPath is: 
+    console.log(msg.cErrorLoadPluginRegistryMessage01 + pluginRegistryPath);
+  }
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
@@ -75,15 +81,20 @@ async function storePluginRegistryInDataStructure(pluginRegistryData) {
   // pluginRegistryData is:
   await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginRegistryDataIs + JSON.stringify(pluginRegistryData));
   let returnData = false;
-  try {
-    if (D[cfg.cpluginRegistry] === 'undefined') {
-      D[cfg.cpluginRegistry] = {};
+  if (pluginRegistryData && typeof pluginRegistryData === wrd.cobject) {
+    try {
+      if (D[cfg.cpluginRegistry] === 'undefined') {
+        D[cfg.cpluginRegistry] = {};
+      }
+      D[cfg.cpluginRegistry] = pluginRegistryData;
+      returnData = true;
+    } catch (err) {
+      // ERROR: There was a problem saving the registry data to the plugin registry in the d-data structure:
+      console.log(msg.cstorePluginRegistryInDataStoreMessage01 + err);
     }
-    D[cfg.cpluginRegistry] = pluginRegistryData;
-    returnData = true;
-  } catch (err) {
-    // ERROR: There was a problem saving the registry data to the plugin registry in the d-data structure:
-    console.log(msg.cstorePluginRegistryInDataStoreMessage01 + err);
+  } else {
+    // ERROR: Invalid input, pluginRegistryData is: 
+    console.log(msg.cErrorStorePluginRegistryInDataStructrureMessage01 + pluginRegistryData)
   }
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
@@ -181,33 +192,38 @@ async function listPluginsAttributeInRegistry(attributeName) {
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // attributeName is:
   await loggers.consoleLog(namespacePrefix + functionName, msg.cattributeNameIs + attributeName);
-  let returnData;
-  let pluginRegistryList;
-  if (D[cfg.cpluginRegistry] != undefined) {
-    pluginRegistryList = D[cfg.cpluginRegistry][wrd.cplugins];
-    if (pluginRegistryList && await Array.isArray(pluginRegistryList)) {
-      returnData = [];
-      // pluginRegistryList is:
-      await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginRegistryListIs + JSON.stringify(pluginRegistryList));
-      for (let pluginKey in pluginRegistryList) {
-        // pluginKey is:
-        await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginKeyIs + pluginKey);
-        let pluginParentObject = pluginRegistryList[pluginKey];
-        // pluginParentObject is:
-        await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginParentObjectIs + JSON.stringify(pluginParentObject));
-        let keys = Object.keys(pluginParentObject);
-        let pluginObject = pluginParentObject[keys[0]];
-        // pluginObject is:
-        await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginObjectIs + JSON.stringify(pluginObject));
-        returnData.push(pluginObject[attributeName]);
+  let returnData = false;
+  if (attributeName && typeof attributeName === wrd.cstring) {
+    let pluginRegistryList;
+    if (D[cfg.cpluginRegistry] != undefined) {
+      pluginRegistryList = D[cfg.cpluginRegistry][wrd.cplugins];
+      if (pluginRegistryList && await Array.isArray(pluginRegistryList)) {
+        returnData = [];
+        // pluginRegistryList is:
+        await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginRegistryListIs + JSON.stringify(pluginRegistryList));
+        for (let pluginKey in pluginRegistryList) {
+          // pluginKey is:
+          await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginKeyIs + pluginKey);
+          let pluginParentObject = pluginRegistryList[pluginKey];
+          // pluginParentObject is:
+          await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginParentObjectIs + JSON.stringify(pluginParentObject));
+          let keys = Object.keys(pluginParentObject);
+          let pluginObject = pluginParentObject[keys[0]];
+          // pluginObject is:
+          await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginObjectIs + JSON.stringify(pluginObject));
+          returnData.push(pluginObject[attributeName]);
+        }
+      } else {
+        // ERROR: Invalid value, pluginRegistryList is: 
+        console.log(msg.cErrorListPluginsAttributeInRegistryMessage02 + pluginRegistryList);
       }
     } else {
-      // ERROR: attributeName was not properly defined.
-      await console.log(msg.cErrorAttributeNameMessage01);
-      returnData = false;
+      // ERROR: Plugin registry is undefined.
+      console.log(msg.cErrorListPluginsAttributeInRegistryMessage03);
     }
   } else {
-    returnData = false;
+    // ERROR: Invalid input, attributeName is: 
+    console.log(msg.cErrorListPluginsAttributeInRegistryMessage01 + attributeName);
   }
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
@@ -669,7 +685,7 @@ async function loadPluginMetaData(pluginPath) {
     returnData = await ruleBroker.processRules([resolvedPluginPath, ''], [biz.cgetJsonData]);
   } else {
     // ERROR: prefixPluginPath is an undefined string.
-    console.log('ERROR: prefixPluginPath is an undefined string.');
+    console.log(msg.cErrorLoadPluginMetaDataMessage01);
     returnData = false;
   }
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));

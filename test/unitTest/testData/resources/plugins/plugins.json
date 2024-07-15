@@ -1,0 +1,11 @@
+{
+    "path": "C:\\haystacks-async/test/unitTest/testData/testPlugins",
+    "plugins": [
+      {
+        "test-plugin-one": {
+          "Name": "test-plugin-one",
+          "Path": "C:\\haystacks-async//test//unitTest//testData//testPlugins//test-plugin-one//"
+        }
+      }
+    ]
+  }

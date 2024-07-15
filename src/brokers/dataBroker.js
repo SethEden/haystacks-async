@@ -709,7 +709,12 @@ async function storeData(dataStorageContextName, dataToStore) {
   await loggers.consoleLog(namespacePrefix + functionName, msg.cdataToStoreIs + JSON.stringify(dataToStore));
   let returnData = false;
   if (dataStorageContextName && typeof dataStorageContextName === wrd.cstring) {
-    if (dataToStore) {
+    if (
+      typeof dataToStore === wrd.cstring ||
+      typeof dataToStore === wrd.cboolean ||
+      typeof dataToStore === wrd.cnumber && isFinite(dataToStore) ||
+      typeof dataToStore === wrd.cobject && dataToStore !== null
+    ) {
       if (D[sys.cDataStorage][dataStorageContextName] === undefined) {
         D[sys.cDataStorage][dataStorageContextName] = {};
         D[sys.cDataStorage][dataStorageContextName] = dataToStore;
@@ -719,8 +724,8 @@ async function storeData(dataStorageContextName, dataToStore) {
         console.log(msg.cErrorStoreDataMessage01, dataStorageContextName);
       }
     } else {
-      // ERROR: Data to store is undefined.
-      console.log(msg.cErrorStoreDataMessage02);
+      // ERROR: Data to store is not valid. Data to store is: 
+      console.log(msg.cErrorStoreDataMessage02 + dataToStore);
     }
   } else {
     // ERROR: Data name is an invalid value. Data name is: 
@@ -777,6 +782,9 @@ async function clearData(dataStorageContextName) {
     if (D[sys.cDataStorage][dataStorageContextName] !== null && !!D[sys.cDataStorage][dataStorageContextName] && dataStorageContextName !== '') {
       D[sys.cDataStorage][dataStorageContextName] = undefined;
       returnData = true;
+    } else {
+      // WARNING: Data name provided was not found. Data name is: 
+      console.log(msg.cWarningClearDataMessage01 + dataStorageContextName);
     }
   } else if (dataStorageContextName === undefined) {
     D[sys.cDataStorage] = {};
@@ -1138,28 +1146,46 @@ async function removePluginConfigurationData(pluginName) {
   // pluginName is:
   await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginNameIs + pluginName);
   let returnData = false;
-  let allPluginsConfigurationData = D[wrd.cconfiguration][wrd.cplugins];
-  let allPluginsDebugSettings = D[wrd.cconfiguration][cfg.cdebugSetting][wrd.cplugins];
-  if (allPluginsConfigurationData && allPluginsDebugSettings) {
-    try {
-      delete allPluginsConfigurationData[pluginName];
-      delete allPluginsDebugSettings[pluginName];
-      returnData = true;
-    } catch (err) {
-      // ERROR: Unable to remove the plugin configuration data for the specified plugin:
-      console.log(msg.cremovePluginConfigurationDataMessage01 + pluginName);
-      // ERROR:
-      console.log(msg.cerrorMessage + err.message);
-    }
+  let pluginsLoaded = D[sys.cpluginsLoaded];
+  if (pluginName && typeof pluginName === wrd.cstring) {
+      const arraysEqual = (arr1, arr2) => {
+          if (arr1.length !== arr2.length) return false;
+          return arr1.every((value, index) => value === arr2[index]);
+      };
+      // NOTE: The arraysEqual function compares two arrays for equality by first checking if they have the same length. 
+      // If they do, it then checks if all corresponding elements in both arrays are equal, returning true if they are and false otherwise.
+      // This function is used for the if statement on the next line.
+      if (pluginsLoaded.some(innerArray => arraysEqual(innerArray, [pluginName, true]))) {
+        let allPluginsConfigurationData = D[wrd.cconfiguration][wrd.cplugins];
+        let allPluginsDebugSettings = D[wrd.cconfiguration][cfg.cdebugSetting][wrd.cplugins];
+        if (allPluginsConfigurationData && allPluginsDebugSettings) {
+          try {
+            delete allPluginsConfigurationData[pluginName];
+            delete allPluginsDebugSettings[pluginName];
+            returnData = true;
+          } catch (err) {
+            // ERROR: Unable to remove the plugin configuration data for the specified plugin:
+            console.log(msg.cremovePluginConfigurationDataMessage01 + pluginName);
+            // ERROR:
+            console.log(msg.cerrorMessage + err.message);
+          }
+        } else {
+          if (!allPluginsConfigurationData) {
+            // ERROR: Unable to locate the plugins configuration data. Plugin:
+            console.log(msg.cremovePluginConfigurationDataMessage02 + pluginName);
+          }
+          if (!allPluginsDebugSettings) {
+            // ERROR: Unable to locate the plugins configuration debug settings data. Plugin:
+            console.log(msg.cremovePluginConfigurationDataMessage03 + pluginName);
+          }
+        }
+      } else {
+          // ERROR: Unable to verify that the plugin was loaded. Plugin:
+          console.log(msg.cErrorRemovePluginCommandAliasesMessage03 + pluginName);
+      }
   } else {
-    if (!allPluginsConfigurationData) {
-      // ERROR: Unable to locate the plugins configuration data. Plugin:
-      console.log(msg.cremovePluginConfigurationDataMessage02 + pluginName);
-    }
-    if (!allPluginsDebugSettings) {
-      // ERROR: Unable to locate the plugins configuration debug settings data. Plugin:
-      console.log(msg.cremovePluginConfigurationDataMessage03 + pluginName);
-    }
+  // ERROR: pluginName is an invalid value. pluginName is: 
+  console.log(msg.cErrorAddPluginCommandAliasesMessage03, pluginName);
   }
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
