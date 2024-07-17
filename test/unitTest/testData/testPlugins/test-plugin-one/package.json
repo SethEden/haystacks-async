@@ -1,31 +1,5 @@
 {
     "name": "test-plugin-one",
     "version": "0.0.1",
-    "description": "An example plugin implementation for the haystacks platform.",
-    "main": "./main.js",
-    "type": "module",
-    "scripts": {
-      "test": "echo \"Error: no test specified\" && exit 1"
-    },
-    "repository": {
-      "type": "git",
-      "url": "git+https://github.com/SethEden/pluginOne.git"
-    },
-    "keywords": [
-      "NodeJS",
-      "Plugin",
-      "Haystacks"
-    ],
-    "author": "Vlad Sorokin",
-    "license": "MIT",
-    "bugs": {
-      "url": "https://github.com/SethEden/PluginOne/issues"
-    },
-    "homepage": "https://github.com/SethEden/PluginOne#readme",
-    "dependencies": {
-      "@haystacks/async": ">=0.2.11",
-      "@haystacks/constants": ">=0.2.11",
-      "dotenv": "^16.0.0",
-      "moment": "2.29.4"
-    }
-  }
+    "main": "./main.js"
+}

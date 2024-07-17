@@ -61,8 +61,15 @@ export const clistAllLoadedPlugins = wrd.clist + wrd.cAll + wrd.cLoaded + wrd.cP
 export const clistPluginsInRegistry = wrd.clist + wrd.cPlugins + wrd.cIn + wrd.cRegistry; // listPluginsInRegistry
 export const clistPluginsPathsInRegistry = wrd.clist + wrd.cPlugins + wrd.cPaths + wrd.cIn + wrd.cRegistry; // listPluginsPathsInRegistry
 export const clistPluginsAttributeInRegistry = wrd.clist + wrd.cPlugins + wrd.cAttribute + wrd.cIn + wrd.cRegistry; // listPluginsAttributeInRegistry
-
-
+export const clistPluginsInRegistryPath = wrd.clist + wrd.cPlugins + wrd.cIn + wrd.cRegistry + wrd.cPath; // listPluginsInRegistryPath
+export const ccountPluginsInRegistry = wrd.ccount + wrd.cPlugins + wrd.cIn + wrd.cRegistry; // countPluginsInRegistry
+export const ccountPluginsInRegistryPath = wrd.ccount + wrd.cPlugins + wrd.cIn + wrd.cRegistry + wrd.cPath; // countPluginsInRegistryPath
+export const cregisterPlugin = wrd.cregister + wrd.cPlugin; // registerPlugin
+export const cunregisterPlugin = wrd.cunregister + wrd.cPlugin; // unregisterPlugin
+export const csyncPluginRegistryWithPluginRegistryPath = wrd.csync + wrd.cPlugin + wrd.cRegistry + wrd.cWith + wrd.cPlugin + wrd.cRegistry + wrd.cPath; // syncPluginRegistryWithPluginRegistryPath
+export const cunregisterAllPlugins = wrd.cunregister + wrd.cAll + wrd.cPlugins; // unregisterAllPlugins
+export const csavePluginRegistry = wrd.csave + wrd.cPlugins + wrd.cRegistry; // savePluginRegistry
+export const cloadPluginMetaData = wrd.cload + wrd.cPlugin + wrd.cMeta + wrd.cData; // loadPluginMetaData
 
 
 
@@ -534,19 +541,60 @@ export const clistPluginsAttributeInRegistry_inValidAttributeNameBoolean = clist
 export const clistPluginsAttributeInRegistry_inValidAttributeNameUndefined = clistPluginsAttributeInRegistry + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cAttribute + wrd.cName + "Undefined"; // listPluginsAttributeInRegistry_inValidAttributeNameUndefined
 export const clistPluginsAttributeInRegistry_inValidAttributeNameNaN = clistPluginsAttributeInRegistry + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cAttribute + wrd.cName + "NaN"; // listPluginsAttributeInRegistry_inValidAttributeNameNaN
 
+// listPluginsInRegistryPath
+export const clistPluginsInRegistryPath_validData = clistPluginsInRegistryPath + bas.cUnderscore + wrd.cvalid + wrd.cData; // listPluginsInRegistryPath_validData
 
+// countPluginsInRegistry
+export const ccountPluginsInRegistry_validData = ccountPluginsInRegistry + bas.cUnderscore + wrd.cvalid + wrd.cData; // countPluginsInRegistry_validData
 
+// countPluginsInRegistryPath
+export const ccountPluginsInRegistryPath_validData = ccountPluginsInRegistryPath + bas.cUnderscore + wrd.cvalid + wrd.cData; // countPluginsInRegistryPath_validData
 
+// registerPlugin
+export const cregisterPlugin_validData = cregisterPlugin + bas.cUnderscore + wrd.cvalid + wrd.cData; // registerPlugin_validData
+export const cregisterPlugin_inValidPluginNameString = cregisterPlugin + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cName + wrd.cString; // registerPlugin_inValidPluginNameString
+export const cregisterPlugin_inValidPluginPathString = cregisterPlugin + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cPath + wrd.cString; // registerPlugin_inValidPluginPathString
+export const cregisterPlugin_inValidPluginNameInteger = cregisterPlugin + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cName + wrd.cInteger; // registerPlugin_inValidPluginNameInteger
+export const cregisterPlugin_inValidPluginNameBoolean = cregisterPlugin + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cName + wrd.cBoolean; // registerPlugin_inValidPluginNameBoolean
+export const cregisterPlugin_inValidPluginPathInteger = cregisterPlugin + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cPath + wrd.cInteger; // registerPlugin_inValidPluginPathInteger
+export const cregisterPlugin_inValidPluginPathBoolean = cregisterPlugin + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cPath + wrd.cBoolean; // registerPlugin_inValidPluginPathBoolean
+export const cregisterPlugin_inValidPluginNameUndefined = cregisterPlugin + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cName + 'Undefined'; // registerPlugin_inValidPluginNameUndefined
+export const cregisterPlugin_inValidPluginNameNaN = cregisterPlugin + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cName + 'NaN'; // registerPlugin_inValidPluginNameNaN
+export const cregisterPlugin_inValidPluginPathUndefined = cregisterPlugin + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cPath + 'Undefined'; // registerPlugin_inValidPluginPathUndefined
+export const cregisterPlugin_inValidPluginPathNaN = cregisterPlugin + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cPath + 'NaN'; // registerPlugin_inValidPluginPathNaN
 
+// unregisterPlugin
+export const cunregisterPlugin_validPluginNameData = cunregisterPlugin + bas.cUnderscore + wrd.cvalid + wrd.cPlugin + wrd.cName + wrd.cData; // unregisterPlugin_validPluginNameData
+export const cunregisterPlugin_inValidPluginNameString = cunregisterPlugin + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cName + wrd.cString; // unregisterPlugin_inValidPluginNameString
+export const cunregisterPlugin_inValidPluginNameInteger = cunregisterPlugin + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cName + wrd.cInteger; // unregisterPlugin_inValidPluginNameInteger
+export const cunregisterPlugin_inValidPluginNameBoolean = cunregisterPlugin + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cName + wrd.cBoolean; // unregisterPlugin_inValidPluginNameBoolean
+export const cunregisterPlugin_inValidPluginNameUndefined = cunregisterPlugin + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cName + "Undefined"; // unregisterPlugin_inValidPluginNameUndefined
+export const cunregisterPlugin_inValidPluginNameNaN = cunregisterPlugin + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cName + "NaN"; // unregisterPlugin_inValidPluginNameNaN
 
+// unregisterPlugins
+export const cunregisterPlugins_validPluginListArrayData = cunregisterPlugins + bas.cUnderscore + wrd.cvalid + wrd.cPlugin + wrd.cList + wrd.cArray + wrd.cData; // unregisterPlugins_validPluginListArrayData
+export const cunregisterPlugins_inValidPluginListArrayString = cunregisterPlugins + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cList + wrd.cArray + wrd.cString; // unregisterPlugins_inValidPluginListArrayString
+export const cunregisterPlugins_inValidPluginListArrayInteger = cunregisterPlugins + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cList + wrd.cArray + wrd.cInteger; // unregisterPlugins_inValidPluginListArrayInteger
+export const cunregisterPlugins_inValidPluginListArrayBoolean = cunregisterPlugins + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cList + wrd.cArray + wrd.cBoolean; // unregisterPlugins_inValidPluginListArrayBoolean
+export const cunregisterPlugins_inValidPluginListArrayUndefined = cunregisterPlugins + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cList + wrd.cArray + "Undefined"; // unregisterPlugins_inValidPluginListArrayUndefined
+export const cunregisterPlugins_inValidPluginListArrayNaN = cunregisterPlugins + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cList + wrd.cArray + "NaN"; // unregisterPlugins_inValidPluginListArrayNaN
 
+// syncPluginRegistryWithPluginRegistryPath
+export const csyncPluginRegistryWithPluginRegistryPath_validData = csyncPluginRegistryWithPluginRegistryPath + bas.cUnderscore + wrd.cvalid + wrd.cData; // syncPluginRegistryWithPluginRegistryPath_validData
 
+// unregisterAllPlugins
+export const cunregisterAllPlugins_validData = cunregisterAllPlugins + bas.cUnderscore + wrd.cvalid + wrd.cData; // unregisterAllPlugins_validData
 
+// savePluginRegistry
+export const csavePluginRegistry_validData = csavePluginRegistry + bas.cUnderscore + wrd.cvalid + wrd.cData; // savePluginRegistry_validData
 
-
-
-
-
+// loadPluginMetaData
+export const cloadPluginMetaData_validPluginPathData = cloadPluginMetaData + bas.cUnderscore + wrd.cvalid + wrd.cPlugin + wrd.cPath + wrd.cData; // loadPluginMetaData_validPluginPathData
+export const cloadPluginMetaData_inValidPluginPathString = cloadPluginMetaData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cPath + wrd.cString; // loadPluginMetaData_inValidPluginPathString
+export const cloadPluginMetaData_inValidPluginPathInteger = cloadPluginMetaData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cPath + wrd.cInteger; // loadPluginMetaData_inValidPluginPathInteger
+export const cloadPluginMetaData_inValidPluginPathBoolean = cloadPluginMetaData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cPath + wrd.cBoolean; // loadPluginMetaData_inValidPluginPathBoolean
+export const cloadPluginMetaData_inValidPluginPathUndefined = cloadPluginMetaData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cPath + "Undefined"; // loadPluginMetaData_inValidPluginPathUndefined
+export const cloadPluginMetaData_inValidPluginPathNaN = cloadPluginMetaData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cPath + "NaN"; // loadPluginMetaData_inValidPluginPathNaN
 
 
 

@@ -213,10 +213,7 @@ input pluginName: string (The name of the plugin that should be registered)
 input pluginPath: string (The path to the plugin, to be added to the plugin registry)
 output: boolean (True or False to indicate if the plugin was added to the plugin registry successfully or not)
 
-testName: registerPlugin_inValidPluginNameString
-input pluginName: string (464gsdsfae8f46)
-input pluginPath: string (The path to the plugin, to be added to the plugin registry)
-output: ?
+NOTE: registerPlugin_inValidPluginNameString unit test was removed as it is not usable in this test.
 
 testName: registerPlugin_inValidPluginPathString
 input pluginName: string (The name of the plugin that should be registered)

@@ -50,7 +50,6 @@ export const testConstantsValidation = [
     {Name: 'cfindUniversalDebugConfigSetting', Actual: tst_con.cfindUniversalDebugConfigSetting, Expected: 'findUniversalDebugConfigSetting'},
     {Name: 'cloadAllCsvData', Actual: tst_con.cloadAllCsvData, Expected: 'loadAllCsvData'},
     {Name: 'cloadAllXmlData', Actual: tst_con.cloadAllXmlData, Expected: 'loadAllXmlData'},
-    // {Name: 'cloadAllJsonData', Actual: tst_con.cloadAllJsonData, Expected: 'loadAllJsonData'},
     {Name: 'cprocessCsvData', Actual: tst_con.cprocessCsvData, Expected: 'processCsvData'},
     {Name: 'cpreprocessJsonFile', Actual: tst_con.cpreprocessJsonFile, Expected: 'preprocessJsonFile'},
     {Name: 'cwriteJsonDataToFile', Actual: tst_con.cwriteJsonDataToFile, Expected: 'writeJsonDataToFile'},
@@ -64,9 +63,18 @@ export const testConstantsValidation = [
     {Name: 'clistPluginsInRegistry', Actual: tst_con.clistPluginsInRegistry, Expected: 'listPluginsInRegistry'},
     {Name: 'clistPluginsPathsInRegistry', Actual: tst_con.clistPluginsPathsInRegistry, Expected: 'listPluginsPathsInRegistry'},
     {Name: 'clistPluginsAttributeInRegistry', Actual: tst_con.clistPluginsAttributeInRegistry, Expected: 'listPluginsAttributeInRegistry'},
+    {Name: 'clistPluginsInRegistryPath', Actual: tst_con.clistPluginsInRegistryPath, Expected: 'listPluginsInRegistryPath'},
+    {Name: 'ccountPluginsInRegistry', Actual: tst_con.ccountPluginsInRegistry, Expected: 'countPluginsInRegistry'},
+    {Name: 'ccountPluginsInRegistryPath', Actual: tst_con.ccountPluginsInRegistryPath, Expected: 'countPluginsInRegistryPath'},
+    {Name: 'cregisterPlugin', Actual: tst_con.cregisterPlugin, Expected: 'registerPlugin'},
+    {Name: 'cunregisterPlugin', Actual: tst_con.cunregisterPlugin, Expected: 'unregisterPlugin'},
+    {Name: 'csyncPluginRegistryWithPluginRegistryPath', Actual: tst_con.csyncPluginRegistryWithPluginRegistryPath, Expected: 'syncPluginRegistryWithPluginRegistryPath'},
+    {Name: 'cunregisterAllPlugins', Actual: tst_con.cunregisterAllPlugins, Expected: 'unregisterAllPlugins'},
+    {Name: 'csavePluginRegistry', Actual: tst_con.csavePluginRegistry, Expected: 'savePluginRegistry'},
+    {Name: 'cloadPluginMetaData', Actual: tst_con.cloadPluginMetaData, Expected: 'loadPluginMetaData'},
 
 
-
+    
 
 
 
@@ -520,6 +528,57 @@ export const testConstantsValidation = [
     {Name: 'clistPluginsAttributeInRegistry_inValidAttributeNameBoolean', Actual: tst_con.clistPluginsAttributeInRegistry_inValidAttributeNameBoolean, Expected: 'listPluginsAttributeInRegistry_inValidAttributeNameBoolean'},
     {Name: 'clistPluginsAttributeInRegistry_inValidAttributeNameUndefined', Actual: tst_con.clistPluginsAttributeInRegistry_inValidAttributeNameUndefined, Expected: 'listPluginsAttributeInRegistry_inValidAttributeNameUndefined'},
     {Name: 'clistPluginsAttributeInRegistry_inValidAttributeNameNaN', Actual: tst_con.clistPluginsAttributeInRegistry_inValidAttributeNameNaN, Expected: 'listPluginsAttributeInRegistry_inValidAttributeNameNaN'},
+
+    // listPluginsInRegistryPath
+    {Name: 'clistPluginsInRegistryPath_validData', Actual: tst_con.clistPluginsInRegistryPath_validData, Expected: 'listPluginsInRegistryPath_validData'},
+
+    // countPluginsInRegistry
+    {Name: 'ccountPluginsInRegistry_validData', Actual: tst_con.ccountPluginsInRegistry_validData, Expected: 'countPluginsInRegistry_validData'},
+
+    // countPluginsInRegistryPath
+    {Name: 'ccountPluginsInRegistryPath_validData', Actual: tst_con.ccountPluginsInRegistryPath_validData, Expected: 'countPluginsInRegistryPath_validData'},
+
+    // registerPlugin
+    {Name: 'cregisterPlugin_validData', Actual: tst_con.cregisterPlugin_validData, Expected: 'registerPlugin_validData'},
+    {Name: 'cregisterPlugin_inValidPluginNameString', Actual: tst_con.cregisterPlugin_inValidPluginNameString, Expected: 'registerPlugin_inValidPluginNameString'},
+    {Name: 'cregisterPlugin_inValidPluginPathString', Actual: tst_con.cregisterPlugin_inValidPluginPathString, Expected: 'registerPlugin_inValidPluginPathString'},
+    {Name: 'cregisterPlugin_inValidPluginNameInteger', Actual: tst_con.cregisterPlugin_inValidPluginNameInteger, Expected: 'registerPlugin_inValidPluginNameInteger'},
+    {Name: 'cregisterPlugin_inValidPluginNameBoolean', Actual: tst_con.cregisterPlugin_inValidPluginNameBoolean, Expected: 'registerPlugin_inValidPluginNameBoolean'},
+    {Name: 'cregisterPlugin_inValidPluginPathInteger', Actual: tst_con.cregisterPlugin_inValidPluginPathInteger, Expected: 'registerPlugin_inValidPluginPathInteger'},
+    {Name: 'cregisterPlugin_inValidPluginPathBoolean', Actual: tst_con.cregisterPlugin_inValidPluginPathBoolean, Expected: 'registerPlugin_inValidPluginPathBoolean'},
+    {Name: 'cregisterPlugin_inValidPluginNameUndefined', Actual: tst_con.cregisterPlugin_inValidPluginNameUndefined, Expected: 'registerPlugin_inValidPluginNameUndefined'},
+    {Name: 'cregisterPlugin_inValidPluginNameNaN', Actual: tst_con.cregisterPlugin_inValidPluginNameNaN, Expected: 'registerPlugin_inValidPluginNameNaN'},
+    {Name: 'cregisterPlugin_inValidPluginPathUndefined', Actual: tst_con.cregisterPlugin_inValidPluginPathUndefined, Expected: 'registerPlugin_inValidPluginPathUndefined'},
+    {Name: 'cregisterPlugin_inValidPluginPathNaN', Actual: tst_con.cregisterPlugin_inValidPluginPathNaN, Expected: 'registerPlugin_inValidPluginPathNaN'},
+
+    // unregisterPlugin
+    {Name: 'cunregisterPlugin_validPluginNameData', Actual: tst_con.cunregisterPlugin_validPluginNameData, Expected: 'unregisterPlugin_validPluginNameData'},
+    {Name: 'cunregisterPlugin_inValidPluginNameString', Actual: tst_con.cunregisterPlugin_inValidPluginNameString, Expected: 'unregisterPlugin_inValidPluginNameString'},
+    {Name: 'cunregisterPlugin_inValidPluginNameInteger', Actual: tst_con.cunregisterPlugin_inValidPluginNameInteger, Expected: 'unregisterPlugin_inValidPluginNameInteger'},
+    {Name: 'cunregisterPlugin_inValidPluginNameBoolean', Actual: tst_con.cunregisterPlugin_inValidPluginNameBoolean, Expected: 'unregisterPlugin_inValidPluginNameBoolean'},
+    {Name: 'cunregisterPlugin_inValidPluginNameUndefined', Actual: tst_con.cunregisterPlugin_inValidPluginNameUndefined, Expected: 'unregisterPlugin_inValidPluginNameUndefined'},
+    {Name: 'cunregisterPlugin_inValidPluginNameNaN', Actual: tst_con.cunregisterPlugin_inValidPluginNameNaN, Expected: 'unregisterPlugin_inValidPluginNameNaN'},
+
+    // syncPluginRegistryWithPluginRegistryPath
+    {Name: 'csyncPluginRegistryWithPluginRegistryPath_validData', Actual: tst_con.csyncPluginRegistryWithPluginRegistryPath_validData, Expected: 'syncPluginRegistryWithPluginRegistryPath_validData'},
+
+    // unregisterAllPlugins
+    {Name: 'cunregisterAllPlugins_validData', Actual: tst_con.cunregisterAllPlugins_validData, Expected: 'unregisterAllPlugins_validData'},
+
+    // savePluginRegistry
+    {Name: 'csavePluginRegistry_validData', Actual: tst_con.csavePluginRegistry_validData, Expected: 'savePluginRegistry_validData'},
+
+    // loadPluginMetaData
+    {Name: 'cloadPluginMetaData_validPluginPathData', Actual: tst_con.cloadPluginMetaData_validPluginPathData, Expected: 'loadPluginMetaData_validPluginPathData'},
+    {Name: 'cloadPluginMetaData_inValidPluginPathString', Actual: tst_con.cloadPluginMetaData_inValidPluginPathString, Expected: 'loadPluginMetaData_inValidPluginPathString'},
+    {Name: 'cloadPluginMetaData_inValidPluginPathInteger', Actual: tst_con.cloadPluginMetaData_inValidPluginPathInteger, Expected: 'loadPluginMetaData_inValidPluginPathInteger'},
+    {Name: 'cloadPluginMetaData_inValidPluginPathBoolean', Actual: tst_con.cloadPluginMetaData_inValidPluginPathBoolean, Expected: 'loadPluginMetaData_inValidPluginPathBoolean'},
+    {Name: 'cloadPluginMetaData_inValidPluginPathUndefined', Actual: tst_con.cloadPluginMetaData_inValidPluginPathUndefined, Expected: 'loadPluginMetaData_inValidPluginPathUndefined'},
+    {Name: 'cloadPluginMetaData_inValidPluginPathNaN', Actual: tst_con.cloadPluginMetaData_inValidPluginPathNaN, Expected: 'loadPluginMetaData_inValidPluginPathNaN'},
+
+
+
+
 
 
 
