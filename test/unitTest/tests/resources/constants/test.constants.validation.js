@@ -72,7 +72,7 @@ export const testConstantsValidation = [
     {Name: 'cunregisterAllPlugins', Actual: tst_con.cunregisterAllPlugins, Expected: 'unregisterAllPlugins'},
     {Name: 'csavePluginRegistry', Actual: tst_con.csavePluginRegistry, Expected: 'savePluginRegistry'},
     {Name: 'cloadPluginMetaData', Actual: tst_con.cloadPluginMetaData, Expected: 'loadPluginMetaData'},
-
+    {Name: 'cextractAndProcessPluginEntryPointURI', Actual: tst_con.cextractAndProcessPluginEntryPointURI, Expected: 'extractAndProcessPluginEntryPointURI'},
 
     
 
@@ -575,6 +575,19 @@ export const testConstantsValidation = [
     {Name: 'cloadPluginMetaData_inValidPluginPathBoolean', Actual: tst_con.cloadPluginMetaData_inValidPluginPathBoolean, Expected: 'loadPluginMetaData_inValidPluginPathBoolean'},
     {Name: 'cloadPluginMetaData_inValidPluginPathUndefined', Actual: tst_con.cloadPluginMetaData_inValidPluginPathUndefined, Expected: 'loadPluginMetaData_inValidPluginPathUndefined'},
     {Name: 'cloadPluginMetaData_inValidPluginPathNaN', Actual: tst_con.cloadPluginMetaData_inValidPluginPathNaN, Expected: 'loadPluginMetaData_inValidPluginPathNaN'},
+
+    // extractAndProcessPluginEntryPointURI
+    {Name: 'cextractAndProcessPluginEntryPointURI_validData', Actual: tst_con.cextractAndProcessPluginEntryPointURI_validData, Expected: 'extractAndProcessPluginEntryPointURI_validData'},
+    {Name: 'cextractAndProcessPluginEntryPointURI_inValidPluginMetaDataString', Actual: tst_con.cextractAndProcessPluginEntryPointURI_inValidPluginMetaDataString, Expected: 'extractAndProcessPluginEntryPointURI_inValidPluginMetaDataString'},
+    {Name: 'cextractAndProcessPluginEntryPointURI_inValidPluginPathString', Actual: tst_con.cextractAndProcessPluginEntryPointURI_inValidPluginPathString, Expected: 'extractAndProcessPluginEntryPointURI_inValidPluginPathString'},
+    {Name: 'cextractAndProcessPluginEntryPointURI_inValidPluginMetaDataInteger', Actual: tst_con.cextractAndProcessPluginEntryPointURI_inValidPluginMetaDataInteger, Expected: 'extractAndProcessPluginEntryPointURI_inValidPluginMetaDataInteger'},
+    {Name: 'cextractAndProcessPluginEntryPointURI_inValidPluginMetaDataBoolean', Actual: tst_con.cextractAndProcessPluginEntryPointURI_inValidPluginMetaDataBoolean, Expected: 'extractAndProcessPluginEntryPointURI_inValidPluginMetaDataBoolean'},
+    {Name: 'cextractAndProcessPluginEntryPointURI_inValidPluginPathInteger', Actual: tst_con.cextractAndProcessPluginEntryPointURI_inValidPluginPathInteger, Expected: 'extractAndProcessPluginEntryPointURI_inValidPluginPathInteger'},
+    {Name: 'cextractAndProcessPluginEntryPointURI_inValidPluginPathBoolean', Actual: tst_con.cextractAndProcessPluginEntryPointURI_inValidPluginPathBoolean, Expected: 'extractAndProcessPluginEntryPointURI_inValidPluginPathBoolean'},
+    {Name: 'cextractAndProcessPluginEntryPointURI_inValidPluginMetaDataUndefined', Actual: tst_con.cextractAndProcessPluginEntryPointURI_inValidPluginMetaDataUndefined, Expected: 'extractAndProcessPluginEntryPointURI_inValidPluginMetaDataUndefined'},
+    {Name: 'cextractAndProcessPluginEntryPointURI_inValidPluginMetaDataNaN', Actual: tst_con.cextractAndProcessPluginEntryPointURI_inValidPluginMetaDataNaN, Expected: 'extractAndProcessPluginEntryPointURI_inValidPluginMetaDataNaN'},
+    {Name: 'cextractAndProcessPluginEntryPointURI_inValidPluginPathUndefined', Actual: tst_con.cextractAndProcessPluginEntryPointURI_inValidPluginPathUndefined, Expected: 'extractAndProcessPluginEntryPointURI_inValidPluginPathUndefined'},
+    {Name: 'cextractAndProcessPluginEntryPointURI_inValidPluginPathNaN', Actual: tst_con.cextractAndProcessPluginEntryPointURI_inValidPluginPathNaN, Expected: 'extractAndProcessPluginEntryPointURI_inValidPluginPathNaN'},
 
 
 

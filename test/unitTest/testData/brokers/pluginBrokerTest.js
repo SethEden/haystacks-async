@@ -1,6 +1,6 @@
 /**
- * @file dataBrokerTest.js
- * @module dataBrokerTest
+ * @file pluginBrokerTest.js
+ * @module pluginBrokerTest
  * @description File that containts test data.
  * @requires {@link https://www.npmjs.com/package/@haystacks/constants|@haystacks/constants}
  * @requires {@link https://www.npmjs.com/package/path|path}
@@ -17,6 +17,7 @@ import * as tst_man from '../mainTest.js';
 import hayConst from '@haystacks/constants';
 import url from 'url';
 import path from 'path';
+import { getRandomValues } from 'crypto';
 
 const {bas, biz, cmd, cfg, gen, msg, num, phn, sys, wrd} = hayConst;
 const baseFileName = path.basename(import.meta.url, path.extname(import.meta.url));
@@ -48,3 +49,4 @@ export const cexpectedDataFromTestPluginOnePackageJsonFile = {
     [wrd.cversion]: num.c0 + bas.cDot + num.c0 + bas.cDot + num.c1,
     [wrd.cmain]: bas.cDot + bas.cForwardSlash + wrd.cmain + bas.cDot + gen.cjs
 }
+export const cexpectedURIfromTestPluginOne = wrd.cfile + bas.cColon + bas.cForwardSlash.repeat(3) + tst_man.testPluginPath.replaceAll(bas.cBackSlash, bas.cForwardSlash).replaceAll(bas.cDoubleForwardSlash, bas.cForwardSlash) + wrd.cmain + gen.cDotjs;// file:///C:/haystacks-async/test/unitTest/testData/testPlugins/test-plugin-one/main.js

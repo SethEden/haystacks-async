@@ -205,7 +205,7 @@ describe(tst_con.cstorePluginRegistryInDataStructure, () => {
         let returnData = await pluginBroker.storePluginRegistryInDataStructure(pluginRegistryData);
 
         // Assert
-        expect(returnData).toBeTruthy();
+        expect(returnData).toEqual(true);
         delete D[cfg.cpluginRegistry];
     });
 
@@ -610,7 +610,7 @@ describe(tst_con.cregisterPlugin, () => {
         let returnData = await pluginBroker.registerPlugin(pluginName, pluginPath);
 
         // Assert
-        expect(returnData).toBeTruthy();
+        expect(returnData).toEqual(true);
     });
 
     /**
@@ -919,7 +919,7 @@ describe(tst_con.cunregisterPlugin, () => {
         let returnData = await pluginBroker.unregisterPlugin(pluginName);
 
         // Assert
-        expect(returnData).toBeTruthy();
+        expect(returnData).toEqual(true);
     });
 
     /**
@@ -1124,7 +1124,7 @@ describe(tst_con.cunregisterPlugins, () => {
         let returnData = await pluginBroker.unregisterPlugins(pluginListArray);
 
         // Assert
-        expect(returnData).toBeTruthy();
+        expect(returnData).toEqual(true);
     });
 
     /**
@@ -1326,7 +1326,7 @@ describe(tst_con.csyncPluginRegistryWithPluginRegistryPath, () => {
         let returnData = await pluginBroker.syncPluginRegistryWithPluginRegistryPath();
 
         // Assert
-        expect(returnData).toBeTruthy();
+        expect(returnData).toEqual(true);
     });
 })
 
@@ -1368,7 +1368,7 @@ describe(tst_con.cunregisterAllPlugins, () => {
         let returnData = await pluginBroker.unregisterAllPlugins();
 
         // Assert
-        expect(returnData).toBeTruthy();
+        expect(returnData).toEqual(true);
     });
 })
 
@@ -1417,7 +1417,7 @@ describe(tst_con.csavePluginRegistry, () => {
         let returnData = await pluginBroker.savePluginRegistry();
 
         // Assert
-        expect(returnData).toBeTruthy();
+        expect(returnData).toEqual(true);
     });
 })
 
@@ -1590,6 +1590,358 @@ describe(tst_con.cloadPluginMetaData, () => {
         expect(returnData).toBeFalsy();
     });
 })
+
+/**
+ * @function extractAndProcessPluginEntryPointURI
+ * @description Tests the positive and negative test cases of the extractAndProcessPluginEntryPointURI
+ * @author Vlad Sorokin
+ * @date 2024/07/18
+ */
+describe(tst_con.cextractAndProcessPluginEntryPointURI, () => {
+    /**
+     * @function extractAndProcessPluginEntryPointURI_validData
+     * @description Tests the pluginBroker function extractAndProcessPluginEntryPointURI with a valid input.
+     * @author Vlad Sorokin
+     * @date 2024/07/18
+     */
+    test(tst_con.cextractAndProcessPluginEntryPointURI_validData, async () => {
+        // Arrange
+        D[sys.cpluginsLoaded] = {};
+        D[cfg.cpluginRegistry] = {};
+        D[sys.cbusinessRules] = {};
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+        D[sys.cpluginsLoaded] = [{}];
+        D[wrd.cconfiguration] = {};
+
+        let pluginMetaData = tst_pbt.cexpectedDataFromTestPluginOnePackageJsonFile;
+        let pluginPath = tst_man.testPluginPath;
+        let pluginRegistryData = tst_pbt.cexpectedDataFromPluginsJsonFile;
+
+        // Act
+        await pluginBroker.storePluginRegistryInDataStructure(pluginRegistryData);
+
+        // Act
+        let returnData = await pluginBroker.extractAndProcessPluginEntryPointURI(pluginMetaData, pluginPath);
+        
+        // Assert
+        expect(returnData).toStrictEqual(tst_pbt.cexpectedURIfromTestPluginOne);
+    });
+
+    /**
+     * @function extractAndProcessPluginEntryPointURI_inValidPluginMetaDataString
+     * @description Tests the pluginBroker function extractAndProcessPluginEntryPointURI with a invalid data string.
+     * @author Vlad Sorokin
+     * @date 2024/07/18
+     */
+    test(tst_con.cextractAndProcessPluginEntryPointURI_inValidPluginMetaDataString, async () => {
+        // Arrange
+        D[sys.cpluginsLoaded] = {};
+        D[cfg.cpluginRegistry] = {};
+        D[sys.cbusinessRules] = {};
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+        D[sys.cpluginsLoaded] = [{}];
+        D[wrd.cconfiguration] = {};
+
+        let pluginMetaData = tst_man.ctestString1;
+        let pluginPath = tst_man.testPluginPath;
+        let pluginRegistryData = tst_pbt.cexpectedDataFromPluginsJsonFile;
+
+        // Act
+        await pluginBroker.storePluginRegistryInDataStructure(pluginRegistryData);
+
+        // Act
+        let returnData = await pluginBroker.extractAndProcessPluginEntryPointURI(pluginMetaData, pluginPath);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function extractAndProcessPluginEntryPointURI_inValidPluginPathString
+     * @description Tests the pluginBroker function extractAndProcessPluginEntryPointURI with a invalid data string.
+     * @author Vlad Sorokin
+     * @date 2024/07/18
+     */
+    test(tst_con.cextractAndProcessPluginEntryPointURI_inValidPluginPathString, async () => {
+        // Arrange
+        D[sys.cpluginsLoaded] = {};
+        D[cfg.cpluginRegistry] = {};
+        D[sys.cbusinessRules] = {};
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+        D[sys.cpluginsLoaded] = [{}];
+        D[wrd.cconfiguration] = {};
+
+        let pluginMetaData = tst_pbt.cexpectedDataFromTestPluginOnePackageJsonFile;
+        let pluginPath = tst_man.ctestString1;
+        let pluginRegistryData = tst_pbt.cexpectedDataFromPluginsJsonFile;
+
+        // Act
+        await pluginBroker.storePluginRegistryInDataStructure(pluginRegistryData);
+
+        // Act
+        let returnData = await pluginBroker.extractAndProcessPluginEntryPointURI(pluginMetaData, pluginPath);
+
+        // Assert
+        expect(returnData).toBeTruthy();
+    });
+
+    /**
+     * @function extractAndProcessPluginEntryPointURI_inValidPluginMetaDataInteger
+     * @description Tests the pluginBroker function extractAndProcessPluginEntryPointURI with a invalid data integer.
+     * @author Vlad Sorokin
+     * @date 2024/07/18
+     */
+    test(tst_con.cextractAndProcessPluginEntryPointURI_inValidPluginMetaDataInteger, async () => {
+        // Arrange
+        D[sys.cpluginsLoaded] = {};
+        D[cfg.cpluginRegistry] = {};
+        D[sys.cbusinessRules] = {};
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+        D[sys.cpluginsLoaded] = [{}];
+        D[wrd.cconfiguration] = {};
+
+        let pluginMetaData = 123;
+        let pluginPath = tst_man.testPluginPath;
+        let pluginRegistryData = tst_pbt.cexpectedDataFromPluginsJsonFile;
+
+        // Act
+        await pluginBroker.storePluginRegistryInDataStructure(pluginRegistryData);
+
+        // Act
+        let returnData = await pluginBroker.extractAndProcessPluginEntryPointURI(pluginMetaData, pluginPath);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function extractAndProcessPluginEntryPointURI_inValidPluginMetaDataBoolean
+     * @description Tests the pluginBroker function extractAndProcessPluginEntryPointURI with a invalid data boolean.
+     * @author Vlad Sorokin
+     * @date 2024/07/18
+     */
+    test(tst_con.cextractAndProcessPluginEntryPointURI_inValidPluginMetaDataBoolean, async () => {
+        // Arrange
+        D[sys.cpluginsLoaded] = {};
+        D[cfg.cpluginRegistry] = {};
+        D[sys.cbusinessRules] = {};
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+        D[sys.cpluginsLoaded] = [{}];
+        D[wrd.cconfiguration] = {};
+
+        let pluginMetaData = false;
+        let pluginPath = tst_man.testPluginPath;
+        let pluginRegistryData = tst_pbt.cexpectedDataFromPluginsJsonFile;
+
+        // Act
+        await pluginBroker.storePluginRegistryInDataStructure(pluginRegistryData);
+
+        // Act
+        let returnData = await pluginBroker.extractAndProcessPluginEntryPointURI(pluginMetaData, pluginPath);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function extractAndProcessPluginEntryPointURI_inValidPluginPathInteger
+     * @description Tests the pluginBroker function extractAndProcessPluginEntryPointURI with a invalid data integer.
+     * @author Vlad Sorokin
+     * @date 2024/07/18
+     */
+    test(tst_con.cextractAndProcessPluginEntryPointURI_inValidPluginPathInteger, async () => {
+        // Arrange
+        D[sys.cpluginsLoaded] = {};
+        D[cfg.cpluginRegistry] = {};
+        D[sys.cbusinessRules] = {};
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+        D[sys.cpluginsLoaded] = [{}];
+        D[wrd.cconfiguration] = {};
+
+        let pluginMetaData = tst_pbt.cexpectedDataFromTestPluginOnePackageJsonFile;
+        let pluginPath = 123;
+        let pluginRegistryData = tst_pbt.cexpectedDataFromPluginsJsonFile;
+
+        // Act
+        await pluginBroker.storePluginRegistryInDataStructure(pluginRegistryData);
+
+        // Act
+        let returnData = await pluginBroker.extractAndProcessPluginEntryPointURI(pluginMetaData, pluginPath);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function extractAndProcessPluginEntryPointURI_inValidPluginPathBoolean
+     * @description Tests the pluginBroker function extractAndProcessPluginEntryPointURI with a invalid data boolean.
+     * @author Vlad Sorokin
+     * @date 2024/07/18
+     */
+    test(tst_con.cextractAndProcessPluginEntryPointURI_inValidPluginPathBoolean, async () => {
+        // Arrange
+        D[sys.cpluginsLoaded] = {};
+        D[cfg.cpluginRegistry] = {};
+        D[sys.cbusinessRules] = {};
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+        D[sys.cpluginsLoaded] = [{}];
+        D[wrd.cconfiguration] = {};
+
+        let pluginMetaData = tst_pbt.cexpectedDataFromTestPluginOnePackageJsonFile;
+        let pluginPath = false;
+        let pluginRegistryData = tst_pbt.cexpectedDataFromPluginsJsonFile;
+
+        // Act
+        await pluginBroker.storePluginRegistryInDataStructure(pluginRegistryData);
+
+        // Act
+        let returnData = await pluginBroker.extractAndProcessPluginEntryPointURI(pluginMetaData, pluginPath);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function extractAndProcessPluginEntryPointURI_inValidPluginMetaDataUndefined
+     * @description Tests the pluginBroker function extractAndProcessPluginEntryPointURI with a invalid data undefined.
+     * @author Vlad Sorokin
+     * @date 2024/07/18
+     */
+    test(tst_con.cextractAndProcessPluginEntryPointURI_inValidPluginMetaDataUndefined, async () => {
+        // Arrange
+        D[sys.cpluginsLoaded] = {};
+        D[cfg.cpluginRegistry] = {};
+        D[sys.cbusinessRules] = {};
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+        D[sys.cpluginsLoaded] = [{}];
+        D[wrd.cconfiguration] = {};
+
+        let pluginMetaData = undefined;
+        let pluginPath = tst_man.testPluginPath;
+        let pluginRegistryData = tst_pbt.cexpectedDataFromPluginsJsonFile;
+
+        // Act
+        await pluginBroker.storePluginRegistryInDataStructure(pluginRegistryData);
+
+        // Act
+        let returnData = await pluginBroker.extractAndProcessPluginEntryPointURI(pluginMetaData, pluginPath);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function extractAndProcessPluginEntryPointURI_inValidPluginMetaDataNaN
+     * @description Tests the pluginBroker function extractAndProcessPluginEntryPointURI with a invalid data NaN.
+     * @author Vlad Sorokin
+     * @date 2024/07/18
+     */
+    test(tst_con.cextractAndProcessPluginEntryPointURI_inValidPluginMetaDataNaN, async () => {
+        // Arrange
+        D[sys.cpluginsLoaded] = {};
+        D[cfg.cpluginRegistry] = {};
+        D[sys.cbusinessRules] = {};
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+        D[sys.cpluginsLoaded] = [{}];
+        D[wrd.cconfiguration] = {};
+
+        let pluginMetaData = NaN;
+        let pluginPath = tst_man.testPluginPath;
+        let pluginRegistryData = tst_pbt.cexpectedDataFromPluginsJsonFile;
+
+        // Act
+        await pluginBroker.storePluginRegistryInDataStructure(pluginRegistryData);
+
+        // Act
+        let returnData = await pluginBroker.extractAndProcessPluginEntryPointURI(pluginMetaData, pluginPath);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function extractAndProcessPluginEntryPointURI_inValidPluginPathUndefined
+     * @description Tests the pluginBroker function extractAndProcessPluginEntryPointURI with a invalid data undefined.
+     * @author Vlad Sorokin
+     * @date 2024/07/18
+     */
+    test(tst_con.cextractAndProcessPluginEntryPointURI_inValidPluginPathUndefined, async () => {
+        // Arrange
+        D[sys.cpluginsLoaded] = {};
+        D[cfg.cpluginRegistry] = {};
+        D[sys.cbusinessRules] = {};
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+        D[sys.cpluginsLoaded] = [{}];
+        D[wrd.cconfiguration] = {};
+
+        let pluginMetaData = tst_pbt.cexpectedDataFromTestPluginOnePackageJsonFile;
+        let pluginPath = undefined;
+        let pluginRegistryData = tst_pbt.cexpectedDataFromPluginsJsonFile;
+
+        // Act
+        await pluginBroker.storePluginRegistryInDataStructure(pluginRegistryData);
+
+        // Act
+        let returnData = await pluginBroker.extractAndProcessPluginEntryPointURI(pluginMetaData, pluginPath);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+
+    /**
+     * @function extractAndProcessPluginEntryPointURI_inValidPluginPathNaN
+     * @description Tests the pluginBroker function extractAndProcessPluginEntryPointURI with a invalid data NaN.
+     * @author Vlad Sorokin
+     * @date 2024/07/18
+     */
+    test(tst_con.cextractAndProcessPluginEntryPointURI_inValidPluginPathNaN, async () => {
+        // Arrange
+        D[sys.cpluginsLoaded] = {};
+        D[cfg.cpluginRegistry] = {};
+        D[sys.cbusinessRules] = {};
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+        D[sys.cpluginsLoaded] = [{}];
+        D[wrd.cconfiguration] = {};
+
+        let pluginMetaData = tst_pbt.cexpectedDataFromTestPluginOnePackageJsonFile;
+        let pluginPath = NaN;
+        let pluginRegistryData = tst_pbt.cexpectedDataFromPluginsJsonFile;
+
+        // Act
+        await pluginBroker.storePluginRegistryInDataStructure(pluginRegistryData);
+
+        // Act
+        let returnData = await pluginBroker.extractAndProcessPluginEntryPointURI(pluginMetaData, pluginPath);
+
+        // Assert
+        expect(returnData).toBeFalsy();
+    });
+})
+
+
+
 
 
 

@@ -674,11 +674,7 @@ async function loadPluginMetaData(pluginPath) {
         if (prefixPluginPath.slice(-1) != bas.cForwardSlash && prefixPluginPath.slice(-1) != bas.cBackSlash) {
           let pathSeparator = '';
           // eslint-disable-next-line no-undef
-          if (process.platform === gen.cwin32) {
-            pathSeparator = bas.cBackSlash;
-          } else {
-            pathSeparator = bas.cForwardSlash;
-          }
+          pathSeparator = path.sep;
           prefixPluginPath = prefixPluginPath + pathSeparator;
         }
         fullyQualifiedPluginPath = prefixPluginPath + pluginPath;
@@ -716,7 +712,7 @@ async function loadPluginMetaData(pluginPath) {
  * @param {string} pluginPath The path to the plugin, used to form a fully-qualified path.
  * NOTE: It could also be that the pluginPath just contains the name of the folder that is the plugin,
  * and the path should be acquired from the plugin registry path.
- * @return {string} The path entry point to the plugin as a URI file path.
+ * @return {string|boolean} The path entry point to the plugin as a URI file path or false to indicate a problem.
  * @author Seth Hollingsead
  * @date 2022/09/02
  */
@@ -727,29 +723,46 @@ async function extractAndProcessPluginEntryPointURI(pluginMetaData, pluginPath) 
   await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginMetaDataIs + JSON.stringify(pluginMetaData));
   // pluginPath is:
   await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginPathIs + pluginPath);
-  let returnData = '';
-  let fullyQualifiedPluginPath = '';
+  let returnData = false;
+  let encounteredPathError = false;
   if (pluginMetaData && pluginPath) {
-    if (pluginPath.includes(bas.cForwardSlash) !== true && pluginPath.includes(bas.cBackSlash) !== true) {
-      // It's just a name, we need to get the first part of the path from the plugin registry path.
-      let prefixPluginPath = await getPluginsRegistryPath();
-      // prefixPluginPath is:
-      await loggers.consoleLog(namespacePrefix + functionName, msg.cprefixPluginPathIs + prefixPluginPath);
-      fullyQualifiedPluginPath = prefixPluginPath + pluginPath;
+    if (pluginMetaData && typeof pluginMetaData === wrd.cobject) {
+      if ((pluginPath && typeof pluginPath === wrd.cstring)) {
+        let fullyQualifiedPluginPath = '';
+        if (pluginPath.includes(bas.cForwardSlash) !== true && pluginPath.includes(bas.cBackSlash) !== true) {
+          // It's just a name, we need to get the first part of the path from the plugin registry path.
+          let prefixPluginPath = await getPluginsRegistryPath();
+          if (prefixPluginPath.slice(-1) != bas.cForwardSlash && prefixPluginPath.slice(-1) != bas.cBackSlash) {
+            let pathSeparator = '';
+            // eslint-disable-next-line no-undef
+            pathSeparator = path.sep;
+            prefixPluginPath = prefixPluginPath + pathSeparator;
+          }
+          // prefixPluginPath is:
+          await loggers.consoleLog(namespacePrefix + functionName, msg.cprefixPluginPathIs + prefixPluginPath);
+          fullyQualifiedPluginPath = prefixPluginPath + pluginPath;
+        } else {
+          fullyQualifiedPluginPath = pluginPath;
+        }
+        if (encounteredPathError === false) {
+          let pluginMainPath = pluginMetaData[wrd.cmain];
+          // pluginMainPath before join is:
+          await loggers.consoleLog(namespacePrefix + functionName, msg.cextractAndProcessPluginEntryPointUriMessage01 + pluginMainPath);
+          pluginMainPath = path.join(fullyQualifiedPluginPath, pluginMainPath);
+          // pluginMainPath after join is:
+          await loggers.consoleLog(namespacePrefix + functionName, msg.cextractAndProcessPluginEntryPointUriMessage02 + pluginMainPath);
+          pluginMainPath = path.normalize(pluginMainPath);
+          pluginMainPath = url.pathToFileURL(pluginMainPath);
+          // pluginMainPath URI is:
+          await loggers.consoleLog(namespacePrefix + functionName, msg.cextractAndProcessPluginEntryPointUriMessage03 + pluginMainPath);
+          returnData = pluginMainPath.href;
+        }
+      } else {
+
+      }
     } else {
-      fullyQualifiedPluginPath = pluginPath;
+
     }
-    let pluginMainPath = pluginMetaData[wrd.cmain];
-    // pluginMainPath before join is:
-    await loggers.consoleLog(namespacePrefix + functionName, msg.cextractAndProcessPluginEntryPointUriMessage01 + pluginMainPath);
-    pluginMainPath = path.join(fullyQualifiedPluginPath, pluginMainPath);
-    // pluginMainPath after join is:
-    await loggers.consoleLog(namespacePrefix + functionName, msg.cextractAndProcessPluginEntryPointUriMessage02 + pluginMainPath);
-    pluginMainPath = path.normalize(pluginMainPath);
-    pluginMainPath = url.pathToFileURL(pluginMainPath);
-    // pluginMainPath URI is:
-    await loggers.consoleLog(namespacePrefix + functionName, msg.cextractAndProcessPluginEntryPointUriMessage03 + pluginMainPath);
-    returnData = pluginMainPath;
   } else {
     // ERROR: No plugin meta data or plugin path are specified:
     console.log(msg.cextractAndProcessPluginEntryPointUriMessage04 + namespacePrefix + functionName);

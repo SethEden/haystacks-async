@@ -70,6 +70,8 @@ export const csyncPluginRegistryWithPluginRegistryPath = wrd.csync + wrd.cPlugin
 export const cunregisterAllPlugins = wrd.cunregister + wrd.cAll + wrd.cPlugins; // unregisterAllPlugins
 export const csavePluginRegistry = wrd.csave + wrd.cPlugins + wrd.cRegistry; // savePluginRegistry
 export const cloadPluginMetaData = wrd.cload + wrd.cPlugin + wrd.cMeta + wrd.cData; // loadPluginMetaData
+export const cextractAndProcessPluginEntryPointURI = wrd.cextract + wrd.cAnd + wrd.cProcess + wrd.cPlugin + wrd.cEntry + wrd.cPoint + gen.cURI; // extractAndProcessPluginEntryPointURI
+
 
 
 
@@ -595,6 +597,33 @@ export const cloadPluginMetaData_inValidPluginPathInteger = cloadPluginMetaData 
 export const cloadPluginMetaData_inValidPluginPathBoolean = cloadPluginMetaData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cPath + wrd.cBoolean; // loadPluginMetaData_inValidPluginPathBoolean
 export const cloadPluginMetaData_inValidPluginPathUndefined = cloadPluginMetaData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cPath + "Undefined"; // loadPluginMetaData_inValidPluginPathUndefined
 export const cloadPluginMetaData_inValidPluginPathNaN = cloadPluginMetaData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cPath + "NaN"; // loadPluginMetaData_inValidPluginPathNaN
+
+// extractAndProcessPluginEntryPointURI
+export const cextractAndProcessPluginEntryPointURI_validData = cextractAndProcessPluginEntryPointURI + bas.cUnderscore + wrd.cvalid + wrd.cData; // extractAndProcessPluginEntryPointURI_validData
+export const cextractAndProcessPluginEntryPointURI_inValidPluginMetaDataString = cextractAndProcessPluginEntryPointURI + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cMeta + wrd.cData + wrd.cString; // extractAndProcessPluginEntryPointURI_inValidPluginMetaDataString
+export const cextractAndProcessPluginEntryPointURI_inValidPluginPathString = cextractAndProcessPluginEntryPointURI + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cPath + wrd.cString; // extractAndProcessPluginEntryPointURI_inValidPluginPathString
+export const cextractAndProcessPluginEntryPointURI_inValidPluginMetaDataInteger = cextractAndProcessPluginEntryPointURI + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cMeta + wrd.cData + wrd.cInteger; // extractAndProcessPluginEntryPointURI_inValidPluginMetaDataInteger
+export const cextractAndProcessPluginEntryPointURI_inValidPluginMetaDataBoolean = cextractAndProcessPluginEntryPointURI + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cMeta + wrd.cData + wrd.cBoolean; // extractAndProcessPluginEntryPointURI_inValidPluginMetaDataBoolean
+export const cextractAndProcessPluginEntryPointURI_inValidPluginPathInteger = cextractAndProcessPluginEntryPointURI + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cPath + wrd.cInteger; // extractAndProcessPluginEntryPointURI_inValidPluginPathInteger
+export const cextractAndProcessPluginEntryPointURI_inValidPluginPathBoolean = cextractAndProcessPluginEntryPointURI + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cPath + wrd.cBoolean; // extractAndProcessPluginEntryPointURI_inValidPluginPathBoolean
+export const cextractAndProcessPluginEntryPointURI_inValidPluginMetaDataUndefined = cextractAndProcessPluginEntryPointURI + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cMeta + wrd.cData + 'Undefined'; // extractAndProcessPluginEntryPointURI_inValidPluginMetaDataUndefined
+export const cextractAndProcessPluginEntryPointURI_inValidPluginMetaDataNaN = cextractAndProcessPluginEntryPointURI + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cMeta + wrd.cData + 'NaN'; // extractAndProcessPluginEntryPointURI_inValidPluginMetaDataNaN
+export const cextractAndProcessPluginEntryPointURI_inValidPluginPathUndefined = cextractAndProcessPluginEntryPointURI + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cPath + 'Undefined'; // extractAndProcessPluginEntryPointURI_inValidPluginPathUndefined
+export const cextractAndProcessPluginEntryPointURI_inValidPluginPathNaN = cextractAndProcessPluginEntryPointURI + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cPath + 'NaN'; // extractAndProcessPluginEntryPointURI_inValidPluginPathNaN
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

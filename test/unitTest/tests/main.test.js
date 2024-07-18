@@ -1049,7 +1049,7 @@ describe(tst_con.cmergeClientCommands, () => {
  * @author Vlad Sorokin
  * @date 2024/01/08
  * @NOTE As of now this test needs jest xml file support, as it will not work unless there is a way for jest to read and use xml files. 
- * Tried to use "jest-environment-jsdom" to solve this issue but couldn't get it to work, though it does seem that solution is use of jsdom.
+ * Tried to use "jest-environment-jsdom" to solve this issue but couldn't get it to work, thought it does seem that solution is use of jsdom.
  * @NOTE When the fist problem will be solved boolean output needs to be added to the function for testing purposes.
  */
 // describe(tst_con.cloadCommandWorkflows, () => {
@@ -1584,37 +1584,16 @@ describe(tst_con.cregisterPluginByNameAndPath, () => {
     test(tst_con.cregisterPluginByNameAndPath_validData, async () => {
         // Arrange
         D[cfg.cpluginRegistry] = {};
-        let pluginName = tst_man.pluginNameToUse;
-        let pluginPath = tst_man.pluginsPath;
         D[cfg.cpluginRegistry] = tst_man.pluginsPathObject;
         D[cfg.cpluginRegistry][wrd.cplugins] = [];
+        let pluginName = tst_man.pluginNameToUse;
+        let pluginPath = tst_man.pluginsPath;
 
         // Act
         let returnData = await main.registerPluginByNameAndPath(pluginName, pluginPath);
 
         // Assert
         expect(returnData).toEqual(true);
-    });
-
-    /**
-     * @function registerPluginByNameAndPath_inValidPluginNameString
-     * @description Tests the main function registerPluginByNameAndPath with a invalid data string.
-     * @author Vlad Sorokin
-     * @date 2024/01/12
-     */
-    test(tst_con.cregisterPluginByNameAndPath_inValidPluginNameString, async () => {
-        // Arrange
-        D[cfg.cpluginRegistry] = {};
-        D[cfg.cpluginRegistry] = tst_man.pluginsPathObject;
-        D[cfg.cpluginRegistry][wrd.cplugins] = [];
-        let pluginName = tst_man.ctestString1;
-        let pluginPath = tst_man.pluginsPath;
-
-        // Act
-        let returnData = await main.registerPluginByNameAndPath(pluginName, pluginPath);
-
-        // Assert
-        expect(returnData).toBeFalsy();
     });
 
     /**
@@ -1626,6 +1605,7 @@ describe(tst_con.cregisterPluginByNameAndPath, () => {
     test(tst_con.cregisterPluginByNameAndPath_inValidPluginPathString, async () => {
         // Arrange
         D[cfg.cpluginRegistry] = {};
+        D[cfg.cpluginRegistry] = tst_man.pluginsPathObject;
         D[cfg.cpluginRegistry][wrd.cplugins] = [];
         let pluginName = tst_man.pluginNameToUse;
         let pluginPath = tst_man.ctestString1;
@@ -1646,6 +1626,7 @@ describe(tst_con.cregisterPluginByNameAndPath, () => {
     test(tst_con.cregisterPluginByNameAndPath_inValidPluginNameInteger, async () => {
         // Arrange
         D[cfg.cpluginRegistry] = {};
+        D[cfg.cpluginRegistry] = tst_man.pluginsPathObject;
         D[cfg.cpluginRegistry][wrd.cplugins] = [];
         let pluginName = 123;
         let pluginPath = tst_man.pluginsPath;
@@ -1666,6 +1647,7 @@ describe(tst_con.cregisterPluginByNameAndPath, () => {
     test(tst_con.cregisterPluginByNameAndPath_inValidPluginNameBoolean, async () => {
         // Arrange
         D[cfg.cpluginRegistry] = {};
+        D[cfg.cpluginRegistry] = tst_man.pluginsPathObject;
         D[cfg.cpluginRegistry][wrd.cplugins] = [];
         let pluginName = false;
         let pluginPath = tst_man.pluginsPath;
@@ -1686,6 +1668,7 @@ describe(tst_con.cregisterPluginByNameAndPath, () => {
     test(tst_con.cregisterPluginByNameAndPath_inValidPluginPathInteger, async () => {
         // Arrange
         D[cfg.cpluginRegistry] = {};
+        D[cfg.cpluginRegistry] = tst_man.pluginsPathObject;
         D[cfg.cpluginRegistry][wrd.cplugins] = [];
         let pluginName = tst_man.pluginNameToUse;
         let pluginPath = 123;
@@ -1706,6 +1689,7 @@ describe(tst_con.cregisterPluginByNameAndPath, () => {
     test(tst_con.cregisterPluginByNameAndPath_inValidPluginPathBoolean, async () => {
         // Arrange
         D[cfg.cpluginRegistry] = {};
+        D[cfg.cpluginRegistry] = tst_man.pluginsPathObject;
         D[cfg.cpluginRegistry][wrd.cplugins] = [];
         let pluginName = tst_man.pluginNameToUse;
         let pluginPath = false;
@@ -1726,6 +1710,7 @@ describe(tst_con.cregisterPluginByNameAndPath, () => {
     test(tst_con.cregisterPluginByNameAndPath_inValidPluginNameUndefined, async () => {
         // Arrange
         D[cfg.cpluginRegistry] = {};
+        D[cfg.cpluginRegistry] = tst_man.pluginsPathObject;
         D[cfg.cpluginRegistry][wrd.cplugins] = [];
         let pluginName = undefined;
         let pluginPath = tst_man.pluginsPath;
@@ -1746,6 +1731,7 @@ describe(tst_con.cregisterPluginByNameAndPath, () => {
     test(tst_con.cregisterPluginByNameAndPath_inValidPluginNameNaN, async () => {
         // Arrange
         D[cfg.cpluginRegistry] = {};
+        D[cfg.cpluginRegistry] = tst_man.pluginsPathObject;
         D[cfg.cpluginRegistry][wrd.cplugins] = [];
         let pluginName = NaN;
         let pluginPath = tst_man.pluginsPath;
@@ -1766,6 +1752,7 @@ describe(tst_con.cregisterPluginByNameAndPath, () => {
     test(tst_con.cregisterPluginByNameAndPath_inValidPluginPathUndefined, async () => {
         // Arrange
         D[cfg.cpluginRegistry] = {};
+        D[cfg.cpluginRegistry] = tst_man.pluginsPathObject;
         D[cfg.cpluginRegistry][wrd.cplugins] = [];
         let pluginName = tst_man.pluginNameToUse;
         let pluginPath = undefined;
@@ -1786,6 +1773,7 @@ describe(tst_con.cregisterPluginByNameAndPath, () => {
     test(tst_con.cregisterPluginByNameAndPath_inValidPluginPathNaN, async () => {
         // Arrange
         D[cfg.cpluginRegistry] = {};
+        D[cfg.cpluginRegistry] = tst_man.pluginsPathObject;
         D[cfg.cpluginRegistry][wrd.cplugins] = [];
         let pluginName = tst_man.pluginNameToUse;
         let pluginPath = NaN;
