@@ -26,6 +26,8 @@
  * @requires module:test.system.constants
  * @requires {@link https://www.npmjs.com/package/@haystacks/constants|@haystacks/constants}
  * @requires {@link https://www.npmjs.com/package/jest|jest}
+ * @requires import { writeFile } from 'fs/promises';
+ * @requires {@link https://www.npmjs.com/package/path|path}
  * @author Vlad Sorokin
  * @date 2023/11/24
  * @copyright Copyright © 2023-… by Vlad Sorokin. All rights reserved
@@ -46,18 +48,15 @@ import configurator from '../../../src/executrix/configurator.js';
 import D from '../../../src/structures/data.js';
 import main from '../../../src/main.js'
 // import testAliases from '../testData/resources/commands/testAliases.xml';
-import allTstCV from '../testData/resources/constantsValidation/testConstantsValidationMetadata.js';
+import * as tst_pbt from '../testData/brokers/pluginBrokerTest.js'
 import * as tst_man from '../testData/mainTest.js';
 import testData from '../testData/testData.json'
-import * as tst_cfg from './resources/constants/test.configuration.constants.js';
 import * as tst_con from './resources/constants/test.constants.js';
-import * as tst_sys from './resources/constants/test.system.constants.js';
 
 // External imports
 import hayConst from '@haystacks/constants';
 import { describe, expect, test } from '@jest/globals';
-import { basicConstantsValidation } from '@haystacks/constants/src/constantsValidation/basic.constants.validation.js';
-import url from 'url';
+import { writeFile } from 'fs/promises';
 import path from 'path';
 
 const { bas, cmd, biz, cfg, fnc, gen, msg, sys, wrd, num } = hayConst;
@@ -110,7 +109,7 @@ describe(tst_con.cinitFramework, () => {
         let returnData = await main.initFramework(clientConfiguration);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -127,7 +126,7 @@ describe(tst_con.cinitFramework, () => {
         let returnData = await main.initFramework(clientConfiguration);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -144,7 +143,7 @@ describe(tst_con.cinitFramework, () => {
         let returnData = await main.initFramework(clientConfiguration);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -161,7 +160,7 @@ describe(tst_con.cinitFramework, () => {
         let returnData = await main.initFramework(clientConfiguration);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -178,7 +177,7 @@ describe(tst_con.cinitFramework, () => {
         let returnData = await main.initFramework(clientConfiguration);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 })
 
@@ -220,7 +219,7 @@ describe(tst_con.caccouterFramework, () => {
         let returnData = await main.accouterFramework(data);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -237,7 +236,7 @@ describe(tst_con.caccouterFramework, () => {
         let returnData = await main.accouterFramework(data);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -254,7 +253,7 @@ describe(tst_con.caccouterFramework, () => {
         let returnData = await main.accouterFramework(data);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -271,7 +270,7 @@ describe(tst_con.caccouterFramework, () => {
         let returnData = await main.accouterFramework(data);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -288,7 +287,7 @@ describe(tst_con.caccouterFramework, () => {
         let returnData = await main.accouterFramework(data);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 })
 
@@ -335,7 +334,7 @@ describe(tst_con.cgetFrameworkData, () => {
     //     let returnData = await main.getFrameworkData();
 
     //     // Assert
-    //     expect(returnData).toBeFalsy();
+    //     expect(returnData).toEqual(false);
     // });
 
     // /**
@@ -352,7 +351,7 @@ describe(tst_con.cgetFrameworkData, () => {
     //     let returnData = await main.getFrameworkData();
 
     //     // Assert
-    //     expect(returnData).toBeFalsy();
+    //     expect(returnData).toEqual(false);
     // });
 
     // /**
@@ -369,7 +368,7 @@ describe(tst_con.cgetFrameworkData, () => {
     //     let returnData = await main.getFrameworkData();
 
     //     // Assert
-    //     expect(returnData).toBeFalsy();
+    //     expect(returnData).toEqual(false);
     // });
 
     // /**
@@ -386,7 +385,7 @@ describe(tst_con.cgetFrameworkData, () => {
     //     let returnData = await main.getFrameworkData();
 
     //     // Assert
-    //     expect(returnData).toBeFalsy();
+    //     expect(returnData).toEqual(false);
     // });
 
     // /**
@@ -403,7 +402,7 @@ describe(tst_con.cgetFrameworkData, () => {
     //     let returnData = await main.getFrameworkData();
 
     //     // Assert
-    //     expect(returnData).toBeFalsy();
+    //     expect(returnData).toEqual(false);
     // });
 })
 
@@ -430,7 +429,7 @@ describe(tst_con.cmergeClientBusinessRules, () => {
         returnData = await main.mergeClientBusinessRules(testRulesLibrary);
 
         // Assert
-        expect(returnData).toBeTruthy();
+        expect(returnData).toEqual(true);
         expect(D[sys.cbusinessRules]).toEqual(testRulesLibrary);
     });
 
@@ -450,7 +449,7 @@ describe(tst_con.cmergeClientBusinessRules, () => {
         returnData = await main.mergeClientBusinessRules(testRulesString);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -469,7 +468,7 @@ describe(tst_con.cmergeClientBusinessRules, () => {
         returnData = await main.mergeClientBusinessRules(testRulesString);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -488,7 +487,7 @@ describe(tst_con.cmergeClientBusinessRules, () => {
         returnData = await main.mergeClientBusinessRules(testRulesString);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -507,7 +506,7 @@ describe(tst_con.cmergeClientBusinessRules, () => {
         returnData = await main.mergeClientBusinessRules(testRulesString);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -526,7 +525,7 @@ describe(tst_con.cmergeClientBusinessRules, () => {
         returnData = await main.mergeClientBusinessRules(testRulesString);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 })
 
@@ -553,7 +552,7 @@ describe(tst_con.cmergeClientCommands, () => {
         returnData = await main.mergeClientCommands(testCommandsLibrary);
 
         // Assert
-        expect(returnData).toBeTruthy();
+        expect(returnData).toEqual(true);
         expect(D[wrd.cCommands]).toEqual(testCommandsLibrary);
     });
 
@@ -572,7 +571,7 @@ describe(tst_con.cmergeClientCommands, () => {
         returnData = await main.mergeClientCommands(testCommandsLibrary);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -590,7 +589,7 @@ describe(tst_con.cmergeClientCommands, () => {
         returnData = await main.mergeClientCommands(testCommandsLibrary);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -608,7 +607,7 @@ describe(tst_con.cmergeClientCommands, () => {
         returnData = await main.mergeClientCommands(testCommandsLibrary);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -626,7 +625,7 @@ describe(tst_con.cmergeClientCommands, () => {
         returnData = await main.mergeClientCommands(testCommandsLibrary);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -644,7 +643,7 @@ describe(tst_con.cmergeClientCommands, () => {
         returnData = await main.mergeClientCommands(testCommandsLibrary);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 })
 
@@ -674,7 +673,7 @@ describe(tst_con.cmergeClientCommands, () => {
     //     returnData = await main.loadCommandAliases(normalizedCommandAliasesPath, contextName);
 
     //     // Assert
-    //     expect(returnData).toBeTruthy();
+    //     expect(returnData).toEqual(true);
     // });
 
     // /**
@@ -691,7 +690,7 @@ describe(tst_con.cmergeClientCommands, () => {
     //     let returnData = await main.loadCommandAliases();
 
     //     // Assert
-    //     expect(returnData).toBeFalsy();
+    //     expect(returnData).toEqual(false);
     // });
 
     // /**
@@ -708,7 +707,7 @@ describe(tst_con.cmergeClientCommands, () => {
     //     let returnData = await main.loadCommandAliases();
 
     //     // Assert
-    //     expect(returnData).toBeFalsy();
+    //     expect(returnData).toEqual(false);
     // });
 
     // /**
@@ -725,7 +724,7 @@ describe(tst_con.cmergeClientCommands, () => {
     //     let returnData = await main.loadCommandAliases();
 
     //     // Assert
-    //     expect(returnData).toBeFalsy();
+    //     expect(returnData).toEqual(false);
     // });
 
     // /**
@@ -742,7 +741,7 @@ describe(tst_con.cmergeClientCommands, () => {
     //     let returnData = await main.loadCommandAliases();
 
     //     // Assert
-    //     expect(returnData).toBeFalsy();
+    //     expect(returnData).toEqual(false);
     // });
 
     // /**
@@ -759,7 +758,7 @@ describe(tst_con.cmergeClientCommands, () => {
     //     let returnData = await main.loadCommandAliases();
 
     //     // Assert
-    //     expect(returnData).toBeFalsy();
+    //     expect(returnData).toEqual(false);
     // });
 
     // /**
@@ -776,7 +775,7 @@ describe(tst_con.cmergeClientCommands, () => {
     //     let returnData = await main.loadCommandAliases();
 
     //     // Assert
-    //     expect(returnData).toBeFalsy();
+    //     expect(returnData).toEqual(false);
     // });
 
     // /**
@@ -793,7 +792,7 @@ describe(tst_con.cmergeClientCommands, () => {
     //     let returnData = await main.loadCommandAliases();
 
     //     // Assert
-    //     expect(returnData).toBeFalsy();
+    //     expect(returnData).toEqual(false);
     // });
 
     // /**
@@ -810,7 +809,7 @@ describe(tst_con.cmergeClientCommands, () => {
     //     let returnData = await main.loadCommandAliases();
 
     //     // Assert
-    //     expect(returnData).toBeFalsy();
+    //     expect(returnData).toEqual(false);
     // });
 
     // /**
@@ -827,7 +826,7 @@ describe(tst_con.cmergeClientCommands, () => {
     //     let returnData = await main.loadCommandAliases();
 
     //     // Assert
-    //     expect(returnData).toBeFalsy();
+    //     expect(returnData).toEqual(false);
     // });
 
     // /**
@@ -844,7 +843,7 @@ describe(tst_con.cmergeClientCommands, () => {
     //     let returnData = await main.loadCommandAliases();
 
     //     // Assert
-    //     expect(returnData).toBeFalsy();
+    //     expect(returnData).toEqual(false);
     // });
 // })
 
@@ -886,7 +885,7 @@ describe(tst_con.cmergeClientCommands, () => {
 //         let returnData = await main.loadCommandWorkflows();
 
 //         // Assert
-//         expect(returnData).toBeFalsy();
+//         expect(returnData).toEqual(false);
 //     });
 
 //     /**
@@ -903,7 +902,7 @@ describe(tst_con.cmergeClientCommands, () => {
 //         let returnData = await main.loadCommandWorkflows();
 
 //         // Assert
-//         expect(returnData).toBeFalsy();
+//         expect(returnData).toEqual(false);
 //     });
 
 //     /**
@@ -920,7 +919,7 @@ describe(tst_con.cmergeClientCommands, () => {
 //         let returnData = await main.loadCommandWorkflows();
 
 //         // Assert
-//         expect(returnData).toBeFalsy();
+//         expect(returnData).toEqual(false);
 //     });
 
 //     /**
@@ -937,7 +936,7 @@ describe(tst_con.cmergeClientCommands, () => {
 //         let returnData = await main.loadCommandWorkflows();
 
 //         // Assert
-//         expect(returnData).toBeFalsy();
+//         expect(returnData).toEqual(false);
 //     });
 
 //     /**
@@ -954,7 +953,7 @@ describe(tst_con.cmergeClientCommands, () => {
 //         let returnData = await main.loadCommandWorkflows();
 
 //         // Assert
-//         expect(returnData).toBeFalsy();
+//         expect(returnData).toEqual(false);
 //     });
 
 //     /**
@@ -971,7 +970,7 @@ describe(tst_con.cmergeClientCommands, () => {
 //         let returnData = await main.loadCommandWorkflows();
 
 //         // Assert
-//         expect(returnData).toBeFalsy();
+//         expect(returnData).toEqual(false);
 //     });
 
 //     /**
@@ -988,7 +987,7 @@ describe(tst_con.cmergeClientCommands, () => {
 //         let returnData = await main.loadCommandWorkflows();
 
 //         // Assert
-//         expect(returnData).toBeFalsy();
+//         expect(returnData).toEqual(false);
 //     });
 
 //     /**
@@ -1005,7 +1004,7 @@ describe(tst_con.cmergeClientCommands, () => {
 //         let returnData = await main.loadCommandWorkflows();
 
 //         // Assert
-//         expect(returnData).toBeFalsy();
+//         expect(returnData).toEqual(false);
 //     });
 
 //     /**
@@ -1022,7 +1021,7 @@ describe(tst_con.cmergeClientCommands, () => {
 //         let returnData = await main.loadCommandWorkflows();
 
 //         // Assert
-//         expect(returnData).toBeFalsy();
+//         expect(returnData).toEqual(false);
 //     });
 
 //     /**
@@ -1039,7 +1038,7 @@ describe(tst_con.cmergeClientCommands, () => {
 //         let returnData = await main.loadCommandWorkflows();
 
 //         // Assert
-//         expect(returnData).toBeFalsy();
+//         expect(returnData).toEqual(false);
 //     });
 // })
 
@@ -1084,7 +1083,7 @@ describe(tst_con.cmergeClientCommands, () => {
 //         let returnData = await main.loadCommandWorkflows();
 
 //         // Assert
-//         expect(returnData).toBeFalsy();
+//         expect(returnData).toEqual(false);
 //     });
 
 //     /**
@@ -1101,7 +1100,7 @@ describe(tst_con.cmergeClientCommands, () => {
 //         let returnData = await main.loadCommandWorkflows();
 
 //         // Assert
-//         expect(returnData).toBeFalsy();
+//         expect(returnData).toEqual(false);
 //     });
 
 //     /**
@@ -1118,7 +1117,7 @@ describe(tst_con.cmergeClientCommands, () => {
 //         let returnData = await main.loadCommandWorkflows();
 
 //         // Assert
-//         expect(returnData).toBeFalsy();
+//         expect(returnData).toEqual(false);
 //     });
 
 //     /**
@@ -1135,7 +1134,7 @@ describe(tst_con.cmergeClientCommands, () => {
 //         let returnData = await main.loadCommandWorkflows();
 
 //         // Assert
-//         expect(returnData).toBeFalsy();
+//         expect(returnData).toEqual(false);
 //     });
 
 //     /**
@@ -1152,7 +1151,7 @@ describe(tst_con.cmergeClientCommands, () => {
 //         let returnData = await main.loadCommandWorkflows();
 
 //         // Assert
-//         expect(returnData).toBeFalsy();
+//         expect(returnData).toEqual(false);
 //     });
 
 //     /**
@@ -1169,7 +1168,7 @@ describe(tst_con.cmergeClientCommands, () => {
 //         let returnData = await main.loadCommandWorkflows();
 
 //         // Assert
-//         expect(returnData).toBeFalsy();
+//         expect(returnData).toEqual(false);
 //     });
 
 //     /**
@@ -1186,7 +1185,7 @@ describe(tst_con.cmergeClientCommands, () => {
 //         let returnData = await main.loadCommandWorkflows();
 
 //         // Assert
-//         expect(returnData).toBeFalsy();
+//         expect(returnData).toEqual(false);
 //     });
 
 //     /**
@@ -1203,7 +1202,7 @@ describe(tst_con.cmergeClientCommands, () => {
 //         let returnData = await main.loadCommandWorkflows();
 
 //         // Assert
-//         expect(returnData).toBeFalsy();
+//         expect(returnData).toEqual(false);
 //     });
 
 //     /**
@@ -1220,7 +1219,7 @@ describe(tst_con.cmergeClientCommands, () => {
 //         let returnData = await main.loadCommandWorkflows();
 
 //         // Assert
-//         expect(returnData).toBeFalsy();
+//         expect(returnData).toEqual(false);
 //     });
 
 //     /**
@@ -1237,7 +1236,7 @@ describe(tst_con.cmergeClientCommands, () => {
 //         let returnData = await main.loadCommandWorkflows();
 
 //         // Assert
-//         expect(returnData).toBeFalsy();
+//         expect(returnData).toEqual(false);
 //     });
 // })
 
@@ -1283,7 +1282,7 @@ describe(tst_con.clistLoadedPlugins, () => {
         let returnData = await main.listLoadedPlugins();
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -1302,7 +1301,7 @@ describe(tst_con.clistLoadedPlugins, () => {
         let returnData = await main.listLoadedPlugins();
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -1321,7 +1320,7 @@ describe(tst_con.clistLoadedPlugins, () => {
         let returnData = await main.listLoadedPlugins();
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -1340,7 +1339,7 @@ describe(tst_con.clistLoadedPlugins, () => {
         let returnData = await main.listLoadedPlugins();
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -1359,7 +1358,7 @@ describe(tst_con.clistLoadedPlugins, () => {
         let returnData = await main.listLoadedPlugins();
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 })
 
@@ -1404,7 +1403,7 @@ describe(tst_con.clistAllPluginsInRegistry, () => {
         let returnData = await main.listAllPluginsInRegistry();
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -1422,7 +1421,7 @@ describe(tst_con.clistAllPluginsInRegistry, () => {
         let returnData = await main.listAllPluginsInRegistry();
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -1440,7 +1439,7 @@ describe(tst_con.clistAllPluginsInRegistry, () => {
         let returnData = await main.listAllPluginsInRegistry();
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -1458,7 +1457,7 @@ describe(tst_con.clistAllPluginsInRegistry, () => {
         let returnData = await main.listAllPluginsInRegistry();
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -1476,7 +1475,7 @@ describe(tst_con.clistAllPluginsInRegistry, () => {
         let returnData = await main.listAllPluginsInRegistry();
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 })
 
@@ -1614,7 +1613,7 @@ describe(tst_con.cregisterPluginByNameAndPath, () => {
         let returnData = await main.registerPluginByNameAndPath(pluginName, pluginPath);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -1635,7 +1634,7 @@ describe(tst_con.cregisterPluginByNameAndPath, () => {
         let returnData = await main.registerPluginByNameAndPath(pluginName, pluginPath);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -1656,7 +1655,7 @@ describe(tst_con.cregisterPluginByNameAndPath, () => {
         let returnData = await main.registerPluginByNameAndPath(pluginName, pluginPath);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -1677,7 +1676,7 @@ describe(tst_con.cregisterPluginByNameAndPath, () => {
         let returnData = await main.registerPluginByNameAndPath(pluginName, pluginPath);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -1698,7 +1697,7 @@ describe(tst_con.cregisterPluginByNameAndPath, () => {
         let returnData = await main.registerPluginByNameAndPath(pluginName, pluginPath);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -1719,7 +1718,7 @@ describe(tst_con.cregisterPluginByNameAndPath, () => {
         let returnData = await main.registerPluginByNameAndPath(pluginName, pluginPath);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -1740,7 +1739,7 @@ describe(tst_con.cregisterPluginByNameAndPath, () => {
         let returnData = await main.registerPluginByNameAndPath(pluginName, pluginPath);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -1761,7 +1760,7 @@ describe(tst_con.cregisterPluginByNameAndPath, () => {
         let returnData = await main.registerPluginByNameAndPath(pluginName, pluginPath);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -1782,7 +1781,7 @@ describe(tst_con.cregisterPluginByNameAndPath, () => {
         let returnData = await main.registerPluginByNameAndPath(pluginName, pluginPath);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 })
 
@@ -1828,7 +1827,7 @@ describe(tst_con.cunregisterPluginByName, () => {
         let returnData = await main.unregisterPluginByName(pluginName);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -1847,7 +1846,7 @@ describe(tst_con.cunregisterPluginByName, () => {
         let returnData = await main.unregisterPluginByName(pluginName);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -1866,7 +1865,7 @@ describe(tst_con.cunregisterPluginByName, () => {
         let returnData = await main.unregisterPluginByName(pluginName);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -1885,7 +1884,7 @@ describe(tst_con.cunregisterPluginByName, () => {
         let returnData = await main.unregisterPluginByName(pluginName);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -1904,7 +1903,7 @@ describe(tst_con.cunregisterPluginByName, () => {
         let returnData = await main.unregisterPluginByName(pluginName);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 })
 
@@ -1950,7 +1949,7 @@ describe(tst_con.cunregisterPlugins, () => {
         let returnData = await main.unregisterPlugins(pluginListArray);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -1969,7 +1968,7 @@ describe(tst_con.cunregisterPlugins, () => {
         let returnData = await main.unregisterPlugins(pluginListArray);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -1988,7 +1987,7 @@ describe(tst_con.cunregisterPlugins, () => {
         let returnData = await main.unregisterPlugins(pluginListArray);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -2007,7 +2006,7 @@ describe(tst_con.cunregisterPlugins, () => {
         let returnData = await main.unregisterPlugins(pluginListArray);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -2026,7 +2025,7 @@ describe(tst_con.cunregisterPlugins, () => {
         let returnData = await main.unregisterPlugins(pluginListArray);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 })
 
@@ -2070,7 +2069,7 @@ describe(tst_con.csyncPluginRegistryWithPath, () => {
         let returnData = await main.syncPluginRegistryWithPath();
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -2088,7 +2087,7 @@ describe(tst_con.csyncPluginRegistryWithPath, () => {
         let returnData = await main.syncPluginRegistryWithPath();
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -2106,7 +2105,7 @@ describe(tst_con.csyncPluginRegistryWithPath, () => {
         let returnData = await main.syncPluginRegistryWithPath();
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -2124,7 +2123,7 @@ describe(tst_con.csyncPluginRegistryWithPath, () => {
         let returnData = await main.syncPluginRegistryWithPath();
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -2142,7 +2141,7 @@ describe(tst_con.csyncPluginRegistryWithPath, () => {
         let returnData = await main.syncPluginRegistryWithPath();
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 })
 
@@ -2168,7 +2167,7 @@ describe(tst_con.cclearAllPluginRegistry, () => {
         let returnData = await main.clearAllPluginRegistry();
 
         // Assert
-        expect(returnData).toBeTruthy();
+        expect(returnData).toEqual(true);
     });
 
     /**
@@ -2186,7 +2185,7 @@ describe(tst_con.cclearAllPluginRegistry, () => {
         let returnData = await main.clearAllPluginRegistry();
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -2204,7 +2203,7 @@ describe(tst_con.cclearAllPluginRegistry, () => {
         let returnData = await main.clearAllPluginRegistry();
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -2222,7 +2221,7 @@ describe(tst_con.cclearAllPluginRegistry, () => {
         let returnData = await main.clearAllPluginRegistry();
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -2240,7 +2239,7 @@ describe(tst_con.cclearAllPluginRegistry, () => {
         let returnData = await main.clearAllPluginRegistry();
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -2258,7 +2257,7 @@ describe(tst_con.cclearAllPluginRegistry, () => {
         let returnData = await main.clearAllPluginRegistry();
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 })
 
@@ -2280,26 +2279,26 @@ describe(tst_con.cwritePluginRegistryToDisk, () => {
         let pluginsRegistred = tst_man.expectedListLoadedPlugins;
         D[cfg.cpluginRegistry] = pluginsRegistred;
         D[sys.cbusinessRules] = {
+            [biz.cswapDoubleForwardSlashToSingleForwardSlash]: (inputData, inputMetaData) => characterStringParsing.swapDoubleForwardSlashToSingleForwardSlash(inputData, inputMetaData),
+            [biz.cgetFileExtension]: (inputData, inputMetaData) => fileStringParsing.getFileExtension(inputData, inputMetaData),
+            [biz.cremoveDotFromFileExtension]: (inputData, inputMetaData) => fileStringParsing.removeDotFromFileExtension(inputData, inputMetaData),
+            [biz.creplaceCharacterWithCharacter]: (inputData, inputMetaData) => characterArrayParsing.replaceCharacterWithCharacter(inputData, inputMetaData),
+            [biz.cutilitiesReplaceCharacterWithCharacter]: (inputData, inputMetaData) => stringParsingUtilities.utilitiesReplaceCharacterWithCharacter(inputData, inputMetaData),
             [biz.cwriteJsonData]: (inputData, inputMetaData) => fileOperations.writeJsonData(inputData, inputMetaData),
             [biz.cgetNowMoment]: (inputData, inputMetaData) => timeComputation.getNowMoment(inputData, inputMetaData),
             [biz.cdeleteFile]: (inputData, inputMetaData) => fileOperations.deleteFile(inputData, inputMetaData)
         };
-
-        let dateTimeStamp = await ruleBroker.processRules([gen.cYYYYMMDD + gen.cHHmmss + gen.cSSS, ''], [biz.cgetNowMoment]);
-        let tempPluginRegistryTestFileName = tst_man.tempPluginRegistryTestFileName + dateTimeStamp;
-        let fullTempFilePathRegistryTest = tst_man.pathForUnitTestWritePluginRegistryToDiskValid + tempPluginRegistryTestFileName;
-        await configurator.setConfigurationSetting(wrd.csystem, cfg.cpluginRegistryPath, fullTempFilePathRegistryTest);
+        let pathToPluginsJsonFile = tst_pbt.cpathToUnitTestPluginsJsonFile;
+        await configurator.setConfigurationSetting(wrd.csystem, cfg.cpluginRegistryPath, pathToPluginsJsonFile);
 
         // Act
         let returnData = await main.writePluginRegistryToDisk();
 
         // Assert
-        if (returnData==true) {
-            await ruleBroker.processRules([fullTempFilePathRegistryTest, ''], [biz.cdeleteFile]); // Deletes created file
-        }
-        
-        expect(returnData).toBeTruthy();
-        
+        expect(returnData).toEqual(true);
+
+        // Emptying out the plugin.json file.
+        await writeFile(pathToPluginsJsonFile, '');
     });
 
     /**
@@ -2312,24 +2311,26 @@ describe(tst_con.cwritePluginRegistryToDisk, () => {
         let pluginsRegistred = tst_man.ctestString1;
         D[cfg.cpluginRegistry] = pluginsRegistred;
         D[sys.cbusinessRules] = {
+            [biz.cswapDoubleForwardSlashToSingleForwardSlash]: (inputData, inputMetaData) => characterStringParsing.swapDoubleForwardSlashToSingleForwardSlash(inputData, inputMetaData),
+            [biz.cgetFileExtension]: (inputData, inputMetaData) => fileStringParsing.getFileExtension(inputData, inputMetaData),
+            [biz.cremoveDotFromFileExtension]: (inputData, inputMetaData) => fileStringParsing.removeDotFromFileExtension(inputData, inputMetaData),
+            [biz.creplaceCharacterWithCharacter]: (inputData, inputMetaData) => characterArrayParsing.replaceCharacterWithCharacter(inputData, inputMetaData),
+            [biz.cutilitiesReplaceCharacterWithCharacter]: (inputData, inputMetaData) => stringParsingUtilities.utilitiesReplaceCharacterWithCharacter(inputData, inputMetaData),
             [biz.cwriteJsonData]: (inputData, inputMetaData) => fileOperations.writeJsonData(inputData, inputMetaData),
             [biz.cgetNowMoment]: (inputData, inputMetaData) => timeComputation.getNowMoment(inputData, inputMetaData),
             [biz.cdeleteFile]: (inputData, inputMetaData) => fileOperations.deleteFile(inputData, inputMetaData)
         };
-
-        let dateTimeStamp = await ruleBroker.processRules([gen.cYYYYMMDD + gen.cHHmmss + gen.cSSS, ''], [biz.cgetNowMoment]);
-        let tempPluginRegistryTestFileName = dateTimeStamp + tst_man.tempPluginRegistryTestFileName;
-        let fullTempFilePathRegistryTest = tst_man.pathForUnitTestWritePluginRegistryToDiskValid + tempPluginRegistryTestFileName;
-        await configurator.setConfigurationSetting(wrd.csystem, cfg.cpluginRegistryPath, fullTempFilePathRegistryTest);
+        let pathToPluginsJsonFile = tst_pbt.cpathToUnitTestPluginsJsonFile;
+        await configurator.setConfigurationSetting(wrd.csystem, cfg.cpluginRegistryPath, pathToPluginsJsonFile);
 
         // Act
         let returnData = await main.writePluginRegistryToDisk();
 
         // Assert
-        if (returnData==true) {
-            await ruleBroker.processRules([fullTempFilePathRegistryTest, ''], [biz.cdeleteFile]); // Deletes created file
-        }
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
+
+        // Emptying out the plugin.json file.
+        await writeFile(pathToPluginsJsonFile, '');
     });
 
     /**
@@ -2343,24 +2344,26 @@ describe(tst_con.cwritePluginRegistryToDisk, () => {
         let pluginsRegistred = 123;
         D[cfg.cpluginRegistry] = pluginsRegistred;
         D[sys.cbusinessRules] = {
+            [biz.cswapDoubleForwardSlashToSingleForwardSlash]: (inputData, inputMetaData) => characterStringParsing.swapDoubleForwardSlashToSingleForwardSlash(inputData, inputMetaData),
+            [biz.cgetFileExtension]: (inputData, inputMetaData) => fileStringParsing.getFileExtension(inputData, inputMetaData),
+            [biz.cremoveDotFromFileExtension]: (inputData, inputMetaData) => fileStringParsing.removeDotFromFileExtension(inputData, inputMetaData),
+            [biz.creplaceCharacterWithCharacter]: (inputData, inputMetaData) => characterArrayParsing.replaceCharacterWithCharacter(inputData, inputMetaData),
+            [biz.cutilitiesReplaceCharacterWithCharacter]: (inputData, inputMetaData) => stringParsingUtilities.utilitiesReplaceCharacterWithCharacter(inputData, inputMetaData),
             [biz.cwriteJsonData]: (inputData, inputMetaData) => fileOperations.writeJsonData(inputData, inputMetaData),
             [biz.cgetNowMoment]: (inputData, inputMetaData) => timeComputation.getNowMoment(inputData, inputMetaData),
             [biz.cdeleteFile]: (inputData, inputMetaData) => fileOperations.deleteFile(inputData, inputMetaData)
         };
-
-        let dateTimeStamp = await ruleBroker.processRules([gen.cYYYYMMDD + gen.cHHmmss + gen.cSSS, ''], [biz.cgetNowMoment]);
-        let tempPluginRegistryTestFileName = dateTimeStamp + tst_man.tempPluginRegistryTestFileName;
-        let fullTempFilePathRegistryTest = tst_man.pathForUnitTestWritePluginRegistryToDiskValid + tempPluginRegistryTestFileName;
-        await configurator.setConfigurationSetting(wrd.csystem, cfg.cpluginRegistryPath, fullTempFilePathRegistryTest);
+        let pathToPluginsJsonFile = tst_pbt.cpathToUnitTestPluginsJsonFile;
+        await configurator.setConfigurationSetting(wrd.csystem, cfg.cpluginRegistryPath, pathToPluginsJsonFile);
 
         // Act
         let returnData = await main.writePluginRegistryToDisk();
 
         // Assert
-        if (returnData==true) {
-            await ruleBroker.processRules([fullTempFilePathRegistryTest, ''], [biz.cdeleteFile]); // Deletes created file
-        }
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
+
+        // Emptying out the plugin.json file.
+        await writeFile(pathToPluginsJsonFile, '');
     });
 
     /**
@@ -2373,24 +2376,26 @@ describe(tst_con.cwritePluginRegistryToDisk, () => {
         let pluginsRegistred = true;
         D[cfg.cpluginRegistry] = pluginsRegistred;
         D[sys.cbusinessRules] = {
+            [biz.cswapDoubleForwardSlashToSingleForwardSlash]: (inputData, inputMetaData) => characterStringParsing.swapDoubleForwardSlashToSingleForwardSlash(inputData, inputMetaData),
+            [biz.cgetFileExtension]: (inputData, inputMetaData) => fileStringParsing.getFileExtension(inputData, inputMetaData),
+            [biz.cremoveDotFromFileExtension]: (inputData, inputMetaData) => fileStringParsing.removeDotFromFileExtension(inputData, inputMetaData),
+            [biz.creplaceCharacterWithCharacter]: (inputData, inputMetaData) => characterArrayParsing.replaceCharacterWithCharacter(inputData, inputMetaData),
+            [biz.cutilitiesReplaceCharacterWithCharacter]: (inputData, inputMetaData) => stringParsingUtilities.utilitiesReplaceCharacterWithCharacter(inputData, inputMetaData),
             [biz.cwriteJsonData]: (inputData, inputMetaData) => fileOperations.writeJsonData(inputData, inputMetaData),
             [biz.cgetNowMoment]: (inputData, inputMetaData) => timeComputation.getNowMoment(inputData, inputMetaData),
             [biz.cdeleteFile]: (inputData, inputMetaData) => fileOperations.deleteFile(inputData, inputMetaData)
         };
-
-        let dateTimeStamp = await ruleBroker.processRules([gen.cYYYYMMDD + gen.cHHmmss + gen.cSSS, ''], [biz.cgetNowMoment]);
-        let tempPluginRegistryTestFileName = dateTimeStamp + tst_man.tempPluginRegistryTestFileName;
-        let fullTempFilePathRegistryTest = tst_man.pathForUnitTestWritePluginRegistryToDiskValid + tempPluginRegistryTestFileName;
-        await configurator.setConfigurationSetting(wrd.csystem, cfg.cpluginRegistryPath, fullTempFilePathRegistryTest);
+        let pathToPluginsJsonFile = tst_pbt.cpathToUnitTestPluginsJsonFile;
+        await configurator.setConfigurationSetting(wrd.csystem, cfg.cpluginRegistryPath, pathToPluginsJsonFile);
 
         // Act
         let returnData = await main.writePluginRegistryToDisk();
 
         // Assert
-        if (returnData==true) {
-            await ruleBroker.processRules([fullTempFilePathRegistryTest, ''], [biz.cdeleteFile]); // Deletes created file
-        }
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
+
+        // Emptying out the plugin.json file.
+        await writeFile(pathToPluginsJsonFile, '');
     });
 
     /**
@@ -2403,24 +2408,26 @@ describe(tst_con.cwritePluginRegistryToDisk, () => {
         let pluginsRegistred = undefined;
         D[cfg.cpluginRegistry] = pluginsRegistred;
         D[sys.cbusinessRules] = {
+            [biz.cswapDoubleForwardSlashToSingleForwardSlash]: (inputData, inputMetaData) => characterStringParsing.swapDoubleForwardSlashToSingleForwardSlash(inputData, inputMetaData),
+            [biz.cgetFileExtension]: (inputData, inputMetaData) => fileStringParsing.getFileExtension(inputData, inputMetaData),
+            [biz.cremoveDotFromFileExtension]: (inputData, inputMetaData) => fileStringParsing.removeDotFromFileExtension(inputData, inputMetaData),
+            [biz.creplaceCharacterWithCharacter]: (inputData, inputMetaData) => characterArrayParsing.replaceCharacterWithCharacter(inputData, inputMetaData),
+            [biz.cutilitiesReplaceCharacterWithCharacter]: (inputData, inputMetaData) => stringParsingUtilities.utilitiesReplaceCharacterWithCharacter(inputData, inputMetaData),
             [biz.cwriteJsonData]: (inputData, inputMetaData) => fileOperations.writeJsonData(inputData, inputMetaData),
             [biz.cgetNowMoment]: (inputData, inputMetaData) => timeComputation.getNowMoment(inputData, inputMetaData),
             [biz.cdeleteFile]: (inputData, inputMetaData) => fileOperations.deleteFile(inputData, inputMetaData)
         };
-
-        let dateTimeStamp = await ruleBroker.processRules([gen.cYYYYMMDD + gen.cHHmmss + gen.cSSS, ''], [biz.cgetNowMoment]);
-        let tempPluginRegistryTestFileName = dateTimeStamp + tst_man.tempPluginRegistryTestFileName;
-        let fullTempFilePathRegistryTest = tst_man.pathForUnitTestWritePluginRegistryToDiskValid + tempPluginRegistryTestFileName;
-        await configurator.setConfigurationSetting(wrd.csystem, cfg.cpluginRegistryPath, fullTempFilePathRegistryTest);
+        let pathToPluginsJsonFile = tst_pbt.cpathToUnitTestPluginsJsonFile;
+        await configurator.setConfigurationSetting(wrd.csystem, cfg.cpluginRegistryPath, pathToPluginsJsonFile);
 
         // Act
         let returnData = await main.writePluginRegistryToDisk();
 
         // Assert
-        if (returnData==true) {
-            await ruleBroker.processRules([fullTempFilePathRegistryTest, ''], [biz.cdeleteFile]); // Deletes created file
-        }
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
+
+        // Emptying out the plugin.json file.
+        await writeFile(pathToPluginsJsonFile, '');
     });
 
     /**
@@ -2433,24 +2440,26 @@ describe(tst_con.cwritePluginRegistryToDisk, () => {
         let pluginsRegistred = NaN;
         D[cfg.cpluginRegistry] = pluginsRegistred;
         D[sys.cbusinessRules] = {
+            [biz.cswapDoubleForwardSlashToSingleForwardSlash]: (inputData, inputMetaData) => characterStringParsing.swapDoubleForwardSlashToSingleForwardSlash(inputData, inputMetaData),
+            [biz.cgetFileExtension]: (inputData, inputMetaData) => fileStringParsing.getFileExtension(inputData, inputMetaData),
+            [biz.cremoveDotFromFileExtension]: (inputData, inputMetaData) => fileStringParsing.removeDotFromFileExtension(inputData, inputMetaData),
+            [biz.creplaceCharacterWithCharacter]: (inputData, inputMetaData) => characterArrayParsing.replaceCharacterWithCharacter(inputData, inputMetaData),
+            [biz.cutilitiesReplaceCharacterWithCharacter]: (inputData, inputMetaData) => stringParsingUtilities.utilitiesReplaceCharacterWithCharacter(inputData, inputMetaData),
             [biz.cwriteJsonData]: (inputData, inputMetaData) => fileOperations.writeJsonData(inputData, inputMetaData),
             [biz.cgetNowMoment]: (inputData, inputMetaData) => timeComputation.getNowMoment(inputData, inputMetaData),
             [biz.cdeleteFile]: (inputData, inputMetaData) => fileOperations.deleteFile(inputData, inputMetaData)
         };
-
-        let dateTimeStamp = await ruleBroker.processRules([gen.cYYYYMMDD + gen.cHHmmss + gen.cSSS, ''], [biz.cgetNowMoment]);
-        let tempPluginRegistryTestFileName = dateTimeStamp + tst_man.tempPluginRegistryTestFileName;
-        let fullTempFilePathRegistryTest = tst_man.pathForUnitTestWritePluginRegistryToDiskValid + tempPluginRegistryTestFileName;
-        await configurator.setConfigurationSetting(wrd.csystem, cfg.cpluginRegistryPath, fullTempFilePathRegistryTest);
+        let pathToPluginsJsonFile = tst_pbt.cpathToUnitTestPluginsJsonFile;
+        await configurator.setConfigurationSetting(wrd.csystem, cfg.cpluginRegistryPath, pathToPluginsJsonFile);
 
         // Act
         let returnData = await main.writePluginRegistryToDisk();
 
         // Assert
-        if (returnData==true) {
-            await ruleBroker.processRules([fullTempFilePathRegistryTest, ''], [biz.cdeleteFile]); // Deletes created file
-        }
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
+
+        // Emptying out the plugin.json file.
+        await writeFile(pathToPluginsJsonFile, '');
     });
 })
 
@@ -2483,7 +2492,7 @@ describe(tst_con.cloadPlugin, () => {
         let returnData = await main.loadPlugin(pluginPath);
 
         // Assert
-        expect(returnData).toBeTruthy();
+        expect(returnData).toEqual(true);
     });
 
     /**
@@ -2508,7 +2517,7 @@ describe(tst_con.cloadPlugin, () => {
         // Act
         let returnData = await main.loadPlugin(pluginPath);
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -2532,7 +2541,7 @@ describe(tst_con.cloadPlugin, () => {
         // Act
         let returnData = await main.loadPlugin(pluginPath);
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -2556,7 +2565,7 @@ describe(tst_con.cloadPlugin, () => {
         // Act
         let returnData = await main.loadPlugin(pluginPath);
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -2580,7 +2589,7 @@ describe(tst_con.cloadPlugin, () => {
         // Act
         let returnData = await main.loadPlugin(pluginPath);
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -2604,7 +2613,7 @@ describe(tst_con.cloadPlugin, () => {
        // Act
        let returnData = await main.loadPlugin(pluginPath);
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 })
 
@@ -2637,7 +2646,7 @@ describe(tst_con.cloadPlugins, () => {
         let returnData = await main.loadPlugins(pluginPathArray);
 
         // Assert
-        expect(returnData).toBeTruthy();
+        expect(returnData).toEqual(true);
     });
 
     /**
@@ -2662,7 +2671,7 @@ describe(tst_con.cloadPlugins, () => {
         let returnData = await main.loadPlugins(pluginPathArray);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -2687,7 +2696,7 @@ describe(tst_con.cloadPlugins, () => {
         let returnData = await main.loadPlugins(pluginPathArray);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -2712,7 +2721,7 @@ describe(tst_con.cloadPlugins, () => {
         let returnData = await main.loadPlugins(pluginPathArray);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -2737,7 +2746,7 @@ describe(tst_con.cloadPlugins, () => {
         let returnData = await main.loadPlugins(pluginPathArray);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -2762,7 +2771,7 @@ describe(tst_con.cloadPlugins, () => {
         let returnData = await main.loadPlugins(pluginPathArray);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 })
 
@@ -2792,7 +2801,7 @@ describe(tst_con.cloadPluginsFromRegistry, () => {
         let returnData = await main.loadPluginsFromRegistry();
        
         // Assert
-        expect(returnData).toBeTruthy();
+        expect(returnData).toEqual(true);
     });
 })
 
@@ -2835,7 +2844,7 @@ describe(tst_con.cunloadPlugin, () => {
 
 
         // Assert
-        expect(returnData).toBeTruthy();
+        expect(returnData).toEqual(true);
     });
 
     /**
@@ -2863,7 +2872,7 @@ describe(tst_con.cunloadPlugin, () => {
         let returnData = await main.unloadPlugin(pluginName);
         
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -2891,7 +2900,7 @@ describe(tst_con.cunloadPlugin, () => {
         let returnData = await main.unloadPlugin(pluginName);
         
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -2919,7 +2928,7 @@ describe(tst_con.cunloadPlugin, () => {
         let returnData = await main.unloadPlugin(pluginName);
         
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -2947,7 +2956,7 @@ describe(tst_con.cunloadPlugin, () => {
         let returnData = await main.unloadPlugin(pluginName);
         
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -2975,7 +2984,7 @@ describe(tst_con.cunloadPlugin, () => {
         let returnData = await main.unloadPlugin(pluginName);
         
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 });
 
@@ -3011,7 +3020,7 @@ describe(tst_con.cunloadPlugins, () => {
         let returnData = await main.unloadPlugins(pluginNameArray);
 
         // Assert
-        expect(returnData).toBeTruthy();
+        expect(returnData).toEqual(true);
     });
 
     /**
@@ -3039,7 +3048,7 @@ describe(tst_con.cunloadPlugins, () => {
         let returnData = await main.unloadPlugins(pluginNameArray);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -3067,7 +3076,7 @@ describe(tst_con.cunloadPlugins, () => {
         let returnData = await main.unloadPlugins(pluginNameArray);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -3095,7 +3104,7 @@ describe(tst_con.cunloadPlugins, () => {
         let returnData = await main.unloadPlugins(pluginNameArray);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -3123,7 +3132,7 @@ describe(tst_con.cunloadPlugins, () => {
         let returnData = await main.unloadPlugins(pluginNameArray);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -3151,7 +3160,7 @@ describe(tst_con.cunloadPlugins, () => {
         let returnData = await main.unloadPlugins(pluginNameArray);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 })
 
@@ -3186,7 +3195,7 @@ describe(tst_con.cunloadAllPlugins, () => {
         let returnData = await main.unloadAllPlugins();
 
         // Assert
-        expect(returnData).toBeTruthy();
+        expect(returnData).toEqual(true);
     });
 
     /**
@@ -3210,7 +3219,7 @@ describe(tst_con.cunloadAllPlugins, () => {
         let returnData = await main.unloadAllPlugins();
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 })
 
@@ -3451,7 +3460,7 @@ describe(tst_con.cloadPluginResourceData, () => {
         let returnData = await main.loadPluginResourceData(contextName, pluginResourcePath);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -3490,7 +3499,7 @@ describe(tst_con.cloadPluginResourceData, () => {
         let returnData = await main.loadPluginResourceData(contextName, pluginResourcePath);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -3529,7 +3538,7 @@ describe(tst_con.cloadPluginResourceData, () => {
         let returnData = await main.loadPluginResourceData(contextName, pluginResourcePath);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -3568,7 +3577,7 @@ describe(tst_con.cloadPluginResourceData, () => {
         let returnData = await main.loadPluginResourceData(contextName, pluginResourcePath);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -3607,7 +3616,7 @@ describe(tst_con.cloadPluginResourceData, () => {
         let returnData = await main.loadPluginResourceData(contextName, pluginResourcePath);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -3646,7 +3655,7 @@ describe(tst_con.cloadPluginResourceData, () => {
         let returnData = await main.loadPluginResourceData(contextName, pluginResourcePath);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -3685,7 +3694,7 @@ describe(tst_con.cloadPluginResourceData, () => {
         let returnData = await main.loadPluginResourceData(contextName, pluginResourcePath);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -3724,7 +3733,7 @@ describe(tst_con.cloadPluginResourceData, () => {
         let returnData = await main.loadPluginResourceData(contextName, pluginResourcePath);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -3763,7 +3772,7 @@ describe(tst_con.cloadPluginResourceData, () => {
         let returnData = await main.loadPluginResourceData(contextName, pluginResourcePath);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -3802,7 +3811,7 @@ describe(tst_con.cloadPluginResourceData, () => {
         let returnData = await main.loadPluginResourceData(contextName, pluginResourcePath);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 })
 
@@ -3846,7 +3855,7 @@ describe(tst_con.cloadAllJsonData, () => {
         let returnData = await main.loadAllJsonData(dataPath, contextName);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -3864,7 +3873,7 @@ describe(tst_con.cloadAllJsonData, () => {
         let returnData = await main.loadAllJsonData(dataPath, contextName);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -3882,7 +3891,7 @@ describe(tst_con.cloadAllJsonData, () => {
         let returnData = await main.loadAllJsonData(dataPath, contextName);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -3900,7 +3909,7 @@ describe(tst_con.cloadAllJsonData, () => {
         let returnData = await main.loadAllJsonData(dataPath, contextName);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -3918,7 +3927,7 @@ describe(tst_con.cloadAllJsonData, () => {
         let returnData = await main.loadAllJsonData(dataPath, contextName);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -3936,7 +3945,7 @@ describe(tst_con.cloadAllJsonData, () => {
         let returnData = await main.loadAllJsonData(dataPath, contextName);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -3954,7 +3963,7 @@ describe(tst_con.cloadAllJsonData, () => {
         let returnData = await main.loadAllJsonData(dataPath, contextName);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -3972,7 +3981,7 @@ describe(tst_con.cloadAllJsonData, () => {
         let returnData = await main.loadAllJsonData(dataPath, contextName);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -3990,7 +3999,7 @@ describe(tst_con.cloadAllJsonData, () => {
         let returnData = await main.loadAllJsonData(dataPath, contextName);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -4008,7 +4017,7 @@ describe(tst_con.cloadAllJsonData, () => {
         let returnData = await main.loadAllJsonData(dataPath, contextName);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 })
 
@@ -4035,7 +4044,7 @@ describe(tst_con.cstoreData, () => {
         let returnData = await main.storeData(dataName, data);
 
         // Assert
-        expect(returnData).toBeTruthy();
+        expect(returnData).toEqual(true);
     });
 
     /**
@@ -4053,7 +4062,7 @@ describe(tst_con.cstoreData, () => {
         let returnData = await main.storeData(dataName, data);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -4072,7 +4081,7 @@ describe(tst_con.cstoreData, () => {
         let returnData = await main.storeData(dataName, data);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -4091,7 +4100,7 @@ describe(tst_con.cstoreData, () => {
         let returnData = await main.storeData(dataName, data);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -4110,7 +4119,7 @@ describe(tst_con.cstoreData, () => {
         let returnData = await main.storeData(dataName, data);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -4129,7 +4138,7 @@ describe(tst_con.cstoreData, () => {
         let returnData = await main.storeData(dataName, data);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -4148,7 +4157,7 @@ describe(tst_con.cstoreData, () => {
         let returnData = await main.storeData(dataName, data);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -4167,7 +4176,7 @@ describe(tst_con.cstoreData, () => {
         let returnData = await main.storeData(dataName, data);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 })
 
@@ -4212,7 +4221,7 @@ describe(tst_con.cgetData, () => {
         let returnData = await main.getData(dataName);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -4229,7 +4238,7 @@ describe(tst_con.cgetData, () => {
         let returnData = await main.getData(dataName);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -4246,7 +4255,7 @@ describe(tst_con.cgetData, () => {
         let returnData = await main.getData(dataName);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -4263,7 +4272,7 @@ describe(tst_con.cgetData, () => {
         let returnData = await main.getData(dataName);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 })
 
@@ -4292,7 +4301,7 @@ describe(tst_con.cclearData, () => {
         let returnData = await main.clearData(dataName);
         
         // Assert
-        expect(returnData).toBeTruthy();
+        expect(returnData).toEqual(true);
     });
     
     /**
@@ -4310,7 +4319,7 @@ describe(tst_con.cclearData, () => {
         let returnData = await main.clearData(dataName);
 
         // Assert
-        expect(returnData).toBeTruthy();
+        expect(returnData).toEqual(true);
     });
     
     /**
@@ -4328,7 +4337,7 @@ describe(tst_con.cclearData, () => {
         let returnData = await main.clearData(dataName);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -4346,7 +4355,7 @@ describe(tst_con.cclearData, () => {
         let returnData = await main.clearData(dataName);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
 
@@ -4365,7 +4374,7 @@ describe(tst_con.cclearData, () => {
         let returnData = await main.clearData(dataName);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 })
 
@@ -4417,7 +4426,7 @@ describe(tst_con.cexecuteBusinessRules, () => {
         let returnData = await main.executeBusinessRules(inputs, businessRules);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -4439,7 +4448,7 @@ describe(tst_con.cexecuteBusinessRules, () => {
         let returnData = await main.executeBusinessRules(inputs, businessRules);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -4461,7 +4470,7 @@ describe(tst_con.cexecuteBusinessRules, () => {
         let returnData = await main.executeBusinessRules(inputs, businessRules);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -4483,7 +4492,7 @@ describe(tst_con.cexecuteBusinessRules, () => {
         let returnData = await main.executeBusinessRules(inputs, businessRules);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -4505,7 +4514,7 @@ describe(tst_con.cexecuteBusinessRules, () => {
         let returnData = await main.executeBusinessRules(inputs, businessRules);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -4527,7 +4536,7 @@ describe(tst_con.cexecuteBusinessRules, () => {
         let returnData = await main.executeBusinessRules(inputs, businessRules);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -4549,7 +4558,7 @@ describe(tst_con.cexecuteBusinessRules, () => {
         let returnData = await main.executeBusinessRules(inputs, businessRules);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -4571,7 +4580,7 @@ describe(tst_con.cexecuteBusinessRules, () => {
         let returnData = await main.executeBusinessRules(inputs, businessRules);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -4593,7 +4602,7 @@ describe(tst_con.cexecuteBusinessRules, () => {
         let returnData = await main.executeBusinessRules(inputs, businessRules);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -4615,7 +4624,7 @@ describe(tst_con.cexecuteBusinessRules, () => {
         let returnData = await main.executeBusinessRules(inputs, businessRules);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 })
 
@@ -4642,7 +4651,7 @@ describe(tst_con.cenqueueCommand, () => {
         let returnData = await main.enqueueCommand(command);
 
         // Assert
-        expect(returnData).toBeTruthy();
+        expect(returnData).toEqual(true);
     });
 
     /**
@@ -4661,7 +4670,7 @@ describe(tst_con.cenqueueCommand, () => {
         let returnData = await main.enqueueCommand(command);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -4680,7 +4689,7 @@ describe(tst_con.cenqueueCommand, () => {
         let returnData = await main.enqueueCommand(command);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -4699,7 +4708,7 @@ describe(tst_con.cenqueueCommand, () => {
         let returnData = await main.enqueueCommand(command);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -4718,7 +4727,7 @@ describe(tst_con.cenqueueCommand, () => {
         let returnData = await main.enqueueCommand(command);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 })
 
@@ -4743,7 +4752,7 @@ describe(tst_con.cisCommandQueueEmpty, () => {
         let returnData = await main.isCommandQueueEmpty();
 
         // Assert
-        expect(returnData).toBeTruthy();
+        expect(returnData).toEqual(true);
     });
 
     /**
@@ -4762,7 +4771,7 @@ describe(tst_con.cisCommandQueueEmpty, () => {
         let returnData = await main.isCommandQueueEmpty();
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 })
 
@@ -4854,7 +4863,7 @@ describe(tst_con.csetConfigurationSetting, () => {
         let returnData = await main.setConfigurationSetting(configurationNamespace, configurationName, configurationValue);
 
         // Assert
-        expect(returnData).toBeTruthy();
+        expect(returnData).toEqual(true);
     });
 
     /**
@@ -4875,7 +4884,7 @@ describe(tst_con.csetConfigurationSetting, () => {
         let returnData = await main.setConfigurationSetting(configurationNamespace, configurationName, configurationValue);
 
         // Assert
-        expect(returnData).toBeTruthy();
+        expect(returnData).toEqual(true);
     });
 
     /**
@@ -4896,7 +4905,7 @@ describe(tst_con.csetConfigurationSetting, () => {
         let returnData = await main.setConfigurationSetting(configurationNamespace, configurationName, configurationValue);
 
         // Assert
-        expect(returnData).toBeTruthy();
+        expect(returnData).toEqual(true);
     });
 
     /**
@@ -4917,7 +4926,7 @@ describe(tst_con.csetConfigurationSetting, () => {
         let returnData = await main.setConfigurationSetting(configurationNamespace, configurationName, configurationValue);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -4938,7 +4947,7 @@ describe(tst_con.csetConfigurationSetting, () => {
         let returnData = await main.setConfigurationSetting(configurationNamespace, configurationName, configurationValue);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -4959,7 +4968,7 @@ describe(tst_con.csetConfigurationSetting, () => {
         let returnData = await main.setConfigurationSetting(configurationNamespace, configurationName, configurationValue);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -4980,7 +4989,7 @@ describe(tst_con.csetConfigurationSetting, () => {
         let returnData = await main.setConfigurationSetting(configurationNamespace, configurationName, configurationValue);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -5001,7 +5010,7 @@ describe(tst_con.csetConfigurationSetting, () => {
         let returnData = await main.setConfigurationSetting(configurationNamespace, configurationName, configurationValue);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -5021,7 +5030,7 @@ describe(tst_con.csetConfigurationSetting, () => {
         // Act
         let returnData = await main.setConfigurationSetting(configurationNamespace, configurationName, configurationValue);
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -5042,7 +5051,7 @@ describe(tst_con.csetConfigurationSetting, () => {
         let returnData = await main.setConfigurationSetting(configurationNamespace, configurationName, configurationValue);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -5063,7 +5072,7 @@ describe(tst_con.csetConfigurationSetting, () => {
         let returnData = await main.setConfigurationSetting(configurationNamespace, configurationName, configurationValue);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -5084,7 +5093,7 @@ describe(tst_con.csetConfigurationSetting, () => {
         let returnData = await main.setConfigurationSetting(configurationNamespace, configurationName, configurationValue);
 
         // Assert
-        expect(returnData).toBeTruthy();
+        expect(returnData).toEqual(true);
     });
 
     /**
@@ -5105,7 +5114,7 @@ describe(tst_con.csetConfigurationSetting, () => {
         let returnData = await main.setConfigurationSetting(configurationNamespace, configurationName, configurationValue);
 
         // Assert
-        expect(returnData).toBeTruthy();
+        expect(returnData).toEqual(true);
     });
 
     /**
@@ -5126,7 +5135,7 @@ describe(tst_con.csetConfigurationSetting, () => {
         let returnData = await main.setConfigurationSetting(configurationNamespace, configurationName, configurationValue);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -5147,7 +5156,7 @@ describe(tst_con.csetConfigurationSetting, () => {
         let returnData = await main.setConfigurationSetting(configurationNamespace, configurationName, configurationValue);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -5168,7 +5177,7 @@ describe(tst_con.csetConfigurationSetting, () => {
         let returnData = await main.setConfigurationSetting(configurationNamespace, configurationName, configurationValue);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -5189,7 +5198,7 @@ describe(tst_con.csetConfigurationSetting, () => {
         let returnData = await main.setConfigurationSetting(configurationNamespace, configurationName, configurationValue);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 })
 
@@ -5219,7 +5228,7 @@ describe(tst_con.cgetConfigurationSetting, () => {
         let returnData = await main.getConfigurationSetting(configurationNamespace, configurationName);
 
         // Assert
-        expect(returnData).toBeTruthy();
+        expect(returnData).toEqual(true);
     });
 
     /**
@@ -5244,7 +5253,7 @@ describe(tst_con.cgetConfigurationSetting, () => {
         let returnData = await main.getConfigurationSetting(configurationNamespace, configurationName);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -5269,7 +5278,7 @@ describe(tst_con.cgetConfigurationSetting, () => {
         let returnData = await main.getConfigurationSetting(configurationNamespace, configurationName);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -5294,7 +5303,7 @@ describe(tst_con.cgetConfigurationSetting, () => {
         let returnData = await main.getConfigurationSetting(configurationNamespace, configurationName);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -5319,7 +5328,7 @@ describe(tst_con.cgetConfigurationSetting, () => {
         let returnData = await main.getConfigurationSetting(configurationNamespace, configurationName);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -5344,7 +5353,7 @@ describe(tst_con.cgetConfigurationSetting, () => {
         let returnData = await main.getConfigurationSetting(configurationNamespace, configurationName);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -5369,7 +5378,7 @@ describe(tst_con.cgetConfigurationSetting, () => {
         let returnData = await main.getConfigurationSetting(configurationNamespace, configurationName);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -5394,7 +5403,7 @@ describe(tst_con.cgetConfigurationSetting, () => {
         let returnData = await main.getConfigurationSetting(configurationNamespace, configurationName);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -5419,7 +5428,7 @@ describe(tst_con.cgetConfigurationSetting, () => {
         let returnData = await main.getConfigurationSetting(configurationNamespace, configurationName);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -5444,7 +5453,7 @@ describe(tst_con.cgetConfigurationSetting, () => {
         let returnData = await main.getConfigurationSetting(configurationNamespace, configurationName);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -5469,7 +5478,7 @@ describe(tst_con.cgetConfigurationSetting, () => {
         let returnData = await main.getConfigurationSetting(configurationNamespace, configurationName);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 })
 
@@ -5505,7 +5514,7 @@ describe(tst_con.cconsoleLog, () => {
         let returnData = await main.consoleLog(theNamespacePrefix, theFunctionName, message);
 
         // Assert
-        expect(returnData).toBeTruthy();
+        expect(returnData).toEqual(true);
     });
 
     /**
@@ -5533,7 +5542,7 @@ describe(tst_con.cconsoleLog, () => {
         let returnData = await main.consoleLog(theNamespacePrefix, theFunctionName, message);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -5560,7 +5569,7 @@ describe(tst_con.cconsoleLog, () => {
         let returnData = await main.consoleLog(theNamespacePrefix, theFunctionName, message);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -5588,7 +5597,7 @@ describe(tst_con.cconsoleLog, () => {
         let returnData = await main.consoleLog(theNamespacePrefix, theFunctionName, message);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -5616,7 +5625,7 @@ describe(tst_con.cconsoleLog, () => {
         let returnData = await main.consoleLog(theNamespacePrefix, theFunctionName, message);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -5644,7 +5653,7 @@ describe(tst_con.cconsoleLog, () => {
         let returnData = await main.consoleLog(theNamespacePrefix, theFunctionName, message);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -5672,7 +5681,7 @@ describe(tst_con.cconsoleLog, () => {
         let returnData = await main.consoleLog(theNamespacePrefix, theFunctionName, message);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -5699,7 +5708,7 @@ describe(tst_con.cconsoleLog, () => {
         let returnData = await main.consoleLog(theNamespacePrefix, theFunctionName, message);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -5726,7 +5735,7 @@ describe(tst_con.cconsoleLog, () => {
         let returnData = await main.consoleLog(theNamespacePrefix, theFunctionName, message);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -5753,7 +5762,7 @@ describe(tst_con.cconsoleLog, () => {
         let returnData = await main.consoleLog(theNamespacePrefix, theFunctionName, message);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -5780,7 +5789,7 @@ describe(tst_con.cconsoleLog, () => {
         let returnData = await main.consoleLog(theNamespacePrefix, theFunctionName, message);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -5808,7 +5817,7 @@ describe(tst_con.cconsoleLog, () => {
         let returnData = await main.consoleLog(theNamespacePrefix, theFunctionName, message);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -5835,7 +5844,7 @@ describe(tst_con.cconsoleLog, () => {
         let returnData = await main.consoleLog(theNamespacePrefix, theFunctionName, message);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 })
 
@@ -5866,7 +5875,7 @@ describe(tst_con.cconsoleTableLog, () => {
         let returnData = await main.consoleTableLog(classPath, tableData, columnNames);
 
         // Assert
-        expect(returnData).toBeTruthy();
+        expect(returnData).toEqual(true);
     });
 
     /**
@@ -5885,7 +5894,7 @@ describe(tst_con.cconsoleTableLog, () => {
         let returnData = await main.consoleTableLog(classPath, tableData, columnNames);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -5907,7 +5916,7 @@ describe(tst_con.cconsoleTableLog, () => {
         let returnData = await main.consoleTableLog(classPath, tableData, columnNames);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -5929,7 +5938,7 @@ describe(tst_con.cconsoleTableLog, () => {
         let returnData = await main.consoleTableLog(classPath, tableData, columnNames);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -5951,7 +5960,7 @@ describe(tst_con.cconsoleTableLog, () => {
         let returnData = await main.consoleTableLog(classPath, tableData, columnNames);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -5973,7 +5982,7 @@ describe(tst_con.cconsoleTableLog, () => {
         let returnData = await main.consoleTableLog(classPath, tableData, columnNames);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -5992,7 +6001,7 @@ describe(tst_con.cconsoleTableLog, () => {
         let returnData = await main.consoleTableLog(classPath, tableData, columnNames);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -6011,7 +6020,7 @@ describe(tst_con.cconsoleTableLog, () => {
         let returnData = await main.consoleTableLog(classPath, tableData, columnNames);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -6030,7 +6039,7 @@ describe(tst_con.cconsoleTableLog, () => {
         let returnData = await main.consoleTableLog(classPath, tableData, columnNames);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -6049,7 +6058,7 @@ describe(tst_con.cconsoleTableLog, () => {
         let returnData = await main.consoleTableLog(classPath, tableData, columnNames);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -6071,7 +6080,7 @@ describe(tst_con.cconsoleTableLog, () => {
         let returnData = await main.consoleTableLog(classPath, tableData, columnNames);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -6093,7 +6102,7 @@ describe(tst_con.cconsoleTableLog, () => {
         let returnData = await main.consoleTableLog(classPath, tableData, columnNames);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -6115,7 +6124,7 @@ describe(tst_con.cconsoleTableLog, () => {
         let returnData = await main.consoleTableLog(classPath, tableData, columnNames);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -6134,7 +6143,7 @@ describe(tst_con.cconsoleTableLog, () => {
         let returnData = await main.consoleTableLog(classPath, tableData, columnNames);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -6153,7 +6162,7 @@ describe(tst_con.cconsoleTableLog, () => {
         let returnData = await main.consoleTableLog(classPath, tableData, columnNames);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 })
 

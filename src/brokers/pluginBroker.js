@@ -625,11 +625,11 @@ async function savePluginRegistry() {
   await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginRegistryIs + JSON.stringify(pluginRegistry));
   try {
     if (pluginRegistry && typeof pluginRegistry === wrd.cobject) {
-        pluginRegistryPath = await configurator.getConfigurationSetting(wrd.csystem, cfg.cpluginRegistryPath);
-        // pluginRegistryPath is:
-        await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginRegistryPathIs + pluginRegistryPath);
-        // console.log("pluginRegistry is: " + pluginRegistry);
-        returnData = await ruleBroker.processRules([pluginRegistryPath, pluginRegistry], [biz.cwriteJsonData]);
+      pluginRegistryPath = await configurator.getConfigurationSetting(wrd.csystem, cfg.cpluginRegistryPath);
+      // pluginRegistryPath is:
+      await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginRegistryPathIs + pluginRegistryPath);
+      // console.log("pluginRegistry is: " + pluginRegistry);
+      returnData = await ruleBroker.processRules([pluginRegistryPath, pluginRegistry], [biz.cwriteJsonData]);
     } else {
       // ERROR: pluginRegistry is an invalid value: 
       console.log(msg.cErrorSavePluginRegistryMessage02 + JSON.stringify(pluginRegistry));

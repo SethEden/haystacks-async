@@ -52,7 +52,7 @@ describe(tst_con.cinitializeConstantsValidationData, () => {
         let returnData = await constantBroker.initializeConstantsValidationData();
 
         // Assert
-        expect(returnData).toBeTruthy();
+        expect(returnData).toEqual(true);
     });
 })
 
@@ -72,9 +72,42 @@ describe(tst_con.cgenerateFrameworkConstantsValidationData, () => {
     test(tst_con.cgenerateFrameworkConstantsValidationData_validData, async () => {
         // Act
         let returnData = await constantBroker.generateFrameworkConstantsValidationData();
+        
+        if (returnData && typeof returnData === wrd.cobject) {
+            if (returnData[sys.cConstantsValidationData] !== undefined) {
+                if (
+                    returnData[sys.cConstantsValidationData][sys.cBasicConstantsValidation] !== undefined,
+                    returnData[sys.cConstantsValidationData][sys.cBusinessConstantsValidation] !== undefined,
+                    returnData[sys.cConstantsValidationData][sys.cColorConstantsValidation] !== undefined,
+                    returnData[sys.cConstantsValidationData][sys.cCommandConstantsValidation] !== undefined,
+                    returnData[sys.cConstantsValidationData][sys.cConfigurationConstantsValidation] !== undefined,
+                    returnData[sys.cConstantsValidationData][sys.cConstantsFileNames] !== undefined,
+                    returnData[sys.cConstantsValidationData][sys.cConstantsFilePaths] !== undefined,
+                    returnData[sys.cConstantsValidationData][sys.cConstantsPhase1ValidationMessages] !== undefined,
+                    returnData[sys.cConstantsValidationData][sys.cConstantsPhase2ValidationMessages] !== undefined,
+                    returnData[sys.cConstantsValidationData][sys.cConstantsPrefix] !== undefined,
+                    returnData[sys.cConstantsValidationData][sys.cConstantsShortNames] !== undefined,
+                    returnData[sys.cConstantsValidationData][sys.cCountryConstantsValidation] !== undefined,
+                    returnData[sys.cConstantsValidationData][sys.cElementConstantsValidation] !== undefined,
+                    returnData[sys.cConstantsValidationData][sys.cFunctionConstantsValidation] !== undefined,
+                    returnData[sys.cConstantsValidationData][sys.cGenericConstantsValidation] !== undefined,
+                    returnData[sys.cConstantsValidationData][sys.cIsotopeConstantsValidation] !== undefined,
+                    returnData[sys.cConstantsValidationData][sys.cKnotConstantsValidation] !== undefined,
+                    returnData[sys.cConstantsValidationData][sys.cLanguageConstantsValidation] !== undefined,
+                    returnData[sys.cConstantsValidationData][sys.cMessageConstantsValidation] !== undefined,
+                    returnData[sys.cConstantsValidationData][sys.cNumericConstantsValidation] !== undefined,
+                    returnData[sys.cConstantsValidationData][sys.cPhonicConstantsValidation] !== undefined,
+                    returnData[sys.cConstantsValidationData][sys.cSystemConstantsValidation] !== undefined,
+                    returnData[sys.cConstantsValidationData][sys.cUnitConstantsValidation] !== undefined,
+                    returnData[sys.cConstantsValidationData][sys.cWordConstantsValidation] !== undefined
+                ) {
+                    returnData = true;
+                }
+            }
+        }
 
         // Assert
-        expect(returnData).toBeTruthy();
+        expect(returnData).toEqual(true);
     });
 })
 
@@ -107,7 +140,7 @@ describe(tst_con.caddConstantsValidationData, () => {
         let returnData = await constantBroker.addConstantsValidationData(constantsValidationData, contextName);
 
         // Assert
-        expect(returnData).toBeTruthy();
+        expect(returnData).toEqual(true);
     });
 
     /**
@@ -126,7 +159,7 @@ describe(tst_con.caddConstantsValidationData, () => {
         let returnData = await constantBroker.addConstantsValidationData(constantsValidationData, contextName);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -151,7 +184,7 @@ describe(tst_con.caddConstantsValidationData, () => {
         let returnData = await constantBroker.addConstantsValidationData(constantsValidationData, contextName);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -170,7 +203,7 @@ describe(tst_con.caddConstantsValidationData, () => {
         let returnData = await constantBroker.addConstantsValidationData(constantsValidationData, contextName);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -189,7 +222,7 @@ describe(tst_con.caddConstantsValidationData, () => {
         let returnData = await constantBroker.addConstantsValidationData(constantsValidationData, contextName);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -214,7 +247,7 @@ describe(tst_con.caddConstantsValidationData, () => {
         let returnData = await constantBroker.addConstantsValidationData(constantsValidationData, contextName);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -239,7 +272,7 @@ describe(tst_con.caddConstantsValidationData, () => {
         let returnData = await constantBroker.addConstantsValidationData(constantsValidationData, contextName);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -258,7 +291,7 @@ describe(tst_con.caddConstantsValidationData, () => {
         let returnData = await constantBroker.addConstantsValidationData(constantsValidationData, contextName);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -277,7 +310,7 @@ describe(tst_con.caddConstantsValidationData, () => {
         let returnData = await constantBroker.addConstantsValidationData(constantsValidationData, contextName);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -302,7 +335,7 @@ describe(tst_con.caddConstantsValidationData, () => {
         let returnData = await constantBroker.addConstantsValidationData(constantsValidationData, contextName);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -327,7 +360,7 @@ describe(tst_con.caddConstantsValidationData, () => {
         let returnData = await constantBroker.addConstantsValidationData(constantsValidationData, contextName);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 })
 
@@ -364,7 +397,7 @@ describe(tst_con.cremovePluginConstantsValidationData, () => {
         let returnData = await constantBroker.removePluginConstantsValidationData(pluginName);
 
         // Assert
-        expect(returnData).toBeTruthy();
+        expect(returnData).toEqual(true);
     });
 
     /**
@@ -393,7 +426,7 @@ describe(tst_con.cremovePluginConstantsValidationData, () => {
         let returnData = await constantBroker.removePluginConstantsValidationData(pluginName);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -422,7 +455,7 @@ describe(tst_con.cremovePluginConstantsValidationData, () => {
         let returnData = await constantBroker.removePluginConstantsValidationData(pluginName);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -451,7 +484,7 @@ describe(tst_con.cremovePluginConstantsValidationData, () => {
         let returnData = await constantBroker.removePluginConstantsValidationData(pluginName);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -480,7 +513,7 @@ describe(tst_con.cremovePluginConstantsValidationData, () => {
         let returnData = await constantBroker.removePluginConstantsValidationData(pluginName);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -509,7 +542,7 @@ describe(tst_con.cremovePluginConstantsValidationData, () => {
         let returnData = await constantBroker.removePluginConstantsValidationData(pluginName);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 })
 

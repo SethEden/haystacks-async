@@ -19,6 +19,7 @@
  * @requires module:mainTest
  * @requires {@link https://www.npmjs.com/package/@haystacks/constants|@haystacks/constants}
  * @requires {@link https://www.npmjs.com/package/jest|jest}
+ * @requires {@link https://nodejs.dev/learn/the-nodejs-fs-module|fs}
  * @author Vlad Sorokin
  * @date 2024/07/08
  * @copyright Copyright © 2024-… by Vlad Sorokin. All rights reserved
@@ -43,6 +44,7 @@ import * as tst_man from '../../testData/mainTest.js';
 import hayConst from '@haystacks/constants';
 import { describe, expect, test } from '@jest/globals';
 const { bas, cmd, biz, cfg, fnc, gen, msg, sys, wrd, num } = hayConst;
+import { writeFile } from 'fs/promises';
 
 // Cleaning sequence
 for (let key in D) {
@@ -66,10 +68,13 @@ describe(tst_con.cloadPluginRegistry, () => {
      */
     test(tst_con.cloadPluginRegistry_validPluginRegistryPathData, async () => {
         // Arrange
+        let pathToPluginsJsonFile = tst_pbt.cpathToUnitTestPluginsJsonFile;
+        // Presetting the plugin.json file.
+        await writeFile(pathToPluginsJsonFile, JSON.stringify(tst_pbt.cexpectedDataFromPluginsJsonFile, null, 2));            
         D[sys.cbusinessRules] = {
             [biz.cgetJsonData]: (inputData, inputMetaData) => fileOperations.getJsonData(inputData, inputMetaData)
         };
-        let pluginRegistryPath = tst_pbt.cpathToUnitTestPluginsJsonFile;
+        let pluginRegistryPath = pathToPluginsJsonFile;
 
         // Act
         let returnData = await pluginBroker.loadPluginRegistry(pluginRegistryPath);
@@ -86,7 +91,9 @@ describe(tst_con.cloadPluginRegistry, () => {
      */
     test(tst_con.cloadPluginRegistry_inValidPluginRegistryPathString, async () => {
         // Arrange
-        // Arrange
+        let pathToPluginsJsonFile = tst_pbt.cpathToUnitTestPluginsJsonFile;
+        // Presetting the plugin.json file.
+        await writeFile(pathToPluginsJsonFile, JSON.stringify(tst_pbt.cexpectedDataFromPluginsJsonFile, null, 2));            
         D[sys.cbusinessRules] = {
             [biz.cgetJsonData]: (inputData, inputMetaData) => fileOperations.getJsonData(inputData, inputMetaData)
         };
@@ -96,7 +103,7 @@ describe(tst_con.cloadPluginRegistry, () => {
         let returnData = await pluginBroker.loadPluginRegistry(pluginRegistryPath);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -107,7 +114,9 @@ describe(tst_con.cloadPluginRegistry, () => {
      */
     test(tst_con.cloadPluginRegistry_inValidPluginRegistryPathInteger, async () => {
         // Arrange
-        // Arrange
+        let pathToPluginsJsonFile = tst_pbt.cpathToUnitTestPluginsJsonFile;
+        // Presetting the plugin.json file.
+        await writeFile(pathToPluginsJsonFile, JSON.stringify(tst_pbt.cexpectedDataFromPluginsJsonFile, null, 2));            
         D[sys.cbusinessRules] = {
             [biz.cgetJsonData]: (inputData, inputMetaData) => fileOperations.getJsonData(inputData, inputMetaData)
         };
@@ -117,7 +126,7 @@ describe(tst_con.cloadPluginRegistry, () => {
         let returnData = await pluginBroker.loadPluginRegistry(pluginRegistryPath);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -128,7 +137,9 @@ describe(tst_con.cloadPluginRegistry, () => {
      */
     test(tst_con.cloadPluginRegistry_inValidPluginRegistryPathBoolean, async () => {
         // Arrange
-        // Arrange
+        let pathToPluginsJsonFile = tst_pbt.cpathToUnitTestPluginsJsonFile;
+        // Presetting the plugin.json file.
+        await writeFile(pathToPluginsJsonFile, JSON.stringify(tst_pbt.cexpectedDataFromPluginsJsonFile, null, 2));            
         D[sys.cbusinessRules] = {
             [biz.cgetJsonData]: (inputData, inputMetaData) => fileOperations.getJsonData(inputData, inputMetaData)
         };
@@ -138,7 +149,7 @@ describe(tst_con.cloadPluginRegistry, () => {
         let returnData = await pluginBroker.loadPluginRegistry(pluginRegistryPath);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -149,7 +160,9 @@ describe(tst_con.cloadPluginRegistry, () => {
      */
     test(tst_con.cloadPluginRegistry_inValidPluginRegistryPathUndefined, async () => {
         // Arrange
-        // Arrange
+        let pathToPluginsJsonFile = tst_pbt.cpathToUnitTestPluginsJsonFile;
+        // Presetting the plugin.json file.
+        await writeFile(pathToPluginsJsonFile, JSON.stringify(tst_pbt.cexpectedDataFromPluginsJsonFile, null, 2));            
         D[sys.cbusinessRules] = {
             [biz.cgetJsonData]: (inputData, inputMetaData) => fileOperations.getJsonData(inputData, inputMetaData)
         };
@@ -159,7 +172,7 @@ describe(tst_con.cloadPluginRegistry, () => {
         let returnData = await pluginBroker.loadPluginRegistry(pluginRegistryPath);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -170,7 +183,9 @@ describe(tst_con.cloadPluginRegistry, () => {
      */
     test(tst_con.cloadPluginRegistry_inValidPluginRegistryPathNaN, async () => {
         // Arrange
-        // Arrange
+        let pathToPluginsJsonFile = tst_pbt.cpathToUnitTestPluginsJsonFile;
+        // Presetting the plugin.json file.
+        await writeFile(pathToPluginsJsonFile, JSON.stringify(tst_pbt.cexpectedDataFromPluginsJsonFile, null, 2));            
         D[sys.cbusinessRules] = {
             [biz.cgetJsonData]: (inputData, inputMetaData) => fileOperations.getJsonData(inputData, inputMetaData)
         };
@@ -180,7 +195,7 @@ describe(tst_con.cloadPluginRegistry, () => {
         let returnData = await pluginBroker.loadPluginRegistry(pluginRegistryPath);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 })
 
@@ -223,7 +238,7 @@ describe(tst_con.cstorePluginRegistryInDataStructure, () => {
         let returnData = await pluginBroker.storePluginRegistryInDataStructure(pluginRegistryData);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
         delete D[cfg.cpluginRegistry];
     });
 
@@ -241,7 +256,7 @@ describe(tst_con.cstorePluginRegistryInDataStructure, () => {
         let returnData = await pluginBroker.storePluginRegistryInDataStructure(pluginRegistryData);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
         delete D[cfg.cpluginRegistry];
     });
 
@@ -259,7 +274,7 @@ describe(tst_con.cstorePluginRegistryInDataStructure, () => {
         let returnData = await pluginBroker.storePluginRegistryInDataStructure(pluginRegistryData);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
         delete D[cfg.cpluginRegistry];
     });
 
@@ -277,7 +292,7 @@ describe(tst_con.cstorePluginRegistryInDataStructure, () => {
         let returnData = await pluginBroker.storePluginRegistryInDataStructure(pluginRegistryData);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
         delete D[cfg.cpluginRegistry];
     });
 
@@ -295,7 +310,7 @@ describe(tst_con.cstorePluginRegistryInDataStructure, () => {
         let returnData = await pluginBroker.storePluginRegistryInDataStructure(pluginRegistryData);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
         delete D[cfg.cpluginRegistry];
     });
 })
@@ -425,7 +440,7 @@ describe(tst_con.clistPluginsAttributeInRegistry, () => {
         let returnData = await pluginBroker.listPluginsAttributeInRegistry(attributeName);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -445,7 +460,7 @@ describe(tst_con.clistPluginsAttributeInRegistry, () => {
         let returnData = await pluginBroker.listPluginsAttributeInRegistry(attributeName);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -465,7 +480,7 @@ describe(tst_con.clistPluginsAttributeInRegistry, () => {
         let returnData = await pluginBroker.listPluginsAttributeInRegistry(attributeName);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -485,7 +500,7 @@ describe(tst_con.clistPluginsAttributeInRegistry, () => {
         let returnData = await pluginBroker.listPluginsAttributeInRegistry(attributeName);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 })
 
@@ -640,7 +655,7 @@ describe(tst_con.cregisterPlugin, () => {
         let returnData = await pluginBroker.registerPlugin(pluginName, pluginPath);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -670,7 +685,7 @@ describe(tst_con.cregisterPlugin, () => {
         let returnData = await pluginBroker.registerPlugin(pluginName, pluginPath);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -700,7 +715,7 @@ describe(tst_con.cregisterPlugin, () => {
         let returnData = await pluginBroker.registerPlugin(pluginName, pluginPath);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -730,7 +745,7 @@ describe(tst_con.cregisterPlugin, () => {
         let returnData = await pluginBroker.registerPlugin(pluginName, pluginPath);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -760,7 +775,7 @@ describe(tst_con.cregisterPlugin, () => {
         let returnData = await pluginBroker.registerPlugin(pluginName, pluginPath);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -790,7 +805,7 @@ describe(tst_con.cregisterPlugin, () => {
         let returnData = await pluginBroker.registerPlugin(pluginName, pluginPath);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -820,7 +835,7 @@ describe(tst_con.cregisterPlugin, () => {
         let returnData = await pluginBroker.registerPlugin(pluginName, pluginPath);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -850,7 +865,7 @@ describe(tst_con.cregisterPlugin, () => {
         let returnData = await pluginBroker.registerPlugin(pluginName, pluginPath);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -880,7 +895,7 @@ describe(tst_con.cregisterPlugin, () => {
         let returnData = await pluginBroker.registerPlugin(pluginName, pluginPath);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 })
 
@@ -952,7 +967,7 @@ describe(tst_con.cunregisterPlugin, () => {
         let returnData = await pluginBroker.unregisterPlugin(pluginName);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -985,7 +1000,7 @@ describe(tst_con.cunregisterPlugin, () => {
         let returnData = await pluginBroker.unregisterPlugin(pluginName);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -1018,7 +1033,7 @@ describe(tst_con.cunregisterPlugin, () => {
         let returnData = await pluginBroker.unregisterPlugin(pluginName);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -1051,7 +1066,7 @@ describe(tst_con.cunregisterPlugin, () => {
         let returnData = await pluginBroker.unregisterPlugin(pluginName);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -1084,7 +1099,7 @@ describe(tst_con.cunregisterPlugin, () => {
         let returnData = await pluginBroker.unregisterPlugin(pluginName);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 })
 
@@ -1156,7 +1171,7 @@ describe(tst_con.cunregisterPlugins, () => {
         let returnData = await pluginBroker.unregisterPlugins(pluginListArray);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -1188,7 +1203,7 @@ describe(tst_con.cunregisterPlugins, () => {
         let returnData = await pluginBroker.unregisterPlugins(pluginListArray);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -1220,7 +1235,7 @@ describe(tst_con.cunregisterPlugins, () => {
         let returnData = await pluginBroker.unregisterPlugins(pluginListArray);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -1252,7 +1267,7 @@ describe(tst_con.cunregisterPlugins, () => {
         let returnData = await pluginBroker.unregisterPlugins(pluginListArray);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -1284,7 +1299,7 @@ describe(tst_con.cunregisterPlugins, () => {
         let returnData = await pluginBroker.unregisterPlugins(pluginListArray);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 })
 
@@ -1479,7 +1494,7 @@ describe(tst_con.cloadPluginMetaData, () => {
         let returnData = await pluginBroker.loadPluginMetaData(pluginPath);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -1506,7 +1521,7 @@ describe(tst_con.cloadPluginMetaData, () => {
         let returnData = await pluginBroker.loadPluginMetaData(pluginPath);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -1533,7 +1548,7 @@ describe(tst_con.cloadPluginMetaData, () => {
         let returnData = await pluginBroker.loadPluginMetaData(pluginPath);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -1560,7 +1575,7 @@ describe(tst_con.cloadPluginMetaData, () => {
         let returnData = await pluginBroker.loadPluginMetaData(pluginPath);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -1587,7 +1602,7 @@ describe(tst_con.cloadPluginMetaData, () => {
         let returnData = await pluginBroker.loadPluginMetaData(pluginPath);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 })
 
@@ -1657,7 +1672,7 @@ describe(tst_con.cextractAndProcessPluginEntryPointURI, () => {
         let returnData = await pluginBroker.extractAndProcessPluginEntryPointURI(pluginMetaData, pluginPath);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -1719,7 +1734,7 @@ describe(tst_con.cextractAndProcessPluginEntryPointURI, () => {
         let returnData = await pluginBroker.extractAndProcessPluginEntryPointURI(pluginMetaData, pluginPath);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -1750,7 +1765,7 @@ describe(tst_con.cextractAndProcessPluginEntryPointURI, () => {
         let returnData = await pluginBroker.extractAndProcessPluginEntryPointURI(pluginMetaData, pluginPath);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -1781,7 +1796,7 @@ describe(tst_con.cextractAndProcessPluginEntryPointURI, () => {
         let returnData = await pluginBroker.extractAndProcessPluginEntryPointURI(pluginMetaData, pluginPath);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -1812,7 +1827,7 @@ describe(tst_con.cextractAndProcessPluginEntryPointURI, () => {
         let returnData = await pluginBroker.extractAndProcessPluginEntryPointURI(pluginMetaData, pluginPath);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -1843,7 +1858,7 @@ describe(tst_con.cextractAndProcessPluginEntryPointURI, () => {
         let returnData = await pluginBroker.extractAndProcessPluginEntryPointURI(pluginMetaData, pluginPath);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -1874,7 +1889,7 @@ describe(tst_con.cextractAndProcessPluginEntryPointURI, () => {
         let returnData = await pluginBroker.extractAndProcessPluginEntryPointURI(pluginMetaData, pluginPath);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -1905,7 +1920,7 @@ describe(tst_con.cextractAndProcessPluginEntryPointURI, () => {
         let returnData = await pluginBroker.extractAndProcessPluginEntryPointURI(pluginMetaData, pluginPath);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -1936,7 +1951,7 @@ describe(tst_con.cextractAndProcessPluginEntryPointURI, () => {
         let returnData = await pluginBroker.extractAndProcessPluginEntryPointURI(pluginMetaData, pluginPath);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 })
 

@@ -1,5 +1,6 @@
 {
     "name": "test-plugin-one",
     "version": "0.0.1",
-    "main": "./main.js"
+    "main": "./main.js",
+    "type": "module"
 }

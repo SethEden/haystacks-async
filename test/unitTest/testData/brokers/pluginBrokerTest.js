@@ -47,6 +47,7 @@ export const cexpectedDataFromPluginsJsonFile = {
 export const cexpectedDataFromTestPluginOnePackageJsonFile = {
     [wrd.cname]: tst_man.ctestPluginOne,
     [wrd.cversion]: num.c0 + bas.cDot + num.c0 + bas.cDot + num.c1,
-    [wrd.cmain]: bas.cDot + bas.cForwardSlash + wrd.cmain + bas.cDot + gen.cjs
+    [wrd.cmain]: bas.cDot + bas.cForwardSlash + wrd.cmain + bas.cDot + gen.cjs,
+    [wrd.ctype]: wrd.cmodule
 }
 export const cexpectedURIfromTestPluginOne = wrd.cfile + bas.cColon + bas.cForwardSlash.repeat(3) + tst_man.testPluginPath.replaceAll(bas.cBackSlash, bas.cForwardSlash).replaceAll(bas.cDoubleForwardSlash, bas.cForwardSlash) + wrd.cmain + gen.cDotjs;// file:///C:/haystacks-async/test/unitTest/testData/testPlugins/test-plugin-one/main.js

@@ -61,7 +61,7 @@ describe(tst_con.cbootStrapCommands, () => {
         let returnData = await commandBroker.bootStrapCommands();
 
         // Assert
-        expect(returnData).toBeTruthy();
+        expect(returnData).toEqual(true);
     });
 })
 
@@ -86,7 +86,7 @@ describe(tst_con.cresetCommands, () => {
         let returnData = await commandBroker.resetCommands();
 
         // Assert
-        expect(returnData).toBeTruthy();
+        expect(returnData).toEqual(true);
     });
 })
 
@@ -113,7 +113,7 @@ describe(tst_con.caddClientCommands, () => {
         returnData = await commandBroker.addClientCommands(testCommandsLibrary);
 
         // Assert
-        expect(returnData).toBeTruthy();
+        expect(returnData).toEqual(true);
         expect(D[wrd.cCommands]).toEqual(testCommandsLibrary);
     });
 
@@ -133,7 +133,7 @@ describe(tst_con.caddClientCommands, () => {
         returnData = await commandBroker.addClientCommands(testCommandsLibrary);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -152,7 +152,7 @@ describe(tst_con.caddClientCommands, () => {
         returnData = await commandBroker.addClientCommands(testCommandsLibrary);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -171,7 +171,7 @@ describe(tst_con.caddClientCommands, () => {
         returnData = await commandBroker.addClientCommands(testCommandsLibrary);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -190,7 +190,7 @@ describe(tst_con.caddClientCommands, () => {
         returnData = await commandBroker.addClientCommands(testCommandsLibrary);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -209,7 +209,7 @@ describe(tst_con.caddClientCommands, () => {
         returnData = await commandBroker.addClientCommands(testCommandsLibrary);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 })
 
@@ -237,7 +237,7 @@ describe(tst_con.caddPluginCommands, () => {
         let returnData = await commandBroker.addPluginCommands(pluginName,pluginCommands[sys.cpluginCommands]);
 
         // Assert
-        expect(returnData).toBeTruthy();
+        expect(returnData).toEqual(true);
     });
 
     /**
@@ -256,7 +256,7 @@ describe(tst_con.caddPluginCommands, () => {
         let returnData = await commandBroker.addPluginCommands(pluginName,pluginCommands);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -276,7 +276,7 @@ describe(tst_con.caddPluginCommands, () => {
         let returnData = await commandBroker.addPluginCommands(pluginName,pluginCommands[sys.cpluginCommands]);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -296,7 +296,7 @@ describe(tst_con.caddPluginCommands, () => {
         let returnData = await commandBroker.addPluginCommands(pluginName,pluginCommands[sys.cpluginCommands]);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -315,7 +315,7 @@ describe(tst_con.caddPluginCommands, () => {
         let returnData = await commandBroker.addPluginCommands(pluginName,pluginCommands);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -334,7 +334,7 @@ describe(tst_con.caddPluginCommands, () => {
         let returnData = await commandBroker.addPluginCommands(pluginName,pluginCommands);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -354,7 +354,7 @@ describe(tst_con.caddPluginCommands, () => {
         let returnData = await commandBroker.addPluginCommands(pluginName,pluginCommands[sys.cpluginCommands]);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -374,7 +374,7 @@ describe(tst_con.caddPluginCommands, () => {
         let returnData = await commandBroker.addPluginCommands(pluginName,pluginCommands[sys.cpluginCommands]);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -393,7 +393,7 @@ describe(tst_con.caddPluginCommands, () => {
         let returnData = await commandBroker.addPluginCommands(pluginName,pluginCommands);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -412,7 +412,7 @@ describe(tst_con.caddPluginCommands, () => {
         let returnData = await commandBroker.addPluginCommands(pluginName,pluginCommands);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 })
 
@@ -439,7 +439,7 @@ describe(tst_con.caddPluginCommandAliases, () => {
         let returnData = await commandBroker.addPluginCommandAliases(pluginName,pluginCommandAliases[sys.cCommandsAliases]);
 
         // Assert
-        expect(returnData).toBeTruthy();
+        expect(returnData).toEqual(true);
     });
 
     /**
@@ -458,7 +458,7 @@ describe(tst_con.caddPluginCommandAliases, () => {
         let returnData = await commandBroker.addPluginCommandAliases(pluginName,pluginCommandAliases);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -477,7 +477,7 @@ describe(tst_con.caddPluginCommandAliases, () => {
         let returnData = await commandBroker.addPluginCommandAliases(pluginName,pluginCommandAliases[sys.cCommandsAliases]);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -496,7 +496,7 @@ describe(tst_con.caddPluginCommandAliases, () => {
         let returnData = await commandBroker.addPluginCommandAliases(pluginName,pluginCommandAliases[sys.cCommandsAliases]);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -515,7 +515,7 @@ describe(tst_con.caddPluginCommandAliases, () => {
         let returnData = await commandBroker.addPluginCommandAliases(pluginName,pluginCommandAliases);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -534,7 +534,7 @@ describe(tst_con.caddPluginCommandAliases, () => {
         let returnData = await commandBroker.addPluginCommandAliases(pluginName,pluginCommandAliases);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -553,7 +553,7 @@ describe(tst_con.caddPluginCommandAliases, () => {
         let returnData = await commandBroker.addPluginCommandAliases(pluginName,pluginCommandAliases[sys.cCommandsAliases]);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -572,7 +572,7 @@ describe(tst_con.caddPluginCommandAliases, () => {
         let returnData = await commandBroker.addPluginCommandAliases(pluginName,pluginCommandAliases[sys.cCommandsAliases]);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -591,7 +591,7 @@ describe(tst_con.caddPluginCommandAliases, () => {
         let returnData = await commandBroker.addPluginCommandAliases(pluginName,pluginCommandAliases);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -610,7 +610,7 @@ describe(tst_con.caddPluginCommandAliases, () => {
         let returnData = await commandBroker.addPluginCommandAliases(pluginName,pluginCommandAliases);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 })
 
@@ -660,7 +660,7 @@ describe(tst_con.cgetValidCommand, () => {
         let returnData = await commandBroker.getValidCommand(commandString, commandDelimiter);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -681,7 +681,7 @@ describe(tst_con.cgetValidCommand, () => {
         let returnData = await commandBroker.getValidCommand(commandString, commandDelimiter);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -702,7 +702,7 @@ describe(tst_con.cgetValidCommand, () => {
         let returnData = await commandBroker.getValidCommand(commandString, commandDelimiter);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -723,7 +723,7 @@ describe(tst_con.cgetValidCommand, () => {
         let returnData = await commandBroker.getValidCommand(commandString, commandDelimiter);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -744,7 +744,7 @@ describe(tst_con.cgetValidCommand, () => {
         let returnData = await commandBroker.getValidCommand(commandString, commandDelimiter);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -765,7 +765,7 @@ describe(tst_con.cgetValidCommand, () => {
         let returnData = await commandBroker.getValidCommand(commandString, commandDelimiter);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -786,7 +786,7 @@ describe(tst_con.cgetValidCommand, () => {
         let returnData = await commandBroker.getValidCommand(commandString, commandDelimiter);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -807,7 +807,7 @@ describe(tst_con.cgetValidCommand, () => {
         let returnData = await commandBroker.getValidCommand(commandString, commandDelimiter);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 })
 
@@ -1077,7 +1077,7 @@ describe(tst_con.csearchCommandAlias, () => {
         let returnData = await commandBroker.searchCommandAlias(commandAliasData, commandAliasName);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -1097,7 +1097,7 @@ describe(tst_con.csearchCommandAlias, () => {
         let returnData = await commandBroker.searchCommandAlias(commandAliasData, commandAliasName);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -1116,7 +1116,7 @@ describe(tst_con.csearchCommandAlias, () => {
         let returnData = await commandBroker.searchCommandAlias(commandAliasData, commandAliasName);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -1135,7 +1135,7 @@ describe(tst_con.csearchCommandAlias, () => {
         let returnData = await commandBroker.searchCommandAlias(commandAliasData, commandAliasName);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -1155,7 +1155,7 @@ describe(tst_con.csearchCommandAlias, () => {
         let returnData = await commandBroker.searchCommandAlias(commandAliasData, commandAliasName);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -1175,7 +1175,7 @@ describe(tst_con.csearchCommandAlias, () => {
         let returnData = await commandBroker.searchCommandAlias(commandAliasData, commandAliasName);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -1194,7 +1194,7 @@ describe(tst_con.csearchCommandAlias, () => {
         let returnData = await commandBroker.searchCommandAlias(commandAliasData, commandAliasName);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -1213,7 +1213,7 @@ describe(tst_con.csearchCommandAlias, () => {
         let returnData = await commandBroker.searchCommandAlias(commandAliasData, commandAliasName);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -1233,7 +1233,7 @@ describe(tst_con.csearchCommandAlias, () => {
         let returnData = await commandBroker.searchCommandAlias(commandAliasData, commandAliasName);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -1253,7 +1253,7 @@ describe(tst_con.csearchCommandAlias, () => {
         let returnData = await commandBroker.searchCommandAlias(commandAliasData, commandAliasName);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 })
 
@@ -1305,7 +1305,7 @@ describe(tst_con.cgetAllCommandAliasData, () => {
         let returnData = await commandBroker.getAllCommandAliasData(commandAliasDataStructured);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -1327,7 +1327,7 @@ describe(tst_con.cgetAllCommandAliasData, () => {
         let returnData = await commandBroker.getAllCommandAliasData(commandAliasDataStructured);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -1349,7 +1349,7 @@ describe(tst_con.cgetAllCommandAliasData, () => {
         let returnData = await commandBroker.getAllCommandAliasData(commandAliasDataStructured);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -1393,7 +1393,7 @@ describe(tst_con.cgetAllCommandAliasData, () => {
         let returnData = await commandBroker.getAllCommandAliasData(commandAliasDataStructured);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 })
 
@@ -1439,7 +1439,7 @@ describe(tst_con.cgetCommandNamespaceDataObject, () => {
         let returnData = await commandBroker.getCommandNamespaceDataObject(commandAliasDataStructure, namespaceToFind);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -1458,7 +1458,7 @@ describe(tst_con.cgetCommandNamespaceDataObject, () => {
         let returnData = await commandBroker.getCommandNamespaceDataObject(commandAliasDataStructure, namespaceToFind);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -1477,7 +1477,7 @@ describe(tst_con.cgetCommandNamespaceDataObject, () => {
         let returnData = await commandBroker.getCommandNamespaceDataObject(commandAliasDataStructure, namespaceToFind);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -1496,7 +1496,7 @@ describe(tst_con.cgetCommandNamespaceDataObject, () => {
         let returnData = await commandBroker.getCommandNamespaceDataObject(commandAliasDataStructure, namespaceToFind);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -1515,7 +1515,7 @@ describe(tst_con.cgetCommandNamespaceDataObject, () => {
         let returnData = await commandBroker.getCommandNamespaceDataObject(commandAliasDataStructure, namespaceToFind);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -1534,7 +1534,7 @@ describe(tst_con.cgetCommandNamespaceDataObject, () => {
         let returnData = await commandBroker.getCommandNamespaceDataObject(commandAliasDataStructure, namespaceToFind);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -1573,7 +1573,7 @@ describe(tst_con.cgetCommandNamespaceDataObject, () => {
         let returnData = await commandBroker.getCommandNamespaceDataObject(commandAliasDataStructure, namespaceToFind);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -1592,7 +1592,7 @@ describe(tst_con.cgetCommandNamespaceDataObject, () => {
         let returnData = await commandBroker.getCommandNamespaceDataObject(commandAliasDataStructure, namespaceToFind);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -1611,7 +1611,7 @@ describe(tst_con.cgetCommandNamespaceDataObject, () => {
         let returnData = await commandBroker.getCommandNamespaceDataObject(commandAliasDataStructure, namespaceToFind);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 })
 
@@ -1657,7 +1657,7 @@ describe(tst_con.cgetCommandArgs, () => {
         let returnData = await commandBroker.getCommandArgs(commandString, commandDelimiter);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -1676,7 +1676,7 @@ describe(tst_con.cgetCommandArgs, () => {
         let returnData = await commandBroker.getCommandArgs(commandString, commandDelimiter);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -1695,7 +1695,7 @@ describe(tst_con.cgetCommandArgs, () => {
         let returnData = await commandBroker.getCommandArgs(commandString, commandDelimiter);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -1714,7 +1714,7 @@ describe(tst_con.cgetCommandArgs, () => {
         let returnData = await commandBroker.getCommandArgs(commandString, commandDelimiter);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -1733,7 +1733,7 @@ describe(tst_con.cgetCommandArgs, () => {
         let returnData = await commandBroker.getCommandArgs(commandString, commandDelimiter);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -1752,7 +1752,7 @@ describe(tst_con.cgetCommandArgs, () => {
         let returnData = await commandBroker.getCommandArgs(commandString, commandDelimiter);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -1771,7 +1771,7 @@ describe(tst_con.cgetCommandArgs, () => {
         let returnData = await commandBroker.getCommandArgs(commandString, commandDelimiter);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -1790,7 +1790,7 @@ describe(tst_con.cgetCommandArgs, () => {
         let returnData = await commandBroker.getCommandArgs(commandString, commandDelimiter);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -2132,7 +2132,7 @@ describe(tst_con.cexecuteCommand, () => {
 //     //     let returnData = await commandBroker.removePluginCommands();
 
 //     //     // Assert
-//     //     expect(returnData).toBeFalsy();
+//     //     expect(returnData).toEqual(false);
 //     // });
 
 //     // /**
@@ -2149,7 +2149,7 @@ describe(tst_con.cexecuteCommand, () => {
 //     //     let returnData = await commandBroker.removePluginCommands();
 
 //     //     // Assert
-//     //     expect(returnData).toBeFalsy();
+//     //     expect(returnData).toEqual(false);
 //     // });
 
 //     // /**
@@ -2166,7 +2166,7 @@ describe(tst_con.cexecuteCommand, () => {
 //     //     let returnData = await commandBroker.removePluginCommands();
 
 //     //     // Assert
-//     //     expect(returnData).toBeFalsy();
+//     //     expect(returnData).toEqual(false);
 //     // });
 
 //     // /**
@@ -2183,7 +2183,7 @@ describe(tst_con.cexecuteCommand, () => {
 //     //     let returnData = await commandBroker.removePluginCommands();
 
 //     //     // Assert
-//     //     expect(returnData).toBeFalsy();
+//     //     expect(returnData).toEqual(false);
 //     // });
 
 //     // /**
@@ -2200,7 +2200,7 @@ describe(tst_con.cexecuteCommand, () => {
 //     //     let returnData = await commandBroker.removePluginCommands();
 
 //     //     // Assert
-//     //     expect(returnData).toBeFalsy();
+//     //     expect(returnData).toEqual(false);
 //     // });
 // })
 
@@ -2245,7 +2245,7 @@ describe(tst_con.cremovePluginCommandAliases, () => {
         let returnData = await commandBroker.removePluginCommandAliases(pluginName);
 
         // Assert
-        expect(returnData).toBeTruthy();
+        expect(returnData).toEqual(true);
     });
 
     /**
@@ -2282,7 +2282,7 @@ describe(tst_con.cremovePluginCommandAliases, () => {
         let returnData = await commandBroker.removePluginCommandAliases(pluginName);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -2319,7 +2319,7 @@ describe(tst_con.cremovePluginCommandAliases, () => {
         let returnData = await commandBroker.removePluginCommandAliases(pluginName);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -2356,7 +2356,7 @@ describe(tst_con.cremovePluginCommandAliases, () => {
         let returnData = await commandBroker.removePluginCommandAliases(pluginName);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -2393,7 +2393,7 @@ describe(tst_con.cremovePluginCommandAliases, () => {
         let returnData = await commandBroker.removePluginCommandAliases(pluginName);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -2430,7 +2430,7 @@ describe(tst_con.cremovePluginCommandAliases, () => {
         let returnData = await commandBroker.removePluginCommandAliases(pluginName);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 })
 

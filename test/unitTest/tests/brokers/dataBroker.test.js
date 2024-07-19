@@ -82,7 +82,7 @@ describe(tst_con.caddPluginConfigurationData, () => {
         let returnData = await dataBroker.addPluginConfigurationData(pluginName, pluginConfigData);
 
         // Assert
-        expect(returnData).toBeTruthy();
+        expect(returnData).toEqual(true);
     });
 
     /**
@@ -115,7 +115,7 @@ describe(tst_con.caddPluginConfigurationData, () => {
         let returnData = await dataBroker.addPluginConfigurationData(pluginName, pluginConfigData);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -137,7 +137,7 @@ describe(tst_con.caddPluginConfigurationData, () => {
         let returnData = await dataBroker.addPluginConfigurationData(pluginName, pluginConfigData);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -170,7 +170,7 @@ describe(tst_con.caddPluginConfigurationData, () => {
         let returnData = await dataBroker.addPluginConfigurationData(pluginName, pluginConfigData);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -203,7 +203,7 @@ describe(tst_con.caddPluginConfigurationData, () => {
         let returnData = await dataBroker.addPluginConfigurationData(pluginName, pluginConfigData);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -225,7 +225,7 @@ describe(tst_con.caddPluginConfigurationData, () => {
         let returnData = await dataBroker.addPluginConfigurationData(pluginName, pluginConfigData);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -247,7 +247,7 @@ describe(tst_con.caddPluginConfigurationData, () => {
         let returnData = await dataBroker.addPluginConfigurationData(pluginName, pluginConfigData);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -280,7 +280,7 @@ describe(tst_con.caddPluginConfigurationData, () => {
         let returnData = await dataBroker.addPluginConfigurationData(pluginName, pluginConfigData);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -313,7 +313,7 @@ describe(tst_con.caddPluginConfigurationData, () => {
         let returnData = await dataBroker.addPluginConfigurationData(pluginName, pluginConfigData);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -335,7 +335,7 @@ describe(tst_con.caddPluginConfigurationData, () => {
         let returnData = await dataBroker.addPluginConfigurationData(pluginName, pluginConfigData);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -357,7 +357,7 @@ describe(tst_con.caddPluginConfigurationData, () => {
         let returnData = await dataBroker.addPluginConfigurationData(pluginName, pluginConfigData);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 })
 
@@ -409,7 +409,7 @@ describe(tst_con.cscanDataPath, () => {
         let returnData = await dataBroker.scanDataPath(dataPath);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -431,7 +431,7 @@ describe(tst_con.cscanDataPath, () => {
         let returnData = await dataBroker.scanDataPath(dataPath);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -453,7 +453,7 @@ describe(tst_con.cscanDataPath, () => {
         let returnData = await dataBroker.scanDataPath(dataPath);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -475,7 +475,7 @@ describe(tst_con.cscanDataPath, () => {
         let returnData = await dataBroker.scanDataPath(dataPath);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -497,7 +497,7 @@ describe(tst_con.cscanDataPath, () => {
         let returnData = await dataBroker.scanDataPath(dataPath);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 })
 
@@ -528,7 +528,7 @@ describe(tst_con.cfindUniversalDebugConfigSetting, () => {
         let returnData = await dataBroker.findUniversalDebugConfigSetting(appConfigFilesToLoad, frameworkConfigFilesToLoad);
 
         // Assert
-        expect(returnData).toBeTruthy();
+        expect(returnData).toEqual(true);
     });
 
     /**
@@ -551,7 +551,7 @@ describe(tst_con.cfindUniversalDebugConfigSetting, () => {
         let returnData = await dataBroker.findUniversalDebugConfigSetting(appConfigFilesToLoad, frameworkConfigFilesToLoad);
 
         // Assert
-        expect(returnData).toBeTruthy();
+        expect(returnData).toEqual(true);
     });
 
     /**
@@ -574,7 +574,7 @@ describe(tst_con.cfindUniversalDebugConfigSetting, () => {
         let returnData = await dataBroker.findUniversalDebugConfigSetting(appConfigFilesToLoad, frameworkConfigFilesToLoad);
 
         // Assert
-        expect(returnData).toBeTruthy();
+        expect(returnData).toEqual(true);
     });
 
     /**
@@ -597,7 +597,7 @@ describe(tst_con.cfindUniversalDebugConfigSetting, () => {
         let returnData = await dataBroker.findUniversalDebugConfigSetting(appConfigFilesToLoad, frameworkConfigFilesToLoad);
 
         // Assert
-        expect(returnData).toBeTruthy();
+        expect(returnData).toEqual(true);
     });
 
     /**
@@ -620,7 +620,7 @@ describe(tst_con.cfindUniversalDebugConfigSetting, () => {
         let returnData = await dataBroker.findUniversalDebugConfigSetting(appConfigFilesToLoad, frameworkConfigFilesToLoad);
 
         // Assert
-        expect(returnData).toBeTruthy();
+        expect(returnData).toEqual(true);
     });
 
     /**
@@ -643,7 +643,7 @@ describe(tst_con.cfindUniversalDebugConfigSetting, () => {
         let returnData = await dataBroker.findUniversalDebugConfigSetting(appConfigFilesToLoad, frameworkConfigFilesToLoad);
 
         // Assert
-        expect(returnData).toBeTruthy();
+        expect(returnData).toEqual(true);
     });
 
     /**
@@ -666,7 +666,7 @@ describe(tst_con.cfindUniversalDebugConfigSetting, () => {
         let returnData = await dataBroker.findUniversalDebugConfigSetting(appConfigFilesToLoad, frameworkConfigFilesToLoad);
 
         // Assert
-        expect(returnData).toBeTruthy();
+        expect(returnData).toEqual(true);
     });
 
     /**
@@ -689,7 +689,7 @@ describe(tst_con.cfindUniversalDebugConfigSetting, () => {
         let returnData = await dataBroker.findUniversalDebugConfigSetting(appConfigFilesToLoad, frameworkConfigFilesToLoad);
 
         // Assert
-        expect(returnData).toBeTruthy();
+        expect(returnData).toEqual(true);
     });
 
     /**
@@ -712,7 +712,7 @@ describe(tst_con.cfindUniversalDebugConfigSetting, () => {
         let returnData = await dataBroker.findUniversalDebugConfigSetting(appConfigFilesToLoad, frameworkConfigFilesToLoad);
 
         // Assert
-        expect(returnData).toBeTruthy();
+        expect(returnData).toEqual(true);
     });
 
     /**
@@ -735,7 +735,7 @@ describe(tst_con.cfindUniversalDebugConfigSetting, () => {
         let returnData = await dataBroker.findUniversalDebugConfigSetting(appConfigFilesToLoad, frameworkConfigFilesToLoad);
 
         // Assert
-        expect(returnData).toBeTruthy();
+        expect(returnData).toEqual(true);
     });
 
     /**
@@ -758,7 +758,7 @@ describe(tst_con.cfindUniversalDebugConfigSetting, () => {
         let returnData = await dataBroker.findUniversalDebugConfigSetting(appConfigFilesToLoad, frameworkConfigFilesToLoad);
 
         // Assert
-        expect(returnData).toBeTruthy();
+        expect(returnData).toEqual(true);
     });
 })
 
@@ -819,7 +819,7 @@ describe(tst_con.cloadAllCsvData, () => {
         let returnData = await dataBroker.loadAllCsvData(filesToLoad, contextName);
         
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
         delete D[tst_dbt.cunitTestData]; // clean up on isle 4
     });
 
@@ -846,7 +846,7 @@ describe(tst_con.cloadAllCsvData, () => {
         let returnData = await dataBroker.loadAllCsvData(filesToLoad, contextName);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -872,7 +872,7 @@ describe(tst_con.cloadAllCsvData, () => {
         let returnData = await dataBroker.loadAllCsvData(filesToLoad, contextName);
         
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
         delete D[tst_dbt.cunitTestData]; // clean up on isle 4
     });
 
@@ -899,7 +899,7 @@ describe(tst_con.cloadAllCsvData, () => {
         let returnData = await dataBroker.loadAllCsvData(filesToLoad, contextName);
         
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
         delete D[tst_dbt.cunitTestData]; // clean up on isle 4
     });
 
@@ -925,7 +925,7 @@ describe(tst_con.cloadAllCsvData, () => {
         let returnData = await dataBroker.loadAllCsvData(filesToLoad, contextName);
         
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
         delete D[tst_dbt.cunitTestData]; // clean up on isle 4
     });
 
@@ -951,7 +951,7 @@ describe(tst_con.cloadAllCsvData, () => {
         let returnData = await dataBroker.loadAllCsvData(filesToLoad, contextName);
         
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
         delete D[tst_dbt.cunitTestData]; // clean up on isle 4
     });
 
@@ -978,7 +978,7 @@ describe(tst_con.cloadAllCsvData, () => {
         let returnData = await dataBroker.loadAllCsvData(filesToLoad, contextName);
         
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
         delete D[tst_dbt.cunitTestData]; // clean up on isle 4
     });
 
@@ -1005,7 +1005,7 @@ describe(tst_con.cloadAllCsvData, () => {
         let returnData = await dataBroker.loadAllCsvData(filesToLoad, contextName);
         
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
         delete D[tst_dbt.cunitTestData]; // clean up on isle 4
     });
 
@@ -1031,7 +1031,7 @@ describe(tst_con.cloadAllCsvData, () => {
         let returnData = await dataBroker.loadAllCsvData(filesToLoad, contextName);
         
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
         delete D[tst_dbt.cunitTestData]; // clean up on isle 4
     });
 
@@ -1057,7 +1057,7 @@ describe(tst_con.cloadAllCsvData, () => {
         let returnData = await dataBroker.loadAllCsvData(filesToLoad, contextName);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
         delete D[tst_dbt.cunitTestData]; // clean up on isle 4
     });
 })
@@ -1122,7 +1122,7 @@ describe(tst_con.cloadAllXmlData, () => {
         let returnData = await dataBroker.loadAllXmlData(filesToLoad, contextName);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -1150,7 +1150,7 @@ describe(tst_con.cloadAllXmlData, () => {
         let returnData = await dataBroker.loadAllXmlData(filesToLoad, contextName);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -1178,7 +1178,7 @@ describe(tst_con.cloadAllXmlData, () => {
         let returnData = await dataBroker.loadAllXmlData(filesToLoad, contextName);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -1206,7 +1206,7 @@ describe(tst_con.cloadAllXmlData, () => {
         let returnData = await dataBroker.loadAllXmlData(filesToLoad, contextName);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -1234,7 +1234,7 @@ describe(tst_con.cloadAllXmlData, () => {
         let returnData = await dataBroker.loadAllXmlData(filesToLoad, contextName);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -1262,7 +1262,7 @@ describe(tst_con.cloadAllXmlData, () => {
         let returnData = await dataBroker.loadAllXmlData(filesToLoad, contextName);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -1290,7 +1290,7 @@ describe(tst_con.cloadAllXmlData, () => {
         let returnData = await dataBroker.loadAllXmlData(filesToLoad, contextName);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -1318,7 +1318,7 @@ describe(tst_con.cloadAllXmlData, () => {
         let returnData = await dataBroker.loadAllXmlData(filesToLoad, contextName);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -1346,7 +1346,7 @@ describe(tst_con.cloadAllXmlData, () => {
         let returnData = await dataBroker.loadAllXmlData(filesToLoad, contextName);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -1374,7 +1374,7 @@ describe(tst_con.cloadAllXmlData, () => {
         let returnData = await dataBroker.loadAllXmlData(filesToLoad, contextName);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 })
 
@@ -1441,7 +1441,7 @@ describe(tst_con.cloadAllJsonData, () => {
         let returnData = await dataBroker.loadAllJsonData(filesToLoad, contextName);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -1470,7 +1470,7 @@ describe(tst_con.cloadAllJsonData, () => {
         let returnData = await dataBroker.loadAllJsonData(filesToLoad, contextName);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -1499,7 +1499,7 @@ describe(tst_con.cloadAllJsonData, () => {
         let returnData = await dataBroker.loadAllJsonData(filesToLoad, contextName);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -1528,7 +1528,7 @@ describe(tst_con.cloadAllJsonData, () => {
         let returnData = await dataBroker.loadAllJsonData(filesToLoad, contextName);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -1557,7 +1557,7 @@ describe(tst_con.cloadAllJsonData, () => {
         let returnData = await dataBroker.loadAllJsonData(filesToLoad, contextName);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -1586,7 +1586,7 @@ describe(tst_con.cloadAllJsonData, () => {
         let returnData = await dataBroker.loadAllJsonData(filesToLoad, contextName);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -1615,7 +1615,7 @@ describe(tst_con.cloadAllJsonData, () => {
         let returnData = await dataBroker.loadAllJsonData(filesToLoad, contextName);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -1644,7 +1644,7 @@ describe(tst_con.cloadAllJsonData, () => {
         let returnData = await dataBroker.loadAllJsonData(filesToLoad, contextName);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -1673,7 +1673,7 @@ describe(tst_con.cloadAllJsonData, () => {
         let returnData = await dataBroker.loadAllJsonData(filesToLoad, contextName);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -1702,7 +1702,7 @@ describe(tst_con.cloadAllJsonData, () => {
         let returnData = await dataBroker.loadAllJsonData(filesToLoad, contextName);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 })
 
@@ -1759,7 +1759,7 @@ describe(tst_con.cprocessCsvData, () => {
         let returnData = await dataBroker.processCsvData(data, contextName);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
         delete D[tst_dbt.cunitTestData]; // clean up on isle 4
     });
 
@@ -1784,7 +1784,7 @@ describe(tst_con.cprocessCsvData, () => {
         let returnData = await dataBroker.processCsvData(data, contextName);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
         delete D[tst_dbt.cunitTestData]; // clean up on isle 4
     });
 
@@ -1809,7 +1809,7 @@ describe(tst_con.cprocessCsvData, () => {
         let returnData = await dataBroker.processCsvData(data, contextName);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
         delete D[tst_dbt.cunitTestData]; // clean up on isle 4
     });
 
@@ -1834,7 +1834,7 @@ describe(tst_con.cprocessCsvData, () => {
         let returnData = await dataBroker.processCsvData(data, contextName);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
         delete D[tst_dbt.cunitTestData]; // clean up on isle 4
     });
 
@@ -1859,7 +1859,7 @@ describe(tst_con.cprocessCsvData, () => {
         let returnData = await dataBroker.processCsvData(data, contextName);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
         delete D[tst_dbt.cunitTestData]; // clean up on isle 4
     });
 
@@ -1884,7 +1884,7 @@ describe(tst_con.cprocessCsvData, () => {
         let returnData = await dataBroker.processCsvData(data, contextName);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
         delete D[tst_dbt.cunitTestData]; // clean up on isle 4
     });
 
@@ -1909,7 +1909,7 @@ describe(tst_con.cprocessCsvData, () => {
         let returnData = await dataBroker.processCsvData(data, contextName);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
         delete D[tst_dbt.cunitTestData]; // clean up on isle 4
     });
 
@@ -1934,7 +1934,7 @@ describe(tst_con.cprocessCsvData, () => {
         let returnData = await dataBroker.processCsvData(data, contextName);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
         delete D[tst_dbt.cunitTestData]; // clean up on isle 4
     });
 
@@ -1959,7 +1959,7 @@ describe(tst_con.cprocessCsvData, () => {
         let returnData = await dataBroker.processCsvData(data, contextName);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
         delete D[tst_dbt.cunitTestData]; // clean up on isle 4
     });
 
@@ -1984,7 +1984,7 @@ describe(tst_con.cprocessCsvData, () => {
         let returnData = await dataBroker.processCsvData(data, contextName);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
         delete D[tst_dbt.cunitTestData]; // clean up on isle 4
     });
 })
@@ -2038,7 +2038,7 @@ describe(tst_con.cpreprocessJsonFile, () => {
         let returnData = await dataBroker.preprocessJsonFile(fileToLoad);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -2060,7 +2060,7 @@ describe(tst_con.cpreprocessJsonFile, () => {
         let returnData = await dataBroker.preprocessJsonFile(fileToLoad);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -2082,7 +2082,7 @@ describe(tst_con.cpreprocessJsonFile, () => {
         let returnData = await dataBroker.preprocessJsonFile(fileToLoad);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -2104,7 +2104,7 @@ describe(tst_con.cpreprocessJsonFile, () => {
         let returnData = await dataBroker.preprocessJsonFile(fileToLoad);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -2126,7 +2126,7 @@ describe(tst_con.cpreprocessJsonFile, () => {
         let returnData = await dataBroker.preprocessJsonFile(fileToLoad);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 })
 
@@ -2159,7 +2159,7 @@ describe(tst_con.cwriteJsonDataToFile, () => {
         let returnData = await dataBroker.writeJsonDataToFile(fileToSaveTo, dataToWriteOut);
 
         // Assert
-        expect(returnData).toBeTruthy();
+        expect(returnData).toEqual(true);
     });
 
     /**
@@ -2184,7 +2184,7 @@ describe(tst_con.cwriteJsonDataToFile, () => {
         let returnData = await dataBroker.writeJsonDataToFile(fileToSaveTo, dataToWriteOut);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -2209,7 +2209,7 @@ describe(tst_con.cwriteJsonDataToFile, () => {
         let returnData = await dataBroker.writeJsonDataToFile(fileToSaveTo, dataToWriteOut);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -2234,7 +2234,7 @@ describe(tst_con.cwriteJsonDataToFile, () => {
         let returnData = await dataBroker.writeJsonDataToFile(fileToSaveTo, dataToWriteOut);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -2259,7 +2259,7 @@ describe(tst_con.cwriteJsonDataToFile, () => {
         let returnData = await dataBroker.writeJsonDataToFile(fileToSaveTo, dataToWriteOut);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -2284,7 +2284,7 @@ describe(tst_con.cwriteJsonDataToFile, () => {
         let returnData = await dataBroker.writeJsonDataToFile(fileToSaveTo, dataToWriteOut);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -2309,7 +2309,7 @@ describe(tst_con.cwriteJsonDataToFile, () => {
         let returnData = await dataBroker.writeJsonDataToFile(fileToSaveTo, dataToWriteOut);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -2334,7 +2334,7 @@ describe(tst_con.cwriteJsonDataToFile, () => {
         let returnData = await dataBroker.writeJsonDataToFile(fileToSaveTo, dataToWriteOut);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -2359,7 +2359,7 @@ describe(tst_con.cwriteJsonDataToFile, () => {
         let returnData = await dataBroker.writeJsonDataToFile(fileToSaveTo, dataToWriteOut);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -2384,7 +2384,7 @@ describe(tst_con.cwriteJsonDataToFile, () => {
         let returnData = await dataBroker.writeJsonDataToFile(fileToSaveTo, dataToWriteOut);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -2409,7 +2409,7 @@ describe(tst_con.cwriteJsonDataToFile, () => {
         let returnData = await dataBroker.writeJsonDataToFile(fileToSaveTo, dataToWriteOut);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 })
 
@@ -2434,7 +2434,7 @@ describe(tst_con.csetupDataStorage, () => {
         let returnData = await dataBroker.setupDataStorage();
 
         // Assert
-        expect(returnData).toBeTruthy();
+        expect(returnData).toEqual(true);
     });
 })
 
@@ -2462,7 +2462,7 @@ describe(tst_con.cstoreData, () => {
         let returnData = await dataBroker.storeData(dataStorageContextName, dataToStore);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
         delete D[sys.cDataStorage];
     });
 
@@ -2483,7 +2483,7 @@ describe(tst_con.cstoreData, () => {
         let returnData = await dataBroker.storeData(dataStorageContextName, dataToStore);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
         delete D[sys.cDataStorage];
     });
     
@@ -2504,7 +2504,7 @@ describe(tst_con.cstoreData, () => {
         let returnData = await dataBroker.storeData(dataStorageContextName, dataToStore);
 
         // Assert
-        expect(returnData).toBeTruthy();
+        expect(returnData).toEqual(true);
         delete D[sys.cDataStorage];
     });
 
@@ -2525,7 +2525,7 @@ describe(tst_con.cstoreData, () => {
         let returnData = await dataBroker.storeData(dataStorageContextName, dataToStore);
 
         // Assert
-        expect(returnData).toBeTruthy();
+        expect(returnData).toEqual(true);
         delete D[sys.cDataStorage];
     })
 
@@ -2546,7 +2546,7 @@ describe(tst_con.cstoreData, () => {
         let returnData = await dataBroker.storeData(dataStorageContextName, dataToStore);
 
         // Assert
-        expect(returnData).toBeTruthy();
+        expect(returnData).toEqual(true);
         delete D[sys.cDataStorage];
     });
 
@@ -2567,7 +2567,7 @@ describe(tst_con.cstoreData, () => {
         let returnData = await dataBroker.storeData(dataStorageContextName, dataToStore);
 
         // Assert
-        expect(returnData).toBeTruthy();
+        expect(returnData).toEqual(true);
         delete D[sys.cDataStorage];
     });
 
@@ -2588,7 +2588,7 @@ describe(tst_con.cstoreData, () => {
         let returnData = await dataBroker.storeData(dataStorageContextName, dataToStore);
 
         // Assert
-        expect(returnData).toBeTruthy();
+        expect(returnData).toEqual(true);
         delete D[sys.cDataStorage];
     });
 
@@ -2609,7 +2609,7 @@ describe(tst_con.cstoreData, () => {
         let returnData = await dataBroker.storeData(dataStorageContextName, dataToStore);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
         delete D[sys.cDataStorage];
     });
     
@@ -2630,7 +2630,7 @@ describe(tst_con.cstoreData, () => {
         let returnData = await dataBroker.storeData(dataStorageContextName, dataToStore);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
         delete D[sys.cDataStorage];
     });
 
@@ -2651,7 +2651,7 @@ describe(tst_con.cstoreData, () => {
         let returnData = await dataBroker.storeData(dataStorageContextName, dataToStore);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
         delete D[sys.cDataStorage];
     });
 
@@ -2672,7 +2672,7 @@ describe(tst_con.cstoreData, () => {
         let returnData = await dataBroker.storeData(dataStorageContextName, dataToStore);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
         delete D[sys.cDataStorage];
     });
 })
@@ -2722,7 +2722,7 @@ describe(tst_con.cgetData, () => {
         let returnData = await dataBroker.getData(dataStorageContextName);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -2741,7 +2741,7 @@ describe(tst_con.cgetData, () => {
         let returnData = await dataBroker.getData(dataStorageContextName);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -2760,7 +2760,7 @@ describe(tst_con.cgetData, () => {
         let returnData = await dataBroker.getData(dataStorageContextName);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -2779,7 +2779,7 @@ describe(tst_con.cgetData, () => {
         let returnData = await dataBroker.getData(dataStorageContextName);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -2798,7 +2798,7 @@ describe(tst_con.cgetData, () => {
         let returnData = await dataBroker.getData(dataStorageContextName);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 })
 
@@ -2827,7 +2827,7 @@ describe(tst_con.cclearData, () => {
         let returnData = await dataBroker.clearData(dataStorageContextName);
 
         // Assert
-        expect(returnData).toBeTruthy();
+        expect(returnData).toEqual(true);
     });
 
     /**
@@ -2846,7 +2846,7 @@ describe(tst_con.cclearData, () => {
         let returnData = await dataBroker.clearData(dataStorageContextName);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -2865,7 +2865,7 @@ describe(tst_con.cclearData, () => {
         let returnData = await dataBroker.clearData(dataStorageContextName);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -2884,7 +2884,7 @@ describe(tst_con.cclearData, () => {
         let returnData = await dataBroker.clearData(dataStorageContextName);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -2903,7 +2903,7 @@ describe(tst_con.cclearData, () => {
         let returnData = await dataBroker.clearData(dataStorageContextName);
 
         // Assert
-        expect(returnData).toBeTruthy();
+        expect(returnData).toEqual(true);
     });
 
     /**
@@ -2922,7 +2922,7 @@ describe(tst_con.cclearData, () => {
         let returnData = await dataBroker.clearData(dataStorageContextName);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 })
 
@@ -2963,7 +2963,7 @@ describe(tst_con.cremovePluginConfigurationData, () => {
         let returnData = await dataBroker.removePluginConfigurationData(pluginName);
 
         // Assert
-        expect(returnData).toBeTruthy();
+        expect(returnData).toEqual(true);
     });
 
     /**
@@ -2996,7 +2996,7 @@ describe(tst_con.cremovePluginConfigurationData, () => {
         let returnData = await dataBroker.removePluginConfigurationData(pluginName);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -3029,7 +3029,7 @@ describe(tst_con.cremovePluginConfigurationData, () => {
         let returnData = await dataBroker.removePluginConfigurationData(pluginName);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -3062,7 +3062,7 @@ describe(tst_con.cremovePluginConfigurationData, () => {
         let returnData = await dataBroker.removePluginConfigurationData(pluginName);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -3095,7 +3095,7 @@ describe(tst_con.cremovePluginConfigurationData, () => {
         let returnData = await dataBroker.removePluginConfigurationData(pluginName);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 
     /**
@@ -3128,6 +3128,6 @@ describe(tst_con.cremovePluginConfigurationData, () => {
         let returnData = await dataBroker.removePluginConfigurationData(pluginName);
 
         // Assert
-        expect(returnData).toBeFalsy();
+        expect(returnData).toEqual(false);
     });
 })
