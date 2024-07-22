@@ -625,11 +625,11 @@ async function savePluginRegistry() {
   await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginRegistryIs + JSON.stringify(pluginRegistry));
   try {
     if (pluginRegistry && typeof pluginRegistry === wrd.cobject) {
-      pluginRegistryPath = await configurator.getConfigurationSetting(wrd.csystem, cfg.cpluginRegistryPath);
-      // pluginRegistryPath is:
-      await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginRegistryPathIs + pluginRegistryPath);
-      // console.log("pluginRegistry is: " + pluginRegistry);
-      returnData = await ruleBroker.processRules([pluginRegistryPath, pluginRegistry], [biz.cwriteJsonData]);
+        pluginRegistryPath = await configurator.getConfigurationSetting(wrd.csystem, cfg.cpluginRegistryPath);
+        // pluginRegistryPath is:
+        await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginRegistryPathIs + pluginRegistryPath);
+        // console.log("pluginRegistry is: " + pluginRegistry);
+        returnData = await ruleBroker.processRules([pluginRegistryPath, pluginRegistry], [biz.cwriteJsonData]);
     } else {
       // ERROR: pluginRegistry is an invalid value: 
       console.log(msg.cErrorSavePluginRegistryMessage02 + JSON.stringify(pluginRegistry));
@@ -758,14 +758,16 @@ async function extractAndProcessPluginEntryPointURI(pluginMetaData, pluginPath) 
           returnData = pluginMainPath.href;
         }
       } else {
-
+        // Invalid input, pluginPath is: 
+        console.log(msg.cErrorLoadPluginMetaDataMessage02 + pluginPath);
       }
     } else {
-
+      // Invalid input, pluginMetaData is: 
+      console.log(msg.cErrorExtractAndProcessPluginEntryPointURIMessage01 + pluginMetaData);
     }
   } else {
     // ERROR: No plugin meta data or plugin path are specified:
-    console.log(msg.cextractAndProcessPluginEntryPointUriMessage04 + namespacePrefix + functionName);
+    console.log(msg.cextractAndProcessPluginEntryPointUriMessage04 + '\n' + msg.cpluginMetaDataIs + JSON.stringify(pluginMetaData) + '\n' + msg.cpluginPathIs + pluginPath);
   }
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
@@ -845,6 +847,39 @@ async function loadPlugin(pluginExecutionPath) {
     console.log(msg.cerrorMessage + err.message);
     returnData = false;
   }
+  // NOTE: Alternative improvement from chatGPT needs testing.
+  // try {
+  //   const pluginResponseData = new Promise(async (resolve, reject) => {
+  //     try {
+  //       const myDynamicImport = async (path) => {
+  //         return await import(path);
+  //       };
+  
+  //       const loadAsyncImport = async () => {
+  //         const result = await myDynamicImport(pluginExecutionPath);
+  //         return result;
+  //       };
+  
+  //       const value = await loadAsyncImport();
+  //       const returnData = await value[wrd.cdefault].initializePlugin(D);
+  
+  //       loggers.consoleLog(namespacePrefix + functionName, msg.cdataLoadedIs + JSON.stringify(returnData));
+  //       resolve(returnData);
+  //     } catch (err) {
+  //       reject(err);
+  //     }
+  //   });
+  
+  //   const [value] = await Promise.all([pluginResponseData]);
+  //   loggers.consoleLog(namespacePrefix + functionName, msg.cvalueIs + JSON.stringify(value));
+  // } catch (err) {
+  //   // ERROR: There was an error attempting to load the specified plugin:
+  //   console.log(msg.cloadPluginErrorMessage01 + pluginExecutionPath);
+  //   console.log(msg.cerrorMessage + err.message);
+  //   returnData = false;
+  // }
+  
+  
   // const dDataReset = await D.setData(dCommandClone); // This didn't work either!!
   // dCommandClone stack after loading is:
   // console.log(namespacePrefix + functionName + bas.cSpace + msg.cdCommandCloneStackAfterLoadingIs, dCommandClone);

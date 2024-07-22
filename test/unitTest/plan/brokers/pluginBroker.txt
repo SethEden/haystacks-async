@@ -485,10 +485,7 @@ input pluginName: string (The name of the plugin who's business rules should be 
 input pluginBusinessRules: object (The business rules specific to this current plugin)
 output: boolean (True or False to indicate if this plugins business rules are successfully integrated or not)
 
-testName: integratePluginBusinessRules_inValidPluginNameString
-input pluginName: string (464gsdsfae8f46)
-input pluginBusinessRules: object (The business rules specific to this current plugin)
-output: ?
+NOTE: integratePluginBusinessRules_inValidPluginNameString cant be used in this unit test.
 
 testName: integratePluginBusinessRules_inValidPluginBusinessRulesString
 input pluginName: string (The name of the plugin who's business rules should be integrated with the haystacks business rules)
@@ -540,10 +537,7 @@ input pluginName: string (The name of the plugin who's commands should be integr
 input pluginCommands: object (The commands specific to this current plugin) 
 output: boolean (True or False to indicate if this plugins commands are successfully integrated or not)
 
-testName: integratePluginCommands_inValidPluginNameString
-input pluginName: string (464gsdsfae8f46)
-input pluginCommands: object (The commands specific to this current plugin)
-output: ?
+NOTE: integratePluginCommands_inValidPluginNameString cant be used in this unit test.
 
 testName: integeratePluginCommands_inValidPluginCommandsString
 input pluginName: string (The name of the plugin who's commands should be integrated with the haystacks commands)
@@ -650,10 +644,7 @@ input pluginName: string (The name of the plugin who's command aliases should be
 input pluginConfigurationData: object (The JSON object that contains all of the command aliases specific to this current plugin)
 output: boolean (True or False to indicate if this plugins command aliases data are successfully integrated or not)
 
-testName: integratePluginCommandAliases_inValidPluginNameString
-input pluginName: string (464gsdsfae8f46)
-input pluginConfigurationData: object (The JSON object that contains all of the command aliases specific to this current plugin)
-output: ?
+NOTE: integratePluginCommandAliases_inValidPluginNameString cant be used in this unit test.
 
 testName: integratePluginCommandAliases_inValidPluginConfigurationDataString
 input pluginName: string (The name of the plugin who's command aliases should be integrated with the haystacks command aliases data)
@@ -705,10 +696,7 @@ input pluginName: string (The name of the plugin who's workflows should be integ
 input pluginWorkflows: object (The JSON object that contains all of the workflows specific to this current plugin)
 output: boolean (True or False to indicate if the plugins workflows data are successfully integrated or not)
 
-testName: integratePluginWorkflows_inValidPluginNameString
-input pluginName: string (464gsdsfae8f46)
-input pluginWorkflows: object (The JSON object that contains all of the workflows specific to this current plugin)
-output: ?
+NOTE: integratePluginWorkflows_inValidPluginNameString cant be used in this unit test.
 
 testName: integratePluginWorkflows_inValidPluginConfigurationDataString
 input pluginName: string (The name of the plugin who's workflows should be integrated with the haystacks workflows data)

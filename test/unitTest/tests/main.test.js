@@ -653,7 +653,7 @@ describe(tst_con.cmergeClientCommands, () => {
  * @author Vlad Sorokin
  * @date 2024/01/02
  * @NOTE As of now this test needs jest xml file support, as it will not work unless there is a way for jest to read and use xml files. 
- * Tried to use "jest-environment-jsdom" to solve this issue but couldn't get it to work, though it does seem that solution is use of jsdom.
+ * Tried to use "jest-environment-jsdom" to solve this issue but couldn't get it to work, thought it does seem that solution is use of jsdom.
  */
 // describe(tst_con.cloadCommandAliases, () => {
     // /**

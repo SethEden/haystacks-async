@@ -98,23 +98,33 @@ async function addPluginRules(pluginName, pluginRules) {
   // console.log(msg.cpluginRulesIs + JSON.stringify(pluginRules));
   let returnData = false;
   try {
-    // if (D[sys.cbusinessRules][wrd.cplugins] === undefined) {
-    //   D[sys.cbusinessRules][wrd.cplugins] = {};
-    // }
-    // D[sys.cbusinessRules][wrd.cplugins][pluginName] = {};
-    // Object.assign(D[sys.cbusinessRules][wrd.cplugins][pluginName], pluginRules);
-    // returnData = true;
-
-    // NOTE: The business rules was never design to have a heirarchy storage, so when calling business rules,
-    // its basically calling a flat list. So rather than adding the plugin rules according to the above structure.
-    // We will need to just add them to the flat list. If a plugin is unloaded,
-    // then each of its business rules will need to be individually searched out and removed from the flat list.
-    // D-businessRules stack before merge is:
-    // console.log(namespacePrefix + functionName + bas.cSpace + msg.cdBusinessRulesStackBeforeMergeIs, D[sys.cbusinessRules]);
-    await Object.assign(D[sys.cbusinessRules], pluginRules[sys.cbusinessRules]);
-    // D-businessRules stack after merge is:
-    // console.log(namespacePrefix + functionName + bas.cSpace + msg.cdBusinessRulesStackAfterMergeIs, D[sys.cbusinessRules]);
-    returnData = true;
+    if (pluginName && typeof pluginName === wrd.cstring) {
+      if (pluginRules && typeof pluginRules === wrd.cobject) {
+        // if (D[sys.cbusinessRules][wrd.cplugins] === undefined) {
+        //   D[sys.cbusinessRules][wrd.cplugins] = {};
+        // }
+        // D[sys.cbusinessRules][wrd.cplugins][pluginName] = {};
+        // Object.assign(D[sys.cbusinessRules][wrd.cplugins][pluginName], pluginRules);
+        // returnData = true;
+    
+        // NOTE: The business rules was never design to have a heirarchy storage, so when calling business rules,
+        // its basically calling a flat list. So rather than adding the plugin rules according to the above structure.
+        // We will need to just add them to the flat list. If a plugin is unloaded,
+        // then each of its business rules will need to be individually searched out and removed from the flat list.
+        // D-businessRules stack before merge is:
+        // console.log(namespacePrefix + functionName + bas.cSpace + msg.cdBusinessRulesStackBeforeMergeIs, D[sys.cbusinessRules]);
+        await Object.assign(D[sys.cbusinessRules], pluginRules[sys.cbusinessRules]);
+        // D-businessRules stack after merge is:
+        // console.log(namespacePrefix + functionName + bas.cSpace + msg.cdBusinessRulesStackAfterMergeIs, D[sys.cbusinessRules]);
+        returnData = true;
+      } else {
+        // ERROR: Invalid value, pluginRules is: 
+        console.log(msg.cErrorAddPluginRulesMessage02 + pluginRules);
+      }
+    } else {
+      // ERROR: Invalid value, pluginName is: 
+      console.log(msg.cErrorAddPluginRulesMessage03 + pluginName);
+    }
   } catch (err) {
     // ERROR: Failure to merge the plugin rules for plugin:
     console.log(msg.cErrorAddPluginRulesMessage01 + pluginName);

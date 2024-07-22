@@ -56,7 +56,7 @@ export const testConstantsValidation = [
     {Name: 'csetupDataStorage', Actual: tst_con.csetupDataStorage, Expected: 'setupDataStorage'},
     {Name: 'cremovePluginConfigurationData', Actual: tst_con.cremovePluginConfigurationData, Expected: 'removePluginConfigurationData'},
 
-    /* ruleBroker */
+    /* pluginBroker */
     {Name: 'cloadPluginRegistry', Actual: tst_con.cloadPluginRegistry, Expected: 'loadPluginRegistry'},
     {Name: 'cstorePluginRegistryInDataStructure', Actual: tst_con.cstorePluginRegistryInDataStructure, Expected: 'storePluginRegistryInDataStructure'},
     {Name: 'clistAllLoadedPlugins', Actual: tst_con.clistAllLoadedPlugins, Expected: 'listAllLoadedPlugins'},
@@ -73,10 +73,23 @@ export const testConstantsValidation = [
     {Name: 'csavePluginRegistry', Actual: tst_con.csavePluginRegistry, Expected: 'savePluginRegistry'},
     {Name: 'cloadPluginMetaData', Actual: tst_con.cloadPluginMetaData, Expected: 'loadPluginMetaData'},
     {Name: 'cextractAndProcessPluginEntryPointURI', Actual: tst_con.cextractAndProcessPluginEntryPointURI, Expected: 'extractAndProcessPluginEntryPointURI'},
+    {Name: 'cloadPlugin', Actual: tst_con.cloadPlugin, Expected: 'loadPlugin'},
+    {Name: 'cintegratePluginBusinessRules', Actual: tst_con.cintegratePluginBusinessRules, Expected: 'integratePluginBusinessRules'},
+    {Name: 'cintegratePluginCommands', Actual: tst_con.cintegratePluginCommands, Expected: 'integratePluginCommands'},
+    {Name: 'cintegratePluginConfigurationData', Actual: tst_con.cintegratePluginConfigurationData, Expected: 'integratePluginConfigurationData'},
+    {Name: 'cintegratePluginCommandAliases', Actual: tst_con.cintegratePluginCommandAliases, Expected: 'integratePluginCommandAliases'},
+    {Name: 'cintegratePluginWorkflows', Actual: tst_con.cintegratePluginWorkflows, Expected: 'integratePluginWorkflows'},
 
-    
 
 
+
+
+
+
+
+
+
+    /* ruleBroker */
 
     /* themeBroker */
 
@@ -495,7 +508,7 @@ export const testConstantsValidation = [
     {Name: 'cremovePluginConfigurationData_inValidPluginNameUndefined', Actual: tst_con.cremovePluginConfigurationData_inValidPluginNameUndefined, Expected: 'removePluginConfigurationData_inValidPluginNameUndefined'},
     {Name: 'cremovePluginConfigurationData_inValidPluginNameNaN', Actual: tst_con.cremovePluginConfigurationData_inValidPluginNameNaN, Expected: 'removePluginConfigurationData_inValidPluginNameNaN'},
 
-    /* ruleBroker */
+    /* pluginBroker */
     // loadPluginRegistry
     {Name: 'cloadPluginRegistry_validPluginRegistryPathData', Actual: tst_con.cloadPluginRegistry_validPluginRegistryPathData, Expected: 'loadPluginRegistry_validPluginRegistryPathData'},
     {Name: 'cloadPluginRegistry_inValidPluginRegistryPathString', Actual: tst_con.cloadPluginRegistry_inValidPluginRegistryPathString, Expected: 'loadPluginRegistry_inValidPluginRegistryPathString'},
@@ -589,12 +602,88 @@ export const testConstantsValidation = [
     {Name: 'cextractAndProcessPluginEntryPointURI_inValidPluginPathUndefined', Actual: tst_con.cextractAndProcessPluginEntryPointURI_inValidPluginPathUndefined, Expected: 'extractAndProcessPluginEntryPointURI_inValidPluginPathUndefined'},
     {Name: 'cextractAndProcessPluginEntryPointURI_inValidPluginPathNaN', Actual: tst_con.cextractAndProcessPluginEntryPointURI_inValidPluginPathNaN, Expected: 'extractAndProcessPluginEntryPointURI_inValidPluginPathNaN'},
 
+    // loadPlugin
+    {Name: 'cloadPlugin_validPluginExecutionPathData', Actual: tst_con.cloadPlugin_validPluginExecutionPathData, Expected: 'loadPlugin_validPluginExecutionPathData'},
+    {Name: 'cloadPlugin_inValidPluginExecutionPathString', Actual: tst_con.cloadPlugin_inValidPluginExecutionPathString, Expected: 'loadPlugin_inValidPluginExecutionPathString'},
+    {Name: 'cloadPlugin_inValidPluginExecutionPathInteger', Actual: tst_con.cloadPlugin_inValidPluginExecutionPathInteger, Expected: 'loadPlugin_inValidPluginExecutionPathInteger'},
+    {Name: 'cloadPlugin_inValidPluginExecutionPathBoolean', Actual: tst_con.cloadPlugin_inValidPluginExecutionPathBoolean, Expected: 'loadPlugin_inValidPluginExecutionPathBoolean'},
+    {Name: 'cloadPlugin_inValidPluginExecutionPathUndefined', Actual: tst_con.cloadPlugin_inValidPluginExecutionPathUndefined, Expected: 'loadPlugin_inValidPluginExecutionPathUndefined'},
+    {Name: 'cloadPlugin_inValidPluginExecutionPathNaN', Actual: tst_con.cloadPlugin_inValidPluginExecutionPathNaN, Expected: 'loadPlugin_inValidPluginExecutionPathNaN'},
+
+    // integratePluginBusinessRules
+    {Name: 'cintegratePluginBusinessRules_validData', Actual: tst_con.cintegratePluginBusinessRules_validData, Expected: 'integratePluginBusinessRules_validData'},
+    {Name: 'cintegratePluginBusinessRules_inValidPluginNameString', Actual: tst_con.cintegratePluginBusinessRules_inValidPluginNameString, Expected: 'integratePluginBusinessRules_inValidPluginNameString'},
+    {Name: 'cintegratePluginBusinessRules_inValidPluginBusinessRulesString', Actual: tst_con.cintegratePluginBusinessRules_inValidPluginBusinessRulesString, Expected: 'integratePluginBusinessRules_inValidPluginBusinessRulesString'},
+    {Name: 'cintegratePluginBusinessRules_inValidPluginNameInteger', Actual: tst_con.cintegratePluginBusinessRules_inValidPluginNameInteger, Expected: 'integratePluginBusinessRules_inValidPluginNameInteger'},
+    {Name: 'cintegratePluginBusinessRules_inValidPluginNameBoolean', Actual: tst_con.cintegratePluginBusinessRules_inValidPluginNameBoolean, Expected: 'integratePluginBusinessRules_inValidPluginNameBoolean'},
+    {Name: 'cintegratePluginBusinessRules_inValidPluginBusinessRulesInteger', Actual: tst_con.cintegratePluginBusinessRules_inValidPluginBusinessRulesInteger, Expected: 'integratePluginBusinessRules_inValidPluginBusinessRulesInteger'},
+    {Name: 'cintegratePluginBusinessRules_inValidPluginBusinessRulesBoolean', Actual: tst_con.cintegratePluginBusinessRules_inValidPluginBusinessRulesBoolean, Expected: 'integratePluginBusinessRules_inValidPluginBusinessRulesBoolean'},
+    {Name: 'cintegratePluginBusinessRules_inValidPluginNameUndefined', Actual: tst_con.cintegratePluginBusinessRules_inValidPluginNameUndefined, Expected: 'integratePluginBusinessRules_inValidPluginNameUndefined'},
+    {Name: 'cintegratePluginBusinessRules_inValidPluginNameNaN', Actual: tst_con.cintegratePluginBusinessRules_inValidPluginNameNaN, Expected: 'integratePluginBusinessRules_inValidPluginNameNaN'},
+    {Name: 'cintegratePluginBusinessRules_inValidPluginBusinessRulesUndefined', Actual: tst_con.cintegratePluginBusinessRules_inValidPluginBusinessRulesUndefined, Expected: 'integratePluginBusinessRules_inValidPluginBusinessRulesUndefined'},
+    {Name: 'cintegratePluginBusinessRules_inValidPluginBusinessRulesNaN', Actual: tst_con.cintegratePluginBusinessRules_inValidPluginBusinessRulesNaN, Expected: 'integratePluginBusinessRules_inValidPluginBusinessRulesNaN'},
+
+    // integratePluginCommands
+    {Name: 'cintegratePluginCommands_validData', Actual: tst_con.cintegratePluginCommands_validData, Expected: 'integratePluginCommands_validData'},
+    {Name: 'cintegratePluginCommands_inValidPluginNameString', Actual: tst_con.cintegratePluginCommands_inValidPluginNameString, Expected: 'integratePluginCommands_inValidPluginNameString'},
+    {Name: 'cintegratePluginCommands_inValidPluginCommandsString', Actual: tst_con.cintegratePluginCommands_inValidPluginCommandsString, Expected: 'integratePluginCommands_inValidPluginCommandsString'},
+    {Name: 'cintegratePluginCommands_inValidPluginNameInteger', Actual: tst_con.cintegratePluginCommands_inValidPluginNameInteger, Expected: 'integratePluginCommands_inValidPluginNameInteger'},
+    {Name: 'cintegratePluginCommands_inValidPluginNameBoolean', Actual: tst_con.cintegratePluginCommands_inValidPluginNameBoolean, Expected: 'integratePluginCommands_inValidPluginNameBoolean'},
+    {Name: 'cintegratePluginCommands_inValidPluginCommandsInteger', Actual: tst_con.cintegratePluginCommands_inValidPluginCommandsInteger, Expected: 'integratePluginCommands_inValidPluginCommandsInteger'},
+    {Name: 'cintegratePluginCommands_inValidPluginCommandsBoolean', Actual: tst_con.cintegratePluginCommands_inValidPluginCommandsBoolean, Expected: 'integratePluginCommands_inValidPluginCommandsBoolean'},
+    {Name: 'cintegratePluginCommands_inValidPluginNameUndefined', Actual: tst_con.cintegratePluginCommands_inValidPluginNameUndefined, Expected: 'integratePluginCommands_inValidPluginNameUndefined'},
+    {Name: 'cintegratePluginCommands_inValidPluginNameNaN', Actual: tst_con.cintegratePluginCommands_inValidPluginNameNaN, Expected: 'integratePluginCommands_inValidPluginNameNaN'},
+    {Name: 'cintegratePluginCommands_inValidPluginCommandsUndefined', Actual: tst_con.cintegratePluginCommands_inValidPluginCommandsUndefined, Expected: 'integratePluginCommands_inValidPluginCommandsUndefined'},
+    {Name: 'cintegratePluginCommands_inValidPluginCommandsNaN', Actual: tst_con.cintegratePluginCommands_inValidPluginCommandsNaN, Expected: 'integratePluginCommands_inValidPluginCommandsNaN'},
+
+    // integratePluginConfigurationData
+    {Name: 'cintegratePluginConfigurationData_validData', Actual: tst_con.cintegratePluginConfigurationData_validData, Expected: 'integratePluginConfigurationData_validData'},
+    {Name: 'cintegratePluginConfigurationData_inValidPluginNameString', Actual: tst_con.cintegratePluginConfigurationData_inValidPluginNameString, Expected: 'integratePluginConfigurationData_inValidPluginNameString'},
+    {Name: 'cintegratePluginConfigurationData_inValidPluginConfigurationDataString', Actual: tst_con.cintegratePluginConfigurationData_inValidPluginConfigurationDataString, Expected: 'integratePluginConfigurationData_inValidPluginConfigurationDataString'},
+    {Name: 'cintegratePluginConfigurationData_inValidPluginNameInteger', Actual: tst_con.cintegratePluginConfigurationData_inValidPluginNameInteger, Expected: 'integratePluginConfigurationData_inValidPluginNameInteger'},
+    {Name: 'cintegratePluginConfigurationData_inValidPluginNameBoolean', Actual: tst_con.cintegratePluginConfigurationData_inValidPluginNameBoolean, Expected: 'integratePluginConfigurationData_inValidPluginNameBoolean'},
+    {Name: 'cintegratePluginConfigurationData_inValidPluginConfigurationDataInteger', Actual: tst_con.cintegratePluginConfigurationData_inValidPluginConfigurationDataInteger, Expected: 'integratePluginConfigurationData_inValidPluginConfigurationDataInteger'},
+    {Name: 'cintegratePluginConfigurationData_inValidPluginConfigurationDataBoolean', Actual: tst_con.cintegratePluginConfigurationData_inValidPluginConfigurationDataBoolean, Expected: 'integratePluginConfigurationData_inValidPluginConfigurationDataBoolean'},
+    {Name: 'cintegratePluginConfigurationData_inValidPluginNameUndefined', Actual: tst_con.cintegratePluginConfigurationData_inValidPluginNameUndefined, Expected: 'integratePluginConfigurationData_inValidPluginNameUndefined'},
+    {Name: 'cintegratePluginConfigurationData_inValidPluginNameNaN', Actual: tst_con.cintegratePluginConfigurationData_inValidPluginNameNaN, Expected: 'integratePluginConfigurationData_inValidPluginNameNaN'},
+    {Name: 'cintegratePluginConfigurationData_inValidPluginConfigurationDataUndefined', Actual: tst_con.cintegratePluginConfigurationData_inValidPluginConfigurationDataUndefined, Expected: 'integratePluginConfigurationData_inValidPluginConfigurationDataUndefined'},
+    {Name: 'cintegratePluginConfigurationData_inValidPluginConfigurationDataNaN', Actual: tst_con.cintegratePluginConfigurationData_inValidPluginConfigurationDataNaN, Expected: 'integratePluginConfigurationData_inValidPluginConfigurationDataNaN'},
+
+    // integratePluginCommandAliases
+    {Name: 'cintegratePluginCommandAliases_validData', Actual: tst_con.cintegratePluginCommandAliases_validData, Expected: 'integratePluginCommandAliases_validData'},
+    {Name: 'cintegratePluginCommandAliases_inValidPluginNameString', Actual: tst_con.cintegratePluginCommandAliases_inValidPluginNameString, Expected: 'integratePluginCommandAliases_inValidPluginNameString'},
+    {Name: 'cintegratePluginCommandAliases_inValidPluginCommandAliasesString', Actual: tst_con.cintegratePluginCommandAliases_inValidPluginCommandAliasesString, Expected: 'integratePluginCommandAliases_inValidPluginCommandAliasesString'},
+    {Name: 'cintegratePluginCommandAliases_inValidPluginNameInteger', Actual: tst_con.cintegratePluginCommandAliases_inValidPluginNameInteger, Expected: 'integratePluginCommandAliases_inValidPluginNameInteger'},
+    {Name: 'cintegratePluginCommandAliases_inValidPluginNameBoolean', Actual: tst_con.cintegratePluginCommandAliases_inValidPluginNameBoolean, Expected: 'integratePluginCommandAliases_inValidPluginNameBoolean'},
+    {Name: 'cintegratePluginCommandAliases_inValidPluginCommandAliasesInteger', Actual: tst_con.cintegratePluginCommandAliases_inValidPluginCommandAliasesInteger, Expected: 'integratePluginCommandAliases_inValidPluginCommandAliasesInteger'},
+    {Name: 'cintegratePluginCommandAliases_inValidPluginCommandAliasesBoolean', Actual: tst_con.cintegratePluginCommandAliases_inValidPluginCommandAliasesBoolean, Expected: 'integratePluginCommandAliases_inValidPluginCommandAliasesBoolean'},
+    {Name: 'cintegratePluginCommandAliases_inValidPluginNameUndefined', Actual: tst_con.cintegratePluginCommandAliases_inValidPluginNameUndefined, Expected: 'integratePluginCommandAliases_inValidPluginNameUndefined'},
+    {Name: 'cintegratePluginCommandAliases_inValidPluginNameNaN', Actual: tst_con.cintegratePluginCommandAliases_inValidPluginNameNaN, Expected: 'integratePluginCommandAliases_inValidPluginNameNaN'},
+    {Name: 'cintegratePluginCommandAliases_inValidPluginCommandAliasesUndefined', Actual: tst_con.cintegratePluginCommandAliases_inValidPluginCommandAliasesUndefined, Expected: 'integratePluginCommandAliases_inValidPluginCommandAliasesUndefined'},
+    {Name: 'cintegratePluginCommandAliases_inValidPluginCommandAliasesNaN', Actual: tst_con.cintegratePluginCommandAliases_inValidPluginCommandAliasesNaN, Expected: 'integratePluginCommandAliases_inValidPluginCommandAliasesNaN'},
+
+    // integratePluginWorkflows
+    {Name: 'cintegratePluginWorkflows_validData', Actual: tst_con.cintegratePluginWorkflows_validData, Expected: 'integratePluginWorkflows_validData'},
+    {Name: 'cintegratePluginWorkflows_inValidPluginNameString', Actual: tst_con.cintegratePluginWorkflows_inValidPluginNameString, Expected: 'integratePluginWorkflows_inValidPluginNameString'},
+    {Name: 'cintegratePluginWorkflows_inValidPluginWorkflowsString', Actual: tst_con.cintegratePluginWorkflows_inValidPluginWorkflowsString, Expected: 'integratePluginWorkflows_inValidPluginWorkflowsString'},
+    {Name: 'cintegratePluginWorkflows_inValidPluginNameInteger', Actual: tst_con.cintegratePluginWorkflows_inValidPluginNameInteger, Expected: 'integratePluginWorkflows_inValidPluginNameInteger'},
+    {Name: 'cintegratePluginWorkflows_inValidPluginNameBoolean', Actual: tst_con.cintegratePluginWorkflows_inValidPluginNameBoolean, Expected: 'integratePluginWorkflows_inValidPluginNameBoolean'},
+    {Name: 'cintegratePluginWorkflows_inValidPluginWorkflowsInteger', Actual: tst_con.cintegratePluginWorkflows_inValidPluginWorkflowsInteger, Expected: 'integratePluginWorkflows_inValidPluginWorkflowsInteger'},
+    {Name: 'cintegratePluginWorkflows_inValidPluginWorkflowsBoolean', Actual: tst_con.cintegratePluginWorkflows_inValidPluginWorkflowsBoolean, Expected: 'integratePluginWorkflows_inValidPluginWorkflowsBoolean'},
+    {Name: 'cintegratePluginWorkflows_inValidPluginNameUndefined', Actual: tst_con.cintegratePluginWorkflows_inValidPluginNameUndefined, Expected: 'integratePluginWorkflows_inValidPluginNameUndefined'},
+    {Name: 'cintegratePluginWorkflows_inValidPluginNameNaN', Actual: tst_con.cintegratePluginWorkflows_inValidPluginNameNaN, Expected: 'integratePluginWorkflows_inValidPluginNameNaN'},
+    {Name: 'cintegratePluginWorkflows_inValidPluginWorkflowsUndefined', Actual: tst_con.cintegratePluginWorkflows_inValidPluginWorkflowsUndefined, Expected: 'integratePluginWorkflows_inValidPluginWorkflowsUndefined'},
+    {Name: 'cintegratePluginWorkflows_inValidPluginWorkflowsNaN', Actual: tst_con.cintegratePluginWorkflows_inValidPluginWorkflowsNaN, Expected: 'integratePluginWorkflows_inValidPluginWorkflowsNaN'},
 
 
 
 
 
 
+
+
+
+    /* ruleBroker */
 
     /* themeBroker */
 

@@ -42,12 +42,22 @@ async function addPluginWorkflows(pluginName, pluginWorkflows) {
   await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginWorkflowsIs + JSON.stringify(pluginWorkflows));
   let returnData = false;
   try {
-    if (D[sys.cCommandWorkflows][wrd.cPlugins] === undefined) {
-      D[sys.cCommandWorkflows][wrd.cPlugins] = {};
+    if (pluginName && typeof pluginName === wrd.cstring) {
+      if (pluginWorkflows && (Array.isArray(pluginWorkflows) || typeof pluginWorkflows === wrd.cobject)) {
+        if (D[sys.cCommandWorkflows][wrd.cPlugins] === undefined) {
+          D[sys.cCommandWorkflows][wrd.cPlugins] = {};
+        }
+        D[sys.cCommandWorkflows][wrd.cPlugins][pluginName] = {};
+        D[sys.cCommandWorkflows][wrd.cPlugins][pluginName] = pluginWorkflows;
+        returnData = true;
+      } else {
+        // ERROR: pluginWorkflows is an invalid value. pluginWorkflows is: 
+        console.log(msg.cErrorAddPluginWorkflowsMessage02, pluginWorkflows);
+      }
+    } else {
+      // ERROR: pluginName is an invalid value. pluginName is: 
+      console.log(msg.cErrorAddPluginsCommandsMessage02, pluginName);
     }
-    D[sys.cCommandWorkflows][wrd.cPlugins][pluginName] = {};
-    D[sys.cCommandWorkflows][wrd.cPlugins][pluginName] = pluginWorkflows;
-    returnData = true;
   } catch (err) {
     // ERROR: Failure to merge the plugin workflows for plugin:
     console.log(msg.cErrorAddPluginWorkflowsMessage01 + pluginName);
