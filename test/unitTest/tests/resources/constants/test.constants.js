@@ -76,21 +76,24 @@ export const cintegratePluginCommands = wrd.cintegrate + wrd.cPlugin + wrd.cComm
 export const cintegratePluginConfigurationData = wrd.cintegrate + wrd.cPlugin + wrd.cConfiguration + wrd.cData; // integratePluginConfigurationData
 export const cintegratePluginCommandAliases = wrd.cintegrate + wrd.cPlugin + wrd.cCommand + wrd.cAliases; // integratePluginCommandAliases
 export const cintegratePluginWorkflows = wrd.cintegrate + wrd.cPlugin + wrd.cWorkflows; // integratePluginWorkflows
-
-
-
-
-
-
-
-
-
-
-
-
-
+export const cintegratePluginThemeData = wrd.cintegrate + wrd.cPlugin + wrd.cTheme + wrd.cData; // integratePluginThemeData
 
 /* ruleBroker */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* themeBroker */
 
@@ -699,15 +702,36 @@ export const cintegratePluginWorkflows_inValidPluginNameNaN = cintegratePluginWo
 export const cintegratePluginWorkflows_inValidPluginWorkflowsUndefined = cintegratePluginWorkflows + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cWorkflows + 'Undefined'; // integratePluginWorkflows_inValidPluginWorkflowsUndefined
 export const cintegratePluginWorkflows_inValidPluginWorkflowsNaN = cintegratePluginWorkflows + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cWorkflows + 'NaN'; // integratePluginWorkflows_inValidPluginWorkflowsNaN
 
-
-
-
-
-
-
-
+// integratePluginThemeData
+export const cintegratePluginThemeData_validData = cintegratePluginThemeData + bas.cUnderscore + wrd.cvalid + wrd.cData; // integratePluginThemeData_validData
+export const cintegratePluginThemeData_inValidPluginNameString = cintegratePluginThemeData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cName + wrd.cString; // integratePluginThemeData_inValidPluginNameString
+export const cintegratePluginThemeData_inValidPluginThemeDataString = cintegratePluginThemeData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cTheme + wrd.cData + wrd.cString; // integratePluginThemeData_inValidPluginThemeDataString
+export const cintegratePluginThemeData_inValidPluginNameInteger = cintegratePluginThemeData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cName + wrd.cInteger; // integratePluginThemeData_inValidPluginNameInteger
+export const cintegratePluginThemeData_inValidPluginNameBoolean = cintegratePluginThemeData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cName + wrd.cBoolean; // integratePluginThemeData_inValidPluginNameBoolean
+export const cintegratePluginThemeData_inValidPluginThemeDataInteger = cintegratePluginThemeData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cTheme + wrd.cData + wrd.cInteger; // integratePluginThemeData_inValidPluginThemeDataInteger
+export const cintegratePluginThemeData_inValidPluginThemeDataBoolean = cintegratePluginThemeData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cTheme + wrd.cData + wrd.cBoolean; // integratePluginThemeData_inValidPluginThemeDataBoolean
+export const cintegratePluginThemeData_inValidPluginNameUndefined = cintegratePluginThemeData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cName + 'Undefined'; // integratePluginThemeData_inValidPluginNameUndefined
+export const cintegratePluginThemeData_inValidPluginNameNaN = cintegratePluginThemeData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cName + 'NaN'; // integratePluginThemeData_inValidPluginNameNaN
+export const cintegratePluginThemeData_inValidPluginThemeDataUndefined = cintegratePluginThemeData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cTheme + wrd.cData + 'Undefined'; // integratePluginThemeData_inValidPluginThemeDataUndefined
+export const cintegratePluginThemeData_inValidPluginThemeDataNaN = cintegratePluginThemeData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cTheme + wrd.cData + 'NaN'; // integratePluginThemeData_inValidPluginThemeDataNaN
 
 /* ruleBroker */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* themeBroker */
 

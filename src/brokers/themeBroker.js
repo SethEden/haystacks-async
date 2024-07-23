@@ -105,26 +105,36 @@ async function addThemeData(themeData, contextName) {
   let returnData = false;
   let pluginName = '';
   try {
-    if (contextName.toUpperCase().includes(wrd.cPLUGIN) === true && contextName.includes(bas.cColon) === true) {
-      let contextNameArray = contextName.split(bas.cColon);
-      pluginName = contextNameArray[1];
-      if (D[wrd.cThemes][wrd.cPlugins] === undefined) {
-        D[wrd.cThemes][wrd.cPlugins] = {};
+    if (themeData && (Array.isArray(themeData) || typeof themeData === wrd.cobject)) {
+      if (contextName && typeof contextName === wrd.cstring) {
+        if (contextName.toUpperCase().includes(wrd.cPLUGIN) === true && contextName.includes(bas.cColon) === true) {
+          let contextNameArray = contextName.split(bas.cColon);
+          pluginName = contextNameArray[1];
+          if (D[wrd.cThemes][wrd.cPlugins] === undefined) {
+            D[wrd.cThemes][wrd.cPlugins] = {};
+          }
+          D[wrd.cThemes][wrd.cPlugins][pluginName] = {};
+          D[wrd.cThemes][wrd.cPlugins][pluginName] = themeData;
+        } else if (contextName.toUpperCase().includes(wrd.cAPPLICATION) === true) {
+          if (D[wrd.cThemes][wrd.cApplication] === undefined) {
+            D[wrd.cThemes][wrd.cApplication] = {};
+          }
+          D[wrd.cThemes][wrd.cApplication] = themeData;
+        } else if (contextName.toUpperCase().includes(wrd.cFRAMEWORK) === true) {
+          if (D[wrd.cThemes][wrd.cFramework] === undefined) {
+            D[wrd.cThemes][wrd.cFramework] = {};
+          }
+          D[wrd.cThemes][wrd.cFramework] = themeData;
+        }
+        returnData = true;
+      } else {
+        // ERROR: Invalid input, contextName is: 
+        console.log(msg.cErrorAddConstantsValidationDataMessage03, contextName);
       }
-      D[wrd.cThemes][wrd.cPlugins][pluginName] = {};
-      D[wrd.cThemes][wrd.cPlugins][pluginName] = themeData;
-    } else if (contextName.toUpperCase().includes(wrd.cAPPLICATION) === true) {
-      if (D[wrd.cThemes][wrd.cApplication] === undefined) {
-        D[wrd.cThemes][wrd.cApplication] = {};
-      }
-      D[wrd.cThemes][wrd.cApplication] = themeData;
-    } else if (contextName.toUpperCase().includes(wrd.cFRAMEWORK) === true) {
-      if (D[wrd.cThemes][wrd.cFramework] === undefined) {
-        D[wrd.cThemes][wrd.cFramework] = {};
-      }
-      D[wrd.cThemes][wrd.cFramework] = themeData;
+    } else {
+      // ERROR: Invalid input, themeData is: 
+      console.log(msg.cErrorAddThemeDataMessage02, themeData);
     }
-    returnData = true;
   } catch (err) {
     // ERROR: Failure to merge the theme data for:
     console.log(msg.cErrorAddThemeDataMessage01 + contextName);

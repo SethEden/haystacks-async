@@ -79,7 +79,7 @@ export const testConstantsValidation = [
     {Name: 'cintegratePluginConfigurationData', Actual: tst_con.cintegratePluginConfigurationData, Expected: 'integratePluginConfigurationData'},
     {Name: 'cintegratePluginCommandAliases', Actual: tst_con.cintegratePluginCommandAliases, Expected: 'integratePluginCommandAliases'},
     {Name: 'cintegratePluginWorkflows', Actual: tst_con.cintegratePluginWorkflows, Expected: 'integratePluginWorkflows'},
-
+    {Name: 'cintegratePluginThemeData', Actual: tst_con.cintegratePluginThemeData, Expected: 'integratePluginThemeData'},
 
 
 
@@ -674,6 +674,20 @@ export const testConstantsValidation = [
     {Name: 'cintegratePluginWorkflows_inValidPluginNameNaN', Actual: tst_con.cintegratePluginWorkflows_inValidPluginNameNaN, Expected: 'integratePluginWorkflows_inValidPluginNameNaN'},
     {Name: 'cintegratePluginWorkflows_inValidPluginWorkflowsUndefined', Actual: tst_con.cintegratePluginWorkflows_inValidPluginWorkflowsUndefined, Expected: 'integratePluginWorkflows_inValidPluginWorkflowsUndefined'},
     {Name: 'cintegratePluginWorkflows_inValidPluginWorkflowsNaN', Actual: tst_con.cintegratePluginWorkflows_inValidPluginWorkflowsNaN, Expected: 'integratePluginWorkflows_inValidPluginWorkflowsNaN'},
+
+    // integratePluginThemeData
+    {Name: 'cintegratePluginThemeData_validData', Actual: tst_con.cintegratePluginThemeData_validData, Expected: 'integratePluginThemeData_validData'},
+    {Name: 'cintegratePluginThemeData_inValidPluginNameString', Actual: tst_con.cintegratePluginThemeData_inValidPluginNameString, Expected: 'integratePluginThemeData_inValidPluginNameString'},
+    {Name: 'cintegratePluginThemeData_inValidPluginThemeDataString', Actual: tst_con.cintegratePluginThemeData_inValidPluginThemeDataString, Expected: 'integratePluginThemeData_inValidPluginThemeDataString'},
+    {Name: 'cintegratePluginThemeData_inValidPluginNameInteger', Actual: tst_con.cintegratePluginThemeData_inValidPluginNameInteger, Expected: 'integratePluginThemeData_inValidPluginNameInteger'},
+    {Name: 'cintegratePluginThemeData_inValidPluginNameBoolean', Actual: tst_con.cintegratePluginThemeData_inValidPluginNameBoolean, Expected: 'integratePluginThemeData_inValidPluginNameBoolean'},
+    {Name: 'cintegratePluginThemeData_inValidPluginThemeDataInteger', Actual: tst_con.cintegratePluginThemeData_inValidPluginThemeDataInteger, Expected: 'integratePluginThemeData_inValidPluginThemeDataInteger'},
+    {Name: 'cintegratePluginThemeData_inValidPluginThemeDataBoolean', Actual: tst_con.cintegratePluginThemeData_inValidPluginThemeDataBoolean, Expected: 'integratePluginThemeData_inValidPluginThemeDataBoolean'},
+    {Name: 'cintegratePluginThemeData_inValidPluginNameUndefined', Actual: tst_con.cintegratePluginThemeData_inValidPluginNameUndefined, Expected: 'integratePluginThemeData_inValidPluginNameUndefined'},
+    {Name: 'cintegratePluginThemeData_inValidPluginNameNaN', Actual: tst_con.cintegratePluginThemeData_inValidPluginNameNaN, Expected: 'integratePluginThemeData_inValidPluginNameNaN'},
+    {Name: 'cintegratePluginThemeData_inValidPluginThemeDataUndefined', Actual: tst_con.cintegratePluginThemeData_inValidPluginThemeDataUndefined, Expected: 'integratePluginThemeData_inValidPluginThemeDataUndefined'},
+    {Name: 'cintegratePluginThemeData_inValidPluginThemeDataNaN', Actual: tst_con.cintegratePluginThemeData_inValidPluginThemeDataNaN, Expected: 'integratePluginThemeData_inValidPluginThemeDataNaN'},
+
 
 
 

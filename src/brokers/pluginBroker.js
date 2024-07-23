@@ -1056,7 +1056,12 @@ async function integratePluginThemeData(pluginName, pluginThemeData) {
   // pluginThemeData is:
   await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginThemeDataIs + JSON.stringify(pluginThemeData));
   let returnData = false;
-  returnData = await themeBroker.addThemeData(pluginThemeData, wrd.cPlugins + bas.cColon + pluginName);
+  if (pluginName && typeof pluginName === wrd.cstring) {
+    returnData = await themeBroker.addThemeData(pluginThemeData, wrd.cPlugins + bas.cColon + pluginName);
+  } else {
+    // ERROR: Invalid input, pluginName is: 
+    console.log(msg.cErrorAddPluginRulesMessage03, pluginName);
+  }
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
@@ -1087,17 +1092,12 @@ async function unloadPlugin(pluginName) {
   let themeDataRemovalSuccess = false;
   let constantsValidationDataRemovalSuccess = false;
   if (pluginName && typeof pluginName === wrd.cstring) {
-    for (let index = 0; index < pluginsLoadedList.length; index++) {
-      if (pluginsLoadedList[index][0] === pluginName) {
-        inputCheckFlag = true;
-        break;
-      }
-    }
+    inputCheckFlag = pluginsLoadedList.some(plugin => plugin[0] === pluginName);
   } else {
     // ERROR: pluginName is an invalid value, pluginName is: 
     console.log(msg.cErrorUnloadPluginMessage09, pluginName);
   }
-
+  
   if (inputCheckFlag === true) {
     businessRulesRemovalSuccess = await ruleBroker.removePluginBusinessRules(pluginName);
     commandsRemovalSuccess = await commandBroker.removePluginCommands(pluginName);

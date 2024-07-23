@@ -3617,45 +3617,524 @@ describe(tst_con.cintegratePluginWorkflows, () => {
     });
 })
 
+/**
+ * @function integratePluginThemeData
+ * @description Tests the positive and negative test cases of the integratePluginThemeData
+ * @author Vlad Sorokin
+ * @date 2024/07/23
+ */
+describe(tst_con.cintegratePluginThemeData, () => {
+    /**
+     * @function integratePluginThemeData_validData
+     * @description Tests the pluginBroker function integratePluginThemeData with a valid input.
+     * @author Vlad Sorokin
+     * @date 2024/07/23
+     */
+    test(tst_con.cintegratePluginThemeData_validData, async () => {
+        // Arrange
+        D[sys.cpluginsLoaded] = {};
+        D[cfg.cpluginRegistry] = {};
+        D[sys.cbusinessRules] = {};
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+        D[sys.cpluginsLoaded] = [{}];
+        D[wrd.cCommands] = {};
+        let pluginName = tst_man.ctestPluginOne;
+        let pluginThemeData = pluginData[wrd.cdata][wrd.cThemes];
 
+        // Act
+        let returnData = await pluginBroker.integratePluginThemeData(pluginName, pluginThemeData);
 
+        // Assert
+        expect(returnData).toEqual(true);
+    });
 
+    /**
+     * @function integratePluginThemeData_inValidPluginThemeDataString
+     * @description Tests the pluginBroker function integratePluginThemeData with a invalid data string.
+     * @author Vlad Sorokin
+     * @date 2024/07/23
+     */
+    test(tst_con.cintegratePluginThemeData_inValidPluginThemeDataString, async () => {
+        // Arrange
+        D[sys.cpluginsLoaded] = {};
+        D[cfg.cpluginRegistry] = {};
+        D[sys.cbusinessRules] = {};
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+        D[sys.cpluginsLoaded] = [{}];
+        D[wrd.cCommands] = {};
+        let pluginName = tst_man.ctestPluginOne;
+        let pluginThemeData = tst_man.ctestString1;
 
+        // Act
+        let returnData = await pluginBroker.integratePluginThemeData(pluginName, pluginThemeData);
 
+        // Assert
+        expect(returnData).toEqual(false);
+    });
 
+    /**
+     * @function integratePluginThemeData_inValidPluginNameInteger
+     * @description Tests the pluginBroker function integratePluginThemeData with a invalid data integer.
+     * @author Vlad Sorokin
+     * @date 2024/07/23
+     */
+    test(tst_con.cintegratePluginThemeData_inValidPluginNameInteger, async () => {
+        // Arrange
+        D[sys.cpluginsLoaded] = {};
+        D[cfg.cpluginRegistry] = {};
+        D[sys.cbusinessRules] = {};
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+        D[sys.cpluginsLoaded] = [{}];
+        D[wrd.cCommands] = {};
+        let pluginName = 123;
+        let pluginThemeData = pluginData[wrd.cdata][wrd.cThemes];
 
+        // Act
+        let returnData = await pluginBroker.integratePluginThemeData(pluginName, pluginThemeData);
 
+        // Assert
+        expect(returnData).toEqual(false);
+    });
 
+    /**
+     * @function integratePluginThemeData_inValidPluginNameBoolean
+     * @description Tests the pluginBroker function integratePluginThemeData with a invalid data boolean.
+     * @author Vlad Sorokin
+     * @date 2024/07/23
+     */
+    test(tst_con.cintegratePluginThemeData_inValidPluginNameBoolean, async () => {
+        // Arrange
+        D[sys.cpluginsLoaded] = {};
+        D[cfg.cpluginRegistry] = {};
+        D[sys.cbusinessRules] = {};
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+        D[sys.cpluginsLoaded] = [{}];
+        D[wrd.cCommands] = {};
+        let pluginName = false;
+        let pluginThemeData = pluginData[wrd.cdata][wrd.cThemes];
 
+        // Act
+        let returnData = await pluginBroker.integratePluginThemeData(pluginName, pluginThemeData);
 
+        // Assert
+        expect(returnData).toEqual(false);
+    });
 
+    /**
+     * @function integratePluginThemeData_inValidPluginThemeDataInteger
+     * @description Tests the pluginBroker function integratePluginThemeData with a invalid data integer.
+     * @author Vlad Sorokin
+     * @date 2024/07/23
+     */
+    test(tst_con.cintegratePluginThemeData_inValidPluginThemeDataInteger, async () => {
+        // Arrange
+        D[sys.cpluginsLoaded] = {};
+        D[cfg.cpluginRegistry] = {};
+        D[sys.cbusinessRules] = {};
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+        D[sys.cpluginsLoaded] = [{}];
+        D[wrd.cCommands] = {};
+        let pluginName = tst_man.ctestPluginOne;
+        let pluginThemeData = 123;
 
+        // Act
+        let returnData = await pluginBroker.integratePluginThemeData(pluginName, pluginThemeData);
 
+        // Assert
+        expect(returnData).toEqual(false);
+    });
 
+    /**
+     * @function integratePluginThemeData_inValidPluginThemeDataBoolean
+     * @description Tests the pluginBroker function integratePluginThemeData with a invalid data boolean.
+     * @author Vlad Sorokin
+     * @date 2024/07/23
+     */
+    test(tst_con.cintegratePluginThemeData_inValidPluginThemeDataBoolean, async () => {
+        // Arrange
+        D[sys.cpluginsLoaded] = {};
+        D[cfg.cpluginRegistry] = {};
+        D[sys.cbusinessRules] = {};
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+        D[sys.cpluginsLoaded] = [{}];
+        D[wrd.cCommands] = {};
+        let pluginName = tst_man.ctestPluginOne;
+        let pluginThemeData = false;
 
+        // Act
+        let returnData = await pluginBroker.integratePluginThemeData(pluginName, pluginThemeData);
 
+        // Assert
+        expect(returnData).toEqual(false);
+    });
 
+    /**
+     * @function integratePluginThemeData_inValidPluginNameUndefined
+     * @description Tests the pluginBroker function integratePluginThemeData with a invalid data undefined.
+     * @author Vlad Sorokin
+     * @date 2024/07/23
+     */
+    test(tst_con.cintegratePluginThemeData_inValidPluginNameUndefined, async () => {
+        // Arrange
+        D[sys.cpluginsLoaded] = {};
+        D[cfg.cpluginRegistry] = {};
+        D[sys.cbusinessRules] = {};
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+        D[sys.cpluginsLoaded] = [{}];
+        D[wrd.cCommands] = {};
+        let pluginName = undefined;
+        let pluginThemeData = pluginData[wrd.cdata][wrd.cThemes];
 
+        // Act
+        let returnData = await pluginBroker.integratePluginThemeData(pluginName, pluginThemeData);
 
+        // Assert
+        expect(returnData).toEqual(false);
+    });
 
+    /**
+     * @function integratePluginThemeData_inValidPluginNameNaN
+     * @description Tests the pluginBroker function integratePluginThemeData with a invalid data NaN.
+     * @author Vlad Sorokin
+     * @date 2024/07/23
+     */
+    test(tst_con.cintegratePluginThemeData_inValidPluginNameNaN, async () => {
+        // Arrange
+        D[sys.cpluginsLoaded] = {};
+        D[cfg.cpluginRegistry] = {};
+        D[sys.cbusinessRules] = {};
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+        D[sys.cpluginsLoaded] = [{}];
+        D[wrd.cCommands] = {};
+        let pluginName = NaN;
+        let pluginThemeData = pluginData[wrd.cdata][wrd.cThemes];
 
+        // Act
+        let returnData = await pluginBroker.integratePluginThemeData(pluginName, pluginThemeData);
 
+        // Assert
+        expect(returnData).toEqual(false);
+    });
 
+    /**
+     * @function integratePluginThemeData_inValidPluginThemeDataUndefined
+     * @description Tests the pluginBroker function integratePluginThemeData with a invalid data undefined.
+     * @author Vlad Sorokin
+     * @date 2024/07/23
+     */
+    test(tst_con.cintegratePluginThemeData_inValidPluginThemeDataUndefined, async () => {
+        // Arrange
+        D[sys.cpluginsLoaded] = {};
+        D[cfg.cpluginRegistry] = {};
+        D[sys.cbusinessRules] = {};
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+        D[sys.cpluginsLoaded] = [{}];
+        D[wrd.cCommands] = {};
+        let pluginName = tst_man.ctestPluginOne;
+        let pluginThemeData = undefined;
 
+        // Act
+        let returnData = await pluginBroker.integratePluginThemeData(pluginName, pluginThemeData);
 
+        // Assert
+        expect(returnData).toEqual(false);
+    });
 
+    /**
+     * @function integratePluginThemeData_inValidPluginThemeDataNaN
+     * @description Tests the pluginBroker function integratePluginThemeData with a invalid data NaN.
+     * @author Vlad Sorokin
+     * @date 2024/07/23
+     */
+    test(tst_con.cintegratePluginThemeData_inValidPluginThemeDataNaN, async () => {
+        // Arrange
+        D[sys.cpluginsLoaded] = {};
+        D[cfg.cpluginRegistry] = {};
+        D[sys.cbusinessRules] = {};
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+        D[sys.cpluginsLoaded] = [{}];
+        D[wrd.cCommands] = {};
+        let pluginName = tst_man.ctestPluginOne;
+        let pluginThemeData = NaN;
 
+        // Act
+        let returnData = await pluginBroker.integratePluginThemeData(pluginName, pluginThemeData);
 
+        // Assert
+        expect(returnData).toEqual(false);
+    });
+})
 
+/**
+ * @function unloadPlugin
+ * @description Tests the positive and negative test cases of the unloadPlugin
+ * @author Vlad Sorokin
+ * @date 2024/07/23
+ */
+describe(tst_con.cunloadPlugin, () => {
+    /**
+     * @function unloadPlugin_validPluginNameData
+     * @description Tests the pluginBroker function unloadPlugin with a valid input.
+     * @author Vlad Sorokin
+     * @date 2024/07/23
+     */
+    test(tst_con.cunloadPlugin_validPluginNameData, async () => {
+        // Arrange
+        D[sys.cpluginsLoaded] = {};
+        D[cfg.cpluginRegistry] = {};
+        D[cfg.cpluginRegistry][wrd.cplugins] = {};
+        D[sys.cbusinessRules] = {
+            [biz.cgetJsonData]: (inputData, inputMetaData) => fileOperations.getJsonData(inputData, inputMetaData),
+            [biz.cobjectDeepClone]: (inputData, inputMetaData) => dataArrayParsing.objectDeepClone(inputData, inputMetaData)
+        };
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+        D[sys.cpluginsLoaded] = [{}];
+        D[wrd.cCommands] = {};
+        D[sys.cConstantsValidationData] = {};
+        D[wrd.cconfiguration] = {};
+        D[wrd.cconfiguration][cfg.cdebugSetting] = {};
+        let pluginName = tst_man.ctestPluginOne;
+        let pluginPath = tst_man.testPluginPath;
+        await main.loadPlugin(pluginPath);
+    
+        // Act
+        let returnData = await pluginBroker.unloadPlugin(pluginName);
 
+        // Assert
+        expect(returnData).toEqual(true);
+    });
 
+    /**
+     * @function unloadPlugin_inValidPluginNameString
+     * @description Tests the pluginBroker function unloadPlugin with a invalid data string.
+     * @author Vlad Sorokin
+     * @date 2024/07/23
+     */
+    test(tst_con.cunloadPlugin_inValidPluginNameString, async () => {
+        // Arrange
+        D[sys.cpluginsLoaded] = {};
+        D[cfg.cpluginRegistry] = {};
+        D[cfg.cpluginRegistry][wrd.cplugins] = {};
+        D[sys.cbusinessRules] = {
+            [biz.cgetJsonData]: (inputData, inputMetaData) => fileOperations.getJsonData(inputData, inputMetaData),
+            [biz.cobjectDeepClone]: (inputData, inputMetaData) => dataArrayParsing.objectDeepClone(inputData, inputMetaData)
+        };
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+        D[sys.cpluginsLoaded] = [{}];
+        D[wrd.cCommands] = {};
+        D[sys.cConstantsValidationData] = {};
+        D[wrd.cconfiguration] = {};
+        D[wrd.cconfiguration][cfg.cdebugSetting] = {};
+        let pluginName = tst_man.ctestPluginOne;
+        let pluginPath = tst_man.testPluginPath;
+        await main.loadPlugin(pluginPath);
+        pluginName = tst_man.ctestString1;
 
+        // Act
+        let returnData = await pluginBroker.unloadPlugin(pluginName);
 
+        // Assert
+        expect(returnData).toEqual(false);
+    });
 
+    /**
+     * @function unloadPlugin_inValidPluginNameInteger
+     * @description Tests the pluginBroker function unloadPlugin with a invalid data integer.
+     * @author Vlad Sorokin
+     * @date 2024/07/23
+     */
+    test(tst_con.cunloadPlugin_inValidPluginNameInteger, async () => {
+        // Arrange
+        D[sys.cpluginsLoaded] = {};
+        D[cfg.cpluginRegistry] = {};
+        D[cfg.cpluginRegistry][wrd.cplugins] = {};
+        D[sys.cbusinessRules] = {
+            [biz.cgetJsonData]: (inputData, inputMetaData) => fileOperations.getJsonData(inputData, inputMetaData),
+            [biz.cobjectDeepClone]: (inputData, inputMetaData) => dataArrayParsing.objectDeepClone(inputData, inputMetaData)
+        };
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+        D[sys.cpluginsLoaded] = [{}];
+        D[wrd.cCommands] = {};
+        D[sys.cConstantsValidationData] = {};
+        D[wrd.cconfiguration] = {};
+        D[wrd.cconfiguration][cfg.cdebugSetting] = {};
+        let pluginName = tst_man.ctestPluginOne;
+        let pluginPath = tst_man.testPluginPath;
+        await main.loadPlugin(pluginPath);
+        pluginName = 123;
 
+        // Act
+        let returnData = await pluginBroker.unloadPlugin(pluginName);
 
+        // Assert
+        expect(returnData).toEqual(false);
+    });
 
+    /**
+     * @function unloadPlugin_inValidPluginNameBoolean
+     * @description Tests the pluginBroker function unloadPlugin with a invalid data boolean.
+     * @author Vlad Sorokin
+     * @date 2024/07/23
+     */
+    test(tst_con.cunloadPlugin_inValidPluginNameBoolean, async () => {
+        // Arrange
+        D[sys.cpluginsLoaded] = {};
+        D[cfg.cpluginRegistry] = {};
+        D[cfg.cpluginRegistry][wrd.cplugins] = {};
+        D[sys.cbusinessRules] = {
+            [biz.cgetJsonData]: (inputData, inputMetaData) => fileOperations.getJsonData(inputData, inputMetaData),
+            [biz.cobjectDeepClone]: (inputData, inputMetaData) => dataArrayParsing.objectDeepClone(inputData, inputMetaData)
+        };
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+        D[sys.cpluginsLoaded] = [{}];
+        D[wrd.cCommands] = {};
+        D[sys.cConstantsValidationData] = {};
+        D[wrd.cconfiguration] = {};
+        D[wrd.cconfiguration][cfg.cdebugSetting] = {};
+        let pluginName = tst_man.ctestPluginOne;
+        let pluginPath = tst_man.testPluginPath;
+        await main.loadPlugin(pluginPath);
+        pluginName = false;
 
+        // Act
+        let returnData = await pluginBroker.unloadPlugin(pluginName);
 
+        // Assert
+        expect(returnData).toEqual(false);
+    });
 
+    /**
+     * @function unloadPlugin_inValidPluginNameUndefined
+     * @description Tests the pluginBroker function unloadPlugin with a invalid data undefined.
+     * @author Vlad Sorokin
+     * @date 2024/07/23
+     */
+    test(tst_con.cunloadPlugin_inValidPluginNameUndefined, async () => {
+        // Arrange
+        D[sys.cpluginsLoaded] = {};
+        D[cfg.cpluginRegistry] = {};
+        D[cfg.cpluginRegistry][wrd.cplugins] = {};
+        D[sys.cbusinessRules] = {
+            [biz.cgetJsonData]: (inputData, inputMetaData) => fileOperations.getJsonData(inputData, inputMetaData),
+            [biz.cobjectDeepClone]: (inputData, inputMetaData) => dataArrayParsing.objectDeepClone(inputData, inputMetaData)
+        };
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+        D[sys.cpluginsLoaded] = [{}];
+        D[wrd.cCommands] = {};
+        D[sys.cConstantsValidationData] = {};
+        D[wrd.cconfiguration] = {};
+        D[wrd.cconfiguration][cfg.cdebugSetting] = {};
+        let pluginName = tst_man.ctestPluginOne;
+        let pluginPath = tst_man.testPluginPath;
+        await main.loadPlugin(pluginPath);
+        pluginName = undefined;
 
+        // Act
+        let returnData = await pluginBroker.unloadPlugin(pluginName);
+
+        // Assert
+        expect(returnData).toEqual(false);
+    });
+
+    /**
+     * @function unloadPlugin_inValidPluginNameNaN
+     * @description Tests the pluginBroker function unloadPlugin with a invalid data NaN.
+     * @author Vlad Sorokin
+     * @date 2024/07/23
+     */
+    test(tst_con.cunloadPlugin_inValidPluginNameNaN, async () => {
+        // Arrange
+        D[sys.cpluginsLoaded] = {};
+        D[cfg.cpluginRegistry] = {};
+        D[cfg.cpluginRegistry][wrd.cplugins] = {};
+        D[sys.cbusinessRules] = {
+            [biz.cgetJsonData]: (inputData, inputMetaData) => fileOperations.getJsonData(inputData, inputMetaData),
+            [biz.cobjectDeepClone]: (inputData, inputMetaData) => dataArrayParsing.objectDeepClone(inputData, inputMetaData)
+        };
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+        D[sys.cpluginsLoaded] = [{}];
+        D[wrd.cCommands] = {};
+        D[sys.cConstantsValidationData] = {};
+        D[wrd.cconfiguration] = {};
+        D[wrd.cconfiguration][cfg.cdebugSetting] = {};
+        let pluginName = tst_man.ctestPluginOne;
+        let pluginPath = tst_man.testPluginPath;
+        await main.loadPlugin(pluginPath);
+        pluginName = NaN;
+
+        // Act
+        let returnData = await pluginBroker.unloadPlugin(pluginName);
+
+        // Assert
+        expect(returnData).toEqual(false);
+    });
+})
+
+/**
+ * @function getPluginsRegistryPath
+ * @description Tests the positive and negative test cases of the getPluginsRegistryPath
+ * @author Vlad Sorokin
+ * @date 2024/07/23
+ */
+describe(tst_con.cgetPluginsRegistryPath, () => {
+    /**
+     * @function getPluginsRegistryPath_validData
+     * @description Tests the pluginBroker function getPluginsRegistryPath with a valid input.
+     * @author Vlad Sorokin
+     * @date 2024/07/23
+     */
+    test(tst_con.cgetPluginsRegistryPath_validData, async () => {
+        // Arrange
+        D[sys.cpluginsLoaded] = {};
+        D[cfg.cpluginRegistry] = {};
+        D[cfg.cpluginRegistry][wrd.cplugins] = {};
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+        D[sys.cpluginsLoaded] = [{}];
+        D[wrd.cCommands] = {};
+        D[sys.cConstantsValidationData] = {};
+        D[wrd.cconfiguration] = {};
+        D[wrd.cconfiguration][cfg.cdebugSetting] = {};
+        let pluginRegistryData = tst_pbt.cexpectedDataFromPluginsJsonFile;
+        await pluginBroker.storePluginRegistryInDataStructure(pluginRegistryData);
+
+        // Act
+        let returnData = await pluginBroker.getPluginsRegistryPath();
+
+        // Assert
+        expect(returnData).toEqual(tst_pbt.cpathToTestPluginsFolder);
+    });
+})

@@ -60,6 +60,24 @@ let pluginData = {
     "ConstantsValidationData": {
       "Plugins": {
         "test-plugin-one": {
+          "pluginBusinessConstantsValidation": [{
+            "Name": "testPluginOneRule01",
+            "Actual": "testPluginOneRule01",
+            "Expected": "testPluginOneRule01"
+          }, {
+            "Name": "testPluginOneRule02",
+            "Actual": "testPluginOneRule02",
+            "Expected": "testPluginOneRule02"
+          }],
+          "pluginCommandConstantsValidation": [{
+            "Name": "testPluginOneCommand01",
+            "Actual": "testPluginOneCommand01",
+            "Expected": "testPluginOneCommand01"
+          }, {
+            "Name": "testPluginOneCommand02",
+            "Actual": "testPluginOneCommand02",
+            "Expected": "testPluginOneCommand02"
+          }],
           "ConstantsShortNames": {
             "pluginBusinessConstantsValidation": "plg_biz",
             "pluginCommandConstantsValidation": "plg_cmd",
@@ -102,24 +120,6 @@ let pluginData = {
             "pluginMessageConstantsValidation": "Plugin Message Constants Phase 2 Validation",
             "pluginSystemConstantsValidation": "Plugin System Constants Phase 2 Validation"
           },
-          "pluginBusinessConstantsValidation": [{
-            "Name": "testPluginOneRule01",
-            "Actual": "testPluginOneRule01",
-            "Expected": "testPluginOneRule01"
-          }, {
-            "Name": "testPluginOneRule02",
-            "Actual": "testPluginOneRule02",
-            "Expected": "testPluginOneRule02"
-          }],
-          "pluginCommandConstantsValidation": [{
-            "Name": "testPluginOneCommand01",
-            "Actual": "testPluginOneCommand01",
-            "Expected": "testPluginOneCommand01"
-          }, {
-            "Name": "testPluginOneCommand02",
-            "Actual": "testPluginOneCommand02",
-            "Expected": "testPluginOneCommand02"
-          }],
         }
       },
     }
@@ -161,7 +161,11 @@ let pluginData = {
     "commandsBlob": [{}],
     "system": [{}]
   },
-  "Themes": [{}]
+  "Themes": [{
+    "Name": "Default",
+    "Path": rootPathTestPluginOne + "resources/themes/Default"
+    }
+  ]
 };
 
 export default {

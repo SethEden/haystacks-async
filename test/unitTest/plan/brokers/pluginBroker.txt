@@ -748,10 +748,7 @@ input pluginName: string (The name of the plugin who's theme data should be inte
 input pluginThemeData: object (The JSON object that contains all of the theme data specific to this current plugin)
 output: boolean (True or False to indicate if the plugins theme data are successfully integrated or not)
 
-testName: integratePluginThemeData_inValidPluginNameString
-input pluginName: string (464gsdsfae8f46)
-input pluginThemeData: object (The JSON object that contains all of the theme data specific to this current plugin)
-output: ?
+NOTE: integratePluginThemeData_inValidPluginNameString cant be used in this unit test.
 
 testName: integratePluginThemeData_inValidPluginConfigurationDataString
 input pluginName: string (The name of the plugin who's theme data should be integrated with the haystacks theme data)

@@ -500,7 +500,7 @@ async function addConstantsValidationData(constantsValidationData, contextName) 
             D[sys.cConstantsValidationData][wrd.cPlugins] = {};
           }
           D[sys.cConstantsValidationData][wrd.cPlugins][pluginName] = {};
-          D[sys.cConstantsValidationData][wrd.cPlugins][pluginName] = constantsValidationData[sys.cConstantsValidationData];
+          D[sys.cConstantsValidationData][wrd.cPlugins][pluginName] = constantsValidationData[sys.cConstantsValidationData][wrd.cPlugins][pluginName];
           returnData = true;
         } else if (contextName.toUpperCase().includes(wrd.cAPPLICATION) === true) {
           if (D[sys.cConstantsValidationData][wrd.cApplication] === undefined) {
