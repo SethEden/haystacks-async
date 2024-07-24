@@ -4,49 +4,9 @@ description: Test plan for ruleBroker.js
 --------------------------------------------------------------------------------
 testName: bootStrapBusinessRules_validData
 output: Captures, call, and migrates business rule's data to data hive.
-
-testName: bootStrapBusinessRules_inValidDataInputDataString
-input 1inputData: string (dfxg24346dfg)
-output: ?
-
-testName: bootStrapBusinessRules_inValidInputDataInteger
-input 1inputData: integer (4567)
-output: ?
-
-testName: bootStrapBusinessRules_inValidInputDataBoolean
-input 1inputData: boolean (false)
-output: ?
-
-testName: bootStrapBusinessRules_inValidInputDataUndefined
-input 1inputData: undefined
-output: ?
-
-testName: bootStrapBusinessRules_inValidInputDataNaN
-input 1inputData: NaN
-output: ?
 --------------------------------------------------------------------------------
 testName: resetBusinessRules_validData
 output: Captures, call, and migrates business rule's data to data hive.
-
-testName: resetBusinessRules_inValidDataInputDataString
-input 1inputData: string (dfxg24346dfg)
-output: ?
-
-testName: resetBusinessRules_inValidInputDataInteger
-input 1inputData: integer (4567)
-output: ?
-
-testName: resetBusinessRules_inValidInputDataBoolean
-input 1inputData: boolean (false)
-output: ?
-
-testName: resetBusinessRules_inValidInputDataUndefined
-input 1inputData: undefined
-output: ?
-
-testName: resetBusinessRules_inValidInputDataNaN
-input 1inputData: NaN
-output: ?
 --------------------------------------------------------------------------------
 testName: addClientRules_validData
 input clientRules: array<object>
@@ -77,10 +37,7 @@ input pluginName: string (The name of the current plugin these rules belong to)
 input pluginRules: array<object> (The plugin rules that should be merged with the system rules)
 output: boolean (True or False to indicate if the merge was successful or not)
 
-testName: addPluginRules_inValidPluginNameString
-input pluginName: string (464gsdsfae8f46)
-input pluginRules: array<object> (The plugin rules that should be merged with the system rules)
-output: ?
+NOTE: addPluginRules_inValidPluginNameString cant be used in this unit test.
 
 testName: addPluginRules_inValidPluginRulesString
 input plguinName: string (The name of the current plugin these rules belong to)

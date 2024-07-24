@@ -4,12 +4,8 @@
  * @file pluginBroker.test.js
  * @module pluginBroker.test
  * @description Unit tests for the pluginBroker.js
- * @requires module:constantBroker
  * @requires module:pluginBroker
- * @requires module:ruleBroker
- * @requires module:characterArrayParsing
  * @requires module:characterStringParsing
- * @requires module:dataStringParsing
  * @requires module:fileStringParsing
  * @requires module:fileOperations
  * @requires module:main
@@ -26,12 +22,8 @@
  */
 
 // Internal imports
-import constantBroker from '../../../../src/brokers/constantBroker.js';
 import pluginBroker from '../../../../src/brokers/pluginBroker.js'
-import ruleBroker from '../../../../src/brokers/ruleBroker.js';
-import characterArrayParsing from '../../../../src/businessRules/rules/arrayParsing/characterArrayParsing.js';
 import characterStringParsing from '../../../../src/businessRules/rules/stringParsing/characterStringParsing.js'
-import dataStringParsing from '../../../../src/businessRules/rules/stringParsing/dataStringParsing.js';
 import fileStringParsing from '../../../../src/businessRules/rules/stringParsing/fileStringParsing.js';
 import fileOperations from '../../../../src/businessRules/rules/fileOperations.js';
 import main from '../../../../src/main.js';
@@ -46,7 +38,7 @@ import * as tst_man from '../../testData/mainTest.js';
 // External imports
 import hayConst from '@haystacks/constants';
 import { describe, expect, test } from '@jest/globals';
-const { bas, cmd, biz, cfg, fnc, gen, msg, sys, wrd, num } = hayConst;
+const { bas, biz, cfg, sys, wrd} = hayConst;
 import { writeFile } from 'fs/promises';
 
 // Cleaning sequence

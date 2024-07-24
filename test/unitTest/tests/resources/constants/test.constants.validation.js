@@ -80,16 +80,14 @@ export const testConstantsValidation = [
     {Name: 'cintegratePluginCommandAliases', Actual: tst_con.cintegratePluginCommandAliases, Expected: 'integratePluginCommandAliases'},
     {Name: 'cintegratePluginWorkflows', Actual: tst_con.cintegratePluginWorkflows, Expected: 'integratePluginWorkflows'},
     {Name: 'cintegratePluginThemeData', Actual: tst_con.cintegratePluginThemeData, Expected: 'integratePluginThemeData'},
-
-
-
-
-
-
-
-
-
+    
     /* ruleBroker */
+    {Name: 'cbootStrapBusinessRules', Actual: tst_con.cbootStrapBusinessRules, Expected: 'bootStrapBusinessRules'},
+    {Name: 'cresetBusinessRules', Actual: tst_con.cresetBusinessRules, Expected: 'resetBusinessRules'},
+    {Name: 'caddClientRules', Actual: tst_con.caddClientRules, Expected: 'addClientRules'},
+    {Name: 'caddPluginRules', Actual: tst_con.caddPluginRules, Expected: 'addPluginRules'},
+    {Name: 'cprocessRules', Actual: tst_con.cprocessRules, Expected: 'processRules'},
+    {Name: 'cremovePluginBusinessRules', Actual: tst_con.cremovePluginBusinessRules, Expected: 'removePluginBusinessRules'},
 
     /* themeBroker */
 
@@ -687,17 +685,55 @@ export const testConstantsValidation = [
     {Name: 'cintegratePluginThemeData_inValidPluginNameNaN', Actual: tst_con.cintegratePluginThemeData_inValidPluginNameNaN, Expected: 'integratePluginThemeData_inValidPluginNameNaN'},
     {Name: 'cintegratePluginThemeData_inValidPluginThemeDataUndefined', Actual: tst_con.cintegratePluginThemeData_inValidPluginThemeDataUndefined, Expected: 'integratePluginThemeData_inValidPluginThemeDataUndefined'},
     {Name: 'cintegratePluginThemeData_inValidPluginThemeDataNaN', Actual: tst_con.cintegratePluginThemeData_inValidPluginThemeDataNaN, Expected: 'integratePluginThemeData_inValidPluginThemeDataNaN'},
-
-
-
-
-
-
-
-
-
-
+    
     /* ruleBroker */
+    // bootStrapBusinessRules
+    {Name: 'cbootStrapBusinessRules_validData', Actual: tst_con.cbootStrapBusinessRules_validData, Expected: 'bootStrapBusinessRules_validData'},
+
+    // resetBusinessRules
+    {Name: 'cresetBusinessRules_validData', Actual: tst_con.cresetBusinessRules_validData, Expected: 'resetBusinessRules_validData'},
+
+    // addClientRules
+    {Name: 'caddClientRules_validClientRulesData', Actual: tst_con.caddClientRules_validClientRulesData, Expected: 'addClientRules_validClientRulesData'},
+    {Name: 'caddClientRules_inValidClientRulesString', Actual: tst_con.caddClientRules_inValidClientRulesString, Expected: 'addClientRules_inValidClientRulesString'},
+    {Name: 'caddClientRules_inValidClientRulesInteger', Actual: tst_con.caddClientRules_inValidClientRulesInteger, Expected: 'addClientRules_inValidClientRulesInteger'},
+    {Name: 'caddClientRules_inValidClientRulesBoolean', Actual: tst_con.caddClientRules_inValidClientRulesBoolean, Expected: 'addClientRules_inValidClientRulesBoolean'},
+    {Name: 'caddClientRules_inValidClientRulesUndefined', Actual: tst_con.caddClientRules_inValidClientRulesUndefined, Expected: 'addClientRules_inValidClientRulesUndefined'},
+    {Name: 'caddClientRules_inValidClientRulesNaN', Actual: tst_con.caddClientRules_inValidClientRulesNaN, Expected: 'addClientRules_inValidClientRulesNaN'},
+
+    // addPluginRules
+    {Name: 'caddPluginRules_validData', Actual: tst_con.caddPluginRules_validData, Expected: 'addPluginRules_validData'},
+    {Name: 'caddPluginRules_inValidPluginNameString', Actual: tst_con.caddPluginRules_inValidPluginNameString, Expected: 'addPluginRules_inValidPluginNameString'},
+    {Name: 'caddPluginRules_inValidPluginRulesString', Actual: tst_con.caddPluginRules_inValidPluginRulesString, Expected: 'addPluginRules_inValidPluginRulesString'},
+    {Name: 'caddPluginRules_inValidPluginNameInteger', Actual: tst_con.caddPluginRules_inValidPluginNameInteger, Expected: 'addPluginRules_inValidPluginNameInteger'},
+    {Name: 'caddPluginRules_inValidPluginNameBoolean', Actual: tst_con.caddPluginRules_inValidPluginNameBoolean, Expected: 'addPluginRules_inValidPluginNameBoolean'},
+    {Name: 'caddPluginRules_inValidPluginRulesInteger', Actual: tst_con.caddPluginRules_inValidPluginRulesInteger, Expected: 'addPluginRules_inValidPluginRulesInteger'},
+    {Name: 'caddPluginRules_inValidPluginRulesBoolean', Actual: tst_con.caddPluginRules_inValidPluginRulesBoolean, Expected: 'addPluginRules_inValidPluginRulesBoolean'},
+    {Name: 'caddPluginRules_inValidPluginNameUndefined', Actual: tst_con.caddPluginRules_inValidPluginNameUndefined, Expected: 'addPluginRules_inValidPluginNameUndefined'},
+    {Name: 'caddPluginRules_inValidPluginNameNaN', Actual: tst_con.caddPluginRules_inValidPluginNameNaN, Expected: 'addPluginRules_inValidPluginNameNaN'},
+    {Name: 'caddPluginRules_inValidPluginRulesUndefined', Actual: tst_con.caddPluginRules_inValidPluginRulesUndefined, Expected: 'addPluginRules_inValidPluginRulesUndefined'},
+    {Name: 'caddPluginRules_inValidPluginRulesNaN', Actual: tst_con.caddPluginRules_inValidPluginRulesNaN, Expected: 'addPluginRules_inValidPluginRulesNaN'},
+
+    // processRules
+    {Name: 'cprocessRules_validData', Actual: tst_con.cprocessRules_validData, Expected: 'processRules_validData'},
+    {Name: 'cprocessRules_inValidInputsString', Actual: tst_con.cprocessRules_inValidInputsString, Expected: 'processRules_inValidInputsString'},
+    {Name: 'cprocessRules_inValidRulesToExecuteString', Actual: tst_con.cprocessRules_inValidRulesToExecuteString, Expected: 'processRules_inValidRulesToExecuteString'},
+    {Name: 'cprocessRules_inValidInputsInteger', Actual: tst_con.cprocessRules_inValidInputsInteger, Expected: 'processRules_inValidInputsInteger'},
+    {Name: 'cprocessRules_inValidInputsBoolean', Actual: tst_con.cprocessRules_inValidInputsBoolean, Expected: 'processRules_inValidInputsBoolean'},
+    {Name: 'cprocessRules_inValidRulesToExecuteInteger', Actual: tst_con.cprocessRules_inValidRulesToExecuteInteger, Expected: 'processRules_inValidRulesToExecuteInteger'},
+    {Name: 'cprocessRules_inValidRulesToExecuteBoolean', Actual: tst_con.cprocessRules_inValidRulesToExecuteBoolean, Expected: 'processRules_inValidRulesToExecuteBoolean'},
+    {Name: 'cprocessRules_inValidInputsUndefined', Actual: tst_con.cprocessRules_inValidInputsUndefined, Expected: 'processRules_inValidInputsUndefined'},
+    {Name: 'cprocessRules_inValidInputsNaN', Actual: tst_con.cprocessRules_inValidInputsNaN, Expected: 'processRules_inValidInputsNaN'},
+    {Name: 'cprocessRules_inValidRulesToExecuteUndefined', Actual: tst_con.cprocessRules_inValidRulesToExecuteUndefined, Expected: 'processRules_inValidRulesToExecuteUndefined'},
+    {Name: 'cprocessRules_inValidRulesToExecuteNaN', Actual: tst_con.cprocessRules_inValidRulesToExecuteNaN, Expected: 'processRules_inValidRulesToExecuteNaN'},
+
+    // removePluginBusinessRules
+    {Name: 'cremovePluginBusinessRules_validPluginNameData', Actual: tst_con.cremovePluginBusinessRules_validPluginNameData, Expected: 'removePluginBusinessRules_validPluginNameData'},
+    {Name: 'cremovePluginBusinessRules_inValidPluginNameString', Actual: tst_con.cremovePluginBusinessRules_inValidPluginNameString, Expected: 'removePluginBusinessRules_inValidPluginNameString'},
+    {Name: 'cremovePluginBusinessRules_inValidPluginNameInteger', Actual: tst_con.cremovePluginBusinessRules_inValidPluginNameInteger, Expected: 'removePluginBusinessRules_inValidPluginNameInteger'},
+    {Name: 'cremovePluginBusinessRules_inValidPluginNameBoolean', Actual: tst_con.cremovePluginBusinessRules_inValidPluginNameBoolean, Expected: 'removePluginBusinessRules_inValidPluginNameBoolean'},
+    {Name: 'cremovePluginBusinessRules_inValidPluginNameUndefined', Actual: tst_con.cremovePluginBusinessRules_inValidPluginNameUndefined, Expected: 'removePluginBusinessRules_inValidPluginNameUndefined'},
+    {Name: 'cremovePluginBusinessRules_inValidPluginNameNaN', Actual: tst_con.cremovePluginBusinessRules_inValidPluginNameNaN, Expected: 'removePluginBusinessRules_inValidPluginNameNaN'},
 
     /* themeBroker */
 
