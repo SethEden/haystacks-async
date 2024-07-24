@@ -11,4 +11,6 @@ testTemp/*
 documentation/*
 *.html
 *.HTML
-.vscode
+*/.vscode/*
+.vscode/*
+

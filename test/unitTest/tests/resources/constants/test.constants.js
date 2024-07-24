@@ -87,6 +87,20 @@ export const cprocessRules = wrd.cprocess + wrd.cRules; // processRules
 export const cremovePluginBusinessRules = wrd.cremove + wrd.cPlugin + sys.cBusinessRules; // removePluginBusinessRules
 
 /* themeBroker */
+export const cinitThemeData = gen.cinit + wrd.cTheme + wrd.cData; // initThemeData
+export const cgenerateThemeDataFromPath = wrd.cgenerate + wrd.cTheme + wrd.cData + wrd.cFrom + wrd.cPath; // generateThemeDataFromPath
+export const caddThemeData = wrd.c_add + wrd.cTheme + wrd.cData; // addThemeData
+export const cgetNamedThemesFromRootPath = wrd.cget + wrd.cNamed + wrd.cThemes + wrd.cFrom + wrd.cRoot + wrd.cPath; // getNamedThemesFromRootPath
+export const cgetNamedThemePathFromRootPath = wrd.cget + wrd.cNamed + wrd.cTheme + wrd.cPath + wrd.cFrom + wrd.cRoot + wrd.cPath; // getNamedThemePathFromRootPath
+
+
+
+
+
+
+
+
+
 
 /* workflowBroker */
 
@@ -755,17 +769,61 @@ export const cremovePluginBusinessRules_inValidPluginNameBoolean = cremovePlugin
 export const cremovePluginBusinessRules_inValidPluginNameUndefined = cremovePluginBusinessRules + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cName + "Undefined"; // removePluginBusinessRules_inValidPluginNameUndefined
 export const cremovePluginBusinessRules_inValidPluginNameNaN = cremovePluginBusinessRules + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cName + "NaN"; // removePluginBusinessRules_inValidPluginNameNaN
 
-
-
-
-
-
-
-
-
-
-
 /* themeBroker */
+// initThemeData
+export const cinitThemeData_validData = cinitThemeData + bas.cUnderscore + wrd.cvalid + wrd.cData; // initThemeData_validData
+
+// generateThemeDataFromPath
+export const cgenerateThemeDataFromPath_validThemesRootPathData = cgenerateThemeDataFromPath + bas.cUnderscore + wrd.cvalid + wrd.cThemes + wrd.cRoot + wrd.cPath + wrd.cData; // generateThemeDataFromPath_validThemesRootPathData
+export const cgenerateThemeDataFromPath_inValidThemesRootPathString = cgenerateThemeDataFromPath + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cThemes + wrd.cRoot + wrd.cPath + wrd.cString; // generateThemeDataFromPath_inValidThemesRootPathString
+export const cgenerateThemeDataFromPath_inValidThemesRootPathInteger = cgenerateThemeDataFromPath + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cThemes + wrd.cRoot + wrd.cPath + wrd.cInteger; // generateThemeDataFromPath_inValidThemesRootPathInteger
+export const cgenerateThemeDataFromPath_inValidThemesRootPathBoolean = cgenerateThemeDataFromPath + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cThemes + wrd.cRoot + wrd.cPath + wrd.cBoolean; // generateThemeDataFromPath_inValidThemesRootPathBoolean
+export const cgenerateThemeDataFromPath_inValidThemesRootPathUndefined = cgenerateThemeDataFromPath + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cThemes + wrd.cRoot + wrd.cPath + "Undefined"; // generateThemeDataFromPath_inValidThemesRootPathUndefined
+export const cgenerateThemeDataFromPath_inValidThemesRootPathNaN = cgenerateThemeDataFromPath + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cThemes + wrd.cRoot + wrd.cPath + "NaN"; // generateThemeDataFromPath_inValidThemesRootPathNaN
+
+// addThemeData
+export const caddThemeData_validData = caddThemeData + bas.cUnderscore + wrd.cvalid + wrd.cData; // addThemeData_validData
+export const caddThemeData_inValidThemeDataString = caddThemeData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cTheme + wrd.cData + wrd.cString; // addThemeData_inValidThemeDataString
+export const caddThemeData_inValidContextNameString = caddThemeData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cContext + wrd.cName + wrd.cString; // addThemeData_inValidContextNameString
+export const caddThemeData_inValidThemeDataInteger = caddThemeData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cTheme + wrd.cData + wrd.cInteger; // addThemeData_inValidThemeDataInteger
+export const caddThemeData_inValidThemeDataBoolean = caddThemeData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cTheme + wrd.cData + wrd.cBoolean; // addThemeData_inValidThemeDataBoolean
+export const caddThemeData_inValidContextNameInteger = caddThemeData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cContext + wrd.cName + wrd.cInteger; // addThemeData_inValidContextNameInteger
+export const caddThemeData_inValidContextNameBoolean = caddThemeData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cContext + wrd.cName + wrd.cBoolean; // addThemeData_inValidContextNameBoolean
+export const caddThemeData_inValidThemeDataUndefined = caddThemeData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cTheme + wrd.cData + 'Undefined'; // addThemeData_inValidThemeDataUndefined
+export const caddThemeData_inValidThemeDataNaN = caddThemeData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cTheme + wrd.cData + 'NaN'; // addThemeData_inValidThemeDataNaN
+export const caddThemeData_inValidContextNameUndefined = caddThemeData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cContext + wrd.cName + 'Undefined'; // addThemeData_inValidContextNameUndefined
+export const caddThemeData_inValidContextNameNaN = caddThemeData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cContext + wrd.cName + 'NaN'; // addThemeData_inValidContextNameNaN
+
+// getNamedThemesFromRootPath
+export const cgetNamedThemesFromRootPath_validThemesRootPathData = cgetNamedThemesFromRootPath + bas.cUnderscore + wrd.cvalid +  + wrd.cThemes + wrd.cRoot + wrd.cPath + wrd.cData; // getNamedThemesFromRootPath_validThemesRootPathData
+export const cgetNamedThemesFromRootPath_inValidThemesRootPathString = cgetNamedThemesFromRootPath + bas.cUnderscore + wrd.cin + wrd.cValid +  + wrd.cThemes + wrd.cRoot + wrd.cPath + wrd.cString; // getNamedThemesFromRootPath_inValidThemesRootPathString
+export const cgetNamedThemesFromRootPath_inValidThemesRootPathInteger = cgetNamedThemesFromRootPath + bas.cUnderscore + wrd.cin + wrd.cValid +  + wrd.cThemes + wrd.cRoot + wrd.cPath + wrd.cInteger; // getNamedThemesFromRootPath_inValidThemesRootPathInteger
+export const cgetNamedThemesFromRootPath_inValidThemesRootPathBoolean = cgetNamedThemesFromRootPath + bas.cUnderscore + wrd.cin + wrd.cValid +  + wrd.cThemes + wrd.cRoot + wrd.cPath + wrd.cBoolean; // getNamedThemesFromRootPath_inValidThemesRootPathBoolean
+export const cgetNamedThemesFromRootPath_inValidThemesRootPathUndefined = cgetNamedThemesFromRootPath + bas.cUnderscore + wrd.cin + wrd.cValid +  + wrd.cThemes + wrd.cRoot + wrd.cPath + "Undefined"; // getNamedThemesFromRootPath_inValidThemesRootPathUndefined
+export const cgetNamedThemesFromRootPath_inValidThemesRootPathNaN = cgetNamedThemesFromRootPath + bas.cUnderscore + wrd.cin + wrd.cValid +  + wrd.cThemes + wrd.cRoot + wrd.cPath + "NaN"; // getNamedThemesFromRootPath_inValidThemesRootPathNaN
+
+// getNamedThemePathFromRootPath
+export const cgetNamedThemePathFromRootPath_validData = cgetNamedThemePathFromRootPath + bas.cUnderscore + wrd.cvalid + wrd.cData; // getNamedThemePathFromRootPath_validData
+export const cgetNamedThemePathFromRootPath_inValidThemeNameString = cgetNamedThemePathFromRootPath + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cTheme + wrd.cName + wrd.cString; // getNamedThemePathFromRootPath_inValidThemeNameString
+export const cgetNamedThemePathFromRootPath_inValidThemesRootPathString = cgetNamedThemePathFromRootPath + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cThemes + wrd.cRoot + wrd.cPath + wrd.cString; // getNamedThemePathFromRootPath_inValidThemesRootPathString
+export const cgetNamedThemePathFromRootPath_inValidThemeNameInteger = cgetNamedThemePathFromRootPath + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cTheme + wrd.cName + wrd.cInteger; // getNamedThemePathFromRootPath_inValidThemeNameInteger
+export const cgetNamedThemePathFromRootPath_inValidThemeNameBoolean = cgetNamedThemePathFromRootPath + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cTheme + wrd.cName + wrd.cBoolean; // getNamedThemePathFromRootPath_inValidThemeNameBoolean
+export const cgetNamedThemePathFromRootPath_inValidThemesRootPathInteger = cgetNamedThemePathFromRootPath + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cThemes + wrd.cRoot + wrd.cPath + wrd.cInteger; // getNamedThemePathFromRootPath_inValidThemesRootPathInteger
+export const cgetNamedThemePathFromRootPath_inValidThemesRootPathBoolean = cgetNamedThemePathFromRootPath + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cThemes + wrd.cRoot + wrd.cPath + wrd.cBoolean; // getNamedThemePathFromRootPath_inValidThemesRootPathBoolean
+export const cgetNamedThemePathFromRootPath_inValidThemeNameUndefined = cgetNamedThemePathFromRootPath + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cTheme + wrd.cName + 'Undefined'; // getNamedThemePathFromRootPath_inValidThemeNameUndefined
+export const cgetNamedThemePathFromRootPath_inValidThemeNameNaN = cgetNamedThemePathFromRootPath + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cTheme + wrd.cName + 'NaN'; // getNamedThemePathFromRootPath_inValidThemeNameNaN
+export const cgetNamedThemePathFromRootPath_inValidThemesRootPathUndefined = cgetNamedThemePathFromRootPath + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cThemes + wrd.cRoot + wrd.cPath + 'Undefined'; // getNamedThemePathFromRootPath_inValidThemesRootPathUndefined
+export const cgetNamedThemePathFromRootPath_inValidThemesRootPathNaN = cgetNamedThemePathFromRootPath + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cThemes + wrd.cRoot + wrd.cPath + 'NaN'; // getNamedThemePathFromRootPath_inValidThemesRootPathNaN
+
+
+
+
+
+
+
+
+
+
 
 /* workflowBroker */
 

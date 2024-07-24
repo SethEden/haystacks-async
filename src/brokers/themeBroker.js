@@ -51,7 +51,8 @@ async function initThemeData() {
  * @description Takes a theme root path and scans the sub-folders that it contains and converts those to theme names,
  * then builds a JSON data object with those names and also generates paths for each one based on the input themes root path.
  * @param {string} themesRootPath The root path that should be used when building the JSON object with the themes meta-data.
- * @return {object} A JSON object that contains all of the theme names and theme paths from the input theme root path.
+ * @return {object|boolean} A JSON object that contains all of the theme names and theme paths from the input theme root path,
+ * or false if the generation was unsuccessful
  * @author Seth Hollingsead
  * @date 2022/10/26
  */
@@ -60,24 +61,30 @@ async function initThemeData() {
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // themesRootPath is:
   await loggers.consoleLog(namespacePrefix + functionName, msg.cthemesRootPathIs + themesRootPath);
-  let themesNames = await getNamedThemesFromRootPath(themesRootPath);
-  // themesNames is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cthemesNamesIs + JSON.stringify(themesNames));
-  let themesData = [];
-  for (const key in themesNames) {
-    // key is:
-    await loggers.consoleLog(namespacePrefix + functionName, msg.ckeyIs + key);
-    let themeName = themesNames[key];
-    // themeName is:
-    await loggers.consoleLog(namespacePrefix + functionName, msg.cthemeNameIs + themeName);
-    let themePath = await getNamedThemePathFromRootPath(themeName, themesRootPath);
-    // themePath is:
-    await loggers.consoleLog(namespacePrefix + functionName, msg.cthemePathIs + themePath);
-    if (themePath) {
-      themesData.push({Name: themeName, Path: themePath});
+  let themesData = false;
+  if (themesRootPath && typeof themesRootPath === wrd.cstring && (themesRootPath.includes(bas.cForwardSlash) === true || themesRootPath.includes(bas.cBackSlash) === true)) {
+    let themesNames = await getNamedThemesFromRootPath(themesRootPath);
+    // themesNames is:
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cthemesNamesIs + JSON.stringify(themesNames));
+    themesData = [];
+    for (const key in themesNames) {
+      // key is:
+      await loggers.consoleLog(namespacePrefix + functionName, msg.ckeyIs + key);
+      let themeName = themesNames[key];
+      // themeName is:
+      await loggers.consoleLog(namespacePrefix + functionName, msg.cthemeNameIs + themeName);
+      let themePath = await getNamedThemePathFromRootPath(themeName, themesRootPath);
+      // themePath is:
+      await loggers.consoleLog(namespacePrefix + functionName, msg.cthemePathIs + themePath);
+      if (themePath) {
+        themesData.push({Name: themeName, Path: themePath});
+      }
+      // themesData is:
+      await loggers.consoleLog(namespacePrefix + functionName, msg.cthemesDataIs + JSON.stringify(themesData))
     }
-    // themesData is:
-    await loggers.consoleLog(namespacePrefix + functionName, msg.cthemesDataIs + JSON.stringify(themesData))
+  } else {
+    // ERROR: Invalid input, themesRootPath is: 
+    console.log(msg.cErrorGenerateThemeDataFromPathMessage01 + themesRootPath);
   }
   // themesData is:
   await loggers.consoleLog(namespacePrefix + functionName, msg.cthemesDataIs + JSON.stringify(themesData))
@@ -105,7 +112,7 @@ async function addThemeData(themeData, contextName) {
   let returnData = false;
   let pluginName = '';
   try {
-    if (themeData && (Array.isArray(themeData) || typeof themeData === wrd.cobject)) {
+    if (themeData && typeof themeData === wrd.cobject) {
       if (contextName && typeof contextName === wrd.cstring) {
         if (contextName.toUpperCase().includes(wrd.cPLUGIN) === true && contextName.includes(bas.cColon) === true) {
           let contextNameArray = contextName.split(bas.cColon);
@@ -158,9 +165,15 @@ async function getNamedThemesFromRootPath(themesRootPath) {
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // themesRootPath is:
   await loggers.consoleLog(namespacePrefix + functionName, msg.cthemesRootPathIs + themesRootPath);
-  let themesNames = [];
-  let frameorkThemesPath = path.resolve(themesRootPath);
-  themesNames = await ruleBroker.processRules([frameorkThemesPath, ''], [biz.cgetDirectoryList]);
+  let themesNames = false;
+  if (themesRootPath && typeof themesRootPath === wrd.cstring && (themesRootPath.includes(bas.cForwardSlash) === true || themesRootPath.includes(bas.cBackSlash) === true)) {
+    themesNames = [];
+    let frameorkThemesPath = path.resolve(themesRootPath);
+    themesNames = await ruleBroker.processRules([frameorkThemesPath, ''], [biz.cgetDirectoryList]);
+  } else {
+    // ERROR: Invalid input, themesRootPath is: 
+    console.log(msg.cErrorGenerateThemeDataFromPathMessage01 + themesRootPath);
+  }
   // themesNames is:
   await loggers.consoleLog(namespacePrefix + functionName, msg.cthemesNamesIs + JSON.stringify(themesNames));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
@@ -185,18 +198,26 @@ async function getNamedThemePathFromRootPath(themeName, themesRootPath) {
   // themesRootPath is:
   await loggers.consoleLog(namespacePrefix + functionName, msg.cthemesRootPathIs + themesRootPath);
   let themePath = false;
-  let themesNames = [];
-  themesNames = await getNamedThemesFromRootPath(themesRootPath);
-  // themesNames is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cthemesNamesIs + JSON.stringify(themesNames));
-  let frameworkThemesPath = path.resolve(themesRootPath);
-  for (const element of themesNames) {
-    if (element.toUpperCase() === themeName.toUpperCase()) {
-      themePath = frameworkThemesPath + bas.cDoubleForwardSlash + element + bas.cDoubleForwardSlash;
-      themePath = path.resolve(themePath);
-      break;
-    }
-  }
+  // if (themeName && typeof themeName === wrd.cstring) {
+  //   if (themesRootPath && typeof themesRootPath === wrd.cstring && (themesRootPath.includes(bas.cForwardSlash) === true || themesRootPath.includes(bas.cBackSlash) === true)) {
+      let themesNames = [];
+      themesNames = await getNamedThemesFromRootPath(themesRootPath);
+      // themesNames is:
+      await loggers.consoleLog(namespacePrefix + functionName, msg.cthemesNamesIs + JSON.stringify(themesNames));
+      let frameworkThemesPath = path.resolve(themesRootPath);
+      for (const element of themesNames) {
+        if (element.toUpperCase() === themeName.toUpperCase()) {
+          themePath = frameworkThemesPath + bas.cDoubleForwardSlash + element + bas.cDoubleForwardSlash;
+          themePath = path.resolve(themePath);
+          break;
+        }
+      }
+  //   } else {
+
+  //   }
+  // } else {
+
+  // }
   // themePath is:
   await loggers.consoleLog(namespacePrefix + functionName, msg.cthemePathIs + themePath);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);

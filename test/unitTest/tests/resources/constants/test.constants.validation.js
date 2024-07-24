@@ -90,6 +90,25 @@ export const testConstantsValidation = [
     {Name: 'cremovePluginBusinessRules', Actual: tst_con.cremovePluginBusinessRules, Expected: 'removePluginBusinessRules'},
 
     /* themeBroker */
+    {Name: 'cinitThemeData', Actual: tst_con.cinitThemeData, Expected: 'initThemeData'},
+    {Name: 'cgenerateThemeDataFromPath', Actual: tst_con.cgenerateThemeDataFromPath, Expected: 'generateThemeDataFromPath'},
+    {Name: 'caddThemeData', Actual: tst_con.caddThemeData, Expected: 'addThemeData'},
+    {Name: 'cgetNamedThemesFromRootPath', Actual: tst_con.cgetNamedThemesFromRootPath, Expected: 'getNamedThemesFromRootPath'},
+    {Name: 'cgetNamedThemePathFromRootPath', Actual: tst_con.cgetNamedThemePathFromRootPath, Expected: 'getNamedThemePathFromRootPath'},
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     /* workflowBroker */
 
@@ -736,6 +755,64 @@ export const testConstantsValidation = [
     {Name: 'cremovePluginBusinessRules_inValidPluginNameNaN', Actual: tst_con.cremovePluginBusinessRules_inValidPluginNameNaN, Expected: 'removePluginBusinessRules_inValidPluginNameNaN'},
 
     /* themeBroker */
+    // initThemeData
+    {Name: 'cinitThemeData_validData', Actual: tst_con.cinitThemeData_validData, Expected: 'initThemeData_validData'},
+
+    // generateThemeDataFromPath
+    {Name: 'cgenerateThemeDataFromPath_validThemesRootPathData', Actual: tst_con.cgenerateThemeDataFromPath_validThemesRootPathData, Expected: 'generateThemeDataFromPath_validThemesRootPathData'},
+    {Name: 'cgenerateThemeDataFromPath_inValidThemesRootPathString', Actual: tst_con.cgenerateThemeDataFromPath_inValidThemesRootPathString, Expected: 'generateThemeDataFromPath_inValidThemesRootPathString'},
+    {Name: 'cgenerateThemeDataFromPath_inValidThemesRootPathInteger', Actual: tst_con.cgenerateThemeDataFromPath_inValidThemesRootPathInteger, Expected: 'generateThemeDataFromPath_inValidThemesRootPathInteger'},
+    {Name: 'cgenerateThemeDataFromPath_inValidThemesRootPathBoolean', Actual: tst_con.cgenerateThemeDataFromPath_inValidThemesRootPathBoolean, Expected: 'generateThemeDataFromPath_inValidThemesRootPathBoolean'},
+    {Name: 'cgenerateThemeDataFromPath_inValidThemesRootPathUndefined', Actual: tst_con.cgenerateThemeDataFromPath_inValidThemesRootPathUndefined, Expected: 'generateThemeDataFromPath_inValidThemesRootPathUndefined'},
+    {Name: 'cgenerateThemeDataFromPath_inValidThemesRootPathNaN', Actual: tst_con.cgenerateThemeDataFromPath_inValidThemesRootPathNaN, Expected: 'generateThemeDataFromPath_inValidThemesRootPathNaN'},
+
+    // addThemeData
+    {Name: 'caddThemeData_validData', Actual: tst_con.caddThemeData_validData, Expected: 'addThemeData_validData'},
+    {Name: 'caddThemeData_inValidThemeDataString', Actual: tst_con.caddThemeData_inValidThemeDataString, Expected: 'addThemeData_inValidThemeDataString'},
+    {Name: 'caddThemeData_inValidContextNameString', Actual: tst_con.caddThemeData_inValidContextNameString, Expected: 'addThemeData_inValidContextNameString'},
+    {Name: 'caddThemeData_inValidThemeDataInteger', Actual: tst_con.caddThemeData_inValidThemeDataInteger, Expected: 'addThemeData_inValidThemeDataInteger'},
+    {Name: 'caddThemeData_inValidThemeDataBoolean', Actual: tst_con.caddThemeData_inValidThemeDataBoolean, Expected: 'addThemeData_inValidThemeDataBoolean'},
+    {Name: 'caddThemeData_inValidContextNameInteger', Actual: tst_con.caddThemeData_inValidContextNameInteger, Expected: 'addThemeData_inValidContextNameInteger'},
+    {Name: 'caddThemeData_inValidContextNameBoolean', Actual: tst_con.caddThemeData_inValidContextNameBoolean, Expected: 'addThemeData_inValidContextNameBoolean'},
+    {Name: 'caddThemeData_inValidThemeDataUndefined', Actual: tst_con.caddThemeData_inValidThemeDataUndefined, Expected: 'addThemeData_inValidThemeDataUndefined'},
+    {Name: 'caddThemeData_inValidThemeDataNaN', Actual: tst_con.caddThemeData_inValidThemeDataNaN, Expected: 'addThemeData_inValidThemeDataNaN'},
+    {Name: 'caddThemeData_inValidContextNameUndefined', Actual: tst_con.caddThemeData_inValidContextNameUndefined, Expected: 'addThemeData_inValidContextNameUndefined'},
+    {Name: 'caddThemeData_inValidContextNameNaN', Actual: tst_con.caddThemeData_inValidContextNameNaN, Expected: 'addThemeData_inValidContextNameNaN'},
+
+    // getNamedThemesFromRootPath
+    {Name: 'cgetNamedThemesFromRootPath_validThemesRootPathData', Actual: tst_con.cgetNamedThemesFromRootPath_validThemesRootPathData, Expected: 'getNamedThemesFromRootPath_validThemesRootPathData'},
+    {Name: 'cgetNamedThemesFromRootPath_inValidThemesRootPathString', Actual: tst_con.cgetNamedThemesFromRootPath_inValidThemesRootPathString, Expected: 'getNamedThemesFromRootPath_inValidThemesRootPathString'},
+    {Name: 'cgetNamedThemesFromRootPath_inValidThemesRootPathInteger', Actual: tst_con.cgetNamedThemesFromRootPath_inValidThemesRootPathInteger, Expected: 'getNamedThemesFromRootPath_inValidThemesRootPathInteger'},
+    {Name: 'cgetNamedThemesFromRootPath_inValidThemesRootPathBoolean', Actual: tst_con.cgetNamedThemesFromRootPath_inValidThemesRootPathBoolean, Expected: 'getNamedThemesFromRootPath_inValidThemesRootPathBoolean'},
+    {Name: 'cgetNamedThemesFromRootPath_inValidThemesRootPathUndefined', Actual: tst_con.cgetNamedThemesFromRootPath_inValidThemesRootPathUndefined, Expected: 'getNamedThemesFromRootPath_inValidThemesRootPathUndefined'},
+    {Name: 'cgetNamedThemesFromRootPath_inValidThemesRootPathNaN', Actual: tst_con.cgetNamedThemesFromRootPath_inValidThemesRootPathNaN, Expected: 'getNamedThemesFromRootPath_inValidThemesRootPathNaN'},
+
+    // getNamedThemePathFromRootPath
+    {Name: 'cgetNamedThemePathFromRootPath_validData', Actual: tst_con.cgetNamedThemePathFromRootPath_validData, Expected: 'getNamedThemePathFromRootPath_validData'},
+    {Name: 'cgetNamedThemePathFromRootPath_inValidThemeNameString', Actual: tst_con.cgetNamedThemePathFromRootPath_inValidThemeNameString, Expected: 'getNamedThemePathFromRootPath_inValidThemeNameString'},
+    {Name: 'cgetNamedThemePathFromRootPath_inValidThemesRootPathString', Actual: tst_con.cgetNamedThemePathFromRootPath_inValidThemesRootPathString, Expected: 'getNamedThemePathFromRootPath_inValidThemesRootPathString'},
+    {Name: 'cgetNamedThemePathFromRootPath_inValidThemeNameInteger', Actual: tst_con.cgetNamedThemePathFromRootPath_inValidThemeNameInteger, Expected: 'getNamedThemePathFromRootPath_inValidThemeNameInteger'},
+    {Name: 'cgetNamedThemePathFromRootPath_inValidThemeNameBoolean', Actual: tst_con.cgetNamedThemePathFromRootPath_inValidThemeNameBoolean, Expected: 'getNamedThemePathFromRootPath_inValidThemeNameBoolean'},
+    {Name: 'cgetNamedThemePathFromRootPath_inValidThemesRootPathInteger', Actual: tst_con.cgetNamedThemePathFromRootPath_inValidThemesRootPathInteger, Expected: 'getNamedThemePathFromRootPath_inValidThemesRootPathInteger'},
+    {Name: 'cgetNamedThemePathFromRootPath_inValidThemesRootPathBoolean', Actual: tst_con.cgetNamedThemePathFromRootPath_inValidThemesRootPathBoolean, Expected: 'getNamedThemePathFromRootPath_inValidThemesRootPathBoolean'},
+    {Name: 'cgetNamedThemePathFromRootPath_inValidThemeNameUndefined', Actual: tst_con.cgetNamedThemePathFromRootPath_inValidThemeNameUndefined, Expected: 'getNamedThemePathFromRootPath_inValidThemeNameUndefined'},
+    {Name: 'cgetNamedThemePathFromRootPath_inValidThemeNameNaN', Actual: tst_con.cgetNamedThemePathFromRootPath_inValidThemeNameNaN, Expected: 'getNamedThemePathFromRootPath_inValidThemeNameNaN'},
+    {Name: 'cgetNamedThemePathFromRootPath_inValidThemesRootPathUndefined', Actual: tst_con.cgetNamedThemePathFromRootPath_inValidThemesRootPathUndefined, Expected: 'getNamedThemePathFromRootPath_inValidThemesRootPathUndefined'},
+    {Name: 'cgetNamedThemePathFromRootPath_inValidThemesRootPathNaN', Actual: tst_con.cgetNamedThemePathFromRootPath_inValidThemesRootPathNaN, Expected: 'getNamedThemePathFromRootPath_inValidThemesRootPathNaN'},
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     /* workflowBroker */
 
