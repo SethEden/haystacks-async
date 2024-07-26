@@ -4,7 +4,6 @@
  * @file main.test.js
  * @module main.test
  * @description Unit tests for the main.js
- * @requires module:ruleBroker
  * @requires module:dataArrayParsing
  * @requires module:characterArrayParsing
  * @requires module:characterStringParsing
@@ -18,15 +17,13 @@
  * @requires module:data
  * @requires module:main
  * @requires module:testAliases
- * @requires module:testConstantsValidationMetadata
+ * @requires module:pluginBrokerTest
  * @requires module:mainTest
  * @requires module:testData
- * @requires module:test.configuration.constants
  * @requires module:test.constants
- * @requires module:test.system.constants
  * @requires {@link https://www.npmjs.com/package/@haystacks/constants|@haystacks/constants}
  * @requires {@link https://www.npmjs.com/package/jest|jest}
- * @requires import { writeFile } from 'fs/promises';
+ * @requires {@link https://nodejs.dev/learn/the-nodejs-fs-module|fs}
  * @requires {@link https://www.npmjs.com/package/path|path}
  * @author Vlad Sorokin
  * @date 2023/11/24
@@ -34,7 +31,6 @@
  */
 
 // Internal imports
-import ruleBroker from '../../../src/brokers/ruleBroker.js';
 import dataArrayParsing from '../../../src/businessRules/rules/arrayParsing/dataArrayParsing.js';
 import characterArrayParsing from '../../../src/businessRules/rules/arrayParsing/characterArrayParsing.js';
 import characterStringParsing from '../../../src/businessRules/rules/stringParsing/characterStringParsing.js';
@@ -59,7 +55,7 @@ import { describe, expect, test } from '@jest/globals';
 import { writeFile } from 'fs/promises';
 import path from 'path';
 
-const { bas, cmd, biz, cfg, fnc, gen, msg, sys, wrd, num } = hayConst;
+const { bas, cmd, biz, cfg, fnc, sys, wrd } = hayConst;
 const baseFileName = path.basename(import.meta.url, path.extname(import.meta.url));
 // framework.main.test.
 const namespacePrefix = wrd.cframework + bas.cDot + baseFileName + bas.cDot;

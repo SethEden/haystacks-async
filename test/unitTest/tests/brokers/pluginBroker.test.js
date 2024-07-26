@@ -10,8 +10,10 @@
  * @requires module:fileOperations
  * @requires module:main
  * @requires module:D
- * @requires module:test.constants
+ * @requires module:commandBrokerTest
  * @requires module:pluginBrokerTest
+ * @requires module:commandsLibrary
+ * @requires module:test.constants
  * @requires module:mainTest
  * @requires {@link https://www.npmjs.com/package/@haystacks/constants|@haystacks/constants}
  * @requires {@link https://www.npmjs.com/package/jest|jest}

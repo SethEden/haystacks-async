@@ -12,7 +12,6 @@
  * @requires module:mainTest
  * @requires {@link https://www.npmjs.com/package/@haystacks/constants|@haystacks/constants}
  * @requires {@link https://www.npmjs.com/package/jest|jest}
- * @requires {@link https://nodejs.dev/learn/the-nodejs-fs-module|fs}
  * @author Vlad Sorokin
  * @date 2024/07/23
  * @copyright Copyright © 2024-… by Vlad Sorokin. All rights reserved

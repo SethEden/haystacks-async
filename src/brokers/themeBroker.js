@@ -198,8 +198,8 @@ async function getNamedThemePathFromRootPath(themeName, themesRootPath) {
   // themesRootPath is:
   await loggers.consoleLog(namespacePrefix + functionName, msg.cthemesRootPathIs + themesRootPath);
   let themePath = false;
-  // if (themeName && typeof themeName === wrd.cstring) {
-  //   if (themesRootPath && typeof themesRootPath === wrd.cstring && (themesRootPath.includes(bas.cForwardSlash) === true || themesRootPath.includes(bas.cBackSlash) === true)) {
+  if (themeName && typeof themeName === wrd.cstring) {
+    if (themesRootPath && typeof themesRootPath === wrd.cstring && (themesRootPath.includes(bas.cForwardSlash) === true || themesRootPath.includes(bas.cBackSlash) === true)) {
       let themesNames = [];
       themesNames = await getNamedThemesFromRootPath(themesRootPath);
       // themesNames is:
@@ -212,12 +212,14 @@ async function getNamedThemePathFromRootPath(themeName, themesRootPath) {
           break;
         }
       }
-  //   } else {
-
-  //   }
-  // } else {
-
-  // }
+    } else {
+      // ERROR: Invalid input, themesRootPath is: 
+      console.log(msg.cErrorGenerateThemeDataFromPathMessage01 + themesRootPath)
+    }
+  } else {
+    // ERROR: Invalid input, themeName is: 
+    console.log(msg.cErrorGetNamedThemePathFromRotPathMessage01 + themeName)
+  }
   // themePath is:
   await loggers.consoleLog(namespacePrefix + functionName, msg.cthemePathIs + themePath);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
@@ -227,16 +229,13 @@ async function getNamedThemePathFromRootPath(themeName, themesRootPath) {
 /**
  * @function loadTheme
  * @description Takes a theme path and loads all the theme data debug configuration settings for that theme.
- * @param {string} themePath The fully qualified path to the theme debug configuration settings.
  * @return {object} All of the debug configuration data for a specified theme path.
  * @author Seth Hollingsead
  * @date 2022/06/13
  */
-async function loadTheme(themePath) {
+async function loadTheme() {
   let functionName = loadTheme.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  // themePath is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cthemePathIs + themePath);
   let themeData = {};
   await chiefTheme.determineThemeDebugConfigFilesToLoad(sys.cthemeConfigPath);
   themeData = await chiefData.setupAllJsonConfigData(sys.cthemeConfigPath, wrd.cconfiguration);
@@ -261,7 +260,12 @@ async function applyTheme(themeData) {
   // themeData is:
   await loggers.consoleLog(namespacePrefix + functionName, msg.cthemeDataIs + JSON.stringify(themeData));
   let returnData = false;
-  returnData = await chiefConfiguration.parseLoadedConfigurationData(themeData);
+  if (themeData && typeof themeData === wrd.cobject) { 
+    returnData = await chiefConfiguration.parseLoadedConfigurationData(themeData);
+  } else {
+    // ERROR: Invalid input, themeData is:
+    console.log(msg.cErrorAddThemeDataMessage02 + themeData);
+  }
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
@@ -281,21 +285,32 @@ async function removePluginThemeData(pluginName) {
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // pluginName is:
   await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginNameIs + pluginName);
+  let pluginsLoadedList = D[sys.cpluginsLoaded];
+  let inputCheckFlag = false;
   let returnData = false;
-  let allPluginsThemesData = D[wrd.cThemes][wrd.cPlugins];
-  if (allPluginsThemesData) {
-    try {
-      delete allPluginsThemesData[pluginName];
-      returnData = true;
-    } catch (err) {
-      // ERROR: Unable to remove the plugin themes for the specified plugin:
-      console.log(msg.cremovePluginThemesMessage01 + pluginName);
-      // ERROR:
-      console.log(msg.cerrorMessage + err.message);
-    }
+  if (pluginName && typeof pluginName === wrd.cstring) {
+    inputCheckFlag = pluginsLoadedList.some(plugin => plugin[0] === pluginName);
   } else {
-    // ERROR: Unable to locate the plugins themes data. Plugin:
-    console.log(msg.cremovePluginThemesMessage02 + pluginName);
+    // ERROR: pluginName is an invalid value, pluginName is: 
+    console.log(msg.cErrorUnloadPluginMessage09, pluginName);
+  }
+  
+  if (inputCheckFlag === true) {
+    let allPluginsThemesData = D[wrd.cThemes][wrd.cPlugins];
+    if (allPluginsThemesData) {
+      try {
+        delete allPluginsThemesData[pluginName];
+        returnData = true;
+      } catch (err) {
+        // ERROR: Unable to remove the plugin themes for the specified plugin:
+        console.log(msg.cremovePluginThemesMessage01 + pluginName);
+        // ERROR:
+        console.log(msg.cerrorMessage + err.message);
+      }
+    } else {
+      // ERROR: Unable to locate the plugins themes data. Plugin:
+      console.log(msg.cremovePluginThemesMessage02 + pluginName);
+    }
   }
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);

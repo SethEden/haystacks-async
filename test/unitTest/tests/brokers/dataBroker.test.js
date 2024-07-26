@@ -4,7 +4,6 @@
  * @file dataBroker.test.js
  * @module dataBroker.test
  * @description Unit tests for the dataBroker.js
- * @requires module:constantBroker
  * @requires module:dataBroker
  * @requires module:ruleBroker
  * @requires module:characterArrayParsing
@@ -25,7 +24,6 @@
  */
 
 // Internal imports
-import constantBroker from '../../../../src/brokers/constantBroker.js';
 import dataBroker from '../../../../src/brokers/dataBroker.js'
 import ruleBroker from '../../../../src/brokers/ruleBroker.js';
 import characterArrayParsing from '../../../../src/businessRules/rules/arrayParsing/characterArrayParsing.js';
@@ -34,8 +32,8 @@ import dataStringParsing from '../../../../src/businessRules/rules/stringParsing
 import fileStringParsing from '../../../../src/businessRules/rules/stringParsing/fileStringParsing.js';
 import fileOperations from '../../../../src/businessRules/rules/fileOperations.js';
 import main from '../../../../src/main.js';
-import * as tst_man from '../../testData/mainTest.js';
 import D from '../../../../src/structures/data.js';
+import * as tst_man from '../../testData/mainTest.js';
 import * as tst_con from '../resources/constants/test.constants.js';
 import * as tst_dbt from '../../testData/brokers/dataBrokerTest.js'
 
@@ -43,7 +41,7 @@ import * as tst_dbt from '../../testData/brokers/dataBrokerTest.js'
 import hayConst from '@haystacks/constants';
 import { describe, expect, test } from '@jest/globals';
 
-const { bas, cmd, biz, cfg, fnc, gen, msg, sys, wrd, num } = hayConst;
+const { bas, biz, cfg, sys, wrd, } = hayConst;
 
 /**
  * @function addPluginConfigurationData

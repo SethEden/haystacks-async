@@ -14,3 +14,4 @@ documentation/*
 */.vscode/*
 .vscode/*
 
+.vscode/settings.json

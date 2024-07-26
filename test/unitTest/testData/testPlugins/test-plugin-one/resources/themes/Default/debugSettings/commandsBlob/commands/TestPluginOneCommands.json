@@ -1,0 +1,15 @@
+{
+  "debugFiles|debugSetting.plugins.test-plugin-one.commandsBlob.commands.TestPluginOneCommands": false,
+  "debugFiles|debugSetting.plugins.test-plugin-one.commandsBlob.commands.TestPluginOneCommands@ModuleFontStyle": "Bold|Underline",
+  "debugFiles|debugSetting.plugins.test-plugin-one.commandsBlob.commands.TestPluginOneCommands@FunctionFontStyle": "Bold|Underline",
+  "debugFiles|debugSetting.plugins.test-plugin-one.commandsBlob.commands.TestPluginOneCommands@MessageFontStyle": "Underline",
+  "debugFiles|debugSetting.plugins.test-plugin-one.commandsBlob.commands.TestPluginOneCommands@DataFontStyle": "Bold",
+  "debugFiles|debugSetting.plugins.test-plugin-one.commandsBlob.commands.TestPluginOneCommands@ModuleFontColor": "255,0,0",
+  "debugFiles|debugSetting.plugins.test-plugin-one.commandsBlob.commands.TestPluginOneCommands@FunctionFontColor": "Yellow",
+  "debugFiles|debugSetting.plugins.test-plugin-one.commandsBlob.commands.TestPluginOneCommands@MessageFontColor": "255,0,0",
+  "debugFiles|debugSetting.plugins.test-plugin-one.commandsBlob.commands.TestPluginOneCommands@DataFontColor": "Yellow",
+  "debugFiles|debugSetting.plugins.test-plugin-one.commandsBlob.commands.TestPluginOneCommands@ModuleFontBackgroundColor": "0,0,100",
+  "debugFiles|debugSetting.plugins.test-plugin-one.commandsBlob.commands.TestPluginOneCommands@FunctionFontBackgroundColor": "Black",
+  "debugFiles|debugSetting.plugins.test-plugin-one.commandsBlob.commands.TestPluginOneCommands@MessageFontBackgroundColor": "0,0,100",
+  "debugFiles|debugSetting.plugins.test-plugin-one.commandsBlob.commands.TestPluginOneCommands@DataFontBackgroundColor": "Black"
+}

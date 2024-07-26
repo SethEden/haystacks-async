@@ -95,20 +95,9 @@ export const testConstantsValidation = [
     {Name: 'caddThemeData', Actual: tst_con.caddThemeData, Expected: 'addThemeData'},
     {Name: 'cgetNamedThemesFromRootPath', Actual: tst_con.cgetNamedThemesFromRootPath, Expected: 'getNamedThemesFromRootPath'},
     {Name: 'cgetNamedThemePathFromRootPath', Actual: tst_con.cgetNamedThemePathFromRootPath, Expected: 'getNamedThemePathFromRootPath'},
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    {Name: 'cloadTheme', Actual: tst_con.cloadTheme, Expected: 'loadTheme'},
+    {Name: 'capplyTheme', Actual: tst_con.capplyTheme, Expected: 'applyTheme'},
+    {Name: 'cremovePluginThemeData', Actual: tst_con.cremovePluginThemeData, Expected: 'removePluginThemeData'},
 
     /* workflowBroker */
 
@@ -800,19 +789,24 @@ export const testConstantsValidation = [
     {Name: 'cgetNamedThemePathFromRootPath_inValidThemesRootPathUndefined', Actual: tst_con.cgetNamedThemePathFromRootPath_inValidThemesRootPathUndefined, Expected: 'getNamedThemePathFromRootPath_inValidThemesRootPathUndefined'},
     {Name: 'cgetNamedThemePathFromRootPath_inValidThemesRootPathNaN', Actual: tst_con.cgetNamedThemePathFromRootPath_inValidThemesRootPathNaN, Expected: 'getNamedThemePathFromRootPath_inValidThemesRootPathNaN'},
 
+    // loadTheme
+    {Name: 'cloadTheme_validData', Actual: tst_con.cloadTheme_validData, Expected: 'loadTheme_validData'},
+ 
+    // applyTheme
+    {Name: 'capplyTheme_validThemeDataData', Actual: tst_con.capplyTheme_validThemeDataData, Expected: 'applyTheme_validThemeDataData'},
+    {Name: 'capplyTheme_inValidThemeDataString', Actual: tst_con.capplyTheme_inValidThemeDataString, Expected: 'applyTheme_inValidThemeDataString'},
+    {Name: 'capplyTheme_inValidThemeDataInteger', Actual: tst_con.capplyTheme_inValidThemeDataInteger, Expected: 'applyTheme_inValidThemeDataInteger'},
+    {Name: 'capplyTheme_inValidThemeDataBoolean', Actual: tst_con.capplyTheme_inValidThemeDataBoolean, Expected: 'applyTheme_inValidThemeDataBoolean'},
+    {Name: 'capplyTheme_inValidThemeDataUndefined', Actual: tst_con.capplyTheme_inValidThemeDataUndefined, Expected: 'applyTheme_inValidThemeDataUndefined'},
+    {Name: 'capplyTheme_inValidThemeDataNaN', Actual: tst_con.capplyTheme_inValidThemeDataNaN, Expected: 'applyTheme_inValidThemeDataNaN'},
 
-
-
-
-
-
-
-
-
-
-
-
-
+    // removePluginThemeData
+    {Name: 'cremovePluginThemeData_validPluginNameData', Actual: tst_con.cremovePluginThemeData_validPluginNameData, Expected: 'removePluginThemeData_validPluginNameData'},
+    {Name: 'cremovePluginThemeData_inValidPluginNameString', Actual: tst_con.cremovePluginThemeData_inValidPluginNameString, Expected: 'removePluginThemeData_inValidPluginNameString'},
+    {Name: 'cremovePluginThemeData_inValidPluginNameInteger', Actual: tst_con.cremovePluginThemeData_inValidPluginNameInteger, Expected: 'removePluginThemeData_inValidPluginNameInteger'},
+    {Name: 'cremovePluginThemeData_inValidPluginNameBoolean', Actual: tst_con.cremovePluginThemeData_inValidPluginNameBoolean, Expected: 'removePluginThemeData_inValidPluginNameBoolean'},
+    {Name: 'cremovePluginThemeData_inValidPluginNameUndefined', Actual: tst_con.cremovePluginThemeData_inValidPluginNameUndefined, Expected: 'removePluginThemeData_inValidPluginNameUndefined'},
+    {Name: 'cremovePluginThemeData_inValidPluginNameNaN', Actual: tst_con.cremovePluginThemeData_inValidPluginNameNaN, Expected: 'removePluginThemeData_inValidPluginNameNaN'},
 
     /* workflowBroker */
 

@@ -8,7 +8,6 @@
  * @requires module:fileOperations
  * @requires module:main
  * @requires module:D
- * @requires module:constantBrokerTest
  * @requires module:mainTest
  * @requires module:test.constants
  * @requires {@link https://www.npmjs.com/package/@haystacks/constants|@haystacks/constants}
@@ -22,16 +21,15 @@
 import constantBroker from '../../../../src/brokers/constantBroker.js';
 import fileOperations from '../../../../src/businessRules/rules/fileOperations.js';
 import main from '../../../../src/main.js';
-import * as tst_man from '../../testData/mainTest.js';
 import D from '../../../../src/structures/data.js';
+import * as tst_man from '../../testData/mainTest.js';
 import * as tst_con from '../resources/constants/test.constants.js';
 
 // External imports
 import hayConst from '@haystacks/constants';
 import { describe, expect, test } from '@jest/globals';
-import { phonicConstantsValidation } from '@haystacks/constants/src/constantsValidation/phonic.constants.validation.js';
 
-const { bas, cmd, biz, cfg, fnc, gen, msg, sys, wrd, num } = hayConst;
+const { biz, cfg, gen, sys, wrd, } = hayConst;
 
 
 /**

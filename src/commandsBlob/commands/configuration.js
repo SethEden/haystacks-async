@@ -173,7 +173,7 @@ async function changeDebugConfigurationTheme(inputData, inputMetaData) {
       // namedThemePath is verified:
       await loggers.consoleLog(namespacePrefix + functionName, msg.cnamedThemePathIsVerified + namedThemePath);
       await configurator.setConfigurationSetting(wrd.csystem, sys.cthemeConfigPath, namedThemePath);
-      let loadedThemeData = await themeBroker.loadTheme(namedThemePath);
+      let loadedThemeData = await themeBroker.loadTheme();
       // loadedThemeData is:
       await loggers.consoleLog(namespacePrefix + functionName, msg.cloadedThemeDataIs + JSON.stringify(loadedThemeData));
       let themeLoadedSuccessfully = await themeBroker.applyTheme(loadedThemeData);

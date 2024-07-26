@@ -110,7 +110,7 @@ async function determineThemeDebugConfigFilesToLoad(themeConfigPathName) {
     themeConfigFilesToLoad = await dataBroker.scanDataPath(themeConfigDataPath);
     await configurator.setConfigurationSetting(wrd.csystem, cfg.cthemeConfigFiles, themeConfigFilesToLoad);
   } // End-if (themeConfigPathName)
-  // themeConfigFilesToLoad is:
+  // themeConfigFilesToLoad is:d
   await loggers.consoleLog(namespacePrefix + functionName, msg.cthemeConfigFilesToLoadIs + JSON.stringify(themeConfigFilesToLoad));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return themeConfigFilesToLoad;

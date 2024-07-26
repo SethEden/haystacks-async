@@ -10,7 +10,6 @@
 
 // External imports
 import hayConst from '@haystacks/constants';
-import { basicConstantsValidation } from '@haystacks/constants/src/constantsValidation/basic.constants.validation';
 const {bas, gen, wrd} = hayConst;
 
 

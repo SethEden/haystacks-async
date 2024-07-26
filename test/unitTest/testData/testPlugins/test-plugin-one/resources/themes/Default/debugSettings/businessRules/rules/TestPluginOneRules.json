@@ -1,0 +1,15 @@
+{
+  "debugFiles|debugSetting.plugins.test-plugin-one.businessRules.rules.TestPluginOneRules": false,
+  "debugFiles|debugSetting.plugins.test-plugin-one.businessRules.rules.TestPluginOneRules@ModuleFontStyle": "Bold|Underline",
+  "debugFiles|debugSetting.plugins.test-plugin-one.businessRules.rules.TestPluginOneRules@FunctionFontStyle": "Bold|Underline",
+  "debugFiles|debugSetting.plugins.test-plugin-one.businessRules.rules.TestPluginOneRules@MessageFontStyle": "Underline",
+  "debugFiles|debugSetting.plugins.test-plugin-one.businessRules.rules.TestPluginOneRules@DataFontStyle": "Bold",
+  "debugFiles|debugSetting.plugins.test-plugin-one.businessRules.rules.TestPluginOneRules@ModuleFontColor": "255,0,0",
+  "debugFiles|debugSetting.plugins.test-plugin-one.businessRules.rules.TestPluginOneRules@FunctionFontColor": "Yellow",
+  "debugFiles|debugSetting.plugins.test-plugin-one.businessRules.rules.TestPluginOneRules@MessageFontColor": "255,0,0",
+  "debugFiles|debugSetting.plugins.test-plugin-one.businessRules.rules.TestPluginOneRules@DataFontColor": "Yellow",
+  "debugFiles|debugSetting.plugins.test-plugin-one.businessRules.rules.TestPluginOneRules@ModuleFontBackgroundColor": "0,0,100",
+  "debugFiles|debugSetting.plugins.test-plugin-one.businessRules.rules.TestPluginOneRules@FunctionFontBackgroundColor": "Black",
+  "debugFiles|debugSetting.plugins.test-plugin-one.businessRules.rules.TestPluginOneRules@MessageFontBackgroundColor": "0,0,100",
+  "debugFiles|debugSetting.plugins.test-plugin-one.businessRules.rules.TestPluginOneRules@DataFontBackgroundColor": "Black"
+}

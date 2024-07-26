@@ -8,8 +8,9 @@
  * @requires module:commandBroker
  * @requires module:dataArrayParsing
  * @requires module:fileOperations
- * @requires module:warden
- * @requires module:D
+ * @requires module:pluginCommands
+ * @requires module:main
+ * @requires module:data
  * @requires module:commandBrokerTest
  * @requires module:mainTest
  * @requires module:test.constants
@@ -25,19 +26,18 @@ import commandBroker from '../../../../src/brokers/commandBroker.js';
 import dataArrayParsing from '../../../../src/businessRules/rules/arrayParsing/dataArrayParsing.js';
 import fileOperations from '../../../../src/businessRules/rules/fileOperations.js';
 import pluginCommands from '../../../../src/commandsBlob/commands/plugins.js';
-import warden from '../../../../src/controllers/warden.js';
 import main from '../../../../src/main.js';
+import D from '../../../../src/structures/data.js';
 import pluginCommandsLibrary from '../../testData/testPlugins/test-plugin-one/commandsBlob/commandsLibrary.js';
 import * as tst_cbt from '../../testData/brokers/commandBrokerTest.js'
 import * as tst_man from '../../testData/mainTest.js';
-import D from '../../../../src/structures/data.js';
 import * as tst_con from '../resources/constants/test.constants.js';
 
 // External imports
 import hayConst from '@haystacks/constants';
 import { describe, expect, test } from '@jest/globals';
 
-const { bas, cmd, biz, cfg, fnc, gen, msg, phn, sys, wrd, num } = hayConst;
+const { bas, cmd, biz, cfg, gen, sys, wrd, num } = hayConst;
 
 
 /**

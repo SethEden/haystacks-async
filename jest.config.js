@@ -47,7 +47,7 @@ export default {
       "<rootDir>/test/unitTest/tests/brokers/dataBroker.test.js",
       "<rootDir>/test/unitTest/tests/brokers/pluginBroker.test.js",
       "<rootDir>/test/unitTest/tests/brokers/ruleBroker.test.js",
-      // "<rootDir>/test/unitTest/tests/brokers/themeBroker.test.js",
+      "<rootDir>/test/unitTest/tests/brokers/themeBroker.test.js",
       // "<rootDir>/test/unitTest/tests/brokers/workflowBroker.test.js",
       // "<rootDir>/test/unitTest/tests/businessRules/rules/arrayParsing/auxilaryArrayParsing.test.js",
       // "<rootDir>/test/unitTest/tests/businessRules/rules/arrayParsing/characterArrayParsing.test.js",
