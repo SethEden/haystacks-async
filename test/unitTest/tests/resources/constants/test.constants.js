@@ -95,13 +95,15 @@ export const cloadTheme = wrd.cload + wrd.cTheme; // loadTheme
 export const capplyTheme = wrd.capply + wrd.cTheme; // applyTheme
 export const cremovePluginThemeData = wrd.cremove + wrd.cPlugin + wrd.cTheme + wrd.cData; // removePluginThemeData
 
-
-
-
-
-
-
 /* workflowBroker */
+export const caddPluginWorkflows = wrd.c_add + wrd.cPlugin + wrd.cWorkflows; // addPluginWorkflows
+export const cgetWorkflow = wrd.cget + wrd.cWorkflow; // getWorkflow
+export const cdoesWorkflowExist = wrd.cdoes + wrd.cWorkflow + wrd.cExist; // doesWorkflowExist
+export const cdoesWorkflowExistInWorkflowData = wrd.cdoes + wrd.cWorkflow + wrd.cExist + wrd.cIn + wrd.cWorkflow + wrd.cData; // doesWorkflowExistInWorkflowData
+export const csearchWorkflow = wrd.csearch + wrd.cWorkflow; // searchWorkflow
+export const cgetAllWorkflows = wrd.cget + wrd.cAll + wrd.cWorkflows; // getAllWorkflows
+export const cgetWorkflowNamespaceDataObject = wrd.cget + wrd.cWorkflow + wrd.cNamespace + wrd.cData + wrd.cObject; // getWorkflowNamespaceDataObject
+export const cremovePluginWorkflows = wrd.cremove + wrd.cPlugin + wrd.cWorkflows; // removePluginWorkflows
 
 /* auxiliaryArrayParsing */
 
@@ -833,12 +835,90 @@ export const cremovePluginThemeData_inValidPluginNameBoolean = cremovePluginThem
 export const cremovePluginThemeData_inValidPluginNameUndefined = cremovePluginThemeData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cName + "Undefined"; // removePluginThemeData_inValidPluginNameUndefined
 export const cremovePluginThemeData_inValidPluginNameNaN = cremovePluginThemeData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cName + "NaN"; // removePluginThemeData_inValidPluginNameNaN
 
-
-
-
-
-
 /* workflowBroker */
+// addPluginWorkflows
+export const caddPluginWorkflows_validData = caddPluginWorkflows + bas.cUnderscore + wrd.cvalid + wrd.cData; // addPluginWorkflows_validData
+export const caddPluginWorkflows_inValidPluginNameString = caddPluginWorkflows + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cName + wrd.cString; // addPluginWorkflows_inValidPluginNameString
+export const caddPluginWorkflows_inValidPluginWorkflowsString = caddPluginWorkflows + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cWorkflows + wrd.cString; // addPluginWorkflows_inValidPluginWorkflowsString
+export const caddPluginWorkflows_inValidPluginNameInteger = caddPluginWorkflows + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cName + wrd.cInteger; // addPluginWorkflows_inValidPluginNameInteger
+export const caddPluginWorkflows_inValidPluginNameBoolean = caddPluginWorkflows + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cName + wrd.cBoolean; // addPluginWorkflows_inValidPluginNameBoolean
+export const caddPluginWorkflows_inValidPluginWorkflowsInteger = caddPluginWorkflows + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cWorkflows + wrd.cInteger; // addPluginWorkflows_inValidPluginWorkflowsInteger
+export const caddPluginWorkflows_inValidPluginWorkflowsBoolean = caddPluginWorkflows + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cWorkflows + wrd.cBoolean; // addPluginWorkflows_inValidPluginWorkflowsBoolean
+export const caddPluginWorkflows_inValidPluginNameUndefined = caddPluginWorkflows + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cName + 'Undefined'; // addPluginWorkflows_inValidPluginNameUndefined
+export const caddPluginWorkflows_inValidPluginNameNaN = caddPluginWorkflows + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cName + 'NaN'; // addPluginWorkflows_inValidPluginNameNaN
+export const caddPluginWorkflows_inValidPluginWorkflowsUndefined = caddPluginWorkflows + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cWorkflows + 'Undefined'; // addPluginWorkflows_inValidPluginWorkflowsUndefined
+export const caddPluginWorkflows_inValidPluginWorkflowsNaN = caddPluginWorkflows + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cWorkflows + 'NaN'; // addPluginWorkflows_inValidPluginWorkflowsNaN
+
+// getWorkflow
+export const cgetWorkflow_validWorkflowNameData = cgetWorkflow + bas.cUnderscore + wrd.cvalid + wrd.cWorkflow + wrd.cName + wrd.cData; // getWorkflow_validWorkflowNameData
+export const cgetWorkflow_inValidWorkflowNameString = cgetWorkflow + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cWorkflow + wrd.cName + wrd.cString; // getWorkflow_inValidWorkflowNameString
+export const cgetWorkflow_inValidWorkflowNameInteger = cgetWorkflow + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cWorkflow + wrd.cName + wrd.cInteger; // getWorkflow_inValidWorkflowNameInteger
+export const cgetWorkflow_inValidWorkflowNameBoolean = cgetWorkflow + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cWorkflow + wrd.cName + wrd.cBoolean; // getWorkflow_inValidWorkflowNameBoolean
+export const cgetWorkflow_inValidWorkflowNameUndefined = cgetWorkflow + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cWorkflow + wrd.cName + "Undefined"; // getWorkflow_inValidWorkflowNameUndefined
+export const cgetWorkflow_inValidWorkflowNameNaN = cgetWorkflow + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cWorkflow + wrd.cName + "NaN"; // getWorkflow_inValidWorkflowNameNaN
+
+// doesWorkflowExist
+export const cdoesWorkflowExist_validWorkflowNameData = cdoesWorkflowExist + bas.cUnderscore + wrd.cvalid + wrd.cWorkflow + wrd.cName + wrd.cData; // doesWorkflowExist_validWorkflowNameData
+export const cdoesWorkflowExist_inValidWorkflowNameString = cdoesWorkflowExist + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cWorkflow + wrd.cName + wrd.cString; // doesWorkflowExist_inValidWorkflowNameString
+export const cdoesWorkflowExist_inValidWorkflowNameInteger = cdoesWorkflowExist + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cWorkflow + wrd.cName + wrd.cInteger; // doesWorkflowExist_inValidWorkflowNameInteger
+export const cdoesWorkflowExist_inValidWorkflowNameBoolean = cdoesWorkflowExist + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cWorkflow + wrd.cName + wrd.cBoolean; // doesWorkflowExist_inValidWorkflowNameBoolean
+export const cdoesWorkflowExist_inValidWorkflowNameUndefined = cdoesWorkflowExist + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cWorkflow + wrd.cName + "Undefined"; // doesWorkflowExist_inValidWorkflowNameUndefined
+export const cdoesWorkflowExist_inValidWorkflowNameNaN = cdoesWorkflowExist + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cWorkflow + wrd.cName + "NaN"; // doesWorkflowExist_inValidWorkflowNameNaN
+
+// doesWorkflowExistInWorkflowData
+export const cdoesWorkflowExistInWorkflowData_validData = cdoesWorkflowExistInWorkflowData + bas.cUnderscore + wrd.cvalid + wrd.cData; // doesWorkflowExistInWorkflowData_validData
+export const cdoesWorkflowExistInWorkflowData_inValidWorkflowDataString = cdoesWorkflowExistInWorkflowData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cWorkflow + wrd.cData + wrd.cString; // doesWorkflowExistInWorkflowData_inValidWorkflowDataString
+export const cdoesWorkflowExistInWorkflowData_inValidWorkflowNameString = cdoesWorkflowExistInWorkflowData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cWorkflow + wrd.cName + wrd.cString; // doesWorkflowExistInWorkflowData_inValidWorkflowNameString
+export const cdoesWorkflowExistInWorkflowData_inValidWorkflowDataInteger = cdoesWorkflowExistInWorkflowData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cWorkflow + wrd.cData + wrd.cInteger; // doesWorkflowExistInWorkflowData_inValidWorkflowDataInteger
+export const cdoesWorkflowExistInWorkflowData_inValidWorkflowDataBoolean = cdoesWorkflowExistInWorkflowData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cWorkflow + wrd.cData + wrd.cBoolean; // doesWorkflowExistInWorkflowData_inValidWorkflowDataBoolean
+export const cdoesWorkflowExistInWorkflowData_inValidWorkflowNameInteger = cdoesWorkflowExistInWorkflowData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cWorkflow + wrd.cName + wrd.cInteger; // doesWorkflowExistInWorkflowData_inValidWorkflowNameInteger
+export const cdoesWorkflowExistInWorkflowData_inValidWorkflowNameBoolean = cdoesWorkflowExistInWorkflowData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cWorkflow + wrd.cName + wrd.cBoolean; // doesWorkflowExistInWorkflowData_inValidWorkflowNameBoolean
+export const cdoesWorkflowExistInWorkflowData_inValidWorkflowDataUndefined = cdoesWorkflowExistInWorkflowData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cWorkflow + wrd.cData + 'Undefined'; // doesWorkflowExistInWorkflowData_inValidWorkflowDataUndefined
+export const cdoesWorkflowExistInWorkflowData_inValidWorkflowDataNaN = cdoesWorkflowExistInWorkflowData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cWorkflow + wrd.cData + 'NaN'; // doesWorkflowExistInWorkflowData_inValidWorkflowDataNaN
+export const cdoesWorkflowExistInWorkflowData_inValidWorkflowNameUndefined = cdoesWorkflowExistInWorkflowData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cWorkflow + wrd.cName + 'Undefined'; // doesWorkflowExistInWorkflowData_inValidWorkflowNameUndefined
+export const cdoesWorkflowExistInWorkflowData_inValidWorkflowNameNaN = cdoesWorkflowExistInWorkflowData + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cWorkflow + wrd.cName + 'NaN'; // doesWorkflowExistInWorkflowData_inValidWorkflowNameNaN
+
+// searchWorkflow
+export const csearchWorkflow_validData = csearchWorkflow + bas.cUnderscore + wrd.cvalid + wrd.cData; // searchWorkflow_validData
+export const csearchWorkflow_inValidAllWorkflowsString = csearchWorkflow + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cAll + wrd.cWorkflows + wrd.cString; // searchWorkflow_inValidAllWorkflowsString
+export const csearchWorkflow_inValidWorkflowNameString = csearchWorkflow + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cWorkflow + wrd.cName + wrd.cString; // searchWorkflow_inValidWorkflowNameString
+export const csearchWorkflow_inValidAllWorkflowsInteger = csearchWorkflow + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cAll + wrd.cWorkflows + wrd.cInteger; // searchWorkflow_inValidAllWorkflowsInteger
+export const csearchWorkflow_inValidAllWorkflowsBoolean = csearchWorkflow + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cAll + wrd.cWorkflows + wrd.cBoolean; // searchWorkflow_inValidAllWorkflowsBoolean
+export const csearchWorkflow_inValidWorkflowNameInteger = csearchWorkflow + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cWorkflow + wrd.cName + wrd.cInteger; // searchWorkflow_inValidWorkflowNameInteger
+export const csearchWorkflow_inValidWorkflowNameBoolean = csearchWorkflow + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cWorkflow + wrd.cName + wrd.cBoolean; // searchWorkflow_inValidWorkflowNameBoolean
+export const csearchWorkflow_inValidAllWorkflowsUndefined = csearchWorkflow + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cAll + wrd.cWorkflows + 'Undefined'; // searchWorkflow_inValidAllWorkflowsUndefined
+export const csearchWorkflow_inValidAllWorkflowsNaN = csearchWorkflow + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cAll + wrd.cWorkflows + 'NaN'; // searchWorkflow_inValidAllWorkflowsNaN
+export const csearchWorkflow_inValidWorkflowNameUndefined = csearchWorkflow + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cWorkflow + wrd.cName + 'Undefined'; // searchWorkflow_inValidWorkflowNameUndefined
+export const csearchWorkflow_inValidWorkflowNameNaN = csearchWorkflow + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cWorkflow + wrd.cName + 'NaN'; // searchWorkflow_inValidWorkflowNameNaN
+
+// getAllWorkflows
+export const cgetAllWorkflows_validWorkflowDataStructureData = cgetAllWorkflows + bas.cUnderscore + wrd.cvalid + wrd.cWorkflow + wrd.cData + wrd.cStructure + wrd.cData; // getAllWorkflows_validWorkflowDataStructureData
+export const cgetAllWorkflows_inValidWorkflowDataStructureString = cgetAllWorkflows + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cWorkflow + wrd.cData + wrd.cStructure + wrd.cString; // getAllWorkflows_inValidWorkflowDataStructureString
+export const cgetAllWorkflows_inValidWorkflowDataStructureInteger = cgetAllWorkflows + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cWorkflow + wrd.cData + wrd.cStructure + wrd.cInteger; // getAllWorkflows_inValidWorkflowDataStructureInteger
+export const cgetAllWorkflows_inValidWorkflowDataStructureBoolean = cgetAllWorkflows + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cWorkflow + wrd.cData + wrd.cStructure + wrd.cBoolean; // getAllWorkflows_inValidWorkflowDataStructureBoolean
+export const cgetAllWorkflows_validWorkflowDataStructureUndefined = cgetAllWorkflows + bas.cUnderscore + wrd.cvalid + wrd.cWorkflow + wrd.cData + wrd.cStructure + "Undefined"; // cgetAllWorkflows_validWorkflowDataStructureUndefined
+export const cgetAllWorkflows_validWorkflowDataStructureNaN = cgetAllWorkflows + bas.cUnderscore + wrd.cvalid + wrd.cWorkflow + wrd.cData + wrd.cStructure + "NaN"; // cgetAllWorkflows_validWorkflowDataStructureNaN
+
+// getWorkflowNamespaceDataObject
+export const cgetWorkflowNamespaceDataObject_validData = cgetWorkflowNamespaceDataObject + bas.cUnderscore + wrd.cvalid + wrd.cData; // getWorkflowNamespaceDataObject_validData
+export const cgetWorkflowNamespaceDataObject_inValidWorkflowDataStructureString = cgetWorkflowNamespaceDataObject + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cWorkflow + wrd.cData + wrd.cStructure + wrd.cString; // getWorkflowNamespaceDataObject_inValidWorkflowDataStructureString
+export const cgetWorkflowNamespaceDataObject_inValidNamespaceToFindString = cgetWorkflowNamespaceDataObject + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cNamespace + wrd.cTo + wrd.cFind + wrd.cString; // getWorkflowNamespaceDataObject_inValidNamespaceToFindString
+export const cgetWorkflowNamespaceDataObject_inValidWorkflowDataStructureInteger = cgetWorkflowNamespaceDataObject + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cWorkflow + wrd.cData + wrd.cStructure + wrd.cInteger; // getWorkflowNamespaceDataObject_inValidWorkflowDataStructureInteger
+export const cgetWorkflowNamespaceDataObject_inValidWorkflowDataStructureBoolean = cgetWorkflowNamespaceDataObject + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cWorkflow + wrd.cData + wrd.cStructure + wrd.cBoolean; // getWorkflowNamespaceDataObject_inValidWorkflowDataStructureBoolean
+export const cgetWorkflowNamespaceDataObject_inValidNamespaceToFindInteger = cgetWorkflowNamespaceDataObject + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cNamespace + wrd.cTo + wrd.cFind + wrd.cInteger; // getWorkflowNamespaceDataObject_inValidNamespaceToFindInteger
+export const cgetWorkflowNamespaceDataObject_inValidNamespaceToFindBoolean = cgetWorkflowNamespaceDataObject + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cNamespace + wrd.cTo + wrd.cFind + wrd.cBoolean; // getWorkflowNamespaceDataObject_inValidNamespaceToFindBoolean
+export const cgetWorkflowNamespaceDataObject_validWorkflowDataStructureUndefined = cgetWorkflowNamespaceDataObject + bas.cUnderscore + wrd.valid + wrd.cWorkflow + wrd.cData + wrd.cStructure + 'Undefined'; // getWorkflowNamespaceDataObject_inValidWorkflowDataStructureUndefined
+export const cgetWorkflowNamespaceDataObject_inValidWorkflowDataStructureNaN = cgetWorkflowNamespaceDataObject + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cWorkflow + wrd.cData + wrd.cStructure + 'NaN'; // getWorkflowNamespaceDataObject_inValidWorkflowDataStructureNaN
+export const cgetWorkflowNamespaceDataObject_inValidNamespaceToFindUndefined = cgetWorkflowNamespaceDataObject + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cNamespace + wrd.cTo + wrd.cFind + 'Undefined'; // getWorkflowNamespaceDataObject_inValidNamespaceToFindUndefined
+export const cgetWorkflowNamespaceDataObject_inValidNamespaceToFindNaN = cgetWorkflowNamespaceDataObject + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cNamespace + wrd.cTo + wrd.cFind + 'NaN'; // getWorkflowNamespaceDataObject_inValidNamespaceToFindNaN
+
+// removePluginWorkflows
+export const cremovePluginWorkflows_validPluginNameData = cremovePluginWorkflows + bas.cUnderscore + wrd.cvalid + wrd.cPlugin + wrd.cName + wrd.cData; // removePluginWorkflows_validPluginNameData
+export const cremovePluginWorkflows_inValidPluginNameString = cremovePluginWorkflows + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cName + wrd.cString; // removePluginWorkflows_inValidPluginNameString
+export const cremovePluginWorkflows_inValidPluginNameInteger = cremovePluginWorkflows + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cName + wrd.cInteger; // removePluginWorkflows_inValidPluginNameInteger
+export const cremovePluginWorkflows_inValidPluginNameBoolean = cremovePluginWorkflows + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cName + wrd.cBoolean; // removePluginWorkflows_inValidPluginNameBoolean
+export const cremovePluginWorkflows_inValidPluginNameUndefined = cremovePluginWorkflows + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cName + "Undefined"; // removePluginWorkflows_inValidPluginNameUndefined
+export const cremovePluginWorkflows_inValidPluginNameNaN = cremovePluginWorkflows + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cName + "NaN"; // removePluginWorkflows_inValidPluginNameNaN
 
 /* auxiliaryArrayParsing */
 

@@ -155,7 +155,10 @@ let pluginData = {
   "CommandWorkflows": {
     "debug": [{}],
     "commandsBlob": [{}],
-    "system": [{}]
+    "system": [{
+        "testPluginOneWorkflow": "commandSequencer testPluginOneCommand01 testPluginOneCommand02"
+      }
+    ]
   },
   "Themes": [{
     "Name": "Default",

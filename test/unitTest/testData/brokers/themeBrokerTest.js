@@ -28,6 +28,9 @@ const rootPathAsync = rootPathArray[0];
 const rootPathConstants = rootPathArray[1];
 const rootPathHayPlugins = rootPathArray[2];
 
+// String names
+export const ctestPluginOneWorkflow = wrd.ctest + wrd.cPlugin + num.cOne + wrd.cWorkflow;
+
 // Paths
 export const cpathToTestPluginThemesFolder = rootPathAsync + bas.cBackSlash + wrd.ctest + bas.cBackSlash + wrd.cunit + wrd.cTest + bas.cBackSlash + wrd.ctest + wrd.cData + bas.cBackSlash + wrd.ctest + wrd.cPlugins + bas.cBackSlash + tst_man.ctestPluginOne + bas.cBackSlash + wrd.cresources + bas.cBackSlash + wrd.cthemes // 'C:/haystacks-async/test/unitTest/testData/testPlugins/test-plugin-one/resources/themes'
 export const cpathToTestPluginDefaultTheme = cpathToTestPluginThemesFolder + bas.cBackSlash + wrd.cDefault;
@@ -95,3 +98,6 @@ export const cexpectedTestPluginOneDefaultDebugSettings = {
     [cfg.cdebugFiles + bas.cPipe + cfg.cdebugSetting + bas.cDot + wrd.cplugins + bas.cDot + wrd.ctest + bas.cDash + wrd.cplugin + bas.cDash + num.cone + bas.cDot + sys.ccommandsBlob + bas.cDot + wrd.ccommands + bas.cDot + wrd.cTest + wrd.cPlugin + num.cOne + wrd.cCommands + bas.cAt + sys.cDataFontBackgroundColor]: clr.cBlack
   }
 }; 
+
+export const cexpectedDataFromTestPluginOneWorkflow = wrd.ccommand + wrd.cSequencer + bas.cSpace + wrd.ctest + wrd.cPlugin + num.cOne + wrd.cCommand + num.c01 + bas.cSpace + wrd.ctest + wrd.cPlugin + num.cOne + wrd.cCommand + num.c02;
+// commandSequencer testPluginOneCommand01 testPluginOneCommand02

@@ -100,6 +100,14 @@ export const testConstantsValidation = [
     {Name: 'cremovePluginThemeData', Actual: tst_con.cremovePluginThemeData, Expected: 'removePluginThemeData'},
 
     /* workflowBroker */
+    {Name: 'caddPluginWorkflows', Actual: tst_con.caddPluginWorkflows, Expected: 'addPluginWorkflows'},
+    {Name: 'cgetWorkflow', Actual: tst_con.cgetWorkflow, Expected: 'getWorkflow'},
+    {Name: 'cdoesWorkflowExist', Actual: tst_con.cdoesWorkflowExist, Expected: 'doesWorkflowExist'},
+    {Name: 'cdoesWorkflowExistInWorkflowData', Actual: tst_con.cdoesWorkflowExistInWorkflowData, Expected: 'doesWorkflowExistInWorkflowData'},
+    {Name: 'csearchWorkflow', Actual: tst_con.csearchWorkflow, Expected: 'searchWorkflow'},
+    {Name: 'cgetAllWorkflows', Actual: tst_con.cgetAllWorkflows, Expected: 'getAllWorkflows'},
+    {Name: 'cgetWorkflowNamespaceDataObject', Actual: tst_con.cgetWorkflowNamespaceDataObject, Expected: 'getWorkflowNamespaceDataObject'},
+    {Name: 'cremovePluginWorkflows', Actual: tst_con.cremovePluginWorkflows, Expected: 'removePluginWorkflows'},
 
     /* auxiliaryArrayParsing */
 
@@ -809,6 +817,89 @@ export const testConstantsValidation = [
     {Name: 'cremovePluginThemeData_inValidPluginNameNaN', Actual: tst_con.cremovePluginThemeData_inValidPluginNameNaN, Expected: 'removePluginThemeData_inValidPluginNameNaN'},
 
     /* workflowBroker */
+    // addPluginWorkflows
+    {Name: 'caddPluginWorkflows_validData', Actual: tst_con.caddPluginWorkflows_validData, Expected: 'addPluginWorkflows_validData'},
+    {Name: 'caddPluginWorkflows_inValidPluginNameString', Actual: tst_con.caddPluginWorkflows_inValidPluginNameString, Expected: 'addPluginWorkflows_inValidPluginNameString'},
+    {Name: 'caddPluginWorkflows_inValidPluginWorkflowsString', Actual: tst_con.caddPluginWorkflows_inValidPluginWorkflowsString, Expected: 'addPluginWorkflows_inValidPluginWorkflowsString'},
+    {Name: 'caddPluginWorkflows_inValidPluginNameInteger', Actual: tst_con.caddPluginWorkflows_inValidPluginNameInteger, Expected: 'addPluginWorkflows_inValidPluginNameInteger'},
+    {Name: 'caddPluginWorkflows_inValidPluginNameBoolean', Actual: tst_con.caddPluginWorkflows_inValidPluginNameBoolean, Expected: 'addPluginWorkflows_inValidPluginNameBoolean'},
+    {Name: 'caddPluginWorkflows_inValidPluginWorkflowsInteger', Actual: tst_con.caddPluginWorkflows_inValidPluginWorkflowsInteger, Expected: 'addPluginWorkflows_inValidPluginWorkflowsInteger'},
+    {Name: 'caddPluginWorkflows_inValidPluginWorkflowsBoolean', Actual: tst_con.caddPluginWorkflows_inValidPluginWorkflowsBoolean, Expected: 'addPluginWorkflows_inValidPluginWorkflowsBoolean'},
+    {Name: 'caddPluginWorkflows_inValidPluginNameUndefined', Actual: tst_con.caddPluginWorkflows_inValidPluginNameUndefined, Expected: 'addPluginWorkflows_inValidPluginNameUndefined'},
+    {Name: 'caddPluginWorkflows_inValidPluginNameNaN', Actual: tst_con.caddPluginWorkflows_inValidPluginNameNaN, Expected: 'addPluginWorkflows_inValidPluginNameNaN'},
+    {Name: 'caddPluginWorkflows_inValidPluginWorkflowsUndefined', Actual: tst_con.caddPluginWorkflows_inValidPluginWorkflowsUndefined, Expected: 'addPluginWorkflows_inValidPluginWorkflowsUndefined'},
+    {Name: 'caddPluginWorkflows_inValidPluginWorkflowsNaN', Actual: tst_con.caddPluginWorkflows_inValidPluginWorkflowsNaN, Expected: 'addPluginWorkflows_inValidPluginWorkflowsNaN'},
+
+    // getWorkflow
+    {Name: 'cgetWorkflow_validWorkflowNameData', Actual: tst_con.cgetWorkflow_validWorkflowNameData, Expected: 'getWorkflow_validWorkflowNameData'},
+    {Name: 'cgetWorkflow_inValidWorkflowNameString', Actual: tst_con.cgetWorkflow_inValidWorkflowNameString, Expected: 'getWorkflow_inValidWorkflowNameString'},
+    {Name: 'cgetWorkflow_inValidWorkflowNameInteger', Actual: tst_con.cgetWorkflow_inValidWorkflowNameInteger, Expected: 'getWorkflow_inValidWorkflowNameInteger'},
+    {Name: 'cgetWorkflow_inValidWorkflowNameBoolean', Actual: tst_con.cgetWorkflow_inValidWorkflowNameBoolean, Expected: 'getWorkflow_inValidWorkflowNameBoolean'},
+    {Name: 'cgetWorkflow_inValidWorkflowNameUndefined', Actual: tst_con.cgetWorkflow_inValidWorkflowNameUndefined, Expected: 'getWorkflow_inValidWorkflowNameUndefined'},
+    {Name: 'cgetWorkflow_inValidWorkflowNameNaN', Actual: tst_con.cgetWorkflow_inValidWorkflowNameNaN, Expected: 'getWorkflow_inValidWorkflowNameNaN'},
+
+    // doesWorkflowExist
+    {Name: 'cdoesWorkflowExist_validWorkflowNameData', Actual: tst_con.cdoesWorkflowExist_validWorkflowNameData, Expected: 'doesWorkflowExist_validWorkflowNameData'},
+    {Name: 'cdoesWorkflowExist_inValidWorkflowNameString', Actual: tst_con.cdoesWorkflowExist_inValidWorkflowNameString, Expected: 'doesWorkflowExist_inValidWorkflowNameString'},
+    {Name: 'cdoesWorkflowExist_inValidWorkflowNameInteger', Actual: tst_con.cdoesWorkflowExist_inValidWorkflowNameInteger, Expected: 'doesWorkflowExist_inValidWorkflowNameInteger'},
+    {Name: 'cdoesWorkflowExist_inValidWorkflowNameBoolean', Actual: tst_con.cdoesWorkflowExist_inValidWorkflowNameBoolean, Expected: 'doesWorkflowExist_inValidWorkflowNameBoolean'},
+    {Name: 'cdoesWorkflowExist_inValidWorkflowNameUndefined', Actual: tst_con.cdoesWorkflowExist_inValidWorkflowNameUndefined, Expected: 'doesWorkflowExist_inValidWorkflowNameUndefined'},
+    {Name: 'cdoesWorkflowExist_inValidWorkflowNameNaN', Actual: tst_con.cdoesWorkflowExist_inValidWorkflowNameNaN, Expected: 'doesWorkflowExist_inValidWorkflowNameNaN'},
+
+    // doesWorkflowExistInWorkflowData
+    {Name: 'cdoesWorkflowExistInWorkflowData_validData', Actual: tst_con.cdoesWorkflowExistInWorkflowData_validData, Expected: 'doesWorkflowExistInWorkflowData_validData'},
+    {Name: 'cdoesWorkflowExistInWorkflowData_inValidWorkflowDataString', Actual: tst_con.cdoesWorkflowExistInWorkflowData_inValidWorkflowDataString, Expected: 'doesWorkflowExistInWorkflowData_inValidWorkflowDataString'},
+    {Name: 'cdoesWorkflowExistInWorkflowData_inValidWorkflowNameString', Actual: tst_con.cdoesWorkflowExistInWorkflowData_inValidWorkflowNameString, Expected: 'doesWorkflowExistInWorkflowData_inValidWorkflowNameString'},
+    {Name: 'cdoesWorkflowExistInWorkflowData_inValidWorkflowDataInteger', Actual: tst_con.cdoesWorkflowExistInWorkflowData_inValidWorkflowDataInteger, Expected: 'doesWorkflowExistInWorkflowData_inValidWorkflowDataInteger'},
+    {Name: 'cdoesWorkflowExistInWorkflowData_inValidWorkflowDataBoolean', Actual: tst_con.cdoesWorkflowExistInWorkflowData_inValidWorkflowDataBoolean, Expected: 'doesWorkflowExistInWorkflowData_inValidWorkflowDataBoolean'},
+    {Name: 'cdoesWorkflowExistInWorkflowData_inValidWorkflowNameInteger', Actual: tst_con.cdoesWorkflowExistInWorkflowData_inValidWorkflowNameInteger, Expected: 'doesWorkflowExistInWorkflowData_inValidWorkflowNameInteger'},
+    {Name: 'cdoesWorkflowExistInWorkflowData_inValidWorkflowNameBoolean', Actual: tst_con.cdoesWorkflowExistInWorkflowData_inValidWorkflowNameBoolean, Expected: 'doesWorkflowExistInWorkflowData_inValidWorkflowNameBoolean'},
+    {Name: 'cdoesWorkflowExistInWorkflowData_inValidWorkflowDataUndefined', Actual: tst_con.cdoesWorkflowExistInWorkflowData_inValidWorkflowDataUndefined, Expected: 'doesWorkflowExistInWorkflowData_inValidWorkflowDataUndefined'},
+    {Name: 'cdoesWorkflowExistInWorkflowData_inValidWorkflowDataNaN', Actual: tst_con.cdoesWorkflowExistInWorkflowData_inValidWorkflowDataNaN, Expected: 'doesWorkflowExistInWorkflowData_inValidWorkflowDataNaN'},
+    {Name: 'cdoesWorkflowExistInWorkflowData_inValidWorkflowNameUndefined', Actual: tst_con.cdoesWorkflowExistInWorkflowData_inValidWorkflowNameUndefined, Expected: 'doesWorkflowExistInWorkflowData_inValidWorkflowNameUndefined'},
+    {Name: 'cdoesWorkflowExistInWorkflowData_inValidWorkflowNameNaN', Actual: tst_con.cdoesWorkflowExistInWorkflowData_inValidWorkflowNameNaN, Expected: 'doesWorkflowExistInWorkflowData_inValidWorkflowNameNaN'},
+
+    // searchWorkflow
+    {Name: 'csearchWorkflow_validData', Actual: tst_con.csearchWorkflow_validData, Expected: 'searchWorkflow_validData'},
+    {Name: 'csearchWorkflow_inValidAllWorkflowsString', Actual: tst_con.csearchWorkflow_inValidAllWorkflowsString, Expected: 'searchWorkflow_inValidAllWorkflowsString'},
+    {Name: 'csearchWorkflow_inValidWorkflowNameString', Actual: tst_con.csearchWorkflow_inValidWorkflowNameString, Expected: 'searchWorkflow_inValidWorkflowNameString'},
+    {Name: 'csearchWorkflow_inValidAllWorkflowsInteger', Actual: tst_con.csearchWorkflow_inValidAllWorkflowsInteger, Expected: 'searchWorkflow_inValidAllWorkflowsInteger'},
+    {Name: 'csearchWorkflow_inValidAllWorkflowsBoolean', Actual: tst_con.csearchWorkflow_inValidAllWorkflowsBoolean, Expected: 'searchWorkflow_inValidAllWorkflowsBoolean'},
+    {Name: 'csearchWorkflow_inValidWorkflowNameInteger', Actual: tst_con.csearchWorkflow_inValidWorkflowNameInteger, Expected: 'searchWorkflow_inValidWorkflowNameInteger'},
+    {Name: 'csearchWorkflow_inValidWorkflowNameBoolean', Actual: tst_con.csearchWorkflow_inValidWorkflowNameBoolean, Expected: 'searchWorkflow_inValidWorkflowNameBoolean'},
+    {Name: 'csearchWorkflow_inValidAllWorkflowsUndefined', Actual: tst_con.csearchWorkflow_inValidAllWorkflowsUndefined, Expected: 'searchWorkflow_inValidAllWorkflowsUndefined'},
+    {Name: 'csearchWorkflow_inValidAllWorkflowsNaN', Actual: tst_con.csearchWorkflow_inValidAllWorkflowsNaN, Expected: 'searchWorkflow_inValidAllWorkflowsNaN'},
+    {Name: 'csearchWorkflow_inValidWorkflowNameUndefined', Actual: tst_con.csearchWorkflow_inValidWorkflowNameUndefined, Expected: 'searchWorkflow_inValidWorkflowNameUndefined'},
+    {Name: 'csearchWorkflow_inValidWorkflowNameNaN', Actual: tst_con.csearchWorkflow_inValidWorkflowNameNaN, Expected: 'searchWorkflow_inValidWorkflowNameNaN'},
+
+    // getAllWorkflows
+    {Name: 'cgetAllWorkflows_validWorkflowDataStructureData', Actual: tst_con.cgetAllWorkflows_validWorkflowDataStructureData, Expected: 'getAllWorkflows_validWorkflowDataStructureData'},
+    {Name: 'cgetAllWorkflows_inValidWorkflowDataStructureString', Actual: tst_con.cgetAllWorkflows_inValidWorkflowDataStructureString, Expected: 'getAllWorkflows_inValidWorkflowDataStructureString'},
+    {Name: 'cgetAllWorkflows_inValidWorkflowDataStructureInteger', Actual: tst_con.cgetAllWorkflows_inValidWorkflowDataStructureInteger, Expected: 'getAllWorkflows_inValidWorkflowDataStructureInteger'},
+    {Name: 'cgetAllWorkflows_inValidWorkflowDataStructureBoolean', Actual: tst_con.cgetAllWorkflows_inValidWorkflowDataStructureBoolean, Expected: 'getAllWorkflows_inValidWorkflowDataStructureBoolean'},
+    {Name: 'cgetAllWorkflows_validWorkflowDataStructureUndefined', Actual: tst_con.cgetAllWorkflows_validWorkflowDataStructureUndefined, Expected: 'getAllWorkflows_validWorkflowDataStructureUndefined'},
+    {Name: 'cgetAllWorkflows_validWorkflowDataStructureNaN', Actual: tst_con.cgetAllWorkflows_validWorkflowDataStructureNaN, Expected: 'getAllWorkflows_validWorkflowDataStructureNaN'},
+
+    // getWorkflowNamespaceDataObject
+    {Name: 'cgetWorkflowNamespaceDataObject_validData', Actual: tst_con.cgetWorkflowNamespaceDataObject_validData, Expected: 'getWorkflowNamespaceDataObject_validData'},
+    {Name: 'cgetWorkflowNamespaceDataObject_inValidWorkflowDataStructureString', Actual: tst_con.cgetWorkflowNamespaceDataObject_inValidWorkflowDataStructureString, Expected: 'getWorkflowNamespaceDataObject_inValidWorkflowDataStructureString'},
+    {Name: 'cgetWorkflowNamespaceDataObject_inValidNamespaceToFindString', Actual: tst_con.cgetWorkflowNamespaceDataObject_inValidNamespaceToFindString, Expected: 'getWorkflowNamespaceDataObject_inValidNamespaceToFindString'},
+    {Name: 'cgetWorkflowNamespaceDataObject_inValidWorkflowDataStructureInteger', Actual: tst_con.cgetWorkflowNamespaceDataObject_inValidWorkflowDataStructureInteger, Expected: 'getWorkflowNamespaceDataObject_inValidWorkflowDataStructureInteger'},
+    {Name: 'cgetWorkflowNamespaceDataObject_inValidWorkflowDataStructureBoolean', Actual: tst_con.cgetWorkflowNamespaceDataObject_inValidWorkflowDataStructureBoolean, Expected: 'getWorkflowNamespaceDataObject_inValidWorkflowDataStructureBoolean'},
+    {Name: 'cgetWorkflowNamespaceDataObject_inValidNamespaceToFindInteger', Actual: tst_con.cgetWorkflowNamespaceDataObject_inValidNamespaceToFindInteger, Expected: 'getWorkflowNamespaceDataObject_inValidNamespaceToFindInteger'},
+    {Name: 'cgetWorkflowNamespaceDataObject_inValidNamespaceToFindBoolean', Actual: tst_con.cgetWorkflowNamespaceDataObject_inValidNamespaceToFindBoolean, Expected: 'getWorkflowNamespaceDataObject_inValidNamespaceToFindBoolean'},
+    {Name: 'cgetWorkflowNamespaceDataObject_validWorkflowDataStructureUndefined', Actual: tst_con.cgetWorkflowNamespaceDataObject_validWorkflowDataStructureUndefined, Expected: 'getWorkflowNamespaceDataObject_validWorkflowDataStructureUndefined'},
+    {Name: 'cgetWorkflowNamespaceDataObject_inValidWorkflowDataStructureNaN', Actual: tst_con.cgetWorkflowNamespaceDataObject_inValidWorkflowDataStructureNaN, Expected: 'getWorkflowNamespaceDataObject_inValidWorkflowDataStructureNaN'},
+    {Name: 'cgetWorkflowNamespaceDataObject_inValidNamespaceToFindUndefined', Actual: tst_con.cgetWorkflowNamespaceDataObject_inValidNamespaceToFindUndefined, Expected: 'getWorkflowNamespaceDataObject_inValidNamespaceToFindUndefined'},
+    {Name: 'cgetWorkflowNamespaceDataObject_inValidNamespaceToFindNaN', Actual: tst_con.cgetWorkflowNamespaceDataObject_inValidNamespaceToFindNaN, Expected: 'getWorkflowNamespaceDataObject_inValidNamespaceToFindNaN'},
+
+    // removePluginWorkflows
+    {Name: 'cremovePluginWorkflows_validPluginNameData', Actual: tst_con.cremovePluginWorkflows_validPluginNameData, Expected: 'removePluginWorkflows_validPluginNameData'},
+    {Name: 'cremovePluginWorkflows_inValidPluginNameString', Actual: tst_con.cremovePluginWorkflows_inValidPluginNameString, Expected: 'removePluginWorkflows_inValidPluginNameString'},
+    {Name: 'cremovePluginWorkflows_inValidPluginNameInteger', Actual: tst_con.cremovePluginWorkflows_inValidPluginNameInteger, Expected: 'removePluginWorkflows_inValidPluginNameInteger'},
+    {Name: 'cremovePluginWorkflows_inValidPluginNameBoolean', Actual: tst_con.cremovePluginWorkflows_inValidPluginNameBoolean, Expected: 'removePluginWorkflows_inValidPluginNameBoolean'},
+    {Name: 'cremovePluginWorkflows_inValidPluginNameUndefined', Actual: tst_con.cremovePluginWorkflows_inValidPluginNameUndefined, Expected: 'removePluginWorkflows_inValidPluginNameUndefined'},
+    {Name: 'cremovePluginWorkflows_inValidPluginNameNaN', Actual: tst_con.cremovePluginWorkflows_inValidPluginNameNaN, Expected: 'removePluginWorkflows_inValidPluginNameNaN'},
 
     /* auxiliaryArrayParsing */
 

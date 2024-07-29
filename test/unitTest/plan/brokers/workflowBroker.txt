@@ -7,10 +7,7 @@ input pluginName: string (The name of the current plugin these workflows belong 
 input pluginWorkflows: object (A JSON object that contains the plugin workflows that should be merged with the system workflows)
 output: boolean (True or False to indicate if the merge was successful or not)
 
-testName: addPluginWorkflows_inValidPluginNameString
-input pluginName: string (464gsdsfae8f46)
-input pluginWorkflows: object (A JSON object that contains the plugin workflows that should be merged with the system workflows)
-output: ?
+NOTE: addPluginWorkflows_inValidPluginNameString cant be used in this unit test.
 
 testName: addPluginWorkflows_inValidPluginWorkflowsString
 input pluginName: string (The name of the current plugin these workflows belong to)
@@ -298,9 +295,7 @@ testName: removePluginWorkflows_validData
 input pluginName: string (The name of the plugin that should have its workflows removed from the D-data structure)
 output: boolean (True or False to indicate if the removal of the data was completed successfully or not)
 
-testName: removePluginWorkflows_inValidPluginNameString
-input pluginName: string (464gsdsfae8f46)
-output: ?
+NOTE: removePluginWorkflows_inValidPluginNameString cant be used in this unit test.
 
 testName: removePluginWorkflows_inValidPluginNameNumber
 input pluginName: Number (123)
