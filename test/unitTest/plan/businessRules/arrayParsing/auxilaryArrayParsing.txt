@@ -62,10 +62,7 @@ input inputData: string (The name of the color that should be looked up)
 input inputMetaData: array<integer> (A default array, if the color isn't found)
 output: array<integer> (An array of integers that represent RGB values)
 
-testName: getNamedColorDataArray_inValidInputDataString
-input inputData: string (dfxg24346dfg)
-input inputMetaData: array<integer> (A default array, if the color isn't found)
-output: ?
+NOTE: getNamedColorDataArray_inValidInputDataString cant be used in this unit test.
 
 testName: getNamedColorDataArray_inValidInputMetaDataString
 input inputData: string (The name of the color that should be looked up)
@@ -132,24 +129,9 @@ input inputData: boolean (false)
 input inputMetaData: function (The function that should be used to do the search) (testDataBoolean)
 output: ?
 
-testName: doesArrayContainValue_inValidDataStorageInputMetaDataInteger
-input inputData: array<array<string|integer|boolean|float|object>,string|integer|boolean|float|object> (An array that contains the array that should be searched and the value that should be searched for in the array)
-input inputMetaData: integer (4567)
-output: ?
-
-testName: doesArrayContainValue_inValidDataStorageInputMetaDataBoolean
-input inputData: array<array<string|integer|boolean|float|object>,string|integer|boolean|float|object> (An array that contains the array that should be searched and the value that should be searched for in the array)
-input inputMetaData: boolean (false)
-output: ?
-
 testName: doesArrayContainValue_validDataInputDataObject
 input inputData: object ({"constants":"c,const","Generator":"g,gen,genrtr","List":"l,lst"})
 input inputMetaData: function (The function that should be used to do the search) (testDataObject)
-output: ?
-
-testName: doesArrayContainValue_validDataInputMetaDataFunction
-input inputData: array<array<string|integer|boolean|float|object>,string|integer|boolean|float|object> (An array that contains the array that should be searched and the value that should be searched for in the array)
-input inputMetaData: function ([C:\haystacks\test\unitTest\testData\functionTest.js - doesArrayContainValueTestFunction])
 output: ?
 
 testName: doesArrayContainValue_inValidInputDataUndefined
@@ -160,14 +142,4 @@ output: ?
 testName: doesArrayContainValue_inValidInputDataNaN
 input inputData: NaN
 input inputMetaData: function (The function that should be used to do the search)
-output: ?
-
-testName: doesArrayContainValue_inValidInputMetaDataUndefined
-input inputData: array<array<string|integer|boolean|float|object>,string|integer|boolean|float|object> (An array that contains the array that should be searched and the value that should be searched for in the array)
-input inputMetaData: undefined
-output: ?
-
-testName: doesArrayContainValue_inValidInputMetaDataNaN
-input inputData: array<array<string|integer|boolean|float|object>,string|integer|boolean|float|object> (An array that contains the array that should be searched and the value that should be searched for in the array)
-input inputMetaData: NaN
 output: ?

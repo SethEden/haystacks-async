@@ -205,7 +205,7 @@ async function initRulesLibrary() {
      [biz.cisFirstCharacterUpperCase]: (inputData, inputMetaData) => characterStringParsing.isFirstCharacterUpperCase(inputData, inputMetaData),
      [biz.creplaceCharacterAtIndexOfString]: (inputData, inputMetaData) => characterStringParsing.replaceCharacterAtIndexOfString(inputData, inputMetaData),
 
-      // ***********************************************
+     // ***********************************************
      // commandStringParsing rules in order
      // ***********************************************
      [biz.ccleanCommandInput]: (inputData, inputMetaData) => commandStringParsing.cleanCommandInput(inputData, inputMetaData),

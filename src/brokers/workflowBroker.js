@@ -308,26 +308,36 @@ async function removePluginWorkflows(pluginName) {
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // pluginName is:
   await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginNameIs + pluginName);
+  let pluginsLoadedList = D[sys.cpluginsLoaded];
+  let inputCheckFlag = false;
   let returnData = false;
   if (pluginName && typeof pluginName === wrd.cstring) {
-    let allPluginsWorkflowData = D[sys.cCommandWorkflows][wrd.cPlugins];
-    if (allPluginsWorkflowData) {
-      try {
-        delete allPluginsWorkflowData[pluginName];
-        returnData = true;
-      } catch (err) {
-        // ERROR: Unable to remove the plugin workflows for the specified plugin:
-        console.log(msg.cremovePluginWorkflowsMessage01 + pluginName);
-        // ERROR:
-        console.log(msg.cerrorMessage + err.message);
+    inputCheckFlag = pluginsLoadedList.some(plugin => plugin[0] === pluginName);
+  } else {
+    // WARNING: Plugin that is not loaded. Plugin name is: 
+    console.log();
+  }
+  if (inputCheckFlag === true) {
+    if (pluginName && typeof pluginName === wrd.cstring) {
+      let allPluginsWorkflowData = D[sys.cCommandWorkflows][wrd.cPlugins];
+      if (allPluginsWorkflowData) {
+        try {
+          delete allPluginsWorkflowData[pluginName];
+          returnData = true;
+        } catch (err) {
+          // ERROR: Unable to remove the plugin workflows for the specified plugin:
+          console.log(msg.cremovePluginWorkflowsMessage01 + pluginName);
+          // ERROR:
+          console.log(msg.cerrorMessage + err.message);
+        }
+      } else {
+        // ERROR: Unable to locate the plugins workflow data. Plugin:
+        console.log(msg.cremovePluginWorkflowsMessage02 + pluginName);
       }
     } else {
-      // ERROR: Unable to locate the plugins workflow data. Plugin:
-      console.log(msg.cremovePluginWorkflowsMessage02 + pluginName);
+      // ERROR: pluginName is an invalid value, pluginName is: 
+      console.log(msg.cErrorUnloadPluginMessage09, pluginName);
     }
-  } else {
-    // ERROR: pluginName is an invalid value, pluginName is: 
-    console.log(msg.cErrorUnloadPluginMessage09, pluginName);
   }
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);

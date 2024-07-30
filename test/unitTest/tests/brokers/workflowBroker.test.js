@@ -25,12 +25,6 @@
 
 // Internal imports
 import workflowBroker from '../../../../src/brokers/workflowBroker.js'
-import characterArrayParsing from '../../../../src/businessRules/rules/arrayParsing/characterArrayParsing.js';
-import characterStringParsing from '../../../../src/businessRules/rules/stringParsing/characterStringParsing.js'
-import fileStringParsing from '../../../../src/businessRules/rules/stringParsing/fileStringParsing.js';
-import fileOperations from '../../../../src/businessRules/rules/fileOperations.js';
-import stringParsingUtilities from '../../../../src/businessRules/rules/stringParsingUtilities.js';
-import main from '../../../../src/main.js';
 import D from '../../../../src/structures/data.js';
 import pluginDataFile from '../../testData/testPlugins/test-plugin-one/structures/pluginData.js'
 import * as tst_con from '../resources/constants/test.constants.js';
@@ -40,7 +34,7 @@ import * as tst_man from '../../testData/mainTest.js';
 // External imports
 import hayConst from '@haystacks/constants';
 import { describe, expect, test } from '@jest/globals';
-const { bas, biz, cfg, sys, wrd} = hayConst;
+const {cfg, sys, wrd} = hayConst;
 // Cleaning sequence
 for (let key in D) {
     if (D.hasOwnProperty(key)) {
@@ -1904,9 +1898,9 @@ describe(tst_con.cremovePluginWorkflows, () => {
         D[sys.cCommandsAliases] = {};
         D[sys.cCommandWorkflows] = {};
         D[wrd.cThemes] = {};
-        D[sys.cpluginsLoaded] = [{}];
         D[wrd.cCommands] = {};
         let pluginName = tst_man.ctestPluginOne;
+        D[sys.cpluginsLoaded] = [[pluginName, true]];
         let pluginWorkflows = pluginData[wrd.cdata][sys.cCommandWorkflows];
         await workflowBroker.addPluginWorkflows(pluginName, pluginWorkflows);
 

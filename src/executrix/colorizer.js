@@ -342,19 +342,19 @@ async function colorizeMessage(message, className, callerFunctionName, debugFile
   }
 
   if (errorFound === false) {
-    aggregateUnderlineBoldArray = await aggregateStyleSetting(debugFilesModuleFontStyleSetting, debugFunctionsModuleFontStyleSetting, true);
+    aggregateUnderlineBoldArray = await aggregateStyleSetting(debugFilesModuleFontStyleSetting, debugFunctionsModuleFontStyleSetting, [0, 255, 255], true);
     aggregateModuleFontStyleUnderline = aggregateUnderlineBoldArray[0];
     aggregateModuleFontStyleBold = aggregateUnderlineBoldArray[1];
   
-    aggregateUnderlineBoldArray = await aggregateStyleSetting(debugFilesFunctionFontStyleSetting, debugFunctionsFunctionFontStyleSetting, true);
+    aggregateUnderlineBoldArray = await aggregateStyleSetting(debugFilesFunctionFontStyleSetting, debugFunctionsFunctionFontStyleSetting, [0, 255, 255], true);
     aggregateFunctionFontStyleUnderline = aggregateUnderlineBoldArray[0];
     aggregateFunctionFontStyleBold = aggregateUnderlineBoldArray[1];
   
-    aggregateUnderlineBoldArray = await aggregateStyleSetting(debugFilesMessageFontStyleSetting, debugFunctionsMessageFontStyleSetting, true);
+    aggregateUnderlineBoldArray = await aggregateStyleSetting(debugFilesMessageFontStyleSetting, debugFunctionsMessageFontStyleSetting, [0, 255, 255], true);
     aggregateMessageFontStyleUnderline = aggregateUnderlineBoldArray[0];
     aggregateMessageFontStyleBold = aggregateUnderlineBoldArray[1];
   
-    aggregateUnderlineBoldArray = await aggregateStyleSetting(debugFilesDataFontStyleSetting, debugFunctionsDataFontStyleSetting, true);
+    aggregateUnderlineBoldArray = await aggregateStyleSetting(debugFilesDataFontStyleSetting, debugFunctionsDataFontStyleSetting, [0, 255, 255], true);
     aggregateDataFontStyleUnderline = aggregateUnderlineBoldArray[0];
     aggregateDataFontStyleBold = aggregateUnderlineBoldArray[1];
   
@@ -602,29 +602,42 @@ async function getColorStyleSettingFromSetting(settingValue, defaultColorArray) 
  * All of this data should have been loaded from the Colors.csv file.
  * @param {string} colorName The name of the color who's RGB value we should look up from the color data structure.
  * @param {array<integer>} defaultColorArray The default color that should be used.
- * @return {array<integer>} An array of integers that represent RGB values.
+ * @return {array<integer>|boolean} An array of integers that represent RGB values or false indicating an error.
  * @author Seth Hollingsead
  * @date 2022/01/31
  */
 async function getNamedColorData(colorName, defaultColorArray) {
-  // let functionName = getNamedColorData.name;
+  let functionName = getNamedColorData.name;
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   // console.log(`colorName is: ${colorName}`);
-  let returnColorData = defaultColorArray;
-  if (D[wrd.ccolors] !== undefined) {
-    if (D[wrd.ccolors][sys.cColorData] !== undefined) {
-      if (D[wrd.ccolors][sys.cColorData][colorName] !== undefined) {
-        returnColorData[clr.cRed] = D[wrd.ccolors][sys.cColorData][colorName][clr.cRed];
-        returnColorData[clr.cGreen] = D[wrd.ccolors][sys.cColorData][colorName][clr.cGreen];
-        returnColorData[clr.cBlue] = D[wrd.ccolors][sys.cColorData][colorName][clr.cBlue];
+  // console.log(`defaultColorArray is: ${defaultColorArray}`);
+  let returnColorData = false;
+  if (colorName && typeof colorName === wrd.cstring) {
+    if (Array.isArray(defaultColorArray) && defaultColorArray.every(item => typeof item === wrd.cnumber)) {
+      returnColorData = [];
+      returnColorData = defaultColorArray;
+      if (D[wrd.ccolors] !== undefined) {
+        if (D[wrd.ccolors][sys.cColorData] !== undefined) {
+          if (D[wrd.ccolors][sys.cColorData][colorName] !== undefined) {
+            returnColorData[0] = D[wrd.ccolors][sys.cColorData][colorName][clr.cRed];
+            returnColorData[1] = D[wrd.ccolors][sys.cColorData][colorName][clr.cGreen];
+            returnColorData[2] = D[wrd.ccolors][sys.cColorData][colorName][clr.cBlue];
+          } else {
+            returnColorData = defaultColorArray;
+          }
+        } else {
+          returnColorData = defaultColorArray;
+        }
       } else {
         returnColorData = defaultColorArray;
       }
     } else {
-      returnColorData = defaultColorArray;
+      // ERROR: Invalid input, defaultColorArray is:
+      console.log(msg.cErrorGetNamedColorDataMessage01 + defaultColorArray);
     }
   } else {
-    returnColorData = defaultColorArray;
+    // ERROR: Invalid input, colorName is:
+    console.log(msg.cErrorGetNamedColorDataMessage02 + colorName);
   }
   // console.log('returnColorData is: ' + JSON.stringify(returnColorData));
   // console.log(`END ${namespacePrefix}${functionName} function`);
@@ -641,7 +654,7 @@ async function getNamedColorData(colorName, defaultColorArray) {
  * @date 2022/01/31
  */
 async function setUnderlineFontStyleOnMessageComponentAccordingToSetting(messageComponent, underlineSettingValue) {
-  // let functionName = setUnderlineFontStyleOnMessageComponentAccordingToSetting.name;
+  let functionName = setUnderlineFontStyleOnMessageComponentAccordingToSetting.name;
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   // console.log(`messageComponent is: ${messageComponent}`);
   // console.log(`underlineSettingValue is: ${underlineSettingValue}`);
@@ -649,7 +662,7 @@ async function setUnderlineFontStyleOnMessageComponentAccordingToSetting(message
   if (underlineSettingValue === true) {
     let colorizeLogsEnabled = await configurator.getConfigurationSetting(wrd.csystem, cfg.cenableColorizedConsoleLogs);
     if (colorizeLogsEnabled === true) {
-      returnMessageComponent.chalk.underline(returnMessageComponent);
+      returnMessageComponent = chalk.underline(returnMessageComponent);
     }
   } // End-if (underlineSettingValue === true)
   // console.log('returnMessageComponent is: ' + returnMessageComponent);

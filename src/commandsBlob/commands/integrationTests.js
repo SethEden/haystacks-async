@@ -194,7 +194,6 @@ async function validateConstants(inputData, inputMetaData) {
       } // End-if (await configurator.getConfigurationSetting(wrd.csystem, cfg.cenablePluginLoader))
 
       // validationArray is:
-      console.log(msg.cvalidationArrayIs, validationArray)
       await loggers.consoleLog(namespacePrefix + functionName, msg.cvalidationArrayIs + JSON.stringify(validationArray));
 
       // Phase1 Constants Validation

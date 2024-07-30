@@ -11,7 +11,7 @@
 // External imports
 import hayConst from '@haystacks/constants';
 
-const {bas, cfg, fnc, gen, msg, phn, sys, wrd} = hayConst;
+const {bas, biz, cfg, fnc, gen, msg, phn, sys, wrd} = hayConst;
 
 
 // testConstantsValidationMetadata
@@ -106,6 +106,9 @@ export const cgetWorkflowNamespaceDataObject = wrd.cget + wrd.cWorkflow + wrd.cN
 export const cremovePluginWorkflows = wrd.cremove + wrd.cPlugin + wrd.cWorkflows; // removePluginWorkflows
 
 /* auxiliaryArrayParsing */
+export const cparseColorRangeInputs = biz.cparseColorRangeInputs; // parseColorRangeInputs
+export const cgetNamedColorDataArray = biz.cgetNamedColorDataArray; // getNamedColorDataArray
+export const cdoesArrayContainValue = biz.cdoesArrayContainValue; // doesArrayContainValu
 
 /* characterArrayParsing */
 
@@ -118,6 +121,8 @@ export const cremovePluginWorkflows = wrd.cremove + wrd.cPlugin + wrd.cWorkflows
 /* pathArrayParsing */
 
 /* wordArrayParsing */
+
+/* auxiliaryStringParsing */
 
 /* characterStringParsing */
 
@@ -921,6 +926,44 @@ export const cremovePluginWorkflows_inValidPluginNameUndefined = cremovePluginWo
 export const cremovePluginWorkflows_inValidPluginNameNaN = cremovePluginWorkflows + bas.cUnderscore + wrd.cin + wrd.cValid + wrd.cPlugin + wrd.cName + "NaN"; // removePluginWorkflows_inValidPluginNameNaN
 
 /* auxiliaryArrayParsing */
+// parseColorRangeInputs
+export const cparseColorRangeInputs_validData = cparseColorRangeInputs + bas.cUnderscore + wrd.cvalid + wrd.cData; // parseColorRangeInputs_validData
+export const cparseColorRangeInputs_inValidInputDataString = cparseColorRangeInputs + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + wrd.cString; // parseColorRangeInputs_inValidInputDataString
+export const cparseColorRangeInputs_inValidInputMetaDataString = cparseColorRangeInputs + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputMetaData + wrd.cString; // parseColorRangeInputs_inValidInputMetaDataString
+export const cparseColorRangeInputs_validInputDataInteger = cparseColorRangeInputs + bas.cUnderscore + wrd.cvalid + msg.cInputData + wrd.cInteger; // parseColorRangeInputs_inValidInputDataInteger
+export const cparseColorRangeInputs_inValidInputDataBoolean = cparseColorRangeInputs + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + wrd.cBoolean; // parseColorRangeInputs_inValidInputDataBoolean
+export const cparseColorRangeInputs_validInputMetaDataInteger = cparseColorRangeInputs + bas.cUnderscore + wrd.cvalid + msg.cInputMetaData + wrd.cInteger; // parseColorRangeInputs_inValidInputMetaDataInteger
+export const cparseColorRangeInputs_inValidInputMetaDataBoolean = cparseColorRangeInputs + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputMetaData + wrd.cBoolean; // parseColorRangeInputs_inValidInputMetaDataBoolean
+export const cparseColorRangeInputs_inValidInputDataUndefined = cparseColorRangeInputs + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + 'Undefined'; // parseColorRangeInputs_inValidInputDataUndefined
+export const cparseColorRangeInputs_inValidInputDataNaN = cparseColorRangeInputs + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + 'NaN'; // parseColorRangeInputs_inValidInputDataNaN
+export const cparseColorRangeInputs_inValidInputMetaDataUndefined = cparseColorRangeInputs + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputMetaData + 'Undefined'; // parseColorRangeInputs_inValidInputMetaDataUndefined
+export const cparseColorRangeInputs_inValidInputMetaDataNaN = cparseColorRangeInputs + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputMetaData + 'NaN'; // parseColorRangeInputs_inValidInputMetaDataNaN
+
+// getNamedColorDataArray
+export const cgetNamedColorDataArray_validData = cgetNamedColorDataArray + bas.cUnderscore + wrd.cvalid + wrd.cData; // getNamedColorDataArray_validData
+export const cgetNamedColorDataArray_inValidInputDataString = cgetNamedColorDataArray + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + wrd.cString; // getNamedColorDataArray_inValidInputDataString
+export const cgetNamedColorDataArray_inValidInputMetaDataString = cgetNamedColorDataArray + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputMetaData + wrd.cString; // getNamedColorDataArray_inValidInputMetaDataString
+export const cgetNamedColorDataArray_inValidInputDataInteger = cgetNamedColorDataArray + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + wrd.cInteger; // getNamedColorDataArray_inValidInputDataInteger
+export const cgetNamedColorDataArray_inValidInputDataBoolean = cgetNamedColorDataArray + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + wrd.cBoolean; // getNamedColorDataArray_inValidInputDataBoolean
+export const cgetNamedColorDataArray_inValidInputMetaDataInteger = cgetNamedColorDataArray + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputMetaData + wrd.cInteger; // getNamedColorDataArray_inValidInputMetaDataInteger
+export const cgetNamedColorDataArray_inValidInputMetaDataBoolean = cgetNamedColorDataArray + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputMetaData + wrd.cBoolean; // getNamedColorDataArray_inValidInputMetaDataBoolean
+export const cgetNamedColorDataArray_inValidInputDataUndefined = cgetNamedColorDataArray + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + 'Undefined'; // getNamedColorDataArray_inValidInputDataUndefined
+export const cgetNamedColorDataArray_inValidInputDataNaN = cgetNamedColorDataArray + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + 'NaN'; // getNamedColorDataArray_inValidInputDataNaN
+export const cgetNamedColorDataArray_inValidInputMetaDataUndefined = cgetNamedColorDataArray + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputMetaData + 'Undefined'; // getNamedColorDataArray_inValidInputMetaDataUndefined
+export const cgetNamedColorDataArray_inValidInputMetaDataNaN = cgetNamedColorDataArray + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputMetaData + 'NaN'; // getNamedColorDataArray_inValidInputMetaDataNaN
+
+// doesArrayContainValue
+export const cdoesArrayContainValue_validData = cdoesArrayContainValue + bas.cUnderscore + wrd.cvalid + wrd.cData; // doesArrayContainValue_validData
+export const cdoesArrayContainValue_inValidInputDataString = cdoesArrayContainValue + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + wrd.cString; // doesArrayContainValue_inValidInputDataString
+export const cdoesArrayContainValue_inValidInputMetaDataString = cdoesArrayContainValue + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputMetaData + wrd.cString; // doesArrayContainValue_inValidInputMetaDataString
+export const cdoesArrayContainValue_inValidInputDataInteger = cdoesArrayContainValue + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + wrd.cInteger; // doesArrayContainValue_inValidInputDataInteger
+export const cdoesArrayContainValue_inValidInputDataBoolean = cdoesArrayContainValue + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + wrd.cBoolean; // doesArrayContainValue_inValidInputDataBoolean
+export const cdoesArrayContainValue_inValidInputMetaDataInteger = cdoesArrayContainValue + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputMetaData + wrd.cInteger; // doesArrayContainValue_inValidInputMetaDataInteger
+export const cdoesArrayContainValue_inValidInputMetaDataBoolean = cdoesArrayContainValue + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputMetaData + wrd.cBoolean; // doesArrayContainValue_inValidInputMetaDataBoolean
+export const cdoesArrayContainValue_inValidInputDataUndefined = cdoesArrayContainValue + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + 'Undefined'; // doesArrayContainValue_inValidInputDataUndefined
+export const cdoesArrayContainValue_inValidInputDataNaN = cdoesArrayContainValue + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + 'NaN'; // doesArrayContainValue_inValidInputDataNaN
+export const cdoesArrayContainValue_inValidInputMetaDataUndefined = cdoesArrayContainValue + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputMetaData + 'Undefined'; // doesArrayContainValue_inValidInputMetaDataUndefined
+export const cdoesArrayContainValue_inValidInputMetaDataNaN = cdoesArrayContainValue + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputMetaData + 'NaN'; // doesArrayContainValue_inValidInputMetaDataNaN
 
 /* characterArrayParsing */
 
@@ -933,6 +976,8 @@ export const cremovePluginWorkflows_inValidPluginNameNaN = cremovePluginWorkflow
 /* pathArrayParsing */
 
 /* wordArrayParsing */
+
+/* auxiliaryStringParsing */
 
 /* characterStringParsing */
 

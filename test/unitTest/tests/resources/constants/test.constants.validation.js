@@ -110,7 +110,10 @@ export const testConstantsValidation = [
     {Name: 'cremovePluginWorkflows', Actual: tst_con.cremovePluginWorkflows, Expected: 'removePluginWorkflows'},
 
     /* auxiliaryArrayParsing */
-
+    {Name: 'cparseColorRangeInputs', Actual: tst_con.cparseColorRangeInputs, Expected: 'parseColorRangeInputs'},
+    {Name: 'cgetNamedColorDataArray', Actual: tst_con.cgetNamedColorDataArray, Expected: 'getNamedColorDataArray'},
+    {Name: 'cdoesArrayContainValue', Actual: tst_con.cdoesArrayContainValue, Expected: 'doesArrayContainValue'},
+    
     /* characterArrayParsing */
 
     /* commandArrayParsing */
@@ -902,7 +905,45 @@ export const testConstantsValidation = [
     {Name: 'cremovePluginWorkflows_inValidPluginNameNaN', Actual: tst_con.cremovePluginWorkflows_inValidPluginNameNaN, Expected: 'removePluginWorkflows_inValidPluginNameNaN'},
 
     /* auxiliaryArrayParsing */
+    // parseColorRangeInputs
+    {Name: 'cparseColorRangeInputs_validData', Actual: tst_con.cparseColorRangeInputs_validData, Expected: 'parseColorRangeInputs_validData'},
+    {Name: 'cparseColorRangeInputs_inValidInputDataString', Actual: tst_con.cparseColorRangeInputs_inValidInputDataString, Expected: 'parseColorRangeInputs_inValidInputDataString'},
+    {Name: 'cparseColorRangeInputs_inValidInputMetaDataString', Actual: tst_con.cparseColorRangeInputs_inValidInputMetaDataString, Expected: 'parseColorRangeInputs_inValidInputMetaDataString'},
+    {Name: 'cparseColorRangeInputs_validInputDataInteger', Actual: tst_con.cparseColorRangeInputs_validInputDataInteger, Expected: 'parseColorRangeInputs_validInputDataInteger'},
+    {Name: 'cparseColorRangeInputs_inValidInputDataBoolean', Actual: tst_con.cparseColorRangeInputs_inValidInputDataBoolean, Expected: 'parseColorRangeInputs_inValidInputDataBoolean'},
+    {Name: 'cparseColorRangeInputs_validInputMetaDataInteger', Actual: tst_con.cparseColorRangeInputs_validInputMetaDataInteger, Expected: 'parseColorRangeInputs_validInputMetaDataInteger'},
+    {Name: 'cparseColorRangeInputs_inValidInputMetaDataBoolean', Actual: tst_con.cparseColorRangeInputs_inValidInputMetaDataBoolean, Expected: 'parseColorRangeInputs_inValidInputMetaDataBoolean'},
+    {Name: 'cparseColorRangeInputs_inValidInputDataUndefined', Actual: tst_con.cparseColorRangeInputs_inValidInputDataUndefined, Expected: 'parseColorRangeInputs_inValidInputDataUndefined'},
+    {Name: 'cparseColorRangeInputs_inValidInputDataNaN', Actual: tst_con.cparseColorRangeInputs_inValidInputDataNaN, Expected: 'parseColorRangeInputs_inValidInputDataNaN'},
+    {Name: 'cparseColorRangeInputs_inValidInputMetaDataUndefined', Actual: tst_con.cparseColorRangeInputs_inValidInputMetaDataUndefined, Expected: 'parseColorRangeInputs_inValidInputMetaDataUndefined'},
+    {Name: 'cparseColorRangeInputs_inValidInputMetaDataNaN', Actual: tst_con.cparseColorRangeInputs_inValidInputMetaDataNaN, Expected: 'parseColorRangeInputs_inValidInputMetaDataNaN'},
 
+    // getNamedColorDataArray
+    {Name: 'cgetNamedColorDataArray_validData', Actual: tst_con.cgetNamedColorDataArray_validData, Expected: 'getNamedColorDataArray_validData'},
+    {Name: 'cgetNamedColorDataArray_inValidInputDataString', Actual: tst_con.cgetNamedColorDataArray_inValidInputDataString, Expected: 'getNamedColorDataArray_inValidInputDataString'},
+    {Name: 'cgetNamedColorDataArray_inValidInputMetaDataString', Actual: tst_con.cgetNamedColorDataArray_inValidInputMetaDataString, Expected: 'getNamedColorDataArray_inValidInputMetaDataString'},
+    {Name: 'cgetNamedColorDataArray_inValidInputDataInteger', Actual: tst_con.cgetNamedColorDataArray_inValidInputDataInteger, Expected: 'getNamedColorDataArray_inValidInputDataInteger'},
+    {Name: 'cgetNamedColorDataArray_inValidInputDataBoolean', Actual: tst_con.cgetNamedColorDataArray_inValidInputDataBoolean, Expected: 'getNamedColorDataArray_inValidInputDataBoolean'},
+    {Name: 'cgetNamedColorDataArray_inValidInputMetaDataInteger', Actual: tst_con.cgetNamedColorDataArray_inValidInputMetaDataInteger, Expected: 'getNamedColorDataArray_inValidInputMetaDataInteger'},
+    {Name: 'cgetNamedColorDataArray_inValidInputMetaDataBoolean', Actual: tst_con.cgetNamedColorDataArray_inValidInputMetaDataBoolean, Expected: 'getNamedColorDataArray_inValidInputMetaDataBoolean'},
+    {Name: 'cgetNamedColorDataArray_inValidInputDataUndefined', Actual: tst_con.cgetNamedColorDataArray_inValidInputDataUndefined, Expected: 'getNamedColorDataArray_inValidInputDataUndefined'},
+    {Name: 'cgetNamedColorDataArray_inValidInputDataNaN', Actual: tst_con.cgetNamedColorDataArray_inValidInputDataNaN, Expected: 'getNamedColorDataArray_inValidInputDataNaN'},
+    {Name: 'cgetNamedColorDataArray_inValidInputMetaDataUndefined', Actual: tst_con.cgetNamedColorDataArray_inValidInputMetaDataUndefined, Expected: 'getNamedColorDataArray_inValidInputMetaDataUndefined'},
+    {Name: 'cgetNamedColorDataArray_inValidInputMetaDataNaN', Actual: tst_con.cgetNamedColorDataArray_inValidInputMetaDataNaN, Expected: 'getNamedColorDataArray_inValidInputMetaDataNaN'},
+
+    // doesArrayContainValue
+    {Name: 'cdoesArrayContainValue_validData', Actual: tst_con.cdoesArrayContainValue_validData, Expected: 'doesArrayContainValue_validData'},
+    {Name: 'cdoesArrayContainValue_inValidInputDataString', Actual: tst_con.cdoesArrayContainValue_inValidInputDataString, Expected: 'doesArrayContainValue_inValidInputDataString'},
+    {Name: 'cdoesArrayContainValue_inValidInputMetaDataString', Actual: tst_con.cdoesArrayContainValue_inValidInputMetaDataString, Expected: 'doesArrayContainValue_inValidInputMetaDataString'},
+    {Name: 'cdoesArrayContainValue_inValidInputDataInteger', Actual: tst_con.cdoesArrayContainValue_inValidInputDataInteger, Expected: 'doesArrayContainValue_inValidInputDataInteger'},
+    {Name: 'cdoesArrayContainValue_inValidInputDataBoolean', Actual: tst_con.cdoesArrayContainValue_inValidInputDataBoolean, Expected: 'doesArrayContainValue_inValidInputDataBoolean'},
+    {Name: 'cdoesArrayContainValue_inValidInputMetaDataInteger', Actual: tst_con.cdoesArrayContainValue_inValidInputMetaDataInteger, Expected: 'doesArrayContainValue_inValidInputMetaDataInteger'},
+    {Name: 'cdoesArrayContainValue_inValidInputMetaDataBoolean', Actual: tst_con.cdoesArrayContainValue_inValidInputMetaDataBoolean, Expected: 'doesArrayContainValue_inValidInputMetaDataBoolean'},
+    {Name: 'cdoesArrayContainValue_inValidInputDataUndefined', Actual: tst_con.cdoesArrayContainValue_inValidInputDataUndefined, Expected: 'doesArrayContainValue_inValidInputDataUndefined'},
+    {Name: 'cdoesArrayContainValue_inValidInputDataNaN', Actual: tst_con.cdoesArrayContainValue_inValidInputDataNaN, Expected: 'doesArrayContainValue_inValidInputDataNaN'},
+    {Name: 'cdoesArrayContainValue_inValidInputMetaDataUndefined', Actual: tst_con.cdoesArrayContainValue_inValidInputMetaDataUndefined, Expected: 'doesArrayContainValue_inValidInputMetaDataUndefined'},
+    {Name: 'cdoesArrayContainValue_inValidInputMetaDataNaN', Actual: tst_con.cdoesArrayContainValue_inValidInputMetaDataNaN, Expected: 'doesArrayContainValue_inValidInputMetaDataNaN'},
+    
     /* characterArrayParsing */
 
     /* commandArrayParsing */
