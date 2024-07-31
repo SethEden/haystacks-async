@@ -115,6 +115,12 @@ export const testConstantsValidation = [
     {Name: 'cdoesArrayContainValue', Actual: tst_con.cdoesArrayContainValue, Expected: 'doesArrayContainValue'},
     
     /* characterArrayParsing */
+    {Name: 'creplaceCharacterWithCharacter', Actual: tst_con.creplaceCharacterWithCharacter, Expected: 'replaceCharacterWithCharacter'},
+    {Name: 'cdoesArrayContainCharacter', Actual: tst_con.cdoesArrayContainCharacter, Expected: 'doesArrayContainCharacter'},
+    {Name: 'cremoveCharacterFromArray', Actual: tst_con.cremoveCharacterFromArray, Expected: 'removeCharacterFromArray'},
+    {Name: 'creplaceCharacterAtIndex', Actual: tst_con.creplaceCharacterAtIndex, Expected: 'replaceCharacterAtIndex'},
+
+
 
     /* commandArrayParsing */
 
@@ -945,6 +951,58 @@ export const testConstantsValidation = [
     {Name: 'cdoesArrayContainValue_inValidInputMetaDataNaN', Actual: tst_con.cdoesArrayContainValue_inValidInputMetaDataNaN, Expected: 'doesArrayContainValue_inValidInputMetaDataNaN'},
     
     /* characterArrayParsing */
+    // replaceCharacterWithCharacter
+    {Name: 'creplaceCharacterWithCharacter_validData', Actual: tst_con.creplaceCharacterWithCharacter_validData, Expected: 'replaceCharacterWithCharacter_validData'},
+    {Name: 'creplaceCharacterWithCharacter_inValidInputMetaDataString', Actual: tst_con.creplaceCharacterWithCharacter_inValidInputMetaDataString, Expected: 'replaceCharacterWithCharacter_inValidInputMetaDataString'},
+    {Name: 'creplaceCharacterWithCharacter_inValidInputDataInteger', Actual: tst_con.creplaceCharacterWithCharacter_inValidInputDataInteger, Expected: 'replaceCharacterWithCharacter_inValidInputDataInteger'},
+    {Name: 'creplaceCharacterWithCharacter_inValidInputDataBoolean', Actual: tst_con.creplaceCharacterWithCharacter_inValidInputDataBoolean, Expected: 'replaceCharacterWithCharacter_inValidInputDataBoolean'},
+    {Name: 'creplaceCharacterWithCharacter_inValidInputMetaDataInteger', Actual: tst_con.creplaceCharacterWithCharacter_inValidInputMetaDataInteger, Expected: 'replaceCharacterWithCharacter_inValidInputMetaDataInteger'},
+    {Name: 'creplaceCharacterWithCharacter_inValidInputMetaDataBoolean', Actual: tst_con.creplaceCharacterWithCharacter_inValidInputMetaDataBoolean, Expected: 'replaceCharacterWithCharacter_inValidInputMetaDataBoolean'},
+    {Name: 'creplaceCharacterWithCharacter_inValidInputDataUndefined', Actual: tst_con.creplaceCharacterWithCharacter_inValidInputDataUndefined, Expected: 'replaceCharacterWithCharacter_inValidInputDataUndefined'},
+    {Name: 'creplaceCharacterWithCharacter_inValidInputDataNaN', Actual: tst_con.creplaceCharacterWithCharacter_inValidInputDataNaN, Expected: 'replaceCharacterWithCharacter_inValidInputDataNaN'},
+    {Name: 'creplaceCharacterWithCharacter_inValidInputMetaDataUndefined', Actual: tst_con.creplaceCharacterWithCharacter_inValidInputMetaDataUndefined, Expected: 'replaceCharacterWithCharacter_inValidInputMetaDataUndefined'},
+    {Name: 'creplaceCharacterWithCharacter_inValidInputMetaDataNaN', Actual: tst_con.creplaceCharacterWithCharacter_inValidInputMetaDataNaN, Expected: 'replaceCharacterWithCharacter_inValidInputMetaDataNaN'},
+
+    // doesArrayContainCharacter
+    {Name: 'cdoesArrayContainCharacter_validData', Actual: tst_con.cdoesArrayContainCharacter_validData, Expected: 'doesArrayContainCharacter_validData'},
+    {Name: 'cdoesArrayContainCharacter_inValidInputMetaDataString', Actual: tst_con.cdoesArrayContainCharacter_inValidInputMetaDataString, Expected: 'doesArrayContainCharacter_inValidInputMetaDataString'},
+    {Name: 'cdoesArrayContainCharacter_inValidInputMetaDataInteger', Actual: tst_con.cdoesArrayContainCharacter_inValidInputMetaDataInteger, Expected: 'doesArrayContainCharacter_inValidInputMetaDataInteger'},
+    {Name: 'cdoesArrayContainCharacter_inValidInputMetaDataBoolean', Actual: tst_con.cdoesArrayContainCharacter_inValidInputMetaDataBoolean, Expected: 'doesArrayContainCharacter_inValidInputMetaDataBoolean'},
+    {Name: 'cdoesArrayContainCharacter_inValidInputDataUndefined', Actual: tst_con.cdoesArrayContainCharacter_inValidInputDataUndefined, Expected: 'doesArrayContainCharacter_inValidInputDataUndefined'},
+    {Name: 'cdoesArrayContainCharacter_inValidInputDataNaN', Actual: tst_con.cdoesArrayContainCharacter_inValidInputDataNaN, Expected: 'doesArrayContainCharacter_inValidInputDataNaN'},
+    {Name: 'cdoesArrayContainCharacter_inValidInputMetaDataUndefined', Actual: tst_con.cdoesArrayContainCharacter_inValidInputMetaDataUndefined, Expected: 'doesArrayContainCharacter_inValidInputMetaDataUndefined'},
+    {Name: 'cdoesArrayContainCharacter_inValidInputMetaDataNaN', Actual: tst_con.cdoesArrayContainCharacter_inValidInputMetaDataNaN, Expected: 'doesArrayContainCharacter_inValidInputMetaDataNaN'},
+
+    // removeCharacterFromArray
+    {Name: 'cremoveCharacterFromArray_validData', Actual: tst_con.cremoveCharacterFromArray_validData, Expected: 'removeCharacterFromArray_validData'},
+    {Name: 'cremoveCharacterFromArray_inValidInputDataString', Actual: tst_con.cremoveCharacterFromArray_inValidInputDataString, Expected: 'removeCharacterFromArray_inValidInputDataString'},
+    {Name: 'cremoveCharacterFromArray_inValidInputMetaDataString', Actual: tst_con.cremoveCharacterFromArray_inValidInputMetaDataString, Expected: 'removeCharacterFromArray_inValidInputMetaDataString'},
+    {Name: 'cremoveCharacterFromArray_inValidInputDataInteger', Actual: tst_con.cremoveCharacterFromArray_inValidInputDataInteger, Expected: 'removeCharacterFromArray_inValidInputDataInteger'},
+    {Name: 'cremoveCharacterFromArray_inValidInputDataBoolean', Actual: tst_con.cremoveCharacterFromArray_inValidInputDataBoolean, Expected: 'removeCharacterFromArray_inValidInputDataBoolean'},
+    {Name: 'cremoveCharacterFromArray_inValidInputMetaDataInteger', Actual: tst_con.cremoveCharacterFromArray_inValidInputMetaDataInteger, Expected: 'removeCharacterFromArray_inValidInputMetaDataInteger'},
+    {Name: 'cremoveCharacterFromArray_inValidInputMetaDataBoolean', Actual: tst_con.cremoveCharacterFromArray_inValidInputMetaDataBoolean, Expected: 'removeCharacterFromArray_inValidInputMetaDataBoolean'},
+    {Name: 'cremoveCharacterFromArray_inValidInputDataUndefined', Actual: tst_con.cremoveCharacterFromArray_inValidInputDataUndefined, Expected: 'removeCharacterFromArray_inValidInputDataUndefined'},
+    {Name: 'cremoveCharacterFromArray_inValidInputDataNaN', Actual: tst_con.cremoveCharacterFromArray_inValidInputDataNaN, Expected: 'removeCharacterFromArray_inValidInputDataNaN'},
+    {Name: 'cremoveCharacterFromArray_inValidInputMetaDataUndefined', Actual: tst_con.cremoveCharacterFromArray_inValidInputMetaDataUndefined, Expected: 'removeCharacterFromArray_inValidInputMetaDataUndefined'},
+    {Name: 'cremoveCharacterFromArray_inValidInputMetaDataNaN', Actual: tst_con.cremoveCharacterFromArray_inValidInputMetaDataNaN, Expected: 'removeCharacterFromArray_inValidInputMetaDataNaN'},
+
+    // replaceCharacterAtIndex
+    {Name: 'creplaceCharacterAtIndex_validData', Actual: tst_con.creplaceCharacterAtIndex_validData, Expected: 'replaceCharacterAtIndex_validData'},
+    {Name: 'creplaceCharacterAtIndex_inValidInputMetaDataString', Actual: tst_con.creplaceCharacterAtIndex_inValidInputMetaDataString, Expected: 'replaceCharacterAtIndex_inValidInputMetaDataString'},
+    {Name: 'creplaceCharacterAtIndex_inValidInputDataInteger', Actual: tst_con.creplaceCharacterAtIndex_inValidInputDataInteger, Expected: 'replaceCharacterAtIndex_inValidInputDataInteger'},
+    {Name: 'creplaceCharacterAtIndex_inValidInputDataBoolean', Actual: tst_con.creplaceCharacterAtIndex_inValidInputDataBoolean, Expected: 'replaceCharacterAtIndex_inValidInputDataBoolean'},
+    {Name: 'creplaceCharacterAtIndex_inValidInputMetaDataInteger', Actual: tst_con.creplaceCharacterAtIndex_inValidInputMetaDataInteger, Expected: 'replaceCharacterAtIndex_inValidInputMetaDataInteger'},
+    {Name: 'creplaceCharacterAtIndex_inValidInputMetaDataBoolean', Actual: tst_con.creplaceCharacterAtIndex_inValidInputMetaDataBoolean, Expected: 'replaceCharacterAtIndex_inValidInputMetaDataBoolean'},
+    {Name: 'creplaceCharacterAtIndex_inValidInputDataUndefined', Actual: tst_con.creplaceCharacterAtIndex_inValidInputDataUndefined, Expected: 'replaceCharacterAtIndex_inValidInputDataUndefined'},
+    {Name: 'creplaceCharacterAtIndex_inValidInputDataNaN', Actual: tst_con.creplaceCharacterAtIndex_inValidInputDataNaN, Expected: 'replaceCharacterAtIndex_inValidInputDataNaN'},
+    {Name: 'creplaceCharacterAtIndex_inValidInputMetaDataUndefined', Actual: tst_con.creplaceCharacterAtIndex_inValidInputMetaDataUndefined, Expected: 'replaceCharacterAtIndex_inValidInputMetaDataUndefined'},
+    {Name: 'creplaceCharacterAtIndex_inValidInputMetaDataNaN', Actual: tst_con.creplaceCharacterAtIndex_inValidInputMetaDataNaN, Expected: 'replaceCharacterAtIndex_inValidInputMetaDataNaN'},
+
+
+
+
+
+
 
     /* commandArrayParsing */
 

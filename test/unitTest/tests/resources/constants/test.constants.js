@@ -111,6 +111,11 @@ export const cgetNamedColorDataArray = biz.cgetNamedColorDataArray; // getNamedC
 export const cdoesArrayContainValue = biz.cdoesArrayContainValue; // doesArrayContainValu
 
 /* characterArrayParsing */
+export const creplaceCharacterWithCharacter = biz.creplaceCharacterWithCharacter; // replaceCharacterWithCharacter
+export const cdoesArrayContainCharacter = biz.cdoesArrayContainCharacter; // doesArrayContainCharacter
+export const cremoveCharacterFromArray = biz.cremoveCharacterFromArray; // removeCharacterFromArray
+export const creplaceCharacterAtIndex = biz.creplaceCharacterAtIndex; // replaceCharacterAtIndex
+
 
 /* commandArrayParsing */
 
@@ -966,6 +971,54 @@ export const cdoesArrayContainValue_inValidInputMetaDataUndefined = cdoesArrayCo
 export const cdoesArrayContainValue_inValidInputMetaDataNaN = cdoesArrayContainValue + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputMetaData + 'NaN'; // doesArrayContainValue_inValidInputMetaDataNaN
 
 /* characterArrayParsing */
+// replaceCharacterWithCharacter
+export const creplaceCharacterWithCharacter_validData = creplaceCharacterWithCharacter + bas.cUnderscore + wrd.cvalid + wrd.cData; // replaceCharacterWithCharacter_validData
+export const creplaceCharacterWithCharacter_inValidInputMetaDataString = creplaceCharacterWithCharacter + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputMetaData + wrd.cString; // replaceCharacterWithCharacter_inValidInputMetaDataString
+export const creplaceCharacterWithCharacter_inValidInputDataInteger = creplaceCharacterWithCharacter + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + wrd.cInteger; // replaceCharacterWithCharacter_inValidInputDataInteger
+export const creplaceCharacterWithCharacter_inValidInputDataBoolean = creplaceCharacterWithCharacter + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + wrd.cBoolean; // replaceCharacterWithCharacter_inValidInputDataBoolean
+export const creplaceCharacterWithCharacter_inValidInputMetaDataInteger = creplaceCharacterWithCharacter + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputMetaData + wrd.cInteger; // replaceCharacterWithCharacter_inValidInputMetaDataInteger
+export const creplaceCharacterWithCharacter_inValidInputMetaDataBoolean = creplaceCharacterWithCharacter + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputMetaData + wrd.cBoolean; // replaceCharacterWithCharacter_inValidInputMetaDataBoolean
+export const creplaceCharacterWithCharacter_inValidInputDataUndefined = creplaceCharacterWithCharacter + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + 'Undefined'; // replaceCharacterWithCharacter_inValidInputDataUndefined
+export const creplaceCharacterWithCharacter_inValidInputDataNaN = creplaceCharacterWithCharacter + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + 'NaN'; // replaceCharacterWithCharacter_inValidInputDataNaN
+export const creplaceCharacterWithCharacter_inValidInputMetaDataUndefined = creplaceCharacterWithCharacter + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputMetaData + 'Undefined'; // replaceCharacterWithCharacter_inValidInputMetaDataUndefined
+export const creplaceCharacterWithCharacter_inValidInputMetaDataNaN = creplaceCharacterWithCharacter + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputMetaData + 'NaN'; // replaceCharacterWithCharacter_inValidInputMetaDataNaN
+
+// doesArrayContainCharacter
+export const cdoesArrayContainCharacter_validData = cdoesArrayContainCharacter + bas.cUnderscore + wrd.cvalid + wrd.cData; // doesArrayContainCharacter_validData
+export const cdoesArrayContainCharacter_inValidInputMetaDataString = cdoesArrayContainCharacter + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputMetaData + wrd.cString; // doesArrayContainCharacter_inValidInputMetaDataString
+export const cdoesArrayContainCharacter_inValidInputMetaDataInteger = cdoesArrayContainCharacter + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputMetaData + wrd.cInteger; // doesArrayContainCharacter_inValidInputMetaDataInteger
+export const cdoesArrayContainCharacter_inValidInputMetaDataBoolean = cdoesArrayContainCharacter + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputMetaData + wrd.cBoolean; // doesArrayContainCharacter_inValidInputMetaDataBoolean
+export const cdoesArrayContainCharacter_inValidInputDataUndefined = cdoesArrayContainCharacter + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + 'Undefined'; // doesArrayContainCharacter_inValidInputDataUndefined
+export const cdoesArrayContainCharacter_inValidInputDataNaN = cdoesArrayContainCharacter + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + 'NaN'; // doesArrayContainCharacter_inValidInputDataNaN
+export const cdoesArrayContainCharacter_inValidInputMetaDataUndefined = cdoesArrayContainCharacter + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputMetaData + 'Undefined'; // doesArrayContainCharacter_inValidInputMetaDataUndefined
+export const cdoesArrayContainCharacter_inValidInputMetaDataNaN = cdoesArrayContainCharacter + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputMetaData + 'NaN'; // doesArrayContainCharacter_inValidInputMetaDataNaN
+
+// removeCharacterFromArray
+export const cremoveCharacterFromArray_validData = cremoveCharacterFromArray + bas.cUnderscore + wrd.cvalid + wrd.cData; // removeCharacterFromArray_validData
+export const cremoveCharacterFromArray_inValidInputDataString = cremoveCharacterFromArray + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + wrd.cString; // removeCharacterFromArray_inValidInputDataString
+export const cremoveCharacterFromArray_inValidInputMetaDataString = cremoveCharacterFromArray + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputMetaData + wrd.cString; // removeCharacterFromArray_inValidInputMetaDataString
+export const cremoveCharacterFromArray_inValidInputDataInteger = cremoveCharacterFromArray + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + wrd.cInteger; // removeCharacterFromArray_inValidInputDataInteger
+export const cremoveCharacterFromArray_inValidInputDataBoolean = cremoveCharacterFromArray + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + wrd.cBoolean; // removeCharacterFromArray_inValidInputDataBoolean
+export const cremoveCharacterFromArray_inValidInputMetaDataInteger = cremoveCharacterFromArray + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputMetaData + wrd.cInteger; // removeCharacterFromArray_inValidInputMetaDataInteger
+export const cremoveCharacterFromArray_inValidInputMetaDataBoolean = cremoveCharacterFromArray + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputMetaData + wrd.cBoolean; // removeCharacterFromArray_inValidInputMetaDataBoolean
+export const cremoveCharacterFromArray_inValidInputDataUndefined = cremoveCharacterFromArray + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + 'Undefined'; // removeCharacterFromArray_inValidInputDataUndefined
+export const cremoveCharacterFromArray_inValidInputDataNaN = cremoveCharacterFromArray + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + 'NaN'; // removeCharacterFromArray_inValidInputDataNaN
+export const cremoveCharacterFromArray_inValidInputMetaDataUndefined = cremoveCharacterFromArray + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputMetaData + 'Undefined'; // removeCharacterFromArray_inValidInputMetaDataUndefined
+export const cremoveCharacterFromArray_inValidInputMetaDataNaN = cremoveCharacterFromArray + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputMetaData + 'NaN'; // removeCharacterFromArray_inValidInputMetaDataNaN
+
+// replaceCharacterAtIndex
+export const creplaceCharacterAtIndex_validData = creplaceCharacterAtIndex + bas.cUnderscore + wrd.cvalid + wrd.cData; // replaceCharacterAtIndex_validData
+export const creplaceCharacterAtIndex_inValidInputMetaDataString = creplaceCharacterAtIndex + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputMetaData + wrd.cString; // replaceCharacterAtIndex_inValidInputMetaDataString
+export const creplaceCharacterAtIndex_inValidInputDataInteger = creplaceCharacterAtIndex + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + wrd.cInteger; // replaceCharacterAtIndex_inValidInputDataInteger
+export const creplaceCharacterAtIndex_inValidInputDataBoolean = creplaceCharacterAtIndex + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + wrd.cBoolean; // replaceCharacterAtIndex_inValidInputDataBoolean
+export const creplaceCharacterAtIndex_inValidInputMetaDataInteger = creplaceCharacterAtIndex + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputMetaData + wrd.cInteger; // replaceCharacterAtIndex_inValidInputMetaDataInteger
+export const creplaceCharacterAtIndex_inValidInputMetaDataBoolean = creplaceCharacterAtIndex + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputMetaData + wrd.cBoolean; // replaceCharacterAtIndex_inValidInputMetaDataBoolean
+export const creplaceCharacterAtIndex_inValidInputDataUndefined = creplaceCharacterAtIndex + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + 'Undefined'; // replaceCharacterAtIndex_inValidInputDataUndefined
+export const creplaceCharacterAtIndex_inValidInputDataNaN = creplaceCharacterAtIndex + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + 'NaN'; // replaceCharacterAtIndex_inValidInputDataNaN
+export const creplaceCharacterAtIndex_inValidInputMetaDataUndefined = creplaceCharacterAtIndex + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputMetaData + 'Undefined'; // replaceCharacterAtIndex_inValidInputMetaDataUndefined
+export const creplaceCharacterAtIndex_inValidInputMetaDataNaN = creplaceCharacterAtIndex + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputMetaData + 'NaN'; // replaceCharacterAtIndex_inValidInputMetaDataNaN
+
+
 
 /* commandArrayParsing */
 

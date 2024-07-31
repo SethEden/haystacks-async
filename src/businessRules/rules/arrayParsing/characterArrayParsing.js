@@ -42,26 +42,33 @@ const namespacePrefix = wrd.cframework + bas.cDot + sys.cbusinessRules + bas.cDo
  */
 async function replaceCharacterWithCharacter(inputData, inputMetaData) {
   let functionName = replaceCharacterWithCharacter.name;
-  // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
-  // console.log(`inputData is: ${inputData}`);
-  // console.log(`inputMetaData is: ${JSON.stringify(inputMetaData)}`);
+  console.log(`BEGIN ${namespacePrefix}${functionName} function`);
+  console.log(`inputData is: ${inputData}`);
+  console.log(`inputMetaData is: ${JSON.stringify(inputMetaData)}`);
+  console.log(inputMetaData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
-  let returnData;
-  if (!inputData && !inputMetaData) {
-    returnData = false;
-  } else {
-    if (await configurator.getConfigurationSetting(wrd.csystem, cfg.cconfigurationInitialized) === true) {
-      returnData = await ruleParsing.processRulesInternal([inputData, inputMetaData], [biz.cutilitiesReplaceCharacterWithCharacter]);
+  let returnData = false;
+  if (inputData && typeof inputData === wrd.cstring) {
+    if (Array.isArray(inputMetaData)) {
+      if (await configurator.getConfigurationSetting(wrd.csystem, cfg.cconfigurationInitialized) === true) {
+        returnData = await ruleParsing.processRulesInternal([inputData, inputMetaData], [biz.cutilitiesReplaceCharacterWithCharacter]);
+      } else {
+        returnData = await stringParsingUtilities.utilitiesReplaceCharacterWithCharacter(inputData, inputMetaData);
+      }
     } else {
-      returnData = await stringParsingUtilities.utilitiesReplaceCharacterWithCharacter(inputData, inputMetaData);
+      // ERROR: Invalid input, inputMetaData is:
+      console.log(msg.cErrorInvalidInputMetaDataMessage + inputMetaData);
     }
+  } else {
+    // ERROR: Invalid input, inputData is:
+    console.log(msg.cErrorInvalidInputDataMessage + inputData);
   }
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
-  // console.log(`returnData is: ${JSON.stringify(returnData)}`);
-  // console.log(`END ${namespacePrefix}${functionName} function`);
+  console.log(`returnData is: ${JSON.stringify(returnData)}`);
+  console.log(`END ${namespacePrefix}${functionName} function`);
   return returnData;
 }
 
@@ -80,15 +87,23 @@ async function doesArrayContainCharacter(inputData, inputMetaData) {
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
   let returnData = false;
-  if (inputData && inputMetaData) {
-    for (const element of inputMetaData) {
-      let arrayElement = element;
-      if (arrayElement.includes(inputData) === true) {
-        returnData = true;
-        break;
-      }
-    } // end-for (const element of inputMetaData)
-  } // end-if (inputData && inputMetaData)
+  if (inputData && (typeof inputData === wrd.cstring || typeof inputData === wrd.cboolean || typeof inputData === wrd.cnumber || typeof inputData === wrd.cobject)) {
+    if (Array.isArray(inputMetaData)) {
+      for (const element of inputMetaData) {
+        let arrayElement = element;
+        if (arrayElement.includes(inputData) === true) {
+          returnData = true;
+          break;
+        }
+      } // end-for (const element of inputMetaData)
+    } else {
+      // ERROR: Invalid input, inputMetaData is:
+      console.log(msg.cErrorInvalidInputMetaDataMessage + inputMetaData);
+    }
+  } else {
+    // ERROR: Invalid input, inputData is:
+    console.log(msg.cErrorInvalidInputDataMessage + inputData);
+  }
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
@@ -107,25 +122,33 @@ async function doesArrayContainCharacter(inputData, inputMetaData) {
 async function removeCharacterFromArray(inputData, inputMetaData) {
   let functionName = removeCharacterFromArray.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
+  console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
-  // console.log(msg.cinputDataIs + JSON.stringify(inputData));
+  console.log(msg.cinputDataIs + JSON.stringify(inputData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
-  // console.log(msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
+  console.log(msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
   let returnData = false;
-  if (inputData && inputMetaData) {
-    for (let i = 0; i < inputMetaData.length; i++) {
-      let arrayElement = inputMetaData[i];
-      if (arrayElement.includes(inputData) === true) {
-        inputMetaData[i] = await replaceCharacterWithCharacter(arrayElement, [RegExp('\\' + inputData, bas.cg), '']);
-      }
-    } // end-for (let i = 0; i < inputMetaData.length; i++)
-    returnData = inputMetaData;
-  } // end-if (inputData && inputMetaData)
+  if (inputData && (typeof inputData === wrd.cstring || typeof inputData === wrd.cboolean || typeof inputData === wrd.cnumber || typeof inputData === wrd.cobject)) {
+    if (Array.isArray(inputMetaData)) {
+      for (let i = 0; i < inputMetaData.length; i++) {
+        let arrayElement = inputMetaData[i];
+        if (arrayElement.includes(inputData) === true) {
+          inputMetaData[i] = await replaceCharacterWithCharacter(arrayElement, [inputData, '']);
+        }
+      } // end-for (let i = 0; i < inputMetaData.length; i++)
+      returnData = inputMetaData;
+    } else {
+      // ERROR: Invalid input, inputMetaData is:
+      console.log(msg.cErrorInvalidInputMetaDataMessage + inputMetaData);
+    }
+  } else {
+    // ERROR: Invalid input, inputData is:
+    console.log(msg.cErrorInvalidInputDataMessage + inputData);
+  }
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
-  // console.log(msg.creturnDataIs + returnData);
+  console.log(msg.creturnDataIs + returnData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
-  // console.log(`END ${namespacePrefix}${functionName} function`);
+  console.log(`END ${namespacePrefix}${functionName} function`);
   return returnData;
 }
 
@@ -135,7 +158,7 @@ async function removeCharacterFromArray(inputData, inputMetaData) {
  * @param {string} inputData The string which should have the specified character changed, then returned.
  * @param {array<integer,string>} inputMetaData An array with an integer of what index the character should be replaced,
  * and a string with the character or characters that should be inserted at the specified index.
- * @return {string} The modified string.
+ * @return {string|boolean} The modified string or false to indicate an error.
  * @author Seth Hollingsead
  * @date 2022/01/21
  * @reference: {@link https://stackoverflow.com/questions/1431094/how-do-i-replace-a-character-at-a-particular-index-in-javascript}
@@ -145,18 +168,27 @@ async function replaceCharacterAtIndex(inputData, inputMetaData) {
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
-  let returnData = inputData;
-  if (inputData && inputMetaData) {
-    let indexOfReplacement;
-    let stringToReplaceWith;
-    if (inputMetaData.length === 2) {
-      indexOfReplacement = inputMetaData[0];
-      stringToReplaceWith = inputMetaData[1];
-      let stringArray = inputData.split('');
-      stringArray.splice(indexOfReplacement, 1, stringToReplaceWith);
-      returnData = stringArray.join('');
-    } // End-if (inputMetaData.length === 2)
-  } // End-if (inputData)
+  let returnData = false;
+  if (inputData && typeof inputData === wrd.cstring) {
+    if (Array.isArray(inputMetaData) && (typeof inputMetaData[0] === wrd.cnumber && typeof inputMetaData[1] === wrd.cstring)) {
+      returnData = inputData;
+      let indexOfReplacement;
+      let stringToReplaceWith;
+      if (inputMetaData.length === 2) {
+        indexOfReplacement = inputMetaData[0];
+        stringToReplaceWith = inputMetaData[1];
+        let stringArray = inputData.split('');
+        stringArray.splice(indexOfReplacement, 1, stringToReplaceWith);
+        returnData = stringArray.join('');
+      } // End-if (inputMetaData.length === 2)
+    } else {
+      // ERROR: Invalid input, inputMetaData is:
+      console.log(msg.cErrorInvalidInputMetaDataMessage + inputMetaData);
+    }
+  } else {
+    // ERROR: Invalid input, inputData is:
+    console.log(msg.cErrorInvalidInputDataMessage + inputData);
+  }
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;

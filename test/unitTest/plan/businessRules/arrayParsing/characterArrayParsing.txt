@@ -7,10 +7,7 @@ input inputData: string (A string that may or may not contain the specified char
 input inputMetaData: array<string,string> (An array of data that contains 2 additional string parameters and the character specified for replacement from the input data)
 output: string (The same as the input string but with specified characters converted to the other specified character)
 
-testName: replaceCharacterWithCharacter_inValidInputDataString
-input inputData: string (dfxg24346dfg)
-input inputMetaData: array<string,string> (An array of data that contains 2 additional string parameters and the character specified for replacement from the input data) (testDataString)
-output: ?
+NOTE: replaceCharacterWithCharacter_inValidInputDataString cant be used in this unit test.
 
 testName: replaceCharacterWithCharacter_inValidInputMetaDataString
 input inputData: string (A string that may or may not contain the specified characters that should be converted to another specified character) (testDataString)
@@ -62,30 +59,16 @@ input inputData: string|boolean|integer|object (The character that should be sea
 input inputMetaData: array<string|boolean|integer|object> (The array that should be searched for the specified character/value/etc...)
 output: boolean (True or False to indicate if the value was found or not found)
 
-testName: doesArrayContainCharacter_validDataInputDataString
-input inputData: string (dfxg24346dfg)
-input inputMetaData: array<string|boolean|integer|object> (The array that should be searched for the specified character/value/etc...) (testDataString)
-output: ?
-
-testName: doesArrayContainCharacter_validDataInputDataInteger
-input inputData: integer (23456)
-input inputMetaData: array<string|boolean|integer|object> (The array that should be searched for the specified character/value/etc...) (testDataInteger)
-output: ?
-
-testName: doesArrayContainCharacter_validDataInputDataBoolean
-input inputData: boolean (false)
-input inputMetaData: array<string|boolean|integer|object> (The array that should be searched for the specified character/value/etc...) (testDataBoolean)
-output: ?
-
-testName: doesArrayContainCharacter_validDataInputDataObject
-input inputData: object ({"constants":"c,const","Generator":"g,gen,genrtr","List":"l,lst"})
-input inputMetaData: array<string|boolean|integer|object> (The array that should be searched for the specified character/value/etc...) (testDataObject)
-output: ?
+NOTE: doesArrayContainCharacter_validDataInputDataString cant be used in this unit test.
 
 testName: doesArrayContainCharacter_validDataInputMetaDataString
 input inputData: string|boolean|integer|object (The character that should be searched for in the array of elements) (testDataString)
 input inputMetaData: string (dfxg24346dfg)
 output: ?
+
+NOTE: doesArrayContainCharacter_validDataInputDataInteger cant be used in this unit test.
+
+NOTE: doesArrayContainCharacter_validDataInputDataBoolean cant be used in this unit test.
 
 testName: doesArrayContainCharacter_validDataInputMetaDataInteger
 input inputData: string|boolean|integer|object (The character that should be searched for in the array of elements) (testDataInteger)
@@ -95,11 +78,6 @@ output: ?
 testName: doesArrayContainCharacter_validDataInputMetaDataBoolean
 input inputData: string|boolean|integer|object (The character that should be searched for in the array of elements) (testDataBoolean)
 input inputMetaData: boolean (false)
-output: ?
-
-testName: doesArrayContainCharacter_validDataInputMetaDataObject
-input inputData: string|boolean|integer|object (The character that should be searched for in the array of elements) (testDataObject)
-input inputMetaData: object ({"constants":"c,const","Generator":"g,gen,genrtr","List":"l,lst"})
 output: ?
 
 testName: doesArrayContainCharacter_inValidInputDataUndefined
@@ -127,30 +105,17 @@ input inputData: string|boolean|integer|object (The character, integer, boolean,
 input inputMetaData: array<string|boolean|integer|object> (The array from which all isntances of the input character, integer, etc...should be removed)
 output: array<string|boolean|integer|object> (The array after having the specified character removed from all elements of the input array)
 
-testName: removeCharacterFromArray_validDataInputDataString
-input inputData: string (dfxg24346dfg)
-input inputMetaData: array<string|boolean|integer|object> (The array that should be searched for the specified character/value/etc...) (testDataString)
-output: ?
-
-testName: removeCharacterFromArray_validDataInputDataInteger
-input inputData: integer (23456)
-input inputMetaData: array<string|boolean|integer|object> (The array that should be searched for the specified character/value/etc...) (testDataInteger)
-output: ?
-
-testName: removeCharacterFromArray_validDataInputDataBoolean
-input inputData: boolean (false)
-input inputMetaData: array<string|boolean|integer|object> (The array that should be searched for the specified character/value/etc...) (testDataBoolean)
-output: ?
-
-testName: removeCharacterFromArray_validDataInputDataObject
-input inputData: object ({"constants":"c,const","Generator":"g,gen,genrtr","List":"l,lst"})
-input inputMetaData: array<string|boolean|integer|object> (The array that should be searched for the specified character/value/etc...) (testDataObject)
-output: ?
+NOTE: removeCharacterFromArray_validDataInputDataString cant be used in this unit test.
 
 testName: removeCharacterFromArray_validDataInputMetaDataString
 input inputData: string|boolean|integer|object (The character that should be searched for in the array of elements) (testDataString)
 input inputMetaData: string (dfxg24346dfg)
 output: ?
+
+NOTE: removeCharacterFromArray_validDataInputDataInteger cant be used in this unit test.
+
+NOTE: removeCharacterFromArray_validDataInputDataBoolean cant be used in this unit test.
+
 
 testName: removeCharacterFromArray_validDataInputMetaDataInteger
 input inputData: string|boolean|integer|object (The character that should be searched for in the array of elements) (testDataInteger)
@@ -160,11 +125,6 @@ output: ?
 testName: removeCharacterFromArray_validDataInputMetaDataBoolean
 input inputData: string|boolean|integer|object (The character that should be searched for in the array of elements) (testDataBoolean)
 input inputMetaData: boolean (false)
-output: ?
-
-testName: removeCharacterFromArray_validDataInputMetaDataObject
-input inputData: string|boolean|integer|object (The character that should be searched for in the array of elements) (testDataObject)
-input inputMetaData: object ({"constants":"c,const","Generator":"g,gen,genrtr","List":"l,lst"})
 output: ?
 
 testName: removeCharacterFromArray_inValidInputDataUndefined
