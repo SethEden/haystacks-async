@@ -2,6 +2,12 @@
   "path": "C:/Proj/hayPlugins",
   "plugins": [
     {
+      "plugin-one": {
+        "Name": "plugin-one",
+        "Path": "C:\\Proj\\hayPlugins\\plugin-one\\"
+      }
+    },
+    {
       "plugin-three": {
         "Name": "plugin-three",
         "Path": "C:\\Proj\\hayPlugins\\plugin-three\\"
