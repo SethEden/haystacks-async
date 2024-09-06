@@ -139,7 +139,7 @@ async function stringToDataType(inputData, inputMetaData) {
   // console.log(`inputData is: ${JSON.stringify(inputData)}`);
   // console.log(`inputMetaData is: ${JSON.stringify(inputMetaData)}`);
   let returnData = false;
-  if (inputData) {
+  if (inputData !== undefined) {
     let dataType = await determineObjectDataType(inputData, '');
     switch (dataType) {
       case wrd.cBoolean:
