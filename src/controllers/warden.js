@@ -1087,9 +1087,12 @@ async function setConfigurationSetting(configurationNamespace, configurationName
   await loggers.consoleLog(namespacePrefix + functionName, msg.cconfigurationNameIs + configurationName);
   // configurationValue is:
   await loggers.consoleLog(namespacePrefix + functionName, msg.cconfigurationValueIs + configurationValue);
+  let returnData = false;
   // D[sys.cConfiguration][configurationName] = configurationValue;
-  await configurator.setConfigurationSetting(configurationNamespace, configurationName, configurationValue);
+  returnData = await configurator.setConfigurationSetting(configurationNamespace, configurationName, configurationValue);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData
 }
 
 /**

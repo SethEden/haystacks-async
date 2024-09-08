@@ -46,6 +46,10 @@ which will bring the new version into the develop as part of the staging process
 14. Create a Merge Request and wait for SonarCloud to execute. DO NOT APPROVE!!!
  - Fix any blocking issues identified by SonarCloud
 
+15. Update the documentation command is:
+num run docs
+ - Again commit the changes
+
 15. Execute the build-release script in the application to compile the latest code and generate release binaries or release zip package.
 Command is:
 npm run release

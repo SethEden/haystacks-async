@@ -46,11 +46,14 @@ async function setConfigurationSetting(configurationNamespace, configurationName
   // console.log(`configurationNamespace is: ${configurationNamespace}`);
   // console.log(`configurationName is: ${configurationName}`);
   // console.log(`configurationValue is: ${configurationValue}`);
+  let returnData = false;
   let namespaceConfigObject = await getConfigurationNamespaceObject(configurationNamespace.split(bas.cDot));
   if (namespaceConfigObject) {
     namespaceConfigObject[`${configurationNamespace}.${configurationName}`] = configurationValue;
+    returnData = true;
   }
   // console.log(`END ${namespacePrefix}${functionName} function`);
+  return returnData;
 }
 
 /**
