@@ -1,7 +1,7 @@
 /**
  * @file rulesLibrary.js
  * @module rulesLibrary
- * @description Contains all of the system defined busness rules as a map between function names and function calls.
+ * @description Contains all of the system defined business rules as a map between function names and function calls.
  * @requires module:auxiliaryArrayParsing
  * @requires module:characterArrayParsing
  * @requires module:commandArrayParsing
@@ -251,6 +251,8 @@ async function initRulesLibrary() {
      [biz.cloadDataFile]: (inputData, inputMetaData) => dataStringParsing.loadDataFile(inputData, inputMetaData),
      [biz.csaveDataFile]: (inputData, inputMetaData) => dataStringParsing.saveDataFile(inputData, inputMetaData),
      [biz.cgetUserNameFromEmail]: (inputData, inputMetaData) => dataStringParsing.getUserNameFromEmail(inputData, inputMetaData),
+     [biz.cencryptStringAes256]: (inputData, inputMetaData) => dataStringParsing.encryptStringAes256(inputData, inputMetaData),
+     [biz.cdecryptStringAes256]: (inputData, inputMetaData) => dataStringParsing.decryptStringAes256(inputData, inputMetaData),
 
      // ***********************************************
      // fileStringParsing rules in order
