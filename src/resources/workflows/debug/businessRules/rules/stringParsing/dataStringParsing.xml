@@ -28,6 +28,8 @@
             <Workflow Name="encryptStringAes256Disable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.stringParsing.dataStringParsing.encryptStringAes256 false"/>
             <Workflow Name="decryptStringAes256Enable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.stringParsing.dataStringParsing.decryptStringAes256 true"/>
             <Workflow Name="decryptStringAes256Disable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.stringParsing.dataStringParsing.decryptStringAes256 false"/>
+            <Workflow Name="obfuscateStringEnable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.stringParsing.dataStringParsing.obfuscateString true"/>
+            <Workflow Name="obfuscateStringDisable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.stringParsing.dataStringParsing.obfuscateString false"/>
           </dataStringParsing>
         </stringParsing>
       </rules>

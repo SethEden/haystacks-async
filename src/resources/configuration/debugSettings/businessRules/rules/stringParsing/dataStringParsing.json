@@ -154,5 +154,18 @@
   "debugFunctions|debugSetting.framework.businessRules.rules.stringParsing.dataStringParsing.decryptStringAes256@ModuleFontBackgroundColor": "Default",
   "debugFunctions|debugSetting.framework.businessRules.rules.stringParsing.dataStringParsing.decryptStringAes256@FunctionFontBackgroundColor": "Default",
   "debugFunctions|debugSetting.framework.businessRules.rules.stringParsing.dataStringParsing.decryptStringAes256@MessageFontBackgroundColor": "Default",
-  "debugFunctions|debugSetting.framework.businessRules.rules.stringParsing.dataStringParsing.decryptStringAes256@DataFontBackgroundColor": "Default"
+  "debugFunctions|debugSetting.framework.businessRules.rules.stringParsing.dataStringParsing.decryptStringAes256@DataFontBackgroundColor": "Default",
+  "debugFunctions|debugSetting.framework.businessRules.rules.stringParsing.dataStringParsing.obfuscateString": true,
+  "debugFunctions|debugSetting.framework.businessRules.rules.stringParsing.dataStringParsing.obfuscateString@ModuleFontStyle": "Default",
+  "debugFunctions|debugSetting.framework.businessRules.rules.stringParsing.dataStringParsing.obfuscateString@FunctionFontStyle": "Default",
+  "debugFunctions|debugSetting.framework.businessRules.rules.stringParsing.dataStringParsing.obfuscateString@MessageFontStyle": "Default",
+  "debugFunctions|debugSetting.framework.businessRules.rules.stringParsing.dataStringParsing.obfuscateString@DataFontStyle": "Default",
+  "debugFunctions|debugSetting.framework.businessRules.rules.stringParsing.dataStringParsing.obfuscateString@ModuleFontColor": "Default",
+  "debugFunctions|debugSetting.framework.businessRules.rules.stringParsing.dataStringParsing.obfuscateString@FunctionFontColor": "Default",
+  "debugFunctions|debugSetting.framework.businessRules.rules.stringParsing.dataStringParsing.obfuscateString@MessageFontColor": "Default",
+  "debugFunctions|debugSetting.framework.businessRules.rules.stringParsing.dataStringParsing.obfuscateString@DataFontColor": "Default",
+  "debugFunctions|debugSetting.framework.businessRules.rules.stringParsing.dataStringParsing.obfuscateString@ModuleFontBackgroundColor": "Default",
+  "debugFunctions|debugSetting.framework.businessRules.rules.stringParsing.dataStringParsing.obfuscateString@FunctionFontBackgroundColor": "Default",
+  "debugFunctions|debugSetting.framework.businessRules.rules.stringParsing.dataStringParsing.obfuscateString@MessageFontBackgroundColor": "Default",
+  "debugFunctions|debugSetting.framework.businessRules.rules.stringParsing.dataStringParsing.obfuscateString@DataFontBackgroundColor": "Default"
 }

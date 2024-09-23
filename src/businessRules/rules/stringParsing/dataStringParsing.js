@@ -365,7 +365,6 @@ export async function decryptStringAes256(inputData, inputMetaData) {
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
-
   let returnData = false;
 
   if (inputData && inputMetaData && inputData !== '' && inputMetaData !== '') {
@@ -403,6 +402,38 @@ export async function decryptStringAes256(inputData, inputMetaData) {
   return returnData;
 }
 
+/**
+ * @function obfuscateString
+ * @description Takes a string and converts it to an obfuscated version of the same string.
+ * This means converting the string into something that is unintelligible or unreadable from the original string.
+ * In our case we will convert the string into all stars '*', just like as if the string was a password.
+ * @param {string} inputData The string to be obfuscated, or converted into all stars of the same length.
+ * @param {string} inputMetaData Not used for this business rule.
+ * @return {string} A string of '*' characters of the same length as the input string.
+ * @author Seth Hollingsead
+ * @date 2024/09/23
+ */
+export async function obfuscateString(inputData, inputMetaData) {
+  let functionName = obfuscateString.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
+  let returnData = false;
+  if (inputData && inputData !== '') {
+    // Convert the input string to a string of '*' characters of the same length
+    returnData = bas.cStar.repeat(inputData.length);
+    // Obfuscation successful
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cObfuscationSuccessful);
+  } else {
+    // ERROR: Invalid input string.
+    console.log(msg.cErrorInvalidInputString);
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cErrorInvalidInputString);
+  }
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
 export default {
   getAttributeName,
   getAttributeValue,
@@ -414,5 +445,6 @@ export default {
   saveDataFile,
   getUserNameFromEmail,
   encryptStringAes256,
-  decryptStringAes256
+  decryptStringAes256,
+  obfuscateString
 };

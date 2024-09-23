@@ -253,6 +253,7 @@ async function initRulesLibrary() {
      [biz.cgetUserNameFromEmail]: (inputData, inputMetaData) => dataStringParsing.getUserNameFromEmail(inputData, inputMetaData),
      [biz.cencryptStringAes256]: (inputData, inputMetaData) => dataStringParsing.encryptStringAes256(inputData, inputMetaData),
      [biz.cdecryptStringAes256]: (inputData, inputMetaData) => dataStringParsing.decryptStringAes256(inputData, inputMetaData),
+     [biz.cobfuscateString]: (inputData, inputMetaData) => dataStringParsing.obfuscateString(inputData, inputMetaData),
 
      // ***********************************************
      // fileStringParsing rules in order
