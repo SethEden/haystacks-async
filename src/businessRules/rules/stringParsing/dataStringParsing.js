@@ -388,10 +388,12 @@ export async function decryptStringAes256(inputData, inputMetaData) {
       // Decryption successful
       await loggers.consoleLog(namespacePrefix + functionName, msg.cDecryptionSuccessful);
     } catch (error) {
+      // ERROR: Decryption failed:
       console.log(msg.cErrorEncryptionFailed + error.message);
       await loggers.consoleLog(namespacePrefix + functionName, msg.cErrorEncryptionFailed + error.message);
     }
   } else {
+    // ERROR: Invalid input strings.
     console.log(msg.cErrorInvalidInputStrings);
     await loggers.consoleLog(namespacePrefix + functionName, msg.cErrorInvalidInputStrings);
   }
