@@ -133,7 +133,7 @@ async function doesArrayContainValue(inputData, inputMetaData) {
   let functionName = doesArrayContainValue.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
-  // Not sure how this will output, would be good to also put some type checing on this input variable.
+  // Not sure how this will output, would be good to also put some type checking on this input variable.
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = false;
   if (inputData && (Array.isArray(inputData))) {
@@ -149,7 +149,7 @@ async function doesArrayContainValue(inputData, inputMetaData) {
       // eslint-disable-next-line no-extra-boolean-cast25
       // NOTE: This has been commented out because now the .find function is hard coded in the line below.
       // if (!!array.find(await (async (i) => {return (await inputMetaData(i, value));}))) {
-      if (await array.find(x => x === value)) {
+      if (await array.find(x => x === value) !== undefined) {
         // The value was found in the array.
         await loggers.consoleLog(namespacePrefix + functionName, msg.cTheValueWasFoundInTheArray);
         returnData = true;

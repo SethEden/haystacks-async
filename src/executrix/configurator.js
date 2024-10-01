@@ -70,6 +70,7 @@ async function setConfigurationSetting(configurationNamespace, configurationName
   // console.log(`returnData is: ` + JSON.stringify(returnData));
   return returnData;
   // console.log(`END ${namespacePrefix}${functionName} function`);
+  return returnData;
 }
 
 /**
