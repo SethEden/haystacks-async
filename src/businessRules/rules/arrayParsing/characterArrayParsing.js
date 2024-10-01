@@ -42,10 +42,6 @@ const namespacePrefix = wrd.cframework + bas.cDot + sys.cbusinessRules + bas.cDo
  */
 async function replaceCharacterWithCharacter(inputData, inputMetaData) {
   let functionName = replaceCharacterWithCharacter.name;
-  console.log(`BEGIN ${namespacePrefix}${functionName} function`);
-  console.log(`inputData is: ${inputData}`);
-  console.log(`inputMetaData is: ${JSON.stringify(inputMetaData)}`);
-  console.log(inputMetaData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
@@ -67,8 +63,6 @@ async function replaceCharacterWithCharacter(inputData, inputMetaData) {
   }
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
-  console.log(`returnData is: ${JSON.stringify(returnData)}`);
-  console.log(`END ${namespacePrefix}${functionName} function`);
   return returnData;
 }
 
@@ -122,11 +116,8 @@ async function doesArrayContainCharacter(inputData, inputMetaData) {
 async function removeCharacterFromArray(inputData, inputMetaData) {
   let functionName = removeCharacterFromArray.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
-  console.log(msg.cinputDataIs + JSON.stringify(inputData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
-  console.log(msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
   let returnData = false;
   if (inputData && (typeof inputData === wrd.cstring || typeof inputData === wrd.cboolean || typeof inputData === wrd.cnumber || typeof inputData === wrd.cobject)) {
     if (Array.isArray(inputMetaData)) {
@@ -146,9 +137,7 @@ async function removeCharacterFromArray(inputData, inputMetaData) {
     console.log(msg.cErrorInvalidInputDataMessage + inputData);
   }
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
-  console.log(msg.creturnDataIs + returnData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
-  console.log(`END ${namespacePrefix}${functionName} function`);
   return returnData;
 }
 

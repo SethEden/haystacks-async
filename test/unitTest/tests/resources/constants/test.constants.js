@@ -116,8 +116,12 @@ export const cdoesArrayContainCharacter = biz.cdoesArrayContainCharacter; // doe
 export const cremoveCharacterFromArray = biz.cremoveCharacterFromArray; // removeCharacterFromArray
 export const creplaceCharacterAtIndex = biz.creplaceCharacterAtIndex; // replaceCharacterAtIndex
 
-
 /* commandArrayParsing */
+export const csolveLehmerCode = biz.csolveLehmerCode; // solveLehmerCode
+export const crecursiveArrayExpansion = biz.crecursiveArrayExpansion; // recursiveArrayExpansion
+export const cgetLehmerCodeValue = biz.cgetLehmerCodeValue; // getLehmerCodeValue
+export const cgenerateCommandAliases = biz.cgenerateCommandAliases; // generateCommandAliases
+export const caggregateCommandArguments = biz.caggregateCommandArguments; // aggregateCommandArguments
 
 /* constantArrayParsing */
 
@@ -1018,9 +1022,61 @@ export const creplaceCharacterAtIndex_inValidInputDataNaN = creplaceCharacterAtI
 export const creplaceCharacterAtIndex_inValidInputMetaDataUndefined = creplaceCharacterAtIndex + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputMetaData + 'Undefined'; // replaceCharacterAtIndex_inValidInputMetaDataUndefined
 export const creplaceCharacterAtIndex_inValidInputMetaDataNaN = creplaceCharacterAtIndex + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputMetaData + 'NaN'; // replaceCharacterAtIndex_inValidInputMetaDataNaN
 
-
-
 /* commandArrayParsing */
+// solveLehmerCode
+export const csolveLehmerCode_validData = csolveLehmerCode + bas.cUnderscore + wrd.cvalid + wrd.cData; // solveLehmerCode_validData
+export const csolveLehmerCode_inValidInputDataString = csolveLehmerCode + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + wrd.cString; // solveLehmerCode_inValidInputDataString
+export const csolveLehmerCode_inValidInputMetaDataString = csolveLehmerCode + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputMetaData + wrd.cString; // solveLehmerCode_inValidInputMetaDataString
+export const csolveLehmerCode_inValidInputDataInteger = csolveLehmerCode + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + wrd.cInteger; // solveLehmerCode_inValidInputDataInteger
+export const csolveLehmerCode_inValidInputDataBoolean = csolveLehmerCode + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + wrd.cBoolean; // solveLehmerCode_inValidInputDataBoolean
+export const csolveLehmerCode_inValidInputMetaDataInteger = csolveLehmerCode + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputMetaData + wrd.cInteger; // solveLehmerCode_inValidInputMetaDataInteger
+export const csolveLehmerCode_inValidInputMetaDataBoolean = csolveLehmerCode + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputMetaData + wrd.cBoolean; // solveLehmerCode_inValidInputMetaDataBoolean
+export const csolveLehmerCode_inValidInputDataUndefined = csolveLehmerCode + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + 'Undefined'; // solveLehmerCode_inValidInputDataUndefined
+export const csolveLehmerCode_inValidInputDataNaN = csolveLehmerCode + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + 'NaN'; // solveLehmerCode_inValidInputDataNaN
+export const csolveLehmerCode_inValidInputMetaDataUndefined = csolveLehmerCode + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputMetaData + 'Undefined'; // solveLehmerCode_inValidInputMetaDataUndefined
+export const csolveLehmerCode_inValidInputMetaDataNaN = csolveLehmerCode + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputMetaData + 'NaN'; // solveLehmerCode_inValidInputMetaDataNaN
+
+// recursiveArrayExpansion
+export const crecursiveArrayExpansion_validData = crecursiveArrayExpansion + bas.cUnderscore + wrd.cvalid + wrd.cData; // recursiveArrayExpansion_validData
+export const crecursiveArrayExpansion_inValidInputDataString = crecursiveArrayExpansion + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + wrd.cString; // recursiveArrayExpansion_inValidInputDataString
+export const crecursiveArrayExpansion_inValidInputMetaDataString = crecursiveArrayExpansion + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputMetaData + wrd.cString; // recursiveArrayExpansion_inValidInputMetaDataString
+export const crecursiveArrayExpansion_inValidInputDataInteger = crecursiveArrayExpansion + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + wrd.cInteger; // recursiveArrayExpansion_inValidInputDataInteger
+export const crecursiveArrayExpansion_inValidInputDataBoolean = crecursiveArrayExpansion + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + wrd.cBoolean; // recursiveArrayExpansion_inValidInputDataBoolean
+export const crecursiveArrayExpansion_inValidInputMetaDataInteger = crecursiveArrayExpansion + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputMetaData + wrd.cInteger; // recursiveArrayExpansion_inValidInputMetaDataInteger
+export const crecursiveArrayExpansion_inValidInputMetaDataBoolean = crecursiveArrayExpansion + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputMetaData + wrd.cBoolean; // recursiveArrayExpansion_inValidInputMetaDataBoolean
+export const crecursiveArrayExpansion_inValidInputDataUndefined = crecursiveArrayExpansion + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + 'Undefined'; // recursiveArrayExpansion_inValidInputDataUndefined
+export const crecursiveArrayExpansion_inValidInputDataNaN = crecursiveArrayExpansion + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + 'NaN'; // recursiveArrayExpansion_inValidInputDataNaN
+export const crecursiveArrayExpansion_inValidInputMetaDataUndefined = crecursiveArrayExpansion + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputMetaData + 'Undefined'; // recursiveArrayExpansion_inValidInputMetaDataUndefined
+export const crecursiveArrayExpansion_inValidInputMetaDataNaN = crecursiveArrayExpansion + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputMetaData + 'NaN'; // recursiveArrayExpansion_inValidInputMetaDataNaN
+
+// getLehmerCodeValue
+export const cgetLehmerCodeValue_validData = cgetLehmerCodeValue + bas.cUnderscore + wrd.cvalid + wrd.cData; // getLehmerCodeValue_validData
+export const cgetLehmerCodeValue_inValidInputDataString = cgetLehmerCodeValue + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + wrd.cString; // getLehmerCodeValue_inValidInputDataString
+export const cgetLehmerCodeValue_inValidInputMetaDataString = cgetLehmerCodeValue + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputMetaData + wrd.cString; // getLehmerCodeValue_inValidInputMetaDataString
+export const cgetLehmerCodeValue_inValidInputDataInteger = cgetLehmerCodeValue + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + wrd.cInteger; // getLehmerCodeValue_inValidInputDataInteger
+export const cgetLehmerCodeValue_inValidInputDataBoolean = cgetLehmerCodeValue + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + wrd.cBoolean; // getLehmerCodeValue_inValidInputDataBoolean
+export const cgetLehmerCodeValue_inValidInputMetaDataInteger = cgetLehmerCodeValue + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputMetaData + wrd.cInteger; // getLehmerCodeValue_inValidInputMetaDataInteger
+export const cgetLehmerCodeValue_inValidInputMetaDataBoolean = cgetLehmerCodeValue + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputMetaData + wrd.cBoolean; // getLehmerCodeValue_inValidInputMetaDataBoolean
+export const cgetLehmerCodeValue_inValidInputDataUndefined = cgetLehmerCodeValue + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + 'Undefined'; // getLehmerCodeValue_inValidInputDataUndefined
+export const cgetLehmerCodeValue_inValidInputDataNaN = cgetLehmerCodeValue + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + 'NaN'; // getLehmerCodeValue_inValidInputDataNaN
+export const cgetLehmerCodeValue_inValidInputMetaDataUndefined = cgetLehmerCodeValue + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputMetaData + 'Undefined'; // getLehmerCodeValue_inValidInputMetaDataUndefined
+export const cgetLehmerCodeValue_inValidInputMetaDataNaN = cgetLehmerCodeValue + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputMetaData + 'NaN'; // getLehmerCodeValue_inValidInputMetaDataNaN
+
+// generateCommandAliases
+export const cgenerateCommandAliases_validData = cgenerateCommandAliases + bas.cUnderscore + wrd.cvalid + wrd.cData; // generateCommandAliases_validData
+export const cgenerateCommandAliases_inValidInputDataString = cgenerateCommandAliases + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + wrd.cString; // generateCommandAliases_inValidInputDataString
+export const cgenerateCommandAliases_inValidInputDataInteger = cgenerateCommandAliases + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + wrd.cInteger; // generateCommandAliases_inValidInputDataInteger
+export const cgenerateCommandAliases_inValidInputDataBoolean = cgenerateCommandAliases + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + wrd.cBoolean; // generateCommandAliases_inValidInputDataBoolean
+export const cgenerateCommandAliases_inValidInputDataUndefined = cgenerateCommandAliases + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + 'Undefined'; // generateCommandAliases_inValidInputDataUndefined
+export const cgenerateCommandAliases_inValidInputDataNaN = cgenerateCommandAliases + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + 'NaN'; // generateCommandAliases_inValidInputDataNaN
+
+// aggregateCommandArguments
+export const caggregateCommandArguments_validData = caggregateCommandArguments + bas.cUnderscore + wrd.cvalid + wrd.cData; // aggregateCommandArguments_validData
+export const caggregateCommandArguments_inValidInputDataString = caggregateCommandArguments + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + wrd.cString; // aggregateCommandArguments_inValidInputDataString
+export const caggregateCommandArguments_inValidInputDataInteger = caggregateCommandArguments + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + wrd.cInteger; // aggregateCommandArguments_inValidInputDataInteger
+export const caggregateCommandArguments_inValidInputDataBoolean = caggregateCommandArguments + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + wrd.cBoolean; // aggregateCommandArguments_inValidInputDataBoolean
+export const caggregateCommandArguments_inValidInputDataUndefined = caggregateCommandArguments + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + 'Undefined'; // aggregateCommandArguments_inValidInputDataUndefined
+export const caggregateCommandArguments_inValidInputDataNaN = caggregateCommandArguments + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + 'NaN'; // aggregateCommandArguments_inValidInputDataNaN
 
 /* constantArrayParsing */
 

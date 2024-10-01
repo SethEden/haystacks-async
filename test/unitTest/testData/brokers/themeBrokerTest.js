@@ -1,6 +1,6 @@
 /**
- * @file pluginBrokerTest.js
- * @module pluginBrokerTest
+ * @file themeBrokerTest.js
+ * @module themeBrokerTest
  * @description File that containts test data.
  * @requires {@link https://www.npmjs.com/package/@haystacks/constants|@haystacks/constants}
  * @requires {@link https://www.npmjs.com/package/path|path}
@@ -15,18 +15,14 @@ import * as tst_man from '../mainTest.js';
 
 // External imports
 import hayConst from '@haystacks/constants';
-import url from 'url';
 import path from 'path';
-import { getRandomValues } from 'crypto';
 
-const {bas, biz, clr, cmd, cfg, gen, msg, num, phn, sys, wrd} = hayConst;
-const baseFileName = path.basename(import.meta.url, path.extname(import.meta.url));
-const namespacePrefix = sys.cbusinessRules + bas.cDot + wrd.crules + bas.cDot + baseFileName + bas.cDot;
+
+const {bas, clr, cfg, num, sys, wrd} = hayConst;
 
 const rootPathArray = await mainTest.rootPathDiscovery();
 const rootPathAsync = rootPathArray[0];
-const rootPathConstants = rootPathArray[1];
-const rootPathHayPlugins = rootPathArray[2];
+
 
 // String names
 export const ctestPluginOneWorkflow = wrd.ctest + wrd.cPlugin + num.cOne + wrd.cWorkflow;

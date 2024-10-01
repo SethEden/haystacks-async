@@ -120,9 +120,12 @@ export const testConstantsValidation = [
     {Name: 'cremoveCharacterFromArray', Actual: tst_con.cremoveCharacterFromArray, Expected: 'removeCharacterFromArray'},
     {Name: 'creplaceCharacterAtIndex', Actual: tst_con.creplaceCharacterAtIndex, Expected: 'replaceCharacterAtIndex'},
 
-
-
     /* commandArrayParsing */
+    {Name: 'csolveLehmerCode', Actual: tst_con.csolveLehmerCode, Expected: 'solveLehmerCode'},
+    {Name: 'crecursiveArrayExpansion', Actual: tst_con.crecursiveArrayExpansion, Expected: 'recursiveArrayExpansion'},
+    {Name: 'cgetLehmerCodeValue', Actual: tst_con.cgetLehmerCodeValue, Expected: 'getLehmerCodeValue'},
+    {Name: 'cgenerateCommandAliases', Actual: tst_con.cgenerateCommandAliases, Expected: 'generateCommandAliases'},
+    {Name: 'caggregateCommandArguments', Actual: tst_con.caggregateCommandArguments, Expected: 'aggregateCommandArguments'},
 
     /* constantArrayParsing */
 
@@ -998,14 +1001,61 @@ export const testConstantsValidation = [
     {Name: 'creplaceCharacterAtIndex_inValidInputMetaDataUndefined', Actual: tst_con.creplaceCharacterAtIndex_inValidInputMetaDataUndefined, Expected: 'replaceCharacterAtIndex_inValidInputMetaDataUndefined'},
     {Name: 'creplaceCharacterAtIndex_inValidInputMetaDataNaN', Actual: tst_con.creplaceCharacterAtIndex_inValidInputMetaDataNaN, Expected: 'replaceCharacterAtIndex_inValidInputMetaDataNaN'},
 
-
-
-
-
-
-
     /* commandArrayParsing */
+    // solveLehmerCode
+    {Name: 'csolveLehmerCode_validData', Actual: tst_con.csolveLehmerCode_validData, Expected: 'solveLehmerCode_validData'},
+    {Name: 'csolveLehmerCode_inValidInputDataString', Actual: tst_con.csolveLehmerCode_inValidInputDataString, Expected: 'solveLehmerCode_inValidInputDataString'},
+    {Name: 'csolveLehmerCode_inValidInputMetaDataString', Actual: tst_con.csolveLehmerCode_inValidInputMetaDataString, Expected: 'solveLehmerCode_inValidInputMetaDataString'},
+    {Name: 'csolveLehmerCode_inValidInputDataInteger', Actual: tst_con.csolveLehmerCode_inValidInputDataInteger, Expected: 'solveLehmerCode_inValidInputDataInteger'},
+    {Name: 'csolveLehmerCode_inValidInputDataBoolean', Actual: tst_con.csolveLehmerCode_inValidInputDataBoolean, Expected: 'solveLehmerCode_inValidInputDataBoolean'},
+    {Name: 'csolveLehmerCode_inValidInputMetaDataInteger', Actual: tst_con.csolveLehmerCode_inValidInputMetaDataInteger, Expected: 'solveLehmerCode_inValidInputMetaDataInteger'},
+    {Name: 'csolveLehmerCode_inValidInputMetaDataBoolean', Actual: tst_con.csolveLehmerCode_inValidInputMetaDataBoolean, Expected: 'solveLehmerCode_inValidInputMetaDataBoolean'},
+    {Name: 'csolveLehmerCode_inValidInputDataUndefined', Actual: tst_con.csolveLehmerCode_inValidInputDataUndefined, Expected: 'solveLehmerCode_inValidInputDataUndefined'},
+    {Name: 'csolveLehmerCode_inValidInputDataNaN', Actual: tst_con.csolveLehmerCode_inValidInputDataNaN, Expected: 'solveLehmerCode_inValidInputDataNaN'},
+    {Name: 'csolveLehmerCode_inValidInputMetaDataUndefined', Actual: tst_con.csolveLehmerCode_inValidInputMetaDataUndefined, Expected: 'solveLehmerCode_inValidInputMetaDataUndefined'},
+    {Name: 'csolveLehmerCode_inValidInputMetaDataNaN', Actual: tst_con.csolveLehmerCode_inValidInputMetaDataNaN, Expected: 'solveLehmerCode_inValidInputMetaDataNaN'},
 
+    // recursiveArrayExpansion
+    {Name: 'crecursiveArrayExpansion_validData', Actual: tst_con.crecursiveArrayExpansion_validData, Expected: 'recursiveArrayExpansion_validData'},
+    {Name: 'crecursiveArrayExpansion_inValidInputDataString', Actual: tst_con.crecursiveArrayExpansion_inValidInputDataString, Expected: 'recursiveArrayExpansion_inValidInputDataString'},
+    {Name: 'crecursiveArrayExpansion_inValidInputMetaDataString', Actual: tst_con.crecursiveArrayExpansion_inValidInputMetaDataString, Expected: 'recursiveArrayExpansion_inValidInputMetaDataString'},
+    {Name: 'crecursiveArrayExpansion_inValidInputDataInteger', Actual: tst_con.crecursiveArrayExpansion_inValidInputDataInteger, Expected: 'recursiveArrayExpansion_inValidInputDataInteger'},
+    {Name: 'crecursiveArrayExpansion_inValidInputDataBoolean', Actual: tst_con.crecursiveArrayExpansion_inValidInputDataBoolean, Expected: 'recursiveArrayExpansion_inValidInputDataBoolean'},
+    {Name: 'crecursiveArrayExpansion_inValidInputMetaDataInteger', Actual: tst_con.crecursiveArrayExpansion_inValidInputMetaDataInteger, Expected: 'recursiveArrayExpansion_inValidInputMetaDataInteger'},
+    {Name: 'crecursiveArrayExpansion_inValidInputMetaDataBoolean', Actual: tst_con.crecursiveArrayExpansion_inValidInputMetaDataBoolean, Expected: 'recursiveArrayExpansion_inValidInputMetaDataBoolean'},
+    {Name: 'crecursiveArrayExpansion_inValidInputDataUndefined', Actual: tst_con.crecursiveArrayExpansion_inValidInputDataUndefined, Expected: 'recursiveArrayExpansion_inValidInputDataUndefined'},
+    {Name: 'crecursiveArrayExpansion_inValidInputDataNaN', Actual: tst_con.crecursiveArrayExpansion_inValidInputDataNaN, Expected: 'recursiveArrayExpansion_inValidInputDataNaN'},
+    {Name: 'crecursiveArrayExpansion_inValidInputMetaDataUndefined', Actual: tst_con.crecursiveArrayExpansion_inValidInputMetaDataUndefined, Expected: 'recursiveArrayExpansion_inValidInputMetaDataUndefined'},
+    {Name: 'crecursiveArrayExpansion_inValidInputMetaDataNaN', Actual: tst_con.crecursiveArrayExpansion_inValidInputMetaDataNaN, Expected: 'recursiveArrayExpansion_inValidInputMetaDataNaN'},
+
+    // getLehmerCodeValue
+    {Name: 'cgetLehmerCodeValue_validData', Actual: tst_con.cgetLehmerCodeValue_validData, Expected: 'getLehmerCodeValue_validData'},
+    {Name: 'cgetLehmerCodeValue_inValidInputDataString', Actual: tst_con.cgetLehmerCodeValue_inValidInputDataString, Expected: 'getLehmerCodeValue_inValidInputDataString'},
+    {Name: 'cgetLehmerCodeValue_inValidInputMetaDataString', Actual: tst_con.cgetLehmerCodeValue_inValidInputMetaDataString, Expected: 'getLehmerCodeValue_inValidInputMetaDataString'},
+    {Name: 'cgetLehmerCodeValue_inValidInputDataInteger', Actual: tst_con.cgetLehmerCodeValue_inValidInputDataInteger, Expected: 'getLehmerCodeValue_inValidInputDataInteger'},
+    {Name: 'cgetLehmerCodeValue_inValidInputDataBoolean', Actual: tst_con.cgetLehmerCodeValue_inValidInputDataBoolean, Expected: 'getLehmerCodeValue_inValidInputDataBoolean'},
+    {Name: 'cgetLehmerCodeValue_inValidInputMetaDataInteger', Actual: tst_con.cgetLehmerCodeValue_inValidInputMetaDataInteger, Expected: 'getLehmerCodeValue_inValidInputMetaDataInteger'},
+    {Name: 'cgetLehmerCodeValue_inValidInputMetaDataBoolean', Actual: tst_con.cgetLehmerCodeValue_inValidInputMetaDataBoolean, Expected: 'getLehmerCodeValue_inValidInputMetaDataBoolean'},
+    {Name: 'cgetLehmerCodeValue_inValidInputDataUndefined', Actual: tst_con.cgetLehmerCodeValue_inValidInputDataUndefined, Expected: 'getLehmerCodeValue_inValidInputDataUndefined'},
+    {Name: 'cgetLehmerCodeValue_inValidInputDataNaN', Actual: tst_con.cgetLehmerCodeValue_inValidInputDataNaN, Expected: 'getLehmerCodeValue_inValidInputDataNaN'},
+    {Name: 'cgetLehmerCodeValue_inValidInputMetaDataUndefined', Actual: tst_con.cgetLehmerCodeValue_inValidInputMetaDataUndefined, Expected: 'getLehmerCodeValue_inValidInputMetaDataUndefined'},
+    {Name: 'cgetLehmerCodeValue_inValidInputMetaDataNaN', Actual: tst_con.cgetLehmerCodeValue_inValidInputMetaDataNaN, Expected: 'getLehmerCodeValue_inValidInputMetaDataNaN'},
+    // generateCommandAliases
+    {Name: 'cgenerateCommandAliases_validData', Actual: tst_con.cgenerateCommandAliases_validData, Expected: 'generateCommandAliases_validData'},
+    {Name: 'cgenerateCommandAliases_inValidInputDataString', Actual: tst_con.cgenerateCommandAliases_inValidInputDataString, Expected: 'generateCommandAliases_inValidInputDataString'},
+    {Name: 'cgenerateCommandAliases_inValidInputDataInteger', Actual: tst_con.cgenerateCommandAliases_inValidInputDataInteger, Expected: 'generateCommandAliases_inValidInputDataInteger'},
+    {Name: 'cgenerateCommandAliases_inValidInputDataBoolean', Actual: tst_con.cgenerateCommandAliases_inValidInputDataBoolean, Expected: 'generateCommandAliases_inValidInputDataBoolean'},
+    {Name: 'cgenerateCommandAliases_inValidInputDataUndefined', Actual: tst_con.cgenerateCommandAliases_inValidInputDataUndefined, Expected: 'generateCommandAliases_inValidInputDataUndefined'},
+    {Name: 'cgenerateCommandAliases_inValidInputDataNaN', Actual: tst_con.cgenerateCommandAliases_inValidInputDataNaN, Expected: 'generateCommandAliases_inValidInputDataNaN'},
+ 
+    // aggregateCommandArguments
+    {Name: 'caggregateCommandArguments_validData', Actual: tst_con.caggregateCommandArguments_validData, Expected: 'aggregateCommandArguments_validData'},
+    {Name: 'caggregateCommandArguments_inValidInputDataString', Actual: tst_con.caggregateCommandArguments_inValidInputDataString, Expected: 'aggregateCommandArguments_inValidInputDataString'},
+    {Name: 'caggregateCommandArguments_inValidInputDataInteger', Actual: tst_con.caggregateCommandArguments_inValidInputDataInteger, Expected: 'aggregateCommandArguments_inValidInputDataInteger'},
+    {Name: 'caggregateCommandArguments_inValidInputDataBoolean', Actual: tst_con.caggregateCommandArguments_inValidInputDataBoolean, Expected: 'aggregateCommandArguments_inValidInputDataBoolean'},
+    {Name: 'caggregateCommandArguments_inValidInputDataUndefined', Actual: tst_con.caggregateCommandArguments_inValidInputDataUndefined, Expected: 'aggregateCommandArguments_inValidInputDataUndefined'},
+    {Name: 'caggregateCommandArguments_inValidInputDataNaN', Actual: tst_con.caggregateCommandArguments_inValidInputDataNaN, Expected: 'aggregateCommandArguments_inValidInputDataNaN'},
+    
     /* constantArrayParsing */
 
     /* dataArrayParsing */
