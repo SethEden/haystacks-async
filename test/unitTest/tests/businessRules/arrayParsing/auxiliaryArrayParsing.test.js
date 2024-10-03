@@ -5,16 +5,9 @@
  * @module auxiliaryArrayParsing.test
  * @description Unit tests for the auxiliaryArrayParsing.js
  * @requires module:auxiliaryArrayParsing
- * @requires module:characterArrayParsing
- * @requires module:characterStringParsing
- * @requires module:fileStringParsing
- * @requires module:fileOperations
- * @requires module:stringParsingUtilities
- * @requires module:main
+ * @requires module:rulesLibrary
  * @requires module:D
- * @requires module:pluginData
  * @requires module:test.constants
- * @requires module:workflowBrokerTest
  * @requires module:mainTest
  * @requires {@link https://www.npmjs.com/package/@haystacks/constants|@haystacks/constants}
  * @requires {@link https://www.npmjs.com/package/jest|jest}
@@ -27,7 +20,6 @@
 import auxiliaryArrayParsing from '../../../../../src/businessRules/rules/arrayParsing/auxiliaryArrayParsing.js'
 import rulesLibrary from '../../../../../src/businessRules/rulesLibrary.js';
 import D from '../../../../../src/structures/data.js';
-import pluginDataFile from '../../../testData/testPlugins/test-plugin-one/structures/pluginData.js'
 import * as tst_con from '../../resources/constants/test.constants.js';
 import * as tst_man from '../../../testData/mainTest.js';
 
@@ -42,9 +34,6 @@ for (let key in D) {
     }
 }
 await rulesLibrary.initRulesLibrary();
-
-// test-plugin-one data
-const pluginData = {[wrd.cdata]: pluginDataFile[wrd.cdata]};
 
 
 /**

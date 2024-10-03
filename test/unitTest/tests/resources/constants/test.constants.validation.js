@@ -128,9 +128,17 @@ export const testConstantsValidation = [
     {Name: 'caggregateCommandArguments', Actual: tst_con.caggregateCommandArguments, Expected: 'aggregateCommandArguments'},
 
     /* constantArrayParsing */
+    {Name: 'cgetLengthOfLongestStringInArray', Actual: tst_con.cgetLengthOfLongestStringInArray, Expected: 'getLengthOfLongestStringInArray'},
+    {Name: 'csearchForPatternsInStringArray', Actual: tst_con.csearchForPatternsInStringArray, Expected: 'searchForPatternsInStringArray'},
+    {Name: 'cvalidatePatternsThatNeedImplementation', Actual: tst_con.cvalidatePatternsThatNeedImplementation, Expected: 'validatePatternsThatNeedImplementation'},
 
     /* dataArrayParsing */
+    {Name: 'carraysAreEqual', Actual: tst_con.carraysAreEqual, Expected: 'arraysAreEqual'},
+    {Name: 'cgetStoredData', Actual: tst_con.cgetStoredData, Expected: 'getStoredData'},
+    {Name: 'cisObjectEmpty', Actual: tst_con.cisObjectEmpty, Expected: 'isObjectEmpty'},
 
+
+    
     /* pathArrayParsing */
 
     /* wordArrayParsing */
@@ -1057,8 +1065,70 @@ export const testConstantsValidation = [
     {Name: 'caggregateCommandArguments_inValidInputDataNaN', Actual: tst_con.caggregateCommandArguments_inValidInputDataNaN, Expected: 'aggregateCommandArguments_inValidInputDataNaN'},
     
     /* constantArrayParsing */
+    // getLengthOfLongestStringInArray
+    {Name: 'cgetLengthOfLongestStringInArray_validData', Actual: tst_con.cgetLengthOfLongestStringInArray_validData, Expected: 'getLengthOfLongestStringInArray_validData'},
+    {Name: 'cgetLengthOfLongestStringInArray_inValidInputDataString', Actual: tst_con.cgetLengthOfLongestStringInArray_inValidInputDataString, Expected: 'getLengthOfLongestStringInArray_inValidInputDataString'},
+    {Name: 'cgetLengthOfLongestStringInArray_inValidInputDataInteger', Actual: tst_con.cgetLengthOfLongestStringInArray_inValidInputDataInteger, Expected: 'getLengthOfLongestStringInArray_inValidInputDataInteger'},
+    {Name: 'cgetLengthOfLongestStringInArray_inValidInputDataBoolean', Actual: tst_con.cgetLengthOfLongestStringInArray_inValidInputDataBoolean, Expected: 'getLengthOfLongestStringInArray_inValidInputDataBoolean'},
+    {Name: 'cgetLengthOfLongestStringInArray_inValidInputDataUndefined', Actual: tst_con.cgetLengthOfLongestStringInArray_inValidInputDataUndefined, Expected: 'getLengthOfLongestStringInArray_inValidInputDataUndefined'},
+    {Name: 'cgetLengthOfLongestStringInArray_inValidInputDataNaN', Actual: tst_con.cgetLengthOfLongestStringInArray_inValidInputDataNaN, Expected: 'getLengthOfLongestStringInArray_inValidInputDataNaN'},
+
+    // searchForPatternsInStringArray
+    {Name: 'csearchForPatternsInStringArray_validData', Actual: tst_con.csearchForPatternsInStringArray_validData, Expected: 'searchForPatternsInStringArray_validData'},
+    {Name: 'csearchForPatternsInStringArray_inValidInputDataString', Actual: tst_con.csearchForPatternsInStringArray_inValidInputDataString, Expected: 'searchForPatternsInStringArray_inValidInputDataString'},
+    {Name: 'csearchForPatternsInStringArray_inValidInputDataInteger', Actual: tst_con.csearchForPatternsInStringArray_inValidInputDataInteger, Expected: 'searchForPatternsInStringArray_inValidInputDataInteger'},
+    {Name: 'csearchForPatternsInStringArray_inValidInputDataBoolean', Actual: tst_con.csearchForPatternsInStringArray_inValidInputDataBoolean, Expected: 'searchForPatternsInStringArray_inValidInputDataBoolean'},
+    {Name: 'csearchForPatternsInStringArray_inValidInputDataUndefined', Actual: tst_con.csearchForPatternsInStringArray_inValidInputDataUndefined, Expected: 'searchForPatternsInStringArray_inValidInputDataUndefined'},
+    {Name: 'csearchForPatternsInStringArray_inValidInputDataNaN', Actual: tst_con.csearchForPatternsInStringArray_inValidInputDataNaN, Expected: 'searchForPatternsInStringArray_inValidInputDataNaN'},
+
+    // validatePatternsThatNeedImplementation
+    {Name: 'cvalidatePatternsThatNeedImplementation_validData', Actual: tst_con.cvalidatePatternsThatNeedImplementation_validData, Expected: 'validatePatternsThatNeedImplementation_validData'},
+    {Name: 'cvalidatePatternsThatNeedImplementation_inValidInputDataString', Actual: tst_con.cvalidatePatternsThatNeedImplementation_inValidInputDataString, Expected: 'validatePatternsThatNeedImplementation_inValidInputDataString'},
+    {Name: 'cvalidatePatternsThatNeedImplementation_inValidInputDataInteger', Actual: tst_con.cvalidatePatternsThatNeedImplementation_inValidInputDataInteger, Expected: 'validatePatternsThatNeedImplementation_inValidInputDataInteger'},
+    {Name: 'cvalidatePatternsThatNeedImplementation_inValidInputDataBoolean', Actual: tst_con.cvalidatePatternsThatNeedImplementation_inValidInputDataBoolean, Expected: 'validatePatternsThatNeedImplementation_inValidInputDataBoolean'},
+    {Name: 'cvalidatePatternsThatNeedImplementation_inValidInputDataUndefined', Actual: tst_con.cvalidatePatternsThatNeedImplementation_inValidInputDataUndefined, Expected: 'validatePatternsThatNeedImplementation_inValidInputDataUndefined'},
+    {Name: 'cvalidatePatternsThatNeedImplementation_inValidInputDataNaN', Actual: tst_con.cvalidatePatternsThatNeedImplementation_inValidInputDataNaN, Expected: 'validatePatternsThatNeedImplementation_inValidInputDataNaN'},
 
     /* dataArrayParsing */
+    // arraysAreEqual
+    {Name: 'carraysAreEqual_validData', Actual: tst_con.carraysAreEqual_validData, Expected: 'arraysAreEqual_validData'},
+    {Name: 'carraysAreEqual_inValidInputDataString', Actual: tst_con.carraysAreEqual_inValidInputDataString, Expected: 'arraysAreEqual_inValidInputDataString'},
+    {Name: 'carraysAreEqual_inValidInputMetaDataString', Actual: tst_con.carraysAreEqual_inValidInputMetaDataString, Expected: 'arraysAreEqual_inValidInputMetaDataString'},
+    {Name: 'carraysAreEqual_inValidInputDataInteger', Actual: tst_con.carraysAreEqual_inValidInputDataInteger, Expected: 'arraysAreEqual_inValidInputDataInteger'},
+    {Name: 'carraysAreEqual_inValidInputDataBoolean', Actual: tst_con.carraysAreEqual_inValidInputDataBoolean, Expected: 'arraysAreEqual_inValidInputDataBoolean'},
+    {Name: 'carraysAreEqual_inValidInputMetaDataInteger', Actual: tst_con.carraysAreEqual_inValidInputMetaDataInteger, Expected: 'arraysAreEqual_inValidInputMetaDataInteger'},
+    {Name: 'carraysAreEqual_inValidInputMetaDataBoolean', Actual: tst_con.carraysAreEqual_inValidInputMetaDataBoolean, Expected: 'arraysAreEqual_inValidInputMetaDataBoolean'},
+    {Name: 'carraysAreEqual_inValidInputDataUndefined', Actual: tst_con.carraysAreEqual_inValidInputDataUndefined, Expected: 'arraysAreEqual_inValidInputDataUndefined'},
+    {Name: 'carraysAreEqual_inValidInputDataNaN', Actual: tst_con.carraysAreEqual_inValidInputDataNaN, Expected: 'arraysAreEqual_inValidInputDataNaN'},
+    {Name: 'carraysAreEqual_inValidInputMetaDataUndefined', Actual: tst_con.carraysAreEqual_inValidInputMetaDataUndefined, Expected: 'arraysAreEqual_inValidInputMetaDataUndefined'},
+    {Name: 'carraysAreEqual_inValidInputMetaDataNaN', Actual: tst_con.carraysAreEqual_inValidInputMetaDataNaN, Expected: 'arraysAreEqual_inValidInputMetaDataNaN'},
+
+    // storeData
+    {Name: 'cstoreData_inValidInputDataInteger', Actual: tst_con.cstoreData_inValidInputDataInteger, Expected: 'storeData_inValidInputDataInteger'},
+    {Name: 'cstoreData_inValidInputDataBoolean', Actual: tst_con.cstoreData_inValidInputDataBoolean, Expected: 'storeData_inValidInputDataBoolean'},
+    {Name: 'cstoreData_inValidInputMetaDataBoolean', Actual: tst_con.cstoreData_inValidInputMetaDataBoolean, Expected: 'storeData_inValidInputMetaDataBoolean'},
+    {Name: 'cstoreData_inValidInputDataUndefined', Actual: tst_con.cstoreData_inValidInputDataUndefined, Expected: 'storeData_inValidInputDataUndefined'},
+    {Name: 'cstoreData_inValidInputDataNaN', Actual: tst_con.cstoreData_inValidInputDataNaN, Expected: 'storeData_inValidInputDataNaN'},
+    {Name: 'cstoreData_inValidInputMetaDataUndefined', Actual: tst_con.cstoreData_inValidInputMetaDataUndefined, Expected: 'storeData_inValidInputMetaDataUndefined'},
+    {Name: 'cstoreData_inValidInputMetaDataNaN', Actual: tst_con.cstoreData_inValidInputMetaDataNaN, Expected: 'storeData_inValidInputMetaDataNaN'},
+
+    // getStoredData
+    {Name: 'cgetStoredData_validData', Actual: tst_con.cgetStoredData_validData, Expected: 'getStoredData_validData'},
+    {Name: 'cgetStoredData_inValidInputDataString', Actual: tst_con.cgetStoredData_inValidInputDataString, Expected: 'getStoredData_inValidInputDataString'},
+    {Name: 'cgetStoredData_inValidInputDataInteger', Actual: tst_con.cgetStoredData_inValidInputDataInteger, Expected: 'getStoredData_inValidInputDataInteger'},
+    {Name: 'cgetStoredData_inValidInputDataBoolean', Actual: tst_con.cgetStoredData_inValidInputDataBoolean, Expected: 'getStoredData_inValidInputDataBoolean'},
+    {Name: 'cgetStoredData_inValidInputDataUndefined', Actual: tst_con.cgetStoredData_inValidInputDataUndefined, Expected: 'getStoredData_inValidInputDataUndefined'},
+    {Name: 'cgetStoredData_inValidInputDataNaN', Actual: tst_con.cgetStoredData_inValidInputDataNaN, Expected: 'getStoredData_inValidInputDataNaN'},
+
+    // isObjectEmpty
+    {Name: 'cisObjectEmpty_validData', Actual: tst_con.cisObjectEmpty_validData, Expected: 'isObjectEmpty_validData'},
+    {Name: 'cisObjectEmpty_inValidInputDataString', Actual: tst_con.cisObjectEmpty_inValidInputDataString, Expected: 'isObjectEmpty_inValidInputDataString'},
+    {Name: 'cisObjectEmpty_inValidInputDataInteger', Actual: tst_con.cisObjectEmpty_inValidInputDataInteger, Expected: 'isObjectEmpty_inValidInputDataInteger'},
+    {Name: 'cisObjectEmpty_inValidInputDataBoolean', Actual: tst_con.cisObjectEmpty_inValidInputDataBoolean, Expected: 'isObjectEmpty_inValidInputDataBoolean'},
+    {Name: 'cisObjectEmpty_inValidInputDataUndefined', Actual: tst_con.cisObjectEmpty_inValidInputDataUndefined, Expected: 'isObjectEmpty_inValidInputDataUndefined'},
+    {Name: 'cisObjectEmpty_inValidInputDataNaN', Actual: tst_con.cisObjectEmpty_inValidInputDataNaN, Expected: 'isObjectEmpty_inValidInputDataNaN'},
+
+
 
     /* pathArrayParsing */
 

@@ -24,6 +24,8 @@
             <Workflow Name="isArrayOrObjectDisable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.arrayParsing.dataArrayParsing.isArrayOrObject false"/>
             <Workflow Name="isNonZeroLengthArrayEnable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.arrayParsing.dataArrayParsing.isNonZeroLengthArray true"/>
             <Workflow Name="isNonZeroLengthArrayDisable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.arrayParsing.dataArrayParsing.isNonZeroLengthArray false"/>
+            <Workflow Name="isDeeplyEqualEnable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.arrayParsing.dataArrayParsing.isDeeplyEqual true"/>
+            <Workflow Name="isDeeplyEqualDisable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.arrayParsing.dataArrayParsing.isDeeplyEqual false"/>
             <Workflow Name="arrayDeepCloneEnable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.arrayParsing.dataArrayParsing.arrayDeepClone true"/>
             <Workflow Name="arrayDeepCloneDisable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.arrayParsing.dataArrayParsing.arrayDeepClone false"/>
             <Workflow Name="objectDeepCloneEnable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.arrayParsing.dataArrayParsing.objectDeepClone true"/>

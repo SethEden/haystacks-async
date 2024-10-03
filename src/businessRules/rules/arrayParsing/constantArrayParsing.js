@@ -34,7 +34,7 @@ const namespacePrefix = wrd.cframework + bas.cDot + sys.cbusinessRules + bas.cDo
  * @description Determines what the longest string is in an array of strings.
  * @param {array<string>} inputData The array for which we should find the longest length string in.
  * @param {string} inputMetaData Not used for this business rule.
- * @return {integer} The length of the longest string in the array.
+ * @return {integer|boolean} The length of the longest string in the array, or false if error is encountered.
  * @author Seth Hollingsead
  * @date 2022/01/19
  * @NOTE https://stackoverflow.com/questions/6521245/finding-longest-string-in-array
@@ -44,9 +44,13 @@ async function getLengthOfLongestStringInArray(inputData, inputMetaData) {
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
-  let returnData = 0;
-  if (inputData) {
+  let returnData = false;
+  if (Array.isArray(inputData) && inputData.every(item => typeof item === wrd.cstring)) {
+    returnData = 0;
     returnData = math.max(...(inputData.map(el => el.length)));
+  } else {
+    // ERROR: Invalid input, inputData is:
+    console.log(msg.cErrorInvalidInputDataMessage + inputData);
   }
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
@@ -60,7 +64,7 @@ async function getLengthOfLongestStringInArray(inputData, inputMetaData) {
  * Minimum string length to search is 3 characters.
  * @param {array<string>} inputData The array of strings that should be searched for matching patterns.
  * @param {string} inputMetaData Not used for this business rule.
- * @return {array<string>} A string array of common string values found in more than 1 element of the array and 3 or more characters long.
+ * @return {array<string>|boolean} A string array of common string values found in more than 1 element of the array and 3 or more characters long, or false if error is encountered.
  * @author Seth Hollingsead
  * @date 2022/01/19
  */
@@ -70,7 +74,7 @@ async function searchForPatternsInStringArray(inputData, inputMetaData) {
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = false;
-  if (inputData && inputData.length > 0) {
+  if ((Array.isArray(inputData) && inputData.every(item => typeof item === wrd.cstring && item.length > 0))) {
     returnData = []; // Reset it to an empty array, the input data has something n it so we should be able to process it.
     let maxStringLength = await getLengthOfLongestStringInArray(inputData, '') - 1;
     // maxStringLength is:
@@ -137,7 +141,9 @@ async function searchForPatternsInStringArray(inputData, inputMetaData) {
     } // End-for (let a = 0; a < inputData.length; a++)
   } else { // Else-clause if (inputData && inputData.length > 0)
     // WARNING: InputData was not an array or had an empty array.
-    await loggers.consoleLog(namespacePrefix + functionName, msg.cSearchForPatternsInSringArrayMessage7);
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cSearchForPatternsInStringArrayMessage7);
+    // ERROR: Invalid input, inputData is:
+    console.log(msg.cErrorInvalidInputDataMessage + inputData);
   }
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
@@ -149,7 +155,7 @@ async function searchForPatternsInStringArray(inputData, inputMetaData) {
  * @description Scans through an array of strings and determines which ones are not yet implemented in the constants system.
  * @param {array<string>} inputData The array of strings that should be checked if they are already implemented in the constants system or not.
  * @param {string} inputMetaData Not used for this business rule.
- * @return {string} A coma separated list of constants that are not yet implemented.
+ * @return {string|boolean} A coma separated list of constants that are not yet implemented, or false if error is encountered.
  * @author Seth Hollingsead
  * @date 2022/01/20
  */
@@ -158,8 +164,9 @@ async function validatePatternsThatNeedImplementation(inputData, inputMetaData) 
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
-  let returnData = '';
-  if (inputData) {
+  let returnData = false;
+  if (Array.isArray(inputData) && inputData.every(item => typeof item === wrd.cstring)) {
+    returnData = '';
     let passMessage = '';
     let colorizeLogsEnabled = await configurator.getConfigurationSetting(wrd.csystem, cfg.cenableColorizedConsoleLogs);
     let j = 0; // We will use this as an iterator to count the number of times we add a string to the returnData coma-seperated list.
@@ -195,7 +202,10 @@ async function validatePatternsThatNeedImplementation(inputData, inputMetaData) 
         await loggers.consoleLog(namespacePrefix + functionName, msg.cConstantDoesExist + currentString);
       }
     } // End-for (const element of inputData)
-  } // End-if (inputData)
+  } else { // End-if (inputData)
+    // ERROR: Invalid input, inputData is:
+    console.log(msg.cErrorInvalidInputDataMessage + inputData);
+  }
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;

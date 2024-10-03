@@ -740,7 +740,7 @@ async function storeData(dataStorageContextName, dataToStore) {
  * @function getData
  * @description Gets some data from a caller specified sub-data storage hive name.
  * @param {string} dataStorageContextName The sub-data storage hive which should be retrieved.
- * @return {object} the data that is found, if any at the specified location on the data storage hive.
+ * @return {object} The data that is found, if any at the specified location on the data storage hive.
  * @author Seth Hollingsead
  * @date 2022/01/20
  */

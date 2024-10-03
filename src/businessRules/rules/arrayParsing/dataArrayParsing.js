@@ -32,7 +32,7 @@ const namespacePrefix = wrd.cframework + bas.cDot + sys.cbusinessRules + bas.cDo
  * @description Determines if a set of arrays are equal or not.
  * @param {array<string|integer|boolean|float|object>} inputData The first array that should be checked for equality.
  * @param {array<string|integer|boolean|float|object>} inputMetaData The second array that should be checked for equality.
- * @return {boolean} True or False to indicate if the arrays are equal or not equal.
+ * @return {boolean} True or False to indicate if the arrays are equal or not equal, or false if the input is invalid.
  * @author Seth Hollingsead
  * @date 2022/01/20
  * @NOTE: https://stackoverflow.com/questions/3115982/how-to-check-if-two-arrays-are-equal-with-javascript
@@ -43,11 +43,17 @@ async function arraysAreEqual(inputData, inputMetaData) {
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
   let returnData = false;
-  if (inputData && inputMetaData) {
-    if (inputData === inputMetaData) { returnData = true; }
-    if (inputData === null || inputMetaData === null) { returnData = false; }
-    if (inputData.length != inputMetaData.length) { returnData = false; }
-  } // End-if (inputData && inputMetaData)
+  if ((Array.isArray(inputData))) {
+    if (Array.isArray(inputMetaData)) {
+      returnData = inputData.every(async (value, index) => await isDeeplyEqual(value, inputMetaData[index]));
+    } else { // End-if (inputMetaData)
+      // ERROR: Invalid input, inputMetaData is:
+      console.log(msg.cErrorInvalidInputMetaDataMessage + inputMetaData);
+    }
+  } else { // End-if (inputData)
+    // ERROR: Invalid input, inputData is:
+    console.log(msg.cErrorInvalidInputDataMessage + inputData);
+  }
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
@@ -58,7 +64,7 @@ async function arraysAreEqual(inputData, inputMetaData) {
  * @description Stores some data using the DataStorage data hie on the D data store.
  * @param {string} inputData The context name that the data should be stored with.
  * @param {string|integer|boolean|object|array} inputMetaData The data that should be stored.
- * @return {void}
+ * @return {boolean} True or False to indicate if the data was stored succesfully or not.
  * @author Seth Hollingsead
  * @date 2022/01/20
  */
@@ -69,8 +75,7 @@ async function storeData(inputData, inputMetaData) {
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
   let returnData = false;
   if (inputData && inputMetaData) {
-    await dataBroker.storeData(inputData, inputMetaData);
-    returnData = true;
+    returnData = await dataBroker.storeData(inputData, inputMetaData);
   } // End-if (inputData && inputMetaData)
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
@@ -114,18 +119,22 @@ async function isObjectEmpty(inputData, inputMetaData) {
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
-  let returnData = true;
-  if (inputData) {
+  let returnData = false;
+  if (inputData && typeof inputData === wrd.cobject) {
+    returnData = true;
     for (let key in inputData) {
       if (Object.prototype.hasOwnProperty.call(inputData, key)) {
-        returnData = false;
-        // It may have a value, but is that value === null, if it is, reset back to true.
-        if (inputData[key] === null) {
-          returnData = true;
+        if (inputData[key] !== null) {
+          // If we find a key with a non-null value, we know the object isn't empty.
+          returnData = false;
+          break;
         }
       } // End-if (inputData.hasOwnProperty(key))
     } // End-for (let key in inputData)
-  } // End-if (inputData)
+  } else { // End-if (inputData)
+    // ERROR: Invalid input, inputData is:
+    console.log(msg.cErrorInvalidInputDataMessage + inputData);
+  }
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
@@ -251,6 +260,46 @@ async function isNonZeroLengthArray(inputData, inputMetaData) {
     }
   } // End-if (inputData)
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
+/**
+ * @function isDeeplyEqual
+ * @description Recursively checks for deep equality between two values (arrays, objects, or primitives).
+ * @param {string|integer|boolean|float|object} inputData The first value to compare.
+ * @param {string|integer|boolean|float|object} inputMetaData The second value to compare.
+ * @return {boolean} True or False to indicate if the values are equal or not.
+ * @author Vlad Sorokin
+ * @date 2024/10/03
+ * @NOTE Test function to handle comparison of: NaN and NaN or circular references.
+ */
+async function isDeeplyEqual(inputData, inputMetaData) {
+  let functionName = isDeeplyEqual.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
+  let returnData = false;
+  if (inputData === inputMetaData) {
+    returnData = true;
+  } else if (typeof inputData === wrd.cobject && typeof inputMetaData === wrd.cobject && inputData !== null && inputMetaData !== null) {
+    if (Array.isArray(inputData) && Array.isArray(inputMetaData)) {
+      if (inputData.length === inputMetaData.length) {
+        returnData = true;
+        const results = await Promise.all(inputData.map(async (value, index) => await isDeeplyEqual(value, inputMetaData[index])));
+        returnData = results.every(result => result === true);
+      }
+    } else if (!Array.isArray(inputData) && !Array.isArray(inputMetaData)) {
+      const keysA = Object.keys(inputData);
+      const keysB = Object.keys(inputMetaData);
+      if (keysA.length === keysB.length) {
+        returnData = true;
+        const results = await Promise.all(keysA.map(async key => await isDeeplyEqual(inputData[key], inputMetaData[key])));
+        returnData = results.every(result => result === true);
+      }
+    }
+  }
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
@@ -600,6 +649,7 @@ export default {
   isArray,
   isArrayOrObject,
   isNonZeroLengthArray,
+  isDeeplyEqual,
   arrayDeepClone,
   objectDeepClone,
   objectDeepMerge,

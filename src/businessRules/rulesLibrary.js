@@ -150,6 +150,7 @@ async function initRulesLibrary() {
      [biz.cisArray]: (inputData, inputMetaData) => dataArrayParsing.isArray(inputData, inputMetaData),
      [biz.cisArrayOrObject]: (inputData, inputMetaData) => dataArrayParsing.isArrayOrObject(inputData, inputMetaData),
      [biz.cisNonZeroLengthArray]: (inputData, inputMetaData) => dataArrayParsing.isNonZeroLengthArray(inputData, inputMetaData),
+     [biz.cisDeeplyEqual]: (inputData, inputMetaData) => dataArrayParsing.isDeeplyEqual(inputData, inputMetaData),
      [biz.carrayDeepClone]: (inputData, inputMetaData) => dataArrayParsing.arrayDeepClone(inputData, inputMetaData),
      [biz.cobjectDeepClone]: (inputData, inputMetaData) => dataArrayParsing.objectDeepClone(inputData, inputMetaData),
      [biz.cobjectDeepMerge]: (inputData, inputMetaData) => dataArrayParsing.objectDeepMerge(inputData, inputMetaData),

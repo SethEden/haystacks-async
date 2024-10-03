@@ -496,6 +496,61 @@ input inputData: object|array<string|integer|boolean|float|object> (The object/a
 input inputMetaData: NaN
 output: ?
 --------------------------------------------------------------------------------
+testName: isDeeplyEqual_validData
+input inputData: string|integer|boolean|float|object (The first array that should be checked for equality.)
+input inputMetaData: string|integer|boolean|float|object (The second array that should be checked for equality.)
+output: boolean (?)
+
+testName: isDeeplyEqual_inValidInputDataString
+input inputData: string (dfxg24346dfg)
+input inputMetaData: string|integer|boolean|float|object (The second array that should be checked for equality.)
+output: ?
+
+testName: isDeeplyEqual_inValidInputMetaDataString
+input inputData: string|integer|boolean|float|object (The first array that should be checked for equality.)
+input inputMetaData: string (dfxg24346dfg)
+output: ?
+
+testName: isDeeplyEqual_inValidInputDataInteger
+input inputData: integer (123)
+input inputMetaData: string|integer|boolean|float|object (The second array that should be checked for equality.)
+output: ?
+
+testName: isDeeplyEqual_inValidInputDataBoolean
+input inputData: boolean (false)
+input inputMetaData: string|integer|boolean|float|object (The second array that should be checked for equality.)
+output: ?
+
+testName: isDeeplyEqual_inValidInputMetaDataInteger
+input inputData: string|integer|boolean|float|object (The first array that should be checked for equality.)
+input inputMetaData: integer (123)
+output: ?
+
+testName: isDeeplyEqual_inValidInputMetaDataBoolean
+input inputData: string|integer|boolean|float|object (The first array that should be checked for equality.)
+input inputMetaData: boolean (false)
+output: ?
+
+testName: isDeeplyEqual_inValidInputDataUndefined
+input inputData: undefined
+input inputMetaData: string|integer|boolean|float|object (The second array that should be checked for equality.)
+output: ?
+
+testName: isDeeplyEqual_inValidInputDataNaN
+input inputData: NaN
+input inputMetaData: string|integer|boolean|float|object (The second array that should be checked for equality.)
+output: ?
+
+testName: isDeeplyEqual_inValidInputMetaDataUndefined
+input inputData: string|integer|boolean|float|object (The first array that should be checked for equality.)
+input inputMetaData: undefined
+output: ?
+
+testName: isDeeplyEqual_inValidInputMetaDataNaN
+input inputData: string|integer|boolean|float|object (The first array that should be checked for equality.)
+input inputMetaData: NaN
+output: ?
+--------------------------------------------------------------------------------
 testName: arrayDeepClone_validData
 input inputData: array<string|integer|boolean|float|object> (The array that should be deeply cloned)
 input inputMetaData: string (Not used for this business rule)
