@@ -18,7 +18,7 @@ import loggers from '../../../executrix/loggers.js';
 import hayConst from '@haystacks/constants';
 import path from 'path';
 
-const {bas, biz, gen, msg, sys, wrd} = hayConst;
+const {abt, bas, biz, msg, sys, wrd} = hayConst;
 const baseFileName = path.basename(import.meta.url, path.extname(import.meta.url));
 // framework.businessRules.rules.arrayParsing.wordArrayParsing.
 const namespacePrefix = wrd.cframework + bas.cDot + sys.cbusinessRules + bas.cDot + wrd.crules + bas.cDot + wrd.carray + wrd.cParsing + bas.cDot + baseFileName + bas.cDot;
@@ -43,7 +43,7 @@ async function convertCamelCaseStringToArray(inputData, inputMetaData) {
   let returnData;
   let caps = [];
   for (let i = 1; i < inputData.length; i++) {
-    if (gen.cUpperCaseEnglishAlphabet.includes(inputData.charAt(i))) { caps.push(i); }
+    if (abt.cUpperCaseEnglishAlphabet.includes(inputData.charAt(i))) { caps.push(i); }
   } // End-for (let i = 1; i < inputData.length; i++)
   if (caps.length > 0) {
     let last = 0;
