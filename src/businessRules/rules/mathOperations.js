@@ -1,7 +1,7 @@
 /**
- * @file mathOperations
+ * @file mathOperations.js
  * @module mathOperations
- * @description Contains all of the business rule functions for ding math operations and conversions.
+ * @description Contains all of the business rule functions for doing math operations and conversions.
  * @requires module:ruleParsing
  * @requires module:loggers
  * @requires {@link https://www.npmjs.com/package/@haystacks/constants|@haystacks/constants}
