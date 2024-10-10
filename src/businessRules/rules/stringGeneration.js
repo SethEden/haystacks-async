@@ -119,10 +119,10 @@ async function generateRandomLowerCaseTextByLength(inputData, inputMetaData) {
  * special characters to generate the output string.
  * @param {string} inputMetaData A JSON data structure object that contains the list of special characters that should be used during the generation process,
  * and also the name of the language who's alphabet should be used for international characters.
- * {
- *  "SpecialCharacters": "!@#$%^&*()_+-=[]{};:',./<>?\|\"",
- *  "Language": "English"
- * }
+ * [
+ *  "!@#$%^&*()_+-=[]{};:',./<>?\|\"", // SpecialCharacters
+ *  "English" // Language
+ * ]
  * @return {string} A string of randomly generated mixed case letters and
  * special characters where the length of the string is defined by the input parameter.
  * @author Seth Hollingsead
@@ -136,8 +136,8 @@ async function generateRandomMixedCaseTextWithSpecialCharactersByLength(inputDat
   let returnData = '';
   if (inputData && inputMetaData) {
     let numberOfCharactersToGenerate = parseInt(inputData);
-    let specialCharacters = inputMetaData[sys.cSpecialCharacters];
-    let language = inputMetaData[wrd.cLanguage];
+    let specialCharacters = inputMetaData[0];
+    let language = inputMetaData[1];
     for (let counter = 1; counter <= numberOfCharactersToGenerate; counter++) {
       returnData = returnData.concat(await ruleParsing.processRulesInternal([specialCharacters, language], [biz.crandomlyGenerateMixedCaseLetterOrSpecialCharacter]));
     } // End-for (let counter = 1; counter <= numberOfCharactersToGenerate; counter++)
@@ -153,10 +153,10 @@ async function generateRandomMixedCaseTextWithSpecialCharactersByLength(inputDat
  * @param {string} inputData The number of randomly generated upper case english letters and/or special characters to generate.
  * @param {string} inputMetaData A JSON data structure object that contains the list of special characters that should be used during the generation process,
  * and also the name of the language who's alphabet should be used for international characters.
- * {
- *  "SpecialCharacters": "!@#$%^&*()_+-=[]{};:',./<>?\|\"",
- *  "Language": "English"
- * }
+ * [
+ *  "!@#$%^&*()_+-=[]{};:',./<>?\|\"", // SpecialCharacters
+ *  "English" // Language
+ * ]
  * @return {string} A string of randomly generated upper case english letters and
  * special characters where the length of the string is defined by the input parameter.
  * @author Seth Hollingsead
@@ -170,8 +170,8 @@ async function generateRandomUpperCaseTextWithSpecialCharactersByLength(inputDat
   let returnData = '';
   if (inputData && inputMetaData) {
     let numberOfCharactersToGenerate = parseInt(inputData);
-    let specialCharacters = inputMetaData[sys.cSpecialCharacters];
-    let language = inputMetaData[wrd.cLanguage];
+    let specialCharacters = inputMetaData[0];
+    let language = inputMetaData[1];
     for (let counter = 1; counter <= numberOfCharactersToGenerate; counter++) {
       returnData = returnData.concat(await ruleParsing.processRulesInternal([specialCharacters, language], [biz.crandomlyGenerateUpperCaseLetterOrSpecialCharacter]));
     } // End-for (let counter = 1; counter <= numberOfCharactersToGenerate; counter++)
@@ -189,10 +189,10 @@ async function generateRandomUpperCaseTextWithSpecialCharactersByLength(inputDat
  * special characters to generate.
  * @param {string} inputMetaData A JSON data structure object that contains the list of special characters that should be used during the generation process,
  * and also the name of the language who's alphabet should be used for international characters.
- * {
- *  "SpecialCharacters": "!@#$%^&*()_+-=[]{};:',./<>?\|\"",
- *  "Language": "English"
- * }
+ * [
+ *  "!@#$%^&*()_+-=[]{};:',./<>?\|\"", // SpecialCharacters
+ *  "English" // Language
+ * ]
  * @return {string} A string of randomly generated lower case english letters and
  * special characters where the length of the string is defined by the input parameter.
  * @author Seth Hollingsead
@@ -206,8 +206,8 @@ async function generateRandomLowerCaseTextWithSpecialCharactersByLength(inputDat
   let returnData = '';
   if (inputData && inputMetaData) {
     let numberOfCharactersToGenerate = parseInt(inputData);
-    let specialCharacters = inputMetaData[sys.cSpecialCharacters];
-    let language = inputMetaData[wrd.cLanguage];
+    let specialCharacters = inputMetaData[0];
+    let language = inputMetaData[1];
     for (let counter = 1; counter <= numberOfCharactersToGenerate; counter++) {
       returnData = returnData.concat(await ruleParsing.processRulesInternal([specialCharacters, language], [biz.crandomlyGenerateLowerCaseLetterOrSpecialCharacter]));
     } // End-for (let counter = 1; counter <= numberOfCharactersToGenerate; counter++)
@@ -340,10 +340,10 @@ async function generateRandomNumericCodeByLength(inputData, inputMetaData) {
  * numeric characters and special characters that should  be generated.
  * @param {string} inputMetaData A JSON data structure object that contains the list of special characters that should be used during the generation process,
  * and also the name of the language who's alphabet should be used for international characters.
- * {
- *  "SpecialCharacters": "!@#$%^&*()_+-=[]{};:',./<>?\|\"",
- *  "Language": "English"
- * }
+ * [
+ *  "!@#$%^&*()_+-=[]{};:',./<>?\|\"", // SpecialCharacters
+ *  "English" // Language
+ * ]
  * @return {string} A string of randomly generated mixed case alpha numeric characters,
  * and special characters where the length of the string is defined by the input parameter.
  * @author Seth Hollingsead
@@ -357,8 +357,8 @@ async function generateRandomMixedCaseAlphaNumericCodeWithSpecialCharactersByLen
   let returnData = '';
   if (inputData && inputMetaData) {
     let numberOfCharactersToGenerate = parseInt(inputData);
-    let specialCharacters = inputMetaData[sys.cSpecialCharacters];
-    let language = inputMetaData[wrd.cLanguage];
+    let specialCharacters = inputMetaData[0];
+    let language = inputMetaData[1];
     for (let counter = 1; counter <= numberOfCharactersToGenerate; counter++) {
       returnData = returnData.concat(await ruleParsing.processRulesInternal([specialCharacters, language], [biz.crandomlyGenerateEitherMixedCaseLetterOrNumberOrSpecialCharacter]));
     } // End-for (let counter = 1; counter <= numberOfCharactersToGenerate; counter++)
@@ -377,10 +377,10 @@ async function generateRandomMixedCaseAlphaNumericCodeWithSpecialCharactersByLen
  * numeric characters and special characters that should be generated.
  * @param {string} inputMetaData A JSON data structure object that contains the list of special characters that should be used during the generation process,
  * and also the name of the language who's alphabet should be used for international characters.
- * {
- *  "SpecialCharacters": "!@#$%^&*()_+-=[]{};:',./<>?\|\"",
- *  "Language": "English"
- * }
+ * [
+ *  "!@#$%^&*()_+-=[]{};:',./<>?\|\"", // SpecialCharacters
+ *  "English" // Language
+ * ]
  * @return {string} A string of randomly generated upper case alpha numeric characters,
  * and special characters where the length of the string is defined as one of the input parameters.
  * @author Seth Hollingsead
@@ -394,8 +394,8 @@ async function generateRandomUpperCaseAlphaNumericCodeWithSpecialCharactersByLen
   let returnData = '';
   if (inputData && inputMetaData) {
     let numberOfCharactersToGenerate = parseInt(inputData);
-    let specialCharacters = inputMetaData[sys.cSpecialCharacters];
-    let language = inputMetaData[wrd.cLanguage];
+    let specialCharacters = inputMetaData[0];
+    let language = inputMetaData[1];
     for (let counter = 1; counter <= numberOfCharactersToGenerate; counter++) {
       returnData = returnData.concat(await ruleParsing.processRulesInternal([specialCharacters, language], [biz.crandomlyGenerateEitherUpperCaseLetterOrNumberOrSpecialCharacter]));
     } // End-for (let counter = 1; counter <= numberOfCharactersToGenerate; counter++)
@@ -414,10 +414,10 @@ async function generateRandomUpperCaseAlphaNumericCodeWithSpecialCharactersByLen
  * numeric characters adn special characters that should be generated.
  * @param {string} inputMetaData A JSON data structure object that contains the list of special characters that should be used during the generation process,
  * and also the name of the language who's alphabet should be used for international characters.
- * {
- *  "SpecialCharacters": "!@#$%^&*()_+-=[]{};:',./<>?\|\"",
- *  "Language": "English"
- * }
+ * [
+ *  "!@#$%^&*()_+-=[]{};:',./<>?\|\"", // SpecialCharacters
+ *  "English" // Language
+ * ]
  * @return {string} A string of randomly generated lower case alpha numeric characters,
  * and special characters where the length of the string is defined as one of the input parameters.
  * @author Seth Hollingsead
@@ -431,8 +431,8 @@ async function generateRandomLowerCaseAlphaNumericCodeWithSpecialCharactersByLen
   let returnData = '';
   if (inputData && inputMetaData) {
     let numberOfCharactersToGenerate = parseInt(inputData);
-    let specialCharacters = inputMetaData[sys.cSpecialCharacters];
-    let language = inputMetaData[wrd.cLanguage];
+    let specialCharacters = inputMetaData[0];
+    let language = inputMetaData[1];
     for (let counter = 1; counter <= numberOfCharactersToGenerate; counter++) {
       returnData = returnData.concat(await ruleParsing.processRulesInternal([specialCharacters, language], [biz.crandomlyGenerateEitherLowerCaseLetterOrNumberOrSpecialCharacter]));
     } // End-for (let counter = 1; counter <= numberOfCharactersToGenerate; counter++)
