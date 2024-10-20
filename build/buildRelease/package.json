@@ -23,7 +23,7 @@
   "author": "Seth Hollingsead",
   "license": "MIT",
   "dependencies": {
-    "@haystacks/async": "^0.2.13",
+    "@haystacks/async": "^0.2.14",
     "@haystacks/constants": "^0.2.18"
   },
   "bugs": {
