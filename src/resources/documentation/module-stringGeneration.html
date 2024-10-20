@@ -252,12 +252,10 @@ should be generated; generate them and string them together to the specified len
             
 
             <td class="description last"><p>An array map with multiple input parameters:
-inputMetaData[0] = generateSpecialCharacters - A boolean value to indicate if special characters should be
-included when randomly generating characters for the output string.
-inputMetaData[1] = allowableSpecialCharacters - The list of allowable special characters as a string,
-only used if the {@code generateSpecialCharacters} boolean value is set to {@code TRUE}.
-inputMetaData[2] = specifiedSuffixAndDomain - The specified suffix and domain to use
-after the &quot;@&quot; symbol in the email being generated, example &quot;Yahoo.com&quot;.</p></td>
+inputMetaData[0] - generateSpecialCharacters - A boolean value to indicate if special characters should be included when randomly generating characters for the output string.
+inputMetaData[1] - allowableSpecialCharacters - The list of allowable special characters as a string, only used if the {@code generateSpecialCharacters} boolean value is set to {@code TRUE}.
+inputMetaData[2] - specifiedSuffixAndDomain - The specified suffix and domain to use after the &quot;@&quot; symbol in the email being generated, example &quot;Yahoo.com&quot;.
+inputMetaData[3] - language - The language that should be used to determine the alphabet that should be used for international characters.</p></td>
         </tr>
 
     
@@ -305,7 +303,7 @@ after the &quot;@&quot; symbol in the email being generated, example &quot;Yahoo
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="businessRules_rules_stringGeneration.js.html">businessRules/rules/stringGeneration.js</a>, <a href="businessRules_rules_stringGeneration.js.html#line492">line 492</a>
+        <a href="businessRules_rules_stringGeneration.js.html">businessRules/rules/stringGeneration.js</a>, <a href="businessRules_rules_stringGeneration.js.html#line557">line 557</a>
     </li></ul></dd>
     
 
@@ -365,7 +363,7 @@ of the input parameters, formatted as an email: &quot;a@b.com&quot;.</p>
     
 
     
-    <h4 class="name" id="~generateInvalidEmailWithSpecificSuffixAndDomainName"><span class="type-signature">(inner) </span>generateInvalidEmailWithSpecificSuffixAndDomainName<span class="signature">(numberOfCharactersToGenerate, generateSpecialCharacters, allowableSpecialCharacters, specifiedSuffixAndDomain)</span><span class="type-signature"> &rarr; {string}</span></h4>
+    <h4 class="name" id="~generateInvalidEmailWithSpecificSuffixAndDomainName"><span class="type-signature">(inner) </span>generateInvalidEmailWithSpecificSuffixAndDomainName<span class="signature">(inputData, inputMetaData)</span><span class="type-signature"> &rarr; {string}</span></h4>
     
 
     
@@ -411,54 +409,7 @@ should be generated; generate them and string them together to the specified len
 
         <tr>
             
-                <td class="name"><code>numberOfCharactersToGenerate</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">integer</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>The number of characters to generate as an integer.</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>generateSpecialCharacters</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">boolean</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>A boolean value to indicate if special characters should be
-included when randomly generating characters fro the output string.</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>allowableSpecialCharacters</code></td>
+                <td class="name"><code>inputData</code></td>
             
 
             <td class="type">
@@ -474,21 +425,20 @@ included when randomly generating characters fro the output string.</p></td>
 
             
 
-            <td class="description last"><p>The list of allowable special characters as a string,
-only used if the {@code generateSpecialCharacters} boolean value is set to {@code TRUE}.</p></td>
+            <td class="description last"><p>The string that contains the number of characters to generate.</p></td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>specifiedSuffixAndDomain</code></td>
+                <td class="name"><code>inputMetaData</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">string</span>
+<span class="param-type">array.&lt;(string|boolean)></span>
 
 
             
@@ -498,8 +448,11 @@ only used if the {@code generateSpecialCharacters} boolean value is set to {@cod
 
             
 
-            <td class="description last"><p>The specified suffix and domain to use
-after the &quot;@&quot; symbol n the email being generated, example: &quot;Yahoo.com&quot;.</p></td>
+            <td class="description last"><p>An array that contains a set of objects, strings and booleans as detailed below.
+inputMetaData[0] - generateSpecialCharacters - A Boolean value to indicate if special characters should be included when randomly generating characters for the output string.
+inputMetaData[1] - allowableSpecialCharacters - The list of allowable special characters as a string, only used if the {@code generateSpecialCharacters} Boolean value is set to {@code TRUE}.
+inputMetaData[2] - specifiedSuffixAndDomain - The specified suffix and domain to use after the &quot;@&quot; symbol in the email being generated, example: &quot;Yahoo.com&quot;.
+inputMetaData[3] - language - The language that should be used to determine the alphabet that should be used for international characters.</p></td>
         </tr>
 
     
@@ -547,7 +500,7 @@ after the &quot;@&quot; symbol n the email being generated, example: &quot;Yahoo
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="businessRules_rules_stringGeneration.js.html">businessRules/rules/stringGeneration.js</a>, <a href="businessRules_rules_stringGeneration.js.html#line706">line 706</a>
+        <a href="businessRules_rules_stringGeneration.js.html">businessRules/rules/stringGeneration.js</a>, <a href="businessRules_rules_stringGeneration.js.html#line809">line 809</a>
     </li></ul></dd>
     
 
@@ -747,7 +700,7 @@ Really the only difference is the default values. So this function is refactored
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="businessRules_rules_stringGeneration.js.html">businessRules/rules/stringGeneration.js</a>, <a href="businessRules_rules_stringGeneration.js.html#line1121">line 1121</a>
+        <a href="businessRules_rules_stringGeneration.js.html">businessRules/rules/stringGeneration.js</a>, <a href="businessRules_rules_stringGeneration.js.html#line1256">line 1256</a>
     </li></ul></dd>
     
 
@@ -942,7 +895,7 @@ Really the only difference is the default values. So this function is refactored
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="businessRules_rules_stringGeneration.js.html">businessRules/rules/stringGeneration.js</a>, <a href="businessRules_rules_stringGeneration.js.html#line1189">line 1189</a>
+        <a href="businessRules_rules_stringGeneration.js.html">businessRules/rules/stringGeneration.js</a>, <a href="businessRules_rules_stringGeneration.js.html#line1324">line 1324</a>
     </li></ul></dd>
     
 
@@ -1141,7 +1094,7 @@ Really the only difference is the default values. So this function is refactored
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="businessRules_rules_stringGeneration.js.html">businessRules/rules/stringGeneration.js</a>, <a href="businessRules_rules_stringGeneration.js.html#line1155">line 1155</a>
+        <a href="businessRules_rules_stringGeneration.js.html">businessRules/rules/stringGeneration.js</a>, <a href="businessRules_rules_stringGeneration.js.html#line1290">line 1290</a>
     </li></ul></dd>
     
 
@@ -1199,7 +1152,7 @@ Really the only difference is the default values. So this function is refactored
     
 
     
-    <h4 class="name" id="~generateRandomInvalidEmail"><span class="type-signature">(inner) </span>generateRandomInvalidEmail<span class="signature">(numberOfCharactersToGenerate, generateSpecialCharacters, allowableSpecialCharacters)</span><span class="type-signature"> &rarr; {string}</span></h4>
+    <h4 class="name" id="~generateRandomInvalidEmail"><span class="type-signature">(inner) </span>generateRandomInvalidEmail<span class="signature">(inputData, inputMetaData)</span><span class="type-signature"> &rarr; {string}</span></h4>
     
 
     
@@ -1245,54 +1198,7 @@ should be generated; generate them and string them together to the specified len
 
         <tr>
             
-                <td class="name"><code>numberOfCharactersToGenerate</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">integer</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>The number of characters to generate as an integer.</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>generateSpecialCharacters</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">boolean</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>A boolean value to indicate if special characters should be
-included when randomly generating characters for the output string.</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>allowableSpecialCharacters</code></td>
+                <td class="name"><code>inputData</code></td>
             
 
             <td class="type">
@@ -1308,8 +1214,34 @@ included when randomly generating characters for the output string.</p></td>
 
             
 
-            <td class="description last"><p>The ist of allowable special characters as a string,
-only used if the {@code generateSpecialCharacters} boolean value is set to {@code TRUE}.</p></td>
+            <td class="description last"><p>The string that contains the number of characters to generate.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>inputMetaData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">array.&lt;(string|boolean)></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>An array that contains a set of objects, strings and booleans as detailed below.
+inputMetaData[0] - generateSpecialCharacters - A Boolean value to indicate if special characters should be included when randomly generating characters for the output string.
+inputMetaData[1] - allowableSpecialCharacters - The list of allowable special characters as a string, only used if the {@code generateSpecialCharacters} Boolean value is set to {@code TRUE}.
+inputMetaData[2] - specifiedSuffixAndDomain - Not used for this business rule.
+inputMetaData[3] - language - The language that should be used to determine the alphabet that should be used for international characters.</p></td>
         </tr>
 
     
@@ -1357,7 +1289,7 @@ only used if the {@code generateSpecialCharacters} boolean value is set to {@cod
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="businessRules_rules_stringGeneration.js.html">businessRules/rules/stringGeneration.js</a>, <a href="businessRules_rules_stringGeneration.js.html#line812">line 812</a>
+        <a href="businessRules_rules_stringGeneration.js.html">businessRules/rules/stringGeneration.js</a>, <a href="businessRules_rules_stringGeneration.js.html#line929">line 929</a>
     </li></ul></dd>
     
 
@@ -1501,7 +1433,7 @@ numbers that should be generated.</p></td>
 
             
 
-            <td class="description last"><p>Not used for this business rule.</p></td>
+            <td class="description last"><p>The name of the language who's alphabet should be used for international characters.</p></td>
         </tr>
 
     
@@ -1549,7 +1481,7 @@ numbers that should be generated.</p></td>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="businessRules_rules_stringGeneration.js.html">businessRules/rules/stringGeneration.js</a>, <a href="businessRules_rules_stringGeneration.js.html#line258">line 258</a>
+        <a href="businessRules_rules_stringGeneration.js.html">businessRules/rules/stringGeneration.js</a>, <a href="businessRules_rules_stringGeneration.js.html#line278">line 278</a>
     </li></ul></dd>
     
 
@@ -1694,7 +1626,12 @@ numeric characters adn special characters that should be generated.</p></td>
 
             
 
-            <td class="description last"><p>The list of special characters that should be used during the generation process.</p></td>
+            <td class="description last"><p>A JSON data structure object that contains the list of special characters that should be used during the generation process,
+and also the name of the language who's alphabet should be used for international characters.
+[
+&quot;!@#$%^&amp;*()_+-=[]{};:',./&lt;&gt;?|&quot;&quot;, // SpecialCharacters
+&quot;English&quot; // Language
+]</p></td>
         </tr>
 
     
@@ -1742,7 +1679,7 @@ numeric characters adn special characters that should be generated.</p></td>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="businessRules_rules_stringGeneration.js.html">businessRules/rules/stringGeneration.js</a>, <a href="businessRules_rules_stringGeneration.js.html#line374">line 374</a>
+        <a href="businessRules_rules_stringGeneration.js.html">businessRules/rules/stringGeneration.js</a>, <a href="businessRules_rules_stringGeneration.js.html#line408">line 408</a>
     </li></ul></dd>
     
 
@@ -1886,7 +1823,7 @@ generated lower case english alphabetic characters that should be generated.</p>
 
             
 
-            <td class="description last"><p>Not used for this business rule.</p></td>
+            <td class="description last"><p>The name of the language who's alphabet should be used for international characters.</p></td>
         </tr>
 
     
@@ -2078,8 +2015,12 @@ special characters to generate.</p></td>
 
             
 
-            <td class="description last"><p>The list of special characters that should be
-used during the generation process.</p></td>
+            <td class="description last"><p>A JSON data structure object that contains the list of special characters that should be used during the generation process,
+and also the name of the language who's alphabet should be used for international characters.
+[
+&quot;!@#$%^&amp;*()_+-=[]{};:',./&lt;&gt;?|&quot;&quot;, // SpecialCharacters
+&quot;English&quot; // Language
+]</p></td>
         </tr>
 
     
@@ -2127,7 +2068,7 @@ used during the generation process.</p></td>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="businessRules_rules_stringGeneration.js.html">businessRules/rules/stringGeneration.js</a>, <a href="businessRules_rules_stringGeneration.js.html#line170">line 170</a>
+        <a href="businessRules_rules_stringGeneration.js.html">businessRules/rules/stringGeneration.js</a>, <a href="businessRules_rules_stringGeneration.js.html#line184">line 184</a>
     </li></ul></dd>
     
 
@@ -2271,7 +2212,7 @@ numbers that should be generated.</p></td>
 
             
 
-            <td class="description last"><p>Not used for this business rule.</p></td>
+            <td class="description last"><p>The name of the language who's alphabet should be used for international characters.</p></td>
         </tr>
 
     
@@ -2319,7 +2260,7 @@ numbers that should be generated.</p></td>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="businessRules_rules_stringGeneration.js.html">businessRules/rules/stringGeneration.js</a>, <a href="businessRules_rules_stringGeneration.js.html#line200">line 200</a>
+        <a href="businessRules_rules_stringGeneration.js.html">businessRules/rules/stringGeneration.js</a>, <a href="businessRules_rules_stringGeneration.js.html#line220">line 220</a>
     </li></ul></dd>
     
 
@@ -2464,7 +2405,12 @@ numeric characters and special characters that should  be generated.</p></td>
 
             
 
-            <td class="description last"><p>The list of special characters that should be used during the generation process.</p></td>
+            <td class="description last"><p>A JSON data structure object that contains the list of special characters that should be used during the generation process,
+and also the name of the language who's alphabet should be used for international characters.
+[
+&quot;!@#$%^&amp;*()_+-=[]{};:',./&lt;&gt;?|&quot;&quot;, // SpecialCharacters
+&quot;English&quot; // Language
+]</p></td>
         </tr>
 
     
@@ -2512,7 +2458,7 @@ numeric characters and special characters that should  be generated.</p></td>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="businessRules_rules_stringGeneration.js.html">businessRules/rules/stringGeneration.js</a>, <a href="businessRules_rules_stringGeneration.js.html#line314">line 314</a>
+        <a href="businessRules_rules_stringGeneration.js.html">businessRules/rules/stringGeneration.js</a>, <a href="businessRules_rules_stringGeneration.js.html#line334">line 334</a>
     </li></ul></dd>
     
 
@@ -2657,7 +2603,7 @@ randomly generated mixed case alphabetic characters should be generated.</p></td
 
             
 
-            <td class="description last"><p>Not used for this business rule.</p></td>
+            <td class="description last"><p>The name of the language who's alphabet should be used for international characters.</p></td>
         </tr>
 
     
@@ -2772,7 +2718,7 @@ length of the string is defined by the input parameter.</p>
 
 
 <div class="description">
-    <p>Generate teh specified number of random mixed case letters and/or
+    <p>Generate the specified number of random mixed case letters and/or
 special characters and string them together.</p>
 </div>
 
@@ -2849,7 +2795,12 @@ special characters to generate the output string.</p></td>
 
             
 
-            <td class="description last"><p>The list of special characters that should be used during the generation process.</p></td>
+            <td class="description last"><p>A JSON data structure object that contains the list of special characters that should be used during the generation process,
+and also the name of the language who's alphabet should be used for international characters.
+[
+&quot;!@#$%^&amp;*()_+-=[]{};:',./&lt;&gt;?|&quot;&quot;, // SpecialCharacters
+&quot;English&quot; // Language
+]</p></td>
         </tr>
 
     
@@ -3039,7 +2990,7 @@ special characters where the length of the string is defined by the input parame
 
             
 
-            <td class="description last"><p>Not used for this business rule.</p></td>
+            <td class="description last"><p>The name of the language who's alphabet should be used for international characters.</p></td>
         </tr>
 
     
@@ -3087,7 +3038,7 @@ special characters where the length of the string is defined by the input parame
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="businessRules_rules_stringGeneration.js.html">businessRules/rules/stringGeneration.js</a>, <a href="businessRules_rules_stringGeneration.js.html#line287">line 287</a>
+        <a href="businessRules_rules_stringGeneration.js.html">businessRules/rules/stringGeneration.js</a>, <a href="businessRules_rules_stringGeneration.js.html#line307">line 307</a>
     </li></ul></dd>
     
 
@@ -3278,7 +3229,7 @@ generate them and string them together to the specified length.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="businessRules_rules_stringGeneration.js.html">businessRules/rules/stringGeneration.js</a>, <a href="businessRules_rules_stringGeneration.js.html#line404">line 404</a>
+        <a href="businessRules_rules_stringGeneration.js.html">businessRules/rules/stringGeneration.js</a>, <a href="businessRules_rules_stringGeneration.js.html#line445">line 445</a>
     </li></ul></dd>
     
 
@@ -3422,7 +3373,7 @@ generated upper case english letters and/or numbers that should be generated.</p
 
             
 
-            <td class="description last"><p>Not used for this business rule.</p></td>
+            <td class="description last"><p>The name of the language who's alphabet should be used for international characters.</p></td>
         </tr>
 
     
@@ -3470,7 +3421,7 @@ generated upper case english letters and/or numbers that should be generated.</p
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="businessRules_rules_stringGeneration.js.html">businessRules/rules/stringGeneration.js</a>, <a href="businessRules_rules_stringGeneration.js.html#line229">line 229</a>
+        <a href="businessRules_rules_stringGeneration.js.html">businessRules/rules/stringGeneration.js</a>, <a href="businessRules_rules_stringGeneration.js.html#line249">line 249</a>
     </li></ul></dd>
     
 
@@ -3615,7 +3566,12 @@ numeric characters and special characters that should be generated.</p></td>
 
             
 
-            <td class="description last"><p>The list of special characters that should be used during the generation process.</p></td>
+            <td class="description last"><p>A JSON data structure object that contains the list of special characters that should be used during the generation process,
+and also the name of the language who's alphabet should be used for international characters.
+[
+&quot;!@#$%^&amp;*()_+-=[]{};:',./&lt;&gt;?|&quot;&quot;, // SpecialCharacters
+&quot;English&quot; // Language
+]</p></td>
         </tr>
 
     
@@ -3663,7 +3619,7 @@ numeric characters and special characters that should be generated.</p></td>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="businessRules_rules_stringGeneration.js.html">businessRules/rules/stringGeneration.js</a>, <a href="businessRules_rules_stringGeneration.js.html#line344">line 344</a>
+        <a href="businessRules_rules_stringGeneration.js.html">businessRules/rules/stringGeneration.js</a>, <a href="businessRules_rules_stringGeneration.js.html#line371">line 371</a>
     </li></ul></dd>
     
 
@@ -3807,7 +3763,7 @@ generated upper case english alphabetic characters should be generated.</p></td>
 
             
 
-            <td class="description last"><p>Not used for this business rule.</p></td>
+            <td class="description last"><p>The name of the language who's alphabet should be used for international characters.</p></td>
         </tr>
 
     
@@ -3997,7 +3953,12 @@ length of the string is defined by the input parameter.</p>
 
             
 
-            <td class="description last"><p>The list of special characters that should be used during the generate process.</p></td>
+            <td class="description last"><p>A JSON data structure object that contains the list of special characters that should be used during the generation process,
+and also the name of the language who's alphabet should be used for international characters.
+[
+&quot;!@#$%^&amp;*()_+-=[]{};:',./&lt;&gt;?|&quot;&quot;, // SpecialCharacters
+&quot;English&quot; // Language
+]</p></td>
         </tr>
 
     
@@ -4045,7 +4006,7 @@ length of the string is defined by the input parameter.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="businessRules_rules_stringGeneration.js.html">businessRules/rules/stringGeneration.js</a>, <a href="businessRules_rules_stringGeneration.js.html#line143">line 143</a>
+        <a href="businessRules_rules_stringGeneration.js.html">businessRules/rules/stringGeneration.js</a>, <a href="businessRules_rules_stringGeneration.js.html#line150">line 150</a>
     </li></ul></dd>
     
 
@@ -4104,7 +4065,7 @@ special characters where the length of the string is defined by the input parame
     
 
     
-    <h4 class="name" id="~generateRandomValidEmail"><span class="type-signature">(inner) </span>generateRandomValidEmail<span class="signature">(numberOfCharactersToGenerate, generateSpecialCharacters, allowableSpecialCharacters)</span><span class="type-signature"> &rarr; {string}</span></h4>
+    <h4 class="name" id="~generateRandomValidEmail"><span class="type-signature">(inner) </span>generateRandomValidEmail<span class="signature">(inputData, inputMetaData)</span><span class="type-signature"> &rarr; {string}</span></h4>
     
 
     
@@ -4113,7 +4074,7 @@ special characters where the length of the string is defined by the input parame
 
 <div class="description">
     <p>Generate a valid email composed of a random selection of mixed case english letters,
-numeric characters and  optional special characters from an optional list of allowable special characters,
+numeric characters and optional special characters from an optional list of allowable special characters,
 should be generated; generate them and string them together to the specified length.</p>
 </div>
 
@@ -4150,54 +4111,7 @@ should be generated; generate them and string them together to the specified len
 
         <tr>
             
-                <td class="name"><code>numberOfCharactersToGenerate</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">integer</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>Teh number of characters to generate as an integer.</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>generateSpecialCharacters</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">boolean</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>A boolean value to indicate if special characters should
-be included when randomly generating characters for the output string.</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>allowableSpecialCharacters</code></td>
+                <td class="name"><code>inputData</code></td>
             
 
             <td class="type">
@@ -4213,8 +4127,34 @@ be included when randomly generating characters for the output string.</p></td>
 
             
 
-            <td class="description last"><p>The list of allowable special characters as a string,
-only used if the {@code generateSpecialCharacters} boolean value is set to {@code TRUE}.</p></td>
+            <td class="description last"><p>The string that contains the number of characters to generate.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>inputMetaData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">array.&lt;(string|boolean)></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>An array that contains a set of objects, strings and booleans as detailed below.
+inputMetaData[0] - generateSpecialCharacters - A Boolean value to indicate if special characters should be included when randomly generating characters for the output string.
+inputMetaData[1] - allowableSpecialCharacters - The list of allowable special characters as a string, only used if the {@code generateSpecialCharacters} Boolean value is set to {@code TRUE}.
+inputMetaData[2] - specifiedSuffixAndDomain - Not used for this business rule.
+inputMetaData[3] - language - The language that should be used to determine the alphabet that should be used for international characters.</p></td>
         </tr>
 
     
@@ -4262,7 +4202,7 @@ only used if the {@code generateSpecialCharacters} boolean value is set to {@cod
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="businessRules_rules_stringGeneration.js.html">businessRules/rules/stringGeneration.js</a>, <a href="businessRules_rules_stringGeneration.js.html#line603">line 603</a>
+        <a href="businessRules_rules_stringGeneration.js.html">businessRules/rules/stringGeneration.js</a>, <a href="businessRules_rules_stringGeneration.js.html#line697">line 697</a>
     </li></ul></dd>
     
 
@@ -4332,7 +4272,8 @@ where the length of the string is also defined as one of the input parameters, f
     <p>Generate a valid random email address composed of a random selection of
 mixed case english letters, numeric characters and optionally special characters
 from an optional list of allowable special characters, should be generated;
-generate them and string them together to the specified length.</p>
+generate them and string them together to the specified length.
+Basically this function acts as an input filter to ensure that valid inputs are passed into the functions for doing the word of generating random valid emails.</p>
 </div>
 
 
@@ -4408,12 +4349,10 @@ generate them and string them together to the specified length.</p>
             
 
             <td class="description last"><p>An array map with multiple input parameters.
-inputMetaData[0] = generateSpecialCharacters - A boolean value to indicate if
-special characters should be included when randomly generating characters for the output string.
-inputMetaData[1] = allowableSpecialCharacters - The list of allowable special characters as a string,
-only used if the {@code generateSpecialCharacters} boolean value is set to {@code TRUE}.
-inputMetaData[2] = specifiedSuffixAndDomain - The specified suffix and domain to
-use after the &quot;@&quot; symbol in the email being generated, example &quot;Yahoo.com&quot;.</p></td>
+inputMetaData[0] - generateSpecialCharacters - A boolean value to indicate if special characters should be included when randomly generating characters for the output string.
+inputMetaData[1] - allowableSpecialCharacters - The list of allowable special characters as a string, only used if the {@code generateSpecialCharacters} boolean value is set to {@code TRUE}.
+inputMetaData[2] - specifiedSuffixAndDomain - The specified suffix and domain to use after the &quot;@&quot; symbol in the email being generated, example &quot;Yahoo.com&quot;.
+inputMetaData[3] - language - The language that should be used to determine the alphabet that should be used for international characters.</p></td>
         </tr>
 
     
@@ -4461,7 +4400,7 @@ use after the &quot;@&quot; symbol in the email being generated, example &quot;Y
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="businessRules_rules_stringGeneration.js.html">businessRules/rules/stringGeneration.js</a>, <a href="businessRules_rules_stringGeneration.js.html#line432">line 432</a>
+        <a href="businessRules_rules_stringGeneration.js.html">businessRules/rules/stringGeneration.js</a>, <a href="businessRules_rules_stringGeneration.js.html#line473">line 473</a>
     </li></ul></dd>
     
 
@@ -4520,7 +4459,7 @@ where the length of the string is also defined as one of the input parameters, f
     
 
     
-    <h4 class="name" id="~generateValidEmailWithSpecificSuffixAndDomainName"><span class="type-signature">(inner) </span>generateValidEmailWithSpecificSuffixAndDomainName<span class="signature">(numberOfCharactersToGenerate, generateSpecialCharacters, allowableSpecialCharacters, specifiedSuffixAndDomain)</span><span class="type-signature"> &rarr; {string}</span></h4>
+    <h4 class="name" id="~generateValidEmailWithSpecificSuffixAndDomainName"><span class="type-signature">(inner) </span>generateValidEmailWithSpecificSuffixAndDomainName<span class="signature">(inputData, inputMetaData)</span><span class="type-signature"> &rarr; {string}</span></h4>
     
 
     
@@ -4566,54 +4505,7 @@ should be generated; generate them and string them together to the specified len
 
         <tr>
             
-                <td class="name"><code>numberOfCharactersToGenerate</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">integer</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>The number of characters to generate as an integer.</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>generateSpecialCharacters</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">boolean</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>A boolean value to indicate if special characters should be
-included when randomly generating characters for the output string.</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>allowableSpecialCharacters</code></td>
+                <td class="name"><code>inputData</code></td>
             
 
             <td class="type">
@@ -4629,21 +4521,20 @@ included when randomly generating characters for the output string.</p></td>
 
             
 
-            <td class="description last"><p>The list of allowable special characters as a string,
-only sued if the {@code generateSpecialCharacters} boolean value is set to {@code TRUE}.</p></td>
+            <td class="description last"><p>The string that contains the number of characters to generate.</p></td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>specifiedSuffixAndDomain</code></td>
+                <td class="name"><code>inputMetaData</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">string</span>
+<span class="param-type">array.&lt;(string|boolean)></span>
 
 
             
@@ -4653,8 +4544,11 @@ only sued if the {@code generateSpecialCharacters} boolean value is set to {@cod
 
             
 
-            <td class="description last"><p>The specified suffix and domain to use after the &quot;@&quot; symbol in
-the email being generated, example: &quot;Yahoo.com&quot;.</p></td>
+            <td class="description last"><p>An array with multiple input parameters:
+inputMetaData[0] - generateSpecialCharacters - A boolean value to indicate if special characters should be included when randomly generating characters for the output string.
+inputMetaData[1] - allowableSpecialCharacters - The list of allowable special characters as a string, only used if the {@code generateSpecialCharacters} boolean value is set to {@code TRUE}.
+inputMetaData[2] - specifiedSuffixAndDomain - The specified suffix and domain to use after the &quot;@&quot; symbol in the email being generated, example &quot;Yahoo.com&quot;.
+inputMetaData[3] - language - The language that should be used to determine the alphabet that should be used for international characters.</p></td>
         </tr>
 
     
@@ -4702,7 +4596,7 @@ the email being generated, example: &quot;Yahoo.com&quot;.</p></td>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="businessRules_rules_stringGeneration.js.html">businessRules/rules/stringGeneration.js</a>, <a href="businessRules_rules_stringGeneration.js.html#line552">line 552</a>
+        <a href="businessRules_rules_stringGeneration.js.html">businessRules/rules/stringGeneration.js</a>, <a href="businessRules_rules_stringGeneration.js.html#line640">line 640</a>
     </li></ul></dd>
     
 
@@ -4771,13 +4665,13 @@ where the length of the string is also defined as one of the input parameters, f
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-advanced.html">advanced</a></li><li><a href="module-auxiliary.html">auxiliary</a></li><li><a href="module-auxiliaryArrayParsing.html">auxiliaryArrayParsing</a></li><li><a href="module-auxiliaryStringParsing.html">auxiliaryStringParsing</a></li><li><a href="module-characterArrayParsing.html">characterArrayParsing</a></li><li><a href="module-characterGeneration.html">characterGeneration</a></li><li><a href="module-characterStringParsing.html">characterStringParsing</a></li><li><a href="module-chiefCommander.html">chiefCommander</a></li><li><a href="module-chiefConfiguration.html">chiefConfiguration</a></li><li><a href="module-chiefConstant.html">chiefConstant</a></li><li><a href="module-chiefData.html">chiefData</a></li><li><a href="module-chiefPlugin.html">chiefPlugin</a></li><li><a href="module-chiefTheme.html">chiefTheme</a></li><li><a href="module-chiefWorkflow.html">chiefWorkflow</a></li><li><a href="module-colorizer.html">colorizer</a></li><li><a href="module-commandArrayParsing.html">commandArrayParsing</a></li><li><a href="module-commandBroker.html">commandBroker</a></li><li><a href="module-commandsLibrary.html">commandsLibrary</a></li><li><a href="module-commandStringParsing.html">commandStringParsing</a></li><li><a href="module-configuration.html">configuration</a></li><li><a href="module-configurator.html">configurator</a></li><li><a href="module-constant.html">constant</a></li><li><a href="module-constantArrayParsing.html">constantArrayParsing</a></li><li><a href="module-constantBroker.html">constantBroker</a></li><li><a href="module-constantStringParsing.html">constantStringParsing</a></li><li><a href="module-data.html">data</a></li><li><a href="module-dataArrayParsing.html">dataArrayParsing</a></li><li><a href="module-dataBroker.html">dataBroker</a></li><li><a href="module-dataDirectorate.html">dataDirectorate</a></li><li><a href="module-dataStringParsing.html">dataStringParsing</a></li><li><a href="module-fileOperations.html">fileOperations</a></li><li><a href="module-fileStringParsing.html">fileStringParsing</a></li><li><a href="module-integrationTests.html">integrationTests</a></li><li><a href="module-lexicalAnalyzer.html">lexicalAnalyzer</a></li><li><a href="module-loggers.html">loggers</a></li><li><a href="module-main.html">main</a></li><li><a href="module-mathOperations.html">mathOperations</a></li><li><a href="module-pathArrayParsing.html">pathArrayParsing</a></li><li><a href="module-performanceMetric.html">performanceMetric</a></li><li><a href="module-pluginBroker.html">pluginBroker</a></li><li><a href="module-plugins.html">plugins</a></li><li><a href="module-promptOperations.html">promptOperations</a></li><li><a href="module-queue.html">queue</a></li><li><a href="module-ruleBroker.html">ruleBroker</a></li><li><a href="module-ruleParsing.html">ruleParsing</a></li><li><a href="module-rulesLibrary.html">rulesLibrary</a></li><li><a href="module-stack.html">stack</a></li><li><a href="module-stringGeneration.html">stringGeneration</a></li><li><a href="module-stringParsingUtilities.html">stringParsingUtilities</a></li><li><a href="module-system.html">system</a></li><li><a href="module-themeBroker.html">themeBroker</a></li><li><a href="module-timeComputation.html">timeComputation</a></li><li><a href="module-warden.html">warden</a></li><li><a href="module-wordArrayParsing.html">wordArrayParsing</a></li><li><a href="module-wordStringParsing.html">wordStringParsing</a></li><li><a href="module-workflowBroker.html">workflowBroker</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-advanced.html">advanced</a></li><li><a href="module-auxiliary.html">auxiliary</a></li><li><a href="module-auxiliaryArrayParsing.html">auxiliaryArrayParsing</a></li><li><a href="module-auxiliaryStringParsing.html">auxiliaryStringParsing</a></li><li><a href="module-characterArrayParsing.html">characterArrayParsing</a></li><li><a href="module-characterGeneration.html">characterGeneration</a></li><li><a href="module-characterStringParsing.html">characterStringParsing</a></li><li><a href="module-chiefCommander.html">chiefCommander</a></li><li><a href="module-chiefConfiguration.html">chiefConfiguration</a></li><li><a href="module-chiefConstant.html">chiefConstant</a></li><li><a href="module-chiefData.html">chiefData</a></li><li><a href="module-chiefPlugin.html">chiefPlugin</a></li><li><a href="module-chiefTheme.html">chiefTheme</a></li><li><a href="module-chiefWorkflow.html">chiefWorkflow</a></li><li><a href="module-colorizer.html">colorizer</a></li><li><a href="module-commandArrayParsing.html">commandArrayParsing</a></li><li><a href="module-commandBroker.html">commandBroker</a></li><li><a href="module-commandsLibrary.html">commandsLibrary</a></li><li><a href="module-commandStringParsing.html">commandStringParsing</a></li><li><a href="module-configuration.html">configuration</a></li><li><a href="module-configurator.html">configurator</a></li><li><a href="module-constant.html">constant</a></li><li><a href="module-constantArrayParsing.html">constantArrayParsing</a></li><li><a href="module-constantBroker.html">constantBroker</a></li><li><a href="module-constantStringParsing.html">constantStringParsing</a></li><li><a href="module-data.html">data</a></li><li><a href="module-dataArrayParsing.html">dataArrayParsing</a></li><li><a href="module-dataBroker.html">dataBroker</a></li><li><a href="module-dataDirectorate.html">dataDirectorate</a></li><li><a href="module-dataStringParsing.html">dataStringParsing</a></li><li><a href="module-fileOperations.html">fileOperations</a></li><li><a href="module-fileStringParsing.html">fileStringParsing</a></li><li><a href="module-integrationTests.html">integrationTests</a></li><li><a href="module-languageParsing.html">languageParsing</a></li><li><a href="module-lexicalAnalyzer.html">lexicalAnalyzer</a></li><li><a href="module-loggers.html">loggers</a></li><li><a href="module-main.html">main</a></li><li><a href="module-mathOperations.html">mathOperations</a></li><li><a href="module-pathArrayParsing.html">pathArrayParsing</a></li><li><a href="module-performanceMetric.html">performanceMetric</a></li><li><a href="module-pluginBroker.html">pluginBroker</a></li><li><a href="module-plugins.html">plugins</a></li><li><a href="module-promptOperations.html">promptOperations</a></li><li><a href="module-queue.html">queue</a></li><li><a href="module-ruleBroker.html">ruleBroker</a></li><li><a href="module-ruleParsing.html">ruleParsing</a></li><li><a href="module-rulesLibrary.html">rulesLibrary</a></li><li><a href="module-stack.html">stack</a></li><li><a href="module-stringGeneration.html">stringGeneration</a></li><li><a href="module-stringParsingUtilities.html">stringParsingUtilities</a></li><li><a href="module-system.html">system</a></li><li><a href="module-themeBroker.html">themeBroker</a></li><li><a href="module-timeComputation.html">timeComputation</a></li><li><a href="module-warden.html">warden</a></li><li><a href="module-wordArrayParsing.html">wordArrayParsing</a></li><li><a href="module-wordStringParsing.html">wordStringParsing</a></li><li><a href="module-workflowBroker.html">workflowBroker</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Sun Sep 08 2024 09:56:17 GMT-0500 (Central Daylight Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Sat Oct 19 2024 20:24:33 GMT-0500 (Central Daylight Time)
 </footer>
 
 <script> prettyPrint(); </script>

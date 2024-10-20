@@ -143,6 +143,10 @@
         
             <li><a href="https://www.npmjs.com/package/@haystacks/constants">@haystacks/constants</a></li>
         
+            <li><a href="https://nodejs.org/api/crypto.html">crypto</a></li>
+        
+            <li><a href="https://nodejs.org/api/buffer.html">buffer</a></li>
+        
             <li><a href="https://www.npmjs.com/package/path">path</a></li>
         </ul>
     
@@ -159,6 +163,387 @@
 
     
         <h3 class="subsection-title">Methods</h3>
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~decryptStringAes256"><span class="type-signature">(inner) </span>decryptStringAes256<span class="signature">(inputData, inputMetaData)</span><span class="type-signature"> &rarr; {string}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Takes an encrypted string and decrypts it using the AES-256 algorithm, returning the original string.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>inputData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The encrypted string to decrypt.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>inputMetaData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The string used as the decryption seed (same key used for encryption).</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-author">Author:</dt>
+    <dd class="tag-author">
+        <ul>
+            <li>Seth Hollingsead</li>
+        </ul>
+    </dd>
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="businessRules_rules_stringParsing_dataStringParsing.js.html">businessRules/rules/stringParsing/dataStringParsing.js</a>, <a href="businessRules_rules_stringParsing_dataStringParsing.js.html#line354">line 354</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>The decrypted string.</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">string</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~encryptStringAes256"><span class="type-signature">(inner) </span>encryptStringAes256<span class="signature">(inputData, inputMetaData)</span><span class="type-signature"> &rarr; {string}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Takes a string and runs it through an encryption algorithm, returning an encrypted version of the string.
+The algorithm used for the encryption is AES-256, I've included it as part of the function/rule name because
+we want to be able to distinguish it from other algorithms that might implement other encryption algorithms, such as RSA.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>inputData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The string to be encrypted.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>inputMetaData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Another string that will be used as the encryption seed.
+Can be formatted with and &quot;_&quot;, with a prefix and post-fix for public/private keys.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-author">Author:</dt>
+    <dd class="tag-author">
+        <ul>
+            <li>Seth Hollingsead</li>
+        </ul>
+    </dd>
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="businessRules_rules_stringParsing_dataStringParsing.js.html">businessRules/rules/stringParsing/dataStringParsing.js</a>, <a href="businessRules_rules_stringParsing_dataStringParsing.js.html#line305">line 305</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>The encrypted string.</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">string</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
 
         
             
@@ -297,7 +682,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="businessRules_rules_stringParsing_dataStringParsing.js.html">businessRules/rules/stringParsing/dataStringParsing.js</a>, <a href="businessRules_rules_stringParsing_dataStringParsing.js.html#line26">line 26</a>
+        <a href="businessRules_rules_stringParsing_dataStringParsing.js.html">businessRules/rules/stringParsing/dataStringParsing.js</a>, <a href="businessRules_rules_stringParsing_dataStringParsing.js.html#line30">line 30</a>
     </li></ul></dd>
     
 
@@ -486,7 +871,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="businessRules_rules_stringParsing_dataStringParsing.js.html">businessRules/rules/stringParsing/dataStringParsing.js</a>, <a href="businessRules_rules_stringParsing_dataStringParsing.js.html#line55">line 55</a>
+        <a href="businessRules_rules_stringParsing_dataStringParsing.js.html">businessRules/rules/stringParsing/dataStringParsing.js</a>, <a href="businessRules_rules_stringParsing_dataStringParsing.js.html#line59">line 59</a>
     </li></ul></dd>
     
 
@@ -676,7 +1061,7 @@ data category and data category detail name separated by an underscore.</p></td>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="businessRules_rules_stringParsing_dataStringParsing.js.html">businessRules/rules/stringParsing/dataStringParsing.js</a>, <a href="businessRules_rules_stringParsing_dataStringParsing.js.html#line136">line 136</a>
+        <a href="businessRules_rules_stringParsing_dataStringParsing.js.html">businessRules/rules/stringParsing/dataStringParsing.js</a>, <a href="businessRules_rules_stringParsing_dataStringParsing.js.html#line140">line 140</a>
     </li></ul></dd>
     
 
@@ -865,7 +1250,7 @@ data category and data category detail name separated by an underscore.</p></td>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="businessRules_rules_stringParsing_dataStringParsing.js.html">businessRules/rules/stringParsing/dataStringParsing.js</a>, <a href="businessRules_rules_stringParsing_dataStringParsing.js.html#line110">line 110</a>
+        <a href="businessRules_rules_stringParsing_dataStringParsing.js.html">businessRules/rules/stringParsing/dataStringParsing.js</a>, <a href="businessRules_rules_stringParsing_dataStringParsing.js.html#line114">line 114</a>
     </li></ul></dd>
     
 
@@ -1055,7 +1440,7 @@ data category and data category detail name and keyword name separated by an und
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="businessRules_rules_stringParsing_dataStringParsing.js.html">businessRules/rules/stringParsing/dataStringParsing.js</a>, <a href="businessRules_rules_stringParsing_dataStringParsing.js.html#line163">line 163</a>
+        <a href="businessRules_rules_stringParsing_dataStringParsing.js.html">businessRules/rules/stringParsing/dataStringParsing.js</a>, <a href="businessRules_rules_stringParsing_dataStringParsing.js.html#line167">line 167</a>
     </li></ul></dd>
     
 
@@ -1244,7 +1629,7 @@ data category and data category detail name and keyword name separated by an und
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="businessRules_rules_stringParsing_dataStringParsing.js.html">businessRules/rules/stringParsing/dataStringParsing.js</a>, <a href="businessRules_rules_stringParsing_dataStringParsing.js.html#line276">line 276</a>
+        <a href="businessRules_rules_stringParsing_dataStringParsing.js.html">businessRules/rules/stringParsing/dataStringParsing.js</a>, <a href="businessRules_rules_stringParsing_dataStringParsing.js.html#line280">line 280</a>
     </li></ul></dd>
     
 
@@ -1433,7 +1818,7 @@ data category and data category detail name and keyword name separated by an und
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="businessRules_rules_stringParsing_dataStringParsing.js.html">businessRules/rules/stringParsing/dataStringParsing.js</a>, <a href="businessRules_rules_stringParsing_dataStringParsing.js.html#line84">line 84</a>
+        <a href="businessRules_rules_stringParsing_dataStringParsing.js.html">businessRules/rules/stringParsing/dataStringParsing.js</a>, <a href="businessRules_rules_stringParsing_dataStringParsing.js.html#line88">line 88</a>
     </li></ul></dd>
     
 
@@ -1622,7 +2007,7 @@ data category and data category detail name and keyword name separated by an und
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="businessRules_rules_stringParsing_dataStringParsing.js.html">businessRules/rules/stringParsing/dataStringParsing.js</a>, <a href="businessRules_rules_stringParsing_dataStringParsing.js.html#line190">line 190</a>
+        <a href="businessRules_rules_stringParsing_dataStringParsing.js.html">businessRules/rules/stringParsing/dataStringParsing.js</a>, <a href="businessRules_rules_stringParsing_dataStringParsing.js.html#line194">line 194</a>
     </li></ul></dd>
     
 
@@ -1663,6 +2048,197 @@ data category and data category detail name and keyword name separated by an und
     <dd>
         
 <span class="param-type">boolean</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~obfuscateString"><span class="type-signature">(inner) </span>obfuscateString<span class="signature">(inputData, inputMetaData)</span><span class="type-signature"> &rarr; {string}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Takes a string and converts it to an obfuscated version of the same string.
+This means converting the string into something that is unintelligible or unreadable from the original string.
+In our case we will convert the string into all stars '*', just like as if the string was a password.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>inputData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The string to be obfuscated, or converted into all stars of the same length.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>inputMetaData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Not used for this business rule.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-author">Author:</dt>
+    <dd class="tag-author">
+        <ul>
+            <li>Seth Hollingsead</li>
+        </ul>
+    </dd>
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="businessRules_rules_stringParsing_dataStringParsing.js.html">businessRules/rules/stringParsing/dataStringParsing.js</a>, <a href="businessRules_rules_stringParsing_dataStringParsing.js.html#line405">line 405</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>A string of '*' characters of the same length as the input string.</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">string</span>
 
 
     </dd>
@@ -1811,7 +2387,7 @@ data category and data category detail name and keyword name separated by an und
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="businessRules_rules_stringParsing_dataStringParsing.js.html">businessRules/rules/stringParsing/dataStringParsing.js</a>, <a href="businessRules_rules_stringParsing_dataStringParsing.js.html#line238">line 238</a>
+        <a href="businessRules_rules_stringParsing_dataStringParsing.js.html">businessRules/rules/stringParsing/dataStringParsing.js</a>, <a href="businessRules_rules_stringParsing_dataStringParsing.js.html#line242">line 242</a>
     </li></ul></dd>
     
 
@@ -1879,13 +2455,13 @@ data category and data category detail name and keyword name separated by an und
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-advanced.html">advanced</a></li><li><a href="module-auxiliary.html">auxiliary</a></li><li><a href="module-auxiliaryArrayParsing.html">auxiliaryArrayParsing</a></li><li><a href="module-auxiliaryStringParsing.html">auxiliaryStringParsing</a></li><li><a href="module-characterArrayParsing.html">characterArrayParsing</a></li><li><a href="module-characterGeneration.html">characterGeneration</a></li><li><a href="module-characterStringParsing.html">characterStringParsing</a></li><li><a href="module-chiefCommander.html">chiefCommander</a></li><li><a href="module-chiefConfiguration.html">chiefConfiguration</a></li><li><a href="module-chiefConstant.html">chiefConstant</a></li><li><a href="module-chiefData.html">chiefData</a></li><li><a href="module-chiefPlugin.html">chiefPlugin</a></li><li><a href="module-chiefTheme.html">chiefTheme</a></li><li><a href="module-chiefWorkflow.html">chiefWorkflow</a></li><li><a href="module-colorizer.html">colorizer</a></li><li><a href="module-commandArrayParsing.html">commandArrayParsing</a></li><li><a href="module-commandBroker.html">commandBroker</a></li><li><a href="module-commandsLibrary.html">commandsLibrary</a></li><li><a href="module-commandStringParsing.html">commandStringParsing</a></li><li><a href="module-configuration.html">configuration</a></li><li><a href="module-configurator.html">configurator</a></li><li><a href="module-constant.html">constant</a></li><li><a href="module-constantArrayParsing.html">constantArrayParsing</a></li><li><a href="module-constantBroker.html">constantBroker</a></li><li><a href="module-constantStringParsing.html">constantStringParsing</a></li><li><a href="module-data.html">data</a></li><li><a href="module-dataArrayParsing.html">dataArrayParsing</a></li><li><a href="module-dataBroker.html">dataBroker</a></li><li><a href="module-dataDirectorate.html">dataDirectorate</a></li><li><a href="module-dataStringParsing.html">dataStringParsing</a></li><li><a href="module-fileOperations.html">fileOperations</a></li><li><a href="module-fileStringParsing.html">fileStringParsing</a></li><li><a href="module-integrationTests.html">integrationTests</a></li><li><a href="module-lexicalAnalyzer.html">lexicalAnalyzer</a></li><li><a href="module-loggers.html">loggers</a></li><li><a href="module-main.html">main</a></li><li><a href="module-mathOperations.html">mathOperations</a></li><li><a href="module-pathArrayParsing.html">pathArrayParsing</a></li><li><a href="module-performanceMetric.html">performanceMetric</a></li><li><a href="module-pluginBroker.html">pluginBroker</a></li><li><a href="module-plugins.html">plugins</a></li><li><a href="module-promptOperations.html">promptOperations</a></li><li><a href="module-queue.html">queue</a></li><li><a href="module-ruleBroker.html">ruleBroker</a></li><li><a href="module-ruleParsing.html">ruleParsing</a></li><li><a href="module-rulesLibrary.html">rulesLibrary</a></li><li><a href="module-stack.html">stack</a></li><li><a href="module-stringGeneration.html">stringGeneration</a></li><li><a href="module-stringParsingUtilities.html">stringParsingUtilities</a></li><li><a href="module-system.html">system</a></li><li><a href="module-themeBroker.html">themeBroker</a></li><li><a href="module-timeComputation.html">timeComputation</a></li><li><a href="module-warden.html">warden</a></li><li><a href="module-wordArrayParsing.html">wordArrayParsing</a></li><li><a href="module-wordStringParsing.html">wordStringParsing</a></li><li><a href="module-workflowBroker.html">workflowBroker</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-advanced.html">advanced</a></li><li><a href="module-auxiliary.html">auxiliary</a></li><li><a href="module-auxiliaryArrayParsing.html">auxiliaryArrayParsing</a></li><li><a href="module-auxiliaryStringParsing.html">auxiliaryStringParsing</a></li><li><a href="module-characterArrayParsing.html">characterArrayParsing</a></li><li><a href="module-characterGeneration.html">characterGeneration</a></li><li><a href="module-characterStringParsing.html">characterStringParsing</a></li><li><a href="module-chiefCommander.html">chiefCommander</a></li><li><a href="module-chiefConfiguration.html">chiefConfiguration</a></li><li><a href="module-chiefConstant.html">chiefConstant</a></li><li><a href="module-chiefData.html">chiefData</a></li><li><a href="module-chiefPlugin.html">chiefPlugin</a></li><li><a href="module-chiefTheme.html">chiefTheme</a></li><li><a href="module-chiefWorkflow.html">chiefWorkflow</a></li><li><a href="module-colorizer.html">colorizer</a></li><li><a href="module-commandArrayParsing.html">commandArrayParsing</a></li><li><a href="module-commandBroker.html">commandBroker</a></li><li><a href="module-commandsLibrary.html">commandsLibrary</a></li><li><a href="module-commandStringParsing.html">commandStringParsing</a></li><li><a href="module-configuration.html">configuration</a></li><li><a href="module-configurator.html">configurator</a></li><li><a href="module-constant.html">constant</a></li><li><a href="module-constantArrayParsing.html">constantArrayParsing</a></li><li><a href="module-constantBroker.html">constantBroker</a></li><li><a href="module-constantStringParsing.html">constantStringParsing</a></li><li><a href="module-data.html">data</a></li><li><a href="module-dataArrayParsing.html">dataArrayParsing</a></li><li><a href="module-dataBroker.html">dataBroker</a></li><li><a href="module-dataDirectorate.html">dataDirectorate</a></li><li><a href="module-dataStringParsing.html">dataStringParsing</a></li><li><a href="module-fileOperations.html">fileOperations</a></li><li><a href="module-fileStringParsing.html">fileStringParsing</a></li><li><a href="module-integrationTests.html">integrationTests</a></li><li><a href="module-languageParsing.html">languageParsing</a></li><li><a href="module-lexicalAnalyzer.html">lexicalAnalyzer</a></li><li><a href="module-loggers.html">loggers</a></li><li><a href="module-main.html">main</a></li><li><a href="module-mathOperations.html">mathOperations</a></li><li><a href="module-pathArrayParsing.html">pathArrayParsing</a></li><li><a href="module-performanceMetric.html">performanceMetric</a></li><li><a href="module-pluginBroker.html">pluginBroker</a></li><li><a href="module-plugins.html">plugins</a></li><li><a href="module-promptOperations.html">promptOperations</a></li><li><a href="module-queue.html">queue</a></li><li><a href="module-ruleBroker.html">ruleBroker</a></li><li><a href="module-ruleParsing.html">ruleParsing</a></li><li><a href="module-rulesLibrary.html">rulesLibrary</a></li><li><a href="module-stack.html">stack</a></li><li><a href="module-stringGeneration.html">stringGeneration</a></li><li><a href="module-stringParsingUtilities.html">stringParsingUtilities</a></li><li><a href="module-system.html">system</a></li><li><a href="module-themeBroker.html">themeBroker</a></li><li><a href="module-timeComputation.html">timeComputation</a></li><li><a href="module-warden.html">warden</a></li><li><a href="module-wordArrayParsing.html">wordArrayParsing</a></li><li><a href="module-wordStringParsing.html">wordStringParsing</a></li><li><a href="module-workflowBroker.html">workflowBroker</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Sun Sep 08 2024 09:56:17 GMT-0500 (Central Daylight Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Sat Oct 19 2024 20:24:33 GMT-0500 (Central Daylight Time)
 </footer>
 
 <script> prettyPrint(); </script>
