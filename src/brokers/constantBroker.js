@@ -21,7 +21,7 @@ import D from '../structures/data.js';
 import hayConst from '@haystacks/constants';
 import path from 'path';
 
-const {bas, cfg, gen, msg, sys, wrd, bas_cv, biz_cv, clr_cv, cmd_cv, cfg_cv, ctr_cv, elm_cv, fnc_cv, gen_cv, iso_cv, knt_cv, lng_cv, msg_cv, num_cv, phn_cv, sys_cv, unt_cv, wrd_cv} = hayConst;
+const {bas, cfg, gen, msg, sys, wrd, abt_cv, bas_cv, biz_cv, clr_cv, cmd_cv, cfg_cv, ctr_cv, elm_cv, fnc_cv, gen_cv, iso_cv, knt_cv, lng_cv, msg_cv, num_cv, phn_cv, stt_cv, sys_cv, unt_cv, wrd_cv} = hayConst;
 const baseFileName = path.basename(import.meta.url, path.extname(import.meta.url));
 // framework.brokers.constantBroker.
 const namespacePrefix = wrd.cframework + bas.cDot + wrd.cbrokers + bas.cDot + baseFileName + bas.cDot;
@@ -69,6 +69,7 @@ async function generateFrameworkConstantsValidationData() {
   allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsFilePaths] = {};
   allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsPhase1ValidationMessages] = {};
   allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsPhase2ValidationMessages] = {};
+  allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cAlphabetConstantsValidation] = [];
   allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cBasicConstantsValidation] = [];
   allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cBusinessConstantsValidation] = [];
   allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cColorConstantsValidation] = [];
@@ -84,10 +85,12 @@ async function generateFrameworkConstantsValidationData() {
   allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cMessageConstantsValidation] = [];
   allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cNumericConstantsValidation] = [];
   allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cPhonicConstantsValidation] = [];
+  allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cStateConstantsValidation] = [];
   allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cSystemConstantsValidation] = [];
   allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cUnitConstantsValidation] = [];
   allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cWordConstantsValidation] = [];
 
+  allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cAlphabetConstantsValidation] = abt_cv.alphabetConstantsValidation;
   allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cBasicConstantsValidation] = bas_cv.basicConstantsValidation;
   allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cBusinessConstantsValidation] = biz_cv.businessConstantsValidation;
   allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cColorConstantsValidation] = clr_cv.colorConstantsValidation;
@@ -100,14 +103,16 @@ async function generateFrameworkConstantsValidationData() {
   allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cIsotopeConstantsValidation] = iso_cv.isotopeConstantsValidation;
   allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cKnotConstantsValidation] = knt_cv.knotConstantsValidation;
   allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cLanguageConstantsValidation] = lng_cv.languageConstantsValidation;
-  allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cMessageConstantsValidation] = msg_cv.messageConstantsVaidation;
+  allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cMessageConstantsValidation] = msg_cv.messageConstantsValidation;
   allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cNumericConstantsValidation] = num_cv.numericConstantsValidation;
   allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cPhonicConstantsValidation] = phn_cv.phonicConstantsValidation;
+  allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cStateConstantsValidation] = stt_cv.stateConstantsValidation;
   allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cSystemConstantsValidation] = sys_cv.systemConstantsValidation;
   allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cUnitConstantsValidation] = unt_cv.unitConstantsValidation;
   allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cWordConstantsValidation] = wrd_cv.wordConstantsValidation;
 
   // Setup all the paths to the constants files.
+  let resolvedConstantsPath_Alphabet = path.resolve(constantsPath + bas.cForwardSlash + sys.calphabet_constants_js);
   let resolvedConstantsPath_Basic = path.resolve(constantsPath + bas.cForwardSlash + sys.cbasic_constants_js);
   let resolvedConstantsPath_Business = path.resolve(constantsPath + bas.cForwardSlash + sys.cbusiness_constants_js);
   let resolvedConstantsPath_Color = path.resolve(constantsPath + bas.cForwardSlash + sys.ccolor_constants_js);
@@ -123,10 +128,13 @@ async function generateFrameworkConstantsValidationData() {
   let resolvedConstantsPath_Message = path.resolve(constantsPath + bas.cForwardSlash + sys.cmessage_constants_js);
   let resolvedConstantsPath_Numeric = path.resolve(constantsPath + bas.cForwardSlash + sys.cnumeric_constants_js);
   let resolvedConstantsPath_Phonic = path.resolve(constantsPath + bas.cForwardSlash + sys.cphonic_constants_js);
+  let resolvedConstantsPath_State = path.resolve(constantsPath + bas.cForwardSlash + sys.cstate_constants_js);
   let resolvedConstantsPath_System = path.resolve(constantsPath + bas.cForwardSlash + sys.csystem_constants_js);
   let resolvedConstantsPath_Unit = path.resolve(constantsPath + bas.cForwardSlash + sys.cunit_constants_js);
   let resolvedConstantsPath_Word = path.resolve(constantsPath + bas.cForwardSlash + sys.cword_constants_js);
 
+  // resolvedConstantsPath_Alphabet is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cresolvedConstantsPath_AlphabetIs + resolvedConstantsPath_Alphabet);
   // resolvedConstantsPath_Basic is:
   await loggers.consoleLog(namespacePrefix + functionName, msg.cresolvedConstantsPath_BasicIs + resolvedConstantsPath_Basic);
   // resolvedConstantsPath_Business is:
@@ -157,6 +165,8 @@ async function generateFrameworkConstantsValidationData() {
   await loggers.consoleLog(namespacePrefix + functionName, msg.cresolvedConstantsPath_NumericIs + resolvedConstantsPath_Numeric);
   // resolvedConstantsPath_Phonic is:
   await loggers.consoleLog(namespacePrefix + functionName, msg.cresolvedConstantsPath_PhonicIs + resolvedConstantsPath_Phonic);
+  // resolvedConstantsPath_State is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cresolvedConstantsPath_StateIs + resolvedConstantsPath_State);
   // resolvedConstantsPath_System is:
   await loggers.consoleLog(namespacePrefix + functionName, msg.cresolvedConstantsPath_SystemIs + resolvedConstantsPath_System);
   // resolvedConstantsPath_Unit is:
@@ -164,6 +174,7 @@ async function generateFrameworkConstantsValidationData() {
   // resolvedConstantsPath_Word1 is:
   await loggers.consoleLog(namespacePrefix + functionName, msg.cresolvedConstantsPath_WordIs + resolvedConstantsPath_Word);
 
+  allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsFilePaths][sys.cAlphabetConstantsValidation] = resolvedConstantsPath_Alphabet;
   allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsFilePaths][sys.cBasicConstantsValidation] = resolvedConstantsPath_Basic;
   allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsFilePaths][sys.cBusinessConstantsValidation] = resolvedConstantsPath_Business;
   allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsFilePaths][sys.cColorConstantsValidation] = resolvedConstantsPath_Color;
@@ -179,10 +190,13 @@ async function generateFrameworkConstantsValidationData() {
   allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsFilePaths][sys.cMessageConstantsValidation] = resolvedConstantsPath_Message;
   allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsFilePaths][sys.cNumericConstantsValidation] = resolvedConstantsPath_Numeric;
   allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsFilePaths][sys.cPhonicConstantsValidation] = resolvedConstantsPath_Phonic;
+  allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsFilePaths][sys.cStateConstantsValidation] = resolvedConstantsPath_State;
   allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsFilePaths][sys.cSystemConstantsValidation] = resolvedConstantsPath_System;
   allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsFilePaths][sys.cUnitConstantsValidation] = resolvedConstantsPath_Unit;
   allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsFilePaths][sys.cWordConstantsValidation] = resolvedConstantsPath_Word;
 
+  // Alphabet Constants Phase 1 Validation
+  allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsPhase1ValidationMessages][sys.cAlphabetConstantsValidation] = msg.cAlphabetConstantsPhase1Validation;
   // Basic Constants Phase 1 Validation
   allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsPhase1ValidationMessages][sys.cBasicConstantsValidation] = msg.cBasicConstantsPhase1Validation;
   // Business Constants Phase 1 Validation
@@ -213,6 +227,8 @@ async function generateFrameworkConstantsValidationData() {
   allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsPhase1ValidationMessages][sys.cNumericConstantsValidation] = msg.cNumericConstantsPhase1Validation;
   // Phonic Constants Phase 1 Validation
   allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsPhase1ValidationMessages][sys.cPhonicConstantsValidation] = msg.cPhonicConstantsPhase1Validation;
+  // State Constants Phase 1 Validation
+  allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsPhase1ValidationMessages][sys.cStateConstantsValidation] = msg.cStateConstantsPhase1Validation;
   // System Constants Phase 1 Validation
   allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsPhase1ValidationMessages][sys.cSystemConstantsValidation] = msg.cSystemConstantsPhase1Validation;
   // Unit Constants Phase 1 Validation
@@ -220,6 +236,8 @@ async function generateFrameworkConstantsValidationData() {
   // Word1 Constants Phase 1 Validation
   allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsPhase1ValidationMessages][sys.cWordConstantsValidation] = msg.cWordConstantsPhase1Validation;
 
+  // Alphabet Constants Phase 2 Validation
+  allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsPhase2ValidationMessages][sys.cAlphabetConstantsValidation] = msg.cAlphabetConstantsPhase2Validation;
   // Basic Constants Phase 2 Validation
   allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsPhase2ValidationMessages][sys.cBasicConstantsValidation] = msg.cBasicConstantsPhase2Validation;
   // Business Constants Phase 2 Validation
@@ -250,6 +268,8 @@ async function generateFrameworkConstantsValidationData() {
   allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsPhase2ValidationMessages][sys.cNumericConstantsValidation] = msg.cNumericConstantsPhase2Validation;
   // Phonic Constants Phase 2 Validation
   allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsPhase2ValidationMessages][sys.cPhonicConstantsValidation] = msg.cPhonicConstantsPhase2Validation;
+  // State Constants Phase 2 Validation
+  allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsPhase2ValidationMessages][sys.cStateConstantsValidation] = msg.cStateConstantsPhase2Validation;
   // System Constants Phase 2 Validation
   allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsPhase2ValidationMessages][sys.cSystemConstantsValidation] = msg.cSystemConstantsPhase2Validation;
   // Unit Constants Phase 2 Validation
@@ -257,6 +277,7 @@ async function generateFrameworkConstantsValidationData() {
   // Word1 Constants Phase 2 Validation
   allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsPhase2ValidationMessages][sys.cWordConstantsValidation] = msg.cWordConstantsPhase2Validation;
 
+  allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsShortNames][sys.cAlphabetConstantsValidation] = gen.cabt;
   allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsShortNames][sys.cBasicConstantsValidation] = gen.cbas;
   allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsShortNames][sys.cBusinessConstantsValidation] = gen.cbiz;
   allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsShortNames][sys.cColorConstantsValidation] = gen.cclr;
@@ -272,10 +293,12 @@ async function generateFrameworkConstantsValidationData() {
   allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsShortNames][sys.cMessageConstantsValidation] = gen.cmsg;
   allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsShortNames][sys.cNumericConstantsValidation] = gen.cnum;
   allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsShortNames][sys.cPhonicConstantsValidation] = gen.cphn;
+  allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsShortNames][sys.cStateConstantsValidation] = gen.cstt;
   allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsShortNames][sys.cSystemConstantsValidation] = gen.csys;
   allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsShortNames][sys.cUnitConstantsValidation] = gen.cunt;
   allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsShortNames][sys.cWordConstantsValidation] = gen.cwrd;
 
+  allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsFileNames][sys.cAlphabetConstantsValidation] = sys.calphabet_constants_js;
   allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsFileNames][sys.cBasicConstantsValidation] = sys.cbasic_constants_js;
   allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsFileNames][sys.cBusinessConstantsValidation] = sys.cbusiness_constants_js;
   allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsFileNames][sys.cColorConstantsValidation] = sys.ccolor_constants_js;
@@ -291,10 +314,12 @@ async function generateFrameworkConstantsValidationData() {
   allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsFileNames][sys.cMessageConstantsValidation] = sys.cmessage_constants_js;
   allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsFileNames][sys.cNumericConstantsValidation] = sys.cnumeric_constants_js;
   allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsFileNames][sys.cPhonicConstantsValidation] = sys.cphonic_constants_js;
+  allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsFileNames][sys.cStateConstantsValidation] = sys.cstate_constants_js;
   allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsFileNames][sys.cSystemConstantsValidation] = sys.csystem_constants_js;
   allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsFileNames][sys.cUnitConstantsValidation] = sys.cunit_constants_js;
   allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsFileNames][sys.cWordConstantsValidation] = sys.cword_constants_js;
 
+  allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsPrefix][sys.cAlphabetConstantsValidation] = gen.cabt + bas.cDot;
   allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsPrefix][sys.cBasicConstantsValidation] = gen.cbas + bas.cDot;
   allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsPrefix][sys.cBusinessConstantsValidation] = gen.cbiz + bas.cDot;
   allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsPrefix][sys.cColorConstantsValidation] = gen.cclr + bas.cDot;
@@ -310,6 +335,7 @@ async function generateFrameworkConstantsValidationData() {
   allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsPrefix][sys.cMessageConstantsValidation] = gen.cmsg + bas.cDot;
   allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsPrefix][sys.cNumericConstantsValidation] = gen.cnum + bas.cDot;
   allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsPrefix][sys.cPhonicConstantsValidation] = gen.cphn + bas.cDot;
+  allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsPrefix][sys.cStateConstantsValidation] = gen.cstt + bas.cDot;
   allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsPrefix][sys.cSystemConstantsValidation] = gen.csys + bas.cDot;
   allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsPrefix][sys.cUnitConstantsValidation] = gen.cunt + bas.cDot;
   allSystemConstantsValidationData[sys.cConstantsValidationData][sys.cConstantsPrefix][sys.cWordConstantsValidation] = gen.cwrd + bas.cDot;

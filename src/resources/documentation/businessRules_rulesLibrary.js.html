@@ -29,7 +29,7 @@
             <pre class="prettyprint source linenums"><code>/**
  * @file rulesLibrary.js
  * @module rulesLibrary
- * @description Contains all of the system defined busness rules as a map between function names and function calls.
+ * @description Contains all of the system defined business rules as a map between function names and function calls.
  * @requires module:auxiliaryArrayParsing
  * @requires module:characterArrayParsing
  * @requires module:commandArrayParsing
@@ -47,6 +47,7 @@
  * @requires module:wordStringParsing
  * @requires module:characterGeneration
  * @requires module:fileOperations
+ * @requires module:languageParsing
  * @requires module:lexicalAnalyzer
  * @requires module:mathOperations
  * @requires module:promptOperations
@@ -80,6 +81,7 @@ import fileStringParsing from './rules/stringParsing/fileStringParsing.js';
 import wordStringParsing from './rules/stringParsing/wordStringParsing.js';
 import characterGeneration from './rules/characterGeneration.js';
 import fileOperations from './rules/fileOperations.js';
+import languageParsing  from './rules/languageParsing.js';
 import lexicalAnalyzer from './rules/lexicalAnalyzer.js';
 import mathOperations from './rules/mathOperations.js';
 import promptOperations from './rules/promptOperations.js';
@@ -279,6 +281,9 @@ async function initRulesLibrary() {
      [biz.cloadDataFile]: (inputData, inputMetaData) => dataStringParsing.loadDataFile(inputData, inputMetaData),
      [biz.csaveDataFile]: (inputData, inputMetaData) => dataStringParsing.saveDataFile(inputData, inputMetaData),
      [biz.cgetUserNameFromEmail]: (inputData, inputMetaData) => dataStringParsing.getUserNameFromEmail(inputData, inputMetaData),
+     [biz.cencryptStringAes256]: (inputData, inputMetaData) => dataStringParsing.encryptStringAes256(inputData, inputMetaData),
+     [biz.cdecryptStringAes256]: (inputData, inputMetaData) => dataStringParsing.decryptStringAes256(inputData, inputMetaData),
+     [biz.cobfuscateString]: (inputData, inputMetaData) => dataStringParsing.obfuscateString(inputData, inputMetaData),
 
      // ***********************************************
      // fileStringParsing rules in order
@@ -354,6 +359,11 @@ async function initRulesLibrary() {
      [biz.cappendMessageToFile]: (inputData, inputMetaData) => fileOperations.appendMessageToFile(inputData, inputMetaData),
 
      // ***********************************************
+     // language Parsing rules in order
+     // ***********************************************
+     [biz.clanguageToAlphabet]: (inputData, inputMetaData) => languageParsing.languageToAlphabet(inputData, inputMetaData),
+
+     // ***********************************************
      // lexicalAnalyzer rules in order
      // ***********************************************
      [biz.cparseBusinessRuleArgument]: (inputData, inputMetaData) => lexicalAnalyzer.parseBusinessRuleArgument(inputData, inputMetaData),
@@ -403,6 +413,10 @@ async function initRulesLibrary() {
      [biz.cgenerateRandomSpecialCharacterCodeByLength]: (inputData, inputMetaData) => stringGeneration.generateRandomSpecialCharacterCodeByLength(inputData, inputMetaData),
      [biz.cgenerateValidEmail]: (inputData, inputMetaData) => stringGeneration.generateValidEmail(inputData, inputMetaData),
      [biz.cgenerateInvalidEmail]: (inputData, inputMetaData) => stringGeneration.generateInvalidEmail(inputData, inputMetaData),
+     [biz.cgenerateValidEmailWithSpecificSuffixAndDomainName]: (inputData, inputMetaData) => stringGeneration.generateValidEmailWithSpecificSuffixAndDomainName(inputData, inputMetaData),
+     [biz.cgenerateRandomValidEmail]: (inputData, inputMetaData) => stringGeneration.generateRandomValidEmail(inputData, inputMetaData),
+     [biz.cgenerateInvalidEmailWithSpecificSuffixAndDomainName]: (inputData, inputMetaData) => stringGeneration.generateInvalidEmailWithSpecificSuffixAndDomainName(inputData, inputMetaData),
+     [biz.cgenerateRandomInvalidEmail]: (inputData, inputMetaData) => stringGeneration.generateRandomInvalidEmail(inputData, inputMetaData),
      [biz.cgenerateRandomBrightColor]: (inputData, inputMetaData) => stringGeneration.generateRandomBrightColor(inputData, inputMetaData),
      [biz.cgenerateRandomDarkColor]: (inputData, inputMetaData) => stringGeneration.generateRandomDarkColor(inputData, inputMetaData),
      [biz.cgenerateRandomColor]: (inputData, inputMetaData) => stringGeneration.generateRandomColor(inputData, inputMetaData),
@@ -447,13 +461,13 @@ export default {
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-advanced.html">advanced</a></li><li><a href="module-auxiliary.html">auxiliary</a></li><li><a href="module-auxiliaryArrayParsing.html">auxiliaryArrayParsing</a></li><li><a href="module-auxiliaryStringParsing.html">auxiliaryStringParsing</a></li><li><a href="module-characterArrayParsing.html">characterArrayParsing</a></li><li><a href="module-characterGeneration.html">characterGeneration</a></li><li><a href="module-characterStringParsing.html">characterStringParsing</a></li><li><a href="module-chiefCommander.html">chiefCommander</a></li><li><a href="module-chiefConfiguration.html">chiefConfiguration</a></li><li><a href="module-chiefConstant.html">chiefConstant</a></li><li><a href="module-chiefData.html">chiefData</a></li><li><a href="module-chiefPlugin.html">chiefPlugin</a></li><li><a href="module-chiefTheme.html">chiefTheme</a></li><li><a href="module-chiefWorkflow.html">chiefWorkflow</a></li><li><a href="module-colorizer.html">colorizer</a></li><li><a href="module-commandArrayParsing.html">commandArrayParsing</a></li><li><a href="module-commandBroker.html">commandBroker</a></li><li><a href="module-commandsLibrary.html">commandsLibrary</a></li><li><a href="module-commandStringParsing.html">commandStringParsing</a></li><li><a href="module-configuration.html">configuration</a></li><li><a href="module-configurator.html">configurator</a></li><li><a href="module-constant.html">constant</a></li><li><a href="module-constantArrayParsing.html">constantArrayParsing</a></li><li><a href="module-constantBroker.html">constantBroker</a></li><li><a href="module-constantStringParsing.html">constantStringParsing</a></li><li><a href="module-data.html">data</a></li><li><a href="module-dataArrayParsing.html">dataArrayParsing</a></li><li><a href="module-dataBroker.html">dataBroker</a></li><li><a href="module-dataDirectorate.html">dataDirectorate</a></li><li><a href="module-dataStringParsing.html">dataStringParsing</a></li><li><a href="module-fileOperations.html">fileOperations</a></li><li><a href="module-fileStringParsing.html">fileStringParsing</a></li><li><a href="module-integrationTests.html">integrationTests</a></li><li><a href="module-lexicalAnalyzer.html">lexicalAnalyzer</a></li><li><a href="module-loggers.html">loggers</a></li><li><a href="module-main.html">main</a></li><li><a href="module-mathOperations.html">mathOperations</a></li><li><a href="module-pathArrayParsing.html">pathArrayParsing</a></li><li><a href="module-performanceMetric.html">performanceMetric</a></li><li><a href="module-pluginBroker.html">pluginBroker</a></li><li><a href="module-plugins.html">plugins</a></li><li><a href="module-promptOperations.html">promptOperations</a></li><li><a href="module-queue.html">queue</a></li><li><a href="module-ruleBroker.html">ruleBroker</a></li><li><a href="module-ruleParsing.html">ruleParsing</a></li><li><a href="module-rulesLibrary.html">rulesLibrary</a></li><li><a href="module-stack.html">stack</a></li><li><a href="module-stringGeneration.html">stringGeneration</a></li><li><a href="module-stringParsingUtilities.html">stringParsingUtilities</a></li><li><a href="module-system.html">system</a></li><li><a href="module-themeBroker.html">themeBroker</a></li><li><a href="module-timeComputation.html">timeComputation</a></li><li><a href="module-warden.html">warden</a></li><li><a href="module-wordArrayParsing.html">wordArrayParsing</a></li><li><a href="module-wordStringParsing.html">wordStringParsing</a></li><li><a href="module-workflowBroker.html">workflowBroker</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-advanced.html">advanced</a></li><li><a href="module-auxiliary.html">auxiliary</a></li><li><a href="module-auxiliaryArrayParsing.html">auxiliaryArrayParsing</a></li><li><a href="module-auxiliaryStringParsing.html">auxiliaryStringParsing</a></li><li><a href="module-characterArrayParsing.html">characterArrayParsing</a></li><li><a href="module-characterGeneration.html">characterGeneration</a></li><li><a href="module-characterStringParsing.html">characterStringParsing</a></li><li><a href="module-chiefCommander.html">chiefCommander</a></li><li><a href="module-chiefConfiguration.html">chiefConfiguration</a></li><li><a href="module-chiefConstant.html">chiefConstant</a></li><li><a href="module-chiefData.html">chiefData</a></li><li><a href="module-chiefPlugin.html">chiefPlugin</a></li><li><a href="module-chiefTheme.html">chiefTheme</a></li><li><a href="module-chiefWorkflow.html">chiefWorkflow</a></li><li><a href="module-colorizer.html">colorizer</a></li><li><a href="module-commandArrayParsing.html">commandArrayParsing</a></li><li><a href="module-commandBroker.html">commandBroker</a></li><li><a href="module-commandsLibrary.html">commandsLibrary</a></li><li><a href="module-commandStringParsing.html">commandStringParsing</a></li><li><a href="module-configuration.html">configuration</a></li><li><a href="module-configurator.html">configurator</a></li><li><a href="module-constant.html">constant</a></li><li><a href="module-constantArrayParsing.html">constantArrayParsing</a></li><li><a href="module-constantBroker.html">constantBroker</a></li><li><a href="module-constantStringParsing.html">constantStringParsing</a></li><li><a href="module-data.html">data</a></li><li><a href="module-dataArrayParsing.html">dataArrayParsing</a></li><li><a href="module-dataBroker.html">dataBroker</a></li><li><a href="module-dataDirectorate.html">dataDirectorate</a></li><li><a href="module-dataStringParsing.html">dataStringParsing</a></li><li><a href="module-fileOperations.html">fileOperations</a></li><li><a href="module-fileStringParsing.html">fileStringParsing</a></li><li><a href="module-integrationTests.html">integrationTests</a></li><li><a href="module-languageParsing.html">languageParsing</a></li><li><a href="module-lexicalAnalyzer.html">lexicalAnalyzer</a></li><li><a href="module-loggers.html">loggers</a></li><li><a href="module-main.html">main</a></li><li><a href="module-mathOperations.html">mathOperations</a></li><li><a href="module-pathArrayParsing.html">pathArrayParsing</a></li><li><a href="module-performanceMetric.html">performanceMetric</a></li><li><a href="module-pluginBroker.html">pluginBroker</a></li><li><a href="module-plugins.html">plugins</a></li><li><a href="module-promptOperations.html">promptOperations</a></li><li><a href="module-queue.html">queue</a></li><li><a href="module-ruleBroker.html">ruleBroker</a></li><li><a href="module-ruleParsing.html">ruleParsing</a></li><li><a href="module-rulesLibrary.html">rulesLibrary</a></li><li><a href="module-stack.html">stack</a></li><li><a href="module-stringGeneration.html">stringGeneration</a></li><li><a href="module-stringParsingUtilities.html">stringParsingUtilities</a></li><li><a href="module-system.html">system</a></li><li><a href="module-themeBroker.html">themeBroker</a></li><li><a href="module-timeComputation.html">timeComputation</a></li><li><a href="module-warden.html">warden</a></li><li><a href="module-wordArrayParsing.html">wordArrayParsing</a></li><li><a href="module-wordStringParsing.html">wordStringParsing</a></li><li><a href="module-workflowBroker.html">workflowBroker</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Sun Sep 08 2024 09:56:16 GMT-0500 (Central Daylight Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Sat Oct 19 2024 20:24:33 GMT-0500 (Central Daylight Time)
 </footer>
 
 <script> prettyPrint(); </script>

@@ -1130,7 +1130,7 @@ async function validateConstantsDataValues(inputData, inputMetaData) {
               passMessage = chalk.bgRgb(255,0,0)(passMessage);
             } // End-if (colorizeLogsEnabled === true)
             console.log(passMessage);
-          } // End-if (configurator.getConfigurationSetting(wrd.csystem, cfg.cdisplayIndividualCosntantsValidationFailMessages) === true)
+          } // End-if (configurator.getConfigurationSetting(wrd.csystem, cfg.cdisplayIndividualConstantsValidationFailMessages) === true)
         }
       } else { // Else-clause if (validationLineItem)
         // `FAIL -- ${inputData} -- FAIL`
