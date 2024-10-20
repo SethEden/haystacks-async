@@ -1,7 +1,7 @@
 /**
  * @file rulesLibrary.js
  * @module rulesLibrary
- * @description Contains all of the system defined busness rules as a map between function names and function calls.
+ * @description Contains all of the system defined business rules as a map between function names and function calls.
  * @requires module:auxiliaryArrayParsing
  * @requires module:characterArrayParsing
  * @requires module:commandArrayParsing
@@ -19,6 +19,7 @@
  * @requires module:wordStringParsing
  * @requires module:characterGeneration
  * @requires module:fileOperations
+ * @requires module:languageParsing
  * @requires module:lexicalAnalyzer
  * @requires module:mathOperations
  * @requires module:promptOperations
@@ -52,6 +53,7 @@ import fileStringParsing from './rules/stringParsing/fileStringParsing.js';
 import wordStringParsing from './rules/stringParsing/wordStringParsing.js';
 import characterGeneration from './rules/characterGeneration.js';
 import fileOperations from './rules/fileOperations.js';
+import languageParsing  from './rules/languageParsing.js';
 import lexicalAnalyzer from './rules/lexicalAnalyzer.js';
 import mathOperations from './rules/mathOperations.js';
 import promptOperations from './rules/promptOperations.js';
@@ -251,6 +253,9 @@ async function initRulesLibrary() {
      [biz.cloadDataFile]: (inputData, inputMetaData) => dataStringParsing.loadDataFile(inputData, inputMetaData),
      [biz.csaveDataFile]: (inputData, inputMetaData) => dataStringParsing.saveDataFile(inputData, inputMetaData),
      [biz.cgetUserNameFromEmail]: (inputData, inputMetaData) => dataStringParsing.getUserNameFromEmail(inputData, inputMetaData),
+     [biz.cencryptStringAes256]: (inputData, inputMetaData) => dataStringParsing.encryptStringAes256(inputData, inputMetaData),
+     [biz.cdecryptStringAes256]: (inputData, inputMetaData) => dataStringParsing.decryptStringAes256(inputData, inputMetaData),
+     [biz.cobfuscateString]: (inputData, inputMetaData) => dataStringParsing.obfuscateString(inputData, inputMetaData),
 
      // ***********************************************
      // fileStringParsing rules in order
@@ -326,6 +331,11 @@ async function initRulesLibrary() {
      [biz.cappendMessageToFile]: (inputData, inputMetaData) => fileOperations.appendMessageToFile(inputData, inputMetaData),
 
      // ***********************************************
+     // language Parsing rules in order
+     // ***********************************************
+     [biz.clanguageToAlphabet]: (inputData, inputMetaData) => languageParsing.languageToAlphabet(inputData, inputMetaData),
+
+     // ***********************************************
      // lexicalAnalyzer rules in order
      // ***********************************************
      [biz.cparseBusinessRuleArgument]: (inputData, inputMetaData) => lexicalAnalyzer.parseBusinessRuleArgument(inputData, inputMetaData),
@@ -375,6 +385,10 @@ async function initRulesLibrary() {
      [biz.cgenerateRandomSpecialCharacterCodeByLength]: (inputData, inputMetaData) => stringGeneration.generateRandomSpecialCharacterCodeByLength(inputData, inputMetaData),
      [biz.cgenerateValidEmail]: (inputData, inputMetaData) => stringGeneration.generateValidEmail(inputData, inputMetaData),
      [biz.cgenerateInvalidEmail]: (inputData, inputMetaData) => stringGeneration.generateInvalidEmail(inputData, inputMetaData),
+     [biz.cgenerateValidEmailWithSpecificSuffixAndDomainName]: (inputData, inputMetaData) => stringGeneration.generateValidEmailWithSpecificSuffixAndDomainName(inputData, inputMetaData),
+     [biz.cgenerateRandomValidEmail]: (inputData, inputMetaData) => stringGeneration.generateRandomValidEmail(inputData, inputMetaData),
+     [biz.cgenerateInvalidEmailWithSpecificSuffixAndDomainName]: (inputData, inputMetaData) => stringGeneration.generateInvalidEmailWithSpecificSuffixAndDomainName(inputData, inputMetaData),
+     [biz.cgenerateRandomInvalidEmail]: (inputData, inputMetaData) => stringGeneration.generateRandomInvalidEmail(inputData, inputMetaData),
      [biz.cgenerateRandomBrightColor]: (inputData, inputMetaData) => stringGeneration.generateRandomBrightColor(inputData, inputMetaData),
      [biz.cgenerateRandomDarkColor]: (inputData, inputMetaData) => stringGeneration.generateRandomDarkColor(inputData, inputMetaData),
      [biz.cgenerateRandomColor]: (inputData, inputMetaData) => stringGeneration.generateRandomColor(inputData, inputMetaData),

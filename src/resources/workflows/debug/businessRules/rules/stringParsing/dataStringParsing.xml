@@ -24,6 +24,12 @@
             <Workflow Name="saveDataFileDisable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.stringParsing.dataStringParsing.saveDataFile false"/>
             <Workflow Name="getUserNameFromEmailEnable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.stringParsing.dataStringParsing.getUserNameFromEmail true"/>
             <Workflow Name="getUserNameFromEmailDisable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.stringParsing.dataStringParsing.getUserNameFromEmail false"/>
+            <Workflow Name="encryptStringAes256Enable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.stringParsing.dataStringParsing.encryptStringAes256 true"/>
+            <Workflow Name="encryptStringAes256Disable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.stringParsing.dataStringParsing.encryptStringAes256 false"/>
+            <Workflow Name="decryptStringAes256Enable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.stringParsing.dataStringParsing.decryptStringAes256 true"/>
+            <Workflow Name="decryptStringAes256Disable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.stringParsing.dataStringParsing.decryptStringAes256 false"/>
+            <Workflow Name="obfuscateStringEnable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.stringParsing.dataStringParsing.obfuscateString true"/>
+            <Workflow Name="obfuscateStringDisable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.stringParsing.dataStringParsing.obfuscateString false"/>
           </dataStringParsing>
         </stringParsing>
       </rules>

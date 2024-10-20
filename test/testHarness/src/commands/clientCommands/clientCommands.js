@@ -20,7 +20,7 @@ import hayConst from '@haystacks/constants';
 import chalk from 'chalk';
 import path from 'path';
 
-const {bas, biz, cfg, gen, msg, num, wrd} = hayConst;
+const {abt, bas, biz, cfg, msg, num, wrd} = hayConst;
 const baseFileName = path.basename(import.meta.url, path.extname(import.meta.url));
 // application.testHarness.commands.clientCommands.clientCommands.
 const namespacePrefix = wrd.capplication + bas.cDot + apc.cApplicationName + bas.cDot + wrd.ccommands + bas.cDot + wrd.cclient + wrd.cCommands + bas.cDot + baseFileName + bas.cDot;
@@ -154,7 +154,7 @@ async function bossPanic(inputData, inputMetaData) {
     // Now we will generate a number between 0 and the string length, this will be the color limit so we can break the ine up randomly into a beginning segment and an ending segment.
     // Each segment of the line will get a different random foreground font color and random background font color.
     colorBreakPoint = await haystacks.executeBusinessRules([num.c1, [stringLength, false, false]], [biz.crandomlyGenerateNumberInRange]);
-    stringToPrint = await haystacks.executeBusinessRules([stringLength, gen.cMostSpecialCharacters], [biz.cgenerateRandomMixedCaseAlphaNumericCodeWithSpecialCharactersByLength]);
+    stringToPrint = await haystacks.executeBusinessRules([stringLength, abt.cMostSpecialCharacters], [biz.cgenerateRandomMixedCaseAlphaNumericCodeWithSpecialCharactersByLength]);
     if (enableColoredLine === true && systemColorLogsEnabled === true) {
       subString1 = stringToPrint.substr(0, colorBreakPoint);
       subString2 = stringToPrint.substr(colorBreakPoint, stringToPrint.length);

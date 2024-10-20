@@ -782,9 +782,9 @@ async function clearUserCommandsLog(inputData, inputMetaData) {
  * @description Wipes out the all commands log, destroying all evidence of whatever commands were executed by the system.
  * @param {string} inputData Not used for this command.
  * @param {string} inputMetaData Not used for this command.
- * @return {array<boolean,boolean>} An aray ith a boolean True or False value to
+ * @return {array<boolean,boolean>} An array with a boolean True or False value to
  * indicate if the application should exit or not exit, followed by another boolean value to indicate if the operation was successful or not.
- * @autor Seth Hollingsead
+ * @author Seth Hollingsead
  * @date 2023/02/14
  */
 async function clearAllCommandsLog(inputData, inputMetaData) {

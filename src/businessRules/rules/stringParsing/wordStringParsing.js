@@ -22,7 +22,7 @@ import hayConst from '@haystacks/constants';
 import * as math from 'mathjs';
 import path from 'path';
 
-const {bas, biz, cfg, gen, msg, sys, wrd} = hayConst;
+const {abt, bas, biz, cfg, msg, sys, wrd} = hayConst;
 const baseFileName = path.basename(import.meta.url, path.extname(import.meta.url));
 // framework.businessRules.rules.stringParsing.wordStringParsing.
 const namespacePrefix = wrd.cframework + bas.cDot + sys.cbusinessRules + bas.cDot + wrd.crules + bas.cDot + wrd.cstring + wrd.cParsing + bas.cDot + baseFileName + bas.cDot;
@@ -71,12 +71,12 @@ async function isStringCamelCase(inputData, inputMetaData) {
 
         // First we need to ok for the first upper case letter.
         if (foundFirstCapitalLetter === false) {
-          if (gen.cUpperCaseEnglishAlphabet.includes(inputData.charAt(i))) {
+          if (abt.cUpperCaseEnglishAlphabet.includes(inputData.charAt(i))) {
             // Found an upper case letter, ensure the next letter is lower case.
             foundFirstCapitalLetter = true;
           }
         } else if (foundFirstCapitalLetter === true) {
-          if (gen.cLowerCaseEnglishAlphabet.includes(inputData.charAt(i))) {
+          if (abt.cLowerCaseEnglishAlphabet.includes(inputData.charAt(i))) {
             returnData = true;
             break; // Sufficient evidence to prove this is a camel case string.
           }
@@ -187,7 +187,7 @@ async function countCamelCaseWords(inputData, inputMetaData) {
     let caps = [];
     for (let i = 0; i < inputData.length; i++) {
       await loggers.consoleLog(namespacePrefix + functionName, msg.ccharacterIs + inputData.charAt(i));
-      if (gen.cUpperCaseEnglishAlphabet.includes(inputData.charAt(i))) {
+      if (abt.cUpperCaseEnglishAlphabet.includes(inputData.charAt(i))) {
         // Upper case letter found.
         await loggers.consoleLog(namespacePrefix + functionName, msg.cupperCaseLetterFound);
         caps.push(i);
@@ -221,11 +221,11 @@ async function doesStringContainAcronym(inputData, inputMetaData) {
     for (let i = 1; i < inputData.length; i++) {
       // if the last character was upper case and the current character is upper case,
       // then we have found an acronym and we can exit the loop.
-      if (lastCharacterWasUpperCase === true && gen.cUpperCaseEnglishAlphabet.includes(inputData.charAt(i))) {
+      if (lastCharacterWasUpperCase === true && abt.cUpperCaseEnglishAlphabet.includes(inputData.charAt(i))) {
         returnData = true;
         break;
       }
-      if (gen.cUpperCaseEnglishAlphabet.includes(inputData.charAt(i))) {
+      if (abt.cUpperCaseEnglishAlphabet.includes(inputData.charAt(i))) {
         lastCharacterWasUpperCase = true;
       } else {
         lastCharacterWasUpperCase = false;

@@ -5,6 +5,8 @@
  * @requires module:ruleParsing
  * @requires module:loggers
  * @requires {@link https://www.npmjs.com/package/@haystacks/constants|@haystacks/constants}
+ * @requires {@link https://nodejs.org/api/crypto.html|crypto}
+ * @requires {@link https://nodejs.org/api/buffer.html|buffer}
  * @requires {@link https://www.npmjs.com/package/path|path}
  * @author Seth Hollingsead
  * @date 2022/04/25
@@ -16,6 +18,8 @@ import ruleParsing from '../ruleParsing.js';
 import loggers from '../../../executrix/loggers.js';
 // External imports
 import hayConst from '@haystacks/constants';
+import crypto from 'crypto';
+import { Buffer } from 'buffer';
 import path from 'path';
 
 const {bas, biz, gen, msg, num, sys, wrd} = hayConst;
@@ -298,6 +302,138 @@ async function getUserNameFromEmail(inputData, inputMetaData) {
   return returnData;
 }
 
+/**
+ * @function encryptStringAes256
+ * @description Takes a string and runs it through an encryption algorithm, returning an encrypted version of the string.
+ * The algorithm used for the encryption is AES-256, I've included it as part of the function/rule name because
+ * we want to be able to distinguish it from other algorithms that might implement other encryption algorithms, such as RSA.
+ * @param {string} inputData The string to be encrypted.
+ * @param {string} inputMetaData Another string that will be used as the encryption seed.
+ * Can be formatted with and "_", with a prefix and post-fix for public/private keys.
+ * @return {string} The encrypted string.
+ * @author Seth Hollingsead
+ * @date 2024/09/23
+ */
+async function encryptStringAes256(inputData, inputMetaData) {
+  let functionName = encryptStringAes256.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
+  let returnData = false;
+  if (inputData && inputMetaData && inputData !== '' && inputMetaData !== '') {
+    try {
+      // Treat the entire inputMetaData (public + private keys combined) as the encryption key
+      const encryptionKey = crypto.createHash(gen.csha256).update(inputMetaData).digest(); // Create a 256-bit key
+      const iv = crypto.randomBytes(16); // Generate a random IV
+
+      // Create the cipher using AES-256-CTR
+      const cipher = crypto.createCipheriv(gen.caes_256_ctr, encryptionKey, iv);
+
+      // Encrypt the inputData
+      const encrypted = Buffer.concat([cipher.update(inputData, gen.cUTF8), cipher.final()]);
+
+      // Combine the IV and the encrypted data, encode them in hex format for storage
+      returnData = iv.toString(gen.chex) + bas.cColon + encrypted.toString(gen.chex);
+      // Encryption successful
+      await loggers.consoleLog(namespacePrefix + functionName, msg.cEncryptionSuccessful);
+    } catch (error) {
+      // ERROR: Encryption failed:
+      console.log(msg.cErrorEncryptionFailed + error.message);
+      await loggers.consoleLog(namespacePrefix + functionName, msg.cErrorEncryptionFailed + error.message);
+    }
+  } else {
+    // ERROR: Invalid input strings.
+    console.log(msg.cErrorInvalidInputStrings)
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cErrorInvalidInputStrings);
+  }
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
+/**
+ * @function decryptStringAes256
+ * @description Takes an encrypted string and decrypts it using the AES-256 algorithm, returning the original string.
+ * @param {string} inputData The encrypted string to decrypt.
+ * @param {string} inputMetaData The string used as the decryption seed (same key used for encryption).
+ * @return {string} The decrypted string.
+ * @author Seth Hollingsead
+ * @date 2024/09/23
+ */
+export async function decryptStringAes256(inputData, inputMetaData) {
+  let functionName = decryptStringAes256.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
+  let returnData = false;
+
+  if (inputData && inputMetaData && inputData !== '' && inputMetaData !== '') {
+    try {
+      // Split the encrypted data into the IV and the encrypted string
+      const [ivHex, encryptedHex] = inputData.split(bas.cColon);
+      const iv = Buffer.from(ivHex, gen.chex);
+      const encryptedText = Buffer.from(encryptedHex, gen.chex);
+
+      // Derive the encryption key
+      const encryptionKey = crypto.createHash(gen.csha256).update(inputMetaData).digest();
+
+      // Create decipher using AES-256-CTR
+      const decipher = crypto.createDecipheriv(gen.caes_256_ctr, encryptionKey, iv);
+
+      // Decrypt the encrypted text
+      const decrypted = Buffer.concat([decipher.update(encryptedText), decipher.final()]);
+
+      returnData = decrypted.toString(gen.cUTF8);
+      // Decryption successful
+      await loggers.consoleLog(namespacePrefix + functionName, msg.cDecryptionSuccessful);
+    } catch (error) {
+      // ERROR: Decryption failed:
+      console.log(msg.cErrorEncryptionFailed + error.message);
+      await loggers.consoleLog(namespacePrefix + functionName, msg.cErrorEncryptionFailed + error.message);
+    }
+  } else {
+    // ERROR: Invalid input strings.
+    console.log(msg.cErrorInvalidInputStrings);
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cErrorInvalidInputStrings);
+  }
+
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
+/**
+ * @function obfuscateString
+ * @description Takes a string and converts it to an obfuscated version of the same string.
+ * This means converting the string into something that is unintelligible or unreadable from the original string.
+ * In our case we will convert the string into all stars '*', just like as if the string was a password.
+ * @param {string} inputData The string to be obfuscated, or converted into all stars of the same length.
+ * @param {string} inputMetaData Not used for this business rule.
+ * @return {string} A string of '*' characters of the same length as the input string.
+ * @author Seth Hollingsead
+ * @date 2024/09/23
+ */
+export async function obfuscateString(inputData, inputMetaData) {
+  let functionName = obfuscateString.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
+  let returnData = false;
+  if (inputData && inputData !== '') {
+    // Convert the input string to a string of '*' characters of the same length
+    returnData = bas.cStar.repeat(inputData.length);
+    // Obfuscation successful
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cObfuscationSuccessful);
+  } else {
+    // ERROR: Invalid input string.
+    console.log(msg.cErrorInvalidInputString);
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cErrorInvalidInputString);
+  }
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
 export default {
   getAttributeName,
   getAttributeValue,
@@ -307,5 +443,8 @@ export default {
   getKeywordNameFromDataContextName,
   loadDataFile,
   saveDataFile,
-  getUserNameFromEmail
+  getUserNameFromEmail,
+  encryptStringAes256,
+  decryptStringAes256,
+  obfuscateString
 };

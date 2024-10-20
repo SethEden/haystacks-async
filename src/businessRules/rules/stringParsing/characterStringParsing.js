@@ -22,7 +22,7 @@ import loggers from '../../../executrix/loggers.js';
 import hayConst from '@haystacks/constants';
 import path from 'path';
 
-const {bas, biz, cfg, gen, msg, sys, wrd} = hayConst;
+const {abt, bas, biz, cfg, msg, sys, wrd} = hayConst;
 const baseFileName = path.basename(import.meta.url, path.extname(import.meta.url));
 // framework.businessRules.rules.stringParsing.characterStringParsing.
 const namespacePrefix = wrd.cframework + bas.cDot + sys.cbusinessRules + bas.cDot + wrd.crules + bas.cDot + wrd.cstring + wrd.cParsing + bas.cDot + baseFileName + bas.cDot;
@@ -350,7 +350,7 @@ async function doesStringContainUpperCaseCharacter(inputData, inputMetaData) {
   let returnData = false;
   if (inputData) {
     for (let i = 1; i < inputData.length; i++) {
-      if (gen.cUpperCaseEnglishAlphabet.includes(inputData.charAt(i))) {
+      if (abt.cUpperCaseEnglishAlphabet.includes(inputData.charAt(i))) {
         returnData = true;
         break;
       }
@@ -379,7 +379,7 @@ async function doesStringContainLowerCaseCharacter(inputData, inputMetaData) {
   let returnData = false;
   if (inputData) {
     for (let i = 1; i < inputData.length; i++) {
-      if (gen.cLowerCaseEnglishAlphabet.includes(inputData.charAt(i))) {
+      if (abt.cLowerCaseEnglishAlphabet.includes(inputData.charAt(i))) {
         returnData = true;
         break;
       }
@@ -406,7 +406,7 @@ async function isFirstCharacterLowerCase(inputData, inputMetaData) {
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = false;
   if (inputData) {
-    returnData = gen.cLowerCaseEnglishAlphabet.includes(inputData.charAt(0));
+    returnData = abt.cLowerCaseEnglishAlphabet.includes(inputData.charAt(0));
   }
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
@@ -429,7 +429,7 @@ async function isFirstCharacterUpperCase(inputData, inputMetaData) {
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = false;
   if (inputData) {
-    returnData = gen.cUpperCaseEnglishAlphabet.includes(inputData.charAt(0));
+    returnData = abt.cUpperCaseEnglishAlphabet.includes(inputData.charAt(0));
   }
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
