@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?><CommandWorkflows>
+  <debug>
+    <businessRules>
+      <rules>
+        <stringParsing>
+          <dataStringParsing>
+            <Workflow Name="dataStringParsingEnable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.stringParsing.dataStringParsing true"/>
+            <Workflow Name="dataStringParsingDisable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.stringParsing.dataStringParsing false"/>
+            <Workflow Name="getAttributeNameEnable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.stringParsing.dataStringParsing.getAttributeName true"/>
+            <Workflow Name="getAttributeNameDisable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.stringParsing.dataStringParsing.getAttributeName false"/>
+            <Workflow Name="getAttributeValueEnable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.stringParsing.dataStringParsing.getAttributeValue true"/>
+            <Workflow Name="getAttributeValueDisable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.stringParsing.dataStringParsing.getAttributeValue false"/>
+            <Workflow Name="getValueFromAssignmentOperationStringEnable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.stringParsing.dataStringParsing.getValueFromAssignmentOperationString true"/>
+            <Workflow Name="getValueFromAssignmentOperationStringDisable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.stringParsing.dataStringParsing.getValueFromAssignmentOperationString false"/>
+            <Workflow Name="getDataCategoryFromDataContextNameEnable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.stringParsing.dataStringParsing.getDataCategoryFromDataContextName true"/>
+            <Workflow Name="getDataCategoryFromDataContextNameDisable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.stringParsing.dataStringParsing.getDataCategoryFromDataContextName false"/>
+            <Workflow Name="getDataCategoryDetailNameFromDataContextNameEnable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.stringParsing.dataStringParsing.getDataCategoryDetailNameFromDataContextName true"/>
+            <Workflow Name="getDataCategoryDetailNameFromDataContextNameDisable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.stringParsing.dataStringParsing.getDataCategoryDetailNameFromDataContextName false"/>
+            <Workflow Name="getKeywordNameFromDataContextNameEnable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.stringParsing.dataStringParsing.getKeywordNameFromDataContextName true"/>
+            <Workflow Name="getKeywordNameFromDataContextNameDisable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.stringParsing.dataStringParsing.getKeywordNameFromDataContextName false"/>
+            <Workflow Name="loadDataFileEnable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.stringParsing.dataStringParsing.loadDataFile true"/>
+            <Workflow Name="loadDataFileDisable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.stringParsing.dataStringParsing.loadDataFile false"/>
+            <Workflow Name="saveDataFileEnable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.stringParsing.dataStringParsing.saveDataFile true"/>
+            <Workflow Name="saveDataFileDisable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.stringParsing.dataStringParsing.saveDataFile false"/>
+            <Workflow Name="getUserNameFromEmailEnable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.stringParsing.dataStringParsing.getUserNameFromEmail true"/>
+            <Workflow Name="getUserNameFromEmailDisable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.stringParsing.dataStringParsing.getUserNameFromEmail false"/>
+            <Workflow Name="encryptStringAes256Enable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.stringParsing.dataStringParsing.encryptStringAes256 true"/>
+            <Workflow Name="encryptStringAes256Disable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.stringParsing.dataStringParsing.encryptStringAes256 false"/>
+            <Workflow Name="decryptStringAes256Enable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.stringParsing.dataStringParsing.decryptStringAes256 true"/>
+            <Workflow Name="decryptStringAes256Disable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.stringParsing.dataStringParsing.decryptStringAes256 false"/>
+            <Workflow Name="obfuscateStringEnable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.stringParsing.dataStringParsing.obfuscateString true"/>
+            <Workflow Name="obfuscateStringDisable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.stringParsing.dataStringParsing.obfuscateString false"/>
+          </dataStringParsing>
+        </stringParsing>
+      </rules>
+    </businessRules>
+  </debug>
+</CommandWorkflows>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?><CommandWorkflows>
+  <debug>
+    <commandsBlob>
+      <commands>
+        <plugins>
+          <Workflow Name="pluginsEnable" Value="changeConfigSetting debugSetting.framework.commandsBlob.commands.plugins true"/>
+          <Workflow Name="pluginsDisable" Value="changeConfigSetting debugSetting.framework.commandsBlob.commands.plugins false"/>
+          <Workflow Name="pluginsListAllLoadedPluginsEnable" Value="changeConfigSetting debugSetting.framework.commandsBlob.commands.plugins.listAllLoadedPlugins true"/>
+          <Workflow Name="pluginsListAllLoadedPluginsDisable" Value="changeConfigSetting debugSetting.framework.commandsBlob.commands.plugins.listAllLoadedPlugins false"/>
+          <Workflow Name="pluginsListAllPluginsInRegistryEnable" Value="changeConfigSetting debugSetting.framework.commandsBlob.commands.plugins.listAllPluginsInRegistry true"/>
+          <Workflow Name="pluginsListAllPluginsInRegistryDisable" Value="changeConfigSetting debugSetting.framework.commandsBlob.commands.plugins.listAllPluginsInRegistry false"/>
+          <Workflow Name="pluginsListAllPluginsInRegistryPathEnable" Value="changeConfigSetting debugSetting.framework.commandsBlob.commands.plugins.listAllPluginsInRegistryPath true"/>
+          <Workflow Name="pluginsListAllPluginsInRegistryPathDisable" Value="changeConfigSetting debugSetting.framework.commandsBlob.commands.plugins.listAllPluginsInRegistryPath false"/>
+          <Workflow Name="pluginsCountPluginsInRegistryEnable" Value="changeConfigSetting debugSetting.framework.commandsBlob.commands.plugins.countPluginsInRegistry true"/>
+          <Workflow Name="pluginsCountPluginsInRegistryDisable" Value="changeConfigSetting debugSetting.framework.commandsBlob.commands.plugins.countPluginsInRegistry false"/>
+          <Workflow Name="pluginsCountPluginsInRegistryPathEnable" Value="changeConfigSetting debugSetting.framework.commandsBlob.commands.plugins.countPluginsInRegistryPath true"/>
+          <Workflow Name="pluginsCountPluginsInRegistryPathDisable" Value="changeConfigSetting debugSetting.framework.commandsBlob.commands.plugins.countPluginsInRegistryPath false"/>
+          <Workflow Name="pluginsRegisterPluginEnable" Value="changeConfigSetting debugSetting.framework.commandsBlob.commands.plugins.registerPlugin true"/>
+          <Workflow Name="pluginsRegisterPluginDisable" Value="changeConfigSetting debugSetting.framework.commandsBlob.commands.plugins.registerPlugin false"/>
+          <Workflow Name="pluginsUnregisterPluginEnable" Value="changeConfigSetting debugSetting.framework.commandsBlob.commands.plugins.unregisterPlugin true"/>
+          <Workflow Name="pluginsUnregisterPluginDisable" Value="changeConfigSetting debugSetting.framework.commandsBlob.commands.plugins.unregisterPlugin false"/>
+          <Workflow Name="pluginsUnregisterPluginsEnable" Value="changeConfigSetting debugSetting.framework.commandsBlob.commands.plugins.unregisterPlugins true"/>
+          <Workflow Name="pluginsUnregisterPluginsDisable" Value="changeConfigSetting debugSetting.framework.commandsBlob.commands.plugins.unregisterPlugins false"/>
+          <Workflow Name="pluginsSyncPluginRegistryWithPathEnable" Value="changeConfigSetting debugSetting.framework.commandsBlob.commands.plugins.syncPluginRegistryWithPath true"/>
+          <Workflow Name="pluginsSyncPluginRegistryWithPathDisable" Value="changeConfigSetting debugSetting.framework.commandsBlob.commands.plugins.synchPluginRegistryWithPath false"/>
+          <Workflow Name="pluginsListPluginsRegistryPathEnable" Value="changeConfigSetting debugSetting.framework.commandsBlob.commands.plugins.listPluginsRegistryPath true"/>
+          <Workflow Name="pluginsListPluginsRegistryPathDisable" Value="changeConfigSetting debugSetting.framework.commandsBlob.commands.plugins.listPluginsRegistryPath false"/>
+          <Workflow Name="pluginsUnregisterAllPluginsEnable" Value="changeConfigSetting debugSetting.framework.commandsBlob.commands.plugins.unregisterAllPlugins true"/>
+          <Workflow Name="pluginsUnregisterAllPluginsDisable" Value="changeConfigSetting debugSetting.framework.commandsBlob.commands.plugins.unregisterAllPlugins false"/>
+          <Workflow Name="pluginsSavePluginRegistryToDiskEnable" Value="changeConfigSetting debugSetting.framework.commandsBlob.commands.plugins.savePluginRegistryToDisk true"/>
+          <Workflow Name="pluginsSavePluginRegistryToDiskDisable" Value="changeConfigSetting debugSetting.framework.commandsBlob.commands.plugins.savePluginRegistryToDisk false"/>
+          <Workflow Name="pluginsLoadPluginEnable" Value="changeConfigSetting debugSetting.framework.commandsBlob.commands.plugins.loadPlugin true"/>
+          <Workflow Name="pluginsLoadPluginDisable" Value="changeConfigSetting debugSetting.framework.commandsBlob.commands.plugins.loadPlugin false"/>
+          <Workflow Name="pluginsLoadPluginsEnable" Value="changeConfigSetting debugSetting.framework.commandsBlob.commands.plugins.loadPlugins true"/>
+          <Workflow Name="pluginsLoadPluginsDisable" Value="changeConfigSetting debugSetting.framework.commandsBlob.commands.plugins.loadPlugins false"/>
+          <Workflow Name="pluginsLoadPluginsFromRegistryEnable" Value="changeConfigSetting debugSetting.framework.commandsBlob.commands.plugins.loadPluginsFromRegistry true"/>
+          <Workflow Name="pluginsLoadPluginsFromRegistryDisable" Value="changeConfigSetting debugSetting.framework.commandsBlob.commands.plugins.loadPluginsFromRegistry false"/>
+          <Workflow Name="pluginsUnloadPluginEnable" Value="changeConfigSetting debugSetting.framework.commandsBlob.commands.plugins.unloadPlugin true"/>
+          <Workflow Name="pluginsUnloadPluginDisable" Value="changeConfigSetting debugSetting.framework.commandsBlob.commands.plugins.unloadPlugin false"/>
+          <Workflow Name="pluginsUnloadPluginsEnable" Value="changeConfigSetting debugSetting.framework.commandsBlob.commands.plugins.unloadPlugins true"/>
+          <Workflow Name="pluginsUnloadPluginsDisable" Value="changeConfigSetting debugSetting.framework.commandsBlob.commands.plugins.unloadPlugins false"/>
+          <Workflow Name="pluginsUnloadAllPluginsEnable" Value="changeConfigSetting debugSetting.framework.commandsBlob.commands.plugins.unloadAllPlugins true"/>
+          <Workflow Name="pluginsUnloadAllPluginsDisable" Value="changeConfigSetting debugSetting.framework.commandsBlob.commands.plugins.unloadAllPlugins false"/>
+        </plugins>
+      </commands>
+    </commandsBlob>
+  </debug>
+</CommandWorkflows>

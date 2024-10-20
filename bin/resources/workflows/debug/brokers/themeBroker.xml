@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?><CommandWorkflows>
+  <debug>
+    <brokers>
+      <themeBroker>
+        <Workflow Name="themeBrokerEnable" Value="changeConfigSetting debugSetting.framework.brokers.themeBroker true"/>
+        <Workflow Name="themeBrokerDisable" Value="changeConfigSetting debugSetting.framework.brokers.themeBroker false"/>
+        <Workflow Name="themeBrokerInitThemeDataEnable" Value="changeConfigSetting debugSetting.framework.brokers.themeBroker.initThemeData true"/>
+        <Workflow Name="themeBrokerInitThemeDataDisable" Value="changeConfigSetting debugSetting.framework.brokers.themeBroker.initThemeData false"/>
+        <Workflow Name="themeBrokerGenerateThemeDataFromPathEnable" Value="changeConfigSetting debugSetting.framework.brokers.themeBroker.generateThemeDataFromPath true"/>
+        <Workflow Name="themeBrokerGenerateThemeDataFromPathDisable" Value="changeConfigSetting debugSetting.framework.brokers.themeBroker.generateThemeDataFromPath false"/>
+        <Workflow Name="themeBrokerAddThemeDataEnable" Value="changeConfigSetting debugSetting.framework.brokers.themeBroker.addThemeData true"/>
+        <Workflow Name="themeBrokerAddThemeDataDisable" Value="changeConfigSetting debugSetting.framework.brokers.themeBroker.addThemeData false"/>
+        <Workflow Name="themeBrokerGetNamedThemesFromRootPathEnable" Value="changeConfigSetting debugSetting.framework.brokers.themeBroker.getNamedThemesFromRootPath true"/>
+        <Workflow Name="themeBrokerGetNamedThemesFromRootPathDisable" Value="changeConfigSetting debugSetting.framework.brokers.themeBroker.getNamedThemesFromRootPath false"/>
+        <Workflow Name="themeBrokerGetNamedThemePathFromRootPathEnable" Value="changeConfigSetting debugSetting.framework.brokers.themeBroker.getNamedThemePathFromRootPath true"/>
+        <Workflow Name="themeBrokerGetNamedThemePathFromRootPathDisable" Value="changeConfigSetting debugSetting.framework.brokers.themeBroker.getNamedThemePathFromRootPath false"/>
+        <Workflow Name="themeBrokerLoadThemeEnable" Value="changeConfigSetting debugSetting.framework.brokers.themeBroker.loadTheme true"/>
+        <Workflow Name="themeBrokerLoadThemeDisable" Value="changeConfigSetting debugSetting.framework.brokers.themeBroker.loadTheme false"/>
+        <Workflow Name="themeBrokerApplyThemeEnable" Value="changeConfigSetting debugSetting.framework.brokers.themeBroker.applyTheme true"/>
+        <Workflow Name="themeBrokerApplyThemeDisable" Value="changeConfigSetting debugSetting.framework.brokers.themeBroker.applyTheme false"/>
+        <Workflow Name="themeBrokerRemovePluginThemeDataEnable" Value="changeConfigSetting debugSetting.framework.brokers.themeBroker.removePluginThemeData true"/>
+        <Workflow Name="themeBrokerRemovePluginThemeDataDisable" Value="changeConfigSetting debugSetting.framework.brokers.themeBroker.removePluginThemeData false"/>
+      </themeBroker>
+    </brokers>
+  </debug>
+</CommandWorkflows>

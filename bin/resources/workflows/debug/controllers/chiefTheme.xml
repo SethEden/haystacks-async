@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?><CommandWorkflows>
+  <debug>
+    <controllers>
+      <chiefTheme>
+        <Workflow Name="chiefThemeEnable" Value="changeConfigSetting debugSetting.framework.controllers.chiefTheme true"/>
+        <Workflow Name="chiefThemeDisable" Value="changeConfigSetting debugSetting.framework.controllers.chiefTheme false"/>
+        <Workflow Name="initThemesEnable" Value="changeConfigSetting debugSetting.framework.controllers.chiefTheme.initThemes true"/>
+        <Workflow Name="initThemesDisable" Value="changeConfigSetting debugSetting.framework.controllers.chiefTheme.initThemes false"/>
+        <Workflow Name="addThemeDataEnable" Value="changeConfigSetting debugSetting.framework.controllers.chiefTheme.addThemeData true"/>
+        <Workflow Name="addThemeDataDisable" Value="changeConfigSetting debugSetting.framework.controllers.chiefTheme.addThemeData false"/>
+        <Workflow Name="generateThemeDataFromThemeRootPathEnable" Value="changeConfigSetting debguSetting.frameworkcontrollers.cheifTheme.generateThemeDataFromThemeRootPath true"/>
+        <Workflow Name="generateThemeDataFromThemeRootPathDisable" Value="changeConfigSetting debugSetting.framework.controllers.cheifTheme.generateThemeDataFromThemeRootPath false"/>
+        <Workflow Name="determineThemeDebugConfigFilesToLoadEnable" Value="changeConfigSetting debugSetting.framework.controllers.chiefTheme.determineThemeDebugConfigFilesToLoad true"/>
+        <Workflow Name="determineThemeDebugConfigFilesToLoadDisable" Value="changeConfigSetting debugSetting.framework.controllers.chiefTheme.determineThemeDebugConfigFilesToLoad false"/>
+      </chiefTheme>
+    </controllers>
+  </debug>
+</CommandWorkflows>

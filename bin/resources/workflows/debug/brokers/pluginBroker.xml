@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?><CommandWorkflows>
+  <debug>
+    <brokers>
+      <pluginBroker>
+        <Workflow Name="pluginBrokerEnable" Value="changeConfigSetting debugSetting.framework.brokers.pluginBroker true"/>
+        <Workflow Name="pluginBrokerDisable" Value="changeConfigSetting debugSetting.framework.brokers.pluginBroker false"/>
+        <Workflow Name="pluginBrokerLoadPluginRegistryEnable" Value="changeConfigSetting debugSetting.framework.brokers.pluginBroker.loadPluginRegistry true"/>
+        <Workflow Name="pluginBrokerLoadPluginRegistryDisable" Value="changeConfigSetting debugSetting.framework.brokers.pluginBroker.loadPluginRegistry false"/>
+        <Workflow Name="pluginBrokerStorePluginRegistryDataStructureEnable" Value="changeConfigSetting debugSetting.framework.brokers.pluginBroker.storePluginRegistryInDataStructure true"/>
+        <Workflow Name="pluginBrokerStorePluginRegistryDataStructureDisable" Value="changeConfigSetting debugSetting.framework.brokers.pluginBroker.storePluginRegistryInDataStructure false"/>
+        <Workflow Name="pluginBrokerListAllLoadedPluginsEnable" Value="changeConfigSetting debugSetting.framework.brokers.pluginBroker.listAllLoadedPlugins true"/>
+        <Workflow Name="pluginBrokerListAllLoadedPluginsDisable" Value="changeConfigSetting debugSetting.framework.brokers.pluginBroker.listAllLoadedPlugins false"/>
+        <Workflow Name="pluginBrokerListPluginsInRegistryEnable" Value="changeConfigSetting debugSetting.framework.brokers.pluginBroker.listPluginsInRegistry true"/>
+        <Workflow Name="pluginBrokerListPluginsInRegistryDisable" Value="changeConfigSetting debugSetting.framework.brokers.pluginBroker.listPluginsInRegistry false"/>
+        <Workflow Name="pluginBrokerListPluginsPathsInRegistryEnable" Value="changeConfigSetting debugSetting.framework.brokers.pluginBroker.listPluginsPathsInRegistry true"/>
+        <Workflow Name="pluginBrokerListPluginsPathsInRegistryDisable" Value="changeConfigSetting debugSetting.framework.brokers.pluginBroker.listPluginsPathsInRegistry false"/>
+        <Workflow Name="pluginBrokerListPluginsAttributeInRegistryEnable" Value="changeConfigSetting debugSetting.framework.brokers.pluginBroker.listPluginsAttributeInRegistry true"/>
+        <Workflow Name="pluginBrokerListPluginsAttributeInRegistryDisable" Value="changeConfigSetting debugSetting.framework.brokers.pluginBroker.listPluginsAttributeInRegistry false"/>
+        <Workflow Name="pluginBrokerListPluginsInRegistryPathEnable" Value="changeConfigSetting debugSetting.framework.brokers.pluginBroker.listPluginsInRegistryPath true"/>
+        <Workflow Name="pluginBrokerListPluginsInRegistryPathDisable" Value="changeConfigSetting debugSetting.framework.brokers.pluginBroker.listPluginsInRegistryPath false"/>
+        <Workflow Name="pluginBrokerCountPluginsInRegistryEnable" Value="changeConfigSetting debugSetting.framework.brokers.pluginBroker.countPluginsInRegistry true"/>
+        <Workflow Name="pluginBrokerCountPluginsInRegistryDisable" Value="changeConfigSetting debugSetting.framework.brokers.pluginBroker.countPluginsInRegistry false"/>
+        <Workflow Name="pluginBrokerCountPluginsInRegistryPathEnable" Value="changeConfigSetting debugSetting.framework.brokers.pluginBroker.countPluginsInRegistryPath true"/>
+        <Workflow Name="pluginBrokerCountPluginsInRegistryPathDisable" Value="changeConfigSetting debugSetting.framework.brokers.pluginBroker.countPluginsInRegistryPath false"/>
+        <Workflow Name="pluginBrokerRegisterPluginEnable" Value="changeConfigSetting debugSetting.framework.brokers.pluginBroker.registerPlugin true"/>
+        <Workflow Name="pluginBrokerRegisterPluginDisable" Value="changeConfigSetting debugSetting.framework.brokers.pluginBroker.registerPlugin false"/>
+        <Workflow Name="pluginBrokerUnregisterPluginEnable" Value="changeConfigSetting debugSetting.framework.brokers.pluginBroker.unregisterPlugin true"/>
+        <Workflow Name="pluginBrokerUnregisterPluginDisable" Value="changeConfigSetting debugSetting.framework.brokers.pluginBroker.unregisterPlugin false"/>
+        <Workflow Name="pluginBrokerUnregisterPluginsEnable" Value="changeConfigSetting debugSetting.framework.brokers.pluginBroker.unregisterPlugins true"/>
+        <Workflow Name="pluginBrokerUnregisterPluginsDisable" Value="changeConfigSetting debugSetting.framework.brokers.pluginBroker.unregisterPlugins false"/>
+        <Workflow Name="pluginBrokerSyncPluginRegistryWithPluginRegistryPathEnable" Value="changeConfigSetting debugSetting.framework.brokers.pluginBroker.syncPluginRegistryWithPluginRegistryPath true"/>
+        <Workflow Name="pluginBrokerSyncPluginRegistryWithPluginRegistryPathDisable" Value="changeConfigSetting debugSetting.framework.brokers.pluginBroker.syncPluginRegistryWithPluginRegistryPath false"/>
+        <Workflow Name="pluginBrokerUnregisterAllPluginsEnable" Value="changeConfigSetting debugSetting.framework.brokers.pluginBroker.unregisterAllPlugins true"/>
+        <Workflow Name="pluginBrokerUnregisterAllPluginsDisable" Value="changeConfigSetting debugSetting.framework.brokers.pluginBroker.unregisterAllPlugins false"/>
+        <Workflow Name="pluginBrokerSavePluginRegistryEnable" Value="changeConfigSetting debugSetting.framework.brokers.pluginBroker.savePluginRegistry true"/>
+        <Workflow Name="pluginBrokerSavePluginRegistryDisable" Value="changeConfigSetting debugSetting.framework.brokers.pluginBroker.savePluginRegistry false"/>
+        <Workflow Name="pluginBrokerLoadPluginMetaDataEnable" Value="changeConfigSetting debugSetting.framework.brokers.pluginBroker.loadPluginMetaData true"/>
+        <Workflow Name="pluginBrokerLoadPluginMetaDataDisable" Value="changeConfigSetting debugSetting.framework.brokers.pluginBroker.loadPluginMetaData false"/>
+        <Workflow Name="pluginBrokerExtractAndProcessPluginEntryPointUriEnable" Value="changeConfigSetting debugSetting.framework.brokers.pluginBroker.extractAndProcessPluginEntryPointURI true"/>
+        <Workflow Name="pluginBrokerExtractAndProcessPluginEntryPointUriDisable" Value="changeConfigSetting debugSetting.framework.brokers.pluginBroker.extractAndProcessPluginEntryPointUrI false"/>
+        <Workflow Name="pluginBrokerLoadPluginEnable" Value="changeConfigSetting debugSetting.framework.brokers.pluginBroker.loadPlugin true"/>
+        <Workflow Name="pluginBrokerLoadPluginDisable" Value="changeConfigSetting debugSetting.framework.brokers.pluginBroker.loadPlugin false"/>
+        <Workflow Name="pluginBrokerIntegratePluginBusinessRulesEnable" Value="changeConfigSetting debugSetting.framework.brokers.pluginBroker.integratePluginBusinessRules true"/>
+        <Workflow Name="pluginBrokerIntegratePluginBusinessRulesDisable" Value="changeConfigSetting debugSetting.framework.brokers.pluginBroker.integratePluginBusinessRules false"/>
+        <Workflow Name="pluginBrokerIntegratePluginCommandsEnable" Value="changeConfigSetting debugSetting.framework.brokers.pluginBroker.integratePluginCommands true"/>
+        <Workflow Name="pluginBrokerIntegratePluginCommandsDisable" Value="changeConfigSetting debugSetting.framework.brokers.pluginBroker.integratePluginCommands false"/>
+        <Workflow Name="pluginBrokerIntegratePluginConfigurationDataEnable" Value="changeConfigSetting debugSetting.framework.brokers.pluginBroker.integratePluginConfigurationData true"/>
+        <Workflow Name="pluginBrokerIntegratePluginConfigurationDataDisable" Value="changeConfigSetting debugSetting.framework.brokers.pluginBroker.integratePluginConfigurationData false"/>
+        <Workflow Name="pluginBrokerIntegratePluginCommandAliasesEnable" Value="changeConfigSetting debugSetting.framework.brokers.pluginBroker.integratePluginCommandAliases true"/>
+        <Workflow Name="pluginBrokerIntegratePluginCommandAliasesDisable" Value="changeConfigSetting debugSetting.framework.brokers.pluginBroker.integratePluginCommandAliases false"/>
+        <Workflow Name="pluginBrokerIntegratePluginWorkflowsEnable" Value="changeConfigSetting debugSetting.framework.brokers.pluginBroker.integratePluginWorkflows true"/>
+        <Workflow Name="pluginBrokerIntegratePluginWorkflowsDisable" Value="changeConfigSetting debugSetting.framework.brokers.pluginBroker.integratePluginWorkflows false"/>
+        <Workflow Name="pluginBrokerIntegratePluginThemeDataEnable" Value="changeConfigSetting debugSetting.framework.brokers.pluginBroker.integratePluginThemeData true"/>
+        <Workflow Name="pluginBrokerIntegratePluginThemeDataDisable" Value="changeConfigSetting debugSetting.framework.brokers.pluginBroker.integratePluginThemeData false"/>
+        <Workflow Name="pluginBrokerUnloadPluginEnable" Value="changeConfigSetting debugSetting.framework.brokers.pluginBroker.unloadPlugin true"/>
+        <Workflow Name="pluginBrokerUnloadPluginDisable" Value="changeConfigSetting debugSetting.framework.brokers.pluginBroker.unloadPlugin false"/>
+        <Workflow Name="pluginBrokerGetPluginsRegistryPathEnable" Value="changeConfigSetting debugSetting.framework.brokers.pluginBroker.getPluginsRegistryPath true"/>
+        <Workflow Name="pluginBrokerGetPluginsRegistryPathDisable" Value="changeConfigSetting debugSetting.framework.brokers.pluginBroker.getPluginsRegistryPath false"/>
+      </pluginBroker>
+    </brokers>
+  </debug>
+</CommandWorkflows>

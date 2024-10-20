@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?><CommandWorkflows>
+  <businessRules>
+    <stringParsingUtilities>
+      <Workflow Name="stringToBoolean" Value="cmdgen bizrul,stringToBoolean,T 4"/>
+      <Workflow Name="stringToDataType" Value="cmdgen bizrul,stringToDataType,1 4"/>
+      <Workflow Name="determineObjectDataType" Value="cmdgen bizrul,determineObjectDataType,something 4"/>
+      <Workflow Name="isBoolean" Value="cmdgen bizrul,isBoolean,2 4"/>
+      <Workflow Name="isInteger" Value="cmdgen bizrul,isInteger,2 4"/>
+      <Workflow Name="isFloat" Value="cmdgen bizrul,isFloat,3.14159265358979 4"/>
+      <Workflow Name="isString" Value="cmdgen bizrul,isString,2 4"/>
+      <Workflow Name="replaceDoublePercentWithMessage" Value="cmdgen bizRul,replaceDoublePercentWithMessage,BEGIN-%%-function.,DUMMYstringParsingDUMMY.DUMMYreplaceDoublePercentWithMessageDUMMY 4"/>
+      <Workflow Name="replaceCharacterWithCharacter" Value="cmdgen bizRul,replaceCharacterWithCharacter,What+is+the+answer+to+life+the+universe+and+everything,regEx:[+]:flags:g,= 4"/>
+      <Workflow Name="parseSystemRootPath" Value="cmdgen bizRul,parseSystemRootPath,C:\haystacks\src\commandsBlob\commands\,haystacks 4"/>
+      <Workflow Name="stringParsingUtilities" Value="cmdSeq wrkflo,stringToBoolean wrkflo,stringToDataType wrkflo,determineObjectDataType wrkflo,isBoolean wrkflo,isInteger wrkflo,isFloat wrkflo,isString wrkflo,replaceDoublePercentWithMessage wrkflo,replaceCharacterWithCharacter wrkflo,parseSystemRootPath"/>
+    </stringParsingUtilities>
+  </businessRules>
+</CommandWorkflows>

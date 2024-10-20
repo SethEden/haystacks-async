@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?><CommandWorkflows>
+  <debug>
+    <brokers>
+      <workflowBroker>
+        <Workflow Name="workflowBrokerEnable" Value="changeConfigSetting debugSetting.framework.brokers.workflowBroker true"/>
+        <Workflow Name="workflowBrokerDisable" Value="changeConfigSetting debugSetting.framework.brokers.workflowBroker false"/>
+        <Workflow Name="workflowBrokerAddPluginWorkflowsEnable" Value="changeConfigSetting debugSetting.framework.brokers.workflowBroker.addPluginWorkflows true"/>
+        <Workflow Name="workflowBrokerAddPluginWorkflowsDisable" Value="changeConfigSetting debugSetting.framework.brokers.workflowBroker.addPluginWorkflows false"/>
+        <Workflow Name="getWorkflowEnable" Value="changeConfigSetting debugSetting.framework.brokers.workflowBroker.getWorkflow true"/>
+        <Workflow Name="getWorkflowDisable" Value="changeConfigSetting debugSetting.framework.brokers.workflowBroker.getWorkflow false"/>
+        <Workflow Name="workflowBrokerDoesWorkflowExistEnable" Value="changeConfigSetting debugSetting.framework.brokers.workflowBroker.doesWorkflowExist true"/>
+        <Workflow Name="workflowBrokerDoesWorkflowExistDisable" Value="changeConfigSetting debugSetting.framework.brokers.workflowBroker.doesWorkflowExist false"/>
+        <Workflow Name="workflowBrokerDoesWorkflowExistInWorkflowDataEnable" Value="changeConfigSetting debugSetting.framework.brokers.workflowBroker.doesWorkflowExistInWorkflowData true"/>
+        <Workflow Name="workflowBrokerDoesWorkflowExistInWorkflowDataDisable" Value="changeConfigSetting debugSetting.framework.brokers.workflowBroker.doesWorkflowExistInWorkflowData false"/>
+        <Workflow Name="searchWorkflowEnable" Value="changeConfigSetting debugSetting.framework.brokers.workflowBroker.searchWorkflow true"/>
+        <Workflow Name="searchWorkflowDisable" Value="changeConfigSetting debugSetting.framework.brokers.workflowBroker.searchWorkflow false"/>
+        <Workflow Name="getAllWorkflowsEnable" Value="changeConfigSetting debugSetting.framework.brokers.workflowBroker.getAllWorkflows true"/>
+        <Workflow Name="getAllWorkflowsDisable" Value="changeConfigSetting debugSetting.framework.brokers.workflowBroker.getAllWorkflows false"/>
+        <Workflow Name="getWorkflowNamespaceDataObjectEnable" Value="changeConfigSetting debugSetting.framework.brokers.workflowBroker.getWorkflowNamespaceDataObject true"/>
+        <Workflow Name="getWorkflowNamespaceDataObjectDisable" Value="changeConfigSetting debugSetting.framework.brokers.workflowBroker.getWorkflowNamespaceDataObject false"/>
+        <Workflow Name="removePluginWorkflowsEnable" Value="changeConfigSetting debugSetting.framework.brokers.workflowBroker.removePluginWorkflows true"/>
+        <Workflow Name="removePluginWorkflowsDisable" Value="changeConfigSetting debugSetting.framework.brokers.workflowBroker.removePluginWorkflows false"/>
+      </workflowBroker>
+    </brokers>
+  </debug>
+</CommandWorkflows>

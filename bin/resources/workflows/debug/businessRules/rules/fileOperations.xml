@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?><CommandWorkflows>
+  <debug>
+    <businessRules>
+      <rules>
+        <fileOperations>
+          <Workflow Name="fileOperationsEnable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.fileOperations true"/>
+          <Workflow Name="fileOperationsDisable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.fileOperations false"/>
+          <Workflow Name="getXmlDataEnable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.fileOperations.getXmlData true"/>
+          <Workflow Name="getXmlDataDisable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.fileOperations.getXmlData false"/>
+          <Workflow Name="getCsvDataEnable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.fileOperations.getCsvData true"/>
+          <Workflow Name="getCsvDataDisable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.fileOperations.getCsvData false"/>
+          <Workflow Name="getJsonDataEnable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.fileOperations.getJsonData true"/>
+          <Workflow Name="getJsonDataDisable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.fileOperations.getJsonData false"/>
+          <Workflow Name="writeJsonDataEnable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.fileOperations.writeJsonData true"/>
+          <Workflow Name="writeJsonDataDisable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.fileOperations.writeJsonData false"/>
+          <Workflow Name="loadAsciiFileFromPathEnable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.fileOperations.loadAsciiFileFromPath true"/>
+          <Workflow Name="loadAsciiFileFromPathDisable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.fileOperations.loadAsciiFileFromPath false"/>
+          <Workflow Name="scanDirectoryContentsEnable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.fileOperations.scanDirectoryContents true"/>
+          <Workflow Name="scanDirectoryContentsDisable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.fileOperations.scanDirectoryContents false"/>
+          <Workflow Name="getDirectoryListEnable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.fileOperations.getDirectoryList true"/>
+          <Workflow Name="getDirectoryListDisable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.fileOperations.getDirectoryList false"/>
+          <Workflow Name="fileOperationsCopyAllFilesAndFoldersFromFolderToFolderEnable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.fileOperations.copyAllFilesAndFoldersFromFolderToFolder true"/>
+          <Workflow Name="fileOperationsCopyAllFilesAndFoldersFromFolderToFolderDisable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.fileOperations.copyAllFilesAndFoldersFromFolderToFolder false"/>
+          <Workflow Name="buildReleasePackageEnable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.fileOperations.buildReleasePackage true"/>
+          <Workflow Name="buildReleasePackageDisable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.fileOperations.buildReleasePackage false"/>
+          <Workflow Name="createZipArchiveEnable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.fileOperations.createZipArchive true"/>
+          <Workflow Name="createZipArchiveDisable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.fileOperations.createZipArchive false"/>
+          <Workflow Name="cleanRootPathEnable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.fileOperations.cleanRootPath true"/>
+          <Workflow Name="cleanRootPathDisable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.fileOperations.cleanRootPath false"/>
+          <Workflow Name="copyFileSyncEnable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.fileOperations.copyFileSync true"/>
+          <Workflow Name="copyFileSyncDisable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.fileOperations.copyFileSync false"/>
+          <Workflow Name="copyFolderRecursiveSyncEnable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.fileOperations.copyFolderRecursiveSync true"/>
+          <Workflow Name="copyFolderRecursiveSyncDisable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.fileOperations.copyFolderRecursiveSync false"/>
+          <Workflow Name="deleteFileEnable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.fileOperations.deleteFile true"/>
+          <Workflow Name="deleteFileDisable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.fileOperations.deleteFile false"/>
+        </fileOperations>
+      </rules>
+    </businessRules>
+  </debug>
+</CommandWorkflows>

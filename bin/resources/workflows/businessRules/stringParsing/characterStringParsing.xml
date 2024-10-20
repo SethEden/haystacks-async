@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?><CommandWorkflows>
+  <businessRules>
+    <stringParsing>
+      <characterStringParsing>
+        <Workflow Name="singleQuoteSwapAfterEquals" Value="cmdgen bizrul,singleQuoteSwapAfterEquals,input[name='emailAddress'][class='username'] 4"/>
+        <Workflow Name="swapForwardSlashToBackSlash" Value="cmdgen bizrul,swapForwardSlashToBackSlash,C:/ 4"/>
+        <Workflow Name="swapBackSlashToForwardSlash" Value="cmdgen bizrul,swapBackSlashToForwardSlash,C:\ 4"/>
+        <Workflow Name="swapDoubleForwardSlashToSingleForwardSlash" Value="cmdgen bizrul,swapDoubleForwardSlashToSingleForwardSlash,http:// 4"/>
+        <Workflow Name="swapDoubleBackSlashToSingleBackSlash" Value="cmdgen bizrul,swapDoubleBackSlashToSingleBackSlash,http:\\ 4"/>
+        <Workflow Name="replaceSpacesWithPlus" Value="cmdgen bizRul,replaceSpacesWithPlus,`Hello My Name Is: Blaaa` 4"/>
+        <Workflow Name="replaceColonWithUnderscore" Value="cmdgen bizRul,replaceColonWithUnderscore,Ok:So:Give_this_a:try 4"/>
+        <Workflow Name="cleanCarriageReturnFromString" Value="cmdgen bizRul,cleanCarriageReturnFromString,`This
+          is
+          a
+          string
+          with
+          many
+          newline
+          characters.` 4"/>
+          <Workflow Name="convertStringToLowerCase" Value="cmdgen bizRul,convertStringToLowerCase,GENERATERANDOMLOWERCASETEXTWITHSPECIALCHARACTERBYLENGTH123456!@#$%^ 4"/>
+          <Workflow Name="convertStringToUpperCase" Value="cmdgen bizRul,convertStringToUpperCase,generaterandomlowercasetextwithspecialcharacterbylength123456!@#$%^ 4"/>
+          <Workflow Name="characterStringParsing" Value="cmdSeq wrkflo,singleQuoteSwapAfterEquals wrkflo,swapForwardSlashToBackSlash wrkflo,swapBackSlashToForwardSlash wrkflo,swapDoubleForwardSlashToSingleForwardSlash wrkflo,swapDoubleBackSlashToSingleBackSlash wrkflo,replaceSpacesWithPlus wrkflo,replaceColonWithUnderscore wrkflo,cleanCarriageReturnFromString wrkflo,convertStringToLowerCase wrkflo,convertStringToUpperCase"/>
+      </characterStringParsing>
+    </stringParsing>
+  </businessRules>
+</CommandWorkflows>

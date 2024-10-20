@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?><CommandWorkflows>
+  <businessRules>
+    <stringParsing>
+      <wordStringParsing>
+        <Workflow Name="aggregateNumericalDifferenceBetweenTwoStrings" Value="cmdgen bizRul,aggregateNumericalDifferenceBetweenTwoStrings,1234string,string432 4"/>
+        <Workflow Name="mapWordToCamelCaseWord" Value="cmdgen bizRul,mapWordToCamelCaseWord,supercalafragilisticexpealidoshious 4"/>
+        <Workflow Name="simplifyAndConsolidateString" Value="cmdgen bizRul,simplifyAndConsolidateString,11UpberDriver321CodeClearance0x#0000FF-akaBlue 4"/>
+        <Workflow Name="compareSimplifiedAndConsolidatedStrings" Value="cmdgen bizRul,compareSimplifiedAndConsolidatedStrings,string1,string1 4"/>
+        <Workflow Name="wordStringParsing" Value="cmdSeq wrkflo,aggregateNumericalDifferenceBetweenTwoStrings wrkflo,mapWordToCamelCaseWord wrkflo,simplifyAndConsolidateString wrkflo,compareSimplifiedAndConsolidatedStrings"/>
+      </wordStringParsing>
+    </stringParsing>
+  </businessRules>
+</CommandWorkflows>

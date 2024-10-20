@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?><CommandWorkflows>
+  <debug>
+    <brokers>
+      <commandBroker>
+        <Workflow Name="commandBrokerEnable" Value="changeConfigSetting debugSetting.framework.brokers.commandBroker true"/>
+        <Workflow Name="commandBrokerDisable" Value="changeConfigSetting debugSetting.framework.brokers.commandBroker false"/>
+        <Workflow Name="commandBrokerBootStrapCommandsEnable" Value="changeConfigSetting debugSetting.framework.brokers.commandBroker.bootStrapCommands true"/>
+        <Workflow Name="commandBrokerBootStrapCommandsDisable" Value="changeConfigSetting debugSetting.framework.brokers.commandBroker.bootStrapCommands false"/>
+        <Workflow Name="commandBrokerResetCommandsEnable" Value="changeConfigSetting debugSetting.framework.brokers.commandBroker.resetCommands true"/>
+        <Workflow Name="commandBrokerResetCommandsDisable" Value="changeConfigSetting debugSetting.framework.brokers.commandBroker.resetCommands false"/>
+        <Workflow Name="commandBrokerAddClientCommandsEnable" Value="changeConfigSetting debugSetting.framework.brokers.commandBroker.addClientCommands true"/>
+        <Workflow Name="commandBrokerAddClientCommandsDisable" Value="changeConfigSetting debugSetting.framework.brokers.commandBroker.addClientCommands false"/>
+        <Workflow Name="commandBrokerAddPluginCommandsEnable" Value="changeConfigSetting debugSetting.framework.brokers.commandBroker.addPluginCommands true"/>
+        <Workflow Name="commandBrokerAddPluginCommandsDisable" Value="changeConfigSetting debugSetting.framework.brokers.commandBroker.addPluginCommands false"/>
+        <Workflow Name="commandBrokerAddPluginCommandAliasesEnable" Value="changeConfigSetting debugSetting.framework.brokers.commandBroker.addPluginCommandAliases true"/>
+        <Workflow Name="commandBrokerAddPluginCommandAliasesDisable" Value="changeConfigSetting debugSetting.framework.brokers.commandBroker.addPluginCommandAliases false"/>
+        <Workflow Name="getValidCommandEnable" Value="changeConfigSetting debugSetting.framework.brokers.commandBroker.getValidCommand true"/>
+        <Workflow Name="getValidCommandDisable" Value="changeConfigSetting debugSetting.framework.brokers.commandBroker.getValidCommand false"/>
+        <Workflow Name="countMatchingCommandAliasEnable" Value="changeConfigSetting debugSetting.framework.brokers.commandBroker.countMatchingCommandAlias true"/>
+        <Workflow Name="countMatchingCommandAliasDisable" Value="changeConfigSetting debugSetting.framework.brokers.commandBroker.countMatchingCommandAlias false"/>
+        <Workflow Name="searchCommandAliasEnable" Value="changeConfigSetting debugSetting.framework.brokers.commandBroker.searchCommandAlias true"/>
+        <Workflow Name="searchCommandAliasDisable" Value="changeConfigSetting debugSetting.framework.brokers.commandBroker.searchCommandAlias false"/>
+        <Workflow Name="getAllCommandAliasDataEnable" Value="changeConfigSetting debugSetting.framework.brokers.commandBroker.getAllCommandAliasData true"/>
+        <Workflow Name="getAllCommandAliasDataDisable" Value="changeConfigSetting debugSetting.framework.brokers.commandBroker.getAllCommandAliasData false"/>
+        <Workflow Name="getCommandNamespaceDataObjectEnable" Value="changeConfigSetting debugSetting.framework.brokers.commandBroker.getCommandNamespaceDataObject true"/>
+        <Workflow Name="getCommandNamespaceDataObjectDisable" Value="changeConfigSetting debugSetting.framework.brokers.commandBroker.getCommandNamespaceDataObject false"/>
+        <Workflow Name="getCommandArgsEnable" Value="changeConfigSetting debugSetting.framework.brokers.commandBroker.getCommandArgs true"/>
+        <Workflow Name="getCommandArgsDisable" Value="changeConfigSetting debugSetting.framework.brokers.commandBroker.getCommandArgs false"/>
+        <Workflow Name="executeCommandEnable" Value="changeConfigSetting debugSetting.framework.brokers.commandBroker.executeCommand true"/>
+        <Workflow Name="executeCommandDisable" Value="changeConfigSetting debugSetting.framework.brokers.commandBroker.executeCommand false"/>
+        <Workflow Name="removePluginCommandsEnable" Value="changeConfigSetting debugSetting.framework.brokers.commandBroker.removePluginCommands true"/>
+        <Workflow Name="removePluginCommandsDisable" Value="changeConfigSetting debugSetting.framework.brokers.commandBroker.removePluginCommands false"/>
+        <Workflow Name="removePluginCommandAliasesEnable" Value="changeConfigSetting debugSetting.framework.brokers.commandBroker.removePluginCommandAliases true"/>
+        <Workflow Name="removePluginCommandAliasesDisable" Value="changeConfigSetting debugSetting.framework.brokers.commandBroker.removePluginCommandAliases false"/>
+      </commandBroker>
+    </brokers>
+  </debug>
+</CommandWorkflows>

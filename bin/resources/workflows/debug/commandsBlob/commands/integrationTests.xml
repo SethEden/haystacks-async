@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?><CommandWorkflows>
+  <debug>
+    <commandsBlob>
+      <commands>
+        <integrationTests>
+          <Workflow Name="integrationTestsEnable" Value="changeConfigSetting debugSetting.framework.commandsBlob.commands.integrationTests true"/>
+          <Workflow Name="integrationTestsDisable" Value="changeConfigSetting debugSetting.framework.commandsBlob.commands.integrationTests false"/>
+          <Workflow Name="validateConstantsEnable" Value="changeConfigSetting debugSetting.framework.commandsBlob.commands.integrationTests.validateConstants true"/>
+          <Workflow Name="validateConstantsDisable" Value="changeConfigSetting debugSetting.framework.commandsBlob.commands.integrationTests.validateConstants false"/>
+          <Workflow Name="validateCommandAliasesEnable" Value="changeConfigSetting debugSetting.framework.commandsBlob.commands.integrationTests.validateCommandAliases true"/>
+          <Workflow Name="validateCommandAliasesDisable" Value="changeConfigSetting debugSetting.framework.commandsBlob.commands.integrationTests.validateCommandAliases false"/>
+          <Workflow Name="validateWorkflowsEnable" Value="changeConfigSetting debugSetting.framework.commandsBlob.commands.integrationTests.validateWorkflows true"/>
+          <Workflow Name="validateWorkflowsDisable" Value="changeConfigSetting debugSetting.framework.commandsBlob.commands.integrationTests.validateWorkflows false"/>
+          <Workflow Name="runAllValidationsEnable" Value="changeConfigSetting debugSetting.framework.commandsBlob.commands.integrationTests.runAllValidations true"/>
+          <Workflow Name="runAllValidationsDisable" Value="changeConfigSetting debugSetting.framework.commandsBlob.commands.integrationTests.runAllValidations false"/>
+        </integrationTests>
+      </commands>
+    </commandsBlob>
+  </debug>
+</CommandWorkflows>

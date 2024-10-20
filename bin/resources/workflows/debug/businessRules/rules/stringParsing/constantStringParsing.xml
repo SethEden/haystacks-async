@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?><CommandWorkflows>
+  <debug>
+    <businessRules>
+      <rules>
+        <stringParsing>
+          <constantStringParsing>
+            <Workflow Name="constantStringParsingEnable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.stringParsing.constantStringParsing true"/>
+            <Workflow Name="constantStringParsingDisable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.stringParsing.constantStringParsing false"/>
+            <Workflow Name="validateConstantsDataValidationEnable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.stringParsing.constantStringParsing.validateConstantsDataValidation true"/>
+            <Workflow Name="validateConstantsDataValidationDisable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.stringParsing.constantStringParsing.validateConstantsDataValidation false"/>
+            <Workflow Name="determineConstantsContextQualifiedPrefixEnable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.stringParsing.constantStringParsing.determineConstantsContextQualifiedPrefix true"/>
+            <Workflow Name="determineConstantsContextQualifiedPrefixDisable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.stringParsing.constantStringParsing.determineConstantsContextQualifiedPrefix false"/>
+            <Workflow Name="determineSuggestedConstantsValidationLineOfCodeEnable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.stringParsing.constantStringParsing.determineSuggestedConstantsValidationLineOfCode true"/>
+            <Workflow Name="determineSuggestedConstantsValidationLineOfCodeDisable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.stringParsing.constantStringParsing.determineSuggestedConstantsValidationLineOfCode false"/>
+            <Workflow Name="validateConstantsDataValidationLineItemNameEnable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.stringParsing.constantStringParsing.validateConstantsDataValidationLineItemName true"/>
+            <Workflow Name="validateConstantsDataValidationLineItemNameDisable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.stringParsing.constantStringParsing.validateConstantsDataValidationLineItemName false"/>
+            <Workflow Name="getConstantsValidationNamespaceParentObjectEnable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.stringParsing.constantStringParsing.getConstantsValidationNamespaceParentObject true"/>
+            <Workflow Name="getConstantsValidationNamespaceParentObjectDisable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.stringParsing.constantStringParsing.getConstantsValidationNamespaceParentObject false"/>
+            <Workflow Name="getConstantsValidationNamespaceObjectEnable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.stringParsing.constantStringParsing.getConstantsValidationNamespaceObject true"/>
+            <Workflow Name="getConstantsValidationNamespaceObjectDisable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.stringParsing.constantStringParsing.getConstantsValidationNamespaceObject false"/>
+            <Workflow Name="doesConstantNamespaceExistEnable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.stringParsing.constantStringParsing.doesConstantNamespaceExist true"/>
+            <Workflow Name="doesConstantNamespaceExistDisable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.stringParsing.constantStringParsing.doesConstantNamespaceExist false"/>
+            <Workflow Name="doesConstantExistEnable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.stringParsing.constantStringParsing.doesConstantExist true"/>
+            <Workflow Name="doesConstantExistDisable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.stringParsing.constantStringParsing.doesConstantExist false"/>
+            <Workflow Name="doesConstantExistInConstantLibraryObjectEnable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.stringParsing.constantStringParsing.doesConstantExistInConstantLibraryObject true"/>
+            <Workflow Name="doesConstantExistInConstantLibraryObjectDisable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.stringParsing.constantStringParsing.doesConstantExistInConstantLibraryObject false"/>
+            <Workflow Name="getConstantTypeInConstantLibraryObjectEnable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.stringParsing.constantStringParsing.getConstantTypeInConstantLibraryObject true"/>
+            <Workflow Name="getConstantTypeInConstantLibraryObjectDisable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.stringParsing.constantStringParsing.getConstantTypeInConstantLibraryObject false"/>
+            <Workflow Name="getConstantNameInConstantLibraryObjectEnable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.stringParsing.constantStringParsing.getConstantNameInConstantLibraryObject true"/>
+            <Workflow Name="getConstantNameInConstantLibraryObjectDisable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.stringParsing.constantStringParsing.getConstantNameInConstantLibraryObject false"/>
+            <Workflow Name="getConstantActualValueInConstantLibraryObjectEnable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.stringParsing.constantStringParsing.getConstantActualValueInConstantLibraryObject true"/>
+            <Workflow Name="getConstantActualValueInConstantLibraryObjectDisable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.stringParsing.constantStringParsing.getConstantActualValueInConstantLibraryObject false"/>
+            <Workflow Name="doesConstantExistInConstantNamespaceObjectEnable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.stringParsing.constantStringParsing.doesConstantExistInConstantNamespaceObject true"/>
+            <Workflow Name="doesConstantExistInConstantNamespaceObjectDisable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.stringParsing.constantStringParsing.doesConstantExistInConstantNamespaceObject false"/>
+            <Workflow Name="getConstantNameInConstantNamespaceObjectEnable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.stringParsing.constantStringParsing.getConstantNameInConstantNamespaceObject true"/>
+            <Workflow Name="getConstantNameInConstantNamespaceObjectDisable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.stringParsing.constantStringParsing.getConstantNameInConstantNamespaceObject false"/>
+            <Workflow Name="getConstantActualValueInConstantNamespaceObjectEnable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.stringParsing.constantStringParsing.getConstantActualValueInConstantNamespaceObject true"/>
+            <Workflow Name="getConstantActualValueInConstantNamespaceObjectDisable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.stringParsing.constantStringParsing.getConstantActualValueInConstantNamespaceObject false"/>
+            <Workflow Name="getConstantTypeEnable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.stringParsing.constantStringParsing.getConstantType true"/>
+            <Workflow Name="getConstantTypeDisable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.stringParsing.constantStringParsing.getConstantType false"/>
+            <Workflow Name="getConstantActualValueEnable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.stringParsing.constantStringParsing.getConstantActualValue true"/>
+            <Workflow Name="getConstantActualValueDisable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.stringParsing.constantStringParsing.getConstantActualValue false"/>
+            <Workflow Name="getConstantNameEnable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.stringParsing.constantStringParsing.getConstantName true"/>
+            <Workflow Name="getConstantNameDisable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.stringParsing.constantStringParsing.getConstantName false"/>
+            <Workflow Name="findConstantNameEnable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.stringParsing.constantStringParsing.findConstantName true"/>
+            <Workflow Name="findConstantNameDisable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.stringParsing.constantStringParsing.findConstantName false"/>
+            <Workflow Name="isConstantTypeValidEnable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.stringParsing.constantStringParsing.isConstantTypeValid true"/>
+            <Workflow Name="isConstantTypeValidDisable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.stringParsing.constantStringParsing.isConstantTypeValid false"/>
+            <Workflow Name="convertConstantTypeToConstantPrefixEnable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.stringParsing.constantStringParsing.convertConstantTypeToConstantPrefix true"/>
+            <Workflow Name="convertConstantTypeToConstantPrefixDisable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.stringParsing.constantStringParsing.convertConstantTypeToConstantPrefix false"/>
+            <Workflow Name="constantsOptimizedFulfillmentSystemEnable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.stringParsing.constantStringParsing.constantsOptimizedFulfillmentSystem true"/>
+            <Workflow Name="constantsOptimizedFulfillmentSystemDisable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.stringParsing.constantStringParsing.constantsOptimizedFulfillmentSystem false"/>
+            <Workflow Name="constantsFulfillmentSystemEnable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.stringParsing.constantStringParsing.constantsFulfillmentSystem true"/>
+            <Workflow Name="constantsFulfillmentSystemDisable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.stringParsing.constantStringParsing.constantsFulfillmentSystem false"/>
+            <Workflow Name="validateConstantsDataValuesEnable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.stringParsing.constantStringParsing.validateConstantsDataValues true"/>
+            <Workflow Name="validateConstantsDataValuesDisable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.stringParsing.constantStringParsing.validateConstantsDataValues false"/>
+            <Workflow Name="isConstantValidEnable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.stringParsing.constantStringParsing.isConstantValid true"/>
+            <Workflow Name="isConstantValidDisable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.stringParsing.constantStringParsing.isConstantValid false"/>
+          </constantStringParsing>
+        </stringParsing>
+      </rules>
+    </businessRules>
+  </debug>
+</CommandWorkflows>
