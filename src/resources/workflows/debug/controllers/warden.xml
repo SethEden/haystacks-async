@@ -16,6 +16,8 @@
         <Workflow Name="wardenLoadCommandAliasesDisable" Value="changeConfigSetting debugSetting.framework.controllers.warden.loadCommandAliases false"/>
         <Workflow Name="wardenLoadCommandWorkflowsEnable" Value="changeConfigSetting debugSetting.framework.controllers.warden.loadCommandWorkflows true"/>
         <Workflow Name="wardenLoadCommandWorkflowsDisable" Value="changeConfigSetting debugSetting.framework.controllers.warden.loadCommandWorkflows false"/>
+        <Workflow Name="wardenLoadAllSchemasEnable" Value="changeConfigSetting debugSetting.framework.controllers.warden.loadAllSchemas true"/>
+        <Workflow Name="wardenLoadAllSchemasDisable" Value="changeConfigSetting debugSetting.framework.controllers.warden.loadAllSchemas false"/>
         <Workflow Name="wardenListLoadedPluginsEnable" Value="changeConfigSetting debugSetting.framework.controllers.warden.listLoadedPlugins true"/>
         <Workflow Name="wardenListLoadedPluginsDisable" Value="changeConfigSetting debugSetting.framework.controllers.warden.listLoadedPlugins false"/>
         <Workflow Name="wardenListAllPluginsInRegistryEnable" Value="changeConfigSetting debugSetting.framework.controllers.warden.listAllPluginsInRegistry true"/>

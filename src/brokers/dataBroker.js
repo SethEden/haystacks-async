@@ -387,6 +387,47 @@ async function loadAllJsonData(filesToLoad, contextName) {
 }
 
 /**
+ * @function loadAllJsonDataBruteForce
+ * @description Loads all the contents of all files and folders and sub-folders at the specified path and stores them in D.contextName.
+ * @param {array<string>} filesToLoad The array of path and file names to load data from.
+ * @param {string} contextName The context name that should be used when adding data to the D-data structure.
+ * @return {object} A JSON object that contains all of the data that was loaded and parsed from all the input files list.
+ * @author Seth Hollingsead
+ * @date 2024/10/23
+ * @NOTE This function is for loading mission critical files that MUST be loaded no matter what for the framework to function correctly.
+ */
+async function loadAllJsonDataBruteForce(filesToLoad, contextName) {
+  let functionName = loadAllJsonDataBruteForce.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  // filesToLoad is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cfilesToLoadIs + JSON.stringify(filesToLoad));
+  // contextName is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.ccontextNameIs + contextName);
+  let returnData = {};
+  let i = 0;
+  for (const element3 of filesToLoad) {
+    let fileToLoad = element3;
+    if (fileToLoad.toUpperCase().includes(gen.cDotJSON)) {
+      // Get the filename without the file extension, use that as a key for the data.
+      let filename = await ruleBroker.processRules([fileToLoad, ''], [biz.cgetFileNameFromPath, biz.cremoveFileExtensionFromFileName]);
+      // console.log('filename is: ' + filename);
+      let dataFile = await preprocessJsonFile(fileToLoad);
+      // console.log('dataFile to merge is: ' + JSON.stringify(dataFile));
+      await loggers.consoleLog(namespacePrefix + functionName, msg.cdataFileToMergeIs + JSON.stringify(dataFile));
+      if (i === 0) {
+        returnData[wrd.cschemas] = {};
+      }
+      returnData[wrd.cschemas] = {[filename]: dataFile};
+    }
+    await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+    i = i + 1;
+  }
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
+/**
  * @function processCsvData
  * @description Processes all of the CSV data into a usable format and executes any additional processing rules.
  * @param {object} data A JSON object that contains all of the data loaded from a CSV file.
@@ -642,6 +683,58 @@ async function storeData(dataStorageContextName, dataToStore) {
   D[sys.cDataStorage][dataStorageContextName] = {};
   D[sys.cDataStorage][dataStorageContextName] = dataToStore;
   returnData = true;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
+/**
+ * @function initSchemaStorage
+ * @description Initializes the schema data storage on the D-data structure.
+ * @return {boolean} A True or FAlse to indicate if the data schema storage was successfully initialized or not.
+ * @author Seth Hollingsead
+ * @date 2024/10/23
+ */
+async function initSchemaStorage() {
+  let functionName = initSchemaStorage.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  let returnData = true;
+  D[wrd.cSchemas] = {};
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
+/**
+ * @function storeSchemaData
+ * @description Stores a schema data object on the D-data structure.
+ * @param {object} schemaDataObject A JSON data object that contains a behavior schema.
+ * @return {boolean} A True or False to indicate if the data storage was successful or not.
+ * @author Seth Hollingsead
+ * @date 2024/10/23
+ */
+async function storeSchemaData(schemaDataObject) {
+  let functionName = storeSchemaData.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  // schemaDataObject is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cschemaDataObjectIs + JSON.stringify(schemaDataObject));
+  let returnData = false;
+  if (schemaDataObject && schemaDataObject[wrd.cschemas]) {
+    for (const schemaNamespace in schemaDataObject[wrd.cschemas]) {
+      if (Object.prototype.hasOwnProperty.call(schemaDataObject[wrd.cschemas], schemaNamespace)) {
+        // Store the schema in the D-data structure under the proper schema namespace.
+        D[wrd.cSchemas][schemaNamespace] = schemaDataObject[wrd.cschemas][schemaNamespace];
+        // Stored schema under namespace:
+        await loggers.consoleLog(namespacePrefix + functionName, msg.cStoredSchemaUnderNamespace + schemaNamespace);
+      }
+    }
+    returnData = true; // Success storing schemas
+  } else {
+    // ERROR: Invalid schemaDataObject: Missing schemas key
+    console.log(msg.cErrorInvalidSchemaDataObjectMissingSchemasKey);
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cErrorInvalidSchemaDataObjectMissingSchemasKey);
+  }
+  // returnData = true;
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
@@ -1074,11 +1167,14 @@ export default {
   loadAllCsvData,
   loadAllXmlData,
   loadAllJsonData,
+  loadAllJsonDataBruteForce,
   processCsvData,
   preprocessJsonFile,
   writeJsonDataToFile,
   setupDataStorage,
   storeData,
+  initSchemaStorage,
+  storeSchemaData,
   getData,
   clearData,
   removePluginConfigurationData

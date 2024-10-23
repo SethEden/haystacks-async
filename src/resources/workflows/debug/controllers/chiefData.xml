@@ -20,6 +20,8 @@
         <Workflow Name="setupAllJsonConfigPluginDataDisable" Value="changeConfigSetting debugSetting.framework.controllers.chiefData.setupAllJsonConfigPluginData false"/>
         <Workflow Name="chiefDataloadAllJsonDataEnable" Value="changeConfigSetting debugSetting.framework.controllers.chiefData.loadAllJsonData true"/>
         <Workflow Name="chiefDataloadAllJsonDataDisable" Value="changeConfigSetting debugSetting.framework.controllers.chiefData.loadAllJsonData false"/>
+        <Workflow Name="chiefDataStoreAllSchemaDataEnable" Value="changeConfigSetting debugSetting.framework.controllers.chiefData.storeAllSchemaData true"/>
+        <Workflow Name="chiefDataStoreAllSchemaDataDisable" Value="changeConfigSetting debugSetting.framework.controllers.chiefData.storeAllSchemaData false"/>
         <Workflow Name="chiefDataStoreDataEnable" Value="changeConfigSetting debugSetting.framework.controllers.chiefData.storeData true"/>
         <Workflow Name="chiefDataStoreDataDisable" Value="changeConfigSetting debugSetting.framework.controllers.chiefData.storeData false"/>
         <Workflow Name="chiefDataGetDataEnable" Value="changeConfigSetting debugSetting.framework.controllers.chiefData.getData true"/>

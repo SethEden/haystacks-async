@@ -39,7 +39,6 @@ import D from '../structures/data.js';
 // External imports
 import hayConst from '@haystacks/constants';
 import path from 'path';
-import { config } from 'process'
 
 const {bas, biz, cmd, cfg, gen, msg, sys, wrd} = hayConst;
 const baseFileName = path.basename(import.meta.url, path.extname(import.meta.url));
@@ -135,6 +134,7 @@ async function initFrameworkSchema(configData) {
   await configurator.setConfigurationSetting(wrd.csystem, cfg.cframeworkFullMetaDataPath, configData[cfg.cframeworkFullMetaDataPath]);
   await configurator.setConfigurationSetting(wrd.csystem, cfg.cframeworkConfigPath, configData[cfg.cframeworkConfigPath]);
   await configurator.setConfigurationSetting(wrd.csystem, cfg.cframeworkThemesPath, configData[cfg.cframeworkThemesPath]);
+  await configurator.setConfigurationSetting(wrd.csystem, cfg.cframeworkSchemasPath, configData[cfg.cframeworkSchemasPath]);
   await configurator.setConfigurationSetting(wrd.csystem, cfg.cframeworkCommandAliasesPath, configData[cfg.cframeworkCommandAliasesPath]);
   await configurator.setConfigurationSetting(wrd.csystem, cfg.cframeworkWorkflowsPath, configData[cfg.cframeworkWorkflowsPath]);
 
@@ -156,6 +156,7 @@ async function initFrameworkSchema(configData) {
   await loggers.consoleLog(namespacePrefix + functionName, msg.cframeworkFullMetaDataPathIs + configData[cfg.cframeworkFullMetaDataPath]);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cframeworkConfigPathIs + configData[cfg.cframeworkConfigPath]);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cframeworkThemesPathIs + configData[cfg.cframeworkThemesPath]);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cframeworkSchemasPathIs + configData[cfg.cframeworkSchemasPath]);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cframeworkCommandAliasesPathIs + configData[cfg.cframeworkCommandAliasesPath]);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cframeworkWorkflowsPathIs + configData[cfg.cframeworkWorkflowsPath]);
 
@@ -248,6 +249,9 @@ async function initFrameworkSchema(configData) {
       await chiefTheme.addThemeData(applicationThemeData, wrd.cApplication);
     }
   }
+
+  // Setup all schemas
+  await loadAllSchemas();
 
   // NOTE: We need this here, because the plugin itself will try to create an instance of haystacks to re-use its functionality.
   // When that happens the plugin will send execution back here and haystacks would again try to load the plugin from within the plugin!
@@ -458,6 +462,33 @@ async function loadCommandWorkflows(workflowPathConfigName) {
     }
   }
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+}
+
+/**
+ * @function loadAllSchemas
+ * @description Loads all of the schema data that will be used to control code behavior and business rule dissemination of execution logic.
+ * @return {boolean} True or False to indicate if all of the schema's were loaded and stored or not.
+ * @author Seth Hollingsead
+ * @date 2024/10/23
+ */
+async function loadAllSchemas() {
+  let functionName = loadAllSchemas.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  let returnData = false;
+  await dataBroker.initSchemaStorage();
+  let frameworkSchemasPath = await configurator.getConfigurationSetting(wrd.csystem, cfg.cframeworkSchemasPath);
+  // frameworkSchemasPath is
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cframeworkSchemasPathIs + frameworkSchemasPath);
+  if (frameworkSchemasPath) {
+    let frameworkSchemasData = await chiefData.loadAllJsonData(frameworkSchemasPath, wrd.cSchemas);
+    // frameworkSchemasData is:
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cframeworkSchemasDataIs + JSON.stringify(frameworkSchemasData));
+    returnData = await chiefData.storeAllSchemaData([frameworkSchemasData]);
+  }
+  // await loggers.consoleLog(namespacePrefix + functionName, 'Contents of D are: ' + JSON.stringify(D));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
 }
 
 /**
@@ -1169,6 +1200,7 @@ export default {
   mergeClientCommands,
   loadCommandAliases,
   loadCommandWorkflows,
+  loadAllSchemas,
   listLoadedPlugins,
   listAllPluginsInRegistry,
   listAllPluginsInRegistryPath,

@@ -118,6 +118,7 @@ async function initFramework(clientConfiguration) {
   clientConfiguration[cfg.cpluginFullMetaDataPath] = path.join(clientConfiguration[cfg.cpluginResourcesPath], sys.cmetaDatadotJson);
   clientConfiguration[cfg.cframeworkConfigPath] = frameworkCodeRootPath + sys.cframeworkResourcesConfigurationPath;
   clientConfiguration[cfg.cframeworkThemesPath] = frameworkCodeRootPath + sys.cframeworkThemesPath;
+  clientConfiguration[cfg.cframeworkSchemasPath] = frameworkCodeRootPath + sys.cframeworkSchemasPath;
   clientConfiguration[cfg.cframeworkCommandAliasesPath] = frameworkCommandAliasesPath;
   clientConfiguration[cfg.cpluginCommandAliasesPath] = pluginCommandAliasesPath;
   clientConfiguration[cfg.cframeworkWorkflowsPath] = frameworkWorkflowsPath;

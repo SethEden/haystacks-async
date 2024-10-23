@@ -315,11 +315,52 @@ async function loadAllJsonData(dataPath, contextName) {
   let loadedAndMergeDataAllFiles = {};
   let filesToLoad = [];
   filesToLoad = await dataBroker.scanDataPath(dataPath);
+  // filesToLoad is:
   await loggers.consoleLog(namespacePrefix + functionName, msg.cfilesToLoadIs + JSON.stringify(filesToLoad));
-  loadedAndMergeDataAllFiles = await dataBroker.loadAllJsonData(filesToLoad, contextName);
+  if (contextName.toLowerCase() === wrd.cschemas) {
+    loadedAndMergeDataAllFiles = await dataBroker.loadAllJsonDataBruteForce(filesToLoad, contextName);
+  } else {
+    loadedAndMergeDataAllFiles = await dataBroker.loadAllJsonData(filesToLoad, contextName);
+  }
   await loggers.consoleLog(namespacePrefix + functionName, msg.cloadedAndMergedDataAllFilesIs + JSON.stringify(loadedAndMergeDataAllFiles));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return loadedAndMergeDataAllFiles;
+}
+
+/**
+ * @function storeAllSchemaData
+ * @description Stores all of the schema data on the D-data structure by calling the data broker to get the work done.
+ * @param {array<object>} schemaDataObjects An array of JSON objects that contain sets of schema data, loaded from JSON files.
+ * These schema objects control the behavior of the system for certain logical operations in the code base.
+ * @return {boolean} True or False to indicate if the data was stored successfully or not.
+ * @author Seth Hollingsead
+ * @date 2024/10/23
+ */
+async function storeAllSchemaData(schemaDataObjects) {
+  let functionName = storeAllSchemaData.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  // schemaDataObjects is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cschemaDataObjectsIs + JSON.stringify(schemaDataObjects));
+  let returnData = false;
+  let allSchemasStoredSuccess = true; // Assume success unless proven otherwise
+  for (const schemaDataObject of schemaDataObjects) {
+    // schemaDataObject is:
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cschemaDataObjectIs + JSON.stringify(schemaDataObject));
+    if (schemaDataObject) {
+      let storeSuccess = await dataBroker.storeSchemaData(schemaDataObject);
+      // If any store operation fails, set allSchemaStoredSuccess to false
+      if (!storeSuccess) {
+        allSchemasStoredSuccess = false;
+      }
+    } else {
+      // Invalid schemaDataObject, mark overall success as false
+      allSchemasStoredSuccess = false;
+    }
+  }
+  returnData = allSchemasStoredSuccess;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
 }
 
 /**
@@ -396,6 +437,7 @@ export default {
   setupAllJsonConfigData,
   setupAllJsonConfigPluginData,
   loadAllJsonData,
+  storeAllSchemaData,
   storeData,
   getData,
   clearData

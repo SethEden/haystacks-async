@@ -334,6 +334,21 @@ async function initRulesLibrary() {
      // language Parsing rules in order
      // ***********************************************
      [biz.clanguageToAlphabet]: (inputData, inputMetaData) => languageParsing.languageToAlphabet(inputData, inputMetaData),
+     [biz.cgetEnglishAlphabet]: (inputData, inputMetaData) => languageParsing.getEnglishAlphabet(inputData, inputMetaData),
+     [biz.cgetChineseSimplifiedAlphabet]: (inputData, inputMetaData) => languageParsing.getChineseSimplifiedAlphabet(inputData, inputMetaData),
+     [biz.cgetChineseTraditionalAlphabet]: (inputData, inputMetaData) => languageParsing.getChineseTraditionalAlphabet(inputData, inputMetaData),
+     [biz.cgetCzechAlphabet]: (inputData, inputMetaData) => languageParsing.getCzechAlphabet(inputData, inputMetaData),
+     [biz.cgetFrenchAlphabet]: (inputData, inputMetaData) => languageParsing.getFrenchAlphabet(inputData, inputMetaData),
+     [biz.cgetGermanAlphabet]: (inputData, inputMetaData) => languageParsing.getGermanAlphabet(inputData, inputMetaData),
+     [biz.cgetHungarianAlphabet]: (inputData, inputMetaData) => languageParsing.getHungarianAlphabet(inputData, inputMetaData),
+     [biz.cgetItalianAlphabet]: (inputData, inputMetaData) => languageParsing.getItalianAlphabet(inputData, inputMetaData),
+     [biz.cgetJapaneseAlphabet]: (inputData, inputMetaData) => languageParsing.getJapaneseAlphabet(inputData, inputMetaData),
+     [biz.cgetKoreanAlphabet]: (inputData, inputMetaData) => languageParsing.getKoreanAlphabet(inputData, inputMetaData),
+     [biz.cgetMiscellaneousAlphabet]: (inputData, inputMetaData) => languageParsing.getMiscellaneousAlphabet(inputData, inputMetaData),
+     [biz.cgetPolishAlphabet]: (inputData, inputMetaData) => languageParsing.getPolishAlphabet(inputData, inputMetaData),
+     [biz.cgetPortugueseAlphabet]: (inputData, inputMetaData) => languageParsing.getPortugueseAlphabet(inputData, inputMetaData),
+     [biz.cgetRussianAlphabet]: (inputData, inputMetaData) => languageParsing.getRussianAlphabet(inputData, inputMetaData),
+     [biz.cgetSpanishAlphabet]: (inputData, inputMetaData) => languageParsing.getSpanishAlphabet(inputData, inputMetaData),
 
      // ***********************************************
      // lexicalAnalyzer rules in order
