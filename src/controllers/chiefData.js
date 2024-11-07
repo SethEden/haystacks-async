@@ -52,7 +52,9 @@ async function searchForUniversalDebugConfigSetting(appConfigPathName, framework
   appConfigDataPath = path.resolve(appConfigDataPath);
   frameworkConfigDataPath = path.resolve(frameworkConfigDataPath);
   let appConfigFilesToLoad = await dataBroker.scanDataPath(appConfigDataPath);
+  // console.log('appConfigFilesToLoad is: ' + JSON.stringify(appConfigFilesToLoad));
   let frameworkConfigFilesToLoad = await dataBroker.scanDataPath(frameworkConfigDataPath);
+  // console.log('frameworkConfigFilesToLoad is: ' + JSON.stringify(frameworkConfigFilesToLoad));
   await configurator.setConfigurationSetting(wrd.csystem, cfg.cappConfigFiles, appConfigFilesToLoad);
   await configurator.setConfigurationSetting(wrd.csystem, cfg.cframeworkConfigFiles, frameworkConfigFilesToLoad);
   universalDebugConfigSetting = await dataBroker.findUniversalDebugConfigSetting(
@@ -301,7 +303,7 @@ async function setupAllJsonConfigPluginData(configFilesPath, contextName) {
  * Can be used to load account data, transaction history logs, activity logs, or any other kind of JSON data.
  * @param {string} dataPath The path to the JSON files that should be loaded.
  * @param {string} contextName The type of data that should be loaded.
- * @return A JSON object that contains all of the data that was loaded and merged together.
+ * @return {object} A JSON object that contains all of the data that was loaded and merged together.
  * @author Seth Hollingsead
  * @date 2023/02/27
  */

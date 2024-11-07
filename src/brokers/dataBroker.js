@@ -193,10 +193,12 @@ async function loadAllCsvData(filesToLoad, contextName) {
       // loaded file data is:
       await loggers.consoleLog(namespacePrefix + functionName , msg.cloadedFileDataIs + JSON.stringify(dataFile));
       parsedDataFile = await processCsvData(dataFile, contextName);
+      // parsedDataFile is:
+      await loggers.consoleLog(namespacePrefix + functionName, msg.cparsedDataFileIs + JSON.stringify(parsedDataFile));
     } // End-if (fileExtension === gen.ccsv || fileExtension === gen.cCsv || fileExtension === gen.cCSV)
   } // End-for (const element of filesToLoad)
   // parsedDataFile is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cparsedDataFileIs + JSON.stringify(parsedDataFile));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(parsedDataFile));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return parsedDataFile;
 }
@@ -447,7 +449,7 @@ async function processCsvData(data, contextName) {
   let dataCategory = await getDataCategoryFromContextName(contextName);
   // dataCategory is:
   await loggers.consoleLog(namespacePrefix + functionName, msg.cdataCategoryIs + dataCategory);
-  if (contextName.includes(wrd.cWorkflow)) {
+  if (contextName.toLowerCase() === wrd.cworkflow) {
     // Processing a workflow
     Object.assign(D[wrd.cWorkflow], parsedData[contextName]);
   } else if (contextName.includes(wrd.ccolors)) {

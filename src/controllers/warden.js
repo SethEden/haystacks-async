@@ -928,7 +928,7 @@ async function loadPluginResourceData(contextName, pluginResourcePath) {
  * Can be used to load account data, transaction history logs, activity logs, or any other kind of JSON data.
  * @param {string} dataPath The path to the JSON files that should be loaded.
  * @param {string} contextName The type of data that should be loaded.
- * @return A JSON object that contains all of the data that was loaded and merged together.
+ * @return {object} A JSON object that contains all of the data that was loaded and merged together.
  * @author Seth Hollingsead
  * @date 2023/02/27
  */

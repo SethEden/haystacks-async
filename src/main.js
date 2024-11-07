@@ -67,6 +67,18 @@ async function initFramework(clientConfiguration) {
   let frameworkWorkflowsPath = '';
   let pluginWorkflowsPath = '';
   frameworkCodeRootPath = await warden.processRootPath(frameworkCodeRootPath, clientConfiguration[sys.cFrameworkName]) + bas.cDoubleForwardSlash;
+  // console.log('frameworkCodeRootPath 1 is: ' + frameworkCodeRootPath);
+  // NOTE: In some cases there is an "/src" at the end of this path. If it's already there, we should strip it off.
+  // Because it will get added again below and /proj/src/src/ will break the whole system!
+  let frameworkCodeRootPathArray = [];
+  frameworkCodeRootPathArray = frameworkCodeRootPath.split(bas.cBackSlash);
+  if (frameworkCodeRootPathArray[frameworkCodeRootPathArray.length - 1].toLowerCase().includes(wrd.csrc)) {
+    // console.log('caught the case that the last element does contain an src entry!! Remove it!!');
+    frameworkCodeRootPathArray.pop();
+    frameworkCodeRootPath = frameworkCodeRootPathArray.join(bas.cBackSlash) + bas.cDoubleForwardSlash;
+  } else {
+    // console.log('caught the case that the last element does NOT contain an src entry!! Do not remove anything!!');
+  }
   if (clientConfiguration[sys.cPluginName]) {
     let srcPath = '';
     if (clientConfiguration[cfg.cappConfigReferencePath].includes(wrd.csrc)) {
@@ -87,6 +99,7 @@ async function initFramework(clientConfiguration) {
     frameworkCodeRootPath = await warden.executeBusinessRules([frameworkCodeRootPath, ''], [biz.cswapBackSlashToForwardSlash]);
     pluginCodeRootPath = await warden.executeBusinessRules([pluginCodeRootPath, ''], [biz.cswapBackSlashToForwardSlash]);
   }
+  // console.log('frameworkCodeRootPath 2 is: ' + frameworkCodeRootPath);
   let frameworkRootPath = frameworkCodeRootPath;
   if (NODE_ENV === wrd.cdevelopment) {
     frameworkCodeRootPath = frameworkCodeRootPath + sys.cFrameworkDevelopRootPath;
@@ -97,6 +110,7 @@ async function initFramework(clientConfiguration) {
     console.log(msg.cApplicationWarningMessage1a + msg.cApplicationWarningMessage1b);
     frameworkCodeRootPath = frameworkCodeRootPath + sys.cFrameworkDevelopRootPath;
   }
+  // console.log('frameworkCodeRootPath 3 is: ' + frameworkCodeRootPath);
   // pluginCodeRootPath is:
   // console.log(msg.cpluginCodeRootPathIs + pluginCodeRootPath);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginCodeRootPathIs + pluginCodeRootPath);
@@ -497,7 +511,7 @@ async function writePluginRegistryToDisk() {
 /**
  * @function loadPlugin
  * @description A wrapper call to the warden.loadPlugin function.
- * Calls various functions in the chiefPlugn and pluginBroker to load plugin metaData and data:
+ * Calls various functions in the chiefPlugin and pluginBroker to load plugin metaData and data:
  * Business rules, Commands, Workflows, Constants, Configurations, dependencies ist(dependant plugins), etc...
  * @param {string} pluginPath The fully qualified path where to load the plugin from.
  * @return {boolean} True or False to indicate if the plugin was loaded or not.

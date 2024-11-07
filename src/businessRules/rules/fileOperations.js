@@ -246,7 +246,7 @@ async function readDirectoryContents(inputData, inputMetaData) {
  * The user might only want 10,000 files or just the first million files found. etc...
  * @param {string} inputData The path that should be scanned for files including all sub-folders and all sub-files.
  * @param {array<boolean,integer>} inputMetaData An array that contains a boolean flag for enable the limit and an integer for what the limit should be:
- * inputMetaData[0] = enableLimit - True or False to indicate if the boolean imit should be enabled or not.
+ * inputMetaData[0] = enableLimit - True or False to indicate if the boolean limit should be enabled or not.
  * inputMetaData[1] = filesLimit - The number of files that should be limited when scanning, if the enableLimit is set to True.
  * @return {array<string>} An array of all the files in the folder up to the limit if specified.
  * @author Seth Hollingsead
