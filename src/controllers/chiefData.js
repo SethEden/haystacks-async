@@ -366,6 +366,24 @@ async function storeAllSchemaData(schemaDataObjects) {
 }
 
 /**
+ * @function getSchemaData
+ * @description Gets a specific named schema data object, that should be stored in the system, or all schema data if no name is specified.
+ * @param {string} schemaName The name of the schema object that should exist in the list of currently loaded schemas.
+ * @return {object} A JSON object that contains the schema content for the named schema, if it exists, or all schema data if no name is specified.
+ * @author Seth Hollingsead
+ * @date 2024/11/22
+ */
+async function getSchemaData(schemaName) {
+  let functionName = getSchemaData.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  let returnData = false;
+  returnData = await dataBroker.getSchema(schemaName);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
+/**
  * @function storeData
  * @description Persist some data to the data storage in the D-data structure.
  * @param {string} dataName The name of the data, unique name used to store the data in the data structure.
@@ -440,6 +458,7 @@ export default {
   setupAllJsonConfigPluginData,
   loadAllJsonData,
   storeAllSchemaData,
+  getSchemaData,
   storeData,
   getData,
   clearData

@@ -28,6 +28,8 @@
         <Workflow Name="chiefDataGetDataDisable" Value="changeConfigSetting debugSetting.framework.controllers.chiefData.getData false"/>
         <Workflow Name="chiefDataClearDataEnable" Value="changeConfigSetting debugSetting.framework.controllers.chiefData.clearData true"/>
         <Workflow Name="chiefDataClearDataDisable" Value="changeConfigSetting debugSetting.framework.controllers.chiefData.clearData false"/>
+        <Workflow Name="chiefDataGetSchemaDataEnable" Value="changeConfigSetting debugSetting.framework.controllers.chiefData.getSchemaData true"/>
+        <Workflow Name="chiefDataGetSchemaDataDisable" Value="changeConfigSetting debugSetting.framework.controllers.chiefData.getSchemaData false"/>
       </chiefData>
     </controllers>
   </debug>

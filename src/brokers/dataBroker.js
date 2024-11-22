@@ -743,6 +743,35 @@ async function storeSchemaData(schemaDataObject) {
 }
 
 /**
+ * @function getSchema
+ * @description Gets a specific named schema data object, that should be stored in the system, or all schema data if no name is specified.
+ * @param {string} schemaName The name of the schema object that should exist in the list of currently loaded schemas.
+ * @return {object} A JSON object that contains the schema content for the named schema, if it exists, or all schema data if no name is specified.
+ * @author Seth Hollingsead
+ * @date 2024/11/22
+ */
+async function getSchema(schemaName) {
+  let functionName = getSchema.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  let returnData = false;
+  if (schemaName != '') {
+    try {
+      returnData = D[wrd.cSchemas][schemaName];
+    } catch (err) {
+      // ERROR: Invalid schema name. Schema does not exist: 
+      console.log(msg.cErrorGetSchemaMessage01 + schemaName);
+      await loggers.consoleLog(namespacePrefix + functionName, msg.cErrorGetSchemaMessage01 + schemaName);
+      returnData = false;
+    }
+  } else {
+    returnData = D[wrd.cSchemas];
+  }
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
+/**
  * @function getData
  * @description Gets some data from a caller specified sub-data storage hive name.
  * @param {string} dataStorageContextName The sub-data storage hive which should be retrieved.
@@ -1177,6 +1206,7 @@ export default {
   storeData,
   initSchemaStorage,
   storeSchemaData,
+  getSchema,
   getData,
   clearData,
   removePluginConfigurationData

@@ -32,6 +32,8 @@
         <Workflow Name="dataBrokerInitSchemaStorageDisable" Value="changeConfigSetting debugSetting.framework.brokers.dataBroker.initSchemaStorage false"/>
         <Workflow Name="dataBrokerStoreSchemaDataEnable" Value="changeConfigSetting debugSetting.framework.brokers.dataBroker.storeSchemaData true"/>
         <Workflow Name="dataBrokerStoreSchemaDataDisable" Value="changeConfigSetting debugSetting.framework.brokers.dataBroker.storeSchemaData false"/>
+        <Workflow Name="dataBrokerGetSchemaEnable" Value="changeConfigSetting debugSetting.framework.brokers.dataBroker.getSchema true"/>
+        <Workflow Name="dataBrokerGetSchemaDisable" Value="changeConfigSetting debugSetting.framework.brokers.dataBroker.getSchema false"/>
         <Workflow Name="getDataEnable" Value="changeConfigSetting debugSetting.framework.brokers.dataBroker.getData true"/>
         <Workflow Name="getDataDisable" Value="changeConfigSetting debugSetting.framework.brokers.dataBroker.getData false"/>
         <Workflow Name="clearDataEnable" Value="changeConfigSetting debugSetting.framework.brokers.dataBroker.clearData true"/>

@@ -135,6 +135,7 @@ async function initFrameworkSchema(configData) {
   await configurator.setConfigurationSetting(wrd.csystem, cfg.cframeworkConfigPath, configData[cfg.cframeworkConfigPath]);
   await configurator.setConfigurationSetting(wrd.csystem, cfg.cframeworkThemesPath, configData[cfg.cframeworkThemesPath]);
   await configurator.setConfigurationSetting(wrd.csystem, cfg.cframeworkSchemasPath, configData[cfg.cframeworkSchemasPath]);
+  await configurator.setConfigurationSetting(wrd.csystem, cfg.capplicationSchemasPath, configData[cfg.capplicationSchemasPath]);
   await configurator.setConfigurationSetting(wrd.csystem, cfg.cframeworkCommandAliasesPath, configData[cfg.cframeworkCommandAliasesPath]);
   await configurator.setConfigurationSetting(wrd.csystem, cfg.cframeworkWorkflowsPath, configData[cfg.cframeworkWorkflowsPath]);
 
@@ -157,6 +158,7 @@ async function initFrameworkSchema(configData) {
   await loggers.consoleLog(namespacePrefix + functionName, msg.cframeworkConfigPathIs + configData[cfg.cframeworkConfigPath]);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cframeworkThemesPathIs + configData[cfg.cframeworkThemesPath]);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cframeworkSchemasPathIs + configData[cfg.cframeworkSchemasPath]);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.capplicationSchemasPathIs + configData[cfg.capplicationSchemasPath]);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cframeworkCommandAliasesPathIs + configData[cfg.cframeworkCommandAliasesPath]);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cframeworkWorkflowsPathIs + configData[cfg.cframeworkWorkflowsPath]);
 
@@ -477,13 +479,22 @@ async function loadAllSchemas() {
   let returnData = false;
   await dataBroker.initSchemaStorage();
   let frameworkSchemasPath = await configurator.getConfigurationSetting(wrd.csystem, cfg.cframeworkSchemasPath);
-  // frameworkSchemasPath is
+  // frameworkSchemasPath is:
   await loggers.consoleLog(namespacePrefix + functionName, msg.cframeworkSchemasPathIs + frameworkSchemasPath);
+  let applicationSchemasPath = await configurator.getConfigurationSetting(wrd.csystem, cfg.capplicationSchemasPath);
+  // applicationSchemasPath is:
+  await loggers.consoleLog(namespacePrefix, functionName, msg.capplicationSchemasPathIs + applicationSchemasPath);
   if (frameworkSchemasPath) {
     let frameworkSchemasData = await chiefData.loadAllJsonData(frameworkSchemasPath, wrd.cSchemas);
     // frameworkSchemasData is:
     await loggers.consoleLog(namespacePrefix + functionName, msg.cframeworkSchemasDataIs + JSON.stringify(frameworkSchemasData));
     returnData = await chiefData.storeAllSchemaData([frameworkSchemasData]);
+  }
+  if (applicationSchemasPath) {
+    let applicationSchemasData = await chiefData.loadAllJsonData(applicationSchemasPath, wrd.cSchemas);
+    // applicationSchemasData is:
+    await loggers.consoleLog(namespacePrefix, functionName, msg.capplicationSchemasDataIs + JSON.stringify(applicationSchemasData));
+    returnData = await chiefData.storeAllSchemaData([applicationSchemasData]);
   }
   // await loggers.consoleLog(namespacePrefix + functionName, 'Contents of D are: ' + JSON.stringify(D));
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
@@ -1011,6 +1022,23 @@ async function clearData(dataName) {
 }
 
 /**
+ * @function getSchemaData
+ * @description Gets a specific named schema data object, that should be stored in the system, or all schema data if no name is specified.
+ * @param {string} schemaName The name of the schema object that should exist in the list of currently loaded schemas.
+ * @return {object} A JSON object that contains the schema content for the named schema, if it exists, or all schema data if no name is specified.
+ * @author Seth Hollingsead
+ * @date 2024/11/22
+ */
+async function getSchemaData(schemaName) {
+  let functionName = getSchemaData.name;
+  let returnData = false;
+  returnData = await chiefData.getSchemaData(schemaName);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
+/**
  * @function executeBusinessRules
  * @description A wrapper to call a business rule from the application level code.
  * @param {array<string|integer|boolean|object|function,string|integer|boolean|object|function>} inputs The array of inputs:
@@ -1224,6 +1252,7 @@ export default {
   storeData,
   getData,
   clearData,
+  getSchemaData,
   executeBusinessRules,
   enqueueCommand,
   isCommandQueueEmpty,

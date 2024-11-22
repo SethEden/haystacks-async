@@ -64,6 +64,8 @@
         <Workflow Name="wardenGetDataDisable" Value="changeConfigSetting debugSetting.framework.controllers.warden.getData false"/>
         <Workflow Name="wardenClearDataEnable" Value="changeConfigSetting debugSetting.framework.controllers.warden.clearData true"/>
         <Workflow Name="wardenClearDataDisable" Value="changeConfigSetting debugSetting.framework.controllers.warden.clearData false"/>
+        <Workflow Name="wardenGetSchemaDataEnable" Value="changeConfigSetting debugSetting.framework.controllers.warden.getSchemaData true"/>
+        <Workflow Name="wardenGetSchemaDataDisable" Value="changeConfigSetting debugSetting.framework.controllers.warden.getSchemaData false"/>
         <Workflow Name="executeBusinessRulesEnable" Value="changeConfigSetting debugSetting.framework.controllers.warden.executeBusinessRules true"/>
         <Workflow Name="executeBusinessRulesDisable" Value="changeConfigSetting debugSetting.framework.controllers.warden.executeBusinessRules false"/>
         <Workflow Name="wardenEnqueueCommandEnable" Value="changeConfigSetting debugSetting.framework.controllers.warden.enqueueCommand true"/>

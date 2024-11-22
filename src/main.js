@@ -765,6 +765,24 @@ async function clearData(dataName) {
 }
 
 /**
+ * @function getSchemaData
+ * @description Gets all of the schema data currently stored in the system, or a specific named schema, if a name is provided.
+ * @param {string} schemaName The name of the schema object that should exist in the list of currently loaded schemas.
+ * @return {object} A JSON object that contains all of the currently loaded schemas, or the data for a specific schema.
+ * @author Seth Hollingsead
+ * @date 2024/11/22
+ */
+async function getSchemaData(schemaName) {
+  let functionName = getSchemaData.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  let returnData = false;
+  returnData = await warden.getSchemaData(schemaName);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
+/**
  * @function executeBusinessRules
  * @description A wrapper call to a business rule from the warden.executeBusinessRules.
  * @param {array<string|integer|boolean|object|function,string|integer|boolean|object|function>} inputs The array of inputs:
@@ -978,6 +996,7 @@ export default {
   storeData,
   getData,
   clearData,
+  getSchemaData,
   executeBusinessRules,
   enqueueCommand,
   isCommandQueueEmpty,
