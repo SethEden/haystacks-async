@@ -775,9 +775,10 @@ async function clearData(dataName) {
 async function getSchemaData(schemaName) {
   let functionName = getSchemaData.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cschemaNameIs + schemaName);
   let returnData = false;
   returnData = await warden.getSchemaData(schemaName);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }

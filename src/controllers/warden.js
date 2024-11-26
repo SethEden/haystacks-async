@@ -483,7 +483,7 @@ async function loadAllSchemas() {
   await loggers.consoleLog(namespacePrefix + functionName, msg.cframeworkSchemasPathIs + frameworkSchemasPath);
   let applicationSchemasPath = await configurator.getConfigurationSetting(wrd.csystem, cfg.capplicationSchemasPath);
   // applicationSchemasPath is:
-  await loggers.consoleLog(namespacePrefix, functionName, msg.capplicationSchemasPathIs + applicationSchemasPath);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.capplicationSchemasPathIs + applicationSchemasPath);
   if (frameworkSchemasPath) {
     let frameworkSchemasData = await chiefData.loadAllJsonData(frameworkSchemasPath, wrd.cSchemas);
     // frameworkSchemasData is:
@@ -493,7 +493,7 @@ async function loadAllSchemas() {
   if (applicationSchemasPath) {
     let applicationSchemasData = await chiefData.loadAllJsonData(applicationSchemasPath, wrd.cSchemas);
     // applicationSchemasData is:
-    await loggers.consoleLog(namespacePrefix, functionName, msg.capplicationSchemasDataIs + JSON.stringify(applicationSchemasData));
+    await loggers.consoleLog(namespacePrefix + functionName, msg.capplicationSchemasDataIs + JSON.stringify(applicationSchemasData));
     returnData = await chiefData.storeAllSchemaData([applicationSchemasData]);
   }
   // await loggers.consoleLog(namespacePrefix + functionName, 'Contents of D are: ' + JSON.stringify(D));
@@ -1031,9 +1031,11 @@ async function clearData(dataName) {
  */
 async function getSchemaData(schemaName) {
   let functionName = getSchemaData.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cschemaNameIs + schemaName);
   let returnData = false;
   returnData = await chiefData.getSchemaData(schemaName);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }

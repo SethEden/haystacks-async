@@ -419,7 +419,7 @@ async function loadAllJsonDataBruteForce(filesToLoad, contextName) {
       if (i === 0) {
         returnData[wrd.cschemas] = {};
       }
-      returnData[wrd.cschemas] = {[filename]: dataFile};
+      returnData[wrd.cschemas][filename] = dataFile;
     }
     await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
     i = i + 1;
@@ -753,8 +753,9 @@ async function storeSchemaData(schemaDataObject) {
 async function getSchema(schemaName) {
   let functionName = getSchema.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cschemaNameIs + schemaName);
   let returnData = false;
-  if (schemaName != '') {
+  if (schemaName) {
     try {
       returnData = D[wrd.cSchemas][schemaName];
     } catch (err) {
@@ -764,9 +765,11 @@ async function getSchema(schemaName) {
       returnData = false;
     }
   } else {
+    // return all schemas.
+    await loggers.consoleLog(namespacePrefix + functionName, msg.creturnAllSchemas);
     returnData = D[wrd.cSchemas];
   }
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
