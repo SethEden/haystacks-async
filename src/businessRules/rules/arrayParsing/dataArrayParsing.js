@@ -155,8 +155,12 @@ async function isArrayEmpty(inputData, inputMetaData) {
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
   let returnData = true;
-  if (inputData) {
+  if (inputData && Array.isArray(inputData)) {
     returnData = await !Object.keys(inputData).length;
+  } else { // End-if (inputData)
+    // ERROR: Invalid input, inputData is:
+    console.log(msg.cErrorInvalidInputDataMessage + inputData);
+    returnData = false;
   }
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
@@ -178,11 +182,12 @@ async function isObject(inputData, inputMetaData) {
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = false;
-  if (inputData) {
-    if (typeof inputData === wrd.cobject) {
-      returnData = true;
-    }
-  } // End-if (inputData)
+  if (inputData && typeof inputData === wrd.cobject) {
+    returnData = true;
+  } else { // End-if (inputData)
+    // ERROR: Invalid input, inputData is:
+    console.log(msg.cErrorInvalidInputDataMessage + inputData);
+  }
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
@@ -191,7 +196,7 @@ async function isObject(inputData, inputMetaData) {
 /**
  * @function isArray
  * @description Determines if an object is an array or not.
- * @param {object|array<string|integer|boolean|float|object>} inputData The object that
+ * @param {array<string|integer|boolean|float|object>} inputData The data that
  * should be tested to see if it is an array or not.
  * @param {string} inputMetaData Not used for this business rule.
  * @return {boolean} True or False to indicate if the input object is an array or not.
@@ -206,6 +211,9 @@ async function isArray(inputData, inputMetaData) {
   let returnData = false;
   if (inputData) {
     returnData = await Array.isArray(inputData);
+  } else { // End-if (inputData)
+    // ERROR: Invalid input, inputData is:
+    console.log(msg.cErrorInvalidInputDataMessage + inputData);
   }
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
@@ -232,7 +240,10 @@ async function isArrayOrObject(inputData, inputMetaData) {
     if (await isObject(inputData, '') === true || await isArray(inputData, '') === true) {
       returnData = true;
     }
-  } // End-if (inputData)
+  } else { // End-if (inputData)
+    // ERROR: Invalid input, inputData is:
+    console.log(msg.cErrorInvalidInputDataMessage + inputData);
+  }
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
@@ -241,13 +252,13 @@ async function isArrayOrObject(inputData, inputMetaData) {
 /**
  * @function isNonZeroLengthArray
  * @description Determines if an object is an array of length greater than or equal to one or not.
- * @param {object|array<string|integer|boolean|float|object>} inputData The object/array that
+ * @param {array<string|integer|boolean|float|object>} inputData The array that
  * should be tested to see if it is an array of length greater than or equal to 1 or not.
  * @param {string} inputMetaData Not used for this business rule.
  * @return {boolean} True or False to indicate if the input object is an array of length greater than equal to zero or not.
  * @author Seth Hollingsead
  * @date 2022/01/21
- */
+*/
 async function isNonZeroLengthArray(inputData, inputMetaData) {
   let functionName = isNonZeroLengthArray.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
@@ -258,7 +269,10 @@ async function isNonZeroLengthArray(inputData, inputMetaData) {
     if (await isArray(inputData, '') === true && inputData.length >= 1) {
       returnData = true;
     }
-  } // End-if (inputData)
+  } else { // End-if (inputData)
+    // ERROR: Invalid input, inputData is:
+    console.log(msg.cErrorInvalidInputDataMessage + inputData);
+  }
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
@@ -273,7 +287,7 @@ async function isNonZeroLengthArray(inputData, inputMetaData) {
  * @author Vlad Sorokin
  * @date 2024/10/03
  * @NOTE Test function to handle comparison of: NaN and NaN or circular references.
- */
+*/
 async function isDeeplyEqual(inputData, inputMetaData) {
   let functionName = isDeeplyEqual.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
@@ -314,7 +328,7 @@ async function isDeeplyEqual(inputData, inputMetaData) {
  * @return {array<string|integer|boolean|float|object>} The new array object after being cloned deeply.
  * @author Seth Hollingsead
  * @date 2022/01/21
- */
+*/
 async function arrayDeepClone(inputData, inputMetaData) {
   let functionName = arrayDeepClone.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
@@ -323,6 +337,9 @@ async function arrayDeepClone(inputData, inputMetaData) {
   let returnData = false;
   if (inputData && await isArray(inputData, '') === true && await isArrayEmpty(inputData, '') === false) {
     returnData = await JSON.parse(await JSON.stringify(inputData));
+  } else { // End-if (inputData)
+    // ERROR: Invalid input, inputData is:
+    console.log(msg.cErrorInvalidInputDataMessage + inputData);
   }
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
@@ -332,13 +349,13 @@ async function arrayDeepClone(inputData, inputMetaData) {
 /**
  * @function objectDeepClone
  * @description Recursively walks through all levels of a JSON object and deeply clones all of its contents including function objects.
- * @param {object} inputData The JSON object that should be deeply cloned.
+ * @param {string|integer|boolean|float|object} inputData The JSON object that should be deeply cloned, or false .
  * @param {string} inputMetaData Not used for this business rule.
  * @return {object} A clone of the original input JSON object.
  * @author Seth Hollingsead
  * @date 2023/02/15
  * @NOTE This function was generated with the help of ChatGPT.
- */
+*/
 async function objectDeepClone(inputData, inputMetaData) {
   let functionName = objectDeepClone.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
@@ -354,7 +371,10 @@ async function objectDeepClone(inputData, inputMetaData) {
       await loggers.consoleLog(namespacePrefix + functionName, msg.cfastExitEnabled);
     } else {
       // Invalid input object. Expected a valid JSON object. Object type is:
-      throw new Error(msg.cErrorObjectDeepCloneMessage01 + typeof inputData);
+      console.log(msg.cErrorObjectDeepCloneMessage01 + typeof inputData);
+      await loggers.consoleLog(msg.cErrorObjectDeepCloneMessage01 + typeof inputData);
+      returnData = false;
+      fastExit = true;
     }
   }
   if (fastExit === false) {
@@ -393,6 +413,12 @@ async function objectDeepClone(inputData, inputMetaData) {
       } // End-for (let key in inpuData)
     }
   }
+  if (inputData === null || Number.isNaN(inputData)) {
+    // Invalid input object. Expected a valid JSON object. Object type is:
+    console.log(msg.cErrorObjectDeepCloneMessage01 + typeof inputData);
+    await loggers.consoleLog(msg.cErrorObjectDeepCloneMessage01 + typeof inputData);
+    returnData = false;
+  } // End-if (inputData)
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;

@@ -136,7 +136,13 @@ export const testConstantsValidation = [
     {Name: 'carraysAreEqual', Actual: tst_con.carraysAreEqual, Expected: 'arraysAreEqual'},
     {Name: 'cgetStoredData', Actual: tst_con.cgetStoredData, Expected: 'getStoredData'},
     {Name: 'cisObjectEmpty', Actual: tst_con.cisObjectEmpty, Expected: 'isObjectEmpty'},
-
+    {Name: 'cisArrayEmpty', Actual: tst_con.cisArrayEmpty, Expected: 'isArrayEmpty'},
+    {Name: 'cisObject', Actual: tst_con.cisObject, Expected: 'isObject'},
+    {Name: 'cisArray', Actual: tst_con.cisArray, Expected: 'isArray'},
+    {Name: 'cisNonZeroLengthArray', Actual: tst_con.cisNonZeroLengthArray, Expected: 'isNonZeroLengthArray'},
+    {Name: 'cisDeeplyEqual', Actual: tst_con.cisDeeplyEqual, Expected: 'isDeeplyEqual'},
+    {Name: 'carrayDeepClone', Actual: tst_con.carrayDeepClone, Expected: 'arrayDeepClone'},
+    {Name: 'cobjectDeepClone', Actual: tst_con.cobjectDeepClone, Expected: 'objectDeepClone'},
 
     
     /* pathArrayParsing */
@@ -1127,6 +1133,73 @@ export const testConstantsValidation = [
     {Name: 'cisObjectEmpty_inValidInputDataBoolean', Actual: tst_con.cisObjectEmpty_inValidInputDataBoolean, Expected: 'isObjectEmpty_inValidInputDataBoolean'},
     {Name: 'cisObjectEmpty_inValidInputDataUndefined', Actual: tst_con.cisObjectEmpty_inValidInputDataUndefined, Expected: 'isObjectEmpty_inValidInputDataUndefined'},
     {Name: 'cisObjectEmpty_inValidInputDataNaN', Actual: tst_con.cisObjectEmpty_inValidInputDataNaN, Expected: 'isObjectEmpty_inValidInputDataNaN'},
+    
+    // isArrayEmpty
+    {Name: 'cisArrayEmpty_validData', Actual: tst_con.cisArrayEmpty_validData, Expected: 'isArrayEmpty_validData'},
+    {Name: 'cisArrayEmpty_inValidInputDataString', Actual: tst_con.cisArrayEmpty_inValidInputDataString, Expected: 'isArrayEmpty_inValidInputDataString'},
+    {Name: 'cisArrayEmpty_inValidInputDataInteger', Actual: tst_con.cisArrayEmpty_inValidInputDataInteger, Expected: 'isArrayEmpty_inValidInputDataInteger'},
+    {Name: 'cisArrayEmpty_inValidInputDataBoolean', Actual: tst_con.cisArrayEmpty_inValidInputDataBoolean, Expected: 'isArrayEmpty_inValidInputDataBoolean'},
+    {Name: 'cisArrayEmpty_inValidInputDataUndefined', Actual: tst_con.cisArrayEmpty_inValidInputDataUndefined, Expected: 'isArrayEmpty_inValidInputDataUndefined'},
+    {Name: 'cisArrayEmpty_inValidInputDataNaN', Actual: tst_con.cisArrayEmpty_inValidInputDataNaN, Expected: 'isArrayEmpty_inValidInputDataNaN'},
+    
+    // isObject
+    {Name: 'cisObject_validData', Actual: tst_con.cisObject_validData, Expected: 'isObject_validData'},
+    {Name: 'cisObject_inValidInputDataString', Actual: tst_con.cisObject_inValidInputDataString, Expected: 'isObject_inValidInputDataString'},
+    {Name: 'cisObject_inValidInputDataInteger', Actual: tst_con.cisObject_inValidInputDataInteger, Expected: 'isObject_inValidInputDataInteger'},
+    {Name: 'cisObject_inValidInputDataBoolean', Actual: tst_con.cisObject_inValidInputDataBoolean, Expected: 'isObject_inValidInputDataBoolean'},
+    {Name: 'cisObject_inValidInputDataUndefined', Actual: tst_con.cisObject_inValidInputDataUndefined, Expected: 'isObject_inValidInputDataUndefined'},
+    {Name: 'cisObject_inValidInputDataNaN', Actual: tst_con.cisObject_inValidInputDataNaN, Expected: 'isObject_inValidInputDataNaN'},
+    
+    // isArray
+    {Name: 'cisArray_validData', Actual: tst_con.cisArray_validData, Expected: 'isArray_validData'},
+    {Name: 'cisArray_inValidInputDataString', Actual: tst_con.cisArray_inValidInputDataString, Expected: 'isArray_inValidInputDataString'},
+    {Name: 'cisArray_inValidInputDataInteger', Actual: tst_con.cisArray_inValidInputDataInteger, Expected: 'isArray_inValidInputDataInteger'},
+    {Name: 'cisArray_inValidInputDataBoolean', Actual: tst_con.cisArray_inValidInputDataBoolean, Expected: 'isArray_inValidInputDataBoolean'},
+    {Name: 'cisArray_inValidInputDataUndefined', Actual: tst_con.cisArray_inValidInputDataUndefined, Expected: 'isArray_inValidInputDataUndefined'},
+    {Name: 'cisArray_inValidInputDataNaN', Actual: tst_con.cisArray_inValidInputDataNaN, Expected: 'isArray_inValidInputDataNaN'},
+    {Name: 'cisArray_inValidInputMetaDataUndefined', Actual: tst_con.cisArray_inValidInputMetaDataUndefined, Expected: 'isArray_inValidInputMetaDataUndefined'},
+
+    // isNonZeroLengthArray
+    {Name: 'cisNonZeroLengthArray_validData', Actual: tst_con.cisNonZeroLengthArray_validData, Expected: 'isNonZeroLengthArray_validData'},
+    {Name: 'cisNonZeroLengthArray_inValidInputDataString', Actual: tst_con.cisNonZeroLengthArray_inValidInputDataString, Expected: 'isNonZeroLengthArray_inValidInputDataString'},
+    {Name: 'cisNonZeroLengthArray_inValidInputDataInteger', Actual: tst_con.cisNonZeroLengthArray_inValidInputDataInteger, Expected: 'isNonZeroLengthArray_inValidInputDataInteger'},
+    {Name: 'cisNonZeroLengthArray_inValidInputDataBoolean', Actual: tst_con.cisNonZeroLengthArray_inValidInputDataBoolean, Expected: 'isNonZeroLengthArray_inValidInputDataBoolean'},
+    {Name: 'cisNonZeroLengthArray_inValidInputDataUndefined', Actual: tst_con.cisNonZeroLengthArray_inValidInputDataUndefined, Expected: 'isNonZeroLengthArray_inValidInputDataUndefined'},
+    {Name: 'cisNonZeroLengthArray_inValidInputDataNaN', Actual: tst_con.cisNonZeroLengthArray_inValidInputDataNaN, Expected: 'isNonZeroLengthArray_inValidInputDataNaN'},
+    {Name: 'cisNonZeroLengthArray_inValidInputMetaDataUndefined', Actual: tst_con.cisNonZeroLengthArray_inValidInputMetaDataUndefined, Expected: 'isNonZeroLengthArray_inValidInputMetaDataUndefined'},
+
+    // isDeeplyEqual
+    {Name: 'cisDeeplyEqual_validData', Actual: tst_con.cisDeeplyEqual_validData, Expected: 'isDeeplyEqual_validData'},
+    {Name: 'cisDeeplyEqual_inValidInputDataString', Actual: tst_con.cisDeeplyEqual_inValidInputDataString, Expected: 'isDeeplyEqual_inValidInputDataString'},
+    {Name: 'cisDeeplyEqual_inValidInputMetaDataString', Actual: tst_con.cisDeeplyEqual_inValidInputMetaDataString, Expected: 'isDeeplyEqual_inValidInputMetaDataString'},
+    {Name: 'cisDeeplyEqual_inValidInputDataInteger', Actual: tst_con.cisDeeplyEqual_inValidInputDataInteger, Expected: 'isDeeplyEqual_inValidInputDataInteger'},
+    {Name: 'cisDeeplyEqual_inValidInputDataBoolean', Actual: tst_con.cisDeeplyEqual_inValidInputDataBoolean, Expected: 'isDeeplyEqual_inValidInputDataBoolean'},
+    {Name: 'cisDeeplyEqual_inValidInputMetaDataInteger', Actual: tst_con.cisDeeplyEqual_inValidInputMetaDataInteger, Expected: 'isDeeplyEqual_inValidInputMetaDataInteger'},
+    {Name: 'cisDeeplyEqual_inValidInputMetaDataBoolean', Actual: tst_con.cisDeeplyEqual_inValidInputMetaDataBoolean, Expected: 'isDeeplyEqual_inValidInputMetaDataBoolean'},
+    {Name: 'cisDeeplyEqual_inValidInputDataUndefined', Actual: tst_con.cisDeeplyEqual_inValidInputDataUndefined, Expected: 'isDeeplyEqual_inValidInputDataUndefined'},
+    {Name: 'cisDeeplyEqual_inValidInputDataNaN', Actual: tst_con.cisDeeplyEqual_inValidInputDataNaN, Expected: 'isDeeplyEqual_inValidInputDataNaN'},
+    {Name: 'cisDeeplyEqual_inValidInputMetaDataUndefined', Actual: tst_con.cisDeeplyEqual_inValidInputMetaDataUndefined, Expected: 'isDeeplyEqual_inValidInputMetaDataUndefined'},
+    {Name: 'cisDeeplyEqual_inValidInputMetaDataNaN', Actual: tst_con.cisDeeplyEqual_inValidInputMetaDataNaN, Expected: 'isDeeplyEqual_inValidInputMetaDataNaN'},
+
+    // arrayDeepClone
+    {Name: 'carrayDeepClone_validData', Actual: tst_con.carrayDeepClone_validData, Expected: 'arrayDeepClone_validData'},
+    {Name: 'carrayDeepClone_inValidInputDataString', Actual: tst_con.carrayDeepClone_inValidInputDataString, Expected: 'arrayDeepClone_inValidInputDataString'},
+    {Name: 'carrayDeepClone_inValidInputDataInteger', Actual: tst_con.carrayDeepClone_inValidInputDataInteger, Expected: 'arrayDeepClone_inValidInputDataInteger'},
+    {Name: 'carrayDeepClone_inValidInputDataBoolean', Actual: tst_con.carrayDeepClone_inValidInputDataBoolean, Expected: 'arrayDeepClone_inValidInputDataBoolean'},
+    {Name: 'carrayDeepClone_inValidInputDataUndefined', Actual: tst_con.carrayDeepClone_inValidInputDataUndefined, Expected: 'arrayDeepClone_inValidInputDataUndefined'},
+    {Name: 'carrayDeepClone_inValidInputDataNaN', Actual: tst_con.carrayDeepClone_inValidInputDataNaN, Expected: 'arrayDeepClone_inValidInputDataNaN'},
+    {Name: 'carrayDeepClone_inValidInputMetaDataUndefined', Actual: tst_con.carrayDeepClone_inValidInputMetaDataUndefined, Expected: 'arrayDeepClone_inValidInputMetaDataUndefined'},
+
+    // objectDeepClone
+    {Name: 'cobjectDeepClone_validData', Actual: tst_con.cobjectDeepClone_validData, Expected: 'objectDeepClone_validData'},
+    {Name: 'cobjectDeepClone_validInputDataString', Actual: tst_con.cobjectDeepClone_validInputDataString, Expected: 'objectDeepClone_validInputDataString'},
+    {Name: 'cobjectDeepClone_validInputDataInteger', Actual: tst_con.cobjectDeepClone_validInputDataInteger, Expected: 'objectDeepClone_validInputDataInteger'},
+    {Name: 'cobjectDeepClone_validInputDataBoolean', Actual: tst_con.cobjectDeepClone_validInputDataBoolean, Expected: 'objectDeepClone_validInputDataBoolean'},
+    {Name: 'cobjectDeepClone_inValidInputDataUndefined', Actual: tst_con.cobjectDeepClone_inValidInputDataUndefined, Expected: 'objectDeepClone_inValidInputDataUndefined'},
+    {Name: 'cobjectDeepClone_inValidInputDataNaN', Actual: tst_con.cobjectDeepClone_inValidInputDataNaN, Expected: 'objectDeepClone_inValidInputDataNaN'},
+    {Name: 'cobjectDeepClone_inValidInputMetaDataUndefined', Actual: tst_con.cobjectDeepClone_inValidInputMetaDataUndefined, Expected: 'objectDeepClone_inValidInputMetaDataUndefined'},
+
+
 
 
 

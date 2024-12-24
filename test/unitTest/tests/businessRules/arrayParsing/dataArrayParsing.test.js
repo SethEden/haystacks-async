@@ -54,8 +54,6 @@ await rulesLibrary.initRulesLibrary();
 // test-plugin-one data
 const pluginData = {[wrd.cdata]: pluginDataFile[wrd.cdata]};
 
-
-
 /**
  * @function arraysAreEqual
  * @description Tests the positive and negative test cases of the arraysAreEqual
@@ -339,7 +337,6 @@ describe(tst_con.carraysAreEqual, () => {
   });
 })
 
-
 /**
  * @function storeData
  * @description Tests the positive and negative test cases of the storeData
@@ -564,7 +561,6 @@ describe(tst_con.cstoreData, () => {
   });
 })
 
-
 /**
  * @function getStoredData
  * @description Tests the positive and negative test cases of the getStoredData
@@ -758,7 +754,6 @@ describe(tst_con.cgetStoredData, () => {
   });
 })
 
-
 /**
  * @function isObjectEmpty
  * @description Tests the positive and negative test cases of the isObjectEmpty
@@ -917,7 +912,1420 @@ describe(tst_con.cisObjectEmpty, () => {
   });
 })
 
+/**
+ * @function isArrayEmpty
+ * @description Tests the positive and negative test cases of the isArrayEmpty
+ * @author Vlad Sorokin
+ * @date 2024/11/28
+ */
+describe(tst_con.cisArrayEmpty, () => {
+    /**
+     * @function isArrayEmpty_validData
+     * @description Tests the dataArrayParsing function isArrayEmpty with a valid input.
+     * @author Vlad Sorokin
+     * @date 2024/11/28
+     */
+    test(tst_con.cisArrayEmpty_validData, async () => {
+        // Arrange
+        D[sys.cpluginsLoaded] = {};
+        D[cfg.cpluginRegistry] = {};
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+        D[sys.cpluginsLoaded] = [{}];
+        D[wrd.cCommands] = {};
+        let inputData = [];
+        let inputMetaData = '';
 
+        // Act
+        let returnData = await dataArrayParsing.isArrayEmpty(inputData, inputMetaData);
+
+        // Assert
+        expect(returnData).toEqual(true);
+    });
+
+    /**
+     * @function isArrayEmpty_inValidInputDataString
+     * @description Tests the dataArrayParsing function isArrayEmpty with a invalid data string.
+     * @author Vlad Sorokin
+     * @date 2024/11/28
+     */
+    test(tst_con.cisArrayEmpty_inValidInputDataString, async () => {
+        // Arrange
+        D[sys.cpluginsLoaded] = {};
+        D[cfg.cpluginRegistry] = {};
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+        D[sys.cpluginsLoaded] = [{}];
+        D[wrd.cCommands] = {};
+        let inputData = tst_man.ctestString1;
+        let inputMetaData = '';
+
+        // Act
+        let returnData = await dataArrayParsing.isArrayEmpty(inputData, inputMetaData);
+
+        // Assert
+        expect(returnData).toEqual(false);
+    });
+
+    /**
+     * @function isArrayEmpty_inValidInputDataInteger
+     * @description Tests the dataArrayParsing function isArrayEmpty with a invalid data integer.
+     * @author Vlad Sorokin
+     * @date 2024/11/28
+     */
+    test(tst_con.cisArrayEmpty_inValidInputDataInteger, async () => {
+        // Arrange
+        D[sys.cpluginsLoaded] = {};
+        D[cfg.cpluginRegistry] = {};
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+        D[sys.cpluginsLoaded] = [{}];
+        D[wrd.cCommands] = {};
+        let inputData = 123;
+        let inputMetaData = '';
+
+        // Act
+        let returnData = await dataArrayParsing.isArrayEmpty(inputData, inputMetaData);
+
+        // Assert
+        expect(returnData).toEqual(false);
+    });
+
+    /**
+     * @function isArrayEmpty_inValidInputDataBoolean
+     * @description Tests the dataArrayParsing function isArrayEmpty with a invalid data boolean.
+     * @author Vlad Sorokin
+     * @date 2024/11/28
+     */
+    test(tst_con.cisArrayEmpty_inValidInputDataBoolean, async () => {
+        // Arrange
+        D[sys.cpluginsLoaded] = {};
+        D[cfg.cpluginRegistry] = {};
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+        D[sys.cpluginsLoaded] = [{}];
+        D[wrd.cCommands] = {};
+        let inputData = false;
+        let inputMetaData = '';
+
+        // Act
+        let returnData = await dataArrayParsing.isArrayEmpty(inputData, inputMetaData);
+
+        // Assert
+        expect(returnData).toEqual(false);
+    });
+
+    /**
+     * @function isArrayEmpty_inValidInputDataUndefined
+     * @description Tests the dataArrayParsing function isArrayEmpty with a invalid data undefined.
+     * @author Vlad Sorokin
+     * @date 2024/11/28
+     */
+    test(tst_con.cisArrayEmpty_inValidInputDataUndefined, async () => {
+        // Arrange
+        D[sys.cpluginsLoaded] = {};
+        D[cfg.cpluginRegistry] = {};
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+        D[sys.cpluginsLoaded] = [{}];
+        D[wrd.cCommands] = {};
+        let inputData = undefined;
+        let inputMetaData = '';
+
+        // Act
+        let returnData = await dataArrayParsing.isArrayEmpty(inputData, inputMetaData);
+
+        // Assert
+        expect(returnData).toEqual(false);
+    });
+
+    /**
+     * @function isArrayEmpty_inValidInputDataNaN
+     * @description Tests the dataArrayParsing function isArrayEmpty with a invalid data NaN.
+     * @author Vlad Sorokin
+     * @date 2024/11/28
+     */
+    test(tst_con.cisArrayEmpty_inValidInputDataNaN, async () => {
+        // Arrange
+        D[sys.cpluginsLoaded] = {};
+        D[cfg.cpluginRegistry] = {};
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+        D[sys.cpluginsLoaded] = [{}];
+        D[wrd.cCommands] = {};
+        let inputData = NaN;
+        let inputMetaData = '';
+
+        // Act
+        let returnData = await dataArrayParsing.isArrayEmpty(inputData, inputMetaData);
+
+        // Assert
+        expect(returnData).toEqual(false);
+    });
+})
+
+/**
+ * @function isObject
+ * @description Tests the positive and negative test cases of the isObject
+ * @author Vlad Sorokin
+ * @date 2024/11/28
+ */
+describe(tst_con.cisObject, () => {
+    /**
+     * @function isObject_validData
+     * @description Tests the dataArrayParsing function isObject with a valid input.
+     * @author Vlad Sorokin
+     * @date 2024/11/28
+     */
+    test(tst_con.cisObject_validData, async () => {
+        // Arrange
+        D[sys.cpluginsLoaded] = {};
+        D[cfg.cpluginRegistry] = {};
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+        D[sys.cpluginsLoaded] = [{}];
+        D[wrd.cCommands] = {};
+        let inputData = {[wrd.cObject]: wrd.ctest};
+        let inputMetaData = '';
+
+        // Act
+        let returnData = await dataArrayParsing.isObject(inputData, inputMetaData);
+
+        // Assert
+        expect(returnData).toEqual(true);
+    });
+
+    /**
+     * @function isObject_inValidInputDataString
+     * @description Tests the dataArrayParsing function isObject with a invalid data string.
+     * @author Vlad Sorokin
+     * @date 2024/11/28
+     */
+    test(tst_con.cisObject_inValidInputDataString, async () => {
+        // Arrange
+        D[sys.cpluginsLoaded] = {};
+        D[cfg.cpluginRegistry] = {};
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+        D[sys.cpluginsLoaded] = [{}];
+        D[wrd.cCommands] = {};
+        let inputData = tst_man.ctestString1;
+        let inputMetaData = '';
+
+        // Act
+        let returnData = await dataArrayParsing.isObject(inputData, inputMetaData);
+
+        // Assert
+        expect(returnData).toEqual(false);
+    });
+
+    /**
+     * @function isObject_inValidInputDataInteger
+     * @description Tests the dataArrayParsing function isObject with a invalid data integer.
+     * @author Vlad Sorokin
+     * @date 2024/11/28
+     */
+    test(tst_con.cisObject_inValidInputDataInteger, async () => {
+        // Arrange
+        D[sys.cpluginsLoaded] = {};
+        D[cfg.cpluginRegistry] = {};
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+        D[sys.cpluginsLoaded] = [{}];
+        D[wrd.cCommands] = {};
+        let inputData = 123;
+        let inputMetaData = '';
+
+        // Act
+        let returnData = await dataArrayParsing.isObject(inputData, inputMetaData);
+
+        // Assert
+        expect(returnData).toEqual(false);
+    });
+
+    /**
+     * @function isObject_inValidInputDataBoolean
+     * @description Tests the dataArrayParsing function isObject with a invalid data boolean.
+     * @author Vlad Sorokin
+     * @date 2024/11/28
+     */
+    test(tst_con.cisObject_inValidInputDataBoolean, async () => {
+        // Arrange
+        D[sys.cpluginsLoaded] = {};
+        D[cfg.cpluginRegistry] = {};
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+        D[sys.cpluginsLoaded] = [{}];
+        D[wrd.cCommands] = {};
+        let inputData = false;
+        let inputMetaData = '';
+
+        // Act
+        let returnData = await dataArrayParsing.isObject(inputData, inputMetaData);
+
+        // Assert
+        expect(returnData).toEqual(false);
+    });
+
+    /**
+     * @function isObject_inValidInputDataUndefined
+     * @description Tests the dataArrayParsing function isObject with a invalid data undefined.
+     * @author Vlad Sorokin
+     * @date 2024/11/28
+     */
+    test(tst_con.cisObject_inValidInputDataUndefined, async () => {
+        // Arrange
+        D[sys.cpluginsLoaded] = {};
+        D[cfg.cpluginRegistry] = {};
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+        D[sys.cpluginsLoaded] = [{}];
+        D[wrd.cCommands] = {};
+        let inputData = undefined;
+        let inputMetaData = '';
+
+        // Act
+        let returnData = await dataArrayParsing.isObject(inputData, inputMetaData);
+
+        // Assert
+        expect(returnData).toEqual(false);
+    });
+
+    /**
+     * @function isObject_inValidInputDataNaN
+     * @description Tests the dataArrayParsing function isObject with a invalid data NaN.
+     * @author Vlad Sorokin
+     * @date 2024/11/28
+     */
+    test(tst_con.cisObject_inValidInputDataNaN, async () => {
+        // Arrange
+        D[sys.cpluginsLoaded] = {};
+        D[cfg.cpluginRegistry] = {};
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+        D[sys.cpluginsLoaded] = [{}];
+        D[wrd.cCommands] = {};
+        let inputData = NaN;
+        let inputMetaData = '';
+
+        // Act
+        let returnData = await dataArrayParsing.isObject(inputData, inputMetaData);
+
+        // Assert
+        expect(returnData).toEqual(false);
+    });
+})
+
+/**
+ * @function isArray
+ * @description Tests the positive and negative test cases of the isArray
+ * @author Vlad Sorokin
+ * @date 2024/12/23
+ */
+describe(tst_con.cisArray, () => {
+    /**
+     * @function isArray_validData
+     * @description Tests the dataArrayParsing function isArray with a valid input.
+     * @author Vlad Sorokin
+     * @date 2024/12/23
+     */
+    test(tst_con.cisArray_validData, async () => {
+        // Arrange
+        D[sys.cpluginsLoaded] = {};
+        D[cfg.cpluginRegistry] = {};
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+        D[sys.cpluginsLoaded] = [{}];
+        D[wrd.cCommands] = {};
+        let inputData = [wrd.chello, wrd.cworld];
+        let inputMetaData = '';
+
+        // Act
+        let returnData = await dataArrayParsing.isArray(inputData, inputMetaData);
+
+        // Assert
+        expect(returnData).toEqual(true);
+    });
+
+    /**
+     * @function isArray_inValidInputDataString
+     * @description Tests the dataArrayParsing function isArray with a invalid data string.
+     * @author Vlad Sorokin
+     * @date 2024/12/23
+     */
+    test(tst_con.cisArray_inValidInputDataString, async () => {
+        // Arrange
+        D[sys.cpluginsLoaded] = {};
+        D[cfg.cpluginRegistry] = {};
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+        D[sys.cpluginsLoaded] = [{}];
+        D[wrd.cCommands] = {};
+        let inputData = tst_man.ctestString1;
+        let inputMetaData = '';
+
+        // Act
+        let returnData = await dataArrayParsing.isArray(inputData, inputMetaData);
+
+        // Assert
+        expect(returnData).toEqual(false);
+    });
+
+    /**
+     * @function isArray_inValidInputDataInteger
+     * @description Tests the dataArrayParsing function isArray with a invalid data integer.
+     * @author Vlad Sorokin
+     * @date 2024/12/23
+     */
+    test(tst_con.cisArray_inValidInputDataInteger, async () => {
+        // Arrange
+        D[sys.cpluginsLoaded] = {};
+        D[cfg.cpluginRegistry] = {};
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+        D[sys.cpluginsLoaded] = [{}];
+        D[wrd.cCommands] = {};
+        let inputData = 123;
+        let inputMetaData = '';
+
+        // Act
+        let returnData = await dataArrayParsing.isArray(inputData, inputMetaData);
+
+        // Assert
+        expect(returnData).toEqual(false);
+    });
+
+    /**
+     * @function isArray_inValidInputDataBoolean
+     * @description Tests the dataArrayParsing function isArray with a invalid data boolean.
+     * @author Vlad Sorokin
+     * @date 2024/12/23
+     */
+    test(tst_con.cisArray_inValidInputDataBoolean, async () => {
+        // Arrange
+        D[sys.cpluginsLoaded] = {};
+        D[cfg.cpluginRegistry] = {};
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+        D[sys.cpluginsLoaded] = [{}];
+        D[wrd.cCommands] = {};
+        let inputData = false;
+        let inputMetaData = '';
+
+        // Act
+        let returnData = await dataArrayParsing.isArray(inputData, inputMetaData);
+
+        // Assert
+        expect(returnData).toEqual(false);
+    });
+
+    /**
+     * @function isArray_inValidInputDataUndefined
+     * @description Tests the dataArrayParsing function isArray with a invalid data undefined.
+     * @author Vlad Sorokin
+     * @date 2024/12/23
+     */
+    test(tst_con.cisArray_inValidInputDataUndefined, async () => {
+        // Arrange
+        D[sys.cpluginsLoaded] = {};
+        D[cfg.cpluginRegistry] = {};
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+        D[sys.cpluginsLoaded] = [{}];
+        D[wrd.cCommands] = {};
+        let inputData = undefined;
+        let inputMetaData = '';
+
+        // Act
+        let returnData = await dataArrayParsing.isArray(inputData, inputMetaData);
+
+        // Assert
+        expect(returnData).toEqual(false);
+    });
+
+    /**
+     * @function isArray_inValidInputDataNaN
+     * @description Tests the dataArrayParsing function isArray with a invalid data NaN.
+     * @author Vlad Sorokin
+     * @date 2024/12/23
+     */
+    test(tst_con.cisArray_inValidInputDataNaN, async () => {
+        // Arrange
+        D[sys.cpluginsLoaded] = {};
+        D[cfg.cpluginRegistry] = {};
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+        D[sys.cpluginsLoaded] = [{}];
+        D[wrd.cCommands] = {};
+        let inputData = NaN;
+        let inputMetaData = '';
+
+        // Act
+        let returnData = await dataArrayParsing.isArray(inputData, inputMetaData);
+
+        // Assert
+        expect(returnData).toEqual(false);
+    });
+})
+
+/**
+ * @function isArrayOrObject
+ * @description Tests the positive and negative test cases of the isArrayOrObject
+ * @author Vlad Sorokin
+ * @date 2024/12/23
+ */
+describe(tst_con.cisArrayOrObject, () => {
+    /**
+     * @function isArrayOrObject_validDataArray
+     * @description Tests the dataArrayParsing function isArrayOrObject with a valid input.
+     * @author Vlad Sorokin
+     * @date 2024/12/23
+     */
+    test(tst_con.cisArrayOrObject_validDataArray, async () => {
+        // Arrange
+        D[sys.cpluginsLoaded] = {};
+        D[cfg.cpluginRegistry] = {};
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+        D[sys.cpluginsLoaded] = [{}];
+        D[wrd.cCommands] = {};
+        let inputData = [wrd.chello, wrd.cworld];
+        let inputMetaData = '';
+
+        // Act
+        let returnData = await dataArrayParsing.isArrayOrObject(inputData, inputMetaData);
+
+        // Assert
+        expect(returnData).toEqual(true);
+    });
+
+    /**
+     * @function isArrayOrObject_validDataObject
+     * @description Tests the dataArrayParsing function isArrayOrObject with a valid input.
+     * @author Vlad Sorokin
+     * @date 2024/12/23
+     */
+    test(tst_con.cisArrayOrObject_validDataObject, async () => {
+        // Arrange
+        D[sys.cpluginsLoaded] = {};
+        D[cfg.cpluginRegistry] = {};
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+        D[sys.cpluginsLoaded] = [{}];
+        D[wrd.cCommands] = {};
+        let inputData = {[wrd.cObject]: wrd.ctest};
+        let inputMetaData = '';
+
+        // Act
+        let returnData = await dataArrayParsing.isArrayOrObject(inputData, inputMetaData);
+
+        // Assert
+        expect(returnData).toEqual(true);
+    });
+
+    /**
+     * @function isArrayOrObject_inValidInputDataString
+     * @description Tests the dataArrayParsing function isArrayOrObject with a invalid data string.
+     * @author Vlad Sorokin
+     * @date 2024/12/23
+     */
+    test(tst_con.cisArrayOrObject_inValidInputDataString, async () => {
+        // Arrange
+        D[sys.cpluginsLoaded] = {};
+        D[cfg.cpluginRegistry] = {};
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+        D[sys.cpluginsLoaded] = [{}];
+        D[wrd.cCommands] = {};
+        let inputData = tst_man.ctestString1;
+        let inputMetaData = '';
+
+        // Act
+        let returnData = await dataArrayParsing.isArrayOrObject(inputData, inputMetaData);
+        
+        // Assert
+        expect(returnData).toEqual(false);
+    });
+
+    /**
+     * @function isArrayOrObject_inValidInputDataInteger
+     * @description Tests the dataArrayParsing function isArrayOrObject with a invalid data integer.
+     * @author Vlad Sorokin
+     * @date 2024/12/23
+     */
+    test(tst_con.cisArrayOrObject_inValidInputDataInteger, async () => {
+        // Arrange
+        D[sys.cpluginsLoaded] = {};
+        D[cfg.cpluginRegistry] = {};
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+        D[sys.cpluginsLoaded] = [{}];
+        D[wrd.cCommands] = {};
+        let inputData = 123;
+        let inputMetaData = '';
+
+        // Act
+        let returnData = await dataArrayParsing.isArrayOrObject(inputData, inputMetaData);
+        
+        // Assert
+        expect(returnData).toEqual(false);
+    });
+
+    /**
+     * @function isArrayOrObject_inValidInputDataBoolean
+     * @description Tests the dataArrayParsing function isArrayOrObject with a invalid data boolean.
+     * @author Vlad Sorokin
+     * @date 2024/12/23
+     */
+    test(tst_con.cisArrayOrObject_inValidInputDataBoolean, async () => {
+        // Arrange
+        D[sys.cpluginsLoaded] = {};
+        D[cfg.cpluginRegistry] = {};
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+        D[sys.cpluginsLoaded] = [{}];
+        D[wrd.cCommands] = {};
+        let inputData = false;
+        let inputMetaData = '';
+
+        // Act
+        let returnData = await dataArrayParsing.isArrayOrObject(inputData, inputMetaData);
+        
+        // Assert
+        expect(returnData).toEqual(false);
+    });
+
+    /**
+     * @function isArrayOrObject_inValidInputDataUndefined
+     * @description Tests the dataArrayParsing function isArrayOrObject with a invalid data undefined.
+     * @author Vlad Sorokin
+     * @date 2024/12/23
+     */
+    test(tst_con.cisArrayOrObject_inValidInputDataUndefined, async () => {
+        // Arrange
+        D[sys.cpluginsLoaded] = {};
+        D[cfg.cpluginRegistry] = {};
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+        D[sys.cpluginsLoaded] = [{}];
+        D[wrd.cCommands] = {};
+        let inputData = undefined;
+        let inputMetaData = '';
+
+        // Act
+        let returnData = await dataArrayParsing.isArrayOrObject(inputData, inputMetaData);
+
+        // Assert
+        expect(returnData).toEqual(false);
+    });
+
+    /**
+     * @function isArrayOrObject_inValidInputDataNaN
+     * @description Tests the dataArrayParsing function isArrayOrObject with a invalid data NaN.
+     * @author Vlad Sorokin
+     * @date 2024/12/23
+     */
+    test(tst_con.cisArrayOrObject_inValidInputDataNaN, async () => {
+        // Arrange
+        D[sys.cpluginsLoaded] = {};
+        D[cfg.cpluginRegistry] = {};
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+        D[sys.cpluginsLoaded] = [{}];
+        D[wrd.cCommands] = {};
+        let inputData = NaN;
+        let inputMetaData = '';
+
+        // Act
+        let returnData = await dataArrayParsing.isArrayOrObject(inputData, inputMetaData);
+
+        // Assert
+        expect(returnData).toEqual(false);
+    });
+})
+
+/**
+ * @function isNonZeroLengthArray
+ * @description Tests the positive and negative test cases of the isNonZeroLengthArray
+ * @author Vlad Sorokin
+ * @date 2024/12/23
+ */
+describe(tst_con.cisNonZeroLengthArray, () => {
+    /**
+     * @function isNonZeroLengthArray_validData
+     * @description Tests the dataArrayParsing function isNonZeroLengthArray with a valid input.
+     * @author Vlad Sorokin
+     * @date 2024/12/23
+     */
+    test(tst_con.cisNonZeroLengthArray_validData, async () => {
+        // Arrange
+        D[sys.cpluginsLoaded] = {};
+        D[cfg.cpluginRegistry] = {};
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+        D[sys.cpluginsLoaded] = [{}];
+        D[wrd.cCommands] = {};
+        let inputData = [wrd.chello, wrd.cworld];
+        let inputMetaData = '';
+
+        // Act
+        let returnData = await dataArrayParsing.isNonZeroLengthArray(inputData, inputMetaData);
+
+        // Assert
+        expect(returnData).toEqual(true);
+    });
+
+    /**
+     * @function isNonZeroLengthArray_inValidInputDataString
+     * @description Tests the dataArrayParsing function isNonZeroLengthArray with a invalid data string.
+     * @author Vlad Sorokin
+     * @date 2024/12/23
+     */
+    test(tst_con.cisNonZeroLengthArray_inValidInputDataString, async () => {
+        // Arrange
+        D[sys.cpluginsLoaded] = {};
+        D[cfg.cpluginRegistry] = {};
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+        D[sys.cpluginsLoaded] = [{}];
+        D[wrd.cCommands] = {};
+        let inputData = tst_man.ctestString1;
+        let inputMetaData = '';
+
+        // Act
+        let returnData = await dataArrayParsing.isNonZeroLengthArray(inputData, inputMetaData);
+        
+        // Assert
+        expect(returnData).toEqual(false);
+    });
+
+    /**
+     * @function isNonZeroLengthArray_inValidInputDataInteger
+     * @description Tests the dataArrayParsing function isNonZeroLengthArray with a invalid data integer.
+     * @author Vlad Sorokin
+     * @date 2024/12/23
+     */
+    test(tst_con.cisNonZeroLengthArray_inValidInputDataInteger, async () => {
+        // Arrange
+        D[sys.cpluginsLoaded] = {};
+        D[cfg.cpluginRegistry] = {};
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+        D[sys.cpluginsLoaded] = [{}];
+        D[wrd.cCommands] = {};
+        let inputData = 123;
+        let inputMetaData = '';
+
+        // Act
+        let returnData = await dataArrayParsing.isNonZeroLengthArray(inputData, inputMetaData);
+        
+        // Assert
+        expect(returnData).toEqual(false);
+    });
+
+    /**
+     * @function isNonZeroLengthArray_inValidInputDataBoolean
+     * @description Tests the dataArrayParsing function isNonZeroLengthArray with a invalid data boolean.
+     * @author Vlad Sorokin
+     * @date 2024/12/23
+     */
+    test(tst_con.cisNonZeroLengthArray_inValidInputDataBoolean, async () => {
+        // Arrange
+        D[sys.cpluginsLoaded] = {};
+        D[cfg.cpluginRegistry] = {};
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+        D[sys.cpluginsLoaded] = [{}];
+        D[wrd.cCommands] = {};
+        let inputData = false;
+        let inputMetaData = '';
+
+        // Act
+        let returnData = await dataArrayParsing.isNonZeroLengthArray(inputData, inputMetaData);
+        
+        // Assert
+        expect(returnData).toEqual(false);
+    });
+
+    /**
+     * @function isNonZeroLengthArray_inValidInputDataUndefined
+     * @description Tests the dataArrayParsing function isNonZeroLengthArray with a invalid data undefined.
+     * @author Vlad Sorokin
+     * @date 2024/12/23
+     */
+    test(tst_con.cisNonZeroLengthArray_inValidInputDataUndefined, async () => {
+        // Arrange
+        D[sys.cpluginsLoaded] = {};
+        D[cfg.cpluginRegistry] = {};
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+        D[sys.cpluginsLoaded] = [{}];
+        D[wrd.cCommands] = {};
+        let inputData = undefined;
+        let inputMetaData = '';
+
+        // Act
+        let returnData = await dataArrayParsing.isNonZeroLengthArray(inputData, inputMetaData);
+
+        // Assert
+        expect(returnData).toEqual(false);
+    });
+
+    /**
+     * @function isNonZeroLengthArray_inValidInputDataNaN
+     * @description Tests the dataArrayParsing function isNonZeroLengthArray with a invalid data NaN.
+     * @author Vlad Sorokin
+     * @date 2024/12/23
+     */
+    test(tst_con.cisNonZeroLengthArray_inValidInputDataNaN, async () => {
+        // Arrange
+        D[sys.cpluginsLoaded] = {};
+        D[cfg.cpluginRegistry] = {};
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+        D[sys.cpluginsLoaded] = [{}];
+        D[wrd.cCommands] = {};
+        let inputData = NaN;
+        let inputMetaData = '';
+
+        // Act
+        let returnData = await dataArrayParsing.isNonZeroLengthArray(inputData, inputMetaData);
+
+        // Assert
+        expect(returnData).toEqual(false);
+    });
+})
+
+
+/**
+ * @function isDeeplyEqual
+ * @description Tests the positive and negative test cases of the isDeeplyEqual
+ * @author Vlad Sorokin
+ * @date 2024/12/23
+ */
+describe(tst_con.cisDeeplyEqual, () => {
+    /**
+     * @function isDeeplyEqual_validData
+     * @description Tests the dataArrayParsing function isDeeplyEqual with a valid input.
+     * @author Vlad Sorokin
+     * @date 2024/12/23
+     */
+    test(tst_con.cisDeeplyEqual_validData, async () => {
+        // Arrange
+        D[sys.cpluginsLoaded] = {};
+        D[cfg.cpluginRegistry] = {};
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+        D[sys.cpluginsLoaded] = [{}];
+        D[wrd.cCommands] = {};
+        let inputData = [1, [2, 3], 4];
+        let inputMetaData = [1, [2, 3], 4];
+
+        // Act
+        let returnData = await dataArrayParsing.isDeeplyEqual(inputData, inputMetaData);
+
+        // Assert
+        expect(returnData).toEqual(true);
+    });
+
+    /**
+     * @function isDeeplyEqual_inValidInputDataString
+     * @description Tests the dataArrayParsing function isDeeplyEqual with a invalid data string.
+     * @author Vlad Sorokin
+     * @date 2024/12/23
+     */
+    test(tst_con.cisDeeplyEqual_inValidInputDataString, async () => {
+        // Arrange
+        D[sys.cpluginsLoaded] = {};
+        D[cfg.cpluginRegistry] = {};
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+        D[sys.cpluginsLoaded] = [{}];
+        D[wrd.cCommands] = {};
+        let inputData = tst_man.ctestString1;
+        let inputMetaData = [1, [2, 3], 4];
+
+        // Act
+        let returnData = await dataArrayParsing.isDeeplyEqual(inputData, inputMetaData);
+
+        // Assert
+        expect(returnData).toEqual(false);
+    });
+
+    /**
+     * @function isDeeplyEqual_inValidInputMetaDataString
+     * @description Tests the dataArrayParsing function isDeeplyEqual with a invalid data string.
+     * @author Vlad Sorokin
+     * @date 2024/12/23
+     */
+    test(tst_con.cisDeeplyEqual_inValidInputMetaDataString, async () => {
+        // Arrange
+        D[sys.cpluginsLoaded] = {};
+        D[cfg.cpluginRegistry] = {};
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+        D[sys.cpluginsLoaded] = [{}];
+        D[wrd.cCommands] = {};
+        let inputData = [1, [2, 3], 4];
+        let inputMetaData = tst_man.ctestString1;
+
+        // Act
+        let returnData = await dataArrayParsing.isDeeplyEqual(inputData, inputMetaData);
+
+        // Assert
+        expect(returnData).toEqual(false);
+    });
+
+    /**
+     * @function isDeeplyEqual_inValidInputDataInteger
+     * @description Tests the dataArrayParsing function isDeeplyEqual with a invalid data integer.
+     * @author Vlad Sorokin
+     * @date 2024/12/23
+     */
+    test(tst_con.cisDeeplyEqual_inValidInputDataInteger, async () => {
+        // Arrange
+        D[sys.cpluginsLoaded] = {};
+        D[cfg.cpluginRegistry] = {};
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+        D[sys.cpluginsLoaded] = [{}];
+        D[wrd.cCommands] = {};
+        let inputData = 123;
+        let inputMetaData = [1, [2, 3], 4];
+
+        // Act
+        let returnData = await dataArrayParsing.isDeeplyEqual(inputData, inputMetaData);
+
+        // Assert
+        expect(returnData).toEqual(false);
+    });
+
+    /**
+     * @function isDeeplyEqual_inValidInputDataBoolean
+     * @description Tests the dataArrayParsing function isDeeplyEqual with a invalid data boolean.
+     * @author Vlad Sorokin
+     * @date 2024/12/23
+     */
+    test(tst_con.cisDeeplyEqual_inValidInputDataBoolean, async () => {
+        // Arrange
+        D[sys.cpluginsLoaded] = {};
+        D[cfg.cpluginRegistry] = {};
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+        D[sys.cpluginsLoaded] = [{}];
+        D[wrd.cCommands] = {};
+        let inputData = false;
+        let inputMetaData = [1, [2, 3], 4];
+
+        // Act
+        let returnData = await dataArrayParsing.isDeeplyEqual(inputData, inputMetaData);
+
+        // Assert
+        expect(returnData).toEqual(false);
+    });
+
+    /**
+     * @function isDeeplyEqual_inValidInputMetaDataInteger
+     * @description Tests the dataArrayParsing function isDeeplyEqual with a invalid data integer.
+     * @author Vlad Sorokin
+     * @date 2024/12/23
+     */
+    test(tst_con.cisDeeplyEqual_inValidInputMetaDataInteger, async () => {
+        // Arrange
+        D[sys.cpluginsLoaded] = {};
+        D[cfg.cpluginRegistry] = {};
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+        D[sys.cpluginsLoaded] = [{}];
+        D[wrd.cCommands] = {};
+        let inputData = [1, [2, 3], 4];
+        let inputMetaData = 123;
+
+        // Act
+        let returnData = await dataArrayParsing.isDeeplyEqual(inputData, inputMetaData);
+
+        // Assert
+        expect(returnData).toEqual(false);
+    });
+
+    /**
+     * @function isDeeplyEqual_inValidInputMetaDataBoolean
+     * @description Tests the dataArrayParsing function isDeeplyEqual with a invalid data boolean.
+     * @author Vlad Sorokin
+     * @date 2024/12/23
+     */
+    test(tst_con.cisDeeplyEqual_inValidInputMetaDataBoolean, async () => {
+        // Arrange
+        D[sys.cpluginsLoaded] = {};
+        D[cfg.cpluginRegistry] = {};
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+        D[sys.cpluginsLoaded] = [{}];
+        D[wrd.cCommands] = {};
+        let inputData = [1, [2, 3], 4];
+        let inputMetaData = false;
+
+        // Act
+        let returnData = await dataArrayParsing.isDeeplyEqual(inputData, inputMetaData);
+
+        // Assert
+        expect(returnData).toEqual(false);
+    });
+
+    /**
+     * @function isDeeplyEqual_inValidInputDataUndefined
+     * @description Tests the dataArrayParsing function isDeeplyEqual with a invalid data undefined.
+     * @author Vlad Sorokin
+     * @date 2024/12/23
+     */
+    test(tst_con.cisDeeplyEqual_inValidInputDataUndefined, async () => {
+        // Arrange
+        D[sys.cpluginsLoaded] = {};
+        D[cfg.cpluginRegistry] = {};
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+        D[sys.cpluginsLoaded] = [{}];
+        D[wrd.cCommands] = {};
+        let inputData = undefined;
+        let inputMetaData = [1, [2, 3], 4];
+
+        // Act
+        let returnData = await dataArrayParsing.isDeeplyEqual(inputData, inputMetaData);
+
+        // Assert
+        expect(returnData).toEqual(false);
+    });
+
+    /**
+     * @function isDeeplyEqual_inValidInputDataNaN
+     * @description Tests the dataArrayParsing function isDeeplyEqual with a invalid data NaN.
+     * @author Vlad Sorokin
+     * @date 2024/12/23
+     */
+    test(tst_con.cisDeeplyEqual_inValidInputDataNaN, async () => {
+        // Arrange
+        D[sys.cpluginsLoaded] = {};
+        D[cfg.cpluginRegistry] = {};
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+        D[sys.cpluginsLoaded] = [{}];
+        D[wrd.cCommands] = {};
+        let inputData = NaN;
+        let inputMetaData = [1, [2, 3], 4];
+
+        // Act
+        let returnData = await dataArrayParsing.isDeeplyEqual(inputData, inputMetaData);
+
+        // Assert
+        expect(returnData).toEqual(false);
+    });
+
+    /**
+     * @function isDeeplyEqual_inValidInputMetaDataUndefined
+     * @description Tests the dataArrayParsing function isDeeplyEqual with a invalid data undefined.
+     * @author Vlad Sorokin
+     * @date 2024/12/23
+     */
+    test(tst_con.cisDeeplyEqual_inValidInputMetaDataUndefined, async () => {
+        // Arrange
+        D[sys.cpluginsLoaded] = {};
+        D[cfg.cpluginRegistry] = {};
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+        D[sys.cpluginsLoaded] = [{}];
+        D[wrd.cCommands] = {};
+        let inputData = [1, [2, 3], 4];
+        let inputMetaData = undefined;
+
+        // Act
+        let returnData = await dataArrayParsing.isDeeplyEqual(inputData, inputMetaData);
+
+        // Assert
+        expect(returnData).toEqual(false);
+    });
+
+    /**
+     * @function isDeeplyEqual_inValidInputMetaDataNaN
+     * @description Tests the dataArrayParsing function isDeeplyEqual with a invalid data NaN.
+     * @author Vlad Sorokin
+     * @date 2024/12/23
+     */
+    test(tst_con.cisDeeplyEqual_inValidInputMetaDataNaN, async () => {
+        // Arrange
+        D[sys.cpluginsLoaded] = {};
+        D[cfg.cpluginRegistry] = {};
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+        D[sys.cpluginsLoaded] = [{}];
+        D[wrd.cCommands] = {};
+        let inputData = [1, [2, 3], 4];
+        let inputMetaData = NaN;
+
+        // Act
+        let returnData = await dataArrayParsing.isDeeplyEqual(inputData, inputMetaData);
+
+        // Assert
+        expect(returnData).toEqual(false);
+    });
+})
+
+/**
+ * @function arrayDeepClone
+ * @description Tests the positive and negative test cases of the arrayDeepClone
+ * @author Vlad Sorokin
+ * @date 2024/12/23
+ */
+describe(tst_con.carrayDeepClone, () => {
+    /**
+     * @function arrayDeepClone_validData
+     * @description Tests the dataArrayParsing function arrayDeepClone with a valid input.
+     * @author Vlad Sorokin
+     * @date 2024/12/23
+     */
+    test(tst_con.carrayDeepClone_validData, async () => {
+        // Arrange
+        D[sys.cpluginsLoaded] = {};
+        D[cfg.cpluginRegistry] = {};
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+        D[sys.cpluginsLoaded] = [{}];
+        D[wrd.cCommands] = {};
+        let inputData = [true, 42, wrd.chello, { key: wrd.cvalue }];
+        let inputMetaData = '';
+
+        // Act
+        let returnData = await dataArrayParsing.arrayDeepClone(inputData, inputMetaData);
+
+        // Assert
+        expect(returnData).toEqual(inputData);
+    });
+
+    /**
+     * @function arrayDeepClone_inValidInputDataString
+     * @description Tests the dataArrayParsing function arrayDeepClone with a invalid data string.
+     * @author Vlad Sorokin
+     * @date 2024/12/23
+     */
+    test(tst_con.carrayDeepClone_inValidInputDataString, async () => {
+        // Arrange
+        D[sys.cpluginsLoaded] = {};
+        D[cfg.cpluginRegistry] = {};
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+        D[sys.cpluginsLoaded] = [{}];
+        D[wrd.cCommands] = {};
+        let inputData = tst_man.ctestString1;
+        let inputMetaData = '';
+
+        // Act
+        let returnData = await dataArrayParsing.arrayDeepClone(inputData, inputMetaData);
+        
+        // Assert
+        expect(returnData).toEqual(false);
+    });
+
+    /**
+     * @function arrayDeepClone_inValidInputDataInteger
+     * @description Tests the dataArrayParsing function arrayDeepClone with a invalid data integer.
+     * @author Vlad Sorokin
+     * @date 2024/12/23
+     */
+    test(tst_con.carrayDeepClone_inValidInputDataInteger, async () => {
+        // Arrange
+        D[sys.cpluginsLoaded] = {};
+        D[cfg.cpluginRegistry] = {};
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+        D[sys.cpluginsLoaded] = [{}];
+        D[wrd.cCommands] = {};
+        let inputData = 123;
+        let inputMetaData = '';
+
+        // Act
+        let returnData = await dataArrayParsing.arrayDeepClone(inputData, inputMetaData);
+        
+        // Assert
+        expect(returnData).toEqual(false);
+    });
+
+    /**
+     * @function arrayDeepClone_inValidInputDataBoolean
+     * @description Tests the dataArrayParsing function arrayDeepClone with a invalid data boolean.
+     * @author Vlad Sorokin
+     * @date 2024/12/23
+     */
+    test(tst_con.carrayDeepClone_inValidInputDataBoolean, async () => {
+        // Arrange
+        D[sys.cpluginsLoaded] = {};
+        D[cfg.cpluginRegistry] = {};
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+        D[sys.cpluginsLoaded] = [{}];
+        D[wrd.cCommands] = {};
+        let inputData = false;
+        let inputMetaData = '';
+
+        // Act
+        let returnData = await dataArrayParsing.arrayDeepClone(inputData, inputMetaData);
+        
+        // Assert
+        expect(returnData).toEqual(false);
+    });
+
+    /**
+     * @function arrayDeepClone_inValidInputDataUndefined
+     * @description Tests the dataArrayParsing function arrayDeepClone with a invalid data undefined.
+     * @author Vlad Sorokin
+     * @date 2024/12/23
+     */
+    test(tst_con.carrayDeepClone_inValidInputDataUndefined, async () => {
+        // Arrange
+        D[sys.cpluginsLoaded] = {};
+        D[cfg.cpluginRegistry] = {};
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+        D[sys.cpluginsLoaded] = [{}];
+        D[wrd.cCommands] = {};
+        let inputData = undefined;
+        let inputMetaData = '';
+
+        // Act
+        let returnData = await dataArrayParsing.arrayDeepClone(inputData, inputMetaData);
+
+        // Assert
+        expect(returnData).toEqual(false);
+    });
+
+    /**
+     * @function arrayDeepClone_inValidInputDataNaN
+     * @description Tests the dataArrayParsing function arrayDeepClone with a invalid data NaN.
+     * @author Vlad Sorokin
+     * @date 2024/12/23
+     */
+    test(tst_con.carrayDeepClone_inValidInputDataNaN, async () => {
+        // Arrange
+        D[sys.cpluginsLoaded] = {};
+        D[cfg.cpluginRegistry] = {};
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+        D[sys.cpluginsLoaded] = [{}];
+        D[wrd.cCommands] = {};
+        let inputData = NaN;
+        let inputMetaData = '';
+
+        // Act
+        let returnData = await dataArrayParsing.arrayDeepClone(inputData, inputMetaData);
+
+        // Assert
+        expect(returnData).toEqual(false);
+    });
+})
+
+/**
+ * @function objectDeepClone
+ * @description Tests the positive and negative test cases of the objectDeepClone
+ * @author Vlad Sorokin
+ * @date 2024/12/23
+ */
+describe(tst_con.cobjectDeepClone, () => {
+    /**
+     * @function objectDeepClone_validData
+     * @description Tests the dataArrayParsing function objectDeepClone with a valid input.
+     * @author Vlad Sorokin
+     * @date 2024/12/23
+     */
+    test(tst_con.cobjectDeepClone_validData, async () => {
+        // Arrange
+        D[sys.cpluginsLoaded] = {};
+        D[cfg.cpluginRegistry] = {};
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+        D[sys.cpluginsLoaded] = [{}];
+        D[wrd.cCommands] = {};
+        let inputData = {[wrd.chello]: 1, [wrd.cworld]: {[wrd.chello]: 2, [wrd.cworld]: {[wrd.chello]: 3}}};
+        let inputMetaData = '';
+
+        // Act
+        let returnData = await dataArrayParsing.objectDeepClone(inputData, inputMetaData);
+
+        // Assert
+        expect(returnData).toEqual(inputData);
+    });
+
+    /**
+     * @function objectDeepClone_validInputDataString
+     * @description Tests the dataArrayParsing function objectDeepClone with a invalid data string.
+     * @author Vlad Sorokin
+     * @date 2024/12/23
+     */
+    test(tst_con.cobjectDeepClone_validInputDataString, async () => {
+        // Arrange
+        D[sys.cpluginsLoaded] = {};
+        D[cfg.cpluginRegistry] = {};
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+        D[sys.cpluginsLoaded] = [{}];
+        D[wrd.cCommands] = {};
+        let inputData = tst_man.ctestString1;
+        let inputMetaData = '';
+
+        // Act
+        let returnData = await dataArrayParsing.objectDeepClone(inputData, inputMetaData);
+        
+        // Assert
+        expect(returnData).toEqual(inputData);
+    });
+
+    /**
+     * @function objectDeepClone_validInputDataInteger
+     * @description Tests the dataArrayParsing function objectDeepClone with a invalid data integer.
+     * @author Vlad Sorokin
+     * @date 2024/12/23
+     */
+    test(tst_con.cobjectDeepClone_validInputDataInteger, async () => {
+        // Arrange
+        D[sys.cpluginsLoaded] = {};
+        D[cfg.cpluginRegistry] = {};
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+        D[sys.cpluginsLoaded] = [{}];
+        D[wrd.cCommands] = {};
+        let inputData = 123;
+        let inputMetaData = '';
+
+        // Act
+        let returnData = await dataArrayParsing.objectDeepClone(inputData, inputMetaData);
+        
+        // Assert
+        expect(returnData).toEqual(inputData);
+    });
+
+    /**
+     * @function objectDeepClone_validInputDataBoolean
+     * @description Tests the dataArrayParsing function objectDeepClone with a invalid data boolean.
+     * @author Vlad Sorokin
+     * @date 2024/12/23
+     */
+    test(tst_con.cobjectDeepClone_validInputDataBoolean, async () => {
+        // Arrange
+        D[sys.cpluginsLoaded] = {};
+        D[cfg.cpluginRegistry] = {};
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+        D[sys.cpluginsLoaded] = [{}];
+        D[wrd.cCommands] = {};
+        let inputData = false;
+        let inputMetaData = '';
+
+        // Act
+        let returnData = await dataArrayParsing.objectDeepClone(inputData, inputMetaData);
+        
+        // Assert
+        expect(returnData).toEqual(inputData);
+    });
+
+    /**
+     * @function objectDeepClone_inValidInputDataUndefined
+     * @description Tests the dataArrayParsing function objectDeepClone with a invalid data undefined.
+     * @author Vlad Sorokin
+     * @date 2024/12/23
+     */
+    test(tst_con.cobjectDeepClone_inValidInputDataUndefined, async () => {
+        // Arrange
+        D[sys.cpluginsLoaded] = {};
+        D[cfg.cpluginRegistry] = {};
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+        D[sys.cpluginsLoaded] = [{}];
+        D[wrd.cCommands] = {};
+        let inputData = undefined;
+        let inputMetaData = '';
+
+        // Act
+        let returnData = await dataArrayParsing.objectDeepClone(inputData, inputMetaData);
+
+        // Assert
+        expect(returnData).toEqual(false);
+    });
+
+    /**
+     * @function objectDeepClone_inValidInputDataNaN
+     * @description Tests the dataArrayParsing function objectDeepClone with a invalid data NaN.
+     * @author Vlad Sorokin
+     * @date 2024/12/23
+     */
+    test(tst_con.cobjectDeepClone_inValidInputDataNaN, async () => {
+        // Arrange
+        D[sys.cpluginsLoaded] = {};
+        D[cfg.cpluginRegistry] = {};
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+        D[sys.cpluginsLoaded] = [{}];
+        D[wrd.cCommands] = {};
+        let inputData = NaN;
+        let inputMetaData = '';
+
+        // Act
+        let returnData = await dataArrayParsing.objectDeepClone(inputData, inputMetaData);
+
+        // Assert
+        expect(returnData).toEqual(false);
+    });
+})
 
 
 

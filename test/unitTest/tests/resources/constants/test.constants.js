@@ -132,8 +132,14 @@ export const cvalidatePatternsThatNeedImplementation = biz.cvalidatePatternsThat
 export const carraysAreEqual = biz.carraysAreEqual; // arraysAreEqual
 export const cgetStoredData = biz.cgetStoredData; // getStoredData
 export const cisObjectEmpty = biz.cisObjectEmpty; // isObjectEmpty
-
-
+export const cisArrayEmpty = biz.cisArrayEmpty; // isArrayEmpty
+export const cisObject = biz.cisObject; // isObject
+export const cisArray = biz.cisArray; // isArray
+export const cisArrayOrObject = biz.cisArrayOrObject; // isArrayOrObject
+export const cisNonZeroLengthArray = biz.cisNonZeroLengthArray; // isNonZeroLengthArray
+export const cisDeeplyEqual = biz.cisDeeplyEqual; // isDeeplyEqual
+export const carrayDeepClone = biz.carrayDeepClone; // arrayDeepClone
+export const cobjectDeepClone = biz.cobjectDeepClone; // objectDeepClone
 
 
 /* pathArrayParsing */
@@ -1151,7 +1157,75 @@ export const cisObjectEmpty_inValidInputDataBoolean = cisObjectEmpty + bas.cUnde
 export const cisObjectEmpty_inValidInputDataUndefined = cisObjectEmpty + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + 'Undefined'; // isObjectEmpty_inValidInputDataUndefined
 export const cisObjectEmpty_inValidInputDataNaN = cisObjectEmpty + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + 'NaN'; // isObjectEmpty_inValidInputDataNaN
 
+// isArrayEmpty
+export const cisArrayEmpty_validData = cisArrayEmpty + bas.cUnderscore + wrd.cvalid + wrd.cData; // isArrayEmpty_validData
+export const cisArrayEmpty_inValidInputDataString = cisArrayEmpty + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + wrd.cString; // isArrayEmpty_inValidInputDataString
+export const cisArrayEmpty_inValidInputDataInteger = cisArrayEmpty + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + wrd.cInteger; // isArrayEmpty_inValidInputDataInteger
+export const cisArrayEmpty_inValidInputDataBoolean = cisArrayEmpty + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + wrd.cBoolean; // isArrayEmpty_inValidInputDataBoolean
+export const cisArrayEmpty_inValidInputDataUndefined = cisArrayEmpty + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + 'Undefined'; // isArrayEmpty_inValidInputDataUndefined
+export const cisArrayEmpty_inValidInputDataNaN = cisArrayEmpty + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + 'NaN'; // isArrayEmpty_inValidInputDataNaN
 
+// isObject
+export const cisObject_validData = cisObject + bas.cUnderscore + wrd.cvalid + wrd.cData; // isObject_validData
+export const cisObject_inValidInputDataString = cisObject + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + wrd.cString; // isObject_inValidInputDataString
+export const cisObject_inValidInputDataInteger = cisObject + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + wrd.cInteger; // isObject_inValidInputDataInteger
+export const cisObject_inValidInputDataBoolean = cisObject + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + wrd.cBoolean; // isObject_inValidInputDataBoolean
+export const cisObject_inValidInputDataUndefined = cisObject + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + 'Undefined'; // isObject_inValidInputDataUndefined
+export const cisObject_inValidInputDataNaN = cisObject + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + 'NaN'; // isObject_inValidInputDataNaN
+
+// isArray
+export const cisArray_validData = cisArray + bas.cUnderscore + wrd.cvalid + wrd.cData; // isArray_validData
+export const cisArray_inValidInputDataString = cisArray + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + wrd.cString; // isArray_inValidInputDataString
+export const cisArray_inValidInputDataInteger = cisArray + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + wrd.cInteger; // isArray_inValidInputDataInteger
+export const cisArray_inValidInputDataBoolean = cisArray + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + wrd.cBoolean; // isArray_inValidInputDataBoolean
+export const cisArray_inValidInputDataUndefined = cisArray + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + 'Undefined'; // isArray_inValidInputDataUndefined
+export const cisArray_inValidInputDataNaN = cisArray + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + 'NaN'; // isArray_inValidInputDataNaN
+
+// isArrayOrObject
+export const cisArrayOrObject_validDataArray = cisArrayOrObject + bas.cUnderscore + wrd.cvalid + wrd.cData + wrd.cArray; // isArrayOrObject_validDataArray
+export const cisArrayOrObject_validDataObject = cisArrayOrObject + bas.cUnderscore + wrd.cvalid + wrd.cData + wrd.cObject; // isArrayOrObject_validDataObject
+export const cisArrayOrObject_inValidInputDataString = cisArrayOrObject + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + wrd.cString; // isArrayOrObject_inValidInputDataString
+export const cisArrayOrObject_inValidInputDataInteger = cisArrayOrObject + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + wrd.cInteger; // isArrayOrObject_inValidInputDataInteger
+export const cisArrayOrObject_inValidInputDataBoolean = cisArrayOrObject + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + wrd.cBoolean; // isArrayOrObject_inValidInputDataBoolean
+export const cisArrayOrObject_inValidInputDataUndefined = cisArrayOrObject + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + 'Undefined'; // isArrayOrObject_inValidInputDataUndefined
+export const cisArrayOrObject_inValidInputDataNaN = cisArrayOrObject + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + 'NaN'; // isArrayOrObject_inValidInputDataNaN
+
+// isNonZeroLengthArray
+export const cisNonZeroLengthArray_validData = cisNonZeroLengthArray + bas.cUnderscore + wrd.cvalid + wrd.cData; // isNonZeroLengthArray_validData
+export const cisNonZeroLengthArray_inValidInputDataString = cisNonZeroLengthArray + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + wrd.cString; // isNonZeroLengthArray_inValidInputDataString
+export const cisNonZeroLengthArray_inValidInputDataInteger = cisNonZeroLengthArray + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + wrd.cInteger; // isNonZeroLengthArray_inValidInputDataInteger
+export const cisNonZeroLengthArray_inValidInputDataBoolean = cisNonZeroLengthArray + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + wrd.cBoolean; // isNonZeroLengthArray_inValidInputDataBoolean
+export const cisNonZeroLengthArray_inValidInputDataUndefined = cisNonZeroLengthArray + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + 'Undefined'; // isNonZeroLengthArray_inValidInputDataUndefined
+export const cisNonZeroLengthArray_inValidInputDataNaN = cisNonZeroLengthArray + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + 'NaN'; // isNonZeroLengthArray_inValidInputDataNaN
+
+// isDeeplyEqual
+export const cisDeeplyEqual_validData = cisDeeplyEqual + bas.cUnderscore + wrd.cvalid + wrd.cData; // isDeeplyEqual_validData
+export const cisDeeplyEqual_inValidInputDataString = cisDeeplyEqual + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + wrd.cString; // isDeeplyEqual_inValidInputDataString
+export const cisDeeplyEqual_inValidInputMetaDataString = cisDeeplyEqual + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputMetaData + wrd.cString; // isDeeplyEqual_inValidInputMetaDataString
+export const cisDeeplyEqual_inValidInputDataInteger = cisDeeplyEqual + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + wrd.cInteger; // isDeeplyEqual_inValidInputDataInteger
+export const cisDeeplyEqual_inValidInputDataBoolean = cisDeeplyEqual + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + wrd.cBoolean; // isDeeplyEqual_inValidInputDataBoolean
+export const cisDeeplyEqual_inValidInputMetaDataInteger = cisDeeplyEqual + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputMetaData + wrd.cInteger; // isDeeplyEqual_inValidInputMetaDataInteger
+export const cisDeeplyEqual_inValidInputMetaDataBoolean = cisDeeplyEqual + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputMetaData + wrd.cBoolean; // isDeeplyEqual_inValidInputMetaDataBoolean
+export const cisDeeplyEqual_inValidInputDataUndefined = cisDeeplyEqual + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + 'Undefined'; // isDeeplyEqual_inValidInputDataUndefined
+export const cisDeeplyEqual_inValidInputDataNaN = cisDeeplyEqual + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + 'NaN'; // isDeeplyEqual_inValidInputDataNaN
+export const cisDeeplyEqual_inValidInputMetaDataUndefined = cisDeeplyEqual + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputMetaData + 'Undefined'; // isDeeplyEqual_inValidInputMetaDataUndefined
+export const cisDeeplyEqual_inValidInputMetaDataNaN = cisDeeplyEqual + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputMetaData + 'NaN'; // isDeeplyEqual_inValidInputMetaDataNaN
+
+// arrayDeepClone
+export const carrayDeepClone_validData = carrayDeepClone + bas.cUnderscore + wrd.cvalid + wrd.cData; // arrayDeepClone_validData
+export const carrayDeepClone_inValidInputDataString = carrayDeepClone + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + wrd.cString; // arrayDeepClone_inValidInputDataString
+export const carrayDeepClone_inValidInputDataInteger = carrayDeepClone + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + wrd.cInteger; // arrayDeepClone_inValidInputDataInteger
+export const carrayDeepClone_inValidInputDataBoolean = carrayDeepClone + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + wrd.cBoolean; // arrayDeepClone_inValidInputDataBoolean
+export const carrayDeepClone_inValidInputDataUndefined = carrayDeepClone + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + 'Undefined'; // arrayDeepClone_inValidInputDataUndefined
+export const carrayDeepClone_inValidInputDataNaN = carrayDeepClone + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + 'NaN'; // arrayDeepClone_inValidInputDataNaN
+
+// objectDeepClone
+export const cobjectDeepClone_validData = cobjectDeepClone + bas.cUnderscore + wrd.cvalid + wrd.cData; // objectDeepClone_validData
+export const cobjectDeepClone_validInputDataString = cobjectDeepClone + bas.cUnderscore + wrd.cvalid + msg.cInputData + wrd.cString; // objectDeepClone_validInputDataString
+export const cobjectDeepClone_validInputDataInteger = cobjectDeepClone + bas.cUnderscore + wrd.cvalid + msg.cInputData + wrd.cInteger; // objectDeepClone_validInputDataInteger
+export const cobjectDeepClone_validInputDataBoolean = cobjectDeepClone + bas.cUnderscore + wrd.cvalid + msg.cInputData + wrd.cBoolean; // objectDeepClone_validInputDataBoolean
+export const cobjectDeepClone_inValidInputDataUndefined = cobjectDeepClone + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + 'Undefined'; // objectDeepClone_inValidInputDataUndefined
+export const cobjectDeepClone_inValidInputDataNaN = cobjectDeepClone + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + 'NaN'; // objectDeepClone_inValidInputDataNaN
 
 
 
