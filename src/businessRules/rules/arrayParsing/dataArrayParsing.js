@@ -432,6 +432,7 @@ async function objectDeepClone(inputData, inputMetaData) {
  * @return {object} The merged data after the merge is complete.
  * @author Pery Mimon
  * @date 2020/04/23
+ * @NOTE inputData OR inputMetaData must be an object. Both inputData and inputMetaData are capable of being variable types other than an object. 
  * @reference: https://stackoverflow.com/questions/27936772/how-to-deep-merge-instead-of-shallow-merge
  */
 async function objectDeepMerge(inputData, inputMetaData) {
@@ -443,6 +444,8 @@ async function objectDeepMerge(inputData, inputMetaData) {
   if (typeof inputData !== wrd.cobject || typeof inputMetaData !== wrd.cobject) {
     // inputData or inputMetaData or both ain't objets, merging doesn't make sense.
     returnData = false;
+    // ERROR: Invalid input, inputData is: inputMetaData is:
+    console.log(msg.cErrorInvalidInputDataMessage + inputData + bas.cSpace + msg.cinputMetaDataIs + inputMetaData);
   } else {
     for (let property in inputMetaData) {
       if (!Object.prototype.hasOwnProperty.call(inputMetaData, property)) {

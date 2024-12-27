@@ -140,6 +140,7 @@ export const cisNonZeroLengthArray = biz.cisNonZeroLengthArray; // isNonZeroLeng
 export const cisDeeplyEqual = biz.cisDeeplyEqual; // isDeeplyEqual
 export const carrayDeepClone = biz.carrayDeepClone; // arrayDeepClone
 export const cobjectDeepClone = biz.cobjectDeepClone; // objectDeepClone
+export const cobjectDeepMerge = biz.cobjectDeepMerge; // objectDeepMerge
 
 
 /* pathArrayParsing */
@@ -1226,6 +1227,19 @@ export const cobjectDeepClone_validInputDataInteger = cobjectDeepClone + bas.cUn
 export const cobjectDeepClone_validInputDataBoolean = cobjectDeepClone + bas.cUnderscore + wrd.cvalid + msg.cInputData + wrd.cBoolean; // objectDeepClone_validInputDataBoolean
 export const cobjectDeepClone_inValidInputDataUndefined = cobjectDeepClone + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + 'Undefined'; // objectDeepClone_inValidInputDataUndefined
 export const cobjectDeepClone_inValidInputDataNaN = cobjectDeepClone + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + 'NaN'; // objectDeepClone_inValidInputDataNaN
+
+// objectDeepMerge
+export const cobjectDeepMerge_validData = cobjectDeepMerge + bas.cUnderscore + wrd.cvalid + wrd.cData; // objectDeepMerge_validData
+export const cobjectDeepMerge_inValidInputDataString = cobjectDeepMerge + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + wrd.cString; // objectDeepMerge_inValidInputDataString
+export const cobjectDeepMerge_inValidInputMetaDataString = cobjectDeepMerge + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputMetaData + wrd.cString; // objectDeepMerge_inValidInputMetaDataString
+export const cobjectDeepMerge_inValidInputDataInteger = cobjectDeepMerge + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + wrd.cInteger; // objectDeepMerge_inValidInputDataInteger
+export const cobjectDeepMerge_inValidInputDataBoolean = cobjectDeepMerge + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + wrd.cBoolean; // objectDeepMerge_inValidInputDataBoolean
+export const cobjectDeepMerge_inValidInputMetaDataInteger = cobjectDeepMerge + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputMetaData + wrd.cInteger; // objectDeepMerge_inValidInputMetaDataInteger
+export const cobjectDeepMerge_inValidInputMetaDataBoolean = cobjectDeepMerge + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputMetaData + wrd.cBoolean; // objectDeepMerge_inValidInputMetaDataBoolean
+export const cobjectDeepMerge_inValidInputDataUndefined = cobjectDeepMerge + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + 'Undefined'; // objectDeepMerge_inValidInputDataUndefined
+export const cobjectDeepMerge_inValidInputDataNaN = cobjectDeepMerge + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + 'NaN'; // objectDeepMerge_inValidInputDataNaN
+export const cobjectDeepMerge_inValidInputMetaDataUndefined = cobjectDeepMerge + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputMetaData + 'Undefined'; // objectDeepMerge_inValidInputMetaDataUndefined
+export const cobjectDeepMerge_inValidInputMetaDataNaN = cobjectDeepMerge + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputMetaData + 'NaN'; // objectDeepMerge_inValidInputMetaDataNaN
 
 
 

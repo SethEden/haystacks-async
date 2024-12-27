@@ -37,6 +37,7 @@ import pluginDataFile from '../../../testData/testPlugins/test-plugin-one/struct
 import * as tst_con from '../../resources/constants/test.constants.js';
 import * as tst_dbt from '../../../testData/brokers/dataBrokerTest.js'
 import * as tst_thb from '../../../testData/brokers/themeBrokerTest.js'
+import * as tst_dap from '../../../testData/businessRules/arrayParsing/dataArrayParsingTest.js'
 import * as tst_man from '../../../testData/mainTest.js';
 
 // External imports
@@ -2328,6 +2329,288 @@ describe(tst_con.cobjectDeepClone, () => {
 })
 
 
+/**
+ * @function objectDeepMerge
+ * @description Tests the positive and negative test cases of the objectDeepMerge
+ * @author Vlad Sorokin
+ * @date 2024/12/26
+ */
+describe(tst_con.cobjectDeepMerge, () => {
+    /**
+     * @function objectDeepMerge_validData
+     * @description Tests the dataArrayParsing function objectDeepMerge with a valid input.
+     * @author Vlad Sorokin
+     * @date 2024/12/26
+     */
+    test(tst_con.cobjectDeepMerge_validData, async () => {
+        // Arrange
+        D[sys.cpluginsLoaded] = {};
+        D[cfg.cpluginRegistry] = {};
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+        D[sys.cpluginsLoaded] = [{}];
+        D[wrd.cCommands] = {};
+        let inputData = tst_dap.testObject1;
+        let inputMetaData = tst_dap.testObject2;
+
+        // Act
+        let returnData = await dataArrayParsing.objectDeepMerge(inputData, inputMetaData);
+
+        // Assert
+        expect(returnData).toEqual(tst_dap.testObject1and2);
+    });    
+
+    /**
+     * @function objectDeepMerge_inValidInputDataString
+     * @description Tests the dataArrayParsing function objectDeepMerge with a invalid data string.
+     * @author Vlad Sorokin
+     * @date 2024/12/26
+     */
+    test(tst_con.cobjectDeepMerge_inValidInputDataString, async () => {
+        // Arrange
+        D[sys.cpluginsLoaded] = {};
+        D[cfg.cpluginRegistry] = {};
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+        D[sys.cpluginsLoaded] = [{}];
+        D[wrd.cCommands] = {};
+        let inputData = tst_man.ctestString1;
+        let inputMetaData = tst_dap.testObject2;
+
+        // Act
+        let returnData = await dataArrayParsing.objectDeepMerge(inputData, inputMetaData);
+
+        // Assert
+        expect(returnData).toEqual(false);
+    });
+
+    /**
+     * @function objectDeepMerge_inValidInputMetaDataString
+     * @description Tests the dataArrayParsing function objectDeepMerge with a invalid data string.
+     * @author Vlad Sorokin
+     * @date 2024/12/26
+     */
+    test(tst_con.cobjectDeepMerge_inValidInputMetaDataString, async () => {
+        // Arrange
+        D[sys.cpluginsLoaded] = {};
+        D[cfg.cpluginRegistry] = {};
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+        D[sys.cpluginsLoaded] = [{}];
+        D[wrd.cCommands] = {};
+        let inputData = tst_dap.testObject1;
+        let inputMetaData = tst_man.ctestString1;
+
+        // Act
+        let returnData = await dataArrayParsing.objectDeepMerge(inputData, inputMetaData);
+
+        // Assert
+        expect(returnData).toEqual(false);
+    });
+
+    /**
+     * @function objectDeepMerge_inValidInputDataInteger
+     * @description Tests the dataArrayParsing function objectDeepMerge with a invalid data integer.
+     * @author Vlad Sorokin
+     * @date 2024/12/26
+     */
+    test(tst_con.cobjectDeepMerge_inValidInputDataInteger, async () => {
+        // Arrange
+        D[sys.cpluginsLoaded] = {};
+        D[cfg.cpluginRegistry] = {};
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+        D[sys.cpluginsLoaded] = [{}];
+        D[wrd.cCommands] = {};
+        let inputData = 123;
+        let inputMetaData = tst_dap.testObject2;
+
+        // Act
+        let returnData = await dataArrayParsing.objectDeepMerge(inputData, inputMetaData);
+
+        // Assert
+        expect(returnData).toEqual(false);
+    });
+
+    /**
+     * @function objectDeepMerge_inValidInputDataBoolean
+     * @description Tests the dataArrayParsing function objectDeepMerge with a invalid data boolean.
+     * @author Vlad Sorokin
+     * @date 2024/12/26
+     */
+    test(tst_con.cobjectDeepMerge_inValidInputDataBoolean, async () => {
+        // Arrange
+        D[sys.cpluginsLoaded] = {};
+        D[cfg.cpluginRegistry] = {};
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+        D[sys.cpluginsLoaded] = [{}];
+        D[wrd.cCommands] = {};
+        let inputData = false;
+        let inputMetaData = tst_dap.testObject2;
+
+        // Act
+        let returnData = await dataArrayParsing.objectDeepMerge(inputData, inputMetaData);
+
+        // Assert
+        expect(returnData).toEqual(false);
+    });
+
+    /**
+     * @function objectDeepMerge_inValidInputMetaDataInteger
+     * @description Tests the dataArrayParsing function objectDeepMerge with a invalid data integer.
+     * @author Vlad Sorokin
+     * @date 2024/12/26
+     */
+    test(tst_con.cobjectDeepMerge_inValidInputMetaDataInteger, async () => {
+        // Arrange
+        D[sys.cpluginsLoaded] = {};
+        D[cfg.cpluginRegistry] = {};
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+        D[sys.cpluginsLoaded] = [{}];
+        D[wrd.cCommands] = {};
+        let inputData = tst_dap.testObject1;
+        let inputMetaData = 123;
+
+        // Act
+        let returnData = await dataArrayParsing.objectDeepMerge(inputData, inputMetaData);
+
+        // Assert
+        expect(returnData).toEqual(false);
+    });
+
+    /**
+     * @function objectDeepMerge_inValidInputMetaDataBoolean
+     * @description Tests the dataArrayParsing function objectDeepMerge with a invalid data boolean.
+     * @author Vlad Sorokin
+     * @date 2024/12/26
+     */
+    test(tst_con.cobjectDeepMerge_inValidInputMetaDataBoolean, async () => {
+        // Arrange
+        D[sys.cpluginsLoaded] = {};
+        D[cfg.cpluginRegistry] = {};
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+        D[sys.cpluginsLoaded] = [{}];
+        D[wrd.cCommands] = {};
+        let inputData = tst_dap.testObject1;
+        let inputMetaData = false;
+
+        // Act
+        let returnData = await dataArrayParsing.objectDeepMerge(inputData, inputMetaData);
+
+        // Assert
+        expect(returnData).toEqual(false);
+    });
+
+    /**
+     * @function objectDeepMerge_inValidInputDataUndefined
+     * @description Tests the dataArrayParsing function objectDeepMerge with a invalid data undefined.
+     * @author Vlad Sorokin
+     * @date 2024/12/26
+     */
+    test(tst_con.cobjectDeepMerge_inValidInputDataUndefined, async () => {
+        // Arrange
+        D[sys.cpluginsLoaded] = {};
+        D[cfg.cpluginRegistry] = {};
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+        D[sys.cpluginsLoaded] = [{}];
+        D[wrd.cCommands] = {};
+        let inputData = undefined;
+        let inputMetaData = tst_dap.testObject2;
+
+        // Act
+        let returnData = await dataArrayParsing.objectDeepMerge(inputData, inputMetaData);
+
+        // Assert
+        expect(returnData).toEqual(false);
+    });
+
+    /**
+     * @function objectDeepMerge_inValidInputDataNaN
+     * @description Tests the dataArrayParsing function objectDeepMerge with a invalid data NaN.
+     * @author Vlad Sorokin
+     * @date 2024/12/26
+     */
+    test(tst_con.cobjectDeepMerge_inValidInputDataNaN, async () => {
+        // Arrange
+        D[sys.cpluginsLoaded] = {};
+        D[cfg.cpluginRegistry] = {};
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+        D[sys.cpluginsLoaded] = [{}];
+        D[wrd.cCommands] = {};
+        let inputData = NaN;
+        let inputMetaData = tst_dap.testObject2;
+
+        // Act
+        let returnData = await dataArrayParsing.objectDeepMerge(inputData, inputMetaData);
+
+        // Assert
+        expect(returnData).toEqual(false);
+    });
+
+    /**
+     * @function objectDeepMerge_inValidInputMetaDataUndefined
+     * @description Tests the dataArrayParsing function objectDeepMerge with a invalid data undefined.
+     * @author Vlad Sorokin
+     * @date 2024/12/26
+     */
+    test(tst_con.cobjectDeepMerge_inValidInputMetaDataUndefined, async () => {
+        // Arrange
+        D[sys.cpluginsLoaded] = {};
+        D[cfg.cpluginRegistry] = {};
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+        D[sys.cpluginsLoaded] = [{}];
+        D[wrd.cCommands] = {};
+        let inputData = tst_dap.testObject1;
+        let inputMetaData = undefined;
+
+        // Act
+        let returnData = await dataArrayParsing.objectDeepMerge(inputData, inputMetaData);
+
+        // Assert
+        expect(returnData).toEqual(false);
+    });
+
+    /**
+     * @function objectDeepMerge_inValidInputMetaDataNaN
+     * @description Tests the dataArrayParsing function objectDeepMerge with a invalid data NaN.
+     * @author Vlad Sorokin
+     * @date 2024/12/26
+     */
+    test(tst_con.cobjectDeepMerge_inValidInputMetaDataNaN, async () => {
+        // Arrange
+        D[sys.cpluginsLoaded] = {};
+        D[cfg.cpluginRegistry] = {};
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+        D[sys.cpluginsLoaded] = [{}];
+        D[wrd.cCommands] = {};
+        let inputData = tst_dap.testObject1;
+        let inputMetaData = NaN;
+
+        // Act
+        let returnData = await dataArrayParsing.objectDeepMerge(inputData, inputMetaData);
+
+        // Assert
+        expect(returnData).toEqual(false);
+    });
+})
 
 
 

@@ -143,6 +143,7 @@ export const testConstantsValidation = [
     {Name: 'cisDeeplyEqual', Actual: tst_con.cisDeeplyEqual, Expected: 'isDeeplyEqual'},
     {Name: 'carrayDeepClone', Actual: tst_con.carrayDeepClone, Expected: 'arrayDeepClone'},
     {Name: 'cobjectDeepClone', Actual: tst_con.cobjectDeepClone, Expected: 'objectDeepClone'},
+    {Name: 'cobjectDeepMerge', Actual: tst_con.cobjectDeepMerge, Expected: 'objectDeepMerge'},
 
     
     /* pathArrayParsing */
@@ -1198,6 +1199,19 @@ export const testConstantsValidation = [
     {Name: 'cobjectDeepClone_inValidInputDataUndefined', Actual: tst_con.cobjectDeepClone_inValidInputDataUndefined, Expected: 'objectDeepClone_inValidInputDataUndefined'},
     {Name: 'cobjectDeepClone_inValidInputDataNaN', Actual: tst_con.cobjectDeepClone_inValidInputDataNaN, Expected: 'objectDeepClone_inValidInputDataNaN'},
     {Name: 'cobjectDeepClone_inValidInputMetaDataUndefined', Actual: tst_con.cobjectDeepClone_inValidInputMetaDataUndefined, Expected: 'objectDeepClone_inValidInputMetaDataUndefined'},
+
+    // objectDeepMerge
+    {Name: 'cobjectDeepMerge_validData', Actual: tst_con.cobjectDeepMerge_validData, Expected: 'objectDeepMerge_validData'},
+    {Name: 'cobjectDeepMerge_inValidInputDataString', Actual: tst_con.cobjectDeepMerge_inValidInputDataString, Expected: 'objectDeepMerge_inValidInputDataString'},
+    {Name: 'cobjectDeepMerge_inValidInputMetaDataString', Actual: tst_con.cobjectDeepMerge_inValidInputMetaDataString, Expected: 'objectDeepMerge_inValidInputMetaDataString'},
+    {Name: 'cobjectDeepMerge_inValidInputDataInteger', Actual: tst_con.cobjectDeepMerge_inValidInputDataInteger, Expected: 'objectDeepMerge_inValidInputDataInteger'},
+    {Name: 'cobjectDeepMerge_inValidInputDataBoolean', Actual: tst_con.cobjectDeepMerge_inValidInputDataBoolean, Expected: 'objectDeepMerge_inValidInputDataBoolean'},
+    {Name: 'cobjectDeepMerge_inValidInputMetaDataInteger', Actual: tst_con.cobjectDeepMerge_inValidInputMetaDataInteger, Expected: 'objectDeepMerge_inValidInputMetaDataInteger'},
+    {Name: 'cobjectDeepMerge_inValidInputMetaDataBoolean', Actual: tst_con.cobjectDeepMerge_inValidInputMetaDataBoolean, Expected: 'objectDeepMerge_inValidInputMetaDataBoolean'},
+    {Name: 'cobjectDeepMerge_inValidInputDataUndefined', Actual: tst_con.cobjectDeepMerge_inValidInputDataUndefined, Expected: 'objectDeepMerge_inValidInputDataUndefined'},
+    {Name: 'cobjectDeepMerge_inValidInputDataNaN', Actual: tst_con.cobjectDeepMerge_inValidInputDataNaN, Expected: 'objectDeepMerge_inValidInputDataNaN'},
+    {Name: 'cobjectDeepMerge_inValidInputMetaDataUndefined', Actual: tst_con.cobjectDeepMerge_inValidInputMetaDataUndefined, Expected: 'objectDeepMerge_inValidInputMetaDataUndefined'},
+    {Name: 'cobjectDeepMerge_inValidInputMetaDataNaN', Actual: tst_con.cobjectDeepMerge_inValidInputMetaDataNaN, Expected: 'objectDeepMerge_inValidInputMetaDataNaN'},
 
 
 
