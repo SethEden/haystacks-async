@@ -765,6 +765,33 @@ async function clearData(dataName) {
 }
 
 /**
+ * @function setSchemaData
+ * @description This is a wrapper function for the warden function of the same name. So this function exposes the same functionality
+ * in warden. Essentially sets schema data for a specific schema name. This allows for schemas to be over-written / replaced
+ * according to a client defined schema. This should be used with caution as it is very easy to cause/introduce breaking changes
+ * in the haystacks-async development platform. Extra care should be taken here to only replace a schema with another schema that
+ * adds functionality, or changes functionality but does not remove functionality.
+ * @param {string} schemaName The name of the schema that is being added.
+ * @param {object} schemaDataObject The JSON object that contains the schema data that is being added/replaced/over-written.
+ * @return {boolean} True or False to indicate if the schema was successfully added/replaced/over-written.
+ * @author Seth Hollingsead
+ * @date 2024/12/31
+ */
+async function setSchemaData(schemaName, schemaDataObject) {
+  let functionName = setSchemaData.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  // schemaName is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cschemaNameIs + schemaName);
+  // schemaDataObject is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cschemaDataObjectIs + JSON.stringify(schemaDataObject));
+  let returnData = false;
+  returnData = await warden.setSchemaData(schemaName, schemaDataObject);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
+/**
  * @function getSchemaData
  * @description Gets all of the schema data currently stored in the system, or a specific named schema, if a name is provided.
  * @param {string} schemaName The name of the schema object that should exist in the list of currently loaded schemas.
@@ -997,6 +1024,7 @@ export default {
   storeData,
   getData,
   clearData,
+  setSchemaData,
   getSchemaData,
   executeBusinessRules,
   enqueueCommand,

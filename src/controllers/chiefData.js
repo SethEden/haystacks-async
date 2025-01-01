@@ -372,15 +372,16 @@ async function storeAllSchemaData(schemaDataObjects) {
  * @return {object} A JSON object that contains the schema content for the named schema, if it exists, or all schema data if no name is specified.
  * @author Seth Hollingsead
  * @date 2024/11/22
+ * @NOTE Cannot use the loggers here, because of a circular dependency.
  */
 async function getSchemaData(schemaName) {
-  let functionName = getSchemaData.name;
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cschemaNameIs + schemaName);
+  // let functionName = getSchemaData.name;
+  // await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  // await loggers.consoleLog(namespacePrefix + functionName, msg.cschemaNameIs + schemaName);
   let returnData = false;
   returnData = await dataBroker.getSchema(schemaName);
-  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  // await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  // await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
 

@@ -90,6 +90,7 @@ async function initFrameworkSchema(configData) {
   const appConfigPath = configData[cfg.cappConfigPath];
   const frameworkConfigPath = configData[cfg.cframeworkConfigPath];
   await chiefConfiguration.setupConfiguration(appConfigPath, frameworkConfigPath);
+  await configurator.setConfigurationSetting(wrd.csystem, cfg.cschemasLoaded, false);
   // re-declare the input now that the configuration is setup.
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cconfigDataIs + JSON.stringify(configData));
@@ -489,6 +490,7 @@ async function loadAllSchemas() {
     // frameworkSchemasData is:
     await loggers.consoleLog(namespacePrefix + functionName, msg.cframeworkSchemasDataIs + JSON.stringify(frameworkSchemasData));
     returnData = await chiefData.storeAllSchemaData([frameworkSchemasData]);
+    await configurator.setConfigurationSetting(wrd.csystem, cfg.cschemasLoaded, true);
   }
   if (applicationSchemasPath) {
     let applicationSchemasData = await chiefData.loadAllJsonData(applicationSchemasPath, wrd.cSchemas);
@@ -1022,6 +1024,39 @@ async function clearData(dataName) {
 }
 
 /**
+ * @function setSchemaData
+ * @description Sets the schema data for a specific schema name. This allows for schemas to be over-written / replaced
+ * according to a client defined schema. This should be used with caution as it is very easy to cause/introduce breaking changes
+ * in the haystacks-async development platform. Extra care should be taken here to only replace a schema with another schema that
+ * adds functionality, or changes functionality but does not remove functionality.
+ * @param {string} schemaName The name of the schema that is being added.
+ * @param {object} schemaDataObject The JSON object that contains the schema data that is being added/replaced/over-written.
+ * @return {boolean} True or False to indicate if the schema was successfully added/replaced/over-written.
+ * @author Seth Hollingsead
+ * @date 2024/12/31
+ */
+async function setSchemaData(schemaName, schemaDataObject) {
+  let functionName = setSchemaData.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  // schemaName is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cschemaNameIs + schemaName);
+  // schemaDataObject is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cschemaDataObjectIs + JSON.stringify(schemaDataObject));
+  let returnData = false;
+  let schemasArray = [];
+  let singleSchemaObject = {
+    [wrd.cschemas]: {
+      [schemaName]: schemaDataObject
+    }
+  };
+  schemasArray.push(singleSchemaObject);
+  returnData = await chiefData.storeAllSchemaData(schemasArray);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
+/**
  * @function getSchemaData
  * @description Gets a specific named schema data object, that should be stored in the system, or all schema data if no name is specified.
  * @param {string} schemaName The name of the schema object that should exist in the list of currently loaded schemas.
@@ -1254,6 +1289,7 @@ export default {
   storeData,
   getData,
   clearData,
+  setSchemaData,
   getSchemaData,
   executeBusinessRules,
   enqueueCommand,

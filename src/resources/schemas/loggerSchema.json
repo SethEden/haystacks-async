@@ -1,0 +1,10 @@
+{
+  "controlFlags": {
+    "Warning": true,
+    "Info": true
+  },
+  "flagNames": {
+    "logFileConfigFlagName": "logFileEnabled",
+    "logSocketTransmissionFlagName": "logToSocketTransmissionEnabled"
+  }
+}

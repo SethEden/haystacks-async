@@ -61,6 +61,8 @@
       <Workflow Name="mainGetDataDisable" Value="changeConfigSetting debugSetting.framework.main.getData false"/>
       <Workflow Name="mainClearDataEnable" Value="changeConfigSetting debugSetting.framework.main.clearData true"/>
       <Workflow Name="mainClearDataDisable" Value="changeConfigSetting debugSetting.framework.main.clearData false"/>
+      <Workflow Name="mainSetSchemaDataEnable" Value="changeConfigSetting debugSetting.framework.main.setSchemaData true"/>
+      <Workflow Name="mainSetSchemaDataDisable" Value="changeConfigSetting debugSetting.framework.main.setSchemaData false"/>
       <Workflow Name="mainGetSchemaDataEnable" Value="changeConfigSetting debugSetting.framework.main.getSchemaData true"/>
       <Workflow Name="mainGetSchemaDataDisable" Value="changeConfigSetting debugSetting.framework.main.getSchemaData false"/>
       <Workflow Name="mainExecuteBusinessRulesEnable" Value="changeConfigSetting debugSetting.framework.main.executeBusinessRules true"/>
