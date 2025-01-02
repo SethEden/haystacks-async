@@ -4,7 +4,6 @@
     "Info": true
   },
   "flagNames": {
-    "logFileConfigFlagName": "logFileEnabled",
-    "logSocketTransmissionFlagName": "logToSocketTransmissionEnabled"
+    "logFileConfigFlagName": "logFileEnabled"
   }
 }

@@ -1,6 +1,6 @@
 /**
- * @file loggers2.js
- * @module loggers2
+ * @file loggers.js
+ * @module loggers
  * @description Contains all of the functions necessary for logging to the console,
  * and logging to a system-specified log file.
  * Additional logic is in place to allow the configuration files to define which
@@ -16,7 +16,7 @@
  * @requires {@link https://www.npmjs.com/package/path|path}
  * @author Seth Hollingsead
  * @date 2024/12/31 - Originally 2021/10/18
- * @copyright Copyright © 2022-… by Seth Hollingsead. All rights reserved
+ * @copyright Copyright © 2024-… by Seth Hollingsead. All rights reserved
  */
 
 // Internal imports
@@ -24,6 +24,7 @@ import ruleBroker from '../brokers/ruleBroker.js';
 import chiefData from '../controllers/chiefData.js';
 import colorizer from './colorizer.js';
 import configurator from './configurator.js';
+import socketsClient from './socketsClient.js';
 import D from '../structures/data.js';
 // External imports
 import hayConst from '@haystacks/constants';
@@ -34,6 +35,11 @@ const baseFileName = path.basename(import.meta.url, path.extname(import.meta.url
 // framework.executrix.loggers.
 // eslint-disable-next-line no-unused-vars
 const namespacePrefix =  wrd.cframework + bas.cDot + wrd.cexecutrix + bas.cDot + baseFileName + bas.cDot;
+
+let socketClient = undefined;
+socketsClient().then(r => {
+  if (socketClient == undefined) socketClient = r;
+});
 
 /**
  * @function consoleLog
@@ -57,7 +63,7 @@ const namespacePrefix =  wrd.cframework + bas.cDot + wrd.cexecutrix + bas.cDot +
  * @NOTE Cannot use the loggers here, because of a circular dependency.
  */
 async function consoleLog(classPathControlFlag, message) {
-  let functionName = consoleLog.name;
+  // let functionName = consoleLog.name;
   if (Object.keys(D).length !== 0 && message !== undefined) { // Make sure we don't log anything if we haven't yet loaded the configuration data.
     let consoleLogEnabled = await configurator.getConfigurationSetting(wrd.csystem, cfg.cconsoleLogEnabled);
     if (consoleLogEnabled === true) {
@@ -136,7 +142,7 @@ async function consoleLog(classPathControlFlag, message) {
           debugFunctionSetting: debugFunctionSetting,
           message: message,
           isFileLoggingOn: isFileLoggingOn,
-          ifSocketLoggingOn: isSocketLoggingOn,
+          isSocketLoggingOn: isSocketLoggingOn,
           classPath: classPathControlFlag
         }
         await consoleLogProcess(processLogOptions);
@@ -279,8 +285,7 @@ async function constantsValidationSummaryLog(message, passFail) {
  * @date 2024/12/31
  */
 async function consoleLogProcess(logOptions) {
-  let functionName = consoleLogProcess.name;
-  // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
+  // let functionName = consoleLogProcess.name;
   let {
     logFile,
     isControlFlag,
@@ -294,6 +299,7 @@ async function consoleLogProcess(logOptions) {
     isSocketLoggingOn,
     classPath
   } = logOptions;
+  // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   let outputMessage = '';
   // logFile is:
   // console.log('logFile is: ' + logFile);
@@ -334,9 +340,9 @@ async function consoleLogProcess(logOptions) {
   }
 
   if (isSocketLoggingOn) {
-    // sendMessageToSocketClient(outputMessage);
+    // console.log('socketClient.sending message: ' + outputMessage);
+    socketClient.send(outputMessage);
   }
-
   // console.log(`END ${namespacePrefix}${functionName} function`);
   return;
 }
