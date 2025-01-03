@@ -792,7 +792,7 @@ async function getSchema(schemaName) {
  * @date 2022/01/20
  */
 async function getData(dataStorageContextName) {
-  let functionName = storeData.name;
+  let functionName = getData.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // dataStorageContextName is:
   await loggers.consoleLog(namespacePrefix + functionName, msg.cdataStorageContextNameIs + dataStorageContextName);
