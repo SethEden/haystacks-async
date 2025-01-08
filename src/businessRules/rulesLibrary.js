@@ -261,6 +261,7 @@ async function initRulesLibrary() {
      // fileStringParsing rules in order
      // ***********************************************
      [biz.cgetFileNameFromPath]: (inputData, inputMetaData) => fileStringParsing.getFileNameFromPath(inputData, inputMetaData),
+     [biz.cremoveFileNameFromPath]: (inputData, inputMetaData) => fileStringParsing.removeFileNameFromPath(inputData, inputMetaData),
      [biz.cgetFileExtension]: (inputData, inputMetaData) => fileStringParsing.getFileExtension(inputData, inputMetaData),
      [biz.cremoveDotFromFileExtension]: (inputData, inputMetaData) => fileStringParsing.removeDotFromFileExtension(inputData, inputMetaData),
      [biz.cremoveFileExtensionFromFileName]: (inputData, inputMetaData) => fileStringParsing.removeFileExtensionFromFileName(inputData, inputMetaData),
