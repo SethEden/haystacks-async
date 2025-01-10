@@ -71,7 +71,7 @@ export default async function socketsClient() {
       if (error.code === gen.cECONNREFUSED || error.code === gen.cEADDRINUSE){
         connectionRefusedOrInUse = true;
         // Server is offline! Connection is already in use or has been denied.
-        console.log(bas.cCarriageReturn + bas.cNewLine + msg.csocketsClientServerOffline + bas.cCarriageReturn + bas.cNewLine);
+        // console.log(bas.cCarriageReturn + bas.cNewLine + msg.csocketsClientServerOffline + bas.cCarriageReturn + bas.cNewLine);
       }else{
         console.log(bas.cCarriageReturn + bas.cNewLine + msg.cErrorOnClient + error.message);
       }
