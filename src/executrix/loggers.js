@@ -194,7 +194,7 @@ async function loggerSchemaGateLogic(classPathControlFlag) {
       resultObject[flagKey] = flagValue;
     }
     let controlFlagsMap = loggerSchema[sys.ccontrolFlags];
-    if (Object.prototype.hasOwnProperty.call(controlFlagsMap, classPathControlFlag)) {
+    if (Object.hasOwn(controlFlagsMap, classPathControlFlag)) {
       // The user passed something like "Warning" or "Info" that exists in the schema.
       resultObject.isControlFlag = true;
       resultObject.controlFlagValue = controlFlagsMap[classPathControlFlag] === true;

@@ -55,13 +55,13 @@ async function languageToAlphabet(inputData, inputMetaData) {
 
   if (inputData && inputMetaData && typeof inputData === wrd.cstring &&
   typeof inputMetaData === wrd.cstring && inputData != '' && inputMetaData != '') {
-    if (languageRule && languageRule[sys.cbusinessRule]) {
+    if (languageRule?.[sys.cbusinessRule]) {
       returnData = await ruleParsing.processRulesInternal([inputMetaData, ''], [languageRule[sys.cbusinessRule]]);
     } else {
       returnData = await getEnglishAlphabet('', '');
     }
   } else if (inputData && typeof inputData === wrd.cstring && inputData != '') {
-    if (languageRule && languageRule[sys.cbusinessRule]) {
+    if (languageRule?.[sys.cbusinessRule]) {
       returnData = await ruleParsing.processRulesInternal(['', ''], [languageRule[sys.cbusinessRule]]);
     } else {
       returnData = await getEnglishAlphabet('', '');
@@ -93,9 +93,9 @@ async function getEnglishAlphabet(inputData, inputMetaData) {
  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
  let returnData = '';
- if (inputData && inputData.toLowerCase().includes(wrd.cupper)) {
+ if (inputData?.toLowerCase()?.includes(wrd.cupper)) {
     returnData = abt.cUpperCaseEnglishAlphabet;
- } else if (inputData && inputData.toLowerCase().includes(wrd.clower)) {
+ } else if (inputData?.toLowerCase()?.includes(wrd.clower)) {
     returnData = abt.cLowerCaseEnglishAlphabet
  } else {
     returnData = abt.cUpperCaseEnglishAlphabet + abt.cLowerCaseEnglishAlphabet;
@@ -165,9 +165,9 @@ async function getCzechAlphabet(inputData, inputMetaData) {
  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
  let returnData = '';
- if (inputData && inputData.toLowerCase().includes(wrd.cupper)) {
+ if (inputData?.toLowerCase()?.includes(wrd.cupper)) {
     returnData = abt.cUpperCaseCzech;
- } else if (inputData && inputData.toLowerCase().includes(wrd.clower)) {
+ } else if (inputData?.toLowerCase()?.includes(wrd.clower)) {
     returnData = abt.cLowerCaseCzech;
  } else {
     returnData = abt.cUpperCaseCzech + abt.cLowerCaseCzech;
@@ -193,9 +193,9 @@ async function getFrenchAlphabet(inputData, inputMetaData) {
  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
  let returnData = '';
- if (inputData && inputData.toLowerCase().includes(wrd.cupper)) {
+ if (inputData?.toLowerCase()?.includes(wrd.cupper)) {
     returnData = abt.cUpperCaseFrench;
- } else if (inputData && inputData.toLowerCase().includes(wrd.clower)) {
+ } else if (inputData?.toLowerCase()?.includes(wrd.clower)) {
     returnData = abt.cLowerCaseFrench;
  } else {
     returnData = abt.cUpperCaseFrench + abt.cLowerCaseFrench;
@@ -221,9 +221,9 @@ async function getGermanAlphabet(inputData, inputMetaData) {
  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
  let returnData = '';
- if (inputData && inputData.toLowerCase().includes(wrd.cupper)) {
+ if (inputData?.toLowerCase()?.includes(wrd.cupper)) {
     returnData = abt.cUpperCaseGerman;
- } else if (inputData && inputData.toLowerCase().includes(wrd.clower)) {
+ } else if (inputData?.toLowerCase()?.includes(wrd.clower)) {
     returnData = abt.cLowerCaseGerman;
  } else {
     returnData = abt.cUpperCaseGerman + abt.cLowerCaseGerman;
@@ -249,9 +249,9 @@ async function getHungarianAlphabet(inputData, inputMetaData) {
  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
  let returnData = '';
- if (inputData && inputData.toLowerCase().includes(wrd.cupper)) {
+ if (inputData?.toLowerCase()?.includes(wrd.cupper)) {
     returnData = abt.cUpperCaseHungarian;
- } else if (inputData && inputData.toLowerCase().includes(wrd.clower)) {
+ } else if (inputData?.toLowerCase()?.includes(wrd.clower)) {
     returnData = abt.cLowerCaseHungarian;
  } else {
     returnData = abt.cUpperCaseHungarian + abt.cLowerCaseHungarian;
@@ -277,9 +277,9 @@ async function getItalianAlphabet(inputData, inputMetaData) {
  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
  let returnData = '';
- if (inputData && inputData.toLowerCase().includes(wrd.cupper)) {
+ if (inputData?.toLowerCase()?.includes(wrd.cupper)) {
     returnData = abt.cUpperCaseItalian;
- } else if (inputData && inputData.toLowerCase().includes(wrd.clower)) {
+ } else if (inputData?.toLowerCase()?.includes(wrd.clower)) {
     returnData = abt.cLowerCaseItalian;
  } else {
     returnData = abt.cUpperCaseItalian + abt.cLowerCaseItalian;
@@ -327,9 +327,9 @@ async function getKoreanAlphabet(inputData, inputMetaData) {
  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
  let returnData = '';
- if (inputData && inputData.toLowerCase().includes(wrd.cupper)) {
+ if (inputData?.toLowerCase()?.includes(wrd.cupper)) {
     returnData = abt.cUpperCaseKorean;
- } else if (inputData && inputData.toLowerCase().includes(wrd.clower)) {
+ } else if (inputData?.toLowerCase()?.includes(wrd.clower)) {
     returnData = abt.cLowerCaseKorean;
  } else {
     returnData = abt.cKorean + abt.cUpperCaseKorean;
@@ -377,9 +377,9 @@ async function getPolishAlphabet(inputData, inputMetaData) {
  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
  let returnData = '';
- if (inputData && inputData.toLowerCase().includes(wrd.cupper)) {
+ if (inputData?.toLowerCase()?.includes(wrd.cupper)) {
     returnData = abt.cUpperCasePolish;
- } else if (inputData && inputData.toLowerCase().includes(wrd.clower)) {
+ } else if (inputData?.toLowerCase()?.includes(wrd.clower)) {
     returnData = abt.cLowerCasePolish;
  } else {
     returnData = abt.cUpperCasePolish + abt.cLowerCasePolish;
@@ -405,9 +405,9 @@ async function getPortugueseAlphabet(inputData, inputMetaData) {
  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
  let returnData = '';
- if (inputData && inputData.toLowerCase().includes(wrd.cupper)) {
+ if (inputData?.toLowerCase()?.includes(wrd.cupper)) {
     returnData = abt.cUpperCasePortuguese;
- } else if (inputData && inputData.toLowerCase().includes(wrd.clower)) {
+ } else if (inputData?.toLowerCase()?.includes(wrd.clower)) {
     returnData = abt.cLowerCasePortuguese;
  } else {
     returnData = abt.cUpperCasePortuguese + abt.cLowerCasePortuguese;
@@ -433,9 +433,9 @@ async function getRussianAlphabet(inputData, inputMetaData) {
  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
  let returnData = '';
- if (inputData && inputData.toLowerCase().includes(wrd.cupper)) {
+ if (inputData?.toLowerCase()?.includes(wrd.cupper)) {
     returnData = abt.cUpperCaseRussian;
- } else if (inputData && inputData.toLowerCase().includes(wrd.clower)) {
+ } else if (inputData?.toLowerCase()?.includes(wrd.clower)) {
     returnData = abt.cLowerCaseRussian;
  } else {
     returnData = abt.cUpperCaseRussian + abt.cLowerCaseRussian;
@@ -461,9 +461,9 @@ async function getSpanishAlphabet(inputData, inputMetaData) {
  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
  let returnData = '';
- if (inputData && inputData.toLowerCase().includes(wrd.cupper)) {
+ if (inputData?.toLowerCase()?.includes(wrd.cupper)) {
     returnData = abt.cUpperCaseSpanish;
- } else if (inputData && inputData.toLowerCase().includes(wrd.clower)) {
+ } else if (inputData?.toLowerCase()?.includes(wrd.clower)) {
     returnData = abt.cLowerCaseSpanish;
  } else {
     returnData = abt.cUpperCaseSpanish + abt.cLowerCaseSpanish;

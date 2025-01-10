@@ -723,7 +723,7 @@ async function storeSchemaData(schemaDataObject) {
   let returnData = false;
   if (schemaDataObject && schemaDataObject[wrd.cschemas]) {
     for (const schemaNamespace in schemaDataObject[wrd.cschemas]) {
-      if (Object.prototype.hasOwnProperty.call(schemaDataObject[wrd.cschemas], schemaNamespace)) {
+      if (Object.hasOwn(schemaDataObject[wrd.cschemas], schemaNamespace)) {
         // Store the schema in the D-data structure under the proper schema namespace.
         D[wrd.cSchemas][schemaNamespace] = schemaDataObject[wrd.cschemas][schemaNamespace];
         // Stored schema under namespace:
@@ -736,7 +736,6 @@ async function storeSchemaData(schemaDataObject) {
     console.log(msg.cErrorInvalidSchemaDataObjectMissingSchemasKey);
     await loggers.consoleLog(namespacePrefix + functionName, msg.cErrorInvalidSchemaDataObjectMissingSchemasKey);
   }
-  // returnData = true;
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
