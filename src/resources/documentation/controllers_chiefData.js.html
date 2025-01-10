@@ -80,7 +80,9 @@ async function searchForUniversalDebugConfigSetting(appConfigPathName, framework
   appConfigDataPath = path.resolve(appConfigDataPath);
   frameworkConfigDataPath = path.resolve(frameworkConfigDataPath);
   let appConfigFilesToLoad = await dataBroker.scanDataPath(appConfigDataPath);
+  // console.log('appConfigFilesToLoad is: ' + JSON.stringify(appConfigFilesToLoad));
   let frameworkConfigFilesToLoad = await dataBroker.scanDataPath(frameworkConfigDataPath);
+  // console.log('frameworkConfigFilesToLoad is: ' + JSON.stringify(frameworkConfigFilesToLoad));
   await configurator.setConfigurationSetting(wrd.csystem, cfg.cappConfigFiles, appConfigFilesToLoad);
   await configurator.setConfigurationSetting(wrd.csystem, cfg.cframeworkConfigFiles, frameworkConfigFilesToLoad);
   universalDebugConfigSetting = await dataBroker.findUniversalDebugConfigSetting(
@@ -329,7 +331,7 @@ async function setupAllJsonConfigPluginData(configFilesPath, contextName) {
  * Can be used to load account data, transaction history logs, activity logs, or any other kind of JSON data.
  * @param {string} dataPath The path to the JSON files that should be loaded.
  * @param {string} contextName The type of data that should be loaded.
- * @return A JSON object that contains all of the data that was loaded and merged together.
+ * @return {object} A JSON object that contains all of the data that was loaded and merged together.
  * @author Seth Hollingsead
  * @date 2023/02/27
  */
@@ -343,11 +345,72 @@ async function loadAllJsonData(dataPath, contextName) {
   let loadedAndMergeDataAllFiles = {};
   let filesToLoad = [];
   filesToLoad = await dataBroker.scanDataPath(dataPath);
+  // filesToLoad is:
   await loggers.consoleLog(namespacePrefix + functionName, msg.cfilesToLoadIs + JSON.stringify(filesToLoad));
-  loadedAndMergeDataAllFiles = await dataBroker.loadAllJsonData(filesToLoad, contextName);
+  if (contextName.toLowerCase() === wrd.cschemas) {
+    loadedAndMergeDataAllFiles = await dataBroker.loadAllJsonDataBruteForce(filesToLoad, contextName);
+  } else {
+    loadedAndMergeDataAllFiles = await dataBroker.loadAllJsonData(filesToLoad, contextName);
+  }
   await loggers.consoleLog(namespacePrefix + functionName, msg.cloadedAndMergedDataAllFilesIs + JSON.stringify(loadedAndMergeDataAllFiles));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return loadedAndMergeDataAllFiles;
+}
+
+/**
+ * @function storeAllSchemaData
+ * @description Stores all of the schema data on the D-data structure by calling the data broker to get the work done.
+ * @param {array&lt;object>} schemaDataObjects An array of JSON objects that contain sets of schema data, loaded from JSON files.
+ * These schema objects control the behavior of the system for certain logical operations in the code base.
+ * @return {boolean} True or False to indicate if the data was stored successfully or not.
+ * @author Seth Hollingsead
+ * @date 2024/10/23
+ */
+async function storeAllSchemaData(schemaDataObjects) {
+  let functionName = storeAllSchemaData.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  // schemaDataObjects is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cschemaDataObjectsIs + JSON.stringify(schemaDataObjects));
+  let returnData = false;
+  let allSchemasStoredSuccess = true; // Assume success unless proven otherwise
+  for (const schemaDataObject of schemaDataObjects) {
+    // schemaDataObject is:
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cschemaDataObjectIs + JSON.stringify(schemaDataObject));
+    if (schemaDataObject) {
+      let storeSuccess = await dataBroker.storeSchemaData(schemaDataObject);
+      // If any store operation fails, set allSchemaStoredSuccess to false
+      if (!storeSuccess) {
+        allSchemasStoredSuccess = false;
+      }
+    } else {
+      // Invalid schemaDataObject, mark overall success as false
+      allSchemasStoredSuccess = false;
+    }
+  }
+  returnData = allSchemasStoredSuccess;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
+/**
+ * @function getSchemaData
+ * @description Gets a specific named schema data object, that should be stored in the system, or all schema data if no name is specified.
+ * @param {string} schemaName The name of the schema object that should exist in the list of currently loaded schemas.
+ * @return {object} A JSON object that contains the schema content for the named schema, if it exists, or all schema data if no name is specified.
+ * @author Seth Hollingsead
+ * @date 2024/11/22
+ * @NOTE Cannot use the loggers here, because of a circular dependency.
+ */
+async function getSchemaData(schemaName) {
+  // let functionName = getSchemaData.name;
+  // await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  // await loggers.consoleLog(namespacePrefix + functionName, msg.cschemaNameIs + schemaName);
+  let returnData = false;
+  returnData = await dataBroker.getSchema(schemaName);
+  // await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  // await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
 }
 
 /**
@@ -424,6 +487,8 @@ export default {
   setupAllJsonConfigData,
   setupAllJsonConfigPluginData,
   loadAllJsonData,
+  storeAllSchemaData,
+  getSchemaData,
   storeData,
   getData,
   clearData
@@ -438,13 +503,13 @@ export default {
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-advanced.html">advanced</a></li><li><a href="module-auxiliary.html">auxiliary</a></li><li><a href="module-auxiliaryArrayParsing.html">auxiliaryArrayParsing</a></li><li><a href="module-auxiliaryStringParsing.html">auxiliaryStringParsing</a></li><li><a href="module-characterArrayParsing.html">characterArrayParsing</a></li><li><a href="module-characterGeneration.html">characterGeneration</a></li><li><a href="module-characterStringParsing.html">characterStringParsing</a></li><li><a href="module-chiefCommander.html">chiefCommander</a></li><li><a href="module-chiefConfiguration.html">chiefConfiguration</a></li><li><a href="module-chiefConstant.html">chiefConstant</a></li><li><a href="module-chiefData.html">chiefData</a></li><li><a href="module-chiefPlugin.html">chiefPlugin</a></li><li><a href="module-chiefTheme.html">chiefTheme</a></li><li><a href="module-chiefWorkflow.html">chiefWorkflow</a></li><li><a href="module-colorizer.html">colorizer</a></li><li><a href="module-commandArrayParsing.html">commandArrayParsing</a></li><li><a href="module-commandBroker.html">commandBroker</a></li><li><a href="module-commandsLibrary.html">commandsLibrary</a></li><li><a href="module-commandStringParsing.html">commandStringParsing</a></li><li><a href="module-configuration.html">configuration</a></li><li><a href="module-configurator.html">configurator</a></li><li><a href="module-constant.html">constant</a></li><li><a href="module-constantArrayParsing.html">constantArrayParsing</a></li><li><a href="module-constantBroker.html">constantBroker</a></li><li><a href="module-constantStringParsing.html">constantStringParsing</a></li><li><a href="module-data.html">data</a></li><li><a href="module-dataArrayParsing.html">dataArrayParsing</a></li><li><a href="module-dataBroker.html">dataBroker</a></li><li><a href="module-dataDirectorate.html">dataDirectorate</a></li><li><a href="module-dataStringParsing.html">dataStringParsing</a></li><li><a href="module-fileOperations.html">fileOperations</a></li><li><a href="module-fileStringParsing.html">fileStringParsing</a></li><li><a href="module-integrationTests.html">integrationTests</a></li><li><a href="module-languageParsing.html">languageParsing</a></li><li><a href="module-lexicalAnalyzer.html">lexicalAnalyzer</a></li><li><a href="module-loggers.html">loggers</a></li><li><a href="module-main.html">main</a></li><li><a href="module-mathOperations.html">mathOperations</a></li><li><a href="module-pathArrayParsing.html">pathArrayParsing</a></li><li><a href="module-performanceMetric.html">performanceMetric</a></li><li><a href="module-pluginBroker.html">pluginBroker</a></li><li><a href="module-plugins.html">plugins</a></li><li><a href="module-promptOperations.html">promptOperations</a></li><li><a href="module-queue.html">queue</a></li><li><a href="module-ruleBroker.html">ruleBroker</a></li><li><a href="module-ruleParsing.html">ruleParsing</a></li><li><a href="module-rulesLibrary.html">rulesLibrary</a></li><li><a href="module-stack.html">stack</a></li><li><a href="module-stringGeneration.html">stringGeneration</a></li><li><a href="module-stringParsingUtilities.html">stringParsingUtilities</a></li><li><a href="module-system.html">system</a></li><li><a href="module-themeBroker.html">themeBroker</a></li><li><a href="module-timeComputation.html">timeComputation</a></li><li><a href="module-warden.html">warden</a></li><li><a href="module-wordArrayParsing.html">wordArrayParsing</a></li><li><a href="module-wordStringParsing.html">wordStringParsing</a></li><li><a href="module-workflowBroker.html">workflowBroker</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-advanced.html">advanced</a></li><li><a href="module-auxiliary.html">auxiliary</a></li><li><a href="module-auxiliaryArrayParsing.html">auxiliaryArrayParsing</a></li><li><a href="module-auxiliaryStringParsing.html">auxiliaryStringParsing</a></li><li><a href="module-characterArrayParsing.html">characterArrayParsing</a></li><li><a href="module-characterGeneration.html">characterGeneration</a></li><li><a href="module-characterStringParsing.html">characterStringParsing</a></li><li><a href="module-chiefCommander.html">chiefCommander</a></li><li><a href="module-chiefConfiguration.html">chiefConfiguration</a></li><li><a href="module-chiefConstant.html">chiefConstant</a></li><li><a href="module-chiefData.html">chiefData</a></li><li><a href="module-chiefPlugin.html">chiefPlugin</a></li><li><a href="module-chiefTheme.html">chiefTheme</a></li><li><a href="module-chiefWorkflow.html">chiefWorkflow</a></li><li><a href="module-colorizer.html">colorizer</a></li><li><a href="module-commandArrayParsing.html">commandArrayParsing</a></li><li><a href="module-commandBroker.html">commandBroker</a></li><li><a href="module-commandsLibrary.html">commandsLibrary</a></li><li><a href="module-commandStringParsing.html">commandStringParsing</a></li><li><a href="module-configuration.html">configuration</a></li><li><a href="module-configurator.html">configurator</a></li><li><a href="module-constant.html">constant</a></li><li><a href="module-constantArrayParsing.html">constantArrayParsing</a></li><li><a href="module-constantBroker.html">constantBroker</a></li><li><a href="module-constantStringParsing.html">constantStringParsing</a></li><li><a href="module-data.html">data</a></li><li><a href="module-dataArrayParsing.html">dataArrayParsing</a></li><li><a href="module-dataBroker.html">dataBroker</a></li><li><a href="module-dataDirectorate.html">dataDirectorate</a></li><li><a href="module-dataStringParsing.html">dataStringParsing</a></li><li><a href="module-fileOperations.html">fileOperations</a></li><li><a href="module-fileStringParsing.html">fileStringParsing</a></li><li><a href="module-integrationTests.html">integrationTests</a></li><li><a href="module-languageParsing.html">languageParsing</a></li><li><a href="module-lexicalAnalyzer.html">lexicalAnalyzer</a></li><li><a href="module-loggers.html">loggers</a></li><li><a href="module-main.html">main</a></li><li><a href="module-mathOperations.html">mathOperations</a></li><li><a href="module-pathArrayParsing.html">pathArrayParsing</a></li><li><a href="module-performanceMetric.html">performanceMetric</a></li><li><a href="module-pluginBroker.html">pluginBroker</a></li><li><a href="module-plugins.html">plugins</a></li><li><a href="module-promptOperations.html">promptOperations</a></li><li><a href="module-queue.html">queue</a></li><li><a href="module-ruleBroker.html">ruleBroker</a></li><li><a href="module-ruleParsing.html">ruleParsing</a></li><li><a href="module-rulesLibrary.html">rulesLibrary</a></li><li><a href="module-socketsClient.html">socketsClient</a></li><li><a href="module-stack.html">stack</a></li><li><a href="module-stringGeneration.html">stringGeneration</a></li><li><a href="module-stringParsingUtilities.html">stringParsingUtilities</a></li><li><a href="module-system.html">system</a></li><li><a href="module-themeBroker.html">themeBroker</a></li><li><a href="module-timeComputation.html">timeComputation</a></li><li><a href="module-warden.html">warden</a></li><li><a href="module-wordArrayParsing.html">wordArrayParsing</a></li><li><a href="module-wordStringParsing.html">wordStringParsing</a></li><li><a href="module-workflowBroker.html">workflowBroker</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Sat Oct 19 2024 20:24:32 GMT-0500 (Central Daylight Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Fri Jan 10 2025 05:31:52 GMT-0600 (Central Standard Time)
 </footer>
 
 <script> prettyPrint(); </script>

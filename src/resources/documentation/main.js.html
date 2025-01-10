@@ -95,6 +95,18 @@ async function initFramework(clientConfiguration) {
   let frameworkWorkflowsPath = '';
   let pluginWorkflowsPath = '';
   frameworkCodeRootPath = await warden.processRootPath(frameworkCodeRootPath, clientConfiguration[sys.cFrameworkName]) + bas.cDoubleForwardSlash;
+  // console.log('frameworkCodeRootPath 1 is: ' + frameworkCodeRootPath);
+  // NOTE: In some cases there is an "/src" at the end of this path. If it's already there, we should strip it off.
+  // Because it will get added again below and /proj/src/src/ will break the whole system!
+  let frameworkCodeRootPathArray = [];
+  frameworkCodeRootPathArray = frameworkCodeRootPath.split(bas.cBackSlash);
+  if (frameworkCodeRootPathArray[frameworkCodeRootPathArray.length - 1].toLowerCase().includes(wrd.csrc)) {
+    // console.log('caught the case that the last element does contain an src entry!! Remove it!!');
+    frameworkCodeRootPathArray.pop();
+    frameworkCodeRootPath = frameworkCodeRootPathArray.join(bas.cBackSlash) + bas.cDoubleForwardSlash;
+  } else {
+    // console.log('caught the case that the last element does NOT contain an src entry!! Do not remove anything!!');
+  }
   if (clientConfiguration[sys.cPluginName]) {
     let srcPath = '';
     if (clientConfiguration[cfg.cappConfigReferencePath].includes(wrd.csrc)) {
@@ -115,6 +127,7 @@ async function initFramework(clientConfiguration) {
     frameworkCodeRootPath = await warden.executeBusinessRules([frameworkCodeRootPath, ''], [biz.cswapBackSlashToForwardSlash]);
     pluginCodeRootPath = await warden.executeBusinessRules([pluginCodeRootPath, ''], [biz.cswapBackSlashToForwardSlash]);
   }
+  // console.log('frameworkCodeRootPath 2 is: ' + frameworkCodeRootPath);
   let frameworkRootPath = frameworkCodeRootPath;
   if (NODE_ENV === wrd.cdevelopment) {
     frameworkCodeRootPath = frameworkCodeRootPath + sys.cFrameworkDevelopRootPath;
@@ -125,6 +138,7 @@ async function initFramework(clientConfiguration) {
     console.log(msg.cApplicationWarningMessage1a + msg.cApplicationWarningMessage1b);
     frameworkCodeRootPath = frameworkCodeRootPath + sys.cFrameworkDevelopRootPath;
   }
+  // console.log('frameworkCodeRootPath 3 is: ' + frameworkCodeRootPath);
   // pluginCodeRootPath is:
   // console.log(msg.cpluginCodeRootPathIs + pluginCodeRootPath);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginCodeRootPathIs + pluginCodeRootPath);
@@ -146,6 +160,7 @@ async function initFramework(clientConfiguration) {
   clientConfiguration[cfg.cpluginFullMetaDataPath] = path.join(clientConfiguration[cfg.cpluginResourcesPath], sys.cmetaDatadotJson);
   clientConfiguration[cfg.cframeworkConfigPath] = frameworkCodeRootPath + sys.cframeworkResourcesConfigurationPath;
   clientConfiguration[cfg.cframeworkThemesPath] = frameworkCodeRootPath + sys.cframeworkThemesPath;
+  clientConfiguration[cfg.cframeworkSchemasPath] = frameworkCodeRootPath + sys.cframeworkSchemasPath;
   clientConfiguration[cfg.cframeworkCommandAliasesPath] = frameworkCommandAliasesPath;
   clientConfiguration[cfg.cpluginCommandAliasesPath] = pluginCommandAliasesPath;
   clientConfiguration[cfg.cframeworkWorkflowsPath] = frameworkWorkflowsPath;
@@ -524,7 +539,7 @@ async function writePluginRegistryToDisk() {
 /**
  * @function loadPlugin
  * @description A wrapper call to the warden.loadPlugin function.
- * Calls various functions in the chiefPlugn and pluginBroker to load plugin metaData and data:
+ * Calls various functions in the chiefPlugin and pluginBroker to load plugin metaData and data:
  * Business rules, Commands, Workflows, Constants, Configurations, dependencies ist(dependant plugins), etc...
  * @param {string} pluginPath The fully qualified path where to load the plugin from.
  * @return {boolean} True or False to indicate if the plugin was loaded or not.
@@ -778,6 +793,52 @@ async function clearData(dataName) {
 }
 
 /**
+ * @function setSchemaData
+ * @description This is a wrapper function for the warden function of the same name. So this function exposes the same functionality
+ * in warden. Essentially sets schema data for a specific schema name. This allows for schemas to be over-written / replaced
+ * according to a client defined schema. This should be used with caution as it is very easy to cause/introduce breaking changes
+ * in the haystacks-async development platform. Extra care should be taken here to only replace a schema with another schema that
+ * adds functionality, or changes functionality but does not remove functionality.
+ * @param {string} schemaName The name of the schema that is being added.
+ * @param {object} schemaDataObject The JSON object that contains the schema data that is being added/replaced/over-written.
+ * @return {boolean} True or False to indicate if the schema was successfully added/replaced/over-written.
+ * @author Seth Hollingsead
+ * @date 2024/12/31
+ */
+async function setSchemaData(schemaName, schemaDataObject) {
+  let functionName = setSchemaData.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  // schemaName is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cschemaNameIs + schemaName);
+  // schemaDataObject is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cschemaDataObjectIs + JSON.stringify(schemaDataObject));
+  let returnData = false;
+  returnData = await warden.setSchemaData(schemaName, schemaDataObject);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
+/**
+ * @function getSchemaData
+ * @description Gets all of the schema data currently stored in the system, or a specific named schema, if a name is provided.
+ * @param {string} schemaName The name of the schema object that should exist in the list of currently loaded schemas.
+ * @return {object} A JSON object that contains all of the currently loaded schemas, or the data for a specific schema.
+ * @author Seth Hollingsead
+ * @date 2024/11/22
+ */
+async function getSchemaData(schemaName) {
+  let functionName = getSchemaData.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cschemaNameIs + schemaName);
+  let returnData = false;
+  returnData = await warden.getSchemaData(schemaName);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
+/**
  * @function executeBusinessRules
  * @description A wrapper call to a business rule from the warden.executeBusinessRules.
  * @param {array&lt;string|integer|boolean|object|function,string|integer|boolean|object|function>} inputs The array of inputs:
@@ -991,6 +1052,8 @@ export default {
   storeData,
   getData,
   clearData,
+  setSchemaData,
+  getSchemaData,
   executeBusinessRules,
   enqueueCommand,
   isCommandQueueEmpty,
@@ -1010,13 +1073,13 @@ export default {
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-advanced.html">advanced</a></li><li><a href="module-auxiliary.html">auxiliary</a></li><li><a href="module-auxiliaryArrayParsing.html">auxiliaryArrayParsing</a></li><li><a href="module-auxiliaryStringParsing.html">auxiliaryStringParsing</a></li><li><a href="module-characterArrayParsing.html">characterArrayParsing</a></li><li><a href="module-characterGeneration.html">characterGeneration</a></li><li><a href="module-characterStringParsing.html">characterStringParsing</a></li><li><a href="module-chiefCommander.html">chiefCommander</a></li><li><a href="module-chiefConfiguration.html">chiefConfiguration</a></li><li><a href="module-chiefConstant.html">chiefConstant</a></li><li><a href="module-chiefData.html">chiefData</a></li><li><a href="module-chiefPlugin.html">chiefPlugin</a></li><li><a href="module-chiefTheme.html">chiefTheme</a></li><li><a href="module-chiefWorkflow.html">chiefWorkflow</a></li><li><a href="module-colorizer.html">colorizer</a></li><li><a href="module-commandArrayParsing.html">commandArrayParsing</a></li><li><a href="module-commandBroker.html">commandBroker</a></li><li><a href="module-commandsLibrary.html">commandsLibrary</a></li><li><a href="module-commandStringParsing.html">commandStringParsing</a></li><li><a href="module-configuration.html">configuration</a></li><li><a href="module-configurator.html">configurator</a></li><li><a href="module-constant.html">constant</a></li><li><a href="module-constantArrayParsing.html">constantArrayParsing</a></li><li><a href="module-constantBroker.html">constantBroker</a></li><li><a href="module-constantStringParsing.html">constantStringParsing</a></li><li><a href="module-data.html">data</a></li><li><a href="module-dataArrayParsing.html">dataArrayParsing</a></li><li><a href="module-dataBroker.html">dataBroker</a></li><li><a href="module-dataDirectorate.html">dataDirectorate</a></li><li><a href="module-dataStringParsing.html">dataStringParsing</a></li><li><a href="module-fileOperations.html">fileOperations</a></li><li><a href="module-fileStringParsing.html">fileStringParsing</a></li><li><a href="module-integrationTests.html">integrationTests</a></li><li><a href="module-languageParsing.html">languageParsing</a></li><li><a href="module-lexicalAnalyzer.html">lexicalAnalyzer</a></li><li><a href="module-loggers.html">loggers</a></li><li><a href="module-main.html">main</a></li><li><a href="module-mathOperations.html">mathOperations</a></li><li><a href="module-pathArrayParsing.html">pathArrayParsing</a></li><li><a href="module-performanceMetric.html">performanceMetric</a></li><li><a href="module-pluginBroker.html">pluginBroker</a></li><li><a href="module-plugins.html">plugins</a></li><li><a href="module-promptOperations.html">promptOperations</a></li><li><a href="module-queue.html">queue</a></li><li><a href="module-ruleBroker.html">ruleBroker</a></li><li><a href="module-ruleParsing.html">ruleParsing</a></li><li><a href="module-rulesLibrary.html">rulesLibrary</a></li><li><a href="module-stack.html">stack</a></li><li><a href="module-stringGeneration.html">stringGeneration</a></li><li><a href="module-stringParsingUtilities.html">stringParsingUtilities</a></li><li><a href="module-system.html">system</a></li><li><a href="module-themeBroker.html">themeBroker</a></li><li><a href="module-timeComputation.html">timeComputation</a></li><li><a href="module-warden.html">warden</a></li><li><a href="module-wordArrayParsing.html">wordArrayParsing</a></li><li><a href="module-wordStringParsing.html">wordStringParsing</a></li><li><a href="module-workflowBroker.html">workflowBroker</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-advanced.html">advanced</a></li><li><a href="module-auxiliary.html">auxiliary</a></li><li><a href="module-auxiliaryArrayParsing.html">auxiliaryArrayParsing</a></li><li><a href="module-auxiliaryStringParsing.html">auxiliaryStringParsing</a></li><li><a href="module-characterArrayParsing.html">characterArrayParsing</a></li><li><a href="module-characterGeneration.html">characterGeneration</a></li><li><a href="module-characterStringParsing.html">characterStringParsing</a></li><li><a href="module-chiefCommander.html">chiefCommander</a></li><li><a href="module-chiefConfiguration.html">chiefConfiguration</a></li><li><a href="module-chiefConstant.html">chiefConstant</a></li><li><a href="module-chiefData.html">chiefData</a></li><li><a href="module-chiefPlugin.html">chiefPlugin</a></li><li><a href="module-chiefTheme.html">chiefTheme</a></li><li><a href="module-chiefWorkflow.html">chiefWorkflow</a></li><li><a href="module-colorizer.html">colorizer</a></li><li><a href="module-commandArrayParsing.html">commandArrayParsing</a></li><li><a href="module-commandBroker.html">commandBroker</a></li><li><a href="module-commandsLibrary.html">commandsLibrary</a></li><li><a href="module-commandStringParsing.html">commandStringParsing</a></li><li><a href="module-configuration.html">configuration</a></li><li><a href="module-configurator.html">configurator</a></li><li><a href="module-constant.html">constant</a></li><li><a href="module-constantArrayParsing.html">constantArrayParsing</a></li><li><a href="module-constantBroker.html">constantBroker</a></li><li><a href="module-constantStringParsing.html">constantStringParsing</a></li><li><a href="module-data.html">data</a></li><li><a href="module-dataArrayParsing.html">dataArrayParsing</a></li><li><a href="module-dataBroker.html">dataBroker</a></li><li><a href="module-dataDirectorate.html">dataDirectorate</a></li><li><a href="module-dataStringParsing.html">dataStringParsing</a></li><li><a href="module-fileOperations.html">fileOperations</a></li><li><a href="module-fileStringParsing.html">fileStringParsing</a></li><li><a href="module-integrationTests.html">integrationTests</a></li><li><a href="module-languageParsing.html">languageParsing</a></li><li><a href="module-lexicalAnalyzer.html">lexicalAnalyzer</a></li><li><a href="module-loggers.html">loggers</a></li><li><a href="module-main.html">main</a></li><li><a href="module-mathOperations.html">mathOperations</a></li><li><a href="module-pathArrayParsing.html">pathArrayParsing</a></li><li><a href="module-performanceMetric.html">performanceMetric</a></li><li><a href="module-pluginBroker.html">pluginBroker</a></li><li><a href="module-plugins.html">plugins</a></li><li><a href="module-promptOperations.html">promptOperations</a></li><li><a href="module-queue.html">queue</a></li><li><a href="module-ruleBroker.html">ruleBroker</a></li><li><a href="module-ruleParsing.html">ruleParsing</a></li><li><a href="module-rulesLibrary.html">rulesLibrary</a></li><li><a href="module-socketsClient.html">socketsClient</a></li><li><a href="module-stack.html">stack</a></li><li><a href="module-stringGeneration.html">stringGeneration</a></li><li><a href="module-stringParsingUtilities.html">stringParsingUtilities</a></li><li><a href="module-system.html">system</a></li><li><a href="module-themeBroker.html">themeBroker</a></li><li><a href="module-timeComputation.html">timeComputation</a></li><li><a href="module-warden.html">warden</a></li><li><a href="module-wordArrayParsing.html">wordArrayParsing</a></li><li><a href="module-wordStringParsing.html">wordStringParsing</a></li><li><a href="module-workflowBroker.html">workflowBroker</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Sat Oct 19 2024 20:24:32 GMT-0500 (Central Daylight Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Fri Jan 10 2025 05:31:52 GMT-0600 (Central Standard Time)
 </footer>
 
 <script> prettyPrint(); </script>
