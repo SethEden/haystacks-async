@@ -7,6 +7,37 @@
           <Workflow Name="languageParsingDisable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.languageParsing false"/>
           <Workflow Name="languageToAlphabetEnable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.languageParsing.languageToAlphabet true"/>
           <Workflow Name="languageToAlphabetDisable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.languageParsing.languageToAlphabet false"/>
+          <Workflow Name="getEnglishAlphabetEnable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.languageParsing.getEnglishAlphabet true"/>
+          <Workflow Name="getEnglishAlphabetDisable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.languageParsing.getEnglishAlphabet false"/>
+          <Workflow Name="getChineseSimplifiedAlphabetEnable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.languageParsing.getChineseSimplifiedAlphabet true"/>
+          <Workflow Name="getChineseSimplifiedAlphabetDisable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.languageParsing.getChineseSimplifiedAlphabet false"/>
+          <Workflow Name="getChineseTraditionalAlphabetEnable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.languageParsing.getChineseTraditionalAlphabet true"/>
+          <Workflow Name="getChineseTraditionalAlphabetDisable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.languageParsing.getChineseTraditionalAlphabet false"/>
+          <Workflow Name="getCzechAlphabetEnable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.languageParsing.getCzechAlphabet true"/>
+          <Workflow Name="getCzechAlphabetDisable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.languageParsing.getCzechAlphabet false"/>
+          <Workflow Name="getFrenchAlphabetEnable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.languageParsing.getFrenchAlphabet true"/>
+          <Workflow Name="getFrenchAlphabetDisable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.languageParsing.getFrenchAlphabet false"/>
+          <Workflow Name="getGermanAlphabetEnable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.languageParsing.getGermanAlphabet true"/>
+          <Workflow Name="getGermanAlphabetDisable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.languageParsing.getGermanAlphabet false"/>
+          <Workflow Name="getHungarianAlphabetEnable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.languageParsing.getHungarianAlphabet true"/>
+          <Workflow Name="getHungarianAlphabetDisable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.languageParsing.getHungarianAlphabet false"/>
+          <Workflow Name="getItalianAlphabetEnable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.languageParsing.getItalianAlphabet true"/>
+          <Workflow Name="getItalianAlphabetDisable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.languageParsing.getItalianAlphabet false"/>
+          <Workflow Name="getJapaneseAlphabetEnable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.languageParsing.getJapaneseAlphabet true"/>
+          <Workflow Name="getJapaneseAlphabetDisable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.languageParsing.getJapaneseAlphabet false"/>
+          <Workflow Name="getKoreanAlphabetEnable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.languageParsing.getKoreanAlphabet true"/>
+          <Workflow Name="getKoreanAlphabetDisable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.languageParsing.getKoreanAlphabet false"/>
+          <Workflow Name="getMiscellaneousAlphabetEnable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.languageParsing.getMiscellaneousAlphabet true"/>
+          <Workflow Name="getMiscellaneousAlphabetDisable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.languageParsing.getMiscellaneousAlphabet false"/>
+          <Workflow Name="getPolishAlphabetEnable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.languageParsing.getPolishAlphabet true"/>
+          <Workflow Name="getPolishAlphabetDisable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.languageParsing.getPolishAlphabet false"/>
+          <Workflow Name="getPortugueseAlphabetEnable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.languageParsing.getPortugueseAlphabet true"/>
+          <Workflow Name="getPortugueseAlphabetDisable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.languageParsing.getPortugueseAlphabet false"/>
+          <Workflow Name="getRussianAlphabetEnable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.languageParsing.getRussianAlphabet true"/>
+          <Workflow Name="getRussianAlphabetDisable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.languageParsing.getRussianAlphabet false"/>
+          <Workflow Name="getSpanishAlphabetEnable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.languageParsing.getSpanishAlphabet true"/>
+          <Workflow Name="getSpanishAlphabetDisable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.languageParsing.getSpanishAlphabet false"/>
+
         </languageParsing>
       </rules>
     </businessRules>

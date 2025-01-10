@@ -67,6 +67,18 @@ async function initFramework(clientConfiguration) {
   let frameworkWorkflowsPath = '';
   let pluginWorkflowsPath = '';
   frameworkCodeRootPath = await warden.processRootPath(frameworkCodeRootPath, clientConfiguration[sys.cFrameworkName]) + bas.cDoubleForwardSlash;
+  // console.log('frameworkCodeRootPath 1 is: ' + frameworkCodeRootPath);
+  // NOTE: In some cases there is an "/src" at the end of this path. If it's already there, we should strip it off.
+  // Because it will get added again below and /proj/src/src/ will break the whole system!
+  let frameworkCodeRootPathArray = [];
+  frameworkCodeRootPathArray = frameworkCodeRootPath.split(bas.cBackSlash);
+  if (frameworkCodeRootPathArray[frameworkCodeRootPathArray.length - 1].toLowerCase().includes(wrd.csrc)) {
+    // console.log('caught the case that the last element does contain an src entry!! Remove it!!');
+    frameworkCodeRootPathArray.pop();
+    frameworkCodeRootPath = frameworkCodeRootPathArray.join(bas.cBackSlash) + bas.cDoubleForwardSlash;
+  } else {
+    // console.log('caught the case that the last element does NOT contain an src entry!! Do not remove anything!!');
+  }
   if (clientConfiguration[sys.cPluginName]) {
     let srcPath = '';
     if (clientConfiguration[cfg.cappConfigReferencePath].includes(wrd.csrc)) {
@@ -87,6 +99,7 @@ async function initFramework(clientConfiguration) {
     frameworkCodeRootPath = await warden.executeBusinessRules([frameworkCodeRootPath, ''], [biz.cswapBackSlashToForwardSlash]);
     pluginCodeRootPath = await warden.executeBusinessRules([pluginCodeRootPath, ''], [biz.cswapBackSlashToForwardSlash]);
   }
+  // console.log('frameworkCodeRootPath 2 is: ' + frameworkCodeRootPath);
   let frameworkRootPath = frameworkCodeRootPath;
   if (NODE_ENV === wrd.cdevelopment) {
     frameworkCodeRootPath = frameworkCodeRootPath + sys.cFrameworkDevelopRootPath;
@@ -97,6 +110,7 @@ async function initFramework(clientConfiguration) {
     console.log(msg.cApplicationWarningMessage1a + msg.cApplicationWarningMessage1b);
     frameworkCodeRootPath = frameworkCodeRootPath + sys.cFrameworkDevelopRootPath;
   }
+  // console.log('frameworkCodeRootPath 3 is: ' + frameworkCodeRootPath);
   // pluginCodeRootPath is:
   // console.log(msg.cpluginCodeRootPathIs + pluginCodeRootPath);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cpluginCodeRootPathIs + pluginCodeRootPath);
@@ -118,6 +132,7 @@ async function initFramework(clientConfiguration) {
   clientConfiguration[cfg.cpluginFullMetaDataPath] = path.join(clientConfiguration[cfg.cpluginResourcesPath], sys.cmetaDatadotJson);
   clientConfiguration[cfg.cframeworkConfigPath] = frameworkCodeRootPath + sys.cframeworkResourcesConfigurationPath;
   clientConfiguration[cfg.cframeworkThemesPath] = frameworkCodeRootPath + sys.cframeworkThemesPath;
+  clientConfiguration[cfg.cframeworkSchemasPath] = frameworkCodeRootPath + sys.cframeworkSchemasPath;
   clientConfiguration[cfg.cframeworkCommandAliasesPath] = frameworkCommandAliasesPath;
   clientConfiguration[cfg.cpluginCommandAliasesPath] = pluginCommandAliasesPath;
   clientConfiguration[cfg.cframeworkWorkflowsPath] = frameworkWorkflowsPath;
@@ -496,7 +511,7 @@ async function writePluginRegistryToDisk() {
 /**
  * @function loadPlugin
  * @description A wrapper call to the warden.loadPlugin function.
- * Calls various functions in the chiefPlugn and pluginBroker to load plugin metaData and data:
+ * Calls various functions in the chiefPlugin and pluginBroker to load plugin metaData and data:
  * Business rules, Commands, Workflows, Constants, Configurations, dependencies ist(dependant plugins), etc...
  * @param {string} pluginPath The fully qualified path where to load the plugin from.
  * @return {boolean} True or False to indicate if the plugin was loaded or not.
@@ -750,6 +765,52 @@ async function clearData(dataName) {
 }
 
 /**
+ * @function setSchemaData
+ * @description This is a wrapper function for the warden function of the same name. So this function exposes the same functionality
+ * in warden. Essentially sets schema data for a specific schema name. This allows for schemas to be over-written / replaced
+ * according to a client defined schema. This should be used with caution as it is very easy to cause/introduce breaking changes
+ * in the haystacks-async development platform. Extra care should be taken here to only replace a schema with another schema that
+ * adds functionality, or changes functionality but does not remove functionality.
+ * @param {string} schemaName The name of the schema that is being added.
+ * @param {object} schemaDataObject The JSON object that contains the schema data that is being added/replaced/over-written.
+ * @return {boolean} True or False to indicate if the schema was successfully added/replaced/over-written.
+ * @author Seth Hollingsead
+ * @date 2024/12/31
+ */
+async function setSchemaData(schemaName, schemaDataObject) {
+  let functionName = setSchemaData.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  // schemaName is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cschemaNameIs + schemaName);
+  // schemaDataObject is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cschemaDataObjectIs + JSON.stringify(schemaDataObject));
+  let returnData = false;
+  returnData = await warden.setSchemaData(schemaName, schemaDataObject);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
+/**
+ * @function getSchemaData
+ * @description Gets all of the schema data currently stored in the system, or a specific named schema, if a name is provided.
+ * @param {string} schemaName The name of the schema object that should exist in the list of currently loaded schemas.
+ * @return {object} A JSON object that contains all of the currently loaded schemas, or the data for a specific schema.
+ * @author Seth Hollingsead
+ * @date 2024/11/22
+ */
+async function getSchemaData(schemaName) {
+  let functionName = getSchemaData.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cschemaNameIs + schemaName);
+  let returnData = false;
+  returnData = await warden.getSchemaData(schemaName);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
+/**
  * @function executeBusinessRules
  * @description A wrapper call to a business rule from the warden.executeBusinessRules.
  * @param {array<string|integer|boolean|object|function,string|integer|boolean|object|function>} inputs The array of inputs:
@@ -963,6 +1024,8 @@ export default {
   storeData,
   getData,
   clearData,
+  setSchemaData,
+  getSchemaData,
   executeBusinessRules,
   enqueueCommand,
   isCommandQueueEmpty,

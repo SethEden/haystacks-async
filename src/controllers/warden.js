@@ -39,7 +39,6 @@ import D from '../structures/data.js';
 // External imports
 import hayConst from '@haystacks/constants';
 import path from 'path';
-import { config } from 'process'
 
 const {bas, biz, cmd, cfg, gen, msg, sys, wrd} = hayConst;
 const baseFileName = path.basename(import.meta.url, path.extname(import.meta.url));
@@ -91,6 +90,7 @@ async function initFrameworkSchema(configData) {
   const appConfigPath = configData[cfg.cappConfigPath];
   const frameworkConfigPath = configData[cfg.cframeworkConfigPath];
   await chiefConfiguration.setupConfiguration(appConfigPath, frameworkConfigPath);
+  await configurator.setConfigurationSetting(wrd.csystem, cfg.cschemasLoaded, false);
   // re-declare the input now that the configuration is setup.
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cconfigDataIs + JSON.stringify(configData));
@@ -135,6 +135,8 @@ async function initFrameworkSchema(configData) {
   await configurator.setConfigurationSetting(wrd.csystem, cfg.cframeworkFullMetaDataPath, configData[cfg.cframeworkFullMetaDataPath]);
   await configurator.setConfigurationSetting(wrd.csystem, cfg.cframeworkConfigPath, configData[cfg.cframeworkConfigPath]);
   await configurator.setConfigurationSetting(wrd.csystem, cfg.cframeworkThemesPath, configData[cfg.cframeworkThemesPath]);
+  await configurator.setConfigurationSetting(wrd.csystem, cfg.cframeworkSchemasPath, configData[cfg.cframeworkSchemasPath]);
+  await configurator.setConfigurationSetting(wrd.csystem, cfg.capplicationSchemasPath, configData[cfg.capplicationSchemasPath]);
   await configurator.setConfigurationSetting(wrd.csystem, cfg.cframeworkCommandAliasesPath, configData[cfg.cframeworkCommandAliasesPath]);
   await configurator.setConfigurationSetting(wrd.csystem, cfg.cframeworkWorkflowsPath, configData[cfg.cframeworkWorkflowsPath]);
 
@@ -156,6 +158,8 @@ async function initFrameworkSchema(configData) {
   await loggers.consoleLog(namespacePrefix + functionName, msg.cframeworkFullMetaDataPathIs + configData[cfg.cframeworkFullMetaDataPath]);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cframeworkConfigPathIs + configData[cfg.cframeworkConfigPath]);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cframeworkThemesPathIs + configData[cfg.cframeworkThemesPath]);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cframeworkSchemasPathIs + configData[cfg.cframeworkSchemasPath]);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.capplicationSchemasPathIs + configData[cfg.capplicationSchemasPath]);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cframeworkCommandAliasesPathIs + configData[cfg.cframeworkCommandAliasesPath]);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cframeworkWorkflowsPathIs + configData[cfg.cframeworkWorkflowsPath]);
 
@@ -248,6 +252,9 @@ async function initFrameworkSchema(configData) {
       await chiefTheme.addThemeData(applicationThemeData, wrd.cApplication);
     }
   }
+
+  // Setup all schemas
+  await loadAllSchemas();
 
   // NOTE: We need this here, because the plugin itself will try to create an instance of haystacks to re-use its functionality.
   // When that happens the plugin will send execution back here and haystacks would again try to load the plugin from within the plugin!
@@ -458,6 +465,43 @@ async function loadCommandWorkflows(workflowPathConfigName) {
     }
   }
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+}
+
+/**
+ * @function loadAllSchemas
+ * @description Loads all of the schema data that will be used to control code behavior and business rule dissemination of execution logic.
+ * @return {boolean} True or False to indicate if all of the schema's were loaded and stored or not.
+ * @author Seth Hollingsead
+ * @date 2024/10/23
+ */
+async function loadAllSchemas() {
+  let functionName = loadAllSchemas.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  let returnData = false;
+  await dataBroker.initSchemaStorage();
+  let frameworkSchemasPath = await configurator.getConfigurationSetting(wrd.csystem, cfg.cframeworkSchemasPath);
+  // frameworkSchemasPath is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cframeworkSchemasPathIs + frameworkSchemasPath);
+  let applicationSchemasPath = await configurator.getConfigurationSetting(wrd.csystem, cfg.capplicationSchemasPath);
+  // applicationSchemasPath is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.capplicationSchemasPathIs + applicationSchemasPath);
+  if (frameworkSchemasPath) {
+    let frameworkSchemasData = await chiefData.loadAllJsonData(frameworkSchemasPath, wrd.cSchemas);
+    // frameworkSchemasData is:
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cframeworkSchemasDataIs + JSON.stringify(frameworkSchemasData));
+    returnData = await chiefData.storeAllSchemaData([frameworkSchemasData]);
+    await configurator.setConfigurationSetting(wrd.csystem, cfg.cschemasLoaded, true);
+  }
+  if (applicationSchemasPath) {
+    let applicationSchemasData = await chiefData.loadAllJsonData(applicationSchemasPath, wrd.cSchemas);
+    // applicationSchemasData is:
+    await loggers.consoleLog(namespacePrefix + functionName, msg.capplicationSchemasDataIs + JSON.stringify(applicationSchemasData));
+    returnData = await chiefData.storeAllSchemaData([applicationSchemasData]);
+  }
+  // await loggers.consoleLog(namespacePrefix + functionName, 'Contents of D are: ' + JSON.stringify(D));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
 }
 
 /**
@@ -897,7 +941,7 @@ async function loadPluginResourceData(contextName, pluginResourcePath) {
  * Can be used to load account data, transaction history logs, activity logs, or any other kind of JSON data.
  * @param {string} dataPath The path to the JSON files that should be loaded.
  * @param {string} contextName The type of data that should be loaded.
- * @return A JSON object that contains all of the data that was loaded and merged together.
+ * @return {object} A JSON object that contains all of the data that was loaded and merged together.
  * @author Seth Hollingsead
  * @date 2023/02/27
  */
@@ -975,6 +1019,58 @@ async function clearData(dataName) {
   let returnData = false;
   returnData = await chiefData.clearData(dataName);
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
+/**
+ * @function setSchemaData
+ * @description Sets the schema data for a specific schema name. This allows for schemas to be over-written / replaced
+ * according to a client defined schema. This should be used with caution as it is very easy to cause/introduce breaking changes
+ * in the haystacks-async development platform. Extra care should be taken here to only replace a schema with another schema that
+ * adds functionality, or changes functionality but does not remove functionality.
+ * @param {string} schemaName The name of the schema that is being added.
+ * @param {object} schemaDataObject The JSON object that contains the schema data that is being added/replaced/over-written.
+ * @return {boolean} True or False to indicate if the schema was successfully added/replaced/over-written.
+ * @author Seth Hollingsead
+ * @date 2024/12/31
+ */
+async function setSchemaData(schemaName, schemaDataObject) {
+  let functionName = setSchemaData.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  // schemaName is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cschemaNameIs + schemaName);
+  // schemaDataObject is:
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cschemaDataObjectIs + JSON.stringify(schemaDataObject));
+  let returnData = false;
+  let schemasArray = [];
+  let singleSchemaObject = {
+    [wrd.cschemas]: {
+      [schemaName]: schemaDataObject
+    }
+  };
+  schemasArray.push(singleSchemaObject);
+  returnData = await chiefData.storeAllSchemaData(schemasArray);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
+/**
+ * @function getSchemaData
+ * @description Gets a specific named schema data object, that should be stored in the system, or all schema data if no name is specified.
+ * @param {string} schemaName The name of the schema object that should exist in the list of currently loaded schemas.
+ * @return {object} A JSON object that contains the schema content for the named schema, if it exists, or all schema data if no name is specified.
+ * @author Seth Hollingsead
+ * @date 2024/11/22
+ */
+async function getSchemaData(schemaName) {
+  let functionName = getSchemaData.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cschemaNameIs + schemaName);
+  let returnData = false;
+  returnData = await chiefData.getSchemaData(schemaName);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
 }
@@ -1169,6 +1265,7 @@ export default {
   mergeClientCommands,
   loadCommandAliases,
   loadCommandWorkflows,
+  loadAllSchemas,
   listLoadedPlugins,
   listAllPluginsInRegistry,
   listAllPluginsInRegistryPath,
@@ -1192,6 +1289,8 @@ export default {
   storeData,
   getData,
   clearData,
+  setSchemaData,
+  getSchemaData,
   executeBusinessRules,
   enqueueCommand,
   isCommandQueueEmpty,

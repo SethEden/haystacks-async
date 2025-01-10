@@ -13,6 +13,8 @@
           <Workflow Name="getJsonDataDisable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.fileOperations.getJsonData false"/>
           <Workflow Name="writeJsonDataEnable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.fileOperations.writeJsonData true"/>
           <Workflow Name="writeJsonDataDisable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.fileOperations.writeJsonData false"/>
+          <Workflow Name="writeAsciiDataEnable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.fileOperations.writeAsciiData true"/>
+          <Workflow Name="writeAsciiDataDisable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.fileOperations.writeAsciiData false"/>
           <Workflow Name="loadAsciiFileFromPathEnable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.fileOperations.loadAsciiFileFromPath true"/>
           <Workflow Name="loadAsciiFileFromPathDisable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.fileOperations.loadAsciiFileFromPath false"/>
           <Workflow Name="scanDirectoryContentsEnable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.fileOperations.scanDirectoryContents true"/>

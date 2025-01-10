@@ -18,14 +18,18 @@
         <Workflow Name="setupAllJsonConfigDataDisable" Value="changeConfigSetting debugSetting.framework.controllers.chiefData.setupAllJsonConfigData false"/>
         <Workflow Name="setupAllJsonConfigPluginDataEnable" Value="changeConfigSetting debugSetting.framework.controllers.chiefData.setupAllJsonConfigPluginData true"/>
         <Workflow Name="setupAllJsonConfigPluginDataDisable" Value="changeConfigSetting debugSetting.framework.controllers.chiefData.setupAllJsonConfigPluginData false"/>
-        <Workflow Name="chiefDataloadAllJsonDataEnable" Value="changeConfigSetting debugSetting.framework.controllers.chiefData.loadAllJsonData true"/>
-        <Workflow Name="chiefDataloadAllJsonDataDisable" Value="changeConfigSetting debugSetting.framework.controllers.chiefData.loadAllJsonData false"/>
+        <Workflow Name="chiefDataLoadAllJsonDataEnable" Value="changeConfigSetting debugSetting.framework.controllers.chiefData.loadAllJsonData true"/>
+        <Workflow Name="chiefDataLoadAllJsonDataDisable" Value="changeConfigSetting debugSetting.framework.controllers.chiefData.loadAllJsonData false"/>
+        <Workflow Name="chiefDataStoreAllSchemaDataEnable" Value="changeConfigSetting debugSetting.framework.controllers.chiefData.storeAllSchemaData true"/>
+        <Workflow Name="chiefDataStoreAllSchemaDataDisable" Value="changeConfigSetting debugSetting.framework.controllers.chiefData.storeAllSchemaData false"/>
         <Workflow Name="chiefDataStoreDataEnable" Value="changeConfigSetting debugSetting.framework.controllers.chiefData.storeData true"/>
         <Workflow Name="chiefDataStoreDataDisable" Value="changeConfigSetting debugSetting.framework.controllers.chiefData.storeData false"/>
         <Workflow Name="chiefDataGetDataEnable" Value="changeConfigSetting debugSetting.framework.controllers.chiefData.getData true"/>
         <Workflow Name="chiefDataGetDataDisable" Value="changeConfigSetting debugSetting.framework.controllers.chiefData.getData false"/>
         <Workflow Name="chiefDataClearDataEnable" Value="changeConfigSetting debugSetting.framework.controllers.chiefData.clearData true"/>
         <Workflow Name="chiefDataClearDataDisable" Value="changeConfigSetting debugSetting.framework.controllers.chiefData.clearData false"/>
+        <Workflow Name="chiefDataGetSchemaDataEnable" Value="changeConfigSetting debugSetting.framework.controllers.chiefData.getSchemaData true"/>
+        <Workflow Name="chiefDataGetSchemaDataDisable" Value="changeConfigSetting debugSetting.framework.controllers.chiefData.getSchemaData false"/>
       </chiefData>
     </controllers>
   </debug>

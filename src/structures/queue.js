@@ -83,7 +83,7 @@ async function enqueue(queueNameSpace, value) {
 /**
  * @function enqueueFront
  * @description Adds the value to the front of the specified namespace queue.
- * @param {string} queueNameSpace The namespace the queue array should have a value added to.
+ * @param {string} queueNameSpace The namespace the queue array should have a value added to to the front.
  * @param {string|array<string>} value The value that should be added to the specified queue array,
  * it could be a string value or an array of string values.
  * @return {void}

@@ -22,7 +22,7 @@ import path from 'path';
 
 const {bas, cmd, msg, wrd} = hayConst;
 const baseFileName = path.basename(import.meta.url, path.extname(import.meta.url));
-// applicatino.testHarness.commands.clientCommands.applicationTests.
+// application.testHarness.commands.clientCommands.applicationTests.
 const namespacePrefix = wrd.capplication + bas.cDot + apc.cApplicationName + bas.cDot + wrd.ccommands + bas.cDot + wrd.cclient + wrd.cCommands + bas.cDot + baseFileName + bas.cDot;
 
 /**

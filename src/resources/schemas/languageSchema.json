@@ -1,0 +1,47 @@
+{
+    "english": {
+        "businessRule": "getEnglishAlphabet"
+    },
+    "chinesesimplified": {
+        "businessRule": "getChineseSimplifiedAlphabet"
+    },
+    "chinesetraditional": {
+        "businessRule": "getChineseTraditionalAlphabet"
+    },
+    "czech": {
+        "businessRule": "getCzechAlphabet"
+    },
+    "french": {
+        "businessRule": "getFrenchAlphabet"
+    },
+    "german": {
+        "businessRule": "getGermanAlphabet"
+    },
+    "hungarian": {
+        "businessRule": "getHungarianAlphabet"
+    },
+    "italian": {
+        "businessRule": "getItalianAlphabet"
+    },
+    "japanese": {
+        "businessRule": "getJapaneseAlphabet"
+    },
+    "korean": {
+        "businessRule": "getKoreanAlphabet"
+    },
+    "miscellaneous": {
+        "businessRule": "getMiscellaneousAlphabet"
+    },
+    "polish": {
+        "businessRule": "getPolishAlphabet"
+    },
+    "portuguese": {
+        "businessRule": "getPortugueseAlphabet"
+    },
+    "russian": {
+        "businessRule": "getRussianAlphabet"
+    },
+    "spanish": {
+        "businessRule": "getSpanishAlphabet"
+    }
+}
