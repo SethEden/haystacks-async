@@ -16,6 +16,8 @@
         <Workflow Name="wardenLoadCommandAliasesDisable" Value="changeConfigSetting debugSetting.framework.controllers.warden.loadCommandAliases false"/>
         <Workflow Name="wardenLoadCommandWorkflowsEnable" Value="changeConfigSetting debugSetting.framework.controllers.warden.loadCommandWorkflows true"/>
         <Workflow Name="wardenLoadCommandWorkflowsDisable" Value="changeConfigSetting debugSetting.framework.controllers.warden.loadCommandWorkflows false"/>
+        <Workflow Name="wardenLoadAllSchemasEnable" Value="changeConfigSetting debugSetting.framework.controllers.warden.loadAllSchemas true"/>
+        <Workflow Name="wardenLoadAllSchemasDisable" Value="changeConfigSetting debugSetting.framework.controllers.warden.loadAllSchemas false"/>
         <Workflow Name="wardenListLoadedPluginsEnable" Value="changeConfigSetting debugSetting.framework.controllers.warden.listLoadedPlugins true"/>
         <Workflow Name="wardenListLoadedPluginsDisable" Value="changeConfigSetting debugSetting.framework.controllers.warden.listLoadedPlugins false"/>
         <Workflow Name="wardenListAllPluginsInRegistryEnable" Value="changeConfigSetting debugSetting.framework.controllers.warden.listAllPluginsInRegistry true"/>
@@ -62,6 +64,10 @@
         <Workflow Name="wardenGetDataDisable" Value="changeConfigSetting debugSetting.framework.controllers.warden.getData false"/>
         <Workflow Name="wardenClearDataEnable" Value="changeConfigSetting debugSetting.framework.controllers.warden.clearData true"/>
         <Workflow Name="wardenClearDataDisable" Value="changeConfigSetting debugSetting.framework.controllers.warden.clearData false"/>
+        <Workflow Name="wardenSetSchemaDataEnable" Value="changeConfigSetting debugSetting.framework.controllers.warden.setSchemaData true"/>
+        <Workflow Name="wardenSetSchemaDataDisable" Value="changeConfigSetting debugSetting.framework.controllers.warden.setSchemaData false"/>
+        <Workflow Name="wardenGetSchemaDataEnable" Value="changeConfigSetting debugSetting.framework.controllers.warden.getSchemaData true"/>
+        <Workflow Name="wardenGetSchemaDataDisable" Value="changeConfigSetting debugSetting.framework.controllers.warden.getSchemaData false"/>
         <Workflow Name="executeBusinessRulesEnable" Value="changeConfigSetting debugSetting.framework.controllers.warden.executeBusinessRules true"/>
         <Workflow Name="executeBusinessRulesDisable" Value="changeConfigSetting debugSetting.framework.controllers.warden.executeBusinessRules false"/>
         <Workflow Name="wardenEnqueueCommandEnable" Value="changeConfigSetting debugSetting.framework.controllers.warden.enqueueCommand true"/>

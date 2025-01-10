@@ -17,6 +17,7 @@ import loggers from '../../executrix/loggers.js';
 // External imports
 import hayConst from '@haystacks/constants';
 import moment from 'moment';
+import 'moment-duration-format';
 import path from 'path';
 
 const {bas, gen, msg, sys, wrd} = hayConst;
@@ -86,7 +87,14 @@ async function reformatDeltaTime(inputData, inputMetaData) {
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = '';
-  returnData = moment.duration(inputData).format(inputMetaData);
+  try {
+    // Ensure `inputMetaData` has a valid format or provide a default
+    const defaultFormat = gen.chhmmss; // Default format: hours:minutes:seconds
+    returnData = moment.duration(inputData).format(inputMetaData || defaultFormat);
+  } catch (error) {
+    await loggers.consoleLog(namespacePrefix + functionName, msg.cERROR_Colon + error.message);
+    throw error; // Re-throw the error for higher-level handling
+  }
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
@@ -101,6 +109,13 @@ async function reformatDeltaTime(inputData, inputMetaData) {
  * @author Seth Hollingsead
  * @date 2022/05/04 - May the Forth be with you!! ;-)
  * @reference {@link https://www.sitepoint.com/delay-sleep-pause-wait/}
+ * @NOTE This is a blocking sleep function to introduce a delay in execution.
+ * This function uses essentially a busy-waite loop to block execution for the specified
+ * number of milliseconds. While this ensures stabilization for certain execution scenarios or use cases.
+ * It is highly discouraged to use this function frequently due to:
+ *  - High CPU usage during the delay.
+ *  - Blocking the event loop, which prevents other asynchronous tasks from running.
+ * Use this function ONLY when absolutely necessary and where non-blocking alternatives are not feasible.
  */
 async function sleep(inputData, inputMetaData) {
   let functionName = sleep.name;

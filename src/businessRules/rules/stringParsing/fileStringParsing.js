@@ -56,6 +56,54 @@ async function getFileNameFromPath(inputData, inputMetaData) {
 }
 
 /**
+ * @function removeFileNameFromPath
+ * @description Removes the file name from a string that contains a path and file name.
+ * @param {string} inputData The string that should have the file name removed from it.
+ * @param {string} inputMetaData Not used for this business rule.
+ * @return {string} The path without the file name.
+ * @author Seth Hollingsead
+ * @date 2025/01/08
+ */
+async function removeFileNameFromPath(inputData, inputMetaData) {
+  let functionName = removeFileNameFromPath.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
+  let returnData = false;
+  if (inputData) {
+    let pathSep = '';
+    let pathArray = [];
+    if (inputData.includes(bas.cDoubleForwardSlash)) {
+      inputData = await ruleParsing.processRulesInternal([inputData, ''], [biz.cswapDoubleForwardSlashToSingleForwardSlash]);
+    }
+    if (inputData.includes(bas.cForwardSlash) && inputData.includes(bas.cBackSlash)) {
+      inputData = await ruleParsing.processRulesInternal([inputData, ''], [biz.cswapForwardSlashToBackSlash]);
+      pathArray = inputData.split(bas.cBackSlash);
+      pathSep = bas.cBackSlash;
+    } else if (inputData.includes(bas.cForwardSlash)) {
+      pathArray = inputData.split(bas.cForwardSlash);
+      pathSep = bas.cForwardSlash;
+    } else if (inputData.includes(bas.cBackSlash)) {
+      pathArray = inputData.split(bas.cBackSlash);
+      pathSep = bas.cBackSlash;
+    } else {
+      // No path, only file name.
+      pathSep = '';
+    }
+    if (pathArray.length > 1) {
+      pathArray.pop(); // Remove the file name from the path array.
+    }
+    returnData = pathArray.join(pathSep);
+    if (returnData && !returnData.endsWith(pathSep)) {
+      returnData += pathSep;
+    }
+  }
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
+/**
  * @function getFileExtension
  * @description Parses the file name and it may or may not also include the full path,
  * but regardless it gets the file extension of the file.
@@ -276,6 +324,7 @@ async function getFirstTopLevelFolderFromPath(inputData, inputMetaData) {
 
 export default {
   getFileNameFromPath,
+  removeFileNameFromPath,
   getFileExtension,
   removeDotFromFileExtension,
   removeFileExtensionFromFileName,

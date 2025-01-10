@@ -308,7 +308,7 @@ async function generateRandomLowerCaseAlphaNumericCodeByLength(inputData, inputM
  * @function generateRandomNumericCodeByLength
  * @description Generate the specified number of random numeric characters and string them together.
  * @param {string} inputData The number of randomly generated numeric characters that should be generated.
- * @param {string} inputMetaData The name of the language who's alphabet should be used for international characters.
+ * @param {string} inputMetaData Not used for this business rule.
  * @return {string} A string of randomly generated numeric characters where the
  * length of the string is defined by the input parameter.
  * @author Seth Hollingsead

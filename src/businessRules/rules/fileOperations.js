@@ -170,7 +170,36 @@ async function writeJsonData(inputData, inputMetaData) {
     returnData = true;
   } catch (err) {
     // ERROR:
-    console.error(sys.cERROR_Colon + err);
+    console.error(msg.cERROR_Colon + err);
+  }
+  // Data was written to the file;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cDataWasWrittenToTheFile + inputData);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
+  return returnData;
+}
+
+/**
+ * @function writeAsciiData
+ * @description Writes out a string of ASCII data to the specified file and path location, it will automatically over-write any existing file.
+ * @param {string} inputData The path and file name for the file that should have data written to it.
+ * @param {string} inputMetaData The data that should be written to the specified file.
+ * @return {boolean} True or False to indicate if the file was written out successfully or not.
+ * @author Seth Hollingsead
+ * @date 2025/01/07
+ */
+async function writeAsciiData(inputData, inputMetaData) {
+  let functionName = writeAsciiData.name;
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
+  let returnData = false;
+  try {
+    await fs.writeFileSync(inputData, inputMetaData);
+    returnData = true;
+  } catch (err) {
+    // ERROR:
+    console.error(msg.cERROR_Colon + err);
   }
   // Data was written to the file;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cDataWasWrittenToTheFile + inputData);
@@ -246,7 +275,7 @@ async function readDirectoryContents(inputData, inputMetaData) {
  * The user might only want 10,000 files or just the first million files found. etc...
  * @param {string} inputData The path that should be scanned for files including all sub-folders and all sub-files.
  * @param {array<boolean,integer>} inputMetaData An array that contains a boolean flag for enable the limit and an integer for what the limit should be:
- * inputMetaData[0] = enableLimit - True or False to indicate if the boolean imit should be enabled or not.
+ * inputMetaData[0] = enableLimit - True or False to indicate if the boolean limit should be enabled or not.
  * inputMetaData[1] = filesLimit - The number of files that should be limited when scanning, if the enableLimit is set to True.
  * @return {array<string>} An array of all the files in the folder up to the limit if specified.
  * @author Seth Hollingsead
@@ -857,6 +886,7 @@ export default {
   getCsvData,
   getJsonData,
   writeJsonData,
+  writeAsciiData,
   loadAsciiFileFromPath,
   readDirectoryContents,
   scanDirectoryContents,

@@ -3,100 +3,206 @@
  * @module loggers
  * @description Contains all of the functions necessary for logging to the console,
  * and logging to a system-specified log file.
- * Additional logic is in place to allow the configuration file to define which
+ * Additional logic is in place to allow the configuration files to define which
  * modules/files & functions should participate in logging operations.
+ * Additional refactoring enables a schema driven logging control logic, where-as
+ * the schema can be overridden by a client application/framework to provide custom client specific logging logic.
  * @requires module:ruleBroker
+ * @requires module:chiefData
  * @requires module:colorizer
  * @requires module:configurator
  * @requires module:data
  * @requires {@link https://www.npmjs.com/package/@haystacks/constants|@haystacks/constants}
  * @requires {@link https://www.npmjs.com/package/path|path}
  * @author Seth Hollingsead
- * @date 2021/10/18
- * @copyright Copyright © 2022-… by Seth Hollingsead. All rights reserved
+ * @date 2024/12/31 - Originally 2021/10/18
+ * @copyright Copyright © 2024-… by Seth Hollingsead. All rights reserved
  */
 
 // Internal imports
 import ruleBroker from '../brokers/ruleBroker.js';
+import chiefData from '../controllers/chiefData.js';
 import colorizer from './colorizer.js';
 import configurator from './configurator.js';
+import socketsClient from './socketsClient.js';
 import D from '../structures/data.js';
 // External imports
 import hayConst from '@haystacks/constants';
 import path from 'path';
 
-const {bas, biz, clr, cfg, gen, msg, wrd} = hayConst;
+const {bas, biz, clr, cfg, gen, msg, sys, wrd} = hayConst;
 const baseFileName = path.basename(import.meta.url, path.extname(import.meta.url));
 // framework.executrix.loggers.
 // eslint-disable-next-line no-unused-vars
 const namespacePrefix =  wrd.cframework + bas.cDot + wrd.cexecutrix + bas.cDot + baseFileName + bas.cDot;
 
+let socketClient = undefined;
+socketsClient().then(r => {
+  if (socketClient == undefined) socketClient = r;
+});
+
 /**
  * @function consoleLog
- * @description Compares the class path to a series of configuration settings to determine
- * if we should log to the console or not.
+ * @description Uses the classPathControlFlag to look up to a namespace configuration setting, or
+ * a configuration control flag to determine if we should log to the console or not.
  * Also can provisionally log to a log file as well since the console
  * is technically a transient data output.
- * @NOTE When it comes to dumping large amounts of data out of a script the console will not do,
- * And dumping data to an output log file is critical to debugging certain tests and workflows.
- * @param {string} classPath The class path for the caller of this function file.function or class.method.
- * @param {string} message The message or data contents that should be dumped to the output.
+ * @NOTE When it comes to dumping large amounts of data out of a script the console will not do.
+ * Dumping data to an output log file is critical to dumping certain tests and workflows.
+ * @NOTE The console logger must also be able to transmit console logs across a web socket to a remote server.
+ * @param {string} classPathControlFlag The class path for the caller of this function file.function or class.method
+ * to a configuration setting control flag that is either true or false, OR
+ * the name of a control flag that should be evaluated as either true or false to indicate if
+ * the console log, file log, and log transmission should be performed.
+ * @NOTE console log, file log and log transmission are also each individually controlled by global configuration control flags,
+ * independently of the schema, or class path configuration settings.
+ * @param {string} message The message or data contents that should be dumped to the various output channels.
  * @return {void}
  * @author Seth Hollingsead
- * @date 2021/12/27
+ * @date 2024/12/31 - Originally 2021/12/27
  * @NOTE Cannot use the loggers here, because of a circular dependency.
  */
-async function consoleLog(classPath, message) {
+async function consoleLog(classPathControlFlag, message) {
   // let functionName = consoleLog.name;
   if (Object.keys(D).length !== 0 && message !== undefined) { // Make sure we don't log anything if we haven't yet loaded the configuration data.
     let consoleLogEnabled = await configurator.getConfigurationSetting(wrd.csystem, cfg.cconsoleLogEnabled);
     if (consoleLogEnabled === true) {
       // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
-      // console.log(`classPath is: ${classPath}`);
+      // console.log(`classPath is: ${classPathControlFlag}`);
       // console.log(`message is: ${message}`);
-      // let logFile = configurator.getConfigurationSetting(wrd.csystem, cfg.cclientRootPath);
-      // if (logFile !== undefined) {
-      //   logFile = logFile + bas.cDoubleForwardSlash + wrd.clogs;
-      //   // console.log(`Logfile before path.resolve is: ${logFile}`);
-      //   logFile = path.resolve(logFile);
-      //   // console.log(`Logfile after path.resolve is: ${logFile}`);
-      //   logFile = logFile + bas.cDoubleForwardSlash + configurator.getConfigurationSetting(wrd.csystem, cfg.clogFileName);
-      //   logFile = path.resolve(logFile);
-      //   // console.log(`logFile after adding the log filename: ${logFile}`);
-      // }
-      let logFile = await getLogFileNameAndPath();
 
+      let logFile = await getLogFileNameAndPath();
+      // logFile is:
+      // console.log('logFile is: ' + logFile);
       let debugFunctionSetting = false;
       let debugFileSetting = false;
       let debugSetting = false;
       let configurationName = '';
       let configurationNamespace = '';
+      let controlFlagObject = await loggerSchemaGateLogic(classPathControlFlag);
+      // controlFlagObject is:
+      // console.log('controlFlagObject is: ' + JSON.stringify(controlFlagObject));
 
-      // console.log('Determine if there is a configuration setting for the class path.');
-      configurationName = await configurator.processConfigurationNameRules(classPath);
-      // console.log(`configurationName is: ${configurationName}`);
-      configurationNamespace = await configurator.processConfigurationNamespaceRules(classPath);
-      // console.log(`configurationNamespace is: ${configurationNamespace}`);
-      debugFunctionSetting = await configurator.getConfigurationSetting(cfg.cdebugSetting + bas.cDot + configurationNamespace, configurationName);
-      // console.log(`debugFunctionSetting is: ${debugFunctionSetting}`);
-      debugFileSetting = await configurator.getConfigurationSetting(cfg.cdebugSetting + bas.cDot + configurationNamespace, '');
-      // console.log(`debugFileSetting is: ${debugFileSetting}`);
-      if (debugFunctionSetting || debugFileSetting) {
-        debugSetting = true;
+      if (controlFlagObject.isControlFlag) {
+        // We found a recognized control flag.
+        if (controlFlagObject.controlFlagValue === true) {
+          // Proceed with logging
+          debugSetting = true;
+        } else if (await configurator.getConfigurationSetting(wrd.csystem, cfg.cdebugTestExhaustive) === true) {
+          // Possibly skip unless debugTestExhaustive is on, etc.
+          debugSetting = true;
+        }
+      } else {
+        // console.log('Determine if there is a configuration setting for the class path.');
+        configurationName = await configurator.processConfigurationNameRules(classPathControlFlag);
+        // console.log(`configurationName is: ${configurationName}`);
+        configurationNamespace = await configurator.processConfigurationNamespaceRules(classPathControlFlag);
+        // console.log(`configurationNamespace is: ${configurationNamespace}`);
+        debugFunctionSetting = await configurator.getConfigurationSetting(cfg.cdebugSetting + bas.cDot + configurationNamespace, configurationName);
+        // console.log(`debugFunctionSetting is: ${debugFunctionSetting}`);
+        debugFileSetting = await configurator.getConfigurationSetting(cfg.cdebugSetting + bas.cDot + configurationNamespace, '');
+        // console.log(`debugFileSetting is: ${debugFileSetting}`);
+        if (debugFunctionSetting || debugFileSetting) {
+          debugSetting = true;
+        } else if ((debugFunctionSetting === undefined && debugFileSetting === undefined) ||
+          (debugFunctionSetting === undefined && debugFileSetting === false) ||
+          (debugFunctionSetting === false && debugFileSetting === undefined) ||
+          (debugFunctionSetting === false && debugFileSetting === false)) {
+          debugSetting = false; // Make sure we catch these special combinations of cases before we handle the else-clause below.
+        } else {
+          debugSetting = true;
+        }
       }
-      // console.log(`debugSetting is: ${debugSetting}`);
-      // console.log('DONE attempting to get the configuration setting for the class path, now check if it is not undefined and true');
-      if (logFile !== undefined && (logFile.toUpperCase().includes(gen.cLOG) || logFile.toUpperCase().includes(gen.cTXT))) {
-        await consoleLogProcess(debugSetting, logFile, classPath, message, true);
-      } else { // No text log file specified, proceed with the same process for console only.
-        await consoleLogProcess(debugSetting, undefined, classPath, message, false);
+      // debugSetting is:
+      // console.log('debugSetting is: ' + debugSetting);
+      if (debugSetting === true) {
+        // You can also reference other keys in controlFlagObject:
+        let fileFlagKey = controlFlagObject.logFileConfigFlagName; // 'logFileEnabled'
+        let socketFlagKey = controlFlagObject.logSocketTransmissionFlagName; // 'logToSocketTransmissionEnabled'
+        // fileFlagKey is:
+        // console.log('fileFlagKey is: ' + fileFlagKey);
+        // socketFlagKey is:
+        // console.log('socketFlagKey is: ' + socketFlagKey);
+
+        // Then do something like:
+        let isFileLoggingOn = await configurator.getConfigurationSetting(wrd.csystem, fileFlagKey);
+        let isSocketLoggingOn = await configurator.getConfigurationSetting(wrd.csystem, socketFlagKey);
+        // isFileLoggingOn is:
+        // console.log('isFileLoggingOn is: ' + isFileLoggingOn);
+        // isSocketLoggingOn is:
+        // console.log('isSocketLoggingOn is: ' + isSocketLoggingOn);
+
+        let processLogOptions = {
+          logFile: logFile,
+          isControlFlag: controlFlagObject.isControlFlag,
+          classPathControlFlag: classPathControlFlag,
+          configurationNamespace: configurationNamespace,
+          configurationName: configurationName,
+          debugFileSetting: debugFileSetting,
+          debugFunctionSetting: debugFunctionSetting,
+          message: message,
+          isFileLoggingOn: isFileLoggingOn,
+          isSocketLoggingOn: isSocketLoggingOn,
+          classPath: classPathControlFlag
+        }
+        await consoleLogProcess(processLogOptions);
       }
-      // console.log(`END ${namespacePrefix}${functionName} function`);
     } // end-if (consoleLogEnabled === true)
-  } else if (message === undefined) { // end-if (Object.keys(D).length !== 0 && message !== undefined)
+  } else if (message == undefined) { // end-if (Object.keys(D).length !== 0 && message !== undefined)
     console.log(msg.cWarningMessageIsUndefined);
-    console.log(msg.cclassPathIs + classPath);
+    console.log(msg.cclassPathIs + classPathControlFlag);
   }
+  // console.log(`END ${namespacePrefix}${functionName} function`);
+}
+
+/**
+ * @function loggerSchemaGateLogic
+ * @description Looks up the classPathControlFlag in the loggerSchema to determine if the logging should proceed or not.
+ * And also if the control flag value is found or not found which may determine if the consoleLog will proceed to check or not check
+ * the debug configuration namespace from the classPath.
+ * @param {string} classPathControlFlag The class path for the caller of the consoleLog function file.function or class.method
+ * to a configuration setting control flag that is either true or false, OR
+ * the name of a control flag that should be evaluated as either true or false to indicate if
+ * the console log, file log, and log transmission should be performed.
+ * @return {object} A JSON object that contains some meta-data and boolean values. 2 booleans to indicate if the control flag is
+ * a control flag that was found or not found, and also a second boolean that indicates if the control flag value is
+ * true or false to indicate if the console logging should proceed, or not proceed.
+ * the JSON object structure returned will be as follows:
+ * {
+ *   isControlFlag: true,
+ *   controlFlagValue: true,
+ *   logFileConfigFlagName: logFileEnabled
+ *   logSocketTransmissionFlagName: logToSocketTransmissionEnabled
+ *   ...all additional flagNames
+ * }
+ * @author Seth Hollingsead
+ * @date 2024/12/31
+ */
+async function loggerSchemaGateLogic(classPathControlFlag) {
+  // let functionName = loggerSchemaGateLogic.name;
+  // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
+  // console.log(`classPath is: ${classPathControlFlag}`);
+  let loggerSchema = await chiefData.getSchemaData(sys.cloggerSchema);
+  let resultObject = {
+    isControlFlag: false,
+    controlFlagValue: false
+  }
+
+  if (loggerSchema && loggerSchema[sys.ccontrolFlags] && loggerSchema[sys.cflagNames]) {
+    let flagNames = loggerSchema[sys.cflagNames];
+    for (const [flagKey, flagValue] of Object.entries(flagNames)) {
+      resultObject[flagKey] = flagValue;
+    }
+    let controlFlagsMap = loggerSchema[sys.ccontrolFlags];
+    if (Object.hasOwn(controlFlagsMap, classPathControlFlag)) {
+      // The user passed something like "Warning" or "Info" that exists in the schema.
+      resultObject.isControlFlag = true;
+      resultObject.controlFlagValue = controlFlagsMap[classPathControlFlag] === true;
+    }
+  }
+  // console.log('resultObject is: ' + JSON.stringify(resultObject));
+  // console.log(`END ${namespacePrefix}${functionName} function`);
+  return resultObject;
 }
 
 /**
@@ -158,158 +264,87 @@ async function constantsValidationSummaryLog(message, passFail) {
 
 /**
  * @function consoleLogProcess
- * @description A function that will print a message to a log file and the console, or just the console.
- * The output depends on if there was a txt/log file specified or not.
- * @param {boolean} debugSetting A TRUE or FALSE value to indicate if the log action is enabled or not.
- * @param {string} logFile The path to the log file where the message should be logged.
- * @param {string} classPath The class path for the caller of this function file.function or class.method.
- * @param {string} message The message or data contents that should be dumped to the output (log file and/or console).
- * @param {boolean} loggingToFileAndConsole A TRUE or FALSE value to indicate if the log should be done to the specified log file and the console.
- * If no log file is specified by the caller/settings system then this will be FALSE and only the console will be logged.
+ * @description A function that will determine how and where log messages are logged.
+ * logs could be logged to  the console, to a log file, and to a socket client that will transmit the
+ * log message across a web-socket to a remote socket server.
+ * @param {*} logOptions A JSON object that contains data and meta-data that will be used to determine
+ * how and where a console log message should be logged. The object example prototype is:
+ * logFile: logFile,
+ * isControlFlag: controlFlagObject.isControlFlag,
+ * classPathControlFlag: classPathControlFlag,
+ * configurationNamespace: configurationNamespace,
+ * configurationName: configurationName,
+ * debugFileSetting: debugFileSetting,
+ * debugFunctionSetting: debugFunctionSetting,
+ * message: message,
+ * isFileLoggingOn: isFileLoggingOn,
+ * ifSocketLoggingOn: isSocketLoggingOn,
+ * classPath: classPathControlFlag
  * @return {void}
  * @author Seth Hollingsead
- * @date 2021/10/27
- * @NOTE Cannot use the loggers here, because of a circular dependency.
+ * @date 2024/12/31
  */
-async function consoleLogProcess(debugSetting, logFile, classPath, message, loggingToFileAndConsole) {
+async function consoleLogProcess(logOptions) {
   // let functionName = consoleLogProcess.name;
+  let {
+    logFile,
+    isControlFlag,
+    classPathControlFlag,
+    configurationNamespace,
+    configurationName,
+    debugFileSetting,
+    debugFunctionSetting,
+    message,
+    isFileLoggingOn,
+    isSocketLoggingOn,
+    classPath
+  } = logOptions;
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
-  // console.log(`debugSetting is: ${debugSetting}`);
-  // console.log(`logFile is: ${logFile}`);
-  // console.log(`classPath is: ${classPath}`);
-  // console.log(`message is: ${message}`);
-  // console.log(`loggingToFileAndConsole is: ${loggingToFileAndConsole}`);
   let outputMessage = '';
-  let messageIsValid = false;
+  // logFile is:
+  // console.log('logFile is: ' + logFile);
+  // isControlFlag is:
+  // console.log('isControlFlag is: ' + isControlFlag);
+  // classPathControlFlag is:
+  // console.log('classPathControlFlag is: ' + classPathControlFlag);
+  // configurationNamespace is:
+  // console.log('configurationNamespace is: ' + configurationNamespace);
+  // configurationName is:
+  // console.log('configurationName is: ' + configurationName);
+  // debugFileSetting is:
+  // console.log('debugFileSetting is: ' + debugFileSetting);
+  // debugFunctionSetting is:
+  // console.log('debugFunctionSetting is: ' + debugFunctionSetting);
+  // message is:
+  // console.log('message is: ' + message);
+  // isFileLoggingOn is:
+  // console.log('isFileLoggingOn is: ' + isFileLoggingOn);
+  // isSocketLoggingOn is:
+  // console.log('isSocketLoggingOn is: ' + isSocketLoggingOn);
+  // classPath is:
+  // console.log('classPath is: ' + classPath);
 
-  if (debugSetting !== undefined && debugSetting === true) {
-    // console.log('The debugSetting is not undefined and also true.');
-    outputMessage = await parseClassPath(logFile, classPath, message);
-    // console.log(`outputMessage is: ${outputMessage}`);
-    // console.log(`message is: ${message}`);
-    messageIsValid = await validMessage(outputMessage, message);
-    if (messageIsValid === true) {
-      await console.log(outputMessage);
-    }
-    if (messageIsValid === true && loggingToFileAndConsole === true) {
-      await printMessageToFile(logFile, outputMessage);
-      // console.log('DONE printing the message to the logFile');
-    } // End-if (messageIsValid === true && loggingToFileAndConsole === true)
-  } else if (await configurator.getConfigurationSetting(wrd.csystem, cfg.cdebugTestExhaustive) === true) {
-    // console.log('else-block the debugTestExhaustive setting is true!');
-    // TODO: Add rule here to replace double percent with message/class-path.
-    // Debug Exhaustive is probably not the best, we might want to consider another configuration setting to
-    // enable or disable the console specifically. Right now there is no real business need for it.
-    // If you really wanted to disable it just comment it out here.
-    await console.log(outputMessage);
-    if (loggingToFileAndConsole === true) {
-      await printMessageToFile(logFile, outputMessage);
-      // console.log('done printing the message to the log file.');
-    } // End-if (loggingToFileAndConsole === true)
-  }
-  // console.log('Past all of the if-else-if-else blocks of code.');
-  // console.log(`END ${namespacePrefix}${functionName} function`);
-}
-
-/**
- * @function validMessage
- * @description Looks at the parsed/processed output message and the original message
- * to determine if the message is a valid message to dump to the console and/or the log file (if specified).
- * @param {string|integer|boolean|object} outputMessage The message that has been parsed/processed.
- * @param {string|integer|boolean|object} originalMessage The original message passed in before processing/parsing.
- * @return {boolean} A TRUE or FALSE to indicate if the output message should be dumped to the log file and/or the console.
- * @author Seth Hollingsead
- * @date 2021/10/27
- * @NOTE Cannot use the loggers here, because of a circular dependency.
- */
-async function validMessage(outputMessage, originalMessage) {
-  // let functionName = validMessage.name;
-  // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
-  // console.log(`outputMessage is: ${outputMessage}`);
-  // console.log(`originalMessage is: ${originalMessage}`);
-  let returnData = false;
-
-  // This first if-condition catches the case that the output message has already
-  // been parsed and modified according to the class path.
-  if (outputMessage !== false && outputMessage !== originalMessage) {
-    returnData = true;
-  } else if (outputMessage !== false && outputMessage.includes(bas.cDoublePercent) === false) {
-    // This else-if condition catches the case that the caller just wants to dump a generic message,
-    // that doesn't have a class-path designation.
-    returnData = true;
-  } else if (outputMessage !== false && outputMessage.includes(msg.cActualColonDoublePercent) === true) {
-    // This else-if condition catches the special case that the caller wants to dump constants validation generic data to the console.
-    // that doesn't have a class-path designation.
-    returnData = true;
-  }
-  // console.log(`returnData is: ${returnData}`);
-  // console.log(`END ${namespacePrefix}${functionName} function`);
-  return returnData;
-}
-
-/**
- * @function parseClassPath
- * @description Parses the class path and message pulling it apart for logging and looking at custom debug settings.
- * @param {string} logFile The file name and path to the log file where the data should be printed.
- * @param {string} classPath The class path for the caller of this function file.function or class.method.
- * @param {string} message The message or data contents that should be dumped to the output.
- * @return {string} Returns the message that should be printed out to the console and logged to the log file.
- * @author Seth Hollingsead
- * @date 2021/10/27
- * @NOTE Cannot use the loggers here, because of a circular dependency.
- */
-async function parseClassPath(logFile, classPath, message) {
-  let functionName = parseClassPath.name;
-  // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
-  // console.log(`logFile is: ${logFile}`);
-  // console.log(`classPath is: ${classPath}`);
-  // console.log(`message is: ${message}`);
-  let configurationName = '';
-  let configurationNamespace = '';
-  let debugFunctionsSetting = false;
-  let debugFilesSetting = false;
-  let returnData = '';
-
-  configurationName = await configurator.processConfigurationNameRules(classPath);
-  // console.log(`configurationName is: ${configurationName}`);
-  configurationNamespace = await configurator.processConfigurationNamespaceRules(classPath);
-  // console.log(`configurationNamespace is: ${configurationNamespace}`);
-  // printMessageToFile(logFile, `Getting configuration setting value for: debugFunctions|${className}.${classFunctionName}`);
-  // console.log(`Getting configuration setting value for: ${configurationNamespace}.${configurationName}`);
-  debugFunctionsSetting = await configurator.getConfigurationSetting(cfg.cdebugSetting + bas.cDot + configurationNamespace, configurationName);
-  // printMessageToFile(logFile, `debugFunctionsSetting is: ${debugFunctionsSetting}`);
-  // console.log(`debugFunctionsSetting is: ${debugFunctionsSetting}`);
-  debugFilesSetting = await configurator.getConfigurationSetting(cfg.cdebugSetting + bas.cDot + configurationNamespace, '');
-  // printMessageToFile(logFile, `debugFilesSetting is: ${debugFilesSetting}`);
-  // console.log(`debugFilesSetting is: ${debugFilesSetting}`);
-  if (debugFunctionsSetting || debugFilesSetting) {
-    message = await colorizer.colorizeMessage(message, configurationNamespace, configurationName, debugFilesSetting, debugFunctionsSetting, false);
-    // if (message.includes(bas.cDoublePercent)) {
-    //   let myNameSpace = configurationNamespace + bas.cDot + configurationName;
-    //   // console.log('message is: ' + message);
-    //   // console.log('myNameSpace is: ' + myNameSpace);
-    //   // console.log('rules is: ' + JSON.stringify(rules));
-    //   // NOTE: Calling this directly is an anti-pattern, but it is necessary at this time because of a circular dependency with loggers.
-    //   // We will need to refactor the business rules to accept a callback function that does the logging.
-    //   // Essentially we will need to use a dependency injection design pattern to prevent the chance of a circular dependency.
-    //   // message = stringParsingUtilities.replaceDoublePercentWithMessage(message, [bas.cDoublePercent, myNameSpace]);
-    //   message = ruleBroker.processRules([message, [bas.cDoublePercent, myNameSpace]], rules);
-    // }
-    // console.log('setting the returnData to the message: ' + message);
-    returnData = message;
-  } else if ((debugFunctionsSetting === undefined && debugFilesSetting === undefined) ||
-  (debugFunctionsSetting === undefined && debugFilesSetting === false) ||
-  (debugFunctionsSetting === false && debugFilesSetting === undefined) ||
-  (debugFunctionsSetting === false && debugFilesSetting === false)) {
-    // console.log('Something is undefined && false or some combination of both, return false');
-    returnData = false;
+  if (isControlFlag) {
+    // It's a generic control flag message scenario
+    // console.log('message is: ' + message);
+    outputMessage = message;
+    // outputMessage = await colorizer.colorizeMessage(message, classPath, functionName, undefined, undefined, true);
   } else {
-    message = await colorizer.colorizeMessage(message, classPath, functionName, undefined, undefined, true);
-    returnData = message;
+    outputMessage = await colorizer.colorizeMessage(message, configurationNamespace, configurationName, debugFileSetting, debugFunctionSetting, false);
   }
-  // console.log(`returnData is: ${returnData}`);
+  // If we need to apply additional isMessageValid logic, do it here!!
+  console.log(outputMessage);
+
+  if (isFileLoggingOn && logFile) {
+    await printMessageToFile(logFile, outputMessage);
+  }
+
+  if (isSocketLoggingOn) {
+    // console.log('socketClient.sending message: ' + outputMessage);
+    socketClient.send(outputMessage);
+  }
   // console.log(`END ${namespacePrefix}${functionName} function`);
-  return returnData;
+  return;
 }
 
 /**
@@ -383,8 +418,10 @@ async function printMessageToFile(file, message) {
 
 export default {
   consoleLog,
+  loggerSchemaGateLogic,
   consoleTableLog,
   constantsValidationSummaryLog,
+  consoleLogProcess,
   getLogFileNameAndPath,
   printMessageToFile
-};
+}

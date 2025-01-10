@@ -8,6 +8,8 @@
             <Workflow Name="fileStringParsingDisable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.stringParsing.fileStringParsing false"/>
             <Workflow Name="getFileNameFromPathEnable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.stringParsing.fileStringParsing.getFileNameFromPath true"/>
             <Workflow Name="getFileNameFromPathDisable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.stringParsing.fileStringParsing.getFileNameFromPath false"/>
+            <Workflow Name="removeFileNameFromPathEnable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.stringParsing.fileStringParsing.removeFileNameFromPath true"/>
+            <Workflow Name="removeFileNameFromPathDisable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.stringParsing.fileStringParsing.removeFileNameFromPath false"/>
             <Workflow Name="getFileExtensionEnable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.stringParsing.fileStringParsing.getFileExtension true"/>
             <Workflow Name="getFileExtensionDisable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.stringParsing.fileStringParsing.getFileExtension false"/>
             <Workflow Name="removeDotFromFileExtensionEnable" Value="changeConfigSetting debugSetting.framework.businessRules.rules.stringParsing.fileStringParsing.removeDotFromFileExtension true"/>

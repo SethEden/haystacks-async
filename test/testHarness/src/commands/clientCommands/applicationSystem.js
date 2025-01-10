@@ -49,7 +49,7 @@ async function applicationHelp(inputData, inputMetaData) {
 /**
  * @function applicationWorkflowHelp
  * @description A command to list the application workflows and plugin workflows.
- * If not plugins are loaded by the application then no plugin workflows will be listed.
+ * If no plugins are loaded by the application then no plugin workflows will be listed.
  * @param {string} inputData Not used for this command.
  * @param {string} inputMetaData Not used for this command.
  * @return {array<boolean,string>} An array with a boolean True or False value to
