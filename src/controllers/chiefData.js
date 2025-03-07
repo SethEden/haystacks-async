@@ -301,7 +301,7 @@ async function setupAllJsonConfigPluginData(configFilesPath, contextName) {
  * @function loadAllJsonData
  * @description Loads all of the JSON data at the specified path.
  * Can be used to load account data, transaction history logs, activity logs, or any other kind of JSON data.
- * @param {string} dataPath The path to the JSON files that should be loaded.
+ * @param {string|array<string>} dataPath The path to the JSON files that should be loaded.
  * @param {string} contextName The type of data that should be loaded.
  * @return {object} A JSON object that contains all of the data that was loaded and merged together.
  * @author Seth Hollingsead
@@ -316,7 +316,11 @@ async function loadAllJsonData(dataPath, contextName) {
   await loggers.consoleLog(namespacePrefix + functionName, msg.ccontextNameIs + contextName);
   let loadedAndMergeDataAllFiles = {};
   let filesToLoad = [];
-  filesToLoad = await dataBroker.scanDataPath(dataPath);
+  if (typeof dataPath === wrd.cstring) {
+    filesToLoad = await dataBroker.scanDataPath(dataPath);
+  } else if (Array.isArray(dataPath) === true) {
+    filesToLoad = dataPath;
+  }
   // filesToLoad is:
   await loggers.consoleLog(namespacePrefix + functionName, msg.cfilesToLoadIs + JSON.stringify(filesToLoad));
   if (contextName.toLowerCase() === wrd.cschemas) {

@@ -939,7 +939,7 @@ async function loadPluginResourceData(contextName, pluginResourcePath) {
  * @function loadAllJsonData
  * @description Loads all of the JSON data at the specified path.
  * Can be used to load account data, transaction history logs, activity logs, or any other kind of JSON data.
- * @param {string} dataPath The path to the JSON files that should be loaded.
+ * @param {string|array<string>} dataPath The path to the JSON files that should be loaded, or the array of files to load.
  * @param {string} contextName The type of data that should be loaded.
  * @return {object} A JSON object that contains all of the data that was loaded and merged together.
  * @author Seth Hollingsead
@@ -949,7 +949,7 @@ async function loadAllJsonData(dataPath, contextName) {
   let functionName = loadAllJsonData.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // dataPath is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cdataPathIs + dataPath);
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cdataPathIs + JSON.stringify(dataPath));
   // contextName is:
   await loggers.consoleLog(namespacePrefix + functionName, msg.ccontextNameIs + contextName);
   let returnData = false;
