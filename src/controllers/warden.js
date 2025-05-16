@@ -1090,7 +1090,7 @@ async function executeBusinessRules(inputs, businessRules) {
   let functionName = executeBusinessRules.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   // inputs is:
-  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputsIs + JSON.stringify(inputs));
+  await loggers.consoleLog(namespacePrefix + functionName, msg.cinputsIs + inputs);
   // businessRules is:
   await loggers.consoleLog(namespacePrefix + functionName, msg.cbusinessRulesIs + JSON.stringify(businessRules));
   let returnData;
