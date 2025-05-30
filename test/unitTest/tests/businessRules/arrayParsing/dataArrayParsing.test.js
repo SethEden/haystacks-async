@@ -5,16 +5,10 @@
  * @module dataArrayParsing.test
  * @description Unit tests for the dataArrayParsing.js
  * @requires module:dataArrayParsing
- * @requires module:characterArrayParsing
- * @requires module:characterStringParsing
- * @requires module:fileStringParsing
- * @requires module:fileOperations
- * @requires module:stringParsingUtilities
- * @requires module:main
  * @requires module:D
- * @requires module:pluginData
  * @requires module:test.constants
  * @requires module:dataBrokerTest
+ * @requires module:dataArrayParsingTest
  * @requires module:mainTest
  * @requires {@link https://www.npmjs.com/package/@haystacks/constants|@haystacks/constants}
  * @requires {@link https://www.npmjs.com/package/jest|jest}
@@ -24,20 +18,12 @@
  */
 
 // Internal imports
-import dataArrayParsing from '../../../../../src/businessRules/rules/arrayParsing/dataArrayParsing.js'
-import characterArrayParsing from '../../../../../src/businessRules/rules/arrayParsing/characterArrayParsing.js';
-import characterStringParsing from '../../../../../src/businessRules/rules/stringParsing/characterStringParsing.js'
-import fileStringParsing from '../../../../../src/businessRules/rules/stringParsing/fileStringParsing.js';
-import fileOperations from '../../../../../src/businessRules/rules/fileOperations.js';
-import stringParsingUtilities from '../../../../../src/businessRules/rules/stringParsingUtilities.js';
+import dataArrayParsing from '../../../../../src/businessRules/rules/arrayParsing/dataArrayParsing.js';
 import rulesLibrary from '../../../../../src/businessRules/rulesLibrary.js';
-import main from '../../../../../src/main.js';
 import D from '../../../../../src/structures/data.js';
-import pluginDataFile from '../../../testData/testPlugins/test-plugin-one/structures/pluginData.js'
 import * as tst_con from '../../resources/constants/test.constants.js';
-import * as tst_dbt from '../../../testData/brokers/dataBrokerTest.js'
-import * as tst_thb from '../../../testData/brokers/themeBrokerTest.js'
-import * as tst_dap from '../../../testData/businessRules/arrayParsing/dataArrayParsingTest.js'
+import * as tst_dbt from '../../../testData/brokers/dataBrokerTest.js';
+import * as tst_dap from '../../../testData/businessRules/arrayParsing/dataArrayParsingTest.js';
 import * as tst_man from '../../../testData/mainTest.js';
 
 // External imports
@@ -51,9 +37,6 @@ for (let key in D) {
     }
 }
 await rulesLibrary.initRulesLibrary();
-
-// test-plugin-one data
-const pluginData = {[wrd.cdata]: pluginDataFile[wrd.cdata]};
 
 /**
  * @function arraysAreEqual
@@ -2612,6 +2595,744 @@ describe(tst_con.cobjectDeepMerge, () => {
     });
 })
 
+
+/**
+ * @function conditionalObjectAssignment
+ * @description Tests the positive and negative test cases of the conditionalObjectAssignment
+ * @author Vlad Sorokin
+ * @date 2024/12/27
+ */
+describe(tst_con.cconditionalObjectAssignment, () => {
+    /**
+     * @function conditionalObjectAssignment_validData
+     * @description Tests the dataArrayParsing function conditionalObjectAssignment with a valid input.
+     * @author Vlad Sorokin
+     * @date 2024/12/27
+     */
+    test(tst_con.cconditionalObjectAssignment_validData, async () => {
+        // Arrange
+        D[sys.cpluginsLoaded] = {};
+        D[cfg.cpluginRegistry] = {};
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+        D[sys.cpluginsLoaded] = [{}];
+        D[wrd.cCommands] = {};
+        const inputData = tst_dap.testObject3;
+        const inputMetaData = tst_dap.testObject4;
+
+        // Act
+        let returnData = await dataArrayParsing.conditionalObjectAssignment(inputData, inputMetaData);
+
+        // Assert
+        expect(returnData).toEqual(tst_dap.testObject3and4);
+    });
+
+    /**
+     * @function conditionalObjectAssignment_inValidInputDataString
+     * @description Tests the dataArrayParsing function conditionalObjectAssignment with a invalid data string.
+     * @author Vlad Sorokin
+     * @date 2024/12/27
+     */
+    test(tst_con.cconditionalObjectAssignment_inValidInputDataString, async () => {
+        // Arrange
+        D[sys.cpluginsLoaded] = {};
+        D[cfg.cpluginRegistry] = {};
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+        D[sys.cpluginsLoaded] = [{}];
+        D[wrd.cCommands] = {};
+        const inputData = tst_man.ctestString1;
+        const inputMetaData = tst_dap.testObject4;
+
+        // Act
+        let returnData = await dataArrayParsing.conditionalObjectAssignment(inputData, inputMetaData);
+
+        // Assert
+        expect(returnData).toEqual(tst_dap.testObject4);
+    });
+
+    /**
+     * @function conditionalObjectAssignment_inValidInputMetaDataString
+     * @description Tests the dataArrayParsing function conditionalObjectAssignment with a invalid data string.
+     * @author Vlad Sorokin
+     * @date 2024/12/27
+     */
+    test(tst_con.cconditionalObjectAssignment_inValidInputMetaDataString, async () => {
+        // Arrange
+        D[sys.cpluginsLoaded] = {};
+        D[cfg.cpluginRegistry] = {};
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+        D[sys.cpluginsLoaded] = [{}];
+        D[wrd.cCommands] = {};
+        const inputData = tst_dap.testObject3;
+        const inputMetaData = tst_man.ctestString1;
+
+        // Act
+        let returnData = await dataArrayParsing.conditionalObjectAssignment(inputData, inputMetaData);
+
+        // Assert
+        expect(returnData).toEqual(false);
+    });
+
+    /**
+     * @function conditionalObjectAssignment_inValidInputDataInteger
+     * @description Tests the dataArrayParsing function conditionalObjectAssignment with a invalid data integer.
+     * @author Vlad Sorokin
+     * @date 2024/12/27
+     */
+    test(tst_con.cconditionalObjectAssignment_inValidInputDataInteger, async () => {
+        // Arrange
+        D[sys.cpluginsLoaded] = {};
+        D[cfg.cpluginRegistry] = {};
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+        D[sys.cpluginsLoaded] = [{}];
+        D[wrd.cCommands] = {};
+        const inputData = 123;
+        const inputMetaData = tst_dap.testObject4;
+
+        // Act
+        let returnData = await dataArrayParsing.conditionalObjectAssignment(inputData, inputMetaData);
+
+        // Assert
+        expect(returnData).toEqual(tst_dap.testObject4);
+    });
+
+    /**
+     * @function conditionalObjectAssignment_inValidInputDataBoolean
+     * @description Tests the dataArrayParsing function conditionalObjectAssignment with a invalid data boolean.
+     * @author Vlad Sorokin
+     * @date 2024/12/27
+     */
+    test(tst_con.cconditionalObjectAssignment_inValidInputDataBoolean, async () => {
+        // Arrange
+        D[sys.cpluginsLoaded] = {};
+        D[cfg.cpluginRegistry] = {};
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+        D[sys.cpluginsLoaded] = [{}];
+        D[wrd.cCommands] = {};
+        const inputData = false;
+        const inputMetaData = tst_dap.testObject4;
+
+        // Act
+        let returnData = await dataArrayParsing.conditionalObjectAssignment(inputData, inputMetaData);
+
+        // Assert
+        expect(returnData).toEqual(tst_dap.testObject4);
+    });
+
+    /**
+     * @function conditionalObjectAssignment_inValidInputMetaDataInteger
+     * @description Tests the dataArrayParsing function conditionalObjectAssignment with a invalid data integer.
+     * @author Vlad Sorokin
+     * @date 2024/12/27
+     */
+    test(tst_con.cconditionalObjectAssignment_inValidInputMetaDataInteger, async () => {
+        // Arrange
+        D[sys.cpluginsLoaded] = {};
+        D[cfg.cpluginRegistry] = {};
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+        D[sys.cpluginsLoaded] = [{}];
+        D[wrd.cCommands] = {};
+        const inputData = tst_dap.testObject3;
+        const inputMetaData = 123;
+
+        // Act
+        let returnData = await dataArrayParsing.conditionalObjectAssignment(inputData, inputMetaData);
+
+        // Assert
+        expect(returnData).toEqual(false);
+    });
+
+    /**
+     * @function conditionalObjectAssignment_inValidInputMetaDataBoolean
+     * @description Tests the dataArrayParsing function conditionalObjectAssignment with a invalid data boolean.
+     * @author Vlad Sorokin
+     * @date 2024/12/27
+     */
+    test(tst_con.cconditionalObjectAssignment_inValidInputMetaDataBoolean, async () => {
+        // Arrange
+        D[sys.cpluginsLoaded] = {};
+        D[cfg.cpluginRegistry] = {};
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+        D[sys.cpluginsLoaded] = [{}];
+        D[wrd.cCommands] = {};
+        const inputData = tst_dap.testObject3;
+        const inputMetaData = false;
+
+        // Act
+        let returnData = await dataArrayParsing.conditionalObjectAssignment(inputData, inputMetaData);
+
+        // Assert
+        expect(returnData).toEqual(false);
+    });
+
+    /**
+     * @function conditionalObjectAssignment_inValidInputDataUndefined
+     * @description Tests the dataArrayParsing function conditionalObjectAssignment with a invalid data undefined.
+     * @author Vlad Sorokin
+     * @date 2024/12/27
+     */
+    test(tst_con.cconditionalObjectAssignment_inValidInputDataUndefined, async () => {
+        // Arrange
+        D[sys.cpluginsLoaded] = {};
+        D[cfg.cpluginRegistry] = {};
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+        D[sys.cpluginsLoaded] = [{}];
+        D[wrd.cCommands] = {};
+        const inputData = undefined;
+        const inputMetaData = tst_dap.testObject4;
+
+        // Act
+        let returnData = await dataArrayParsing.conditionalObjectAssignment(inputData, inputMetaData);
+
+        // Assert
+        expect(returnData).toEqual(tst_dap.testObject4);
+    });
+
+    /**
+     * @function conditionalObjectAssignment_inValidInputDataNaN
+     * @description Tests the dataArrayParsing function conditionalObjectAssignment with a invalid data NaN.
+     * @author Vlad Sorokin
+     * @date 2024/12/27
+     */
+    test(tst_con.cconditionalObjectAssignment_inValidInputDataNaN, async () => {
+        // Arrange
+        D[sys.cpluginsLoaded] = {};
+        D[cfg.cpluginRegistry] = {};
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+        D[sys.cpluginsLoaded] = [{}];
+        D[wrd.cCommands] = {};
+        const inputData = NaN;
+        const inputMetaData = tst_dap.testObject4;
+
+        // Act
+        let returnData = await dataArrayParsing.conditionalObjectAssignment(inputData, inputMetaData);
+
+        // Assert
+        expect(returnData).toEqual(tst_dap.testObject4);
+    });
+
+    /**
+     * @function conditionalObjectAssignment_inValidInputMetaDataUndefined
+     * @description Tests the dataArrayParsing function conditionalObjectAssignment with a invalid data undefined.
+     * @author Vlad Sorokin
+     * @date 2024/12/27
+     */
+    test(tst_con.cconditionalObjectAssignment_inValidInputMetaDataUndefined, async () => {
+        // Arrange
+        D[sys.cpluginsLoaded] = {};
+        D[cfg.cpluginRegistry] = {};
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+        D[sys.cpluginsLoaded] = [{}];
+        D[wrd.cCommands] = {};
+        const inputData = tst_dap.testObject3;
+        const inputMetaData = undefined;
+
+        // Act
+        let returnData = await dataArrayParsing.conditionalObjectAssignment(inputData, inputMetaData);
+
+        // Assert
+        expect(returnData).toEqual(false);
+    });
+
+    /**
+     * @function conditionalObjectAssignment_inValidInputMetaDataNaN
+     * @description Tests the dataArrayParsing function conditionalObjectAssignment with a invalid data NaN.
+     * @author Vlad Sorokin
+     * @date 2024/12/27
+     */
+    test(tst_con.cconditionalObjectAssignment_inValidInputMetaDataNaN, async () => {
+        // Arrange
+        D[sys.cpluginsLoaded] = {};
+        D[cfg.cpluginRegistry] = {};
+        D[sys.cCommandsAliases] = {};
+        D[sys.cCommandWorkflows] = {};
+        D[wrd.cThemes] = {};
+        D[sys.cpluginsLoaded] = [{}];
+        D[wrd.cCommands] = {};
+        const inputData = tst_dap.testObject3;
+        const inputMetaData = NaN;
+
+        // Act
+        let returnData = await dataArrayParsing.conditionalObjectAssignment(inputData, inputMetaData);
+
+        // Assert
+        expect(returnData).toEqual(false);
+    });
+})
+
+/**
+ * @function getNamespacedDataObject
+ * @description Tests the positive and negative test cases of the getNamespacedDataObject
+ * @author Vlad Sorokin
+ * @date 2024/12/27
+ */
+describe(tst_con.cgetNamespacedDataObject, () => {
+  /**
+   * @function getNamespacedDataObject_validData
+   * @description Tests the dataArrayParsing function getNamespacedDataObject with a valid input.
+   * @author Vlad Sorokin
+   * @date 2024/12/27
+   */
+  test(tst_con.cgetNamespacedDataObject_validData, async () => {
+      // Arrange
+      D[sys.cDataStorage] = {
+          [tst_dbt.cunitTestData]: {
+              [wrd.cTest]: wrd.cTestValue
+          }
+      };
+      let inputData = [sys.cDataStorage, tst_dbt.cunitTestData];
+      let inputMetaData = false;
+
+      // Act
+      let returnData = await dataArrayParsing.getNamespacedDataObject(inputData, inputMetaData);
+
+      // Assert
+      expect(returnData).toEqual({ [wrd.cTest]: wrd.cTestValue });
+  });
+
+  /**
+   * @function getNamespacedDataObject_inValidInputDataString
+   * @description Tests the dataArrayParsing function getNamespacedDataObject with an invalid data string.
+   * @author Vlad Sorokin
+   * @date 2024/12/27
+   */
+  test(tst_con.cgetNamespacedDataObject_inValidInputDataString, async () => {
+      // Arrange
+      let inputData = tst_man.ctestString1;
+      let inputMetaData = false;
+
+      // Act
+      let returnData = await dataArrayParsing.getNamespacedDataObject(inputData, inputMetaData);
+
+      // Assert-
+      expect(returnData).toEqual(false);
+  });
+
+  /**
+   * @function getNamespacedDataObject_inValidInputMetaDataString
+   * @description Tests the dataArrayParsing function getNamespacedDataObject with an invalid metadata string.
+   * @author Vlad Sorokin
+   * @date 2024/12/27
+   */
+  test(tst_con.cgetNamespacedDataObject_inValidInputMetaDataString, async () => {
+      // Arrange
+      let inputData = [sys.cDataStorage, tst_dbt.cunitTestData];
+      let inputMetaData = tst_man.ctestString1;
+
+      // Act
+      let returnData = await dataArrayParsing.getNamespacedDataObject(inputData, inputMetaData);
+
+      // Assert
+      expect(returnData).toEqual(false);
+  });
+
+  /**
+   * @function getNamespacedDataObject_inValidInputDataInteger
+   * @description Tests the dataArrayParsing function getNamespacedDataObject with an invalid data integer.
+   * @author Vlad Sorokin
+   * @date 2024/12/27
+   */
+  test(tst_con.cgetNamespacedDataObject_inValidInputDataInteger, async () => {
+      // Arrange
+      let inputData = 123;
+      let inputMetaData = false;
+
+      // Act
+      let returnData = await dataArrayParsing.getNamespacedDataObject(inputData, inputMetaData);
+
+      // Assert
+      expect(returnData).toEqual(false);
+  });
+
+  /**
+   * @function getNamespacedDataObject_inValidInputDataBoolean
+   * @description Tests the dataArrayParsing function getNamespacedDataObject with an invalid data boolean.
+   * @author Vlad Sorokin
+   * @date 2024/12/27
+   */
+  test(tst_con.cgetNamespacedDataObject_inValidInputDataBoolean, async () => {
+      // Arrange
+      let inputData = false;
+      let inputMetaData = false;
+
+      // Act
+      let returnData = await dataArrayParsing.getNamespacedDataObject(inputData, inputMetaData);
+
+      // Assert
+      expect(returnData).toEqual(false);
+  });
+
+  /**
+   * @function getNamespacedDataObject_inValidInputMetaDataInteger
+   * @description Tests the dataArrayParsing function getNamespacedDataObject with an invalid metadata integer.
+   * @author Vlad Sorokin
+   * @date 2024/12/27
+   */
+  test(tst_con.cgetNamespacedDataObject_inValidInputMetaDataInteger, async () => {
+      // Arrange
+      let inputData = [sys.cDataStorage, tst_dbt.cunitTestData];
+      let inputMetaData = 123;
+
+      // Act
+      let returnData = await dataArrayParsing.getNamespacedDataObject(inputData, inputMetaData);
+
+      // Assert
+      expect(returnData).toEqual(false);
+  });
+
+  /**
+   * @function getNamespacedDataObject_inValidInputDataUndefined
+   * @description Tests the dataArrayParsing function getNamespacedDataObject with an invalid data undefined.
+   * @author Vlad Sorokin
+   * @date 2024/12/27
+   */
+  test(tst_con.cgetNamespacedDataObject_inValidInputDataUndefined, async () => {
+      // Arrange
+      let inputData = undefined;
+      let inputMetaData = false;
+
+      // Act
+      let returnData = await dataArrayParsing.getNamespacedDataObject(inputData, inputMetaData);
+
+      // Assert
+      expect(returnData).toEqual(false);
+  });
+
+  /**
+   * @function getNamespacedDataObject_inValidInputDataNaN
+   * @description Tests the dataArrayParsing function getNamespacedDataObject with an invalid data NaN.
+   * @author Vlad Sorokin
+   * @date 2024/12/27
+   */
+  test(tst_con.cgetNamespacedDataObject_inValidInputDataNaN, async () => {
+      // Arrange
+      let inputData = NaN;
+      let inputMetaData = false;
+
+      // Act
+      let returnData = await dataArrayParsing.getNamespacedDataObject(inputData, inputMetaData);
+
+      // Assert
+      expect(returnData).toEqual(false);
+  });
+
+  /**
+   * @function getNamespacedDataObject_inValidInputMetaDataUndefined
+   * @description Tests the dataArrayParsing function getNamespacedDataObject with an invalid metadata undefined.
+   * @author Vlad Sorokin
+   * @date 2024/12/27
+   */
+  test(tst_con.cgetNamespacedDataObject_inValidInputMetaDataUndefined, async () => {
+      // Arrange
+      let inputData = [sys.cDataStorage, tst_dbt.cunitTestData];
+      let inputMetaData = undefined;
+
+      // Act
+      let returnData = await dataArrayParsing.getNamespacedDataObject(inputData, inputMetaData);
+
+      // Assert
+      expect(returnData).toEqual(false);
+  });
+
+  /**
+   * @function getNamespacedDataObject_inValidInputMetaDataNaN
+   * @description Tests the dataArrayParsing function getNamespacedDataObject with an invalid metadata NaN.
+   * @author Vlad Sorokin
+   * @date 2024/12/27
+   */
+  test(tst_con.cgetNamespacedDataObject_inValidInputMetaDataNaN, async () => {
+      // Arrange
+      let inputData = [sys.cDataStorage, tst_dbt.cunitTestData];
+      let inputMetaData = NaN;
+
+      // Act
+      let returnData = await dataArrayParsing.getNamespacedDataObject(inputData, inputMetaData);
+
+      // Assert
+      expect(returnData).toEqual(false);
+  });
+});
+
+
+/**
+ * @function setNamespacedDataObject
+ * @description Tests the positive and negative test cases of the setNamespacedDataObject
+ * @author Vlad Sorokin
+ * @date 2024/05/29
+ */
+describe(tst_con.csetNamespacedDataObject, () => {
+    /**
+     * @function setNamespacedDataObject_validData
+     * @description Tests the dataArrayParsing function setNamespacedDataObject with a valid input.
+     * @author Vlad Sorokin
+     * @date 2024/05/29
+     */
+    test(tst_con.csetNamespacedDataObject_validData, async () => {
+        // Arrange
+        D[sys.cDataStorage] = {
+            [tst_dbt.cunitTestData]: {
+                [wrd.cTest]: wrd.cHello
+            }
+        };
+        let inputData = [sys.cDataStorage, tst_dbt.cunitTestData];
+        let inputMetaData = {[wrd.cTest]: wrd.cTestValue};
+
+        // Act
+        let returnData = await dataArrayParsing.setNamespacedDataObject(inputData, inputMetaData);
+
+        // Assert
+        expect(returnData).toEqual(true);
+    });
+
+    /**
+     * @function setNamespacedDataObject_inValidInputDataString
+     * @description Tests the dataArrayParsing function setNamespacedDataObject with a invalid data string.
+     * @author Vlad Sorokin
+     * @date 2024/05/29 
+     */
+    test(tst_con.csetNamespacedDataObject_inValidInputDataString, async () => {
+        // Arrange
+        D[sys.cDataStorage] = {
+            [tst_dbt.cunitTestData]: {
+                [wrd.cTest]: wrd.cHello
+            }
+        };
+        let inputData = tst_man.ctestString1;
+        let inputMetaData = {[wrd.cTest]: wrd.cTestValue};
+
+        // Act
+        let returnData = await dataArrayParsing.setNamespacedDataObject(inputData, inputMetaData);
+
+        // Assert
+        expect(returnData).toEqual(false);
+    });
+
+    /**
+     * @function setNamespacedDataObject_inValidInputMetaDataString
+     * @description Tests the dataArrayParsing function setNamespacedDataObject with a invalid data string.
+     * @author Vlad Sorokin
+     * @date 2024/05/29
+     */
+    test(tst_con.csetNamespacedDataObject_inValidInputMetaDataString, async () => {
+        // Arrange
+        D[sys.cDataStorage] = {
+            [tst_dbt.cunitTestData]: {
+                [wrd.cTest]: wrd.cHello
+            }
+        };
+        let inputData = [sys.cDataStorage, tst_dbt.cunitTestData];
+        let inputMetaData = tst_man.ctestString1
+
+        // Act
+        let returnData = await dataArrayParsing.setNamespacedDataObject(inputData, inputMetaData);
+
+        // Assert
+        expect(returnData).toEqual(false);
+    });
+
+    /**
+     * @function setNamespacedDataObject_inValidInputDataInteger
+     * @description Tests the dataArrayParsing function setNamespacedDataObject with a invalid data integer.
+     * @author Vlad Sorokin
+     * @date 2024/05/29
+     */
+    test(tst_con.csetNamespacedDataObject_inValidInputDataInteger, async () => {
+        // Arrange
+        D[sys.cDataStorage] = {
+            [tst_dbt.cunitTestData]: {
+                [wrd.cTest]: wrd.cHello
+            }
+        };
+        let inputData = 123;
+        let inputMetaData = {[wrd.cTest]: wrd.cTestValue};
+
+        // Act
+        let returnData = await dataArrayParsing.setNamespacedDataObject(inputData, inputMetaData);
+
+        // Assert
+        expect(returnData).toEqual(false);
+    });
+
+    /**
+     * @function setNamespacedDataObject_inValidInputDataBoolean
+     * @description Tests the dataArrayParsing function setNamespacedDataObject with a invalid data boolean.
+     * @author Vlad Sorokin
+     * @date 2024/05/29
+     */
+    test(tst_con.csetNamespacedDataObject_inValidInputDataBoolean, async () => {
+        // Arrange
+        D[sys.cDataStorage] = {
+            [tst_dbt.cunitTestData]: {
+                [wrd.cTest]: wrd.cHello
+            }
+        };
+        let inputData = false;
+        let inputMetaData = {[wrd.cTest]: wrd.cTestValue};
+
+        // Act
+        let returnData = await dataArrayParsing.setNamespacedDataObject(inputData, inputMetaData);
+
+        // Assert
+        expect(returnData).toEqual(false);
+    });
+
+    /**
+     * @function setNamespacedDataObject_inValidInputMetaDataInteger
+     * @description Tests the dataArrayParsing function setNamespacedDataObject with a invalid data integer.
+     * @author Vlad Sorokin
+     * @date 2024/05/29
+     */
+    test(tst_con.csetNamespacedDataObject_inValidInputMetaDataInteger, async () => {
+        // Arrange
+        D[sys.cDataStorage] = {
+            [tst_dbt.cunitTestData]: {
+                [wrd.cTest]: wrd.cHello
+            }
+        };
+        let inputData = [sys.cDataStorage, tst_dbt.cunitTestData];
+        let inputMetaData = 123
+
+        // Act
+        let returnData = await dataArrayParsing.setNamespacedDataObject(inputData, inputMetaData);
+
+        // Assert
+        expect(returnData).toEqual(false);
+    });
+
+    /**
+     * @function setNamespacedDataObject_inValidInputMetaDataBoolean
+     * @description Tests the dataArrayParsing function setNamespacedDataObject with a invalid data boolean.
+     * @author Vlad Sorokin
+     * @date 2024/05/29
+     */
+    test(tst_con.csetNamespacedDataObject_inValidInputMetaDataBoolean, async () => {
+        // Arrange
+        D[sys.cDataStorage] = {
+            [tst_dbt.cunitTestData]: {
+                [wrd.cTest]: wrd.cHello
+            }
+        };
+        let inputData = [sys.cDataStorage, tst_dbt.cunitTestData];
+        let inputMetaData = false
+
+        // Act
+        let returnData = await dataArrayParsing.setNamespacedDataObject(inputData, inputMetaData);
+
+        // Assert
+        expect(returnData).toEqual(false);
+    });
+
+    /**
+     * @function setNamespacedDataObject_inValidInputDataUndefined
+     * @description Tests the dataArrayParsing function setNamespacedDataObject with a invalid data undefined.
+     * @author Vlad Sorokin
+     * @date 2024/05/29
+     */
+    test(tst_con.csetNamespacedDataObject_inValidInputDataUndefined, async () => {
+        // Arrange
+        D[sys.cDataStorage] = {
+            [tst_dbt.cunitTestData]: {
+                [wrd.cTest]: wrd.cHello
+            }
+        };
+        let inputData = undefined;
+        let inputMetaData = {[wrd.cTest]: wrd.cTestValue};
+
+        // Act
+        let returnData = await dataArrayParsing.setNamespacedDataObject(inputData, inputMetaData);
+
+        // Assert
+        expect(returnData).toEqual(false);
+    });
+
+    /**
+     * @function setNamespacedDataObject_inValidInputDataNaN
+     * @description Tests the dataArrayParsing function setNamespacedDataObject with a invalid data NaN.
+     * @author Vlad Sorokin
+     * @date 2024/05/29
+     */
+    test(tst_con.csetNamespacedDataObject_inValidInputDataNaN, async () => {
+        // Arrange
+        D[sys.cDataStorage] = {
+            [tst_dbt.cunitTestData]: {
+                [wrd.cTest]: wrd.cHello
+            }
+        };
+        let inputData = NaN;
+        let inputMetaData = {[wrd.cTest]: wrd.cTestValue};
+
+        // Act
+        let returnData = await dataArrayParsing.setNamespacedDataObject(inputData, inputMetaData);
+
+        // Assert
+        expect(returnData).toEqual(false);
+    });
+
+    /**
+     * @function setNamespacedDataObject_inValidInputMetaDataUndefined
+     * @description Tests the dataArrayParsing function setNamespacedDataObject with a invalid data undefined.
+     * @author Vlad Sorokin
+     * @date 2024/05/29
+     */
+    test(tst_con.csetNamespacedDataObject_inValidInputMetaDataUndefined, async () => {
+        // Arrange
+        D[sys.cDataStorage] = {
+            [tst_dbt.cunitTestData]: {
+                [wrd.cTest]: wrd.cHello
+            }
+        };
+        let inputData = [sys.cDataStorage, tst_dbt.cunitTestData];
+        let inputMetaData = undefined
+
+        // Act
+        let returnData = await dataArrayParsing.setNamespacedDataObject(inputData, inputMetaData);
+
+        // Assert
+        expect(returnData).toEqual(false);
+    });
+
+    /**
+     * @function setNamespacedDataObject_inValidInputMetaDataNaN
+     * @description Tests the dataArrayParsing function setNamespacedDataObject with a invalid data NaN.
+     * @author Vlad Sorokin
+     * @date 2024/05/29
+     */
+    test(tst_con.csetNamespacedDataObject_inValidInputMetaDataNaN, async () => {
+        // Arrange
+        D[sys.cDataStorage] = {
+            [tst_dbt.cunitTestData]: {
+                [wrd.cTest]: wrd.cHello
+            }
+        };
+        let inputData = [sys.cDataStorage, tst_dbt.cunitTestData];
+        let inputMetaData = NaN
+
+        // Act
+        let returnData = await dataArrayParsing.setNamespacedDataObject(inputData, inputMetaData);
+
+        // Assert
+        expect(returnData).toEqual(false);
+    });
+})
 
 
 

@@ -141,9 +141,13 @@ export const cisDeeplyEqual = biz.cisDeeplyEqual; // isDeeplyEqual
 export const carrayDeepClone = biz.carrayDeepClone; // arrayDeepClone
 export const cobjectDeepClone = biz.cobjectDeepClone; // objectDeepClone
 export const cobjectDeepMerge = biz.cobjectDeepMerge; // objectDeepMerge
-
+export const cconditionalObjectAssignment = biz.cconditionalObjectAssignment; // conditionalObjectAssignment
+export const cgetNamespacedDataObject = biz.cgetNamespacedDataObject; // getNamespacedDataObject
+export const csetNamespacedDataObject = biz.csetNamespacedDataObject; // setNamespacedDataObject
 
 /* pathArrayParsing */
+export const cdoesArrayContainFilename = biz.cdoesArrayContainFilename; // doesArrayContainFilename
+export const cgetFileAndPathListForPath = biz.cgetFileAndPathListForPath; // getFileAndPathListForPath
 
 /* wordArrayParsing */
 
@@ -1241,9 +1245,65 @@ export const cobjectDeepMerge_inValidInputDataNaN = cobjectDeepMerge + bas.cUnde
 export const cobjectDeepMerge_inValidInputMetaDataUndefined = cobjectDeepMerge + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputMetaData + 'Undefined'; // objectDeepMerge_inValidInputMetaDataUndefined
 export const cobjectDeepMerge_inValidInputMetaDataNaN = cobjectDeepMerge + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputMetaData + 'NaN'; // objectDeepMerge_inValidInputMetaDataNaN
 
+// conditionalObjectAssignment
+export const cconditionalObjectAssignment_validData = cconditionalObjectAssignment + bas.cUnderscore + wrd.cvalid + wrd.cData; // conditionalObjectAssignment_validData
+export const cconditionalObjectAssignment_inValidInputDataString = cconditionalObjectAssignment + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + wrd.cString; // conditionalObjectAssignment_inValidInputDataString
+export const cconditionalObjectAssignment_inValidInputMetaDataString = cconditionalObjectAssignment + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputMetaData + wrd.cString; // conditionalObjectAssignment_inValidInputMetaDataString
+export const cconditionalObjectAssignment_inValidInputDataInteger = cconditionalObjectAssignment + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + wrd.cInteger; // conditionalObjectAssignment_inValidInputDataInteger
+export const cconditionalObjectAssignment_inValidInputDataBoolean = cconditionalObjectAssignment + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + wrd.cBoolean; // conditionalObjectAssignment_inValidInputDataBoolean
+export const cconditionalObjectAssignment_inValidInputMetaDataInteger = cconditionalObjectAssignment + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputMetaData + wrd.cInteger; // conditionalObjectAssignment_inValidInputMetaDataInteger
+export const cconditionalObjectAssignment_inValidInputMetaDataBoolean = cconditionalObjectAssignment + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputMetaData + wrd.cBoolean; // conditionalObjectAssignment_inValidInputMetaDataBoolean
+export const cconditionalObjectAssignment_inValidInputDataUndefined = cconditionalObjectAssignment + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + 'Undefined'; // conditionalObjectAssignment_inValidInputDataUndefined
+export const cconditionalObjectAssignment_inValidInputDataNaN = cconditionalObjectAssignment + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + 'NaN'; // conditionalObjectAssignment_inValidInputDataNaN
+export const cconditionalObjectAssignment_inValidInputMetaDataUndefined = cconditionalObjectAssignment + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputMetaData + 'Undefined'; // conditionalObjectAssignment_inValidInputMetaDataUndefined
+export const cconditionalObjectAssignment_inValidInputMetaDataNaN = cconditionalObjectAssignment + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputMetaData + 'NaN'; // conditionalObjectAssignment_inValidInputMetaDataNaN
+
+// getNamespacedDataObject
+export const cgetNamespacedDataObject_validData = cgetNamespacedDataObject + bas.cUnderscore + wrd.cvalid + wrd.cData; // getNamespacedDataObject_validData
+export const cgetNamespacedDataObject_inValidInputDataString = cgetNamespacedDataObject + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + wrd.cString; // getNamespacedDataObject_inValidInputDataString
+export const cgetNamespacedDataObject_inValidInputMetaDataString = cgetNamespacedDataObject + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputMetaData + wrd.cString; // getNamespacedDataObject_inValidInputMetaDataString
+export const cgetNamespacedDataObject_inValidInputDataInteger = cgetNamespacedDataObject + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + wrd.cInteger; // getNamespacedDataObject_inValidInputDataInteger
+export const cgetNamespacedDataObject_inValidInputDataBoolean = cgetNamespacedDataObject + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + wrd.cBoolean; // getNamespacedDataObject_inValidInputDataBoolean
+export const cgetNamespacedDataObject_inValidInputMetaDataInteger = cgetNamespacedDataObject + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputMetaData + wrd.cInteger; // getNamespacedDataObject_inValidInputMetaDataInteger
+export const cgetNamespacedDataObject_inValidInputDataUndefined = cgetNamespacedDataObject + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + 'Undefined'; // getNamespacedDataObject_inValidInputDataUndefined
+export const cgetNamespacedDataObject_inValidInputDataNaN = cgetNamespacedDataObject + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + 'NaN'; // getNamespacedDataObject_inValidInputDataNaN
+export const cgetNamespacedDataObject_inValidInputMetaDataUndefined = cgetNamespacedDataObject + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputMetaData + 'Undefined'; // getNamespacedDataObject_inValidInputMetaDataUndefined
+export const cgetNamespacedDataObject_inValidInputMetaDataNaN = cgetNamespacedDataObject + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputMetaData + 'NaN'; // getNamespacedDataObject_inValidInputMetaDataNaN
+
+// setNamespacedDataObject
+export const csetNamespacedDataObject_validData = csetNamespacedDataObject + bas.cUnderscore + wrd.cvalid + wrd.cData; // setNamespacedDataObject_validData
+export const csetNamespacedDataObject_inValidInputDataString = csetNamespacedDataObject + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + wrd.cString; // setNamespacedDataObject_inValidInputDataString
+export const csetNamespacedDataObject_inValidInputMetaDataString = csetNamespacedDataObject + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputMetaData + wrd.cString; // setNamespacedDataObject_inValidInputMetaDataString
+export const csetNamespacedDataObject_inValidInputDataInteger = csetNamespacedDataObject + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + wrd.cInteger; // setNamespacedDataObject_inValidInputDataInteger
+export const csetNamespacedDataObject_inValidInputDataBoolean = csetNamespacedDataObject + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + wrd.cBoolean; // setNamespacedDataObject_inValidInputDataBoolean
+export const csetNamespacedDataObject_inValidInputMetaDataInteger = csetNamespacedDataObject + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputMetaData + wrd.cInteger; // setNamespacedDataObject_inValidInputMetaDataInteger
+export const csetNamespacedDataObject_inValidInputMetaDataBoolean = csetNamespacedDataObject + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputMetaData + wrd.cBoolean; // setNamespacedDataObject_inValidInputMetaDataBoolean
+export const csetNamespacedDataObject_inValidInputDataUndefined = csetNamespacedDataObject + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + 'Undefined'; // setNamespacedDataObject_inValidInputDataUndefined
+export const csetNamespacedDataObject_inValidInputDataNaN = csetNamespacedDataObject + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + 'NaN'; // setNamespacedDataObject_inValidInputDataNaN
+export const csetNamespacedDataObject_inValidInputMetaDataUndefined = csetNamespacedDataObject + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputMetaData + 'Undefined'; // setNamespacedDataObject_inValidInputMetaDataUndefined
+export const csetNamespacedDataObject_inValidInputMetaDataNaN = csetNamespacedDataObject + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputMetaData + 'NaN'; // setNamespacedDataObject_inValidInputMetaDataNaN
 
 
 /* pathArrayParsing */
+// doesArrayContainFilename
+export const cdoesArrayContainFilename_validData = cdoesArrayContainFilename + bas.cUnderscore + wrd.cvalid + wrd.cData; // doesArrayContainFilename_validData
+export const cdoesArrayContainFilename_inValidInputMetaDataString = cdoesArrayContainFilename + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputMetaData + wrd.cString; // doesArrayContainFilename_inValidInputMetaDataString
+export const cdoesArrayContainFilename_inValidInputDataInteger = cdoesArrayContainFilename + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + wrd.cInteger; // doesArrayContainFilename_inValidInputDataInteger
+export const cdoesArrayContainFilename_inValidInputDataBoolean = cdoesArrayContainFilename + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + wrd.cBoolean; // doesArrayContainFilename_inValidInputDataBoolean
+export const cdoesArrayContainFilename_inValidInputMetaDataInteger = cdoesArrayContainFilename + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputMetaData + wrd.cInteger; // doesArrayContainFilename_inValidInputMetaDataInteger
+export const cdoesArrayContainFilename_inValidInputMetaDataBoolean = cdoesArrayContainFilename + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputMetaData + wrd.cBoolean; // doesArrayContainFilename_inValidInputMetaDataBoolean
+export const cdoesArrayContainFilename_inValidInputDataUndefined = cdoesArrayContainFilename + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + 'Undefined'; // doesArrayContainFilename_inValidInputDataUndefined
+export const cdoesArrayContainFilename_inValidInputDataNaN = cdoesArrayContainFilename + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + 'NaN'; // doesArrayContainFilename_inValidInputDataNaN
+export const cdoesArrayContainFilename_inValidInputMetaDataUndefined = cdoesArrayContainFilename + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputMetaData + 'Undefined'; // doesArrayContainFilename_inValidInputMetaDataUndefined
+export const cdoesArrayContainFilename_inValidInputMetaDataNaN = cdoesArrayContainFilename + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputMetaData + 'NaN'; // doesArrayContainFilename_inValidInputMetaDataNaN
+
+// getFileAndPathListForPath
+export const cgetFileAndPathListForPath_validData = cgetFileAndPathListForPath + bas.cUnderscore + wrd.cvalid + wrd.cData; // getFileAndPathListForPath_validData
+export const cgetFileAndPathListForPath_inValidInputDataString = cgetFileAndPathListForPath + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + wrd.cString; // getFileAndPathListForPath_inValidInputDataString
+export const cgetFileAndPathListForPath_inValidInputDataInteger = cgetFileAndPathListForPath + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + wrd.cInteger; // getFileAndPathListForPath_inValidInputDataInteger
+export const cgetFileAndPathListForPath_inValidInputDataBoolean = cgetFileAndPathListForPath + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + wrd.cBoolean; // getFileAndPathListForPath_inValidInputDataBoolean
+export const cgetFileAndPathListForPath_inValidInputDataUndefined = cgetFileAndPathListForPath + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + 'Undefined'; // getFileAndPathListForPath_inValidInputDataUndefined
+export const cgetFileAndPathListForPath_inValidInputDataNaN = cgetFileAndPathListForPath + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + 'NaN'; // getFileAndPathListForPath_inValidInputDataNaN
 
 /* wordArrayParsing */
 

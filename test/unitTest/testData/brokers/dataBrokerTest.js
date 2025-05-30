@@ -28,6 +28,7 @@ const rootPathConstants = rootPathArray[1];
 const rootPathHayPlugins = rootPathArray[2];
 
 export const cunitTestData = wrd.cunit + wrd.cTest + wrd.cData; // unitTestData
+export const csystemDotxml = wrd.csystem + gen.cDotxml; // system.xml
 
 // Paths
 export const cpathForTestFolder = rootPathAsync + bas.cBackSlash + wrd.ctest + bas.cBackSlash + wrd.cunit + wrd.cTest + bas.cBackSlash + wrd.ctest + wrd.cData + bas.cBackSlash + wrd.cresources + bas.cBackSlash + wrd.ctest + wrd.cFolder; // C:\\haystacks-async\\test\\unitTest\\testData\\resources\\testFolder
@@ -35,7 +36,7 @@ export const cexpectedPathForTestFolder = cpathForTestFolder + bas.cForwardSlash
 export const cpathToUnitTestApplicationDebugSettings = rootPathAsync + bas.cBackSlash + wrd.ctest + bas.cBackSlash + wrd.cunit + wrd.cTest + bas.cBackSlash + wrd.ctestData + bas.cBackSlash + wrd.cresources + bas.cBackSlash + wrd.cfake + wrd.cTest + wrd.cDebug + wrd.cSettings + bas.cBackSlash + wrd.capp + wrd.cDebug + wrd.cSettings + bas.cBackSlash + wrd.capplication + bas.cDot + wrd.csystem + gen.cDotjson; // C:\\haystacks-async\\test\\unitTest\\testData\\resources\\fakeTestDebugSettings\\appDebugSettings\\application.system.json
 export const cpathToUnitTestFrameworkDebugSettings = rootPathAsync + bas.cBackSlash + wrd.ctest + bas.cBackSlash + wrd.cunit + wrd.cTest + bas.cBackSlash + wrd.ctestData + bas.cBackSlash + wrd.cresources + bas.cBackSlash + wrd.cfake + wrd.cTest + wrd.cDebug + wrd.cSettings + bas.cBackSlash + wrd.cframework + wrd.cDebug + wrd.cSettings + bas.cBackSlash + wrd.cframework + bas.cDot + wrd.csystem + gen.cDotjson; // C:\\haystacks-async\\test\\unitTest\\testData\\resources\\fakeTestDebugSettings\\frameworkDebugSettings\\framework.system.json
 export const cpathToBasicCsvFile = rootPathAsync + bas.cBackSlash + wrd.ctest + bas.cBackSlash + wrd.cunit + wrd.cTest + bas.cBackSlash + wrd.ctest + wrd.cData + bas.cBackSlash + wrd.cgeneric + bas.cBackSlash + wrd.cbasic + wrd.cTest + gen.cDotcsv; // C:\haystacks-async\test\unitTest\testData\generic\basicTest.csv
-export const cpathToSystemXmlFile = rootPathAsync + bas.cBackSlash + wrd.ctest + bas.cBackSlash + wrd.cunit + wrd.cTest + bas.cBackSlash + wrd.ctest + wrd.cData + bas.cBackSlash + wrd.cgeneric + bas.cBackSlash + wrd.csystem + gen.cDotxml; // C:\haystacks-async\test\unitTest\testData\generic\system.xml
+export const cpathToSystemXmlFile = rootPathAsync + bas.cBackSlash + wrd.ctest + bas.cBackSlash + wrd.cunit + wrd.cTest + bas.cBackSlash + wrd.ctest + wrd.cData + bas.cBackSlash + wrd.cgeneric + bas.cBackSlash + csystemDotxml; // C:\haystacks-async\test\unitTest\testData\generic\system.xml
 export const cpathToJsonTestFile = rootPathAsync + bas.cBackSlash + wrd.ctest + bas.cBackSlash + wrd.cunit + wrd.cTest + bas.cBackSlash + wrd.ctestData + bas.cBackSlash + wrd.cresources + bas.cBackSlash + gen.cjson + wrd.cTest + wrd.cData + bas.cBackSlash + bas.cForwardSlash + gen.cjson + wrd.cTest + wrd.cFile + gen.cDotjson; // C:\\haystacks-async\\test\\unitTest\\testData\\resources\\jsonTestData\\/jsonTestFile.json
 
 // Expected data

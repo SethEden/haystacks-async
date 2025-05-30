@@ -746,11 +746,6 @@ input inputData: array<string> (The path in the data JSON object where the setti
 input inputMetaData: integer (123)
 output: ?
 
-testName: getNamespacedDataObject_inValidInputMetaDataBoolean
-input inputData: array<string> (The path in the data JSON object where the setting should be returned)
-input inputMetaData: boolean (false)
-output: ?
-
 testName: getNamespacedDataObject_inValidInputDataUndefined
 input inputData: undefined
 input inputMetaData: boolean (True or False value to indicate if the path elements should be created or not it they are not found)

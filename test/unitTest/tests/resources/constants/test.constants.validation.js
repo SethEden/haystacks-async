@@ -144,9 +144,13 @@ export const testConstantsValidation = [
     {Name: 'carrayDeepClone', Actual: tst_con.carrayDeepClone, Expected: 'arrayDeepClone'},
     {Name: 'cobjectDeepClone', Actual: tst_con.cobjectDeepClone, Expected: 'objectDeepClone'},
     {Name: 'cobjectDeepMerge', Actual: tst_con.cobjectDeepMerge, Expected: 'objectDeepMerge'},
-
+    {Name: 'cconditionalObjectAssignment', Actual: tst_con.cconditionalObjectAssignment, Expected: 'conditionalObjectAssignment'},
+    {Name: 'cgetNamespacedDataObject', Actual: tst_con.cgetNamespacedDataObject, Expected: 'getNamespacedDataObject'},
+    {Name: 'csetNamespacedDataObject', Actual: tst_con.csetNamespacedDataObject, Expected: 'setNamespacedDataObject'},
     
     /* pathArrayParsing */
+    {Name: 'cdoesArrayContainFilename', Actual: tst_con.cdoesArrayContainFilename, Expected: 'doesArrayContainFilename'},
+    {Name: 'cgetFileAndPathListForPath', Actual: tst_con.cgetFileAndPathListForPath, Expected: 'getFileAndPathListForPath'},
 
     /* wordArrayParsing */
 
@@ -1213,11 +1217,64 @@ export const testConstantsValidation = [
     {Name: 'cobjectDeepMerge_inValidInputMetaDataUndefined', Actual: tst_con.cobjectDeepMerge_inValidInputMetaDataUndefined, Expected: 'objectDeepMerge_inValidInputMetaDataUndefined'},
     {Name: 'cobjectDeepMerge_inValidInputMetaDataNaN', Actual: tst_con.cobjectDeepMerge_inValidInputMetaDataNaN, Expected: 'objectDeepMerge_inValidInputMetaDataNaN'},
 
+    // conditionalObjectAssignment
+    {Name: 'cconditionalObjectAssignment_validData', Actual: tst_con.cconditionalObjectAssignment_validData, Expected: 'conditionalObjectAssignment_validData'},
+    {Name: 'cconditionalObjectAssignment_inValidInputDataString', Actual: tst_con.cconditionalObjectAssignment_inValidInputDataString, Expected: 'conditionalObjectAssignment_inValidInputDataString'},
+    {Name: 'cconditionalObjectAssignment_inValidInputMetaDataString', Actual: tst_con.cconditionalObjectAssignment_inValidInputMetaDataString, Expected: 'conditionalObjectAssignment_inValidInputMetaDataString'},
+    {Name: 'cconditionalObjectAssignment_inValidInputDataInteger', Actual: tst_con.cconditionalObjectAssignment_inValidInputDataInteger, Expected: 'conditionalObjectAssignment_inValidInputDataInteger'},
+    {Name: 'cconditionalObjectAssignment_inValidInputDataBoolean', Actual: tst_con.cconditionalObjectAssignment_inValidInputDataBoolean, Expected: 'conditionalObjectAssignment_inValidInputDataBoolean'},
+    {Name: 'cconditionalObjectAssignment_inValidInputMetaDataInteger', Actual: tst_con.cconditionalObjectAssignment_inValidInputMetaDataInteger, Expected: 'conditionalObjectAssignment_inValidInputMetaDataInteger'},
+    {Name: 'cconditionalObjectAssignment_inValidInputMetaDataBoolean', Actual: tst_con.cconditionalObjectAssignment_inValidInputMetaDataBoolean, Expected: 'conditionalObjectAssignment_inValidInputMetaDataBoolean'},
+    {Name: 'cconditionalObjectAssignment_inValidInputDataUndefined', Actual: tst_con.cconditionalObjectAssignment_inValidInputDataUndefined, Expected: 'conditionalObjectAssignment_inValidInputDataUndefined'},
+    {Name: 'cconditionalObjectAssignment_inValidInputDataNaN', Actual: tst_con.cconditionalObjectAssignment_inValidInputDataNaN, Expected: 'conditionalObjectAssignment_inValidInputDataNaN'},
+    {Name: 'cconditionalObjectAssignment_inValidInputMetaDataUndefined', Actual: tst_con.cconditionalObjectAssignment_inValidInputMetaDataUndefined, Expected: 'conditionalObjectAssignment_inValidInputMetaDataUndefined'},
+    {Name: 'cconditionalObjectAssignment_inValidInputMetaDataNaN', Actual: tst_con.cconditionalObjectAssignment_inValidInputMetaDataNaN, Expected: 'conditionalObjectAssignment_inValidInputMetaDataNaN'},
 
+    // getNamespacedDataObject
+    {Name: 'cgetNamespacedDataObject_validData', Actual: tst_con.cgetNamespacedDataObject_validData, Expected: 'getNamespacedDataObject_validData'},
+    {Name: 'cgetNamespacedDataObject_inValidInputDataString', Actual: tst_con.cgetNamespacedDataObject_inValidInputDataString, Expected: 'getNamespacedDataObject_inValidInputDataString'},
+    {Name: 'cgetNamespacedDataObject_inValidInputMetaDataString', Actual: tst_con.cgetNamespacedDataObject_inValidInputMetaDataString, Expected: 'getNamespacedDataObject_inValidInputMetaDataString'},
+    {Name: 'cgetNamespacedDataObject_inValidInputDataInteger', Actual: tst_con.cgetNamespacedDataObject_inValidInputDataInteger, Expected: 'getNamespacedDataObject_inValidInputDataInteger'},
+    {Name: 'cgetNamespacedDataObject_inValidInputDataBoolean', Actual: tst_con.cgetNamespacedDataObject_inValidInputDataBoolean, Expected: 'getNamespacedDataObject_inValidInputDataBoolean'},
+    {Name: 'cgetNamespacedDataObject_inValidInputMetaDataInteger', Actual: tst_con.cgetNamespacedDataObject_inValidInputMetaDataInteger, Expected: 'getNamespacedDataObject_inValidInputMetaDataInteger'},
+    {Name: 'cgetNamespacedDataObject_inValidInputDataUndefined', Actual: tst_con.cgetNamespacedDataObject_inValidInputDataUndefined, Expected: 'getNamespacedDataObject_inValidInputDataUndefined'},
+    {Name: 'cgetNamespacedDataObject_inValidInputDataNaN', Actual: tst_con.cgetNamespacedDataObject_inValidInputDataNaN, Expected: 'getNamespacedDataObject_inValidInputDataNaN'},
+    {Name: 'cgetNamespacedDataObject_inValidInputMetaDataUndefined', Actual: tst_con.cgetNamespacedDataObject_inValidInputMetaDataUndefined, Expected: 'getNamespacedDataObject_inValidInputMetaDataUndefined'},
+    {Name: 'cgetNamespacedDataObject_inValidInputMetaDataNaN', Actual: tst_con.cgetNamespacedDataObject_inValidInputMetaDataNaN, Expected: 'getNamespacedDataObject_inValidInputMetaDataNaN'},
 
-
+    // setNamespacedDataObject
+    {Name: 'csetNamespacedDataObject_validData', Actual: tst_con.csetNamespacedDataObject_validData, Expected: 'setNamespacedDataObject_validData'},
+    {Name: 'csetNamespacedDataObject_inValidInputDataString', Actual: tst_con.csetNamespacedDataObject_inValidInputDataString, Expected: 'setNamespacedDataObject_inValidInputDataString'},
+    {Name: 'csetNamespacedDataObject_inValidInputMetaDataString', Actual: tst_con.csetNamespacedDataObject_inValidInputMetaDataString, Expected: 'setNamespacedDataObject_inValidInputMetaDataString'},
+    {Name: 'csetNamespacedDataObject_inValidInputDataInteger', Actual: tst_con.csetNamespacedDataObject_inValidInputDataInteger, Expected: 'setNamespacedDataObject_inValidInputDataInteger'},
+    {Name: 'csetNamespacedDataObject_inValidInputDataBoolean', Actual: tst_con.csetNamespacedDataObject_inValidInputDataBoolean, Expected: 'setNamespacedDataObject_inValidInputDataBoolean'},
+    {Name: 'csetNamespacedDataObject_inValidInputMetaDataInteger', Actual: tst_con.csetNamespacedDataObject_inValidInputMetaDataInteger, Expected: 'setNamespacedDataObject_inValidInputMetaDataInteger'},
+    {Name: 'csetNamespacedDataObject_inValidInputMetaDataBoolean', Actual: tst_con.csetNamespacedDataObject_inValidInputMetaDataBoolean, Expected: 'setNamespacedDataObject_inValidInputMetaDataBoolean'},
+    {Name: 'csetNamespacedDataObject_inValidInputDataUndefined', Actual: tst_con.csetNamespacedDataObject_inValidInputDataUndefined, Expected: 'setNamespacedDataObject_inValidInputDataUndefined'},
+    {Name: 'csetNamespacedDataObject_inValidInputDataNaN', Actual: tst_con.csetNamespacedDataObject_inValidInputDataNaN, Expected: 'setNamespacedDataObject_inValidInputDataNaN'},
+    {Name: 'csetNamespacedDataObject_inValidInputMetaDataUndefined', Actual: tst_con.csetNamespacedDataObject_inValidInputMetaDataUndefined, Expected: 'setNamespacedDataObject_inValidInputMetaDataUndefined'},
+    {Name: 'csetNamespacedDataObject_inValidInputMetaDataNaN', Actual: tst_con.csetNamespacedDataObject_inValidInputMetaDataNaN, Expected: 'setNamespacedDataObject_inValidInputMetaDataNaN'},
 
     /* pathArrayParsing */
+    // doesArrayContainFilename
+    {Name: 'cdoesArrayContainFilename_validData', Actual: tst_con.cdoesArrayContainFilename_validData, Expected: 'doesArrayContainFilename_validData'},
+    {Name: 'cdoesArrayContainFilename_inValidInputMetaDataString', Actual: tst_con.cdoesArrayContainFilename_inValidInputMetaDataString, Expected: 'doesArrayContainFilename_inValidInputMetaDataString'},
+    {Name: 'cdoesArrayContainFilename_inValidInputDataInteger', Actual: tst_con.cdoesArrayContainFilename_inValidInputDataInteger, Expected: 'doesArrayContainFilename_inValidInputDataInteger'},
+    {Name: 'cdoesArrayContainFilename_inValidInputDataBoolean', Actual: tst_con.cdoesArrayContainFilename_inValidInputDataBoolean, Expected: 'doesArrayContainFilename_inValidInputDataBoolean'},
+    {Name: 'cdoesArrayContainFilename_inValidInputMetaDataInteger', Actual: tst_con.cdoesArrayContainFilename_inValidInputMetaDataInteger, Expected: 'doesArrayContainFilename_inValidInputMetaDataInteger'},
+    {Name: 'cdoesArrayContainFilename_inValidInputMetaDataBoolean', Actual: tst_con.cdoesArrayContainFilename_inValidInputMetaDataBoolean, Expected: 'doesArrayContainFilename_inValidInputMetaDataBoolean'},
+    {Name: 'cdoesArrayContainFilename_inValidInputDataUndefined', Actual: tst_con.cdoesArrayContainFilename_inValidInputDataUndefined, Expected: 'doesArrayContainFilename_inValidInputDataUndefined'},
+    {Name: 'cdoesArrayContainFilename_inValidInputDataNaN', Actual: tst_con.cdoesArrayContainFilename_inValidInputDataNaN, Expected: 'doesArrayContainFilename_inValidInputDataNaN'},
+    {Name: 'cdoesArrayContainFilename_inValidInputMetaDataUndefined', Actual: tst_con.cdoesArrayContainFilename_inValidInputMetaDataUndefined, Expected: 'doesArrayContainFilename_inValidInputMetaDataUndefined'},
+    {Name: 'cdoesArrayContainFilename_inValidInputMetaDataNaN', Actual: tst_con.cdoesArrayContainFilename_inValidInputMetaDataNaN, Expected: 'doesArrayContainFilename_inValidInputMetaDataNaN'},
+
+    // getFileAndPathListForPath
+    {Name: 'cgetFileAndPathListForPath_validData', Actual: tst_con.cgetFileAndPathListForPath_validData, Expected: 'getFileAndPathListForPath_validData'},
+    {Name: 'cgetFileAndPathListForPath_inValidInputDataString', Actual: tst_con.cgetFileAndPathListForPath_inValidInputDataString, Expected: 'getFileAndPathListForPath_inValidInputDataString'},
+    {Name: 'cgetFileAndPathListForPath_inValidInputDataInteger', Actual: tst_con.cgetFileAndPathListForPath_inValidInputDataInteger, Expected: 'getFileAndPathListForPath_inValidInputDataInteger'},
+    {Name: 'cgetFileAndPathListForPath_inValidInputDataBoolean', Actual: tst_con.cgetFileAndPathListForPath_inValidInputDataBoolean, Expected: 'getFileAndPathListForPath_inValidInputDataBoolean'},
+    {Name: 'cgetFileAndPathListForPath_inValidInputDataUndefined', Actual: tst_con.cgetFileAndPathListForPath_inValidInputDataUndefined, Expected: 'getFileAndPathListForPath_inValidInputDataUndefined'},
+    {Name: 'cgetFileAndPathListForPath_inValidInputDataNaN', Actual: tst_con.cgetFileAndPathListForPath_inValidInputDataNaN, Expected: 'getFileAndPathListForPath_inValidInputDataNaN'},
 
     /* wordArrayParsing */
 

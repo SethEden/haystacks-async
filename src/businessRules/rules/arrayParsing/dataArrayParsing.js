@@ -571,10 +571,22 @@ async function conditionalObjectAssignment(inputData, inputMetaData) {
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
   let returnData = {};
-  if (await isObjectEmpty(inputMetaData, '') === true) {
-    returnData = inputData;
-  } else {
-    returnData = Object.assign(inputMetaData, inputData);
+  if (inputMetaData && typeof inputMetaData === wrd.cobject) {
+    if (inputData && typeof inputData === wrd.cobject) {
+      if (await isObjectEmpty(inputMetaData, '') === true) {
+        returnData = inputData;
+      } else {
+        returnData = Object.assign(inputMetaData, inputData);
+      }
+    } else { // End-if (inputMetaData)
+      // ERROR: Invalid input, inputData is:
+      console.log(msg.cErrorInvalidInputDataMessage + inputData);
+      returnData = inputMetaData
+    }
+  } else { // End-if (inputData)
+    // ERROR: Invalid input, inputMetaData is:
+    console.log(msg.cErrorInvalidInputMetaDataMessage + inputMetaData);
+    returnData = false;
   }
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
@@ -587,7 +599,7 @@ async function conditionalObjectAssignment(inputData, inputMetaData) {
  * @param {array<string>} inputData The path in the data JSON object where the
  * setting should be returned.
  * @param {boolean} inputMetaData True or False value to indicate if
- * the path elements should be created or not it they are not found.
+ * the path elements should be created or not if they are not found.
  * @return {object|boolean} The object found at the specified namespace address in the data object,
  * or False if nothing was found.
  * @author Seth Hollingsead
@@ -609,20 +621,25 @@ async function getNamespacedDataObject(inputData, inputMetaData) {
   let processingValidData = false;
   let namespaceDataObject = D;
   if (inputData && inputData.length > 0) {
-    for (const element of inputData) {
-      processingValidData = true;
-      if (!namespaceDataObject[element] && inputMetaData === true) {
-        // It doesn't exist yet, so lets make it.
-        namespaceDataObject[element] = {};
-      } else if (!namespaceDataObject[element]) {
-        console.log(msg.cnamespaceDataObjectPathNotFound + JSON.stringify(element));
-        processingValidData = false;
-        break;
+    if (inputMetaData !== undefined && typeof inputMetaData === wrd.cboolean) {
+      for (const element of inputData) {
+        processingValidData = true;
+        if (!namespaceDataObject[element] && inputMetaData === true) {
+          // It doesn't exist yet, so lets make it.
+          namespaceDataObject[element] = {};
+        } else if (!namespaceDataObject[element]) {
+          console.log(msg.cnamespaceDataObjectPathNotFound + JSON.stringify(element));
+          processingValidData = false;
+          break;
+        }
+        namespaceDataObject = namespaceDataObject[element];
+      } // End-for (const element of inputData)
+      if (processingValidData === true) {
+        returnData = namespaceDataObject;
       }
-      namespaceDataObject = namespaceDataObject[element];
-    } // End-for (const element of inputData)
-    if (processingValidData === true) {
-      returnData = namespaceDataObject;
+    } else { // End-if (inputMetaData)
+      // ERROR: Invalid input, inputMetaData is:
+      console.log(msg.cErrorInvalidInputMetaDataMessage + inputMetaData);
     }
   } // End-if (inputData && inputData.length > 0)
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
@@ -647,21 +664,31 @@ async function setNamespacedDataObject(inputData, inputMetaData) {
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
   let returnData = false;
   let namespaceDataObject = D;
-  if (inputData && inputData.length > 0) {
-    for (let i = 0; i < inputData.length - 1; i++) {
-      namespaceDataObject = namespaceDataObject[inputData[i]];
-      if (i === inputData.length - 2) {
-        // namespaceDataObject is:
-        await loggers.consoleLog(namespacePrefix + functionName, msg.cnamespaceDataObjectIs + JSON.stringify(namespaceDataObject));
-        let fullyQualifiedKey = await namespaceDataObject.join(bas.cDot);
-        if (await ruleParsing.processRulesInternal([[namespaceDataObject, cfg.cdebugSetting], await ruleParsing.getRule(biz.cascertainMatchingElements)], [biz.cdoesArrayContainValue]) === true) {
-          namespaceDataObject[fullyQualifiedKey] = inputMetaData;
-        } else {
-          namespaceDataObject[inputData[i + 1]] = inputMetaData;
-        }
-        returnData = true;
-      } // End-if (i === inputData.length - 2)
-    } // End-for (let i = 0; i < inputData.length - 1; i++)
+  if (inputData && inputData.length > 0 && (Array.isArray(inputData) && inputData.every(item => typeof item === wrd.cstring))) {
+    if (inputMetaData !== undefined && typeof inputMetaData === wrd.cobject) {
+      for (let i = 0; i < inputData.length - 1; i++) {
+        namespaceDataObject = namespaceDataObject[inputData[i]];
+        if (i === inputData.length - 2) {
+          // namespaceDataObject is:
+          await loggers.consoleLog(namespacePrefix + functionName, msg.cnamespaceDataObjectIs + JSON.stringify(namespaceDataObject));
+          console.log(namespaceDataObject);
+          // let fullyQualifiedKey = await namespaceDataObject.join(bas.cDot);
+          let fullyQualifiedKey = await inputData.join(bas.cDot);
+          if (await ruleParsing.processRulesInternal([[namespaceDataObject, cfg.cdebugSetting], await ruleParsing.getRule(biz.cascertainMatchingElements)], [biz.cdoesArrayContainValue]) === true) {
+            namespaceDataObject[fullyQualifiedKey] = inputMetaData;
+          } else {
+            namespaceDataObject[inputData[i + 1]] = inputMetaData;
+          }
+          returnData = true;
+        } // End-if (i === inputData.length - 2)
+      } // End-for (let i = 0; i < inputData.length - 1; i++)
+    } else { // End-if (inputMetaData)
+        // ERROR: Invalid input, inputMetaData is:
+        console.log(msg.cErrorInvalidInputMetaDataMessage + inputMetaData);
+    }
+  } else { // End-if (inputData)
+    // ERROR: Invalid input, inputData is:
+    console.log(msg.cErrorInvalidInputDataMessage + inputData);
   } // End-if (inputData && inputData.length > 0)
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);

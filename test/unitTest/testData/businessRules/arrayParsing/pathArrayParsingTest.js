@@ -1,11 +1,11 @@
 /**
- * @file dataArrayParsingTest.js
- * @module dataArrayParsingTest
+ * @file pathArrayParsingTest.js
+ * @module pathArrayParsingTest
  * @description File that containts test data.
  * @requires {@link https://www.npmjs.com/package/@haystacks/constants|@haystacks/constants}
  * @requires {@link https://www.npmjs.com/package/path|path}
  * @author Vlad Sorokin
- * @date 2024/07/09
+ * @date 2025/05/29
  * @copyright Copyright © 2024-… by Vlad Sorokin. All rights reserved
  */
 
@@ -27,24 +27,5 @@ const rootPathAsync = rootPathArray[0];
 const rootPathConstants = rootPathArray[1];
 const rootPathHayPlugins = rootPathArray[2];
 
-export const testObject1 = {[wrd.cname]: wrd.chello, [wrd.cage]: 30}; // {"name": "hello", "age": 30} 
-export const testObject2 = {[wrd.cage]: 25, city: wrd.ctest}; // {"age": 25, "city": "test"} 
-export const testObject1and2 = {[wrd.cname]: wrd.chello, [wrd.cage]: 25, city: wrd.ctest}; // {"name": "hello", "age": 25, "city": "test"} 
-export const testObject3 = {
-    id: 1,
-    name: wrd.ctest,
-    active: true,
-};
-export const testObject4 = {
-    category: wrd.cBasic,
-    createdBy: wrd.cSystem,
-};
-export const testObject3and4 = {
-    category: wrd.cBasic,
-    createdBy: wrd.cSystem,
-    id: 1,
-    name: wrd.ctest,
-    active: true,
-};
-
+export const cexpectedPathToTestFolder = cpathForTestFolder + bas.cForwardSlash; // C:\\haystacks-async\\test\\unitTest\\testData\\resources\\testFolder/emptyFileForTest.js
 

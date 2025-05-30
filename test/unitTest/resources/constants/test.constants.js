@@ -1,3 +1,4 @@
+
 /**
  * @file dataArrayParsingTest.js
  * @module dataArrayParsingTest
@@ -46,5 +47,3 @@ export const testObject3and4 = {
     name: wrd.ctest,
     active: true,
 };
-
-

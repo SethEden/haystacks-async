@@ -42,9 +42,19 @@ async function doesArrayContainFilename(inputData, inputMetaData) {
   let returnData = false;
   // NOTE: This call doesn't actually work, it may have worked at one time, but it doesn't work now.
   // And I'm not going to spend the time trying to figure out why,
-  // when it will be much simpler to ust call that same function in a loop to figure out the result.
+  // when it will be much simpler to just call that same function in a loop to figure out the result.
   // Can solve this when we build unit tests.
-  returnData = await ruleParsing.processRulesInternal([[inputData, inputMetaData], ''], [biz.cdoesArrayContainValue]);
+  if (Array.isArray(inputData) && inputData.every(item => typeof item === wrd.cstring)) {
+    if (inputMetaData && typeof inputMetaData === wrd.cstring) {
+      returnData = await ruleParsing.processRulesInternal([[inputData, inputMetaData], ''], [biz.cdoesArrayContainValue]);
+    } else { // End-if (inputMetaData)
+      // ERROR: Invalid input, inputMetaData is:
+      console.log(msg.cErrorInvalidInputMetaDataMessage + inputMetaData);
+    }
+  } else { // End-if (inputData)
+    // ERROR: Invalid input, inputData is:
+    console.log(msg.cErrorInvalidInputDataMessage + inputData);
+  }
 
   // NOTE: The below code also works, I am going to attempt to re-enable the above code and see if it also works.
   // YES! This is a second way of doing the same thing. If the above code ever has a problem, we can fall back to this method.
@@ -66,7 +76,8 @@ async function doesArrayContainFilename(inputData, inputMetaData) {
  * @param {string} inputData The path that should be scanned for files and their full paths.
  * @param {integer} inputMetaData Optional file limit, ignored if the configuration flag is not set to true,
  * if nothing is passed the configuration setting will be used.
- * @return {array<string>} The array that contains the full path and file name for every file found under the specified path.
+ * @return {array<string>|boolean} The array that contains the full path and file name for every file found under the specified path 
+ * or false if there was an error.
  * @author Seth Hollingsead
  * @date 2022/01/21
  */
@@ -77,7 +88,7 @@ async function getFileAndPathListForPath(inputData, inputMetaData) {
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = '';
   let enableFilesListLimit, filesListLimit;
-  if (inputData) {
+  if (inputData && typeof inputData === wrd.cstring && (inputData.includes(bas.cForwardSlash) === true || inputData.includes(bas.cBackSlash) === true)) { 
     if (inputMetaData) {
       enableFilesListLimit = await configurator.getConfigurationSetting(wrd.csystem, cfg.cEnableFilesListLimit);
       filesListLimit = inputMetaData;
@@ -88,7 +99,11 @@ async function getFileAndPathListForPath(inputData, inputMetaData) {
     // filesListLimit is:
     await loggers.consoleLog(namespacePrefix + functionName, msg.cfilesListLimitIs + filesListLimit);
     returnData = await ruleParsing.processRulesInternal([inputData, [enableFilesListLimit, filesListLimit]], [biz.cscanDirectoryContents]);
-  } // End-if (inputData)
+  } else { // End-if (inputData)
+    // ERROR: Invalid input, inputData is:
+    console.log(msg.cErrorInvalidInputDataMessage + inputData);
+    returnData = false;
+  }
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;

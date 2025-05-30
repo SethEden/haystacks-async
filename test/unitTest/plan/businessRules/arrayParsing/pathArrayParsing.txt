@@ -6,11 +6,6 @@ input inputData: array<string> (The array of file names that should be checked f
 input inputMetaData: string (The file name we are looking for in the input array)
 output: boolean (A True or False value to indicate if the file name was found or not)
 
-testName: doesArrayContainFilename_inValidInputDataString
-input inputData: string (dfxg24346dfg)
-input inputMetaData: string (The file name we are looking for in the input array)
-output: ?
-
 testName: doesArrayContainFilename_inValidInputMetaDataString
 input inputData: array<string> (The array of file names that should be checked for the input file name we are looking for)
 input inputMetaData: string (dfxg24346dfg)
