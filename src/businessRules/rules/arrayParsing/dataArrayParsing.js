@@ -35,7 +35,7 @@ const namespacePrefix = wrd.cframework + bas.cDot + sys.cbusinessRules + bas.cDo
  * @return {boolean} True or False to indicate if the arrays are equal or not equal.
  * @author Seth Hollingsead
  * @date 2022/01/20
- * @NOTE: https://stackoverflow.com/questions/3115982/how-to-check-if-two-arrays-are-equal-with-javascript
+ * @NOTE: Original https://stackoverflow.com/questions/3115982/how-to-check-if-two-arrays-are-equal-with-javascript
  */
 async function arraysAreEqual(inputData, inputMetaData) {
   let functionName = arraysAreEqual.name;
@@ -43,11 +43,17 @@ async function arraysAreEqual(inputData, inputMetaData) {
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
   let returnData = false;
-  if (inputData && inputMetaData) {
-    if (inputData === inputMetaData) { returnData = true; }
-    if (inputData === null || inputMetaData === null) { returnData = false; }
-    if (inputData.length != inputMetaData.length) { returnData = false; }
-  } // End-if (inputData && inputMetaData)
+  // if (inputData && inputMetaData) {
+  //   if (inputData === inputMetaData) { returnData = true; }
+  //   if (inputData === null || inputMetaData === null) { returnData = false; }
+  //   if (inputData.length != inputMetaData.length) { returnData = false; }
+  // } // End-if (inputData && inputMetaData)
+  if (Array.isArray(inputData) && Array.isArray(inputMetaData) && inputData.length === inputMetaData.length) {
+    // Clone and sort both arrays after stringifying their contents for deep equality
+    const sortedA = [...inputData].map(el => JSON.stringify(el)).sort();
+    const sortedB = [...inputMetaData].map(el => JSON.stringify(el)).sort();
+    returnData = sortedA.every((val, index) => val === sortedB[index]);
+  }
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
