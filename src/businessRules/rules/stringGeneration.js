@@ -705,7 +705,7 @@ async function generateValidEmailWithSpecificSuffixAndDomainName(inputData, inpu
  * inputMetaData[1] - allowableSpecialCharacters - The list of allowable special characters as a string, only used if the {@code generateSpecialCharacters} Boolean value is set to {@code TRUE}.
  * inputMetaData[2] - specifiedSuffixAndDomain - Not used for this business rule.
  * inputMetaData[3] - language - The language that should be used to determine the alphabet that should be used for international characters.
- * @return {string} A string of randomly generated  mixed case alpha numeric characters adn optionally special characters
+ * @return {string} A string of randomly generated mixed case alpha numeric characters adn optionally special characters
  * where the length of the string is also defined as one of the input parameters, formatted as an email "a@b.com".
  * @author Seth Hollingsead
  * @date 2022/01/26
@@ -721,8 +721,13 @@ async function generateRandomValidEmail(inputData, inputMetaData) {
   let domainName = '';
   let numberOfPrefixCharacters = 0;
   let numberOfSuffixCharacters = 0;
-  if (inputData && inputMetaData && Array.isArray(inputMetaData) === true && inputMetaData.length === 3) {
-    let numberOfCharactersToGenerate = inputData;
+  if (inputData && inputMetaData && Array.isArray(inputMetaData) === true && inputMetaData.length === 4) {
+    let numberOfCharactersToGenerate = 0;
+    if (typeof inputData === wrd.cstring) {
+      numberOfCharactersToGenerate = parseInt(inputData);
+    } else {
+      numberOfCharactersToGenerate = inputData;
+    }
     let generateSpecialCharacters = inputMetaData[0];
     let allowableSpecialCharacters = inputMetaData[1];
     // let specifiedSuffixAndDomain = inputMetaData[2]; NOTE: This array index is not used for this business rule.
