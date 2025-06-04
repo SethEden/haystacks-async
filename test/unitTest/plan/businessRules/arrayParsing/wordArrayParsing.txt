@@ -6,16 +6,6 @@ input inputData: string (String to decompose into an array)
 input inputMetaData: string (Not used for this business rule)
 output: array<string> (The array of words that were composed in the original string)
 
-testName: convertCamelCaseStringToArray_inValidInputDataString
-input inputData: string (dfxg24346dfg)
-input inputMetaData: string (Not used for this business rule)
-output: ?
-
-testName: convertCamelCaseStringToArray_inValidInputMetaDataString
-input inputData: string (String to decompose into an array)
-input inputMetaData: string (dfxg24346dfg)
-output: ?
-
 testName: convertCamelCaseStringToArray_inValidInputDataInteger
 input inputData: integer (123)
 input inputMetaData: string (Not used for this business rule)
@@ -26,16 +16,6 @@ input inputData: boolean (false)
 input inputMetaData: string (Not used for this business rule)
 output: ?
 
-testName: convertCamelCaseStringToArray_inValidInputMetaDataInteger
-input inputData: string (String to decompose into an array)
-input inputMetaData: integer (123)
-output: ?
-
-testName: convertCamelCaseStringToArray_inValidInputMetaDataBoolean
-input inputData: string (String to decompose into an array)
-input inputMetaData: boolean (false)
-output: ?
-
 testName: convertCamelCaseStringToArray_inValidInputDataUndefined
 input inputData: undefined
 input inputMetaData: string (Not used for this business rule)
@@ -44,16 +24,6 @@ output: ?
 testName: convertCamelCaseStringToArray_inValidInputDataNaN
 input inputData: NaN
 input inputMetaData: string (Not used for this business rule)
-output: ?
-
-testName: convertCamelCaseStringToArray_inValidInputMetaDataUndefined
-input inputData: string (String to decompose into an array)
-input inputMetaData: undefined
-output: ?
-
-testName: convertCamelCaseStringToArray_inValidInputMetaDataNaN
-input inputData: string (String to decompose into an array)
-input inputMetaData: NaN
 output: ?
 --------------------------------------------------------------------------------
 testName: getWordsArrayFromString_validData

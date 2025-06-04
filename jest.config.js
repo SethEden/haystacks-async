@@ -54,7 +54,7 @@ export default {
       "<rootDir>/test/unitTest/tests/businessRules/arrayParsing/commandArrayParsing.test.js",
       "<rootDir>/test/unitTest/tests/businessRules/arrayParsing/constantArrayParsing.test.js",
       "<rootDir>/test/unitTest/tests/businessRules/arrayParsing/dataArrayParsing.test.js",
-      // "<rootDir>/test/unitTest/tests/businessRules/arrayParsing/pathArrayParsing.test.js",
+      "<rootDir>/test/unitTest/tests/businessRules/arrayParsing/pathArrayParsing.test.js",
       // "<rootDir>/test/unitTest/tests/businessRules/arrayParsing/wordArrayParsing.test.js",
       // "<rootDir>/test/unitTest/tests/businessRules/stringParsing/auxilaryStringParsing.test.js",
       // "<rootDir>/test/unitTest/tests/businessRules/stringParsing/characterStringParsing.test.js",

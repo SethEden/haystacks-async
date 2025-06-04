@@ -239,7 +239,7 @@ async function doesStringContainAcronym(inputData, inputMetaData) {
 
 /**
  * @function determineWordDelimiter
- * @description Determines what delimiter should e used to break a string up into words if possible.
+ * @description Determines what delimiter should be used to break a string up into words if possible.
  * @param {string} inputData The string that should be examined to determine what delimiter should be used to break it up into words.
  * @param {string} inputMetaData Not used for this business rule.
  * @return {string} The delimiter that should be used, or if camelCase then the function will return the string "CamelCase".

@@ -150,6 +150,12 @@ export const cdoesArrayContainFilename = biz.cdoesArrayContainFilename; // doesA
 export const cgetFileAndPathListForPath = biz.cgetFileAndPathListForPath; // getFileAndPathListForPath
 
 /* wordArrayParsing */
+export const cconvertCamelCaseStringToArray = biz.cconvertCamelCaseStringToArray; // convertCamelCaseStringToArray
+export const cgetWordsArrayFromString = biz.cgetWordsArrayFromString; // getWordsArrayFromString
+export const crecombineStringArrayWithSpaces = biz.crecombineStringArrayWithSpaces; // recombineStringArrayWithSpaces
+export const cconvertArrayToCamelCaseString = biz.cconvertArrayToCamelCaseString; // convertArrayToCamelCaseString
+export const cdoesArrayContainLowerCaseConsolidatedString = biz.cdoesArrayContainLowerCaseConsolidatedString; // doesArrayContainLowerCaseConsolidatedString
+export const cascertainMatchingElements = biz.cascertainMatchingElements; // ascertainMatchingElements
 
 /* auxiliaryStringParsing */
 
@@ -1287,7 +1293,7 @@ export const csetNamespacedDataObject_inValidInputMetaDataNaN = csetNamespacedDa
 /* pathArrayParsing */
 // doesArrayContainFilename
 export const cdoesArrayContainFilename_validData = cdoesArrayContainFilename + bas.cUnderscore + wrd.cvalid + wrd.cData; // doesArrayContainFilename_validData
-export const cdoesArrayContainFilename_inValidInputMetaDataString = cdoesArrayContainFilename + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputMetaData + wrd.cString; // doesArrayContainFilename_inValidInputMetaDataString
+export const cdoesArrayContainFilename_inValidInputDataString = cdoesArrayContainFilename + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + wrd.cString; // cdoesArrayContainFilename_inValidInputDataString
 export const cdoesArrayContainFilename_inValidInputDataInteger = cdoesArrayContainFilename + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + wrd.cInteger; // doesArrayContainFilename_inValidInputDataInteger
 export const cdoesArrayContainFilename_inValidInputDataBoolean = cdoesArrayContainFilename + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + wrd.cBoolean; // doesArrayContainFilename_inValidInputDataBoolean
 export const cdoesArrayContainFilename_inValidInputMetaDataInteger = cdoesArrayContainFilename + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputMetaData + wrd.cInteger; // doesArrayContainFilename_inValidInputMetaDataInteger
@@ -1306,6 +1312,66 @@ export const cgetFileAndPathListForPath_inValidInputDataUndefined = cgetFileAndP
 export const cgetFileAndPathListForPath_inValidInputDataNaN = cgetFileAndPathListForPath + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + 'NaN'; // getFileAndPathListForPath_inValidInputDataNaN
 
 /* wordArrayParsing */
+// convertCamelCaseStringToArray
+export const cconvertCamelCaseStringToArray_validData = cconvertCamelCaseStringToArray + bas.cUnderscore + wrd.cvalid + wrd.cData; // convertCamelCaseStringToArray_validData
+export const cconvertCamelCaseStringToArray_inValidInputDataInteger = cconvertCamelCaseStringToArray + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + wrd.cInteger; // convertCamelCaseStringToArray_inValidInputDataInteger
+export const cconvertCamelCaseStringToArray_inValidInputDataBoolean = cconvertCamelCaseStringToArray + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + wrd.cBoolean; // convertCamelCaseStringToArray_inValidInputDataBoolean
+export const cconvertCamelCaseStringToArray_inValidInputDataUndefined = cconvertCamelCaseStringToArray + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + 'Undefined'; // convertCamelCaseStringToArray_inValidInputDataUndefined
+export const cconvertCamelCaseStringToArray_inValidInputDataNaN = cconvertCamelCaseStringToArray + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + 'NaN'; // convertCamelCaseStringToArray_inValidInputDataNaN
+
+// getWordsArrayFromString
+export const cgetWordsArrayFromString_validData = cgetWordsArrayFromString + bas.cUnderscore + wrd.cvalid + wrd.cData; // getWordsArrayFromString_validData
+export const cgetWordsArrayFromString_inValidInputDataString = cgetWordsArrayFromString + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + wrd.cString; // getWordsArrayFromString_inValidInputDataString
+export const cgetWordsArrayFromString_inValidInputDataInteger = cgetWordsArrayFromString + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + wrd.cInteger; // getWordsArrayFromString_inValidInputDataInteger
+export const cgetWordsArrayFromString_inValidInputDataBoolean = cgetWordsArrayFromString + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + wrd.cBoolean; // getWordsArrayFromString_inValidInputDataBoolean
+export const cgetWordsArrayFromString_inValidInputDataUndefined = cgetWordsArrayFromString + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + 'Undefined'; // getWordsArrayFromString_inValidInputDataUndefined
+export const cgetWordsArrayFromString_inValidInputDataNaN = cgetWordsArrayFromString + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + 'NaN'; // getWordsArrayFromString_inValidInputDataNaN
+
+// recombineStringArrayWithSpaces
+export const crecombineStringArrayWithSpaces_validData = crecombineStringArrayWithSpaces + bas.cUnderscore + wrd.cvalid + wrd.cData; // recombineStringArrayWithSpaces_validData
+export const crecombineStringArrayWithSpaces_inValidInputDataString = crecombineStringArrayWithSpaces + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + wrd.cString; // recombineStringArrayWithSpaces_inValidInputDataString
+export const crecombineStringArrayWithSpaces_inValidInputDataInteger = crecombineStringArrayWithSpaces + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + wrd.cInteger; // recombineStringArrayWithSpaces_inValidInputDataInteger
+export const crecombineStringArrayWithSpaces_inValidInputDataBoolean = crecombineStringArrayWithSpaces + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + wrd.cBoolean; // recombineStringArrayWithSpaces_inValidInputDataBoolean
+export const crecombineStringArrayWithSpaces_inValidInputDataUndefined = crecombineStringArrayWithSpaces + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + 'Undefined'; // recombineStringArrayWithSpaces_inValidInputDataUndefined
+export const crecombineStringArrayWithSpaces_inValidInputDataNaN = crecombineStringArrayWithSpaces + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + 'NaN'; // recombineStringArrayWithSpaces_inValidInputDataNaN
+
+// convertArrayToCamelCaseString
+export const cconvertArrayToCamelCaseString_validData = cconvertArrayToCamelCaseString + bas.cUnderscore + wrd.cvalid + wrd.cData; // convertArrayToCamelCaseString_validData
+export const cconvertArrayToCamelCaseString_inValidInputDataString = cconvertArrayToCamelCaseString + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + wrd.cString; // convertArrayToCamelCaseString_inValidInputDataString
+export const cconvertArrayToCamelCaseString_inValidInputDataInteger = cconvertArrayToCamelCaseString + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + wrd.cInteger; // convertArrayToCamelCaseString_inValidInputDataInteger
+export const cconvertArrayToCamelCaseString_inValidInputDataBoolean = cconvertArrayToCamelCaseString + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + wrd.cBoolean; // convertArrayToCamelCaseString_inValidInputDataBoolean
+export const cconvertArrayToCamelCaseString_inValidInputDataUndefined = cconvertArrayToCamelCaseString + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + 'Undefined'; // convertArrayToCamelCaseString_inValidInputDataUndefined
+export const cconvertArrayToCamelCaseString_inValidInputDataNaN = cconvertArrayToCamelCaseString + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + 'NaN'; // convertArrayToCamelCaseString_inValidInputDataNaN
+
+// doesArrayContainLowerCaseConsolidatedString
+export const cdoesArrayContainLowerCaseConsolidatedString_validData = cdoesArrayContainLowerCaseConsolidatedString + bas.cUnderscore + wrd.cvalid + wrd.cData; // doesArrayContainLowerCaseConsolidatedString_validData
+export const cdoesArrayContainLowerCaseConsolidatedString_inValidInputDataString = cdoesArrayContainLowerCaseConsolidatedString + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + wrd.cString; // doesArrayContainLowerCaseConsolidatedString_inValidInputDataString
+export const cdoesArrayContainLowerCaseConsolidatedString_inValidinputMetaDataString = cdoesArrayContainLowerCaseConsolidatedString + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cinputMetaData + wrd.cString; // doesArrayContainLowerCaseConsolidatedString_inValidinputMetaDataString
+export const cdoesArrayContainLowerCaseConsolidatedString_inValidInputDataInteger = cdoesArrayContainLowerCaseConsolidatedString + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + wrd.cInteger; // doesArrayContainLowerCaseConsolidatedString_inValidInputDataInteger
+export const cdoesArrayContainLowerCaseConsolidatedString_inValidInputDataBoolean = cdoesArrayContainLowerCaseConsolidatedString + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + wrd.cBoolean; // doesArrayContainLowerCaseConsolidatedString_inValidInputDataBoolean
+export const cdoesArrayContainLowerCaseConsolidatedString_inValidinputMetaDataInteger = cdoesArrayContainLowerCaseConsolidatedString + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cinputMetaData + wrd.cInteger; // doesArrayContainLowerCaseConsolidatedString_inValidinputMetaDataInteger
+export const cdoesArrayContainLowerCaseConsolidatedString_inValidinputMetaDataBoolean = cdoesArrayContainLowerCaseConsolidatedString + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cinputMetaData + wrd.cBoolean; // doesArrayContainLowerCaseConsolidatedString_inValidinputMetaDataBoolean
+export const cdoesArrayContainLowerCaseConsolidatedString_inValidInputDataUndefined = cdoesArrayContainLowerCaseConsolidatedString + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + 'Undefined'; // doesArrayContainLowerCaseConsolidatedString_inValidInputDataUndefined
+export const cdoesArrayContainLowerCaseConsolidatedString_inValidInputDataNaN = cdoesArrayContainLowerCaseConsolidatedString + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + 'NaN'; // doesArrayContainLowerCaseConsolidatedString_inValidInputDataNaN
+export const cdoesArrayContainLowerCaseConsolidatedString_inValidinputMetaDataUndefined = cdoesArrayContainLowerCaseConsolidatedString + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cinputMetaData + 'Undefined'; // doesArrayContainLowerCaseConsolidatedString_inValidinputMetaDataUndefined
+export const cdoesArrayContainLowerCaseConsolidatedString_inValidinputMetaDataNaN = cdoesArrayContainLowerCaseConsolidatedString + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cinputMetaData + 'NaN'; // doesArrayContainLowerCaseConsolidatedString_inValidinputMetaDataNaN
+
+// ascertainMatchingElements
+export const cascertainMatchingElements_validDataString = cascertainMatchingElements + bas.cUnderscore + wrd.cvalid + wrd.cData + wrd.cString; // ascertainMatchingElements_validDataString
+export const cascertainMatchingElements_validDataBoolean = cascertainMatchingElements + bas.cUnderscore + wrd.cvalid + wrd.cData + wrd.cBoolean; // ascertainMatchingElements_validDataBoolean
+export const cascertainMatchingElements_validDataInteger = cascertainMatchingElements + bas.cUnderscore + wrd.cvalid + wrd.cData + wrd.cInteger; // ascertainMatchingElements_validDataInteger
+export const cascertainMatchingElements_validDataFloat = cascertainMatchingElements + bas.cUnderscore + wrd.cvalid + wrd.cData + wrd.cFloat; // ascertainMatchingElements_validDataFloat
+export const cascertainMatchingElements_validDataObject = cascertainMatchingElements + bas.cUnderscore + wrd.cvalid + wrd.cData + wrd.cObject; // ascertainMatchingElements_validDataObject
+export const cascertainMatchingElements_inValidInputDataString = cascertainMatchingElements + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + wrd.cString; // ascertainMatchingElements_inValidInputDataString
+export const cascertainMatchingElements_inValidinputMetaDataString = cascertainMatchingElements + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cinputMetaData + wrd.cString; // ascertainMatchingElements_inValidinputMetaDataString
+export const cascertainMatchingElements_inValidInputDataInteger = cascertainMatchingElements + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + wrd.cInteger; // ascertainMatchingElements_inValidInputDataInteger
+export const cascertainMatchingElements_inValidInputDataBoolean = cascertainMatchingElements + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + wrd.cBoolean; // ascertainMatchingElements_inValidInputDataBoolean
+export const cascertainMatchingElements_inValidinputMetaDataInteger = cascertainMatchingElements + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cinputMetaData + wrd.cInteger; // ascertainMatchingElements_inValidinputMetaDataInteger
+export const cascertainMatchingElements_inValidinputMetaDataBoolean = cascertainMatchingElements + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cinputMetaData + wrd.cBoolean; // ascertainMatchingElements_inValidinputMetaDataBoolean
+export const cascertainMatchingElements_inValidInputDataUndefined = cascertainMatchingElements + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + 'Undefined'; // ascertainMatchingElements_inValidInputDataUndefined
+export const cascertainMatchingElements_inValidInputDataNaN = cascertainMatchingElements + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + 'NaN'; // ascertainMatchingElements_inValidInputDataNaN
+export const cascertainMatchingElements_inValidinputMetaDataUndefined = cascertainMatchingElements + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cinputMetaData + 'Undefined'; // ascertainMatchingElements_inValidinputMetaDataUndefined
+export const cascertainMatchingElements_inValidinputMetaDataNaN = cascertainMatchingElements + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cinputMetaData + 'NaN'; // ascertainMatchingElements_inValidinputMetaDataNaN
 
 /* auxiliaryStringParsing */
 

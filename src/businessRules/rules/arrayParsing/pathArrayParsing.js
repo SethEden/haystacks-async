@@ -48,12 +48,12 @@ async function doesArrayContainFilename(inputData, inputMetaData) {
     if (inputMetaData && typeof inputMetaData === wrd.cstring) {
       returnData = await ruleParsing.processRulesInternal([[inputData, inputMetaData], ''], [biz.cdoesArrayContainValue]);
     } else { // End-if (inputMetaData)
-      // ERROR: Invalid input, inputMetaData is:
-      console.log(msg.cErrorInvalidInputMetaDataMessage + inputMetaData);
+      // ERROR: Invalid input, inputMetaData is:  --- at 
+      console.log(msg.cErrorInvalidInputMetaDataMessage + inputMetaData + msg.cSpaceDashDashDashSpaceAtSpace + baseFileName + bas.cDot + functionName);
     }
   } else { // End-if (inputData)
-    // ERROR: Invalid input, inputData is:
-    console.log(msg.cErrorInvalidInputDataMessage + inputData);
+    // ERROR: Invalid input, inputData is:  --- at 
+    console.log(msg.cErrorInvalidInputDataMessage + inputData + msg.cSpaceDashDashDashSpaceAtSpace + baseFileName + bas.cDot + functionName);
   }
 
   // NOTE: The below code also works, I am going to attempt to re-enable the above code and see if it also works.
@@ -100,8 +100,8 @@ async function getFileAndPathListForPath(inputData, inputMetaData) {
     await loggers.consoleLog(namespacePrefix + functionName, msg.cfilesListLimitIs + filesListLimit);
     returnData = await ruleParsing.processRulesInternal([inputData, [enableFilesListLimit, filesListLimit]], [biz.cscanDirectoryContents]);
   } else { // End-if (inputData)
-    // ERROR: Invalid input, inputData is:
-    console.log(msg.cErrorInvalidInputDataMessage + inputData);
+    // ERROR: Invalid input, inputData is:  --- at 
+    console.log(msg.cErrorInvalidInputDataMessage + inputData + msg.cSpaceDashDashDashSpaceAtSpace + baseFileName + bas.cDot + functionName);
     returnData = false;
   }
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));

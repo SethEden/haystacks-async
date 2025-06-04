@@ -54,12 +54,12 @@ async function replaceCharacterWithCharacter(inputData, inputMetaData) {
         returnData = await stringParsingUtilities.utilitiesReplaceCharacterWithCharacter(inputData, inputMetaData);
       }
     } else {
-      // ERROR: Invalid input, inputMetaData is:
-      console.log(msg.cErrorInvalidInputMetaDataMessage + inputMetaData);
+      // ERROR: Invalid input, inputMetaData is:  --- at 
+      console.log(msg.cErrorInvalidInputMetaDataMessage + inputMetaData + msg.cSpaceDashDashDashSpaceAtSpace + baseFileName + bas.cDot + functionName);
     }
   } else {
-    // ERROR: Invalid input, inputData is:
-    console.log(msg.cErrorInvalidInputDataMessage + inputData);
+    // ERROR: Invalid input, inputData is:  --- at 
+    console.log(msg.cErrorInvalidInputDataMessage + inputData + msg.cSpaceDashDashDashSpaceAtSpace + baseFileName + bas.cDot + functionName);
   }
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
@@ -91,12 +91,12 @@ async function doesArrayContainCharacter(inputData, inputMetaData) {
         }
       } // end-for (const element of inputMetaData)
     } else {
-      // ERROR: Invalid input, inputMetaData is:
-      console.log(msg.cErrorInvalidInputMetaDataMessage + inputMetaData);
+      // ERROR: Invalid input, inputMetaData is:  --- at 
+      console.log(msg.cErrorInvalidInputMetaDataMessage + inputMetaData + msg.cSpaceDashDashDashSpaceAtSpace + baseFileName + bas.cDot + functionName);
     }
   } else {
-    // ERROR: Invalid input, inputData is:
-    console.log(msg.cErrorInvalidInputDataMessage + inputData);
+    // ERROR: Invalid input, inputData is:  --- at 
+    console.log(msg.cErrorInvalidInputDataMessage + inputData + msg.cSpaceDashDashDashSpaceAtSpace + baseFileName + bas.cDot + functionName);
   }
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
@@ -129,12 +129,12 @@ async function removeCharacterFromArray(inputData, inputMetaData) {
       } // end-for (let i = 0; i < inputMetaData.length; i++)
       returnData = inputMetaData;
     } else {
-      // ERROR: Invalid input, inputMetaData is:
-      console.log(msg.cErrorInvalidInputMetaDataMessage + inputMetaData);
+      // ERROR: Invalid input, inputMetaData is:  --- at 
+      console.log(msg.cErrorInvalidInputMetaDataMessage + inputMetaData + msg.cSpaceDashDashDashSpaceAtSpace + baseFileName + bas.cDot + functionName);
     }
   } else {
-    // ERROR: Invalid input, inputData is:
-    console.log(msg.cErrorInvalidInputDataMessage + inputData);
+    // ERROR: Invalid input, inputData is:  --- at 
+    console.log(msg.cErrorInvalidInputDataMessage + inputData + msg.cSpaceDashDashDashSpaceAtSpace + baseFileName + bas.cDot + functionName);
   }
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
@@ -171,12 +171,12 @@ async function replaceCharacterAtIndex(inputData, inputMetaData) {
         returnData = stringArray.join('');
       } // End-if (inputMetaData.length === 2)
     } else {
-      // ERROR: Invalid input, inputMetaData is:
-      console.log(msg.cErrorInvalidInputMetaDataMessage + inputMetaData);
+      // ERROR: Invalid input, inputMetaData is:  --- at 
+      console.log(msg.cErrorInvalidInputMetaDataMessage + inputMetaData + msg.cSpaceDashDashDashSpaceAtSpace + baseFileName + bas.cDot + functionName);
     }
   } else {
-    // ERROR: Invalid input, inputData is:
-    console.log(msg.cErrorInvalidInputDataMessage + inputData);
+    // ERROR: Invalid input, inputData is:  --- at 
+    console.log(msg.cErrorInvalidInputDataMessage + inputData + msg.cSpaceDashDashDashSpaceAtSpace + baseFileName + bas.cDot + functionName);
   }
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);

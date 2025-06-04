@@ -3077,14 +3077,14 @@ describe(tst_con.cgetNamespacedDataObject, () => {
  * @function setNamespacedDataObject
  * @description Tests the positive and negative test cases of the setNamespacedDataObject
  * @author Vlad Sorokin
- * @date 2024/05/29
+ * @date 2025/05/29
  */
 describe(tst_con.csetNamespacedDataObject, () => {
     /**
      * @function setNamespacedDataObject_validData
      * @description Tests the dataArrayParsing function setNamespacedDataObject with a valid input.
      * @author Vlad Sorokin
-     * @date 2024/05/29
+     * @date 2025/05/29
      */
     test(tst_con.csetNamespacedDataObject_validData, async () => {
         // Arrange
@@ -3107,7 +3107,7 @@ describe(tst_con.csetNamespacedDataObject, () => {
      * @function setNamespacedDataObject_inValidInputDataString
      * @description Tests the dataArrayParsing function setNamespacedDataObject with a invalid data string.
      * @author Vlad Sorokin
-     * @date 2024/05/29 
+     * @date 2025/05/29 
      */
     test(tst_con.csetNamespacedDataObject_inValidInputDataString, async () => {
         // Arrange
@@ -3130,7 +3130,7 @@ describe(tst_con.csetNamespacedDataObject, () => {
      * @function setNamespacedDataObject_inValidInputMetaDataString
      * @description Tests the dataArrayParsing function setNamespacedDataObject with a invalid data string.
      * @author Vlad Sorokin
-     * @date 2024/05/29
+     * @date 2025/05/29
      */
     test(tst_con.csetNamespacedDataObject_inValidInputMetaDataString, async () => {
         // Arrange
@@ -3153,7 +3153,7 @@ describe(tst_con.csetNamespacedDataObject, () => {
      * @function setNamespacedDataObject_inValidInputDataInteger
      * @description Tests the dataArrayParsing function setNamespacedDataObject with a invalid data integer.
      * @author Vlad Sorokin
-     * @date 2024/05/29
+     * @date 2025/05/29
      */
     test(tst_con.csetNamespacedDataObject_inValidInputDataInteger, async () => {
         // Arrange
@@ -3176,7 +3176,7 @@ describe(tst_con.csetNamespacedDataObject, () => {
      * @function setNamespacedDataObject_inValidInputDataBoolean
      * @description Tests the dataArrayParsing function setNamespacedDataObject with a invalid data boolean.
      * @author Vlad Sorokin
-     * @date 2024/05/29
+     * @date 2025/05/29
      */
     test(tst_con.csetNamespacedDataObject_inValidInputDataBoolean, async () => {
         // Arrange
@@ -3199,7 +3199,7 @@ describe(tst_con.csetNamespacedDataObject, () => {
      * @function setNamespacedDataObject_inValidInputMetaDataInteger
      * @description Tests the dataArrayParsing function setNamespacedDataObject with a invalid data integer.
      * @author Vlad Sorokin
-     * @date 2024/05/29
+     * @date 2025/05/29
      */
     test(tst_con.csetNamespacedDataObject_inValidInputMetaDataInteger, async () => {
         // Arrange
@@ -3222,7 +3222,7 @@ describe(tst_con.csetNamespacedDataObject, () => {
      * @function setNamespacedDataObject_inValidInputMetaDataBoolean
      * @description Tests the dataArrayParsing function setNamespacedDataObject with a invalid data boolean.
      * @author Vlad Sorokin
-     * @date 2024/05/29
+     * @date 2025/05/29
      */
     test(tst_con.csetNamespacedDataObject_inValidInputMetaDataBoolean, async () => {
         // Arrange
@@ -3245,7 +3245,7 @@ describe(tst_con.csetNamespacedDataObject, () => {
      * @function setNamespacedDataObject_inValidInputDataUndefined
      * @description Tests the dataArrayParsing function setNamespacedDataObject with a invalid data undefined.
      * @author Vlad Sorokin
-     * @date 2024/05/29
+     * @date 2025/05/29
      */
     test(tst_con.csetNamespacedDataObject_inValidInputDataUndefined, async () => {
         // Arrange
@@ -3268,7 +3268,7 @@ describe(tst_con.csetNamespacedDataObject, () => {
      * @function setNamespacedDataObject_inValidInputDataNaN
      * @description Tests the dataArrayParsing function setNamespacedDataObject with a invalid data NaN.
      * @author Vlad Sorokin
-     * @date 2024/05/29
+     * @date 2025/05/29
      */
     test(tst_con.csetNamespacedDataObject_inValidInputDataNaN, async () => {
         // Arrange
@@ -3291,7 +3291,7 @@ describe(tst_con.csetNamespacedDataObject, () => {
      * @function setNamespacedDataObject_inValidInputMetaDataUndefined
      * @description Tests the dataArrayParsing function setNamespacedDataObject with a invalid data undefined.
      * @author Vlad Sorokin
-     * @date 2024/05/29
+     * @date 2025/05/29
      */
     test(tst_con.csetNamespacedDataObject_inValidInputMetaDataUndefined, async () => {
         // Arrange
@@ -3314,7 +3314,7 @@ describe(tst_con.csetNamespacedDataObject, () => {
      * @function setNamespacedDataObject_inValidInputMetaDataNaN
      * @description Tests the dataArrayParsing function setNamespacedDataObject with a invalid data NaN.
      * @author Vlad Sorokin
-     * @date 2024/05/29
+     * @date 2025/05/29
      */
     test(tst_con.csetNamespacedDataObject_inValidInputMetaDataNaN, async () => {
         // Arrange

@@ -80,12 +80,12 @@ async function parseColorRangeInputs(inputData, inputMetaData) {
       }
       returnData = [minimumColorRange, maximumColorRange];
     } else {
-      // ERROR: Invalid input, inputMetaData is:
-      console.log(msg.cErrorInvalidInputMetaDataMessage + inputMetaData);
+      // ERROR: Invalid input, inputMetaData is:  --- at 
+      console.log(msg.cErrorInvalidInputMetaDataMessage + inputMetaData + msg.cSpaceDashDashDashSpaceAtSpace + baseFileName + bas.cDot + functionName);
     }
    } else {
-    // ERROR: Invalid input, inputData is:
-    console.log(msg.cErrorInvalidInputDataMessage + inputData);
+    // ERROR: Invalid input, inputData is:  --- at 
+    console.log(msg.cErrorInvalidInputDataMessage + inputData + msg.cSpaceDashDashDashSpaceAtSpace + baseFileName + bas.cDot + functionName);
    }
    loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
    loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
@@ -159,8 +159,8 @@ async function doesArrayContainValue(inputData, inputMetaData) {
       }
     }
   } else {
-    // ERROR: Invalid input, inputData is:
-    console.log(msg.cErrorInvalidInputDataMessage + inputData);
+    // ERROR: Invalid input, inputData is:  --- at 
+    console.log(msg.cErrorInvalidInputDataMessage + inputData + msg.cSpaceDashDashDashSpaceAtSpace + baseFileName + bas.cDot + functionName);
   } 
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);

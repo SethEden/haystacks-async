@@ -72,12 +72,12 @@ async function solveLehmerCode(inputData, inputMetaData) {
         }
       } // End-for (let i = 0; i < expandedLehmerCodeArray.length - 1; i++)     
     } else {
-      // ERROR: Invalid input, inputMetaData is:
-      console.log(msg.cErrorInvalidInputMetaDataMessage + inputMetaData);
+      // ERROR: Invalid input, inputMetaData is:  --- at 
+      console.log(msg.cErrorInvalidInputMetaDataMessage + inputMetaData + msg.cSpaceDashDashDashSpaceAtSpace + baseFileName + bas.cDot + functionName);
     }
   } else {
-    // ERROR: Invalid input, inputData is:
-    console.log(msg.cErrorInvalidInputDataMessage + inputData);
+    // ERROR: Invalid input, inputData is:  --- at 
+    console.log(msg.cErrorInvalidInputDataMessage + inputData + msg.cSpaceDashDashDashSpaceAtSpace + baseFileName + bas.cDot + functionName);
   } // End-if (inputData) 
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
@@ -195,12 +195,12 @@ async function recursiveArrayExpansion(inputData, inputMetaData) {
         returnData = await ruleParsing.processRulesInternal([masterTempReturnData, ''], [biz.carrayDeepClone]);
       } // End-if (indexOfExpansion < arrayToBeExpanded.length - 1)
     } else { // End-if (inputData && inputMetaData && inputDataIsArray === true && inputMetaDataIsArray === true && inputData.length > 0 && inputMetaData.length > 0)
-      // ERROR: Invalid input, inputMetaData is:
-      console.log(msg.cErrorInvalidInputMetaDataMessage + inputMetaData);
+      // ERROR: Invalid input, inputMetaData is:  --- at 
+      console.log(msg.cErrorInvalidInputMetaDataMessage + inputMetaData + msg.cSpaceDashDashDashSpaceAtSpace + baseFileName + bas.cDot + functionName);
     } 
   } else {
-    // ERROR: Invalid input, inputData is:
-    console.log(msg.cErrorInvalidInputDataMessage + inputData);    
+    // ERROR: Invalid input, inputData is:  --- at 
+    console.log(msg.cErrorInvalidInputDataMessage + inputData + msg.cSpaceDashDashDashSpaceAtSpace + baseFileName + bas.cDot + functionName);    
   }
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(await returnData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
@@ -242,12 +242,12 @@ async function getLehmerCodeValue(inputData, inputMetaData) {
         await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_ithIteration + i);
       } // End-for (let i = 0; i < lengthOfInputData; i++)
     } else {
-      // ERROR: Invalid input, inputMetaData is:
-      console.log(msg.cErrorInvalidInputMetaDataMessage + inputMetaData);
+      // ERROR: Invalid input, inputMetaData is:  --- at 
+      console.log(msg.cErrorInvalidInputMetaDataMessage + inputMetaData + msg.cSpaceDashDashDashSpaceAtSpace + baseFileName + bas.cDot + functionName);
     }
   } else {
-    // ERROR: Invalid input, inputData is:
-    console.log(msg.cErrorInvalidInputDataMessage + inputData);
+    // ERROR: Invalid input, inputData is:  --- at 
+    console.log(msg.cErrorInvalidInputDataMessage + inputData + msg.cSpaceDashDashDashSpaceAtSpace + baseFileName + bas.cDot + functionName);
   } // End-if (inputData) 
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
@@ -343,8 +343,8 @@ async function generateCommandAliases(inputData, inputMetaData) {
     // Command Aliases are:
     await console.log(msg.cCommandAliasesAre + returnData);
   } else { // End-if (inputData)
-    // ERROR: Invalid input, inputData is:
-    console.log(msg.cErrorInvalidInputDataMessage + inputData);
+    // ERROR: Invalid input, inputData is:  --- at 
+    console.log(msg.cErrorInvalidInputDataMessage + inputData + msg.cSpaceDashDashDashSpaceAtSpace + baseFileName + bas.cDot + functionName);
   }
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);

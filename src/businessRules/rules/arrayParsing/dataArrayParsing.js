@@ -47,12 +47,12 @@ async function arraysAreEqual(inputData, inputMetaData) {
     if (Array.isArray(inputMetaData)) {
       returnData = inputData.every(async (value, index) => await isDeeplyEqual(value, inputMetaData[index]));
     } else { // End-if (inputMetaData)
-      // ERROR: Invalid input, inputMetaData is:
-      console.log(msg.cErrorInvalidInputMetaDataMessage + inputMetaData);
+      // ERROR: Invalid input, inputMetaData is:  --- at 
+      console.log(msg.cErrorInvalidInputMetaDataMessage + inputMetaData + msg.cSpaceDashDashDashSpaceAtSpace + baseFileName + bas.cDot + functionName);
     }
   } else { // End-if (inputData)
-    // ERROR: Invalid input, inputData is:
-    console.log(msg.cErrorInvalidInputDataMessage + inputData);
+    // ERROR: Invalid input, inputData is:  --- at 
+    console.log(msg.cErrorInvalidInputDataMessage + inputData + msg.cSpaceDashDashDashSpaceAtSpace + baseFileName + bas.cDot + functionName);
   }
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
@@ -132,8 +132,8 @@ async function isObjectEmpty(inputData, inputMetaData) {
       } // End-if (inputData.hasOwnProperty(key))
     } // End-for (let key in inputData)
   } else { // End-if (inputData)
-    // ERROR: Invalid input, inputData is:
-    console.log(msg.cErrorInvalidInputDataMessage + inputData);
+    // ERROR: Invalid input, inputData is:  --- at 
+    console.log(msg.cErrorInvalidInputDataMessage + inputData + msg.cSpaceDashDashDashSpaceAtSpace + baseFileName + bas.cDot + functionName);
   }
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
@@ -158,8 +158,8 @@ async function isArrayEmpty(inputData, inputMetaData) {
   if (inputData && Array.isArray(inputData)) {
     returnData = await !Object.keys(inputData).length;
   } else { // End-if (inputData)
-    // ERROR: Invalid input, inputData is:
-    console.log(msg.cErrorInvalidInputDataMessage + inputData);
+    // ERROR: Invalid input, inputData is:  --- at 
+    console.log(msg.cErrorInvalidInputDataMessage + inputData + msg.cSpaceDashDashDashSpaceAtSpace + baseFileName + bas.cDot + functionName);
     returnData = false;
   }
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
@@ -185,8 +185,8 @@ async function isObject(inputData, inputMetaData) {
   if (inputData && typeof inputData === wrd.cobject) {
     returnData = true;
   } else { // End-if (inputData)
-    // ERROR: Invalid input, inputData is:
-    console.log(msg.cErrorInvalidInputDataMessage + inputData);
+    // ERROR: Invalid input, inputData is:  --- at 
+    console.log(msg.cErrorInvalidInputDataMessage + inputData + msg.cSpaceDashDashDashSpaceAtSpace + baseFileName + bas.cDot + functionName);
   }
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
@@ -212,8 +212,8 @@ async function isArray(inputData, inputMetaData) {
   if (inputData) {
     returnData = await Array.isArray(inputData);
   } else { // End-if (inputData)
-    // ERROR: Invalid input, inputData is:
-    console.log(msg.cErrorInvalidInputDataMessage + inputData);
+    // ERROR: Invalid input, inputData is:  --- at 
+    console.log(msg.cErrorInvalidInputDataMessage + inputData + msg.cSpaceDashDashDashSpaceAtSpace + baseFileName + bas.cDot + functionName);
   }
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
@@ -241,8 +241,8 @@ async function isArrayOrObject(inputData, inputMetaData) {
       returnData = true;
     }
   } else { // End-if (inputData)
-    // ERROR: Invalid input, inputData is:
-    console.log(msg.cErrorInvalidInputDataMessage + inputData);
+    // ERROR: Invalid input, inputData is:  --- at 
+    console.log(msg.cErrorInvalidInputDataMessage + inputData + msg.cSpaceDashDashDashSpaceAtSpace + baseFileName + bas.cDot + functionName);
   }
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
@@ -270,8 +270,8 @@ async function isNonZeroLengthArray(inputData, inputMetaData) {
       returnData = true;
     }
   } else { // End-if (inputData)
-    // ERROR: Invalid input, inputData is:
-    console.log(msg.cErrorInvalidInputDataMessage + inputData);
+    // ERROR: Invalid input, inputData is:  --- at 
+    console.log(msg.cErrorInvalidInputDataMessage + inputData + msg.cSpaceDashDashDashSpaceAtSpace + baseFileName + bas.cDot + functionName);
   }
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
@@ -338,8 +338,8 @@ async function arrayDeepClone(inputData, inputMetaData) {
   if (inputData && await isArray(inputData, '') === true && await isArrayEmpty(inputData, '') === false) {
     returnData = await JSON.parse(await JSON.stringify(inputData));
   } else { // End-if (inputData)
-    // ERROR: Invalid input, inputData is:
-    console.log(msg.cErrorInvalidInputDataMessage + inputData);
+    // ERROR: Invalid input, inputData is:  --- at 
+    console.log(msg.cErrorInvalidInputDataMessage + inputData + msg.cSpaceDashDashDashSpaceAtSpace + baseFileName + bas.cDot + functionName);
   }
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
@@ -444,8 +444,8 @@ async function objectDeepMerge(inputData, inputMetaData) {
   if (typeof inputData !== wrd.cobject || typeof inputMetaData !== wrd.cobject) {
     // inputData or inputMetaData or both ain't objets, merging doesn't make sense.
     returnData = false;
-    // ERROR: Invalid input, inputData is: inputMetaData is:
-    console.log(msg.cErrorInvalidInputDataMessage + inputData + bas.cSpace + msg.cinputMetaDataIs + inputMetaData);
+    // ERROR: Invalid input, inputData is: inputMetaData is:  --- at 
+    console.log(msg.cErrorInvalidInputDataMessage + inputData + bas.cSpace + msg.cinputMetaDataIs + inputMetaData + msg.cSpaceDashDashDashSpaceAtSpace + baseFileName + bas.cDot + functionName);
   } else {
     for (let property in inputMetaData) {
       if (!Object.prototype.hasOwnProperty.call(inputMetaData, property)) {
@@ -579,13 +579,13 @@ async function conditionalObjectAssignment(inputData, inputMetaData) {
         returnData = Object.assign(inputMetaData, inputData);
       }
     } else { // End-if (inputMetaData)
-      // ERROR: Invalid input, inputData is:
-      console.log(msg.cErrorInvalidInputDataMessage + inputData);
+      // ERROR: Invalid input, inputData is:  --- at 
+      console.log(msg.cErrorInvalidInputDataMessage + inputData + msg.cSpaceDashDashDashSpaceAtSpace + baseFileName + bas.cDot + functionName);
       returnData = inputMetaData
     }
   } else { // End-if (inputData)
-    // ERROR: Invalid input, inputMetaData is:
-    console.log(msg.cErrorInvalidInputMetaDataMessage + inputMetaData);
+    // ERROR: Invalid input, inputMetaData is:  --- at 
+    console.log(msg.cErrorInvalidInputMetaDataMessage + inputMetaData + msg.cSpaceDashDashDashSpaceAtSpace + baseFileName + bas.cDot + functionName);
     returnData = false;
   }
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
@@ -638,8 +638,8 @@ async function getNamespacedDataObject(inputData, inputMetaData) {
         returnData = namespaceDataObject;
       }
     } else { // End-if (inputMetaData)
-      // ERROR: Invalid input, inputMetaData is:
-      console.log(msg.cErrorInvalidInputMetaDataMessage + inputMetaData);
+      // ERROR: Invalid input, inputMetaData is:  --- at 
+      console.log(msg.cErrorInvalidInputMetaDataMessage + inputMetaData + msg.cSpaceDashDashDashSpaceAtSpace + baseFileName + bas.cDot + functionName);
     }
   } // End-if (inputData && inputData.length > 0)
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
@@ -683,12 +683,12 @@ async function setNamespacedDataObject(inputData, inputMetaData) {
         } // End-if (i === inputData.length - 2)
       } // End-for (let i = 0; i < inputData.length - 1; i++)
     } else { // End-if (inputMetaData)
-        // ERROR: Invalid input, inputMetaData is:
-        console.log(msg.cErrorInvalidInputMetaDataMessage + inputMetaData);
+        // ERROR: Invalid input, inputMetaData is:  --- at 
+        console.log(msg.cErrorInvalidInputMetaDataMessage + inputMetaData + msg.cSpaceDashDashDashSpaceAtSpace + baseFileName + bas.cDot + functionName);
     }
   } else { // End-if (inputData)
-    // ERROR: Invalid input, inputData is:
-    console.log(msg.cErrorInvalidInputDataMessage + inputData);
+    // ERROR: Invalid input, inputData is:  --- at 
+    console.log(msg.cErrorInvalidInputDataMessage + inputData + msg.cSpaceDashDashDashSpaceAtSpace + baseFileName + bas.cDot + functionName);
   } // End-if (inputData && inputData.length > 0)
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);

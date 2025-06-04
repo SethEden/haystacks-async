@@ -61,11 +61,6 @@ input inputData: string (dfxg24346dfg)
 input inputMetaData: integer (Optional file limit, ignored if the configuration flag is not set to true, if nothing is passed the configuration setting will be used)
 output: ?
 
-testName: getFileAndPathListForPath_inValidInputMetaDataString
-input inputData: string (The path that should be scanned for files and their full paths)
-input inputMetaData: string (dfxg24346dfg)
-output: ?
-
 testName: getFileAndPathListForPath_inValidInputDataInteger
 input inputData: integer (123)
 input inputMetaData: integer (Optional file limit, ignored if the configuration flag is not set to true, if nothing is passed the configuration setting will be used)
@@ -76,16 +71,6 @@ input inputData: boolean (false)
 input inputMetaData: integer (Optional file limit, ignored if the configuration flag is not set to true, if nothing is passed the configuration setting will be used)
 output: ?
 
-testName: getFileAndPathListForPath_inValidInputMetaDataInteger
-input inputData: string (The path that should be scanned for files and their full paths)
-input inputMetaData: integer (123)
-output: ?
-
-testName: getFileAndPathListForPath_inValidInputMetaDataBoolean 
-input inputData: string (The path that should be scanned for files and their full paths)
-input inputMetaData: boolean (false)
-output: ?
-
 testName: getFileAndPathListForPath_inValidInputDataUndefined
 input inputData: undefined
 input inputMetaData: integer (Optional file limit, ignored if the configuration flag is not set to true, if nothing is passed the configuration setting will be used)
@@ -94,14 +79,4 @@ output: ?
 testName: getFileAndPathListForPath_inValidInputDataNaN
 input inputData: NaN
 input inputMetaData: integer (Optional file limit, ignored if the configuration flag is not set to true, if nothing is passed the configuration setting will be used)
-output: ?
-
-testName: getFileAndPathListForPath_inValidInputMetaDataUndefined
-input inputData: string (The path that should be scanned for files and their full paths)
-input inputMetaData: undefined
-output: ?
-
-testName: getFileAndPathListForPath_inValidInputMetaDataNaN
-input inputData: string (The path that should be scanned for files and their full paths)
-input inputMetaData: NaN
 output: ?
