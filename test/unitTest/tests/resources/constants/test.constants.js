@@ -160,6 +160,20 @@ export const cascertainMatchingElements = biz.cascertainMatchingElements; // asc
 /* auxiliaryStringParsing */
 
 /* characterStringParsing */
+export const csingleQuoteSwapAfterEquals = biz.csingleQuoteSwapAfterEquals; // singleQuoteSwapAfterEquals
+export const cswapForwardSlashToBackSlash = biz.cswapForwardSlashToBackSlash; // swapForwardSlashToBackSlash
+export const cswapBackSlashToForwardSlash = biz.cswapBackSlashToForwardSlash; // swapBackSlashToForwardSlash
+export const cswapDoubleForwardSlashToSingleForwardSlash = biz.cswapDoubleForwardSlashToSingleForwardSlash; // swapDoubleForwardSlashToSingleForwardSlash
+export const cswapDoubleBackSlashToSingleBackSlash = biz.cswapDoubleBackSlashToSingleBackSlash; // swapDoubleBackSlashToSingleBackSlash
+export const creplaceSpacesWithPlus = biz.creplaceSpacesWithPlus; // replaceSpacesWithPlus
+export const creplaceColonWithUnderscore = biz.creplaceColonWithUnderscore; // replaceColonWithUnderscore
+export const ccleanCarriageReturnFromString = biz.ccleanCarriageReturnFromString; // cleanCarriageReturnFromString
+export const cconvertStringToLowerCase = biz.cconvertStringToLowerCase; // convertStringToLowerCase
+export const cconvertStringToUpperCase = biz.cconvertStringToUpperCase; // convertStringToUpperCase
+export const cdoesStringContainUpperCaseCharacter = biz.cdoesStringContainUpperCaseCharacter; // doesStringContainUpperCaseCharacter
+export const cdoesStringContainLowerCaseCharacter = biz.cdoesStringContainLowerCaseCharacter; // doesStringContainLowerCaseCharacter
+export const cisFirstCharacterLowerCase = biz.cisFirstCharacterLowerCase; // isFirstCharacterLowerCase
+export const creplaceCharacterAtIndexOfString = biz.creplaceCharacterAtIndexOfString; // replaceCharacterAtIndexOfString
 
 /* commandStringParsing */
 
@@ -1376,6 +1390,108 @@ export const cascertainMatchingElements_inValidinputMetaDataNaN = cascertainMatc
 /* auxiliaryStringParsing */
 
 /* characterStringParsing */
+// singleQuoteSwapAfterEquals
+export const csingleQuoteSwapAfterEquals_validData = csingleQuoteSwapAfterEquals + bas.cUnderscore + wrd.cvalid + wrd.cData; // singleQuoteSwapAfterEquals_validData
+export const csingleQuoteSwapAfterEquals_inValidInputDataInteger = csingleQuoteSwapAfterEquals + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + wrd.cInteger; // singleQuoteSwapAfterEquals_inValidInputDataInteger
+export const csingleQuoteSwapAfterEquals_inValidInputDataBoolean = csingleQuoteSwapAfterEquals + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + wrd.cBoolean; // singleQuoteSwapAfterEquals_inValidInputDataBoolean
+export const csingleQuoteSwapAfterEquals_inValidInputDataUndefined = csingleQuoteSwapAfterEquals + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + 'Undefined'; // singleQuoteSwapAfterEquals_inValidInputDataUndefined
+export const csingleQuoteSwapAfterEquals_inValidInputDataNaN = csingleQuoteSwapAfterEquals + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + 'NaN'; // singleQuoteSwapAfterEquals_inValidInputDataNaN
+
+// swapForwardSlashToBackSlash
+export const cswapForwardSlashToBackSlash_validData = cswapForwardSlashToBackSlash + bas.cUnderscore + wrd.cvalid + wrd.cData; // swapForwardSlashToBackSlash_validData
+export const cswapForwardSlashToBackSlash_inValidInputDataInteger = cswapForwardSlashToBackSlash + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + wrd.cInteger; // swapForwardSlashToBackSlash_inValidInputDataInteger
+export const cswapForwardSlashToBackSlash_inValidInputDataBoolean = cswapForwardSlashToBackSlash + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + wrd.cBoolean; // swapForwardSlashToBackSlash_inValidInputDataBoolean
+export const cswapForwardSlashToBackSlash_inValidInputDataUndefined = cswapForwardSlashToBackSlash + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + 'Undefined'; // swapForwardSlashToBackSlash_inValidInputDataUndefined
+export const cswapForwardSlashToBackSlash_inValidInputDataNaN = cswapForwardSlashToBackSlash + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + 'NaN'; // swapForwardSlashToBackSlash_inValidInputDataNaN
+
+// swapBackSlashToForwardSlash
+export const cswapBackSlashToForwardSlash_validData = cswapBackSlashToForwardSlash + bas.cUnderscore + wrd.cvalid + wrd.cData; // swapBackSlashToForwardSlash_validData
+export const cswapBackSlashToForwardSlash_inValidInputDataInteger = cswapBackSlashToForwardSlash + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + wrd.cInteger; // swapBackSlashToForwardSlash_inValidInputDataInteger
+export const cswapBackSlashToForwardSlash_inValidInputDataBoolean = cswapBackSlashToForwardSlash + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + wrd.cBoolean; // swapBackSlashToForwardSlash_inValidInputDataBoolean
+export const cswapBackSlashToForwardSlash_inValidInputDataUndefined = cswapBackSlashToForwardSlash + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + 'Undefined'; // swapBackSlashToForwardSlash_inValidInputDataUndefined
+export const cswapBackSlashToForwardSlash_inValidInputDataNaN = cswapBackSlashToForwardSlash + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + 'NaN'; // swapBackSlashToForwardSlash_inValidInputDataNaN
+
+// swapDoubleForwardSlashToSingleForwardSlash
+export const cswapDoubleForwardSlashToSingleForwardSlash_validData = cswapDoubleForwardSlashToSingleForwardSlash + bas.cUnderscore + wrd.cvalid + wrd.cData; // swapDoubleForwardSlashToSingleForwardSlash_validData
+export const cswapDoubleForwardSlashToSingleForwardSlash_inValidInputDataInteger = cswapDoubleForwardSlashToSingleForwardSlash + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + wrd.cInteger; // swapDoubleForwardSlashToSingleForwardSlash_inValidInputDataInteger
+export const cswapDoubleForwardSlashToSingleForwardSlash_inValidInputDataBoolean = cswapDoubleForwardSlashToSingleForwardSlash + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + wrd.cBoolean; // swapDoubleForwardSlashToSingleForwardSlash_inValidInputDataBoolean
+export const cswapDoubleForwardSlashToSingleForwardSlash_inValidInputDataUndefined = cswapDoubleForwardSlashToSingleForwardSlash + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + 'Undefined'; // swapDoubleForwardSlashToSingleForwardSlash_inValidInputDataUndefined
+export const cswapDoubleForwardSlashToSingleForwardSlash_inValidInputDataNaN = cswapDoubleForwardSlashToSingleForwardSlash + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + 'NaN'; // swapDoubleForwardSlashToSingleForwardSlash_inValidInputDataNaN
+
+// swapDoubleBackSlashToSingleBackSlash
+export const cswapDoubleBackSlashToSingleBackSlash_validData = cswapDoubleBackSlashToSingleBackSlash + bas.cUnderscore + wrd.cvalid + wrd.cData; // swapDoubleBackSlashToSingleBackSlash_validData
+export const cswapDoubleBackSlashToSingleBackSlash_inValidInputDataInteger = cswapDoubleBackSlashToSingleBackSlash + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + wrd.cInteger; // swapDoubleBackSlashToSingleBackSlash_inValidInputDataInteger
+export const cswapDoubleBackSlashToSingleBackSlash_inValidInputDataBoolean = cswapDoubleBackSlashToSingleBackSlash + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + wrd.cBoolean; // swapDoubleBackSlashToSingleBackSlash_inValidInputDataBoolean
+export const cswapDoubleBackSlashToSingleBackSlash_inValidInputDataUndefined = cswapDoubleBackSlashToSingleBackSlash + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + 'Undefined'; // swapDoubleBackSlashToSingleBackSlash_inValidInputDataUndefined
+export const cswapDoubleBackSlashToSingleBackSlash_inValidInputDataNaN = cswapDoubleBackSlashToSingleBackSlash + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + 'NaN'; // swapDoubleBackSlashToSingleBackSlash_inValidInputDataNaN
+
+// replaceSpacesWithPlus
+export const creplaceSpacesWithPlus_validData = creplaceSpacesWithPlus + bas.cUnderscore + wrd.cvalid + wrd.cData; // replaceSpacesWithPlus_validData
+export const creplaceSpacesWithPlus_inValidInputDataInteger = creplaceSpacesWithPlus + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + wrd.cInteger; // replaceSpacesWithPlus_inValidInputDataInteger
+export const creplaceSpacesWithPlus_inValidInputDataBoolean = creplaceSpacesWithPlus + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + wrd.cBoolean; // replaceSpacesWithPlus_inValidInputDataBoolean
+export const creplaceSpacesWithPlus_inValidInputDataUndefined = creplaceSpacesWithPlus + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + 'Undefined'; // replaceSpacesWithPlus_inValidInputDataUndefined
+export const creplaceSpacesWithPlus_inValidInputDataNaN = creplaceSpacesWithPlus + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + 'NaN'; // replaceSpacesWithPlus_inValidInputDataNaN
+
+// replaceColonWithUnderscore
+export const creplaceColonWithUnderscore_validData = creplaceColonWithUnderscore + bas.cUnderscore + wrd.cvalid + wrd.cData; // replaceColonWithUnderscore_validData
+export const creplaceColonWithUnderscore_inValidInputDataInteger = creplaceColonWithUnderscore + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + wrd.cInteger; // replaceColonWithUnderscore_inValidInputDataInteger
+export const creplaceColonWithUnderscore_inValidInputDataBoolean = creplaceColonWithUnderscore + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + wrd.cBoolean; // replaceColonWithUnderscore_inValidInputDataBoolean
+export const creplaceColonWithUnderscore_inValidInputDataUndefined = creplaceColonWithUnderscore + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + 'Undefined'; // replaceColonWithUnderscore_inValidInputDataUndefined
+export const creplaceColonWithUnderscore_inValidInputDataNaN = creplaceColonWithUnderscore + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + 'NaN'; // replaceColonWithUnderscore_inValidInputDataNaN
+
+// cleanCarriageReturnFromString
+export const ccleanCarriageReturnFromString_validData = ccleanCarriageReturnFromString + bas.cUnderscore + wrd.cvalid + wrd.cData; // cleanCarriageReturnFromString_validData
+export const ccleanCarriageReturnFromString_inValidInputDataInteger = ccleanCarriageReturnFromString + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + wrd.cInteger; // cleanCarriageReturnFromString_inValidInputDataInteger
+export const ccleanCarriageReturnFromString_inValidInputDataBoolean = ccleanCarriageReturnFromString + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + wrd.cBoolean; // cleanCarriageReturnFromString_inValidInputDataBoolean
+export const ccleanCarriageReturnFromString_inValidInputDataUndefined = ccleanCarriageReturnFromString + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + 'Undefined'; // cleanCarriageReturnFromString_inValidInputDataUndefined
+export const ccleanCarriageReturnFromString_inValidInputDataNaN = ccleanCarriageReturnFromString + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + 'NaN'; // cleanCarriageReturnFromString_inValidInputDataNaN
+
+// convertStringToLowerCase
+export const cconvertStringToLowerCase_validData = cconvertStringToLowerCase + bas.cUnderscore + wrd.cvalid + wrd.cData; // convertStringToLowerCase_validData
+export const cconvertStringToLowerCase_inValidInputDataInteger = cconvertStringToLowerCase + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + wrd.cInteger; // convertStringToLowerCase_inValidInputDataInteger
+export const cconvertStringToLowerCase_inValidInputDataBoolean = cconvertStringToLowerCase + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + wrd.cBoolean; // convertStringToLowerCase_inValidInputDataBoolean
+export const cconvertStringToLowerCase_inValidInputDataUndefined = cconvertStringToLowerCase + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + 'Undefined'; // convertStringToLowerCase_inValidInputDataUndefined
+export const cconvertStringToLowerCase_inValidInputDataNaN = cconvertStringToLowerCase + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + 'NaN'; // convertStringToLowerCase_inValidInputDataNaN
+
+// convertStringToUpperCase
+export const cconvertStringToUpperCase_validData = cconvertStringToUpperCase + bas.cUnderscore + wrd.cvalid + wrd.cData; // convertStringToUpperCase_validData
+export const cconvertStringToUpperCase_inValidInputDataInteger = cconvertStringToUpperCase + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + wrd.cInteger; // convertStringToUpperCase_inValidInputDataInteger
+export const cconvertStringToUpperCase_inValidInputDataBoolean = cconvertStringToUpperCase + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + wrd.cBoolean; // convertStringToUpperCase_inValidInputDataBoolean
+export const cconvertStringToUpperCase_inValidInputDataUndefined = cconvertStringToUpperCase + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + 'Undefined'; // convertStringToUpperCase_inValidInputDataUndefined
+export const cconvertStringToUpperCase_inValidInputDataNaN = cconvertStringToUpperCase + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + 'NaN'; // convertStringToUpperCase_inValidInputDataNaN
+
+// doesStringContainUpperCaseCharacter
+export const cdoesStringContainUpperCaseCharacter_validData = cdoesStringContainUpperCaseCharacter + bas.cUnderscore + wrd.cvalid + wrd.cData; // doesStringContainUpperCaseCharacter_validData
+export const cdoesStringContainUpperCaseCharacter_inValidInputDataInteger = cdoesStringContainUpperCaseCharacter + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + wrd.cInteger; // doesStringContainUpperCaseCharacter_inValidInputDataInteger
+export const cdoesStringContainUpperCaseCharacter_inValidInputDataBoolean = cdoesStringContainUpperCaseCharacter + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + wrd.cBoolean; // doesStringContainUpperCaseCharacter_inValidInputDataBoolean
+export const cdoesStringContainUpperCaseCharacter_inValidInputDataUndefined = cdoesStringContainUpperCaseCharacter + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + 'Undefined'; // doesStringContainUpperCaseCharacter_inValidInputDataUndefined
+export const cdoesStringContainUpperCaseCharacter_inValidInputDataNaN = cdoesStringContainUpperCaseCharacter + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + 'NaN'; // doesStringContainUpperCaseCharacter_inValidInputDataNaN
+
+// doesStringContainLowerCaseCharacter
+export const cdoesStringContainLowerCaseCharacter_validData = cdoesStringContainLowerCaseCharacter + bas.cUnderscore + wrd.cvalid + wrd.cData; // doesStringContainLowerCaseCharacter_validData
+export const cdoesStringContainLowerCaseCharacter_inValidInputDataInteger = cdoesStringContainLowerCaseCharacter + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + wrd.cInteger; // doesStringContainLowerCaseCharacter_inValidInputDataInteger
+export const cdoesStringContainLowerCaseCharacter_inValidInputDataBoolean = cdoesStringContainLowerCaseCharacter + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + wrd.cBoolean; // doesStringContainLowerCaseCharacter_inValidInputDataBoolean
+export const cdoesStringContainLowerCaseCharacter_inValidInputDataUndefined = cdoesStringContainLowerCaseCharacter + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + 'Undefined'; // doesStringContainLowerCaseCharacter_inValidInputDataUndefined
+export const cdoesStringContainLowerCaseCharacter_inValidInputDataNaN = cdoesStringContainLowerCaseCharacter + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + 'NaN'; // doesStringContainLowerCaseCharacter_inValidInputDataNaN
+
+// isFirstCharacterLowerCase
+export const cisFirstCharacterLowerCase_validData = cisFirstCharacterLowerCase + bas.cUnderscore + wrd.cvalid + wrd.cData; // isFirstCharacterLowerCase_validData
+export const cisFirstCharacterLowerCase_inValidInputDataInteger = cisFirstCharacterLowerCase + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + wrd.cInteger; // isFirstCharacterLowerCase_inValidInputDataInteger
+export const cisFirstCharacterLowerCase_inValidInputDataBoolean = cisFirstCharacterLowerCase + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + wrd.cBoolean; // isFirstCharacterLowerCase_inValidInputDataBoolean
+export const cisFirstCharacterLowerCase_inValidInputDataUndefined = cisFirstCharacterLowerCase + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + 'Undefined'; // isFirstCharacterLowerCase_inValidInputDataUndefined
+export const cisFirstCharacterLowerCase_inValidInputDataNaN = cisFirstCharacterLowerCase + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + 'NaN'; // isFirstCharacterLowerCase_inValidInputDataNaN
+
+// replaceCharacterAtIndexOfString
+export const creplaceCharacterAtIndexOfString_validData = creplaceCharacterAtIndexOfString + bas.cUnderscore + wrd.cvalid + wrd.cData; // replaceCharacterAtIndexOfString_validData
+export const creplaceCharacterAtIndexOfString_inValidInputDataString = creplaceCharacterAtIndexOfString + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + wrd.cString; // replaceCharacterAtIndexOfString_inValidInputDataString
+export const creplaceCharacterAtIndexOfString_inValidInputDataInteger = creplaceCharacterAtIndexOfString + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + wrd.cInteger; // replaceCharacterAtIndexOfString_inValidInputDataInteger
+export const creplaceCharacterAtIndexOfString_inValidInputDataBoolean = creplaceCharacterAtIndexOfString + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + wrd.cBoolean; // replaceCharacterAtIndexOfString_inValidInputDataBoolean
+export const creplaceCharacterAtIndexOfString_inValidinputMetaDataInteger = creplaceCharacterAtIndexOfString + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cinputMetaData + wrd.cInteger; // replaceCharacterAtIndexOfString_inValidinputMetaDataInteger
+export const creplaceCharacterAtIndexOfString_inValidinputMetaDataBoolean = creplaceCharacterAtIndexOfString + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cinputMetaData + wrd.cBoolean; // replaceCharacterAtIndexOfString_inValidinputMetaDataBoolean
+export const creplaceCharacterAtIndexOfString_inValidInputDataUndefined = creplaceCharacterAtIndexOfString + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + 'Undefined'; // replaceCharacterAtIndexOfString_inValidInputDataUndefined
+export const creplaceCharacterAtIndexOfString_inValidInputDataNaN = creplaceCharacterAtIndexOfString + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + 'NaN'; // replaceCharacterAtIndexOfString_inValidInputDataNaN
+export const creplaceCharacterAtIndexOfString_inValidinputMetaDataUndefined = creplaceCharacterAtIndexOfString + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cinputMetaData + 'Undefined'; // replaceCharacterAtIndexOfString_inValidinputMetaDataUndefined
+export const creplaceCharacterAtIndexOfString_inValidinputMetaDataNaN = creplaceCharacterAtIndexOfString + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cinputMetaData + 'NaN'; // replaceCharacterAtIndexOfString_inValidinputMetaDataNaN
 
 /* commandStringParsing */
 

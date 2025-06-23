@@ -34,7 +34,7 @@ const namespacePrefix = wrd.cframework + bas.cDot + sys.cbusinessRules + bas.cDo
  * output: 'input[name="emailAddress"][class="username"]'
  * @param {string} inputData A string that contains text with single quotes that should be swapped for double quotes.
  * @param {string} inputMetaData Not used for this business rule.
- * @return {string} A string that contains text where single quotes have been exchanged for double quotes.
+ * @return {string|boolean} A string that contains text where single quotes have been exchanged for double quotes or false if the input is invalid.
  * @author Seth Hollingsead
  * @date 2021/10/28
  */
@@ -48,9 +48,7 @@ async function singleQuoteSwapAfterEquals(inputData, inputMetaData) {
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
   let returnData;
   let processedInputData = '';
-  if (!inputData) {
-    returnData = false;
-  } else {
+  if (inputData && ((typeof inputData === wrd.cstring && inputData.length > 0) || (Array.isArray(inputData) && inputData.every(item => typeof item === wrd.cstring)))) {
     if (Array.isArray(inputData) === true) {
       // inputData is an array! Capture the first element only.
       await loggers.consoleLog(namespacePrefix + functionName, msg.csingleQuoteSwapAfterEqualsMessage01);
@@ -70,6 +68,10 @@ async function singleQuoteSwapAfterEquals(inputData, inputMetaData) {
       await loggers.consoleLog(namespacePrefix + functionName, msg.cinputAndOutputAreTheSame);
       returnData = inputData;
     }
+  } else { // End-if (inputData)
+    // ERROR: Invalid input, inputData is:  --- at 
+    console.log(msg.cErrorInvalidInputDataMessage + inputData + msg.cSpaceDashDashDashSpaceAtSpace + baseFileName + bas.cDot + functionName);
+    returnData = false; // Return false to indicate an error.
   }
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
@@ -83,8 +85,8 @@ async function singleQuoteSwapAfterEquals(inputData, inputMetaData) {
  * @description Swaps all forward slash characters in a string for back slash characters.
  * @param {string} inputData String that might contain some forward slashes.
  * @param {string} inputMetaData Not used for this business rule.
- * @return {string} The same as the input string, just all forward slash characters
- * swapped for back slash characters.
+ * @return {string|boolean} The same as the input string, just all forward slash characters
+ * swapped for back slash characters or false if the input is invalid.
  * @author Seth Hollingsead
  * @date 2021/10/28
  */
@@ -97,10 +99,12 @@ async function swapForwardSlashToBackSlash(inputData, inputMetaData) {
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
   let returnData;
-  if (!inputData) {
-    returnData = false;
-  } else {
+  if (inputData && (typeof inputData === wrd.cstring && inputData.length > 0)) {
     returnData = await ruleParsing.processRulesInternal([inputData, [/\//g, bas.cBackSlash]], [biz.creplaceCharacterWithCharacter]);
+  } else { // End-if (inputData)
+    // ERROR: Invalid input, inputData is:  --- at 
+    console.log(msg.cErrorInvalidInputDataMessage + inputData + msg.cSpaceDashDashDashSpaceAtSpace + baseFileName + bas.cDot + functionName);
+    returnData = false; // Return false to indicate an error.
   }
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
@@ -114,8 +118,8 @@ async function swapForwardSlashToBackSlash(inputData, inputMetaData) {
  * @description Swaps all back slash characters in a string for forward slash characters.
  * @param {string} inputData String that might contains some back slashes.
  * @param {string} inputMetaData Not used for this business rule.
- * @return {string} The same as the input string, just all back slash characters
- * swapped for forward slash characters.
+ * @return {string|boolean} The same as the input string, just all back slash characters
+ * swapped for forward slash characters or false if the input is invalid.
  * @author Seth Hollingsead
  * @date 2021/10/28
  */
@@ -128,14 +132,16 @@ async function swapBackSlashToForwardSlash(inputData, inputMetaData) {
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
   let returnData;
-  if (!inputData) {
-    returnData = false;
-  } else {
+  if (inputData && (typeof inputData === wrd.cstring && inputData.length > 0)) {
     if (await configurator.getConfigurationSetting(wrd.csystem, cfg.cconfigurationInitialized) === true) {
       returnData = await ruleParsing.processRulesInternal([inputData, [/\\/g, bas.cForwardSlash]], [biz.creplaceCharacterWithCharacter]);
     } else {
       returnData = await characterArrayParsing.replaceCharacterWithCharacter(inputData, [/\\/g, bas.cForwardSlash]);
     }
+  } else { // End-if (inputData)
+    // ERROR: Invalid input, inputData is:  --- at 
+    console.log(msg.cErrorInvalidInputDataMessage + inputData + msg.cSpaceDashDashDashSpaceAtSpace + baseFileName + bas.cDot + functionName);
+    returnData = false; // Return false to indicate an error.
   }
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
@@ -149,8 +155,8 @@ async function swapBackSlashToForwardSlash(inputData, inputMetaData) {
  * @description Swaps all double forward slash characters for single forward slash characters.
  * @param {string} inputData String that might contain some double forward slashes.
  * @param {string} inputMetaData Not used for this business rule.
- * @return {string} The same as the input string, just all double forward slash characters
- * swapped for single forward slash characters.
+ * @return {string|boolean} The same as the input string, just all double forward slash characters
+ * swapped for single forward slash characters or false if the input is invalid.
  * @author Seth Hollingsead
  * @date 2021/10/28
  */
@@ -163,14 +169,16 @@ async function swapDoubleForwardSlashToSingleForwardSlash(inputData, inputMetaDa
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
   let returnData;
-  if (!inputData) {
-    returnData = false;
-  } else {
+  if (inputData && (typeof inputData === wrd.cstring && inputData.length > 0)) {
     if (await configurator.getConfigurationSetting(wrd.csystem, cfg.cconfigurationInitialized) === true) {
       returnData = await ruleParsing.processRulesInternal([inputData, [/\/\//g, bas.cForwardSlash]], [biz.creplaceCharacterWithCharacter]);
     } else {
       returnData = await characterArrayParsing.replaceCharacterWithCharacter(inputData, [/\/\//g, bas.cForwardSlash]);
     }
+  } else { // End-if (inputData)
+    // ERROR: Invalid input, inputData is:  --- at 
+    console.log(msg.cErrorInvalidInputDataMessage + inputData + msg.cSpaceDashDashDashSpaceAtSpace + baseFileName + bas.cDot + functionName);
+    returnData = false; // Return false to indicate an error.
   }
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
@@ -184,7 +192,7 @@ async function swapDoubleForwardSlashToSingleForwardSlash(inputData, inputMetaDa
  * @description Swaps all double back slash characters for single back slash characters.
  * @param {string} inputData String that might contain some double back slashes.
  * @param {string} inputMetaData Not used for this business rule.
- * @return {string} The same as the input string, just all double back slash characters
+ * @return {string|boolean} The same as the input string, just all double back slash characters or false if the input is invalid
  * swapped for single back slash characters.
  * @author Seth Hollingsead
  * @date 2021/10/28
@@ -198,10 +206,12 @@ async function swapDoubleBackSlashToSingleBackSlash(inputData, inputMetaData) {
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + JSON.stringify(inputData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
   let returnData;
-  if (!inputData) {
-    returnData = false;
-  } else {
+  if (inputData && (typeof inputData === wrd.cstring && inputData.length > 0)) {
     returnData = await ruleParsing.processRulesInternal([inputData, [/\\\\/g, bas.cBackSlash]], [biz.creplaceCharacterWithCharacter]);
+  } else { // End-if (inputData)
+    // ERROR: Invalid input, inputData is:  --- at 
+    console.log(msg.cErrorInvalidInputDataMessage + inputData + msg.cSpaceDashDashDashSpaceAtSpace + baseFileName + bas.cDot + functionName);
+    returnData = false; // Return false to indicate an error.
   }
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
@@ -215,7 +225,7 @@ async function swapDoubleBackSlashToSingleBackSlash(inputData, inputMetaData) {
  * @description Replaces all spaces in the input string with plus symbols.
  * @param {string} inputData A string that contains spaces that should be converted to plus symbols.
  * @param {string} inputMetaData Not used for this business rule.
- * @return {string} The same as the input string but with space characters converted to plus symbols.
+ * @return {string|boolean} The same as the input string but with space characters converted to plus symbols or false if the input is invalid.
  * @author Seth Hollingsead
  * @date 2022/01/21
  */
@@ -225,9 +235,13 @@ async function replaceSpacesWithPlus(inputData, inputMetaData) {
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = false;
-  if (inputData) {
+  if (inputData && (typeof inputData === wrd.cstring && inputData.length > 0)) {
     // returnData = inputData.replace(/ /g, bas.cPlus);
     returnData = await ruleParsing.processRulesInternal([inputData, [/ /g, bas.cPlus]], [biz.creplaceCharacterWithCharacter]);
+  } else { // End-if (inputData)
+    // ERROR: Invalid input, inputData is:  --- at 
+    console.log(msg.cErrorInvalidInputDataMessage + inputData + msg.cSpaceDashDashDashSpaceAtSpace + baseFileName + bas.cDot + functionName);
+    returnData = false; // Return false to indicate an error.
   }
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
@@ -249,9 +263,12 @@ async function replaceColonWithUnderscore(inputData, inputMetaData) {
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = false;
-  if (inputData) {
+  if (inputData && (typeof inputData === wrd.cstring && inputData.length > 0)) {
     // returnData = inputData.replace(/:/g, bas.cUnderscore);
     returnData = await ruleParsing.processRulesInternal([inputData, [/:/g, bas.cUnderscore]], [biz.creplaceCharacterWithCharacter]);
+  } else { // End-if (inputData)
+    // ERROR: Invalid input, inputData is:  --- at 
+    console.log(msg.cErrorInvalidInputDataMessage + inputData + msg.cSpaceDashDashDashSpaceAtSpace + baseFileName + bas.cDot + functionName);
   }
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
@@ -263,7 +280,7 @@ async function replaceColonWithUnderscore(inputData, inputMetaData) {
  * @description Cleans carriage return characters from the input data and trims off any leading or training spaces.
  * @param {string} inputData The string that should be scrubbed for carriage returns.
  * @param {string} inputMetaData Not used for this business rule.
- * @return {string} The same as teh input string, but with all carriage return characters removed.
+ * @return {string} The same as the input string, but with all carriage return characters removed.
  * @author Seth Hollingsead
  * @date 2022/01/23
  */
@@ -273,14 +290,17 @@ async function cleanCarriageReturnFromString(inputData, inputMetaData) {
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = false;
-  if (inputData) {
+  if (inputData && (typeof inputData === wrd.cstring && inputData.length > 0)) {
     if (await configurator.getConfigurationSetting(wrd.csystem, cfg.cconfigurationInitialized) === true) {
       // returnData = inputData.replace(/\s+/g, bas.cSpace);
       returnData = (await ruleParsing.processRulesInternal([inputData, [/\s+/g, bas.cSpace]], [biz.creplaceCharacterWithCharacter])).trim();
     } else {
       returnData = await characterArrayParsing.replaceCharacterWithCharacter(inputData, [/\s+/g, bas.cSpace]);
     }
-  } // End-if (inputData)
+  } else { // End-if (inputData)
+    // ERROR: Invalid input, inputData is:  --- at 
+    console.log(msg.cErrorInvalidInputDataMessage + inputData + msg.cSpaceDashDashDashSpaceAtSpace + baseFileName + bas.cDot + functionName);
+  }
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
@@ -301,8 +321,11 @@ async function convertStringToLowerCase(inputData, inputMetaData) {
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = false;
-  if (inputData) {
+  if (inputData && (typeof inputData === wrd.cstring && inputData.length > 0)) {
     returnData = inputData.toLowerCase();
+  } else { // End-if (inputData)
+    // ERROR: Invalid input, inputData is:  --- at 
+    console.log(msg.cErrorInvalidInputDataMessage + inputData + msg.cSpaceDashDashDashSpaceAtSpace + baseFileName + bas.cDot + functionName);
   }
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
@@ -324,8 +347,11 @@ async function convertStringToUpperCase(inputData, inputMetaData) {
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = false;
-  if (inputData) {
+  if (inputData && (typeof inputData === wrd.cstring && inputData.length > 0)) {
     returnData = inputData.toUpperCase();
+  } else { // End-if (inputData)
+    // ERROR: Invalid input, inputData is:  --- at 
+    console.log(msg.cErrorInvalidInputDataMessage + inputData + msg.cSpaceDashDashDashSpaceAtSpace + baseFileName + bas.cDot + functionName);
   }
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
@@ -338,7 +364,7 @@ async function convertStringToUpperCase(inputData, inputMetaData) {
  * @param {string} inputData The string that should be checked for upper case characters.
  * @param {string} inputMetaData Not used for this business rule.
  * @return {boolean} True or False to indicate if the string contains
- * at least one upper case character or more, or not any upper case characters.
+ * at least one upper case character or more, or not any upper case characters, also dysplays false if the input is invalid.
  * @author Seth Hollingsead
  * @date 2022/01/23
  */
@@ -348,14 +374,17 @@ async function doesStringContainUpperCaseCharacter(inputData, inputMetaData) {
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = false;
-  if (inputData) {
-    for (let i = 1; i < inputData.length; i++) {
+  if (inputData && (typeof inputData === wrd.cstring && inputData.length > 0)) {
+    for (let i = 0; i < inputData.length; i++) {
       if (gen.cUpperCaseEnglishAlphabet.includes(inputData.charAt(i))) {
         returnData = true;
         break;
       }
-    } // End-for (let i = 1; i < inputData.length; i++)
-  } // End-if (inputData)
+    } // End-for (let i = 0; i < inputData.length; i++)
+  } else { // End-if (inputData)
+    // ERROR: Invalid input, inputData is:  --- at 
+    console.log(msg.cErrorInvalidInputDataMessage + inputData + msg.cSpaceDashDashDashSpaceAtSpace + baseFileName + bas.cDot + functionName);
+  }
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
@@ -377,14 +406,17 @@ async function doesStringContainLowerCaseCharacter(inputData, inputMetaData) {
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = false;
-  if (inputData) {
-    for (let i = 1; i < inputData.length; i++) {
+  if (inputData && (typeof inputData === wrd.cstring && inputData.length > 0)) {
+    for (let i = 0; i < inputData.length; i++) {
       if (gen.cLowerCaseEnglishAlphabet.includes(inputData.charAt(i))) {
         returnData = true;
         break;
       }
-    } // End-for (let i = 1; i < inputData.length; i++)
-  } // End-if (inputData)
+    } // End-for (let i = 0; i < inputData.length; i++)
+  } else { // End-if (inputData)
+    // ERROR: Invalid input, inputData is:  --- at 
+    console.log(msg.cErrorInvalidInputDataMessage + inputData + msg.cSpaceDashDashDashSpaceAtSpace + baseFileName + bas.cDot + functionName);
+  }
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
@@ -405,8 +437,11 @@ async function isFirstCharacterLowerCase(inputData, inputMetaData) {
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = false;
-  if (inputData) {
+  if (inputData && (typeof inputData === wrd.cstring && inputData.length > 0)) {
     returnData = gen.cLowerCaseEnglishAlphabet.includes(inputData.charAt(0));
+  } else { // End-if (inputData)
+    // ERROR: Invalid input, inputData is:  --- at 
+    console.log(msg.cErrorInvalidInputDataMessage + inputData + msg.cSpaceDashDashDashSpaceAtSpace + baseFileName + bas.cDot + functionName);
   }
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
@@ -452,19 +487,29 @@ async function isFirstCharacterUpperCase(inputData, inputMetaData) {
  * @NOTE Cannot use the loggers here, because of a circular dependency.
  */
 async function replaceCharacterAtIndexOfString(inputData, inputMetaData) {
-  // let functionName = replaceCharacterAtIndexOfString.name;
+  let functionName = replaceCharacterAtIndexOfString.name;
   // console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   // console.log(`originalString is: ${originalString}`);
   // console.log(`index is: ${index}`);
   // console.log(`replacement is: ${replacement}`);
   let returnData;
-  if (inputData && inputMetaData) {
-    let originalString = inputData[0];
-    let index = inputData[1];
-    if (originalString != '' && index >= 0 && inputMetaData != '') {
-      returnData = originalString.substr(0, index) + inputMetaData + originalString.substr(index + inputMetaData.length);
+  if (Array.isArray(inputData) && typeof inputData[0] === wrd.cstring && Number.isInteger(inputData[1])) {
+    if (inputMetaData && (typeof inputMetaData === wrd.cstring && inputMetaData.length > 0)) {
+      let originalString = inputData[0];
+      let index = inputData[1];
+      if (originalString != '' && index >= 0 && inputMetaData != '') {
+        returnData = originalString.substr(0, index) + inputMetaData + originalString.substr(index + inputMetaData.length);
+      }
+    } else { // End-if (inputMetaData)
+      // ERROR: Invalid input, inputMetaData is:  --- at 
+      console.log(msg.cErrorInvalidInputMetaDataMessage + inputMetaData + msg.cSpaceDashDashDashSpaceAtSpace + baseFileName + bas.cDot + functionName);
+      returnData = false; // Return false to indicate an error.
     }
-  } // End-if (inputData && inputMetaData)
+  } else { // End-if (inputData)
+    // ERROR: Invalid input, inputData is:  --- at 
+    console.log(msg.cErrorInvalidInputDataMessage + inputData + msg.cSpaceDashDashDashSpaceAtSpace + baseFileName + bas.cDot + functionName);
+    returnData = false; // Return false to indicate an error.
+  }
   // console.log(`returnData is: ${returnData}`);
   // console.log(`END ${namespacePrefix}${functionName} function`);
   return returnData;

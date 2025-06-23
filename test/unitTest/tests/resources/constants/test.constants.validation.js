@@ -154,13 +154,28 @@ export const testConstantsValidation = [
 
 /* wordArrayParsing */
 {Name: 'cconvertCamelCaseStringToArray', Actual: tst_con.cconvertCamelCaseStringToArray, Expected: 'convertCamelCaseStringToArray'},
-{Name: 'cgetWordsArrayFromString', Actual: tst_con.cgetWordsArrayFromString, Expected: 'getWordsArrayFromString'},
 {Name: 'crecombineStringArrayWithSpaces', Actual: tst_con.crecombineStringArrayWithSpaces, Expected: 'recombineStringArrayWithSpaces'},
 {Name: 'cconvertArrayToCamelCaseString', Actual: tst_con.cconvertArrayToCamelCaseString, Expected: 'convertArrayToCamelCaseString'},
 {Name: 'cdoesArrayContainLowerCaseConsolidatedString', Actual: tst_con.cdoesArrayContainLowerCaseConsolidatedString, Expected: 'doesArrayContainLowerCaseConsolidatedString'},
 {Name: 'cascertainMatchingElements', Actual: tst_con.cascertainMatchingElements, Expected: 'ascertainMatchingElements'},
 
+/* auxiliaryStringParsing */
+
 /* characterStringParsing */
+{Name: 'csingleQuoteSwapAfterEquals', Actual: tst_con.csingleQuoteSwapAfterEquals, Expected: 'singleQuoteSwapAfterEquals'},
+{Name: 'cswapForwardSlashToBackSlash', Actual: tst_con.cswapForwardSlashToBackSlash, Expected: 'swapForwardSlashToBackSlash'},
+{Name: 'cswapBackSlashToForwardSlash', Actual: tst_con.cswapBackSlashToForwardSlash, Expected: 'swapBackSlashToForwardSlash'},
+{Name: 'cswapDoubleForwardSlashToSingleForwardSlash', Actual: tst_con.cswapDoubleForwardSlashToSingleForwardSlash, Expected: 'swapDoubleForwardSlashToSingleForwardSlash'},
+{Name: 'cswapDoubleBackSlashToSingleBackSlash', Actual: tst_con.cswapDoubleBackSlashToSingleBackSlash, Expected: 'swapDoubleBackSlashToSingleBackSlash'},
+{Name: 'creplaceSpacesWithPlus', Actual: tst_con.creplaceSpacesWithPlus, Expected: 'replaceSpacesWithPlus'},
+{Name: 'creplaceColonWithUnderscore', Actual: tst_con.creplaceColonWithUnderscore, Expected: 'replaceColonWithUnderscore'},
+{Name: 'ccleanCarriageReturnFromString', Actual: tst_con.ccleanCarriageReturnFromString, Expected: 'cleanCarriageReturnFromString'},
+{Name: 'cconvertStringToLowerCase', Actual: tst_con.cconvertStringToLowerCase, Expected: 'convertStringToLowerCase'},
+{Name: 'cconvertStringToUpperCase', Actual: tst_con.cconvertStringToUpperCase, Expected: 'convertStringToUpperCase'},
+{Name: 'cdoesStringContainUpperCaseCharacter', Actual: tst_con.cdoesStringContainUpperCaseCharacter, Expected: 'doesStringContainUpperCaseCharacter'},
+{Name: 'cdoesStringContainLowerCaseCharacter', Actual: tst_con.cdoesStringContainLowerCaseCharacter, Expected: 'doesStringContainLowerCaseCharacter'},
+{Name: 'cisFirstCharacterLowerCase', Actual: tst_con.cisFirstCharacterLowerCase, Expected: 'isFirstCharacterLowerCase'},
+{Name: 'creplaceCharacterAtIndexOfString', Actual: tst_con.creplaceCharacterAtIndexOfString, Expected: 'replaceCharacterAtIndexOfString'},
 
 /* commandStringParsing */
 
@@ -1347,7 +1362,125 @@ export const testConstantsValidation = [
 {Name: 'cascertainMatchingElements_inValidinputMetaDataUndefined', Actual: tst_con.cascertainMatchingElements_inValidinputMetaDataUndefined, Expected: 'ascertainMatchingElements_inValidinputMetaDataUndefined'},
 {Name: 'cascertainMatchingElements_inValidinputMetaDataNaN', Actual: tst_con.cascertainMatchingElements_inValidinputMetaDataNaN, Expected: 'ascertainMatchingElements_inValidinputMetaDataNaN'},
 
+/* auxiliaryStringParsing */
+
 /* characterStringParsing */
+// singleQuoteSwapAfterEquals
+{Name: 'csingleQuoteSwapAfterEquals_validData', Actual: tst_con.csingleQuoteSwapAfterEquals_validData, Expected: 'singleQuoteSwapAfterEquals_validData'},
+{Name: 'csingleQuoteSwapAfterEquals_inValidInputDataString', Actual: tst_con.csingleQuoteSwapAfterEquals_inValidInputDataString, Expected: 'singleQuoteSwapAfterEquals_inValidInputDataString'},
+{Name: 'csingleQuoteSwapAfterEquals_inValidInputDataInteger', Actual: tst_con.csingleQuoteSwapAfterEquals_inValidInputDataInteger, Expected: 'singleQuoteSwapAfterEquals_inValidInputDataInteger'},
+{Name: 'csingleQuoteSwapAfterEquals_inValidInputDataBoolean', Actual: tst_con.csingleQuoteSwapAfterEquals_inValidInputDataBoolean, Expected: 'singleQuoteSwapAfterEquals_inValidInputDataBoolean'},
+{Name: 'csingleQuoteSwapAfterEquals_inValidInputDataUndefined', Actual: tst_con.csingleQuoteSwapAfterEquals_inValidInputDataUndefined, Expected: 'singleQuoteSwapAfterEquals_inValidInputDataUndefined'},
+{Name: 'csingleQuoteSwapAfterEquals_inValidInputDataNaN', Actual: tst_con.csingleQuoteSwapAfterEquals_inValidInputDataNaN, Expected: 'singleQuoteSwapAfterEquals_inValidInputDataNaN'},
+{Name: 'csingleQuoteSwapAfterEquals_inValidInputMetaDataUndefined', Actual: tst_con.csingleQuoteSwapAfterEquals_inValidInputMetaDataUndefined, Expected: 'singleQuoteSwapAfterEquals_inValidInputMetaDataUndefined'},
+
+// swapForwardSlashToBackSlash
+{Name: 'cswapForwardSlashToBackSlash_validData', Actual: tst_con.cswapForwardSlashToBackSlash_validData, Expected: 'swapForwardSlashToBackSlash_validData'},
+{Name: 'cswapForwardSlashToBackSlash_inValidInputDataInteger', Actual: tst_con.cswapForwardSlashToBackSlash_inValidInputDataInteger, Expected: 'swapForwardSlashToBackSlash_inValidInputDataInteger'},
+{Name: 'cswapForwardSlashToBackSlash_inValidInputDataBoolean', Actual: tst_con.cswapForwardSlashToBackSlash_inValidInputDataBoolean, Expected: 'swapForwardSlashToBackSlash_inValidInputDataBoolean'},
+{Name: 'cswapForwardSlashToBackSlash_inValidInputDataUndefined', Actual: tst_con.cswapForwardSlashToBackSlash_inValidInputDataUndefined, Expected: 'swapForwardSlashToBackSlash_inValidInputDataUndefined'},
+{Name: 'cswapForwardSlashToBackSlash_inValidInputDataNaN', Actual: tst_con.cswapForwardSlashToBackSlash_inValidInputDataNaN, Expected: 'swapForwardSlashToBackSlash_inValidInputDataNaN'},
+{Name: 'cswapForwardSlashToBackSlash_inValidInputMetaDataUndefined', Actual: tst_con.cswapForwardSlashToBackSlash_inValidInputMetaDataUndefined, Expected: 'swapForwardSlashToBackSlash_inValidInputMetaDataUndefined'},
+
+// swapBackSlashToForwardSlash
+{Name: 'cswapBackSlashToForwardSlash_validData', Actual: tst_con.cswapBackSlashToForwardSlash_validData, Expected: 'swapBackSlashToForwardSlash_validData'},
+{Name: 'cswapBackSlashToForwardSlash_inValidInputDataInteger', Actual: tst_con.cswapBackSlashToForwardSlash_inValidInputDataInteger, Expected: 'swapBackSlashToForwardSlash_inValidInputDataInteger'},
+{Name: 'cswapBackSlashToForwardSlash_inValidInputDataBoolean', Actual: tst_con.cswapBackSlashToForwardSlash_inValidInputDataBoolean, Expected: 'swapBackSlashToForwardSlash_inValidInputDataBoolean'},
+{Name: 'cswapBackSlashToForwardSlash_inValidInputDataUndefined', Actual: tst_con.cswapBackSlashToForwardSlash_inValidInputDataUndefined, Expected: 'swapBackSlashToForwardSlash_inValidInputDataUndefined'},
+{Name: 'cswapBackSlashToForwardSlash_inValidInputDataNaN', Actual: tst_con.cswapBackSlashToForwardSlash_inValidInputDataNaN, Expected: 'swapBackSlashToForwardSlash_inValidInputDataNaN'},
+{Name: 'cswapBackSlashToForwardSlash_inValidInputMetaDataUndefined', Actual: tst_con.cswapBackSlashToForwardSlash_inValidInputMetaDataUndefined, Expected: 'swapBackSlashToForwardSlash_inValidInputMetaDataUndefined'},
+
+// swapDoubleForwardSlashToSingleForwardSlash
+{Name: 'cswapDoubleForwardSlashToSingleForwardSlash_validData', Actual: tst_con.cswapDoubleForwardSlashToSingleForwardSlash_validData, Expected: 'swapDoubleForwardSlashToSingleForwardSlash_validData'},
+{Name: 'cswapDoubleForwardSlashToSingleForwardSlash_inValidInputDataInteger', Actual: tst_con.cswapDoubleForwardSlashToSingleForwardSlash_inValidInputDataInteger, Expected: 'swapDoubleForwardSlashToSingleForwardSlash_inValidInputDataInteger'},
+{Name: 'cswapDoubleForwardSlashToSingleForwardSlash_inValidInputDataBoolean', Actual: tst_con.cswapDoubleForwardSlashToSingleForwardSlash_inValidInputDataBoolean, Expected: 'swapDoubleForwardSlashToSingleForwardSlash_inValidInputDataBoolean'},
+{Name: 'cswapDoubleForwardSlashToSingleForwardSlash_inValidInputDataUndefined', Actual: tst_con.cswapDoubleForwardSlashToSingleForwardSlash_inValidInputDataUndefined, Expected: 'swapDoubleForwardSlashToSingleForwardSlash_inValidInputDataUndefined'},
+{Name: 'cswapDoubleForwardSlashToSingleForwardSlash_inValidInputDataNaN', Actual: tst_con.cswapDoubleForwardSlashToSingleForwardSlash_inValidInputDataNaN, Expected: 'swapDoubleForwardSlashToSingleForwardSlash_inValidInputDataNaN'},
+{Name: 'cswapDoubleForwardSlashToSingleForwardSlash_inValidInputMetaDataUndefined', Actual: tst_con.cswapDoubleForwardSlashToSingleForwardSlash_inValidInputMetaDataUndefined, Expected: 'swapDoubleForwardSlashToSingleForwardSlash_inValidInputMetaDataUndefined'},
+
+// swapDoubleBackSlashToSingleBackSlash
+{Name: 'cswapDoubleBackSlashToSingleBackSlash_validData', Actual: tst_con.cswapDoubleBackSlashToSingleBackSlash_validData, Expected: 'swapDoubleBackSlashToSingleBackSlash_validData'},
+{Name: 'cswapDoubleBackSlashToSingleBackSlash_inValidInputDataInteger', Actual: tst_con.cswapDoubleBackSlashToSingleBackSlash_inValidInputDataInteger, Expected: 'swapDoubleBackSlashToSingleBackSlash_inValidInputDataInteger'},
+{Name: 'cswapDoubleBackSlashToSingleBackSlash_inValidInputDataBoolean', Actual: tst_con.cswapDoubleBackSlashToSingleBackSlash_inValidInputDataBoolean, Expected: 'swapDoubleBackSlashToSingleBackSlash_inValidInputDataBoolean'},
+{Name: 'cswapDoubleBackSlashToSingleBackSlash_inValidInputDataUndefined', Actual: tst_con.cswapDoubleBackSlashToSingleBackSlash_inValidInputDataUndefined, Expected: 'swapDoubleBackSlashToSingleBackSlash_inValidInputDataUndefined'},
+{Name: 'cswapDoubleBackSlashToSingleBackSlash_inValidInputDataNaN', Actual: tst_con.cswapDoubleBackSlashToSingleBackSlash_inValidInputDataNaN, Expected: 'swapDoubleBackSlashToSingleBackSlash_inValidInputDataNaN'},
+{Name: 'cswapDoubleBackSlashToSingleBackSlash_inValidInputMetaDataUndefined', Actual: tst_con.cswapDoubleBackSlashToSingleBackSlash_inValidInputMetaDataUndefined, Expected: 'swapDoubleBackSlashToSingleBackSlash_inValidInputMetaDataUndefined'},
+
+// replaceSpacesWithPlus
+{Name: 'creplaceSpacesWithPlus_validData', Actual: tst_con.creplaceSpacesWithPlus_validData, Expected: 'replaceSpacesWithPlus_validData'},
+{Name: 'creplaceSpacesWithPlus_inValidInputDataInteger', Actual: tst_con.creplaceSpacesWithPlus_inValidInputDataInteger, Expected: 'replaceSpacesWithPlus_inValidInputDataInteger'},
+{Name: 'creplaceSpacesWithPlus_inValidInputDataBoolean', Actual: tst_con.creplaceSpacesWithPlus_inValidInputDataBoolean, Expected: 'replaceSpacesWithPlus_inValidInputDataBoolean'},
+{Name: 'creplaceSpacesWithPlus_inValidInputDataUndefined', Actual: tst_con.creplaceSpacesWithPlus_inValidInputDataUndefined, Expected: 'replaceSpacesWithPlus_inValidInputDataUndefined'},
+{Name: 'creplaceSpacesWithPlus_inValidInputDataNaN', Actual: tst_con.creplaceSpacesWithPlus_inValidInputDataNaN, Expected: 'replaceSpacesWithPlus_inValidInputDataNaN'},
+{Name: 'creplaceSpacesWithPlus_inValidInputMetaDataUndefined', Actual: tst_con.creplaceSpacesWithPlus_inValidInputMetaDataUndefined, Expected: 'replaceSpacesWithPlus_inValidInputMetaDataUndefined'},
+
+// replaceColonWithUnderscore
+{Name: 'creplaceColonWithUnderscore_validData', Actual: tst_con.creplaceColonWithUnderscore_validData, Expected: 'replaceColonWithUnderscore_validData'},
+{Name: 'creplaceColonWithUnderscore_inValidInputDataInteger', Actual: tst_con.creplaceColonWithUnderscore_inValidInputDataInteger, Expected: 'replaceColonWithUnderscore_inValidInputDataInteger'},
+{Name: 'creplaceColonWithUnderscore_inValidInputDataBoolean', Actual: tst_con.creplaceColonWithUnderscore_inValidInputDataBoolean, Expected: 'replaceColonWithUnderscore_inValidInputDataBoolean'},
+{Name: 'creplaceColonWithUnderscore_inValidInputDataUndefined', Actual: tst_con.creplaceColonWithUnderscore_inValidInputDataUndefined, Expected: 'replaceColonWithUnderscore_inValidInputDataUndefined'},
+{Name: 'creplaceColonWithUnderscore_inValidInputDataNaN', Actual: tst_con.creplaceColonWithUnderscore_inValidInputDataNaN, Expected: 'replaceColonWithUnderscore_inValidInputDataNaN'},
+{Name: 'creplaceColonWithUnderscore_inValidInputMetaDataUndefined', Actual: tst_con.creplaceColonWithUnderscore_inValidInputMetaDataUndefined, Expected: 'replaceColonWithUnderscore_inValidInputMetaDataUndefined'},
+
+// cleanCarriageReturnFromString
+{Name: 'ccleanCarriageReturnFromString_validData', Actual: tst_con.ccleanCarriageReturnFromString_validData, Expected: 'cleanCarriageReturnFromString_validData'},
+{Name: 'ccleanCarriageReturnFromString_inValidInputDataInteger', Actual: tst_con.ccleanCarriageReturnFromString_inValidInputDataInteger, Expected: 'cleanCarriageReturnFromString_inValidInputDataInteger'},
+{Name: 'ccleanCarriageReturnFromString_inValidInputDataBoolean', Actual: tst_con.ccleanCarriageReturnFromString_inValidInputDataBoolean, Expected: 'cleanCarriageReturnFromString_inValidInputDataBoolean'},
+{Name: 'ccleanCarriageReturnFromString_inValidInputDataUndefined', Actual: tst_con.ccleanCarriageReturnFromString_inValidInputDataUndefined, Expected: 'cleanCarriageReturnFromString_inValidInputDataUndefined'},
+{Name: 'ccleanCarriageReturnFromString_inValidInputDataNaN', Actual: tst_con.ccleanCarriageReturnFromString_inValidInputDataNaN, Expected: 'cleanCarriageReturnFromString_inValidInputDataNaN'},
+{Name: 'ccleanCarriageReturnFromString_inValidInputMetaDataUndefined', Actual: tst_con.ccleanCarriageReturnFromString_inValidInputMetaDataUndefined, Expected: 'cleanCarriageReturnFromString_inValidInputMetaDataUndefined'},
+
+// convertStringToLowerCase
+{Name: 'cconvertStringToLowerCase_validData', Actual: tst_con.cconvertStringToLowerCase_validData, Expected: 'convertStringToLowerCase_validData'},
+{Name: 'cconvertStringToLowerCase_inValidInputDataInteger', Actual: tst_con.cconvertStringToLowerCase_inValidInputDataInteger, Expected: 'convertStringToLowerCase_inValidInputDataInteger'},
+{Name: 'cconvertStringToLowerCase_inValidInputDataBoolean', Actual: tst_con.cconvertStringToLowerCase_inValidInputDataBoolean, Expected: 'convertStringToLowerCase_inValidInputDataBoolean'},
+{Name: 'cconvertStringToLowerCase_inValidInputDataUndefined', Actual: tst_con.cconvertStringToLowerCase_inValidInputDataUndefined, Expected: 'convertStringToLowerCase_inValidInputDataUndefined'},
+{Name: 'cconvertStringToLowerCase_inValidInputDataNaN', Actual: tst_con.cconvertStringToLowerCase_inValidInputDataNaN, Expected: 'convertStringToLowerCase_inValidInputDataNaN'},
+{Name: 'cconvertStringToLowerCase_inValidInputMetaDataUndefined', Actual: tst_con.cconvertStringToLowerCase_inValidInputMetaDataUndefined, Expected: 'convertStringToLowerCase_inValidInputMetaDataUndefined'},
+
+// convertStringToUpperCase
+{Name: 'cconvertStringToUpperCase_validData', Actual: tst_con.cconvertStringToUpperCase_validData, Expected: 'convertStringToUpperCase_validData'},
+{Name: 'cconvertStringToUpperCase_inValidInputDataInteger', Actual: tst_con.cconvertStringToUpperCase_inValidInputDataInteger, Expected: 'convertStringToUpperCase_inValidInputDataInteger'},
+{Name: 'cconvertStringToUpperCase_inValidInputDataBoolean', Actual: tst_con.cconvertStringToUpperCase_inValidInputDataBoolean, Expected: 'convertStringToUpperCase_inValidInputDataBoolean'},
+{Name: 'cconvertStringToUpperCase_inValidInputDataUndefined', Actual: tst_con.cconvertStringToUpperCase_inValidInputDataUndefined, Expected: 'convertStringToUpperCase_inValidInputDataUndefined'},
+{Name: 'cconvertStringToUpperCase_inValidInputDataNaN', Actual: tst_con.cconvertStringToUpperCase_inValidInputDataNaN, Expected: 'convertStringToUpperCase_inValidInputDataNaN'},
+{Name: 'cconvertStringToUpperCase_inValidInputMetaDataUndefined', Actual: tst_con.cconvertStringToUpperCase_inValidInputMetaDataUndefined, Expected: 'convertStringToUpperCase_inValidInputMetaDataUndefined'},
+
+// doesStringContainUpperCaseCharacter
+{Name: 'cdoesStringContainUpperCaseCharacter_validData', Actual: tst_con.cdoesStringContainUpperCaseCharacter_validData, Expected: 'doesStringContainUpperCaseCharacter_validData'},
+{Name: 'cdoesStringContainUpperCaseCharacter_inValidInputDataInteger', Actual: tst_con.cdoesStringContainUpperCaseCharacter_inValidInputDataInteger, Expected: 'doesStringContainUpperCaseCharacter_inValidInputDataInteger'},
+{Name: 'cdoesStringContainUpperCaseCharacter_inValidInputDataBoolean', Actual: tst_con.cdoesStringContainUpperCaseCharacter_inValidInputDataBoolean, Expected: 'doesStringContainUpperCaseCharacter_inValidInputDataBoolean'},
+{Name: 'cdoesStringContainUpperCaseCharacter_inValidInputDataUndefined', Actual: tst_con.cdoesStringContainUpperCaseCharacter_inValidInputDataUndefined, Expected: 'doesStringContainUpperCaseCharacter_inValidInputDataUndefined'},
+{Name: 'cdoesStringContainUpperCaseCharacter_inValidInputDataNaN', Actual: tst_con.cdoesStringContainUpperCaseCharacter_inValidInputDataNaN, Expected: 'doesStringContainUpperCaseCharacter_inValidInputDataNaN'},
+{Name: 'cdoesStringContainUpperCaseCharacter_inValidInputMetaDataUndefined', Actual: tst_con.cdoesStringContainUpperCaseCharacter_inValidInputMetaDataUndefined, Expected: 'doesStringContainUpperCaseCharacter_inValidInputMetaDataUndefined'},
+
+// doesStringContainLowerCaseCharacter
+{Name: 'cdoesStringContainLowerCaseCharacter_validData', Actual: tst_con.cdoesStringContainLowerCaseCharacter_validData, Expected: 'doesStringContainLowerCaseCharacter_validData'},
+{Name: 'cdoesStringContainLowerCaseCharacter_inValidInputDataInteger', Actual: tst_con.cdoesStringContainLowerCaseCharacter_inValidInputDataInteger, Expected: 'doesStringContainLowerCaseCharacter_inValidInputDataInteger'},
+{Name: 'cdoesStringContainLowerCaseCharacter_inValidInputDataBoolean', Actual: tst_con.cdoesStringContainLowerCaseCharacter_inValidInputDataBoolean, Expected: 'doesStringContainLowerCaseCharacter_inValidInputDataBoolean'},
+{Name: 'cdoesStringContainLowerCaseCharacter_inValidInputDataUndefined', Actual: tst_con.cdoesStringContainLowerCaseCharacter_inValidInputDataUndefined, Expected: 'doesStringContainLowerCaseCharacter_inValidInputDataUndefined'},
+{Name: 'cdoesStringContainLowerCaseCharacter_inValidInputDataNaN', Actual: tst_con.cdoesStringContainLowerCaseCharacter_inValidInputDataNaN, Expected: 'doesStringContainLowerCaseCharacter_inValidInputDataNaN'},
+{Name: 'cdoesStringContainLowerCaseCharacter_inValidInputMetaDataUndefined', Actual: tst_con.cdoesStringContainLowerCaseCharacter_inValidInputMetaDataUndefined, Expected: 'doesStringContainLowerCaseCharacter_inValidInputMetaDataUndefined'},
+
+// isFirstCharacterLowerCase
+{Name: 'cisFirstCharacterLowerCase_validData', Actual: tst_con.cisFirstCharacterLowerCase_validData, Expected: 'isFirstCharacterLowerCase_validData'},
+{Name: 'cisFirstCharacterLowerCase_inValidInputDataInteger', Actual: tst_con.cisFirstCharacterLowerCase_inValidInputDataInteger, Expected: 'isFirstCharacterLowerCase_inValidInputDataInteger'},
+{Name: 'cisFirstCharacterLowerCase_inValidInputDataBoolean', Actual: tst_con.cisFirstCharacterLowerCase_inValidInputDataBoolean, Expected: 'isFirstCharacterLowerCase_inValidInputDataBoolean'},
+{Name: 'cisFirstCharacterLowerCase_inValidInputDataUndefined', Actual: tst_con.cisFirstCharacterLowerCase_inValidInputDataUndefined, Expected: 'isFirstCharacterLowerCase_inValidInputDataUndefined'},
+{Name: 'cisFirstCharacterLowerCase_inValidInputDataNaN', Actual: tst_con.cisFirstCharacterLowerCase_inValidInputDataNaN, Expected: 'isFirstCharacterLowerCase_inValidInputDataNaN'},
+{Name: 'cisFirstCharacterLowerCase_inValidInputMetaDataUndefined', Actual: tst_con.cisFirstCharacterLowerCase_inValidInputMetaDataUndefined, Expected: 'isFirstCharacterLowerCase_inValidInputMetaDataUndefined'},
+
+// replaceCharacterAtIndexOfString
+{Name: 'creplaceCharacterAtIndexOfString_validData', Actual: tst_con.creplaceCharacterAtIndexOfString_validData, Expected: 'replaceCharacterAtIndexOfString_validData'},
+{Name: 'creplaceCharacterAtIndexOfString_inValidInputDataString', Actual: tst_con.creplaceCharacterAtIndexOfString_inValidInputDataString, Expected: 'replaceCharacterAtIndexOfString_inValidInputDataString'},
+{Name: 'creplaceCharacterAtIndexOfString_inValidInputDataInteger', Actual: tst_con.creplaceCharacterAtIndexOfString_inValidInputDataInteger, Expected: 'replaceCharacterAtIndexOfString_inValidInputDataInteger'},
+{Name: 'creplaceCharacterAtIndexOfString_inValidInputDataBoolean', Actual: tst_con.creplaceCharacterAtIndexOfString_inValidInputDataBoolean, Expected: 'replaceCharacterAtIndexOfString_inValidInputDataBoolean'},
+{Name: 'creplaceCharacterAtIndexOfString_inValidinputMetaDataInteger', Actual: tst_con.creplaceCharacterAtIndexOfString_inValidinputMetaDataInteger, Expected: 'replaceCharacterAtIndexOfString_inValidinputMetaDataInteger'},
+{Name: 'creplaceCharacterAtIndexOfString_inValidinputMetaDataBoolean', Actual: tst_con.creplaceCharacterAtIndexOfString_inValidinputMetaDataBoolean, Expected: 'replaceCharacterAtIndexOfString_inValidinputMetaDataBoolean'},
+{Name: 'creplaceCharacterAtIndexOfString_inValidInputDataUndefined', Actual: tst_con.creplaceCharacterAtIndexOfString_inValidInputDataUndefined, Expected: 'replaceCharacterAtIndexOfString_inValidInputDataUndefined'},
+{Name: 'creplaceCharacterAtIndexOfString_inValidInputDataNaN', Actual: tst_con.creplaceCharacterAtIndexOfString_inValidInputDataNaN, Expected: 'replaceCharacterAtIndexOfString_inValidInputDataNaN'},
+{Name: 'creplaceCharacterAtIndexOfString_inValidinputMetaDataUndefined', Actual: tst_con.creplaceCharacterAtIndexOfString_inValidinputMetaDataUndefined, Expected: 'replaceCharacterAtIndexOfString_inValidinputMetaDataUndefined'},
+{Name: 'creplaceCharacterAtIndexOfString_inValidinputMetaDataNaN', Actual: tst_con.creplaceCharacterAtIndexOfString_inValidinputMetaDataNaN, Expected: 'replaceCharacterAtIndexOfString_inValidinputMetaDataNaN'},
 
 /* commandStringParsing */
 
