@@ -27,19 +27,19 @@ const rootPathConstants = rootPathArray[1];
 const rootPathHayPlugins = rootPathArray[2];
 
 export const ctestConstant = wrd.ctest + wrd.cConstant; // testConstant
-export const cctestContant = bas.cc + ctestConstant; // ctestConstant
+export const cctestConstant = bas.cc + ctestConstant; // ctestConstant
 export const cctv = bas.ctc + bas.cv; // ctv
 export const cTestConstantsValidation = wrd.cTest + sys.cConstantsValidation; // TestConstantsValidation
 export const ctestConstantFileJs = wrd.ctest + bas.cDot + wrd.cconstant + bas.cDot + wrd.cfile + bas.cDot + bas.cjs; // test.constant.file.js
 
 // Expected data
 export const cconstantValidationForTestConstant = {
-    [wrd.cName]: cctestContant,
+    [wrd.cName]: cctestConstant,
     [wrd.cActual]: ctestConstant,
     [wrd.cExpected]: ctestConstant
 }; // {Name: 'ctestConstant', Actual: tcv.ctestConstant, Expected: 'testConstant'}
 
-export const cconstantValidationForTestConstantAsString = bas.cOpenCurlyBrace + wrd.cName + bas.cColon + bas.cSpace + bas.cSingleQuote + cctestContant + bas.cSingleQuote + bas.cComa + bas.cSpace + wrd.cActual + bas.cColon + bas.cSpace + cctv + bas.cDot + cctestContant + bas.cComa + bas.cSpace + wrd.cExpected + bas.cColon + bas.cSpace + bas.cSingleQuote + ctestConstant + bas.cSingleQuote + bas.cCloseCurlyBrace; // {"Name":"ctestConstant","Actual":"testConstant","Expected":"testConstant"}
+export const cconstantValidationForTestConstantAsString = bas.cOpenCurlyBrace + wrd.cName + bas.cColon + bas.cSpace + bas.cSingleQuote + cctestConstant + bas.cSingleQuote + bas.cComa + bas.cSpace + wrd.cActual + bas.cColon + bas.cSpace + cctv + bas.cDot + cctestConstant + bas.cComa + bas.cSpace + wrd.cExpected + bas.cColon + bas.cSpace + bas.cSingleQuote + ctestConstant + bas.cSingleQuote + bas.cCloseCurlyBrace; // {"Name":"ctestConstant","Actual":"testConstant","Expected":"testConstant"}
 
 // Paths
 export const cpathToTestConstantFile = rootPathAsync + bas.cBackSlash + wrd.ctest + bas.cBackSlash + wrd.cunit + wrd.cTest + bas.cBackSlash + wrd.ctest + wrd.cData + bas.cBackSlash + wrd.cresources + bas.cBackSlash + wrd.cconstants + wrd.cValidation + bas.cBackSlash + ctestConstantFileJs; // C:\\haystacks-async\\test\\unitTest\\testData\\resources\\constantsValidation\\test.constant.file.js
@@ -66,10 +66,36 @@ export const cconstantsValidationForTestFile = {
             [cTestConstantsValidation]: wrd.cTest + bas.cSpace + wrd.cConstants + bas.cSpace + wrd.cPhase + bas.cSpace + num.c2 + bas.cSpace + wrd.cValidation
         },
         [cTestConstantsValidation]: [{
-            [wrd.cName]: cctestContant,
+            [wrd.cName]: cctestConstant,
             [wrd.cActual]: ctestConstant,
             [wrd.cExpected]: ctestConstant
         }]
     }
 };
+
+export const cconstantsValidationWithoutFramework = {
+    [sys.cConstantsShortNames]: {
+            [cTestConstantsValidation]: cctv
+        },
+        [sys.cConstantsFileNames]: {
+            [cTestConstantsValidation]: ctestConstantFileJs
+        },
+        [sys.cConstantsPrefix]: {
+            [cTestConstantsValidation]: cctv + bas.cDot
+        },
+        [sys.cConstantsFilePaths]: {
+            [cTestConstantsValidation]: cpathToTestConstantFile
+        },
+        [sys.cConstantsPhase1ValidationMessages]: {
+            [cTestConstantsValidation]: wrd.cTest + bas.cSpace + wrd.cConstants + bas.cSpace + wrd.cPhase + bas.cSpace + num.c1 + bas.cSpace + wrd.cValidation
+        },
+        [sys.cConstantsPhase2ValidationMessages]: {
+            [cTestConstantsValidation]: wrd.cTest + bas.cSpace + wrd.cConstants + bas.cSpace + wrd.cPhase + bas.cSpace + num.c2 + bas.cSpace + wrd.cValidation
+        },
+        [cTestConstantsValidation]: [{
+            [wrd.cName]: cctestConstant,
+            [wrd.cActual]: ctestConstant,
+            [wrd.cExpected]: ctestConstant
+        }]
+}
 

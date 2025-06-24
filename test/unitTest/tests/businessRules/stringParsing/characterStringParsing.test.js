@@ -1875,12 +1875,12 @@ describe(tst_con.creplaceCharacterAtIndexOfString, () => {
     });
 
     /**
-     * @function replaceCharacterAtIndexOfString_inValidinputMetaDataInteger
+     * @function replaceCharacterAtIndexOfString_inValidInputMetaDataInteger
      * @description Tests the characterStringParsing function replaceCharacterAtIndexOfString with a invalid data integer.
      * @author Vlad Sorokin
      * @date 2025/06/04
      */
-    test(tst_con.creplaceCharacterAtIndexOfString_inValidinputMetaDataInteger, async () => {
+    test(tst_con.creplaceCharacterAtIndexOfString_inValidInputMetaDataInteger, async () => {
         // Arrange
         D[sys.cpluginsLoaded] = {};
         D[cfg.cpluginRegistry] = {};
@@ -1900,12 +1900,12 @@ describe(tst_con.creplaceCharacterAtIndexOfString, () => {
     });
 
     /**
-     * @function replaceCharacterAtIndexOfString_inValidinputMetaDataBoolean
+     * @function replaceCharacterAtIndexOfString_inValidInputMetaDataBoolean
      * @description Tests the characterStringParsing function replaceCharacterAtIndexOfString with a invalid data boolean.
      * @author Vlad Sorokin
      * @date 2025/06/04
      */
-    test(tst_con.creplaceCharacterAtIndexOfString_inValidinputMetaDataBoolean, async () => {
+    test(tst_con.creplaceCharacterAtIndexOfString_inValidInputMetaDataBoolean, async () => {
         // Arrange
         D[sys.cpluginsLoaded] = {};
         D[cfg.cpluginRegistry] = {};
@@ -1977,12 +1977,12 @@ describe(tst_con.creplaceCharacterAtIndexOfString, () => {
     });
 
     /**
-     * @function replaceCharacterAtIndexOfString_inValidinputMetaDataUndefined
+     * @function replaceCharacterAtIndexOfString_inValidInputMetaDataUndefined
      * @description Tests the characterStringParsing function replaceCharacterAtIndexOfString with a invalid data undefined.
      * @author Vlad Sorokin
      * @date 2025/06/04
      */
-    test(tst_con.creplaceCharacterAtIndexOfString_inValidinputMetaDataUndefined, async () => {
+    test(tst_con.creplaceCharacterAtIndexOfString_inValidInputMetaDataUndefined, async () => {
         // Arrange
         D[sys.cpluginsLoaded] = {};
         D[cfg.cpluginRegistry] = {};
@@ -2002,12 +2002,12 @@ describe(tst_con.creplaceCharacterAtIndexOfString, () => {
     });
 
     /**
-     * @function replaceCharacterAtIndexOfString_inValidinputMetaDataNaN
+     * @function replaceCharacterAtIndexOfString_inValidInputMetaDataNaN
      * @description Tests the characterStringParsing function replaceCharacterAtIndexOfString with a invalid data NaN.
      * @author Vlad Sorokin
      * @date 2025/06/04
      */
-    test(tst_con.creplaceCharacterAtIndexOfString_inValidinputMetaDataNaN, async () => {
+    test(tst_con.creplaceCharacterAtIndexOfString_inValidInputMetaDataNaN, async () => {
         // Arrange
         D[sys.cpluginsLoaded] = {};
         D[cfg.cpluginRegistry] = {};

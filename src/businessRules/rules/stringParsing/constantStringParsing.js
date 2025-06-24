@@ -270,29 +270,37 @@ async function validateConstantsDataValidationLineItemName(inputData, inputMetaD
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = false;
-  if (inputData && inputMetaData) {
-    let constantNamespaceObject = await getConstantsValidationNamespaceObject(inputMetaData, '');
-    // constantNamespaceObject is:
-    // await loggers.consoleLog(namespacePrefix + functionName, msg.cconstantNamespaceObjectIs + JSON.stringify(constantNamespaceObject));
-    if (constantNamespaceObject) {
-      for (const element in constantNamespaceObject) {
-        // element is:
-        await loggers.consoleLog(namespacePrefix + functionName, msg.celementIs + element);
-        let validationLineItem = constantNamespaceObject[element];
-        // validationLineItem is:
-        await loggers.consoleLog(namespacePrefix + functionName, msg.cvalidationLineItemIs + JSON.stringify(validationLineItem));
-        if (validationLineItem) {
-          if (inputData === validationLineItem.Name) {
-            returnData = true;
-            break;
-          } // End-if (inputData === validationLineItem.Name)
-        } // End-if (validationLineItem)
-      } // End-for (const element of constantNamespaceObject)
-    } else {
-      // ERROR: Unable to find the constant namespace among all the constants validation data:
-      console.log(msg.cvalidateConstantsDataValidationLineItemNameErrorMessage1 + inputData);
+  if (inputData && (typeof inputData === wrd.cstring && inputData.length > 0)) {
+    if (inputMetaData && (typeof inputMetaData === wrd.cstring && inputMetaData.length > 0)) {
+      let constantNamespaceObject = await getConstantsValidationNamespaceObject(inputMetaData, '');
+      // constantNamespaceObject is:
+      // await loggers.consoleLog(namespacePrefix + functionName, msg.cconstantNamespaceObjectIs + JSON.stringify(constantNamespaceObject));
+      if (constantNamespaceObject) {
+        for (const element in constantNamespaceObject) {
+          // element is:
+          await loggers.consoleLog(namespacePrefix + functionName, msg.celementIs + element);
+          let validationLineItem = constantNamespaceObject[element];
+          // validationLineItem is:
+          await loggers.consoleLog(namespacePrefix + functionName, msg.cvalidationLineItemIs + JSON.stringify(validationLineItem));
+          if (validationLineItem) {
+            if (inputData === validationLineItem.Name) {
+              returnData = true;
+              break;
+            } // End-if (inputData === validationLineItem.Name)
+          } // End-if (validationLineItem)
+        } // End-for (const element of constantNamespaceObject)
+      } else {
+        // ERROR: Unable to find the constant namespace among all the constants validation data:
+        console.log(msg.cvalidateConstantsDataValidationLineItemNameErrorMessage1 + inputData);
+      }
+    } else { // End-if (inputMetaData)
+      // ERROR: Invalid input, inputMetaData is:  --- at 
+      console.log(msg.cErrorInvalidInputMetaDataMessage + inputMetaData + msg.cSpaceDashDashDashSpaceAtSpace + baseFileName + bas.cDot + functionName);
     }
-  } // End-if (inputData && inputMetaData)
+  } else { // End-if (inputData)
+    // ERROR: Invalid input, inputData is:  --- at 
+    console.log(msg.cErrorInvalidInputDataMessage + inputData + msg.cSpaceDashDashDashSpaceAtSpace + baseFileName + bas.cDot + functionName);
+  }
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
@@ -359,7 +367,7 @@ async function getConstantsValidationNamespaceObject(inputData, inputMetaData) {
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = false;
-  if (inputData) {
+  if (inputData && (typeof inputData === wrd.cstring && inputData.length > 0)) {
     if (await doesConstantNamespaceExist(inputData, D[sys.cConstantsValidationData][wrd.cFramework]) === true) {
       returnData = D[sys.cConstantsValidationData][wrd.cFramework][inputData];
     } else if (await doesConstantNamespaceExist(inputData, D[sys.cConstantsValidationData][wrd.cApplication]) === true) {
@@ -379,7 +387,10 @@ async function getConstantsValidationNamespaceObject(inputData, inputMetaData) {
         } // End-for (const pluginNamespace of D[sys.cConstantsValidationData][wrd.cPlugins])
       } // End-if (D[sys.cConstantsValidationData][wrd.cPlugins])
     }
-  } // End-if (inputData)
+  } else { // End-if (inputData)
+    // ERROR: Invalid input, inputData is:  --- at 
+    console.log(msg.cErrorInvalidInputDataMessage + inputData + msg.cSpaceDashDashDashSpaceAtSpace + baseFileName + bas.cDot + functionName);
+  }
   // await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
@@ -400,21 +411,29 @@ async function doesConstantNamespaceExist(inputData, inputMetaData) {
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
   let returnData = false;
-  if (inputData && inputMetaData) {
-    for (const key in inputMetaData) {
-      // key is:
-      await loggers.consoleLog(namespacePrefix + functionName, msg.ckeyIs + key);
-      let element1 = inputMetaData[key];
-      // element1 is:
-      await loggers.consoleLog(namespacePrefix + functionName, msg.celement1Is + JSON.stringify(element1));
-      if (inputData === key) {
-        returnData = true;
-        // Found a matching namespace constant.
-        await loggers.consoleLog(namespacePrefix + functionName, msg.cFoundMatchingNamespaceConstant);
-        break;
-      } // End-if (inputData === key)
-    } // End-for (const key in inputMetaData)
-  } // End-if (inputData)
+  if (inputData && (typeof inputData === wrd.cstring && inputData.length > 0)) {
+    if (inputMetaData && typeof inputMetaData === wrd.cobject) {
+      for (const key in inputMetaData) {
+        // key is:
+        await loggers.consoleLog(namespacePrefix + functionName, msg.ckeyIs + key);
+        let element1 = inputMetaData[key];
+        // element1 is:
+        await loggers.consoleLog(namespacePrefix + functionName, msg.celement1Is + JSON.stringify(element1));
+        if (inputData === key) {
+          returnData = true;
+          // Found a matching namespace constant.
+          await loggers.consoleLog(namespacePrefix + functionName, msg.cFoundMatchingNamespaceConstant);
+          break;
+        } // End-if (inputData === key)
+      } // End-for (const key in inputMetaData)
+    } else { // End-if (inputMetaData)
+      // ERROR: Invalid input, inputMetaData is:  --- at 
+      console.log(msg.cErrorInvalidInputMetaDataMessage + inputMetaData + msg.cSpaceDashDashDashSpaceAtSpace + baseFileName + bas.cDot + functionName);
+    }
+  } else { // End-if (inputData)
+    // ERROR: Invalid input, inputData is:  --- at 
+    console.log(msg.cErrorInvalidInputDataMessage + inputData + msg.cSpaceDashDashDashSpaceAtSpace + baseFileName + bas.cDot + functionName);
+  }
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
@@ -436,7 +455,7 @@ async function doesConstantExist(inputData, inputMetaData) {
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = false;
-  if (inputData) {
+  if (inputData && (typeof inputData === wrd.cstring && inputData.length > 0)) {
     let frameworkConstantsValidationData = D[sys.cConstantsValidationData][wrd.cFramework];
     let foundFrameworkConstantMatch = await doesConstantExistInConstantLibraryObject(inputData, frameworkConstantsValidationData);
     if (foundFrameworkConstantMatch === false) {
@@ -467,7 +486,10 @@ async function doesConstantExist(inputData, inputMetaData) {
       await loggers.consoleLog(namespacePrefix + functionName, msg.cdoesConstantExistMessage02);
       returnData = true;
     }
-  } // End-if (inputData)
+  } else { // End-if (inputData)
+    // ERROR: Invalid input, inputData is:  --- at 
+    console.log(msg.cErrorInvalidInputDataMessage + inputData + msg.cSpaceDashDashDashSpaceAtSpace + baseFileName + bas.cDot + functionName);
+  }
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
@@ -490,22 +512,30 @@ async function doesConstantExistInConstantLibraryObject(inputData, inputMetaData
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
   let returnData = false;
-  if (inputData && inputMetaData) {
-    for (const key in inputMetaData) {
-      if (key !== sys.cConstantsShortNames &&
-      key !== sys.cConstantsFileNames &&
-      key !== sys.cConstantsPrefix &&
-      key !== sys.cConstantsFilePaths &&
-      key !== sys.cConstantsPhase1ValidationMessages &&
-      key !== sys.cConstantsPhase2ValidationMessages) {
-        let constantValidationDataLibraryObject = inputMetaData[key];
-        if (await doesConstantExistInConstantNamespaceObject(inputData, constantValidationDataLibraryObject) === true) {
-          returnData = true;
-          break;
-        }
-      } // End-if (key !== sys.cConstantsShortNames && ...)
-    } // End-for (const key in inputMetaData)
-  } // End-if (inputData && inputMetaData)
+  if (inputData && (typeof inputData === wrd.cstring && inputData.length > 0)) {
+    if (inputMetaData && typeof inputMetaData === wrd.cobject) {
+      for (const key in inputMetaData) {
+        if (key !== sys.cConstantsShortNames &&
+        key !== sys.cConstantsFileNames &&
+        key !== sys.cConstantsPrefix &&
+        key !== sys.cConstantsFilePaths &&
+        key !== sys.cConstantsPhase1ValidationMessages &&
+        key !== sys.cConstantsPhase2ValidationMessages) {
+          let constantValidationDataLibraryObject = inputMetaData[key];
+          if (await doesConstantExistInConstantNamespaceObject(inputData, constantValidationDataLibraryObject) === true) {
+            returnData = true;
+            break;
+          }
+        } // End-if (key !== sys.cConstantsShortNames && ...)
+      } // End-for (const key in inputMetaData)
+    } else { // End-if (inputMetaData)
+      // ERROR: Invalid input, inputMetaData is:  --- at 
+      console.log(msg.cErrorInvalidInputMetaDataMessage + inputMetaData + msg.cSpaceDashDashDashSpaceAtSpace + baseFileName + bas.cDot + functionName);
+    }
+  } else { // End-if (inputData)
+    // ERROR: Invalid input, inputData is:  --- at 
+    console.log(msg.cErrorInvalidInputDataMessage + inputData + msg.cSpaceDashDashDashSpaceAtSpace + baseFileName + bas.cDot + functionName);
+  }
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
@@ -517,7 +547,7 @@ async function doesConstantExistInConstantLibraryObject(inputData, inputMetaData
  * Walks through all of the constants validation parent collection objects,
  * filters out all of the meta-data entries and ensures that searches are only performed on actual constants validation data values.
  * This function provides a re-usability function so we don't need to have repeated code in the getConstantType function.
- * @param {array<string,boolean>} inputData An array that contains The value that should have it's matching type returned,
+ * @param {array<string,boolean>} inputData An array that contains the value that should have it's matching type returned,
  * and a boolean to indicate if the function should or should not continue searching for additional matches after the first match is found.
  * inputData[0] = The value of the constant that should be searched for to find a match and return the type.
  * inputData[1] = True or False value to indicate if the search should continue after finding the first match or not.
@@ -532,29 +562,37 @@ async function getConstantTypeInConstantLibraryObject(inputData, inputMetaData) 
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
   let returnData = false;
-  if (inputData && inputMetaData) {
-    for (const key in inputMetaData) {
-      if (key !== sys.cConstantsShortNames &&
-        key !== sys.cConstantsFileNames &&
-        key !== sys.cConstantsPrefix &&
-        key !== sys.cConstantsFilePaths &&
-        key !== sys.cConstantsPhase1ValidationMessages &&
-        key !== sys.cConstantsPhase2ValidationMessages) {
-          let constantValidationDataLibraryObject = inputMetaData[key];
-          if (await doesConstantExistInConstantNamespaceObject(inputData[0], constantValidationDataLibraryObject) === true) {
-            if (returnData === false) {
-              returnData = [];
-              returnData[0] = key;
-            } else {
-              returnData.push(key);
-            }
-            if (inputData[1] === false) {
-              break;
-            }
-          } // End-if (await doesConstantExistInConstantNamespaceObject(inputData[0], constantValidationDataLibraryObject) === true)
-        } // End-if (key !== sys.cConstantsShortNames && ...)
-    } // End-for (const key in inputMetaData)
-  } // End-if (inputData && inputMetaData)
+  if (Array.isArray(inputData) && typeof inputData[0] === wrd.cstring && typeof inputData[1] === wrd.cboolean) {
+    if (inputMetaData && typeof inputMetaData === wrd.cobject) {
+      for (const key in inputMetaData) {
+        if (key !== sys.cConstantsShortNames &&
+            key !== sys.cConstantsFileNames &&
+            key !== sys.cConstantsPrefix &&
+            key !== sys.cConstantsFilePaths &&
+            key !== sys.cConstantsPhase1ValidationMessages &&
+            key !== sys.cConstantsPhase2ValidationMessages) {
+              let constantValidationDataLibraryObject = inputMetaData[key];
+              if (await doesConstantExistInConstantNamespaceObject(inputData[0], constantValidationDataLibraryObject) === true) {
+                if (returnData === false) {
+                  returnData = [];
+                  returnData[0] = key;
+                } else {
+                  returnData.push(key);
+                }
+                if (inputData[1] === false) {
+                  break;
+                }
+              } // End-if (await doesConstantExistInConstantNamespaceObject(inputData[0], constantValidationDataLibraryObject) === true)
+          } // End-if (key !== sys.cConstantsShortNames && ...)
+      } // End-for (const key in inputMetaData)
+    } else { // End-if (inputMetaData)
+      // ERROR: Invalid input, inputMetaData is:  --- at 
+      console.log(msg.cErrorInvalidInputMetaDataMessage + inputMetaData + msg.cSpaceDashDashDashSpaceAtSpace + baseFileName + bas.cDot + functionName);
+    }
+  } else { // End-if (inputData)
+    // ERROR: Invalid input, inputData is:  --- at 
+    console.log(msg.cErrorInvalidInputDataMessage + inputData + msg.cSpaceDashDashDashSpaceAtSpace + baseFileName + bas.cDot + functionName);
+  }
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
@@ -578,7 +616,8 @@ async function getConstantNameInConstantLibraryObject(inputData, inputMetaData) 
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
   let returnData = false;
-  if (inputData && inputMetaData) {
+  if (inputData && (typeof inputData === wrd.cstring && inputData.length > 0)) {
+    if (inputMetaData && typeof inputMetaData === wrd.cobject) {
     for (const key in inputMetaData) {
       if (key !== sys.cConstantsShortNames &&
       key !== sys.cConstantsFileNames &&
@@ -594,7 +633,14 @@ async function getConstantNameInConstantLibraryObject(inputData, inputMetaData) 
         }
       } // End-if (key !== sys.cConstantsShortNames && ...)
     } // End-for (const key in inputMetaData)
-  } // End-if (inputData && inputMetaData)
+    } else { // End-if (inputMetaData)
+      // ERROR: Invalid input, inputMetaData is:  --- at 
+      console.log(msg.cErrorInvalidInputMetaDataMessage + inputMetaData + msg.cSpaceDashDashDashSpaceAtSpace + baseFileName + bas.cDot + functionName);
+    }
+  } else { // End-if (inputData)
+    // ERROR: Invalid input, inputData is:  --- at 
+    console.log(msg.cErrorInvalidInputDataMessage + inputData + msg.cSpaceDashDashDashSpaceAtSpace + baseFileName + bas.cDot + functionName);
+  }
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
@@ -618,23 +664,31 @@ async function getConstantActualValueInConstantLibraryObject(inputData, inputMet
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
   let returnData = false;
-  if (inputData && inputMetaData) {
-    for (const key in inputMetaData) {
-      if (key !== sys.cConstantsShortNames &&
-      key !== sys.cConstantsFileNames &&
-      key !== sys.cConstantsPrefix &&
-      key !== sys.cConstantsFilePaths &&
-      key !== sys.cConstantsPhase1ValidationMessages &&
-      key !== sys.cConstantsPhase2ValidationMessages) {
-        let constantValidationDataLibraryObject = inputMetaData[key];
-        let constantName = await getConstantActualValueInConstantNamespaceObject(inputData, constantValidationDataLibraryObject);
-        if (constantName) {
-          returnData = constantName;
-          break;
-        }
-      } // End-if (key !== sys.cConstantsShortNames && ...)
-    } // End-for (const key in inputMetaData)
-  } // End-if (inputData && inputMetaData)
+  if (inputData && (typeof inputData === wrd.cstring && inputData.length > 0)) {
+    if (inputMetaData && typeof inputMetaData === wrd.cobject) {
+      for (const key in inputMetaData) {
+        if (key !== sys.cConstantsShortNames &&
+        key !== sys.cConstantsFileNames &&
+        key !== sys.cConstantsPrefix &&
+        key !== sys.cConstantsFilePaths &&
+        key !== sys.cConstantsPhase1ValidationMessages &&
+        key !== sys.cConstantsPhase2ValidationMessages) {
+          let constantValidationDataLibraryObject = inputMetaData[key];
+          let constantName = await getConstantActualValueInConstantNamespaceObject(inputData, constantValidationDataLibraryObject);
+          if (constantName) {
+            returnData = constantName;
+            break;
+          }
+        } // End-if (key !== sys.cConstantsShortNames && ...)
+      } // End-for (const key in inputMetaData)
+    } else { // End-if (inputMetaData)
+      // ERROR: Invalid input, inputMetaData is:  --- at 
+      console.log(msg.cErrorInvalidInputMetaDataMessage + inputMetaData + msg.cSpaceDashDashDashSpaceAtSpace + baseFileName + bas.cDot + functionName);
+    }
+  } else { // End-if (inputData)
+    // ERROR: Invalid input, inputData is:  --- at 
+    console.log(msg.cErrorInvalidInputDataMessage + inputData + msg.cSpaceDashDashDashSpaceAtSpace + baseFileName + bas.cDot + functionName);
+  }
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
@@ -645,7 +699,7 @@ async function getConstantActualValueInConstantLibraryObject(inputData, inputMet
  * @description Walks through all of the constants validation data inside the specified input data structure.
  * Checks to see if any of the expected values match the string that is passed in.
  * @param {string} inputData The value that should be looked for in all the constants data that is provided also as input.
- * @param {object} inputMetaData The constants validation data structure that should be searched.
+ * @param {array<object>} inputMetaData The constants validation data structure that should be searched.
  * @return {boolean} True or False to indicate if a matching constant definition was found or not.
  * @author Seth Hollingsead
  * @date 2022/12/21
@@ -656,19 +710,27 @@ async function doesConstantExistInConstantNamespaceObject(inputData, inputMetaDa
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
   let returnData = false;
-  if (inputData && inputMetaData) {
-    for (const index in inputMetaData) {
-      // index is:
-      await loggers.consoleLog(namespacePrefix + functionName, msg.cindexIs + index);
-      let constantValidationObject = inputMetaData[index];
-      // constantValidationObject is:
-      await loggers.consoleLog(namespacePrefix + functionName, msg.cconstantValidationObjectIs + JSON.stringify(constantValidationObject));
-      if (inputData === constantValidationObject.Actual || inputData === constantValidationObject.Name) {
-        returnData = true;
-        break;
-      } // End-if (inputData === constantValidationObject.Actual || inputData === constantValidationObject.Name)
-    } // End-for (const index in inputMetaData)
-  } // End-if (inputData && inputMetaData)
+  if (inputData && (typeof inputData === wrd.cstring && inputData.length > 0)) {
+    if (Array.isArray(inputMetaData) && inputMetaData.length === 1 && typeof inputMetaData[0] === wrd.cobject && inputMetaData[0] !== null) {
+      for (const index in inputMetaData) {
+        // index is:
+        await loggers.consoleLog(namespacePrefix + functionName, msg.cindexIs + index);
+        let constantValidationObject = inputMetaData[index];
+        // constantValidationObject is:
+        await loggers.consoleLog(namespacePrefix + functionName, msg.cconstantValidationObjectIs + JSON.stringify(constantValidationObject));
+        if (inputData === constantValidationObject.Actual || inputData === constantValidationObject.Name) {
+          returnData = true;
+          break;
+        } // End-if (inputData === constantValidationObject.Actual || inputData === constantValidationObject.Name)
+      } // End-for (const index in inputMetaData)
+    } else { // End-if (inputMetaData)
+      // ERROR: Invalid input, inputMetaData is:  --- at 
+      console.log(msg.cErrorInvalidInputMetaDataMessage + inputMetaData + msg.cSpaceDashDashDashSpaceAtSpace + baseFileName + bas.cDot + functionName);
+    }
+  } else { // End-if (inputData)
+    // ERROR: Invalid input, inputData is:  --- at 
+    console.log(msg.cErrorInvalidInputDataMessage + inputData + msg.cSpaceDashDashDashSpaceAtSpace + baseFileName + bas.cDot + functionName);
+  }
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
@@ -679,7 +741,7 @@ async function doesConstantExistInConstantNamespaceObject(inputData, inputMetaDa
  * @description Walks through all of the constants validation data inside the specified input data structure.
  * Checks to see if any of the expected values match the string that is passed in and returns the name of a match if/when it's found.
  * @param {string} inputData The value that should be looked for in all the constants data that is provided also as input.
- * @param {object} inputMetaData The constants validation data structure that should be searched.
+ * @param {array<object>} inputMetaData The constants validation data structure that should be searched.
  * @return {string|boolean} The name of the constant or False if it is not found.
  * @author Seth Hollingsead
  * @date 2022/12/21
@@ -690,19 +752,27 @@ async function getConstantNameInConstantNamespaceObject(inputData, inputMetaData
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
   let returnData = false;
-  if (inputData && inputMetaData) {
-    for (const index in inputMetaData) {
-      // index is:
-      await loggers.consoleLog(namespacePrefix + functionName, msg.cindexIs + index);
-      let constantValidationObject = inputMetaData[index];
-      // constantValidationObject is:
-      await loggers.consoleLog(namespacePrefix + functionName, msg.cconstantValidationObjectIs + JSON.stringify(constantValidationObject));
-      if (inputData === constantValidationObject.Actual || inputData === constantValidationObject.Name) {
-        returnData = constantValidationObject.Name;
-        break;
-      } // End-if (inputData === constantValidationObject.Actual || inputData === constantValidationObject.Name)
-    } // End-for (const index in inputMetaData)
-  } // End-if (inputData && inputMetaData)
+  if (inputData && (typeof inputData === wrd.cstring && inputData.length > 0)) {
+    if (Array.isArray(inputMetaData) && inputMetaData.length === 1 && typeof inputMetaData[0] === wrd.cobject && inputMetaData[0] !== null) {
+      for (const index in inputMetaData) {
+        // index is:
+        await loggers.consoleLog(namespacePrefix + functionName, msg.cindexIs + index);
+        let constantValidationObject = inputMetaData[index];
+        // constantValidationObject is:
+        await loggers.consoleLog(namespacePrefix + functionName, msg.cconstantValidationObjectIs + JSON.stringify(constantValidationObject));
+        if (inputData === constantValidationObject.Actual || inputData === constantValidationObject.Name) {
+          returnData = constantValidationObject.Name;
+          break;
+        } // End-if (inputData === constantValidationObject.Actual || inputData === constantValidationObject.Name)
+      } // End-for (const index in inputMetaData)
+    } else { // End-if (inputMetaData)
+      // ERROR: Invalid input, inputMetaData is:  --- at 
+      console.log(msg.cErrorInvalidInputMetaDataMessage + inputMetaData + msg.cSpaceDashDashDashSpaceAtSpace + baseFileName + bas.cDot + functionName);
+    }
+  } else { // End-if (inputData)
+    // ERROR: Invalid input, inputData is:  --- at 
+    console.log(msg.cErrorInvalidInputDataMessage + inputData + msg.cSpaceDashDashDashSpaceAtSpace + baseFileName + bas.cDot + functionName);
+  }
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
@@ -713,7 +783,7 @@ async function getConstantNameInConstantNamespaceObject(inputData, inputMetaData
  * @description Walks through all of the constants validation data inside the specified input data structure.
  * Checks to see if any of the expected values match the string that is passed in and returns the actual value of a match if/when it's found.
  * @param {string} inputData The value that should be looked for in all the constants data that is provided also as input.
- * @param {object} inputMetaData The constants validation data structure that should be searched.
+ * @param {array<object>} inputMetaData The constants validation data structure that should be searched.
  * @return {string|boolean} The actual value of the constant or False if it is not found.
  * @author Seth Hollingsead
  * @date 2022/12/21
@@ -724,7 +794,8 @@ async function getConstantActualValueInConstantNamespaceObject(inputData, inputM
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + JSON.stringify(inputMetaData));
   let returnData = false;
-  if (inputData && inputMetaData) {
+  if (inputData && (typeof inputData === wrd.cstring && inputData.length > 0)) {
+    if (Array.isArray(inputMetaData) && inputMetaData.length === 1 && typeof inputMetaData[0] === wrd.cobject && inputMetaData[0] !== null) {
     for (const index in inputMetaData) {
       // index is:
       await loggers.consoleLog(namespacePrefix + functionName, msg.cindexIs + index);
@@ -736,7 +807,14 @@ async function getConstantActualValueInConstantNamespaceObject(inputData, inputM
         break;
       } // End-if (inputData === constantValidationObject.Actual || inputData === constantValidationObject.Name)
     } // End-for (const index in inputMetaData)
-  } // End-if (inputData && inputMetaData)
+    } else { // End-if (inputMetaData)
+      // ERROR: Invalid input, inputMetaData is:  --- at 
+      console.log(msg.cErrorInvalidInputMetaDataMessage + inputMetaData + msg.cSpaceDashDashDashSpaceAtSpace + baseFileName + bas.cDot + functionName);
+    }
+  } else { // End-if (inputData)
+    // ERROR: Invalid input, inputData is:  --- at 
+    console.log(msg.cErrorInvalidInputDataMessage + inputData + msg.cSpaceDashDashDashSpaceAtSpace + baseFileName + bas.cDot + functionName);
+  }
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;

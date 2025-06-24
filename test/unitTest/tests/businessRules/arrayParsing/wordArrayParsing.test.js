@@ -720,12 +720,12 @@ describe(tst_con.cdoesArrayContainLowerCaseConsolidatedString, () => {
     });
 
     /**
-     * @function doesArrayContainLowerCaseConsolidatedString_inValidinputMetaDataString
+     * @function doesArrayContainLowerCaseConsolidatedString_inValidInputMetaDataString
      * @description Tests the wordArrayParsing function doesArrayContainLowerCaseConsolidatedString with a invalid data string.
      * @author Vlad Sorokin
      * @date 2025/06/03
      */
-    test(tst_con.cdoesArrayContainLowerCaseConsolidatedString_inValidinputMetaDataString, async () => {
+    test(tst_con.cdoesArrayContainLowerCaseConsolidatedString_inValidInputMetaDataString, async () => {
         // Arrange
         D[sys.cpluginsLoaded] = {};
         D[cfg.cpluginRegistry] = {};
@@ -796,12 +796,12 @@ describe(tst_con.cdoesArrayContainLowerCaseConsolidatedString, () => {
     });
 
     /**
-     * @function doesArrayContainLowerCaseConsolidatedString_inValidinputMetaDataInteger
+     * @function doesArrayContainLowerCaseConsolidatedString_inValidInputMetaDataInteger
      * @description Tests the wordArrayParsing function doesArrayContainLowerCaseConsolidatedString with a invalid data integer.
      * @author Vlad Sorokin
      * @date 2025/06/03
      */
-    test(tst_con.cdoesArrayContainLowerCaseConsolidatedString_inValidinputMetaDataInteger, async () => {
+    test(tst_con.cdoesArrayContainLowerCaseConsolidatedString_inValidInputMetaDataInteger, async () => {
         // Arrange
         D[sys.cpluginsLoaded] = {};
         D[cfg.cpluginRegistry] = {};
@@ -822,12 +822,12 @@ describe(tst_con.cdoesArrayContainLowerCaseConsolidatedString, () => {
     });
 
     /**
-     * @function doesArrayContainLowerCaseConsolidatedString_inValidinputMetaDataBoolean
+     * @function doesArrayContainLowerCaseConsolidatedString_inValidInputMetaDataBoolean
      * @description Tests the wordArrayParsing function doesArrayContainLowerCaseConsolidatedString with a invalid data boolean.
      * @author Vlad Sorokin
      * @date 2025/06/03
      */
-    test(tst_con.cdoesArrayContainLowerCaseConsolidatedString_inValidinputMetaDataBoolean, async () => {
+    test(tst_con.cdoesArrayContainLowerCaseConsolidatedString_inValidInputMetaDataBoolean, async () => {
         // Arrange
         D[sys.cpluginsLoaded] = {};
         D[cfg.cpluginRegistry] = {};
@@ -898,12 +898,12 @@ describe(tst_con.cdoesArrayContainLowerCaseConsolidatedString, () => {
     });
 
     /**
-     * @function doesArrayContainLowerCaseConsolidatedString_inValidinputMetaDataUndefined
+     * @function doesArrayContainLowerCaseConsolidatedString_inValidInputMetaDataUndefined
      * @description Tests the wordArrayParsing function doesArrayContainLowerCaseConsolidatedString with a invalid data undefined.
      * @author Vlad Sorokin
      * @date 2025/06/03
      */
-    test(tst_con.cdoesArrayContainLowerCaseConsolidatedString_inValidinputMetaDataUndefined, async () => {
+    test(tst_con.cdoesArrayContainLowerCaseConsolidatedString_inValidInputMetaDataUndefined, async () => {
         // Arrange
         D[sys.cpluginsLoaded] = {};
         D[cfg.cpluginRegistry] = {};
@@ -924,12 +924,12 @@ describe(tst_con.cdoesArrayContainLowerCaseConsolidatedString, () => {
     });
 
     /**
-     * @function doesArrayContainLowerCaseConsolidatedString_inValidinputMetaDataNaN
+     * @function doesArrayContainLowerCaseConsolidatedString_inValidInputMetaDataNaN
      * @description Tests the wordArrayParsing function doesArrayContainLowerCaseConsolidatedString with a invalid data NaN.
      * @author Vlad Sorokin
      * @date 2025/06/03
      */
-    test(tst_con.cdoesArrayContainLowerCaseConsolidatedString_inValidinputMetaDataNaN, async () => {
+    test(tst_con.cdoesArrayContainLowerCaseConsolidatedString_inValidInputMetaDataNaN, async () => {
         // Arrange
         D[sys.cpluginsLoaded] = {};
         D[cfg.cpluginRegistry] = {};
@@ -1110,12 +1110,12 @@ describe(tst_con.cascertainMatchingElements, () => {
     });
 
     /**
-     * @function ascertainMatchingElements_inValidinputMetaDataString
+     * @function ascertainMatchingElements_inValidInputMetaDataString
      * @description Tests the wordArrayParsing function ascertainMatchingElements with a invalid data string.
      * @author Vlad Sorokin
      * @date 2025/06/03
      */
-    test(tst_con.cascertainMatchingElements_inValidinputMetaDataString, async () => {
+    test(tst_con.cascertainMatchingElements_inValidInputMetaDataString, async () => {
         // Arrange
         D[sys.cpluginsLoaded] = {};
         D[cfg.cpluginRegistry] = {};
@@ -1185,12 +1185,12 @@ describe(tst_con.cascertainMatchingElements, () => {
     });
 
     /**
-     * @function ascertainMatchingElements_inValidinputMetaDataInteger
+     * @function ascertainMatchingElements_inValidInputMetaDataInteger
      * @description Tests the wordArrayParsing function ascertainMatchingElements with a invalid data integer.
      * @author Vlad Sorokin
      * @date 2025/06/03
      */
-    test(tst_con.cascertainMatchingElements_inValidinputMetaDataInteger, async () => {
+    test(tst_con.cascertainMatchingElements_inValidInputMetaDataInteger, async () => {
         // Arrange
         D[sys.cpluginsLoaded] = {};
         D[cfg.cpluginRegistry] = {};
@@ -1210,12 +1210,12 @@ describe(tst_con.cascertainMatchingElements, () => {
     });
 
     /**
-     * @function ascertainMatchingElements_inValidinputMetaDataBoolean
+     * @function ascertainMatchingElements_inValidInputMetaDataBoolean
      * @description Tests the wordArrayParsing function ascertainMatchingElements with a invalid data boolean.
      * @author Vlad Sorokin
      * @date 2025/06/03
      */
-    test(tst_con.cascertainMatchingElements_inValidinputMetaDataBoolean, async () => {
+    test(tst_con.cascertainMatchingElements_inValidInputMetaDataBoolean, async () => {
         // Arrange
         D[sys.cpluginsLoaded] = {};
         D[cfg.cpluginRegistry] = {};
@@ -1285,12 +1285,12 @@ describe(tst_con.cascertainMatchingElements, () => {
     });
 
     /**
-     * @function ascertainMatchingElements_inValidinputMetaDataUndefined
+     * @function ascertainMatchingElements_inValidInputMetaDataUndefined
      * @description Tests the wordArrayParsing function ascertainMatchingElements with a invalid data undefined.
      * @author Vlad Sorokin
      * @date 2025/06/03
      */
-    test(tst_con.cascertainMatchingElements_inValidinputMetaDataUndefined, async () => {
+    test(tst_con.cascertainMatchingElements_inValidInputMetaDataUndefined, async () => {
         // Arrange
         D[sys.cpluginsLoaded] = {};
         D[cfg.cpluginRegistry] = {};
@@ -1310,12 +1310,12 @@ describe(tst_con.cascertainMatchingElements, () => {
     });
 
     /**
-     * @function ascertainMatchingElements_inValidinputMetaDataNaN
+     * @function ascertainMatchingElements_inValidInputMetaDataNaN
      * @description Tests the wordArrayParsing function ascertainMatchingElements with a invalid data NaN.
      * @author Vlad Sorokin
      * @date 2025/06/03
      */
-    test(tst_con.cascertainMatchingElements_inValidinputMetaDataNaN, async () => {
+    test(tst_con.cascertainMatchingElements_inValidInputMetaDataNaN, async () => {
         // Arrange
         D[sys.cpluginsLoaded] = {};
         D[cfg.cpluginRegistry] = {};
