@@ -11,21 +11,15 @@
 
 // Internal imports
 import mainTest from '../mainTest.js';
-import * as tst_man from '../mainTest.js';
 
 // External imports
 import hayConst from '@haystacks/constants';
-import url from 'url';
 import path from 'path';
 
-const {bas, biz, cmd, cfg, gen, msg, num, phn, sys, wrd} = hayConst;
-const baseFileName = path.basename(import.meta.url, path.extname(import.meta.url));
-const namespacePrefix = sys.cbusinessRules + bas.cDot + wrd.crules + bas.cDot + baseFileName + bas.cDot;
+const {bas, gen, num, phn, wrd} = hayConst;
 
 const rootPathArray = await mainTest.rootPathDiscovery();
 const rootPathAsync = rootPathArray[0];
-const rootPathConstants = rootPathArray[1];
-const rootPathHayPlugins = rootPathArray[2];
 
 export const cunitTestData = wrd.cunit + wrd.cTest + wrd.cData; // unitTestData
 export const csystemDotxml = wrd.csystem + gen.cDotxml; // system.xml

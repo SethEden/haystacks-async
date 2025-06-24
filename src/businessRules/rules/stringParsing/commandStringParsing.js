@@ -39,11 +39,21 @@ async function cleanCommandInput(inputData, inputMetaData) {
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = '';
-  if (inputData) {
-    returnData = await ruleParsing.processRulesInternal([inputData, [/--/g, '']], [biz.creplaceCharacterWithCharacter]);
-    returnData = await ruleParsing.processRulesInternal([returnData, [/\[/g, '']], [biz.creplaceCharacterWithCharacter]);
-    returnData = await ruleParsing.processRulesInternal([returnData, [/\]/g, '']], [biz.creplaceCharacterWithCharacter]);
-  } // End-if (inputData)
+  if (inputData && (typeof inputData === wrd.cstring && inputData.length > 0)) {
+    if(inputData.includes('--')) {
+      returnData = await ruleParsing.processRulesInternal([inputData, [/--/g, '']], [biz.creplaceCharacterWithCharacter]);
+      returnData = await ruleParsing.processRulesInternal([returnData, [/\[/g, '']], [biz.creplaceCharacterWithCharacter]);
+      returnData = await ruleParsing.processRulesInternal([returnData, [/\]/g, '']], [biz.creplaceCharacterWithCharacter]);
+    } else {
+      returnData = inputData; // No need to do anything, just return the inputData as is.
+      // WARNING: No '--' found in inputData, returning inputData as is.
+      console.log(msg.cWarningNoDashDashFoundInInputDataReturningInputDataAsIs + msg.cSpaceDashDashDashSpaceAtSpace + baseFileName + bas.cDot + functionName);
+    }
+  } else { // End-if (inputData)
+    // ERROR: Invalid input, inputData is:  --- at 
+    console.log(msg.cErrorInvalidInputDataMessage + inputData + msg.cSpaceDashDashDashSpaceAtSpace + baseFileName + bas.cDot + functionName);
+    returnData = false;
+  }
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + JSON.stringify(returnData));
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
@@ -61,6 +71,7 @@ async function cleanCommandInput(inputData, inputMetaData) {
  * @author Seth Hollingsead
  * @date 2022/01/24
  */
+    
 async function isValidCommandNameString(inputData, inputMetaData) {
   let functionName = isValidCommandNameString.name;
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);

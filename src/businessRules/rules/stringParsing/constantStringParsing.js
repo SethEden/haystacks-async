@@ -48,84 +48,93 @@ async function validateConstantsDataValidation(inputData, inputMetaData) {
   let returnData = false;
   let foundAFailure = false;
   let processed = false;
-  if (inputData && inputMetaData) {
-    // Scanning constants phase 1 validation data for file:
-    console.log(msg.cScanningConstantsValidationPhase1Message + inputData);
-    let inputFilePath = path.resolve(inputData);
-    const fileContents = await ruleParsing.processRulesInternal([inputFilePath, ''], [biz.cloadAsciiFileFromPath]);
-    // fileContents are:
-    await loggers.consoleLog(namespacePrefix + functionName, msg.cfileContentsAre + JSON.stringify(fileContents));
-    const fileContentsLineArray = fileContents.split(/\r?\n/);
-
-    let colorizeLogsEnabled = await configurator.getConfigurationSetting(wrd.csystem, cfg.cenableColorizedConsoleLogs);
-    // BEGIN processing all lines from file:
-    await loggers.consoleLog(namespacePrefix + functionName, msg.cBeginProcessingAllLinesFromFile + inputData);
-    for (const lineKey in fileContentsLineArray) {
-      // BEGIN processing a line
-      await loggers.consoleLog(namespacePrefix + functionName, msg.cBeginProcessingLine);
-      // line is:
-      await loggers.consoleLog(namespacePrefix + functionName, msg.clineIs + JSON.stringify(lineKey));
-      if (lineKey) {
-        processed = true;
-        // constants LineKey is:
-        await loggers.consoleLog(namespacePrefix + functionName, msg.cconstantsLineKeyIs + lineKey.toString(gen.cascii));
-
-        let lineInCode = fileContentsLineArray[lineKey];
-        // constants Line is:
-        await loggers.consoleLog(namespacePrefix + functionName, msg.cconstantsLineIs + lineInCode);
-        let foundConstant = false;
-        if (lineInCode.includes(sys.cexportconst) === true) {
-          let lineArray = lineInCode.split(bas.cSpace);
-          // lineArray[2] is:
-          await loggers.consoleLog(namespacePrefix + functionName, msg.clineArray2Is + lineArray[2]);
-          foundConstant = await validateConstantsDataValidationLineItemName(lineArray[2], inputMetaData);
-          let qualifiedConstantsFilename = await ruleParsing.processRulesInternal([inputData, ''], [biz.cgetFileNameFromPath]);
-          if (foundConstant === true) {
-            if (await configurator.getConfigurationSetting(wrd.csystem, cfg.cdisplayIndividualConstantsValidationPassMessages) === true) {
-              let passMessage = wrd.cPASS + bas.cColon + bas.cSpace + lineArray[2] + bas.cSpace + wrd.cPASS;
-              if (colorizeLogsEnabled === true) {
-                passMessage = chalk.rgb(0,0,0)(passMessage);
-                passMessage = chalk.bgRgb(0,255,0)(passMessage);
-              } // End-if (colorizeLogsEnabled === true)
-              console.log(qualifiedConstantsFilename + bas.cColon + bas.cSpace + passMessage);
-            } // End-if (await configurator.getConfigurationSetting(wrd.csystem, cfg.cdisplayIndividualConstantsValidationPassMessages) === true)
-          } else { // Else-clause if (foundConstant === true)
-            if (await configurator.getConfigurationSetting(wrd.csystem, cfg.cdisplayIndividualCosntantsValidationFailMessages) === true) {
-              let failMessage = wrd.cFAIL + bas.cColon + bas.cSpace + lineArray[2] + bas.cSpace + wrd.cFAIL;
-              if (colorizeLogsEnabled === true) {
-                failMessage = chalk.rgb(0,0,0)(failMessage);
-                failMessage = chalk.bgRgb(255,0,0)(failMessage);
-              } // End-if (colorizeLogsEnabled === true)
-              let qualifiedConstantsPrefix = await determineConstantsContextQualifiedPrefix(qualifiedConstantsFilename, inputMetaData);
-              let pluginName = '';
-              if (inputMetaData.includes(bas.cColon) && inputMetaData.toUpperCase().includes(wrd.cPLUGIN)) {
-                let pluginConstantNamespaceArray = inputMetaData.split(bas.cColon);
-                pluginName = pluginConstantNamespaceArray[0] + bas.cColon;
-              }
-              console.log(pluginName + qualifiedConstantsFilename + bas.cColon + bas.cSpace + failMessage);
-              let suggestedLineOfCode = await determineSuggestedConstantsValidationLineOfCode(lineArray[2], qualifiedConstantsPrefix);
-              if (suggestedLineOfCode !== '') {
+  if (inputData && typeof inputData === wrd.cstring && (inputData.includes(bas.cForwardSlash) === true || inputData.includes(bas.cBackSlash) === true)) {
+    if (inputMetaData && (typeof inputMetaData === wrd.cstring && inputMetaData.length > 0)) {
+      // Scanning constants phase 1 validation data for file:
+      console.log(msg.cScanningConstantsValidationPhase1Message + inputData);
+      let inputFilePath = path.resolve(inputData);
+      const fileContents = await ruleParsing.processRulesInternal([inputFilePath, ''], [biz.cloadAsciiFileFromPath]);
+      // fileContents are:
+      await loggers.consoleLog(namespacePrefix + functionName, msg.cfileContentsAre + JSON.stringify(fileContents));
+      const fileContentsLineArray = fileContents.split(/\r?\n/);
+  
+      let colorizeLogsEnabled = await configurator.getConfigurationSetting(wrd.csystem, cfg.cenableColorizedConsoleLogs);
+      // BEGIN processing all lines from file:
+      await loggers.consoleLog(namespacePrefix + functionName, msg.cBeginProcessingAllLinesFromFile + inputData);
+      for (const lineKey in fileContentsLineArray) {
+        // BEGIN processing a line
+        await loggers.consoleLog(namespacePrefix + functionName, msg.cBeginProcessingLine);
+        // line is:
+        await loggers.consoleLog(namespacePrefix + functionName, msg.clineIs + JSON.stringify(lineKey));
+        if (lineKey) {
+          processed = true;
+          // constants LineKey is:
+          await loggers.consoleLog(namespacePrefix + functionName, msg.cconstantsLineKeyIs + lineKey.toString(gen.cascii));
+  
+          let lineInCode = fileContentsLineArray[lineKey];
+          // constants Line is:
+          await loggers.consoleLog(namespacePrefix + functionName, msg.cconstantsLineIs + lineInCode);
+          let foundConstant = false;
+          if (lineInCode.includes(sys.cexportconst) === true) {
+            let lineArray = lineInCode.split(bas.cSpace);
+            // lineArray[2] is:
+            await loggers.consoleLog(namespacePrefix + functionName, msg.clineArray2Is + lineArray[2]);
+            foundConstant = await validateConstantsDataValidationLineItemName(lineArray[2], inputMetaData);
+            let qualifiedConstantsFilename = await ruleParsing.processRulesInternal([inputData, ''], [biz.cgetFileNameFromPath]);
+            if (foundConstant === true) {
+              if (await configurator.getConfigurationSetting(wrd.csystem, cfg.cdisplayIndividualConstantsValidationPassMessages) === true) {
+                let passMessage = wrd.cPASS + bas.cColon + bas.cSpace + lineArray[2] + bas.cSpace + wrd.cPASS;
                 if (colorizeLogsEnabled === true) {
-                  suggestedLineOfCode = chalk.rgb(0,0,0)(suggestedLineOfCode);
-                  suggestedLineOfCode = chalk.bgRgb(255,0,0)(suggestedLineOfCode);
+                  passMessage = chalk.rgb(0,0,0)(passMessage);
+                  passMessage = chalk.bgRgb(0,255,0)(passMessage);
                 } // End-if (colorizeLogsEnabled === true)
-                console.log(msg.cSuggestedLineOfCodeIs + suggestedLineOfCode);
-              } // End-if (suggestedLineOfCode !== '')
-            } // End-if (await configurator.getConfigurationSetting(wrd.csystem, cfg.cdisplayIndividualCosntantsValidationFailMessages) === true)
-            foundAFailure = true;
-          }
-        } // End-if (lineInCode.includes(sys.cexportconst) === true)
-      } else {
-        // ERROR: line is null or undefined:
-        // file is:
-        console.log(msg.cErrorLineIsNullOrUndefined + lineKey + msg.cSpaceFileIs + inputData);
-      }
-      // END processing a line
-      await loggers.consoleLog(namespacePrefix + functionName, msg.cEndProcessingLine);
-    } // End-for (const line in fileContentsLineArray)
-    // END processing all lines from file:
-    await loggers.consoleLog(namespacePrefix + functionName, msg.cEndProcessingAllLinesFromFile + inputData);
-  } // End-if (inputData && inputMetaData)
+                console.log(qualifiedConstantsFilename + bas.cColon + bas.cSpace + passMessage);
+              } // End-if (await configurator.getConfigurationSetting(wrd.csystem, cfg.cdisplayIndividualConstantsValidationPassMessages) === true)
+            } else { // Else-clause if (foundConstant === true)
+              if (await configurator.getConfigurationSetting(wrd.csystem, cfg.cdisplayIndividualCosntantsValidationFailMessages) === true) {
+                let failMessage = wrd.cFAIL + bas.cColon + bas.cSpace + lineArray[2] + bas.cSpace + wrd.cFAIL;
+                if (colorizeLogsEnabled === true) {
+                  failMessage = chalk.rgb(0,0,0)(failMessage);
+                  failMessage = chalk.bgRgb(255,0,0)(failMessage);
+                } // End-if (colorizeLogsEnabled === true)
+                let qualifiedConstantsPrefix = await determineConstantsContextQualifiedPrefix(qualifiedConstantsFilename, inputMetaData);
+                let pluginName = '';
+                if (inputMetaData.includes(bas.cColon) && inputMetaData.toUpperCase().includes(wrd.cPLUGIN)) {
+                  let pluginConstantNamespaceArray = inputMetaData.split(bas.cColon);
+                  pluginName = pluginConstantNamespaceArray[0] + bas.cColon;
+                }
+                console.log(pluginName + qualifiedConstantsFilename + bas.cColon + bas.cSpace + failMessage);
+                let suggestedLineOfCode = await determineSuggestedConstantsValidationLineOfCode(lineArray[2], qualifiedConstantsPrefix);
+                if (suggestedLineOfCode !== '') {
+                  if (colorizeLogsEnabled === true) {
+                    suggestedLineOfCode = chalk.rgb(0,0,0)(suggestedLineOfCode);
+                    suggestedLineOfCode = chalk.bgRgb(255,0,0)(suggestedLineOfCode);
+                  } // End-if (colorizeLogsEnabled === true)
+                  console.log(msg.cSuggestedLineOfCodeIs + suggestedLineOfCode);
+                } // End-if (suggestedLineOfCode !== '')
+              } // End-if (await configurator.getConfigurationSetting(wrd.csystem, cfg.cdisplayIndividualCosntantsValidationFailMessages) === true)
+              foundAFailure = true;
+            }
+          } // End-if (lineInCode.includes(sys.cexportconst) === true)
+        } else {
+          // ERROR: line is null or undefined:
+          // file is:
+          console.log(msg.cErrorLineIsNullOrUndefined + lineKey + msg.cSpaceFileIs + inputData);
+        }
+        // END processing a line
+        await loggers.consoleLog(namespacePrefix + functionName, msg.cEndProcessingLine);
+      } // End-for (const line in fileContentsLineArray)
+      // END processing all lines from file:
+      await loggers.consoleLog(namespacePrefix + functionName, msg.cEndProcessingAllLinesFromFile + inputData);
+    } else { // End-if (inputMetaData)
+      // ERROR: Invalid input, inputMetaData is:  --- at 
+      console.log(msg.cErrorInvalidInputMetaDataMessage + inputMetaData + msg.cSpaceDashDashDashSpaceAtSpace + baseFileName + bas.cDot + functionName);
+    }
+  } else { // End-if (inputData)
+    // ERROR: Invalid input, inputData is:  --- at 
+    console.log(msg.cErrorInvalidInputDataMessage + inputData + msg.cSpaceDashDashDashSpaceAtSpace + baseFileName + bas.cDot + functionName);
+  }
+
   if (foundAFailure === false && processed === true) {
     // Make sure we didn't find a failure, and we also actually did some processing of the data file.
     // Otherwise this could just fall through and never read the file, but still return true.
@@ -152,21 +161,41 @@ async function determineConstantsContextQualifiedPrefix(inputData, inputMetaData
   await loggers.consoleLog(namespacePrefix + functionName, msg.cBEGIN_Function);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
-  let returnData = '';
-  if (inputData && inputMetaData) {
-    returnData = inputData;
-    let constantsNamespaceParentObject = await getConstantsValidationNamespaceParentObject(inputMetaData, '');
-    // constantsNamespaceParentObject is:
-    // await loggers.consoleLog(namespacePrefix + functionName, msg.cconstantsNamespaceParentObjectIs + JSON.stringify(constantsNamespaceParentObject));
-    let constantsFileNames = constantsNamespaceParentObject[sys.cConstantsFileNames];
-    let constantsShortNames = constantsNamespaceParentObject[sys.cConstantsShortNames];
-    for (let key in constantsFileNames) {
-      if (inputData === constantsFileNames[key]) {
+  let returnData = false;
+  let inputDataInvalidFlag = true;
+  if (inputData && (typeof inputData === wrd.cstring && inputData.length > 0)) {
+    if (inputMetaData && (typeof inputMetaData === wrd.cstring && inputMetaData.length > 0)) {
+      let constantsNamespaceParentObject = await getConstantsValidationNamespaceParentObject(inputMetaData, '');
+      if (constantsNamespaceParentObject === false) {
+        // ERROR: No constants namespace found for inputMetaData.
+        console.log(msg.cErrorNoConstantsNamespaceFoundForInputMetaData);
+      }
+      // constantsNamespaceParentObject is:
+      // await loggers.consoleLog(namespacePrefix + functionName, msg.cconstantsNamespaceParentObjectIs + JSON.stringify(constantsNamespaceParentObject));
+      let constantsFileNames = constantsNamespaceParentObject[sys.cConstantsFileNames];
+      let constantsShortNames = constantsNamespaceParentObject[sys.cConstantsShortNames];
+      for (let key in constantsFileNames) {
+        if ((inputData.includes(constantsFileNames[key])) || (constantsFileNames[key].includes(inputData))) {
           returnData = constantsShortNames[key];
+          inputDataInvalidFlag = false;
           break;
-      } // End-if (inputData === constantsFileNames[key])
-    } // End-for (let key in constantsFileNames)
-  } // End-if (inputData)
+        } // End-if (inputData === constantsFileNames[key])
+      } // End-for (let key in constantsFileNames)
+      if (inputDataInvalidFlag === true) {
+        // ERROR: inputData was not found in the constants validation data, inputData is:  --- at
+        console.log(msg.cErrorInputDataNotFoundInConstantsValidationData + inputData + msg.cSpaceDashDashDashSpaceAtSpace + baseFileName + bas.cDot + functionName);
+        returnData = false;
+      } // End-if (inputDataInvalidFlag === true)
+    } else { // End-if (inputMetaData)
+      // ERROR: Invalid input, inputMetaData is:  --- at 
+      console.log(msg.cErrorInvalidInputMetaDataMessage + inputMetaData + msg.cSpaceDashDashDashSpaceAtSpace + baseFileName + bas.cDot + functionName);
+      returnData = false;
+    }
+  } else { // End-if (inputData)
+    // ERROR: Invalid input, inputData is:  --- at 
+    console.log(msg.cErrorInvalidInputDataMessage + inputData + msg.cSpaceDashDashDashSpaceAtSpace + baseFileName + bas.cDot + functionName);
+    returnData = false;
+  }
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;
@@ -188,29 +217,39 @@ async function determineSuggestedConstantsValidationLineOfCode(inputData, inputM
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputDataIs + inputData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cinputMetaDataIs + inputMetaData);
   let returnData = '';
-  if (inputData && inputMetaData) {
-    // Input: cZZTopInternationalSuccess
-    // Output: {Name: 'cZZTopInternationalSuccess', Actual: wrd.cZZTopInternationalSuccess, Expected: 'ZZTopInternationalSuccess'}
-    if (inputData.charAt(0) === bas.cc) {
-      let literalValue = inputData.substring(1);
-      // `{Name: '${inputData}', Actual: ${inputMetaData}.${inputData}, Expected: '${literalValue}'}`;
-      returnData = bas.cOpenCurlyBrace + wrd.cName + bas.cColon + bas.cSpace + bas.cSingleQuote + inputData +
-        bas.cSingleQuote + bas.cComa + bas.cSpace + wrd.cActual + bas.cColon + bas.cSpace + inputMetaData +
-        bas.cDot + inputData + bas.cComa + bas.cSpace + wrd.cExpected + bas.cColon + bas.cSpace +
-        bas.cSingleQuote + literalValue + bas.cSingleQuote + bas.cCloseCurlyBrace;
-    } else { // Else-clause if (inputData.charAt(0) === bas.cc)
-      // 'ERROR: Attempted to generate a suggested line of code to validate the constant, ' +
-      // 'but the constant is not formatted correctly, it should begin with a lower case "c". ' +
-      // 'Please reformat the constant correctly so a line of code can be generated for you.'
-      console.log(msg.cDetermineSuggestedConstantsValidationLineOfCodeErrorMessage1 +
-        msg.cDetermineSuggestedConstantsValidationLineOfCodeErrorMessage2 +
-        msg.cDetermineSuggestedConstantsValidationLineOfCodeErrorMessage3 +
-        msg.cDetermineSuggestedConstantsValidationLineOfCodeErrorMessage4 +
-        msg.cDetermineSuggestedConstantsValidationLineOfCodeErrorMessage5 +
-        msg.cDetermineSuggestedConstantsValidationLineOfCodeErrorMessage6);
-      returnData = '';
+  if (inputData && (typeof inputData === wrd.cstring && inputData.length > 0)) {
+    if (inputMetaData && (typeof inputMetaData === wrd.cstring && inputMetaData.length > 0)) {
+      // Input: cZZTopInternationalSuccess
+      // Output: {Name: 'cZZTopInternationalSuccess', Actual: wrd.cZZTopInternationalSuccess, Expected: 'ZZTopInternationalSuccess'}
+      if (inputData.charAt(0) === bas.cc) {
+        let literalValue = inputData.substring(1);
+        // `{Name: '${inputData}', Actual: ${inputMetaData}.${inputData}, Expected: '${literalValue}'}`;
+        returnData = bas.cOpenCurlyBrace + wrd.cName + bas.cColon + bas.cSpace + bas.cSingleQuote + inputData +
+          bas.cSingleQuote + bas.cComa + bas.cSpace + wrd.cActual + bas.cColon + bas.cSpace + inputMetaData +
+          bas.cDot + inputData + bas.cComa + bas.cSpace + wrd.cExpected + bas.cColon + bas.cSpace +
+          bas.cSingleQuote + literalValue + bas.cSingleQuote + bas.cCloseCurlyBrace;
+      } else { // Else-clause if (inputData.charAt(0) === bas.cc)
+        // 'ERROR: Attempted to generate a suggested line of code to validate the constant, ' +
+        // 'but the constant is not formatted correctly, it should begin with a lower case "c". ' +
+        // 'Please reformat the constant correctly so a line of code can be generated for you.'
+        console.log(msg.cDetermineSuggestedConstantsValidationLineOfCodeErrorMessage1 +
+          msg.cDetermineSuggestedConstantsValidationLineOfCodeErrorMessage2 +
+          msg.cDetermineSuggestedConstantsValidationLineOfCodeErrorMessage3 +
+          msg.cDetermineSuggestedConstantsValidationLineOfCodeErrorMessage4 +
+          msg.cDetermineSuggestedConstantsValidationLineOfCodeErrorMessage5 +
+          msg.cDetermineSuggestedConstantsValidationLineOfCodeErrorMessage6);
+        returnData = '';
+      }
+    } else { // End-if (inputMetaData)
+      // ERROR: Invalid input, inputMetaData is:  --- at 
+      console.log(msg.cErrorInvalidInputMetaDataMessage + inputMetaData + msg.cSpaceDashDashDashSpaceAtSpace + baseFileName + bas.cDot + functionName);
+      returnData = false;
     }
-  } // End-if (inputData && inputMetaData)
+  } else { // End-if (inputData)
+    // ERROR: Invalid input, inputData is:  --- at 
+    console.log(msg.cErrorInvalidInputDataMessage + inputData + msg.cSpaceDashDashDashSpaceAtSpace + baseFileName + bas.cDot + functionName);
+    returnData = false;
+  }
   await loggers.consoleLog(namespacePrefix + functionName, msg.creturnDataIs + returnData);
   await loggers.consoleLog(namespacePrefix + functionName, msg.cEND_Function);
   return returnData;

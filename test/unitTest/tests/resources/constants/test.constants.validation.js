@@ -178,8 +178,14 @@ export const testConstantsValidation = [
 {Name: 'creplaceCharacterAtIndexOfString', Actual: tst_con.creplaceCharacterAtIndexOfString, Expected: 'replaceCharacterAtIndexOfString'},
 
 /* commandStringParsing */
+{Name: 'ccleanCommandInput', Actual: tst_con.ccleanCommandInput, Expected: 'cleanCommandInput'},
+{Name: 'cisValidCommandNameString', Actual: tst_con.cisValidCommandNameString, Expected: 'isValidCommandNameString'},
 
 /* constantStringParsing */
+{Name: 'cvalidateConstantsDataValidation', Actual: tst_con.cvalidateConstantsDataValidation, Expected: 'validateConstantsDataValidation'},
+{Name: 'cdetermineConstantsContextQualifiedPrefix', Actual: tst_con.cdetermineConstantsContextQualifiedPrefix, Expected: 'determineConstantsContextQualifiedPrefix'},
+{Name: 'cdetermineSuggestedConstantsValidationLineOfCode', Actual: tst_con.cdetermineSuggestedConstantsValidationLineOfCode, Expected: 'determineSuggestedConstantsValidationLineOfCode'},
+
 
 /* dataStringParsing */
 
@@ -1080,6 +1086,7 @@ export const testConstantsValidation = [
 {Name: 'cgetLehmerCodeValue_inValidInputDataNaN', Actual: tst_con.cgetLehmerCodeValue_inValidInputDataNaN, Expected: 'getLehmerCodeValue_inValidInputDataNaN'},
 {Name: 'cgetLehmerCodeValue_inValidInputMetaDataUndefined', Actual: tst_con.cgetLehmerCodeValue_inValidInputMetaDataUndefined, Expected: 'getLehmerCodeValue_inValidInputMetaDataUndefined'},
 {Name: 'cgetLehmerCodeValue_inValidInputMetaDataNaN', Actual: tst_con.cgetLehmerCodeValue_inValidInputMetaDataNaN, Expected: 'getLehmerCodeValue_inValidInputMetaDataNaN'},
+
 // generateCommandAliases
 {Name: 'cgenerateCommandAliases_validData', Actual: tst_con.cgenerateCommandAliases_validData, Expected: 'generateCommandAliases_validData'},
 {Name: 'cgenerateCommandAliases_inValidInputDataString', Actual: tst_con.cgenerateCommandAliases_inValidInputDataString, Expected: 'generateCommandAliases_inValidInputDataString'},
@@ -1183,7 +1190,6 @@ export const testConstantsValidation = [
 {Name: 'cisArray_inValidInputDataBoolean', Actual: tst_con.cisArray_inValidInputDataBoolean, Expected: 'isArray_inValidInputDataBoolean'},
 {Name: 'cisArray_inValidInputDataUndefined', Actual: tst_con.cisArray_inValidInputDataUndefined, Expected: 'isArray_inValidInputDataUndefined'},
 {Name: 'cisArray_inValidInputDataNaN', Actual: tst_con.cisArray_inValidInputDataNaN, Expected: 'isArray_inValidInputDataNaN'},
-{Name: 'cisArray_inValidInputMetaDataUndefined', Actual: tst_con.cisArray_inValidInputMetaDataUndefined, Expected: 'isArray_inValidInputMetaDataUndefined'},
 
 // isNonZeroLengthArray
 {Name: 'cisNonZeroLengthArray_validData', Actual: tst_con.cisNonZeroLengthArray_validData, Expected: 'isNonZeroLengthArray_validData'},
@@ -1192,7 +1198,6 @@ export const testConstantsValidation = [
 {Name: 'cisNonZeroLengthArray_inValidInputDataBoolean', Actual: tst_con.cisNonZeroLengthArray_inValidInputDataBoolean, Expected: 'isNonZeroLengthArray_inValidInputDataBoolean'},
 {Name: 'cisNonZeroLengthArray_inValidInputDataUndefined', Actual: tst_con.cisNonZeroLengthArray_inValidInputDataUndefined, Expected: 'isNonZeroLengthArray_inValidInputDataUndefined'},
 {Name: 'cisNonZeroLengthArray_inValidInputDataNaN', Actual: tst_con.cisNonZeroLengthArray_inValidInputDataNaN, Expected: 'isNonZeroLengthArray_inValidInputDataNaN'},
-{Name: 'cisNonZeroLengthArray_inValidInputMetaDataUndefined', Actual: tst_con.cisNonZeroLengthArray_inValidInputMetaDataUndefined, Expected: 'isNonZeroLengthArray_inValidInputMetaDataUndefined'},
 
 // isDeeplyEqual
 {Name: 'cisDeeplyEqual_validData', Actual: tst_con.cisDeeplyEqual_validData, Expected: 'isDeeplyEqual_validData'},
@@ -1214,7 +1219,6 @@ export const testConstantsValidation = [
 {Name: 'carrayDeepClone_inValidInputDataBoolean', Actual: tst_con.carrayDeepClone_inValidInputDataBoolean, Expected: 'arrayDeepClone_inValidInputDataBoolean'},
 {Name: 'carrayDeepClone_inValidInputDataUndefined', Actual: tst_con.carrayDeepClone_inValidInputDataUndefined, Expected: 'arrayDeepClone_inValidInputDataUndefined'},
 {Name: 'carrayDeepClone_inValidInputDataNaN', Actual: tst_con.carrayDeepClone_inValidInputDataNaN, Expected: 'arrayDeepClone_inValidInputDataNaN'},
-{Name: 'carrayDeepClone_inValidInputMetaDataUndefined', Actual: tst_con.carrayDeepClone_inValidInputMetaDataUndefined, Expected: 'arrayDeepClone_inValidInputMetaDataUndefined'},
 
 // objectDeepClone
 {Name: 'cobjectDeepClone_validData', Actual: tst_con.cobjectDeepClone_validData, Expected: 'objectDeepClone_validData'},
@@ -1223,7 +1227,6 @@ export const testConstantsValidation = [
 {Name: 'cobjectDeepClone_validInputDataBoolean', Actual: tst_con.cobjectDeepClone_validInputDataBoolean, Expected: 'objectDeepClone_validInputDataBoolean'},
 {Name: 'cobjectDeepClone_inValidInputDataUndefined', Actual: tst_con.cobjectDeepClone_inValidInputDataUndefined, Expected: 'objectDeepClone_inValidInputDataUndefined'},
 {Name: 'cobjectDeepClone_inValidInputDataNaN', Actual: tst_con.cobjectDeepClone_inValidInputDataNaN, Expected: 'objectDeepClone_inValidInputDataNaN'},
-{Name: 'cobjectDeepClone_inValidInputMetaDataUndefined', Actual: tst_con.cobjectDeepClone_inValidInputMetaDataUndefined, Expected: 'objectDeepClone_inValidInputMetaDataUndefined'},
 
 // objectDeepMerge
 {Name: 'cobjectDeepMerge_validData', Actual: tst_con.cobjectDeepMerge_validData, Expected: 'objectDeepMerge_validData'},
@@ -1312,7 +1315,6 @@ export const testConstantsValidation = [
 {Name: 'cgetWordsArrayFromString_inValidInputDataBoolean', Actual: tst_con.cgetWordsArrayFromString_inValidInputDataBoolean, Expected: 'getWordsArrayFromString_inValidInputDataBoolean'},
 {Name: 'cgetWordsArrayFromString_inValidInputDataUndefined', Actual: tst_con.cgetWordsArrayFromString_inValidInputDataUndefined, Expected: 'getWordsArrayFromString_inValidInputDataUndefined'},
 {Name: 'cgetWordsArrayFromString_inValidInputDataNaN', Actual: tst_con.cgetWordsArrayFromString_inValidInputDataNaN, Expected: 'getWordsArrayFromString_inValidInputDataNaN'},
-{Name: 'cgetWordsArrayFromString_inValidInputMetaDataUndefined', Actual: tst_con.cgetWordsArrayFromString_inValidInputMetaDataUndefined, Expected: 'getWordsArrayFromString_inValidInputMetaDataUndefined'},
 
 // recombineStringArrayWithSpaces
 {Name: 'crecombineStringArrayWithSpaces_validData', Actual: tst_con.crecombineStringArrayWithSpaces_validData, Expected: 'recombineStringArrayWithSpaces_validData'},
@@ -1321,7 +1323,6 @@ export const testConstantsValidation = [
 {Name: 'crecombineStringArrayWithSpaces_inValidInputDataBoolean', Actual: tst_con.crecombineStringArrayWithSpaces_inValidInputDataBoolean, Expected: 'recombineStringArrayWithSpaces_inValidInputDataBoolean'},
 {Name: 'crecombineStringArrayWithSpaces_inValidInputDataUndefined', Actual: tst_con.crecombineStringArrayWithSpaces_inValidInputDataUndefined, Expected: 'recombineStringArrayWithSpaces_inValidInputDataUndefined'},
 {Name: 'crecombineStringArrayWithSpaces_inValidInputDataNaN', Actual: tst_con.crecombineStringArrayWithSpaces_inValidInputDataNaN, Expected: 'recombineStringArrayWithSpaces_inValidInputDataNaN'},
-{Name: 'crecombineStringArrayWithSpaces_inValidInputMetaDataUndefined', Actual: tst_con.crecombineStringArrayWithSpaces_inValidInputMetaDataUndefined, Expected: 'recombineStringArrayWithSpaces_inValidInputMetaDataUndefined'},
 
 // convertArrayToCamelCaseString
 {Name: 'cconvertArrayToCamelCaseString_validData', Actual: tst_con.cconvertArrayToCamelCaseString_validData, Expected: 'convertArrayToCamelCaseString_validData'},
@@ -1372,7 +1373,6 @@ export const testConstantsValidation = [
 {Name: 'csingleQuoteSwapAfterEquals_inValidInputDataBoolean', Actual: tst_con.csingleQuoteSwapAfterEquals_inValidInputDataBoolean, Expected: 'singleQuoteSwapAfterEquals_inValidInputDataBoolean'},
 {Name: 'csingleQuoteSwapAfterEquals_inValidInputDataUndefined', Actual: tst_con.csingleQuoteSwapAfterEquals_inValidInputDataUndefined, Expected: 'singleQuoteSwapAfterEquals_inValidInputDataUndefined'},
 {Name: 'csingleQuoteSwapAfterEquals_inValidInputDataNaN', Actual: tst_con.csingleQuoteSwapAfterEquals_inValidInputDataNaN, Expected: 'singleQuoteSwapAfterEquals_inValidInputDataNaN'},
-{Name: 'csingleQuoteSwapAfterEquals_inValidInputMetaDataUndefined', Actual: tst_con.csingleQuoteSwapAfterEquals_inValidInputMetaDataUndefined, Expected: 'singleQuoteSwapAfterEquals_inValidInputMetaDataUndefined'},
 
 // swapForwardSlashToBackSlash
 {Name: 'cswapForwardSlashToBackSlash_validData', Actual: tst_con.cswapForwardSlashToBackSlash_validData, Expected: 'swapForwardSlashToBackSlash_validData'},
@@ -1380,7 +1380,6 @@ export const testConstantsValidation = [
 {Name: 'cswapForwardSlashToBackSlash_inValidInputDataBoolean', Actual: tst_con.cswapForwardSlashToBackSlash_inValidInputDataBoolean, Expected: 'swapForwardSlashToBackSlash_inValidInputDataBoolean'},
 {Name: 'cswapForwardSlashToBackSlash_inValidInputDataUndefined', Actual: tst_con.cswapForwardSlashToBackSlash_inValidInputDataUndefined, Expected: 'swapForwardSlashToBackSlash_inValidInputDataUndefined'},
 {Name: 'cswapForwardSlashToBackSlash_inValidInputDataNaN', Actual: tst_con.cswapForwardSlashToBackSlash_inValidInputDataNaN, Expected: 'swapForwardSlashToBackSlash_inValidInputDataNaN'},
-{Name: 'cswapForwardSlashToBackSlash_inValidInputMetaDataUndefined', Actual: tst_con.cswapForwardSlashToBackSlash_inValidInputMetaDataUndefined, Expected: 'swapForwardSlashToBackSlash_inValidInputMetaDataUndefined'},
 
 // swapBackSlashToForwardSlash
 {Name: 'cswapBackSlashToForwardSlash_validData', Actual: tst_con.cswapBackSlashToForwardSlash_validData, Expected: 'swapBackSlashToForwardSlash_validData'},
@@ -1388,7 +1387,6 @@ export const testConstantsValidation = [
 {Name: 'cswapBackSlashToForwardSlash_inValidInputDataBoolean', Actual: tst_con.cswapBackSlashToForwardSlash_inValidInputDataBoolean, Expected: 'swapBackSlashToForwardSlash_inValidInputDataBoolean'},
 {Name: 'cswapBackSlashToForwardSlash_inValidInputDataUndefined', Actual: tst_con.cswapBackSlashToForwardSlash_inValidInputDataUndefined, Expected: 'swapBackSlashToForwardSlash_inValidInputDataUndefined'},
 {Name: 'cswapBackSlashToForwardSlash_inValidInputDataNaN', Actual: tst_con.cswapBackSlashToForwardSlash_inValidInputDataNaN, Expected: 'swapBackSlashToForwardSlash_inValidInputDataNaN'},
-{Name: 'cswapBackSlashToForwardSlash_inValidInputMetaDataUndefined', Actual: tst_con.cswapBackSlashToForwardSlash_inValidInputMetaDataUndefined, Expected: 'swapBackSlashToForwardSlash_inValidInputMetaDataUndefined'},
 
 // swapDoubleForwardSlashToSingleForwardSlash
 {Name: 'cswapDoubleForwardSlashToSingleForwardSlash_validData', Actual: tst_con.cswapDoubleForwardSlashToSingleForwardSlash_validData, Expected: 'swapDoubleForwardSlashToSingleForwardSlash_validData'},
@@ -1396,7 +1394,6 @@ export const testConstantsValidation = [
 {Name: 'cswapDoubleForwardSlashToSingleForwardSlash_inValidInputDataBoolean', Actual: tst_con.cswapDoubleForwardSlashToSingleForwardSlash_inValidInputDataBoolean, Expected: 'swapDoubleForwardSlashToSingleForwardSlash_inValidInputDataBoolean'},
 {Name: 'cswapDoubleForwardSlashToSingleForwardSlash_inValidInputDataUndefined', Actual: tst_con.cswapDoubleForwardSlashToSingleForwardSlash_inValidInputDataUndefined, Expected: 'swapDoubleForwardSlashToSingleForwardSlash_inValidInputDataUndefined'},
 {Name: 'cswapDoubleForwardSlashToSingleForwardSlash_inValidInputDataNaN', Actual: tst_con.cswapDoubleForwardSlashToSingleForwardSlash_inValidInputDataNaN, Expected: 'swapDoubleForwardSlashToSingleForwardSlash_inValidInputDataNaN'},
-{Name: 'cswapDoubleForwardSlashToSingleForwardSlash_inValidInputMetaDataUndefined', Actual: tst_con.cswapDoubleForwardSlashToSingleForwardSlash_inValidInputMetaDataUndefined, Expected: 'swapDoubleForwardSlashToSingleForwardSlash_inValidInputMetaDataUndefined'},
 
 // swapDoubleBackSlashToSingleBackSlash
 {Name: 'cswapDoubleBackSlashToSingleBackSlash_validData', Actual: tst_con.cswapDoubleBackSlashToSingleBackSlash_validData, Expected: 'swapDoubleBackSlashToSingleBackSlash_validData'},
@@ -1404,7 +1401,6 @@ export const testConstantsValidation = [
 {Name: 'cswapDoubleBackSlashToSingleBackSlash_inValidInputDataBoolean', Actual: tst_con.cswapDoubleBackSlashToSingleBackSlash_inValidInputDataBoolean, Expected: 'swapDoubleBackSlashToSingleBackSlash_inValidInputDataBoolean'},
 {Name: 'cswapDoubleBackSlashToSingleBackSlash_inValidInputDataUndefined', Actual: tst_con.cswapDoubleBackSlashToSingleBackSlash_inValidInputDataUndefined, Expected: 'swapDoubleBackSlashToSingleBackSlash_inValidInputDataUndefined'},
 {Name: 'cswapDoubleBackSlashToSingleBackSlash_inValidInputDataNaN', Actual: tst_con.cswapDoubleBackSlashToSingleBackSlash_inValidInputDataNaN, Expected: 'swapDoubleBackSlashToSingleBackSlash_inValidInputDataNaN'},
-{Name: 'cswapDoubleBackSlashToSingleBackSlash_inValidInputMetaDataUndefined', Actual: tst_con.cswapDoubleBackSlashToSingleBackSlash_inValidInputMetaDataUndefined, Expected: 'swapDoubleBackSlashToSingleBackSlash_inValidInputMetaDataUndefined'},
 
 // replaceSpacesWithPlus
 {Name: 'creplaceSpacesWithPlus_validData', Actual: tst_con.creplaceSpacesWithPlus_validData, Expected: 'replaceSpacesWithPlus_validData'},
@@ -1412,7 +1408,6 @@ export const testConstantsValidation = [
 {Name: 'creplaceSpacesWithPlus_inValidInputDataBoolean', Actual: tst_con.creplaceSpacesWithPlus_inValidInputDataBoolean, Expected: 'replaceSpacesWithPlus_inValidInputDataBoolean'},
 {Name: 'creplaceSpacesWithPlus_inValidInputDataUndefined', Actual: tst_con.creplaceSpacesWithPlus_inValidInputDataUndefined, Expected: 'replaceSpacesWithPlus_inValidInputDataUndefined'},
 {Name: 'creplaceSpacesWithPlus_inValidInputDataNaN', Actual: tst_con.creplaceSpacesWithPlus_inValidInputDataNaN, Expected: 'replaceSpacesWithPlus_inValidInputDataNaN'},
-{Name: 'creplaceSpacesWithPlus_inValidInputMetaDataUndefined', Actual: tst_con.creplaceSpacesWithPlus_inValidInputMetaDataUndefined, Expected: 'replaceSpacesWithPlus_inValidInputMetaDataUndefined'},
 
 // replaceColonWithUnderscore
 {Name: 'creplaceColonWithUnderscore_validData', Actual: tst_con.creplaceColonWithUnderscore_validData, Expected: 'replaceColonWithUnderscore_validData'},
@@ -1420,7 +1415,6 @@ export const testConstantsValidation = [
 {Name: 'creplaceColonWithUnderscore_inValidInputDataBoolean', Actual: tst_con.creplaceColonWithUnderscore_inValidInputDataBoolean, Expected: 'replaceColonWithUnderscore_inValidInputDataBoolean'},
 {Name: 'creplaceColonWithUnderscore_inValidInputDataUndefined', Actual: tst_con.creplaceColonWithUnderscore_inValidInputDataUndefined, Expected: 'replaceColonWithUnderscore_inValidInputDataUndefined'},
 {Name: 'creplaceColonWithUnderscore_inValidInputDataNaN', Actual: tst_con.creplaceColonWithUnderscore_inValidInputDataNaN, Expected: 'replaceColonWithUnderscore_inValidInputDataNaN'},
-{Name: 'creplaceColonWithUnderscore_inValidInputMetaDataUndefined', Actual: tst_con.creplaceColonWithUnderscore_inValidInputMetaDataUndefined, Expected: 'replaceColonWithUnderscore_inValidInputMetaDataUndefined'},
 
 // cleanCarriageReturnFromString
 {Name: 'ccleanCarriageReturnFromString_validData', Actual: tst_con.ccleanCarriageReturnFromString_validData, Expected: 'cleanCarriageReturnFromString_validData'},
@@ -1428,7 +1422,6 @@ export const testConstantsValidation = [
 {Name: 'ccleanCarriageReturnFromString_inValidInputDataBoolean', Actual: tst_con.ccleanCarriageReturnFromString_inValidInputDataBoolean, Expected: 'cleanCarriageReturnFromString_inValidInputDataBoolean'},
 {Name: 'ccleanCarriageReturnFromString_inValidInputDataUndefined', Actual: tst_con.ccleanCarriageReturnFromString_inValidInputDataUndefined, Expected: 'cleanCarriageReturnFromString_inValidInputDataUndefined'},
 {Name: 'ccleanCarriageReturnFromString_inValidInputDataNaN', Actual: tst_con.ccleanCarriageReturnFromString_inValidInputDataNaN, Expected: 'cleanCarriageReturnFromString_inValidInputDataNaN'},
-{Name: 'ccleanCarriageReturnFromString_inValidInputMetaDataUndefined', Actual: tst_con.ccleanCarriageReturnFromString_inValidInputMetaDataUndefined, Expected: 'cleanCarriageReturnFromString_inValidInputMetaDataUndefined'},
 
 // convertStringToLowerCase
 {Name: 'cconvertStringToLowerCase_validData', Actual: tst_con.cconvertStringToLowerCase_validData, Expected: 'convertStringToLowerCase_validData'},
@@ -1436,7 +1429,6 @@ export const testConstantsValidation = [
 {Name: 'cconvertStringToLowerCase_inValidInputDataBoolean', Actual: tst_con.cconvertStringToLowerCase_inValidInputDataBoolean, Expected: 'convertStringToLowerCase_inValidInputDataBoolean'},
 {Name: 'cconvertStringToLowerCase_inValidInputDataUndefined', Actual: tst_con.cconvertStringToLowerCase_inValidInputDataUndefined, Expected: 'convertStringToLowerCase_inValidInputDataUndefined'},
 {Name: 'cconvertStringToLowerCase_inValidInputDataNaN', Actual: tst_con.cconvertStringToLowerCase_inValidInputDataNaN, Expected: 'convertStringToLowerCase_inValidInputDataNaN'},
-{Name: 'cconvertStringToLowerCase_inValidInputMetaDataUndefined', Actual: tst_con.cconvertStringToLowerCase_inValidInputMetaDataUndefined, Expected: 'convertStringToLowerCase_inValidInputMetaDataUndefined'},
 
 // convertStringToUpperCase
 {Name: 'cconvertStringToUpperCase_validData', Actual: tst_con.cconvertStringToUpperCase_validData, Expected: 'convertStringToUpperCase_validData'},
@@ -1444,7 +1436,6 @@ export const testConstantsValidation = [
 {Name: 'cconvertStringToUpperCase_inValidInputDataBoolean', Actual: tst_con.cconvertStringToUpperCase_inValidInputDataBoolean, Expected: 'convertStringToUpperCase_inValidInputDataBoolean'},
 {Name: 'cconvertStringToUpperCase_inValidInputDataUndefined', Actual: tst_con.cconvertStringToUpperCase_inValidInputDataUndefined, Expected: 'convertStringToUpperCase_inValidInputDataUndefined'},
 {Name: 'cconvertStringToUpperCase_inValidInputDataNaN', Actual: tst_con.cconvertStringToUpperCase_inValidInputDataNaN, Expected: 'convertStringToUpperCase_inValidInputDataNaN'},
-{Name: 'cconvertStringToUpperCase_inValidInputMetaDataUndefined', Actual: tst_con.cconvertStringToUpperCase_inValidInputMetaDataUndefined, Expected: 'convertStringToUpperCase_inValidInputMetaDataUndefined'},
 
 // doesStringContainUpperCaseCharacter
 {Name: 'cdoesStringContainUpperCaseCharacter_validData', Actual: tst_con.cdoesStringContainUpperCaseCharacter_validData, Expected: 'doesStringContainUpperCaseCharacter_validData'},
@@ -1452,7 +1443,6 @@ export const testConstantsValidation = [
 {Name: 'cdoesStringContainUpperCaseCharacter_inValidInputDataBoolean', Actual: tst_con.cdoesStringContainUpperCaseCharacter_inValidInputDataBoolean, Expected: 'doesStringContainUpperCaseCharacter_inValidInputDataBoolean'},
 {Name: 'cdoesStringContainUpperCaseCharacter_inValidInputDataUndefined', Actual: tst_con.cdoesStringContainUpperCaseCharacter_inValidInputDataUndefined, Expected: 'doesStringContainUpperCaseCharacter_inValidInputDataUndefined'},
 {Name: 'cdoesStringContainUpperCaseCharacter_inValidInputDataNaN', Actual: tst_con.cdoesStringContainUpperCaseCharacter_inValidInputDataNaN, Expected: 'doesStringContainUpperCaseCharacter_inValidInputDataNaN'},
-{Name: 'cdoesStringContainUpperCaseCharacter_inValidInputMetaDataUndefined', Actual: tst_con.cdoesStringContainUpperCaseCharacter_inValidInputMetaDataUndefined, Expected: 'doesStringContainUpperCaseCharacter_inValidInputMetaDataUndefined'},
 
 // doesStringContainLowerCaseCharacter
 {Name: 'cdoesStringContainLowerCaseCharacter_validData', Actual: tst_con.cdoesStringContainLowerCaseCharacter_validData, Expected: 'doesStringContainLowerCaseCharacter_validData'},
@@ -1460,7 +1450,6 @@ export const testConstantsValidation = [
 {Name: 'cdoesStringContainLowerCaseCharacter_inValidInputDataBoolean', Actual: tst_con.cdoesStringContainLowerCaseCharacter_inValidInputDataBoolean, Expected: 'doesStringContainLowerCaseCharacter_inValidInputDataBoolean'},
 {Name: 'cdoesStringContainLowerCaseCharacter_inValidInputDataUndefined', Actual: tst_con.cdoesStringContainLowerCaseCharacter_inValidInputDataUndefined, Expected: 'doesStringContainLowerCaseCharacter_inValidInputDataUndefined'},
 {Name: 'cdoesStringContainLowerCaseCharacter_inValidInputDataNaN', Actual: tst_con.cdoesStringContainLowerCaseCharacter_inValidInputDataNaN, Expected: 'doesStringContainLowerCaseCharacter_inValidInputDataNaN'},
-{Name: 'cdoesStringContainLowerCaseCharacter_inValidInputMetaDataUndefined', Actual: tst_con.cdoesStringContainLowerCaseCharacter_inValidInputMetaDataUndefined, Expected: 'doesStringContainLowerCaseCharacter_inValidInputMetaDataUndefined'},
 
 // isFirstCharacterLowerCase
 {Name: 'cisFirstCharacterLowerCase_validData', Actual: tst_con.cisFirstCharacterLowerCase_validData, Expected: 'isFirstCharacterLowerCase_validData'},
@@ -1468,7 +1457,6 @@ export const testConstantsValidation = [
 {Name: 'cisFirstCharacterLowerCase_inValidInputDataBoolean', Actual: tst_con.cisFirstCharacterLowerCase_inValidInputDataBoolean, Expected: 'isFirstCharacterLowerCase_inValidInputDataBoolean'},
 {Name: 'cisFirstCharacterLowerCase_inValidInputDataUndefined', Actual: tst_con.cisFirstCharacterLowerCase_inValidInputDataUndefined, Expected: 'isFirstCharacterLowerCase_inValidInputDataUndefined'},
 {Name: 'cisFirstCharacterLowerCase_inValidInputDataNaN', Actual: tst_con.cisFirstCharacterLowerCase_inValidInputDataNaN, Expected: 'isFirstCharacterLowerCase_inValidInputDataNaN'},
-{Name: 'cisFirstCharacterLowerCase_inValidInputMetaDataUndefined', Actual: tst_con.cisFirstCharacterLowerCase_inValidInputMetaDataUndefined, Expected: 'isFirstCharacterLowerCase_inValidInputMetaDataUndefined'},
 
 // replaceCharacterAtIndexOfString
 {Name: 'creplaceCharacterAtIndexOfString_validData', Actual: tst_con.creplaceCharacterAtIndexOfString_validData, Expected: 'replaceCharacterAtIndexOfString_validData'},
@@ -1483,8 +1471,60 @@ export const testConstantsValidation = [
 {Name: 'creplaceCharacterAtIndexOfString_inValidinputMetaDataNaN', Actual: tst_con.creplaceCharacterAtIndexOfString_inValidinputMetaDataNaN, Expected: 'replaceCharacterAtIndexOfString_inValidinputMetaDataNaN'},
 
 /* commandStringParsing */
+// cleanCommandInput
+{Name: 'ccleanCommandInput_validData', Actual: tst_con.ccleanCommandInput_validData, Expected: 'cleanCommandInput_validData'},
+{Name: 'ccleanCommandInput_inValidInputDataString', Actual: tst_con.ccleanCommandInput_inValidInputDataString, Expected: 'cleanCommandInput_inValidInputDataString'},
+{Name: 'ccleanCommandInput_inValidInputDataInteger', Actual: tst_con.ccleanCommandInput_inValidInputDataInteger, Expected: 'cleanCommandInput_inValidInputDataInteger'},
+{Name: 'ccleanCommandInput_inValidInputDataBoolean', Actual: tst_con.ccleanCommandInput_inValidInputDataBoolean, Expected: 'cleanCommandInput_inValidInputDataBoolean'},
+{Name: 'ccleanCommandInput_inValidInputDataUndefined', Actual: tst_con.ccleanCommandInput_inValidInputDataUndefined, Expected: 'cleanCommandInput_inValidInputDataUndefined'},
+{Name: 'ccleanCommandInput_inValidInputDataNaN', Actual: tst_con.ccleanCommandInput_inValidInputDataNaN, Expected: 'cleanCommandInput_inValidInputDataNaN'},
+
+// isValidCommandNameString
+{Name: 'cisValidCommandNameString_validData', Actual: tst_con.cisValidCommandNameString_validData, Expected: 'isValidCommandNameString_validData'},
+{Name: 'cisValidCommandNameString_inValidInputDataInteger', Actual: tst_con.cisValidCommandNameString_inValidInputDataInteger, Expected: 'isValidCommandNameString_inValidInputDataInteger'},
+{Name: 'cisValidCommandNameString_inValidInputDataBoolean', Actual: tst_con.cisValidCommandNameString_inValidInputDataBoolean, Expected: 'isValidCommandNameString_inValidInputDataBoolean'},
+{Name: 'cisValidCommandNameString_inValidInputDataUndefined', Actual: tst_con.cisValidCommandNameString_inValidInputDataUndefined, Expected: 'isValidCommandNameString_inValidInputDataUndefined'},
+{Name: 'cisValidCommandNameString_inValidInputDataNaN', Actual: tst_con.cisValidCommandNameString_inValidInputDataNaN, Expected: 'isValidCommandNameString_inValidInputDataNaN'},
 
 /* constantStringParsing */
+// validateConstantsDataValidation
+{Name: 'cvalidateConstantsDataValidation_validData', Actual: tst_con.cvalidateConstantsDataValidation_validData, Expected: 'validateConstantsDataValidation_validData'},
+{Name: 'cvalidateConstantsDataValidation_inValidInputDataString', Actual: tst_con.cvalidateConstantsDataValidation_inValidInputDataString, Expected: 'validateConstantsDataValidation_inValidInputDataString'},
+{Name: 'cvalidateConstantsDataValidation_inValidinputMetaDataString', Actual: tst_con.cvalidateConstantsDataValidation_inValidinputMetaDataString, Expected: 'validateConstantsDataValidation_inValidinputMetaDataString'},
+{Name: 'cvalidateConstantsDataValidation_inValidInputDataInteger', Actual: tst_con.cvalidateConstantsDataValidation_inValidInputDataInteger, Expected: 'validateConstantsDataValidation_inValidInputDataInteger'},
+{Name: 'cvalidateConstantsDataValidation_inValidInputDataBoolean', Actual: tst_con.cvalidateConstantsDataValidation_inValidInputDataBoolean, Expected: 'validateConstantsDataValidation_inValidInputDataBoolean'},
+{Name: 'cvalidateConstantsDataValidation_inValidinputMetaDataInteger', Actual: tst_con.cvalidateConstantsDataValidation_inValidinputMetaDataInteger, Expected: 'validateConstantsDataValidation_inValidinputMetaDataInteger'},
+{Name: 'cvalidateConstantsDataValidation_inValidinputMetaDataBoolean', Actual: tst_con.cvalidateConstantsDataValidation_inValidinputMetaDataBoolean, Expected: 'validateConstantsDataValidation_inValidinputMetaDataBoolean'},
+{Name: 'cvalidateConstantsDataValidation_inValidInputDataUndefined', Actual: tst_con.cvalidateConstantsDataValidation_inValidInputDataUndefined, Expected: 'validateConstantsDataValidation_inValidInputDataUndefined'},
+{Name: 'cvalidateConstantsDataValidation_inValidInputDataNaN', Actual: tst_con.cvalidateConstantsDataValidation_inValidInputDataNaN, Expected: 'validateConstantsDataValidation_inValidInputDataNaN'},
+{Name: 'cvalidateConstantsDataValidation_inValidinputMetaDataUndefined', Actual: tst_con.cvalidateConstantsDataValidation_inValidinputMetaDataUndefined, Expected: 'validateConstantsDataValidation_inValidinputMetaDataUndefined'},
+{Name: 'cvalidateConstantsDataValidation_inValidinputMetaDataNaN', Actual: tst_con.cvalidateConstantsDataValidation_inValidinputMetaDataNaN, Expected: 'validateConstantsDataValidation_inValidinputMetaDataNaN'},
+
+// determineConstantsContextQualifiedPrefix
+{Name: 'cdetermineConstantsContextQualifiedPrefix_validData', Actual: tst_con.cdetermineConstantsContextQualifiedPrefix_validData, Expected: 'determineConstantsContextQualifiedPrefix_validData'},
+{Name: 'cdetermineConstantsContextQualifiedPrefix_inValidInputDataString', Actual: tst_con.cdetermineConstantsContextQualifiedPrefix_inValidInputDataString, Expected: 'determineConstantsContextQualifiedPrefix_inValidInputDataString'},
+{Name: 'cdetermineConstantsContextQualifiedPrefix_inValidinputMetaDataString', Actual: tst_con.cdetermineConstantsContextQualifiedPrefix_inValidinputMetaDataString, Expected: 'determineConstantsContextQualifiedPrefix_inValidinputMetaDataString'},
+{Name: 'cdetermineConstantsContextQualifiedPrefix_inValidInputDataInteger', Actual: tst_con.cdetermineConstantsContextQualifiedPrefix_inValidInputDataInteger, Expected: 'determineConstantsContextQualifiedPrefix_inValidInputDataInteger'},
+{Name: 'cdetermineConstantsContextQualifiedPrefix_inValidInputDataBoolean', Actual: tst_con.cdetermineConstantsContextQualifiedPrefix_inValidInputDataBoolean, Expected: 'determineConstantsContextQualifiedPrefix_inValidInputDataBoolean'},
+{Name: 'cdetermineConstantsContextQualifiedPrefix_inValidinputMetaDataInteger', Actual: tst_con.cdetermineConstantsContextQualifiedPrefix_inValidinputMetaDataInteger, Expected: 'determineConstantsContextQualifiedPrefix_inValidinputMetaDataInteger'},
+{Name: 'cdetermineConstantsContextQualifiedPrefix_inValidinputMetaDataBoolean', Actual: tst_con.cdetermineConstantsContextQualifiedPrefix_inValidinputMetaDataBoolean, Expected: 'determineConstantsContextQualifiedPrefix_inValidinputMetaDataBoolean'},
+{Name: 'cdetermineConstantsContextQualifiedPrefix_inValidInputDataUndefined', Actual: tst_con.cdetermineConstantsContextQualifiedPrefix_inValidInputDataUndefined, Expected: 'determineConstantsContextQualifiedPrefix_inValidInputDataUndefined'},
+{Name: 'cdetermineConstantsContextQualifiedPrefix_inValidInputDataNaN', Actual: tst_con.cdetermineConstantsContextQualifiedPrefix_inValidInputDataNaN, Expected: 'determineConstantsContextQualifiedPrefix_inValidInputDataNaN'},
+{Name: 'cdetermineConstantsContextQualifiedPrefix_inValidinputMetaDataUndefined', Actual: tst_con.cdetermineConstantsContextQualifiedPrefix_inValidinputMetaDataUndefined, Expected: 'determineConstantsContextQualifiedPrefix_inValidinputMetaDataUndefined'},
+{Name: 'cdetermineConstantsContextQualifiedPrefix_inValidinputMetaDataNaN', Actual: tst_con.cdetermineConstantsContextQualifiedPrefix_inValidinputMetaDataNaN, Expected: 'determineConstantsContextQualifiedPrefix_inValidinputMetaDataNaN'},
+
+// determineSuggestedConstantsValidationLineOfCode
+{Name: 'cdetermineSuggestedConstantsValidationLineOfCode_validData', Actual: tst_con.cdetermineSuggestedConstantsValidationLineOfCode_validData, Expected: 'determineSuggestedConstantsValidationLineOfCode_validData'},
+{Name: 'cdetermineSuggestedConstantsValidationLineOfCode_inValidInputDataInteger', Actual: tst_con.cdetermineSuggestedConstantsValidationLineOfCode_inValidInputDataInteger, Expected: 'determineSuggestedConstantsValidationLineOfCode_inValidInputDataInteger'},
+{Name: 'cdetermineSuggestedConstantsValidationLineOfCode_inValidInputDataBoolean', Actual: tst_con.cdetermineSuggestedConstantsValidationLineOfCode_inValidInputDataBoolean, Expected: 'determineSuggestedConstantsValidationLineOfCode_inValidInputDataBoolean'},
+{Name: 'cdetermineSuggestedConstantsValidationLineOfCode_inValidinputMetaDataInteger', Actual: tst_con.cdetermineSuggestedConstantsValidationLineOfCode_inValidinputMetaDataInteger, Expected: 'determineSuggestedConstantsValidationLineOfCode_inValidinputMetaDataInteger'},
+{Name: 'cdetermineSuggestedConstantsValidationLineOfCode_inValidinputMetaDataBoolean', Actual: tst_con.cdetermineSuggestedConstantsValidationLineOfCode_inValidinputMetaDataBoolean, Expected: 'determineSuggestedConstantsValidationLineOfCode_inValidinputMetaDataBoolean'},
+{Name: 'cdetermineSuggestedConstantsValidationLineOfCode_inValidInputDataUndefined', Actual: tst_con.cdetermineSuggestedConstantsValidationLineOfCode_inValidInputDataUndefined, Expected: 'determineSuggestedConstantsValidationLineOfCode_inValidInputDataUndefined'},
+{Name: 'cdetermineSuggestedConstantsValidationLineOfCode_inValidInputDataNaN', Actual: tst_con.cdetermineSuggestedConstantsValidationLineOfCode_inValidInputDataNaN, Expected: 'determineSuggestedConstantsValidationLineOfCode_inValidInputDataNaN'},
+{Name: 'cdetermineSuggestedConstantsValidationLineOfCode_inValidinputMetaDataUndefined', Actual: tst_con.cdetermineSuggestedConstantsValidationLineOfCode_inValidinputMetaDataUndefined, Expected: 'determineSuggestedConstantsValidationLineOfCode_inValidinputMetaDataUndefined'},
+{Name: 'cdetermineSuggestedConstantsValidationLineOfCode_inValidinputMetaDataNaN', Actual: tst_con.cdetermineSuggestedConstantsValidationLineOfCode_inValidinputMetaDataNaN, Expected: 'determineSuggestedConstantsValidationLineOfCode_inValidinputMetaDataNaN'},
+
+
 
 /* dataStringParsing */
 

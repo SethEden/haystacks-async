@@ -176,8 +176,14 @@ export const cisFirstCharacterLowerCase = biz.cisFirstCharacterLowerCase; // isF
 export const creplaceCharacterAtIndexOfString = biz.creplaceCharacterAtIndexOfString; // replaceCharacterAtIndexOfString
 
 /* commandStringParsing */
+export const ccleanCommandInput = biz.ccleanCommandInput; // cleanCommandInput
+export const cisValidCommandNameString = biz.cisValidCommandNameString; // isValidCommandNameString
 
 /* constantStringParsing */
+export const cvalidateConstantsDataValidation = biz.cvalidateConstantsDataValidation; // validateConstantsDataValidation
+export const cdetermineConstantsContextQualifiedPrefix = biz.cdetermineConstantsContextQualifiedPrefix; // determineConstantsContextQualifiedPrefix
+export const cdetermineSuggestedConstantsValidationLineOfCode = biz.cdetermineSuggestedConstantsValidationLineOfCode; // determineSuggestedConstantsValidationLineOfCode
+
 
 /* dataStringParsing */
 
@@ -1494,8 +1500,60 @@ export const creplaceCharacterAtIndexOfString_inValidinputMetaDataUndefined = cr
 export const creplaceCharacterAtIndexOfString_inValidinputMetaDataNaN = creplaceCharacterAtIndexOfString + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cinputMetaData + 'NaN'; // replaceCharacterAtIndexOfString_inValidinputMetaDataNaN
 
 /* commandStringParsing */
+// cleanCommandInput
+export const ccleanCommandInput_validData = ccleanCommandInput + bas.cUnderscore + wrd.cvalid + wrd.cData; // cleanCommandInput_validData
+export const ccleanCommandInput_inValidInputDataString = ccleanCommandInput + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + wrd.cString; // cleanCommandInput_inValidInputDataString
+export const ccleanCommandInput_inValidInputDataInteger = ccleanCommandInput + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + wrd.cInteger; // cleanCommandInput_inValidInputDataInteger
+export const ccleanCommandInput_inValidInputDataBoolean = ccleanCommandInput + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + wrd.cBoolean; // cleanCommandInput_inValidInputDataBoolean
+export const ccleanCommandInput_inValidInputDataUndefined = ccleanCommandInput + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + 'Undefined'; // cleanCommandInput_inValidInputDataUndefined
+export const ccleanCommandInput_inValidInputDataNaN = ccleanCommandInput + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + 'NaN'; // cleanCommandInput_inValidInputDataNaN
+
+// isValidCommandNameString
+export const cisValidCommandNameString_validData = cisValidCommandNameString + bas.cUnderscore + wrd.cvalid + wrd.cData; // isValidCommandNameString_validData
+export const cisValidCommandNameString_inValidInputDataInteger = cisValidCommandNameString + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + wrd.cInteger; // isValidCommandNameString_inValidInputDataInteger
+export const cisValidCommandNameString_inValidInputDataBoolean = cisValidCommandNameString + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + wrd.cBoolean; // isValidCommandNameString_inValidInputDataBoolean
+export const cisValidCommandNameString_inValidInputDataUndefined = cisValidCommandNameString + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + 'Undefined'; // isValidCommandNameString_inValidInputDataUndefined
+export const cisValidCommandNameString_inValidInputDataNaN = cisValidCommandNameString + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + 'NaN'; // isValidCommandNameString_inValidInputDataNaN
 
 /* constantStringParsing */
+// validateConstantsDataValidation
+export const cvalidateConstantsDataValidation_validData = cvalidateConstantsDataValidation + bas.cUnderscore + wrd.cvalid + wrd.cData; // validateConstantsDataValidation_validData
+export const cvalidateConstantsDataValidation_inValidInputDataString = cvalidateConstantsDataValidation + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + wrd.cString; // validateConstantsDataValidation_inValidInputDataString
+export const cvalidateConstantsDataValidation_inValidinputMetaDataString = cvalidateConstantsDataValidation + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cinputMetaData + wrd.cString; // validateConstantsDataValidation_inValidinputMetaDataString
+export const cvalidateConstantsDataValidation_inValidInputDataInteger = cvalidateConstantsDataValidation + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + wrd.cInteger; // validateConstantsDataValidation_inValidInputDataInteger
+export const cvalidateConstantsDataValidation_inValidInputDataBoolean = cvalidateConstantsDataValidation + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + wrd.cBoolean; // validateConstantsDataValidation_inValidInputDataBoolean
+export const cvalidateConstantsDataValidation_inValidinputMetaDataInteger = cvalidateConstantsDataValidation + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cinputMetaData + wrd.cInteger; // validateConstantsDataValidation_inValidinputMetaDataInteger
+export const cvalidateConstantsDataValidation_inValidinputMetaDataBoolean = cvalidateConstantsDataValidation + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cinputMetaData + wrd.cBoolean; // validateConstantsDataValidation_inValidinputMetaDataBoolean
+export const cvalidateConstantsDataValidation_inValidInputDataUndefined = cvalidateConstantsDataValidation + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + 'Undefined'; // validateConstantsDataValidation_inValidInputDataUndefined
+export const cvalidateConstantsDataValidation_inValidInputDataNaN = cvalidateConstantsDataValidation + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + 'NaN'; // validateConstantsDataValidation_inValidInputDataNaN
+export const cvalidateConstantsDataValidation_inValidinputMetaDataUndefined = cvalidateConstantsDataValidation + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cinputMetaData + 'Undefined'; // validateConstantsDataValidation_inValidinputMetaDataUndefined
+export const cvalidateConstantsDataValidation_inValidinputMetaDataNaN = cvalidateConstantsDataValidation + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cinputMetaData + 'NaN'; // validateConstantsDataValidation_inValidinputMetaDataNaN
+
+// determineConstantsContextQualifiedPrefix
+export const cdetermineConstantsContextQualifiedPrefix_validData = cdetermineConstantsContextQualifiedPrefix + bas.cUnderscore + wrd.cvalid + wrd.cData; // determineConstantsContextQualifiedPrefix_validData
+export const cdetermineConstantsContextQualifiedPrefix_inValidInputDataString = cdetermineConstantsContextQualifiedPrefix + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + wrd.cString; // determineConstantsContextQualifiedPrefix_inValidInputDataString
+export const cdetermineConstantsContextQualifiedPrefix_inValidinputMetaDataString = cdetermineConstantsContextQualifiedPrefix + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cinputMetaData + wrd.cString; // determineConstantsContextQualifiedPrefix_inValidinputMetaDataString
+export const cdetermineConstantsContextQualifiedPrefix_inValidInputDataInteger = cdetermineConstantsContextQualifiedPrefix + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + wrd.cInteger; // determineConstantsContextQualifiedPrefix_inValidInputDataInteger
+export const cdetermineConstantsContextQualifiedPrefix_inValidInputDataBoolean = cdetermineConstantsContextQualifiedPrefix + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + wrd.cBoolean; // determineConstantsContextQualifiedPrefix_inValidInputDataBoolean
+export const cdetermineConstantsContextQualifiedPrefix_inValidinputMetaDataInteger = cdetermineConstantsContextQualifiedPrefix + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cinputMetaData + wrd.cInteger; // determineConstantsContextQualifiedPrefix_inValidinputMetaDataInteger
+export const cdetermineConstantsContextQualifiedPrefix_inValidinputMetaDataBoolean = cdetermineConstantsContextQualifiedPrefix + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cinputMetaData + wrd.cBoolean; // determineConstantsContextQualifiedPrefix_inValidinputMetaDataBoolean
+export const cdetermineConstantsContextQualifiedPrefix_inValidInputDataUndefined = cdetermineConstantsContextQualifiedPrefix + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + 'Undefined'; // determineConstantsContextQualifiedPrefix_inValidInputDataUndefined
+export const cdetermineConstantsContextQualifiedPrefix_inValidInputDataNaN = cdetermineConstantsContextQualifiedPrefix + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + 'NaN'; // determineConstantsContextQualifiedPrefix_inValidInputDataNaN
+export const cdetermineConstantsContextQualifiedPrefix_inValidinputMetaDataUndefined = cdetermineConstantsContextQualifiedPrefix + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cinputMetaData + 'Undefined'; // determineConstantsContextQualifiedPrefix_inValidinputMetaDataUndefined
+export const cdetermineConstantsContextQualifiedPrefix_inValidinputMetaDataNaN = cdetermineConstantsContextQualifiedPrefix + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cinputMetaData + 'NaN'; // determineConstantsContextQualifiedPrefix_inValidinputMetaDataNaN
+
+// determineSuggestedConstantsValidationLineOfCode
+export const cdetermineSuggestedConstantsValidationLineOfCode_validData = cdetermineSuggestedConstantsValidationLineOfCode + bas.cUnderscore + wrd.cvalid + wrd.cData; // determineSuggestedConstantsValidationLineOfCode_validData
+export const cdetermineSuggestedConstantsValidationLineOfCode_inValidInputDataInteger = cdetermineSuggestedConstantsValidationLineOfCode + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + wrd.cInteger; // determineSuggestedConstantsValidationLineOfCode_inValidInputDataInteger
+export const cdetermineSuggestedConstantsValidationLineOfCode_inValidInputDataBoolean = cdetermineSuggestedConstantsValidationLineOfCode + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + wrd.cBoolean; // determineSuggestedConstantsValidationLineOfCode_inValidInputDataBoolean
+export const cdetermineSuggestedConstantsValidationLineOfCode_inValidinputMetaDataInteger = cdetermineSuggestedConstantsValidationLineOfCode + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cinputMetaData + wrd.cInteger; // determineSuggestedConstantsValidationLineOfCode_inValidinputMetaDataInteger
+export const cdetermineSuggestedConstantsValidationLineOfCode_inValidinputMetaDataBoolean = cdetermineSuggestedConstantsValidationLineOfCode + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cinputMetaData + wrd.cBoolean; // determineSuggestedConstantsValidationLineOfCode_inValidinputMetaDataBoolean
+export const cdetermineSuggestedConstantsValidationLineOfCode_inValidInputDataUndefined = cdetermineSuggestedConstantsValidationLineOfCode + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + 'Undefined'; // determineSuggestedConstantsValidationLineOfCode_inValidInputDataUndefined
+export const cdetermineSuggestedConstantsValidationLineOfCode_inValidInputDataNaN = cdetermineSuggestedConstantsValidationLineOfCode + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cInputData + 'NaN'; // determineSuggestedConstantsValidationLineOfCode_inValidInputDataNaN
+export const cdetermineSuggestedConstantsValidationLineOfCode_inValidinputMetaDataUndefined = cdetermineSuggestedConstantsValidationLineOfCode + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cinputMetaData + 'Undefined'; // determineSuggestedConstantsValidationLineOfCode_inValidinputMetaDataUndefined
+export const cdetermineSuggestedConstantsValidationLineOfCode_inValidinputMetaDataNaN = cdetermineSuggestedConstantsValidationLineOfCode + bas.cUnderscore + wrd.cin + wrd.cValid + msg.cinputMetaData + 'NaN'; // determineSuggestedConstantsValidationLineOfCode_inValidinputMetaDataNaN
+
+
 
 /* dataStringParsing */
 
